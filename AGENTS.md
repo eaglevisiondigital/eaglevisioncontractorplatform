@@ -52,3 +52,24 @@ Phase 3 continuation rules:
   concurrent writes in addition to PGlite. Never treat these tests as hosted QA.
 - Classification selection is not legal proof. Weekly overtime/preparation does not
   imply jurisdictional payroll compliance, statutory withholding or disbursement.
+
+Release 1.0 policy and Phase 3A continuation rules:
+
+- Read docs/RELEASE_1_0_ACCEPTANCE.md, docs/PHASE3A_STAGING.md and
+  docs/PHASE3A_WORKER.md. Phases 1/2/3/3A are INTERNAL milestones only.
+- No outside contractor, employee or customer gets access before complete Release
+  1.0 workflow acceptance/security and explicit owner launch approval. Internal
+  synthetic test-role accounts are operated only by authorized internal engineers.
+- Keep the Release 1.0 checklist current across implementation, hosted evidence,
+  security, third-party dependencies and launch readiness. Required unfinished
+  modules cannot be dropped from release scope or presented as launch-ready.
+- Hide unfinished modules and enforce server controls. Contracts/invoices/payments
+  are database-disabled. Netlify production builds fail closed; changing the guard
+  requires explicit launch approval. Local npm builds remain available for testing.
+- No hosted target/Netlify site is implicitly staging. Manifest validation is not
+  permission. Only separately approved isolated target/actions may be executed.
+- Keep staging manifests/session JWTs/evidence under ignored .staging/ or approved
+  secret management. Never run SQL Auth/Storage mocks on hosted Supabase.
+- Scanner/worker adapters use local synthetic contract tests only. Durable control
+  store, actual scanner, worker sandbox and real AI are not verified/provisioned.
+  Do not claim hosted acceptance or change ingestion503 based on local CI success.

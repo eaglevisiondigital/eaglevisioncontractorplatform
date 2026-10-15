@@ -87,3 +87,11 @@ advisor result is claimed.
 7. Repeat desktop/tablet/mobile and manual keyboard/screen-reader review against
    connected data. Record exact results, advisor evidence and remaining findings
    before declaring Phase 2A hosted acceptance complete.
+
+## Phase 3A continuation
+
+The inventory was rechecked read-only; hosted acceptance is still not run. Follow
+PHASE3A_STAGING.md for the approved isolated-target procedure and current tooling.
+The owner now prohibits outside user access until full Production Release 1.0
+acceptance/security and explicit launch approval. These phase records are internal
+milestones only; see RELEASE_1_0_ACCEPTANCE.md.

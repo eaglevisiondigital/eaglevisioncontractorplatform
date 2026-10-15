@@ -70,3 +70,11 @@ Current Supabase changelog was reviewed, including TLS cipher deprecation and
 PostgreSQL 17.11 changes. The test schema does not use ltree, legacy pgcrypto PGP,
 btree_gist float indexes or custom selectivity operators. No hosted resource was
 changed to accommodate these announcements.
+
+## Phase 3A continuation
+
+The counts above are the Phase 3 historical baseline. See PHASE3A_VALIDATION.md for
+current regression totals, PHASE3A_STAGING.md for connected acceptance preparation
+and PHASE3A_WORKER.md for scanner/worker activation contracts. Hosted validation
+and real extraction remain unexecuted. Release 1.0 policy prohibits outside access
+until complete-workflow acceptance and explicit owner launch approval.

@@ -1,4 +1,4 @@
-# Platform architecture · Phase 2 operational foundation
+# Platform architecture · shared foundation through internal Phase 3A
 
 ## Shared deployment and separate surfaces
 
@@ -76,7 +76,7 @@ Public intake is disabled by default until disposable-environment configuration 
 approved. Forms are linked from contractor sites; iframe embedding remains blocked
 until an origin allowlist is designed. No file input or external messaging exists.
 
-## Planned lifecycle modules (not live tables or APIs)
+## Lifecycle roadmap (historical foundation plan; current Phase 3 below)
 
 | Module    | Planned model and invariants                                                                                                                                                                  |
 | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -97,7 +97,8 @@ flags for these future workflows. There are no financial mutation endpoints. See
 The Phase 1 private bucket/quarantine boundary remains. Only clean tenant-owned
 objects can be read. Internal company logos use authorized downloads and local blob
 URLs; public intake uses initials. No upload/replacement/deletion policies, public
-bucket or signed download issuance is introduced. Financial modules remain planned.
+bucket or signed download issuance is introduced. Internal estimating/job/payroll
+preparation is implemented in Phase 3; financial execution remains disabled.
 
 Only public Supabase keys belong in browser variables. Server-only gateway, HMAC
 and CAPTCHA secrets use hosting Functions scope and approved secret storage; only
@@ -225,3 +226,42 @@ and later adjustments post job labor costs once. Payroll administrators can prev
 and export earnings/deduction inputs as CSV. Aggregate job reports expose economic
 cost/hours/billing value, not individual pay rates. Manual deduction inputs do not
 calculate statutory withholding. Payroll execution is absent.
+
+## Phase 3A · internal staging and Release 1.0 boundary
+
+Earlier “planned” module descriptions record historical implementation sequence;
+Phase 3 estimating/job/workforce sections above describe current implemented code.
+Phases are internal milestones, never independently authorized production releases.
+The full required workflow and evidence matrix are in
+[Release 1.0 acceptance](docs/RELEASE_1_0_ACCEPTANCE.md). No outside access is allowed
+before full acceptance/security and express owner launch approval.
+
+One shared tenant architecture remains. Offline migration hashing, expiring isolated
+manifest validation and opt-in real Auth/PostgREST + internal RPC assertion runners
+live under server/staging and scripts/staging-readiness.mts. There is no automatic
+hosted workflow. The catalog security suite requires every public tenant table in
+hosted SELECT acceptance and checks RLS, invoker RPCs, private definer search paths
+and private/read-only client Storage. Real connected acceptance remains unexecuted.
+
+Unfinished contracts/invoices/payments are hidden from company navigation/control
+configuration and constrained disabled in PostgreSQL, including operator table
+writes. No runtime flag unlocks them. A Netlify build guard rejects production and
+requires a specifically configured internal branch/preview context. Site protection,
+external-access provisioning, deployment approval and live execution remain separate
+controls; the build guard does not secure an already deployed site.
+
+The document pipeline gains an authenticated bounded malware-gateway adapter and
+fenced lease worker orchestration. Durable storage/queue CAS and authorization must
+be atomic in the future private control service; orchestration checks alone are not
+race-proof persistence. No control store, worker deployment or real scanner/AI has
+been provisioned. The existing ingestion503 and denied uploads remain unchanged.
+See docs/PHASE3A_WORKER.md for limits/activation and PHASE3A_STAGING.md for migration,
+connected fixtures, recovery and exact separate approvals.
+
+Future contracts/invoices consume immutable approved scope plus authorized changes,
+with explicit customer-safe selling-price projections and company branding snapshots.
+Future Authorize.Net/NMI routing remains per organization with separate merchant/token
+namespaces; no shared settlement or unconditional surcharge. Future communications
+must resolve verified company-specific sender/domain, consent and immutable delivery
+identity in the same tenant transaction; a platform sender must never silently
+replace an unconfigured company's sender. No sending endpoint is enabled now.

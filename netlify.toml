@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build"
+  command = "node scripts/netlify-build-guard.mts && npm run build"
   publish = "dist"
 [build.environment]
   NODE_VERSION = "24"

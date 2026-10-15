@@ -1,4 +1,45 @@
-# Current build state · October 15, 2026 · Phase 3
+# Current build state · October 15, 2026 · Phase 3A
+
+## Governing release policy and latest internal milestone
+
+**Production Release 1.0: NOT READY / NOT AUTHORIZED.** Phases 1, 2, 3 and 3A are
+internal engineering milestones only. No outside contractor, employee or customer
+may receive access before the complete Release 1.0 workflow is substantially
+complete, tested, secure and explicitly approved for launch. No phase completion,
+CI pass, target manifest or staging approval authorizes external access or launch.
+See docs/RELEASE_1_0_ACCEPTANCE.md for every required module's implementation,
+hosted evidence, security, third-party dependencies and launch status.
+
+Phase 3A read-only audit confirmed the existing Eagle Vision Supabase project has
+no public tables/buckets/migrations/functions/development branches; it remains
+unapproved staging. No clearly named contractor-platform Netlify site was identified;
+marketing/unrelated sites were not reused. GitHub has no repository environments or
+Actions secrets; classic main branch protection was absent. No settings/resources
+were changed. Private identifiers are omitted from this public repository.
+
+Prepared offline migration digests, private expiring staging manifest validation,
+opt-in real-session three-company SELECT and internal RPC assertion runners,
+read-only catalog verification, configuration/migration/recovery procedures and a
+full connected acceptance matrix. No hosted test/migration/deployment was performed.
+Operator-specific fixture/case data and actual Auth/TOTP/PostgREST/Storage/connected
+browser evidence require an explicitly approved isolated target.
+
+Added authenticated bounded malware-gateway adapter and fenced lease/retry worker
+orchestration, tested with synthetic transports. Real durable CAS/control storage,
+worker isolation, scanner and AI/provider validation remain dependencies. Ingestion
+still returns 503, and browser storage writes remain denied. No production extraction
+success is simulated. See docs/PHASE3A_WORKER.md for exact implementation gates.
+
+Hidden unfinished Contracts/Invoices/Payments navigation and configuration; an
+additive unapplied migration constrains all three disabled in PostgreSQL. Netlify
+production builds now fail closed; internal preview builds require specifically
+configured branch/context approval. This does not replace protected site access or
+hosted deployment authorization. No production execution endpoint was introduced.
+
+Latest local evidence is recorded in docs/PHASE3A_VALIDATION.md. Read
+**docs/PHASE3A_STAGING.md** for the exact next isolated actions/approvals and recovery
+procedure. Keep the existing feature branch and draft PR #1. The Phase 3 implementation
+record below remains valid; its validation counts are historical.
 
 ## Review boundary and session continuity
 
@@ -102,9 +143,9 @@ review, job financials, time clock, timesheets, payroll preparation and labor re
 
 ## Recommended next engineering phase
 
-Phase 3A: approve an isolated test environment, validate real Auth/Storage/RLS/MFA,
+Continue Phase 3A: obtain environment-specific internal staging approval, validate real Auth/Storage/RLS/MFA,
 provision approved scanner/worker/gateway, run adversarial document corpus and load
 checks, and obtain workforce/tax/classification review. Complete ingestion and
-reporting acceptance before production consideration. Then Phase 4 can consume
+reporting acceptance before production consideration. Internal Phase 4 can then consume
 immutable issued scope plus authorized changes for contracts/invoices; keep gateway
 sandbox onboarding (Authorize.Net/NMI) and payroll execution separately gated.

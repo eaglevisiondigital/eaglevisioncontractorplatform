@@ -12,3 +12,6 @@ supabase/.branches/
 test-results/
 
 artifacts/phase3/*.png
+
+# Private staging manifests, sessions and evidence never belong in this public repo.
+.staging/

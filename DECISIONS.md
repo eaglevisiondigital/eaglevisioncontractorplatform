@@ -123,3 +123,31 @@
     isolated local preview port. This avoids development hot reload invalidating
     in-memory fixture repositories mid-test. Workspace readiness is bound to the
     repository and company identity before child operations render.
+
+## 2026-10-15 · Phase 3A and owner Release 1.0 policy
+
+1. Owner established that Phases 1/2/3 are internal milestones, not releases. No
+   outside contractor, employee or customer access until the complete Release 1.0
+   workflow is substantially complete, tested, secure and explicitly launch-approved.
+   Maintain docs/RELEASE_1_0_ACCEPTANCE.md across all required modules/evidence.
+2. Preserve working modules. Hide unfinished Contracts/Invoices/Payments and add
+   an additive SQL disabled constraint including Contracts (previously configurable).
+   Keep production Netlify builds blocked; isolated previews need specific internal
+   build configuration plus separate protected-site/deployment approval.
+3. Audit hosted resources read-only. Existing Eagle Vision Supabase remains empty
+   and unapproved as staging; no branch was created. No clearly named platform site
+   was identified in Netlify. Existing marketing/unrelated sites are not reused.
+   GitHub environments/secrets were empty and classic main protection absent;
+   settings changes and hosted actions remain separate approval items.
+4. Prepare offline hashed migration plans, expiring private target manifests,
+   read-only SQL verification, real-session three-company SELECT/RPC assertion
+   tooling and migration/rollback/acceptance procedures. No automatic remote CI,
+   project linking, migration, seeding, deployment or cleanup. Empty fixture controls
+   fail instead of claiming tenant isolation. Hosted case data/run remain pending.
+5. Extend server-side document contracts with authenticated bounded scanner gateway
+   and leased/fenced/retry-limited worker orchestration. Implementing real private
+   CAS/control persistence, sandbox infrastructure and provider approval requires a
+   separately approved integration phase. Ingestion503 and denied uploads remain.
+6. Preserve future tenant-specific merchant, branded invoice and verified sender
+   routing. No actual sender/provider connection, customer communication, financial
+   execution, payroll execution, production merge/deploy or external access occurred.

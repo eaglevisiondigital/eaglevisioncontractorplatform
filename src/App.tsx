@@ -230,7 +230,6 @@ export function App() {
         <div className="surface-links">
           <a href="/super-admin">Super Admin</a>
           <a href="/intake">Public intake</a>
-          <a href="/portal">Customer portal</a>
         </div>
       </main>
     );
@@ -295,7 +294,7 @@ export function App() {
                 'Module readiness',
                 'Activity',
               ]
-            : modules.map((m) => m.name)
+            : modules.filter((m) => m.phase === 1).map((m) => m.name)
           ).map((name, i) => (
             <button
               key={name}

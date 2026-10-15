@@ -15,7 +15,10 @@
     "format:check": "prettier --check .",
     "types:generate": "node scripts/generate-db-types.mjs",
     "types:check": "node scripts/generate-db-types.mjs --check",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "staging:plan": "node scripts/staging-readiness.mts plan",
+    "staging:validate": "node scripts/staging-readiness.mts validate",
+    "staging:verify": "node scripts/staging-readiness.mts verify"
   },
   "repository": {
     "type": "git",

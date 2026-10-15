@@ -160,3 +160,15 @@ need an approved Netlify Functions development runtime or isolated preview hosti
 Vite's SPA fallback is not a Functions emulator. No runtime deployment is part of
 this phase. CAPTCHA server checks follow the
 [provider validation contract](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/).
+
+## Internal staging preparation / Release 1.0
+
+Read RELEASE_1_0_ACCEPTANCE.md, PHASE3A_STAGING.md and PHASE3A_WORKER.md before any
+hosted action. `npm run staging:plan` is offline only. Keep filled manifests, short-
+lived sessions, scenarios and evidence in ignored .staging/; never commit them.
+`staging:validate` is offline; `staging:verify` makes real read-only Auth/PostgREST
+calls only with explicit isolated-target approval/configuration. The additional
+workflows mode needs separate synthetic-write approval and a reviewed complete case
+plan. CI runs only offline plans/local tests and has no hosted deployment authority.
+Netlify production builds are blocked; local npm build/browser tests still work.
+No outside access or phase-specific production release is authorized.

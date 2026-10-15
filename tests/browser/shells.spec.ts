@@ -13,13 +13,11 @@ test('company shell switches independent company context and modules', async ({
   await expect(
     page.locator('#main').getByText('Cunningham Construction', { exact: true }),
   ).toBeVisible();
-  await page.getByRole('button', { name: 'Payments' }).click();
-  await expect(
-    page.getByRole('heading', { name: 'Payments', exact: true }),
-  ).toBeVisible();
-  await expect(
-    page.getByText('Merchant onboarding, tokens and reconciliation · Phase 5'),
-  ).toBeVisible();
+  for (const name of ['Contracts', 'Invoices', 'Payments']) {
+    await expect(page.getByRole('button', { name, exact: true })).toHaveCount(
+      0,
+    );
+  }
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,

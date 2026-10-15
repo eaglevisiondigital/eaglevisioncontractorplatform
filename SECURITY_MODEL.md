@@ -170,3 +170,30 @@ PostgreSQL concurrent transactions. Actual Auth/TOTP, PostgREST, Storage HTTP,
 scanner/gateway operation and post-migration hosted advisors remain UNVERIFIED.
 Use the approved isolated validation procedure in docs/PHASE2_VALIDATION.md plus
 Phase 3 extensions; never run migrations against an assumed disposable hosted project.
+
+## Phase 3A and Release 1.0 policy
+
+Outside access is prohibited until full Release 1.0 acceptance/security and explicit
+owner launch approval. Internal engineering phase completion is not permission to
+provision external staff/customers, merge, deploy production or execute transactions.
+The release checklist tracks all required modules and hosted/compliance dependencies.
+Unfinished contracts/invoices/payments are hidden and database-constrained disabled;
+production Netlify builds are unconditionally rejected by the committed guard.
+Future enablement needs reviewed backend work and explicit authorization, not UI flags.
+
+Prepared staging harnesses require an expiring explicitly approved isolated target,
+forbidden non-staging refs and synthetic-only three-company context. Read acceptance
+uses real verified Auth identities/AAL2 plus positive/negative PostgREST controls on
+every public tenant table. Internal RPC tests additionally require explicit synthetic-
+write approval and an allowlisted plan. Neither mode is executed by CI or silently
+against existing resources. Manifests prove shape, not actual operator authorization;
+identity and isolation require independent verification. No admin/service key is used.
+No response bodies/tokens/payroll data enter reports or public artifacts.
+
+The new malware adapter authenticates HTTPS, refuses redirects and bounds time,
+bytes and evidence. Worker orchestration fences expired/stale jobs and rechecks
+revocation before publication; a real persistence implementation must recheck these
+conditions atomically at CAS, not trust a prior authorization check. Real store,
+scanner signatures, worker isolation and AI remain unverified. Local synthetic mocks
+cannot prove provider operation, malware efficacy or cross-service transactions.
+The material-import endpoint remains 503 and no upload/storage policy is widened.

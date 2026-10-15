@@ -62,7 +62,10 @@ function CompanyControl({
               hint: 'Existing verified Auth account only. Does not expose account lookup or send email.',
             },
             ...modules.data
-              .filter((m) => !['payments', 'invoices'].includes(m.module))
+              .filter(
+                (m) =>
+                  !['contracts', 'payments', 'invoices'].includes(m.module),
+              )
               .map((m) => ({
                 name: m.module,
                 label: `Enable ${m.module}`,
@@ -110,7 +113,10 @@ function CompanyControl({
         />
       </details>
       <p role="status">{task.message}</p>
-      <small>Invoices and payments remain disabled.</small>
+      <small>
+        Contracts, invoices and payments remain server-disabled pending Release
+        1.0 acceptance.
+      </small>
     </section>
   );
 }

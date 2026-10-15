@@ -70,3 +70,12 @@ before selecting a vendor/model. No provider-specific schema enters tenant table
 
 The gateway adapter constructor accepts URL/model/token; no environment switch or
 production worker is currently wired. No real configuration is assumed to exist.
+
+## Phase 3A extension
+
+Authenticated malware-gateway and leased/fenced worker orchestration adapters now
+exist, with synthetic contract/failure tests. The durable control/Storage store and
+actual isolated worker/scanner/gateway deployment remain unimplemented/provisioned.
+See PHASE3A_WORKER.md for atomic CAS requirements, configuration and activation gates.
+The ingestion function still returns 503. Release 1.0 acceptance and explicit owner
+approval are required before any outside access; phase completion is internal only.
