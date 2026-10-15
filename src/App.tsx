@@ -6,11 +6,26 @@ import {
 } from './domain/platform';
 import { supabase } from './lib/supabase';
 import { Mfa } from './Mfa';
+import { connectedOperations, previewOperations } from './lib/operations';
+import {
+  CompanyOperations,
+  NewLeadDashboard,
+} from './components/CompanyOperations';
+import { ControlPlane } from './components/ControlPlane';
+import { PublicIntake } from './components/PublicIntake';
+import { Join } from './components/Join';
+import { CompanyLogo } from './components/CompanyLogo';
 
 export function App() {
-  const path = window.location.pathname;
+  const [path, setPath] = useState(window.location.pathname);
+  useEffect(() => {
+    const update = () => setPath(window.location.pathname);
+    window.addEventListener('popstate', update);
+    return () => window.removeEventListener('popstate', update);
+  }, []);
   const sample = path.startsWith('/preview');
   const platform = path === '/super-admin' || path === '/preview/super-admin';
+  const repo = sample ? previewOperations : connectedOperations;
   const [companies, setCompanies] = useState<CompanyProfile[]>(
     sample ? sampleCompanies : [],
   );
@@ -27,8 +42,10 @@ export function App() {
     if (sample || !supabase) return;
     const client = supabase;
     let active = true;
+    let revision = 0;
     async function load() {
-      if (active) {
+      const generation = ++revision;
+      if (active && generation === revision) {
         setAuthorized(false);
         setCompanies([]);
         setCompanyId('');
@@ -46,26 +63,39 @@ export function App() {
               'Super Admin requires an explicit platform grant and MFA (AAL2).',
             );
         }
-        const { data, error } = await client
-          .from('organizations')
-          .select('*')
-          .order('name');
+        let query = client.from('organizations').select('*').order('name');
+        if (!platform) {
+          const memberships = await client
+            .from('memberships')
+            .select('organization_id')
+            .eq('user_id', session.user.id)
+            .eq('active', true);
+          if (memberships.error || !memberships.data?.length)
+            throw new Error(
+              'No company access. Verify MFA for administrator access or request a membership.',
+            );
+          query = query.in(
+            'id',
+            memberships.data.map((m) => m.organization_id),
+          );
+        }
+        const { data, error } = await query;
         if (error) throw new Error('Unable to load authorized organizations.');
         if (!platform && !data?.length) {
           throw new Error(
             'No company access. Verify MFA for administrative access, or request a membership from your administrator.',
           );
         }
-        if (active) {
+        if (active && generation === revision) {
           setCompanies(data ?? []);
           setCompanyId(data?.[0]?.id ?? '');
           setAuthorized(true);
         }
       } catch (error) {
-        if (active)
+        if (active && generation === revision)
           setMessage(error instanceof Error ? error.message : 'Access denied');
       } finally {
-        if (active) setLoading(false);
+        if (active && generation === revision) setLoading(false);
       }
     }
     void load();
@@ -93,6 +123,24 @@ export function App() {
         : 'Signed in. If MFA is required, complete verification through your configured identity flow.',
     );
   }
+  const publicMatch = path.match(/^\/(preview\/)?intake\/([a-z0-9-]+)$/);
+  if (publicMatch)
+    return (
+      <PublicIntake
+        key={path}
+        slug={publicMatch[2]}
+        repo={repo}
+        onReview={() => {
+          const c = companies.find((c) => c.slug === publicMatch[2]);
+          if (c) setCompanyId(c.id);
+          setSection('Intake');
+          window.history.pushState(null, '', '/preview');
+          setPath('/preview');
+        }}
+      />
+    );
+  if (path === '/join' || path === '/preview/join')
+    return <Join sample={sample} />;
   if (path.startsWith('/intake') || path.startsWith('/portal'))
     return (
       <main className="landing">
@@ -107,10 +155,11 @@ export function App() {
         <p>
           {path.startsWith('/portal')
             ? 'The customer portal is reserved for secure, customer-specific access in a later phase.'
-            : 'Company-branded public requests will be available after abuse controls, consent and attachment scanning are configured.'}
+            : 'Company-branded estimate requests use a dedicated company link. Contact your contractor for the correct intake page.'}
         </p>
         <p className="notice">
-          This surface does not accept submissions in Phase 1.
+          Use the company-specific intake link provided by your contractor. The
+          customer portal remains reserved for a later phase.
         </p>
         <a href="/">Return to platform</a>
       </main>
@@ -173,6 +222,13 @@ export function App() {
         </div>
       </main>
     );
+  async function refreshCompanies() {
+    try {
+      setCompanies(await repo.listCompanies());
+    } catch {
+      setMessage('Unable to refresh company context.');
+    }
+  }
   const company = companies.find((c) => c.id === companyId);
   const current = modules.find((m) => m.name === section);
   return (
@@ -201,6 +257,11 @@ export function App() {
         <div className="workspace-label">
           {platform ? 'PLATFORM CONTROL' : 'COMPANY WORKSPACE'}
         </div>
+        <CompanyLogo
+          key={`${companyId}-${company?.logo_document_id}`}
+          company={company}
+          sample={sample}
+        />
         <label className="company-label">
           Company context
           <select
@@ -282,8 +343,9 @@ export function App() {
           <div className="notice">
             {sample
               ? 'SAMPLE WORKSPACE · Synthetic company context for foundation review. No live records or financial activity.'
-              : 'PHASE 1 · Foundation access only. Financial and customer delivery workflows are disabled.'}
+              : 'PHASE 2 · Tenant-scoped operations. Financial execution, uploads and external messaging remain disabled.'}
           </div>
+          {message && <p role="status">{message}</p>}
           <div className="page-heading">
             <div>
               <span className="eyebrow">
@@ -306,7 +368,7 @@ export function App() {
                     'Ask your administrator for a company membership.')}
               </p>
             </div>
-            <span className="phase-pill">PHASE 01 / FOUNDATION</span>
+            <span className="phase-pill">PHASE 02 / OPERATIONS</span>
           </div>
           {platform ? (
             <>
@@ -338,15 +400,50 @@ export function App() {
                 <article>
                   <h2>{section}</h2>
                   <p>
-                    Platform grants and membership provisioning require reviewed
-                    administrative operations. This shell exposes no
-                    cross-company customer or document access.
+                    Administrative changes below require explicit platform
+                    authorization and MFA. Private company records remain
+                    isolated.
                   </p>
                 </article>
               )}
+              <ControlPlane
+                repo={repo}
+                companies={companies}
+                section={section}
+                onSaved={() => {
+                  void refreshCompanies();
+                }}
+              />
             </>
+          ) : company &&
+            ['Customers', 'Intake', 'Team', 'Company settings'].includes(
+              section,
+            ) ? (
+            <CompanyOperations
+              key={`${company.id}-${section}`}
+              repo={repo}
+              company={company}
+              section={section}
+              onSaved={() => {
+                void refreshCompanies();
+              }}
+              onCustomers={() => setSection('Customers')}
+              onIntake={() => {
+                const target = `/${sample ? 'preview/' : ''}intake/${company.slug}`;
+                window.history.pushState(null, '', target);
+                setPath(target);
+              }}
+            />
           ) : section === 'Overview' ? (
             <>
+              {company && (
+                <NewLeadDashboard
+                  key={company.id}
+                  repo={repo}
+                  org={company.id}
+                  onOpen={() => setSection('Intake')}
+                />
+              )}
               <div className="metrics">
                 {[
                   ['01', 'Company identity', 'Branding and industry context'],

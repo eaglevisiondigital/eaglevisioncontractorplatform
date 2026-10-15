@@ -32,3 +32,39 @@
 12. Phase numbering here: Phase 2 intake/CRM; Phase 3 estimates; Phase 4 contracts/
     portal/delivery; Phase 5 payments. README's suggested sequence remains the
     detailed feature ordering; these implementation groupings do not drop scope.
+
+## 2026-10-15 · Phase 2A + 2B
+
+1. The user explicitly deferred hosted validation and selected local-only work.
+   Existing hosted resources remain read-only. No development branch existed;
+   unrelated projects were not reused and no project was created. Do not apply
+   these migrations to the existing project without new, environment-specific approval.
+2. Preserve Phase 1. Extend coarse owner/admin/staff roles with estimator,
+   office_manager and field_staff job scopes rather than duplicate authorization
+   systems. Company status and module switches are enforced in SQL, not just nav.
+3. Permit provisioning and membership changes only through narrow checked RPCs.
+   Public entrypoints are security invoker; privileged implementations are private,
+   explicitly granted and validate live grants plus AAL2. No generic service-role API.
+4. Invite existing verified identities through expiring single-use links. Store token
+   hashes; match verified Auth email, require MFA for administrator acceptance and
+   recheck creator eligibility. No outbound email; new identity onboarding remains
+   an approved provisioning process. Protect the last active company owner.
+5. Public intake resolves an enabled company slug in the database. A server-only
+   gateway capability permits only atomic intake creation; no general anon table
+   writes. CAPTCHA, trusted-runtime IP HMAC, durable rate limiting and idempotency
+   are mandatory. Publishing a profile alone does not enable submissions.
+6. Never merge public submissions into an existing CRM identity based on unverified
+   email/phone. Show possible duplicates only to authorized company staff. Consent
+   is an immutable history; no external communication is implied by storing it.
+7. Select/display only clean, company-owned private logo images. No upload pipeline
+   exists; public branded intake uses initials. Support linked public forms; iframe
+   embedding stays blocked by CSP until an origin allowlist design is approved.
+8. Generate types from the actual disposable catalog, including tables, columns,
+   enums and public RPC signatures. Check drift in CI. Native PostgreSQL 17.11 and
+   PGlite 18.6 produce identical types; official hosted generation remains a release gate.
+9. Extend CI with a disposable PostgreSQL 17 container in addition to PGlite and
+   desktop/tablet/mobile browser tests. Test drivers allow only temporary Unix
+   sockets or the fixed loopback CI container, never arbitrary hosted URLs.
+10. Keep financial execution, invoices/payment module activation, uploads, customer
+    portal access and all external messaging disabled. Subscription configuration
+    is not billing. Next feature phase is estimates after hosted acceptance.

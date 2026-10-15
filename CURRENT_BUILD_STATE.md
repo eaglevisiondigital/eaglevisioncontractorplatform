@@ -1,68 +1,99 @@
-# Current build state · October 15, 2026
+# Current build state · October 15, 2026 · Phase 2A + 2B
 
-## Scope and review status
+## Review and environment boundary
 
-Phase 1 foundation implemented on `codex/phase-1-foundation`, based on the original
-README-only `main`. Repository visibility inspected: PUBLIC. README preserved.
-This is a draft engineering foundation, not a production-ready contractor system.
-No merge, production deployment, hosted migration, charge, customer message or
-real financial/customer-data modification has been performed.
+Continue `codex/phase-1-foundation` and [draft PR #1](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/1).
+Phase 1 architecture and original README are preserved. Repository is PUBLIC:
+never commit hosted project identifiers, credentials, customer data or exports.
+No merge, production deployment, hosted migration, live charge or actual customer
+communication has occurred.
 
-## Implemented
+The user explicitly chose **complete locally; defer hosted validation** after
+inventory showed no Eagle Vision development branches and no Docker executable.
+The existing Eagle Vision hosted project was inspected read-only; it is not an
+approved disposable environment. No project/branch was created or modified.
+A later inspection found native PostgreSQL 17, so an independent temporary local
+cluster with TCP disabled was used for migration/security validation.
 
-- React + strict TypeScript + Vite, responsive company and platform shells,
-  independent tenant branding examples and industry choices; separated public
-  intake and portal placeholders. Explicit sample-only preview routes.
-- Supabase publishable-key environment model, password sign-in and TOTP UI,
-  caller-scoped protected Netlify organization-context function.
-- Local migration: organizations, owner/admin/staff memberships, customers,
-  service locations, intake requests, document metadata, immutable activity,
-  private platform grants and non-secret merchant routing configuration.
-- Tenant RLS, composite tenant foreign keys, narrow grants, admin/platform AAL2,
-  database membership revocation, private clean-only object read policy and
-  quarantined document defaults. No browser file writes or privileged endpoints.
-- Versioned financial/document architecture and phased tokenized payments plan;
-  live charges, schedules and surcharges disabled with no execution endpoints.
-- CI, pinned dependencies/lockfile, lint, formatting, unit, server, SQL integration,
-  desktop/mobile and automated accessibility tests. All required continuity docs.
+## Completed functionality
 
-## Verification
+- Super Admin: atomic company/verified-owner provisioning, onboarding/active/
+  suspended status, subscription configuration, module activation, additional owner
+  assignment, owner revocation with last-owner protection, aggregate metrics and
+  immutable platform administrative audit. No automatic company-customer access.
+- Company settings: independent colors, clean private logo selection/display,
+  address/contact, areas/specialties, license/insurance metadata, estimate numbering,
+  draft terms/expiration, materials/labor defaults, currency and intake categories.
+  Profile/settings saves are atomic. No upload or merchant-secret collection.
+- Team: owner/admin authorization plus estimator, office-manager and field-staff
+  job scopes; expiring single-use email-bound invitation links, acceptance using
+  verified Auth identity, MFA for privileged roles, link revocation, role updates
+  and immediate membership revocation. No email is sent. New Auth accounts still
+  require reviewed identity provisioning; invitations target existing accounts.
+- CRM: tenant-scoped contact create/read/update, residential/commercial designation,
+  multiple editable service locations, search/type filters, pagination, duplicate
+  identification confined to the current tenant, internal notes, inquiry and
+  append-only consent history. No unsafe automatic identity merging.
+- Public intake: company-slug routing, branded linked forms, contact/job/property/
+  service/availability fields, explicit contact preferences and consent. Server
+  checks origin, body limit, honeypot and Turnstile hostname/action. Narrow gateway
+  RPC resolves the tenant and atomically creates customer/location/request/consent/
+  in-app notification. Durable IP-HMAC rate limits and idempotency protect writes.
+- Intake review/assignment/status and new-lead dashboard; attachments, external
+  notifications, financial execution and customer portal access remain disabled.
+- Independent synthetic preview workspaces for all three pilots, including
+  end-to-end public request → correct contractor → assignment. Preview changes
+  stay in memory and reset on full reload; connected mode never uses demo records.
+- Catalog-derived TypeScript tables/enums/RPC types, drift check, typed Supabase
+  client and CI coverage on both PGlite and native PostgreSQL 17.
 
-- `npm run check`: lint, strict types, 30 tests (24 PostgreSQL RLS/security,
-  4 protected server tests, 2 Money/capability tests) and production build passed.
-- `npm run format:check`: passed.
-- Browser tests cover desktop and mobile navigation, context changes, disabled
-  financial module, surface separation, page overflow and axe accessibility.
-  All 6 browser checks passed. CI runs the same checks.
-- `npm audit --omit=dev`: zero known runtime vulnerabilities at implementation time.
-- No Docker or configured disposable Supabase project was present. SQL ran on
-  actual PostgreSQL through PGlite with explicit Auth/Storage contract fixtures.
-  Supabase HTTP services, live MFA and database advisors were not executed.
+## Verification results
 
-## Unresolved dependencies and release gates
+- `npm run check`: lint, strict types, catalog type drift, **66 tests passed**
+  (47 database security/operational, 4 server-context, 11 intake/validation,
+  2 money/capability and 2 preview-repository tests), production build passed.
+- Native PostgreSQL **17.11**: **47/47 database tests passed** plus identical
+  catalog-derived TypeScript output. Independent databases used Auth/Storage
+  contract fixtures; no Supabase HTTP services were started.
+- PGlite **0.5.10 / PostgreSQL 18.6**: same committed migrations and SQL tests.
+- Browser suite: **24/24 passed** across desktop, tablet and mobile, including
+  CRM/consent/locations, branded intake/assignment, settings/team, control-plane
+  provisioning/configuration, overflow and axe WCAG A/AA checks. Desktop/mobile
+  screenshots visually inspected. Automated checks do not certify all accessibility.
+- Existing Phase 1 GitHub CI was verified passing before work. Updated CI adds an
+  isolated PostgreSQL 17 container job and repeats type/security/browser checks.
+- Hosted read-only advisors: no security findings on the **empty public schema**;
+  one informational Auth connection-allocation performance finding. This does not
+  validate the unapplied application schema. See docs/PHASE2_VALIDATION.md.
 
-1. Approved disposable Supabase environment: verify full migration against managed
-   schemas, real Auth/TOTP, PostgREST grants/RLS, Storage HTTP and database advisors.
-   Generate schema-derived TypeScript types once the reference schema is deployed.
-2. Reviewed tenant/user provisioning and invitations, attributed operator audit,
-   company settings validation/editing, tenant customer/intake CRUD and pagination.
-3. Netlify site/account configuration and preview runtime/build variables, HTTPS,
-   Auth redirect allowlists, deployment locking and isolated preview resources.
-   No site was created or linked; do not auto-deploy production from this branch.
-4. Document quarantine scanner, content validation, controlled upload/download
-   issuance, customer resource grants, retention/legal holds and recovery testing.
-5. Consent-aware notification providers, email setup and delivery audit before
-   public intake confirmation or estimate delivery. No messages are sent now.
-6. Payment-provider selection, sandbox merchant onboarding, secret management,
-   tokenization, signed webhooks, idempotency, ledger, reconciliation and legal/
-   processor/tax approval before any live workflow. See docs/PAYMENTS.md.
-7. Production readiness review: MFA end-to-end, rate limits, session revocation,
-   monitoring, incident response, backup/restore and tenant access review.
+## Infrastructure dependencies and remaining acceptance gates
 
-## Next engineering phase
+1. Approved disposable Supabase stack/project: apply both migrations there only;
+   run real Auth/password/TOTP, JWT/session, PostgREST grants/RLS and private Storage
+   HTTP tests and advisors after migration; regenerate official Supabase types and
+   compare. Hosted acceptance remains explicitly incomplete by user direction.
+2. Bootstrap a platform operator, three synthetic companies and verified test Auth
+   users through an approved identity process. Privileged UI requires AAL2. No real
+   accounts were created and no customer addresses were used.
+3. Configure Netlify preview Functions/build environments, Auth allowlists, HTTPS,
+   Turnstile site/secret/hostname, independent gateway/rate-limit secrets and gateway
+   hash registration in the disposable database. Public intake is disabled by
+   default until all gates are satisfied. No site was linked or deployed.
+4. Full service scanning/quarantine, malware/content validation, retention/legal
+   holds and controlled upload/download issuance before attachments. Logos can
+   reference only already-clean company images; public intake uses initials.
+5. Consent-approved notification delivery and email account onboarding remain
+   disabled. Invitation links require controlled manual sharing, never automatic
+   email/SMS. Configure operational alerts for intake HTTP 403/429/503 before release.
+6. Production-grade session revocation/recovery, invitation account onboarding,
+   backup/restore, concurrency/load review and audit retention/export remain gates.
+7. Payments, invoicing and subscriptions billing are not implemented. Subscription
+   values are configuration only. Merchant onboarding, legal/tax/processor review
+   and tokenization/reconciliation remain later-phase requirements.
 
-Phase 2: first verify foundation on a disposable Supabase stack, then implement
-reviewed organization/staff onboarding and tenant-scoped CRM/intake CRUD, validated
-company profile editing, public intake abuse/consent controls and document scanning.
-Continue estimates, portal/contracts and sandbox payments in later phases. Keep
-customer/internal documents and platform/customer authorities separate.
+## Recommended Phase 3
+
+First close the deferred disposable-Supabase validation gate. Then build tenant-
+scoped estimate drafts, catalog/material/labor defaults, immutable estimate
+versions/options and internal previews. Use the saved settings; do not enable
+customer delivery, execution, tax/fee collection or payments without their approvals.

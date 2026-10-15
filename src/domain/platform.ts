@@ -1,3 +1,4 @@
+import type { Json } from '../lib/database.types';
 export type StaffRole = 'owner' | 'admin' | 'staff';
 export type Industry = 'property_services' | 'construction' | 'roofing';
 export interface CompanyProfile {
@@ -8,7 +9,9 @@ export interface CompanyProfile {
   primary_color: string;
   accent_color: string;
   logo_document_id: string | null;
-  business_info: Record<string, string>;
+  business_info: Json;
+  status?: string;
+  subscription_plan?: string;
 }
 export const modules = [
   { name: 'Overview', detail: 'Your company workspace', phase: 1 },
@@ -22,6 +25,7 @@ export const modules = [
     detail: 'Tenant-scoped request records; public submission comes next',
     phase: 1,
   },
+  { name: 'Team', detail: 'Staff roles, invitations and access', phase: 1 },
   {
     name: 'Estimates',
     detail: 'Versioned scope, pricing and approval · Phase 3',

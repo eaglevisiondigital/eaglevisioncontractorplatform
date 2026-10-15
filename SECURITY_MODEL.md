@@ -1,83 +1,124 @@
-# Security model and Phase 1 limitations
+# Security model · Phase 2
 
-## Threats and authorization
+## Authorization and threats
 
-Protect against guessed IDs, forged tenant selections, malicious user_metadata,
-self-promotion, stale memberships, privilege escalation, unsafe uploads and forged
-financial events. PostgreSQL RLS plus explicit grants enforce access independently
-of React. Default API grants are revoked for application tables. Anonymous access
-is denied. Owner/admin membership and all platform grants require signed JWT AAL2;
-staff roles allow AAL1. The sign-in screen provides TOTP enrollment/verification.
-Disable public signup and anonymous sign-in; reviewed provisioning is required.
+Protect against guessed IDs, forged company context, user_metadata role claims,
+self-promotion, stale memberships, unverified identity merging, replayed invitation/
+intake tokens, unsafe documents and confused platform authority. PostgreSQL RLS,
+explicit table/column/function grants, immutable tenant IDs and composite foreign
+keys enforce scope independently of React. Every application/private table has RLS.
 
-Authorization checks live membership rows, so role revocation takes effect on the
-next database statement. Tokens must still be validated by Auth at server entry;
-user deletion alone does not revoke issued tokens. Before sensitive future
-operations, require recent MFA/session validation, bounded JWT lifetime, revocation
-and reauthentication policy. Never trust user_metadata for roles. A platform grant
-does not confer membership or access to company customers, files or activity.
+Owner/admin and platform access require signed JWT AAL2. Staff access additionally
+checks their database job scope. No role is taken from user-editable metadata.
+Membership/creator revocation, organization suspension and module deactivation take
+effect on the next database statement. Real session revocation/recovery, recent-MFA
+policy and TOTP integration remain part of deferred hosted validation. Auth user
+deletion alone does not revoke issued access tokens. Public signup and anonymous
+sign-in are disabled in local Supabase configuration; hosted settings are unverified.
 
-Internal membership and platform lookup functions are SECURITY DEFINER with empty
-search_path, fully qualified names and narrow execute grants. They cannot mutate
-anything. The public platform_access wrapper is SECURITY INVOKER. Trigger functions
-have no client execute grant. Audit triggers atomically append action/entity/actor/
-time, not customer payloads. Clients cannot forge, alter, delete or truncate audit
-records. Database owners can alter triggers/schema: export to independently
-controlled retention storage before claiming tamper resistance against operators.
+## Permission boundaries
 
-## Permissions
+| Resource/action                                 | Estimator / office staff                              | Field staff                 | Owner/admin AAL2                                | Platform AAL2                                          | Anonymous/customer without membership   |
+| ----------------------------------------------- | ----------------------------------------------------- | --------------------------- | ----------------------------------------------- | ------------------------------------------------------ | --------------------------------------- |
+| Organization/profile                            | Own company read                                      | Own company read            | Own company read/update selected profile fields | Company profiles read/configure via checked operations | Published intake profile only           |
+| CRM/customers/locations/notes                   | Own company read/create/update; append notes          | Deny                        | Own company read/create/update                  | Deny without separate membership                       | Deny                                    |
+| Intake                                          | Own company read/create/update and checked assignment | Assigned requests read only | Own company management                          | Deny without membership                                | Checked gateway submission only         |
+| Delete CRM/intake                               | Deny                                                  | Deny                        | Own company, when module enabled                | Deny without membership                                | Deny                                    |
+| Team role/invitation operations                 | Deny                                                  | Deny                        | Checked hierarchy; owner controls admin roles   | Checked owner assignment/revocation                    | Own eligible invitation acceptance only |
+| Settings                                        | Deny                                                  | Deny                        | Own enabled settings module                     | No private settings bypass                             | Deny                                    |
+| Clean documents                                 | Own company with enabled module                       | Deny                        | Own enabled module                              | Deny without membership                                | Deny                                    |
+| Audit                                           | Deny                                                  | Deny                        | Own company activity                            | Platform administrative events                         | Deny                                    |
+| Usage metrics                                   | No cross-company access                               | No cross-company access     | No cross-company access                         | Aggregate company counts only                          | Deny                                    |
+| File writes / scan status / financial execution | Deny                                                  | Deny                        | Deny                                            | Deny                                                   | Deny                                    |
 
-| Operation                                       | Staff                  | Owner/admin AAL2                        | Platform AAL2             | Anonymous |
-| ----------------------------------------------- | ---------------------- | --------------------------------------- | ------------------------- | --------- |
-| Company profiles                                | Own company read       | Own company read/update selected fields | All company profiles read | Deny      |
-| Membership list                                 | Own company read       | Own company read                        | Deny without membership   | Deny      |
-| Customer/location/intake read/create/update     | Own company            | Own company                             | Deny without membership   | Deny      |
-| Customer/location/intake delete                 | Deny                   | Own company                             | Deny without membership   | Deny      |
-| Document metadata                               | Own company read       | Own company read                        | Deny without membership   | Deny      |
-| Clean document object read                      | Own company            | Own company                             | Deny without membership   | Deny      |
-| Upload/replace/delete or scan-status update     | Deny                   | Deny                                    | Deny                      | Deny      |
-| Audit read                                      | Deny                   | Own company                             | Deny without membership   | Deny      |
-| Grants, provisioning and merchant configuration | Reviewed operator only | Reviewed operator only                  | Reviewed operator only    | Deny      |
+Platform-grant bootstrap and verified Auth identity provisioning remain reviewed
+operator operations. Existing invited identities can accept through the UI. The
+application has no generic elevated CRUD API or Auth-admin service key. Platform
+users who separately hold a company membership receive only that membership's
+company-data permissions. There is no automatic impersonation.
 
-A user who separately holds platform and membership grants receives each permitted
-scope. No automatic impersonation is implemented. Hard deletes are constrained by
-references; production retention and archive workflows are future work.
+## Privileged database code and audit
 
-## Files
+Public RPCs are SECURITY INVOKER. Narrow private SECURITY DEFINER implementations
+use empty search_path, fully qualified objects, explicit grants and live authorization
+checks. Default PUBLIC function execution is revoked. Private tables have explicit
+revocations and are excluded from the API schema. Anonymous private-schema usage
+exists only to invoke the public-profile and gateway implementation functions;
+it confers no private table or other function privileges.
 
-The `company-documents` bucket is private, capped at 10 MiB, and restricted to PDF,
-JPEG, PNG and WebP. The object name is exactly `<organization UUID>/<document UUID>`
-and must match trusted metadata. Only clean metadata and current membership permit
-object reads. No object write policies exist. Future uploads must validate actual
-file signatures, quarantine and scan before a privileged worker marks clean.
-Customer visibility does not authorize portal access yet. Signed links are bearer
-capabilities; future issuance must check resource grants and use short expiry.
-Access changes do not revoke already issued signed URLs. Never make the bucket
-public or introduce a permissive second Storage policy.
+The public-profile lookup intentionally serves an allowlisted published profile.
+The intake gateway intentionally authenticates a server-only random capability,
+not an end-user login. It cannot read/modify arbitrary CRM records. CAPTCHA and
+trusted-IP HMAC happen server-side; clients never receive the capability secret.
+Database/operator/provider log access and bind-parameter logging require review
+before hosted use so secrets cannot be captured through infrastructure diagnostics.
 
-## Secrets, payments and deployment
+Audit triggers append actor/action/entity/time atomically without row payloads.
+Platform actions have a separate immutable event stream. Clients cannot forge,
+modify, delete or truncate events. Consent history is append-only and provenance
+is assigned by checked staff/public operations. Database owners can alter schema
+or triggers; independently retained exports are needed before claiming operator-
+resistant audit. Retention, deletion and legal holds are not implemented yet.
 
-Only publishable Supabase keys belong in VITE variables. No service key is used in
-Phase 1. Never store PAN/CVV, banking credentials or provider keys in database
-profiles, browser bundles, tests, public docs or logs. No payment provider is wired;
-no payment/surcharge/notification endpoints exist. CSP, framing protection,
-no-sniff and referrer restrictions are configured; HTTPS is a hosting prerequisite.
-Function responses set their own headers. Custom Supabase domains will require a
-reviewed CSP allowlist update. No production deployment or migration is authorized.
+## Invitations and owner protection
 
-## Release gates
+Invitation creation is role-limited, hashed-token, 72-hour expiry and single-use.
+Acceptance matches verified Auth email (not JWT user_metadata), current creator
+eligibility, active organization/team module and privileged-role MFA. A preexisting
+membership is never overwritten by accepting an invitation. Administrators cannot
+create/promote owners or administrators; owners may manage administrators. Company
+staff cannot revoke owners. Platform owner revocation serializes on the organization
+and preserves at least one active owner. Tokens use URL fragments and are displayed
+only at creation; no customer/employee messages are sent.
 
-Negative SQL tests must pass for anonymous, staff, administrators, revoked members,
-platform grants, multiple tenants and forged references. Run hosted Auth/Storage/
-PostgREST integration, MFA end-to-end, database advisors, dependency scanning,
-backup/restore and access reviews in a disposable development environment before
-production. Tests using the harness prove SQL policy behavior, not hosted-service
-configuration. Rate limits/CAPTCHA, scan workers, consent, legal retention and
-provider review remain gates for their respective later phases.
+## Public intake and abuse controls
+
+Only published company-slug profiles are public. The submission handler rejects
+client organization IDs/unknown fields, cross-origin JSON, oversized streaming
+bodies, honeypot values, malformed payloads and incorrect contact consent. Turnstile
+is verified with expected hostname and action and a timeout. Trusted IP comes only
+from Netlify runtime context, never forwarded headers supplied by the caller.
+Store only HMAC fingerprints, not raw IPs. Database limits are durable and atomic,
+with two-hour cleanup of rate buckets. Monitor HTTP 403/429/503 and protected rate
+buckets in the approved hosting environment; alert routing is not configured here.
+
+Idempotency is scoped to resolved tenant and payload hash; changed-payload key reuse
+is rejected. Successful submissions create a new unverified contact rather than
+merging into a known customer, preventing identity poisoning and cross-tenant
+existence disclosure. Public responses contain no customer/request IDs or records.
+Consent does not authorize marketing or any actual messaging. Public intake remains
+off until all server verification/gateway configuration is supplied and approved.
+
+## Documents and secrets
+
+The private `company-documents` bucket remains 10 MiB maximum, PDF/JPEG/PNG/WebP only.
+Object names must match trusted tenant/document metadata. Reads require current
+module/capability authorization and clean scan status. Logo assignment additionally
+requires a clean, same-company raster image. No browser uploads, replacements,
+deletes, scan-state changes or public logo publishing are permitted. Customer
+visibility flags do not grant portal access. Controlled signed-link issuance and
+scan workers remain unimplemented. Never add a permissive second Storage policy.
+
+Browser VITE variables contain publishable credentials only. Gateway, rate-HMAC and
+verification secrets belong solely in approved Functions runtime secret storage.
+No service-role key, PAN/CVV, bank credentials or merchant-provider secrets are used
+or collected by this phase. Invoices/payments cannot be enabled through module
+configuration; no charge/surcharge/delivery endpoints exist. HTTPS, CSP, framing
+protection, no-sniff/referrer headers and no-store function responses are configured.
+CSP allows only the verification provider's required script/frame/connect origin.
+Intake can be linked; embedding remains blocked pending origin-allowlist design.
+
+## Validation and release gates
+
+Local tests execute the actual SQL policies on native PostgreSQL 17.11 and PGlite,
+including forged IDs, role escalation, revoked access, three-company routing,
+customer denial, MFA requirements, private documents, consent and audit immutability.
+Browser and HTTP-client tests supplement SQL checks. They do not prove real Supabase
+Auth/TOTP, PostgREST grants or Storage HTTP configuration. Those checks and advisors
+after migration are explicitly deferred by the user. See docs/PHASE2_VALIDATION.md.
+No production deployment or migration is approved by this document.
 
 References checked October 15, 2026:
 [Supabase RLS](https://supabase.com/docs/guides/database/postgres/row-level-security),
-[Storage access control](https://supabase.com/docs/guides/storage/security/access-control).
-The [TLS changelog](https://supabase.com/changelog/cbc-tls-ciphers-deprecated)
-announces removal of older TLS 1.2 ciphers November 10, 2026; supported modern
-browsers and Node 24 are the runtime baseline.
+[MFA](https://supabase.com/docs/guides/auth/auth-mfa),
+[Storage policies](https://supabase.com/docs/guides/storage/security/access-control).

@@ -32,11 +32,13 @@ test('platform, public intake and portal remain separate', async ({ page }) => {
     page.getByRole('heading', { name: 'A platform built to grow.' }),
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', { name: 'Roofing Company · Example' }),
+    page.getByRole('heading', { name: 'Roofing Company · Example', level: 2 }),
   ).toBeVisible();
   await page.goto('/intake');
   await expect(
-    page.getByText('This surface does not accept submissions in Phase 1.'),
+    page.getByText(
+      'Use the company-specific intake link provided by your contractor. The customer portal remains reserved for a later phase.',
+    ),
   ).toBeVisible();
   await page.goto('/portal');
   await expect(

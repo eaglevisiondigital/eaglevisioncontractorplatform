@@ -1,8 +1,8 @@
-import { PGlite } from '@electric-sql/pglite';
+import { createTestDatabase } from './engine';
 import { readFileSync, readdirSync } from 'node:fs';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
-const db = new PGlite();
+const db = createTestDatabase();
 const orgA = '10000000-0000-4000-8000-000000000001';
 const orgB = '10000000-0000-4000-8000-000000000002';
 const admin = '20000000-0000-4000-8000-000000000001';
@@ -42,7 +42,7 @@ beforeAll(async () => {
   for (const file of readdirSync('supabase/migrations').sort())
     await db.exec(readFileSync(`supabase/migrations/${file}`, 'utf8'));
   await db.exec(`
-    insert into auth.users values('${admin}'),('${staff}'),('${outsider}'),('${platform}');
+    insert into auth.users(id) values('${admin}'),('${staff}'),('${outsider}'),('${platform}');
     insert into public.organizations(id,name,slug,industry) values
     ('${orgA}','Company A','company-a','construction'),('${orgB}','Company B','company-b','roofing');
     insert into public.memberships(organization_id,user_id,role) values

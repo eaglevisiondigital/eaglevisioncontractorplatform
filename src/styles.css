@@ -355,7 +355,7 @@ footer {
 }
 .section-title span {
   font-size: 0.73rem;
-  color: #6a7b72;
+  color: #52675d;
 }
 .landing {
   max-width: 850px;
@@ -512,4 +512,269 @@ dd {
   height: 200px;
   display: block;
   margin: 20px 0;
+}
+/* Operational forms and resource views build on the Phase 1 shell. */
+.operational-form {
+  margin: 22px 0;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.form-grid label,
+.filters label,
+.share-link {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #304c40;
+  gap: 7px;
+}
+.form-grid .wide {
+  grid-column: 1/-1;
+}
+.form-grid input,
+.form-grid textarea,
+.form-grid select,
+.filters input,
+.filters select,
+.share-link input {
+  width: 100%;
+  min-width: 0;
+  padding: 11px 12px;
+  border: 1px solid #9aaca2;
+  border-radius: 5px;
+  background: #fff;
+  color: #1c2d36;
+  font: inherit;
+}
+.form-grid textarea {
+  resize: vertical;
+}
+.form-grid input[type='color'] {
+  height: 44px;
+  padding: 3px;
+}
+.form-grid .checkbox-label {
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+.checkbox-label input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
+  order: -1;
+  flex-shrink: 0;
+}
+.checkbox-label small {
+  flex-basis: 100%;
+}
+.form-grid small,
+.share-link small {
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #52675d;
+}
+.actions,
+.filters,
+.pagination {
+  display: flex;
+  align-items: end;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.actions {
+  margin-top: 20px;
+}
+.filters {
+  margin: 20px 0;
+}
+.filters label:first-child {
+  flex: 1;
+  min-width: 200px;
+}
+.secondary {
+  background: #edf2ef;
+  color: #244c3b;
+  border: 1px solid #bccdc3;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+article + article,
+.detail-panel,
+.lead-dashboard {
+  margin-top: 24px;
+}
+.lead-dashboard {
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+.record-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.record-list > div,
+.record-list > section,
+.request-card,
+.company-control {
+  padding: 18px 0;
+  border-bottom: 1px solid #dce5df;
+}
+.record-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  text-align: left;
+  background: #f4f7f5;
+  color: #1c2d36;
+  border: 1px solid #dce5df;
+}
+.record-button small {
+  display: block;
+  font-size: 0.72rem;
+  color: #52675d;
+  margin-top: 5px;
+  overflow-wrap: anywhere;
+}
+.pagination {
+  margin-top: 20px;
+  align-items: center;
+  font-size: 0.74rem;
+}
+.pagination span {
+  margin-right: auto;
+}
+.request-card h3 {
+  margin-top: 12px;
+}
+.timeline {
+  margin-top: 24px;
+}
+.timeline > div {
+  padding: 15px 0 4px 18px;
+  border-left: 2px solid #b9ccbf;
+}
+.timeline p {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.timeline small,
+.request-card small,
+.block {
+  color: #52675d;
+  font-size: 0.72rem;
+}
+.block {
+  display: block;
+  overflow-wrap: anywhere;
+  margin: 8px 0;
+}
+.company-control {
+  margin: 20px 0;
+}
+.company-grid section {
+  min-width: 0;
+}
+.company-grid dl {
+  grid-template-columns: 1fr auto;
+  font-size: 0.76rem;
+}
+.company-grid dt {
+  color: #52675d;
+}
+details {
+  margin-top: 20px;
+}
+summary {
+  cursor: pointer;
+  color: #315e49;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.error {
+  color: #8c2828;
+  border-color: #cc9191;
+}
+.public-intake {
+  max-width: 900px;
+  padding: 55px 25px;
+}
+.public-intake h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin: 30px 0 20px;
+}
+.public-intake button {
+  background: var(--company-color);
+}
+.public-brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.public-brand .company-avatar {
+  margin: 0;
+  color: #214d3a;
+}
+.public-intake footer {
+  margin-top: 35px;
+}
+.company-control h3 {
+  font-size: 1.25rem;
+}
+article h3 {
+  font-weight: 600;
+}
+.share-link {
+  margin: 20px 0;
+}
+.public-intake article > p {
+  max-width: 650px;
+}
+@media (max-width: 720px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .record-button {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .section-title {
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  .actions button {
+    width: 100%;
+  }
+  .request-card .form-grid {
+    gap: 12px;
+  }
+  .public-intake {
+    padding: 30px 16px;
+  }
+  .pagination {
+    gap: 8px;
+  }
+  .company-control {
+    padding: 10px 0;
+  }
+}
+.private-company-logo {
+  max-width: 160px;
+  max-height: 72px;
+  object-fit: contain;
+  margin: 8px 0 16px;
+}
+.trap {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
