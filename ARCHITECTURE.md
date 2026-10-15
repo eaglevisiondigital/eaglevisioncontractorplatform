@@ -119,3 +119,109 @@ Next extend estimates and catalog/versioning after the deferred hosted gate. Add
 reviewed identity onboarding, retention/export, concurrency/load validation and
 consent-aware delivery only within their approved scope. No production deployment,
 hosted migration or live workflow is implied by this implementation.
+
+## Phase 3 · estimates, supplier evidence, job costs and workforce
+
+The Phase 3 user additions extend the existing application and tenant boundary;
+there is still one deployment. `src/components/phase3` provides Estimates,
+Catalog, Jobs and Workforce. `src/lib/phase3.ts` separates caller-scoped connected
+operations from an explicitly synthetic, in-memory preview repository. No demo
+fallback occurs in connected mode. The original README remains unchanged.
+
+### Estimates and snapshots
+
+Company-owned catalogs contain materials/products, labor, services and allowances.
+Templates copy scope, not customer identity, dates, attachments or source-bound
+import approvals. Catalog edits never automatically reprice saved estimates.
+Estimates have numbered roots and successive versions, plus tenant-composite
+options, lines, schedule proposals and clean-document references. A partial unique
+index permits one draft per estimate. Company settings are locked for number
+allocation; creation keys bind to the request hash. Draft saves use optimistic
+revision checks. Issuing requires current estimating permission, owner/admin MFA,
+an independently reviewed tax reference, unexpired scope and current recalculation.
+It locks an internal snapshot; no customer delivery/acceptance/signing occurs.
+Database triggers protect issued versions and children. Revisions retain their
+issued predecessor. Immutable source data can later feed contracts and invoices.
+
+Calculation engine v1 uses integer currency minor units, thousandth quantities,
+basis-point percentages and exact BigInt/PostgreSQL numeric arithmetic. Round a
+marked-up unit price half up before quantity extension; fixed import markup applies
+once per extended line. Include base plus selected options. Apply the global
+discount, allocate its taxable share proportionally, then calculate tax. Proposed
+schedule shares total 100%; floor each allocation and put the remainder in the last
+milestone. Profit excludes tax; markup and gross margin are different quantities.
+Supported bounds and unknown-field rejection prevent unsafe numbers or fee fields.
+Customer previews are explicit projections excluding costs, markup, internal notes,
+supplier provenance and payroll details. Historical versions retain company,
+customer, location, tax-policy and attachment metadata snapshots.
+
+### Smart Material Import and purchased materials
+
+See `docs/MATERIAL_IMPORT.md`. A versioned provider-neutral extraction record
+retains original supplier, dates, SKU, literal quantity/cost/extension/total strings,
+page/sheet/cell references, confidence and warnings. Review rows preserve their raw
+extracted values alongside explicit staff corrections. Independent arithmetic flags
+extension and document-total disagreement, missing/ambiguous values, currency
+mismatch and duplicate/conflicting products. No automatic currency conversion or
+uncertain-price repair occurs. Pricing precedence is line > supplier > company;
+pass-through, percentage and fixed extended-line markup are supported.
+
+Batch/source/approval records are tenant owned. Explicit review and every selected
+row's acknowledgement are required. Approval snapshots are immutable and bound to
+the estimate or purchase job. Approved itemized or lump-sum material scope retains
+private supplier costs and source row IDs. Every estimate save and issue verifies
+approved financial provenance. Approval-and-application is atomic; stale drafts
+roll back approval. Synthetic source provenance cannot issue in connected SQL.
+
+Receipt/invoice batches reuse the same review engine, but produce one internal
+expense submission per supplier row, retaining its source approval and identifiers.
+Source digest uniqueness within a job and an immutable approval-row mapping prevent
+repeat recording. Manual budget matching remains explicit; normalized description
+and unit matches are candidates, not authorization. Receipt prices never change
+customer billing. Original estimate source imports and purchase imports have distinct
+purposes and cannot be substituted for one another.
+
+### Job financial dashboard
+
+Explicit management approval captures an immutable baseline from an internally
+issued estimate: selected revenue before tax, original material/labor/other costs,
+line scope and currency. This is internal job authorization, not evidence of customer
+acceptance. Estimate revisions cannot rewrite the baseline. Approved change orders
+retain exact scope/value and a management-attested customer authorization reference.
+Internal/proposed changes do not increase authorized billing totals.
+
+Expense submissions and management decisions are append-only. Assigned field staff
+submit expenses without reading budgets/margins. Managers review commitments,
+paid expenses and credits. Shared supplier/purchase link keys reconcile overlapping
+POs, invoices and receipts: exposure is paid plus outstanding commitment, not their
+sum. Credits link to an approved payment, cannot exceed paid cost, and reduce the
+commitment. Source-linked imports also have database duplicate guards. Remaining
+forecast and warning thresholds use optimistic revisions. Category overruns and
+margin erosion are shown; incomplete forecasts never claim final profit.
+
+### Workforce and payroll preparation
+
+Worker profiles are company-specific and linked to active members. Worker types
+are classification records, not legal determinations. Effective immutable rates
+separate hourly cash, weekly salary, employer burden, estimated loaded cost, billing
+value and imputed cost. Invoice-costed contractors produce no time-based cash fee;
+subcontractor expenses must identify an invoice-costed worker. Direct manual labor
+expenses are rejected, so approved time posts labor through one source.
+
+Time belongs to an assigned job or approved overhead center. Clock operations use
+server seconds; switching atomically closes and opens segments. Paid/unpaid breaks
+are explicit. Policy/worker locks serialize overlapping time and period locking.
+Own/assigned-team time access is separate from payroll administration. Submission
+locks original records; approved unlocked corrections append a superseding entry.
+Locked periods require later financial adjustment entries, preserving original time.
+
+Preparation covers complete employer workweeks in a reviewed IANA timezone. Actual
+elapsed seconds handle midnight/DST; overtime accumulates across every job/overhead
+segment for that employer. Effective rate changes require split time segments.
+Weekly salary allocation floors shares and assigns the residual to the final piece;
+overtime premiums are separate. Salary-rate changes within a week fail for review.
+Only reviewed, closed, submitted segments may enter a locked period. Locked snapshots
+and later adjustments post job labor costs once. Payroll administrators can preview
+and export earnings/deduction inputs as CSV. Aggregate job reports expose economic
+cost/hours/billing value, not individual pay rates. Manual deduction inputs do not
+calculate statutory withholding. Payroll execution is absent.

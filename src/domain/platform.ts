@@ -28,8 +28,23 @@ export const modules = [
   { name: 'Team', detail: 'Staff roles, invitations and access', phase: 1 },
   {
     name: 'Estimates',
-    detail: 'Versioned scope, pricing and approval · Phase 3',
-    phase: 3,
+    detail: 'Versioned scope, pricing and reviewed supplier imports',
+    phase: 1,
+  },
+  {
+    name: 'Catalog',
+    detail: 'Company materials, labor, templates and tax references',
+    phase: 1,
+  },
+  {
+    name: 'Jobs',
+    detail: 'Internal cost tracking and projected profitability',
+    phase: 1,
+  },
+  {
+    name: 'Workforce',
+    detail: 'Time, labor cost and payroll preparation',
+    phase: 1,
   },
   {
     name: 'Contracts',

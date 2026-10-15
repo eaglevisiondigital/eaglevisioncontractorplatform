@@ -122,3 +122,51 @@ References checked October 15, 2026:
 [Supabase RLS](https://supabase.com/docs/guides/database/postgres/row-level-security),
 [MFA](https://supabase.com/docs/guides/auth/auth-mfa),
 [Storage policies](https://supabase.com/docs/guides/storage/security/access-control).
+
+## Phase 3 security extensions
+
+- Every estimate/catalog/import/job/workforce table enables RLS and uses tenant
+  indexes and composite tenant foreign keys. Authenticated clients receive narrow
+  SELECT grants; financial/time mutations use checked invoker RPC entrypoints and
+  private definer implementations with empty search paths. Private helpers are
+  revoked from clients. Organization status, module activation and live membership
+  are checked. Owner/admin and payroll actions require signed AAL2. User metadata,
+  selected company, source text and UI roles cannot confer permission.
+- Estimators/office staff may manage drafts/catalogs/job projections. Internal
+  issue, job-baseline approval, expense review, customer-change approval and payroll
+  administration require company owner/admin MFA. Assigned field staff submit
+  expenses and own time; assigned supervisors review team time without rates,
+  deductions or payroll snapshots. Revocation removes access. Super Admin remains
+  separate and gains no implicit company financial or workforce access.
+- Estimate and import approvals preserve immutable financial provenance. Issued
+  versions/children, job baselines, approvals, expenses/reviews, time reviews,
+  effective rates, locked payroll periods and adjustment history cannot be rewritten.
+  Optimistic checks, row locks, partial uniqueness and idempotency protect stale or
+  concurrent writes. No generic browser table writes can bypass these operations.
+- `material-quarantine` has no client read/write policy. `material-clean` is private;
+  authorized estimating staff read only source objects marked scan-clean. Existing
+  `company-documents` uploads/replacement/deletion remain denied. Metadata creation
+  never grants byte access. No browser/service-role credential endpoint is added.
+- The worker pipeline verifies object tenant/source path, byte size and SHA-256,
+  requires an approved scanner with a current matching clean verdict, then full
+  content validation, before authorized file release or extraction. Scan failures,
+  outages, mismatches and corrupt content fail closed. Magic signatures alone are
+  not full validation. Bounded real-byte image/PDF decoders and literal CSV validation are implemented
+  locally; real scanner/isolated-worker infrastructure is not provisioned; `/api/material-import` always returns 503.
+  Selecting files/camera input stores only a local filename list, not an upload.
+- Synthetic extraction fixtures are explicitly labeled; they never attest that a
+  real file passed scanning or AI. Connected issue rejects synthetic provenance.
+  Extraction treats documents as inert untrusted data, never tool instructions.
+  Provider output is bounded and schema validated; ambiguous prices stay nullable.
+  Literal CSV parsing never evaluates formulas. Unsupported spreadsheets are denied.
+- Customer-facing preview projections omit supplier costs, margins, markup, internal
+  notes, receipts, workforce wages and deductions. No delivery, acceptance, invoice,
+  payment, payroll withholding/deposit/filing/disbursement endpoint exists. A manual
+  change-order authorization reference is management evidence, not a generated
+  signature or customer consent. Payment schedules and billing value are proposals.
+
+Local SQL tests emulate Auth JWT/Storage policy contracts and include native
+PostgreSQL concurrent transactions. Actual Auth/TOTP, PostgREST, Storage HTTP,
+scanner/gateway operation and post-migration hosted advisors remain UNVERIFIED.
+Use the approved isolated validation procedure in docs/PHASE2_VALIDATION.md plus
+Phase 3 extensions; never run migrations against an assumed disposable hosted project.

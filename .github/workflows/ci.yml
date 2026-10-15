@@ -23,6 +23,14 @@ jobs:
       - run: npm run check
       - run: npx playwright install --with-deps chromium
       - run: npm run test:browser
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase3-synthetic-previews
+          path: |
+            artifacts/phase3/*.png
+            test-results/
+          retention-days: 7
   postgres17:
     runs-on: ubuntu-latest
     timeout-minutes: 10

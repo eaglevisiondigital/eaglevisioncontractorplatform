@@ -1,99 +1,110 @@
-# Current build state · October 15, 2026 · Phase 2A + 2B
+# Current build state · October 15, 2026 · Phase 3
 
-## Review and environment boundary
+## Review boundary and session continuity
 
 Continue `codex/phase-1-foundation` and [draft PR #1](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/1).
-Phase 1 architecture and original README are preserved. Repository is PUBLIC:
-never commit hosted project identifiers, credentials, customer data or exports.
-No merge, production deployment, hosted migration, live charge or actual customer
-communication has occurred.
+The repository is PUBLIC. Preserve the original README and existing Phase 1/2
+architecture/features. No merge, production deployment, hosted migration, live
+charge, customer delivery/signature, payroll execution or actual customer message
+is authorized or has been performed. Never commit credentials, real worker pay,
+customer documents, hosted project identifiers or sensitive infrastructure exports.
 
-The user explicitly chose **complete locally; defer hosted validation** after
-inventory showed no Eagle Vision development branches and no Docker executable.
-The existing Eagle Vision hosted project was inspected read-only; it is not an
-approved disposable environment. No project/branch was created or modified.
-A later inspection found native PostgreSQL 17, so an independent temporary local
-cluster with TCP disabled was used for migration/security validation.
+The user explicitly chose **complete locally; defer hosted validation**. Existing
+hosted resources remain read-only; no project/branch was created or repurposed.
+Local tests use PGlite and an independent disposable PostgreSQL 17.11 cluster with
+TCP disabled. Actual Supabase Auth/TOTP/PostgREST/Storage acceptance and hosted
+advisors remain unverified. See docs/PHASE2_VALIDATION.md for that pending gate.
 
-## Completed functionality
+The active Phase 3 scope includes the original professional estimating request and
+all additions: Smart Material Import; Job Cost Tracking & Profitability; Workforce
+Time Tracking, Labor Costing & Payroll Preparation. These extend the shared platform
+for independent contractors, including Straight Edge, Cunningham and roofing firms.
 
-- Super Admin: atomic company/verified-owner provisioning, onboarding/active/
-  suspended status, subscription configuration, module activation, additional owner
-  assignment, owner revocation with last-owner protection, aggregate metrics and
-  immutable platform administrative audit. No automatic company-customer access.
-- Company settings: independent colors, clean private logo selection/display,
-  address/contact, areas/specialties, license/insurance metadata, estimate numbering,
-  draft terms/expiration, materials/labor defaults, currency and intake categories.
-  Profile/settings saves are atomic. No upload or merchant-secret collection.
-- Team: owner/admin authorization plus estimator, office-manager and field-staff
-  job scopes; expiring single-use email-bound invitation links, acceptance using
-  verified Auth identity, MFA for privileged roles, link revocation, role updates
-  and immediate membership revocation. No email is sent. New Auth accounts still
-  require reviewed identity provisioning; invitations target existing accounts.
-- CRM: tenant-scoped contact create/read/update, residential/commercial designation,
-  multiple editable service locations, search/type filters, pagination, duplicate
-  identification confined to the current tenant, internal notes, inquiry and
-  append-only consent history. No unsafe automatic identity merging.
-- Public intake: company-slug routing, branded linked forms, contact/job/property/
-  service/availability fields, explicit contact preferences and consent. Server
-  checks origin, body limit, honeypot and Turnstile hostname/action. Narrow gateway
-  RPC resolves the tenant and atomically creates customer/location/request/consent/
-  in-app notification. Durable IP-HMAC rate limits and idempotency protect writes.
-- Intake review/assignment/status and new-lead dashboard; attachments, external
-  notifications, financial execution and customer portal access remain disabled.
-- Independent synthetic preview workspaces for all three pilots, including
-  end-to-end public request → correct contractor → assignment. Preview changes
-  stay in memory and reset on full reload; connected mode never uses demo records.
-- Catalog-derived TypeScript tables/enums/RPC types, drift check, typed Supabase
-  client and CI coverage on both PGlite and native PostgreSQL 17.
+## Implemented
 
-## Verification results
+- Preserved company/platform shells, tenant branding, provisioning/configuration,
+  role/MFA and membership revocation, invitations, CRM/locations/notes/consents,
+  public intake CAPTCHA/gateway gates and in-app request review/assignment.
+- Professional estimating: company catalog and templates, material/product/labor/
+  service/allowance lines, exact quantity/currency arithmetic, cost/markup/explicit
+  selling price, exclusive options/add-ons, discounts, tax references, dates,
+  private/customer notes, terms, clean attachments and reconciled schedule proposals.
+  Numbered drafts use optimistic saves; duplicate/revision/archive/history and
+  internal issuance preserve immutable snapshots. Branded customer preview is an
+  allowlist excluding private supplier/pricing/workforce information.
+- Smart Material Import: multiple supplier/source records, editable canonical rows
+  with literal extraction evidence, SKU/date/quantity/unit/cost, confidence, source
+  references, independent arithmetic and warnings. Explicit review/acknowledgement,
+  line/supplier/company pricing overrides and persistent company defaults. Approved
+  itemized or lump-sum scope retains private cost/provenance. Atomic approval/apply
+  and source validation prevent stale or forged financial scope.
+- Secure source architecture: private quarantine/clean buckets, no client uploads
+  or quarantine reads, SHA-256/object-path checks, scanner/validator/provider/store
+  contracts, HTTPS extraction gateway, real bounded image/PDF validation and literal
+  CSV parser/template. Synthetic fixtures are labeled; live ingestion returns 503.
+- Jobs: immutable original issued-estimate baseline, original/authorized revenue
+  and costs, commitments/paid expenses/credits, pending management review, supplier
+  duplicate references, receipt source digest/row guards, manual purchase matching,
+  variance warnings, remaining forecasts, thresholds and projected contribution.
+  Approved customer changes require management-attested authorization; proposals
+  never raise billing. Approved changes add their expected cost to the forecast.
+- Workforce: company worker classifications and time/invoice/imputed costing,
+  immutable effective rates, reviewed timezone/workweek policy and approved overhead.
+  Mobile clock-in/out, paid/unpaid breaks, atomic job/task switching, manual entries,
+  own/assigned-team visibility, supervisors, submission/review, immutable corrections
+  and audited manager recovery for missed clock-outs.
+- Labor and payroll preparation: exact elapsed time/DST, weekly overtime across all
+  jobs/overhead, separate cash/burden/imputed/estimated/billing amounts, weekly salary
+  allocation, manual deduction inputs, CSV exports, immutable locked periods and
+  later financial adjustments. Only locked preparation posts job labor once;
+  invoice-costed contractors cannot also produce time cash fees. Payroll rates and
+  deductions are restricted; job dashboards receive aggregates.
+- Four unapplied Phase 3 migrations; regenerated typed tables/RPCs; lazy-loaded
+  operational UI; expanded local SQL, arithmetic, parser, pipeline, repository and
+  responsive browser coverage. CI includes native PostgreSQL concurrency checks.
 
-- `npm run check`: lint, strict types, catalog type drift, **66 tests passed**
-  (47 database security/operational, 4 server-context, 11 intake/validation,
-  2 money/capability and 2 preview-repository tests), production build passed.
-- Native PostgreSQL **17.11**: **47/47 database tests passed** plus identical
-  catalog-derived TypeScript output. Independent databases used Auth/Storage
-  contract fixtures; no Supabase HTTP services were started.
-- PGlite **0.5.10 / PostgreSQL 18.6**: same committed migrations and SQL tests.
-- Browser suite: **24/24 passed** across desktop, tablet and mobile, including
-  CRM/consent/locations, branded intake/assignment, settings/team, control-plane
-  provisioning/configuration, overflow and axe WCAG A/AA checks. Desktop/mobile
-  screenshots visually inspected. Automated checks do not certify all accessibility.
-- Existing Phase 1 GitHub CI was verified passing before work. Updated CI adds an
-  isolated PostgreSQL 17 container job and repeats type/security/browser checks.
-- Hosted read-only advisors: no security findings on the **empty public schema**;
-  one informational Auth connection-allocation performance finding. This does not
-  validate the unapplied application schema. See docs/PHASE2_VALIDATION.md.
+## Validation and review artifacts
 
-## Infrastructure dependencies and remaining acceptance gates
+See docs/PHASE3_VALIDATION.md for final commands, counts and test limits. Screenshots
+are generated under ignored `artifacts/phase3/` for desktop/tablet/mobile and uploaded
+as synthetic CI artifacts. They cover all three estimate builders/previews, import
+review, job financials, time clock, timesheets, payroll preparation and labor reports.
 
-1. Approved disposable Supabase stack/project: apply both migrations there only;
-   run real Auth/password/TOTP, JWT/session, PostgREST grants/RLS and private Storage
-   HTTP tests and advisors after migration; regenerate official Supabase types and
-   compare. Hosted acceptance remains explicitly incomplete by user direction.
-2. Bootstrap a platform operator, three synthetic companies and verified test Auth
-   users through an approved identity process. Privileged UI requires AAL2. No real
-   accounts were created and no customer addresses were used.
-3. Configure Netlify preview Functions/build environments, Auth allowlists, HTTPS,
-   Turnstile site/secret/hostname, independent gateway/rate-limit secrets and gateway
-   hash registration in the disposable database. Public intake is disabled by
-   default until all gates are satisfied. No site was linked or deployed.
-4. Full service scanning/quarantine, malware/content validation, retention/legal
-   holds and controlled upload/download issuance before attachments. Logos can
-   reference only already-clean company images; public intake uses initials.
-5. Consent-approved notification delivery and email account onboarding remain
-   disabled. Invitation links require controlled manual sharing, never automatic
-   email/SMS. Configure operational alerts for intake HTTP 403/429/503 before release.
-6. Production-grade session revocation/recovery, invitation account onboarding,
-   backup/restore, concurrency/load review and audit retention/export remain gates.
-7. Payments, invoicing and subscriptions billing are not implemented. Subscription
-   values are configuration only. Merchant onboarding, legal/tax/processor review
-   and tokenization/reconciliation remain later-phase requirements.
+## Explicit limits / unresolved dependencies
 
-## Recommended Phase 3
+1. **Live ingestion/extraction is not enabled or verified.** The scanner and isolated
+   worker/storage adapter are not provisioned; no AI vendor/model/credentials are
+   selected. Real image/PDF/CSV parser tests do not establish malware coverage or
+   sandbox isolation. The deployed endpoint always returns 503, including if keys
+   are set. Complete docs/MATERIAL_IMPORT.md before activation review.
+2. Compatible spreadsheets initially mean the documented UTF-8 supplier CSV format.
+   XLSX/macros/Office files are unsupported. All file/camera selection currently
+   remains local; sample extraction only uses explicit synthetic fixtures.
+3. Hosted Auth/MFA, PostgREST/Storage HTTP, deployed Netlify runtime and advisors
+   remain deferred. Tests emulate those SQL contracts; they do not prove hosted
+   integration. An approved isolated environment and scoped configuration are needed.
+4. Worker classification, break policy, tax treatment, salary preparation and weekly
+   overtime configuration require independent legal/payroll review. Daily overtime,
+   jurisdiction-specific wage rules, statutory deduction calculation, filings,
+   deposits and disbursements are not implemented. Salary allocation requires complete
+   reviewed weekly time; this is not an autonomous payroll system.
+5. Worker profiles require existing company-member identities; new account identity
+   onboarding remains the Phase 2 approved provisioning dependency. Policy/classification/
+   cost-source changes after time exists require a reviewed versioned migration.
+6. Imported estimates require fresh reviewed imports when duplicated; source-bound
+   prices cannot become generic templates. Credits currently represent returns
+   against recorded paid purchases; unpaid commitment cancellation needs a separate
+   reviewed adjustment workflow. Matching purchase keys and customer authorization
+   evidence remain explicit staff responsibilities.
+7. Interactive lists are bounded; extend server filtering/pagination and reporting
+   aggregation before high-volume production use. No customer portal, communication,
+   execution, signature, tax filing or payment integration is enabled.
 
-First close the deferred disposable-Supabase validation gate. Then build tenant-
-scoped estimate drafts, catalog/material/labor defaults, immutable estimate
-versions/options and internal previews. Use the saved settings; do not enable
-customer delivery, execution, tax/fee collection or payments without their approvals.
+## Recommended next engineering phase
+
+Phase 3A: approve an isolated test environment, validate real Auth/Storage/RLS/MFA,
+provision approved scanner/worker/gateway, run adversarial document corpus and load
+checks, and obtain workforce/tax/classification review. Complete ingestion and
+reporting acceptance before production consideration. Then Phase 4 can consume
+immutable issued scope plus authorized changes for contracts/invoices; keep gateway
+sandbox onboarding (Authorize.Net/NMI) and payroll execution separately gated.

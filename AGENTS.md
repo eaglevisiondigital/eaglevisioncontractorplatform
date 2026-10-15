@@ -20,8 +20,10 @@ ARCHITECTURE.md, SECURITY_MODEL.md and DECISIONS.md before making changes.
   from customer-data access. Audit events are append-only and contain no row PII.
 - Storage stays private. Do not enable uploads/signed issuance before quarantine,
   size/type/content checks, scanner integration and authorization tests exist.
-- Financial modules are design-only. No live charges, messages, raw card data or
-  automatic 3.85% surcharge. Require approved provider/legal/tax configuration.
+- Internal estimating, job costs and payroll preparation are authorized by Phase 3.
+  Customer financial execution remains disabled: no live charges, messages, raw
+  card data, payroll disbursement or automatic 3.85% surcharge. Require reviewed
+  provider/legal/tax configuration before any later execution phase.
 - Run `npm run check`, `npm run format:check` and `npm run test:browser` for relevant
   changes. Add meaningful regression tests for permission changes. Report limits.
 - Update build state and decisions with every phase. Preserve the original README.
@@ -36,3 +38,17 @@ Phase 2 continuation rules:
 - Invitation links target verified existing accounts and never send email/SMS.
 - Run types:check; regenerate with types:generate after schema changes. Native
   PostgreSQL 17 and PGlite must agree. Preserve private storage/quarantine gates.
+
+Phase 3 continuation rules:
+
+- Read docs/MATERIAL_IMPORT.md and docs/PHASE3_VALIDATION.md. Preserve all three
+  active additions: Smart Material Import, job profitability, workforce/payroll prep.
+- Keep estimate engine v1 integer rules and immutable issued versions/job baselines.
+- Never enable real ingestion with fixture verdicts or a frontend flag. The 503 gate
+  requires approved scanner/full validators/isolated worker and integration evidence.
+- Do not expose rates/deductions to estimators or field workers; aggregate job labor
+  and own/assigned-team time are separate projections. No double labor posting.
+- Approved/locked records require append-only corrections. Test real PostgreSQL
+  concurrent writes in addition to PGlite. Never treat these tests as hosted QA.
+- Classification selection is not legal proof. Weekly overtime/preparation does not
+  imply jurisdictional payroll compliance, statutory withholding or disbursement.

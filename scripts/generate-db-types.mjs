@@ -23,6 +23,8 @@ try {
         'text',
         'timestamp with time zone',
         'character varying',
+        'bytea',
+        'date',
       ].includes(pg)
     )
       return 'string';

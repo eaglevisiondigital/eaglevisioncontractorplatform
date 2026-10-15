@@ -10,11 +10,12 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "check": "npm run lint && npm run typecheck && npm run types:check && npm test && npm run build",
-    "test:browser": "playwright test",
+    "test:browser": "npm run build && playwright test",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "types:generate": "node scripts/generate-db-types.mjs",
-    "types:check": "node scripts/generate-db-types.mjs --check"
+    "types:check": "node scripts/generate-db-types.mjs --check",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
@@ -29,9 +30,12 @@
   },
   "homepage": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform#readme",
   "dependencies": {
+    "@js-temporal/polyfill": "0.5.1",
     "@supabase/supabase-js": "2.118.0",
+    "pdf-lib": "1.17.1",
     "react": "19.3.1",
-    "react-dom": "19.3.1"
+    "react-dom": "19.3.1",
+    "sharp": "0.35.5"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",

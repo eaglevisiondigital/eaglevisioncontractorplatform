@@ -10,3 +10,5 @@ supabase/.branches/
 *.local
 .DS_Store
 test-results/
+
+artifacts/phase3/*.png

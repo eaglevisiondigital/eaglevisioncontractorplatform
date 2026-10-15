@@ -68,3 +68,58 @@
 10. Keep financial execution, invoices/payment module activation, uploads, customer
     portal access and all external messaging disabled. Subscription configuration
     is not billing. Next feature phase is estimates after hosted acceptance.
+
+## 2026-10-15 · Phase 3 and active additions
+
+1. Preserve the existing feature branch/draft PR and all Phase 1/2 features. The
+   user added Smart Material Import, Job Financial Dashboard, then Workforce Time
+   Tracking/Labor Costing/Payroll Preparation to the active phase. Implement the
+   labor/time model and costing before its UI. Hosted validation remains deferred.
+2. Implement internal estimating and cost preparation without financial execution.
+   Internal issue and job approval are not customer acceptance. Store customer
+   change authorization references only after explicit management attestation.
+3. Use exact minor units, thousandth quantities and basis points; mirror calculation
+   v1 in TS and SQL with differential tests. Preserve immutable issued scope and
+   optimistic draft revisions. Numbering is transactionally allocated per company.
+4. Keep AI provider-neutral. Evaluate Azure Document Intelligence, Google Document AI
+   and Claude PDF/vision behind a strict versioned extraction gateway; select no live
+   vendor/model by assumption. Compatible spreadsheets initially mean the documented
+   UTF-8 CSV format, not arbitrary XLSX/macros. See docs/MATERIAL_IMPORT.md.
+5. Do not weaken existing uploads. Build quarantine/scanner/validator/store interfaces,
+   bounded image/PDF decoders, a literal CSV implementation, explicit synthetic fixtures and review/approval.
+   Keep the deployed ingestion endpoint fail-closed until approved worker/scanner,
+   validator isolation, provider credentials and integration evidence exist.
+6. Price materials with line > supplier > company overrides; fixed markup applies
+   to an extended line. Keep supplier costs and markup internal even for lump sums.
+   Never silently correct uncertain extraction. Every selected row requires review.
+7. Separate original estimate imports from job receipt imports. Bind approvals and
+   per-row mappings to tenant/job; prevent duplicate job source hashes and repeated
+   approval-row use. Match purchases manually using source IDs or normalized
+   description/unit candidates. No extraction or expense can raise customer billing.
+8. Capture an immutable original job budget. Model commitments, paid costs, credits,
+   forecasts, internal scope, proposed additions and approved changes separately.
+   Review expenses and authorization explicitly. Forecast profit includes economic
+   labor and remains projected while costs, commitments or reviews are incomplete.
+9. Use one approved labor posting source. Worker profiles choose time, invoice or
+   imputed costing. Invoice-costed contractors generate no time cash fees; time-costed
+   workers cannot also enter subcontractor invoices. Estimated loaded rates are
+   comparison data, not an additional actual cost. Billing value is not revenue.
+10. Workweeks belong to the employer timezone, across jobs and overhead. Use the
+    pinned Temporal polyfill for browser/reference DST arithmetic and PostgreSQL
+    timezone arithmetic on the server. Paid and unpaid breaks are distinct. Lock
+    policy/worker operations to reject overlap and serialize payroll preparation.
+11. Keep classification/rate review and legal status distinct. Support configurable
+    weekly overtime and salary allocation as preparation only. Daily overtime,
+    jurisdictional break/minimum-wage rules, salary adjustments and statutory
+    deductions require independent compliance/provider validation before payroll use.
+12. Approved time corrections append history. Locked periods cannot be reopened;
+    later financial adjustments enter the next preparation and job cost posting once.
+    Restrict rates/deductions/exports to payroll administrators, expose aggregate job
+    labor costs to estimators, and own/assigned-team time to workers/supervisors.
+13. Reuse separate merchant configurations for eventual Authorize.Net or NMI sandbox
+    adapters. No provider charge code, automatic 3.85% surcharge, delivery, signature,
+    payroll execution or production deployment is part of this phase.
+14. Browser regression tests build first and serve the production bundle on an
+    isolated local preview port. This avoids development hot reload invalidating
+    in-memory fixture repositories mid-test. Workspace readiness is bound to the
+    repository and company identity before child operations render.

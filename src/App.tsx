@@ -1,4 +1,11 @@
-import { useEffect, useState, type CSSProperties, type FormEvent } from 'react';
+import {
+  lazy,
+  Suspense,
+  useEffect,
+  useState,
+  type CSSProperties,
+  type FormEvent,
+} from 'react';
 import {
   modules,
   sampleCompanies,
@@ -16,6 +23,11 @@ import { PublicIntake } from './components/PublicIntake';
 import { Join } from './components/Join';
 import { CompanyLogo } from './components/CompanyLogo';
 
+const Phase3Workspace = lazy(() =>
+  import('./components/phase3/Phase3Workspace').then((m) => ({
+    default: m.Phase3Workspace,
+  })),
+);
 export function App() {
   const [path, setPath] = useState(window.location.pathname);
   useEffect(() => {
@@ -368,7 +380,9 @@ export function App() {
                     'Ask your administrator for a company membership.')}
               </p>
             </div>
-            <span className="phase-pill">PHASE 02 / OPERATIONS</span>
+            <span className="phase-pill">
+              PHASE 03 / ESTIMATING & OPERATIONS
+            </span>
           </div>
           {platform ? (
             <>
@@ -415,6 +429,22 @@ export function App() {
                 }}
               />
             </>
+          ) : company &&
+            ['Estimates', 'Catalog', 'Jobs', 'Workforce'].includes(section) ? (
+            <Suspense
+              fallback={
+                <article>
+                  <p role="status">Loading estimating operations…</p>
+                </article>
+              }
+            >
+              <Phase3Workspace
+                key={`${company.id}-${section}`}
+                operations={repo}
+                company={company}
+                section={section}
+              />
+            </Suspense>
           ) : company &&
             ['Customers', 'Intake', 'Team', 'Company settings'].includes(
               section,

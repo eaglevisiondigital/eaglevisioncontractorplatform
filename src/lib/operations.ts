@@ -142,6 +142,7 @@ export class Operations {
               'team',
               'settings',
               'documents',
+              'estimates',
             ].includes(module),
           });
         const customer = {
@@ -205,6 +206,7 @@ export class Operations {
     if (this.sample)
       return {
         crm: true,
+        estimates: true,
         intake_manage: true,
         intake_read: true,
         settings: true,
@@ -233,6 +235,7 @@ export class Operations {
       ['office_manager', 'estimator'].includes(membership.staff_type);
     return {
       crm: privileged || office,
+      estimates: privileged || office,
       intake_manage: privileged || office,
       intake_read: !!membership,
       settings: privileged,

@@ -53,3 +53,13 @@ retention. Confirm PCI scope, legal terms and fee/tax policy with qualified part
 Do not enable live capabilities by flipping frontend flags; server and operational
 approvals must implement the actual gates. No production resource exists by
 assumption in this repository.
+
+## Phase 3 continuation
+
+Authorize.Net and NMI are future sandbox adapter candidates with separate company
+merchant configurations. Estimate payment schedules, job expense records, payroll
+preparation and billable-hour values are internal data, not executable transactions.
+Snapshot-derived contracts/invoices must retain tenant/currency/issued-version
+identity and separately approved change orders. No delivery, acceptance, signature,
+charge, refund, payout or payroll execution is enabled. A processing-cost assumption
+(even 3.85%) is never an unconditional customer surcharge.
