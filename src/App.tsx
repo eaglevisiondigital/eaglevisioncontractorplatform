@@ -28,6 +28,11 @@ const Phase3Workspace = lazy(() =>
     default: m.Phase3Workspace,
   })),
 );
+const ReleaseApp = lazy(() =>
+  import('./components/release/ReleaseApp').then((m) => ({
+    default: m.ReleaseApp,
+  })),
+);
 export function App() {
   const [path, setPath] = useState(window.location.pathname);
   useEffect(() => {
@@ -135,6 +140,14 @@ export function App() {
         : 'Signed in. If MFA is required, complete verification through your configured identity flow.',
     );
   }
+  if (
+    ['/preview/release', '/internal-release', '/portal/internal'].includes(path)
+  )
+    return (
+      <Suspense fallback={<main>Loading internal workflow…</main>}>
+        <ReleaseApp sample={sample} />
+      </Suspense>
+    );
   const publicMatch = path.match(/^\/(preview\/)?intake\/([a-z0-9-]+)$/);
   if (publicMatch)
     return (

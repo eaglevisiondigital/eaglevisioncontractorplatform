@@ -190,6 +190,7 @@ it('accepts only configured internal preview builds and rejects main', () => {
 import {
   runConnectedWorkflows,
   requiredWorkflowRpcs,
+  requiredWorkflowActions,
   workflowModules,
   type WorkflowScenario,
 } from '../server/staging/workflows';
@@ -199,10 +200,21 @@ function workflowSetup() {
     workflowModules.map((module, j) => ({
       companyId: c.organizationId,
       module,
-      steps: requiredWorkflowRpcs[module].map((rpc, k) => ({
+      steps: [
+        ...requiredWorkflowRpcs[module]
+          .filter((r) => r !== 'release_command')
+          .map((rpc) => ({ rpc, action: undefined as string | undefined })),
+        ...(requiredWorkflowActions[module] ?? []).map((action) => ({
+          rpc: 'release_command',
+          action,
+        })),
+      ].map(({ rpc, action }, k) => ({
         id: `step_${i}_${j}_${k}`,
         rpc,
-        args: { p_org: c.organizationId },
+        args: {
+          p_org: c.organizationId,
+          ...(action ? { p_action: action, p_input: {} } : {}),
+        },
         tokenEnv: c.ownerTokenEnv,
         expect: { assertions: [{ path: 'checked', equals: true }] },
       })),
@@ -226,7 +238,7 @@ it('executes only explicitly approved complete internal RPC plans with exact ass
     s.transport,
   );
   expect(result.passed).toBe(
-    3 * Object.values(requiredWorkflowRpcs).flat().length,
+    s.scenarios.reduce((n, scenario) => n + scenario.steps.length, 0),
   );
   expect(
     s.transport.mock.calls
@@ -372,4 +384,21 @@ it('rejects a missing assertion operand before any network access', async () => 
     ),
   ).rejects.toThrow();
   expect(s.transport).not.toHaveBeenCalled();
+});
+it('accepts the approved internal-development designation only with a separate-clean-production policy', () => {
+  const m = manifest();
+  m.environment = 'internal-development';
+  m.productionPolicy = 'separate-clean-database-required';
+  m.developmentPromotionAllowed = false;
+  m.forbiddenProjectRefs = [];
+  expect(validateManifest(m)).toBe(m);
+  delete m.productionPolicy;
+  expect(() => validateManifest(m)).toThrow();
+});
+it('rejects promoting a synthetic development database to production', () => {
+  const m = manifest();
+  m.environment = 'internal-development';
+  m.productionPolicy = 'separate-clean-database-required';
+  m.developmentPromotionAllowed = true as false;
+  expect(() => validateManifest(m)).toThrow();
 });

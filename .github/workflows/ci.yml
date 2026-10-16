@@ -30,6 +30,7 @@ jobs:
           name: phase3-synthetic-previews
           path: |
             artifacts/phase3/*.png
+            artifacts/release/*.png
             test-results/
           retention-days: 7
   postgres17:

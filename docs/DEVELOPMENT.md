@@ -172,3 +172,18 @@ workflows mode needs separate synthetic-write approval and a reviewed complete c
 plan. CI runs only offline plans/local tests and has no hosted deployment authority.
 Netlify production builds are blocked; local npm build/browser tests still work.
 No outside access or phase-specific production release is authorized.
+
+## Current owner-approved connected development
+
+The existing contractor project is now designated internal development; a new
+staging DB is not required. Follow CONNECTED_DEVELOPMENT.md and MIGRATION_REVIEW.md.
+The nine-file reviewed digest is checked by migrations:check within npm run check.
+Use development:plan / development:validate / development:verify aliases; filled
+manifests and exact target IDs remain ignored/private. Specific hosted mutation,
+identity/test-write/provider and deployment approvals are still pending.
+
+Preview the internal workflow at /preview/release. /internal-release and
+/portal/internal use real caller Auth with default-off private operator test grants;
+there is no connected role switch or fallback. Existing /preview remains unchanged.
+Before outside access/launch, provision and independently validate a separate clean
+production DB. Never promote/restore synthetic development data into production.

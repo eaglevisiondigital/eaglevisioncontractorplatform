@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "check": "npm run lint && npm run typecheck && npm run types:check && npm test && npm run build",
+    "check": "npm run lint && npm run typecheck && npm run types:check && npm run migrations:check && npm test && npm run build",
     "test:browser": "npm run build && playwright test",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -18,7 +18,12 @@
     "preview": "vite preview",
     "staging:plan": "node scripts/staging-readiness.mts plan",
     "staging:validate": "node scripts/staging-readiness.mts validate",
-    "staging:verify": "node scripts/staging-readiness.mts verify"
+    "staging:verify": "node scripts/staging-readiness.mts verify",
+    "development:plan": "node scripts/staging-readiness.mts plan",
+    "development:validate": "node scripts/staging-readiness.mts validate",
+    "development:verify": "node scripts/staging-readiness.mts verify",
+    "development:workflows": "node scripts/staging-readiness.mts workflows",
+    "migrations:check": "node scripts/check-migration-bundle.mjs"
   },
   "repository": {
     "type": "git",

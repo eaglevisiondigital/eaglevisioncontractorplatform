@@ -265,3 +265,53 @@ namespaces; no shared settlement or unconditional surcharge. Future communicatio
 must resolve verified company-specific sender/domain, consent and immutable delivery
 identity in the same tenant transaction; a platform sender must never silently
 replace an unconfigured company's sender. No sending endpoint is enabled now.
+
+## Connected internal development and Release 1.0 continuation
+
+The owner designated the existing contractor Supabase project INTERNAL DEVELOPMENT,
+paired with the protected Netlify staging site. A separate staging DB is no longer
+required. Designation does not authorize hosted migrations/deployments/configuration
+or test-account provisioning. A future **separate clean production DB** must be
+independently validated; never promote/restore synthetic development data into it.
+See docs/CONNECTED_DEVELOPMENT.md and the hashed docs/MIGRATION_BUNDLE.json.
+
+A new isolated laboratory extends, rather than replaces, the existing modules.
+/preview/release uses an explicit synthetic repository; /internal-release and
+/portal/internal use the caller's real Supabase JWT and invoker RPCs. Normal portal/
+Contracts/Invoices/Payments stay hidden and production-disabled. Private environment
+mode defaults off; expiring operator-managed test grants, verified identities and
+current owner/admin AAL2 or exact customer mappings enforce access. There is no
+connected role switch or data fallback. Revocation-sensitive writes lock relevant
+environment/grant/org/module/membership/customer-link records before rechecking.
+
+Immutable issued scope is projected into customer-safe offers without private
+supplier/markup/workforce fields. Customer decisions, exact-contract SHA-256 test
+consent, contract terms/branding, invoice scope, authorization and payment/refund
+records are append-only. Current estimate-root locks serialize revision/acceptance;
+accepted scope cannot be republished into duplicate full-contract billing. Invoice
+numbers are allocated atomically. Deposits/schedules retain exact approved estimate
+allocations; each synthetic payment requires a separate customer authorization.
+Receivable/sales/tax postings and synthetic clearing/refunds reconcile in minor units.
+Nothing posts real charges, changes existing job budgets or executes payroll.
+
+Tenant sender configuration cannot self-verify; changes reset verification. Internal
+message sinks record prepared portal delivery, not sent email. Production sender
+verification/consent/suppression/webhooks and legal/signature-provider evidence still
+need integration and independent approval. Branded HTML invoice print output includes
+only the selected customer invoice projection; staff laboratory controls do not print.
+
+Server-side sandbox Authorize.Net/NMI adapters accept gateway tokens only, bind
+org/merchant/authorization, serialize exact USD decimal amounts, use fixed test
+endpoints, refuse redirects and normalize bounded responses. Durable idempotency
+reservation is a required injected control-store contract; UNKNOWN outcomes never
+retry automatically. These adapters are unwired and provider-unverified; synthetic
+laboratory authorization cannot be reused as provider-specific payment consent.
+
+Document processing now has private durable workload grants/jobs, scoped fenced
+leases, current grant/source-creator/module locks, scan/validator/model allowlists,
+strict neutral-schema CAS and bounded retry/recovery. The Supabase metadata adapter
+stages a private clean object, then commits extraction; source stays quarantined
+until both exist. No new Storage policy or ingestion endpoint was enabled. Approved
+byte transport, isolation, actual scanner/AI, retention and orphan cleanup remain
+required. Cross-service failures may leave unreadable private orphans, never a
+clean metadata record pointing at an absent object. Real HTTP verification is pending.

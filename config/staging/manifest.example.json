@@ -1,9 +1,9 @@
 {
-  "environment": "isolated-staging",
-  "approvalReference": "REPLACE_WITH_EXPLICIT_ENVIRONMENT_APPROVAL",
+  "environment": "internal-development",
+  "approvalReference": "REPLACE_WITH_EXPLICIT_TEST_ACTION_APPROVAL",
   "expiresAt": "REPLACE_WITH_EXPIRY_WITHIN_SEVEN_DAYS",
-  "supabaseUrl": "https://REPLACE_WITH_APPROVED_STAGING_REF.supabase.co",
-  "forbiddenProjectRefs": ["REPLACE_WITH_ALL_EXISTING_NONSTAGING_REFS"],
+  "supabaseUrl": "https://REPLACE_WITH_APPROVED_DEVELOPMENT_REF.supabase.co",
+  "forbiddenProjectRefs": [],
   "syntheticOnly": true,
   "companies": [
     {
@@ -21,5 +21,7 @@
       "organizationId": "REPLACE",
       "ownerTokenEnv": "EV_STAGE_ROOFING_JWT"
     }
-  ]
+  ],
+  "productionPolicy": "separate-clean-database-required",
+  "developmentPromotionAllowed": false
 }

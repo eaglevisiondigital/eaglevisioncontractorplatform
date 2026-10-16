@@ -1,5 +1,28 @@
 # Phase 3A · isolated staging readiness and hosted acceptance
 
+## Effective owner update — connected development
+
+The owner now approves the EXISTING contractor Supabase project as INTERNAL
+DEVELOPMENT with the supplied protected Netlify staging site. A separate staging
+Supabase project is no longer required. Earlier “existing target unapproved” and
+new-staging-project requirements below are historical and superseded by
+**CONNECTED_DEVELOPMENT.md**. Exact IDs remain private. Auth/API hardening,
+migration execution, synthetic identity provisioning, provider calls and deployment
+still require action-specific review/authorization. None occurred.
+
+A separate CLEAN production DB must be provisioned and independently validated
+before outside access/launch. Never promote/restore this synthetic development DB.
+Use the current nine-file MIGRATION_REVIEW.md / MIGRATION_BUNDLE.json rather than
+an older seven-file plan. development:* scripts alias the existing staging tooling;
+internal-development manifests require separate-clean-production policy and prohibit
+promotion. A future production ref belongs on the private forbidden-target list.
+
+The supplied Netlify identity is verified with team login required on ALL deploys.
+No application protection was proven by the current404; repeat real root/alias/
+asset/function perimeter tests after a separately authorized protected deployment.
+Current Auth signup and auto-table exposure remain on and need hardening; TOTP is
+on, default localhost URL/no redirects remain. No security settings were changed.
+
 ## Status and read-only inventory · October 15, 2026
 
 **Engineering preparation available; hosted acceptance BLOCKED / NOT RUN.**

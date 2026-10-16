@@ -79,3 +79,14 @@ actual isolated worker/scanner/gateway deployment remain unimplemented/provision
 See PHASE3A_WORKER.md for atomic CAS requirements, configuration and activation gates.
 The ingestion function still returns 503. Release 1.0 acceptance and explicit owner
 approval are required before any outside access; phase completion is internal only.
+
+## Connected development extension
+
+Durable private queue/workload grants, fenced CAS/revocation locks, strict neutral
+extraction validation and a Supabase metadata-store adapter are now implemented and
+tested locally. Unknown provider fields are rejected at header/line/reference
+boundaries. Source remains quarantined until clean object and valid extraction CAS.
+See PHASE3A_WORKER.md and CONNECTED_DEVELOPMENT.md. Real workload credentials,
+approved byte transport, isolated runtime/scanner/AI, actual Storage HTTP and
+retention/orphan cleanup are still pending. No actual file/provider call or hosted
+migration occurred; ingestion503 and browser upload restrictions remain unchanged.

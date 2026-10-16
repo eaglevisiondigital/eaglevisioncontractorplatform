@@ -124,6 +124,33 @@ export interface Database {
         };
         Relationships: [];
       };
+      company_email_profiles: {
+        Row: {
+          organization_id: string;
+          sender_name: string;
+          sender_email: string;
+          domain: string;
+          status: string;
+          verification_reference: string | null;
+        };
+        Insert: {
+          organization_id: string;
+          sender_name: string;
+          sender_email: string;
+          domain: string;
+          status?: string;
+          verification_reference?: string | null;
+        };
+        Update: {
+          organization_id?: string;
+          sender_name?: string;
+          sender_email?: string;
+          domain?: string;
+          status?: string;
+          verification_reference?: string | null;
+        };
+        Relationships: [];
+      };
       company_modules: {
         Row: { organization_id: string; module: string; enabled: boolean };
         Insert: { organization_id: string; module: string; enabled?: boolean };
@@ -1244,6 +1271,375 @@ export interface Database {
         };
         Relationships: [];
       };
+      portal_identities: {
+        Row: {
+          organization_id: string;
+          customer_id: string;
+          user_id: string;
+          active: boolean;
+        };
+        Insert: {
+          organization_id: string;
+          customer_id: string;
+          user_id: string;
+          active?: boolean;
+        };
+        Update: {
+          organization_id?: string;
+          customer_id?: string;
+          user_id?: string;
+          active?: boolean;
+        };
+        Relationships: [];
+      };
+      release_authorizations: {
+        Row: {
+          id: string;
+          organization_id: string;
+          customer_id: string;
+          invoice_id: string;
+          amount_minor: number;
+          currency: string;
+          scope: string;
+          expires_at: string;
+          created_at: string;
+          actor_id: string;
+        };
+        Insert: {
+          id?: string;
+          organization_id: string;
+          customer_id: string;
+          invoice_id: string;
+          amount_minor: number;
+          currency: string;
+          scope: string;
+          expires_at: string;
+          created_at?: string;
+          actor_id?: string;
+        };
+        Update: {
+          id?: string;
+          organization_id?: string;
+          customer_id?: string;
+          invoice_id?: string;
+          amount_minor?: number;
+          currency?: string;
+          scope?: string;
+          expires_at?: string;
+          created_at?: string;
+          actor_id?: string;
+        };
+        Relationships: [];
+      };
+      release_contracts: {
+        Row: {
+          id: string;
+          organization_id: string;
+          customer_id: string;
+          offer_id: string;
+          legal_reference: string;
+          terms: string;
+          document: Json;
+          document_hash: string;
+          created_at: string;
+          created_by: string;
+        };
+        Insert: {
+          id?: string;
+          organization_id: string;
+          customer_id: string;
+          offer_id: string;
+          legal_reference: string;
+          terms: string;
+          document: Json;
+          document_hash: string;
+          created_at?: string;
+          created_by?: string;
+        };
+        Update: {
+          id?: string;
+          organization_id?: string;
+          customer_id?: string;
+          offer_id?: string;
+          legal_reference?: string;
+          terms?: string;
+          document?: Json;
+          document_hash?: string;
+          created_at?: string;
+          created_by?: string;
+        };
+        Relationships: [];
+      };
+      release_decisions: {
+        Row: {
+          id: string;
+          organization_id: string;
+          customer_id: string;
+          offer_id: string;
+          decision: string;
+          note: string;
+          consent_version: string;
+          actor_id: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          organization_id: string;
+          customer_id: string;
+          offer_id: string;
+          decision: string;
+          note: string;
+          consent_version: string;
+          actor_id?: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          organization_id?: string;
+          customer_id?: string;
+          offer_id?: string;
+          decision?: string;
+          note?: string;
+          consent_version?: string;
+          actor_id?: string;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+      release_invoices: {
+        Row: {
+          id: string;
+          organization_id: string;
+          customer_id: string;
+          contract_id: string;
+          invoice_number: string;
+          currency: string;
+          total_minor: number;
+          snapshot: Json;
+          created_at: string;
+          created_by: string;
+        };
+        Insert: {
+          id?: string;
+          organization_id: string;
+          customer_id: string;
+          contract_id: string;
+          invoice_number: string;
+          currency: string;
+          total_minor: number;
+          snapshot: Json;
+          created_at?: string;
+          created_by?: string;
+        };
+        Update: {
+          id?: string;
+          organization_id?: string;
+          customer_id?: string;
+          contract_id?: string;
+          invoice_number?: string;
+          currency?: string;
+          total_minor?: number;
+          snapshot?: Json;
+          created_at?: string;
+          created_by?: string;
+        };
+        Relationships: [];
+      };
+      release_ledger_entries: {
+        Row: {
+          id: string;
+          organization_id: string;
+          customer_id: string;
+          invoice_id: string;
+          event_id: string | null;
+          currency: string;
+          debit_account: string;
+          credit_account: string;
+          amount_minor: number;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          organization_id: string;
+          customer_id: string;
+          invoice_id: string;
+          event_id?: string | null;
+          currency: string;
+          debit_account: string;
+          credit_account: string;
+          amount_minor: number;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          organization_id?: string;
+          customer_id?: string;
+          invoice_id?: string;
+          event_id?: string | null;
+          currency?: string;
+          debit_account?: string;
+          credit_account?: string;
+          amount_minor?: number;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+      release_messages: {
+        Row: {
+          id: string;
+          organization_id: string;
+          customer_id: string;
+          offer_id: string;
+          channel: string;
+          subject: string;
+          body: string;
+          created_at: string;
+          created_by: string;
+        };
+        Insert: {
+          id?: string;
+          organization_id: string;
+          customer_id: string;
+          offer_id: string;
+          channel?: string;
+          subject: string;
+          body: string;
+          created_at?: string;
+          created_by?: string;
+        };
+        Update: {
+          id?: string;
+          organization_id?: string;
+          customer_id?: string;
+          offer_id?: string;
+          channel?: string;
+          subject?: string;
+          body?: string;
+          created_at?: string;
+          created_by?: string;
+        };
+        Relationships: [];
+      };
+      release_offers: {
+        Row: {
+          id: string;
+          organization_id: string;
+          customer_id: string;
+          version_id: string;
+          snapshot: Json;
+          expires_at: string;
+          created_at: string;
+          created_by: string;
+        };
+        Insert: {
+          id?: string;
+          organization_id: string;
+          customer_id: string;
+          version_id: string;
+          snapshot: Json;
+          expires_at: string;
+          created_at?: string;
+          created_by?: string;
+        };
+        Update: {
+          id?: string;
+          organization_id?: string;
+          customer_id?: string;
+          version_id?: string;
+          snapshot?: Json;
+          expires_at?: string;
+          created_at?: string;
+          created_by?: string;
+        };
+        Relationships: [];
+      };
+      release_payment_events: {
+        Row: {
+          id: string;
+          organization_id: string;
+          customer_id: string;
+          invoice_id: string;
+          authorization_id: string;
+          amount_minor: number;
+          currency: string;
+          kind: string;
+          adjusts_event_id: string | null;
+          idempotency_key: string;
+          provider: string;
+          created_at: string;
+          actor_id: string;
+        };
+        Insert: {
+          id?: string;
+          organization_id: string;
+          customer_id: string;
+          invoice_id: string;
+          authorization_id: string;
+          amount_minor: number;
+          currency: string;
+          kind: string;
+          adjusts_event_id?: string | null;
+          idempotency_key: string;
+          provider?: string;
+          created_at?: string;
+          actor_id?: string;
+        };
+        Update: {
+          id?: string;
+          organization_id?: string;
+          customer_id?: string;
+          invoice_id?: string;
+          authorization_id?: string;
+          amount_minor?: number;
+          currency?: string;
+          kind?: string;
+          adjusts_event_id?: string | null;
+          idempotency_key?: string;
+          provider?: string;
+          created_at?: string;
+          actor_id?: string;
+        };
+        Relationships: [];
+      };
+      release_signatures: {
+        Row: {
+          id: string;
+          organization_id: string;
+          customer_id: string;
+          contract_id: string;
+          typed_name: string;
+          document_hash: string;
+          consent_version: string;
+          actor_id: string;
+          signed_at: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          organization_id: string;
+          customer_id: string;
+          contract_id: string;
+          typed_name: string;
+          document_hash: string;
+          consent_version: string;
+          actor_id?: string;
+          signed_at?: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          organization_id?: string;
+          customer_id?: string;
+          contract_id?: string;
+          typed_name?: string;
+          document_hash?: string;
+          consent_version?: string;
+          actor_id?: string;
+          signed_at?: string;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
       service_locations: {
         Row: {
           id: string;
@@ -1606,6 +2002,16 @@ export interface Database {
         };
         Returns: undefined;
       };
+      material_worker_control: {
+        Args: {
+          p_org: string | null;
+          p_operation: string | null;
+          p_source?: string | null;
+          p_lease?: string | null;
+          p_payload?: Json | null;
+        };
+        Returns: Json;
+      };
       platform_access: { Args: Record<string, never>; Returns: boolean };
       platform_activity: { Args: Record<string, never>; Returns: Json };
       prepare_payroll: {
@@ -1635,6 +2041,10 @@ export interface Database {
         };
         Returns: string;
       };
+      queue_material_source: {
+        Args: { p_org: string | null; p_source: string | null };
+        Returns: undefined;
+      };
       record_consent: {
         Args: {
           p_org: string | null;
@@ -1663,6 +2073,16 @@ export interface Database {
         };
         Returns: string;
       };
+      release_command: {
+        Args: {
+          p_org: string | null;
+          p_action: string | null;
+          p_input: Json | null;
+        };
+        Returns: Json;
+      };
+      release_contexts: { Args: Record<string, never>; Returns: Json };
+      release_workspace: { Args: { p_org: string | null }; Returns: Json };
       resolve_clock: {
         Args: {
           p_org: string | null;

@@ -197,3 +197,46 @@ conditions atomically at CAS, not trust a prior authorization check. Real store,
 scanner signatures, worker isolation and AI remain unverified. Local synthetic mocks
 cannot prove provider operation, malware efficacy or cross-service transactions.
 The material-import endpoint remains 503 and no upload/storage policy is widened.
+
+## Connected-development internal workflow boundary
+
+The owner-approved existing Supabase target is development only. Before outside
+access, production must be separately provisioned clean and independently validated;
+synthetic development DB promotion/restoration is prohibited. Hosted action review
+and Netlify all-deploy team-login protection remain mandatory. Current signup/auto-
+table-exposure defaults and localhost Auth redirects need separately approved hardening.
+No settings were changed. A current anonymous404 is not deployed protection evidence.
+
+The new test workspace is default-off and unavailable to ordinary members/platform
+admins without expiring private operator test grants. Staff need verified identities,
+current owner/admin estimating membership and AAL2. Customers need verified Auth plus
+an exact active tenant/customer link. Table RLS and invoker/private checked commands
+enforce those same boundaries; no customer policy is added to raw estimates, supplier
+sources, CRM, workers, rates or payroll. Customer-safe snapshots contain selling
+scope only. UI role simulation exists solely in the in-memory synthetic route.
+
+Mutations lock and recheck grants, organization/module/membership and customer links
+so concurrent revocation cannot be bypassed with a previously evaluated flag.
+Acceptance locks the estimate root against concurrent revision. Decisions/contracts/
+signatures/invoices/authorizations/events/ledger/messages are immutable; source hashes,
+explicit consent, uniqueness, idempotency, invoice locks, refund ceilings and atomic
+number allocation guard state transitions. Accepted scope cannot produce duplicate
+full-contract invoices through revision. Corrections/conversion require new reviewed
+scope; no existing issued/job/payroll snapshot is rewritten.
+
+Provider adapters are server-only sandbox contracts, with no callable charge route.
+Fixed sandbox endpoints, token-only input/unknown-field rejection, current approval,
+tenant/merchant binding and durable reservation requirements prevent live fallback.
+Timeouts/malformed/provider errors stay UNKNOWN; no success-shaped response or blind
+retry. Provider output is projected to minimal transaction metadata, never raw card
+response fields. No real provider call or live execution was made. Sender profiles
+stay unverified through staff APIs; internal sinks cannot send externally.
+
+Private document-workload grants are separate from human roles. Worker SQL uses
+lease tokens, expiry, allowed engines/validators/models, source/current-creator
+permissions and atomic CAS. Metadata/private queue access never grants object-byte
+access. No browser quarantine/clean upload policy was added. Source becomes clean
+only after approved evidence, a private clean object and strict extraction validation.
+Clients cannot attest clean scanning or create workload grants. Actual Storage byte
+transport, isolation, scanner efficacy, independent provider evidence and retention/
+cleanup remain unverified. Ingestion still unconditionally503.

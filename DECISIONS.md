@@ -151,3 +151,43 @@
 6. Preserve future tenant-specific merchant, branded invoice and verified sender
    routing. No actual sender/provider connection, customer communication, financial
    execution, payroll execution, production merge/deploy or external access occurred.
+
+## 2026-10-15 · owner-approved development and internal Release 1.0 workflow
+
+1. Owner explicitly approved the EXISTING contractor Supabase project for INTERNAL
+   DEVELOPMENT; a new staging project is no longer required. Record identifiers
+   privately, not in the public repository. Designation is not permission for
+   hosted migrations/deployment/configuration/identity or provider execution.
+2. Provision and independently validate a separate CLEAN production DB before
+   outside access/launch. Never promote/restore synthetic development data into
+   production. Release 1.0, production deploy, merge and outside access remain gated.
+3. Read-only identity/config review verified empty Supabase and all-deploy Netlify
+   team-login metadata. Auth signup/automatic table exposure remain on; redirects
+   remain localhost defaults. These require reviewed hardening; no setting changed.
+   Current anonymous404 does not prove an application/function perimeter works.
+4. Build a default-off internal laboratory over the same tenant architecture,
+   separate from disabled production modules. Operator-managed expiring grants and
+   verified Auth/current-role MFA/customer mappings govern connected access. Sample
+   role switching is synthetic only. No service-role generic request API or fallback.
+5. Preserve immutable customer-safe issued scope through offers, decisions, test
+   electronic consent/contracts, branded invoices, explicit one-time synthetic
+   payments, refunds and balanced receivable/sales/tax/clearing records. Root locks
+   serialize acceptance/revision; accepted scope cannot be republished as duplicate
+   full-contract billing. Existing job/labor/payroll calculations are unchanged.
+6. Real email delivery remains off. Tenant sender configuration is unverified until
+   independent provider proof; changes reset status. Internal sinks are not sent
+   messages. Legal/e-sign-provider validation, credit-note/change-order conversion,
+   real sender/webhook workflows and hosted acceptance remain release dependencies.
+7. Implement fixed-endpoint sandbox-only Authorize.Net/NMI token adapters with
+   exact money, scope binding, required durable reservation contract and UNKNOWN
+   outcomes. No actual provider call, tokenization UI or authoritative provider
+   intent-store/reconciliation integration. Synthetic consent cannot authorize it.
+8. Implement private durable document lease/CAS SQL and Supabase metadata adapter;
+   strict extraction unknown-field rejection and late grant checks. Keep bytes and
+   metadata separate: staged clean objects remain private until valid CAS. Approved
+   object transport, isolated runtime, real scanner/AI and retention cleanup remain
+   gates. Preserve all upload denials and ingestion503.
+9. Review all nine unapplied migrations using the public offline digest bundle,
+   checked for drift in CI. The first seven historical files remain unchanged.
+   Auth/Storage SQL fixtures never run hosted. Actual identities/TOTP/HTTP acceptance
+   and protected deploy require separate concrete action authorization.

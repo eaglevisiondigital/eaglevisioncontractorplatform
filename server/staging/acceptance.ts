@@ -1,5 +1,16 @@
 // Deliberately opt-in, operator-supplied sessions. No login, email, admin key or seeding.
 export const tenantTables = [
+  'portal_identities',
+  'release_offers',
+  'release_decisions',
+  'release_contracts',
+  'release_signatures',
+  'release_invoices',
+  'release_authorizations',
+  'release_payment_events',
+  'release_ledger_entries',
+  'release_messages',
+  'company_email_profiles',
   'memberships',
   'company_modules',
   'company_settings',
@@ -46,7 +57,9 @@ export const pilotNames = [
   'Sample Roofing Contractor',
 ] as const;
 export interface StagingManifest {
-  environment: 'isolated-staging';
+  environment: 'isolated-staging' | 'internal-development';
+  productionPolicy?: 'separate-clean-database-required';
+  developmentPromotionAllowed?: false;
   approvalReference: string;
   expiresAt: string;
   supabaseUrl: string;
@@ -60,7 +73,10 @@ export function validateManifest(m: StagingManifest, now = Date.now()) {
   const url = new URL(m.supabaseUrl);
   const ref = url.hostname.split('.')[0];
   if (
-    m.environment !== 'isolated-staging' ||
+    !['isolated-staging', 'internal-development'].includes(m.environment) ||
+    (m.environment === 'internal-development' &&
+      (m.productionPolicy !== 'separate-clean-database-required' ||
+        m.developmentPromotionAllowed !== false)) ||
     m.syntheticOnly !== true ||
     typeof m.approvalReference !== 'string' ||
     m.approvalReference.trim().length < 8 ||
@@ -74,7 +90,8 @@ export function validateManifest(m: StagingManifest, now = Date.now()) {
     url.search ||
     url.hash ||
     url.pathname !== '/' ||
-    !m.forbiddenProjectRefs?.length ||
+    !Array.isArray(m.forbiddenProjectRefs) ||
+    (m.environment === 'isolated-staging' && !m.forbiddenProjectRefs.length) ||
     m.forbiddenProjectRefs.some((x) => !/^[a-z]{20}$/.test(x)) ||
     m.forbiddenProjectRefs.includes(ref) ||
     m.companies?.length !== 3 ||

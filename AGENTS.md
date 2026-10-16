@@ -30,8 +30,10 @@ ARCHITECTURE.md, SECURITY_MODEL.md and DECISIONS.md before making changes.
 
 Phase 2 continuation rules:
 
-- Read docs/PHASE2_VALIDATION.md. The user explicitly deferred hosted validation;
-  no existing hosted project is approved as disposable. Keep project refs out of Git.
+- Read docs/PHASE2_VALIDATION.md and docs/CONNECTED_DEVELOPMENT.md. Earlier hosted
+  deferral is historical: the owner now approved the existing contractor project
+  for internal development. Specific hosted actions still need review/authorization.
+  Keep project refs out of Git.
 - Public intake stays off until CAPTCHA/gateway keys are configured for an approved
   test environment. Never add a client-side or deployed development CAPTCHA bypass.
 - No arbitrary organization ID from public form data; resolve published slug only.
@@ -71,5 +73,33 @@ Release 1.0 policy and Phase 3A continuation rules:
 - Keep staging manifests/session JWTs/evidence under ignored .staging/ or approved
   secret management. Never run SQL Auth/Storage mocks on hosted Supabase.
 - Scanner/worker adapters use local synthetic contract tests only. Durable control
-  store, actual scanner, worker sandbox and real AI are not verified/provisioned.
+  store is now implemented locally (see connected rules below); actual scanner,
+  worker sandbox and real AI are not verified/provisioned.
   Do not claim hosted acceptance or change ingestion503 based on local CI success.
+
+Connected development continuation rules (owner decision, October 15, 2026):
+
+- Read docs/CONNECTED_DEVELOPMENT.md, docs/MIGRATION_REVIEW.md and
+  docs/MIGRATION_BUNDLE.json. The existing owner-designated Supabase project is
+  approved INTERNAL DEVELOPMENT; do not require a new staging project. Exact
+  supplied target IDs stay in ignored .staging/connected-development-target.json.
+- Designation is not migration/deployment/configuration/provisioning/provider-call
+  permission. Review and obtain action-specific authorization before hosted writes.
+  Netlify team-login protection must cover all deploys, aliases, files and APIs.
+- Before outside access/launch, provision a SEPARATE CLEAN production DB and
+  independently validate it. Never promote/restore/copy synthetic development data
+  into production. Production release remains NOT READY / NOT AUTHORIZED.
+- /preview/release is explicit synthetic data. Connected /internal-release and
+  /portal/internal require expiring operator-managed grants and server authority;
+  never add a connected role switch or sample fallback. Ordinary financial modules
+  remain disabled. Internal test consent/ledger do not constitute real execution.
+- Keep the reviewed migration bundle current; npm run migrations:check is in check.
+  Never alter the first seven historical migrations or run Auth/Storage mocks hosted.
+- Durable worker SQL/CAS and Supabase adapter are implemented locally; approved
+  scoped byte transport/isolated runtime/scanner/AI and actual Storage remain gates.
+  Do not widen Storage policies or activate ingestion503 based on fixture evidence.
+- Gateway adapters are sandbox-only, unwired and tested with synthetic transports.
+  Their durable intent store must validate genuine provider-specific authorization;
+  synthetic laboratory consent cannot authorize a gateway call. Never retry UNKNOWN.
+- No external sending, real agreements/charges, payroll execution, production deploy,
+  merge or outside access without the applicable explicit owner approval.

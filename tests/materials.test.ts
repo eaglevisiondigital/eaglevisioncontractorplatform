@@ -261,3 +261,16 @@ it.each([
   const { parseSupplierCsv } = await import('../server/materials/csv');
   expect(() => parseSupplierCsv(Buffer.from(text))).toThrow();
 });
+it.each(['root', 'line', 'reference'])(
+  'rejects unknown provider fields at %s boundary',
+  (where) => {
+    const e = syntheticMaterials().sources[0].extraction!;
+    if (where === 'root') Object.assign(e, { debug_secret: 'unapproved' });
+    if (where === 'line') Object.assign(e.lines[0], { execute: 'unapproved' });
+    if (where === 'reference')
+      Object.assign(e.lines[0].reference, {
+        external_url: 'https://unapproved.test',
+      });
+    expect(() => validateExtraction(e)).toThrow(/Unknown extraction fields/);
+  },
+);

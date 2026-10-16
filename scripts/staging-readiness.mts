@@ -82,7 +82,9 @@ else {
               : 'Auth/AAL2 + table SELECT isolation only',
           migrationBundle: digest,
           remaining:
-            'RPC mutations, Storage, browser, worker and compliance acceptance',
+            mode === 'workflows'
+              ? 'actual Storage, connected browser, worker/provider and independent release acceptance'
+              : 'RPC mutations, Storage, browser, worker and compliance acceptance',
         }),
       );
     } catch {

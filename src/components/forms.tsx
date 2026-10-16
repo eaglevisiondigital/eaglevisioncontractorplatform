@@ -4,6 +4,7 @@ export interface Field {
   label: string;
   type?:
     | 'text'
+    | 'password'
     | 'email'
     | 'tel'
     | 'number'
@@ -53,6 +54,10 @@ export function FieldsForm({
     const intent =
       (event.nativeEvent as SubmitEvent).submitter?.getAttribute('value') ??
       'save';
+    for (const input of event.currentTarget.querySelectorAll<HTMLInputElement>(
+      'input[type="password"]',
+    ))
+      input.value = '';
     void onSubmit(values, intent);
   }
   return (

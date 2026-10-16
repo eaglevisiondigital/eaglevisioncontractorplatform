@@ -6,6 +6,10 @@ export const workflowModules = [
   'timekeeping',
   'labor-costing',
   'payroll-preparation',
+  'customer-portal',
+  'contracts-invoices',
+  'synthetic-payments',
+  'sender-configuration',
 ] as const;
 export const requiredWorkflowRpcs: Record<
   (typeof workflowModules)[number],
@@ -31,9 +35,27 @@ export const requiredWorkflowRpcs: Record<
   timekeeping: ['record_time', 'submit_time', 'review_time', 'time_clock'],
   'labor-costing': ['job_labor_summary'],
   'payroll-preparation': ['prepare_payroll'],
+  'customer-portal': ['release_workspace', 'release_command'],
+  'contracts-invoices': ['release_workspace', 'release_command'],
+  'synthetic-payments': ['release_workspace', 'release_command'],
+  'sender-configuration': ['release_workspace', 'release_command'],
+};
+export const requiredWorkflowActions: Partial<
+  Record<(typeof workflowModules)[number], readonly string[]>
+> = {
+  'customer-portal': ['publish_offer', 'decide_offer'],
+  'contracts-invoices': ['create_contract', 'sign_contract', 'create_invoice'],
+  'synthetic-payments': [
+    'authorize_payment',
+    'synthetic_capture',
+    'synthetic_refund',
+  ],
+  'sender-configuration': ['configure_email'],
 };
 // Only internal preparation RPCs; no arbitrary URL, table writes, delivery or execution.
 const allowedRpcs = new Set([
+  'release_workspace',
+  'release_command',
   'create_estimate',
   'save_estimate',
   'issue_estimate',
@@ -143,6 +165,25 @@ export async function runConnectedWorkflows(
         )
       )
         throw new Error('Incomplete positive workflow RPC coverage');
+    }
+  for (const company of manifest.companies)
+    for (const module of workflowModules) {
+      const positive = scenarios
+        .filter(
+          (s) => s.companyId === company.organizationId && s.module === module,
+        )
+        .flatMap((s) => s.steps)
+        .filter((step) => 'assertions' in step.expect);
+      if (
+        requiredWorkflowActions[module]?.some(
+          (action) =>
+            !positive.some(
+              (step) =>
+                step.rpc === 'release_command' && step.args.p_action === action,
+            ),
+        )
+      )
+        throw new Error('Incomplete internal release action coverage');
     }
   // Validate entire plan before the first request/mutation.
   const ids = new Set<string>();

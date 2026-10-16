@@ -63,3 +63,31 @@ Snapshot-derived contracts/invoices must retain tenant/currency/issued-version
 identity and separately approved change orders. No delivery, acceptance, signature,
 charge, refund, payout or payroll execution is enabled. A processing-cost assumption
 (even 3.85%) is never an unconditional customer surcharge.
+
+## Internal Release 1.0 development — no provider activation
+
+The internal laboratory now implements customer-safe signed-test scope/invoices,
+proposed deposit/schedule, explicit one-time synthetic authorization, idempotent
+synthetic captures/refunds and exact receivable/sales/tax/clearing reconciliation.
+These records are not real funds, gateway receipts or payroll and do not post to
+existing job expenses. Ordinary payment/invoice/contract execution modules remain
+server-disabled; internal access needs operator test grants and current authority.
+
+server/payments/sandbox.ts adds Authorize.Net/NMI gateway-token adapters with fixed
+sandbox endpoints, exact USD decimal serialization, tenant/merchant/authorization
+binding, required durable idempotency-reservation contract and bounded response
+projection. Timeout/malformed/provider errors are UNKNOWN, never blindly retried.
+No production URL/mode or raw card entry is supported. Actual credentials/calls,
+secure hosted tokenization UI, authoritative provider intent store and verified
+webhook/reconciliation integration remain unconfigured/unverified. Synthetic
+laboratory consent cannot be reused to authorize an actual sandbox gateway call.
+
+Provider sources checked October 15, 2026: [Authorize.Net API reference](https://developer.authorize.net/api/reference/index.html),
+[NMI current sale API](https://docs.nmi.com/reference/create-sale-v5),
+[NMI hosted tokenization component](https://docs.nmi.com/docs/payment-component).
+No provider SDK names were guessed/installed from placeholder documentation.
+Approve per-company sandbox merchants, credentials, callback strategy and explicit
+sandbox test calls separately. Team-login-protected Netlify cannot simply become
+public to receive callbacks; review a minimal authenticated/signed dedicated ingress
+without weakening app perimeter protection. Production routing, legal fee/tax review,
+actual authorization and Release 1.0 clean-production acceptance remain separate gates.

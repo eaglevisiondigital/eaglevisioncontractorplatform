@@ -1,4 +1,4 @@
-# Current build state · October 15, 2026 · Phase 3A
+# Current build state · October 15, 2026 · connected Release 1.0 development
 
 ## Governing release policy and latest internal milestone
 
@@ -10,33 +10,59 @@ CI pass, target manifest or staging approval authorizes external access or launc
 See docs/RELEASE_1_0_ACCEPTANCE.md for every required module's implementation,
 hosted evidence, security, third-party dependencies and launch status.
 
-Phase 3A read-only audit confirmed the existing Eagle Vision Supabase project has
-no public tables/buckets/migrations/functions/development branches; it remains
-unapproved staging. No clearly named contractor-platform Netlify site was identified;
-marketing/unrelated sites were not reused. GitHub has no repository environments or
-Actions secrets; classic main branch protection was absent. No settings/resources
-were changed. Private identifiers are omitted from this public repository.
+The owner now approves the EXISTING contractor Supabase project as internal
+DEVELOPMENT. A separate staging DB is no longer required. This supersedes the older
+“existing project not approved” statements in historical validation records. Exact
+project/site IDs are in ignored .staging/connected-development-target.json. Before
+outside access/launch, provision and independently validate a SEPARATE CLEAN
+production database. Never promote or restore this synthetic development DB into it.
 
-Prepared offline migration digests, private expiring staging manifest validation,
-opt-in real-session three-company SELECT and internal RPC assertion runners,
-read-only catalog verification, configuration/migration/recovery procedures and a
-full connected acceptance matrix. No hosted test/migration/deployment was performed.
-Operator-specific fixture/case data and actual Auth/TOTP/PostgREST/Storage/connected
-browser evidence require an explicitly approved isolated target.
+Read-only identity/settings review confirmed healthy PostgreSQL17.11 and zero
+application tables, migrations, Auth users/sessions/MFA factors, buckets and objects.
+TOTP is enabled; public signup and automatic table exposure remain ON, with default
+localhost:3000 Auth URL and no redirect allowlist. These need reviewed hardening.
+Netlify reports team-login protection on ALL deploys; current anonymous HTTPS404
+contains no app, so deployed perimeter/API protection is not yet proven. No hosted
+settings/data, migration, account, provider or deployment was changed.
 
-Added authenticated bounded malware-gateway adapter and fenced lease/retry worker
-orchestration, tested with synthetic transports. Real durable CAS/control storage,
-worker isolation, scanner and AI/provider validation remain dependencies. Ingestion
-still returns 503, and browser storage writes remain denied. No production extraction
-success is simulated. See docs/PHASE3A_WORKER.md for exact implementation gates.
+New default-off internal Release 1.0 workflow: customer-safe immutable offers,
+accept/decline/change decisions, contracts and exact-document typed test signatures,
+branded print invoices, proposed deposits/schedules, explicit one-time synthetic
+payment authorization, idempotent captures/refunds and sales/tax/receivable ledger.
+Tenant email configuration stays unverified; delivery uses an INTERNAL SINK only.
+Normal Contracts/Invoices/Payments navigation and production switches remain disabled.
 
-Hidden unfinished Contracts/Invoices/Payments navigation and configuration; an
-additive unapplied migration constrains all three disabled in PostgreSQL. Netlify
-production builds now fail closed; internal preview builds require specifically
-configured branch/context approval. This does not replace protected site access or
-hosted deployment authorization. No production execution endpoint was introduced.
+/preview/release demonstrates all three industries with explicit synthetic actor
+controls. /internal-release and /portal/internal use actual Auth/RPCs, expiring
+operator grants, current owner/admin AAL2 or exact verified customer links. Connected
+roles are server-selected. No synthetic fallback, private cost/payroll projection,
+external email, real agreement or provider transaction is enabled. Accepted scope
+cannot be revised and republished as duplicate full-contract billing; change-order
+invoice conversion remains future reviewed work.
 
-Latest local evidence is recorded in docs/PHASE3A_VALIDATION.md. Read
+Added sandbox-only Authorize.Net/NMI token adapters with fixed test endpoints,
+exact USD decimal serialization, tenant/merchant/authorization binding, idempotency
+store contract and UNKNOWN outcomes without automatic retry. No actual provider call,
+credential, tokenization UI or authoritative provider intent-store integration exists;
+synthetic invoice consent cannot authorize a gateway call.
+
+Added private durable document jobs/workload grants, fenced expiring claims,
+revocation-locked CAS, bounded retries, strict extraction schema and a Supabase
+processing-store adapter. Real secure byte gateway, isolated worker deployment,
+scanner/AI validation and retention/orphan cleanup remain gates. Ingestion stays503,
+Storage writes stay denied and no real scan/extraction success is simulated.
+
+**Nine migrations await separate execution approval**, including the first seven
+preserved files and two new internal-workflow/worker-control files. See
+MIGRATION_REVIEW.md / MIGRATION_BUNDLE.json, development:plan and migrations:check.
+No hosted migration/deploy is authorized by designation alone. See
+CONNECTED_DEVELOPMENT.md for precise Auth/API hardening, identity/TOTP/fixture,
+protected deploy and connected acceptance actions. The full Release 1.0 checklist
+remains NOT READY: legal/signature-provider, genuine sandbox payments/webhooks,
+verified sender delivery, full connected acceptance and clean production are pending.
+
+Latest local evidence is recorded in docs/CONNECTED_VALIDATION.md; Phase 3A counts
+are historical. Read
 **docs/PHASE3A_STAGING.md** for the exact next isolated actions/approvals and recovery
 procedure. Keep the existing feature branch and draft PR #1. The Phase 3 implementation
 record below remains valid; its validation counts are historical.
@@ -46,12 +72,12 @@ record below remains valid; its validation counts are historical.
 Continue `codex/phase-1-foundation` and [draft PR #1](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/1).
 The repository is PUBLIC. Preserve the original README and existing Phase 1/2
 architecture/features. No merge, production deployment, hosted migration, live
-charge, customer delivery/signature, payroll execution or actual customer message
+charge, external customer delivery/real-agreement signature, payroll execution or actual customer message
 is authorized or has been performed. Never commit credentials, real worker pay,
 customer documents, hosted project identifiers or sensitive infrastructure exports.
 
-The user explicitly chose **complete locally; defer hosted validation**. Existing
-hosted resources remain read-only; no project/branch was created or repurposed.
+The earlier local-only decision is superseded by the approved internal development
+designation. Hosted action approvals remain pending; nothing hosted was written.
 Local tests use PGlite and an independent disposable PostgreSQL 17.11 cluster with
 TCP disabled. Actual Supabase Auth/TOTP/PostgREST/Storage acceptance and hosted
 advisors remain unverified. See docs/PHASE2_VALIDATION.md for that pending gate.
@@ -113,8 +139,8 @@ review, job financials, time clock, timesheets, payroll preparation and labor re
 
 ## Explicit limits / unresolved dependencies
 
-1. **Live ingestion/extraction is not enabled or verified.** The scanner and isolated
-   worker/storage adapter are not provisioned; no AI vendor/model/credentials are
+1. **Live ingestion/extraction is not enabled or verified.** Durable SQL/CAS and the metadata adapter exist locally; approved byte transport,
+   scanner and isolated worker deployment are not provisioned; no AI vendor/model/credentials are
    selected. Real image/PDF/CSV parser tests do not establish malware coverage or
    sandbox isolation. The deployed endpoint always returns 503, including if keys
    are set. Complete docs/MATERIAL_IMPORT.md before activation review.
@@ -123,7 +149,8 @@ review, job financials, time clock, timesheets, payroll preparation and labor re
    remains local; sample extraction only uses explicit synthetic fixtures.
 3. Hosted Auth/MFA, PostgREST/Storage HTTP, deployed Netlify runtime and advisors
    remain deferred. Tests emulate those SQL contracts; they do not prove hosted
-   integration. An approved isolated environment and scoped configuration are needed.
+   integration. The existing development target is approved; scoped action approval, hardening,
+   migrations and synthetic identities are needed.
 4. Worker classification, break policy, tax treatment, salary preparation and weekly
    overtime configuration require independent legal/payroll review. Daily overtime,
    jurisdiction-specific wage rules, statutory deduction calculation, filings,
@@ -138,12 +165,15 @@ review, job financials, time clock, timesheets, payroll preparation and labor re
    reviewed adjustment workflow. Matching purchase keys and customer authorization
    evidence remain explicit staff responsibilities.
 7. Interactive lists are bounded; extend server filtering/pagination and reporting
-   aggregation before high-volume production use. No customer portal, communication,
-   execution, signature, tax filing or payment integration is enabled.
+   aggregation before high-volume production use. Only the default-off internal test portal/consent/synthetic ledger is implemented;
+   external communication, real execution/signatures, tax filing and provider processing
+   remain unavailable.
 
 ## Recommended next engineering phase
 
-Continue Phase 3A: obtain environment-specific internal staging approval, validate real Auth/Storage/RLS/MFA,
+Next: review and authorize the exact development migration bundle and Auth/API
+hardening, then identity/TOTP/fixtures and protected internal deployment. Validate
+real Auth/Storage/RLS/MFA,
 provision approved scanner/worker/gateway, run adversarial document corpus and load
 checks, and obtain workforce/tax/classification review. Complete ingestion and
 reporting acceptance before production consideration. Internal Phase 4 can then consume

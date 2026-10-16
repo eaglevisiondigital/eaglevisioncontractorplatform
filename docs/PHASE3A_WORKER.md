@@ -1,5 +1,23 @@
 # Document worker and provider activation contract
 
+## Current extension — durable control store implemented locally
+
+The later connected-development work adds private.material_processing_jobs and
+material_worker_grants, narrow queue_material_source/material_worker_control RPCs,
+strict database extraction validation and server/materials/control-store.ts. Native
+PG17 tests cover concurrent claims/publication, lease replacement, revocation,
+quarantine, schema/provider denials and bounded retries. The original contract-only
+statement below is historical: the durable SQL/CAS and Supabase metadata adapter
+now exist, but have NOT been applied/validated hosted.
+
+No Storage policy changed. An approved workload identity and scoped byte gateway,
+resource-isolated worker deployment, actual scanner/AI, retention/orphan cleanup and
+genuine Auth/Storage HTTP acceptance are still required. Source stays quarantined
+until a private clean object and validated extraction commit. SQL object fixtures
+are synthetic control contracts, never proof of actual malicious/clean file scanning.
+The ingestion handler remains503. See CONNECTED_DEVELOPMENT.md for target designation
+and action-specific approvals; never promote synthetic development DB to production.
+
 ## Implemented locally; live processing remains disabled
 
 Existing parsing, review and pricing are preserved. The Netlify material-import
@@ -22,8 +40,8 @@ contract. Opaque fenced leases, expiration and maximum three attempts gate reads
 clean release, extraction persistence and completion. Backoff is 30 then 60 seconds;
 third failure rejects. Authorization is rechecked after external calls. A stale,
 expired or revoked worker cannot publish a result through a conforming store.
-Generic errors never retain supplier payloads. The queue persistence/control service
-is intentionally **not implemented/provisioned**: local mocks prove the orchestration
+Generic errors never retain supplier payloads. At the original Phase 3A baseline the queue persistence/control service
+was **not implemented/provisioned** (superseded by the extension above): local mocks prove the orchestration
 contract, not atomic database/Storage behavior or real worker isolation.
 
 The existing vendor-neutral AI gateway is HTTPS, redirect-disabled, timeout/bounded

@@ -118,9 +118,22 @@ function parse(text: string | null, f: (s: string) => number): number | null {
     return null;
   }
 }
+function extractionFields(v: object, allowed: readonly string[]) {
+  if (Object.keys(v).some((k) => !allowed.includes(k)))
+    throw new Error('Unknown extraction fields');
+}
 export function validateExtraction(raw: unknown): Extraction {
   if (!raw || typeof raw !== 'object') throw new Error('Malformed extraction');
   const e = raw as Extraction;
+  extractionFields(e, [
+    'schema_version',
+    'vendor',
+    'quoted_on',
+    'currency',
+    'total_text',
+    'lines',
+    'warnings',
+  ]);
   if (
     e.schema_version !== 1 ||
     !Array.isArray(e.lines) ||
@@ -153,6 +166,19 @@ export function validateExtraction(raw: unknown): Extraction {
       l.description.length > 500
     )
       throw new Error('Malformed extracted line');
+    if (!l.id.trim() || l.id.length > 200)
+      throw new Error('Malformed extracted identifier');
+    extractionFields(l, [
+      'id',
+      'description',
+      'sku',
+      'quantity_text',
+      'unit_text',
+      'unit_cost_text',
+      'extension_text',
+      'confidence',
+      'reference',
+    ]);
     ids.add(l.id);
     for (const k of [
       'sku',
@@ -181,6 +207,7 @@ export function validateExtraction(raw: unknown): Extraction {
           l.reference.page > 1000))
     )
       throw new Error('Invalid source reference');
+    extractionFields(l.reference, ['page', 'sheet', 'cell', 'excerpt']);
     for (const k of ['sheet', 'cell'] as const)
       if (
         l.reference[k] !== null &&
