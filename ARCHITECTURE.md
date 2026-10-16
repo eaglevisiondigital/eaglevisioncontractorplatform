@@ -405,3 +405,16 @@ The three existing companies now hold the synthetic acceptance fixtures; all
 sessions/helpers are closed. The full source/private-release/positive-object matrix
 and deployed runtime remain gated. See docs/ACTION_B_CONNECTED_RESULT.md before
 reusing existing fixtures; never replay creation or reactivate the C1 row.
+
+## Protected internal deployment package · prepared only
+
+Action D freezes the application at 28c7d5e with privately verified development
+browser configuration, eight static files and four portable Node24 v2 functions.
+The reviewed manual draft API proposal carries explicit function runtime/route/
+bootstrap metadata and three deploy-only Functions variables, without relying on
+an expiring CLI function cache or a remote build. Existing Netlify production guard,
+Supabase RLS/permissions, ingestion503 and financial/release gates are preserved.
+Dashboard Private visibility is configuration evidence; app/asset/function perimeter
+and connected browser acceptance remain NOT RUN until separately approved upload.
+No repository link, provider or private grant is part of Action D. See
+docs/ACTION_D_REVIEW.md and docs/ACTION_D_ARTIFACTS.json.

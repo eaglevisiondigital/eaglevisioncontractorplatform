@@ -356,3 +356,25 @@ historical leaked-password warning above. Four earlier performance warnings rema
 outside this approval. No password screening/reset, sign-in or rejected-password
 behavior test was run; configuration/advisor evidence is not full release security
 certification. See docs/LEAKED_PASSWORD_PROTECTION_RESULT.md.
+
+## Protected deployment preparation · no access expansion
+
+Action D preparation independently checked dashboard Private production/previews
+and connector all-deploy team login, unlinked Git and zero site/team-shared
+variables. Effective values require another read before execution. Saved Auth/API
+fingerprints, 22 identities/four factors/zero sessions, 63 RLS tables/zero private
+client grants and inactive C1/zero release/worker grants remain intact. Current
+security advisors show 0 WARN/ERROR and 12 intentional default-deny INFO notices.
+
+Frozen build output contains only browser-safe development configuration and the
+exact owner logo; no service-role/provider secrets or source maps. Four function
+archives are portable and tested fail-closed without network calls. Proposed digest
+upload preserves their v2 metadata explicitly; stale CLI cache fallback is not safe
+for this package. Three runtime variables are deploy-specific Functions scope,
+intake false; no live ingestion/message/payment/signature/payroll capability enabled.
+
+27-path cookie-free/redirect-disabled probes per relevant HTTPS host plus separate
+team-login and genuine existing app-role/MFA checks are prepared, not run hosted.
+No assumption that Netlify login grants Supabase data access. Do not invite outside
+reviewers or loosen protection/callbacks; require exact later upload approval. See
+docs/ACTION_D_REVIEW.md for expected results, stop conditions and blocked positives.

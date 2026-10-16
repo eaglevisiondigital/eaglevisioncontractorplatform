@@ -380,3 +380,24 @@ policies, deployment or billing changes were authorized or performed. Keep crede
 and raw configurations in memory; retain only hashes/status in ignored evidence.
 Existing-password tests and disposable account tests remain NOT RUN under this
 limited approval. Record the result without claiming Release 1.0 readiness.
+
+### October 16 · freeze Action D artifacts without deployment authority
+
+Export application 28c7d5e, use its exact lockfile and privately verified development
+browser configuration, preserve the approved PNG and production build rejection.
+Build portable v2 Node24 functions without workspace symlinks; verify unpacked
+fail-closed behavior with zero outbound requests. Record SHA-256 hashes publicly,
+while targets/browser configuration and prepared operation remain ignored/private.
+Independently read Netlify dashboard Private production/previews, unlinked Git and
+empty site environment; reverify Supabase Auth/API/database gates without sessions
+or changes. Never infer runtime perimeter proof from configuration or a404.
+
+Propose official file-digest draft creation with explicit runtime/route/bootstrap
+metadata and three Functions-scope deploy-specific values. Current CLI function
+cache expires after two minutes and stale ZIP fallback loses metadata, so ordinary
+no-build deployment is not an interchangeable reviewed action. No remote build,
+primary/alias publish, site change, callback wildcard or new grant. Fresh effective
+shared-environment/protection review, exact operation approval, internal Netlify
+operator and owner-assisted MFA precede later protected acceptance. Existing callback
+settings support current password/TOTP; new redirect flows need separate review.
+See docs/ACTION_D_REVIEW.md; no deployment or launch occurred.

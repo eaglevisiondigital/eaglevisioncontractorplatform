@@ -2,6 +2,18 @@
 
 ## Governing release policy and latest internal milestone
 
+Action D PREPARATION is complete, not execution approval. Exact application source
+28c7d5e is packaged privately: eight frontend files, four portable Node24 functions,
+metadata and unchanged Netlify configuration. Public per-file hashes and the exact
+proposed draft API upload are in docs/ACTION_D_ARTIFACTS.json and ACTION_D_REVIEW.md.
+Dashboard Private production/previews and connector team-login/all-deploy metadata
+were independently verified; Git unlinked, site/shared environments empty. Supabase Auth/API
+fingerprints and all default-off database gates remain unchanged. Deployed app/asset/
+API perimeter and connected browser acceptance remain NOT RUN; no upload/settings
+change occurred. Local check 375 PASS / 9 native-only skips, browser 51 PASS, packaged
+function 16 PASS, exported guard 4 PASS and offline operation 26 PASS. Exact upload,
+three deploy-scoped runtime values and protected acceptance need separate approval.
+
 Owner-approved development Leaked Password Protection is now ENABLED and saved
 (October 16). Exact one-field Auth PATCH and independent GET verification passed;
 all other 242 returned Auth settings and the entire API configuration are unchanged.

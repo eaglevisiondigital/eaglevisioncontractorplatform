@@ -182,6 +182,15 @@ unexpected error code, a5xx or unavailable worker is a failure/blocker, not PASS
 
 ## Action D — protected nonproduction deploy (NOT AUTHORIZED)
 
+October 16 preparation is now complete. See ACTION_D_REVIEW.md and
+ACTION_D_ARTIFACTS.json for exact 28c7d5e build/file hashes, private target-bound
+operation hash, proposed digest API draft upload and 27-path-per-host perimeter
+plan. Four Node24 functions are packaged/tested with explicit v2 metadata; ordinary
+CLI no-build/stale-cache upload is not equivalent. Dashboard Private visibility,
+unlinked Git/site environment and saved Supabase gates were reverified. No deploy,
+settings, grant or session changed. Exact upload/runtime-variable/acceptance approval
+remains required; the older preparation outline below is preserved for context.
+
 Review the exact next commit/build artifact and approved site privately. Keep the
 current production-context build rejection. Do NOT connect Git auto-deployment,
 create a site, change visitor protection, authorize prod-context build or use --prod.

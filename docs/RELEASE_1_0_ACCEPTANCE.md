@@ -32,7 +32,7 @@ server-disabled. Do not remove a required module to declare the release complete
 | Labor costing                               | Cash/burden/imputed/billing, job aggregates, single posting source                                                 | Core connected job-labor reconciliation PASS                  | Exact cash/burden/imputed costs, wages versus owner economic time and private rates tested; independent costing review pending                                    | Independently reviewed costing rules                                                              | No           |
 | Payroll preparation                         | Weekly calculations, deductions input, export, locked periods/adjustments                                          | Core connected preview/lock/privacy PASS; execution OFF       | 40 regular +2 overtime field hours per company, exact totals and locking passed; statutory/provider/export acceptance pending                                     | Payroll specialist review; export-only approved provider contract                                 | No           |
 | Tenant-branded communications               | Tenant sender configuration stays unverified; prepared messages use internal sink only                             | Pending                                                       | Local sender-domain match and no self-verification; actual SPF/DKIM/DMARC/provider verification, consent/suppression/delivery webhooks pending                    | Per-company verified domain/provider identity, credentials and approved sandbox/sink              | No           |
-| Operational readiness / recovery            | Approved development target, nine applied reviewed migrations, guarded harness/runbook                             | Core API acceptance PASS; deployed perimeter/recovery pending | 723 authenticated cases and 56 boundary checks before/after; RLS/grants/zero-session cleanup; leak-password and performance findings remain                       | Reviewed exact Action C/D approvals; separate clean production database before outside access     | No           |
+| Operational readiness / recovery            | Approved development target, nine applied reviewed migrations, guarded harness/runbook                             | Core API acceptance PASS; deployed perimeter/recovery pending | 723 authenticated cases and 56 boundary checks before/after; RLS/grants/zero-session cleanup; leak-password warning resolved; performance findings remain         | Reviewed exact Action C/D approvals; separate clean production database before outside access     | No           |
 
 | Customer portal | Default-off protected internal portal with actual-caller RPCs and explicit synthetic preview | Pending | Expiring private test grants, current customer mapping, no raw cost/workforce projection; real Auth/HTTP and production portal acceptance pending | Reviewed identity/consent/secure delivery, clean production and independent security review | No |
 
@@ -208,3 +208,20 @@ approved disposable account/password operations; no such operation is implied.
 No release module, deployment, private grant or outside-access status changes.
 Release 1.0 remains NOT READY / NOT AUTHORIZED; existing blocked/NOT RUN acceptance
 and provider/production dependencies remain. See LEAKED_PASSWORD_PROTECTION_RESULT.md.
+
+## October 16 · Action D package prepared, deployment NOT RUN
+
+**PASS (preparation/local):** exact 28c7d5e export and development configuration,
+14-file frozen package with public hashes, owner logo unchanged, four portable
+Node24 functions, production-build denial, dashboard Private production/previews
+and all-deploy metadata, unlinked Git/site environment audit, unchanged Supabase
+Auth/API/database gates. Local 375 PASS / 9 native-only skips, responsive browser 51 PASS,
+packaged function 16 PASS, exported guard 4 PASS and offline operation 26 PASS.
+
+**NOT RUN:** actual draft creation/function invocation, 27-path-per-host deployed
+anonymous/team perimeter and connected browser/mobile scenarios. **BLOCKED:** same
+scanner/positive-object/private-release positives as Action B. No additional grant
+is authorized, and no required release module becomes launch-ready. Next: review
+and separately authorize the exact private draft API operation and three deploy-only
+Functions values in ACTION_D_REVIEW.md/ACTION_D_ARTIFACTS.json. No callback change,
+site setting, deployment, outside access or production approval is implied.

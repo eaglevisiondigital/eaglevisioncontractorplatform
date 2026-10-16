@@ -134,3 +134,15 @@ repeat this approval request. Activation still needs fresh genuine owner-assiste
 operator AAL2 and refreshed drift checks; first stale AAL1 wait was closed with
 zero grants/sessions. Preserve the pending local handoff and inspect private state
 before any retry. No organization/grant creation has occurred at this checkpoint.
+
+Latest continuity (October 16): C1 executed once and is now INACTIVE; never replay
+its grant or three-company provisioning. Action B core 723 authenticated cases pass;
+existing 22 identities/four factors are preserved and all sessions closed. Native
+Leaked Password Protection is separately approved, enabled and verified. Read
+CURRENT_BUILD_STATE.md and the latest result documents before historical checkpoints.
+Action D is PREPARATION ONLY: reviewed 28c7d5e artifacts and a target-bound manual
+draft API proposal exist in docs/ACTION_D_REVIEW.md / ACTION_D_ARTIFACTS.json and
+ignored .staging/action-d/. No upload, runtime/site variable, callback, new grant or
+hosted acceptance change is authorized by preparation. Preserve production build
+rejection and Private/all-deploy team protection. Do not replace the reviewed
+function-metadata upload with an ordinary stale-cache CLI no-build deployment.
