@@ -2,6 +2,15 @@
 
 ## Governing release policy and latest internal milestone
 
+Owner-approved development Leaked Password Protection is now ENABLED and saved
+(October 16). Exact one-field Auth PATCH and independent GET verification passed;
+all other 242 returned Auth settings and the entire API configuration are unchanged.
+Independent database fingerprints confirm identities/password verifiers/factors/
+sessions/memberships/private authorizations/RLS/policies/grants unchanged: 22 users,
+four verified factors, zero sessions. Security advisor now reports zero WARN/ERROR
+and 12 informational default-deny private-table notices. No password/account/session
+operation or deployment. See docs/LEAKED_PASSWORD_PROTECTION_RESULT.md.
+
 Action B core connected acceptance now PASSES: 687 genuine authenticated core
 cases plus 36 supplemental staff cases = 723 PASS / 0 FAIL. Real GET-only boundary
 checks passed 56/56 before AND after populated fixtures. Nine scanner/positive-
@@ -30,11 +39,10 @@ Financial modules and release environment remain disabled. Auth/API/branding and
 Netlify protection were not changed. Read docs/ACTION_B_CONNECTED_RESULT.md and
 docs/ACTION_B_RESULT.md; do not replay the fixture-creation scenario.
 
-Security advisor: one leaked-password warning plus 12 informational private-table
-notices. Performance: four RLS warnings, 21 unindexed foreign keys, 43 unused indexes
-and one Auth connection notice. Read-only entitlement lookup confirms Pro supports native leaked-password
-protection; enabling the exact Auth option still needs separate owner approval.
-No setting, subscription or billing change was applied.
+The Action B run initially reported a leaked-password warning; the separately
+approved Auth-only remediation above resolves it. Performance findings from that
+run remain: four RLS warnings, 21 unindexed foreign keys, 43 unused indexes and one
+Auth connection notice. No subscription, billing or performance remediation.
 Next: exact private-release grant/scanner infrastructure review, separately approved
 protected deployment and independent acceptance. Broader C/D remain unapproved.
 Earlier checkpoints below describe their historical runs, not current totals.

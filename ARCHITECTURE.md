@@ -22,6 +22,13 @@ and company selection are context, never authorization. Connected mode never fal
 back to synthetic data. Browser reads/CRUD retain the caller's JWT and database RLS.
 The protected organization-context function also validates the session with Auth.
 
+Development Auth now enables native Leaked Password Protection through an exact
+owner-approved one-field configuration change. Signup remains disabled; MFA, redirect
+allowlist and public-only API exposure are unchanged. This does not screen/reset
+existing passwords or authorize account/session operations. See
+docs/LEAKED_PASSWORD_PROTECTION_RESULT.md for persisted configuration and advisor
+evidence; production requires separate clean provisioning and validation.
+
 ## Organization and operational data
 
 Organizations own memberships, configurable module entitlements, structured company

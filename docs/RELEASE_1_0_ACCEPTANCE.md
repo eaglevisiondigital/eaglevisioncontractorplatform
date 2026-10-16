@@ -193,3 +193,18 @@ No module is launch-ready by this evidence alone. Native leaked-password protect
 and four performance RLS warnings remain unresolved; no Auth/schema remediation
 was applied. See ACTION_B_CONNECTED_RESULT.md for exact counts, finances and limits.
 No broader private grants, outside access, deployment, real execution or merge.
+
+## October 16 · approved development Auth security remediation
+
+**PASS:** native Leaked Password Protection enabled and persisted through the exact
+one-field approved operation. Other Auth/API configuration, all existing users,
+password verifiers, MFA factors, sessions and tenant/database permissions are
+unchanged. Security advisors: zero WARN/ERROR; 12 intentional private-table INFO
+notices remain. The historical leaked-password finding above is resolved by this
+separate action. Earlier performance findings are unchanged/unremediated.
+
+**NOT RUN:** password-rejection behavior tests, which would require separately
+approved disposable account/password operations; no such operation is implied.
+No release module, deployment, private grant or outside-access status changes.
+Release 1.0 remains NOT READY / NOT AUTHORIZED; existing blocked/NOT RUN acceptance
+and provider/production dependencies remain. See LEAKED_PASSWORD_PROTECTION_RESULT.md.

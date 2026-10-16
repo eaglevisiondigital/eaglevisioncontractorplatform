@@ -338,3 +338,21 @@ confirms the current development plan supports it. Obtain separate approval for
 the exact Auth toggle, then test with approved disposable credentials. No existing password screening/reset or Auth/API changes. Four RLS
 performance warnings plus index/connection notices remain for independent review.
 See docs/ACTION_B_CONNECTED_RESULT.md; no outside access or execution is approved.
+
+## October 16 · separately approved leaked-password remediation
+
+The owner approved only native Leaked Password Protection in internal development.
+The Management API PATCH submitted exactly `password_hibp_enabled: true`. Independent
+Auth/API GETs confirmed that it persisted and that all other 242 returned Auth
+settings plus the entire PostgREST configuration were unchanged. Signup stays off;
+TOTP requirements, redirects and API boundaries are preserved.
+
+Before/after database equality fingerprints confirmed unchanged identity/password
+verifier/factor/session/membership/private-authorization sets, policies, grants and
+RLS. Existing 22 identities/four verified factors remain; sessions remain zero.
+Security advisors now report **zero WARN/ERROR**, with only the same 12 informational
+RLS-without-policy private tables, intentionally default-deny. These supersede the
+historical leaked-password warning above. Four earlier performance warnings remain
+outside this approval. No password screening/reset, sign-in or rejected-password
+behavior test was run; configuration/advisor evidence is not full release security
+certification. See docs/LEAKED_PASSWORD_PROTECTION_RESULT.md.

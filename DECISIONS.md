@@ -366,3 +366,17 @@ Leaked-password remediation entitlement review: read-only lookup confirms curren
 Pro support, so no plan upgrade is required for the documented native option.
 Recommend separately approving only that Auth toggle plus disposable rejection
 validation; preserve all existing controls and accounts. No settings/billing change.
+
+### October 16 · enable only owner-approved native leaked-password protection
+
+Use the official Management API's one-field `password_hibp_enabled: true` PATCH on
+the privately pinned development target after verifying current Pro entitlement,
+signup/API boundaries and the exact current configuration. Compare independent
+before/after reads: only that field changed among 243 returned Auth fields; API
+configuration and all database identity/password/factor/session/permission/security
+fingerprints stayed unchanged. Security advisor warning cleared; 12 informational
+private-table notices remain. No account/password/session operations, grants,
+policies, deployment or billing changes were authorized or performed. Keep credentials
+and raw configurations in memory; retain only hashes/status in ignored evidence.
+Existing-password tests and disposable account tests remain NOT RUN under this
+limited approval. Record the result without claiming Release 1.0 readiness.

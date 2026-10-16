@@ -1,5 +1,9 @@
 # Propel Contractor Suite by Eagle Vision · Action B
 
+Subsequent approved Auth-only remediation: native Leaked Password Protection is
+enabled and its advisor warning cleared. See LEAKED_PASSWORD_PROTECTION_RESULT.md.
+The Action B findings below describe the preceding run; its counts are unchanged.
+
 **CORE CONNECTED ACCEPTANCE PASS; FULL RELEASE ACCEPTANCE INCOMPLETE.**
 October 16, 2026. Continue draft PR #1. Release 1.0 remains closed, NOT READY /
 NOT AUTHORIZED. C1 is inactive; broader private grants and Action D remain unapproved.

@@ -1,5 +1,9 @@
 # Propel · Action B connected acceptance result
 
+Subsequent approved Auth-only remediation: native Leaked Password Protection is
+enabled and its advisor warning cleared. See LEAKED_PASSWORD_PROTECTION_RESULT.md.
+The Action B findings below describe the preceding run; its counts are unchanged.
+
 **CORE CONNECTED ACCEPTANCE PASS; RELEASE 1.0 STILL NOT READY / NOT AUTHORIZED.**
 October 16, 2026, following owner-assisted MFA and the authorized continuation of
 draft PR #1. C1 remains inactive; no bootstrap replay or company recreation.
