@@ -1,54 +1,71 @@
-# Action A attempt · October16, 2026
+# Action A result · October 16, 2026
 
-**STOPPED BEFORE IDENTITY CREATION.** Owner authorized exactly22 synthetic Auth
-identities and genuine owner-assisted TOTP for the three owners/platform operator.
-The authorization excludes companies, memberships/tenant permissions, private
-grants, deployments and execution. Existing authorization remains valid; this is
-an operational credential-storage blocker, not a request to repeat that approval.
+**IDENTITIES COMPLETE; STOPPED FOR OWNER-ASSISTED TOTP.** Exactly 22 synthetic
+Supabase Auth identities were created under the owner's Action A authorization.
+No company, membership, tenant permission, private grant or deployment was created.
+Release 1.0 remains closed and NOT READY / NOT AUTHORIZED; PR #1 stays draft/unmerged.
 
-## Verified results
+| Check                                      | Verified result                                                                                         |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------- |
+| Approved roster                            | 22 distinct identities: 7 × 3 companies plus platform-only operator                                     |
+| Auth creation                              | 22/22 successful Auth Admin createUser calls, email_confirm=true, non-deliverable .test emails, no mail |
+| Independent verification                   | Auth Admin listUsers exact UID set/confirmed status; hosted SQL: 22 confirmed nonanonymous users        |
+| Password persistence                       | 22 encrypted macOS Keychain records; metadata-only count verification; no password read-back            |
+| MFA enrollment/verification                | 0/4; STOP before human QR scanning/challenge verification                                               |
+| Sessions                                   | 0; no password login or fabricated JWT used                                                             |
+| Companies/memberships                      | 0/0                                                                                                     |
+| Platform/release/workload grants           | 0/0/0                                                                                                   |
+| Public signup                              | Remains disabled; actual settings endpoint: HTTP 200 / disable_signup=true                              |
+| Phone provider                             | Remains disabled; email provider remains enabled                                                        |
+| Deployment/payments/messages/payroll/merge | None performed                                                                                          |
 
-| Check                                         | Result                                                                                           |
-| --------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| Approved alias roster                         | 22 distinct planned identities;4 require TOTP                                                    |
-| Auth Admin access                             | PASS, actual read-only listUsers returned0 users                                                 |
-| Public signup restriction                     | PASS, actual settings endpoint disable_signup=true                                               |
-| Secure password persistence                   | STOP: noninteractive macOS Keychain storage did not complete; metadata-only query found0 records |
-| Auth identities created                       | 0 of22; no identity creation succeeded                                                           |
-| Genuine TOTP factors enrolled/verified        | 0 of4; owner interaction has not begun                                                           |
-| Sessions/companies/memberships/private grants | All remain0 in post-attempt hosted SQL verification                                              |
-| Deployment/payments/messages/payroll/merge    | None performed                                                                                   |
+## Secure handling and corrected first attempt
 
-The operator attempted secure native Keychain persistence with UI prompts disabled,
-before any hosted creation. Passwords existed only in process memory and were
-passed to the helper over stdin; no plaintext password file, command-line argument,
-log or public artifact was written. The stored Supabase management credential was
-used through the official CLI; the existing Auth Admin key remained in process
-memory and was neither printed nor persisted. No new API key was created.
+The initial zero-account stop was caused by a parsing bug in the local operator
+helper: string-only JSON casting received boolean/null roster fields. The earlier
+report incorrectly treated this as evidence that Keychain was unavailable. That
+assessment is superseded. No identity was created during the first attempt.
 
-After the provisioning preflight stopped, diagnostics were read-only: CLI record
-field names/labels, actual Auth Admin user count and Keychain attributes/count only.
-No password was read back, no Keychain prompt was operated, and no hosted creation
-was retried. The original helper's detailed OS write error was not retained, so do
-not assert a specific Keychain failure cause. Its metadata query returned item-not-
-found, not a stored-password result. The failed preflight generated no Auth changes.
+The helper now decodes a typed credential structure safely, receives only alias/
+email/password fields and rejects malformed input without crashing. Validation-only
+checks passed for the 22-entry mixed-metadata roster and a malformed fixture before
+retrying. A fresh hosted zero-user/company/grant check and inspection of the stopped
+private record preceded the controlled retry. The old record was archived, not
+silently replaced. Do not blindly rerun creation now: the 22 accounts already exist.
 
-## Required next step
+Generated unique random passwords were persisted through native Security.framework
+with UI prompts disabled before any Auth creation. Passwords crossed stdin only,
+never argv/environment/logs/plaintext files. No broad Keychain application-access
+exception was added. The existing Auth Admin key was read through the official
+Supabase CLI into process memory, not printed/persisted; no API key was created.
+Creation used the real Auth Admin API with email_confirm=true, not signup/invite/
+magic-link mail, SQL Auth mocks or role metadata. Confirmation is internal synthetic
+attestation, not independent proof of a real person's identity.
 
-Provide/configure an approved working operator credential store before retrying
-Action A. The current method failed safely; do not replace it with plaintext .env/
-JSON credentials, passwords in command arguments or public CI secrets. An owner
-may need to unlock/authorize Keychain or choose another approved secret manager.
-Confirm storage succeeds before any account creation; inspect the ignored stopped
-run record and recheck Auth users0 before an explicitly controlled retry. Never
-blindly rerun a stopped creation script or replace existing accounts.
+## Owner handoff — human interaction required
 
-Then create the22 confirmed .test identities through Auth Admin createUser without
-mail, independently verify the exact roster, and STOP for human authenticator
-scanning/challenge verification when needed. Do not invent MFA/AAL2 or claim that
-email_confirm=true independently proves real-world identity; these are explicitly
-synthetic internally attested test accounts. TOTP QR seeds must never enter evidence.
+Four existing accounts require genuine TOTP:
 
-Private operational code/evidence resides under ignored `.staging/action-a/`;
-there are no credentials in this public document. Release1.0 remains closed and
-NOT READY / NOT AUTHORIZED. ActionsB/C/D are still unapproved and untouched.
+- platform-operator
+- pilot-1-owner (Straight Edge test owner)
+- pilot-2-owner (Cunningham test owner)
+- pilot-3-owner (roofing test owner)
+
+Passwords are in macOS Keychain service **Eagle Vision Contractor Acceptance
+Development**, labeled **EV synthetic development: <alias>**. The private email/UID
+mapping is ignored `.staging/action-a/identities.json`. No password is in that file.
+Owner access to a stored password may require normal Keychain authentication.
+
+When the owner is ready, use the connected local MFA component with the actual
+existing identity, perform password login, record the AAL1 denial, enroll TOTP,
+have the owner scan into an independent authenticator and enter its current code
+for challengeAndVerify. Verify server-returned AAL2 and fresh getUser identity;
+record only status/evidence references. No QR seed screenshots, mocked factors,
+hardcoded OTPs or JWT claims. Stop again on any required owner authentication.
+No MFA factors or sessions were created in this run because human participation
+is required at that stage. Do not report MFA verified until all four genuinely pass.
+
+Action A authorization remains valid for that continuation. Actions B/C/D (company
+fixtures, private grants and deployment) remain separately unapproved. Existing
+Auth/API/MFA settings and private Storage policies must be preserved. No outside
+person receives any account or access.

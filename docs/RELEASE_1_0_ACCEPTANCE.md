@@ -76,7 +76,7 @@ secure tokenization/byte ingestion, signature/legal compliance, credit-note/chan
 order invoice conversion, hosted/independent testing and clean production remain
 required. Local fixtures/CI success do not satisfy those gates.
 
-October16 schema milestone: approved nine-file development bundle applied; all51
+October 16 schema milestone: approved nine-file development bundle applied; all51
 public/12 private application tables have RLS, private Storage/default-off gates
 verified and official types compared. Security advisor zeroWARN/ERROR; performance
 follow-up remains. Owner-confirmed Auth/API dashboard saves completed and were
@@ -84,7 +84,7 @@ verified after reload; broader default-ACL changes were rejected/not applied.
 This does not change any module's hosted workflow/launch readiness. See
 DEVELOPMENT_MIGRATION_RESULT.md for exact versions and remaining acceptance gates.
 
-## Connected acceptance checkpoint · October16, 2026
+## Connected acceptance checkpoint · October 16, 2026
 
 Detailed cases,22-identity roster, genuine TOTP procedure, fixture/grant scopes,
 protected-deploy procedure and privilege assessment: CONNECTED_ACCEPTANCE_PLAN.md.
@@ -95,7 +95,7 @@ Starting commit0df0fc9; this checkpoint adds read-only tooling only.
 | Persisted Auth/MFA/redirect/API settings        | PASS, independently reloaded; no changes                             | Configuration only                                                                             |
 | Current API grants/private boundary             | PASS, SQL catalogs;0 users/companies                                 | Nonempty role/tenant controls NOT RUN                                                          |
 | Real read-only Auth/PostgREST/Storage preflight | 56 PASS /0 FAIL                                                      | Anonymous boundary only; not three-company acceptance                                          |
-| Synthetic identities/genuine TOTP               | 0 created /0 enrolled                                                | ActionA authorized; BLOCKED: working secure credential store and human TOTP                    |
+| Synthetic identities/genuine TOTP               | 0 created /0 enrolled                                                | Action A authorized; BLOCKED: working secure credential store and human TOTP                   |
 | Three-company role/revocation/domain workflows  | 0 authenticated cases run                                            | BLOCKED: identities, ActionB fixtures/write approval and ActionC grants                        |
 | Storage objects/import worker positives         | 0 object cases run                                                   | BLOCKED: approved fixture writes, provenance/worker/scanner infrastructure                     |
 | Netlify protection metadata                     | PASS, team login/all deploys                                         | Anonymous root404 is INCONCLUSIVE; app/assets/API perimeter NOT RUN                            |
@@ -109,9 +109,16 @@ perimeter acceptance. All required modules remain launch-ready **No**. No identi
 fixture, private grant, configuration write, deployment or provider call occurred
 in this preparation checkpoint. Earlier execution/configuration reports remain valid.
 
-ActionA update: owner authorized identity creation/TOTP, but the attempt stopped
+Action A update: owner authorized identity creation/TOTP, but the attempt stopped
 without creating identities because secure Keychain persistence did not complete.
-0/22 identities and0/4 TOTP verified; all company/grant counts remain0. Identity
+0/22 identities and0/4 TOTP verified; all company/grant counts remain 0. Identity
 approval is no longer the blocker; approved working credential storage and later
-human TOTP interaction are required. See ACTION_A_RESULT.md. ActionsB/C/D remain
+human TOTP interaction are required. See ACTION_A_RESULT.md. Actions B/C/D remain
 separately unapproved. No authenticated acceptance case is now passing by inference.
+
+Latest Action A result supersedes the zero-account attempt:22/22 confirmed synthetic
+identities created and 22 Keychain records verified. First stop was a local parsing
+bug, now corrected. Genuine TOTP 0/4, sessions 0; STOPPED for owner participation.
+Company/membership/private-grant counts all0. No authenticated three-company case
+has passed yet. Use existing accounts; do not recreate or claim MFA complete.
+See ACTION_A_RESULT.md. Actions B/C/D remain separately unapproved.

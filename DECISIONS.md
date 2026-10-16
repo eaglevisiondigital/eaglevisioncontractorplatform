@@ -203,7 +203,7 @@ than an unsafe automatic retry. Eleven synthetic regression cases cover mutation
 expiry, canonical binding and invalid stored metadata. No migration or activation
 is part of this follow-up; the nine-file reviewed migration bundle is unchanged.
 
-### Execute only the approved development bundle · October16
+### Execute only the approved development bundle · October 16
 
 Owner explicitly authorized the nine-file checksum at reviewed018ef8b. Verified
 clean commit, unchanged bundle, empty application/history/Auth/Storage baseline,
@@ -238,9 +238,20 @@ Netlify404 limitation are recorded in CONNECTED_ACCEPTANCE_PLAN.md/the checklist
 
 ### Fail before account creation when credential storage is unavailable
 
-ActionA now has owner authorization, but the secure Keychain preflight did not
+Action A now has owner authorization, but the secure Keychain preflight did not
 complete. Stop before createUser, do not fall back to plaintext files/logs/argv,
 and do not perform human MFA silently. Auth Admin read access works; zero accounts
 or permissions were created. Preserve the stopped private run record and require
 a working approved secret store plus fresh drift check before controlled retry.
-See ACTION_A_RESULT.md; no need to repeat the existing ActionA authorization.
+See ACTION_A_RESULT.md; no need to repeat the existing Action A authorization.
+
+### Action A controlled retry and genuine MFA handoff
+
+The first secure-storage stop was a local string-only parser bug, not evidence of
+Keychain unavailability. Correct typed parsing/explicit credential projection and
+validation-only valid/malformed checks preceded a fresh zero-user drift check and
+controlled retry. Exactly 22 confirmed synthetic Auth users and 22 encrypted Keychain
+records now exist; no password file/log/argv persistence and no grants/company data.
+Stop at genuine human TOTP: 0/4 verified, 0 sessions. Never recreate the roster or
+fabricate MFA. Preserve the existing Action A approval for owner-assisted continuation;
+Actions B/C/D remain unapproved. See ACTION_A_RESULT.md for exact evidence/handoff.

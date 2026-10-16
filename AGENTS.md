@@ -103,3 +103,11 @@ Connected development continuation rules (owner decision, October 15, 2026):
   synthetic laboratory consent cannot authorize a gateway call. Never retry UNKNOWN.
 - No external sending, real agreements/charges, payroll execution, production deploy,
   merge or outside access without the applicable explicit owner approval.
+
+Action A continuity (October 16): exactly 22 confirmed synthetic Auth identities now
+exist; credentials are in macOS Keychain, private UID mapping under ignored
+.staging/action-a/identities.json. Never rerun creation or provision another roster.
+Genuine owner-assisted TOTP remains 0/4 and requires human participation. No company,
+membership, private grant or deployment is authorized by Action A. Read
+docs/ACTION_A_RESULT.md; existing Action A authorization covers only the remaining
+MFA continuation. Preserve the stop on required owner authentication/confirmation.

@@ -1,7 +1,7 @@
-# Connected three-company acceptance · October16, 2026
+# Connected three-company acceptance · October 16, 2026
 
 **Status: preparation complete; authenticated acceptance NOT RUN. Release 1.0 is
-NOT READY / NOT AUTHORIZED.** Continue draft PR#1. Do not promote development data
+NOT READY / NOT AUTHORIZED.** Continue draft PR #1. Do not promote development data
 into production. Preserve the applied nine-file bundle and saved Auth/API settings.
 
 ## Independently verified baseline
@@ -39,15 +39,16 @@ unexpected disclosed data are never emitted in reports. Private evidence:
 `.staging/acceptance-preflight-result.json` and private read target. The script has
 no login, account/admin API, SQL, upload or mutation mode.
 
-## Action A — synthetic identities and genuine TOTP (AUTHORIZED; BLOCKED)
+## Action A — identities COMPLETE; owner-assisted TOTP REQUIRED
 
-Owner explicitly authorized ActionA on October16. The first attempt stopped at
-secure credential persistence, with0 identities/factors created. See ACTION_A_RESULT.md.
-Do not request the same authorization again; resolve secure storage and recheck
-drift before a controlled retry. The approved scope is:
+Owner explicitly authorized Action A on October 16. Exactly 22 confirmed synthetic
+identities and secure Keychain credentials now exist. Genuine TOTP is 0/4 and requires
+owner participation; no companies, sessions, memberships or private grants exist.
+See ACTION_A_RESULT.md. Do not recreate identities or repeat the existing approval.
+The approved scope is:
 **22 synthetic Auth identities**, all internal-engineer operated. Per company:
 owner, estimator, assigned-team supervisor, assigned field worker, unassigned field
-worker, staff-to-be-revoked, customer (7×3=21); plus one platform-only operator.
+worker, staff-to-be-revoked, customer (7 × 3 = 21); plus one platform-only operator.
 `npm run development:acceptance-plan` prints the offline alias roster only. It does
 not create emails, passwords, UUIDs, factors, sessions or authority.
 
@@ -56,7 +57,7 @@ not create emails, passwords, UUIDs, factors, sessions or authority.
   matching identities; stop on ambiguity rather than replace/delete accounts.
 - Use the approved server-side Auth Admin createUser API with email_confirm=true,
   NOT signup/invite/magic-link/reset mail. Admin credentials must be separately
-  supplied through approved operator secret management. The ActionA attempt used
+  supplied through approved operator secret management. The Action A attempt used
   the official CLI credential in memory only; no admin key was persisted.
   Never insert mock auth.users rows or mutate metadata to confer application roles.
 - These accounts have NO company/platform/release/workload grants at creation.

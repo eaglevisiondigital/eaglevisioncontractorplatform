@@ -2,12 +2,13 @@
 
 ## Governing release policy and latest internal milestone
 
-ActionA owner-authorized attempt STOPPED before creating identities: noninteractive
-Keychain password persistence failed safely (zero stored records). Auth Admin
-read access works; hosted users/sessions/factors/companies/memberships/private
-grants remain0. No identity creation succeeded. Existing ActionA authorization stands,
-but a working approved credential store is required before controlled retry and
-genuine human TOTP. See docs/ACTION_A_RESULT.md; no other action is approved.
+Action A identity creation is COMPLETE: 22 distinct confirmed nonanonymous Auth
+identities and 22 secure Keychain records, independently verified. STOPPED for owner-
+assisted TOTP (0/4 factors verified, 0 sessions). Companies/memberships/private grants
+remain 0; no deployment or execution. Do not recreate accounts. Use the private UID
+mapping and four existing privileged aliases from docs/ACTION_A_RESULT.md. The
+first stop was a local parsing bug, now corrected; Keychain storage works. Action A
+MFA authorization remains valid; Actions B/C/D remain separately unapproved.
 
 Connected-acceptance preparation: independently reverified saved Auth/API/MFA
 settings and existing grants. Real anonymous/read-only API preflight56PASS/0FAIL;
