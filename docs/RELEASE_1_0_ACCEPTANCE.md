@@ -79,6 +79,7 @@ required. Local fixtures/CI success do not satisfy those gates.
 October16 schema milestone: approved nine-file development bundle applied; all51
 public/12 private application tables have RLS, private Storage/default-off gates
 verified and official types compared. Security advisor zeroWARN/ERROR; performance
-follow-up remains. Auth/API saves await automatic-review action-time confirmation.
+follow-up remains. Owner-confirmed Auth/API dashboard saves completed and were
+verified after reload; broader default-ACL changes were rejected/not applied.
 This does not change any module's hosted workflow/launch readiness. See
 DEVELOPMENT_MIGRATION_RESULT.md for exact versions and remaining acceptance gates.

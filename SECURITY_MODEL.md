@@ -254,7 +254,9 @@ RLS, every public table has policies, no public definers or unsafe private defin
 search paths exist, clients have no private table privileges and buckets are private.
 Security advisors have12 informational private-table/no-policy findings, zero
 warnings/errors. Four performance policy warnings need a separate reviewed forward
-change. Auth/API hardening is authorized but browser saves await additional
-confirmation required by automatic approval review; do not assume it is active.
+change. Owner-confirmed dashboard Auth/API hardening is now saved and verified:
+signup OFF, exact internal redirects, public-only API schema, automatic exposure OFF.
+Broader default-ACL cleanup was rejected and not applied; provider-managed and
+residual non-API defaults remain as documented in the execution report.
 No real Auth/MFA/Storage/three-company acceptance has been performed yet. See
 docs/DEVELOPMENT_MIGRATION_RESULT.md; empty tables are not positive isolation proof.

@@ -335,3 +335,11 @@ private buckets and default-off internal release controls were verified hosted.
 Generated types match with documented RPC generator conventions. This establishes
 schema readiness only; actual multi-company Auth/MFA/HTTP workflows remain pending.
 See docs/DEVELOPMENT_MIGRATION_RESULT.md for the execution and hardening status.
+
+Confirmed development hardening saves: public signup OFF; protected internal Auth
+Site URL plus three exact internal redirects; public-only API schema; automatic
+new-table exposure OFF. Existing application grants/RLS and Netlify team-login
+protection are preserved. This dashboard setting does not revoke every PostgreSQL
+default privilege: residual/global/provider-managed defaults remain and broader
+cleanup was rejected by automatic review. Continue explicit per-object grants and
+revokes in every future reviewed migration. No deployment/accounts were created.

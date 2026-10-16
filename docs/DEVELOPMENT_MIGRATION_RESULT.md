@@ -76,18 +76,37 @@ and [Auth connection allocation](https://supabase.com/docs/guides/deployment/goi
 
 ## Auth/API hardening and remaining gates
 
-Owner authorization is recorded, but the browser save was rejected by automatic
-approval review because it requires additional action-time confirmation. The signup
-toggle is staged OFF but has NOT been saved. Current persisted baseline remains
-public signup ON, default localhost:3000 Site URL/no redirects, automatic exposure
-ON and public/graphql_public exposed. No hardening save has been executed yet.
-The confirmation request is pending. Do not claim those protections are active.
+After the owner's additional action-time confirmation, the documented dashboard
+hardening saves were completed and verified after reload:
 
-Once confirmed: save signup OFF, preserve email confirmation/TOTP and anonymous/
-manual-linking/phone restrictions; set protected HTTPS internal Site URL and exact
-required local internal redirect paths without wildcards; retain public API access
-needed by checked RPCs, exclude private/graphql_public and disable automatic grants.
-Verify persisted settings and grants before provisioning any synthetic identities.
+- Public signup OFF; email confirmation ON; anonymous/manual linking OFF.
+- TOTP ON, ten factors maximum, fifteen-minute AAL1 factor-verification limit ON;
+  phone MFA remains OFF. No credentials changed and no identities were created.
+- Site URL changed from localhost:3000 to the protected HTTPS staging site's exact
+  /internal-release path. Redirect allowlist contains exactly three entries:
+  protected HTTPS /portal/internal plus loopback127.0.0.1:4173 /internal-release
+  and /portal/internal. No wildcards, unrelated hosts or deploy aliases allowed.
+  Exact hosted origin/URLs are retained in ignored private evidence.
+- Data API exposes public only; private and graphql_public excluded. Automatic
+  exposure of new tables OFF; extra search path/maxrows/pool settings unchanged.
+- Existing table grants are unchanged: authenticated SELECT on51 tables and the
+  three original scoped DELETE grants; no anonymous table grants, direct client
+  INSERT/UPDATE grants or private client table privileges.
+- The dashboard removed future postgres-owner DML grants, function EXECUTE grants
+  and sequence USAGE/SELECT grants to API roles. Residual non-API table defaults
+  (TRUNCATE/REFERENCES/TRIGGER/MAINTAIN), sequence UPDATE and provider-managed
+  supabase_admin defaults remain. Global PUBLIC function EXECUTE defaults are also
+  unchanged; every future function still needs an explicit EXECUTE revoke/grant
+  review, as the committed migrations already do. An additional broader all-default-privilege SQL
+  cleanup was rejected by automatic approval review as outside the confirmed scope;
+  none of that rejected transaction was applied or retried through another route.
+  Do not describe this dashboard setting as removal of every PostgreSQL privilege.
+- Security advisor remains zeroWARN/ERROR with12 intentional private-control-table
+  informational findings. Netlify still requires team login across all deploys.
+
+The earlier save rejection is resolved for these dashboard changes. Broader default
+ACL cleanup is a separate optional review, not part of the completed saves. Current
+schema exposure, existing RLS and explicit RPC grants remain the actual API boundary.
 
 Actual Auth/TOTP/PostgREST/Storage three-company acceptance is still NOT RUN.
 Separate approvals remain needed for identities/fixtures/private grants, protected

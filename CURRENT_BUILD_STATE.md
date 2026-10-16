@@ -7,7 +7,8 @@ development target after commit/checksum/drift/CLI dry-run verification. All nin
 versions match;51 public and12 private tables have RLS; private buckets/grants and
 default-off release gates verified. Official hosted types match after documented
 RPC generator convention normalization. No Auth users or companies were created.
-Auth/API hardening saves await additional automatic-review confirmation. See
+Owner-confirmed Auth/API hardening saves are complete and verified: signup OFF,
+exact internal redirects, public-only schema exposure and automatic exposure OFF. See
 docs/DEVELOPMENT_MIGRATION_RESULT.md for exact versions, advisor findings and gates.
 The earlier pre-migration statements below are historical and superseded here.
 

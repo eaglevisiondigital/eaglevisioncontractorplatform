@@ -214,6 +214,8 @@ Post-migration catalog/advisors/types are recorded in DEVELOPMENT_MIGRATION_RESU
 Official RPC types differ only in nullable argument/no-argument generator conventions;
 normalization preserves names, defaults, table nullability, enums and return types.
 Do not overwrite committed types or claim connected workflow acceptance. Performance
-findings require separately reviewed forward changes. Auth/API saves await the
-extra action-time confirmation imposed by automatic approval review. Outside access,
+findings require separately reviewed forward changes. After extra action-time owner
+confirmation, dashboard Auth/API saves completed and persisted. A broader default-ACL
+cleanup was rejected and not applied; do not retry it indirectly or claim all
+PostgreSQL defaults were removed. Outside access,
 identity provisioning, protected deploy, provider execution and production remain gated.
