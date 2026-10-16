@@ -17,3 +17,6 @@ artifacts/phase3/*.png
 .staging/
 
 artifacts/release/*.png
+
+# Local synthetic branding screenshots.
+artifacts/branding/

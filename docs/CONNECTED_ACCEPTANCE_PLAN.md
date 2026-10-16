@@ -81,14 +81,24 @@ not create emails, passwords, UUIDs, factors, sessions or authority.
 References: [Auth admin creation](https://supabase.com/docs/reference/javascript/auth-admin-createuser),
 [TOTP](https://supabase.com/docs/guides/auth/auth-mfa/totp).
 
-## Action B — company fixtures and workflow writes (NOT AUTHORIZED)
+## Action B — AUTHORIZED; BLOCKED on separate platform bootstrap
 
-Separately authorize exactly three synthetic companies: Straight Edge Property
+The owner approved Action B only. Read-only hosted inspection confirms zero
+platform-admin grants; checked provisioning requires that grant AND AAL2. STOP
+before hosted writes until a separately reviewed Action C platform bootstrap is
+approved. No companies, memberships or domain fixtures were created. See
+ACTION_B_RESULT.md. Do not repeat Action B approval or bypass the missing grant.
+
+The approved fixture scope is exactly three synthetic companies: Straight Edge Property
 Services / property_services, Cunningham Construction / construction, Sample Roofing
 Contractor / roofing. Use collision-resistant internal slugs. Scope the approval to
 checked provisioning/configuration/member/invitation RPCs and synthetic CRM,
 estimate, job, workforce/payroll-preparation and internal release test writes.
 No live delivery, agreements, provider payments or payroll execution.
+The latest Action B approval also excludes signature execution, company email,
+live ingestion and any Actions C/D operation. The extended internal-release
+scenario below is a future evidence plan, not approval to execute signatures or
+create private grants. Follow the narrower current owner restrictions.
 
 Platform operator AAL2 uses provision_company/configure_company with each intended
 owner UID. Owner creates in-app invitations for verified existing staff; each staff

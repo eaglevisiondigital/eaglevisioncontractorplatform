@@ -1,6 +1,23 @@
-# Current build state · October 16, 2026 · approved development migrations applied
+# Propel Contractor Suite by Eagle Vision · current build state
 
 ## Governing release policy and latest internal milestone
+
+Action B is owner-authorized but BLOCKED before hosted writes: the checked hosted
+provisioning RPC requires an active private platform-admin grant plus genuine
+AAL2; no such grant exists. That bootstrap belongs to separately unapproved
+Action C. Created this action: 0 organizations, 0 memberships, 0 domain fixtures.
+Authenticated workflow acceptance is NOT RUN, not a failure or inferred pass.
+22 confirmed identities / four verified factors / zero sessions remain intact.
+See docs/ACTION_B_RESULT.md; Action D remains unapproved.
+
+The owner supplied the exact approved logo. The local product rebrand is
+Propel Contractor Suite by Eagle Vision, using the unchanged emerald/mint PNG.
+Contractor white-label branding, repository/infrastructure identities and all
+security/release gates are preserved. See docs/BRANDING.md for asset provenance,
+verification and local desktop/mobile previews. Original README is preserved.
+Validation: npm check PASS (354 tests / nine native-only skips), 51 responsive
+browser cases PASS, exact logo hash / ten entrypoints / tenant colors verified.
+Formatting/diff checks pass; no connected Action B acceptance is inferred.
 
 Action A is COMPLETE: the existing 22 confirmed synthetic identities are preserved;
 all four designated privileged accounts completed genuine owner-assisted TOTP and
@@ -10,8 +27,8 @@ sessions after sign-out. Companies, memberships and all private grants remain ze
 63/63 application tables retain RLS and private client table privileges remain zero.
 Public signup remains disabled; no Auth/API settings were changed. The temporary
 loopback MFA interface is closed/stopped. Do not recreate/reset identities or
-re-enroll completed factors. See docs/ACTION_A_RESULT.md. Actions B/C/D remain
-separately unapproved; full connected three-company acceptance is still pending.
+re-enroll completed factors. See docs/ACTION_A_RESULT.md. Action B is authorized but blocked on the separate Action C platform bootstrap;
+Action D remains unapproved and full three-company acceptance is pending.
 
 Connected-acceptance preparation: independently reverified saved Auth/API/MFA
 settings and existing grants. Real anonymous/read-only API preflight56PASS/0FAIL;

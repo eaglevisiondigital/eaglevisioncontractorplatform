@@ -22,6 +22,8 @@ import { ControlPlane } from './components/ControlPlane';
 import { PublicIntake } from './components/PublicIntake';
 import { Join } from './components/Join';
 import { CompanyLogo } from './components/CompanyLogo';
+import { PlatformBrand } from './components/PlatformBrand';
+import { productBrand } from './domain/brand';
 
 const Phase3Workspace = lazy(() =>
   import('./components/phase3/Phase3Workspace').then((m) => ({
@@ -169,9 +171,7 @@ export function App() {
   if (path.startsWith('/intake') || path.startsWith('/portal'))
     return (
       <main className="landing">
-        <a className="wordmark" href="/">
-          EV / EAGLE VISION
-        </a>
+        <PlatformBrand prominent />
         <h1>
           {path.startsWith('/portal')
             ? 'Your project, connected.'
@@ -192,7 +192,7 @@ export function App() {
   if (!authorized)
     return (
       <main className="landing">
-        <span className="eyebrow">EAGLE VISION / CONTRACTOR PLATFORM</span>
+        <PlatformBrand prominent />
         <h1>
           Independent companies.
           <br />
@@ -272,12 +272,7 @@ export function App() {
         Skip to content
       </a>
       <aside>
-        <a href="/" className="wordmark">
-          <span className="mark">EV</span>
-          <span>
-            EAGLE VISION<small>CONTRACTOR PLATFORM</small>
-          </span>
-        </a>
+        <PlatformBrand />
         <div className="workspace-label">
           {platform ? 'PLATFORM CONTROL' : 'COMPANY WORKSPACE'}
         </div>
@@ -344,14 +339,14 @@ export function App() {
                   : '/super-admin'
             }
           >
-            {platform ? 'Company workspace' : 'Eagle Vision control plane'} ↗
+            {platform ? 'Company workspace' : 'Propel control plane'} ↗
           </a>
         </div>
       </aside>
       <div className="content">
         <header>
           <span>
-            {platform ? 'Eagle Vision / Super Admin' : `Workspace / ${section}`}
+            {platform ? 'Propel / Super Admin' : `Workspace / ${section}`}
           </span>
           <div>
             <span className="status-dot" />
@@ -588,7 +583,7 @@ export function App() {
             </details>
           )}
           <footer>
-            Eagle Vision Contractor Platform{' '}
+            {productBrand.name}{' '}
             <span>One platform. Every company’s own workspace.</span>
           </footer>
         </main>

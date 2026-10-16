@@ -34,7 +34,7 @@ export function Team({ repo, org }: { repo: Operations; org: string }) {
               <small className="block">Account {m.user_id}</small>
               <span className="tag">{m.active ? 'Active' : 'Revoked'}</span>
               {m.role === 'owner' ? (
-                <p>Owner grants require the Eagle Vision control plane.</p>
+                <p>Owner grants require the Propel control plane.</p>
               ) : (
                 <FieldsForm
                   fields={[

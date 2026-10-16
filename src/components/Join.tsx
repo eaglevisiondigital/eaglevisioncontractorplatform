@@ -1,3 +1,4 @@
+import { PlatformBrand } from './PlatformBrand';
 import { useState } from 'react';
 import { supabase } from '../lib/supabase';
 import { Mfa } from '../Mfa';
@@ -11,7 +12,8 @@ export function Join({ sample }: { sample: boolean }) {
   );
   return (
     <main className="landing">
-      <span className="eyebrow">EAGLE VISION / STAFF ACCESS</span>
+      <PlatformBrand prominent />
+      <span className="eyebrow">STAFF ACCESS</span>
       <h1>Join your company workspace.</h1>
       <p>
         Sign in with the verified account matching your invitation.

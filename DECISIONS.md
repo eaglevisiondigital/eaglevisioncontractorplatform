@@ -267,3 +267,24 @@ factors, no pending factors and no remaining sessions after sign-out. Stop/close
 the helper; retain only status evidence. AAL1 platform denial also lacked grants,
 so it cannot alone establish MFA-only enforcement. Actions B/C/D remain unapproved;
 full tenant/workflow acceptance and Release 1.0 launch remain pending.
+
+### Action B stops at separately controlled platform bootstrap
+
+The owner authorized company/member/domain fixtures through checked RPCs only.
+Hosted inspection confirms that provisioning requires AAL2 and an active private
+platform_admins row; no row exists. Action C explicitly owns that bootstrap and
+remains unapproved. Stop without domain writes, logins or a service-role/SQL bypass.
+Record 0 organizations/memberships/domain fixtures created; connected cases NOT RUN,
+with infrastructure/grant dependencies BLOCKED and read-only checks separately PASS.
+Do not request Action B approval again; review a narrow platform-only Action C row
+with operator-enforced expiry/revocation before resuming. See ACTION_B_RESULT.md.
+
+### Final Propel visual identity
+
+The owner supplied the emerald/mint PNG after the missing-asset handoff. Copy it
+unchanged and verify its hash; centralize Propel Contractor Suite by Eagle Vision
+identity across all platform surfaces/metadata while preserving contractor-specific
+branding. Keep repository/package/infrastructure identifiers, historical migrations,
+original README and existing MFA factor/Keychain identities stable. Rebrand locally
+and provide actual responsive screenshots; no deployment or release permission.
+See BRANDING.md.

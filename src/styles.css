@@ -6,7 +6,9 @@
     -apple-system,
     sans-serif;
   color: #1c2d36;
-  background: #f3f5f4;
+  background: #fff;
+  --platform-emerald: #00543e;
+  --platform-mint: #48f5ad;
   font-synthesis: none;
   font-weight: 400;
   line-height: 1.5;
@@ -30,7 +32,7 @@ button,
   cursor: pointer;
   border: 0;
   border-radius: 6px;
-  background: #247364;
+  background: var(--platform-emerald);
   color: white;
   padding: 12px 18px;
   text-decoration: none;
@@ -43,7 +45,7 @@ button:focus-visible,
 a:focus-visible,
 input:focus-visible,
 select:focus-visible {
-  outline: 3px solid #dba94d;
+  outline: 3px solid #00865f;
   outline-offset: 4px;
 }
 h1,
@@ -68,55 +70,57 @@ p {
 .workspace {
   display: flex;
   min-height: 100vh;
+  background: #f7fcf9;
 }
 aside {
   width: 260px;
   flex-shrink: 0;
-  background: #101f2a;
-  color: #d8e3e7;
+  background: #fff;
+  color: #164c39;
+  border-right: 1px solid #d8e9e0;
   padding: 32px 20px;
   display: flex;
   flex-direction: column;
 }
-.wordmark {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-  text-decoration: none;
-}
-.wordmark small {
+.platform-brand {
   display: block;
-  font-size: 0.53rem;
-  letter-spacing: 1.7px;
-  margin-top: 4px;
-  color: #91a7b0;
+  width: 220px;
+  max-width: 100%;
+  background: #fff;
+  text-decoration: none;
+  flex-shrink: 0;
 }
-.mark {
-  border: 1px solid #d8b574;
-  color: #e3c38b;
-  padding: 9px 7px;
-  font-size: 1.05rem;
+.platform-brand img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.platform-brand--prominent {
+  width: 460px;
+}
+.mfa-product {
+  color: var(--platform-emerald);
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin: 16px 0 10px;
 }
 .workspace-label {
   margin: 43px 8px 14px;
   font-size: 0.58rem;
   letter-spacing: 2px;
-  color: #7f959e;
+  color: #426757;
 }
 .company-label {
   font-size: 0.65rem;
-  color: #8da3ad;
+  color: #426757;
 }
 .company-label select {
   width: 100%;
   margin: 7px 0 25px;
   padding: 10px 8px;
-  background: #1b303d;
-  color: #fff;
-  border: 1px solid #36505f;
+  background: #f1fbf5;
+  color: #164c39;
+  border: 1px solid #b9d9cb;
   border-radius: 5px;
   font-size: 0.78rem;
 }
@@ -127,7 +131,7 @@ nav {
 }
 nav button {
   background: transparent;
-  color: #aebfc7;
+  color: #38594a;
   text-align: left;
   display: flex;
   gap: 13px;
@@ -142,7 +146,7 @@ nav button.active {
 nav button small {
   margin-left: auto;
   font-size: 0.48rem;
-  color: #a7b9bf;
+  color: #426757;
 }
 nav button span {
   font-size: 1rem;
@@ -155,11 +159,11 @@ nav button span {
 }
 .sidebar-footer p {
   font-size: 0.67rem;
-  color: #8097a2;
+  color: #426757;
   margin: 8px 0 20px;
 }
 .sidebar-footer a {
-  color: #dbbd85;
+  color: var(--platform-emerald);
   font-size: 0.67rem;
 }
 .content {
@@ -199,8 +203,8 @@ main {
   padding: 30px 40px;
 }
 .notice {
-  background: #e8eeeb;
-  border: 1px solid #d5dfd9;
+  background: #effcf5;
+  border: 1px solid #c7e8d6;
   padding: 12px 16px;
   font-size: 0.67rem;
   color: #4f655b;
@@ -445,8 +449,8 @@ dd {
   .sidebar-footer {
     display: none;
   }
-  .wordmark {
-    font-size: 0.72rem;
+  aside .platform-brand {
+    width: 260px;
   }
   .company-label {
     display: block;

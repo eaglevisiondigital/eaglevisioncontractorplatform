@@ -1,7 +1,7 @@
 {
   "name": "eagle-vision-contractor-platform",
   "version": "0.1.0",
-  "description": "Multi-tenant estimating, contracting, contractor operations, invoicing, and payments software built for Eagle Vision client companies.",
+  "description": "Propel Contractor Suite by Eagle Vision: multi-tenant estimating, contractor operations, invoicing and payment orchestration.",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",

@@ -1,3 +1,4 @@
+import { productBrand } from '../domain/brand';
 import {
   useCallback,
   useEffect,
@@ -224,7 +225,7 @@ export function PublicIntake({
       </span>
       <div className="public-brand">
         <div className="company-avatar">
-          {profile?.name.slice(0, 2).toUpperCase() ?? 'EV'}
+          {profile?.name.slice(0, 2).toUpperCase() ?? '—'}
         </div>
         <strong>{profile?.name ?? 'Company intake'}</strong>
       </div>
@@ -329,9 +330,7 @@ export function PublicIntake({
           </article>
         )
       )}
-      <footer>
-        Eagle Vision Contractor Platform · Company-specific intake
-      </footer>
+      <footer>{productBrand.name} · Company-specific intake</footer>
     </main>
   );
 }

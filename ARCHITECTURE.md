@@ -360,3 +360,13 @@ and AAL2 checks plus independent hosted factor counts establish real enrollment.
 All sessions were signed out and the helper stopped. No company or private grant
 exists, so full multi-company/domain acceptance remains pending. See
 docs/ACTION_A_RESULT.md; Actions B/C/D are not authorized by this milestone.
+
+Product presentation is now Propel Contractor Suite by Eagle Vision, through a
+shared brand constant/full-image component and the exact unchanged owner PNG.
+Tenant names/logos/colors and sender/payment routing remain separate; infrastructure
+and migrations retain their existing identities. See docs/BRANDING.md.
+
+Action B is authorized but stopped at the checked provisioning prerequisite:
+no private platform-admin grant exists. Action C alone controls that bootstrap;
+AAL2 does not substitute for it. No companies, memberships or domain fixtures were
+created; connected workflow acceptance remains NOT RUN. See docs/ACTION_B_RESULT.md.

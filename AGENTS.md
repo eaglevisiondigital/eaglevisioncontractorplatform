@@ -111,4 +111,11 @@ with fresh real AAL2/identity verification, no pending factors and all sessions
 signed out. Never rerun creation/reset/re-enrollment. Later login challenges the
 existing factor with the owner's actual current code; never extract seeds.
 No company, membership, private grant or deployment is authorized by Action A.
-Read docs/ACTION_A_RESULT.md. Actions B/C/D still require separate authorization.
+Read docs/ACTION_A_RESULT.md. Action B is now authorized, but blocked at the missing Action C platform bootstrap.
+Action C and D remain unapproved; stop before hosted writes and read
+docs/ACTION_B_RESULT.md.
+
+Product identity: Propel Contractor Suite by Eagle Vision. Use only the owner-
+supplied unchanged PNG documented in docs/BRANDING.md. Preserve contractor brands,
+original README, repository/hosted identities, Keychain labels and historical SQL.
+Never substitute/redraw the logo or mistake a visual change for release permission.

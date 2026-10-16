@@ -1,3 +1,4 @@
+import { PlatformBrand } from '../PlatformBrand';
 import { useEffect, useMemo, useState } from 'react';
 import { supabase } from '../../lib/supabase';
 import { Mfa } from '../../Mfa';
@@ -200,9 +201,7 @@ export function ReleaseApp({ sample }: { sample: boolean }) {
   const staff = data?.actor === 'staff';
   return (
     <main className="release-shell">
-      <a href="/preview" className="wordmark">
-        EV / EAGLE VISION
-      </a>
+      <PlatformBrand href="/preview" />
       <span className="eyebrow">RELEASE 1.0 · INTERNAL DEVELOPMENT</span>
       <h1>Customer workflow laboratory</h1>
       <p className="notice">

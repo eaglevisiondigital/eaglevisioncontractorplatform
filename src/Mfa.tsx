@@ -1,3 +1,4 @@
+import { productBrand } from './domain/brand';
 import { useState, type FormEvent } from 'react';
 import { supabase } from './lib/supabase';
 
@@ -21,7 +22,7 @@ export function Mfa() {
     }
     const result = await supabase.auth.mfa.enroll({
       factorType: 'totp',
-      friendlyName: 'Eagle Vision authenticator',
+      friendlyName: `${productBrand.shortName} authenticator`,
     });
     if (result.error) {
       setMessage('Unable to enroll MFA. Contact your administrator.');
@@ -49,6 +50,7 @@ export function Mfa() {
   }
   return (
     <section aria-label="Multi-factor verification">
+      <p className="mfa-product">{productBrand.shortName} · Account security</p>
       <button type="button" onClick={() => void prepare()}>
         Set up or verify MFA
       </button>
