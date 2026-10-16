@@ -312,3 +312,20 @@ AAL1 wait rather than weaken the guard; preserve its record and reset the local
 sign-in handoff without requesting the same approval again. No grant or company
 write occurred. See ACTION_C1_EXECUTION.md for current state and fixed RPC/cleanup
 plan; broader private grants/deployment remain unapproved.
+
+### C1 executed once; revoke before tenant-domain continuation
+
+The owner completed genuine existing-factor MFA. The reviewed stale-session guard
+rejected earlier authentication waits without grant activation; it was preserved.
+A fresh exact operator session passed all checks. Activate only the approved one-row
+operation, provision/configure exactly three companies using normal caller RPCs,
+then immediately deactivate the row and prove denial with the same AAL2 session
+before global sign-out. Actual window was 08:46:00–08:46:40 UTC October 16, 2026,
+well below 30 minutes. Independent reads confirm inactive grant, no operator
+membership/session and unchanged 22 identities/four factors/nine migrations.
+Retain the inactive row and evidence; never replay the INSERT or duplicate tenants.
+Continue approved Action B under fresh human-assisted company-owner sessions.
+Full tenant/role/domain acceptance is NOT RUN; scanner/private-release dependencies
+remain BLOCKED and deployment NOT RUN. Record the leaked-password-protection advisor
+warning separately without changing saved Auth controls or claiming launch security.
+See ACTION_C1_EXECUTION.md and ACTION_B_RESULT.md. Release remains closed.

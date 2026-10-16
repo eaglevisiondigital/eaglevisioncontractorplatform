@@ -2,30 +2,32 @@
 
 ## Governing release policy and latest internal milestone
 
-C1 execution is now explicitly owner-authorized for the exact reviewed operation
-hash, but activation is NOT RUN pending fresh owner-assisted operator AAL2. Target,
-SQL/scope hashes, all roster UIDs, existing factors, migrations, zero-grant baseline
-and independent revocation channels were reverified. An AAL1 session that waited
-past five minutes was safely closed; independent reads confirm zero sessions/grants.
-The local page is ready for owner-initiated fresh sign-in/code entry. No grant,
-company or membership was created. Do not request execution approval again. See
-docs/ACTION_C1_EXECUTION.md before continuing; older preparation status is historical.
+C1 execution is COMPLETE: the separately approved one-row bootstrap was activated
+once under fresh genuine owner-assisted AAL2, then revoked immediately after the
+three checked company setups. Window 08:46:00–08:46:40 UTC October 16, 2026;
+independent read-back confirms one inactive row, zero active platform grants,
+zero operator memberships and zero operator sessions. Same prior AAL2 caller was
+denied platform access and company_metrics (42501) before global sign-out.
+All 22 identities and four verified TOTP factors are unchanged; no pending factors.
 
-C1 narrow platform bootstrap is PREPARED ONLY, not execution-authorized. Exact
-private roster UID/email matches the hosted confirmed operator, one verified
-factor and no membership/grant/session. Private target-bound one-row INSERT and
-exact-UID active=false cleanup are ready for review; 30-minute maximum supervised
-window, early revocation after platform setup/error, no native expiry. Separate
-owner approval and fresh genuine operator AAL2 are required before any activation
-or Action B resume. See docs/ACTION_C1_REVIEW.md; no hosted writes occurred.
+Action B platform setup now has exactly three companies and three existing-owner
+memberships, three settings rows, 27 module rows, six platform events and 66 tenant
+activity events. No CRM/material/job/purchase/time/payroll fixtures exist yet.
+Full tenant/role/domain acceptance is NOT RUN, not implied by successful setup.
+No additional private grants, migration, Auth/API change or deployment occurred.
+See docs/ACTION_C1_EXECUTION.md and docs/ACTION_B_RESULT.md. Do not rerun C1 or
+provision duplicates; resume approved Action B under fresh company-owner sessions
+with human MFA. Broader Action C and Action D remain unapproved.
 
-Action B is owner-authorized but BLOCKED before hosted writes: the checked hosted
-provisioning RPC requires an active private platform-admin grant plus genuine
-AAL2; no such grant exists. That bootstrap belongs to separately unapproved
-Action C. Created this action: 0 organizations, 0 memberships, 0 domain fixtures.
-Authenticated workflow acceptance is NOT RUN, not a failure or inferred pass.
-22 confirmed identities / four verified factors / zero sessions remain intact.
-See docs/ACTION_B_RESULT.md; Action D remains unapproved.
+Security advisor now reports leaked-password protection disabled (one warning),
+plus 12 expected informational private-table/no-policy notices. Performance review
+still has four RLS warnings and informational index/connection findings. These
+need separate review; no settings/schema remediation was performed. All 63 tables
+retain RLS and clients have no private table privileges. Release remains closed.
+Earlier checkpoint counts below describe their historical runs, not current totals.
+C1 continuity validation: npm check PASS, 375 tests / nine native-only skips,
+strict/generated types, reviewed migration digest and local build; format/diff PASS.
+No implementation/UI/SQL change; browser/native suites not rerun for this checkpoint.
 
 The owner supplied the exact approved logo. The local product rebrand is
 Propel Contractor Suite by Eagle Vision, using the unchanged emerald/mint PNG.

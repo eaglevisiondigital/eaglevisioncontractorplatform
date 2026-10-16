@@ -378,3 +378,13 @@ exact-UID deactivation preserves history. The 30-minute window is operator-enfor
 not a schema TTL. Future application operations retain genuine AAL2 caller JWTs;
 bootstrap database authority is not a domain-operation client. See
 docs/ACTION_C1_REVIEW.md; no hosted operation is currently approved/executed.
+
+C1 execution update (October 16): the approved bootstrap was executed once, followed
+by six checked provision/configure RPCs under the real AAL2 operator. Three tenants
+and three designated owner memberships now exist. Existing triggers created their
+settings/modules/audits. Exact revocation, same-session denial and global sign-out
+completed within 40 seconds; the retained inactive row prevents bootstrap replay.
+No new schema, application endpoint, domain service-role client or broader private
+grant was introduced. Resume Action B with company-owner authority, not a renewed
+platform row. Full domain/tenant acceptance remains pending. Earlier zero-tenant and
+unapproved-C1 paragraphs are historical. See docs/ACTION_C1_EXECUTION.md.

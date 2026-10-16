@@ -1,72 +1,58 @@
 # Propel Contractor Suite by Eagle Vision · Action B
 
-**AUTHORIZED; BLOCKED BEFORE HOSTED WRITES.** The owner approved Action B only.
-Action A remains complete. Actions C and D are not approved. Release 1.0 remains
-closed and NOT READY / NOT AUTHORIZED; PR #1 remains draft/unmerged.
+**PARTIALLY EXECUTED — COMPANY SETUP PASS; FULL ACCEPTANCE NOT RUN.**
+October 16, 2026. The separately approved narrow C1 bootstrap unblocked the checked
+platform setup. It was revoked immediately afterward. Broader Action C and Action D
+remain unapproved; Release 1.0 remains closed and PR #1 draft/unmerged.
 
 ## Exact created counts
 
-| Record type                             | Created this action |                               Hosted total at stop |
-| --------------------------------------- | ------------------: | -------------------------------------------------: |
-| Organizations                           |      0 of 3 planned |                                                  0 |
-| Memberships / employee roles            |                   0 |                                                  0 |
-| Synthetic domain test records           |                   0 |                        No fixture writes attempted |
-| Auth identities                         |                   0 |                          22 confirmed nonanonymous |
-| Verified TOTP factors                   |               0 new | 4 existing, one per designated privileged identity |
-| Platform / release-test / worker grants |           0 / 0 / 0 |                                          0 / 0 / 0 |
+| Record                                                                           |       Created | Final hosted state                                                                  |
+| -------------------------------------------------------------------------------- | ------------: | ----------------------------------------------------------------------------------- |
+| Organizations                                                                    |             3 | Straight Edge Property Services; Cunningham Construction; Sample Roofing Contractor |
+| Owner memberships                                                                |             3 | One intended existing owner per company; active                                     |
+| Other staff/customer permissions                                                 |             0 | Remaining Action B roles not assigned                                               |
+| Company settings / module rows                                                   |        3 / 27 | Internal pilot configuration; contracts/invoices/payments OFF                       |
+| Platform / tenant audit events                                                   |        6 / 66 | Checked setup and existing append-only triggers                                     |
+| CRM/properties/requests/estimates/materials/jobs/purchases/time/payroll fixtures |             0 | Subsequent domain acceptance NOT RUN                                                |
+| Auth identities / factors                                                        | 0 new / 0 new | Existing 22 confirmed identities and four verified TOTP factors preserved           |
+| C1 platform row                                                                  |             1 | Retained inactive; zero active grants and zero operator memberships/sessions        |
+| Release-test / worker grants                                                     |         0 / 0 | Not approved                                                                        |
 
-No CRM, property, request, estimate, material, job, purchase, time or payroll-
-preparation record was created. No new login/MFA challenge was necessary to
-identify the deterministic missing-grant prerequisite; hosted sessions remain zero.
+## Results
 
-## Results — distinguish checks from authenticated acceptance
+| Check                                                                  | Result  | Evidence / limit                                                                                                                                 |
+| ---------------------------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Checked platform provisioning/configuration                            | PASS    | Six normal-authenticated RPC successes, three intended owners, active pilot state verified                                                       |
+| Genuine operator AAL2                                                  | PASS    | Current confirmed identity/verified claims/factor and sole fresh hosted session matched the private roster                                       |
+| Temporary platform cleanup                                             | PASS    | Exact reviewed deactivation; same AAL2 platform_access=false and company_metrics 42501 before logout; independent inactive-row/zero-session read |
+| Existing Auth/factors/migrations                                       | PASS    | Full identity/factor fingerprints unchanged; same nine versions; no Auth/API change                                                              |
+| RLS/private table access/module gates                                  | PASS    | 63/63 RLS, zero private client table privileges, financial modules disabled                                                                      |
+| Cross-tenant positives/negatives and operator tenant-data denial       | NOT RUN | Requires actual tenant domain fixtures and current owner/member sessions; setup alone is insufficient                                            |
+| Employee roles, membership revocation and concurrency                  | NOT RUN | Only the three initial owner memberships exist                                                                                                   |
+| Financial arithmetic, immutable snapshots and detailed audit integrity | NOT RUN | No connected domain records; local test history is not hosted evidence                                                                           |
+| Document/Storage positive ingestion and extraction                     | BLOCKED | Scanner, isolated worker, byte transport and approved AI remain unavailable                                                                      |
+| Internal customer release workflows                                    | BLOCKED | Separate private environment/test authorization remains unapproved                                                                               |
+| Protected Netlify deployment                                           | NOT RUN | Action D not approved                                                                                                                            |
 
-| Check                                              | Result  | Evidence / limit                                                                                                                                            |
-| -------------------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Designated development target                      | PASS    | Read-only project details match the approved target; healthy PostgreSQL 17.11                                                                               |
-| Existing identities                                | PASS    | 22 confirmed nonanonymous users; no creation/reset invoked                                                                                                  |
-| Existing MFA factors                               | PASS    | Each designated privileged alias has one verified TOTP; zero pending factors                                                                                |
-| Application RLS / private table access             | PASS    | 63/63 tables retain RLS; zero private tables with client DML/read privileges                                                                                |
-| Checked provisioning entrypoint                    | PASS    | Hosted public wrapper remains invoker and calls the private checked function                                                                                |
-| Required platform authority                        | BLOCKED | Hosted provision_company requires is_platform_admin; its predicate requires signed AAL2 AND an active private.platform_admins row; there are zero such rows |
-| Public Auth restrictions                           | PASS    | Real settings endpoint: signup disabled, email enabled, phone disabled; no setting changed                                                                  |
-| Migration history / bundle                         | PASS    | Exactly the same nine hosted versions; local reviewed bundle checksum matches                                                                               |
-| Authenticated PostgREST/RPC workflow tests         | NOT RUN | Stopped at the grant prerequisite, without provisioning or a service-role bypass                                                                            |
-| Tenant positives/negatives, roles/revocation       | NOT RUN | Require genuine company/member fixtures; empty tables cannot prove isolation                                                                                |
-| Financial calculations / immutable records / audit | NOT RUN | No connected domain fixtures; earlier local tests are not hosted acceptance                                                                                 |
-| Secure document ingestion / source positives       | BLOCKED | Approved scanner, isolated worker, byte transport and AI infrastructure remain unavailable; ingestion stays disabled                                        |
-| Internal customer release workflows                | BLOCKED | Exact private release-environment/test grants need separate Action C review; real signature execution remains excluded                                      |
-| Protected Netlify deployment                       | NOT RUN | Action D is not approved                                                                                                                                    |
+No C1 acceptance assertion failed. The six setup RPC successes and two explicit
+post-revocation denials passed; this is not full Action B tenant/domain acceptance.
+See ACTION_C1_EXECUTION.md for exact timestamps, advisor findings and private
+evidence boundaries. Security advisor has one leaked-password-protection warning;
+no remediation was silently applied. Existing four RLS performance warnings remain.
 
-No authenticated acceptance cases passed or failed in this run: **0 PASS / 0 FAIL;
-NOT RUN due to the provisioning blocker.** The read-only PASS rows above are
-prerequisite checks, not a full tenant/security certification. No discovered test
-failure is hidden as BLOCKED; the blocker is missing authorized infrastructure
-permission. No hosted writes or authorization changes were attempted.
+## Next authorized continuation
 
-## Why provisioning stopped
+Preserve the three companies and the existing private mapping. Do not provision
+again or rerun the bootstrap: its INSERT rejects the retained inactive grant row.
+Use the existing company owners with fresh genuine owner-assisted MFA to establish
+remaining tenant roles through checked membership/invitation workflows and run the
+already-approved synthetic domain fixtures. Accounts/factors must not be recreated
+or reset. Keep scanner/private-release cases BLOCKED and Action D NOT RUN until
+separately authorized. Never use service-role/SQL domain writes to bypass controls.
 
-`public.provision_company` retains the real caller through its invoker wrapper.
-`private.provision_company` raises SQLSTATE 42501 when the current caller fails
-`private.is_platform_admin()`. Genuine AAL2 alone is insufficient: the latter also
-requires an active row in `private.platform_admins` for the authenticated operator.
-The plan explicitly assigns that bootstrap to Action C. Action B approval does not
-authorize it. Do not insert organizations/memberships directly, use an Auth Admin
-key as a domain caller, fabricate claims or bypass this gate through SQL.
-
-## Recommended next action
-
-Review and separately authorize a narrowly scoped Action C platform bootstrap for
-the existing platform-only operator. Keep its exact UID in the ignored private
-mapping, give it no company membership, define the operator-enforced expiry and
-revocation procedure (the current table has no native expiry), and validate the
-exact proposed row before applying it. Do not infer approval for the additional
-release-test/environment or worker grants from a platform-only bootstrap.
-
-Then resume the already-authorized Action B with a fresh genuine owner-assisted
-operator AAL2 session and the checked provisioning/member/domain RPCs. Recheck that
-no companies were created before retrying; create exactly three, never duplicates.
-Full imports/internal customer workflows may remain explicitly BLOCKED until their
-separate infrastructure/grants exist. No Action D deployment, outside access,
-messages, real signatures/payments, payroll execution or production change is
-permitted by this result.
+Historical note: the initial Action B attempt stopped with zero companies because
+it lacked the then-unapproved platform bootstrap. C1 approval/execution supersedes
+that blocker for setup only; it does not expand the continuing scope or privileges.
+No deployment, external communication, live signature/payment/payroll execution,
+production change, outside access or merge occurred.

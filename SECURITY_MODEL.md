@@ -299,3 +299,21 @@ operator window is not automatic expiry: cleanup must deactivate only the exact
 row, prove real AAL2 platform denial, then globally sign out/verify session removal.
 No metadata/claim fabrication, domain service-role client, broader private grant,
 RLS/schema change or hosted Auth mock is introduced. See docs/ACTION_C1_REVIEW.md.
+
+C1 executed evidence (October 16) supersedes earlier unapproved/zero-company status:
+one exact owner-approved platform row was activated with current owner-assisted
+AAL2 and the reviewed five-minute hosted-session guard. Three checked company setups
+completed; no operator tenant membership was added. Revocation retained the row
+inactive, then the same AAL2 caller received platform_access=false and metrics 42501;
+global sign-out and independent zero operator sessions were verified. The full
+22-identity/four-factor sets, nine migrations, 63 RLS tables and zero private client
+table privileges are unchanged. No broader private grant or Auth/API setting changed.
+All customer financial modules remain disabled. Full role/domain/Storage isolation
+still requires positive fixtures and real company-owner sessions.
+
+Post-C1 security advisors report 12 informational private-table/no-policy notices
+and one warning: leaked-password protection disabled. Earlier zero-warning reports
+are historical. Review availability/configuration independently before release;
+C1 does not authorize silently changing Auth settings. Four RLS performance warnings
+also remain. No advisor warning is represented as a passing security certification.
+See docs/ACTION_C1_EXECUTION.md for exact scope, times and remaining gates.

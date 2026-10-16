@@ -1,8 +1,11 @@
 # Connected three-company acceptance · October 16, 2026
 
-**Status: preparation complete; authenticated acceptance NOT RUN. Release 1.0 is
-NOT READY / NOT AUTHORIZED.** Continue draft PR #1. Do not promote development data
-into production. Preserve the applied nine-file bundle and saved Auth/API settings.
+**Status: Action A COMPLETE; approved C1 COMPLETE/revoked; Action B company setup
+PASS, full tenant/domain acceptance NOT RUN. Release 1.0 NOT READY / NOT AUTHORIZED.**
+Three companies and three owner memberships now exist. Do not recreate them or rerun
+C1. See ACTION_C1_EXECUTION.md and ACTION_B_RESULT.md for current counts/evidence.
+Continue draft PR #1, preserve migrations/Auth settings and keep Actions C beyond
+C1/D unapproved. Baseline sections below record earlier observations at their dates.
 
 ## Independently verified baseline
 
@@ -81,13 +84,15 @@ not create emails, passwords, UUIDs, factors, sessions or authority.
 References: [Auth admin creation](https://supabase.com/docs/reference/javascript/auth-admin-createuser),
 [TOTP](https://supabase.com/docs/guides/auth/auth-mfa/totp).
 
-## Action B — AUTHORIZED; BLOCKED on separate platform bootstrap
+## Action B — AUTHORIZED; company setup COMPLETE, domain acceptance pending
 
-The owner approved Action B only. Read-only hosted inspection confirms zero
-platform-admin grants; checked provisioning requires that grant AND AAL2. STOP
-before hosted writes until a separately reviewed Action C platform bootstrap is
-approved. No companies, memberships or domain fixtures were created. See
-ACTION_B_RESULT.md. Do not repeat Action B approval or bypass the missing grant.
+The exact C1 bootstrap was separately approved, activated once with current AAL2,
+and revoked immediately after checked provisioning/configuration of three companies.
+The retained operator row is inactive and its session closed. Three intended owner
+memberships exist; no other staff or domain fixtures exist yet. Do not repeat
+company setup or request Action B approval again. Continue through checked tenant
+workflows with current genuine owner MFA. See ACTION_B_RESULT.md. Broader private
+release/worker grants and deployment remain separately controlled.
 
 The approved fixture scope is exactly three synthetic companies: Straight Edge Property
 Services / property_services, Cunningham Construction / construction, Sample Roofing
