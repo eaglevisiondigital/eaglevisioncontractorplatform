@@ -25,7 +25,8 @@
     "development:workflows": "node scripts/staging-readiness.mts workflows",
     "migrations:check": "node scripts/check-migration-bundle.mjs",
     "development:preflight": "node scripts/connected-preflight.mts",
-    "development:acceptance-plan": "node scripts/acceptance-plan.mts"
+    "development:acceptance-plan": "node scripts/acceptance-plan.mts",
+    "sandbox:plan": "node scripts/sandbox-activation-plan.mts"
   },
   "repository": {
     "type": "git",

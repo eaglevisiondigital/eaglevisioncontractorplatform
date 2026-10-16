@@ -29,7 +29,7 @@ async function main() {
         networkCalls: 0,
         credentialsRead: 0,
         steps: [
-          'review unapplied migration and restricted workload identity',
+          'verify applied migration and review restricted workload identity',
           'approve exact test-account/merchant/authorization manifest',
           'capture with provider-hosted tokenization',
           'repeat identical durable key without second provider call',

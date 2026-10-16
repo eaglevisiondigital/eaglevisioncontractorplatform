@@ -220,3 +220,18 @@ Provider-migration execution continuity:
 - The offline migration checker accepts recorded development-applied metadata only
   when it matches the exact reviewed bytes/scope and providers-disabled state.
   It is an integrity check, never a hosted execution or future activation permit.
+
+Sandbox-readiness continuation:
+
+- Read docs/SANDBOX_ACTIVATION_READINESS.md and PROPERTY_PROCUREMENT_PLAN.md.
+  New offline planner/compiler has no hosted executor or credential reader.
+- Private .staging/sandbox-activation/ probe files are PROPOSED / NOT AUTHORIZED.
+  Never execute them or provision credentials/LOGIN/capabilities from local passes.
+  Guard-only NOLOGIN preparation is distinct from real provider command authority.
+- No checked genuine invoice/consent/token-vault bootstrap exists yet. Do not use
+  laboratory financial records or free-text evidence to authorize provider calls.
+- Accept UI nonce flow differs from Accept Hosted processing. Keep NMI independent;
+  never reuse another gateway's tokens/accounts. Protected Netlify is unchanged.
+- Property/media/comparison/unbilled additions are planned this increment; local
+  implementation authorization persists, with expanded release scheduling undecided.
+  Reuse tenant/property/job/import/expense/change/invoice models and all off gates.

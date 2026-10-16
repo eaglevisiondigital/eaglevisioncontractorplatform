@@ -583,3 +583,35 @@ Security0 WARN/ERROR,28 intentional INFO; existing4 performance WARN remain, plu
 change. No provider identity, credential/grant/binding/call, deployment or outside
 access. Next exact provider activation/provenance/connection review remains separate.
 See docs/PROVIDER_MIGRATION_EXECUTION.md and private execution evidence.
+
+## October16 · prepare activation without creating provider authority
+
+Prioritize the latest sandbox-readiness request at base97e861f. Preserve local
+implementation authorization for property/media/comparison/unbilled additions, but
+record this increment as planning for those modules, not completed implementation.
+No new schema or historical migration edit. Map additions into existing tenant,
+property/job/import/expense/change-order/ledger modules; never duplicate databases.
+Owner must decide expanded media/procurement release inclusion; existing supplemental
+billing conversion cannot be dropped from required Release1.0 financial acceptance.
+
+Separate a dormant15-minute guard-only diagnostic role proposal from any provider
+command/merchant/token/consent grant. Compiler validates UUID/role/TTL and emits
+exact private grant/containment hashes without secret/network/execute capability.
+Starting NOLOGIN ensures the package is unusable until a separate reviewed secure
+credential/LOGIN operation. Store approved scope digest only after owner approves
+that digest and exact SQL; a matching digest alone confers no authority. Terminate
+exact-role sessions before waiting on locked revocation rows; retain audit/evidence.
+
+Use Authorize.Net hosted Accept UI tokenization for the current opaqueData capture
+adapter; Accept Hosted performs a payment itself and must not be double-captured.
+Treat independent NMI Payment Component/v5 compatibility and test-account evidence
+as gates. No real merchant or provenance bootstrap is ready: invoice UUID and
+free-text evidence are not a checked customer financial authorization workflow.
+Prepare123USD capture/23USD settled refund/net100USD as proposed test values only.
+Separate settlement/refund and future lease approvals; never auto-renew UNKNOWN.
+
+Keep DocuSign legal execution false, email SQL-delivery disabled, ingestion503 and
+private media inaccessible. Isolated signature trust, tenant domain verification,
+minimal signed webhook receiver and controlled document/video runtime remain
+external/security gates. No protection exception, local tunnel or frozen-package
+change is implied. Read docs/SANDBOX_ACTIVATION_READINESS.md for approval matrix.

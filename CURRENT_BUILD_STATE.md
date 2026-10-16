@@ -1,6 +1,41 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
-## Latest: corrected provider migration APPLIED / providers DISABLED
+## Latest: sandbox activation readiness / no activation
+
+Base97e861f preserved. New offline sandbox planner, a guard-only dormant workload
+proposal/containment compiler,14 plan tests and6 SQL proposal tests are implemented.
+Read docs/SANDBOX_ACTIVATION_READINESS.md for per-provider gates and private exact
+S0 proposal references. No credential reader, hosted executor, provider call,
+new migration, grant/login, binding, Netlify action or UI/branding change was added.
+
+Fresh actual hosted read: exact development identity/healthy state,10 history
+entries and468 application catalog fingerprints match the applied record;16 private
+provider tables empty;0 provider roles/workloads/authorizations/merchants/sender/
+agreement bindings/active platform grants/public buckets;22 identities/4 verified
+factors/0 sessions. Security0 WARN/ERROR with28 intentional INFO; existing performance
+4 WARN/21 FK/57 unused-index/1 connection INFO remain. No advisor cleanup performed.
+
+Local check597 PASS/33 native-only skips; native PostgreSQL17 database271 PASS,
+including existing expiry/concurrency cases and6 new compiled-proposal cases.
+Final format/browser/frozen-package results are in the readiness report. This is
+local/read-only evidence, not genuine provider acceptance or workload login proof.
+
+First provider candidate: one existing synthetic property-services company and one
+owner-selected Authorize.Net sandbox account. Checked genuine invoice/consent,
+hosted Accept UI ceremony/one-use token vault, callback receiver and exact capability
+bootstrap remain blockers. NMI, DocuSign demo and verified-domain email remain
+independent/off. Smallest next owner scope: select the sandbox account and approve read-only
+account verification/credential custody, no transaction or hosted grant. Local
+checked tokenization/provenance work retains existing development authority.
+
+Property surveys/recurrence/drone-photo-video/client reports, manual supplier
+comparison and unbilled review are PLANNED against existing modules in
+PROPERTY_PROCUREMENT_PLAN.md, not implemented in this readiness increment. Earlier
+local development authorization persists; expanded Release1.0 inclusion/scheduling
+needs a separate owner decision. Existing supplemental invoice conversion remains
+required/blocked. Release1.0 stays NOT READY / NOT AUTHORIZED and PR#1 draft.
+
+## Previous: corrected provider migration APPLIED / providers DISABLED
 
 The owner explicitly authorized the exact57f2aa1 migration/hash/bundle and the
 development target. Refreshed identity/history/hash/catalog/column/default-grant

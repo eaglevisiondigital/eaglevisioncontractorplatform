@@ -506,3 +506,29 @@ all runtime off gates are unchanged. See
 [PROVIDER_MIGRATION_EXECUTION.md](docs/PROVIDER_MIGRATION_EXECUTION.md).
 Separate provider-specific authority/connection/consent and sandbox acceptance
 remain mandatory before activation; production still requires a clean database.
+
+## Sandbox activation readiness and property/procurement plan · October16
+
+Read docs/SANDBOX_ACTIVATION_READINESS.md and docs/PROPERTY_PROCUREMENT_PLAN.md.
+The existing10-migration provider foundation is applied; no new migration or hosted
+write is part of this increment. Fresh read-only468 catalog fingerprints match.
+A network-free plan and narrow dormant diagnostic SQL compiler separate database
+identity proof from merchant/customer authorization and outgoing provider calls.
+The temporary probe grants only the workload guard, no payment/email/agreement
+commands, and stays NOLOGIN; a real credential operation remains separately reviewed.
+
+First gateway candidate is one existing synthetic property-services tenant and one
+owner-approved Authorize.Net sandbox account; independent NMI support remains.
+Hosted Accept UI tokenization, one-use customer/merchant/intent vault binding and
+checked genuine invoice/consent provenance are activation blockers. Callbacks need
+a separately reviewed minimal receiver; never exempt the protected Netlify site.
+DocuSign demo evidence/trust and tenant DNS/suppression/outbox remain disabled.
+
+Property/visit/report/media metadata will extend existing CRM/location/job/storage
+identities with independent item publication and customer projection; video requires
+an isolated parser/transcoder and segment-scoped playback. Manual four-supplier
+quote snapshots extend estimate/material-import sources. Unbilled decisions extend
+existing expenses/change orders/credit/refund provenance, never a second cost or
+billing ledger. These additions are planned, not implemented by this increment;
+expanded media/procurement Release1.0 scope needs an explicit owner scheduling
+choice. Existing customer change-order/supplemental conversion remains required.

@@ -400,3 +400,29 @@ activation/authority/connection operations require new review and owner approval
 Read [PROVIDER_MIGRATION_EXECUTION.md](PROVIDER_MIGRATION_EXECUTION.md); preserve
 all financial/audit evidence via forward-only containment. PR #1 remains draft;
 Release1.0 remains NOT READY / NOT AUTHORIZED.
+
+## October16 · sandbox activation readiness / product expansion planning
+
+Read SANDBOX_ACTIVATION_READINESS.md and PROPERTY_PROCUREMENT_PLAN.md. No provider,
+new hosted schema, role, grant, binding, deployment or release gate was activated.
+Fresh468 catalog fingerprints match applied development history;16 empty default-
+deny provider tables, zero provider roles/capabilities/bindings,22 identities/four
+verified factors/zero sessions. Security0 WARN/ERROR; existing performance4 WARN.
+No genuine provider/Storage/password/TLS/callback acceptance is claimed.
+
+| Item                                                  | Implementation / local evidence                                                                | Hosted/provider acceptance                                                       | Dependency / decision                                                                                                            | Launch ready |
+| ----------------------------------------------------- | ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| Scoped workload bootstrap                             | Offline guard-only NOLOGIN/15minute proposal + containment;14 plan/6 SQL tests PASS            | Read-only installed catalog PASS; proposed writes NOT RUN; genuine login BLOCKED | Exact owner grant/credential/LOGIN/containment approval and independent review                                                   | No           |
+| Authorize.Net first company                           | 123USD capture/23USD settled refund/net100USD plan; existing adapter/intent/inbox/report tests | NOT RUN / blocked                                                                | Owner-approved test merchant, checked real invoice/consent + hosted Accept UI/token vault, receiver and exact calls              | No           |
+| NMI                                                   | Independent v5/Payment Component acceptance plan; existing contracts preserved                 | NOT RUN / blocked                                                                | NMI-issued sandbox, token contract, account/webhook/report vectors and separate approval                                         | No           |
+| DocuSign                                              | Demo reader/ceremony/immutable evidence ports; legal execution=false                           | NOT RUN / blocked                                                                | Actual signer verifier/OAuth/demo binding, isolated trust validator/object service and legal/security review                     | No           |
+| Tenant-branded email                                  | Domain/sender/outbox/events/suppression preparation; SQL delivery=disabled                     | NOT RUN / blocked                                                                | Tenant domain/account/approved DNS/receiver; separate verification before future send approval                                   | No           |
+| Property surveys / recurring reports / progress media | PLANNED against CRM/property/jobs/private Storage; no new UI/schema                            | NOT RUN                                                                          | Owner Release1.0 inclusion/scheduling decision; scanner/video/transcode/playback/publication/retention/portal review             | No           |
+| Manual multi-supplier comparison                      | PLANNED against immutable estimate lines/import evidence, up to4 vendors                       | NOT RUN                                                                          | Local implementation and arithmetic/pack/fees tests; external APIs require separate terms/credentials                            | No           |
+| Unbilled materials / supplemental invoices            | PLANNED extension to expense/import/change-order ledger; no second posting                     | NOT RUN                                                                          | Exact scope/credit/authorization matching and checked approved-change-to-invoice conversion; remains a financial release blocker | No           |
+
+The expansion rows are recorded requirements, not a decision to add every media/
+procurement capability to Release1.0 or permission to remove existing obligations.
+Local implementation authorization persists for a subsequent increment. Unfinished
+modules remain hidden/server-disabled. Protected Netlify deployment and support
+case are untouched. Final local/browser evidence is recorded in the readiness report.

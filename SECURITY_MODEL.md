@@ -511,3 +511,30 @@ notices. No policy, Auth/Storage/configuration or advisor cleanup was authorized
 Private capability creation, genuine provider execution and release approval remain
 separate gates. See docs/PROVIDER_MIGRATION_EXECUTION.md; never edit/replay the now
 ten historical SQL files or use destructive rollback to remove financial evidence.
+
+## Sandbox activation preparation · October16
+
+Fresh read-only catalog/ACL/history inspection matches the applied10-file baseline:
+468 fingerprints,16 empty private provider tables, zero provider roles/workloads/
+authorizations/merchant/sender/agreement bindings, zero effective client/service
+provider-table and command grants. Security advisors0 WARN/ERROR,28 intentional
+RLS/no-policy INFO;4 existing performance WARN remain. This does not establish real
+provider credentials/TLS/callback/Storage or recertify Auth dashboard settings.
+
+The proposed diagnostic bootstrap is private review material only. Its role starts
+NOLOGIN/password NULL, no memberships/elevations/table access, guard-only EXECUTE,
+one tenant/scope lease15minutes. Role VALID UNTIL is a password login deadline,
+not session cancellation. Required operator containment removes LOGIN/password/ACLs
+before terminating exact-role backends and revoking the row, preserving evidence.
+Tests execute the exact compiled proposal on disposable SQL; session-authorization
+simulation is not genuine hosted password authentication. No credential provisioner
+or hosted executor exists in the new offline planner.
+
+Granting a merchant command would bundle several actions. Genuine amount/customer/
+merchant/invoice consent creation still needs a checked workflow; arbitrary UUIDs
+and free-text evidence do not prove financial authorization. No fixture/laboratory
+consent may bridge that gap. Unknown requests/expiring leases keep holds and need
+independent inquiry; do not retry or change keys. Never bypass Netlify team protection
+for webhooks. Future media must separately enforce clean exact-version derivatives,
+per-item publication/current customer mapping and every playback segment/range.
+Read docs/SANDBOX_ACTIVATION_READINESS.md and PROPERTY_PROCUREMENT_PLAN.md for gates.
