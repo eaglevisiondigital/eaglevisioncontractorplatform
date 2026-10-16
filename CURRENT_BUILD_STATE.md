@@ -1,6 +1,15 @@
-# Current build state · October 15, 2026 · connected Release 1.0 development
+# Current build state · October 16, 2026 · approved development migrations applied
 
 ## Governing release policy and latest internal milestone
+
+Latest: the owner-approved nine-file bundle was applied to the verified internal
+development target after commit/checksum/drift/CLI dry-run verification. All nine
+versions match;51 public and12 private tables have RLS; private buckets/grants and
+default-off release gates verified. Official hosted types match after documented
+RPC generator convention normalization. No Auth users or companies were created.
+Auth/API hardening saves await additional automatic-review confirmation. See
+docs/DEVELOPMENT_MIGRATION_RESULT.md for exact versions, advisor findings and gates.
+The earlier pre-migration statements below are historical and superseded here.
 
 **Production Release 1.0: NOT READY / NOT AUTHORIZED.** Phases 1, 2, 3 and 3A are
 internal engineering milestones only. No outside contractor, employee or customer

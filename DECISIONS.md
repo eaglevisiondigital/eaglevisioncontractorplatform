@@ -202,3 +202,18 @@ UNKNOWN with no provider request, requiring explicit operator reconciliation rat
 than an unsafe automatic retry. Eleven synthetic regression cases cover mutation,
 expiry, canonical binding and invalid stored metadata. No migration or activation
 is part of this follow-up; the nine-file reviewed migration bundle is unchanged.
+
+### Execute only the approved development bundle · October16
+
+Owner explicitly authorized the nine-file checksum at reviewed018ef8b. Verified
+clean commit, unchanged bundle, empty application/history/Auth/Storage baseline,
+settings and protected Netlify identity; compared the CLI dry-run's exact ordered
+list/no seeds/no roles before applying with explicit target and skip-vault. All nine
+versions now agree hosted/local. Do not repeat or edit these historical migrations.
+Post-migration catalog/advisors/types are recorded in DEVELOPMENT_MIGRATION_RESULT.md.
+Official RPC types differ only in nullable argument/no-argument generator conventions;
+normalization preserves names, defaults, table nullability, enums and return types.
+Do not overwrite committed types or claim connected workflow acceptance. Performance
+findings require separately reviewed forward changes. Auth/API saves await the
+extra action-time confirmation imposed by automatic approval review. Outside access,
+identity provisioning, protected deploy, provider execution and production remain gated.

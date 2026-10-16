@@ -1,6 +1,10 @@
-# Development migration action review — awaiting authorization
+# Development migration action review — executed with owner approval
 
-The owner approved the **existing development designation**, not execution of these
+Update October16: the owner explicitly authorized and the exact nine-file bundle
+was applied after verification. See DEVELOPMENT_MIGRATION_RESULT.md. The original
+review and boundaries below are retained as historical context.
+
+Originally the owner approved the **existing development designation**, not execution of these
 migrations. The hosted project has no migration history or application tables.
 The exact target is recorded privately. No application deployment, Auth mutation,
 identity creation, seed/reset, provider connection or production action is included.

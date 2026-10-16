@@ -75,3 +75,10 @@ Actual sender/provider callbacks, provider-specific authorization/intent persist
 secure tokenization/byte ingestion, signature/legal compliance, credit-note/change-
 order invoice conversion, hosted/independent testing and clean production remain
 required. Local fixtures/CI success do not satisfy those gates.
+
+October16 schema milestone: approved nine-file development bundle applied; all51
+public/12 private application tables have RLS, private Storage/default-off gates
+verified and official types compared. Security advisor zeroWARN/ERROR; performance
+follow-up remains. Auth/API saves await automatic-review action-time confirmation.
+This does not change any module's hosted workflow/launch readiness. See
+DEVELOPMENT_MIGRATION_RESULT.md for exact versions and remaining acceptance gates.

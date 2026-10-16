@@ -1,5 +1,10 @@
 # Connected development designation and action review
 
+October16 update: the owner-approved nine-file migration bundle is now applied and
+verified. Auth/API hardening is authorized but its browser saves await additional
+automatic-review action-time confirmation. See DEVELOPMENT_MIGRATION_RESULT.md.
+Earlier baseline/pending-action statements below are historical where superseded.
+
 Owner decision recorded **October 15, 2026 (America/Chicago)**. The existing
 contractor Supabase project is approved as **internal development**, paired with
 the owner-designated protected Netlify staging site. This supersedes the earlier

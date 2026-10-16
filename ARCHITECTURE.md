@@ -325,3 +325,13 @@ and completion therefore refer to the same tenant, merchant, invoice, authorizat
 amount and token even if caller-owned objects change during an asynchronous wait.
 Expiry is checked again after reservation, before transport. Invalid reservation
 states and malformed replay metadata fail closed. No route or provider was enabled.
+
+### Approved development schema execution · October16
+
+The nine-file reviewed bundle is now applied to the owner-designated development
+project. No deployment, identity provisioning or real provider activation occurred.
+The51 public/12 private RLS tables, checked invoker/private-definer boundaries,
+private buckets and default-off internal release controls were verified hosted.
+Generated types match with documented RPC generator conventions. This establishes
+schema readiness only; actual multi-company Auth/MFA/HTTP workflows remain pending.
+See docs/DEVELOPMENT_MIGRATION_RESULT.md for the execution and hardening status.

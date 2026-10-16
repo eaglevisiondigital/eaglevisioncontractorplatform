@@ -248,3 +248,13 @@ idempotency binding. Expiry during reservation produces UNKNOWN without transpor
 there is no automatic retry. Stored success identifiers are bounded/validated,
 non-success identifiers must be null and unknown reservation states cannot execute.
 The trusted durable intent store and real provider validation remain prerequisites.
+
+Hosted development schema verification (October16): all63 application tables have
+RLS, every public table has policies, no public definers or unsafe private definer
+search paths exist, clients have no private table privileges and buckets are private.
+Security advisors have12 informational private-table/no-policy findings, zero
+warnings/errors. Four performance policy warnings need a separate reviewed forward
+change. Auth/API hardening is authorized but browser saves await additional
+confirmation required by automatic approval review; do not assume it is active.
+No real Auth/MFA/Storage/three-company acceptance has been performed yet. See
+docs/DEVELOPMENT_MIGRATION_RESULT.md; empty tables are not positive isolation proof.
