@@ -260,3 +260,13 @@ Broader default-ACL cleanup was rejected and not applied; provider-managed and
 residual non-API defaults remain as documented in the execution report.
 No real Auth/MFA/Storage/three-company acceptance has been performed yet. See
 docs/DEVELOPMENT_MIGRATION_RESULT.md; empty tables are not positive isolation proof.
+
+Independent acceptance preflight: saved Auth/MFA/redirect/API controls and current
+ACLs reverified;56 real read-only checks passed. Anonymous table denial requires
+expected permission errors, not2xx/empty or5xx. Storage empty bucket listing is
+only non-disclosure evidence, not object or tenant isolation. No current PUBLIC
+public-function EXECUTE or client TRUNCATE grant found. Broader future-default ACL
+cleanup is advisable defense in depth, not needed to test the existing reviewed
+schema. No rejected action was retried. New privileged TOTP seeds/session tokens
+must never enter logs/CI; actual identity/factor/fixture/grant writes need separate
+approval. Details and unrun cases: docs/CONNECTED_ACCEPTANCE_PLAN.md.

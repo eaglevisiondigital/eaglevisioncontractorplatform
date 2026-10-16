@@ -5,3 +5,6 @@ supabase/config.toml
 supabase/migrations
 supabase/.temp
 test-results
+
+# Private connected-test manifests, credentials and evidence.
+.staging

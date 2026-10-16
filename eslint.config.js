@@ -5,7 +5,9 @@ import refresh from 'eslint-plugin-react-refresh';
 import globals from 'globals';
 
 export default tseslint.config(
-  { ignores: ['dist/**', 'node_modules/**', 'supabase/.temp/**'] },
+  {
+    ignores: ['dist/**', 'node_modules/**', 'supabase/.temp/**', '.staging/**'],
+  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   { languageOptions: { globals: { ...globals.browser, ...globals.node } } },

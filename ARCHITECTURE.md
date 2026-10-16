@@ -343,3 +343,11 @@ protection are preserved. This dashboard setting does not revoke every PostgreSQ
 default privilege: residual/global/provider-managed defaults remain and broader
 cleanup was rejected by automatic review. Continue explicit per-object grants and
 revokes in every future reviewed migration. No deployment/accounts were created.
+
+Connected acceptance preparation adds a read-only GET preflight distinct from
+authenticated tenant/workflow acceptance. It has no provisioning/write/upload mode,
+uses an expiring privately supplied publishable-key target and emits only case
+labels/status/pass booleans. Offline roster planning confers no identity or role.
+The current full positive-control harness is preserved; missing worker/Storage or
+tenant rows cannot yield full success. See docs/CONNECTED_ACCEPTANCE_PLAN.md for
+22 identities and separate identity/fixture/private-grant/deploy approval boundaries.

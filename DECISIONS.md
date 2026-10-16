@@ -219,3 +219,19 @@ confirmation, dashboard Auth/API saves completed and persisted. A broader defaul
 cleanup was rejected and not applied; do not retry it indirectly or claim all
 PostgreSQL defaults were removed. Outside access,
 identity provisioning, protected deploy, provider execution and production remain gated.
+
+### Separate preflight evidence from connected acceptance
+
+Add a GET-only preflight with explicit private target/read-action reference/expiry
+and modern publishable key; never infer tenant security from empty tables. Real
+preflight56PASS/0FAIL is independent of future22-identity/three-company acceptance.
+Plan genuine human TOTP via the existing component, no fabricated JWT/factors.
+Keep account creation, fixtures/workflow writes, private grants and protected deploy
+as four reviewed actions. No hosted writes are authorized by this preparation.
+
+Independent privilege review found no current object exposure requiring immediate
+broad revocation. Review narrow future-object defaults separately; leave existing
+RPC/service/provider-owned privileges intact. Do not bypass the previous rejection.
+Exclude private .staging evidence from lint/format as well as Git, so local generated
+catalog artifacts cannot contaminate checks. Full connected matrix, blockers and
+Netlify404 limitation are recorded in CONNECTED_ACCEPTANCE_PLAN.md/the checklist.

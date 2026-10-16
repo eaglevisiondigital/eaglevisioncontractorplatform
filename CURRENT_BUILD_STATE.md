@@ -2,6 +2,15 @@
 
 ## Governing release policy and latest internal milestone
 
+Connected-acceptance preparation: independently reverified saved Auth/API/MFA
+settings and existing grants. Real anonymous/read-only API preflight56PASS/0FAIL;
+no hosted identity, fixture or grant writes. Offline22-identity roster, genuine
+human TOTP and four separate action approvals, role/domain/Storage evidence matrix
+and protected-deploy procedure are in docs/CONNECTED_ACCEPTANCE_PLAN.md. Local
+suite354PASS/9native-only skips; no new SQL. Broader default-ACL cleanup is not
+necessary for existing-schema acceptance; review a narrow future-object change
+separately. Netlify metadata intact; root404 is not deployed perimeter proof.
+
 Latest: the owner-approved nine-file bundle was applied to the verified internal
 development target after commit/checksum/drift/CLI dry-run verification. All nine
 versions match;51 public and12 private tables have RLS; private buckets/grants and

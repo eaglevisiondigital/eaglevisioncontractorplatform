@@ -83,3 +83,28 @@ follow-up remains. Owner-confirmed Auth/API dashboard saves completed and were
 verified after reload; broader default-ACL changes were rejected/not applied.
 This does not change any module's hosted workflow/launch readiness. See
 DEVELOPMENT_MIGRATION_RESULT.md for exact versions and remaining acceptance gates.
+
+## Connected acceptance checkpoint · October16, 2026
+
+Detailed cases,22-identity roster, genuine TOTP procedure, fixture/grant scopes,
+protected-deploy procedure and privilege assessment: CONNECTED_ACCEPTANCE_PLAN.md.
+Starting commit0df0fc9; this checkpoint adds read-only tooling only.
+
+| Evidence                                        | Exact latest result                                                  | Full acceptance status                                                                         |
+| ----------------------------------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| Persisted Auth/MFA/redirect/API settings        | PASS, independently reloaded; no changes                             | Configuration only                                                                             |
+| Current API grants/private boundary             | PASS, SQL catalogs;0 users/companies                                 | Nonempty role/tenant controls NOT RUN                                                          |
+| Real read-only Auth/PostgREST/Storage preflight | 56 PASS /0 FAIL                                                      | Anonymous boundary only; not three-company acceptance                                          |
+| Synthetic identities/genuine TOTP               | 0 created /0 enrolled                                                | BLOCKED: separate ActionA approval and secure operator credentials                             |
+| Three-company role/revocation/domain workflows  | 0 authenticated cases run                                            | BLOCKED: identities, ActionB fixtures/write approval and ActionC grants                        |
+| Storage objects/import worker positives         | 0 object cases run                                                   | BLOCKED: approved fixture writes, provenance/worker/scanner infrastructure                     |
+| Netlify protection metadata                     | PASS, team login/all deploys                                         | Anonymous root404 is INCONCLUSIVE; app/assets/API perimeter NOT RUN                            |
+| Protected application deploy                    | 0 performed                                                          | BLOCKED: separate ActionD commit/artifact/site approval                                        |
+| Broader default-privilege cleanup               | REVIEW COMPLETE;0 SQL changes                                        | Not required for existing-schema acceptance; future-object defense-in-depth review recommended |
+| Local preparation suite                         | 354 PASS /9 native-only skips; lint/types/checksum/build/format PASS | Local evidence only; native144/browser48 preceding results retained                            |
+
+No current connected preflight failures were observed. NOT RUN/BLOCKED and404
+must never be counted as PASS for authenticated workflow, cross-tenant Storage or
+perimeter acceptance. All required modules remain launch-ready **No**. No identity,
+fixture, private grant, configuration write, deployment or provider call occurred
+in this preparation checkpoint. Earlier execution/configuration reports remain valid.
