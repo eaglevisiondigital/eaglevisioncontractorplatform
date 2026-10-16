@@ -485,3 +485,14 @@ the file is still unapplied and creates no capabilities. Earlier readiness
 descriptions are implementation intent, not proof of strict expiry enforcement.
 See [PROVIDER_MIGRATION_FINAL_REVIEW.md](docs/PROVIDER_MIGRATION_FINAL_REVIEW.md)
 before proposing any successor migration or hosted action.
+
+Owner-authorized local remediation now supersedes that rejected snapshot. The
+same pending file has new reviewed bytes and stays unapplied. The shared guard
+locks the capability then checks wall time; each command has one success exit
+checkpoint covering reads/replays and post-DML waits. Payment authorization/intent,
+sender/domain and agreement binding expiry remain current after resource locks.
+Late failure rolls back the statement's provider and audit effects. The guard
+returns a capability UUID; each command audits it once with no human actor.
+Table-level terminal result checks now reject SQL NULL independently of command
+validation. No new public function or capability. See
+[PROVIDER_MIGRATION_REMEDIATION.md](docs/PROVIDER_MIGRATION_REMEDIATION.md).

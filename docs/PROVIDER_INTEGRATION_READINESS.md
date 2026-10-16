@@ -1,5 +1,11 @@
 # Release 1.0 provider integration readiness
 
+**Latest: owner-authorized local M1/M2 remediation is verified.** The corrected
+unapplied hash is GO for a separate development migration approval request;
+execution and all provider capabilities remain unauthorized/disabled. Read
+[PROVIDER_MIGRATION_REMEDIATION.md](PROVIDER_MIGRATION_REMEDIATION.md) before the
+historical review/readiness checkpoints below. The old9588 hash remains rejected.
+
 **Independent review update (October16, base230f5b8): NO-GO for the exact pending
 migration.** M1 expiry-during-lock-wait and M2 terminal SQL-NULL result were
 reproduced. The original readiness evidence below remains historical; no apply or

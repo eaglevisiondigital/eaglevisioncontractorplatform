@@ -194,3 +194,16 @@ Provider-readiness continuation rules:
   outbox remains SQL-disabled. Worker JWT tests do not certify runtime/scanner/Storage.
 - Preserve the frozen blocked Netlify package. Support recommendations require a new
   exact corrective authorization; no retry/replacement/deletion/publication is implied.
+
+Provider-security remediation continuity:
+
+- Read docs/PROVIDER_MIGRATION_REMEDIATION.md and the updated separate manifest.
+  Old9588 SQL is rejected; the corrected pending file remains UNAPPLIED / NOT
+  AUTHORIZED despite technical GO for a separate development approval request.
+- Preserve lock-then-wall-time and final command checkpoints; no early success
+  path may bypass them. Terminal result CHECKs must reject SQL NULL as well as
+  malformed JSON through both commands and maintenance. Never weaken UNKNOWN holds.
+- Run tests/database/provider-expiry.test.ts on native PostgreSQL17:22 real wait/
+  stale-transaction-time cases cannot be replaced with PGlite or clock mocks.
+  Private provider roles/grants exist only in disposable test fixtures; no hosted
+  workload activation or execution approval is implied by any passing suite.

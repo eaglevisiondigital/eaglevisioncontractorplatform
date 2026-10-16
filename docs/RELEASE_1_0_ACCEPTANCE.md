@@ -339,3 +339,34 @@ branding was changed. Every required module remains launch-ready **No**.
 See [PROVIDER_MIGRATION_FINAL_REVIEW.md](PROVIDER_MIGRATION_FINAL_REVIEW.md) for exact
 versions, findings, scope, evidence and audit-preserving containment. PR #1 stays
 draft; Release1.0 remains NOT READY / NOT AUTHORIZED.
+
+## October16 · owner-approved local provider security remediation
+
+**PASS / local:** M1 post-lock wall-clock capability/authorization/binding checks
+and final command checkpoints; M2 explicit non-NULL valid terminal objects through
+restricted/maintenance paths. Same pending filename, new file hash5dd07b07… and
+bundle231fa367…; original nine migrations unchanged. The original9588 hash remains
+NO-GO; the new hash is GO only for a separate dormant development apply approval.
+
+| Evidence                                  | Result                                                                                                                   |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Full npm check                            | 577 PASS/33 native-only skips; lint/types/regenerated public types unchanged/migration hashes/build PASS                 |
+| Native PostgreSQL17.11                    | 265 PASS/zero skips, including22 new real lock-wait races and all native-only cases                                      |
+| Separate prior-review adversarial harness | Original SQL10 PASS/3 FAIL reproduced; corrected13 PASS/zero FAIL                                                        |
+| Desktop/tablet/mobile                     | 51 PASS; existing preview preserved using an isolated loopback port                                                      |
+| Frozen protected deployment package/logo  | 26 offline integrity PASS; no hosted Netlify call                                                                        |
+| Hosted read-only/drift/dry run            | 422 application records and exact stored nine histories unchanged; CLI lists only corrected pending file; no roles/seeds |
+
+Counts overlap. Post-dry-run state remains nine migrations/no proposed provider
+tables/zero active platform admins. Existing security0 WARN/ERROR,12 INFO and
+performance4 WARN/64 INFO remain; unapplied-schema hosted advisors are NOT RUN.
+
+**BLOCKED:** hosted schema apply until separate exact authorization; all genuine
+provider accounts/authority/infrastructure and independent release/security/legal/
+financial review. **NOT RUN:** hosted corrected schema, new service identities/
+grants, provider activation, real financial/signature/email/payroll actions and
+Netlify deployment. No required module becomes launch-ready; customer execution
+remains disabled. Read [PROVIDER_MIGRATION_REMEDIATION.md](PROVIDER_MIGRATION_REMEDIATION.md)
+for exact hashes/scope, tests, residual transaction/provider limits, target-specific
+operation preparation and audit-preserving containment. PR #1 stays draft and
+Release1.0 remains NOT READY / NOT AUTHORIZED for outside users.

@@ -1,5 +1,10 @@
 # Provider migration: final development review
 
+Historical review of hash9588d8db…: its NO-GO and evidence are preserved below.
+Owner-authorized local remediation now has a different, still-unapplied hash;
+read [PROVIDER_MIGRATION_REMEDIATION.md](PROVIDER_MIGRATION_REMEDIATION.md).
+No hosted execution approval follows from either report.
+
 October 16, 2026 · reviewed source commit `230f5b8ee9e49624b888af445775a1b7ebbb0e9a`.
 
 **NO-GO for the exact proposed migration.** Independent native PostgreSQL testing

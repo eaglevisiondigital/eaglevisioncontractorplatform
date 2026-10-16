@@ -41,7 +41,8 @@ create table private.sandbox_gateway_attempts (
  foreign key(organization_id,merchant_id) references private.merchant_configurations(organization_id,id),
  foreign key(organization_id,capture_key) references private.sandbox_gateway_attempts(organization_id,idempotency_key),
  check((kind='capture' and capture_key is null) or (kind='refund' and capture_key is not null)),
- check((status='pending' and result is null) or (status<>'pending' and jsonb_typeof(result)='object'))
+ constraint sandbox_status_result check((status='pending' and result is null) or
+  (status<>'pending' and result is not null and coalesce(jsonb_typeof(result)='object',false)))
 );
 create index sandbox_attempt_merchant on private.sandbox_gateway_attempts(organization_id,merchant_id);
 create index sandbox_attempt_capture on private.sandbox_gateway_attempts(organization_id,capture_key);
@@ -124,19 +125,24 @@ create table private.provider_workloads (
 );
 create index provider_workload_scope on private.provider_workloads(organization_id,service,scope_id);
 create trigger immutable_workload before update or delete on private.provider_workloads for each row execute function private.protect_gateway_authorization();
-create function private.require_provider_workload(p_org uuid,p_scope uuid,p_service text) returns void
+create function private.require_provider_workload(p_org uuid,p_scope uuid,p_service text) returns uuid
 language plpgsql security definer set search_path='' as $$
-declare capability_id uuid;
+declare capability private.provider_workloads;
 begin
  if session_user in ('anon','authenticated','service_role','authenticator','postgres','supabase_admin')
- or not exists(select 1 from pg_catalog.pg_roles where rolname=session_user and rolcanlogin and not rolsuper and not rolbypassrls and not rolcreaterole and not rolcreatedb)
+ or not exists(select 1 from pg_catalog.pg_roles where rolname=session_user and rolcanlogin and not rolsuper and not rolbypassrls and not rolcreaterole and not rolcreatedb and not rolreplication)
  or exists(select 1 from pg_catalog.pg_auth_members where member=(select oid from pg_catalog.pg_roles where rolname=session_user))
  or not exists(select 1 from private.provider_workloads where db_role=session_user and organization_id=p_org and scope_id=p_scope and service=p_service and revoked_at is null and created_at<=clock_timestamp() and expires_at>clock_timestamp())
  then raise exception 'Provider workload denied' using errcode='42501'; end if;
- -- Serializes revocation with every command, including outcome persistence.
- select id into capability_id from private.provider_workloads where db_role=session_user and organization_id=p_org and scope_id=p_scope and service=p_service and revoked_at is null and created_at<=clock_timestamp() and expires_at>clock_timestamp() for update;
- if not found then raise exception 'Provider workload revoked' using errcode='42501'; end if;
- insert into public.activity_events(organization_id,actor_id,action,entity_type,entity_id) values(p_org,null,'provider.'||p_service||'.authorized','provider_workloads',capability_id);
+ -- Identity selects the row; time is checked AFTER acquiring its lock. An
+ -- unchanged tuple does not reevaluate a WHERE time predicate after waiting.
+ select * into capability from private.provider_workloads where db_role=session_user and organization_id=p_org and scope_id=p_scope and service=p_service for update;
+ if not found or capability.revoked_at is not null or capability.created_at>clock_timestamp() or capability.expires_at<=clock_timestamp() then
+  raise exception 'Provider workload expired or revoked' using errcode='42501';
+ end if;
+ -- Pure checkpoint: callers audit once, and repeat this guard after their other
+ -- locks and after DML. A late failure rolls back every effect of the command.
+ return capability.id;
 end $$;
 revoke all on function private.require_provider_workload(uuid,uuid,text) from public,anon,authenticated;
 
@@ -179,11 +185,16 @@ declare
  a private.sandbox_gateway_authorizations; r private.sandbox_gateway_attempts;
  c private.sandbox_gateway_attempts; m private.merchant_configurations;
  old_digest text; used numeric; outcome jsonb; k uuid; op_kind text; snapshot jsonb; snapshot_hash text; report jsonb;
+ command_result jsonb; capability_id uuid;
 begin
- perform private.require_provider_workload(p_org,p_merchant,'payment');
+ capability_id:=private.require_provider_workload(p_org,p_merchant,'payment');
+ insert into public.activity_events(organization_id,actor_id,action,entity_type,entity_id) values(p_org,null,'provider.payment.authorized','provider_workloads',capability_id);
+ <<provider_command>>
+ begin
  if coalesce(jsonb_typeof(p),'')<>'object' or pg_catalog.pg_column_size(p)>16384 or exists(select 1 from jsonb_each(p) where value='null'::jsonb) then raise exception 'Invalid command'; end if;
  select * into m from private.merchant_configurations where organization_id=p_org and id=p_merchant for update;
  if not found or m.environment<>'sandbox' then raise exception 'Sandbox merchant required'; end if;
+ perform private.require_provider_workload(p_org,p_merchant,'payment');
  if p->>'provider' is distinct from m.provider then raise exception 'Provider merchant binding conflict'; end if;
  p:=p-'provider';
  -- finish can persist a returned outcome after merchant approval expires; new calls cannot.
@@ -193,12 +204,13 @@ begin
   k:=(p->>'key')::uuid; op_kind:=p->>'kind';
   if op_kind not in ('capture','refund') or not((p->>'expiresAt')::timestamptz>clock_timestamp()) then raise exception 'Expired reservation'; end if;
   select * into a from private.sandbox_gateway_authorizations where organization_id=p_org and id=(p->>'authorizationId')::uuid and merchant_id=p_merchant and invoice_id=(p->>'invoiceId')::uuid and provider=m.provider and kind=p->>'kind' and amount_minor=(p->>'amountMinor')::bigint and request_digest=p->>'digest' and revoked_at is null and expires_at>clock_timestamp() for update;
-  if not found then raise exception 'Independent provider authorization required'; end if;
+  if not found or a.expires_at<=clock_timestamp() then raise exception 'Independent provider authorization required'; end if;
+  perform private.require_provider_workload(p_org,p_merchant,'payment');
   select * into r from private.sandbox_gateway_attempts where organization_id=p_org and idempotency_key=k;
   if found then
    if r.request_digest<>p->>'digest' or r.authorization_id<>a.id or r.merchant_id<>p_merchant or r.kind<>op_kind then raise exception 'Idempotency conflict'; end if;
-   if r.status in ('pending','unknown') then return jsonb_build_object('status','unknown'); end if;
-   return jsonb_build_object('status','existing','result',r.result);
+   if r.status in ('pending','unknown') then command_result:=jsonb_build_object('status','unknown'); exit provider_command; end if;
+   command_result:=jsonb_build_object('status','existing','result',r.result); exit provider_command;
   end if;
   if op_kind='capture' and (p ? 'captureKey' or p ? 'transactionId') then raise exception 'Capture scope conflict'; end if;
   if op_kind='refund' then
@@ -208,36 +220,39 @@ begin
    select coalesce(sum(amount_minor),0) into used from private.sandbox_gateway_attempts where organization_id=p_org and capture_key=c.idempotency_key and status<>'declined';
    if used+a.amount_minor>c.amount_minor then raise exception 'Refund capacity exceeded'; end if;
   end if;
+  -- Refund capture locks and any prior waits must not extend new-call authority.
+  perform private.require_provider_workload(p_org,p_merchant,'payment');
+  if a.expires_at<=clock_timestamp() or (p->>'expiresAt')::timestamptz<=clock_timestamp() then raise exception 'Expired reservation' using errcode='42501'; end if;
   insert into private.sandbox_gateway_attempts(organization_id,idempotency_key,authorization_id,merchant_id,invoice_id,kind,capture_key,amount_minor,request_digest)
    values(p_org,k,a.id,p_merchant,a.invoice_id,op_kind,c.idempotency_key,a.amount_minor,a.request_digest);
-  return jsonb_build_object('status','reserved');
+  command_result:=jsonb_build_object('status','reserved'); exit provider_command;
  elsif p_action='finish' then
   if p-array['key','authorizationId','invoiceId','kind','result']<>'{}'::jsonb or not(p ?& array['key','authorizationId','invoiceId','kind','result']) then raise exception 'Invalid completion'; end if;
   select * into r from private.sandbox_gateway_attempts where organization_id=p_org and merchant_id=p_merchant and idempotency_key=(p->>'key')::uuid for update;
   if not found or r.authorization_id<>(p->>'authorizationId')::uuid or r.invoice_id<>(p->>'invoiceId')::uuid or r.kind<>p->>'kind' or (p->'result'->>'provider') is distinct from m.provider then raise exception 'Unreserved outcome'; end if;
   outcome:=p->'result';
   if r.status<>'pending' then
-   if r.result=outcome then return jsonb_build_object('status','duplicate'); end if;
+   if r.result=outcome then command_result:=jsonb_build_object('status','duplicate'); exit provider_command; end if;
    raise exception 'Immutable outcome';
   end if;
   update private.sandbox_gateway_attempts set status=outcome->>'status',result=outcome where organization_id=p_org and idempotency_key=r.idempotency_key;
-  return jsonb_build_object('status','recorded');
+  command_result:=jsonb_build_object('status','recorded'); exit provider_command;
  elsif p_action='webhook' then
   if p-array['eventId','digest']<>'{}'::jsonb or not(p ?& array['eventId','digest']) then raise exception 'Invalid webhook'; end if;
   select body_digest into old_digest from private.sandbox_gateway_inbox where organization_id=p_org and merchant_id=p_merchant and event_id=p->>'eventId';
   if found then
    if old_digest<>p->>'digest' then raise exception 'Conflicting webhook replay'; end if;
-   return jsonb_build_object('status','duplicate');
+   command_result:=jsonb_build_object('status','duplicate'); exit provider_command;
   end if;
   insert into private.sandbox_gateway_inbox(organization_id,merchant_id,event_id,body_digest) values(p_org,p_merchant,p->>'eventId',p->>'digest');
-  return jsonb_build_object('status','recorded');
+  command_result:=jsonb_build_object('status','recorded'); exit provider_command;
  elsif p_action in ('transactions','reconcile') then
   if (select count(*) from private.sandbox_gateway_attempts where organization_id=p_org and merchant_id=p_merchant)>1000 then raise exception 'Reconciliation page limit; reviewed pagination required'; end if;
   select coalesce(jsonb_agg(jsonb_build_object('key',idempotency_key,'status',status,'kind',kind,'amountMinor',amount_minor,'transactionId',result->>'transactionId') order by idempotency_key),'[]'::jsonb) into snapshot from private.sandbox_gateway_attempts where organization_id=p_org and merchant_id=p_merchant;
   snapshot_hash:=encode(sha256(convert_to(snapshot::text,'UTF8')),'hex');
   if p_action='transactions' then
    if p<>'{}'::jsonb then raise exception 'Invalid transaction list'; end if;
-   return jsonb_build_object('snapshot',snapshot_hash,'transactions',snapshot);
+   command_result:=jsonb_build_object('snapshot',snapshot_hash,'transactions',snapshot); exit provider_command;
   end if;
   if p-array['reportId','digest','snapshot','rows']<>'{}'::jsonb or not(p ?& array['reportId','digest','snapshot','rows']) or jsonb_typeof(p->'rows')<>'array' or jsonb_array_length(p->'rows')>1000 then raise exception 'Invalid reconciliation'; end if;
   if p->>'snapshot'<>snapshot_hash then raise exception 'Reconciliation snapshot changed'; end if;
@@ -254,10 +269,10 @@ begin
   select result into outcome from private.sandbox_gateway_reconciliations where organization_id=p_org and report_id=(p->>'reportId')::uuid;
   if found then
    if not exists(select 1 from private.sandbox_gateway_reconciliations where organization_id=p_org and report_id=(p->>'reportId')::uuid and merchant_id=p_merchant and evidence_sha256=p->>'digest' and snapshot_sha256=snapshot_hash and result=report) then raise exception 'Reconciliation replay conflict'; end if;
-   return jsonb_build_object('status','duplicate','report',outcome);
+   command_result:=jsonb_build_object('status','duplicate','report',outcome); exit provider_command;
   end if;
   insert into private.sandbox_gateway_reconciliations(organization_id,merchant_id,report_id,evidence_sha256,snapshot_sha256,result) values(p_org,p_merchant,(p->>'reportId')::uuid,p->>'digest',snapshot_hash,report);
-  return jsonb_build_object('status','recorded','report',report);
+  command_result:=jsonb_build_object('status','recorded','report',report); exit provider_command;
  elsif p_action='observe' then
   if p-array['observationId','key','transactionId','kind','amountMinor','currency','state','digest','observedAt']<>'{}'::jsonb or not(p ?& array['observationId','key','transactionId','kind','amountMinor','currency','state','digest','observedAt']) then raise exception 'Invalid observation'; end if;
   select * into r from private.sandbox_gateway_attempts where organization_id=p_org and merchant_id=p_merchant and idempotency_key=(p->>'key')::uuid for update;
@@ -266,16 +281,23 @@ begin
   select evidence_sha256 into old_digest from private.sandbox_gateway_observations where organization_id=p_org and observation_id=(p->>'observationId')::uuid;
   if found then
    if not exists(select 1 from private.sandbox_gateway_observations where organization_id=p_org and merchant_id=p_merchant and observation_id=(p->>'observationId')::uuid and attempt_key=r.idempotency_key and provider_transaction_id=p->>'transactionId' and kind=r.kind and amount_minor=r.amount_minor and currency='USD' and state=p->>'state' and evidence_sha256=p->>'digest' and observed_at=(p->>'observedAt')::timestamptz) then raise exception 'Observation replay conflict'; end if;
-   return jsonb_build_object('status','duplicate');
+   command_result:=jsonb_build_object('status','duplicate'); exit provider_command;
   end if;
   insert into private.sandbox_gateway_observations(organization_id,merchant_id,observation_id,attempt_key,provider_transaction_id,kind,amount_minor,currency,state,evidence_sha256,observed_at)
    values(p_org,p_merchant,(p->>'observationId')::uuid,r.idempotency_key,p->>'transactionId',r.kind,r.amount_minor,'USD',p->>'state',p->>'digest',(p->>'observedAt')::timestamptz);
   if p->>'state'='settled' and r.kind='capture' and r.status='succeeded' then
    insert into private.sandbox_gateway_settlements(organization_id,capture_key,evidence_sha256) values(p_org,r.idempotency_key,p->>'digest') on conflict do nothing;
   end if;
-  return jsonb_build_object('status','recorded');
+  command_result:=jsonb_build_object('status','recorded'); exit provider_command;
  end if;
  raise exception 'Unsupported gateway command';
+ end provider_command;
+ -- One exit checkpoint covers reads/replays and implicit DML/FK/audit waits.
+ if p_action='reserve' and (a.revoked_at is not null or a.expires_at<=clock_timestamp() or (p->>'expiresAt')::timestamptz<=clock_timestamp()) then
+  raise exception 'Expired reservation' using errcode='42501';
+ end if;
+ perform private.require_provider_workload(p_org,p_merchant,'payment');
+ return command_result;
 end $$;
 revoke all on function private.sandbox_gateway_control(uuid,uuid,text,jsonb) from public,anon,authenticated;
 
@@ -352,13 +374,18 @@ create function private.provider_email_control(p_org uuid,p_config uuid,p_action
 language plpgsql security definer set search_path='' as $$
 declare d private.provider_email_domains; o private.provider_email_outbox;
  b private.provider_email_bindings; e private.provider_email_events; n uuid;
+ command_result jsonb; capability_id uuid;
 begin
- perform private.require_provider_workload(p_org,p_config,'email');
+ capability_id:=private.require_provider_workload(p_org,p_config,'email');
+ insert into public.activity_events(organization_id,actor_id,action,entity_type,entity_id) values(p_org,null,'provider.email.authorized','provider_workloads',capability_id);
+ <<provider_command>>
+ begin
  if coalesce(jsonb_typeof(p),'')<>'object' or pg_catalog.pg_column_size(p)>8192 or exists(select 1 from jsonb_each(p) where value='null'::jsonb) then raise exception 'Invalid email command'; end if;
  -- Serialize across all workload identities for this sender, including suppression.
  perform 1 from private.provider_email_sender_bindings where organization_id=p_org and configuration_id=p_config order by version for update;
  -- Serialize preparation/events and domain changes for this tenant/configuration.
  perform 1 from private.provider_workloads where db_role=session_user and organization_id=p_org and scope_id=p_config and service='email' for update;
+ perform private.require_provider_workload(p_org,p_config,'email');
  if p_action in ('domain','prepare') then
   perform 1 from private.provider_email_sender_bindings where organization_id=p_org and configuration_id=p_config and revoked_at is null and expires_at>clock_timestamp() for share;
   if not found then raise exception 'Current sender binding required'; end if;
@@ -370,11 +397,11 @@ begin
   select * into d from private.provider_email_domains where organization_id=p_org and id=(p->>'id')::uuid;
   if found then
    if d.configuration_id<>p_config or d.version<>(p->>'version')::integer or d.profile_digest<>p->>'profileDigest' or d.provider_account_id<>p->>'accountId' or d.domain_id<>(p->>'domainId')::uuid or d.evidence_sha256<>p->>'digest' or d.checked_at<>(p->>'checkedAt')::timestamptz or d.expires_at<>(p->>'expiresAt')::timestamptz then raise exception 'Domain replay conflict'; end if;
-   return jsonb_build_object('status','duplicate');
+   command_result:=jsonb_build_object('status','duplicate'); exit provider_command;
   end if;
   insert into private.provider_email_domains(organization_id,id,configuration_id,version,profile_digest,provider_account_id,domain_id,checked_at,expires_at,evidence_sha256)
-   values(p_org,(p->>'id')::uuid,p_config,(p->>'version')::integer,p->>'profileDigest',p->>'accountId',(p->>'domainId')::uuid,(p->>'checkedAt')::timestamptz,(p->>'expiresAt')::timestamptz,p->>'digest');
-  return jsonb_build_object('status','recorded');
+   values(p_org,(p->>'id')::uuid,p_config,(p->>'version')::integer,p->>'profileDigest',p->>'accountId',(p->>'domainId')::uuid,(p->>'checkedAt')::timestamptz,(p->>'expiresAt')::timestamptz,p->>'digest') returning * into d;
+  command_result:=jsonb_build_object('status','recorded'); exit provider_command;
  elsif p_action='prepare' then
   if p-array['domainId','customerId','documentId','purpose','key','digest']<>'{}'::jsonb or not(p ?& array['domainId','customerId','documentId','purpose','key','digest']) then raise exception 'Invalid outbox preparation'; end if;
   select * into d from private.provider_email_domains where organization_id=p_org and configuration_id=p_config order by checked_at desc,id desc limit 1;
@@ -384,11 +411,11 @@ begin
   select * into o from private.provider_email_outbox where organization_id=p_org and idempotency_key=p->>'key';
   if found then
    if o.configuration_id<>p_config or o.customer_id<>(p->>'customerId')::uuid or o.document_id<>(p->>'documentId')::uuid or o.purpose<>p->>'purpose' or o.content_digest<>p->>'digest' then raise exception 'Outbox replay conflict'; end if;
-   return jsonb_build_object('status','duplicate','id',o.id);
+   command_result:=jsonb_build_object('status','duplicate','id',o.id); exit provider_command;
   end if;
   insert into private.provider_email_outbox(organization_id,configuration_id,domain_verification_id,customer_id,document_id,purpose,idempotency_key,content_digest)
    values(p_org,p_config,d.id,(p->>'customerId')::uuid,(p->>'documentId')::uuid,p->>'purpose',p->>'key',p->>'digest') returning id into n;
-  return jsonb_build_object('status','recorded','id',n);
+  command_result:=jsonb_build_object('status','recorded','id',n); exit provider_command;
  elsif p_action='event' then
   if p-array['accountId','messageId','eventId','digest','type']<>'{}'::jsonb or not(p ?& array['accountId','messageId','eventId','digest','type']) then raise exception 'Invalid email event'; end if;
   select x.* into b from private.provider_email_bindings x join private.provider_email_outbox y on y.organization_id=x.organization_id and y.id=x.outbox_id
@@ -397,16 +424,25 @@ begin
   select * into e from private.provider_email_events where organization_id=p_org and binding_id=b.id and event_id=p->>'eventId';
   if found then
    if e.body_digest<>p->>'digest' or e.type<>p->>'type' then raise exception 'Email event conflict'; end if;
-   return jsonb_build_object('status','duplicate');
+   command_result:=jsonb_build_object('status','duplicate'); exit provider_command;
   end if;
   insert into private.provider_email_events(organization_id,binding_id,event_id,body_digest,type) values(p_org,b.id,p->>'eventId',p->>'digest',p->>'type') returning id into n;
   if p->>'type' in ('email.bounced','email.complained') then
    insert into private.provider_email_suppressions(organization_id,customer_id,provider_account_id,event_id)
     select p_org,customer_id,b.provider_account_id,n from private.provider_email_outbox where organization_id=p_org and id=b.outbox_id on conflict do nothing;
   end if;
-  return jsonb_build_object('status','recorded');
+  command_result:=jsonb_build_object('status','recorded'); exit provider_command;
  end if;
  raise exception 'Unsupported email command';
+ end provider_command;
+ -- One exit checkpoint covers reads/replays and implicit DML/FK/audit waits.
+ if p_action in ('domain','prepare') then
+  if d.expires_at<=clock_timestamp() or not exists(select 1 from private.provider_email_sender_bindings where organization_id=p_org and configuration_id=p_config and version=d.version and profile_digest=d.profile_digest and provider_account_id=d.provider_account_id and domain_id=d.domain_id and revoked_at is null and expires_at>clock_timestamp()) then
+   raise exception 'Expired sender or domain authority' using errcode='42501';
+  end if;
+ end if;
+ perform private.require_provider_workload(p_org,p_config,'email');
+ return command_result;
 end $$;
 revoke all on function private.provider_email_control(uuid,uuid,text,jsonb) from public,anon,authenticated;
 
@@ -453,47 +489,60 @@ end $$;
 create function private.provider_agreement_control(p_org uuid,p_agreement uuid,p_action text,p jsonb) returns jsonb
 language plpgsql security definer set search_path='' as $$
 declare b private.provider_agreement_bindings;e private.provider_agreement_evidence;old_digest text;
+ command_result jsonb; capability_id uuid;
 begin
- perform private.require_provider_workload(p_org,p_agreement,'agreement');
+ capability_id:=private.require_provider_workload(p_org,p_agreement,'agreement');
+ insert into public.activity_events(organization_id,actor_id,action,entity_type,entity_id) values(p_org,null,'provider.agreement.authorized','provider_workloads',capability_id);
+ <<provider_command>>
+ begin
  if coalesce(jsonb_typeof(p),'')<>'object' or pg_catalog.pg_column_size(p)>8192 or exists(select 1 from jsonb_each(p) where value='null'::jsonb) then raise exception 'Invalid agreement command'; end if;
- select * into b from private.provider_agreement_bindings where organization_id=p_org and agreement_id=p_agreement and revoked_at is null and expires_at>clock_timestamp() for update;
- if not found or not exists(select 1 from auth.users where id=b.signer_user_id and email_confirmed_at is not null and email=b.binding->>'signerEmail') or not exists(select 1 from public.estimate_versions where organization_id=p_org and id=b.estimate_version_id and customer_id=b.customer_id and status='issued') or not exists(select 1 from public.organizations where id=p_org and status='active') or not exists(select 1 from public.portal_identities where organization_id=p_org and customer_id=b.customer_id and user_id=b.signer_user_id and active) then raise exception 'Current agreement authority required'; end if;
+ select * into b from private.provider_agreement_bindings where organization_id=p_org and agreement_id=p_agreement for update;
+ if not found or b.revoked_at is not null or b.expires_at<=clock_timestamp() or not exists(select 1 from auth.users where id=b.signer_user_id and email_confirmed_at is not null and email=b.binding->>'signerEmail') or not exists(select 1 from public.estimate_versions where organization_id=p_org and id=b.estimate_version_id and customer_id=b.customer_id and status='issued') or not exists(select 1 from public.organizations where id=p_org and status='active') or not exists(select 1 from public.portal_identities where organization_id=p_org and customer_id=b.customer_id and user_id=b.signer_user_id and active) then raise exception 'Current agreement authority required'; end if;
  perform 1 from public.portal_identities where organization_id=p_org and customer_id=b.customer_id and user_id=b.signer_user_id and active for share;
  if not found then raise exception 'Current agreement authority required'; end if;
  perform 1 from auth.users where id=b.signer_user_id and email_confirmed_at is not null and email=b.binding->>'signerEmail' for share;
  if not found then raise exception 'Current signer required'; end if;
  perform 1 from public.organizations where id=p_org and status='active' for share;
  if not found then raise exception 'Current organization required'; end if;
+ perform private.require_provider_workload(p_org,p_agreement,'agreement');
+ if b.expires_at<=clock_timestamp() then raise exception 'Expired agreement authority' using errcode='42501'; end if;
  if p_action='load' then
   if p<>'{}'::jsonb then raise exception 'Invalid load'; end if;
-  return jsonb_build_object('binding',b.binding,'digest',b.binding_digest);
+  command_result:=jsonb_build_object('binding',b.binding,'digest',b.binding_digest); exit provider_command;
  end if;
  if p->>'bindingDigest' is distinct from b.binding_digest then raise exception 'Agreement binding changed'; end if;
  if p_action='checkpoint' then
   if p-array['bindingDigest']<>'{}'::jsonb then raise exception 'Invalid checkpoint'; end if;
-  return jsonb_build_object('status','current');
+  command_result:=jsonb_build_object('status','current'); exit provider_command;
  elsif p_action='complete' then
   if p-array['bindingDigest','signedSha256','certificateSha256','recordDigest']<>'{}'::jsonb or not(p ?& array['bindingDigest','signedSha256','certificateSha256','recordDigest']) then raise exception 'Invalid agreement evidence'; end if;
   if p->>'signedSha256'=b.binding->>'originalSha256' then raise exception 'Unchanged agreement'; end if;
   select * into e from private.provider_agreement_evidence where organization_id=p_org and agreement_id=p_agreement;
   if found then
    if e.binding_digest<>b.binding_digest or e.signed_sha256<>p->>'signedSha256' or e.certificate_sha256<>p->>'certificateSha256' or e.record_digest<>p->>'recordDigest' then raise exception 'Immutable agreement evidence'; end if;
-   return jsonb_build_object('status','duplicate');
+   command_result:=jsonb_build_object('status','duplicate'); exit provider_command;
   end if;
   insert into private.provider_agreement_evidence(organization_id,agreement_id,binding_digest,signed_sha256,certificate_sha256,record_digest)
    values(p_org,p_agreement,b.binding_digest,p->>'signedSha256',p->>'certificateSha256',p->>'recordDigest');
-  return jsonb_build_object('status','recorded');
+  command_result:=jsonb_build_object('status','recorded'); exit provider_command;
  elsif p_action='event' then
   if p-array['bindingDigest','eventId','digest','accountId','envelopeId']<>'{}'::jsonb or not(p ?& array['bindingDigest','eventId','digest','accountId','envelopeId']) or p->>'accountId' is distinct from b.binding->>'providerAccountId' or p->>'envelopeId' is distinct from b.binding->>'envelopeId' then raise exception 'Connect binding conflict'; end if;
   select body_digest into old_digest from private.provider_agreement_inbox where organization_id=p_org and agreement_id=p_agreement and event_id=p->>'eventId';
   if found then
    if old_digest<>p->>'digest' then raise exception 'Connect replay conflict'; end if;
-   return jsonb_build_object('status','duplicate');
+   command_result:=jsonb_build_object('status','duplicate'); exit provider_command;
   end if;
   insert into private.provider_agreement_inbox(organization_id,agreement_id,event_id,body_digest) values(p_org,p_agreement,p->>'eventId',p->>'digest');
-  return jsonb_build_object('status','recorded');
+  command_result:=jsonb_build_object('status','recorded'); exit provider_command;
  end if;
  raise exception 'Unsupported agreement command';
+ end provider_command;
+ -- One exit checkpoint covers reads/replays and implicit DML/FK/audit waits.
+ if b.revoked_at is not null or b.expires_at<=clock_timestamp() then
+  raise exception 'Expired agreement authority' using errcode='42501';
+ end if;
+ perform private.require_provider_workload(p_org,p_agreement,'agreement');
+ return command_result;
 end $$;
 revoke all on function private.provider_agreement_control(uuid,uuid,text,jsonb) from public,anon,authenticated;
 do $$declare t text;f text;begin

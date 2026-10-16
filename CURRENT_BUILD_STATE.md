@@ -1,6 +1,40 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
-## Latest: independent provider migration review — NO-GO (base230f5b8)
+## Latest: provider security remediation (base7ee2c16)
+
+M1/M2 are corrected in the still-unapplied forward migration. Workload identity
+is locked before fresh wall-time validation; all24 successful command branches
+pass a common final checkpoint. Payment authorization/intent, email sender/domain
+and agreement binding authority are checked after relevant waits. Expired commands
+roll back financial/provider/audit effects. Terminal states now require an explicit
+non-NULL valid result object at table level; immutable outcomes/UNKNOWN/refund
+holds remain. No provider, public API, grant, runtime gate or branding activation.
+
+Read [PROVIDER_MIGRATION_REMEDIATION.md](docs/PROVIDER_MIGRATION_REMEDIATION.md).
+Corrected SQL SHA256:5dd07b079a591b433fa7ab432fd841026de91a1cd3f1d3a722bef500aa9fd32d;
+pending bundle:231fa367a176bc329c983fa9d7154d814d0469278209edeca8712229870c750e.
+All nine historical migrations are unchanged. The old9588 hash remains NO-GO;
+the corrected hash is **GO for requesting separate development migration approval**,
+not authorized for hosted execution. Release1.0 remains NOT READY / NOT AUTHORIZED.
+
+Validation:577 local PASS/33 native-only skips;265 PostgreSQL17 PASS/zero skips,
+including22 new real lock-wait races with stale transaction timestamps and27
+portable financial-integrity cases;13 prior-review adversarial checks now PASS.
+The unchanged old SQL independently reproduces10 PASS/3 FAIL. All counts overlap.
+51 responsive browser checks and26 frozen-package checks PASS; types regenerated
+without public type changes; lint/types/build/migration integrity PASS.
+
+Read-only hosted application catalog422 records remains identical; stored nine
+migration statement arrays match exactly. Fresh explicit-target CLI dry run lists
+only the corrected file, seeds/roles empty. Post-dry-run history remains nine;
+provider tables/grants remain absent. Existing advisor/security/performance results
+are unchanged and do not validate the unapplied schema. No Netlify operation.
+
+Next: owner review of the corrected target-specific schema-only operation, then
+separate execution authorization and post-apply verification. Provider/workload/
+signature/email/document activation and deployment remain separate blocked scopes.
+
+## Previous: independent provider migration review — NO-GO (base230f5b8)
 
 The exact proposed migration hash matches, but independent PostgreSQL17 testing
 found an in-flight capability-expiry gap (M1) and a terminal SQL-NULL result

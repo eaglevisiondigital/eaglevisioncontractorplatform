@@ -527,3 +527,33 @@ role, private grant, binding or capability is authorized. Correct a successor on
 under subsequent local-remediation scope; require new hash/review and separate
 hosted execution approval. Preserve audit history via containment/forward fixes,
 never deletion/reset/outcome editing. See docs/PROVIDER_MIGRATION_FINAL_REVIEW.md.
+
+## October16 · remediate the unapplied provider migration under owner approval
+
+Correct only the pending forward SQL, preserving all nine approved historical
+files. Keep the original rejected hash/reproduction as evidence and compute new
+file/bundle hashes. Guard capability identity with FOR UPDATE then compare the
+locked row to clock_timestamp; repeat pure validation after resource locks and
+at one centralized successful exit for every read/replay/write branch. Audit once
+in each caller with the returned capability UUID, avoiding extra audit effects in
+the guard. Final rejection rolls back DML/audit after implicit lock waits.
+
+Recheck payment authorization/request expiry including refund waits, exact email
+sender/domain authority and agreement binding after portal/signer/company waits.
+No new reservation gets an in-flight expiry grace. Existing outcome persistence
+does not retry UNKNOWN or clear holds; expired workloads require reviewed recovery.
+Enforce non-NULL terminal objects through a named CHECK and retain projection and
+immutable-trigger defenses, including trusted owner maintenance paths.
+
+Commit49 new regressions:22 native lock races and27 portable result/permission
+cases. Keep transaction time stale and observe real waits, then assert no provider/
+financial/audit residue. Reuse the unchanged original-review harness for a separate
+adversarial pass: old10 PASS/3 FAIL, corrected13 PASS/0 FAIL. Full577 local/265
+native/51 responsive browser and26 frozen checks pass (counts overlap).
+
+Recommend GO only for separate dormant development migration approval of the new
+hash. Dry-run success never authorizes apply, private grants or provider execution.
+Statement checkpoints cannot certify long explicit transactions, outgoing calls,
+hard COMMIT deadlines or external legal/security review. Preserve supervisor
+timeouts/cancellation and all provider/clean-production/release gates. Read
+docs/PROVIDER_MIGRATION_REMEDIATION.md; no hosted/Netlify/financial operation occurred.

@@ -473,3 +473,23 @@ lack DML. No client/cross-tenant bypass or active hosted exposure was demonstrat
 Read docs/PROVIDER_MIGRATION_FINAL_REVIEW.md for reproduction, severity and limits.
 Keep the exact file unapplied, capabilities absent and all provider execution off
 until a corrected successor passes independent review and separate authorization.
+
+### Verified local successor; hosted execution still unauthorized
+
+M1/M2 are resolved locally under the owner's remediation scope; the earlier NO-GO
+above applies to the old9588 hash. The locked workload row is checked using current
+clock_timestamp after acquisition; privileged/inherited/API roles stay denied,
+including replication-capable LOGINS. Three commands route all24 successful
+branches through final pure revalidation. Relevant payment/refund, sender/domain,
+agreement/portal/signer/company and implicit DML waits cannot preserve expired
+statement effects; failures roll back the authorization and entity audit events.
+
+The guard returns a capability UUID without logging; the caller audits once.
+Terminal result CHECKs now reject SQL NULL, JSON null and invalid shapes even
+through owner maintenance, while valid outcomes stay immutable.22 native races
+and27 portable regressions plus the unchanged prior-review13-case adversarial
+harness pass. Native BEGIN predates waits, so transaction time cannot substitute.
+No DML/grant/role/service or hosted change is included. Current checkpoint authority
+is not a COMMIT deadline or an outbound-provider authorization; future activation
+needs supervised autocommit/session/timeouts and separate provider verification.
+See docs/PROVIDER_MIGRATION_REMEDIATION.md for scope, evidence and residual gates.
