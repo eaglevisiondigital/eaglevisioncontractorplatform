@@ -296,3 +296,7 @@ proves fabricated JWT sub claims cannot forge a human provider audit event. Exis
 application audit functions and hosted data/policies are unchanged. Capability
 lifetime is SQL-constrained to30minutes, with immutable expiry and current-time
 checks; extending access requires a separately reviewed new identity/capability.
+
+Document service scope comparison uses exact allowed fields and value equality,
+independent of JSON property order; extra metadata cannot alter an object adapter's
+behavior. The regression includes reordered input and rejects extra bucket fields.

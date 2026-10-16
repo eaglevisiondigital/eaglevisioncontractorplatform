@@ -1,7 +1,7 @@
 import type { QuarantineJob } from './pipeline';
 import { MAX_SOURCE_BYTES } from './pipeline';
 import type { ProcessingLease } from './worker';
-import { sha256, uuid } from '../providers/safety';
+import { exactKeys, sha256, uuid } from '../providers/safety';
 
 export interface WorkloadIdentity {
   issuer: string;
@@ -77,6 +77,16 @@ export class IsolatedDocumentService {
         job: Object.freeze({ ...leaseInput.job }),
       }),
       p = this.policy;
+    const fields = [
+      'organizationId',
+      'sourceId',
+      'objectKey',
+      'sha256',
+      'size',
+      'mime',
+    ] as const;
+    exactKeys(job, fields);
+    exactKeys(lease.job, fields);
     const identity = await this.security.authenticate(credential);
     if (
       identity.issuer !== p.issuer ||
@@ -98,7 +108,7 @@ export class IsolatedDocumentService {
       identity.expiresAt > identity.issuedAt + 300000 ||
       lease.expiresAt <= Date.now() ||
       !Number.isFinite(lease.expiresAt) ||
-      JSON.stringify(job) !== JSON.stringify(lease.job)
+      fields.some((key) => job[key] !== lease.job[key])
     )
       throw new Error('Document workload denied');
     await this.security.assertRuntime();

@@ -80,6 +80,19 @@ it('scoped workload reads quarantine and stages only scanner-validated immutable
   await w.service.stage('synthetic-credential', job, lease, bytes);
   expect(w.objects.stage.mock.calls).toHaveLength(1);
   expect(w.security.checkpoint).toHaveBeenCalledTimes(5);
+  const reordered = Object.fromEntries(
+    Object.entries(job).reverse(),
+  ) as typeof job;
+  expect(
+    await w.service.read('synthetic-credential', reordered, lease),
+  ).toEqual(Uint8Array.from(bytes));
+  await expect(
+    w.service.read(
+      'synthetic-credential',
+      { ...job, bucket: 'unapproved' } as typeof job,
+      lease,
+    ),
+  ).rejects.toThrow(/Unexpected provider fields/);
 });
 it.each([
   'organizationId',
