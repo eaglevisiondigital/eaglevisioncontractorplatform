@@ -1,6 +1,38 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
-## Latest: provider integration readiness (base93982ba)
+## Latest: independent provider migration review — NO-GO (base230f5b8)
+
+The exact proposed migration hash matches, but independent PostgreSQL17 testing
+found an in-flight capability-expiry gap (M1) and a terminal SQL-NULL result
+constraint defect (M2). **Do not apply this hash.** The reviewed SQL and all nine
+historical migrations are unchanged. No hosted migration, provider identity/grant,
+activation or Netlify operation occurred. Release1.0 stays NOT READY / NOT AUTHORIZED.
+
+Read [PROVIDER_MIGRATION_FINAL_REVIEW.md](docs/PROVIDER_MIGRATION_FINAL_REVIEW.md).
+Read-only hosted comparison: nine history entries,422 matching application catalog
+records and69 matching column ACLs; no unexpected application drift. Pinned CLI
+dry run PASS: exactly one proposed file, no seeds/roles. Final hosted state remains
+nine migrations/63 tables/zero proposed provider tables/zero active platform admins.
+Security advisors:0 WARN/ERROR,12 intentional INFO; existing performance notices
+remain (4 WARN,64 INFO). New-schema hosted advisors are NOT RUN because unapplied.
+
+Existing native suite:216 PASS/zero skips. Independent adversarial checks:10 PASS,
+3 FAIL across M1/M2; these failures are not covered by the passing regression suite.
+Actual lock-wait reservations occurred after expiry; explicit concurrent row
+revocation correctly denied. NULL result was reproduced through local owner DML;
+the restricted command rejects it and workloads lack direct DML. All fixtures and
+test roles/grants were disposable/local. Raw evidence stays ignored/private.
+
+Fresh npm check:550 PASS/11 native-only skips; lint/types/public types/migration
+integrity/build PASS. All skipped native cases ran in the216 native PASS.
+Formatting/diff/private-reference checks PASS; no UI change/browser rerun.
+
+Next: authorize local correction of the reviewed successor, add the missing
+regressions, rehash/review and repeat the dry run before any separate development
+execution approval. Capabilities/provider calls/deployment remain separate approvals.
+Earlier readiness evidence below is historical and does not override this NO-GO.
+
+## Previous: provider integration readiness (base93982ba)
 
 **Release1.0 remains NOT READY / NOT AUTHORIZED.** Local engineering now includes
 one formal UNAPPLIED forward migration, restricted tenant/service-scoped database

@@ -477,3 +477,11 @@ external gates. No material ingestion endpoint is enabled. All four integrations
 remain unwired and sandbox/provider calls NOT RUN. See
 [PROVIDER_INTEGRATION_READINESS.md](docs/PROVIDER_INTEGRATION_READINESS.md) for the
 approval matrix, exact migration, provider setup and operational failure controls.
+
+The independent review of that exact pending file is **NO-GO**: expiry during a
+lock wait can admit a post-expiry reservation, and terminal result CHECKs permit
+SQL NULL through owner DML. Existing command/client isolation remains intact;
+the file is still unapplied and creates no capabilities. Earlier readiness
+descriptions are implementation intent, not proof of strict expiry enforcement.
+See [PROVIDER_MIGRATION_FINAL_REVIEW.md](docs/PROVIDER_MIGRATION_FINAL_REVIEW.md)
+before proposing any successor migration or hosted action.

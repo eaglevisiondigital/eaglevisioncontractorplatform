@@ -504,3 +504,26 @@ proves fabricated JWT sub claims cannot forge a human provider audit event. Exis
 application audit functions and hosted data/policies are unchanged. Capability
 lifetime is SQL-constrained to30minutes, with immutable expiry and current-time
 checks; extending access requires a separately reviewed new identity/capability.
+
+## October16 · exact provider migration review is NO-GO
+
+Review the requested hash without silently repairing its bytes. Native PostgreSQL17
+reproduced expiry while waiting on an unchanged workload/merchant row: a command
+admitted before expiry can reserve after expiry. A row lock serializes tuple
+revocation but does not reevaluate wall time automatically. Define any bounded
+in-flight completion exception explicitly; strict expiry requires current-time
+checks after waits/before new effects, including related authorization/binding
+boundaries. Existing expired-at-entry/revocation tests do not cover this race.
+
+Terminal status/result CHECKs also permit SQL NULL through UNKNOWN; the normal
+finish command rejects it and workloads have no DML. Enforce the durable table
+invariant independently before approval. Keep financial evidence append-only.
+
+The exact SQL/history remain unchanged. Hosted nine-migration/catalog/column-grant
+comparison and one-file CLI dry run PASS;216 native regression tests PASS while
+three additional assertions FAIL (two distinct findings). Passing earlier suites
+do not override these failures. Keep schema-only activation separate: no provider
+role, private grant, binding or capability is authorized. Correct a successor only
+under subsequent local-remediation scope; require new hash/review and separate
+hosted execution approval. Preserve audit history via containment/forward fixes,
+never deletion/reset/outcome editing. See docs/PROVIDER_MIGRATION_FINAL_REVIEW.md.

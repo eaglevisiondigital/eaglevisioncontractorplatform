@@ -311,3 +311,31 @@ including all11 skipped/native concurrency cases; **51 desktop/tablet/mobile PAS
 Formatting/diff/private-reference checks PASS. An initial concurrent full-catalog
 run hit10second hook timeouts; bounded workers/30second hooks resolved resource
 contention and the final full/native runs pass. No provider/hosted acceptance is inferred.
+
+## October16 · independent exact provider migration review
+
+**NO-GO:** the requested file/hash is unchanged and must remain unapplied. M1:
+a command started before capability expiry can reserve after expiry while waiting
+on workload/merchant locks. M2: terminal result constraints admit SQL NULL through
+trusted owner DML; the command rejects it and workloads have no DML. No active
+hosted exposure or cross-tenant bypass was demonstrated.
+
+**PASS:** historical nine-file integrity/stored SQL,422 application catalog records
+and69 column grants match hosted development; exact one-file CLI dry run (no seeds/
+roles); exact SQL applies locally with16 empty private RLS tables/7 functions/32
+triggers and no uncovered new FK;216 native PostgreSQL17 regression tests.
+**Additional independent checks:**10 PASS /3 FAIL, covering the two findings.
+Fresh npm check:550 PASS/11 native-only skips (covered by native); lint/types/
+public types/migration manifests/build and formatting PASS. Counts overlap.
+Hosted security advisors:0 WARN/ERROR and12 intentional INFO; existing performance
+4 WARN/64 INFO remain. These advisors cannot evaluate the unapplied provider schema.
+
+**BLOCKED:** hosted apply/activation pending corrected successor/new hash/review
+and separate authorization; genuine provider/infrastructure acceptance remains.
+**NOT RUN:** new hosted schema/advisors, provider execution/workloads, deployed
+callbacks/perimeter/browser and all real financial/signature/email/payroll actions.
+No original migration, hosted configuration, private grant, Netlify deployment or
+branding was changed. Every required module remains launch-ready **No**.
+See [PROVIDER_MIGRATION_FINAL_REVIEW.md](PROVIDER_MIGRATION_FINAL_REVIEW.md) for exact
+versions, findings, scope, evidence and audit-preserving containment. PR #1 stays
+draft; Release1.0 remains NOT READY / NOT AUTHORIZED.

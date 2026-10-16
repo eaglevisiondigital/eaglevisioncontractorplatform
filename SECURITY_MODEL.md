@@ -459,3 +459,17 @@ proves fabricated JWT sub claims cannot forge a human provider audit event. Exis
 application audit functions and hosted data/policies are unchanged. Capability
 lifetime is SQL-constrained to30minutes, with immutable expiry and current-time
 checks; extending access requires a separately reviewed new identity/capability.
+
+### Independent migration review qualification (October16)
+
+The exact pending provider migration is **NO-GO**, despite the earlier local
+regression results. Native review reproduced an in-flight expiration gap after
+workload/merchant lock waits (M1); tuple revocation denies correctly but a wall-time
+predicate is not automatically reevaluated after an unchanged row's lock wait.
+Absolute expiry claims above require correction or an explicitly reviewed bounded
+completion policy. A separate terminal result CHECK accepts SQL NULL (M2), reachable
+by trusted owner DML, while the restricted finish command denies it and workloads
+lack DML. No client/cross-tenant bypass or active hosted exposure was demonstrated.
+Read docs/PROVIDER_MIGRATION_FINAL_REVIEW.md for reproduction, severity and limits.
+Keep the exact file unapplied, capabilities absent and all provider execution off
+until a corrected successor passes independent review and separate authorization.

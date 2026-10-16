@@ -1,5 +1,12 @@
 # Release 1.0 provider integration readiness
 
+**Independent review update (October16, base230f5b8): NO-GO for the exact pending
+migration.** M1 expiry-during-lock-wait and M2 terminal SQL-NULL result were
+reproduced. The original readiness evidence below remains historical; no apply or
+activation is recommended. See [PROVIDER_MIGRATION_FINAL_REVIEW.md](PROVIDER_MIGRATION_FINAL_REVIEW.md)
+for the unchanged hash, hosted drift comparison, dry run, three failing assertions
+and containment plan. Correct/review a successor before requesting execution.
+
 October 16, 2026 · continuation of `93982ba` · internal engineering only.
 **Release 1.0 is NOT READY / NOT AUTHORIZED.** PR #1 stays draft. No hosted
 migration, credential lookup, provider sandbox execution, deployment repair,
