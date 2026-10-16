@@ -1,11 +1,14 @@
 # Connected three-company acceptance · October 16, 2026
 
-**Status: Action A COMPLETE; approved C1 COMPLETE/revoked; Action B company setup
-PASS, full tenant/domain acceptance NOT RUN. Release 1.0 NOT READY / NOT AUTHORIZED.**
-Three companies and three owner memberships now exist. Do not recreate them or rerun
-C1. See ACTION_C1_EXECUTION.md and ACTION_B_RESULT.md for current counts/evidence.
-Continue draft PR #1, preserve migrations/Auth settings and keep Actions C beyond
-C1/D unapproved. Baseline sections below record earlier observations at their dates.
+**Status: Action A/C1 COMPLETE; C1 revoked; Action B core connected acceptance PASS.**
+723 authenticated cases PASS/0 FAIL (687 core +36 supplemental), and 56 real GET-only
+boundary checks PASS before/after populated fixtures. Nine source/Storage/private-
+release groups BLOCKED; full 50-table, protected browser/deployment and independent
+release acceptance NOT RUN. Release 1.0 NOT READY / NOT AUTHORIZED; PR #1 draft.
+See ACTION_B_CONNECTED_RESULT.md for exact rows and evidence. Three companies,
+18 memberships and the immutable domain fixtures now exist; all sessions are closed.
+Do not recreate companies/accounts/factors, reactivate C1 or replay fixture creation.
+Baseline sections below record their historical observations, not current totals.
 
 ## Independently verified baseline
 
@@ -84,15 +87,17 @@ not create emails, passwords, UUIDs, factors, sessions or authority.
 References: [Auth admin creation](https://supabase.com/docs/reference/javascript/auth-admin-createuser),
 [TOTP](https://supabase.com/docs/guides/auth/auth-mfa/totp).
 
-## Action B — AUTHORIZED; company setup COMPLETE, domain acceptance pending
+## Action B — core connected acceptance PASS; dependent groups BLOCKED
 
-The exact C1 bootstrap was separately approved, activated once with current AAL2,
-and revoked immediately after checked provisioning/configuration of three companies.
-The retained operator row is inactive and its session closed. Three intended owner
-memberships exist; no other staff or domain fixtures exist yet. Do not repeat
-company setup or request Action B approval again. Continue through checked tenant
-workflows with current genuine owner MFA. See ACTION_B_RESULT.md. Broader private
-release/worker grants and deployment remain separately controlled.
+The separately approved C1 platform setup was completed/revoked, then genuine
+company-owner MFA and ordinary employee/customer sessions drove checked invitations
+and domain fixtures. Results: 723 authenticated PASS/0 FAIL; nine blocked groups.
+All sessions were closed and original identities/factors/migrations/grants verified.
+Do not repeat company setup or creation scenarios. Existing private fixture mapping
+must anchor follow-up acceptance; see ACTION_B_RESULT.md and
+ACTION_B_CONNECTED_RESULT.md. No broader release/worker grant or deployment is
+implied. The scope/procedures below preserve the original approval and future
+coverage requirements; they are not instructions to duplicate completed rows.
 
 The approved fixture scope is exactly three synthetic companies: Straight Edge Property
 Services / property_services, Cunningham Construction / construction, Sample Roofing
@@ -135,7 +140,7 @@ C1 is complete: three checked company setups, then exact immediate deactivation,
 same-AAL2 denial and global sign-out were independently verified. The platform
 row remains inactive and must not be reactivated/recreated. See
 ACTION_C1_EXECUTION.md. Broader release/environment/worker grants below remain
-outside C1 and unapproved. Current company-owner Action B MFA handoff and prepared
+outside C1 and unapproved. Current company-owner Action B MFA handoff and executed
 core cases are recorded in ACTION_B_CONNECTED_RESULT.md; do not count local
 contract evidence as connected acceptance.
 
@@ -153,7 +158,7 @@ Separately review exact UIDs/org IDs, purpose and expiry before these writes:
   enablement. End-of-window cleanup disables release environment, removes/revokes
   test grants, revokes platform access and sessions, preserving immutable records.
 
-## Connected evidence matrix — all authenticated rows NOT RUN
+## Connected evidence matrix — core results below; full matrix incomplete
 
 | Area                    | Positive evidence                                                                | Required negative evidence                                                                                      |
 | ----------------------- | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
@@ -229,3 +234,13 @@ Primary reference for the privilege review:
 Defaults apply to future objects, not existing ones; schema-specific revokes cannot
 remove global PUBLIC function defaults. This is why a narrow ownership-aware review
 is preferable to changing every role or relying on the dashboard toggle alone.
+
+## Latest executed coverage (October 16)
+
+Core Auth/MFA, CRM/estimates/jobs/time/labor/payroll, roles, revocation, immutable
+audit and paired concurrency now have genuine hosted evidence. All six tenant
+pairs passed populated reads on 23 core table types plus supplemental staff
+boundaries for organizations/memberships/modules/workforce policies. Actual
+723 PASS/0 FAIL does not satisfy the missing source/private-release/positive-object
+rows or independent deployed browser/perimeter testing. See the complete result
+record before continuing; do not weaken the full harness to manufacture success.

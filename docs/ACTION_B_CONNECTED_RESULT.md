@@ -1,124 +1,191 @@
-# Propel · Action B connected acceptance continuation
+# Propel · Action B connected acceptance result
 
-**PREPARED; WAITING FOR GENUINE COMPANY-OWNER MFA.** October 16, 2026,
-continuing commit 7101bcb and draft PR #1. This is an authentication handoff, not a
-request to repeat Action B authorization. C1 remains complete and revoked.
-Release 1.0 stays NOT READY / NOT AUTHORIZED and closed to outside users.
+**CORE CONNECTED ACCEPTANCE PASS; RELEASE 1.0 STILL NOT READY / NOT AUTHORIZED.**
+October 16, 2026, following owner-assisted MFA and the authorized continuation of
+draft PR #1. C1 remains inactive; no bootstrap replay or company recreation.
+The core run executed 09:15:43–09:22:02 UTC. Core sessions closed at 09:22:15 UTC;
+supplemental read-only staff sessions closed at 09:25:15 UTC. Independent reads
+confirmed zero remaining Auth sessions afterward. No outside access is approved.
 
-## Actual current results
+## Actual hosted results
 
-| Evidence                                                           |             PASS |                 FAIL | BLOCKED / NOT RUN                                                     |
-| ------------------------------------------------------------------ | ---------------: | -------------------: | --------------------------------------------------------------------- |
-| Genuine hosted GET-only Auth/API boundary preflight                |               56 |                    0 | Limited to anonymous/configuration boundary; not tenant acceptance    |
-| Three-owner fresh MFA handoff                                      | 0 of 3 completed |     0 MFA assertions | Waiting for owner-held Apple Passwords codes                          |
-| Hosted authenticated employee/domain scenario                      |                0 |                    0 | NOT RUN: 687 prepared core cases await current owners                 |
-| Scanner/source/positive-object and private internal-release groups |                0 |                    0 | 9 explicitly BLOCKED groups, three per company                        |
-| Disposable local scenario contract validation                      |              687 | 0 final-run failures | 9 blocked groups preserved; mocked local Auth is not hosted MFA or QA |
+| Evidence                                                  |    PASS |                 FAIL | BLOCKED / NOT RUN                                                              |
+| --------------------------------------------------------- | ------: | -------------------: | ------------------------------------------------------------------------------ |
+| Core genuine Auth/PostgREST/RPC scenario, three companies |     687 |                    0 | Nine explicitly BLOCKED dependent groups                                       |
+| Supplemental genuine staff membership/company boundaries  |      36 |                    0 | Read-only; three existing estimators                                           |
+| Total authenticated cases                                 | **723** |                **0** | Not full Release 1.0 acceptance                                                |
+| Anonymous/Auth/API boundary preflight                     |      56 |                    0 | Passed before AND after populated fixtures; 112 executions of 56 unique checks |
+| Fresh genuine owner MFA and exact session binding         |  3 of 3 |                    0 | Existing User 1/2/3 factors; no new enrollment                                 |
+| Disposable local scenario contract validation             |     687 | 0 final-run failures | LOCAL mocked Auth only; separate from the hosted results                       |
 
-The original read-only target manifest expired and was rejected before requests.
-It was left unchanged. A new one-hour GET-only manifest is bound privately to the
-current owner instruction and the same approved development target. The 56 real
-checks require exact expected status/error codes; empty successful tenant queries
-are not treated as negative evidence. Storage bucket non-disclosure does not prove
-positive object access, scanning or cross-tenant Storage isolation.
+The nine BLOCKED groups are scanned supplier/receipt imports, positive private
+Storage-object tests and private internal-release workflows, each for three
+companies. The full 50-table positive harness, connected browser/mobile UI,
+protected deployment perimeter, independent release/security/load/recovery review,
+real provider/sending/signature and jurisdictional payroll validation are **NOT RUN**.
+They are outside the passing core matrix; runner NOT RUN=0 is not a launch claim.
+No failed hosted assertion is hidden as BLOCKED or counted as a local correction.
 
-One initial Keychain sign-in did not complete. It was closed; independent SQL
-confirmed zero sessions, three original owner memberships, zero CRM customers and
-zero active platform grants. No password/MFA reset or tenant fixture write occurred.
-The loopback helper was reset safely to owner-initiated sign-in. Its three-owner
-sessions and future employee credentials remain only in server memory; browser
-storage and private reports receive no passwords, codes, seeds or JWTs.
+The original expired read-only manifest was rejected before requests and left
+unchanged. A new one-hour GET-only manifest was bound to the current owner approval
+and the same target. One earlier incomplete Keychain sign-in was globally closed
+before a clean handoff; it created no tenant fixture or persistent session.
 
-## Exact hosted changes during this continuation
+## Exact retained hosted record counts
 
-**Zero new organizations, memberships, CRM/location/catalog/estimate/job/expense/
-workforce/time/payroll fixtures, private grants, identities or factors.** The three
-organizations/owner memberships from C1 are preserved. No platform reactivation.
+These are final retained row counts and deltas, not the number of transient SQL
+INSERTs: optimistic estimate saves replace child rows and supervisor reassignment
+removes/recreates a mapping. No fixture was deleted to hide a failure.
 
-The refreshed baseline matches all 22 existing UID/email and four factor-ID/UID
-fingerprints, with zero pending factors, zero sessions, no operator membership,
-zero active platform/release-test/worker grants and disabled release environment.
-These are prerequisites, not proof of domain isolation.
+| Record                                                 | Added in this continuation |                                                                  Final hosted total |
+| ------------------------------------------------------ | -------------------------: | ----------------------------------------------------------------------------------: |
+| Organizations                                          |                          0 |                                                      3 original synthetic companies |
+| Memberships                                            |                         15 |                                  18: 15 active, three deliberately revoked/inactive |
+| Private staff invitations                              |                         15 |                                              15, all accepted; no outbound messages |
+| CRM customers / service locations                      |                      6 / 6 |                                                                               6 / 6 |
+| Internal intake requests / notes / consent records     |                  3 / 3 / 3 |                                                                           3 / 3 / 3 |
+| Catalog items / synthetic reviewed tax policies        |                      3 / 3 |                                                                               3 / 3 |
+| Estimates / versions / lines / schedule proposals      |             6 / 9 / 18 / 9 |                                                                      6 / 9 / 18 / 9 |
+| Jobs / job assignments                                 |                      6 / 6 |                                                                               6 / 6 |
+| Expense submissions / reviews                          |                    12 / 12 |                                                                             12 / 12 |
+| Proposed customer additions / billing approvals        |                      3 / 0 |                                                                               3 / 0 |
+| Workforce policies / worker profiles / effective rates |                  3 / 9 / 9 |                                                                           3 / 9 / 9 |
+| Supervisor mappings                                    |                          3 |                                                                                   3 |
+| Time segments / time reviews                           |                    51 / 33 |                                                           51 / 33; zero open clocks |
+| Locked payroll-preparation periods                     |                          3 |                                                          3; execution_enabled=false |
+| Tenant activity events                                 |                        354 |                                                           420, including 66 from C1 |
+| Platform events                                        |                          0 |                                                              Six original C1 events |
+| Auth identities / factors / additional private grants  |                  0 / 0 / 0 | Original 22 users/four verified TOTP; no active platform/release-test/worker grants |
 
-## Prepared supervised scenario
+Domain rows excluding memberships, invitations and audit: **219 added and retained**.
+Combined retained row delta including those three categories: 603. Company settings
+and module row counts remain 3/27; estimate counters advanced through checked RPCs.
+Company logos/colors and the exact approved Propel asset were not changed.
+No supplier source, Storage object, release offer/contract/invoice/payment/ledger,
+payroll disbursement, customer message or signature record was created.
 
-The private fixed scenario was exercised against the actual nine-migration schema
-in disposable PGlite using explicitly mocked LOCAL Auth only. Its final run passed
-687 cases. Local identifier-validation and snapshot-comparison safeguards
-were corrected before any hosted tenant write. No hosted test failures are hidden
-as local corrections. Local serialized writes do not certify native/hosted races.
-The eventual hosted run must record its own outcomes independently.
+Per company, exactly one owner plus five staff memberships exist, with the designated
+revocation account inactive. Customer identities receive no staff membership.
+The platform operator has no company membership and was not signed in for Action B.
+Twenty-one distinct synthetic identities were operated; three estimators then
+signed in again for supplemental read-only checks. All sessions were globally closed.
 
-- Existing owner 1/2/3 genuine AAL2 and exact current company identity; owner AAL1
-  privileged denial before elevation. No operator login or platform write.
-- Five staff accounts per company use checked create_invitation/accept_invitation,
-  existing verified identities and their own normal sign-in. Invitation tokens stay
-  in memory; wrong identity, replay and escalation are denied. Customer gets no
-  employee membership. Revoke the designated staff member through manage_member
-  and prove the same existing JWT loses access without waiting for expiry.
-- Positive company-specific CRM, locations, internal requests/assignments, notes,
-  false sending consent, catalog and explicitly synthetic zero-tax review fixtures.
-- Two estimates/jobs per company, integer pricing, idempotency conflict, concurrent
-  optimistic saves, owner-only internal issuance, immutable original snapshots and
-  revision/baseline preservation. No customer delivery or acceptance is implied.
-- Assigned field commitments/payments/credits, manager review, duplicate references,
-  over-credit rejection, proposal-only customer additions and direct labor double-
-  posting denials. No real charge, receipt ingestion or billing authorization.
-- Worker/rate/policy/supervisor records; paid/unpaid breaks, multiple jobs, own/team
-  visibility, midnight offsets, overlaps, real clock start/break/resume/switch/stop,
-  concurrent time/projection requests and current-assignment revocation.
-- Weekly preview/locked payroll preparation only: 40 regular + 2 overtime hours,
-  cash wages 120400 minor units, employer burden 24080; owner economic cost 10000
-  with zero owner wages. Payroll execution remains false. Job labor and the actual
-  dashboard calculation reconcile to explicit expected costs/profit, never final
-  profit while costs are incomplete. Private rates/deductions stay restricted.
-- All six ordered tenant pairs have positive controls on 23 populated tables,
-  foreign reads/writes/RPC references and payroll denial. This is a partial core
-  matrix; the unchanged full 50-table acceptance harness still requires its missing
-  source/release fixtures and cannot be presented as passing.
-- Append-only audit events and direct immutable-record mutation denials; verify
-  all current sessions close and identities/factors/private boundaries remain intact.
+## Genuine authentication and security evidence
 
-Private files under ignored `.staging/action-b/`: baseline, owner-server.mts,
-scenario.mts, local-contract-check.mts, current result and GET-only evidence. They
-contain the private fixture mapping; never commit them, passwords or session data.
-A partial/ambiguous write is not blindly retried. Inspect actual effects, retain
-failed case evidence and stop before duplicate provisioning or privilege widening.
+- Owner-held Apple Passwords codes challenged the three EXISTING verified factors.
+  Real getUser, signature-verified claims, current AAL2 and company identity matched
+  the private roster; independent SQL matched each exact session/factor/owner.
+  Owner AAL1 privileged denials preceded positive AAL2 operations. No fabricated
+  claims, factor reset, Auth Admin/service-role domain client or new private grant.
+- Five verified existing staff accounts per company used checked invitation creation
+  and their own authenticated acceptance. Wrong-recipient and replay attempts,
+  self-escalation and unauthorized invitation/member operations were denied.
+- Six ordered tenant pairs passed 168 core cases, including nonempty positives and
+  foreign read denial on 23 populated tables, foreign customer references, CRM/
+  expense writes, reporting and payroll RPCs. Supplemental cases added real staff
+  organization, membership, module and workforce-policy boundaries (four more
+  populated table types), restricted company settings and excluded private API
+  schema checks. This does not certify the missing 50-table source/release matrix.
+- Current JWTs lost access immediately after staff membership and supervisor
+  assignment revocation. Assigned/own time visibility, unassigned team/job denial,
+  private rates/payroll restrictions and customer nonstaff boundaries passed.
+- Original issued estimate/version/job baselines stayed immutable through revision;
+  stale/concurrent saves, projection changes and overlapping time were checked with
+  12 actual paired concurrent PostgREST cases. Direct immutable/audit mutations,
+  duplicate reviews/purchases and locked-period corrections were rejected.
+- Independent final SQL: 22 confirmed nonanonymous users; exact full UID/email and
+  factor-ID/user-ID fingerprints unchanged; four verified TOTP; zero pending
+  factors/sessions/open clocks/operator memberships. The sole C1 platform row stays
+  inactive. All nine migration versions unchanged, all 63 application tables retain
+  RLS, private client table privileges remain zero, release environment disabled,
+  contracts/invoices/payments module flags all false. Auth/API settings unchanged.
 
-## Leaked-password protection review — no settings changed
+Passwords are retrieved from approved Keychain items into process memory; SDK
+sessions and invitation tokens stay only in memory. No OTP, seed, QR, password or
+JWT appears in Git, browser storage or reports. Private fixture maps/case statuses/
+independent verification remain ignored under restricted `.staging/action-b/`.
+Both helpers are stopped; no authenticated acceptance endpoint was deployed. Global
+sign-out closes refresh sessions; existing access JWTs can remain cryptographically
+valid until expiry. No token is retained, and the same-session authority-revocation
+tests passed before logout rather than relying on sign-out for their denials.
 
-Supabase documents native leaked-password rejection through the Have I Been Pwned
-Pwned Passwords API, available on **Pro and above**. Confirm current plan support
-read-only, then obtain separate approval for enabling that exact Auth option (and
-any necessary plan upgrade/billing). Preserve signup/redirect/API/MFA controls.
-Re-read the persisted setting and advisor after an approved change, and validate
-rejection using separately approved disposable test credentials; never submit an
-existing synthetic password or reset the 22 accounts merely to clear the warning.
-Current unique random Keychain passwords and MFA reduce risk but do not replace
-this feature or clear the finding. No custom bypass or client-only substitute.
+## Independently reconciled financial and labor results
 
-[Supabase password security](https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection).
+Each company's issued estimate/job baseline has net selling revenue **306280**
+minor units, materials budget **81900**, labor budget **89600**, total original
+cost **171500**. Internal issue/management approval is not customer acceptance.
 
-## Required human handoff and remaining gates
+Each company has an approved materials commitment 15000, payment 10000 and credit
+1000: paid net **9000**, unspent committed **5000**. An excessive 20000 credit was
+submitted for the boundary test, denied approval, then explicitly rejected and
+retained. Duplicate supplier references/reviews failed. Direct wage expense posting
+was denied. Proposed additional revenue 5000 remained unapproved and did not change
+customer billing. No actual financial transaction occurred.
 
-On the local Mac page, sign in from Keychain, complete any native Keychain prompt,
-then enter **User 1's** current Apple Passwords code and verify. Repeat for User 2
-and User 3 as labeled (Straight Edge, Cunningham, Sample Roofing). Do not use User 4,
-re-enroll factors or send codes in chat. The supervisor must independently bind the
-three actual hosted AAL2 sessions before running the fixed scenario. AAL2 cannot
-be fabricated or inferred from the earlier completed enrollments.
+For the assigned field worker, complete employer-week preparation includes
+**40 regular + two overtime hours**, including paid breaks and excluding unpaid
+breaks across two jobs. Cash **120400**, burden **24080**, billing value **273000**,
+billable elapsed time **150300 seconds**. Two owner hours contribute imputed
+**10000** and **zero wages**. Owner type/rate selection is not legal classification
+proof; these are synthetic calculation inputs, not payroll compliance certification.
 
-Scanner/isolated-worker/byte gateway/AI and positive Storage provenance remain
-BLOCKED. Private internal-release grants are unapproved. No signature, provider,
-communication, payroll execution, Netlify deployment or merge is authorized.
-After real testing, publish the actual PASS/FAIL/BLOCKED/NOT RUN counts and exact
-created rows; do not relabel these prepared/local counts as hosted results.
+Job-one locked labor: cash 67200, burden 13440, imputed 10000 = **90640** economic
+cost. With material paid/committed values and zero remaining forecast for that
+fixture, the actual dashboard engine produces projected cost **104640** and
+projected profit **201640** on revenue306280. costs_complete=false, so this is
+**not final profit**. Job-two labor cash53200 plus burden10640 reconciles the
+remaining **63840**. Payroll previews/locks do not execute withholding, filings,
+tax deposits or wages. Recent clock-test/unassigned time remains outside that
+completed period and is not silently treated as final posted job cost.
 
-Final independent checkpoint: all nine migration versions unchanged, all 63
-application tables retain RLS, zero private client table privileges, zero sessions,
-22 users/four verified factors/no pending factors, three companies/three memberships
-and zero CRM/estimate/job/worker/time/payroll records. Security advisor independently
-still reports one leaked-password warning and 12 informational private-table
-notices. Formatting/diff checks pass. No product code/schema/UI changed; the full
-375-case product suite, native and browser suites were not rerun for this
-continuity-only checkpoint. The 687-case private local scenario is separate evidence.
+Independent database reads confirmed the same wage/burden/imputed totals, two jobs,
+one locked preparation period, one inactive member, five accepted invitations,
+17 time segments and zero open clocks for each of the three companies.
+
+## Advisors and supported remediation — no settings changed
+
+Final security advisor: 12 informational private-table/no-policy notices (intentional
+default-deny) and **one leaked-password-protection warning**. Performance advisor:
+four existing per-row Auth/RLS warnings; 21 unindexed foreign keys, 43 unused indexes
+and one absolute Auth-connection allocation notice. No automatic cleanup, historical
+migration edits, index removal or privilege widening was performed.
+
+Supabase documents native leaked-password rejection through Have I Been Pwned,
+available on **Pro and above**. A read-only organization entitlement lookup confirms
+the designated development environment currently has **Pro** support. No upgrade is
+needed for this feature under that current plan. The recommended next action is
+separate owner approval to enable only the native leaked-password option, preserving
+signup, redirect, API and MFA restrictions. Then re-read persisted configuration/
+advisor and validate rejection with separately approved disposable credentials.
+Do not submit existing passwords to screening, reset the 22 accounts, claim random
+passwords eliminate the finding, or substitute a client-only check. No setting,
+subscription or billing change was made.
+
+[Password security](https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection),
+[RLS performance](https://supabase.com/docs/guides/database/database-linter?lint=0003_auth_rls_initplan),
+[foreign-key indexes](https://supabase.com/docs/guides/database/database-linter?lint=0001_unindexed_foreign_keys).
+
+## Remaining gates and next actions
+
+Preserve the private fixture mapping and immutable records. Do not rerun the fixed
+creation scenario, recreate companies/accounts/factors, reactivate C1 or duplicate
+invitations/expenses/payroll periods. Use the existing fixtures for reviewed
+follow-up tests; all current sessions are closed and owners need new genuine MFA
+for any later privileged operations.
+
+Review exact private environment/test grants separately for internal customer
+positives; scanner/byte transport/isolated worker/AI and positive Storage provenance
+remain independently required. No worker grant is implied. Action D protected
+application deployment remains separately unapproved; its actual app/asset/API
+perimeter and connected desktop/mobile acceptance remain NOT RUN. Review leaked-
+password protection and independent security/performance findings before launch.
+No external communications, live payment/signature/payroll execution, production
+change, outside access, merge or deployment occurred. Keep PR #1 draft and provision
+a separate clean production database before any future independently approved launch.
+
+Continuity validation: formatting, git diff checks, unchanged nine-file migration
+checksum and exact approved Propel asset hash passed. Only documentation changed
+in Git. The existing product/browser/native suites were not rerun locally for this
+checkpoint; genuine hosted counts above are distinct from preceding CI/local tests.
+CI for the preceding e16355d checkpoint was independently observed passing before
+the completion-documentation commit.

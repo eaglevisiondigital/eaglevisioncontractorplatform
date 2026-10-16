@@ -342,3 +342,27 @@ full 50-table harness. Current real GET-only preflight is 56 PASS/0 FAIL; fresh
 owner MFA is still pending, authenticated domain cases NOT RUN and new rows zero.
 Review native Pro-or-higher leaked-password protection; no setting/billing change
 without separate approval. See ACTION_B_CONNECTED_RESULT.md for safe continuation.
+
+### Action B core executed; preserve fixtures and blocked release boundaries
+
+Three owners completed genuine existing-factor MFA. Verify exact real Auth/AAL2/
+session bindings, then execute the fixed normal-client scenario once. Actual core
+687 PASS/0 FAIL plus supplemental staff read-only36 PASS/0 FAIL; anonymous boundary
+56 checks passed before/after populated fixtures. Do not relabel the preceding
+687-case LOCAL dry run as this hosted evidence. Retain 15 new memberships (three
+revoked), 15 accepted invitations, 219 domain rows and 354 audit events; never replay
+the fixture creation plan or delete unfavorable/immutable records. Exact independent
+financial/security counts and all-session sign-out are verified. No new company,
+identity, factor, private grant, Auth setting or schema was introduced; C1 inactive.
+
+Nine source/positive-object/private-release groups stay BLOCKED, with full matrix,
+protected browser/perimeter and independent launch/provider/jurisdictional validation
+NOT RUN. 723 core passes are not launch approval. Review exact later grants/scanner
+infrastructure, supported Pro-or-higher leaked-password remediation and separate
+Action D before advancing those gates. See ACTION_B_CONNECTED_RESULT.md; all later
+privileged owner work requires fresh genuine MFA, not stored session tokens.
+
+Leaked-password remediation entitlement review: read-only lookup confirms current
+Pro support, so no plan upgrade is required for the documented native option.
+Recommend separately approving only that Auth toggle plus disposable rejection
+validation; preserve all existing controls and accounts. No settings/billing change.

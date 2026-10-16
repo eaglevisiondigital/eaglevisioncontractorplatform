@@ -318,13 +318,23 @@ C1 does not authorize silently changing Auth settings. Four RLS performance warn
 also remain. No advisor warning is represented as a passing security certification.
 See docs/ACTION_C1_EXECUTION.md for exact scope, times and remaining gates.
 
-Action B owner continuation: preserve inactive C1, existing organizations, 22 users
-and four factors. Fresh owner AAL2 is a human gate before domain writes. A failed
-initial sign-in was globally closed with zero sessions independently verified;
-the reset form must not enroll/reset factors. Real anonymous preflight passed 56
-checks; 687 LOCAL scenario cases do not certify hosted identity, RLS or concurrency.
-Native leaked-password protection is supported on Pro and higher; review plan and
-obtain separate settings/billing approval before enabling, then verify persisted
-configuration and rejection with approved disposable credentials. Never submit
-existing passwords to a screening tool or silently reset accounts. See
-docs/ACTION_B_CONNECTED_RESULT.md for pending tests and unchanged blocked gates.
+Action B genuine connected evidence now supersedes the pending owner handoff:
+three owner AAL2 sessions were bound to exact existing factors/UIDs; owner AAL1
+denials preceded positive privileged operations. Normal employee/customer JWTs
+passed checked invitations, wrong-recipient/replay/escalation denial, populated
+six-pair tenant checks, private payroll/customer boundaries, same-session staff/
+supervisor revocation, immutable/audit and actual paired concurrent requests.
+723 authenticated cases passed; zero failed. The 56 GET-only anonymous checks also
+passed before/after nonempty tenant fixtures. No service key or broader private
+grant was used. All 21 distinct actors plus three supplementary sessions were
+globally closed; independent sessions zero, original 22 users/four factors/nine
+migrations/63 RLS tables/private-table privilege boundary intact. C1 inactive.
+
+Nine scanner/positive-object/private-release groups remain BLOCKED; the full 50-
+table and protected runtime/browser/independent release review remain unverified.
+Security advisor retains 12 private-table informational notices and one disabled-
+leaked-password warning. Native protection is available Pro and above; read-only entitlement review
+confirms the current development plan supports it. Obtain separate approval for
+the exact Auth toggle, then test with approved disposable credentials. No existing password screening/reset or Auth/API changes. Four RLS
+performance warnings plus index/connection notices remain for independent review.
+See docs/ACTION_B_CONNECTED_RESULT.md; no outside access or execution is approved.

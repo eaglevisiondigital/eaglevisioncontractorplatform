@@ -2,45 +2,42 @@
 
 ## Governing release policy and latest internal milestone
 
-Action B continuation is prepared, pending fresh company-owner MFA (0/3).
-Real GET-only boundary preflight: 56 PASS / 0 FAIL. No new tenant/domain/grant
-writes; existing C1 companies/memberships preserved. The fixed private core
-scenario passed 687 disposable LOCAL contract cases; those are not genuine hosted
-Auth/RLS acceptance. Hosted authenticated cases remain NOT RUN; nine scanner/
-positive-object/private-release groups remain BLOCKED. Loopback owner handoff
-uses existing Apple Passwords Users 1/2/3 and memory-only Keychain/Auth sessions.
-One incomplete initial sign-in was closed with independent zero sessions verified.
-Native leaked-password protection requires Pro-or-higher support and separate
-settings/upgrade approval; no Auth setting changed. Read
-docs/ACTION_B_CONNECTED_RESULT.md before continuing. Do not replay C1, duplicate
-companies, recreate accounts/factors or add private grants.
+Action B core connected acceptance now PASSES: 687 genuine authenticated core
+cases plus 36 supplemental staff cases = 723 PASS / 0 FAIL. Real GET-only boundary
+checks passed 56/56 before AND after populated fixtures. Nine scanner/positive-
+Storage/private-release groups remain BLOCKED; full 50-table and protected connected
+browser/deployment acceptance remain NOT RUN. This is not full Release 1.0 approval.
 
-C1 execution is COMPLETE: the separately approved one-row bootstrap was activated
-once under fresh genuine owner-assisted AAL2, then revoked immediately after the
-three checked company setups. Window 08:46:00–08:46:40 UTC October 16, 2026;
-independent read-back confirms one inactive row, zero active platform grants,
-zero operator memberships and zero operator sessions. Same prior AAL2 caller was
-denied platform access and company_metrics (42501) before global sign-out.
-All 22 identities and four verified TOTP factors are unchanged; no pending factors.
+Existing three companies were reused. Added 15 memberships (18 total; 15 active,
+three revoked), 15 accepted invitations, 219 retained domain fixture rows and 354
+activity events (420 total). Includes six customers/locations/estimates/jobs, nine
+estimate versions/worker profiles/rates, 12 expenses/reviews, 51 time segments,
+33 time reviews and three locked payroll-preparation periods. No billing approval,
+customer message, document object, provider execution or new private grant.
 
-Action B platform setup now has exactly three companies and three existing-owner
-memberships, three settings rows, 27 module rows, six platform events and 66 tenant
-activity events. No CRM/material/job/purchase/time/payroll fixtures exist yet.
-Full tenant/role/domain acceptance is NOT RUN, not implied by successful setup.
-No additional private grants, migration, Auth/API change or deployment occurred.
-See docs/ACTION_C1_EXECUTION.md and docs/ACTION_B_RESULT.md. Do not rerun C1 or
-provision duplicates; resume approved Action B under fresh company-owner sessions
-with human MFA. Broader Action C and Action D remain unapproved.
+All three owners completed genuine existing-factor MFA and exact hosted session
+binding. Normal employee/customer Auth and checked invitation/member/domain APIs
+were used; same-JWT revocation, six ordered tenant pairs, immutable records and
+12 paired concurrent PostgREST cases passed. Per-company wages120400, burden24080
+and owner imputed10000 reconcile; payroll execution false, profit remains projected.
+All 21 distinct actors and three supplemental sign-ins were globally signed out;
+independent reads confirm zero sessions/open clocks. Helpers stopped.
 
-Security advisor now reports leaked-password protection disabled (one warning),
-plus 12 expected informational private-table/no-policy notices. Performance review
-still has four RLS warnings and informational index/connection findings. These
-need separate review; no settings/schema remediation was performed. All 63 tables
-retain RLS and clients have no private table privileges. Release remains closed.
-Earlier checkpoint counts below describe their historical runs, not current totals.
-C1 continuity validation: npm check PASS, 375 tests / nine native-only skips,
-strict/generated types, reviewed migration digest and local build; format/diff PASS.
-No implementation/UI/SQL change; browser/native suites not rerun for this checkpoint.
+C1 stays inactive, with zero operator memberships; no bootstrap replay. Existing
+22 identities/four verified factors and nine migration versions are unchanged.
+All 63 application tables retain RLS and private client table privileges are zero.
+Financial modules and release environment remain disabled. Auth/API/branding and
+Netlify protection were not changed. Read docs/ACTION_B_CONNECTED_RESULT.md and
+docs/ACTION_B_RESULT.md; do not replay the fixture-creation scenario.
+
+Security advisor: one leaked-password warning plus 12 informational private-table
+notices. Performance: four RLS warnings, 21 unindexed foreign keys, 43 unused indexes
+and one Auth connection notice. Read-only entitlement lookup confirms Pro supports native leaked-password
+protection; enabling the exact Auth option still needs separate owner approval.
+No setting, subscription or billing change was applied.
+Next: exact private-release grant/scanner infrastructure review, separately approved
+protected deployment and independent acceptance. Broader C/D remain unapproved.
+Earlier checkpoints below describe their historical runs, not current totals.
 
 The owner supplied the exact approved logo. The local product rebrand is
 Propel Contractor Suite by Eagle Vision, using the unchanged emerald/mint PNG.

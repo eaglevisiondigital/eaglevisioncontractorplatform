@@ -94,3 +94,10 @@ git diff checks passed. No application/SQL/UI implementation changed; the native
 PostgreSQL and browser suites were not rerun for this documentation-only checkpoint.
 Those local tests are distinct from the hosted C1 evidence above. Private execution
 and independent verification evidence remain ignored with restrictive permissions.
+
+Subsequent Action B update: the three owners completed fresh genuine MFA; 723
+actual authenticated core/supplemental cases passed and all sessions are closed.
+C1 remains inactive and must not be replayed. The fixture counts above describe
+C1 only; current domain/member inventory, blocked groups and security findings
+are in ACTION_B_CONNECTED_RESULT.md. Broader private grants/deployment remain
+unapproved; Release 1.0 is still closed.
