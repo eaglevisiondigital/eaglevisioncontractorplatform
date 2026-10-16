@@ -615,3 +615,27 @@ private media inaccessible. Isolated signature trust, tenant domain verification
 minimal signed webhook receiver and controlled document/video runtime remain
 external/security gates. No protection exception, local tunnel or frozen-package
 change is implied. Read docs/SANDBOX_ACTIVATION_READINESS.md for approval matrix.
+
+## October16 · sandbox account discovery does not authorize credentials
+
+At base0ceac3e, owner approved preparation/read-only account selection only. Inspect
+available browser sessions, connected Gmail message IDs and exact Keychain item
+attributes, never credential values/bodies/autofill/keys. Official sandbox redirected
+to its logintest login page; no account session. Searches/metadata presence checks
+found no evidence in their narrow scopes; account existence/control stays unknown,
+not “no account exists.” Native attribute-only helper never requests secret bytes
+or permits interaction; earlier constrained query errors cannot prove absence.
+
+Prepare one disabled/unconfigured tenant-specific candidate privately, with null
+merchant reference/account evidence. Do not copy diagnostic probe IDs into a payment
+merchant binding. Document separate credential purposes/custody, no generated keys
+or Keychain writes. Owner manual login may enable later non-secret read inspection;
+account creation/recovery/key generation/rotation/custody/provider APIs remain
+separate scopes. Sandbox Live Mode terminology is not production authorization;
+production Test Mode never proves a sandbox account. Profile validation may cause
+provider-side validation/receipt behavior and is not read-only.
+
+Add three synthetic capture/refund endpoint/redirect regressions; no runtime,
+SQL, UI, approved branding or frozen package changes. No real gateway call, hosted
+DB read/write, login, role/grant/binding, Netlify/support operation or outside access.
+Read docs/AUTHORIZE_NET_ACCOUNT_SELECTION.md for precise evidence/limits/owner steps.

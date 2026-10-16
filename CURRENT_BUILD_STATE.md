@@ -1,6 +1,30 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
-## Latest: sandbox activation readiness / no activation
+## Latest: Authorize.Net account selection / read-only / unverified
+
+Base0ceac3e preserved. Read docs/AUTHORIZE_NET_ACCOUNT_SELECTION.md. No existing
+Eagle Vision-controlled sandbox account could be verified: browser inventory had
+no merchant session, official sandbox opened at its login page, two connected
+Gmail message-ID-only searches returned0 results, and four exact metadata-only
+Keychain lookups returned item-not-found. These limited searches do not establish
+that no account exists. Owner manual identification/sign-in is pending; no secret
+was requested/retrieved, account created, login submitted or provider API called.
+
+Prepared one private unconfigured/disabled merchant candidate for the existing
+synthetic property-services tenant, plus credential-purpose/custody and independent
+invoice/consent/token/profile/workload plans. No Keychain item was created and
+actual custody/account permissions remain unverified. All provider capabilities
+stay off; no Supabase/Netlify/settings/grant/binding/financial/email action occurred.
+Three additional synthetic routing regressions cover endpoint override and capture/
+refund redirects. Final validation counts are in the account-selection report.
+
+Next: owner manually opens/signs in to the official sandbox for non-secret account
+metadata inspection, or identifies which controlled account/email to inspect. If
+no account exists, creation needs separate approval. Key retrieval/generation/storage,
+provider configuration, merchant/workload binding and transactions each remain
+separately controlled. Release1.0 stays NOT READY / NOT AUTHORIZED; PR#1 draft.
+
+## Previous: sandbox activation readiness / no activation
 
 Base97e861f preserved. New offline sandbox planner, a guard-only dormant workload
 proposal/containment compiler,14 plan tests and6 SQL proposal tests are implemented.

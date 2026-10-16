@@ -426,3 +426,16 @@ procurement capability to Release1.0 or permission to remove existing obligation
 Local implementation authorization persists for a subsequent increment. Unfinished
 modules remain hidden/server-disabled. Protected Netlify deployment and support
 case are untouched. Final local/browser evidence is recorded in the readiness report.
+
+## October16 · Authorize.Net account selection remains unverified
+
+Read AUTHORIZE_NET_ACCOUNT_SELECTION.md. Official sandbox login host observed,
+no authenticated merchant account/session; no matching registration evidence in
+the connected Gmail message-ID searches or exact sandbox/label Keychain metadata.
+Actual account identity/control, rails/profile/report/webhook settings and credential
+custody remain BLOCKED pending owner manual identification/sign-in. No account or
+credential created/retrieved, provider API called, merchant/workload bound or gate
+activated. One private disabled tenant candidate and exact custody/consent plan are
+prepared. Three new synthetic endpoint/redirect tests pass; final full regression
+counts belong to the account-selection report. Genuine provider acceptance NOT RUN.
+No new migration, hosted operation, UI, branding, Netlify/support or release change.

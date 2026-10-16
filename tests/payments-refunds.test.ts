@@ -196,3 +196,17 @@ it('reconciles captures/refunds exactly and detects missing/duplicate/foreign st
     ),
   ).toThrow();
 });
+
+it('Authorize.Net refund redirect cannot fall back to a production endpoint', async () => {
+  const s = setup('authorize_net');
+  s.transport.mockImplementation(async () =>
+    Response.redirect('https://api.authorize.net/xml/v1/request.api', 307),
+  );
+  const result = await s.gateway.refund(s.intent);
+  expect(result.status).toBe('unknown');
+  expect(s.transport).toHaveBeenCalledOnce();
+  expect(s.transport.mock.calls[0][0]).toBe(
+    'https://apitest.authorize.net/xml/v1/request.api',
+  );
+  expect(s.transport.mock.calls[0][1]?.redirect).toBe('error');
+});

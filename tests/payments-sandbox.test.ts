@@ -388,3 +388,40 @@ it.each([
     expect(s.transport).not.toHaveBeenCalled();
   },
 );
+
+it('Authorize.Net capture cannot route injected endpoint settings to production', async () => {
+  const s = setup('authorize_net');
+  Object.assign(s.merchant, {
+    endpoint: 'https://api.authorize.net/xml/v1/request.api',
+    baseUrl: 'https://api.authorize.net',
+    sandboxUrl: 'https://attacker.example.invalid',
+  });
+  const gateway = new SandboxGateway(
+    s.merchant,
+    s.credentials,
+    s.store,
+    s.transport,
+  );
+  await gateway.capture(s.intent, s.token);
+  expect(s.transport).toHaveBeenCalledOnce();
+  expect(s.transport.mock.calls[0][0]).toBe(
+    'https://apitest.authorize.net/xml/v1/request.api',
+  );
+  expect(s.transport.mock.calls[0][1]?.redirect).toBe('error');
+});
+it('Authorize.Net redirect responses remain UNKNOWN without a second request', async () => {
+  const s = setup('authorize_net');
+  s.transport.mockImplementation(async () =>
+    Response.redirect('https://api.authorize.net/xml/v1/request.api', 302),
+  );
+  const result = await new SandboxGateway(
+    s.merchant,
+    s.credentials,
+    s.store,
+    s.transport,
+  ).capture(s.intent, s.token);
+  expect(result.status).toBe('unknown');
+  expect(s.transport).toHaveBeenCalledOnce();
+  expect(s.transport.mock.calls[0][1]?.redirect).toBe('error');
+  expect(s.store.finish.mock.calls[0][2].status).toBe('unknown');
+});

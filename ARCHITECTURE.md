@@ -532,3 +532,16 @@ existing expenses/change orders/credit/refund provenance, never a second cost or
 billing ledger. These additions are planned, not implemented by this increment;
 expanded media/procurement Release1.0 scope needs an explicit owner scheduling
 choice. Existing customer change-order/supplemental conversion remains required.
+
+### Authorize.Net account selection: inspection only
+
+Read docs/AUTHORIZE_NET_ACCOUNT_SELECTION.md. Existing account ownership is not
+verified; the official sandbox page is at login. Browser inventory, connected Gmail
+message-ID searches and exact Keychain attribute lookups found no evidence within
+their limited scopes. No credential value was retrieved, provider API/login request submitted, merchant
+binding/database role created or hosted configuration changed by this work.
+A private disabled/unconfigured tenant-specific candidate and credential-purpose/
+custody/consent plan are prepared; secret installation and real account verification
+remain gated. Three added synthetic capture/refund routing/redirect regressions
+change no runtime code or production endpoint policy. Existing separate gateway,
+tenant and application release boundaries remain intact.

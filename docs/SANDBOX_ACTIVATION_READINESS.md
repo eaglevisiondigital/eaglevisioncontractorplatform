@@ -302,3 +302,11 @@ workloads and provider authorizations/bindings and verify termination; do not cl
 that hiding a module, signing a human out or changing JWT metadata contains an
 already authenticated database service. Independently review this operational
 coupling before any real provider capability.
+
+## Account-selection continuation
+
+Read AUTHORIZE_NET_ACCOUNT_SELECTION.md for the subsequent owner-approved read-only
+inspection result. No existing sandbox account has yet been verified; credentials
+were not retrieved. The official sandbox page awaits owner manual identification/
+sign-in. Private unconfigured merchant candidate/custody planning does not activate
+the earlier S0 role, merchant binding, vault, callback or transaction operation.

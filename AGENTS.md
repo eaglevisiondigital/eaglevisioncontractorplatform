@@ -235,3 +235,15 @@ Sandbox-readiness continuation:
 - Property/media/comparison/unbilled additions are planned this increment; local
   implementation authorization persists, with expanded release scheduling undecided.
   Reuse tenant/property/job/import/expense/change/invoice models and all off gates.
+
+Authorize.Net selection continuation:
+
+- Read docs/AUTHORIZE_NET_ACCOUNT_SELECTION.md and private selection evidence.
+  Account availability/control remains UNVERIFIED; owner manual sandbox login is
+  pending. No credential value was retrieved and no provider call or binding made.
+- Exact-host/label metadata absence does not prove no account/other Passwords entry.
+  Do not retrieve/generate/rotate/store keys, create accounts or submit login under
+  preparation/read-only selection scope. Owner enters credentials personally.
+- Prepared private merchant candidate is disabled/unconfigured, not executable
+  SQL or an approved binding. Sandbox Live Mode is provider test terminology;
+  never treat production Test Mode as a sandbox. Preserve all activation gates.

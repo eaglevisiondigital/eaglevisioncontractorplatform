@@ -538,3 +538,21 @@ independent inquiry; do not retry or change keys. Never bypass Netlify team prot
 for webhooks. Future media must separately enforce clean exact-version derivatives,
 per-item publication/current customer mapping and every playback segment/range.
 Read docs/SANDBOX_ACTIVATION_READINESS.md and PROPERTY_PROCUREMENT_PLAN.md for gates.
+
+### Read-only provider account discovery
+
+Account selection does not authorize key retrieval or creation. Query only exact
+sandbox/label Keychain metadata with secret-data return and interaction disabled;
+never enumerate unrelated password stores or use autofill/security -w/-g. Zero
+matches in those scopes cannot prove no account exists. Owner manual sandbox login
+is required before non-secret account control/settings can be inspected. Do not
+capture API-credentials pages or log raw merchant-details responses/public keys.
+Future account/key generation/rotation, secure custody, profiles/validation, webhook
+registration and transactions each need applicable separate approval. Provider
+validation can cause transaction/receipt side effects, so it is not read-only.
+
+Current capture/refund URLs remain fixed to the sandbox with redirects refused;
+new synthetic tests cover production URL suggestions and redirect responses leaving
+UNKNOWN without a second request. No credential, provider capability, RLS/grant,
+hosted setting, application gate or Netlify protection was altered. Read
+docs/AUTHORIZE_NET_ACCOUNT_SELECTION.md for findings and scope limits.
