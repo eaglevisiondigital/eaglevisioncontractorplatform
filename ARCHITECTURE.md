@@ -351,3 +351,12 @@ labels/status/pass booleans. Offline roster planning confers no identity or role
 The current full positive-control harness is preserved; missing worker/Storage or
 tenant rows cannot yield full success. See docs/CONNECTED_ACCEPTANCE_PLAN.md for
 22 identities and separate identity/fixture/private-grant/deploy approval boundaries.
+
+Action A identity/MFA validation is now complete for the existing 22 synthetic
+identities and four designated privileged accounts. The temporary private loopback
+interface reused the existing MFA component and actual Supabase password/TOTP APIs;
+no application/module or schema change was required. Fresh identity, verified claims
+and AAL2 checks plus independent hosted factor counts establish real enrollment.
+All sessions were signed out and the helper stopped. No company or private grant
+exists, so full multi-company/domain acceptance remains pending. See
+docs/ACTION_A_RESULT.md; Actions B/C/D are not authorized by this milestone.

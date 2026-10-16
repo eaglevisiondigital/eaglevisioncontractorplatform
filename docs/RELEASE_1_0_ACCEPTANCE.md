@@ -122,3 +122,11 @@ bug, now corrected. Genuine TOTP 0/4, sessions 0; STOPPED for owner participatio
 Company/membership/private-grant counts all0. No authenticated three-company case
 has passed yet. Use existing accounts; do not recreate or claim MFA complete.
 See ACTION_A_RESULT.md. Actions B/C/D remain separately unapproved.
+
+Latest Action A completion supersedes the pending MFA statements above: all four
+privileged synthetic identities completed genuine owner-assisted TOTP and verified
+real AAL2/confirmed identity. Independent SQL: 22 confirmed users, four verified
+TOTP factors, zero pending factors/sessions; companies/memberships/private grants
+remain zero. No full authenticated tenant/domain case is inferred. The temporary
+local interface is closed/stopped; no secrets or QR captures entered evidence.
+Actions B/C/D remain separately unapproved. See ACTION_A_RESULT.md.

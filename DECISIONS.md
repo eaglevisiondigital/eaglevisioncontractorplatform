@@ -255,3 +255,15 @@ records now exist; no password file/log/argv persistence and no grants/company d
 Stop at genuine human TOTP: 0/4 verified, 0 sessions. Never recreate the roster or
 fabricate MFA. Preserve the existing Action A approval for owner-assisted continuation;
 Actions B/C/D remain unapproved. See ACTION_A_RESULT.md for exact evidence/handoff.
+
+### Action A completion with genuine owner participation
+
+Reuse the existing 22 identities and Keychain passwords; no creation/reset or role
+assignment. A temporary loopback-only helper signs in with a publishable Auth client
+and reuses the existing MFA component. The owner scans each genuine QR and enters
+the code directly. All four identities passed fresh Auth identity, signature-verified
+claims, AAL2 and verified-factor checks; independent SQL confirms four verified
+factors, no pending factors and no remaining sessions after sign-out. Stop/close
+the helper; retain only status evidence. AAL1 platform denial also lacked grants,
+so it cannot alone establish MFA-only enforcement. Actions B/C/D remain unapproved;
+full tenant/workflow acceptance and Release 1.0 launch remain pending.

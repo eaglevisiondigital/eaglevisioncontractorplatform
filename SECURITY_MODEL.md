@@ -270,3 +270,14 @@ cleanup is advisable defense in depth, not needed to test the existing reviewed
 schema. No rejected action was retried. New privileged TOTP seeds/session tokens
 must never enter logs/CI; actual identity/factor/fixture/grant writes need separate
 approval. Details and unrun cases: docs/CONNECTED_ACCEPTANCE_PLAN.md.
+
+Action A hosted identity/MFA evidence now supersedes earlier blanket MFA deferral:
+all four designated privileged synthetic accounts passed genuine owner-assisted
+TOTP, fresh confirmed identity and real signed AAL2 verification. Independent SQL
+confirms exactly four verified factors, no pending factors and zero remaining
+sessions after sign-out. Existing 22 identities were neither reset nor replaced;
+signup remains disabled, 63/63 application tables retain RLS and clients have no
+private table privileges. No company/membership/private grant was created. AAL1
+platform denials were also missing grants, so they do not isolate MFA enforcement.
+Full tenant/role/Storage/workflow acceptance is still pending. No seed, QR, password,
+OTP or session token entered public evidence. See docs/ACTION_A_RESULT.md.

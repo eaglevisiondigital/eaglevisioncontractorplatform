@@ -39,12 +39,16 @@ unexpected disclosed data are never emitted in reports. Private evidence:
 `.staging/acceptance-preflight-result.json` and private read target. The script has
 no login, account/admin API, SQL, upload or mutation mode.
 
-## Action A — identities COMPLETE; owner-assisted TOTP REQUIRED
+## Action A — COMPLETE: identities and genuine owner-assisted TOTP
 
-Owner explicitly authorized Action A on October 16. Exactly 22 confirmed synthetic
-identities and secure Keychain credentials now exist. Genuine TOTP is 0/4 and requires
-owner participation; no companies, sessions, memberships or private grants exist.
-See ACTION_A_RESULT.md. Do not recreate identities or repeat the existing approval.
+Exactly 22 confirmed synthetic identities remain unchanged. All four designated
+privileged accounts completed genuine owner-assisted TOTP, real AAL2 and fresh
+confirmed-identity verification. Hosted SQL independently confirms four verified
+factors, no pending factors and zero remaining sessions. No companies, memberships
+or private grants exist. See ACTION_A_RESULT.md. Do not recreate/reset identities
+or re-enroll completed factors. Later login uses the existing owner-held factor.
+The procedure below records the completed authorized scope; it is not permission
+to rerun enrollment or proceed to Actions B/C/D.
 The approved scope is:
 **22 synthetic Auth identities**, all internal-engineer operated. Per company:
 owner, estimator, assigned-team supervisor, assigned field worker, unassigned field

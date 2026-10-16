@@ -1,6 +1,6 @@
 # Action A result · October 16, 2026
 
-**IDENTITIES COMPLETE; STOPPED FOR OWNER-ASSISTED TOTP.** Exactly 22 synthetic
+**ACTION A COMPLETE: 22 IDENTITIES; 4/4 GENUINE TOTP VERIFIED.** Exactly 22 synthetic
 Supabase Auth identities were created under the owner's Action A authorization.
 No company, membership, tenant permission, private grant or deployment was created.
 Release 1.0 remains closed and NOT READY / NOT AUTHORIZED; PR #1 stays draft/unmerged.
@@ -10,9 +10,9 @@ Release 1.0 remains closed and NOT READY / NOT AUTHORIZED; PR #1 stays draft/unm
 | Approved roster                            | 22 distinct identities: 7 × 3 companies plus platform-only operator                                     |
 | Auth creation                              | 22/22 successful Auth Admin createUser calls, email_confirm=true, non-deliverable .test emails, no mail |
 | Independent verification                   | Auth Admin listUsers exact UID set/confirmed status; hosted SQL: 22 confirmed nonanonymous users        |
-| Password persistence                       | 22 encrypted macOS Keychain records; metadata-only count verification; no password read-back            |
-| MFA enrollment/verification                | 0/4; STOP before human QR scanning/challenge verification                                               |
-| Sessions                                   | 0; no password login or fabricated JWT used                                                             |
+| Password persistence                       | 22 existing encrypted Keychain records; four credentials retrieved only in memory for genuine login     |
+| MFA enrollment/verification                | 4/4 genuine owner-assisted TOTP factors verified; no pending factors                                    |
+| Sessions                                   | 0 remaining; all four genuine password/MFA sessions signed out                                          |
 | Companies/memberships                      | 0/0                                                                                                     |
 | Platform/release/workload grants           | 0/0/0                                                                                                   |
 | Public signup                              | Remains disabled; actual settings endpoint: HTTP 200 / disable_signup=true                              |
@@ -42,30 +42,61 @@ Creation used the real Auth Admin API with email_confirm=true, not signup/invite
 magic-link mail, SQL Auth mocks or role metadata. Confirmation is internal synthetic
 attestation, not independent proof of a real person's identity.
 
-## Owner handoff — human interaction required
+## Genuine owner-assisted MFA results
 
-Four existing accounts require genuine TOTP:
+The owner used an independent authenticator to scan each real Supabase enrollment
+QR and entered its current code directly in the local interface. The existing
+`src/Mfa.tsx` component performed `enroll` and `challengeAndVerify`; it was not
+modified. No identity was created, replaced, reset or assigned permissions.
 
-- platform-operator
-- pilot-1-owner (Straight Edge test owner)
-- pilot-2-owner (Cunningham test owner)
-- pilot-3-owner (roofing test owner)
+| Account                                              | Real AAL2 | Intended confirmed nonanonymous identity | Verified TOTP |
+| ---------------------------------------------------- | --------- | ---------------------------------------- | ------------- |
+| Straight Edge test owner (`pilot-1-owner`)           | PASS      | PASS                                     | 1             |
+| Cunningham test owner (`pilot-2-owner`)              | PASS      | PASS                                     | 1             |
+| Sample Roofing test owner (`pilot-3-owner`)          | PASS      | PASS                                     | 1             |
+| Eagle Vision platform operator (`platform-operator`) | PASS      | PASS                                     | 1             |
 
-Passwords are in macOS Keychain service **Eagle Vision Contractor Acceptance
-Development**, labeled **EV synthetic development: <alias>**. The private email/UID
-mapping is ignored `.staging/action-a/identities.json`. No password is in that file.
-Owner access to a stored password may require normal Keychain authentication.
+For every account, verification used fresh real Auth `getUser`, signature-verified
+`getClaims`, `getAuthenticatorAssuranceLevel` and `listFactors`, matching the
+intended existing UID/email against the private roster. The accepted session had
+signed AAL2 and one verified TOTP factor. Each account first completed real password
+login at AAL1 with the confirmed intended identity; `platform_access` returned false.
+Because no platform grant exists, that denial does not independently isolate the
+MFA requirement from the missing-grant requirement. No authenticated tenant/workflow
+acceptance is inferred from this enrollment evidence.
 
-When the owner is ready, use the connected local MFA component with the actual
-existing identity, perform password login, record the AAL1 denial, enroll TOTP,
-have the owner scan into an independent authenticator and enter its current code
-for challengeAndVerify. Verify server-returned AAL2 and fresh getUser identity;
-record only status/evidence references. No QR seed screenshots, mocked factors,
-hardcoded OTPs or JWT claims. Stop again on any required owner authentication.
-No MFA factors or sessions were created in this run because human participation
-is required at that stage. Do not report MFA verified until all four genuinely pass.
+Independent hosted SQL confirms 22 confirmed nonanonymous users, exactly four
+verified TOTP factors (one per designated identity), zero pending factors and zero
+remaining Auth sessions. Companies, memberships, platform grants, release-test
+grants and worker grants remain zero. All 63 application tables retain RLS; private
+table client privileges remain zero. Public signup remains disabled; email remains
+enabled and phone disabled. No Auth/API configuration was changed during enrollment.
 
-Action A authorization remains valid for that continuation. Actions B/C/D (company
-fixtures, private grants and deployment) remain separately unapproved. Existing
-Auth/API/MFA settings and private Storage policies must be preserved. No outside
-person receives any account or access.
+## Credential, session and interface handling
+
+The existing passwords were retrieved through the native macOS Keychain command
+with stdout captured only in the local helper's memory pipe. They were never
+printed, logged, placed in command arguments, exported to a file or sent to the
+browser. The publishable-client password login went directly to the approved
+Supabase Auth target. The temporary interface bound only to loopback and enforced
+exact Host/Origin, no-store responses and denied private file access. Negative
+checks returned 404 for the private roster and 403 for an originless sign-in POST.
+Only genuine local sessions reached the browser; each was signed out after owner
+verification. The temporary interface was then closed and its process stopped.
+
+No QR/seed, password, OTP or session token entered Git, GitHub, screenshots, logs or
+test reports. Status-only private evidence is ignored
+`.staging/action-a/mfa-results.json`; existing UID mapping remains in
+`.staging/action-a/identities.json`. Credentials remain in Keychain service
+**Eagle Vision Contractor Acceptance Development**, labels
+**EV synthetic development: <alias>**. The private helper now refuses to start again
+when all four MFA results are complete. Future authentication must challenge the
+existing verified factor with actual owner participation, not re-enroll or extract
+an authenticator seed.
+
+## Remaining gates
+
+Action A is complete. Actions B/C/D (company fixtures, private grants and protected
+deployment) remain separately unapproved and untouched. Full three-company tenant,
+role, revocation, PostgREST/Storage and domain workflow acceptance is still pending.
+Release 1.0 stays closed and NOT READY / NOT AUTHORIZED. PR #1 remains draft/unmerged.

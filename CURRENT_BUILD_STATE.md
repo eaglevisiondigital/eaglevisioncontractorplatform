@@ -2,13 +2,16 @@
 
 ## Governing release policy and latest internal milestone
 
-Action A identity creation is COMPLETE: 22 distinct confirmed nonanonymous Auth
-identities and 22 secure Keychain records, independently verified. STOPPED for owner-
-assisted TOTP (0/4 factors verified, 0 sessions). Companies/memberships/private grants
-remain 0; no deployment or execution. Do not recreate accounts. Use the private UID
-mapping and four existing privileged aliases from docs/ACTION_A_RESULT.md. The
-first stop was a local parsing bug, now corrected; Keychain storage works. Action A
-MFA authorization remains valid; Actions B/C/D remain separately unapproved.
+Action A is COMPLETE: the existing 22 confirmed synthetic identities are preserved;
+all four designated privileged accounts completed genuine owner-assisted TOTP and
+real AAL2 / fresh confirmed-identity verification. Independent hosted SQL confirms
+one verified TOTP per privileged account, no pending factors and zero remaining
+sessions after sign-out. Companies, memberships and all private grants remain zero;
+63/63 application tables retain RLS and private client table privileges remain zero.
+Public signup remains disabled; no Auth/API settings were changed. The temporary
+loopback MFA interface is closed/stopped. Do not recreate/reset identities or
+re-enroll completed factors. See docs/ACTION_A_RESULT.md. Actions B/C/D remain
+separately unapproved; full connected three-company acceptance is still pending.
 
 Connected-acceptance preparation: independently reverified saved Auth/API/MFA
 settings and existing grants. Real anonymous/read-only API preflight56PASS/0FAIL;
