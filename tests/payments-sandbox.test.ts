@@ -245,3 +245,146 @@ it.each(['zero-transaction', 'inconsistent-message'])(
     ).toBe('unknown');
   },
 );
+it.each(['authorize_net', 'nmi'] as const)(
+  'binds %s execution to immutable values across reservation waits',
+  async (provider) => {
+    const s = setup(provider);
+    const original = { ...s.intent };
+    let release!: () => void;
+    const waiting = new Promise<void>((resolve) => {
+      release = resolve;
+    });
+    s.store.reserve.mockImplementation(async (merchant, intent) => {
+      expect(Object.isFrozen(merchant)).toBe(true);
+      expect(Object.isFrozen(intent)).toBe(true);
+      await waiting;
+      return { status: 'reserved' };
+    });
+    const gateway = new SandboxGateway(
+      s.merchant,
+      s.credentials,
+      s.store,
+      s.transport,
+    );
+    const capture = gateway.capture(s.intent, s.token);
+    Object.assign(s.intent, {
+      amountMinor: 999999,
+      organizationId: crypto.randomUUID(),
+      merchantConfigId: crypto.randomUUID(),
+      authorizationId: crypto.randomUUID(),
+      invoiceId: crypto.randomUUID(),
+    });
+    s.token.value = 'different-token';
+    s.merchant.provider = provider === 'nmi' ? 'authorize_net' : 'nmi';
+    s.merchant.mode = 'production' as 'sandbox';
+    if ('apiKey' in s.credentials) s.credentials.apiKey = 'changed-secret';
+    if ('transactionKey' in s.credentials)
+      s.credentials.transactionKey = 'changed-secret';
+    release();
+    const result = await capture;
+    expect(result.status).toBe('succeeded');
+    expect(result.provider).toBe(provider);
+    expect(result.amountMinor).toBe(12345);
+    expect(Object.isFrozen(result)).toBe(true);
+    const request = s.transport.mock.calls[0][1]!;
+    expect(String(request.body)).toContain('synthetic-token');
+    expect(String(request.body)).not.toContain('different-token');
+    expect(String(request.body)).not.toContain('9999.99');
+    expect(String(request.body)).not.toContain('changed-secret');
+    expect(JSON.stringify(request.headers)).not.toContain('changed-secret');
+    expect(s.store.finish.mock.calls[0][1]).toEqual(original);
+  },
+);
+it('uses a canonical digest independent of caller property order', async () => {
+  const s = setup();
+  const gateway = new SandboxGateway(
+    s.merchant,
+    s.credentials,
+    s.store,
+    s.transport,
+  );
+  await gateway.capture(s.intent, s.token);
+  const reversed = Object.fromEntries(
+    Object.entries(s.intent).reverse(),
+  ) as unknown as SandboxIntent;
+  await gateway.capture(reversed, s.token);
+  expect(s.store.reserve.mock.calls[0][2]).toBe(
+    s.store.reserve.mock.calls[1][2],
+  );
+  await gateway.capture({ ...s.intent, amountMinor: 12346 }, s.token);
+  expect(s.store.reserve.mock.calls[0][2]).not.toBe(
+    s.store.reserve.mock.calls[2][2],
+  );
+});
+it.each(['intent', 'merchant'] as const)(
+  'does not extend %s expiry while waiting for a reservation',
+  async (scope) => {
+    const s = setup();
+    const now = Date.now();
+    s.store.reserve.mockImplementation(async () => {
+      vi.spyOn(Date, 'now').mockReturnValue(
+        now + (scope === 'intent' ? 1800001 : 3600001),
+      );
+      return { status: 'reserved' };
+    });
+    try {
+      const result = await new SandboxGateway(
+        s.merchant,
+        s.credentials,
+        s.store,
+        s.transport,
+      ).capture(s.intent, s.token);
+      expect(result.status).toBe('unknown');
+      expect(s.transport).not.toHaveBeenCalled();
+      expect(s.store.finish).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.anything(),
+        result,
+      );
+    } finally {
+      vi.restoreAllMocks();
+    }
+  },
+);
+it('fails closed on an unrecognized reservation status', async () => {
+  const s = setup();
+  s.store.reserve.mockResolvedValue({ status: 'unexpected' } as never);
+  await expect(
+    new SandboxGateway(s.merchant, s.credentials, s.store, s.transport).capture(
+      s.intent,
+      s.token,
+    ),
+  ).rejects.toThrow(/Invalid payment reservation/);
+  expect(s.transport).not.toHaveBeenCalled();
+});
+it.each([
+  { status: 'succeeded', transactionId: 'invalid\nidentifier' },
+  { status: 'succeeded', transactionId: 'x'.repeat(101) },
+  { status: 'succeeded', transactionId: 123 },
+  { status: 'declined', transactionId: 'unexpected' },
+  { status: 'unknown', transactionId: 'unexpected' },
+])(
+  'rejects malformed stored metadata %j without provider execution',
+  async (fields) => {
+    const s = setup();
+    s.store.reserve.mockResolvedValue({
+      status: 'existing',
+      result: {
+        provider: 'authorize_net',
+        mode: 'sandbox',
+        amountMinor: s.intent.amountMinor,
+        currency: 'USD',
+        ...fields,
+      },
+    } as never);
+    await expect(
+      new SandboxGateway(
+        s.merchant,
+        s.credentials,
+        s.store,
+        s.transport,
+      ).capture(s.intent, s.token),
+    ).rejects.toThrow(/Invalid stored result/);
+    expect(s.transport).not.toHaveBeenCalled();
+  },
+);

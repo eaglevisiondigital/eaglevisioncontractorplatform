@@ -91,3 +91,10 @@ sandbox test calls separately. Team-login-protected Netlify cannot simply become
 public to receive callbacks; review a minimal authenticated/signed dedicated ingress
 without weakening app perimeter protection. Production routing, legal fee/tax review,
 actual authorization and Release 1.0 clean-production acceptance remain separate gates.
+
+Sandbox adapter follow-up: configuration/credentials and capture inputs are copied
+and frozen before asynchronous work. A canonical explicit digest binds all intent
+fields and the token hash, irrespective of caller key order. Authority expiry is
+rechecked after reservation; an expired reservation records UNKNOWN without a
+provider call. Invalid reservation states and malformed stored transaction metadata
+fail closed. These are local synthetic transport tests, not gateway validation.

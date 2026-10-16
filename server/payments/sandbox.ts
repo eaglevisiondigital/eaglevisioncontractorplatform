@@ -84,11 +84,14 @@ async function boundedJson(r: Response) {
       .replace(/^\uFEFF/, ''),
   ) as Record<string, unknown>;
 }
+type SandboxCredentials =
+  { apiLoginId: string; transactionKey: string } | { apiKey: string };
 export class SandboxGateway {
+  private readonly merchant: SandboxMerchant;
+  private readonly credentials: SandboxCredentials;
   constructor(
-    private merchant: SandboxMerchant,
-    private credentials:
-      { apiLoginId: string; transactionKey: string } | { apiKey: string },
+    merchant: SandboxMerchant,
+    credentials: SandboxCredentials,
     private store: SandboxIntentStore,
     private transport: typeof fetch = fetch,
   ) {
@@ -110,11 +113,18 @@ export class SandboxGateway {
         : !('apiKey' in credentials) || !credentials.apiKey
     )
       throw new Error('Sandbox credentials unavailable');
+    // Configuration is request authority, not a mutable caller-owned reference.
+    this.merchant = Object.freeze({ ...merchant });
+    this.credentials = Object.freeze({ ...credentials });
   }
   async capture(
-    intent: SandboxIntent,
-    token: GatewayToken,
+    input: SandboxIntent,
+    inputToken: GatewayToken,
   ): Promise<SandboxResult> {
+    // Snapshot before the first await. A reservation must bind exactly the values
+    // validated, hashed and ultimately sent, regardless of later caller changes.
+    const intent = Object.freeze({ ...input });
+    const token = Object.freeze({ ...inputToken });
     if (
       Object.keys(intent).some(
         (k) =>
@@ -160,7 +170,15 @@ export class SandboxGateway {
     const digest = createHash('sha256')
       .update(
         JSON.stringify({
-          ...intent,
+          organizationId: intent.organizationId,
+          merchantConfigId: intent.merchantConfigId,
+          invoiceId: intent.invoiceId,
+          authorizationId: intent.authorizationId,
+          idempotencyKey: intent.idempotencyKey,
+          amountMinor: intent.amountMinor,
+          currency: intent.currency,
+          expiresAt: intent.expiresAt,
+          provider: token.provider,
           tokenDigest: createHash('sha256').update(token.value).digest('hex'),
         }),
       )
@@ -179,8 +197,11 @@ export class SandboxGateway {
           reserved.result.status,
         ) ||
         (reserved.result.status === 'succeeded' &&
-          (!reserved.result.transactionId ||
-            reserved.result.transactionId === '0'))
+          (typeof reserved.result.transactionId !== 'string' ||
+            reserved.result.transactionId === '0' ||
+            !/^[a-zA-Z0-9_-]{1,100}$/.test(reserved.result.transactionId))) ||
+        (reserved.result.status !== 'succeeded' &&
+          reserved.result.transactionId !== null)
       )
         throw new Error('Invalid stored result');
       return {
@@ -194,6 +215,8 @@ export class SandboxGateway {
     }
     if (reserved.status === 'unknown')
       throw new Error('Previous outcome requires reconciliation; do not retry');
+    if (reserved.status !== 'reserved')
+      throw new Error('Invalid payment reservation; do not execute');
     let result: SandboxResult = {
       status: 'unknown',
       provider: m.provider,
@@ -203,6 +226,12 @@ export class SandboxGateway {
       mode: 'sandbox',
     };
     try {
+      // Waiting on the durable store must not extend an authorization or approval.
+      if (
+        Date.parse(intent.expiresAt) <= Date.now() ||
+        Date.parse(m.approvedUntil) <= Date.now()
+      )
+        throw new Error('Sandbox authority expired during reservation');
       let url: string,
         body: string,
         headers: Record<string, string> = {
@@ -289,6 +318,7 @@ export class SandboxGateway {
     } catch {
       /* Transport failure can occur after a charge; persist UNKNOWN, never fake decline/success. */
     }
+    Object.freeze(result);
     await this.store.finish(m, intent, result);
     return result;
   }

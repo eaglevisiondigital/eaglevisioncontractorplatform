@@ -315,3 +315,13 @@ until both exist. No new Storage policy or ingestion endpoint was enabled. Appro
 byte transport, isolation, actual scanner/AI, retention and orphan cleanup remain
 required. Cross-service failures may leave unreadable private orphans, never a
 clean metadata record pointing at an absent object. Real HTTP verification is pending.
+
+### Sandbox request consistency follow-up
+
+Gateway configuration/credentials are copied and frozen at construction; capture
+inputs are copied and frozen before reservation. The digest uses a fixed field
+order, independent of caller object key order. Reservation, provider serialization
+and completion therefore refer to the same tenant, merchant, invoice, authorization,
+amount and token even if caller-owned objects change during an asynchronous wait.
+Expiry is checked again after reservation, before transport. Invalid reservation
+states and malformed replay metadata fail closed. No route or provider was enabled.

@@ -7,11 +7,13 @@ PHASE2/PHASE3/PHASE3A validation reports are historical records.
 ## Final local results
 
 - `npm run check`: lint, strict TypeScript, generated database type comparison,
-  nine-file migration checksum verification, **327 tests passed / 9 skipped**, and
+  nine-file migration checksum verification, **338 tests passed / 9 skipped**, and
   Vite application build passed. The nine skips require native PostgreSQL locking.
 - Native PostgreSQL 17.11, disposable local database with TCP disabled:
   **144 database tests passed**, including all nine concurrency cases skipped by
   PGlite. This suite overlaps the database tests above; counts are not additive.
+  This native result is retained from the preceding run; the sandbox follow-up
+  changes no SQL, database types or database tests.
 - `npm run test:browser`: **48 passed**, across desktop, tablet and mobile Chromium.
   Includes three-company internal approval/contract/test-signature/invoice/payment/
   refund workflows, safe customer projections, print isolation, responsive layouts,
@@ -27,7 +29,10 @@ cover tenant/workload scope, expired leases, duplicate claims/publication,
 revocation before CAS, approved scan/validation evidence, extraction rejection,
 missing/mismatched objects and bounded retries. Provider transport tests cover
 fixed sandbox endpoints, authorization/merchant binding, exact decimal amounts,
-idempotency and UNKNOWN outcomes. Synthetic transports are not provider validation.
+idempotency and UNKNOWN outcomes. Eleven additional regression cases cover
+immutable request/configuration binding across reservation waits, stable digest
+ordering, expiry during reservation and invalid reservation/replay metadata.
+Synthetic transports are not provider validation.
 
 Browser artifacts are local/ignored under `artifacts/release/`:
 `{desktop,tablet,mobile}-{sample-property,sample-construction,sample-roofing}-{workflow,invoice}.png`

@@ -191,3 +191,14 @@
    checked for drift in CI. The first seven historical files remain unchanged.
    Auth/Storage SQL fixtures never run hosted. Actual identities/TOTP/HTTP acceptance
    and protected deploy require separate concrete action authorization.
+
+### Sandbox authority must survive asynchronous boundaries unchanged
+
+Copy/freeze primitive gateway configuration, credentials and capture inputs before
+any reservation await. Use canonical explicit digest fields rather than caller
+property order; recheck expiry before transport. Treat invalid reservation/replay
+metadata as a hard failure. Expiry after a successful reservation is persisted as
+UNKNOWN with no provider request, requiring explicit operator reconciliation rather
+than an unsafe automatic retry. Eleven synthetic regression cases cover mutation,
+expiry, canonical binding and invalid stored metadata. No migration or activation
+is part of this follow-up; the nine-file reviewed migration bundle is unchanged.

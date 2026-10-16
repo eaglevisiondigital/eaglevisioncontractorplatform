@@ -61,6 +61,11 @@ protected deploy and connected acceptance actions. The full Release 1.0 checklis
 remains NOT READY: legal/signature-provider, genuine sandbox payments/webhooks,
 verified sender delivery, full connected acceptance and clean production are pending.
 
+Sandbox follow-up: immutable configuration/request snapshots now preserve the
+validated tenant, merchant, amount and token across reservation waits. Canonical
+digests, post-reservation expiry checks and invalid replay/reservation rejection
+are covered by eleven new tests. No SQL or hosted configuration changed.
+
 Latest local evidence is recorded in docs/CONNECTED_VALIDATION.md; Phase 3A counts
 are historical. Read
 **docs/PHASE3A_STAGING.md** for the exact next isolated actions/approvals and recovery

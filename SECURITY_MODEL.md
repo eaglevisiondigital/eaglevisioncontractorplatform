@@ -240,3 +240,11 @@ only after approved evidence, a private clean object and strict extraction valid
 Clients cannot attest clean scanning or create workload grants. Actual Storage byte
 transport, isolation, scanner efficacy, independent provider evidence and retention/
 cleanup remain unverified. Ingestion still unconditionally503.
+
+Sandbox adapter follow-up: immutable request/configuration snapshots prevent
+caller mutation during reservation from substituting tenant, merchant, amount,
+credentials or token after validation. Canonical digest ordering preserves stable
+idempotency binding. Expiry during reservation produces UNKNOWN without transport;
+there is no automatic retry. Stored success identifiers are bounded/validated,
+non-success identifiers must be null and unknown reservation states cannot execute.
+The trusted durable intent store and real provider validation remain prerequisites.
