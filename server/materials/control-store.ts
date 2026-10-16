@@ -74,6 +74,10 @@ export class SupabaseProcessingStore implements DurableProcessingStore {
         throw new Error('Source lease mismatch');
     };
     return {
+      checkpoint: async (job) => {
+        same(job);
+        await this.checkpoint(lease);
+      },
       readQuarantined: async (job) => {
         same(job);
         await this.checkpoint(lease);

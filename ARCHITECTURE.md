@@ -433,3 +433,22 @@ The documented direct-digest flow post-processes automatically; the later manife
 PUT is not a required finalization step in that flow. No recovery API/source change.
 Provider diagnosis precedes any separately approved same-ID repair; original files,
 manifest and per-deploy-variable proposal remain frozen. See docs/ACTION_D_RECOVERY.md.
+
+## Local Release 1.0 provider foundation continuation
+
+See docs/RELEASE_PROVIDER_FOUNDATION.md. Existing tenant surfaces and all execution
+gates are preserved. Document processing adds a scoped byte-gateway client,
+metadata-free image normalization and current-authority checkpoints before AI.
+Payments add sandbox refunds, durable PostgreSQL reservation/refund/inbox adapter,
+raw-body provider webhook authentication and independent statement reconciliation.
+Private SQL is a locally tested proposal outside the approved nine-migration bundle;
+no control identity/client role or hosted path exists. Dedicated transaction
+connections and current provider-specific authorization are mandatory, never a
+request-scoped owner/service-role client or laboratory consent substitution.
+
+Signing adds sandbox-only accepted-scope/signer/account/consent/hash evidence ports
+and a DocuSign draft plan; durable persistence, vendor identity ceremony and signed-PDF
+cryptographic/legal validation remain unimplemented/unverified. Communications add
+account-bound domain verification and consent/suppression/branding preparation;
+no send operation. None is imported by deployed application functions. Existing
+503, private-release/financial/payroll gates and original frozen package remain intact.

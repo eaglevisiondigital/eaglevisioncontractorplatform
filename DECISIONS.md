@@ -441,3 +441,28 @@ reply. Receipt/confirmation is not a root-cause finding or verified agent assign
 No repair/requeue/retry/replacement/publish/delete/settings action is authorized.
 Document any later recommendation exactly for separate owner approval. No duplicate
 request or automatic monitoring. See docs/ACTION_D_SUPPORT.md.
+
+### October 16 · advance provider foundations locally while deployment is blocked
+
+Preserve the pending Netlify deployment, original frozen artifacts and approved
+migration bundle. Build server components with synthetic injected transports and
+local SQL only; no new public function, provider credentials or activation flags.
+Worker byte service is a separately authorized implementation dependency, not an
+SSRF-capable object URL or Storage-policy bypass. Normalize image metadata and
+recheck authority before AI after remote staging.
+
+Implement sandbox payment reservation/refund/receipt persistence as an explicit SQL
+proposal outside migrations. A separate provider authorization/digest is required;
+laboratory consent cannot authorize it. No privileged request client/control role.
+UNKNOWN stays unretryable and reserves refundable capacity; settlement is a separate
+immutable fact. SQL strips no data silently: unexpected result fields are rejected.
+Use NMI payment nonce-dot-body signing, not the unrelated underwriting signature.
+
+Advance sandbox signature evidence and DocuSign draft preparation without certifying
+legal signatures or implementing live sending. Preserve exact signed bytes and
+source/signer/account/consent binding; durable evidence store and cryptographic/legal
+review remain gates. Tenant sender verification is account/domain/profile-bound;
+receipts expire and never verify existing hosted profiles. Prepare escaped messages
+only, delivery disabled; actual outbox/DNS/inbox/suppression remain reviewed work.
+See docs/RELEASE_PROVIDER_FOUNDATION.md. All existing branding and release controls
+remain; independent review and exact later target/provider actions require approval.

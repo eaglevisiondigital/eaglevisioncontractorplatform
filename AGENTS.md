@@ -169,3 +169,11 @@ scope confirmation sent in same ticket. Read docs/ACTION_D_SUPPORT.md and ignore
 support correspondence; do not duplicate submission. No agent diagnosis yet and no
 repair/requeue/retry/replacement/settings operation approved. Retain ticket metadata
 privately and review exact later corrective recommendation with owner before writes.
+
+Local provider continuation: read docs/RELEASE_PROVIDER_FOUNDATION.md. New payment
+schema is server/payments/schema.proposed.sql, NOT an approved migration or control
+role. Never apply it or widen grants from local test results. Existing nine-migration
+bundle and frozen Action D package remain unchanged. New worker byte client needs
+an independently authorized service; ingestion503 stays. Signing is sandbox-only,
+legalExecutionEnabled=false; communication preparation cannot send. No provider,
+DNS/hosted call, worker grant or deployment authorization comes from this work.

@@ -91,6 +91,7 @@ function worker() {
     expiresAt: Date.now() + 60000,
   };
   const store = {
+    checkpoint: vi.fn(async () => {}),
     readQuarantined: vi.fn(async () => bytes),
     releaseValidated: vi.fn(async () => {}),
     saveExtraction: vi.fn(async () => {}),
@@ -122,7 +123,7 @@ it('processes a leased source and fences every publication', async () => {
   const w = worker();
   expect(await runWorkerOnce(w)).toBe('completed');
   expect(w.queue.complete).toHaveBeenCalledOnce();
-  expect(w.queue.checkpoint).toHaveBeenCalledTimes(5);
+  expect(w.queue.checkpoint.mock.calls.length).toBeGreaterThanOrEqual(10);
   expect(w.store.saveExtraction).toHaveBeenCalledOnce();
 });
 it('does no work when queue is empty', async () => {

@@ -23,6 +23,7 @@ export class MalwareScanGateway implements ApprovedScanner {
       !approvedEngines.length
     )
       throw new Error('Invalid scanner configuration');
+    this.approvedEngines = Object.freeze([...approvedEngines]);
   }
   async scan(bytes: Uint8Array): Promise<ScanEvidence> {
     if (!bytes.length || bytes.length > MAX_SOURCE_BYTES)

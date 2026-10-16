@@ -127,3 +127,13 @@ upload actual customer documents or pretend synthetic clean verdicts are real sc
 
 Until every gate passes, live extraction is **UNVERIFIED AND UNAVAILABLE**. This
 phase completes adapters/orchestration/verification contracts, not hosted activation.
+
+## October16 local runtime-client continuation
+
+The byte gateway CLIENT, image normalization and stronger pre-AI checkpoints now
+exist and have synthetic adapter-to-worker tests. The independent workload byte
+SERVICE, isolated deployment, approved scanner/AI and real Storage acceptance remain
+unverified/unprovisioned; do not mark activation checkboxes from these fixtures.
+The original nine migrations were previously applied under separate approval; no
+new hosted action or worker grant was made here. Historical unapplied-schema wording
+above describes earlier checkpoints. See RELEASE_PROVIDER_FOUNDATION.md.

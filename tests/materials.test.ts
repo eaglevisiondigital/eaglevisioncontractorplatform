@@ -129,6 +129,7 @@ function pipeline() {
   job.objectKey = `${job.organizationId}/${job.sourceId}`;
   const order: string[] = [];
   const store: QuarantineStore = {
+    checkpoint: vi.fn(async () => {}),
     readQuarantined: vi.fn(async () => {
       order.push('read-quarantine');
       return bytes;

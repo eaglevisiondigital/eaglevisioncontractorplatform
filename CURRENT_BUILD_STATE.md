@@ -2,6 +2,35 @@
 
 ## Governing release policy and latest internal milestone
 
+Local Release 1.0 provider continuation is complete as an INTERNAL foundation
+increment (base cc46509). Added scoped document byte transport, metadata-free image
+normalization and pre-AI authority checkpoints; sandbox signature evidence/hash/
+identity/consent ports and DocuSign draft planning; scoped token references, sandbox
+refunds, PostgreSQL
+intent/refund/inbox control adapter, provider HMAC and statement reconciliation;
+tenant/account-bound domain verification and disabled-only branded notifications.
+No UI redesign, live integration activation, hosted operation, new endpoint or
+provider credential. The existing blocked deploy/frozen14-file package is preserved.
+
+Validation: npm check **495 PASS / 10 native-only skips**, including lint/types/
+generated types, original nine-migration checksum and build; native PostgreSQL17
+**187 PASS**, including those concurrency cases (overlaps local suite); responsive
+browser **51 PASS**; frozen package/operation/logo integrity **26 PASS**. Format/diff
+and public private-reference checks PASS. Initial disposable native setup encountered
+a parallel global-role creation race; precreating roles as CI does resolved it and
+the final full native run passes. This is local synthetic evidence, not hosted QA.
+
+Payment schema is server/payments/schema.proposed.sql: four private RLS tables,
+explicit revokes/composite tenant keys/immutable records, tested only in disposable
+DBs. It is NOT in the migration bundle and has no approved control identity/API.
+Review/generate a new migration and workload authorization separately before any
+hosted action. No laboratory consent may authorize a provider call. Signature store,
+genuine provider identity/certificate validation/legal review, DNS resolver/outbox/
+suppression persistence and actual isolated byte/scanner/AI service remain dependencies.
+Current signature output legalExecutionEnabled=false; messages delivery=disabled;
+ingestion503 and existing DB financial/payroll/release gates remain. See
+docs/RELEASE_PROVIDER_FOUNDATION.md for exact implementation and remaining gates.
+
 Netlify diagnosis-only support request is SUBMITTED and ACKNOWLEDGED. The existing
 private support channel returned a ticket at17:44:32UTC; its accurate scope summary
 was confirmed by same-thread reply at17:45:20UTC for agent routing. Ticket/response/

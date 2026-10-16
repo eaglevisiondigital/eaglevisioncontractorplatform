@@ -397,3 +397,28 @@ metadata or deploy-variable persistence. Static registration is empty. Support r
 excludes credentials/environment values and requires authorization before sending;
 repair/replay/deletion/replacement require separate exact approval. Do not claim
 runtime security passes from these reads. See docs/ACTION_D_RECOVERY.md.
+
+## Local provider boundary regression extension
+
+Worker jobs/leases and byte inputs are snapshotted; scanner allowlists are frozen.
+Current authority is rechecked before transmitting normalized material images to AI,
+including revocation during clean-byte staging. New byte transport validates tenant,
+source key, digest, length and lease; independent workload service authorization and
+runtime isolation remain required. No Storage policy/upload handler changed.
+
+The unapplied sandbox-payment SQL proposal has four private default-deny RLS tables,
+composite tenant references/indexes and explicit client revokes, immutable results/
+audit facts and SQL-enforced content-free result projection. Capture/refund authority
+binds exact provider request digest; pending/UNKNOWN reserves capacity; refunds need
+settled matching merchant/customer/invoice and independent approval. Native concurrent
+claims/refunds and accidental-read-grant RLS negatives are local-only evidence.
+No API/RPC or control role has been granted/provisioned. Nine migrations unchanged.
+
+Raw-body provider signatures precede parsing and durable receipt acknowledgement;
+webhooks cannot directly post ledger entries, finalize agreements or authorize sends.
+Sandbox signing binds immutable source/signer/account/consent/evidence hashes, with
+legalExecutionEnabled=false. PDF parsing is not cryptographic signature validation.
+Email verification receipts are server-only, expiring/profile-bound; customer/tenant/
+consent/suppression checks and escaped branding precede disabled-only preparation.
+No new execution endpoint, external call, hosted change or outside access. See
+docs/RELEASE_PROVIDER_FOUNDATION.md for required real-provider/independent acceptance.

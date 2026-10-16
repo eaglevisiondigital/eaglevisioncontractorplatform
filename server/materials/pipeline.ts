@@ -39,7 +39,14 @@ export interface ApprovedScanner {
 export interface ContentValidator {
   validate(bytes: Uint8Array, mime: string): Promise<void>;
 }
+export interface ExtractionNormalizer {
+  normalize(
+    bytes: Uint8Array,
+    mime: string,
+  ): Promise<{ bytes: Uint8Array; mime: string }>;
+}
 export interface QuarantineStore {
+  checkpoint(job: QuarantineJob): Promise<void>;
   readQuarantined(job: QuarantineJob): Promise<Uint8Array>;
   // Atomic compare-and-set on org/source/digest. Clean object remains private and internal.
   releaseValidated(job: QuarantineJob, evidence: ScanEvidence): Promise<void>;
@@ -75,17 +82,20 @@ export function validateEnvelope(bytes: Uint8Array, mime: string) {
     throw new Error('File signature does not match its declared type');
 }
 export async function processQuarantined(
-  job: QuarantineJob,
+  input: QuarantineJob,
   deps: {
     store: QuarantineStore;
     scanner: ApprovedScanner;
     validator: ContentValidator;
     extractor: ExtractionProvider;
+    normalizer?: ExtractionNormalizer;
   },
 ) {
+  const job = Object.freeze({ ...input });
   try {
     if (!deps.scanner.approved) throw new Error('Scanner not approved');
-    const bytes = await deps.store.readQuarantined(job);
+    await deps.store.checkpoint(job);
+    const bytes = Uint8Array.from(await deps.store.readQuarantined(job));
     validateEnvelope(bytes, job.mime);
     const digest = createHash('sha256').update(bytes).digest('hex');
     if (
@@ -94,7 +104,10 @@ export async function processQuarantined(
       job.objectKey !== `${job.organizationId}/${job.sourceId}`
     )
       throw new Error('Source integrity mismatch');
-    const evidence = await deps.scanner.scan(bytes);
+    await deps.store.checkpoint(job);
+    const evidence = Object.freeze({
+      ...(await deps.scanner.scan(Uint8Array.from(bytes))),
+    });
     if (
       evidence.verdict !== 'clean' ||
       evidence.sha256 !== digest ||
@@ -106,10 +119,20 @@ export async function processQuarantined(
       throw new Error('No current clean malware verdict');
     // A magic number alone is insufficient: approved validator must fully decode images with pixel limits,
     // parse PDFs rejecting encryption/active content/embedded files, and bound literal CSV rows/columns.
-    await deps.validator.validate(bytes, job.mime);
+    await deps.store.checkpoint(job);
+    await deps.validator.validate(Uint8Array.from(bytes), job.mime);
     await deps.store.releaseValidated(job, evidence);
+    await deps.store.checkpoint(job);
+    // Images must be decoded/re-encoded without EXIF/GPS before leaving the worker.
+    if (job.mime.startsWith('image/') && !deps.normalizer)
+      throw new Error('Image normalization required');
+    const normalized = deps.normalizer
+      ? await deps.normalizer.normalize(Uint8Array.from(bytes), job.mime)
+      : { bytes: Uint8Array.from(bytes), mime: job.mime };
+    validateEnvelope(normalized.bytes, normalized.mime);
+    await deps.store.checkpoint(job);
     const extraction = validateExtraction(
-      await deps.extractor.extract(bytes, job.mime),
+      await deps.extractor.extract(normalized.bytes, normalized.mime),
     );
     await deps.store.saveExtraction(job, extraction, {
       id: deps.extractor.id,

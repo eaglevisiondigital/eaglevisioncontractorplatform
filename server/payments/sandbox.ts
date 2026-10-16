@@ -84,7 +84,7 @@ async function boundedJson(r: Response) {
       .replace(/^\uFEFF/, ''),
   ) as Record<string, unknown>;
 }
-type SandboxCredentials =
+export type SandboxCredentials =
   { apiLoginId: string; transactionKey: string } | { apiKey: string };
 export class SandboxGateway {
   private readonly merchant: SandboxMerchant;
@@ -253,6 +253,7 @@ export class SandboxGateway {
             transactionRequest: {
               transactionType: 'authCaptureTransaction',
               amount: decimal,
+              currencyCode: 'USD',
               payment: {
                 opaqueData: {
                   dataDescriptor: 'COMMON.ACCEPT.INAPP.PAYMENT',

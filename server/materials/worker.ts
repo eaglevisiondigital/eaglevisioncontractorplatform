@@ -5,6 +5,7 @@ import {
   type ApprovedScanner,
   type ContentValidator,
   type ExtractionProvider,
+  type ExtractionNormalizer,
 } from './pipeline';
 
 export interface ProcessingLease {
@@ -30,11 +31,16 @@ export async function runWorkerOnce(deps: {
   scanner: ApprovedScanner;
   validator: ContentValidator;
   extractor: ExtractionProvider;
+  normalizer?: ExtractionNormalizer;
   now?: () => number;
 }): Promise<'idle' | 'completed' | 'failed'> {
   const now = deps.now ?? Date.now;
-  const lease = await deps.queue.claim();
-  if (!lease) return 'idle';
+  const claimed = await deps.queue.claim();
+  if (!claimed) return 'idle';
+  const lease = Object.freeze({
+    ...claimed,
+    job: Object.freeze({ ...claimed.job }),
+  });
   // Recheck after every external call; a stale/expired/revoked worker cannot publish.
   async function checkpoint() {
     if (
@@ -52,6 +58,9 @@ export async function runWorkerOnce(deps: {
     await checkpoint();
     const store = deps.queue.scopedStore(lease);
     const fenced: QuarantineStore = {
+      async checkpoint() {
+        await checkpoint();
+      },
       async readQuarantined(job) {
         await checkpoint();
         return store.readQuarantined(job);

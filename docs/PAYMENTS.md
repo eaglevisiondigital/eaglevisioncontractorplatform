@@ -98,3 +98,15 @@ fields and the token hash, irrespective of caller key order. Authority expiry is
 rechecked after reservation; an expired reservation records UNKNOWN without a
 provider call. Invalid reservation states and malformed stored transaction metadata
 fail closed. These are local synthetic transport tests, not gateway validation.
+
+## October16 local sandbox continuation
+
+New sandbox refund adapters, PostgreSQL durable intent/refund/inbox adapter,
+provider-specific raw-body signatures and statement reconciliation are implemented
+and tested locally. SQL is an explicit unapplied proposal outside the approved
+migration bundle, without a request-scoped client, control role or public RPC.
+Genuine provider authorization/invoice provenance and sandbox account calls remain
+unverified. Standalone opaque-token captures do not automatically supply the profile
+references required by the restrictive Authorize.Net refund adapter. Settlement,
+UNKNOWN resolution and financial execution stay separate reviewed gates. See
+RELEASE_PROVIDER_FOUNDATION.md for exact scope and source references. No activation.
