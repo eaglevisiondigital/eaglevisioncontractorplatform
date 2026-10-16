@@ -146,3 +146,12 @@ ignored .staging/action-d/. No upload, runtime/site variable, callback, new gran
 hosted acceptance change is authorized by preparation. Preserve production build
 rejection and Private/all-deploy team protection. Do not replace the reviewed
 function-metadata upload with an ordinary stale-cache CLI no-build deployment.
+
+Action D execution update supersedes preparation-only status: owner approved the
+exact frozen upload. One manual preview exists; four ZIPs uploaded, no primary
+publication. Provider returned HTTP500 on same-ID manifest finalization and remains
+uploading. Read docs/ACTION_D_EXECUTION.md and private execution state before any
+continuation. Do not rerun creation, rebuild/substitute files, publish, change
+settings or create a replacement. Read-only diagnostics first; runtime perimeter
+and connected acceptance remain blocked/not run. All tenant/Auth/MFA/off controls
+are unchanged; no owner session has been created for this attempt.

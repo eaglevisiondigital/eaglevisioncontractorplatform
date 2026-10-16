@@ -2,6 +2,19 @@
 
 ## Governing release policy and latest internal milestone
 
+Action D execution is AUTHORIZED but PROVIDER BLOCKED. Exactly one manual preview
+record was created for the frozen28c7d5e package, four reviewed function ZIPs uploaded,
+and primary publication stayed absent. The provider omitted the optional draft
+response field; independent exact-site/context/publication reads verified the
+existing nonproduction preview before continuation. Same-ID finalization with the
+identical manifest then returned HTTP500; further writes stopped. At13:10UTC it
+remained uploading with no required hashes/ready timestamp. See
+docs/ACTION_D_EXECUTION.md and ignored execution evidence; do not create a second
+deploy, rebuild, publish or replay the initial upload script. Deployed perimeter
+acceptance BLOCKED; connected browser/owner MFA NOT RUN. Current Private/all-deploy
+team protection, zero site/shared variables, unchanged Auth/API/database gates,
+22 identities/four factors/zero sessions verified. Release remains closed.
+
 Action D PREPARATION is complete, not execution approval. Exact application source
 28c7d5e is packaged privately: eight frontend files, four portable Node24 functions,
 metadata and unchanged Netlify configuration. Public per-file hashes and the exact

@@ -401,3 +401,18 @@ shared-environment/protection review, exact operation approval, internal Netlify
 operator and owner-assisted MFA precede later protected acceptance. Existing callback
 settings support current password/TOTP; new redirect flows need separate review.
 See docs/ACTION_D_REVIEW.md; no deployment or launch occurred.
+
+### October 16 · stop writes on the pending Action D provider failure
+
+Owner authorized one exact frozen draft upload. Verify all hashes, target, current
+Private/all-deploy protection, empty site/shared environments and unchanged saved
+Supabase gates. Create once; an omitted optional draft response field initially
+paused uploads. Independent real reads verified manual deploy-preview and no primary
+publication before continuing that same ID with four reviewed function ZIPs. Never
+claim the missing field was returned true. Same-ID finalization sent the identical
+approved manifest and received HTTP500; stop further writes and preserve the pending
+record, rather than recreate/rebuild/publish. No ready state, runtime security or
+connected browser pass is claimed. Keep all original hashes and private evidence,
+read-only diagnostics first and separate review for changed/replacement actions.
+See docs/ACTION_D_EXECUTION.md. Existing identities/factors/zero sessions, RLS,
+permissions and execution gates are independently unchanged; release stays closed.

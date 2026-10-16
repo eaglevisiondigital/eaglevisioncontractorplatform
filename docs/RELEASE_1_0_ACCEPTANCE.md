@@ -225,3 +225,19 @@ is authorized, and no required release module becomes launch-ready. Next: review
 and separately authorize the exact private draft API operation and three deploy-only
 Functions values in ACTION_D_REVIEW.md/ACTION_D_ARTIFACTS.json. No callback change,
 site setting, deployment, outside access or production approval is implied.
+
+## October 16 · Action D authorized attempt, provider blocked
+
+**PASS:** exact frozen hashes/operation, existing target and Private/all-deploy
+configuration, no Git/site/shared variable change, four function transport uploads,
+primary publication absent and independent unchanged Supabase/Auth/data/permission
+gates. **FAIL:** same-ID identical-manifest finalization returned HTTP500. **BLOCKED:**
+ready application and actual anonymous app/asset/API perimeter; provider remains
+uploading. **NOT RUN:** connected deployed browser/roles/owner MFA. No session was
+created and no earlier local/API count is relabeled as deployed acceptance.
+
+One existing preview record only; do not recreate/rebuild/promote or weaken access.
+See ACTION_D_EXECUTION.md for exact scope, times, private evidence and read-only
+next diagnostics. All required modules remain launch-ready No; original scanner,
+private-release, provider and clean-production dependencies remain. Owner Action D
+approval is not launch, merge, production or outside-access approval.

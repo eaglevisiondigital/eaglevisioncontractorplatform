@@ -1,5 +1,10 @@
 # Propel Contractor Suite · Action D protected deployment review
 
+Execution update: owner approval received; one preview record created and four
+reviewed function ZIPs uploaded. Identical same-ID finalization returned HTTP500;
+provider remains uploading. Read ACTION_D_EXECUTION.md before continuation. The
+review below is the preserved preparation record and original exact hashes.
+
 **PREPARED / NOT DEPLOYED / EXECUTION NOT AUTHORIZED.** October 16, 2026.
 Source application commit: `28c7d5e41c28c0714c41525179eb0637216a7729`, draft PR #1.
 This package preserves existing functionality, branding and tenant authorization.

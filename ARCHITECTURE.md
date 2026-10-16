@@ -418,3 +418,11 @@ Dashboard Private visibility is configuration evidence; app/asset/function perim
 and connected browser acceptance remain NOT RUN until separately approved upload.
 No repository link, provider or private grant is part of Action D. See
 docs/ACTION_D_REVIEW.md and docs/ACTION_D_ARTIFACTS.json.
+
+Action D execution checkpoint: the exact frozen upload was authorized and created
+one unpublished manual deploy-preview. Four function archives uploaded; same-ID
+manifest finalization failed HTTP500 and the provider remains uploading. No source,
+configuration, grant or database change; no second creation or primary publish.
+The omitted optional draft field was verified through independent preview-context/
+publication evidence, not invented. Deployed function/asset/perimeter and connected
+browser behavior remain unverified. See docs/ACTION_D_EXECUTION.md before resuming.

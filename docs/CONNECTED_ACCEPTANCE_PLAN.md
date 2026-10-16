@@ -180,7 +180,14 @@ Record each case PASS/FAIL/BLOCKED/NOT RUN and evidence hash; run core cases in
 stages, but do not call a partial matrix full acceptance. A functional deny with an
 unexpected error code, a5xx or unavailable worker is a failure/blocker, not PASS.
 
-## Action D — protected nonproduction deploy (NOT AUTHORIZED)
+## Action D — owner-authorized attempt; provider blocked
+
+October 16 execution: approval received; one manual preview created and four exact
+function ZIPs uploaded. Same-ID identical-manifest finalization returned HTTP500;
+provider remains uploading. See ACTION_D_EXECUTION.md before any action; no second
+creation/rebuild/publish or settings change is implied. Runtime perimeter BLOCKED
+and connected browser/MFA NOT RUN. Earlier preparation-only statements below are
+historical; the frozen artifact and operation hashes remain unchanged.
 
 October 16 preparation is now complete. See ACTION_D_REVIEW.md and
 ACTION_D_ARTIFACTS.json for exact 28c7d5e build/file hashes, private target-bound

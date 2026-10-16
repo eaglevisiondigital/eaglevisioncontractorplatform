@@ -378,3 +378,14 @@ team-login and genuine existing app-role/MFA checks are prepared, not run hosted
 No assumption that Netlify login grants Supabase data access. Do not invite outside
 reviewers or loosen protection/callbacks; require exact later upload approval. See
 docs/ACTION_D_REVIEW.md for expected results, stop conditions and blocked positives.
+
+Action D authorized execution did not complete: one unpublished nonproduction
+preview, four reviewed function ZIP uploads, then same-ID finalization HTTP500.
+Further writes stopped; no ready application or authenticated browser acceptance.
+Current dashboard/connector Private/all-deploy protection and before/after database
+state are preserved. No Supabase sessions or human MFA challenge were started;
+22 users/four factors/63 RLS tables/zero private client privileges and inactive
+C1/zero release-worker grants remain unchanged. Required anonymous runtime perimeter
+checks are BLOCKED, not PASS from metadata or unavailable files. Read-only pending
+deploy inspection and explicit review of any changed/replacement action come first.
+See docs/ACTION_D_EXECUTION.md. No outside access or live execution enabled.
