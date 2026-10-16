@@ -124,7 +124,12 @@ write approval; they do not certify malware scanning. Do not label real files cl
 through SQL, enable ingestion503, weaken Storage or use fixture scanner verdicts as
 production evidence. Scanner/byte gateway/AI/isolated worker remain unprovisioned.
 
-## Action C — private grants (execution NOT AUTHORIZED)
+## Action C — C1 execution authorized; broader grants NOT AUTHORIZED
+
+C1 execution is now separately approved for the exact reviewed operation hash.
+Read ACTION_C1_EXECUTION.md. Fresh genuine owner-assisted AAL2 remains pending;
+no grant/tenant writes occurred. The preparation checkpoint below is historical,
+and does not require the owner to repeat the already-issued approval.
 
 C1 preparation is now authorized and complete for the one platform-only operator.
 The exact target/UID grant and cleanup bundle is private; see ACTION_C1_REVIEW.md.

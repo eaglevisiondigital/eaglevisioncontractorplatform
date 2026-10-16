@@ -1,5 +1,10 @@
 # Propel Contractor Suite · C1 platform bootstrap review
 
+Latest: the owner has separately approved the exact operation below. Execution
+remains pending fresh owner-assisted AAL2; read ACTION_C1_EXECUTION.md first. The
+preparation-only status below is the original review record, not a request to
+repeat approval. All scope/freshness/cleanup restrictions remain binding.
+
 **PREPARED ONLY — NOT AUTHORIZED FOR EXECUTION; NO HOSTED WRITE.** The owner
 requested preparation and explicitly requires separate approval of the exact
 operation. Action A remains complete; Action B remains approved but blocked.

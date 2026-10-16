@@ -2,6 +2,15 @@
 
 ## Governing release policy and latest internal milestone
 
+C1 execution is now explicitly owner-authorized for the exact reviewed operation
+hash, but activation is NOT RUN pending fresh owner-assisted operator AAL2. Target,
+SQL/scope hashes, all roster UIDs, existing factors, migrations, zero-grant baseline
+and independent revocation channels were reverified. An AAL1 session that waited
+past five minutes was safely closed; independent reads confirm zero sessions/grants.
+The local page is ready for owner-initiated fresh sign-in/code entry. No grant,
+company or membership was created. Do not request execution approval again. See
+docs/ACTION_C1_EXECUTION.md before continuing; older preparation status is historical.
+
 C1 narrow platform bootstrap is PREPARED ONLY, not execution-authorized. Exact
 private roster UID/email matches the hosted confirmed operator, one verified
 factor and no membership/grant/session. Private target-bound one-row INSERT and

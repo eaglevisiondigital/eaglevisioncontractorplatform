@@ -301,3 +301,14 @@ or error. The current table has no TTL; do not claim autonomous expiry or rely o
 logout to invalidate existing JWTs. Test the SQL in isolated fixtures and require
 real same-session denial plus independent read-back during eventual cleanup. No
 hosted activation/revocation/Action B resume until separate exact owner approval.
+
+### C1 approved execution waits for fresh human MFA
+
+The owner approved the exact reviewed target-bound operation hash. Reverify all
+roster UIDs, factors, SQL hashes, migrations, saved Auth boundaries and independent
+cleanup channels. Keep grant/provisioning unarmed until genuine existing-factor
+AAL2 and the reviewed five-minute session limit pass. Close an unattended stale
+AAL1 wait rather than weaken the guard; preserve its record and reset the local
+sign-in handoff without requesting the same approval again. No grant or company
+write occurred. See ACTION_C1_EXECUTION.md for current state and fixed RPC/cleanup
+plan; broader private grants/deployment remain unapproved.

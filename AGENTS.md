@@ -126,3 +126,11 @@ approval of that exact operation/hash. Require fresh genuine operator AAL2 and
 no-drift checks; keep operator outside tenant memberships. Maximum 30-minute
 operator-enforced window, early exact-UID deactivation and verified session cleanup;
 there is no native grant TTL. Broader C/D grants/deployments remain unapproved.
+
+C1 execution approval now EXISTS for operation SHA-256
+37cc9657fd57aef122d96d4fb1156e5ebfdc012ad7f361fdb114e34073401b3d.
+Read docs/ACTION_C1_EXECUTION.md before the older review-only checkpoint. Do not
+repeat this approval request. Activation still needs fresh genuine owner-assisted
+operator AAL2 and refreshed drift checks; first stale AAL1 wait was closed with
+zero grants/sessions. Preserve the pending local handoff and inspect private state
+before any retry. No organization/grant creation has occurred at this checkpoint.

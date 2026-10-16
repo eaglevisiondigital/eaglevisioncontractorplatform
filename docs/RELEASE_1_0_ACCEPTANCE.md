@@ -153,3 +153,10 @@ checks and isolated SQL contract tests; grant/cleanup SQL prepared privately wit
 revocation and real same-session denial remain NOT RUN / awaiting separate exact
 owner approval and fresh genuine AAL2. Action B remains BLOCKED; no company/member
 fixtures or broader private grants exist. See ACTION_C1_REVIEW.md.
+
+C1 execution approval has now been received for the exact reviewed operation hash.
+Preflight target/roster/factor/migration/hash/cleanup-channel checks PASS. Genuine
+fresh operator AAL2 is awaiting owner entry; a stale AAL1 wait was closed with
+zero sessions/grants verified. Activation/provisioning/revocation remain NOT RUN;
+no company/member fixtures or connected workflow pass is claimed. Do not repeat
+C1 execution approval. See ACTION_C1_EXECUTION.md.
