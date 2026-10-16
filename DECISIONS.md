@@ -288,3 +288,16 @@ branding. Keep repository/package/infrastructure identifiers, historical migrati
 original README and existing MFA factor/Keychain identities stable. Rebrand locally
 and provide actual responsive screenshots; no deployment or release permission.
 See BRANDING.md.
+
+### C1 preparation is not execution authority
+
+Verify the platform-only operator's exact private roster UID/email against hosted
+Auth without printing identifiers. Prepare one guarded INSERT and exact-UID
+active=false cleanup, with both concrete SQL hashes and target binding in ignored
+operator evidence. Public SQL templates contain placeholders and no execution path.
+A fresh genuine AAL2 session is required before activation/platform RPCs; no account
+or MFA reset. Use a 30-minute maximum supervised window, revoke earlier after setup
+or error. The current table has no TTL; do not claim autonomous expiry or rely on
+logout to invalidate existing JWTs. Test the SQL in isolated fixtures and require
+real same-session denial plus independent read-back during eventual cleanup. No
+hosted activation/revocation/Action B resume until separate exact owner approval.

@@ -146,3 +146,10 @@ Propel Contractor Suite by Eagle Vision uses the exact owner-supplied logo for
 local product presentation; contractor white-label contexts remain independent.
 Local responsive screenshots/tests are branding evidence only. They do not fulfill
 connected acceptance or launch authorization. See BRANDING.md.
+
+C1 exact-operation review: PASS for read-only operator identity/factor/baseline
+checks and isolated SQL contract tests; grant/cleanup SQL prepared privately with
+30-minute maximum operator-enforced expiration (no native TTL). Hosted activation,
+revocation and real same-session denial remain NOT RUN / awaiting separate exact
+owner approval and fresh genuine AAL2. Action B remains BLOCKED; no company/member
+fixtures or broader private grants exist. See ACTION_C1_REVIEW.md.

@@ -119,3 +119,10 @@ Product identity: Propel Contractor Suite by Eagle Vision. Use only the owner-
 supplied unchanged PNG documented in docs/BRANDING.md. Preserve contractor brands,
 original README, repository/hosted identities, Keychain labels and historical SQL.
 Never substitute/redraw the logo or mistake a visual change for release permission.
+
+C1 is PREPARATION ONLY: read docs/ACTION_C1_REVIEW.md and the ignored exact review
+bundle before any continuation. Do not execute the grant without separate owner
+approval of that exact operation/hash. Require fresh genuine operator AAL2 and
+no-drift checks; keep operator outside tenant memberships. Maximum 30-minute
+operator-enforced window, early exact-UID deactivation and verified session cleanup;
+there is no native grant TTL. Broader C/D grants/deployments remain unapproved.

@@ -290,3 +290,12 @@ sessions0, RLS63/63 and zero private client table privileges remain intact. No
 connected tenant/role/financial acceptance result is inferred from this empty state.
 The visual Propel rebrand changes no authorization, existing factors, tenant storage
 policy or infrastructure identity. See docs/ACTION_B_RESULT.md and docs/BRANDING.md.
+
+C1 execution remains unapproved. Read-only verification matched exact operator
+UID/email, confirmed identity, one verified factor, no membership/grant/session.
+The prepared one-row bootstrap rejects drift and requires a fresh hosted AAL2
+session in addition to external verified-identity/claims checks. A 30-minute maximum
+operator window is not automatic expiry: cleanup must deactivate only the exact
+row, prove real AAL2 platform denial, then globally sign out/verify session removal.
+No metadata/claim fabrication, domain service-role client, broader private grant,
+RLS/schema change or hosted Auth mock is introduced. See docs/ACTION_C1_REVIEW.md.

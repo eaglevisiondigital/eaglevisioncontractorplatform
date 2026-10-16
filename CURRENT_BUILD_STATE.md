@@ -2,6 +2,14 @@
 
 ## Governing release policy and latest internal milestone
 
+C1 narrow platform bootstrap is PREPARED ONLY, not execution-authorized. Exact
+private roster UID/email matches the hosted confirmed operator, one verified
+factor and no membership/grant/session. Private target-bound one-row INSERT and
+exact-UID active=false cleanup are ready for review; 30-minute maximum supervised
+window, early revocation after platform setup/error, no native expiry. Separate
+owner approval and fresh genuine operator AAL2 are required before any activation
+or Action B resume. See docs/ACTION_C1_REVIEW.md; no hosted writes occurred.
+
 Action B is owner-authorized but BLOCKED before hosted writes: the checked hosted
 provisioning RPC requires an active private platform-admin grant plus genuine
 AAL2; no such grant exists. That bootstrap belongs to separately unapproved

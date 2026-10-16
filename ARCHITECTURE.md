@@ -370,3 +370,11 @@ Action B is authorized but stopped at the checked provisioning prerequisite:
 no private platform-admin grant exists. Action C alone controls that bootstrap;
 AAL2 does not substitute for it. No companies, memberships or domain fixtures were
 created; connected workflow acceptance remains NOT RUN. See docs/ACTION_B_RESULT.md.
+
+C1 review-only operator SQL lives outside the migration/application API paths.
+Private rendered SQL binds the existing operator and development target; guarded
+activation inserts exactly one platform row, never company membership. Independent
+exact-UID deactivation preserves history. The 30-minute window is operator-enforced,
+not a schema TTL. Future application operations retain genuine AAL2 caller JWTs;
+bootstrap database authority is not a domain-operation client. See
+docs/ACTION_C1_REVIEW.md; no hosted operation is currently approved/executed.

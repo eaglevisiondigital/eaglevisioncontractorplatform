@@ -124,7 +124,14 @@ write approval; they do not certify malware scanning. Do not label real files cl
 through SQL, enable ingestion503, weaken Storage or use fixture scanner verdicts as
 production evidence. Scanner/byte gateway/AI/isolated worker remain unprovisioned.
 
-## Action C — private grants (NOT AUTHORIZED)
+## Action C — private grants (execution NOT AUTHORIZED)
+
+C1 preparation is now authorized and complete for the one platform-only operator.
+The exact target/UID grant and cleanup bundle is private; see ACTION_C1_REVIEW.md.
+Its execution still needs separate owner approval and fresh genuine AAL2. Proposed
+window: 30 minutes maximum, revoke earlier after platform setup/error. No native TTL
+or automatic expiry exists. All hosted C1 operations remain NOT RUN. The broader
+release/environment/worker grants below are outside C1 and remain unapproved.
 
 Separately review exact UIDs/org IDs, purpose and expiry before these writes:
 
