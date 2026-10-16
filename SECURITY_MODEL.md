@@ -389,3 +389,11 @@ C1/zero release-worker grants remain unchanged. Required anonymous runtime perim
 checks are BLOCKED, not PASS from metadata or unavailable files. Read-only pending
 deploy inspection and explicit review of any changed/replacement action come first.
 See docs/ACTION_D_EXECUTION.md. No outside access or live execution enabled.
+
+Action D read-only recovery made no hosted writes or Supabase calls. Current connector
+still reports all-deploy team login; no ready app exists for perimeter acceptance.
+Four dashboard function registrations do not prove protected invocation, runtime
+metadata or deploy-variable persistence. Static registration is empty. Support review
+excludes credentials/environment values and requires authorization before sending;
+repair/replay/deletion/replacement require separate exact approval. Do not claim
+runtime security passes from these reads. See docs/ACTION_D_RECOVERY.md.

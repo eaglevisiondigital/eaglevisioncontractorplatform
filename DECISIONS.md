@@ -416,3 +416,16 @@ connected browser pass is claimed. Keep all original hashes and private evidence
 read-only diagnostics first and separate review for changed/replacement actions.
 See docs/ACTION_D_EXECUTION.md. Existing identities/factors/zero sessions, RLS,
 permissions and execution gates are independently unchanged; release stays closed.
+
+### October 16 · diagnose the original deploy without recovery writes
+
+Preserve the original pending ID/package and separate provider projections: four
+Functions in deploy-scoped dashboard, no available functions in deploy metadata,
+zero files in deploy-specific registry, and no historical deploy-log entries.
+The original500 body/request ID was discarded; do not retry writes to obtain it.
+Direct digest deploys post-process automatically; CLI manifest update occurs before
+blob upload, so the earlier post-upload PUT is not a universally required finalizer.
+Root cause remains unresolved; recommend owner-authorized Netlify diagnosis before
+any separately reviewed same-ID repair. Prepare private support/conditional-operation
+reviews without executing or messaging. No replacement, publish, settings change,
+Supabase call or hosted acceptance claim. See docs/ACTION_D_RECOVERY.md.

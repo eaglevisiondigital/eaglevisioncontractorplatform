@@ -155,3 +155,11 @@ continuation. Do not rerun creation, rebuild/substitute files, publish, change
 settings or create a replacement. Read-only diagnostics first; runtime perimeter
 and connected acceptance remain blocked/not run. All tenant/Auth/MFA/off controls
 are unchanged; no owner session has been created for this attempt.
+
+Action D recovery investigation: read docs/ACTION_D_RECOVERY.md. Only the original
+pending deploy is in exact-site inventory; enriched project-summary alternate ID
+returned404 and is not a replacement to follow. Static registry empty; dashboard
+shows four registered functions despite empty deploy available-functions. No ready
+app or verified runtime variables. Preserve original500 evidence limits. Support-first
+review; no recovery PUT/POST, deletion, replacement or settings change without exact
+new authorization. Do not run historical mutation helpers or rebuild the package.

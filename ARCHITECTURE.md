@@ -426,3 +426,10 @@ configuration, grant or database change; no second creation or primary publish.
 The omitted optional draft field was verified through independent preview-context/
 publication evidence, not invented. Deployed function/asset/perimeter and connected
 browser behavior remain unverified. See docs/ACTION_D_EXECUTION.md before resuming.
+
+Action D recovery review distinguishes registered Functions (four in deploy-scoped
+dashboard) from ready deployment inventory (empty) and static registry (zero).
+The documented direct-digest flow post-processes automatically; the later manifest
+PUT is not a required finalization step in that flow. No recovery API/source change.
+Provider diagnosis precedes any separately approved same-ID repair; original files,
+manifest and per-deploy-variable proposal remain frozen. See docs/ACTION_D_RECOVERY.md.

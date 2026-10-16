@@ -72,6 +72,14 @@ The creation request carried only the reviewed development URL, publishable key 
 `PUBLIC_INTAKE_ENABLED=false`, scoped to this deploy's Functions. Their actual
 function-runtime persistence remains unverified while deployment is pending.
 
+## Recovery review update
+
+Read ACTION_D_RECOVERY.md for the subsequent read-only investigation. Original
+preview remains uploading; deploy-specific file list is empty, dashboard shows four
+registered functions, and historical deploy logs returned zero entries. The original
+500 body/headers were not retained. No retry or replacement occurred. Support-first
+review is recommended; all recovery writes need separate exact authorization.
+
 ## Next action
 
 Inspect this **same existing deploy ID** read-only for ready/error state and provider

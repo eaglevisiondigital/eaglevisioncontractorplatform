@@ -241,3 +241,16 @@ See ACTION_D_EXECUTION.md for exact scope, times, private evidence and read-only
 next diagnostics. All required modules remain launch-ready No; original scanner,
 private-release, provider and clean-production dependencies remain. Owner Action D
 approval is not launch, merge, production or outside-access approval.
+
+## October 16 · Action D read-only recovery review
+
+**PASS:** unchanged14-file package/archive/operation/logo and26 offline checks;
+current connector all-deploy team login; exact-site inventory contains only original
+pending deploy. **FINDING:** deploy-specific file registry empty; four function
+registrations visible in dashboard but absent from deploy available-functions;
+variables/runtime metadata unverified. **FAIL (historical):** manifest PUT500, original
+body/request ID not retained. **BLOCKED:** uploading state, hosted byte/config and
+perimeter verification; provider diagnosis/approved repair. **NOT RUN:** deployed
+browser/role/MFA/function acceptance. No hosted writes, retries, new deploys,
+Supabase calls or support messages. See ACTION_D_RECOVERY.md for support packet and
+conditional same-ID review; release remains NOT READY / NOT AUTHORIZED.

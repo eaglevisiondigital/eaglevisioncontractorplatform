@@ -2,6 +2,18 @@
 
 ## Governing release policy and latest internal milestone
 
+Action D read-only recovery investigation is complete; the original preview remains
+UPLOADING (14:39:02 UTC final read). Deploy-specific file registry is empty despite
+nine expected entries. Dashboard registers all four functions and the expected
+material-import route; deploy API available-functions remains empty. No ready app,
+remote variable/hash verification or perimeter acceptance. Original500 diagnostic
+body/request ID was not retained; deploy logs yielded zero entries. Root cause is
+unresolved registration/processing, not proven provider-only failure. Support-first
+review and conditional same-ID repair are prepared; no write retry/replacement,
+publication, deletion or settings change is approved. See docs/ACTION_D_RECOVERY.md.
+All 14 files/archive/operation/logo are unchanged; offline 26 PASS. No Supabase calls,
+sessions or tenant changes during recovery. Release stays closed.
+
 Action D execution is AUTHORIZED but PROVIDER BLOCKED. Exactly one manual preview
 record was created for the frozen28c7d5e package, four reviewed function ZIPs uploaded,
 and primary publication stayed absent. The provider omitted the optional draft
