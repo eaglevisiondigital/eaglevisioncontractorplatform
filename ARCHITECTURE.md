@@ -388,3 +388,11 @@ No new schema, application endpoint, domain service-role client or broader priva
 grant was introduced. Resume Action B with company-owner authority, not a renewed
 platform row. Full domain/tenant acceptance remains pending. Earlier zero-tenant and
 unapproved-C1 paragraphs are historical. See docs/ACTION_C1_EXECUTION.md.
+
+Action B continuation uses a private loopback owner-MFA helper and a fixed normal-
+authenticated scenario, not a deployed endpoint or service-role domain client.
+Keychain passwords, invitation tokens and sessions stay only in process memory;
+private fixture/result files remain ignored. The scenario's 687 disposable local
+contract checks and 56 real GET-only boundary checks are distinct from pending
+company-owner/employee/domain acceptance. No production application/schema changed.
+See docs/ACTION_B_CONNECTED_RESULT.md; full source/release matrix stays gated.

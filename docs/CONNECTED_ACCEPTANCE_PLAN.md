@@ -131,17 +131,13 @@ production evidence. Scanner/byte gateway/AI/isolated worker remain unprovisione
 
 ## Action C — C1 execution authorized; broader grants NOT AUTHORIZED
 
-C1 execution is now separately approved for the exact reviewed operation hash.
-Read ACTION_C1_EXECUTION.md. Fresh genuine owner-assisted AAL2 remains pending;
-no grant/tenant writes occurred. The preparation checkpoint below is historical,
-and does not require the owner to repeat the already-issued approval.
-
-C1 preparation is now authorized and complete for the one platform-only operator.
-The exact target/UID grant and cleanup bundle is private; see ACTION_C1_REVIEW.md.
-Its execution still needs separate owner approval and fresh genuine AAL2. Proposed
-window: 30 minutes maximum, revoke earlier after platform setup/error. No native TTL
-or automatic expiry exists. All hosted C1 operations remain NOT RUN. The broader
-release/environment/worker grants below are outside C1 and remain unapproved.
+C1 is complete: three checked company setups, then exact immediate deactivation,
+same-AAL2 denial and global sign-out were independently verified. The platform
+row remains inactive and must not be reactivated/recreated. See
+ACTION_C1_EXECUTION.md. Broader release/environment/worker grants below remain
+outside C1 and unapproved. Current company-owner Action B MFA handoff and prepared
+core cases are recorded in ACTION_B_CONNECTED_RESULT.md; do not count local
+contract evidence as connected acceptance.
 
 Separately review exact UIDs/org IDs, purpose and expiry before these writes:
 

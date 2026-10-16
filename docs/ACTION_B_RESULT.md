@@ -5,6 +5,12 @@ October 16, 2026. The separately approved narrow C1 bootstrap unblocked the chec
 platform setup. It was revoked immediately afterward. Broader Action C and Action D
 remain unapproved; Release 1.0 remains closed and PR #1 draft/unmerged.
 
+Latest continuation: fresh owner MFA is pending (0/3). Real GET-only preflight
+56 PASS/0 FAIL; prepared core scenario 687 LOCAL contract cases PASS, nine groups
+BLOCKED; hosted authenticated scenario NOT RUN. No additional tenant records were
+written. See ACTION_B_CONNECTED_RESULT.md for the exact current handoff and limits.
+Counts below remain the completed C1 platform setup totals.
+
 ## Exact created counts
 
 | Record                                                                           |       Created | Final hosted state                                                                  |

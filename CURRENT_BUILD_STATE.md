@@ -2,6 +2,19 @@
 
 ## Governing release policy and latest internal milestone
 
+Action B continuation is prepared, pending fresh company-owner MFA (0/3).
+Real GET-only boundary preflight: 56 PASS / 0 FAIL. No new tenant/domain/grant
+writes; existing C1 companies/memberships preserved. The fixed private core
+scenario passed 687 disposable LOCAL contract cases; those are not genuine hosted
+Auth/RLS acceptance. Hosted authenticated cases remain NOT RUN; nine scanner/
+positive-object/private-release groups remain BLOCKED. Loopback owner handoff
+uses existing Apple Passwords Users 1/2/3 and memory-only Keychain/Auth sessions.
+One incomplete initial sign-in was closed with independent zero sessions verified.
+Native leaked-password protection requires Pro-or-higher support and separate
+settings/upgrade approval; no Auth setting changed. Read
+docs/ACTION_B_CONNECTED_RESULT.md before continuing. Do not replay C1, duplicate
+companies, recreate accounts/factors or add private grants.
+
 C1 execution is COMPLETE: the separately approved one-row bootstrap was activated
 once under fresh genuine owner-assisted AAL2, then revoked immediately after the
 three checked company setups. Window 08:46:00–08:46:40 UTC October 16, 2026;

@@ -317,3 +317,14 @@ are historical. Review availability/configuration independently before release;
 C1 does not authorize silently changing Auth settings. Four RLS performance warnings
 also remain. No advisor warning is represented as a passing security certification.
 See docs/ACTION_C1_EXECUTION.md for exact scope, times and remaining gates.
+
+Action B owner continuation: preserve inactive C1, existing organizations, 22 users
+and four factors. Fresh owner AAL2 is a human gate before domain writes. A failed
+initial sign-in was globally closed with zero sessions independently verified;
+the reset form must not enroll/reset factors. Real anonymous preflight passed 56
+checks; 687 LOCAL scenario cases do not certify hosted identity, RLS or concurrency.
+Native leaked-password protection is supported on Pro and higher; review plan and
+obtain separate settings/billing approval before enabling, then verify persisted
+configuration and rejection with approved disposable credentials. Never submit
+existing passwords to a screening tool or silently reset accounts. See
+docs/ACTION_B_CONNECTED_RESULT.md for pending tests and unchanged blocked gates.

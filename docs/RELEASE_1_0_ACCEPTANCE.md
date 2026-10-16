@@ -174,3 +174,14 @@ private-table notices; four performance RLS warnings remain. Independently revie
 these before launch. No settings/schema remediation performed. Every module remains
 launch-ready No; continue approved Action B with existing company owners and genuine
 fresh MFA. No duplicate provisioning or bootstrap replay.
+
+## Action B owner-session continuation checkpoint
+
+Current connected evidence: 56 GET-only anonymous/configuration checks PASS/0 FAIL;
+company owners 0/3 fresh MFA completed; authenticated employee/domain cases NOT RUN.
+No new company, membership or domain fixture writes after C1. The prepared fixed
+core scenario passed 687 disposable LOCAL contract cases and retains nine BLOCKED
+groups; these are not hosted QA or full 50-table acceptance. All module launch
+statuses remain No. See ACTION_B_CONNECTED_RESULT.md for owner handoff, exact
+pending coverage and Pro-or-higher native leaked-password remediation proposal.
+No settings/grants/deployment changes are authorized by this checkpoint.

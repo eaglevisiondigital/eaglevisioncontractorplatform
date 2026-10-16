@@ -329,3 +329,16 @@ Full tenant/role/domain acceptance is NOT RUN; scanner/private-release dependenc
 remain BLOCKED and deployment NOT RUN. Record the leaked-password-protection advisor
 warning separately without changing saved Auth controls or claiming launch security.
 See ACTION_C1_EXECUTION.md and ACTION_B_RESULT.md. Release remains closed.
+
+### Action B owner sessions and fixed core acceptance plan
+
+Reuse the three C1 companies and existing owner/employee identities. No operator
+reactivation or new private grant. Challenge existing owner factors through a
+loopback-only helper with all credentials/sessions in memory, then use checked
+invitations and ordinary JWT/RLS APIs for company fixtures. Validate the fixed
+scenario against disposable local SQL first; label its 687 cases LOCAL, retain
+nine scanner/positive-object/private-release BLOCKED groups and do not weaken the
+full 50-table harness. Current real GET-only preflight is 56 PASS/0 FAIL; fresh
+owner MFA is still pending, authenticated domain cases NOT RUN and new rows zero.
+Review native Pro-or-higher leaked-password protection; no setting/billing change
+without separate approval. See ACTION_B_CONNECTED_RESULT.md for safe continuation.
