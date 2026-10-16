@@ -39,9 +39,12 @@ unexpected disclosed data are never emitted in reports. Private evidence:
 `.staging/acceptance-preflight-result.json` and private read target. The script has
 no login, account/admin API, SQL, upload or mutation mode.
 
-## Action A — synthetic identities and genuine TOTP (NOT AUTHORIZED)
+## Action A — synthetic identities and genuine TOTP (AUTHORIZED; BLOCKED)
 
-Review/authorize this separately before any hosted identity or factor write:
+Owner explicitly authorized ActionA on October16. The first attempt stopped at
+secure credential persistence, with0 identities/factors created. See ACTION_A_RESULT.md.
+Do not request the same authorization again; resolve secure storage and recheck
+drift before a controlled retry. The approved scope is:
 **22 synthetic Auth identities**, all internal-engineer operated. Per company:
 owner, estimator, assigned-team supervisor, assigned field worker, unassigned field
 worker, staff-to-be-revoked, customer (7×3=21); plus one platform-only operator.
@@ -53,7 +56,8 @@ not create emails, passwords, UUIDs, factors, sessions or authority.
   matching identities; stop on ambiguity rather than replace/delete accounts.
 - Use the approved server-side Auth Admin createUser API with email_confirm=true,
   NOT signup/invite/magic-link/reset mail. Admin credentials must be separately
-  supplied through approved operator secret management; none have been retrieved.
+  supplied through approved operator secret management. The ActionA attempt used
+  the official CLI credential in memory only; no admin key was persisted.
   Never insert mock auth.users rows or mutate metadata to confer application roles.
 - These accounts have NO company/platform/release/workload grants at creation.
   Creating them does not authorize provisioning companies or granting access.

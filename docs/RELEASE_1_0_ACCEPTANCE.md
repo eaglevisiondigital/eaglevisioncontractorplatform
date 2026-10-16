@@ -95,7 +95,7 @@ Starting commit0df0fc9; this checkpoint adds read-only tooling only.
 | Persisted Auth/MFA/redirect/API settings        | PASS, independently reloaded; no changes                             | Configuration only                                                                             |
 | Current API grants/private boundary             | PASS, SQL catalogs;0 users/companies                                 | Nonempty role/tenant controls NOT RUN                                                          |
 | Real read-only Auth/PostgREST/Storage preflight | 56 PASS /0 FAIL                                                      | Anonymous boundary only; not three-company acceptance                                          |
-| Synthetic identities/genuine TOTP               | 0 created /0 enrolled                                                | BLOCKED: separate ActionA approval and secure operator credentials                             |
+| Synthetic identities/genuine TOTP               | 0 created /0 enrolled                                                | ActionA authorized; BLOCKED: working secure credential store and human TOTP                    |
 | Three-company role/revocation/domain workflows  | 0 authenticated cases run                                            | BLOCKED: identities, ActionB fixtures/write approval and ActionC grants                        |
 | Storage objects/import worker positives         | 0 object cases run                                                   | BLOCKED: approved fixture writes, provenance/worker/scanner infrastructure                     |
 | Netlify protection metadata                     | PASS, team login/all deploys                                         | Anonymous root404 is INCONCLUSIVE; app/assets/API perimeter NOT RUN                            |
@@ -108,3 +108,10 @@ must never be counted as PASS for authenticated workflow, cross-tenant Storage o
 perimeter acceptance. All required modules remain launch-ready **No**. No identity,
 fixture, private grant, configuration write, deployment or provider call occurred
 in this preparation checkpoint. Earlier execution/configuration reports remain valid.
+
+ActionA update: owner authorized identity creation/TOTP, but the attempt stopped
+without creating identities because secure Keychain persistence did not complete.
+0/22 identities and0/4 TOTP verified; all company/grant counts remain0. Identity
+approval is no longer the blocker; approved working credential storage and later
+human TOTP interaction are required. See ACTION_A_RESULT.md. ActionsB/C/D remain
+separately unapproved. No authenticated acceptance case is now passing by inference.

@@ -235,3 +235,12 @@ RPC/service/provider-owned privileges intact. Do not bypass the previous rejecti
 Exclude private .staging evidence from lint/format as well as Git, so local generated
 catalog artifacts cannot contaminate checks. Full connected matrix, blockers and
 Netlify404 limitation are recorded in CONNECTED_ACCEPTANCE_PLAN.md/the checklist.
+
+### Fail before account creation when credential storage is unavailable
+
+ActionA now has owner authorization, but the secure Keychain preflight did not
+complete. Stop before createUser, do not fall back to plaintext files/logs/argv,
+and do not perform human MFA silently. Auth Admin read access works; zero accounts
+or permissions were created. Preserve the stopped private run record and require
+a working approved secret store plus fresh drift check before controlled retry.
+See ACTION_A_RESULT.md; no need to repeat the existing ActionA authorization.
