@@ -254,3 +254,12 @@ perimeter verification; provider diagnosis/approved repair. **NOT RUN:** deploye
 browser/role/MFA/function acceptance. No hosted writes, retries, new deploys,
 Supabase calls or support messages. See ACTION_D_RECOVERY.md for support packet and
 conditional same-ID review; release remains NOT READY / NOT AUTHORIZED.
+
+## October 16 · Netlify diagnosis request submitted
+
+**PASS:** existing-channel redacted support submission, receipt/ticket acknowledgement
+and verified SENT scope confirmation for agent routing. Exact ticket/correspondence
+retained privately. **PENDING:** actual agent diagnosis/corrective recommendation.
+**BLOCKED:** original uploading preview, hosted perimeter/runtime/browser acceptance.
+No deployment recovery operation or outside access authorized. See ACTION_D_SUPPORT.md;
+Release 1.0 remains NOT READY / NOT AUTHORIZED and PR #1 draft.

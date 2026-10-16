@@ -126,3 +126,12 @@ provider call for business execution, deployment write or outside invitation was
 performed. Existing protection was not modified. Release 1.0 remains **NOT READY /
 NOT AUTHORIZED** and PR #1 remains draft/unmerged. Earlier local and connected Action B
 results remain historical evidence, not a passing Action D runtime acceptance.
+
+## Subsequent owner-authorized support submission
+
+The owner authorized sending this prepared diagnosis-only request. It was submitted
+through the existing private Netlify support channel; receipt/ticket acknowledgement
+and the necessary same-thread scope confirmation are verified. No actual diagnosis
+or corrective recommendation yet. See ACTION_D_SUPPORT.md and ignored correspondence;
+the earlier unsent-packet description above is the historical preparation record.
+No deployment write, repair or expanded authorization followed.

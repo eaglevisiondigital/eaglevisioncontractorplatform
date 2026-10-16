@@ -163,3 +163,9 @@ shows four registered functions despite empty deploy available-functions. No rea
 app or verified runtime variables. Preserve original500 evidence limits. Support-first
 review; no recovery PUT/POST, deletion, replacement or settings change without exact
 new authorization. Do not run historical mutation helpers or rebuild the package.
+
+Netlify support update: diagnosis-only packet submitted and acknowledged; accurate
+scope confirmation sent in same ticket. Read docs/ACTION_D_SUPPORT.md and ignored
+support correspondence; do not duplicate submission. No agent diagnosis yet and no
+repair/requeue/retry/replacement/settings operation approved. Retain ticket metadata
+privately and review exact later corrective recommendation with owner before writes.

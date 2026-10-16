@@ -429,3 +429,15 @@ Root cause remains unresolved; recommend owner-authorized Netlify diagnosis befo
 any separately reviewed same-ID repair. Prepare private support/conditional-operation
 reviews without executing or messaging. No replacement, publish, settings change,
 Supabase call or hosted acceptance claim. See docs/ACTION_D_RECOVERY.md.
+
+### October 16 · submit diagnosis-only Netlify support request
+
+Owner explicitly authorized the redacted prepared support packet. Use the existing
+Netlify web form/private account channel; retain identifiers/correspondence privately.
+Support acknowledged receipt and requested scope confirmation for agent routing;
+confirm the accurate summary in the same thread, restating no corrective action.
+No extra owner confirmation is needed for this necessary diagnosis-only routing
+reply. Receipt/confirmation is not a root-cause finding or verified agent assignment.
+No repair/requeue/retry/replacement/publish/delete/settings action is authorized.
+Document any later recommendation exactly for separate owner approval. No duplicate
+request or automatic monitoring. See docs/ACTION_D_SUPPORT.md.

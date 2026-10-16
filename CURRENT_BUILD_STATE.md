@@ -2,6 +2,15 @@
 
 ## Governing release policy and latest internal milestone
 
+Netlify diagnosis-only support request is SUBMITTED and ACKNOWLEDGED. The existing
+private support channel returned a ticket at17:44:32UTC; its accurate scope summary
+was confirmed by same-thread reply at17:45:20UTC for agent routing. Ticket/response/
+SENT evidence remains ignored/private. No agent diagnosis or corrective proposal
+received yet; no repeat ticket needed. Latest deploy read17:43UTC remains uploading.
+No repair/requeue/retry/replacement/publication/deletion/settings change is approved.
+Read docs/ACTION_D_SUPPORT.md and private correspondence before continuing. Release
+stays closed; PR remains draft. Support approval changes no deployment/security gate.
+
 Action D read-only recovery investigation is complete; the original preview remains
 UPLOADING (14:39:02 UTC final read). Deploy-specific file registry is empty despite
 nine expected entries. Dashboard registers all four functions and the expected
