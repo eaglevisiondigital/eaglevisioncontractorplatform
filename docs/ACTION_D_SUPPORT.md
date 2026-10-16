@@ -52,3 +52,18 @@ occurred. Application and frozen package bytes remain unchanged. The existing
 recovery/perimeter blockers persist; Release 1.0 stays **NOT READY / NOT AUTHORIZED**
 and PR #1 remains draft. Formatting/diff and private-reference checks cover these
 continuity-only edits; no application suite or hosted acceptance is claimed.
+
+## Provider-readiness continuity check
+
+The existing thread was read during the provider-readiness increment. It contained
+the acknowledgment and two already-sent confirmations; no agent diagnosis or repair
+recommendation was available. No new support message/ticket or deployment API call
+was made. Ticket/routing/correspondence details remain private. All existing blocked
+state, frozen-artifact and separate corrective-approval controls remain in force.
+
+The owner-requested continuing monitoring now has an hourly read-only heartbeat in
+this chat, superseding the earlier “no automatic monitoring” statement. It stays
+quiet on unchanged state and notifies only on meaningful findings, failure or
+needed owner action. It cannot reply, authorize or execute repairs. The private
+seen-message checkpoint prevents repeat notifications. Last check: acknowledgment
+plus two existing confirmations, no agent findings. No deployment is retried.

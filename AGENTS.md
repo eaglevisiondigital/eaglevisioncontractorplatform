@@ -177,3 +177,20 @@ bundle and frozen Action D package remain unchanged. New worker byte client need
 an independently authorized service; ingestion503 stays. Signing is sandbox-only,
 legalExecutionEnabled=false; communication preparation cannot send. No provider,
 DNS/hosted call, worker grant or deployment authorization comes from this work.
+
+Provider-readiness continuation rules:
+
+- Read docs/PROVIDER_INTEGRATION_READINESS.md and PROVIDER_MIGRATION_REVIEW.json.
+  One new forward migration is LOCAL ONLY, not covered by the original nine-file
+  authorization. Preserve both manifests; no hosted action or grant is implied.
+- Provider command identities must be dedicated nonprivileged database LOGINS with
+  exact expiring tenant/service/scope capabilities. No owner/service-key connection
+  in HTTP APIs; no bypass via role/JWT/GUC. Activation requires separate exact review.
+- Genuine invoice/consent/accepted-scope and sender/delivery bindings must use reviewed
+  checked workflows; never populate them from internal laboratory consents.
+- Sandbox runner defaults to offline plan. No provider calls without approved test
+  accounts/credentials and exact action approval. UNKNOWN is never automatically retried.
+- DocuSign CoC/HMAC/parsed PDF is not cryptographic/legal signature validation. Email
+  outbox remains SQL-disabled. Worker JWT tests do not certify runtime/scanner/Storage.
+- Preserve the frozen blocked Netlify package. Support recommendations require a new
+  exact corrective authorization; no retry/replacement/deletion/publication is implied.

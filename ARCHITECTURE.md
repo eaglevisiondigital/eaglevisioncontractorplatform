@@ -452,3 +452,28 @@ cryptographic/legal validation remain unimplemented/unverified. Communications a
 account-bound domain verification and consent/suppression/branding preparation;
 no send operation. None is imported by deployed application functions. Existing
 503, private-release/financial/payroll gates and original frozen package remain intact.
+
+## Provider integration readiness (October16)
+
+A formal unapplied forward migration now holds sixteen private default-deny RLS
+provider tables. Existing nine migrations/public APIs/types are unchanged. Three
+fixed private command functions check a dedicated database LOGIN via session_user,
+expiring exact tenant/service/scope capability and current authority; no login,
+grant, authorization or binding is created. They cannot be called by normal app
+roles/owner/service-role connections. No request function uses this connection.
+
+Payment commands reserve/finish immutable captures/refunds, deduplicate signed
+webhooks, append settlement observations and independently reconcile a CAS-bound
+transaction snapshot with exact integer arithmetic and unresolved holds. Email
+commands persist versioned current sender/domain facts, disabled-only outbox and
+monotonic suppression. Agreement commands append immutable content-addressed
+sandbox evidence under binding/portal/version authority; DocuSign is demo read-only,
+with independently verified signer/PDF trust ports and no envelope send.
+
+The document service verifies pinned RS256 workload identity and current fenced
+lease/scanner/full validation before private staging. Runtime limits/attestation,
+version-conditional orphan cleanup and actual object/catalog implementation remain
+external gates. No material ingestion endpoint is enabled. All four integrations
+remain unwired and sandbox/provider calls NOT RUN. See
+[PROVIDER_INTEGRATION_READINESS.md](docs/PROVIDER_INTEGRATION_READINESS.md) for the
+approval matrix, exact migration, provider setup and operational failure controls.

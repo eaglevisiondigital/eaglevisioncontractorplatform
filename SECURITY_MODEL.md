@@ -422,3 +422,40 @@ Email verification receipts are server-only, expiring/profile-bound; customer/te
 consent/suppression checks and escaped branding precede disabled-only preparation.
 No new execution endpoint, external call, hosted change or outside access. See
 docs/RELEASE_PROVIDER_FOUNDATION.md for required real-provider/independent acceptance.
+
+## Restricted provider execution readiness
+
+The new forward migration is local/unapplied. All sixteen private provider tables
+have tenant scope, RLS with no client policy, explicit revokes, indexed/composite
+tenant references and content-free audit. All provider command EXECUTE defaults are
+revoked (including service_role where present); no public API, role or grant is
+created. Only a later separately approved dedicated LOGIN with no role membership,
+admin attributes or table DML can receive one command capability. session_user plus
+absolute expiry/revocation and exact tenant/service/scope are independently checked
+and locked; JWT/GUC/SET ROLE cannot substitute. Current agreement portal/signer/
+issued-version authority, sender revocation and refund capacity are server-checked.
+
+UNKNOWN/pending financial operations survive restart and hold refund capacity.
+Original attempts/evidence cannot be rewritten by reconciliation. Snapshot drift,
+provider/tenant mismatch, duplicate transaction IDs, fractional prices and conflicting
+replay fail closed. Statements retain unresolved counts. No ledger execution exists.
+Email outbox is constrained to disabled; no delivery-binding creation/send/clear-
+suppression method. Signatures stay sandbox/legal-execution false and require an
+independent PDF/CMS/certificate/time/revocation validator, not a CoC image or HMAC.
+
+Document workload verification checks real RSA signatures/pinned public keys and
+short tenant/source-bound claims. Native-parser limits are an attested runtime
+requirement, not JS enforcement. No byte/scanner/AI/Storage infrastructure or grant
+was activated. Cleanup requires authoritative current-reference/lease/legal-hold
+lock and exact old staged-object version; originals are excluded. Actual adapters,
+provider consent/provenance, certificate trust, runtime isolation and hosted security
+acceptance remain blocked/unverified. See docs/PROVIDER_INTEGRATION_READINESS.md.
+
+Provider audit review fixed a direct-database attribution hazard: such a workload
+can set JWT-related settings. New provider triggers therefore never use auth.uid()
+for a human actor. Successful guarded commands append the database capability ID,
+and entity changes use content-free events with actor_id NULL. A negative regression
+proves fabricated JWT sub claims cannot forge a human provider audit event. Existing
+application audit functions and hosted data/policies are unchanged. Capability
+lifetime is SQL-constrained to30minutes, with immutable expiry and current-time
+checks; extending access requires a separately reviewed new identity/capability.

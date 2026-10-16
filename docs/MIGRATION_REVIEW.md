@@ -55,3 +55,13 @@ never deletion/editing of issued/accepted financial history. A future production
 DB must be new/clean and independently validated; do not promote or restore this
 synthetic development database into production. See CONNECTED_DEVELOPMENT.md for
 hardening, provider/deploy approvals and exact acceptance dependencies.
+
+## Separate pending provider migration
+
+The original nine-file review and its execution evidence are unchanged. A new
+20261016185108 forward migration is present for LOCAL provider-readiness tests.
+It is **not covered by the historical hosted approval**. Exact bytes/hash are in
+PROVIDER_MIGRATION_REVIEW.json; scope, restricted execution and forward-rollback
+procedure are in PROVIDER_INTEGRATION_READINESS.md. Do not run an all-pending CLI
+push using the old nine-file authorization. Independent review and a fresh exact
+target-specific operation/owner approval are required. No role/grant is included.

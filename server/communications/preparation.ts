@@ -140,6 +140,35 @@ export async function verifyTenantSender(
   });
   return receipt;
 }
+/** Persist only opaque verification facts. Receipts are process-local evidence;
+ * caller-created objects, copied receipts and changed profiles are rejected. */
+export function senderVerificationRecord(
+  profile: TenantSenderProfile,
+  receipt: VerifiedSender,
+) {
+  const p = Object.freeze({ ...profile }),
+    proof = evidence.get(receipt),
+    digest = profileDigest(p);
+  if (!proof || proof.expiresAt <= Date.now() || proof.profileDigest !== digest)
+    throw new Error('Sender receipt expired or changed');
+  return Object.freeze({
+    id: receipt.verificationId,
+    version: p.version,
+    profileDigest: digest,
+    accountId: p.providerAccountId,
+    domainId: p.domainId,
+    checkedAt: new Date(receipt.checkedAt).toISOString(),
+    expiresAt: new Date(proof.expiresAt).toISOString(),
+    digest: sha256(
+      JSON.stringify([
+        receipt.verificationId,
+        digest,
+        receipt.checkedAt,
+        proof.expiresAt,
+      ]),
+    ),
+  });
+}
 export interface CommunicationContext {
   organizationId: string;
   customerId: string;

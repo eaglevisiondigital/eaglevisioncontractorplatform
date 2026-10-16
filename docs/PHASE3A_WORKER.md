@@ -137,3 +137,13 @@ unverified/unprovisioned; do not mark activation checkboxes from these fixtures.
 The original nine migrations were previously applied under separate approval; no
 new hosted action or worker grant was made here. Historical unapplied-schema wording
 above describes earlier checkpoints. See RELEASE_PROVIDER_FOUNDATION.md.
+
+## Provider readiness service boundary
+
+Local service preparation now adds real pinned-key RS256 workload verification,
+source/lease/scanner checkpoints around private byte staging, exported runtime
+resource requirements and exact-version orphan cleanup under an authoritative
+catalog lock. These ports do not provision workload issuance, runtime isolation,
+scanner/AI/object catalog or Storage. Resource limits require external enforcement,
+not promise timeouts. No worker grant, ingestion endpoint or cleanup schedule is
+activated. Read PROVIDER_INTEGRATION_READINESS.md before any sandbox activation.

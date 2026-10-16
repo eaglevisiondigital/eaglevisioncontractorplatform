@@ -281,3 +281,33 @@ match CI setup before the final passing run. No new hosted/security/provider evi
 See RELEASE_PROVIDER_FOUNDATION.md; the explicit SQL proposal is outside the unchanged
 nine-migration approval. Original blocked deployment is preserved; no retry or
 replacement. Required modules remain in scope and Release1.0 stays closed/draft.
+
+## October16 · provider integration readiness
+
+The latest local increment supersedes the earlier proposal-only persistence gaps:
+one formal forward migration is UNAPPLIED / PENDING REVIEW, with restricted private
+commands and no grants/activation rows. Durable payment/refund/webhook/observation/
+reconciliation, disabled-only email/suppression/domain persistence, immutable sandbox
+agreement evidence and DocuSign demo preparation, real workload JWT verification
+and document-service/cleanup contracts are implemented locally. Public types, all
+historical migrations, approved logo and frozen deployment package are unchanged.
+
+**PASS / local:** full regression evidence is recorded in
+[PROVIDER_INTEGRATION_READINESS.md](PROVIDER_INTEGRATION_READINESS.md).
+**NOT RUN:** genuine provider sandbox/API/certificate/DNS/Storage/runtime acceptance;
+new hosted migration/capabilities; deployed callbacks/perimeter/browser acceptance.
+**BLOCKED:** provider-approved accounts/credentials, checked genuine consent/binding
+creation, isolated runtime/scanner/AI/object catalog, PDF trust validator, sender/
+delivery configuration and pending Netlify diagnosis/approved recovery.
+**FAIL:** no new hosted/provider failure is inferred; historical manifest500 remains.
+Independent security/legal/financial and full Release1.0 validation remain required.
+Every required module stays launch-ready **No**; no outside access or launch approval.
+
+Final local evidence for this readiness increment: **550 PASS /11 native-only skips**
+from npm check (lint, strict types, unchanged generated public types, separate
+historical/pending migration hashes and build PASS); **216 native PostgreSQL17 PASS**,
+including all11 skipped/native concurrency cases; **51 desktop/tablet/mobile PASS**;
+**26 frozen-package integrity PASS**. Counts overlap and must not be summed.
+Formatting/diff/private-reference checks PASS. An initial concurrent full-catalog
+run hit10second hook timeouts; bounded workers/30second hooks resolved resource
+contention and the final full/native runs pass. No provider/hosted acceptance is inferred.

@@ -1,5 +1,15 @@
 # Release 1.0 · local provider foundation continuation
 
+## Superseding readiness increment
+
+The original sections below describe base93982ba. Their proposal-only SQL and
+missing-persistence statements are historical. The proposal is now a pointer to
+one **unapplied** formal forward migration, recorded separately from the unchanged
+historical nine-file approval. Read
+[PROVIDER_INTEGRATION_READINESS.md](PROVIDER_INTEGRATION_READINESS.md) for current
+restricted commands, durable persistence, provider/runtime gates and exact setup.
+No hosted migration, grant or provider execution is authorized by that preparation.
+
 **LOCAL IMPLEMENTATION / LIVE INTEGRATIONS DISABLED / RELEASE NOT READY.**
 October 16, 2026. Continues cc46509 in draft PR #1. No Netlify, Supabase, DNS or
 execution-provider write/call was made. The pending deployment and original frozen

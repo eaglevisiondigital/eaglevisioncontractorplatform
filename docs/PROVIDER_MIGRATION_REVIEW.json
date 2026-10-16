@@ -1,0 +1,13 @@
+{
+  "status": "PENDING_REVIEW_NOT_AUTHORIZED",
+  "approvedHistoricalBundleSha256": "c48fb1ad792ff8eca186c59147a9bb28604f1c281e65a7f027ea1a797ef387b6",
+  "migrations": [
+    {
+      "file": "20261016185108_provider_sandbox_persistence.sql",
+      "sha256": "9588d8db45eeb476919cb7d12e5e53dd3e622f95e2561db9c4f0019659591861"
+    }
+  ],
+  "pendingBundleSha256": "8532505e7967e381e3d1b9e16f497eeeb1dabd74830b49bc06e310fec89babc7",
+  "hostedActions": "NONE",
+  "activation": "No roles, logins, grants, workload authorizations, merchant authorizations, sender bindings or agreement bindings are populated"
+}

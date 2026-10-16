@@ -18,6 +18,8 @@
   "include": [
     "src",
     "netlify",
+    "server",
+    "scripts/provider-sandbox-acceptance.ts",
     "tests",
     "vite.config.ts",
     "playwright.config.ts"

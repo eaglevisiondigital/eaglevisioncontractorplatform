@@ -216,3 +216,45 @@ it.each(['email.sent', 'email.delivered', 'email.bounced', 'email.complained'])(
     ).toThrow();
   },
 );
+it('durable email preparation persists only hashes under current document authority', async () => {
+  const { DurableEmailPreparation } =
+    await import('../server/communications/persistence');
+  const { ProviderControl } = await import('../server/providers/control');
+  const s = setup(),
+    receipt = await verifyTenantSender(s.profile, s.deps),
+    calls: unknown[][] = [];
+  const connection = {
+    query: async (_sql: string, params?: unknown[]) => {
+      calls.push(params!);
+      return {
+        rows: [{ result: { status: 'recorded', id: crypto.randomUUID() } }],
+      };
+    },
+  };
+  const control = new ProviderControl(
+      connection as unknown as ConstructorParameters<typeof ProviderControl>[0],
+      {
+        organizationId: s.profile.organizationId,
+        scopeId: s.profile.configurationId,
+        service: 'email',
+      },
+    ),
+    store = new DurableEmailPreparation(control);
+  const repository = {
+    ...s.repository,
+    authorizeDocument: vi.fn(async () => {}),
+  };
+  expect(
+    (await store.prepare(s.input, s.profile, receipt, repository)).status,
+  ).toBe('recorded');
+  expect(repository.authorizeDocument).toHaveBeenCalledTimes(2);
+  expect(calls.map((c) => c[2])).toEqual(['domain', 'prepare']);
+  expect(JSON.stringify(calls)).not.toContain(s.context.customerEmail);
+  expect(JSON.stringify(calls)).not.toContain(s.profile.fromEmail);
+  expect(JSON.stringify(calls)).not.toContain('<html');
+  repository.authorizeDocument.mockRejectedValue(new Error('Document revoked'));
+  await expect(
+    store.prepare(s.input, s.profile, receipt, repository),
+  ).rejects.toThrow(/revoked/);
+  expect(calls).toHaveLength(2);
+});

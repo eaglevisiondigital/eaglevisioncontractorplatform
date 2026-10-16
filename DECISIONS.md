@@ -466,3 +466,41 @@ receipts expire and never verify existing hosted profiles. Prepare escaped messa
 only, delivery disabled; actual outbox/DNS/inbox/suppression remain reviewed work.
 See docs/RELEASE_PROVIDER_FOUNDATION.md. All existing branding and release controls
 remain; independent review and exact later target/provider actions require approval.
+
+## Provider readiness: separate schema from activation
+
+- Promote the payment proposal to one formal forward migration for local review;
+  preserve the exact approved historical nine-file manifest. Record the new hash
+  separately as PENDING_REVIEW_NOT_AUTHORIZED. No hosted execution is implied.
+- Use private fixed command functions under a separately reviewed, tenant/service/
+  scope-bound database LOGIN, not an owner/service key or browser JWT. No role,
+  grant, authorization, sender/delivery binding or agreement binding is bootstrapped
+  by the migration. Genuine consent/invoice/accepted-scope provenance remains a gate.
+- Persist provider observations/reconciliation as immutable evidence; never retry
+  UNKNOWN, clear refund capacity or edit original attempts automatically. Compare
+  exact integers and reject stale transaction snapshots, keeping unresolved counts.
+- Persist email preparation with a database-disabled delivery state and conservative
+  suppression; retain no rendered address/body/bearer-link data in the outbox/audit.
+- DocuSign uses demo-only read preparation and immutable create-only evidence;
+  application AAL2 and provider/legal authentication are distinct. Require independent
+  PDF/CMS/trust/timestamp/OCSP/CRL validation. No legally valid signature is claimed.
+- Verify document workload signatures against pinned expiring public-key trust;
+  never follow JWT key URLs. Isolated runtime enforcement/object catalog/scanner/AI
+  and orphan cleanup remain separately provisioned and independently verified gates.
+- Sandbox runner defaults to an offline NOT RUN plan. Exact private approval hash,
+  approved test account, scoped Keychain secrets and durable authority are required
+  before real calls. Synthetic transports can never count as provider acceptance.
+- Bound test-file workers/setup timeout for multiple disposable migration catalogs;
+  retain explicit independent-connection native PostgreSQL concurrency tests.
+
+Read docs/PROVIDER_INTEGRATION_READINESS.md and its approval matrix before continuing.
+Netlify support diagnosis is pending; no deployment repair is authorized.
+
+Provider audit review fixed a direct-database attribution hazard: such a workload
+can set JWT-related settings. New provider triggers therefore never use auth.uid()
+for a human actor. Successful guarded commands append the database capability ID,
+and entity changes use content-free events with actor_id NULL. A negative regression
+proves fabricated JWT sub claims cannot forge a human provider audit event. Existing
+application audit functions and hosted data/policies are unchanged. Capability
+lifetime is SQL-constrained to30minutes, with immutable expiry and current-time
+checks; extending access requires a separately reviewed new identity/capability.

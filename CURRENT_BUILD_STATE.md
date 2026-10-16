@@ -1,5 +1,35 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: provider integration readiness (base93982ba)
+
+**Release1.0 remains NOT READY / NOT AUTHORIZED.** Local engineering now includes
+one formal UNAPPLIED forward migration, restricted tenant/service-scoped database
+commands, durable payment/refund/statement reconciliation, disabled-only email
+persistence/suppression/domain evidence, immutable sandbox agreement evidence and
+DocuSign demo read/ceremony preparation, plus RS256 workload verification and isolated
+document-service/orphan-cleanup contracts. All runtime/provider activation remains
+disabled. No UI/branding redesign or hosted mutation occurred.
+
+Read docs/PROVIDER_INTEGRATION_READINESS.md and
+[the separate pending migration manifest](docs/PROVIDER_MIGRATION_REVIEW.json).
+The approved historical nine-file checksum is unchanged. Migration
+20261016185108 is local only and needs independent review and exact owner approval;
+it creates no roles, grants or activation rows. Local public types are unchanged.
+The original frozen deployment package is separate and unchanged. Netlify agent
+findings remain pending; no repair or duplicate submission was attempted.
+
+Final validation:550 local PASS /11 native-only skips;216 PostgreSQL17 PASS,
+51 responsive browser PASS and26 frozen-package PASS. Counts overlap. Precise
+blockers and evidence are in the readiness report.
+Do not infer genuine provider, hosted perimeter, live signature/payment/email or
+outside-access acceptance from synthetic local tests. Smallest next action:
+independent review of the one forward migration and restricted authority model,
+then preparation of an exact development-target migration operation for approval.
+Capability activation/provider calls/deployment remain separate approvals.
+
+The previous foundation checkpoint below is historical; its SQL proposal and missing
+persistence statements are superseded by this readiness increment.
+
 ## Governing release policy and latest internal milestone
 
 Local Release 1.0 provider continuation is complete as an INTERNAL foundation
@@ -343,3 +373,12 @@ checks, and obtain workforce/tax/classification review. Complete ingestion and
 reporting acceptance before production consideration. Internal Phase 4 can then consume
 immutable issued scope plus authorized changes for contracts/invoices; keep gateway
 sandbox onboarding (Authorize.Net/NMI) and payroll execution separately gated.
+
+Final local evidence for this readiness increment: **550 PASS /11 native-only skips**
+from npm check (lint, strict types, unchanged generated public types, separate
+historical/pending migration hashes and build PASS); **216 native PostgreSQL17 PASS**,
+including all11 skipped/native concurrency cases; **51 desktop/tablet/mobile PASS**;
+**26 frozen-package integrity PASS**. Counts overlap and must not be summed.
+Formatting/diff/private-reference checks PASS. An initial concurrent full-catalog
+run hit10second hook timeouts; bounded workers/30second hooks resolved resource
+contention and the final full/native runs pass. No provider/hosted acceptance is inferred.
