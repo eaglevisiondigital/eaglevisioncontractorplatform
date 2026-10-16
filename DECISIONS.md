@@ -557,3 +557,29 @@ Statement checkpoints cannot certify long explicit transactions, outgoing calls,
 hard COMMIT deadlines or external legal/security review. Preserve supervisor
 timeouts/cancellation and all provider/clean-production/release gates. Read
 docs/PROVIDER_MIGRATION_REMEDIATION.md; no hosted/Netlify/financial operation occurred.
+
+## October16 · execute the exact corrected dormant development migration
+
+The owner explicitly authorized57f2aa1/hash5dd07b07…/bundle231fa367… for the named
+development target. Recheck clean source, all nine historical files/statement arrays,
+target,422 catalog records/69 column ACLs/24 default-privilege records and one-file
+CLI plan before applying. Use pinned CLI with explicit target and skip-vault;
+no seeds/roles/reset/repair or replay. Supervise and bound the process group; no
+automatic retry on timeout or uncertain response. Apply completed once, exit0.
+
+Post-apply history has10 unchanged/expected entries;68 new stored statements and
+468 native/hosted catalog records match. Verify16 empty private RLS tables,101
+constraints/26 FKs,40 new-table indexes/one existing merchant index,32 triggers,
+7 owner-only fixed-path functions, zero API/service privileges and unchanged63
+table data digests/214 public API/type records. Identity/MFA/off snapshots match.
+Do not substitute migration success for genuine provider Auth/RPC/Storage testing.
+
+Keep original nine-file approval frozen and record the one-file applied provider
+bundle separately. Offline checker distinguishes historical pending vs recorded
+development-applied states and checks matching execution metadata; neither state
+can authorize a new hosted action. All10 SQL files are immutable history now.
+Security0 WARN/ERROR,28 intentional INFO; existing4 performance WARN remain, plus
+21 FK/57 unused-index/1 connection INFO. No unrelated remediation or configuration
+change. No provider identity, credential/grant/binding/call, deployment or outside
+access. Next exact provider activation/provenance/connection review remains separate.
+See docs/PROVIDER_MIGRATION_EXECUTION.md and private execution evidence.

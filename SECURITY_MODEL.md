@@ -493,3 +493,21 @@ No DML/grant/role/service or hosted change is included. Current checkpoint autho
 is not a COMMIT deadline or an outbound-provider authorization; future activation
 needs supervised autocommit/session/timeouts and separate provider verification.
 See docs/PROVIDER_MIGRATION_REMEDIATION.md for scope, evidence and residual gates.
+
+### Owner-authorized dormant development schema applied
+
+The corrected hash5dd07b07… is now hosted in development under separate explicit
+execution authorization. All seven functions retain revoked API/service EXECUTE,
+postgres ownership and empty search paths. All16 tables are empty, private,
+default-deny RLS with owner-only ACLs and no column grants. Exact native/hosted
+catalog comparison, effective grants, validated constraints, enabled triggers and
+index checks pass. No service identity or provider/workload grant was created.
+Existing63 table fingerprints,214 public API/type/ACL records and nonsecret
+22-identity/four-MFA metadata match before/after; Auth sessions remain zero.
+
+Hosted security advisors have0 WARN/ERROR and28 intentional private/no-policy INFO;
+performance retains4 existing WARN and informational FK/unused-index/connection
+notices. No policy, Auth/Storage/configuration or advisor cleanup was authorized.
+Private capability creation, genuine provider execution and release approval remain
+separate gates. See docs/PROVIDER_MIGRATION_EXECUTION.md; never edit/replay the now
+ten historical SQL files or use destructive rollback to remove financial evidence.

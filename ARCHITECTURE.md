@@ -496,3 +496,13 @@ returns a capability UUID; each command audits it once with no human actor.
 Table-level terminal result checks now reject SQL NULL independently of command
 validation. No new public function or capability. See
 [PROVIDER_MIGRATION_REMEDIATION.md](docs/PROVIDER_MIGRATION_REMEDIATION.md).
+
+The corrected provider migration is now applied to the explicitly authorized
+development target. Earlier unapplied descriptions are historical. Hosted468
+application catalog records match the tested schema; the16 provider tables are
+empty with default-deny RLS and revoked client/service access. No provider/workload
+role, grant, binding or capability was provisioned. Public schema/types/data and
+all runtime off gates are unchanged. See
+[PROVIDER_MIGRATION_EXECUTION.md](docs/PROVIDER_MIGRATION_EXECUTION.md).
+Separate provider-specific authority/connection/consent and sandbox acceptance
+remain mandatory before activation; production still requires a clean database.

@@ -23,8 +23,10 @@ if (
 const pending = JSON.parse(
   readFileSync('docs/PROVIDER_MIGRATION_REVIEW.json', 'utf8'),
 );
+const developmentApplied =
+  pending.status === 'DEVELOPMENT_APPLIED_PROVIDER_DISABLED';
 if (
-  pending.status !== 'PENDING_REVIEW_NOT_AUTHORIZED' ||
+  (!developmentApplied && pending.status !== 'PENDING_REVIEW_NOT_AUTHORIZED') ||
   pending.approvedHistoricalBundleSha256 !== reviewed.bundleSha256 ||
   createHash('sha256')
     .update(JSON.stringify(pending.migrations))
@@ -33,6 +35,18 @@ if (
     JSON.stringify(pending.migrations)
 )
   throw new Error('Unreviewed forward migration drift');
+if (
+  developmentApplied &&
+  (pending.migrations.length !== 1 ||
+    pending.developmentExecution?.result !== 'APPLIED_VERIFIED' ||
+    pending.developmentExecution?.scope !== 'development-schema-only' ||
+    pending.developmentExecution?.providersEnabled !== false ||
+    pending.developmentExecution?.migrationVersion !==
+      pending.migrations[0].file.split('_')[0] ||
+    pending.developmentExecution?.fileSha256 !== pending.migrations[0].sha256 ||
+    pending.developmentExecution?.bundleSha256 !== pending.pendingBundleSha256)
+)
+  throw new Error('Development execution record does not match reviewed bytes');
 console.log(
-  `Reviewed migration bundle matches ${reviewed.migrations.length} historical files; ${pending.migrations.length} forward migration(s) UNAPPLIED / NOT AUTHORIZED; no hosted action performed.`,
+  `Reviewed migration bundle matches ${reviewed.migrations.length} original files; ${pending.migrations.length} separately reviewed provider migration(s) ${developmentApplied ? 'recorded DEVELOPMENT APPLIED / PROVIDERS DISABLED' : 'UNAPPLIED / NOT AUTHORIZED'}; offline integrity check only, no hosted action performed.`,
 );

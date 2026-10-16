@@ -207,3 +207,16 @@ Provider-security remediation continuity:
   stale-transaction-time cases cannot be replaced with PGlite or clock mocks.
   Private provider roles/grants exist only in disposable test fixtures; no hosted
   workload activation or execution approval is implied by any passing suite.
+
+Provider-migration execution continuity:
+
+- Read docs/PROVIDER_MIGRATION_EXECUTION.md before the earlier unapplied snapshots.
+  Owner-authorized corrected hash5dd07b07… was applied once to development; hosted
+  history is now10. Preserve all10 SQL files, the frozen original nine-file bundle
+  and the separately recorded applied provider bundle. Never replay/reset/repair.
+- All16 provider tables remain empty/private/default deny; no provider identity,
+  grant, credential, binding or capability was activated. Schema approval does not
+  authorize sandbox calls, Netlify recovery, production or outside access.
+- The offline migration checker accepts recorded development-applied metadata only
+  when it matches the exact reviewed bytes/scope and providers-disabled state.
+  It is an integrity check, never a hosted execution or future activation permit.

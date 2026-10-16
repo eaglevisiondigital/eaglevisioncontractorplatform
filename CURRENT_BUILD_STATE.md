@@ -1,6 +1,46 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
-## Latest: provider security remediation (base7ee2c16)
+## Latest: corrected provider migration APPLIED / providers DISABLED
+
+The owner explicitly authorized the exact57f2aa1 migration/hash/bundle and the
+development target. Refreshed identity/history/hash/catalog/column/default-grant
+checks and one-file dry run passed. The CLI applied20261016185108 once, exit0,
+13.113seconds/no timeout/no retry, no seeds/role files/Vault update. Read
+[PROVIDER_MIGRATION_EXECUTION.md](docs/PROVIDER_MIGRATION_EXECUTION.md).
+
+Hosted history now has10 entries; original nine and stored statements unchanged.
+All68 new stored statements match the approved source.468 hosted application
+catalog records match the tested native schema;16 new private tables are empty,
+RLS/default deny,101 validated constraints/26 FKs,40 new-table indexes plus the
+merchant tenant index,32 enabled triggers and7 revoked fixed-path functions.
+Effective client/service table/function grants are zero. Existing63 table data
+digests and214 public definition/ACL records are unchanged. Official public types
+match51 tables/55 functions/2 enums; local types:check PASS.
+
+22 identities/4 verified factors/0 sessions and their nonsecret identity/MFA
+metadata fingerprints are unchanged. Internal release mode disabled; platform/
+release-test/material-worker grants zero; financial modules/approved merchants/
+verified senders/public buckets zero. All provider tables/capabilities remain empty.
+No provider credential, role/grant, live financial/email/signature/payroll action,
+Netlify/production change, merge or outside access. Release1.0 stays closed.
+
+Actual hosted advisors: security0 WARN/ERROR,28 intentional private/no-policy INFO.
+Performance4 existing WARN,21 existing FK INFO,57 unused-index INFO and1 Auth
+strategy INFO. No advisor remediation was authorized or applied. These are actual
+post-migration findings, distinct from earlier native and synthetic test results.
+
+Fresh local continuity verification:577 PASS/33 native-only skips from npm check;
+types/format/migration/build checks,7 offline integrity cases and26 original frozen
+package checks PASS. No UI or migration SQL edit; these are not hosted provider tests.
+
+The original nine-file bundle remains frozen; the separate provider manifest now
+records DEVELOPMENT_APPLIED_PROVIDER_DISABLED. All10 SQL files are immutable;
+never replay/edit/reset/repair history. Offline integrity checking is not execution
+or activation authority. Next: independently review a precise provider-specific
+sandbox identity/capability/provenance/connection operation and seek separate owner
+authorization. All provider/deployment/release activation gates remain in force.
+
+## Previous: provider security remediation (base7ee2c16)
 
 M1/M2 are corrected in the still-unapplied forward migration. Workload identity
 is locked before fresh wall-time validation; all24 successful command branches

@@ -1,5 +1,11 @@
 # Connected development designation and action review
 
+Latest October16: separately owner-authorized corrected provider migration is
+applied and verified; development history now has10 entries. Original nine SQL
+files/bundle remain unchanged; provider tables are empty/private/default deny and
+no service/provider capability is active. See PROVIDER_MIGRATION_EXECUTION.md.
+This does not authorize provider calls, deployment recovery, production or access.
+
 October16 update: the owner-approved nine-file migration bundle is now applied and
 verified. Owner-confirmed dashboard Auth/API hardening is saved and verified: signup
 OFF, exact internal redirects, public-only API schema and automatic exposure OFF. See DEVELOPMENT_MIGRATION_RESULT.md.

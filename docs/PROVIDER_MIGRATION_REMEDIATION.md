@@ -1,5 +1,10 @@
 # Provider migration security remediation
 
+Execution update: the owner subsequently authorized this exact corrected hash and
+it is now applied/verified in development, with all providers disabled. See
+[PROVIDER_MIGRATION_EXECUTION.md](PROVIDER_MIGRATION_EXECUTION.md). The review-only
+recommendation and pre-execution evidence below are retained historically.
+
 October 16, 2026 · base review commit `7ee2c16` · internal development only.
 
 **GO to request separate approval for the corrected dormant development migration.**

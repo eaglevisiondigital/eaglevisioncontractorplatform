@@ -1,5 +1,11 @@
 # Release 1.0 provider integration readiness
 
+**Latest: corrected provider schema APPLIED / providers DISABLED in development.**
+The owner authorized the exact hash separately; actual history/catalog/grant/data/
+advisor verification passed. No provider capability or role was activated. Read
+[PROVIDER_MIGRATION_EXECUTION.md](PROVIDER_MIGRATION_EXECUTION.md) before earlier
+unapplied/readiness snapshots. Runtime/provider/production gates remain unchanged.
+
 **Latest: owner-authorized local M1/M2 remediation is verified.** The corrected
 unapplied hash is GO for a separate development migration approval request;
 execution and all provider capabilities remain unauthorized/disabled. Read

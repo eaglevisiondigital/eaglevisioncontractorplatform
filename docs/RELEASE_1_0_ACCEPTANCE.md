@@ -370,3 +370,33 @@ remains disabled. Read [PROVIDER_MIGRATION_REMEDIATION.md](PROVIDER_MIGRATION_RE
 for exact hashes/scope, tests, residual transaction/provider limits, target-specific
 operation preparation and audit-preserving containment. PR #1 stays draft and
 Release1.0 remains NOT READY / NOT AUTHORIZED for outside users.
+
+## October16 · corrected provider migration executed with exact owner approval
+
+**PASS / hosted schema only:** approved57f2aa1/hash5dd07b07…/bundle231fa367… was
+applied once to development after refreshed identity, nine-file history/hash,
+422 catalog/69 column ACL/24 default-grant and one-file dry-run checks. CLI exit0,
+13.113seconds, no timeout/retry/seeds/roles/Vault update. All10 historical SQL files
+are now immutable; original nine-file bundle is unchanged.
+
+| Post-apply evidence                    | Result                                                                                                                                                       |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| History/source                         | 10 expected entries; first nine byte-identical;68 new statements match approved source                                                                       |
+| Full catalog                           | 468/468 match native expected;16 new empty private default-deny RLS tables                                                                                   |
+| Constraints/indexes/triggers/functions | 101 validated constraints/26 FKs;40 new-table indexes+merchant index;32 enabled triggers;7 fixed-path revoked functions                                      |
+| Effective grants/owners                | Zero unintended API/service table/function/column grants or unsafe owners/paths                                                                              |
+| Existing data/identity                 | 63 table count/digests unchanged;22 identities/4 verified factors/0 sessions and metadata digests unchanged                                                  |
+| Public types/API                       | 214 catalog records unchanged; official51 tables/55 functions/2 enums match; local types:check PASS                                                          |
+| Actual hosted advisors                 | Security0 WARN/ERROR/28 intentional INFO; performance4 existing WARN,21 FK/57 unused-index/1 connection INFO                                                 |
+| Off gates                              | Provider tables empty; internal release disabled; all platform/release-test/worker grants, financial modules, approved merchants/senders/public buckets zero |
+
+**NOT RUN / still blocked:** privileged provider calls/identities/grants, genuine
+gateway/signature/email/scanner/AI/Storage acceptance, deployed browser/callback/
+perimeter and independent release/legal/financial validation. Prior local/native/
+browser counts remain historical implementation evidence, not hosted provider QA.
+No Netlify change, production, live charge/message/signature/payroll or outside
+access. Schema success makes no required module launch-ready. Exact provider
+activation/authority/connection operations require new review and owner approval.
+Read [PROVIDER_MIGRATION_EXECUTION.md](PROVIDER_MIGRATION_EXECUTION.md); preserve
+all financial/audit evidence via forward-only containment. PR #1 remains draft;
+Release1.0 remains NOT READY / NOT AUTHORIZED.
