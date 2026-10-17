@@ -714,3 +714,7 @@ Read docs/AUTHORIZE_NET_ACCOUNT_SELECTION.md for precise evidence/limits/owner s
 ## 2026-10-17 · P0 connected property readiness
 
 Prepare three narrow caller-preserving RPC adapters and invoker wrappers, without wiring a connected UI prematurely. Use a dedicated report-only one-hour revocable lease rather than financial release-test grants. Keep original unique constraint index location_customer_unique; propose a separately reviewed dependency-checked forward removal of redundant property_location_customer. Prepare72 NOT RUN scenarios through an offline compiler; explicitly propose new unmatched synthetic expenses rather than relabel existing purchases. Two dormant migration proposals require separate exact approval; hosted remains11 and all features/providers/media off.
+
+## 2026-10-17 · P0 final development preflight
+
+Exact two-file dry run now passes with no seeds/roles and no hosted changes. Keep all eleven historical migrations and pending SQL bytes unchanged. A successful dry run is not execution authority. Proposed cleanup is bounded,while readiness DDL has normal lock waits;require a quiet supervised window. Two migrations may partially complete:inspect actual state and seek exact recovery approval,never automatically retry/reset/repair. Read docs/PROPERTY_P0_FINAL_PREFLIGHT.md for hashes,operation digest and post-install/containment.

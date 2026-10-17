@@ -633,3 +633,7 @@ internal free-text approval is insufficient. See the validation report for limit
 ## P0 report-only authorization review
 
 The proposed report path requires a verified identity, active exact portal mapping, active property feature, estimating module and immutable/revocable lease capped at one hour. Owner/admin still requires AAL2. No client table privilege, broad financial release grant, generic CRUD, media access or service-key substitution. Session row locks and final expiry checks deny stale authorization after waits. Local native negative/concurrency evidence and remaining hosted gates are in docs/PROPERTY_P0_SECURITY_REVIEW.md; no hosted activation is approved.
+
+## P0 final preflight verification
+
+Fresh before/after reads show no application schema/RLS/ACL/default/data/Auth/API drift. Exact two-file CLI dry run passes;zero security WARN/ERROR and the existing five performance WARN remain. Native68 authorization/index lock cases pass. Customer mappings/leases/features remain absent;session/current-role guards and private-schema exclusion remain mandatory. Neither migration nor activation is authorized. See docs/PROPERTY_P0_FINAL_PREFLIGHT.md.

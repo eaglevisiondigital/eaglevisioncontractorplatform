@@ -312,3 +312,7 @@ Property migration execution supersedes the preceding unapplied checkpoint:
 ## P0 continuity
 
 Read docs/PROPERTY_P0_SECURITY_REVIEW.md and PROPERTY_P0_MIGRATION_REVIEW.json. Two new LOCAL_ONLY_NOT_AUTHORIZED forward migrations and three unwired adapters exist; hosted history remains11. Never treat generated pending RPC types or local tests as hosted function availability. Preserve dedicated report-only leases, current Auth session/post-wait guards, private tables and all off gates. Existing72 scenarios are NOT RUN; private offline proposal includes75 positive steps/57 domain rows plus audit and three explicit synthetic expenses. No fixture/feature/lease/assignment/session activation or index DROP is authorized by P0. Preserve all11 historical SQL/manifests and frozen Netlify deployment.
+
+## P0 final preflight continuity
+
+Read docs/PROPERTY_P0_FINAL_PREFLIGHT.md and PROPERTY_P0_PREFLIGHT_RESULT.json. Exact two-file dry run PASS (2.121.0,exit0,no seeds/roles,skip-vault);hosted remains11 and pending SQL is unchanged. Technical GO is not execution permission. Refresh exact target/history/catalog/ACL/Auth/API/index gates before any separately authorized apply. Two migrations are not bundle-atomic;on partial success stop and request exact recovery approval,no automatic retry/history repair or unapproved containment writes. Features/mappings/leases/fixtures/providers/media/Netlify remain off/unchanged;72 hosted cases NOT RUN.

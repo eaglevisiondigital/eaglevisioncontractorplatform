@@ -608,3 +608,7 @@ Authorize.Net tokens/accounts remain isolated and both providers off.
 ## P0 connected property architecture
 
 Prepared adapters preserve the existing authenticated client and verified user; three invoker wrappers delegate narrow checked operations. A dedicated property/customer/user report lease avoids broad release grants. Actual Auth session row checks and post-wait wall-clock checks protect expiration/revocation. Types include pending RPCs; application navigation remains unwired. See docs/PROPERTY_P0_SECURITY_REVIEW.md. All11 installed migrations remain unchanged; two local forward proposals add no feature/access rows.
+
+## P0 final preflight · no installation
+
+The two-file planning operation is verified against the actual unchanged eleven-migration development schema. Expected post-install catalog514 was independently reconstructed in disposable PostgreSQL17;new report access table/six functions remain absent hosted. No connected adapters,feature/mapping/lease rows or media are enabled. See docs/PROPERTY_P0_FINAL_PREFLIGHT.md.

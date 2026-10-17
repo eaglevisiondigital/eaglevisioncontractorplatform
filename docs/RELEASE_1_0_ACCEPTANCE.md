@@ -1,5 +1,21 @@
 # Production Release 1.0 acceptance checklist
 
+## Latest: P0 two-migration preflight PASS · execution NOT AUTHORIZED
+
+Read [PROPERTY_P0_FINAL_PREFLIGHT.md](PROPERTY_P0_FINAL_PREFLIGHT.md) and
+PROPERTY_P0_PREFLIGHT_RESULT.json. Reviewed7e472b7 SQL is unchanged. CLI2.121.0 dry
+run exit0/5.697seconds lists exactly20261017024327 and20261017024328,no seeds/roles,
+skip-vault. Before/after history11,catalog500,column ACL69,default ACL24,data79 and
+saved Auth/API settings match;22 identities/four factors/zero sessions preserved.
+Security0 WARN/ERROR,36 INFO;performance5 WARN/93 INFO unchanged. Fresh native68
+PASS includes authorization/real lock races;expected post-install catalog514 is
+prepared locally. No new full application/browser suite claimed for docs-only work.
+
+Technical GO for separate exact dormant two-file execution approval and supervised
+maintenance window;NO execution/activation permission. No feature/mapping/lease/
+fixture/grant/media/provider/Netlify change. All72 hosted property cases NOT RUN.
+Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft;all11 historical SQL/manifests frozen.
+
 ## Latest: P0 connected property readiness · LOCAL ONLY
 
 Read [PROPERTY_P0_SECURITY_REVIEW.md](PROPERTY_P0_SECURITY_REVIEW.md) and
