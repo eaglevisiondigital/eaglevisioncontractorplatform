@@ -620,3 +620,7 @@ The separately owner-approved two-file development bundle is applied once;histor
 ## P1 deterministic acceptance preparation
 
 New offline P1 compiler freezes three existing-tenant bindings,75 caller-bound fixture steps,69 probes,57 row expectations and per-step/result references. Independent integer basket expectations are checked against authenticated stored comparison snapshots;one unknown-shipping vendor cannot win. Private feature-control SQL is a separately proposed data operation,not a migration. No hosted executor or new API/runtime path exists. A private local attempt/UUID-receipt journal blocks duplicate/uncertain requests without storing tokens. Original rows use real composite PKs;only three selected job revisions may change. Dedicated P2 mapping/report-only lease design remains separate. Read docs/PROPERTY_P1_ACCEPTANCE_REVIEW.md;all13 historical SQL files unchanged.
+
+## P1 authorized execution prerequisite gap
+
+The exact frozen P1 operation now has owner approval. Read docs/PROPERTY_P1_EXECUTION.md. Fresh read-only state matches all13 installed migrations and713 original composite-key records. There is no connected P1 executor: the compiler/journal cannot perform authenticated RPCs, and the historical Action B runner must not replay its fixtures. Execution stopped before Auth or activation. A caller-bound exact-package executor and independently verified cleanup/session-revocation channel must be implemented and reviewed before resuming mandatory preflight. No runtime, schema, permission or tenant boundary changed.

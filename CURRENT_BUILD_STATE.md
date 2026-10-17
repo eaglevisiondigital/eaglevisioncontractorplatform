@@ -1,5 +1,25 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: P1 authorized; mandatory preflight stopped before activation
+
+Read [PROPERTY_P1_EXECUTION.md](docs/PROPERTY_P1_EXECUTION.md) and
+PROPERTY_P1_EXECUTION_RESULT.json. Owner approved exact operation `01b96075…`;
+approval is preserved. Frozen operation/four artifacts, all13 migrations/514 catalog
+objects,713 composite-key original records,79 table digests,18 actor bindings and
+saved Auth/API settings match fresh read-only evidence.22 identities/four verified
+factors/zero sessions;no features,mappings,leases or provider rights activated.
+
+Execution stopped under the owner's mandatory prerequisite rule: no P1 connected
+executor or independently verified cleanup process exists. The planner explicitly
+has no executor; the old Action B runner must not replay its different fixtures.
+No MFA sign-in,activation,RPC fixture/probe,domain row or audit event was created.
+Hosted counts remain0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN;financial deltas zero.
+Focused offline planner/journal26 PASS;full/native/browser suites not rerun for this
+documentation-only checkpoint. Implement/review exact-package executor,durable
+journal recovery and independent bounded cleanup before a refreshed preflight and
+owner-assisted MFA. Do not request duplicate exact-scope authorization or widen it.
+Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft. Earlier checkpoints are historical.
+
 ## Latest: P1 acceptance package prepared · no hosted activation
 
 Read [PROPERTY_P1_ACCEPTANCE_REVIEW.md](docs/PROPERTY_P1_ACCEPTANCE_REVIEW.md) and

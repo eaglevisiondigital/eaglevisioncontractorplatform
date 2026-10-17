@@ -328,3 +328,16 @@ Read docs/PROPERTY_P0_EXECUTION.md and ACTION_D_SUPPORT_FOLLOWUP.md before prior
 ## P1 final preparation continuity
 
 Read docs/PROPERTY_P1_ACCEPTANCE_REVIEW.md and PROPERTY_P1_REVIEW.json. Proposal hash01b96075… binds75 fixture steps/57 rows,69 probes and three feature controls;UNEXECUTED/NOT AUTHORIZED. Exact IDs,payloads,control SQL and713 composite-primary-key original-row guards are ignored under .staging/property-p1/package/. Never overwrite/recompile/substitute the reviewed package or replay P0 migrations. All13 SQL/history and off gates unchanged. P1 temporary features have no TTL:require supervised30-minute window,exact partial-safe deactivation,session sign-out and independent zero-active verification under future approval. Exclusive local attempt/UUID journal is not authorization;UNKNOWN stops,never retries. Hosted72 tracking0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN;extra checklist/quantity/credit/JWT-expiry fixtures and all P2/media need separate scope. No customers/leases/mappings/permissions activated. P2 requires exact mapping/15-minute report-only lease and feature reactivation review,never broad release grants. No hosted fixture/session/grant,Netlify/provider/media/production action or merge from preparation.
+
+## P1 execution authorization and mandatory stop
+
+Read docs/PROPERTY_P1_EXECUTION.md and PROPERTY_P1_EXECUTION_RESULT.json. Owner
+approved exact01b96075… operation, but mandatory preflight STOPPED: no P1 connected
+executor or independently verified cleanup process. No Auth sign-in,feature row,
+fixture/probe RPC,domain record or audit append occurred. Fresh read-only13 history,
+514 catalog,713 original composite-key rows,18 actors,22 identities/four factors/
+zero sessions and all off controls match. Hosted0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN.
+Do not request duplicate approval of unchanged scope; first implement/review exact-
+package executor,durable journal recovery and independent bounded cleanup,then
+refresh mandatory preflight and owner-assisted MFA. Never run old Action B fixtures
+or overwrite the frozen package to bypass prerequisites. Release1.0 stays closed.

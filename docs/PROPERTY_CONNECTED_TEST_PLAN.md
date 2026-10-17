@@ -1,5 +1,12 @@
 # Property operations · next connected acceptance package
 
+Current execution checkpoint: owner authorization for the frozen P1 operation exists,
+but mandatory preflight STOPPED before any hosted write or sign-in. See
+[PROPERTY_P1_EXECUTION.md](PROPERTY_P1_EXECUTION.md). The connected executor and
+independent cleanup channel are not operationally verified. Case totals remain
+0 PASS /0 FAIL /24 BLOCKED /48 NOT RUN. Earlier preparation-only statements below
+are historical; neither the frozen package nor scope has changed.
+
 Current P1 proposal:[final scoped review](PROPERTY_P1_ACCEPTANCE_REVIEW.md),
 75 fixture steps/57 domain rows plus69 probes and exact three-row feature controls.
 No hosted execution is authorized. PROPERTY_P1_REVIEW.json tracks all72 cases:

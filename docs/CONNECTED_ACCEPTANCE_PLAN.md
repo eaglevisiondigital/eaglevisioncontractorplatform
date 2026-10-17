@@ -1,5 +1,12 @@
 # Connected three-company acceptance · October 16, 2026
 
+Current execution checkpoint: owner authorization for the frozen P1 operation exists,
+but mandatory preflight STOPPED before any hosted write or sign-in. See
+[PROPERTY_P1_EXECUTION.md](PROPERTY_P1_EXECUTION.md). The connected executor and
+independent cleanup channel are not operationally verified. Case totals remain
+0 PASS /0 FAIL /24 BLOCKED /48 NOT RUN. Earlier preparation-only statements below
+are historical; neither the frozen package nor scope has changed.
+
 Current P0 checkpoint:[dormant connected schema installed](PROPERTY_P0_EXECUTION.md),
 history13. Public invoker wrappers exist;property features,customer mappings and
 report-only leases remain absent. No fixture/portal/provider/media activation or

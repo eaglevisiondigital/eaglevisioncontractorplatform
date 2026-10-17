@@ -1,5 +1,12 @@
 # P1 connected property acceptance: final preparation
 
+Current execution checkpoint: owner authorization for the frozen P1 operation exists,
+but mandatory preflight STOPPED before any hosted write or sign-in. See
+[PROPERTY_P1_EXECUTION.md](PROPERTY_P1_EXECUTION.md). The connected executor and
+independent cleanup channel are not operationally verified. Case totals remain
+0 PASS /0 FAIL /24 BLOCKED /48 NOT RUN. Earlier preparation-only statements below
+are historical; neither the frozen package nor scope has changed.
+
 **PREPARED / NOT AUTHORIZED.** October 17, 2026, America/Chicago. Based on `b63a9ef`.
 No hosted fixture, feature, mapping, lease, membership, session or permission was created.
 All 13 installed migrations remain unchanged. Release 1.0 stays closed and PR #1 stays draft.
