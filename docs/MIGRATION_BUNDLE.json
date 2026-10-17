@@ -1,0 +1,43 @@
+{
+  "mode": "offline-only",
+  "migrations": [
+    {
+      "file": "20261015183039_phase_1_foundation.sql",
+      "sha256": "62ef02be55f5cf86916de4bf9891d4920f75a35ae421815c2d353bf4cedb73cc"
+    },
+    {
+      "file": "20261015201048_phase_2_operations.sql",
+      "sha256": "2a0e65f30e0eef0b85b53d23edc26968336f661d136303d7a1eb25b3f77e1974"
+    },
+    {
+      "file": "20261015204729_phase_3_estimating.sql",
+      "sha256": "ef999a3e7d8ee69f1563b3cffaf732f0a29c292161e4ce1729b6a26848bd4415"
+    },
+    {
+      "file": "20261015210230_phase_3_material_import.sql",
+      "sha256": "82f7594c18dfdf955ed1d2c83f6c903d8b4aebe7730c2f1a5770d501bd2d84a3"
+    },
+    {
+      "file": "20261015210546_phase_3_job_financials.sql",
+      "sha256": "f161cc16ec728b2e7373f3826b5d989a9fad4c1ec6d727fc193f18d5534d8c4c"
+    },
+    {
+      "file": "20261015210856_phase_3_workforce.sql",
+      "sha256": "78f2af2164574ba3d6aeb2f2510206d97343c5ad67a2534159a4e2960f5e9ce0"
+    },
+    {
+      "file": "20261015221730_phase_3a_release_controls.sql",
+      "sha256": "6dbfc3ed7a0b9905f5d824cb73698c441e8c7ee8aa5d5b0fb8f4883baacb4890"
+    },
+    {
+      "file": "20261016024502_release_1_internal_workflow.sql",
+      "sha256": "48522fd3b829a5bc9e482ce33c41ee7b8272edf68dbc7e6c7a699fa178b8714b"
+    },
+    {
+      "file": "20261016030324_material_worker_control_store.sql",
+      "sha256": "8359e7ceb4028460b7609bbd235d9941fc69b89b514463e011fec9b44a84d282"
+    }
+  ],
+  "bundleSha256": "c48fb1ad792ff8eca186c59147a9bb28604f1c281e65a7f027ea1a797ef387b6",
+  "hostedActions": "NONE"
+}

@@ -1,0 +1,32 @@
+{
+  "status": "DEVELOPMENT_APPLIED_FEATURES_DISABLED",
+  "hostedExecutionAuthorized": false,
+  "publicRpcEnabled": false,
+  "file": "server/property/schema.proposed.sql",
+  "sha256": "c345bdf178c9339dba7ba2707c74233bcfae9a2d2b59abf148f4b7ffff35780c",
+  "privateTables": [
+    "property_features",
+    "inspection_plans",
+    "inspection_visits",
+    "inspection_reports",
+    "property_media",
+    "supplier_comparisons",
+    "unbilled_decisions",
+    "supplemental_invoice_drafts"
+  ],
+  "publicIndexesAdded": [
+    "property_location_customer",
+    "property_expense_job",
+    "property_change_job"
+  ],
+  "clientTableGrants": 0,
+  "privateEntryPoints": [
+    "property_command",
+    "property_workspace",
+    "property_portal"
+  ],
+  "activation": "Applied once to approved development under exact owner authorization. All eight tables empty/default off. No replay authority, public wrappers, feature rows, worker grants or Storage changes.",
+  "originalReviewedSha256": "f3458c4551a738c88bc65d8ca20f847cd7703d02d91b791c03b87ae3a9962d45",
+  "formalMigration": "20261017005322_property_operations.sql",
+  "migrationReview": "docs/PROPERTY_MIGRATION_REVIEW.json"
+}

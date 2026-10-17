@@ -1,0 +1,768 @@
+{
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "sourceCheckpoint": "b63a9ef",
+  "proposedOperationSha256": "01b96075d2f04acef730114427bc595986a1f0ce2720ed7fd3c9e84e304e141a",
+  "artifacts": [
+    {
+      "file": "p1-plan.private.json",
+      "sha256": "bbd463ccb28ddbe6a6f873f364e42094d13c7a83767ea19f0c89ed486358a85a"
+    },
+    {
+      "file": "activate-features.proposed.sql",
+      "sha256": "368f9553a044b72d3e527beef8d98762da2e500069c4f34d1ec5014d9c2c1148"
+    },
+    {
+      "file": "deactivate-features.proposed.sql",
+      "sha256": "9f218c649801a48d5afc78f654fc0ed56280c5c9c88368eaba64bec4ac67820c"
+    },
+    {
+      "file": "p2-separate-review.private.json",
+      "sha256": "0d281d124a25c1482654841057e1d4f196d93f9bcd3b2ed6e1d1d21b01c3b195"
+    }
+  ],
+  "scope": {
+    "existingCompanies": 3,
+    "existingIdentitiesPreserved": 22,
+    "existingTotpFactorsPreserved": 4,
+    "existingActorBindingsVerified": 18,
+    "P1DistinctActors": 15,
+    "P2CustomerActorsNotSignedIn": 3,
+    "featureRows": 3,
+    "positiveFixtureRpcSteps": 75,
+    "assertionRpcProbes": 69,
+    "totalPlannedRpcCalls": 144,
+    "readOnlyProjectionProbes": 9,
+    "expectedDenialProbes": 60,
+    "domainRecords": 57,
+    "auditEventsExpected": 114,
+    "customerMappingsCreated": 0,
+    "reportLeasesCreated": 0,
+    "newIdentities": 0,
+    "newMemberships": 0,
+    "newEstimates": 0
+  },
+  "domainRows": {
+    "inspection_plans": 6,
+    "inspection_visits": 12,
+    "inspection_reports": 12,
+    "supplier_comparisons": 3,
+    "unbilled_decisions": 12,
+    "supplemental_invoice_drafts": 3,
+    "job_change_orders": 3,
+    "job_expenses": 3,
+    "job_expense_reviews": 3
+  },
+  "companies": [
+    {
+      "company": "Straight Edge Property Services",
+      "baselineRevision": 7,
+      "expectedRevision": 12,
+      "originalRevenueMinor": 306280,
+      "syntheticActualCostDeltaMinor": 10001,
+      "proposedSupplementalSellingMinor": 11251,
+      "customerReceivableDeltaMinor": 0
+    },
+    {
+      "company": "Cunningham Construction",
+      "baselineRevision": 2,
+      "expectedRevision": 7,
+      "originalRevenueMinor": 306280,
+      "syntheticActualCostDeltaMinor": 10001,
+      "proposedSupplementalSellingMinor": 11251,
+      "customerReceivableDeltaMinor": 0
+    },
+    {
+      "company": "Sample Roofing Contractor",
+      "baselineRevision": 2,
+      "expectedRevision": 7,
+      "originalRevenueMinor": 306280,
+      "syntheticActualCostDeltaMinor": 10001,
+      "proposedSupplementalSellingMinor": 10001,
+      "customerReceivableDeltaMinor": 0
+    }
+  ],
+  "readOnlyEvidence": {
+    "migrationHistory": 13,
+    "catalogObjects": 514,
+    "originalBusinessTables": 79,
+    "originalCompositeKeyRows": 713,
+    "savedAuthApiUnchanged": true,
+    "hostedWrites": 0,
+    "sessionsCreated": 0
+  },
+  "stageCounts": {
+    "P1": 60,
+    "P2": 9,
+    "P3": 3
+  },
+  "hostedTracking": {
+    "PASS": 0,
+    "FAIL": 0,
+    "BLOCKED": 24,
+    "NOT RUN": 48
+  },
+  "hostedCases": [
+    {
+      "id": "weekly-plan",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Weekly dates/checklist and assigned field visit",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Straight Edge Property Services"
+    },
+    {
+      "id": "monthly-plan",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Month-end anchoring/property timezone and visit history",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Straight Edge Property Services"
+    },
+    {
+      "id": "damage-findings",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Damage severity and repair recommendations retained",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Straight Edge Property Services"
+    },
+    {
+      "id": "required-checklist",
+      "stage": "P1",
+      "status": "BLOCKED",
+      "expected": "Incomplete required checklist cannot publish",
+      "blocker": "Additional controlled fixture/state transitions required beyond75 steps/57 rows; native-only coverage until separately reviewed expansion",
+      "scopeLimit": null,
+      "company": "Straight Edge Property Services"
+    },
+    {
+      "id": "management-mfa",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "AAL1/field publication denied; genuine owner AAL2 required",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Straight Edge Property Services"
+    },
+    {
+      "id": "immutable-report",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Published versions append only; old snapshot unchanged",
+      "blocker": null,
+      "scopeLimit": "Published snapshot mutation/replay denied; extra v2 publication excluded from75-step budget",
+      "company": "Straight Edge Property Services"
+    },
+    {
+      "id": "customer-report",
+      "stage": "P2",
+      "status": "BLOCKED",
+      "expected": "Exact mapped customer sees only published allowlisted report",
+      "blocker": "Separate exact customer-mapping/report-only lease approval",
+      "scopeLimit": null,
+      "company": "Straight Edge Property Services"
+    },
+    {
+      "id": "foreign-customer",
+      "stage": "P2",
+      "status": "BLOCKED",
+      "expected": "Other customer and all foreign companies denied",
+      "blocker": "Separate exact customer-mapping/report-only lease approval",
+      "scopeLimit": null,
+      "company": "Straight Edge Property Services"
+    },
+    {
+      "id": "private-projection",
+      "stage": "P2",
+      "status": "BLOCKED",
+      "expected": "Internal notes/cost/payroll/drafts/media excluded",
+      "blocker": "Separate exact customer-mapping/report-only lease approval",
+      "scopeLimit": null,
+      "company": "Straight Edge Property Services"
+    },
+    {
+      "id": "four-suppliers",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Four reviewed manual suppliers preserve original sources",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Straight Edge Property Services"
+    },
+    {
+      "id": "quote-arithmetic",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Integer unit packs/tax/shipping totals exact",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Straight Edge Property Services"
+    },
+    {
+      "id": "unknown-quote",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Unknown/ambiguous price cannot win",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Straight Edge Property Services"
+    },
+    {
+      "id": "foreign-quote-scope",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Other tenant/currency/material line rejected",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Straight Edge Property Services"
+    },
+    {
+      "id": "original-vs-actual",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Existing baseline and approved actual purchases matched",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Straight Edge Property Services"
+    },
+    {
+      "id": "quantity-substitution",
+      "stage": "P1",
+      "status": "BLOCKED",
+      "expected": "Excess/substitute purchases require review",
+      "blocker": "Additional controlled fixture/state transitions required beyond75 steps/57 rows; native-only coverage until separately reviewed expansion",
+      "scopeLimit": null,
+      "company": "Straight Edge Property Services"
+    },
+    {
+      "id": "credits-overlaps",
+      "stage": "P1",
+      "status": "BLOCKED",
+      "expected": "Approved credits/duplicate overlaps cannot be rebilled",
+      "blocker": "Additional controlled fixture/state transitions required beyond75 steps/57 rows; native-only coverage until separately reviewed expansion",
+      "scopeLimit": "Reconcile existing purchases/credits; synthetic new credit/overlap rows excluded from57-row budget",
+      "company": "Straight Edge Property Services"
+    },
+    {
+      "id": "absorb-include-review",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Nonbillable dispositions create no debt",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Straight Edge Property Services"
+    },
+    {
+      "id": "markup-precision",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Percentage/fixed/pass-through exact minor-unit math",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Straight Edge Property Services"
+    },
+    {
+      "id": "supplemental-draft",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Proposed change/nonpayable invoice source and amount match",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Straight Edge Property Services"
+    },
+    {
+      "id": "immutable-original",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Original issued estimate/job baseline unchanged",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Straight Edge Property Services"
+    },
+    {
+      "id": "role-revocation",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Revoked membership/assignment denied on genuine next request",
+      "blocker": null,
+      "scopeLimit": "Existing revoked membership and real session sign-out denial; no membership/assignment mutation",
+      "company": "Straight Edge Property Services"
+    },
+    {
+      "id": "stale-null-duplicate",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Stale/NULL revisions and duplicate submissions rejected",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Straight Edge Property Services"
+    },
+    {
+      "id": "expiry",
+      "stage": "P1",
+      "status": "BLOCKED",
+      "expected": "Expired JWT/customer lease denied; no unauthorized effects",
+      "blocker": "Natural JWT expiry cannot be assumed within bounded window; no token forging/Auth setting change",
+      "scopeLimit": null,
+      "company": "Straight Edge Property Services"
+    },
+    {
+      "id": "media-off",
+      "stage": "P3",
+      "status": "BLOCKED",
+      "expected": "Real ingestion/playback remain503; no fake scanner success",
+      "blocker": "No protected media runtime; ingestion/playback activation prohibited",
+      "scopeLimit": null,
+      "company": "Straight Edge Property Services"
+    },
+    {
+      "id": "weekly-plan",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Weekly dates/checklist and assigned field visit",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Cunningham Construction"
+    },
+    {
+      "id": "monthly-plan",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Month-end anchoring/property timezone and visit history",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Cunningham Construction"
+    },
+    {
+      "id": "damage-findings",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Damage severity and repair recommendations retained",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Cunningham Construction"
+    },
+    {
+      "id": "required-checklist",
+      "stage": "P1",
+      "status": "BLOCKED",
+      "expected": "Incomplete required checklist cannot publish",
+      "blocker": "Additional controlled fixture/state transitions required beyond75 steps/57 rows; native-only coverage until separately reviewed expansion",
+      "scopeLimit": null,
+      "company": "Cunningham Construction"
+    },
+    {
+      "id": "management-mfa",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "AAL1/field publication denied; genuine owner AAL2 required",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Cunningham Construction"
+    },
+    {
+      "id": "immutable-report",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Published versions append only; old snapshot unchanged",
+      "blocker": null,
+      "scopeLimit": "Published snapshot mutation/replay denied; extra v2 publication excluded from75-step budget",
+      "company": "Cunningham Construction"
+    },
+    {
+      "id": "customer-report",
+      "stage": "P2",
+      "status": "BLOCKED",
+      "expected": "Exact mapped customer sees only published allowlisted report",
+      "blocker": "Separate exact customer-mapping/report-only lease approval",
+      "scopeLimit": null,
+      "company": "Cunningham Construction"
+    },
+    {
+      "id": "foreign-customer",
+      "stage": "P2",
+      "status": "BLOCKED",
+      "expected": "Other customer and all foreign companies denied",
+      "blocker": "Separate exact customer-mapping/report-only lease approval",
+      "scopeLimit": null,
+      "company": "Cunningham Construction"
+    },
+    {
+      "id": "private-projection",
+      "stage": "P2",
+      "status": "BLOCKED",
+      "expected": "Internal notes/cost/payroll/drafts/media excluded",
+      "blocker": "Separate exact customer-mapping/report-only lease approval",
+      "scopeLimit": null,
+      "company": "Cunningham Construction"
+    },
+    {
+      "id": "four-suppliers",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Four reviewed manual suppliers preserve original sources",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Cunningham Construction"
+    },
+    {
+      "id": "quote-arithmetic",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Integer unit packs/tax/shipping totals exact",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Cunningham Construction"
+    },
+    {
+      "id": "unknown-quote",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Unknown/ambiguous price cannot win",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Cunningham Construction"
+    },
+    {
+      "id": "foreign-quote-scope",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Other tenant/currency/material line rejected",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Cunningham Construction"
+    },
+    {
+      "id": "original-vs-actual",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Existing baseline and approved actual purchases matched",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Cunningham Construction"
+    },
+    {
+      "id": "quantity-substitution",
+      "stage": "P1",
+      "status": "BLOCKED",
+      "expected": "Excess/substitute purchases require review",
+      "blocker": "Additional controlled fixture/state transitions required beyond75 steps/57 rows; native-only coverage until separately reviewed expansion",
+      "scopeLimit": null,
+      "company": "Cunningham Construction"
+    },
+    {
+      "id": "credits-overlaps",
+      "stage": "P1",
+      "status": "BLOCKED",
+      "expected": "Approved credits/duplicate overlaps cannot be rebilled",
+      "blocker": "Additional controlled fixture/state transitions required beyond75 steps/57 rows; native-only coverage until separately reviewed expansion",
+      "scopeLimit": "Reconcile existing purchases/credits; synthetic new credit/overlap rows excluded from57-row budget",
+      "company": "Cunningham Construction"
+    },
+    {
+      "id": "absorb-include-review",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Nonbillable dispositions create no debt",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Cunningham Construction"
+    },
+    {
+      "id": "markup-precision",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Percentage/fixed/pass-through exact minor-unit math",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Cunningham Construction"
+    },
+    {
+      "id": "supplemental-draft",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Proposed change/nonpayable invoice source and amount match",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Cunningham Construction"
+    },
+    {
+      "id": "immutable-original",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Original issued estimate/job baseline unchanged",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Cunningham Construction"
+    },
+    {
+      "id": "role-revocation",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Revoked membership/assignment denied on genuine next request",
+      "blocker": null,
+      "scopeLimit": "Existing revoked membership and real session sign-out denial; no membership/assignment mutation",
+      "company": "Cunningham Construction"
+    },
+    {
+      "id": "stale-null-duplicate",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Stale/NULL revisions and duplicate submissions rejected",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Cunningham Construction"
+    },
+    {
+      "id": "expiry",
+      "stage": "P1",
+      "status": "BLOCKED",
+      "expected": "Expired JWT/customer lease denied; no unauthorized effects",
+      "blocker": "Natural JWT expiry cannot be assumed within bounded window; no token forging/Auth setting change",
+      "scopeLimit": null,
+      "company": "Cunningham Construction"
+    },
+    {
+      "id": "media-off",
+      "stage": "P3",
+      "status": "BLOCKED",
+      "expected": "Real ingestion/playback remain503; no fake scanner success",
+      "blocker": "No protected media runtime; ingestion/playback activation prohibited",
+      "scopeLimit": null,
+      "company": "Cunningham Construction"
+    },
+    {
+      "id": "weekly-plan",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Weekly dates/checklist and assigned field visit",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Sample Roofing Contractor"
+    },
+    {
+      "id": "monthly-plan",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Month-end anchoring/property timezone and visit history",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Sample Roofing Contractor"
+    },
+    {
+      "id": "damage-findings",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Damage severity and repair recommendations retained",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Sample Roofing Contractor"
+    },
+    {
+      "id": "required-checklist",
+      "stage": "P1",
+      "status": "BLOCKED",
+      "expected": "Incomplete required checklist cannot publish",
+      "blocker": "Additional controlled fixture/state transitions required beyond75 steps/57 rows; native-only coverage until separately reviewed expansion",
+      "scopeLimit": null,
+      "company": "Sample Roofing Contractor"
+    },
+    {
+      "id": "management-mfa",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "AAL1/field publication denied; genuine owner AAL2 required",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Sample Roofing Contractor"
+    },
+    {
+      "id": "immutable-report",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Published versions append only; old snapshot unchanged",
+      "blocker": null,
+      "scopeLimit": "Published snapshot mutation/replay denied; extra v2 publication excluded from75-step budget",
+      "company": "Sample Roofing Contractor"
+    },
+    {
+      "id": "customer-report",
+      "stage": "P2",
+      "status": "BLOCKED",
+      "expected": "Exact mapped customer sees only published allowlisted report",
+      "blocker": "Separate exact customer-mapping/report-only lease approval",
+      "scopeLimit": null,
+      "company": "Sample Roofing Contractor"
+    },
+    {
+      "id": "foreign-customer",
+      "stage": "P2",
+      "status": "BLOCKED",
+      "expected": "Other customer and all foreign companies denied",
+      "blocker": "Separate exact customer-mapping/report-only lease approval",
+      "scopeLimit": null,
+      "company": "Sample Roofing Contractor"
+    },
+    {
+      "id": "private-projection",
+      "stage": "P2",
+      "status": "BLOCKED",
+      "expected": "Internal notes/cost/payroll/drafts/media excluded",
+      "blocker": "Separate exact customer-mapping/report-only lease approval",
+      "scopeLimit": null,
+      "company": "Sample Roofing Contractor"
+    },
+    {
+      "id": "four-suppliers",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Four reviewed manual suppliers preserve original sources",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Sample Roofing Contractor"
+    },
+    {
+      "id": "quote-arithmetic",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Integer unit packs/tax/shipping totals exact",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Sample Roofing Contractor"
+    },
+    {
+      "id": "unknown-quote",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Unknown/ambiguous price cannot win",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Sample Roofing Contractor"
+    },
+    {
+      "id": "foreign-quote-scope",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Other tenant/currency/material line rejected",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Sample Roofing Contractor"
+    },
+    {
+      "id": "original-vs-actual",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Existing baseline and approved actual purchases matched",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Sample Roofing Contractor"
+    },
+    {
+      "id": "quantity-substitution",
+      "stage": "P1",
+      "status": "BLOCKED",
+      "expected": "Excess/substitute purchases require review",
+      "blocker": "Additional controlled fixture/state transitions required beyond75 steps/57 rows; native-only coverage until separately reviewed expansion",
+      "scopeLimit": null,
+      "company": "Sample Roofing Contractor"
+    },
+    {
+      "id": "credits-overlaps",
+      "stage": "P1",
+      "status": "BLOCKED",
+      "expected": "Approved credits/duplicate overlaps cannot be rebilled",
+      "blocker": "Additional controlled fixture/state transitions required beyond75 steps/57 rows; native-only coverage until separately reviewed expansion",
+      "scopeLimit": "Reconcile existing purchases/credits; synthetic new credit/overlap rows excluded from57-row budget",
+      "company": "Sample Roofing Contractor"
+    },
+    {
+      "id": "absorb-include-review",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Nonbillable dispositions create no debt",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Sample Roofing Contractor"
+    },
+    {
+      "id": "markup-precision",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Percentage/fixed/pass-through exact minor-unit math",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Sample Roofing Contractor"
+    },
+    {
+      "id": "supplemental-draft",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Proposed change/nonpayable invoice source and amount match",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Sample Roofing Contractor"
+    },
+    {
+      "id": "immutable-original",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Original issued estimate/job baseline unchanged",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Sample Roofing Contractor"
+    },
+    {
+      "id": "role-revocation",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Revoked membership/assignment denied on genuine next request",
+      "blocker": null,
+      "scopeLimit": "Existing revoked membership and real session sign-out denial; no membership/assignment mutation",
+      "company": "Sample Roofing Contractor"
+    },
+    {
+      "id": "stale-null-duplicate",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Stale/NULL revisions and duplicate submissions rejected",
+      "blocker": null,
+      "scopeLimit": null,
+      "company": "Sample Roofing Contractor"
+    },
+    {
+      "id": "expiry",
+      "stage": "P1",
+      "status": "BLOCKED",
+      "expected": "Expired JWT/customer lease denied; no unauthorized effects",
+      "blocker": "Natural JWT expiry cannot be assumed within bounded window; no token forging/Auth setting change",
+      "scopeLimit": null,
+      "company": "Sample Roofing Contractor"
+    },
+    {
+      "id": "media-off",
+      "stage": "P3",
+      "status": "BLOCKED",
+      "expected": "Real ingestion/playback remain503; no fake scanner success",
+      "blocker": "No protected media runtime; ingestion/playback activation prohibited",
+      "scopeLimit": null,
+      "company": "Sample Roofing Contractor"
+    }
+  ],
+  "controls": {
+    "windowSeconds": 1800,
+    "nativeFeatureTtl": false,
+    "exactCleanupAttemptsMaximum": 2,
+    "automaticRetry": false,
+    "preserveImmutableRows": true,
+    "newMigration": false,
+    "providerActivation": false,
+    "media": false,
+    "customerAccess": false,
+    "hostedExecutor": false,
+    "financialExecution": false,
+    "releaseReady": false
+  }
+}
