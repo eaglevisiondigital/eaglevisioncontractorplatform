@@ -1,5 +1,26 @@
 # Production Release 1.0 acceptance checklist
 
+## Latest property schema review · no activation
+
+Corrected dormant migration prepared; **hosted execution NO-GO** pending successful
+CLI dry run and public-client API configuration/profile verification. Both existing
+key formats returned401; this is BLOCKED, not isolation PASS. Hosted history remains10
+and actual468 catalog/69 column grants match the independently rebuilt baseline.
+
+| Gate                                     | Result                                                        | Remaining requirement                                          |
+| ---------------------------------------- | ------------------------------------------------------------- | -------------------------------------------------------------- |
+| Original property SQL adversarial review | 9 expected negative FAIL reproduced; all corrected            | Preserve corrected hash/invariant tests                        |
+| Local regression                         | 666 PASS/43 native-only skips;318 native PASS;63 browser PASS | Independent connected Auth/HTTP/media acceptance               |
+| Corrected dormant schema                 | Locally verified;8 private tables/8 fixed-path functions      | Separate exact development execution approval after preflight  |
+| Hosted migration dry run                 | BLOCKED: timeout, zero output, terminated                     | Verified CLI access and one-file/no-seed/no-role plan          |
+| Current API profile isolation            | BLOCKED: two401 key rejections                                | Read-only key/routing diagnosis and genuine profile denial     |
+| Media and connected property workflows   | Disabled / NOT RUN hosted                                     | Reviewed adapters, scanning/private Storage/transcoding/leases |
+| Supplemental billing                     | Proposals only, no debt                                       | Genuine customer authorization and checked invoice conversion  |
+
+No hosted changes, new grants, media/provider activation or deployment. Details and
+exact hashes: PROPERTY_MIGRATION_SECURITY_REVIEW.md / PROPERTY_MIGRATION_REVIEW.json.
+Release1.0 **NOT READY / NOT AUTHORIZED**; PR#1 remains draft.
+
 ## Latest local extension · property operations and procurement
 
 Owner direction now includes all rows below in Release1.0; none is launch-ready.

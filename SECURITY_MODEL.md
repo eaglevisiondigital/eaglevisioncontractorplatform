@@ -1,5 +1,24 @@
 # Security model · Phase 2
 
+## Latest property schema review · default deny / execution NO-GO
+
+Original proposal negative tests reproduced NULL revision bypasses, a disabled-module
+projection and maintenance report/financial provenance gaps. Corrected commands and
+triggers enforce positive CAS, exact source bindings, immutable parent/tenant keys,
+integer reviewed amounts and post-wait wall-clock JWT expiry. All eight private
+tables have RLS/revoked client table access; eight fixed-path functions expose only
+three private checked entry points to authenticated. No public API wrapper or
+feature activation exists. Database-owner trigger bypass remains a trusted operator
+boundary. See docs/PROPERTY_MIGRATION_SECURITY_REVIEW.md and
+PROPERTY_CONNECTED_AUTHORIZATION.md for the role matrix, actual tests and limits.
+
+Fresh hosted history/catalog/column grants match the applied ten-file baseline.
+Current PostgREST profile checks returned401 for both existing public client-key
+formats: API isolation is unverified, not a passing denial. CLI dry run also blocked;
+no hosted execution permitted from this review. Existing saved Auth settings were
+not changed. All ingestion/playback, customer financial execution and outside
+access remain disabled. Local SQL claims cannot stand in for real hosted Auth.
+
 ## Authorization and threats
 
 Protect against guessed IDs, forged company context, user_metadata role claims,

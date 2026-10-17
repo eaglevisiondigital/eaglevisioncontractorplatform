@@ -112,7 +112,7 @@ export function prepareMaterialDecision(
   )
     throw Error('Reviewed approved purchase required');
   if (
-    input.disposition === 'included' &&
+    (input.disposition === 'included' || input.scope_line_id !== null) &&
     !job.baseline.lines.some((l) => l.id === input.scope_line_id) &&
     !job.changes.some(
       (c) =>

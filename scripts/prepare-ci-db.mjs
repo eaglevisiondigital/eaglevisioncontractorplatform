@@ -11,7 +11,7 @@ const client = new Client({
 await client.connect();
 try {
   await client.query(
-    'create role anon nologin; create role authenticated nologin;',
+    'create role anon nologin; create role authenticated nologin; create role service_role nologin bypassrls;',
   );
 } finally {
   await client.end();

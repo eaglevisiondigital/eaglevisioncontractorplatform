@@ -1,5 +1,18 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Property schema review and connected boundary · latest
+
+The corrected property proposal now has a byte-identical pending forward migration,
+20261017005322_property_operations.sql, separately inventoried from the unchanged ten
+historical migrations. Hosted schema remains ten; no new public wrapper, enabled
+feature, Storage policy or provider capability. Read
+[PROPERTY_CONNECTED_AUTHORIZATION.md](docs/PROPERTY_CONNECTED_AUTHORIZATION.md) for
+caller/role/dataflow and [security review](docs/PROPERTY_MIGRATION_SECURITY_REVIEW.md)
+for exact hashes, native/hosted comparison and unresolved CLI/API preflights.
+Connected property access remains disabled. Plans/reports use existing CRM/property/
+job keys; unbilled review uses existing expenses/changes, with nonpayable drafts.
+The migration package is locally verified; hosted execution remains NO-GO.
+
 ## Shared deployment and separate surfaces
 
 README.md remains the product source of truth. The Phase 1 architecture is

@@ -1,5 +1,20 @@
 # Property operations and smart procurement · local implementation
 
+## Superseding schema-review checkpoint
+
+The original implementation snapshot below is historical. The original f345 SQL
+proposal was corrected after nine reproduced negative failures and now has a formal
+pending migration20261017005322. It remains UNAPPLIED / NOT AUTHORIZED; the ten
+historical migrations and hosted schema are unchanged. See
+[PROPERTY_MIGRATION_SECURITY_REVIEW.md](PROPERTY_MIGRATION_SECURITY_REVIEW.md) and
+[PROPERTY_CONNECTED_AUTHORIZATION.md](PROPERTY_CONNECTED_AUTHORIZATION.md).
+
+Latest regression:666 local PASS/43 native-only skips;318 native PostgreSQL17 PASS;
+63 browser PASS;26 frozen checks PASS. Hosted read-only drift checks PASS; CLI dry
+run and API schema-profile verification BLOCKED. Execution recommendation NO-GO
+until both pass and the owner separately approves exact execution. Media/connected
+workflow acceptance remains NOT RUN/blocked, and all activation controls stay off.
+
 Release 1.0 remains **NOT READY / NOT AUTHORIZED**. Base checkpoint f2d5401,
 existing draft PR #1. This work is local and synthetic; no hosted database,
 provider, credential, grant, Netlify deployment or customer access changed.

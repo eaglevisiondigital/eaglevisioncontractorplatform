@@ -1,5 +1,33 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: property schema review · corrected / hosted execution NO-GO
+
+Read [PROPERTY_MIGRATION_SECURITY_REVIEW.md](docs/PROPERTY_MIGRATION_SECURITY_REVIEW.md)
+and PROPERTY_CONNECTED_AUTHORIZATION.md. Original f345 proposal reproduced nine
+negative failures: NULL CAS bypasses, disabled-module financial projection, report
+customer/property provenance and supplemental amount mismatch. Corrected constraints,
+post-lock wall-clock session checks and command locks pass all regressions.
+
+Formal pending migration:20261017005322_property_operations.sql; file SHA-256
+c345bdf178c9339dba7ba2707c74233bcfae9a2d2b59abf148f4b7ffff35780c.
+Exact pending/full bundles are in docs/PROPERTY_MIGRATION_REVIEW.json. All ten
+historical files/manifests and public types remain unchanged; hosted history is10.
+Eight private/default-off tables and eight fixed-path functions add no public
+wrappers, features, Storage, roles or provider capabilities.
+
+Verification:666 local PASS/43 native-only skips;318 native PostgreSQL17 PASS;
+63 browser PASS;26 frozen checks PASS (counts overlap). Fresh ten-file native schema
+matches actual hosted468 catalog/69 column-ACL records without drift. Security
+0 WARN/ERROR,28 INFO; existing performance4 WARN/79 INFO unchanged.
+
+Hosted execution is NO-GO: target-bound CLI dry run stalled with zero output and
+was terminated; two public-client HTTP probes returned401 Invalid API key, so API
+profile isolation remains unverified. Do not rotate keys/reset Auth/widen grants
+as a workaround. Resolve these read-only preflights, then request separate exact
+execution approval. No hosted write, grant, session, deployment or provider call.
+All media/connected property/customer billing gates remain disabled; Release1.0
+NOT READY / NOT AUTHORIZED and PR#1 stays draft.
+
 ## Latest: property operations / smart procurement · local implementation
 
 Owner direction now includes surveys, media, comparisons and unbilled review in

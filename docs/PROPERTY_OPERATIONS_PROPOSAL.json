@@ -3,7 +3,7 @@
   "hostedExecutionAuthorized": false,
   "publicRpcEnabled": false,
   "file": "server/property/schema.proposed.sql",
-  "sha256": "f3458c4551a738c88bc65d8ca20f847cd7703d02d91b791c03b87ae3a9962d45",
+  "sha256": "c345bdf178c9339dba7ba2707c74233bcfae9a2d2b59abf148f4b7ffff35780c",
   "privateTables": [
     "property_features",
     "inspection_plans",
@@ -25,5 +25,8 @@
     "property_workspace",
     "property_portal"
   ],
-  "activation": "No feature rows, public wrappers, worker grants or Storage policies. Formal forward migration and exact target/action approval required."
+  "activation": "Empty/default-off private schema only. No public wrappers, feature rows, worker grants or Storage changes. Exact target/action execution approval required.",
+  "originalReviewedSha256": "f3458c4551a738c88bc65d8ca20f847cd7703d02d91b791c03b87ae3a9962d45",
+  "formalMigration": "20261017005322_property_operations.sql",
+  "migrationReview": "docs/PROPERTY_MIGRATION_REVIEW.json"
 }

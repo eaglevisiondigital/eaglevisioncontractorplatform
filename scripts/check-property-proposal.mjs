@@ -20,3 +20,15 @@ if (
 console.log(
   `Property SQL proposal integrity PASS: ${tables.length} private tables; unexposed/default-off; no hosted execution approval`,
 );
+
+const review = JSON.parse(
+  readFileSync('docs/PROPERTY_MIGRATION_REVIEW.json', 'utf8'),
+);
+if (
+  review.migrations.length !== 1 ||
+  review.migrations[0].file !== m.formalMigration ||
+  review.migrations[0].sha256 !== digest ||
+  readFileSync('supabase/migrations/' + m.formalMigration, 'utf8') !== sql ||
+  /create(?: or replace)? function public\./i.test(sql)
+)
+  throw Error('Formal property migration/source or exposure drift');

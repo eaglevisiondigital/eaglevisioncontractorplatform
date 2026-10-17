@@ -1,5 +1,22 @@
 # Engineering decisions
 
+## 2026-10-16 · Property SQL security review and dormant migration
+
+1. Reject the original f345 proposal after nine independent negative reproductions;
+   require non-NULL CAS, enabled-module projections and database-level report and
+   supplemental financial provenance. Add post-lock wall-clock JWT expiry checks.
+2. Prepare only a dormant forward migration,20261017005322, preserving all ten
+   historical SQL files/manifests. Record exact hashes separately; no public wrappers,
+   feature rows, credentials, Storage policies or grants are activated.
+3. Reuse existing customer/property/estimate/job/expense/change sources. Supplemental
+   drafts remain nonpayable pending genuine approval and checked invoice conversion.
+4. Technical schema review GO is not execution approval. Current execution NO-GO:
+   CLI dry run stalled and public-key API probes returned401 before schema checking.
+   Resolve read-only preflights; do not repair keys/settings or bypass authorization.
+5. Full evidence, counts and containment are in PROPERTY_MIGRATION_SECURITY_REVIEW.md;
+   connected caller design is PROPERTY_CONNECTED_AUTHORIZATION.md. Independent launch
+   review and real Auth/HTTP/media acceptance remain outstanding; Release1.0 closed.
+
 ## 2026-10-15 · Phase 1
 
 1. Preserve README.md as product source of truth. Initial repository was PUBLIC,

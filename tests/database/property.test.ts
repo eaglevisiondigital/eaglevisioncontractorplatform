@@ -19,7 +19,11 @@ const orgs = [uid(), uid(), uid()],
 async function actor(d: TestDatabase = db, user = owners[0], aal = 'aal2') {
   await d.exec('reset role');
   await d.query("select set_config('request.jwt.claims',$1,false)", [
-    JSON.stringify({ sub: user, aal }),
+    JSON.stringify({
+      sub: user,
+      aal,
+      exp: Math.floor(Date.now() / 1000) + 3600,
+    }),
   ]);
   await d.exec('set role authenticated');
 }
@@ -112,7 +116,22 @@ beforeAll(async () => {
   await db.exec(
     "do $$begin if not exists(select 1 from pg_roles where rolname='service_role') then create role service_role nologin bypassrls;end if;end$$;",
   );
-  await db.exec(readFileSync('server/property/schema.proposed.sql', 'utf8'));
+  if (
+    !(await db.query("select to_regclass('private.property_features') present"))
+      .rows[0].present
+  )
+    await db.exec(readFileSync('server/property/schema.proposed.sql', 'utf8'));
+  else {
+    const { createHash } = await import('node:crypto');
+    const manifest = JSON.parse(
+      readFileSync('docs/PROPERTY_MIGRATION_REVIEW.json', 'utf8'),
+    );
+    expect(
+      createHash('sha256')
+        .update(readFileSync('server/property/schema.proposed.sql'))
+        .digest('hex'),
+    ).toBe(manifest.migrations[0].sha256);
+  }
   for (const u of [...owners, field, estimator])
     await db.query(
       'insert into auth.users(id,email,email_confirmed_at) values($1,$2,clock_timestamp())',
@@ -628,6 +647,436 @@ it('quarantined media cannot become clean or cross-reference another tenant even
   );
   await denied(sql, [orgs[0], visits[0], 'invalid digest']);
 });
+it.each([
+  'save_visit',
+  'submit_visit',
+  'update_plan',
+  'unbilled_review',
+  'publish_visit',
+  'revise_visit',
+])('review regression: NULL revision cannot authorize %s', async (action) => {
+  let id = visits[0],
+    p: unknown = content();
+  if (action === 'update_plan') {
+    id = plans[0];
+    p = {
+      name: 'Changed plan',
+      cadence: 'weekly',
+      interval_days: 7,
+      timezone: 'UTC',
+      starts_on: '2026-11-01',
+      checklist: content().checklist,
+    };
+  }
+  if (action === 'unbilled_review') {
+    id = jobs[0];
+    p = decision();
+  }
+  if (action === 'submit_visit') p = {};
+  if (action === 'publish_visit' || action === 'revise_visit') {
+    await command('save_visit', visits[0], 1, content());
+    await command('submit_visit', visits[0], 2);
+    p = {};
+    if (action === 'revise_visit') await command('publish_visit', visits[0], 3);
+  }
+  await denied('select private.property_command($1,$2,$3,$4,$5)', [
+    orgs[0],
+    action,
+    id,
+    null,
+    p,
+  ]);
+});
+it('review regression: disabled estimating denies the complete property workspace', async () => {
+  const rev = (
+    await db.query('select lock_revision from jobs where id=$1', [jobs[0]])
+  ).rows[0].lock_revision;
+  await command('unbilled_review', jobs[0], Number(rev), decision());
+  await db.exec('reset role');
+  await db.query(
+    "update company_modules set enabled=false where organization_id=$1 and module='estimates'",
+    [orgs[0]],
+  );
+  await actor();
+  await denied('select private.property_workspace($1)', [orgs[0]]);
+});
+it('review regression: report customer and property must match the actual visit even for maintenance', async () => {
+  await db.exec('reset role');
+  const c = uid(),
+    l = uid();
+  await db.query(
+    "insert into customers(id,organization_id,display_name) values($1,$2,'Other synthetic customer')",
+    [c, orgs[0]],
+  );
+  await db.query(
+    "insert into service_locations(id,organization_id,customer_id,address_line1,city,region,postal_code,country_code) values($1,$2,$3,'Other synthetic property','Example','FL','00000','US')",
+    [l, orgs[0], c],
+  );
+  await denied(
+    "insert into private.inspection_reports(organization_id,visit_id,customer_id,location_id,version,snapshot) values($1,$2,$3,$4,1,'{}')",
+    [orgs[0], visits[0], c, l],
+  );
+});
+it('review regression: supplemental invoice maintenance cannot diverge from approved review amount', async () => {
+  const change = await rpc('propose_job_change', [
+    orgs[0],
+    jobs[0],
+    {
+      description: 'Synthetic reviewed supplemental',
+      revenue_minor: 11251,
+      cost_minor: 0,
+      category: 'materials',
+      status: 'proposed',
+    },
+  ]);
+  await db.exec('reset role');
+  const d = (
+    await db.query<{ id: string }>(
+      "insert into private.unbilled_decisions(organization_id,job_id,expense_id,revision,disposition,reason,pricing,selling_minor,presentation,description,change_id) values($1,$2,$3,1,'proposed','Synthetic reviewed scope',$4,11251,'package','Synthetic reviewed supplemental',$5) returning id",
+      [orgs[0], jobs[0], expenses[0], { mode: 'percent', value: 1250 }, change],
+    )
+  ).rows[0].id;
+  await denied(
+    "insert into private.supplemental_invoice_drafts(organization_id,decision_id,change_id,customer_id,currency,selling_minor,description,presentation) values($1,$2,$3,$4,'USD',1,'Synthetic reviewed supplemental','package')",
+    [orgs[0], d, change, customers[0]],
+  );
+});
+it('review: every new foreign key has a covering tenant index', async () => {
+  await db.exec('reset role');
+  const rows = (
+    await db.query(
+      "select c.conname from pg_constraint c where c.contype='f' and c.conrelid in (select oid from pg_class where relnamespace='private'::regnamespace and relname in ('property_features','inspection_plans','inspection_visits','inspection_reports','property_media','supplier_comparisons','unbilled_decisions','supplemental_invoice_drafts')) and not exists(select 1 from pg_index i where i.indrelid=c.conrelid and i.indisvalid and i.indpred is null and (select array_agg(k order by ord) from unnest(i.indkey) with ordinality x(k,ord) where ord<=cardinality(c.conkey))=c.conkey)",
+    )
+  ).rows;
+  expect(rows).toEqual([]);
+});
+it('review: malformed maintenance content and mutable tenant/parent transfers are denied', async () => {
+  await db.exec('reset role');
+  await denied(
+    'update private.inspection_visits set organization_id=$1,plan_id=$2 where id=$3',
+    [orgs[1], plans[1], visits[0]],
+  );
+  await denied(
+    "update private.inspection_visits set content=jsonb_set(content,'{internal_secret}',to_jsonb('SECRET'::text)) where id=$1",
+    [visits[0]],
+  );
+  await denied(
+    "update private.inspection_plans set starts_on='infinity' where id=$1",
+    [plans[0]],
+  );
+  await denied(
+    'update private.inspection_plans set customer_id=$1,location_id=$2,job_id=$3,organization_id=$4 where id=$5',
+    [customers[1], locations[1], jobs[1], orgs[1], plans[0]],
+  );
+});
+it('review: invoice currency, customer and presentation are locked to the reviewed existing job', async () => {
+  const change = await rpc('propose_job_change', [
+    orgs[0],
+    jobs[0],
+    {
+      description: 'Synthetic reviewed supplemental',
+      revenue_minor: 11251,
+      cost_minor: 0,
+      category: 'materials',
+      status: 'proposed',
+    },
+  ]);
+  await db.exec('reset role');
+  const d = (
+    await db.query<{ id: string }>(
+      "insert into private.unbilled_decisions(organization_id,job_id,expense_id,revision,disposition,reason,pricing,selling_minor,presentation,description,change_id) values($1,$2,$3,1,'proposed','Synthetic reviewed scope',$4,11251,'package','Synthetic reviewed supplemental',$5) returning id",
+      [orgs[0], jobs[0], expenses[0], { mode: 'percent', value: 1250 }, change],
+    )
+  ).rows[0].id;
+  await denied(
+    "insert into private.supplemental_invoice_drafts(organization_id,decision_id,change_id,customer_id,currency,selling_minor,description,presentation) values($1,$2,$3,$4,'EUR',11251,'Synthetic reviewed supplemental','package')",
+    [orgs[0], d, change, customers[0]],
+  );
+});
+it('review: missing or expired signed session expiry cannot open property data', async () => {
+  for (const exp of [null, 0, Math.floor(Date.now() / 1000) - 1]) {
+    await db.exec('reset role');
+    await db.query("select set_config('request.jwt.claims',$1,false)", [
+      JSON.stringify({ sub: owners[0], aal: 'aal2', exp }),
+    ]);
+    await db.exec('set role authenticated');
+    await denied('select private.property_workspace($1)', [orgs[0]]);
+  }
+});
+it.skipIf(!db.fork)(
+  'review native: JWT expiry during a visit lock wait rolls back all write/audit effects',
+  async () => {
+    await db.exec('rollback;reset role');
+    await actor();
+    const p = await command('create_plan', null, null, {
+      customer_id: customers[0],
+      location_id: locations[0],
+      job_id: jobs[0],
+      name: 'Native session expiry',
+      cadence: 'once',
+      interval_days: 1,
+      timezone: 'UTC',
+      starts_on: '2026-11-10',
+      checklist: content().checklist,
+    });
+    const v = await command('create_visit', p, null, {
+      visited_on: '2026-11-10',
+      phase: 'after',
+    });
+    await db.exec('reset role;begin');
+    await db.query(
+      'select id from private.inspection_visits where id=$1 for update',
+      [v],
+    );
+    const peer = await db.fork!();
+    try {
+      const pid = Number(
+          (await peer.query('select pg_backend_pid() id')).rows[0].id,
+        ),
+        expiry = Number(
+          (
+            await db.query(
+              'select floor(extract(epoch from clock_timestamp()))::bigint+2 exp',
+            )
+          ).rows[0].exp,
+        );
+      await actor(peer);
+      await peer.exec('reset role');
+      await peer.query("select set_config('request.jwt.claims',$1,false)", [
+        JSON.stringify({ sub: owners[0], aal: 'aal2', exp: expiry }),
+      ]);
+      await peer.exec('set role authenticated');
+      const pending = command(
+        'save_visit',
+        v,
+        1,
+        content(),
+        orgs[0],
+        peer,
+      ).then(
+        () => false,
+        () => true,
+      );
+      await blocked(db, pid);
+      for (let i = 0; i < 160; i++) {
+        if (
+          (
+            await db.query(
+              'select extract(epoch from clock_timestamp()) >= $1 expired',
+              [expiry],
+            )
+          ).rows[0].expired
+        )
+          break;
+        await new Promise((r) => setTimeout(r, 25));
+      }
+      expect(
+        (
+          await db.query(
+            'select extract(epoch from clock_timestamp()) >= $1 expired',
+            [expiry],
+          )
+        ).rows[0].expired,
+      ).toBe(true);
+      await db.exec('commit');
+      expect(await pending).toBe(true);
+      expect(
+        (
+          await db.query(
+            'select lock_revision from private.inspection_visits where id=$1',
+            [v],
+          )
+        ).rows[0].lock_revision,
+      ).toBe(1);
+      expect(
+        (
+          await db.query(
+            "select id from activity_events where organization_id=$1 and entity_id=$2 and action='update'",
+            [orgs[0], v],
+          )
+        ).rows,
+      ).toHaveLength(0);
+    } finally {
+      await db.exec('rollback');
+      await peer.close();
+    }
+  },
+);
+it.skipIf(!db.fork)(
+  'review native: two NULL-revision writers are both denied with no mutation',
+  async () => {
+    await db.exec('rollback;reset role');
+    await actor();
+    const p = await command('create_plan', null, null, {
+      customer_id: customers[0],
+      location_id: locations[0],
+      job_id: jobs[0],
+      name: 'Native null test',
+      cadence: 'once',
+      interval_days: 1,
+      timezone: 'UTC',
+      starts_on: '2026-11-01',
+      checklist: content().checklist,
+    });
+    const v = await command('create_visit', p, null, {
+      visited_on: '2026-11-01',
+      phase: 'before',
+    });
+    await db.exec('reset role');
+    const a = await db.fork!(),
+      b = await db.fork!();
+    try {
+      await actor(a);
+      await actor(b);
+      const results = await Promise.allSettled([
+        command('save_visit', v, null, content(), orgs[0], a),
+        command('save_visit', v, null, content(), orgs[0], b),
+      ]);
+      expect(results.filter((x) => x.status === 'rejected')).toHaveLength(2);
+      expect(
+        (
+          await db.query(
+            'select lock_revision from private.inspection_visits where id=$1',
+            [v],
+          )
+        ).rows[0].lock_revision,
+      ).toBe(1);
+    } finally {
+      await a.close();
+      await b.close();
+    }
+  },
+);
+it.skipIf(!db.fork)(
+  'review native: assignment revoked while a field writer waits on a visit is denied',
+  async () => {
+    await db.exec('rollback;reset role');
+    await actor();
+    await rpc('assign_job', [orgs[0], jobs[0], field, true]);
+    const p = await command('create_plan', null, null, {
+      customer_id: customers[0],
+      location_id: locations[0],
+      job_id: jobs[0],
+      name: 'Native assignment test',
+      cadence: 'once',
+      interval_days: 1,
+      timezone: 'UTC',
+      starts_on: '2026-11-02',
+      checklist: content().checklist,
+    });
+    const v = await command('create_visit', p, null, {
+      visited_on: '2026-11-02',
+      phase: 'before',
+    });
+    await db.exec('reset role;begin');
+    await db.query(
+      'select id from private.inspection_visits where id=$1 for update',
+      [v],
+    );
+    const peer = await db.fork!();
+    try {
+      const pid = Number(
+        (await peer.query('select pg_backend_pid() id')).rows[0].id,
+      );
+      await actor(peer, field, 'aal1');
+      const result = command('save_visit', v, 1, content(), orgs[0], peer).then(
+        () => false,
+        () => true,
+      );
+      await blocked(db, pid);
+      await db.query(
+        'update job_assignments set active=false where organization_id=$1 and job_id=$2 and user_id=$3',
+        [orgs[0], jobs[0], field],
+      );
+      await db.exec('commit');
+      expect(await result).toBe(true);
+      expect(
+        (
+          await db.query(
+            'select lock_revision from private.inspection_visits where id=$1',
+            [v],
+          )
+        ).rows[0].lock_revision,
+      ).toBe(1);
+    } finally {
+      await db.exec('rollback');
+      await peer.close();
+    }
+  },
+);
+it.skipIf(!db.fork)(
+  'review native: module disabled during feature-lock wait cannot return financial reviews',
+  async () => {
+    await db.exec('rollback;reset role;begin');
+    await db.query(
+      'select organization_id from private.property_features where organization_id=$1 for update',
+      [orgs[0]],
+    );
+    const peer = await db.fork!();
+    try {
+      const pid = Number(
+        (await peer.query('select pg_backend_pid() id')).rows[0].id,
+      );
+      await actor(peer);
+      const result = peer
+        .query('select private.property_workspace($1)', [orgs[0]])
+        .then(
+          () => false,
+          () => true,
+        );
+      await blocked(db, pid);
+      await db.query(
+        "update company_modules set enabled=false where organization_id=$1 and module='estimates'",
+        [orgs[0]],
+      );
+      await db.exec('commit');
+      expect(await result).toBe(true);
+    } finally {
+      await db.exec('rollback');
+      await db.query(
+        "update company_modules set enabled=true where organization_id=$1 and module='estimates'",
+        [orgs[0]],
+      );
+      await peer.close();
+    }
+  },
+);
+it.skipIf(!db.fork)(
+  'review native: duplicate scheduled visits create exactly one record and audit event',
+  async () => {
+    await db.exec('rollback;reset role');
+    const a = await db.fork!(),
+      b = await db.fork!();
+    try {
+      await actor(a);
+      await actor(b);
+      const p = { visited_on: '2026-11-09', phase: 'after' };
+      const results = await Promise.allSettled([
+        command('create_visit', plans[0], null, p, orgs[0], a),
+        command('create_visit', plans[0], null, p, orgs[0], b),
+      ]);
+      expect(results.filter((x) => x.status === 'fulfilled')).toHaveLength(1);
+      const rows = (
+        await db.query<{ id: string }>(
+          'select id from private.inspection_visits where organization_id=$1 and plan_id=$2 and visited_on=$3',
+          [orgs[0], plans[0], p.visited_on],
+        )
+      ).rows;
+      expect(rows).toHaveLength(1);
+      expect(
+        (
+          await db.query(
+            "select id from activity_events where organization_id=$1 and entity_type='inspection_visits' and entity_id=$2 and action='insert'",
+            [orgs[0], rows[0].id],
+          )
+        ).rows,
+      ).toHaveLength(1);
+    } finally {
+      await a.close();
+      await b.close();
+    }
+  },
+);
 it.skipIf(!db.fork)(
   'native concurrent visit writes have exactly one winner',
   async () => {

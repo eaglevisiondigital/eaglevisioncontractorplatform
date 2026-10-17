@@ -31,8 +31,12 @@ if (
   createHash('sha256')
     .update(JSON.stringify(pending.migrations))
     .digest('hex') !== pending.pendingBundleSha256 ||
-  JSON.stringify(migrations.slice(reviewed.migrations.length)) !==
-    JSON.stringify(pending.migrations)
+  JSON.stringify(
+    migrations.slice(
+      reviewed.migrations.length,
+      reviewed.migrations.length + pending.migrations.length,
+    ),
+  ) !== JSON.stringify(pending.migrations)
 )
   throw new Error('Unreviewed forward migration drift');
 if (
@@ -49,4 +53,40 @@ if (
   throw new Error('Development execution record does not match reviewed bytes');
 console.log(
   `Reviewed migration bundle matches ${reviewed.migrations.length} original files; ${pending.migrations.length} separately reviewed provider migration(s) ${developmentApplied ? 'recorded DEVELOPMENT APPLIED / PROVIDERS DISABLED' : 'UNAPPLIED / NOT AUTHORIZED'}; offline integrity check only, no hosted action performed.`,
+);
+
+const property = JSON.parse(
+  readFileSync('docs/PROPERTY_MIGRATION_REVIEW.json', 'utf8'),
+);
+const historical = migrations.slice(
+  0,
+  reviewed.migrations.length + pending.migrations.length,
+);
+const hash = (v) =>
+  createHash('sha256').update(JSON.stringify(v)).digest('hex');
+if (
+  property.status !== 'PENDING_REVIEW_NOT_AUTHORIZED' ||
+  property.hostedExecutionAuthorized !== false ||
+  property.activationAuthorized !== false ||
+  property.scope !== 'development-schema-only-default-disabled' ||
+  property.migrations.length !== 1 ||
+  property.originalNineBundleSha256 !== reviewed.bundleSha256 ||
+  property.appliedProviderBundleSha256 !== pending.pendingBundleSha256 ||
+  JSON.stringify(historical) !==
+    JSON.stringify(property.historicalMigrations) ||
+  hash(historical) !== property.historicalBundleSha256 ||
+  JSON.stringify(migrations.slice(historical.length)) !==
+    JSON.stringify(property.migrations) ||
+  hash(property.migrations) !== property.pendingBundleSha256 ||
+  hash(migrations) !== property.fullProposedBundleSha256 ||
+  JSON.stringify(property.seeds) !== '[]' ||
+  JSON.stringify(property.roles) !== '[]' ||
+  property.featureRows !== 0 ||
+  property.workloadGrants !== 0 ||
+  property.storageChanges !== 0 ||
+  JSON.stringify(property.publicWrappers) !== '[]'
+)
+  throw Error('Unreviewed property migration drift or activation metadata');
+console.log(
+  'One separately inventoried property migration is UNAPPLIED / NOT AUTHORIZED; ten historical files preserved.',
 );

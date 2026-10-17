@@ -263,3 +263,19 @@ Property/procurement implementation continuity:
   win. Proposed supplemental prices require scope/return/duplicate review and
   cannot post customer balances or material expense twice. Production consent and
   change-to-invoice conversion require later independent implementation/acceptance.
+
+Property schema review continuity:
+
+- Read docs/PROPERTY_MIGRATION_SECURITY_REVIEW.md and
+  PROPERTY_CONNECTED_AUTHORIZATION.md. Original f345 proposal is rejected; corrected
+  proposal/formal migration share SHA c345bdf1… in PROPERTY_MIGRATION_REVIEW.json.
+- Preserve all ten historical migrations. New20261017005322 is UNAPPLIED / NOT
+  AUTHORIZED; no public wrappers, feature activation or provider/Storage changes.
+- Preserve positive non-NULL CAS, exact report/draft provenance, tenant/parent
+  immutability and post-wait wall-clock session guards. Native concurrency is required.
+- Hosted execution is NO-GO: CLI dry run produced zero output before termination;
+  existing modern/legacy public API keys returned401 before profile checking.
+  Diagnose read-only and repeat successful preflights before separate exact approval.
+  Do not rotate/reset keys/Auth or widen access to bypass these blockers.
+- Local/SQL/hosted-read evidence is not real connected property/media acceptance.
+  Keep all ingestion/playback and supplemental customer debt execution disabled.
