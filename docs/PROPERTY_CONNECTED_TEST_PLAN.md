@@ -1,5 +1,9 @@
 # Property operations · next connected acceptance package
 
+Latest:[exact P0 development execution](PROPERTY_P0_EXECUTION.md) is APPLIED/VERIFIED;
+hosted history13,all features/mappings/leases remain off. Earlier unapplied statements
+are historical. All72 connected property cases remain NOT RUN;no activation approval.
+
 **PREPARED / NOT AUTHORIZED / NOT RUN.** The dormant property schema is installed;
 installation does not authorize fixtures, feature rows, public wrappers, internal
 release grants, sessions or media. See PROPERTY_MIGRATION_EXECUTION.md.

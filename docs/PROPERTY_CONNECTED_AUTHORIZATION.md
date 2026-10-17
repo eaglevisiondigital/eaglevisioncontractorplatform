@@ -1,5 +1,10 @@
 # Property operations · connected authorization design
 
+Current P0 checkpoint:[dormant connected schema installed](PROPERTY_P0_EXECUTION.md),
+history13. Public invoker wrappers exist;property features,customer mappings and
+report-only leases remain absent. No fixture/portal/provider/media activation or
+new sessions were authorized. All72 property workflow cases remain NOT RUN.
+
 ## Superseding execution checkpoint
 
 The owner-approved exact20261017005322 migration is now APPLIED ONCE / VERIFIED.

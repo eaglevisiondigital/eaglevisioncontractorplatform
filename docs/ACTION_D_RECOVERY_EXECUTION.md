@@ -1,5 +1,9 @@
 # Action D · authorized same-deployment recovery stopped
 
+Latest:the separately authorized [diagnosis-only follow-up](ACTION_D_SUPPORT_FOLLOWUP.md)
+is SENT in the original ticket;no new provider diagnosis or corrective authorization.
+Earlier prepared/not-sent statements below record the prior checkpoint.
+
 October17,2026,America/Chicago. **STOPPED ON FIRST FILE PUT / NOT READY.**
 The owner explicitly authorized nine original static/configuration uploads followed
 by one unchanged same-deployment manifest PUT,only after file registration succeeds.

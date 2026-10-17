@@ -1,5 +1,9 @@
 # P0 · connected property operations readiness
 
+Latest:[exact P0 development execution](PROPERTY_P0_EXECUTION.md) is APPLIED/VERIFIED;
+hosted history13,all features/mappings/leases remain off. Earlier unapplied statements
+are historical. All72 connected property cases remain NOT RUN;no activation approval.
+
 Latest: [final two-file preflight](PROPERTY_P0_FINAL_PREFLIGHT.md) now PASS;both
 migrations remain UNAPPLIED / NOT AUTHORIZED. Earlier no-dry-run statements below
 record the original P0 implementation checkpoint. All activation gates remain off.

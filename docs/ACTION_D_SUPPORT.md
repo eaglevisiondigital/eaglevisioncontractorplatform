@@ -1,5 +1,9 @@
 # Propel Contractor Suite · Netlify diagnosis request
 
+Latest:the separately authorized [diagnosis-only follow-up](ACTION_D_SUPPORT_FOLLOWUP.md)
+is SENT in the original ticket;no new provider diagnosis or corrective authorization.
+Earlier prepared/not-sent statements below record the prior checkpoint.
+
 Latest: [authorized recovery execution](ACTION_D_RECOVERY_EXECUTION.md) stopped
 at the first static-file PUT422. No confirmed uploads or manifest retry;same
 deployment remains uploading. No later repair/retry authority is implied. The

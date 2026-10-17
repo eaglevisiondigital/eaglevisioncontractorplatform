@@ -124,8 +124,9 @@ const p0 = JSON.parse(
 );
 const installed = migrations.slice(0, 11),
   proposed = migrations.slice(11);
+const p0Applied = p0.status === 'DEVELOPMENT_APPLIED_P0_DISABLED';
 if (
-  p0.status !== 'LOCAL_ONLY_NOT_AUTHORIZED' ||
+  (!p0Applied && p0.status !== 'LOCAL_ONLY_NOT_AUTHORIZED') ||
   p0.hostedExecutionAuthorized !== false ||
   p0.activationAuthorized !== false ||
   hash(installed) !== p0.installedBundleSha256 ||
@@ -145,6 +146,39 @@ if (
   JSON.stringify(p0.roles) !== '[]'
 )
   throw Error('Unreviewed P0 forward proposals or activation');
+if (
+  p0Applied &&
+  (p0.developmentExecution?.result !== 'APPLIED_VERIFIED' ||
+    p0.developmentExecution?.scope !== 'development-schema-only' ||
+    p0.developmentExecution?.reviewedCommit !== '7e472b7' ||
+    p0.developmentExecution?.historyCount !== 13 ||
+    p0.developmentExecution?.featuresEnabled !== false ||
+    p0.developmentExecution?.customerMappingsCreated !== 0 ||
+    p0.developmentExecution?.reportLeasesCreated !== 0 ||
+    p0.developmentExecution?.mediaEnabled !== false ||
+    p0.developmentExecution?.providersEnabled !== false ||
+    p0.developmentExecution?.bundleSha256 !== p0.proposedBundleSha256 ||
+    p0.proposedBundleSha256 !==
+      '5349a3b175a55bd6f360819c7942fc74f69d9a29c1765a058e20df1319df6dea' ||
+    JSON.stringify(p0.developmentExecution?.migrationVersions) !==
+      JSON.stringify(['20261017024327', '20261017024328']) ||
+    JSON.stringify(p0.migrations) !==
+      JSON.stringify([
+        {
+          file: '20261017024327_property_connected_readiness.sql',
+          sha256:
+            '6bb0b9bf22ec1079d7aa5f74c6e33e14534cc54e30e9034c33949f786cfd3ac9',
+        },
+        {
+          file: '20261017024328_property_duplicate_index_cleanup.sql',
+          sha256:
+            '3603fe0482f46b9733a0321cd9009cb1f291993fcbede7132e1bdf721776fdfc',
+        },
+      ]))
+)
+  throw Error('P0 applied record differs from exact approved dormant scope');
 console.log(
-  'Two P0 forward proposals LOCAL ONLY / NOT AUTHORIZED; eleven installed files preserved.',
+  p0Applied
+    ? 'Two P0 migrations recorded DEVELOPMENT APPLIED / FEATURES DISABLED; thirteen installed files preserved. Offline integrity is not replay or activation authority.'
+    : 'Two P0 forward proposals LOCAL ONLY / NOT AUTHORIZED; eleven installed files preserved.',
 );

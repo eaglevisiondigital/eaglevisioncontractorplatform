@@ -1,5 +1,27 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: P0 applied dormant · Netlify support follow-up sent
+
+Read [PROPERTY_P0_EXECUTION.md](docs/PROPERTY_P0_EXECUTION.md) and
+PROPERTY_P0_EXECUTION_RESULT.json. Owner-approved exact two-file CLI2.121.0 apply
+passed once,exit0/7.961seconds,no seeds/roles/retry;fresh dry run exit0/33.183seconds.
+Hosted history13,original11 unchanged;514 expected catalog objects,79 prior business
+table digests,69 column ACLs,24 defaults,four schema ACLs and saved Auth/API settings
+match. Empty private report-access table/RLS/grants/six functions verified;duplicate
+index removed,original constraint plus five FK consumers preserved. Eight lock
+observations found no blocked wait.22 identities/four factors/zero sessions intact.
+
+Security0 WARN/ERROR,37 intentional INFO;performance4 existing WARN/96 INFO,duplicate
+warning resolved. Zero feature/mapping/lease/fixture/provider/media activation;
+all72 hosted property workflow cases remain NOT RUN. Separately approved redacted
+same-ticket Netlify follow-up is SENT and independently verified;no new provider
+response or corrective authorization. Blocked deployment/package/protection remain
+unchanged. Read [ACTION_D_SUPPORT_FOLLOWUP.md](docs/ACTION_D_SUPPORT_FOLLOWUP.md).
+Validation719 local PASS/49 native-only skips;focused native68 PASS,local responsive
+browser63 PASS,frozen26 PASS;format/types/migration checks pass.Counts overlap;the
+focused native suite does not replace all native-only cases.
+Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft. Prior checkpoints below are historical.
+
 ## Latest: Action D recovery STOPPED · first file PUT422
 
 Read [ACTION_D_RECOVERY_EXECUTION.md](docs/ACTION_D_RECOVERY_EXECUTION.md).

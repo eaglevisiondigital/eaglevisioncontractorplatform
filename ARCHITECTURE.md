@@ -612,3 +612,7 @@ Prepared adapters preserve the existing authenticated client and verified user; 
 ## P0 final preflight · no installation
 
 The two-file planning operation is verified against the actual unchanged eleven-migration development schema. Expected post-install catalog514 was independently reconstructed in disposable PostgreSQL17;new report access table/six functions remain absent hosted. No connected adapters,feature/mapping/lease rows or media are enabled. See docs/PROPERTY_P0_FINAL_PREFLIGHT.md.
+
+## P0 dormant connected schema installed
+
+The separately owner-approved two-file development bundle is applied once;history13. Three public SECURITY INVOKER wrappers and checked private session/report helpers are installed;the private report-only lease table is empty/default deny. Adapters remain unwired and current session/MFA/membership/resource checks preserve caller authority. Redundant index removed while original uniqueness/FKs remain. No feature/mapping/lease/fixture/media/provider activation. See docs/PROPERTY_P0_EXECUTION.md;earlier proposed/unapplied checkpoints are historical.

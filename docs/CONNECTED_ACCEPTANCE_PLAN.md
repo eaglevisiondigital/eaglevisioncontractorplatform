@@ -1,5 +1,10 @@
 # Connected three-company acceptance · October 16, 2026
 
+Current P0 checkpoint:[dormant connected schema installed](PROPERTY_P0_EXECUTION.md),
+history13. Public invoker wrappers exist;property features,customer mappings and
+report-only leases remain absent. No fixture/portal/provider/media activation or
+new sessions were authorized. All72 property workflow cases remain NOT RUN.
+
 **Status: Action A/C1 COMPLETE; C1 revoked; Action B core connected acceptance PASS.**
 723 authenticated cases PASS/0 FAIL (687 core +36 supplemental), and 56 real GET-only
 boundary checks PASS before/after populated fixtures. Nine source/Storage/private-

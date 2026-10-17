@@ -722,3 +722,7 @@ Exact two-file dry run now passes with no seeds/roles and no hosted changes. Kee
 ## 2026-10-17 · authorized Netlify recovery stopped on422
 
 Owner-approved same-deployment nine-file-first recovery was attempted once. First frozen-file PUT returned422/no records matched,so stop before all remaining uploads and manifest finalization. Preserve original deployment/package/protection and distinguish configured Private from unverified runtime perimeter. No new Gmail provider diagnosis independently seen;owner-reported instructions recorded as such. Prepare but do not send a diagnosis-only same-ticket follow-up. Any changed order/retry/provider repair requires exact new authorization. See docs/ACTION_D_RECOVERY_EXECUTION.md.
+
+## October17 · execute only approved dormant P0 bundle and support reply
+
+Owner attachment separately authorized a diagnosis-only existing-ticket Netlify reply and exact two-file development migration after fresh preflight. Send one redacted reply,no repair;verify same-thread SENT. Fresh target/history/hash/catalog/ACL/data/Auth/API/index/lock/dry-run checks passed. Apply once,exit0,history13,original11 unchanged;post-install514-object match and empty/default-deny report structures. Record applied metadata with immutable hash checks,never replay/activation authority. Keep all72 hosted property cases NOT RUN and require exact fixture/feature/mapping/report-lease approval with genuine owner MFA. Support recommendations require separate corrective approval. Release remains closed.

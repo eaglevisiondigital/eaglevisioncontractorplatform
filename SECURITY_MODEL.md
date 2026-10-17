@@ -641,3 +641,7 @@ Fresh before/after reads show no application schema/RLS/ACL/default/data/Auth/AP
 ## Action D recovery · perimeter still blocked
 
 Dashboard verifies Private production/previews;failed first original-file upload422 caused immediate stop. No registered static files/manifest update/new deployment. Four Function registrations do not establish protected invocation/runtime values. No anonymous or authenticated application acceptance was performed behind the unmet ready-state gate. Preserve all tenant/Auth/off controls;no unapproved containment or retry. See docs/ACTION_D_RECOVERY_EXECUTION.md.
+
+## P0 execution preserves default-deny controls
+
+Exact native/hosted514-object catalog match;new private report table empty/RLS/no policies,no effective client/service table grants. Public wrappers invoker/authenticated only;two private checked helpers authenticated,trigger helper no client EXECUTE;all fixed empty paths,no PUBLIC/anon/service execution. Existing79 data digests/Auth/API/identities/factors unchanged,zero sessions. Security0 WARN/ERROR37 INFO;four existing performance WARN remain,duplicate warning removed. No feature/mapping/lease/provider/media authority created. Real connected role cases remain NOT RUN. See docs/PROPERTY_P0_EXECUTION.md.

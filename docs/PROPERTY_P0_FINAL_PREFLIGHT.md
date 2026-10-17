@@ -1,5 +1,9 @@
 # P0 · final two-migration development preflight
 
+Latest:[exact P0 development execution](PROPERTY_P0_EXECUTION.md) is APPLIED/VERIFIED;
+hosted history13,all features/mappings/leases remain off. Earlier unapplied statements
+are historical. All72 connected property cases remain NOT RUN;no activation approval.
+
 October 17, 2026, America/Chicago. Reviewed application/SQL commit `7e472b7`.
 **PREFLIGHT PASS. Technical GO for separate exact development execution approval.
 Neither migration has been applied. Execution and activation remain NOT AUTHORIZED.**

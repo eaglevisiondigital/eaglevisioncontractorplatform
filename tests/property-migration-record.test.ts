@@ -113,3 +113,57 @@ it.each([
   writeFileSync(path, JSON.stringify(p0));
   expect(f.run().status).not.toBe(0);
 });
+
+it('accepts the exact dormant P0 execution record without activation authority', () => {
+  const r = fixture().run();
+  expect(r.status).toBe(0);
+  expect(r.stdout).toContain('thirteen installed files preserved');
+  expect(r.stdout).toContain('not replay or activation authority');
+});
+
+it.each([
+  'missing evidence',
+  'featuresEnabled',
+  'customerMappingsCreated',
+  'reportLeasesCreated',
+  'mediaEnabled',
+  'providersEnabled',
+  'historyCount',
+  'migrationVersions',
+  'bundleSha256',
+] as const)('rejects a dormant P0 applied record with %s drift', (key) => {
+  const f = fixture();
+  const path = join(f.root, 'docs/PROPERTY_P0_MIGRATION_REVIEW.json');
+  const p0 = JSON.parse(readFileSync(path, 'utf8'));
+  if (key === 'missing evidence') delete p0.developmentExecution;
+  else if (key === 'migrationVersions')
+    p0.developmentExecution[key] = ['20261017024327'];
+  else if (key === 'bundleSha256')
+    p0.developmentExecution[key] = '0'.repeat(64);
+  else if (key === 'historyCount') p0.developmentExecution[key] = 12;
+  else if (key.endsWith('Created')) p0.developmentExecution[key] = 1;
+  else p0.developmentExecution[key] = true;
+  writeFileSync(path, JSON.stringify(p0));
+  expect(f.run().status).not.toBe(0);
+});
+
+it('rejects changed installed P0 SQL even if mutable digests are recomputed', () => {
+  const f = fixture();
+  const path = join(f.root, 'docs/PROPERTY_P0_MIGRATION_REVIEW.json');
+  const p0 = JSON.parse(readFileSync(path, 'utf8'));
+  const file = join(f.root, 'supabase/migrations', p0.migrations[0].file);
+  writeFileSync(file, readFileSync(file, 'utf8') + '\n-- unapproved change\n');
+  const hash = (s: string | Buffer) =>
+    createHash('sha256').update(s).digest('hex');
+  p0.migrations[0].sha256 = hash(readFileSync(file));
+  p0.proposedBundleSha256 = hash(JSON.stringify(p0.migrations));
+  const all = [
+    ...f.review.historicalMigrations,
+    ...f.review.migrations,
+    ...p0.migrations,
+  ];
+  p0.fullProposedBundleSha256 = hash(JSON.stringify(all));
+  p0.developmentExecution.bundleSha256 = p0.proposedBundleSha256;
+  writeFileSync(path, JSON.stringify(p0));
+  expect(f.run().status).not.toBe(0);
+});
