@@ -226,6 +226,15 @@ export function draftCostLines(
   assignments: { line_id: string; quote_id: string }[],
   now = Date.now(),
 ) {
+  if (
+    !assignments.length ||
+    assignments.some(
+      (a) =>
+        !requirements.some((r) => r.line_id === a.line_id) ||
+        !lines.some((l) => l.id === a.line_id),
+    )
+  )
+    throw Error('Unknown or empty material assignments');
   if (new Set(assignments.map((a) => a.line_id)).size !== assignments.length)
     throw Error('Duplicate assignment');
   return lines.map((l) => {

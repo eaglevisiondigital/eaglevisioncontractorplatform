@@ -16,6 +16,7 @@ import {
 } from '../domain/property/inspections';
 import {
   requirementsFromLines,
+  compareSuppliers,
   draftCostLines,
   type SupplierQuote,
 } from '../domain/property/comparison';
@@ -203,16 +204,17 @@ export class PropertyRepository {
       customers = await this.operations.listCustomers(org, '', '', 0),
       jobs = await this.estimates.jobs(org);
     const contexts: PropertyState['contexts'] = [];
+    const sourceCustomers = new Map<string, string>();
+    for (const estimate of await this.estimates.list(org))
+      for (const version of await this.estimates.history(org, estimate.id))
+        if (version.status === 'issued')
+          sourceCustomers.set(version.id, version.payload.customer_id);
     for (const c of customers.rows) {
       const locations = await this.operations.listLocations(org, c.id);
       for (const l of locations) {
-        const matching = [];
-        for (const j of jobs) {
-          const b = await this.estimates
-            .get(org, s.bundle.estimate.id, j.baseline.issued_version_id)
-            .catch(() => null);
-          if (b?.version.payload.customer_id === c.id) matching.push(j);
-        }
+        const matching = jobs.filter(
+          (j) => sourceCustomers.get(j.baseline.issued_version_id) === c.id,
+        );
         if (matching.length)
           for (const j of matching)
             contexts.push({
@@ -415,7 +417,13 @@ export class PropertyRepository {
     return clone(saved);
   }
   saveQuotes(org: string, quotes: SupplierQuote[]) {
-    this.state(org).quotes.push(clone(quotes));
+    const s = this.state(org);
+    compareSuppliers(
+      requirementsFromLines(s.bundle.version.payload.lines),
+      quotes,
+      s.bundle.version.payload.currency,
+    );
+    s.quotes.push(clone(quotes));
   }
   async applyCosts(
     org: string,
@@ -423,6 +431,11 @@ export class PropertyRepository {
     assignments: { line_id: string; quote_id: string }[],
   ) {
     const s = this.state(org);
+    compareSuppliers(
+      requirementsFromLines(s.bundle.version.payload.lines),
+      quotes,
+      s.bundle.version.payload.currency,
+    );
     let b = await this.estimates.get(org, s.bundle.estimate.id);
     const lines = draftCostLines(
       b.version.payload.lines,

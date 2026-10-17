@@ -131,9 +131,9 @@ requires a distinct exact operation approval; NMI account inspection is separate
 
 ## Final regression evidence
 
-- `npm run check`:652 PASS /38 native-only skips. Includes lint, strict TypeScript,
+- `npm run check`:653 PASS /38 native-only skips. Includes lint, strict TypeScript,
   unchanged public catalog types, historical migration integrity, new local-proposal
-  hash/scope check and build. The28 new domain/repository tests plus24 portable SQL
+  hash/scope check and build. The29 new domain/repository tests plus24 portable SQL
   cases are included; do not add these counts to the suite total.
 - Disposable native PostgreSQL17:300 PASS /0 skips, including all38 cases skipped
   by PGlite and five new real concurrent/lock-wait property tests. Database counts
@@ -162,3 +162,7 @@ Actual synthetic screenshots (ignored, available locally and as CI artifacts):
 `*-sample-property-client.png`, `*-supplier-comparison.png`,
 `*-media-galleries.png`, `*-unbilled-review.png`. Screenshots verify interface
 presentation, not an enabled camera, provider or secure-media runtime.
+
+Follow-up boundary regression: repository quote snapshot/cost writes validate tenant
+estimate currency before any draft mutation, and unknown/empty assignments reject.
+This prevents direct callers from bypassing the UI comparison checks.

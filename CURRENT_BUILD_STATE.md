@@ -20,7 +20,7 @@ unchanged. New connected navigation/API/persistence and all media upload/playbac
 are disabled. Local synthetic UI is not hosted acceptance or genuine customer
 consent. No hosted/provider/Netlify/account/grant/session operation occurred.
 
-Final regression:652 local PASS/38 native-only skips,300 native PostgreSQL17 PASS,
+Final regression:653 local PASS/38 native-only skips,300 native PostgreSQL17 PASS,
 63 responsive browser PASS and26 frozen-artifact checks PASS (counts overlap).
 Formatting/types/hash checks PASS; detailed evidence is in the validation report. Next: review the
 proposal and connected adapter authorization; then separately approve an exact

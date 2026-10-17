@@ -493,3 +493,29 @@ it('repair recommendation creates one existing draft scope line without mutating
       .version,
   ).toEqual(s.bundle.version);
 });
+it('repository cost writes reject foreign currencies and unknown assignments before changing any draft', async () => {
+  const r = await fixture(),
+    s = r.read(org),
+    req = requirementsFromLines(s.bundle.version.payload.lines),
+    q = quote(req),
+    before = await r.estimates.get(org, s.bundle.estimate.id);
+  expect(() => r.saveQuotes(org, [{ ...q, currency: 'EUR' }])).toThrow(
+    'currency',
+  );
+  await expect(
+    r.applyCosts(
+      org,
+      [{ ...q, currency: 'EUR' }],
+      [{ line_id: req[0].line_id, quote_id: q.id }],
+    ),
+  ).rejects.toThrow('currency');
+  await expect(
+    r.applyCosts(
+      org,
+      [q],
+      [{ line_id: 'another property material', quote_id: q.id }],
+    ),
+  ).rejects.toThrow('Unknown');
+  expect(await r.estimates.get(org, s.bundle.estimate.id)).toEqual(before);
+  expect(r.read(org).quotes).toHaveLength(0);
+});

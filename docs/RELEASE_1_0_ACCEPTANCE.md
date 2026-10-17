@@ -14,7 +14,7 @@ provider capabilities remain disabled. Detailed evidence: PROPERTY_OPERATIONS_VA
 | Unbilled material / supplemental scope   | Approved purchases/linked credits/scope flags, append-only dispositions and existing proposed changes; pending nonpayable invoice drafts | NOT RUN           | Genuine customer scope/price consent, tax review and checked change-to-issued-invoice conversion                    | No           |
 | Unified property client portal           | Synthetic allowlisted reports + existing published estimate/test agreement/invoice/schedule projections; connected hidden/off            | BLOCKED           | Exact customer identity, expiry/revocation, Storage/media and hosted portal acceptance; outside access closed       | No           |
 
-Latest local evidence:652 PASS/38 native-only skips,300 native PostgreSQL17 PASS,
+Latest local evidence:653 PASS/38 native-only skips,300 native PostgreSQL17 PASS,
 63 desktop/tablet/mobile PASS and26 frozen-artifact checks PASS. Counts overlap;
 no hosted/provider/media acceptance is inferred.
 
