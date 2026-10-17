@@ -1,3 +1,13 @@
+import { executionPackage } from '../helpers/p1-execution';
+import { acceptanceJournal } from '../../server/property/acceptance-journal';
+import { executeP1 } from '../../server/property/execution/executor';
+import {
+  assertOriginalRows,
+  p1ReadOnlyVerification,
+  type P1Reference,
+} from '../../server/property/execution/verification';
+import { rmSync } from 'node:fs';
+import { join } from 'node:path';
 import { readFileSync, readdirSync } from 'node:fs';
 import { beforeAll, afterAll, it, expect } from 'vitest';
 import { createTestDatabase } from './engine';
@@ -46,7 +56,7 @@ async function rpc(name: string, args: Record<string, unknown>) {
 beforeAll(async () => {
   await db.exec(readFileSync('tests/database/bootstrap.sql', 'utf8'));
   await db.exec(
-    'create schema supabase_migrations;create table supabase_migrations.schema_migrations(version text primary key)',
+    'create schema supabase_migrations;create table supabase_migrations.schema_migrations(version text primary key,name text,statements text[])',
   );
   for (const f of readdirSync('supabase/migrations').sort()) {
     await db.exec(readFileSync('supabase/migrations/' + f, 'utf8'));
@@ -60,6 +70,18 @@ beforeAll(async () => {
       'insert into auth.users(id,email,email_confirmed_at) values($1,$2,clock_timestamp())',
       [a.user_id, a.alias + '@example.test'],
     );
+  await db.exec(
+    'create table auth.mfa_factors(id uuid primary key,user_id uuid, factor_type text,status text);',
+  );
+  for (const a of e.actors.filter((a) => a.role === 'owner'))
+    await db.query(
+      "insert into auth.mfa_factors values($1,$2,'totp','verified')",
+      [crypto.randomUUID(), a.user_id],
+    );
+  await db.query(
+    "insert into auth.mfa_factors values($1,$2,'totp','verified')",
+    [crypto.randomUUID(), e.actors[0].user_id],
+  );
   for (let i = 0; i < 4; i++)
     await db.query(
       'insert into auth.users(id,email,email_confirmed_at) values($1,$2,clock_timestamp())',
@@ -159,12 +181,29 @@ beforeAll(async () => {
     full_digest: 'b'.repeat(32),
     original_revision: b.job_revision,
   }));
+  e.originalRows = (
+    await db.query<
+      import('../../server/property/p1-readiness').P1Evidence['originalRows'][number]
+    >(
+      "select 'public.jobs' table_name,t.id::text row_key,md5(to_jsonb(t)::text) full_digest,t.lock_revision original_revision,md5((to_jsonb(t)-'lock_revision')::text) stable_digest from public.jobs t order by id",
+    )
+  ).rows;
+  e.originalRows.push(
+    ...(
+      await db.query<
+        import('../../server/property/p1-readiness').P1Evidence['originalRows'][number]
+      >(
+        "select 'public.activity_events' table_name,t.id::text row_key,md5(to_jsonb(t)::text) full_digest,null::integer original_revision,md5(to_jsonb(t)::text) stable_digest from public.activity_events t order by id",
+      )
+    ).rows,
+  );
   await db.exec('reset role;delete from auth.sessions');
   sessions.clear();
 });
 afterAll(() => db.close());
 it('executes all75 proposed fixture steps and69 probes locally with exact57 rows, arithmetic and zero customer debt', async () => {
-  const p = prepareP1(e, 'p1-native-review', p1Now),
+  const bundle = executionPackage(e),
+    p = bundle.plan,
     sql = featureSql(p);
   const protectedTables = [
     'customers',
@@ -193,7 +232,6 @@ it('executes all75 proposed fixture steps and69 probes locally with exact57 rows
   const auditStart = Number(
     (await db.query('select count(*) n from activity_events')).rows[0].n,
   );
-  await db.exec(sql.activation);
   const domains = [
     'inspection_plans',
     'inspection_visits',
@@ -202,140 +240,184 @@ it('executes all75 proposed fixture steps and69 probes locally with exact57 rows
     'unbilled_decisions',
     'supplemental_invoice_drafts',
   ];
-  let probes = 0;
-  for (const c of p.companies) {
-    const results = new Map<string, unknown>();
-    const resolve = (v: unknown): unknown => {
-      if (v && typeof v === 'object' && 'result' in v && 'field' in v) {
-        const r = v as { result: string; field: string };
-        const x = results.get(r.result);
-        if (x === undefined) throw Error('Unresolved result');
-        return r.field === '$value'
-          ? x
-          : (x as Record<string, unknown>)[r.field];
-      }
-      if (Array.isArray(v)) return v.map(resolve);
-      if (v && typeof v === 'object')
-        return Object.fromEntries(
-          Object.entries(v).map(([k, x]) => [k, resolve(x)]),
-        );
-      return v;
-    };
-    const runProbe = async (probe: (typeof c.probes)[number]) => {
-      await db.exec('reset role');
-      const auditBefore = Number(
-        (await db.query('select count(*) n from activity_events')).rows[0].n,
-      );
-      const role =
-        probe.actor === 'owner-original-aal1'
-          ? 'owner'
-          : probe.actor === 'assigned-field-signed-out-same-jwt'
-            ? 'assigned-field'
-            : probe.actor;
-      const a = c.actorBindings[role];
-      await actor(
-        a.user_id,
-        probe.actor === 'owner-original-aal1'
-          ? 'aal1'
-          : role === 'owner'
-            ? 'aal2'
-            : 'aal1',
-      );
-      if (probe.actor === 'assigned-field-signed-out-same-jwt') {
+  const q = async (sql: string) => (await db.query(sql)).rows;
+  const reference: P1Reference = {
+    identityRoster: (await q(
+      'select id,email_confirmed_at is not null as confirmed from auth.users order by id',
+    )) as unknown as P1Reference['identityRoster'],
+    factorRoster: (await q(
+      'select id,user_id,factor_type,status from auth.mfa_factors order by id',
+    )) as unknown as P1Reference['factorRoster'],
+    history: await q(
+      'select version,name,statements from supabase_migrations.schema_migrations order by version',
+    ),
+    catalog: await q(
+      readFileSync('server/property/execution/catalog.sql', 'utf8'),
+    ),
+    columnAcl: await q(
+      readFileSync('server/property/execution/column-acl.sql', 'utf8'),
+    ),
+    defaults: await q(
+      'select pg_get_userbyid(d.defaclrole)::text owner,n.nspname schema,d.defaclobjtype kind,d.defaclacl::text acl from pg_default_acl d left join pg_namespace n on n.oid=d.defaclnamespace order by 1,2,3',
+    ),
+    schema: await q(
+      "select nspname,nspacl::text from pg_namespace where nspname in ('auth','private','public','storage') order by nspname",
+    ),
+    tableCounts: [],
+    authSettingsHash: 'local-contract-only',
+    apiSettingsHash: 'local-contract-only',
+  };
+  const property = new Set([
+    'property_features',
+    'inspection_plans',
+    'inspection_visits',
+    'inspection_reports',
+    'property_media',
+    'supplier_comparisons',
+    'unbilled_decisions',
+    'supplemental_invoice_drafts',
+    'property_report_access',
+  ]);
+  for (const r of reference.catalog as { kind: string; name: string }[])
+    if (r.kind === 'table' && !property.has(r.name.split('.')[1]))
+      reference.tableCounts.push({
+        table_name: r.name,
+        row_count: Number((await q('select count(*) n from ' + r.name))[0].n),
+      });
+  const verifier = p1ReadOnlyVerification(
+    bundle.frozen,
+    reference,
+    q,
+    async () => ({
+      authSettingsHash: 'local-contract-only',
+      apiSettingsHash: 'local-contract-only',
+    }),
+  );
+  const journal = acceptanceJournal(join(bundle.root, 'journal'), bundle.hash);
+  const allReceipts = new Map<string, Map<string, { id: string } | string>>();
+  let verificationFailure: string | null = null;
+  const execution = await executeP1({
+    frozen: bundle.frozen,
+    journal,
+    signal: new AbortController().signal,
+    now: () => p1Now,
+    actors: {
+      verifyAll: async () => {},
+      get: (org, role) => {
+        const c = p.companies.find((c) => c.organization_id === org)!;
+        const low = role === 'owner-original-aal1';
+        const a =
+          c.actorBindings[
+            low
+              ? 'owner'
+              : role === 'assigned-field-signed-out-same-jwt'
+                ? 'assigned-field'
+                : role
+          ];
+        return {
+          verify: async () => ({
+            userId: a.user_id,
+            aal: low ? 'aal1' : role === 'owner' ? 'aal2' : 'aal1',
+            sessionId: sessions.get(a.user_id) ?? crypto.randomUUID(),
+          }),
+          signOut: async () => {
+            await db.exec('reset role');
+            await db.query('delete from auth.sessions where id=$1', [
+              sessions.get(a.user_id),
+            ]);
+          },
+          rpc: async (name, args) => {
+            await actor(
+              a.user_id,
+              low ? 'aal1' : role === 'owner' ? 'aal2' : 'aal1',
+            );
+            try {
+              const value = await rpc(name, args);
+              if (role === 'owner' && name === 'property_workspace') {
+                const q = value as {
+                  comparisons: { snapshot: { quotes: SupplierQuote[] } }[];
+                };
+                expect(
+                  compareSuppliers(
+                    c.requirements,
+                    q.comparisons[0].snapshot.quotes,
+                    'USD',
+                    p1Now,
+                  ).vendors.map((v) => v.total_minor),
+                ).toEqual(c.comparison.vendors.map((v) => v.total_minor));
+              }
+              return { data: value, code: null, status: 200 };
+            } catch (e) {
+              return {
+                data: null,
+                code: (e as { code: string }).code,
+                status: (e as { code: string }).code === '23505' ? 409 : 403,
+              };
+            }
+          },
+        };
+      },
+    },
+    control: {
+      ready: async () => {},
+      check: async () => {},
+      activate: async () => {
         await db.exec('reset role');
-        await db.query('delete from auth.sessions where id=$1', [
-          sessions.get(a.user_id),
-        ]);
-        await actor(a.user_id, 'aal1');
-      }
-      if ('success' in probe.expect) {
-        const r = await rpc(
-          probe.rpc,
-          resolve(probe.args) as Record<string, unknown>,
+        await db.query("select set_config('request.jwt.claims','{}',false)");
+        await db.exec(sql.activation);
+      },
+      close: async () => {
+        await db.exec('reset role');
+        await db.query("select set_config('request.jwt.claims','{}',false)");
+        await db.exec(sql.cleanup);
+        await db.exec('delete from auth.sessions');
+        sessions.clear();
+        const active = Number(
+          (
+            await db.query(
+              'select count(*) n from private.property_features where enabled',
+            )
+          ).rows[0].n,
         );
-        for (const k of probe.expect.forbiddenKeys ?? [])
-          expect(r).not.toHaveProperty(k);
-        for (const k of probe.expect.requiredKeys ?? [])
-          expect(r).toHaveProperty(k);
-        if (probe.id === 'owner-workspace') {
-          const projection = r as {
-            reports: { snapshot: unknown }[];
-            comparisons: { snapshot: { quotes: SupplierQuote[] } }[];
-            material_reviews: { disposition: string }[];
-            supplemental_drafts: { status: string; selling_minor: number }[];
-            [key: string]: unknown;
-          };
-          for (const [key, count] of Object.entries(probe.expect.counts!))
-            expect((projection[key] as unknown[]).length).toBe(count);
-          const actual = compareSuppliers(
-            c.requirements,
-            projection.comparisons[0].snapshot.quotes,
-            'USD',
-            p1Now,
-          );
-          expect(actual.vendors.map((v) => v.total_minor)).toEqual(
-            c.comparison.vendors.map((v) => v.total_minor),
-          );
-          expect(projection.supplemental_drafts[0]).toMatchObject({
-            status: 'awaiting_customer_authorization',
-            selling_minor: c.expected.supplemental_selling_minor,
-          });
-          expect(
-            projection.material_reviews.map((d) => d.disposition).sort(),
-          ).toEqual(['absorbed', 'deferred', 'included', 'proposed']);
-          expect(
-            JSON.stringify(projection.reports.map((r) => r.snapshot)),
-          ).not.toContain('INTERNAL');
-        }
-      } else {
+        return {
+          status: active === 0 ? 'VERIFIED' : 'CONTAINMENT_REQUIRED',
+          deactivation: 'CONFIRMED',
+          sessions: 'CONFIRMED',
+          observation: null,
+        };
+      },
+    },
+    verification: {
+      before: async () => {
+        assertOriginalRows(bundle.frozen, e.originalRows, false);
         try {
-          await rpc(probe.rpc, resolve(probe.args) as Record<string, unknown>);
-          throw Error('Expected denial ' + probe.id);
+          await verifier.before();
         } catch (err) {
-          expect(probe.expect.codes, probe.id).toContain(
-            (err as { code?: string }).code,
-          );
+          verificationFailure = (err as Error).message;
+          throw err;
         }
-      }
-      await db.exec('reset role');
-      expect(
-        Number(
-          (await db.query('select count(*) n from activity_events')).rows[0].n,
-        ),
-      ).toBe(auditBefore);
-      probes++;
-    };
-    for (const step of c.steps) {
-      const a = c.actorBindings[step.actor];
-      await actor(a.user_id, step.actor === 'owner' ? 'aal2' : 'aal1');
-      results.set(
-        step.id,
-        await rpc(step.rpc, resolve(step.args) as Record<string, unknown>),
-      );
-      for (const probe of c.probes.filter((x) => x.after === step.id))
-        await runProbe(probe);
-    }
-    for (const probe of c.probes.filter(
-      (x) => x.after === 'all-positive-steps',
-    ))
-      await runProbe(probe);
-    await db.exec('reset role');
-    expect(
-      (
-        await db.query('select lock_revision from jobs where id=$1', [
-          c.steps[0].args.p_job,
-        ])
-      ).rows[0].lock_revision,
-    ).toBe(c.expectedJobRevision);
-    expect(
-      (
-        await db.query(
-          'select selling_minor from private.supplemental_invoice_drafts where organization_id=$1',
-          [c.organization_id],
-        )
-      ).rows[0].selling_minor,
-    ).toBe(c.expected.supplemental_selling_minor);
+      },
+      after: async (receipts) => {
+        for (const [org, ids] of receipts) allReceipts.set(org, new Map(ids));
+        // Full reference verifier checks all captured original rows, exact budgets and audit/financial provenance.
+        try {
+          await verifier.after(receipts);
+        } catch (err) {
+          verificationFailure = (err as Error).message;
+          throw err;
+        }
+      },
+    },
+  });
+  try {
+    expect(execution.status, verificationFailure ?? undefined).toBe('VERIFIED');
+    expect(execution.fixtureSteps).toBe(75);
+    expect(execution.assertionProbes).toBe(69);
+    expect(allReceipts.size).toBe(3);
+  } finally {
+    rmSync(bundle.root, { recursive: true, force: true });
   }
+  const probes = execution.assertionProbes;
   expect(probes).toBe(69);
   await db.exec('reset role');
   expect(await fingerprints()).toEqual(originals);

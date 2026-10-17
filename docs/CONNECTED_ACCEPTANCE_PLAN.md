@@ -1,5 +1,12 @@
 # Connected three-company acceptance · October 16, 2026
 
+Latest implementation checkpoint: [P1 executor readiness](PROPERTY_P1_EXECUTOR_READINESS.md).
+The executor and independent cleanup are now locally implemented/rehearsed; the older
+missing-executor/preparation status below is historical. Frozen scope and existing
+owner approval are unchanged. No hosted activation or Auth sign-in occurred;
+0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN. Fresh genuine MFA and action-time preflight remain
+required; P2/media/providers and Netlify stay separate.
+
 Current execution checkpoint: owner authorization for the frozen P1 operation exists,
 but mandatory preflight STOPPED before any hosted write or sign-in. See
 [PROPERTY_P1_EXECUTION.md](PROPERTY_P1_EXECUTION.md). The connected executor and

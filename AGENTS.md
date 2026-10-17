@@ -341,3 +341,21 @@ Do not request duplicate approval of unchanged scope; first implement/review exa
 package executor,durable journal recovery and independent bounded cleanup,then
 refresh mandatory preflight and owner-assisted MFA. Never run old Action B fixtures
 or overwrite the frozen package to bypass prerequisites. Release1.0 stays closed.
+
+## P1 executor implementation continuity
+
+Read docs/PROPERTY_P1_EXECUTOR_READINESS.md and its JSON before the older missing-
+executor checkpoint. New server/property/execution contains the genuine caller-bound
+executor,composed private handoff,read verifier and independent cleanup process.
+Offline property:p1-inspect has no execute/login option. No hosted Auth/MFA/feature/
+fixture/grant action occurred;hosted0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN unchanged.
+Frozen operation/four artifacts and all13 SQL bytes remain immutable. Never rewrite
+historical hostedExecutor:false metadata or replay old Action B fixtures.
+Future action-time gates:exact fresh reference/713-row preflight,owner-assisted
+existing-factor MFA,cleanup-only pending AAL1 custody before TOTP,same-session AAL2,
+15 exact live staff sessions,independent cleanup and supervised60-second renewals.
+Worker heartbeat5seconds;wall/monotonic cleanup starts minute29;no native featureTTL.
+UNKNOWN or failed reconciliation stops;read-only journal recovery never replays.
+No automatic second cleanup attempt. Human recovery remains mandatory for host/
+database/Auth outage. Existing unchanged P1 approval persists;current implementation
+stops before activation. P2/media/providers/Netlify/production/outside access remain off.

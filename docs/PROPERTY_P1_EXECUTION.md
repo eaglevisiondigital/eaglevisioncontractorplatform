@@ -1,5 +1,12 @@
 # P1 execution: stopped at mandatory preflight
 
+Latest implementation checkpoint: [P1 executor readiness](PROPERTY_P1_EXECUTOR_READINESS.md).
+The executor and independent cleanup are now locally implemented/rehearsed; the older
+missing-executor/preparation status below is historical. Frozen scope and existing
+owner approval are unchanged. No hosted activation or Auth sign-in occurred;
+0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN. Fresh genuine MFA and action-time preflight remain
+required; P2/media/providers and Netlify stay separate.
+
 October 17, 2026. Reviewed commit `dbf3f65`. **Owner execution authorization exists;
 execution is NO-GO until the mandatory operational prerequisites pass.** No hosted
 write, sign-in, feature activation or acceptance RPC was performed.

@@ -1,5 +1,23 @@
 # Production Release 1.0 acceptance checklist
 
+## Latest: P1 executor and independent cleanup locally implemented
+
+Read [PROPERTY_P1_EXECUTOR_READINESS.md](PROPERTY_P1_EXECUTOR_READINESS.md) and
+its separate JSON readiness record. Caller-bound Supabase executor, exact75/69
+scheduler,durable no-replay/UNKNOWN journal,independent cleanup process,pending-owner
+custody,wall/monotonic29-minute cutoff and60-second human supervision are implemented.
+Read-only verification guards713 original composite keys,exact row/audit/financial
+provenance and unchanged Auth/factor rosters. The previous missing-executor checkpoint
+is historical;actual hosted readiness still needs fresh operator preflight and MFA.
+
+Frozen01b96075… operation/four artifacts and all13 SQL bytes are unchanged. No hosted
+sign-in,MFA request,feature/fixture write,grant,mapping,lease,provider,Netlify or
+production action occurred. Hosted0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN remains accurate.
+Use the new composed local harness and offline inspector;never the old Action B
+fixture runner. Existing unchanged-scope approval persists;no duplicate approval.
+Final local/native/browser counts and limitations are in the readiness record.
+Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft. Prior checkpoints are historical.
+
 ## Latest: P1 authorized; mandatory preflight stopped before activation
 
 Read [PROPERTY_P1_EXECUTION.md](PROPERTY_P1_EXECUTION.md) and
