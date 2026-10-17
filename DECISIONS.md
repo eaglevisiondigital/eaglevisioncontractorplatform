@@ -1,5 +1,21 @@
 # Engineering decisions
 
+## 2026-10-16 · Property migration execution and connected-test boundary
+
+1. Owner approved exact d9836b4 SQL c345bdf1…/bundle0fadce83…;after refreshed drift,
+   hashes and one-file dry run,applied20261017005322 once with skip-vault,no seeds/roles.
+   All11 SQL files now immutable;record application without replay authority.
+2. Verify exact native/hosted500 fingerprints,17 indexed FKs,8 empty/RLS tables,
+   restricted8 functions and unchanged79 business-table fingerprints/69 column ACLs.
+   Schema installation enables no feature or external workflow.
+3. Record the new duplicate-index advisor warning. Preserve the approved bytes;
+   no ad-hoc DROP. Review index dependencies in a separate forward cleanup proposal.
+4. Prepare72 connected scenarios without sessions,fixtures,feature rows or grants.
+   Review caller-preserving wrappers and report-only customer authorization before
+   activation;existing release grants can enable broader commands and are not implied.
+5. Update exact applied-record integrity tests and all continuity. Full evidence/
+   limits:PROPERTY_MIGRATION_EXECUTION.md. Release1.0 stays closed;PR#1 draft.
+
 ## 2026-10-16 · Property hosted preflight recovery
 
 1. Replace the obsolete root-OpenAPI/exact-message probe with an ordinary zero-limit

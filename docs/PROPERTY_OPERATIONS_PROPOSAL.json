@@ -1,5 +1,5 @@
 {
-  "status": "LOCAL_PROPOSAL_UNAPPLIED",
+  "status": "DEVELOPMENT_APPLIED_FEATURES_DISABLED",
   "hostedExecutionAuthorized": false,
   "publicRpcEnabled": false,
   "file": "server/property/schema.proposed.sql",
@@ -25,7 +25,7 @@
     "property_workspace",
     "property_portal"
   ],
-  "activation": "Empty/default-off private schema only. No public wrappers, feature rows, worker grants or Storage changes. Exact target/action execution approval required.",
+  "activation": "Applied once to approved development under exact owner authorization. All eight tables empty/default off. No replay authority, public wrappers, feature rows, worker grants or Storage changes.",
   "originalReviewedSha256": "f3458c4551a738c88bc65d8ca20f847cd7703d02d91b791c03b87ae3a9962d45",
   "formalMigration": "20261017005322_property_operations.sql",
   "migrationReview": "docs/PROPERTY_MIGRATION_REVIEW.json"

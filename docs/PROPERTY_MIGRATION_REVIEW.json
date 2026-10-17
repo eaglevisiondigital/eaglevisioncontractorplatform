@@ -1,5 +1,5 @@
 {
-  "status": "PENDING_REVIEW_NOT_AUTHORIZED",
+  "status": "DEVELOPMENT_APPLIED_PROPERTY_DISABLED",
   "scope": "development-schema-only-default-disabled",
   "hostedExecutionAuthorized": false,
   "activationAuthorized": false,
@@ -63,5 +63,20 @@
   "featureRows": 0,
   "workloadGrants": 0,
   "storageChanges": 0,
-  "report": "docs/PROPERTY_MIGRATION_SECURITY_REVIEW.md"
+  "report": "docs/PROPERTY_MIGRATION_SECURITY_REVIEW.md",
+  "developmentExecution": {
+    "result": "APPLIED_VERIFIED",
+    "scope": "development-schema-only",
+    "reviewedCommit": "d9836b4",
+    "migrationVersion": "20261017005322",
+    "fileSha256": "c345bdf178c9339dba7ba2707c74233bcfae9a2d2b59abf148f4b7ffff35780c",
+    "bundleSha256": "0fadce830aa3c08ecfd9b715f282272687eee845a0fc6ce635fad3a5a7190fe9",
+    "featuresEnabled": false,
+    "mediaEnabled": false,
+    "providersEnabled": false,
+    "newPrivateTables": 8,
+    "newPrivateFunctions": 8,
+    "originalHistoryEntriesPreserved": 10,
+    "report": "docs/PROPERTY_MIGRATION_EXECUTION.md"
+  }
 }

@@ -1,5 +1,14 @@
 # Property migration · hosted preflight recovery
 
+## Superseding execution checkpoint
+
+The owner-approved exact20261017005322 migration is now APPLIED ONCE / VERIFIED.
+Read [PROPERTY_MIGRATION_EXECUTION.md](PROPERTY_MIGRATION_EXECUTION.md) and
+[PROPERTY_CONNECTED_TEST_PLAN.md](PROPERTY_CONNECTED_TEST_PLAN.md). Hosted history11;
+all8 tables empty/default off. Earlier pending/execution-unauthorized statuses below
+are historical. No replay,feature/media/provider or customer-workflow authority
+is granted by installation. Connected acceptance is prepared,not executed.
+
 October 16, 2026, America/Chicago. Review base `77784b3`, draft PR #1.
 **Technical GO for separate development migration approval; execution remains
 UNAUTHORIZED. Release 1.0 NOT READY / NOT AUTHORIZED for outside users.**

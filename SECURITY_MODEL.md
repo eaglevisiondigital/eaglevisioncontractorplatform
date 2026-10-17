@@ -1,5 +1,18 @@
 # Security model · Phase 2
 
+## Latest: property migration installed / no activation
+
+Read docs/PROPERTY_MIGRATION_EXECUTION.md. Exact owner-approved schema is installed:
+8 empty private tables/RLS,17 validated indexed tenant FKs,8 fixed-path functions,
+zero client/service table grants and no public wrapper/feature row.500 catalog
+fingerprints match tested native SQL;79 prior business tables/69 column grants are
+unchanged. Auth/API settings and private-schema exclusion remain verified.
+Security0 WARN/ERROR,36 intentional INFO;new duplicate-index performance WARN
+requires separate dependency-aware review,not an unapproved DROP. All media503 and
+financial/customer/provider gates stay off. Genuine property Auth/role acceptance
+is NOT RUN;72-case plan is prepared with no credentials/grants/fixtures activated.
+Preserve all11 applied SQL files and original manifests;no replay/activation permit.
+
 ## Latest: property preflight boundaries verified / no activation
 
 See docs/PROPERTY_PREFLIGHT_RECOVERY.md. Corrected table-specific probes confirm

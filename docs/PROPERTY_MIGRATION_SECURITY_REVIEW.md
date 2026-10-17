@@ -1,5 +1,14 @@
 # Property operations schema and connected authorization review
 
+## Superseding execution checkpoint
+
+The owner-approved exact20261017005322 migration is now APPLIED ONCE / VERIFIED.
+Read [PROPERTY_MIGRATION_EXECUTION.md](PROPERTY_MIGRATION_EXECUTION.md) and
+[PROPERTY_CONNECTED_TEST_PLAN.md](PROPERTY_CONNECTED_TEST_PLAN.md). Hosted history11;
+all8 tables empty/default off. Earlier pending/execution-unauthorized statuses below
+are historical. No replay,feature/media/provider or customer-workflow authority
+is granted by installation. Connected acceptance is prepared,not executed.
+
 ## Superseding hosted preflight recovery
 
 The CLI/API blockers recorded below are historical and now resolved without any

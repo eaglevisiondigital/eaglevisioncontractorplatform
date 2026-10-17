@@ -1,5 +1,31 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: property migration APPLIED / all features disabled
+
+Owner-authorized d9836b4 exact migration20261017005322/hash c345bdf1… and bundle
+0fadce83… applied once:CLI2.121.0,exit0,8.159seconds,no retry,skip-vault,no seeds/roles.
+Refreshed identity/history/hash/catalog/default grants and final one-file dry run
+passed. Read [PROPERTY_MIGRATION_EXECUTION.md](docs/PROPERTY_MIGRATION_EXECUTION.md).
+
+Hosted history11;original10 untouched;50 stored statements match exact SQL tokens.
+All8 private tables empty/RLS/default deny;8 fixed-path functions;17 indexed tenant
+FKs;500 catalog fingerprints equal tested native schema. All79 prior business-table
+count/content fingerprints and69 column grants unchanged. Public generated types
+unchanged;22 identities/four factors/zero sessions/platform or release grants/provider
+workloads/public buckets. Saved Auth/API settings/private exclusion remain verified.
+
+Security0 WARN/ERROR,36 INFO. Performance5 WARN/93 INFO includes one new duplicate
+service_locations index warning; exact approved SQL includes both indexes. No drop
+or cleanup performed; any forward fix needs separate review/approval.
+
+Local check672 PASS/43 native-only skips;native PostgreSQL17:318 PASS;browser63 PASS;
+format and26 frozen checks PASS. Counts overlap;details are in the execution report. Offline checkers now recognize
+only the exact applied dormant record;no replay/activation authority. New connected
+plan24 cases/company,72 planned,zero executed. Features/public wrappers/adapters,
+customer report grants,media and genuine supplemental billing remain blocked/off.
+NMI/Authorize.Net off;frozen deployment untouched;Release1.0 NOT READY / NOT AUTHORIZED;
+PR#1 draft. Preserve all11 SQL bytes;never replay/reset/repair.
+
 ## Latest: property hosted preflight recovered · separate approval required
 
 Read [PROPERTY_PREFLIGHT_RECOVERY.md](docs/PROPERTY_PREFLIGHT_RECOVERY.md) and

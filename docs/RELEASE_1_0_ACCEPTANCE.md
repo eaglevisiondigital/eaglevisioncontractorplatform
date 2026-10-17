@@ -1,5 +1,24 @@
 # Production Release 1.0 acceptance checklist
 
+## Latest: property schema installed / workflows remain off
+
+Read PROPERTY_MIGRATION_EXECUTION.md. Exact one-file development migration applied
+once;history11/original10 unchanged;8 empty private/RLS tables and8 fixed-path
+functions match500 native catalog fingerprints. Prior79 business tables,69 column
+ACLs and Auth/API settings unchanged. Security0 WARN/ERROR,36 INFO;performance5 WARN
+includes one duplicate-index finding requiring separate review,no cleanup executed.
+
+| Gate                                   | Result                                                       | Outstanding                                                                        |
+| -------------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
+| Dormant property schema                | APPLIED/VERIFIED;exact approved hashes;17 indexed tenant FKs | No feature activation or replay authority                                          |
+| Local/native regression                | 672 local PASS/43 skips;318 native PASS,overlapping counts   | Browser/format results in execution report;independent connected acceptance        |
+| Connected property workflows           | NOT RUN;72 planned cases prepared                            | Reviewed wrappers/repository,feature/fixture scope and owner-assisted MFA          |
+| Customer-visible report access         | BLOCKED                                                      | Narrow report-only authority review;no broader internal-release grants implied     |
+| Media/supplemental execution/providers | Disabled                                                     | Scanning/private Storage/processing,real consent/conversion and separate approvals |
+
+No outside access,production change,Netlify operation or PR merge. Release1.0
+NOT READY / NOT AUTHORIZED. Earlier pending-schema entries below are historical.
+
 ## Latest property preflight recovery · technical GO / execution unauthorized
 
 PROPERTY_PREFLIGHT_RECOVERY.md supersedes the blocked preflight rows below.

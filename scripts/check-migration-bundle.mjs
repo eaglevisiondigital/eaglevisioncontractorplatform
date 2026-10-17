@@ -64,8 +64,10 @@ const historical = migrations.slice(
 );
 const hash = (v) =>
   createHash('sha256').update(JSON.stringify(v)).digest('hex');
+const propertyApplied =
+  property.status === 'DEVELOPMENT_APPLIED_PROPERTY_DISABLED';
 if (
-  property.status !== 'PENDING_REVIEW_NOT_AUTHORIZED' ||
+  (!propertyApplied && property.status !== 'PENDING_REVIEW_NOT_AUTHORIZED') ||
   property.hostedExecutionAuthorized !== false ||
   property.activationAuthorized !== false ||
   property.scope !== 'development-schema-only-default-disabled' ||
@@ -87,6 +89,27 @@ if (
   JSON.stringify(property.publicWrappers) !== '[]'
 )
   throw Error('Unreviewed property migration drift or activation metadata');
+if (
+  propertyApplied &&
+  (property.developmentExecution?.result !== 'APPLIED_VERIFIED' ||
+    property.developmentExecution?.scope !== 'development-schema-only' ||
+    property.developmentExecution?.migrationVersion !== '20261017005322' ||
+    property.developmentExecution?.reviewedCommit !== 'd9836b4' ||
+    property.developmentExecution?.featuresEnabled !== false ||
+    property.developmentExecution?.mediaEnabled !== false ||
+    property.developmentExecution?.providersEnabled !== false ||
+    property.developmentExecution?.fileSha256 !==
+      property.migrations[0].sha256 ||
+    property.developmentExecution?.bundleSha256 !==
+      property.pendingBundleSha256 ||
+    property.migrations[0].sha256 !==
+      'c345bdf178c9339dba7ba2707c74233bcfae9a2d2b59abf148f4b7ffff35780c' ||
+    property.pendingBundleSha256 !==
+      '0fadce830aa3c08ecfd9b715f282272687eee845a0fc6ce635fad3a5a7190fe9')
+)
+  throw Error(
+    'Property execution record differs from approved bytes or dormant scope',
+  );
 console.log(
-  'One separately inventoried property migration is UNAPPLIED / NOT AUTHORIZED; ten historical files preserved.',
+  `One separately inventoried property migration is ${propertyApplied ? 'recorded DEVELOPMENT APPLIED / FEATURES DISABLED' : 'UNAPPLIED / NOT AUTHORIZED'}; ten historical files preserved. Offline integrity is not replay or activation authority.`,
 );

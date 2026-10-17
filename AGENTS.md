@@ -292,3 +292,19 @@ Property preflight recovery supersedes the preceding NO-GO checkpoint:
   corrected pending SQL/hash remain unchanged. Technical GO permits requesting
   separate exact execution approval only. Migration UNAPPLIED / NOT AUTHORIZED;
   no features, public wrappers, media, providers, deployment or outside access.
+
+Property migration execution supersedes the preceding unapplied checkpoint:
+
+- Read docs/PROPERTY_MIGRATION_EXECUTION.md before earlier review/preflight notes.
+  Owner-approved c345bdf1…/0fadce83… applied20261017005322 once;history now11.
+  Preserve all11 SQL files and all original manifests;never replay/reset/repair.
+  - Eight property tables empty/private/RLS;3 checked entry points remain unexposed/off.
+    No feature row,customer grant,public wrapper,media or provider was activated.
+- Offline checkers accept only the exact applied dormant record,not activation or
+  replay. Keep the six negative applied-record integrity tests.
+- New duplicate-index performance warning on service_locations needs separate
+  dependency-aware forward review;no ad-hoc DROP or applied SQL edits.
+- PROPERTY_CONNECTED_TEST_PLAN.md/CASES.json prepare72 genuine cases,zero executed.
+  Review public invoker wrappers/connected repository and report-only authorization
+  before exact feature/fixture/grant approvals;never silently enable broader release
+  customer commands. Keep media503,financial execution and outside access disabled.

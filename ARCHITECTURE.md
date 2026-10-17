@@ -1,5 +1,16 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Latest: dormant property schema installed
+
+The owner-authorized20261017005322 migration is applied once;hosted history now11.
+All8 new private tables are empty;3 private authenticated entry points remain
+unexposed/default-off,with5 helpers. No public wrappers,feature rows or connected
+repository activation. Existing CRM/property/job/expense/estimate sources remain
+unchanged. See docs/PROPERTY_MIGRATION_EXECUTION.md and PROPERTY_CONNECTED_TEST_PLAN.md.
+The proposed72-case connected plan requires a separately reviewed caller-preserving
+adapter and narrowly scoped fixture/feature approval. Customer report authorization
+must not implicitly unlock unrelated internal-release financial commands.
+
 ## Latest: property preflight recovery
 
 PROPERTY_PREFLIGHT_RECOVERY.md supersedes the earlier CLI/API blockers. Exact
