@@ -718,3 +718,7 @@ Prepare three narrow caller-preserving RPC adapters and invoker wrappers, withou
 ## 2026-10-17 · P0 final development preflight
 
 Exact two-file dry run now passes with no seeds/roles and no hosted changes. Keep all eleven historical migrations and pending SQL bytes unchanged. A successful dry run is not execution authority. Proposed cleanup is bounded,while readiness DDL has normal lock waits;require a quiet supervised window. Two migrations may partially complete:inspect actual state and seek exact recovery approval,never automatically retry/reset/repair. Read docs/PROPERTY_P0_FINAL_PREFLIGHT.md for hashes,operation digest and post-install/containment.
+
+## 2026-10-17 · authorized Netlify recovery stopped on422
+
+Owner-approved same-deployment nine-file-first recovery was attempted once. First frozen-file PUT returned422/no records matched,so stop before all remaining uploads and manifest finalization. Preserve original deployment/package/protection and distinguish configured Private from unverified runtime perimeter. No new Gmail provider diagnosis independently seen;owner-reported instructions recorded as such. Prepare but do not send a diagnosis-only same-ticket follow-up. Any changed order/retry/provider repair requires exact new authorization. See docs/ACTION_D_RECOVERY_EXECUTION.md.

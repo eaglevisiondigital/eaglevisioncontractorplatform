@@ -637,3 +637,7 @@ The proposed report path requires a verified identity, active exact portal mappi
 ## P0 final preflight verification
 
 Fresh before/after reads show no application schema/RLS/ACL/default/data/Auth/API drift. Exact two-file CLI dry run passes;zero security WARN/ERROR and the existing five performance WARN remain. Native68 authorization/index lock cases pass. Customer mappings/leases/features remain absent;session/current-role guards and private-schema exclusion remain mandatory. Neither migration nor activation is authorized. See docs/PROPERTY_P0_FINAL_PREFLIGHT.md.
+
+## Action D recovery · perimeter still blocked
+
+Dashboard verifies Private production/previews;failed first original-file upload422 caused immediate stop. No registered static files/manifest update/new deployment. Four Function registrations do not establish protected invocation/runtime values. No anonymous or authenticated application acceptance was performed behind the unmet ready-state gate. Preserve all tenant/Auth/off controls;no unapproved containment or retry. See docs/ACTION_D_RECOVERY_EXECUTION.md.

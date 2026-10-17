@@ -1,5 +1,10 @@
 # Propel Contractor Suite · Netlify diagnosis request
 
+Latest: [authorized recovery execution](ACTION_D_RECOVERY_EXECUTION.md) stopped
+at the first static-file PUT422. No confirmed uploads or manifest retry;same
+deployment remains uploading. No later repair/retry authority is implied. The
+following sections preserve earlier evidence.
+
 **SUBMITTED / RECEIPT ACKNOWLEDGED / AGENT DIAGNOSIS PENDING.** October 16, 2026.
 The owner separately authorized submission of the redacted packet described in
 ACTION_D_RECOVERY.md. This approval permits diagnosis only; no deployment repair.

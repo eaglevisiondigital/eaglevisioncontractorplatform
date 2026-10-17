@@ -1,5 +1,10 @@
 # Propel Contractor Suite · Action D execution checkpoint
 
+Latest: [authorized recovery execution](ACTION_D_RECOVERY_EXECUTION.md) stopped
+at the first static-file PUT422. No confirmed uploads or manifest retry;same
+deployment remains uploading. No later repair/retry authority is implied. The
+following sections preserve earlier evidence.
+
 **AUTHORIZED ATTEMPT / PROVIDER BLOCKED / NOT READY.** October 16, 2026.
 The owner approved the exact frozen application and target-bound manual draft
 operation from ACTION_D_REVIEW.md. One deploy record was created; do not create a

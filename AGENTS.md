@@ -316,3 +316,7 @@ Read docs/PROPERTY_P0_SECURITY_REVIEW.md and PROPERTY_P0_MIGRATION_REVIEW.json. 
 ## P0 final preflight continuity
 
 Read docs/PROPERTY_P0_FINAL_PREFLIGHT.md and PROPERTY_P0_PREFLIGHT_RESULT.json. Exact two-file dry run PASS (2.121.0,exit0,no seeds/roles,skip-vault);hosted remains11 and pending SQL is unchanged. Technical GO is not execution permission. Refresh exact target/history/catalog/ACL/Auth/API/index gates before any separately authorized apply. Two migrations are not bundle-atomic;on partial success stop and request exact recovery approval,no automatic retry/history repair or unapproved containment writes. Features/mappings/leases/fixtures/providers/media/Netlify remain off/unchanged;72 hosted cases NOT RUN.
+
+## Action D recovery execution continuity
+
+Read docs/ACTION_D_RECOVERY_EXECUTION.md before historical recovery notes. New owner-approved same-ID nine-static-file-first repair STOPPED at the first file PUT422/no records matched. Zero confirmed uploads/registry entries,zero manifest attempts/function reuploads/new deploys/publications;existing deployment still uploading. Do not rerun this or earlier helpers,reverse order,repair/requeue/change settings without separate exact approval. Private follow-up packet is prepared NOT SENT;monitor remains read-only. Private configured protection is not passing runtime perimeter evidence. P0 two-file preflight PASS remains unapplied/unauthorized;hosted history11.

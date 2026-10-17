@@ -1,5 +1,22 @@
 # Production Release 1.0 acceptance checklist
 
+## Latest: Action D recovery STOPPED · first file PUT422
+
+Read [ACTION_D_RECOVERY_EXECUTION.md](ACTION_D_RECOVERY_EXECUTION.md).
+Owner-approved same-ID nine-file upload repair stopped on the first PUT:HTTP422,
+"no records matched". One file attempted,zero uploaded/registered;zero manifest
+PUTs/function reuploads/new deploys/publications. Independent post-error read:
+same single deployment uploading,empty registry,primary unpublished,Git unlinked,
+aliases/build settings unchanged;site/team environment inventories remain empty.
+Dashboard production/previews remain Private;four functions remain registered,
+not invoked. All14 frozen artifacts/archive/manifest/logo and26 offline checks pass.
+
+Perimeter/protected application tests BLOCKED/NOT RUN;runtime environment remains
+UNVERIFIED. No new Supabase/session/provider action. Redacted same-ticket follow-up
+prepared privately,NOT SENT;request provider diagnosis and exact revised order.
+Do not retry/replay/repair without separate approval. Release1.0 NOT READY / NOT
+AUTHORIZED;PR#1 draft. P0 dry run passed separately;hosted history remains11.
+
 ## Latest: P0 two-migration preflight PASS · execution NOT AUTHORIZED
 
 Read [PROPERTY_P0_FINAL_PREFLIGHT.md](PROPERTY_P0_FINAL_PREFLIGHT.md) and

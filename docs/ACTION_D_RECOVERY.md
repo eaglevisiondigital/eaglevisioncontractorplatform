@@ -1,5 +1,10 @@
 # Propel Contractor Suite · Action D read-only recovery review
 
+Latest: [authorized recovery execution](ACTION_D_RECOVERY_EXECUTION.md) stopped
+at the first static-file PUT422. No confirmed uploads or manifest retry;same
+deployment remains uploading. No later repair/retry authority is implied. The
+following sections preserve earlier evidence.
+
 **BLOCKED / NO RECOVERY WRITE AUTHORIZED.** October 16, 2026.
 Read this after ACTION_D_EXECUTION.md. The original frozen package and target-bound
 operation remain unchanged. This investigation made no hosted writes, replacement
