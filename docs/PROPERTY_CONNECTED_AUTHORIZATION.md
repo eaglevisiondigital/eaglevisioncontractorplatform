@@ -1,5 +1,13 @@
 # Property operations · connected authorization design
 
+## Superseding preflight checkpoint
+
+Read PROPERTY_PREFLIGHT_RECOVERY.md: CLI dry run and current public-only API profile
+checks now PASS; root401 was unsuitable for schema verification. No migration,
+wrapper or feature is activated. The connected design below remains pending, and
+real property Auth/role/media acceptance is still blocked. Technical GO only for
+separate exact dormant-schema execution approval.
+
 Current state: local synthetic interfaces only; connected navigation and repository
 initialization reject these modules. The pending migration installs no public RPC,
 HTTP adapter, Storage path or enabled feature row. Installation alone cannot enable

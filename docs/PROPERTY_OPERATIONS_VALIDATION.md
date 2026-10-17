@@ -1,5 +1,13 @@
 # Property operations and smart procurement · local implementation
 
+## Latest: recovered hosted preflight
+
+PROPERTY_PREFLIGHT_RECOVERY.md records successful exact one-file CLI dry run and
+actual public/legacy-key table-profile checks, with unchanged ten-migration schema,
+Auth/API configuration and corrected SQL/hash. Earlier CLI/API blockers below are
+historical. Technical GO for separate owner schema approval; no hosted migration,
+feature/media/provider activation or real connected property acceptance occurred.
+
 ## Superseding schema-review checkpoint
 
 The original implementation snapshot below is historical. The original f345 SQL

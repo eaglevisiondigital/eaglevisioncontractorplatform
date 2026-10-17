@@ -1,5 +1,17 @@
 # Property operations schema and connected authorization review
 
+## Superseding hosted preflight recovery
+
+The CLI/API blockers recorded below are historical and now resolved without any
+key/configuration/schema change. Read [PROPERTY_PREFLIGHT_RECOVERY.md](PROPERTY_PREFLIGHT_RECOVERY.md)
+and PROPERTY_PREFLIGHT_RESULT.json. Exact one-file/no-seed/no-role dry run PASS;
+both existing keys and public-only API exposure verified using table-specific
+requests. Ten hosted migrations/catalog/grants remain unchanged. Corrected SQL and
+all hashes remain exact. **Current recommendation: technical GO for separate
+owner development execution approval; migration still UNAPPLIED / NOT AUTHORIZED.**
+All security corrections, media/connected/provider gates and launch restrictions
+below remain in force. The original review is preserved as a dated checkpoint.
+
 Status: **corrected dormant schema locally verified; hosted execution NO-GO**.
 Review base: `0a35ec8`. Release 1.0 remains **NOT READY / NOT AUTHORIZED**.
 No hosted write, grant, deployment, provider call or customer access occurred.

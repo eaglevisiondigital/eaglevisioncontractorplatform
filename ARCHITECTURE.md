@@ -1,5 +1,16 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Latest: property preflight recovery
+
+PROPERTY_PREFLIGHT_RECOVERY.md supersedes the earlier CLI/API blockers. Exact
+one-file/no-seed/no-role dry run now passes; actual table-specific API probes verify
+both existing public key formats and exclusion of private schema. Root OpenAPI401
+is a provider restriction, not a normal Data API key test. Application/schema bytes
+and ten installed migrations remain unchanged. Only technical review status moves
+to GO for separate owner execution approval; all connected/feature/media gates remain
+off. Use the existing approved Keychain process with in-memory credential scope,
+never a new secret/API privilege workaround.
+
 ## Property schema review and connected boundary · latest
 
 The corrected property proposal now has a byte-identical pending forward migration,

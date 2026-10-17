@@ -1,5 +1,20 @@
 # Engineering decisions
 
+## 2026-10-16 · Property hosted preflight recovery
+
+1. Replace the obsolete root-OpenAPI/exact-message probe with an ordinary zero-limit
+   table request: expected anon permission denial and private-profile PGRST106.
+   Both existing public key formats are usable; do not rotate or widen grants.
+2. Isolate the CLI stall to automatic credential discovery via read-only whoami.
+   Existing approved Keychain retrieval plus child-memory credential scope succeeds;
+   no persistent secret export, login reset or credential generation is needed.
+3. Successful target-bound one-file dry run and unchanged history/catalog/hashes
+   support technical GO for separate owner approval. Preserve UNAPPLIED / NOT
+   AUTHORIZED status until exact execution is expressly approved. No activation.
+4. Record genuine results and limits in PROPERTY_PREFLIGHT_RECOVERY.md and
+   PROPERTY_PREFLIGHT_RESULT.json; all prior property security corrections and
+   ten historical migrations remain byte-for-byte unchanged. Release1.0 stays closed.
+
 ## 2026-10-16 · Property SQL security review and dormant migration
 
 1. Reject the original f345 proposal after nine independent negative reproductions;

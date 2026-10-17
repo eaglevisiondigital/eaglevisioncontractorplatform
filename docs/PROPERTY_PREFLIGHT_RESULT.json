@@ -1,0 +1,33 @@
+{
+  "status": "TECHNICAL_GO_SEPARATE_EXECUTION_APPROVAL_REQUIRED",
+  "reviewBase": "77784b3",
+  "hostedExecutionAuthorized": false,
+  "activationAuthorized": false,
+  "migration": {
+    "file": "20261017005322_property_operations.sql",
+    "sha256": "c345bdf178c9339dba7ba2707c74233bcfae9a2d2b59abf148f4b7ffff35780c"
+  },
+  "pendingBundleSha256": "0fadce830aa3c08ecfd9b715f282272687eee845a0fc6ce635fad3a5a7190fe9",
+  "fullProposedBundleSha256": "15a2b9c67766564e91efe7cf3347a7138a10b1a722a5d295ce1f7f3613a2f17e",
+  "cliVersion": "2.121.0",
+  "dryRun": {
+    "passed": true,
+    "exitCode": 0,
+    "durationMs": 3944,
+    "migrations": ["20261017005322_property_operations.sql"],
+    "seeds": [],
+    "roles": [],
+    "skipVault": true
+  },
+  "historyCount": 10,
+  "catalogFingerprintCount": 468,
+  "columnAclCount": 69,
+  "drift": false,
+  "postDryRunHistoryAndCatalogUnchanged": true,
+  "publicApiSchemaOnly": true,
+  "existingPublishableAndLegacyKeysVerified": true,
+  "authSettingsPreserved": true,
+  "keyChanges": 0,
+  "migrationApplied": false,
+  "report": "docs/PROPERTY_PREFLIGHT_RECOVERY.md"
+}

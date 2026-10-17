@@ -1,5 +1,29 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: property hosted preflight recovered · separate approval required
+
+Read [PROPERTY_PREFLIGHT_RECOVERY.md](docs/PROPERTY_PREFLIGHT_RECOVERY.md) and
+PROPERTY_PREFLIGHT_RESULT.json. The unchanged pending20261017005322 SQL/hash/bundle
+now has a successful exact-target CLI2.121.0 dry run:exit0,3.944seconds, exactly
+one migration, no seeds/roles, skip-vault. Existing approved Keychain credential
+was used only in child-process memory. Automatic CLI credential discovery stalls
+on read-only whoami; the in-memory credential path works. Underlying cause remains
+unverified; no reset, credential creation or key/settings repair was performed.
+
+Both existing public key formats work on Auth and table-specific PostgREST probes.
+Earlier root401s targeted the restricted OpenAPI endpoint and were not proof of
+invalid keys. Public organization SELECT is correctly denied42501; private profile
+is rejected406/PGRST106 with only public exposed. Saved Auth/API hashes match;
+public signup/anonymous sign-in remain off, MFA/redirects/leak protection preserved.
+
+Fresh/post-dry-run history10 and468 catalog fingerprints match;69 column ACLs match.
+Property schema absent,22 identities/four factors/zero sessions/grants/workloads;
+security0 WARN/ERROR,28 INFO and existing performance4 WARN/79 INFO unchanged.
+Technical GO for separately approved dormant schema execution, not execution
+permission. Exact file c345bdf1… and pending bundle0fadce83… remain UNAPPLIED /
+NOT AUTHORIZED in PROPERTY_MIGRATION_REVIEW.json. No media/features/wrappers/providers,
+Netlify action or outside access. Release1.0 NOT READY / NOT AUTHORIZED; PR#1 draft.
+
 ## Latest: property schema review · corrected / hosted execution NO-GO
 
 Read [PROPERTY_MIGRATION_SECURITY_REVIEW.md](docs/PROPERTY_MIGRATION_SECURITY_REVIEW.md)

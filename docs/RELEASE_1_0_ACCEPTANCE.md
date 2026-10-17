@@ -1,5 +1,20 @@
 # Production Release 1.0 acceptance checklist
 
+## Latest property preflight recovery · technical GO / execution unauthorized
+
+PROPERTY_PREFLIGHT_RECOVERY.md supersedes the blocked preflight rows below.
+
+| Gate                                             | Current evidence                                                                                  | Remaining requirement                                                                  |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Exact development dry run                        | PASS: CLI2.121.0,exit0,one pending file,no seeds/roles,skip-vault                                 | Separate owner approval of exact migration/hash/bundle; refresh before execution       |
+| Existing keys / API profile boundary             | PASS: both keys Auth200,anon table denial42501,private406/PGRST106; saved configuration unchanged | Connected property adapter/real role acceptance remains separate                       |
+| Historical schema integrity                      | PASS:10 installed migrations,468 fingerprints,69 column ACLs; post-run history/catalog unchanged  | No property schema installed; post-install verification after later approval           |
+| Actual feature/media/customer billing activation | Disabled / NOT RUN                                                                                | Separate reviewed workflows, scanner/Storage/consent and explicit activation authority |
+
+No key/configuration repair or migration execution. Previous application/SQL
+regression results remain applicable to unchanged code; this increment changes
+continuity only. Release1.0 NOT READY / NOT AUTHORIZED; PR#1 remains draft.
+
 ## Latest property schema review · no activation
 
 Corrected dormant migration prepared; **hosted execution NO-GO** pending successful

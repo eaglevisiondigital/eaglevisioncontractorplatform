@@ -279,3 +279,16 @@ Property schema review continuity:
   Do not rotate/reset keys/Auth or widen access to bypass these blockers.
 - Local/SQL/hosted-read evidence is not real connected property/media acceptance.
   Keep all ingestion/playback and supplemental customer debt execution disabled.
+
+Property preflight recovery supersedes the preceding NO-GO checkpoint:
+
+- Read docs/PROPERTY_PREFLIGHT_RECOVERY.md and PROPERTY_PREFLIGHT_RESULT.json.
+  One-file CLI dry run now PASS; existing public and legacy keys work. Root OpenAPI
+  access is secret-only; test public/private profiles on zero-limit table requests.
+  Never follow a response hint to GRANT anonymous table access.
+- CLI automatic credential discovery stalls; approved Keychain read plus credential
+  in child-process memory works. No persistent export/reset/new key is authorized.
+- All ten hosted/local migrations, catalog, ACLs, saved Auth/API configuration and
+  corrected pending SQL/hash remain unchanged. Technical GO permits requesting
+  separate exact execution approval only. Migration UNAPPLIED / NOT AUTHORIZED;
+  no features, public wrappers, media, providers, deployment or outside access.

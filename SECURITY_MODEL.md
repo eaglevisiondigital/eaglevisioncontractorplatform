@@ -1,5 +1,17 @@
 # Security model · Phase 2
 
+## Latest: property preflight boundaries verified / no activation
+
+See docs/PROPERTY_PREFLIGHT_RECOVERY.md. Corrected table-specific probes confirm
+anonymous organizations access denied42501 and private schema rejectedPGRST106 for
+both existing public key formats. Auth/API hashes match approved settings. The
+OpenAPI root requires a secret key and is unsuitable for this check; no secret-key
+request or grants workaround was used. Exactly one pending migration/no seeds/roles
+passes dry run with an existing approved credential confined to process memory.
+Ten hosted migrations/catalog/column ACLs remain unchanged. Technical GO is solely
+for separate dormant-schema approval; no property feature, media, provider or
+customer financial authorization changes. Prior blockers below are historical.
+
 ## Latest property schema review · default deny / execution NO-GO
 
 Original proposal negative tests reproduced NULL revision bypasses, a disabled-module
