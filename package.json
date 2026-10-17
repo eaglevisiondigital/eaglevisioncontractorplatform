@@ -28,7 +28,8 @@
     "development:acceptance-plan": "node scripts/acceptance-plan.mts",
     "sandbox:plan": "node scripts/sandbox-activation-plan.mts",
     "property:check": "node scripts/check-property-proposal.mjs",
-    "property:acceptance-plan": "node scripts/property-connected-plan.mts"
+    "property:acceptance-plan": "node scripts/property-connected-plan.mts",
+    "property:p1-plan": "node scripts/property-p1-plan.mts"
   },
   "repository": {
     "type": "git",

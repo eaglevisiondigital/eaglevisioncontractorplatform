@@ -1,5 +1,11 @@
 # Property operations · connected authorization design
 
+Current P1 proposal:[final scoped review](PROPERTY_P1_ACCEPTANCE_REVIEW.md),
+75 fixture steps/57 domain rows plus69 probes and exact three-row feature controls.
+No hosted execution is authorized. PROPERTY_P1_REVIEW.json tracks all72 cases:
+0 PASS,0 FAIL,24 BLOCKED,48 NOT RUN. P2 customer mappings/leases remain separate.
+Earlier P0 and generic case statuses below record their preparation checkpoints.
+
 Current P0 checkpoint:[dormant connected schema installed](PROPERTY_P0_EXECUTION.md),
 history13. Public invoker wrappers exist;property features,customer mappings and
 report-only leases remain absent. No fixture/portal/provider/media activation or

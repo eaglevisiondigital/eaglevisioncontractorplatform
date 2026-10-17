@@ -1,5 +1,11 @@
 # Property operations · next connected acceptance package
 
+Current P1 proposal:[final scoped review](PROPERTY_P1_ACCEPTANCE_REVIEW.md),
+75 fixture steps/57 domain rows plus69 probes and exact three-row feature controls.
+No hosted execution is authorized. PROPERTY_P1_REVIEW.json tracks all72 cases:
+0 PASS,0 FAIL,24 BLOCKED,48 NOT RUN. P2 customer mappings/leases remain separate.
+Earlier P0 and generic case statuses below record their preparation checkpoints.
+
 Latest:[exact P0 development execution](PROPERTY_P0_EXECUTION.md) is APPLIED/VERIFIED;
 hosted history13,all features/mappings/leases remain off. Earlier unapplied statements
 are historical. All72 connected property cases remain NOT RUN;no activation approval.
@@ -87,11 +93,12 @@ window must be explicit; feature rows have no native TTL.
 
 ## Immediate next action
 
-Review the P0 caller-preserving adapter/wrapper design and the new redundant-index
-advisor finding. Prepare those local review artifacts without hosted activation.
-Only after review should the owner approve exact forward migration/feature/fixture
-and, separately, report-customer authorization scopes. No production, deployment,
-provider, messaging, legal-signature or payroll execution authority is implied.
+Review the exact P1 package and bounded cleanup in PROPERTY_P1_ACCEPTANCE_REVIEW.md.
+The P0 wrappers/index cleanup are already applied;never replay migrations. Obtain
+separate owner approval for the exact P1 hash,three feature activations,75 fixture
+calls/69 probes and supervised owner MFA/cleanup. P2 mappings,report-only leases,
+feature reactivation and customer authentication need a separate later approval.
+No media,provider,deployment,outside access or production authority is implied.
 
 ## P0 prepared payloads
 

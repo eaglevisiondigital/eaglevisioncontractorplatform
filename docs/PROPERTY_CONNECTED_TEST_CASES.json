@@ -166,5 +166,21 @@
     "featureRowsCreated": 0,
     "reportLeasesCreated": 0,
     "hostedExecuted": 0
+  },
+  "currentP1Review": {
+    "report": "docs/PROPERTY_P1_ACCEPTANCE_REVIEW.md",
+    "tracker": "docs/PROPERTY_P1_REVIEW.json",
+    "hostedExecuted": 0,
+    "PASS": 0,
+    "FAIL": 0,
+    "BLOCKED": 24,
+    "NOT RUN": 48,
+    "stageCounts": {
+      "P1": 60,
+      "P2": 9,
+      "P3": 3
+    },
+    "historicalGenericCaseStatuses": "original inventory; use per-company current tracker",
+    "hostedExecutionAuthorized": false
   }
 }

@@ -616,3 +616,7 @@ The two-file planning operation is verified against the actual unchanged eleven-
 ## P0 dormant connected schema installed
 
 The separately owner-approved two-file development bundle is applied once;history13. Three public SECURITY INVOKER wrappers and checked private session/report helpers are installed;the private report-only lease table is empty/default deny. Adapters remain unwired and current session/MFA/membership/resource checks preserve caller authority. Redundant index removed while original uniqueness/FKs remain. No feature/mapping/lease/fixture/media/provider activation. See docs/PROPERTY_P0_EXECUTION.md;earlier proposed/unapplied checkpoints are historical.
+
+## P1 deterministic acceptance preparation
+
+New offline P1 compiler freezes three existing-tenant bindings,75 caller-bound fixture steps,69 probes,57 row expectations and per-step/result references. Independent integer basket expectations are checked against authenticated stored comparison snapshots;one unknown-shipping vendor cannot win. Private feature-control SQL is a separately proposed data operation,not a migration. No hosted executor or new API/runtime path exists. A private local attempt/UUID-receipt journal blocks duplicate/uncertain requests without storing tokens. Original rows use real composite PKs;only three selected job revisions may change. Dedicated P2 mapping/report-only lease design remains separate. Read docs/PROPERTY_P1_ACCEPTANCE_REVIEW.md;all13 historical SQL files unchanged.

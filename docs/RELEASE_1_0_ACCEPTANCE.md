@@ -1,5 +1,29 @@
 # Production Release 1.0 acceptance checklist
 
+## Latest: P1 acceptance package prepared · no hosted activation
+
+Read [PROPERTY_P1_ACCEPTANCE_REVIEW.md](PROPERTY_P1_ACCEPTANCE_REVIEW.md) and
+PROPERTY_P1_REVIEW.json. Exact proposed operation SHA-256:
+`01b96075d2f04acef730114427bc595986a1f0ce2720ed7fd3c9e84e304e141a`.
+Preparation only: three feature rows,75 fixture RPCs,57 domain rows,69 assertion
+probes;no customer mappings/leases or new permissions. Exact existing resources,
+current job revisions7/2/2,18 roster bindings and713 composite-key original rows
+verified read-only. All13 SQL files/history and514 catalog objects remain unchanged;
+22 identities/four factors/zero sessions and all off controls preserved.
+
+Hosted tracker:0 PASS,0 FAIL,24 BLOCKED,48 NOT RUN across72 cases. P1 has60 staff
+cases (12 blocked),P2 nine customer cases and P3 three media cases remain blocked.
+The fixed budget excludes extra incomplete-checklist,quantity/credit and natural
+JWT-expiry fixtures;do not claim complete acceptance. Three explicit new unique
+unmatched expenses10001minor each;proposed prices11251/11251/10001,zero customer debt.
+P1 feature deactivation is exact-tenant,handles partial activation,and preserves
+audits;30-minute operator window,no native TTL. Journal rejects duplicate/UNKNOWN
+replays. P2 mapping/15-minute lease design is separately unapproved.
+
+Local validation:748 PASS/50 native-only skips;focused PostgreSQL17:72 PASS;browser
+63 PASS;counts overlap. Native/SQL claims are disposable simulations,not hosted Auth.
+Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft. Prior checkpoints below are historical.
+
 ## Latest: P0 applied dormant · Netlify support follow-up sent
 
 Read [PROPERTY_P0_EXECUTION.md](PROPERTY_P0_EXECUTION.md) and
