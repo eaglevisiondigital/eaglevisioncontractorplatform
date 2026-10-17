@@ -198,7 +198,7 @@ export function assertP1Snapshot(
     s.audits.length !== 114
   )
     throw Error('Domain/audit budget mismatch');
-  const auditEntities = new Map<string, Set<string>>();
+  const auditEntities = new Map<string, Map<string, Map<string, number>>>();
   for (const c of frozen.plan.companies) {
     const ids = receipts.get(c.organization_id);
     if (!ids || ids.size !== 25) throw Error('Receipt coverage missing');
@@ -224,18 +224,48 @@ export function assertP1Snapshot(
       change.cost_minor !== 0
     )
       throw Error('Financial provenance/reconciliation mismatch');
-    auditEntities.set(
-      c.organization_id,
-      new Set([
-        c.organization_id,
-        String(c.steps[0].args.p_job),
-        ...Array.from(ids.values()).map((v) =>
-          typeof v === 'string' ? v : v.id,
-        ),
-        change.id,
-        d.id,
-      ]),
+    const receipt = (step: string) => {
+      const r = ids.get(step);
+      const id = typeof r === 'string' ? r : r?.id;
+      if (!id) throw Error('Audit receipt missing');
+      return id;
+    };
+    const entities = new Map<string, Map<string, number>>();
+    const add = (type: string, values: string[], each = 1) =>
+      entities.set(type, new Map(values.map((id) => [id, each])));
+    add('property_features', [c.organization_id], 2);
+    add('jobs', [String(c.steps[0].args.p_job)], 5);
+    add('job_expenses', [receipt('fixture-expense')]);
+    add('job_expense_reviews', [receipt('fixture-review')]);
+    add('job_change_orders', [change.id]);
+    add(
+      'inspection_plans',
+      ['weekly', 'monthly'].map((x) => receipt(x + '-plan')),
     );
+    for (const type of ['inspection_visits', 'inspection_reports'])
+      add(
+        type,
+        ['weekly', 'monthly'].flatMap((x) =>
+          [0, 1].map((i) =>
+            receipt(
+              x +
+                '-' +
+                i +
+                (type === 'inspection_visits' ? '-visit' : '-publish'),
+            ),
+          ),
+        ),
+        type === 'inspection_visits' ? 4 : 1,
+      );
+    add('supplier_comparisons', [receipt('four-vendors')]);
+    add(
+      'unbilled_decisions',
+      ['absorbed', 'included', 'deferred', 'proposed'].map((x) =>
+        receipt('decision-' + x),
+      ),
+    );
+    add('supplemental_invoice_drafts', [d.id]);
+    auditEntities.set(c.organization_id, entities);
   }
   const perTenant: Record<string, number> = {
     property_features: 2,
@@ -279,12 +309,27 @@ export function assertP1Snapshot(
       !c ||
       !Object.hasOwn(perTenant, a.entity_type) ||
       !a.entity_id ||
-      !auditEntities.get(c.organization_id)?.has(a.entity_id) ||
+      !auditEntities
+        .get(c.organization_id)
+        ?.get(a.entity_type)
+        ?.has(a.entity_id) ||
       !['insert', 'update'].includes(a.action) ||
       !allowedActor
     )
       throw Error('Audit tenant/actor/entity mismatch');
   }
+  for (const [organization, types] of auditEntities)
+    for (const [entity, ids] of types)
+      for (const [id, count] of ids)
+        if (
+          s.audits.filter(
+            (a) =>
+              a.organization_id === organization &&
+              a.entity_type === entity &&
+              a.entity_id === id,
+          ).length !== count
+        )
+          throw Error('Audit receipt multiplicity mismatch');
 }
 /** Narrow read-only adapter: no caller tokens, no exposed tables, no generic mutation endpoint. */
 export function p1ReadOnlyVerification(

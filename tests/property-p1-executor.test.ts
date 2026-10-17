@@ -376,6 +376,18 @@ it('journal rejects unsafe directories and corrupt receipts rather than recoveri
   writeFileSync(join(s.root, 'journal', org + '-x.result.json'), '{');
   expect(() => s.journal.read(org, 'x')).toThrow();
 });
+it('does not promote an explicit invalid journal outcome to a recorded UUID receipt', () => {
+  const s = setup(),
+    org = s.plan.companies[0].organization_id;
+  const hash = 'a'.repeat(64);
+  s.journal.begin(org, 'x', hash);
+  s.journal.complete(org, 'x', hash, crypto.randomUUID());
+  const path = join(s.root, 'journal', org + '-x.result.json');
+  const result = JSON.parse(readFileSync(path, 'utf8'));
+  expect(result.state).toBe('RECORDED');
+  writeFileSync(path, JSON.stringify({ ...result, state: 'UNKNOWN' }));
+  expect(() => s.journal.read(org, 'x')).toThrow('mismatch');
+});
 it('interrupts an in-flight write without assuming database rollback or retrying it', async () => {
   const s = setup(),
     abort = new AbortController();
@@ -412,4 +424,16 @@ it('does not activate an old frozen package after its reviewed quotation window 
   expect(r.stoppedAt).toBe('PREFLIGHT');
   expect(s.control.activate).not.toHaveBeenCalled();
   expect(s.calls()).toBe(0);
+});
+it('rechecks quote validity after asynchronous Auth/preflight waits before reserving or activating', async () => {
+  const s = setup();
+  let now = p1Now;
+  s.control.ready.mockImplementationOnce(async () => {
+    now = Date.UTC(2026, 10, 17);
+  });
+  const r = await executeP1({ ...s.options, now: () => now });
+  expect(r.status).toBe('STOPPED');
+  expect(s.control.activate).not.toHaveBeenCalled();
+  expect(s.calls()).toBe(0);
+  expect(readdirSync(join(s.root, 'journal'))).toEqual([]);
 });

@@ -1,5 +1,24 @@
 # Production Release 1.0 acceptance checklist
 
+## Latest: P1 adversarial audit · activation NO-GO pending operational gates
+
+Read [PROPERTY_P1_INDEPENDENT_AUDIT.md](PROPERTY_P1_INDEPENDENT_AUDIT.md) and
+[PROPERTY_P1_SUPERVISED_RUNBOOK.md](PROPERTY_P1_SUPERVISED_RUNBOOK.md).
+Fresh read-only development evidence matches all13 migrations,514 catalog objects,
+713 complete-key original records,18 actor bindings,22 identities/four MFA factors,
+zero sessions and saved Auth/API/off controls. Frozen operation/artifacts unchanged;
+all12 quotations remain valid through November16 at12:00UTC.
+
+Local fixes serialize in-flight handoff versus cleanup,forbid post-stop activation,
+recheck quote validity after waits,reject invalid receipt states and handle SIGHUP.
+Actual hosted deactivation/session revocation remains NOT RUN;automatic approval
+review blocked the proposed cleanup-process probe and it was not retried. GO for
+later supervised preflight only;NO-GO for activation until genuine MFA,independent
+cleanup/recovery authority and human presence pass. No duplicate exact-scope approval.
+Hosted0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN;zero hosted writes/sign-ins/MFA challenges.
+Final test evidence/source hashes are in PROPERTY_P1_INDEPENDENT_AUDIT.json.
+Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft. Prior checkpoints are historical.
+
 ## Latest: P1 executor and independent cleanup locally implemented
 
 Read [PROPERTY_P1_EXECUTOR_READINESS.md](PROPERTY_P1_EXECUTOR_READINESS.md) and

@@ -1,5 +1,10 @@
 # P1 executor implementation and local readiness
 
+Latest: [adversarial audit](PROPERTY_P1_INDEPENDENT_AUDIT.md) and
+[supervised runbook](PROPERTY_P1_SUPERVISED_RUNBOOK.md). The source hashes and counts
+below describe the implementation checkpoint at `1318db0`; see the separate audit
+record for corrected source hashes, fresh evidence and activation NO-GO gates.
+
 October 17, 2026. Continues `80c5491` in draft PR #1. **Local execution controls
 implemented and rehearsed; hosted execution has not started.** Existing owner
 approval remains valid only for unchanged operation

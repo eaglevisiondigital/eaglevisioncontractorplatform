@@ -657,3 +657,9 @@ Owner authorization does not waive operational prerequisites. The P1 executor is
 ## P1 executor and independent containment
 
 The reviewed P1 operation remains frozen; real sessions are accepted only after server identity/claims/issuer/confirmed-user checks and exact existing factor validation. User metadata never supplies roles. Pending owner AAL1 can authorize cleanup only; executable AAL2 must retain its session ID. The separate process verifies live session IDs before exact control SQL, contains disconnects/supervision expiry and independently reads all off gates. Activation settlement precedes cleanup to prevent late reactivation; unknown activation never reports clean success. Journal fsyncs file/directory entries,never retries UNKNOWN,and stores no credential/token. Full original-row and financial/audit reconciliation is required beyond RPC counts. Local transports/SQL claims are fixtures,not hosted acceptance; machine/database outage still requires supervised operator containment. No hosted action or outside access. See docs/PROPERTY_P1_EXECUTOR_READINESS.md.
+
+## P1 adversarial readiness audit
+
+Adversarial P1 review corrected shutdown/handoff and delayed-activation races, stale quote preflight, explicit invalid journal outcome acceptance and unhandled worker SIGHUP. Fresh read-only history/catalog/ACL/original-row/Auth fingerprints match; no sessions or off controls changed. Security advisors0 WARN/ERROR37 INFO;four existing performance warnings remain. A real-target cleanup-process probe was rejected by automatic approval review and not run or bypassed. Live logout/deactivation authority remains unverified. Activation is NO-GO until genuine supervised MFA,independent recovery and cleanup gates pass. See docs/PROPERTY_P1_INDEPENDENT_AUDIT.md.
+
+P1 audit reconciliation also binds exact entity type, receipt ID and event multiplicity; same-tenant UUID substitution is not accepted as valid audit provenance.

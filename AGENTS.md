@@ -359,3 +359,9 @@ UNKNOWN or failed reconciliation stops;read-only journal recovery never replays.
 No automatic second cleanup attempt. Human recovery remains mandatory for host/
 database/Auth outage. Existing unchanged P1 approval persists;current implementation
 stops before activation. P2/media/providers/Netlify/production/outside access remain off.
+
+## P1 adversarial readiness audit
+
+Read docs/PROPERTY_P1_INDEPENDENT_AUDIT.md and PROPERTY_P1_SUPERVISED_RUNBOOK.md before the older implementation checkpoint. Audit read-only evidence matches13 migrations/514 catalog/713 originals/18 actors/22 identities/four factors/zero sessions and all off settings. Preserve frozen operation/four artifacts. New command gate settles pending credential custody before cleanup,blocks late activation;quote validity rechecks after waits,invalid receipt states reject,SIGHUP contains. Automatic approval review rejected the live-target cleanup-process probe;it was NOT RUN or retried. Operational deactivation/logout/recovery and genuine MFA remain unverified;NO-GO activation until later supervised gates pass. Existing unchanged-scope approval persists,no duplicate approval. No hosted writes/sign-ins/MFA,Netlify/provider/media/P2/outside action from this audit.
+
+P1 audit reconciliation also binds exact entity type, receipt ID and event multiplicity; same-tenant UUID substitution is not accepted as valid audit provenance.

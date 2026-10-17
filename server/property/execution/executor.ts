@@ -251,7 +251,7 @@ export async function executeP1(options: {
     if (signal.aborted) throw Error('Execution interrupted');
     await control.check();
   };
-  try {
+  const assertQuotationWindow = () => {
     // A frozen quote is not perpetually current. Never regenerate it or start
     // fixture writes when its reviewed validity no longer covers the window.
     for (const c of frozen.plan.companies) {
@@ -269,11 +269,17 @@ export async function executeP1(options: {
       )
         throw Error('Frozen quotation validity requires review');
     }
+  };
+  try {
+    assertQuotationWindow();
     await verification.before();
     result.stoppedAt = 'AUTH';
     await actors.verifyAll();
     await control.ready();
     if (signal.aborted) throw Error('Execution interrupted');
+    // Verification and genuine session checks can consume time. Recheck before
+    // reservation/activation, rather than relying on a stale preflight clock.
+    assertQuotationWindow();
     // Atomic global reservation prevents two processes or a later process from replaying this package.
     journal.reserveRun();
     result.stoppedAt = 'ACTIVATION';

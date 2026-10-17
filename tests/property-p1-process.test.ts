@@ -40,48 +40,55 @@ it('real independent cleanup process survives loss of its executor IPC channel a
     rmSync(root, { recursive: true, force: true });
   }
 });
-it('production cleanup worker rejects an unapproved initialization before any credential or hosted request', async () => {
-  const child = fork(
-    new URL('../server/property/execution/cleanup-worker.mts', import.meta.url),
-    [],
-    {
-      stdio: ['ignore', 'ignore', 'ignore', 'ipc'],
-      execArgv: ['--experimental-transform-types'],
-    },
-  );
-  try {
-    const answer = new Promise<unknown>((resolve, reject) => {
-      const t = setTimeout(
-        () => reject(Error('Worker bootstrap failed')),
-        5000,
-      );
-      child.once('message', (m) => {
-        clearTimeout(t);
-        resolve(m);
-      });
-      child.once('exit', () => {
-        clearTimeout(t);
-        reject(Error('Worker failed to load'));
-      });
-    });
-    child.send({
-      id: 1,
-      type: 'init',
-      data: { operationHash: 'not-approved' },
-    });
-    expect(await answer).toMatchObject({
-      id: 1,
-      data: { error: 'STOP_CONTAINMENT_REQUIRED' },
-    });
-    const exit = new Promise<number | null>((resolve) =>
-      child.once('exit', resolve),
+it.each(['disconnect', 'SIGTERM', 'SIGINT', 'SIGHUP'] as const)(
+  'production cleanup worker rejects unapproved initialization and closes safely on %s without hosted requests',
+  async (stop) => {
+    const child = fork(
+      new URL(
+        '../server/property/execution/cleanup-worker.mts',
+        import.meta.url,
+      ),
+      [],
+      {
+        stdio: ['ignore', 'ignore', 'ignore', 'ipc'],
+        execArgv: ['--experimental-transform-types'],
+      },
     );
-    child.disconnect();
-    expect(await exit).toBe(0);
-  } finally {
-    if (!child.killed) child.kill();
-  }
-});
+    try {
+      const answer = new Promise<unknown>((resolve, reject) => {
+        const t = setTimeout(
+          () => reject(Error('Worker bootstrap failed')),
+          5000,
+        );
+        child.once('message', (m) => {
+          clearTimeout(t);
+          resolve(m);
+        });
+        child.once('exit', () => {
+          clearTimeout(t);
+          reject(Error('Worker failed to load'));
+        });
+      });
+      child.send({
+        id: 1,
+        type: 'init',
+        data: { operationHash: 'not-approved' },
+      });
+      expect(await answer).toMatchObject({
+        id: 1,
+        data: { error: 'STOP_CONTAINMENT_REQUIRED' },
+      });
+      const exit = new Promise<number | null>((resolve) =>
+        child.once('exit', resolve),
+      );
+      if (stop === 'disconnect') child.disconnect();
+      else child.kill(stop);
+      expect(await exit).toBe(0);
+    } finally {
+      if (!child.killed) child.kill();
+    }
+  },
+);
 it('two real executor processes cannot reserve the same durable run after simultaneous start', async () => {
   const root = mkdtempSync(join(tmpdir(), 'propel-journal-race-')),
     org = crypto.randomUUID();

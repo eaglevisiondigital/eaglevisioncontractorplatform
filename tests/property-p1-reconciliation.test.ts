@@ -197,6 +197,8 @@ it.each([
   'audit tenant',
   'audit deletion',
   'audit count',
+  'audit wrong entity type',
+  'audit duplicate entity',
 ])('rejects %s in independent post-cleanup evidence', (kind) => {
   const s = setup();
   s.after();
@@ -231,6 +233,15 @@ it.each([
     x.audits[0].organization_id = crypto.randomUUID();
   if (kind === 'audit deletion') x.audits[0].action = 'delete';
   if (kind === 'audit count') x.audits.pop();
+  if (kind === 'audit wrong entity type')
+    x.audits.find((a) => a.entity_type === 'inspection_reports')!.entity_id =
+      x.audits.find((a) => a.entity_type === 'jobs')!.entity_id;
+  if (kind === 'audit duplicate entity') {
+    const reports = x.audits.filter(
+      (a) => a.entity_type === 'inspection_reports',
+    );
+    reports[0].entity_id = reports[1].entity_id;
+  }
   expect(() =>
     assertP1Snapshot(s.frozen, s.reference, x, true, s.receipts),
   ).toThrow();

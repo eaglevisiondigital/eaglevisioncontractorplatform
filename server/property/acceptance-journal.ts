@@ -98,6 +98,9 @@ export function acceptanceJournal(root: string, operationSha256: string) {
     if (
       result.operationSha256 !== operationSha256 ||
       result.payloadSha256 !== attempt.payloadSha256 ||
+      // Legacy successful receipts omitted state. Unknown explicit states must
+      // never be interpreted as successful outcomes merely because a UUID exists.
+      ![undefined, 'RECORDED', 'DENIED'].includes(result.state) ||
       !(result.state === 'DENIED'
         ? /^[A-Z0-9]{5}$/.test(result.code)
         : uuid(result.resultId))
@@ -131,6 +134,7 @@ export function acceptanceJournal(root: string, operationSha256: string) {
     create(name(organization, step) + '.result.json', {
       operationSha256,
       payloadSha256,
+      state: 'RECORDED',
       resultId,
     });
   };

@@ -628,3 +628,9 @@ The exact frozen P1 operation now has owner approval. Read docs/PROPERTY_P1_EXEC
 ## P1 composed local execution controls
 
 The exact frozen package now has a caller-bound Supabase SDK executor and separate-process management/Auth cleanup controller. The normal-data channel cannot use management/service credentials; the control channel accepts only reviewed SQL bytes and fixed verification reads. Owner AAL1 enters cleanup-only custody before TOTP; only same-session genuine AAL2 can satisfy owner execution. Directory-fsynced one-shot journals and scoped receipts prevent duplicate/UNKNOWN replay. A separate read adapter verifies original composite keys, Auth/factor rosters and exact financial/audit provenance. Human presence and process heartbeat have distinct leases; wall/monotonic cleanup begins at minute29. Composition is a local library,not a deployed route or auto-starting command. See docs/PROPERTY_P1_EXECUTOR_READINESS.md. No schema or frozen artifact changed.
+
+## P1 adversarial readiness audit
+
+The independent cleanup worker now serializes its asynchronous handoffs with shutdown through P1CommandGate. Shutdown marks closed synchronously; credential custody settles before revocation/observation, and live-session waits cannot finish by starting late activation. Quote-window validation is repeated after preflight/Auth waits. The frozen plan and all13 migrations remain unchanged. Read docs/PROPERTY_P1_INDEPENDENT_AUDIT.md and the supervised runbook; local proof is separate from operational cleanup rights.
+
+P1 audit reconciliation also binds exact entity type, receipt ID and event multiplicity; same-tenant UUID substitution is not accepted as valid audit provenance.

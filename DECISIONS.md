@@ -738,3 +738,9 @@ Record owner approval of the exact frozen P1 operation without modifying its rev
 ## October17 · implement P1 execution without activating it
 
 Replace the missing software prerequisite with a reviewed-package executor,independent cleanup process and composable private handoff API. Preserve approved01b96075… bytes and all13 migrations. Keep normal RPC caller credentials separate from control-plane custody; track pending owner AAL1 for cleanup,then require genuine same-session AAL2. Use persistent exclusive run/attempt receipts and read-only UNKNOWN inspection; no automatic retry or guessed row adoption. Begin independent containment at minute29,require60-second human presence and five-second executor heartbeat,and verify exact original/financial/audit state independently. Offline inspect is the only npm entry;no execute/login flag. Local regression/native/process proof permits readiness review,not hosted PASS claims. Existing unchanged-scope authorization persists;no repeated approval request or P2/media/provider expansion.
+
+## P1 adversarial readiness audit
+
+Do not equate simulated cleanup or a valid management read with operational revocation/deactivation. Preserve the exact approved P1 package and approval;fix local safety defects without changing payloads. Serialize late credential custody before cleanup and forbid activation after stop;repeat validity checks after waits. Keep interrupted outcomes UNKNOWN and reject invalid journal states. Handle terminal hangup through bounded shutdown. Refresh713-row/22-user/four-factor baselines read-only,and publish NO-GO for activation until action-time human/MFA/cleanup gates are actually verified. Read docs/PROPERTY_P1_SUPERVISED_RUNBOOK.md.
+
+P1 audit reconciliation also binds exact entity type, receipt ID and event multiplicity; same-tenant UUID substitution is not accepted as valid audit provenance.

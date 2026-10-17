@@ -2,6 +2,7 @@ import { loadP1Package, approvedP1Hash } from './package.ts';
 import { managementCleanup } from './management.ts';
 import { P1Safety } from './safety.ts';
 import { verifyCleanupSession } from './cleanup-auth.ts';
+import { P1CommandGate } from './command-gate.ts';
 // Dedicated process, no CLI credentials, filesystem tokens, logs, generic SQL or arbitrary URLs.
 let safety: P1Safety | undefined,
   activated = false,
@@ -95,8 +96,12 @@ async function liveSessions() {
     }
 }
 let closing: Promise<unknown> | undefined;
+const commands = new P1CommandGate();
 async function close() {
   closing ??= (async () => {
+    // A verified handoff in flight must enter custody before sign-out/observation.
+    // Closing also forbids activation after a delayed live-session read.
+    await commands.stop();
     try {
       await activation;
     } catch {
@@ -109,7 +114,6 @@ async function close() {
   })();
   return closing;
 }
-let busy = false;
 let readyAt = 0;
 const preparationWall = Date.now() + 600000,
   preparationMono = performance.now() + 600000;
@@ -148,9 +152,9 @@ process.on('message', async (message: unknown) => {
     send(m.id, await close());
     return;
   }
+  let finish: (() => void) | undefined;
   try {
-    if (busy || closing) throw Error('Controller unavailable');
-    busy = true;
+    finish = commands.enter();
     if (m.type === 'init') {
       if (safety || m.data.operationHash !== approvedP1Hash)
         throw Error('Exact approved operation required');
@@ -176,6 +180,7 @@ process.on('message', async (message: unknown) => {
         throw Error('Pending handoff closed');
       const v = await verify(m.data.alias, m.data.token, undefined, true);
       sessions.set(m.data.alias, { ...v, token: m.data.token });
+      commands.assertOpen();
       send(m.id, true);
     } else if (m.type === 'register') {
       const prior = sessions.get(m.data.alias);
@@ -192,6 +197,7 @@ process.on('message', async (message: unknown) => {
         token: m.data.token,
         factorId: m.data.factorId,
       });
+      commands.assertOpen();
       send(m.id, true);
     } else if (m.type === 'ready') {
       if (
@@ -203,17 +209,21 @@ process.on('message', async (message: unknown) => {
       await Promise.all(
         [...sessions].map(([alias, s]) => verify(alias, s.token)),
       );
+      commands.assertOpen();
       const state = await managementCleanup(
         frozen,
         managementToken,
         signout,
       ).observe();
+      commands.assertOpen();
       if (
         state.sessions !== 15 ||
         Object.entries(state).some(([k, v]) => k !== 'sessions' && v !== 0)
       )
         throw Error('Dormant authority changed');
       await liveSessions();
+      commands.assertOpen();
+      if (preparingExpired()) throw Error('Preparation expired during wait');
       readyAt = Date.now();
       send(m.id, true);
     } else if (m.type === 'activate') {
@@ -226,6 +236,8 @@ process.on('message', async (message: unknown) => {
       )
         throw Error('Activation unavailable');
       await liveSessions();
+      commands.assertOpen();
+      if (preparingExpired()) throw Error('Preparation expired during wait');
       activated = true; // Start containment BEFORE issuing an uncertain write.
       activation = safety.activate(async () => {
         const r = await request(
@@ -256,7 +268,7 @@ process.on('message', async (message: unknown) => {
     send(m.id, { error: 'STOP_CONTAINMENT_REQUIRED' });
     if (activated) void close();
   } finally {
-    busy = false;
+    finish?.();
   }
 });
 const timer = setInterval(() => {
@@ -276,7 +288,7 @@ process.on('disconnect', () => {
     process.exit(0);
   });
 });
-for (const sig of ['SIGTERM', 'SIGINT'] as const)
+for (const sig of ['SIGTERM', 'SIGINT', 'SIGHUP'] as const)
   process.on(sig, () => {
     void close().finally(() => {
       clearInterval(timer);
