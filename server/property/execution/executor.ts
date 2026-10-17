@@ -252,6 +252,23 @@ export async function executeP1(options: {
     await control.check();
   };
   try {
+    // A frozen quote is not perpetually current. Never regenerate it or start
+    // fixture writes when its reviewed validity no longer covers the window.
+    for (const c of frozen.plan.companies) {
+      const quote = c.steps.find((s) => s.id === 'four-vendors')!.args.p as {
+        quotes: { quoted_at: string; expires_at: string }[];
+      };
+      if (
+        quote.quotes.some(
+          (q) =>
+            !Number.isFinite(Date.parse(q.quoted_at)) ||
+            !Number.isFinite(Date.parse(q.expires_at)) ||
+            Date.parse(q.quoted_at) > now() ||
+            Date.parse(q.expires_at) <= now() + 1800000,
+        )
+      )
+        throw Error('Frozen quotation validity requires review');
+    }
     await verification.before();
     result.stoppedAt = 'AUTH';
     await actors.verifyAll();

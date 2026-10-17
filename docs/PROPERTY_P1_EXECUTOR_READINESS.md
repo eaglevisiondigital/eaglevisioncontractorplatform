@@ -93,12 +93,16 @@ financial integrity. These are **not** genuine hosted Auth/MFA/provider acceptan
 5. Made original-row, financial and per-entity audit reconciliation independent of
    successful RPC counts. A failed reconciliation cannot become accepted testing.
 
+6. Require the unchanged reviewed quote dates to cover the full window before
+   any activation; expired quotes stop for review and are never silently refreshed.
+
 ## Current results and limits
 
-Final local validation: **808 PASS /50 native-only skips** in `npm run check`;
+Final local validation: **809 PASS /50 native-only skips** in `npm run check`;
 **343 PASS /zero skips** across the complete disposable PostgreSQL17 suite;
 **63 PASS** desktop/tablet/mobile browser tests; **26 PASS** frozen-Netlify offline
-checks. The60 new executor/control regressions are included in the808. Counts overlap.
+checks. The61 new executor/control regressions are included in the809. Counts overlap.
+A final4-test native P1 recheck covers the added quote-window gate (counts overlap).
 Formatting,strict types,generated types,migration integrity and production-build
 restrictions pass. See PROPERTY_P1_EXECUTOR_READINESS.json for source hashes.
 No hosted session, feature, fixture, mapping, lease, record, audit or financial

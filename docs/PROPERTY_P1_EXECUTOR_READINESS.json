@@ -49,7 +49,7 @@
     },
     {
       "file": "server/property/execution/executor.ts",
-      "sha256": "611629196fe0f966781be2d551fe93f3ca0c55e6380b386b0892a3d443d03293"
+      "sha256": "802b42b8469d32f13512cbe2b87ffc1c4a63bc3b1811baed47ff26bdbc95f9c4"
     },
     {
       "file": "server/property/execution/management.ts",
@@ -113,11 +113,11 @@
   "localValidation": {
     "npmCheck": {
       "status": "PASS",
-      "testsPassed": 808,
+      "testsPassed": 809,
       "nativeOnlySkipped": 50,
       "lintTypesGeneratedTypesMigrationsPropertyBuild": "PASS"
     },
-    "newExecutorRegressionsPassed": 60,
+    "newExecutorRegressionsPassed": 61,
     "nativePostgresql17": {
       "status": "PASS",
       "testsPassed": 343,
@@ -134,7 +134,12 @@
       "passed": 26,
       "network": false
     },
-    "countsOverlap": true
+    "countsOverlap": true,
+    "nativeFinalP1Recheck": {
+      "passed": 4,
+      "skipped": 0,
+      "overlapsCompleteNativeSuite": true
+    }
   },
   "hostedThisIncrement": {
     "reads": 0,

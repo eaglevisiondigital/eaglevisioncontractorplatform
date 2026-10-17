@@ -402,3 +402,14 @@ it('interrupts an in-flight write without assuming database rollback or retrying
   expect(inspectP1Recovery(s.frozen, s.journal)[0].state).toBe('UNKNOWN');
   expect(s.control.close).toHaveBeenCalledTimes(1);
 });
+it('does not activate an old frozen package after its reviewed quotation window expires', async () => {
+  const s = setup();
+  const r = await executeP1({
+    ...s.options,
+    now: () => Date.UTC(2026, 10, 17),
+  });
+  expect(r.status).toBe('STOPPED');
+  expect(r.stoppedAt).toBe('PREFLIGHT');
+  expect(s.control.activate).not.toHaveBeenCalled();
+  expect(s.calls()).toBe(0);
+});
