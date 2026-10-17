@@ -639,3 +639,26 @@ Add three synthetic capture/refund endpoint/redirect regressions; no runtime,
 SQL, UI, approved branding or frozen package changes. No real gateway call, hosted
 DB read/write, login, role/grant/binding, Netlify/support operation or outside access.
 Read docs/AUTHORIZE_NET_ACCOUNT_SELECTION.md for precise evidence/limits/owner steps.
+
+## 2026-10-16 · Property operations and smart procurement implementation
+
+1. Owner selected NMI as the preferred initial gateway; retain optional independent
+   Authorize.Net support. Neither account, credential, binding or execution activates.
+2. Treat the newly requested surveys/media/comparisons/unbilled/client workflow as
+   Release1.0 required work. Earlier scheduling-undecided text is historical.
+3. Reuse CRM properties/jobs, issued estimate versions, reviewed material purchases,
+   existing change orders and the internal release engine. No parallel ledger or
+   duplicate company database. Sample previews stay explicit/in-memory.
+4. Publish allowlisted immutable reports after management review. Keep private
+   findings and source media separate; visibility intent cannot issue object access.
+5. Compare up to4 manual quotes with exact units/whole packs/tax/order fees. Unknown
+   values are not zero; no scraping/live feed. Explicitly revise draft costs only.
+6. Unmatched materials are review flags, not automatic customer charges. Append
+   dispositions; linked credits reduce net cost; proposals add no duplicate forecast
+   expense. Pending supplemental invoice drafts remain nonpayable. Genuine scope/
+   price consent and checked conversion are unresolved production gates.
+7. Keep the new8-table SQL as an independently hashed LOCAL proposal, outside the
+   ten approved migrations. No public wrapper/connected adapter/feature row/worker
+   role is activated. Formal migration and target-specific approval remain separate.
+8. Local policy limits do not certify scanner/runtime/storage. All ingestion and
+   playback remain503; no hosted or provider call is needed for this increment.

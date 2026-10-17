@@ -30,6 +30,11 @@ const Phase3Workspace = lazy(() =>
     default: m.Phase3Workspace,
   })),
 );
+const PropertyWorkspace = lazy(() =>
+  import('./components/property/PropertyWorkspace').then((m) => ({
+    default: m.PropertyWorkspace,
+  })),
+);
 const ReleaseApp = lazy(() =>
   import('./components/release/ReleaseApp').then((m) => ({
     default: m.ReleaseApp,
@@ -302,7 +307,13 @@ export function App() {
                 'Module readiness',
                 'Activity',
               ]
-            : modules.filter((m) => m.phase === 1).map((m) => m.name)
+            : modules
+                .filter(
+                  (m) =>
+                    m.phase === 1 &&
+                    (sample || !('previewOnly' in m && m.previewOnly)),
+                )
+                .map((m) => m.name)
           ).map((name, i) => (
             <button
               key={name}
@@ -436,6 +447,23 @@ export function App() {
                 }}
               />
             </>
+          ) : company &&
+            sample &&
+            [
+              'Property operations',
+              'Supplier comparison',
+              'Client project view',
+            ].includes(section) ? (
+            <Suspense
+              fallback={<p role="status">Loading property operations…</p>}
+            >
+              <PropertyWorkspace
+                key={`${company.id}-${section}`}
+                operations={repo}
+                company={company}
+                section={section}
+              />
+            </Suspense>
           ) : company &&
             ['Estimates', 'Catalog', 'Jobs', 'Workforce'].includes(section) ? (
             <Suspense

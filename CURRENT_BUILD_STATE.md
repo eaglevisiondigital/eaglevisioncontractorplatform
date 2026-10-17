@@ -1,5 +1,33 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: property operations / smart procurement · local implementation
+
+Owner direction now includes surveys, media, comparisons and unbilled review in
+Release1.0 work. NMI is preferred initially; Authorize.Net remains optional. Both
+gateways are disabled and owner account access is pending. Read
+[PROPERTY_OPERATIONS_VALIDATION.md](docs/PROPERTY_OPERATIONS_VALIDATION.md).
+
+Implemented synthetic contractor inspection/recurrence/checklist/review/immutable
+report workflows, private media controls, four-supplier acquisition comparisons,
+existing-job unbilled decisions and pending supplemental invoice drafts, plus a
+unified client projection using the existing release engine. Existing estimating,
+job expense and financial records are reused; no new financial execution path.
+
+One hash-inventoried SQL proposal under server/property/ creates8 private tables
+and checked commands; it is NOT a hosted or approved migration. Existing10 SQL
+files, generated public types, approved logo and frozen Netlify artifacts remain
+unchanged. New connected navigation/API/persistence and all media upload/playback
+are disabled. Local synthetic UI is not hosted acceptance or genuine customer
+consent. No hosted/provider/Netlify/account/grant/session operation occurred.
+
+Final regression:652 local PASS/38 native-only skips,300 native PostgreSQL17 PASS,
+63 responsive browser PASS and26 frozen-artifact checks PASS (counts overlap).
+Formatting/types/hash checks PASS; detailed evidence is in the validation report. Next: review the
+proposal and connected adapter authorization; then separately approve an exact
+formal development migration/acceptance scope. Scanning/storage, genuine customer
+change-to-invoice consent/conversion, provider integration and independent release
+validation remain blockers. Release1.0 NOT READY / NOT AUTHORIZED; PR#1 draft.
+
 ## Latest: Authorize.Net account selection / read-only / unverified
 
 Base0ceac3e preserved. Read docs/AUTHORIZE_NET_ACCOUNT_SELECTION.md. No existing

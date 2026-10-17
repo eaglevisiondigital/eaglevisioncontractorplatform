@@ -31,6 +31,7 @@ jobs:
           path: |
             artifacts/phase3/*.png
             artifacts/release/*.png
+            artifacts/property/*.png
             test-results/
           retention-days: 7
   postgres17:

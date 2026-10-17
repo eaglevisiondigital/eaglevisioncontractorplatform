@@ -1,5 +1,14 @@
 # Sandbox activation readiness · review package
 
+## Current owner direction · NMI preferred / providers disabled
+
+NMI is now preferred for the initial implementation, with owner account access
+expected separately. Authorize.Net remains optional and independently supported.
+Earlier Authorize.Net-first sequencing below is historical. No credential, merchant
+binding, workload, tokenization or transaction is activated by this preference.
+Continue local property/procurement work without waiting for either provider. See
+PROPERTY_OPERATIONS_VALIDATION.md for the new local scope and outstanding gates.
+
 October 16, 2026 · implementation base `97e861f`. **REVIEW ONLY. No activation
 is authorized or performed. Release 1.0 NOT READY / NOT AUTHORIZED.** Draft PR #1
 stays open. The ten historical migrations, approved logo and frozen blocked Netlify

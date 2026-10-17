@@ -1,3 +1,5 @@
+import type { Operations } from '../../lib/operations';
+import { PropertyJobReview } from '../property/PropertyJobReview';
 import { useState, useCallback } from 'react';
 import type { Phase3Repository } from '../../lib/phase3';
 import type { CompanyProfile } from '../../domain/platform';
@@ -19,9 +21,11 @@ export function Jobs({
   repo,
   company,
   canManage,
+  operations,
   admin,
 }: {
   repo: Phase3Repository;
+  operations: Operations;
   company: CompanyProfile;
   canManage: boolean;
   admin: boolean;
@@ -99,6 +103,9 @@ export function Jobs({
           org={company.id}
           jobs={data.data?.labels ?? []}
         />
+      )}
+      {admin && operations.sample && (
+        <PropertyJobReview operations={operations} company={company} />
       )}
       {task.message && <p role="status">{task.message}</p>}
     </article>

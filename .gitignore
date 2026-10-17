@@ -20,3 +20,6 @@ artifacts/release/*.png
 
 # Local synthetic branding screenshots.
 artifacts/branding/
+
+# Local property operations previews.
+artifacts/property/*.png

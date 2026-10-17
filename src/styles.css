@@ -1337,3 +1337,100 @@ fieldset legend {
     white-space: nowrap;
   }
 }
+
+/* Property operations reuse company colors and the existing responsive shell. */
+.property-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 1.5rem;
+}
+.property-grid section,
+.finding-card,
+.inspection-editor,
+.property-gallery > div {
+  border: 1px solid var(--border, #d9e3df);
+  border-radius: 12px;
+  padding: 1.1rem;
+  margin: 1rem 0;
+  background: #fff;
+}
+.property-check {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 1rem 0;
+}
+.property-check input {
+  width: 1.2rem;
+  min-height: 1.2rem;
+  flex-shrink: 0;
+}
+.property-history {
+  display: grid;
+  gap: 0.5rem;
+}
+.property-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+.property-workspace .p3-tabs {
+  flex-wrap: wrap;
+}
+.property-workspace fieldset {
+  min-width: 0;
+  border: 1px solid #d9e3df;
+  border-radius: 10px;
+  padding: 1rem;
+}
+.property-workspace details {
+  border-bottom: 1px solid #d9e3df;
+  padding: 1rem 0;
+}
+.property-workspace summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.property-workspace input,
+.property-workspace select,
+.property-workspace textarea {
+  max-width: 100%;
+}
+.property-workspace table {
+  min-width: 640px;
+}
+@media (max-width: 800px) {
+  .property-grid,
+  .property-gallery {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .property-workspace .p3-actions {
+    flex-wrap: wrap;
+  }
+}
+.property-workspace .p3-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.property-workspace .p3-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 1rem 0;
+}
+.property-workspace .p3-table-wrap {
+  max-width: 100%;
+}
+.property-workspace .p3-table th,
+.property-workspace .p3-table td {
+  padding: 0.9rem;
+  text-align: left;
+  vertical-align: top;
+}
+@media (max-width: 800px) {
+  .property-workspace .p3-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

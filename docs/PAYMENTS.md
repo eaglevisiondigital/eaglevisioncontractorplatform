@@ -1,5 +1,14 @@
 # Eagle Vision Payments · phased design
 
+## Current owner direction · NMI preferred / providers disabled
+
+NMI is now preferred for the initial implementation, with owner account access
+expected separately. Authorize.Net remains optional and independently supported.
+Earlier Authorize.Net-first sequencing below is historical. No credential, merchant
+binding, workload, tokenization or transaction is activated by this preference.
+Continue local property/procurement work without waiting for either provider. See
+PROPERTY_OPERATIONS_VALIDATION.md for the new local scope and outstanding gates.
+
 Eagle Vision Payments orchestrates an approved gateway; it is not an acquiring
 bank. Every organization has a separately authorized merchant and settlement
 relationship. Phase 1 has no provider adapter, credential, live API or charge code.

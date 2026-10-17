@@ -15,6 +15,7 @@ export interface JobBaseline {
   currency: string;
 }
 export interface Expense {
+  adjusts_expense_id?: string | null;
   labor_worker_id?: string | null;
   material_import_line_ids?: string[];
   id: string;

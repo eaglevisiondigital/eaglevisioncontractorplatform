@@ -1,5 +1,14 @@
 # Release 1.0 · local provider foundation continuation
 
+## Current owner direction · NMI preferred / providers disabled
+
+NMI is now preferred for the initial implementation, with owner account access
+expected separately. Authorize.Net remains optional and independently supported.
+Earlier Authorize.Net-first sequencing below is historical. No credential, merchant
+binding, workload, tokenization or transaction is activated by this preference.
+Continue local property/procurement work without waiting for either provider. See
+PROPERTY_OPERATIONS_VALIDATION.md for the new local scope and outstanding gates.
+
 ## Superseding readiness increment
 
 The original sections below describe base93982ba. Their proposal-only SQL and

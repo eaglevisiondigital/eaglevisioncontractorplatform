@@ -25,6 +25,24 @@ export const modules = [
     detail: 'Tenant-scoped request records; public submission comes next',
     phase: 1,
   },
+  {
+    name: 'Property operations',
+    detail: 'Surveys, recurring visits and reviewed reports',
+    phase: 1,
+    previewOnly: true,
+  },
+  {
+    name: 'Supplier comparison',
+    detail: 'Reviewed quote and basket comparisons',
+    phase: 1,
+    previewOnly: true,
+  },
+  {
+    name: 'Client project view',
+    detail: 'Authorized property and project history',
+    phase: 1,
+    previewOnly: true,
+  },
   { name: 'Team', detail: 'Staff roles, invitations and access', phase: 1 },
   {
     name: 'Estimates',

@@ -247,3 +247,19 @@ Authorize.Net selection continuation:
 - Prepared private merchant candidate is disabled/unconfigured, not executable
   SQL or an approved binding. Sandbox Live Mode is provider test terminology;
   never treat production Test Mode as a sandbox. Preserve all activation gates.
+
+Property/procurement implementation continuity:
+
+- Read docs/PROPERTY_OPERATIONS_VALIDATION.md and PROPERTY_OPERATIONS_PROPOSAL.json.
+  NMI is preferred; Authorize.Net optional; neither activates. New scope is required
+  Release1.0 work, with hosted/media/consent acceptance still blocking launch.
+- New schema is server/property/schema.proposed.sql, outside the10 historical
+  migrations. Never apply it hosted or enable feature rows/private/public wrappers
+  from local passes. Native tests use disposable fixture grants only.
+- Preserve allowlisted immutable reports and explicit customer mappings; private
+  findings/costs/drafts never enter client projections. Media stays quarantined and
+  all upload/playback503. Do not claim actual scanning or camera/segment acceptance.
+- Quote comparisons are reviewed manual data, not retailer feeds; unknowns cannot
+  win. Proposed supplemental prices require scope/return/duplicate review and
+  cannot post customer balances or material expense twice. Production consent and
+  change-to-invoice conversion require later independent implementation/acceptance.

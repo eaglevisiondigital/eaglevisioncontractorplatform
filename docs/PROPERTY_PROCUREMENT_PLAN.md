@@ -1,5 +1,17 @@
 # Property media, supplier comparison and unbilled materials · integration plan
 
+## Implementation update · owner continuation from f2d5401
+
+This plan is now partially implemented locally; see PROPERTY_OPERATIONS_VALIDATION.md
+and the exact proposal manifest. Surveys/recurrence/checklists/review/reports,
+manual comparisons, unbilled decisions and unified synthetic client views have
+working interfaces and disposable database contracts. Media controls/ports exist
+but actual uploads/scanning/playback remain disabled. Connected persistence and
+genuine supplemental invoice conversion remain blockers. The owner now explicitly
+includes this scope in Release1.0; older “schedule undecided / NOT RUN” statements
+below describe the preceding planning checkpoint. NMI is preferred, optional
+Authorize.Net retained, no provider activated.
+
 October16,2026 · local requirements/design only. Product expansion is approved for
 isolated local development. This readiness increment plans it against existing
 modules; none of these additions is claimed implemented, hosted or launch-ready.

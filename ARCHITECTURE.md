@@ -545,3 +545,27 @@ custody/consent plan are prepared; secret installation and real account verifica
 remain gated. Three added synthetic capture/refund routing/redirect regressions
 change no runtime code or production endpoint policy. Existing separate gateway,
 tenant and application release boundaries remain intact.
+
+## Property operations and smart procurement · local extension
+
+See docs/PROPERTY_OPERATIONS_VALIDATION.md and PROPERTY_OPERATIONS_PROPOSAL.json.
+Inspections bind existing CRM customers/service locations/jobs; mutable visits
+produce immutable allowlisted report versions. Date-only recurring plans use a
+property timezone and anchored month arithmetic; scheduling is explicit. Private
+source media and future clean derivatives extend existing document quarantine,
+worker fencing and portal authority. No second object database or upload bypass.
+
+Manual quote comparisons bind immutable estimate lines, preserve supplier/source/
+date/unit provenance and use integer pack, tax and fixed acquisition fee arithmetic.
+Costs copy only through the existing draft revision/save path. Unbilled reviews
+consume approved job purchases/credits and original/approved scope, append decisions
+and create existing proposed job changes with no duplicate cost. Supplemental
+invoice drafts are nonpayable pending authorization; production conversion is gated.
+
+New private schema proposal is tested locally and remains outside the approved
+ten-migration history. Three private checked entry points remain unexposed, feature
+rows absent, no worker grants. Connected repository rejects access. The synthetic
+client projection reuses the current release engine for authorized selling scope,
+agreement/invoice/schedule models. Public catalog types remain unchanged until a
+formal reviewed migration adds a connected boundary. NMI is preferred; optional
+Authorize.Net tokens/accounts remain isolated and both providers off.

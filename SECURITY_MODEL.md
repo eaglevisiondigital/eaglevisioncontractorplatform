@@ -556,3 +556,32 @@ new synthetic tests cover production URL suggestions and redirect responses leav
 UNKNOWN without a second request. No credential, provider capability, RLS/grant,
 hosted setting, application gate or Netlify protection was altered. Read
 docs/AUTHORIZE_NET_ACCOUNT_SELECTION.md for findings and scope limits.
+
+## Property/inspection/procurement proposal · no hosted activation
+
+Eight proposed private tenant tables default deny with RLS, revoked client/service
+table access, composite parent references and indexed tenant reads. Fixed empty
+search paths and explicit EXECUTE grants constrain three private commands/read
+projections; no public API wrapper or feature row is installed. Current membership,
+module, assignment and resource locks serialize privilege revocation and CAS writes.
+Only management AAL2 can publish reports or review material billing. Assigned field
+staff may record/submit visits but cannot read procurement/pricing projections.
+Immutable reports, comparisons, reviews and pending invoice drafts append metadata
+audits without row content. Cross-tenant selectors/parent IDs confer no authority.
+
+Customer projection requires an exact active portal identity AND existing expiring
+internal-release authorization, locked and checked again against wall-clock time
+after waits. Only published reports and customer-authorized selling projections
+are returned; internal findings, draft estimates, supplier costs and payroll remain
+excluded. Future real portal activation needs independent hosted negative tests.
+
+Media metadata/customer visibility is never evidence of scanned bytes or access.
+Ingestion and playback always deny503. Quarantined source metadata cannot become
+clean or be read through a client table grant. Safe derivatives, sandbox enforcement,
+scanning, per-segment/range authorization, quotas, retention and private Storage
+acceptance are blocking dependencies. Existing supplier import restrictions remain.
+
+Proposed supplemental amounts cannot post receivables, execute a payment or change
+original issued estimates. Resolve duplicate receipts/credits/covered scope before
+review. Future exact customer consent and tax/ledger conversion require review;
+internal free-text approval is insufficient. See the validation report for limits.

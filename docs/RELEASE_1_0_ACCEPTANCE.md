@@ -1,5 +1,27 @@
 # Production Release 1.0 acceptance checklist
 
+## Latest local extension · property operations and procurement
+
+Owner direction now includes all rows below in Release1.0; none is launch-ready.
+NMI is preferred initially; Authorize.Net remains optional and independent. All
+provider capabilities remain disabled. Detailed evidence: PROPERTY_OPERATIONS_VALIDATION.md.
+
+| Required module                          | Implementation                                                                                                                           | Hosted validation | Security / dependency gate                                                                                          | Launch ready |
+| ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------- | ------------ |
+| Property surveys / recurring inspections | Local CRM/property/job plans, checklists/findings, review and immutable published versions                                               | NOT RUN           | Proposed private schema + connected adapter review; real Auth/role/RLS acceptance                                   | No           |
+| Photo / video / drone / progress media   | Responsive galleries/capture controls, private quarantine and processing ports; ingestion/playback503                                    | BLOCKED           | Scanner/full validators, isolated codec worker, quota reservations, private Storage and exact segment authorization | No           |
+| Four-supplier procurement comparison     | Local reviewed manual quotes, unit/pack/availability/tax/fee arithmetic, snapshot and draft estimate cost integration                    | NOT RUN           | Formal schema/connected authorization acceptance; supplier connectors disabled                                      | No           |
+| Unbilled material / supplemental scope   | Approved purchases/linked credits/scope flags, append-only dispositions and existing proposed changes; pending nonpayable invoice drafts | NOT RUN           | Genuine customer scope/price consent, tax review and checked change-to-issued-invoice conversion                    | No           |
+| Unified property client portal           | Synthetic allowlisted reports + existing published estimate/test agreement/invoice/schedule projections; connected hidden/off            | BLOCKED           | Exact customer identity, expiry/revocation, Storage/media and hosted portal acceptance; outside access closed       | No           |
+
+Latest local evidence:652 PASS/38 native-only skips,300 native PostgreSQL17 PASS,
+63 desktop/tablet/mobile PASS and26 frozen-artifact checks PASS. Counts overlap;
+no hosted/provider/media acceptance is inferred.
+
+All10 historical migrations and the frozen Netlify package are unchanged. New8-table
+SQL is a separately hashed local proposal, not execution approval. Prior hosted
+core results remain historical and do not certify these new modules.
+
 **Launch status: NOT READY / NOT AUTHORIZED.** Owner policy recorded October 15, 2026. Phases 1, 2, 3 and 3A are internal engineering milestones, not separate
 production releases. No outside contractor, employee or customer may receive access
 until the complete Release 1.0 workflow is substantially complete, fully tested,

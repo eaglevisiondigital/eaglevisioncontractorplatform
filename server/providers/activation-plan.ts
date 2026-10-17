@@ -62,6 +62,8 @@ export function sandboxReadinessPlan() {
     providerCalls: 0,
     credentialsRead: 0,
     releaseReady: false,
+    preferredGateway: 'nmi',
+    optionalGateways: ['authorize_net'],
     stages: structuredClone(activationStages),
   };
 }

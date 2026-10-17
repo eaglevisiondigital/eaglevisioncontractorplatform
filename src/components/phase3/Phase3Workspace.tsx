@@ -47,6 +47,7 @@ export function Phase3Workspace({
     return (
       <Jobs
         repo={repo}
+        operations={operations}
         company={company}
         canManage={access.estimates}
         admin={access.settings}
