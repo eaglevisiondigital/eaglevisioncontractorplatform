@@ -1,5 +1,31 @@
 # Production Release 1.0 acceptance checklist
 
+## Latest: P0 connected property readiness · LOCAL ONLY
+
+Read [PROPERTY_P0_SECURITY_REVIEW.md](PROPERTY_P0_SECURITY_REVIEW.md) and
+PROPERTY_P0_MIGRATION_REVIEW.json. Three caller-preserving connected adapters and
+pending SECURITY INVOKER wrappers are locally implemented, intentionally unwired.
+A separate private report-only, customer/property-bound, revocable one-hour lease
+avoids broader financial grants; session revocation/expiry is checked after waits.
+Two forward migrations are proposed: connected readiness and dependency-checked
+redundant-index cleanup. No hosted migration, feature/grant/fixture/session or
+Storage/provider/deployment action occurred. Hosted history remains11;500 catalog
+fingerprints and79 business-table digests match the installed baseline.
+
+The offline compiler prepares72 NOT RUN cases for the existing three companies.
+Private proposal:75 positive RPC steps/57 domain rows plus audit, including three
+explicitly new synthetic expenses; no old purchase is relabeled. Technical GO for
+separate exact dormant migration review/approval; activation and hosted acceptance
+remain blocked. See the review for hashes, cleanup and approval boundaries.
+
+Validation: `npm run check` PASS (708 tests,49 native-only skips; lint/types/
+migration checks/build included), PostgreSQL17.11:339 PASS/zero skips, browser63 PASS
+(desktop/tablet/mobile), formatting PASS, frozen package26 offline checks PASS.
+Counts overlap. Hosted property cases:72 NOT RUN; media/customer activation BLOCKED.
+
+Release1.0 NOT READY / NOT AUTHORIZED; PR#1 draft. Preserve all11 installed SQL files,
+all original manifests, approved logo, frozen Netlify package and all off gates.
+
 ## Latest: property schema installed / workflows remain off
 
 Read PROPERTY_MIGRATION_EXECUTION.md. Exact one-file development migration applied

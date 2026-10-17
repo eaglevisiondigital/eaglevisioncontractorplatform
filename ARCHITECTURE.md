@@ -604,3 +604,7 @@ client projection reuses the current release engine for authorized selling scope
 agreement/invoice/schedule models. Public catalog types remain unchanged until a
 formal reviewed migration adds a connected boundary. NMI is preferred; optional
 Authorize.Net tokens/accounts remain isolated and both providers off.
+
+## P0 connected property architecture
+
+Prepared adapters preserve the existing authenticated client and verified user; three invoker wrappers delegate narrow checked operations. A dedicated property/customer/user report lease avoids broad release grants. Actual Auth session row checks and post-wait wall-clock checks protect expiration/revocation. Types include pending RPCs; application navigation remains unwired. See docs/PROPERTY_P0_SECURITY_REVIEW.md. All11 installed migrations remain unchanged; two local forward proposals add no feature/access rows.

@@ -308,3 +308,7 @@ Property migration execution supersedes the preceding unapplied checkpoint:
   Review public invoker wrappers/connected repository and report-only authorization
   before exact feature/fixture/grant approvals;never silently enable broader release
   customer commands. Keep media503,financial execution and outside access disabled.
+
+## P0 continuity
+
+Read docs/PROPERTY_P0_SECURITY_REVIEW.md and PROPERTY_P0_MIGRATION_REVIEW.json. Two new LOCAL_ONLY_NOT_AUTHORIZED forward migrations and three unwired adapters exist; hosted history remains11. Never treat generated pending RPC types or local tests as hosted function availability. Preserve dedicated report-only leases, current Auth session/post-wait guards, private tables and all off gates. Existing72 scenarios are NOT RUN; private offline proposal includes75 positive steps/57 domain rows plus audit and three explicit synthetic expenses. No fixture/feature/lease/assignment/session activation or index DROP is authorized by P0. Preserve all11 historical SQL/manifests and frozen Netlify deployment.

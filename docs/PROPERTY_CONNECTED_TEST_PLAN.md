@@ -13,12 +13,12 @@ Exact development target/UID/company/resource mapping belongs only under ignored
 `.staging/`; reverify it before any later authorized run. Do not reprovision C1 or
 use a platform/service-role connection for application operations.
 
-| Stage                                        | Prepared scope                                                                                                                       | Separate requirement before execution                                                                                                                                            |
-| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| P0 · connected adapter review                | Three narrow caller-preserving entry points corresponding to the existing private command/workspace/portal; no generic table API     | Implement/test a separately reviewed forward migration for SECURITY INVOKER public wrappers and a fail-closed connected repository; no wrapper migration exists yet              |
-| P1 · staff inspection/procurement acceptance | Exactly three tenant feature rows, synthetic additions to existing CRM/location/estimate/job fixtures; genuine staff Auth/HTTP calls | Exact feature/fixture/operation manifest and owner approval; fresh owner-assisted existing-factor AAL2 for each owner; checked employee memberships only                         |
-| P2 · customer-safe reports                   | Existing customer identities, exact customer mappings and published-only projection                                                  | Separately reviewed, expiring internal-customer grant/mapping/environment scope; no implicit Action C grant. Current release environment remains disabled and grants remain zero |
-| P3 · media                                   | Negative503/quarantine checks only                                                                                                   | Actual upload/playback remain BLOCKED until scanner, private Storage, processing/runtime, quotas and leases pass independent review and receive exact activation approval        |
+| Stage                                        | Prepared scope                                                                                                                       | Separate requirement before execution                                                                                                                                                                                                 |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| P0 · connected adapter review                | Three narrow caller-preserving entry points corresponding to the existing private command/workspace/portal; no generic table API     | Implement/test a separately reviewed forward migration for SECURITY INVOKER public wrappers and a fail-closed connected repository; two local forward migrations and an unwired adapter now exist; see PROPERTY_P0_SECURITY_REVIEW.md |
+| P1 · staff inspection/procurement acceptance | Exactly three tenant feature rows, synthetic additions to existing CRM/location/estimate/job fixtures; genuine staff Auth/HTTP calls | Exact feature/fixture/operation manifest and owner approval; fresh owner-assisted existing-factor AAL2 for each owner; checked employee memberships only                                                                              |
+| P2 · customer-safe reports                   | Existing customer identities, exact customer mappings and published-only projection                                                  | Separately approved dedicated report-only lease and exact mapping; no financial release grant/environment activation. Current release environment remains disabled and grants remain zero                                             |
+| P3 · media                                   | Negative503/quarantine checks only                                                                                                   | Actual upload/playback remain BLOCKED until scanner, private Storage, processing/runtime, quotas and leases pass independent review and receive exact activation approval                                                             |
 
 P0 wrapper review must preserve private schema exclusion, current database
 permissions, server-verified genuine callers and final expiry checks. No owner key,
@@ -88,3 +88,14 @@ advisor finding. Prepare those local review artifacts without hosted activation.
 Only after review should the owner approve exact forward migration/feature/fixture
 and, separately, report-customer authorization scopes. No production, deployment,
 provider, messaging, legal-signature or payroll execution authority is implied.
+
+## P0 prepared payloads
+
+See PROPERTY_P0_SECURITY_REVIEW.md and `npm run property:acceptance-plan`. The offline compiler prepares the existing72 cases against private read-only bindings with no executor. Proposed75 positive RPC steps/57 domain rows plus audit include three new synthetic unmatched expenses, never changes to original purchases. New report-only leases require separate exact approval; no broader customer-release grants. Original-row fingerprints, current revisions, role assignments, quotation dates and genuine sessions must be refreshed before any hosted run. All72 remain NOT RUN.
+
+Read-only P0 role review binds18 existing aliases: all three owners/estimators and
+selected assigned-field workers are active; three revoked actors remain inactive.
+No memberships/assignments need adding. All three selected customer mappings are
+absent. A future exact scope must separately review three feature rows, three
+mapping-only records and three15-minute report leases; none is created or approved
+by this package. Do not enable broader financial release grants to create mappings.

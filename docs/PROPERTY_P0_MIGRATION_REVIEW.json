@@ -1,0 +1,28 @@
+{
+  "status": "LOCAL_ONLY_NOT_AUTHORIZED",
+  "hostedExecutionAuthorized": false,
+  "activationAuthorized": false,
+  "installedBundleSha256": "15a2b9c67766564e91efe7cf3347a7138a10b1a722a5d295ce1f7f3613a2f17e",
+  "migrations": [
+    {
+      "file": "20261017024327_property_connected_readiness.sql",
+      "sha256": "6bb0b9bf22ec1079d7aa5f74c6e33e14534cc54e30e9034c33949f786cfd3ac9"
+    },
+    {
+      "file": "20261017024328_property_duplicate_index_cleanup.sql",
+      "sha256": "3603fe0482f46b9733a0321cd9009cb1f291993fcbede7132e1bdf721776fdfc"
+    }
+  ],
+  "proposedBundleSha256": "5349a3b175a55bd6f360819c7942fc74f69d9a29c1765a058e20df1319df6dea",
+  "seeds": [],
+  "roles": [],
+  "featureRows": 0,
+  "reportAccessRows": 0,
+  "publicWrappers": [
+    "property_command",
+    "property_workspace",
+    "property_reports"
+  ],
+  "report": "docs/PROPERTY_P0_SECURITY_REVIEW.md",
+  "fullProposedBundleSha256": "ef6151b4c111f3907205feff27b6f343e34d785e4364209ad7a9f85f2b4ff12d"
+}

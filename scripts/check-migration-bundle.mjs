@@ -77,10 +77,15 @@ if (
   JSON.stringify(historical) !==
     JSON.stringify(property.historicalMigrations) ||
   hash(historical) !== property.historicalBundleSha256 ||
-  JSON.stringify(migrations.slice(historical.length)) !==
-    JSON.stringify(property.migrations) ||
+  JSON.stringify(
+    migrations.slice(
+      historical.length,
+      historical.length + property.migrations.length,
+    ),
+  ) !== JSON.stringify(property.migrations) ||
   hash(property.migrations) !== property.pendingBundleSha256 ||
-  hash(migrations) !== property.fullProposedBundleSha256 ||
+  hash(migrations.slice(0, historical.length + property.migrations.length)) !==
+    property.fullProposedBundleSha256 ||
   JSON.stringify(property.seeds) !== '[]' ||
   JSON.stringify(property.roles) !== '[]' ||
   property.featureRows !== 0 ||
@@ -112,4 +117,34 @@ if (
   );
 console.log(
   `One separately inventoried property migration is ${propertyApplied ? 'recorded DEVELOPMENT APPLIED / FEATURES DISABLED' : 'UNAPPLIED / NOT AUTHORIZED'}; ten historical files preserved. Offline integrity is not replay or activation authority.`,
+);
+
+const p0 = JSON.parse(
+  readFileSync('docs/PROPERTY_P0_MIGRATION_REVIEW.json', 'utf8'),
+);
+const installed = migrations.slice(0, 11),
+  proposed = migrations.slice(11);
+if (
+  p0.status !== 'LOCAL_ONLY_NOT_AUTHORIZED' ||
+  p0.hostedExecutionAuthorized !== false ||
+  p0.activationAuthorized !== false ||
+  hash(installed) !== p0.installedBundleSha256 ||
+  JSON.stringify(proposed) !== JSON.stringify(p0.migrations) ||
+  hash(proposed) !== p0.proposedBundleSha256 ||
+  hash(migrations) !== p0.fullProposedBundleSha256 ||
+  p0.featureRows !== 0 ||
+  p0.reportAccessRows !== 0 ||
+  JSON.stringify(p0.publicWrappers) !==
+    JSON.stringify([
+      'property_command',
+      'property_workspace',
+      'property_reports',
+    ]) ||
+  p0.migrations.length !== 2 ||
+  JSON.stringify(p0.seeds) !== '[]' ||
+  JSON.stringify(p0.roles) !== '[]'
+)
+  throw Error('Unreviewed P0 forward proposals or activation');
+console.log(
+  'Two P0 forward proposals LOCAL ONLY / NOT AUTHORIZED; eleven installed files preserved.',
 );

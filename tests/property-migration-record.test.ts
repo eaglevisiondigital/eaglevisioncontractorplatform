@@ -28,10 +28,15 @@ function fixture() {
   for (const f of [
     'docs/MIGRATION_BUNDLE.json',
     'docs/PROVIDER_MIGRATION_REVIEW.json',
+    'docs/PROPERTY_P0_MIGRATION_REVIEW.json',
     'scripts/check-migration-bundle.mjs',
-    ...[...review.historicalMigrations, ...review.migrations].map(
-      (m: { file: string }) => 'supabase/migrations/' + m.file,
-    ),
+    ...[
+      ...review.historicalMigrations,
+      ...review.migrations,
+      ...JSON.parse(
+        readFileSync('docs/PROPERTY_P0_MIGRATION_REVIEW.json', 'utf8'),
+      ).migrations,
+    ].map((m: { file: string }) => 'supabase/migrations/' + m.file),
   ])
     copyFileSync(f, join(root, f));
   const save = () =>
@@ -90,5 +95,21 @@ it('rejects an extra unreviewed migration beside the applied bundle', () => {
     join(f.root, 'supabase/migrations/20990101000000_unapproved.sql'),
     'select 1;',
   );
+  expect(f.run().status).not.toBe(0);
+});
+
+it.each([
+  'featureRows',
+  'reportAccessRows',
+  'fullProposedBundleSha256',
+  'publicWrappers',
+] as const)('rejects P0 proposed scope drift in %s', (key) => {
+  const f = fixture();
+  const path = join(f.root, 'docs/PROPERTY_P0_MIGRATION_REVIEW.json');
+  const p0 = JSON.parse(readFileSync(path, 'utf8'));
+  if (key === 'fullProposedBundleSha256') p0[key] = '0'.repeat(64);
+  else if (key === 'publicWrappers') p0[key].push('unreviewed');
+  else p0[key] = 1;
+  writeFileSync(path, JSON.stringify(p0));
   expect(f.run().status).not.toBe(0);
 });

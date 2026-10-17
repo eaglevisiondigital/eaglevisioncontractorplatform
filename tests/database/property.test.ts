@@ -3,8 +3,11 @@ import { beforeAll, afterAll, beforeEach, afterEach, it, expect } from 'vitest';
 import { createTestDatabase, type TestDatabase } from './engine';
 import { blankEstimate } from '../../src/domain/estimating/calculation';
 import type { EstimateBundle } from '../../src/domain/estimating/types';
+import { preparePropertyAcceptance } from '../../server/property/acceptance-plan';
 const db = createTestDatabase();
 const uid = () => crypto.randomUUID();
+const reportUsers = [uid(), uid(), uid()];
+const sessions = new Map<string, string>();
 const orgs = [uid(), uid(), uid()],
   owners = [uid(), uid(), uid()],
   customers = [uid(), uid(), uid()],
@@ -21,6 +24,7 @@ async function actor(d: TestDatabase = db, user = owners[0], aal = 'aal2') {
   await d.query("select set_config('request.jwt.claims',$1,false)", [
     JSON.stringify({
       sub: user,
+      session_id: sessions.get(user),
       aal,
       exp: Math.floor(Date.now() / 1000) + 3600,
     }),
@@ -132,11 +136,18 @@ beforeAll(async () => {
         .digest('hex'),
     ).toBe(manifest.migrations[0].sha256);
   }
-  for (const u of [...owners, field, estimator])
+  for (const u of [...owners, field, estimator, ...reportUsers]) {
     await db.query(
       'insert into auth.users(id,email,email_confirmed_at) values($1,$2,clock_timestamp())',
       [u, `${u}@example.test`],
     );
+    const session = uid();
+    sessions.set(u, session);
+    await db.query('insert into auth.sessions(id,user_id) values($1,$2)', [
+      session,
+      u,
+    ]);
+  }
   for (let i = 0; i < 3; i++) {
     await db.query(
       "insert into organizations(id,name,slug,industry,status) values($1,$2,$3,'construction','active')",
@@ -803,6 +814,305 @@ it('review: missing or expired signed session expiry cannot open property data',
     await denied('select private.property_workspace($1)', [orgs[0]]);
   }
 });
+
+async function reportAccess(
+  index = 0,
+  expires = "clock_timestamp()+interval '10 minutes'",
+) {
+  await db.exec('reset role');
+  await db.query('insert into portal_identities values($1,$2,$3,true)', [
+    orgs[index],
+    customers[index],
+    reportUsers[index],
+  ]);
+  await db.query(
+    'insert into private.property_report_access(organization_id,customer_id,location_id,user_id,expires_at,approval_reference) values($1,$2,$3,$4,' +
+      expires +
+      ",'DISPOSABLE LOCAL ONLY')",
+    [orgs[index], customers[index], locations[index], reportUsers[index]],
+  );
+  await actor(db, reportUsers[index], 'aal1');
+}
+async function reportRead(d = db, index = 0) {
+  return (
+    await d.query<{ v: Record<string, unknown> }>(
+      'select public.property_reports($1,$2,$3) v',
+      [orgs[index], customers[index], locations[index]],
+    )
+  ).rows[0].v;
+}
+it('P0 invoker wrappers preserve caller membership, MFA and default-off controls', async () => {
+  const value = await rpc<{ plans: unknown[] }>('property_workspace', [
+    orgs[0],
+  ]);
+  expect(value.plans.length).toBeGreaterThan(0);
+  await actor(db, owners[0], 'aal1');
+  await denied('select public.property_workspace($1)', [orgs[0]]);
+  await actor();
+  await denied('select public.property_workspace($1)', [orgs[1]]);
+  await db.exec('reset role');
+  await db.query(
+    'update private.property_features set enabled=false where organization_id=$1',
+    [orgs[0]],
+  );
+  await actor();
+  await denied('select public.property_workspace($1)', [orgs[0]]);
+});
+it('P0 public entry points are invoker only; report access is private/default deny', async () => {
+  await db.exec('reset role');
+  const f = (
+    await db.query(
+      "select proname,prosecdef from pg_proc where pronamespace='public'::regnamespace and proname in ('property_command','property_workspace','property_reports')",
+    )
+  ).rows;
+  expect(f).toHaveLength(3);
+  expect(f.every((x) => x.prosecdef === false)).toBe(true);
+  for (const role of ['anon', 'authenticated', 'service_role']) {
+    await db.exec('reset role;set role ' + role);
+    await denied('select * from private.property_report_access');
+  }
+});
+it('P0 report-only access works with release mode off and cannot enable financial RPCs', async () => {
+  await command('save_visit', visits[0], 1, content());
+  await command('submit_visit', visits[0], 2);
+  await command('publish_visit', visits[0], 3);
+  await reportAccess();
+  const page = await reportRead();
+  expect(Object.keys(page).sort()).toEqual(
+    [
+      'organization_id',
+      'customer_id',
+      'location_id',
+      'reports',
+      'media',
+      'mode',
+      'report_only',
+    ].sort(),
+  );
+  expect(page.reports).toHaveLength(1);
+  expect(JSON.stringify(page)).not.toContain('SECRET');
+  expect(page.media).toEqual([]);
+  await denied('select public.release_workspace($1)', [orgs[0]]);
+  await denied('select public.property_workspace($1)', [orgs[0]]);
+  await denied('select public.property_reports($1,$2,$3)', [
+    orgs[1],
+    customers[1],
+    locations[1],
+  ]);
+  await denied('select public.property_reports($1,$2,$3)', [
+    orgs[0],
+    customers[0],
+    locations[1],
+  ]);
+});
+it('P0 broad release grants cannot substitute for dedicated report authorization', async () => {
+  await db.exec('reset role');
+  await db.query('insert into portal_identities values($1,$2,$3,true)', [
+    orgs[0],
+    customers[0],
+    reportUsers[0],
+  ]);
+  await db.exec(
+    "update private.release_environment set mode='internal-development',approval_reference='DISPOSABLE ONLY'",
+  );
+  await db.query(
+    "insert into private.release_test_users values($1,$2,'customer',clock_timestamp()+interval '10 minutes')",
+    [orgs[0], reportUsers[0]],
+  );
+  await actor(db, reportUsers[0], 'aal1');
+  await denied('select public.property_reports($1,$2,$3)', [
+    orgs[0],
+    customers[0],
+    locations[0],
+  ]);
+});
+it('P0 revoked customer mapping and revoked report lease are immediately denied', async () => {
+  await reportAccess();
+  await reportRead();
+  await db.exec('reset role');
+  await db.query(
+    'update portal_identities set active=false where organization_id=$1',
+    [orgs[0]],
+  );
+  await actor(db, reportUsers[0], 'aal1');
+  await denied('select public.property_reports($1,$2,$3)', [
+    orgs[0],
+    customers[0],
+    locations[0],
+  ]);
+  await db.exec('reset role');
+  await db.query(
+    'update portal_identities set active=true where organization_id=$1',
+    [orgs[0]],
+  );
+  await db.query(
+    'update private.property_report_access set revoked_at=clock_timestamp() where organization_id=$1',
+    [orgs[0]],
+  );
+  await actor(db, reportUsers[0], 'aal1');
+  await denied('select public.property_reports($1,$2,$3)', [
+    orgs[0],
+    customers[0],
+    locations[0],
+  ]);
+});
+it('P0 report leases cannot be extended, moved or deleted even through maintenance', async () => {
+  await reportAccess();
+  await db.exec('reset role');
+  await denied(
+    "update private.property_report_access set expires_at=expires_at+interval '1 minute'",
+  );
+  await denied('delete from private.property_report_access');
+  await denied('update private.property_report_access set location_id=$1', [
+    locations[1],
+  ]);
+});
+it('P0 report access foreign keys reject cross-company/customer/property bindings', async () => {
+  await db.exec('reset role');
+  await db.query('insert into portal_identities values($1,$2,$3,true)', [
+    orgs[0],
+    customers[0],
+    reportUsers[0],
+  ]);
+  await denied(
+    "insert into private.property_report_access(organization_id,customer_id,location_id,user_id,expires_at,approval_reference) values($1,$2,$3,$4,clock_timestamp()+interval '10 minutes','DISPOSABLE ONLY')",
+    [orgs[0], customers[0], locations[1], reportUsers[0]],
+  );
+});
+it('P0 revoked sessions and expired not_after cannot invoke prepared application entry points', async () => {
+  await db.exec('reset role');
+  await db.query(
+    "update auth.sessions set not_after=clock_timestamp()-interval '1 second' where id=$1",
+    [sessions.get(owners[0])],
+  );
+  await actor();
+  await denied('select public.property_workspace($1)', [orgs[0]]);
+  await db.exec('reset role');
+  await db.query('delete from auth.sessions where id=$1', [
+    sessions.get(owners[0]),
+  ]);
+  await actor();
+  await denied('select public.property_workspace($1)', [orgs[0]]);
+});
+it('P0 malformed/missing session claims and unverified customers are denied', async () => {
+  await reportAccess();
+  await db.exec('reset role');
+  await db.query('update auth.users set email_confirmed_at=null where id=$1', [
+    reportUsers[0],
+  ]);
+  await actor(db, reportUsers[0], 'aal1');
+  await denied('select public.property_reports($1,$2,$3)', [
+    orgs[0],
+    customers[0],
+    locations[0],
+  ]);
+  await db.exec('reset role');
+  await db.query("select set_config('request.jwt.claims',$1,false)", [
+    JSON.stringify({
+      sub: owners[0],
+      aal: 'aal2',
+      exp: Math.floor(Date.now() / 1000) + 3600,
+      session_id: 'not-a-session',
+    }),
+  ]);
+  await db.exec('set role authenticated');
+  await denied('select public.property_workspace($1)', [orgs[0]]);
+});
+it('P0 report-only function has no financial or broad release dependency', async () => {
+  await db.exec('reset role');
+  const d = (
+    await db.query(
+      "select pg_get_functiondef('private.property_published_reports(uuid,uuid,uuid,uuid)'::regprocedure) body",
+    )
+  ).rows[0].body as string;
+  expect(d).not.toMatch(/release_|invoice|payment|payroll/);
+  await reportAccess();
+  await denied('select public.property_reports($1,$2,$3,$4)', [
+    orgs[0],
+    customers[0],
+    locations[0],
+    uid(),
+  ]);
+});
+
+it('P0 renewed access appends a new short lease only after audited revocation', async () => {
+  await reportAccess();
+  await db.exec('reset role');
+  await denied(
+    "insert into private.property_report_access(organization_id,customer_id,location_id,user_id,expires_at,approval_reference) values($1,$2,$3,$4,clock_timestamp()+interval '10 minutes','DISPOSABLE RENEWAL')",
+    [orgs[0], customers[0], locations[0], reportUsers[0]],
+  );
+  await db.query(
+    'update private.property_report_access set revoked_at=clock_timestamp() where organization_id=$1',
+    [orgs[0]],
+  );
+  await db.query(
+    "insert into private.property_report_access(organization_id,customer_id,location_id,user_id,expires_at,approval_reference) values($1,$2,$3,$4,clock_timestamp()+interval '10 minutes','DISPOSABLE RENEWAL')",
+    [orgs[0], customers[0], locations[0], reportUsers[0]],
+  );
+  expect(
+    Number(
+      (await db.query('select count(*) n from private.property_report_access'))
+        .rows[0].n,
+    ),
+  ).toBe(2);
+  await actor(db, reportUsers[0], 'aal1');
+  await reportRead();
+});
+it('P0 an owner who is also a report customer still needs AAL2', async () => {
+  await db.exec('reset role');
+  await db.query('insert into portal_identities values($1,$2,$3,true)', [
+    orgs[0],
+    customers[0],
+    owners[0],
+  ]);
+  await db.query(
+    "insert into private.property_report_access(organization_id,customer_id,location_id,user_id,expires_at,approval_reference) values($1,$2,$3,$4,clock_timestamp()+interval '10 minutes','DISPOSABLE OWNER CUSTOMER')",
+    [orgs[0], customers[0], locations[0], owners[0]],
+  );
+  await actor(db, owners[0], 'aal1');
+  await denied('select public.property_reports($1,$2,$3)', [
+    orgs[0],
+    customers[0],
+    locations[0],
+  ]);
+  await actor();
+  await reportRead();
+});
+it('P0 report pages are bounded and cursor-scoped to the authorized property', async () => {
+  await command('save_visit', visits[0], 1, content());
+  await command('submit_visit', visits[0], 2);
+  await db.exec('reset role');
+  for (let version = 1; version <= 60; version++)
+    await db.query(
+      'insert into private.inspection_reports(organization_id,visit_id,customer_id,location_id,version,snapshot) select $1,v.id,$3,$4,$5,private.property_report_snapshot(v.content,v.visited_on,v.phase) from private.inspection_visits v where v.id=$2',
+      [orgs[0], visits[0], customers[0], locations[0], version],
+    );
+  await reportAccess();
+  const page = await reportRead();
+  const rows = page.reports as { id: string }[];
+  expect(rows).toHaveLength(50);
+  const next = (
+    await db.query<{ v: { reports: { id: string }[] } }>(
+      'select public.property_reports($1,$2,$3,$4) v',
+      [orgs[0], customers[0], locations[0], rows.at(-1)!.id],
+    )
+  ).rows[0].v;
+  expect(next.reports).toHaveLength(10);
+  expect(new Set([...rows, ...next.reports].map((r) => r.id)).size).toBe(60);
+});
+it('P0 operator lease insertion cannot exceed the bounded hour window', async () => {
+  await db.exec('reset role');
+  await db.query('insert into portal_identities values($1,$2,$3,true)', [
+    orgs[0],
+    customers[0],
+    reportUsers[0],
+  ]);
+  await denied(
+    "insert into private.property_report_access(organization_id,customer_id,location_id,user_id,expires_at,approval_reference) values($1,$2,$3,$4,clock_timestamp()+interval '2 hours','DISPOSABLE TOO LONG')",
+    [orgs[0], customers[0], locations[0], reportUsers[0]],
+  );
+});
 it.skipIf(!db.fork)(
   'review native: JWT expiry during a visit lock wait rolls back all write/audit effects',
   async () => {
@@ -1286,3 +1596,292 @@ it.skipIf(!db.fork)(
     }
   },
 );
+
+it.skipIf(!db.fork)(
+  'P0 native: report lease expiry while blocked on its row denies the projection',
+  async () => {
+    await db.exec('rollback;reset role');
+    const user = uid(),
+      session = uid();
+    sessions.set(user, session);
+    await db.query('insert into auth.users values($1,$2,clock_timestamp())', [
+      user,
+      `${user}@example.test`,
+    ]);
+    await db.query('insert into auth.sessions(id,user_id) values($1,$2)', [
+      session,
+      user,
+    ]);
+    await db.query('insert into portal_identities values($1,$2,$3,true)', [
+      orgs[0],
+      customers[0],
+      user,
+    ]);
+    await db.query(
+      "insert into private.property_report_access(organization_id,customer_id,location_id,user_id,expires_at,approval_reference) values($1,$2,$3,$4,clock_timestamp()+interval '1 second','DISPOSABLE NATIVE WAIT')",
+      [orgs[0], customers[0], locations[0], user],
+    );
+    await db.exec('begin');
+    await db.query(
+      'select id from private.property_report_access where user_id=$1 for update',
+      [user],
+    );
+    const peer = await db.fork!();
+    try {
+      const pid = Number(
+        (await peer.query('select pg_backend_pid() id')).rows[0].id,
+      );
+      await actor(peer, user, 'aal1');
+      const pending = reportRead(peer).then(
+        () => false,
+        () => true,
+      );
+      await blocked(db, pid);
+      await db.exec('select pg_sleep(1.1);commit');
+      expect(await pending).toBe(true);
+    } finally {
+      await db.exec('rollback');
+      await peer.close();
+    }
+  },
+);
+it.skipIf(!db.fork)(
+  'P0 native: mapping revoked during a mapping lock wait denies customer report access',
+  async () => {
+    await db.exec('rollback;reset role');
+    const user = uid(),
+      session = uid();
+    sessions.set(user, session);
+    await db.query('insert into auth.users values($1,$2,clock_timestamp())', [
+      user,
+      `${user}@example.test`,
+    ]);
+    await db.query('insert into auth.sessions(id,user_id) values($1,$2)', [
+      session,
+      user,
+    ]);
+    await db.query('insert into portal_identities values($1,$2,$3,true)', [
+      orgs[0],
+      customers[0],
+      user,
+    ]);
+    await db.query(
+      "insert into private.property_report_access(organization_id,customer_id,location_id,user_id,expires_at,approval_reference) values($1,$2,$3,$4,clock_timestamp()+interval '10 minutes','DISPOSABLE NATIVE WAIT')",
+      [orgs[0], customers[0], locations[0], user],
+    );
+    await db.exec('begin');
+    await db.query(
+      'update portal_identities set active=false where user_id=$1',
+      [user],
+    );
+    const peer = await db.fork!();
+    try {
+      const pid = Number(
+        (await peer.query('select pg_backend_pid() id')).rows[0].id,
+      );
+      await actor(peer, user, 'aal1');
+      const pending = reportRead(peer).then(
+        () => false,
+        () => true,
+      );
+      await blocked(db, pid);
+      await db.exec('commit');
+      expect(await pending).toBe(true);
+    } finally {
+      await db.exec('rollback');
+      await peer.close();
+    }
+  },
+);
+it.skipIf(!db.fork)(
+  'P0 native: session not_after expiry while awaiting a visit lock rolls back every public command effect',
+  async () => {
+    await db.exec('rollback;reset role');
+    await actor();
+    const plan = await command('create_plan', null, null, {
+      customer_id: customers[0],
+      location_id: locations[0],
+      job_id: jobs[0],
+      name: 'Public session deadline',
+      cadence: 'once',
+      interval_days: 1,
+      timezone: 'UTC',
+      starts_on: '2027-01-01',
+      checklist: content().checklist,
+    });
+    const visit = await command('create_visit', plan, null, {
+      visited_on: '2027-01-01',
+      phase: 'before',
+    });
+    await db.exec('reset role');
+    const audit = Number(
+      (await db.query('select count(*) n from activity_events')).rows[0].n,
+    );
+    await db.query(
+      "update auth.sessions set not_after=clock_timestamp()+interval '1 second' where id=$1",
+      [sessions.get(owners[0])],
+    );
+    await db.exec('begin');
+    await db.query(
+      'select id from private.inspection_visits where id=$1 for update',
+      [visit],
+    );
+    const peer = await db.fork!();
+    try {
+      const pid = Number(
+        (await peer.query('select pg_backend_pid() id')).rows[0].id,
+      );
+      await actor(peer);
+      const pending = peer
+        .query('select public.property_command($1,$2,$3,$4,$5)', [
+          orgs[0],
+          'save_visit',
+          visit,
+          1,
+          content(),
+        ])
+        .then(
+          () => false,
+          () => true,
+        );
+      await blocked(db, pid);
+      await db.exec('select pg_sleep(1.1);commit');
+      expect(await pending).toBe(true);
+      expect(
+        (
+          await db.query(
+            'select lock_revision from private.inspection_visits where id=$1',
+            [visit],
+          )
+        ).rows[0].lock_revision,
+      ).toBe(1);
+      expect(
+        Number(
+          (await db.query('select count(*) n from activity_events')).rows[0].n,
+        ),
+      ).toBe(audit);
+    } finally {
+      await db.exec('rollback');
+      await db.query('update auth.sessions set not_after=null where id=$1', [
+        sessions.get(owners[0]),
+      ]);
+      await peer.close();
+    }
+  },
+);
+
+it('executes the offline compiled three-company fixture proposals locally through the narrow RPCs', async () => {
+  await db.exec('reset role');
+  // Native revocation cases deliberately commit fixture changes. Restore only these
+  // disposable positive-case owners; this is never a hosted acceptance operation.
+  for (let i = 0; i < 3; i++)
+    await db.query(
+      'update memberships set active=true where organization_id=$1 and user_id=$2',
+      [orgs[i], owners[i]],
+    );
+  const revisions: number[] = [],
+    reportCounts: number[] = [];
+  for (let i = 0; i < 3; i++) {
+    revisions.push(
+      (
+        await db.query<{ lock_revision: number }>(
+          'select lock_revision from jobs where id=$1',
+          [jobs[i]],
+        )
+      ).rows[0].lock_revision,
+    );
+    reportCounts.push(
+      (
+        await db.query<{ n: number }>(
+          'select count(*)::int n from private.inspection_reports where organization_id=$1',
+          [orgs[i]],
+        )
+      ).rows[0].n,
+    );
+  }
+  await actor();
+  const plan = preparePropertyAcceptance(
+    orgs.map((organization_id, i) => ({
+      organization_id,
+      customer_id: customers[i],
+      location_id: locations[i],
+      job_id: jobs[i],
+      estimate_version_id: versions[i].version.id,
+      material_line_id: versions[i].version.payload.lines[0].id,
+      expense_id: null,
+      job_revision: revisions[i],
+      existing_material_reviews: 0,
+      net_approved_cost_minor: 10001,
+      currency: 'USD',
+      quoted_at: '2026-10-16T12:00:00Z',
+      quote_expires_at: '2026-11-16T12:00:00Z',
+      baseline_fingerprints: { original: 'a'.repeat(32) },
+    })),
+    'local-p0-compiled',
+  );
+  await rpc('assign_job', [orgs[0], jobs[0], field, true]);
+  for (let i = 0; i < 3; i++) {
+    const results = new Map<string, unknown>();
+    const resolve = (v: unknown): unknown => {
+      if (v && typeof v === 'object' && 'result' in v && 'field' in v) {
+        const ref = v as { result: string; field: string };
+        const value = results.get(ref.result);
+        return ref.field === '$value'
+          ? value
+          : (value as Record<string, unknown>)[ref.field];
+      }
+      if (Array.isArray(v)) return v.map(resolve);
+      if (v && typeof v === 'object')
+        return Object.fromEntries(
+          Object.entries(v).map(([k, x]) => [k, resolve(x)]),
+        );
+      return v;
+    };
+    for (const step of plan.companies[i].steps) {
+      await actor(
+        db,
+        i === 0 && step.actor === 'assigned-field'
+          ? field
+          : i === 0 && step.actor === 'estimator'
+            ? estimator
+            : owners[i],
+        i > 0 || step.actor === 'owner' ? 'aal2' : 'aal1',
+      );
+      try {
+        results.set(
+          step.id,
+          await rpc(step.rpc, Object.values(step.args).map(resolve)),
+        );
+      } catch (error) {
+        throw new Error(`Compiled fixture ${i}:${step.id} failed`, {
+          cause: error,
+        });
+      }
+    }
+    await db.exec('reset role');
+    expect(
+      (
+        await db.query<{ n: number }>(
+          'select count(*)::int n from private.inspection_reports where organization_id=$1',
+          [orgs[i]],
+        )
+      ).rows[0].n,
+    ).toBe(reportCounts[i] + 4);
+    expect(
+      (
+        await db.query<{ selling_minor: number }>(
+          'select selling_minor from private.supplemental_invoice_drafts where organization_id=$1 and decision_id=$2',
+          [orgs[i], (results.get('decision-proposed') as { id: string }).id],
+        )
+      ).rows[0].selling_minor,
+    ).toBe(11251);
+    expect(
+      (
+        await db.query<{ lock_revision: number }>(
+          'select lock_revision from jobs where organization_id=$1 and id=$2',
+          [orgs[i], jobs[i]],
+        )
+      ).rows[0].lock_revision,
+    ).toBe(revisions[i] + 5);
+  }
+});

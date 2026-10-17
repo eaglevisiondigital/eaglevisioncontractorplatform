@@ -2024,6 +2024,26 @@ export interface Database {
         };
         Returns: Json;
       };
+      property_command: {
+        Args: {
+          p_org: string | null;
+          p_action: string | null;
+          p_id: string | null;
+          p_lock: number | null;
+          p: Json | null;
+        };
+        Returns: Json;
+      };
+      property_reports: {
+        Args: {
+          p_org: string | null;
+          p_customer: string | null;
+          p_location: string | null;
+          p_before?: string | null;
+        };
+        Returns: Json;
+      };
+      property_workspace: { Args: { p_org: string | null }; Returns: Json };
       propose_job_change: {
         Args: {
           p_org: string | null;

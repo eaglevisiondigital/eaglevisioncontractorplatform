@@ -710,3 +710,7 @@ Read docs/AUTHORIZE_NET_ACCOUNT_SELECTION.md for precise evidence/limits/owner s
    role is activated. Formal migration and target-specific approval remain separate.
 8. Local policy limits do not certify scanner/runtime/storage. All ingestion and
    playback remain503; no hosted or provider call is needed for this increment.
+
+## 2026-10-17 · P0 connected property readiness
+
+Prepare three narrow caller-preserving RPC adapters and invoker wrappers, without wiring a connected UI prematurely. Use a dedicated report-only one-hour revocable lease rather than financial release-test grants. Keep original unique constraint index location_customer_unique; propose a separately reviewed dependency-checked forward removal of redundant property_location_customer. Prepare72 NOT RUN scenarios through an offline compiler; explicitly propose new unmatched synthetic expenses rather than relabel existing purchases. Two dormant migration proposals require separate exact approval; hosted remains11 and all features/providers/media off.

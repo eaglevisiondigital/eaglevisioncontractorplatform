@@ -629,3 +629,7 @@ Proposed supplemental amounts cannot post receivables, execute a payment or chan
 original issued estimates. Resolve duplicate receipts/credits/covered scope before
 review. Future exact customer consent and tax/ledger conversion require review;
 internal free-text approval is insufficient. See the validation report for limits.
+
+## P0 report-only authorization review
+
+The proposed report path requires a verified identity, active exact portal mapping, active property feature, estimating module and immutable/revocable lease capped at one hour. Owner/admin still requires AAL2. No client table privilege, broad financial release grant, generic CRUD, media access or service-key substitution. Session row locks and final expiry checks deny stale authorization after waits. Local native negative/concurrency evidence and remaining hosted gates are in docs/PROPERTY_P0_SECURITY_REVIEW.md; no hosted activation is approved.

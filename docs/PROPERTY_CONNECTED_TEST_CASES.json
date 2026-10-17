@@ -154,5 +154,17 @@
       "expected": "Real ingestion/playback remain503; no fake scanner success"
     }
   ],
-  "report": "docs/PROPERTY_CONNECTED_TEST_PLAN.md"
+  "report": "docs/PROPERTY_CONNECTED_TEST_PLAN.md",
+  "p0Preparation": {
+    "compiler": "server/property/acceptance-plan.ts",
+    "review": "docs/PROPERTY_P0_SECURITY_REVIEW.md",
+    "hostedExecutor": false,
+    "hostedExecutionAuthorized": false,
+    "positiveFixtureSteps": 75,
+    "proposedDomainRows": 57,
+    "auditRows": "append-only, measured during future authorized execution",
+    "featureRowsCreated": 0,
+    "reportLeasesCreated": 0,
+    "hostedExecuted": 0
+  }
 }
