@@ -205,3 +205,69 @@ test('CRM-bound inspection plans and scheduled visits remain editable after savi
     'Synthetic weekly follow-up',
   );
 });
+test('report-only customer preview shows recurring history without private findings or financial authority', async ({
+  page,
+}, info) => {
+  await page.goto('/preview/property-portal');
+  await expect(
+    page.getByText('SYNTHETIC CUSTOMER REPORT PREVIEW', { exact: false }),
+  ).toBeVisible();
+  for (const org of [
+    'sample-property',
+    'sample-construction',
+    'sample-roofing',
+  ]) {
+    await page
+      .getByRole('combobox', { name: 'Sample contractor' })
+      .selectOption(org);
+    await page
+      .getByRole('button', { name: 'Load synthetic inspection history' })
+      .click();
+    const history = page.getByRole('region', {
+      name: 'Published inspection history',
+    });
+    await expect(history).toContainText('Weekly property check');
+    await expect(history).toContainText('Monthly property check');
+    await expect(history.locator('article')).toHaveCount(3);
+    await page
+      .getByRole('combobox', { name: 'Service month' })
+      .selectOption('2026-11');
+    await expect(history.locator('article')).toHaveCount(1);
+    await expect(history).not.toContainText('Weekly property check');
+    await history.getByText('Inspection checklist', { exact: true }).click();
+    await expect(history).toContainText(
+      'Completed: Exterior condition and safety',
+    );
+    await page
+      .getByRole('combobox', { name: 'Service month' })
+      .selectOption('all');
+    for (const word of [
+      'INTERNAL',
+      'margin',
+      'payroll',
+      'unit_cost_minor',
+      'markup',
+      'supplemental',
+    ])
+      await expect(history).not.toContainText(word);
+    await expect(
+      page.getByRole('button', { name: /approve|decline|pay|sign|upload/i }),
+    ).toHaveCount(0);
+  }
+  await shot(page, 'customer-report-only', info.project.name);
+  expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+});
+test('connected customer property route stays closed and never falls back to synthetic reports', async ({
+  page,
+}) => {
+  await page.goto('/portal/property');
+  await expect(
+    page.getByText('The customer portal is reserved', { exact: false }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole('region', { name: 'Published inspection history' }),
+  ).toHaveCount(0);
+  await expect(
+    page.getByRole('button', { name: 'Load synthetic inspection history' }),
+  ).toHaveCount(0);
+});

@@ -1,5 +1,19 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: local P2 customer report preparation · hosted remains blocked
+
+Read [PROPERTY_P2_LOCAL_READINESS.md](docs/PROPERTY_P2_LOCAL_READINESS.md) and its validation record. New report-only
+history/strict safe projections/caller-bound prepared reader and explicit synthetic
+preview reuse existing property/CRM records. Connected customer routes stay closed;
+no login,mapping,lease,feature,financial/media/provider activation or hosted action.
+Nine P2 groups have local disposable SQL coverage;12 P1 staff gaps have a separate
+unfrozen proposal in PROPERTY_P1_GAPS_REVIEW.json. Frozen P1/four artifacts/all13 SQL
+unchanged. Owner reports original25 offline passes/two hash checks/hotspot;FileVault
+is off and newer encrypted recovery remains unrehearsed. No Linux/OS replacement or
+Monterey credentials approved. P1 hosted0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN unchanged.
+Recovery,Netlify and exact P2/expanded-scope approvals remain separate. Release1.0
+NOT READY / NOT AUTHORIZED;PR#1 draft/unmerged.
+
 ## Latest: P1-R0 second computer confirmed · maintained environment still required
 
 Read [PROPERTY_P1_R0_DEVICE_READINESS.md](docs/PROPERTY_P1_R0_DEVICE_READINESS.md) and its JSON. Preserve the owner's

@@ -1140,6 +1140,9 @@ function ClientView({
         Connected portal access remains disabled. Internal costs, private
         findings and draft billing proposals are excluded.
       </p>
+      <p>
+        <a href="/preview/property-portal">Open report-only customer preview</a>
+      </p>
       <button
         className="secondary"
         disabled={task.busy || p.invoices.length > 0}

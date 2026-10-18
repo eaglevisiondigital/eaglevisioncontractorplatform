@@ -1,9 +1,11 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
 import type { Database, Json } from './database.types';
-import type {
-  VisitContent,
-  PublishedReport,
-} from '../domain/property/inspections';
+import type { VisitContent } from '../domain/property/inspections';
+import {
+  parsePropertyReportPage,
+  type PropertyReportPage,
+} from '../domain/property/report-page';
+export type { PropertyReportPage } from '../domain/property/report-page';
 
 export type PropertyCommand =
   | {
@@ -54,20 +56,6 @@ export interface ConnectedPropertyWorkspace {
   material_reviews?: Json[];
   supplemental_drafts?: Json[];
 }
-export interface PropertyReportPage {
-  organization_id: string;
-  customer_id: string;
-  location_id: string;
-  reports: (Pick<PublishedReport, 'id' | 'version' | 'published_at'> & {
-    snapshot: Pick<
-      PublishedReport,
-      'visited_on' | 'phase' | 'summary' | 'findings' | 'checklist'
-    > & { media: never[] };
-  })[];
-  media: never[];
-  mode: 'internal-development';
-  report_only: true;
-}
 function objectKeys(
   value: unknown,
   allowed: string[],
@@ -77,65 +65,6 @@ function objectKeys(
     typeof value === 'object' &&
     !Array.isArray(value) &&
     Object.keys(value).every((k) => allowed.includes(k))
-  );
-}
-function safeReport(value: unknown) {
-  if (
-    !objectKeys(value, ['id', 'version', 'published_at', 'snapshot']) ||
-    typeof value.id !== 'string' ||
-    !uuid(value.id) ||
-    !Number.isSafeInteger(value.version) ||
-    Number(value.version) < 1 ||
-    typeof value.published_at !== 'string'
-  )
-    return false;
-  const s = value.snapshot;
-  if (
-    !objectKeys(s, [
-      'summary',
-      'visited_on',
-      'phase',
-      'checklist',
-      'findings',
-      'media',
-    ]) ||
-    typeof s.summary !== 'string' ||
-    typeof s.visited_on !== 'string' ||
-    !['before', 'during', 'after'].includes(String(s.phase)) ||
-    !Array.isArray(s.media) ||
-    s.media.length ||
-    !Array.isArray(s.findings) ||
-    s.findings.length > 100 ||
-    !Array.isArray(s.checklist) ||
-    s.checklist.length > 100
-  )
-    return false;
-  return (
-    s.findings.every(
-      (x) =>
-        objectKeys(x, [
-          'id',
-          'category',
-          'location',
-          'severity',
-          'description',
-          'recommendation',
-        ]) &&
-        [
-          'id',
-          'category',
-          'location',
-          'severity',
-          'description',
-          'recommendation',
-        ].every((k) => typeof x[k] === 'string'),
-    ) &&
-    s.checklist.every(
-      (x) =>
-        objectKeys(x, ['label', 'completed']) &&
-        typeof x.label === 'string' &&
-        typeof x.completed === 'boolean',
-    )
   );
 }
 const uuid = (s: string) =>
@@ -244,33 +173,10 @@ export class ConnectedPropertyOperations {
       p_before: before,
     });
     if (r.error) throw Error('Published property reports denied or disabled');
-    const v = r.data as unknown as PropertyReportPage;
-    if (
-      !v ||
-      v.organization_id !== org ||
-      v.customer_id !== customer ||
-      v.location_id !== location ||
-      v.report_only !== true ||
-      v.mode !== 'internal-development' ||
-      !Array.isArray(v.reports) ||
-      v.reports.length > 50 ||
-      !v.reports.every(safeReport) ||
-      !Array.isArray(v.media) ||
-      v.media.length ||
-      Object.keys(v).some(
-        (k) =>
-          ![
-            'organization_id',
-            'customer_id',
-            'location_id',
-            'reports',
-            'media',
-            'mode',
-            'report_only',
-          ].includes(k),
-      )
-    )
-      throw Error('Invalid report-only response');
-    return v;
+    return parsePropertyReportPage(r.data, {
+      organization_id: org,
+      customer_id: customer,
+      location_id: location,
+    });
   }
 }

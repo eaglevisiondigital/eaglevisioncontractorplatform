@@ -419,3 +419,15 @@ Prefer borrowed maintained Mac with the small existing kit;native encrypted Linu
 on the Air is only a separately reviewed candidate,no install/credential approval.
 Read docs/PROPERTY_P1_R0_DEVICE_READINESS.md. Preserve all13 SQL/frozen P1/approval;
 Phase C exact hosted verification follows genuine Phase B PASS,not an old probe retry.
+
+## P2 local report continuation · October18
+
+Read docs/PROPERTY_P2_LOCAL_READINESS.md and PROPERTY_P1_GAPS_REVIEW.json. Report-only
+UI/parser/caller-bound reader and nine-group offline P2 planner are local preparation;
+connected routes stay closed. No new migration or duplicate CRM/financial store.
+Real P2 requires actual post-P1 reports,exact customer mapping/15-minute lease/feature/
+cleanup/session package and separate approval. Twelve extra staff cases are an
+unfrozen proposal,never part of approved P1. Keep frozen artifacts/all13 SQL/history
+and hosted0/0/24/48 unchanged;no simulated Auth claims presented as hosted proof.
+Owner confirms original25 passes/two hash checks/hotspot,FileVault off,new encrypted
+kit unrehearsed;preserve evidence privately,no Monterey credentials or OS replacement.

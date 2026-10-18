@@ -713,3 +713,18 @@ persistent custody/swap,pinned runtime and actual network/power/operator evidenc
 No OS/credential installation,VM workaround or broad browser administration is
 authorized by this plan. Existing P1 approval persists;actual Phase B PASS precedes
 the separate exact hosted recovery-verification approval. No hosted action occurred.
+
+## P2 local report hardening and separate acceptance scopes
+
+Report reads require the existing genuine caller-bound RPC,exact customer/property
+mapping,dedicated finite report-only lease,current session and all SQL guards.
+New client validation rejects private/financial/media fields,foreign boundaries,
+malformed dates/severity and duplicate records before rendering. Plain-text React
+output does not interpret HTML. Auth events/caller changes/errors clear the cache;
+late generations cannot restore it. Display expires within30seconds without an
+automatic request;server revocation remains authoritative per request,not an
+immediate remote erasure of already viewed data. No connected route or Auth-session
+creator is enabled. Nine disposable case groups do not change hosted statuses.
+P2 and12 additional P1 cases need separate exact scopes;no broad release grant,
+financial authority,media or historical mutation follows from local tests.
+See docs/PROPERTY_P2_LOCAL_READINESS.md.

@@ -1434,3 +1434,26 @@ fieldset legend {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+/* Report-only preview shares platform/company branding and existing report cards. */
+.property-portal-preview {
+  max-width: 960px;
+  margin: auto;
+  padding: clamp(16px, 4vw, 48px);
+  overflow-wrap: anywhere;
+}
+.property-portal-preview label {
+  display: block;
+  margin: 20px 0;
+}
+.property-portal-preview select {
+  display: block;
+  width: 100%;
+  max-width: 460px;
+}
+.property-portal-preview .finding-card {
+  margin: 20px 0;
+}
+.property-portal-preview button {
+  white-space: normal;
+  max-width: 100%;
+}

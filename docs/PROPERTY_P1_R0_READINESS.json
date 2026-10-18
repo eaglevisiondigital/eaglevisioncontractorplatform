@@ -11,7 +11,7 @@
     "actualDeviceAvailable": "OWNER_REPORTED_NOT_INDEPENDENTLY_CONNECTED",
     "factsCollectedOnSecondDevice": false,
     "osSupport": "APPLE_COMPATIBILITY_CEILING_CONFIRMED_MONTEREY_CUSTODY_PROHIBITED",
-    "diskAndCustodyVolumeEncryption": "NOT_VERIFIED",
+    "diskAndCustodyVolumeEncryption": "FILEVAULT_DISABLED_OWNER_REPORTED_NOT_READY",
     "separateCustody": "NOT_INSTALLED_NOT_VERIFIED",
     "independentPowerNetwork": "HOTSPOT_AND_TWO_WEBSITE_LOADS_OWNER_REPORTED_PASS_POWER_CONTINUITY_NOT_VERIFIED",
     "operatorAndSupervision": "NOT_VERIFIED",
@@ -127,7 +127,10 @@
     "phoneHotspot": "PASS_OWNER_REPORTED",
     "twoWebsitesLoaded": "PASS_OWNER_REPORTED_NO_ENDPOINT_NAMES_SUPPLIED",
     "independentCrossDeviceProtocolProven": false,
-    "countsAddedToHostedAcceptance": false
+    "countsAddedToHostedAcceptance": false,
+    "originalUtilityHashesVerified": 2,
+    "newEncryptedKitRehearsed": false,
+    "fileVault": "DISABLED_OWNER_REPORTED"
   },
   "recommendedPath": {
     "preferred": "BORROW_MAINTAINED_MAC_SMALL_EXISTING_RECOVERY_KIT",

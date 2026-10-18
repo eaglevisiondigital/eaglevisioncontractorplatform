@@ -35,6 +35,11 @@ const PropertyWorkspace = lazy(() =>
     default: m.PropertyWorkspace,
   })),
 );
+const PropertyPortalPreview = lazy(() =>
+  import('./components/property/PropertyPortalPreview').then((m) => ({
+    default: m.PropertyPortalPreview,
+  })),
+);
 const ReleaseApp = lazy(() =>
   import('./components/release/ReleaseApp').then((m) => ({
     default: m.ReleaseApp,
@@ -147,6 +152,12 @@ export function App() {
         : 'Signed in. If MFA is required, complete verification through your configured identity flow.',
     );
   }
+  if (path === '/preview/property-portal')
+    return (
+      <Suspense fallback={<main>Loading synthetic report preview…</main>}>
+        <PropertyPortalPreview />
+      </Suspense>
+    );
   if (
     ['/preview/release', '/internal-release', '/portal/internal'].includes(path)
   )

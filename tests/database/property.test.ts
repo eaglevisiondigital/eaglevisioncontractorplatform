@@ -1113,6 +1113,103 @@ it('P0 operator lease insertion cannot exceed the bounded hour window', async ()
     [orgs[0], customers[0], locations[0], reportUsers[0]],
   );
 });
+// P2 local acceptance mirrors the existing nine hosted case groups; no hosted fixture executor.
+async function publishP2(index: number) {
+  await actor(db, owners[index]);
+  await command('save_visit', visits[index], 1, content(), orgs[index]);
+  await command('submit_visit', visits[index], 2, {}, orgs[index]);
+  return command('publish_visit', visits[index], 3, {}, orgs[index]);
+}
+it.each([0, 1, 2])(
+  'P2 customer-report company %i: exact published versions only; financial and staff commands remain denied',
+  async (index) => {
+    const published = await publishP2(index);
+    await reportAccess(index);
+    const page = await reportRead(db, index);
+    expect(page.reports).toHaveLength(1);
+    expect((page.reports as { id: string }[])[0].id).toBe(published);
+    expect(page.customer_id).toBe(customers[index]);
+    expect(page.report_only).toBe(true);
+    await denied('select public.release_workspace($1)', [orgs[index]]);
+    await denied('select public.property_workspace($1)', [orgs[index]]);
+    await denied('select public.property_command($1,$2,$3,$4,$5)', [
+      orgs[index],
+      'revise_visit',
+      visits[index],
+      4,
+      {},
+    ]);
+  },
+);
+it.each([0, 1, 2])(
+  'P2 foreign-customer company %i: every foreign company and property cursor is denied',
+  async (index) => {
+    const foreign = (index + 1) % 3;
+    const foreignReport = await publishP2(foreign);
+    await publishP2(index);
+    await reportAccess(index);
+    for (let other = 0; other < 3; other++)
+      if (other !== index) {
+        await denied('select public.property_reports($1,$2,$3)', [
+          orgs[other],
+          customers[other],
+          locations[other],
+        ]);
+        await denied('select public.property_reports($1,$2,$3)', [
+          orgs[index],
+          customers[other],
+          locations[index],
+        ]);
+        await denied('select public.property_reports($1,$2,$3)', [
+          orgs[index],
+          customers[index],
+          locations[other],
+        ]);
+      }
+    await denied('select public.property_reports($1,$2,$3,$4)', [
+      orgs[index],
+      customers[index],
+      locations[index],
+      foreignReport,
+    ]);
+  },
+);
+it.each([0, 1, 2])(
+  'P2 private-projection company %i: no internal findings, costs, payroll, drafts or media; mapping revocation denies immediately',
+  async (index) => {
+    await publishP2(index);
+    await reportAccess(index);
+    const page = await reportRead(db, index);
+    const serialized = JSON.stringify(page);
+    for (const forbidden of [
+      'SECRET',
+      'internal_notes',
+      'unit_cost_minor',
+      'markup',
+      'payroll',
+      'deductions',
+      'supplemental_drafts',
+    ])
+      expect(serialized).not.toContain(forbidden);
+    expect(page.media).toEqual([]);
+    const snapshot = (
+      page.reports as { snapshot: { findings: unknown[]; media: unknown[] } }[]
+    )[0].snapshot;
+    expect(snapshot.findings).toHaveLength(1);
+    expect(snapshot.media).toEqual([]);
+    await db.exec('reset role');
+    await db.query(
+      'update portal_identities set active=false where organization_id=$1 and user_id=$2',
+      [orgs[index], reportUsers[index]],
+    );
+    await actor(db, reportUsers[index], 'aal1');
+    await denied('select public.property_reports($1,$2,$3)', [
+      orgs[index],
+      customers[index],
+      locations[index],
+    ]);
+  },
+);
 it.skipIf(!db.fork)(
   'review native: JWT expiry during a visit lock wait rolls back all write/audit effects',
   async () => {

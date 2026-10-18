@@ -670,3 +670,17 @@ Air is an unverified fallback requiring boot/storage/runtime/hardware review.
 Monterey cannot host privileged custody;running a VM there does not cure that trust
 boundary. No adapter,transport,frozen fixture or migration change is made here.
 See docs/PROPERTY_P1_R0_DEVICE_READINESS.md for missing rehearsal/approval gates.
+
+## Local P2 report surface and caller-bound preparation
+
+The report-only UI renders immutable allowlisted inspection snapshots through the
+existing property_reports boundary;there is no second customer/property/financial
+store. ConnectedPropertyOperations validates exact response shape and ownership;
+PropertyReportSession verifies expected genuine UID before/after reads,invalidates
+on Auth events/errors and discards late generations. A30-second display cache is
+not a server authorization lease. Prepared connected composition is unmounted;only
+explicit /preview/property-portal uses existing synthetic propertyRepository.
+Offline P2 readiness needs actual four published P1 report IDs/hashes per company
+before a separately exact hosted package. Financial/estimate/approval discovery
+requires separate reviewed bindings and retains all existing server gates. No SQL
+or existing frozen execution artifact changes. See docs/PROPERTY_P2_LOCAL_READINESS.md.

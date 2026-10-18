@@ -800,3 +800,18 @@ fixture approval. Missing paired encrypted transfer/ACK/supervision/primary-loss
 independent recovery evidence must come from the chosen operational environment.
 A separately exact hosted recovery proposal still follows actual rehearsal PASS.
 See docs/PROPERTY_P1_R0_DEVICE_READINESS.md;private owner facts are ignored.
+
+## October18 · advance report-only portal locally while recovery stays blocked
+
+Reuse installed property_reports/CRM/immutable report sources;add strict customer-
+safe parser,caller-change invalidation/bounded display cache and report history UI.
+Keep connected navigation/login disabled;explicit synthetic preview is never a
+connected fallback. Prepare the existing nine P2 groups using actual post-P1 report
+evidence later;do not activate mappings/leases/features or broader financial grants.
+Document12 staff gaps as a separate unfrozen review package,not new approved P1
+steps. Exact expiry observation/extra purchase/credit/checklist fixture scope needs
+separate review after P1 receipts/revisions are known. Preserve frozen operation,
+all13 migrations,hosted counts and original records. Record owner-confirmed
+FileVault off/two utility hash checks/new encrypted kit unrehearsed privately.
+No Linux install,privileged Monterey custody,hosted action or duplicate P1 approval.
+See docs/PROPERTY_P2_LOCAL_READINESS.md.

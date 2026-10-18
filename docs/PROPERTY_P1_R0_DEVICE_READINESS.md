@@ -11,6 +11,13 @@ ignored `.staging/property-p1-r0/`; no raw transcript or tested source hash was
 supplied, so the 25 cases cannot be mapped to the seven operational cases below.
 This limitation does not invalidate the reported passes or require rerunning them.
 
+Additional owner confirmation: both original utility hashes were checked, the
+reported offline Python runtime functions, and **FileVault is disabled**. The newer
+encrypted recovery kit has not been independently rehearsed on that computer.
+The owner references screenshots; none were supplied for independent inspection in
+this increment. No Monterey replacement/Linux installation is approved. Preserve
+all completed original-utility checks; they do not certify the newer custody stack.
+
 Apple's [model identification page](https://support.apple.com/en-us/102869) confirms
 Monterey as this model's newest compatible macOS. Compatibility is not current
 security maintenance or approved privileged custody; see Apple's
@@ -35,8 +42,9 @@ All seven R0 cases below remain **BLOCKED / no actual cross-device execution evi
 7. R0-07: cross-device duplicate/restart, UNKNOWN, incomplete custody and timeout
    behavior while unrelated synthetic controls/sessions remain intact.
 
-Disk/custody-volume encryption, protected separate custody, sustained independent
-power and the named authorized operator/full window also remain unverified. The
+Boot-volume encryption is reported disabled; custody is NOT READY. Protected
+separate custody, sustained independent power and the named authorized operator/full
+window also remain unverified. The
 Monterey device may perform credential-free synthetic exercises, but those cannot
 certify a different operational OS/device's custody, TLS, runtime or transport.
 Defer the complete seven-case exercise to the chosen maintained environment to
