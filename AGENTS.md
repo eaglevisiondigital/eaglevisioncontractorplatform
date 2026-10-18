@@ -407,3 +407,15 @@ Do not install credentials on Monterey,run R0 on primary-only processes and clai
 independence,or generate Phase C operation/hash before actual Phase B passes.
 R0 cases0 PASS/0 FAIL/7 BLOCKED/0 NOT RUN;P1 tracker unchanged. Existing exact P1
 approval persists. No hosted session/probe/feature/database/Netlify/provider action.
+
+## P1-R0 owner device confirmation · October18
+
+Owner identified the independent Monterey device and reports25/25 offline recovery
+passes,hotspot and two website checks. Preserve these;do not repeat intake/tests
+unnecessarily or call the device unidentified. Exact hardware/runtime facts stay
+private. No privileged Monterey credentials. Seven actual cross-device cases remain
+BLOCKED;offline passes/browsing are not pairing/ACK/supervision/machine-loss proof.
+Prefer borrowed maintained Mac with the small existing kit;native encrypted Linux
+on the Air is only a separately reviewed candidate,no install/credential approval.
+Read docs/PROPERTY_P1_R0_DEVICE_READINESS.md. Preserve all13 SQL/frozen P1/approval;
+Phase C exact hosted verification follows genuine Phase B PASS,not an old probe retry.

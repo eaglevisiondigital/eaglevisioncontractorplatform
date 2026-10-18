@@ -1,18 +1,19 @@
 # Production Release 1.0 acceptance checklist
 
-## Latest: P1-R0 device intake prepared · actual device pending
+## Latest: P1-R0 second computer confirmed · maintained environment still required
 
-Read [PROPERTY_P1_R0_DEVICE_READINESS.md](PROPERTY_P1_R0_DEVICE_READINESS.md)
-and PROPERTY_P1_R0_READINESS.json. Practical owner checklist and read-only,
-credential-free intake helper are prepared. No maintained physical recovery device,
-OS/encryption/custody/power/network or operator is identified/verified. Do not run
-the helper on the primary and call it second-device evidence; do not install
-privileged credentials on Monterey. Seven actual two-device rehearsal cases remain
-0 PASS/0 FAIL/7 BLOCKED/0 NOT RUN. Phase C exact hosted proposal is NOT PREPARED
-until actual Phase B PASS. P1 runtime/frozen package/all13 SQL unchanged;no hosted action.
-Existing P1 approval persists;tracker0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN. Immediate
-owner input is model,exact OS,encryption,power/network,operator and availability.
-No credentials/MFA are requested. Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft.
+Read [PROPERTY_P1_R0_DEVICE_READINESS.md](PROPERTY_P1_R0_DEVICE_READINESS.md) and its JSON. Preserve the owner's
+25/25 offline recovery passes, hotspot and two website checks; no repeat requested.
+Device identified; exact facts remain private. Monterey cannot receive privileged
+credentials. These passes do not demonstrate actual cross-device pairing, encrypted
+transfer/durable ACK, supervision, primary loss or independent recovery. Seven R0
+operational cases remain0 PASS/0 FAIL/7 BLOCKED/0 NOT RUN. Borrow a maintained Mac
+for the small existing kit; a separately reviewed encrypted native Linux environment
+on the existing Air is a fallback, not yet compatible/approved/installed. No rebuild,
+new database or duplicate P1 approval. Verify only missing environment/rehearsal gates,
+then prepare the separately authorized exact Phase C hosted recovery verification.
+Frozen P1/all13 SQL unchanged;no hosted/credential action. P1 tracker remains
+0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN;Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft.
 
 ## Latest: P1 reauthorization stopped at operational recovery gate
 

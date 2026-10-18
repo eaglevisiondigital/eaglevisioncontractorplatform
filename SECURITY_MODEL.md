@@ -701,3 +701,15 @@ Never collect serials,passwords,recovery keys or MFA. Keep device facts private.
 Actual two-machine pairing/ACK/heartbeat/human/power/network/failure evidence is
 required before a separately approved hosted recovery test. No old probe retry or
 P1 activation is authorized by R0. See docs/PROPERTY_P1_R0_DEVICE_READINESS.md.
+
+## P1-R0 evidence preservation and supported custody environment
+
+Preserve owner-reported offline and hotspot/browser passes without upgrading them
+to encrypted peer/ACK/human-presence/machine-loss acceptance. The physical device
+is identified;its detailed facts remain private. Monterey privileged custody stays
+prohibited regardless of Python version. Prefer a maintained independent Mac;any
+native Linux fallback needs current patches,reviewed boot integrity,encrypted local
+persistent custody/swap,pinned runtime and actual network/power/operator evidence.
+No OS/credential installation,VM workaround or broad browser administration is
+authorized by this plan. Existing P1 approval persists;actual Phase B PASS precedes
+the separate exact hosted recovery-verification approval. No hosted action occurred.

@@ -1,5 +1,94 @@
 # P1-R0: independent recovery device readiness
 
+## October 18: second computer confirmed; preserve completed checks
+
+The owner has identified and tested the independent Monterey computer. Preserve
+**25/25 offline recovery tests passed**, working phone-hotspot connectivity and two
+successful website loads as **owner-reported completed evidence**. Do not repeat
+those checks merely because the earlier intake said device unidentified. Exact
+hardware/OS/runtime facts and this report's provenance are retained privately under
+ignored `.staging/property-p1-r0/`; no raw transcript or tested source hash was
+supplied, so the 25 cases cannot be mapped to the seven operational cases below.
+This limitation does not invalidate the reported passes or require rerunning them.
+
+Apple's [model identification page](https://support.apple.com/en-us/102869) confirms
+Monterey as this model's newest compatible macOS. Compatibility is not current
+security maintenance or approved privileged custody; see Apple's
+[current security releases](https://support.apple.com/en-us/100100). **No privileged
+credentials may be installed on Monterey.** A newer Python interpreter or successful
+website loads do not change that boundary. The reported interpreter is not the
+reviewed operational runtime; do not change the pinned recovery runtime or primary
+Node24 requirement to accommodate it.
+
+### What remains unfinished
+
+All seven R0 cases below remain **BLOCKED / no actual cross-device execution evidence**:
+
+1. R0-01: authenticated peer/run pairing between the primary and backup.
+2. R0-02: encrypted transfer plus actual tamper/wrong-peer rejection and latency.
+3. R0-03: durable backup custody before authenticated ACK; missing/late ACK blocks use.
+4. R0-04: five-second heartbeat delivery, manual presence within60seconds and the
+   real bounded supervision window. Hotspot browsing alone does not prove latency,
+   continuity during primary loss, power independence or human availability.
+5. R0-05: primary sender/connection loss while the backup remains operational.
+6. R0-06: independent mock recovery from backup-only encrypted journal/key.
+7. R0-07: cross-device duplicate/restart, UNKNOWN, incomplete custody and timeout
+   behavior while unrelated synthetic controls/sessions remain intact.
+
+Disk/custody-volume encryption, protected separate custody, sustained independent
+power and the named authorized operator/full window also remain unverified. The
+Monterey device may perform credential-free synthetic exercises, but those cannot
+certify a different operational OS/device's custody, TLS, runtime or transport.
+Defer the complete seven-case exercise to the chosen maintained environment to
+avoid doing it twice. Preserve existing offline/network evidence in either case.
+
+### Smallest practical path
+
+**Preferred: borrow an already maintained Mac for the recovery window.** Verify
+its exact model/OS/current patches, fully enabled FileVault and encrypted custody
+volume, a dedicated authorized local account, independent battery/hotspot and
+operator. Run only the existing small Python recovery kit and reviewed pinned
+binary dependencies in a private environment. No full platform install, Node,
+Supabase CLI, database duplication or application redesign is needed. Availability
+and suitability are not assumed; this recommendation does not authorize credential
+installation or hosted use.
+
+**If no maintained computer is available:** assess a fully patched Ubuntu LTS
+installation booted directly on the existing independent Air, preferably on a
+separate encrypted external SSD to preserve Monterey. Canonical lists
+[Ubuntu24.04 LTS standard maintenance through May2029](https://ubuntu.com/about/release-cycle)
+and documents [encrypted installation](https://ubuntu.com/tutorials/install-ubuntu-desktop).
+This is a candidate, not verified hardware compatibility or a ready recovery image.
+Review exact install media/signatures, drive selection/backup/boot integrity,
+passphrase-based encrypted persistent storage and swap, Wi-Fi/hotspot drivers,
+certificate trust, pinned Python/dependency availability and operational behavior
+before choosing it. Disk encryption alone is not boot integrity. Do not use a VM
+hosted by Monterey for credential custody, modify disks, install/boot an OS or
+provision secrets under this documentation-only task. A generic browser dashboard
+would retain privileged credentials and broad controls; it is not a custody bypass.
+Borrowing a maintained Mac is simpler when available; Linux avoids replacing the
+computer but adds a bounded setup/security review and environment-specific checks.
+
+### Next sequence and approval boundary
+
+Select the maintained recovery environment, complete only its missing readiness
+checks and the credential-free seven-case rehearsal, then prepare the exact Phase C
+hosted recovery-verification proposal. Any real session, credential custody or
+cleanup write still requires its separate exact approval; the rejected probe is
+not retried. **Do not request approval again for unchanged P1 fixtures.** The frozen
+operation/artifacts and all13 historical migrations remain unchanged.
+
+R0 operational cases: **0 PASS /0 FAIL /7 BLOCKED /0 NOT RUN**. Owner-reported offline
+results: **25 PASS /0 FAIL**, a separate evidence set; do not add it to the72 hosted
+cases. P1 tracker: **0 PASS /0 FAIL /24 BLOCKED /48 NOT RUN**. No hosted requests,
+sessions, MFA, credentials, writes or activation occurred. Release1.0 remains
+**NOT READY / NOT AUTHORIZED**;PR#1 stays draft/unmerged.
+
+## Historical preparation: October 17
+
+The following checklist and results predate the owner's device confirmation above.
+Statements that no device was identified describe that earlier checkpoint only.
+
 October17,2026. Base `401c7d8`, draft PR#1. **Device readiness BLOCKED; actual
 two-computer rehearsal NOT EXECUTED.** No maintained second device/operator has
 been identified or made available. The known Monterey12 computer is not approved

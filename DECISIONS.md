@@ -787,3 +787,16 @@ cases BLOCKED until actual hardware/transport and human evidence exist. Ephemera
 synthetic rehearsal keys are distinct from live service credentials. Prepare the
 exact hosted recovery operation only after actual Phase B PASS;preserve unchanged
 P1 approval without another fixture-approval request. No hosted actions occur.
+
+## October18 · preserve confirmed device evidence and choose maintained custody
+
+Record the owner's25/25 offline passes and hotspot/two-page connectivity as completed
+owner-reported evidence,not seven operational R0 passes. Device identity is resolved;
+privileged Monterey custody remains prohibited. Prefer borrowing a maintained Mac
+for the existing small recovery kit;assess native encrypted Linux on the same Air
+only as a hardware/runtime/security-reviewed fallback. Do not restart development,
+rerun completed checks by default,install an OS or secrets,or seek duplicate P1
+fixture approval. Missing paired encrypted transfer/ACK/supervision/primary-loss/
+independent recovery evidence must come from the chosen operational environment.
+A separately exact hosted recovery proposal still follows actual rehearsal PASS.
+See docs/PROPERTY_P1_R0_DEVICE_READINESS.md;private owner facts are ignored.

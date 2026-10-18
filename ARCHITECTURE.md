@@ -659,3 +659,14 @@ intake helper collects limited OS/runtime/boot-encryption metadata without netwo
 or secret access; it never attests physical independence or operational recovery.
 See docs/PROPERTY_P1_R0_DEVICE_READINESS.md. Actual device/transport must exist before
 credential-free two-machine rehearsal; an exact hosted proposal follows its PASS.
+
+## P1-R0 confirmed hardware and minimal environment path
+
+Owner-reported second-device offline/network passes are preserved separately from
+actual cross-device protocol evidence. The existing small POSIX Python kit needs
+no full platform/Node/database installation on backup. Prefer a maintained independent
+Mac;native maintained Linux with encrypted persistent custody on the identified
+Air is an unverified fallback requiring boot/storage/runtime/hardware review.
+Monterey cannot host privileged custody;running a VM there does not cure that trust
+boundary. No adapter,transport,frozen fixture or migration change is made here.
+See docs/PROPERTY_P1_R0_DEVICE_READINESS.md for missing rehearsal/approval gates.
