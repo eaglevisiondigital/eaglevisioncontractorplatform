@@ -728,3 +728,18 @@ creator is enabled. Nine disposable case groups do not change hosted statuses.
 P2 and12 additional P1 cases need separate exact scopes;no broad release grant,
 financial authority,media or historical mutation follows from local tests.
 See docs/PROPERTY_P2_LOCAL_READINESS.md.
+
+## Customer discovery/review: uninstalled default-deny proposal
+
+No public email/company/URL/account enumeration is introduced. Proposed discovery
+has no selectors and requires current authenticated session/confirmed UID/active
+mapping/resources. Staff/platform identities cannot use this customer path.
+Report-only leases and broader release grants cannot authorize estimate reads;
+exact expiring issued-version access and explicit repair provenance are required.
+One private RLS authorization table and fixed-path definers are proposed only,
+with every client table/execute privilege revoked. Scoped read authority is not
+financial consent. Post-wait wall-clock/session checks,revocation,foreign-property
+FKs and immutable source projection are tested locally/native. Prepared reads
+recheck genuine UID/current discovery and invalidate on Auth changes/late replies.
+No real sign-in/signup/sign-out or customer decisions are activated;screen clearing
+is not server session revocation. See docs/CUSTOMER_PORTAL_LOGIN_REVIEW.md.

@@ -1457,3 +1457,95 @@ fieldset legend {
   white-space: normal;
   max-width: 100%;
 }
+
+.customer-portal-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 24px 0;
+}
+.customer-portal .p3-tabs {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 16px 0;
+}
+.customer-portal .active {
+  background: var(--company-color);
+  color: white;
+}
+.customer-scope-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid #dce7e3;
+}
+.customer-scope-line dt {
+  max-width: 75%;
+}
+.customer-scope-line dt small {
+  display: block;
+}
+.customer-scope-line dd {
+  margin: 0;
+  white-space: nowrap;
+}
+.customer-portal .p3-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.preview-controls {
+  margin: 24px 0;
+  padding: 16px;
+  border: 1px solid #dce7e3;
+  border-radius: 12px;
+}
+.customer-scope-line dt,
+.customer-scope-line dt small {
+  color: #334c43;
+}
+.customer-portal-heading {
+  height: auto;
+  min-height: 0;
+  border: 0;
+}
+.customer-portal-heading > div {
+  display: block;
+  min-width: 0;
+}
+.customer-portal-heading h2 {
+  margin: 8px 0 0;
+}
+.customer-portal .p3-tabs > button {
+  display: inline-block;
+  width: auto;
+  flex: 0 1 auto;
+}
+.customer-portal dl {
+  display: block;
+  margin: 16px 0;
+}
+.customer-scope-line dt {
+  flex: 1;
+  max-width: none;
+}
+.customer-scope-line dd {
+  flex: 0 0 auto;
+}
+.preview-controls > button {
+  margin: 4px 8px 4px 0;
+}
+@media (max-width: 680px) {
+  .customer-portal-heading {
+    display: block;
+  }
+  .customer-portal-heading > button {
+    margin-top: 16px;
+  }
+}

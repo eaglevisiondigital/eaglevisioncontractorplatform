@@ -1,0 +1,29 @@
+{
+  "status": "LOCAL_PROPOSAL_NOT_AUTHORIZED_NOT_A_MIGRATION",
+  "sqlFile": "server/customer/schema.proposed.sql",
+  "sqlSha256": "da8d8bd887c071dd27186e425edd877da9e980db2c772f4925d3f538dd1e34f5",
+  "historicalMigrationsPreserved": 13,
+  "newTables": ["private.customer_estimate_access"],
+  "newPublicWrappers": [
+    "public.customer_portal_discover()",
+    "public.customer_estimate_review(uuid,uuid,uuid,uuid)"
+  ],
+  "clientExecutionGrants": 0,
+  "clientTablePolicies": 0,
+  "provisioningCommands": 0,
+  "mutationsExposed": 0,
+  "maximumLeaseMinutes": 15,
+  "reportLeaseAuthorizesEstimates": false,
+  "staffCustomerSeparation": "ACTIVE_STAFF_AND_PLATFORM_ADMIN_DENIED",
+  "readStateAllowed": ["awaiting_action", "expired"],
+  "productionConsentOrDecisionWriter": false,
+  "hostedApplied": false,
+  "requires": [
+    "Independent security review and formal forward migration preparation",
+    "Reviewed staff publication and exact issued-version/finding/source-line authorization workflow",
+    "Target-specific preflight and separate exact owner migration/grant/session/fixture approvals",
+    "Independent recovery and genuine P1/P2 acceptance",
+    "Reviewed production customer discovery,sign-in,local logout and abuse controls"
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "check": "npm run lint && npm run typecheck && npm run types:check && npm run migrations:check && npm run property:check && npm test && npm run test:recovery && npm run build",
+    "check": "npm run lint && npm run typecheck && npm run types:check && npm run migrations:check && npm run property:check && npm run customer:check && npm test && npm run test:recovery && npm run build",
     "test:recovery": "node scripts/test-recovery.mjs",
     "test:browser": "npm run build && playwright test",
     "format": "prettier --write .",
@@ -31,7 +31,8 @@
     "property:check": "node scripts/check-property-proposal.mjs",
     "property:acceptance-plan": "node scripts/property-connected-plan.mts",
     "property:p1-plan": "node scripts/property-p1-plan.mts",
-    "property:p1-inspect": "node scripts/property-p1-inspect.mts"
+    "property:p1-inspect": "node scripts/property-p1-inspect.mts",
+    "customer:check": "node scripts/check-customer-proposal.mjs"
   },
   "repository": {
     "type": "git",

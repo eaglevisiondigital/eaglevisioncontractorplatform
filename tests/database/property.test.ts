@@ -136,6 +136,30 @@ beforeAll(async () => {
         .digest('hex'),
     ).toBe(manifest.migrations[0].sha256);
   }
+  // Additional customer-review SQL is LOCAL ONLY; never added to hosted migration history.
+  await db.exec(readFileSync('server/customer/schema.proposed.sql', 'utf8'));
+  for (const role of ['anon', 'authenticated', 'service_role']) {
+    expect(
+      (
+        await db.query<{ ok: boolean }>(
+          "select has_function_privilege($1,'public.customer_portal_discover()','execute') ok",
+          [role],
+        )
+      ).rows[0].ok,
+    ).toBe(false);
+    expect(
+      (
+        await db.query<{ ok: boolean }>(
+          "select has_table_privilege($1,'private.customer_estimate_access','select') ok",
+          [role],
+        )
+      ).rows[0].ok,
+    ).toBe(false);
+  }
+  // Disposable test-only EXECUTE, absent from the proposed SQL itself.
+  await db.exec(
+    'grant execute on function public.customer_portal_discover(), private.customer_portal_discover(), public.customer_estimate_review(uuid,uuid,uuid,uuid), private.customer_estimate_review(uuid,uuid,uuid,uuid) to authenticated',
+  );
   for (const u of [...owners, field, estimator, ...reportUsers]) {
     await db.query(
       'insert into auth.users(id,email,email_confirmed_at) values($1,$2,clock_timestamp())',
@@ -1113,6 +1137,249 @@ it('P0 operator lease insertion cannot exceed the bounded hour window', async ()
     [orgs[0], customers[0], locations[0], reportUsers[0]],
   );
 });
+async function estimateAccess(
+  index = 0,
+  extra: { report: string; finding: string; line: string } | null = null,
+) {
+  await db.exec('reset role');
+  await db.query('insert into portal_identities values($1,$2,$3,true)', [
+    orgs[index],
+    customers[index],
+    reportUsers[index],
+  ]);
+  return (
+    await db.query<{ id: string }>(
+      "insert into private.customer_estimate_access(organization_id,customer_id,location_id,user_id,version_id,source_report_id,finding_id,source_line_id,expires_at,approval_reference) values($1,$2,$3,$4,$5,$6,$7,$8,clock_timestamp()+interval '10 minutes','DISPOSABLE LOCAL ONLY') returning id",
+      [
+        orgs[index],
+        customers[index],
+        locations[index],
+        reportUsers[index],
+        versions[index].version.id,
+        extra?.report ?? null,
+        extra?.finding ?? null,
+        extra?.line ?? null,
+      ],
+    )
+  ).rows[0].id;
+}
+const estimateRead = (index = 0, d = db) =>
+  d.query<{ v: Record<string, unknown> }>(
+    'select public.customer_estimate_review($1,$2,$3,$4) v',
+    [
+      orgs[index],
+      customers[index],
+      locations[index],
+      versions[index].version.id,
+    ],
+  );
+it.each([0, 1, 2])(
+  'customer discovery/review proposal company %i: exact server binding, issued scope and no report/financial authority',
+  async (index) => {
+    await estimateAccess(index);
+    await actor(db, reportUsers[index], 'aal1');
+    const discovered = (
+      await db.query<{ v: { contexts: Record<string, unknown>[] } }>(
+        'select public.customer_portal_discover() v',
+      )
+    ).rows[0].v;
+    expect(discovered.contexts).toHaveLength(1);
+    expect(discovered.contexts[0]).toMatchObject({
+      organization_id: orgs[index],
+      customer_id: customers[index],
+      location_id: locations[index],
+      reports: false,
+      version_ids: [versions[index].version.id],
+    });
+    const value = (await estimateRead(index)).rows[0].v;
+    expect(value.review_state).toBe('awaiting_action');
+    expect(value.read_only).toBe(true);
+    expect(value.version_id).toBe(versions[index].version.id);
+    for (const word of [
+      'unit_cost_minor',
+      'margin',
+      'internal_notes',
+      'markup',
+      'payroll',
+      'supplier',
+      'deduction',
+    ])
+      expect(JSON.stringify(value)).not.toContain(word);
+    await denied('select public.property_reports($1,$2,$3)', [
+      orgs[index],
+      customers[index],
+      locations[index],
+    ]);
+    await denied('select public.release_workspace($1)', [orgs[index]]);
+    for (let other = 0; other < 3; other++)
+      if (other !== index) {
+        await denied('select public.customer_estimate_review($1,$2,$3,$4)', [
+          orgs[other],
+          customers[other],
+          locations[other],
+          versions[other].version.id,
+        ]);
+        await denied('select public.customer_estimate_review($1,$2,$3,$4)', [
+          orgs[index],
+          customers[other],
+          locations[index],
+          versions[index].version.id,
+        ]);
+      }
+  },
+);
+it('customer repair provenance binds published finding and included issued line; private findings cannot publish', async () => {
+  const report = await publishP2(0);
+  await estimateAccess(0, {
+    report,
+    finding: 'public',
+    line: versions[0].version.payload.lines[0].id,
+  });
+  await actor(db, reportUsers[0], 'aal1');
+  const value = (await estimateRead()).rows[0].v;
+  expect(value.source_report_id).toBe(report);
+  expect(value.source_line_id).toBe(versions[0].version.payload.lines[0].id);
+  await db.exec('reset role');
+  await db.query(
+    'update private.customer_estimate_access set revoked_at=clock_timestamp() where organization_id=$1',
+    [orgs[0]],
+  );
+  await denied(
+    "insert into private.customer_estimate_access(organization_id,customer_id,location_id,user_id,version_id,source_report_id,finding_id,source_line_id,expires_at,approval_reference) values($1,$2,$3,$4,$5,$6,'private',$7,clock_timestamp()+interval '5 minutes','LOCAL')",
+    [
+      orgs[0],
+      customers[0],
+      locations[0],
+      reportUsers[0],
+      versions[0].version.id,
+      report,
+      versions[0].version.payload.lines[0].id,
+    ],
+  );
+});
+it('customer report leases cannot substitute for estimate review and anonymous discovery enumerates nothing', async () => {
+  await reportAccess();
+  expect(
+    (
+      await db.query<{ v: { contexts: { version_ids: string[] }[] } }>(
+        'select public.customer_portal_discover() v',
+      )
+    ).rows[0].v.contexts[0].version_ids,
+  ).toEqual([]);
+  await denied('select public.customer_estimate_review($1,$2,$3,$4)', [
+    orgs[0],
+    customers[0],
+    locations[0],
+    versions[0].version.id,
+  ]);
+  await db.exec('reset role;set role anon');
+  await denied('select public.customer_portal_discover()');
+});
+it('customer proposal table is RLS/default-deny and customer access cannot mutate grants or financial workflows', async () => {
+  await db.exec('reset role');
+  expect(
+    (
+      await db.query<{ relrowsecurity: boolean }>(
+        "select relrowsecurity from pg_class where oid='private.customer_estimate_access'::regclass",
+      )
+    ).rows[0].relrowsecurity,
+  ).toBe(true);
+  expect(
+    (
+      await db.query(
+        "select * from pg_policies where schemaname='private' and tablename='customer_estimate_access'",
+      )
+    ).rows,
+  ).toHaveLength(0);
+  for (const role of ['anon', 'authenticated', 'service_role']) {
+    await db.exec('reset role;set role ' + role);
+    await denied('select * from private.customer_estimate_access');
+    await denied('delete from private.customer_estimate_access');
+  }
+  await db.exec('reset role');
+  await estimateAccess();
+  await actor(db, reportUsers[0], 'aal1');
+  await denied('select public.release_command($1,$2,$3)', [
+    orgs[0],
+    'decide_offer',
+    {},
+  ]);
+  await denied('select public.approve_job_change($1,$2,$3)', [
+    orgs[0],
+    uid(),
+    'NOT AUTHORIZED',
+  ]);
+});
+it('customer estimate leases are revoke-only with tenant/property/issued/report provenance checks', async () => {
+  const access = await estimateAccess();
+  await denied(
+    "update private.customer_estimate_access set expires_at=expires_at+interval '1 minute' where id=$1",
+    [access],
+  );
+  await denied('delete from private.customer_estimate_access where id=$1', [
+    access,
+  ]);
+  await denied(
+    'update private.customer_estimate_access set location_id=$1 where id=$2',
+    [locations[1], access],
+  );
+  await db.query(
+    'update private.customer_estimate_access set revoked_at=clock_timestamp() where id=$1',
+    [access],
+  );
+  await actor(db, reportUsers[0], 'aal1');
+  await denied('select public.customer_estimate_review($1,$2,$3,$4)', [
+    orgs[0],
+    customers[0],
+    locations[0],
+    versions[0].version.id,
+  ]);
+});
+it('customer discovery excludes staff even if maintenance supplied both a mapping and an estimate lease', async () => {
+  await estimateAccess();
+  await db.exec('reset role');
+  await db.query(
+    "insert into memberships(organization_id,user_id,role) values($1,$2,'staff')",
+    [orgs[0], reportUsers[0]],
+  );
+  await actor(db, reportUsers[0], 'aal2');
+  await denied('select public.customer_portal_discover()');
+});
+it('customer estimate access expires on the current session and revoked mapping without modifying financial state', async () => {
+  await estimateAccess();
+  await db.query('update portal_identities set active=false where user_id=$1', [
+    reportUsers[0],
+  ]);
+  await actor(db, reportUsers[0], 'aal1');
+  await denied('select public.customer_portal_discover()');
+  await db.exec('reset role');
+  await db.query('update portal_identities set active=true where user_id=$1', [
+    reportUsers[0],
+  ]);
+  await db.query(
+    'update auth.sessions set not_after=clock_timestamp() where id=$1',
+    [sessions.get(reportUsers[0])],
+  );
+  await actor(db, reportUsers[0], 'aal1');
+  await denied('select public.customer_portal_discover()');
+});
+it('customer estimate grant cannot bind an unrelated property of the same customer', async () => {
+  await db.exec('reset role');
+  const location = uid();
+  await db.query(
+    "insert into service_locations(id,organization_id,customer_id,address_line1,city,region,postal_code,country_code) values($1,$2,$3,'Other property','Example','FL','00000','US')",
+    [location, orgs[0], customers[0]],
+  );
+  await db.query('insert into portal_identities values($1,$2,$3,true)', [
+    orgs[0],
+    customers[0],
+    reportUsers[0],
+  ]);
+  await denied(
+    "insert into private.customer_estimate_access(organization_id,customer_id,location_id,user_id,version_id,expires_at,approval_reference) values($1,$2,$3,$4,$5,clock_timestamp()+interval '10 minutes','LOCAL')",
+    [orgs[0], customers[0], location, reportUsers[0], versions[0].version.id],
+  );
+});
 // P2 local acceptance mirrors the existing nine hosted case groups; no hosted fixture executor.
 async function publishP2(index: number) {
   await actor(db, owners[index]);
@@ -1208,6 +1475,82 @@ it.each([0, 1, 2])(
       customers[index],
       locations[index],
     ]);
+  },
+);
+it.skipIf(!db.fork)(
+  'customer proposal native: access expiry during a grant lock wait denies issued review',
+  async () => {
+    await db.exec('rollback;reset role');
+    await estimateAccess(2);
+    await db.query(
+      'update private.customer_estimate_access set revoked_at=clock_timestamp() where organization_id=$1',
+      [orgs[2]],
+    );
+    const grant = (
+      await db.query<{ id: string }>(
+        "insert into private.customer_estimate_access(organization_id,customer_id,location_id,user_id,version_id,expires_at,approval_reference) values($1,$2,$3,$4,$5,clock_timestamp()+interval '2 seconds','LOCAL NATIVE WAIT') returning id",
+        [
+          orgs[2],
+          customers[2],
+          locations[2],
+          reportUsers[2],
+          versions[2].version.id,
+        ],
+      )
+    ).rows[0].id;
+    await db.exec('begin');
+    await db.query(
+      'select id from private.customer_estimate_access where id=$1 for update',
+      [grant],
+    );
+    const peer = await db.fork!();
+    try {
+      const pid = Number(
+        (await peer.query('select pg_backend_pid() id')).rows[0].id,
+      );
+      await actor(peer, reportUsers[2], 'aal1');
+      const pending = estimateRead(2, peer).then(
+        () => false,
+        () => true,
+      );
+      await blocked(db, pid);
+      await db.exec('select pg_sleep(2.1);commit');
+      expect(await pending).toBe(true);
+    } finally {
+      await db.exec('rollback');
+      await peer.close();
+    }
+  },
+);
+it.skipIf(!db.fork)(
+  'customer proposal native: mapping revocation during a lock wait denies discovery',
+  async () => {
+    await db.exec('rollback;reset role');
+    await estimateAccess(1);
+    await db.exec('begin');
+    await db.query(
+      'update portal_identities set active=false where user_id=$1',
+      [reportUsers[1]],
+    );
+    const peer = await db.fork!();
+    try {
+      const pid = Number(
+        (await peer.query('select pg_backend_pid() id')).rows[0].id,
+      );
+      await actor(peer, reportUsers[1], 'aal1');
+      const pending = peer
+        .query('select public.customer_portal_discover()')
+        .then(
+          () => false,
+          () => true,
+        );
+      await blocked(db, pid);
+      await db.exec('commit');
+      expect(await pending).toBe(true);
+    } finally {
+      await db.exec('rollback');
+      await peer.close();
+    }
   },
 );
 it.skipIf(!db.fork)(

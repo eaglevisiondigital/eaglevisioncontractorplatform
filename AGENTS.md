@@ -431,3 +431,15 @@ unfrozen proposal,never part of approved P1. Keep frozen artifacts/all13 SQL/his
 and hosted0/0/24/48 unchanged;no simulated Auth claims presented as hosted proof.
 Owner confirms original25 passes/two hash checks/hotspot,FileVault off,new encrypted
 kit unrehearsed;preserve evidence privately,no Monterey credentials or OS replacement.
+
+## Customer login/review local preparation · October18
+
+Read docs/CUSTOMER_PORTAL_LOGIN_REVIEW.md and CUSTOMER_PORTAL_PROPOSAL.json. New
+customer discovery/read contracts and /preview/customer-portal are local only;
+connected routes/auth SDK binding remain absent. Separate server/customer SQL is
+NOT a migration;all client EXECUTE/DML revoked,no activation approval. Do not apply
+it or fixture grants hosted. Report-only leases never authorize estimates;issued
+versions need exact separate publication/access and repair report/finding/line
+provenance. Genuine approval/decline persistence remains disabled;synthetic
+preferences cannot become debt,contracts,invoices or payments. Preserve13 SQL,
+frozen P1,original records,hosted0/0/24/48 and recovery/Netlify boundaries.

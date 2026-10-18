@@ -1,5 +1,18 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: customer discovery/login and estimate review · local only
+
+Read [CUSTOMER_PORTAL_LOGIN_REVIEW.md](docs/CUSTOMER_PORTAL_LOGIN_REVIEW.md),CUSTOMER_PORTAL_PROPOSAL.json and the
+local validation record. Explicit synthetic customer login/report/estimate review
+reuses existing sources and branding. Caller-bound discovery/read preparation has
+no hosted SDK adapter or connected route;financial responses remain disabled.
+Separate SQL proposal adds one default-deny15-minute issued-version authorization
+table and two revoked-execution public read wrappers;it is NOT a migration or
+hosted approval. No new database or applied SQL change;all13 historical files and
+frozen P1 unchanged. Independent publication/decision/security review and actual
+hosted acceptance remain gates. Nine P2 cases stay BLOCKED;all-property0/0/24/48.
+Recovery/Netlify/providers untouched;Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft.
+
 ## Latest: local P2 customer report preparation · hosted remains blocked
 
 Read [PROPERTY_P2_LOCAL_READINESS.md](docs/PROPERTY_P2_LOCAL_READINESS.md) and its validation record. New report-only

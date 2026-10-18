@@ -815,3 +815,17 @@ all13 migrations,hosted counts and original records. Record owner-confirmed
 FileVault off/two utility hash checks/new encrypted kit unrehearsed privately.
 No Linux install,privileged Monterey custody,hosted action or duplicate P1 approval.
 See docs/PROPERTY_P2_LOCAL_READINESS.md.
+
+## October18 · separate customer discovery/read access from financial authority
+
+Prepare no-argument server-derived discovery and per-issued-version read authority
+without enabling connected login. Reuse existing mappings,CRM,inspection reports,
+estimates/jobs and laboratory decision engines. Propose one private authorization
+table with15-minute revoke-only access and report/finding/included-line provenance;
+keep it outside installed migrations with zero client grants. Public read wrappers
+are invoker-only/revoked;genuine publication/decision workflows need independent
+review and separate future scope. Report leases never become estimate/financial
+permissions. Show approved/declined only as explicit synthetic receipt-backed
+preferences;no real customer debt,invoice,contract,payment or messaging effects.
+Preserve original13 migrations/frozen P1/recovery/Netlify and honest hosted statuses.
+See docs/CUSTOMER_PORTAL_LOGIN_REVIEW.md.

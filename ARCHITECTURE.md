@@ -684,3 +684,17 @@ Offline P2 readiness needs actual four published P1 report IDs/hashes per compan
 before a separately exact hosted package. Financial/estimate/approval discovery
 requires separate reviewed bindings and retains all existing server gates. No SQL
 or existing frozen execution artifact changes. See docs/PROPERTY_P2_LOCAL_READINESS.md.
+
+## Customer discovery and issued-estimate review preparation
+
+A proposed no-argument server discovery derives company/customer/property/version
+contexts from genuine caller identity and existing mappings plus narrowly scoped
+access rows. Report and estimate authorities are distinct. One proposed private
+revoke-only access table references existing issued versions and optional published
+report/finding/included-line evidence;it duplicates no business/financial sources.
+Two public invoker read wrappers have execution revoked in the uninstalled proposal.
+Prepared customer reads re-discover bindings on every request and reject Auth/epoch
+changes or extra projection fields. No generic CRUD or connected SDK route exists.
+The synthetic portal reuses PropertyReportHistory,current CRM/estimating sources
+and existing laboratory decisions;approved/declined previews are not genuine
+customer authority. See docs/CUSTOMER_PORTAL_LOGIN_REVIEW.md.
