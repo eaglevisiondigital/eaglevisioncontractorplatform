@@ -743,3 +743,18 @@ FKs and immutable source projection are tested locally/native. Prepared reads
 recheck genuine UID/current discovery and invalidate on Auth changes/late replies.
 No real sign-in/signup/sign-out or customer decisions are activated;screen clearing
 is not server session revocation. See docs/CUSTOMER_PORTAL_LOGIN_REVIEW.md.
+
+## Customer authorization adversarial audit · October18
+
+Two weaknesses in the uninstalled read proposal were reproduced on native PG17:
+banned confirmed users could read with an existing session,and report-only discovery
+could finish after concurrent staff promotion. Current Auth ban/deletion/anonymous
+checks and final full guards for every discovery context correct them. Native tests
+cover both staff and platform promotion and post-wait JWT/session/publication expiry.
+Separate dormant publishing/decision SQL retains private RLS/default-deny tables,
+revoked invoker wrappers,exact source/digest/tenant bindings and owner/admin AAL2.
+Immutable review-only preferences never confer financial,signature or job-change
+permission. Customer commands derive UID/session/evidence server-side;unique request
+and per-version keys plus locks prevent duplicate/conflicting outcomes. UNKNOWN is
+read-only reconciliation;no automatic retry. See the exact review/validation docs.
+No hosted action or advisor result is claimed;all13 SQL/frozen P1/off controls persist.

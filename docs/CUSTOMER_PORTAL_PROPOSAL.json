@@ -1,12 +1,20 @@
 {
   "status": "LOCAL_PROPOSAL_NOT_AUTHORIZED_NOT_A_MIGRATION",
   "sqlFile": "server/customer/schema.proposed.sql",
-  "sqlSha256": "da8d8bd887c071dd27186e425edd877da9e980db2c772f4925d3f538dd1e34f5",
+  "sqlSha256": "60c2336c7a21919f6dece4c7ec52a6640136f805e62d7b0adb2b81f5690a24b1",
   "historicalMigrationsPreserved": 13,
-  "newTables": ["private.customer_estimate_access"],
+  "newTables": [
+    "private.customer_estimate_access",
+    "private.customer_review_decisions"
+  ],
   "newPublicWrappers": [
     "public.customer_portal_discover()",
-    "public.customer_estimate_review(uuid,uuid,uuid,uuid)"
+    "public.customer_estimate_review(uuid,uuid,uuid,uuid)",
+    "public.customer_publication_preview(uuid,jsonb)",
+    "public.customer_publish_estimate(uuid,jsonb)",
+    "public.customer_revoke_publication(uuid,uuid)",
+    "public.customer_decision_context(uuid,uuid,uuid,uuid)",
+    "public.customer_record_decision(uuid,uuid,text,text,text,uuid)"
   ],
   "clientExecutionGrants": 0,
   "clientTablePolicies": 0,
@@ -19,11 +27,20 @@
   "productionConsentOrDecisionWriter": false,
   "hostedApplied": false,
   "requires": [
-    "Independent security review and formal forward migration preparation",
-    "Reviewed staff publication and exact issued-version/finding/source-line authorization workflow",
+    "Further independent proposal review and formal forward migration preparation",
+    "Genuine hosted staff publication/customer decision acceptance under separately reviewed exact scope",
     "Target-specific preflight and separate exact owner migration/grant/session/fixture approvals",
     "Independent recovery and genuine P1/P2 acceptance",
     "Reviewed production customer discovery,sign-in,local logout and abuse controls"
   ],
-  "release": "NOT_READY_NOT_AUTHORIZED"
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "previousReviewedSha256": "da8d8bd887c071dd27186e425edd877da9e980db2c772f4925d3f538dd1e34f5",
+  "workflowSqlFile": "server/customer/workflow.proposed.sql",
+  "workflowSqlSha256": "3511804845e5d08d97e7de1da49318f047f7e4cf51b3dc240df3b6815ab7ae4c",
+  "workflowStatus": "LOCAL_PROPOSAL_NOT_AUTHORIZED_NOT_A_MIGRATION",
+  "checkedPublicationProposed": true,
+  "reviewOnlyDecisionWriterProposed": true,
+  "decisionIsFinancialConsent": false,
+  "proposalBundleSha256": "6f2e641f59ab61fa5e14fb0f58a0d4e60bc0e55d7c1a5bdebdf4b8f2f7466f1c",
+  "proposalBundleDefinition": "SHA256(schema bytes followed by workflow bytes)"
 }

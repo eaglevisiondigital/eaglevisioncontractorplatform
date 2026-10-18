@@ -443,3 +443,14 @@ versions need exact separate publication/access and repair report/finding/line
 provenance. Genuine approval/decline persistence remains disabled;synthetic
 preferences cannot become debt,contracts,invoices or payments. Preserve13 SQL,
 frozen P1,original records,hosted0/0/24/48 and recovery/Netlify boundaries.
+
+## Customer authorization audit and workflow preparation · October18
+
+Read docs/CUSTOMER_AUTHORIZATION_SECURITY_REVIEW.md and its validation record before
+older customer snapshots. Corrected read SQL and separate workflow SQL are LOCAL
+PROPOSALS,not migrations/activation permission. Preserve banned/deleted/anonymous
+Auth checks,final discovery role checks and post-wait wall time. Proposed publishing
+requires exact issued scope/digest/customer/property/repair selection and owner/admin
+AAL2;all wrappers/table access remain revoked. Immutable review preferences are not
+financial/signature/change authorization. UNKNOWN never auto-retries. Preserve13 SQL,
+frozen P1 and all recovery/Netlify/provider boundaries;hosted0/0/24/48 unchanged.

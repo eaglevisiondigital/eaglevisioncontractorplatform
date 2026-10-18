@@ -698,3 +698,16 @@ changes or extra projection fields. No generic CRUD or connected SDK route exist
 The synthetic portal reuses PropertyReportHistory,current CRM/estimating sources
 and existing laboratory decisions;approved/declined previews are not genuine
 customer authority. See docs/CUSTOMER_PORTAL_LOGIN_REVIEW.md.
+
+## Customer publication and review decision proposal · October18
+
+The corrected customer read proposal shares one allowlisted issued-scope projection
+with a separate workflow proposal. Five dormant invoker wrappers support checked
+owner/admin AAL2 preview/publish/revoke and caller-bound review-context/decision.
+Publication evidence extends the existing proposed access row;one new private table
+stores immutable nonfinancial preferences,exact safe snapshot/digest/request and
+session identifier. It is not a duplicate financial source. No active grants,SDK,
+connected customer route or formal migration exist. Server uniqueness/row locks
+prevent double decisions across renewed leases;client UNKNOWN outcomes reconcile by
+read only. See docs/CUSTOMER_AUTHORIZATION_SECURITY_REVIEW.md. All13 historical SQL,
+frozen P1 and existing recovery/provider/Netlify boundaries remain unchanged.

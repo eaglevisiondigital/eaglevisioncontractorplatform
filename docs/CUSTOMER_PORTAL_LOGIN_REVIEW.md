@@ -1,5 +1,10 @@
 # Customer login, server discovery and estimate review · local preparation
 
+Latest: [customer authorization audit](CUSTOMER_AUTHORIZATION_SECURITY_REVIEW.md)
+supersedes the earlier read-only proposal hash and missing publishing/decision
+preparation checkpoint. Both corrected proposals remain local/uninstalled and all
+execution grants remain revoked. Earlier tests/counts below are historical evidence.
+
 October18,2026. Base1247614,existing feature branch/draft PR#1.
 **LOCAL ONLY. No connected customer sign-in, access grant or migration is activated.**
 

@@ -1,5 +1,20 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: customer authorization audit and checked review workflow · local only
+
+Read [CUSTOMER_AUTHORIZATION_SECURITY_REVIEW.md](docs/CUSTOMER_AUTHORIZATION_SECURITY_REVIEW.md)
+and its local validation record before the earlier customer proposal snapshot.
+Two native PostgreSQL weaknesses were reproduced before correction: banned Auth
+identity read access and staff-role promotion during report-only discovery waits.
+Corrected current-user/final-context guards and bounded discovery pass regressions.
+A separate dormant workflow proposal prepares owner/admin AAL2 publication of exact
+issued versions/repair references and immutable, idempotent nonfinancial customer
+review preferences. All execution/table access stays revoked;no formal migration,
+SDK route or hosted activity. UNKNOWN writes require read-only reconciliation.
+All13 SQL/frozen P1/branding/recovery/Netlify untouched. Hosted0/0/24/48 unchanged;
+nine P2 cases BLOCKED. Further proposal review and genuine P1/P2/transport/custody
+acceptance remain gates;Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft.
+
 ## Latest: customer discovery/login and estimate review · local only
 
 Read [CUSTOMER_PORTAL_LOGIN_REVIEW.md](docs/CUSTOMER_PORTAL_LOGIN_REVIEW.md),CUSTOMER_PORTAL_PROPOSAL.json and the

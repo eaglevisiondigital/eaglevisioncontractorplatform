@@ -19,7 +19,11 @@ const orgs = [uid(), uid(), uid()],
   versions: EstimateBundle[] = [],
   expenses: string[] = [],
   visits: string[] = [];
-async function actor(d: TestDatabase = db, user = owners[0], aal = 'aal2') {
+async function actor(
+  d: TestDatabase = db,
+  user: string = owners[0],
+  aal = 'aal2',
+) {
   await d.exec('reset role');
   await d.query("select set_config('request.jwt.claims',$1,false)", [
     JSON.stringify({
@@ -138,6 +142,7 @@ beforeAll(async () => {
   }
   // Additional customer-review SQL is LOCAL ONLY; never added to hosted migration history.
   await db.exec(readFileSync('server/customer/schema.proposed.sql', 'utf8'));
+  await db.exec(readFileSync('server/customer/workflow.proposed.sql', 'utf8'));
   for (const role of ['anon', 'authenticated', 'service_role']) {
     expect(
       (
@@ -160,6 +165,31 @@ beforeAll(async () => {
   await db.exec(
     'grant execute on function public.customer_portal_discover(), private.customer_portal_discover(), public.customer_estimate_review(uuid,uuid,uuid,uuid), private.customer_estimate_review(uuid,uuid,uuid,uuid) to authenticated',
   );
+  // These five dormant workflow wrappers are granted ONLY in this disposable fixture.
+  for (const signature of [
+    'customer_publication_preview(uuid,jsonb)',
+    'customer_publish_estimate(uuid,jsonb)',
+    'customer_revoke_publication(uuid,uuid)',
+    'customer_decision_context(uuid,uuid,uuid,uuid)',
+    'customer_record_decision(uuid,uuid,text,text,text,uuid)',
+  ]) {
+    for (const role of ['anon', 'authenticated', 'service_role'])
+      expect(
+        (
+          await db.query<{ ok: boolean }>(
+            "select has_function_privilege($1,$2,'execute') ok",
+            [role, 'public.' + signature],
+          )
+        ).rows[0].ok,
+      ).toBe(false);
+    await db.exec(
+      'grant execute on function public.' +
+        signature +
+        ',private.' +
+        signature +
+        ' to authenticated',
+    );
+  }
   for (const u of [...owners, field, estimator, ...reportUsers]) {
     await db.query(
       'insert into auth.users(id,email,email_confirmed_at) values($1,$2,clock_timestamp())',
@@ -1147,21 +1177,36 @@ async function estimateAccess(
     customers[index],
     reportUsers[index],
   ]);
-  return (
-    await db.query<{ id: string }>(
-      "insert into private.customer_estimate_access(organization_id,customer_id,location_id,user_id,version_id,source_report_id,finding_id,source_line_id,expires_at,approval_reference) values($1,$2,$3,$4,$5,$6,$7,$8,clock_timestamp()+interval '10 minutes','DISPOSABLE LOCAL ONLY') returning id",
-      [
-        orgs[index],
-        customers[index],
-        locations[index],
-        reportUsers[index],
-        versions[index].version.id,
-        extra?.report ?? null,
-        extra?.finding ?? null,
-        extra?.line ?? null,
-      ],
-    )
-  ).rows[0].id;
+  await actor(db, owners[index]);
+  const p = {
+    customer_id: customers[index],
+    location_id: locations[index],
+    user_id: reportUsers[index],
+    version_id: versions[index].version.id,
+    source_report_id: extra?.report ?? null,
+    finding_id: extra?.finding ?? null,
+    source_line_id: extra?.line ?? null,
+  };
+  const preview = await rpc<{ scope_sha256: string }>(
+    'customer_publication_preview',
+    [orgs[index], p],
+  );
+  const value = await rpc<{ publication_id: string }>(
+    'customer_publish_estimate',
+    [
+      orgs[index],
+      {
+        ...p,
+        scope_sha256: preview.scope_sha256,
+        request_id: uid(),
+        expires_at: new Date(Date.now() + 600000).toISOString(),
+        review_acknowledged: true,
+        approval_reference: 'DISPOSABLE LOCAL ONLY',
+      },
+    ],
+  );
+  await db.exec('reset role');
+  return value.publication_id;
 }
 const estimateRead = (index = 0, d = db) =>
   d.query<{ v: Record<string, unknown> }>(
@@ -1477,6 +1522,406 @@ it.each([0, 1, 2])(
     ]);
   },
 );
+
+async function decisionContext(index = 0, d = db) {
+  return (
+    await d.query<{
+      v: {
+        publication_id: string;
+        scope_sha256: string;
+        decision: unknown;
+        review: Record<string, unknown>;
+      };
+    }>('select public.customer_decision_context($1,$2,$3,$4) v', [
+      orgs[index],
+      customers[index],
+      locations[index],
+      versions[index].version.id,
+    ])
+  ).rows[0].v;
+}
+async function recordReview(
+  index = 0,
+  choice = 'approve_review',
+  request = uid(),
+  d = db,
+) {
+  const c = await decisionContext(index, d);
+  return (
+    await d.query<{ v: { id: string; request_id: string; choice: string } }>(
+      'select public.customer_record_decision($1,$2,$3,$4,$5,$6) v',
+      [
+        orgs[index],
+        c.publication_id,
+        c.scope_sha256,
+        choice,
+        'review-only-v1',
+        request,
+      ],
+    )
+  ).rows[0].v;
+}
+it.each([0, 1, 2])(
+  'customer workflow company %i: explicit publication and immutable review preference never create financial authority',
+  async (index) => {
+    const publication = await estimateAccess(index);
+    const before = (
+      await db.query('select to_jsonb(j) v from public.jobs j where id=$1', [
+        jobs[index],
+      ])
+    ).rows[0].v;
+    const original = (
+      await db.query(
+        'select to_jsonb(v) v from public.estimate_versions v where id=$1',
+        [versions[index].version.id],
+      )
+    ).rows[0].v;
+    await actor(db, reportUsers[index], 'aal1');
+    const c = await decisionContext(index);
+    expect(c.publication_id).toBe(publication);
+    expect(c.decision).toBeNull();
+    const request = uid();
+    const r = await recordReview(index, 'approve_review', request);
+    expect(await recordReview(index, 'approve_review', request)).toEqual(r);
+    await denied('select public.customer_record_decision($1,$2,$3,$4,$5,$6)', [
+      orgs[index],
+      publication,
+      c.scope_sha256,
+      'decline_review',
+      'review-only-v1',
+      request,
+    ]);
+    expect((await decisionContext(index)).decision).toMatchObject({
+      id: r.id,
+      choice: 'approve_review',
+    });
+    await denied('select public.approve_job_change($1,$2,$3)', [
+      orgs[index],
+      uid(),
+      'Not financial authorization',
+    ]);
+    for (let other = 0; other < 3; other++)
+      if (other !== index)
+        await denied(
+          'select public.customer_record_decision($1,$2,$3,$4,$5,$6)',
+          [
+            orgs[other],
+            publication,
+            c.scope_sha256,
+            'approve_review',
+            'review-only-v1',
+            uid(),
+          ],
+        );
+    await db.exec('reset role');
+    expect(
+      (
+        await db.query('select to_jsonb(j) v from public.jobs j where id=$1', [
+          jobs[index],
+        ])
+      ).rows[0].v,
+    ).toEqual(before);
+    expect(
+      (
+        await db.query(
+          'select to_jsonb(v) v from public.estimate_versions v where id=$1',
+          [versions[index].version.id],
+        )
+      ).rows[0].v,
+    ).toEqual(original);
+    expect(
+      (
+        await db.query(
+          'select count(*) n from private.customer_review_decisions where organization_id=$1',
+          [orgs[index]],
+        )
+      ).rows[0].n,
+    ).toBe(1);
+    expect(
+      (
+        await db.query(
+          "select count(*) n from activity_events where organization_id=$1 and entity_type='customer_review_decisions'",
+          [orgs[index]],
+        )
+      ).rows[0].n,
+    ).toBe(1);
+    for (const table of [
+      'release_invoices',
+      'release_contracts',
+      'release_signatures',
+      'release_authorizations',
+      'release_payment_events',
+      'release_ledger_entries',
+      'release_messages',
+    ]) {
+      expect(
+        (await db.query('select count(*) n from public.' + table)).rows[0].n,
+      ).toBe(0);
+    }
+    await denied(
+      "update private.customer_review_decisions set choice='decline_review' where organization_id=$1",
+      [orgs[index]],
+    );
+    await denied(
+      'delete from private.customer_review_decisions where organization_id=$1',
+      [orgs[index]],
+    );
+  },
+);
+it('customer workflow publisher requires owner/admin AAL2, exact sources, reviewed hash and explicit acknowledgment', async () => {
+  await db.exec('reset role');
+  await db.query('insert into portal_identities values($1,$2,$3,true)', [
+    orgs[0],
+    customers[0],
+    reportUsers[0],
+  ]);
+  const p = {
+    customer_id: customers[0],
+    location_id: locations[0],
+    user_id: reportUsers[0],
+    version_id: versions[0].version.id,
+    source_report_id: null,
+    finding_id: null,
+    source_line_id: null,
+  };
+  for (const [user, aal] of [
+    [owners[0], 'aal1'],
+    [owners[1], 'aal2'],
+    [field, 'aal2'],
+    [estimator, 'aal2'],
+    [reportUsers[0], 'aal2'],
+  ]) {
+    await actor(db, user, aal);
+    await denied('select public.customer_publication_preview($1,$2)', [
+      orgs[0],
+      p,
+    ]);
+  }
+  await actor();
+  const preview = await rpc<{ scope_sha256: string }>(
+    'customer_publication_preview',
+    [orgs[0], p],
+  );
+  const payload = {
+    ...p,
+    scope_sha256: preview.scope_sha256,
+    request_id: uid(),
+    expires_at: new Date(Date.now() + 600000).toISOString(),
+    review_acknowledged: true,
+    approval_reference: 'LOCAL explicit scope review',
+  };
+  for (const change of [
+    { review_acknowledged: false },
+    { scope_sha256: '0'.repeat(64) },
+    { customer_id: customers[1] },
+    { location_id: locations[1] },
+    { version_id: versions[1].version.id },
+    { expires_at: new Date(Date.now() + 3600000).toISOString() },
+    { unexpected: true },
+  ])
+    await denied('select public.customer_publish_estimate($1,$2)', [
+      orgs[0],
+      { ...payload, ...change },
+    ]);
+  const a = await rpc('customer_publish_estimate', [orgs[0], payload]);
+  expect(await rpc('customer_publish_estimate', [orgs[0], payload])).toEqual(a);
+  await denied('select public.customer_publish_estimate($1,$2)', [
+    orgs[0],
+    { ...payload, approval_reference: 'changed' },
+  ]);
+  await db.exec('reset role');
+  expect(
+    (
+      await db.query(
+        'select count(*) n from private.customer_estimate_access where request_id=$1',
+        [payload.request_id],
+      )
+    ).rows[0].n,
+  ).toBe(1);
+});
+it('customer workflow approval evidence requires exact digest/consent and denies NULL, forged, missing and revoked authority', async () => {
+  const pub = await estimateAccess();
+  await actor(db, reportUsers[0], 'aal1');
+  const c = await decisionContext();
+  for (const args of [
+    [orgs[0], pub, c.scope_sha256, 'approve_review', null, uid()],
+    [orgs[0], pub, '0'.repeat(64), 'approve_review', 'review-only-v1', uid()],
+    [orgs[0], pub, c.scope_sha256, null, 'review-only-v1', uid()],
+    [orgs[0], uid(), c.scope_sha256, 'approve_review', 'review-only-v1', uid()],
+    [orgs[0], pub, c.scope_sha256, 'approve_review', 'review-only-v1', null],
+  ])
+    await denied(
+      'select public.customer_record_decision($1,$2,$3,$4,$5,$6)',
+      args,
+    );
+  await db.exec('reset role');
+  expect(
+    (await db.query('select count(*) n from private.customer_review_decisions'))
+      .rows[0].n,
+  ).toBe(0);
+  await actor();
+  await rpc('customer_revoke_publication', [orgs[0], pub]);
+  await actor(db, reportUsers[0], 'aal1');
+  await denied('select public.customer_record_decision($1,$2,$3,$4,$5,$6)', [
+    orgs[0],
+    pub,
+    c.scope_sha256,
+    'approve_review',
+    'review-only-v1',
+    uid(),
+  ]);
+});
+it('customer workflow review choices are independent per issued version; renewed leases cannot authorize a second decision', async () => {
+  const pub = await estimateAccess();
+  await actor(db, reportUsers[0], 'aal1');
+  await recordReview(0, 'decline_review');
+  await actor();
+  await rpc('customer_revoke_publication', [orgs[0], pub]);
+  const p = {
+    customer_id: customers[0],
+    location_id: locations[0],
+    user_id: reportUsers[0],
+    version_id: versions[0].version.id,
+    source_report_id: null,
+    finding_id: null,
+    source_line_id: null,
+  };
+  const preview = await rpc<{ scope_sha256: string }>(
+    'customer_publication_preview',
+    [orgs[0], p],
+  );
+  const renewed = await rpc<{ publication_id: string }>(
+    'customer_publish_estimate',
+    [
+      orgs[0],
+      {
+        ...p,
+        scope_sha256: preview.scope_sha256,
+        request_id: uid(),
+        expires_at: new Date(Date.now() + 600000).toISOString(),
+        review_acknowledged: true,
+        approval_reference: 'LOCAL renewal',
+      },
+    ],
+  );
+  await actor(db, reportUsers[0], 'aal1');
+  expect((await decisionContext()).decision).toMatchObject({
+    choice: 'decline_review',
+  });
+  await denied('select public.customer_record_decision($1,$2,$3,$4,$5,$6)', [
+    orgs[0],
+    renewed.publication_id,
+    preview.scope_sha256,
+    'approve_review',
+    'review-only-v1',
+    uid(),
+  ]);
+});
+it('customer workflow evidence tables remain private/default deny and function search paths are fixed', async () => {
+  await db.exec('reset role');
+  for (const role of ['anon', 'authenticated', 'service_role'])
+    expect(
+      (
+        await db.query<{ ok: boolean }>(
+          "select has_table_privilege($1,'private.customer_review_decisions','select,insert,update,delete') ok",
+          [role],
+        )
+      ).rows[0].ok,
+    ).toBe(false);
+  expect(
+    (
+      await db.query(
+        "select relrowsecurity from pg_class where oid='private.customer_review_decisions'::regclass",
+      )
+    ).rows[0].relrowsecurity,
+  ).toBe(true);
+  expect(
+    (
+      await db.query(
+        "select * from pg_policies where schemaname='private' and tablename='customer_review_decisions'",
+      )
+    ).rows,
+  ).toHaveLength(0);
+  const functions = (
+    await db.query<{ prosecdef: boolean; proconfig: string[] }>(
+      "select prosecdef,proconfig from pg_proc p join pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname in ('customer_publish_estimate','customer_record_decision','customer_decision_context','customer_revoke_publication','customer_publication_preview')",
+    )
+  ).rows;
+  expect(functions).toHaveLength(5);
+  for (const f of functions) {
+    expect(f.prosecdef).toBe(false);
+    expect(f.proconfig).toEqual(['search_path=""']);
+  }
+});
+
+it('customer workflow maintenance cannot insert forged decision evidence or change immutable terminal preferences', async () => {
+  await estimateAccess();
+  await actor(db, reportUsers[0], 'aal1');
+  const c = await decisionContext();
+  await recordReview();
+  await db.exec('reset role');
+  for (const [choice, digestValue, customer] of [
+    ['approve_review', '0'.repeat(64), customers[0]],
+    ['charge_customer', c.scope_sha256, customers[0]],
+    ['approve_review', c.scope_sha256, customers[1]],
+  ]) {
+    await denied(
+      'insert into private.customer_review_decisions(organization_id,publication_id,customer_id,location_id,user_id,version_id,request_id,choice,acknowledgment,scope_sha256,scope_snapshot,auth_session_id) select organization_id,publication_id,$1,location_id,user_id,version_id,gen_random_uuid(),$2,acknowledgment,$3,scope_snapshot,auth_session_id from private.customer_review_decisions where publication_id=$4',
+      [customer, choice, digestValue, c.publication_id],
+    );
+  }
+  await denied(
+    'update private.customer_estimate_access set published_by=$1 where id=$2',
+    [owners[1], c.publication_id],
+  );
+  await actor();
+  await rpc('customer_revoke_publication', [orgs[0], c.publication_id]);
+  await actor(db, reportUsers[0], 'aal1');
+  await denied('select public.customer_decision_context($1,$2,$3,$4)', [
+    orgs[0],
+    customers[0],
+    locations[0],
+    versions[0].version.id,
+  ]);
+  await db.exec('reset role');
+  expect(
+    (await db.query('select count(*) n from private.customer_review_decisions'))
+      .rows[0].n,
+  ).toBe(1);
+});
+it('customer workflow publisher receives only an explicit published repair recommendation and cannot substitute a private finding', async () => {
+  const report = await publishP2(0);
+  await db.exec('reset role');
+  await db.query('insert into portal_identities values($1,$2,$3,true)', [
+    orgs[0],
+    customers[0],
+    reportUsers[0],
+  ]);
+  await actor();
+  const p = {
+    customer_id: customers[0],
+    location_id: locations[0],
+    user_id: reportUsers[0],
+    version_id: versions[0].version.id,
+    source_report_id: report,
+    finding_id: 'public',
+    source_line_id: versions[0].version.payload.lines[0].id,
+  };
+  const preview = await rpc<{
+    repair_recommendation: { id: string; recommendation: string };
+  }>('customer_publication_preview', [orgs[0], p]);
+  expect(preview.repair_recommendation.id).toBe('public');
+  expect(JSON.stringify(preview)).not.toContain('SECRET');
+  await denied('select public.customer_publication_preview($1,$2)', [
+    orgs[0],
+    { ...p, finding_id: 'private' },
+  ]);
+  await db.exec('reset role');
+  expect(
+    (await db.query('select count(*) n from private.customer_estimate_access'))
+      .rows[0].n,
+  ).toBe(0);
+});
 it.skipIf(!db.fork)(
   'customer proposal native: access expiry during a grant lock wait denies issued review',
   async () => {
@@ -1488,7 +1933,7 @@ it.skipIf(!db.fork)(
     );
     const grant = (
       await db.query<{ id: string }>(
-        "insert into private.customer_estimate_access(organization_id,customer_id,location_id,user_id,version_id,expires_at,approval_reference) values($1,$2,$3,$4,$5,clock_timestamp()+interval '2 seconds','LOCAL NATIVE WAIT') returning id",
+        "insert into private.customer_estimate_access(organization_id,customer_id,location_id,user_id,version_id,expires_at,approval_reference,published_by,request_id,scope_sha256,scope_snapshot,repair_link_reviewed) select $1,$2,$3,$4,$5,clock_timestamp()+interval '2 seconds','LOCAL NATIVE WAIT',published_by,gen_random_uuid(),scope_sha256,scope_snapshot,true from private.customer_estimate_access where organization_id=$1 limit 1 returning id",
         [
           orgs[2],
           customers[2],
@@ -2325,3 +2770,329 @@ it('executes the offline compiled three-company fixture proposals locally throug
     ).toBe(revisions[i] + 5);
   }
 });
+
+it.each(['banned', 'deleted', 'anonymous'])(
+  'customer audit: a %s confirmed identity cannot read an issued estimate',
+  async (state) => {
+    await estimateAccess();
+    if (state === 'banned')
+      await db.query(
+        "update auth.users set banned_until=clock_timestamp()+interval '1 day' where id=$1",
+        [reportUsers[0]],
+      );
+    if (state === 'deleted')
+      await db.query(
+        'update auth.users set deleted_at=clock_timestamp() where id=$1',
+        [reportUsers[0]],
+      );
+    if (state === 'anonymous')
+      await db.query('update auth.users set is_anonymous=true where id=$1', [
+        reportUsers[0],
+      ]);
+    await actor(db, reportUsers[0], 'aal1');
+    await denied('select public.customer_estimate_review($1,$2,$3,$4)', [
+      orgs[0],
+      customers[0],
+      locations[0],
+      versions[0].version.id,
+    ]);
+  },
+);
+it.skipIf(!db.fork).each(['staff', 'platform'])(
+  'customer audit native: %s role promotion while report discovery waits must deny discovery',
+  async (promotion) => {
+    await db.exec('rollback;reset role');
+    const customerActor = uid();
+    const session = uid();
+    sessions.set(customerActor, session);
+    await db.query(
+      'insert into auth.users(id,email,email_confirmed_at) values($1,$2,clock_timestamp())',
+      [customerActor, customerActor + '@example.test'],
+    );
+    await db.query('insert into auth.sessions(id,user_id) values($1,$2)', [
+      session,
+      customerActor,
+    ]);
+    await db.query('insert into portal_identities values($1,$2,$3,true)', [
+      orgs[2],
+      customers[2],
+      customerActor,
+    ]);
+    await db.query(
+      "insert into private.property_report_access(organization_id,customer_id,location_id,user_id,expires_at,approval_reference) values($1,$2,$3,$4,clock_timestamp()+interval '10 minutes','LOCAL AUDIT ONLY')",
+      [orgs[2], customers[2], locations[2], customerActor],
+    );
+    await db.exec('reset role;begin');
+    await db.query(
+      'select id from private.property_report_access where user_id=$1 for update',
+      [customerActor],
+    );
+    const peer = await db.fork!();
+    try {
+      const pid = Number(
+        (await peer.query('select pg_backend_pid() id')).rows[0].id,
+      );
+      await actor(peer, customerActor, 'aal1');
+      const pending = peer
+        .query('select public.customer_portal_discover()')
+        .then(
+          () => false,
+          () => true,
+        );
+      await blocked(db, pid);
+      if (promotion === 'staff')
+        await db.query(
+          "insert into memberships(organization_id,user_id,role) values($1,$2,'staff')",
+          [orgs[2], customerActor],
+        );
+      else
+        await db.query(
+          'insert into private.platform_admins(user_id,active) values($1,true)',
+          [customerActor],
+        );
+      await db.exec('commit');
+      expect(await pending).toBe(true);
+    } finally {
+      await db.exec('rollback');
+      await peer.close();
+    }
+  },
+);
+it.skipIf(!db.fork)(
+  'customer workflow native: concurrent opposing decisions persist once with one audit and immutable source',
+  async () => {
+    await db.exec('rollback;reset role');
+    await estimateAccess(0);
+    const peers = await Promise.all([db.fork!(), db.fork!()]);
+    try {
+      await Promise.all(peers.map((d) => actor(d, reportUsers[0], 'aal1')));
+      const outcomes = await Promise.allSettled(
+        peers.map((d, i) =>
+          recordReview(0, i ? 'decline_review' : 'approve_review', uid(), d),
+        ),
+      );
+      expect(outcomes.filter((x) => x.status === 'fulfilled')).toHaveLength(1);
+      expect(outcomes.filter((x) => x.status === 'rejected')).toHaveLength(1);
+      expect(
+        (
+          await db.query(
+            'select count(*) n from private.customer_review_decisions where organization_id=$1',
+            [orgs[0]],
+          )
+        ).rows[0].n,
+      ).toBe(1);
+      expect(
+        (
+          await db.query(
+            "select count(*) n from activity_events where organization_id=$1 and entity_type='customer_review_decisions'",
+            [orgs[0]],
+          )
+        ).rows[0].n,
+      ).toBe(1);
+    } finally {
+      await Promise.all(peers.map((p) => p.close()));
+    }
+  },
+);
+it.skipIf(!db.fork).each(['session', 'publication', 'jwt'])(
+  'customer workflow native: %s expires while decision waits, no preference or audit is inserted',
+  async (expiring) => {
+    await db.exec('rollback;reset role');
+    // Existing baseline native cases use customer0; choose a fresh authorized customer user.
+    const user = uid(),
+      session = uid();
+    sessions.set(user, session);
+    await db.query(
+      'insert into auth.users(id,email,email_confirmed_at) values($1,$2,clock_timestamp())',
+      [user, user + '@example.test'],
+    );
+    await db.query(
+      "insert into auth.sessions(id,user_id,not_after) values($1,$2,clock_timestamp()+case when $3 then interval '2 seconds' else interval '1 hour' end)",
+      [session, user, expiring === 'session'],
+    );
+    await db.query('insert into portal_identities values($1,$2,$3,true)', [
+      orgs[1],
+      customers[1],
+      user,
+    ]);
+    await actor(db, owners[1]);
+    const p = {
+      customer_id: customers[1],
+      location_id: locations[1],
+      user_id: user,
+      version_id: versions[1].version.id,
+      source_report_id: null,
+      finding_id: null,
+      source_line_id: null,
+    };
+    const preview = await rpc<{ scope_sha256: string }>(
+      'customer_publication_preview',
+      [orgs[1], p],
+    );
+    const pub = await rpc<{ publication_id: string }>(
+      'customer_publish_estimate',
+      [
+        orgs[1],
+        {
+          ...p,
+          scope_sha256: preview.scope_sha256,
+          request_id: uid(),
+          expires_at: new Date(
+            Date.now() + (expiring === 'publication' ? 2000 : 600000),
+          ).toISOString(),
+          review_acknowledged: true,
+          approval_reference: 'LOCAL expiry test',
+        },
+      ],
+    );
+    await db.exec('reset role;begin');
+    await db.query(
+      'select id from private.customer_estimate_access where id=$1 for update',
+      [pub.publication_id],
+    );
+    const peer = await db.fork!();
+    try {
+      await actor(peer, user, 'aal1');
+      if (expiring === 'jwt')
+        await peer.query("select set_config('request.jwt.claims',$1,false)", [
+          JSON.stringify({
+            sub: user,
+            session_id: session,
+            aal: 'aal1',
+            exp: Math.floor(Date.now() / 1000) + 2,
+          }),
+        ]);
+      const pid = Number(
+        (await peer.query('select pg_backend_pid() id')).rows[0].id,
+      );
+      const pending = peer
+        .query('select public.customer_record_decision($1,$2,$3,$4,$5,$6)', [
+          orgs[1],
+          pub.publication_id,
+          preview.scope_sha256,
+          'approve_review',
+          'review-only-v1',
+          uid(),
+        ])
+        .then(
+          () => false,
+          () => true,
+        );
+      await blocked(db, pid);
+      await db.exec('select pg_sleep(2.1);commit');
+      expect(await pending).toBe(true);
+      expect(
+        (
+          await db.query(
+            'select count(*) n from private.customer_review_decisions where user_id=$1',
+            [user],
+          )
+        ).rows[0].n,
+      ).toBe(0);
+    } finally {
+      await db.exec('rollback');
+      await peer.close();
+    }
+  },
+);
+
+it.skipIf(!db.fork)(
+  'customer workflow native: publisher JWT expires during issued-version lock wait, no publication or audit',
+  async () => {
+    await db.exec('rollback;reset role');
+    const staff = uid(),
+      session = uid(),
+      customer = uid();
+    sessions.set(staff, session);
+    for (const user of [staff, customer])
+      await db.query(
+        'insert into auth.users(id,email,email_confirmed_at) values($1,$2,clock_timestamp())',
+        [user, user + '@example.test'],
+      );
+    await db.query('insert into auth.sessions(id,user_id) values($1,$2)', [
+      session,
+      staff,
+    ]);
+    await db.query(
+      "insert into memberships(organization_id,user_id,role) values($1,$2,'admin')",
+      [orgs[0], staff],
+    );
+    await db.query('insert into portal_identities values($1,$2,$3,true)', [
+      orgs[0],
+      customers[0],
+      customer,
+    ]);
+    await actor(db, staff);
+    const p = {
+      customer_id: customers[0],
+      location_id: locations[0],
+      user_id: customer,
+      version_id: versions[0].version.id,
+      source_report_id: null,
+      finding_id: null,
+      source_line_id: null,
+    };
+    const preview = await rpc<{ scope_sha256: string }>(
+      'customer_publication_preview',
+      [orgs[0], p],
+    );
+    const request = uid();
+    await db.exec('reset role;begin');
+    await db.query('select id from estimate_versions where id=$1 for update', [
+      versions[0].version.id,
+    ]);
+    const peer = await db.fork!();
+    try {
+      await actor(peer, staff);
+      await peer.query("select set_config('request.jwt.claims',$1,false)", [
+        JSON.stringify({
+          sub: staff,
+          session_id: session,
+          aal: 'aal2',
+          exp: Math.floor(Date.now() / 1000) + 2,
+        }),
+      ]);
+      const pid = Number(
+        (await peer.query('select pg_backend_pid() id')).rows[0].id,
+      );
+      const pending = peer
+        .query('select public.customer_publish_estimate($1,$2)', [
+          orgs[0],
+          {
+            ...p,
+            scope_sha256: preview.scope_sha256,
+            request_id: request,
+            expires_at: new Date(Date.now() + 600000).toISOString(),
+            review_acknowledged: true,
+            approval_reference: 'LOCAL publisher expiry',
+          },
+        ])
+        .then(
+          () => false,
+          () => true,
+        );
+      await blocked(db, pid);
+      await db.exec('select pg_sleep(2.1);commit');
+      expect(await pending).toBe(true);
+      expect(
+        (
+          await db.query(
+            'select count(*) n from private.customer_estimate_access where request_id=$1',
+            [request],
+          )
+        ).rows[0].n,
+      ).toBe(0);
+      expect(
+        (
+          await db.query(
+            "select count(*) n from activity_events where actor_id=$1 and entity_type='customer_estimate_access'",
+            [staff],
+          )
+        ).rows[0].n,
+      ).toBe(0);
+    } finally {
+      await db.exec('rollback');
+      await peer.close();
+    }
+  },
+);

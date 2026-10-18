@@ -829,3 +829,17 @@ permissions. Show approved/declined only as explicit synthetic receipt-backed
 preferences;no real customer debt,invoice,contract,payment or messaging effects.
 Preserve original13 migrations/frozen P1/recovery/Netlify and honest hosted statuses.
 See docs/CUSTOMER_PORTAL_LOGIN_REVIEW.md.
+
+## October18 · explicit publication and nonfinancial customer preferences
+
+Correct current Auth identity/final discovery guards before formalizing the dormant
+customer proposal. Reproduce failures on disposable PG17 first. Reuse one canonical
+safe issued projection across reads/publication/evidence;never auto-publish issued
+versions. Restrict publication to current owner/admin AAL2 and explicit customer/
+property/version plus optional immutable report/finding/line selection and digest.
+Record one immutable caller-specific approve_review/decline_review per issued version,
+with exact idempotency and acknowledgment;never interpret it as customer debt,
+contract signing,job-change or invoice/payment approval. No withdrawal overwrite;
+a later correction design needs separate review. Maintain default-deny proposed
+wrappers/tables and a separate workflow SQL proposal outside all13 historical files.
+No hosted grant/session/action or duplicate P1 approval. Release remains closed.

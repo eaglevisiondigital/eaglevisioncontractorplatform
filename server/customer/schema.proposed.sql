@@ -24,6 +24,25 @@ create index customer_estimate_mapping on private.customer_estimate_access(organ
 create index customer_estimate_location on private.customer_estimate_access(organization_id,location_id,customer_id);
 create index customer_estimate_line on private.customer_estimate_access(organization_id,version_id,source_line_id);
 create index customer_estimate_report on private.customer_estimate_access(organization_id,source_report_id);
+create function private.customer_issued_review(p_org uuid,p_customer uuid,p_location uuid,p_version uuid,p_report uuid,p_finding text,p_line uuid) returns jsonb
+language plpgsql security definer set search_path='' as $$declare v public.estimate_versions;result jsonb;begin
+ if ((p_report is null and p_finding is null and p_line is null) or (p_report is not null and p_finding is not null and p_line is not null and length(trim(p_finding)) between 1 and 100)) is not true then raise exception 'Complete repair provenance required';end if;
+ select * into v from public.estimate_versions where organization_id=p_org and id=p_version and customer_id=p_customer and status='issued' for share;
+ if v.id is null or (v.location_id=p_location or (v.location_id is null and exists(
+  select 1 from private.inspection_plans p join public.jobs j on j.organization_id=p.organization_id and j.id=p.job_id
+  join public.estimate_versions b on b.organization_id=j.organization_id and b.id=j.baseline_version_id
+  where p.organization_id=p_org and p.customer_id=p_customer and p.location_id=p_location and b.estimate_id=v.estimate_id and b.customer_id=p_customer))) is not true then raise exception 'Issued customer/property scope required';end if;
+ if p_report is not null and not exists(select 1 from private.inspection_reports r where r.organization_id=p_org and r.id=p_report and r.customer_id=p_customer and r.location_id=p_location and exists(select 1 from jsonb_array_elements(r.snapshot->'findings') f where f->>'id'=p_finding)) then raise exception 'Published customer-visible finding required';end if;
+ if p_line is not null and not exists(select 1 from public.estimate_lines l where l.organization_id=p_org and l.version_id=p_version and l.id=p_line and (l.calculation->>'included')::boolean) then raise exception 'Included issued source line required';end if;
+ result:=jsonb_build_object('organization_id',p_org,'customer_id',p_customer,'location_id',p_location,'version_id',v.id,'estimate_id',v.estimate_id,'version_number',v.version_number,
+ 'source_report_id',p_report,'finding_id',p_finding,'source_line_id',p_line,'review_state',case when (v.payload->>'expires_on')::date<(clock_timestamp() at time zone 'UTC')::date then 'expired' else 'awaiting_action' end,
+ 'scope',jsonb_build_object('name',v.payload->'project'->'name','description',v.payload->'project'->'description','currency',v.payload->>'currency','expires_on',v.payload->>'expires_on','notes',v.payload->>'customer_notes','terms',v.payload->>'terms',
+ 'lines',(select coalesce(jsonb_agg(jsonb_build_object('id',l->>'id','description',l->>'description','quantity_milli',l->'quantity_milli','unit',l->>'unit','amount_minor',c->'subtotal_minor') order by pos),'[]'::jsonb) from jsonb_array_elements(v.payload->'lines') with ordinality q(l,pos) join lateral jsonb_array_elements(v.calculation->'lines') c on c->>'id'=l->>'id' where (c->>'included')::boolean),
+ 'subtotal_minor',v.calculation->'subtotal_minor','discount_minor',v.calculation->'discount_minor','tax_minor',v.calculation->'tax_minor','total_minor',v.calculation->'total_minor'),
+ 'mode','internal-development','read_only',true);
+ return result;end$$;
+revoke all on function private.customer_issued_review(uuid,uuid,uuid,uuid,uuid,text,uuid) from public,anon,authenticated,service_role;
+
 create function private.customer_access_invariant() returns trigger language plpgsql security definer set search_path='' as $$declare v public.estimate_versions;begin
  if tg_op='DELETE' then raise exception 'Access evidence is append-only';end if;
  if tg_op='UPDATE' then
@@ -46,7 +65,7 @@ create trigger customer_access_audit after insert or update or delete on private
 
 create function private.customer_portal_guard(p_org uuid,p_customer uuid,p_location uuid) returns void language plpgsql security definer set search_path='' as $$begin
  perform private.property_connected_session();
- perform 1 from auth.users where id=auth.uid() and email_confirmed_at is not null for share;if not found then raise exception 'Customer access unavailable' using errcode='42501';end if;
+ perform 1 from auth.users where id=auth.uid() and email_confirmed_at is not null and deleted_at is null and is_anonymous is false and (banned_until is null or banned_until<=clock_timestamp()) for share;if not found then raise exception 'Customer access unavailable' using errcode='42501';end if;
  perform 1 from public.memberships where user_id=auth.uid() and active for share;
  if found or exists(select 1 from private.platform_admins where user_id=auth.uid() and active) then raise exception 'Customer access unavailable' using errcode='42501';end if;
  perform 1 from public.organizations where id=p_org and status='active' for share;if not found then raise exception 'Customer access unavailable' using errcode='42501';end if;
@@ -63,14 +82,7 @@ declare a private.customer_estimate_access;v public.estimate_versions;result jso
  perform private.customer_portal_guard(p_org,p_customer,p_location);
  select * into a from private.customer_estimate_access where organization_id=p_org and customer_id=p_customer and location_id=p_location and user_id=auth.uid() and version_id=p_version and revoked_at is null and expires_at>clock_timestamp() for share;
  if a.id is null then raise exception 'Customer access unavailable' using errcode='42501';end if;
- select * into v from public.estimate_versions where organization_id=p_org and id=p_version and customer_id=p_customer and status='issued' for share;
- if v.id is null then raise exception 'Customer access unavailable' using errcode='42501';end if;
- result:=jsonb_build_object('organization_id',p_org,'customer_id',p_customer,'location_id',p_location,'version_id',v.id,'estimate_id',v.estimate_id,'version_number',v.version_number,
- 'source_report_id',a.source_report_id,'finding_id',a.finding_id,'source_line_id',a.source_line_id,'review_state',case when (v.payload->>'expires_on')::date<(clock_timestamp() at time zone 'UTC')::date then 'expired' else 'awaiting_action' end,
- 'scope',jsonb_build_object('name',v.payload->'project'->'name','description',v.payload->'project'->'description','currency',v.payload->>'currency','expires_on',v.payload->>'expires_on','notes',v.payload->>'customer_notes','terms',v.payload->>'terms',
- 'lines',(select coalesce(jsonb_agg(jsonb_build_object('id',l->>'id','description',l->>'description','quantity_milli',l->'quantity_milli','unit',l->>'unit','amount_minor',c->'subtotal_minor') order by pos),'[]'::jsonb) from jsonb_array_elements(v.payload->'lines') with ordinality q(l,pos) join lateral jsonb_array_elements(v.calculation->'lines') c on c->>'id'=l->>'id' where (c->>'included')::boolean),
- 'subtotal_minor',v.calculation->'subtotal_minor','discount_minor',v.calculation->'discount_minor','tax_minor',v.calculation->'tax_minor','total_minor',v.calculation->'total_minor'),
- 'mode','internal-development','read_only',true);
+ result:=private.customer_issued_review(p_org,p_customer,p_location,p_version,a.source_report_id,a.finding_id,a.source_line_id);
  perform private.customer_portal_guard(p_org,p_customer,p_location);
  if a.expires_at<=clock_timestamp() then raise exception 'Customer access unavailable' using errcode='42501';end if;
  return result;
@@ -90,6 +102,7 @@ create function private.customer_portal_discover() returns jsonb language plpgsq
   end if;
   v_ids:='[]';
   select coalesce(jsonb_agg(version_id order by version_id),'[]'::jsonb) into v_ids from private.customer_estimate_access where organization_id=b.organization_id and customer_id=b.customer_id and location_id=b.location_id and user_id=auth.uid() and revoked_at is null and expires_at>clock_timestamp();
+  if jsonb_array_length(v_ids)>100 then raise exception 'Customer access unavailable' using errcode='42501';end if;
   -- Each candidate is checked through the same full read boundary, including post-wait expiry.
   declare v text;begin for v in select jsonb_array_elements_text(v_ids) loop perform private.customer_estimate_review(b.organization_id,b.customer_id,b.location_id,v::uuid);end loop;end;
   if not can_report and jsonb_array_length(v_ids)=0 then raise exception 'Customer access unavailable' using errcode='42501';end if;
@@ -100,6 +113,7 @@ create function private.customer_portal_discover() returns jsonb language plpgsq
  if jsonb_array_length(items)>20 then raise exception 'Customer access unavailable' using errcode='42501';end if;
  perform private.property_connected_session();
  for b in select * from jsonb_to_recordset(items) as x(organization_id uuid,customer_id uuid,location_id uuid,reports boolean,version_ids jsonb) loop
+  perform private.customer_portal_guard(b.organization_id,b.customer_id,b.location_id);
   if b.reports and not exists(select 1 from private.property_report_access a where a.organization_id=b.organization_id and a.customer_id=b.customer_id and a.location_id=b.location_id and a.user_id=auth.uid() and a.revoked_at is null and a.expires_at>clock_timestamp()) then raise exception 'Customer access unavailable' using errcode='42501';end if;
   if (select count(*) from private.customer_estimate_access a where a.organization_id=b.organization_id and a.customer_id=b.customer_id and a.location_id=b.location_id and a.user_id=auth.uid() and a.revoked_at is null and a.expires_at>clock_timestamp() and a.version_id::text in (select jsonb_array_elements_text(b.version_ids)))<>jsonb_array_length(b.version_ids) then raise exception 'Customer access unavailable' using errcode='42501';end if;
  end loop;
