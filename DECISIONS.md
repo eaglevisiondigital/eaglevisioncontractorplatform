@@ -767,3 +767,13 @@ fixture scope. Prefer current project-scoped Database-only PATs for future backu
 custody; no token/grant creation occurs here. Do not provision secrets on Monterey;
 require maintained independent OS/power/network. Hardware pairing, real TLS/custody,
 MFA/recovery and exact owner approval remain unverified gates. Release stays closed.
+
+## P1 reauthorization preserves mandatory recovery gates
+
+Reconfirmed exact P1 fixture approval does not waive operational cleanup/hardware
+prerequisites. Preserve approval,hashes and13 historical SQL; stop before sessions
+or activation when independently verified recovery/custody and supervision are
+absent. Report fresh local integrity separately from historical hosted713/22/four
+baselines. Do not create a session just to test readiness or repackage the rejected
+probe. Ask for missing device/operator facts, not duplicate fixture approval.
+See docs/PROPERTY_P1_REAUTHORIZATION_PREFLIGHT.md.

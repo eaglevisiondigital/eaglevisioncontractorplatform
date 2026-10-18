@@ -1,5 +1,7 @@
 # P1 execution: stopped at mandatory preflight
 
+Latest: [P1 reauthorization preflight](PROPERTY_P1_REAUTHORIZATION_PREFLIGHT.md) preserves exact approval but stops before sign-in because independent recovery/device/custody remain unverified. The earlier missing-executor finding is historical; no fresh hosted verification is claimed by this stop.
+
 Latest implementation checkpoint: [P1 executor readiness](PROPERTY_P1_EXECUTOR_READINESS.md).
 The executor and independent cleanup are now locally implemented/rehearsed; the older
 missing-executor/preparation status below is historical. Frozen scope and existing

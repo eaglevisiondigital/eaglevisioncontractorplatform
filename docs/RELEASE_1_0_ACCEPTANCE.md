@@ -1,5 +1,21 @@
 # Production Release 1.0 acceptance checklist
 
+## Latest: P1 reauthorization stopped at operational recovery gate
+
+Read [PROPERTY_P1_REAUTHORIZATION_PREFLIGHT.md](PROPERTY_P1_REAUTHORIZATION_PREFLIGHT.md)
+and its JSON. Existing exact01b96075… authorization is preserved; no duplicate
+fixture-scope approval is requested. Frozen operation/four artifacts,13 local
+historical SQL files and executor source hashes match. Independent maintained
+device/custody/paired transfer, real cleanup/local logout and full supervised
+operator window remain unverified. Stop before Auth sign-in/MFA/features/fixtures.
+No project request or credential retrieval occurred; current hosted identity,
+713 rows,22 identities/four factors and off state were NOT refreshed this attempt.
+Hosted tracker0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN;new records/audits/sessions/writes0
+in this attempt. The prior rejected probe was not retried. Identify maintained
+recovery device/operator and complete separately scoped recovery verification
+before fresh P1 preflight. P2/media/providers/Netlify remain separate/off.
+Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft/unmerged.
+
 ## Latest: independent recovery security implementation · local only
 
 Read [PROPERTY_P1_RECOVERY_COMPLETION.md](PROPERTY_P1_RECOVERY_COMPLETION.md)

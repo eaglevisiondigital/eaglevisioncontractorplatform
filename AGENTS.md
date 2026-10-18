@@ -385,3 +385,14 @@ and all13 SQL; existing unchanged-scope approval persists. The rejected probe is
 still prohibited; exact future hosted verification needs separate authorization.
 Device pairing, scoped PAT custody, real MFA/recovery remain NOT VERIFIED; P1
 activation NO-GO; Release1.0 NOT READY / NOT AUTHORIZED.
+
+## P1 reconfirmed authorization · operational gate still blocked
+
+Read docs/PROPERTY_P1_REAUTHORIZATION_PREFLIGHT.md before attempting the repeated
+P1 authorization. Approved01b96075… scope persists; local artifact/13 SQL/source
+checks pass. No maintained recovery device/custody/pairing/actual logout or complete
+operator window was verified; no project request, credential read, Auth/MFA,
+fixture/feature or cleanup write occurred. Do not claim fresh713/22/four/global-off
+verification. Stop before hosted sign-in until independent recovery prerequisites
+and separately exact recovery verification approval are satisfied. No duplicate
+fixture approval, old probe retry, Monterey secret installation or scope expansion.
