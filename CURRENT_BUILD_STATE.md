@@ -1,5 +1,19 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: P1-R0 device intake prepared · actual device pending
+
+Read [PROPERTY_P1_R0_DEVICE_READINESS.md](docs/PROPERTY_P1_R0_DEVICE_READINESS.md)
+and PROPERTY_P1_R0_READINESS.json. Practical owner checklist and read-only,
+credential-free intake helper are prepared. No maintained physical recovery device,
+OS/encryption/custody/power/network or operator is identified/verified. Do not run
+the helper on the primary and call it second-device evidence; do not install
+privileged credentials on Monterey. Seven actual two-device rehearsal cases remain
+0 PASS/0 FAIL/7 BLOCKED/0 NOT RUN. Phase C exact hosted proposal is NOT PREPARED
+until actual Phase B PASS. P1 runtime/frozen package/all13 SQL unchanged;no hosted action.
+Existing P1 approval persists;tracker0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN. Immediate
+owner input is model,exact OS,encryption,power/network,operator and availability.
+No credentials/MFA are requested. Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft.
+
 ## Latest: P1 reauthorization stopped at operational recovery gate
 
 Read [PROPERTY_P1_REAUTHORIZATION_PREFLIGHT.md](docs/PROPERTY_P1_REAUTHORIZATION_PREFLIGHT.md)

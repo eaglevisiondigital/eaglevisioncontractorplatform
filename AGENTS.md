@@ -396,3 +396,14 @@ fixture/feature or cleanup write occurred. Do not claim fresh713/22/four/global-
 verification. Stop before hosted sign-in until independent recovery prerequisites
 and separately exact recovery verification approval are satisfied. No duplicate
 fixture approval, old probe retry, Monterey secret installation or scope expansion.
+
+## P1-R0 device readiness
+
+Read docs/PROPERTY_P1_R0_DEVICE_READINESS.md and its JSON. Owner checklist and
+standalone device_facts.py are prepared; actual maintained computer/operator are
+not identified/available/verified. Helper intake is not readiness PASS or physical
+attestation. Keep hardware output private;no passwords/serials/recovery keys/MFA.
+Do not install credentials on Monterey,run R0 on primary-only processes and claim
+independence,or generate Phase C operation/hash before actual Phase B passes.
+R0 cases0 PASS/0 FAIL/7 BLOCKED/0 NOT RUN;P1 tracker unchanged. Existing exact P1
+approval persists. No hosted session/probe/feature/database/Netlify/provider action.

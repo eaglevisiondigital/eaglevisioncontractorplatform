@@ -689,3 +689,15 @@ protocol needs exact separate hosted verification. Reject Monterey privileged
 custody; require maintained independent hardware/OS, encrypted disk, separate secure
 credentials and tested network/power. No auto-start or hosted CLI. See
 docs/PROPERTY_P1_RECOVERY_COMPLETION.md for remaining gates and threat limits.
+
+## P1-R0 actual-device evidence
+
+Separate simulation,owner-reported intake and independently observed device facts.
+Do not infer supported OS from binary compatibility, custody-volume encryption from
+boot FileVault alone, or physical independence from another local process. No
+privileged Monterey custody. New intake helper has fixed bounded read commands,
+closed stdin,no inherited credential environment and no network/secret reader.
+Never collect serials,passwords,recovery keys or MFA. Keep device facts private.
+Actual two-machine pairing/ACK/heartbeat/human/power/network/failure evidence is
+required before a separately approved hosted recovery test. No old probe retry or
+P1 activation is authorized by R0. See docs/PROPERTY_P1_R0_DEVICE_READINESS.md.

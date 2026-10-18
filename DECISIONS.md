@@ -777,3 +777,13 @@ absent. Report fresh local integrity separately from historical hosted713/22/fou
 baselines. Do not create a session just to test readiness or repackage the rejected
 probe. Ask for missing device/operator facts, not duplicate fixture approval.
 See docs/PROPERTY_P1_REAUTHORIZATION_PREFLIGHT.md.
+
+## P1-R0: identify hardware before operational claims
+
+Prepare a practical GUI-first checklist and optional read-only metadata helper;
+do not assume the older Monterey device or another machine is ready. Obtain exact
+model/OS/encryption/power/network/operator facts privately. Keep7 genuine two-device
+cases BLOCKED until actual hardware/transport and human evidence exist. Ephemeral
+synthetic rehearsal keys are distinct from live service credentials. Prepare the
+exact hosted recovery operation only after actual Phase B PASS;preserve unchanged
+P1 approval without another fixture-approval request. No hosted actions occur.

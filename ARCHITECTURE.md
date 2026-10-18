@@ -651,3 +651,11 @@ P1 audit reconciliation also binds exact entity type, receipt ID and event multi
 ## Monterey independent recovery preparation
 
 A separate Python standard-library preparation kit under recovery/monterey verifies an unchanged three-file capsule and describes only fixed deactivation/observation and exact-session Auth requests. It has no network transport or hosted CLI. Its own fsynced one-shot journal and future protected memory custody require no primary process,journal or Keychain after handoff. Proposed scope=local is distinct from unchanged primary global logout. Independent encrypted escrow/acknowledgment and live adapter are not implemented or approved;current primary gates are unchanged. See docs/PROPERTY_P1_MONTEREY_RECOVERY.md.
+
+## P1-R0 intake boundary
+
+The independent recovery architecture is unchanged. A standalone read-only device
+intake helper collects limited OS/runtime/boot-encryption metadata without network
+or secret access; it never attests physical independence or operational recovery.
+See docs/PROPERTY_P1_R0_DEVICE_READINESS.md. Actual device/transport must exist before
+credential-free two-machine rehearsal; an exact hosted proposal follows its PASS.
