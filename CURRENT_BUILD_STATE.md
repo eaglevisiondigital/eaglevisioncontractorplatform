@@ -1,5 +1,22 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: Monterey independent recovery preparation · offline only
+
+Read [PROPERTY_P1_MONTEREY_RECOVERY.md](docs/PROPERTY_P1_MONTEREY_RECOVERY.md) and
+its JSON record. Recommended minimal Python standard-library recovery kit;primary
+Node24 requirement unchanged. Three-file private capsule preserves exact plan and
+deactivation bytes;no activation SQL,credential or primary journal export. Independent
+one-shot journal and mock request contracts cover three tenants and15 exercised
+sessions,with proposed session-local logout to preserve unrelated sessions.
+
+No live transport,hosted command,credential reader,session handoff or network listener
+is supplied/enabled. No rejected probe was repeated. Actual Monterey hardware,
+maintained OS/runtime/TLS,independent network,secure escrow/live adapter and exact
+hosted recovery approval remain unverified gates. Browser SQL/DevTools recovery is
+not the recommended narrow interface. No hosted calls,writes,Auth/MFA,providers or
+Netlify actions occurred. All13 migrations/frozen P1/branding remain unchanged.
+P1 hosted0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN;Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Latest: P1 adversarial audit · activation NO-GO pending operational gates
 
 Read [PROPERTY_P1_INDEPENDENT_AUDIT.md](docs/PROPERTY_P1_INDEPENDENT_AUDIT.md) and

@@ -1,5 +1,10 @@
 # P1 supervised execution runbook
 
+Second-Mac preparation: [Monterey recovery](PROPERTY_P1_MONTEREY_RECOVERY.md).
+The available kit is offline only;do not mistake it for a verified recovery channel
+or use it to repeat the rejected hosted cleanup probe. All action-time gates below
+remain mandatory.
+
 Future execution only. This document does not start any process or grant new scope.
 Exact P1 authorization remains valid; the current audit stops before all hosted
 writes, Auth sign-in and MFA challenges. Read PROPERTY_P1_INDEPENDENT_AUDIT.md.

@@ -634,3 +634,7 @@ The exact frozen package now has a caller-bound Supabase SDK executor and separa
 The independent cleanup worker now serializes its asynchronous handoffs with shutdown through P1CommandGate. Shutdown marks closed synchronously; credential custody settles before revocation/observation, and live-session waits cannot finish by starting late activation. Quote-window validation is repeated after preflight/Auth waits. The frozen plan and all13 migrations remain unchanged. Read docs/PROPERTY_P1_INDEPENDENT_AUDIT.md and the supervised runbook; local proof is separate from operational cleanup rights.
 
 P1 audit reconciliation also binds exact entity type, receipt ID and event multiplicity; same-tenant UUID substitution is not accepted as valid audit provenance.
+
+## Monterey independent recovery preparation
+
+A separate Python standard-library preparation kit under recovery/monterey verifies an unchanged three-file capsule and describes only fixed deactivation/observation and exact-session Auth requests. It has no network transport or hosted CLI. Its own fsynced one-shot journal and future protected memory custody require no primary process,journal or Keychain after handoff. Proposed scope=local is distinct from unchanged primary global logout. Independent encrypted escrow/acknowledgment and live adapter are not implemented or approved;current primary gates are unchanged. See docs/PROPERTY_P1_MONTEREY_RECOVERY.md.
