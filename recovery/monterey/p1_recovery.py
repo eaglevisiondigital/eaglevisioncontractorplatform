@@ -223,34 +223,40 @@ class Recovery:
         self.lock = threading.Lock()
         self.attempted = False
 
-    def accept(self, alias, token):
-        # The operator must independently receive each real session BEFORE it
-        # can be exercised. Parsing claims alone never authenticates a user.
-        with self.lock:
-            if self.attempted or alias not in self.c.actors or len(token) > 16384:
+    def verified_session(self, alias, token, cleanup_only=False):
+        # Remote Auth verifies this exact bearer; claims alone are never authority.
+        try:
+            if alias not in self.c.actors or len(token) > 16384:
                 raise Stop("Handoff unavailable")
-            try:
-                user = self.ports.user(self.commands.user(token))
-                part = token.split(".")[1]
-                claims = json.loads(base64.urlsafe_b64decode(part + "=" * (-len(part) % 4)))
-                uid = self.c.actors[alias][0]
-                if (user.get("id") != uid or not user.get("email_confirmed_at")
-                        or user.get("is_anonymous") or claims.get("sub") != uid
-                        or claims.get("role") != "authenticated"
-                        or claims.get("iss") != "https://" + self.c.target + ".supabase.co/auth/v1"
-                        or not UUID.fullmatch(claims.get("session_id", ""))
-                        or type(claims.get("exp")) is not int
-                        or claims["exp"] <= self.clock() + 1860
-                        or claims.get("aal") not in ("aal1", "aal2")):
-                    raise Stop("Session binding invalid")
-                prior = self.sessions.get(alias)
-                if prior and prior.sid != claims["session_id"]:
-                    raise Stop("Session replacement forbidden")
-                self.sessions[alias] = Session(uid, claims["session_id"], claims["exp"], token)
-            except Exception:
-                raise Stop("Verified custody unconfirmed") from None
+            user = self.ports.user(self.commands.user(token))
+            part = token.split(".")[1]
+            claims = json.loads(base64.urlsafe_b64decode(part + "=" * (-len(part) % 4)))
+            uid = self.c.actors[alias][0]
+            if (user.get("id") != uid or not user.get("email_confirmed_at")
+                    or user.get("is_anonymous") or claims.get("sub") != uid
+                    or claims.get("role") != "authenticated"
+                    or claims.get("iss") != "https://" + self.c.target + ".supabase.co/auth/v1"
+                    or not UUID.fullmatch(claims.get("session_id", ""))
+                    or type(claims.get("exp")) is not int
+                    or claims["exp"] <= self.clock() + (180 if cleanup_only else 1860)
+                    or claims.get("aal") not in ("aal1", "aal2")):
+                raise Stop("Session binding invalid")
+            return Session(uid, claims["session_id"], claims["exp"], token)
+        except Exception:
+            raise Stop("Verified custody unconfirmed") from None
 
-    def recover(self):
+    def accept(self, alias, token):
+        # This ordinary custody handoff remains serialized against cleanup.
+        with self.lock:
+            if self.attempted:
+                raise Stop("Handoff unavailable")
+            session = self.verified_session(alias, token)
+            prior = self.sessions.get(alias)
+            if prior and prior.sid != session.sid:
+                raise Stop("Session replacement forbidden")
+            self.sessions[alias] = session
+
+    def recover(self, prepare_sessions=None):
         # Single durable local attempt, independent of the primary journal.
         with self.lock:
             if self.attempted:
@@ -268,6 +274,11 @@ class Recovery:
         except BaseException:
             deactivated = False  # UNKNOWN never authorizes an automatic retry.
         revoked = True
+        if prepare_sessions is not None:
+            try:
+                prepare_sessions(before)
+            except BaseException:
+                revoked = False
         def logout(session):
             try:
                 self.ports.logout(self.commands.logout(session.token))
@@ -278,7 +289,7 @@ class Recovery:
         # Future real ports MUST impose an8-second request/response deadline.
         try:
             with ThreadPoolExecutor(max_workers=15) as pool:
-                revoked = all(list(pool.map(logout, self.sessions.values())))
+                revoked = all(list(pool.map(logout, self.sessions.values()))) and revoked
         except BaseException:
             revoked = False
         after = None

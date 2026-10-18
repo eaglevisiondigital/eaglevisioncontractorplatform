@@ -1,5 +1,48 @@
 # P1 supervised execution runbook
 
+## Latest prerequisite: independent recovery completion
+
+Read [PROPERTY_P1_RECOVERY_COMPLETION.md](PROPERTY_P1_RECOVERY_COMPLETION.md)
+before the earlier handoff steps below. The new primary harness requires an
+independent P1BackupCustody instance. All instructions remain future supervised
+operations; no hosted sign-in/probe/cleanup is authorized by local implementation.
+
+1. Select a maintained, independently powered/networked device. No privileged
+   credential installation on Monterey12. Complete synthetic pairing, encrypted
+   transfer, heartbeat/presence and primary-loss rehearsal on that device first.
+2. Obtain separate exact approval for scoped backup custody and actual hosted
+   recovery verification, including session-local logout. Do not repeat/bypass
+   the rejected probe. Unchanged P1 fixture approval persists; no duplicate request.
+3. Start the independent foreground DeviceRuntime with the hash-bound capsule,
+   approved in-memory keys, separate encrypted journal and local private mailboxes.
+   Confirm actual human control and encrypted heartbeat delivery before five seconds.
+   Both operators must manually renew presence within60seconds; no timed human ACK.
+4. After fresh zero-session/713-record/13-migration preflight, call
+   reserveSessionCreation(alias) and wait for the independently authenticated,
+   durable INTENT receipt BEFORE submitting the external password sign-in.
+5. Immediately escrow its returned genuine AAL1 bearer; wait for durable SESSION
+   receipt before any owner MFA waiting/application RPC. Challenge only the existing
+   owner factor; verify exact UID/factor/AAL2/same session; wait for UPGRADE receipt.
+   Repeat for the other owners and all12 staff. No customer/operator sessions.
+6. Missing/lost Auth response or receipt is UNKNOWN. Stop, deactivate exact controls,
+   preserve journal, and independently inspect unresolved sessions. UID-only logout,
+   sign-in retry, account reset or deletion is not a recovery mechanism. No activation.
+7. Require15 exact acknowledged staff sessions and three owner upgrades before run.
+   The earlier-started backup clock contains by minute29; it does not extend the
+   primary30-minute maximum. Local logout now preserves unrelated same-user sessions;
+   unexpected sessions cause containment instead of global revocation.
+8. Emergency stop uses the independent foreground stop control or safety timeout:
+   observe, exact deactivation first, parallel authenticated custody restore/local
+   logout, final observation. Already-absent acknowledged sessions need no retry;
+   Auth failure alone is not absence. Preserve unrelated controls/session pairs,
+   identities/factors, immutable audits and all original financial records.
+9. Any uncertain/failed cleanup result remains CONTAINMENT_REQUIRED; no automatic
+   retry, receipt erasure, old-journal restore or new run to conceal uncertainty.
+   Only after separately authorized real recovery evidence and fresh preflight may
+   the unchanged approved P1 operation proceed. P2/media/providers/Netlify stay off.
+
+Earlier procedural checkpoints below are historical where this section differs.
+
 Second-Mac preparation: [Monterey recovery](PROPERTY_P1_MONTEREY_RECOVERY.md).
 The available kit is offline only;do not mistake it for a verified recovery channel
 or use it to repeat the rejected hosted cleanup probe. All action-time gates below

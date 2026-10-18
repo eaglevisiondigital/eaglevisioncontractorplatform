@@ -5,6 +5,7 @@ import { SupabaseP1Callers, type P1Identity } from './callers.ts';
 import { p1ReadOnlyVerification, type P1Reference } from './verification.ts';
 import { acceptanceJournal } from '../acceptance-journal.ts';
 import { executeP1 } from './executor.ts';
+import { P1BackupCustody } from './backup-custody.ts';
 /** Matches the existing reviewed read-snapshot fingerprint algorithm (ASCII key order). */
 export function settingsFingerprint(value: unknown): string {
   const canonical = (x: unknown): unknown =>
@@ -30,8 +31,14 @@ export async function prepareP1Execution(options: {
   managementToken: string;
   publishableKey: string;
   reference: P1Reference;
+  backup: P1BackupCustody;
 }) {
   const frozen = loadP1Package(options.directory, options.target);
+  if (
+    !(options.backup instanceof P1BackupCustody) ||
+    !options.backup.matches(frozen)
+  )
+    throw Error('Exact independent backup custody required');
   if (
     frozen.plan.originalRowCount !== 713 ||
     options.reference.history.length !== 13 ||
@@ -49,7 +56,15 @@ export async function prepareP1Execution(options: {
     publishableKey: options.publishableKey,
     operationHash: frozen.operationHash,
   });
-  const actors = new SupabaseP1Callers(frozen, options.publishableKey, cleanup);
+  const actors = new SupabaseP1Callers(frozen, options.publishableKey, {
+    register: async (alias, token, factorId) => {
+      await options.backup.accept(alias, token);
+      options.backup.assertAcknowledged(alias, token);
+      await cleanup.register(alias, token, factorId);
+    },
+    assertAcknowledged: (alias, token) =>
+      options.backup.assertAcknowledged(alias, token),
+  });
   const management = async (path: string, query?: string) => {
     const r = await fetch(
       `https://api.supabase.com/v1/projects/${frozen.target}${path}`,
@@ -108,6 +123,17 @@ export async function prepareP1Execution(options: {
   return {
     /** Read-only operational preflight BEFORE any later owner-assisted login. */
     preflight,
+    /** Backup intent ACK before external owner-assisted sign-in. No login is performed here. */
+    reserveSessionCreation: async (alias: string) => {
+      if (started || !fresh())
+        throw Error('Fresh preflight before creation intent required');
+      try {
+        await options.backup.reserveCreation(alias);
+      } catch {
+        await cleanup.close();
+        throw Error('Creation custody UNKNOWN; independently contain');
+      }
+    },
     /** Cleanup custody immediately after owner password sign-in, before waiting for genuine TOTP. */
     trackOwnerSession: async (alias: string, token: string) => {
       if (started || !fresh()) {
@@ -116,6 +142,8 @@ export async function prepareP1Execution(options: {
       }
       try {
         await cleanup.trackOwner(alias, token);
+        await options.backup.accept(alias, token);
+        options.backup.assertAcknowledged(alias, token);
       } catch {
         await cleanup.close();
         throw Error('Pending owner custody unconfirmed');
@@ -144,6 +172,12 @@ export async function prepareP1Execution(options: {
         await cleanup.close();
         throw Error('Supervised one-shot preflight required');
       }
+      try {
+        options.backup.assertReady();
+      } catch {
+        await cleanup.close();
+        throw Error('Incomplete independent custody; P1 stopped');
+      }
       started = true;
       const stop = new AbortController();
       const interrupt = () => stop.abort();
@@ -171,8 +205,12 @@ export async function prepareP1Execution(options: {
         for (const s of ['SIGINT', 'SIGTERM', 'SIGHUP'] as const)
           process.removeListener(s, interrupt);
         cleanup.dispose();
+        options.backup.stop();
       }
     },
-    close: () => cleanup.close(),
+    close: async () => {
+      options.backup.stop();
+      return cleanup.close();
+    },
   };
 }

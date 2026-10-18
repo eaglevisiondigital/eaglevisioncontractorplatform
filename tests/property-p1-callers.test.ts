@@ -26,7 +26,10 @@ const token = (claims: Record<string, unknown>) => {
 function setup() {
   const p = executionPackage();
   roots.push(p.root);
-  const custody = { register: vi.fn(async () => {}) };
+  const custody = {
+    register: vi.fn(async () => {}),
+    assertAcknowledged: vi.fn(),
+  };
   const calls: {
     path: string;
     method: string;
@@ -132,15 +135,36 @@ it('uses SDK Auth verification and exact normal-user Bearer tokens, preserves or
     { p_org: i.organizationId },
     new AbortController().signal,
   );
+  expect(s.custody.assertAcknowledged).toHaveBeenCalledWith(i.alias, high);
   expect(
     s.calls.find((x) => x.path === '/rest/v1/rpc/property_workspace')
       ?.authorization,
   ).toBe('Bearer ' + high);
   await owner.signOut();
-  expect(s.calls.at(-1)?.path).toBe('/auth/v1/logout?scope=global');
+  expect(s.calls.at(-1)?.path).toBe('/auth/v1/logout?scope=local');
   await expect(
     owner.rpc('provider_payment_command', {}, new AbortController().signal),
   ).rejects.toThrow('allowlist');
+});
+it('denies an RPC when independent backup acknowledgment is absent', async () => {
+  const s = setup(),
+    i = s.identity(),
+    c = s.claims(i);
+  await s.actors.add(i, token(c), token({ ...c, aal: 'aal1' }));
+  s.custody.assertAcknowledged.mockImplementation(() => {
+    throw Error('Backup missing');
+  });
+  const before = s.calls.length;
+  await expect(
+    s.actors
+      .get(i.organizationId, 'owner')
+      .rpc(
+        'property_workspace',
+        { p_org: i.organizationId },
+        new AbortController().signal,
+      ),
+  ).rejects.toThrow('Backup missing');
+  expect(s.calls).toHaveLength(before);
 });
 it.each([
   'foreign identity',
@@ -199,7 +223,7 @@ it('hands all15 exact staff identities to independent custody and preserves thre
   expect(s.custody.register).toHaveBeenCalledTimes(15);
   await s.actors.closeAll();
   expect(
-    s.calls.filter((c) => c.path === '/auth/v1/logout?scope=global'),
+    s.calls.filter((c) => c.path === '/auth/v1/logout?scope=local'),
   ).toHaveLength(15);
 });
 

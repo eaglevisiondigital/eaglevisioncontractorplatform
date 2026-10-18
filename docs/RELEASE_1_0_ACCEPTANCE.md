@@ -1,5 +1,27 @@
 # Production Release 1.0 acceptance checklist
 
+## Latest: independent recovery security implementation · local only
+
+Read [PROPERTY_P1_RECOVERY_COMPLETION.md](PROPERTY_P1_RECOVERY_COMPLETION.md)
+and its JSON record. Fixed HTTPS, hash-pinned authenticated encryption, durable
+independent session custody, encrypted mailboxes and foreground backup supervision
+are implemented and rehearsed locally. Primary P1 now requires a backup creation
+intent receipt before external sign-in and exact session receipts before RPCs or
+activation. Three owner upgrades and all15 staff sessions are required. Lost Auth
+responses leave unresolved, activation-blocking intents; no UID-only revocation or
+automatic retry. Local primary/backup logout uses session-local scope to preserve
+unrelated sessions; actual protocol acceptance remains unverified.
+
+Use a maintained, independently powered/networked device; do not install credentials
+on Monterey12. New backup transport requires separately approved project-scoped PAT
+custody, not the primary's legacy token. No real credential installation, Supabase
+request/session/MFA/cleanup probe, feature write or hosted verification occurred.
+Device pairing, secure OS custody, transfer latency and exact separately authorized
+hosted recovery verification remain blockers. Existing P1 approval/frozen package
+and all13 migrations remain unchanged; no duplicate fixture-scope approval.
+Hosted0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN. Release1.0 NOT READY / NOT AUTHORIZED;
+PR#1 remains draft/unmerged. Earlier offline-only descriptions are historical.
+
 ## Latest: Monterey independent recovery preparation · offline only
 
 Read [PROPERTY_P1_MONTEREY_RECOVERY.md](PROPERTY_P1_MONTEREY_RECOVERY.md) and

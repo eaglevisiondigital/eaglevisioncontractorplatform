@@ -33,7 +33,7 @@ const signout = async () => {
   const results = await Promise.allSettled(
     [...sessions.values()].map(async (s) => {
       const r = await request(
-        `https://${frozen.target}.supabase.co/auth/v1/logout?scope=global`,
+        `https://${frozen.target}.supabase.co/auth/v1/logout?scope=local`,
         {
           method: 'POST',
           headers: { apikey: apiKey, Authorization: 'Bearer ' + s.token },

@@ -667,3 +667,25 @@ P1 audit reconciliation also binds exact entity type, receipt ID and event multi
 ## Monterey independent recovery preparation
 
 Monterey compatibility is not current OS security assurance. Prefer maintained OS/hardware before broad management custody;browser admin SQL is not a narrow recovery interface. The kit is OFFLINE ONLY,with no credential reader or network sender;previous rejected probe is not repeated. Future valid user JWT escrow must authenticate exact UID/session remotely and use reviewed local logout;never Auth DELETE,service-key impersonation,new sessions or global revocation of unrelated sessions. Application allowlisting does not scope the underlying management credential. Independent hardware/network,secure handoff and exact hosted verification remain NO-GO gates. Fixed observations compare unrelated feature/session state and identity/factor digests;UNKNOWN never retries.
+
+## Independent recovery security completion · latest
+
+Fixed HTTPS and encrypted custody are implemented locally; no hosted request or
+credential installation occurred. The adapter reloads the approved capsule,
+requires a separate bounded permit and project-scoped token, verifies TLS/hostname,
+uses AEAD ciphers and bounded child-process requests, and rejects arbitrary SQL,
+URL, redirects, proxy inheritance and credential mixing. Database read-write is
+broader than the three-tenant application allowlist; it is not tenant-scoped RLS.
+The encrypted backup fsyncs before authenticating receipts; primary RPCs require
+those exact receipts. Run/target/purpose binding, one-shot state, duplicate/UNKNOWN
+stops and independent human supervision remain mandatory. Auth creation uncertainty
+cannot be solved by a UID and never permits activation or guessed revocation.
+
+P1 caller/worker logout now uses local scope; unrelated sessions are preserved and
+cause containment rather than global cleanup. Deactivation precedes parallel bearer
+restoration. Already-revoked sessions require actual observed absence; Auth failure
+alone is insufficient. Existing session-row guards still deny revoked JWTs. This
+protocol needs exact separate hosted verification. Reject Monterey privileged
+custody; require maintained independent hardware/OS, encrypted disk, separate secure
+credentials and tested network/power. No auto-start or hosted CLI. See
+docs/PROPERTY_P1_RECOVERY_COMPLETION.md for remaining gates and threat limits.

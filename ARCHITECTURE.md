@@ -1,5 +1,18 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Latest: independent P1 recovery transport and custody
+
+Read docs/PROPERTY_P1_RECOVERY_COMPLETION.md. Primary Node24 callers require
+independent authenticated creation/session receipts; Python backup uses per-run
+AES-GCM/HKDF encrypted custody and fixed-endpoint HTTPS. A foreground independent
+device loop combines encrypted mailboxes, human/heartbeat deadlines and one-shot
+recovery. Deactivation precedes parallel bearer restoration and local logout; no
+arbitrary SQL, Auth login, refresh or credential loader is added. New scoped PAT
+custody remains separate from normal caller JWTs and primary control custody.
+All13 migrations, frozen P1 payloads, tenant architecture and financial off gates
+remain unchanged. Local implementation is not verified hardware/hosted recovery
+or permission to activate. Older checkpoints below are historical.
+
 ## Latest: dormant property schema installed
 
 The owner-authorized20261017005322 migration is applied once;hosted history now11.

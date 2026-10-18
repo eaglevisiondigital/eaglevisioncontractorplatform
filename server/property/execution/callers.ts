@@ -38,6 +38,7 @@ export class SupabaseP1Callers implements P1Actors {
     private publishableKey: string,
     private custody: {
       register(alias: string, token: string, factorId?: string): Promise<void>;
+      assertAcknowledged(alias: string, token: string): void;
     },
     private transport: typeof fetch = fetch,
   ) {
@@ -162,7 +163,7 @@ export class SupabaseP1Callers implements P1Actors {
     };
     const signOut = async () => {
       const r = await this.transport(
-        `https://${this.frozen.target}.supabase.co/auth/v1/logout?scope=global`,
+        `https://${this.frozen.target}.supabase.co/auth/v1/logout?scope=local`,
         {
           method: 'POST',
           headers: {
@@ -173,7 +174,7 @@ export class SupabaseP1Callers implements P1Actors {
           signal: AbortSignal.timeout(12000),
         },
       );
-      if (!r.ok) throw Error('Global session sign-out unconfirmed');
+      if (!r.ok) throw Error('Exact session sign-out unconfirmed');
     };
     const make = (
       c: SupabaseClient,
@@ -182,6 +183,8 @@ export class SupabaseP1Callers implements P1Actors {
     ): P1Caller => ({
       verify: () => verifyToken(value, high),
       rpc: async (name, args, signal) => {
+        // Composed P1 harness requires a durable independently authenticated ACK.
+        this.custody.assertAcknowledged(identity.alias, value);
         if (
           ![
             'property_command',

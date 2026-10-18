@@ -10,7 +10,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "check": "npm run lint && npm run typecheck && npm run types:check && npm run migrations:check && npm run property:check && npm test && npm run test:recovery && npm run build",
-    "test:recovery": "python3 -B -m unittest discover -s recovery/monterey -p 'test_*.py'",
+    "test:recovery": "node scripts/test-recovery.mjs",
     "test:browser": "npm run build && playwright test",
     "format": "prettier --write .",
     "format:check": "prettier --check .",

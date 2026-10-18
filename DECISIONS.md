@@ -748,3 +748,22 @@ P1 audit reconciliation also binds exact entity type, receipt ID and event multi
 ## Monterey independent recovery preparation
 
 Keep Node24 on the primary Mac;prepare a minimal Python3.13-compatible kit for the older Mac rather than unsupported Node or general browser SQL. Ship only offline inspection,recovery request contracts,mock ports and durable local no-replay state in this increment. Preserve frozen cleanup bytes and all13 migrations. Session-local logout is a separately reviewed recovery proposal that avoids global effects on other worker sessions;it does not alter primary cleanup. No live transport,credential escrow or hosted test is approved by preparation. Require maintained OS/risk decision,actual machine/network tests,reviewed encrypted handoff and exact future hosted approval before operational claims.
+
+## Independent recovery completion · October17
+
+Implement fixed verified-TLS recovery and real encrypted authenticated custody
+locally, without hosted sessions or repeating the rejected probe. Require durable
+backup INTENT before external sign-in and SESSION/owner-UPGRADE receipts before
+P1 RPCs. Lost Auth responses remain unresolved/activation-blocking; never infer
+UID-only revocation. Use per-run AES-GCM/HKDF/HMAC and independent encrypted
+append-only storage, not plaintext session exports or primary journals. Restore
+after primary loss; deactivate before parallel Auth restoration/logout. Accept
+already-revoked sessions only from observed absence.
+
+Change local primary caller/worker to explicit local logout so unrelated same-user
+sessions cannot be globally revoked. Preserve zero-session/server-session guards.
+New exact hosted verification is required, not duplicate approval of unchanged P1
+fixture scope. Prefer current project-scoped Database-only PATs for future backup
+custody; no token/grant creation occurs here. Do not provision secrets on Monterey;
+require maintained independent OS/power/network. Hardware pairing, real TLS/custody,
+MFA/recovery and exact owner approval remain unverified gates. Release stays closed.

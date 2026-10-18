@@ -1,5 +1,7 @@
 # Independent P1 recovery on the second Mac
 
+Latest implementation: read [PROPERTY_P1_RECOVERY_COMPLETION.md](PROPERTY_P1_RECOVERY_COMPLETION.md) before this historical offline-preparation checkpoint. Fixed HTTPS, encrypted custody and foreground supervision are now locally implemented; all device/hosted approval gates remain. Do not install credentials on Monterey.
+
 October 17, 2026. Base `d8f574a`, draft PR #1. **Preparation/local rehearsal only.
 NO-GO for operational recovery or P1 activation.** No hosted request, Auth session,
 credential retrieval, cleanup probe, activation or migration occurs in this task.

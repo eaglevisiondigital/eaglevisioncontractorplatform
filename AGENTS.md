@@ -369,3 +369,19 @@ P1 audit reconciliation also binds exact entity type, receipt ID and event multi
 ## Monterey independent recovery preparation
 
 Read docs/PROPERTY_P1_MONTEREY_RECOVERY.md and its JSON. recovery/monterey is an offline-only Python standard-library preparation kit,no network/credential reader/hosted CLI. Never wire its mock seam to real credentials or repackage the rejected cleanup probe. Private three-file capsule copies exact frozen operation/plan/deactivation only;no activation SQL,secrets or primary journal. Durable second-Mac one-shot state is independent;proposed Auth scope=local requires separate protocol/hosted approval and preserves unrelated sessions. Primary Node24,global cleanup,13 migrations and P1 operation remain unchanged. Monterey OS maintenance/hardware/network,TLS,secure session escrow/live adapter and exact hosted verification are NOT VERIFIED;P1 activation stays NO-GO. No accounts,grants,Auth/cleanup calls,Netlify/provider/production action or merge.
+
+## Independent recovery completion
+
+Read docs/PROPERTY_P1_RECOVERY_COMPLETION.md and its JSON before the historical
+offline-only checkpoint. Fixed HTTPS, encrypted custody/mailboxes and foreground
+supervision are now locally implemented. No hosted call, credential retrieval or
+installation, session or probe occurred. Do not install secrets on Monterey;
+require maintained independent OS/power/network and reviewed custody. Primary
+requires backup intent/session/owner-upgrade ACKs; unknown Auth creation blocks
+activation and cannot be revoked by UID. New local-logout protocol preserves
+unrelated sessions and requires separate exact hosted verification. No generic SQL,
+Auth refresh/delete, new grants or automatic UNKNOWN retries. Preserve frozen P1
+and all13 SQL; existing unchanged-scope approval persists. The rejected probe is
+still prohibited; exact future hosted verification needs separate authorization.
+Device pairing, scoped PAT custody, real MFA/recovery remain NOT VERIFIED; P1
+activation NO-GO; Release1.0 NOT READY / NOT AUTHORIZED.
