@@ -1,5 +1,36 @@
 # Production Release 1.0 acceptance checklist
 
+## Latest: customer authorization formal release preparation · local only
+
+Read [CUSTOMER_AUTHORIZATION_RELEASE_REVIEW.md](CUSTOMER_AUTHORIZATION_RELEASE_REVIEW.md),
+its migration manifest, fresh validation record and separate approval register.
+One forward customer migration is prepared, NOT APPLIED / NOT AUTHORIZED; the13
+historical SQL files remain unchanged. Two private RLS/default-deny tables,11
+revoked public invoker wrappers and one legacy-report hardening preserve existing
+ACLs. New read/publish/decision capabilities are hardcoded false;login/routes stay
+closed. Genuine caller-bound SDK/session composition and dormant BFF origin/CSRF/
+rate/callback policy have synthetic/disposable coverage,not hosted Auth acceptance.
+Native review corrected legacy banned-report access,lock inversion and concurrent
+publication idempotency;closed callback routes cannot initialize staff Auth.
+Execute unchanged frozen P1 against13 installed migrations BEFORE customer14;
+never change its package/guard or request duplicate scope approval. P2 IDs remain
+unfrozen pending genuine P1 reports. Hosted0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN;
+nine P2 groups BLOCKED. No hosted request/credential/session/write or recovery
+probe;providers/media/Netlify untouched. GO for separate package review only;
+Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft/unmerged.
+
+| Customer package requirement                        | Implementation / local verification                                                     | Hosted validation / launch                         |
+| --------------------------------------------------- | --------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| Exact issued-version staff publication / revocation | Checked owner/admin AAL2 SQL, immutable scope, receipt reconciliation; default disabled | NOT RUN / BLOCKED                                  |
+| Discovery / published reports / issued review       | Caller-bound SDK and safe projection; closed callback routes                            | NOT RUN / BLOCKED                                  |
+| Nonfinancial review decisions                       | Immutable idempotent evidence; no debt or financial authority                           | NOT RUN / BLOCKED                                  |
+| Formal forward migration                            | One pending SQL,13 historical dependencies,exact hashes,default-deny catalog tests      | NOT APPLIED / NOT AUTHORIZED                       |
+| Authentication / callback / session-local logout    | Protocol tests;unregistered origin/CSRF/nonce/rate policy                               | Broker/store/cookie/recovery acceptance incomplete |
+| P2 exact report fixture scope                       | Intentionally unfrozen                                                                  | Requires actual P1 published reports               |
+
+Approval state: [CUSTOMER_AUTHORIZATION_APPROVAL_REGISTER.json](CUSTOMER_AUTHORIZATION_APPROVAL_REGISTER.json).
+Fresh results: [CUSTOMER_AUTHORIZATION_RELEASE_VALIDATION.json](CUSTOMER_AUTHORIZATION_RELEASE_VALIDATION.json).
+
 Latest customer authorization increment: see
 [CUSTOMER_AUTHORIZATION_SECURITY_REVIEW.md](CUSTOMER_AUTHORIZATION_SECURITY_REVIEW.md)
 and CUSTOMER_AUTHORIZATION_LOCAL_VALIDATION.json. Two reproduced local-proposal

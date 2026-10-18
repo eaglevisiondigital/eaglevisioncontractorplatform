@@ -6,7 +6,7 @@ const p = JSON.parse(
   sql = readFileSync(p.sqlFile, 'utf8'),
   workflow = readFileSync(p.workflowSqlFile, 'utf8');
 if (
-  p.status !== 'LOCAL_PROPOSAL_NOT_AUTHORIZED_NOT_A_MIGRATION' ||
+  p.status !== 'FORMAL_LOCAL_MIGRATION_PREPARED_NOT_AUTHORIZED' ||
   p.hostedApplied !== false ||
   p.clientExecutionGrants !== 0 ||
   p.clientTablePolicies !== 0 ||
@@ -16,7 +16,7 @@ if (
   p.productionConsentOrDecisionWriter !== false ||
   p.sqlSha256 !== createHash('sha256').update(sql).digest('hex') ||
   p.workflowSqlSha256 !== createHash('sha256').update(workflow).digest('hex') ||
-  p.workflowStatus !== 'LOCAL_PROPOSAL_NOT_AUTHORIZED_NOT_A_MIGRATION' ||
+  p.workflowStatus !== 'FORMAL_LOCAL_MIGRATION_PREPARED_NOT_AUTHORIZED' ||
   p.decisionIsFinancialConsent !== false ||
   p.proposalBundleDefinition !==
     'SHA256(schema bytes followed by workflow bytes)' ||
@@ -27,11 +27,11 @@ if (
   ) ||
   /\bgrant\s|create\s+policy\b/i.test(sql + '\n' + workflow) ||
   readdirSync('supabase/migrations').filter((f) => f.endsWith('.sql'))
-    .length !== 13
+    .length !== 14
 )
   throw Error(
     'Customer portal proposal/exposure/history drift; independent review required',
   );
 console.log(
-  'Customer discovery/estimate proposal integrity PASS; default-deny publication/review evidence, zero client execution grants; LOCAL ONLY, not migration or activation authority.',
+  'Customer discovery/estimate proposal integrity PASS; default-deny publication/review evidence, zero client execution grants; LOCAL pending migration; no hosted execution or activation authority.',
 );

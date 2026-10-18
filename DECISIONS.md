@@ -843,3 +843,18 @@ contract signing,job-change or invoice/payment approval. No withdrawal overwrite
 a later correction design needs separate review. Maintain default-deny proposed
 wrappers/tables and a separate workflow SQL proposal outside all13 historical files.
 No hosted grant/session/action or duplicate P1 approval. Release remains closed.
+
+## October18 · formalize customer authorization without activating access
+
+Combine corrected read/publication/nonfinancial decision SQL into one bounded
+forward migration with13 exact dependencies and no seeds,roles,grants or feature
+writes. Preserve all historical bytes;test legacy report hardening and all previous
+ACLs explicitly. Keep new capabilities hardcoded false as an enforceable server
+gate. Prefer shared immutable parent locks and conflict-safe exact publication
+receipts over lock inversion or automatic mutation retry. Use caller-bound SDK
+clients with no implicit refresh/retry/persistence;session-local logout cannot
+select a later account. Reserve customer callbacks before staff SDK construction.
+Prepared BFF nonce/rate/CSRF policy is not a deployed authentication service.
+Execute unchanged P1 while history remains13;customer14 and P2 IDs follow actual
+P1 evidence under separate exact approvals. Do not change approved P1 or require
+duplicate fixture approval. No hosted action occurs in release preparation.

@@ -1,6 +1,6 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-const migrations = readdirSync('supabase/migrations')
+const allMigrations = readdirSync('supabase/migrations')
   .filter((f) => f.endsWith('.sql'))
   .sort()
   .map((file) => ({
@@ -9,6 +9,8 @@ const migrations = readdirSync('supabase/migrations')
       .update(readFileSync(`supabase/migrations/${file}`))
       .digest('hex'),
   }));
+// Historical manifests bind only the thirteen installed files; customer forward scope is checked separately.
+const migrations = allMigrations.slice(0, 13);
 const reviewed = JSON.parse(readFileSync('docs/MIGRATION_BUNDLE.json', 'utf8'));
 if (
   JSON.stringify(migrations.slice(0, reviewed.migrations.length)) !==
@@ -181,4 +183,10 @@ console.log(
   p0Applied
     ? 'Two P0 migrations recorded DEVELOPMENT APPLIED / FEATURES DISABLED; thirteen installed files preserved. Offline integrity is not replay or activation authority.'
     : 'Two P0 forward proposals LOCAL ONLY / NOT AUTHORIZED; eleven installed files preserved.',
+);
+
+const { verifyCustomerMigration } = await import('./customer-migration.mjs');
+verifyCustomerMigration();
+console.log(
+  'One pending customer migration verified; thirteen historical files unchanged; hosted execution NOT AUTHORIZED.',
 );

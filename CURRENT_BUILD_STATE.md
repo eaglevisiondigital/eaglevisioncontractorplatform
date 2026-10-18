@@ -1,5 +1,24 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: customer authorization formal release preparation · local only
+
+Read [CUSTOMER_AUTHORIZATION_RELEASE_REVIEW.md](docs/CUSTOMER_AUTHORIZATION_RELEASE_REVIEW.md),
+its migration manifest, fresh validation record and separate approval register.
+One forward customer migration is prepared, NOT APPLIED / NOT AUTHORIZED; the13
+historical SQL files remain unchanged. Two private RLS/default-deny tables,11
+revoked public invoker wrappers and one legacy-report hardening preserve existing
+ACLs. New read/publish/decision capabilities are hardcoded false;login/routes stay
+closed. Genuine caller-bound SDK/session composition and dormant BFF origin/CSRF/
+rate/callback policy have synthetic/disposable coverage,not hosted Auth acceptance.
+Native review corrected legacy banned-report access,lock inversion and concurrent
+publication idempotency;closed callback routes cannot initialize staff Auth.
+Execute unchanged frozen P1 against13 installed migrations BEFORE customer14;
+never change its package/guard or request duplicate scope approval. P2 IDs remain
+unfrozen pending genuine P1 reports. Hosted0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN;
+nine P2 groups BLOCKED. No hosted request/credential/session/write or recovery
+probe;providers/media/Netlify untouched. GO for separate package review only;
+Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft/unmerged.
+
 ## Latest: customer authorization audit and checked review workflow · local only
 
 Read [CUSTOMER_AUTHORIZATION_SECURITY_REVIEW.md](docs/CUSTOMER_AUTHORIZATION_SECURITY_REVIEW.md)

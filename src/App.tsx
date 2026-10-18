@@ -58,6 +58,8 @@ export function App() {
     return () => window.removeEventListener('popstate', update);
   }, []);
   const sample = path.startsWith('/preview');
+  const reservedCustomer =
+    path.startsWith('/portal') && path !== '/portal/internal';
   const platform = path === '/super-admin' || path === '/preview/super-admin';
   const repo = sample ? previewOperations : connectedOperations;
   const [companies, setCompanies] = useState<CompanyProfile[]>(
@@ -73,7 +75,7 @@ export function App() {
   const [authorized, setAuthorized] = useState(sample);
   const [loading, setLoading] = useState(!sample && !!supabase);
   useEffect(() => {
-    if (sample || !supabase) return;
+    if (sample || reservedCustomer || !supabase) return;
     const client = supabase;
     let active = true;
     let revision = 0;
@@ -142,7 +144,7 @@ export function App() {
       active = false;
       subscription.unsubscribe();
     };
-  }, [sample, platform]);
+  }, [sample, reservedCustomer, platform]);
   async function login(event: FormEvent) {
     event.preventDefault();
     if (!supabase) return;

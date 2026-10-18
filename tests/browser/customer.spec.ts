@@ -136,3 +136,23 @@ test('expired, revoked and error states clear customer data; connected routes ne
     page.getByRole('button', { name: 'Enter synthetic customer preview' }),
   ).toHaveCount(0);
 });
+
+test('customer callback remains closed and cannot start authentication or data calls', async ({
+  page,
+}) => {
+  const requests: string[] = [];
+  page.on('request', (r) => {
+    if (/\/auth\/v1\/|\/rest\/v1\//.test(r.url())) requests.push(r.url());
+  });
+  await page.goto(
+    '/portal/customer/callback?code=LOCAL_UNAPPROVED_CALLBACK&state=LOCAL_UNAPPROVED_STATE',
+  );
+  await expect(
+    page.getByText('The customer portal is reserved', { exact: false }),
+  ).toBeVisible();
+  await expect(page.getByLabel('Password', { exact: true })).toHaveCount(0);
+  await expect(
+    page.getByRole('button', { name: /sign in|approve|pay now/i }),
+  ).toHaveCount(0);
+  expect(requests).toEqual([]);
+});

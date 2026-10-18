@@ -454,3 +454,17 @@ requires exact issued scope/digest/customer/property/repair selection and owner/
 AAL2;all wrappers/table access remain revoked. Immutable review preferences are not
 financial/signature/change authorization. UNKNOWN never auto-retries. Preserve13 SQL,
 frozen P1 and all recovery/Netlify/provider boundaries;hosted0/0/24/48 unchanged.
+
+## Customer authorization release preparation · October18
+
+Read docs/CUSTOMER_AUTHORIZATION_RELEASE_REVIEW.md,its migration/validation records
+and separate approval register before older proposal checkpoints. One formal LOCAL
+pending migration adds default-disabled customer workflows;all13 historical bytes
+stay immutable. Never apply it,grant execution,change hardcoded capabilities,sign in
+customers or activate callbacks/mappings/leases from local passes. Preserve exact
+caller/session binding,post-wait guards,ban/deletion/role checks,shared immutable
+parent locks,conflict-safe receipts and UNKNOWN no-retry semantics. Closed customer
+routes must not initialize staff Auth. Execute unchanged P1 against13 history
+before customer14;do not modify frozen P1 or ask duplicate approval. P2 fixture IDs
+need genuine P1 reports first. No rejected recovery probe,Netlify/provider/media/
+financial/production action or merge is authorized by this local preparation.

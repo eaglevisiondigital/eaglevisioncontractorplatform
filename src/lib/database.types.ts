@@ -1968,6 +1968,67 @@ export interface Database {
         };
         Returns: Json;
       };
+      customer_decision_context: {
+        Args: {
+          p_org: string | null;
+          p_customer: string | null;
+          p_location: string | null;
+          p_version: string | null;
+        };
+        Returns: Json;
+      };
+      customer_estimate_review: {
+        Args: {
+          p_org: string | null;
+          p_customer: string | null;
+          p_location: string | null;
+          p_version: string | null;
+        };
+        Returns: Json;
+      };
+      customer_portal_discover: { Args: Record<string, never>; Returns: Json };
+      customer_property_reports: {
+        Args: {
+          p_org: string | null;
+          p_customer: string | null;
+          p_location: string | null;
+          p_before?: string | null;
+        };
+        Returns: Json;
+      };
+      customer_publication_preview: {
+        Args: { p_org: string | null; p: Json | null };
+        Returns: Json;
+      };
+      customer_publication_receipt: {
+        Args: {
+          p_org: string | null;
+          p_request: string | null;
+          p_publication?: string | null;
+        };
+        Returns: Json;
+      };
+      customer_publish_estimate: {
+        Args: { p_org: string | null; p: Json | null };
+        Returns: Json;
+      };
+      customer_record_decision: {
+        Args: {
+          p_org: string | null;
+          p_publication: string | null;
+          p_digest: string | null;
+          p_choice: string | null;
+          p_ack: string | null;
+          p_request: string | null;
+        };
+        Returns: Json;
+      };
+      customer_revoke_publication: {
+        Args: { p_org: string | null; p_publication: string | null };
+        Returns: undefined;
+      };
+      customer_runtime_status: { Args: Record<string, never>; Returns: Json };
+      customer_session_status: { Args: Record<string, never>; Returns: Json };
       duplicate_estimate: {
         Args: {
           p_org: string | null;

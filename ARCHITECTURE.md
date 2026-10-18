@@ -1,5 +1,23 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Customer authorization release preparation · October18
+
+See docs/CUSTOMER_AUTHORIZATION_RELEASE_REVIEW.md. One generated forward migration
+combines the two corrected proposals,adding two private default-deny tables and11
+revoked invoker wrappers with all read/publish/decision capabilities false. One
+existing report function is hardened without changing its ACL;no historical SQL
+or original business/financial data changes. Existing CRM/property/immutable issued
+sources and safe report parser remain canonical. Unmounted SDK composition freezes
+the verified caller token,checks the actual session,disables refresh/persistence/
+retries and reconciles uncertain mutations through receipt/context reads. Prepared
+session-local logout targets only that captured JWT;browser-crash custody and real
+hosted verification remain dependencies. Unregistered BFF policy prepares exact
+origin,CSRF,atomic rate/nonce custody and bounded PKCE callback validation. Closed
+customer routes never initialize staff Auth;production broker/cookie lifecycle
+and durable rate storage are unprovisioned. P1 must precede customer migration14
+because its unchanged approval requires13 history. P2 IDs await genuine P1 reports.
+No connected login,grants,mappings,leases,media,financial or hosted activation.
+
 ## Latest: independent P1 recovery transport and custody
 
 Read docs/PROPERTY_P1_RECOVERY_COMPLETION.md. Primary Node24 callers require

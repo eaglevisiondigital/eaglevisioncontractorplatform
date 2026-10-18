@@ -1,0 +1,99 @@
+{
+  "status": "LOCAL_PREPARED_NOT_AUTHORIZED",
+  "hostedApplied": false,
+  "hostedExecutionAuthorized": false,
+  "reviewBaseCommit": "cd30969",
+  "scope": "development-schema-only-default-disabled",
+  "dependencies": [
+    {
+      "file": "20261015183039_phase_1_foundation.sql",
+      "sha256": "62ef02be55f5cf86916de4bf9891d4920f75a35ae421815c2d353bf4cedb73cc"
+    },
+    {
+      "file": "20261015201048_phase_2_operations.sql",
+      "sha256": "2a0e65f30e0eef0b85b53d23edc26968336f661d136303d7a1eb25b3f77e1974"
+    },
+    {
+      "file": "20261015204729_phase_3_estimating.sql",
+      "sha256": "ef999a3e7d8ee69f1563b3cffaf732f0a29c292161e4ce1729b6a26848bd4415"
+    },
+    {
+      "file": "20261015210230_phase_3_material_import.sql",
+      "sha256": "82f7594c18dfdf955ed1d2c83f6c903d8b4aebe7730c2f1a5770d501bd2d84a3"
+    },
+    {
+      "file": "20261015210546_phase_3_job_financials.sql",
+      "sha256": "f161cc16ec728b2e7373f3826b5d989a9fad4c1ec6d727fc193f18d5534d8c4c"
+    },
+    {
+      "file": "20261015210856_phase_3_workforce.sql",
+      "sha256": "78f2af2164574ba3d6aeb2f2510206d97343c5ad67a2534159a4e2960f5e9ce0"
+    },
+    {
+      "file": "20261015221730_phase_3a_release_controls.sql",
+      "sha256": "6dbfc3ed7a0b9905f5d824cb73698c441e8c7ee8aa5d5b0fb8f4883baacb4890"
+    },
+    {
+      "file": "20261016024502_release_1_internal_workflow.sql",
+      "sha256": "48522fd3b829a5bc9e482ce33c41ee7b8272edf68dbc7e6c7a699fa178b8714b"
+    },
+    {
+      "file": "20261016030324_material_worker_control_store.sql",
+      "sha256": "8359e7ceb4028460b7609bbd235d9941fc69b89b514463e011fec9b44a84d282"
+    },
+    {
+      "file": "20261016185108_provider_sandbox_persistence.sql",
+      "sha256": "5dd07b079a591b433fa7ab432fd841026de91a1cd3f1d3a722bef500aa9fd32d"
+    },
+    {
+      "file": "20261017005322_property_operations.sql",
+      "sha256": "c345bdf178c9339dba7ba2707c74233bcfae9a2d2b59abf148f4b7ffff35780c"
+    },
+    {
+      "file": "20261017024327_property_connected_readiness.sql",
+      "sha256": "6bb0b9bf22ec1079d7aa5f74c6e33e14534cc54e30e9034c33949f786cfd3ac9"
+    },
+    {
+      "file": "20261017024328_property_duplicate_index_cleanup.sql",
+      "sha256": "3603fe0482f46b9733a0321cd9009cb1f291993fcbede7132e1bdf721776fdfc"
+    }
+  ],
+  "installedBundleSha256": "ef6151b4c111f3907205feff27b6f343e34d785e4364209ad7a9f85f2b4ff12d",
+  "migrations": [
+    {
+      "file": "20261018144833_customer_authorization_release_readiness.sql",
+      "sha256": "e3157e004c464fb2a4ab69e7a3a335a81d6bbbb0556d74234f3884f56d784ed1"
+    }
+  ],
+  "pendingBundleSha256": "30e5f91b9e1148e6195b09f98988e132729a6708634caca48b3388fa96da25d2",
+  "newPrivateTables": ["customer_estimate_access", "customer_review_decisions"],
+  "newPublicWrappers": [
+    "customer_decision_context",
+    "customer_estimate_review",
+    "customer_portal_discover",
+    "customer_property_reports",
+    "customer_publication_preview",
+    "customer_publication_receipt",
+    "customer_publish_estimate",
+    "customer_record_decision",
+    "customer_revoke_publication",
+    "customer_runtime_status",
+    "customer_session_status"
+  ],
+  "replacedExistingFunctions": [
+    "private.property_published_reports(uuid,uuid,uuid,uuid)"
+  ],
+  "existingAclsChanged": false,
+  "newClientExecutionGrants": 0,
+  "newClientPolicies": 0,
+  "capabilitiesEnabled": false,
+  "seeds": [],
+  "roles": [],
+  "featureRows": 0,
+  "mappings": 0,
+  "leases": 0,
+  "storageChanges": 0,
+  "p1Ordering": "Execute unchanged frozen P1 against thirteen installed migrations first; do not alter its history guard or package.",
+  "runtimeActivation": "Separate reviewed forward change and exact grants/fixtures required; no frontend flag can enable SQL capabilities.",
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

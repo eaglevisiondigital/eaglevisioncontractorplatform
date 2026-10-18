@@ -1,5 +1,29 @@
 -- LOCAL REVIEW PROPOSAL ONLY. Not a migration; no hosted application or grants authorized.
 begin;
+-- Explicit server-side release controls; no table row or frontend flag can enable them.
+create function private.customer_capability(p_name text) returns boolean language sql volatile security definer set search_path='' as $$select false$$;
+revoke all on function private.customer_capability(text) from public,anon,authenticated,service_role;
+create function private.customer_runtime_guard(p_name text) returns void language plpgsql security definer set search_path='' as $$begin
+ if private.customer_capability(p_name) is not true then raise exception 'Customer workflows disabled' using errcode='42501';end if;
+end$$;
+revoke all on function private.customer_runtime_guard(text) from public,anon,authenticated,service_role;
+create function private.customer_runtime_status() returns jsonb language sql security definer set search_path='' as $$select jsonb_build_object('reads',private.customer_capability('reads'),'publishing',private.customer_capability('publishing'),'decisions',private.customer_capability('decisions'),'login',false)$$;
+revoke all on function private.customer_runtime_status() from public,anon,authenticated,service_role;
+create function public.customer_runtime_status() returns jsonb language sql security invoker set search_path='' as $$select private.customer_runtime_status()$$;
+revoke all on function public.customer_runtime_status() from public,anon,authenticated,service_role;
+-- Session maintenance reports only the signed caller's own session, even after local logout.
+create function private.customer_session_status() returns jsonb language plpgsql security definer set search_path='' as $$declare sid uuid;expiry timestamptz;live boolean;begin
+ perform private.property_session_guard();
+ begin sid:=(auth.jwt()->>'session_id')::uuid;exception when invalid_text_representation then raise exception 'Session unavailable' using errcode='42501';end;
+ if sid is null then raise exception 'Session unavailable' using errcode='42501';end if;
+ select not_after into expiry from auth.sessions where id=sid and user_id=auth.uid() for share;
+ live:=found and (expiry is null or expiry>clock_timestamp());
+ perform private.property_session_guard();
+ return jsonb_build_object('user_id',auth.uid(),'session_id',sid,'active',live and (expiry is null or expiry>clock_timestamp()));
+end$$;
+revoke all on function private.customer_session_status() from public,anon,authenticated,service_role;
+create function public.customer_session_status() returns jsonb language sql security invoker set search_path='' as $$select private.customer_session_status()$$;
+revoke all on function public.customer_session_status() from public,anon,authenticated,service_role;
 create table private.customer_estimate_access (
  organization_id uuid not null references public.organizations(id),id uuid not null default gen_random_uuid(),
  customer_id uuid not null,location_id uuid not null,user_id uuid not null,version_id uuid not null,
@@ -64,6 +88,7 @@ create trigger customer_access_invariant before insert or update or delete on pr
 create trigger customer_access_audit after insert or update or delete on private.customer_estimate_access for each row execute function private.audit_change();
 
 create function private.customer_portal_guard(p_org uuid,p_customer uuid,p_location uuid) returns void language plpgsql security definer set search_path='' as $$begin
+ perform private.customer_runtime_guard('reads');
  perform private.property_connected_session();
  perform 1 from auth.users where id=auth.uid() and email_confirmed_at is not null and deleted_at is null and is_anonymous is false and (banned_until is null or banned_until<=clock_timestamp()) for share;if not found then raise exception 'Customer access unavailable' using errcode='42501';end if;
  perform 1 from public.memberships where user_id=auth.uid() and active for share;

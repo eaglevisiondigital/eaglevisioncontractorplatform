@@ -20,7 +20,7 @@ afterEach(() => {
 function fixture() {
   const root = mkdtempSync(join(tmpdir(), 'propel-record-'));
   roots.push(root);
-  for (const d of ['docs', 'scripts', 'supabase/migrations'])
+  for (const d of ['docs', 'scripts', 'supabase/migrations', 'server/customer'])
     mkdirSync(join(root, d), { recursive: true });
   const review = JSON.parse(
     readFileSync('docs/PROPERTY_MIGRATION_REVIEW.json', 'utf8'),
@@ -30,6 +30,13 @@ function fixture() {
     'docs/PROVIDER_MIGRATION_REVIEW.json',
     'docs/PROPERTY_P0_MIGRATION_REVIEW.json',
     'scripts/check-migration-bundle.mjs',
+    'scripts/customer-migration.mjs',
+    'docs/CUSTOMER_AUTHORIZATION_MIGRATION_REVIEW.json',
+    'server/customer/schema.proposed.sql',
+    'server/customer/workflow.proposed.sql',
+    ...JSON.parse(
+      readFileSync('docs/CUSTOMER_AUTHORIZATION_MIGRATION_REVIEW.json', 'utf8'),
+    ).migrations.map((m: { file: string }) => 'supabase/migrations/' + m.file),
     ...[
       ...review.historicalMigrations,
       ...review.migrations,
@@ -165,5 +172,37 @@ it('rejects changed installed P0 SQL even if mutable digests are recomputed', ()
   p0.fullProposedBundleSha256 = hash(JSON.stringify(all));
   p0.developmentExecution.bundleSha256 = p0.proposedBundleSha256;
   writeFileSync(path, JSON.stringify(p0));
+  expect(f.run().status).not.toBe(0);
+});
+
+it.each([
+  'hostedApplied',
+  'hostedExecutionAuthorized',
+  'capabilitiesEnabled',
+  'newClientExecutionGrants',
+  'mappings',
+  'leases',
+  'featureRows',
+  'storageChanges',
+  'existingAclsChanged',
+] as const)('rejects customer migration authority drift in %s', (key) => {
+  const f = fixture(),
+    path = join(f.root, 'docs/CUSTOMER_AUTHORIZATION_MIGRATION_REVIEW.json');
+  const m = JSON.parse(readFileSync(path, 'utf8'));
+  m[key] = typeof m[key] === 'boolean' ? true : 1;
+  writeFileSync(path, JSON.stringify(m));
+  expect(f.run().status).not.toBe(0);
+});
+it('rejects customer SQL substitution even with recomputed formal file hashes', () => {
+  const f = fixture(),
+    path = join(f.root, 'docs/CUSTOMER_AUTHORIZATION_MIGRATION_REVIEW.json'),
+    m = JSON.parse(readFileSync(path, 'utf8'));
+  const sql = join(f.root, 'supabase/migrations', m.migrations[0].file);
+  writeFileSync(sql, readFileSync(sql, 'utf8') + '\n-- substituted\n');
+  const digest = (s: string | Buffer) =>
+    createHash('sha256').update(s).digest('hex');
+  m.migrations[0].sha256 = digest(readFileSync(sql));
+  m.pendingBundleSha256 = digest(JSON.stringify(m.migrations));
+  writeFileSync(path, JSON.stringify(m));
   expect(f.run().status).not.toBe(0);
 });

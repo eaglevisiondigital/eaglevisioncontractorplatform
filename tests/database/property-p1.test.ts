@@ -58,7 +58,7 @@ beforeAll(async () => {
   await db.exec(
     'create schema supabase_migrations;create table supabase_migrations.schema_migrations(version text primary key,name text,statements text[])',
   );
-  for (const f of readdirSync('supabase/migrations').sort()) {
+  for (const f of readdirSync('supabase/migrations').sort().slice(0, 13)) {
     await db.exec(readFileSync('supabase/migrations/' + f, 'utf8'));
     await db.query(
       'insert into supabase_migrations.schema_migrations values($1)',

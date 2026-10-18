@@ -1,5 +1,24 @@
 # Security model · Phase 2
 
+## Customer release preparation · October18 · no hosted activation
+
+See docs/CUSTOMER_AUTHORIZATION_RELEASE_REVIEW.md and its separate approval register.
+Final disposable review found/corrected legacy report ban bypass,publication/decision
+lock inversion and concurrent publication request conflict. Current Auth bans,
+deletions,roles,sessions,mappings,leases and final wall-clock expiry remain enforced.
+Customer/private financial projections remain separate. Formal pending migration
+adds no client table policies/execution grants;all new runtime capabilities return
+false. Existing13 SQL and ACLs stay unchanged except the forward-hardened report
+implementation body. Caller SDK verifies explicit token via Auth/current-session,
+uses token-frozen clients,no refresh/cookie persistence/implicit retries and strict
+HTTPS/endpoints/deadlines. UNKNOWN stops;read-only evidence settles outcomes.
+Logout is scope=local on the frozen caller token;unrelated sessions are protected.
+Closed callback routes cannot consume staff Auth codes. Dormant request policy
+requires exact origin,constant-time CSRF,verified UID/session atomic budgets and
+single-use PKCE state;no active Auth broker/store/cookie or hosted proof is implied.
+No real session,credential retrieval,hosted verification/probe or write occurred.
+Independent recovery/P1 then exact customer migration/activation reviews remain gates.
+
 ## Latest: property migration installed / no activation
 
 Read docs/PROPERTY_MIGRATION_EXECUTION.md. Exact owner-approved schema is installed:

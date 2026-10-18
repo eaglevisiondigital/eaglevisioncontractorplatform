@@ -1,5 +1,9 @@
 # Customer authorization security review and workflow preparation
 
+Latest successor: [CUSTOMER_AUTHORIZATION_RELEASE_REVIEW.md](CUSTOMER_AUTHORIZATION_RELEASE_REVIEW.md).
+The proposal-only state below is historical; the successor records the formal
+local migration, additional corrections and default-disabled SDK preparation.
+
 October 18, 2026 · base commit f18da4e · existing feature branch/draft PR #1.
 **Local proposals and disposable evidence only. Hosted execution NO-GO.**
 
