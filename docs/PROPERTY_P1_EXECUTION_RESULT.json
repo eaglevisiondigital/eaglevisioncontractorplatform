@@ -1,0 +1,75 @@
+{
+  "status": "AUTHORIZED_PREFLIGHT_STOPPED_NO_HOSTED_WRITES",
+  "reviewedCommit": "dbf3f65",
+  "operationSha256": "01b96075d2f04acef730114427bc595986a1f0ce2720ed7fd3c9e84e304e141a",
+  "authorization": "Owner approved exact frozen operation and cleanup; mandatory execution preconditions remain binding.",
+  "preflight": {
+    "operationHash": "PASS",
+    "artifactHashes": {
+      "status": "PASS",
+      "count": 4
+    },
+    "localAndHostedMigrationHistory": {
+      "status": "PASS",
+      "count": 13
+    },
+    "catalogObjectsUnchanged": 514,
+    "originalCompositeKeyRowsUnchanged": 713,
+    "businessTableDigestsUnchanged": 79,
+    "columnAclsUnchanged": 69,
+    "defaultAclsUnchanged": 24,
+    "schemaAclsUnchanged": 4,
+    "exactResourceBindingsUnchanged": 3,
+    "actorRosterBindingsUnchanged": 18,
+    "authApiSettings": "PASS_UNCHANGED",
+    "authIdentities": 22,
+    "verifiedTotpFactors": 4,
+    "sessions": 0,
+    "propertyFeatureRows": 0,
+    "customerMappings": 0,
+    "reportLeases": 0,
+    "connectedExecutor": "FAIL_NOT_IMPLEMENTED",
+    "journalHelper": "PASS_LOCAL_TESTS_ONLY_NOT_ATTACHED_TO_EXECUTOR",
+    "independentCleanupChannel": "BLOCKED_NOT_OPERATIONALLY_VERIFIED",
+    "operatorSupervisionWindow": "NOT_RUN_NOT_OPENED"
+  },
+  "hostedCaseCounts": {
+    "PASS": 0,
+    "FAIL": 0,
+    "BLOCKED": 24,
+    "NOT_RUN": 48
+  },
+  "actualHostedExecution": {
+    "featureActivations": 0,
+    "fixtureRpcSteps": 0,
+    "assertionProbes": 0,
+    "newDomainRecords": 0,
+    "newAuditEvents": 0,
+    "ownerMfaVerifications": 0,
+    "sessionsCreated": 0,
+    "cleanupWrites": 0
+  },
+  "financialReconciliation": {
+    "originalRowsUnchanged": true,
+    "jobRevisionsUnchanged": true,
+    "newCostsMinor": 0,
+    "newDraftPricesMinor": 0,
+    "customerDebtDeltaMinor": 0,
+    "plannedCalculationsTestedHosted": false
+  },
+  "validation": {
+    "focusedLocalTests": {
+      "passed": 26,
+      "failed": 0
+    },
+    "nativePostgresql": "NOT_RERUN_NO_SQL_OR_APPLICATION_CHANGE",
+    "browser": "NOT_RERUN_NO_UI_OR_APPLICATION_CHANGE",
+    "fullLocalSuite": "NOT_RERUN_DOCUMENTATION_ONLY",
+    "formatCheck": "PASS",
+    "migrationIntegrityCheck": "PASS",
+    "frozenPackageAndDiffPrivacy": "PASS"
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "pr": "DRAFT_UNMERGED",
+  "next": "Implement and locally review exact-package connected execution, durable-journal recovery and independent bounded cleanup; refresh mandatory preflight and obtain genuine owner-assisted MFA before activation. Existing exact-scope approval persists; changed package requires new review."
+}

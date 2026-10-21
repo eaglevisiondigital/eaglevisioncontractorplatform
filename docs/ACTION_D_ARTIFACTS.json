@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "status": "PREPARED_NOT_DEPLOYED",
+  "sourceCommit": "28c7d5e41c28c0714c41525179eb0637216a7729",
+  "buildContext": "branch-deploy",
+  "branch": "codex/phase-1-foundation",
+  "nodeVersion": "24.20.0",
+  "netlifyCliVersion": "27.12.1",
+  "zipItAndShipItVersion": "16.3.0",
+  "functionRuntime": "nodejs24.x",
+  "dependencyLockSha256": "8be30ee23e9cd3ca2f54e4b5beb7da07fd20ead0b86b504d31b29b1116b8baa3",
+  "logoSha256": "b77d8e9e9db486c32ea24031033e4bec758342a4a3418fb438cfad23e0629bb0",
+  "fileCount": 14,
+  "staticFileCount": 8,
+  "functionCount": 4,
+  "fileManifestSha256": "53dda494253a4bc56c1c4c4a89d225a2a5d3364017493b7820a838944d7e4d76",
+  "archive": {
+    "file": "propel-internal-28c7d5e.zip",
+    "bytes": 3593733,
+    "sha256": "a902edbc4ae006da9a98094c745cb45789f97e1e18151dd2fd73aa9f6519eafb"
+  },
+  "files": [
+    {
+      "path": ".netlify/functions/intake-profile.zip",
+      "bytes": 694553,
+      "sha256": "c0915f8580e177864cefbc8ce82dcf01e3391c2124bd60588d1cd846227db106"
+    },
+    {
+      "path": ".netlify/functions/intake-submit.zip",
+      "bytes": 696284,
+      "sha256": "ac737921977fe55aa8b0a341175bb9dc9a8e619145c703821aa8307b07862c57"
+    },
+    {
+      "path": ".netlify/functions/manifest.json",
+      "bytes": 2157,
+      "sha256": "25e44c90eb9141ebbcdd538b5dc25f6b01f5e72eb48c4d8f2c06869efbbc8fba"
+    },
+    {
+      "path": ".netlify/functions/material-import.zip",
+      "bytes": 348919,
+      "sha256": "5593b4fc5d39bdefe6bcf05c4668417388feadcf296b0197200ce31866554cb0"
+    },
+    {
+      "path": ".netlify/functions/organization-context.zip",
+      "bytes": 694704,
+      "sha256": "bd58465365a93f7bd9c1a82342be87af0b8c96881cf558fb8659280e1ce77f42"
+    },
+    {
+      "path": "dist/assets/Phase3Workspace-DFI2LmiM.js",
+      "bytes": 279992,
+      "sha256": "2adea6277e87550d210ade584f60e2e7975b1b4d569af09b16741ee0016c22d0"
+    },
+    {
+      "path": "dist/assets/ReleaseApp-DIpXAIlL.js",
+      "bytes": 24601,
+      "sha256": "eb23204d1eb5631afe797a205181c5e282b25347ae9e169d130a89e537e2141c"
+    },
+    {
+      "path": "dist/assets/ReleaseApp-Hv3UGd-c.css",
+      "bytes": 2645,
+      "sha256": "6c58b5029a0b13cf9482c6b405fda5f8104924041675b8a49731ab51c47114fb"
+    },
+    {
+      "path": "dist/assets/customer-preview-BSqAjb5I.js",
+      "bytes": 10178,
+      "sha256": "9a251d379e4265de1726269dd80d4d79cdf0482201b6fe26258c7747352bb4fb"
+    },
+    {
+      "path": "dist/assets/index-BjgiDsCF.css",
+      "bytes": 17592,
+      "sha256": "e46e98a3036b2a64f8dd67908e462098b4d9ff900b39de19d6122a3574c1b832"
+    },
+    {
+      "path": "dist/assets/index-CKgMnFnP.js",
+      "bytes": 500911,
+      "sha256": "de6700df44992da5907a62b39c2127204fbe41f94a10d31f6d786c295a61a5e4"
+    },
+    {
+      "path": "dist/brand/propel-contractor-suite.png",
+      "bytes": 1184928,
+      "sha256": "b77d8e9e9db486c32ea24031033e4bec758342a4a3418fb438cfad23e0629bb0"
+    },
+    {
+      "path": "dist/index.html",
+      "bytes": 877,
+      "sha256": "a6e1bc9a969142ee57be73234b240fc4480964adf1ed13fd2342ef070e4cedfe"
+    },
+    {
+      "path": "netlify.toml",
+      "bytes": 960,
+      "sha256": "38f97f322f8816a05c71145ff8836b174488efc66259688c16dfdb8a004583fe"
+    }
+  ]
+}

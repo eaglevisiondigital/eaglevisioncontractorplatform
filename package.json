@@ -1,0 +1,83 @@
+{
+  "name": "eagle-vision-contractor-platform",
+  "version": "0.1.0",
+  "description": "Propel Contractor Suite by Eagle Vision: multi-tenant estimating, contractor operations, invoicing and payment orchestration.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "npm run lint && npm run typecheck && npm run types:check && npm run migrations:check && npm run property:check && npm run customer:check && npm test && npm run test:recovery && npm run build",
+    "test:recovery": "node scripts/test-recovery.mjs",
+    "test:browser": "npm run build && playwright test",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "types:generate": "node scripts/generate-db-types.mjs",
+    "types:check": "node scripts/generate-db-types.mjs --check",
+    "preview": "vite preview",
+    "staging:plan": "node scripts/staging-readiness.mts plan",
+    "staging:validate": "node scripts/staging-readiness.mts validate",
+    "staging:verify": "node scripts/staging-readiness.mts verify",
+    "development:plan": "node scripts/staging-readiness.mts plan",
+    "development:validate": "node scripts/staging-readiness.mts validate",
+    "development:verify": "node scripts/staging-readiness.mts verify",
+    "development:workflows": "node scripts/staging-readiness.mts workflows",
+    "migrations:check": "node scripts/check-migration-bundle.mjs",
+    "development:preflight": "node scripts/connected-preflight.mts",
+    "development:acceptance-plan": "node scripts/acceptance-plan.mts",
+    "sandbox:plan": "node scripts/sandbox-activation-plan.mts",
+    "property:check": "node scripts/check-property-proposal.mjs",
+    "property:acceptance-plan": "node scripts/property-connected-plan.mts",
+    "property:p1-plan": "node scripts/property-p1-plan.mts",
+    "property:p1-inspect": "node scripts/property-p1-inspect.mts",
+    "customer:check": "node scripts/check-customer-proposal.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eaglevisiondigital/eaglevisioncontractorplatform.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/issues"
+  },
+  "homepage": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform#readme",
+  "dependencies": {
+    "@js-temporal/polyfill": "0.5.1",
+    "@supabase/supabase-js": "2.118.0",
+    "pdf-lib": "1.17.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "sharp": "0.35.5"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@electric-sql/pglite": "0.5.10",
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.64.1",
+    "@types/node": "26.6.5",
+    "@types/pg": "8.23.1",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.2",
+    "eslint": "10.12.0",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "eslint-plugin-react-refresh": "0.5.7",
+    "globals": "17.13.0",
+    "pg": "8.23.1",
+    "prettier": "3.9.10",
+    "supabase": "2.121.0",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.71.2",
+    "vite": "8.3.4",
+    "vitest": "5.0.5"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=24 <25"
+  }
+}

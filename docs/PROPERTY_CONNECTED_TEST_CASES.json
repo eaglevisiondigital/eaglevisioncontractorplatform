@@ -1,0 +1,186 @@
+{
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "executed": 0,
+  "companies": [
+    "Straight Edge Property Services",
+    "Cunningham Construction",
+    "Sample Roofing Contractor"
+  ],
+  "plannedPerCompany": 24,
+  "plannedExecutions": 72,
+  "cases": [
+    {
+      "id": "weekly-plan",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Weekly dates/checklist and assigned field visit"
+    },
+    {
+      "id": "monthly-plan",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Month-end anchoring/property timezone and visit history"
+    },
+    {
+      "id": "damage-findings",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Damage severity and repair recommendations retained"
+    },
+    {
+      "id": "required-checklist",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Incomplete required checklist cannot publish"
+    },
+    {
+      "id": "management-mfa",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "AAL1/field publication denied; genuine owner AAL2 required"
+    },
+    {
+      "id": "immutable-report",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Published versions append only; old snapshot unchanged"
+    },
+    {
+      "id": "customer-report",
+      "stage": "P2",
+      "status": "NOT RUN",
+      "expected": "Exact mapped customer sees only published allowlisted report"
+    },
+    {
+      "id": "foreign-customer",
+      "stage": "P2",
+      "status": "NOT RUN",
+      "expected": "Other customer and all foreign companies denied"
+    },
+    {
+      "id": "private-projection",
+      "stage": "P2",
+      "status": "NOT RUN",
+      "expected": "Internal notes/cost/payroll/drafts/media excluded"
+    },
+    {
+      "id": "four-suppliers",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Four reviewed manual suppliers preserve original sources"
+    },
+    {
+      "id": "quote-arithmetic",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Integer unit packs/tax/shipping totals exact"
+    },
+    {
+      "id": "unknown-quote",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Unknown/ambiguous price cannot win"
+    },
+    {
+      "id": "foreign-quote-scope",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Other tenant/currency/material line rejected"
+    },
+    {
+      "id": "original-vs-actual",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Existing baseline and approved actual purchases matched"
+    },
+    {
+      "id": "quantity-substitution",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Excess/substitute purchases require review"
+    },
+    {
+      "id": "credits-overlaps",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Approved credits/duplicate overlaps cannot be rebilled"
+    },
+    {
+      "id": "absorb-include-review",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Nonbillable dispositions create no debt"
+    },
+    {
+      "id": "markup-precision",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Percentage/fixed/pass-through exact minor-unit math"
+    },
+    {
+      "id": "supplemental-draft",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Proposed change/nonpayable invoice source and amount match"
+    },
+    {
+      "id": "immutable-original",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Original issued estimate/job baseline unchanged"
+    },
+    {
+      "id": "role-revocation",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Revoked membership/assignment denied on genuine next request"
+    },
+    {
+      "id": "stale-null-duplicate",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Stale/NULL revisions and duplicate submissions rejected"
+    },
+    {
+      "id": "expiry",
+      "stage": "P1",
+      "status": "NOT RUN",
+      "expected": "Expired JWT/customer lease denied; no unauthorized effects"
+    },
+    {
+      "id": "media-off",
+      "stage": "P3",
+      "status": "NOT RUN",
+      "expected": "Real ingestion/playback remain503; no fake scanner success"
+    }
+  ],
+  "report": "docs/PROPERTY_CONNECTED_TEST_PLAN.md",
+  "p0Preparation": {
+    "compiler": "server/property/acceptance-plan.ts",
+    "review": "docs/PROPERTY_P0_SECURITY_REVIEW.md",
+    "hostedExecutor": false,
+    "hostedExecutionAuthorized": false,
+    "positiveFixtureSteps": 75,
+    "proposedDomainRows": 57,
+    "auditRows": "append-only, measured during future authorized execution",
+    "featureRowsCreated": 0,
+    "reportLeasesCreated": 0,
+    "hostedExecuted": 0
+  },
+  "currentP1Review": {
+    "report": "docs/PROPERTY_P1_ACCEPTANCE_REVIEW.md",
+    "tracker": "docs/PROPERTY_P1_REVIEW.json",
+    "hostedExecuted": 0,
+    "PASS": 0,
+    "FAIL": 0,
+    "BLOCKED": 24,
+    "NOT RUN": 48,
+    "stageCounts": {
+      "P1": 60,
+      "P2": 9,
+      "P3": 3
+    },
+    "historicalGenericCaseStatuses": "original inventory; use per-company current tracker",
+    "hostedExecutionAuthorized": false
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "baseCommit": "c87f52d173886daa6fd98af1de79684bd74c22d7",
+  "validatedOn": "2026-10-21",
+  "status": "CORRECTED_SYNTHETIC_PACKAGE_READY_FOR_OWNER_SETUP_ACTUAL_DEVICE_NOT_RUN",
+  "package": {
+    "file": "recovery/distribution/propel-synthetic-rehearsal.zip",
+    "bytes": 97334,
+    "sha256": "32cb88f123e0fd776986f32d8508c913dbedc1ac977779708d1ba7218bbb8d59",
+    "reproducible": "ZIP_STORED_FIXED_TIMESTAMPS_SORTED_PUBLIC_ALLOWLIST",
+    "files": 14
+  },
+  "implementation": [
+    "Fixed private-IPv4 TCP4187; no DNS/public endpoint/tunnel/relay",
+    "Existing AES-GCM/HKDF/HMAC and out-of-band fingerprint comparison",
+    "Existing durable custody/mailbox, 33 authenticated receipts before continuation",
+    "Five-second heartbeats; manual presence within60seconds; minute29 ceiling",
+    "Fifteen generated-only local sessions, three synthetic upgrades, one unrelated session",
+    "Backup-only encrypted state and one-shot recovery; no primary directory required",
+    "Explicit tamper/wrong-run/duplicate/lost-ACK/incomplete/expired scenarios",
+    "Bounded one-shot restart/recovery and active-device file lock"
+  ],
+  "localValidation": {
+    "syntheticRecoveryAndSetupPassed": 105,
+    "nodePythonProtocolPassed": 9,
+    "actualExtractedSetup": "PASS_LOCAL_ARM64_PYTHON312_BINARY_ONLY",
+    "mismatchedOperational50Environment": "CORRECTLY_REJECTED_BY_PACKAGED_LAUNCHER_GUARD",
+    "intelPython314BinaryResolution": "PASS_HASH_PINNED_WHEELS_ONLY",
+    "arm64Python314BinaryResolution": "PASS_SAME_LOCK",
+    "formatAndShellSyntax": "PASS",
+    "frozenP1Inspector": "PASS_4_ARTIFACTS_OFFLINE_ONLY",
+    "broadApplicationBrowserNativeSuites": "NOT_RERUN_UNRELATED_TO_COMPATIBILITY_REPAIR",
+    "evidenceBoundary": "LOCAL_ARM64_RUNTIME_AND_CROSS_TARGET_BINARY_METADATA_NOT_MONTEREY_RUNTIME_OR_TWO_DEVICE_PASS"
+  },
+  "deviceCases": {
+    "PASS": 0,
+    "FAIL": 0,
+    "BLOCKED": 0,
+    "NOT_RUN": 7
+  },
+  "ownerPriorEvidence": "PRESERVED_25_OFFLINE_PASSES_PREVIOUS_HASHES_PYTHON_AND_HOTSPOT_CHECKS_NOT_REPEATED",
+  "runtime": {
+    "localPython": "3.12.14",
+    "cryptography": "48.0.1",
+    "ownerMontereyPython": "3.14.2_OWNER_REPORTED",
+    "actualIntelMontereyDependencyInstallation": "OLD_PACKAGE_FAILED_CORRECTED_SETUP_AWAITING_OWNER",
+    "primaryNodeRequirementUnchanged": ">=24 <25",
+    "cffi": "2.1.1",
+    "pycparser": "3.11"
+  },
+  "preserved": {
+    "frozenP1OperationSha256": "01b96075d2f04acef730114427bc595986a1f0ce2720ed7fd3c9e84e304e141a",
+    "historicalSqlFiles": 13,
+    "frozenPackageArtifacts": 4,
+    "existingApproval": "PERSISTS_NO_DUPLICATE_REQUEST"
+  },
+  "hostedEffects": {
+    "requests": 0,
+    "sessions": 0,
+    "mfaChallenges": 0,
+    "writes": 0,
+    "cleanupProbes": 0,
+    "featureActivation": 0,
+    "netlifyChanges": 0,
+    "providerCalls": 0,
+    "credentialsCopiedToMonterey": 0
+  },
+  "remaining": [
+    "Owner runs actual two-device scenarios and supplies sanitized witnessed evidence",
+    "Maintained/encrypted independent operational environment; no privileged Monterey custody",
+    "Separately reviewed live credential/session custody and fixed HTTPS/local logout verification",
+    "Exact separately authorized hosted recovery verification after genuine device evidence",
+    "Fresh action-time P1 preflight under unchanged fixture approval"
+  ],
+  "longTermCloudRecovery": "PRESERVED_AS_SEPARATE_FUTURE_DESIGN_AND_APPROVAL_NO_PROVISIONING",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "pullRequest": "DRAFT_UNMERGED",
+  "sourceHashes": {
+    "recovery/monterey/rehearsal.py": "9c3b44dacd26a75b273a7f2606b5cd560bd4b641c84f6b80d0c2b9e3e59c7389",
+    "recovery/monterey/test_rehearsal.py": "87e22c7ceefe3972d5f7e623c2627ea26039521bfc801850b458952fffef0bbe",
+    "recovery/monterey/verify_package.py": "d0cb1968c8293c446912e5b1a595255aade13868dbc5e6fc23dec4f205529efd",
+    "recovery/monterey/Setup.command": "03624d4f95e3c0283f09b5575383bdc61c3c2e57a213674ebbe239a1f3ea2666",
+    "recovery/monterey/Backup.command": "4460d74eeac54c7a122e6942e4e8a547d9206debd6b220e93869379fc58b7af7",
+    "recovery/monterey/Primary.command": "f8954832f3b0194a73afb0c0d4dafd3634ab91e733dcf222bfe71b7c97af2557",
+    "recovery/monterey/Recover.command": "0846b70c3fb678effec57c5b7e5c97d226d78d6a7145e18f4f30d7c143bcb4ef",
+    "scripts/package-rehearsal.py": "92077147b9ca89c3057f515055a789fdb2b8231abf25dd15615d7687a2707bc3",
+    "docs/TWO_COMPUTER_REHEARSAL.md": "94e09b63e5ac1a872bc744980c730f165a63fdcd235a50320ed602194149f0b1",
+    "recovery/monterey/rehearsal-requirements.lock": "41621e3ea15cf1ff3766a1e2c2d95d6aea3d6cb7250cb23b72dbf62860c8a81f",
+    "recovery/monterey/test_rehearsal_setup.py": "afcc1968c0da37f36283356058530323b643754e56f5bf54ae7b85de3775d537",
+    ".github/workflows/rehearsal.yml": "80040a3594485a49c5c673fc9526d21e9b32e2a63390ee726dc2dbd0c28ba840",
+    "docs/TWO_COMPUTER_REHEARSAL_COMPATIBILITY.md": "858e91279a7a83dab31fc5c7a5255cf43780829f04e6b587a95fb9b137addd49"
+  },
+  "previousBroadValidation": {
+    "npmCheck": "PASS",
+    "applicationPassed": 988,
+    "applicationSkipped": 62,
+    "recoveryPassed": 98,
+    "newLauncherTests": 21,
+    "finalLauncherRunPassed": 21,
+    "browserPassed": 78,
+    "browserSurfaces": ["desktop", "tablet", "mobile"],
+    "format": "PASS",
+    "typesAndLint": "PASS",
+    "build": "PASS",
+    "shellSyntax": "PASS",
+    "frozenP1Inspector": "PASS_4_ARTIFACTS_713_ORIGINAL_GUARDS_OFFLINE_ONLY",
+    "migrationIntegrity": "PASS_13_HISTORICAL_PLUS_UNAPPLIED_CUSTOMER_PROPOSAL",
+    "nativePostgresql": "NOT_RERUN_NO_SQL_OR_DATABASE_CHANGES",
+    "testCountsOverlap": true,
+    "evidenceBoundary": "SINGLE_HOST_SIMULATION_REAL_LOCAL_SOCKETS_REAL_ENCRYPTION_AND_CHILD_SIGKILL_NOT_TWO_DEVICE_PASS",
+    "evidence": "HISTORICAL_C87F52D_NOT_RERUN_FOR_COMPATIBILITY_REPAIR"
+  },
+  "compatibility": {
+    "originalOwnerSetup": "ZIP_AND_INVENTORY_VERIFIED_INSTALL_FAILED_NO_PAIRING",
+    "rootCause": "CRYPTOGRAPHY49_PLUS_REMOVED_MACOS_INTEL_WHEELS",
+    "syntheticLock": "recovery/monterey/rehearsal-requirements.lock",
+    "operationalLockUnchangedSha256": "548b714984acb70b317815fe97b22132aafd866661874bc09d19e220c2f85d8f",
+    "intelTarget": {
+      "os": "macOS12.7.6",
+      "architecture": "x86_64",
+      "python": "CPython3.14.2",
+      "pipConservativePlatform": "macosx_12_0_x86_64",
+      "wheels": [
+        {
+          "file": "pycparser-3.11-py3-none-any.whl",
+          "sha256": "51d5a8ba2be0bbe440b99d2112604c95bbbc3c2748a64260186c541e1729cd80",
+          "binaries": []
+        },
+        {
+          "file": "cffi-2.1.1-cp314-cp314-macosx_10_15_x86_64.whl",
+          "sha256": "d28630f5854ab07ab1fd4aba756de52326c82e6be15d414b12793f1975048b54",
+          "binaries": [
+            {
+              "file": "_cffi_backend.cpython-314-darwin.so",
+              "architecture": "x86_64",
+              "minimumMacOS": [10, 15, 0]
+            }
+          ]
+        },
+        {
+          "file": "cryptography-48.0.1-cp311-abi3-macosx_10_9_universal2.whl",
+          "sha256": "3e4a1a3232eef2e6c732827d5722db29a0cc8b27af2a4d865b094cf954be9ca1",
+          "binaries": [
+            {
+              "file": "cryptography/hazmat/bindings/_rust.abi3.so",
+              "architecture": "x86_64",
+              "minimumMacOS": [10, 13, 0]
+            }
+          ]
+        }
+      ]
+    },
+    "sourceCompilationAllowed": false,
+    "unpinnedFallbackAllowed": false,
+    "operationalDowngradeAllowed": false
+  }
+}

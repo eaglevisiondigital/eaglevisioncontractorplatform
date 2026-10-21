@@ -1,0 +1,53 @@
+{
+  "status": "FORMAL_LOCAL_MIGRATION_PREPARED_NOT_AUTHORIZED",
+  "sqlFile": "server/customer/schema.proposed.sql",
+  "sqlSha256": "b18a72250fc88bd71ff3e4e3cc1702d8597af280407a52a3e0811605bf0448b9",
+  "historicalMigrationsPreserved": 13,
+  "newTables": [
+    "private.customer_estimate_access",
+    "private.customer_review_decisions"
+  ],
+  "newPublicWrappers": [
+    "public.customer_portal_discover()",
+    "public.customer_estimate_review(uuid,uuid,uuid,uuid)",
+    "public.customer_publication_preview(uuid,jsonb)",
+    "public.customer_publish_estimate(uuid,jsonb)",
+    "public.customer_revoke_publication(uuid,uuid)",
+    "public.customer_decision_context(uuid,uuid,uuid,uuid)",
+    "public.customer_record_decision(uuid,uuid,text,text,text,uuid)",
+    "public.customer_property_reports(uuid,uuid,uuid,uuid)",
+    "public.customer_publication_receipt(uuid,uuid,uuid)",
+    "public.customer_runtime_status()",
+    "public.customer_session_status()"
+  ],
+  "clientExecutionGrants": 0,
+  "clientTablePolicies": 0,
+  "provisioningCommands": 0,
+  "mutationsExposed": 0,
+  "maximumLeaseMinutes": 15,
+  "reportLeaseAuthorizesEstimates": false,
+  "staffCustomerSeparation": "ACTIVE_STAFF_AND_PLATFORM_ADMIN_DENIED",
+  "readStateAllowed": ["awaiting_action", "expired"],
+  "productionConsentOrDecisionWriter": false,
+  "hostedApplied": false,
+  "requires": [
+    "Exact local customer authorization package owner review; formal forward migration prepared",
+    "Genuine hosted staff publication/customer decision acceptance under separately reviewed exact scope",
+    "Target-specific preflight and separate exact owner migration/grant/session/fixture approvals",
+    "Independent recovery and genuine P1/P2 acceptance",
+    "Reviewed production customer discovery,sign-in,local logout and abuse controls"
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "previousReviewedSha256": "da8d8bd887c071dd27186e425edd877da9e980db2c772f4925d3f538dd1e34f5",
+  "workflowSqlFile": "server/customer/workflow.proposed.sql",
+  "workflowSqlSha256": "253c4fc5f58eef47fed2530372480826db13fa42812cf65791e9ac8ff70728ec",
+  "workflowStatus": "FORMAL_LOCAL_MIGRATION_PREPARED_NOT_AUTHORIZED",
+  "checkedPublicationProposed": true,
+  "reviewOnlyDecisionWriterProposed": true,
+  "decisionIsFinancialConsent": false,
+  "proposalBundleSha256": "c343c8ea4263fc8b590654048aee17299ce7e0cdd7a65ab0a543c8449ed58a5e",
+  "proposalBundleDefinition": "SHA256(schema bytes followed by workflow bytes)",
+  "previousProposalBundleSha256": "6f2e641f59ab61fa5e14fb0f58a0d4e60bc0e55d7c1a5bdebdf4b8f2f7466f1c",
+  "formalMigration": "20261018144833_customer_authorization_release_readiness.sql",
+  "runtimeCapabilitiesEnabled": false
+}
