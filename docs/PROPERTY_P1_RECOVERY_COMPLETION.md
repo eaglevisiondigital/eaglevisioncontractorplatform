@@ -1,5 +1,12 @@
 # P1 independent recovery completion · local engineering
 
+October21 update: [TWO_COMPUTER_REHEARSAL.md](TWO_COMPUTER_REHEARSAL.md) supplies
+the missing operational launcher/transport for **synthetic testing only**. Public-only
+ZIP composes existing components over authenticated encrypted private LAN sockets;
+no external relay, hosted adapter, private capsule or service credential is included.
+Earlier no-CLI/relay statements below remain true for live recovery. Real second-Mac
+execution, maintained privileged custody and exact hosted verification remain gates.
+
 October 17, 2026. Base `7fe6002`, draft PR #1. **GO for independent local device
 rehearsal; NO-GO for hosted recovery or P1 activation.** No project request, session,
 MFA challenge, cleanup probe, credential retrieval, feature or fixture write occurred.

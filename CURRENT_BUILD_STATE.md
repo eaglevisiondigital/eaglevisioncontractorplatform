@@ -1,5 +1,23 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: executable two-computer synthetic rehearsal · October21
+
+Read [TWO_COMPUTER_REHEARSAL.md](docs/TWO_COMPUTER_REHEARSAL.md) and
+TWO_COMPUTER_REHEARSAL_VALIDATION.json. Public-only ZIP/double-click launchers
+compose existing encrypted custody, mailboxes, supervisor and one-shot recovery
+with a local synthetic service and authenticated direct private-LAN transport.
+No relay, shared folder, live capsule, HTTPS adapter or real credential is included.
+Monterey is retained for synthetic testing only; stop Ubuntu troubleshooting.
+Preserve owner-reported25 offline passes/network/hash/Python evidence. New local
+socket/SIGKILL/restart regressions are SINGLE_HOST_SIMULATION; actual seven R0
+device cases remain NOT RUN pending owner execution. Privileged Monterey custody
+and hosted recovery remain prohibited/unverified. All13 historical migrations,
+frozen P1 operation/four artifacts, Auth and tenant controls stay unchanged.
+No hosted requests/writes/sessions, provider/Netlify changes or activation occurred.
+Existing P1 approval persists without duplication. Release1.0 NOT READY /
+NOT AUTHORIZED; PR#1 draft/unmerged. Long-term maintained cloud recovery remains
+a separate future design/approval, not a prerequisite for this synthetic LAN test.
+
 ## Latest: customer authorization formal release preparation · local only
 
 Read [CUSTOMER_AUTHORIZATION_RELEASE_REVIEW.md](docs/CUSTOMER_AUTHORIZATION_RELEASE_REVIEW.md),

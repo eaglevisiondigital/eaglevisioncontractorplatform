@@ -1,5 +1,15 @@
 # Engineering instructions
 
+October21 synthetic rehearsal continuity: read docs/TWO_COMPUTER_REHEARSAL.md and
+its validation record. Public deterministic ZIP/launchers now compose the existing
+recovery components over direct private-LAN encrypted transport, synthetic data only.
+Owner retains Monterey; stop Ubuntu troubleshooting. Preserve25 completed offline
+passes and prior Python/hash/network evidence. Do not claim actual two-device PASS
+from localhost/SIGKILL tests. No private capsules or privileged Monterey credentials;
+no hosted adapter in the ZIP. Do not change frozen P1/all13 historical SQL or ask for
+duplicate fixture approval. Actual device rehearsal, maintained operational custody
+and separately exact hosted verification remain gates; Release1.0 stays closed.
+
 Read README.md first (product source of truth), then CURRENT_BUILD_STATE.md,
 ARCHITECTURE.md, SECURITY_MODEL.md and DECISIONS.md before making changes.
 

@@ -1,5 +1,22 @@
 # Security model · Phase 2
 
+## Synthetic-only LAN rehearsal boundary · October21
+
+Monterey may run this disposable kit without privileged credentials. Only generated
+synthetic configuration/token markers are accepted; no private capsule input,
+credential reader, arbitrary SQL, hosted adapter or endpoint option. Explicit
+RFC1918 listener/IP and fixed4187 prevent public/DNS routing. AEAD/HMAC authenticate
+encrypted messages/ACKs; independent local append-only fsync precedes receipts.
+Pairing requires physical-screen fingerprint comparison; it is not hardware
+attestation or protection from a compromised OS. Keys stay in private synthetic
+run directories, never arguments/reports/Git; one-time synthetic card display is
+for owner-only pairing. No shared folder/cloud relay substitutes for independence.
+Duplicate/expired/tampered/uncertain messages fail closed, without automatic retry.
+Device locks and durable attempt markers prevent replay. Manual terminal presence
+is not renewed by heartbeats. Actual device/operational custody/TLS/hosted logout
+verification remain separate gates; the rejected hosted probe is not repeated.
+See docs/TWO_COMPUTER_REHEARSAL.md.
+
 ## Customer release preparation · October18 · no hosted activation
 
 See docs/CUSTOMER_AUTHORIZATION_RELEASE_REVIEW.md and its separate approval register.

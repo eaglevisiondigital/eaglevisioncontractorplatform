@@ -1,0 +1,93 @@
+{
+  "baseCommit": "09e2a59e7fc36417b6f9fe70be8eccd8e898ac48",
+  "validatedOn": "2026-10-21",
+  "status": "READY_FOR_OWNER_TWO_PHYSICAL_COMPUTER_SYNTHETIC_REHEARSAL_ONLY",
+  "package": {
+    "file": "recovery/distribution/propel-synthetic-rehearsal.zip",
+    "bytes": 91336,
+    "sha256": "10e6ddc33b070582212261052befb6cc3ea8d417fad38a0c8590bb94528ebdbd",
+    "reproducible": "ZIP_STORED_FIXED_TIMESTAMPS_SORTED_PUBLIC_ALLOWLIST",
+    "files": 13
+  },
+  "implementation": [
+    "Fixed private-IPv4 TCP4187; no DNS/public endpoint/tunnel/relay",
+    "Existing AES-GCM/HKDF/HMAC and out-of-band fingerprint comparison",
+    "Existing durable custody/mailbox, 33 authenticated receipts before continuation",
+    "Five-second heartbeats; manual presence within60seconds; minute29 ceiling",
+    "Fifteen generated-only local sessions, three synthetic upgrades, one unrelated session",
+    "Backup-only encrypted state and one-shot recovery; no primary directory required",
+    "Explicit tamper/wrong-run/duplicate/lost-ACK/incomplete/expired scenarios",
+    "Bounded one-shot restart/recovery and active-device file lock"
+  ],
+  "localValidation": {
+    "npmCheck": "PASS",
+    "applicationPassed": 988,
+    "applicationSkipped": 62,
+    "recoveryPassed": 98,
+    "newLauncherTests": 21,
+    "finalLauncherRunPassed": 21,
+    "browserPassed": 78,
+    "browserSurfaces": ["desktop", "tablet", "mobile"],
+    "format": "PASS",
+    "typesAndLint": "PASS",
+    "build": "PASS",
+    "shellSyntax": "PASS",
+    "frozenP1Inspector": "PASS_4_ARTIFACTS_713_ORIGINAL_GUARDS_OFFLINE_ONLY",
+    "migrationIntegrity": "PASS_13_HISTORICAL_PLUS_UNAPPLIED_CUSTOMER_PROPOSAL",
+    "nativePostgresql": "NOT_RERUN_NO_SQL_OR_DATABASE_CHANGES",
+    "testCountsOverlap": true,
+    "evidenceBoundary": "SINGLE_HOST_SIMULATION_REAL_LOCAL_SOCKETS_REAL_ENCRYPTION_AND_CHILD_SIGKILL_NOT_TWO_DEVICE_PASS"
+  },
+  "deviceCases": {
+    "PASS": 0,
+    "FAIL": 0,
+    "BLOCKED": 0,
+    "NOT_RUN": 7
+  },
+  "ownerPriorEvidence": "PRESERVED_25_OFFLINE_PASSES_PREVIOUS_HASHES_PYTHON_AND_HOTSPOT_CHECKS_NOT_REPEATED",
+  "runtime": {
+    "localPython": "3.12.14",
+    "cryptography": "50.0.2",
+    "ownerMontereyPython": "3.14.2_OWNER_REPORTED",
+    "actualIntelMontereyDependencyInstallation": "NOT_VERIFIED",
+    "primaryNodeRequirementUnchanged": ">=24 <25"
+  },
+  "preserved": {
+    "frozenP1OperationSha256": "01b96075d2f04acef730114427bc595986a1f0ce2720ed7fd3c9e84e304e141a",
+    "historicalSqlFiles": 13,
+    "frozenPackageArtifacts": 4,
+    "existingApproval": "PERSISTS_NO_DUPLICATE_REQUEST"
+  },
+  "hostedEffects": {
+    "requests": 0,
+    "sessions": 0,
+    "mfaChallenges": 0,
+    "writes": 0,
+    "cleanupProbes": 0,
+    "featureActivation": 0,
+    "netlifyChanges": 0,
+    "providerCalls": 0,
+    "credentialsCopiedToMonterey": 0
+  },
+  "remaining": [
+    "Owner runs actual two-device scenarios and supplies sanitized witnessed evidence",
+    "Maintained/encrypted independent operational environment; no privileged Monterey custody",
+    "Separately reviewed live credential/session custody and fixed HTTPS/local logout verification",
+    "Exact separately authorized hosted recovery verification after genuine device evidence",
+    "Fresh action-time P1 preflight under unchanged fixture approval"
+  ],
+  "longTermCloudRecovery": "PRESERVED_AS_SEPARATE_FUTURE_DESIGN_AND_APPROVAL_NO_PROVISIONING",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "pullRequest": "DRAFT_UNMERGED",
+  "sourceHashes": {
+    "recovery/monterey/rehearsal.py": "9c3b44dacd26a75b273a7f2606b5cd560bd4b641c84f6b80d0c2b9e3e59c7389",
+    "recovery/monterey/test_rehearsal.py": "1a36d4c0dfbc7fdc02a74cdeba222b2ac7d092b92e0449f3c21d769f876a5dd0",
+    "recovery/monterey/verify_package.py": "2a7c995c10cad6de25a9dcf6fb920ae71bc98ca6db7db0249618dc210d6b6f3b",
+    "recovery/monterey/Setup.command": "43a80ac8a5f64fc9aa3471c0a34713196294698e5e27086243741ee878d9206f",
+    "recovery/monterey/Backup.command": "c80deabc1a81bbd445bc715cf9c1cbd914d32909acea763687f08c196b1fe51c",
+    "recovery/monterey/Primary.command": "e34f5525afc1f29c254860d9a6718a34498a59830f446c97752045aa0d1a5359",
+    "recovery/monterey/Recover.command": "c9540883f85d3c28ad12e40639d834f03c5ee26d241ada1b971716151d96488b",
+    "scripts/package-rehearsal.py": "591ade0b3d1a149bc6e77564a2aef319c7b9e1e2486260e8aaaed5e91b73fc10",
+    "docs/TWO_COMPUTER_REHEARSAL.md": "5f0db40ffdf1ffc05996015131089a84bfb29c44f637cade281be903ec0c4c8e"
+  }
+}

@@ -1,5 +1,18 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Synthetic two-device operational launcher · October21
+
+Public-only rehearsal ZIP adds private-IPv4 TCP on fixed4187 with existing per-run
+AES-GCM/HKDF envelopes and authenticated receipts. Out-of-band random synthetic
+key/fingerprint comparison and explicit PAIR on both screens bind peers; no TLS
+or cloud-relay authority is claimed. Existing DeviceRuntime mailboxes/Vault/
+Supervisor/Recovery compose with a durable local synthetic service, never HTTPSPorts.
+Exactly33 custody ACKs cover15 generated sessions and three synthetic upgrades.
+Backup-only restart and one-shot recovery preserve an unrelated synthetic session.
+Foreground presence/heartbeat/29-minute guards remain. Approved P1 payloads and
+real credentials never enter this distribution. See docs/TWO_COMPUTER_REHEARSAL.md;
+actual physical-device acceptance remains separate.
+
 ## Customer authorization release preparation · October18
 
 See docs/CUSTOMER_AUTHORIZATION_RELEASE_REVIEW.md. One generated forward migration

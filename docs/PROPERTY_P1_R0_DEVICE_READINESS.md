@@ -1,5 +1,16 @@
 # P1-R0: independent recovery device readiness
 
+## October21: runnable synthetic two-device package
+
+See [TWO_COMPUTER_REHEARSAL.md](TWO_COMPUTER_REHEARSAL.md). Owner retains Monterey
+for synthetic testing and confirms it is available now. Direct private-LAN encrypted
+transport/launchers are implemented locally; an approved external relay is no longer
+a synthetic-rehearsal dependency. Preserve previous25 passes/network/hash/Python
+evidence. Seven actual device cases are NOT RUN until this package is exercised
+on both Macs, not repeated offline baseline tests. Earlier unidentified/unavailable
+device statements below are historical. Operational privileged custody on Monterey
+remains prohibited; exact hosted recovery verification still needs separate review.
+
 ## October 18: second computer confirmed; preserve completed checks
 
 The owner has identified and tested the independent Monterey computer. Preserve

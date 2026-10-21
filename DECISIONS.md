@@ -1,5 +1,18 @@
 # Engineering decisions
 
+## 2026-10-21 · complete synthetic two-Mac launcher without hosted authority
+
+Reuse custody/mailbox/supervision/recovery; add bounded direct LAN transport and a
+generated-only local service. Ship a deterministic public ZIP/double-click launchers;
+no relay account, OS replacement, shared folder or full platform install. Preserve
+previous25 offline passes and owner-confirmed Monterey connectivity/Python; only
+new operational cases need actual device execution. PAIR on both physical screens
+and real manual presence are required. Localhost/SIGKILL tests do not prove physical
+independence. Retain uncertain/attempted runs; restart cannot erase/retry them.
+Preserve frozen P1 bytes/approval and all historical SQL. Monterey gets synthetic
+keys only. Maintained operational/cloud recovery and exact hosted verification
+remain separate future gates.
+
 ## 2026-10-16 · Property migration execution and connected-test boundary
 
 1. Owner approved exact d9836b4 SQL c345bdf1…/bundle0fadce83…;after refreshed drift,

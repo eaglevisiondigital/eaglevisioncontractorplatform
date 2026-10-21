@@ -1,5 +1,16 @@
 # Production Release 1.0 acceptance checklist
 
+## October21: synthetic two-computer rehearsal launcher
+
+See [TWO_COMPUTER_REHEARSAL.md](TWO_COMPUTER_REHEARSAL.md) and its validation JSON.
+Executable public-only LAN kit/owner launchers are locally verified; no hosted
+adapter/capsule/credentials. Actual seven R0 device cases remain NOT RUN pending
+owner execution. Prior25 offline passes are preserved separately. Monterey remains
+synthetic-only; maintained operational custody/real cleanup/logout/hosted recovery
+verification and P1 execution are blocked. P1 approval and all13 installed migrations
+remain unchanged; hosted counts0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN. No launch,
+Netlify/provider activation or outside access. Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Latest: customer authorization formal release preparation · local only
 
 Read [CUSTOMER_AUTHORIZATION_RELEASE_REVIEW.md](CUSTOMER_AUTHORIZATION_RELEASE_REVIEW.md),
