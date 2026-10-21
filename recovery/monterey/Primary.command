@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eu
 cd -- "$(dirname -- "$0")"
-.venv/bin/python -B verify_package.py
+.venv/bin/python -B verify_package.py --dependencies
 echo 'Use this on the PRIMARY MacBook Pro. No real credentials or private P1 files.'
 read -r -p 'BACKUP Mac private IPv4 address: ' rehearsal_ip
 echo 'Scenario: loss, tamper, wrong-run, duplicate, lost-ack, incomplete, expired'

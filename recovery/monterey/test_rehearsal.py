@@ -268,6 +268,8 @@ class RehearsalTests(unittest.TestCase):
         with zipfile.ZipFile(root/"recovery/distribution/propel-synthetic-rehearsal.zip") as archive:
             names=archive.namelist()
             self.assertFalse(any("https_adapter" in n or ".private" in n or n.endswith(".sql") for n in names))
+            self.assertIn("Propel-Synthetic-Rehearsal/rehearsal-requirements.lock", names)
+            self.assertNotIn("Propel-Synthetic-Rehearsal/requirements.lock", names)
             manifest=json.loads(archive.read("Propel-Synthetic-Rehearsal/MANIFEST.json"))
             for name, digest in manifest.items():
                 self.assertEqual(hashlib.sha256(archive.read("Propel-Synthetic-Rehearsal/"+name)).hexdigest(),digest)

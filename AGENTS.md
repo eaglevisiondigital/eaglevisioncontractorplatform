@@ -1,5 +1,13 @@
 # Engineering instructions
 
+Synthetic Intel compatibility correction: the first public ZIP's Setup failed on
+the actual Monterey/CPython3.14.2 device; no pairing/R0 case started. Read
+docs/TWO_COMPUTER_REHEARSAL_COMPATIBILITY.md. The corrected ZIP uses only the separate
+rehearsal-requirements.lock (cryptography48.0.1/CFFI2.1.1/pycparser3.11 wheel hashes).
+Never downgrade operational requirements.lock or private recovery from this repair.
+Setup and every launcher enforce exact dependencies/native cipher availability;
+no compilation/unpinned fallback. Preserve prior owner evidence/P1/all13 migrations.
+
 October21 synthetic rehearsal continuity: read docs/TWO_COMPUTER_REHEARSAL.md and
 its validation record. Public deterministic ZIP/launchers now compose the existing
 recovery components over direct private-LAN encrypted transport, synthetic data only.

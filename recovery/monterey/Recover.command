@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eu
 cd -- "$(dirname -- "$0")"
-.venv/bin/python -B verify_package.py
+.venv/bin/python -B verify_package.py --dependencies
 echo 'BACKUP ONLY, synthetic recovery after its listener was interrupted. No network calls.'
 echo 'Do not delete/reset an existing attempt. If recovery already ran, choose report.'
 read -r -p 'Mode [report/recover]: ' rehearsal_mode

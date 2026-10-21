@@ -1,5 +1,12 @@
 # Production Release 1.0 acceptance checklist
 
+Synthetic setup correction: original ZIP verified but Intel Monterey setup FAILED;
+pairing/all seven R0 device cases remain NOT RUN. Corrected synthetic-only48.0.1
+wheel lock has105 local recovery/setup and9 protocol passes, plus exact target-wheel
+verification; actual corrected two-Mac setup/rehearsal is pending. Operational
+requirements/P1/all13 SQL unchanged. See TWO_COMPUTER_REHEARSAL_COMPATIBILITY.md
+and the updated ZIP/validation record. No hosted action; release remains closed.
+
 ## October21: synthetic two-computer rehearsal launcher
 
 See [TWO_COMPUTER_REHEARSAL.md](TWO_COMPUTER_REHEARSAL.md) and its validation JSON.

@@ -1,5 +1,11 @@
 # Security model · Phase 2
 
+Synthetic compatibility lock: permit cryptography48.0.1 only in this generated-data
+rehearsal, with hash-pinned binary transitive dependencies. It cannot authorize live
+custody or downgrade operational50 requirements. Installation/native dependency
+failure blocks SETUP COMPLETE and all launchers. No source/unpinned substitution,
+new credential or hosted operation. See docs/TWO_COMPUTER_REHEARSAL_COMPATIBILITY.md.
+
 ## Synthetic-only LAN rehearsal boundary · October21
 
 Monterey may run this disposable kit without privileged credentials. Only generated

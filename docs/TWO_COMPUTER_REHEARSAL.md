@@ -6,13 +6,23 @@ MacBook Pro as primary and the 2017 Monterey Mac as backup. Preserve the previou
 adds the missing executable direct transport. It cannot perform hosted recovery.
 Actual seven-case device acceptance remains NOT RUN until the owner runs it.
 
+**Compatibility repair:** the first ZIP verified correctly but Setup failed on the
+actual Intel Monterey Mac because its cryptography50 wheel was unavailable there.
+No pairing or device tests started. This replacement uses a **separate synthetic
+lock: cryptography48.0.1, CFFI2.1.1, pycparser3.11**, with wheel hashes only.
+Operational recovery requirements and frozen P1 files are unchanged. See
+[wheel compatibility evidence](TWO_COMPUTER_REHEARSAL_COMPATIBILITY.md).
+Use this corrected ZIP on **both** Macs. Rename the old extracted folder
+`Old-Rehearsal-Do-Not-Use` and extract into a fresh folder; do not mix old files,
+copy an old `.venv` or alter any retained run directory. No baseline retests needed.
+
 ## What to put on each Mac
 
 Download **propel-synthetic-rehearsal.zip** from the existing draft PR branch's
 `recovery/distribution/` directory. Download the same version to both Macs. The
 engineering verification record contains this new ZIP's SHA-256. Check that new
 artifact once on each Mac; this does not repeat the old downloaded-file checks.
-The ZIP contains public code, instructions and the existing pinned dependency lock.
+The ZIP contains public code, instructions and `rehearsal-requirements.lock`.
 It excludes the hosted HTTPS adapter, live capsule, SQL files and private rosters.
 
 1. Double-click the ZIP. Move its extracted **Propel-Synthetic-Rehearsal** folder
@@ -26,9 +36,12 @@ It excludes the hosted HTTPS adapter, live capsule, SQL files and private roster
    already used, or press Return for `python3`. Python 3.12+ is the target, including
    the owner's installed 3.14.2; actual 3.14/Intel execution is still to be observed.
    The script checks package files, creates an isolated `.venv`, and installs only
-   hash-pinned binary encryption dependencies if missing. No compiler or platform
+   the exact hash-pinned synthetic binary dependencies, replacing partial installs.
+   No compiler or platform
    install is needed. Setup may contact PyPI; the rehearsal itself cannot do so.
-4. Expect **SETUP COMPLETE. No baseline recovery tests were repeated.** If no
+4. Expect **SYNTHETIC DEPENDENCIES VERIFIED: cryptography 48.0.1 / cffi 2.1.1 /
+   pycparser 3.11**, followed by **SETUP COMPLETE. No baseline recovery tests were
+   repeated.** All launchers now reject missing/mismatched dependencies. If no
    compatible wheel exists, stop and retain the error. Do not build unreviewed
    packages or change dependency versions to work around it.
 

@@ -1,5 +1,22 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: synthetic Intel dependency compatibility repair
+
+Owner verified the first ZIP/package but Setup failed on Monterey12.7.6/Intel/
+Python3.14.2; no pairing or R0 device tests started. See
+[TWO_COMPUTER_REHEARSAL_COMPATIBILITY.md](docs/TWO_COMPUTER_REHEARSAL_COMPATIBILITY.md).
+Rebuilt public-only ZIP uses a separate wheel-only hash-pinned synthetic lock:
+cryptography48.0.1/CFFI2.1.1/pycparser3.11. Exact Intel and arm64 CPython3.14.2
+binary resolution PASS; inspected Intel binary OS minima10.13/10.15 support12.7.6.
+105 focused recovery/setup tests and9 Node/Python protocol tests PASS under48.0.1
+on local arm64 Python3.12.14. These are local compatibility evidence, not an actual
+Monterey installation or two-device PASS. Corrected Setup on both Macs is next.
+Every launcher refuses partial/wrong dependency versions; no source builds/fallback.
+Operational50 requirements/core, all13 SQL and frozen P1 remain unchanged. No broad
+platform/browser rerun for this narrow repair; historical evidence is retained.
+No hosted/credential/session/Netlify/provider/database/activation action. Release1.0
+NOT READY / NOT AUTHORIZED; PR#1 draft/unmerged; P1 approval persists unchanged.
+
 ## Latest: executable two-computer synthetic rehearsal · October21
 
 Read [TWO_COMPUTER_REHEARSAL.md](docs/TWO_COMPUTER_REHEARSAL.md) and

@@ -1,5 +1,11 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+Synthetic distribution compatibility: `rehearsal-requirements.lock` is independent
+of operational `requirements.lock`. Both Macs receive the same public ZIP pinned
+to Intel-compatible48.0.1, with exact transitive wheels and fail-closed runtime
+checks. Custody/encryption/protocol/recovery architecture is unchanged; see
+docs/TWO_COMPUTER_REHEARSAL_COMPATIBILITY.md. No operational downgrade or activation.
+
 ## Synthetic two-device operational launcher · October21
 
 Public-only rehearsal ZIP adds private-IPv4 TCP on fixed4187 with existing per-run

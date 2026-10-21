@@ -1,5 +1,16 @@
 # Engineering decisions
 
+## 2026-10-21 · separate synthetic Intel dependency lock
+
+The owner's original ZIP/package verification succeeded but setup failed because
+cryptography50 has no Intel macOS wheel. Preserve that failure and zero device
+execution; never report setup/device PASS. Use synthetic-only48.0.1 plus separately
+hash-pinned transitive wheels; preserve operational50 lock/core and frozen P1 bytes.
+Cross-target pip and Mach-O checks verify ABI/OS compatibility; actual corrected
+Monterey setup remains owner-observed. Enforce binary-only exact installation and
+native/version guards before every launcher. Run focused recovery/interoperability/
+setup-failure tests, not unrelated platform regressions. No hosted activation.
+
 ## 2026-10-21 · complete synthetic two-Mac launcher without hosted authority
 
 Reuse custody/mailbox/supervision/recovery; add bounded direct LAN transport and a
