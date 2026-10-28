@@ -8,6 +8,7 @@ export function PropertyReportHistory({
   relatedReviews = [],
   onReview,
   focusedReportId,
+  onCompare,
 }: {
   reports: PropertyReportPage['reports'];
   cadences?: Record<string, string>;
@@ -18,6 +19,7 @@ export function PropertyReportHistory({
   }[];
   onReview?: (versionId: string) => void;
   focusedReportId?: string | null;
+  onCompare?: (reportId: string) => void;
 }) {
   const [month, setMonth] = useState('all');
   const [cadence, setCadence] = useState('all');
@@ -99,6 +101,11 @@ export function PropertyReportHistory({
             </p>
           )}
           <p>{r.snapshot.summary}</p>
+          {onCompare && reports.length > 1 && (
+            <button className="secondary" onClick={() => onCompare(r.id)}>
+              Compare this inspection
+            </button>
+          )}
           <details>
             <summary>Inspection checklist</summary>
             <ul>

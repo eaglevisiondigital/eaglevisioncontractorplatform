@@ -43,7 +43,11 @@ export function CustomerEstimateReview({
           (x) => x.version_id === r.version_id,
         )?.decision;
         return (
-          <article className="finding-card" key={r.version_id}>
+          <article
+            className="finding-card"
+            key={r.version_id}
+            data-version-id={r.version_id}
+          >
             <span className="badge">
               Issued estimate · Version {r.version_number}
             </span>

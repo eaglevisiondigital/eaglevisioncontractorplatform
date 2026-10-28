@@ -9,6 +9,10 @@ import {
 import type { EstimateVersion } from '../domain/estimating/types';
 import { projectPublishedHistory } from '../domain/property/report-page';
 import { buildPropertyAttention } from '../domain/property/attention';
+import {
+  comparePublishedInspections,
+  type ReportReference,
+} from '../domain/property/inspection-comparison';
 /** UI laboratory only: reuses existing synthetic CRM/property/estimate and decision engines. No Supabase import. */
 export class CustomerPortalPreviewModel {
   private active = false;
@@ -353,6 +357,113 @@ export class CustomerPortalPreviewModel {
   attention() {
     const data = this.read();
     return buildPropertyAttention(data.context, data.reports, data.reviews);
+  }
+  compareReports(first: ReportReference, second: ReportReference) {
+    const data = this.read();
+    return comparePublishedInspections(
+      data.context,
+      data.reports,
+      first,
+      second,
+      data.reviews,
+      data.cadences,
+    );
+  }
+  /** Optional comparison evidence uses new visits, never edits published snapshots. */
+  prepareComparisonExamples() {
+    const c = this.context(),
+      state = this.repo.read(c.organization_id);
+    if (c.location_id !== this.primaryLocation)
+      throw Error('Select the original sample property');
+    const name = 'Synthetic inspection comparison';
+    if (
+      state.plans.some(
+        (p) => p.name === name && p.location_id === c.location_id,
+      )
+    )
+      return;
+    const context = state.contexts.find(
+      (x) => x.customer_id === c.customer_id && x.location_id === c.location_id,
+    )!;
+    const plan = this.repo.createPlan(c.organization_id, context, name);
+    const seal = crypto.randomUUID();
+    for (const date of ['2026-12-07', '2026-12-14']) {
+      const last = date === '2026-12-14';
+      let visit = this.repo.addVisit(c.organization_id, plan.id, date);
+      this.repo.saveVisit(c.organization_id, visit, {
+        summary: 'Synthetic comparison check-in · ' + date,
+        internal_notes: 'INTERNAL costs and private contractor notes',
+        checklist: [
+          {
+            id: 'exterior',
+            label: 'Exterior condition and safety',
+            required: true,
+            completed: true,
+          },
+          {
+            id: 'drain',
+            label: 'Drain access checked',
+            required: false,
+            completed: last,
+          },
+          ...(!last
+            ? [
+                {
+                  id: 'side',
+                  label: 'Side path observed',
+                  required: false,
+                  completed: true,
+                },
+              ]
+            : []),
+        ],
+        findings: [
+          {
+            id: seal,
+            category: 'Damage',
+            location: 'Comparison window seal',
+            severity: last ? 'urgent' : 'moderate',
+            description: last
+              ? 'Water marks documented below the window.'
+              : 'A gap documented at the window.',
+            recommendation: last
+              ? 'Request an assessment of the seal and surrounding surface.'
+              : 'Request a seal assessment.',
+            customer_visible: true,
+          },
+          {
+            id: 'generic-drain',
+            category: 'Maintenance',
+            location: 'Comparison drain',
+            severity: 'low',
+            description: 'Leaves documented in the drain.',
+            recommendation: 'Schedule a drain assessment.',
+            customer_visible: true,
+          },
+          ...(!last
+            ? [
+                {
+                  id: crypto.randomUUID(),
+                  category: 'Damage',
+                  location: 'Comparison side path',
+                  severity: 'moderate' as const,
+                  description: 'An uneven edge was documented.',
+                  recommendation: 'Request an edge assessment.',
+                  customer_visible: true,
+                },
+              ]
+            : []),
+        ],
+      });
+      visit = this.repo
+        .read(c.organization_id)
+        .visits.find((v) => v.id === visit.id)!;
+      this.repo.submit(c.organization_id, visit);
+      visit = this.repo
+        .read(c.organization_id)
+        .visits.find((v) => v.id === visit.id)!;
+      this.repo.publish(c.organization_id, visit);
+    }
   }
   read() {
     const c = this.context(),

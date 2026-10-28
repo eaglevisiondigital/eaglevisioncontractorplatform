@@ -4,6 +4,7 @@ import { CustomerPortalPreviewModel } from '../../lib/customer-preview';
 import { PropertyReportHistory } from './PropertyReportHistory';
 import { CustomerEstimateReview } from './CustomerEstimateReview';
 import { PropertyAttentionCenter } from './PropertyAttentionCenter';
+import { InspectionComparison } from './InspectionComparison';
 import { useResource } from '../forms-state';
 import { PlatformBrand } from '../PlatformBrand';
 
@@ -67,11 +68,15 @@ function PropertyExperience({ company }: { company: CompanyProfile }) {
   const [busy, setBusy] = useState(false);
   const [unavailable, setUnavailable] = useState(false);
   const [message, setMessage] = useState('');
-  const [tab, setTab] = useState<'reports' | 'estimates' | 'attention'>(
-    'reports',
-  );
+  const [tab, setTab] = useState<
+    'reports' | 'estimates' | 'attention' | 'compare'
+  >('reports');
   const [reportId, setReportId] = useState<string | null>(null);
   const [versionId, setVersionId] = useState<string | null>(null);
+  const [comparisonIds, setComparisonIds] = useState<[string, string]>([
+    '',
+    '',
+  ]);
   const data =
     resource.data && !resource.loading && !resource.error && !unavailable
       ? model.read()
@@ -97,6 +102,7 @@ function PropertyExperience({ company }: { company: CompanyProfile }) {
     setTab('reports');
     setReportId(null);
     setVersionId(null);
+    setComparisonIds(['', '']);
     setMessage('');
   }
   if (resource.loading)
@@ -224,8 +230,38 @@ function PropertyExperience({ company }: { company: CompanyProfile }) {
         >
           Simulate loading error
         </button>
+        <button
+          disabled={busy || !data.exampleAvailable || !data.history.length}
+          onClick={() =>
+            void run(async () => {
+              model.prepareComparisonExamples();
+              const rows = model
+                .read()
+                .history.filter((r) =>
+                  r.snapshot.summary.startsWith(
+                    'Synthetic comparison check-in',
+                  ),
+                );
+              setComparisonIds([rows[0].id, rows[1].id]);
+              setTab('compare');
+            }, 'Synthetic comparison reports selected. Compare to view their evidence.')
+          }
+        >
+          Load synthetic comparison examples
+        </button>
       </details>
       <nav className="p3-tabs" aria-label="Customer property views">
+        <button
+          aria-pressed={tab === 'compare'}
+          className={tab === 'compare' ? 'active' : 'secondary'}
+          onClick={() => {
+            setComparisonIds(['', '']);
+            setTab('compare');
+            setMessage('');
+          }}
+        >
+          Compare inspections
+        </button>
         <button
           aria-pressed={tab === 'attention'}
           className={tab === 'attention' ? 'active' : 'secondary'}
@@ -257,10 +293,37 @@ function PropertyExperience({ company }: { company: CompanyProfile }) {
           Estimates & repairs
         </button>
       </nav>
-      {tab === 'attention' ? (
+      {tab === 'compare' ? (
+        <InspectionComparison
+          key={data.context.location_id + comparisonIds.join(':')}
+          reports={data.history}
+          initialIds={comparisonIds}
+          compare={(first, second) => {
+            setMessage('');
+            return model.compareReports(first, second);
+          }}
+          onReport={(id) => {
+            setReportId(id);
+            setTab('reports');
+            setMessage('Exact comparison source report selected.');
+          }}
+          onReview={(id) => {
+            setVersionId(id);
+            setTab('estimates');
+            setMessage('Exact comparison repair scope selected.');
+          }}
+        />
+      ) : tab === 'attention' ? (
         <PropertyAttentionCenter
           key={data.context.location_id}
           attention={model.attention()}
+          onCompare={(first, second) => {
+            setComparisonIds([first, second]);
+            setTab('compare');
+            setMessage(
+              'Source reports selected. Compare to inspect their exact evidence.',
+            );
+          }}
           onReport={(id) => {
             setReportId(id);
             setTab('reports');
@@ -285,6 +348,11 @@ function PropertyExperience({ company }: { company: CompanyProfile }) {
             cadences={data.cadences}
             focusedReportId={reportId}
             relatedReviews={data.reviews}
+            onCompare={(id) => {
+              setComparisonIds([id, '']);
+              setTab('compare');
+              setMessage('Choose another published inspection for comparison.');
+            }}
             onReview={(id) => {
               setVersionId(id);
               setTab('estimates');

@@ -26,10 +26,12 @@ export function PropertyAttentionCenter({
   attention,
   onReport,
   onReview,
+  onCompare,
 }: {
   attention: PropertyAttention;
   onReport(reportId: string): void;
   onReview(versionId: string): void;
+  onCompare?: (first: string, second: string) => void;
 }) {
   const [filter, setFilter] = useState<Filter>('all');
   const items = attention.items.filter((item) => matches(item, filter));
@@ -128,6 +130,19 @@ export function PropertyAttentionCenter({
           <h3>
             {item.category} · {item.location}
           </h3>
+          {onCompare && item.observations.length > 1 && (
+            <button
+              className="secondary"
+              onClick={() =>
+                onCompare(
+                  item.observations[0].report_id,
+                  item.observations.at(-1)!.report_id,
+                )
+              }
+            >
+              Compare source inspections
+            </button>
+          )}
           <p>
             First reported{' '}
             <time dateTime={item.first_reported}>{item.first_reported}</time> ·

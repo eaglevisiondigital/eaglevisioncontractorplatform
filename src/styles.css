@@ -1640,3 +1640,43 @@ fieldset legend {
     margin-top: 16px;
   }
 }
+
+.inspection-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+.inspection-pair > * {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.inspection-pair select {
+  width: 100%;
+  max-width: 100%;
+}
+.comparison-side {
+  padding: 18px;
+  border-radius: 10px;
+}
+.comparison-side--0 {
+  background: #f2f5f4;
+  border-top: 4px solid #637b72;
+}
+.comparison-side--1 {
+  background: #edf5f2;
+  border-top: 4px solid var(--company-color);
+}
+.evidence-id {
+  font-family: ui-monospace, monospace;
+  font-size: 0.85em;
+  overflow-wrap: anywhere;
+}
+.comparison-heading {
+  margin-top: 24px;
+}
+@media (max-width: 680px) {
+  .inspection-pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

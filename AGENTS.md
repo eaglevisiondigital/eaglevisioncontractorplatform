@@ -1,5 +1,14 @@
 # Engineering instructions
 
+Side-by-side inspection continuation: read docs/INSPECTION_COMPARISON.md.
+The local property portal compares two exact published report versions through the
+existing attention engine and complete customer/property history. No fuzzy match,
+inferred improvement/deterioration/repair, or financial authority. Published checklist
+IDs are absent: exact-label result comparison only; duplicate/missing labels remain
+unaligned, with report/version/source position retained. Same-date reports do not
+prove chronology/recurrence. All13 SQL/pending customer/P1/connected/recovery gates
+remain unchanged; no physical-device PASS.
+
 Property Attention Center continuation: read docs/PROPERTY_ATTENTION_CENTER.md.
 The synthetic property portal derives attention only from exact customer/property
 published reports and allowlisted issued scopes. No fuzzy text grouping or inferred

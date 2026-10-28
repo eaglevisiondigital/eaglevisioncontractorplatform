@@ -1,5 +1,16 @@
 # Security model · Phase 2
 
+## Inspection comparison evidence boundary · October28
+
+Comparison consumes exact customer/contractor/property published sources and strict
+issued-review allowlists. Foreign/duplicate/malformed rows and stale/missing report
+versions fail closed. Full-history identity conflicts cannot be hidden by choosing
+a convenient pair. Generic/conflicting IDs and ambiguous checklist labels stay
+separate; absence and reported differences confer no repair or financial authority.
+Only minimal exact issued-scope references enter comparison, never costs/private
+notes/payroll. Selection edits/errors/scope switches clear comparison evidence.
+Connected customer routes remain closed. See docs/INSPECTION_COMPARISON.md.
+
 ## Property attention evidence boundary · October28
 
 The Attention Center is a pure derived view after exact company/customer/property

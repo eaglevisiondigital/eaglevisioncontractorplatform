@@ -1,5 +1,16 @@
 # Engineering decisions
 
+## 2026-10-28 · compare immutable published evidence without inventing lineage
+
+Reuse the Attention Center and existing customer-safe report/issued-review model
+for side-by-side inspection comparison. Validate the full authorized history before
+selecting exact report versions. Order by visit date; equal dates retain selection
+order with no recurrence/chronology inference. Unique checklist labels support only
+label/result comparison because published item IDs are unavailable. Preserve exact
+source positions, observations and recommendations; keep ambiguous entries separate.
+Use new optional synthetic visits rather than editing prior published evidence.
+All authorization/financial/P1/recovery/release boundaries remain unchanged.
+
 ## 2026-10-28 · evidence-only Property Attention Center
 
 Reuse published inspection/CRM/report projections and existing issued-version links.

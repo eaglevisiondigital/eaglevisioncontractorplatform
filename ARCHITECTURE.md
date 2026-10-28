@@ -1,5 +1,16 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Published inspection comparison · October28
+
+The local inspection-comparison read model composes the existing safe published
+projection and full-history Attention Center identity grouping. It selects exact
+report ID/version pairs, orders by inspection date and projects minimal source/
+issued-scope references. No parallel inspection/property store or connected route.
+Checklist labels/results are aligned only as exact unique labels; original report
+position is retained because stable checklist IDs are not in published snapshots.
+Same-date versions never establish separate visit chronology. Existing history,
+attention and issued review navigation is reused. See docs/INSPECTION_COMPARISON.md.
+
 ## Property attention derivation · October28
 
 An immutable read model in src/domain/property/attention.ts consumes the existing

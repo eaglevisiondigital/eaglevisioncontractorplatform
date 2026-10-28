@@ -1,5 +1,17 @@
 # Production Release 1.0 acceptance checklist
 
+## October28: side-by-side inspection comparison · local only
+
+The existing synthetic property portal now compares two exact published inspections,
+including source/version/frequency, checklist label/results, identifier-based findings,
+separate observation/recommendation differences and exact issued repair links.
+History/attention navigation and desktop/tablet/mobile evidence remain integrated.
+See [INSPECTION_COMPARISON.md](INSPECTION_COMPARISON.md) and validation JSON for98
+focused application/33 browser passes and checklist identity/acceptance limitations.
+All13 historical SQL/pending customer/frozen P1/connected/financial/media/provider/
+Netlify/recovery gates unchanged. No hosted or physical-device acceptance PASS.
+Release1.0 NOT READY / NOT AUTHORIZED; draft PR#1 unmerged.
+
 ## October28: Property Attention Center · local only
 
 Functioning Attention center in /preview/property-portal derives newly reported

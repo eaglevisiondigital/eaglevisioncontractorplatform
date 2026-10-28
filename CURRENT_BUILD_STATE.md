@@ -1,5 +1,21 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: side-by-side inspection comparison · October28 · local synthetic only
+
+[INSPECTION_COMPARISON.md](docs/INSPECTION_COMPARISON.md) records the functioning
+Compare inspections view at /preview/property-portal. Exact published versions,
+inspection dates/frequency, checklist label/result differences, matched/unmatched
+findings and separate severity/observation/recommendation differences now appear
+side by side, with exact report/issued repair navigation. History/Attention Center
+preselect sources; conservative whole-history identity rules and evidence limits
+remain. New optional synthetic visits preserve all previously published snapshots.
+98 focused application/33 browser cases pass; prior foundation CI40754490668 is
+successful and was not restarted. See validation JSON for limits and checks.
+All13 SQL/pending customer/frozen P1/recovery/Netlify untouched; no hosted action,
+credential/session, financial/media/provider execution or activation. Authenticated
+physical pairing/recovery remain incomplete, separate gates. Release1.0 NOT READY /
+NOT AUTHORIZED; draft PR#1 unmerged.
+
 ## Latest: Property Attention Center · October28 · local synthetic only
 
 [PROPERTY_ATTENTION_CENTER.md](docs/PROPERTY_ATTENTION_CENTER.md) records the functioning
