@@ -1,5 +1,14 @@
 # Engineering instructions
 
+Property Attention Center continuation: read docs/PROPERTY_ATTENTION_CENTER.md.
+The synthetic property portal derives attention only from exact customer/property
+published reports and allowlisted issued scopes. No fuzzy text grouping or inferred
+repair/completion/payment. Repeated UUID finding IDs with exact category/location
+show identifier-based recurrence with continuity uncertainty; generic/conflicting IDs
+stay separate. Same-date report versions never inflate inspection recurrence.
+Preserve report IDs/versions, all13 SQL, pending customer migration, frozen P1 and
+all connected/financial/media/recovery gates. No physical-device PASS is implied.
+
 October28 customer property journey: read docs/PROPERTY_PORTAL_EXPERIENCE.md. The
 existing synthetic property preview now composes customer-scoped CRM locations,
 weekly/monthly reports and the shared issued-review/preference UI. No duplicate

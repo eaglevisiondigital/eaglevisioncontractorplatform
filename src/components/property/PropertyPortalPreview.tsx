@@ -3,6 +3,7 @@ import { sampleCompanies, type CompanyProfile } from '../../domain/platform';
 import { CustomerPortalPreviewModel } from '../../lib/customer-preview';
 import { PropertyReportHistory } from './PropertyReportHistory';
 import { CustomerEstimateReview } from './CustomerEstimateReview';
+import { PropertyAttentionCenter } from './PropertyAttentionCenter';
 import { useResource } from '../forms-state';
 import { PlatformBrand } from '../PlatformBrand';
 
@@ -66,7 +67,9 @@ function PropertyExperience({ company }: { company: CompanyProfile }) {
   const [busy, setBusy] = useState(false);
   const [unavailable, setUnavailable] = useState(false);
   const [message, setMessage] = useState('');
-  const [tab, setTab] = useState<'reports' | 'estimates'>('reports');
+  const [tab, setTab] = useState<'reports' | 'estimates' | 'attention'>(
+    'reports',
+  );
   const [reportId, setReportId] = useState<string | null>(null);
   const [versionId, setVersionId] = useState<string | null>(null);
   const data =
@@ -199,6 +202,17 @@ function PropertyExperience({ company }: { company: CompanyProfile }) {
           Prepare synthetic review example
         </button>
         <button
+          disabled={busy || !data.exampleAvailable || !data.history.length}
+          onClick={() =>
+            void run(async () => {
+              model.prepareAttentionExamples();
+              setTab('attention');
+            }, 'Synthetic attention evidence prepared from published inspections.')
+          }
+        >
+          Load synthetic attention examples
+        </button>
+        <button
           disabled={busy}
           className="secondary"
           onClick={() => {
@@ -212,6 +226,16 @@ function PropertyExperience({ company }: { company: CompanyProfile }) {
         </button>
       </details>
       <nav className="p3-tabs" aria-label="Customer property views">
+        <button
+          aria-pressed={tab === 'attention'}
+          className={tab === 'attention' ? 'active' : 'secondary'}
+          onClick={() => {
+            setTab('attention');
+            setMessage('');
+          }}
+        >
+          Attention center
+        </button>
         <button
           aria-pressed={tab === 'reports'}
           className={tab === 'reports' ? 'active' : 'secondary'}
@@ -233,7 +257,22 @@ function PropertyExperience({ company }: { company: CompanyProfile }) {
           Estimates & repairs
         </button>
       </nav>
-      {tab === 'reports' ? (
+      {tab === 'attention' ? (
+        <PropertyAttentionCenter
+          key={data.context.location_id}
+          attention={model.attention()}
+          onReport={(id) => {
+            setReportId(id);
+            setTab('reports');
+            setMessage('Exact source inspection selected.');
+          }}
+          onReview={(id) => {
+            setVersionId(id);
+            setTab('estimates');
+            setMessage('Linked issued repair scope selected.');
+          }}
+        />
+      ) : tab === 'reports' ? (
         <>
           {reportId && (
             <button className="secondary" onClick={() => setReportId(null)}>

@@ -1503,6 +1503,41 @@ fieldset legend {
 .customer-portal .preview-controls button {
   margin: 6px 8px 6px 0;
 }
+.attention-summary {
+  margin: 20px 0;
+}
+.attention-labels {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.attention-card h4 {
+  margin: 16px 0 8px;
+}
+.attention-evidence,
+.attention-uncertainty {
+  padding: 4px 16px 12px;
+  margin: 16px 0;
+  border-radius: 8px;
+  background: #f2f7f5;
+}
+.attention-uncertainty {
+  background: #faf5e9;
+  color: #51421f;
+}
+.attention-source {
+  padding: 4px 16px 16px;
+  margin: 16px 0;
+  border-left: 3px solid var(--company-color);
+}
+.attention-severity--urgent {
+  color: #832d28;
+  background: #fcebe9;
+}
+.attention-severity--moderate {
+  color: #634c1e;
+  background: #faf0d7;
+}
 @media (max-width: 520px) {
   .portal-summary {
     grid-template-columns: minmax(0, 1fr);

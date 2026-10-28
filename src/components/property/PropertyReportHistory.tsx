@@ -79,7 +79,12 @@ export function PropertyReportHistory({
       </p>
       {!visible.length && <p>No published reports for this selection.</p>}
       {visible.map((r) => (
-        <article className="finding-card" key={r.id}>
+        <article
+          className="finding-card"
+          key={r.id}
+          data-report-id={r.id}
+          data-report-version={r.version}
+        >
           <span className="badge">
             {r.snapshot.visited_on} · {r.snapshot.phase} · Published report v
             {r.version}

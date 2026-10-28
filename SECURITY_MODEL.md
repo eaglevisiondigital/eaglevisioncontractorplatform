@@ -1,5 +1,19 @@
 # Security model · Phase 2
 
+## Property attention evidence boundary · October28
+
+The Attention Center is a pure derived view after exact company/customer/property
+published-report projection. Foreign bindings, duplicate source IDs, contaminated
+findings and forged/private estimate projections fail closed. Scope links require
+both source report and finding equality; only minimal issued-version references
+enter the attention payload, never financial amounts or private data. Similar
+wording confers no identity. Conflicting/generic identifiers remain separate;
+recurrence counts distinct dates rather than published versions. Report differences
+are observations, never repair proof. Repair status remains undetermined, including
+omission from later reports. No commands or connected access are introduced.
+See docs/PROPERTY_ATTENTION_CENTER.md. Existing server gates and P1/recovery boundaries
+remain intact; this local read model cannot establish authorization by itself.
+
 ## Local customer property presentation · October28
 
 Property discovery is synthetic-only and filters CRM contexts by the fixed sample

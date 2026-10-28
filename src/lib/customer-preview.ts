@@ -8,6 +8,7 @@ import {
 } from '../domain/customer/review';
 import type { EstimateVersion } from '../domain/estimating/types';
 import { projectPublishedHistory } from '../domain/property/report-page';
+import { buildPropertyAttention } from '../domain/property/attention';
 /** UI laboratory only: reuses existing synthetic CRM/property/estimate and decision engines. No Supabase import. */
 export class CustomerPortalPreviewModel {
   private active = false;
@@ -247,6 +248,111 @@ export class CustomerPortalPreviewModel {
       });
       this.engines.set(version.id, engine);
     }
+  }
+  /** Additional explicit synthetic observations; existing published examples are never rewritten. */
+  prepareAttentionExamples() {
+    const c = this.context();
+    if (c.location_id !== this.primaryLocation)
+      throw Error('Select the original sample property');
+    const state = this.repo.read(c.organization_id);
+    const name = 'Synthetic attention evidence';
+    if (
+      state.plans.some(
+        (p) => p.name === name && p.location_id === c.location_id,
+      )
+    )
+      return;
+    const context = state.contexts.find(
+      (x) => x.customer_id === c.customer_id && x.location_id === c.location_id,
+    )!;
+    const plan = this.repo.createPlan(c.organization_id, context, name);
+    const seal = crypto.randomUUID(),
+      maintenance = crypto.randomUUID(),
+      missing = crypto.randomUUID();
+    for (const date of ['2026-11-23', '2026-11-30']) {
+      const last = date === '2026-11-30';
+      let visit = this.repo.addVisit(c.organization_id, plan.id, date);
+      this.repo.saveVisit(c.organization_id, visit, {
+        summary: 'Synthetic attention check-in · ' + date,
+        internal_notes:
+          'INTERNAL supplier and crew rates must not enter attention',
+        checklist: [
+          {
+            id: 'exterior',
+            label: 'Exterior condition and safety',
+            required: true,
+            completed: true,
+          },
+        ],
+        findings: [
+          {
+            id: seal,
+            category: 'Damage',
+            location: 'East window seal',
+            severity: last ? 'urgent' : 'moderate',
+            description: last
+              ? 'Water marks documented below the same east window seal.'
+              : 'A gap was documented at the east window seal.',
+            recommendation:
+              'Have the contractor assess the seal and surrounding surface.',
+            customer_visible: true,
+          },
+          {
+            id: maintenance,
+            category: 'Maintenance',
+            location: 'Garden drainage',
+            severity: 'low',
+            description: 'Leaves documented in the garden drain.',
+            recommendation: 'Schedule routine drain clearing.',
+            customer_visible: true,
+          },
+          ...(last
+            ? [
+                {
+                  id: crypto.randomUUID(),
+                  category: 'Damage',
+                  location: 'Side gate hinge',
+                  severity: 'moderate' as const,
+                  description: 'A loose side gate hinge was documented.',
+                  recommendation: 'Request a hinge assessment.',
+                  customer_visible: true,
+                },
+              ]
+            : [
+                {
+                  id: missing,
+                  category: 'Damage',
+                  location: 'West path',
+                  severity: 'moderate' as const,
+                  description: 'An uneven paving edge was documented.',
+                  recommendation: 'Have the contractor assess the paving edge.',
+                  customer_visible: true,
+                },
+              ]),
+          {
+            id: crypto.randomUUID(),
+            category: 'Office',
+            location: 'Internal',
+            severity: 'low',
+            description: 'INTERNAL payroll and margin',
+            recommendation: 'Private review',
+            customer_visible: false,
+          },
+        ],
+      });
+      visit = this.repo
+        .read(c.organization_id)
+        .visits.find((v) => v.id === visit.id)!;
+      this.repo.submit(c.organization_id, visit);
+      visit = this.repo
+        .read(c.organization_id)
+        .visits.find((v) => v.id === visit.id)!;
+      this.repo.publish(c.organization_id, visit);
+    }
+  }
+  attention() {
+    const data = this.read();
+    return buildPropertyAttention(data.context, data.reports, data.reviews);
   }
   read() {
     const c = this.context(),

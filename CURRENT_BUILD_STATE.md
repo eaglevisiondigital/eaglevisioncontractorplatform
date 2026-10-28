@@ -1,5 +1,26 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: Property Attention Center · October28 · local synthetic only
+
+[PROPERTY_ATTENTION_CENTER.md](docs/PROPERTY_ATTENTION_CENTER.md) records the functioning
+Attention center view at /preview/property-portal. Customer-safe published evidence
+now distinguishes first appearance in available history, repeated identifiers,
+reported severity/wording/recommendation changes, repeated recommendations,
+exact linked issued repair scopes and uncertain/omitted observations. Each item
+retains source report ID, version, date and finding. Similar descriptions never
+join unrelated IDs; reused identifiers/areas and contradictory same-date evidence
+remain uncertain. Repair status is always undetermined from inspections, never
+inferred from omission or lower severity. No new schema or connected data path.
+
+Two additional explicit synthetic inspections reuse existing plan/visit/publication
+workflows and preserve the original three reports and immutable estimate baseline.
+Existing property/report/review navigation and contractor/Propel branding remain.
+Focused results are in PROPERTY_ATTENTION_CENTER_VALIDATION.json. No credentials,
+Auth sessions, hosted/Netlify/provider action or activation. P1/four artifacts/all13
+migrations/pending customer14 unchanged. Both Mac software setups/connectivity remain
+owner-reported complete; authenticated pairing and independent recovery incomplete.
+Release1.0 NOT READY / NOT AUTHORIZED; draft PR#1 unmerged.
+
 ## Latest: integrated synthetic customer property journey · October28
 
 [PROPERTY_PORTAL_EXPERIENCE.md](docs/PROPERTY_PORTAL_EXPERIENCE.md) records the functioning

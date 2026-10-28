@@ -1,5 +1,19 @@
 # Engineering decisions
 
+## 2026-10-28 · evidence-only Property Attention Center
+
+Reuse published inspection/CRM/report projections and existing issued-version links.
+No parallel issue/property database or invented completion state. Existing finding
+identifiers do not guarantee physical issue continuity: group only UUID IDs with
+exact category/location, label identifier-based recurrence and uncertainty, and
+leave text-only/generic/conflicting matches separate. Count dates conservatively;
+retain report versions without interpreting multiple versions as multiple visits.
+Distinguish changes in severity, observation wording and recommendations. Missing
+or less severe later observations never resolve a concern. Keep exact evidence
+navigation, page-local synthetic previews, all financial/connected off gates and
+unchanged recovery/P1/migration boundaries. Next independent work can compare two
+published inspections side by side without introducing issue-state authority.
+
 ## 2026-10-28 · advance local property experience independently of recovery
 
 Use the existing property preview as the integrated customer journey, extending

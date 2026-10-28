@@ -1,5 +1,21 @@
 # Production Release 1.0 acceptance checklist
 
+## October28: Property Attention Center · local only
+
+Functioning Attention center in /preview/property-portal derives newly reported
+concerns, uncertain identifier-based recurrence, report changes, repeated maintenance
+recommendations and exact issued repair links from existing published sources.
+All source IDs/versions are retained. Similar wording never groups distinct IDs;
+absence never proves repair and repair status is undetermined. Customer/contractor/
+property boundaries and plain-text safe projections have focused negative tests.
+See [PROPERTY_ATTENTION_CENTER.md](PROPERTY_ATTENTION_CENTER.md) and its validation JSON.
+
+No hosted customer/Auth/grant/mapping/lease, migration, financial/media/provider,
+recovery or Netlify activation. Existing13 SQL/pending customer migration/frozen P1
+are unchanged. Mac setup/connectivity evidence is preserved; pairing/independent
+recovery remain incomplete, separate acceptance gates. No physical-device or hosted
+acceptance PASS. Release1.0 NOT READY / NOT AUTHORIZED; PR#1 draft/unmerged.
+
 ## October28: integrated customer property experience · local only
 
 Functioning /preview/property-portal now demonstrates same-customer property

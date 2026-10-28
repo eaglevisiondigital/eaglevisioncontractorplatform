@@ -1,5 +1,17 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Property attention derivation · October28
+
+An immutable read model in src/domain/property/attention.ts consumes the existing
+published-report allowlist plus exact issued customer review projections. It does
+not own properties, inspections, repair statuses or authorization. Repeated UUID
+finding ID + exact category/location is only identifier-based continuity, explicitly
+uncertain; text similarity never groups. Count distinct inspection dates, retaining
+every source report/version. Same-date contradictions block adjacent comparisons.
+CustomerPortalPreviewModel composes it only on the explicit synthetic property route.
+The new view navigates exact source reports and scoped issued versions. No migrations,
+connected endpoint/adapter, grant or provider transport. See docs/PROPERTY_ATTENTION_CENTER.md.
+
 ## Customer property experience composition · October28
 
 The existing /preview/property-portal composes CustomerPortalPreviewModel with CRM
