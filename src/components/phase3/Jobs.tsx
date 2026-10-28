@@ -23,15 +23,17 @@ export function Jobs({
   canManage,
   operations,
   admin,
+  initialJobId = '',
 }: {
   repo: Phase3Repository;
   operations: Operations;
   company: CompanyProfile;
   canManage: boolean;
   admin: boolean;
+  initialJobId?: string;
 }) {
   const task = useTask();
-  const [jobId, setJobId] = useState('');
+  const [jobId, setJobId] = useState(initialJobId);
   const data = useResource(
     useCallback(
       async () =>
@@ -41,7 +43,9 @@ export function Jobs({
       [repo, company.id, canManage],
     ),
   );
-  const job = data.data?.jobs.find((j) => j.id === jobId) ?? data.data?.jobs[0];
+  const job = jobId
+    ? data.data?.jobs.find((j) => j.id === jobId)
+    : data.data?.jobs[0];
   return (
     <article className="p3-workspace">
       <div className="section-title">

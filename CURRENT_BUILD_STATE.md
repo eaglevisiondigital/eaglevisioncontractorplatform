@@ -1,5 +1,20 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: contractor Maintenance & Follow-Up Center · October28 · local only
+
+[MAINTENANCE_FOLLOW_UP_CENTER.md](docs/MAINTENANCE_FOLLOW_UP_CENTER.md) records the
+working internal queue in /preview > Property operations > Maintenance & follow-up.
+Exact published finding/CRM context, conservative recurrence, manual priority/active
+staff responsibility, append-only private notes, follow-up dates and pending/
+scheduled/reviewed states reuse current sources. Explicit CAS-protected scheduling
+creates one ordinary inspection draft; exact report and existing job/issued-baseline
+navigation reuse existing views. No inferred repairs, job/debt creation or dispatch.
+65 focused application/72 unique browser cases pass; final six maintenance delta
+cases also pass without double counting. Locked customer portal/artwork and129
+protected paths unchanged. All13 SQL/pending customer/frozen P1/approval and closed
+connected/financial/provider/recovery/Netlify gates persist. No hosted/Auth/credential/
+production action, deployment or merge. Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Latest: customer inspection history search · October28 · local synthetic only
 
 [INSPECTION_HISTORY_SEARCH.md](docs/INSPECTION_HISTORY_SEARCH.md) records functioning

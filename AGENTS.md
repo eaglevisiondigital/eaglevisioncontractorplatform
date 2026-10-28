@@ -1,5 +1,15 @@
 # Engineering instructions
 
+Maintenance continuation: read docs/MAINTENANCE_FOLLOW_UP_CENTER.md.
+/preview > Property operations > Maintenance & follow-up is session-only synthetic
+triage keyed to exact published report/version/finding and CRM property. Existing
+memberships, plans/visits, conservative attention and Jobs/Estimates are reused.
+Manual review/priority/responsibility/notes never imply repair or financial authority.
+CAS/current membership and source/plan validation precede local writes; one draft
+per record, no automatic retry/dispatch. Notes stay outside customer projections.
+No general operational task store or hosted persistence is implemented. Preserve
+locked customer portal/all13 SQL/pending customer/frozen P1/recovery/Netlify gates.
+
 Inspection history search continuation: read docs/INSPECTION_HISTORY_SEARCH.md.
 Approved local portal searches exact property published projections only. Text is
 literal; category/severity/location/recommendation filters must match one finding.

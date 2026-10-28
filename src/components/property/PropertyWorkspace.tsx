@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import type { Operations } from '../../lib/operations';
 import type { CompanyProfile } from '../../domain/platform';
 import {
@@ -25,6 +25,8 @@ import { useResource, useTask } from '../forms-state';
 import { ResourceStatus } from '../forms';
 import { Field, Money, Quantity } from '../phase3/fields';
 import { UnbilledReview } from './UnbilledReview';
+import { MaintenanceCenter } from './MaintenanceCenter';
+import type { MaintenanceSource } from '../../domain/property/maintenance';
 export function PropertyWorkspace({
   operations,
   company,
@@ -64,6 +66,7 @@ export function PropertyWorkspace({
       </p>
       {section === 'Property operations' ? (
         <Inspections
+          company={company}
           repo={repo}
           org={company.id}
           state={data.data}
@@ -88,11 +91,13 @@ export function PropertyWorkspace({
   );
 }
 function Inspections({
+  company,
   repo,
   org,
   state,
   refresh,
 }: {
+  company: CompanyProfile;
   repo: PropertyRepository;
   org: string;
   state: PropertyState;
@@ -109,6 +114,13 @@ function Inspections({
     v =
       state.visits.find((v) => v.id === visitId && v.plan_id === plan.id) ??
       state.visits.find((v) => v.plan_id === plan.id);
+  const [source, setSource] = useState<MaintenanceSource | null>(null);
+  useEffect(() => {
+    if (source && tab === 'Inspections')
+      document
+        .getElementById('maintenance-source-' + source.report_id)
+        ?.focus();
+  }, [source, tab, state.reports]);
   const [visitPhase, setVisitPhase] = useState<Visit['phase']>('during');
   const [contextIndex, setContextIndex] = useState(0),
     [newName, setNewName] = useState('Initial property survey');
@@ -124,7 +136,12 @@ function Inspections({
         role="group"
         aria-label="Property workspace views"
       >
-        {['Inspections', 'Media & galleries', 'Unbilled materials'].map((t) => (
+        {[
+          'Inspections',
+          'Maintenance & follow-up',
+          'Media & galleries',
+          'Unbilled materials',
+        ].map((t) => (
           <button
             key={t}
             className={tab === t ? '' : 'secondary'}
@@ -134,7 +151,46 @@ function Inspections({
           </button>
         ))}
       </div>
-      {tab === 'Unbilled materials' ? (
+      {tab === 'Maintenance & follow-up' ? (
+        <MaintenanceCenter
+          key={org}
+          repo={repo}
+          company={company}
+          onSource={(ref) => {
+            const current = repo.read(org),
+              report = current.reports.find(
+                (r) =>
+                  r.id === ref.report_id &&
+                  r.version === ref.report_version &&
+                  r.organization_id === org &&
+                  r.customer_id === ref.customer_id &&
+                  r.location_id === ref.location_id &&
+                  r.findings.some((f) => f.id === ref.finding_id),
+              );
+            const visit =
+              report && current.visits.find((v) => v.id === report.visit_id);
+            const plan =
+              visit && current.plans.find((p) => p.id === visit.plan_id);
+            if (!plan) return;
+            setPlan(plan);
+            setVisitId(visit!.id);
+            setSource(ref);
+            setTab('Inspections');
+            refresh();
+          }}
+          onVisit={(id) => {
+            const current = repo.read(org),
+              visit = current.visits.find((v) => v.id === id),
+              plan = visit && current.plans.find((p) => p.id === visit.plan_id);
+            if (!plan) return;
+            setPlan(plan);
+            setVisitId(id);
+            setSource(null);
+            setTab('Inspections');
+            refresh();
+          }}
+        />
+      ) : tab === 'Unbilled materials' ? (
         <UnbilledReview repo={repo} org={org} />
       ) : tab === 'Media & galleries' ? (
         <MediaPanel />
@@ -383,14 +439,39 @@ function Inspections({
                 nothing.
               </p>
               {state.reports.map((r) => (
-                <details key={r.id}>
+                <details
+                  key={r.id}
+                  id={'maintenance-source-' + r.id}
+                  tabIndex={-1}
+                  data-report-id={r.id}
+                  data-report-version={r.version}
+                  open={source?.report_id === r.id ? true : undefined}
+                >
                   <summary>
                     Report v{r.version} ·{' '}
                     {new Date(r.published_at).toLocaleDateString()}
                   </summary>
+                  <p>
+                    Inspection {r.visited_on} · Report {r.id} · Published
+                    version {r.version}
+                  </p>
+                  {source?.report_id === r.id && (
+                    <p role="status">
+                      Exact source finding selected: {source.finding_id}.
+                      Published evidence is immutable.
+                    </p>
+                  )}
                   <p>{r.summary}</p>
                   {r.findings.map((f) => (
-                    <p key={f.id}>
+                    <p
+                      key={f.id}
+                      data-finding-id={f.id}
+                      className={
+                        source?.report_id === r.id && source.finding_id === f.id
+                          ? 'maintenance-source-finding'
+                          : undefined
+                      }
+                    >
                       {f.location}: {f.description}
                     </p>
                   ))}

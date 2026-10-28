@@ -1,0 +1,53 @@
+.property-workspace .maintenance-filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: 14px;
+  align-items: end;
+  margin: 20px 0;
+}
+.property-workspace .maintenance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+  gap: 18px;
+}
+.property-workspace .maintenance-card,
+.property-workspace .maintenance-editor {
+  border: 1px solid var(--border, #d5ddd7);
+  border-radius: 12px;
+  padding: 22px;
+  background: #fff;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.property-workspace .maintenance-card {
+  border-top: 3px solid var(--company-color, #247364);
+}
+.property-workspace .maintenance-editor {
+  margin-top: 24px;
+}
+.property-workspace .maintenance-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.property-workspace .maintenance-demo {
+  margin-top: 24px;
+}
+.property-workspace .maintenance-center fieldset {
+  min-width: 0;
+}
+.property-workspace .maintenance-center select,
+.property-workspace .maintenance-center input,
+.property-workspace .maintenance-center textarea {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.property-workspace .maintenance-source-finding {
+  border-left: 3px solid var(--company-color);
+  padding: 8px 12px;
+  font-weight: 600;
+}
+.property-workspace .maintenance-card {
+  margin: 0;
+}

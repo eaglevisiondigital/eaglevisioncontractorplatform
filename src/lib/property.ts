@@ -24,6 +24,19 @@ import {
   prepareMaterialDecision,
   type MaterialDecision,
 } from '../domain/property/unbilled';
+import { buildPropertyAttention } from '../domain/property/attention';
+import { projectPublishedHistory } from '../domain/property/report-page';
+import {
+  blankMaintenance,
+  maintenanceKey,
+  maintenanceStatus,
+  editMaintenance,
+  maintenanceDate,
+  type MaintenanceRecord,
+  type MaintenanceSource,
+  type MaintenanceEdit,
+  type MaintenanceItem,
+} from '../domain/property/maintenance';
 const clone = <T>(x: T): T => structuredClone(x);
 export interface PropertyState {
   contexts: {
@@ -48,6 +61,7 @@ export class PropertyRepository {
   private initializing = new Map<string, Promise<void>>();
   private financial = new Map<string, ReleasePreview>();
   private reviewing = new Set<string>();
+  private maintenanceRecords = new Map<string, MaintenanceRecord>();
   constructor(
     readonly operations: Operations,
     readonly estimates: Phase3Repository = phase3Repository(operations),
@@ -415,6 +429,259 @@ export class PropertyRepository {
       lines: [...b.version.payload.lines, line],
     });
     return clone(saved);
+  }
+  private maintenanceAuthority(org: string, actor: string) {
+    this.state(org); // Reject connected use before any membership adapter can run.
+    const members = this.operations.syntheticMemberships(org);
+    const member = members.find(
+      (m) => m.organization_id === org && m.user_id === actor && m.active,
+    );
+    if (
+      !member ||
+      !(
+        ['owner', 'admin'].includes(member.role) ||
+        (member.role === 'staff' &&
+          ['office_manager', 'estimator'].includes(member.staff_type))
+      )
+    )
+      throw Error('Active contractor maintenance reviewer required.');
+    return {
+      members: members.filter(
+        (m) =>
+          m.organization_id === org &&
+          m.active &&
+          ['owner', 'admin', 'staff'].includes(m.role),
+      ),
+      admin: ['owner', 'admin'].includes(member.role),
+    };
+  }
+  private maintenanceSource(org: string, source: MaintenanceSource) {
+    const s = this.state(org);
+    if (
+      source.organization_id !== org ||
+      !Number.isSafeInteger(source.report_version) ||
+      source.report_version < 1
+    )
+      throw Error('Published maintenance source unavailable.');
+    const report = s.reports.find(
+      (r) =>
+        r.id === source.report_id &&
+        r.version === source.report_version &&
+        r.organization_id === org &&
+        r.customer_id === source.customer_id &&
+        r.location_id === source.location_id,
+    );
+    const visit =
+      report &&
+      s.visits.find(
+        (v) => v.id === report.visit_id && v.organization_id === org,
+      );
+    const plan =
+      visit &&
+      s.plans.find(
+        (p) =>
+          p.id === visit.plan_id &&
+          p.organization_id === org &&
+          p.customer_id === source.customer_id &&
+          p.location_id === source.location_id,
+      );
+    const context =
+      plan &&
+      s.contexts.find(
+        (c) =>
+          c.customer_id === plan.customer_id &&
+          c.location_id === plan.location_id &&
+          c.job_id === plan.job_id,
+      );
+    const finding = report?.findings.find((f) => f.id === source.finding_id);
+    if (!report || !visit || !plan || !context || !finding)
+      throw Error('Published maintenance source unavailable.');
+    projectPublishedHistory([report], source);
+    return { report, visit, plan, context, finding };
+  }
+  maintenance(org: string, actor: string) {
+    const authority = this.maintenanceAuthority(org, actor),
+      s = this.state(org);
+    const items: MaintenanceItem[] = [];
+    const properties = [
+      ...new Map(s.contexts.map((c) => [c.location_id, c])).values(),
+    ];
+    for (const property of properties) {
+      const reports = s.reports.filter(
+        (r) => r.location_id === property.location_id,
+      );
+      const attention = buildPropertyAttention(
+        {
+          organization_id: org,
+          customer_id: property.customer_id,
+          location_id: property.location_id,
+          company_name: '',
+          primary_color: '',
+          property_label: property.location_label,
+          reports: true,
+          version_ids: [],
+        },
+        reports,
+      );
+      for (const report of reports)
+        for (const finding of report.findings) {
+          const source: MaintenanceSource = {
+            organization_id: org,
+            customer_id: property.customer_id,
+            location_id: property.location_id,
+            report_id: report.id,
+            report_version: report.version,
+            finding_id: finding.id,
+          };
+          const bound = this.maintenanceSource(org, source),
+            key = maintenanceKey(source);
+          const record = clone(
+            this.maintenanceRecords.get(key) ?? blankMaintenance(),
+          );
+          const evidence = attention.items.find((a) =>
+            a.observations.some(
+              (o) =>
+                o.report_id === report.id &&
+                o.report_version === report.version &&
+                o.finding.id === finding.id,
+            ),
+          );
+          if (!evidence) throw Error('Maintenance evidence unavailable.');
+          const scheduled = record.scheduled_visit_id
+            ? s.visits.find(
+                (v) =>
+                  v.id === record.scheduled_visit_id &&
+                  s.plans.some(
+                    (p) =>
+                      p.id === v.plan_id &&
+                      p.customer_id === property.customer_id &&
+                      p.location_id === property.location_id,
+                  ),
+              )
+            : null;
+          if (record.scheduled_visit_id && !scheduled)
+            throw Error('Follow-up draft binding unavailable.');
+          items.push({
+            key,
+            source,
+            property_label: bound.context.location_label,
+            customer_name: bound.context.customer_name,
+            report: clone(report),
+            finding: clone(finding),
+            plan_id: bound.plan.id,
+            job_id: bound.plan.job_id,
+            record,
+            status: maintenanceStatus(record),
+            recurring: evidence.recurring,
+            inspection_dates: evidence.inspection_dates,
+            uncertainties: evidence.uncertainties,
+            repair_status: 'undetermined',
+            scheduled_on: scheduled?.visited_on ?? null,
+          });
+        }
+    }
+    return {
+      items,
+      members: authority.members.map((m) => ({
+        user_id: m.user_id,
+        label: m.role + ' · ' + m.staff_type,
+        active: m.active,
+      })),
+      admin: authority.admin,
+    };
+  }
+  async saveMaintenance(
+    org: string,
+    actor: string,
+    source: MaintenanceSource,
+    revision: number,
+    input: MaintenanceEdit,
+  ) {
+    const authority = this.maintenanceAuthority(org, actor);
+    this.maintenanceSource(org, source);
+    const key = maintenanceKey(source),
+      current = this.maintenanceRecords.get(key) ?? blankMaintenance();
+    const next = editMaintenance(
+      current,
+      revision,
+      input,
+      actor,
+      authority.members.map((m) => m.user_id),
+    );
+    this.maintenanceRecords.set(key, next);
+    return clone(next);
+  }
+  async scheduleMaintenance(
+    org: string,
+    actor: string,
+    source: MaintenanceSource,
+    revision: number,
+    planRef: { id: string; revision: number },
+    date: string,
+  ) {
+    this.maintenanceAuthority(org, actor);
+    this.maintenanceSource(org, source);
+    const key = maintenanceKey(source),
+      current = this.maintenanceRecords.get(key) ?? blankMaintenance();
+    if (
+      !Number.isSafeInteger(revision) ||
+      revision < 0 ||
+      current.revision !== revision ||
+      current.revision >= Number.MAX_SAFE_INTEGER
+    )
+      throw Error('Maintenance item changed. Reload before scheduling.');
+    if (current.scheduled_visit_id)
+      throw Error(
+        'A follow-up draft already exists. Open it in the inspection workflow.',
+      );
+    if (current.review === 'reviewed')
+      throw Error('Reopen staff review before preparing a follow-up draft.');
+    const plan = this.state(org).plans.find(
+      (p) =>
+        p.id === planRef.id &&
+        p.organization_id === org &&
+        p.customer_id === source.customer_id &&
+        p.location_id === source.location_id &&
+        p.revision === planRef.revision,
+    );
+    if (!plan)
+      throw Error('Inspection plan changed or belongs to another property.');
+    maintenanceDate(date);
+    const visit = this.addVisit(org, plan.id, date);
+    this.maintenanceRecords.set(key, {
+      ...clone(current),
+      revision: current.revision + 1,
+      scheduled_visit_id: visit.id,
+    });
+    return clone(visit);
+  }
+  async maintenanceWork(org: string, actor: string, source: MaintenanceSource) {
+    this.maintenanceAuthority(org, actor);
+    const bound = this.maintenanceSource(org, source);
+    if (!bound.plan.job_id)
+      throw Error('No job explicitly linked to this inspection plan.');
+    const job = (await this.estimates.jobs(org)).find(
+      (j) => j.id === bound.plan.job_id && j.organization_id === org,
+    );
+    if (!job) throw Error('Linked job unavailable.');
+    const bundle = await this.estimates.sourceEstimate(
+      org,
+      job.baseline.issued_version_id,
+    );
+    const freshAuthority = this.maintenanceAuthority(org, actor);
+    this.maintenanceSource(org, source);
+    if (
+      bundle.estimate.organization_id !== org ||
+      bundle.version.status !== 'issued' ||
+      bundle.version.id !== job.baseline.issued_version_id ||
+      bundle.version.estimate_id !== bundle.estimate.id ||
+      bundle.version.organization_id !== org ||
+      bundle.version.payload.customer_id !== source.customer_id ||
+      (bundle.version.payload.location_id &&
+        bundle.version.payload.location_id !== source.location_id)
+    )
+      throw Error('Linked estimate belongs to another property.');
+    return { job_id: job.id, bundle, admin: freshAuthority.admin };
   }
   saveQuotes(org: string, quotes: SupplierQuote[]) {
     const s = this.state(org);

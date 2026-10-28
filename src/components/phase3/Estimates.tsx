@@ -26,15 +26,19 @@ export function Estimates({
   repo,
   company,
   canIssue,
+  initialBundle,
 }: {
   repo: Phase3Repository;
   company: CompanyProfile;
   canIssue: boolean;
+  initialBundle?: EstimateBundle;
 }) {
   const [query, setQuery] = useState(''),
     [status, setStatus] = useState('all'),
     [page, setPage] = useState(0),
-    [selected, setSelected] = useState<EstimateBundle>();
+    [selected, setSelected] = useState<EstimateBundle | undefined>(
+      initialBundle,
+    );
   const task = useTask();
   const data = useResource(
     useCallback(

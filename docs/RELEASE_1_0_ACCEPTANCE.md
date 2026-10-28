@@ -1,5 +1,16 @@
 # Production Release 1.0 acceptance checklist
 
+## October28: contractor maintenance review · local synthetic only
+
+A functioning Maintenance & Follow-Up Center now reuses existing CRM/inspection/staff/
+job/estimate sources in /preview.65 application/72 unique browser passes validate
+manual triage, CAS/duplicates, exact provenance, private-note exclusion, explicit
+follow-up drafts, current memberships and responsive accessibility. See
+MAINTENANCE_FOLLOW_UP_CENTER.md and its JSON. No operational persistence, dispatch,
+hosted role/session acceptance or repair proof follows. Locked customer portal,
+all13 SQL/pending customer/frozen P1 and recovery/provider/Netlify restrictions
+persist. Release1.0 remains NOT READY / NOT AUTHORIZED.
+
 ## October28: customer inspection history search · locally implemented
 
 Approved synthetic portal now searches/filter published evidence with exact report/

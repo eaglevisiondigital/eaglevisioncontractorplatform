@@ -1,5 +1,16 @@
 # Security model · Phase 2
 
+## Synthetic maintenance review boundary · October28
+
+Local reviewer commands require current active same-company owner/admin or office/
+estimator membership and exact report/version/finding/visit/plan/CRM binding. CAS and
+current plan/property/date guards precede synchronous writes; linked-work reads
+recheck rights after awaits. Notes/assignees/status remain outside PropertyState
+and customer projections. Review/scheduling/recurrence never establishes repair,
+customer authority or financial debt. Connected mode rejects before staff adapters;
+synthetic checks do not certify hosted Auth/MFA. Locked portal/SQL/P1/recovery gates
+remain unchanged. See docs/MAINTENANCE_FOLLOW_UP_CENTER.md.
+
 ## Customer inspection search boundary · October28
 
 Search projects authorized published sources before indexing allowed text in memory;

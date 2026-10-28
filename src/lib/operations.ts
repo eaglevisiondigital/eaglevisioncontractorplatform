@@ -585,9 +585,16 @@ export class Operations {
       }),
     );
   }
+  /** Current in-memory relationships only; never queries connected membership data. */
+  syntheticMemberships(org: string) {
+    if (!this.sample) throw Error('Synthetic memberships unavailable');
+    return structuredClone(
+      this.members.filter((m) => m.organization_id === org),
+    );
+  }
   async listMembers(org: string) {
     return this.sample
-      ? structuredClone(this.members.filter((m) => m.organization_id === org))
+      ? this.syntheticMemberships(org)
       : checked(
           await requireClient()
             .from('memberships')

@@ -1,5 +1,16 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Local contractor maintenance composition · October28
+
+PropertyWorkspace composes a derived maintenance queue from the same CRM locations,
+plans/visits and immutable published reports. A private PropertyRepository Map holds
+only revisioned internal coordination per exact report/version/finding/property;
+no property/inspection/task database is duplicated. Current synthetic memberships
+validate reviewers/responsibility synchronously. Existing attention rules supply
+recurrence limits; addVisit supplies explicit follow-up drafts. Existing Jobs and
+Estimates accept exact initial selections after bound issued-baseline reads. See
+docs/MAINTENANCE_FOLLOW_UP_CENTER.md. No connected route or hosted persistence.
+
 ## Customer history search composition · October28
 
 The approved synthetic portal opts its existing PropertyReportHistory into a pure

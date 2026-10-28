@@ -1,5 +1,16 @@
 # Engineering decisions
 
+## October28 · bounded contractor maintenance triage
+
+Reuse published report/attention identity, CRM locations, existing staff memberships,
+plan/visit scheduling and job/estimate views. Add only private session metadata per
+exact published finding; no new schema or general task service. Keep separate source
+records even with possible recurrence, manual priority/review and append-only notes.
+An explicit follow-up action prepares one normal inspection draft with blank findings;
+never infer repair, authorize work or dispatch. Existing job baseline links are
+labeled distinctly from finding-specific repair scopes. Customer design and all
+hosted/financial/recovery/Netlify gates remain closed. See maintenance validation.
+
 ## October28 · published inspection history search
 
 Extend existing approved synthetic report history with bounded literal text and
