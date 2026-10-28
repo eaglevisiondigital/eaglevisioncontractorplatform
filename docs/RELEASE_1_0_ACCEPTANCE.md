@@ -1,5 +1,16 @@
 # Production Release 1.0 acceptance checklist
 
+## October28: premium portal Phase B · locally implemented after owner approval
+
+Owner approved Phase A and synthetic portal replacement. /preview/property-portal
+now uses the approved presentation with only the transparent-logo correction;
+Phase A remains separately available. See PROPERTY_PORTAL_PHASE_B.md and validation
+JSON for56 application/66 browser passes, all three palettes and transparency/
+Phase A pixel-equality checks. Original PNG/global branding and business rules stay
+unchanged. This supersedes the historical visual approval hold below, not hosted
+access/release authority. All13 SQL/pending customer/frozen P1/recovery and financial/
+media/provider/Netlify gates persist. Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## October28: premium portal Phase A · visual review only
 
 A separately accessible local concept exists at /preview/property-portal-design,

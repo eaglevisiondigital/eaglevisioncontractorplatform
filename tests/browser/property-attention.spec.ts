@@ -1,3 +1,4 @@
+import { contractor, developerControls } from './helpers/property-portal';
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { mkdir } from 'node:fs/promises';
@@ -17,30 +18,29 @@ test('attention evidence remains conservative and navigates exact published repo
     name: 'Property attention center',
     exact: true,
   });
-  await expect(center).toContainText('No published inspections are available');
-  await page
-    .getByRole('button', { name: 'Load synthetic inspection history' })
-    .click();
-  await page
-    .getByRole('button', { name: 'Prepare synthetic review example' })
-    .click();
+  await developerControls(page);
   await page
     .getByRole('button', { name: 'Load synthetic attention examples' })
     .click();
   await expect(
     center.getByRole('group', { name: 'Attention summary' }),
-  ).toContainText('2 possible recurring concerns');
-  await expect(center.locator('article')).toHaveCount(7);
+  ).toContainText('3 possible recurring concerns');
+  await expect(center.locator('article')).toHaveCount(11);
   const filter = center.getByRole('combobox', { name: 'Attention view' });
   await filter.selectOption('new');
   await expect(center.locator('article')).toHaveCount(1);
-  await expect(center).toContainText('Side gate hinge');
+  await expect(center).toContainText('Comparison drain');
   await filter.selectOption('changed');
-  await expect(center.locator('article')).toHaveCount(1);
+  await expect(center.locator('article')).toHaveCount(2);
   await expect(center).toContainText('East window seal');
   await expect(center).toContainText('reported severity changed');
   await expect(center).toContainText('not independently confirmed');
-  const changes = center.locator('article').first();
+  const changes = center.locator('article').filter({
+    has: page.getByRole('heading', {
+      name: 'Damage · East window seal',
+      exact: true,
+    }),
+  });
   await changes
     .getByText('Source inspection evidence (2)', { exact: true })
     .click();
@@ -115,12 +115,20 @@ test('attention evidence remains conservative and navigates exact published repo
       name: /approve|decline|pay|resolve|complete/i,
     }),
   ).toHaveCount(0);
-  await page.getByText('Local preview controls', { exact: true }).click();
-  await page.getByText('Demonstrate preview states', { exact: true }).click();
+  if ((await page.locator('.concept-developer').getAttribute('open')) !== null)
+    await page.locator('.concept-developer summary').click();
+
   await center
     .getByRole('combobox', { name: 'Attention view' })
     .selectOption('changed');
   await center
+    .locator('article')
+    .filter({
+      has: page.getByRole('heading', {
+        name: 'Damage · East window seal',
+        exact: true,
+      }),
+    })
     .getByText('Source inspection evidence (2)', { exact: true })
     .click();
   await mkdir('artifacts/property', { recursive: true });
@@ -147,12 +155,8 @@ test('attention property/contractor changes and errors clear former evidence, wi
     'sample-construction',
     'sample-roofing',
   ]) {
-    await page
-      .getByRole('combobox', { name: 'Sample contractor' })
-      .selectOption(org);
-    await page
-      .getByRole('button', { name: 'Load synthetic inspection history' })
-      .click();
+    await contractor(page, org);
+    await developerControls(page);
     await page
       .getByRole('button', { name: 'Load synthetic attention examples' })
       .click();
@@ -160,7 +164,7 @@ test('attention property/contractor changes and errors clear former evidence, wi
       name: 'Property attention center',
       exact: true,
     });
-    await expect(center.locator('article')).toHaveCount(7);
+    await expect(center.locator('article')).toHaveCount(11);
     await page
       .getByRole('combobox', { name: 'Your property', exact: true })
       .selectOption({ label: '200 Synthetic Garden Lane' });
@@ -169,6 +173,7 @@ test('attention property/contractor changes and errors clear former evidence, wi
       .click();
     await expect(center).toContainText('No published inspections');
     await expect(center.locator('article')).toHaveCount(0);
+    await developerControls(page);
     await page.getByRole('button', { name: 'Simulate loading error' }).click();
     await expect(page.getByRole('alert')).toContainText('simulated error');
     await expect(center).toHaveCount(0);
@@ -176,7 +181,7 @@ test('attention property/contractor changes and errors clear former evidence, wi
     await page
       .getByRole('button', { name: 'Attention center', exact: true })
       .click();
-    await expect(center.locator('article')).toHaveCount(7);
+    await expect(center.locator('article')).toHaveCount(11);
   }
   await page.goto('/portal/property?organization_id=forged&customer_id=forged');
   await expect(

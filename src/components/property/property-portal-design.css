@@ -889,6 +889,11 @@
   background: white;
   border-radius: 4px;
 }
+.portal-concept--approved .concept-footer .platform-brand {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
 .portal-concept .concept-footer > div > span {
   font-size: 0.68rem;
 }

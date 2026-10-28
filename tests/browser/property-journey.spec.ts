@@ -1,3 +1,4 @@
+import { contractor, developerControls } from './helpers/property-portal';
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { mkdir } from 'node:fs/promises';
@@ -11,12 +12,12 @@ test('property journey joins check-in history, exact repair scope and review-onl
   });
   await page.goto('/preview/property-portal');
   await page
-    .getByRole('button', { name: 'Load synthetic inspection history' })
+    .getByRole('button', { name: 'Property reports', exact: true })
     .click();
   const history = page.getByRole('region', {
     name: 'Published inspection history',
   });
-  await expect(history.locator('article')).toHaveCount(3);
+  await expect(history.locator('article')).toHaveCount(7);
   await page
     .getByRole('combobox', { name: 'Check-in frequency' })
     .selectOption('weekly');
@@ -37,9 +38,6 @@ test('property journey joins check-in history, exact repair scope and review-onl
   await page
     .getByRole('combobox', { name: 'Check-in frequency' })
     .selectOption('all');
-  await page
-    .getByRole('button', { name: 'Prepare synthetic review example' })
-    .click();
   await history
     .getByRole('button', { name: 'Review related repair scope' })
     .click();
@@ -69,7 +67,7 @@ test('property journey joins check-in history, exact repair scope and review-onl
   await page
     .getByRole('button', { name: 'Show all inspection reports' })
     .click();
-  await expect(history.locator('article')).toHaveCount(3);
+  await expect(history.locator('article')).toHaveCount(7);
   const properties = page.getByRole('combobox', {
     name: 'Your property',
     exact: true,
@@ -79,7 +77,7 @@ test('property journey joins check-in history, exact repair scope and review-onl
   await expect(history.locator('article')).toHaveCount(0);
   await expect(
     page.getByRole('group', { name: 'Property summary' }),
-  ).toContainText('0 published check-ins');
+  ).toContainText('00');
   await page
     .getByRole('button', { name: 'Estimates & repairs', exact: true })
     .click();
@@ -112,8 +110,9 @@ test('property journey joins check-in history, exact repair scope and review-onl
       name: /pay now|sign contract|issue invoice|upload/i,
     }),
   ).toHaveCount(0);
-  await page.getByText('Demonstrate preview states', { exact: true }).click();
-  await page.getByText('Local preview controls', { exact: true }).click();
+
+  if ((await page.locator('.concept-developer').getAttribute('open')) !== null)
+    await page.locator('.concept-developer summary').click();
   await mkdir('artifacts/property', { recursive: true });
   await page.screenshot({
     path: `artifacts/property/${info.project.name}-property-journey.png`,
@@ -138,18 +137,17 @@ test('error recovery clears views and contractor changes cannot retain another p
     ['sample-construction', 'Cunningham Construction'],
     ['sample-roofing', 'Roofing Company · Example'],
   ]) {
+    await contractor(page, org);
+    await expect(page.locator('.concept-contractor')).toContainText(name);
     await page
-      .getByRole('combobox', { name: 'Sample contractor' })
-      .selectOption(org);
-    await expect(page.locator('.contractor-heading')).toContainText(name);
+      .getByRole('button', { name: 'Property reports', exact: true })
+      .click();
     await expect(
       page
         .getByRole('region', { name: 'Published inspection history' })
         .locator('article'),
-    ).toHaveCount(0);
-    await page
-      .getByRole('button', { name: 'Load synthetic inspection history' })
-      .click();
+    ).toHaveCount(7);
+    await developerControls(page);
     await page.getByRole('button', { name: 'Simulate loading error' }).click();
     await expect(page.getByRole('alert')).toContainText('simulated error');
     await expect(
@@ -159,11 +157,14 @@ test('error recovery clears views and contractor changes cannot retain another p
       page.getByRole('region', { name: 'Your properties' }),
     ).toHaveCount(0);
     await page.getByRole('button', { name: 'Reload preview status' }).click();
+    await page
+      .getByRole('button', { name: 'Property reports', exact: true })
+      .click();
     await expect(
       page
         .getByRole('region', { name: 'Published inspection history' })
         .locator('article'),
-    ).toHaveCount(3);
+    ).toHaveCount(7);
   }
   await page.goto('/portal/property?organization_id=forged&customer_id=forged');
   await expect(

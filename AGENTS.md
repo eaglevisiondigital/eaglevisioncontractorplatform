@@ -1,5 +1,13 @@
 # Engineering instructions
 
+Phase B premium portal continuation: read docs/PROPERTY_PORTAL_PHASE_B.md.
+Owner approved Phase A and local synthetic replacement. /preview/property-portal
+now shares the exact approved component with retained /preview/property-portal-design.
+Only visual correction: portal-scoped transparent logo derivative/no white container.
+Original approved PNG/global branding remain unchanged; never regenerate artwork.
+No further redesign or duplicate approval. All13 SQL/pending customer/frozen P1,
+connected/financial/recovery/Netlify gates remain unchanged; no device PASS.
+
 Premium portal concept continuation: read docs/PROPERTY_PORTAL_DESIGN.md.
 Phase A exists ONLY at /preview/property-portal-design with separate instances of
 the existing synthetic repository and scoped lazy-loaded CSS. Original functional

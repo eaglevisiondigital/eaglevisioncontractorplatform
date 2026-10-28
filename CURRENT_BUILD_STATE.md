@@ -1,5 +1,21 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: owner-approved premium portal · Phase B complete locally · October28
+
+[PROPERTY_PORTAL_PHASE_B.md](docs/PROPERTY_PORTAL_PHASE_B.md) supersedes the earlier
+Phase A replacement hold: owner approved the design and local synthetic replacement.
+/preview/property-portal now uses the approved component and populated examples;
+/preview/property-portal-design retains Phase A for comparison. The only visual
+correction is a deterministic transparent derivative of the original approved logo
+and removal of its white container on the approved portal. Original PNG/shared
+branding and all business/read models remain unchanged. No redesign or generation.
+56 focused application/66 browser cases pass, including three palettes, source/
+financial boundaries, true alpha/no halo and pixel-equal Phase A overview bodies
+on desktop/tablet/mobile. Prior Phase A CI40771547258 passed; current CI separate.
+All13 SQL/pending customer/frozen P1/recovery/Netlify gates preserved. No hosted,
+credential/Auth/session/financial/provider/media action, deployment or merge.
+Release1.0 NOT READY / NOT AUTHORIZED; physical pairing/recovery still incomplete.
+
 ## Latest: premium customer portal · Phase A design review only · October28
 
 [PROPERTY_PORTAL_DESIGN.md](docs/PROPERTY_PORTAL_DESIGN.md) records the functioning

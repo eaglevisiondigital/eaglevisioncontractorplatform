@@ -75,14 +75,20 @@ function ArchitectureArt() {
     </svg>
   );
 }
-/** Isolated owner-review concept. Uses existing synthetic repositories/components;
- * never mounted on an existing functional or connected customer route. */
-export function PropertyPortalDesign() {
+/** Approved synthetic portal and retained Phase A comparison share one presentation.
+ * Never mounted on a connected customer route. */
+export function PropertyPortalDesign({
+  approved = false,
+}: {
+  approved?: boolean;
+}) {
   const [org, setOrg] = useState(sampleCompanies[0].id);
   const company = sampleCompanies.find((c) => c.id === org)!;
   return (
     <main
-      className="portal-concept"
+      className={
+        'portal-concept' + (approved ? ' portal-concept--approved' : '')
+      }
       style={
         {
           '--company-color': company.primary_color,
@@ -94,7 +100,9 @@ export function PropertyPortalDesign() {
         Skip to property content
       </a>
       <div className="concept-disclosure">
-        <span>DESIGN CONCEPT · PHASE A</span>
+        <span>
+          {approved ? 'SYNTHETIC CUSTOMER PORTAL' : 'DESIGN CONCEPT · PHASE A'}
+        </span>
         <span>
           Synthetic property data. No real login, work authorization or
           financial activity.
@@ -118,11 +126,20 @@ export function PropertyPortalDesign() {
       <ConceptExperience key={org} company={company} onCompany={setOrg} />
       <footer className="concept-footer">
         <div>
-          <PlatformBrand />
+          <PlatformBrand transparent={approved} />
           <span>Property clarity, powered by Propel.</span>
         </div>
-        <a href="/preview/property-portal">
-          View existing functional preview <span aria-hidden="true">↗</span>
+        <a
+          href={
+            approved
+              ? '/preview/property-portal-design'
+              : '/preview/property-portal'
+          }
+        >
+          {approved
+            ? 'View Phase A design concept'
+            : 'View existing functional preview'}{' '}
+          <span aria-hidden="true">↗</span>
         </a>
       </footer>
     </main>

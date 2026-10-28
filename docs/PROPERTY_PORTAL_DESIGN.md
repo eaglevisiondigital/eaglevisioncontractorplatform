@@ -1,5 +1,14 @@
 # Premium customer property portal · Phase A visual concept
 
+## Latest: Phase A approved; Phase B implemented locally
+
+Owner approval and exact logo correction are recorded in PROPERTY_PORTAL_PHASE_B.md.
+The existing synthetic property portal now shares this approved presentation; this
+route remains as the Phase A comparison. The visual approval hold below is historical
+and satisfied. The original PNG/white treatment is retained here for comparison;
+the approved portal alone uses the transparent derivative. No further redesign or
+hosted/release authority. All other boundaries below remain in force.
+
 October28,2026 · base ef6d2e73f7175369c7f2b5ac92a24500a9e1a3e7.
 **Isolated local design review. Existing portal replacement NOT APPROVED.**
 Release1.0 remains NOT READY / NOT AUTHORIZED; PR#1 stays draft/unmerged.

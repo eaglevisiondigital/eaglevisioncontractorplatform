@@ -1,5 +1,20 @@
 # Propel Contractor Suite by Eagle Vision
 
+## October28 · owner-authorized portal transparency derivative
+
+The owner explicitly approved removal of the opaque logo matte for the premium
+synthetic property portal. The original PNG/hash below stays immutable and remains
+the default on other pages. A same-dimension RGBA derivative is selected only by
+PlatformBrand's explicit transparent option on the approved portal; no redraw,
+recolor, crop, resize or generative operation. The retained Phase A uses the original.
+Derivative: public/brand/propel-contractor-suite-transparent.png, SHA-256
+dd6e8161dc4be20b97ca10cdb58a191b2bb5d4b92c2e58a2c4dcceed500a9a27.
+Reproduction/pixel verification: scripts/derive-portal-logo.mjs,
+tests/portal-logo.test.ts and docs/PROPERTY_PORTAL_PHASE_B.md. Shared container
+styles remain unchanged; the approved portal alone overrides background/padding/
+radius. This exact transparency approval supersedes original-only wording below
+for this portal derivative only, and confers no hosted or release authority.
+
 The owner-approved product name is **Propel Contractor Suite by Eagle Vision**.
 The owner supplied the exact emerald-and-mint-on-white logo as
 `Emerald Propel Contractor Suite Logo.png` after the original asset request.

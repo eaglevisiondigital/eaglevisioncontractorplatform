@@ -1,5 +1,16 @@
 # Engineering decisions
 
+## 2026-10-28 · promote approved Phase A with only logo-matte correction
+
+Record the owner's explicit design/replacement approval; do not request it again.
+Share one approved presentation across the local synthetic portal and retained
+Phase A route. Keep all layout/typography/palette/components unchanged. Derive
+transparent pixels directly from the immutable original PNG, preserve solid artwork
+and unmatte edges; no generative logo replacement. Opt in only on the approved
+portal and remove its container treatment. Verify exact source/derivative identity,
+alpha, visual halos, all palettes and Phase A overview pixel equality. No hosted
+or financial/recovery authorization follows this local presentation approval.
+
 ## 2026-10-28 · review premium portal direction in isolation before replacement
 
 Implement one working editorial property-journal concept on a separate local

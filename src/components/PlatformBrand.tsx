@@ -3,9 +3,11 @@ import { productBrand } from '../domain/brand';
 export function PlatformBrand({
   prominent = false,
   href = '/',
+  transparent = false,
 }: {
   prominent?: boolean;
   href?: string;
+  transparent?: boolean;
 }) {
   return (
     <a
@@ -14,7 +16,9 @@ export function PlatformBrand({
       aria-label={`${productBrand.name} home`}
     >
       <img
-        src={productBrand.logo}
+        src={
+          transparent ? productBrand.transparentPortalLogo : productBrand.logo
+        }
         alt={productBrand.name}
         width="2172"
         height="724"

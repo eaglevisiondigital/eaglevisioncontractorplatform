@@ -1,3 +1,4 @@
+import { contractor } from './helpers/property-portal';
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { mkdir } from 'node:fs/promises';
@@ -210,31 +211,32 @@ test('report-only customer preview shows recurring history without private findi
 }, info) => {
   await page.goto('/preview/property-portal');
   await expect(
-    page.getByText('SYNTHETIC CUSTOMER REPORT PREVIEW', { exact: false }),
+    page.getByText('SYNTHETIC CUSTOMER PORTAL', { exact: false }),
   ).toBeVisible();
   for (const org of [
     'sample-property',
     'sample-construction',
     'sample-roofing',
   ]) {
+    await contractor(page, org);
     await page
-      .getByRole('combobox', { name: 'Sample contractor' })
-      .selectOption(org);
-    await page
-      .getByRole('button', { name: 'Load synthetic inspection history' })
+      .getByRole('button', { name: 'Property reports', exact: true })
       .click();
     const history = page.getByRole('region', {
       name: 'Published inspection history',
     });
     await expect(history).toContainText('Weekly property check');
     await expect(history).toContainText('Monthly property check');
-    await expect(history.locator('article')).toHaveCount(3);
+    await expect(history.locator('article')).toHaveCount(7);
     await page
       .getByRole('combobox', { name: 'Service month' })
       .selectOption('2026-11');
-    await expect(history.locator('article')).toHaveCount(1);
+    await expect(history.locator('article')).toHaveCount(3);
     await expect(history).not.toContainText('Weekly property check');
-    await history.getByText('Inspection checklist', { exact: true }).click();
+    await history
+      .getByText('Inspection checklist', { exact: true })
+      .first()
+      .click();
     await expect(history).toContainText(
       'Completed: Exterior condition and safety',
     );

@@ -35,11 +35,6 @@ const PropertyWorkspace = lazy(() =>
     default: m.PropertyWorkspace,
   })),
 );
-const PropertyPortalPreview = lazy(() =>
-  import('./components/property/PropertyPortalPreview').then((m) => ({
-    default: m.PropertyPortalPreview,
-  })),
-);
 const PropertyPortalDesign = lazy(() =>
   import('./components/property/PropertyPortalDesign').then((m) => ({
     default: m.PropertyPortalDesign,
@@ -181,7 +176,7 @@ export function App() {
   if (path === '/preview/property-portal')
     return (
       <Suspense fallback={<main>Loading synthetic report preview…</main>}>
-        <PropertyPortalPreview />
+        <PropertyPortalDesign approved />
       </Suspense>
     );
   if (

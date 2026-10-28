@@ -1,5 +1,14 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Approved premium portal promotion · Phase B · October28
+
+Both local synthetic property preview routes now reuse the approved Phase A
+presentation component. Its approved flag changes only synthetic status/link labels
+and selects a portal-only transparent PNG/container override; the retained Phase A
+view preserves the original logo treatment. No business/model/repository fork or
+connected route. Original artwork/global branding remain default. See
+PROPERTY_PORTAL_PHASE_B.md for exact derivative provenance and local evidence.
+
 ## Premium portal visual concept isolation · October28
 
 The exact /preview/property-portal-design route lazy-loads a presentation-only

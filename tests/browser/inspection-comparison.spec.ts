@@ -1,3 +1,4 @@
+import { contractor, developerControls } from './helpers/property-portal';
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { mkdir } from 'node:fs/promises';
@@ -17,10 +18,8 @@ test('published comparison shows exact two-sided evidence, ambiguity and accessi
     name: 'Published inspection comparison',
     exact: true,
   });
-  await expect(view).toContainText('At least two published reports are needed');
-  await page
-    .getByRole('button', { name: 'Load synthetic inspection history' })
-    .click();
+  await expect(view).toContainText('Choose two exact published reports');
+  await developerControls(page);
   await page
     .getByRole('button', { name: 'Load synthetic comparison examples' })
     .click();
@@ -101,8 +100,9 @@ test('published comparison shows exact two-sided evidence, ambiguity and accessi
   await expect(
     view.getByRole('button', { name: /approve|decline|pay|resolve|complete/i }),
   ).toHaveCount(0);
-  await page.getByText('Local preview controls', { exact: true }).click();
-  await page.getByText('Demonstrate preview states', { exact: true }).click();
+  if ((await page.locator('.concept-developer').getAttribute('open')) !== null)
+    await page.locator('.concept-developer summary').click();
+
   expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
   expect(
     await page.evaluate(
@@ -150,10 +150,7 @@ test('history and attention launch comparison; exact issued scope and source rep
 }) => {
   await page.goto('/preview/property-portal');
   await page
-    .getByRole('button', { name: 'Load synthetic inspection history' })
-    .click();
-  await page
-    .getByRole('button', { name: 'Prepare synthetic review example' })
+    .getByRole('button', { name: 'Property reports', exact: true })
     .click();
   const history = page.getByRole('region', {
     name: 'Published inspection history',
@@ -201,6 +198,7 @@ test('history and attention launch comparison; exact issued scope and source rep
     'data-report-id',
     id!,
   );
+  await developerControls(page);
   await page
     .getByRole('button', { name: 'Load synthetic attention examples' })
     .click();
@@ -234,12 +232,8 @@ test('invalid pair, selection changes, errors and contractor/property switches n
     'sample-construction',
     'sample-roofing',
   ]) {
-    await page
-      .getByRole('combobox', { name: 'Sample contractor' })
-      .selectOption(org);
-    await page
-      .getByRole('button', { name: 'Load synthetic inspection history' })
-      .click();
+    await contractor(page, org);
+    await developerControls(page);
     await page
       .getByRole('button', { name: 'Load synthetic comparison examples' })
       .click();
@@ -266,6 +260,7 @@ test('invalid pair, selection changes, errors and contractor/property switches n
       'two distinct published reports',
     );
     await expect(view.locator('.comparison-finding')).toHaveCount(0);
+    await developerControls(page);
     await page.getByRole('button', { name: 'Simulate loading error' }).click();
     await expect(view).toHaveCount(0);
     await page.getByRole('button', { name: 'Reload preview status' }).click();

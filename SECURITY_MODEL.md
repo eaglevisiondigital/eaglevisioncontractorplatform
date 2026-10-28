@@ -1,5 +1,14 @@
 # Security model · Phase 2
 
+## Phase B local presentation approval · October28
+
+Owner visual approval authorizes the synthetic portal presentation replacement only.
+Both preview routes still compose existing safe models/components; customer routes
+remain closed and preferences confer no financial/legal authority. The transparent
+logo derivative is opt-in for the approved portal, preserving original/global
+branding. No source/evidence/permission change. P1/migrations/recovery/providers/
+Netlify/release restrictions remain independent. See docs/PROPERTY_PORTAL_PHASE_B.md.
+
 ## Phase A portal concept boundary · October28
 
 A separately routed visual concept consumes only the existing synthetic model and
