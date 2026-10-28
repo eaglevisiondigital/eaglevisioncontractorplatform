@@ -1449,6 +1449,12 @@ fieldset legend {
   display: block;
   width: 100%;
   max-width: 460px;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #9bada6;
+  border-radius: 8px;
+  background: white;
+  color: #193e32;
 }
 .property-portal-preview .finding-card {
   margin: 20px 0;
@@ -1456,6 +1462,56 @@ fieldset legend {
 .property-portal-preview button {
   white-space: normal;
   max-width: 100%;
+}
+.property-portal-preview .contractor-heading {
+  border-left: 5px solid var(--company-color);
+  padding: 18px 24px;
+  background: #f2f7f5;
+  border-radius: 12px;
+}
+.contractor-heading strong {
+  font-size: clamp(1.25rem, 3vw, 1.8rem);
+}
+.portal-properties {
+  padding: 8px 0 20px;
+}
+.portal-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.portal-summary p {
+  margin: 0;
+  padding: 16px;
+  border: 1px solid #dce7e3;
+  border-radius: 12px;
+  color: #334c43;
+}
+.portal-summary strong {
+  display: block;
+  font-size: 1.8rem;
+  color: #193e32;
+}
+.portal-footer {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid #dce7e3;
+}
+.portal-footer .platform-brand {
+  max-width: 280px;
+}
+.customer-portal .preview-controls button {
+  margin: 6px 8px 6px 0;
+}
+@media (max-width: 520px) {
+  .portal-summary {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .portal-summary strong {
+    display: inline;
+    margin-right: 8px;
+    font-size: 1.3rem;
+  }
 }
 
 .customer-portal-heading {

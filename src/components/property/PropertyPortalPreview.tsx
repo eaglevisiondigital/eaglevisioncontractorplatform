@@ -1,149 +1,290 @@
-import { useCallback, useState, type CSSProperties } from 'react';
-import { sampleCompanies } from '../../domain/platform';
-import { previewOperations } from '../../lib/operations';
-import { propertyRepository } from '../../lib/property';
+import { useCallback, useEffect, useState, type CSSProperties } from 'react';
+import { sampleCompanies, type CompanyProfile } from '../../domain/platform';
+import { CustomerPortalPreviewModel } from '../../lib/customer-preview';
 import { PropertyReportHistory } from './PropertyReportHistory';
-import { useResource, useTask } from '../forms-state';
-import { ResourceStatus } from '../forms';
-import { CompanyLogo } from '../CompanyLogo';
+import { CustomerEstimateReview } from './CustomerEstimateReview';
+import { useResource } from '../forms-state';
 import { PlatformBrand } from '../PlatformBrand';
 
-/** Explicit synthetic preview reuses the existing property repository; no connected sample fallback. */
+/** Explicit synthetic customer experience. Connected routes never mount this component. */
 export function PropertyPortalPreview() {
   const [org, setOrg] = useState(sampleCompanies[0].id);
   const company = sampleCompanies.find((c) => c.id === org)!;
   return (
     <main
-      className="property-portal-preview"
+      className="property-portal-preview customer-portal"
       style={{ '--company-color': company.primary_color } as CSSProperties}
     >
-      <PlatformBrand />
       <p className="notice">
-        SYNTHETIC CUSTOMER REPORT PREVIEW · No customer login, hosted records or
-        financial activity.
+        SYNTHETIC CUSTOMER REPORT PREVIEW · Sample properties and review
+        preferences only. No real login or financial activity.
       </p>
-      <label>
-        Sample contractor
-        <select value={org} onChange={(e) => setOrg(e.target.value)}>
-          {sampleCompanies.map((c) => (
-            <option value={c.id} key={c.id}>
-              {c.name}
-            </option>
-          ))}
-        </select>
-      </label>
-      <CompanyLogo company={company} sample />
+      <details className="preview-controls" open>
+        <summary>Local preview controls</summary>
+        <label>
+          Sample contractor
+          <select value={org} onChange={(e) => setOrg(e.target.value)}>
+            {sampleCompanies.map((c) => (
+              <option value={c.id} key={c.id}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+        </label>
+        <p>
+          Choose a synthetic contractor example. This selector never grants
+          connected access.
+        </p>
+      </details>
+      <header className="customer-portal-heading contractor-heading">
+        <div>
+          <p className="eyebrow">Your contractor</p>
+          <strong>{company.name}</strong>
+          <p>Property care, clearly documented.</p>
+        </div>
+      </header>
       <h1>Your property reports</h1>
-      <PreviewReports key={org} org={org} />
-      <a href="/preview">Return to sample workspace</a>
+      <PropertyExperience key={org} company={company} />
+      <footer className="portal-footer">
+        <PlatformBrand />
+        <p>Powered by Propel Contractor Suite by Eagle Vision</p>
+        <a href="/preview">Return to sample workspace</a>
+      </footer>
     </main>
   );
 }
-function PreviewReports({ org }: { org: string }) {
-  const repo = propertyRepository(previewOperations),
-    company = sampleCompanies.find((c) => c.id === org)!;
-  const data = useResource(
+function PropertyExperience({ company }: { company: CompanyProfile }) {
+  const [model] = useState(() => new CustomerPortalPreviewModel(company));
+  const resource = useResource(
     useCallback(async () => {
-      await repo.initialize(company);
-      return repo.read(org);
-    }, [repo, company, org]),
+      await model.login();
+      return model.read();
+    }, [model]),
   );
-  const task = useTask();
-  if (!data.data || data.error) return <ResourceStatus {...data} />;
-  const state = data.data,
-    context = state.contexts[0];
-  const reports = repo
-    .portal(org, context.customer_id)
-    .reports.filter((r) => r.location_id === context.location_id)
-    .map((r) => ({
-      id: r.id,
-      version: r.version,
-      published_at: r.published_at,
-      snapshot: {
-        summary: r.summary,
-        visited_on: r.visited_on,
-        phase: r.phase,
-        findings: r.findings,
-        checklist: r.checklist,
-        media: [] as never[],
-      },
-    }));
-  async function example() {
-    if (reports.length) return;
-    for (const cadence of ['weekly', 'monthly'] as const) {
-      const plan = repo.createPlan(
-        org,
-        context,
-        `${cadence} synthetic maintenance`,
+  useEffect(() => () => model.logout(), [model]);
+  const [, render] = useState(0);
+  const [busy, setBusy] = useState(false);
+  const [unavailable, setUnavailable] = useState(false);
+  const [message, setMessage] = useState('');
+  const [tab, setTab] = useState<'reports' | 'estimates'>('reports');
+  const [reportId, setReportId] = useState<string | null>(null);
+  const [versionId, setVersionId] = useState<string | null>(null);
+  const data =
+    resource.data && !resource.loading && !resource.error && !unavailable
+      ? model.read()
+      : null;
+  async function run(work: () => Promise<unknown>, success: string) {
+    if (busy) return;
+    setBusy(true);
+    setMessage('');
+    try {
+      await work();
+      render((n) => n + 1);
+      setMessage(success);
+    } catch {
+      setUnavailable(true);
+      setMessage(
+        'The preview could not complete this operation. Read the current status before attempting another change.',
       );
-      repo.savePlan(org, { ...plan, cadence, starts_on: '2026-10-16' });
-      for (const date of cadence === 'weekly'
-        ? ['2026-10-16', '2026-10-23']
-        : ['2026-11-16']) {
-        const visit = repo.addVisit(org, plan.id, date);
-        repo.saveVisit(org, visit, {
-          summary: `${cadence === 'weekly' ? 'Weekly' : 'Monthly'} property check · ${date}`,
-          internal_notes: 'INTERNAL rates, supplier costs and payroll review',
-          checklist: [
-            {
-              id: 'exterior',
-              label: 'Exterior condition and safety',
-              required: true,
-              completed: true,
-            },
-          ],
-          findings: [
-            {
-              id: 'repair',
-              category: 'Damage',
-              location: 'Exterior joint',
-              severity: 'moderate',
-              description: 'Weathered exterior seal needs repair.',
-              recommendation: 'Request contractor review of a repair estimate.',
-              customer_visible: true,
-            },
-            {
-              id: 'office',
-              category: 'Office',
-              location: 'Internal',
-              severity: 'low',
-              description: 'INTERNAL margin and purchasing',
-              recommendation: 'Private review',
-              customer_visible: false,
-            },
-          ],
-        });
-        let current = repo.read(org).visits.find((v) => v.id === visit.id)!;
-        repo.submit(org, current);
-        current = repo.read(org).visits.find((v) => v.id === visit.id)!;
-        repo.publish(org, current);
-      }
+    } finally {
+      setBusy(false);
     }
-    data.reload();
   }
+  function clearSelection() {
+    setTab('reports');
+    setReportId(null);
+    setVersionId(null);
+    setMessage('');
+  }
+  if (resource.loading)
+    return <p role="status">Loading your contractor and properties…</p>;
+  if (!data)
+    return (
+      <section aria-label="Property portal unavailable">
+        <h2>Your property information is unavailable</h2>
+        <p role="alert">
+          {message ||
+            'We could not load your property reports. No property information is displayed.'}
+        </p>
+        <button
+          onClick={() => {
+            setUnavailable(false);
+            clearSelection();
+            resource.reload();
+          }}
+        >
+          Reload preview status
+        </button>
+      </section>
+    );
+  const properties = model.properties();
+  const activeReviews = versionId
+    ? data.reviews.filter((r) => r.version_id === versionId)
+    : data.reviews;
   return (
     <>
-      <p>
-        {company.name} · {context.customer_name}
-      </p>
-      <h2>{context.location_label}</h2>
-      <button
-        disabled={task.busy || reports.length > 0}
-        onClick={() =>
-          void task.run(
-            example,
-            'Synthetic weekly and monthly history prepared',
-          )
-        }
-      >
-        Load synthetic inspection history
-      </button>
-      {task.message && <p role="status">{task.message}</p>}
-      <PropertyReportHistory reports={reports} />
-      <p>
-        Repair recommendations are informational. Estimates and approvals
-        require separately authorized access.
-      </p>
+      <section aria-label="Your properties" className="portal-properties">
+        <h2>Properties with {company.name}</h2>
+        <p>Only properties associated with this sample customer are shown.</p>
+        <label>
+          Your property
+          <select
+            disabled={busy}
+            value={data.context.location_id}
+            onChange={(e) => {
+              model.selectProperty(e.target.value);
+              clearSelection();
+              render((n) => n + 1);
+            }}
+          >
+            {properties.map((p) => (
+              <option value={p.id} key={p.id}>
+                {p.label}
+              </option>
+            ))}
+          </select>
+        </label>
+        <h3>{data.context.property_label}</h3>
+        <div
+          className="portal-summary"
+          role="group"
+          aria-label="Property summary"
+        >
+          <p>
+            <strong>{data.history.length}</strong> published check-ins
+          </p>
+          <p>
+            <strong>
+              {data.reviews.filter((r) => r.source_report_id).length}
+            </strong>{' '}
+            shared repair scopes
+          </p>
+          <p>
+            <strong>{data.responses.filter((r) => r.decision).length}</strong>{' '}
+            preview preferences recorded
+          </p>
+        </div>
+      </section>
+      <details className="preview-controls" open>
+        <summary>Demonstrate preview states</summary>
+        <p>
+          Examples use existing synthetic CRM, inspection and estimate sources.
+          Preferences last for this page session only.
+        </p>
+        <button
+          disabled={busy || data.history.length > 0 || !data.exampleAvailable}
+          onClick={() =>
+            void run(
+              () => model.prepareHistory(),
+              'Synthetic weekly and monthly history prepared',
+            )
+          }
+        >
+          Load synthetic inspection history
+        </button>
+        <button
+          disabled={
+            busy ||
+            data.reviews.length > 0 ||
+            !data.history.length ||
+            !data.exampleAvailable
+          }
+          onClick={() =>
+            void run(
+              () => model.prepare(),
+              'Issued scope and repair review prepared',
+            )
+          }
+        >
+          Prepare synthetic review example
+        </button>
+        <button
+          disabled={busy}
+          className="secondary"
+          onClick={() => {
+            setUnavailable(true);
+            setMessage(
+              'Unable to load your property reports. This is a simulated error.',
+            );
+          }}
+        >
+          Simulate loading error
+        </button>
+      </details>
+      <nav className="p3-tabs" aria-label="Customer property views">
+        <button
+          aria-pressed={tab === 'reports'}
+          className={tab === 'reports' ? 'active' : 'secondary'}
+          onClick={() => {
+            setTab('reports');
+            setReportId(null);
+          }}
+        >
+          Property reports
+        </button>
+        <button
+          aria-pressed={tab === 'estimates'}
+          className={tab === 'estimates' ? 'active' : 'secondary'}
+          onClick={() => {
+            setTab('estimates');
+            setVersionId(null);
+          }}
+        >
+          Estimates & repairs
+        </button>
+      </nav>
+      {tab === 'reports' ? (
+        <>
+          {reportId && (
+            <button className="secondary" onClick={() => setReportId(null)}>
+              Show all inspection reports
+            </button>
+          )}
+          <PropertyReportHistory
+            key={data.context.location_id + (reportId ?? '')}
+            reports={data.history}
+            cadences={data.cadences}
+            focusedReportId={reportId}
+            relatedReviews={data.reviews}
+            onReview={(id) => {
+              setVersionId(id);
+              setTab('estimates');
+              setMessage('Related repair scope selected.');
+            }}
+          />
+          <p className="muted">
+            Findings document observed conditions. A recommendation does not
+            authorize repair work. Photos and media are not available in this
+            preview.
+          </p>
+        </>
+      ) : (
+        <>
+          {versionId && (
+            <button className="secondary" onClick={() => setVersionId(null)}>
+              Show all issued estimates
+            </button>
+          )}
+          <CustomerEstimateReview
+            key={data.context.location_id}
+            data={{ ...data, reviews: activeReviews }}
+            busy={busy}
+            onRespond={(version, choice, consent) =>
+              run(
+                () => model.respond(version, choice, consent),
+                'Synthetic preference recorded for this exact issued version. No work or financial activity was authorized.',
+              )
+            }
+            onViewReports={(id) => {
+              setReportId(id);
+              setTab('reports');
+              setMessage('Source inspection report selected.');
+            }}
+          />
+        </>
+      )}
+      {busy && <p role="status">Preparing synthetic records…</p>}
+      {message && !busy && <p role="status">{message}</p>}
     </>
   );
 }

@@ -1,5 +1,17 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Customer property experience composition · October28
+
+The existing /preview/property-portal composes CustomerPortalPreviewModel with CRM
+service locations and immutable published inspection/issued estimate sources.
+It adds no parallel customer/property/financial store. A shared CustomerEstimateReview
+also serves /preview/customer-portal. Selection binds one synthetic customer and
+one exact location; report projections reuse the strict published-response validator.
+Cadence comes from the bound inspection plan, not report text. Finding/estimate
+links match report and finding IDs; review preferences reuse ReleasePreview's
+one-decision engine. No connected route, backend exposure or schema changes.
+See docs/PROPERTY_PORTAL_EXPERIENCE.md. Recovery acceptance proceeds independently.
+
 Synthetic distribution compatibility: `rehearsal-requirements.lock` is independent
 of operational `requirements.lock`. Both Macs receive the same public ZIP pinned
 to Intel-compatible48.0.1, with exact transitive wheels and fail-closed runtime

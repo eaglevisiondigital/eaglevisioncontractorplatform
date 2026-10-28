@@ -133,3 +133,60 @@ export function parsePropertyReportPage(
     throw Error('Invalid report-only response');
   }
 }
+
+/** Local published sources use the same strict report shape as connected responses.
+ * Select an exact customer/property first; never silently discard a foreign row. */
+export function projectPublishedHistory(
+  reports: PublishedReport[],
+  boundary: ReportBoundary,
+): PropertyReportPage['reports'] {
+  return reports.map((r) => {
+    if (
+      r.organization_id !== boundary.organization_id ||
+      r.customer_id !== boundary.customer_id ||
+      r.location_id !== boundary.location_id
+    )
+      throw Error('Customer property unavailable');
+    if (
+      !report({
+        id: r.id,
+        version: r.version,
+        published_at: r.published_at,
+        snapshot: {
+          summary: r.summary,
+          visited_on: r.visited_on,
+          phase: r.phase,
+          findings: r.findings,
+          checklist: r.checklist,
+          media: [],
+        },
+      })
+    )
+      throw Error('Invalid published report');
+    const projected = {
+      id: r.id,
+      version: r.version,
+      published_at: r.published_at,
+      snapshot: {
+        summary: r.summary,
+        visited_on: r.visited_on,
+        phase: r.phase,
+        findings: r.findings.map((f) => ({
+          id: f.id,
+          category: f.category,
+          location: f.location,
+          severity: f.severity,
+          description: f.description,
+          recommendation: f.recommendation,
+        })),
+        checklist: r.checklist.map((c) => ({
+          label: c.label,
+          completed: c.completed,
+        })),
+        media: [] as never[],
+      },
+    };
+    if (!report(projected)) throw Error('Invalid published report');
+    return projected;
+  });
+}

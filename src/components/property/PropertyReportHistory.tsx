@@ -4,10 +4,23 @@ import type { PropertyReportSession } from '../../lib/property-report-session';
 
 export function PropertyReportHistory({
   reports,
+  cadences,
+  relatedReviews = [],
+  onReview,
+  focusedReportId,
 }: {
   reports: PropertyReportPage['reports'];
+  cadences?: Record<string, string>;
+  relatedReviews?: {
+    version_id: string;
+    source_report_id: string | null;
+    finding_id: string | null;
+  }[];
+  onReview?: (versionId: string) => void;
+  focusedReportId?: string | null;
 }) {
   const [month, setMonth] = useState('all');
+  const [cadence, setCadence] = useState('all');
   const months = [
     ...new Set(reports.map((r) => r.snapshot.visited_on.slice(0, 7))),
   ]
@@ -19,6 +32,8 @@ export function PropertyReportHistory({
       (r) =>
         activeMonth === 'all' || r.snapshot.visited_on.startsWith(activeMonth),
     )
+    .filter((r) => cadence === 'all' || cadences?.[r.id] === cadence)
+    .filter((r) => !focusedReportId || r.id === focusedReportId)
     .sort(
       (a, b) =>
         b.snapshot.visited_on.localeCompare(a.snapshot.visited_on) ||
@@ -49,6 +64,19 @@ export function PropertyReportHistory({
           </select>
         </label>
       )}
+      {!!reports.length && cadences && (
+        <label>
+          Check-in frequency
+          <select value={cadence} onChange={(e) => setCadence(e.target.value)}>
+            <option value="all">All check-ins</option>
+            <option value="weekly">Weekly check-ins</option>
+            <option value="monthly">Monthly check-ins</option>
+          </select>
+        </label>
+      )}
+      <p role="status">
+        {visible.length} published report{visible.length === 1 ? '' : 's'} shown
+      </p>
       {!visible.length && <p>No published reports for this selection.</p>}
       {visible.map((r) => (
         <article className="finding-card" key={r.id}>
@@ -56,6 +84,15 @@ export function PropertyReportHistory({
             {r.snapshot.visited_on} · {r.snapshot.phase} · Published report v
             {r.version}
           </span>
+          {cadences && (
+            <p className="muted">
+              {cadences[r.id] === 'weekly'
+                ? 'Weekly check-in'
+                : cadences[r.id] === 'monthly'
+                  ? 'Monthly check-in'
+                  : 'Property check-in'}
+            </p>
+          )}
           <p>{r.snapshot.summary}</p>
           <details>
             <summary>Inspection checklist</summary>
@@ -70,10 +107,32 @@ export function PropertyReportHistory({
           {r.snapshot.findings.map((f) => (
             <div key={f.id}>
               <h3>
-                {f.location} · {f.severity}
+                {f.category} · {f.location} · {f.severity}
               </h3>
               <p>{f.description}</p>
               <p>Recommended repair: {f.recommendation}</p>
+              {onReview &&
+                relatedReviews
+                  .filter(
+                    (v) => v.source_report_id === r.id && v.finding_id === f.id,
+                  )
+                  .map((v) => (
+                    <button
+                      className="secondary"
+                      key={v.version_id}
+                      onClick={() => onReview(v.version_id)}
+                    >
+                      Review related repair scope
+                    </button>
+                  ))}
+              {onReview &&
+                !relatedReviews.some(
+                  (v) => v.source_report_id === r.id && v.finding_id === f.id,
+                ) && (
+                  <p className="muted">
+                    No issued repair estimate has been shared for this finding.
+                  </p>
+                )}
             </div>
           ))}
           <p className="muted">

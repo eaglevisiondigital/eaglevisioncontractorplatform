@@ -1,5 +1,15 @@
 # Engineering instructions
 
+October28 customer property journey: read docs/PROPERTY_PORTAL_EXPERIENCE.md. The
+existing synthetic property preview now composes customer-scoped CRM locations,
+weekly/monthly reports and the shared issued-review/preference UI. No duplicate
+schema or connected route. Owner reports corrected Setup complete on BOTH Macs,
+local IPv4 and Universal Clipboard working; do not repeat setup/network/offline
+checks. Authenticated pairing and independent recovery are still incomplete,
+never physical-device PASS. Recovery is a separate acceptance gate and does not
+halt unrelated local development. Keep P1/all13 SQL/pending customer migration,
+financial/media/provider/connected gates unchanged. Release1.0 remains closed.
+
 Synthetic Intel compatibility correction: the first public ZIP's Setup failed on
 the actual Monterey/CPython3.14.2 device; no pairing/R0 case started. Read
 docs/TWO_COMPUTER_REHEARSAL_COMPATIBILITY.md. The corrected ZIP uses only the separate

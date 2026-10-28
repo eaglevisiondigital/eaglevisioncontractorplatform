@@ -1,5 +1,20 @@
 # Engineering decisions
 
+## 2026-10-28 · advance local property experience independently of recovery
+
+Use the existing property preview as the integrated customer journey, extending
+the existing customer preview model and extracting its review UI instead of building
+new domain systems. Add a second same-customer CRM location to demonstrate empty
+property scope, three existing-workflow weekly/monthly reports and exact repair
+links. Keep synthetic examples explicit and preference retention page-local. Make
+contractor identity prominent with unchanged Propel attribution. Preserve connected
+route closure, default-deny migration, all13 historical SQL and frozen P1 approval.
+
+Owner reports both corrected Mac setups, local IPv4 and Universal Clipboard complete.
+Do not repeat those checks. Pairing/independent recovery remain unfinished and are
+a separate acceptance gate; useful unrelated local engineering continues. No new
+hosted permission or physical-device acceptance is inferred.
+
 ## 2026-10-21 · separate synthetic Intel dependency lock
 
 The owner's original ZIP/package verification succeeded but setup failed because

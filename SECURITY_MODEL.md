@@ -1,5 +1,20 @@
 # Security model · Phase 2
 
+## Local customer property presentation · October28
+
+Property discovery is synthetic-only and filters CRM contexts by the fixed sample
+customer inside the chosen contractor; property selection rejects foreign IDs.
+Selected property scope also restricts reports, issued versions and preferences.
+Strict report validation rejects foreign bindings and contaminated findings; safe
+projections omit private notes/costs/media and render text literally. UI route,
+contractor selector and filters never establish connected authorization. Connected
+customer routes/capabilities and pending migration stay closed/unchanged. No hosted
+Auth/session or credential retrieval. Duplicate synthetic preferences are rejected;
+no contract, work approval, invoice or debt is created. Preferences live only in the
+current model/page session; reload is not durable production evidence. See
+docs/PROPERTY_PORTAL_EXPERIENCE.md. Monterey remains synthetic-only; owner-reported
+setup/connectivity success is not authenticated pairing or recovery acceptance.
+
 Synthetic compatibility lock: permit cryptography48.0.1 only in this generated-data
 rehearsal, with hash-pinned binary transitive dependencies. It cannot authorize live
 custody or downgrade operational50 requirements. Installation/native dependency

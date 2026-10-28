@@ -1,5 +1,24 @@
 # Production Release 1.0 acceptance checklist
 
+## October28: integrated customer property experience · local only
+
+Functioning /preview/property-portal now demonstrates same-customer property
+selection, weekly/monthly history and filters, reviewed findings/checklists,
+exact repair-estimate/source-report navigation and immutable synthetic approve/
+decline preferences. Existing review/projection/CRM engines are reused. Loading,
+empty/error/reload behavior and all three contractor brands are covered locally.
+See [PROPERTY_PORTAL_EXPERIENCE.md](PROPERTY_PORTAL_EXPERIENCE.md) for genuine focused
+test results and limitations. No new SQL, connected login, production persistence,
+financial/contractual action, media or hosted acceptance is delivered by this UI.
+
+Owner-reported corrected software setup on both physical Macs, local IPv4 and
+Universal Clipboard are complete; earlier setup-pending entries are historical.
+Authenticated pairing and independent recovery remain INCOMPLETE, not device PASS.
+No recovery setup/offline/package/network retest performed. Maintained operational
+custody and exact hosted recovery/P1/P2/customer gates remain separate blockers.
+Frozen P1 approval/four artifacts/all13 historical migrations unchanged; pending
+customer migration unapplied/unauthorized. Release1.0 NOT READY / NOT AUTHORIZED.
+
 Synthetic setup correction: original ZIP verified but Intel Monterey setup FAILED;
 pairing/all seven R0 device cases remain NOT RUN. Corrected synthetic-only48.0.1
 wheel lock has105 local recovery/setup and9 protocol passes, plus exact target-wheel

@@ -1,5 +1,27 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: integrated synthetic customer property journey · October28
+
+[PROPERTY_PORTAL_EXPERIENCE.md](docs/PROPERTY_PORTAL_EXPERIENCE.md) records the functioning
+local increment at /preview/property-portal. Existing CRM locations now support
+same-customer property selection, independent empty states, monthly/frequency
+history filters, checklist/damage/recommendations, exact report-to-issued-repair
+navigation and shared approve/decline synthetic preferences. Existing customer
+login preview reuses the extracted review component. No new database or connected
+route; all financial authority remains off. Local preferences are in memory for
+this page session, not production decision persistence. Contractor identity is
+prominent; the approved unchanged Propel PNG provides platform attribution.
+
+Owner reports corrected software Setup complete on BOTH physical Macs, local IPv4
+connectivity and Universal Clipboard verified. Authenticated pairing and actual
+independent recovery remain incomplete; no physical-device acceptance PASS.
+Preserve completed setup/offline/hash/network evidence without repeating it.
+Recovery is a separate blocked acceptance gate, not a halt to unrelated engineering.
+P1/four artifacts/all13 migrations/pending customer14 unchanged; no hosted request,
+credential retrieval, sign-in, grant, feature, provider, Netlify or deployment action.
+Release1.0 NOT READY / NOT AUTHORIZED; draft PR#1 remains unmerged. Earlier recovery
+setup-pending statements below are historical. Focused results are in the new report.
+
 ## Latest: synthetic Intel dependency compatibility repair
 
 Owner verified the first ZIP/package but Setup failed on Monterey12.7.6/Intel/
