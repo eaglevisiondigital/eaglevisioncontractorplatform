@@ -1,5 +1,21 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: premium customer portal · Phase A design review only · October28
+
+[PROPERTY_PORTAL_DESIGN.md](docs/PROPERTY_PORTAL_DESIGN.md) records the functioning
+isolated /preview/property-portal-design concept. Contractor-first header, wider
+property journal overview, actual synthetic counts/recent check-ins, refined
+navigation/cards/comparison, mobile treatment and compact approved Propel attribution
+reuse existing report/attention/review components. Development controls are collapsed.
+The existing /preview/property-portal and shared domain/model/style bytes remain
+unchanged; the concept uses a separate existing repository instance. Final portal
+replacement requires owner visual approval and has NOT been performed.
+33 browser/20 focused application passes; real desktop/tablet/mobile screenshots,
+Axe/contrast/keyboard/reduced-motion checks and integrity limits are in the validation
+JSON. Prior comparison CI40763735497 passed. No hosted/Auth/credential/database/
+financial/Netlify/provider activity. All13 SQL/pending customer/frozen P1/recovery
+gates unchanged. Release1.0 NOT READY / NOT AUTHORIZED; PR#1 draft/unmerged.
+
 ## Latest: side-by-side inspection comparison · October28 · local synthetic only
 
 [INSPECTION_COMPARISON.md](docs/INSPECTION_COMPARISON.md) records the functioning

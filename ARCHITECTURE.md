@@ -1,5 +1,15 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Premium portal visual concept isolation · October28
+
+The exact /preview/property-portal-design route lazy-loads a presentation-only
+shell and CSS scoped to .portal-concept. It composes the existing customer preview
+model, report history, attention, comparison and issued review components. Separate
+instances of existing Operations/PropertyRepository prevent concept example
+preparation populating the original preview. No duplicate domain system, API or
+connected route. The existing functional preview remains unchanged until owner
+visual approval. See docs/PROPERTY_PORTAL_DESIGN.md.
+
 ## Published inspection comparison · October28
 
 The local inspection-comparison read model composes the existing safe published

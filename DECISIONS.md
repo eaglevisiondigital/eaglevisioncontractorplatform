@@ -1,5 +1,16 @@
 # Engineering decisions
 
+## 2026-10-28 · review premium portal direction in isolation before replacement
+
+Implement one working editorial property-journal concept on a separate local
+preview route. Use actual React components/synthetic evidence and exact approved
+PNG, never generated mockups, invented property photos/scores or contractor logos.
+Scope all CSS and use separate instances of existing repositories. Keep the
+original portal/component/domain/style bytes unchanged. Provide populated real
+browser screenshots and verify contrast, keyboard, reduced motion and mobile.
+Owner visual approval is required BEFORE replacing the existing customer portal;
+all operational/recovery/financial/connected release gates remain separate.
+
 ## 2026-10-28 · compare immutable published evidence without inventing lineage
 
 Reuse the Attention Center and existing customer-safe report/issued-review model

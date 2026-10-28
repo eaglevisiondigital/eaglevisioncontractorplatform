@@ -1,5 +1,13 @@
 # Engineering instructions
 
+Premium portal concept continuation: read docs/PROPERTY_PORTAL_DESIGN.md.
+Phase A exists ONLY at /preview/property-portal-design with separate instances of
+the existing synthetic repository and scoped lazy-loaded CSS. Original functional
+preview/components/domain/styles remain unchanged. Do not replace the existing
+portal before owner visual review/approval. Exact approved PNG, contractor brands,
+source identity/uncertainty and all authorization/financial/recovery gates persist.
+No generated mockups, invented property facts or physical-device PASS.
+
 Side-by-side inspection continuation: read docs/INSPECTION_COMPARISON.md.
 The local property portal compares two exact published report versions through the
 existing attention engine and complete customer/property history. No fuzzy match,

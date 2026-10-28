@@ -1,5 +1,16 @@
 # Production Release 1.0 acceptance checklist
 
+## October28: premium portal Phase A · visual review only
+
+A separately accessible local concept exists at /preview/property-portal-design,
+with real populated synthetic examples and actual browser screenshots. Existing
+functional portal/domain/components/styles remain unchanged. See
+[PROPERTY_PORTAL_DESIGN.md](PROPERTY_PORTAL_DESIGN.md) and validation JSON for33
+browser/20 focused application passes and visual/authorization limits. Phase B
+replacement is NOT APPROVED pending owner review. No hosted/Auth/financial/media/
+provider/Netlify/recovery activation, no migration change or physical-device PASS.
+All13 SQL/pending customer/frozen P1 preserved; Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## October28: side-by-side inspection comparison · local only
 
 The existing synthetic property portal now compares two exact published inspections,

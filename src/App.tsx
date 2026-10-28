@@ -40,6 +40,11 @@ const PropertyPortalPreview = lazy(() =>
     default: m.PropertyPortalPreview,
   })),
 );
+const PropertyPortalDesign = lazy(() =>
+  import('./components/property/PropertyPortalDesign').then((m) => ({
+    default: m.PropertyPortalDesign,
+  })),
+);
 const CustomerPortalPreview = lazy(() =>
   import('./components/property/CustomerPortalPreview').then((m) => ({
     default: m.CustomerPortalPreview,
@@ -163,6 +168,14 @@ export function App() {
     return (
       <Suspense fallback={<main>Loading synthetic customer preview…</main>}>
         <CustomerPortalPreview />
+      </Suspense>
+    );
+  if (path === '/preview/property-portal-design')
+    return (
+      <Suspense
+        fallback={<main>Loading isolated synthetic design concept…</main>}
+      >
+        <PropertyPortalDesign />
       </Suspense>
     );
   if (path === '/preview/property-portal')

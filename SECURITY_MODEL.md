@@ -1,5 +1,15 @@
 # Security model · Phase 2
 
+## Phase A portal concept boundary · October28
+
+A separately routed visual concept consumes only the existing synthetic model and
+strict safe projections. Isolated in-memory instances and scoped CSS preserve the
+original preview. Developer controls remain explicit, collapsed and preview-only;
+synthetic disclosures remain visible. Existing source/financial/uncertainty rules,
+closed connected routes and pending migration remain unchanged. Exact PNG is
+verified, no outside assets/requests are introduced. Visual approval cannot confer
+hosted access or financial/release authority. See docs/PROPERTY_PORTAL_DESIGN.md.
+
 ## Inspection comparison evidence boundary · October28
 
 Comparison consumes exact customer/contractor/property published sources and strict
