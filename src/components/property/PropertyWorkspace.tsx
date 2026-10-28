@@ -145,7 +145,10 @@ function Inspections({
           <button
             key={t}
             className={tab === t ? '' : 'secondary'}
-            onClick={() => setTab(t)}
+            onClick={() => {
+              setTab(t);
+              if (t === 'Inspections') refresh();
+            }}
           >
             {t}
           </button>

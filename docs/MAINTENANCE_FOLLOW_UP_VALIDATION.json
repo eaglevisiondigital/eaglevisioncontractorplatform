@@ -25,7 +25,8 @@
     "preparedVisitNavigation": true,
     "existingJobIssuedBaselineNavigation": true,
     "customerPrivateNoteExclusion": true,
-    "lockedOverviewPhaseAPixelEquality": true
+    "lockedOverviewPhaseAPixelEquality": true,
+    "sharedInspectionRefreshRegression": true
   },
   "checks": {
     "build": true,

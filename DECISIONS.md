@@ -6,6 +6,7 @@ Reuse published report/attention identity, CRM locations, existing staff members
 plan/visit scheduling and job/estimate views. Add only private session metadata per
 exact published finding; no new schema or general task service. Keep separate source
 records even with possible recurrence, manual priority/review and append-only notes.
+The Inspections tab refreshes shared repository state after maintenance preparation.
 An explicit follow-up action prepares one normal inspection draft with blank findings;
 never infer repair, authorize work or dispatch. Existing job baseline links are
 labeled distinctly from finding-specific repair scopes. Customer design and all

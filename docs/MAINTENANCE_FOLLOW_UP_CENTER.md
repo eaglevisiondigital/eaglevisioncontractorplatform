@@ -25,7 +25,8 @@ then **Maintenance & follow-up**. Start the server if necessary with
 3. **Open exact source inspection** switches to existing Inspections, selects the
    source plan/visit, expands and focuses the immutable report and highlights the
    exact finding. It does not substitute the visit's mutable current draft for a
-   historical published version.
+   historical published version. Returning through the Inspections tab also refreshes
+   the shared repository snapshot, so prepared reports/plans/visits are visible.
 4. **Review finding** focuses an internal editor. Manually choose low/normal/high/
    urgent priority, an active same-company staff member (or unassigned), an internal
    follow-up date and pending/reviewed staff review. Save optionally appends a private
@@ -110,7 +111,9 @@ filter combinations, duplicate draft prevention, prepared visit navigation and
 existing exact linked job/baseline editor navigation pass. Real screenshots are
 ignored under artifacts/property/maintenance-{viewport}-{company}.png; desktop and
 mobile were visually inspected. Initial browser failures were exact-label test
-selectors on existing wrapped Field controls, corrected to accessible roles.
+selectors on existing wrapped Field controls, corrected to accessible roles. A
+reproduced stale Inspections-tab snapshot was fixed with a shared repository refresh;
+the final six maintenance cases include this regression on every viewport.
 
 Type/build, lint, format, generated types and migration/property/customer proposal
 integrity pass.129 protected SQL/server/P1/recovery/Netlify/artwork/customer-portal/

@@ -205,6 +205,15 @@ test('property filters, empty/error states and exact linked existing job/issued 
 }) => {
   await page.goto('/preview');
   const center = await examples(page);
+  await page.getByRole('button', { name: 'Inspections', exact: true }).click();
+  await expect(
+    page.getByText('3 immutable published report version(s).', {
+      exact: false,
+    }),
+  ).toBeVisible();
+  await page
+    .getByRole('button', { name: 'Maintenance & follow-up', exact: true })
+    .click();
   await center
     .getByRole('combobox', { name: 'Maintenance property', exact: true })
     .selectOption({ label: '200 Synthetic Maintenance Court' });

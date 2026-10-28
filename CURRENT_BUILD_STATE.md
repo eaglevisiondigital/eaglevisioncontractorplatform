@@ -8,7 +8,8 @@ Exact published finding/CRM context, conservative recurrence, manual priority/ac
 staff responsibility, append-only private notes, follow-up dates and pending/
 scheduled/reviewed states reuse current sources. Explicit CAS-protected scheduling
 creates one ordinary inspection draft; exact report and existing job/issued-baseline
-navigation reuse existing views. No inferred repairs, job/debt creation or dispatch.
+navigation reuse existing views. Returning to Inspections refreshes the shared
+repository snapshot. No inferred repairs, job/debt creation or dispatch.
 65 focused application/72 unique browser cases pass; final six maintenance delta
 cases also pass without double counting. Locked customer portal/artwork and129
 protected paths unchanged. All13 SQL/pending customer/frozen P1/approval and closed
