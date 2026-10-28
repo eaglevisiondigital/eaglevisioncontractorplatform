@@ -1,5 +1,14 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Customer history search composition · October28
+
+The approved synthetic portal opts its existing PropertyReportHistory into a pure
+search over projectPublishedHistory. No new store/index/schema/endpoint; exact
+contractor/customer/property and duplicate validation precedes filtering. Current
+component-only filters survive source/comparison navigation, reset on scope/error
+changes and never alter full-history attention/comparison evidence. Retained Phase A
+uses existing history controls. See docs/INSPECTION_HISTORY_SEARCH.md.
+
 ## Approved premium portal promotion · Phase B · October28
 
 Both local synthetic property preview routes now reuse the approved Phase A

@@ -228,6 +228,7 @@ test('report-only customer preview shows recurring history without private findi
     await expect(history).toContainText('Weekly property check');
     await expect(history).toContainText('Monthly property check');
     await expect(history.locator('article')).toHaveCount(7);
+    await page.getByText('Filter inspection evidence', { exact: true }).click();
     await page
       .getByRole('combobox', { name: 'Service month' })
       .selectOption('2026-11');

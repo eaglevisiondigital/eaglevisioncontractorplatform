@@ -1,5 +1,14 @@
 import { useState, useSyncExternalStore } from 'react';
+import type { PublishedReport } from '../../domain/property/inspections';
 import type { PropertyReportPage } from '../../domain/property/report-page';
+import { InspectionHistorySearch } from './InspectionHistorySearch';
+import {
+  searchInspectionHistory,
+  emptyHistoryFilters,
+  recordedFrequency,
+  type HistoryFilters,
+} from '../../domain/property/history-search';
+import type { ReportBoundary } from '../../domain/property/report-page';
 import type { PropertyReportSession } from '../../lib/property-report-session';
 
 export function PropertyReportHistory({
@@ -9,6 +18,7 @@ export function PropertyReportHistory({
   onReview,
   focusedReportId,
   onCompare,
+  search,
 }: {
   reports: PropertyReportPage['reports'];
   cadences?: Record<string, string>;
@@ -20,6 +30,14 @@ export function PropertyReportHistory({
   onReview?: (versionId: string) => void;
   focusedReportId?: string | null;
   onCompare?: (reportId: string) => void;
+  search?: {
+    context: ReportBoundary & { reports: boolean };
+    sourceReports: PublishedReport[];
+    filters: HistoryFilters;
+    onChange(filters: HistoryFilters): void;
+    onReport(id: string, version: number): void;
+    onAttention(): void;
+  };
 }) {
   const [month, setMonth] = useState('all');
   const [cadence, setCadence] = useState('all');
@@ -29,12 +47,39 @@ export function PropertyReportHistory({
     .sort()
     .reverse();
   const activeMonth = months.includes(month) ? month : 'all';
-  const visible = reports
+  let searchResult: ReturnType<typeof searchInspectionHistory> | null = null;
+  let searchError = '';
+  if (search) {
+    try {
+      searchResult = searchInspectionHistory(
+        search.sourceReports,
+        search.context,
+        emptyHistoryFilters,
+        cadences,
+      );
+      searchResult = searchInspectionHistory(
+        search.sourceReports,
+        search.context,
+        focusedReportId ? emptyHistoryFilters : search.filters,
+        cadences,
+      );
+    } catch (e) {
+      searchError =
+        e instanceof Error ? e.message : 'History search is unavailable.';
+    }
+  }
+  const visible = (
+    search ? (searchError ? [] : (searchResult?.reports ?? [])) : reports
+  )
     .filter(
       (r) =>
-        activeMonth === 'all' || r.snapshot.visited_on.startsWith(activeMonth),
+        !!search ||
+        activeMonth === 'all' ||
+        r.snapshot.visited_on.startsWith(activeMonth),
     )
-    .filter((r) => cadence === 'all' || cadences?.[r.id] === cadence)
+    .filter(
+      (r) => !!search || cadence === 'all' || cadences?.[r.id] === cadence,
+    )
     .filter((r) => !focusedReportId || r.id === focusedReportId)
     .sort(
       (a, b) =>
@@ -50,7 +95,15 @@ export function PropertyReportHistory({
         Contractor-reviewed reports for this property. Each published version is
         retained.
       </p>
-      {!!reports.length && (
+      {search && !focusedReportId && (
+        <InspectionHistorySearch
+          filters={search.filters}
+          onChange={search.onChange}
+          result={searchResult}
+          error={searchError}
+        />
+      )}
+      {!search && !!reports.length && (
         <label>
           Service month
           <select
@@ -66,7 +119,7 @@ export function PropertyReportHistory({
           </select>
         </label>
       )}
-      {!!reports.length && cadences && (
+      {!search && !!reports.length && cadences && (
         <label>
           Check-in frequency
           <select value={cadence} onChange={(e) => setCadence(e.target.value)}>
@@ -78,8 +131,20 @@ export function PropertyReportHistory({
       )}
       <p role="status">
         {visible.length} published report{visible.length === 1 ? '' : 's'} shown
+        {search && !focusedReportId && !searchError
+          ? ' of ' +
+            searchResult?.available +
+            ' available · matching report versions'
+          : ''}
       </p>
-      {!visible.length && <p>No published reports for this selection.</p>}
+      {!visible.length && !searchError && (
+        <p>No published reports for this selection.</p>
+      )}
+      {search && !focusedReportId && (
+        <button className="secondary" onClick={search.onAttention}>
+          Open property Attention Center
+        </button>
+      )}
       {visible.map((r) => (
         <article
           className="finding-card"
@@ -93,14 +158,29 @@ export function PropertyReportHistory({
           </span>
           {cadences && (
             <p className="muted">
-              {cadences[r.id] === 'weekly'
-                ? 'Weekly check-in'
-                : cadences[r.id] === 'monthly'
-                  ? 'Monthly check-in'
-                  : 'Property check-in'}
+              {search
+                ? recordedFrequency(cadences[r.id]) + ' check-in'
+                : cadences[r.id] === 'weekly'
+                  ? 'Weekly check-in'
+                  : cadences[r.id] === 'monthly'
+                    ? 'Monthly check-in'
+                    : 'Property check-in'}
             </p>
           )}
           <p>{r.snapshot.summary}</p>
+          {search && (
+            <p className="muted">
+              Report {r.id} · Published version {r.version}
+            </p>
+          )}
+          {search && !focusedReportId && (
+            <button
+              className="secondary"
+              onClick={() => search.onReport(r.id, r.version)}
+            >
+              Open exact published report · v{r.version}
+            </button>
+          )}
           {onCompare && reports.length > 1 && (
             <button className="secondary" onClick={() => onCompare(r.id)}>
               Compare this inspection

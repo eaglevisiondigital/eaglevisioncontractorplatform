@@ -9,6 +9,7 @@ import { PropertyReportHistory } from './PropertyReportHistory';
 import { PropertyAttentionCenter } from './PropertyAttentionCenter';
 import { InspectionComparison } from './InspectionComparison';
 import { CustomerEstimateReview } from './CustomerEstimateReview';
+import { emptyHistoryFilters } from '../../domain/property/history-search';
 import './property-portal-design.css';
 
 type View = 'overview' | 'reports' | 'attention' | 'compare' | 'estimates';
@@ -123,7 +124,12 @@ export function PropertyPortalDesign({
           </div>
         </div>
       </header>
-      <ConceptExperience key={org} company={company} onCompany={setOrg} />
+      <ConceptExperience
+        key={org}
+        company={company}
+        onCompany={setOrg}
+        historySearch={approved}
+      />
       <footer className="concept-footer">
         <div>
           <PlatformBrand transparent={approved} />
@@ -148,9 +154,11 @@ export function PropertyPortalDesign({
 function ConceptExperience({
   company,
   onCompany,
+  historySearch,
 }: {
   company: CompanyProfile;
   onCompany(id: string): void;
+  historySearch: boolean;
 }) {
   // Separate instance prevents concept preparation changing the existing preview's in-memory records.
   const [model] = useState(
@@ -172,6 +180,9 @@ function ConceptExperience({
   );
   useEffect(() => () => model.logout(), [model]);
   const [, render] = useState(0);
+  const [historyFilters, setHistoryFilters] = useState({
+    ...emptyHistoryFilters,
+  });
   const [view, setView] = useState<View>('overview');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -373,6 +384,7 @@ function ConceptExperience({
               setError('');
               navigate('overview');
               setPair(['', '']);
+              setHistoryFilters({ ...emptyHistoryFilters });
               resource.reload();
             }}
           >
@@ -396,6 +408,7 @@ function ConceptExperience({
             value={data.context.location_id}
             onChange={(e) => {
               model.selectProperty(e.target.value);
+              setHistoryFilters({ ...emptyHistoryFilters });
               navigate('overview');
               setPair(['', '']);
               render((n) => n + 1);
@@ -633,6 +646,25 @@ function ConceptExperience({
                 reports={data.history}
                 cadences={data.cadences}
                 focusedReportId={reportId}
+                search={
+                  historySearch
+                    ? {
+                        context: data.context,
+                        sourceReports: data.reports,
+                        filters: historyFilters,
+                        onChange: setHistoryFilters,
+                        onReport: (id, version) => {
+                          if (
+                            data.history.some(
+                              (r) => r.id === id && r.version === version,
+                            )
+                          )
+                            openReport(id);
+                        },
+                        onAttention: () => navigate('attention'),
+                      }
+                    : undefined
+                }
                 relatedReviews={data.reviews}
                 onReview={openReview}
                 onCompare={(id) => compareSources(id, '')}

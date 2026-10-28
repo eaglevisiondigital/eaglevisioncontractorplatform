@@ -1,5 +1,14 @@
 # Engineering instructions
 
+Inspection history search continuation: read docs/INSPECTION_HISTORY_SEARCH.md.
+Approved local portal searches exact property published projections only. Text is
+literal; category/severity/location/recommendation filters must match one finding.
+Counts are available report versions, never complete history or repair proof.
+Source ID/version navigation bypasses filters then restores them; property/company/
+error reload resets search. Phase A history remains unchanged, visual design locked.
+Preserve all13 SQL/pending customer/frozen P1/approval and closed connected/financial/
+recovery/Netlify gates; no device PASS or hosted activation.
+
 Phase B premium portal continuation: read docs/PROPERTY_PORTAL_PHASE_B.md.
 Owner approved Phase A and local synthetic replacement. /preview/property-portal
 now shares the exact approved component with retained /preview/property-portal-design.

@@ -1,5 +1,15 @@
 # Engineering decisions
 
+## October28 · published inspection history search
+
+Extend existing approved synthetic report history with bounded literal text and
+source-backed date/frequency/finding/recommendation filters. Combine concern facets
+within one finding; retain exact source IDs/versions and incomplete-history warnings.
+Reuse existing report cards/comparison/attention; no persistent index or new schema.
+The approved appearance/logo remains locked; retained Phase A controls are preserved.
+All connected/SQL/P1/financial/recovery/Netlify gates remain unchanged. See
+docs/INSPECTION_HISTORY_SEARCH.md and its validation record.
+
 ## 2026-10-28 · promote approved Phase A with only logo-matte correction
 
 Record the owner's explicit design/replacement approval; do not request it again.

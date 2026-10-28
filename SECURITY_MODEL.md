@@ -1,5 +1,15 @@
 # Security model · Phase 2
 
+## Customer inspection search boundary · October28
+
+Search projects authorized published sources before indexing allowed text in memory;
+foreign/duplicate/malformed/nested private evidence fails closed. Root private fields
+are omitted, never searched. Concern facets match the same finding; literal text
+confers no identity or issue status. Counts disclose incomplete available history.
+Source navigation checks exact current report ID/version; scope/error changes clear
+filters. No connected route, credential, permission or financial execution change.
+See docs/INSPECTION_HISTORY_SEARCH.md; all existing release/recovery gates persist.
+
 ## Phase B local presentation approval · October28
 
 Owner visual approval authorizes the synthetic portal presentation replacement only.

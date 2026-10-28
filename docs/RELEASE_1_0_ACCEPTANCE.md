@@ -1,5 +1,15 @@
 # Production Release 1.0 acceptance checklist
 
+## October28: customer inspection history search · locally implemented
+
+Approved synthetic portal now searches/filter published evidence with exact report/
+version navigation, available-history limits and same-finding concern facets. See
+INSPECTION_HISTORY_SEARCH.md and validation JSON for74 application/60 unique browser
+passes and preserved design/source boundaries. No hosted customer acceptance,
+authenticated two-Mac pairing/recovery or launch permission follows. All13 SQL,
+pending customer/frozen P1/financial/provider/Netlify gates unchanged. Release1.0
+remains NOT READY / NOT AUTHORIZED.
+
 ## October28: premium portal Phase B · locally implemented after owner approval
 
 Owner approved Phase A and synthetic portal replacement. /preview/property-portal

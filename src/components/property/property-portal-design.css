@@ -1219,3 +1219,36 @@
     padding: 44px 24px;
   }
 }
+
+/* Inspection search extends the approved history controls only. */
+.portal-concept .history-search input {
+  font: inherit;
+  display: block;
+  padding: 12px 13px;
+  min-height: 46px;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  border: 1px solid #cbd6ce;
+  border-radius: 9px;
+  color: var(--concept-ink);
+  background: white;
+  margin-top: 7px;
+}
+.portal-concept .history-search-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 235px), 1fr));
+  gap: 0 20px;
+}
+.portal-concept .history-search-grid label {
+  min-width: 0;
+}
+.portal-concept .history-search-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0;
+}
+.portal-concept .history-search-actions button {
+  overflow-wrap: anywhere;
+}

@@ -18,6 +18,7 @@ test('property journey joins check-in history, exact repair scope and review-onl
     name: 'Published inspection history',
   });
   await expect(history.locator('article')).toHaveCount(7);
+  await page.getByText('Filter inspection evidence', { exact: true }).click();
   await page
     .getByRole('combobox', { name: 'Check-in frequency' })
     .selectOption('weekly');

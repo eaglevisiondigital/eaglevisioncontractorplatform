@@ -1,5 +1,18 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: customer inspection history search · October28 · local synthetic only
+
+[INSPECTION_HISTORY_SEARCH.md](docs/INSPECTION_HISTORY_SEARCH.md) records functioning
+published-text/date/frequency/category/severity/location/recommendation filtering
+in Property reports. Same-finding concern filters, available-version counts, clear/
+reset controls and exact source/comparison/Attention Center navigation preserve the
+property boundary. Saved filters survive source navigation; scope changes clear them.
+Approved design/logo and retained Phase A remain unchanged.74 focused application/
+60 unique browser cases pass; six final search delta cases also pass, not additive.
+All13 SQL/pending customer/frozen P1/recovery/Netlify/financial gates remain unchanged.
+No hosted/Auth/credential/database/provider/deployment/merge action. Release1.0
+NOT READY / NOT AUTHORIZED; actual authenticated pairing/recovery remain unfinished.
+
 ## Latest: owner-approved premium portal · Phase B complete locally · October28
 
 [PROPERTY_PORTAL_PHASE_B.md](docs/PROPERTY_PORTAL_PHASE_B.md) supersedes the earlier
