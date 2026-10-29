@@ -719,23 +719,10 @@ function VisitEditor({
             Create report revision
           </button>
         )}
-        {v.content.findings
-          .filter((f) => f.customer_visible)
-          .map((f) => (
-            <button
-              className="secondary"
-              key={f.id}
-              disabled={task.busy}
-              onClick={() =>
-                run(
-                  () => repo.findingEstimate(org, v.id, f.id),
-                  'Repair added to existing estimate draft; price requires review',
-                )
-              }
-            >
-              Draft repair estimate · {f.location}
-            </button>
-          ))}
+        <p className="muted">
+          Prepare repair estimates from Maintenance &amp; follow-up after
+          reviewing the exact published finding.
+        </p>
       </div>
       {task.message && <p role="status">{task.message}</p>}
     </section>

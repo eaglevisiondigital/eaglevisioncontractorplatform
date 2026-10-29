@@ -1,5 +1,15 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Exact maintenance repair handoff · October28
+
+The maintenance queue prepares a separate draft through the existing Phase3Repository
+engine after explicit source review/confirmation. PropertyRepository session reviews/
+attempts and Phase3 staff-only origin metadata bind exact published evidence, CRM,
+plan/job, staff and draft/line identity. A final synchronous create checkpoint and
+existing save CAS prevent stale/duplicate mutations; uncertain attempts reconcile
+by exact retained target only. No schema or parallel estimating system. See
+docs/MAINTENANCE_REPAIR_DRAFT.md. No connected/financial/recovery activation.
+
 ## Local contractor maintenance composition · October28
 
 PropertyWorkspace composes a derived maintenance queue from the same CRM locations,

@@ -1,3 +1,4 @@
+import { blankLine } from '../domain/estimating/calculation';
 import { PropertyRepository, propertyRepository } from './property';
 import { previewOperations } from './operations';
 import { sampleCompanies, type CompanyProfile } from '../domain/platform';
@@ -228,11 +229,20 @@ export class CustomerPortalPreviewModel {
     if (this.versions.length) return;
     this.versions = [s.bundle.version];
     const finding = report.findings[0];
-    let bundle = await this.repo.findingEstimate(
+    // Explicit existing customer-preview fixture, independent of staff repair preparation.
+    let bundle = await this.repo.estimates.get(
       c.organization_id,
-      report.visit_id,
-      finding.id,
+      s.bundle.estimate.id,
     );
+    if (bundle.version.status !== 'draft')
+      throw Error('Synthetic fixture draft unavailable');
+    bundle = await this.repo.estimates.save(c.organization_id, bundle, {
+      ...bundle.version.payload,
+      lines: [
+        ...bundle.version.payload.lines,
+        { ...blankLine(), description: finding.recommendation },
+      ],
+    });
     const lines = bundle.version.payload.lines.map((l, i, a) =>
       i === a.length - 1
         ? { ...l, unit_price_minor: 12500, unit_cost_minor: 10000 }

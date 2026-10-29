@@ -475,19 +475,33 @@ it('NMI is preferred without activating either provider or changing independent 
     await expect(c.fetchApprovedQuote()).rejects.toThrow('503');
   }
 });
-it('repair recommendation creates one existing draft scope line without mutating its issued source', async () => {
+it('repair preparation requires a published exact source and preserves the issued baseline', async () => {
   const r = await fixture(),
     s = r.read(org),
-    v = s.visits[0],
-    f = v.content.findings[0];
-  const b = await r.findingEstimate(org, v.id, f.id);
-  expect(
-    b.version.payload.lines.some((l) => l.internal_note.includes(f.id)),
-  ).toBe(true);
+    actor = org + '-owner';
+  let v = s.visits[0];
+  r.saveVisit(org, v, {
+    ...v.content,
+    checklist: v.content.checklist.map((c) => ({ ...c, completed: true })),
+  });
+  v = r.read(org).visits[0];
+  r.submit(org, v);
+  const report = r.publish(org, r.read(org).visits[0]);
+  const source = {
+    organization_id: org,
+    customer_id: report.customer_id,
+    location_id: report.location_id,
+    report_id: report.id,
+    report_version: report.version,
+    finding_id: report.findings[0].id,
+  };
+  const review = await r.reviewRepair(company, actor, source, 0);
+  const b = await r.findingEstimate(company, actor, source, review.id);
   expect(b.version.status).toBe('draft');
-  await expect(r.findingEstimate(org, v.id, f.id)).rejects.toThrow(
-    'already drafted',
-  );
+  expect(b.version.payload.lines).toHaveLength(1);
+  expect(
+    (await r.findingEstimate(company, actor, source, review.id)).version.id,
+  ).toBe(b.version.id);
   expect(
     (await r.estimates.get(org, s.bundle.estimate.id, s.bundle.version.id))
       .version,

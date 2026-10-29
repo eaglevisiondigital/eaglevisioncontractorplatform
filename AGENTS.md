@@ -1,5 +1,13 @@
 # Engineering instructions
 
+Repair-draft continuation: read docs/MAINTENANCE_REPAIR_DRAFT.md. Maintenance
+preparation requires exact published source/review token/current reviewer and CAS;
+one separate existing-engine draft per source, structured staff-only provenance.
+Never restore mutable-visit/default-estimate/note-parsing shortcuts. UNCERTAIN holds
+require explicit exact-target read reconciliation; no retry/fallback. Preserve source
+line/customer/property/version and issued baselines; repair issuance/duplication off.
+Approved portal/all13 SQL/pending customer/frozen P1/approval/recovery/Netlify remain.
+
 Maintenance continuation: read docs/MAINTENANCE_FOLLOW_UP_CENTER.md.
 /preview > Property operations > Maintenance & follow-up is session-only synthetic
 triage keyed to exact published report/version/finding and CRM property. Existing

@@ -1,5 +1,16 @@
 # Security model · Phase 2
 
+## Maintenance repair provenance boundary · October28
+
+Published source and current active reviewer/CRM authority precede review and each
+repair commit. Reviewed tokens bind exact property/report/version/finding, CAS and
+job baseline; inputs are cloned across waits. Structured private origin metadata
+replaces note parsing, with one reserved attempt per source and no UNKNOWN retry.
+Existing engine saves preserve customer/property/version/source-line; repair issue/
+duplicate commands reject. Exact navigation never selects a default estimate.
+Internal draft data stays outside customer projections. See
+MAINTENANCE_REPAIR_DRAFT.md; all hosted/financial/P1/recovery/Netlify gates persist.
+
 ## Synthetic maintenance review boundary · October28
 
 Local reviewer commands require current active same-company owner/admin or office/

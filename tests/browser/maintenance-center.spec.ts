@@ -94,6 +94,7 @@ test('all companies manually triage, schedule one draft and open exact immutable
     await review
       .getByRole('button', { name: 'Save internal review', exact: true })
       .click();
+    await expect(review).toHaveCount(1);
     await expect(review).toContainText('Triage revision 1');
     await review
       .getByText('Internal follow-up notes (1)', { exact: true })

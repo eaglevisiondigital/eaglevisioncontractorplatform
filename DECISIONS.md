@@ -1,5 +1,15 @@
 # Engineering decisions
 
+## October28 · traceable separate repair drafts
+
+Require explicit published-finding review and staff confirmation; create one separate
+existing-engine draft per exact source rather than append repairs to a default
+estimate or alter an issued baseline. Retain structured source/job/staff/target/line
+provenance outside customer projections, with final current-authority/CAS guards.
+Reserve before awaiting, retain uncertain evidence and reconcile only exact targets;
+never blindly retry. Bidirectional navigation reuses existing inspection/estimate
+views. New repair issuance/duplication remain disabled. No schema or hosted change.
+
 ## October28 · bounded contractor maintenance triage
 
 Reuse published report/attention identity, CRM locations, existing staff memberships,

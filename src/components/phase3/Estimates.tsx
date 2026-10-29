@@ -27,11 +27,13 @@ export function Estimates({
   company,
   canIssue,
   initialBundle,
+  draftOnly = false,
 }: {
   repo: Phase3Repository;
   company: CompanyProfile;
   canIssue: boolean;
   initialBundle?: EstimateBundle;
+  draftOnly?: boolean;
 }) {
   const [query, setQuery] = useState(''),
     [status, setStatus] = useState('all'),
@@ -90,7 +92,8 @@ export function Estimates({
         initial={selected}
         repo={repo}
         company={company}
-        canIssue={canIssue}
+        canIssue={canIssue && !draftOnly}
+        draftOnly={draftOnly}
         catalog={data.data?.catalog ?? []}
         taxes={data.data?.taxes ?? []}
         defaults={data.data?.defaults}
@@ -242,6 +245,7 @@ function EstimateEditor({
   repo,
   company,
   canIssue,
+  draftOnly,
   catalog,
   taxes,
   defaults,
@@ -249,6 +253,7 @@ function EstimateEditor({
   onClose,
 }: {
   initial: EstimateBundle;
+  draftOnly: boolean;
   repo: Phase3Repository;
   company: CompanyProfile;
   canIssue: boolean;
@@ -278,10 +283,24 @@ function EstimateEditor({
         ),
         documents: await repo.cleanDocuments(company.id),
         history: await repo.history(company.id, initial.estimate.id),
+        repair: repo.sample
+          ? repo.repairOrigin(
+              company.id,
+              initial.estimate.id,
+              initial.version.id,
+            )
+          : null,
       }),
-      [repo, company.id, p.customer_id, initial.estimate.id],
+      [
+        repo,
+        company.id,
+        p.customer_id,
+        initial.estimate.id,
+        initial.version.id,
+      ],
     ),
   );
+  const repairOnly = draftOnly || !!resources.data?.repair;
   const update = (patch: Partial<EstimateInput>) =>
     setP((prev) => ({ ...prev, ...patch }));
   const line = (id: string, patch: Partial<EstimateLine>) =>
@@ -321,10 +340,26 @@ function EstimateEditor({
               : `Saved revision ${initial.version.lock_revision}`}
           </p>
         </div>
-        <button className="secondary" onClick={onClose}>
-          All estimates
-        </button>
+        {!draftOnly && (
+          <button className="secondary" onClick={onClose}>
+            All estimates
+          </button>
+        )}
       </div>
+      {resources.data?.repair && (
+        <details className="p3-notice">
+          <summary>Exact maintenance origin</summary>
+          <p>
+            Exact maintenance origin: report{' '}
+            {resources.data.repair.source.report_id} · Published v
+            {resources.data.repair.source.report_version} · Finding{' '}
+            {resources.data.repair.source.finding_id} · Property{' '}
+            {resources.data.repair.source.location_id} · Prepared by{' '}
+            {resources.data.repair.prepared_by}. Private draft; no approval or
+            repair completion.
+          </p>
+        </details>
+      )}
       <div className="p3-tabs">
         {(['build', 'preview', 'history'] as const).map((t) => (
           <button
@@ -407,6 +442,7 @@ function EstimateEditor({
                 </Field>
                 <Field label="Estimate customer">
                   <select
+                    disabled={repairOnly}
                     value={p.customer_id}
                     onChange={(e) =>
                       update({ customer_id: e.target.value, location_id: null })
@@ -421,6 +457,7 @@ function EstimateEditor({
                 </Field>
                 <Field label="Job location">
                   <select
+                    disabled={repairOnly}
                     value={p.location_id ?? ''}
                     onChange={(e) =>
                       update({ location_id: e.target.value || null })
@@ -1067,7 +1104,7 @@ function EstimateEditor({
             >
               Save estimate draft
             </button>
-            {canIssue && (
+            {canIssue && !repairOnly && (
               <button
                 className="secondary"
                 disabled={task.busy || dirty || !!error}
@@ -1129,7 +1166,7 @@ function EstimateEditor({
         )}
         <button
           className="secondary"
-          disabled={task.busy || dirty}
+          disabled={repairOnly || task.busy || dirty}
           onClick={() =>
             void task.run(
               async () => onChange(await repo.duplicate(company, initial)),

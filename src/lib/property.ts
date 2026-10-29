@@ -1,8 +1,13 @@
+import type {
+  RepairReview,
+  RepairAttempt,
+  RepairProvenance,
+} from '../domain/property/repair-draft';
 import type { Operations } from './operations';
 import { phase3Repository, type Phase3Repository } from './phase3';
 import type { CompanyProfile } from '../domain/platform';
 import type { EstimateBundle } from '../domain/estimating/types';
-import { blankLine } from '../domain/estimating/calculation';
+import { blankEstimate, blankLine } from '../domain/estimating/calculation';
 import { ReleasePreview } from '../domain/release/preview';
 import { Temporal } from '@js-temporal/polyfill';
 import {
@@ -61,6 +66,8 @@ export class PropertyRepository {
   private initializing = new Map<string, Promise<void>>();
   private financial = new Map<string, ReleasePreview>();
   private reviewing = new Set<string>();
+  private repairReviews = new Map<string, RepairReview>();
+  private repairAttempts = new Map<string, RepairAttempt>();
   private maintenanceRecords = new Map<string, MaintenanceRecord>();
   constructor(
     readonly operations: Operations,
@@ -405,30 +412,251 @@ export class PropertyRepository {
     });
     Object.assign(old, clone(p), { revision: old.revision + 1 });
   }
-  async findingEstimate(org: string, visitId: string, findingId: string) {
-    const s = this.state(org),
-      v = s.visits.find((x) => x.id === visitId),
-      f = v?.content.findings.find((f) => f.id === findingId);
-    if (!f) throw Error('Finding unavailable');
-    let b = await this.estimates.get(org, s.bundle.estimate.id);
+  private repairGuard(
+    org: string,
+    actor: string,
+    review: RepairReview,
+    checkRevision: boolean,
+  ) {
+    this.maintenanceAuthority(org, actor);
+    const bound = this.maintenanceSource(org, review.source);
+    this.operations.syntheticProperty(
+      org,
+      review.source.customer_id,
+      review.source.location_id,
+    );
     if (
-      b.version.payload.lines.some((l) =>
-        l.internal_note.includes(`finding ${findingId};`),
-      )
+      review.actor !== actor ||
+      bound.plan.job_id !== review.job_id ||
+      (checkRevision && bound.plan.revision !== review.plan_revision) ||
+      JSON.stringify(bound.report) !== review.evidence
     )
-      throw Error('Repair scope already drafted');
-    if (b.version.status !== 'draft') b = await this.estimates.revise(org, b);
-    const line = {
-      ...blankLine(),
-      description: f.recommendation,
-      internal_note: `Inspection ${visitId}, finding ${findingId}; pricing requires review`,
-      unit_cost_minor: 0,
+      throw Error(
+        'Repair source or plan changed. Review exact evidence again.',
+      );
+    if (
+      checkRevision &&
+      (
+        this.maintenanceRecords.get(maintenanceKey(review.source)) ??
+        blankMaintenance()
+      ).revision !== review.maintenance_revision
+    )
+      throw Error('Maintenance item changed. Review again before preparing.');
+    if (review.job_id) {
+      const job = this.estimates.syntheticJob(org, review.job_id);
+      if (!job) throw Error('Linked job unavailable.');
+      // The baseline relationship was checked during review; it is immutable.
+      if (job.baseline.issued_version_id !== review.job_baseline_version_id)
+        throw Error('Linked job baseline changed.');
+    }
+    return bound;
+  }
+  async reviewRepair(
+    company: CompanyProfile,
+    actor: string,
+    source: MaintenanceSource,
+    revision: number,
+  ) {
+    company = clone(company);
+    source = clone(source);
+    const org = company.id;
+    this.maintenanceAuthority(org, actor);
+    const bound = clone(this.maintenanceSource(org, source));
+    if (
+      !Number.isSafeInteger(revision) ||
+      revision < 0 ||
+      (
+        this.maintenanceRecords.get(maintenanceKey(source)) ??
+        blankMaintenance()
+      ).revision !== revision
+    )
+      throw Error('Maintenance item changed. Reload before review.');
+    if (this.repairAttempts.has(maintenanceKey(source)))
+      throw Error(
+        'Repair preparation already attempted. Open or reconcile the retained attempt.',
+      );
+    const baseline = bound.plan.job_id
+      ? (this.estimates.syntheticJob(org, bound.plan.job_id)?.baseline
+          .issued_version_id ?? null)
+      : null;
+    if (bound.plan.job_id) await this.maintenanceWork(org, actor, source);
+    const settings = await this.estimates.defaults(org);
+    const payload = blankEstimate(source.customer_id, settings.currency);
+    payload.location_id = source.location_id;
+    payload.project.name = ('Repair review · ' + bound.finding.location).slice(
+      0,
+      200,
+    );
+    payload.project.description =
+      'Proposed scope only; all quantities and pricing require contractor review.';
+    payload.lines = [
+      {
+        ...blankLine('service'),
+        description:
+          bound.finding.recommendation || 'Prepare repair scope after review',
+        quantity_milli: 1000,
+        unit_price_minor: 0,
+      },
+    ];
+    // Existing engine requires a positive quantity; one unit is an unmeasured placeholder.
+    const review: RepairReview = {
+      id: crypto.randomUUID(),
+      source: clone(source),
+      maintenance_revision: revision,
+      plan_revision: bound.plan.revision,
+      job_baseline_version_id: baseline,
+      job_id: bound.plan.job_id,
+      actor,
+      evidence: JSON.stringify(bound.report),
+      payload,
     };
-    const saved = await this.estimates.save(org, b, {
-      ...b.version.payload,
-      lines: [...b.version.payload.lines, line],
-    });
-    return clone(saved);
+    this.repairGuard(org, actor, review, true);
+    this.repairReviews.set(review.id, clone(review));
+    return clone(review);
+  }
+  async findingEstimate(
+    company: CompanyProfile,
+    actor: string,
+    source: MaintenanceSource,
+    reviewId: string,
+  ) {
+    company = clone(company);
+    source = clone(source);
+    const org = company.id;
+    this.maintenanceAuthority(org, actor);
+    this.maintenanceSource(org, source);
+    const key = maintenanceKey(source),
+      prior = this.repairAttempts.get(key);
+    if (prior) {
+      if (prior.review.id !== reviewId || prior.review.actor !== actor)
+        throw Error(
+          'Repair already attempted for this exact source. Open or reconcile it.',
+        );
+      if (prior.status !== 'prepared')
+        throw Error(
+          'Preparation is interrupted or uncertain. Reconcile explicitly; do not retry.',
+        );
+      return (await this.openRepair(org, actor, source)).bundle;
+    }
+    const review = this.repairReviews.get(reviewId);
+    if (!review || maintenanceKey(review.source) !== key)
+      throw Error('Exact repair review required.');
+    this.repairGuard(org, actor, review, true);
+    const attempt: RepairAttempt = {
+      review: clone(review),
+      status: 'preparing',
+      provenance: null,
+    };
+    this.repairAttempts.set(key, attempt); // Reserve before any awaited operation; never delete on uncertainty.
+    try {
+      const payload = clone(review.payload);
+      payload.internal_notes = ''; // Relationships are structured metadata, not note text.
+      const bundle = await this.estimates.createSyntheticRepair(
+        company,
+        payload,
+        (candidate) => {
+          this.repairGuard(org, actor, review, true);
+          const origin: RepairProvenance = {
+            source: clone(source),
+            job_id: review.job_id,
+            estimate_id: candidate.estimate.id,
+            draft_version_id: candidate.version.id,
+            draft_version_number: candidate.version.version_number,
+            line_id: payload.lines[0].id,
+            prepared_by: actor,
+            prepared_at: new Date().toISOString(),
+            preparation_id: review.id,
+          };
+          attempt.provenance = clone(origin);
+          return {
+            origin,
+            authorize: () => {
+              this.repairGuard(org, actor, review, false);
+            },
+          };
+        },
+      );
+      this.validateRepairBundle(org, source, attempt, bundle);
+      attempt.status = 'prepared';
+      return clone(bundle);
+    } catch (e) {
+      attempt.status = 'uncertain';
+      throw Error(
+        'Preparation stopped. Reconcile retained evidence; do not retry. ' +
+          (e instanceof Error ? e.message : 'Unknown result.'),
+        { cause: e },
+      );
+    }
+  }
+  private validateRepairBundle(
+    org: string,
+    source: MaintenanceSource,
+    attempt: RepairAttempt,
+    bundle: EstimateBundle,
+  ) {
+    const p = attempt.provenance;
+    const origin =
+      p && this.estimates.repairOrigin(org, p.estimate_id, p.draft_version_id);
+    if (
+      !p ||
+      maintenanceKey(p.source) !== maintenanceKey(attempt.review.source) ||
+      !origin ||
+      JSON.stringify(origin) !== JSON.stringify(p) ||
+      bundle.estimate.id !== p.estimate_id ||
+      bundle.estimate.organization_id !== org ||
+      bundle.estimate.customer_id !== source.customer_id ||
+      bundle.estimate.status !== 'draft' ||
+      bundle.estimate.current_version_id !== p.draft_version_id ||
+      bundle.version.id !== p.draft_version_id ||
+      bundle.version.estimate_id !== p.estimate_id ||
+      bundle.version.organization_id !== org ||
+      bundle.version.version_number !== p.draft_version_number ||
+      bundle.version.status !== 'draft' ||
+      bundle.version.payload.customer_id !== source.customer_id ||
+      bundle.version.payload.location_id !== source.location_id ||
+      bundle.version.payload.lines.filter((l) => l.id === p.line_id).length !==
+        1
+    )
+      throw Error(
+        'Exact repair draft binding unavailable. No substitute estimate selected.',
+      );
+  }
+  repairAttempt(org: string, actor: string, source: MaintenanceSource) {
+    this.maintenanceAuthority(org, actor);
+    this.maintenanceSource(org, source);
+    return clone(this.repairAttempts.get(maintenanceKey(source)) ?? null);
+  }
+  async openRepair(
+    org: string,
+    actor: string,
+    source: MaintenanceSource,
+    reconcile = false,
+  ) {
+    source = clone(source);
+    this.maintenanceAuthority(org, actor);
+    this.maintenanceSource(org, source);
+    const attempt = this.repairAttempts.get(maintenanceKey(source));
+    if (!attempt || (!reconcile && attempt.status !== 'prepared'))
+      throw Error('No confirmed repair draft. Reconcile the retained attempt.');
+    if (attempt.status === 'preparing')
+      throw Error(
+        'Preparation still running. Wait, then reconcile; do not retry.',
+      );
+    const p = attempt.provenance;
+    if (!p)
+      throw Error(
+        'No committed draft identity was retained. No retry is permitted; inspect the disposable session.',
+      );
+    const bundle = await this.estimates.get(
+      org,
+      p.estimate_id,
+      p.draft_version_id,
+    );
+    this.maintenanceAuthority(org, actor);
+    this.maintenanceSource(org, source);
+    this.validateRepairBundle(org, source, attempt, bundle);
+    attempt.status = 'prepared';
+    return { bundle, provenance: clone(p) };
   }
   private maintenanceAuthority(org: string, actor: string) {
     this.state(org); // Reject connected use before any membership adapter can run.
@@ -458,6 +686,9 @@ export class PropertyRepository {
   private maintenanceSource(org: string, source: MaintenanceSource) {
     const s = this.state(org);
     if (
+      !source ||
+      Object.keys(source).sort().join(',') !==
+        'customer_id,finding_id,location_id,organization_id,report_id,report_version' ||
       source.organization_id !== org ||
       !Number.isSafeInteger(source.report_version) ||
       source.report_version < 1
@@ -494,7 +725,25 @@ export class PropertyRepository {
           c.job_id === plan.job_id,
       );
     const finding = report?.findings.find((f) => f.id === source.finding_id);
-    if (!report || !visit || !plan || !context || !finding)
+    if (
+      !report ||
+      !visit ||
+      !plan ||
+      !context ||
+      !finding ||
+      s.reports.filter(
+        (r) => r.id === source.report_id && r.version === source.report_version,
+      ).length !== 1 ||
+      report.findings.filter((f) => f.id === source.finding_id).length !== 1 ||
+      s.visits.filter((v) => v.id === report.visit_id).length !== 1 ||
+      s.plans.filter((p) => p.id === visit.plan_id).length !== 1 ||
+      s.contexts.filter(
+        (c) =>
+          c.customer_id === source.customer_id &&
+          c.location_id === source.location_id &&
+          c.job_id === plan.job_id,
+      ).length !== 1
+    )
       throw Error('Published maintenance source unavailable.');
     projectPublishedHistory([report], source);
     return { report, visit, plan, context, finding };
@@ -577,6 +826,14 @@ export class PropertyRepository {
             uncertainties: evidence.uncertainties,
             repair_status: 'undetermined',
             scheduled_on: scheduled?.visited_on ?? null,
+            repair: this.repairAttempts.has(key)
+              ? {
+                  status: this.repairAttempts.get(key)!.status,
+                  draft_version_id:
+                    this.repairAttempts.get(key)!.provenance
+                      ?.draft_version_id ?? null,
+                }
+              : null,
           });
         }
     }

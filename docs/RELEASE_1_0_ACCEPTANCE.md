@@ -1,5 +1,14 @@
 # Production Release 1.0 acceptance checklist
 
+## Local maintenance repair-draft package · October28
+
+Exact source review, explicit one-draft preparation, structured provenance and
+bidirectional report/draft navigation are implemented synthetically; see
+MAINTENANCE_REPAIR_DRAFT.md. Local passes cannot certify hosted role/session custody,
+persistence, uncertain-operation crash recovery, customer publication, job/repair
+approval or financial execution. Repair issuance is disabled. Existing release and
+two-Mac/Netlify/P1/P2 acceptance gates are unchanged; NOT READY / NOT AUTHORIZED.
+
 ## October28: contractor maintenance review · local synthetic only
 
 A functioning Maintenance & Follow-Up Center now reuses existing CRM/inspection/staff/

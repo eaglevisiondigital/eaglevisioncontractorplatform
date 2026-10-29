@@ -585,6 +585,21 @@ export class Operations {
       }),
     );
   }
+  syntheticProperty(org: string, customer: string, location: string) {
+    if (!this.sample) throw Error('Synthetic property unavailable');
+    if (
+      !this.customers.some(
+        (c) => c.organization_id === org && c.id === customer,
+      ) ||
+      !this.locations.some(
+        (l) =>
+          l.organization_id === org &&
+          l.customer_id === customer &&
+          l.id === location,
+      )
+    )
+      throw Error('CRM customer/property unavailable');
+  }
   /** Current in-memory relationships only; never queries connected membership data. */
   syntheticMemberships(org: string) {
     if (!this.sample) throw Error('Synthetic memberships unavailable');

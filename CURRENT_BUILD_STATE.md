@@ -1,5 +1,20 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: exact maintenance finding → repair draft · October28 · local only
+
+[MAINTENANCE_REPAIR_DRAFT.md](docs/MAINTENANCE_REPAIR_DRAFT.md) records the working
+review/confirmation → separate existing-engine draft → exact source/maintenance
+return journey. Structured published report/version/finding/property/job/staff and
+target draft provenance replace mutable visit/default-estimate/note parsing.129
+focused application/60 unique browser cases pass, with zero Axe/overflow in exercised
+repair states; final delta reruns are not additive. Current
+membership/CRM and maintenance/plan CAS precede commit; duplicates never append,
+uncertain attempts hold for explicit read-only reconciliation. Customer/property/
+source-line/version binding and repair issuance/duplication guards preserve baselines.
+Customer premium design/artwork, all13 SQL/pending customer/frozen P1/approval,
+connected/financial/provider/recovery/Netlify gates persist. No hosted/credential/Auth,
+activation, deployment or merge. Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Latest: contractor Maintenance & Follow-Up Center · October28 · local only
 
 [MAINTENANCE_FOLLOW_UP_CENTER.md](docs/MAINTENANCE_FOLLOW_UP_CENTER.md) records the

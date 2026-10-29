@@ -1,3 +1,4 @@
+import type { RepairProvenance } from '../domain/property/repair-draft';
 import { supabase } from './supabase';
 import type { Database, Json } from './database.types';
 import type { Operations } from './operations';
@@ -100,6 +101,48 @@ interface SampleState {
 }
 export class Phase3Repository {
   private states = new Map<string, SampleState>();
+  private repairBindings = new Map<
+    string,
+    { origin: RepairProvenance; authorize: () => void }
+  >();
+  repairOrigin(org: string, estimate: string, version: string) {
+    this.state(org);
+    const binding = this.repairBindings.get(estimate);
+    if (!binding) return null;
+    if (
+      binding.origin.source.organization_id !== org ||
+      binding.origin.draft_version_id !== version
+    )
+      throw Error('Repair draft provenance mismatch');
+    binding.authorize();
+    return clone(binding.origin);
+  }
+  syntheticJob(org: string, id: string) {
+    return clone(
+      this.state(org).jobs.find(
+        (j) => j.id === id && j.organization_id === org,
+      ) ?? null,
+    );
+  }
+  async createSyntheticRepair(
+    company: CompanyProfile,
+    payload: EstimateInput,
+    commit: (bundle: EstimateBundle) => {
+      origin: RepairProvenance;
+      authorize: () => void;
+    },
+  ) {
+    this.state(company.id); // No connected adapter or credential path.
+    return this.createWithGuard(
+      company,
+      payload,
+      crypto.randomUUID(),
+      (bundle) => {
+        const binding = commit(bundle);
+        this.repairBindings.set(bundle.estimate.id, binding);
+      },
+    );
+  }
   private seeds = new Map<string, Promise<void>>();
   constructor(readonly operations: Operations) {}
   get sample() {
@@ -377,6 +420,14 @@ export class Phase3Repository {
     payload: EstimateInput,
     key = crypto.randomUUID(),
   ): Promise<EstimateBundle> {
+    return this.createWithGuard(company, payload, key);
+  }
+  private async createWithGuard(
+    company: CompanyProfile,
+    payload: EstimateInput,
+    key: string,
+    beforeCommit?: (bundle: EstimateBundle) => void,
+  ): Promise<EstimateBundle> {
     if (!this.sample)
       return rpc('create_estimate', {
         p_org: company.id,
@@ -401,7 +452,7 @@ export class Phase3Repository {
       estimate: {
         id,
         organization_id: company.id,
-        estimate_number: `${settings.estimate_prefix}-${String(s.counter++).padStart(5, '0')}`,
+        estimate_number: `${settings.estimate_prefix}-${String(s.counter).padStart(5, '0')}`,
         project_name: payload.project.name,
         customer_id: payload.customer_id,
         current_version_id: vid,
@@ -445,6 +496,8 @@ export class Phase3Repository {
         issued_at: null,
       },
     };
+    beforeCommit?.(clone(bundle));
+    s.counter++;
     s.estimates.unshift(bundle);
     s.history.push(bundle.version);
     return clone(bundle);
@@ -472,6 +525,20 @@ export class Phase3Repository {
       current.estimate.status === 'archived'
     )
       throw new Error('Draft changed or immutable; reload');
+    const repair = this.repairBindings.get(b.estimate.id);
+    if (repair) {
+      repair.authorize();
+      const origin = repair.origin;
+      if (
+        origin.draft_version_id !== b.version.id ||
+        payload.customer_id !== origin.source.customer_id ||
+        payload.location_id !== origin.source.location_id ||
+        payload.lines.filter((l) => l.id === origin.line_id).length !== 1
+      )
+        throw Error(
+          'Repair customer, property, version and source line are immutable',
+        );
+    }
     for (const line of payload.lines.filter((l) => l.import_approval_id)) {
       const approval = s.approvals.get(line.import_approval_id!);
       const expected = approval?.lines.find((l) => l.id === line.id);
@@ -521,6 +588,10 @@ export class Phase3Repository {
     return clone(current);
   }
   async issue(org: string, b: EstimateBundle) {
+    if (this.repairBindings.has(b.estimate.id))
+      throw Error(
+        'Maintenance repair drafts require separate issuance review; issuance is disabled',
+      );
     if (!this.sample)
       return rpc<EstimateBundle>('issue_estimate', {
         p_org: org,
@@ -583,6 +654,8 @@ export class Phase3Repository {
     return clone(current);
   }
   async duplicate(company: CompanyProfile, b: EstimateBundle) {
+    if (this.repairBindings.has(b.estimate.id))
+      throw Error('Prepare a separate exact-source repair through maintenance');
     if (!this.sample)
       return rpc<EstimateBundle>('duplicate_estimate', {
         p_org: company.id,

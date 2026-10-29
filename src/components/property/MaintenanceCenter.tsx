@@ -1,3 +1,4 @@
+import { RepairDraftPanel } from './RepairDraftPanel';
 import { useCallback, useState, useEffect, useRef } from 'react';
 import type { CompanyProfile } from '../../domain/platform';
 import type { PropertyRepository } from '../../lib/property';
@@ -301,6 +302,13 @@ export function MaintenanceCenter({
                   {item.source.report_version} · Finding{' '}
                   {item.source.finding_id}. Repair status undetermined.
                 </p>
+                {item.repair && (
+                  <p>
+                    Repair preparation: {item.repair.status} ·{' '}
+                    {item.repair.draft_version_id || 'Reconciliation required'}.
+                    Contractor draft only; no customer approval.
+                  </p>
+                )}
                 <div className="maintenance-actions">
                   <button
                     onClick={() => setSelected(item.key)}
@@ -361,6 +369,22 @@ export function MaintenanceCenter({
                   setWork({ target, value });
                 }, 'Exact linked workflow opened.')
               }
+            />
+          )}
+          {selectedItem && (
+            <RepairDraftPanel
+              key={
+                'repair:' +
+                selectedItem.key +
+                ':' +
+                selectedItem.record.revision
+              }
+              repo={repo}
+              company={company}
+              actor={data.actor}
+              item={selectedItem}
+              onSource={onSource}
+              onChanged={resource.reload}
             />
           )}
         </>
