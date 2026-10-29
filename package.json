@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:maintenance-native": "node scripts/test-maintenance-native.mjs",
     "check": "npm run lint && npm run typecheck && npm run types:check && npm run migrations:check && npm run property:check && npm run customer:check && npm test && npm run test:recovery && npm run build",
     "test:recovery": "node scripts/test-recovery.mjs",
     "test:browser": "npm run build && playwright test",

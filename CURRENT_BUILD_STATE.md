@@ -1,5 +1,24 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: Workstream 2A durable maintenance foundation · October 29
+
+A narrow unwired persistence port and disposable native PostgreSQL 17 contract now
+validate exact-source triage, append-only notes/receipts, current staff/principal
+checks, CAS/concurrent edits, one existing-workflow follow-up draft, process restart
+and read-only UNKNOWN reconciliation. Private readiness archives rehydrate through
+the existing engine; actual saved/policy changes retain stale history. No operational
+repair reservation/readiness writer, UI persistence or connected adapter is supplied.
+40 new native cases, 122 focused application cases and 6 responsive browser cases pass;
+lint/types/build/format and proposal integrity pass. 211 protected existing paths and
+four frozen P1 hashes are unchanged. See docs/MAINTENANCE_DURABLE_FOUNDATION.md,
+validation and approval register. Native evidence is test-only, not hosted Auth/HTTP/MFA, independent recovery or activation.
+All existing src/server/SQL/artwork/CI bytes remain unchanged; approved contractor and
+customer presentations stay locked. All thirteen historical migrations, pending
+customer migration, frozen P1/four artifacts and existing approval remain preserved.
+No new executable migration, credentials, hosted/financial/provider/Netlify action,
+deployment or merge. Release 1.0 NOT READY / NOT AUTHORIZED. Next local package is
+2B durable repair reservation/readiness append validation; AR remains held for planning.
+
 ## Latest: approved contractor Phase B · local integration · October 29
 
 Owner approved Phase A and Package 1 at07f3e6b. The exact approved property

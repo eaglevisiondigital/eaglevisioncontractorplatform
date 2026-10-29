@@ -1,5 +1,16 @@
 # Bounded development roadmap
 
+## Workstream 2A checkpoint
+
+Durable maintenance foundation now has an unwired contract, native disposable triage/
+receipt tests and private repair-evidence rehydration. See
+MAINTENANCE_DURABLE_FOUNDATION.md and approval register. This does not activate
+operational persistence or change the approved contractor/customer presentation.
+Next bounded local implementation is **2B: durable repair-attempt reservation and
+guarded readiness append commands**, reusing the existing engine and exact source.
+No executable migration, connected service or hosted action is authorized. The
+nine workstreams and Biller Genie-inspired AR planning hold remain intact.
+
 October 29, 2026 · continuation of existing implementation, not a new architecture.
 Release 1.0 remains **NOT READY / NOT AUTHORIZED**.
 

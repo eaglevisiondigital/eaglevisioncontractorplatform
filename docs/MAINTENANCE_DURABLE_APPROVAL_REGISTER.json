@@ -1,0 +1,70 @@
+{
+  "package": "WORKSTREAM_2A",
+  "date": "2026-10-29",
+  "authorization": "LOCAL_IMPLEMENTATION_AND_DISPOSABLE_NATIVE_TESTS_ONLY",
+  "baseCommit": "c8f09754f122fb2212f05d4a1d1ef9f06f787dbd",
+  "approvedNow": [
+    "Narrow unwired maintenance persistence contract",
+    "Test-only PostgreSQL schema in fresh random disposable database",
+    "Private readiness evidence encoding/rehydration and executable tests",
+    "Documentation, local verification, commit and push to draft PR #1"
+  ],
+  "notGranted": [
+    {
+      "action": "Operational maintenance forward migration",
+      "status": "NOT AUTHORIZED / NO EXECUTABLE MIGRATION CREATED",
+      "requires": [
+        "Independent schema/SQL/lock-order/privacy review",
+        "Reviewed history and exact hash/target/containment scope",
+        "Frozen P1 against thirteen migrations before history expansion; customer-fourteen remains separate",
+        "Explicit owner execution approval"
+      ]
+    },
+    {
+      "action": "Public wrappers, table/function grants, features, mappings or leases",
+      "status": "NOT AUTHORIZED",
+      "requires": [
+        "Exact caller-bound checked commands and default-deny/RLS/grant review",
+        "Separate action-specific owner approval; disposable fixture grants confer none"
+      ]
+    },
+    {
+      "action": "Connected maintenance/repair/readiness service and application adapter",
+      "status": "NOT IMPLEMENTED / NOT AUTHORIZED",
+      "requires": [
+        "Genuine JWT/session/current-user verification, CSRF/origin and bounded command transport",
+        "Durable pre-send intent custody, UNKNOWN reconciliation and cancellation policy",
+        "Guarded durable repair reservation/readiness writer plus ordinary estimate guards",
+        "Separate exact activation review"
+      ]
+    },
+    {
+      "action": "Hosted Auth/MFA/HTTP/connected multi-user tests",
+      "status": "BLOCKED / NOT RUN",
+      "requires": [
+        "Independent recovery prerequisites and existing supervised gates",
+        "Exact target/actors/data/time/cleanup acceptance package approval",
+        "No replay or duplicate request for already-approved frozen P1 scope"
+      ]
+    },
+    {
+      "action": "Provider/payment/signature/communication/media execution",
+      "status": "NOT AUTHORIZED / OUT OF SCOPE",
+      "requires": [
+        "Independent provider-specific review and exact owner authorization",
+        "No credentials or provider needed for this package"
+      ]
+    },
+    {
+      "action": "Netlify repair/retry/deployment/settings, production, outside access or merge",
+      "status": "NOT AUTHORIZED / FROZEN",
+      "requires": [
+        "Separate exact corrective/launch approval; support evidence alone is insufficient"
+      ]
+    }
+  ],
+  "nextLocalPackage": "2B test-only durable repair reservation and guarded readiness append commands, separately scoped; no migration or service activation",
+  "heldForPlanning": "Biller Genie-inspired accounts receivable",
+  "existingP1Approval": "PRESERVED / NOT REISSUED",
+  "release": "NOT READY / NOT AUTHORIZED"
+}

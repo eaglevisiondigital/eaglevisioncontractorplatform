@@ -1,5 +1,21 @@
 # Security model · Phase 2
 
+## Workstream 2A disposable persistence boundary · October 29
+
+Strict exact-source/request/revision contracts confer no authority. Only the test
+adapter calls a new isolated fixture schema; no application import, credentials or
+hosted executor exists. Test commands enforce current principal/session/membership,
+source/CRM/plan binding, CAS, duplicate identity and post-wait expiry, with default-deny
+client privileges, forced RLS and append-only private notes/receipts. Native tests
+exposed that the existing session helper alone does not deny banned/deleted users;
+the NEW fixture boundary additionally checks current auth.users state without editing
+historical SQL. No GUC/JWT fixture is genuine hosted authentication evidence.
+Read-only reconciliation cannot clear an absent-receipt UNKNOWN or authorize retries.
+Archive fidelity cannot establish historical actor or measurement truth; authenticated
+archive INSERT/readiness confirmation and durable repair reservation remain absent.
+Current 6/6 never authorizes issue/work/customer debt. See the 2A approval register;
+all existing financial/customer/P1/recovery/Netlify gates remain unchanged.
+
 ## Owner-approved contractor Phase B boundary · October 29
 
 Local presentation approval at07f3e6b changes only /preview Property Operations.

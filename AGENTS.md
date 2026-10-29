@@ -1,5 +1,15 @@
 # Engineering instructions
 
+Workstream 2A continuation: read docs/MAINTENANCE_DURABLE_FOUNDATION.md and its
+validation/approval register. New persistence port/archive helpers are unwired; only
+tests use maintenance_2a_test in disposable native PG17 against thirteen historical
+migrations. No executable maintenance migration or production adapter. Keep exact
+source/CRM/member binding, current principal/session/post-wait checks, CAS, append-only
+notes/receipts and UNKNOWN no-retry. Archives prove fidelity, not authenticated review
+or measurement truth; repair reservation/readiness writer/UI persistence remain gaps.
+Next 2B is separately scoped local repair-attempt/readiness validation. Preserve every
+approved UI/business/SQL/P1/approval/recovery/financial/Netlify gate; AR remains held.
+
 Contractor Phase B continuation: read docs/CONTRACTOR_BACK_OFFICE_PHASE_B.md.
 Owner APPROVED Phase A/Package1 at07f3e6b and local integration; older approval holds
 below are historical. /preview > Property Operations shares the exact approved

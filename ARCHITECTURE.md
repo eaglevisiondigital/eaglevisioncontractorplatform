@@ -1,5 +1,18 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Workstream 2A persistence contract · October 29
+
+The new server/property/maintenance-persistence.ts port is unwired and caller-bound;
+there is no production transport or UI binding. Its only adapter is a disposable
+native PostgreSQL test fixture referencing the thirteen-history CRM/report/plan/
+visit/estimate schema. Triage/note/receipt metadata survives test-client restart;
+existing create_visit performs atomic follow-up preparation. A separate bounded
+repair-evidence archive reuses the canonical six-section engine and preserves stale
+historical receipts without a new estimating engine. Native archive seeding is not
+a production confirmation writer. Durable repair attempts, guarded readiness writes,
+client intent custody and connected composition remain gaps. See
+MAINTENANCE_DURABLE_FOUNDATION.md and approval register; no migration/activation.
+
 ## Approved contractor presentation integration · October 29
 
 The owner-approved Phase B promotes the shared ContractorBackOfficeLayout into

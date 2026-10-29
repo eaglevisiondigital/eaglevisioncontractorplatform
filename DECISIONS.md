@@ -1,5 +1,19 @@
 # Engineering decisions
 
+## October 29 · validate durable maintenance contracts without connected activation
+
+Workstream 2A reuses exact published sources, CRM/member relationships, existing
+inspection commands and the estimating/readiness engines. Add only an unwired narrow
+port and a guarded disposable native fixture; no operational schema or migration.
+Prove staff CAS, concurrency, notes, receipts, restart and explicit UNKNOWN reads on
+native PostgreSQL rather than an in-memory substitute. Keep archive evidence private
+and distinguish fidelity from authenticated confirmation/repair authority. Record
+principal-state checks in the new boundary; preserve historical SQL and all approved
+UI/source/business bytes. Durable repair reservation/readiness writing and connected
+intent custody are the next local gaps, not simulated passes. Future migration,
+grants/services/hosted tests require separate exact owner authorization. Biller
+Genie-inspired AR remains held for the planning checkpoint; Release 1.0 stays closed.
+
 ## October 29 · integrate approved property presentation without replacing other modules
 
 Owner approved07f3e6b Phase A/Package 1 for local Phase B. Extract and share its

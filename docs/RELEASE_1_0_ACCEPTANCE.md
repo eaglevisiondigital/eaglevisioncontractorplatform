@@ -1,5 +1,16 @@
 # Production Release 1.0 acceptance checklist
 
+## Workstream 2A · disposable persistence foundation only · October 29
+
+Executable native triage/receipt/restart contracts and readiness archive fidelity are
+implemented locally; see MAINTENANCE_DURABLE_FOUNDATION.md and its approval register.
+Operational repair/readiness writers, UI persistence, genuine hosted Auth/HTTP/MFA,
+independent recovery and connected acceptance remain BLOCKED / NOT RUN. No new
+migration, grant/service activation, provider/financial/Netlify action or launch
+permission. Frozen P1 must complete against thirteen history before customer fourteen;
+all historical SQL and approved UI/P1 artifacts remain unchanged. Release 1.0 remains
+**NOT READY / NOT AUTHORIZED**; draft PR #1 stays unmerged.
+
 ## Owner-approved contractor Phase B · October 29 · local only
 
 Approved premium Property Operations now run within /preview with the original full
