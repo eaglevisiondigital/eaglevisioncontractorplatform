@@ -1,5 +1,17 @@
 # Production Release 1.0 acceptance checklist
 
+## Local repair scope readiness package · October29
+
+Six internal review groups, explicit staff notes/attestations, measured references,
+current queue counts and retained stale review history now function on exact repair
+drafts.166 focused app/48 unique browser passes validate local behavior; see
+REPAIR_SCOPE_READINESS.md and its validation record. Completed review never enables
+issuance/publication, customer authority, dispatch or debt. Session evidence is not
+operational persistence, staff Auth acceptance, tax verification or measurement proof.
+CONTRACTOR_BACK_OFFICE_REVIEW.md prepares owner review before feature expansion.
+All13 SQL/pending customer/frozen P1/approvals, locked portal and separate unfinished
+two-Mac/P1/P2/provider/Netlify gates remain. NOT READY / NOT AUTHORIZED.
+
 ## Local maintenance repair-draft package · October28
 
 Exact source review, explicit one-draft preparation, structured provenance and

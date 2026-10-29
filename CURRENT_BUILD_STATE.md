@@ -1,5 +1,23 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: repair scope readiness & contractor review · October29 · local only
+
+[REPAIR_SCOPE_READINESS.md](docs/REPAIR_SCOPE_READINESS.md) records six functioning
+review groups inside the existing exact repair draft editor. Explicit notes,
+individual attestations and structured measured quantity/unit references bind saved
+revision/source/current tax/catalog/calculation evidence; changed state invalidates
+all confirmations while retaining history. Current reviewer/source checks, review
+CAS/idempotency and uncertain-attempt containment persist. Queue counts evaluate the
+current saved state; issuance/duplication remain blocked even at6/6. Cloned saved tax
+snapshots prevent mutable policy edits from rewriting evidence.166 focused app/48
+unique browser cases pass; zero Axe/overflow in exercised states, all three brands
+and viewports.134 protected tracked paths and four frozen artifacts unchanged.
+[CONTRACTOR_BACK_OFFICE_REVIEW.md](docs/CONTRACTOR_BACK_OFFICE_REVIEW.md) prepares the
+requested owner walkthrough before more feature expansion; visual approval pending.
+No schema/hosted/Auth/financial/provider/deployment/merge. Approved portal/all13 SQL/
+pending customer/P1 approvals/recovery/Netlify gates persist; session-only evidence.
+Release1.0 remains NOT READY / NOT AUTHORIZED.
+
 ## Latest: exact maintenance finding → repair draft · October28 · local only
 
 [MAINTENANCE_REPAIR_DRAFT.md](docs/MAINTENANCE_REPAIR_DRAFT.md) records the working

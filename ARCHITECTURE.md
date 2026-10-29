@@ -1,5 +1,17 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Version-aware repair readiness composition · October29
+
+Six pure review groups reuse the existing estimate engine, saved versions, catalog,
+tax policies and exact maintenance repair binding. Phase3Repository retains private
+session history only; PropertyRepository supplies immutable source evidence and
+current queue counts. Requests bind exact snapshot/revision/history CAS with explicit
+staff attestations and structured line measurements. Any saved or relevant source/
+policy/catalog/day change invalidates all groups conservatively. No new schema,
+calculation engine, customer model or connected adapter. Saved synthetic tax snapshots
+are cloned to preserve history. See docs/REPAIR_SCOPE_READINESS.md; review alone never
+authorizes issue/publication/work or financial execution.
+
 ## Exact maintenance repair handoff · October28
 
 The maintenance queue prepares a separate draft through the existing Phase3Repository

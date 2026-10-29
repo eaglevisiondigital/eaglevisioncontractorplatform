@@ -309,6 +309,13 @@ export function MaintenanceCenter({
                     Contractor draft only; no customer approval.
                   </p>
                 )}
+                {item.repair && (
+                  <p>
+                    {item.repair.readiness
+                      ? `Internal readiness: ${item.repair.readiness.confirmed}/6 sections for saved revision ${item.repair.readiness.revision}. Issuance remains blocked.`
+                      : 'No current readiness confirmation available. Open the exact repair draft to review.'}
+                  </p>
+                )}
                 <div className="maintenance-actions">
                   <button
                     onClick={() => setSelected(item.key)}

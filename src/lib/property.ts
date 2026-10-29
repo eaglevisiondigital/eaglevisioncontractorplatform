@@ -573,6 +573,19 @@ export class PropertyRepository {
             authorize: () => {
               this.repairGuard(org, actor, review, false);
             },
+            evidence: () => {
+              if (attempt.status !== 'prepared')
+                throw Error(
+                  'Repair preparation is uncertain; reconcile before readiness review.',
+                );
+              const bound = this.repairGuard(org, actor, review, false);
+              return clone({
+                finding: bound.finding,
+                visited_on: bound.report.visited_on,
+                suggested_scope: review.payload.lines[0].description,
+                job_baseline_version_id: review.job_baseline_version_id,
+              });
+            },
           };
         },
       );
@@ -748,6 +761,26 @@ export class PropertyRepository {
     projectPublishedHistory([report], source);
     return { report, visit, plan, context, finding };
   }
+  private repairQueueReadiness(org: string, actor: string, key: string) {
+    const attempt = this.repairAttempts.get(key),
+      p = attempt?.provenance;
+    if (attempt?.status !== 'prepared' || !p) return null;
+    try {
+      const readiness = this.estimates.repairReadiness(
+        org,
+        actor,
+        p.estimate_id,
+        p.draft_version_id,
+      );
+      return {
+        confirmed: readiness.confirmed,
+        revision: readiness.lock_revision,
+      };
+    } catch {
+      // An unavailable/archived/changed draft cannot advertise cached readiness.
+      return null;
+    }
+  }
   maintenance(org: string, actor: string) {
     const authority = this.maintenanceAuthority(org, actor),
       s = this.state(org);
@@ -832,6 +865,7 @@ export class PropertyRepository {
                   draft_version_id:
                     this.repairAttempts.get(key)!.provenance
                       ?.draft_version_id ?? null,
+                  readiness: this.repairQueueReadiness(org, actor, key),
                 }
               : null,
           });

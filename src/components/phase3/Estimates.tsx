@@ -1,3 +1,4 @@
+import { RepairScopeReadiness } from '../property/RepairScopeReadiness';
 import { useState, useCallback } from 'react';
 import type { Phase3Repository } from '../../lib/phase3';
 import type { CompanyProfile } from '../../domain/platform';
@@ -1080,6 +1081,16 @@ function EstimateEditor({
             </p>
           </aside>
         </div>
+      )}
+      {repairOnly && (
+        <RepairScopeReadiness
+          repo={repo}
+          org={company.id}
+          estimate={initial.estimate.id}
+          version={initial.version.id}
+          revision={initial.version.lock_revision}
+          dirty={dirty}
+        />
       )}
       {importing && (
         <MaterialImport

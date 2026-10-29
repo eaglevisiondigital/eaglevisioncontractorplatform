@@ -1,0 +1,67 @@
+.repair-readiness {
+  margin-top: 24px;
+  border-top: 1px solid var(--border, #d5ddd7);
+  padding-top: 18px;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.repair-readiness .readiness-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+.repair-readiness .readiness-card {
+  background: #fff;
+  border: 1px solid var(--border, #d5ddd7);
+  border-radius: 12px;
+  padding: 20px;
+  min-width: 0;
+}
+.repair-readiness fieldset {
+  min-width: 0;
+  margin: 16px 0 0;
+}
+.repair-readiness label {
+  display: block;
+  margin: 12px 0;
+}
+.repair-readiness textarea,
+.repair-readiness input,
+.repair-readiness select {
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+}
+.repair-readiness .readiness-confirmation {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.repair-readiness .readiness-confirmation input[type='checkbox'] {
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+}
+.repair-readiness .readiness-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.repair-readiness .readiness-totals {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+}
+.repair-readiness dd {
+  margin: 0;
+}
+.repair-readiness .readiness-history {
+  margin: 12px 0;
+  border-bottom: 1px solid var(--border, #d5ddd7);
+  padding-bottom: 12px;
+}
+
+.repair-readiness dt {
+  color: #53665e;
+}

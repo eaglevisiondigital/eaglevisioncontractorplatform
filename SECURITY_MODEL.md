@@ -1,5 +1,18 @@
 # Security model · Phase 2
 
+## Repair readiness review boundary · October29
+
+Current active same-company reviewer, retained source authorization and exact
+customer/property/current draft/version/source-line checks precede each synchronous
+session review write. Request UUID replay, saved revision, exact current evidence and
+review sequence prevent stale/duplicate evidence; UNCERTAIN repair preparation stays
+blocked pending exact read reconciliation. Measurements require matching saved lines,
+quantities/units and explicit staff references, not a claim of independent verification.
+Readiness history/notes/costs remain outside customer projections. Dirty edits cannot
+be reviewed; issue/duplicate commands remain blocked after6/6. Saved tax snapshots
+are cloned. No hosted staff authentication, durable review or execution is certified.
+See docs/REPAIR_SCOPE_READINESS.md; all existing release/financial/recovery gates hold.
+
 ## Maintenance repair provenance boundary · October28
 
 Published source and current active reviewer/CRM authority precede review and each

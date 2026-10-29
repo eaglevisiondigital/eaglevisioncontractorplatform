@@ -1,5 +1,15 @@
 # Engineering instructions
 
+Repair-readiness continuation: read docs/REPAIR_SCOPE_READINESS.md and
+CONTRACTOR_BACK_OFFICE_REVIEW.md. Six explicit internal sections bind exact saved
+repair revision/source/current policy/referenced catalog/calculation and review CAS.
+All confirmations stale on change; structured per-line measured references and notes
+required, history retained. Keep saved tax snapshots cloned. Current reviewer/source
+checks precede synchronous session-only writes; no uncertain-preparation bypass.
+Queue counts current evidence only; completed review never enables issue/publication/
+work/customer authority/debt. Review back-office experience before expanding features.
+Approved portal/all13 SQL/pending customer/frozen P1/approval/recovery/Netlify remain.
+
 Repair-draft continuation: read docs/MAINTENANCE_REPAIR_DRAFT.md. Maintenance
 preparation requires exact published source/review token/current reviewer and CAS;
 one separate existing-engine draft per source, structured staff-only provenance.

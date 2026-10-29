@@ -1,3 +1,11 @@
+import {
+  evaluateRepairReadiness,
+  recordRepairReadiness,
+  type RepairReadinessContext,
+  type RepairReadinessEvidence,
+  type RepairReadinessRequest,
+  type RepairReadinessReview,
+} from '../domain/property/repair-readiness';
 import type { RepairProvenance } from '../domain/property/repair-draft';
 import { supabase } from './supabase';
 import type { Database, Json } from './database.types';
@@ -103,7 +111,11 @@ export class Phase3Repository {
   private states = new Map<string, SampleState>();
   private repairBindings = new Map<
     string,
-    { origin: RepairProvenance; authorize: () => void }
+    {
+      origin: RepairProvenance;
+      authorize: () => void;
+      evidence: () => RepairReadinessEvidence;
+    }
   >();
   repairOrigin(org: string, estimate: string, version: string) {
     this.state(org);
@@ -130,6 +142,7 @@ export class Phase3Repository {
     commit: (bundle: EstimateBundle) => {
       origin: RepairProvenance;
       authorize: () => void;
+      evidence: () => RepairReadinessEvidence;
     },
   ) {
     this.state(company.id); // No connected adapter or credential path.
@@ -142,6 +155,98 @@ export class Phase3Repository {
         this.repairBindings.set(bundle.estimate.id, binding);
       },
     );
+  }
+  private readinessHistory = new Map<string, RepairReadinessReview[]>();
+  syntheticReadinessReviewer(org: string) {
+    this.state(org);
+    const actor = this.operations
+      .syntheticMemberships(org)
+      .find((m) => m.active && ['owner', 'admin'].includes(m.role))?.user_id;
+    if (!actor)
+      throw Error('Current synthetic contractor reviewer unavailable.');
+    return actor;
+  }
+  private readinessContext(
+    org: string,
+    actor: string,
+    estimate: string,
+    version: string,
+  ): RepairReadinessContext {
+    const state = this.state(org),
+      binding = this.repairBindings.get(estimate);
+    if (
+      !binding ||
+      binding.origin.source.organization_id !== org ||
+      binding.origin.draft_version_id !== version
+    )
+      throw Error('Exact repair readiness source unavailable.');
+    const member = this.operations
+      .syntheticMemberships(org)
+      .find(
+        (m) => m.organization_id === org && m.user_id === actor && m.active,
+      );
+    if (
+      !member ||
+      !(
+        ['owner', 'admin'].includes(member.role) ||
+        (member.role === 'staff' &&
+          ['office_manager', 'estimator'].includes(member.staff_type))
+      )
+    )
+      throw Error('Active contractor repair reviewer required.');
+    binding.authorize();
+    const bundle = state.estimates.find(
+      (b) => b.estimate.id === estimate && b.version.id === version,
+    );
+    if (!bundle) throw Error('Exact current repair draft unavailable.');
+    const policies = state.taxes.filter(
+      (t) => t.id === bundle.version.payload.tax_policy_id,
+    );
+    if (policies.length > 1) throw Error('Ambiguous tax policy evidence.');
+    const referenced = new Set(
+      bundle.version.payload.lines
+        .map((l) => l.catalog_item_id)
+        .filter(Boolean),
+    );
+    return clone({
+      bundle,
+      origin: binding.origin,
+      evidence: binding.evidence(),
+      policy: policies[0] ?? null,
+      catalog: state.catalog.filter((i) => referenced.has(i.id)),
+      as_of: now().slice(0, 10),
+    });
+  }
+  repairReadiness(
+    org: string,
+    actor: string,
+    estimate: string,
+    version: string,
+  ) {
+    const context = this.readinessContext(org, actor, estimate, version);
+    return evaluateRepairReadiness(
+      context,
+      this.readinessHistory.get(estimate) ?? [],
+    );
+  }
+  confirmRepairReadiness(
+    org: string,
+    actor: string,
+    estimate: string,
+    request: RepairReadinessRequest,
+  ) {
+    request = clone(request);
+    const context = this.readinessContext(
+      org,
+      actor,
+      estimate,
+      request.draft_version_id,
+    );
+    const history = this.readinessHistory.get(estimate) ?? [];
+    const result = recordRepairReadiness(context, history, actor, request);
+    if (!result.duplicate)
+      this.readinessHistory.set(estimate, [...history, clone(result.review)]);
+    return clone(result);
   }
   private seeds = new Map<string, Promise<void>>();
   constructor(readonly operations: Operations) {}
@@ -488,8 +593,9 @@ export class Phase3Repository {
           phone: customer.phone,
         },
         location_snapshot: null,
-        tax_policy_snapshot:
+        tax_policy_snapshot: clone(
           s.taxes.find((t) => t.id === payload.tax_policy_id) ?? null,
+        ),
         attachment_snapshots: [],
         supersedes_version_id: null,
         created_at: now(),
@@ -573,8 +679,9 @@ export class Phase3Repository {
       payload: clone(payload),
       calculation: calc,
       lock_revision: current.version.lock_revision + 1,
-      tax_policy_snapshot:
+      tax_policy_snapshot: clone(
         s.taxes.find((t) => t.id === payload.tax_policy_id) ?? null,
+      ),
     };
     current.estimate = {
       ...current.estimate,

@@ -1,5 +1,17 @@
 # Engineering decisions
 
+## October29 · explicit review of exact saved repair scope
+
+Add six staff review groups to existing maintenance-generated estimate drafts, with
+supporting notes and per-line measured references. Compare the entire saved bundle,
+source, relevant catalog, selected current policy and review day; invalidate all six
+conservatively on change and retain original receipts/calculations. CAS/idempotency
+and current same-company authority precede session writes. Preserve immutable saved
+tax evidence by cloning policy snapshots. Completed internal review cannot issue,
+publish, approve work or create debt. No durable schema or hosted activation. Prepare
+a contractor back-office visual/functional walkthrough before proposing expansion;
+the approved premium customer portal design stays locked.
+
 ## October28 · traceable separate repair drafts
 
 Require explicit published-finding review and staff confirmation; create one separate

@@ -50,7 +50,11 @@ export interface MaintenanceItem {
   uncertainties: string[];
   repair_status: AttentionItem['repair_status'];
   scheduled_on: string | null;
-  repair?: { status: string; draft_version_id: string | null } | null;
+  repair?: {
+    status: string;
+    draft_version_id: string | null;
+    readiness?: { confirmed: number; revision: number } | null;
+  } | null;
 }
 export function maintenanceKey(source: MaintenanceSource) {
   return JSON.stringify([
