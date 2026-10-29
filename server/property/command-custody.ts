@@ -8,7 +8,7 @@ import {
   openSync,
   fsyncSync,
   closeSync,
-  existsSync,
+  constants,
 } from 'node:fs';
 import { join, resolve, isAbsolute } from 'node:path';
 import { uuidPattern } from '../../src/domain/intake';
@@ -143,10 +143,19 @@ export class CommandCustody {
     )
       throw Error('Owned private custody directory required.');
     const file = join(root, 'commands.sqlite');
-    if (existsSync(file)) {
-      const f = lstatSync(file);
-      if (!f.isFile() || f.isSymbolicLink() || (f.mode & 0o077) !== 0)
-        throw Error('Private regular custody file required.');
+    this.checkFiles();
+    try {
+      const fd = openSync(
+        file,
+        constants.O_CREAT |
+          constants.O_EXCL |
+          constants.O_RDWR |
+          constants.O_NOFOLLOW,
+        0o600,
+      );
+      closeSync(fd);
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code !== 'EEXIST') throw error;
     }
     this.db = new DatabaseSync(file);
     chmodSync(file, 0o600);
@@ -164,13 +173,180 @@ export class CommandCustody {
     );
     this.db.exec(`pragma max_page_count=${Math.floor(67108864 / pageSize)}`);
     syncDirectory(root);
+    this.checkFiles();
+  }
+  private checkFiles() {
+    const stat = lstatSync(this.root);
+    if (
+      !stat.isDirectory() ||
+      stat.isSymbolicLink() ||
+      realpathSync(this.root) !== resolve(this.root) ||
+      (stat.mode & 0o077) !== 0 ||
+      (process.getuid && stat.uid !== process.getuid())
+    )
+      throw Error('Owned private custody directory required.');
+    let bytes = 0;
+    for (const suffix of ['', '-wal', '-shm', '-journal']) {
+      try {
+        const f = lstatSync(join(this.root, 'commands.sqlite' + suffix));
+        if (
+          !f.isFile() ||
+          f.isSymbolicLink() ||
+          f.nlink !== 1 ||
+          (f.mode & 0o077) !== 0 ||
+          (process.getuid && f.uid !== process.getuid())
+        )
+          throw Error('Private regular single-link custody file required.');
+        bytes += f.size;
+      } catch (error) {
+        if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
+      }
+    }
+    return bytes;
+  }
+  private validateEvents(value: CustodyCommand, events: CustodyEvent[]) {
+    const identity = custodyIdentity(value);
+    if (events.length < 1 || events.length > 64)
+      throw Error('Custody history integrity mismatch.');
+    const seen: CustodyEvent[] = [];
+    for (const e of events) {
+      const stageOK =
+        value.kind === 'repair'
+          ? ['reserve', 'prepare'].includes(e.stage)
+          : e.stage === 'command';
+      if (
+        !stageOK ||
+        e.sequence !== seen.length + 1 ||
+        typeof e.recorded_at !== 'string' ||
+        !Number.isFinite(Date.parse(e.recorded_at)) ||
+        Buffer.byteLength(canonical(e.evidence), 'utf8') > 1048576
+      )
+        throw Error('Custody history integrity mismatch.');
+      if (
+        ['transmitting', 'uncertain', 'acknowledged'].includes(e.kind) &&
+        seen.some(
+          (x) =>
+            x.kind === 'reconciled' &&
+            (x.stage === e.stage ||
+              (value.kind === 'repair' && x.stage === 'prepare')),
+        )
+      )
+        throw Error('Committed reconciliation never resumes transmission.');
+      const transmitted = seen.some(
+        (x) => x.stage === e.stage && x.kind === 'transmitting',
+      );
+      if (e.kind === 'retained') {
+        if (
+          seen.length ||
+          e.stage === (value.kind === 'repair' ? 'prepare' : 'reserve') ||
+          canonical(e.evidence) !==
+            canonical({ expected_revision: identity.expectedRevision })
+        )
+          throw Error('Custody retained integrity mismatch.');
+      } else if (!seen.length)
+        throw Error('Original retained history required.');
+      else if (e.kind === 'transmitting') {
+        if (
+          transmitted ||
+          (e.stage === 'prepare' &&
+            !seen.some(
+              (x) => x.stage === 'reserve' && x.kind === 'acknowledged',
+            ))
+        )
+          throw Error(
+            'Claimed transmission never retries; durable reservation acknowledgment required.',
+          );
+        if (e.evidence !== null) throw Error('Transmission evidence mismatch.');
+      } else if (e.kind === 'uncertain') {
+        if (
+          !transmitted ||
+          canonical(e.evidence) !== canonical({ status: 'undetermined' })
+        )
+          throw Error('Uncertain custody integrity mismatch.');
+      } else if (e.kind === 'acknowledged' || e.kind === 'reconciled') {
+        if (
+          e.kind === 'acknowledged' &&
+          (!transmitted ||
+            seen.some((x) => x.stage === e.stage && x.kind === 'acknowledged'))
+        )
+          throw Error(
+            'Exact transmission required; acknowledgment already retained.',
+          );
+        this.validateReceipt(value, e.stage, e.kind, e.evidence);
+      } else throw Error('Unknown custody event.');
+      seen.push(e);
+    }
+  }
+  private validateReceipt(
+    value: CustodyCommand,
+    stage: CustodyEvent['stage'],
+    kind: CustodyEvent['kind'],
+    evidence: unknown,
+  ) {
+    const obj = (v: unknown): Record<string, unknown> => {
+      if (!v || typeof v !== 'object' || Array.isArray(v))
+        throw Error('Exact custody receipt required.');
+      return v as Record<string, unknown>;
+    };
+    let receipt = obj(evidence);
+    if (kind === 'reconciled') {
+      if (receipt.status !== 'committed')
+        throw Error('Committed reconciliation required.');
+      receipt = obj(
+        value.kind === 'readiness' ? receipt.review : receipt.receipt,
+      );
+    }
+    const uuid = (v: unknown) => typeof v === 'string' && uuidPattern.test(v);
+    const date = (v: unknown) =>
+      typeof v === 'string' && Number.isFinite(Date.parse(v));
+    if (value.kind === 'maintenance') {
+      const c = value.command;
+      if (
+        receipt.request_id !== c.request_id ||
+        canonical(receipt.source) !== canonical(c.source) ||
+        receipt.revision !== c.expected_revision + 1 ||
+        !uuid(receipt.actor_id) ||
+        !date(receipt.recorded_at) ||
+        !(
+          receipt.scheduled_visit_id === null ||
+          uuid(receipt.scheduled_visit_id)
+        )
+      )
+        throw Error('Exact maintenance receipt integrity mismatch.');
+    } else if (value.kind === 'repair') {
+      const c = value.command;
+      if (stage === 'reserve') {
+        if (
+          receipt.id !== c.request_id ||
+          canonical(receipt.command) !== canonical(c) ||
+          !uuid(receipt.actor_id)
+        )
+          throw Error('Exact reservation receipt integrity mismatch.');
+      } else if (
+        receipt.request_id !== c.request_id ||
+        receipt.estimate_id !== c.estimate_id ||
+        receipt.draft_version_id !== c.draft_version_id ||
+        receipt.line_id !== c.line_id
+      )
+        throw Error('Exact preparation receipt integrity mismatch.');
+    } else if (
+      canonical(receipt.request) !== canonical(value.command.review) ||
+      receipt.sequence !== value.command.review.expected_sequence + 1 ||
+      !uuid(receipt.actor) ||
+      !date(receipt.recorded_at)
+    )
+      throw Error('Exact readiness receipt integrity mismatch.');
   }
   private transaction<T>(work: () => T) {
+    if (this.checkFiles() >= 67108864)
+      throw Error('Custody storage watermark exceeded; retain hold.');
     this.db.exec('begin immediate');
     try {
       const value = work();
       this.db.exec('commit');
       syncDirectory(this.root);
+      if (this.checkFiles() >= 67108864)
+        throw Error('Custody storage watermark exceeded; retain hold.');
       return value;
     } catch (e) {
       try {
@@ -202,6 +378,19 @@ export class CommandCustody {
     const text = canonical(evidence);
     if (Buffer.byteLength(text, 'utf8') > 1048576)
       throw Error('Private receipt bound exceeded.');
+    const retained = this.readStored(id, true);
+    if (retained)
+      this.validateEvents(retained.value, [
+        ...retained.events,
+        {
+          sequence: n + 1,
+          stage,
+          kind,
+          evidence,
+          recorded_at: new Date().toISOString(),
+        },
+      ]);
+    else throw Error('Original custody required.');
     this.db
       .prepare(
         'insert into events values(?,coalesce((select max(sequence)+1 from events where request_id=?),1),?,?,?,?)',
@@ -209,6 +398,10 @@ export class CommandCustody {
       .run(id, id, stage, kind, text, new Date().toISOString());
   }
   read(id: string) {
+    return this.readStored(id);
+  }
+  private readStored(id: string, initializing = false) {
+    this.checkFiles();
     const intent = this.row(id);
     if (!intent) return null;
     const value = JSON.parse(intent.command_text) as CustodyCommand;
@@ -219,7 +412,8 @@ export class CommandCustody {
       identity.sourceKey !== intent.source_key ||
       identity.expectedRevision !== intent.expected_revision ||
       value.kind !== intent.purpose ||
-      !uuidPattern.test(intent.capability_id)
+      !uuidPattern.test(intent.capability_id) ||
+      !Number.isFinite(Date.parse(intent.created_at))
     )
       throw Error('Custody integrity mismatch.');
     const events = this.db
@@ -231,6 +425,7 @@ export class CommandCustody {
         ...r,
         evidence: JSON.parse(r.evidence as string),
       })) as unknown as CustodyEvent[];
+    if (!initializing || events.length) this.validateEvents(value, events);
     return { intent, value, events };
   }
   private complete(id: string) {

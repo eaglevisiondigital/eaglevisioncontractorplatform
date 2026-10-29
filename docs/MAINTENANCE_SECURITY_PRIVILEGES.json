@@ -1,0 +1,5169 @@
+{
+  "scope": "Post-remediation2D working-tree catalog against reviewed base; complete six-schema catalog, conservative static call references and non-internal trigger edges, not formal proof of every branch/pg_catalog builtin. Synthetic role names normalized.",
+  "baseCommit": "c7768cc57d204364d7977598580c1613ce88075e",
+  "counts": {
+    "functions": 196,
+    "tables": 101,
+    "schemaRights": 6,
+    "defaults": 0,
+    "policies": 73,
+    "identities": 3,
+    "triggers": 203
+  },
+  "functions": [
+    {
+      "signature": "accept_invitation(text)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.accept_invitation"]
+    },
+    {
+      "signature": "adjust_payroll(uuid,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.adjust_payroll"]
+    },
+    {
+      "signature": "apply_material_import(uuid,uuid,uuid,integer,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.apply_material_import"]
+    },
+    {
+      "signature": "approve_and_apply_material_import(uuid,uuid,integer,uuid,uuid,integer,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.approve_and_apply_material_import"]
+    },
+    {
+      "signature": "approve_job(uuid,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.approve_job"]
+    },
+    {
+      "signature": "approve_job_change(uuid,uuid,text)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.approve_job_change"]
+    },
+    {
+      "signature": "approve_material_import(uuid,uuid,integer,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.approve_material_import"]
+    },
+    {
+      "signature": "archive_estimate(uuid,uuid,boolean)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.archive_estimate"]
+    },
+    {
+      "signature": "assign_intake(uuid,uuid,uuid,text)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.assign_intake"]
+    },
+    {
+      "signature": "assign_job(uuid,uuid,uuid,boolean)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.assign_job"]
+    },
+    {
+      "signature": "assign_supervisor(uuid,uuid,uuid,boolean)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.assign_supervisor"]
+    },
+    {
+      "signature": "assigned_job_labels(uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.assigned_job_labels"]
+    },
+    {
+      "signature": "auth.jwt()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": null,
+      "acl": "{=X/ev_test,ev_test=X/ev_test,anon=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["auth.jwt"]
+    },
+    {
+      "signature": "auth.uid()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": null,
+      "acl": "{=X/ev_test,ev_test=X/ev_test,anon=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["auth.uid"]
+    },
+    {
+      "signature": "begin_job_material_import(uuid,uuid,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.begin_job_material_import"]
+    },
+    {
+      "signature": "begin_material_import(uuid,uuid,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.begin_material_import"]
+    },
+    {
+      "signature": "company_metrics()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.company_metrics"]
+    },
+    {
+      "signature": "configure_company(uuid,text,text,jsonb,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.configure_company"]
+    },
+    {
+      "signature": "configure_workforce(uuid,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.configure_workforce"]
+    },
+    {
+      "signature": "create_estimate(uuid,jsonb,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.create_estimate"]
+    },
+    {
+      "signature": "create_invitation(uuid,text,staff_role,text)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.create_invitation"]
+    },
+    {
+      "signature": "duplicate_estimate(uuid,uuid,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.duplicate_estimate"]
+    },
+    {
+      "signature": "estimate_defaults(uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.estimate_defaults"]
+    },
+    {
+      "signature": "intake_profile(text)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,anon=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.intake_profile"]
+    },
+    {
+      "signature": "issue_estimate(uuid,uuid,uuid,integer)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.issue_estimate"]
+    },
+    {
+      "signature": "job_labor_summary(uuid,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.job_labor_summary"]
+    },
+    {
+      "signature": "list_invitations(uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.list_invitations"]
+    },
+    {
+      "signature": "maintenance_2a_test.archive_integrity()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["maintenance_2a_test.archive_integrity"]
+    },
+    {
+      "signature": "maintenance_2a_test.bind_source(jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,gateway_nologin=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "maintenance_2a_test.bind_source",
+        "maintenance_2a_test.eligible",
+        "private.can",
+        "private.est_int",
+        "private.est_object",
+        "private.est_text",
+        "private.property_connected_session",
+        "private.property_guard"
+      ]
+    },
+    {
+      "signature": "maintenance_2a_test.eligible(uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "maintenance_2a_test.eligible",
+        "private.can",
+        "private.has_role",
+        "private.property_connected_session"
+      ]
+    },
+    {
+      "signature": "maintenance_2a_test.execute(jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test,gateway_nologin=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "maintenance_2a_test.bind_source",
+        "maintenance_2a_test.eligible",
+        "maintenance_2a_test.execute",
+        "maintenance_2a_test.items",
+        "maintenance_2a_test.notes",
+        "maintenance_2a_test.receipts",
+        "private.est_int",
+        "private.est_object",
+        "private.est_text",
+        "private.property_command",
+        "private.property_connected_session",
+        "private.property_guard"
+      ]
+    },
+    {
+      "signature": "maintenance_2a_test.immutable_source()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["maintenance_2a_test.immutable_source"]
+    },
+    {
+      "signature": "maintenance_2a_test.read_archive(jsonb,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "maintenance_2a_test.bind_source",
+        "maintenance_2a_test.read_archive",
+        "private.property_connected_session"
+      ]
+    },
+    {
+      "signature": "maintenance_2a_test.read_item(jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test,gateway_nologin=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "maintenance_2a_test.bind_source",
+        "maintenance_2a_test.read_item",
+        "private.property_connected_session"
+      ]
+    },
+    {
+      "signature": "maintenance_2a_test.reconcile(jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test,gateway_nologin=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "maintenance_2a_test.bind_source",
+        "maintenance_2a_test.reconcile",
+        "private.property_connected_session"
+      ]
+    },
+    {
+      "signature": "maintenance_2b_test.append_review(jsonb,jsonb,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,gateway_nologin=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "maintenance_2b_test.append_review",
+        "maintenance_2b_test.authority",
+        "maintenance_2b_test.exact_reservation",
+        "maintenance_2b_test.readiness_context",
+        "maintenance_2b_test.reviews"
+      ]
+    },
+    {
+      "signature": "maintenance_2b_test.authority(uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,gateway_nologin=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "maintenance_2a_test.eligible",
+        "maintenance_2b_test.authority",
+        "private.can",
+        "private.property_connected_session"
+      ]
+    },
+    {
+      "signature": "maintenance_2b_test.claim(jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,gateway_nologin=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "maintenance_2b_test.authority",
+        "maintenance_2b_test.claim",
+        "maintenance_2b_test.current_source",
+        "maintenance_2b_test.events",
+        "maintenance_2b_test.exact_reservation"
+      ]
+    },
+    {
+      "signature": "maintenance_2b_test.current_source(jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "maintenance_2a_test.bind_source",
+        "maintenance_2b_test.authority",
+        "maintenance_2b_test.current_source"
+      ]
+    },
+    {
+      "signature": "maintenance_2b_test.exact_reservation(jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["maintenance_2b_test.exact_reservation"]
+    },
+    {
+      "signature": "maintenance_2b_test.finish(jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,gateway_nologin=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "maintenance_2b_test.authority",
+        "maintenance_2b_test.bindings",
+        "maintenance_2b_test.current_source",
+        "maintenance_2b_test.events",
+        "maintenance_2b_test.exact_reservation",
+        "maintenance_2b_test.finish",
+        "private.estimate_context",
+        "private.replace_estimate_children"
+      ]
+    },
+    {
+      "signature": "maintenance_2b_test.protect_parent()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["maintenance_2b_test.protect_parent"]
+    },
+    {
+      "signature": "maintenance_2b_test.protect_version()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["maintenance_2b_test.protect_version"]
+    },
+    {
+      "signature": "maintenance_2b_test.readiness_context(jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,gateway_nologin=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "maintenance_2b_test.authority",
+        "maintenance_2b_test.current_source",
+        "maintenance_2b_test.exact_reservation",
+        "maintenance_2b_test.readiness_context",
+        "private.estimate_bundle"
+      ]
+    },
+    {
+      "signature": "maintenance_2b_test.reconcile(jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,gateway_nologin=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "maintenance_2a_test.bind_source",
+        "maintenance_2b_test.authority",
+        "maintenance_2b_test.reconcile"
+      ]
+    },
+    {
+      "signature": "maintenance_2b_test.reserve(jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,gateway_nologin=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "maintenance_2a_test.bind_source",
+        "maintenance_2b_test.authority",
+        "maintenance_2b_test.current_source",
+        "maintenance_2b_test.events",
+        "maintenance_2b_test.reservations",
+        "maintenance_2b_test.reserve",
+        "private.est_int",
+        "private.est_object",
+        "private.estimate_context"
+      ]
+    },
+    {
+      "signature": "maintenance_2b_test.review_intent(jsonb,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,gateway_nologin=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "maintenance_2b_test.authority",
+        "maintenance_2b_test.exact_reservation",
+        "maintenance_2b_test.readiness_context",
+        "maintenance_2b_test.review_intent",
+        "maintenance_2b_test.review_intents"
+      ]
+    },
+    {
+      "signature": "maintenance_2b_test.save_draft(jsonb,integer,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "maintenance_2b_test.authority",
+        "maintenance_2b_test.exact_reservation",
+        "maintenance_2b_test.readiness_context",
+        "maintenance_2b_test.save_draft",
+        "private.save_estimate"
+      ]
+    },
+    {
+      "signature": "maintenance_2c_test.capability(uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,gateway_nologin=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["maintenance_2c_test.capability"]
+    },
+    {
+      "signature": "maintenance_2c_test.command(uuid,text,jsonb)",
+      "owner": "gateway_nologin",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{gateway_nologin=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin,runtime_login=X/gateway_nologin}",
+      "runtimeExecutable": true,
+      "calls": [
+        "maintenance_2a_test.execute",
+        "maintenance_2a_test.read_item",
+        "maintenance_2a_test.reconcile",
+        "maintenance_2b_test.append_review",
+        "maintenance_2b_test.authority",
+        "maintenance_2b_test.claim",
+        "maintenance_2b_test.finish",
+        "maintenance_2b_test.readiness_context",
+        "maintenance_2b_test.reconcile",
+        "maintenance_2b_test.reserve",
+        "maintenance_2b_test.review_intent",
+        "maintenance_2c_test.capability",
+        "maintenance_2c_test.command",
+        "maintenance_2c_test.final_capability",
+        "maintenance_2c_test.lock_scope"
+      ]
+    },
+    {
+      "signature": "maintenance_2c_test.final_capability(uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,gateway_nologin=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "maintenance_2c_test.capability",
+        "maintenance_2c_test.final_capability"
+      ]
+    },
+    {
+      "signature": "maintenance_2c_test.immutable_capability()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["maintenance_2c_test.immutable_capability"]
+    },
+    {
+      "signature": "maintenance_2c_test.lock_scope(uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,gateway_nologin=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "maintenance_2a_test.bind_source",
+        "maintenance_2b_test.authority",
+        "maintenance_2c_test.capability",
+        "maintenance_2c_test.lock_scope"
+      ]
+    },
+    {
+      "signature": "manage_member(uuid,uuid,boolean,staff_role,text)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.manage_member"]
+    },
+    {
+      "signature": "material_worker_control(uuid,text,uuid,uuid,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.material_worker_control"]
+    },
+    {
+      "signature": "platform_access()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.is_platform_admin"]
+    },
+    {
+      "signature": "platform_activity()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.platform_activity"]
+    },
+    {
+      "signature": "prepare_payroll(uuid,timestamp with time zone,timestamp with time zone,jsonb,boolean)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.prepare_payroll"]
+    },
+    {
+      "signature": "private.accept_invitation(text)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["auth.jwt", "auth.uid", "private.accept_invitation"]
+    },
+    {
+      "signature": "private.adjust_payroll(uuid,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.adjust_payroll",
+        "private.est_object",
+        "private.est_text",
+        "private.payroll_admin"
+      ]
+    },
+    {
+      "signature": "private.apply_material_import(uuid,uuid,uuid,integer,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.apply_material_import",
+        "private.can",
+        "private.save_estimate"
+      ]
+    },
+    {
+      "signature": "private.approve_and_apply_material_import(uuid,uuid,integer,uuid,uuid,integer,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.apply_material_import",
+        "private.approve_and_apply_material_import",
+        "private.approve_material_import",
+        "private.can"
+      ]
+    },
+    {
+      "signature": "private.approve_job(uuid,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.approve_job", "private.can", "private.has_role"]
+    },
+    {
+      "signature": "private.approve_job_change(uuid,uuid,text)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.approve_job_change",
+        "private.can",
+        "private.est_money",
+        "private.est_text",
+        "private.has_role"
+      ]
+    },
+    {
+      "signature": "private.approve_material_import(uuid,uuid,integer,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.approve_material_import",
+        "private.can",
+        "private.est_id",
+        "private.est_int",
+        "private.est_money",
+        "private.est_text",
+        "private.material_markup"
+      ]
+    },
+    {
+      "signature": "private.archive_estimate(uuid,uuid,boolean)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.archive_estimate", "private.can", "private.has_role"]
+    },
+    {
+      "signature": "private.assign_intake(uuid,uuid,uuid,text)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.assign_intake", "private.can"]
+    },
+    {
+      "signature": "private.assign_job(uuid,uuid,uuid,boolean)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.assign_job", "private.can", "private.has_role"]
+    },
+    {
+      "signature": "private.assign_supervisor(uuid,uuid,uuid,boolean)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.assign_supervisor", "private.payroll_admin"]
+    },
+    {
+      "signature": "private.assigned_job_labels(uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.assigned_job_labels",
+        "private.has_role",
+        "private.job_member"
+      ]
+    },
+    {
+      "signature": "private.audit_change()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["auth.uid", "private.audit_change"]
+    },
+    {
+      "signature": "private.begin_job_material_import(uuid,uuid,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.begin_job_material_import",
+        "private.est_int",
+        "private.est_object",
+        "private.est_text",
+        "private.job_member"
+      ]
+    },
+    {
+      "signature": "private.begin_material_import(uuid,uuid,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.begin_material_import",
+        "private.can",
+        "private.est_int",
+        "private.est_object",
+        "private.est_text"
+      ]
+    },
+    {
+      "signature": "private.calculate_estimate(jsonb,integer)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.calculate_estimate",
+        "private.est_date",
+        "private.est_id",
+        "private.est_int",
+        "private.est_money",
+        "private.est_object",
+        "private.est_text"
+      ]
+    },
+    {
+      "signature": "private.can(uuid,text)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["auth.uid", "private.can", "private.has_role"]
+    },
+    {
+      "signature": "private.check_material_approvals(uuid,uuid,jsonb,boolean)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.check_material_approvals"]
+    },
+    {
+      "signature": "private.company_metrics()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.company_metrics", "private.is_platform_admin"]
+    },
+    {
+      "signature": "private.configure_company(uuid,text,text,jsonb,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "private.configure_company",
+        "private.is_platform_admin",
+        "private.platform_events"
+      ]
+    },
+    {
+      "signature": "private.configure_workforce(uuid,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.configure_workforce",
+        "private.est_int",
+        "private.est_object",
+        "private.est_text",
+        "private.payroll_admin"
+      ]
+    },
+    {
+      "signature": "private.create_estimate(uuid,jsonb,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.can",
+        "private.create_estimate",
+        "private.estimate_bundle",
+        "private.estimate_context",
+        "private.replace_estimate_children"
+      ]
+    },
+    {
+      "signature": "private.create_invitation(uuid,text,staff_role,text)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "private.can",
+        "private.create_invitation",
+        "private.staff_invitations"
+      ]
+    },
+    {
+      "signature": "private.duplicate_estimate(uuid,uuid,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.can",
+        "private.create_estimate",
+        "private.duplicate_estimate"
+      ]
+    },
+    {
+      "signature": "private.est_date(jsonb,boolean)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.est_date", "private.est_text"]
+    },
+    {
+      "signature": "private.est_id(jsonb,boolean)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.est_id", "private.est_text"]
+    },
+    {
+      "signature": "private.est_int(jsonb,numeric,numeric)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.est_int"]
+    },
+    {
+      "signature": "private.est_money(numeric)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.est_money"]
+    },
+    {
+      "signature": "private.est_object(jsonb,text[])",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.est_object"]
+    },
+    {
+      "signature": "private.est_text(jsonb,integer,integer)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.est_text"]
+    },
+    {
+      "signature": "private.estimate_bundle(uuid,uuid,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.can", "private.estimate_bundle"]
+    },
+    {
+      "signature": "private.estimate_context(uuid,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.calculate_estimate",
+        "private.can",
+        "private.estimate_context"
+      ]
+    },
+    {
+      "signature": "private.estimate_defaults(uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.can", "private.estimate_defaults"]
+    },
+    {
+      "signature": "private.has_role(uuid,staff_role[])",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["auth.jwt", "auth.uid", "private.has_role"]
+    },
+    {
+      "signature": "private.initialize_company()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.initialize_company"]
+    },
+    {
+      "signature": "private.intake_profile(text)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,anon=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.intake_profile"]
+    },
+    {
+      "signature": "private.is_platform_admin()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["auth.jwt", "auth.uid", "private.is_platform_admin"]
+    },
+    {
+      "signature": "private.issue_estimate(uuid,uuid,uuid,integer)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "private.can",
+        "private.check_material_approvals",
+        "private.estimate_bundle",
+        "private.estimate_context",
+        "private.has_role",
+        "private.issue_estimate"
+      ]
+    },
+    {
+      "signature": "private.job_labor_summary(uuid,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.can", "private.job_labor_summary"]
+    },
+    {
+      "signature": "private.job_member(uuid,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "private.can",
+        "private.has_role",
+        "private.job_member"
+      ]
+    },
+    {
+      "signature": "private.list_invitations(uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.can", "private.list_invitations"]
+    },
+    {
+      "signature": "private.manage_member(uuid,uuid,boolean,staff_role,text)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["auth.uid", "private.can", "private.manage_member"]
+    },
+    {
+      "signature": "private.material_markup(numeric,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.est_int",
+        "private.est_object",
+        "private.material_markup"
+      ]
+    },
+    {
+      "signature": "private.material_worker_control(uuid,text,uuid,uuid,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "private.est_object",
+        "private.est_text",
+        "private.material_worker_control",
+        "private.validate_worker_extraction"
+      ]
+    },
+    {
+      "signature": "private.payroll_admin(uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.has_role", "private.payroll_admin"]
+    },
+    {
+      "signature": "private.payroll_rows(uuid,timestamp with time zone,timestamp with time zone)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.payroll_rows"]
+    },
+    {
+      "signature": "private.platform_activity()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.is_platform_admin", "private.platform_activity"]
+    },
+    {
+      "signature": "private.prepare_payroll(uuid,timestamp with time zone,timestamp with time zone,jsonb,boolean)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "private.est_int",
+        "private.payroll_admin",
+        "private.payroll_rows",
+        "private.prepare_payroll"
+      ]
+    },
+    {
+      "signature": "private.prevent_tenant_move()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.prevent_tenant_move"]
+    },
+    {
+      "signature": "private.property_access_immutable()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.property_access_immutable"]
+    },
+    {
+      "signature": "private.property_command(uuid,text,uuid,integer,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "private.can",
+        "private.est_int",
+        "private.est_money",
+        "private.est_object",
+        "private.est_text",
+        "private.has_role",
+        "private.inspection_plans",
+        "private.inspection_reports",
+        "private.inspection_visits",
+        "private.job_member",
+        "private.property_command",
+        "private.property_guard",
+        "private.property_report_snapshot",
+        "private.property_session_guard",
+        "private.propose_job_change",
+        "private.supplemental_invoice_drafts",
+        "private.supplier_comparisons",
+        "private.unbilled_decisions",
+        "private.validate_inspection"
+      ]
+    },
+    {
+      "signature": "private.property_connected_session()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.jwt",
+        "auth.uid",
+        "private.property_connected_session",
+        "private.property_session_guard"
+      ]
+    },
+    {
+      "signature": "private.property_guard(uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "private.has_role",
+        "private.property_guard",
+        "private.property_session_guard"
+      ]
+    },
+    {
+      "signature": "private.property_portal(uuid,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "private.property_portal",
+        "private.property_session_guard",
+        "private.release_customer",
+        "private.release_lock_actor",
+        "private.release_workspace"
+      ]
+    },
+    {
+      "signature": "private.property_published_reports(uuid,uuid,uuid,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.jwt",
+        "auth.uid",
+        "private.property_connected_session",
+        "private.property_published_reports"
+      ]
+    },
+    {
+      "signature": "private.property_record_integrity()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.est_int",
+        "private.est_money",
+        "private.est_object",
+        "private.property_record_integrity",
+        "private.property_report_snapshot",
+        "private.validate_inspection"
+      ]
+    },
+    {
+      "signature": "private.property_report_snapshot(jsonb,date,text)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.property_report_snapshot",
+        "private.validate_inspection"
+      ]
+    },
+    {
+      "signature": "private.property_session_guard()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["auth.jwt", "auth.uid", "private.property_session_guard"]
+    },
+    {
+      "signature": "private.property_workspace(uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "private.can",
+        "private.has_role",
+        "private.job_member",
+        "private.property_guard",
+        "private.property_workspace"
+      ]
+    },
+    {
+      "signature": "private.propose_job_change(uuid,uuid,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.can",
+        "private.est_int",
+        "private.est_object",
+        "private.est_text",
+        "private.propose_job_change"
+      ]
+    },
+    {
+      "signature": "private.protect_gateway_authorization()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.protect_gateway_authorization"]
+    },
+    {
+      "signature": "private.protect_issued_child()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.protect_issued_child"]
+    },
+    {
+      "signature": "private.protect_issued_estimate()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.protect_issued_estimate"]
+    },
+    {
+      "signature": "private.protect_job_baseline()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.protect_job_baseline"]
+    },
+    {
+      "signature": "private.protect_payroll()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.protect_payroll"]
+    },
+    {
+      "signature": "private.protect_sandbox_attempt()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.protect_sandbox_attempt"]
+    },
+    {
+      "signature": "private.protect_time()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.protect_time"]
+    },
+    {
+      "signature": "private.provider_agreement_control(uuid,uuid,text,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.provider_agreement_control",
+        "private.provider_agreement_evidence",
+        "private.provider_agreement_inbox",
+        "private.require_provider_workload"
+      ]
+    },
+    {
+      "signature": "private.provider_audit_change()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.provider_audit_change"]
+    },
+    {
+      "signature": "private.provider_email_control(uuid,uuid,text,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.provider_email_control",
+        "private.provider_email_domains",
+        "private.provider_email_events",
+        "private.provider_email_outbox",
+        "private.provider_email_suppressions",
+        "private.require_provider_workload"
+      ]
+    },
+    {
+      "signature": "private.provision_company(text,text,industry_template,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "private.is_platform_admin",
+        "private.platform_events",
+        "private.provision_company"
+      ]
+    },
+    {
+      "signature": "private.queue_material_source(uuid,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "private.can",
+        "private.material_processing_jobs",
+        "private.queue_material_source"
+      ]
+    },
+    {
+      "signature": "private.record_consent(uuid,uuid,boolean,boolean)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.can", "private.record_consent"]
+    },
+    {
+      "signature": "private.record_reviewed_purchase(uuid,uuid,uuid,integer,jsonb,text)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.approve_material_import",
+        "private.can",
+        "private.record_reviewed_purchase",
+        "private.submit_job_expense"
+      ]
+    },
+    {
+      "signature": "private.record_time(uuid,uuid,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.est_object",
+        "private.est_text",
+        "private.payroll_admin",
+        "private.record_time",
+        "private.worker_access"
+      ]
+    },
+    {
+      "signature": "private.reject_audit_mutation()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.reject_audit_mutation"]
+    },
+    {
+      "signature": "private.release_access(uuid,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.release_access",
+        "private.release_customer",
+        "private.release_staff"
+      ]
+    },
+    {
+      "signature": "private.release_command(uuid,text,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "private.est_id",
+        "private.est_int",
+        "private.est_object",
+        "private.est_text",
+        "private.release_command",
+        "private.release_counters",
+        "private.release_customer",
+        "private.release_lock_actor",
+        "private.release_snapshot",
+        "private.release_staff",
+        "private.release_test"
+      ]
+    },
+    {
+      "signature": "private.release_contexts()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "private.release_contexts",
+        "private.release_staff",
+        "private.release_test"
+      ]
+    },
+    {
+      "signature": "private.release_customer(uuid,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["auth.uid", "private.release_customer", "private.release_test"]
+    },
+    {
+      "signature": "private.release_email_audit()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["auth.uid", "private.release_email_audit"]
+    },
+    {
+      "signature": "private.release_immutable()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.release_immutable"]
+    },
+    {
+      "signature": "private.release_lock_actor(uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["auth.uid", "private.release_lock_actor"]
+    },
+    {
+      "signature": "private.release_snapshot(uuid,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.release_snapshot", "private.release_staff"]
+    },
+    {
+      "signature": "private.release_staff(uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.can",
+        "private.has_role",
+        "private.release_staff",
+        "private.release_test"
+      ]
+    },
+    {
+      "signature": "private.release_test(uuid,text)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["auth.uid", "private.release_test"]
+    },
+    {
+      "signature": "private.release_workspace(uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.release_customer",
+        "private.release_staff",
+        "private.release_test",
+        "private.release_workspace"
+      ]
+    },
+    {
+      "signature": "private.replace_estimate_children(uuid,uuid,jsonb,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.can", "private.replace_estimate_children"]
+    },
+    {
+      "signature": "private.require_provider_workload(uuid,uuid,text)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.require_provider_workload"]
+    },
+    {
+      "signature": "private.resolve_clock(uuid,uuid,text,text)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.est_text",
+        "private.payroll_admin",
+        "private.resolve_clock"
+      ]
+    },
+    {
+      "signature": "private.review_job_expense(uuid,uuid,uuid,text,text)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.can",
+        "private.est_text",
+        "private.has_role",
+        "private.review_job_expense"
+      ]
+    },
+    {
+      "signature": "private.review_time(uuid,uuid,text,text)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "private.est_text",
+        "private.payroll_admin",
+        "private.review_time",
+        "private.worker_access"
+      ]
+    },
+    {
+      "signature": "private.revise_estimate(uuid,uuid,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.can",
+        "private.estimate_bundle",
+        "private.estimate_context",
+        "private.replace_estimate_children",
+        "private.revise_estimate"
+      ]
+    },
+    {
+      "signature": "private.revoke_invitation(uuid,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["auth.uid", "private.can", "private.revoke_invitation"]
+    },
+    {
+      "signature": "private.revoke_owner(uuid,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "private.is_platform_admin",
+        "private.platform_events",
+        "private.revoke_owner"
+      ]
+    },
+    {
+      "signature": "private.sandbox_gateway_control(uuid,uuid,text,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.require_provider_workload",
+        "private.sandbox_gateway_attempts",
+        "private.sandbox_gateway_control",
+        "private.sandbox_gateway_inbox",
+        "private.sandbox_gateway_observations",
+        "private.sandbox_gateway_reconciliations",
+        "private.sandbox_gateway_settlements"
+      ]
+    },
+    {
+      "signature": "private.save_estimate(uuid,uuid,uuid,integer,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.can",
+        "private.check_material_approvals",
+        "private.estimate_bundle",
+        "private.estimate_context",
+        "private.replace_estimate_children",
+        "private.save_estimate"
+      ]
+    },
+    {
+      "signature": "private.save_estimate_template(uuid,text,jsonb,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.can",
+        "private.estimate_context",
+        "private.save_estimate_template"
+      ]
+    },
+    {
+      "signature": "private.save_worker(uuid,jsonb,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.est_int",
+        "private.est_object",
+        "private.est_text",
+        "private.payroll_admin",
+        "private.save_worker"
+      ]
+    },
+    {
+      "signature": "private.submit_intake_gateway(text,text,jsonb,text,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,anon=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.intake_rate_limits", "private.submit_intake_gateway"]
+    },
+    {
+      "signature": "private.submit_job_expense(uuid,uuid,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.est_int",
+        "private.est_object",
+        "private.est_text",
+        "private.job_member",
+        "private.submit_job_expense"
+      ]
+    },
+    {
+      "signature": "private.submit_time(uuid,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.submit_time", "private.worker_access"]
+    },
+    {
+      "signature": "private.tax_policy_revision()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.tax_policy_revision"]
+    },
+    {
+      "signature": "private.time_clock(uuid,uuid,text,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.record_time",
+        "private.time_clock",
+        "private.worker_access"
+      ]
+    },
+    {
+      "signature": "private.time_period_labels(uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.has_role", "private.time_period_labels"]
+    },
+    {
+      "signature": "private.update_job_projection(uuid,uuid,integer,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.can",
+        "private.est_int",
+        "private.est_object",
+        "private.update_job_projection"
+      ]
+    },
+    {
+      "signature": "private.validate_company_logo()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.validate_company_logo"]
+    },
+    {
+      "signature": "private.validate_inspection(jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.est_object",
+        "private.est_text",
+        "private.validate_inspection"
+      ]
+    },
+    {
+      "signature": "private.validate_worker_extraction(jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.est_date",
+        "private.est_int",
+        "private.est_object",
+        "private.est_text",
+        "private.validate_worker_extraction"
+      ]
+    },
+    {
+      "signature": "private.worker_access(uuid,uuid,boolean)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": true,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "auth.uid",
+        "private.has_role",
+        "private.payroll_admin",
+        "private.worker_access"
+      ]
+    },
+    {
+      "signature": "property_command(uuid,text,uuid,integer,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.property_command",
+        "private.property_connected_session"
+      ]
+    },
+    {
+      "signature": "property_reports(uuid,uuid,uuid,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.property_published_reports"]
+    },
+    {
+      "signature": "property_workspace(uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": [
+        "private.property_connected_session",
+        "private.property_workspace"
+      ]
+    },
+    {
+      "signature": "propose_job_change(uuid,uuid,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.propose_job_change"]
+    },
+    {
+      "signature": "provision_company(text,text,industry_template,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.provision_company"]
+    },
+    {
+      "signature": "queue_material_source(uuid,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.queue_material_source"]
+    },
+    {
+      "signature": "record_consent(uuid,uuid,boolean,boolean)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.record_consent"]
+    },
+    {
+      "signature": "record_reviewed_purchase(uuid,uuid,uuid,integer,jsonb,text)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.record_reviewed_purchase"]
+    },
+    {
+      "signature": "record_time(uuid,uuid,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.record_time"]
+    },
+    {
+      "signature": "release_command(uuid,text,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.release_command"]
+    },
+    {
+      "signature": "release_contexts()",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.release_contexts"]
+    },
+    {
+      "signature": "release_workspace(uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.release_workspace"]
+    },
+    {
+      "signature": "resolve_clock(uuid,uuid,text,text)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.resolve_clock"]
+    },
+    {
+      "signature": "review_job_expense(uuid,uuid,uuid,text,text)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.review_job_expense"]
+    },
+    {
+      "signature": "review_time(uuid,uuid,text,text)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.review_time"]
+    },
+    {
+      "signature": "revise_estimate(uuid,uuid,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.revise_estimate"]
+    },
+    {
+      "signature": "revoke_invitation(uuid,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.revoke_invitation"]
+    },
+    {
+      "signature": "revoke_owner(uuid,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.revoke_owner"]
+    },
+    {
+      "signature": "save_company_profile(uuid,jsonb,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.can"]
+    },
+    {
+      "signature": "save_estimate(uuid,uuid,uuid,integer,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.save_estimate"]
+    },
+    {
+      "signature": "save_estimate_template(uuid,text,jsonb,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.save_estimate_template"]
+    },
+    {
+      "signature": "save_worker(uuid,jsonb,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.save_worker"]
+    },
+    {
+      "signature": "submit_intake_gateway(text,text,jsonb,text,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,anon=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.submit_intake_gateway"]
+    },
+    {
+      "signature": "submit_job_expense(uuid,uuid,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.submit_job_expense"]
+    },
+    {
+      "signature": "submit_time(uuid,uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.submit_time"]
+    },
+    {
+      "signature": "time_clock(uuid,uuid,text,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.time_clock"]
+    },
+    {
+      "signature": "time_period_labels(uuid)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.time_period_labels"]
+    },
+    {
+      "signature": "update_job_projection(uuid,uuid,integer,jsonb)",
+      "owner": "trusted_fixture_owner",
+      "securityDefiner": false,
+      "config": ["search_path=\"\""],
+      "acl": "{ev_test=X/ev_test,authenticated=X/ev_test}",
+      "runtimeExecutable": false,
+      "calls": ["private.update_job_projection"]
+    }
+  ],
+  "tables": [
+    {
+      "schema": "auth",
+      "name": "sessions",
+      "rls": false,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "auth",
+      "name": "users",
+      "rls": false,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "maintenance_2a_test",
+      "name": "items",
+      "rls": true,
+      "forced": true,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "maintenance_2a_test",
+      "name": "notes",
+      "rls": true,
+      "forced": true,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "maintenance_2a_test",
+      "name": "receipts",
+      "rls": true,
+      "forced": true,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "maintenance_2a_test",
+      "name": "repair_archives",
+      "rls": true,
+      "forced": true,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "maintenance_2b_test",
+      "name": "bindings",
+      "rls": true,
+      "forced": true,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "maintenance_2b_test",
+      "name": "events",
+      "rls": true,
+      "forced": true,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "maintenance_2b_test",
+      "name": "permits",
+      "rls": true,
+      "forced": true,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "maintenance_2b_test",
+      "name": "reservations",
+      "rls": true,
+      "forced": true,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "maintenance_2b_test",
+      "name": "review_intents",
+      "rls": true,
+      "forced": true,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "maintenance_2b_test",
+      "name": "reviews",
+      "rls": true,
+      "forced": true,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "maintenance_2c_test",
+      "name": "capabilities",
+      "rls": true,
+      "forced": true,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "inspection_plans",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "inspection_reports",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "inspection_visits",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "intake_gateway_keys",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "intake_rate_limits",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "intake_submissions",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "material_processing_jobs",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "material_worker_grants",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "merchant_configurations",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "platform_admins",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "platform_events",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "property_features",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "property_media",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "property_report_access",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "provider_agreement_bindings",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "provider_agreement_evidence",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "provider_agreement_inbox",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "provider_email_bindings",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "provider_email_domains",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "provider_email_events",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "provider_email_outbox",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "provider_email_sender_bindings",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "provider_email_suppressions",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "provider_workloads",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "release_counters",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "release_environment",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "release_test_users",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "sandbox_gateway_attempts",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "sandbox_gateway_authorizations",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "sandbox_gateway_inbox",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "sandbox_gateway_observations",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "sandbox_gateway_reconciliations",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "sandbox_gateway_settlements",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "staff_invitations",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "supplemental_invoice_drafts",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "supplier_comparisons",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "private",
+      "name": "unbilled_decisions",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "activity_events",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "catalog_items",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "communication_consents",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "company_email_profiles",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "company_modules",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "company_settings",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "customer_notes",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "customers",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "documents",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "estimate_attachments",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "estimate_lines",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "estimate_options",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "estimate_schedule_proposals",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "estimate_tax_policies",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "estimate_templates",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "estimate_versions",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "estimates",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "intake_requests",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "job_assignments",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "job_change_approvals",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "job_change_orders",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "job_expense_material_lines",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "job_expense_reviews",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "job_expenses",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "jobs",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "labor_rates",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "lead_notifications",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "material_import_approvals",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "material_import_batches",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "material_import_preferences",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "material_import_sources",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "memberships",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "organizations",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "payroll_adjustments",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "payroll_periods",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "portal_identities",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "release_authorizations",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "release_contracts",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "release_decisions",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "release_invoices",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "release_ledger_entries",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "release_messages",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "release_offers",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "release_payment_events",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "release_signatures",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "service_locations",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "time_entries",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "time_reviews",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "worker_profiles",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "worker_supervisors",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    },
+    {
+      "schema": "public",
+      "name": "workforce_policies",
+      "rls": true,
+      "forced": false,
+      "owner": "trusted_fixture_owner",
+      "table_access": false,
+      "column_access": false
+    }
+  ],
+  "schemaRights": [
+    {
+      "nspname": "auth",
+      "usage": false,
+      "can_create": false
+    },
+    {
+      "nspname": "maintenance_2a_test",
+      "usage": false,
+      "can_create": false
+    },
+    {
+      "nspname": "maintenance_2b_test",
+      "usage": false,
+      "can_create": false
+    },
+    {
+      "nspname": "maintenance_2c_test",
+      "usage": true,
+      "can_create": false
+    },
+    {
+      "nspname": "private",
+      "usage": false,
+      "can_create": false
+    },
+    {
+      "nspname": "public",
+      "usage": true,
+      "can_create": false
+    }
+  ],
+  "defaults": [],
+  "policies": [
+    {
+      "schema": "maintenance_2a_test",
+      "table_name": "items",
+      "name": "staff_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "maintenance_2a_test.eligible(organization_id)",
+      "with_check": null
+    },
+    {
+      "schema": "maintenance_2a_test",
+      "table_name": "notes",
+      "name": "staff_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "maintenance_2a_test.eligible(organization_id)",
+      "with_check": null
+    },
+    {
+      "schema": "maintenance_2a_test",
+      "table_name": "receipts",
+      "name": "staff_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "maintenance_2a_test.eligible(organization_id)",
+      "with_check": null
+    },
+    {
+      "schema": "maintenance_2a_test",
+      "table_name": "repair_archives",
+      "name": "staff_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "maintenance_2a_test.eligible(organization_id)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "activity_events",
+      "name": "activity_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.has_role(organization_id, ARRAY['owner'::staff_role, 'admin'::staff_role])",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "catalog_items",
+      "name": "catalog_insert",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "private.can(organization_id, 'estimates'::text)"
+    },
+    {
+      "schema": "public",
+      "table_name": "catalog_items",
+      "name": "catalog_update",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "UPDATE",
+      "qual": "private.can(organization_id, 'estimates'::text)",
+      "with_check": "private.can(organization_id, 'estimates'::text)"
+    },
+    {
+      "schema": "public",
+      "table_name": "catalog_items",
+      "name": "estimating_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "( SELECT private.can(catalog_items.organization_id, 'estimates'::text) AS can)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "communication_consents",
+      "name": "consent_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.can(organization_id, 'crm'::text)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "company_email_profiles",
+      "name": "internal_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.release_staff(organization_id)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "company_modules",
+      "name": "modules_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "(private.has_role(organization_id) OR private.is_platform_admin())",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "company_settings",
+      "name": "settings_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.can(organization_id, 'settings'::text)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "company_settings",
+      "name": "settings_update",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "UPDATE",
+      "qual": "private.can(organization_id, 'settings'::text)",
+      "with_check": "private.can(organization_id, 'settings'::text)"
+    },
+    {
+      "schema": "public",
+      "table_name": "customer_notes",
+      "name": "notes_insert",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "private.can(organization_id, 'crm'::text)"
+    },
+    {
+      "schema": "public",
+      "table_name": "customer_notes",
+      "name": "notes_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.can(organization_id, 'crm'::text)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "customers",
+      "name": "tenant_delete",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "DELETE",
+      "qual": "(private.can(organization_id, 'crm'::text) AND private.has_role(organization_id, ARRAY['owner'::staff_role, 'admin'::staff_role]))",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "customers",
+      "name": "tenant_insert",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "private.can(organization_id, 'crm'::text)"
+    },
+    {
+      "schema": "public",
+      "table_name": "customers",
+      "name": "tenant_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.can(organization_id, 'crm'::text)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "customers",
+      "name": "tenant_update",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "UPDATE",
+      "qual": "private.can(organization_id, 'crm'::text)",
+      "with_check": "private.can(organization_id, 'crm'::text)"
+    },
+    {
+      "schema": "public",
+      "table_name": "documents",
+      "name": "documents_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.can(organization_id, 'documents'::text)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_attachments",
+      "name": "estimating_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "( SELECT private.can(estimate_attachments.organization_id, 'estimates'::text) AS can)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_lines",
+      "name": "estimating_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "( SELECT private.can(estimate_lines.organization_id, 'estimates'::text) AS can)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_options",
+      "name": "estimating_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "( SELECT private.can(estimate_options.organization_id, 'estimates'::text) AS can)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_schedule_proposals",
+      "name": "estimating_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "( SELECT private.can(estimate_schedule_proposals.organization_id, 'estimates'::text) AS can)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_tax_policies",
+      "name": "estimating_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "( SELECT private.can(estimate_tax_policies.organization_id, 'estimates'::text) AS can)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_tax_policies",
+      "name": "tax_insert",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "(private.can(organization_id, 'estimates'::text) AND private.has_role(organization_id, ARRAY['owner'::staff_role, 'admin'::staff_role]))"
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_tax_policies",
+      "name": "tax_update",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "UPDATE",
+      "qual": "(private.can(organization_id, 'estimates'::text) AND private.has_role(organization_id, ARRAY['owner'::staff_role, 'admin'::staff_role]))",
+      "with_check": "(private.can(organization_id, 'estimates'::text) AND private.has_role(organization_id, ARRAY['owner'::staff_role, 'admin'::staff_role]))"
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_templates",
+      "name": "estimating_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "( SELECT private.can(estimate_templates.organization_id, 'estimates'::text) AS can)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_versions",
+      "name": "estimating_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "( SELECT private.can(estimate_versions.organization_id, 'estimates'::text) AS can)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "estimates",
+      "name": "estimating_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "( SELECT private.can(estimates.organization_id, 'estimates'::text) AS can)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "intake_requests",
+      "name": "tenant_delete",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "DELETE",
+      "qual": "(private.can(organization_id, 'intake'::text) AND private.has_role(organization_id, ARRAY['owner'::staff_role, 'admin'::staff_role]))",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "intake_requests",
+      "name": "tenant_insert",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "private.can(organization_id, 'intake'::text)"
+    },
+    {
+      "schema": "public",
+      "table_name": "intake_requests",
+      "name": "tenant_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "(private.can(organization_id, 'intake'::text) OR (private.has_role(organization_id) AND (assigned_to = auth.uid()) AND (EXISTS ( SELECT 1\n   FROM company_modules cm\n  WHERE ((cm.organization_id = intake_requests.organization_id) AND (cm.module = 'intake'::text) AND cm.enabled)))))",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "intake_requests",
+      "name": "tenant_update",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "UPDATE",
+      "qual": "private.can(organization_id, 'intake'::text)",
+      "with_check": "private.can(organization_id, 'intake'::text)"
+    },
+    {
+      "schema": "public",
+      "table_name": "job_assignments",
+      "name": "job_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "(private.can(organization_id, 'estimates'::text) OR ((user_id = auth.uid()) AND private.has_role(organization_id)))",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "job_change_approvals",
+      "name": "job_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.can(organization_id, 'estimates'::text)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "job_change_orders",
+      "name": "job_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.can(organization_id, 'estimates'::text)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "job_expense_material_lines",
+      "name": "material_expense_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.can(organization_id, 'estimates'::text)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "job_expense_reviews",
+      "name": "job_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.can(organization_id, 'estimates'::text)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "job_expenses",
+      "name": "job_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "(private.can(organization_id, 'estimates'::text) OR ((submitted_by = auth.uid()) AND private.job_member(organization_id, job_id)))",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "jobs",
+      "name": "job_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.can(organization_id, 'estimates'::text)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "labor_rates",
+      "name": "workforce_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.payroll_admin(organization_id)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "lead_notifications",
+      "name": "notifications_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.can(organization_id, 'intake'::text)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "material_import_approvals",
+      "name": "estimating_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.can(organization_id, 'estimates'::text)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "material_import_batches",
+      "name": "estimating_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.can(organization_id, 'estimates'::text)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "material_import_preferences",
+      "name": "estimating_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.can(organization_id, 'estimates'::text)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "material_import_preferences",
+      "name": "preference_insert",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "(private.can(organization_id, 'estimates'::text) AND private.has_role(organization_id, ARRAY['owner'::staff_role, 'admin'::staff_role]))"
+    },
+    {
+      "schema": "public",
+      "table_name": "material_import_preferences",
+      "name": "preference_update",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "UPDATE",
+      "qual": "(private.can(organization_id, 'estimates'::text) AND private.has_role(organization_id, ARRAY['owner'::staff_role, 'admin'::staff_role]))",
+      "with_check": "(private.can(organization_id, 'estimates'::text) AND private.has_role(organization_id, ARRAY['owner'::staff_role, 'admin'::staff_role]))"
+    },
+    {
+      "schema": "public",
+      "table_name": "material_import_sources",
+      "name": "estimating_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.can(organization_id, 'estimates'::text)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "memberships",
+      "name": "memberships_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.has_role(organization_id)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "organizations",
+      "name": "organizations_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "(private.has_role(id) OR private.is_platform_admin())",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "organizations",
+      "name": "organizations_update",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "UPDATE",
+      "qual": "private.can(id, 'settings'::text)",
+      "with_check": "private.can(id, 'settings'::text)"
+    },
+    {
+      "schema": "public",
+      "table_name": "payroll_adjustments",
+      "name": "payroll_adjustment_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.payroll_admin(organization_id)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "payroll_periods",
+      "name": "workforce_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.payroll_admin(organization_id)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "portal_identities",
+      "name": "internal_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.release_staff(organization_id)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "release_authorizations",
+      "name": "internal_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.release_access(organization_id, customer_id)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "release_contracts",
+      "name": "internal_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.release_access(organization_id, customer_id)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "release_decisions",
+      "name": "internal_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.release_access(organization_id, customer_id)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "release_invoices",
+      "name": "internal_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.release_access(organization_id, customer_id)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "release_ledger_entries",
+      "name": "internal_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.release_access(organization_id, customer_id)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "release_messages",
+      "name": "internal_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.release_access(organization_id, customer_id)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "release_offers",
+      "name": "internal_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.release_access(organization_id, customer_id)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "release_payment_events",
+      "name": "internal_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.release_access(organization_id, customer_id)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "release_signatures",
+      "name": "internal_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.release_access(organization_id, customer_id)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "service_locations",
+      "name": "tenant_delete",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "DELETE",
+      "qual": "(private.can(organization_id, 'crm'::text) AND private.has_role(organization_id, ARRAY['owner'::staff_role, 'admin'::staff_role]))",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "service_locations",
+      "name": "tenant_insert",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "INSERT",
+      "qual": null,
+      "with_check": "private.can(organization_id, 'crm'::text)"
+    },
+    {
+      "schema": "public",
+      "table_name": "service_locations",
+      "name": "tenant_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.can(organization_id, 'crm'::text)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "service_locations",
+      "name": "tenant_update",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "UPDATE",
+      "qual": "private.can(organization_id, 'crm'::text)",
+      "with_check": "private.can(organization_id, 'crm'::text)"
+    },
+    {
+      "schema": "public",
+      "table_name": "time_entries",
+      "name": "workforce_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.worker_access(organization_id, worker_id)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "time_reviews",
+      "name": "workforce_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "(EXISTS ( SELECT 1\n   FROM time_entries e\n  WHERE ((e.organization_id = time_reviews.organization_id) AND (e.id = time_reviews.entry_id) AND private.worker_access(e.organization_id, e.worker_id))))",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "worker_profiles",
+      "name": "workforce_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.worker_access(organization_id, id)",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "worker_supervisors",
+      "name": "workforce_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "(private.payroll_admin(organization_id) OR ((user_id = auth.uid()) AND private.has_role(organization_id)))",
+      "with_check": null
+    },
+    {
+      "schema": "public",
+      "table_name": "workforce_policies",
+      "name": "workforce_read",
+      "permissive": "PERMISSIVE",
+      "roles": "{authenticated}",
+      "cmd": "SELECT",
+      "qual": "private.has_role(organization_id)",
+      "with_check": null
+    }
+  ],
+  "identities": [
+    {
+      "name": "trusted_fixture_owner",
+      "rolsuper": true,
+      "rolcreatedb": true,
+      "rolcreaterole": true,
+      "rolcanlogin": true,
+      "rolinherit": true,
+      "rolbypassrls": true
+    },
+    {
+      "name": "gateway_nologin",
+      "rolsuper": false,
+      "rolcreatedb": false,
+      "rolcreaterole": false,
+      "rolcanlogin": false,
+      "rolinherit": false,
+      "rolbypassrls": false
+    },
+    {
+      "name": "runtime_login",
+      "rolsuper": false,
+      "rolcreatedb": false,
+      "rolcreaterole": false,
+      "rolcanlogin": true,
+      "rolinherit": false,
+      "rolbypassrls": false
+    }
+  ],
+  "triggers": [
+    {
+      "schema": "maintenance_2a_test",
+      "table_name": "items",
+      "name": "immutable_source",
+      "function": "maintenance_2a_test.immutable_source()"
+    },
+    {
+      "schema": "maintenance_2a_test",
+      "table_name": "items",
+      "name": "metadata_audit",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "maintenance_2a_test",
+      "table_name": "notes",
+      "name": "append_only",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "maintenance_2a_test",
+      "table_name": "notes",
+      "name": "metadata_audit",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "maintenance_2a_test",
+      "table_name": "receipts",
+      "name": "append_only",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "maintenance_2a_test",
+      "table_name": "receipts",
+      "name": "metadata_audit",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "maintenance_2a_test",
+      "table_name": "repair_archives",
+      "name": "append_only",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "maintenance_2a_test",
+      "table_name": "repair_archives",
+      "name": "archive_integrity",
+      "function": "maintenance_2a_test.archive_integrity()"
+    },
+    {
+      "schema": "maintenance_2a_test",
+      "table_name": "repair_archives",
+      "name": "metadata_audit",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "maintenance_2b_test",
+      "table_name": "bindings",
+      "name": "append_only",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "maintenance_2b_test",
+      "table_name": "bindings",
+      "name": "metadata_audit",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "maintenance_2b_test",
+      "table_name": "events",
+      "name": "append_only",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "maintenance_2b_test",
+      "table_name": "events",
+      "name": "metadata_audit",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "maintenance_2b_test",
+      "table_name": "reservations",
+      "name": "append_only",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "maintenance_2b_test",
+      "table_name": "reservations",
+      "name": "metadata_audit",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "maintenance_2b_test",
+      "table_name": "review_intents",
+      "name": "append_only",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "maintenance_2b_test",
+      "table_name": "review_intents",
+      "name": "metadata_audit",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "maintenance_2b_test",
+      "table_name": "reviews",
+      "name": "append_only",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "maintenance_2b_test",
+      "table_name": "reviews",
+      "name": "metadata_audit",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "maintenance_2c_test",
+      "table_name": "capabilities",
+      "name": "immutable_capability",
+      "function": "maintenance_2c_test.immutable_capability()"
+    },
+    {
+      "schema": "private",
+      "table_name": "inspection_plans",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "private",
+      "table_name": "inspection_plans",
+      "name": "property_audit",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "inspection_plans",
+      "name": "property_integrity",
+      "function": "private.property_record_integrity()"
+    },
+    {
+      "schema": "private",
+      "table_name": "inspection_reports",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "private",
+      "table_name": "inspection_reports",
+      "name": "property_audit",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "inspection_reports",
+      "name": "property_immutable",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "private",
+      "table_name": "inspection_reports",
+      "name": "property_integrity",
+      "function": "private.property_record_integrity()"
+    },
+    {
+      "schema": "private",
+      "table_name": "inspection_visits",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "private",
+      "table_name": "inspection_visits",
+      "name": "property_audit",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "inspection_visits",
+      "name": "property_integrity",
+      "function": "private.property_record_integrity()"
+    },
+    {
+      "schema": "private",
+      "table_name": "merchant_configurations",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "merchant_configurations",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "private",
+      "table_name": "platform_events",
+      "name": "immutable_platform_events",
+      "function": "private.reject_audit_mutation()"
+    },
+    {
+      "schema": "private",
+      "table_name": "platform_events",
+      "name": "no_platform_event_truncate",
+      "function": "private.reject_audit_mutation()"
+    },
+    {
+      "schema": "private",
+      "table_name": "property_features",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "private",
+      "table_name": "property_features",
+      "name": "property_audit",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "property_media",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "private",
+      "table_name": "property_media",
+      "name": "property_audit",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "property_media",
+      "name": "property_immutable",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "private",
+      "table_name": "property_report_access",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "private",
+      "table_name": "property_report_access",
+      "name": "property_report_access_audit",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "property_report_access",
+      "name": "report_access_revoke_only",
+      "function": "private.property_access_immutable()"
+    },
+    {
+      "schema": "private",
+      "table_name": "provider_agreement_bindings",
+      "name": "audit_provider",
+      "function": "private.provider_audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "provider_agreement_bindings",
+      "name": "immutable_agreement_binding",
+      "function": "private.protect_gateway_authorization()"
+    },
+    {
+      "schema": "private",
+      "table_name": "provider_agreement_evidence",
+      "name": "audit_provider",
+      "function": "private.provider_audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "provider_agreement_evidence",
+      "name": "immutable_provider",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "private",
+      "table_name": "provider_agreement_inbox",
+      "name": "audit_provider",
+      "function": "private.provider_audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "provider_agreement_inbox",
+      "name": "immutable_provider",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "private",
+      "table_name": "provider_email_bindings",
+      "name": "audit_provider",
+      "function": "private.provider_audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "provider_email_bindings",
+      "name": "immutable_provider",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "private",
+      "table_name": "provider_email_domains",
+      "name": "audit_provider",
+      "function": "private.provider_audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "provider_email_domains",
+      "name": "immutable_provider",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "private",
+      "table_name": "provider_email_events",
+      "name": "audit_provider",
+      "function": "private.provider_audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "provider_email_events",
+      "name": "immutable_provider",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "private",
+      "table_name": "provider_email_outbox",
+      "name": "audit_provider",
+      "function": "private.provider_audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "provider_email_outbox",
+      "name": "immutable_provider",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "private",
+      "table_name": "provider_email_sender_bindings",
+      "name": "audit_provider",
+      "function": "private.provider_audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "provider_email_sender_bindings",
+      "name": "immutable_sender_binding",
+      "function": "private.protect_gateway_authorization()"
+    },
+    {
+      "schema": "private",
+      "table_name": "provider_email_suppressions",
+      "name": "audit_provider",
+      "function": "private.provider_audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "provider_email_suppressions",
+      "name": "immutable_provider",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "private",
+      "table_name": "provider_workloads",
+      "name": "audit_provider",
+      "function": "private.provider_audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "provider_workloads",
+      "name": "immutable_workload",
+      "function": "private.protect_gateway_authorization()"
+    },
+    {
+      "schema": "private",
+      "table_name": "sandbox_gateway_attempts",
+      "name": "audit_gateway",
+      "function": "private.provider_audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "sandbox_gateway_attempts",
+      "name": "protect_sandbox_attempt",
+      "function": "private.protect_sandbox_attempt()"
+    },
+    {
+      "schema": "private",
+      "table_name": "sandbox_gateway_authorizations",
+      "name": "audit_gateway",
+      "function": "private.provider_audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "sandbox_gateway_authorizations",
+      "name": "protect_gateway_authorization",
+      "function": "private.protect_gateway_authorization()"
+    },
+    {
+      "schema": "private",
+      "table_name": "sandbox_gateway_inbox",
+      "name": "audit_gateway",
+      "function": "private.provider_audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "sandbox_gateway_inbox",
+      "name": "immutable_gateway_inbox",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "private",
+      "table_name": "sandbox_gateway_observations",
+      "name": "audit_provider",
+      "function": "private.provider_audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "sandbox_gateway_observations",
+      "name": "immutable_provider",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "private",
+      "table_name": "sandbox_gateway_reconciliations",
+      "name": "audit_provider",
+      "function": "private.provider_audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "sandbox_gateway_reconciliations",
+      "name": "immutable_reconciliation",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "private",
+      "table_name": "sandbox_gateway_settlements",
+      "name": "audit_gateway",
+      "function": "private.provider_audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "sandbox_gateway_settlements",
+      "name": "protect_sandbox_settlement",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "private",
+      "table_name": "supplemental_invoice_drafts",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "private",
+      "table_name": "supplemental_invoice_drafts",
+      "name": "property_audit",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "supplemental_invoice_drafts",
+      "name": "property_immutable",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "private",
+      "table_name": "supplemental_invoice_drafts",
+      "name": "property_integrity",
+      "function": "private.property_record_integrity()"
+    },
+    {
+      "schema": "private",
+      "table_name": "supplier_comparisons",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "private",
+      "table_name": "supplier_comparisons",
+      "name": "property_audit",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "supplier_comparisons",
+      "name": "property_immutable",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "private",
+      "table_name": "unbilled_decisions",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "private",
+      "table_name": "unbilled_decisions",
+      "name": "property_audit",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "private",
+      "table_name": "unbilled_decisions",
+      "name": "property_immutable",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "private",
+      "table_name": "unbilled_decisions",
+      "name": "property_integrity",
+      "function": "private.property_record_integrity()"
+    },
+    {
+      "schema": "public",
+      "table_name": "activity_events",
+      "name": "immutable_activity",
+      "function": "private.reject_audit_mutation()"
+    },
+    {
+      "schema": "public",
+      "table_name": "activity_events",
+      "name": "no_activity_truncate",
+      "function": "private.reject_audit_mutation()"
+    },
+    {
+      "schema": "public",
+      "table_name": "catalog_items",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "catalog_items",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "communication_consents",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "communication_consents",
+      "name": "immutable_consents",
+      "function": "private.reject_audit_mutation()"
+    },
+    {
+      "schema": "public",
+      "table_name": "communication_consents",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "company_email_profiles",
+      "name": "audit_change",
+      "function": "private.release_email_audit()"
+    },
+    {
+      "schema": "public",
+      "table_name": "company_email_profiles",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "company_modules",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "company_modules",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "company_settings",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "company_settings",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "customer_notes",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "customer_notes",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "customers",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "customers",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "documents",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "documents",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_attachments",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_attachments",
+      "name": "issued_scope",
+      "function": "private.protect_issued_child()"
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_lines",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_lines",
+      "name": "issued_scope",
+      "function": "private.protect_issued_child()"
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_options",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_options",
+      "name": "issued_scope",
+      "function": "private.protect_issued_child()"
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_schedule_proposals",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_schedule_proposals",
+      "name": "issued_scope",
+      "function": "private.protect_issued_child()"
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_tax_policies",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_tax_policies",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_tax_policies",
+      "name": "policy_revision",
+      "function": "private.tax_policy_revision()"
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_templates",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_templates",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_versions",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_versions",
+      "name": "immutable_issued",
+      "function": "private.protect_issued_estimate()"
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_versions",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "estimate_versions",
+      "name": "repair_2b_bound_version",
+      "function": "maintenance_2b_test.protect_version()"
+    },
+    {
+      "schema": "public",
+      "table_name": "estimates",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "estimates",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "estimates",
+      "name": "repair_2b_bound_parent",
+      "function": "maintenance_2b_test.protect_parent()"
+    },
+    {
+      "schema": "public",
+      "table_name": "intake_requests",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "intake_requests",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "job_assignments",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "job_change_approvals",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "job_change_approvals",
+      "name": "immutable_record",
+      "function": "private.reject_audit_mutation()"
+    },
+    {
+      "schema": "public",
+      "table_name": "job_change_orders",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "job_change_orders",
+      "name": "immutable_record",
+      "function": "private.reject_audit_mutation()"
+    },
+    {
+      "schema": "public",
+      "table_name": "job_expense_material_lines",
+      "name": "immutable_mapping",
+      "function": "private.reject_audit_mutation()"
+    },
+    {
+      "schema": "public",
+      "table_name": "job_expense_reviews",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "job_expense_reviews",
+      "name": "immutable_record",
+      "function": "private.reject_audit_mutation()"
+    },
+    {
+      "schema": "public",
+      "table_name": "job_expenses",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "job_expenses",
+      "name": "immutable_record",
+      "function": "private.reject_audit_mutation()"
+    },
+    {
+      "schema": "public",
+      "table_name": "jobs",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "jobs",
+      "name": "immutable_baseline",
+      "function": "private.protect_job_baseline()"
+    },
+    {
+      "schema": "public",
+      "table_name": "labor_rates",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "labor_rates",
+      "name": "immutable_record",
+      "function": "private.reject_audit_mutation()"
+    },
+    {
+      "schema": "public",
+      "table_name": "labor_rates",
+      "name": "tenant_immutable",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "material_import_approvals",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "material_import_approvals",
+      "name": "immutable_approval",
+      "function": "private.reject_audit_mutation()"
+    },
+    {
+      "schema": "public",
+      "table_name": "material_import_approvals",
+      "name": "tenant_immutable",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "material_import_batches",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "material_import_batches",
+      "name": "tenant_immutable",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "material_import_preferences",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "material_import_preferences",
+      "name": "tenant_immutable",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "material_import_sources",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "material_import_sources",
+      "name": "tenant_immutable",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "memberships",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "memberships",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "organizations",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "organizations",
+      "name": "initialize_company",
+      "function": "private.initialize_company()"
+    },
+    {
+      "schema": "public",
+      "table_name": "organizations",
+      "name": "valid_company_logo",
+      "function": "private.validate_company_logo()"
+    },
+    {
+      "schema": "public",
+      "table_name": "payroll_adjustments",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "payroll_adjustments",
+      "name": "immutable_adjustment",
+      "function": "private.reject_audit_mutation()"
+    },
+    {
+      "schema": "public",
+      "table_name": "payroll_periods",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "payroll_periods",
+      "name": "protect_payroll",
+      "function": "private.protect_payroll()"
+    },
+    {
+      "schema": "public",
+      "table_name": "payroll_periods",
+      "name": "tenant_immutable",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "portal_identities",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "portal_identities",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_authorizations",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_authorizations",
+      "name": "immutable_record",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_authorizations",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_contracts",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_contracts",
+      "name": "immutable_record",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_contracts",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_decisions",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_decisions",
+      "name": "immutable_record",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_decisions",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_invoices",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_invoices",
+      "name": "immutable_record",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_invoices",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_ledger_entries",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_ledger_entries",
+      "name": "immutable_record",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_ledger_entries",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_messages",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_messages",
+      "name": "immutable_record",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_messages",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_offers",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_offers",
+      "name": "immutable_record",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_offers",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_payment_events",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_payment_events",
+      "name": "immutable_record",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_payment_events",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_signatures",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_signatures",
+      "name": "immutable_record",
+      "function": "private.release_immutable()"
+    },
+    {
+      "schema": "public",
+      "table_name": "release_signatures",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "service_locations",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "service_locations",
+      "name": "immutable_tenant",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "time_entries",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "time_entries",
+      "name": "protect_time",
+      "function": "private.protect_time()"
+    },
+    {
+      "schema": "public",
+      "table_name": "time_entries",
+      "name": "tenant_immutable",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "time_reviews",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "time_reviews",
+      "name": "immutable_record",
+      "function": "private.reject_audit_mutation()"
+    },
+    {
+      "schema": "public",
+      "table_name": "time_reviews",
+      "name": "tenant_immutable",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "worker_profiles",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "worker_profiles",
+      "name": "tenant_immutable",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "worker_supervisors",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "worker_supervisors",
+      "name": "tenant_immutable",
+      "function": "private.prevent_tenant_move()"
+    },
+    {
+      "schema": "public",
+      "table_name": "workforce_policies",
+      "name": "audit_change",
+      "function": "private.audit_change()"
+    },
+    {
+      "schema": "public",
+      "table_name": "workforce_policies",
+      "name": "tenant_immutable",
+      "function": "private.prevent_tenant_move()"
+    }
+  ]
+}

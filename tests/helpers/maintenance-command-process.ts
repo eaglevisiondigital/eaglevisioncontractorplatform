@@ -1,5 +1,7 @@
 /** Runnable local-only stdio service, compiled by the native harness. No HTTP listener. */
 import { Client, types } from 'pg';
+import { once } from 'node:events';
+import { parseCommandJSON } from './strict-command-json';
 import {
   CommandCustody,
   custodyIdentity,
@@ -31,10 +33,16 @@ if (
   !root
 )
   throw Error('Disposable local service configuration required.');
+const deadlines = {
+  options:
+    '-c lock_timeout=3000 -c statement_timeout=5000 -c idle_in_transaction_session_timeout=5000',
+  connectionTimeoutMillis: 5000,
+};
 const client = new Client(
   socket
-    ? { host: socket, port: 55477, user: role, database }
+    ? { ...deadlines, host: socket, port: 55477, user: role, database }
     : {
+        ...deadlines,
         host: '127.0.0.1',
         port: 5432,
         user: role,
@@ -56,11 +64,14 @@ const privileges = (
 ).rows[0];
 if (!privileges || Object.values(privileges).some(Boolean))
   throw Error('Restricted noninheriting local identity required.');
-const emit = (value: unknown) =>
-  process.stdout.write(JSON.stringify(value) + '\n');
+const emit = async (value: unknown) => {
+  // One response at a time; a stopped reader cannot build an unbounded output queue.
+  if (!process.stdout.write(JSON.stringify(value) + '\n'))
+    await once(process.stdout, 'drain');
+};
 async function boundary(name: string) {
   if (fault === name) {
-    emit({ status: 'boundary', boundary: name });
+    await emit({ status: 'boundary', boundary: name });
     await new Promise<void>(() => {});
   }
 }
@@ -149,6 +160,12 @@ async function reconcile(value: CustodyCommand) {
 }
 async function execute(value: CustodyCommand) {
   await boundary('before_intent');
+  // Read-only exact capability binding cannot manufacture a source/request hold.
+  await client.query('select maintenance_2c_test.command($1,$2,$3)', [
+    capability,
+    'validate',
+    JSON.stringify([value.command]),
+  ]);
   const retained = journal.retain(value, capability!);
   // Restart/repeated execution can only reconcile; no automatic queue draining or resend.
   if (retained.existing) return reconcile(value);
@@ -203,7 +220,7 @@ async function* messages() {
         } else pending = Buffer.concat([pending, part]);
       }
       if (i < bytes.length) {
-        yield discard ? null : pending.toString('utf8');
+        yield discard ? null : pending;
         pending = Buffer.alloc(0);
         discard = false;
       }
@@ -212,15 +229,18 @@ async function* messages() {
   }
   if (discard || pending.length) yield null; // Truncated input is never a command.
 }
-emit({ status: 'ready' });
+await emit({ status: 'ready' });
 try {
   for await (const text of messages()) {
     if (text === null) {
-      emit({ status: 'rejected' });
+      await emit({ status: 'rejected' });
       continue;
     }
     try {
-      const request = JSON.parse(text);
+      const request = parseCommandJSON(text) as {
+        operation: string;
+        command: CustodyCommand;
+      };
       if (
         !request ||
         Object.keys(request).sort().join(',') !== 'command,operation' ||
@@ -232,9 +252,9 @@ try {
         request.operation === 'execute'
           ? await execute(request.command)
           : await reconcile(request.command);
-      emit(result);
+      await emit(result);
     } catch {
-      emit({ status: 'rejected' });
+      await emit({ status: 'rejected' });
     }
   }
 } finally {

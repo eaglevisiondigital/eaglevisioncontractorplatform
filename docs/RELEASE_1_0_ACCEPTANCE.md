@@ -1,5 +1,16 @@
 # Production Release 1.0 acceptance checklist
 
+## Workstream 2D · defensive local review only · October 29
+
+59 nativePG17/52 application cases pass after bounded local corrections; see
+MAINTENANCE_SECURITY_REVIEW.md. Verdict CONDITIONAL for trusted disposable2C;
+operational integration remains NO-GO for direct SQL custody bypass, uncovered writer
+lock inversion, trusted helper/issuer ownership and absent genuine Auth/encrypted
+custody/transport/recovery acceptance. Characterization PASS does not close a finding.
+No operational migration, grants/service/UI activation or hosted action.206 protected
+paths/four P1 hashes unchanged; thirteen history/pending customer/frozen P1/approvals/
+locked UIs/recovery/financial/Netlify boundaries remain. NOT READY / NOT AUTHORIZED.
+
 ## Workstream 2C · disposable command service/custody only · October 29
 
 38 native PG17/20 custody cases prove restricted LOGIN/exact-command composition,

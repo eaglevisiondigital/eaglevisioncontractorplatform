@@ -5,6 +5,7 @@ import {
   statSync,
   chmodSync,
   symlinkSync,
+  linkSync,
 } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -162,6 +163,10 @@ it('acknowledged earlier command permits an explicit new revision but confers no
   j.acknowledge(c.command.request_id, 'command', {
     request_id: c.command.request_id,
     revision: 2,
+    source: c.command.source,
+    actor_id: uid(),
+    recorded_at: new Date().toISOString(),
+    scheduled_visit_id: null,
   });
   expect(
     j.retain(
@@ -200,6 +205,9 @@ it('repair preparation cannot transmit until its reservation acknowledgment is r
   );
   j.transmitting(c.command.request_id, 'reserve');
   j.acknowledge(c.command.request_id, 'reserve', {
+    id: c.command.request_id,
+    command: c.command,
+    actor_id: uid(),
     estimate_id: c.command.estimate_id,
   });
   j.transmitting(c.command.request_id, 'prepare');
@@ -310,4 +318,162 @@ it('a journal opened concurrently retains SQLite FULL/WAL and private-file limit
   } finally {
     d.close();
   }
+});
+
+// Workstream 2D: same-owner corruption is not authenticated storage; malformed history must still hold.
+it('2D invalid inserted reconciliation cannot clear an UNKNOWN source hold', () => {
+  const j = journal(),
+    c = command();
+  j.retain(c, uid());
+  j.transmitting(c.command.request_id, 'command');
+  j.uncertain(c.command.request_id, 'command');
+  const d = new DatabaseSync(join(j.root, 'commands.sqlite'));
+  try {
+    d.prepare(
+      "insert into events values(?,4,'command','reconciled','{}','not-a-date')",
+    ).run(c.command.request_id);
+    expect(() => j.read(c.command.request_id)).toThrow();
+    expect(() =>
+      j.retain({ ...c, command: { ...c.command, request_id: uid() } }, uid()),
+    ).toThrow();
+  } finally {
+    d.close();
+  }
+});
+it('2D maintenance cannot use repair phases or empty acknowledgment evidence', () => {
+  const j = journal(),
+    c = command();
+  j.retain(c, uid());
+  expect(() => j.transmitting(c.command.request_id, 'reserve')).toThrow();
+  j.transmitting(c.command.request_id, 'command');
+  expect(() => j.acknowledge(c.command.request_id, 'command', {})).toThrow();
+});
+it.each(['-wal', '-shm'])(
+  '2D rejects an existing nonprivate SQLite sidecar %s',
+  (suffix) => {
+    const j = journal();
+    const p = join(j.root, 'commands.sqlite' + suffix);
+    chmodSync(p, 0o644);
+    expect(() => journal(j.root)).toThrow();
+    chmodSync(p, 0o600);
+  },
+);
+it('2D rejects a hardlinked custody database', () => {
+  const j = journal();
+  linkSync(join(j.root, 'commands.sqlite'), join(j.root, 'alias.sqlite'));
+  expect(() => journal(j.root)).toThrow();
+});
+it.each(['gap', 'kind', 'stage', 'timestamp', 'receipt'])(
+  '2D detects malformed stored history %s before source release',
+  (mode) => {
+    const j = journal(),
+      c = command();
+    j.retain(c, uid());
+    j.transmitting(c.command.request_id, 'command');
+    const d = new DatabaseSync(join(j.root, 'commands.sqlite'));
+    try {
+      const receipt = {
+        status: 'committed',
+        receipt: {
+          request_id: uid(),
+          source: c.command.source,
+          revision: 2,
+          actor_id: uid(),
+          recorded_at: new Date().toISOString(),
+          scheduled_visit_id: null,
+        },
+      };
+      d.prepare('insert into events values(?,?,?,?,?,?)').run(
+        c.command.request_id,
+        mode === 'gap' ? 4 : 3,
+        mode === 'stage' ? 'reserve' : 'command',
+        mode === 'kind' ? 'cleared' : 'reconciled',
+        JSON.stringify(mode === 'receipt' ? receipt : {}),
+        mode === 'timestamp' ? 'invalid' : new Date().toISOString(),
+      );
+      expect(() => j.read(c.command.request_id)).toThrow();
+    } finally {
+      d.close();
+    }
+  },
+);
+it('2D changes to sidecar permissions fail closed while a journal is already open', () => {
+  const j = journal(),
+    c = command(),
+    file = join(j.root, 'commands.sqlite-wal');
+  chmodSync(file, 0o644);
+  try {
+    expect(() => j.retain(c, uid())).toThrow(/private/i);
+  } finally {
+    chmodSync(file, 0o600);
+  }
+});
+it('2D committed reconciliation must preserve exact receipt source and request', () => {
+  const j = journal(),
+    c = command();
+  j.retain(c, uid());
+  j.transmitting(c.command.request_id, 'command');
+  j.uncertain(c.command.request_id, 'command');
+  expect(() =>
+    j.reconcile(c.command.request_id, 'command', {
+      status: 'committed',
+      receipt: { request_id: uid() },
+    } as { status: string }),
+  ).toThrow();
+  expect(j.read(c.command.request_id)!.events.at(-1)?.kind).toBe('uncertain');
+});
+it('2D append bounds stop without deleting UNKNOWN history', () => {
+  const j = journal(),
+    c = command();
+  j.retain(c, uid());
+  j.transmitting(c.command.request_id, 'command');
+  for (let n = 0; n < 62; n++) j.uncertain(c.command.request_id, 'command');
+  expect(() => j.uncertain(c.command.request_id, 'command')).toThrow(
+    /bounded/i,
+  );
+  expect(j.read(c.command.request_id)!.events).toHaveLength(64);
+});
+it('2D actual retained-reader WAL growth trips the storage watermark before further intents', () => {
+  const j = journal(),
+    path = join(j.root, 'commands.sqlite'),
+    d = new DatabaseSync(path),
+    reader = new DatabaseSync(path);
+  try {
+    d.exec(
+      'create table pressure(data blob);insert into pressure values(randomblob(1048576));',
+    );
+    reader.exec('begin;select length(data) from pressure');
+    for (let n = 0; n < 70 && statSync(path + '-wal').size < 67108864; n++)
+      d.exec('update pressure set data=randomblob(1048576)');
+    expect(statSync(path + '-wal').size).toBeGreaterThanOrEqual(67108864);
+    expect(() => j.retain(command(), uid())).toThrow(/watermark/);
+    expect(d.prepare('select count(*) n from intents').get()!.n).toBe(0);
+  } finally {
+    reader.exec('rollback');
+    reader.close();
+    d.close();
+  }
+}, 15000);
+it('2D a committed read reconciliation cannot resume a retained but untransmitted operation', () => {
+  const j = journal(),
+    c = command();
+  j.retain(c, uid());
+  j.reconcile(c.command.request_id, 'command', {
+    status: 'committed',
+    receipt: {
+      request_id: c.command.request_id,
+      source: c.command.source,
+      revision: 2,
+      actor_id: uid(),
+      recorded_at: new Date().toISOString(),
+      scheduled_visit_id: null,
+    },
+  } as { status: string });
+  expect(() => j.transmitting(c.command.request_id, 'command')).toThrow(
+    /never resumes/,
+  );
+  expect(j.read(c.command.request_id)!.events.map((e) => e.kind)).toEqual([
+    'retained',
+    'reconciled',
+  ]);
 });

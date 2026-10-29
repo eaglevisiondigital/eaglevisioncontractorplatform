@@ -1,5 +1,17 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Workstream 2D defensive integration review · October 29
+
+The test-only2C process now rejects ambiguous frames and mismatched capabilities
+before retaining new intents, validates entire custody history/receipt phases, checks
+all SQLite sidecars and bounds SQL waits. Native catalog and two-connection tests
+retain the exact boundary: one runtime gateway, trusted transitive definer/provisioner
+owners, direct SQL bypass of caller custody, and standalone finish/gateway40P01.
+No operational schema, new Auth/HTTP boundary or UI adapter is supplied. Full writer
+coordination/server-owned one-shot authority and encrypted custody remain separately
+scoped2E preparation. See docs/MAINTENANCE_SECURITY_REVIEW.md and the non-executable
+MAINTENANCE_OPERATIONAL_INTEGRATION_REVIEW.md. All existing release/P1/SQL/UI gates persist.
+
 ## Workstream 2C local service and custody composition · October 29
 
 A test-only stdio Node process reuses MaintenancePersistence/RepairPersistence through

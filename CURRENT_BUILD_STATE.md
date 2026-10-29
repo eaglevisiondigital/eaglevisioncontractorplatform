@@ -1,5 +1,21 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: Workstream 2D defensive review · October 29
+
+Separate read-only reviewers plus executable regressions found and corrected local
+custody history/receipt/phase, capability-hold, command-decoding, file/storage and wait
+handling defects.59 nativePG17 cases (21 new/38 relevant regressions) and52 application
+cases pass. Native catalog covers196 functions/101 tables/views/203 trigger edges;
+runtime has one exact gateway/no table or column access. Verdict CONDITIONAL for the
+trusted disposable boundary, operational NO-GO: raw exact-capability SQL bypasses
+caller custody; standalone writer inversion produces40P01; helper/provisioner trust
+and genuine Auth/encrypted custody/transport/full writer integration remain gaps.
+See docs/MAINTENANCE_SECURITY_REVIEW.md and findings/validation/register.206 protected
+paths/four P1 hashes unchanged; all13/pending customer/locked UIs/approvals/recovery/
+financial/Netlify boundaries preserved. No operational migration/service/UI or hosted
+action/deploy/merge. Proposed2E is separately scoped one-shot command-authority and
+writer-participation contract preparation. Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Latest: Workstream 2C restricted service and caller custody · October 29
 
 A runnable test-only stdio Node service now composes unchanged2A/2B commands through

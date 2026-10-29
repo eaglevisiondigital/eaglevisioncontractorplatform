@@ -1,5 +1,18 @@
 # Security model · Phase 2
 
+## Workstream 2D boundary assessment · October 29
+
+CONDITIONAL for trusted disposable2C only; operational NO-GO. Separate review/native
+catalog proves runtime-only exact gateway/no application table or column privileges,
+not deprivileged helper ownership or genuine identity. Raw runtime SQL can bypass
+caller SQLite custody for its own exact command; standalone resource inversion is
+native40P01. These remain explicit integration gaps. Local fixes validate full journal
+history/receipt/phase, strict UTF8/JSON, pure capability preflight, private owned
+single-link sidecars, storage watermark and bounded worker waits. Same-owner forgery/
+TOCTOU, watermark overshoot, power/disk/DB recovery, signed Auth/MFA/HTTP/CSRF/abuse and
+full writer/retention acceptance remain unverified. No UNKNOWN replay or financial
+permission. See docs/MAINTENANCE_SECURITY_REVIEW.md/findings/privilege snapshot.
+
 ## Workstream 2C restricted local command boundary · October 29
 
 A disposable LOGIN can execute only an exact principal/session/resource/command

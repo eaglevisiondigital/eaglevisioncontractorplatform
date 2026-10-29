@@ -1,5 +1,18 @@
 # Engineering decisions
 
+## October 29 · separate local hardening from operational authority
+
+Use two separate read-only reviews and reproducible negative cases for2D; correct only
+new test-only service/custody/gateway defects. Reject unauthorized command holds before
+custody without weakening post-wait/final checks; validate historical receipts/phases
+rather than trust a terminal label. Treat SQLite storage limit as a watermark, not
+hard disk quota. Preserve initially failing evidence. Report direct runtime SQL custody
+bypass, standalone40P01 and trusted definer/provisioner ownership as unresolved gaps,
+not passes hidden by successful characterization tests. Propose2E server-owned one-shot
+command/writer-participation contract separately; no executable operational SQL or
+Auth/HTTP/UI promotion. All historical/pending SQL/P1/approved UI/recovery/financial/
+Netlify/AR holds persist. Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## October 29 · compose restricted test service with durable caller custody
 
 Workstream2C keeps existing2A/2B/domain/UI/SQL bytes unchanged. Use a disposable

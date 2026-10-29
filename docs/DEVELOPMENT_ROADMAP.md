@@ -1,5 +1,15 @@
 # Bounded development roadmap
 
+## Workstream 2D checkpoint
+
+Defensive review and bounded local corrections now pass59 native/52 application cases.
+See MAINTENANCE_SECURITY_REVIEW.md and findings. Direct SQL custody bypass and native
+standalone writer40P01 remain operational blockers alongside genuine Auth/encryption/
+transport/recovery. Proposed smallest2E: disposable server-owned one-shot command
+contract plus complete ordinary/admin writer participation preparation. No operational
+migration/service/UI or hosted activation authority; existing approval/release/AR holds
+persist. Prior completed baselines remain retained.
+
 ## Workstream 2C checkpoint
 
 Restricted disposable local service/capabilities, durable pre-send SQLite caller

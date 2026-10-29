@@ -69,6 +69,12 @@ create function maintenance_2c_test.command(cap uuid,step text,args jsonb) retur
 declare c maintenance_2c_test.capabilities;cmd jsonb;s jsonb;result jsonb;expected_review jsonb;begin
  c:=maintenance_2c_test.capability(cap);cmd:=case when c.purpose='readiness' then c.command->'reservation' else c.command end;s:=cmd->'source';
  if (s->>'organization_id')::uuid is distinct from c.organization_id or jsonb_typeof(args) is distinct from 'array' or octet_length(args::text)>2097152 then raise exception 'Exact bounded command required';end if;
+ -- Pure preflight rejects a command mismatch before the caller retains a new intent.
+ -- This supplies no mutation permission and does not replace post-resource/final checks.
+ if step='validate' then
+  if args is distinct from jsonb_build_array(c.command) then raise exception 'Command capability mismatch' using errcode='42501';end if;
+  c:=maintenance_2c_test.final_capability(cap);perform maintenance_2b_test.authority(c.organization_id);return 'null'::jsonb;
+ end if;
  perform maintenance_2c_test.lock_scope(cap);
  if c.purpose='maintenance' and jsonb_array_length(args)=1 and args->0=c.command then
   if step='execute' then result:=maintenance_2a_test.execute(args->0);

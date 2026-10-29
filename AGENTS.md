@@ -1,3 +1,14 @@
+Workstream 2D continuation: read docs/MAINTENANCE_SECURITY_REVIEW.md, findings,
+validation/privilege snapshot and approval register. CONDITIONAL trusted disposable2C
+only; raw exact-capability SQL bypasses caller custody, standalone finish/gateway
+native40P01 remains an integration gap. Never treat passing characterization tests as
+closure. Local hardening validates journal phases/receipts, strict UTF8/JSON, pure
+capability preflight, file sidecars/storage watermark and bounded worker waits. Same-
+owner forgery/TOCTOU, helper/provisioner trust and genuine Auth/HTTP/encryption/recovery
+remain gates. Proposed2E server-owned one-shot authority/writer contract is separate;
+no operational SQL/service/UI/hosted/financial/recovery/Netlify/merge. Preserve all13,
+pending customer, frozen P1/four artifacts/approvals, locked UIs and AR hold.
+
 # Engineering instructions
 
 Workstream 2C continuation: read docs/MAINTENANCE_COMMAND_CUSTODY.md and validation/

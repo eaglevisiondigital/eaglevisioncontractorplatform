@@ -1266,7 +1266,8 @@ describe.skipIf(!native)(
         cap = await capability(f, value, field),
         s = await service(cap);
       try {
-        expect((await s.send('execute', value)).status).toBe('undetermined');
+        expect((await s.send('execute', value)).status).toBe('rejected');
+        expect(custody(s.root, custodyIdentity(value).id)).toBeNull();
         expect((await count(f)).maintenance).toBe(1);
       } finally {
         await s.stop();
@@ -1482,6 +1483,560 @@ describe.skipIf(!native)(
         await client.end();
         await hold.close();
       }
+    });
+    describe('Workstream2D defensive review', () => {
+      it.each(['report_version', 'request_id', 'property'])(
+        'capability mismatch %s cannot poison a new local intent',
+        async (field) => {
+          const f = await fixture(),
+            value = editCommand(f),
+            cap = await capability(f, value),
+            s = await service(cap);
+          const changed = structuredClone(value);
+          if (changed.kind !== 'maintenance') throw Error('Fixture');
+          if (field === 'request_id') changed.command.request_id = uid();
+          else if (field === 'report_version')
+            changed.command.source.report_version++;
+          else changed.command.source.location_id = uid();
+          try {
+            expect((await s.send('execute', changed)).status).toBe('rejected');
+            expect(custody(s.root, custodyIdentity(changed).id)).toBeNull();
+            expect((await count(f)).maintenance).toBe(1);
+            expect((await s.send('execute', value)).status).toBe('committed');
+          } finally {
+            await s.stop();
+          }
+        },
+      );
+      it.each([
+        'duplicate',
+        'utf8',
+        'unexpected',
+        'wrong-operation',
+        'malformed',
+        'nested-duplicate',
+      ])(
+        'stdio %s evidence rejects before local or remote writes',
+        async (mode) => {
+          const f = await fixture(),
+            value = editCommand(f);
+          if (value.kind !== 'maintenance') throw Error('Fixture');
+          value.command.input = {
+            ...value.command.input,
+            note: 'PRIVATE exact wire \uFFFD note',
+          } as typeof value.command.input;
+          const cap = await capability(f, value),
+            s = await service(cap);
+          const valid = JSON.stringify({
+            operation: 'execute',
+            command: value,
+          });
+          let wire: Buffer;
+          if (mode === 'duplicate')
+            wire = Buffer.from(valid.replace('{', '{"operation":"issue",'));
+          else if (mode === 'nested-duplicate')
+            wire = Buffer.from(
+              valid.replace(
+                '"priority":"high"',
+                '"priority":"low","priority":"high"',
+              ),
+            );
+          else if (mode === 'utf8') {
+            const bytes = Buffer.from(valid),
+              i = bytes.indexOf(Buffer.from('\uFFFD'));
+            wire = Buffer.concat([
+              bytes.subarray(0, i),
+              Buffer.from([255]),
+              bytes.subarray(i + 3),
+            ]);
+          } else if (mode === 'unexpected')
+            wire = Buffer.from(valid.replace('{', '{"actor_id":"spoof",'));
+          else if (mode === 'wrong-operation')
+            wire = Buffer.from(valid.replace('"execute"', '"issue_estimate"'));
+          else wire = Buffer.from('{not-json}');
+          try {
+            s.p.stdin.write(Buffer.concat([wire, Buffer.from('\n')]));
+            expect((await s.next()).status).toBe('rejected');
+            expect(custody(s.root, custodyIdentity(value).id)).toBeNull();
+            expect((await count(f)).maintenance).toBe(1);
+            expect((await s.send('execute', value)).status).toBe('committed');
+          } finally {
+            await s.stop();
+          }
+        },
+      );
+      it('truncated stdio frame ends without execution or private payload leakage', async () => {
+        const f = await fixture(),
+          value = editCommand(f),
+          cap = await capability(f, value),
+          s = await service(cap);
+        s.p.stdin.write(
+          JSON.stringify({ operation: 'execute', command: value }),
+        );
+        const stopped = s.stop();
+        expect(await s.next()).toEqual({ status: 'rejected' });
+        await stopped;
+        expect(custody(s.root, custodyIdentity(value).id)).toBeNull();
+        expect((await count(f)).maintenance).toBe(1);
+      });
+      it('characterizes trusted runtime LOGIN bypass of local custody without granting other command authority', async () => {
+        const f = await fixture(),
+          value = editCommand(f),
+          cap = await capability(f, value),
+          s = await service(cap, privateRoot(), 'after_intent');
+        expect((await s.send('execute', value)).status).toBe('boundary');
+        await s.kill();
+        expect(
+          custody(s.root, custodyIdentity(value).id)!.events.map((x) => x.kind),
+        ).toEqual(['retained']);
+        const c = await connectRole(cap.role);
+        try {
+          const r = await c.query(
+            'select maintenance_2c_test.command($1,$2,$3) v',
+            [cap.id, 'execute', JSON.stringify([value.command])],
+          );
+          expect(r.rows[0].v.request_id).toBe(custodyIdentity(value).id);
+          expect((await count(f)).maintenance).toBe(2);
+          expect(
+            custody(s.root, custodyIdentity(value).id)!.events.map(
+              (x) => x.kind,
+            ),
+          ).toEqual(['retained']);
+          await expect(
+            c.query('select maintenance_2c_test.command($1,$2,$3)', [
+              cap.id,
+              'execute',
+              JSON.stringify([{ ...value.command, request_id: uid() }]),
+            ]),
+          ).rejects.toThrow();
+        } finally {
+          await c.end();
+        }
+        const restart = await service(cap, s.root);
+        try {
+          expect((await restart.send('execute', value)).status).toBe(
+            'committed',
+          );
+          expect((await count(f)).maintenance).toBe(2);
+        } finally {
+          await restart.stop();
+        }
+      });
+      it('concurrent exact commands with separate caller journals retain one remote receipt and one note', async () => {
+        const f = await fixture(),
+          value = editCommand(f),
+          cap = await capability(f, value),
+          a = await service(cap),
+          b = await service(cap);
+        try {
+          const responses = await Promise.all([
+            a.send('execute', value),
+            b.send('execute', value),
+          ]);
+          expect(responses.map((r) => r.status)).toEqual([
+            'committed',
+            'committed',
+          ]);
+          expect((await count(f)).maintenance).toBe(2);
+          const n = (
+            await db.query<{ n: number }>(
+              'select count(*)::integer n from maintenance_2a_test.receipts where request_id=$1',
+              [custodyIdentity(value).id],
+            )
+          ).rows[0].n;
+          expect(n).toBe(1);
+        } finally {
+          await a.stop();
+          await b.stop();
+        }
+      });
+      it('service bounds a resource wait, retains UNKNOWN and never retries after lock timeout', async () => {
+        const f = await fixture(),
+          value = editCommand(f),
+          cap = await capability(f, value),
+          s = await service(cap),
+          hold = await db.fork!();
+        try {
+          await hold.exec('begin');
+          await hold.query(
+            'select id from maintenance_2a_test.items where report_id=$1 for update',
+            [f.c.source.report_id],
+          );
+          expect((await s.send('execute', value)).status).toBe('undetermined');
+          expect((await count(f)).maintenance).toBe(1);
+          await hold.exec('rollback');
+          expect((await s.send('execute', value)).status).toBe('undetermined');
+          expect((await count(f)).maintenance).toBe(1);
+          expect(
+            custody(s.root, custodyIdentity(value).id)!.events.filter(
+              (e) => e.kind === 'transmitting',
+            ),
+          ).toHaveLength(1);
+        } finally {
+          await hold.exec('rollback');
+          await hold.close();
+          await s.stop();
+        }
+      }, 15000);
+      it('characterizes standalone finish versus gateway lock inversion with native deadlock rollback', async () => {
+        const f = await fixture(),
+          value: CustodyCommand = { kind: 'repair', command: f.c },
+          cap = await capability(f, value);
+        await f.service.reserve(f.c);
+        await db.query('select maintenance_2b_test.claim($1)', [f.c]);
+        const a = await db.fork!(),
+          b = await connectRole(cap.role);
+        try {
+          await actor(a);
+          await a.exec(
+            "begin;set local deadlock_timeout='100ms';set local statement_timeout='4s'",
+          );
+          await a.query('select maintenance_2b_test.exact_reservation($1)', [
+            f.c,
+          ]);
+          const pid = (await b.query('select pg_backend_pid() id')).rows[0].id;
+          await b.query("begin;set local statement_timeout='4s'");
+          const wait = b
+            .query('select maintenance_2c_test.command($1,$2,$3)', [
+              cap.id,
+              'reconcile',
+              JSON.stringify([f.c]),
+            ])
+            .then(
+              () => null,
+              (e) => e.code as string,
+            );
+          await waitLock(db, pid);
+          const finish = a
+            .query('select maintenance_2b_test.finish($1)', [f.c])
+            .then(
+              () => null,
+              (e) => e.code as string,
+            );
+          const code = await finish;
+          await a.exec('rollback');
+          const other = await wait;
+          await b.query('rollback');
+          expect([code, other]).toContain('40P01');
+          expect((await count(f)).estimates).toBe(0);
+          expect((await f.service.reconcile(f.c)).status).toBe('undetermined');
+        } finally {
+          await a.exec('rollback');
+          await b.query('rollback');
+          await a.close();
+          await b.end();
+        }
+      });
+      it.each(['aal1', 'expired', 'revoked', 'session-binding'])(
+        'restricted LOGIN cannot use a %s capability',
+        async (kind) => {
+          const f = await fixture(),
+            value = editCommand(f),
+            cap = await capability(
+              f,
+              value,
+              owners[0],
+              kind === 'expired' ? -1 : 300,
+            ),
+            c = await connectRole(cap.role);
+          try {
+            if (kind === 'revoked')
+              await db.query(
+                'update maintenance_2c_test.capabilities set revoked_at=clock_timestamp() where id=$1',
+                [cap.id],
+              );
+            if (kind === 'aal1' || kind === 'session-binding') {
+              // Only trusted provisioning may seed a different immutable fixture; no runtime update.
+              const altered = uid();
+              await db.query(
+                'insert into maintenance_2c_test.capabilities select $1,organization_id,login_name,actor_id,$2,$3,purpose,command,approved_review,expires_at,null from maintenance_2c_test.capabilities where id=$4',
+                [
+                  altered,
+                  kind === 'session-binding'
+                    ? sessions.get(owners[1])
+                    : sessions.get(owners[0]),
+                  kind === 'aal1' ? 'aal1' : 'aal2',
+                  cap.id,
+                ],
+              );
+              cap.id = altered;
+            }
+            await expect(
+              c.query('select maintenance_2c_test.command($1,$2,$3)', [
+                cap.id,
+                'execute',
+                JSON.stringify([value.command]),
+              ]),
+            ).rejects.toThrow();
+            expect((await count(f)).maintenance).toBe(1);
+          } finally {
+            await c.end();
+          }
+        },
+      );
+      it('all six internal readiness sections confer no issue, duplicate, contract, dispatch or financial authority', async () => {
+        const f = await prepared();
+        for (const section of [
+          'scope',
+          'measurements',
+          'resources',
+          'pricing',
+          'tax',
+          'terms',
+        ] as const) {
+          const review = await request(f, section),
+            value: CustodyCommand = {
+              kind: 'readiness',
+              command: { reservation: f.c, review },
+            },
+            cap = await capability(f, value),
+            s = await service(cap);
+          try {
+            expect((await s.send('execute', value)).status).toBe('committed');
+          } finally {
+            await s.stop();
+          }
+        }
+        expect((await f.service.readiness(f.c)).confirmed).toBe(6);
+        await actor();
+        for (const [name, args] of [
+          [
+            'private.issue_estimate',
+            [f.org, f.c.estimate_id, f.c.draft_version_id, 1],
+          ],
+          ['private.duplicate_estimate', [f.org, f.c.draft_version_id, uid()]],
+          [
+            'private.revise_estimate',
+            [f.org, f.c.estimate_id, f.c.draft_version_id],
+          ],
+          ['private.archive_estimate', [f.org, f.c.estimate_id, true]],
+        ] as const)
+          await expect(call(name, [...args])).rejects.toThrow();
+        const cap = await capability(f, { kind: 'repair', command: f.c }),
+          c = await connectRole(cap.role);
+        try {
+          for (const step of [
+            'issue_estimate',
+            'approve_job',
+            'invoice',
+            'payment',
+            'refund',
+            'dispatch',
+            'customer_approval',
+            'resolved',
+          ])
+            await expect(
+              c.query('select maintenance_2c_test.command($1,$2,$3)', [
+                cap.id,
+                step,
+                JSON.stringify([f.c]),
+              ]),
+            ).rejects.toThrow();
+        } finally {
+          await c.end();
+        }
+        expect((await count(f)).estimates).toBe(1);
+        expect((await count(f)).reviews).toBe(6);
+        const status = (
+          await db.query<{ status: string }>(
+            'select status from public.estimates where id=$1',
+            [f.c.estimate_id],
+          )
+        ).rows[0].status;
+        expect(status).toBe('draft');
+      });
+      it('ordinary issued baseline stays immutable through original save and exact maintenance commands', async () => {
+        const f = await fixture(0, true),
+          baseline = f.c.job_baseline_version_id!;
+        const before = (
+          await db.query<{
+            estimate_id: string;
+            payload: unknown;
+            lock_revision: number;
+          }>(
+            'select estimate_id,payload,lock_revision from public.estimate_versions where id=$1',
+            [baseline],
+          )
+        ).rows[0];
+        await actor();
+        await expect(
+          call('private.save_estimate', [
+            f.org,
+            before.estimate_id,
+            baseline,
+            before.lock_revision,
+            f.c.payload,
+          ]),
+        ).rejects.toThrow();
+        const value = editCommand(f),
+          cap = await capability(f, value),
+          s = await service(cap);
+        try {
+          expect((await s.send('execute', value)).status).toBe('committed');
+        } finally {
+          await s.stop();
+        }
+        const after = (
+          await db.query(
+            'select estimate_id,payload,lock_revision from public.estimate_versions where id=$1',
+            [baseline],
+          )
+        ).rows[0];
+        expect(after).toEqual(before);
+        expect((await count(f)).estimates).toBe(0);
+      });
+      it('catalogs effective schema/table/column/function grants, owners, RLS and defaults for the complete local privilege boundary', async () => {
+        const f = await fixture(),
+          cap = await capability(f, editCommand(f)),
+          executor = 'maintenance_2c_exec_' + database.slice(8),
+          c = await connectRole(cap.role);
+        try {
+          const schemas = [
+            'public',
+            'private',
+            'auth',
+            'maintenance_2a_test',
+            'maintenance_2b_test',
+            'maintenance_2c_test',
+          ];
+          const tables = (
+            await c.query(
+              "select n.nspname schema,c.relname name,c.relrowsecurity rls,c.relforcerowsecurity forced,pg_get_userbyid(c.relowner) owner,has_table_privilege(c.oid,'SELECT,INSERT,UPDATE,DELETE,TRUNCATE,REFERENCES,TRIGGER') table_access,has_any_column_privilege(c.oid,'SELECT,INSERT,UPDATE,REFERENCES') column_access from pg_class c join pg_namespace n on n.oid=c.relnamespace where n.nspname=any($1) and c.relkind in ('r','p','v','m') order by 1,2",
+              [schemas],
+            )
+          ).rows;
+          expect(
+            tables.filter((t) => t.table_access || t.column_access),
+          ).toEqual([]);
+          const functions = (
+            await c.query(
+              "select p.oid::regprocedure::text signature,n.nspname schema,p.proname name,pg_get_userbyid(p.proowner) owner,p.prosecdef security_definer,p.proconfig config,p.proacl::text acl,has_function_privilege(p.oid,'EXECUTE') executable,has_schema_privilege(n.oid,'USAGE') schema_usage,pg_get_functiondef(p.oid) definition from pg_proc p join pg_namespace n on n.oid=p.pronamespace where n.nspname=any($1) order by 1",
+              [schemas],
+            )
+          ).rows;
+          const reachable = functions.filter(
+            (p) => p.executable && p.schema_usage && p.security_definer,
+          );
+          expect(reachable.map((p) => p.name)).toEqual(['command']);
+          const schemaRights = (
+            await c.query(
+              "select nspname,has_schema_privilege(oid,'USAGE') usage,has_schema_privilege(oid,'CREATE') can_create from pg_namespace where nspname=any($1) order by 1",
+              [schemas],
+            )
+          ).rows;
+          expect(schemaRights.some((r) => r.can_create)).toBe(false);
+          expect(
+            (
+              await c.query(
+                'select count(*)::integer n from pg_auth_members where member=(select oid from pg_roles where rolname=session_user)',
+              )
+            ).rows[0].n,
+          ).toBe(0);
+          for (const fn of functions.filter((p) =>
+            /^maintenance_2/.test(p.schema),
+          ))
+            expect(fn.config).toContain('search_path=""');
+          for (const t of tables.filter((t) =>
+            /^maintenance_2/.test(t.schema),
+          )) {
+            expect(t.rls).toBe(true);
+            expect(t.forced).toBe(true);
+          }
+          const defaults = (
+            await db.query(
+              "select pg_get_userbyid(defaclrole) owner,coalesce(n.nspname,'GLOBAL') schema,defaclobjtype type,defaclacl::text acl from pg_default_acl d left join pg_namespace n on n.oid=d.defaclnamespace order by 1,2,3",
+            )
+          ).rows;
+          const triggers = (
+            await db.query(
+              'select n.nspname schema,c.relname table_name,t.tgname name,t.tgfoid::regprocedure::text function from pg_trigger t join pg_class c on c.oid=t.tgrelid join pg_namespace n on n.oid=c.relnamespace where not t.tgisinternal and n.nspname=any($1) order by 1,2,3',
+              [schemas],
+            )
+          ).rows;
+          const executorRights = (
+            await db.query(
+              "select n.nspname schema,c.relname name,has_table_privilege($1,c.oid,'SELECT,INSERT,UPDATE,DELETE,TRUNCATE,REFERENCES,TRIGGER') table_access,has_any_column_privilege($1,c.oid,'SELECT,INSERT,UPDATE,REFERENCES') column_access from pg_class c join pg_namespace n on n.oid=c.relnamespace where n.nspname=any($2) and c.relkind='r' order by 1,2",
+              [executor, schemas],
+            )
+          ).rows;
+          expect(
+            executorRights.some((t) => t.table_access || t.column_access),
+          ).toBe(false);
+          const policies = (
+            await db.query(
+              'select schemaname schema,tablename table_name,policyname name,permissive,roles,cmd,qual,with_check from pg_policies where schemaname=any($1) order by 1,2,3',
+              [schemas],
+            )
+          ).rows;
+          const identities = (
+            await db.query(
+              'select rolname name,rolsuper,rolcreatedb,rolcreaterole,rolcanlogin,rolinherit,rolbypassrls from pg_roles where rolname=any($1)',
+              [[cap.role, executor, 'ev_test']],
+            )
+          ).rows.map((r) => ({
+            ...r,
+            name:
+              r.name === executor
+                ? 'gateway_nologin'
+                : r.name === cap.role
+                  ? 'runtime_login'
+                  : 'trusted_fixture_owner',
+          }));
+          const graph = functions.map((p) => ({
+            signature: p.signature,
+            owner:
+              p.owner === executor
+                ? 'gateway_nologin'
+                : p.owner === 'ev_test'
+                  ? 'trusted_fixture_owner'
+                  : p.owner,
+            securityDefiner: p.security_definer,
+            config: p.config,
+            acl: (p.acl ?? 'DEFAULT_PUBLIC_EXECUTE')
+              .replaceAll(executor, 'gateway_nologin')
+              .replaceAll(cap.role, 'runtime_login')
+              .replace(/maintenance_2c_user_[a-f0-9]{32}/g, 'runtime_login'),
+            runtimeExecutable: p.executable && p.schema_usage,
+            calls: [
+              ...new Set(
+                (
+                  p.definition.match(
+                    /(?:private|auth|maintenance_2[abc]_test)\.[a-z_]+\s*\(/g,
+                  ) ?? []
+                ).map((x: string) => x.replace(/\s*\($/, '')),
+              ),
+            ].sort(),
+          }));
+          if (!process.env.CI) {
+            const { writeFileSync } = await import('node:fs');
+            writeFileSync(
+              '/tmp/propel-2d-privileges.json',
+              JSON.stringify(
+                {
+                  functions: graph,
+                  tables: tables.map((t) => ({
+                    ...t,
+                    owner:
+                      t.owner === 'ev_test' ? 'trusted_fixture_owner' : t.owner,
+                  })),
+                  schemaRights,
+                  defaults,
+                  policies,
+                  identities,
+                  triggers,
+                },
+                null,
+                2,
+              ) + '\n',
+              { mode: 0o600 },
+            );
+          }
+          expect(functions.length).toBeGreaterThan(100);
+          expect(triggers.length).toBeGreaterThan(20);
+        } finally {
+          await c.end();
+        }
+      });
     });
   },
 );
