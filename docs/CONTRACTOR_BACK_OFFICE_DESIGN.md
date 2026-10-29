@@ -106,6 +106,14 @@ also removed an overlapping mobile action bar and shortened repetitive concept-o
 notices. Final targeted reruns pass. Exact label selectors and stylesheet-only link
 selection corrected test assumptions without weakening accessibility assertions.
 
+The initial full CI browser run passed143/144; the tablet comparison retained a
+transient pointer hover between routes. A local neutral/hover/restored reproduction
+confirmed hover changes pixels and moving away restores the exact image. Isolation
+captures now normalize pointer, focus and scroll, deliberately exercise hover first,
+and save both before/after PNGs for diagnosis. Exact pixel equality remains required;
+no masks/tolerance or approved-portal change. Final focused isolation reruns pass;
+corrected current-commit CI is reported separately.
+
 ## Owner visual approval checklist
 
 - Is queue hierarchy clear, with priority, responsibility, follow-up and evidence easy to scan?

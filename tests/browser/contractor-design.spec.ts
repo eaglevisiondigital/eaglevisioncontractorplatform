@@ -336,7 +336,20 @@ test('repair editing, six-section review, stale evidence and exact return work i
 
 test('concept state and CSS stay isolated from original workspace and locked customer presentation; empty/error reload works', async ({
   page,
-}) => {
+}, info) => {
+  const pixelCapture = async (locator: Locator, state: string) => {
+    await mkdir('artifacts/property', { recursive: true });
+    await page.mouse.move(0, 0);
+    await page.evaluate(() => {
+      (document.activeElement as HTMLElement | null)?.blur();
+      scrollTo(0, 0);
+    });
+    await page.evaluate(() => document.fonts.ready);
+    return locator.screenshot({
+      animations: 'disabled',
+      path: `artifacts/property/contractor-isolation-${info.project.name}-${state}.png`,
+    });
+  };
   const navigate = async (path: string) =>
     page.evaluate((path) => {
       history.pushState(null, '', path);
@@ -345,9 +358,10 @@ test('concept state and CSS stay isolated from original workspace and locked cus
   await page.goto('/preview/property-portal');
   await expect(page.locator('.concept-metrics')).toBeVisible();
   await page.evaluate(() => document.fonts.ready);
-  const portalBefore = await page
-    .locator('.concept-body')
-    .screenshot({ animations: 'disabled' });
+  const portalBefore = await pixelCapture(
+    page.locator('.concept-body'),
+    'portal-before',
+  );
   await navigate('/preview');
   await page
     .getByRole('button', { name: 'Property operations', exact: true })
@@ -365,9 +379,10 @@ test('concept state and CSS stay isolated from original workspace and locked cus
   await expect(page.locator('.maintenance-center')).toContainText(
     'No published concerns are available.',
   );
-  const originalBefore = await page
-    .locator('.maintenance-center')
-    .screenshot({ animations: 'disabled' });
+  const originalBefore = await pixelCapture(
+    page.locator('.maintenance-center'),
+    'queue-before',
+  );
   await navigate('/preview/contractor-design');
   await expect(page.locator('.maintenance-card')).toHaveCount(3);
   await page.getByText('Filter work queue', { exact: true }).click();
@@ -423,9 +438,7 @@ test('concept state and CSS stay isolated from original workspace and locked cus
   );
   expect(
     (
-      await page
-        .locator('.maintenance-center')
-        .screenshot({ animations: 'disabled' })
+      await pixelCapture(page.locator('.maintenance-center'), 'queue-after')
     ).equals(originalBefore),
   ).toBe(true);
   await expect(page.locator('.backoffice-concept')).toHaveCount(0);
@@ -436,10 +449,13 @@ test('concept state and CSS stay isolated from original workspace and locked cus
   ).toHaveCount(1);
   await expect(page.locator('.concept-metrics')).toBeVisible();
   await page.evaluate(() => document.fonts.ready);
+  // Route changes retain pointer state. Exercise hover first, then compare the
+  // same neutral state rather than a transient card highlight on one platform.
+  await page.locator('.concept-metrics button').first().hover();
   expect(
-    (
-      await page.locator('.concept-body').screenshot({ animations: 'disabled' })
-    ).equals(portalBefore),
+    (await pixelCapture(page.locator('.concept-body'), 'portal-after')).equals(
+      portalBefore,
+    ),
   ).toBe(true);
   await check(page);
 });

@@ -87,5 +87,17 @@
     "Unchanged SQL/recovery/Mac setup/network baselines not repeated locally; existing CI runs automatically",
     "Current-commit CI reported separately"
   ],
-  "release": "NOT_READY_NOT_AUTHORIZED"
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "ciRegression": {
+    "initialFoundationRun": 40887658347,
+    "browserPassed": 143,
+    "browserFailed": 1,
+    "failure": "Tablet same-document portal pixel comparison carried transient pointer state.",
+    "reproduction": {
+      "hoverChangesPixels": true,
+      "pointerResetRestoresExactPixels": true
+    },
+    "correction": "Normalize pointer/focus/scroll before exact captures, deliberately exercise hover, retain before/after diagnostics; no masking/tolerance or portal changes.",
+    "finalIsolationDeltaPassed": 3
+  }
 }

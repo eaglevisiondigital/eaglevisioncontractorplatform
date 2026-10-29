@@ -10,7 +10,9 @@ Separate synthetic repositories and root-scoped lazy CSS preserve /preview and t
 locked customer portal.57 unique focused browser cases/101 domain-repository passes;
 final reruns nonadditive. Three palettes/viewports, exact sources, keyboard/Axe,
 responsive layout and same-document original/customer pixel isolation pass.165
-protected paths/four P1 artifacts unchanged. Real screenshot matrix and owner checklist
+protected paths/four P1 artifacts unchanged. Initial CI143/144 browser passes exposed
+a tablet transient-hover pixel comparison; neutral pointer/focus/scroll captures
+retain exact equality and diagnostic PNGs without portal/style changes. Real screenshot matrix and owner checklist
 prepared; VISUAL APPROVAL PENDING, NO WORKSPACE REPLACEMENT. No business/schema/hosted/
 Auth/financial/provider/deployment/merge. Recovery/Netlify/P1/customer gates persist;
 Release1.0 NOT READY / NOT AUTHORIZED.
