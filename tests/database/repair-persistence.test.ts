@@ -1209,5 +1209,41 @@ describe.skipIf(!native)(
       ).rejects.toThrow(/repair/);
       expect((await counts(f)).permits).toBe(0);
     });
+    it('read-only exact-target reconciliation checks membership after its target lock wait without writes', async () => {
+      const f = await prepared(),
+        peer = await db.fork!(),
+        hold = await db.fork!(),
+        before = await counts(f);
+      try {
+        const service = await actor(peer),
+          pid = (await peer.query<{ p: number }>('select pg_backend_pid() p'))
+            .rows[0].p;
+        await hold.exec('begin');
+        await hold.query(
+          'select id from public.estimate_versions where id=$1 for update',
+          [f.c.draft_version_id],
+        );
+        const pending = service.reconcile(f.c).then(
+          () => true,
+          () => false,
+        );
+        await waitLock(db, pid);
+        await db.query(
+          'update public.memberships set active=false where organization_id=$1 and user_id=$2',
+          [f.org, owners[0]],
+        );
+        await hold.exec('commit');
+        expect(await pending).toBe(false);
+        expect(await counts(f)).toEqual(before);
+      } finally {
+        await hold.exec('rollback');
+        await peer.close();
+        await hold.close();
+        await db.query(
+          'update public.memberships set active=true where organization_id=$1 and user_id=$2',
+          [f.org, owners[0]],
+        );
+      }
+    });
   },
 );

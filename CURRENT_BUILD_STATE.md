@@ -7,7 +7,7 @@ The disposable fixture creates one existing-engine draft, appends current-author
 six-section evidence with durable intents/CAS, reconciles exact targets/receipts after
 client loss and retains UNKNOWN without retries/replacement IDs. Fixture-only ordinary
 estimate save/duplicate/revise/issue/archive guards preserve source bindings;6/6 never
-creates issue/work/customer authority.47 new native PG17 and24 new application cases
+creates issue/work/customer authority.48 new native PG17 and24 new application cases
 pass; lint/types/build/format/integrity pass.195 protected existing paths/four frozen
 P1 hashes unchanged. No UI/business/historical SQL edits or operational adapter; trusted
 fixture-owner execution is not genuine Auth/MFA or least privilege. See

@@ -4,7 +4,7 @@
   "baseCommit": "5474730e43ce4a22f147791c7416b29a27dd824f",
   "status": "LOCAL_TEST_ONLY_PASS",
   "nativePostgreSQL17": {
-    "passed": 47,
+    "passed": 48,
     "failed": 0,
     "command": "npm run test:maintenance-native -- --workstream=2b",
     "historyFiles": 13,

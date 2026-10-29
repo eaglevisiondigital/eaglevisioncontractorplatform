@@ -172,11 +172,12 @@ create function maintenance_2b_test.reconcile(c jsonb) returns jsonb language pl
  return jsonb_build_object('status','undetermined');end if;
  if r.command is distinct from c or r.actor_id is distinct from auth.uid() then raise exception 'Exact preparing request/actor required';end if;
  select * into b from maintenance_2b_test.bindings where organization_id=r.organization_id and reservation_id=r.id;
+ if b.id is null then
  perform maintenance_2a_test.bind_source(c->'source');perform maintenance_2b_test.authority(r.organization_id);
- if b.id is null then return jsonb_build_object('status','undetermined','estimate_id',r.estimate_id,'draft_version_id',r.draft_version_id);end if;
+ return jsonb_build_object('status','undetermined','estimate_id',r.estimate_id,'draft_version_id',r.draft_version_id);end if;
  select * into e from public.estimates where organization_id=r.organization_id and id=r.estimate_id for share;
  select * into v from public.estimate_versions where organization_id=r.organization_id and estimate_id=r.estimate_id and id=r.draft_version_id for share;
- perform maintenance_2b_test.authority(r.organization_id);
+ perform maintenance_2a_test.bind_source(c->'source');perform maintenance_2b_test.authority(r.organization_id);
  if e.id is null or v.id is null or e.current_version_id is distinct from r.draft_version_id or v.customer_id is distinct from (c->'source'->>'customer_id')::uuid or v.location_id is distinct from (c->'source'->>'location_id')::uuid or (select count(*) from jsonb_array_elements(v.payload->'lines') l where l->>'id'=r.line_id::text)<>1 then return jsonb_build_object('status','undetermined');end if;
  return jsonb_build_object('status','committed','receipt',b.result);
 end$$;

@@ -120,7 +120,7 @@ claim is made that these guards detect semantically similar unbound estimates.
 
 ## Verification and reproduction
 
-- **47 new native PostgreSQL17 cases pass**: all three companies, valid/invalid source/
+- **48 new native PostgreSQL17 cases pass**: all three companies, valid/invalid source/
   property/job baseline, real competing transactions, CAS, exact/changed UUIDs, role/
   principal/AAL, actual lock waits with membership/account/session revocation and real
   JWT wall-clock expiry, private client-denial, append-only records/FK indexes, saved/

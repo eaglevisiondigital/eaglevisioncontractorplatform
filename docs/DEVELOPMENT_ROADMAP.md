@@ -3,7 +3,7 @@
 ## Workstream 2B checkpoint
 
 Test-only durable repair reservation/claims, guarded readiness intent/appends and
-exact restart reconciliation now pass47 native PG17/24 application cases. See
+exact restart reconciliation now pass48 native PG17/24 application cases. See
 MAINTENANCE_DURABLE_REPAIR.md; UI remains session-only. Next proposed bounded2C:
 least-privileged local service/command and durable pre-send intent composition with
 service-process restart tests. No hosted schema/service/activation authority; all

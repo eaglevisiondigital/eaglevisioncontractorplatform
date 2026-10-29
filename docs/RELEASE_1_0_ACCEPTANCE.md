@@ -2,7 +2,7 @@
 
 ## Workstream 2B · disposable repair/readiness acceptance only · October 29
 
-47 native PG17/24 application cases validate exact reservations, one-shot claims,
+48 native PG17/24 application cases validate exact reservations, one-shot claims,
 guarded readiness appends, ordinary estimate fixture guards and real client-process
 interruption/reconciliation. See MAINTENANCE_DURABLE_REPAIR.md. Operational migration/
 least-privileged service, genuine Auth/HTTP/MFA, UI durability and independent recovery
