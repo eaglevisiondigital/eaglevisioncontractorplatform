@@ -1,5 +1,15 @@
 # Production Release 1.0 acceptance checklist
 
+## Contractor Phase A polish · October 29 · local presentation only
+
+Package 1 improves explicit UI labels, exact inspection-date visibility, separate
+staff/evidence facts and mobile controls.66 unique focused browser and104 focused
+app/domain cases pass; original/customer pixel isolation remains exact. See
+CONTRACTOR_UI_POLISH.md and its validation record. Final owner visual approval and
+Phase B replacement remain PENDING. This is not durable operational, hosted or
+physical recovery acceptance. All existing gates and Release1.0 NOT READY / NOT
+AUTHORIZED remain unchanged; the nine-stream roadmap conveys no execution authority.
+
 ## Contractor premium concept · Phase A only · October29
 
 One isolated synthetic design at /preview/contractor-design reuses working internal

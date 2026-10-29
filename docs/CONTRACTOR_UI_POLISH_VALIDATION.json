@@ -1,0 +1,56 @@
+{
+  "baseCommit": "d51e2a52c0fe01e92f5661dd5df39ae34040d0c2",
+  "protectedTrackedPathsUnchanged": 165,
+  "frozenP1ArtifactsVerified": 4,
+  "historicalMigrationsPreserved": 13,
+  "pendingCustomerMigrationUnchanged": true,
+  "hostedActions": 0,
+  "status": "LOCAL_SYNTHETIC_PHASE_A_VISUAL_APPROVAL_PENDING",
+  "focusedApplicationTests": {
+    "passed": 104,
+    "files": [
+      "tests/back-office-copy.test.ts",
+      "tests/maintenance-center.test.ts",
+      "tests/repair-draft.test.ts",
+      "tests/repair-readiness.test.ts"
+    ]
+  },
+  "focusedBrowserTests": {
+    "uniquePassed": 66,
+    "originalWorkflowAndPortalRegressions": 48,
+    "finalConceptJourneys": 18,
+    "viewports": ["desktop", "tablet", "mobile"],
+    "companies": ["sample-property", "sample-construction", "sample-roofing"],
+    "axeViolationsInExercisedStates": 0,
+    "horizontalOverflowInExercisedStates": 0,
+    "exactOriginalAndCustomerPixelIsolation": true,
+    "rerunsAreNonadditive": true
+  },
+  "checks": {
+    "lint": "PASS",
+    "strictTypecheckAndBuild": "PASS",
+    "generatedPublicTypes": "PASS",
+    "historicalAndPendingMigrationIntegrity": "PASS",
+    "propertyProposalIntegrity": "PASS",
+    "customerProposalIntegrity": "PASS",
+    "format": "PASS",
+    "diff": "PASS"
+  },
+  "screenshots": {
+    "beforePrefix": "contractor-design-",
+    "revisedPrefix": "contractor-polish-",
+    "directory": "artifacts/property",
+    "realBrowserCaptures": true,
+    "trackedImages": false,
+    "revisedPngCount": 108
+  },
+  "phaseBApproved": false,
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "ci": "CURRENT_COMMIT_REPORTED_SEPARATELY",
+  "observedCorrections": [
+    "Missed original card branch corrected before final runs.",
+    "Test selectors updated without changing source/option values.",
+    "Expanded customer projection check exposed low-contrast totals; root-scoped color fixed.",
+    "Tablet reload button no longer shrinks or wraps."
+  ]
+}

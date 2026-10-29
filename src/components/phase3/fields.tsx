@@ -1,3 +1,4 @@
+import { BackOfficeText } from '../property/back-office-copy';
 import { useState, type ReactNode } from 'react';
 import {
   parseMinor,
@@ -13,7 +14,9 @@ export function Field({
 }) {
   return (
     <label className="p3-field">
-      <span>{label}</span>
+      <span>
+        <BackOfficeText text={label} />
+      </span>
       {children}
     </label>
   );

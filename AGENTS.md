@@ -1,5 +1,13 @@
 # Engineering instructions
 
+Contractor UI polish continuation: read docs/CONTRACTOR_UI_POLISH.md and
+DEVELOPMENT_ROADMAP.md. Package 1 remains isolated Phase A; final visual approval and
+Phase B replacement are PENDING. Explicit UI/enum maps default off; preserve original
+option values, names, notes and immutable evidence. Separate manual priority from
+reported severity/review/follow-up/date. Retain scoped CSS, exact pixel isolation,
+source/CAS/readiness/authority rules. No general capitalization or artwork changes.
+All13 SQL/pending customer/frozen P1/approvals/financial/recovery/Netlify remain.
+
 Contractor concept continuation: read docs/CONTRACTOR_BACK_OFFICE_DESIGN.md.
 Phase A is isolated at /preview/contractor-design; original /preview and locked
 customer portal remain unchanged. Presentation context defaults false; exact local

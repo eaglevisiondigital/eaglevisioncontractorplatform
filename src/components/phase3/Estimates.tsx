@@ -1,3 +1,4 @@
+import { BackOfficeText } from '../property/back-office-copy';
 import { RepairScopeReadiness } from '../property/RepairScopeReadiness';
 import { useState, useCallback } from 'react';
 import type { Phase3Repository } from '../../lib/phase3';
@@ -120,14 +121,18 @@ export function Estimates({
     <article className="p3-workspace">
       <div className="section-title">
         <div>
-          <span className="eyebrow">PROPOSAL STUDIO</span>
-          <h2>Estimates built around your work</h2>
+          <span className="eyebrow">
+            <BackOfficeText text="PROPOSAL STUDIO" />
+          </span>
+          <h2>
+            <BackOfficeText text="Estimates built around your work" />
+          </h2>
         </div>
         <button
           disabled={task.busy || !data.data}
           onClick={() => void create()}
         >
-          New estimate
+          <BackOfficeText text="New estimate" />
         </button>
       </div>
       <p>Build clear scope. Protect your costs. Keep every issued version.</p>
@@ -140,13 +145,14 @@ export function Estimates({
           </strong>
         </span>
         <span>
-          Internally issued{' '}
+          <BackOfficeText text="Internally issued" />{' '}
           <strong>
             {data.data?.list.filter((e) => e.status === 'issued').length ?? 0}
           </strong>
         </span>
         <span>
-          Delivery & payments <strong>Disabled</strong>
+          <BackOfficeText text="Delivery & payments " />
+          <strong>Disabled</strong>
         </span>
       </div>
       <div className="form-grid">
@@ -169,7 +175,9 @@ export function Estimates({
             }}
           >
             {['all', 'draft', 'issued', 'archived'].map((s) => (
-              <option key={s}>{s}</option>
+              <option key={s} value={s}>
+                <BackOfficeText text={s} />
+              </option>
             ))}
           </select>
         </Field>
@@ -227,7 +235,9 @@ export function Estimates({
           Previous
         </button>
         <span>
-          {rows.length} estimates · page {page + 1}
+          {rows.length}
+          <BackOfficeText text=" estimates · page " />
+          {page + 1}
         </span>
         <button
           className="secondary"
@@ -329,27 +339,37 @@ function EstimateEditor({
       <div className="section-title">
         <div>
           <span className="eyebrow">
-            {initial.estimate.estimate_number} / VERSION{' '}
+            {initial.estimate.estimate_number}
+            <BackOfficeText text=" / VERSION" />{' '}
             {initial.version.version_number}
           </span>
           <h2>{p.project.name}</h2>
           <p>
-            {readonly ? 'Immutable snapshot' : 'Private working draft'} ·{' '}
-            {p.currency} ·{' '}
-            {dirty
-              ? 'Unsaved changes'
-              : `Saved revision ${initial.version.lock_revision}`}
+            <BackOfficeText
+              text={readonly ? 'Immutable snapshot' : 'Private working draft'}
+            />{' '}
+            · {p.currency} ·{' '}
+            {dirty ? (
+              <BackOfficeText text="Unsaved changes" />
+            ) : (
+              <>
+                <BackOfficeText text="Saved revision" />{' '}
+                {initial.version.lock_revision}
+              </>
+            )}
           </p>
         </div>
         {!draftOnly && (
           <button className="secondary" onClick={onClose}>
-            All estimates
+            <BackOfficeText text="All estimates" />
           </button>
         )}
       </div>
       {resources.data?.repair && (
         <details className="p3-notice">
-          <summary>Exact maintenance origin</summary>
+          <summary>
+            <BackOfficeText text="Exact maintenance origin" />
+          </summary>
           <p>
             Exact maintenance origin: report{' '}
             {resources.data.repair.source.report_id} · Published v
@@ -369,16 +389,22 @@ function EstimateEditor({
             className={tab === t ? 'active' : 'secondary'}
             onClick={() => setTab(t)}
           >
-            {t === 'build'
-              ? 'Estimate builder'
-              : t === 'preview'
-                ? 'Customer preview'
-                : 'Version history'}
+            <BackOfficeText
+              text={
+                t === 'build'
+                  ? 'Estimate builder'
+                  : t === 'preview'
+                    ? 'Customer preview'
+                    : 'Version history'
+              }
+            />
           </button>
         ))}
       </div>
       <div className="p3-notice">
-        <strong>Internal estimating only</strong>
+        <strong>
+          <BackOfficeText text="Internal estimating only" />
+        </strong>
         <p>
           Issuance locks a version for internal review. It does not deliver,
           accept, sign, invoice or collect payment.
@@ -417,7 +443,9 @@ function EstimateEditor({
         <div className="estimate-grid">
           <div className="estimate-main">
             <fieldset disabled={readonly || task.busy}>
-              <legend>Project & customer</legend>
+              <legend>
+                <BackOfficeText text="Project & customer" />
+              </legend>
               <div className="form-grid">
                 <Field label="Project name">
                   <input
@@ -464,7 +492,9 @@ function EstimateEditor({
                       update({ location_id: e.target.value || null })
                     }
                   >
-                    <option value="">No location selected</option>
+                    <option value="">
+                      <BackOfficeText text="No location selected" />
+                    </option>
                     {resources.data?.locations.map((l) => (
                       <option key={l.id} value={l.id}>
                         {l.address_line1}, {l.city}
@@ -521,10 +551,12 @@ function EstimateEditor({
               </Field>
             </fieldset>
             <div className="section-title">
-              <h3>Scope & pricing</h3>
+              <h3>
+                <BackOfficeText text="Scope & pricing" />
+              </h3>
               {!readonly && (
                 <button disabled={dirty} onClick={() => setImporting(true)}>
-                  Smart material import
+                  <BackOfficeText text="Smart material import" />
                 </button>
               )}
             </div>
@@ -533,7 +565,9 @@ function EstimateEditor({
               three decimal places. Prices use {p.currency} minor units.
             </p>
             <fieldset disabled={readonly || task.busy}>
-              <legend className="sr-only">Estimate line items</legend>
+              <legend className="sr-only">
+                <BackOfficeText text="Estimate line items" />
+              </legend>
               <Field label="Add catalog item">
                 <select
                   value=""
@@ -572,7 +606,8 @@ function EstimateEditor({
                 <div className="scope-card" key={l.id}>
                   <div className="section-title">
                     <strong>
-                      {String(i + 1).padStart(2, '0')} / {l.kind}
+                      {String(i + 1).padStart(2, '0')} /{' '}
+                      <BackOfficeText text={l.kind} />
                       {l.import_approval_id ? ' · approved import' : ''}
                     </strong>
                     <span>
@@ -610,7 +645,9 @@ function EstimateEditor({
                           'service',
                           'allowance',
                         ].map((k) => (
-                          <option key={k}>{k}</option>
+                          <option key={k} value={k}>
+                            <BackOfficeText text={k} />
+                          </option>
                         ))}
                       </select>
                     </Field>
@@ -631,7 +668,9 @@ function EstimateEditor({
                         }
                       >
                         {estimateUnits.map((u) => (
-                          <option key={u}>{u}</option>
+                          <option key={u} value={u}>
+                            <BackOfficeText text={u} />
+                          </option>
                         ))}
                       </select>
                     </Field>
@@ -664,7 +703,7 @@ function EstimateEditor({
                         })
                       }
                     />
-                    Use explicit selling unit price
+                    <BackOfficeText text="Use explicit selling unit price" />
                   </label>
                   {l.unit_price_minor !== null && (
                     <Money
@@ -685,7 +724,9 @@ function EstimateEditor({
                           line(l.id, { option_id: e.target.value || null })
                         }
                       >
-                        <option value="">Base scope</option>
+                        <option value="">
+                          <BackOfficeText text="Base scope" />
+                        </option>
                         {p.options.map((o) => (
                           <option key={o.id} value={o.id}>
                             {o.label}
@@ -712,7 +753,7 @@ function EstimateEditor({
                           line(l.id, { taxable: e.target.checked })
                         }
                       />
-                      Taxable under selected policy
+                      <BackOfficeText text="Taxable under selected policy" />
                     </label>
                     <button
                       className="secondary"
@@ -721,7 +762,8 @@ function EstimateEditor({
                         update({ lines: p.lines.filter((x) => x.id !== l.id) })
                       }
                     >
-                      Remove item {i + 1}
+                      <BackOfficeText text="Remove item " />
+                      {i + 1}
                     </button>
                   </div>
                   {l.import_approval_id && (
@@ -747,7 +789,7 @@ function EstimateEditor({
                     })
                   }
                 >
-                  Add material
+                  <BackOfficeText text="Add material" />
                 </button>
                 <button
                   className="secondary"
@@ -764,10 +806,12 @@ function EstimateEditor({
                     })
                   }
                 >
-                  Add labor
+                  <BackOfficeText text="Add labor" />
                 </button>
               </div>
-              <h3>Options & alternates</h3>
+              <h3>
+                <BackOfficeText text="Options & alternates" />
+              </h3>
               {p.options.map((o) => (
                 <div className="option-row" key={o.id}>
                   <label className="checkbox-label">
@@ -793,12 +837,12 @@ function EstimateEditor({
                       : 'optional addition'}
                   </label>
                   <small>
-                    Scope subtotal:{' '}
+                    <BackOfficeText text="Scope subtotal:" />{' '}
                     {money(
                       calc?.options.find((x) => x.id === o.id)
                         ?.scope_subtotal_minor ?? 0,
                     )}{' '}
-                    · before global discount/tax
+                    <BackOfficeText text="· before global discount/tax" />
                   </small>
                 </div>
               ))}
@@ -830,10 +874,12 @@ function EstimateEditor({
                     });
                   }}
                 >
-                  Add optional scope
+                  <BackOfficeText text="Add optional scope" />
                 </button>
               </div>
-              <h3>Adjustments & tax</h3>
+              <h3>
+                <BackOfficeText text="Adjustments & tax" />
+              </h3>
               <div className="form-grid">
                 <Field label="Discount type">
                   <select
@@ -849,7 +895,9 @@ function EstimateEditor({
                     }
                   >
                     {['none', 'fixed', 'percent'].map((k) => (
-                      <option key={k}>{k}</option>
+                      <option key={k} value={k}>
+                        <BackOfficeText text={k} />
+                      </option>
                     ))}
                   </select>
                 </Field>
@@ -880,7 +928,9 @@ function EstimateEditor({
                       update({ tax_policy_id: e.target.value || null })
                     }
                   >
-                    <option value="">No tax applied · confirm treatment</option>
+                    <option value="">
+                      <BackOfficeText text="No tax applied · confirm treatment" />
+                    </option>
                     {taxes
                       .filter((t) => t.active)
                       .map((t) => (
@@ -896,7 +946,9 @@ function EstimateEditor({
                 jurisdiction / contract review. A draft policy blocks internal
                 issue.
               </p>
-              <h3>Proposed payment schedule</h3>
+              <h3>
+                <BackOfficeText text="Proposed payment schedule" />
+              </h3>
               {p.payment_schedule.map((s, i) => (
                 <div className="form-grid" key={s.id}>
                   <Field label={`Payment milestone ${i + 1}`}>
@@ -960,14 +1012,16 @@ function EstimateEditor({
                   })
                 }
               >
-                Add milestone
+                <BackOfficeText text="Add milestone" />
               </button>
               <p className="muted">
                 Shares must total 100%. The final milestone receives any
                 minor-unit remainder. These are proposals, not payment
                 instructions.
               </p>
-              <h3>Notes, terms & existing clean attachments</h3>
+              <h3>
+                <BackOfficeText text="Notes, terms & existing clean attachments" />
+              </h3>
               <Field label="Private estimate notes">
                 <textarea
                   value={p.internal_notes}
@@ -1028,7 +1082,7 @@ function EstimateEditor({
                             })
                           }
                         />
-                        Include in customer preview
+                        <BackOfficeText text="Include in customer preview" />
                       </label>
                     )}
                 </div>
@@ -1042,12 +1096,22 @@ function EstimateEditor({
             </fieldset>
           </div>
           <aside className="estimate-summary">
-            <span className="eyebrow">SELECTED SCOPE</span>
-            <h3>{calc ? money(calc.total_minor) : 'Check values'}</h3>
+            <span className="eyebrow">
+              <BackOfficeText text="SELECTED SCOPE" />
+            </span>
+            <h3>
+              {calc ? (
+                money(calc.total_minor)
+              ) : (
+                <BackOfficeText text="Check values" />
+              )}
+            </h3>
             {calc && (
               <>
                 <dl>
-                  <dt>Scope subtotal</dt>
+                  <dt>
+                    <BackOfficeText text="Scope subtotal" />
+                  </dt>
                   <dd>{money(calc.subtotal_minor)}</dd>
                   <dt>Discount</dt>
                   <dd>−{money(calc.discount_minor)}</dd>
@@ -1055,13 +1119,21 @@ function EstimateEditor({
                   <dd>{money(calc.tax_minor)}</dd>
                 </dl>
                 <hr />
-                <span className="eyebrow">INTERNAL PROFITABILITY</span>
+                <span className="eyebrow">
+                  <BackOfficeText text="INTERNAL PROFITABILITY" />
+                </span>
                 <dl>
-                  <dt>Estimated cost</dt>
+                  <dt>
+                    <BackOfficeText text="Estimated cost" />
+                  </dt>
                   <dd>{money(calc.cost_minor)}</dd>
-                  <dt>Gross profit before overhead</dt>
+                  <dt>
+                    <BackOfficeText text="Gross profit before overhead" />
+                  </dt>
                   <dd>{money(calc.gross_profit_minor)}</dd>
-                  <dt>Gross margin</dt>
+                  <dt>
+                    <BackOfficeText text="Gross margin" />
+                  </dt>
                   <dd>{(calc.profit_margin_bps / 100).toFixed(2)}%</dd>
                 </dl>
                 <hr />
@@ -1113,7 +1185,7 @@ function EstimateEditor({
                 )
               }
             >
-              Save estimate draft
+              <BackOfficeText text="Save estimate draft" />
             </button>
             {canIssue && !repairOnly && (
               <button
@@ -1126,7 +1198,7 @@ function EstimateEditor({
                   )
                 }
               >
-                Issue internal snapshot
+                <BackOfficeText text="Issue internal snapshot" />
               </button>
             )}
             <button
@@ -1142,7 +1214,7 @@ function EstimateEditor({
                 }, 'Company template saved')
               }
             >
-              Save as company template
+              <BackOfficeText text="Save as company template" />
             </button>
           </>
         ) : (
@@ -1158,7 +1230,7 @@ function EstimateEditor({
                   )
                 }
               >
-                Create draft revision
+                <BackOfficeText text="Create draft revision" />
               </button>
               {canIssue && (
                 <button
@@ -1169,7 +1241,7 @@ function EstimateEditor({
                     }, 'Job baseline captured · open Jobs to track costs')
                   }
                 >
-                  Approve job baseline
+                  <BackOfficeText text="Approve job baseline" />
                 </button>
               )}
             </>
@@ -1185,7 +1257,7 @@ function EstimateEditor({
             )
           }
         >
-          Duplicate estimate
+          <BackOfficeText text="Duplicate estimate" />
         </button>
         {canIssue && (
           <button
@@ -1202,9 +1274,13 @@ function EstimateEditor({
               }, 'Archive updated')
             }
           >
-            {initial.estimate.status === 'archived'
-              ? 'Restore estimate'
-              : 'Archive estimate'}
+            <BackOfficeText
+              text={
+                initial.estimate.status === 'archived'
+                  ? 'Restore estimate'
+                  : 'Archive estimate'
+              }
+            />
           </button>
         )}
       </div>
@@ -1242,7 +1318,9 @@ function CustomerEstimatePreview({
           </p>
         </div>
         <div>
-          <strong>ESTIMATE</strong>
+          <strong>
+            <BackOfficeText text="ESTIMATE" />
+          </strong>
           <p>
             {bundle.estimate.estimate_number}
             <br />
@@ -1282,12 +1360,16 @@ function CustomerEstimatePreview({
         <dd>−{money(view.discount_minor)}</dd>
         <dt>Tax</dt>
         <dd>{money(view.tax_minor)}</dd>
-        <dt>Total estimate</dt>
+        <dt>
+          <BackOfficeText text="Total estimate" />
+        </dt>
         <dd>
           <strong>{money(view.total_minor)}</strong>
         </dd>
       </dl>
-      <h3>Proposed payment milestones</h3>
+      <h3>
+        <BackOfficeText text="Proposed payment milestones" />
+      </h3>
       {view.schedule.map((s, i) => (
         <p key={i}>
           {s.label}: {money(s.amount_minor)} {s.due_on && `· ${s.due_on}`}

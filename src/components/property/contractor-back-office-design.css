@@ -108,7 +108,7 @@
 }
 .backoffice-concept main {
   max-width: 1600px;
-  padding: 26px 36px;
+  padding: 20px 36px;
   margin: auto;
 }
 .backoffice-concept .concept-page-heading {
@@ -144,7 +144,7 @@
   border-top: 1px solid var(--concept-border);
   padding-top: 14px;
   font-size: 0.73rem;
-  margin: 6px 0 20px;
+  margin: 6px 0 14px;
 }
 .backoffice-concept .property-workspace {
   background: transparent;
@@ -280,7 +280,6 @@
   font-size: 0.65rem;
   padding: 4px 9px;
   border-radius: 30px;
-  text-transform: capitalize;
 }
 .backoffice-concept .maintenance-card[data-priority='urgent'] .badge {
   background: #fcebe6;
@@ -611,8 +610,8 @@
     height: auto;
     position: static;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px 18px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
     border-right: 0;
     border-bottom: 1px solid var(--concept-border);
     padding: 18px;
@@ -655,7 +654,7 @@
     padding: 5px 8px;
   }
   .backoffice-concept main {
-    padding: 24px 16px;
+    padding: 18px 16px;
   }
   .backoffice-concept .concept-page-heading h1 {
     font-size: 2rem;
@@ -688,9 +687,11 @@
     font-size: 0.56rem;
   }
   .backoffice-concept .maintenance-center > .section-title button {
-    padding: 9px;
-    font-size: 0.65rem;
-    max-width: 100px;
+    padding: 11px 14px;
+    font-size: 0.75rem;
+    max-width: 100%;
+    width: 100%;
+    white-space: nowrap;
   }
   .backoffice-concept .concept-queue-summary {
     grid-template-columns: 1fr 1fr;
@@ -738,4 +739,80 @@
   .backoffice-concept * {
     scroll-behavior: auto;
   }
+}
+
+.backoffice-concept .concept-inspection-date {
+  margin: 16px 0 0;
+  font-size: 0.72rem;
+}
+.backoffice-concept .concept-inspection-date time {
+  display: block;
+  color: var(--concept-ink);
+  font-size: 1.06rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+.backoffice-concept .concept-finding-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 8px;
+  padding: 14px 0;
+  margin: 12px 0 0;
+  border-top: 1px solid var(--concept-border);
+  border-bottom: 1px solid var(--concept-border);
+}
+.backoffice-concept .concept-finding-facts dt {
+  font-size: 0.66rem;
+  color: var(--concept-muted);
+  margin-bottom: 4px;
+}
+.backoffice-concept .concept-finding-facts dd {
+  margin: 0;
+  color: var(--concept-ink);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.backoffice-concept .maintenance-editor .maintenance-filters {
+  grid-template-columns: minmax(0, 1fr);
+}
+.backoffice-concept .concept-assignee-identity {
+  margin-top: -5px;
+  overflow-wrap: anywhere;
+}
+.backoffice-concept select {
+  min-width: 0;
+  max-width: 100%;
+  font-size: 0.84rem;
+}
+@media (max-width: 760px) {
+  .backoffice-concept .concept-company-control {
+    font-size: 0.72rem;
+  }
+  .backoffice-concept .concept-company-control select {
+    width: 100%;
+    font-size: 0.91rem;
+    min-height: 44px;
+  }
+  .backoffice-concept .maintenance-actions button,
+  .backoffice-concept .readiness-actions button {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+/* The estimate's synthetic customer projection remains inside the staff concept. */
+.backoffice-concept .customer-estimate-preview .preview-total dt {
+  color: var(--concept-muted);
+}
+.backoffice-concept .maintenance-center > .section-title {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.backoffice-concept .maintenance-center > .section-title button {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+/* Preserve explicit presentation labels instead of inherited case transforms. */
+.backoffice-concept .eyebrow,
+.backoffice-concept .badge {
+  text-transform: none;
 }

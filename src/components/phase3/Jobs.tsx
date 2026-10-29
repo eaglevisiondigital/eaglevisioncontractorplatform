@@ -1,3 +1,4 @@
+import { BackOfficeText } from '../property/back-office-copy';
 import type { Operations } from '../../lib/operations';
 import { PropertyJobReview } from '../property/PropertyJobReview';
 import { useState, useCallback } from 'react';
@@ -50,7 +51,9 @@ export function Jobs({
     <article className="p3-workspace">
       <div className="section-title">
         <div>
-          <span className="eyebrow">JOB CONTROL</span>
+          <span className="eyebrow">
+            <BackOfficeText text="JOB CONTROL" />
+          </span>
           <h2>
             {canManage
               ? 'Job financial dashboard'
@@ -58,7 +61,7 @@ export function Jobs({
           </h2>
         </div>
         <button className="secondary" onClick={data.reload}>
-          Refresh job costs
+          <BackOfficeText text="Refresh job costs" />
         </button>
       </div>
       <p>
@@ -164,15 +167,21 @@ function JobDetail({
       </div>
       <div className="job-metrics">
         <div>
-          <span>Original estimate revenue · before tax</span>
+          <span>
+            <BackOfficeText text="Original estimate revenue · before tax" />
+          </span>
           <strong>{money(job.baseline.revenue_minor)}</strong>
         </div>
         <div>
-          <span>Revised authorized scope value</span>
+          <span>
+            <BackOfficeText text="Revised authorized scope value" />
+          </span>
           <strong>{money(preview.revised_revenue_minor)}</strong>
         </div>
         <div>
-          <span>Projected total economic cost</span>
+          <span>
+            <BackOfficeText text="Projected total economic cost" />
+          </span>
           <strong>{money(preview.projected_cost_minor)}</strong>
         </div>
         <div className={preview.profit_erosion ? 'metric-warning' : ''}>
@@ -183,12 +192,14 @@ function JobDetail({
           </span>
           <strong>{money(preview.projected_profit_minor)}</strong>
           <small>
-            {(preview.projected_margin_bps / 100).toFixed(2)}% before
-            unallocated overhead / taxes
+            {(preview.projected_margin_bps / 100).toFixed(2)}
+            <BackOfficeText text="% before unallocated overhead / taxes" />
           </small>
         </div>
       </div>
-      <h3>Original budget versus actual & forecast</h3>
+      <h3>
+        <BackOfficeText text="Original budget versus actual & forecast" />
+      </h3>
       <div
         className="p3-table-wrap"
         tabIndex={0}
@@ -213,7 +224,9 @@ function JobDetail({
                 <th scope="row">
                   {c.category}
                   {c.overrun && (
-                    <span className="cost-warning">Over threshold</span>
+                    <span className="cost-warning">
+                      <BackOfficeText text="Over threshold" />
+                    </span>
                   )}
                 </th>
                 <td>{money(c.original_minor)}</td>
@@ -241,7 +254,9 @@ function JobDetail({
         </p>
       )}
       <details>
-        <summary>Update remaining costs & warning thresholds</summary>
+        <summary>
+          <BackOfficeText text="Update remaining costs & warning thresholds" />
+        </summary>
         <div className="form-grid">
           {costCategories.map((category) => (
             <Money
@@ -288,21 +303,24 @@ function JobDetail({
             }, 'Forecast saved')
           }
         >
-          Save job forecast
+          <BackOfficeText text="Save job forecast" />
         </button>
       </details>
       {projectionError && <p role="alert">{projectionError}</p>}
-      <h3>Labor cost & hours</h3>
+      <h3>
+        <BackOfficeText text="Labor cost & hours" />
+      </h3>
       <div className="p3-totals">
         <span>
-          Original labor hours <strong>{originalHours.toFixed(2)}</strong>
+          <BackOfficeText text="Original labor hours " />
+          <strong>{originalHours.toFixed(2)}</strong>
         </span>
         <span>
-          Prepared actual hours{' '}
+          <BackOfficeText text="Prepared actual hours" />{' '}
           <strong>{((job.labor?.seconds ?? 0) / 3600).toFixed(2)}</strong>
         </span>
         <span>
-          Billable / unbilled hours{' '}
+          <BackOfficeText text="Billable / unbilled hours" />{' '}
           <strong>
             {((job.labor?.billable_seconds ?? 0) / 3600).toFixed(2)} /{' '}
             {(
@@ -325,7 +343,9 @@ function JobDetail({
         subcontractor invoices, with no time-based cash fee.
       </p>
       <div className="section-title">
-        <h3>Purchase & expense history</h3>
+        <h3>
+          <BackOfficeText text="Purchase & expense history" />
+        </h3>
         <button
           className="secondary"
           onClick={() =>
@@ -341,7 +361,11 @@ function JobDetail({
             )
           }
         >
-          {repo.sample ? 'Import receipt example' : 'Review receipt imports'}
+          <BackOfficeText
+            text={
+              repo.sample ? 'Import receipt example' : 'Review receipt imports'
+            }
+          />
         </button>
       </div>
       {job.expenses.map((e) => {
@@ -386,7 +410,7 @@ function JobDetail({
                     }, 'Expense approved')
                   }
                 >
-                  Approve expense
+                  <BackOfficeText text="Approve expense" />
                 </button>
                 <button
                   className="secondary"
@@ -403,7 +427,7 @@ function JobDetail({
                     }, 'Expense rejected')
                   }
                 >
-                  Reject expense
+                  <BackOfficeText text="Reject expense" />
                 </button>
               </div>
             )}
@@ -413,7 +437,8 @@ function JobDetail({
       {preview.anomalies.length > 0 && (
         <details>
           <summary>
-            Purchase variance warnings ({preview.anomalies.length})
+            <BackOfficeText text="Purchase variance warnings (" />
+            {preview.anomalies.length})
           </summary>
           <ul>
             {preview.anomalies.map((a, i) => (
@@ -427,7 +452,9 @@ function JobDetail({
         immutable adjustments linked to an approved purchase.
       </p>
       <details>
-        <summary>Record expense, commitment or credit</summary>
+        <summary>
+          <BackOfficeText text="Record expense, commitment or credit" />
+        </summary>
         <ExpenseForm repo={repo} org={company.id} job={job} onSaved={refresh} />
       </details>
       {importBundle && (
@@ -453,7 +480,9 @@ function JobDetail({
           }}
         />
       )}
-      <h3>Scope changes & customer billing</h3>
+      <h3>
+        <BackOfficeText text="Scope changes & customer billing" />
+      </h3>
       <p>
         Internal expenses and proposed additions do not increase billing.
         Management must verify the required customer authorization before
@@ -508,7 +537,7 @@ function JobDetail({
                     }, 'Change order approved; authorized scope value updated')
                   }
                 >
-                  Approve authorized change order
+                  <BackOfficeText text="Approve authorized change order" />
                 </button>
               </>
             )
@@ -516,7 +545,9 @@ function JobDetail({
         </div>
       ))}
       <details>
-        <summary>Add internal scope or propose a billable addition</summary>
+        <summary>
+          <BackOfficeText text="Add internal scope or propose a billable addition" />
+        </summary>
         <FieldsForm
           initial={{
             status: 'internal',
@@ -580,7 +611,9 @@ function JobDetail({
       </details>
       {admin && (
         <details>
-          <summary>Assign employee to this job</summary>
+          <summary>
+            <BackOfficeText text="Assign employee to this job" />
+          </summary>
           <Assignment repo={repo} org={company.id} jobId={job.id} />
         </details>
       )}

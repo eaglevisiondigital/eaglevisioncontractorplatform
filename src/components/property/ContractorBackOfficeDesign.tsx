@@ -1,3 +1,4 @@
+import { BackOfficeText } from './back-office-copy';
 import { useState, useCallback, type CSSProperties } from 'react';
 import { sampleCompanies } from '../../domain/platform';
 import { Operations } from '../../lib/operations';
@@ -37,7 +38,7 @@ export function ContractorBackOfficeDesign() {
         }
       >
         <a className="skip" href="#contractor-concept-main">
-          Skip to workspace
+          <BackOfficeText text="Skip to workspace" />
         </a>
         <aside
           className="concept-rail"
@@ -46,7 +47,7 @@ export function ContractorBackOfficeDesign() {
           <span className="concept-wordmark">YOUR BUSINESS. IN VIEW.</span>
           <strong className="concept-company-name">{company.name}</strong>
           <label className="concept-company-control">
-            Company context
+            <BackOfficeText text="Company context" />
             <select
               value={companyId}
               onChange={(e) => setCompanyId(e.target.value)}
@@ -58,13 +59,16 @@ export function ContractorBackOfficeDesign() {
               ))}
             </select>
           </label>
-          <div className="concept-rail-label">OPERATIONS DESK</div>
+          <div className="concept-rail-label">
+            <BackOfficeText text="OPERATIONS DESK" />
+          </div>
           <a
             className="concept-current-area"
             href="#contractor-concept-main"
             aria-current="page"
           >
-            <span aria-hidden="true">▦</span> Property operations
+            <span aria-hidden="true">▦</span>
+            <BackOfficeText text=" Property operations" />
           </a>
           <p className="concept-rail-copy">
             Published evidence.
@@ -72,8 +76,12 @@ export function ContractorBackOfficeDesign() {
             Deliberate follow-through.
           </p>
           <div className="concept-rail-bottom">
-            <a href="/preview">Compare current back office ↗</a>
-            <a href="/preview/property-portal">Approved customer portal ↗</a>
+            <a href="/preview">
+              <BackOfficeText text="Compare current back office ↗" />
+            </a>
+            <a href="/preview/property-portal">
+              <BackOfficeText text="Approved customer portal ↗" />
+            </a>
             <PlatformBrand href="/preview" transparent />
             <small>Propel Contractor Suite by Eagle Vision</small>
           </div>
@@ -81,16 +89,19 @@ export function ContractorBackOfficeDesign() {
         <div className="concept-canvas">
           <header className="concept-topbar">
             <span>
-              CONTRACTOR WORKSPACE <span aria-hidden="true">/</span> PROPERTY
-              CARE
+              <BackOfficeText text="CONTRACTOR WORKSPACE " />
+              <span aria-hidden="true">/</span>
+              <BackOfficeText text=" PROPERTY CARE" />
             </span>
-            <span className="concept-local-badge">Synthetic · local only</span>
+            <span className="concept-local-badge">
+              <BackOfficeText text="Synthetic · local only" />
+            </span>
           </header>
           <main id="contractor-concept-main">
             <div className="concept-page-heading">
               <div>
                 <span className="eyebrow">
-                  A CLEAR VIEW OF WHAT NEEDS ATTENTION
+                  <BackOfficeText text="A CLEAR VIEW OF WHAT NEEDS ATTENTION" />
                 </span>
                 <h1>Care for every property.</h1>
                 <p>
@@ -98,7 +109,7 @@ export function ContractorBackOfficeDesign() {
                 </p>
               </div>
               <span className="concept-phase-label">
-                PHASE A · VISUAL REVIEW
+                <BackOfficeText text="PHASE A · VISUAL REVIEW" />
               </span>
             </div>
             <p className="concept-review-notice">
@@ -112,7 +123,9 @@ export function ContractorBackOfficeDesign() {
               </p>
             ) : !ready ? (
               <div className="concept-state" role="alert">
-                <h2>Property desk unavailable</h2>
+                <h2>
+                  <BackOfficeText text="Property desk unavailable" />
+                </h2>
                 <p>
                   Example preparation did not complete. No automatic retry is
                   attempted. Reload this disposable concept to start a new
@@ -129,7 +142,7 @@ export function ContractorBackOfficeDesign() {
             )}
           </main>
           <footer className="concept-footer">
-            PRIVATE CONTRACTOR WORKSPACE{' '}
+            <BackOfficeText text="PRIVATE CONTRACTOR WORKSPACE" />{' '}
             <span>
               Evidence informs review. Review does not authorize work.
             </span>

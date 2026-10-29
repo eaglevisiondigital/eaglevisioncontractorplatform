@@ -1,3 +1,5 @@
+import { BackOfficeText } from './back-office-copy';
+import { backOfficeLabel } from './back-office-labels';
 import { useCallback, useState, useContext } from 'react';
 import { BackOfficeConcept } from './back-office-presentation';
 import type { Phase3Repository } from '../../lib/phase3';
@@ -43,17 +45,19 @@ export function RepairScopeReadiness({
   return (
     <section
       className="repair-readiness"
-      aria-label="Repair scope readiness"
+      aria-label={backOfficeLabel('Repair scope readiness', concept)}
       id={concept ? 'concept-repair-readiness' : undefined}
     >
       <div className="section-title">
-        <h3>Repair scope readiness</h3>
+        <h3>
+          <BackOfficeText text="Repair scope readiness" />
+        </h3>
         <button
           className="secondary"
           disabled={task.busy}
           onClick={resource.reload}
         >
-          Reload repair readiness
+          <BackOfficeText text="Reload repair readiness" />
         </button>
       </div>
       <p>
@@ -83,9 +87,13 @@ export function RepairScopeReadiness({
         <>
           <p role="status" data-readiness-revision={data.value.lock_revision}>
             <strong>
-              {data.value.ready
-                ? 'Internal review complete · issuance remains blocked'
-                : 'Internal review outstanding'}
+              <BackOfficeText
+                text={
+                  data.value.ready
+                    ? 'Internal review complete · issuance remains blocked'
+                    : 'Internal review outstanding'
+                }
+              />
             </strong>{' '}
             · {data.value.confirmed} of 6 sections confirmed for saved revision{' '}
             {data.value.lock_revision}.
@@ -126,20 +134,26 @@ export function RepairScopeReadiness({
                   <span aria-hidden="true">
                     {s.confirmed ? '✓' : String(i + 1).padStart(2, '0')}
                   </span>
-                  {s.label}
+                  <BackOfficeText text={s.label} />
                   <small>
-                    {s.confirmed
-                      ? 'Confirmed'
-                      : s.stale
-                        ? 'Review stale'
-                        : 'Needs review'}
+                    <BackOfficeText
+                      text={
+                        s.confirmed
+                          ? 'Confirmed'
+                          : s.stale
+                            ? 'Review stale'
+                            : 'Needs review'
+                      }
+                    />
                   </small>
                 </a>
               ))}
             </nav>
           )}
           <details>
-            <summary>Observed condition and exact source</summary>
+            <summary>
+              <BackOfficeText text="Observed condition and exact source" />
+            </summary>
             {concept && (
               <p>
                 Measurement references are staff statements, not independent
@@ -190,15 +204,21 @@ export function RepairScopeReadiness({
             ))}
           </div>
           <details>
-            <summary>Review history ({data.value.history.length})</summary>
+            <summary>
+              <BackOfficeText text="Review history (" />
+              {data.value.history.length})
+            </summary>
             {!data.value.history.length && (
               <p>No staff readiness reviews recorded.</p>
             )}
             {data.value.history.map((entry) => (
               <article key={entry.sequence} className="readiness-history">
                 <strong>
-                  Review {entry.sequence} · {entry.request.section} ·{' '}
-                  {entry.request.input.decision.replaceAll('_', ' ')}
+                  Review {entry.sequence} ·{' '}
+                  <BackOfficeText text={entry.request.section} /> ·{' '}
+                  {concept
+                    ? backOfficeLabel(entry.request.input.decision, true)
+                    : entry.request.input.decision.replaceAll('_', ' ')}
                 </strong>
                 <p>
                   Draft {entry.request.draft_version_id} · Saved revision{' '}
@@ -208,9 +228,13 @@ export function RepairScopeReadiness({
                 <p>
                   Tax policy: {entry.policy_id || 'Unverified'} · Policy version{' '}
                   {entry.policy_version ?? 'unverified'} ·{' '}
-                  {entry.request.snapshot === data.value.snapshot
-                    ? 'Matches current saved evidence'
-                    : 'Historical only · stale for current evidence'}
+                  <BackOfficeText
+                    text={
+                      entry.request.snapshot === data.value.snapshot
+                        ? 'Matches current saved evidence'
+                        : 'Historical only · stale for current evidence'
+                    }
+                  />
                 </p>
                 <p>
                   Calculation engine v{entry.calculation.engine_version} at
@@ -313,30 +337,42 @@ function ReviewSection({
             : 'outstanding'
       }
       className="readiness-card"
-      aria-label={section.label}
+      aria-label={backOfficeLabel(section.label, concept)}
       data-review-section={section.id}
     >
       {concept ? (
         <summary>
-          <span>{section.label}</span>
+          <span>
+            <BackOfficeText text={section.label} />
+          </span>
           <small>
-            {section.confirmed
-              ? 'Confirmed for saved revision'
-              : section.stale
-                ? 'Stale · review again'
-                : 'Needs contractor review'}
+            <BackOfficeText
+              text={
+                section.confirmed
+                  ? 'Confirmed for saved revision'
+                  : section.stale
+                    ? 'Stale · review again'
+                    : 'Needs contractor review'
+              }
+            />
           </small>
         </summary>
       ) : (
-        <h4>{section.label}</h4>
+        <h4>
+          <BackOfficeText text={section.label} />
+        </h4>
       )}
       <p>
         <strong>
-          {section.confirmed
-            ? 'Confirmed for current saved state'
-            : section.stale
-              ? 'Previous review is stale'
-              : 'Needs contractor review'}
+          <BackOfficeText
+            text={
+              section.confirmed
+                ? 'Confirmed for current saved state'
+                : section.stale
+                  ? 'Previous review is stale'
+                  : 'Needs contractor review'
+            }
+          />
         </strong>
       </p>
       {section.blockers.length > 0 && (
@@ -378,15 +414,25 @@ function ReviewSection({
       )}
       {section.id === 'pricing' && (
         <dl className="readiness-totals">
-          <dt>Calculated cost</dt>
+          <dt>
+            <BackOfficeText text="Calculated cost" />
+          </dt>
           <dd>{money(state.calculation.cost_minor)}</dd>
-          <dt>Calculated selling total</dt>
+          <dt>
+            <BackOfficeText text="Calculated selling total" />
+          </dt>
           <dd>{money(state.calculation.total_minor)}</dd>
-          <dt>Estimated gross profit</dt>
+          <dt>
+            <BackOfficeText text="Estimated gross profit" />
+          </dt>
           <dd>{money(state.calculation.gross_profit_minor)}</dd>
-          <dt>Estimated gross margin</dt>
+          <dt>
+            <BackOfficeText text="Estimated gross margin" />
+          </dt>
           <dd>{(state.calculation.profit_margin_bps / 100).toFixed(2)}%</dd>
-          <dt>Line markup</dt>
+          <dt>
+            <BackOfficeText text="Line markup" />
+          </dt>
           <dd>
             {state.lines
               .map(
@@ -405,7 +451,11 @@ function ReviewSection({
         </p>
       )}
       <fieldset disabled={busy}>
-        <legend>Record {section.label.toLowerCase()} review</legend>
+        <legend>
+          {concept
+            ? 'Record ' + backOfficeLabel(section.label, true) + ' Review'
+            : 'Record ' + section.label.toLowerCase() + ' review'}
+        </legend>
         {section.id === 'measurements' &&
           !section.confirmed &&
           measurements.map((m, i) => (
@@ -415,7 +465,8 @@ function ReviewSection({
                 {m.quantity_milli / 1000} {m.unit}
               </p>
               <label className="p3-field">
-                Measurement basis {i + 1}
+                <BackOfficeText text="Measurement basis " />
+                {i + 1}
                 <select
                   value={m.basis}
                   onChange={(e) =>
@@ -432,12 +483,17 @@ function ReviewSection({
                     )
                   }
                 >
-                  <option value="placeholder">Unmeasured / placeholder</option>
-                  <option value="measured">Measured by staff</option>
+                  <option value="placeholder">
+                    <BackOfficeText text="Unmeasured / placeholder" />
+                  </option>
+                  <option value="measured">
+                    <BackOfficeText text="Measured by staff" />
+                  </option>
                 </select>
               </label>
               <label className="p3-field">
-                Supporting measurement reference {i + 1}
+                <BackOfficeText text="Supporting measurement reference " />
+                {i + 1}
                 <input
                   value={m.reference}
                   maxLength={300}
@@ -453,9 +509,13 @@ function ReviewSection({
             </div>
           ))}
         <label className="p3-field">
-          {section.id === 'scope'
-            ? 'Scope review note or outstanding questions'
-            : 'Supporting review note'}
+          <BackOfficeText
+            text={
+              section.id === 'scope'
+                ? 'Scope review note or outstanding questions'
+                : 'Supporting review note'
+            }
+          />
           <textarea
             value={note}
             maxLength={1000}
@@ -481,14 +541,20 @@ function ReviewSection({
             }
             onClick={() => record('confirmed')}
           >
-            Confirm {section.label.toLowerCase()}
+            {concept
+              ? 'Confirm ' + backOfficeLabel(section.label, true)
+              : 'Confirm ' + section.label.toLowerCase()}
           </button>
           <button
             className="secondary"
             disabled={note.trim().length < 8}
             onClick={() => record('needs_review')}
           >
-            Record outstanding {section.id} review
+            {concept
+              ? 'Record Outstanding ' +
+                backOfficeLabel(section.id, true) +
+                ' Review'
+              : 'Record outstanding ' + section.id + ' review'}
           </button>
         </div>
       </fieldset>

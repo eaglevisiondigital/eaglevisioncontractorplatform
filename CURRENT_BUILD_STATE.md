@@ -1,5 +1,21 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: contractor Phase A UI polish · Package 1 · October 29
+
+[CONTRACTOR_UI_POLISH.md](docs/CONTRACTOR_UI_POLISH.md) records explicit concept-only
+Title Case UI labels, unchanged option/identity values, prominent exact inspection
+dates and separate staff priority/reported severity/staff review/follow-up facts.
+Mobile company selection/reload actions and staff forms are more readable; intro
+spacing is tighter. Six-section current/stale review, exact sources, private notes,
+CAS, one-shot preparation and all authority boundaries are retained.66 unique focused
+browser cases pass (48 existing regressions plus18 concept journeys);104 focused
+app/domain cases pass. Final concept reruns are nonadditive. All three contractors,
+three viewports, zero Axe/overflow in exercised states and exact original/customer
+pixel isolation pass.165 protected paths/four frozen P1 artifacts remain unchanged.
+Real before/revised screenshots and a nine-stream bounded roadmap are available.
+FINAL VISUAL APPROVAL / PHASE B REPLACEMENT STILL PENDING. No hosted/schema/provider/
+financial/Netlify/recovery action or merge. Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Latest: premium contractor concept · Phase A visual review · October29
 
 [CONTRACTOR_BACK_OFFICE_DESIGN.md](docs/CONTRACTOR_BACK_OFFICE_DESIGN.md) records one

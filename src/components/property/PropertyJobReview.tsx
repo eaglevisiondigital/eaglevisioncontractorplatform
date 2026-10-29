@@ -1,3 +1,4 @@
+import { BackOfficeText } from './back-office-copy';
 import { useCallback } from 'react';
 import type { Operations } from '../../lib/operations';
 import type { CompanyProfile } from '../../domain/platform';
@@ -21,7 +22,9 @@ export function PropertyJobReview({
     );
   return (
     <details>
-      <summary>Unbilled materials · local procurement review</summary>
+      <summary>
+        <BackOfficeText text="Unbilled materials · local procurement review" />
+      </summary>
       {ready.data ? (
         <UnbilledReview repo={repo} org={company.id} />
       ) : (

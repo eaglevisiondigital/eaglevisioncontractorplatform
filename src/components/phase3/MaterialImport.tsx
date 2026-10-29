@@ -1,3 +1,4 @@
+import { BackOfficeText } from '../property/back-office-copy';
 import { useState } from 'react';
 import type { Phase3Repository } from '../../lib/phase3';
 import type { EstimateBundle } from '../../domain/estimating/types';
@@ -35,9 +36,15 @@ function PricingControl({
             onChange({ mode: e.target.value as Pricing['mode'], value: 0 })
           }
         >
-          <option value="pass_through">Cost pass-through</option>
-          <option value="percent">Percentage markup</option>
-          <option value="fixed">Fixed dollar markup per extended line</option>
+          <option value="pass_through">
+            <BackOfficeText text="Cost pass-through" />
+          </option>
+          <option value="percent">
+            <BackOfficeText text="Percentage markup" />
+          </option>
+          <option value="fixed">
+            <BackOfficeText text="Fixed dollar markup per extended line" />
+          </option>
         </select>
       </Field>
       {value.mode === 'percent' ? (
@@ -138,11 +145,15 @@ export function MaterialImport({
     <section className="p3-import">
       <div className="section-title">
         <div>
-          <span className="eyebrow">SUPPLIER WORKSPACE</span>
-          <h2>Smart material import</h2>
+          <span className="eyebrow">
+            <BackOfficeText text="SUPPLIER WORKSPACE" />
+          </span>
+          <h2>
+            <BackOfficeText text="Smart material import" />
+          </h2>
         </div>
         <button className="secondary" onClick={onClose}>
-          Close import
+          <BackOfficeText text="Close import" />
         </button>
       </div>
       <p>
@@ -203,7 +214,7 @@ export function MaterialImport({
             setBatch(undefined);
           }}
         >
-          Load synthetic multi-supplier example
+          <BackOfficeText text="Load synthetic multi-supplier example" />
         </button>
       )}
       {!repo.sample && (
@@ -214,7 +225,8 @@ export function MaterialImport({
               key={b.id}
               onClick={() => void loadBatch(b.id, b.lock_revision)}
             >
-              Review scan-approved batch {b.id.slice(0, 8)}
+              <BackOfficeText text="Review scan-approved batch " />
+              {b.id.slice(0, 8)}
             </button>
           ))}
         </>
@@ -227,9 +239,11 @@ export function MaterialImport({
               setPurchaseKind(e.target.value as typeof purchaseKind)
             }
           >
-            <option value="payment">Paid receipt / actual expense</option>
+            <option value="payment">
+              <BackOfficeText text="Paid receipt / actual expense" />
+            </option>
             <option value="commitment">
-              Unpaid invoice / committed purchase
+              <BackOfficeText text="Unpaid invoice / committed purchase" />
             </option>
           </select>
         </Field>
@@ -266,7 +280,7 @@ export function MaterialImport({
                 }, 'Company material pricing default saved')
               }
             >
-              Save company material pricing default
+              <BackOfficeText text="Save company material pricing default" />
             </button>
           )}
           <p className="muted">
@@ -276,7 +290,10 @@ export function MaterialImport({
           </p>
           {Array.from(new Set(review.lines.map((l) => l.vendor))).map((v) => (
             <details key={v}>
-              <summary>Supplier override · {v || 'Unknown supplier'}</summary>
+              <summary>
+                <BackOfficeText text="Supplier override · " />
+                {v || 'Unknown supplier'}
+              </summary>
               <PricingControl
                 label={`Markup for ${v}`}
                 value={review.supplier_pricing[v] ?? review.company_pricing}
@@ -295,7 +312,7 @@ export function MaterialImport({
                   change({ supplier_pricing: next });
                 }}
               >
-                Use company default
+                <BackOfficeText text="Use company default" />
               </button>
             </details>
           ))}
@@ -316,7 +333,8 @@ export function MaterialImport({
                         checked={l.selected}
                         onChange={(e) => update({ selected: e.target.checked })}
                       />
-                      Include row {index + 1}
+                      <BackOfficeText text="Include row " />
+                      {index + 1}
                     </label>
                     <span className="status">
                       {l.confidence === null
@@ -358,9 +376,13 @@ export function MaterialImport({
                           update({ unit: e.target.value as typeof l.unit })
                         }
                       >
-                        <option value="">Confirm unit</option>
+                        <option value="">
+                          <BackOfficeText text="Confirm unit" />
+                        </option>
                         {estimateUnits.map((u) => (
-                          <option key={u}>{u}</option>
+                          <option key={u} value={u}>
+                            <BackOfficeText text={u} />
+                          </option>
                         ))}
                       </select>
                     </Field>
@@ -380,7 +402,7 @@ export function MaterialImport({
                         }
                       >
                         <option value="">
-                          Unplanned / ambiguous · review required
+                          <BackOfficeText text="Unplanned / ambiguous · review required" />
                         </option>
                         {purchaseLines.map((line) => (
                           <option value={line.id} key={line.id}>
@@ -409,7 +431,9 @@ export function MaterialImport({
                     </ul>
                   )}
                   <details>
-                    <summary>Individual line markup</summary>
+                    <summary>
+                      <BackOfficeText text="Individual line markup" />
+                    </summary>
                     <label className="checkbox-label">
                       <input
                         type="checkbox"
@@ -422,7 +446,7 @@ export function MaterialImport({
                           })
                         }
                       />
-                      Override supplier / company pricing
+                      <BackOfficeText text="Override supplier / company pricing" />
                     </label>
                     {l.pricing && (
                       <PricingControl
@@ -465,8 +489,12 @@ export function MaterialImport({
                   })
                 }
               >
-                <option value="itemized">Itemized materials</option>
-                <option value="package">Single materials package</option>
+                <option value="itemized">
+                  <BackOfficeText text="Itemized materials" />
+                </option>
+                <option value="package">
+                  <BackOfficeText text="Single materials package" />
+                </option>
               </select>
             </Field>
             {review.presentation === 'package' && (
@@ -484,19 +512,19 @@ export function MaterialImport({
           {summary && (
             <div className="p3-totals">
               <span>
-                Private supplier cost{' '}
+                <BackOfficeText text="Private supplier cost" />{' '}
                 <strong>
                   {formatMinor(summary.cost_minor, review.currency)}
                 </strong>
               </span>
               <span>
-                Private markup{' '}
+                <BackOfficeText text="Private markup" />{' '}
                 <strong>
                   {formatMinor(summary.markup_minor, review.currency)}
                 </strong>
               </span>
               <span>
-                Customer materials price{' '}
+                <BackOfficeText text="Customer materials price" />{' '}
                 <strong>
                   {formatMinor(summary.price_minor, review.currency)}
                 </strong>
@@ -536,9 +564,13 @@ export function MaterialImport({
               }, 'Materials approved and added to draft')
             }
           >
-            {onExpense
-              ? 'Approve purchase for expense review'
-              : 'Approve and add to estimate draft'}
+            <BackOfficeText
+              text={
+                onExpense
+                  ? 'Approve purchase for expense review'
+                  : 'Approve and add to estimate draft'
+              }
+            />
           </button>
         </>
       )}

@@ -1,3 +1,4 @@
+import { BackOfficeText } from './back-office-copy';
 import { useCallback, useState, useEffect, useRef, useContext } from 'react';
 import { BackOfficeConcept } from './back-office-presentation';
 import type { CompanyProfile } from '../../domain/platform';
@@ -51,7 +52,9 @@ export function RepairDraftPanel({
         ref={focus}
         tabIndex={-1}
       >
-        <h3>Repair draft · contractor review required</h3>
+        <h3>
+          <BackOfficeText text="Repair draft · contractor review required" />
+        </h3>
         <p>
           <strong>
             {item.customer_name} · {item.property_label}
@@ -61,7 +64,9 @@ export function RepairDraftPanel({
           {opened.provenance.source.report_version}
         </p>
         <details>
-          <summary>Exact repair source & preparation evidence</summary>
+          <summary>
+            <BackOfficeText text="Exact repair source & preparation evidence" />
+          </summary>
           <p>
             Report {opened.provenance.source.report_id} · Published v
             {opened.provenance.source.report_version} · Finding{' '}
@@ -95,13 +100,13 @@ export function RepairDraftPanel({
               onChanged();
             }}
           >
-            Return to originating maintenance finding
+            <BackOfficeText text="Return to originating maintenance finding" />
           </button>
           <button
             className="secondary"
             onClick={() => onSource(opened.provenance.source)}
           >
-            Open originating published report
+            <BackOfficeText text="Open originating published report" />
           </button>
         </div>
         {concept && (
@@ -110,10 +115,12 @@ export function RepairDraftPanel({
             aria-label="Repair draft sections"
           >
             <a href="#concept-scope-editor">
-              Edit proposed scope <span aria-hidden="true">↗</span>
+              <BackOfficeText text="Edit proposed scope " />
+              <span aria-hidden="true">↗</span>
             </a>
             <a href="#concept-repair-readiness">
-              Review readiness <span aria-hidden="true">↓</span>
+              <BackOfficeText text="Review readiness " />
+              <span aria-hidden="true">↓</span>
             </a>
           </nav>
         )}
@@ -136,7 +143,9 @@ export function RepairDraftPanel({
       ref={focus}
       tabIndex={-1}
     >
-      <h3>Finding → repair estimate</h3>
+      <h3>
+        <BackOfficeText text="Finding → repair estimate" />
+      </h3>
       {attempt.loading ? (
         <p role="status">Checking exact repair draft evidence…</p>
       ) : attempt.error ? (
@@ -168,9 +177,13 @@ export function RepairDraftPanel({
               }, 'Exact repair evidence checked. No preparation replayed.')
             }
           >
-            {attempt.data.status === 'prepared'
-              ? 'Open exact repair draft'
-              : 'Reconcile repair preparation'}
+            <BackOfficeText
+              text={
+                attempt.data.status === 'prepared'
+                  ? 'Open exact repair draft'
+                  : 'Reconcile repair preparation'
+              }
+            />
           </button>
           <p>
             Interrupted or uncertain preparation cannot be retried.
@@ -194,7 +207,7 @@ export function RepairDraftPanel({
             }, 'Review the source and confirm the property before preparation.')
           }
         >
-          Prepare repair estimate
+          <BackOfficeText text="Prepare repair estimate" />
         </button>
       )}
       {review && !attempt.data && (
@@ -250,14 +263,14 @@ export function RepairDraftPanel({
                 }, 'Separate repair draft prepared. Nothing issued or authorized.')
               }
             >
-              Confirm & prepare repair draft
+              <BackOfficeText text="Confirm & prepare repair draft" />
             </button>
             <button
               className="secondary"
               disabled={task.busy}
               onClick={() => setReview(null)}
             >
-              Cancel repair preparation
+              <BackOfficeText text="Cancel repair preparation" />
             </button>
           </div>
         </div>

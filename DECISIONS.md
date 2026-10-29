@@ -1,5 +1,18 @@
 # Engineering decisions
 
+## October 29 · polish Phase A without promoting it
+
+Use explicit presentation labels under the existing default-false contractor concept
+context. Keep native option values and user/source text exact; never capitalize the
+DOM or stored evidence. Separate manual priority, reported severity, staff review,
+follow-up and exact inspection dates on cards. Improve constrained selectors/actions
+and staff forms while retaining approved brands/general appearance. Scope every CSS
+correction, including estimate-preview contrast, to the isolated concept. Keep exact
+same-document pixel isolation checks and prior screenshot evidence. Revised Phase A
+still requires owner visual approval before any bounded local Phase B replacement.
+Organize nine future workstreams without blanket operational execution authority;
+see docs/CONTRACTOR_UI_POLISH.md and docs/DEVELOPMENT_ROADMAP.md.
+
 ## October29 · review contractor presentation in isolation
 
 Pause feature expansion and implement one functioning premium back-office concept

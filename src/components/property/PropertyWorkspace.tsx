@@ -1,3 +1,4 @@
+import { BackOfficeText } from './back-office-copy';
 import { useState, useCallback, useEffect, useContext } from 'react';
 import { BackOfficeConcept } from './back-office-presentation';
 import type { Operations } from '../../lib/operations';
@@ -55,10 +56,14 @@ export function PropertyWorkspace({
     <article className="p3-workspace property-workspace">
       <div className="section-title">
         <div>
-          <span className="eyebrow">PROPERTY & PROJECT OPERATIONS</span>
+          <span className="eyebrow">
+            <BackOfficeText text="PROPERTY & PROJECT OPERATIONS" />
+          </span>
           <h2>{section}</h2>
         </div>
-        <span className="badge">Local synthetic workspace</span>
+        <span className="badge">
+          <BackOfficeText text="Local synthetic workspace" />
+        </span>
       </div>
       <p className="p3-notice">
         Internal preview · changes stay in this browser session. Connected
@@ -155,7 +160,7 @@ function Inspections({
               if (t === 'Inspections') refresh();
             }}
           >
-            {t}
+            <BackOfficeText text={t} />
           </button>
         ))}
       </div>
@@ -206,7 +211,9 @@ function Inspections({
         <>
           <div className="property-grid">
             <section>
-              <h3>CRM property & inspection plans</h3>
+              <h3>
+                <BackOfficeText text="CRM property & inspection plans" />
+              </h3>
               <Field label="Active inspection plan">
                 <select
                   value={plan.id}
@@ -231,7 +238,9 @@ function Inspections({
                 </select>
               </Field>
               <details>
-                <summary>Create property inspection plan</summary>
+                <summary>
+                  <BackOfficeText text="Create property inspection plan" />
+                </summary>
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
@@ -253,9 +262,13 @@ function Inspections({
                       {state.contexts.map((c, i) => (
                         <option key={i} value={i}>
                           {c.customer_name} · {c.location_label} ·{' '}
-                          {c.job_id
-                            ? 'Linked job'
-                            : 'Property visit without job'}
+                          <BackOfficeText
+                            text={
+                              c.job_id
+                                ? 'Linked job'
+                                : 'Property visit without job'
+                            }
+                          />
                         </option>
                       ))}
                     </select>
@@ -267,7 +280,9 @@ function Inspections({
                       onChange={(e) => setNewName(e.target.value)}
                     />
                   </Field>
-                  <button>Create inspection plan</button>
+                  <button>
+                    <BackOfficeText text="Create inspection plan" />
+                  </button>
                 </form>
               </details>
               <h3>
@@ -316,7 +331,9 @@ function Inspections({
                       }
                     >
                       {['once', 'weekly', 'monthly', 'custom'].map((x) => (
-                        <option key={x}>{x}</option>
+                        <option key={x} value={x}>
+                          <BackOfficeText text={x} />
+                        </option>
                       ))}
                     </select>
                   </Field>
@@ -387,10 +404,13 @@ function Inspections({
                         })
                       }
                     />
-                    Require checklist item {i + 1}
+                    <BackOfficeText text="Require checklist item " />
+                    {i + 1}
                   </label>
                 ))}
-                <button disabled={task.busy}>Save inspection plan</button>
+                <button disabled={task.busy}>
+                  <BackOfficeText text="Save inspection plan" />
+                </button>
               </form>
               <form
                 onSubmit={(e) => {
@@ -409,7 +429,9 @@ function Inspections({
                     }
                   >
                     {['before', 'during', 'after'].map((x) => (
-                      <option key={x}>{x}</option>
+                      <option key={x} value={x}>
+                        <BackOfficeText text={x} />
+                      </option>
                     ))}
                   </select>
                 </Field>
@@ -422,12 +444,14 @@ function Inspections({
                   />
                 </Field>
                 <button className="secondary" disabled={task.busy}>
-                  Schedule visit
+                  <BackOfficeText text="Schedule visit" />
                 </button>
               </form>
             </section>
             <section>
-              <h3>Service visit history</h3>
+              <h3>
+                <BackOfficeText text="Service visit history" />
+              </h3>
               <div className="property-history">
                 {state.visits
                   .filter((x) => x.plan_id === plan.id)
@@ -456,7 +480,8 @@ function Inspections({
                   open={source?.report_id === r.id ? true : undefined}
                 >
                   <summary>
-                    Report v{r.version} ·{' '}
+                    <BackOfficeText text="Report v" />
+                    {r.version} ·{' '}
                     {new Date(r.published_at).toLocaleDateString()}
                   </summary>
                   <p>
@@ -529,7 +554,9 @@ function VisitEditor({
       <div className="section-title">
         <h3>Visit · {v.visited_on}</h3>
         <span className="badge">
-          {v.status} · revision {v.revision}
+          {v.status}
+          <BackOfficeText text=" · revision " />
+          {v.revision}
         </span>
       </div>
       <form
@@ -539,7 +566,9 @@ function VisitEditor({
         }}
       >
         <fieldset disabled={locked || task.busy}>
-          <legend>Inspection content</legend>
+          <legend>
+            <BackOfficeText text="Inspection content" />
+          </legend>
           <Field label="Client report summary">
             <textarea
               required
@@ -572,7 +601,9 @@ function VisitEditor({
               {x.required ? ' · required' : ''}
             </label>
           ))}
-          <h4>Findings & repair recommendations</h4>
+          <h4>
+            <BackOfficeText text="Findings & repair recommendations" />
+          </h4>
           {c.findings.map((f, i) => (
             <div className="finding-card" key={f.id}>
               <div className="p3-grid">
@@ -620,7 +651,9 @@ function VisitEditor({
                     }
                   >
                     {['low', 'moderate', 'urgent'].map((s) => (
-                      <option key={s}>{s}</option>
+                      <option key={s} value={s}>
+                        <BackOfficeText text={s} />
+                      </option>
                     ))}
                   </select>
                 </Field>
@@ -666,7 +699,9 @@ function VisitEditor({
                     })
                   }
                 />
-                Include finding {i + 1} in client report
+                <BackOfficeText text="Include finding " />
+                {i + 1}
+                <BackOfficeText text=" in client report" />
               </label>
             </div>
           ))}
@@ -691,9 +726,11 @@ function VisitEditor({
               })
             }
           >
-            Add finding
+            <BackOfficeText text="Add finding" />
           </button>
-          <button>Save visit draft</button>
+          <button>
+            <BackOfficeText text="Save visit draft" />
+          </button>
         </fieldset>
       </form>
       <div className="p3-actions">
@@ -702,7 +739,7 @@ function VisitEditor({
             disabled={task.busy}
             onClick={() => run(() => repo.submit(org, v))}
           >
-            Submit inspection for review
+            <BackOfficeText text="Submit inspection for review" />
           </button>
         ) : v.status === 'submitted' ? (
           <button
@@ -714,14 +751,14 @@ function VisitEditor({
               )
             }
           >
-            Approve & publish report
+            <BackOfficeText text="Approve & publish report" />
           </button>
         ) : (
           <button
             disabled={task.busy}
             onClick={() => run(() => repo.revise(org, v))}
           >
-            Create report revision
+            <BackOfficeText text="Create report revision" />
           </button>
         )}
         <p className="muted">
@@ -739,7 +776,9 @@ function MediaPanel() {
     [visibility, setVisibility] = useState('internal');
   return (
     <section>
-      <h3>Private project media</h3>
+      <h3>
+        <BackOfficeText text="Private project media" />
+      </h3>
       <p>
         Jobsite and drone originals remain private. Customer visibility requires
         a reviewed, scanned derivative and an immutable report reference. A
@@ -749,14 +788,18 @@ function MediaPanel() {
         <Field label="Media type">
           <select value={kind} onChange={(e) => setKind(e.target.value)}>
             {['photo', 'video', 'drone_photo', 'drone_video'].map((x) => (
-              <option key={x}>{x}</option>
+              <option key={x} value={x}>
+                <BackOfficeText text={x} />
+              </option>
             ))}
           </select>
         </Field>
         <Field label="Project stage">
           <select value={phase} onChange={(e) => setPhase(e.target.value)}>
             {['before', 'during', 'after'].map((x) => (
-              <option key={x}>{x}</option>
+              <option key={x} value={x}>
+                <BackOfficeText text={x} />
+              </option>
             ))}
           </select>
         </Field>
@@ -765,8 +808,12 @@ function MediaPanel() {
             value={visibility}
             onChange={(e) => setVisibility(e.target.value)}
           >
-            <option value="internal">Internal contractor only</option>
-            <option value="customer">Client report after approval</option>
+            <option value="internal">
+              <BackOfficeText text="Internal contractor only" />
+            </option>
+            <option value="customer">
+              <BackOfficeText text="Client report after approval" />
+            </option>
           </select>
         </Field>
         <Field label="Capture or choose files · unavailable">
@@ -783,7 +830,9 @@ function MediaPanel() {
           />
         </Field>
       </div>
-      <button disabled>Upload to quarantine · disabled</button>
+      <button disabled>
+        <BackOfficeText text="Upload to quarantine · disabled" />
+      </button>
       <p>
         Limits: photos 3 MiB, videos 250 MiB / 5 minutes, 1 GiB daily and 10 GiB
         stored per company. Original GPS/EXIF is removed from published
@@ -796,8 +845,7 @@ function MediaPanel() {
             <strong>{x}</strong>
             <p>No approved media</p>
             <small>
-              Scanning, safe transcodes and private playback infrastructure
-              pending
+              <BackOfficeText text="Scanning, safe transcodes and private playback infrastructure pending" />
             </small>
           </div>
         ))}
@@ -878,16 +926,19 @@ function Comparison({
       </p>
       <div className="p3-actions">
         <button disabled={quotes.length >= 4} onClick={() => add()}>
-          Add supplier quote
+          <BackOfficeText text="Add supplier quote" />
         </button>
         <button
           className="secondary"
           disabled={quotes.length >= 4}
           onClick={() => add(true)}
         >
-          Add synthetic quote example
+          <BackOfficeText text="Add synthetic quote example" />
         </button>
-        <span>{quotes.length}/4 suppliers</span>
+        <span>
+          {quotes.length}
+          <BackOfficeText text="/4 suppliers" />
+        </span>
       </div>
       {q && (
         <>
@@ -898,7 +949,7 @@ function Comparison({
               setActive(0);
             }}
           >
-            Remove selected supplier
+            <BackOfficeText text="Remove selected supplier" />
           </button>
           <div className="p3-tabs">
             {quotes.map((x, i) => (
@@ -1040,7 +1091,9 @@ function Comparison({
                       'roofing_square',
                       'cubic_yard',
                     ].map((u) => (
-                      <option key={u}>{u}</option>
+                      <option key={u} value={u}>
+                        <BackOfficeText text={u} />
+                      </option>
                     ))}
                   </select>
                 </Field>
@@ -1106,7 +1159,8 @@ function Comparison({
                     })
                   }
                 />
-                Explicitly approve product equivalence {i + 1}
+                <BackOfficeText text="Explicitly approve product equivalence " />
+                {i + 1}
               </label>
             </details>
           ))}
@@ -1115,7 +1169,10 @@ function Comparison({
       {error && <p role="alert">{error}</p>}
       {result && (
         <section aria-label="Supplier acquisition comparison">
-          <h3>Acquisition costs · {currency}</h3>
+          <h3>
+            <BackOfficeText text="Acquisition costs · " />
+            {currency}
+          </h3>
           <div className="p3-table-wrap">
             <table className="p3-table">
               <thead>
@@ -1170,7 +1227,7 @@ function Comparison({
               }, 'Quote snapshot retained locally')
             }
           >
-            Retain reviewed quote snapshot
+            <BackOfficeText text="Retain reviewed quote snapshot" />
           </button>
           <button
             className="secondary"
@@ -1182,7 +1239,7 @@ function Comparison({
               }, 'Reviewed costs copied to existing estimate draft; original issued scope unchanged')
             }
           >
-            Copy reviewed goods costs to estimate draft
+            <BackOfficeText text="Copy reviewed goods costs to estimate draft" />
           </button>
           <p>
             Customer selling prices, taxes and scope remain subject to estimate
@@ -1217,7 +1274,9 @@ function ClientView({
         findings and draft billing proposals are excluded.
       </p>
       <p>
-        <a href="/preview/property-portal">Open report-only customer preview</a>
+        <a href="/preview/property-portal">
+          <BackOfficeText text="Open report-only customer preview" />
+        </a>
       </p>
       <button
         className="secondary"
@@ -1229,7 +1288,7 @@ function ClientView({
           }, 'Existing internal release engine demonstrated; no legal signing, delivery or payment')
         }
       >
-        Load synthetic approved financial example
+        <BackOfficeText text="Load synthetic approved financial example" />
       </button>
       <Field label="Synthetic client context">
         <select value={customer} onChange={(e) => setCustomer(e.target.value)}>
@@ -1252,12 +1311,16 @@ function ClientView({
               ?.location_label
           }
         </h3>
-        <h4>Inspection & service visit history</h4>
+        <h4>
+          <BackOfficeText text="Inspection & service visit history" />
+        </h4>
         {p.reports.length ? (
           p.reports.map((r) => (
             <div className="finding-card" key={r.id}>
               <span className="badge">
-                {r.visited_on} · {r.phase} · Published report v{r.version}
+                {r.visited_on} · {r.phase}
+                <BackOfficeText text=" · Published report v" />
+                {r.version}
               </span>
               <p>{r.summary}</p>
               {r.findings.map((f) => (
@@ -1274,9 +1337,13 @@ function ClientView({
         ) : (
           <p>No contractor-approved reports have been published.</p>
         )}
-        <h4>Project progress · photos and videos</h4>
+        <h4>
+          <BackOfficeText text="Project progress · photos and videos" />
+        </h4>
         <p>No approved media. Expiring playback awaits security acceptance.</p>
-        <h4>Proposed repairs & estimates</h4>
+        <h4>
+          <BackOfficeText text="Proposed repairs & estimates" />
+        </h4>
         {p.estimates.map((e, i) => (
           <div key={i}>
             <strong>{e.project.name}</strong>
@@ -1289,12 +1356,16 @@ function ClientView({
           </div>
         ))}
         {!p.estimates.length && <p>No published estimate is available.</p>}
-        <h4>Agreements & approved changes</h4>
+        <h4>
+          <BackOfficeText text="Agreements & approved changes" />
+        </h4>
         <p>
           {p.contracts.length} synthetic internal agreement(s). Legal signatures
           remain disabled. Only separately authorized scope may become billable.
         </p>
-        <h4>Invoices & payment schedules</h4>
+        <h4>
+          <BackOfficeText text="Invoices & payment schedules" />
+        </h4>
         {p.invoices.map((i) => (
           <div key={i.id}>
             <strong>{i.number} · synthetic internal example</strong>
@@ -1306,7 +1377,7 @@ function ClientView({
               </p>
             ))}
             <button disabled>
-              Payment collection disabled · NMI preferred
+              <BackOfficeText text="Payment collection disabled · NMI preferred" />
             </button>
           </div>
         ))}

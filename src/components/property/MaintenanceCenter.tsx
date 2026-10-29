@@ -1,3 +1,4 @@
+import { BackOfficeText, BackOfficeStaffLabel } from './back-office-copy';
 import { useContext } from 'react';
 import { BackOfficeConcept } from './back-office-presentation';
 import { RepairDraftPanel } from './RepairDraftPanel';
@@ -84,7 +85,7 @@ export function MaintenanceCenter({
     return (
       <section aria-label="Linked contractor workflow">
         <button className="secondary" onClick={() => setWork(null)}>
-          Back to maintenance queue
+          <BackOfficeText text="Back to maintenance queue" />
         </button>
         <p className="p3-notice">
           Existing plan-linked job and issued baseline. This is not a
@@ -119,11 +120,13 @@ export function MaintenanceCenter({
     >
       <div className="section-title">
         <div>
-          <span className="eyebrow">INTERNAL PROPERTY FOLLOW-UP</span>
+          <span className="eyebrow">
+            <BackOfficeText text="INTERNAL PROPERTY FOLLOW-UP" />
+          </span>
           <h3>Maintenance & Follow-Up Center</h3>
         </div>
         <button className="secondary" onClick={reload} disabled={task.busy}>
-          Reload maintenance queue
+          <BackOfficeText text="Reload maintenance queue" />
         </button>
       </div>
       <p>
@@ -172,7 +175,9 @@ export function MaintenanceCenter({
               ].map(([count, label]) => (
                 <div key={label}>
                   <strong>{count}</strong>
-                  <span>{label}</span>
+                  <span>
+                    <BackOfficeText text={String(label)} />
+                  </span>
                 </div>
               ))}
             </div>
@@ -180,10 +185,11 @@ export function MaintenanceCenter({
           {concept && selectedItem && (
             <div className="concept-finding-heading">
               <button className="secondary" onClick={() => setSelected('')}>
-                ← Back to work queue
+                <BackOfficeText text="← Back to work queue" />
               </button>
               <p className="eyebrow">
-                FINDING REVIEW / PUBLISHED v{selectedItem.source.report_version}
+                <BackOfficeText text="FINDING REVIEW / PUBLISHED v" />
+                {selectedItem.source.report_version}
               </p>
               <h3>{selectedItem.property_label}</h3>
               <p>
@@ -193,14 +199,16 @@ export function MaintenanceCenter({
                 <strong>{selectedItem.finding.description}</strong>
               </p>
               <span>
-                Reported severity: {selectedItem.finding.severity} ·{' '}
-                {selectedItem.report.visited_on} · Repair status undetermined
+                <BackOfficeText text="Reported severity: " />
+                {selectedItem.finding.severity} ·{' '}
+                {selectedItem.report.visited_on}
+                <BackOfficeText text=" · Repair status undetermined" />
               </span>
               <button
                 className="secondary"
                 onClick={() => onSource(selectedItem.source)}
               >
-                Open this published source
+                <BackOfficeText text="Open this published source" />
               </button>
             </div>
           )}
@@ -208,7 +216,11 @@ export function MaintenanceCenter({
             <FilterContainer
               className={concept ? 'concept-filter-disclosure' : undefined}
             >
-              {concept && <summary>Filter work queue</summary>}
+              {concept && (
+                <summary>
+                  <BackOfficeText text="Filter work queue" />
+                </summary>
+              )}
               <div
                 className="maintenance-filters"
                 role="group"
@@ -219,7 +231,9 @@ export function MaintenanceCenter({
                     value={filters.property}
                     onChange={(e) => change('property', e.target.value)}
                   >
-                    <option value="">All company properties</option>
+                    <option value="">
+                      <BackOfficeText text="All company properties" />
+                    </option>
                     {[
                       ...new Map(
                         data.items.map((i) => [
@@ -239,9 +253,13 @@ export function MaintenanceCenter({
                     value={filters.priority}
                     onChange={(e) => change('priority', e.target.value)}
                   >
-                    <option value="">All priorities</option>
+                    <option value="">
+                      <BackOfficeText text="All priorities" />
+                    </option>
                     {maintenancePriorities.map((p) => (
-                      <option key={p}>{p}</option>
+                      <option key={p} value={p}>
+                        <BackOfficeText text={p} />
+                      </option>
                     ))}
                   </select>
                 </Field>
@@ -250,11 +268,13 @@ export function MaintenanceCenter({
                     value={filters.responsibility}
                     onChange={(e) => change('responsibility', e.target.value)}
                   >
-                    <option value="">All responsibility</option>
+                    <option value="">
+                      <BackOfficeText text="All responsibility" />
+                    </option>
                     <option value="unassigned">Unassigned</option>
                     {data.members.map((m) => (
                       <option value={m.user_id} key={m.user_id}>
-                        {m.label} · {m.user_id}
+                        <BackOfficeStaffLabel label={m.label} /> · {m.user_id}
                       </option>
                     ))}
                   </select>
@@ -264,9 +284,13 @@ export function MaintenanceCenter({
                     value={filters.status}
                     onChange={(e) => change('status', e.target.value)}
                   >
-                    <option value="">All review statuses</option>
+                    <option value="">
+                      <BackOfficeText text="All review statuses" />
+                    </option>
                     {['pending', 'scheduled', 'reviewed'].map((s) => (
-                      <option key={s}>{s}</option>
+                      <option key={s} value={s}>
+                        <BackOfficeText text={s} />
+                      </option>
                     ))}
                   </select>
                 </Field>
@@ -289,16 +313,22 @@ export function MaintenanceCenter({
                     value={filters.attention}
                     onChange={(e) => change('attention', e.target.value)}
                   >
-                    <option value="">All reported findings</option>
-                    <option value="review">Needs staff review</option>
-                    <option value="recurring">Recurring identifiers</option>
+                    <option value="">
+                      <BackOfficeText text="All reported findings" />
+                    </option>
+                    <option value="review">
+                      <BackOfficeText text="Needs staff review" />
+                    </option>
+                    <option value="recurring">
+                      <BackOfficeText text="Recurring identifiers" />
+                    </option>
                   </select>
                 </Field>
                 <button
                   className="secondary"
                   onClick={() => setFilters({ ...emptyMaintenanceFilters })}
                 >
-                  Reset maintenance filters
+                  <BackOfficeText text="Reset maintenance filters" />
                 </button>
               </div>
             </FilterContainer>
@@ -309,6 +339,13 @@ export function MaintenanceCenter({
               {items.length} of {data.items.length} published finding records
               shown. Available evidence only; missing reports may exist.
             </p>
+            {!items.length && !filterError && concept && (
+              <h4>
+                {data.items.length
+                  ? 'No Matching Findings'
+                  : 'No Published Concerns'}
+              </h4>
+            )}
             {!items.length && !filterError && (
               <p>
                 {data.items.length
@@ -326,9 +363,50 @@ export function MaintenanceCenter({
                   data-report-version={item.source.report_version}
                   data-priority={item.record.priority}
                 >
-                  <span className="badge">
-                    {item.status} · priority {item.record.priority}
-                  </span>
+                  {concept ? (
+                    <>
+                      <span className="badge">
+                        Staff Priority:{' '}
+                        <BackOfficeText text={item.record.priority} />
+                      </span>
+                      <p className="concept-inspection-date">
+                        Inspection Date{' '}
+                        <time dateTime={item.report.visited_on}>
+                          {item.report.visited_on}
+                        </time>
+                      </p>
+                      <dl className="concept-finding-facts">
+                        <div>
+                          <dt>Reported Severity</dt>
+                          <dd>
+                            <BackOfficeText text={item.finding.severity} />
+                          </dd>
+                        </div>
+                        <div>
+                          <dt>Staff Review Status</dt>
+                          <dd>
+                            <BackOfficeText text={item.status} />
+                          </dd>
+                        </div>
+                        <div>
+                          <dt>Follow-Up Date</dt>
+                          <dd>
+                            {item.record.follow_up_on ? (
+                              <time dateTime={item.record.follow_up_on}>
+                                {item.record.follow_up_on}
+                              </time>
+                            ) : (
+                              'Not Set'
+                            )}
+                          </dd>
+                        </div>
+                      </dl>
+                    </>
+                  ) : (
+                    <span className="badge">
+                      {item.status} · priority {item.record.priority}
+                    </span>
+                  )}
                   <h4>
                     {item.finding.category} · {item.finding.location}
                   </h4>
@@ -341,8 +419,8 @@ export function MaintenanceCenter({
                   {concept ? (
                     <details className="concept-card-evidence">
                       <summary>
-                        Published evidence · {item.report.visited_on} ·{' '}
-                        {item.finding.severity}
+                        <BackOfficeText text="Published evidence · " />
+                        {item.report.visited_on} · {item.finding.severity}
                       </summary>{' '}
                       <p>Recommendation: {item.finding.recommendation}</p>
                       <p>
@@ -404,14 +482,17 @@ export function MaintenanceCenter({
                     <div className="concept-card-coordination">
                       {' '}
                       <p>
-                        Responsible:{' '}
-                        {item.record.assignee_id
-                          ? (data.members.find(
-                              (m) => m.user_id === item.record.assignee_id,
-                            )?.label ??
-                            'Inactive or unavailable staff — reassign responsibility')
-                          : 'Unassigned'}{' '}
-                        · Follow-up: {item.record.follow_up_on || 'Not set'}
+                        Responsible Staff:{' '}
+                        <BackOfficeStaffLabel
+                          label={
+                            item.record.assignee_id
+                              ? (data.members.find(
+                                  (m) => m.user_id === item.record.assignee_id,
+                                )?.label ??
+                                'Inactive or unavailable staff — reassign responsibility')
+                              : 'Unassigned'
+                          }
+                        />{' '}
                       </p>
                       {item.scheduled_on && (
                         <p>
@@ -441,13 +522,13 @@ export function MaintenanceCenter({
                       onClick={() => setSelected(item.key)}
                       aria-pressed={selected === item.key}
                     >
-                      Review finding
+                      <BackOfficeText text="Review finding" />
                     </button>
                     <button
                       className="secondary"
                       onClick={() => onSource(item.source)}
                     >
-                      Open exact source inspection
+                      <BackOfficeText text="Open exact source inspection" />
                     </button>
                   </div>
                 </article>
@@ -521,7 +602,9 @@ export function MaintenanceCenter({
       )}
       {task.message && <p role="status">{task.message}</p>}
       <details className="maintenance-demo">
-        <summary>Development-only maintenance examples & states</summary>
+        <summary>
+          <BackOfficeText text="Development-only maintenance examples & states" />
+        </summary>
         <p>
           Explicit generated examples use existing CRM, inspection and
           publication workflows. No real data or customer access.
@@ -536,7 +619,7 @@ export function MaintenanceCenter({
             }, 'Synthetic published maintenance examples prepared.')
           }
         >
-          Prepare synthetic maintenance examples
+          <BackOfficeText text="Prepare synthetic maintenance examples" />
         </button>
         <button
           className="secondary"
@@ -547,7 +630,7 @@ export function MaintenanceCenter({
             setSimulatedError(true);
           }}
         >
-          Simulate maintenance error
+          <BackOfficeText text="Simulate maintenance error" />
         </button>
       </details>
     </section>
@@ -573,6 +656,7 @@ function MaintenanceEditor({
   onVisit(id: string): void;
   onWork(target: 'job' | 'estimate'): void;
 }) {
+  const concept = useContext(BackOfficeConcept);
   const panel = useRef<HTMLElement>(null);
   useEffect(() => {
     panel.current?.focus();
@@ -611,7 +695,9 @@ function MaintenanceEditor({
         }}
       >
         <fieldset disabled={busy}>
-          <legend>Internal coordination only</legend>
+          <legend>
+            <BackOfficeText text="Internal coordination only" />
+          </legend>
           <div className="maintenance-filters">
             <Field label="Manual priority">
               <select
@@ -624,7 +710,9 @@ function MaintenanceEditor({
                 }
               >
                 {maintenancePriorities.map((p) => (
-                  <option key={p}>{p}</option>
+                  <option key={p} value={p}>
+                    <BackOfficeText text={p} />
+                  </option>
                 ))}
               </select>
             </Field>
@@ -639,16 +727,27 @@ function MaintenanceEditor({
                 {edit.assignee_id &&
                   !members.some((m) => m.user_id === edit.assignee_id) && (
                     <option value={edit.assignee_id}>
-                      Inactive staff — choose an active member
+                      <BackOfficeText text="Inactive staff — choose an active member" />
                     </option>
                   )}
                 {members.map((m) => (
                   <option value={m.user_id} key={m.user_id}>
-                    {m.label} · {m.user_id}
+                    <BackOfficeStaffLabel label={m.label} /> · {m.user_id}
                   </option>
                 ))}
               </select>
             </Field>
+            {concept && edit.assignee_id && (
+              <p className="concept-assignee-identity">
+                <BackOfficeStaffLabel
+                  label={
+                    members.find((m) => m.user_id === edit.assignee_id)
+                      ?.label ?? 'Unavailable Staff'
+                  }
+                />{' '}
+                · {edit.assignee_id}
+              </p>
+            )}
             <Field label="Internal follow-up date">
               <input
                 type="date"
@@ -668,8 +767,12 @@ function MaintenanceEditor({
                   })
                 }
               >
-                <option value="pending">Pending review</option>
-                <option value="reviewed">Reviewed by staff</option>
+                <option value="pending">
+                  <BackOfficeText text="Pending review" />
+                </option>
+                <option value="reviewed">
+                  <BackOfficeText text="Reviewed by staff" />
+                </option>
               </select>
             </Field>
           </div>
@@ -680,11 +783,16 @@ function MaintenanceEditor({
               onChange={(e) => setEdit({ ...edit, note: e.target.value })}
             />
           </Field>
-          <button>Save internal review</button>
+          <button>
+            <BackOfficeText text="Save internal review" />
+          </button>
         </fieldset>
       </form>
       <details>
-        <summary>Internal follow-up notes ({item.record.notes.length})</summary>
+        <summary>
+          <BackOfficeText text="Internal follow-up notes (" />
+          {item.record.notes.length})
+        </summary>
         {item.record.notes.map((n) => (
           <p key={n.id}>
             {n.text}
@@ -699,7 +807,9 @@ function MaintenanceEditor({
         )}
       </details>
       <details>
-        <summary>Evidence & uncertainty</summary>
+        <summary>
+          <BackOfficeText text="Evidence & uncertainty" />
+        </summary>
         <p>
           Exact finding {item.source.finding_id} in report{' '}
           {item.source.report_id} v{item.source.report_version}.
@@ -721,7 +831,9 @@ function MaintenanceEditor({
             item.record.review === 'reviewed'
           }
         >
-          <legend>Prepare an inspection draft · no dispatch</legend>
+          <legend>
+            <BackOfficeText text="Prepare an inspection draft · no dispatch" />
+          </legend>
           <div className="maintenance-filters">
             <Field label="Follow-up inspection plan">
               <select
@@ -730,7 +842,9 @@ function MaintenanceEditor({
               >
                 {available.map((p) => (
                   <option value={p.id} key={p.id}>
-                    {p.name} · revision {p.revision}
+                    {p.name}
+                    <BackOfficeText text=" · revision " />
+                    {p.revision}
                   </option>
                 ))}
               </select>
@@ -744,7 +858,9 @@ function MaintenanceEditor({
               />
             </Field>
           </div>
-          <button disabled={!plan}>Prepare follow-up inspection draft</button>
+          <button disabled={!plan}>
+            <BackOfficeText text="Prepare follow-up inspection draft" />
+          </button>
         </fieldset>
       </form>
       {item.record.scheduled_visit_id && (
@@ -753,7 +869,7 @@ function MaintenanceEditor({
           disabled={busy}
           onClick={() => onVisit(item.record.scheduled_visit_id!)}
         >
-          Open prepared inspection draft
+          <BackOfficeText text="Open prepared inspection draft" />
         </button>
       )}
       {item.record.review === 'reviewed' && !item.record.scheduled_visit_id && (
@@ -769,14 +885,14 @@ function MaintenanceEditor({
             disabled={busy}
             onClick={() => onWork('job')}
           >
-            Open linked job workflow
+            <BackOfficeText text="Open linked job workflow" />
           </button>
           <button
             className="secondary"
             disabled={busy}
             onClick={() => onWork('estimate')}
           >
-            Open job’s issued baseline estimate
+            <BackOfficeText text="Open job’s issued baseline estimate" />
           </button>
         </div>
       ) : (

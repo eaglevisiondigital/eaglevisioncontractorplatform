@@ -1,3 +1,4 @@
+import { BackOfficeText } from './back-office-copy';
 import { useCallback, useState } from 'react';
 import type { PropertyRepository } from '../../lib/property';
 import { useResource, useTask } from '../forms-state';
@@ -54,7 +55,9 @@ export function UnbilledReview({
   }
   return (
     <section aria-label="Unbilled material review">
-      <h3>Purchased materials & supplemental scope</h3>
+      <h3>
+        <BackOfficeText text="Purchased materials & supplemental scope" />
+      </h3>
       <p>
         Compare approved purchases with the immutable original material budget
         and approved changes. Reviews append to history. Proposals do not change
@@ -76,7 +79,9 @@ export function UnbilledReview({
           </Field>
           <div className="job-metrics">
             <div>
-              <span>Actual purchase</span>
+              <span>
+                <BackOfficeText text="Actual purchase" />
+              </span>
               <strong>
                 {formatMinor(
                   row.expense.amount_minor,
@@ -85,13 +90,17 @@ export function UnbilledReview({
               </strong>
             </div>
             <div>
-              <span>After linked approved credits</span>
+              <span>
+                <BackOfficeText text="After linked approved credits" />
+              </span>
               <strong>
                 {formatMinor(row.net_minor, row.job.baseline.currency)}
               </strong>
             </div>
             <div>
-              <span>Original source quantity</span>
+              <span>
+                <BackOfficeText text="Original source quantity" />
+              </span>
               <strong>
                 {row.job.baseline.lines.find(
                   (l) => l.id === row.expense.estimate_line_id,
@@ -140,14 +149,18 @@ export function UnbilledReview({
                     setDisposition(e.target.value as Disposition)
                   }
                 >
-                  <option value="absorbed">Absorbed by contractor</option>
+                  <option value="absorbed">
+                    <BackOfficeText text="Absorbed by contractor" />
+                  </option>
                   <option value="included">
-                    Already included in customer scope
+                    <BackOfficeText text="Already included in customer scope" />
                   </option>
                   <option value="proposed">
-                    Proposed additional customer billing
+                    <BackOfficeText text="Proposed additional customer billing" />
                   </option>
-                  <option value="deferred">Needs further review</option>
+                  <option value="deferred">
+                    <BackOfficeText text="Needs further review" />
+                  </option>
                 </select>
               </Field>
               <Field label="Existing authorized scope">
@@ -155,7 +168,9 @@ export function UnbilledReview({
                   value={scope}
                   onChange={(e) => setScope(e.target.value)}
                 >
-                  <option value="">Select after review</option>
+                  <option value="">
+                    <BackOfficeText text="Select after review" />
+                  </option>
                   {row.job.baseline.lines.map((l) => (
                     <option key={l.id} value={l.id}>
                       {l.description}
@@ -180,9 +195,15 @@ export function UnbilledReview({
                     })
                   }
                 >
-                  <option value="pass_through">Cost pass-through</option>
-                  <option value="percent">Percentage markup on cost</option>
-                  <option value="fixed">Fixed dollar markup</option>
+                  <option value="pass_through">
+                    <BackOfficeText text="Cost pass-through" />
+                  </option>
+                  <option value="percent">
+                    <BackOfficeText text="Percentage markup on cost" />
+                  </option>
+                  <option value="fixed">
+                    <BackOfficeText text="Fixed dollar markup" />
+                  </option>
                 </select>
               </Field>
               {pricing.mode === 'percent' ? (
@@ -206,8 +227,12 @@ export function UnbilledReview({
                     setPresentation(e.target.value as typeof presentation)
                   }
                 >
-                  <option value="itemized">Itemized materials</option>
-                  <option value="package">Materials package</option>
+                  <option value="itemized">
+                    <BackOfficeText text="Itemized materials" />
+                  </option>
+                  <option value="package">
+                    <BackOfficeText text="Materials package" />
+                  </option>
                 </select>
               </Field>
             </div>
@@ -236,10 +261,12 @@ export function UnbilledReview({
                 task.busy || !!error || history.some((d) => !!d.change_id)
               }
             >
-              Record contractor review
+              <BackOfficeText text="Record contractor review" />
             </button>
           </form>
-          <h4>Immutable review history & invoice drafts</h4>
+          <h4>
+            <BackOfficeText text="Immutable review history & invoice drafts" />
+          </h4>
           {history.map((d) => (
             <div className="finding-card" key={d.id}>
               <strong>
