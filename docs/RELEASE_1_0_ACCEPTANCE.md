@@ -1,5 +1,15 @@
 # Production Release 1.0 acceptance checklist
 
+## Workstream 2B · disposable repair/readiness acceptance only · October 29
+
+47 native PG17/24 application cases validate exact reservations, one-shot claims,
+guarded readiness appends, ordinary estimate fixture guards and real client-process
+interruption/reconciliation. See MAINTENANCE_DURABLE_REPAIR.md. Operational migration/
+least-privileged service, genuine Auth/HTTP/MFA, UI durability and independent recovery
+remain BLOCKED / NOT RUN. No hosted schema/features/grants, financial/provider/Netlify/
+production/deploy/merge. All13 SQL/pending customer/frozen P1/approvals and approved
+UIs preserved; P1 stays sequenced on thirteen history. NOT READY / NOT AUTHORIZED.
+
 ## Workstream 2A · disposable persistence foundation only · October 29
 
 Executable native triage/receipt/restart contracts and readiness archive fidelity are

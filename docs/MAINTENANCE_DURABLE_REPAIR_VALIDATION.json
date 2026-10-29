@@ -1,0 +1,55 @@
+{
+  "package": "WORKSTREAM_2B",
+  "date": "2026-10-29",
+  "baseCommit": "5474730e43ce4a22f147791c7416b29a27dd824f",
+  "status": "LOCAL_TEST_ONLY_PASS",
+  "nativePostgreSQL17": {
+    "passed": 47,
+    "failed": 0,
+    "command": "npm run test:maintenance-native -- --workstream=2b",
+    "historyFiles": 13,
+    "pendingCustomerLoaded": false,
+    "realLockWaits": true,
+    "realWallClockExpiry": true,
+    "childProcessCommitLossAndSIGKILL": true,
+    "clockMocksOrPGliteReplacement": false
+  },
+  "application": {
+    "passed": 24,
+    "failed": 0,
+    "command": "npx vitest run tests/repair-persistence.test.ts"
+  },
+  "checks": [
+    "lint",
+    "strict TypeScript",
+    "generated type integrity",
+    "migration/property/customer integrity",
+    "build",
+    "format",
+    "diff"
+  ],
+  "preserved": {
+    "existingProtectedPathsByteIdentical": 195,
+    "frozenPrivateP1ArtifactHashes": 4,
+    "srcChanges": 0,
+    "historicalMigrationChanges": 0,
+    "pendingCustomerMigrationChanges": 0,
+    "dependenciesOrLockChanges": 0,
+    "approvedVisualChanges": 0
+  },
+  "priorEvidence": "Unchanged UI/browser, 2A and physical recovery baselines retained without local repetition. Existing CI runs automatically on push.",
+  "limitations": [
+    "Test harness owner is trusted; no operational least-privileged role or genuine signed Auth/HTTP/MFA",
+    "Private finish/append functions are inaccessible to request clients and are not standalone secure production endpoints",
+    "Reserved-ID creation reuses existing SQL context/child writer but requires separately reviewed operational orchestration",
+    "No durable caller intent before initial reservation transmission",
+    "No browser persistence or full operational service/DB-server/disk restart proof",
+    "Structured measured references are staff assertions, not measurement truth",
+    "Fixture estimate triggers are not installed in historical operational schema",
+    "Missing receipt/target is UNDETERMINED and never retry permission"
+  ],
+  "hostedActions": 0,
+  "migrationsCreated": 0,
+  "financialExecution": false,
+  "release": "NOT READY / NOT AUTHORIZED"
+}

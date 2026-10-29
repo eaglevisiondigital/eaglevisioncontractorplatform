@@ -9,6 +9,9 @@ const candidates = process.env.PG17_BIN
       '/usr/local/opt/postgresql@17/bin',
       '/usr/lib/postgresql/17/bin',
     ];
+const repairOnly = process.argv.slice(2).join(' ') === '--workstream=2b';
+if (process.argv.length > 2 && !repairOnly)
+  throw Error('Only --workstream=2b is supported.');
 let bin;
 for (const dir of candidates) {
   try {
@@ -88,7 +91,8 @@ try {
     [
       'node_modules/vitest/vitest.mjs',
       'run',
-      'tests/database/maintenance-persistence.test.ts',
+      ...(repairOnly ? [] : ['tests/database/maintenance-persistence.test.ts']),
+      'tests/database/repair-persistence.test.ts',
       '--maxWorkers=1',
     ],
     { env: { ...process.env, EV_TEST_PG_SOCKET: temp, EV_TEST_PG_CI: '' } },

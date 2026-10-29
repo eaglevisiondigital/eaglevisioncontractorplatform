@@ -1,5 +1,17 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Workstream 2B test-only repair/readiness composition · October 29
+
+An unwired repair-persistence port and disposable trusted fixture service layer on2A.
+Immutable reservation/claim events bind exact sources/revisions/job baseline and
+reserved existing-estimate IDs; one-shot finish reuses the existing SQL context/child
+writer. Guarded readiness uses canonical current DB evidence plus the existing six-
+section TS engine, with pre-append intents and immutable receipts. Fixture-only table
+guards restrict ordinary estimate paths; no historical SQL/engine/UI change. No
+operational migration or connected adapter; fixture owner and simulated claims are
+explicit acceptance gaps. See docs/MAINTENANCE_DURABLE_REPAIR.md. Proposed2C is least-
+privileged local service/intent composition under separate scope; all gates persist.
+
 ## Workstream 2A persistence contract · October 29
 
 The new server/property/maintenance-persistence.ts port is unwired and caller-bound;

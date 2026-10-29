@@ -1,5 +1,21 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: Workstream 2B test-only durable repair/readiness · October 29
+
+Exact-source reservations commit target IDs before a one-shot preparation claim.
+The disposable fixture creates one existing-engine draft, appends current-authorized
+six-section evidence with durable intents/CAS, reconciles exact targets/receipts after
+client loss and retains UNKNOWN without retries/replacement IDs. Fixture-only ordinary
+estimate save/duplicate/revise/issue/archive guards preserve source bindings;6/6 never
+creates issue/work/customer authority.47 new native PG17 and24 new application cases
+pass; lint/types/build/format/integrity pass.195 protected existing paths/four frozen
+P1 hashes unchanged. No UI/business/historical SQL edits or operational adapter; trusted
+fixture-owner execution is not genuine Auth/MFA or least privilege. See
+docs/MAINTENANCE_DURABLE_REPAIR.md and updated approval register. Next proposed2C is
+local least-privileged service and durable pre-send custody composition, separately
+scoped. Thirteen migrations/pending customer/frozen P1/approvals/financial/recovery/
+Netlify gates remain; no hosted action/deploy/merge. NOT READY / NOT AUTHORIZED.
+
 ## Latest: Workstream 2A durable maintenance foundation · October 29
 
 A narrow unwired persistence port and disposable native PostgreSQL 17 contract now

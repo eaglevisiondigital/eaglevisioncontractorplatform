@@ -63,8 +63,25 @@
       ]
     }
   ],
-  "nextLocalPackage": "2B test-only durable repair reservation and guarded readiness append commands, separately scoped; no migration or service activation",
+  "nextLocalPackage": "Proposed 2C: test-only least-privileged local service, durable pre-send intent composition including reservation and whole-service restart/reconciliation; separate owner direction required",
   "heldForPlanning": "Biller Genie-inspired accounts receivable",
   "existingP1Approval": "PRESERVED / NOT REISSUED",
-  "release": "NOT READY / NOT AUTHORIZED"
+  "release": "NOT READY / NOT AUTHORIZED",
+  "continuation2B": {
+    "baseCommit": "5474730e43ce4a22f147791c7416b29a27dd824f",
+    "authorization": "TEST_ONLY_LOCAL_IMPLEMENTATION_AND_DISPOSABLE_NATIVE_VALIDATION",
+    "implemented": [
+      "Exact-source immutable reservations and one-shot pre-creation claims",
+      "Reserved existing estimate/version/line creation and exact read-only reconciliation",
+      "Guarded canonical readiness validation, durable intents, append-only receipts and UNKNOWN holds",
+      "Fixture-only ordinary estimate save/duplicate/revise/issue/archive restrictions"
+    ],
+    "limits": [
+      "Trusted harness owner only; no nonprivileged production adapter or genuine Auth/HTTP/MFA verifier",
+      "No operational guards outside disposable fixture",
+      "No pre-reserve operational intent custody, UI durability, DB-server/disk-loss or independent-device recovery proof"
+    ],
+    "validation": "MAINTENANCE_DURABLE_REPAIR_VALIDATION.json",
+    "operationalStatus": "NOT IMPLEMENTED / NOT AUTHORIZED"
+  }
 }

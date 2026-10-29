@@ -1,5 +1,16 @@
 # Engineering instructions
 
+Workstream 2B continuation: read docs/MAINTENANCE_DURABLE_REPAIR.md and the updated
+validation/approval register. New exact-source repair reservation/one-shot claims,
+guarded readiness intents/appends and ordinary estimate guards are TEST-ONLY in
+disposable native PG17. No operational migration/service/UI adapter. Current source/
+principal/session/post-wait checks, CAS, append-only evidence and UNKNOWN no-retry
+persist; missing receipts are UNDETERMINED, no replacement IDs. Trusted fixture owner
+is not production Auth or least privilege; structured measures are attestations.
+Next proposed 2C is local least-privileged service/intent composition under separate
+direction. Preserve all approved UI/business/SQL/P1/approval/recovery/financial/Netlify
+gates; frozen P1 stays sequenced on thirteen history, customer14 separate; AR held.
+
 Workstream 2A continuation: read docs/MAINTENANCE_DURABLE_FOUNDATION.md and its
 validation/approval register. New persistence port/archive helpers are unwired; only
 tests use maintenance_2a_test in disposable native PG17 against thirteen historical

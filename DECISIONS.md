@@ -1,5 +1,17 @@
 # Engineering decisions
 
+## October 29 · validate durable repair reservations and readiness without activation
+
+Workstream2B extends the disposable2A boundary only. Commit reserved identities and
+one-shot preparation claims before async work; preserve uncertain attempts and use
+exact read-only reconciliation. Rebuild readiness from current locked DB evidence,
+reuse the six-section engine and retain guarded intent/receipt history. Use fixture
+triggers to test ordinary estimate guards without changing thirteen historical SQL
+or approved UI/business code. Explicitly retain operational migration, service Auth/
+least privilege, pre-reserve custody and connected acceptance as gaps. Propose2C
+local least-privileged composition separately. No new activation/financial authority,
+repeat P1 approval, recovery PASS, Netlify action, deployment or merge.
+
 ## October 29 · validate durable maintenance contracts without connected activation
 
 Workstream 2A reuses exact published sources, CRM/member relationships, existing

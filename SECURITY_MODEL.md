@@ -1,5 +1,18 @@
 # Security model · Phase 2
 
+## Workstream 2B fixture repair/readiness boundary · October 29
+
+Current source/CRM/member/principal/session/AAL and post-resource-wait checks precede
+private reservation/readiness writes. Durable one-shot claims/intents and exact CAS/
+actor/request receipts hold UNKNOWN without replacement IDs; absence is UNDETERMINED.
+No client EXECUTE/DML on new fixture records/functions; trusted harness owner runs
+the canonical TS engine under DB locks. This is not operational least privilege or
+authenticated HTTP/JWT/MFA acceptance. Fixture-only estimate triggers block ordinary
+save/duplicate/revise/issue/archive escapes; production integration is still BLOCKED.
+Append-only private notes/measurements never establish physical completion/customer
+authority. See docs/MAINTENANCE_DURABLE_REPAIR.md and approval register; no hosted,
+financial, P1, recovery or Netlify boundary changes.
+
 ## Workstream 2A disposable persistence boundary · October 29
 
 Strict exact-source/request/revision contracts confer no authority. Only the test
