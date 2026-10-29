@@ -1,5 +1,15 @@
 # Engineering instructions
 
+Contractor Phase B continuation: read docs/CONTRACTOR_BACK_OFFICE_PHASE_B.md.
+Owner APPROVED Phase A/Package1 at07f3e6b and local integration; older approval holds
+below are historical. /preview > Property Operations shares the exact approved
+layout with the isolated reference; preserve full original module navigation and
+App repositories/state. No automatic fixture preparation, duplicate business logic
+or connected promotion. Keep scoped lazy CSS, explicit labels, source/CAS/readiness
+and ordinary Estimates handoff guards. No duplicate design approval. All13 SQL/
+pending customer/frozen P1/approvals/financial/recovery/Netlify remain. Durable triage
+is the next preparation package; Biller Genie-inspired AR waits for product planning.
+
 Contractor UI polish continuation: read docs/CONTRACTOR_UI_POLISH.md and
 DEVELOPMENT_ROADMAP.md. Package 1 remains isolated Phase A; final visual approval and
 Phase B replacement are PENDING. Explicit UI/enum maps default off; preserve original

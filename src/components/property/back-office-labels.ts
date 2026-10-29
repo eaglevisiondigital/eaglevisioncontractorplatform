@@ -1,6 +1,9 @@
 // Explicit presentation-only labels. Call only for UI copy or controlled enums,
 // never company/property names, user-entered text, identifiers or source evidence.
 const labels: Readonly<Record<string, string>> = {
+  'Supplier comparison': 'Supplier Comparison',
+  'Client project view': 'Client Project View',
+  'Company settings': 'Company Settings',
   'OPERATIONS DESK': 'Operations Desk',
   'CONTRACTOR WORKSPACE': 'Contractor Workspace',
   'PROPERTY CARE': 'Property Care',

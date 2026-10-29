@@ -1,12 +1,11 @@
+import { openModule, showQueue } from './helpers/contractor-workspace';
 import { test, expect, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { mkdir } from 'node:fs/promises';
 async function openCenter(page: Page) {
+  await openModule(page, 'Property operations');
   await page
-    .getByRole('button', { name: 'Property operations', exact: true })
-    .click();
-  await page
-    .getByRole('button', { name: 'Maintenance & follow-up', exact: true })
+    .getByRole('button', { name: /^Maintenance & follow-up$/i, exact: true })
     .click();
   await expect(
     page.getByRole('heading', {
@@ -22,14 +21,15 @@ async function openCenter(page: Page) {
 async function examples(page: Page) {
   const center = await openCenter(page);
   await expect(center.locator('.maintenance-card')).toHaveCount(0);
+  await showQueue(page);
   await center
-    .getByText('Development-only maintenance examples & states', {
+    .getByText(/^Development-only maintenance examples & states$/i, {
       exact: true,
     })
     .click();
   await center
     .getByRole('button', {
-      name: 'Prepare synthetic maintenance examples',
+      name: /^Prepare synthetic maintenance examples$/i,
       exact: true,
     })
     .click();
@@ -51,7 +51,7 @@ test('all companies manually triage, schedule one draft and open exact immutable
     'sample-roofing',
   ]) {
     await page
-      .getByRole('combobox', { name: 'Company context' })
+      .getByRole('combobox', { name: /Company context/i })
       .selectOption(org);
     const center = await examples(page);
     const card = center.locator('.maintenance-card').first();
@@ -59,7 +59,7 @@ test('all companies manually triage, schedule one draft and open exact immutable
       version = await card.getAttribute('data-report-version');
     await card
       .getByRole('button', {
-        name: 'Open exact source inspection',
+        name: /^Open exact source inspection$/i,
         exact: true,
       })
       .click();
@@ -68,82 +68,86 @@ test('all companies manually triage, schedule one draft and open exact immutable
     await expect(source).toHaveAttribute('data-report-version', version!);
     await expect(source).toContainText('Published evidence is immutable.');
     await page
-      .getByRole('button', { name: 'Maintenance & follow-up', exact: true })
+      .getByRole('button', { name: /^Maintenance & follow-up$/i, exact: true })
       .click();
     await center
       .locator('.maintenance-card')
       .first()
-      .getByRole('button', { name: 'Review finding', exact: true })
+      .getByRole('button', { name: /^Review finding$/i, exact: true })
       .click();
     const review = center.getByRole('region', {
       name: 'Maintenance review',
       exact: true,
     });
     await review
-      .getByRole('combobox', { name: 'Manual priority', exact: true })
+      .getByRole('combobox', { name: /^Manual priority$/i, exact: true })
       .selectOption('urgent');
     await review
-      .getByRole('combobox', { name: 'Responsible staff', exact: true })
+      .getByRole('combobox', { name: /^Responsible staff$/i, exact: true })
       .selectOption(org + '-field');
     await review
-      .getByLabel('Internal follow-up date', { exact: true })
+      .getByLabel(/^Internal follow-up date$/i, { exact: true })
       .fill('2026-11-20');
     await review
-      .getByLabel('Append internal follow-up note', { exact: true })
+      .getByLabel(/^Append internal follow-up note$/i, { exact: true })
       .fill('PRIVATE TRIAGE: verify crew availability before proposing work.');
     await review
-      .getByRole('button', { name: 'Save internal review', exact: true })
+      .getByRole('button', { name: /^Save internal review$/i, exact: true })
       .click();
     await expect(review).toHaveCount(1);
     await expect(review).toContainText('Triage revision 1');
     await review
-      .getByText('Internal follow-up notes (1)', { exact: true })
+      .getByText(/^Internal follow-up notes \(1\)$/i, { exact: true })
       .click();
     await expect(review).toContainText('PRIVATE TRIAGE');
     await review
       .getByRole('button', {
-        name: 'Prepare follow-up inspection draft',
+        name: /^Prepare follow-up inspection draft$/i,
         exact: true,
       })
       .click();
     await expect(review).toContainText('Triage revision 2');
     await expect(
       review.getByRole('button', {
-        name: 'Prepare follow-up inspection draft',
+        name: /^Prepare follow-up inspection draft$/i,
         exact: true,
       }),
     ).toBeDisabled();
     await expect(center.locator('.maintenance-card').first()).toContainText(
-      'scheduled · priority urgent',
+      /Staff Review StatusScheduled/,
     );
+    await showQueue(page);
     await center
-      .getByRole('combobox', { name: 'Queue priority', exact: true })
+      .getByRole('combobox', { name: /^Queue priority$/i, exact: true })
       .selectOption('urgent');
     await center
-      .getByRole('combobox', { name: 'Queue responsibility', exact: true })
+      .getByRole('combobox', { name: /^Queue responsibility$/i, exact: true })
       .selectOption(org + '-field');
     await center
-      .getByLabel('Follow-up date from', { exact: true })
+      .getByLabel(/^Follow-up date from$/i, { exact: true })
       .fill('2026-11-20');
     await center
-      .getByLabel('Follow-up date to', { exact: true })
+      .getByLabel(/^Follow-up date to$/i, { exact: true })
       .fill('2026-11-20');
     await center
-      .getByRole('combobox', { name: 'Queue review status', exact: true })
+      .getByRole('combobox', { name: /^Queue review status$/i, exact: true })
       .selectOption('scheduled');
     await expect(center.locator('.maintenance-card')).toHaveCount(1);
     await center
-      .getByRole('button', { name: 'Reset maintenance filters', exact: true })
+      .getByRole('button', {
+        name: /^Reset maintenance filters$/i,
+        exact: true,
+      })
       .click();
     await expect(center.locator('.maintenance-card')).toHaveCount(3);
     await center
       .locator('.maintenance-card')
       .first()
-      .getByRole('button', { name: 'Review finding', exact: true })
+      .getByRole('button', { name: /^Review finding$/i, exact: true })
       .click();
     await review
       .getByRole('button', {
-        name: 'Open prepared inspection draft',
+        name: /^Open prepared inspection draft$/i,
         exact: true,
       })
       .click();
@@ -151,26 +155,29 @@ test('all companies manually triage, schedule one draft and open exact immutable
       page.getByRole('heading', { name: 'Visit · 2026-11-20', exact: true }),
     ).toBeVisible();
     await expect(
-      page.getByRole('textbox', { name: 'Client report summary', exact: true }),
+      page.getByRole('textbox', {
+        name: /^Client report summary$/i,
+        exact: true,
+      }),
     ).toHaveValue('Scheduled property inspection');
     await page
-      .getByRole('button', { name: 'Maintenance & follow-up', exact: true })
+      .getByRole('button', { name: /^Maintenance & follow-up$/i, exact: true })
       .click();
     await center
       .locator('.maintenance-card')
       .first()
-      .getByRole('button', { name: 'Review finding', exact: true })
+      .getByRole('button', { name: /^Review finding$/i, exact: true })
       .click();
     await review
-      .getByRole('combobox', { name: 'Staff review decision', exact: true })
+      .getByRole('combobox', { name: /^Staff review decision$/i, exact: true })
       .selectOption('reviewed');
     await review
-      .getByRole('button', { name: 'Save internal review', exact: true })
+      .getByRole('button', { name: /^Save internal review$/i, exact: true })
       .click();
     await expect(center.locator('.maintenance-card').first()).toContainText(
-      'reviewed · priority urgent',
+      /Staff Review StatusReviewed/,
     );
-    await expect(center).toContainText('Repair status undetermined');
+    await expect(center).toContainText(/Repair status undetermined/i);
     expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
     expect(
       await page.evaluate(
@@ -182,9 +189,7 @@ test('all companies manually triage, schedule one draft and open exact immutable
       path: `artifacts/property/maintenance-${info.project.name}-${org}.png`,
       fullPage: true,
     });
-    await page
-      .getByRole('button', { name: 'Client project view', exact: true })
-      .click();
+    await openModule(page, 'Client project view');
     const customer = page.getByRole('region', {
       name: 'Client property report',
     });
@@ -213,95 +218,98 @@ test('property filters, empty/error states and exact linked existing job/issued 
     }),
   ).toBeVisible();
   await page
-    .getByRole('button', { name: 'Maintenance & follow-up', exact: true })
+    .getByRole('button', { name: /^Maintenance & follow-up$/i, exact: true })
     .click();
+  await showQueue(page);
   await center
-    .getByRole('combobox', { name: 'Maintenance property', exact: true })
+    .getByRole('combobox', { name: /^Maintenance property$/i, exact: true })
     .selectOption({ label: '200 Synthetic Maintenance Court' });
   await expect(center.locator('.maintenance-card')).toHaveCount(1);
   await expect(center.locator('.maintenance-card')).toContainText(
     'Garden gate',
   );
   await center
-    .getByRole('combobox', { name: 'Queue priority', exact: true })
+    .getByRole('combobox', { name: /^Queue priority$/i, exact: true })
     .selectOption('urgent');
   await expect(center).toContainText(
     'No maintenance findings match these filters.',
   );
   await center
-    .getByRole('button', { name: 'Reset maintenance filters', exact: true })
+    .getByRole('button', { name: /^Reset maintenance filters$/i, exact: true })
     .click();
   await center
-    .getByLabel('Follow-up date from', { exact: true })
+    .getByLabel(/^Follow-up date from$/i, { exact: true })
     .fill('2026-12-01');
   await center
-    .getByLabel('Follow-up date to', { exact: true })
+    .getByLabel(/^Follow-up date to$/i, { exact: true })
     .fill('2026-11-01');
   await expect(center.getByRole('alert')).toContainText(
     'start date must be on or before end date',
   );
   await expect(center.locator('.maintenance-card')).toHaveCount(0);
   await center
-    .getByRole('button', { name: 'Reset maintenance filters', exact: true })
+    .getByRole('button', { name: /^Reset maintenance filters$/i, exact: true })
     .click();
   await center
     .locator('.maintenance-card')
     .first()
-    .getByRole('button', { name: 'Review finding', exact: true })
+    .getByRole('button', { name: /^Review finding$/i, exact: true })
     .click();
   const review = center.getByRole('region', {
     name: 'Maintenance review',
     exact: true,
   });
   await review
-    .getByRole('button', { name: 'Open linked job workflow', exact: true })
+    .getByRole('button', { name: /^Open linked job workflow$/i, exact: true })
     .click();
   const workflow = page.getByRole('region', {
     name: 'Linked contractor workflow',
   });
-  await expect(workflow).toContainText('Job financial dashboard');
+  await expect(workflow).toContainText(/Job financial dashboard/i);
   await expect(
-    workflow.getByRole('combobox', { name: 'Financial job' }),
+    workflow.getByRole('combobox', { name: /Financial job/i }),
   ).toBeVisible();
   await workflow
-    .getByRole('button', { name: 'Back to maintenance queue' })
+    .getByRole('button', { name: /Back to maintenance queue/i })
     .click();
   await review
     .getByRole('button', {
-      name: 'Open job’s issued baseline estimate',
+      name: /^Open job’s issued baseline estimate$/i,
       exact: true,
     })
     .click();
-  await expect(workflow).toContainText('issued');
+  await expect(workflow).toContainText(/issued/i);
   await expect(workflow).toContainText(
     'not a finding-specific repair estimate',
   );
   await workflow
-    .getByRole('button', { name: 'Back to maintenance queue' })
+    .getByRole('button', { name: /Back to maintenance queue/i })
     .click();
+  await showQueue(page);
   await center
-    .getByText('Development-only maintenance examples & states', {
+    .getByText(/^Development-only maintenance examples & states$/i, {
       exact: true,
     })
     .click();
   await center
     .getByRole('button', {
-      name: 'Prepare synthetic maintenance examples',
+      name: /^Prepare synthetic maintenance examples$/i,
       exact: true,
     })
     .click();
   await expect(center.locator('.maintenance-card')).toHaveCount(3);
   await center
-    .getByRole('button', { name: 'Simulate maintenance error', exact: true })
+    .getByRole('button', { name: /^Simulate maintenance error$/i, exact: true })
     .click();
   await expect(center.getByRole('alert')).toContainText('simulated error');
   await expect(center.locator('.maintenance-card')).toHaveCount(0);
   await center
-    .getByRole('button', { name: 'Reload maintenance queue', exact: true })
+    .getByRole('button', { name: /^Reload maintenance queue$/i, exact: true })
     .click();
   await expect(center.locator('.maintenance-card')).toHaveCount(3);
+  await showQueue(page);
   const reset = center.getByRole('button', {
-    name: 'Reset maintenance filters',
+    name: /^Reset maintenance filters$/i,
     exact: true,
   });
   await reset.focus();

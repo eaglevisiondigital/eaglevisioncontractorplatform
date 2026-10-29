@@ -1,5 +1,10 @@
 # Contractor concept UI polish · Package 1
 
+Latest: the owner approved the design and Package 1 at07f3e6b. Local Phase B is now
+implemented; see [CONTRACTOR_BACK_OFFICE_PHASE_B.md](CONTRACTOR_BACK_OFFICE_PHASE_B.md).
+Earlier approval/replacement holds below are preserved historical checkpoints and
+are superseded for the approved local scope. All operational/release gates persist.
+
 October 29, 2026 · base `d51e2a52c0fe01e92f5661dd5df39ae34040d0c2`.
 **LOCAL SYNTHETIC · PHASE A · FINAL VISUAL APPROVAL PENDING.**
 Release 1.0 remains **NOT READY / NOT AUTHORIZED**.

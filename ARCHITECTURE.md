@@ -1,5 +1,17 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Approved contractor presentation integration · October 29
+
+The owner-approved Phase B promotes the shared ContractorBackOfficeLayout into
+App's exact local /preview Property Operations selection. App retains its canonical
+Operations instance and company/module state; the existing full module inventory
+is extracted once into WorkspaceNavigation. Other modules keep their original shell.
+PropertyWorkspace and all business components/repositories remain unchanged. No
+implicit fixture preparation or duplicate state store; the approved reference keeps
+its separate sample instance. Existing default-false context is presentation-only,
+with root-scoped lazy CSS on the two explicit local compositions. See
+CONTRACTOR_BACK_OFFICE_PHASE_B.md; earlier approval holds are superseded locally.
+
 ## Isolated contractor presentation concept · October29
 
 /preview/contractor-design lazy-loads one shell and .backoffice-concept-scoped CSS.

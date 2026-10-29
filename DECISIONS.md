@@ -1,5 +1,18 @@
 # Engineering decisions
 
+## October 29 · integrate approved property presentation without replacing other modules
+
+Owner approved07f3e6b Phase A/Package 1 for local Phase B. Extract and share its
+presentation shell; keep App's canonical synthetic repositories, company/module
+selection and original module inventory/filtering. Use the premium layout only for
+/preview > Property Operations; retain every other implemented module and all off
+gates. The reference owns separate samples. Keep example preparation explicit so
+presentation promotion never replaces records or activates fixtures implicitly.
+Verify exact card-grid/reference pixels, locked portal isolation and ordinary
+Estimates handoff restrictions. No new design approval, schema, business engine,
+connected route or financial/recovery/Netlify authority. Prepare durable triage as
+the next bounded review package; hold Biller Genie-inspired AR for product planning.
+
 ## October 29 · polish Phase A without promoting it
 
 Use explicit presentation labels under the existing default-false contractor concept

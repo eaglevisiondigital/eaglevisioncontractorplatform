@@ -1,3 +1,4 @@
+import { openModule } from './helpers/contractor-workspace';
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { mkdir } from 'node:fs/promises';
@@ -17,26 +18,24 @@ test('all companies review exact published evidence, prepare one repair draft, e
     'sample-roofing',
   ]) {
     await page
-      .getByRole('combobox', { name: 'Company context' })
+      .getByRole('combobox', { name: /Company context/i })
       .selectOption(org);
+    await openModule(page, 'Property operations');
     await page
-      .getByRole('button', { name: 'Property operations', exact: true })
-      .click();
-    await page
-      .getByRole('button', { name: 'Maintenance & follow-up', exact: true })
+      .getByRole('button', { name: /^Maintenance & follow-up$/i, exact: true })
       .click();
     const center = page.getByRole('region', {
       name: 'Maintenance & follow-up center',
       exact: true,
     });
     await center
-      .getByText('Development-only maintenance examples & states', {
+      .getByText(/^Development-only maintenance examples & states$/i, {
         exact: true,
       })
       .click();
     await center
       .getByRole('button', {
-        name: 'Prepare synthetic maintenance examples',
+        name: /^Prepare synthetic maintenance examples$/i,
         exact: true,
       })
       .click();
@@ -45,33 +44,36 @@ test('all companies review exact published evidence, prepare one repair draft, e
     const report = await card.getAttribute('data-report-id'),
       version = await card.getAttribute('data-report-version');
     await card
-      .getByRole('button', { name: 'Review finding', exact: true })
+      .getByRole('button', { name: /^Review finding$/i, exact: true })
       .click();
     const repair = center.getByRole('region', {
       name: 'Repair estimate preparation',
       exact: true,
     });
     await repair
-      .getByRole('button', { name: 'Prepare repair estimate', exact: true })
+      .getByRole('button', { name: /^Prepare repair estimate$/i, exact: true })
       .click();
     await expect(repair).toContainText(report!);
     await expect(repair).toContainText('Published v' + version);
     await expect(repair).toContainText('Observation:');
     await expect(repair).toContainText('Recommendation:');
     const prepare = repair.getByRole('button', {
-      name: 'Confirm & prepare repair draft',
+      name: /^Confirm & prepare repair draft$/i,
       exact: true,
     });
     await expect(prepare).toBeDisabled();
     await repair
-      .getByRole('button', { name: 'Cancel repair preparation', exact: true })
+      .getByRole('button', {
+        name: /^Cancel repair preparation$/i,
+        exact: true,
+      })
       .click();
     await expect(prepare).toHaveCount(0);
     await expect(center.locator('.maintenance-card').first()).not.toContainText(
       'Repair preparation:',
     );
     await repair
-      .getByRole('button', { name: 'Prepare repair estimate', exact: true })
+      .getByRole('button', { name: /^Prepare repair estimate$/i, exact: true })
       .click();
     await repair.getByRole('checkbox').focus();
     await page.keyboard.press('Space');
@@ -85,35 +87,38 @@ test('all companies review exact published evidence, prepare one repair draft, e
     await expect(workflow).toContainText('Published v' + version);
     await expect(workflow).toContainText('Prepared by ' + org + '-owner');
     await expect(
-      workflow.getByRole('button', { name: 'All estimates', exact: true }),
+      workflow.getByRole('button', { name: /^All estimates$/i, exact: true }),
     ).toHaveCount(0);
     await expect(
       workflow.getByRole('button', {
-        name: 'Issue internal snapshot',
+        name: /^Issue internal snapshot$/i,
         exact: true,
       }),
     ).toHaveCount(0);
     await expect(
-      workflow.getByRole('button', { name: 'Duplicate estimate', exact: true }),
-    ).toBeDisabled();
-    await expect(
-      workflow.getByRole('combobox', {
-        name: 'Estimate customer',
+      workflow.getByRole('button', {
+        name: /^Duplicate estimate$/i,
         exact: true,
       }),
     ).toBeDisabled();
     await expect(
-      workflow.getByRole('combobox', { name: 'Job location', exact: true }),
+      workflow.getByRole('combobox', {
+        name: /^Estimate customer$/i,
+        exact: true,
+      }),
+    ).toBeDisabled();
+    await expect(
+      workflow.getByRole('combobox', { name: /^Job location$/i, exact: true }),
     ).toBeDisabled();
     const scope = workflow.getByRole('textbox', {
-      name: 'Scope item 1',
+      name: /^Scope item 1$/i,
       exact: true,
     });
     await scope.fill('Contractor-reviewed synthetic joint repair scope');
     await workflow
-      .getByRole('button', { name: 'Save estimate draft', exact: true })
+      .getByRole('button', { name: /^Save estimate draft$/i, exact: true })
       .click();
-    await expect(workflow).toContainText('Saved revision 2');
+    await expect(workflow).toContainText(/Saved revision 2/i);
     await expect(scope).toHaveValue(
       'Contractor-reviewed synthetic joint repair scope',
     );
@@ -126,7 +131,7 @@ test('all companies review exact published evidence, prepare one repair draft, e
     await mkdir('artifacts/property', { recursive: true });
     await workflow
       .getByRole('heading', {
-        name: 'Repair draft · contractor review required',
+        name: /^Repair draft · contractor review required$/i,
         exact: true,
       })
       .evaluate((e) => e.scrollIntoView({ block: 'start' }));
@@ -135,7 +140,7 @@ test('all companies review exact published evidence, prepare one repair draft, e
     });
     await workflow
       .getByRole('button', {
-        name: 'Return to originating maintenance finding',
+        name: /^Return to originating maintenance finding$/i,
         exact: true,
       })
       .click();
@@ -144,20 +149,20 @@ test('all companies review exact published evidence, prepare one repair draft, e
     );
     await expect(
       repair.getByRole('button', {
-        name: 'Prepare repair estimate',
+        name: /^Prepare repair estimate$/i,
         exact: true,
       }),
     ).toHaveCount(0);
     await repair
-      .getByRole('button', { name: 'Open exact repair draft', exact: true })
+      .getByRole('button', { name: /^Open exact repair draft$/i, exact: true })
       .click();
-    await expect(workflow).toContainText('Saved revision 2');
+    await expect(workflow).toContainText(/Saved revision 2/i);
     await expect(scope).toHaveValue(
       'Contractor-reviewed synthetic joint repair scope',
     );
     await workflow
       .getByRole('button', {
-        name: 'Open originating published report',
+        name: /^Open originating published report$/i,
         exact: true,
       })
       .click();
@@ -169,20 +174,18 @@ test('all companies review exact published evidence, prepare one repair draft, e
       'Contractor-reviewed synthetic joint repair scope',
     );
     await page
-      .getByRole('button', { name: 'Maintenance & follow-up', exact: true })
+      .getByRole('button', { name: /^Maintenance & follow-up$/i, exact: true })
       .click();
     await center
       .locator('.maintenance-card')
       .first()
-      .getByRole('button', { name: 'Review finding', exact: true })
+      .getByRole('button', { name: /^Review finding$/i, exact: true })
       .click();
     await repair
-      .getByRole('button', { name: 'Open exact repair draft', exact: true })
+      .getByRole('button', { name: /^Open exact repair draft$/i, exact: true })
       .click();
     await expect(workflow).toContainText(report!);
-    await page
-      .getByRole('button', { name: 'Client project view', exact: true })
-      .click();
+    await openModule(page, 'Client project view');
     const customer = page.getByRole('region', {
       name: 'Client property report',
     });

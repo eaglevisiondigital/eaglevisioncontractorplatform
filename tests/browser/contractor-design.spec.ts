@@ -1,3 +1,4 @@
+import { openModule, prepareMaintenance } from './helpers/contractor-workspace';
 import { test, expect, type Page, type Locator } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { mkdir } from 'node:fs/promises';
@@ -181,215 +182,274 @@ test('populated contractor concept preserves triage, scheduling and exact publis
   expect(outside).toEqual([]);
 });
 
-for (const repairOrg of [
-  'sample-property',
-  'sample-construction',
-  'sample-roofing',
-]) {
-  test(
-    'repair editing, six-section review and stale evidence · ' + repairOrg,
-    async ({ page }, info) => {
-      test.setTimeout(120000);
-      await page.goto('/preview/contractor-design');
-      await page
-        .getByRole('combobox', { name: 'Company Context', exact: true })
-        .selectOption(repairOrg);
-      const workflow = await repair(page);
-      await expect(
-        page.getByRole('region', { name: 'Maintenance review', exact: true }),
-      ).not.toBeVisible();
-      const readiness = workflow.getByRole('region', {
-        name: 'Repair Scope Readiness',
-        exact: true,
-      });
-      await expect(readiness).toContainText('0 of 6 sections confirmed');
-      await workflow
-        .getByRole('textbox', { name: 'Scope Item 1', exact: true })
-        .fill(
-          'Remove and replace measured joint seal within stated boundaries',
-        );
-      await workflow
-        .getByRole('textbox', { name: 'Scope Description', exact: true })
-        .fill(
-          'Prepare the exterior surface and replace eight feet of joint seal; concealed work excluded.',
-        );
-      await workflow
-        .getByRole('textbox', { name: 'Quantity 1', exact: true })
-        .fill('8');
-      await workflow
-        .getByRole('combobox', { name: 'Unit 1', exact: true })
-        .selectOption({ value: 'linear_ft' });
-      await workflow
-        .getByRole('textbox', { name: 'Internal Unit Cost 1', exact: true })
-        .fill('10.00');
-      await workflow
-        .getByRole('textbox', { name: 'Selling Unit Price 1', exact: true })
-        .fill('20.00');
-      await workflow
-        .getByRole('textbox', { name: 'Estimate Terms', exact: true })
-        .fill(
-          'Synthetic contractor terms exclude concealed damage pending separate scope review.',
-        );
-      await workflow
-        .getByRole('combobox', { name: 'Tax Policy', exact: true })
-        .selectOption({ label: 'Synthetic zero-tax review · 0% · reviewed' });
-      await workflow
-        .getByRole('textbox', { name: 'Private Estimate Notes', exact: true })
-        .fill('PRIVATE_COPY_SENTINEL · Manual priority');
-      await expect(readiness).toContainText('Unsaved estimate changes');
-      await workflow
-        .getByRole('button', { name: 'Save Estimate Draft', exact: true })
-        .click();
-      await expect(readiness).toContainText('saved revision 2');
-      await workflow
-        .getByRole('button', { name: 'Customer Preview', exact: true })
-        .click();
-      const customer = workflow.getByRole('region', {
-        name: 'Customer-facing estimate preview',
-        exact: true,
-      });
-      await expect(customer).toBeVisible();
-      await expect(customer).not.toContainText('PRIVATE_COPY_SENTINEL');
-      await check(page);
-      await workflow
-        .getByRole('button', { name: 'Version History', exact: true })
-        .click();
-      await expect(workflow.locator('.history-row').first()).toBeVisible();
-      await workflow
-        .getByRole('button', { name: 'Estimate Builder', exact: true })
-        .click();
-      await expect(
-        workflow.getByRole('textbox', {
-          name: 'Private Estimate Notes',
-          exact: true,
-        }),
-      ).toHaveValue('PRIVATE_COPY_SENTINEL · Manual priority');
-      await check(page);
-      await capture(
-        page,
-        `${info.project.name}-${repairOrg}-repair`,
-        workflow.getByRole('heading', {
-          name: 'Repair Draft · Contractor Review Required',
-          exact: true,
-        }),
-      );
-      await capture(
-        page,
-        `${info.project.name}-${repairOrg}-repair-editor`,
-        workflow.locator('.estimate-grid'),
-      );
-      await page
-        .getByRole('link', { name: 'Review Readiness', exact: false })
-        .click();
-      for (let i = 0; i < groups.length; i++) {
-        const card = readiness.locator(
-          `[data-review-section="${['scope', 'measurements', 'resources', 'pricing', 'tax', 'terms'][i]}"]`,
-        );
-        if ((await card.getAttribute('open')) === null)
-          await card.locator('summary').click();
-        if (i === 1) {
-          await card
-            .getByRole('combobox', { name: 'Measurement Basis 1', exact: true })
-            .selectOption('measured');
-          await card
-            .getByLabel('Supporting Measurement Reference 1', { exact: true })
-            .fill('Synthetic staff tape measurement M-008: eight feet.');
+for (const surface of ['/preview/contractor-design', '/preview']) {
+  for (const repairOrg of [
+    'sample-property',
+    'sample-construction',
+    'sample-roofing',
+  ]) {
+    test(
+      surface +
+        ' repair editing, six-section review and stale evidence · ' +
+        repairOrg,
+      async ({ page }, info) => {
+        test.setTimeout(120000);
+        await page.goto(surface);
+        await page
+          .getByRole('combobox', { name: /^Company Context$/i, exact: true })
+          .selectOption(repairOrg);
+        if (surface === '/preview') {
+          await openModule(page, 'Property operations');
+          await prepareMaintenance(page);
         }
-        await card
-          .getByRole('textbox', {
-            name: i === 0 ? /^Scope Review Note/ : /^Supporting Review Note/,
-          })
+        const workflow = await repair(page);
+        await expect(
+          page.getByRole('region', { name: 'Maintenance review', exact: true }),
+        ).not.toBeVisible();
+        const readiness = workflow.getByRole('region', {
+          name: 'Repair Scope Readiness',
+          exact: true,
+        });
+        await expect(readiness).toContainText('0 of 6 sections confirmed');
+        await workflow
+          .getByRole('textbox', { name: 'Scope Item 1', exact: true })
           .fill(
-            'Synthetic staff reviewed exact scope, packaged labor/materials, calculation and applicability.',
+            'Remove and replace measured joint seal within stated boundaries',
           );
-        await card.getByRole('checkbox').focus();
-        await page.keyboard.press('Space');
-        await card
+        await workflow
+          .getByRole('textbox', { name: 'Scope Description', exact: true })
+          .fill(
+            'Prepare the exterior surface and replace eight feet of joint seal; concealed work excluded.',
+          );
+        await workflow
+          .getByRole('textbox', { name: 'Quantity 1', exact: true })
+          .fill('8');
+        await workflow
+          .getByRole('combobox', { name: 'Unit 1', exact: true })
+          .selectOption({ value: 'linear_ft' });
+        await workflow
+          .getByRole('textbox', { name: 'Internal Unit Cost 1', exact: true })
+          .fill('10.00');
+        await workflow
+          .getByRole('textbox', { name: 'Selling Unit Price 1', exact: true })
+          .fill('20.00');
+        await workflow
+          .getByRole('textbox', { name: 'Estimate Terms', exact: true })
+          .fill(
+            'Synthetic contractor terms exclude concealed damage pending separate scope review.',
+          );
+        await workflow
+          .getByRole('combobox', { name: 'Tax Policy', exact: true })
+          .selectOption({ label: 'Synthetic zero-tax review · 0% · reviewed' });
+        await workflow
+          .getByRole('textbox', { name: 'Private Estimate Notes', exact: true })
+          .fill('PRIVATE_COPY_SENTINEL · Manual priority');
+        await expect(readiness).toContainText('Unsaved estimate changes');
+        await workflow
+          .getByRole('button', { name: 'Save Estimate Draft', exact: true })
+          .click();
+        await expect(readiness).toContainText('saved revision 2');
+        await workflow
+          .getByRole('button', { name: 'Customer Preview', exact: true })
+          .click();
+        const customer = workflow.getByRole('region', {
+          name: 'Customer-facing estimate preview',
+          exact: true,
+        });
+        await expect(customer).toBeVisible();
+        await expect(customer).not.toContainText('PRIVATE_COPY_SENTINEL');
+        await check(page);
+        await workflow
+          .getByRole('button', { name: 'Version History', exact: true })
+          .click();
+        await expect(workflow.locator('.history-row').first()).toBeVisible();
+        await workflow
+          .getByRole('button', { name: 'Estimate Builder', exact: true })
+          .click();
+        await expect(
+          workflow.getByRole('textbox', {
+            name: 'Private Estimate Notes',
+            exact: true,
+          }),
+        ).toHaveValue('PRIVATE_COPY_SENTINEL · Manual priority');
+        await check(page);
+        await capture(
+          page,
+          `${surface === '/preview' ? 'phase-b-' : ''}${info.project.name}-${repairOrg}-repair`,
+          workflow.getByRole('heading', {
+            name: 'Repair Draft · Contractor Review Required',
+            exact: true,
+          }),
+        );
+        await capture(
+          page,
+          `${surface === '/preview' ? 'phase-b-' : ''}${info.project.name}-${repairOrg}-repair-editor`,
+          workflow.locator('.estimate-grid'),
+        );
+        await page
+          .getByRole('link', { name: 'Review Readiness', exact: false })
+          .click();
+        for (let i = 0; i < groups.length; i++) {
+          const card = readiness.locator(
+            `[data-review-section="${['scope', 'measurements', 'resources', 'pricing', 'tax', 'terms'][i]}"]`,
+          );
+          if ((await card.getAttribute('open')) === null)
+            await card.locator('summary').click();
+          if (i === 1) {
+            await card
+              .getByRole('combobox', {
+                name: 'Measurement Basis 1',
+                exact: true,
+              })
+              .selectOption('measured');
+            await card
+              .getByLabel('Supporting Measurement Reference 1', { exact: true })
+              .fill('Synthetic staff tape measurement M-008: eight feet.');
+          }
+          await card
+            .getByRole('textbox', {
+              name: i === 0 ? /^Scope Review Note/ : /^Supporting Review Note/,
+            })
+            .fill(
+              'Synthetic staff reviewed exact scope, packaged labor/materials, calculation and applicability.',
+            );
+          await card.getByRole('checkbox').focus();
+          await page.keyboard.press('Space');
+          await card
+            .getByRole('button', {
+              name: 'Confirm ' + groups[i],
+              exact: true,
+            })
+            .click();
+          await expect(readiness).toContainText(
+            `${i + 1} of 6 sections confirmed`,
+          );
+        }
+        await expect(readiness.locator('[data-state="confirmed"]')).toHaveCount(
+          6,
+        );
+        await expect(
+          workflow.getByRole('button', {
+            name: 'Issue Internal Snapshot',
+            exact: true,
+          }),
+        ).toHaveCount(0);
+        await expect(readiness).toContainText(
+          'Internal Review Complete · Issuance Remains Blocked',
+        );
+        await check(page);
+        await capture(
+          page,
+          `${surface === '/preview' ? 'phase-b-' : ''}${info.project.name}-${repairOrg}-readiness-current`,
+          readiness,
+        );
+        await workflow
+          .getByRole('textbox', { name: 'Selling Unit Price 1', exact: true })
+          .fill('21.00');
+        await workflow
+          .getByRole('button', { name: 'Save Estimate Draft', exact: true })
+          .click();
+        await expect(readiness).toContainText(
+          '0 of 6 sections confirmed for saved revision 3',
+        );
+        await expect(readiness.locator('[data-state="stale"]')).toHaveCount(6);
+        await check(page);
+        await capture(
+          page,
+          `${surface === '/preview' ? 'phase-b-' : ''}${info.project.name}-${repairOrg}-readiness-stale`,
+          readiness,
+        );
+        await readiness
+          .getByRole('link', { name: /Quantities & Measurements/ })
+          .click();
+        await expect(
+          readiness.locator('#concept-review-measurements'),
+        ).toHaveAttribute('open', '');
+        await workflow
           .getByRole('button', {
-            name: 'Confirm ' + groups[i],
+            name: 'Return to Originating Maintenance Finding',
             exact: true,
           })
           .click();
-        await expect(readiness).toContainText(
-          `${i + 1} of 6 sections confirmed`,
+        const prep = page.getByRole('region', {
+          name: 'Repair estimate preparation',
+          exact: true,
+        });
+        await prep
+          .getByRole('button', { name: 'Open Exact Repair Draft', exact: true })
+          .click();
+        await expect(readiness).toContainText('saved revision 3');
+        await workflow
+          .getByRole('button', {
+            name: 'Open Originating Published Report',
+            exact: true,
+          })
+          .click();
+        await expect(
+          page.locator('details[data-report-id][open]'),
+        ).toContainText('Weathered joint material documented.');
+        await expect(
+          page.locator('details[data-report-id][open]'),
+        ).not.toContainText('Synthetic staff reviewed');
+        await page
+          .getByRole('button', { name: 'Maintenance & Follow-Up', exact: true })
+          .click();
+        await expect(page.locator('.maintenance-card').first()).toContainText(
+          'Internal readiness: 0/6 sections for saved revision 3',
         );
-      }
-      await expect(readiness.locator('[data-state="confirmed"]')).toHaveCount(
-        6,
-      );
-      await expect(
-        workflow.getByRole('button', {
-          name: 'Issue Internal Snapshot',
-          exact: true,
-        }),
-      ).toHaveCount(0);
-      await expect(readiness).toContainText(
-        'Internal Review Complete · Issuance Remains Blocked',
-      );
-      await check(page);
-      await capture(
-        page,
-        `${info.project.name}-${repairOrg}-readiness-current`,
-        readiness,
-      );
-      await workflow
-        .getByRole('textbox', { name: 'Selling Unit Price 1', exact: true })
-        .fill('21.00');
-      await workflow
-        .getByRole('button', { name: 'Save Estimate Draft', exact: true })
-        .click();
-      await expect(readiness).toContainText(
-        '0 of 6 sections confirmed for saved revision 3',
-      );
-      await expect(readiness.locator('[data-state="stale"]')).toHaveCount(6);
-      await check(page);
-      await capture(
-        page,
-        `${info.project.name}-${repairOrg}-readiness-stale`,
-        readiness,
-      );
-      await readiness
-        .getByRole('link', { name: /Quantities & Measurements/ })
-        .click();
-      await expect(
-        readiness.locator('#concept-review-measurements'),
-      ).toHaveAttribute('open', '');
-      await workflow
-        .getByRole('button', {
-          name: 'Return to Originating Maintenance Finding',
-          exact: true,
-        })
-        .click();
-      const prep = page.getByRole('region', {
-        name: 'Repair estimate preparation',
-        exact: true,
-      });
-      await prep
-        .getByRole('button', { name: 'Open Exact Repair Draft', exact: true })
-        .click();
-      await expect(readiness).toContainText('saved revision 3');
-      await workflow
-        .getByRole('button', {
-          name: 'Open Originating Published Report',
-          exact: true,
-        })
-        .click();
-      await expect(page.locator('details[data-report-id][open]')).toContainText(
-        'Weathered joint material documented.',
-      );
-      await expect(
-        page.locator('details[data-report-id][open]'),
-      ).not.toContainText('Synthetic staff reviewed');
-      await page
-        .getByRole('button', { name: 'Maintenance & Follow-Up', exact: true })
-        .click();
-      await expect(page.locator('.maintenance-card').first()).toContainText(
-        'Internal readiness: 0/6 sections for saved revision 3',
-      );
-    },
-  );
+        if (surface === '/preview') {
+          await page
+            .locator('.maintenance-card')
+            .first()
+            .getByRole('button', { name: 'Review Finding', exact: true })
+            .click();
+          await page
+            .getByRole('button', {
+              name: 'Open Exact Repair Draft',
+              exact: true,
+            })
+            .click();
+          const exactName = await page
+            .locator('.estimate-editor h2')
+            .innerText();
+          await openModule(page, 'Estimates');
+          await page
+            .locator('.estimate-list-row')
+            .filter({ hasText: exactName })
+            .click();
+          await expect(
+            page.getByText('Exact maintenance origin', { exact: true }),
+          ).toBeVisible();
+          await expect(
+            page.getByRole('button', {
+              name: 'Issue internal snapshot',
+              exact: true,
+            }),
+          ).toHaveCount(0);
+          await expect(
+            page.getByRole('button', {
+              name: 'Duplicate estimate',
+              exact: true,
+            }),
+          ).toBeDisabled();
+          await expect(
+            page.getByRole('combobox', {
+              name: 'Estimate customer',
+              exact: true,
+            }),
+          ).toBeDisabled();
+          await expect(
+            page.getByRole('region', {
+              name: 'Repair scope readiness',
+              exact: true,
+            }),
+          ).toContainText('saved revision 3');
+        }
+      },
+    );
+  }
 }
-test('concept state and CSS stay isolated from original workspace and locked customer presentation; empty/error reload works', async ({
+test('reference examples stay isolated from promoted workspace and locked customer presentation; empty/error reload works', async ({
   page,
 }, info) => {
   const pixelCapture = async (locator: Locator, state: string) => {
@@ -418,11 +478,9 @@ test('concept state and CSS stay isolated from original workspace and locked cus
     'portal-before',
   );
   await navigate('/preview');
+  await openModule(page, 'Property operations');
   await page
-    .getByRole('button', { name: 'Property operations', exact: true })
-    .click();
-  await page
-    .getByRole('button', { name: 'Maintenance & follow-up', exact: true })
+    .getByRole('button', { name: 'Maintenance & Follow-Up', exact: true })
     .click();
   await expect(page.locator('.maintenance-card')).toHaveCount(0);
   const before = await page
@@ -468,16 +526,14 @@ test('concept state and CSS stay isolated from original workspace and locked cus
   await expect(page.locator('.maintenance-card')).toHaveCount(3);
   await expect(
     page.getByRole('link', {
-      name: 'Compare current back office',
+      name: 'Open Local Back Office',
       exact: false,
     }),
   ).toHaveAttribute('href', '/preview');
   await navigate('/preview');
+  await openModule(page, 'Property operations');
   await page
-    .getByRole('button', { name: 'Property operations', exact: true })
-    .click();
-  await page
-    .getByRole('button', { name: 'Maintenance & follow-up', exact: true })
+    .getByRole('button', { name: 'Maintenance & Follow-Up', exact: true })
     .click();
   await expect(page.locator('.maintenance-card')).toHaveCount(0);
   expect(
@@ -496,11 +552,11 @@ test('concept state and CSS stay isolated from original workspace and locked cus
       await pixelCapture(page.locator('.maintenance-center'), 'queue-after')
     ).equals(originalBefore),
   ).toBe(true);
-  await expect(page.locator('.backoffice-concept')).toHaveCount(0);
+  await expect(page.locator('[data-integrated="true"]')).toHaveCount(1);
   await navigate('/preview/property-portal');
   await expect(page.locator('.portal-concept')).toBeVisible();
   await expect(
-    page.locator('link[rel="stylesheet"][href*="ContractorBackOfficeDesign"]'),
+    page.locator('link[rel="stylesheet"][href*="ContractorBackOfficeLayout"]'),
   ).toHaveCount(1);
   await expect(page.locator('.concept-metrics')).toBeVisible();
   await page.evaluate(() => document.fonts.ready);

@@ -1,5 +1,18 @@
 # Security model · Phase 2
 
+## Owner-approved contractor Phase B boundary · October 29
+
+Local presentation approval at07f3e6b changes only /preview Property Operations.
+The existing module filtering, App company selection and canonical synthetic
+repositories remain authoritative for this demonstration; no context/route becomes
+authentication or command permission. Connected/control-plane/customer branches keep
+existing guards. Presentation cannot issue repair drafts, including from ordinary
+Estimates after shared-session handoff;6/6 is never authority. Source/membership/CAS,
+private projections and UNKNOWN holds remain unchanged. Reference samples stay
+separate and locked customer pixels remain unchanged after stylesheet loading.
+All13 SQL/pending customer/frozen P1/approvals/recovery/Netlify/financial gates persist.
+See CONTRACTOR_BACK_OFFICE_PHASE_B.md; no hosted or production authority follows.
+
 ## Contractor Phase A presentation boundary · October29
 
 Exact synthetic /preview/contractor-design alone supplies a default-false presentation

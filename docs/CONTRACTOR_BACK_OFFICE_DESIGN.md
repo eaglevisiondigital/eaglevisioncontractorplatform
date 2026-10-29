@@ -1,5 +1,10 @@
 # Contractor back-office premium concept · Phase A
 
+Latest: the owner approved the design and Package 1 at07f3e6b. Local Phase B is now
+implemented; see [CONTRACTOR_BACK_OFFICE_PHASE_B.md](CONTRACTOR_BACK_OFFICE_PHASE_B.md).
+Earlier approval/replacement holds below are preserved historical checkpoints and
+are superseded for the approved local scope. All operational/release gates persist.
+
 Continuation: [Package 1 UI polish](CONTRACTOR_UI_POLISH.md) contains the revised
 concept labels, maintenance facts, responsive corrections and new screenshot matrix.
 This original design record and its earlier evidence are retained. Final visual

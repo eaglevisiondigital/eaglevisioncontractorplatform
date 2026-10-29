@@ -1,5 +1,24 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: approved contractor Phase B · local integration · October 29
+
+Owner approved Phase A and Package 1 at07f3e6b. The exact approved property
+presentation is now integrated into /preview > Property Operations, using the
+existing App session/repositories and complete original module navigation. Other
+modules retain their original shell; all13 contractor entries remain accessible,
+with compact navigation on mobile. The separate /preview/contractor-design remains
+an approved reference. No automatic example preparation or business/repository fork.
+Exact card-grid/reference and locked-portal pixel comparisons pass; source/triage/
+repair/six-section current/stale rules persist, including ordinary Estimates handoff
+restrictions.104 focused application and123 unique focused browser cases pass across
+all three companies/viewports; final reruns are nonadditive. Lint/types/build/format/
+integrity pass;180 protected paths and four frozen P1 hashes unchanged. See
+docs/CONTRACTOR_BACK_OFFICE_PHASE_B.md and its validation record.
+Earlier Phase A approval holds below are historical and superseded for this scope.
+No further design approval is needed. All13 SQL/pending customer/frozen P1/approvals,
+financial/connected/recovery/Netlify gates remain. No hosted action, deployment or
+merge. Release1.0 remains NOT READY / NOT AUTHORIZED.
+
 ## Latest: contractor Phase A UI polish · Package 1 · October 29
 
 [CONTRACTOR_UI_POLISH.md](docs/CONTRACTOR_UI_POLISH.md) records explicit concept-only

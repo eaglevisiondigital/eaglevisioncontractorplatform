@@ -1,3 +1,4 @@
+import { openModule } from './helpers/contractor-workspace';
 import { contractor } from './helpers/property-portal';
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
@@ -31,27 +32,28 @@ test('three contractor inspection workspaces retain separate plans, immutable re
     'sample-roofing',
   ]) {
     await page
-      .getByRole('combobox', { name: 'Company context' })
+      .getByRole('combobox', { name: /Company context/i })
       .selectOption(org);
+    await openModule(page, 'Property operations');
     await page
-      .getByRole('button', { name: 'Property operations', exact: true })
+      .getByRole('button', { name: 'Inspections', exact: true })
       .click();
-    await expect(page.getByLabel('Internal inspection notes')).toContainText(
+    await expect(page.getByLabel(/Internal inspection notes/i)).toContainText(
       'INTERNAL',
     );
     const checks = page.locator('.inspection-editor .property-check input');
     await checks.first().check();
     await page
-      .getByRole('button', { name: 'Save visit draft', exact: true })
+      .getByRole('button', { name: /^Save visit draft$/i, exact: true })
       .click();
     await expect(
-      page.getByText('draft · revision 2', { exact: true }),
+      page.getByText(/^draft · revision 2$/i, { exact: true }),
     ).toBeVisible();
     await page
-      .getByRole('button', { name: 'Submit inspection for review' })
+      .getByRole('button', { name: /Submit inspection for review/i })
       .click();
     await page
-      .getByRole('button', { name: 'Approve & publish report' })
+      .getByRole('button', { name: /Approve & publish report/i })
       .click();
     await expect(
       page.getByText('1 immutable published report version(s).', {
@@ -59,16 +61,14 @@ test('three contractor inspection workspaces retain separate plans, immutable re
       }),
     ).toBeVisible();
     await shot(page, `${org}-inspections`, info.project.name);
-    await page
-      .getByRole('button', { name: 'Client project view', exact: true })
-      .click();
+    await openModule(page, 'Client project view');
     const client = page.getByRole('region', { name: 'Client property report' });
     await expect(client).toContainText('Published report v1');
     await expect(client).not.toContainText('INTERNAL');
     await expect(client).not.toContainText('margin');
     await page
       .getByRole('button', {
-        name: 'Load synthetic approved financial example',
+        name: /Load synthetic approved financial example/i,
       })
       .click();
     await expect(client).toContainText('synthetic internal example');
@@ -83,21 +83,19 @@ test('supplier comparisons retain provenance, include acquisition fees and only 
   page,
 }, info) => {
   await page.goto('/preview');
-  await page
-    .getByRole('button', { name: 'Supplier comparison', exact: true })
-    .click();
+  await openModule(page, 'Supplier comparison');
   for (let i = 0; i < 4; i++)
     await page
-      .getByRole('button', { name: 'Add synthetic quote example' })
+      .getByRole('button', { name: /Add synthetic quote example/i })
       .click();
   await expect(
-    page.getByRole('button', { name: 'Add supplier quote', exact: true }),
+    page.getByRole('button', { name: /^Add supplier quote$/i, exact: true }),
   ).toBeDisabled();
   await expect(
     page.getByRole('region', { name: 'Supplier acquisition comparison' }),
   ).toContainText('Best reviewed mixed basket:');
   await page
-    .getByRole('button', { name: 'Retain reviewed quote snapshot' })
+    .getByRole('button', { name: /Retain reviewed quote snapshot/i })
     .click();
   await expect(
     page
@@ -107,7 +105,7 @@ test('supplier comparisons retain provenance, include acquisition fees and only 
   await shot(page, 'supplier-comparison', info.project.name);
   await page
     .getByRole('button', {
-      name: 'Copy reviewed goods costs to estimate draft',
+      name: /Copy reviewed goods costs to estimate draft/i,
     })
     .click();
   await expect(
@@ -120,42 +118,38 @@ test('media never uploads and unbilled reviews cannot issue or charge a customer
   page,
 }, info) => {
   await page.goto('/preview');
+  await openModule(page, 'Property operations');
   await page
-    .getByRole('button', { name: 'Property operations', exact: true })
-    .click();
-  await page
-    .getByRole('button', { name: 'Media & galleries', exact: true })
+    .getByRole('button', { name: /^Media & galleries$/i, exact: true })
     .click();
   await expect(
-    page.getByLabel('Capture or choose files · unavailable'),
+    page.getByLabel(/Capture or choose files · unavailable/i),
   ).toBeDisabled();
   await expect(
-    page.getByRole('button', { name: 'Upload to quarantine · disabled' }),
+    page.getByRole('button', { name: /Upload to quarantine · disabled/i }),
   ).toBeDisabled();
   await shot(page, 'media-galleries', info.project.name);
   await page
-    .getByRole('button', { name: 'Unbilled materials', exact: true })
+    .getByRole('button', { name: /^Unbilled materials$/i, exact: true })
     .click();
   await page
-    .getByLabel('Material billing classification')
+    .getByLabel(/Material billing classification/i)
     .selectOption('proposed');
   await page
-    .getByLabel('Scope review rationale')
+    .getByLabel(/Scope review rationale/i)
     .fill(
       'Synthetic scope review confirms these additional materials need customer approval.',
     );
   await page
-    .getByRole('combobox', { name: 'Supplemental pricing', exact: true })
+    .getByRole('combobox', { name: /^Supplemental pricing$/i, exact: true })
     .selectOption('percent');
-  await page.getByLabel('Markup percentage · not gross margin').fill('15');
-  await page.getByRole('button', { name: 'Record contractor review' }).click();
+  await page.getByLabel(/Markup percentage · not gross margin/i).fill('15');
+  await page.getByRole('button', { name: /Record contractor review/i }).click();
   await expect(
     page.getByRole('region', { name: 'Unbilled material review' }),
   ).toContainText('awaiting customer authorization');
   await shot(page, 'unbilled-review', info.project.name);
-  await page
-    .getByRole('button', { name: 'Client project view', exact: true })
-    .click();
+  await openModule(page, 'Client project view');
   await expect(
     page.getByRole('region', { name: 'Client property report' }),
   ).not.toContainText('Additional materials subject');
@@ -164,45 +158,44 @@ test('CRM-bound inspection plans and scheduled visits remain editable after savi
   page,
 }) => {
   await page.goto('/preview');
+  await openModule(page, 'Property operations');
+  await page.getByRole('button', { name: 'Inspections', exact: true }).click();
   await page
-    .getByRole('button', { name: 'Property operations', exact: true })
+    .getByText(/^Create property inspection plan$/i, { exact: true })
     .click();
+  await page.getByLabel(/New survey name/i).fill('Synthetic weekly inspection');
   await page
-    .getByText('Create property inspection plan', { exact: true })
+    .getByRole('button', { name: /^Create inspection plan$/i, exact: true })
     .click();
-  await page.getByLabel('New survey name').fill('Synthetic weekly inspection');
+  await expect(
+    page.getByLabel(/^Inspection plan$/i, { exact: true }),
+  ).toHaveValue('Synthetic weekly inspection');
   await page
-    .getByRole('button', { name: 'Create inspection plan', exact: true })
-    .click();
-  await expect(page.getByLabel('Inspection plan', { exact: true })).toHaveValue(
-    'Synthetic weekly inspection',
-  );
-  await page
-    .getByRole('combobox', { name: 'Visit frequency', exact: true })
+    .getByRole('combobox', { name: /^Visit frequency$/i, exact: true })
     .selectOption('weekly');
   await page
-    .getByRole('button', { name: 'Save inspection plan', exact: true })
+    .getByRole('button', { name: /^Save inspection plan$/i, exact: true })
     .click();
   await page
-    .getByRole('combobox', { name: 'Visit project stage', exact: true })
+    .getByRole('combobox', { name: /^Visit project stage$/i, exact: true })
     .selectOption('after');
-  await page.getByLabel('Next visit date').fill('2026-11-18');
+  await page.getByLabel(/Next visit date/i).fill('2026-11-18');
   await page
-    .getByRole('button', { name: 'Schedule visit', exact: true })
+    .getByRole('button', { name: /^Schedule visit$/i, exact: true })
     .click();
   await expect(
     page.getByRole('heading', { name: 'Visit · 2026-11-18' }),
   ).toBeVisible();
   await page
-    .getByLabel('Client report summary')
+    .getByLabel(/Client report summary/i)
     .fill('Synthetic weekly follow-up');
   await page
-    .getByRole('button', { name: 'Save visit draft', exact: true })
+    .getByRole('button', { name: /^Save visit draft$/i, exact: true })
     .click();
   await expect(
     page.getByRole('heading', { name: 'Visit · 2026-11-18' }),
   ).toBeVisible();
-  await expect(page.getByLabel('Client report summary')).toHaveValue(
+  await expect(page.getByLabel(/Client report summary/i)).toHaveValue(
     'Synthetic weekly follow-up',
   );
 });

@@ -1,5 +1,15 @@
 # Production Release 1.0 acceptance checklist
 
+## Owner-approved contractor Phase B · October 29 · local only
+
+Approved premium Property Operations now run within /preview with the original full
+module inventory and session repositories. Reference/portal pixel checks, exact
+sources, shared CRM and ordinary Estimates repair restrictions are exercised; see
+CONTRACTOR_BACK_OFFICE_PHASE_B.md and validation. No operational persistence/connected
+or physical recovery acceptance is implied. All historical SQL/pending customer/P1/
+approvals/financial/provider/Netlify/recovery gates remain. Release1.0 NOT READY / NOT
+AUTHORIZED; no deployment or merge. Older visual-approval holds are historical.
+
 ## Contractor Phase A polish · October 29 · local presentation only
 
 Package 1 improves explicit UI labels, exact inspection-date visibility, separate

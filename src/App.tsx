@@ -1,3 +1,4 @@
+import { WorkspaceNavigation } from './components/WorkspaceNavigation';
 import {
   lazy,
   Suspense,
@@ -33,6 +34,11 @@ const Phase3Workspace = lazy(() =>
 const PropertyWorkspace = lazy(() =>
   import('./components/property/PropertyWorkspace').then((m) => ({
     default: m.PropertyWorkspace,
+  })),
+);
+const ContractorPropertyWorkspace = lazy(() =>
+  import('./components/property/ContractorPropertyWorkspace').then((m) => ({
+    default: m.ContractorPropertyWorkspace,
   })),
 );
 const ContractorBackOfficeDesign = lazy(() =>
@@ -303,6 +309,39 @@ export function App() {
   }
   const company = companies.find((c) => c.id === companyId);
   const current = modules.find((m) => m.name === section);
+  // Exact local route only. All other modules and connected/control-plane gates retain their original shell.
+  if (
+    path === '/preview' &&
+    sample &&
+    !platform &&
+    company &&
+    section === 'Property operations'
+  )
+    return (
+      <Suspense
+        fallback={
+          <main role="status">Loading approved property operations…</main>
+        }
+      >
+        <ContractorPropertyWorkspace
+          key={company.id}
+          operations={repo}
+          company={company}
+          companies={companies}
+          onCompanyChange={setCompanyId}
+          message={message}
+          navigation={
+            <WorkspaceNavigation
+              platform={false}
+              sample={sample}
+              section={section}
+              onSection={setSection}
+            />
+          }
+        />
+      </Suspense>
+    );
+
   return (
     <div
       className="workspace"
@@ -342,43 +381,12 @@ export function App() {
             ))}
           </select>
         </label>
-        <nav aria-label="Workspace">
-          {(platform
-            ? [
-                'Organizations',
-                'Access & security',
-                'Module readiness',
-                'Activity',
-              ]
-            : modules
-                .filter(
-                  (m) =>
-                    m.phase === 1 &&
-                    (sample || !('previewOnly' in m && m.previewOnly)),
-                )
-                .map((m) => m.name)
-          ).map((name, i) => (
-            <button
-              key={name}
-              className={
-                section === name ||
-                (platform && section === 'Overview' && i === 0)
-                  ? 'active'
-                  : ''
-              }
-              onClick={() => setSection(name)}
-            >
-              <span aria-hidden="true">
-                {['◈', '▦', '↗', '≡', '▤', '▧', '○', '▣', '⚙'][i]}
-              </span>
-              {name}
-              {!platform &&
-                (modules.find((m) => m.name === name)?.phase ?? 1) > 1 && (
-                  <small>SOON</small>
-                )}
-            </button>
-          ))}
-        </nav>
+        <WorkspaceNavigation
+          platform={platform}
+          sample={sample}
+          section={section}
+          onSection={setSection}
+        />
         <div className="sidebar-footer">
           <strong>Built for your business.</strong>
           <p>Isolated data. Individual identity.</p>
