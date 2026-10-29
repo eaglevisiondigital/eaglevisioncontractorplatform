@@ -1,5 +1,12 @@
 # Contractor back-office visual & functional review
 
+## Latest: functioning Phase A concept available
+
+The owner requested an isolated premium visual concept after this initial walkthrough.
+Review /preview/contractor-design using [CONTRACTOR_BACK_OFFICE_DESIGN.md](CONTRACTOR_BACK_OFFICE_DESIGN.md)
+for the current screenshot matrix and approval checklist. The original /preview is
+preserved. Owner visual approval is still pending; no replacement is authorized.
+
 Prepared October29,2026 for owner review. Local synthetic data only; session state
 is disposable. No feature expansion or customer-portal redesign is proposed here.
 

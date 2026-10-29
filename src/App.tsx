@@ -35,6 +35,11 @@ const PropertyWorkspace = lazy(() =>
     default: m.PropertyWorkspace,
   })),
 );
+const ContractorBackOfficeDesign = lazy(() =>
+  import('./components/property/ContractorBackOfficeDesign').then((m) => ({
+    default: m.ContractorBackOfficeDesign,
+  })),
+);
 const PropertyPortalDesign = lazy(() =>
   import('./components/property/PropertyPortalDesign').then((m) => ({
     default: m.PropertyPortalDesign,
@@ -159,6 +164,12 @@ export function App() {
         : 'Signed in. If MFA is required, complete verification through your configured identity flow.',
     );
   }
+  if (path === '/preview/contractor-design')
+    return (
+      <Suspense fallback={<main>Loading isolated contractor concept…</main>}>
+        <ContractorBackOfficeDesign />
+      </Suspense>
+    );
   if (path === '/preview/customer-portal')
     return (
       <Suspense fallback={<main>Loading synthetic customer preview…</main>}>

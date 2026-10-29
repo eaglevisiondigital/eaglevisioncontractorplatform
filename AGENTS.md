@@ -1,5 +1,13 @@
 # Engineering instructions
 
+Contractor concept continuation: read docs/CONTRACTOR_BACK_OFFICE_DESIGN.md.
+Phase A is isolated at /preview/contractor-design; original /preview and locked
+customer portal remain unchanged. Presentation context defaults false; exact local
+route supplies separate existing synthetic repositories and scoped lazy CSS only.
+Reuse existing triage/source/repair/readiness actions, CAS and authority boundaries.
+No replacement/promotion before owner visual approval; no artwork regeneration.
+All13 SQL/pending customer/frozen P1/approval/financial/recovery/Netlify remain.
+
 Repair-readiness continuation: read docs/REPAIR_SCOPE_READINESS.md and
 CONTRACTOR_BACK_OFFICE_REVIEW.md. Six explicit internal sections bind exact saved
 repair revision/source/current policy/referenced catalog/calculation and review CAS.

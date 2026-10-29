@@ -1,4 +1,5 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useContext } from 'react';
+import { BackOfficeConcept } from './back-office-presentation';
 import type { Phase3Repository } from '../../lib/phase3';
 import type {
   RepairReadinessInput,
@@ -25,6 +26,7 @@ export function RepairScopeReadiness({
   revision: number;
   dirty: boolean;
 }) {
+  const concept = useContext(BackOfficeConcept);
   const resource = useResource(
     useCallback(async () => {
       const actor = repo.syntheticReadinessReviewer(org);
@@ -39,7 +41,11 @@ export function RepairScopeReadiness({
   const task = useTask();
   const data = !resource.loading && !resource.error ? resource.data : undefined;
   return (
-    <section className="repair-readiness" aria-label="Repair scope readiness">
+    <section
+      className="repair-readiness"
+      aria-label="Repair scope readiness"
+      id={concept ? 'concept-repair-readiness' : undefined}
+    >
       <div className="section-title">
         <h3>Repair scope readiness</h3>
         <button
@@ -51,10 +57,16 @@ export function RepairScopeReadiness({
         </button>
       </div>
       <p>
-        Internal draft review only. Completing all sections never authorizes
-        issuance, publication, customer approval, work execution or debt.
-        Measurement references are staff statements, not independent
-        verification.
+        {concept ? (
+          'Internal draft review only. Six confirmations never authorize issuance, work or customer obligations.'
+        ) : (
+          <>
+            Internal draft review only. Completing all sections never authorizes
+            issuance, publication, customer approval, work execution or debt.
+            Measurement references are staff statements, not independent
+            verification.
+          </>
+        )}
       </p>
       {dirty ? (
         <p role="status">
@@ -79,12 +91,62 @@ export function RepairScopeReadiness({
             {data.value.lock_revision}.
           </p>
           <p className="muted">
-            Synthetic reviewer: {data.actor}. Any saved revision or source,
-            calculation, selected catalog or tax-policy change invalidates the
-            prior confirmations. Session-only evidence.
+            {concept ? (
+              'Current saved evidence only · changes invalidate confirmations. Session-only staff review.'
+            ) : (
+              <>
+                Synthetic reviewer: {data.actor}. Any saved revision or source,
+                calculation, selected catalog or tax-policy change invalidates
+                the prior confirmations. Session-only evidence.
+              </>
+            )}
           </p>
+          {concept && (
+            <nav
+              className="concept-review-progress"
+              aria-label="Six-section review progress"
+            >
+              {data.value.sections.map((s, i) => (
+                <a
+                  key={s.id}
+                  data-state={
+                    s.confirmed
+                      ? 'confirmed'
+                      : s.stale
+                        ? 'stale'
+                        : 'outstanding'
+                  }
+                  href={'#concept-review-' + s.id}
+                  onClick={() =>
+                    document
+                      .getElementById('concept-review-' + s.id)
+                      ?.setAttribute('open', '')
+                  }
+                >
+                  <span aria-hidden="true">
+                    {s.confirmed ? '✓' : String(i + 1).padStart(2, '0')}
+                  </span>
+                  {s.label}
+                  <small>
+                    {s.confirmed
+                      ? 'Confirmed'
+                      : s.stale
+                        ? 'Review stale'
+                        : 'Needs review'}
+                  </small>
+                </a>
+              ))}
+            </nav>
+          )}
           <details>
             <summary>Observed condition and exact source</summary>
+            {concept && (
+              <p>
+                Measurement references are staff statements, not independent
+                verification. Published source evidence and current reviewer,
+                policy, catalog and calculation checks remain required.
+              </p>
+            )}
             <p>Observed: {data.value.evidence.finding.description}</p>
             <p>
               Contractor recommendation in source:{' '}
@@ -194,6 +256,8 @@ function ReviewSection({
   busy: boolean;
   onRecord(input: RepairReadinessInput): void;
 }) {
+  const concept = useContext(BackOfficeConcept);
+  const Container = concept ? 'details' : 'section';
   const [note, setNote] = useState(''),
     [attested, setAttested] = useState(section.confirmed);
   const [measurements, setMeasurements] = useState<RepairMeasurement[]>(() =>
@@ -238,12 +302,34 @@ function ReviewSection({
       'I reviewed project terms, scope details and expiration and identified no outstanding completeness questions.',
   };
   return (
-    <section
+    <Container
+      open={concept ? section.id === 'scope' && !section.confirmed : undefined}
+      id={concept ? 'concept-review-' + section.id : undefined}
+      data-review-state={
+        section.confirmed
+          ? 'confirmed'
+          : section.stale
+            ? 'stale'
+            : 'outstanding'
+      }
       className="readiness-card"
       aria-label={section.label}
       data-review-section={section.id}
     >
-      <h4>{section.label}</h4>
+      {concept ? (
+        <summary>
+          <span>{section.label}</span>
+          <small>
+            {section.confirmed
+              ? 'Confirmed for saved revision'
+              : section.stale
+                ? 'Stale · review again'
+                : 'Needs contractor review'}
+          </small>
+        </summary>
+      ) : (
+        <h4>{section.label}</h4>
+      )}
       <p>
         <strong>
           {section.confirmed
@@ -406,6 +492,6 @@ function ReviewSection({
           </button>
         </div>
       </fieldset>
-    </section>
+    </Container>
   );
 }

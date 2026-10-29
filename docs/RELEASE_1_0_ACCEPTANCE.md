@@ -1,5 +1,16 @@
 # Production Release 1.0 acceptance checklist
 
+## Contractor premium concept · Phase A only · October29
+
+One isolated synthetic design at /preview/contractor-design reuses working internal
+triage/source/repair/readiness components.57 focused responsive browser/101 domain
+passes, real screenshot matrix and visual checklist are prepared; owner approval
+PENDING. Original /preview and locked customer portal are preserved. See
+CONTRACTOR_BACK_OFFICE_DESIGN.md. This is neither operational persistence/connected
+acceptance nor replacement or launch authorization. All13 SQL/pending customer/P1/
+approvals, unfinished two-Mac recovery and provider/financial/Netlify gates persist.
+Release1.0 remains NOT READY / NOT AUTHORIZED.
+
 ## Local repair scope readiness package · October29
 
 Six internal review groups, explicit staff notes/attestations, measured references,

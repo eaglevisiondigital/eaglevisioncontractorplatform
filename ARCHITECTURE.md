@@ -1,5 +1,16 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Isolated contractor presentation concept · October29
+
+/preview/contractor-design lazy-loads one shell and .backoffice-concept-scoped CSS.
+New instances of existing Operations/PropertyRepository compose existing synthetic
+maintenance examples and PropertyWorkspace. Default-false presentation context
+changes only initial local tab, layout/disclosures and progress navigation in shared
+components. No authorization, repository, calculation or schema fork. Same-document
+pixel checks prove CSS does not restyle the original queue/locked portal after load.
+Current /preview is retained pending explicit owner visual approval. See
+docs/CONTRACTOR_BACK_OFFICE_DESIGN.md; all activation/recovery gates persist.
+
 ## Version-aware repair readiness composition · October29
 
 Six pure review groups reuse the existing estimate engine, saved versions, catalog,

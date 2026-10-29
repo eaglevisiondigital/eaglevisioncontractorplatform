@@ -1,4 +1,5 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useContext } from 'react';
+import { BackOfficeConcept } from './back-office-presentation';
 import type { Operations } from '../../lib/operations';
 import type { CompanyProfile } from '../../domain/platform';
 import {
@@ -103,7 +104,10 @@ function Inspections({
   state: PropertyState;
   refresh: () => void;
 }) {
-  const [tab, setTab] = useState('Inspections'),
+  const concept = useContext(BackOfficeConcept);
+  const [tab, setTab] = useState(
+      concept ? 'Maintenance & follow-up' : 'Inspections',
+    ),
     [visitId, setVisitId] = useState(state.visits[0].id),
     [plan, setPlan] = useState(structuredClone(state.plans[0])),
     [date, setDate] = useState(
@@ -144,6 +148,7 @@ function Inspections({
         ].map((t) => (
           <button
             key={t}
+            aria-pressed={concept ? tab === t : undefined}
             className={tab === t ? '' : 'secondary'}
             onClick={() => {
               setTab(t);

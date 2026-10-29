@@ -1,5 +1,17 @@
 # Security model · Phase 2
 
+## Contractor Phase A presentation boundary · October29
+
+Exact synthetic /preview/contractor-design alone supplies a default-false presentation
+context and separately instantiated existing sample repositories. It confers no
+membership or command authority. Source/reviewer checks, CAS/duplicates, uncertain
+holds and current readiness remain in unchanged domain/repository implementations.
+Disclosures do not change immutable evidence or customer projections;6/6 never
+permits issuance/work/financial authority. Scoped lazy CSS and same-document pixel
+checks preserve the original workspace and approved customer portal. No connected
+route, credential/session/hosted/financial/provider/recovery activation. Original
+workspace replacement requires owner visual approval; see contractor design record.
+
 ## Repair readiness review boundary · October29
 
 Current active same-company reviewer, retained source authorization and exact

@@ -1,5 +1,16 @@
 # Engineering decisions
 
+## October29 · review contractor presentation in isolation
+
+Pause feature expansion and implement one functioning premium back-office concept
+on a separate exact local preview route. Compose existing components and isolated
+instances of existing synthetic repositories; opt-in presentation context defaults
+off and CSS stays root-scoped/lazy-loaded. Favor scannable queue coordination,
+focused source review, clear draft identity and six-step current/stale disclosures;
+retain all commands/evidence/financial guards. No mobile overlay may obstruct review.
+Require explicit owner visual approval before replacing /preview. Approved customer
+portal/artwork remain locked; no domain/schema/hosted/recovery authority follows.
+
 ## October29 · explicit review of exact saved repair scope
 
 Add six staff review groups to existing maintenance-generated estimate drafts, with

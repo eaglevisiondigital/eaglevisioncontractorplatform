@@ -1,5 +1,20 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: premium contractor concept · Phase A visual review · October29
+
+[CONTRACTOR_BACK_OFFICE_DESIGN.md](docs/CONTRACTOR_BACK_OFFICE_DESIGN.md) records one
+working isolated concept at /preview/contractor-design. Contractor context, actual
+queue metrics, visible coordination, focused finding review, exact repair editing
+and compact six-section current/stale readiness reuse existing components/actions.
+Separate synthetic repositories and root-scoped lazy CSS preserve /preview and the
+locked customer portal.57 unique focused browser cases/101 domain-repository passes;
+final reruns nonadditive. Three palettes/viewports, exact sources, keyboard/Axe,
+responsive layout and same-document original/customer pixel isolation pass.165
+protected paths/four P1 artifacts unchanged. Real screenshot matrix and owner checklist
+prepared; VISUAL APPROVAL PENDING, NO WORKSPACE REPLACEMENT. No business/schema/hosted/
+Auth/financial/provider/deployment/merge. Recovery/Netlify/P1/customer gates persist;
+Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Latest: repair scope readiness & contractor review · October29 · local only
 
 [REPAIR_SCOPE_READINESS.md](docs/REPAIR_SCOPE_READINESS.md) records six functioning

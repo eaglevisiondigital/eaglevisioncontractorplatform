@@ -23,6 +23,7 @@ artifacts/branding/
 
 # Local property operations previews.
 artifacts/property/*.png
+artifacts/property/CONTRACTOR_DESIGN_SCREENSHOTS.md
 
 # Local Phase A customer portal concept screenshots.
 artifacts/property-design/

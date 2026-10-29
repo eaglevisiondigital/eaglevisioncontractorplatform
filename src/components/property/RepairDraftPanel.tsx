@@ -1,4 +1,5 @@
-import { useCallback, useState, useEffect, useRef } from 'react';
+import { useCallback, useState, useEffect, useRef, useContext } from 'react';
+import { BackOfficeConcept } from './back-office-presentation';
 import type { CompanyProfile } from '../../domain/platform';
 import type {
   MaintenanceItem,
@@ -24,6 +25,7 @@ export function RepairDraftPanel({
   onSource(source: MaintenanceSource): void;
   onChanged(): void;
 }) {
+  const concept = useContext(BackOfficeConcept);
   const org = company.id,
     task = useTask();
   const focus = useRef<HTMLElement>(null);
@@ -74,9 +76,16 @@ export function RepairDraftPanel({
           </p>
         </details>
         <p>
-          Proposed repair scope only. One unit and zero prices are unmeasured
-          placeholders. Review quantities, materials, labor, prices, tax and
-          markup. No issuance, work approval or financial obligation.
+          {concept ? (
+            'Proposed work stays separate from published observations. Review scope and quantities before confirming readiness. Issuance and work authority remain blocked.'
+          ) : (
+            <>
+              Proposed repair scope only. One unit and zero prices are
+              unmeasured placeholders. Review quantities, materials, labor,
+              prices, tax and markup. No issuance, work approval or financial
+              obligation.
+            </>
+          )}
         </p>
         <div className="maintenance-actions">
           <button
@@ -95,14 +104,29 @@ export function RepairDraftPanel({
             Open originating published report
           </button>
         </div>
-        <Estimates
-          key={opened.bundle.version.id}
-          repo={repo.estimates}
-          company={company}
-          canIssue={false}
-          initialBundle={opened.bundle}
-          draftOnly
-        />
+        {concept && (
+          <nav
+            className="concept-workflow-links"
+            aria-label="Repair draft sections"
+          >
+            <a href="#concept-scope-editor">
+              Edit proposed scope <span aria-hidden="true">↗</span>
+            </a>
+            <a href="#concept-repair-readiness">
+              Review readiness <span aria-hidden="true">↓</span>
+            </a>
+          </nav>
+        )}
+        <div id={concept ? 'concept-scope-editor' : undefined}>
+          <Estimates
+            key={opened.bundle.version.id}
+            repo={repo.estimates}
+            company={company}
+            canIssue={false}
+            initialBundle={opened.bundle}
+            draftOnly
+          />
+        </div>
       </section>
     );
   return (
