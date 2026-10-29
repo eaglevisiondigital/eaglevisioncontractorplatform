@@ -1,5 +1,16 @@
 # Production Release 1.0 acceptance checklist
 
+## Workstream 2C · disposable command service/custody only · October 29
+
+38 native PG17/20 custody cases prove restricted LOGIN/exact-command composition,
+pre-send caller records and actual Node service interruption/restart reconciliation.
+See MAINTENANCE_COMMAND_CUSTODY.md. Transitive helper/provisioner trust, genuine
+Auth/HTTP/MFA, operational migration/service, UI persistence, universal concurrency,
+DB/disk and physical recovery remain BLOCKED / NOT VERIFIED. No new deployment,
+hosted/provider/financial authority, production access or merge.202 protected existing
+paths/four P1 hashes unchanged; all13 SQL/pending customer/frozen P1/approvals/locked
+UIs preserved. P1 stays sequenced on thirteen history. NOT READY / NOT AUTHORIZED.
+
 ## Workstream 2B · disposable repair/readiness acceptance only · October 29
 
 48 native PG17/24 application cases validate exact reservations, one-shot claims,

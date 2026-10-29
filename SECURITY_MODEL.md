@@ -1,5 +1,18 @@
 # Security model · Phase 2
 
+## Workstream 2C restricted local command boundary · October 29
+
+A disposable LOGIN can execute only an exact principal/session/resource/command
+capability through a NOLOGIN gateway. Caller GUC/actor/company/role selections do not
+supply authority. Private/raw helper access and application DML reject; SQL helper
+owners/provisioning remain trusted and need independent operational review. Private
+bounded SQLite custody commits before send; UNKNOWN/no-receipt never permits replay,
+replacement IDs or startup continuation. Current post-wait authority and final
+capability row locks reject revocation/expiry without partial effects. The resource
+protocol covers composed commands and participating admin paths, not arbitrary old
+writers. No genuine JWT/Auth/MFA, encrypted operational custody, hosted/financial or
+physical recovery acceptance. See MAINTENANCE_COMMAND_CUSTODY.md and approval register.
+
 ## Workstream 2B fixture repair/readiness boundary · October 29
 
 Current source/CRM/member/principal/session/AAL and post-resource-wait checks precede

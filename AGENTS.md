@@ -1,5 +1,17 @@
 # Engineering instructions
 
+Workstream 2C continuation: read docs/MAINTENANCE_COMMAND_CUSTODY.md and validation/
+approval register. Test-only stdio service uses restricted disposable LOGINs and an
+exact-command NOLOGIN gateway, reusing unchanged2A/2B helpers. Private Node24 SQLite
+custody commits before every mutation/reservation; existing/UNKNOWN intents reconcile
+only, never resume/retry/new-ID. Preserve metadata/phase/receipt identity, source CAS,
+post-resource-wait/final-capability checks and append-only bounds. Helper owners and
+provisioning remain trusted fixtures, not genuine Auth or a fully deprivileged TCB.
+The shared lock protocol covers composed paths only; standalone/admin integration
+needs independent review. Proposed2D is separate adversarial/security preparation.
+No operational SQL/service/UI binding, hosted/financial/recovery/Netlify action or
+merge. All13/pending customer/frozen P1/approvals/locked UIs remain; AR held.
+
 Workstream 2B continuation: read docs/MAINTENANCE_DURABLE_REPAIR.md and the updated
 validation/approval register. New exact-source repair reservation/one-shot claims,
 guarded readiness intents/appends and ordinary estimate guards are TEST-ONLY in

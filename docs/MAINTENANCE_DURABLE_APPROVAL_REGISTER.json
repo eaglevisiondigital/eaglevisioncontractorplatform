@@ -63,7 +63,7 @@
       ]
     }
   ],
-  "nextLocalPackage": "Proposed 2C: test-only least-privileged local service, durable pre-send intent composition including reservation and whole-service restart/reconciliation; separate owner direction required",
+  "nextLocalPackage": "Proposed 2D: independent local adversarial/security review of exact privilege/capability/transport/custody/lock graph and non-executable forward integration/containment preparation; separate owner direction required",
   "heldForPlanning": "Biller Genie-inspired accounts receivable",
   "existingP1Approval": "PRESERVED / NOT REISSUED",
   "release": "NOT READY / NOT AUTHORIZED",
@@ -82,6 +82,25 @@
       "No pre-reserve operational intent custody, UI durability, DB-server/disk-loss or independent-device recovery proof"
     ],
     "validation": "MAINTENANCE_DURABLE_REPAIR_VALIDATION.json",
+    "operationalStatus": "NOT IMPLEMENTED / NOT AUTHORIZED"
+  },
+  "continuation2C": {
+    "baseCommit": "9219ef98a92e337b762b3df9c67eee9c0f3ee6fe",
+    "authorization": "TEST_ONLY_LOCAL_SERVICE_CUSTODY_AND_DISPOSABLE_NATIVE_VALIDATION",
+    "implemented": [
+      "Restricted disposable LOGIN and exact-command NOLOGIN SQL gateway",
+      "Private append-only SQLite pre-send command/phase custody including initial repair reservation",
+      "Actual service-process interruption/restart with exact read-only reconciliation and no UNKNOWN replay",
+      "Representative native resource/admin concurrency and final capability revocation rollback"
+    ],
+    "limits": [
+      "Fixture/bootstrap/helper-owner trust remains; no genuine Supabase JWT/Auth/MFA or operational principal verifier",
+      "Exact readiness capability compiled by trusted test provisioner, not an operational approval workflow",
+      "No universally integrated lock protocol for standalone SQL/arbitrary multi-resource admin writes",
+      "No operational encrypted custody/retention/backup policy or DB/disk/two-Mac recovery acceptance",
+      "No operational schema/service or UI binding/activation"
+    ],
+    "validation": "MAINTENANCE_COMMAND_CUSTODY_VALIDATION.json",
     "operationalStatus": "NOT IMPLEMENTED / NOT AUTHORIZED"
   }
 }

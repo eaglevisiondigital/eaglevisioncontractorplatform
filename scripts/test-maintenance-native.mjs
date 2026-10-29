@@ -9,9 +9,9 @@ const candidates = process.env.PG17_BIN
       '/usr/local/opt/postgresql@17/bin',
       '/usr/lib/postgresql/17/bin',
     ];
-const repairOnly = process.argv.slice(2).join(' ') === '--workstream=2b';
-if (process.argv.length > 2 && !repairOnly)
-  throw Error('Only --workstream=2b is supported.');
+const scope = process.argv.slice(2).join(' ');
+if (scope && !['--workstream=2b', '--workstream=2c'].includes(scope))
+  throw Error('Only --workstream=2b or --workstream=2c is supported.');
 let bin;
 for (const dir of candidates) {
   try {
@@ -91,8 +91,13 @@ try {
     [
       'node_modules/vitest/vitest.mjs',
       'run',
-      ...(repairOnly ? [] : ['tests/database/maintenance-persistence.test.ts']),
-      'tests/database/repair-persistence.test.ts',
+      ...(scope ? [] : ['tests/database/maintenance-persistence.test.ts']),
+      ...(scope === '--workstream=2c'
+        ? []
+        : ['tests/database/repair-persistence.test.ts']),
+      ...(scope === '--workstream=2b'
+        ? []
+        : ['tests/database/maintenance-service.test.ts']),
       '--maxWorkers=1',
     ],
     { env: { ...process.env, EV_TEST_PG_SOCKET: temp, EV_TEST_PG_CI: '' } },

@@ -1,5 +1,15 @@
 # Bounded development roadmap
 
+## Workstream 2C checkpoint
+
+Restricted disposable local service/capabilities, durable pre-send SQLite caller
+custody and real process restart/reconciliation now pass38 native/20 custody cases.
+See MAINTENANCE_COMMAND_CUSTODY.md. Approved UIs and2A/2B remain unchanged. Proposed
+smallest2D: independent local adversarial/security review of privilege graph,
+capabilities, transport, UNKNOWN custody and participating lock orders, plus a
+non-executable integration/containment review. No operational schema or hosted
+activation authority. Existing release/recovery/P1/financial/Netlify/AR holds persist.
+
 ## Workstream 2B checkpoint
 
 Test-only durable repair reservation/claims, guarded readiness intent/appends and

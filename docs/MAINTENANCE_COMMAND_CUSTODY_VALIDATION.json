@@ -1,0 +1,65 @@
+{
+  "package": "WORKSTREAM_2C",
+  "date": "2026-10-29",
+  "baseCommit": "9219ef98a92e337b762b3df9c67eee9c0f3ee6fe",
+  "status": "LOCAL_TEST_ONLY_PASS",
+  "nativePostgreSQL17": {
+    "passed": 38,
+    "failed": 0,
+    "command": "npm run test:maintenance-native -- --workstream=2c",
+    "historyFiles": 13,
+    "pendingCustomerLoaded": false,
+    "actualRestrictedLogins": true,
+    "actualNodeServiceProcesses": true,
+    "actualSQLiteCustodyWriteFailure": true,
+    "actualLockWaitsAndExpiry": true,
+    "mockClockOrPGliteSubstitution": false
+  },
+  "applicationCustody": {
+    "passed": 20,
+    "failed": 0,
+    "command": "npx vitest run tests/command-custody.test.ts"
+  },
+  "preservation": {
+    "existingProtectedPathsByteIdentical": 202,
+    "privateFrozenP1Hashes": 4,
+    "old2A2BHelpersFixturesAndSuitesChanged": false,
+    "historicalAndPendingMigrationsChanged": false,
+    "srcAndApprovedUIChanged": false,
+    "dependenciesOrLockChanged": false
+  },
+  "checks": [
+    "lint",
+    "strict/generated types",
+    "build",
+    "format",
+    "migration/property/customer integrity",
+    "diff"
+  ],
+  "actualProcessBoundaries": [
+    "Before intent persistence",
+    "After durable intent before send",
+    "Committed request/lost reply",
+    "Reservation before creation",
+    "Open creation transaction SIGKILL",
+    "Committed creation before acknowledgment",
+    "Open readiness append SIGKILL",
+    "Changed saved evidence after restart",
+    "Revoked staff authority after restart",
+    "Complete process restart with retained SQLite and exact DB receipts"
+  ],
+  "leastPrivilege": "Service LOGIN has one exact-capability gateway and no application/private DML; NOLOGIN gateway owner has fixed EXECUTE and no app DML/DDL/role management. Existing checked definer helper owners/provisioner remain trusted.",
+  "limits": [
+    "Not genuine signed JWT/Auth/MFA or public transport authentication",
+    "Local Unix-socket trust/CI synthetic password are lab-only",
+    "Not a production fully deprivileged privilege graph or dynamic approval service",
+    "Lock protocol is scoped to composed/participating paths; arbitrary historical/admin integration unverified",
+    "No encrypted operational custody, retention/backup or DB-server/disk/two-device acceptance",
+    "No operational migration/service/public connected route/UI persistence/activation"
+  ],
+  "priorEvidence": "Unchanged UI, 2A/2B and recovery baselines retained without local repetition. Existing CI runs automatically on push.",
+  "hostedActions": 0,
+  "operationalMigrationsCreated": 0,
+  "financialExecution": false,
+  "release": "NOT READY / NOT AUTHORIZED"
+}

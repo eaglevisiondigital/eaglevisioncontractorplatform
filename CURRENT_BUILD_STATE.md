@@ -1,5 +1,22 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: Workstream 2C restricted service and caller custody · October 29
+
+A runnable test-only stdio Node service now composes unchanged2A/2B commands through
+restricted disposable LOGINs and an exact-command NOLOGIN SQL gateway. Private SQLite
+FULL/WAL intent custody precedes first transmission, including reservation; UNKNOWN
+and repeated execution reconcile only. Actual service-process kills/restarts retain
+identity and never create another target or authority.38 native PG17 and20 custody
+cases pass, including final capability revocation rollback, real resource/admin waits,
+changed plan/estimate/tax/catalog and private-role denial. Types/lint/build/format and
+integrity pass.202 protected existing paths/four P1 hashes unchanged. No operational
+migration/service/UI activation; helper owners/provisioning remain trusted fixtures,
+not genuine Auth/MFA or universally integrated locking. See
+MAINTENANCE_COMMAND_CUSTODY.md and approval register. Proposed2D is independent local
+security/adversarial integration review under separate scope. All13 SQL/pending
+customer/frozen P1/approvals/recovery/financial/Netlify gates preserved; no hosted,
+production/deploy/merge. Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Latest: Workstream 2B test-only durable repair/readiness · October 29
 
 Exact-source reservations commit target IDs before a one-shot preparation claim.

@@ -28,3 +28,6 @@ artifacts/property/CONTRACTOR_POLISH_SCREENSHOTS.md
 
 # Local Phase A customer portal concept screenshots.
 artifacts/property-design/
+
+# Disposable Workstream 2C stdio-service compilation; never an application artifact.
+artifacts/maintenance-service-*/

@@ -1,5 +1,17 @@
 # Engineering decisions
 
+## October 29 · compose restricted test service with durable caller custody
+
+Workstream2C keeps existing2A/2B/domain/UI/SQL bytes unchanged. Use a disposable
+exact-command SQL gateway and restricted service LOGIN instead of a harness-owner
+runtime connection. Reuse Node24 SQLite for append-only caller intents/phases before
+transmission; missing receipts/old intents reconcile only. Exercise actual process
+kills, independent restart, failed custody writes and native admin/resource waits.
+Make transitive helper-owner trust, synthetic identity and incomplete integration
+explicit; no production privilege or universal deadlock claim. Propose independent2D
+adversarial/privilege/lock review separately. No operational migration, connected
+activation, duplicate P1 approval, financial/recovery/Netlify action or merge.
+
 ## October 29 · validate durable repair reservations and readiness without activation
 
 Workstream2B extends the disposable2A boundary only. Commit reserved identities and

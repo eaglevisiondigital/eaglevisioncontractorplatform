@@ -1,5 +1,17 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Workstream 2C local service and custody composition · October 29
+
+A test-only stdio Node process reuses MaintenancePersistence/RepairPersistence through
+a fixed query bridge. Its restricted disposable LOGIN has one exact-capability SQL
+gateway owned by a NOLOGIN executor, with no application-table DML. Existing checked
+helper owners remain in the trusted fixture boundary. Private SQLite stores only
+caller intents/phase receipts, before every mutation; it is not a second domain store.
+Startup and existing intents reconcile only. Shared composed-resource locks precede
+current authority, with final capability serialization. No operational schema,
+transport/Auth adapter or UI persistence. See MAINTENANCE_COMMAND_CUSTODY.md for
+actual process evidence, transitive privilege limits and separately proposed2D.
+
 ## Workstream 2B test-only repair/readiness composition · October 29
 
 An unwired repair-persistence port and disposable trusted fixture service layer on2A.
