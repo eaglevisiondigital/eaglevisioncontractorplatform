@@ -1,5 +1,16 @@
 # Security model · Phase 2
 
+## Workstream 3A synthetic change-request boundary · October 30
+
+Exact company/customer/property/issued-version/offer, expiry, trimmed note bounds and
+synthetic acknowledgment precede existing-engine decide_offer. Synchronous attempt
+holds and exact read-only reconciliation prevent duplicate/UNKNOWN replay; late
+context responses cannot produce another property's success. Notes are text only;
+no internal fields enter customer projections. This is session-only synthetic UX,
+not authenticated consent or contract/work/invoice/payment/debt authority. Connected
+customer contracts, routes, Auth and customer14 are untouched. Operational2F/recovery/
+P1/Netlify gates persist. See CUSTOMER_ESTIMATE_CHANGE_REQUESTS.md and validation.
+
 ## Workstream 2F decision boundary · October 29
 
 The operational blueprint inventories direct DML/ordinary/admin writers as well as

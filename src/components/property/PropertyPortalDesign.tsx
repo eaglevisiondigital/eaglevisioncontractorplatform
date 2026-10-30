@@ -711,20 +711,34 @@ function ConceptExperience({
                 </button>
               )}
               <CustomerEstimateReview
-                key={data.context.location_id}
+                key={
+                  data.context.customer_id +
+                  data.context.location_id +
+                  (versionId ?? 'all')
+                }
                 data={{
                   ...data,
                   reviews: versionId
                     ? data.reviews.filter((r) => r.version_id === versionId)
                     : data.reviews,
                 }}
+                changeRequests={historySearch}
                 busy={busy}
-                onRespond={(version, choice, consent) =>
-                  run(
-                    () => model.respond(version, choice, consent),
-                    'Synthetic preference recorded for this exact issued version. No work or financial activity authorized.',
-                  )
+                onRespond={(version, choice, consent, note) =>
+                  historySearch
+                    ? model
+                        .respond(version, choice, consent, note)
+                        .finally(() => render((n) => n + 1))
+                    : run(
+                        () => model.respond(version, choice, consent, note),
+                        'Synthetic preference recorded for this exact issued version. No work or financial activity authorized.',
+                      )
                 }
+                onReconcile={async (version) => {
+                  const result = model.reconcileResponse(version);
+                  render((n) => n + 1);
+                  return result;
+                }}
                 onViewReports={openReport}
               />
             </>

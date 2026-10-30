@@ -1,5 +1,17 @@
 # Production Release 1.0 acceptance checklist
 
+## Workstream 3A · local change requests only · October 30
+
+The approved property portal now supports exact-version customer change requests,
+trimmed bounded notes, explicit acknowledgment/confirmation and safe recorded receipt
+view using the existing engine. Local duplicate/expiry/context/privacy/immutable scope
+and responsive/accessibility checks are recorded in CUSTOMER_ESTIMATE_CHANGE_REQUESTS.md
+and validation. No genuine customer Auth/consent, durable connected decision writer,
+contract, invoice, dispatch, payment or debt authority. Original approvals/all13 SQL/
+customer14/frozen P1/four artifacts/locked UIs/2F/recovery/Netlify remain unchanged.
+Next proposed3B staff review/revision preparation is separately bounded. Release1.0
+remains NOT READY / NOT AUTHORIZED; no hosted/deploy/merge action.
+
 ## Workstream 2F · integration review prepared, no acceptance promotion · October 29
 
 The [single operational blueprint](MAINTENANCE_OPERATIONAL_BLUEPRINT.md) defines a

@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { createHash } from 'node:crypto';
 import { mkdir } from 'node:fs/promises';
+import { confirmPreference } from './helpers/property-portal';
 
 for (const approved of [false, true]) {
   const route = approved
@@ -180,9 +181,14 @@ for (const approved of [false, true]) {
         name: 'Customer estimate review',
       });
       await expect(review.locator('article')).toHaveCount(2);
-      await expect(
-        review.getByRole('button', { name: 'Preview approve version 2' }),
-      ).toBeDisabled();
+      if (approved)
+        await expect(
+          review.getByRole('button', { name: 'Preview approve version 2' }),
+        ).toBeEnabled();
+      else
+        await expect(
+          review.getByRole('button', { name: 'Preview approve version 2' }),
+        ).toBeDisabled();
       await capture('estimates');
       for (const word of [
         'INTERNAL',
@@ -245,14 +251,16 @@ for (const approved of [false, true]) {
         'data-version-id',
         version!,
       );
-      await review
-        .getByRole('checkbox', {
-          name: 'Confirm this is a synthetic review only',
-        })
-        .check();
+      if (!approved)
+        await review
+          .getByRole('checkbox', {
+            name: 'Confirm this is a synthetic review only',
+          })
+          .check();
       await review
         .getByRole('button', { name: 'Preview decline version 2' })
         .click();
+      if (approved) await confirmPreference(page);
       await expect(review).toContainText('Declined · synthetic preference');
       await expect(
         review.getByRole('button', { name: 'Preview approve version 2' }),

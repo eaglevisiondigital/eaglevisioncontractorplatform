@@ -3,6 +3,7 @@ import { PropertyRepository, propertyRepository } from './property';
 import { previewOperations } from './operations';
 import { sampleCompanies, type CompanyProfile } from '../domain/platform';
 import { ReleasePreview } from '../domain/release/preview';
+import type { Decision } from '../domain/release/types';
 import {
   projectIssuedReview,
   type CustomerContext,
@@ -15,10 +16,20 @@ import {
   type ReportReference,
 } from '../domain/property/inspection-comparison';
 /** UI laboratory only: reuses existing synthetic CRM/property/estimate and decision engines. No Supabase import. */
+export type PreviewReviewChoice = Decision['decision'];
+interface PreviewAttempt {
+  customer: string;
+  property: string;
+  offer: string;
+  choice: PreviewReviewChoice;
+  note: string;
+  state: 'pending' | 'unknown' | 'confirmed';
+}
 export class CustomerPortalPreviewModel {
   private active = false;
   private epoch = 0;
   private engines = new Map<string, ReleasePreview>();
+  private attempts = new Map<string, PreviewAttempt>();
   private versions: EstimateVersion[] = [];
   private customerId = '';
   private primaryLocation = '';
@@ -66,6 +77,7 @@ export class CustomerPortalPreviewModel {
   selectProperty(location: string) {
     if (!this.properties().some((p) => p.id === location))
       throw Error('Customer property unavailable');
+    if (this.locationId !== location) this.epoch++;
     this.locationId = location;
   }
   private context(): CustomerContext {
@@ -505,6 +517,10 @@ export class CustomerPortalPreviewModel {
     );
     return {
       context: c,
+      customerName: s.contexts.find(
+        (x) =>
+          x.customer_id === c.customer_id && x.location_id === c.location_id,
+      )!.customer_name,
       exampleAvailable: c.location_id === this.primaryLocation,
       reports,
       history: projectPublishedHistory(reports, c),
@@ -527,35 +543,118 @@ export class CustomerPortalPreviewModel {
         ),
       responses: this.versions
         .filter((v) => c.version_ids.includes(v.id))
-        .map((v) => ({
-          version_id: v.id,
-          decision:
-            this.engines.get(v.id)?.read('customer').release_decisions.at(-1)
-              ?.decision ?? null,
-        })),
+        .map((v) => {
+          const attempt = this.attempts.get(v.id);
+          const engine = this.engines.get(v.id)?.read('customer');
+          const offer = engine?.release_offers.find(
+            (o) => o.version_id === v.id,
+          );
+          const decision = engine?.release_decisions.at(-1);
+          const confirmed = !attempt || attempt.state === 'confirmed';
+          return {
+            version_id: v.id,
+            decision: confirmed ? (decision?.decision ?? null) : null,
+            note: confirmed ? (decision?.note ?? null) : null,
+            receipt_id: confirmed ? (decision?.id ?? null) : null,
+            recorded_at: confirmed ? (decision?.created_at ?? null) : null,
+            outcome: attempt?.state ?? 'not_attempted',
+            offer_status: !offer
+              ? ('unavailable' as const)
+              : Date.parse(offer.expires_at) <= Date.now()
+                ? ('expired' as const)
+                : ('available' as const),
+          };
+        }),
     };
   }
   async respond(
     version: string,
-    decision: 'accepted' | 'declined',
+    decision: PreviewReviewChoice,
     consent = false,
+    note = '',
   ) {
     const c = this.context();
+    if (typeof note !== 'string') throw Error('Invalid customer explanation');
+    const explanation = note.trim();
     if (
       consent !== true ||
       !c.version_ids.includes(version) ||
       this.read().reviews.find((r) => r.version_id === version)
         ?.review_state !== 'awaiting_action' ||
-      !['accepted', 'declined'].includes(decision)
+      !['accepted', 'declined', 'changes_requested'].includes(decision) ||
+      explanation.length > 2000 ||
+      (decision === 'changes_requested' && !explanation) ||
+      this.attempts.has(version)
     )
       throw Error('Customer review unavailable');
     const e = this.engines.get(version)!,
       offer = e.read('customer').release_offers[0];
-    await e.command('customer', 'decide_offer', {
-      offer_id: offer.id,
-      decision,
-      note: 'Synthetic preference only; no financial or legal execution',
-      consent: true,
-    });
+    if (
+      !offer ||
+      offer.version_id !== version ||
+      offer.customer_id !== c.customer_id ||
+      offer.organization_id !== c.organization_id ||
+      Date.parse(offer.expires_at) <= Date.now()
+    )
+      throw Error('Customer review unavailable');
+    const epoch = this.epoch;
+    const attempt: PreviewAttempt = {
+      customer: c.customer_id,
+      property: c.location_id,
+      offer: offer.id,
+      choice: decision,
+      note: explanation,
+      state: 'pending',
+    };
+    this.attempts.set(version, attempt);
+    try {
+      await e.command('customer', 'decide_offer', {
+        offer_id: offer.id,
+        decision,
+        note: explanation,
+        consent: true,
+      });
+      if (!this.active || this.epoch !== epoch)
+        throw Error('Preview context changed');
+      const receipt = this.matchResponse(version, attempt);
+      if (!receipt) throw Error('Missing exact response');
+      attempt.state = 'confirmed';
+      return structuredClone(receipt);
+    } catch {
+      attempt.state = 'unknown';
+      throw Error(
+        'Review outcome UNKNOWN. Read exact review status; do not resubmit.',
+      );
+    }
+  }
+  private matchResponse(version: string, attempt: PreviewAttempt) {
+    return this.engines
+      .get(version)
+      ?.read('customer')
+      .release_decisions.find(
+        (d) =>
+          d.offer_id === attempt.offer &&
+          d.organization_id === this.company.id &&
+          d.customer_id === attempt.customer &&
+          d.decision === attempt.choice &&
+          d.note === attempt.note,
+      );
+  }
+  /** Session-only exact read. Absence never clears UNKNOWN or permits another command. */
+  reconcileResponse(version: string) {
+    const c = this.context(),
+      attempt = this.attempts.get(version);
+    if (
+      !c.version_ids.includes(version) ||
+      !attempt ||
+      attempt.customer !== c.customer_id ||
+      attempt.property !== c.location_id ||
+      attempt.state === 'pending'
+    )
+      throw Error('Exact review status unavailable');
+    const receipt = this.matchResponse(version, attempt);
+    if (!receipt) return { status: 'undetermined' as const };
+    attempt.state = 'confirmed';
+    return { status: 'confirmed' as const, receipt: structuredClone(receipt) };
   }
 }

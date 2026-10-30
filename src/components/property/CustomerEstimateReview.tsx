@@ -1,7 +1,11 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { compareCustomerVersions } from '../../domain/customer/review';
 import { formatMinor } from '../../domain/estimating/calculation';
-import type { CustomerPortalPreviewModel } from '../../lib/customer-preview';
+import type {
+  CustomerPortalPreviewModel,
+  PreviewReviewChoice,
+} from '../../lib/customer-preview';
+import { CustomerReviewPreference } from './CustomerReviewPreference';
 
 /** Shared safe review presentation; caller supplies the synthetic-only decision operation. */
 export function CustomerEstimateReview({
@@ -9,17 +13,29 @@ export function CustomerEstimateReview({
   busy,
   onRespond,
   onViewReports,
+  changeRequests = false,
+  onReconcile,
 }: {
   data: ReturnType<CustomerPortalPreviewModel['read']>;
   busy: boolean;
   onRespond(
     version: string,
-    choice: 'accepted' | 'declined',
+    choice: PreviewReviewChoice,
     consent: boolean,
+    note?: string,
   ): Promise<unknown>;
   onViewReports(reportId: string | null): void;
+  changeRequests?: boolean;
+  onReconcile?(version: string): Promise<unknown>;
 }) {
   const [consent, setConsent] = useState(false);
+  const [editor, setEditor] = useState<{
+    version: string;
+    choice: PreviewReviewChoice;
+  } | null>(null);
+  const opener = useRef<HTMLButtonElement | null>(null);
+  const [readError, setReadError] = useState('');
+  const [sending, setSending] = useState(false);
   return (
     <section aria-label="Customer estimate review">
       <h2>Proposed work & issued estimates</h2>
@@ -30,18 +46,34 @@ export function CustomerEstimateReview({
       {!data.reviews.length && (
         <p>No authorized estimate is available for this property.</p>
       )}
-      <label>
-        <input
-          type="checkbox"
-          checked={consent}
-          onChange={(e) => setConsent(e.target.checked)}
-        />
-        Confirm this is a synthetic review only
-      </label>
+      {!changeRequests && (
+        <label>
+          <input
+            type="checkbox"
+            checked={consent}
+            onChange={(e) => setConsent(e.target.checked)}
+          />
+          Confirm this is a synthetic review only
+        </label>
+      )}
       {data.reviews.map((r) => {
-        const response = data.responses.find(
+        const result = data.responses.find(
           (x) => x.version_id === r.version_id,
-        )?.decision;
+        );
+        const response = result?.decision;
+        const held =
+          result?.outcome === 'unknown' || result?.outcome === 'pending';
+        const unavailable =
+          r.review_state === 'expired' ||
+          (changeRequests && result?.offer_status !== 'available');
+        const open = (
+          choice: PreviewReviewChoice,
+          button: HTMLButtonElement,
+        ) => {
+          opener.current = button;
+          setReadError('');
+          setEditor({ version: r.version_id, choice });
+        };
         return (
           <article
             className="finding-card"
@@ -63,10 +95,43 @@ export function CustomerEstimateReview({
                 ? 'Approved · synthetic preference'
                 : response === 'declined'
                   ? 'Declined · synthetic preference'
-                  : r.review_state === 'expired'
-                    ? 'Expired'
-                    : 'Awaiting your review'}
+                  : response === 'changes_requested'
+                    ? 'Changes requested · synthetic preference'
+                    : held
+                      ? 'Outcome unavailable · read exact review status'
+                      : result?.offer_status === 'unavailable'
+                        ? 'Unavailable'
+                        : unavailable
+                          ? 'Expired'
+                          : 'Awaiting your review'}
             </p>
+            {changeRequests && response && (
+              <section
+                className="customer-preference"
+                aria-label={`Recorded preference version ${r.version_number}`}
+              >
+                <p role="status">
+                  Synthetic preference recorded for this exact issued version.
+                  No work or financial activity authorized.
+                </p>
+                {result.note && (
+                  <>
+                    <h4>Your recorded note</h4>
+                    <p className="customer-preference-note">{result.note}</p>
+                  </>
+                )}
+                <p>
+                  {data.context.company_name} · {data.customerName} ·{' '}
+                  {data.context.property_label}
+                </p>
+                <p>
+                  Receipt {result.receipt_id} ·{' '}
+                  <time dateTime={result.recorded_at!}>
+                    {result.recorded_at}
+                  </time>
+                </p>
+              </section>
+            )}
             <p>{r.scope.description}</p>
             <p>
               Review by{' '}
@@ -101,10 +166,17 @@ export function CustomerEstimateReview({
             <div className="p3-actions">
               <button
                 disabled={
-                  busy || !consent || !!response || r.review_state === 'expired'
+                  busy ||
+                  sending ||
+                  (!changeRequests && !consent) ||
+                  !!response ||
+                  held ||
+                  unavailable
                 }
-                onClick={() =>
-                  void onRespond(r.version_id, 'accepted', consent)
+                onClick={(e) =>
+                  changeRequests
+                    ? open('accepted', e.currentTarget)
+                    : void onRespond(r.version_id, 'accepted', consent)
                 }
               >
                 Preview approve version {r.version_number}
@@ -112,14 +184,32 @@ export function CustomerEstimateReview({
               <button
                 className="secondary"
                 disabled={
-                  busy || !consent || !!response || r.review_state === 'expired'
+                  busy ||
+                  sending ||
+                  (!changeRequests && !consent) ||
+                  !!response ||
+                  held ||
+                  unavailable
                 }
-                onClick={() =>
-                  void onRespond(r.version_id, 'declined', consent)
+                onClick={(e) =>
+                  changeRequests
+                    ? open('declined', e.currentTarget)
+                    : void onRespond(r.version_id, 'declined', consent)
                 }
               >
                 Preview decline version {r.version_number}
               </button>
+              {changeRequests && (
+                <button
+                  className="secondary"
+                  disabled={
+                    busy || sending || !!response || held || unavailable
+                  }
+                  onClick={(e) => open('changes_requested', e.currentTarget)}
+                >
+                  Request changes version {r.version_number}
+                </button>
+              )}
               <button
                 className="secondary"
                 onClick={() => onViewReports(r.source_report_id)}
@@ -127,6 +217,57 @@ export function CustomerEstimateReview({
                 View inspection reports
               </button>
             </div>
+            {changeRequests && held && (
+              <div className="customer-preference">
+                <p role="status">
+                  No resubmission is permitted. A missing response does not
+                  prove the preference failed.
+                </p>
+                <button
+                  className="secondary"
+                  disabled={result?.outcome === 'pending'}
+                  onClick={() => {
+                    setReadError('');
+                    void onReconcile?.(r.version_id).catch(() =>
+                      setReadError(
+                        'Exact review status remains unavailable. No response was resubmitted.',
+                      ),
+                    );
+                  }}
+                >
+                  Read exact review status version {r.version_number}
+                </button>
+                {readError && <p role="alert">{readError}</p>}
+              </div>
+            )}
+            {changeRequests &&
+              editor?.version === r.version_id &&
+              !response &&
+              !held && (
+                <CustomerReviewPreference
+                  key={r.version_id + editor.choice}
+                  data={data}
+                  review={r}
+                  choice={editor.choice}
+                  onRecord={async (note) => {
+                    setSending(true);
+                    try {
+                      return await onRespond(
+                        r.version_id,
+                        editor.choice,
+                        true,
+                        note,
+                      );
+                    } finally {
+                      setSending(false);
+                    }
+                  }}
+                  onCancel={() => {
+                    setEditor(null);
+                    opener.current?.focus();
+                  }}
+                />
+              )}
           </article>
         );
       })}

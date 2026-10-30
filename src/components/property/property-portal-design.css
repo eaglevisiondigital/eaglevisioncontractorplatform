@@ -683,6 +683,39 @@
   gap: 12px;
   margin-top: 22px;
 }
+.portal-concept .customer-preference {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--concept-line);
+  overflow-wrap: anywhere;
+}
+.portal-concept .customer-preference label {
+  display: block;
+  margin-top: 16px;
+}
+.portal-concept .customer-preference textarea {
+  display: block;
+  margin-top: 7px;
+  width: 100%;
+  min-height: 140px;
+  resize: vertical;
+  padding: 12px 14px;
+  border: 1px solid var(--concept-line);
+  border-radius: 10px;
+  font: inherit;
+  color: var(--concept-ink);
+}
+.portal-concept .customer-preference small {
+  display: block;
+  margin-top: 10px;
+}
+.portal-concept .customer-preference textarea:focus-visible {
+  outline: 3px solid var(--company-color);
+  outline-offset: 4px;
+}
+.portal-concept .customer-preference-note {
+  white-space: pre-wrap;
+}
 .portal-concept .inspection-pair {
   gap: 22px;
   margin: 22px 0;

@@ -1,5 +1,16 @@
 # Engineering decisions
 
+## October 30 · reuse existing decisions for customer change requests
+
+Implement3A in the approved local property portal, reusing ReleasePreview's existing
+changes_requested/note support. Require explicit explanation/acknowledgment and a
+confirmation step for each preference. Keep exact version receipts, session-only
+UNKNOWN/no-retry handling and stale-context suppression outside the business engine;
+never rewrite issued evidence or broaden connected decision choices. Preserve default-
+off legacy/Phase A presentation and the approved visual system. Propose3B manual
+staff review/controlled revision through existing estimating, not automatic follow-on
+work or financial execution. All migration/P1/approval/2F/recovery/Netlify gates persist.
+
 ## October 29 · finish the integration decision, prepare customer business progress
 
 Owner-scoped2F produces one operational blueprint with a finite F00–F11 checklist,

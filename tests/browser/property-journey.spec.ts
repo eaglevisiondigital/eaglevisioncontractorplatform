@@ -1,4 +1,8 @@
-import { contractor, developerControls } from './helpers/property-portal';
+import {
+  contractor,
+  developerControls,
+  confirmPreference,
+} from './helpers/property-portal';
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { mkdir } from 'node:fs/promises';
@@ -50,11 +54,11 @@ test('property journey joins check-in history, exact repair scope and review-onl
       name: 'Preview approve version 2',
       exact: true,
     }),
-  ).toBeDisabled();
-  await review.getByRole('checkbox').check();
+  ).toBeEnabled();
   await review
     .getByRole('button', { name: 'Preview approve version 2', exact: true })
     .click();
+  await confirmPreference(page);
   await expect(review).toContainText('Approved · synthetic preference');
   await expect(
     review.getByRole('button', {
@@ -93,10 +97,10 @@ test('property journey joins check-in history, exact repair scope and review-onl
     .getByRole('button', { name: 'Estimates & repairs', exact: true })
     .click();
   await expect(review).toContainText('Approved · synthetic preference');
-  await review.getByRole('checkbox').check();
   await review
     .getByRole('button', { name: 'Preview decline version 1', exact: true })
     .click();
+  await confirmPreference(page);
   await expect(review).toContainText('Declined · synthetic preference');
   for (const word of [
     'INTERNAL',

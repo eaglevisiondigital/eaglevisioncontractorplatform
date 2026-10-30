@@ -1,5 +1,15 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Workstream 3A local customer preference composition · October 30
+
+CustomerPortalPreviewModel reuses existing ReleasePreview decisions for exact-version
+change requests/notes; session-only attempt outcome is not another decision ledger.
+CustomerEstimateReview opts into a focused keyed confirmation form only for the
+approved local property portal. Read-only reconciliation uses original offer/choice/
+note identity; no retry, durability or genuine Auth claim. Safe customer projections,
+existing engine/schema and connected API contracts remain unchanged. See
+CUSTOMER_ESTIMATE_CHANGE_REQUESTS.md; no operational maintenance or financial binding.
+
 ## Workstream 2F operational boundary blueprint · October 29
 
 docs/MAINTENANCE_OPERATIONAL_BLUEPRINT.md is the single current non-executable

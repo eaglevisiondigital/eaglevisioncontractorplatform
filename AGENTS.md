@@ -1,3 +1,14 @@
+Workstream 3A continuation: read docs/CUSTOMER_ESTIMATE_CHANGE_REQUESTS.md and
+validation. Approved local property portal now reuses ReleasePreview changes_requested
+and note/receipt semantics with explicit confirmation, exact context and 2000-character
+trimmed explanation. Session-only pending/UNKNOWN guards; exact read-only reconciliation,
+no retry or replacement. Keyed form/context guards prevent stale success; notes render
+as text. Phase A/legacy previews retain default-off presentation. No connected decision
+enum/schema/Auth/customer14 changes or financial/contract/work authority. Next proposed
+3B is manual staff review/controlled existing-estimate revision preparation, not auto-
+started. Preserve all13/pending customer/frozen P1/four artifacts/approvals/locked UIs,
+2F finite operational NO-GO, billing PROPOSED and recovery/Netlify/deploy/merge gates.
+
 Workstream 2F continuation: read docs/MAINTENANCE_OPERATIONAL_BLUEPRINT.md,
 CUSTOMER_TRANSACTION_HANDOFF.md, BILLING_ENHANCEMENTS_PROPOSED.json and approval
 register. 2F is documentation/design only: finite F00–F11 gates, no executable SQL

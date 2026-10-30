@@ -1,5 +1,20 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: Workstream 3A customer change requests · October 30
+
+The approved local /preview/property-portal now offers exact-issued-version change
+requests with trimmed mandatory customer notes (max2000), synthetic acknowledgment,
+confirmation, safe recorded note/receipt and working approve/decline. Existing
+ReleasePreview decision engine is reused; no second ledger or financial effect.
+Pending/UNKNOWN guards reject duplicates; exact read-only reconciliation never
+replays. Keyed context/form lifetimes and model epoch checks prevent stale success.
+Source/privacy/expiry/immutable-version and desktop/tablet/mobile evidence is in
+docs/CUSTOMER_ESTIMATE_CHANGE_REQUESTS.md and validation. Phase A, legacy customer
+preview, approved layout/artwork and back office remain; connected contracts/routes,
+all13/customer14/frozen P1/approvals/2F/billing/recovery/financial/Netlify gates persist.
+Next proposed3B: local staff change-request review and controlled existing-engine
+revision preparation. No hosted/deploy/merge; Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Latest: Workstream 2F integration decision and business handoff · October 29
 
 One non-executable operational blueprint now inventories existing records, missing

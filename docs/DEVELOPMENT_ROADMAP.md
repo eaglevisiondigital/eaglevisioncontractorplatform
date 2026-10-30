@@ -1,5 +1,16 @@
 # Bounded development roadmap
 
+## Workstream 3A locally implemented; next proposed3B
+
+[Customer change requests](CUSTOMER_ESTIMATE_CHANGE_REQUESTS.md) now function in the
+approved local property portal with exact issued-version notes, acknowledgment,
+confirmation, receipts and read-only uncertain-result handling. Existing engine and
+locked presentation are reused; no customer-connected or financial activation.
+Next smallest package: local contractor staff review of those exact requests and
+controlled existing-estimate revision preparation, preserving original issued scope,
+source/repair guards, duplicate/CAS/UNKNOWN and no auto-issue. 3B is proposed, not
+started. 2F finite integration gates and six PROPOSED billing requirements persist.
+
 ## Workstream 2F complete: finite integration path; Workstream3 handoff ready
 
 [Operational blueprint](MAINTENANCE_OPERATIONAL_BLUEPRINT.md) now defines F00–F11:

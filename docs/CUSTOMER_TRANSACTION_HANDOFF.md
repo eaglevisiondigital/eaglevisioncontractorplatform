@@ -1,5 +1,9 @@
 # Workstream 3 · version-specific estimate change-request handoff
 
+Latest: [Workstream3A is implemented locally](CUSTOMER_ESTIMATE_CHANGE_REQUESTS.md).
+The original2F handoff below is preserved as historical preparation; connected and
+financial authority remain closed. Next proposed package is staff review/revision.
+
 October 29, 2026 · prepared by Workstream 2F at base
 `d8299f5de525f8efd0a9a7cf55dc5eebabd6d8dd`.
 **HANDOFF READY · LOCAL SYNTHETIC ONLY · IMPLEMENTATION NOT STARTED.**
