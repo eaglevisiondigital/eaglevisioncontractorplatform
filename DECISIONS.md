@@ -1,5 +1,18 @@
 # Engineering decisions
 
+## October 30 · compare exact saved revisions before preparing a safe packet
+
+Reuse actual3A decisions, confirmed3B provenance and the existing estimate engine;
+never reinterpret a draft as issued or infer scope from note text. Canonically
+recalculate saved scope, explicitly allowlist customer fields and align exact line
+identities. Bind staff confirmation to the complete source/current saved context and
+lock revision. Freeze a separate packet snapshot with UUID/SHA-256; derive stale status
+outside it when the draft changes. Install one session hold before await, reject
+concurrent duplicates and retain UNKNOWN with exact read-only reconciliation only.
+No local persistence/Auth/issue/send/customer response/financial authority. Preserve
+locked interfaces and all13/customer14/P1/Netlify/2A–2F/billing/recovery gates. Proposed3D
+is controlled issuance/delivery preparation only. See docs/CUSTOMER_REVISION_REVIEW_PACKETS.md.
+
 ## October 30 · review actual customer requests before private estimate revision
 
 Share existing synthetic CRM/estimate state and a controlled same-tab handoff instead

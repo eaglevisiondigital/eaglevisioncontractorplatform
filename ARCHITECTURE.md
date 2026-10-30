@@ -1,5 +1,17 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Workstream 3C · exact saved revision packet
+
+CustomerRevisionPackets composes confirmed actual3A/3B provenance, current CRM/staff
+and Phase3Repository saved-state checks. Existing canonical calculations feed a narrow
+explicit scope projection; projectIssuedReview stays issued-only. Exact-ID differences
+and an immutable cloned/hash-bound local archive add no estimate engine or ledger.
+Opaque review context and final synchronous CAS/authority check precede one packet
+per request/draft/revision; UNKNOWN only reads original evidence. History derives
+staleness outside immutable snapshots. Additive Estimates view, no customer route,
+storage or delivery adapter. See docs/CUSTOMER_REVISION_REVIEW_PACKETS.md. Same-tab
+synthetic memory only; all existing schema/financial/hosted/recovery gates remain.
+
 ## Workstream 3B · shared synthetic request handoff
 
 The approved portal uses a per-company CustomerChangeWorkspace registry over the

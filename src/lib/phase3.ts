@@ -165,6 +165,41 @@ export class Phase3Repository {
     entry.authorize();
     return clone(entry.origin);
   }
+  /** Synchronous exact evidence for local packet CAS, never a connected adapter. */
+  customerRevisionState(org: string, actor: string, estimate: string) {
+    const state = this.state(org);
+    this.requireSyntheticEstimator(org, actor);
+    const origin = this.customerRevisionOrigin(org, estimate);
+    const draft = state.estimates.find((b) => b.estimate.id === estimate);
+    const source = state.history.find(
+      (v) => v.id === origin?.source_version_id && v.estimate_id === estimate,
+    );
+    if (
+      !origin ||
+      !draft ||
+      !source ||
+      draft.version.id !== origin.draft_version_id ||
+      draft.estimate.current_version_id !== draft.version.id ||
+      draft.estimate.status !== 'draft' ||
+      draft.version.status !== 'draft' ||
+      source.status !== 'issued' ||
+      source.organization_id !== org ||
+      draft.version.organization_id !== org ||
+      draft.version.supersedes_version_id !== source.id ||
+      this.repairBindings.has(estimate) ||
+      source.payload.customer_id !== origin.customer_id ||
+      draft.version.payload.customer_id !== origin.customer_id ||
+      source.payload.location_id !== origin.location_id ||
+      draft.version.payload.location_id !== origin.location_id
+    )
+      throw Error('Exact current customer revision evidence unavailable');
+    this.operations.syntheticProperty(
+      org,
+      origin.customer_id,
+      origin.location_id,
+    );
+    return clone({ origin, source, draft });
+  }
   async prepareSyntheticCustomerRevision(
     org: string,
     source: EstimateBundle,

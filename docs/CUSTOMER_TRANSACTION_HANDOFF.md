@@ -1,5 +1,17 @@
 # Workstream 3 · version-specific estimate change-request handoff
 
+## October 30 implementation continuity
+
+Workstreams [3A](CUSTOMER_ESTIMATE_CHANGE_REQUESTS.md),
+[3B](CUSTOMER_ESTIMATE_REVISIONS.md) and
+[3C](CUSTOMER_REVISION_REVIEW_PACKETS.md) are now implemented locally. Actual customer
+receipt -> explicit staff review -> existing-engine saved revision -> exact comparison
+and separately confirmed immutable safe packet work in one tab. Earlier implementation-
+not-started tables below remain historical handoff evidence. No issue/send/acceptance/
+contract/work/financial/connected authority is added. Next proposed3D is an exact
+packet/draft-bound local issuance/delivery preparation contract and dry-run preview;
+it does not activate those actions. All existing release/recovery/Netlify gates remain.
+
 Latest: [Workstream3A is implemented locally](CUSTOMER_ESTIMATE_CHANGE_REQUESTS.md).
 The original2F handoff below is preserved as historical preparation; connected and
 financial authority remain closed. Next proposed package is staff review/revision.

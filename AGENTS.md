@@ -1,3 +1,15 @@
+Workstream 3C continuation: read docs/CUSTOMER_REVISION_REVIEW_PACKETS.md and validation.
+/preview Estimates compares exact actual3A receipt/issued source with confirmed3B saved
+private draft. projectIssuedReview remains issued-only; narrow canonical allowlisted
+scope projection excludes private costs/notes. Explicit saved-current confirmation,
+current eligible synthetic staff/full provenance/CAS/repair guards precede immutable
+packet archive. One session hold before await; UNKNOWN blocks retry/new-revision bypass
+and exact read-only reconciliation only. Prior packet contents/hash remain unchanged,
+stale after edits; no customer URL/response/issue/send/financial authority. Same-tab
+memory is not genuine Auth or durable custody. Proposed3D is separately controlled
+issuance/delivery preparation only, not started. Preserve all13/customer14/P1/four
+artifacts/approvals/locked UIs/2A–2F/billing/Netlify/recovery/financial/deploy/merge gates.
+
 Workstream 3B continuation: read docs/CUSTOMER_ESTIMATE_REVISIONS.md and validation.
 Approved local portal and /preview Estimates share actual3A requests in one tab via
 shared CRM/estimate engines; existing inspection fixture instances stay isolated

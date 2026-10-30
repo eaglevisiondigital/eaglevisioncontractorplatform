@@ -1710,3 +1710,78 @@ fieldset legend {
 .customer-change-review dt {
   color: #4c6055;
 }
+
+/* Workstream3C: additive saved-revision comparison inside the existing Estimates shell. */
+.revision-review {
+  min-width: 0;
+}
+.revision-review p,
+.revision-review dd,
+.revision-review small {
+  overflow-wrap: anywhere;
+}
+.revision-review-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1rem;
+}
+.revision-review-columns > div {
+  min-width: 0;
+  padding: 0.8rem;
+  background: #f3f7f4;
+  border-radius: 8px;
+}
+.revision-review-heading > div:last-child {
+  border-left: 3px solid var(--company-color);
+}
+.revision-review-line {
+  padding: 1rem 0;
+  border-bottom: 1px solid #d9dfde;
+}
+.revision-review-line > small {
+  display: block;
+  margin: 0.4rem 0;
+}
+.revision-review-status {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid #52665b;
+  border-radius: 20px;
+}
+.revision-review-totals {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: 0.6rem;
+}
+.revision-review-totals article {
+  padding: 0.8rem;
+  background: #f3f7f4;
+  border-radius: 8px;
+}
+.revision-review-totals span {
+  display: block;
+}
+.revision-review-text {
+  white-space: pre-wrap;
+}
+.revision-review-mobile-label {
+  display: none;
+}
+.revision-review details {
+  margin: 1rem 0;
+}
+.revision-review-packet {
+  margin-top: 1.5rem;
+  border-top: 3px solid var(--company-color);
+}
+@media (max-width: 700px) {
+  .revision-review-columns,
+  .revision-review-totals {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .revision-review-mobile-label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+}

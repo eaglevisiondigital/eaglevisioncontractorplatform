@@ -1,5 +1,16 @@
 # Bounded development roadmap
 
+## Workstream 3C implemented locally; next proposed3D
+
+[Saved revision comparison and immutable packet](CUSTOMER_REVISION_REVIEW_PACKETS.md)
+now reuse actual3A/3B source/receipt/version and canonical estimating calculations.
+Explicit staff confirmation, clean current draft/CAS, allowlisting, frozen history and
+UNKNOWN no-retry remain. No issuance/delivery/customer response/financial activation.
+Next smallest3D: exact non-stale packet/draft-bound local issuance/delivery review
+contract and dry-run content preview, with separately reviewed one-shot authority;
+no enabling issue/send or connected/contract/payment paths. Not auto-started. Earlier
+proposed3C checkpoints below are historical. Recovery and Netlify remain separate gates.
+
 ## Workstream 3B implemented locally; next proposed3C
 
 [Actual customer requests now reach staff review](CUSTOMER_ESTIMATE_REVISIONS.md)

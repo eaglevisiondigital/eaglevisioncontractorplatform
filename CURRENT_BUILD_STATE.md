@@ -1,5 +1,21 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: Workstream 3C · saved comparison and immutable packet · October 30
+
+The actual3A request and confirmed3B private revision now feed an exact original
+issued-versus-current-saved comparison in /preview > Estimates. Explicit staff
+confirmation prepares an immutable allowlisted customer-safe snapshot with UUID,
+SHA-256, source/receipt/version/revision, canonical amounts and structured differences.
+Dirty/stale/ineligible/foreign/repair and UNKNOWN guards apply; prior packets stay
+unchanged and become stale after edits. No auto-preparation, issuance, delivery or
+customer response. Existing issued projection and locked shells remain. Same-tab
+memory only, no genuine Auth/durability. See docs/CUSTOMER_REVISION_REVIEW_PACKETS.md
+and validation:203 focused application/93 unique browser cases pass, including all3
+brands/viewports and zero axe/overflow findings. All13/customer14/frozen P1/four
+artifacts/approvals/Netlify/2A–2F/
+billing/recovery/financial restrictions persist. Release1.0 NOT READY / NOT AUTHORIZED.
+Next proposed3D: separately controlled local issuance/delivery preparation, not activation.
+
 ## Latest: Workstream 3B · actual request to private draft · October 30
 
 The approved local customer portal now shares actual3A ReleasePreview decisions with

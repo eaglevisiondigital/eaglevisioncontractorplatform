@@ -1,3 +1,4 @@
+import { RevisionReviewPacket } from './RevisionReviewPacket';
 import { CustomerChangeRequests } from './CustomerChangeRequests';
 import { customerChangeWorkspace } from '../../lib/customer-change-workspace';
 import { BackOfficeText } from '../property/back-office-copy';
@@ -286,7 +287,9 @@ function EstimateEditor({
   onClose: () => void;
 }) {
   const [p, setP] = useState(() => structuredClone(initial.version.payload));
-  const [tab, setTab] = useState<'build' | 'preview' | 'history'>('build');
+  const [tab, setTab] = useState<'build' | 'preview' | 'history' | 'revision'>(
+    'build',
+  );
   const [importing, setImporting] = useState(false);
   const task = useTask();
   const readonly =
@@ -432,6 +435,17 @@ function EstimateEditor({
         </details>
       )}
       <div className="p3-tabs">
+        {changeOnly &&
+          repo === customerChangeWorkspace.repo.estimates &&
+          resources.data?.change?.draft_version_id === initial.version.id && (
+            <button
+              aria-pressed={tab === 'revision'}
+              className={tab === 'revision' ? 'active' : 'secondary'}
+              onClick={() => setTab('revision')}
+            >
+              Revision comparison & packet
+            </button>
+          )}
         {(['build', 'preview', 'history'] as const).map((t) => (
           <button
             aria-pressed={tab === t}
@@ -483,6 +497,17 @@ function EstimateEditor({
             </button>
           ))}
         </>
+      ) : tab === 'revision' &&
+        changeOnly &&
+        repo === customerChangeWorkspace.repo.estimates ? (
+        <RevisionReviewPacket
+          org={company.id}
+          estimate={initial.estimate.id}
+          version={initial.version.id}
+          revision={initial.version.lock_revision}
+          editor={p}
+          dirty={dirty}
+        />
       ) : tab === 'preview' ? (
         <CustomerEstimatePreview
           bundle={{ ...initial, version: previewVersion }}

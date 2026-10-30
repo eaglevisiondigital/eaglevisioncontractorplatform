@@ -532,19 +532,47 @@ export class CustomerPortalPreviewModel {
       this.repo.publish(c.organization_id, visit);
     }
   }
+  private projectVersion(v: EstimateVersion, c: CustomerContext) {
+    const s = this.repo.read(c.organization_id);
+    const report = s.reports.find(
+      (r) => r.customer_id === c.customer_id && r.location_id === c.location_id,
+    );
+    return projectIssuedReview(
+      v,
+      c,
+      this.versions.indexOf(v) > 0 && report
+        ? {
+            source_report_id: report.id,
+            finding_id: report.findings[0].id,
+            source_line_id: v.payload.lines.at(-1)!.id,
+          }
+        : null,
+      {
+        organization_id: c.organization_id,
+        customer_id: c.customer_id,
+        location_id: c.location_id,
+        estimate_id: s.bundle.estimate.id,
+      },
+    );
+  }
+  /** Same exact issued projection as the customer view, independent of login lifecycle. */
+  staffIssuedReview(version: string) {
+    const v = this.versions.find((v) => v.id === version);
+    if (!v) throw Error('Original issued review unavailable');
+    return this.projectVersion(v, {
+      organization_id: this.company.id,
+      customer_id: this.customerId,
+      location_id: this.primaryLocation,
+      company_name: this.company.name,
+      primary_color: this.company.primary_color,
+      property_label: '',
+      reports: true,
+      version_ids: this.versions.map((v) => v.id),
+    });
+  }
   read() {
     const c = this.context(),
-      s = this.repo.read(c.organization_id),
-      report = s.reports.find(
-        (r) =>
-          r.customer_id === c.customer_id && r.location_id === c.location_id,
-      );
-    const binding = {
-      organization_id: c.organization_id,
-      customer_id: c.customer_id,
-      location_id: c.location_id,
-      estimate_id: s.bundle.estimate.id,
-    };
+      s = this.repo.read(c.organization_id);
     const reports = this.repo
       .portal(c.organization_id, c.customer_id)
       .reports.filter((r) => r.location_id === c.location_id);
@@ -572,20 +600,7 @@ export class CustomerPortalPreviewModel {
       cadences,
       reviews: this.versions
         .filter((v) => c.version_ids.includes(v.id))
-        .map((v, i) =>
-          projectIssuedReview(
-            v,
-            c,
-            i && report
-              ? {
-                  source_report_id: report.id,
-                  finding_id: report.findings[0].id,
-                  source_line_id: v.payload.lines.at(-1)!.id,
-                }
-              : null,
-            binding,
-          ),
-        ),
+        .map((v) => this.projectVersion(v, c)),
       responses: this.versions
         .filter((v) => c.version_ids.includes(v.id))
         .map((v) => {

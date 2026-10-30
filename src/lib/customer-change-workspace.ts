@@ -233,6 +233,36 @@ export class CustomerChangeWorkspace {
       );
     }
   }
+  /** Confirmed actual3A/3B evidence for local-only packet preparation; UNKNOWN never advances. */
+  confirmedRevision(org: string, actor: string, estimate: string) {
+    this.staff(org, actor);
+    const evidence = this.repo.estimates.customerRevisionState(
+      org,
+      actor,
+      estimate,
+    );
+    const request = this.requests(org, actor).find(
+      (r) => r.receipt.id === evidence.origin.receipt.id,
+    );
+    const attempt = request && this.attempts.get(request.receipt.id);
+    if (
+      !request ||
+      !attempt ||
+      attempt.state !== 'prepared' ||
+      attempt.draft !== evidence.draft.version.id ||
+      !same(request.receipt, evidence.origin.receipt) ||
+      !same(request.version, evidence.source) ||
+      request.offer_id !== evidence.origin.offer_id ||
+      request.location_id !== evidence.origin.location_id
+    )
+      throw Error(
+        'Confirmed exact revision required; reconcile UNKNOWN before packet preparation',
+      );
+    const sourceReview = this.models
+      .get(org)!
+      .staffIssuedReview(evidence.source.id);
+    return structuredClone({ evidence, request, sourceReview });
+  }
   async reconcile(org: string, actor: string, receipt: string) {
     this.staff(org, actor);
     const attempt = this.attempts.get(receipt);

@@ -1,5 +1,18 @@
 # Security model · Phase 2
 
+## Workstream 3C · customer-safe packet boundary
+
+Packet preparation checks current eligible synthetic staff, actual receipt/offer,
+exact immutable issued source, customer/property, saved draft/version/lock revision,
+full reviewed context and clean editor, including after async hashing. Repair and
+unresolved UNKNOWN reject. Strict reconstructed fields exclude private estimate/
+workforce/repair data; issued projection is unchanged. One session hold and archive
+uniqueness prevent duplicate/revision bypass; exact read-only reconciliation cannot
+replay. Old packet/hash remains immutable and stale after edits. No customer URL,
+response, issue/send, contract/work/financial authority; local SHA-256 is not a signature
+or genuine Auth/durable custody. See docs/CUSTOMER_REVISION_REVIEW_PACKETS.md. All
+existing schema/P1/approval/hosted/recovery/Netlify/deploy/merge restrictions persist.
+
 ## Workstream 3B · local staff review boundary
 
 Only actual3A customer receipts with exact offer/version/customer/property enter
