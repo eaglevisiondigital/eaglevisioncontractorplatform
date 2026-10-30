@@ -1,5 +1,22 @@
 # Bounded development roadmap
 
+## Workstream 2F complete: finite integration path; Workstream3 handoff ready
+
+[Operational blueprint](MAINTENANCE_OPERATIONAL_BLUEPRINT.md) now defines F00–F11:
+retain verified local work; independently review exact authority/ownership/writers;
+decide custody/infrastructure; complete original recovery/P1; separately review
+customer14 and future maintenance history; then scoped implementation, dormant
+installation, provisioning and connected acceptance. No operational authority or
+automatic2G/2H. D001 scoped FIXED/operational BLOCKED, D002 PARTIAL, D009 BLOCKED.
+
+Next concrete local business package is [version-specific estimate change requests
+and customer notes](CUSTOMER_TRANSACTION_HANDOFF.md), reusing existing decisions and
+approved portal components. Handoff prepared, implementation not started; unrelated
+recovery/Netlify waits do not block it. [Billing enhancement requirements](BILLING_ENHANCEMENTS_PROPOSED.json)
+are all PROPOSED; new Release1 candidates versus later enhancements need owner scope
+decisions, without dropping existing release obligations or lifting the AR hold.
+Earlier next-package recommendations below are historical; all approvals/gates persist.
+
 ## Workstream 2E checkpoint and next owner decision
 
 Separate issuer/one-shot server claim and participating writer contract now pass30

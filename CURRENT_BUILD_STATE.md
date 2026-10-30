@@ -1,5 +1,22 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: Workstream 2F integration decision and business handoff · October 29
+
+One non-executable operational blueprint now inventories existing records, missing
+private persistence/issuer/Auth/custody/adapters, complete known writers and ownership,
+with finite F00–F11 implementation/approval/acceptance gates. See
+docs/MAINTENANCE_OPERATIONAL_BLUEPRINT.md. 2A–2E code/evidence remains unchanged:
+D001 FIXED only in new2E/operational integration BLOCKED; D002 PARTIAL; D009 BLOCKED.
+No automatic further synthetic series. Existing P1 approval remains valid after
+original recovery prerequisites, against exactly13 installed histories; customer14
+and later maintenance history remain separate decisions. No duplicate P1 approval.
+Next business handoff: exact-version customer change requests/notes using existing
+ReleasePreview decisions in the approved property portal; not implemented by2F.
+See CUSTOMER_TRANSACTION_HANDOFF.md. BILLING_ENHANCEMENTS_PROPOSED.json records six
+enhancements, all PROPOSED/no feature approval; core release requirements retained,
+AR implementation/execution held. Documentation only; no UI/code/schema/Auth/hosted/
+financial/recovery/Netlify/deploy/merge action. NOT READY / NOT AUTHORIZED.
+
 ## Latest: Workstream 2E server-owned authority · October 29
 
 New disposable2E runtime requires a separately committed exact issuer claim, bound to

@@ -1,5 +1,19 @@
 # Production Release 1.0 acceptance checklist
 
+## Workstream 2F · integration review prepared, no acceptance promotion · October 29
+
+The [single operational blueprint](MAINTENANCE_OPERATIONAL_BLUEPRINT.md) defines a
+finite integration/approval path and unchanged P1→separate customer/later-history
+boundaries. Local2A–2E evidence remains; genuine Auth/ownership/all-writer/custody/
+recovery/connected acceptance is not supplied by design. D001 scoped new2E FIXED,
+operational BLOCKED; D002 PARTIAL; D009 BLOCKED. Independent design approval pending.
+[Workstream3](CUSTOMER_TRANSACTION_HANDOFF.md) is a prepared local customer change-
+request handoff, not implemented here. [Six billing enhancements](BILLING_ENHANCEMENTS_PROPOSED.json)
+remain PROPOSED, with no owner-approved scope expansion or removal of required
+invoicing/schedules/reminders/recurring/accounting/reconciliation obligations.
+All13/pending customer/frozen P1/four artifacts/approvals/locked UIs and financial/
+recovery/Netlify gates unchanged. No hosted/deploy/merge. NOT READY / NOT AUTHORIZED.
+
 ## Workstream 2E · local claim architecture, operational NO-GO · October 29
 
 30 new nativePG17/21 application cases demonstrate separate durable exact claim

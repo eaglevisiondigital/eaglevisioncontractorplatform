@@ -1,5 +1,20 @@
 # Engineering decisions
 
+## October 29 · finish the integration decision, prepare customer business progress
+
+Owner-scoped2F produces one operational blueprint with a finite F00–F11 checklist,
+not another executable simulation or operational migration. Preserve original failing
+evidence and scoped D001/D002/D009 results. Review genuine issuer/ownership/one-shot
+recovery, complete writer participation and encrypted custody before executable SQL;
+exact installation/provisioning/acceptance remain separately authorized. Original P1
+approval and thirteen-history sequencing remain; customer14/later maintenance history
+are independent decisions. Recommend Workstream3 exact-version change requests/notes
+in the property portal, reusing existing ReleasePreview support already present in
+/preview/release. Handoff only, no automatic implementation or UI redesign. Record
+six Biller Genie-inspired requirements as PROPOSED, distinguishing baseline Release1
+obligations from unapproved enhancements; AR execution/implementation remains held.
+No automatic2G/2H, credentials, hosted/financial/recovery/Netlify/deploy/merge action.
+
 ## October 29 · server-owned claim before restricted maintenance mutation
 
 Address2D D001 with a new disposable role-separated issuer/claim/outcome contract,

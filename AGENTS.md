@@ -1,3 +1,15 @@
+Workstream 2F continuation: read docs/MAINTENANCE_OPERATIONAL_BLUEPRINT.md,
+CUSTOMER_TRANSACTION_HANDOFF.md, BILLING_ENHANCEMENTS_PROPOSED.json and approval
+register. 2F is documentation/design only: finite F00–F11 gates, no executable SQL
+or adapter. Original P1 approval stays valid against exactly13 history after original
+recovery prerequisites; pending customer14 and later maintenance history separately
+reviewed/authorized. D001 scoped new2E FIXED/operational BLOCKED; D002 PARTIAL; D009
+BLOCKED. No automatic2G/2H or repeated simulations. Next local business handoff is
+version-specific customer change requests/notes reusing existing ReleasePreview;
+handoff only, not started. Six billing enhancements all PROPOSED; AR implementation/
+execution held. Preserve locked UIs/all13/pending customer/frozen P1/four artifacts/
+approvals and all Auth/hosted/financial/recovery/Netlify/deploy/merge gates.
+
 Workstream 2E continuation: read docs/MAINTENANCE_COMMAND_AUTHORITY.md, validation,
 MAINTENANCE_AUTHORITY_PRIVILEGE_PLAN.md and approval register. New2E test-only runtime
 requires a separate issuer-committed exact phase/backend/full-XID claim and private

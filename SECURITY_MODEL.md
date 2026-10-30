@@ -1,5 +1,17 @@
 # Security model · Phase 2
 
+## Workstream 2F decision boundary · October 29
+
+The operational blueprint inventories direct DML/ordinary/admin writers as well as
+participating gateways; catalog coverage, genuine identity/MFA, narrow definer owners,
+rollback/crash/restore-safe authority, encrypted custody and connected acceptance
+remain explicit gates. A design is not independent sign-off. D001 remains FIXED only
+in disposable2E, operationally BLOCKED; D002 PARTIAL/D009 BLOCKED. No new SQL/grants,
+Auth/credential/HTTP/UI binding or hosted action. Workstream3 is a local handoff for
+existing exact-version synthetic change-request preferences only, never legal/payment
+consent. Six billing enhancements remain PROPOSED. See operational blueprint and
+approval register; all existing P1/history/customer/recovery/financial/Netlify gates.
+
 ## Workstream 2E exact evaluated boundary · October 29
 
 D001 FIXED for new restricted2E roles: mutation requires a separate trusted issuer's

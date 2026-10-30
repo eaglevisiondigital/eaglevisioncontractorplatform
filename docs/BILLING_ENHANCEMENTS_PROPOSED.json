@@ -1,0 +1,106 @@
+{
+  "package": "WORKSTREAM_2F_BILLING_REQUIREMENTS",
+  "date": "2026-10-29",
+  "baseCommit": "d8299f5de525f8efd0a9a7cf55dc5eebabd6d8dd",
+  "status": "PROPOSED",
+  "ownerFeatureApproval": false,
+  "authority": "Requirements planning only; no implementation, new release commitment, schema, sending, billing or payment activation",
+  "inspiration": "Owner-requested Biller Genie-inspired categories; no claim about that product's current capabilities or integration",
+  "existingRelease1Scope": "Original README invoicing, schedules, authorized recurring payments, reminders, accounting/reconciliation and customer lifecycle remain required scope. Local internal/sandbox foundations are not operational acceptance. New enhancements below neither replace nor silently enlarge approved release scope.",
+  "invariants": [
+    "Reuse existing customers, service locations, estimates, jobs, invoices, schedules and payment/ledger models",
+    "Tenant, property and payer visibility/authority are separate; never infer cross-company or payer access",
+    "NMI preferred; Authorize.Net optional and independently bound; neither activated",
+    "No financial execution or outbound communication from synthetic consent/preferences",
+    "UNKNOWN payment/delivery outcomes are held and reconciled, never automatically retried",
+    "Keep approved customer/contractor presentation and all migration/P1/recovery/Netlify gates"
+  ],
+  "requirements": [
+    {
+      "id": "B001",
+      "feature": "Accounts Receivable Command Center",
+      "status": "PROPOSED",
+      "existing": "Internal branded invoices, invoiceBalance/verifyLedger, synthetic receivable/capture/refund events and reconciliation foundations",
+      "newRequirements": [
+        "Read-only tenant receivable overview, aging/as-of currency-aware filters and source drilldown",
+        "Explicit balance freshness, disputed/held/unknown states and staff review queues without new postings"
+      ],
+      "suggestedPlacement": "PROPOSED_RELEASE_1_CANDIDATE_READ_ONLY_PREPARATION; owner scope decision pending",
+      "dependencies": "Genuine invoice/credit/payment/schedule source semantics, permission matrix, as-of/aging policy and reconciliation truth; never add a second ledger",
+      "acceptance": "Balances reconcile to existing source IDs/currencies/as-of date; no forecast/unknown payment counted as settled; tenant/payer negatives",
+      "ownerFeatureApproval": false
+    },
+    {
+      "id": "B002",
+      "feature": "Payment-aware invoice reminders",
+      "status": "PROPOSED",
+      "existing": "README reminder intent, internal message sink, tenant branded preparation, consent/suppression and delivery evidence foundations; real sending disabled",
+      "newRequirements": [
+        "Recheck current authorized invoice balance, credits, disputes and in-flight/UNKNOWN payments immediately before preparing/sending a reminder",
+        "Deduplicate reminder identity, apply approved cadence/timezone/recipient policy and stop on unknown delivery"
+      ],
+      "suggestedPlacement": "PROPOSED_RELEASE_1_CANDIDATE_PREPARATION_ONLY; sending remains separately gated",
+      "dependencies": "Authoritative balance and consent/sender/suppression, durable outbox/provider delivery/reconciliation, approved cadence and exact send authorization",
+      "acceptance": "Paid/credited/held/uncertain items do not generate misleading demands; duplicate/lost-response tests; no actual send in local demo",
+      "ownerFeatureApproval": false
+    },
+    {
+      "id": "B003",
+      "feature": "Multi-property billing and authorized payer relationships",
+      "status": "PROPOSED",
+      "existing": "Customers/service locations and explicit customer/property access exist; invoices reference an existing customer and immutable scope",
+      "newRequirements": [
+        "Explicit bill-to payer/delegate authority distinct from property viewer/owner and staff membership",
+        "Reviewable per-property allocations and statement grouping without replacing original invoice identities or double-counting balances"
+      ],
+      "suggestedPlacement": "PROPOSED_LATER_ENHANCEMENT; owner may separately select a narrower Release1 package",
+      "dependencies": "Payer delegation/revocation/consent and invoice allocation design, independent privacy/schema/financial review",
+      "acceptance": "A viewer cannot pay/authorize/view another payer's documents by relationship inference; allocations sum exactly without duplicate debt",
+      "ownerFeatureApproval": false
+    },
+    {
+      "id": "B004",
+      "feature": "Recurring maintenance billing and controlled autopay",
+      "status": "PROPOSED",
+      "existing": "README recurring agreements/authorized recurring payments, inspection cadence, proposed schedules and provider intent/idempotency foundations; no operational recurrence/autopay",
+      "newRequirements": [
+        "Billing recurrence tied to separately authorized agreement/service period, never inferred from an inspection plan",
+        "Explicit merchant/payer/token/amount/date mandate, limits, cancellation/revocation and failure/UNKNOWN hold controls"
+      ],
+      "suggestedPlacement": "PROPOSED_LATER_ENHANCEMENT; baseline recurring-payment requirement stays on existing acceptance list",
+      "dependencies": "Genuine agreement, mandate/token custody, provider-specific recurring support, reviewed fee/tax/rail rules and exact execution authorization",
+      "acceptance": "No charge on cadence/visit/maintenance review alone; ceiling/period/duplicate/revocation/UNKNOWN tests and independent provider acceptance",
+      "ownerFeatureApproval": false
+    },
+    {
+      "id": "B005",
+      "feature": "Customer payment-plan requests",
+      "status": "PROPOSED",
+      "existing": "Estimate proposed deposit/milestone/dated schedules and internal test one-time payment authorizations; not a customer negotiation workflow",
+      "newRequirements": [
+        "Version-specific customer request and staff review/counterproposal against exact existing invoice/scope",
+        "Retain original debt/schedule until separately authorized replacement; request never grants a mandate or changes balances"
+      ],
+      "suggestedPlacement": "PROPOSED_LATER_ENHANCEMENT; local request-only UX could be separately scoped after Workstream3",
+      "dependencies": "Reviewed schedule amendment, eligibility/dispute/consent policy, legal/financial review before operative terms",
+      "acceptance": "Rejected/pending/countered requests have no financial effect; integer installment totals/dates and exact payer/version access verified",
+      "ownerFeatureApproval": false
+    },
+    {
+      "id": "B006",
+      "feature": "Accounting synchronization and settlement matching",
+      "status": "PROPOSED",
+      "existing": "README accounting exports/reconciliation, existing ledger and exact-ID/currency/amount reconcileStatement adapter; genuine settlement acceptance absent",
+      "newRequirements": [
+        "External accounting system mapping, one-way/two-way direction, idempotent export/import IDs, conflict/credit/refund policy",
+        "Provider/bank batch-fee/net-settlement matching with suspense exceptions and manual review, without altering original transaction evidence"
+      ],
+      "suggestedPlacement": "PROPOSED_LATER_ENHANCEMENT_CONNECTORS; baseline reconciliation remains required Release1 acceptance",
+      "dependencies": "Owner-selected accounting target, provider statements/accounts/credentials and exact call authority, mapping/settlement/timezone policy and independent accounting review",
+      "acceptance": "No text/amount-only ambiguous match, double posting or inferred settlement; mismatch/duplicate/out-of-order/UNKNOWN remain reviewable",
+      "ownerFeatureApproval": false
+    }
+  ],
+  "nextProductDecision": "Owner selects exact enhancement scope/release placement; until then all six are PROPOSED and AR implementation/execution remains held",
+  "release": "NOT READY / NOT AUTHORIZED"
+}

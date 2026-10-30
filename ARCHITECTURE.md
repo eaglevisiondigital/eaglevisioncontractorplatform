@@ -1,5 +1,17 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Workstream 2F operational boundary blueprint · October 29
+
+docs/MAINTENANCE_OPERATIONAL_BLUEPRINT.md is the single current non-executable
+integration design: reuse exact CRM/report/plan/visit/estimate/job models and existing
+persistence/readiness ports; add only separately reviewed private coordination,
+authority and archive requirements. Complete writer/ownership/Auth/custody/adapters
+remain operational gaps, with finite gates rather than automatic new simulations.
+CUSTOMER_TRANSACTION_HANDOFF.md identifies the missing property-portal change-request
+and note experience using existing ReleasePreview decisions; no second engine/ledger
+or connected decision enum expansion. Billing register is PROPOSED planning only.
+All runtime/UI/SQL bytes, frozen P1/history sequencing and activation gates persist.
+
 ## Workstream 2E test-only command authority · October 29
 
 A new disposable approval/claim/outcome fixture composes the existing2C gateway and
