@@ -1,5 +1,18 @@
 # Security model · Phase 2
 
+## Workstream 2E exact evaluated boundary · October 29
+
+D001 FIXED for new restricted2E roles: mutation requires a separate trusted issuer's
+committed full command/phase/source/actor/session/backend/full-XID claim; private
+nontransactional one-shot gate prevents top-level/savepoint/exception replay. Caller
+SQLite/hash/flags are never independent authorization. Original2D FAIL evidence is
+retained. D002 remains PARTIAL for participating resource-first paths; D009 BLOCKED:
+trusted issuer/core/helpers/provisioner/pipe broker and synthetic Auth remain in TCB.
+No runtime/issuer table/column/sequence/reset/role escape; real revocation/expiry and
+native concurrency negatives pass. No DB-crash/sequence restoration, disk/backup or
+physical recovery claim. No operational migration/service/HTTP/UI activation. See
+docs/MAINTENANCE_COMMAND_AUTHORITY.md and ownership/decision plan. Operational NO-GO.
+
 ## Workstream 2D boundary assessment · October 29
 
 CONDITIONAL for trusted disposable2C only; operational NO-GO. Separate review/native

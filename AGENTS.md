@@ -1,3 +1,16 @@
+Workstream 2E continuation: read docs/MAINTENANCE_COMMAND_AUTHORITY.md, validation,
+MAINTENANCE_AUTHORITY_PRIVILEGE_PLAN.md and approval register. New2E test-only runtime
+requires a separate issuer-committed exact phase/backend/full-XID claim and private
+one-shot gate surviving rollback/savepoints. Existing/UNKNOWN only reconcile; no
+rebind/reset/new-ID or automatic phase continuation. D001 FIXED only for new2E; original
+2D FAIL evidence remains. D002 PARTIAL for participating gateways; raw/historical/admin
+writers not universally integrated. D009 BLOCKED: trusted core/helper/provisioner/
+broker and genuine Auth/operational TCB incomplete. Sequence/DB/disk/physical recovery
+NOT VERIFIED. Next is an owner decision on focused operational integration design or
+parallel release work, not automatic further simulations. No operational SQL/service/
+UI/hosted/financial/recovery/Netlify/deploy/merge; preserve all13/pending customer/
+frozen P1/four artifacts/approvals/locked UIs and AR hold.
+
 Workstream 2D continuation: read docs/MAINTENANCE_SECURITY_REVIEW.md, findings,
 validation/privilege snapshot and approval register. CONDITIONAL trusted disposable2C
 only; raw exact-capability SQL bypasses caller custody, standalone finish/gateway

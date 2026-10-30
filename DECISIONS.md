@@ -1,5 +1,17 @@
 # Engineering decisions
 
+## October 29 · server-owned claim before restricted maintenance mutation
+
+Address2D D001 with a new disposable role-separated issuer/claim/outcome contract,
+not a caller hash or SQLite assertion. Bind the actual mutation backend/full transaction
+and burn a private one-shot gate that survives savepoint rollback; preserve UNKNOWN
+and original IDs through loss and reconciliation. Reuse unchanged2A/2B/2C SQL and domain
+engines. Correct participating entry order without claiming raw standalone/admin paths
+integrated. Keep D001 scoped FIXED/D002 PARTIAL/D009 BLOCKED and preserve original FAIL
+evidence. Next choose one operational integration design/review or separately scoped
+release business work, not an automatic indefinite simulation series. No operational
+SQL/migration/credentials/service/UI or hosted authority; all existing release gates.
+
 ## October 29 · separate local hardening from operational authority
 
 Use two separate read-only reviews and reproducible negative cases for2D; correct only

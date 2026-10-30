@@ -1,5 +1,21 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: Workstream 2E server-owned authority · October 29
+
+New disposable2E runtime requires a separately committed exact issuer claim, bound to
+actor/session/source/phase/backend/full transaction and a private rollback-resistant
+one-shot gate.30 new nativePG17/21 application cases pass: raw SQL without claim,
+savepoint/exception rollback, process loss/reconciliation, six-section/follow-up,
+revocation and coordinated concurrency. D001 FIXED only for new2E; D002 PARTIAL for
+participating paths; D009 BLOCKED for trusted core/helper/provisioner/broker and real
+Auth/operational least privilege. Original2D FAIL reproductions remain unchanged.
+213 protected paths/four P1 hashes unchanged. See MAINTENANCE_COMMAND_AUTHORITY.md,
+validation/approval register and MAINTENANCE_AUTHORITY_PRIVILEGE_PLAN.md. Recommend
+focused operational integration design/review, not automatic further simulations;
+parallel local release business work may be separately scoped. No operational SQL/
+service/UI or hosted/financial/recovery/Netlify/deploy/merge. All13/pending customer/
+frozen P1/approvals/locked UIs/AR holds persist. NOT READY / NOT AUTHORIZED.
+
 ## Latest: Workstream 2D defensive review · October 29
 
 Separate read-only reviewers plus executable regressions found and corrected local

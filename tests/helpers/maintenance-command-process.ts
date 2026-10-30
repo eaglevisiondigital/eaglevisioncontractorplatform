@@ -2,6 +2,7 @@
 import { Client, types } from 'pg';
 import { once } from 'node:events';
 import { parseCommandJSON } from './strict-command-json';
+import { ServerClaimChannel } from './server-claim-channel';
 import {
   CommandCustody,
   custodyIdentity,
@@ -50,7 +51,15 @@ const client = new Client(
         database,
       },
 );
+const serverOwned = process.env.MAINT_SERVICE_AUTHORITY === '2e';
+if (process.env.MAINT_SERVICE_AUTHORITY && !serverOwned)
+  throw Error('Unsupported local authority mode.');
+const claimChannel = serverOwned ? new ServerClaimChannel() : null;
+const gatewaySQL = serverOwned
+  ? 'select maintenance_2e_test.command($1::uuid,$2::text,$3::jsonb) value'
+  : 'select maintenance_2c_test.command($1::uuid,$2::text,$3::jsonb) value';
 const journal = new CommandCustody(root);
+let inTransaction = false;
 await client.connect();
 const identity = (
   await client.query('select session_user name,current_database() database')
@@ -80,7 +89,9 @@ const adapter: TestDatabase = {
   async exec(sql) {
     if (!['begin', 'commit', 'rollback'].includes(sql))
       throw Error('Transaction control only.');
-    return client.query(sql);
+    const r = await client.query(sql);
+    inTransaction = sql === 'begin';
+    return r;
   },
   async query<T extends Record<string, unknown>>(
     sql: string,
@@ -104,14 +115,42 @@ const adapter: TestDatabase = {
           ? JSON.parse(value)
           : value,
     );
-    const r = await client.query(
-      'select maintenance_2c_test.command($1::uuid,$2::text,$3::jsonb) value',
-      [capability, step, JSON.stringify(args)],
-    );
-    // Actual database transaction is open here. SIGKILL causes native PostgreSQL rollback.
-    if (step === 'finish') await boundary('during_creation');
-    if (step === 'append_review') await boundary('during_readiness');
-    return { rows: r.rows as T[] };
+    const mutation = [
+      'execute',
+      'reserve',
+      'claim',
+      'finish',
+      'review_intent',
+      'append_review',
+    ].includes(step);
+    const auto = serverOwned && !inTransaction;
+    if (auto) await client.query('begin');
+    try {
+      if (serverOwned && mutation) {
+        const tx = (
+          await client.query(
+            'select pg_backend_pid() pid,backend_start::text,txid_current()::text transaction_id from pg_stat_activity where pid=pg_backend_pid()',
+          )
+        ).rows[0];
+        await claimChannel!.request({ capability, step, args, tx });
+        await boundary('after_server_claim');
+      }
+      const r = await client.query(gatewaySQL, [
+        capability,
+        step,
+        JSON.stringify(args),
+      ]);
+      if (mutation) await boundary('during_mutation');
+      if (auto) await client.query('commit');
+      // Existing explicit transaction/process-fault hooks remain below.
+      // Actual database transaction is open here. SIGKILL causes native PostgreSQL rollback.
+      if (step === 'finish') await boundary('during_creation');
+      if (step === 'append_review') await boundary('during_readiness');
+      return { rows: r.rows as T[] };
+    } catch (error) {
+      if (auto) await client.query('rollback');
+      throw error;
+    }
   },
   async close() {
     await client.end();
@@ -161,7 +200,7 @@ async function reconcile(value: CustodyCommand) {
 async function execute(value: CustodyCommand) {
   await boundary('before_intent');
   // Read-only exact capability binding cannot manufacture a source/request hold.
-  await client.query('select maintenance_2c_test.command($1,$2,$3)', [
+  await client.query(gatewaySQL, [
     capability,
     'validate',
     JSON.stringify([value.command]),
@@ -258,6 +297,7 @@ try {
     }
   }
 } finally {
+  claimChannel?.close();
   journal.close();
   await client.end();
 }

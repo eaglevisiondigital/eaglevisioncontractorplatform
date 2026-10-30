@@ -1,5 +1,17 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Workstream 2E test-only command authority · October 29
+
+A new disposable approval/claim/outcome fixture composes the existing2C gateway and
+unchanged2A/2B/estimating/readiness workflows. Restricted runtime cannot issue claims
+or call old/raw helpers; separate trusted issuer commits exact phase authority before
+mutation, bound to backend/full transaction, with private one-shot sequence consumption
+surviving savepoint rollback. Existing SQLite retain/send/ACK and restart-read semantics
+remain. Participating gateway/coordinate paths share resource-first order; standalone/
+admin integration and full operational TCB remain gaps. No app repository/UI, operational
+schema or authenticated transport binding. See docs/MAINTENANCE_COMMAND_AUTHORITY.md
+and MAINTENANCE_AUTHORITY_PRIVILEGE_PLAN.md for explicit next decision and NO-GO gates.
+
 ## Workstream 2D defensive integration review · October 29
 
 The test-only2C process now rejects ambiguous frames and mismatched capabilities

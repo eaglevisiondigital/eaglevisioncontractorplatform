@@ -1,5 +1,16 @@
 # Production Release 1.0 acceptance checklist
 
+## Workstream 2E · local claim architecture, operational NO-GO · October 29
+
+30 new nativePG17/21 application cases demonstrate separate durable exact claim
+issuance, rollback-resistant one-shot mutation, conservative custody/restart and
+participating resource ordering. D001 FIXED only within new2E; D002 PARTIAL and D009
+BLOCKED. Full ownership/Auth/writer/transport/encryption/retention/recovery acceptance
+remains unimplemented/unverified; no operational approval. Original2D FAIL evidence,
+213 protected paths/four P1 hashes, all13 SQL/pending customer/frozen P1/owner approval/
+locked UIs/financial/recovery/Netlify restrictions unchanged. See command authority
+and ownership decision documents. NOT READY / NOT AUTHORIZED; no deploy or merge.
+
 ## Workstream 2D · defensive local review only · October 29
 
 59 nativePG17/52 application cases pass after bounded local corrections; see

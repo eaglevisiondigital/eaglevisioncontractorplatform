@@ -12,10 +12,15 @@ const candidates = process.env.PG17_BIN
 const scope = process.argv.slice(2).join(' ');
 if (
   scope &&
-  !['--workstream=2b', '--workstream=2c', '--workstream=2d'].includes(scope)
+  ![
+    '--workstream=2b',
+    '--workstream=2c',
+    '--workstream=2d',
+    '--workstream=2e',
+  ].includes(scope)
 )
   throw Error(
-    'Only --workstream=2b, --workstream=2c or --workstream=2d is supported.',
+    'Only --workstream=2b, --workstream=2c, --workstream=2d or --workstream=2e is supported.',
   );
 let bin;
 for (const dir of candidates) {
@@ -97,12 +102,17 @@ try {
       'node_modules/vitest/vitest.mjs',
       'run',
       ...(scope ? [] : ['tests/database/maintenance-persistence.test.ts']),
-      ...(['--workstream=2c', '--workstream=2d'].includes(scope)
+      ...(['--workstream=2c', '--workstream=2d', '--workstream=2e'].includes(
+        scope,
+      )
         ? []
         : ['tests/database/repair-persistence.test.ts']),
-      ...(scope === '--workstream=2b'
+      ...(['--workstream=2b', '--workstream=2e'].includes(scope)
         ? []
         : ['tests/database/maintenance-service.test.ts']),
+      ...(!scope || scope === '--workstream=2e'
+        ? ['tests/database/maintenance-authority.test.ts']
+        : []),
       ...(scope === '--workstream=2d' ? ['-t', 'Workstream2D'] : []),
       '--maxWorkers=1',
     ],

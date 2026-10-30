@@ -1,5 +1,16 @@
 # Bounded development roadmap
 
+## Workstream 2E checkpoint and next owner decision
+
+Separate issuer/one-shot server claim and participating writer contract now pass30
+new nativePG17/21 application cases. D001 scoped FIXED, D002 PARTIAL, D009 BLOCKED;
+operational NO-GO. See MAINTENANCE_COMMAND_AUTHORITY.md and ownership/decision plan.
+Recommend focused operational integration design/review for exact schema/ownership,
+all writers, genuine identity, encrypted custody/retention and containment before any
+real adapter. Do not automatically begin another synthetic security series. Parallel
+local inspection scheduling/missed-visit or other required release workflow can be
+separately scoped. All existing approval/SQL/UI/financial/recovery/Netlify/AR gates persist.
+
 ## Workstream 2D checkpoint
 
 Defensive review and bounded local corrections now pass59 native/52 application cases.
