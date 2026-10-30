@@ -1,0 +1,71 @@
+{
+  "status": "REVIEW_PREPARED_EXECUTION_NOT_AUTHORIZED",
+  "archiveBytes": 3593733,
+  "archivedEntriesVerified": 14,
+  "materializedEntriesVerified": 14,
+  "deployStaticConfigurationFiles": 9,
+  "functionArchives": 4,
+  "localFunctionManifest": 1,
+  "allCrcsAndLengthsAndHashes": "PASS",
+  "originalArtworkLockToml": "PASS",
+  "functionMetadata": "PASS",
+  "sealedRequestBinding": "PASS",
+  "credentialsRetrieved": false,
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-30",
+  "clientTimezone": "America/Chicago",
+  "sourceCommit": "28c7d5e41c28c0714c41525179eb0637216a7729",
+  "baselineDevelopmentCommit": "e544d3bc032c990aca241dd74f9227184804dee2",
+  "initialResponseAndExecutor": "DESIGN_ONLY_NOT_IMPLEMENTED_OR_TESTED",
+  "currentReadOnlyEvidence": {
+    "latestProviderDiagnosis": "READ_PRIVATELY_CONFIRMED_AS_PROVIDER_FINDINGS",
+    "originalDeployment": "UPLOADING_UNPUBLISHED_EXACT_SITE_AND_ID",
+    "projectConnector": "TEAM_LOGIN_ALL_DEPLOYS_SUMMARY",
+    "independentDashboard": "BLOCKED_BLANK_PAGE",
+    "primaryGitDomainDeployInventory": "ACTION_TIME_REFRESH_REQUIRED",
+    "siteSharedEnvironmentMetadata": "ACTION_TIME_REFRESH_REQUIRED",
+    "runtimeEnvironmentAndFunctions": "UNVERIFIED",
+    "anonymousPerimeter": "NOT_RUN",
+    "authenticatedBrowserTenantAcceptance": "NOT_RUN"
+  },
+  "executionCounts": {
+    "newDeploys": 0,
+    "uploads": 0,
+    "manifestReplays": 0,
+    "hostedSettingChanges": 0,
+    "credentialRetrievals": 0,
+    "authDatabaseOperations": 0,
+    "messagesSent": 0,
+    "publications": 0
+  },
+  "focusedChecks": {
+    "format": "PASS",
+    "diff": "PASS",
+    "migrationPropertyCustomerIntegrity": "PASS",
+    "protectedBytes": "PASS",
+    "privateReferenceExclusion": "PASS",
+    "redactedOriginalApiSchema": "PASS_2.60.0"
+  },
+  "applicationBrowserNativeRecoverySuites": "NOT_RERUN_DOCUMENTATION_ONLY_PRIOR_EVIDENCE_PRESERVED",
+  "remainingGates": [
+    "Exact new A-D owner execution approval",
+    "Fresh independent dashboard and complete primary/inventory/Git/domain/environment baseline",
+    "Reviewed future executor with offline durable-response/deadline/UNKNOWN tests",
+    "Action-time existing operator authentication/private value custody; no credential retrieval during review",
+    "Separate runtime/authenticated/tenant/recovery/launch acceptance"
+  ],
+  "release": "NOT READY / NOT AUTHORIZED",
+  "offlineVerifierNetworkRequests": 0,
+  "environmentValuesExtracted": false,
+  "protectedTrackedFilesByteIdentical": 492,
+  "frozenP1ArtifactsVerified": 4,
+  "frozenP1Operation": "PASS",
+  "priorCi": {
+    "commit": "e544d3bc032c990aca241dd74f9227184804dee2",
+    "foundation": "PASS_41045409204",
+    "compatibility": "PASS_41045409211",
+    "manualRerun": false
+  },
+  "documentationCommitCi": "AUTOMATIC_CHECKS_RECORDED_IN_PR_AFTER_PUSH",
+  "reviewContractFileSha256": "a8e7cd70cc472399ffb4c532117734b1b9f9ef6c5b0ac4e4b4d6861a77497b9f"
+}

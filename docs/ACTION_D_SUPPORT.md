@@ -1,5 +1,14 @@
 # Propel Contractor Suite · Netlify diagnosis request
 
+October30 update: the latest private provider response explains missing TOML bytes
+and the expired upload window, offers no supported/tested same-ID repair and
+recommends a separately approved new unpublished draft. The
+[exact replacement review](NETLIFY_REPLACEMENT_DRAFT_REVIEW.md) now records this
+diagnosis, original-byte verification and conditional A–D approval scope. No new
+deployment/upload/credential retrieval/reply or corrective authorization occurred.
+Earlier diagnosis-pending statements below preserve historical checkpoints. Private
+seen-message records prevent repeated alerts; monitoring remains read-only.
+
 Latest:the separately authorized [diagnosis-only follow-up](ACTION_D_SUPPORT_FOLLOWUP.md)
 is SENT in the original ticket;no new provider diagnosis or corrective authorization.
 Earlier prepared/not-sent statements below record the prior checkpoint.

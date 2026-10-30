@@ -1,5 +1,17 @@
 # Production Release 1.0 acceptance checklist
 
+## October 30 · replacement draft review is not deployment acceptance
+
+The [exact Netlify replacement proposal](NETLIFY_REPLACEMENT_DRAFT_REVIEW.md) is
+REVIEW ONLY / NOT AUTHORIZED. Original frozen28c7d5e package/all14 files and sealed
+request match;current branch features are excluded. The old deploy remains uploading
+and unpublished. Provider diagnosis/new-draft guidance does not authorize creation,
+uploads,publication,settings or connected acceptance. Independent dashboard/primary/
+inventory/environment refresh and reviewed executor/offline stop tests remain gates.
+No deployment/runtime/perimeter/tenant acceptance status is promoted. Preserve all13,
+pending customer14,frozen P1/four artifacts/approval,locked UIs,financial and independent
+recovery requirements. Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft/unmerged.
+
 ## Workstream 3A · local change requests only · October 30
 
 The approved property portal now supports exact-version customer change requests,

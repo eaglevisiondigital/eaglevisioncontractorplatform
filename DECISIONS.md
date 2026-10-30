@@ -1,5 +1,20 @@
 # Engineering decisions
 
+## October 30 · bind a replacement review without creating another deployment
+
+Use the independently read provider diagnosis to prepare a new-ID draft alternative,
+not replay the stopped same-ID recovery. Bind original28c7d5e archive/all14 artifacts,
+creation-body hash,Function config and private site/value custody;never substitute
+newer HEAD. Preserve initial required lists before checking optional draft response
+fields,one pre-send attempt,exact receipts,finite deadlines and UNKNOWN/no-retry.
+No final manifest PUT or automatic replacement. Provider guidance is evidence,not
+permission. Record fresh original-state read and connector protection summary while
+leaving blank-dashboard/primary/inventory/environment checks and executor validation
+as explicit pre-execution gates. A–D is a conditional owner decision,not executable
+authority from review. No credentials/hosted mutation/messages/publication/merge;
+original approvals/all13/customer14/frozen P1/locked UIs/recovery/financial gates stay.
+See docs/NETLIFY_REPLACEMENT_DRAFT_REVIEW.md and its exact redacted contract.
+
 ## October 30 · reuse existing decisions for customer change requests
 
 Implement3A in the approved local property portal, reusing ReleasePreview's existing

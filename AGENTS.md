@@ -1,3 +1,14 @@
+Netlify replacement REVIEW continuation: read docs/NETLIFY_REPLACEMENT_DRAFT_REVIEW.md,
+its JSON contract/validation and private target binding before older Action D notes.
+October30 provider attributes500 to missing TOML and422 to six-hour expiry; no tested
+same-ID repair. One new protected unpublished draft is PROPOSED, NOT AUTHORIZED.
+Original28c7d5e archive/all14 files/body match; newer HEAD is excluded. Preserve initial
+create required lists before optional-field checks; no final manifest PUT, automatic
+retry/UNKNOWN continuation or historical mutator reuse. Dashboard/primary/inventory/
+environment refresh and reviewed executor remain pre-execution gates. No credential
+retrieval, uploads, settings, hosted Auth/DB, messages or publication from review.
+All13/customer14/frozen P1/four artifacts/approvals/locked UIs/recovery gates persist.
+
 Workstream 3A continuation: read docs/CUSTOMER_ESTIMATE_CHANGE_REQUESTS.md and
 validation. Approved local property portal now reuses ReleasePreview changes_requested
 and note/receipt semantics with explicit confirmation, exact context and 2000-character

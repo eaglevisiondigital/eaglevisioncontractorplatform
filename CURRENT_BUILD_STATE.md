@@ -1,5 +1,21 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: Netlify replacement draft · exact review only · October 30
+
+Provider diagnosis now attributes the original500 to missing netlify.toml and later422
+to expired pending uploads. No supported/tested same-ID repair is offered. The exact
+one-new-ID A–D draft/upload/read-only-verification/no-publication proposal is in
+docs/NETLIFY_REPLACEMENT_DRAFT_REVIEW.md and JSON contract/validation. Original28c7d5e
+archive,all14 paths/lengths/hashes,Function metadata,artwork and sealed request match;
+no values extracted/credentials retrieved. Newer e544d3b features are excluded. Initial
+create lists must be durably retained;no final manifest PUT or retry/UNKNOWN resume.
+Fresh read confirms original uploading/unpublished. Connector reports all-deploy
+team login;dashboard blank,so independent protection/primary/inventories/environment
+refresh plus reviewed executor/offline stop tests remain pre-execution gates.
+REVIEW ONLY / NOT AUTHORIZED;zero hosted writes/uploads/messages. Original approvals,
+all13/customer14/frozen P1/four artifacts/locked UIs/financial/recovery gates persist.
+Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft. No replacement created or deployed.
+
 ## Latest: Workstream 3A customer change requests · October 30
 
 The approved local /preview/property-portal now offers exact-issued-version change
