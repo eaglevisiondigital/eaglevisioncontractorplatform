@@ -1,3 +1,4 @@
+import type { CustomerRevisionOrigin } from '../domain/estimating/change-request';
 import {
   evaluateRepairReadiness,
   recordRepairReadiness,
@@ -109,6 +110,106 @@ interface SampleState {
 }
 export class Phase3Repository {
   private states = new Map<string, SampleState>();
+  private customerRequests = new Map<
+    string,
+    () => {
+      version: EstimateVersion;
+      offer_id: string;
+      location_id: string;
+      receipt: CustomerRevisionOrigin['receipt'];
+    }[]
+  >();
+  private customerRevisions = new Map<
+    string,
+    {
+      origin: CustomerRevisionOrigin;
+      authorize: () => void;
+    }
+  >();
+  bindSyntheticCustomerRequests(
+    org: string,
+    estimate: string,
+    readRequests: () => {
+      version: EstimateVersion;
+      offer_id: string;
+      location_id: string;
+      receipt: CustomerRevisionOrigin['receipt'];
+    }[],
+  ) {
+    this.state(org);
+    if (!this.state(org).estimates.some((b) => b.estimate.id === estimate))
+      throw Error('Estimate unavailable');
+    this.customerRequests.set(estimate, readRequests);
+  }
+  private requireSyntheticEstimator(org: string, actor: string) {
+    const member = this.operations
+      .syntheticMemberships(org)
+      .find((m) => m.user_id === actor && m.active);
+    if (
+      !member ||
+      !(
+        ['owner', 'admin'].includes(member.role) ||
+        (member.role === 'staff' &&
+          ['office_manager', 'estimator'].includes(member.staff_type))
+      )
+    )
+      throw Error('Active estimating staff required');
+  }
+  customerRevisionOrigin(org: string, estimate: string) {
+    this.state(org);
+    const entry = this.customerRevisions.get(estimate);
+    if (!entry) return null;
+    if (entry.origin.organization_id !== org)
+      throw Error('Revision unavailable');
+    this.requireSyntheticEstimator(org, entry.origin.reviewed_by);
+    entry.authorize();
+    return clone(entry.origin);
+  }
+  async prepareSyntheticCustomerRevision(
+    org: string,
+    source: EstimateBundle,
+    origin: Omit<CustomerRevisionOrigin, 'draft_version_id'>,
+    authorize: () => void,
+  ) {
+    this.state(org);
+    origin = clone(origin);
+    const exact = this.customerRequests
+      .get(source.estimate.id)?.()
+      .find(
+        (r) =>
+          r.version.id === source.version.id &&
+          r.offer_id === origin.offer_id &&
+          r.location_id === origin.location_id &&
+          JSON.stringify(r.receipt) === JSON.stringify(origin.receipt),
+      );
+    this.requireSyntheticEstimator(org, origin.reviewed_by);
+    if (
+      this.repairBindings.has(source.estimate.id) ||
+      this.customerRevisions.has(source.estimate.id) ||
+      !exact ||
+      origin.organization_id !== org ||
+      origin.estimate_id !== source.estimate.id ||
+      origin.source_version_id !== source.version.id ||
+      origin.source_version_number !== source.version.version_number ||
+      origin.customer_id !== source.version.payload.customer_id ||
+      origin.location_id !== source.version.payload.location_id ||
+      origin.receipt.organization_id !== org ||
+      origin.receipt.customer_id !== origin.customer_id ||
+      origin.receipt.offer_id !== origin.offer_id ||
+      origin.receipt.decision !== 'changes_requested'
+    )
+      throw Error(
+        'Exact reviewed customer revision required; repair origins remain restricted',
+      );
+    return this.reviseWithGuard(org, source, (bundle) => {
+      this.requireSyntheticEstimator(org, origin.reviewed_by);
+      authorize();
+      this.customerRevisions.set(bundle.estimate.id, {
+        origin: { ...clone(origin), draft_version_id: bundle.version.id },
+        authorize,
+      });
+    });
+  }
   private repairBindings = new Map<
     string,
     {
@@ -631,6 +732,17 @@ export class Phase3Repository {
       current.estimate.status === 'archived'
     )
       throw new Error('Draft changed or immutable; reload');
+    const change = this.customerRevisions.get(b.estimate.id);
+    if (change) {
+      this.requireSyntheticEstimator(org, change.origin.reviewed_by);
+      change.authorize();
+      if (
+        change.origin.draft_version_id !== b.version.id ||
+        payload.customer_id !== change.origin.customer_id ||
+        payload.location_id !== change.origin.location_id
+      )
+        throw Error('Customer revision customer/property/version is immutable');
+    }
     const repair = this.repairBindings.get(b.estimate.id);
     if (repair) {
       repair.authorize();
@@ -695,6 +807,10 @@ export class Phase3Repository {
     return clone(current);
   }
   async issue(org: string, b: EstimateBundle) {
+    if (this.customerRevisions.has(b.estimate.id))
+      throw Error(
+        'Customer revision issuance requires a separate reviewed handoff',
+      );
     if (this.repairBindings.has(b.estimate.id))
       throw Error(
         'Maintenance repair drafts require separate issuance review; issuance is disabled',
@@ -734,33 +850,69 @@ export class Phase3Repository {
     return clone(current);
   }
   async revise(org: string, b: EstimateBundle) {
+    if (
+      this.customerRequests.get(b.estimate.id)?.().length ||
+      this.customerRevisions.has(b.estimate.id)
+    )
+      throw Error(
+        'Review the exact customer request before preparing a revision',
+      );
+    return this.reviseWithGuard(org, b);
+  }
+  private async reviseWithGuard(
+    org: string,
+    b: EstimateBundle,
+    beforeCommit?: (bundle: EstimateBundle) => void,
+  ) {
+    if (this.repairBindings.has(b.estimate.id))
+      throw Error(
+        'Maintenance repair revision requires separate source review',
+      );
     if (!this.sample)
       return rpc<EstimateBundle>('revise_estimate', {
         p_org: org,
         p_estimate: b.estimate.id,
         p_source: b.version.id,
       });
-    const current = this.state(org).estimates.find(
+    const state = this.state(org);
+    const current = state.estimates.find(
       (x) => x.estimate.id === b.estimate.id,
     );
-    if (!current || current.version.status !== 'issued')
-      throw new Error('Issued version required');
-    current.version = {
+    if (
+      !current ||
+      current.estimate.status !== 'issued' ||
+      current.version.status !== 'issued' ||
+      current.version.id !== b.version.id ||
+      current.version.lock_revision !== b.version.lock_revision ||
+      current.version.organization_id !== org ||
+      JSON.stringify(current.version) !== JSON.stringify(b.version)
+    )
+      throw Error('Current exact issued version required; reload');
+    const next = clone(current);
+    next.version = {
       ...clone(current.version),
       id: crypto.randomUUID(),
       status: 'draft',
       version_number: current.version.version_number + 1,
       lock_revision: 1,
-      supersedes_version_id: b.version.id,
+      supersedes_version_id: current.version.id,
       issued_at: null,
       created_at: now(),
     };
-    current.estimate.current_version_id = current.version.id;
-    current.estimate.status = 'draft';
-    this.state(org).history.push(current.version);
+    next.estimate.current_version_id = next.version.id;
+    next.estimate.status = 'draft';
+    next.estimate.updated_at = now();
+    beforeCommit?.(clone(next)); // Last synchronous check before the existing engine commits.
+    Object.assign(current, next);
+    state.history.push(current.version);
     return clone(current);
   }
   async duplicate(company: CompanyProfile, b: EstimateBundle) {
+    if (
+      this.customerRevisions.has(b.estimate.id) ||
+      this.customerRequests.get(b.estimate.id)?.().length
+    )
+      throw Error('Customer request revisions cannot be duplicated');
     if (this.repairBindings.has(b.estimate.id))
       throw Error('Prepare a separate exact-source repair through maintenance');
     if (!this.sample)
@@ -1153,6 +1305,11 @@ export class Phase3Repository {
     );
   }
   async approveJob(org: string, b: EstimateBundle) {
+    if (
+      this.customerRevisions.has(b.estimate.id) ||
+      this.customerRequests.get(b.estimate.id)?.().length
+    )
+      throw Error('Customer change requests do not authorize a job baseline');
     if (!this.sample)
       return rpc<string>('approve_job', {
         p_org: org,

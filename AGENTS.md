@@ -1,3 +1,15 @@
+Workstream 3B continuation: read docs/CUSTOMER_ESTIMATE_REVISIONS.md and validation.
+Approved local portal and /preview Estimates share actual3A requests in one tab via
+existing preview repositories. No fabricated requests, localStorage or connected
+bridge. Pin original customer/property on return; URL/state is presentation only.
+Current eligible synthetic staff, exact full request/source/current version and
+confirmation precede existing Phase3 revision; one session hold/UNKNOWN read-only,
+no retry/replacement. Preserve issued originals/exact receipt/private provenance,
+CAS and repair holds; customer revision issuance/duplication/job baseline off.
+Reload/new tab loses state, not durable/genuine Auth evidence. Proposed3C is local
+revision/difference review only, not auto-started. Keep all13/customer14/frozen P1/
+four artifacts/approvals/locked UIs/financial/recovery/Netlify/deploy/merge gates.
+
 Netlify executor readiness continuation: read docs/NETLIFY_REPLACEMENT_EXECUTOR.md
 and validation before historical review-only notes. New bounded package/journal/core
 is exercised through .invalid fake ports only; no live adapter/credential loader/CLI.

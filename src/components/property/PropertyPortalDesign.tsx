@@ -1,3 +1,7 @@
+import {
+  customerChangeWorkspace,
+  openSyntheticWorkspace,
+} from '../../lib/customer-change-workspace';
 import { useCallback, useEffect, useState, type CSSProperties } from 'react';
 import { sampleCompanies, type CompanyProfile } from '../../domain/platform';
 import { CustomerPortalPreviewModel } from '../../lib/customer-preview';
@@ -83,7 +87,14 @@ export function PropertyPortalDesign({
 }: {
   approved?: boolean;
 }) {
-  const [org, setOrg] = useState(sampleCompanies[0].id);
+  const [org, setOrg] = useState(() =>
+    approved &&
+    sampleCompanies.some(
+      (c) => c.id === window.history.state?.syntheticEstimateHandoff,
+    )
+      ? (window.history.state.syntheticEstimateHandoff as string)
+      : sampleCompanies[0].id,
+  );
   const company = sampleCompanies.find((c) => c.id === org)!;
   return (
     <main
@@ -160,13 +171,14 @@ function ConceptExperience({
   onCompany(id: string): void;
   historySearch: boolean;
 }) {
-  // Separate instance prevents concept preparation changing the existing preview's in-memory records.
-  const [model] = useState(
-    () =>
-      new CustomerPortalPreviewModel(
-        company,
-        new PropertyRepository(new Operations(true)),
-      ),
+  // Phase A stays isolated; the approved portal shares existing synthetic workspace state.
+  const [model] = useState(() =>
+    historySearch
+      ? customerChangeWorkspace.customer(company)
+      : new CustomerPortalPreviewModel(
+          company,
+          new PropertyRepository(new Operations(true)),
+        ),
   );
   const resource = useResource(
     useCallback(async () => {
@@ -265,10 +277,17 @@ function ConceptExperience({
           </select>
         </label>
         <p>
-          This isolated concept starts with published synthetic examples loaded.
+          {historySearch
+            ? 'This local portal shares synthetic requests with staff through the same-tab handoff. Reloading clears this demonstration.'
+            : 'This isolated concept starts with published synthetic examples loaded.'}{' '}
           These controls never grant connected customer access. Preferences last
           only for this page session.
         </p>
+        {historySearch && (
+          <button onClick={() => openSyntheticWorkspace('staff', company.id)}>
+            Open local staff estimate review
+          </button>
+        )}
         {data && (
           <div className="concept-control-actions">
             <button

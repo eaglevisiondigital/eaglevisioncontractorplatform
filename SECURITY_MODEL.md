@@ -1,5 +1,18 @@
 # Security model · Phase 2
 
+## Workstream 3B · local staff review boundary
+
+Only actual3A customer receipts with exact offer/version/customer/property enter
+staff review. Current eligible synthetic memberships, post-await checks, complete
+review/source equality and final synchronous engine checks precede revision. Original
+identity is pinned across shared CRM changes. Duplicate/UNKNOWN holds never replay;
+missing receipt stays undetermined. Private provenance and staff edits stay outside
+customer projections; originals immutable, repair holds/CAS preserved, issue/duplicate/
+job baseline off for customer revisions. Browser history selects examples only.
+Same-tab heap is neither genuine Auth nor crash-safe custody. See
+[implementation](docs/CUSTOMER_ESTIMATE_REVISIONS.md); no connected/hosted/financial/
+message/recovery/Netlify/merge authority and no schema change.
+
 ## Netlify replacement executor boundary · October 30
 
 The new isolated core requires exact target/body/package/code/preflight approval,

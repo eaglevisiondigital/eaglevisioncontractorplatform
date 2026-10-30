@@ -50,7 +50,16 @@ export class CustomerPortalPreviewModel {
     const epoch = ++this.epoch;
     await this.repo.initialize(this.company);
     if (epoch !== this.epoch) throw Error('Customer session unavailable');
-    const initial = this.repo.read(this.company.id).contexts[0];
+    const contexts = this.repo.read(this.company.id).contexts;
+    // A return from staff must never rebind the customer when CRM ordering changes.
+    const initial = this.customerId
+      ? contexts.find(
+          (c) =>
+            c.customer_id === this.customerId &&
+            c.location_id === this.primaryLocation,
+        )
+      : contexts[0];
+    if (!initial) throw Error('Original customer property unavailable');
     this.customerId = initial.customer_id;
     this.primaryLocation = initial.location_id;
     this.locationId = initial.location_id;
@@ -274,6 +283,42 @@ export class CustomerPortalPreviewModel {
       });
       this.engines.set(version.id, engine);
     }
+    this.repo.estimates.bindSyntheticCustomerRequests(
+      c.organization_id,
+      s.bundle.estimate.id,
+      () => this.staffChangeRequests(),
+    );
+  }
+  /** Exact existing ReleasePreview receipts for local staff review only; no invented requests.
+   * Independent of customer login lifecycle, and never included in read() projections. */
+  staffChangeRequests() {
+    if (!this.repo.operations.sample)
+      throw Error('Synthetic staff handoff only');
+    return this.versions.flatMap((version) => {
+      const data = this.engines.get(version.id)?.read('staff');
+      if (!data) return [];
+      return data.release_decisions
+        .filter((d) => d.decision === 'changes_requested')
+        .map((receipt) => {
+          const offer = data.release_offers.find(
+            (o) => o.id === receipt.offer_id && o.version_id === version.id,
+          );
+          if (
+            !offer ||
+            offer.organization_id !== this.company.id ||
+            receipt.organization_id !== this.company.id ||
+            receipt.customer_id !== version.payload.customer_id ||
+            offer.customer_id !== receipt.customer_id
+          )
+            throw Error('Exact customer receipt unavailable');
+          return structuredClone({
+            version,
+            receipt,
+            offer_id: offer.id,
+            location_id: this.primaryLocation,
+          });
+        });
+    });
   }
   /** Additional explicit synthetic observations; existing published examples are never rewritten. */
   prepareAttentionExamples() {

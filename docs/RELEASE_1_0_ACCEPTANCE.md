@@ -1,5 +1,16 @@
 # Production Release 1.0 acceptance checklist
 
+## Workstream 3B · local request review and private revision · October 30
+
+Actual3A receipt -> explicit eligible synthetic staff review -> existing-engine
+version3 draft -> CAS editor save -> unchanged customer issued scope is implemented
+locally.177 focused application/54 unique browser cases, all3 brands/viewports,
+privacy/immutability/duplicate/UNKNOWN/role/repair checks pass. No real authentication,
+durable custody, issuance, sending, agreement, job approval, financial/hosted action
+or acceptance gate is inferred. See [implementation](CUSTOMER_ESTIMATE_REVISIONS.md)
+and validation. All13/customer14/frozen P1/four artifacts/owner approvals/locked UIs/
+recovery/Netlify remain unchanged. Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## October 30 · offline executor is not hosted execution readiness
 
 [Bounded replacement executor](NETLIFY_REPLACEMENT_EXECUTOR.md) and fake-provider

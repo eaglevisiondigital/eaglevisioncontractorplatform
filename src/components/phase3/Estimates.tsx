@@ -1,3 +1,5 @@
+import { CustomerChangeRequests } from './CustomerChangeRequests';
+import { customerChangeWorkspace } from '../../lib/customer-change-workspace';
 import { BackOfficeText } from '../property/back-office-copy';
 import { RepairScopeReadiness } from '../property/RepairScopeReadiness';
 import { useState, useCallback } from 'react';
@@ -137,6 +139,15 @@ export function Estimates({
       </div>
       <p>Build clear scope. Protect your costs. Keep every issued version.</p>
       <ResourceStatus {...data} />
+      {repo.sample && repo === customerChangeWorkspace.repo.estimates && (
+        <CustomerChangeRequests
+          company={company}
+          onOpen={(bundle) => {
+            setSelected(bundle);
+            data.reload();
+          }}
+        />
+      )}
       <div className="p3-totals">
         <span>
           Drafts{' '}
@@ -294,6 +305,9 @@ function EstimateEditor({
         ),
         documents: await repo.cleanDocuments(company.id),
         history: await repo.history(company.id, initial.estimate.id),
+        change: repo.sample
+          ? repo.customerRevisionOrigin(company.id, initial.estimate.id)
+          : null,
         repair: repo.sample
           ? repo.repairOrigin(
               company.id,
@@ -312,6 +326,7 @@ function EstimateEditor({
     ),
   );
   const repairOnly = draftOnly || !!resources.data?.repair;
+  const changeOnly = !!resources.data?.change;
   const update = (patch: Partial<EstimateInput>) =>
     setP((prev) => ({ ...prev, ...patch }));
   const line = (id: string, patch: Partial<EstimateLine>) =>
@@ -365,6 +380,41 @@ function EstimateEditor({
           </button>
         )}
       </div>
+      {resources.data?.change && (
+        <section
+          className="p3-notice customer-change-review"
+          aria-label="Customer revision provenance"
+        >
+          <h3>Private revision from customer request</h3>
+          <p>
+            Original issued version{' '}
+            {resources.data.change.source_version_number} ·{' '}
+            {resources.data.change.source_version_id}
+          </p>
+          <blockquote>{resources.data.change.receipt.note}</blockquote>
+          <details>
+            <summary>Exact revision provenance</summary>
+            <dl>
+              <dt>Customer receipt</dt>
+              <dd>{resources.data.change.receipt.id}</dd>
+              <dt>Offer</dt>
+              <dd>{resources.data.change.offer_id}</dd>
+              <dt>Property</dt>
+              <dd>{resources.data.change.location_id}</dd>
+              <dt>Prepared draft</dt>
+              <dd>{resources.data.change.draft_version_id}</dd>
+              <dt>Reviewed by</dt>
+              <dd>{resources.data.change.reviewed_by}</dd>
+              <dt>Reviewed at</dt>
+              <dd>{resources.data.change.reviewed_at}</dd>
+            </dl>
+          </details>
+          <p>
+            Customer/property identity is retained. Save edits using the
+            existing builder; issuance and delivery remain blocked.
+          </p>
+        </section>
+      )}
       {resources.data?.repair && (
         <details className="p3-notice">
           <summary>
@@ -1187,7 +1237,7 @@ function EstimateEditor({
             >
               <BackOfficeText text="Save estimate draft" />
             </button>
-            {canIssue && !repairOnly && (
+            {canIssue && !repairOnly && !changeOnly && resources.data && (
               <button
                 className="secondary"
                 disabled={task.busy || dirty || !!error}
@@ -1249,7 +1299,7 @@ function EstimateEditor({
         )}
         <button
           className="secondary"
-          disabled={repairOnly || task.busy || dirty}
+          disabled={repairOnly || changeOnly || task.busy || dirty}
           onClick={() =>
             void task.run(
               async () => onChange(await repo.duplicate(company, initial)),

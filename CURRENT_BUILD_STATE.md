@@ -1,5 +1,21 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: Workstream 3B · actual request to private draft · October 30
+
+The approved local customer portal now shares actual3A ReleasePreview decisions with
+/preview > Estimates using existing preview repositories in the same tab. Staff sees
+exact note/receipt/offer/version/customer/property, explicitly reviews/confirms and
+prepares version3 through Phase3Repository. Original issued versions are immutable;
+private provenance/current-member/CAS/duplicate/UNKNOWN and repair holds apply.
+Existing builder edits/saves; issue/duplicate/job-baseline authority stays blocked.
+Customer return keeps original identity even after CRM reordering; private draft and
+staff data never enter customer projections. Reload/new tab clears this synthetic
+heap; no durable/genuine Auth claim. See docs/CUSTOMER_ESTIMATE_REVISIONS.md and
+validation:177 focused application/54 unique browser cases pass across3 viewports.
+All13/customer14/P1/four artifacts/approvals/locked UIs/recovery/Netlify unchanged.
+No hosted/financial/sending/deploy/merge; Release1.0 NOT READY / NOT AUTHORIZED.
+Next proposed3C: local exact revision review/customer-safe difference packet only.
+
 ## Latest: Netlify replacement executor · offline only · October 30
 
 server/netlify now implements pinned frozen-package validation, private fsynced

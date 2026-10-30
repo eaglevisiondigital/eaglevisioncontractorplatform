@@ -63,11 +63,6 @@ const ReleaseApp = lazy(() =>
 );
 export function App() {
   const [path, setPath] = useState(window.location.pathname);
-  useEffect(() => {
-    const update = () => setPath(window.location.pathname);
-    window.addEventListener('popstate', update);
-    return () => window.removeEventListener('popstate', update);
-  }, []);
   const sample = path.startsWith('/preview');
   const reservedCustomer =
     path.startsWith('/portal') && path !== '/portal/internal';
@@ -80,6 +75,21 @@ export function App() {
     sample ? sampleCompanies[0].id : '',
   );
   const [section, setSection] = useState('Overview');
+  useEffect(() => {
+    const update = () => {
+      setPath(window.location.pathname);
+      const handoff = window.history.state;
+      if (
+        sampleCompanies.some((c) => c.id === handoff?.syntheticEstimateHandoff)
+      ) {
+        setCompanyId(handoff.syntheticEstimateHandoff);
+        setSection('Estimates');
+      }
+    };
+    window.addEventListener('popstate', update);
+    return () => window.removeEventListener('popstate', update);
+  }, []);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');

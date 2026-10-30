@@ -1,5 +1,15 @@
 # Bounded development roadmap
 
+## Workstream 3B implemented locally; next proposed3C
+
+[Actual customer requests now reach staff review](CUSTOMER_ESTIMATE_REVISIONS.md)
+in the same tab through existing preview repositories. Explicit review/confirmation
+prepares a private version3 using Phase3Repository, preserving original issued scope,
+receipt and exact private provenance. Existing builder edits/save; no issuance or
+financial authority. Proposed3C is an exact saved-draft revision review and customer-
+safe difference packet, with CAS/repair/UNKNOWN holds and no delivery/activation.
+No automatic3C start. Earlier proposed3B statements below are historical checkpoints.
+
 ## Workstream 3A locally implemented; next proposed3B
 
 [Customer change requests](CUSTOMER_ESTIMATE_CHANGE_REQUESTS.md) now function in the

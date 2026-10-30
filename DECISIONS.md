@@ -1,5 +1,18 @@
 # Engineering decisions
 
+## October 30 · review actual customer requests before private estimate revision
+
+Use shared existing synthetic repositories and a controlled same-tab handoff instead
+of fabricated staff requests or a second decision store. Keep isolated concepts
+separate and both approved visual systems. Full request/source/current-version and
+current eligible member checks plus explicit staff confirmation call the existing
+revision engine, preserving issued originals and staff-only exact provenance. Install
+one session hold before async entry; UNKNOWN only reconciles, never retries. Pin the
+original customer/property when shared CRM order changes. Block customer-revision
+issue/duplicate/job-baseline paths and preserve repair rules. Local memory is not
+genuine Auth or durable custody. Recommend3C exact draft/difference review only;
+all hosted/financial/P1/history/customer14/recovery/Netlify/merge gates remain.
+
 ## October 30 · test the bounded executor without opening an upload window
 
 Implement the reviewed A–D algorithm through injected effect/evidence ports, pinned

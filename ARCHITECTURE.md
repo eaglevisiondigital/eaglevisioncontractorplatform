@@ -1,5 +1,17 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Workstream 3B · shared synthetic request handoff
+
+The approved portal uses a per-company CustomerChangeWorkspace registry over the
+existing preview Operations/PropertyRepository/Phase3Repository. Actual ReleasePreview
+receipts remain authoritative; staff-only projections/provenance add no decision
+ledger or estimate engine. Same-tab App navigation preserves the heap, original
+customer/property and isolated Phase A instances. Current staff/full source-token
+checks feed the existing revision engine's final synchronous guard, immutable source
+history and CAS saves. Session-only duplicate/UNKNOWN holds reconcile by exact reads;
+no storage/connected adapter/Auth or operational durability. See
+[implementation](docs/CUSTOMER_ESTIMATE_REVISIONS.md). All existing release gates.
+
 ## Offline Netlify replacement core · October 30
 
 An isolated server/netlify package validates the immutable Action D inputs and
