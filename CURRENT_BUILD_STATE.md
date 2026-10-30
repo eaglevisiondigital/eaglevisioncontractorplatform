@@ -1,5 +1,22 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: Workstream 3D · local readiness and content dry run · October 30
+
+/preview > Estimates > Revision comparison & packet now offers Issuance readiness
+& delivery dry run after an actual3A/3B/3C packet. Current source/receipt/customer/
+property/draft/lock revision/packet hash, canonical safe scope, local tax and eligible
+synthetic staff are checked before an explicitly confirmed immutable review result.
+PASS/BLOCKED/UNVERIFIED distinguish facts from missing prerequisites; overall issuance
+and delivery remain BLOCKED. Branded escaped HTML/text has no sender/recipient/link/
+outbox/provider request. Dirty/stale/revoked/foreign/repair/duplicate/UNKNOWN guards
+apply; old result/content stays immutable and stale after edits. Existing issue method
+and issued projection remain unchanged. See docs/REVISED_ESTIMATE_ISSUANCE_READINESS.md
+and validation:253 focused application/60 unique browser cases pass with all3 brands/
+viewports and zero axe/overflow findings. Local memory only, not genuine Auth or operational approval. All13/
+customer14/frozen P1/four artifacts/approvals/locked UIs/Netlify/2A–2F/billing/recovery/
+financial restrictions persist. Release1.0 NOT READY / NOT AUTHORIZED. Proposed3E:
+separately reviewed local revised-issuance/customer-return loop, not started.
+
 ## Latest: Workstream 3C · saved comparison and immutable packet · October 30
 
 The actual3A request and confirmed3B private revision now feed an exact original

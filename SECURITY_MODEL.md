@@ -1,5 +1,20 @@
 # Security model · Phase 2
 
+## Workstream 3D · review facts do not grant issuance or delivery
+
+Exact current packet/hash, saved revision, original receipt/source/customer/property,
+current eligible synthetic staff, full calculation/source and local tax state bind an
+opaque review claim. Explicit confirmation and live clean editor are rechecked after
+hashing at commit; closing the UI or source/policy drift rejects. One session hold
+retains UNKNOWN without replay/new-revision bypass. Exact read reconciliation verifies
+only original result/snapshot/hash/packet identity. Old records remain immutable and
+stale after edits. Overall execution BLOCKED; sender/recipient/consent/operational
+facts remain UNVERIFIED. Strict safe content, escaped dynamic fields, validated color,
+sandbox/CSP and null recipient/sender/link/provider request provide no send path.
+Issue/SQL/issued-only restrictions remain unchanged. See
+[implementation](docs/REVISED_ESTIMATE_ISSUANCE_READINESS.md). No genuine Auth/durable
+approval/connected/financial/provider/hosted/recovery/Netlify/deploy/merge authority.
+
 ## Workstream 3C · customer-safe packet boundary
 
 Packet preparation checks current eligible synthetic staff, actual receipt/offer,

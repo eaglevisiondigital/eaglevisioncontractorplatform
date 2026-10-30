@@ -1,5 +1,18 @@
 # Production Release 1.0 acceptance checklist
 
+## Workstream 3D · review-only readiness and delivery content · October 30
+
+The local actual3A->3B->3C chain now feeds a saved-current packet-bound issuance
+requirements review and escaped branded HTML/text preview. Explicit synthetic staff,
+source/tax/calculation/editor/CAS checks and one-shot/UNKNOWN guards apply. See
+[implementation](REVISED_ESTIMATE_ISSUANCE_READINESS.md) and validation. Overall
+issuance/delivery remain BLOCKED; sender/recipient/consent/operational evidence is
+UNVERIFIED. No genuine approval, issue, customer link, outbox/send, agreement, work,
+invoice/debt/payment, hosted or recovery acceptance. Existing issue/SQL/issued-only
+restrictions and all13/customer14/frozen P1/four artifacts/approvals/locked UIs/2A–2F/
+billing/Netlify gates remain. Full customer lifecycle is still required. Release1.0
+NOT READY / NOT AUTHORIZED;3E local transaction loop requires separate review/direction.
+
 ## Workstream 3C · local immutable review packet · October 30
 
 Actual3A request -> confirmed3B saved revision -> exact comparison -> explicit staff

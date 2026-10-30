@@ -1,3 +1,4 @@
+import { IssuanceReadiness } from './IssuanceReadiness';
 import { useCallback, useRef, useState } from 'react';
 import {
   customerRevisionPackets,
@@ -245,7 +246,9 @@ export function RevisionReviewPacket({
     [busy, setBusy] = useState(false);
   const [message, setMessage] = useState(''),
     [packet, setPacket] = useState<PacketPreview>();
-  const [view, setView] = useState<'comparison' | 'packet'>('comparison');
+  const [view, setView] = useState<'comparison' | 'packet' | 'readiness'>(
+    'comparison',
+  );
   const pending = useRef(false);
   const data = useResource(
     useCallback(async () => {
@@ -329,6 +332,13 @@ export function RevisionReviewPacket({
             onClick={() => setView('packet')}
           >
             Prepared packet preview
+          </button>
+          <button
+            className="secondary"
+            aria-pressed={view === 'readiness'}
+            onClick={() => setView('readiness')}
+          >
+            Issuance readiness & delivery dry run
           </button>
         </div>
       )}
@@ -477,6 +487,20 @@ export function RevisionReviewPacket({
           </details>
           <RevisionComparisonView value={packet.snapshot.comparison} />
         </section>
+      )}
+      {packet && view === 'readiness' && (
+        <IssuanceReadiness
+          key={`${packet.snapshot.id}:${revision}`}
+          org={org}
+          estimate={estimate}
+          version={version}
+          revision={revision}
+          packetId={packet.snapshot.id}
+          editor={editor}
+          dirty={dirty}
+        >
+          <RevisionComparisonView value={packet.snapshot.comparison} />
+        </IssuanceReadiness>
       )}
       <small>
         In-memory synthetic evidence only. Reload/new tab loses this state. No

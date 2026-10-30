@@ -142,6 +142,35 @@ export class CustomerRevisionPackets {
       c.revised.saved_revision,
     ]);
   }
+  /** Final synchronous guard for a separately confirmed local review, never an issue capability. */
+  assertCurrent(
+    review: PacketReview,
+    editor: EstimateInput,
+    packet: PacketPreview,
+  ) {
+    const claim = this.reviews.get(review);
+    if (!claim || JSON.stringify(review) !== claim.review)
+      throw Error('Exact saved packet review required');
+    const context = this.context(review.org, review.actor, review.estimate);
+    const attempt = this.attempts.get(this.key(context.comparison));
+    const stored = this.archive.read(packet.snapshot.id);
+    if (
+      JSON.stringify(context) !== claim.context ||
+      !same(editor, context.evidence.draft.version.payload) ||
+      !attempt ||
+      attempt.state !== 'prepared' ||
+      attempt.context !== claim.context ||
+      !packet.current ||
+      !same(attempt.expected, packet.snapshot) ||
+      !same(packet.snapshot.comparison, review.comparison) ||
+      !stored ||
+      !same(stored.snapshot, packet.snapshot) ||
+      !same(stored.integrity, packet.integrity)
+    )
+      throw Error(
+        'Current non-stale packet and exact clean saved draft required',
+      );
+  }
   async review(
     org: string,
     actor: string,

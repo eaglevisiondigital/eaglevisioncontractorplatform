@@ -1,5 +1,17 @@
 # Bounded development roadmap
 
+## Workstream 3D implemented locally; next proposed3E
+
+[Issuance readiness and content dry run](REVISED_ESTIMATE_ISSUANCE_READINESS.md) now
+work from the actual3A/3B/3C source chain. Explicit current saved/packet/staff/tax checks
+record a review-only result with PASS/BLOCKED/UNVERIFIED, always BLOCKED for actual
+issuance/delivery. Branded safe content resolves no sender/recipient/link or consent.
+Next practical3E: separately reviewed local synthetic revised-estimate issuance and
+return to the existing issued customer-review/response flow via an internal sink.
+Reuse existing version/offer/decision engines. First review the exact new local issue
+boundary; do not bypass today's hold from3D evidence. No real email/connected/contract/
+work/invoice/payment activation. Not auto-started. Earlier proposed3D notes are historical.
+
 ## Workstream 3C implemented locally; next proposed3D
 
 [Saved revision comparison and immutable packet](CUSTOMER_REVISION_REVIEW_PACKETS.md)

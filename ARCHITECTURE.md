@@ -1,5 +1,17 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Workstream 3D · bound readiness and pure delivery-content preview
+
+CustomerIssuanceReadiness composes actual3A/3B provenance and a verified current3C
+packet with current saved state/tax reads, canonical safe-scope hash and live editor
+validation. One opaque review claim/final synchronous checkpoint records immutable
+review-only evidence; duplicate/UNKNOWN holds cannot replay. Staleness is external to
+the retained snapshot. Shared pure communication escaping/branded HTML is separate
+from unchanged server sender/recipient verification, persistence and transport. No
+issue call, offer, outbox, new schema or connected route. The content iframe is sandboxed
+with restrictive CSP. See docs/REVISED_ESTIMATE_ISSUANCE_READINESS.md. Synthetic heap
+only; existing Auth/custody/financial/hosted/recovery/Netlify gates remain.
+
 ## Workstream 3C · exact saved revision packet
 
 CustomerRevisionPackets composes confirmed actual3A/3B provenance, current CRM/staff

@@ -6,6 +6,10 @@ import {
   uuid,
 } from '../providers/safety';
 import { resendWebhook } from '../providers/webhooks';
+import {
+  escapeCommunicationText as escape,
+  brandedCommunicationHtml,
+} from '../../src/domain/communications/content';
 
 export interface TenantSenderProfile {
   organizationId: string;
@@ -184,15 +188,6 @@ export interface CommunicationRepository {
     customerId: string,
   ): Promise<CommunicationContext>;
 }
-function escape(value: string) {
-  return value.replace(
-    /[&<>"']/g,
-    (c) =>
-      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[
-        c
-      ]!,
-  );
-}
 export async function prepareTenantNotification(
   input: {
     organizationId: string;
@@ -250,7 +245,12 @@ export async function prepareTenantNotification(
   }[i.purpose];
   const subject = `${p.companyName}: ${label} ${i.reference}`;
   const text = `${p.companyName}\n${label} ${i.reference} is prepared for review.\nInternal preparation only. No message has been sent.`;
-  const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>${escape(subject)}</title></head><body><main style="border-top:4px solid ${p.primaryColor}"><h1>${escape(p.companyName)}</h1><p>${escape(label)} ${escape(i.reference)} is prepared for review.</p><p>Internal preparation only. No message has been sent.</p></main></body></html>`;
+  const html = brandedCommunicationHtml(
+    subject,
+    p.companyName,
+    p.primaryColor,
+    `<p>${escape(label)} ${escape(i.reference)} is prepared for review.</p><p>Internal preparation only. No message has been sent.</p>`,
+  );
   return Object.freeze({
     organizationId: i.organizationId,
     customerId: i.customerId,

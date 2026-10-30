@@ -1,3 +1,16 @@
+Workstream 3D continuation: read docs/REVISED_ESTIMATE_ISSUANCE_READINESS.md and validation.
+Existing Estimates packet view now composes an exact saved-draft/packet/request-bound
+issuance-requirement review and branded content dry run. Explicit current synthetic
+staff confirmation/live clean editor/final source+tax+CAS check precedes one immutable
+review-only result; overall BLOCKED, missing delivery evidence UNVERIFIED. No genuine
+approval/capability. One session hold; UNKNOWN exact read-only/no replay/new-revision
+bypass. Shared pure escaping/template keeps server verification intact; no sender/
+recipient/link/outbox/network resolution. Issue method/SQL/issued projection unchanged.
+Same-tab memory is not genuine Auth/durable custody. Proposed3E is separately reviewed
+local revised issuance-to-customer-review functionality, not another dry-run layer,
+not started. Preserve all13/customer14/P1/four artifacts/approvals/locked UIs/2A–2F/
+billing/Netlify/recovery/financial/hosted/communication/deploy/merge restrictions.
+
 Workstream 3C continuation: read docs/CUSTOMER_REVISION_REVIEW_PACKETS.md and validation.
 /preview Estimates compares exact actual3A receipt/issued source with confirmed3B saved
 private draft. projectIssuedReview remains issued-only; narrow canonical allowlisted

@@ -1,5 +1,18 @@
 # Engineering decisions
 
+## October 30 · review issuance requirements without granting authority
+
+Reuse the exact3C packet and actual3A/3B provenance rather than issuing a private draft
+or fabricating delivery evidence. Bind current canonical scope/source/tax/staff/CAS
+and the live clean editor to one explicitly confirmed local immutable review. Overall
+BLOCKED and explicit UNVERIFIED prerequisites prevent a local PASS being mistaken for
+execution approval. Retain one-shot/UNKNOWN no replay and historical staleness. Extract
+only pure shared communication escaping/template; keep existing sender verification,
+recipient/consent, issue/SQL restrictions and all hosted/financial/recovery gates.
+Content has null sender/recipient/link and no outbox/network. Proposed3E should complete
+a separately reviewed local revised-issuance/customer-review loop, not add indefinite
+dry runs. Not started. See docs/REVISED_ESTIMATE_ISSUANCE_READINESS.md.
+
 ## October 30 · compare exact saved revisions before preparing a safe packet
 
 Reuse actual3A decisions, confirmed3B provenance and the existing estimate engine;

@@ -1,5 +1,15 @@
 # Workstream 3 · version-specific estimate change-request handoff
 
+## October 30 · Workstream 3D local continuation
+
+[Readiness review and delivery-content dry run](REVISED_ESTIMATE_ISSUANCE_READINESS.md)
+now use the actual3A request, confirmed3B saved revision and immutable3C packet.
+No issuing/sending/customer access/contract/work/financial authority. The next practical
+3E is the separately reviewed local revised-estimate issuance and return-to-customer
+review/response loop using existing engines and an internal sink. First authorize
+its exact new local issuance boundary; no real communication/connected/financial
+activation. Not started. Earlier implementation-not-started checkpoints remain historical.
+
 ## October 30 implementation continuity
 
 Workstreams [3A](CUSTOMER_ESTIMATE_CHANGE_REQUESTS.md),

@@ -200,6 +200,15 @@ export class Phase3Repository {
     );
     return clone({ origin, source, draft });
   }
+  /** Local-only read of current tax evidence; does not confer issuance authority. */
+  customerRevisionTaxState(org: string, actor: string, estimate: string) {
+    const evidence = this.customerRevisionState(org, actor, estimate);
+    return clone(
+      this.state(org).taxes.find(
+        (t) => t.id === evidence.draft.version.payload.tax_policy_id,
+      ) ?? null,
+    );
+  }
   async prepareSyntheticCustomerRevision(
     org: string,
     source: EstimateBundle,
