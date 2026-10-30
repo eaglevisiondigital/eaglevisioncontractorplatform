@@ -1,5 +1,19 @@
 # Security model · Phase 2
 
+## Netlify replacement executor boundary · October 30
+
+The new isolated core requires exact target/body/package/code/preflight approval,
+one permanent private claim, retained initial queues and exact receipts before each
+phase. No retry/manifest/publication/old-deploy mutation endpoint is constructed.
+Unknown or interrupted outcomes retain private evidence and cannot replay on restart.
+Fixed frozen custody location, owner/private/no-symlink file checks and fsync protect
+ordinary local process failures; same-owner forgery/deletion/disk rollback are not
+claimed solved. Ports and independent witnesses remain trusted operational inputs;
+the fake .invalid evidence is not genuine protection/Auth/runtime acceptance. No
+live adapter, credential retrieval, CLI or application route is added. Prior blank
+dashboard/current baseline gaps keep execution authorization NO-GO. See
+docs/NETLIFY_REPLACEMENT_EXECUTOR.md. All existing P1/schema/UI/financial/recovery gates.
+
 ## Workstream 3A synthetic change-request boundary · October 30
 
 Exact company/customer/property/issued-version/offer, expiry, trimmed note bounds and

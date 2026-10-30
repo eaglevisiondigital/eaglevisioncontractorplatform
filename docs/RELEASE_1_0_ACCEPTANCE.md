@@ -1,5 +1,15 @@
 # Production Release 1.0 acceptance checklist
 
+## October 30 · offline executor is not hosted execution readiness
+
+[Bounded replacement executor](NETLIFY_REPLACEMENT_EXECUTOR.md) and fake-provider
+failure/restart tests are implemented without a live adapter/credential reader or
+CLI. No deployment, upload or six-hour window was opened. Independent protection
+and current baseline/operational evidence remain pending;final execution-approval
+request is NO-GO. No runtime/perimeter/tenant/physical-recovery acceptance promoted.
+Original review contract/all14/28c7d5e archive/body,all13/customer14/P1/four artifacts,
+approvals and locked UIs persist. Release1.0 NOT READY / NOT AUTHORIZED;no merge.
+
 ## October 30 · replacement draft review is not deployment acceptance
 
 The [exact Netlify replacement proposal](NETLIFY_REPLACEMENT_DRAFT_REVIEW.md) is

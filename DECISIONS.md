@@ -1,5 +1,21 @@
 # Engineering decisions
 
+## October 30 · test the bounded executor without opening an upload window
+
+Implement the reviewed A–D algorithm through injected effect/evidence ports, pinned
+frozen hashes and an opaque package; synthetic packages can only target .invalid.
+Require explicit target/body/code/preflight approval, a fixed durable attempt scope,
+initial required-list custody before optional-field checks and receipt commits before
+continuation. Restart/concurrent/UNKNOWN cannot replay, final manifest has no path,
+and manual supervision/finite clock bounds apply across waits. Exact post-perimeter
+original/site/new-ready identity is checked before terminal evidence. Real process
+SIGKILL tests prove process restart holds, not physical disk recovery. Trusted local
+custody/adapters/witnesses are not genuine Auth or cryptographic owner attestation.
+No live bridge/credential reader/CLI or hosted action. Keep NO-GO for final execution
+authorization while independent protection/current baseline and operational wiring
+remain unproven. Original frozen artifacts/review/all13/customer14/P1/UI/approval/
+financial/recovery gates persist. See docs/NETLIFY_REPLACEMENT_EXECUTOR.md.
+
 ## October 30 · bind a replacement review without creating another deployment
 
 Use the independently read provider diagnosis to prepare a new-ID draft alternative,

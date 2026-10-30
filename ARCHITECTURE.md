@@ -1,5 +1,16 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Offline Netlify replacement core · October 30
+
+An isolated server/netlify package validates the immutable Action D inputs and
+composes a private fsynced one-shot event journal with the exact bounded A–D state
+machine. Request, independent read-only evidence, manual supervision and timing are
+explicit ports; only a .invalid fake provider is supplied in tests. There is no
+application binding, live HTTP adapter, credential reader or execute CLI. Exact
+owner approval/current protection and baseline remain gates; UNKNOWN cannot resume.
+No application rebuild or frozen-source substitution. See
+docs/NETLIFY_REPLACEMENT_EXECUTOR.md; all release/schema/financial/recovery gates stay.
+
 ## Workstream 3A local customer preference composition · October 30
 
 CustomerPortalPreviewModel reuses existing ReleasePreview decisions for exact-version

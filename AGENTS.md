@@ -1,3 +1,14 @@
+Netlify executor readiness continuation: read docs/NETLIFY_REPLACEMENT_EXECUTOR.md
+and validation before historical review-only notes. New bounded package/journal/core
+is exercised through .invalid fake ports only; no live adapter/credential loader/CLI.
+Exact owner approval and independent dashboard/preflight evidence remain absent:
+NO-GO for final execution authorization. Initial queues persist before validation;
+one fixed private claim/no replay, exact receipts, 45-minute/six-hour bounds, UNKNOWN
+on loss/journal failure/restart; no final manifest or automatic continuation. Fake
+witnesses are not operational protection/Auth evidence. Original review contract,
+28c7d5e archive/all14/body,all13/customer14/P1/four artifacts/approvals/locked UIs and
+financial/recovery/Netlify/publication/merge gates stay unchanged. No hosted action.
+
 Netlify replacement REVIEW continuation: read docs/NETLIFY_REPLACEMENT_DRAFT_REVIEW.md,
 its JSON contract/validation and private target binding before older Action D notes.
 October30 provider attributes500 to missing TOML and422 to six-hour expiry; no tested

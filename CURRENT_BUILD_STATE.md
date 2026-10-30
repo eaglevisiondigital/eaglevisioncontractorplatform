@@ -1,5 +1,22 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: Netlify replacement executor · offline only · October 30
+
+server/netlify now implements pinned frozen-package validation, private fsynced
+one-shot journal and bounded create/required-only-upload/read-only-verification core.
+Fake .invalid provider tests exercise success, reuse/empty/malformed queues, exact
+identity/receipts, optional draft corroboration, loss/UNKNOWN/restart, journal/clock/
+supervision/deadline failures, privacy/protection and actual child SIGKILLs. No live
+adapter, credential/private-value loader, execute CLI or connected route is added.
+See docs/NETLIFY_REPLACEMENT_EXECUTOR.md and validation. Original ca0892a CI green;
+no successful check restarted. The accepted strategy is preparation, not approval.
+Independent dashboard/current complete preflight and operational adapter/supervision
+evidence remain missing;NO-GO for requesting final hosted execution authorization.
+Original review contract,28c7d5e archive/all14/body,all13/customer14/frozen P1/four
+artifacts/approvals/locked UIs and financial/recovery/Netlify gates remain intact.
+No create/upload/window/credentials/hosted Auth/DB/publication/merge. Release1.0
+NOT READY / NOT AUTHORIZED;PR#1 remains draft. No application rebuild for this work.
+
 ## Latest: Netlify replacement draft · exact review only · October 30
 
 Provider diagnosis now attributes the original500 to missing netlify.toml and later422
