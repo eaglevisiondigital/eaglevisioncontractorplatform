@@ -2,9 +2,10 @@
 
 ## October 30 · review actual customer requests before private estimate revision
 
-Use shared existing synthetic repositories and a controlled same-tab handoff instead
+Share existing synthetic CRM/estimate state and a controlled same-tab handoff instead
 of fabricated staff requests or a second decision store. Keep isolated concepts
-separate and both approved visual systems. Full request/source/current-version and
+separate and both approved visual systems. Existing inspection fixture instances also
+stay separate, preventing portal examples from populating staff maintenance. Full request/source/current-version and
 current eligible member checks plus explicit staff confirmation call the existing
 revision engine, preserving issued originals and staff-only exact provenance. Install
 one session hold before async entry; UNKNOWN only reconciles, never retries. Pin the

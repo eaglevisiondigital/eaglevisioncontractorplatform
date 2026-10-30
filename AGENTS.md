@@ -1,7 +1,7 @@
 Workstream 3B continuation: read docs/CUSTOMER_ESTIMATE_REVISIONS.md and validation.
 Approved local portal and /preview Estimates share actual3A requests in one tab via
-existing preview repositories. No fabricated requests, localStorage or connected
-bridge. Pin original customer/property on return; URL/state is presentation only.
+shared CRM/estimate engines; existing inspection fixture instances stay isolated
+(no portal examples in staff maintenance). No fabricated requests, storage or connected bridge. Pin original customer/property on return; URL/state is presentation only.
 Current eligible synthetic staff, exact full request/source/current version and
 confirmation precede existing Phase3 revision; one session hold/UNKNOWN read-only,
 no retry/replacement. Preserve issued originals/exact receipt/private provenance,

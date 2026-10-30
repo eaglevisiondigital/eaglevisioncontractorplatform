@@ -3,7 +3,8 @@
 ## Workstream 3B · shared synthetic request handoff
 
 The approved portal uses a per-company CustomerChangeWorkspace registry over the
-existing preview Operations/PropertyRepository/Phase3Repository. Actual ReleasePreview
+existing preview Operations and Phase3Repository. Portal/staff inspection fixture
+instances remain separate: no portal examples populate maintenance. Actual ReleasePreview
 receipts remain authoritative; staff-only projections/provenance add no decision
 ledger or estimate engine. Same-tab App navigation preserves the heap, original
 customer/property and isolated Phase A instances. Current staff/full source-token

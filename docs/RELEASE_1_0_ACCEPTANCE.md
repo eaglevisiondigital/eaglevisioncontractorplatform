@@ -4,7 +4,7 @@
 
 Actual3A receipt -> explicit eligible synthetic staff review -> existing-engine
 version3 draft -> CAS editor save -> unchanged customer issued scope is implemented
-locally.177 focused application/54 unique browser cases, all3 brands/viewports,
+locally.178 focused application/57 unique browser cases, all3 brands/viewports,
 privacy/immutability/duplicate/UNKNOWN/role/repair checks pass. No real authentication,
 durable custody, issuance, sending, agreement, job approval, financial/hosted action
 or acceptance gate is inferred. See [implementation](CUSTOMER_ESTIMATE_REVISIONS.md)

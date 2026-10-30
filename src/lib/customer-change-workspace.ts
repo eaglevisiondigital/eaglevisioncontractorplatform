@@ -1,7 +1,7 @@
 import { sampleCompanies, type CompanyProfile } from '../domain/platform';
 import type { EstimateBundle } from '../domain/estimating/types';
 import { CustomerPortalPreviewModel } from './customer-preview';
-import { propertyRepository, type PropertyRepository } from './property';
+import { PropertyRepository } from './property';
 import { previewOperations } from './operations';
 
 type ChangeRequest = ReturnType<
@@ -280,7 +280,7 @@ export class CustomerChangeWorkspace {
 }
 // One tab's heap only. No storage, broadcast, credentials, connected fallback or fabricated receipts.
 export const customerChangeWorkspace = new CustomerChangeWorkspace(
-  propertyRepository(previewOperations),
+  new PropertyRepository(previewOperations),
 );
 export function openSyntheticWorkspace(
   target: 'customer' | 'staff',

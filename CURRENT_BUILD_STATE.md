@@ -11,7 +11,7 @@ Existing builder edits/saves; issue/duplicate/job-baseline authority stays block
 Customer return keeps original identity even after CRM reordering; private draft and
 staff data never enter customer projections. Reload/new tab clears this synthetic
 heap; no durable/genuine Auth claim. See docs/CUSTOMER_ESTIMATE_REVISIONS.md and
-validation:177 focused application/54 unique browser cases pass across3 viewports.
+validation:178 focused application/57 unique browser cases pass across3 viewports.
 All13/customer14/P1/four artifacts/approvals/locked UIs/recovery/Netlify unchanged.
 No hosted/financial/sending/deploy/merge; Release1.0 NOT READY / NOT AUTHORIZED.
 Next proposed3C: local exact revision review/customer-safe difference packet only.

@@ -331,3 +331,38 @@ it('returning from staff preserves original customer/property after CRM order ch
     'Original customer property unavailable',
   );
 });
+
+it('shares actual estimate and CRM state without leaking portal inspection fixtures into staff maintenance', async () => {
+  const operations = new Operations(true);
+  const customerRepo = new PropertyRepository(operations);
+  const staffRepo = new PropertyRepository(operations);
+  const workspace = new CustomerChangeWorkspace(customerRepo);
+  const company = sampleCompanies[0],
+    org = company.id;
+  const model = workspace.customer(company);
+  await model.login();
+  await model.prepareHistory();
+  await model.prepare();
+  model.prepareAttentionExamples();
+  model.prepareComparisonExamples();
+  await staffRepo.initialize(company);
+  expect(staffRepo.estimates).toBe(customerRepo.estimates);
+  expect(staffRepo.operations).toBe(customerRepo.operations);
+  expect(customerRepo.read(org).reports.length).toBeGreaterThan(0);
+  expect(staffRepo.read(org).reports).toEqual([]);
+  const actor = workspace.reviewer(org);
+  expect(staffRepo.maintenance(org, actor).items).toEqual([]);
+  const data = model.read();
+  const receipt = await model.respond(
+    data.reviews[1].version_id,
+    'changes_requested',
+    true,
+    'Please review this actual scope.',
+  );
+  const review = await workspace.review(org, actor, receipt.id);
+  const draft = await workspace.prepare(review, true);
+  expect(
+    (await staffRepo.estimates.get(org, draft.estimate.id)).version.id,
+  ).toBe(draft.version.id);
+  expect(staffRepo.maintenance(org, actor).items).toEqual([]);
+});

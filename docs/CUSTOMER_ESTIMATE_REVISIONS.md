@@ -37,8 +37,12 @@ current version; its historical missing property binding is also an explicit hol
 
 ## Shared state, provenance and authority
 
-The approved portal uses a per-company model registry over the same existing
-preview Operations, PropertyRepository and Phase3Repository as the contractor App.
+The approved portal uses a per-company model registry sharing the same existing
+preview Operations (CRM/memberships) and Phase3Repository (actual estimate versions)
+as the contractor App. Its existing PropertyRepository fixture instance stays separate
+from the contractor's instance: portal inspection examples must not populate the
+staff maintenance queue. This is a controlled receipt/estimate handoff using existing
+classes, not another property or inspection system.
 The isolated Phase A/legacy previews retain their own repositories and presentation.
 Only existing ReleasePreview decisions with `changes_requested` are projected to
 staff. Receipt/offer/version/customer/property are checked against the original
@@ -87,20 +91,26 @@ customer debt or work authorization. No contract/financial command is invoked.
 ## Verification and evidence
 
 See [validation record](CUSTOMER_ESTIMATE_REVISIONS_VALIDATION.json).
-**177 focused application cases pass**, including **26 new cases**. Coverage includes
+**178 focused application cases pass**, including **27 new cases**. Coverage includes
 all three companies, original issued-version fidelity, exact actual receipts, manual
 confirmation, concurrent duplicate prevention, wrong company/customer/property/source,
 stale reviews, role eligibility/revocation, CRM reordering, repair holds, optimistic
 save conflicts, UNKNOWN before/after commit and read-only reconciliation.
 
-**54 unique focused browser cases pass**, including **12 new cases** across desktop,
+**57 unique focused browser cases pass**, including **12 new cases** across desktop,
 tablet and mobile. Actual customer request → staff review → editable/saved version 3
 → exact read reopen → customer return is exercised for all three companies. Axe has
 zero violations in the tested review and editor states; no horizontal overflow or
 external requests. Existing portal actions, delayed-context protections, contractor
 pixel/reference/navigation and estimate editor flows remain passing. The final
-15-case run verifies the 12 new cases plus the three corrected CRM-return regressions;
+18-case run verifies the 12 new cases plus the three corrected CRM-return and three fixture-isolation regressions;
 the other39 previously passing cases are retained without redundant reruns.
+
+The first delivery CI passed1423 application/PGlite and570 native database cases,
+but3 of198 browser cases exposed portal inspection examples entering the staff
+maintenance queue. The handoff was narrowed to shared CRM/estimate state while
+preserving separate existing inspection fixture instances. The unchanged isolation
+assertions and a new domain regression verify this correction; no test was relaxed.
 
 Initial tests found low contrast in new evidence labels (corrected with a scoped
 rule), a transient-save-message test assumption (assertion now checks actual saved
