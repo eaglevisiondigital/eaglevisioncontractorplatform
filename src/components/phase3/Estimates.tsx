@@ -1,3 +1,4 @@
+import { SyntheticRevisionIssuance } from './SyntheticRevisionIssuance';
 import { RevisionReviewPacket } from './RevisionReviewPacket';
 import { CustomerChangeRequests } from './CustomerChangeRequests';
 import { customerChangeWorkspace } from '../../lib/customer-change-workspace';
@@ -436,6 +437,7 @@ function EstimateEditor({
       )}
       <div className="p3-tabs">
         {changeOnly &&
+          !readonly &&
           repo === customerChangeWorkspace.repo.estimates &&
           resources.data?.change?.draft_version_id === initial.version.id && (
             <button
@@ -474,6 +476,20 @@ function EstimateEditor({
           accept, sign, invoice or collect payment.
         </p>
       </div>
+      {changeOnly &&
+        initial.version.status === 'issued' &&
+        initial.version.version_number === 3 &&
+        repo === customerChangeWorkspace.repo.estimates && (
+          <SyntheticRevisionIssuance
+            org={company.id}
+            estimate={initial.estimate.id}
+            version={initial.version.id}
+            revision={initial.version.lock_revision}
+            editor={p}
+            dirty={dirty}
+            onIssued={onChange}
+          />
+        )}
       {tab === 'history' ? (
         <>
           <ResourceStatus {...resources} />
@@ -507,6 +523,7 @@ function EstimateEditor({
           revision={initial.version.lock_revision}
           editor={p}
           dirty={dirty}
+          onIssued={onChange}
         />
       ) : tab === 'preview' ? (
         <CustomerEstimatePreview

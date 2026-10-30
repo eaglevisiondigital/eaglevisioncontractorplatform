@@ -83,6 +83,12 @@ export function CustomerEstimateReview({
             <span className="badge">
               Issued estimate · Version {r.version_number}
             </span>
+            {r.version_number === 3 && changeRequests && (
+              <p className="customer-preference">
+                Revised synthetic version · Internal preview only. This version
+                needs a separate response; earlier preferences do not apply.
+              </p>
+            )}
             <h3>{r.scope.name}</h3>
             <p>
               {r.source_report_id
@@ -294,6 +300,65 @@ export function CustomerEstimateReview({
               </p>
             ),
           )}
+        </section>
+      )}
+      {data.reviews.length > 2 && (
+        <section aria-label="Immutable estimate comparison">
+          <h3>What changed between versions?</h3>
+          {data.reviews.slice(1).map((revised, i) => (
+            <section
+              key={revised.version_id}
+              aria-label={`Estimate comparison versions ${data.reviews[i].version_number} and ${revised.version_number}`}
+            >
+              <h4>
+                Version {data.reviews[i].version_number} → Version{' '}
+                {revised.version_number}
+              </h4>
+              {compareCustomerVersions(data.reviews[i], revised).map((x) => (
+                <p key={x.id}>
+                  <strong>
+                    {!x.before ? 'Added' : !x.after ? 'Removed' : 'Changed'}
+                  </strong>
+                  <br />
+                  Original:{' '}
+                  {x.before
+                    ? `${x.before.description} · ${x.before.quantity_milli / 1000} ${x.before.unit.replaceAll('_', ' ')} · ${formatMinor(x.before.amount_minor, data.reviews[i].scope.currency)}`
+                    : 'Not included'}
+                  <br />
+                  Revised:{' '}
+                  {x.after
+                    ? `${x.after.description} · ${x.after.quantity_milli / 1000} ${x.after.unit.replaceAll('_', ' ')} · ${formatMinor(x.after.amount_minor, revised.scope.currency)}`
+                    : 'Removed'}
+                </p>
+              ))}
+              {!compareCustomerVersions(data.reviews[i], revised).length && (
+                <p>
+                  Scope line descriptions, quantities and selling amounts are
+                  unchanged.
+                </p>
+              )}
+              <p>
+                Original total{' '}
+                {formatMinor(
+                  data.reviews[i].scope.total_minor,
+                  data.reviews[i].scope.currency,
+                )}{' '}
+                → Revised total{' '}
+                {formatMinor(revised.scope.total_minor, revised.scope.currency)}
+              </p>
+              <p>
+                Customer notes:{' '}
+                {data.reviews[i].scope.notes === revised.scope.notes
+                  ? 'Unchanged'
+                  : 'Changed — review each version above'}
+                . Terms:{' '}
+                {data.reviews[i].scope.terms === revised.scope.terms
+                  ? 'Unchanged'
+                  : 'Changed — review each version above'}
+                .
+              </p>
+            </section>
+          ))}
         </section>
       )}
     </section>

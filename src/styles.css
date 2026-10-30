@@ -1824,3 +1824,24 @@ fieldset legend {
   max-height: 24rem;
   overflow: auto;
 }
+
+/* Local3E follows the existing review typography without changing either shell. */
+.synthetic-revision-loop dt,
+.synthetic-revision-loop small {
+  color: var(--ink, #243b30);
+}
+.synthetic-revision-loop dd,
+.synthetic-revision-loop p {
+  overflow-wrap: anywhere;
+}
+.synthetic-revision-loop dd {
+  margin: 0 0 0.75rem;
+}
+.synthetic-revision-loop label {
+  display: block;
+  margin: 1rem 0;
+}
+.synthetic-revision-loop button {
+  white-space: normal;
+  margin: 0.35rem 0.5rem 0.35rem 0;
+}

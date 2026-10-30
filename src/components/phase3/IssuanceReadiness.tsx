@@ -1,3 +1,4 @@
+import { SyntheticRevisionIssuance } from './SyntheticRevisionIssuance';
 import {
   useCallback,
   useEffect,
@@ -6,7 +7,10 @@ import {
   useState,
   type ReactNode,
 } from 'react';
-import type { EstimateInput } from '../../domain/estimating/types';
+import type {
+  EstimateBundle,
+  EstimateInput,
+} from '../../domain/estimating/types';
 import type { IssuanceReviewView } from '../../domain/estimating/issuance-readiness';
 import { formatMinor } from '../../domain/estimating/calculation';
 import {
@@ -100,6 +104,7 @@ export function IssuanceReadiness({
   editor,
   dirty,
   children,
+  onIssued,
 }: {
   org: string;
   estimate: string;
@@ -109,6 +114,7 @@ export function IssuanceReadiness({
   editor: EstimateInput;
   dirty: boolean;
   children: ReactNode;
+  onIssued(bundle: EstimateBundle): void;
 }) {
   const [confirmed, setConfirmed] = useState(false),
     [busy, setBusy] = useState(false),
@@ -382,6 +388,19 @@ export function IssuanceReadiness({
             </p>
           )}
         </section>
+      )}
+      {result && currentResult && (
+        <SyntheticRevisionIssuance
+          org={org}
+          estimate={estimate}
+          version={version}
+          revision={revision}
+          packetId={packetId}
+          readinessId={result.snapshot.id}
+          editor={editor}
+          dirty={dirty}
+          onIssued={onIssued}
+        />
       )}
       {!data.error && data.data && (
         <section aria-label="Issuance review history">

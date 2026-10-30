@@ -1,4 +1,11 @@
 import type { CustomerRevisionOrigin } from '../domain/estimating/change-request';
+import type {
+  CustomerRevisionPackets,
+  PacketReview,
+  PacketPreview,
+} from './customer-revision-packets';
+import { projectRevisionScope } from '../domain/estimating/revision-packet';
+import { documentHash } from '../domain/release/preview';
 import {
   evaluateRepairReadiness,
   recordRepairReadiness,
@@ -108,7 +115,176 @@ interface SampleState {
     }
   >;
 }
+export interface SyntheticRevisionIssuance {
+  id: string;
+  mode: 'local-synthetic-only';
+  organization_id: string;
+  estimate_id: string;
+  customer_id: string;
+  location_id: string;
+  request_id: string;
+  source_offer_id: string;
+  source_version_id: string;
+  version_id: string;
+  version_number: 3;
+  saved_revision: number;
+  packet_id: string;
+  packet_sha256: string;
+  scope_sha256: string;
+  reviewer: string;
+  issued_at: string;
+}
 export class Phase3Repository {
+  private syntheticIssuances = new Map<
+    string,
+    {
+      id: string;
+      record?: SyntheticRevisionIssuance;
+      bundle?: EstimateBundle;
+      source?: EstimateVersion;
+    }
+  >();
+  /** Exact local evidence only. No operational Auth, permission or connected fallback. */
+  syntheticRevisionIssuance(org: string, actor: string, estimate: string) {
+    const state = this.state(org);
+    this.requireSyntheticEstimator(org, actor);
+    const attempt = this.syntheticIssuances.get(estimate);
+    if (!attempt?.record || !attempt.bundle || !attempt.source) return null;
+    const { record, bundle, source } = attempt;
+    this.operations.syntheticProperty(
+      org,
+      record.customer_id,
+      record.location_id,
+    );
+    const current = state.estimates.find((b) => b.estimate.id === estimate);
+    if (
+      record.organization_id !== org ||
+      this.repairBindings.has(estimate) ||
+      JSON.stringify(current) !== JSON.stringify(bundle) ||
+      JSON.stringify(state.history.find((v) => v.id === source.id)) !==
+        JSON.stringify(source) ||
+      JSON.stringify(state.history.find((v) => v.id === record.version_id)) !==
+        JSON.stringify(bundle.version)
+    )
+      throw Error('Exact synthetic issuance evidence unavailable');
+    this.customerRevisionOrigin(org, estimate);
+    return clone({ record, bundle });
+  }
+  syntheticIssuedTaxState(org: string, actor: string, estimate: string) {
+    const e = this.syntheticRevisionIssuance(org, actor, estimate);
+    if (!e) throw Error('Exact synthetic issued version unavailable');
+    return clone(
+      this.state(org).taxes.find(
+        (t) => t.id === e.bundle.version.payload.tax_policy_id,
+      ) ?? null,
+    );
+  }
+  /** One exact actual3A->3C draft only; never the ordinary issue or connected RPC. */
+  async issueSyntheticCustomerRevision(
+    packets: CustomerRevisionPackets,
+    review: PacketReview,
+    packet: PacketPreview,
+    scopeHash: string,
+    attemptId: string,
+    editor: () => EstimateInput,
+    confirmed: boolean,
+    authorize: () => void,
+  ) {
+    if (
+      !this.sample ||
+      packets.changes.repo.estimates !== this ||
+      confirmed !== true
+    )
+      throw Error('Explicit local synthetic revision issuance only');
+    const { org, actor, estimate } = review;
+    if (this.syntheticIssuances.has(estimate))
+      throw Error('Synthetic issuance already attempted; no replay');
+    const check = () => {
+      authorize();
+      packets.assertCurrent(review, editor(), packet);
+      const e = this.customerRevisionState(org, actor, estimate);
+      const tax = this.customerRevisionTaxState(org, actor, estimate);
+      if (
+        e.source.version_number !== 2 ||
+        e.draft.version.version_number !== 3 ||
+        e.source.id !== review.comparison.original.id ||
+        e.origin.receipt.id !== review.receipt ||
+        e.draft.version.id !== review.draft ||
+        e.draft.version.lock_revision !== review.revision ||
+        !tax?.active ||
+        tax.status !== 'reviewed' ||
+        JSON.stringify(tax) !==
+          JSON.stringify(e.draft.version.tax_policy_snapshot) ||
+        !/^\d{4}-\d{2}-\d{2}$/.test(e.draft.version.payload.expires_on) ||
+        e.draft.version.payload.expires_on < now().slice(0, 10) ||
+        !e.draft.version.payload.terms.trim() ||
+        !/^[0-9a-f-]{36}$/.test(attemptId)
+      )
+        throw Error(
+          'Exact current version3, tax, expiration and synthetic confirmation required',
+        );
+      return e;
+    };
+    const before = check();
+    const hold = { id: attemptId } as {
+      id: string;
+      record?: SyntheticRevisionIssuance;
+      bundle?: EstimateBundle;
+      source?: EstimateVersion;
+    };
+    this.syntheticIssuances.set(estimate, hold); // Pre-await, permanent, even after loss.
+    const scope = projectRevisionScope(
+      before.draft.version,
+      review.comparison.binding,
+      'draft',
+    );
+    if ((await documentHash(scope)) !== scopeHash)
+      throw Error('Canonical selling scope changed');
+    const fresh = check(); // Last synchronous source/editor/member/tax/CAS check.
+    if (JSON.stringify(before) !== JSON.stringify(fresh))
+      throw Error('Issuance source changed');
+    const current = this.state(org).estimates.find(
+      (b) => b.estimate.id === estimate,
+    )!;
+    const bundle = this.commitSyntheticIssue(org, current);
+    const record: SyntheticRevisionIssuance = {
+      id: attemptId,
+      mode: 'local-synthetic-only',
+      organization_id: org,
+      estimate_id: estimate,
+      customer_id: fresh.origin.customer_id,
+      location_id: fresh.origin.location_id,
+      request_id: fresh.origin.receipt.id,
+      source_offer_id: fresh.origin.offer_id,
+      source_version_id: fresh.source.id,
+      version_id: bundle.version.id,
+      version_number: 3,
+      saved_revision: review.revision,
+      packet_id: packet.snapshot.id,
+      packet_sha256: packet.integrity.sha256,
+      scope_sha256: scopeHash,
+      reviewer: actor,
+      issued_at: bundle.version.issued_at!,
+    };
+    Object.assign(hold, {
+      record: clone(record),
+      bundle: clone(bundle),
+      source: clone(fresh.source),
+    });
+    return clone({ record, bundle });
+  }
+  private commitSyntheticIssue(org: string, current: EstimateBundle) {
+    current.version = {
+      ...current.version,
+      status: 'issued',
+      issued_at: now(),
+    };
+    current.estimate.status = 'issued';
+    this.state(org).history = this.state(org).history.map((v) =>
+      v.id === current.version.id ? current.version : v,
+    );
+    return clone(current);
+  }
   private states = new Map<string, SampleState>();
   private customerRequests = new Map<
     string,
@@ -882,16 +1058,7 @@ export class Phase3Repository {
       current.version.tax_policy_snapshot?.status !== 'reviewed'
     )
       throw new Error('Review the tax policy first');
-    current.version = {
-      ...current.version,
-      status: 'issued',
-      issued_at: now(),
-    };
-    current.estimate.status = 'issued';
-    this.state(org).history = this.state(org).history.map((v) =>
-      v.id === current.version.id ? current.version : v,
-    );
-    return clone(current);
+    return this.commitSyntheticIssue(org, current);
   }
   async revise(org: string, b: EstimateBundle) {
     if (

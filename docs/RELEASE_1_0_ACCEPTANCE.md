@@ -1,5 +1,18 @@
 # Production Release 1.0 acceptance checklist
 
+## Workstream 3E · local customer return loop, no release promotion · October 30
+
+Actual3A–3D now feeds separately confirmed synthetic version3 issuance, explicit
+internal_sink offer and existing customer-safe review/own receipt. Ordinary issue/
+repair/connected restrictions remain; exact source/packet/current staff/tax/CAS and
+one-shot/UNKNOWN checks apply. Originals/earlier receipts stay immutable. See
+[implementation](CUSTOMER_REVISED_ESTIMATE_LOOP.md) and validation. No genuine Auth,
+durable custody, real delivery, customer access, contract/work/payment/debt authority
+or hosted acceptance. All13/customer14/frozen P1/four artifacts/approvals/locked UIs/
+Netlify/2A–2F/billing/recovery remain. Release1.0 NOT READY / NOT AUTHORIZED. Next finite
+connected-lifecycle integration review needs independent evidence and separate exact
+owner authorization; no activation or automatic synthetic expansion.
+
 ## Workstream 3D · review-only readiness and delivery content · October 30
 
 The local actual3A->3B->3C chain now feeds a saved-current packet-bound issuance

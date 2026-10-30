@@ -119,15 +119,18 @@ export class CustomerChangeWorkspace {
       source.estimate.id,
       source.version.id,
     );
-    const blocked = origin
-      ? 'Repair-origin revisions require a separate source review.'
-      : source.version.payload.location_id !== request.location_id
-        ? 'Original property binding is incomplete.'
-        : current.version.id !== source.version.id ||
-            current.version.status !== 'issued' ||
-            current.estimate.status !== 'issued'
-          ? 'This request is not for the current issued version. No replacement revision is permitted.'
-          : '';
+    const blocked =
+      source.version.version_number !== 2
+        ? 'Further revision preparation is outside this local package. No automatic version4.'
+        : origin
+          ? 'Repair-origin revisions require a separate source review.'
+          : source.version.payload.location_id !== request.location_id
+            ? 'Original property binding is incomplete.'
+            : current.version.id !== source.version.id ||
+                current.version.status !== 'issued' ||
+                current.estimate.status !== 'issued'
+              ? 'This request is not for the current issued version. No replacement revision is permitted.'
+              : '';
     return {
       org,
       actor,

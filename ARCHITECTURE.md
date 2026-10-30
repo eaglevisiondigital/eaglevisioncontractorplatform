@@ -1,5 +1,18 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Workstream 3E · narrow synthetic issuance and internal customer return
+
+CustomerRevisedEstimateLoop composes the actual3A–3D chain with a separate opaque
+synthetic confirmation. Phase3Repository adds an exact current packet/repository-bound
+version2->3 operation and reuses the existing sample issue transition; ordinary issue
+prohibitions/connected RPC stay intact. A permanent pre-await session claim and exact
+issued provenance/history read prevent replay; internal offer uses a separately held
+existing ReleasePreview internal_sink engine. Only verified issued versions reach the
+unchanged issued-only safe projection and own decision engine. No duplicate business
+system, schema, connected route, sender/recipient/link/outbox/provider or financial
+binding. Same-tab memory is not Auth/durable custody. See
+[implementation](docs/CUSTOMER_REVISED_ESTIMATE_LOOP.md); all release gates persist.
+
 ## Workstream 3D · bound readiness and pure delivery-content preview
 
 CustomerIssuanceReadiness composes actual3A/3B provenance and a verified current3C

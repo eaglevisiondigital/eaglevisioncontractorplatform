@@ -121,6 +121,13 @@ export class CustomerIssuanceReadiness {
       v.packet.id,
     ]);
   }
+  /** Source facts only; 3D remains BLOCKED and never grants issuance authority. */
+  assertCurrentSource(review: IssuanceReview, editor: EstimateInput) {
+    const claim = this.claims.get(review);
+    if (!claim || JSON.stringify(review) !== claim.view)
+      throw Error('Exact readiness source required');
+    this.current(review, claim, editor);
+  }
   history(org: string, actor: string, estimate: string) {
     this.source(org, actor, estimate);
     return [...this.attempts.values()]

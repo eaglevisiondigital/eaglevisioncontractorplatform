@@ -1,5 +1,15 @@
 # Workstream 3 · version-specific estimate change-request handoff
 
+## October 30 · Workstream 3E local customer loop complete
+
+[Exact synthetic issuance and customer return](CUSTOMER_REVISED_ESTIMATE_LOOP.md)
+now complete actual3A->3B->3C->3D->3E in one tab. Separate synthetic confirmation,
+existing version3 transition/internal_sink/issued-safe review and own exact receipt
+preserve ordinary issue/connected/repair blocks. No real delivery or financial/legal
+work authority. Next is finite connected-lifecycle integration review; no further
+synthetic layers/hosted activation started. Earlier proposed/not-started notes below
+remain historical. All release restrictions persist.
+
 ## October 30 · Workstream 3D local continuation
 
 [Readiness review and delivery-content dry run](REVISED_ESTIMATE_ISSUANCE_READINESS.md)

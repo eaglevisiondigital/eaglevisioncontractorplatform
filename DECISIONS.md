@@ -1,5 +1,21 @@
 # Engineering decisions
 
+## October 30 · complete the local revised-estimate customer loop
+
+Owner authorizes one narrow synthetic version2->3 issuance through existing version
+semantics, independently confirmed from3D's still-BLOCKED readiness. Exact actual
+receipt/issued source/saved draft/packet/hash/current staff/property/tax/editor/CAS
+checks precede a permanent pre-await attempt. A separate explicit internal_sink offer
+uses the existing engine; only exact acknowledged/reconciled issued evidence returns
+to the existing customer review/new version-specific decision. No prior preference
+carries forward, replay after UNKNOWN or automatic version4. Preserve ordinary issue,
+repair and connected restrictions, immutable originals and strict safe projections.
+Session memory is not genuine Auth/durable issuance/delivery custody. Recommend a
+finite connected integration contract with genuine identity/persistence/recipient/
+delivery gates, not further synthetic layers. All13/customer14/P1/frozen artifacts/
+owner approvals/locked UIs/2A–2F/billing/Netlify/recovery/financial/deploy/merge persist.
+See docs/CUSTOMER_REVISED_ESTIMATE_LOOP.md and validation.
+
 ## October 30 · review issuance requirements without granting authority
 
 Reuse the exact3C packet and actual3A/3B provenance rather than issuing a private draft

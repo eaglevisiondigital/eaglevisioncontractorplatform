@@ -1,3 +1,15 @@
+Workstream 3E continuation: read docs/CUSTOMER_REVISED_ESTIMATE_LOOP.md and validation.
+Actual3A->3B->3C->3D now feeds separate explicit local synthetic version2->3 issuance,
+then separately confirmed existing ReleasePreview internal_sink offer and existing
+issued-safe customer review/own version3 receipt. Ordinary issue/connected/repair guards
+stay closed;3D BLOCKED never grants permission. Exact packet/scope/hash/source/receipt/
+CRM/current staff/tax/live editor/CAS checks, permanent session holds and UNKNOWN exact
+read-only/no replay apply. Original versions/receipts/packets remain immutable; no4th
+revision, real delivery/customer URL/Auth/durable custody/contract/work/financial effect.
+Refresh loses the same-tab demo. Next is a finite separately reviewed connected-lifecycle
+integration contract, not more synthetic layers or activation. Preserve all13/customer14/
+P1/four artifacts/approvals/locked UIs/2A–2F/billing/Netlify/recovery/hosted/deploy/merge.
+
 Workstream 3D continuation: read docs/REVISED_ESTIMATE_ISSUANCE_READINESS.md and validation.
 Existing Estimates packet view now composes an exact saved-draft/packet/request-bound
 issuance-requirement review and branded content dry run. Explicit current synthetic

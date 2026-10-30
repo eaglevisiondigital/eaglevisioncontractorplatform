@@ -1,5 +1,21 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: Workstream 3E · local revised-estimate customer loop · October 30
+
+Actual3A request -> confirmed3B saved revision -> immutable3C packet -> recorded3D
+BLOCKED review -> separately confirmed synthetic issuance of the same version3 ->
+explicit internal_sink offer -> customer version3 review/new exact receipt now work
+in the same tab. Existing version engine/projections/offer/decision engine are reused.
+Ordinary customer/repair issue and connected paths remain closed. Current full source/
+packet/hash/scope/member/property/tax/CAS/live-editor checks plus session-only one-shot/
+UNKNOWN reconciliation apply. Originals/earlier receipts remain immutable; no automatic
+version4, delivery, financial/contract/work authority. See
+[implementation](docs/CUSTOMER_REVISED_ESTIMATE_LOOP.md) and validation:161 focused application/81 unique browser cases pass,31/12 new, zero axe/overflow findings. Same-tab heap
+only; refresh/new tab loses state. All13/customer14/P1/four artifacts/approvals/locked
+UIs/Netlify/2A–2F/billing/recovery persist. NOT READY / NOT AUTHORIZED. Next: finite
+connected-lifecycle integration review, requiring separate genuine Auth/persistence/
+issuance/recipient-access/delivery evidence and exact authorization.
+
 ## Latest: Workstream 3D · local readiness and content dry run · October 30
 
 /preview > Estimates > Revision comparison & packet now offers Issuance readiness

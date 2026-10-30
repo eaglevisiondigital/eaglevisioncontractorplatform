@@ -1,5 +1,20 @@
 # Security model · Phase 2
 
+## Workstream 3E · explicit synthetic boundary, no operational authority
+
+Ordinary customer-revision/repair issuance and connected paths remain restricted.
+The new local-only operation requires exact actual receipt/source/customer/property,
+saved version3/lock, current3C packet/hash, canonical scope, current staff/tax/expiry
+and separate synthetic confirmation; live editor/source checks run after hashing at
+commit.3D remains BLOCKED. One session claim per issuance and separate internal offer
+claim retain UNKNOWN; exact reads never replay or replace IDs. Originals/earlier
+receipts/packets stay immutable; only verified issued scopes reach customer projections.
+Internal notes/costs/payroll/private readiness stay staff-only. Version3 gets its own
+bounded confirmed preference receipt; no automatic4th revision or contract/work/debt/
+payment. Internal sink is not actual delivery. No genuine Auth, durable custody,
+connected access, sender/recipient/link or provider authority. See
+[implementation](docs/CUSTOMER_REVISED_ESTIMATE_LOOP.md). All release restrictions persist.
+
 ## Workstream 3D · review facts do not grant issuance or delivery
 
 Exact current packet/hash, saved revision, original receipt/source/customer/property,

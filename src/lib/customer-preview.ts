@@ -9,6 +9,7 @@ import {
   type CustomerContext,
 } from '../domain/customer/review';
 import type { EstimateVersion } from '../domain/estimating/types';
+import { customerPreview } from '../domain/estimating/customer-preview';
 import { projectPublishedHistory } from '../domain/property/report-page';
 import { buildPropertyAttention } from '../domain/property/attention';
 import {
@@ -31,6 +32,15 @@ export class CustomerPortalPreviewModel {
   private engines = new Map<string, ReleasePreview>();
   private attempts = new Map<string, PreviewAttempt>();
   private versions: EstimateVersion[] = [];
+  private revisedOffers = new Map<
+    string,
+    {
+      version: EstimateVersion;
+      engine: ReleasePreview;
+      issuance: string;
+      state: 'pending' | 'unknown' | 'available';
+    }
+  >();
   private customerId = '';
   private primaryLocation = '';
   private locationId = '';
@@ -320,6 +330,157 @@ export class CustomerPortalPreviewModel {
         });
     });
   }
+  /** Local3E only: one existing internal-sink engine, retained before its first command. */
+  async prepareRevisedOffer(
+    actor: string,
+    estimate: string,
+    issuance: string,
+    authorize: () => void,
+  ) {
+    const e = this.repo.estimates.syntheticRevisionIssuance(
+      this.company.id,
+      actor,
+      estimate,
+    );
+    if (
+      !e ||
+      e.record.id !== issuance ||
+      e.record.customer_id !== this.customerId ||
+      e.record.location_id !== this.primaryLocation ||
+      !this.versions.some(
+        (v) => v.id === e.record.source_version_id && v.version_number === 2,
+      )
+    )
+      throw Error(
+        'Exact synthetic issued version and original customer required',
+      );
+    if (this.revisedOffers.has(e.record.version_id))
+      throw Error('Internal offer already attempted; no replay');
+    authorize();
+    const attempt = {
+      version: structuredClone(e.bundle.version),
+      engine: new ReleasePreview(
+        this.company.id,
+        structuredClone(e.bundle.version),
+      ),
+      issuance,
+      state: 'pending' as 'pending' | 'unknown' | 'available',
+    };
+    this.revisedOffers.set(e.record.version_id, attempt);
+    try {
+      await attempt.engine.command('staff', 'publish_offer', {
+        version_id: e.record.version_id,
+      });
+      authorize();
+      const result = this.verifyRevisedOffer(actor, estimate, issuance, true);
+      if (!result) throw Error('Missing exact internal offer');
+      attempt.state = 'available';
+      return result;
+    } catch {
+      attempt.state = 'unknown';
+      throw Error(
+        'Internal offer outcome UNKNOWN. Read exact offer status; no replay or replacement.',
+      );
+    }
+  }
+  /** Exact retained engine read only; absence stays undetermined. Never publish again. */
+  reconcileRevisedOffer(actor: string, estimate: string, issuance: string) {
+    const e = this.repo.estimates.syntheticRevisionIssuance(
+      this.company.id,
+      actor,
+      estimate,
+    );
+    if (e && this.revisedOffers.get(e.record.version_id)?.state === 'pending')
+      throw Error('Offer pending; read only after completion');
+    return this.verifyRevisedOffer(actor, estimate, issuance, true);
+  }
+  private verifyRevisedOffer(
+    actor: string,
+    estimate: string,
+    issuance: string,
+    settle = false,
+  ) {
+    const e = this.repo.estimates.syntheticRevisionIssuance(
+      this.company.id,
+      actor,
+      estimate,
+    );
+    if (
+      !e ||
+      e.record.id !== issuance ||
+      e.record.customer_id !== this.customerId ||
+      e.record.location_id !== this.primaryLocation
+    )
+      throw Error('Exact issued offer binding unavailable');
+    const a = this.revisedOffers.get(e.record.version_id);
+    if (!a) return null;
+    if (
+      a.issuance !== issuance ||
+      JSON.stringify(a.version) !== JSON.stringify(e.bundle.version)
+    )
+      throw Error('Offer source changed');
+    const data = a.engine.read('staff'),
+      offer = data.release_offers[0],
+      message = data.release_messages[0];
+    if (!offer) return null;
+    if (
+      data.release_offers.length !== 1 ||
+      data.release_messages.length !== 1 ||
+      offer.organization_id !== this.company.id ||
+      offer.customer_id !== this.customerId ||
+      offer.version_id !== a.version.id ||
+      JSON.stringify(offer.snapshot) !==
+        JSON.stringify({
+          ...customerPreview(a.version),
+          internal_test: true,
+        }) ||
+      message.offer_id !== offer.id ||
+      message.channel !== 'internal_sink' ||
+      message.organization_id !== this.company.id ||
+      message.customer_id !== this.customerId ||
+      data.release_contracts.length ||
+      data.release_invoices.length ||
+      data.release_signatures.length ||
+      data.release_authorizations.length ||
+      data.release_ledger_entries.length ||
+      data.release_payment_events.length
+    )
+      throw Error('Exact internal-sink offer evidence unavailable');
+    if (settle) {
+      if (a.state !== 'available') {
+        const tax = this.repo.estimates.syntheticIssuedTaxState(
+          this.company.id,
+          actor,
+          estimate,
+        );
+        if (
+          JSON.stringify(tax) !==
+            JSON.stringify(a.version.tax_policy_snapshot) ||
+          !tax?.active ||
+          tax.status !== 'reviewed' ||
+          a.version.payload.expires_on <
+            new Date().toISOString().slice(0, 10) ||
+          Date.parse(offer.expires_at) <= Date.now()
+        )
+          throw Error(
+            'Recorded offer has stale tax or expiration evidence; no customer reveal',
+          );
+      }
+      // Reveal only the exact verified issued version after acknowledgment/reconciliation.
+      if (!this.versions.some((v) => v.id === a.version.id))
+        this.versions.push(structuredClone(a.version));
+      this.engines.set(a.version.id, a.engine);
+      a.state = 'available';
+    }
+    return {
+      id: offer.id,
+      version_id: offer.version_id,
+      issuance_id: issuance,
+      channel: 'internal_sink' as const,
+      expires_at: offer.expires_at,
+      delivered: false as const,
+    };
+  }
   /** Additional explicit synthetic observations; existing published examples are never rewritten. */
   prepareAttentionExamples() {
     const c = this.context();
@@ -537,14 +698,21 @@ export class CustomerPortalPreviewModel {
     const report = s.reports.find(
       (r) => r.customer_id === c.customer_id && r.location_id === c.location_id,
     );
+    const revised = this.revisedOffers.get(v.id);
+    const original =
+      revised && this.versions.find((x) => x.id === v.supersedes_version_id);
+    const sourceLine = original?.payload.lines.at(-1)?.id;
     return projectIssuedReview(
       v,
       c,
-      this.versions.indexOf(v) > 0 && report
+      this.versions.indexOf(v) > 0 &&
+        report &&
+        (!revised ||
+          (sourceLine && v.payload.lines.some((l) => l.id === sourceLine)))
         ? {
             source_report_id: report.id,
             finding_id: report.findings[0].id,
-            source_line_id: v.payload.lines.at(-1)!.id,
+            source_line_id: revised ? sourceLine! : v.payload.lines.at(-1)!.id,
           }
         : null,
       {

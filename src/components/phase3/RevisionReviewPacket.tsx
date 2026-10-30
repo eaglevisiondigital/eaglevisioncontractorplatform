@@ -5,7 +5,10 @@ import {
   type PacketPreview,
 } from '../../lib/customer-revision-packets';
 import { customerChangeWorkspace } from '../../lib/customer-change-workspace';
-import type { EstimateInput } from '../../domain/estimating/types';
+import type {
+  EstimateBundle,
+  EstimateInput,
+} from '../../domain/estimating/types';
 import type {
   RevisionComparison,
   RevisionScope,
@@ -234,6 +237,7 @@ export function RevisionReviewPacket({
   revision,
   editor,
   dirty,
+  onIssued,
 }: {
   org: string;
   estimate: string;
@@ -241,6 +245,7 @@ export function RevisionReviewPacket({
   revision: number;
   editor: EstimateInput;
   dirty: boolean;
+  onIssued(bundle: EstimateBundle): void;
 }) {
   const [confirmed, setConfirmed] = useState(false),
     [busy, setBusy] = useState(false);
@@ -498,6 +503,7 @@ export function RevisionReviewPacket({
           packetId={packet.snapshot.id}
           editor={editor}
           dirty={dirty}
+          onIssued={onIssued}
         >
           <RevisionComparisonView value={packet.snapshot.comparison} />
         </IssuanceReadiness>
