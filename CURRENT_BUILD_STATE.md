@@ -1,5 +1,20 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: Phase 4A · connected lifecycle integration · October 31
+
+The finite [integration contract](docs/CONNECTED_CUSTOMER_LIFECYCLE_INTEGRATION.md)
+separates reusable Auth/customer14/estimate/communication code from missing operational
+request notes, durable custody/revision provenance, packets, one-shot issuance and
+actual delivery. An unwired read-only receipt reconciler reuses actual SDK/readers;
+only exact authorized retained identity/source confirms a receipt. Missing/conflicting/
+expired-access evidence stays UNKNOWN; no write/retry/route/storage is added.
+Customer14 remains two-choice, default-deny and unapplied. Next implement 4B persisted
+review/change requests, exact status and staff read queue, with a separately reviewed
+forward proposal after fourteen; no extra synthetic/planning layer. No hosted state
+refreshed or acceptance promoted. See validation for focused checks. Original P1-on13,
+separate14, all frozen artifacts/approvals, locked UIs and Netlify/recovery/maintenance/
+financial/provider/communication/deploy/merge restrictions persist. NOT READY / NOT AUTHORIZED.
+
 ## Latest: Workstream 3E · local revised-estimate customer loop · October 30
 
 Actual3A request -> confirmed3B saved revision -> immutable3C packet -> recorded3D

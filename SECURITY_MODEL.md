@@ -1,5 +1,17 @@
 # Security model · Phase 2
 
+## Phase 4A · connected boundary inventory, no activation
+
+See [the authoritative integration contract](docs/CONNECTED_CUSTOMER_LIFECYCLE_INTEGRATION.md).
+Unwired read-only reconciliation requires fresh same-user Auth/live-session checks,
+server discovery and exact customer/property/version/publication/hash/request/choice.
+Invalid/denied/missing/mismatched results remain UNKNOWN; no retries or replacement
+identities. A retained reference or hash is not authority or durable custody. Current
+fourteen RPCs cannot reconcile expired publications; a forward receipt-only policy
+is required. Existing SQL issue/revise lack the complete customer-origin/post-wait
+contract; ordinary guards remain closed pending forward server authority. No pending
+SQL, grants, session broker, connected route, sender or financial authority is enabled.
+
 ## Workstream 3E · explicit synthetic boundary, no operational authority
 
 Ordinary customer-revision/repair issuance and connected paths remain restricted.

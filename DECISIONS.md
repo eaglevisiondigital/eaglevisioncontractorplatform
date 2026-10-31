@@ -1,5 +1,18 @@
 # Engineering decisions
 
+## October 31 · finite connected integration, then persisted requests
+
+Complete4A as one authoritative [integration specification](docs/CONNECTED_CUSTOMER_LIFECYCLE_INTEGRATION.md)
+and narrow unwired exact read-only reconciliation adapter, tested through actual SDK
+interfaces with controlled transport. Reuse existing customer14 ledger/publications
+and estimate/provider engines; do not promote internal-test notes/sinks or local
+hashes/custody. Fourteen has no change-request choice/note, so preserve it and specify
+a separate forward extension. Next4B implements C1-C3 durable review/change requests,
+exact receipt/status and eligible staff read queue; no extra synthetic/planning chain.
+Original P1 stays on13 history before separately approved14/later extension. No hosted,
+Auth/credential, migration application, delivery, deployment or merge authorization.
+All frozen evidence, approvals, locked UIs and independent release gates persist.
+
 ## October 30 · complete the local revised-estimate customer loop
 
 Owner authorizes one narrow synthetic version2->3 issuance through existing version

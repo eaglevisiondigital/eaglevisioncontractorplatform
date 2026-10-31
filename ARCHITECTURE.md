@@ -1,5 +1,16 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Phase 4A · one connected lifecycle contract
+
+[Connected lifecycle integration](docs/CONNECTED_CUSTOMER_LIFECYCLE_INTEGRATION.md)
+is the authoritative forward map after local3A-3E. Existing Auth, fourteen's private
+publication/decision ledger, estimate engine and communication outbox are reused;
+internal-test decisions/sinks and session Maps cannot be operational authority.
+PreparedCustomerReconciliation composes existing SDK/strict readers for exact
+read-only receipt inspection, with no routes, credentials, storage or mutators.
+Forward gaps and first4B C1-C3 persistence/receipt/staff-read slice are explicit;
+no operational migration or adapter activation is included. All release gates remain.
+
 ## Workstream 3E · narrow synthetic issuance and internal customer return
 
 CustomerRevisedEstimateLoop composes the actual3A–3D chain with a separate opaque

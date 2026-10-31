@@ -1,3 +1,18 @@
+Phase 4A continuation: read docs/CONNECTED_CUSTOMER_LIFECYCLE_INTEGRATION.md and
+validation. One authoritative connected lifecycle contract now maps existing Auth/
+customer14/estimating/communications against exact forward gaps. New unwired read-only
+reconciler reuses actual SDK/readers; exact retained user/property/version/pub/hash/
+request/choice only, all absence/conflict/denial UNKNOWN, never replay. No durable
+custody or expired-publication reconciliation claim. Customer14 has two preferences,
+no change-request note; internal release decisions are not the operational ledger.
+Next implement 4B persisted review/change requests + exact receipt/status and staff
+read queue, C1-C3 only; no more planning/synthetic layers. Local forward proposal/code
+needs separate direction; hosted installation/grants/mappings/Auth acceptance need
+separate exact approvals after unchanged recovery/P1-on13 then customer14 sequence.
+Keep ordinary issue/repair/connected guards closed until server authority is reviewed.
+All13/customer14/P1/four artifacts/approvals/locked UIs/2A-2F/billing/Netlify/recovery/
+financial/provider/communication/hosted/deploy/merge restrictions persist.
+
 Workstream 3E continuation: read docs/CUSTOMER_REVISED_ESTIMATE_LOOP.md and validation.
 Actual3A->3B->3C->3D now feeds separate explicit local synthetic version2->3 issuance,
 then separately confirmed existing ReleasePreview internal_sink offer and existing

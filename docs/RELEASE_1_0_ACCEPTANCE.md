@@ -1,5 +1,19 @@
 # Production Release 1.0 acceptance checklist
 
+## Phase 4A · finite connected integration preparation · October 31
+
+[Authoritative contract](CONNECTED_CUSTOMER_LIFECYCLE_INTEGRATION.md) and validation
+map existing code vs missing genuine Auth/session custody, customer change-request
+storage, durable revision/packet/one-shot authority and actual delivery. New adapter
+only reads exact authorized existing receipt evidence; no mutation, route, activation
+or durability claim. Hosted acceptance remains BLOCKED, no fresh provider/DB/Auth
+verification. Next4B implements C1-C3 persisted requests/receipt reconciliation/staff
+read queue under separate direction; later schema/application/grants/access approvals
+stay exact and separate. P1-on13 then customer14/later extension ordering unchanged.
+Locked UIs, frozen P1/four artifacts/approvals, Netlify/recovery,2A-2F, six PROPOSED
+billing enhancements and all financial/communication/deploy/merge gates remain.
+Release1.0 **NOT READY / NOT AUTHORIZED**.
+
 ## Workstream 3E · local customer return loop, no release promotion · October 30
 
 Actual3A–3D now feeds separately confirmed synthetic version3 issuance, explicit

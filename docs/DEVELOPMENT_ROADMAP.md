@@ -1,5 +1,17 @@
 # Bounded development roadmap
 
+## October 31 · Phase 4A complete; implement persisted request slice next
+
+The finite [connected integration contract](CONNECTED_CUSTOMER_LIFECYCLE_INTEGRATION.md)
+now defines the full lifecycle and operational gaps. Next4B is implementation of
+persisted review/change-request notes and exact receipts/status plus eligible staff
+read queue, C1-C3 only. Reuse fourteen's existing private ledger and SDK, prepare a
+separate forward default-deny local proposal and actual caller/custody adapters.
+No further synthetic3F/3G or lifecycle planning package. Draft revision, packet,
+issuance and delivery follow only after that slice's durable genuine acceptance.
+Hosted execution needs original recovery/P1-on13, separate14/forward-hash approvals
+and scoped Auth/mapping/publication/grant/runtime acceptance. No activation now.
+
 ## October 30 · Workstream 3E complete; next is finite connected integration
 
 [Local revised-estimate loop](CUSTOMER_REVISED_ESTIMATE_LOOP.md) now works through

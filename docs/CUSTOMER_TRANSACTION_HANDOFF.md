@@ -1,5 +1,14 @@
 # Workstream 3 · version-specific estimate change-request handoff
 
+## October 31 · authoritative connected handoff prepared
+
+The single [Phase4A contract](CONNECTED_CUSTOMER_LIFECYCLE_INTEGRATION.md) supersedes
+older proposed-next-package language for connected integration. Local3A-3E remain
+complete. First4B implements persisted request/receipt/status + eligible staff read
+queue via existing customer14 ledger and a separately reviewed forward extension.
+Internal-test release decisions, synthetic issue/sink and session custody remain
+local evidence only. No hosted schema, Auth, financial, delivery, deploy or merge.
+
 ## October 30 · Workstream 3E local customer loop complete
 
 [Exact synthetic issuance and customer return](CUSTOMER_REVISED_ESTIMATE_LOOP.md)
