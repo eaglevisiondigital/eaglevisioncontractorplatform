@@ -1,0 +1,2 @@
+vendor,quoted_on,currency,description,sku,quantity,unit,unit_cost,line_total,document_total
+Example Building Supply,2026-10-01,USD,"Panel, exterior",SYNTHETIC-001,12,each,68.25,819.00,819.00

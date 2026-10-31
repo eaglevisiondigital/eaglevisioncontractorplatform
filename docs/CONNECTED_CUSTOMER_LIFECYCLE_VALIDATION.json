@@ -1,0 +1,83 @@
+{
+  "phase": "4A",
+  "base_commit": "ba21dcad313cc6f5d5a8f63a8dedbf0c850e71dc",
+  "status": "FINITE INTEGRATION CONTRACT AND UNWIRED READ-ONLY PREPARATION COMPLETE",
+  "release": "NOT READY / NOT AUTHORIZED",
+  "authoritative_contract": "docs/CONNECTED_CUSTOMER_LIFECYCLE_INTEGRATION.md",
+  "implemented": [
+    "Exact retained-reference read-only reconciliation through existing customer SDK/access/decision interfaces",
+    "Strict input/source/receipt allowlists and same-user/property/version/publication/hash/request/choice matching",
+    "Missing, conflicting, denied or malformed evidence remains UNKNOWN with no replay authority",
+    "Fresh discovery/session checks, identity-change/close invalidation and detached evidence snapshots"
+  ],
+  "focused_checks": {
+    "application_and_disposable_database_cases": 91,
+    "application_files": 5,
+    "new_reconciliation_cases": 34,
+    "synthetic_companies": 3,
+    "transport": "actual pinned Supabase SDK with injected controlled fetch only",
+    "customer14_defaults": "PASS in disposable PGlite; not applied hosted",
+    "browser_cases": 3,
+    "browser_scope": "Existing ordinary-estimate and closed connected-route guards on desktop/tablet/mobile",
+    "browser_server": "Existing local preview reused without restart",
+    "strict_types": "PASS",
+    "generated_types": "PASS",
+    "lint": "PASS",
+    "build": "PASS",
+    "formatting": "PASS",
+    "migration_property_customer_integrity": "PASS",
+    "protected_existing_tracked_files_unchanged": 528,
+    "frozen_p1_four_artifacts": "PASS",
+    "original_netlify_archive": "PASS"
+  },
+  "coverage": [
+    "Exact receipt and source matching across all three brands",
+    "Wrong tenant/customer/property/version/user and changed publication/hash/request/choice",
+    "Malformed or expanded references, unsupported change-request choice and private-field exclusion",
+    "Default-off capability, revoked session, removed access and denied read",
+    "One failed read per invocation, no SDK transport retry or mutation",
+    "Changed identity/token custody/closed reader during pending read",
+    "Missing receipt stays undetermined and can later be inspected read-only",
+    "New reader with externally retained same reference; no claim of actual process durability",
+    "Input snapshot and detached returned receipt",
+    "Current customer/access/decision SDK and default-deny SQL regressions"
+  ],
+  "limits": [
+    "No genuine hosted authentication, session acquisition or target acceptance",
+    "No persistent intent store, restart durability, operational gateway or new SQL",
+    "Existing RPC cannot reconcile an expired publication; UNKNOWN is retained",
+    "No UI changes; prior accessibility/screenshots retained rather than recaptured",
+    "No local repeat of completed Netlify executor, recovery or maintenance security suites",
+    "Full automatic CI remains unchanged; local checks target only this package"
+  ],
+  "next_slice": {
+    "name": "4B persisted review/change requests, exact receipt/status and eligible staff read queue",
+    "contract_sections": ["C1", "C2", "C3"],
+    "implementation": "Separate default-deny forward local proposal and caller/custody/read adapters; reuse customer14 ledger and existing SDK",
+    "excludes": "Revised draft creation, packet persistence, issuance, delivery or another synthetic workflow",
+    "hosted_requirements": "Original recovery/P1-on13 prerequisites, separately approved customer14 and forward-extension hashes, then exact Auth/mapping/publication/grant/runtime acceptance approval"
+  },
+  "boundaries": {
+    "new_migrations": false,
+    "migrations_applied": false,
+    "hosted_reads_or_writes": false,
+    "credentials_or_auth_sessions_retrieved": false,
+    "connected_routes_enabled": false,
+    "customer_or_provider_mutation_enabled": false,
+    "delivery_or_financial_authority": false,
+    "deployment_publication_or_merge": false
+  },
+  "preserved": [
+    "All thirteen historical migrations and pending unapplied customer14",
+    "Original frozen P1 approval and four artifacts",
+    "Original Netlify archive and offline replacement executor",
+    "Approved customer/contractor interfaces and artwork",
+    "Local 3A-3E original issued sources, receipts and packets",
+    "Maintenance2A-2F operational NO-GO and six proposed billing enhancements",
+    "Recovery, external access, financial/provider/signature/communication restrictions"
+  ],
+  "ci": {
+    "policy": "Normal automatic GitHub workflows; no successful workflow restarted",
+    "source_of_truth": "Runs for the final pushed commit, recorded in draft PR #1 and completion report"
+  }
+}

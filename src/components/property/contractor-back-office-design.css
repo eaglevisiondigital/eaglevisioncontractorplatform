@@ -1,0 +1,866 @@
+/* Approved local contractor presentation. Every selector is scoped; portal/global styles stay intact. */
+.backoffice-concept {
+  --concept-ink: #20352f;
+  --concept-muted: #566960;
+  --concept-border: #d9e1da;
+  display: grid;
+  grid-template-columns: 232px minmax(0, 1fr);
+  min-height: 100vh;
+  background: #f5f5ef;
+  color: var(--concept-ink);
+}
+.backoffice-concept .concept-rail {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: auto;
+  padding: 32px 22px 22px;
+  background: #fcfcf8;
+  border-right: 1px solid var(--concept-border);
+  gap: 20px;
+}
+.backoffice-concept .concept-wordmark,
+.backoffice-concept .concept-rail-label {
+  font-size: 0.61rem;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+  color: var(--concept-muted);
+}
+.backoffice-concept .concept-company-name {
+  font-size: 1.55rem;
+  line-height: 1.18;
+  letter-spacing: -0.8px;
+  color: var(--company-color);
+}
+.backoffice-concept .concept-company-control {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--concept-muted);
+}
+.backoffice-concept .concept-company-control select {
+  margin-top: 7px;
+  width: 100%;
+  border: 1px solid #c7d2ca;
+  border-radius: 8px;
+  background: white;
+  padding: 11px 7px;
+  color: var(--concept-ink);
+  font-size: 0.76rem;
+}
+.backoffice-concept .concept-rail-label {
+  margin-top: 22px;
+}
+.backoffice-concept .concept-current-area {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  text-decoration: none;
+  background: var(--company-color);
+  color: white;
+  padding: 13px 12px;
+  border-radius: 9px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.backoffice-concept .concept-rail-copy {
+  color: var(--concept-muted);
+  font-size: 0.8rem;
+  line-height: 1.8;
+}
+.backoffice-concept .concept-rail-bottom {
+  margin-top: auto;
+  display: grid;
+  gap: 16px;
+  color: var(--concept-muted);
+  font-size: 0.7rem;
+}
+.backoffice-concept .platform-brand {
+  background: transparent;
+  width: 170px;
+  margin-top: 14px;
+}
+.backoffice-concept .concept-rail-bottom small {
+  font-size: 0.61rem;
+}
+.backoffice-concept .concept-canvas {
+  min-width: 0;
+}
+.backoffice-concept .concept-topbar {
+  height: 64px;
+  padding: 0 36px;
+  background: #fcfcf8;
+  border-bottom: 1px solid var(--concept-border);
+  gap: 16px;
+  color: var(--concept-muted);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.backoffice-concept .concept-local-badge {
+  color: #365548;
+  background: #eaf0e7;
+  border: 1px solid #d4dfd1;
+  border-radius: 30px;
+  padding: 6px 12px;
+  white-space: nowrap;
+  letter-spacing: 0;
+  font-size: 0.72rem;
+}
+.backoffice-concept main {
+  max-width: 1600px;
+  padding: 20px 36px;
+  margin: auto;
+}
+.backoffice-concept .concept-page-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+.backoffice-concept .concept-page-heading h1 {
+  margin: 8px 0 10px;
+  font-size: clamp(2rem, 3.3vw, 3rem);
+  font-weight: 500;
+  letter-spacing: -1.7px;
+}
+.backoffice-concept .eyebrow {
+  color: var(--concept-muted);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+}
+.backoffice-concept .concept-phase-label {
+  font-size: 0.62rem;
+  letter-spacing: 1.3px;
+  color: var(--concept-muted);
+  white-space: nowrap;
+}
+.backoffice-concept p {
+  color: var(--concept-muted);
+  font-size: 0.87rem;
+  line-height: 1.65;
+}
+.backoffice-concept .concept-review-notice {
+  border-top: 1px solid var(--concept-border);
+  padding-top: 14px;
+  font-size: 0.73rem;
+  margin: 6px 0 14px;
+}
+.backoffice-concept .property-workspace {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+}
+.backoffice-concept .property-workspace > .section-title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.backoffice-concept .property-workspace > .p3-notice {
+  display: none;
+}
+.backoffice-concept .property-workspace > .p3-tabs {
+  border-bottom: 1px solid var(--concept-border);
+  padding-bottom: 12px;
+  gap: 8px;
+  margin: 0 0 18px;
+}
+.backoffice-concept button,
+.backoffice-concept .concept-workflow-links a {
+  min-height: 44px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: var(--company-color);
+  color: white;
+  padding: 11px 15px;
+}
+.backoffice-concept button.secondary {
+  border: 1px solid #cbd7cd;
+  background: #fff;
+  color: var(--company-color);
+}
+.backoffice-concept button:disabled {
+  color: #5b6b62;
+  background: #ebeee9;
+  border-color: #d9dfd7;
+  opacity: 1;
+  cursor: not-allowed;
+}
+.backoffice-concept
+  :is(button, a, input, select, textarea, summary):focus-visible {
+  outline: 3px solid var(--company-color);
+  outline-offset: 4px;
+}
+.backoffice-concept .maintenance-center > .section-title {
+  align-items: center;
+}
+.backoffice-concept .maintenance-center > .section-title h3 {
+  font-size: 1.6rem;
+  font-weight: 550;
+  margin: 7px 0;
+  letter-spacing: -0.6px;
+}
+.backoffice-concept .maintenance-center > p {
+  max-width: 880px;
+}
+.backoffice-concept .maintenance-center > p.muted {
+  display: none;
+}
+.backoffice-concept .concept-queue-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  background: #fdfefa;
+  border: 1px solid var(--concept-border);
+  border-radius: 13px;
+  margin: 22px 0;
+  overflow: hidden;
+}
+.backoffice-concept .concept-queue-summary > div {
+  padding: 14px 22px;
+  border-right: 1px solid var(--concept-border);
+}
+.backoffice-concept .concept-queue-summary strong {
+  display: block;
+  font-size: 1.8rem;
+  line-height: 1.2;
+  font-weight: 500;
+  color: var(--company-color);
+}
+.backoffice-concept .concept-queue-summary span {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--concept-muted);
+  margin-top: 7px;
+}
+.backoffice-concept .concept-filter-disclosure {
+  background: #fff;
+  border: 1px solid var(--concept-border);
+  border-radius: 10px;
+  padding: 13px 18px;
+  margin: 0 0 18px;
+}
+.backoffice-concept summary {
+  cursor: pointer;
+  font-size: 0.83rem;
+  font-weight: 650;
+  color: var(--company-color);
+}
+.backoffice-concept .maintenance-filters {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.backoffice-concept .maintenance-queue-content > p[role='status'] {
+  font-size: 0.72rem;
+  margin: 18px 0;
+}
+.backoffice-concept .maintenance-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+  gap: 16px;
+}
+.backoffice-concept .maintenance-card {
+  padding: 22px;
+  border: 1px solid var(--concept-border);
+  border-top: 3px solid var(--company-color);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 3px 8px #263f2e04;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.backoffice-concept .maintenance-card .badge {
+  align-self: flex-start;
+  background: #edf1e8;
+  color: #45603e;
+  border: 1px solid #dbe3d1;
+  font-size: 0.65rem;
+  padding: 4px 9px;
+  border-radius: 30px;
+}
+.backoffice-concept .maintenance-card[data-priority='urgent'] .badge {
+  background: #fcebe6;
+  color: #8b3024;
+  border-color: #eec5b8;
+}
+.backoffice-concept .maintenance-card[data-priority='high'] .badge {
+  background: #fff2d7;
+  color: #765013;
+  border-color: #e6d4ad;
+}
+.backoffice-concept .maintenance-card h4 {
+  margin: 18px 0 12px;
+  font-size: 1.08rem;
+  line-height: 1.35;
+  font-weight: 600;
+}
+.backoffice-concept .maintenance-card p {
+  font-size: 0.8rem;
+  margin-bottom: 12px;
+}
+.backoffice-concept .concept-card-evidence {
+  margin: 4px 0 18px;
+  padding: 12px 0;
+  border-top: 1px solid var(--concept-border);
+  border-bottom: 1px solid var(--concept-border);
+}
+.backoffice-concept .concept-card-evidence p:first-of-type {
+  margin-top: 12px;
+}
+.backoffice-concept .maintenance-actions {
+  gap: 8px;
+}
+.backoffice-concept .maintenance-card .maintenance-actions {
+  margin-top: auto;
+}
+.backoffice-concept .maintenance-card .maintenance-actions button {
+  flex: 1 0 auto;
+}
+.backoffice-concept .maintenance-demo {
+  padding: 18px 0;
+  border-top: 1px solid var(--concept-border);
+  margin-top: 26px;
+}
+.backoffice-concept
+  .maintenance-center[data-focused='true']
+  > :is(
+    .section-title,
+    p,
+    .concept-queue-summary,
+    .maintenance-demo,
+    .maintenance-queue-content
+  ) {
+  display: none;
+}
+.backoffice-concept .concept-finding-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  margin-bottom: 24px;
+}
+.backoffice-concept .concept-finding-heading > .eyebrow,
+.backoffice-concept .concept-finding-heading h3,
+.backoffice-concept .concept-finding-heading p:not(.eyebrow) {
+  flex-basis: 100%;
+  margin: 0;
+}
+.backoffice-concept .concept-finding-heading .eyebrow {
+  margin-top: 14px;
+}
+.backoffice-concept .concept-finding-heading h3 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  letter-spacing: -0.8px;
+}
+.backoffice-concept .concept-finding-heading > span {
+  font-size: 0.72rem;
+  color: var(--concept-muted);
+}
+.backoffice-concept .concept-selected-work {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+.backoffice-concept .maintenance-editor {
+  margin: 0;
+  border-radius: 13px;
+  padding: 26px;
+  border-color: var(--concept-border);
+  box-shadow: 0 4px 12px #263f2e04;
+}
+.backoffice-concept .maintenance-editor h3 {
+  margin-top: 0;
+}
+.backoffice-concept .concept-selected-work:has(.estimate-editor) {
+  display: block;
+}
+.backoffice-concept
+  .concept-selected-work:has(.estimate-editor)
+  > [aria-label='Maintenance review'] {
+  display: none;
+}
+.backoffice-concept .concept-workflow-links {
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 20px 0 28px;
+}
+.backoffice-concept .concept-workflow-links a {
+  display: flex;
+  justify-content: space-between;
+  min-width: 180px;
+  text-decoration: none;
+  gap: 20px;
+}
+.backoffice-concept .estimate-editor {
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+.backoffice-concept .estimate-editor > .section-title {
+  padding: 22px 0 4px;
+  border-top: 1px solid var(--concept-border);
+}
+.backoffice-concept
+  [aria-label='Exact repair estimate workflow']
+  .estimate-editor
+  > .p3-notice {
+  display: none;
+}
+.backoffice-concept .estimate-grid {
+  grid-template-columns: minmax(0, 1fr) 245px;
+  gap: 24px;
+}
+.backoffice-concept .estimate-summary {
+  width: auto;
+  height: auto;
+  padding: 20px;
+  border: 1px solid #d4dfd1;
+  background: #f0f4ea;
+  top: 20px;
+}
+.backoffice-concept .estimate-summary h3 {
+  font-size: 1.8rem;
+  margin: 10px 0 22px;
+}
+.backoffice-concept
+  :is(.p3-field, .p3-field input, .p3-field select, .p3-field textarea) {
+  color: #3b5147;
+}
+.backoffice-concept :is(.p3-field input, .p3-field select, .p3-field textarea) {
+  min-height: 44px;
+  border-color: #cbd7cd;
+  border-radius: 8px;
+  font-size: 0.87rem;
+}
+.backoffice-concept .scope-card {
+  background: #fafbf7;
+  border-color: var(--concept-border);
+  border-radius: 11px;
+}
+.backoffice-concept .repair-readiness {
+  padding-top: 28px;
+  margin-top: 28px;
+  scroll-margin-top: 20px;
+}
+.backoffice-concept .repair-readiness h3 {
+  font-size: 1.5rem;
+  font-weight: 550;
+  letter-spacing: -0.5px;
+}
+.backoffice-concept .repair-readiness > p[role='status'] {
+  background: #eef3e8;
+  border: 1px solid #d5dfcc;
+  padding: 16px 18px;
+  border-radius: 10px;
+  color: #304a34;
+}
+.backoffice-concept .concept-review-progress {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 22px 0;
+}
+.backoffice-concept .concept-review-progress a {
+  display: grid;
+  grid-template-columns: 27px minmax(0, 1fr);
+  gap: 3px 10px;
+  align-content: start;
+  text-decoration: none;
+  border: 1px solid #d3dcd1;
+  border-radius: 9px;
+  background: #f9faf6;
+  padding: 14px;
+  color: var(--concept-ink);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.backoffice-concept .concept-review-progress a > span {
+  grid-row: span 2;
+  background: #e3eadd;
+  padding: 4px 0;
+  border-radius: 50%;
+  text-align: center;
+  align-self: start;
+}
+.backoffice-concept .concept-review-progress small {
+  grid-column: 2;
+  font-size: 0.64rem;
+  color: #596a54;
+  font-weight: 500;
+}
+.backoffice-concept .concept-review-progress [data-state='stale'] {
+  border-color: #dec08a;
+  background: #fff6e5;
+}
+.backoffice-concept .concept-review-progress [data-state='stale'] small {
+  color: #75521c;
+}
+.backoffice-concept .concept-review-progress [data-state='confirmed'] > span {
+  background: var(--company-color);
+  color: white;
+}
+.backoffice-concept .repair-readiness .readiness-grid {
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.backoffice-concept .readiness-card {
+  margin: 0;
+  padding: 18px 22px;
+  border: 1px solid var(--concept-border);
+  border-radius: 10px;
+  background: #fafbf7;
+  scroll-margin-top: 20px;
+}
+.backoffice-concept .readiness-card summary {
+  display: list-item;
+  font-size: 0.95rem;
+  color: var(--concept-ink);
+}
+.backoffice-concept .readiness-card summary small {
+  float: right;
+  color: var(--concept-muted);
+  font-size: 0.67rem;
+  margin-top: 4px;
+}
+.backoffice-concept .readiness-card[data-review-state='stale'] {
+  border-color: #dec08a;
+  background: #fffaf0;
+}
+.backoffice-concept .readiness-card[data-review-state='stale'] summary small {
+  color: #75521c;
+}
+.backoffice-concept .readiness-card > p:first-of-type {
+  display: none;
+}
+.backoffice-concept .readiness-card .readiness-actions {
+  margin-top: 20px;
+}
+.backoffice-concept .readiness-totals {
+  max-width: 620px;
+}
+.backoffice-concept .readiness-history {
+  padding: 18px;
+  background: #f7f9f3;
+  border-radius: 9px;
+  font-size: 0.8rem;
+}
+.backoffice-concept .p3-actionbar {
+  position: static;
+  padding: 14px 0;
+  border-top: 1px solid var(--concept-border);
+  background: #fff;
+}
+.backoffice-concept .concept-card-coordination {
+  margin: 0 0 16px;
+}
+.backoffice-concept .concept-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-top: 1px solid var(--concept-border);
+  padding: 22px 36px;
+  color: var(--concept-muted);
+  font-size: 0.62rem;
+  letter-spacing: 1px;
+}
+.backoffice-concept .concept-footer span {
+  letter-spacing: 0;
+}
+.backoffice-concept .concept-state {
+  padding: 32px;
+  border: 1px solid var(--concept-border);
+  border-radius: 12px;
+  background: white;
+}
+@media (max-width: 1150px) {
+  .backoffice-concept {
+    grid-template-columns: 205px minmax(0, 1fr);
+  }
+  .backoffice-concept main {
+    padding: 28px 22px;
+  }
+  .backoffice-concept .concept-topbar {
+    padding: 0 22px;
+  }
+  .backoffice-concept .concept-phase-label {
+    display: none;
+  }
+  .backoffice-concept .concept-selected-work,
+  .backoffice-concept .estimate-grid {
+    grid-template-columns: 1fr;
+  }
+  .backoffice-concept .estimate-summary {
+    position: static;
+  }
+  .backoffice-concept .maintenance-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .backoffice-concept {
+    display: block;
+  }
+  .backoffice-concept .concept-rail {
+    height: auto;
+    position: static;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+    border-right: 0;
+    border-bottom: 1px solid var(--concept-border);
+    padding: 18px;
+  }
+  .backoffice-concept .concept-company-name {
+    font-size: 1.15rem;
+    align-self: center;
+  }
+  .backoffice-concept .concept-company-control {
+    font-size: 0.62rem;
+  }
+  .backoffice-concept
+    .concept-rail
+    :is(
+      .concept-wordmark,
+      .concept-rail-label,
+      .concept-current-area,
+      .concept-rail-copy,
+      .platform-brand,
+      small
+    ) {
+    display: none;
+  }
+  .backoffice-concept .concept-rail-bottom {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    font-size: 0.64rem;
+  }
+  .backoffice-concept .concept-topbar {
+    height: auto;
+    min-height: 52px;
+    padding: 10px 18px;
+    font-size: 0.5rem;
+    gap: 8px;
+  }
+  .backoffice-concept .concept-local-badge {
+    font-size: 0.61rem;
+    padding: 5px 8px;
+  }
+  .backoffice-concept main {
+    padding: 18px 16px;
+  }
+  .backoffice-concept .concept-page-heading h1 {
+    font-size: 2rem;
+    letter-spacing: -1px;
+  }
+  .backoffice-concept .concept-page-heading .eyebrow {
+    font-size: 0.55rem;
+  }
+  .backoffice-concept .concept-review-notice {
+    font-size: 0.66rem;
+    margin-bottom: 20px;
+  }
+  .backoffice-concept .property-workspace > .p3-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    margin-bottom: 20px;
+  }
+  .backoffice-concept .property-workspace > .p3-tabs button {
+    padding: 10px 6px;
+    font-size: 0.69rem;
+  }
+  .backoffice-concept .maintenance-center > .section-title {
+    align-items: start;
+  }
+  .backoffice-concept .maintenance-center > .section-title h3 {
+    font-size: 1.3rem;
+  }
+  .backoffice-concept .maintenance-center > .section-title .eyebrow {
+    font-size: 0.56rem;
+  }
+  .backoffice-concept .maintenance-center > .section-title button {
+    padding: 11px 14px;
+    font-size: 0.75rem;
+    max-width: 100%;
+    width: 100%;
+    white-space: nowrap;
+  }
+  .backoffice-concept .concept-queue-summary {
+    grid-template-columns: 1fr 1fr;
+    margin: 18px 0;
+  }
+  .backoffice-concept .concept-queue-summary > div {
+    border-bottom: 1px solid var(--concept-border);
+    padding: 14px 18px;
+  }
+  .backoffice-concept .concept-queue-summary strong {
+    font-size: 1.5rem;
+  }
+  .backoffice-concept .maintenance-filters,
+  .backoffice-concept .form-grid,
+  .backoffice-concept .scope-card .compact {
+    grid-template-columns: 1fr;
+  }
+  .backoffice-concept .maintenance-card,
+  .backoffice-concept .maintenance-editor {
+    padding: 20px 16px;
+  }
+  .backoffice-concept .concept-review-progress {
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+  }
+  .backoffice-concept .concept-review-progress a {
+    padding: 10px;
+    font-size: 0.66rem;
+    grid-template-columns: 23px minmax(0, 1fr);
+    gap: 3px 7px;
+  }
+  .backoffice-concept .readiness-card {
+    padding: 16px 13px;
+  }
+  .backoffice-concept .readiness-card summary small {
+    float: none;
+    display: block;
+    margin: 7px 0 0 18px;
+  }
+  .backoffice-concept .concept-footer {
+    padding: 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .backoffice-concept * {
+    scroll-behavior: auto;
+  }
+}
+
+.backoffice-concept .concept-inspection-date {
+  margin: 16px 0 0;
+  font-size: 0.72rem;
+}
+.backoffice-concept .concept-inspection-date time {
+  display: block;
+  color: var(--concept-ink);
+  font-size: 1.06rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+.backoffice-concept .concept-finding-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 8px;
+  padding: 14px 0;
+  margin: 12px 0 0;
+  border-top: 1px solid var(--concept-border);
+  border-bottom: 1px solid var(--concept-border);
+}
+.backoffice-concept .concept-finding-facts dt {
+  font-size: 0.66rem;
+  color: var(--concept-muted);
+  margin-bottom: 4px;
+}
+.backoffice-concept .concept-finding-facts dd {
+  margin: 0;
+  color: var(--concept-ink);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.backoffice-concept .maintenance-editor .maintenance-filters {
+  grid-template-columns: minmax(0, 1fr);
+}
+.backoffice-concept .concept-assignee-identity {
+  margin-top: -5px;
+  overflow-wrap: anywhere;
+}
+.backoffice-concept select {
+  min-width: 0;
+  max-width: 100%;
+  font-size: 0.84rem;
+}
+@media (max-width: 760px) {
+  .backoffice-concept .concept-company-control {
+    font-size: 0.72rem;
+  }
+  .backoffice-concept .concept-company-control select {
+    width: 100%;
+    font-size: 0.91rem;
+    min-height: 44px;
+  }
+  .backoffice-concept .maintenance-actions button,
+  .backoffice-concept .readiness-actions button {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+/* The estimate's synthetic customer projection remains inside the staff concept. */
+.backoffice-concept .customer-estimate-preview .preview-total dt {
+  color: var(--concept-muted);
+}
+.backoffice-concept .maintenance-center > .section-title {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.backoffice-concept .maintenance-center > .section-title button {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+/* Preserve explicit presentation labels instead of inherited case transforms. */
+.backoffice-concept .eyebrow,
+.backoffice-concept .badge {
+  text-transform: none;
+}
+/* Phase B retains the complete existing module inventory in the approved rail. */
+.backoffice-concept[data-integrated='true'] .concept-rail {
+  gap: 14px;
+}
+.backoffice-concept .concept-module-menu {
+  flex: 1;
+  min-height: 88px;
+  overflow-y: auto;
+  padding: 4px;
+  margin: -4px;
+}
+.backoffice-concept .concept-module-menu nav {
+  display: grid;
+  gap: 6px;
+}
+.backoffice-concept .concept-module-menu nav button {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--concept-ink);
+  background: transparent;
+  border: 1px solid transparent;
+}
+.backoffice-concept .concept-module-menu nav button.active {
+  background: var(--company-color);
+  color: white;
+}
+@media (max-width: 760px) {
+  .backoffice-concept .concept-module-menu {
+    overflow: visible;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+  }
+  .backoffice-concept .concept-module-menu > button {
+    width: 100%;
+  }
+  .backoffice-concept .concept-module-menu nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 10px;
+  }
+  .backoffice-concept .concept-module-menu nav button {
+    font-size: 0.72rem;
+    padding: 10px;
+  }
+}

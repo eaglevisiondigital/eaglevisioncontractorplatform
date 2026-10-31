@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-29",
+  "scope": "OWNER_APPROVED_LOCAL_PHASE_B_PRESENTATION_ONLY",
+  "baseCommit": "07f3e6b172335a494029d340f0040e97710456f6",
+  "preview": "/preview > Property Operations",
+  "reference": "/preview/contractor-design",
+  "applicationTests": {
+    "passed": 104,
+    "files": [
+      "tests/back-office-copy.test.ts",
+      "tests/maintenance-center.test.ts",
+      "tests/repair-draft.test.ts",
+      "tests/repair-readiness.test.ts"
+    ]
+  },
+  "browserTests": {
+    "uniquePassed": 123,
+    "viewports": ["desktop", "tablet", "mobile"],
+    "companies": ["sample-property", "sample-construction", "sample-roofing"],
+    "modulesPreserved": 13,
+    "files": [
+      "contractor-phase-b.spec.ts",
+      "contractor-design.spec.ts",
+      "maintenance-center.spec.ts",
+      "repair-draft.spec.ts",
+      "repair-readiness.spec.ts",
+      "property.spec.ts",
+      "phase3.spec.ts",
+      "operations.spec.ts",
+      "shells.spec.ts",
+      "property-design.spec.ts"
+    ],
+    "rerunsAreNonadditive": true,
+    "finalDelta": "32/33 final concept/integration cases passed; the compact-menu test assertion loaded by the active worker was corrected to assert the selected property surface; final mobile integration 2/2 passed. Earlier functional suite 121/123 passed before two mobile pixel-state fixes. All 123 unique cases now have final passing evidence.",
+    "accessibility": "Zero Axe violations and horizontal overflow in exercised states; keyboard source/review controls retained.",
+    "requests": "New integration journey permits loopback only."
+  },
+  "visual": {
+    "approvedCardGrids": "Exact PNG byte equality across all three companies and viewports; original grid/card geometry independently equal.",
+    "captureNormalization": "Neutral pointer/focus/scroll; isolated grids aligned to the same document origin at native DPR to avoid Chromium retina rounded-border rasterization differences. No masks, reduced DPR or tolerance. Full-page screenshots are unmodified.",
+    "lockedCustomerPortal": "Exact same-document pixels before/after contractor stylesheet loads.",
+    "referenceIsolation": "Examples remain separate from the promoted repository; exact empty workspace pixels before/after reference navigation."
+  },
+  "checks": {
+    "lint": "PASS",
+    "strictTypes": "PASS",
+    "generatedTypes": "PASS",
+    "build": "PASS",
+    "format": "PASS",
+    "migrationIntegrity": "PASS",
+    "propertyProposalIntegrity": "PASS",
+    "customerProposalIntegrity": "PASS"
+  },
+  "protected": {
+    "baseCommit": "07f3e6b172335a494029d340f0040e97710456f6",
+    "protectedTrackedPathsUnchanged": 180,
+    "frozenP1ArtifactsVerified": 4,
+    "historicalMigrationsPreserved": 13,
+    "pendingCustomerMigrationUnchanged": true,
+    "hostedActions": 0
+  },
+  "boundaries": {
+    "hostedActions": 0,
+    "credentialRetrieval": 0,
+    "newRepositories": 0,
+    "schemaChanges": 0,
+    "financialExecution": false,
+    "deployment": false,
+    "merge": false,
+    "independentDeviceRecovery": "INCOMPLETE / SEPARATE GATE",
+    "release": "NOT READY / NOT AUTHORIZED"
+  },
+  "ci": "Full current-commit GitHub Foundation and rehearsal-compatibility workflows reported separately after push; prior successful base checks were not restarted.",
+  "next": "Nine-workstream roadmap Workstream 2: durable maintenance triage preparation; no schema/executor/activation. Biller Genie-inspired AR held for next planning checkpoint."
+}

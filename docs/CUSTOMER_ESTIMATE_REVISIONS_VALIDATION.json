@@ -1,0 +1,76 @@
+{
+  "package": "WORKSTREAM_3B",
+  "date": "2026-10-30",
+  "baseCommit": "e0d1cd27b55ca7196270c5f830b802b116f31fa9",
+  "scope": "LOCAL_SYNTHETIC_CUSTOMER_REQUEST_STAFF_REVIEW_AND_PRIVATE_REVISION",
+  "release": "NOT READY / NOT AUTHORIZED",
+  "routes": ["/preview/property-portal", "/preview (Estimates)"],
+  "implementation": {
+    "decisionSource": "Actual existing ReleasePreview changes_requested receipts; no fabricated requests",
+    "sharedState": "Same-tab heap; shared existing preview CRM/memberships/Phase3 estimate engine; separate existing portal/staff inspection fixture instances",
+    "revisionEngine": "Existing Phase3Repository revision/calculation engine; exact issued source -> version3 draft",
+    "confirmation": "Current eligible synthetic staff; full source/request token; explicit checkbox",
+    "provenance": "Original receipt/offer/version/customer/property/reviewer/time/draft ID, staff-only binding",
+    "originalIssuedImmutable": true,
+    "unknown": "Permanent session hold, exact read-only reconciliation, no retry/replacement",
+    "durableAcrossReload": false,
+    "genuineAuthOrConsent": false
+  },
+  "application": {
+    "newCases": 27,
+    "focusedPassed": 178,
+    "files": 8,
+    "failed": 0,
+    "command": "npx vitest run tests/customer-change-revisions.test.ts tests/customer-change-requests.test.ts tests/customer-preview.test.ts tests/repair-draft.test.ts tests/repair-readiness.test.ts tests/estimating.test.ts tests/release-preview.test.ts tests/customer-connected.test.ts"
+  },
+  "browser": {
+    "newCases": 12,
+    "uniqueFocusedPassed": 57,
+    "projects": ["desktop", "tablet", "mobile"],
+    "finalRunPassed": 18,
+    "retainedOtherPassingCases": 39,
+    "axeViolations": 0,
+    "horizontalOverflow": false,
+    "externalRequests": 0,
+    "screenshots": "artifacts/property/customer-revision-{viewport}-{company}-{state}.png",
+    "regressionFiles": [
+      "customer-change-revisions.spec.ts",
+      "customer-change-requests.spec.ts",
+      "contractor-phase-b.spec.ts",
+      "phase3.spec.ts"
+    ]
+  },
+  "initialFailuresAndCorrections": [
+    "New evidence dt contrast4.16:1 -> scoped #4c6055 rule; no rule disabled",
+    "Save transient message unmount -> assert saved revision2",
+    "CRM first-row rebinding after staff edits -> pin original customer/property; missing binding fails closed",
+    "First delivery CI1423 application/570 native/195browser passed,3 fixture-isolation cases failed; narrowed shared state to CRM/estimates, retained separate existing inspection fixtures, assertions unchanged"
+  ],
+  "checks": {
+    "lint": "PASS",
+    "strictTypes": "PASS",
+    "build": "PASS",
+    "format": "PASS",
+    "typesGeneration": "PASS",
+    "migrationPropertyCustomerIntegrity": "PASS",
+    "protectedTrackedFilesUnchanged": 495,
+    "frozenP1ArtifactHashes": 4,
+    "frozenNetlifyArchiveHash": "PASS"
+  },
+  "preserved": [
+    "all13 historical migrations",
+    "unapplied customer14",
+    "frozen P1 operation/four artifacts/owner approvals",
+    "frozen Netlify/recovery evidence",
+    "approved customer and contractor visuals/artwork",
+    "closed connected customer routes",
+    "no financial/contract/work authority"
+  ],
+  "hostedActions": 0,
+  "messagesSent": 0,
+  "credentialsRetrieved": 0,
+  "deployments": 0,
+  "merges": 0,
+  "ci": "Automatic GitHub checks for the delivery commit; final status reported in PR and completion response. No completed checks manually restarted.",
+  "next": "PROPOSED 3C: exact saved-draft revision review and customer-safe difference packet; no issuance or delivery"
+}

@@ -1,0 +1,97 @@
+{
+  "package": "WORKSTREAM_3A",
+  "date": "2026-10-30",
+  "baseCommit": "9a1839c3f19b29cca246c790ee01fab8495bec82",
+  "scope": "LOCAL_SYNTHETIC_CUSTOMER_ESTIMATE_CHANGE_REQUESTS",
+  "preview": "/preview/property-portal",
+  "release": "NOT READY / NOT AUTHORIZED",
+  "implementation": {
+    "engine": "Existing ReleasePreview decide_offer; existing changes_requested/note/Decision rows reused",
+    "newDecisionEngineOrDatabase": false,
+    "scopeAndPriceMutation": false,
+    "confirmation": "All three approved-portal preferences; mandatory trimmed1-2000 explanation for changes and explicit synthetic acknowledgment",
+    "receipt": "Existing exact offer/version decision ID/timestamp/choice/note",
+    "uncertainty": "Session-only synchronous pending/UNKNOWN hold; exact offer/choice/note read reconciliation; absent receipt never permits replay",
+    "context": "Exact company/customer/property/version and captured epoch; keyed form lifetimes and guarded late callbacks",
+    "durableAcrossReload": false,
+    "genuineCustomerAuthOrConsent": false
+  },
+  "application": {
+    "newCases": 19,
+    "focusedPassed": 106,
+    "failed": 0,
+    "files": 8,
+    "includes": [
+      "valid all3companies",
+      "blank/whitespace/overlimit/nonstring explanation",
+      "acknowledgment/invalid choice",
+      "approve/decline regression",
+      "duplicate/expiry/unavailable/wrong version",
+      "same/foreign customer-property-company isolation",
+      "immutable scope/price and no financial effects",
+      "response loss before/after commit",
+      "pending property switch/logout and exact read-only reconciliation",
+      "unchanged connected customer authority/transport/policy contracts"
+    ]
+  },
+  "browser": {
+    "newCases": 18,
+    "focusedUniquePassed": 54,
+    "failedUnresolved": 0,
+    "finalConcurrentRun": {
+      "passed": 51,
+      "timedOut": 3
+    },
+    "targetedSerialRerun": {
+      "passed": 3,
+      "failed": 0,
+      "assertionsOrTimeoutsWeakened": false
+    },
+    "initialFailures": "Test-only bundling issues: unavailable esbuild replaced by existing Vite; library output array normalized; ImageDocument harness replaced by test-intercepted HTML; process.env.NODE_ENV defined for production React library. Subsequent three desktop setup/axe/navigation timeouts passed serially with unchanged assertions/time limits. Original logs retained privately.",
+    "brands": 3,
+    "viewports": ["desktop", "tablet", "mobile"],
+    "accessibility": "Axe zero violations for real form/recorded portal states, keyboard focus and responsive overflow checks",
+    "legacyProtection": "Original customer routes, closed callback, Phase A/approved portal and contractor Phase B exact pixel/module navigation checks retained",
+    "timingHarness": "Real shared React component and synthetic model, delayed callback in intercepted test document; no application route or runtime test hook",
+    "localConfig": "Ignored .staging/workstream-3a/playwright.config.ts reuses existing loopback server; no owner server killed"
+  },
+  "screenshots": {
+    "count": 36,
+    "root": "artifacts/property/",
+    "pattern": "change-request-{desktop|tablet|mobile}-{sample-property|sample-construction|sample-roofing}-{form|form-detail|recorded|recorded-detail}.png",
+    "actualBrowserCaptures": true,
+    "newImageGenerationOrEditing": false,
+    "reviewedRepresentativeImages": true
+  },
+  "checks": {
+    "lint": "PASS_ZERO_WARNINGS",
+    "strictTypes": "PASS",
+    "generatedTypes": "PASS_UNCHANGED",
+    "build": "PASS",
+    "format": "PASS",
+    "diff": "PASS",
+    "migrationPropertyCustomerIntegrity": "PASS"
+  },
+  "preservation": {
+    "protectedExistingFilesByteIdentical": 476,
+    "frozenP1HashMatches": 4,
+    "historicalMigrations": 13,
+    "pendingCustomer14": "UNCHANGED_UNAPPLIED",
+    "existingP1Approval": "UNCHANGED_NOT_REISSUED",
+    "originalREADMEArtworkEngineCustomerProjectionConnectedContracts": "BYTE_IDENTICAL",
+    "maintenance2AThrough2FAndBillingProposals": "UNCHANGED",
+    "approvedVisualSystem": "Preserved; only new preference form/control styles scoped to new class; Phase A/legacy presentation defaults off",
+    "operationalMaintenance": "NO-GO"
+  },
+  "notPerformed": [
+    "unrelated local maintenance/SQL/recovery/platform suite reruns",
+    "credential reads or genuine Auth sessions",
+    "hosted writes or migration application",
+    "provider or external message calls",
+    "financial/contract/dispatch/debt execution",
+    "recovery/Netlify/deployment/outside access/merge"
+  ],
+  "currentCommitCI": "Existing automatic workflows on pushed commit; status/URLs in draft PR and completion report; no manual restart of successful checks",
+  "next": "Proposed Workstream3B: synthetic contractor staff review of exact customer request and controlled existing-engine revision preparation; not started",
+  "privateLogs": "Ignored .staging/workstream-3a/"
+}

@@ -1,0 +1,260 @@
+{
+  "reviewBaseCommit": "1318db0",
+  "status": "AUDIT_CORRECTIONS_LOCAL_HOSTED_ACTIVATION_NOT_STARTED",
+  "recommendation": "NO_GO_ACTIVATION_PENDING_ACTION_TIME_MFA_CLEANUP_RECOVERY_GATES",
+  "operationSha256": "01b96075d2f04acef730114427bc595986a1f0ce2720ed7fd3c9e84e304e141a",
+  "frozenArtifactHashes": [
+    {
+      "file": "p1-plan.private.json",
+      "sha256": "bbd463ccb28ddbe6a6f873f364e42094d13c7a83767ea19f0c89ed486358a85a"
+    },
+    {
+      "file": "activate-features.proposed.sql",
+      "sha256": "368f9553a044b72d3e527beef8d98762da2e500069c4f34d1ec5014d9c2c1148"
+    },
+    {
+      "file": "deactivate-features.proposed.sql",
+      "sha256": "9f218c649801a48d5afc78f654fc0ed56280c5c9c88368eaba64bec4ac67820c"
+    },
+    {
+      "file": "p2-separate-review.private.json",
+      "sha256": "0d281d124a25c1482654841057e1d4f196d93f9bcd3b2ed6e1d1d21b01c3b195"
+    }
+  ],
+  "sourceArtifacts": [
+    {
+      "file": "scripts/property-p1-inspect.mts",
+      "sha256": "2514f5a6c688a600d96f9f16ee692d48ba6f2cb95a1fc38744964b5ea8e0dec4"
+    },
+    {
+      "file": "server/property/acceptance-journal.ts",
+      "sha256": "5fc8fe471c1253e7fb84e9109917273d6776796fea33ccc273602c1e10d178de"
+    },
+    {
+      "file": "server/property/execution/callers.ts",
+      "sha256": "509e42c65d9b2d2a5a169c26d35efa2c0399b2b0f545c94df91beb91888905ca"
+    },
+    {
+      "file": "server/property/execution/catalog.sql",
+      "sha256": "f702f0bc89e62b90f379ea8687ab4dbd0f6990aa2e2d0ccf894eecd394870734"
+    },
+    {
+      "file": "server/property/execution/cleanup-auth.ts",
+      "sha256": "8964a8bf5c44aa408e285b6161e114936a543a648466840b21646a7a3ac042d9"
+    },
+    {
+      "file": "server/property/execution/cleanup-process.ts",
+      "sha256": "88bcd6855f60e7de269b04b69356dee83eba10135c59fe6d6236ef64a1f1c57d"
+    },
+    {
+      "file": "server/property/execution/cleanup-worker.mts",
+      "sha256": "8a7bf5338116e62ad9d58d9531deff65bc2cb1174cb13d4ff706e7c46835eb9d"
+    },
+    {
+      "file": "server/property/execution/column-acl.sql",
+      "sha256": "8a83877b7458c20709c10e9293b6c45a0fac7d51f120514761eba8b0630d2f9e"
+    },
+    {
+      "file": "server/property/execution/command-gate.ts",
+      "sha256": "8c87cc770a2c48e98eef0483691c6c40b24d63a614ba24e2c0540e76bd50ac1f"
+    },
+    {
+      "file": "server/property/execution/executor.ts",
+      "sha256": "e29fa6e002dbbecd50f23389f180812f7dd379bf76aa53484ad9fbbac60a534e"
+    },
+    {
+      "file": "server/property/execution/management.ts",
+      "sha256": "b31aed27b3cd98baab2bb2f9ef38071440e0f9a760ae46be3e65103890a8276c"
+    },
+    {
+      "file": "server/property/execution/package.ts",
+      "sha256": "0a03f572992081dd9e87ca012ad3416c51703192a6ce307fb4202e3a3d9fde4e"
+    },
+    {
+      "file": "server/property/execution/prepare.ts",
+      "sha256": "f0b01a1518e1349b4563725fbc2b5ca1416798064525f2650d13e7fdd6211956"
+    },
+    {
+      "file": "server/property/execution/recovery.ts",
+      "sha256": "45c2186147e1f138016b3be348a1912490a98e09cb5d445a987d8850a6491ece"
+    },
+    {
+      "file": "server/property/execution/safety.ts",
+      "sha256": "e8a6426ad06b67c7fd685b1da874b4e1e2fdd153e539ccd6981c74cd9978ef77"
+    },
+    {
+      "file": "server/property/execution/verification.ts",
+      "sha256": "30e014ba4e6f0e50da366612a672d8e3222413e041c0c69dfe58462f1ed684b1"
+    }
+  ],
+  "historicalMigrations": [
+    {
+      "file": "20261015183039_phase_1_foundation.sql",
+      "sha256": "62ef02be55f5cf86916de4bf9891d4920f75a35ae421815c2d353bf4cedb73cc"
+    },
+    {
+      "file": "20261015201048_phase_2_operations.sql",
+      "sha256": "2a0e65f30e0eef0b85b53d23edc26968336f661d136303d7a1eb25b3f77e1974"
+    },
+    {
+      "file": "20261015204729_phase_3_estimating.sql",
+      "sha256": "ef999a3e7d8ee69f1563b3cffaf732f0a29c292161e4ce1729b6a26848bd4415"
+    },
+    {
+      "file": "20261015210230_phase_3_material_import.sql",
+      "sha256": "82f7594c18dfdf955ed1d2c83f6c903d8b4aebe7730c2f1a5770d501bd2d84a3"
+    },
+    {
+      "file": "20261015210546_phase_3_job_financials.sql",
+      "sha256": "f161cc16ec728b2e7373f3826b5d989a9fad4c1ec6d727fc193f18d5534d8c4c"
+    },
+    {
+      "file": "20261015210856_phase_3_workforce.sql",
+      "sha256": "78f2af2164574ba3d6aeb2f2510206d97343c5ad67a2534159a4e2960f5e9ce0"
+    },
+    {
+      "file": "20261015221730_phase_3a_release_controls.sql",
+      "sha256": "6dbfc3ed7a0b9905f5d824cb73698c441e8c7ee8aa5d5b0fb8f4883baacb4890"
+    },
+    {
+      "file": "20261016024502_release_1_internal_workflow.sql",
+      "sha256": "48522fd3b829a5bc9e482ce33c41ee7b8272edf68dbc7e6c7a699fa178b8714b"
+    },
+    {
+      "file": "20261016030324_material_worker_control_store.sql",
+      "sha256": "8359e7ceb4028460b7609bbd235d9941fc69b89b514463e011fec9b44a84d282"
+    },
+    {
+      "file": "20261016185108_provider_sandbox_persistence.sql",
+      "sha256": "5dd07b079a591b433fa7ab432fd841026de91a1cd3f1d3a722bef500aa9fd32d"
+    },
+    {
+      "file": "20261017005322_property_operations.sql",
+      "sha256": "c345bdf178c9339dba7ba2707c74233bcfae9a2d2b59abf148f4b7ffff35780c"
+    },
+    {
+      "file": "20261017024327_property_connected_readiness.sql",
+      "sha256": "6bb0b9bf22ec1079d7aa5f74c6e33e14534cc54e30e9034c33949f786cfd3ac9"
+    },
+    {
+      "file": "20261017024328_property_duplicate_index_cleanup.sql",
+      "sha256": "3603fe0482f46b9733a0321cd9009cb1f291993fcbede7132e1bdf721776fdfc"
+    }
+  ],
+  "hostedReadOnly": {
+    "targetIdentity": "MATCH_APPROVED_INTERNAL_DEVELOPMENT",
+    "migrationHistory": 13,
+    "catalogEntries": 514,
+    "columnAclEntries": 69,
+    "defaultAclEntries": 24,
+    "schemaAclEntries": 4,
+    "tableDigests": 79,
+    "originalCompositeKeyRows": 713,
+    "actorBindings": 18,
+    "resourceBindings": 3,
+    "authIdentities": 22,
+    "existingVerifiedTotpFactors": 4,
+    "sessions": 0,
+    "featureRows": 0,
+    "customerMappings": 0,
+    "reportLeases": 0,
+    "activePlatformGrants": 0,
+    "releaseGrants": 0,
+    "providerWorkloads": 0,
+    "originalJobRevisions": [7, 2, 2],
+    "beforeAfterFingerprints": "MATCH",
+    "savedAuthApiSettings": "MATCH",
+    "securityAdvisors": {
+      "ERROR": 0,
+      "WARN": 0,
+      "INFO": 37
+    },
+    "performanceAdvisors": {
+      "ERROR": 0,
+      "WARN": 4,
+      "INFO": 94
+    },
+    "originalAuditCount": 420
+  },
+  "quotations": {
+    "count": 12,
+    "quotedAt": "2026-10-16T12:00:00Z",
+    "expiresAt": "2026-11-16T12:00:00Z",
+    "fullWindowValidOnAuditDate": true,
+    "changed": false
+  },
+  "findingsCorrected": [
+    "A1_shutdown_async_handoff_and_late_activation",
+    "A2_quote_window_after_waits",
+    "A3_invalid_explicit_receipt_state",
+    "A4_worker_terminal_hangup",
+    "A5_audit_entity_type_receipt_and_multiplicity"
+  ],
+  "actualHostedEffects": {
+    "signins": 0,
+    "mfaChallenges": 0,
+    "featureActivations": 0,
+    "fixtureRpcs": 0,
+    "probeRpcs": 0,
+    "newDomainRecords": 0,
+    "newAuditEvents": 0,
+    "financialChanges": 0,
+    "providerCalls": 0,
+    "netlifyCalls": 0
+  },
+  "hostedCaseTracking": {
+    "PASS": 0,
+    "FAIL": 0,
+    "BLOCKED": 24,
+    "NOT_RUN": 48
+  },
+  "withheldProbe": {
+    "automaticApprovalReview": "REJECTED_POTENTIAL_HOSTED_DEACTIVATION_WRITE",
+    "executed": false,
+    "retried": false
+  },
+  "operationalChecksNotRun": [
+    "Genuine owner-assisted AAL2 handoff",
+    "Actual session revocation",
+    "Actual feature deactivation",
+    "Independent host-loss recovery capability"
+  ],
+  "localValidation": {
+    "status": "PASS_FINAL_FROZEN_SOURCE",
+    "npmCheck": {
+      "status": "PASS",
+      "testsPassed": 821,
+      "nativeOnlySkipped": 50,
+      "lintStrictGeneratedTypesMigrationPropertyBuild": "PASS"
+    },
+    "newAuditRegressionsPassed": 12,
+    "nativePostgresql17": {
+      "status": "PASS",
+      "testsPassed": 343,
+      "skipped": 0,
+      "completeDatabaseSuite": true
+    },
+    "nativeFinalP1Recheck": {
+      "passed": 4,
+      "skipped": 0,
+      "finalAuditProvenanceVerifier": true,
+      "countsOverlap": true
+    },
+    "browser": {
+      "status": "PASS",
+      "testsPassed": 63,
+      "surfaces": ["desktop", "tablet", "mobile"],
+      "isolatedLoopback": true,
+      "finalRunWorkers": 1
+    },
+    "formatting": "PASS",
+    "sourceAndFrozenArtifactHashes": "PASS",
+    "countsOverlap": true,
+    "earlierAttempts": "Initial concurrent run had setup/browser timeouts; another overlapping-edit run was interrupted and discarded. Final unchanged-source full check and isolated browser rerun pass; prior logs retained privately."
+  },
+  "runbook": "docs/PROPERTY_P1_SUPERVISED_RUNBOOK.md",
+  "existingApproval": "UNCHANGED_EXACT_SCOPE_VALID_NO_DUPLICATE_REQUEST",
+  "releaseReadiness": "NOT_READY_NOT_AUTHORIZED",
+  "pullRequest": "DRAFT_UNMERGED",
+  "evidenceCapturedAt": "2026-10-17T21:14:51.365Z"
+}

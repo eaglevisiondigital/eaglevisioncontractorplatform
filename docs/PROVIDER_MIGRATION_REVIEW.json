@@ -1,0 +1,41 @@
+{
+  "status": "DEVELOPMENT_APPLIED_PROVIDER_DISABLED",
+  "developmentExecution": {
+    "result": "APPLIED_VERIFIED",
+    "scope": "development-schema-only",
+    "sourceCommit": "57f2aa1e682a9d0ce6b82d5c8eaf904959eb0517",
+    "migrationVersion": "20261016185108",
+    "fileSha256": "5dd07b079a591b433fa7ab432fd841026de91a1cd3f1d3a722bef500aa9fd32d",
+    "bundleSha256": "231fa367a176bc329c983fa9d7154d814d0469278209edeca8712229870c750e",
+    "cliResultRecordedAt": "2026-10-16T21:22:51.693Z",
+    "providersEnabled": false,
+    "report": "docs/PROVIDER_MIGRATION_EXECUTION.md"
+  },
+  "independentReview": {
+    "date": "2026-10-16",
+    "sourceCommit": "7ee2c16e3fce6075b6109bf88b8254cf53493aaa",
+    "migrationSha256": "5dd07b079a591b433fa7ab432fd841026de91a1cd3f1d3a722bef500aa9fd32d",
+    "recommendation": "GO_FOR_SEPARATE_DEVELOPMENT_APPROVAL",
+    "resolvedFindings": ["M1", "M2"],
+    "hostedMigrationExecutedAtReview": false,
+    "report": "docs/PROVIDER_MIGRATION_REMEDIATION.md"
+  },
+  "approvedHistoricalBundleSha256": "c48fb1ad792ff8eca186c59147a9bb28604f1c281e65a7f027ea1a797ef387b6",
+  "migrations": [
+    {
+      "file": "20261016185108_provider_sandbox_persistence.sql",
+      "sha256": "5dd07b079a591b433fa7ab432fd841026de91a1cd3f1d3a722bef500aa9fd32d"
+    }
+  ],
+  "pendingBundleSha256": "231fa367a176bc329c983fa9d7154d814d0469278209edeca8712229870c750e",
+  "hostedActions": "OWNER_AUTHORIZED_DEVELOPMENT_SCHEMA_ONLY",
+  "activation": "No roles, logins, grants, workload authorizations, merchant authorizations, sender bindings or agreement bindings are populated",
+  "previousIndependentReview": {
+    "date": "2026-10-16",
+    "sourceCommit": "230f5b8ee9e49624b888af445775a1b7ebbb0e9a",
+    "migrationSha256": "9588d8db45eeb476919cb7d12e5e53dd3e622f95e2561db9c4f0019659591861",
+    "recommendation": "NO_GO",
+    "blockingFindings": ["M1", "M2"],
+    "report": "docs/PROVIDER_MIGRATION_FINAL_REVIEW.md"
+  }
+}

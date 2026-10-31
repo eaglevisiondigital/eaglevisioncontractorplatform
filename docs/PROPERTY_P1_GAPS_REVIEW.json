@@ -1,0 +1,192 @@
+{
+  "status": "SEPARATE_DESIGN_PROPOSAL_NOT_AUTHORIZED_NOT_EXECUTABLE",
+  "approvedP1OperationUnchanged": "01b96075d2f04acef730114427bc595986a1f0ce2720ed7fd3c9e84e304e141a",
+  "cases": [
+    {
+      "company": "Straight Edge Property Services",
+      "id": "required-checklist",
+      "status": "BLOCKED",
+      "newFixtures": [
+        "Separate inspection plan and draft visit with a required incomplete item",
+        "Reviewed save/submit/failed-publication steps using fresh CAS receipts"
+      ],
+      "localEvidence": [
+        "tests/property-operations.test.ts: cross-company visits, stale versions, incomplete checklists and duplicate dates fail",
+        "tests/database/property.test.ts: required checklist, malformed values, duplicate dates and stale revisions are denied"
+      ],
+      "expected": "Publication denied; no new report or denied-command audit; retain submitted test visit for evidence"
+    },
+    {
+      "company": "Straight Edge Property Services",
+      "id": "quantity-substitution",
+      "status": "BLOCKED",
+      "newFixtures": [
+        "New approved payments bound to original material line with cumulative excess quantities",
+        "Distinct unplanned substitute payment, explicit description/unit/source evidence",
+        "Freeze quantity, unit cost, matching candidates, scope review and job revisions after P1"
+      ],
+      "localEvidence": [
+        "tests/property-operations.test.ts: purchase flags distinguish unplanned, quantity variance, price increases, credits and duplicates",
+        "tests/property-operations.test.ts: unknown costs, unavailable quantities, expired quotes and substitutions cannot win a comparison"
+      ],
+      "expected": "Excess quantities and substitutes flagged for manual scope review; no automatic proposal approval or receivable"
+    },
+    {
+      "company": "Straight Edge Property Services",
+      "id": "credits-overlaps",
+      "status": "BLOCKED",
+      "newFixtures": [
+        "Approved credit linked to a newly reviewed payment, never a historical expense",
+        "Two distinct invoice/receipt records with reviewed normalized overlap keys",
+        "Freeze credit net amount, duplicate identifiers and CAS/budget before approval"
+      ],
+      "localEvidence": [
+        "tests/property-operations.test.ts: linked credit lowers supplemental price; unapproved expenses and unauthorized scope are excluded",
+        "tests/property-operations.test.ts: purchase flags distinguish unplanned, quantity variance, price increases, credits and duplicates",
+        "tests/database/property.test.ts: supplemental pricing is exact, append-only and creates no receivable or duplicate cost"
+      ],
+      "expected": "Credits reduce net minor-unit cost; normalized overlaps/zero net deny proposals; no double posting or debt"
+    },
+    {
+      "company": "Straight Edge Property Services",
+      "id": "expiry",
+      "status": "BLOCKED",
+      "newFixtures": [
+        "Separate bounded genuine Auth expiry observation procedure using existing test identities",
+        "No forged JWT, altered Auth settings, seed, session deletion or shortened hosted clock",
+        "Separate cleanup/custody and session-local revocation evidence for observation window"
+      ],
+      "localEvidence": [
+        "tests/database/property.test.ts: review native: JWT expiry during a visit lock wait rolls back all write/audit effects",
+        "tests/database/property.test.ts: P0 native: session not_after expiry while awaiting a visit lock rolls back every public command effect"
+      ],
+      "expected": "Expired genuine token denied before/after waits with zero side effects; do not assume natural expiry fits P1 thirty-minute window"
+    },
+    {
+      "company": "Cunningham Construction",
+      "id": "required-checklist",
+      "status": "BLOCKED",
+      "newFixtures": [
+        "Separate inspection plan and draft visit with a required incomplete item",
+        "Reviewed save/submit/failed-publication steps using fresh CAS receipts"
+      ],
+      "localEvidence": [
+        "tests/property-operations.test.ts: cross-company visits, stale versions, incomplete checklists and duplicate dates fail",
+        "tests/database/property.test.ts: required checklist, malformed values, duplicate dates and stale revisions are denied"
+      ],
+      "expected": "Publication denied; no new report or denied-command audit; retain submitted test visit for evidence"
+    },
+    {
+      "company": "Cunningham Construction",
+      "id": "quantity-substitution",
+      "status": "BLOCKED",
+      "newFixtures": [
+        "New approved payments bound to original material line with cumulative excess quantities",
+        "Distinct unplanned substitute payment, explicit description/unit/source evidence",
+        "Freeze quantity, unit cost, matching candidates, scope review and job revisions after P1"
+      ],
+      "localEvidence": [
+        "tests/property-operations.test.ts: purchase flags distinguish unplanned, quantity variance, price increases, credits and duplicates",
+        "tests/property-operations.test.ts: unknown costs, unavailable quantities, expired quotes and substitutions cannot win a comparison"
+      ],
+      "expected": "Excess quantities and substitutes flagged for manual scope review; no automatic proposal approval or receivable"
+    },
+    {
+      "company": "Cunningham Construction",
+      "id": "credits-overlaps",
+      "status": "BLOCKED",
+      "newFixtures": [
+        "Approved credit linked to a newly reviewed payment, never a historical expense",
+        "Two distinct invoice/receipt records with reviewed normalized overlap keys",
+        "Freeze credit net amount, duplicate identifiers and CAS/budget before approval"
+      ],
+      "localEvidence": [
+        "tests/property-operations.test.ts: linked credit lowers supplemental price; unapproved expenses and unauthorized scope are excluded",
+        "tests/property-operations.test.ts: purchase flags distinguish unplanned, quantity variance, price increases, credits and duplicates",
+        "tests/database/property.test.ts: supplemental pricing is exact, append-only and creates no receivable or duplicate cost"
+      ],
+      "expected": "Credits reduce net minor-unit cost; normalized overlaps/zero net deny proposals; no double posting or debt"
+    },
+    {
+      "company": "Cunningham Construction",
+      "id": "expiry",
+      "status": "BLOCKED",
+      "newFixtures": [
+        "Separate bounded genuine Auth expiry observation procedure using existing test identities",
+        "No forged JWT, altered Auth settings, seed, session deletion or shortened hosted clock",
+        "Separate cleanup/custody and session-local revocation evidence for observation window"
+      ],
+      "localEvidence": [
+        "tests/database/property.test.ts: review native: JWT expiry during a visit lock wait rolls back all write/audit effects",
+        "tests/database/property.test.ts: P0 native: session not_after expiry while awaiting a visit lock rolls back every public command effect"
+      ],
+      "expected": "Expired genuine token denied before/after waits with zero side effects; do not assume natural expiry fits P1 thirty-minute window"
+    },
+    {
+      "company": "Sample Roofing Contractor",
+      "id": "required-checklist",
+      "status": "BLOCKED",
+      "newFixtures": [
+        "Separate inspection plan and draft visit with a required incomplete item",
+        "Reviewed save/submit/failed-publication steps using fresh CAS receipts"
+      ],
+      "localEvidence": [
+        "tests/property-operations.test.ts: cross-company visits, stale versions, incomplete checklists and duplicate dates fail",
+        "tests/database/property.test.ts: required checklist, malformed values, duplicate dates and stale revisions are denied"
+      ],
+      "expected": "Publication denied; no new report or denied-command audit; retain submitted test visit for evidence"
+    },
+    {
+      "company": "Sample Roofing Contractor",
+      "id": "quantity-substitution",
+      "status": "BLOCKED",
+      "newFixtures": [
+        "New approved payments bound to original material line with cumulative excess quantities",
+        "Distinct unplanned substitute payment, explicit description/unit/source evidence",
+        "Freeze quantity, unit cost, matching candidates, scope review and job revisions after P1"
+      ],
+      "localEvidence": [
+        "tests/property-operations.test.ts: purchase flags distinguish unplanned, quantity variance, price increases, credits and duplicates",
+        "tests/property-operations.test.ts: unknown costs, unavailable quantities, expired quotes and substitutions cannot win a comparison"
+      ],
+      "expected": "Excess quantities and substitutes flagged for manual scope review; no automatic proposal approval or receivable"
+    },
+    {
+      "company": "Sample Roofing Contractor",
+      "id": "credits-overlaps",
+      "status": "BLOCKED",
+      "newFixtures": [
+        "Approved credit linked to a newly reviewed payment, never a historical expense",
+        "Two distinct invoice/receipt records with reviewed normalized overlap keys",
+        "Freeze credit net amount, duplicate identifiers and CAS/budget before approval"
+      ],
+      "localEvidence": [
+        "tests/property-operations.test.ts: linked credit lowers supplemental price; unapproved expenses and unauthorized scope are excluded",
+        "tests/property-operations.test.ts: purchase flags distinguish unplanned, quantity variance, price increases, credits and duplicates",
+        "tests/database/property.test.ts: supplemental pricing is exact, append-only and creates no receivable or duplicate cost"
+      ],
+      "expected": "Credits reduce net minor-unit cost; normalized overlaps/zero net deny proposals; no double posting or debt"
+    },
+    {
+      "company": "Sample Roofing Contractor",
+      "id": "expiry",
+      "status": "BLOCKED",
+      "newFixtures": [
+        "Separate bounded genuine Auth expiry observation procedure using existing test identities",
+        "No forged JWT, altered Auth settings, seed, session deletion or shortened hosted clock",
+        "Separate cleanup/custody and session-local revocation evidence for observation window"
+      ],
+      "localEvidence": [
+        "tests/database/property.test.ts: review native: JWT expiry during a visit lock wait rolls back all write/audit effects",
+        "tests/database/property.test.ts: P0 native: session not_after expiry while awaiting a visit lock rolls back every public command effect"
+      ],
+      "expected": "Expired genuine token denied before/after waits with zero side effects; do not assume natural expiry fits P1 thirty-minute window"
+    }
+  ],
+  "exactOperationHash": null,
+  "exactHostedPayloadsFrozen": false,
+  "requires": "Successful P1 evidence/current revisions, separate exact fixture/expiry scope review and owner authorization",
+  "zeroCustomerDebtRequired": true,
+  "historicalRowsMayBeMutated": false,
+  "hostedActions": 0
+}

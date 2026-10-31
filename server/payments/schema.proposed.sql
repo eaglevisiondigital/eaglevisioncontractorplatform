@@ -1,0 +1,4 @@
+-- Superseded by the UNAPPLIED forward migration
+-- supabase/migrations/20261016185108_provider_sandbox_persistence.sql
+-- Historical proposal SHA-256 is retained in docs/RELEASE_PROVIDER_FOUNDATION.md.
+-- This pointer is not executable schema and confers no hosted authorization.

@@ -1,0 +1,33 @@
+node_modules/
+dist/
+coverage/
+.env
+.env.*
+!.env.example
+.netlify/
+supabase/.temp/
+supabase/.branches/
+*.local
+.DS_Store
+test-results/
+
+artifacts/phase3/*.png
+
+# Private staging manifests, sessions and evidence never belong in this public repo.
+.staging/
+
+artifacts/release/*.png
+
+# Local synthetic branding screenshots.
+artifacts/branding/
+
+# Local property operations previews.
+artifacts/property/*.png
+artifacts/property/CONTRACTOR_DESIGN_SCREENSHOTS.md
+artifacts/property/CONTRACTOR_POLISH_SCREENSHOTS.md
+
+# Local Phase A customer portal concept screenshots.
+artifacts/property-design/
+
+# Disposable Workstream 2C stdio-service compilation; never an application artifact.
+artifacts/maintenance-service-*/

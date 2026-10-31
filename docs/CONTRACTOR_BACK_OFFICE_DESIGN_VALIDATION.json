@@ -1,0 +1,103 @@
+{
+  "date": "2026-10-29",
+  "base": "3adcfcb188b1c7f8fcd3d6ceea2a15807357663c",
+  "mode": "LOCAL_SYNTHETIC_PHASE_A_VISUAL_REVIEW_ONLY",
+  "route": "/preview/contractor-design",
+  "originalWorkspaceReplaced": false,
+  "ownerVisualApproval": "PENDING",
+  "application": {
+    "passed": 101,
+    "files": 3,
+    "command": "npx vitest run tests/repair-readiness.test.ts tests/repair-draft.test.ts tests/maintenance-center.test.ts",
+    "businessLogicChanged": false
+  },
+  "browser": {
+    "uniquePassed": 57,
+    "files": 6,
+    "newConceptCases": 9,
+    "finalConceptRepairDeltaPassed": 12,
+    "strongerIsolationDeltaPassed": 3,
+    "rerunsNotAdditive": true,
+    "command": "npx playwright test tests/browser/contractor-design.spec.ts tests/browser/repair-readiness.spec.ts tests/browser/maintenance-center.spec.ts tests/browser/repair-draft.spec.ts tests/browser/property-design.spec.ts tests/browser/phase3.spec.ts --workers=2",
+    "viewports": ["desktop", "tablet", "mobile"],
+    "contractorPalettes": 3,
+    "axeViolationsInExercisedConceptStates": 0,
+    "horizontalOverflow": false,
+    "newQueueJourneyOutsideRequests": 0,
+    "sameDocumentOriginalQueuePixelEqualityWithLoadedConceptCss": true,
+    "sameDocumentApprovedCustomerOverviewPixelEqualityWithLoadedConceptCss": true,
+    "conceptDoesNotPopulateOriginalRepository": true,
+    "exactReportVersionNavigation": true,
+    "triageAndDraftSchedulingPreserved": true,
+    "readinessAndStaleEvidencePreserved": true
+  },
+  "screenshots": {
+    "directory": "artifacts/property",
+    "index": "artifacts/property/CONTRACTOR_DESIGN_SCREENSHOTS.md",
+    "realBrowser": true,
+    "queueFindingPalettes": 3,
+    "repairReadinessPalettesCaptured": 1,
+    "states": [
+      "queue",
+      "finding",
+      "repair",
+      "repair-editor",
+      "readiness-current",
+      "readiness-stale"
+    ],
+    "committed": false,
+    "ciArtifact": "phase3-synthetic-previews"
+  },
+  "checks": {
+    "lint": true,
+    "strictTypes": true,
+    "build": true,
+    "format": true,
+    "diff": true,
+    "generatedTypes": true,
+    "migrationIntegrity": true,
+    "propertyCustomerProposalIntegrity": true,
+    "protectedTrackedPathsUnchanged": 165,
+    "frozenArtifactsVerified": 4
+  },
+  "priorCi": {
+    "foundationRun": 40867767460,
+    "compatibilityRun": 40867767490,
+    "conclusion": "success",
+    "restarted": false
+  },
+  "preserved": {
+    "historicalMigrations": 13,
+    "pendingCustomerMigration": "UNAPPLIED_NOT_AUTHORIZED",
+    "frozenP1OperationUnchanged": true,
+    "approvedCustomerPortalUnchanged": true,
+    "approvedArtworkUnchanged": true,
+    "domainRepositoriesUnchanged": true,
+    "connectedActivation": false,
+    "financialExecution": false,
+    "hostedProductCalls": 0,
+    "credentialsRetrieved": 0,
+    "authSessionsCreated": 0,
+    "deployments": 0,
+    "merged": false
+  },
+  "limits": [
+    "Owner visual approval pending; original back office not replaced",
+    "Session-only synthetic data, no hosted or physical-recovery acceptance",
+    "Unchanged SQL/recovery/Mac setup/network baselines not repeated locally; existing CI runs automatically",
+    "Current-commit CI reported separately"
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "ciRegression": {
+    "initialFoundationRun": 40887658347,
+    "browserPassed": 143,
+    "browserFailed": 1,
+    "failure": "Tablet same-document portal pixel comparison carried transient pointer state.",
+    "reproduction": {
+      "hoverChangesPixels": true,
+      "pointerResetRestoresExactPixels": true
+    },
+    "correction": "Normalize pointer/focus/scroll before exact captures, deliberately exercise hover, retain before/after diagnostics; no masking/tolerance or portal changes.",
+    "finalIsolationDeltaPassed": 3
+  }
+}
