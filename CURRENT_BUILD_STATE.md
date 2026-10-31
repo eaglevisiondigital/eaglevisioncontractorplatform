@@ -1,5 +1,24 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: P1 physical recovery prerequisite · October 31
+
+Owner directs recovery closure before further transaction expansion. Preserve the
+October28 owner-reported corrected Setup on BOTH Macs, local IPv4 and Universal
+Clipboard, plus prior25 offline passes. The rehearsal validation now distinguishes
+that completed setup from still-unrun physical pairing/transfer/ACK/supervision/
+primary-loss/backup-only recovery. Seven device cases remain0 PASS /0 FAIL /7 NOT RUN;
+no new physical observation or same-host simulation occurred. Current maintained,
+encrypted independent backup/power/network/operator availability awaits owner
+confirmation; the documented Monterey backup stays synthetic-only. No original kit,
+sealed artifact, dependency, migration,4B proposal or approved UI was changed or retested.
+Use existing [device instructions](docs/TWO_COMPUTER_REHEARSAL.md) once actual devices
+are available; no setup/baseline loop. Synthetic success alone cannot authorize P1:
+reviewed operational custody/foreground harness and separately authorized genuine
+hosted recovery verification precede fresh P1 preflight under its existing approval.
+Then separately review customer14,4B ownership/hash, exact grants/mappings/target and
+internal acceptance. No credentials, Auth, hosted writes, deployment or merge.
+Release1.0 remains NOT READY / NOT AUTHORIZED; draftPR#1 preserved.
+
 ## Latest: Workstream 4B · persisted requests and staff reader · October 31
 
 [Implementation](docs/CUSTOMER_REQUESTS_PERSISTENCE.md) extends the existing customer14

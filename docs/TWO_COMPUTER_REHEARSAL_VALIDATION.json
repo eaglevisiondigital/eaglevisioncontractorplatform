@@ -1,7 +1,7 @@
 {
   "baseCommit": "c87f52d173886daa6fd98af1de79684bd74c22d7",
   "validatedOn": "2026-10-21",
-  "status": "CORRECTED_SYNTHETIC_PACKAGE_READY_FOR_OWNER_SETUP_ACTUAL_DEVICE_NOT_RUN",
+  "status": "OWNER_REPORTED_SETUP_COMPLETE_PHYSICAL_PAIRING_AND_RECOVERY_NOT_RUN",
   "package": {
     "file": "recovery/distribution/propel-synthetic-rehearsal.zip",
     "bytes": 97334,
@@ -42,7 +42,7 @@
     "localPython": "3.12.14",
     "cryptography": "48.0.1",
     "ownerMontereyPython": "3.14.2_OWNER_REPORTED",
-    "actualIntelMontereyDependencyInstallation": "OLD_PACKAGE_FAILED_CORRECTED_SETUP_AWAITING_OWNER",
+    "actualIntelMontereyDependencyInstallation": "CORRECTED_SETUP_COMPLETE_ON_BOTH_MACS_OWNER_REPORTED_OCT28_NOT_REPEATED",
     "primaryNodeRequirementUnchanged": ">=24 <25",
     "cffi": "2.1.1",
     "pycparser": "3.11"
@@ -152,5 +152,34 @@
     "sourceCompilationAllowed": false,
     "unpinnedFallbackAllowed": false,
     "operationalDowngradeAllowed": false
+  },
+  "continuation": {
+    "reviewedOn": "2026-10-31",
+    "reviewedHead": "8d9a6b770b4bd8655999ab4cf9cc5f47c5c55713",
+    "priorPackageValidationStatus": "CORRECTED_SYNTHETIC_PACKAGE_READY_FOR_OWNER_SETUP_ACTUAL_DEVICE_NOT_RUN",
+    "ownerReportedSetupEvidence": {
+      "date": "2026-10-28",
+      "source": "docs/PROPERTY_PORTAL_EXPERIENCE.md",
+      "correctedSetupBothPhysicalMacs": "COMPLETE_OWNER_REPORTED",
+      "localIpv4Connectivity": "VERIFIED_OWNER_REPORTED",
+      "universalClipboard": "VERIFIED_OWNER_REPORTED",
+      "engineerObservedThisTask": false
+    },
+    "physicalDeviceGate": "AWAITING_CURRENT_OWNER_DEVICE_SELECTION_AND_READINESS",
+    "maintainedIndependentRecoveryComputer": "NOT_VERIFIED",
+    "fullDiskEncryption": "NOT_CURRENTLY_VERIFIED_PRIVATE_INTAKE_RETAINED",
+    "independentPowerAndNetwork": "NOT_CURRENTLY_VERIFIED",
+    "authorizedHumanOperatorWindow": "NOT_CONFIRMED",
+    "actualPhysicalPairingAndRecoveryEvidence": "NOT_SUPPLIED",
+    "repeatedSetupPackageNetworkOrOfflineTests": 0,
+    "sameHostSimulationPerformed": false,
+    "newPhysicalPassClaims": 0,
+    "originalP1Approval": "REMAINS_VALID_NO_DUPLICATE_REQUEST",
+    "next": "Owner confirms an available maintained encrypted independent device and supervision window, then uses existing kit for actual credential-free physical rehearsal. Later genuine hosted recovery needs separate exact authorization.",
+    "alternativeCategories": [
+      "Physically separate supported, patched Mac with FileVault and independent power/network",
+      "Physically separate maintained encrypted Linux device, subject to existing POSIX/pinned-runtime compatibility review; no OS replacement or installation authorized here"
+    ],
+    "montereyCustody": "SYNTHETIC_ONLY_NO_PRIVILEGED_CREDENTIALS"
   }
 }

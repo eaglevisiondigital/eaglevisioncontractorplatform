@@ -1,5 +1,18 @@
 # Engineering decisions
 
+## October 31 · stop expansion and resume the actual physical recovery gate
+
+Use existing credential-free rehearsal software and retained evidence. Correct the
+stale setup-waiting validation using the October28 owner report; never turn setup,
+LAN connectivity, Clipboard or25 offline passes into physical acceptance. Await
+actual maintained/encrypted independent device and human availability before the
+pairing/primary-loss run. Monterey remains synthetic-only, no OS replacement or
+privileged custody. No simulation, kit rebuild or baseline rerun substitutes for
+physical evidence. Original P1 approval remains valid; operational custody and exact
+genuine hosted recovery verification still need their separate reviewed scope before
+fresh P1 preflight. Customer14/4B installation/acceptance remain subsequent approvals.
+Only continuity documentation changed; all frozen artifacts/restrictions persist.
+
 ## October 31 · implement C1–C3 locally; keep operational installation closed
 
 Reuse customer14's immutable private decision ledger rather than create another
