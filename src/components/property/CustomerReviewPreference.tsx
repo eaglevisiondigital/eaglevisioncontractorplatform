@@ -19,12 +19,14 @@ export function CustomerReviewPreference({
   choice,
   onRecord,
   onCancel,
+  evidence = 'session',
 }: {
-  data: Data;
+  data: Pick<Data, 'context' | 'customerName'>;
   review: CustomerReview;
   choice: PreviewReviewChoice;
   onRecord(note: string): Promise<unknown>;
   onCancel(): void;
+  evidence?: 'session' | 'durable-local';
 }) {
   const [note, setNote] = useState('');
   const [acknowledged, setAcknowledged] = useState(false);
@@ -45,6 +47,9 @@ export function CustomerReviewPreference({
     heading.current?.focus();
   }, [confirm]);
   const changes = choice === 'changes_requested';
+  const durable = evidence === 'durable-local';
+  const length = (text: string) =>
+    durable ? Array.from(text).length : text.length;
   return (
     <form
       className="customer-preference"
@@ -56,12 +61,14 @@ export function CustomerReviewPreference({
         const explanation = note.trim();
         if (
           (changes && !explanation) ||
-          explanation.length > 2000 ||
+          length(explanation) > 2000 ||
           !acknowledged
         ) {
           setError(
             !acknowledged
-              ? 'Confirm this is a synthetic review only.'
+              ? durable
+                ? 'Confirm this is a local database review only.'
+                : 'Confirm this is a synthetic review only.'
               : 'Enter the requested changes using 1–2,000 characters.',
           );
           return;
@@ -89,7 +96,9 @@ export function CustomerReviewPreference({
     >
       <h4 ref={heading} tabIndex={-1}>
         {confirm
-          ? 'Confirm your synthetic preference'
+          ? durable
+            ? 'Confirm your local database preference'
+            : 'Confirm your synthetic preference'
           : `${preferenceLabel[choice]} · Version ${review.version_number}`}
       </h4>
       <p>
@@ -112,8 +121,10 @@ export function CustomerReviewPreference({
           </p>
           {changes && <p className="customer-preference-note">{note}</p>}
           <p>
-            No work, contract, invoice, payment or debt is authorized. This
-            response lasts for this preview session only.
+            No work, contract, invoice, payment or debt is authorized. This{' '}
+            {durable
+              ? 'receipt is retained in the disposable local database.'
+              : 'response lasts for this preview session only.'}
           </p>
         </>
       ) : (
@@ -124,7 +135,7 @@ export function CustomerReviewPreference({
               <textarea
                 id={`${id}-note`}
                 value={note}
-                maxLength={2000}
+                maxLength={durable ? 4000 : 2000}
                 required
                 aria-describedby={`${id}-limit`}
                 onChange={(e) => {
@@ -133,7 +144,7 @@ export function CustomerReviewPreference({
                 }}
               />
               <small id={`${id}-limit`}>
-                {note.length.toLocaleString()} / 2,000 characters. Required;
+                {length(note).toLocaleString()} / 2,000 characters. Required;
                 customer-visible text only.
               </small>
             </label>
@@ -144,22 +155,30 @@ export function CustomerReviewPreference({
               checked={acknowledged}
               onChange={(e) => setAcknowledged(e.target.checked)}
             />
-            Confirm this is a synthetic review only
+            {durable
+              ? 'Confirm this is a local database review only'
+              : 'Confirm this is a synthetic review only'}
           </label>
         </>
       )}
       {error && <p role="alert">{error}</p>}
       {pending && (
         <p role="status">
-          Recording this exact version’s synthetic preference…
+          {durable
+            ? 'Recording this exact version’s local database preference…'
+            : 'Recording this exact version’s synthetic preference…'}
         </p>
       )}
       <div className="p3-actions">
         <button type="submit" disabled={pending}>
           {confirm
             ? changes
-              ? 'Record synthetic change request'
-              : 'Record synthetic preference'
+              ? durable
+                ? 'Record local database change request'
+                : 'Record synthetic change request'
+              : durable
+                ? 'Record local database preference'
+                : 'Record synthetic preference'
             : 'Review preference'}
         </button>
         {confirm && (

@@ -10,6 +10,17 @@ documents retain their original evidence; this contract governs the connected ha
 No project identifiers, sessions, private correspondence or credentials were retrieved.
 Hosted state was not refreshed and no new hosted PASS is claimed.
 
+## October 31 continuation · C1–C3/F implemented locally
+
+[Workstream4B](CUSTOMER_REQUESTS_PERSISTENCE.md) now implements the first slice through
+a separate default-deny forward proposal after unchanged14, actual native persistence,
+committed attempt custody, exact reads and staff queue. The inventory below preserves
+its Phase4A checkpoint. Fourteen itself remains two-choice/unapplied; only the separate
+unapplied4B extension adds notes/change requests. Operational broker/ownership/grants/
+Auth/target acceptance remains NO-GO. Next is the smallest separately approved genuine
+internal request→receipt→staff read after existing gates, not another synthetic layer
+or automatic C4–C6 expansion.
+
 ## A. Implemented foundations and exact limits
 
 | Existing source                                                                                                                                                                                                                | Reusable implementation                                                                                                                                                                                                                                                                 | Operational limit                                                                                                                                                                                                                                                                            |

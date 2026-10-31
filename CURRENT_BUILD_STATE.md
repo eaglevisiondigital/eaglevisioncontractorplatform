@@ -1,5 +1,21 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: Workstream 4B · persisted requests and staff reader · October 31
+
+[Implementation](docs/CUSTOMER_REQUESTS_PERSISTENCE.md) extends the existing customer14
+private decision ledger through a separate default-deny forward local SQL proposal.
+Approve/decline compatibility and immutable originals remain; third-choice explanation,
+separate issuer-committed exact admission, one-shot backend/full-XID consumer, append-only
+result references and exact historical reads are implemented. UNKNOWN never retries.
+Actual native PostgreSQL receipts feed the default-off staff reader through actual
+React browser tests; no 3A state substitutes for persistence. Synthetic identity fixtures
+are not genuine hosted Auth. Trusted owner/broker/provisioner/target/grants remain
+operational gates; no connected route or network mutator is activated. See validation.
+Next only the smallest separately approved genuine internal acceptance after recovery,
+original P1-on13, separate14 and separate4B ownership/hash/grant/mapping review. No4C
+expansion. All13/customer14/frozen P1/four artifacts/approvals/locked UIs/Netlify/2A–2F/
+billing/financial/communication/recovery/deploy/merge gates persist. NOT READY / NOT AUTHORIZED.
+
 ## Latest: Phase 4A · connected lifecycle integration · October 31
 
 The finite [integration contract](docs/CONNECTED_CUSTOMER_LIFECYCLE_INTEGRATION.md)

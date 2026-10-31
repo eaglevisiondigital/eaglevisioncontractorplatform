@@ -1,3 +1,4 @@
+import { PreparedCustomerRequests } from './customer-requests';
 import type { CustomerContext } from '../domain/customer/review';
 import { reportUuid } from '../domain/property/report-page';
 import { PreparedCustomerAccess } from './customer-access';
@@ -20,7 +21,13 @@ export interface CustomerReviewReference {
 type ReadSdk = Pick<
   ConnectedCustomerSdk,
   'identityPort' | 'discover' | 'review' | 'decisionContext'
->;
+> &
+  Partial<
+    Pick<
+      ConnectedCustomerSdk,
+      'requestReceipt' | 'requestStatus' | 'staffRequestQueue'
+    >
+  >;
 export type CustomerReconciliationResult = {
   mutation_performed: false;
   replay_allowed: false;
@@ -163,6 +170,25 @@ export class PreparedCustomerReconciliation {
     } finally {
       decisions?.close();
       access?.close();
+    }
+  }
+  async reconcileRequest(value: unknown) {
+    if (
+      this.closed ||
+      !this.sdk.requestReceipt ||
+      !this.sdk.requestStatus ||
+      !this.sdk.staffRequestQueue
+    )
+      throw Error('Customer reconciliation unavailable');
+    const reader = new PreparedCustomerRequests(this.auth, {
+      receipt: this.sdk.requestReceipt,
+      status: this.sdk.requestStatus,
+      queue: this.sdk.staffRequestQueue,
+    });
+    try {
+      return await reader.reconcile(value);
+    } finally {
+      reader.close();
     }
   }
   close() {

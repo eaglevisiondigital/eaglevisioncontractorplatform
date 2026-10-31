@@ -59,6 +59,7 @@ jobs:
           --health-retries 10
     env:
       EV_TEST_PG_CI: 'true'
+      EV_CUSTOMER_REQUEST_BROWSER: 'true'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -68,4 +69,11 @@ jobs:
       - run: npm ci
       - run: node scripts/prepare-ci-db.mjs
       - run: npm run types:check
+      - run: npx playwright install --with-deps chromium
       - run: npx vitest run tests/database
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: customer-request-native-previews
+          path: artifacts/property/customer-requests-native-*.png
+          retention-days: 7

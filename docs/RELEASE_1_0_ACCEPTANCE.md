@@ -1,5 +1,17 @@
 # Production Release 1.0 acceptance checklist
 
+## Workstream 4B · local persistence evidence only · October 31
+
+[Implementation](CUSTOMER_REQUESTS_PERSISTENCE.md) and validation record actual native
+request/receipt/staff persistence, process-interruption reconciliation and database-backed
+browser evidence. Existing14 unchanged; new forward proposal is default deny and unapplied.
+Synthetic Auth fixtures/trusted installer do not prove operational broker/ownership,
+genuine hosted Auth, customer access or connected acceptance. Those remain BLOCKED.
+Original recovery→approved P1-on13→separate14→separate4B→exact later grants/mapping/Auth
+acceptance order remains. No revision/packet/issuance/delivery/financial authority added.
+All frozen evidence/approvals/locked UIs/Netlify/2A–2F/billing/recovery remain.
+Release1.0 **NOT READY / NOT AUTHORIZED**.
+
 ## Phase 4A · finite connected integration preparation · October 31
 
 [Authoritative contract](CONNECTED_CUSTOMER_LIFECYCLE_INTEGRATION.md) and validation

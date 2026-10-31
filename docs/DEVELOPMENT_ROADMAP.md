@@ -1,5 +1,16 @@
 # Bounded development roadmap
 
+## October 31 · Workstream 4B complete locally; next exact internal acceptance
+
+[Persisted requests/receipts/staff reader](CUSTOMER_REQUESTS_PERSISTENCE.md) implement
+C1–C3 and F of4A in disposable native PostgreSQL, with default-off prepared interfaces.
+No further synthetic revision layer is next. The smallest genuine connected acceptance
+is one exact internally operated request→receipt→eligible staff read, only after
+independent recovery, original approved frozen P1-on13, separately approved14 and4B,
+and separately reviewed operational ownership/broker/grants/target/mapping/publication/
+Auth acceptance scope. No hosted execution is authorized now. Preserve six billing
+proposals, locked UIs and all financial/communication/Netlify/recovery/deploy/merge gates.
+
 ## October 31 · Phase 4A complete; implement persisted request slice next
 
 The finite [connected integration contract](CONNECTED_CUSTOMER_LIFECYCLE_INTEGRATION.md)

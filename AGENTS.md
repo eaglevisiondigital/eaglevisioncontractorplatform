@@ -1,3 +1,17 @@
+Workstream 4B continuation: read docs/CUSTOMER_REQUESTS_PERSISTENCE.md, validation and
+CUSTOMER_REQUESTS_FORWARD_REVIEW.json. Separate default-deny forward proposal after
+unchanged14 extends existing private decision ledger; no second business store. Native
+PG17/actual process-loss/React-to-SQL staff reader tests use explicit synthetic identity
+fixtures, not genuine hosted Auth. Separate issuer commit, exact backend/full-XID,
+rollback-resistant one-shot sequence and current source/session/mapping/member checks
+apply; UNKNOWN exact read-only/no replay/replacement/publication bypass. Legacy-v1
+receipts remain immutable, no retrospective custody. SDK commands/staff UI defaultoff,
+no connected route/private network writer. Trusted definer installer/broker/provisioner/
+operational grants remain unverified. Next only separately approved genuine internal
+request->receipt->staff acceptance after recovery/original approved P1-on13/separate14/
+separate4B ownership+hash/exact grants+mapping+target; no4C expansion. Preserve all13/
+customer14/P1/four/approvals/locked UIs/2A–2F/billing/Netlify/recovery/financial/deploy/merge.
+
 Phase 4A continuation: read docs/CONNECTED_CUSTOMER_LIFECYCLE_INTEGRATION.md and
 validation. One authoritative connected lifecycle contract now maps existing Auth/
 customer14/estimating/communications against exact forward gaps. New unwired read-only

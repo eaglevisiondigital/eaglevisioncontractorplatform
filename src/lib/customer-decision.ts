@@ -203,3 +203,11 @@ export class PreparedCustomerDecision {
     this.subscription.unsubscribe();
   }
 }
+
+// Versioned request contract alongside the unchanged two-choice API. Unmounted/default off.
+export { PreparedCustomerRequests } from './customer-requests';
+export type {
+  CustomerRequestBody,
+  CustomerRequestReference,
+  CustomerRequestStatus,
+} from './customer-requests';

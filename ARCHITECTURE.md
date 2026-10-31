@@ -1,5 +1,17 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Workstream 4B · existing ledger with separate command custody
+
+[Local persistence](docs/CUSTOMER_REQUESTS_PERSISTENCE.md) adds a forward proposal after
+unchanged14: third review choice/note on the existing decision ledger plus private
+principal/intent/outcome-reference metadata. Separate issuer commit precedes a bound
+consumer backend/full-XID and rollback-resistant one-shot entry. Exact read-only
+receipt/status/staff projections reuse current customer/staff/session guards and SDK.
+Default-off prepared ports and staff component are unmounted; the actual SQL/browser
+composition exists only in disposable tests. No second business ledger/engine, hosted
+adapter, revision, packet, issuer or sender is introduced. Operational trusted owner,
+verified broker/provisioner and exact grants still require independent review.
+
 ## Phase 4A · one connected lifecycle contract
 
 [Connected lifecycle integration](docs/CONNECTED_CUSTOMER_LIFECYCLE_INTEGRATION.md)

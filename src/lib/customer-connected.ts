@@ -1,3 +1,9 @@
+import {
+  customerRequestBody,
+  customerRequestReference,
+  type CustomerRequestBody,
+  type CustomerRequestReference,
+} from './customer-requests';
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import type { Database, Json } from './database.types';
 import {
@@ -14,7 +20,21 @@ import {
   reportUuid,
 } from '../domain/property/report-page';
 
-type Functions = Database['public']['Functions'];
+// Forward proposal read signatures only; generated fourteen types remain unchanged.
+type Functions = Database['public']['Functions'] & {
+  customer_review_request_receipt: {
+    Args: { p_org: string; p_ref: Json };
+    Returns: Json;
+  };
+  customer_review_request_status: {
+    Args: { p_org: string; p_body: Json };
+    Returns: Json;
+  };
+  customer_change_request_queue: { Args: { p_org: string }; Returns: Json };
+};
+type PreparedDatabase = Omit<Database, 'public'> & {
+  public: Omit<Database['public'], 'Functions'> & { Functions: Functions };
+};
 type Capability = 'reads' | 'publishing' | 'decisions';
 const rpcNames = [
   'customer_portal_discover',
@@ -28,6 +48,9 @@ const rpcNames = [
   'customer_record_decision',
   'customer_runtime_status',
   'customer_session_status',
+  'customer_review_request_receipt',
+  'customer_review_request_status',
+  'customer_change_request_queue',
 ] as const;
 type RpcName = (typeof rpcNames)[number];
 /** Memory only. A future approved Auth broker supplies an existing access token, never identity authority. */
@@ -258,7 +281,7 @@ export class ConnectedCustomerSdk {
     args: Functions[N]['Args'],
   ) {
     // Type correlation is preserved at each named adapter; the generated union overload erases it internally.
-    const r = await client
+    const r = await (client as unknown as SupabaseClient<PreparedDatabase>)
       .rpc(name, args as never)
       .retry(false)
       .abortSignal(AbortSignal.timeout(8000));
@@ -401,6 +424,20 @@ export class ConnectedCustomerSdk {
       },
       'reads',
     );
+  requestReceipt = (org: string, value: CustomerRequestReference) =>
+    this.request(
+      'customer_review_request_receipt',
+      { p_org: org, p_ref: customerRequestReference(value) as unknown as Json },
+      'reads',
+    );
+  requestStatus = (org: string, value: CustomerRequestBody) =>
+    this.request(
+      'customer_review_request_status',
+      { p_org: org, p_body: customerRequestBody(value) as unknown as Json },
+      'reads',
+    );
+  staffRequestQueue = (org: string) =>
+    this.request('customer_change_request_queue', { p_org: org }, 'reads');
   reportPage = async (c: CustomerContext, before: string | null = null) =>
     parsePropertyReportPage(
       await this.request(

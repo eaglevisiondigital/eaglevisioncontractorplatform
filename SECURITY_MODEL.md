@@ -1,5 +1,19 @@
 # Security model · Phase 2
 
+## Workstream 4B · local command custody, operational trust still gated
+
+[Mechanism and limits](docs/CUSTOMER_REQUESTS_PERSISTENCE.md): strict server canonical
+body/source, committed independent issuer claim, exact restricted consumer backend/
+transaction, private one-shot sequence, current Auth/mapping/CRM checks after resource
+waits, immutable decision/outcome reference, and UNKNOWN read-only reconciliation.
+Forced RLS/revoked runtime access/default-false capabilities remain. Historical own
+receipts can survive publication expiry without reopening document access; legacy-v1
+receipt identity is not fabricated custody. Eligible staff reader is bounded/allowlisted
+and rechecks current membership/session/MFA. Raw notes remain text, never authority.
+Actual native fixture tests do not establish genuine hosted Auth/operational least
+privilege: installing definer owner and principal provisioner remain trusted, with no
+operational broker, grant or route activation. All hosted/financial/recovery gates persist.
+
 ## Phase 4A · connected boundary inventory, no activation
 
 See [the authoritative integration contract](docs/CONNECTED_CUSTOMER_LIFECYCLE_INTEGRATION.md).

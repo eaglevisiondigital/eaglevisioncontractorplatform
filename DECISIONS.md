@@ -1,5 +1,18 @@
 # Engineering decisions
 
+## October 31 · implement C1–C3 locally; keep operational installation closed
+
+Reuse customer14's immutable private decision ledger rather than create another
+business store. Add the separate [4B forward proposal](docs/CUSTOMER_REQUESTS_PERSISTENCE.md)
+with Unicode-safe explanations, independently committed admission and bound one-shot
+consumer, exact UNKNOWN/historical receipt reconciliation and eligible staff reads.
+Keep v1 records/receipt compatibility, label legacy evidence without inventing custody,
+and preserve original14. Prove persistence with actual native PG17/process-loss and
+actual React→SQL→staff tests, not 3A heap state. Keep SDK command default off and private
+writers out of network transport. Operational ownership/broker/grants/genuine Auth are
+unresolved acceptance gates; no hosted install or automatic4C. Original frozen P1-on13
+approval and separate14/4B approval sequence remain intact. All release restrictions persist.
+
 ## October 31 · finite connected integration, then persisted requests
 
 Complete4A as one authoritative [integration specification](docs/CONNECTED_CUSTOMER_LIFECYCLE_INTEGRATION.md)
