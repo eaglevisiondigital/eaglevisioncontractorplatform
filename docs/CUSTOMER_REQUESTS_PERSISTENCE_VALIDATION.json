@@ -72,5 +72,6 @@
   "hostedActionsPerformed": false,
   "credentialsRetrieved": false,
   "release": "NOT READY / NOT AUTHORIZED",
-  "next": "After recovery/original P1-on13/separate14/separate4B ownership+hash/exact grants+broker+mapping+target approval, one internally operated genuine request -> exact receipt -> eligible staff read. No automatic4C."
+  "next": "After recovery/original P1-on13/separate14/separate4B ownership+hash/exact grants+broker+mapping+target approval, one internally operated genuine request -> exact receipt -> eligible staff read. No automatic4C.",
+  "ciHarnessCorrection": "Initial full native CI exposed two connection-slot failures after 620 passes; new fixture now closes each case connection immediately instead of retaining all until suite teardown. No domain/authorization assertion failure."
 }

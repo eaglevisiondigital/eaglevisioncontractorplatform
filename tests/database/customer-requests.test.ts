@@ -3,7 +3,7 @@ import { spawn } from 'node:child_process';
 import { createInterface } from 'node:readline';
 import { once } from 'node:events';
 import { readFileSync, readdirSync } from 'node:fs';
-import { beforeAll, afterAll, it, expect } from 'vitest';
+import { beforeAll, afterAll, afterEach, it, expect } from 'vitest';
 import { Client } from 'pg';
 import { createTestDatabase, type TestDatabase } from './engine';
 import { blankEstimate } from '../../src/domain/estimating/calculation';
@@ -287,8 +287,13 @@ beforeAll(async () => {
     "create or replace function private.customer_capability(p_name text) returns boolean language sql volatile security definer set search_path='' as $$select true$$",
   );
 }, 30000);
+// Fixture connections belong to one case, including all three-brand browser flows.
+// Release them promptly so the full parallel native suite stays within PG limits.
+afterEach(async () => {
+  await Promise.all(clients.splice(0).map((c) => c.end().catch(() => {})));
+});
 afterAll(async () => {
-  for (const c of clients) await c.end().catch(() => {});
+  await Promise.all(clients.splice(0).map((c) => c.end().catch(() => {})));
   await db.close();
   if (native) {
     const socket = process.env.EV_TEST_PG_SOCKET;
