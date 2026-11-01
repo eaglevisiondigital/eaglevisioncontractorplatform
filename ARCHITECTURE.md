@@ -1,5 +1,18 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Parallel product program · shared contracts, isolated local packages
+
+[Shared contracts](docs/program/SHARED_CONTRACTS.md) inventory existing organization,
+CRM location, estimate/version/calculation, inspection/report/finding, job/workforce,
+ledger, customer broker and communication boundaries. No duplicate engine, property
+store, event bus, public API or schema is introduced. Three isolated branches own
+customer-preview detachment, existing ledger verification and a read-only field
+projection; no shared writer/Auth/migration concurrency. The field App mount requires
+DEV, exact flag and loopback and cannot enable connected dispatch or production.
+Approved customer/back-office navigation/tokens/artwork stay locked. Main integrator
+owns source/feature evidence tooling and dependency/approval records. Separate PRs
+are not integrated simply because local checks pass; no merge or hosted authority.
+
 ## 4B broker · committed admission over the existing gateway
 
 [Server composition](docs/CUSTOMER_BROKER_INTEGRATION.md) reuses actual SDK verification,

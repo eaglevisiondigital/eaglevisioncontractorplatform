@@ -1,5 +1,24 @@
 # Bounded development roadmap
 
+## November 1 · full program, bounded first wave and independent release gate
+
+[Owner program](PRODUCT_PROGRAM_2026.md) now authorizes parallel isolated development;
+[delivery status](PROGRAM_DELIVERY_STATUS.md) assigns A0–A8 ownership/dependencies and
+separate code PRs. First wave: exact feature/source inventory and shared contracts,
+detached safe customer-offer snapshots, existing ledger provenance validation and a
+default-OFF field schedule over actual inspection/maintenance relationships. Existing
+CRM/contracts/timekeeping/profit foundations are reused rather than rebuilt. Review
+these PRs before integration; no merge is authorized. Next bounded assignments are
+paginated CRM selection, exact follow-up schedule handoff and non-network financial
+reconciliation/export contracts. Passport/growth/AI/operational integrations remain
+explicit planned scope, not completed or provider-authorized work.
+
+The independent Phase One path below remains authoritative for hosted acceptance:
+physical recovery and operational custody, original approved P1 on13, separate14,
+exact4B+broker installation/grant/mapping/target/Auth acceptance and provider/Netlify/
+release gates. No local package modifies frozen approvals or waits for hardware
+unless its own operational acceptance depends on it. All launch boundaries remain.
+
 ## October 31 · broker implemented locally; next genuine acceptance gates
 
 [4B broker/security integration](CUSTOMER_BROKER_INTEGRATION.md) supplies the locally

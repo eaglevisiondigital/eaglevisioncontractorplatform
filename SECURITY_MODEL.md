@@ -1,5 +1,19 @@
 # Security model · Phase 2
 
+## November 1 · isolated parallel work does not widen operational authority
+
+The [product-program contracts](docs/program/SHARED_CONTRACTS.md) retain current
+tenant/customer/property/member/source/version checks and UNKNOWN exact-read-only
+semantics. New review candidates harden detached allowlisted customer snapshots and
+exact existing ledger event provenance; an isolated DEV/flag/loopback field view reads
+existing synthetic sources, not an operational assignment or connected access grant.
+Each remains a separate draft branch. Feature/source evidence checks reject private
+paths/symlinks and inferred acceptance labels; anchors/hashes are not execution proof.
+No protected SQL, authorization migration, real Auth, credentials, network mutation,
+provider/message/financial execution, Netlify action, deployment or merge. Historical
+core hosted evidence remains scoped; genuine broker/custody/recovery and release
+acceptance are unchanged. No local prototype or green CI may bypass those gates.
+
 ## 4B broker · scoped local trust boundary, operational NO-GO
 
 [Broker/security evidence](docs/CUSTOMER_BROKER_INTEGRATION.md) now includes actual

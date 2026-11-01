@@ -1,0 +1,1275 @@
+{
+  "schema": "propel-feature-evidence-v1",
+  "sourceCommit": "dc7ed7c2db3cf8ff78a3d6f09098a1b623622874",
+  "execution": "not_authorized",
+  "date": "2026-11-01",
+  "limits": [
+    "Inventory maps existing public source and retained evidence; it is not a fresh full security audit.",
+    "Separate draft PRs for sales, finance and field are not integrated into this source baseline.",
+    "Historical Action B core connected PASS is retained; all new hosted lifecycle acceptance remains blocked."
+  ],
+  "features": [
+    {
+      "id": "SEC-001",
+      "owner": "A0",
+      "capability": "Tenant isolation, RLS, MFA and role authority",
+      "scope": "protected_gate",
+      "design": "Existing implementation and retained design records",
+      "local": "partial",
+      "hosted": "blocked",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "Close exact independent recovery and broker/security acceptance prerequisites without reopening grants.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "core.organizations",
+        "core.organization_members",
+        "private grants",
+        "tenant composite foreign keys"
+      ],
+      "routes": ["/preview", "/internal-release (operator gated)"],
+      "risks": [
+        "723 retained core connected cases do not certify the new customer broker or every module.",
+        "Historical helper/installer TCB, core CREATE/statistics and genuine new lifecycle Auth remain unverified."
+      ],
+      "dependencies": [],
+      "sources": [
+        {
+          "path": "src/lib/operations.ts",
+          "anchor": "export class Operations"
+        },
+        {
+          "path": "SECURITY_MODEL.md",
+          "anchor": "# Security model \u00b7 Phase 2"
+        }
+      ],
+      "tests": [
+        {
+          "path": "tests/database/isolation.test.ts",
+          "anchor": "enables RLS on every application table, including private tables"
+        }
+      ],
+      "records": [
+        {
+          "path": "docs/ACTION_B_CONNECTED_RESULT.md",
+          "anchor": "# Propel \u00b7 Action B connected acceptance result"
+        }
+      ],
+      "ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    },
+    {
+      "id": "SEC-002",
+      "owner": "A0",
+      "capability": "Independent recovery, containment and no replay",
+      "scope": "protected_gate",
+      "design": "Existing implementation and retained design records",
+      "local": "partial",
+      "hosted": "blocked",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "Run only the existing owner-operated physical rehearsal once qualifying hardware is available.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "Frozen P1 operation and four artifacts",
+        "credential-free two-device rehearsal"
+      ],
+      "routes": [],
+      "risks": [
+        "Prior 25 offline passes and completed setup are not physical pairing/primary-loss acceptance.",
+        "Supported encrypted independent hardware, power/network and human supervision remain pending."
+      ],
+      "dependencies": ["SEC-001"],
+      "sources": [
+        {
+          "path": "docs/TWO_COMPUTER_REHEARSAL.md",
+          "anchor": "# Two-Mac synthetic recovery rehearsal"
+        }
+      ],
+      "tests": [
+        {
+          "path": "tests/property-p1-backup.test.ts",
+          "anchor": "never permits a session without positive authenticated backup acknowledgment"
+        }
+      ],
+      "records": [
+        {
+          "path": "docs/TWO_COMPUTER_REHEARSAL_VALIDATION.json",
+          "anchor": "{"
+        },
+        {
+          "path": "docs/PROPERTY_P1_R0_DEVICE_READINESS.md",
+          "anchor": "# P1-R0: independent recovery device readiness"
+        }
+      ],
+      "ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    },
+    {
+      "id": "CRM-001",
+      "owner": "A2",
+      "capability": "Leads, intake, customer and service-location CRM",
+      "scope": "approved",
+      "design": "Existing implementation and retained design records",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "Review paginated customer/location selection without creating duplicate CRM.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "core.customers",
+        "core.service_locations",
+        "core.projects",
+        "core.leads"
+      ],
+      "routes": ["/preview > Customers", "/preview > Leads"],
+      "risks": [
+        "Existing local CRM is implemented; first-page lookup limits and connected lifecycle acceptance need bounded follow-up.",
+        "Public intake remains gated by approved CAPTCHA and infrastructure."
+      ],
+      "dependencies": ["SEC-001"],
+      "sources": [
+        {
+          "path": "src/lib/operations.ts",
+          "anchor": "export class Operations"
+        }
+      ],
+      "tests": [
+        {
+          "path": "tests/operations-preview.test.ts",
+          "anchor": "paginates and filters synthetic CRM records without mixing company workspaces"
+        }
+      ],
+      "records": [
+        {
+          "path": "docs/PHASE2_VALIDATION.md",
+          "anchor": "# Phase 2 validation record and deferred hosted gates"
+        },
+        {
+          "path": "docs/ACTION_B_CONNECTED_RESULT.md",
+          "anchor": "# Propel \u00b7 Action B connected acceptance result"
+        }
+      ],
+      "ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    },
+    {
+      "id": "EST-001",
+      "owner": "A2",
+      "capability": "Canonical estimating, immutable issued versions and revisions",
+      "scope": "approved",
+      "design": "Existing implementation and retained design records",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "Review PR2 frozen-offer projection fix; retain exact request/source/version identity.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "core.estimates",
+        "core.estimate_versions",
+        "canonical integer calculation"
+      ],
+      "routes": ["/preview > Estimates"],
+      "risks": [
+        "Local estimating exists; issued-safe customer scope requires exact immutable source.",
+        "Revision, repair-origin and connected issuance guards stay closed."
+      ],
+      "dependencies": ["CRM-001"],
+      "sources": [
+        {
+          "path": "src/lib/phase3.ts",
+          "anchor": "export class Phase3Repository"
+        },
+        {
+          "path": "src/domain/estimating/calculation.ts",
+          "anchor": "export function calculateEstimate"
+        }
+      ],
+      "tests": [
+        {
+          "path": "tests/estimating.test.ts",
+          "anchor": "rounds unit price before extension and reconciles payment shares"
+        }
+      ],
+      "records": [
+        {
+          "path": "docs/PHASE3_VALIDATION.md",
+          "anchor": "# Phase 3 local validation and activation gates"
+        },
+        {
+          "path": "docs/CUSTOMER_ESTIMATE_REVISIONS.md",
+          "anchor": "# Workstream 3B \u00b7 customer request review and estimate draft revision"
+        }
+      ],
+      "ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    },
+    {
+      "id": "EST-002",
+      "owner": "A5",
+      "capability": "Customer decision, committed admission, durable receipt and eligible staff reader",
+      "scope": "protected_gate",
+      "design": "Existing implementation and retained design records",
+      "local": "partial",
+      "hosted": "blocked",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "After recovery/P1-on13, separately review unchanged14 and exact4B+broker ownership/hash/grants/mapping/target.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "Existing private decision ledger",
+        "customer14 publication",
+        "separate 4B/broker proposals"
+      ],
+      "routes": ["No connected App route; disposable PG17 composition only"],
+      "risks": [
+        "Native process-loss and fixture SDK evidence are not genuine hosted Auth or operational custody.",
+        "UNKNOWN permits exact read only; no replay, rebind, replacement ID or publication bypass."
+      ],
+      "dependencies": ["EST-001", "SEC-002"],
+      "sources": [
+        {
+          "path": "server/customer/broker.ts",
+          "anchor": "export class CustomerRequestBroker"
+        }
+      ],
+      "tests": [
+        {
+          "path": "tests/customer-broker.test.ts",
+          "anchor": "actual SDK getUser plus live session creates only an opaque server proof"
+        }
+      ],
+      "records": [
+        {
+          "path": "docs/CUSTOMER_BROKER_INTEGRATION.md",
+          "anchor": "# Workstream 4B \u00b7 server broker and restricted database integration"
+        },
+        {
+          "path": "docs/CUSTOMER_BROKER_VALIDATION.json",
+          "anchor": "{"
+        }
+      ],
+      "ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    },
+    {
+      "id": "SAL-001",
+      "owner": "A2",
+      "capability": "Contracts, e-sign sandbox and change-order foundation",
+      "scope": "approved",
+      "design": "Existing implementation and retained design records",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "Review cross-module source immutability in PR2; separately specify genuine signing acceptance.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "Immutable estimate scope",
+        "private signature evidence",
+        "job change orders"
+      ],
+      "routes": ["/preview/release (explicit synthetic sandbox)"],
+      "risks": [
+        "Contract/sandbox source already exists; legal execution, provider identity and genuine consent are not accepted.",
+        "Ordinary contracts and real signatures remain disabled."
+      ],
+      "dependencies": ["EST-001"],
+      "sources": [
+        {
+          "path": "server/contracts/signing.ts",
+          "anchor": "export class SignatureSandboxGateway"
+        },
+        {
+          "path": "src/domain/jobs/financials.ts",
+          "anchor": "export interface ChangeOrder"
+        }
+      ],
+      "tests": [
+        {
+          "path": "tests/signature-provider.test.ts",
+          "anchor": "binds sandbox completion to original bytes, signer, consent, account and immutable evidence hashes"
+        }
+      ],
+      "records": [
+        {
+          "path": "docs/PROVIDER_INTEGRATION_READINESS.md",
+          "anchor": "# Release 1.0 provider integration readiness"
+        },
+        {
+          "path": "docs/PHASE3_VALIDATION.md",
+          "anchor": "# Phase 3 local validation and activation gates"
+        }
+      ],
+      "ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    },
+    {
+      "id": "FLD-001",
+      "owner": "A3",
+      "capability": "Inspection plans, visits, maintenance triage and repair readiness",
+      "scope": "approved",
+      "design": "Existing implementation and retained design records",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "Review isolated schedule projection in separate field PR; preserve approved workspace.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "CRM service location",
+        "private inspection plans/visits/reports",
+        "exact maintenance source/CAS",
+        "existing estimate repair origin"
+      ],
+      "routes": ["/preview > Property Operations"],
+      "risks": [
+        "Staff review/scheduling/readiness never prove physical repair or customer authorization.",
+        "2A-2F disposable persistence does not establish operational writer custody."
+      ],
+      "dependencies": ["CRM-001"],
+      "sources": [
+        {
+          "path": "src/lib/property.ts",
+          "anchor": "export class PropertyRepository"
+        }
+      ],
+      "tests": [
+        {
+          "path": "tests/property-operations.test.ts",
+          "anchor": "recurrence stays anchored across month ends and DST without shifting local visit dates"
+        }
+      ],
+      "records": [
+        {
+          "path": "docs/PROPERTY_OPERATIONS_VALIDATION.md",
+          "anchor": "# Property operations and smart procurement \u00b7 local implementation"
+        },
+        {
+          "path": "docs/MAINTENANCE_FOLLOW_UP_VALIDATION.json",
+          "anchor": "{"
+        },
+        {
+          "path": "docs/REPAIR_SCOPE_READINESS_VALIDATION.json",
+          "anchor": "{"
+        }
+      ],
+      "ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    },
+    {
+      "id": "FLD-002",
+      "owner": "A3",
+      "capability": "Schedule viewing, timekeeping, dispatch and offline field work",
+      "scope": "approved",
+      "design": "Existing implementation and retained design records",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "Review the default-OFF read-only visit timeline; define one exact follow-up handoff before any dispatch.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "Existing jobs/assignments/time entries/breaks",
+        "employer week and policy"
+      ],
+      "routes": [
+        "/preview > Workforce",
+        "Proposed isolated /preview/field-scheduling in separate draft PR"
+      ],
+      "risks": [
+        "Existing timekeeping is executable locally; sample job assignment does not retain dispatch.",
+        "Operational crew scheduling, offline conflict custody and proof-of-work remain UNKNOWN."
+      ],
+      "dependencies": ["FLD-001"],
+      "sources": [
+        {
+          "path": "src/lib/phase3.ts",
+          "anchor": "recordTime"
+        },
+        {
+          "path": "src/domain/workforce/payroll.ts",
+          "anchor": "export function preparePayroll"
+        }
+      ],
+      "tests": [
+        {
+          "path": "tests/jobs-workforce.test.ts",
+          "anchor": "rejects overlaps across jobs, including open clocks and breaks"
+        }
+      ],
+      "records": [
+        {
+          "path": "docs/PHASE3_VALIDATION.md",
+          "anchor": "# Phase 3 local validation and activation gates"
+        }
+      ],
+      "ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    },
+    {
+      "id": "FIN-001",
+      "owner": "A4",
+      "capability": "Invoice schedules, tokenized payment and reconciliation foundations",
+      "scope": "approved",
+      "design": "Existing implementation and retained design records",
+      "local": "partial",
+      "hosted": "blocked",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "Review PR3 exact event-to-posting verifier fix and finite NMI acceptance plan.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "Existing internal/sandbox invoice and payment events",
+        "ledger entries",
+        "merchant configuration"
+      ],
+      "routes": ["/preview/release (synthetic only)"],
+      "risks": [
+        "No live charge, invoice, receivable, settlement, payout or provider execution authority.",
+        "NMI merchant/tokenization/consent/custody acceptance and all six billing enhancements remain unaccepted/PROPOSED."
+      ],
+      "dependencies": ["EST-001"],
+      "sources": [
+        {
+          "path": "src/domain/release/types.ts",
+          "anchor": "export function verifyLedger"
+        },
+        {
+          "path": "src/domain/platform.ts",
+          "anchor": "export const paymentCapabilities"
+        }
+      ],
+      "tests": [
+        {
+          "path": "tests/payments-sandbox.test.ts",
+          "anchor": "formats currency exactly without floating-point multiplication"
+        }
+      ],
+      "records": [
+        {
+          "path": "docs/PROVIDER_INTEGRATION_READINESS.md",
+          "anchor": "# Release 1.0 provider integration readiness"
+        },
+        {
+          "path": "docs/BILLING_ENHANCEMENTS_PROPOSED.json",
+          "anchor": "{"
+        }
+      ],
+      "ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    },
+    {
+      "id": "FIN-002",
+      "owner": "A4",
+      "capability": "Job profitability, purchasing and accounting scope",
+      "scope": "approved",
+      "design": "Existing implementation and retained design records",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "Keep existing cost engine; specify accounting export/reconciliation boundaries before adapters.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "Existing job baseline",
+        "expenses/events",
+        "approved labor summary",
+        "purchase matching"
+      ],
+      "routes": ["/preview > Jobs"],
+      "risks": [
+        "Profitability is implemented locally; external accounting and purchase-order lifecycle are not certified.",
+        "Incomplete cost inputs cannot be labeled final; no automatic customer billing."
+      ],
+      "dependencies": ["EST-001"],
+      "sources": [
+        {
+          "path": "src/domain/jobs/financials.ts",
+          "anchor": "export function jobFinancials"
+        }
+      ],
+      "tests": [
+        {
+          "path": "tests/jobs-workforce.test.ts",
+          "anchor": "forecasts include remaining costs and approved labor only once"
+        }
+      ],
+      "records": [
+        {
+          "path": "docs/PHASE3_VALIDATION.md",
+          "anchor": "# Phase 3 local validation and activation gates"
+        }
+      ],
+      "ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    },
+    {
+      "id": "CUS-001",
+      "owner": "A5",
+      "capability": "Branded portal, report history, attention, comparison and search",
+      "scope": "approved",
+      "design": "Existing implementation and retained design records",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "Preserve locked portal; review shared projection changes through exact provenance tests.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "CRM customer/location",
+        "immutable published reports/findings",
+        "allowlisted issued estimate scope"
+      ],
+      "routes": ["/preview/property-portal", "/preview/property-portal-design"],
+      "risks": [
+        "Approved presentation is locked; missing/access-limited history is not complete coverage.",
+        "No connected login, publication, preference authority or inferred repair."
+      ],
+      "dependencies": ["CRM-001", "EST-001"],
+      "sources": [
+        {
+          "path": "src/domain/customer/review.ts",
+          "anchor": "export function projectIssuedReview"
+        }
+      ],
+      "tests": [
+        {
+          "path": "tests/property-attention.test.ts",
+          "anchor": "groups repeated identifiers conservatively, distinguishes observations and recommendations, retains all exact sources"
+        }
+      ],
+      "records": [
+        {
+          "path": "docs/PROPERTY_PORTAL_PHASE_B_VALIDATION.json",
+          "anchor": "{"
+        },
+        {
+          "path": "docs/INSPECTION_HISTORY_SEARCH_VALIDATION.json",
+          "anchor": "{"
+        }
+      ],
+      "ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    },
+    {
+      "id": "CUS-002",
+      "owner": "A5",
+      "capability": "Property Passport, warranty and proof-of-work expansion",
+      "scope": "approved",
+      "design": "Owner-approved product scope; detailed acceptance not yet implemented",
+      "local": "none",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "Specify a single customer-safe service-evidence projection over existing objects; no new property store.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "Reuse existing CRM location, report/version, job and private media contracts"
+      ],
+      "routes": [],
+      "risks": [
+        "Published inspection history is not a complete Property Passport, warranty or verified completion system.",
+        "Media quarantine, consent, access and retention gates remain unmet."
+      ],
+      "dependencies": ["CUS-001", "FLD-001"],
+      "sources": [
+        {
+          "path": "docs/PRODUCT_PROGRAM_2026.md",
+          "anchor": "Property Passport"
+        }
+      ],
+      "tests": [],
+      "records": [
+        {
+          "path": "docs/PRODUCT_PROGRAM_2026.md",
+          "anchor": "# Propel Contractor Suite \u2014 integrated product program"
+        }
+      ],
+      "ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    },
+    {
+      "id": "GRO-001",
+      "owner": "A6",
+      "capability": "Maintenance revenue and recurring-program expansion",
+      "scope": "approved",
+      "design": "Product scope only",
+      "local": "none",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "Define consented program enrollment independently of visit recurrence and financial execution.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "Existing inspection recurrence",
+        "proposed consent/billing linkage"
+      ],
+      "routes": [],
+      "risks": [
+        "Inspection cadence already exists; paid program enrollment/consent/billing is not implemented acceptance.",
+        "Six billing proposals stay PROPOSED; no AR or customer obligations."
+      ],
+      "dependencies": ["FLD-001", "FIN-001"],
+      "sources": [
+        {
+          "path": "docs/PRODUCT_PROGRAM_2026.md",
+          "anchor": "recurring maintenance"
+        }
+      ],
+      "tests": [],
+      "records": [
+        {
+          "path": "docs/BILLING_ENHANCEMENTS_PROPOSED.json",
+          "anchor": "{"
+        }
+      ],
+      "ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    },
+    {
+      "id": "GRO-002",
+      "owner": "A6",
+      "capability": "Reviews, referrals, follow-ups and booking automation",
+      "scope": "approved",
+      "design": "Product scope only",
+      "local": "none",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "Specify bounded consent and manual-review contracts before implementation.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "Reuse CRM and communications preparation; no duplicate lead store"
+      ],
+      "routes": [],
+      "risks": [
+        "No verified automated sending, consent/opt-out provider pipeline or external booking."
+      ],
+      "dependencies": ["CRM-001"],
+      "sources": [
+        {
+          "path": "docs/PRODUCT_PROGRAM_2026.md",
+          "anchor": "followups, reviews, referrals"
+        }
+      ],
+      "tests": [],
+      "records": [
+        {
+          "path": "docs/PRODUCT_PROGRAM_2026.md",
+          "anchor": "# Propel Contractor Suite \u2014 integrated product program"
+        }
+      ],
+      "ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    },
+    {
+      "id": "AI-001",
+      "owner": "A6",
+      "capability": "Voice-to-estimate, Copilot, answering and storm-mode scope",
+      "scope": "approved",
+      "design": "Product scope only",
+      "local": "none",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "Define one bounded human-confirmed draft input with evaluation/privacy criteria; remain default OFF.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "Existing estimate draft and quarantine/extraction contracts"
+      ],
+      "routes": [],
+      "risks": [
+        "Material extraction interfaces do not constitute an accepted voice agent/Copilot.",
+        "No real AI/provider activation, autonomous financial decisions or customer messages."
+      ],
+      "dependencies": ["EST-001"],
+      "sources": [
+        {
+          "path": "docs/PRODUCT_PROGRAM_2026.md",
+          "anchor": "voice-to-estimate"
+        }
+      ],
+      "tests": [],
+      "records": [
+        {
+          "path": "docs/PHASE3A_WORKER.md",
+          "anchor": "# Document worker and provider activation contract"
+        }
+      ],
+      "ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    },
+    {
+      "id": "INT-001",
+      "owner": "A7",
+      "capability": "Supplier, accounting, calendar and telephony interfaces",
+      "scope": "approved",
+      "design": "Existing implementation and retained design records",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "Inventory exact provider interfaces; choose one non-network export/import contract after owner priority.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "Existing supplier connector contracts",
+        "provider-specific webhook envelope",
+        "merchant reference"
+      ],
+      "routes": [],
+      "risks": [
+        "Supplier connectors are disabled interfaces; calendar/phone/accounting operational adapters unverified.",
+        "Contract tests do not authorize calls, credentials, ingestion or provider execution."
+      ],
+      "dependencies": ["CRM-001"],
+      "sources": [
+        {
+          "path": "server/property/supplier-connectors.ts",
+          "anchor": "export const supplierConnectors"
+        }
+      ],
+      "tests": [
+        {
+          "path": "tests/provider-webhooks.test.ts",
+          "anchor": "uses NMI payment nonce dot raw-body, not the unrelated underwriting protocol"
+        }
+      ],
+      "records": [
+        {
+          "path": "docs/PROVIDER_INTEGRATION_READINESS.md",
+          "anchor": "# Release 1.0 provider integration readiness"
+        },
+        {
+          "path": "docs/PROPERTY_OPERATIONS_VALIDATION.md",
+          "anchor": "# Property operations and smart procurement \u00b7 local implementation"
+        }
+      ],
+      "ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    },
+    {
+      "id": "UX-001",
+      "owner": "A8",
+      "capability": "Shared accessible responsive design and approved branding",
+      "scope": "approved",
+      "design": "Existing implementation and retained design records",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "Use documented shared contracts; review responsive screenshots and existing exact-brand regressions.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "CompanyProfile",
+        "existing global/scoped tokens and components"
+      ],
+      "routes": [
+        "/preview",
+        "/preview/property-portal",
+        "/preview/contractor-design"
+      ],
+      "risks": [
+        "Approved customer/back-office layouts and original artwork are locked.",
+        "New isolated schedule preview requires explicit visual integration review before promotion."
+      ],
+      "dependencies": [],
+      "sources": [
+        {
+          "path": "src/domain/brand.ts",
+          "anchor": "export const productBrand"
+        },
+        {
+          "path": "src/styles.css",
+          "anchor": ":root"
+        }
+      ],
+      "tests": [
+        {
+          "path": "tests/browser/branding.spec.ts",
+          "anchor": "approved Propel asset and product identity cover platform surfaces while tenant brands stay independent"
+        }
+      ],
+      "records": [
+        {
+          "path": "docs/BRANDING.md",
+          "anchor": "# Propel Contractor Suite by Eagle Vision"
+        },
+        {
+          "path": "docs/CONTRACTOR_BACK_OFFICE_PHASE_B_VALIDATION.json",
+          "anchor": "{"
+        }
+      ],
+      "ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    },
+    {
+      "id": "OPS-001",
+      "owner": "A0",
+      "capability": "Release, protected Netlify replacement and operational acceptance",
+      "scope": "protected_gate",
+      "design": "Existing implementation and retained design records",
+      "local": "partial",
+      "hosted": "blocked",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "Retain original evidence; request exact hosted scope only after independently proven prerequisites.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "Original frozen archive/config/body",
+        "read-only inventory",
+        "fake-only bounded executor"
+      ],
+      "routes": [],
+      "risks": [
+        "No live mutation adapter, exact execution approval or independent dashboard-protection PASS.",
+        "Physical recovery, operational Auth/custody/provider/release gates remain closed."
+      ],
+      "dependencies": ["SEC-002", "EST-002", "FIN-001"],
+      "sources": [
+        {
+          "path": "server/netlify/read-only-inventory.ts",
+          "anchor": "InventoryEvidence"
+        }
+      ],
+      "tests": [
+        {
+          "path": "tests/netlify-replacement.test.ts",
+          "anchor": "rejects a broadened approval record or an owner-labelled synthetic permit"
+        }
+      ],
+      "records": [
+        {
+          "path": "docs/NETLIFY_REPLACEMENT_EXECUTOR_VALIDATION.json",
+          "anchor": "{"
+        },
+        {
+          "path": "docs/RELEASE_1_0_ACCEPTANCE.md",
+          "anchor": "# Production Release 1.0 acceptance checklist"
+        }
+      ],
+      "ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    },
+    {
+      "id": "PLT-001",
+      "owner": "A1",
+      "capability": "Organization settings, roles, audit and platform administration",
+      "scope": "approved",
+      "design": "Existing implementation and retained design records",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "Use checked organization/membership RPCs; inventory settings/import/export gaps without generic CRUD.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "core.organizations",
+        "core.organization_members",
+        "private platform grants",
+        "audit events"
+      ],
+      "routes": ["/preview > Company settings"],
+      "risks": [
+        "Core retained hosted evidence is partial; platform grants never confer customer data access.",
+        "Subscriptions, observability/export lifecycle require feature-specific acceptance."
+      ],
+      "dependencies": ["SEC-001"],
+      "sources": [
+        {
+          "path": "src/domain/platform.ts",
+          "anchor": "export const modules"
+        },
+        {
+          "path": "src/lib/operations.ts",
+          "anchor": "export class Operations"
+        }
+      ],
+      "tests": [
+        {
+          "path": "tests/database/isolation.test.ts",
+          "anchor": "enables RLS on every application table, including private tables"
+        }
+      ],
+      "records": [
+        {
+          "path": "docs/PHASE2_VALIDATION.md",
+          "anchor": "# Phase 2 validation record and deferred hosted gates"
+        },
+        {
+          "path": "docs/ACTION_B_CONNECTED_RESULT.md",
+          "anchor": "# Propel \u00b7 Action B connected acceptance result"
+        }
+      ],
+      "ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    },
+    {
+      "id": "DOC-001",
+      "owner": "A1",
+      "capability": "Private documents and quarantine controls",
+      "scope": "approved",
+      "design": "Existing implementation and retained design records",
+      "local": "partial",
+      "hosted": "blocked",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "Retain quarantine/default-off controls; separately review actual worker/scanner/provider acceptance.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "Private Storage objects",
+        "quarantine jobs",
+        "durable worker control"
+      ],
+      "routes": [],
+      "risks": [
+        "Local worker/scanner contracts are not a provisioned scanner, isolated workload or accepted real Storage flow.",
+        "Uploads/signed issuance and ingestion503 remain blocked."
+      ],
+      "dependencies": ["SEC-001"],
+      "sources": [
+        {
+          "path": "server/materials/pipeline.ts",
+          "anchor": "export function validateEnvelope"
+        }
+      ],
+      "tests": [
+        {
+          "path": "tests/material-worker.test.ts",
+          "anchor": "scanner gateway sends bounded raw bytes and accepts only authenticated contract evidence"
+        }
+      ],
+      "records": [
+        {
+          "path": "docs/PHASE3A_VALIDATION.md",
+          "anchor": "# Phase 3A local verification record"
+        }
+      ],
+      "ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    },
+    {
+      "id": "MAT-001",
+      "owner": "A7",
+      "capability": "Smart Material Import and reviewed customer-safe material lines",
+      "scope": "approved",
+      "design": "Existing implementation and retained design records",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "Reuse reviewed import engine and exact line provenance; do not add a parallel product/price system.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "Existing source documents",
+        "review lines",
+        "estimate input and import provenance"
+      ],
+      "routes": ["/preview > Smart Material Import"],
+      "risks": [
+        "Synthetic import/review is executable; real ingestion/provider acceptance remains blocked.",
+        "Supplier prices and internal margins never enter customer scope."
+      ],
+      "dependencies": ["EST-001", "DOC-001"],
+      "sources": [
+        {
+          "path": "src/domain/materials/import.ts",
+          "anchor": "export function customerMaterialLine"
+        }
+      ],
+      "tests": [
+        {
+          "path": "tests/materials.test.ts",
+          "anchor": "retains multi-supplier documents, literal costs and source references"
+        }
+      ],
+      "records": [
+        {
+          "path": "docs/MATERIAL_IMPORT.md",
+          "anchor": "# Smart Material Import \u00b7 implementation and activation boundary"
+        },
+        {
+          "path": "docs/PHASE3_VALIDATION.md",
+          "anchor": "# Phase 3 local validation and activation gates"
+        }
+      ],
+      "ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    },
+    {
+      "id": "JOB-001",
+      "owner": "A3",
+      "capability": "Immutable job baselines, costs and approved change tracking",
+      "scope": "approved",
+      "design": "Existing implementation and retained design records",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "Preserve original baseline and cost engine while specifying exact future work-order handoffs.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "Existing jobs",
+        "immutable job baseline",
+        "expense events/change orders"
+      ],
+      "routes": ["/preview > Jobs"],
+      "risks": [
+        "Job baseline is local/retained-core evidence, not customer authorization or dispatch.",
+        "Locked costs require append-only corrections."
+      ],
+      "dependencies": ["EST-001"],
+      "sources": [
+        {
+          "path": "src/domain/jobs/financials.ts",
+          "anchor": "export function baselineFromEstimate"
+        }
+      ],
+      "tests": [
+        {
+          "path": "tests/jobs-workforce.test.ts",
+          "anchor": "baseline retains original selected estimate revenue and material/labor cost"
+        }
+      ],
+      "records": [
+        {
+          "path": "docs/PHASE3_VALIDATION.md",
+          "anchor": "# Phase 3 local validation and activation gates"
+        }
+      ],
+      "ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    },
+    {
+      "id": "WRK-001",
+      "owner": "A3",
+      "capability": "Workforce, overtime and payroll preparation",
+      "scope": "approved",
+      "design": "Existing implementation and retained design records",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "Preserve existing engine; define actual assignment/availability interfaces before dispatch.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "Time entries/breaks",
+        "worker rates",
+        "payroll preparation records"
+      ],
+      "routes": ["/preview > Workforce"],
+      "risks": [
+        "Approved preparation is not legal classification, statutory compliance or payroll disbursement.",
+        "Private rates/deductions excluded from field/customer views."
+      ],
+      "dependencies": ["JOB-001"],
+      "sources": [
+        {
+          "path": "src/domain/workforce/payroll.ts",
+          "anchor": "export function preparePayroll"
+        }
+      ],
+      "tests": [
+        {
+          "path": "tests/jobs-workforce.test.ts",
+          "anchor": "combines overtime across multiple jobs and overhead in one employer week"
+        }
+      ],
+      "records": [
+        {
+          "path": "docs/PHASE3_VALIDATION.md",
+          "anchor": "# Phase 3 local validation and activation gates"
+        }
+      ],
+      "ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    },
+    {
+      "id": "COM-001",
+      "owner": "A2",
+      "capability": "Verified sender preparation, escaped templates and internal sinks",
+      "scope": "approved",
+      "design": "Existing implementation and retained design records",
+      "local": "partial",
+      "hosted": "blocked",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "Retain exact scope/hash/source and separate explicit delivery authorization.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "Existing communication outbox/preparation",
+        "verified sender evidence",
+        "internal sink"
+      ],
+      "routes": ["/preview/release (internal sink only)"],
+      "risks": [
+        "Prepared content is not sent/delivered evidence or a live customer URL.",
+        "No credential loader, provider execution, real recipient resolution or consent inferred."
+      ],
+      "dependencies": ["EST-001"],
+      "sources": [
+        {
+          "path": "server/communications/preparation.ts",
+          "anchor": "export async function prepareTenantNotification"
+        }
+      ],
+      "tests": [
+        {
+          "path": "tests/communications-preparation.test.ts",
+          "anchor": "prepares tenant-branded escaped HTML and text but cannot send an email"
+        }
+      ],
+      "records": [
+        {
+          "path": "docs/PROVIDER_INTEGRATION_READINESS.md",
+          "anchor": "# Release 1.0 provider integration readiness"
+        }
+      ],
+      "ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    },
+    {
+      "id": "QA-001",
+      "owner": "A8",
+      "capability": "Feature evidence, source ownership inventory and release-label checks",
+      "scope": "approved",
+      "design": "Existing implementation and retained design records",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
+      "next": "Run features:check in normal CI; inspect exact branch run and retain honest unknown gaps.",
+      "date": "2026-11-01",
+      "dataObjects": [
+        "Read-only public source hashes",
+        "stable feature IDs and evidence references"
+      ],
+      "routes": [],
+      "risks": [
+        "Source/anchor presence does not prove execution, test success, genuine Auth or release.",
+        "Cross-worktree changes remain separate draft PRs; no automatic integration or deployment."
+      ],
+      "dependencies": ["UX-001"],
+      "sources": [
+        {
+          "path": "scripts/feature-evidence.mjs",
+          "anchor": "export function validateFeatureEvidence"
+        }
+      ],
+      "tests": [
+        {
+          "path": "tests/program-feature-evidence.test.ts",
+          "anchor": "validates exact citations without upgrading local evidence into CI, hosted or release acceptance"
+        }
+      ],
+      "records": [
+        {
+          "path": "docs/program/SHARED_CONTRACTS.md",
+          "anchor": "# Shared contracts and integration ownership"
+        }
+      ],
+      "ci": {
+        "state": "unknown"
+      },
+      "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
+    }
+  ]
+}
