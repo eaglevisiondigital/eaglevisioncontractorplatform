@@ -1,5 +1,18 @@
 # Bounded development roadmap
 
+## November 1 · cycle-two candidates delivered independently
+
+CRM paged selection, exact maintenance-to-schedule handoff, unwired financial
+reconciliation/export and existing-source Property Passport foundations now have
+separate draft PRs. See [delivery register](PROGRAM_DELIVERY_STATUS.md) for exact
+parents, ownership, source-based tests, independent combined review and normal CI.
+None is merged or silently promoted. Shared design contracts preserve locked UIs.
+Next: owner review/integration sequencing of these bounded candidates; operational
+finance/accountant acceptance, durable field custody/dispatch and Passport consumer/
+evidence policy remain separate. Do not expand synthetic customer transactions or
+activate providers. Physical recovery/P1-on13/separate14/exact4B+broker and all
+financial/Auth/Netlify/production gates remain independent and unchanged.
+
 ## November 1 · full program, bounded first wave and independent release gate
 
 [Owner program](PRODUCT_PROGRAM_2026.md) now authorizes parallel isolated development;

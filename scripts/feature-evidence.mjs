@@ -145,6 +145,49 @@ function strings(value, label, nonempty = true) {
   )
     fail(`Invalid ${label}`);
 }
+/** Existing approved design source only; this never changes CSS or runtime capabilities. */
+export function validateDesignContract(root, contract) {
+  if (
+    !contract ||
+    contract.schema !== 'propel-design-contract-v1' ||
+    contract.approval !== 'locked_existing_designs' ||
+    !/^[a-f0-9]{40}$/.test(contract.baselineCommit) ||
+    !Array.isArray(contract.locks) ||
+    !contract.locks.length ||
+    !Array.isArray(contract.bindings) ||
+    !contract.bindings.length
+  )
+    fail('Locked design contract required');
+  const paths = new Set(),
+    ids = new Set();
+  for (const lock of contract.locks) {
+    if (
+      !lock ||
+      Object.keys(lock).sort().join(',') !== 'path,sha256' ||
+      !/^[a-f0-9]{64}$/.test(lock.sha256) ||
+      paths.has(lock.path)
+    )
+      fail('Unique exact design lock required');
+    paths.add(lock.path);
+    if (sha(readFileSync(safeFile(root, lock.path))) !== lock.sha256)
+      fail(`Approved design source changed: ${lock.path}`);
+  }
+  for (const binding of contract.bindings) {
+    if (
+      !binding ||
+      !/^[a-z][a-z0-9-]+$/.test(binding.id) ||
+      ids.has(binding.id)
+    )
+      fail('Unique design binding required');
+    ids.add(binding.id);
+    evidence(root, binding.source);
+  }
+  return {
+    lockedFiles: paths.size,
+    sourceBindings: ids.size,
+    runtimeAcceptance: 'NOT_INFERRED',
+  };
+}
 /** Validates citations and declared limits; file presence NEVER proves test/hosted acceptance. */
 export function validateFeatureEvidence(root, manifest) {
   if (
@@ -379,14 +422,22 @@ export function runFeatureEvidence(root, json = false) {
   );
   const validation = validateFeatureEvidence(root, manifest),
     inventory = inventorySources(root);
-  if (json) return JSON.stringify({ validation, inventory }, null, 2);
+  if (manifest.designContract !== 'docs/program/DESIGN_SYSTEM_CONTRACT.json')
+    fail('Exact shared design contract path required');
+  const design = validateDesignContract(
+    root,
+    JSON.parse(readFileSync(safeFile(root, manifest.designContract), 'utf8')),
+  );
+  if (design.lockedFiles !== 5 || design.sourceBindings !== 13)
+    fail('Complete project design locks and bindings required');
+  if (json) return JSON.stringify({ validation, inventory, design }, null, 2);
   return `Feature evidence: ${validation.featureCount} records; ${inventory.fileCount} source files inventoried.\n${Object.entries(
     inventory.counts,
   )
     .map(([k, v]) => `${k}: ${v}`)
     .join(
       ' · ',
-    )}\nSource citations validated; tests/CI/hosted acceptance are not inferred. Execution NOT AUTHORIZED.\n`;
+    )}\n${design ? `Approved design: ${design.lockedFiles} exact files; ${design.sourceBindings} source bindings.\n` : ''}Source citations validated; tests/CI/hosted acceptance are not inferred. Execution NOT AUTHORIZED.\n`;
 }
 if (
   process.argv[1] &&

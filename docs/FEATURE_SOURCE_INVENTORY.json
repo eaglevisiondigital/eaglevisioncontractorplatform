@@ -1,12 +1,12 @@
 {
   "schema": "propel-public-source-inventory-v1",
   "date": "2026-11-01",
-  "baselineCommit": "dc7ed7c2db3cf8ff78a3d6f09098a1b623622874",
-  "package": "Coordination candidate over the exact baseline; new QA tooling included, separate agent code excluded.",
+  "baselineCommit": "e44d668fe8bfd262be126020a0c1be9fa110046b",
+  "package": "Cycle-two coordination candidate over exact PR5; design/check tooling included, separate parent/child packages excluded.",
   "limits": [
     "Path/hash/primary-owner inventory of declared public roots and configuration only; not a line-by-line security certification.",
     "Private/hidden trees, symlinks, dependencies, build output and browser artifacts excluded.",
-    "A2/A3/A4 package branches remain separate and are not represented as integrated source.",
+    "PR2–PR4 and cycle-two PR6–PR9 remain separate; not represented as integrated source.",
     "Per-file SHA-256 binds this snapshot; rerun the read-only tool for current source."
   ],
   "roots": [
@@ -52,7 +52,7 @@
     ".yml",
     ".zip"
   ],
-  "fileCount": 401,
+  "fileCount": 402,
   "counts": {
     "A0": 67,
     "A1": 71,
@@ -62,7 +62,7 @@
     "A5": 79,
     "A6": 0,
     "A7": 23,
-    "A8": 27
+    "A8": 28
   },
   "files": [
     {
@@ -1244,14 +1244,14 @@
     {
       "path": "scripts/feature-evidence.d.mts",
       "owner": "A8",
-      "bytes": 1040,
-      "sha256": "43e41da89647345ee5f79813c418447a69a1c3406e33c8d51254d438de93c145"
+      "bytes": 1211,
+      "sha256": "8d523192d66d450e5ecb24b206c0c4bbcb220c87e1f86020cfb9cf9308e6be70"
     },
     {
       "path": "scripts/feature-evidence.mjs",
       "owner": "A8",
-      "bytes": 12193,
-      "sha256": "e37286ce053ce2ac08fd08fa3aa2bc018befdba8cee6d65531e77a816f73226f"
+      "bytes": 14078,
+      "sha256": "778269b213d3970858c044919b17fe0fe18f85b7ac00f5e5e6c51cbdab5b6d47"
     },
     {
       "path": "scripts/generate-db-types.mjs",
@@ -1800,6 +1800,12 @@
       "sha256": "f280f884c88cc140581eebc6efaa35e6fb6ae833121f7fb8bdc576fede14d95e"
     },
     {
+      "path": "tests/design-system-contract.test.ts",
+      "owner": "A8",
+      "bytes": 3463,
+      "sha256": "5fea2c85c4fdf01f5a7c7d27c90d3a8c5857e19eb1c9d46ef9a32a6b93763e99"
+    },
+    {
       "path": "tests/domain.test.ts",
       "owner": "A1",
       "bytes": 662,
@@ -2018,8 +2024,8 @@
     {
       "path": "tests/program-feature-evidence.test.ts",
       "owner": "A8",
-      "bytes": 8606,
-      "sha256": "15784eb48280ffeae497d3a6911616367b125944d519578e024c88b63f0413c7"
+      "bytes": 10371,
+      "sha256": "ca9b9a8129d42fe1413fd742f845f38cc5e336fae26498a5358d70811885da40"
     },
     {
       "path": "tests/property-acceptance-journal.test.ts",

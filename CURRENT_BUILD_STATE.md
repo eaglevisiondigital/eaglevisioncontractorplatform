@@ -1,5 +1,29 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: coordinated cycle two · November 1
+
+Owner authorized continuing four independent local packages while preserving the
+stacked PR structure. PR#5 Foundation/compatibility are now independently confirmed
+PASS at `e44d668`: 1632 application/661 native/234 browser cases, with321 native-only
+skips in the application job. No genuine failure or validation weakening occurred.
+[Master register](docs/PROGRAM_DELIVERY_STATUS.md) distinguishes active agents,
+completed assignments and exact branch parents. CRM pagination, exact maintenance-to-schedule
+handoff, offline finance reconciliation/export and existing-source Passport/Proof-of-
+Work foundations are separately owned candidates; no merge or operational promotion.
+
+The [shared design specification](docs/program/DESIGN_SYSTEM_SPEC.md) now documents
+actual component/token/state/responsive contracts. Five locked CSS/artwork files and
+13 source bindings are checked through the existing offline evidence tool; no locked
+UI or global style changes. Functional children have source-based tests and separate
+default-OFF/unwired guards where unfinished. Independent combined review covers types,
+tenant/customer/property isolation, ownership, accessibility, compatibility and exact
+protected integrity. See final PR/report evidence before calling any candidate ready.
+Four delivered candidates are draft PRs 6–9; combined 185 focused cases and 15 actual responsive browser cases pass. Independent review closed finance/Passport enum leakage and a design-contract omission bypass before delivery. Main and four worktrees retain 102 exact protected paths and five private frozen bindings.
+Original P1 recovery, NMI, hosted Auth, all 13/pending 14/original 4B/four artifacts,
+Netlify/executor, approvals,2A–2F and six PROPOSED billing enhancements stay unchanged.
+No hosted writes, credentials, payments/provider/messages, deployment or merge.
+Release 1.0 remains NOT READY / NOT AUTHORIZED.
+
 ## Latest: parallel product program initialized · November 1
 
 Owner confirmed the two scope documents at remote `dc7ed7c2`; they were fetched/read
@@ -18,10 +42,10 @@ is preserved; new genuine customer lifecycle/operational evidence remains blocke
 See exact branch CI links and focused results in delivery status. No unnecessary
 manual recovery/Netlify baseline rerun. The broader owner program supersedes older
 stop-expansion notes only for unrelated isolated local engineering; original broker,
-recovery/P1-on13/separate14/4B authority and all release gates stay closed. No hosted
+recovery/P1-on 13/separate 14/4B authority and all release gates stay closed. No hosted
 writes, credentials, financial/provider/messages, deployment or merge. All protected
 artifacts/SQL/approvals/locked UIs and six PROPOSED billing enhancements unchanged.
-Release1.0 remains NOT READY / NOT AUTHORIZED.
+Release 1.0 remains NOT READY / NOT AUTHORIZED.
 
 ## Latest: 4B broker/security integration · October 31
 
@@ -30,18 +54,18 @@ Owner authorized local broker engineering while independent hardware is unavaila
 gateway/decision/receipt/staff contracts. Server-derived source/request identity and
 separate committed admission precede the original issuer/one-shot consumer. Four
 restricted dedicated LOGINs and three actual NOLOGIN owners are exercised in native
-PG17; action-time catalog/session/column checks fail closed.39 new native and150
+PG17; action-time catalog/session/column checks fail closed.39 new native and 150
 focused application cases pass; prior52 native4B/9 actual browser flows also pass
 after the shared gateway refactor. See validation for final static/browser evidence.
 No connected route/factory/credential loader or capability activation is added.
 Historical privileged helpers/installing owner, core CREATE/statistics, genuine Auth,
 dedicated operational custody and external pre-admission restore protection remain
-unverified; operationalReady stays false. Original4B/14/all13/P1/four/Netlify/locked
+unverified; operationalReady stays false. Original4B/14/all 13/P1/four/Netlify/locked
 UIs/approvals/2A–2F/billing remain unchanged. Physical recovery is still blocked,
 independently of this local work. Next: exact internally authenticated acceptance
-only after recovery/original approved P1-on13/separate14/4B+broker ownership/hash/
+only after recovery/original approved P1-on 13/separate 14/4B+broker ownership/hash/
 grants/mappings/target review and authorization. No4C expansion or hosted action.
-Release1.0 NOT READY / NOT AUTHORIZED. Older stop-expansion notes below describe
+Release 1.0 NOT READY / NOT AUTHORIZED. Older stop-expansion notes below describe
 their checkpoint; this local broker continuation has separate owner direction.
 
 ## Latest: P1 physical recovery prerequisite · October 31
@@ -61,7 +85,7 @@ reviewed operational custody/foreground harness and separately authorized genuin
 hosted recovery verification precede fresh P1 preflight under its existing approval.
 Then separately review customer14,4B ownership/hash, exact grants/mappings/target and
 internal acceptance. No credentials, Auth, hosted writes, deployment or merge.
-Release1.0 remains NOT READY / NOT AUTHORIZED; draftPR#1 preserved.
+Release 1.0 remains NOT READY / NOT AUTHORIZED; draftPR#1 preserved.
 
 ## Latest: Workstream 4B · persisted requests and staff reader · October 31
 
@@ -75,7 +99,7 @@ React browser tests; no 3A state substitutes for persistence. Synthetic identity
 are not genuine hosted Auth. Trusted owner/broker/provisioner/target/grants remain
 operational gates; no connected route or network mutator is activated. See validation.
 Next only the smallest separately approved genuine internal acceptance after recovery,
-original P1-on13, separate14 and separate4B ownership/hash/grant/mapping review. No4C
+original P1-on 13, separate 14 and separate4B ownership/hash/grant/mapping review. No4C
 expansion. All13/customer14/frozen P1/four artifacts/approvals/locked UIs/Netlify/2A–2F/
 billing/financial/communication/recovery/deploy/merge gates persist. NOT READY / NOT AUTHORIZED.
 
@@ -90,8 +114,8 @@ expired-access evidence stays UNKNOWN; no write/retry/route/storage is added.
 Customer14 remains two-choice, default-deny and unapplied. Next implement 4B persisted
 review/change requests, exact status and staff read queue, with a separately reviewed
 forward proposal after fourteen; no extra synthetic/planning layer. No hosted state
-refreshed or acceptance promoted. See validation for focused checks. Original P1-on13,
-separate14, all frozen artifacts/approvals, locked UIs and Netlify/recovery/maintenance/
+refreshed or acceptance promoted. See validation for focused checks. Original P1-on 13,
+separate 14, all frozen artifacts/approvals, locked UIs and Netlify/recovery/maintenance/
 financial/provider/communication/deploy/merge restrictions persist. NOT READY / NOT AUTHORIZED.
 
 ## Latest: Workstream 3E · local revised-estimate customer loop · October 30
@@ -124,7 +148,7 @@ and issued projection remain unchanged. See docs/REVISED_ESTIMATE_ISSUANCE_READI
 and validation:253 focused application/60 unique browser cases pass with all3 brands/
 viewports and zero axe/overflow findings. Local memory only, not genuine Auth or operational approval. All13/
 customer14/frozen P1/four artifacts/approvals/locked UIs/Netlify/2A–2F/billing/recovery/
-financial restrictions persist. Release1.0 NOT READY / NOT AUTHORIZED. Proposed3E:
+financial restrictions persist. Release 1.0 NOT READY / NOT AUTHORIZED. Proposed3E:
 separately reviewed local revised-issuance/customer-return loop, not started.
 
 ## Latest: Workstream 3C · saved comparison and immutable packet · October 30
@@ -140,7 +164,7 @@ memory only, no genuine Auth/durability. See docs/CUSTOMER_REVISION_REVIEW_PACKE
 and validation:203 focused application/93 unique browser cases pass, including all3
 brands/viewports and zero axe/overflow findings. All13/customer14/frozen P1/four
 artifacts/approvals/Netlify/2A–2F/
-billing/recovery/financial restrictions persist. Release1.0 NOT READY / NOT AUTHORIZED.
+billing/recovery/financial restrictions persist. Release 1.0 NOT READY / NOT AUTHORIZED.
 Next proposed3D: separately controlled local issuance/delivery preparation, not activation.
 
 ## Latest: Workstream 3B · actual request to private draft · October 30
@@ -156,7 +180,7 @@ staff data never enter customer projections. Reload/new tab clears this syntheti
 heap; no durable/genuine Auth claim. See docs/CUSTOMER_ESTIMATE_REVISIONS.md and
 validation:178 focused application/57 unique browser cases pass across3 viewports.
 All13/customer14/P1/four artifacts/approvals/locked UIs/recovery/Netlify unchanged.
-No hosted/financial/sending/deploy/merge; Release1.0 NOT READY / NOT AUTHORIZED.
+No hosted/financial/sending/deploy/merge; Release 1.0 NOT READY / NOT AUTHORIZED.
 Next proposed3C: local exact revision review/customer-safe difference packet only.
 
 ## Latest: Netlify replacement executor · offline only · October 30
@@ -171,9 +195,9 @@ See docs/NETLIFY_REPLACEMENT_EXECUTOR.md and validation. Original ca0892a CI gre
 no successful check restarted. The accepted strategy is preparation, not approval.
 Independent dashboard/current complete preflight and operational adapter/supervision
 evidence remain missing;NO-GO for requesting final hosted execution authorization.
-Original review contract,28c7d5e archive/all14/body,all13/customer14/frozen P1/four
+Original review contract,28c7d5e archive/all14/body,all 13/customer14/frozen P1/four
 artifacts/approvals/locked UIs and financial/recovery/Netlify gates remain intact.
-No create/upload/window/credentials/hosted Auth/DB/publication/merge. Release1.0
+No create/upload/window/credentials/hosted Auth/DB/publication/merge. Release 1.0
 NOT READY / NOT AUTHORIZED;PR#1 remains draft. No application rebuild for this work.
 
 ## Latest: Netlify replacement draft · exact review only · October 30
@@ -189,8 +213,8 @@ Fresh read confirms original uploading/unpublished. Connector reports all-deploy
 team login;dashboard blank,so independent protection/primary/inventories/environment
 refresh plus reviewed executor/offline stop tests remain pre-execution gates.
 REVIEW ONLY / NOT AUTHORIZED;zero hosted writes/uploads/messages. Original approvals,
-all13/customer14/frozen P1/four artifacts/locked UIs/financial/recovery gates persist.
-Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft. No replacement created or deployed.
+all 13/customer14/frozen P1/four artifacts/locked UIs/financial/recovery gates persist.
+Release 1.0 NOT READY / NOT AUTHORIZED;PR#1 draft. No replacement created or deployed.
 
 ## Latest: Workstream 3A customer change requests · October 30
 
@@ -203,9 +227,9 @@ replays. Keyed context/form lifetimes and model epoch checks prevent stale succe
 Source/privacy/expiry/immutable-version and desktop/tablet/mobile evidence is in
 docs/CUSTOMER_ESTIMATE_CHANGE_REQUESTS.md and validation. Phase A, legacy customer
 preview, approved layout/artwork and back office remain; connected contracts/routes,
-all13/customer14/frozen P1/approvals/2F/billing/recovery/financial/Netlify gates persist.
+all 13/customer14/frozen P1/approvals/2F/billing/recovery/financial/Netlify gates persist.
 Next proposed3B: local staff change-request review and controlled existing-engine
-revision preparation. No hosted/deploy/merge; Release1.0 NOT READY / NOT AUTHORIZED.
+revision preparation. No hosted/deploy/merge; Release 1.0 NOT READY / NOT AUTHORIZED.
 
 ## Latest: Workstream 2F integration decision and business handoff · October 29
 
@@ -251,10 +275,10 @@ trusted disposable boundary, operational NO-GO: raw exact-capability SQL bypasse
 caller custody; standalone writer inversion produces40P01; helper/provisioner trust
 and genuine Auth/encrypted custody/transport/full writer integration remain gaps.
 See docs/MAINTENANCE_SECURITY_REVIEW.md and findings/validation/register.206 protected
-paths/four P1 hashes unchanged; all13/pending customer/locked UIs/approvals/recovery/
+paths/four P1 hashes unchanged; all 13/pending customer/locked UIs/approvals/recovery/
 financial/Netlify boundaries preserved. No operational migration/service/UI or hosted
 action/deploy/merge. Proposed2E is separately scoped one-shot command-authority and
-writer-participation contract preparation. Release1.0 NOT READY / NOT AUTHORIZED.
+writer-participation contract preparation. Release 1.0 NOT READY / NOT AUTHORIZED.
 
 ## Latest: Workstream 2C restricted service and caller custody · October 29
 
@@ -271,7 +295,7 @@ not genuine Auth/MFA or universally integrated locking. See
 MAINTENANCE_COMMAND_CUSTODY.md and approval register. Proposed2D is independent local
 security/adversarial integration review under separate scope. All13 SQL/pending
 customer/frozen P1/approvals/recovery/financial/Netlify gates preserved; no hosted,
-production/deploy/merge. Release1.0 NOT READY / NOT AUTHORIZED.
+production/deploy/merge. Release 1.0 NOT READY / NOT AUTHORIZED.
 
 ## Latest: Workstream 2B test-only durable repair/readiness · October 29
 
@@ -313,7 +337,7 @@ deployment or merge. Release 1.0 NOT READY / NOT AUTHORIZED. Next local package 
 Owner approved Phase A and Package 1 at07f3e6b. The exact approved property
 presentation is now integrated into /preview > Property Operations, using the
 existing App session/repositories and complete original module navigation. Other
-modules retain their original shell; all13 contractor entries remain accessible,
+modules retain their original shell; all 13 contractor entries remain accessible,
 with compact navigation on mobile. The separate /preview/contractor-design remains
 an approved reference. No automatic example preparation or business/repository fork.
 Exact card-grid/reference and locked-portal pixel comparisons pass; source/triage/
@@ -325,7 +349,7 @@ docs/CONTRACTOR_BACK_OFFICE_PHASE_B.md and its validation record.
 Earlier Phase A approval holds below are historical and superseded for this scope.
 No further design approval is needed. All13 SQL/pending customer/frozen P1/approvals,
 financial/connected/recovery/Netlify gates remain. No hosted action, deployment or
-merge. Release1.0 remains NOT READY / NOT AUTHORIZED.
+merge. Release 1.0 remains NOT READY / NOT AUTHORIZED.
 
 ## Latest: contractor Phase A UI polish · Package 1 · October 29
 
@@ -341,7 +365,7 @@ three viewports, zero Axe/overflow in exercised states and exact original/custom
 pixel isolation pass.165 protected paths/four frozen P1 artifacts remain unchanged.
 Real before/revised screenshots and a nine-stream bounded roadmap are available.
 FINAL VISUAL APPROVAL / PHASE B REPLACEMENT STILL PENDING. No hosted/schema/provider/
-financial/Netlify/recovery action or merge. Release1.0 NOT READY / NOT AUTHORIZED.
+financial/Netlify/recovery action or merge. Release 1.0 NOT READY / NOT AUTHORIZED.
 
 ## Latest: premium contractor concept · Phase A visual review · October29
 
@@ -358,7 +382,7 @@ a tablet transient-hover pixel comparison; neutral pointer/focus/scroll captures
 retain exact equality and diagnostic PNGs without portal/style changes. Real screenshot matrix and owner checklist
 prepared; VISUAL APPROVAL PENDING, NO WORKSPACE REPLACEMENT. No business/schema/hosted/
 Auth/financial/provider/deployment/merge. Recovery/Netlify/P1/customer gates persist;
-Release1.0 NOT READY / NOT AUTHORIZED.
+Release 1.0 NOT READY / NOT AUTHORIZED.
 
 ## Latest: repair scope readiness & contractor review · October29 · local only
 
@@ -374,9 +398,9 @@ unique browser cases pass; zero Axe/overflow in exercised states, all three bran
 and viewports.134 protected tracked paths and four frozen artifacts unchanged.
 [CONTRACTOR_BACK_OFFICE_REVIEW.md](docs/CONTRACTOR_BACK_OFFICE_REVIEW.md) prepares the
 requested owner walkthrough before more feature expansion; visual approval pending.
-No schema/hosted/Auth/financial/provider/deployment/merge. Approved portal/all13 SQL/
+No schema/hosted/Auth/financial/provider/deployment/merge. Approved portal/all 13 SQL/
 pending customer/P1 approvals/recovery/Netlify gates persist; session-only evidence.
-Release1.0 remains NOT READY / NOT AUTHORIZED.
+Release 1.0 remains NOT READY / NOT AUTHORIZED.
 
 ## Latest: exact maintenance finding → repair draft · October28 · local only
 
@@ -389,9 +413,9 @@ repair states; final delta reruns are not additive. Current
 membership/CRM and maintenance/plan CAS precede commit; duplicates never append,
 uncertain attempts hold for explicit read-only reconciliation. Customer/property/
 source-line/version binding and repair issuance/duplication guards preserve baselines.
-Customer premium design/artwork, all13 SQL/pending customer/frozen P1/approval,
+Customer premium design/artwork, all 13 SQL/pending customer/frozen P1/approval,
 connected/financial/provider/recovery/Netlify gates persist. No hosted/credential/Auth,
-activation, deployment or merge. Release1.0 NOT READY / NOT AUTHORIZED.
+activation, deployment or merge. Release 1.0 NOT READY / NOT AUTHORIZED.
 
 ## Latest: contractor Maintenance & Follow-Up Center · October28 · local only
 
@@ -407,7 +431,7 @@ repository snapshot. No inferred repairs, job/debt creation or dispatch.
 cases also pass without double counting. Locked customer portal/artwork and129
 protected paths unchanged. All13 SQL/pending customer/frozen P1/approval and closed
 connected/financial/provider/recovery/Netlify gates persist. No hosted/Auth/credential/
-production action, deployment or merge. Release1.0 NOT READY / NOT AUTHORIZED.
+production action, deployment or merge. Release 1.0 NOT READY / NOT AUTHORIZED.
 
 ## Latest: customer inspection history search · October28 · local synthetic only
 
@@ -419,7 +443,7 @@ property boundary. Saved filters survive source navigation; scope changes clear 
 Approved design/logo and retained Phase A remain unchanged.74 focused application/
 60 unique browser cases pass; six final search delta cases also pass, not additive.
 All13 SQL/pending customer/frozen P1/recovery/Netlify/financial gates remain unchanged.
-No hosted/Auth/credential/database/provider/deployment/merge action. Release1.0
+No hosted/Auth/credential/database/provider/deployment/merge action. Release 1.0
 NOT READY / NOT AUTHORIZED; actual authenticated pairing/recovery remain unfinished.
 
 ## Latest: owner-approved premium portal · Phase B complete locally · October28
@@ -436,7 +460,7 @@ financial boundaries, true alpha/no halo and pixel-equal Phase A overview bodies
 on desktop/tablet/mobile. Prior Phase A CI40771547258 passed; current CI separate.
 All13 SQL/pending customer/frozen P1/recovery/Netlify gates preserved. No hosted,
 credential/Auth/session/financial/provider/media action, deployment or merge.
-Release1.0 NOT READY / NOT AUTHORIZED; physical pairing/recovery still incomplete.
+Release 1.0 NOT READY / NOT AUTHORIZED; physical pairing/recovery still incomplete.
 
 ## Latest: premium customer portal · Phase A design review only · October28
 
@@ -452,7 +476,7 @@ replacement requires owner visual approval and has NOT been performed.
 Axe/contrast/keyboard/reduced-motion checks and integrity limits are in the validation
 JSON. Prior comparison CI40763735497 passed. No hosted/Auth/credential/database/
 financial/Netlify/provider activity. All13 SQL/pending customer/frozen P1/recovery
-gates unchanged. Release1.0 NOT READY / NOT AUTHORIZED; PR#1 draft/unmerged.
+gates unchanged. Release 1.0 NOT READY / NOT AUTHORIZED; PR#1 draft/unmerged.
 
 ## Latest: side-by-side inspection comparison · October28 · local synthetic only
 
@@ -467,7 +491,7 @@ remain. New optional synthetic visits preserve all previously published snapshot
 successful and was not restarted. See validation JSON for limits and checks.
 All13 SQL/pending customer/frozen P1/recovery/Netlify untouched; no hosted action,
 credential/session, financial/media/provider execution or activation. Authenticated
-physical pairing/recovery remain incomplete, separate gates. Release1.0 NOT READY /
+physical pairing/recovery remain incomplete, separate gates. Release 1.0 NOT READY /
 NOT AUTHORIZED; draft PR#1 unmerged.
 
 ## Latest: Property Attention Center · October28 · local synthetic only
@@ -486,10 +510,10 @@ Two additional explicit synthetic inspections reuse existing plan/visit/publicat
 workflows and preserve the original three reports and immutable estimate baseline.
 Existing property/report/review navigation and contractor/Propel branding remain.
 Focused results are in PROPERTY_ATTENTION_CENTER_VALIDATION.json. No credentials,
-Auth sessions, hosted/Netlify/provider action or activation. P1/four artifacts/all13
+Auth sessions, hosted/Netlify/provider action or activation. P1/four artifacts/all 13
 migrations/pending customer14 unchanged. Both Mac software setups/connectivity remain
 owner-reported complete; authenticated pairing and independent recovery incomplete.
-Release1.0 NOT READY / NOT AUTHORIZED; draft PR#1 unmerged.
+Release 1.0 NOT READY / NOT AUTHORIZED; draft PR#1 unmerged.
 
 ## Latest: integrated synthetic customer property journey · October28
 
@@ -508,9 +532,9 @@ connectivity and Universal Clipboard verified. Authenticated pairing and actual
 independent recovery remain incomplete; no physical-device acceptance PASS.
 Preserve completed setup/offline/hash/network evidence without repeating it.
 Recovery is a separate blocked acceptance gate, not a halt to unrelated engineering.
-P1/four artifacts/all13 migrations/pending customer14 unchanged; no hosted request,
+P1/four artifacts/all 13 migrations/pending customer14 unchanged; no hosted request,
 credential retrieval, sign-in, grant, feature, provider, Netlify or deployment action.
-Release1.0 NOT READY / NOT AUTHORIZED; draft PR#1 remains unmerged. Earlier recovery
+Release 1.0 NOT READY / NOT AUTHORIZED; draft PR#1 remains unmerged. Earlier recovery
 setup-pending statements below are historical. Focused results are in the new report.
 
 ## Latest: synthetic Intel dependency compatibility repair
@@ -525,9 +549,9 @@ binary resolution PASS; inspected Intel binary OS minima10.13/10.15 support12.7.
 on local arm64 Python3.12.14. These are local compatibility evidence, not an actual
 Monterey installation or two-device PASS. Corrected Setup on both Macs is next.
 Every launcher refuses partial/wrong dependency versions; no source builds/fallback.
-Operational50 requirements/core, all13 SQL and frozen P1 remain unchanged. No broad
+Operational50 requirements/core, all 13 SQL and frozen P1 remain unchanged. No broad
 platform/browser rerun for this narrow repair; historical evidence is retained.
-No hosted/credential/session/Netlify/provider/database/activation action. Release1.0
+No hosted/credential/session/Netlify/provider/database/activation action. Release 1.0
 NOT READY / NOT AUTHORIZED; PR#1 draft/unmerged; P1 approval persists unchanged.
 
 ## Latest: executable two-computer synthetic rehearsal · October21
@@ -544,7 +568,7 @@ device cases remain NOT RUN pending owner execution. Privileged Monterey custody
 and hosted recovery remain prohibited/unverified. All13 historical migrations,
 frozen P1 operation/four artifacts, Auth and tenant controls stay unchanged.
 No hosted requests/writes/sessions, provider/Netlify changes or activation occurred.
-Existing P1 approval persists without duplication. Release1.0 NOT READY /
+Existing P1 approval persists without duplication. Release 1.0 NOT READY /
 NOT AUTHORIZED; PR#1 draft/unmerged. Long-term maintained cloud recovery remains
 a separate future design/approval, not a prerequisite for this synthetic LAN test.
 
@@ -565,7 +589,7 @@ never change its package/guard or request duplicate scope approval. P2 IDs remai
 unfrozen pending genuine P1 reports. Hosted0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN;
 nine P2 groups BLOCKED. No hosted request/credential/session/write or recovery
 probe;providers/media/Netlify untouched. GO for separate package review only;
-Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft/unmerged.
+Release 1.0 NOT READY / NOT AUTHORIZED;PR#1 draft/unmerged.
 
 ## Latest: customer authorization audit and checked review workflow · local only
 
@@ -580,7 +604,7 @@ review preferences. All execution/table access stays revoked;no formal migration
 SDK route or hosted activity. UNKNOWN writes require read-only reconciliation.
 All13 SQL/frozen P1/branding/recovery/Netlify untouched. Hosted0/0/24/48 unchanged;
 nine P2 cases BLOCKED. Further proposal review and genuine P1/P2/transport/custody
-acceptance remain gates;Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft.
+acceptance remain gates;Release 1.0 NOT READY / NOT AUTHORIZED;PR#1 draft.
 
 ## Latest: customer discovery/login and estimate review · local only
 
@@ -590,10 +614,10 @@ reuses existing sources and branding. Caller-bound discovery/read preparation ha
 no hosted SDK adapter or connected route;financial responses remain disabled.
 Separate SQL proposal adds one default-deny15-minute issued-version authorization
 table and two revoked-execution public read wrappers;it is NOT a migration or
-hosted approval. No new database or applied SQL change;all13 historical files and
+hosted approval. No new database or applied SQL change;all 13 historical files and
 frozen P1 unchanged. Independent publication/decision/security review and actual
 hosted acceptance remain gates. Nine P2 cases stay BLOCKED;all-property0/0/24/48.
-Recovery/Netlify/providers untouched;Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft.
+Recovery/Netlify/providers untouched;Release 1.0 NOT READY / NOT AUTHORIZED;PR#1 draft.
 
 ## Latest: local P2 customer report preparation · hosted remains blocked
 
@@ -602,11 +626,11 @@ history/strict safe projections/caller-bound prepared reader and explicit synthe
 preview reuse existing property/CRM records. Connected customer routes stay closed;
 no login,mapping,lease,feature,financial/media/provider activation or hosted action.
 Nine P2 groups have local disposable SQL coverage;12 P1 staff gaps have a separate
-unfrozen proposal in PROPERTY_P1_GAPS_REVIEW.json. Frozen P1/four artifacts/all13 SQL
+unfrozen proposal in PROPERTY_P1_GAPS_REVIEW.json. Frozen P1/four artifacts/all 13 SQL
 unchanged. Owner reports original25 offline passes/two hash checks/hotspot;FileVault
 is off and newer encrypted recovery remains unrehearsed. No Linux/OS replacement or
 Monterey credentials approved. P1 hosted0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN unchanged.
-Recovery,Netlify and exact P2/expanded-scope approvals remain separate. Release1.0
+Recovery,Netlify and exact P2/expanded-scope approvals remain separate. Release 1.0
 NOT READY / NOT AUTHORIZED;PR#1 draft/unmerged.
 
 ## Latest: P1-R0 second computer confirmed · maintained environment still required
@@ -621,8 +645,8 @@ for the small existing kit; a separately reviewed encrypted native Linux environ
 on the existing Air is a fallback, not yet compatible/approved/installed. No rebuild,
 new database or duplicate P1 approval. Verify only missing environment/rehearsal gates,
 then prepare the separately authorized exact Phase C hosted recovery verification.
-Frozen P1/all13 SQL unchanged;no hosted/credential action. P1 tracker remains
-0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN;Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft.
+Frozen P1/all 13 SQL unchanged;no hosted/credential action. P1 tracker remains
+0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN;Release 1.0 NOT READY / NOT AUTHORIZED;PR#1 draft.
 
 ## Latest: P1 reauthorization stopped at operational recovery gate
 
@@ -638,7 +662,7 @@ Hosted tracker0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN;new records/audits/sessions/wr
 in this attempt. The prior rejected probe was not retried. Identify maintained
 recovery device/operator and complete separately scoped recovery verification
 before fresh P1 preflight. P2/media/providers/Netlify remain separate/off.
-Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft/unmerged.
+Release 1.0 NOT READY / NOT AUTHORIZED;PR#1 draft/unmerged.
 
 ## Latest: independent recovery security implementation · local only
 
@@ -658,8 +682,8 @@ custody, not the primary's legacy token. No real credential installation, Supaba
 request/session/MFA/cleanup probe, feature write or hosted verification occurred.
 Device pairing, secure OS custody, transfer latency and exact separately authorized
 hosted recovery verification remain blockers. Existing P1 approval/frozen package
-and all13 migrations remain unchanged; no duplicate fixture-scope approval.
-Hosted0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN. Release1.0 NOT READY / NOT AUTHORIZED;
+and all 13 migrations remain unchanged; no duplicate fixture-scope approval.
+Hosted0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN. Release 1.0 NOT READY / NOT AUTHORIZED;
 PR#1 remains draft/unmerged. Earlier offline-only descriptions are historical.
 
 ## Latest: Monterey independent recovery preparation · offline only
@@ -668,7 +692,7 @@ Read [PROPERTY_P1_MONTEREY_RECOVERY.md](docs/PROPERTY_P1_MONTEREY_RECOVERY.md) a
 its JSON record. Recommended minimal Python standard-library recovery kit;primary
 Node24 requirement unchanged. Three-file private capsule preserves exact plan and
 deactivation bytes;no activation SQL,credential or primary journal export. Independent
-one-shot journal and mock request contracts cover three tenants and15 exercised
+one-shot journal and mock request contracts cover three tenants and 15 exercised
 sessions,with proposed session-local logout to preserve unrelated sessions.
 
 No live transport,hosted command,credential reader,session handoff or network listener
@@ -677,13 +701,13 @@ maintained OS/runtime/TLS,independent network,secure escrow/live adapter and exa
 hosted recovery approval remain unverified gates. Browser SQL/DevTools recovery is
 not the recommended narrow interface. No hosted calls,writes,Auth/MFA,providers or
 Netlify actions occurred. All13 migrations/frozen P1/branding remain unchanged.
-P1 hosted0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN;Release1.0 NOT READY / NOT AUTHORIZED.
+P1 hosted0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN;Release 1.0 NOT READY / NOT AUTHORIZED.
 
 ## Latest: P1 adversarial audit · activation NO-GO pending operational gates
 
 Read [PROPERTY_P1_INDEPENDENT_AUDIT.md](docs/PROPERTY_P1_INDEPENDENT_AUDIT.md) and
 [PROPERTY_P1_SUPERVISED_RUNBOOK.md](docs/PROPERTY_P1_SUPERVISED_RUNBOOK.md).
-Fresh read-only development evidence matches all13 migrations,514 catalog objects,
+Fresh read-only development evidence matches all 13 migrations,514 catalog objects,
 713 complete-key original records,18 actor bindings,22 identities/four MFA factors,
 zero sessions and saved Auth/API/off controls. Frozen operation/artifacts unchanged;
 all12 quotations remain valid through November16 at12:00UTC.
@@ -696,31 +720,31 @@ later supervised preflight only;NO-GO for activation until genuine MFA,independe
 cleanup/recovery authority and human presence pass. No duplicate exact-scope approval.
 Hosted0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN;zero hosted writes/sign-ins/MFA challenges.
 Final test evidence/source hashes are in PROPERTY_P1_INDEPENDENT_AUDIT.json.
-Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft. Prior checkpoints are historical.
+Release 1.0 NOT READY / NOT AUTHORIZED;PR#1 draft. Prior checkpoints are historical.
 
 ## Latest: P1 executor and independent cleanup locally implemented
 
 Read [PROPERTY_P1_EXECUTOR_READINESS.md](docs/PROPERTY_P1_EXECUTOR_READINESS.md) and
 its separate JSON readiness record. Caller-bound Supabase executor, exact75/69
 scheduler,durable no-replay/UNKNOWN journal,independent cleanup process,pending-owner
-custody,wall/monotonic29-minute cutoff and60-second human supervision are implemented.
+custody,wall/monotonic29-minute cutoff and 60-second human supervision are implemented.
 Read-only verification guards713 original composite keys,exact row/audit/financial
 provenance and unchanged Auth/factor rosters. The previous missing-executor checkpoint
 is historical;actual hosted readiness still needs fresh operator preflight and MFA.
 
-Frozen01b96075… operation/four artifacts and all13 SQL bytes are unchanged. No hosted
+Frozen01b96075… operation/four artifacts and all 13 SQL bytes are unchanged. No hosted
 sign-in,MFA request,feature/fixture write,grant,mapping,lease,provider,Netlify or
 production action occurred. Hosted0 PASS/0 FAIL/24 BLOCKED/48 NOT RUN remains accurate.
 Use the new composed local harness and offline inspector;never the old Action B
 fixture runner. Existing unchanged-scope approval persists;no duplicate approval.
 Final local/native/browser counts and limitations are in the readiness record.
-Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft. Prior checkpoints are historical.
+Release 1.0 NOT READY / NOT AUTHORIZED;PR#1 draft. Prior checkpoints are historical.
 
 ## Latest: P1 authorized; mandatory preflight stopped before activation
 
 Read [PROPERTY_P1_EXECUTION.md](docs/PROPERTY_P1_EXECUTION.md) and
 PROPERTY_P1_EXECUTION_RESULT.json. Owner approved exact operation `01b96075…`;
-approval is preserved. Frozen operation/four artifacts, all13 migrations/514 catalog
+approval is preserved. Frozen operation/four artifacts, all 13 migrations/514 catalog
 objects,713 composite-key original records,79 table digests,18 actor bindings and
 saved Auth/API settings match fresh read-only evidence.22 identities/four verified
 factors/zero sessions;no features,mappings,leases or provider rights activated.
@@ -734,7 +758,7 @@ Focused offline planner/journal26 PASS;full/native/browser suites not rerun for 
 documentation-only checkpoint. Implement/review exact-package executor,durable
 journal recovery and independent bounded cleanup before a refreshed preflight and
 owner-assisted MFA. Do not request duplicate exact-scope authorization or widen it.
-Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft. Earlier checkpoints are historical.
+Release 1.0 NOT READY / NOT AUTHORIZED;PR#1 draft. Earlier checkpoints are historical.
 
 ## Latest: P1 acceptance package prepared · no hosted activation
 
@@ -758,7 +782,7 @@ replays. P2 mapping/15-minute lease design is separately unapproved.
 
 Local validation:748 PASS/50 native-only skips;focused PostgreSQL17:72 PASS;browser
 63 PASS;counts overlap. Native/SQL claims are disposable simulations,not hosted Auth.
-Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft. Prior checkpoints below are historical.
+Release 1.0 NOT READY / NOT AUTHORIZED;PR#1 draft. Prior checkpoints below are historical.
 
 ## Latest: P0 applied dormant · Netlify support follow-up sent
 
@@ -780,7 +804,7 @@ unchanged. Read [ACTION_D_SUPPORT_FOLLOWUP.md](docs/ACTION_D_SUPPORT_FOLLOWUP.md
 Validation719 local PASS/49 native-only skips;focused native68 PASS,local responsive
 browser63 PASS,frozen26 PASS;format/types/migration checks pass.Counts overlap;the
 focused native suite does not replace all native-only cases.
-Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft. Prior checkpoints below are historical.
+Release 1.0 NOT READY / NOT AUTHORIZED;PR#1 draft. Prior checkpoints below are historical.
 
 ## Latest: Action D recovery STOPPED · first file PUT422
 
@@ -796,7 +820,7 @@ not invoked. All14 frozen artifacts/archive/manifest/logo and26 offline checks p
 Perimeter/protected application tests BLOCKED/NOT RUN;runtime environment remains
 UNVERIFIED. No new Supabase/session/provider action. Redacted same-ticket follow-up
 prepared privately,NOT SENT;request provider diagnosis and exact revised order.
-Do not retry/replay/repair without separate approval. Release1.0 NOT READY / NOT
+Do not retry/replay/repair without separate approval. Release 1.0 NOT READY / NOT
 AUTHORIZED;PR#1 draft. P0 dry run passed separately;hosted history remains11.
 
 ## Latest: P0 two-migration preflight PASS · execution NOT AUTHORIZED
@@ -813,7 +837,7 @@ prepared locally. No new full application/browser suite claimed for docs-only wo
 Technical GO for separate exact dormant two-file execution approval and supervised
 maintenance window;NO execution/activation permission. No feature/mapping/lease/
 fixture/grant/media/provider/Netlify change. All72 hosted property cases NOT RUN.
-Release1.0 NOT READY / NOT AUTHORIZED;PR#1 draft;all11 historical SQL/manifests frozen.
+Release 1.0 NOT READY / NOT AUTHORIZED;PR#1 draft;all11 historical SQL/manifests frozen.
 
 ## Latest: P0 connected property readiness · LOCAL ONLY
 
@@ -838,7 +862,7 @@ migration checks/build included), PostgreSQL17.11:339 PASS/zero skips, browser63
 (desktop/tablet/mobile), formatting PASS, frozen package26 offline checks PASS.
 Counts overlap. Hosted property cases:72 NOT RUN; media/customer activation BLOCKED.
 
-Release1.0 NOT READY / NOT AUTHORIZED; PR#1 draft. Preserve all11 installed SQL files,
+Release 1.0 NOT READY / NOT AUTHORIZED; PR#1 draft. Preserve all11 installed SQL files,
 all original manifests, approved logo, frozen Netlify package and all off gates.
 
 ## Latest: property migration APPLIED / all features disabled
@@ -851,7 +875,7 @@ passed. Read [PROPERTY_MIGRATION_EXECUTION.md](docs/PROPERTY_MIGRATION_EXECUTION
 Hosted history11;original10 untouched;50 stored statements match exact SQL tokens.
 All8 private tables empty/RLS/default deny;8 fixed-path functions;17 indexed tenant
 FKs;500 catalog fingerprints equal tested native schema. All79 prior business-table
-count/content fingerprints and69 column grants unchanged. Public generated types
+count/content fingerprints and 69 column grants unchanged. Public generated types
 unchanged;22 identities/four factors/zero sessions/platform or release grants/provider
 workloads/public buckets. Saved Auth/API settings/private exclusion remain verified.
 
@@ -864,7 +888,7 @@ format and26 frozen checks PASS. Counts overlap;details are in the execution rep
 only the exact applied dormant record;no replay/activation authority. New connected
 plan24 cases/company,72 planned,zero executed. Features/public wrappers/adapters,
 customer report grants,media and genuine supplemental billing remain blocked/off.
-NMI/Authorize.Net off;frozen deployment untouched;Release1.0 NOT READY / NOT AUTHORIZED;
+NMI/Authorize.Net off;frozen deployment untouched;Release 1.0 NOT READY / NOT AUTHORIZED;
 PR#1 draft. Preserve all11 SQL bytes;never replay/reset/repair.
 
 ## Latest: property hosted preflight recovered · separate approval required
@@ -889,7 +913,7 @@ security0 WARN/ERROR,28 INFO and existing performance4 WARN/79 INFO unchanged.
 Technical GO for separately approved dormant schema execution, not execution
 permission. Exact file c345bdf1… and pending bundle0fadce83… remain UNAPPLIED /
 NOT AUTHORIZED in PROPERTY_MIGRATION_REVIEW.json. No media/features/wrappers/providers,
-Netlify action or outside access. Release1.0 NOT READY / NOT AUTHORIZED; PR#1 draft.
+Netlify action or outside access. Release 1.0 NOT READY / NOT AUTHORIZED; PR#1 draft.
 
 ## Latest: property schema review · corrected / hosted execution NO-GO
 
@@ -916,13 +940,13 @@ was terminated; two public-client HTTP probes returned401 Invalid API key, so AP
 profile isolation remains unverified. Do not rotate keys/reset Auth/widen grants
 as a workaround. Resolve these read-only preflights, then request separate exact
 execution approval. No hosted write, grant, session, deployment or provider call.
-All media/connected property/customer billing gates remain disabled; Release1.0
+All media/connected property/customer billing gates remain disabled; Release 1.0
 NOT READY / NOT AUTHORIZED and PR#1 stays draft.
 
 ## Latest: property operations / smart procurement · local implementation
 
 Owner direction now includes surveys, media, comparisons and unbilled review in
-Release1.0 work. NMI is preferred initially; Authorize.Net remains optional. Both
+Release 1.0 work. NMI is preferred initially; Authorize.Net remains optional. Both
 gateways are disabled and owner account access is pending. Read
 [PROPERTY_OPERATIONS_VALIDATION.md](docs/PROPERTY_OPERATIONS_VALIDATION.md).
 
@@ -945,7 +969,7 @@ Formatting/types/hash checks PASS; detailed evidence is in the validation report
 proposal and connected adapter authorization; then separately approve an exact
 formal development migration/acceptance scope. Scanning/storage, genuine customer
 change-to-invoice consent/conversion, provider integration and independent release
-validation remain blockers. Release1.0 NOT READY / NOT AUTHORIZED; PR#1 draft.
+validation remain blockers. Release 1.0 NOT READY / NOT AUTHORIZED; PR#1 draft.
 
 ## Latest: Authorize.Net account selection / read-only / unverified
 
@@ -969,12 +993,12 @@ Next: owner manually opens/signs in to the official sandbox for non-secret accou
 metadata inspection, or identifies which controlled account/email to inspect. If
 no account exists, creation needs separate approval. Key retrieval/generation/storage,
 provider configuration, merchant/workload binding and transactions each remain
-separately controlled. Release1.0 stays NOT READY / NOT AUTHORIZED; PR#1 draft.
+separately controlled. Release 1.0 stays NOT READY / NOT AUTHORIZED; PR#1 draft.
 
 ## Previous: sandbox activation readiness / no activation
 
 Base97e861f preserved. New offline sandbox planner, a guard-only dormant workload
-proposal/containment compiler,14 plan tests and6 SQL proposal tests are implemented.
+proposal/containment compiler,14 plan tests and 6 SQL proposal tests are implemented.
 Read docs/SANDBOX_ACTIVATION_READINESS.md for per-provider gates and private exact
 S0 proposal references. No credential reader, hosted executor, provider call,
 new migration, grant/login, binding, Netlify action or UI/branding change was added.
@@ -987,7 +1011,7 @@ factors/0 sessions. Security0 WARN/ERROR with28 intentional INFO; existing perfo
 4 WARN/21 FK/57 unused-index/1 connection INFO remain. No advisor cleanup performed.
 
 Local check597 PASS/33 native-only skips; native PostgreSQL17 database271 PASS,
-including existing expiry/concurrency cases and6 new compiled-proposal cases.
+including existing expiry/concurrency cases and 6 new compiled-proposal cases.
 Final format/browser/frozen-package results are in the readiness report. This is
 local/read-only evidence, not genuine provider acceptance or workload login proof.
 
@@ -1002,9 +1026,9 @@ checked tokenization/provenance work retains existing development authority.
 Property surveys/recurrence/drone-photo-video/client reports, manual supplier
 comparison and unbilled review are PLANNED against existing modules in
 PROPERTY_PROCUREMENT_PLAN.md, not implemented in this readiness increment. Earlier
-local development authorization persists; expanded Release1.0 inclusion/scheduling
+local development authorization persists; expanded Release 1.0 inclusion/scheduling
 needs a separate owner decision. Existing supplemental invoice conversion remains
-required/blocked. Release1.0 stays NOT READY / NOT AUTHORIZED and PR#1 draft.
+required/blocked. Release 1.0 stays NOT READY / NOT AUTHORIZED and PR#1 draft.
 
 ## Previous: corrected provider migration APPLIED / providers DISABLED
 
@@ -1028,7 +1052,7 @@ metadata fingerprints are unchanged. Internal release mode disabled; platform/
 release-test/material-worker grants zero; financial modules/approved merchants/
 verified senders/public buckets zero. All provider tables/capabilities remain empty.
 No provider credential, role/grant, live financial/email/signature/payroll action,
-Netlify/production change, merge or outside access. Release1.0 stays closed.
+Netlify/production change, merge or outside access. Release 1.0 stays closed.
 
 Actual hosted advisors: security0 WARN/ERROR,28 intentional private/no-policy INFO.
 Performance4 existing WARN,21 existing FK INFO,57 unused-index INFO and1 Auth
@@ -1061,7 +1085,7 @@ Corrected SQL SHA256:5dd07b079a591b433fa7ab432fd841026de91a1cd3f1d3a722bef500aa9
 pending bundle:231fa367a176bc329c983fa9d7154d814d0469278209edeca8712229870c750e.
 All nine historical migrations are unchanged. The old9588 hash remains NO-GO;
 the corrected hash is **GO for requesting separate development migration approval**,
-not authorized for hosted execution. Release1.0 remains NOT READY / NOT AUTHORIZED.
+not authorized for hosted execution. Release 1.0 remains NOT READY / NOT AUTHORIZED.
 
 Validation:577 local PASS/33 native-only skips;265 PostgreSQL17 PASS/zero skips,
 including22 new real lock-wait races with stale transaction timestamps and27
@@ -1086,11 +1110,11 @@ The exact proposed migration hash matches, but independent PostgreSQL17 testing
 found an in-flight capability-expiry gap (M1) and a terminal SQL-NULL result
 constraint defect (M2). **Do not apply this hash.** The reviewed SQL and all nine
 historical migrations are unchanged. No hosted migration, provider identity/grant,
-activation or Netlify operation occurred. Release1.0 stays NOT READY / NOT AUTHORIZED.
+activation or Netlify operation occurred. Release 1.0 stays NOT READY / NOT AUTHORIZED.
 
 Read [PROVIDER_MIGRATION_FINAL_REVIEW.md](docs/PROVIDER_MIGRATION_FINAL_REVIEW.md).
 Read-only hosted comparison: nine history entries,422 matching application catalog
-records and69 matching column ACLs; no unexpected application drift. Pinned CLI
+records and 69 matching column ACLs; no unexpected application drift. Pinned CLI
 dry run PASS: exactly one proposed file, no seeds/roles. Final hosted state remains
 nine migrations/63 tables/zero proposed provider tables/zero active platform admins.
 Security advisors:0 WARN/ERROR,12 intentional INFO; existing performance notices
@@ -1114,7 +1138,7 @@ Earlier readiness evidence below is historical and does not override this NO-GO.
 
 ## Previous: provider integration readiness (base93982ba)
 
-**Release1.0 remains NOT READY / NOT AUTHORIZED.** Local engineering now includes
+**Release 1.0 remains NOT READY / NOT AUTHORIZED.** Local engineering now includes
 one formal UNAPPLIED forward migration, restricted tenant/service-scoped database
 commands, durable payment/refund/statement reconciliation, disabled-only email
 persistence/suppression/domain evidence, immutable sandbox agreement evidence and

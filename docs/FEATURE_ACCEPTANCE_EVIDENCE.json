@@ -864,6 +864,10 @@
         {
           "path": "docs/CONTRACTOR_BACK_OFFICE_PHASE_B_VALIDATION.json",
           "anchor": "{"
+        },
+        {
+          "path": "docs/program/DESIGN_SYSTEM_SPEC.md",
+          "anchor": "# Shared design-system specification"
         }
       ],
       "ci": {
@@ -1236,7 +1240,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Run features:check in normal CI; inspect exact branch run and retain honest unknown gaps.",
+      "next": "Review exact cycle-two source/CI and combined compatibility; mandatory locked design source checks do not imply runtime or release acceptance.",
       "date": "2026-11-01",
       "dataObjects": [
         "Read-only public source hashes",
@@ -1252,18 +1256,30 @@
         {
           "path": "scripts/feature-evidence.mjs",
           "anchor": "export function validateFeatureEvidence"
+        },
+        {
+          "path": "scripts/feature-evidence.mjs",
+          "anchor": "export function validateDesignContract"
         }
       ],
       "tests": [
         {
           "path": "tests/program-feature-evidence.test.ts",
           "anchor": "validates exact citations without upgrading local evidence into CI, hosted or release acceptance"
+        },
+        {
+          "path": "tests/design-system-contract.test.ts",
+          "anchor": "binds exact existing design bytes and source tokens without claiming runtime acceptance"
         }
       ],
       "records": [
         {
           "path": "docs/program/SHARED_CONTRACTS.md",
           "anchor": "# Shared contracts and integration ownership"
+        },
+        {
+          "path": "docs/program/DESIGN_SYSTEM_SPEC.md",
+          "anchor": "# Shared design-system specification"
         }
       ],
       "ci": {
@@ -1271,5 +1287,6 @@
       },
       "hostedEvidence": "Retained Action B core evidence is scoped separately in docs/ACTION_B_CONNECTED_RESULT.md; no current hosted acceptance refreshed or inferred."
     }
-  ]
+  ],
+  "designContract": "docs/program/DESIGN_SYSTEM_CONTRACT.json"
 }

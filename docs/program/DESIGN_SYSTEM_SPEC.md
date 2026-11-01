@@ -1,0 +1,100 @@
+# Shared design-system specification · cycle two
+
+Date: 2026-11-01. Baseline: `e44d668fe8bfd262be126020a0c1be9fa110046b`.
+Owner: main integrator. This specifies reuse and extension of approved source;
+it authorizes no redesign, hosted route or change to existing visual approvals.
+The original customer and contractor premium interfaces remain locked.
+
+## One system, existing presentation variants
+
+| Layer                | Actual source                                                                        | Extension rule                                                                                                                                                                                                                    |
+| -------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Platform shell       | `src/styles.css`; `WorkspaceNavigation`                                              | Reuse global Inter/system font, base inputs/buttons, layout and existing module registry. Preserve ordinary financial/preview-only gates. Do not add a second sidebar or hardcode another navigation inventory.                   |
+| Contractor premium   | `ContractorBackOfficeLayout`, scoped `contractor-back-office-design.css`             | Reuse contractor-first header/rail, current area, warm surfaces, existing spacing and cards. Functional form additions use existing composition; no replacement or token rewrite.                                                 |
+| Customer premium     | `PropertyPortalDesign`, scoped `property-portal-design.css`                          | Preserve Avenir Next/Inter fallback, property overview/history/attention/comparison/review navigation and mobile composition. New internal operations do not alter customer layout.                                               |
+| Isolated experiments | Separate local DEV + exact flag + literal loopback mount; field PR #4 is a reference | Scope/lazy-load styles and state, preserve original route when a new flag is off, show truthful synthetic/authority labels. A prototype is not a new approved global type or spacing system. Its promotion needs separate review. |
+
+Approved variants remain distinct and compatible; do not flatten their typography,
+breakpoints or rounded corners into one new global style. New work selects the
+existing context and component first. Do not copy an isolated experiment into a
+locked module or silently turn prototype styles into shared tokens.
+
+## Identity and source-bound tokens
+
+| Semantic role                    | Current value / authority                                                                                                                                                            |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Platform identity                | `productBrand`: Propel Contractor Suite by Eagle Vision; emerald `#00543e`, mint `#48f5ad`                                                                                           |
+| Contractor identity              | `CompanyProfile.primary_color` / `accent_color`, exposed through existing `--company-color` and contractor context; no invented logos                                                |
+| Three synthetic primary palettes | Property services `#247364`; construction `#a85a32`; roofing `#355ea0`; shared sample accent `#dfb461`                                                                               |
+| Global text/background           | `src/styles.css`: `#1c2d36` / white, Inter/system fallback, line-height `1.5`                                                                                                        |
+| Contractor surfaces              | Existing `.backoffice-concept`: background `#f5f5ef`, ink `#20352f`, muted `#566960`, border `#d9e1da`                                                                               |
+| Customer surfaces                | Existing `.portal-concept`: background `#f5f6f2`, ink `#203530`, muted `#586b64`, line `#dde4dd`                                                                                     |
+| Focus                            | Existing visible 3px focus outline and 4px offset; preserve context color and focus visibility                                                                                       |
+| Interaction                      | Existing base button radius 6px/padding12px18px; premium portal radius9px/min-height46px. New touch controls use the current premium pattern; do not resize locked screens globally. |
+
+Use the original approved PNG or the existing explicitly selected transparent
+derivative, retaining original dimensions/proportions and `PlatformBrand` alt/home
+label. `CompanyLogo` remains a separate private company identity; a synthetic company
+without an approved asset uses its existing text name. Preserve `docs/BRANDING.md`
+and both exact asset hashes. Do not regenerate, recolor, crop or add a white matte
+around the transparent variant. Inspect warm surfaces and mobile for halos.
+
+`DESIGN_SYSTEM_CONTRACT.json` binds five exact approved CSS/artwork files and thirteen
+source anchors for tokens, components, responsive behavior, navigation and closed
+financial capability. `npm run features:check` verifies it through the existing
+public-path/no-symlink evidence reader. Drift is a review failure; updating a hash
+alone is not design approval. No HTML/CSS/application source is changed by this
+specification. A passing hash/source check is not runtime accessibility acceptance.
+
+## Component contracts and interaction states
+
+| Pattern             | Existing component / contract                                 | Acceptance for additions                                                                                                                                                                                                                   |
+| ------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Navigation          | `WorkspaceNavigation`; existing App repository ownership      | Native navigation semantics, `aria-current`, stable enum/value identity. Paths/selections never confer access. No module becomes visible through a visual flag alone.                                                                      |
+| Lists/filtering     | Existing forms, `Pagination`, property history/field filters  | One labeled search, grouped controls, accurate available-result count; literal search and validated date range. Reset page when query/context changes. Preserve selected exact identity beyond the current page without broadening access. |
+| Loading/error       | `useResource`, `ResourceStatus`                               | Loading/status and error/alert messages; useful empty and retry/reload states. New async controls immediately hide old context and discard late responses. `useResource` alone does not guarantee immediate context invalidation.          |
+| Forms/actions       | Existing inputs/buttons/selects, `useTask`                    | Explicit labels, disabled/busy state, keyboard operation and useful error messages. `useTask` busy is presentation, not a duplicate/custody guard. Reserve exact attempts before await where required.                                     |
+| Source evidence     | Existing exact report/version/finding and issued scope review | Labeled IDs/versions/dates/property and observation versus recommendation. Focus source detail on navigation; use text labels as well as color. No latest/nearest/fuzzy fallback.                                                          |
+| Review/confirmation | Existing manual staff review, saved draft/CAS/readiness       | Show exact current target and source before explicit confirmation. Stale/UNKNOWN blocks writes and exposes exact read-only reconciliation. Review, scheduling and 6/6 readiness do not prove repair or financial authority.                |
+| Money/export        | Canonical integer/currency and existing ledger verifier       | Explicit currency, exact minor-unit math and truthful completeness. Customer-safe allowlists; finance export is not settlement, funding, invoice issuance or accountant approval.                                                          |
+| Empty/unknown       | Context-specific existing status patterns                     | Distinguish no matching accessible records, no observations, missing evidence, denied source and UNKNOWN outcome. Never display missing facts as zero, resolved, paid or complete.                                                         |
+
+Public product labels explain the user's task and decision. Keep internal tool,
+transport and security implementation details in collapsed development controls or
+engineering evidence. Retain concise visible synthetic/authority labels on previews
+so they cannot be mistaken for operational services. Never render notes as HTML.
+
+## Responsive and accessibility acceptance
+
+Preserve existing context breakpoints: customer1050px/720px; contractor1150px/760px.
+These are current source facts, not new universal breakpoints. Extend the nearest
+context instead of stacking another global breakpoint system. Use min-width0 and
+wrapping for long source IDs; never truncate away identity needed for confirmation.
+Desktop comparisons can use columns; mobile stacks preserve explicit earlier/later
+or original/revised labels and logical reading order. Filters wrap and actions remain
+usable without horizontal page scrolling. Do not inherit the fixed global header
+height into a taller isolated mobile header.
+
+Use the pinned Playwright Desktop Chrome/iPad Mini/iPhone13 projects or equivalent
+explicit local viewports. Exercise all three contractor palettes, long labels and
+source IDs, loading, errors, empty results, context switches, confirmation, stale and
+UNKNOWN states. Check keyboard/focus and accessible names plus actual axe scans.
+Avoid color-only distinctions; source links and action names identify the target.
+Retain reduced-motion support. Axe/no-overflow on exercised states is bounded
+evidence, not a complete accessibility certification or genuine hosted acceptance.
+
+## Review ownership and change protocol
+
+Main integrator owns this specification, machine contract and shared token/component
+decisions. CRM owns only its paginated selector/lookup additions; field owns only the
+isolated gated handoff; finance owns only an unwired allowlisted export contract;
+Passport owns only existing-source evidence foundations. No concurrent editing of
+global styles, navigation, Auth, schemas or ledger writers. Request coordinated
+review before a shared interface change; reuse domain types instead of copying them.
+
+Every draft PR names its exact parent, scope/flag, actual source objects, tenant and
+privacy tests, responsive/keyboard evidence if UI changed, rollback and unresolved
+dependencies. Independent integration review checks combined types, ownership,
+source identity, accessibility and protected hashes. Leave all branches unmerged.
+No source/hash test or visual approval authorizes P1 recovery, hosted Auth/SQL,
+NMI/provider/financial execution, customer communication, deployment or release.

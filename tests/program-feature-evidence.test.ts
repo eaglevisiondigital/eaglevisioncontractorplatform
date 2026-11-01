@@ -9,6 +9,7 @@ import {
   writeFileSync,
 } from 'node:fs';
 import { tmpdir } from 'node:os';
+import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 import {
   inventorySources,
@@ -39,10 +40,31 @@ function fixture() {
     join(root, 'src/example.ts'),
     'export const publishedScope = true;',
   );
+  mkdirSync(join(root, 'docs/program'));
+  const locks = Array.from({ length: 5 }, (_, i) => {
+    const path = `src/design-${i}.txt`,
+      content = `locked fixture ${i}`;
+    writeFileSync(join(root, path), content);
+    return { path, sha256: createHash('sha256').update(content).digest('hex') };
+  });
+  writeFileSync(
+    join(root, 'docs/program/DESIGN_SYSTEM_CONTRACT.json'),
+    JSON.stringify({
+      schema: 'propel-design-contract-v1',
+      baselineCommit: 'a'.repeat(40),
+      approval: 'locked_existing_designs',
+      locks,
+      bindings: Array.from({ length: 13 }, (_, i) => ({
+        id: `design-source-${i}`,
+        source: { path: 'src/example.ts', anchor: 'publishedScope' },
+      })),
+    }),
+  );
   const manifest = {
     schema: 'propel-feature-evidence-v1',
     sourceCommit: 'a'.repeat(40),
     execution: 'not_authorized',
+    designContract: 'docs/program/DESIGN_SYSTEM_CONTRACT.json',
     features: requiredFeatureIds.map((id) => ({
       id,
       owner: 'A1',
@@ -222,4 +244,31 @@ it('produces deterministic complete source metadata without modifying files or e
   expect(first).not.toContain(before);
   expect(readFileSync(join(root, 'src/example.ts'), 'utf8')).toBe(before);
   expect(readdirSync(root)).toEqual(names);
+});
+it('cannot bypass project design validation by removing its pointer or dropping protected locks', () => {
+  const { root, manifest } = fixture();
+  const write = (value: unknown) =>
+    writeFileSync(
+      join(root, 'docs/FEATURE_ACCEPTANCE_EVIDENCE.json'),
+      JSON.stringify(value),
+    );
+  write(manifest);
+  expect(runFeatureEvidence(root)).toContain(
+    '5 exact files; 13 source bindings',
+  );
+  const missing = structuredClone(manifest) as unknown as Record<
+    string,
+    unknown
+  >;
+  delete missing.designContract;
+  write(missing);
+  expect(() => runFeatureEvidence(root)).toThrow(
+    'Exact shared design contract path',
+  );
+  write(manifest);
+  const path = join(root, manifest.designContract);
+  const contract = JSON.parse(readFileSync(path, 'utf8'));
+  contract.locks.pop();
+  writeFileSync(path, JSON.stringify(contract));
+  expect(() => runFeatureEvidence(root)).toThrow('Complete project design');
 });

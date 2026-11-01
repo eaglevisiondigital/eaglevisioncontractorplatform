@@ -1,5 +1,18 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Cycle two · independent extensions over the existing contracts
+
+CRM selection extends actual Operations pagination/exact lookups, field scheduling
+composes existing maintenance/source/plan/record transitions, finance exports project
+existing verified invoice/event/ledger data, and Passport foundations reuse authorized
+published inspection identity. Each has a separate stacked branch and no second
+domain engine, ledger or property store. New interfaces remain default OFF/unwired;
+no connected route, writer, provider adapter, schema or migration is introduced.
+The [source-bound design specification](docs/program/DESIGN_SYSTEM_SPEC.md) separates
+approved context variants from isolated experiments and adds no global CSS/token
+change. Main integrator owns contracts; independent review tests the combined sources
+without merging branches. Operational/recovery and release dependencies remain closed.
+
 ## Parallel product program · shared contracts, isolated local packages
 
 [Shared contracts](docs/program/SHARED_CONTRACTS.md) inventory existing organization,

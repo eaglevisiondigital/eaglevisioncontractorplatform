@@ -91,3 +91,37 @@ CREATE/statistics, external restore protection and operational connection custod
 remain unverified. No local package widens this sequence or duplicates P1 approval.
 Netlify replacement/protection, provider/merchant/communication and explicit launch
 approval remain separate gates. Nothing in these contracts grants hosted authority.
+
+## Cycle-two extension contracts · November 1
+
+All four children remain separate draft PRs. CRM pagination targets exact PR2 head,
+maintenance handoff exact PR4, finance export exact PR3; Passport and coordination
+start from exact PR5 e44d668. No parent rewrite/merge or silent source promotion.
+
+- CRM returns existing Customer/ServiceLocation objects through exact existing
+  Operations reads and paged lists. Query/page state is presentation only. Pin exact
+  selected IDs beyond the current page; immediately hide stale company/customer
+  results and reject missing, inactive or foreign current relationships on save.
+  Existing engine arithmetic, issued versions and App repositories are unchanged.
+- Maintenance handoff consumes exact published source/report/version/finding,
+  current maintenance record revision, source visit/plan and selected same-property
+  plan. Explicit review plus confirmation calls only existing scheduleMaintenance.
+  Repo-scoped attempt metadata is not a general task store, durable custody or grant.
+  UNKNOWN allows exact read-only postcondition reconciliation, never a new attempt.
+- Finance export consumes existing Invoice/PaymentEvent/LedgerEntry/verifyLedger;
+  only primitive allowlisted facts, canonical integer strings, exact currency and
+  explicit coverage/as-of evidence cross its export projection. Missing/UNKNOWN is
+  not zero or settled. No writer, provider port, new ledger, AR or UI is introduced.
+- Passport consumes existing CustomerPortalPreviewModel, current CRM property and
+  projectPublishedHistory. Narrow primitive enum admission strengthens this new
+  boundary without changing historical projections. Per-report/version source
+  positions remain exact; no fuzzy grouping or inferred physical completion.
+  Snapshots/hash never grant access or prove complete history/warranty/work.
+
+Use the [design specification](DESIGN_SYSTEM_SPEC.md) for source-bound presentation
+and state/accessibility contracts. Five unchanged CSS/artwork hashes and 13 source
+bindings are mandatory in features:check; deleting the contract pointer fails closed.
+Hash updates alone are never owner visual approval. Integration proof and unresolved
+operational limits are recorded in [independent review](CYCLE2_INTEGRATION_REVIEW.md)
+and the master delivery register. Existing data owners/types/calculations/projections
+remain authoritative; no shared schema or connected capability is added.

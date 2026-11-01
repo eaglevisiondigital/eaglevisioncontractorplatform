@@ -1,5 +1,18 @@
 # Security model · Phase 2
 
+## Cycle two · source admission and read-only projection boundaries
+
+New candidate lookups must retain exact current company/customer/property identity
+across pages and async context changes; selecting an ID outside the visible page
+does not broaden access. An isolated maintenance handoff needs current eligible
+synthetic staff, exact published evidence and source/plan/record revisions before
+one explicit attempt. UNKNOWN reconciles exact retained evidence only, never replay.
+Unwired finance/Passport projections allowlist existing source data; exports do not
+become settlement, accountant approval, customer authorization or proof of repair.
+No new store, hosted grant, credential, Auth/financial/provider action or publication.
+Independent combined review checks these boundaries plus locked design/protected
+source integrity; source hashes alone never establish runtime authorization.
+
 ## November 1 · isolated parallel work does not widen operational authority
 
 The [product-program contracts](docs/program/SHARED_CONTRACTS.md) retain current

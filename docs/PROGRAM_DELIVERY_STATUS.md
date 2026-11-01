@@ -1,5 +1,105 @@
 # Product program delivery status
 
+## Cycle two · delivered isolated candidates · November 1
+
+Integration branch: `codex/program-cycle-two`, from exact PR #5 coordination
+`e44d668fe8bfd262be126020a0c1be9fa110046b`. PR #5 Foundation
+[41355981379](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41355981379)
+and compatibility [41355981435](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41355981435)
+are independently confirmed PASS: 1,632 application cases (321 native-only skipped
+in that job), 661 native PostgreSQL and 234 browser cases. No green run was restarted.
+PRs #1–#5 and all child candidates remain draft/unmerged; no parent was rewritten.
+
+### Actual ownership and stack
+
+Roster snapshot: November 1, during this bounded delivery session. Completed agents
+are not reported as active or persistent background workers. The tool permits three
+concurrent subagents; successive slots handled four implementations plus independent
+review. Earlier first-cycle agent names below are historical.
+
+| Actual owner                                    | Session state at register snapshot                                 | Branch / exact parent                                | Draft PR / exact implementation commit                                                                                       |
+| ----------------------------------------------- | ------------------------------------------------------------------ | ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `/root`                                         | Active integration, design contract, finance delivery and evidence | `codex/program-cycle-two` / PR5 `e44d668`            | Coordination candidate, current PR head is authoritative                                                                     |
+| `/root/cycle2_crm`                              | Implementation complete; bounded read-only CI monitoring           | `codex/program-crm-pagination` / PR2 `7556023`       | [#7](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/7), `7fc529d1a1c68fd349e70410d79ef8a21cf0e475` |
+| `/root/cycle2_field`                            | Implementation complete; bounded read-only CI monitoring           | `codex/program-maintenance-schedule` / PR4 `32e84df` | [#8](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/8), `a85946557f449f3ae944d609c4eaa9e028c3f665` |
+| `/root/program_finance_readiness`, then `/root` | Original agent complete; main closed reviewed defect and delivered | `codex/program-finance-export` / PR3 `e73afa0`       | [#6](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/6), `5329b0cc226f55cef3ee2862cb690cd7ed3f62b4` |
+| `/root/cycle2_passport`, then `/root`           | Agent complete; main closed reviewed defect and delivered          | `codex/program-property-passport` / PR5 `e44d668`    | [#9](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/9), `081532fa1e7ec06d0bc9c02700ba018070a0cb2c` |
+| `/root/cycle2_integration_review`               | Review complete; no package authorship                             | Disposable combined snapshot; no merge               | [Review record](program/CYCLE2_INTEGRATION_REVIEW.md)                                                                        |
+
+### Functioning packages and local proof
+
+| Package                             | Actual behavior                                                                                                                                                                                                                                                                                                                    | Focused evidence                                                                                                                                                                                                    |
+| ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| CRM / CRM-001, EST-001              | Existing Operations exact customer/location readers and paged selection. Keep selected identity beyond page one; discard stale query/company results; validate final current CRM/member/CAS before existing draft save. No estimate arithmetic or issued-history change.                                                           | 234 application cases across ten suites, including 17 new. 21 browser cases (9 new pagination +12 compatibility), all three brands and desktop/tablet/mobile; strict types/lint/build/format/type consistency PASS. |
+| Field / FLD-001                     | Explicit exact maintenance source/record/plan review and confirmation before the existing scheduleMaintenance method. One repo-scoped in-memory attempt, retained UNKNOWN and exact read-only postcondition reconciliation. Separate flag defaults OFF; existing DEV/loopback gate also required. No dispatch or repair inference. | 51 application cases (31 new +20 existing field). 6 actual browser cases, all brands/viewports, prepared/UNKNOWN/default-OFF, keyboard/focus/axe/overflow PASS; strict types/lint/build/format PASS.                |
+| Finance / FIN-001, FIN-002, INT-001 | Unwired synthetic-only allowlisted reconciliation/export projection over existing invoices/events/ledger and verifier. Exact boundary/currency/as-of/coverage; incomplete/UNKNOWN gives null summaries. Frozen canonical JSON/CSV with exact integer strings and SHA-256; no new ledger/provider/writer.                           | 84 focused cases (65 export +19 verifier). Strict types/lint/build/owned format PASS. No UI/browser/financial execution claim.                                                                                      |
+| Passport / CUS-002                  | Unwired/default-OFF existing published-report evidence snapshot, exact report/version/finding/checklist position reads and SHA-256. Detached strict safe facts; history completeness UNKNOWN, physical proof UNVERIFIED. No warranty/completion/media authority or new store.                                                      | 67 focused cases (48 new +19 existing). Strict types/lint/generated types/build/owned format/citations PASS. No UI/browser/physical-device claim.                                                                   |
+| Shared design / UX-001, QA-001      | [Source-based specification](program/DESIGN_SYSTEM_SPEC.md) and mandatory [machine contract](program/DESIGN_SYSTEM_CONTRACT.json), 5 locked CSS/artwork files +13 source bindings in features:check. No locked source style changed; hash changes are not approval.                                                                | 24 evidence/design cases (19 +5); strict types/lint/build/format and 25 feature records PASS. Original 18 IDs retained.                                                                                             |
+
+A disposable combined checkout of exact reviewed parent/child patches plus the
+coordination changes and final Passport files passed **185 distinct focused cases**:
+179 initially, then the changed Passport suite 48/48 including six additional cases.
+Combined strict types/lint/build PASS; only changed Passport was rechecked after its
+scoped correction. **15 actual combined browser cases PASS** (9 CRM +6 handoff), all
+three companies and desktop/tablet/mobile, zero exercised axe/overflow failures.
+Existing successful full baseline suites were not manually rerun. Normal GitHub CI
+remains unchanged. Read-only migration/property/customer/4B/broker/type integrity
+checks PASS. Source inventory/citations never substitute for test or hosted evidence.
+
+Independent review reproduced and closed three P2 defects before delivery: boxed enum
+values entering the finance export, object-valued report enums breaking Passport
+privacy/detachment/hash identity, and optional design-contract validation bypass.
+Each has focused regression evidence and independent recheck; see the review record.
+Across all five worktrees, 102 protected tracked paths match exact e44d668; five
+private frozen P1/Netlify bindings match retained hashes, without exporting contents.
+
+### Exact automatic CI snapshot
+
+| Package       | Foundation                                                                                                                                                                         | Other workflows                                                                                                                                                                                                                                                                                                                                                        |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| PR6 `5329b0c` | [41358427820](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41358427820): PASS, including full browser                                          | Compatibility [41358427686](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41358427686) PASS                                                                                                                                                                                                                                         |
+| PR7 `7fc529d` | [41358725142](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41358725142): application/check/native PASS, full browser still running at snapshot | Compatibility [41358724975](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41358724975) PASS                                                                                                                                                                                                                                         |
+| PR8 `a859465` | [41358741476](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41358741476): application/check/native PASS, full browser still running at snapshot | Compatibility [41358741598](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41358741598), field [41358741470](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41358741470), handoff [41358741578](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41358741578) PASS |
+| PR9 `081532f` | [41359273181](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41359273181) running                                                                | Compatibility [41359273285](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41359273285) PASS; new coordination CI gets its own exact SHA                                                                                                                                                                                             |
+
+This table is an honest in-session snapshot, not a perpetual CI monitor. The exact
+linked runs and final completion report supersede pending statuses. No successful
+workflow is rerun merely to refresh evidence; no failing assertion is weakened.
+
+### Demonstration and dependencies
+
+From the maintenance branch worktree:
+
+```sh
+VITE_FIELD_SCHEDULING_PREVIEW=true VITE_MAINTENANCE_SCHEDULE_HANDOFF_PREVIEW=true npm run dev -- --host 127.0.0.1 --port 4193 --strictPort
+```
+
+Open `http://127.0.0.1:4193/preview/field-scheduling`. Select a company, explicitly
+prepare existing synthetic evidence, open exact follow-up, review current source/
+plan/date and confirm one scheduling draft. See the existing visit; UNKNOWN permits
+only exact reconciliation. This is session memory, not refresh/process durability.
+The existing 4186 preview is not modified. CRM uses its separate branch `/preview`
+Estimates; tests populate thirteen actual sample customers/locations for pagination.
+Export and Passport deliberately have no route or download/delivery port.
+
+Real screenshots remain ignored/local: CRM `artifacts/phase3/*-crm-pagination-*.png`
+and field `artifacts/property/maintenance-handoff-{review,prepared,unknown}-*.png` in
+the respective worktrees and disposable combined checkout. Desktop/mobile samples
+were visually reviewed; browser cases exercise desktop/tablet/mobile/all palettes.
+
+Next dependencies: owner review of separate draft PRs and explicit integration
+permission, not an implicit merge. Finance still needs accountant/provider/currency/
+settlement acceptance before any operational export or execution. Passport needs a
+separately bounded consumer/evidence policy before wiring, warranty or physical-proof
+claims. Field promotion/dispatch/durable custody and genuine connected CRM access
+remain unaccepted. No branch creates a new business store/schema/ledger or authority.
+Recovery/P1-on 13/separate 14/exact 4B+broker, NMI, Auth, all 13/pending 14/four artifacts,
+Netlify/executor, approvals/2A–2F/billing and locked UIs stay intact. No hosted writes,
+credentials, payments/providers/messages, deployment or merge. **Release 1.0 remains
+NOT READY / NOT AUTHORIZED.**
+
+## First-cycle retained baseline (historical)
+
 Date: 2026-11-01. Integration owner: main Codex. Owner source documents were fetched
 and read at exact remote `dc7ed7c2db3cf8ff78a3d6f09098a1b623622874` without resetting
 the existing local foundation branch or overwriting changes. Current integration
@@ -110,7 +210,7 @@ offline passes are preserved. Maintained encrypted independent hardware remains
 owner-dependent; Monterey is synthetic-only. No physical PASS is manufactured.
 
 Original P1 approval is retained without duplicate authorization. Genuine recovery
-verification needs its separately reviewed scope, then fresh original P1-on13
+verification needs its separately reviewed scope, then fresh original P1-on 13
 preflight and separately authorized customer14/4B+broker ownership/hash/grants/
 mappings/target/Auth acceptance. Historical helper/installer TCB, core CREATE/stats,
 external restore custody and dedicated operational connection evidence remain gaps.
@@ -120,6 +220,6 @@ remain separate. None of these blockers stops isolated permitted engineering.
 
 No module is ready for separately approved commercial release based on this package.
 Ready-for-review/integration candidates are the three bounded code PRs and the
-coordination tooling/contracts. Preserve all thirteen migrations, pending14,
-original4B, frozen P1/four artifacts, Netlify archive/executor, locked UIs/artwork,
+coordination tooling/contracts. Preserve all thirteen migrations, pending 14,
+original 4B, frozen P1/four artifacts, Netlify archive/executor, locked UIs/artwork,
 2A–2F/approvals and six PROPOSED billing enhancements. No hosted action occurred.
