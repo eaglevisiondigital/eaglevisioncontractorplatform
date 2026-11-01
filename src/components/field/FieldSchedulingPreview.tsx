@@ -1,4 +1,6 @@
 import {
+  lazy,
+  Suspense,
   useCallback,
   useEffect,
   useRef,
@@ -22,6 +24,12 @@ import {
 } from '../../lib/field-scheduling';
 import { useResource } from '../forms-state';
 import { PlatformBrand } from '../PlatformBrand';
+import { maintenanceScheduleHandoffEnabled } from '../../lib/maintenance-schedule-handoff';
+const MaintenanceScheduleHandoffPreview = lazy(() =>
+  import('./MaintenanceScheduleHandoffPreview').then((m) => ({
+    default: m.MaintenanceScheduleHandoffPreview,
+  })),
+);
 import './field-scheduling.css';
 
 export function FieldSchedulingPreview() {
@@ -81,6 +89,24 @@ export function FieldSchedulingPreview() {
           company={company}
           repo={propertyRepository(operations)}
         />
+        {maintenanceScheduleHandoffEnabled({
+          development: import.meta.env.DEV,
+          flag: import.meta.env.VITE_MAINTENANCE_SCHEDULE_HANDOFF_PREVIEW,
+          hostname: window.location.hostname,
+          protocol: window.location.protocol,
+        }) && (
+          <Suspense
+            fallback={
+              <p role="status">Loading isolated maintenance handoff…</p>
+            }
+          >
+            <MaintenanceScheduleHandoffPreview
+              key={company.id}
+              company={company}
+              repo={propertyRepository(operations)}
+            />
+          </Suspense>
+        )}
       </main>
       <footer>
         <PlatformBrand href="/preview" transparent />
