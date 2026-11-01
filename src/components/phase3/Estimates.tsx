@@ -1,10 +1,11 @@
+import { EstimateCrmSelection } from './EstimateCrmSelection';
 import { SyntheticRevisionIssuance } from './SyntheticRevisionIssuance';
 import { RevisionReviewPacket } from './RevisionReviewPacket';
 import { CustomerChangeRequests } from './CustomerChangeRequests';
 import { customerChangeWorkspace } from '../../lib/customer-change-workspace';
 import { BackOfficeText } from '../property/back-office-copy';
 import { RepairScopeReadiness } from '../property/RepairScopeReadiness';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef, useLayoutEffect } from 'react';
 import type { Phase3Repository } from '../../lib/phase3';
 import type { CompanyProfile } from '../../domain/platform';
 import {
@@ -48,6 +49,18 @@ export function Estimates({
       initialBundle,
     );
   const task = useTask();
+  const active = useRef<{ repo: Phase3Repository | null; org: string }>({
+    repo,
+    org: company.id,
+  });
+  useLayoutEffect(() => {
+    active.current = { repo, org: company.id };
+    return () => {
+      active.current = { repo: null, org: '' };
+    };
+  }, [repo, company.id]);
+  const current = () =>
+    active.current.repo === repo && active.current.org === company.id;
   const data = useResource(
     useCallback(
       async () => ({
@@ -87,14 +100,21 @@ export function Estimates({
             attachments: [],
           });
       }
-      setSelected(await repo.create(company, p));
-      data.reload();
+      const created = await repo.create(company, p);
+      if (current()) {
+        setSelected(created);
+        data.reload();
+      }
     }, 'Draft created');
   }
-  if (selected)
+  if (
+    selected &&
+    selected.version.organization_id === company.id &&
+    selected.estimate.organization_id === company.id
+  )
     return (
       <EstimateEditor
-        key={`${selected.version.id}-${selected.version.lock_revision}-${selected.version.status}`}
+        key={`${company.id}-${selected.version.id}-${selected.version.lock_revision}-${selected.version.status}`}
         initial={selected}
         repo={repo}
         company={company}
@@ -104,8 +124,10 @@ export function Estimates({
         taxes={data.data?.taxes ?? []}
         defaults={data.data?.defaults}
         onChange={(b) => {
-          setSelected(b);
-          data.reload();
+          if (current() && b.version.organization_id === company.id) {
+            setSelected(b);
+            data.reload();
+          }
         }}
         onClose={() => {
           setSelected(undefined);
@@ -301,12 +323,6 @@ function EstimateEditor({
   const resources = useResource(
     useCallback(
       async () => ({
-        customers: (await repo.operations.listCustomers(company.id, '', '', 0))
-          .rows,
-        locations: await repo.operations.listLocations(
-          company.id,
-          p.customer_id,
-        ),
         documents: await repo.cleanDocuments(company.id),
         history: await repo.history(company.id, initial.estimate.id),
         change: repo.sample
@@ -320,13 +336,7 @@ function EstimateEditor({
             )
           : null,
       }),
-      [
-        repo,
-        company.id,
-        p.customer_id,
-        initial.estimate.id,
-        initial.version.id,
-      ],
+      [repo, company.id, initial.estimate.id, initial.version.id],
     ),
   );
   const repairOnly = draftOnly || !!resources.data?.repair;
@@ -561,39 +571,24 @@ function EstimateEditor({
                     }
                   />
                 </Field>
-                <Field label="Estimate customer">
-                  <select
-                    disabled={repairOnly}
-                    value={p.customer_id}
-                    onChange={(e) =>
-                      update({ customer_id: e.target.value, location_id: null })
-                    }
-                  >
-                    {resources.data?.customers.map((c) => (
-                      <option key={c.id} value={c.id}>
-                        {c.display_name}
-                      </option>
-                    ))}
-                  </select>
-                </Field>
-                <Field label="Job location">
-                  <select
-                    disabled={repairOnly}
-                    value={p.location_id ?? ''}
-                    onChange={(e) =>
-                      update({ location_id: e.target.value || null })
-                    }
-                  >
-                    <option value="">
-                      <BackOfficeText text="No location selected" />
-                    </option>
-                    {resources.data?.locations.map((l) => (
-                      <option key={l.id} value={l.id}>
-                        {l.address_line1}, {l.city}
-                      </option>
-                    ))}
-                  </select>
-                </Field>
+                <EstimateCrmSelection
+                  key={`${company.id}-${p.customer_id}`}
+                  operations={repo.operations}
+                  org={company.id}
+                  customerId={p.customer_id}
+                  locationId={p.location_id}
+                  disabled={
+                    readonly ||
+                    task.busy ||
+                    repairOnly ||
+                    changeOnly ||
+                    resources.loading ||
+                    !!resources.error
+                  }
+                  onChange={(customer, location) =>
+                    update({ customer_id: customer, location_id: location })
+                  }
+                />
                 <Field label="Estimate expires">
                   <input
                     type="date"
