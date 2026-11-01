@@ -860,6 +860,7 @@ export class Phase3Repository {
         p_payload: payload,
         p_key: key,
       });
+    payload = clone(payload);
     const s = this.state(company.id);
     const calc = calculateEstimate(
       payload,
@@ -868,10 +869,16 @@ export class Phase3Repository {
     if (payload.lines.some((l) => l.import_approval_id))
       throw new Error('Create a draft before importing');
     const settings = await this.operations.getSettings(company.id);
-    const customer = (
-      await this.operations.listCustomers(company.id, '', '', 0)
-    ).rows.find((c) => c.id === payload.customer_id);
-    if (!customer) throw new Error('Customer unavailable');
+    await this.operations.estimateCrm(
+      company.id,
+      payload.customer_id,
+      payload.location_id,
+    );
+    const { customer, location } = this.operations.syntheticEstimateCrm(
+      company.id,
+      payload.customer_id,
+      payload.location_id,
+    );
     const id = crypto.randomUUID(),
       vid = crypto.randomUUID();
     const bundle: EstimateBundle = {
@@ -913,7 +920,16 @@ export class Phase3Repository {
           email: customer.email,
           phone: customer.phone,
         },
-        location_snapshot: null,
+        location_snapshot: location
+          ? {
+              id: location.id,
+              address_line1: location.address_line1,
+              city: location.city,
+              region: location.region,
+              postal_code: location.postal_code,
+              country_code: location.country_code,
+            }
+          : null,
         tax_policy_snapshot: clone(
           s.taxes.find((t) => t.id === payload.tax_policy_id) ?? null,
         ),
@@ -942,6 +958,8 @@ export class Phase3Repository {
         p_lock: b.version.lock_revision,
         p_payload: payload,
       });
+    b = clone(b);
+    payload = clone(payload);
     const s = this.state(org),
       current = s.estimates.find((x) => x.estimate.id === b.estimate.id);
     if (
@@ -1002,6 +1020,30 @@ export class Phase3Repository {
       )
         throw new Error('Imported pricing changed; review again');
     }
+    await this.operations.estimateCrm(
+      org,
+      payload.customer_id,
+      payload.location_id,
+    );
+    const { customer, location } = this.operations.syntheticEstimateCrm(
+      org,
+      payload.customer_id,
+      payload.location_id,
+    );
+    const fresh = s.estimates.find((x) => x.estimate.id === b.estimate.id);
+    // CRM reads may wait; keep the original draft CAS and source authority current.
+    if (
+      !fresh ||
+      fresh !== current ||
+      fresh.version.id !== b.version.id ||
+      fresh.version.lock_revision !== b.version.lock_revision ||
+      fresh.version.status !== 'draft' ||
+      fresh.estimate.status === 'archived'
+    )
+      throw new Error('Draft changed or immutable; reload');
+    if (change) this.requireSyntheticEstimator(org, change.origin.reviewed_by);
+    change?.authorize();
+    repair?.authorize();
     const calc = calculateEstimate(
       payload,
       s.taxes.find((t) => t.id === payload.tax_policy_id)?.rate_bps ?? 0,
@@ -1009,6 +1051,22 @@ export class Phase3Repository {
     current.version = {
       ...current.version,
       payload: clone(payload),
+      customer_snapshot: {
+        id: customer.id,
+        display_name: customer.display_name,
+        email: customer.email,
+        phone: customer.phone,
+      },
+      location_snapshot: location
+        ? {
+            id: location.id,
+            address_line1: location.address_line1,
+            city: location.city,
+            region: location.region,
+            postal_code: location.postal_code,
+            country_code: location.country_code,
+          }
+        : null,
       calculation: calc,
       lock_revision: current.version.lock_revision + 1,
       tax_policy_snapshot: clone(
@@ -1017,6 +1075,7 @@ export class Phase3Repository {
     };
     current.estimate = {
       ...current.estimate,
+      customer_id: customer.id,
       total_minor: calc.total_minor,
       project_name: payload.project.name,
       updated_at: now(),
