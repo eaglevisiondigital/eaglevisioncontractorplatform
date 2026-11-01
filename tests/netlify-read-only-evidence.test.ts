@@ -1,5 +1,7 @@
 import { expect, it } from 'vitest';
-import { assessNetlifyReadOnlyObservations } from '../server/netlify/read-only-evidence';
+import {
+  assessNetlifyReadOnlyObservations,
+} from '../server/netlify/read-only-evidence';
 
 const target = {
   siteId: '757117d4-e660-40f2-8076-ddd207237006',
