@@ -2100,19 +2100,23 @@ export class Phase3Repository {
       typeof active !== 'boolean' ||
       !reviewer ||
       (reviewer.role === 'staff' && reviewer.staff_type !== 'office_manager') ||
-      !eligible(userId) ||
-      !state.workforce.workers.some(
-        (w) => w.organization_id === org && w.user_id === userId && w.active,
-      ) ||
+      !members.some((m) => m.user_id === userId && m.active) ||
       !job
     )
       throw Error(
-        'Current eligible reviewer, worker and exact tenant job required',
+        'Current reviewer, active member and exact tenant job required',
       );
     const existing = state.jobAssignments.find(
       (a) => a.job_id === jobId && a.user_id === userId,
     );
     if (synthetic) {
+      if (
+        !eligible(userId) ||
+        !state.workforce.workers.some(
+          (w) => w.organization_id === org && w.user_id === userId && w.active,
+        )
+      )
+        throw Error('Current eligible active sample worker required');
       if (
         job.lock_revision !== synthetic.job_revision ||
         job.baseline.issued_version_id !== synthetic.issued_version_id ||

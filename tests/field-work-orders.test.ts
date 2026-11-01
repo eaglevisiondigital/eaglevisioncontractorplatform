@@ -414,6 +414,89 @@ it('role downgrade after the actual sample assignment write cannot return office
   expect(writer).toHaveBeenCalledTimes(1);
   expect((await readFieldWorkOrders(f.repo, f.org, actor)).orders).toEqual([]);
 });
+it('legacy four-argument assignment accepts an actual existing active estimator without a Worker profile', async () => {
+  const f = await fixture(),
+    user = f.org + '-estimator';
+  const member = (await f.operations.listMembers(f.org)).find(
+    (m) => m.user_id === user,
+  );
+  expect(member).toMatchObject({
+    active: true,
+    role: 'staff',
+    staff_type: 'estimator',
+  });
+  expect(
+    (await f.repo.estimates.workforce(f.org)).workers.some(
+      (w) => w.user_id === user,
+    ),
+  ).toBe(false);
+  await f.repo.estimates.assignJob(f.org, f.order.source.job_id, user, true);
+  expect(f.repo.estimates.syntheticJobAssignments(f.org, f.actor)).toEqual([
+    {
+      organization_id: f.org,
+      job_id: f.order.source.job_id,
+      user_id: user,
+      active: true,
+    },
+  ]);
+  await f.repo.estimates.assignJob(f.org, f.order.source.job_id, user, false);
+  expect(f.repo.estimates.syntheticJobAssignments(f.org, f.actor)).toEqual([
+    {
+      organization_id: f.org,
+      job_id: f.order.source.job_id,
+      user_id: user,
+      active: false,
+    },
+  ]);
+  await f.operations.manageMember(f.org, user, false, 'staff', 'estimator');
+  await expect(
+    f.repo.estimates.assignJob(f.org, f.order.source.job_id, user, true),
+  ).rejects.toThrow(/active member/);
+});
+it.each(['estimator', 'field_staff'] as const)(
+  'reviewed fifth-argument crew assignment still rejects an actual %s role or missing Worker',
+  async (staffType) => {
+    const f = await fixture(),
+      user = f.org + '-estimator';
+    if (staffType === 'field_staff')
+      await f.operations.manageMember(
+        f.org,
+        user,
+        true,
+        'staff',
+        'field_staff',
+      );
+    else {
+      const data = await f.repo.estimates.workforce(f.org),
+        worker = data.workers.find((w) => w.id === f.target.worker_id)!;
+      await f.repo.estimates.saveWorker(
+        f.org,
+        {
+          user_id: user,
+          display_name: 'Existing sample estimator',
+          worker_type: worker.worker_type,
+          cost_source: worker.cost_source,
+          active: true,
+        },
+        data.rates.find((r) => r.worker_id === worker.id)!,
+      );
+    }
+    const guard = vi.fn();
+    await expect(
+      f.repo.estimates.assignJob(f.org, f.order.source.job_id, user, true, {
+        reviewer: f.actor,
+        job_revision: f.order.source.job_revision,
+        issued_version_id: f.order.source.issued_version_id,
+        expected_active: null,
+        assertCurrent: guard,
+      }),
+    ).rejects.toThrow(/eligible active sample worker/);
+    expect(guard).not.toHaveBeenCalled();
+    expect(f.repo.estimates.syntheticJobAssignments(f.org, f.actor)).toEqual(
+      [],
+    );
+  },
+);
 it('preserves old four-argument sample assignment calls, detached rows and exact composite update semantics', async () => {
   const f = await fixture();
   await f.repo.estimates.assignJob(

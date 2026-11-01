@@ -122,7 +122,7 @@ No hosted rollback, migration or external action is required.
 
 - Focused application command:
   `npx vitest run tests/field-work-orders.test.ts tests/field-scheduling.test.ts tests/jobs-workforce.test.ts tests/maintenance-schedule-handoff.test.ts`:
-  **122/122 PASS**, including 48 new cases. Coverage includes all three companies,
+  **125/125 PASS**, including 47 new cases. Coverage includes all three companies,
   tenant/customer/property/crew separation, absent property identity, pagination,
   allowlist/detachment, revoked worker/member, post-await mutation, stale
   job/visit/assignment, explicit confirmation, forged reviews, concurrent holds,
@@ -159,7 +159,12 @@ Independent review then reproduced a P2 read-scope race: the pre-await office
 classification survived an actual downgrade because later checks discarded their
 classification result. The bound classification and explicit post-await review
 checks above fix that case; the actual membership-transition regressions preserve
-its denial expectation. Final independent closure remains main's responsibility.
+its denial expectation. Independent review also reproduced a legacy compatibility
+regression: active estimators offered by the existing Jobs form were rejected by
+new crew-only restrictions. Those restrictions now apply only to the optional fifth
+reviewed-crew argument; the original four-argument active-member semantics remain
+compatible. Three actual repository regressions preserve both paths. Main records
+final exact independent closure in the consolidated review.
 Unchanged parent CI and broad native/recovery/provider baselines were not rerun.
 
 This is a local partial foundation: no real work dispatch, future crew-slot
