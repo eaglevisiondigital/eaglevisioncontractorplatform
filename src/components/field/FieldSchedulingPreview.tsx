@@ -25,6 +25,12 @@ import {
 import { useResource } from '../forms-state';
 import { PlatformBrand } from '../PlatformBrand';
 import { maintenanceScheduleHandoffEnabled } from '../../lib/maintenance-schedule-handoff';
+import { fieldWorkOrdersEnabled } from '../../lib/field-work-orders';
+const FieldWorkOrdersPreview = lazy(() =>
+  import('./FieldWorkOrdersPreview').then((m) => ({
+    default: m.FieldWorkOrdersPreview,
+  })),
+);
 const MaintenanceScheduleHandoffPreview = lazy(() =>
   import('./MaintenanceScheduleHandoffPreview').then((m) => ({
     default: m.MaintenanceScheduleHandoffPreview,
@@ -89,6 +95,20 @@ export function FieldSchedulingPreview() {
           company={company}
           repo={propertyRepository(operations)}
         />
+        {fieldWorkOrdersEnabled({
+          development: import.meta.env.DEV,
+          flag: import.meta.env.VITE_FIELD_WORK_ORDERS_PREVIEW,
+          hostname: window.location.hostname,
+          protocol: window.location.protocol,
+        }) && (
+          <Suspense fallback={<p role="status">Loading local work orders…</p>}>
+            <FieldWorkOrdersPreview
+              key={company.id}
+              company={company}
+              repo={propertyRepository(operations)}
+            />
+          </Suspense>
+        )}
         {maintenanceScheduleHandoffEnabled({
           development: import.meta.env.DEV,
           flag: import.meta.env.VITE_MAINTENANCE_SCHEDULE_HANDOFF_PREVIEW,
