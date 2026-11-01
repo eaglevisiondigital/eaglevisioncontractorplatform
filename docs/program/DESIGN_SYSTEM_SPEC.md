@@ -98,3 +98,29 @@ dependencies. Independent integration review checks combined types, ownership,
 source identity, accessibility and protected hashes. Leave all branches unmerged.
 No source/hash test or visual approval authorizes P1 recovery, hosted Auth/SQL,
 NMI/provider/financial execution, customer communication, deployment or release.
+
+## Cycle-three extension contracts
+
+The five Cycle3 candidates extend their existing context on separate exact-parent
+branches. Sales, Finance and Field add scoped components; Passport and Growth add
+unwired readers only. They do not replace the approved customer or contractor UI.
+
+| Candidate               | Required presentation and evidence                                                                                                                                                                                                                                                                    |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Sales scope review      | Separate exact issued version, actual test preference/receipt and contract-authority status. Prefer labeled scope/totals and explicit blocked/unknown states. No signing or approval button. Isolated mobile headers remain in document flow; muted labels must pass contrast in all three palettes.  |
+| Field work orders       | Existing job identity and issued baseline, crew relationship and own recorded time are separate facts. Office controls never survive a role/context change. An assignment is not dispatch; a day/visit is not an invented future shift. Source navigation moves keyboard focus to the exact evidence. |
+| Finance margin coverage | Show source category, committed/paid/forecast distinctions and missing coverage before totals. Retain canonical currency/minor units. A horizontally scrollable labeled table may preserve readable columns on mobile; the page itself must fit the viewport. No earned-margin or settlement claim.   |
+| Passport documentation  | Preserve customer/property/report/version/plan/job reference identity and readable UNKNOWN links. A checklist, after-phase report or staff record is evidence with stated limits, never a completion, warranty or customer-approval badge. No new customer route in this package.                     |
+| Growth reminder review  | Separate an anchored plan occurrence or manual follow-up date from channel consent, purpose consent, suppression and enrollment. Communication remains BLOCKED; no recipient, send control, outbox or background scheduler. No new screen in this package.                                            |
+
+Main owns the shared evidence-tool routing: new scoped styles remain A8, while
+Sales/Field/Finance/Passport/Growth source readers belong to A2/A3/A4/A5/A6. These
+are review owners, never access grants. The optional Finance demo HTML is included
+when present in the public inventory; no prototype is mounted by the checker.
+
+Each interactive candidate is exercised in actual desktop/tablet/mobile browsers
+with all three existing contractor palettes, keyboard/accessible names, axe checks,
+empty/error/default-OFF and late-context behavior. Retained screenshots are local
+synthetic evidence. Successful tests do not approve promotion or certify every
+possible state. See the exact combined [review record](CYCLE3_INTEGRATION_REVIEW.md)
+and [delivery register](../PROGRAM_DELIVERY_STATUS.md) before integration.

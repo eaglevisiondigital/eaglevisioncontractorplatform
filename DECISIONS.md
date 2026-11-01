@@ -1,5 +1,20 @@
 # Engineering decisions
 
+## November 1 · deliver five isolated cycle-three extensions without integration
+
+The owner explicitly authorized working local sales handoff, technician work orders/
+crew/day foundations, existing-engine margin analysis, Passport job documentation
+and consent-aware reminder review. Preserve child parents from exact PR7/8/6/9/10;
+main coordination starts exact25ae406 after final PR10 Foundation confirmation.
+Independent review precedes final delivery; separate draft PRs and a disposable
+combined source test do not merge or promote candidates. Main owns shared design/
+data contracts/register/checker. Field alone may retain existing sample assignment
+Rows in Phase3, with no new schema or connected grant. Other packages add narrow
+read projections/components over actual existing sources, not duplicate systems.
+Treat UNKNOWN, source staleness, role downgrade, absence and incomplete history
+honestly. NMI operational acceptance stays UNVERIFIED; no provider/credential probe.
+No locked UI redesign, physical PASS, hosted action, financial execution or merge.
+
 ## November 1 · preserve the PR stack and extend existing objects in cycle two
 
 Owner separately authorized the next CRM pagination, exact maintenance scheduling,

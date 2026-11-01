@@ -1,12 +1,12 @@
 {
   "schema": "propel-public-source-inventory-v1",
   "date": "2026-11-01",
-  "baselineCommit": "e44d668fe8bfd262be126020a0c1be9fa110046b",
-  "package": "Cycle-two coordination candidate over exact PR5; design/check tooling included, separate parent/child packages excluded.",
+  "baselineCommit": "25ae406974f470d1a46d3909ddd00fe07c388240",
+  "package": "Cycle-three coordination candidate over exact PR10; shared contracts/design/check tooling included, separate parent/child packages excluded.",
   "limits": [
     "Path/hash/primary-owner inventory of declared public roots and configuration only; not a line-by-line security certification.",
     "Private/hidden trees, symlinks, dependencies, build output and browser artifacts excluded.",
-    "PR2–PR4 and cycle-two PR6–PR9 remain separate; not represented as integrated source.",
+    "PR2–PR4, cycle-two PR6–PR9 and cycle-three PR11–PR15 remain separate; not represented as integrated source.",
     "Per-file SHA-256 binds this snapshot; rerun the read-only tool for current source."
   ],
   "roots": [
@@ -24,6 +24,7 @@
     "package.json",
     "package-lock.json",
     "index.html",
+    "preview-job-margin-demo.html",
     "vite.config.ts",
     "vitest.config.ts",
     "playwright.config.ts",
@@ -1250,8 +1251,8 @@
     {
       "path": "scripts/feature-evidence.mjs",
       "owner": "A8",
-      "bytes": 14078,
-      "sha256": "778269b213d3970858c044919b17fe0fe18f85b7ac00f5e5e6c51cbdab5b6d47"
+      "bytes": 14618,
+      "sha256": "4414b7c229f1474ed33249e099b21b3621eb7775d55dcdc9905ac83e39bb9ff5"
     },
     {
       "path": "scripts/generate-db-types.mjs",
@@ -2024,8 +2025,8 @@
     {
       "path": "tests/program-feature-evidence.test.ts",
       "owner": "A8",
-      "bytes": 10371,
-      "sha256": "ca9b9a8129d42fe1413fd742f845f38cc5e336fae26498a5358d70811885da40"
+      "bytes": 11652,
+      "sha256": "ff5105186bbd86f072ddfecb7adae24d5f7a7d818763d13eda96f8313fc6b2f9"
     },
     {
       "path": "tests/property-acceptance-journal.test.ts",
@@ -2477,6 +2478,5 @@
       "bytes": 960,
       "sha256": "38f97f322f8816a05c71145ff8836b174488efc66259688c16dfdb8a004583fe"
     }
-  ],
-  "ownerMeaning": "Primary review lane from explicit paths then keyword fallbacks; not an authorization grant or replacement for named PR write ownership."
+  ]
 }

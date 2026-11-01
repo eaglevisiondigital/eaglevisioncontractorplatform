@@ -1,5 +1,122 @@
 # Product program delivery status
 
+## Cycle three · delivered isolated foundations · November 1
+
+Main branch `codex/program-cycle-three` starts at exact PR10
+`25ae406974f470d1a46d3909ddd00fe07c388240`. PR10 Foundation
+[41359672391](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41359672391)
+and compatibility [41359672507](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41359672507)
+are independently confirmed SUCCESS. Both Foundation jobs and every required step
+passed; no successful check was rerun or validation weakened. PR6–9 successful CI
+is retained. No reviewed parent was rewritten, merged or deployed.
+
+### Actual Cycle3 ownership and dependency stack
+
+This is a bounded session roster, not persistent background execution. Sales and
+Finance authors completed their assignments before successive Field/Passport review
+slots. At final coordination, main owns delivery and the independent reviewer owns
+read-only combined checks; all implementation agents are complete.
+
+| Actual owner                                      | Branch / exact reviewed parent                                                          | Draft PR / exact implementation head                                                                                           |
+| ------------------------------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `/root/cycle3_sales`, delivered by main           | `codex/program-sales-approval-handoff` / PR7 `7fc529d1a1c68fd349e70410d79ef8a21cf0e475` | [#11](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/11), `4460c4a200e00c1b976a2305e04c3c01e1c386f5` |
+| `/root/cycle3_finance`, delivered by main         | `codex/program-job-margin-analysis` / PR6 `5329b0cc226f55cef3ee2862cb690cd7ed3f62b4`    | [#12](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/12), `1104a1e0bf44fa1089e78408ed6a9eeb7d2c7b20` |
+| `/root`, Growth implementation                    | `codex/program-growth-reminders` / PR10 `25ae406974f470d1a46d3909ddd00fe07c388240`      | [#13](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/13), `169e67955eedd70285a6f42993da6632e5749401` |
+| `/root/cycle3_field`, delivered by main           | `codex/program-field-work-orders` / PR8 `a85946557f449f3ae944d609c4eaa9e028c3f665`      | [#14](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/14), `921c8083046901f457374677d52fe7b14e097c86` |
+| `/root/cycle3_passport`, delivered by main        | `codex/program-passport-job-history` / PR9 `081532fa1e7ec06d0bc9c02700ba018070a0cb2c`   | [#15](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/15), `d14da6a4b4aae505eedfbd5c6d8b912ecc6c3fb4` |
+| `/root`, shared contracts/design/register/tooling | `codex/program-cycle-three` / PR10 `25ae406974f470d1a46d3909ddd00fe07c388240`           | Separate coordination draft; exact pushed head and CI are authoritative                                                        |
+| `/root/cycle3_integration_review`                 | Disposable combined exact sources, no authored package/merge                            | [Independent review](program/CYCLE3_INTEGRATION_REVIEW.md)                                                                     |
+
+### Working components and source-based acceptance
+
+| Candidate                 | Actual implementation                                                                                                                                                                                                                                                                                                                                                                                                                    | Focused local results                                                                                                                                                                                                |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Sales / SAL-001, EST-001  | Default-OFF isolated issued-scope/actual ReleasePreview preference and receipt review. Exact CRM, current staff, immutable version/hash and stale/declined/changes-requested/UNKNOWN distinctions; contract execution BLOCKED. No automatic interpretation of customer notes.                                                                                                                                                            | 66 related application cases, including28 new;9 browser cases across three palettes and desktop/tablet/mobile. Keyboard, axe, context races, responsive page containment and private-field exclusion PASS.           |
+| Field / FLD-002, JOB-001  | Existing jobs as work orders, immutable issued baseline, exact inspection-plan/job links, crew relationship and own recorded time/day evidence. Explicit reviewed sample assignment uses current staff, source/CAS and one attempt. Legacy four-argument active-member behavior preserved; new crew/Worker restrictions only on optional reviewed path. Lost ACK remains UNKNOWN, even when exact read sees a relationship. No dispatch. | 125 focused application cases, including47 new;6 browser cases, all brands/viewports, source focus, manual confirmation, technician view, dates, empty/error/default-OFF, axe/overflow/external-request checks PASS. |
+| Finance / FIN-002         | Unwired default-OFF source/expense/locked-labor coverage and category variance over canonical jobFinancials. Existing integer/currency rules; incomplete data withholds unsupported totals. Isolated actual component; no second cost engine or ledger. Eight finite NMI gates all UNVERIFIED; execution/credentials/provider/hosted flags false.                                                                                        | 141 focused cases, including30 new;3 browser cases each covering all brands, desktop/tablet/mobile, staff denial, UNKNOWN/OFF, axe/page overflow and no external requests PASS.                                      |
+| Passport / CUS-002        | Unwired default-OFF authorized job/issued-scope history and exact report→visit→immutable plan→job links. Retained references/hash, explicit unknown links, current safe-scope/version checks and frozen allowlist. No completion/warranty/approval inference, new customer route or store.                                                                                                                                               | 122 related cases, including58 new; exact identity/order-independent reference, source drift, foreign/same-address property, safe-field and immutable evidence cases PASS. No UI/browser claim.                      |
+| Growth / GRO-001, GRO-002 | Working read-only recurrence/manual follow-up review over existing plans/maintenance and CRM consent. Anchored timezone-aware dates, bounded counts, exact source/member/consent rechecks. Channel evidence is separate from purpose/suppression/enrollment; communication BLOCKED, recipient/provider request null.                                                                                                                     | 32 new application cases over all three companies, actual scheduling/consent sources, source/member drift, malformed/foreign inputs, safe fields and no mutation PASS. No UI or background scheduler.                |
+| Main / QA-001, UX-001     | Shared interchange/design contracts, exact source-owner routing and optional Finance demo inventory; no prototype mount. Existing five CSS/artwork locks/thirteen bindings and original18 IDs/25 records retained.                                                                                                                                                                                                                       | 26 focused evidence/design cases PASS; root and combined source checks retain mandatory lock validation.                                                                                                             |
+
+All candidate branches pass their focused strict types, lint, format and build
+checks. Application counts share older suites and are not additive acceptance totals.
+Combined final verification: **221 distinct focused cases PASS** (reviewer216 plus
+5 design cases), strict types/lint/build PASS and **18 actual browser cases PASS**,
+with a justified6-case final Field recheck. Independent verdict CLEAR for isolated
+local draft-PR review; all subagent assignments are complete. Local tests never
+stand in for hosted security, physical recovery, genuine Auth or release acceptance.
+
+Independent review closed three concrete P2 defects: stale office classification
+across actual membership downgrade; key-order-sensitive retained Passport reference
+comparison; and legacy sample-assignment eligibility regression. Actual regressions
+preserve each correction. Combined testing also corrected one new Passport fixture
+that used a foreign customer with the wrong customer's location; existing CRM
+validation and full isolation assertions remain intact. No weakened validation.
+
+### Combined verification and exact CI
+
+Final combined focused/source/browser status is recorded in
+[Cycle3 review evidence](program/CYCLE3_INTEGRATION_REVIEW.md). It composes exact
+C2/C3 patches in a disposable checkout without a Git merge or branch promotion.
+Shared Phase3 combines the exact CRM parent changes with the narrow reviewed Field
+assignment additions; no reviewed parent is replaced by an older whole file.
+Read-only generated type/migration/property/customer/4B/broker integrity checks PASS.
+125 protected public paths and five private frozen P1/Netlify bindings remain exact.
+Source hashes and25 valid citations are not operational acceptance.
+
+| Exact candidate | Foundation                                                                                                                                   | Other automatic checks                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| PR11 `4460c4a`  | [41361984405](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41361984405): SUCCESS                         | [compatibility41361984207](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41361984207): SUCCESS                                                                                                                                                                                                                                                                                                                                                        |
+| PR12 `1104a1e`  | [41361993346](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41361993346): SUCCESS                         | [compatibility41361993280](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41361993280): SUCCESS                                                                                                                                                                                                                                                                                                                                                        |
+| PR13 `169e679`  | [41362034657](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41362034657): SUCCESS                         | [compatibility41362034527](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41362034527): SUCCESS                                                                                                                                                                                                                                                                                                                                                        |
+| PR14 `921c808`  | [41363020028](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41363020028): IN PROGRESS at snapshot         | [compat41363019961](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41363019961), [field41363019965](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41363019965), [handoff41363019973](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41363019973), [work-orders41363020030](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41363020030): SUCCESS |
+| PR15 `d14da6a`  | [41362959691](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41362959691): IN PROGRESS at initial snapshot | [compatibility41362959712](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41362959712): SUCCESS                                                                                                                                                                                                                                                                                                                                                        |
+| Coordination    | New exact pushed commit requires its own normal CI                                                                                           | No inherited green claim                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+
+These are time-bound snapshots; the linked final run and exact SHA are authoritative.
+No successful check was manually restarted. Normal automatic CI may exercise retained
+baseline suites; those are not repeated manually as a substitute for implementation.
+
+### Local demonstrations and remaining dependencies
+
+Use each named child worktree: the coordination checkout does not contain unmerged
+candidate modules. Field: both `VITE_FIELD_SCHEDULING_PREVIEW=true` and
+`VITE_FIELD_WORK_ORDERS_PREVIEW=true`, loopback dev server, then
+`http://127.0.0.1:4203/preview/field-scheduling`. Review a work order, choose an existing
+worker, confirm the exact relationship, then switch to that technician. Future crew
+slots, dispatch and completion stay UNKNOWN/unimplemented.
+
+Sales: `VITE_SALES_HANDOFF_TEST=true`, loopback dev server on4196, then
+`http://127.0.0.1:4196/tests/browser/fixtures/sales-handoff.html`; choose company and
+preference and explicitly prepare actual local test evidence. Finance:
+`VITE_JOB_MARGIN_PREVIEW=true`, loopback dev server on4188, then
+`http://127.0.0.1:4188/preview-job-margin-demo.html`. No real financial action is
+available. Both standalone harnesses require DEV, exact flag and literal loopback
+before fixture construction. Passport and Growth deliberately have no route.
+
+Real synthetic screenshots are retained in each worktree and the disposable combined
+checkout: Sales `artifacts/phase3/*-sales-handoff-*.png`, Finance
+`artifacts/finance/job-margin-*.png`, Field `artifacts/property/field-work-orders-*.png`.
+Each includes desktop/tablet/mobile and all three palettes; representative desktop
+and mobile states were visually inspected. Screenshots are not committed as private
+or business evidence and do not certify actual physical devices.
+
+Next independent package: review the five candidates and define a bounded manual
+crew-day capacity/conflict projection over the existing jobs/visits/assignments,
+without dispatch or another schedule store. Sales still needs genuine signing/terms/
+Auth/custody acceptance; Finance needs separately authorized merchant/provider/
+accountant/currency/settlement/NMI evidence. Passport requires a separately bounded
+consumer and documentation policy before wiring; Growth requires purpose consent,
+suppression/enrollment/sender policy before any communication. Missing sources remain
+UNKNOWN; no same-address/text matching, new IDs, retry or replay bypass.
+
+All thirteen historical migrations, pending customer14/original4B, frozen P1/four
+artifacts/approvals, locked interfaces/artwork,2A–2F/billing, original Netlify package/
+executor, recovery/P1-on13/separate14/exact4B+broker, NMI/Auth/financial/provider/
+communication/production gates remain unchanged. No hosted writes, credentials,
+financial execution, messages, deployment or merge. **Release1.0 remains NOT READY /
+NOT AUTHORIZED.**
+
 ## Cycle two · delivered isolated candidates · November 1
 
 Integration branch: `codex/program-cycle-two`, from exact PR #5 coordination

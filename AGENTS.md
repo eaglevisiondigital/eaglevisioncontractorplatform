@@ -1,3 +1,17 @@
+Cycle3 continuation: owner authorized isolated local sales approval-to-contract review,
+field work orders/retained existing sample assignments/daily planning, existing-engine
+margin analysis, existing-source Passport job documentation and consent-aware reminder
+review. Read docs/program/CYCLE3_ASSIGNMENTS.md and shared/design contracts first.
+PR10 exact25ae406 Foundation+compat confirmed PASS; no rerun. Children from exact7/8/
+6/9/10, coordination from exact10; no merge/rewrite/promotion. Field alone owns narrow
+Phase3 sample assignment retention/reader, all other modules use existing types/engines.
+Main owns shared contracts/register; independent reviewer checks combined sources.
+No new schema/store/ledger, connected capability, dispatch, physical completion or
+contract/financial/message authority. Unfinished modules defaultOFF/unwired. Preserve
+all13/customer14/original4B/P1/four/approvals/lockedUI/2A–2F/billing/Netlify/executor and
+recovery/NMI/Auth/provider/financial/hosted/deploy/merge gates. Release1.0 NOT READY /
+NOT AUTHORIZED. No persistent background execution.
+
 Cycle2 continuation: read docs/PROGRAM_DELIVERY_STATUS.md, program/SHARED_CONTRACTS.md
 and program/DESIGN_SYSTEM_SPEC.md. Owner authorized next independent local CRM paged
 selection, exact maintenance scheduling handoff, unwired finance export and existing-

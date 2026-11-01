@@ -1,5 +1,15 @@
 # Production Release 1.0 acceptance checklist
 
+Cycle3 local-development update (November1): five separately stacked draft candidates
+provide issued-scope/preference handoff, technician work orders/manual crew, canonical
+margin coverage, exact customer-safe Passport job documentation and consent-aware
+reminder review. Independent combined source review is CLEAR with221 distinct focused
+cases and18 responsive browser cases PASS. See [delivery status](PROGRAM_DELIVERY_STATUS.md)
+and [review evidence](program/CYCLE3_INTEGRATION_REVIEW.md) for exact commits/CI/limits.
+Nothing is merged, promoted, dispatched, sent or financially executed. Recovery/P1-on13/
+separate14/exact4B+broker and NMI/Auth/provider/financial/Netlify gates remain independent.
+**Release1.0 remains NOT READY / NOT AUTHORIZED.**
+
 ## November 1 · parallel development evidence, no release upgrade
 
 [Program delivery](PROGRAM_DELIVERY_STATUS.md) and the expanded

@@ -272,3 +272,30 @@ it('cannot bypass project design validation by removing its pointer or dropping 
   writeFileSync(path, JSON.stringify(contract));
   expect(() => runFeatureEvidence(root)).toThrow('Complete project design');
 });
+
+it('keeps cycle-three review packages with existing business owners without moving shared design or sender authority', () => {
+  expect(sourceOwner('src/lib/growth-reminders.ts')).toBe('A6');
+  expect(sourceOwner('tests/program-growth-reminders.test.ts')).toBe('A6');
+  expect(sourceOwner('src/lib/sales-approval-handoff.ts')).toBe('A2');
+  expect(sourceOwner('src/domain/jobs/margin-analysis.ts')).toBe('A4');
+  expect(sourceOwner('src/domain/property/passport.ts')).toBe('A5');
+  expect(sourceOwner('src/lib/field-work-orders.ts')).toBe('A3');
+  expect(sourceOwner('src/components/finance/job-margin.css')).toBe('A8');
+  expect(sourceOwner('server/communications/preparation.ts')).toBe('A2');
+});
+
+it('inventories the explicitly declared isolated finance demo without collecting arbitrary root HTML', () => {
+  const { root } = fixture();
+  writeFileSync(
+    join(root, 'preview-job-margin-demo.html'),
+    '<title>Local finance fixture</title>',
+  );
+  writeFileSync(join(root, 'private-not-declared.html'), 'not inventoried');
+  const result = inventorySources(root);
+  expect(
+    result.files.find((f) => f.path === 'preview-job-margin-demo.html')?.owner,
+  ).toBe('A4');
+  expect(result.files.some((f) => f.path === 'private-not-declared.html')).toBe(
+    false,
+  );
+});

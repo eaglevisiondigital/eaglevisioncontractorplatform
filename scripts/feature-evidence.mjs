@@ -39,6 +39,7 @@ const rootFiles = [
   'package.json',
   'package-lock.json',
   'index.html',
+  'preview-job-margin-demo.html',
   'vite.config.ts',
   'vitest.config.ts',
   'playwright.config.ts',
@@ -330,6 +331,14 @@ export function sourceOwner(path) {
     )
   )
     return 'A2';
+  // New isolated review packages retain their business owner; shared CSS above
+  // remains an A8 design lane. Classification is metadata, never authorization.
+  if (/growth-reminder|GrowthReminder/.test(path)) return 'A6';
+  if (/sales-approval-handoff|sales-handoff|SalesApprovalHandoff/.test(path))
+    return 'A2';
+  if (/job-margin|margin-analysis|JobMargin/.test(path)) return 'A4';
+  if (/passport|Passport/.test(path)) return 'A5';
+  if (/field-work-order|FieldWorkOrder/.test(path)) return 'A3';
   if (/^tests\/program-finance/.test(path)) return 'A4';
   if (
     /^(server\/(payments|providers)\/|src\/domain\/jobs\/financials|tests\/(payments|payment-|provider-|database\/(payment-|provider-)))|\/(contracts|communications)\//.test(
