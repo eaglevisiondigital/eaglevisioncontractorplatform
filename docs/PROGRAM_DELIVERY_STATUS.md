@@ -24,7 +24,7 @@ read-only combined checks; all implementation agents are complete.
 | `/root`, Growth implementation                    | `codex/program-growth-reminders` / PR10 `25ae406974f470d1a46d3909ddd00fe07c388240`      | [#13](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/13), `169e67955eedd70285a6f42993da6632e5749401` |
 | `/root/cycle3_field`, delivered by main           | `codex/program-field-work-orders` / PR8 `a85946557f449f3ae944d609c4eaa9e028c3f665`      | [#14](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/14), `921c8083046901f457374677d52fe7b14e097c86` |
 | `/root/cycle3_passport`, delivered by main        | `codex/program-passport-job-history` / PR9 `081532fa1e7ec06d0bc9c02700ba018070a0cb2c`   | [#15](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/15), `d14da6a4b4aae505eedfbd5c6d8b912ecc6c3fb4` |
-| `/root`, shared contracts/design/register/tooling | `codex/program-cycle-three` / PR10 `25ae406974f470d1a46d3909ddd00fe07c388240`           | Separate coordination draft; exact pushed head and CI are authoritative                                                        |
+| `/root`, shared contracts/design/register/tooling | `codex/program-cycle-three` / PR10 `25ae406974f470d1a46d3909ddd00fe07c388240`           | [#16](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/16); exact pushed head and CI are authoritative |
 | `/root/cycle3_integration_review`                 | Disposable combined exact sources, no authored package/merge                            | [Independent review](program/CYCLE3_INTEGRATION_REVIEW.md)                                                                     |
 
 ### Working components and source-based acceptance
