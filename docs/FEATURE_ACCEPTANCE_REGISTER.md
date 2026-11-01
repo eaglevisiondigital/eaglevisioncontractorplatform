@@ -39,7 +39,7 @@ results belong in [delivery status](PROGRAM_DELIVERY_STATUS.md).
 The [master delivery register](PROGRAM_DELIVERY_STATUS.md) now records five further
 isolated candidates: exact issued-scope/actual-preference contract handoff, technician
 work orders and existing sample crew assignments, canonical job-margin coverage,
-customer-authorized Passport job documentation, and consent-aware reminder review.
+customer-safe Passport job documentation over authorized synthetic sources, and consent-aware reminder review.
 These have working modules and source-based tests, not operational acceptance. Their
 source stays in child draft PRs; this coordination branch does not silently integrate
 it or upgrade any full-capability status below. No new business store/schema/ledger,
