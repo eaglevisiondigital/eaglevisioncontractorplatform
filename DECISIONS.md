@@ -1,5 +1,19 @@
 # Engineering decisions
 
+## October 31 · implement the missing 4B broker locally while hardware is pending
+
+New owner direction authorizes real local server/restricted-PG integration without
+waiting for hardware or expanding synthetic transactions. Reuse actual SDK and4B
+decision/receipt/staff paths; preserve original SQL. Add separate committed server
+admission and ownership/grant proposals, exact backend/role/catalog gates, and actual
+process-loss/direct-permission tests. Keep browser selectors untrusted, default off,
+UNKNOWN read-only and no role provisioning/network route/credential factory. Scoped
+NOLOGIN ownership proofs do not certify historical elevated helpers, operational Auth,
+CREATE/stats exposure, external restore custody or physical recovery. The next step
+remains separately authorized genuine request→receipt→staff acceptance after original
+recovery/P1-on13/separate14/exact4B+broker ownership/hash/target/grant/mapping gates.
+See docs/CUSTOMER_BROKER_INTEGRATION.md; all frozen approvals/release restrictions persist.
+
 ## October 31 · stop expansion and resume the actual physical recovery gate
 
 Use existing credential-free rehearsal software and retained evidence. Correct the

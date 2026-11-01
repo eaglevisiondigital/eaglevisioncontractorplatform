@@ -412,6 +412,11 @@ export class ConnectedCustomerSdk {
       }),
     };
   }
+  /** Verified read context for an unwired server broker; no bearer or mutation authority. */
+  async verifiedSession() {
+    const c = await this.capture();
+    return { user_id: c.user, session_id: c.session };
+  }
   discover = () => this.request('customer_portal_discover', {}, 'reads');
   review = (c: CustomerContext, version: string) =>
     this.request(

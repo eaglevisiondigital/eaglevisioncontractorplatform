@@ -1,5 +1,20 @@
 # Production Release 1.0 acceptance checklist
 
+## 4B broker/security integration · local evidence only · October 31
+
+[Broker implementation](CUSTOMER_BROKER_INTEGRATION.md) now composes existing verified
+SDK semantics and actual restricted PostgreSQL admission/claim/decision/receipt/staff
+reads. Three NOLOGIN owners, exact runtime privileges/column grants and live catalog/
+connection checks pass locally.39 new native cases and controlled-provider Auth tests
+are not genuine Auth/operational ownership or physical recovery acceptance. Historical
+elevated helpers/installing owner, core CREATE/statistics and external restore custody
+remain unverified. No operational URL/credential loader/route/capability or hosted
+installation exists; operationalReady remains false. Independent recovery→original
+approved P1-on13→separate14→exact4B+broker ownership/hash/grants/target/mappings→separately
+authorized internal request/receipt/staff acceptance remain blocked gates. No duplicate
+P1 approval, new financial/revision/delivery authority or4C expansion. Original frozen
+evidence/interfaces/approvals/Netlify/2A–2F/billing remain. **NOT READY / NOT AUTHORIZED.**
+
 ## Workstream 4B · local persistence evidence only · October 31
 
 [Implementation](CUSTOMER_REQUESTS_PERSISTENCE.md) and validation record actual native

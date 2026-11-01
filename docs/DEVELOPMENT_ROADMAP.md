@@ -1,5 +1,18 @@
 # Bounded development roadmap
 
+## October 31 · broker implemented locally; next genuine acceptance gates
+
+[4B broker/security integration](CUSTOMER_BROKER_INTEGRATION.md) supplies the locally
+executable missing server boundary and actual restricted-database evidence. No further
+synthetic customer package or parallel estimate engine is needed. Next practical step:
+finish the existing independent-device recovery prerequisite, then original approved
+P1-on13 and separately authorized14/4B+broker ownership/hash/target/grants/mapping/Auth
+scope for one real internally operated request→receipt→eligible staff read. Historical
+helper/installer, core CREATE/stats, external restore custody and genuine provider/
+dedicated operational connection evidence remain explicit gates. No hosted execution
+is authorized. Local progress does not claim recovery completion or operational GO.
+All locked interfaces/frozen artifacts/approvals/billing/financial/Netlify restrictions persist.
+
 ## October 31 · Workstream 4B complete locally; next exact internal acceptance
 
 [Persisted requests/receipts/staff reader](CUSTOMER_REQUESTS_PERSISTENCE.md) implement

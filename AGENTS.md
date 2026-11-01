@@ -1,3 +1,18 @@
+4B broker continuation: read docs/CUSTOMER_BROKER_INTEGRATION.md, validation and
+CUSTOMER_BROKER_REVIEW.json before older4B notes. Owner authorized local server/SQL
+composition while physical hardware is pending; no new synthetic feature. Reuse actual
+SDK/4B gateway/ledger/receipt/staff reader. Server UUID/source admission commits before
+original issuer claim; exact dedicated registrar/issuer/executor/reader and NOLOGIN
+owners/column/catalog checks apply. UNKNOWN exact read only, no replay/rebind/newID/
+publication bypass; finite independently provisioned one-use role pairs. Defaultoff
+disposablePG17 only; no operational factory/credentials/App route/network mutator.
+Original4B/14 unchanged. Historical helper/installer TCB, core CREATE/stats, genuine
+Auth, dedicated operational custody/external pre-admission restore protection and
+physical recovery remain unverified; operationalReady false. Next only separately
+authorized genuine internal request->receipt->staff acceptance after recovery/original
+P1-on13/separate14/exact4B+broker ownership/hash/grants/mapping/target. Preserve all13/
+customer14/P1/four/approvals/locked UIs/2A–2F/billing/Netlify/recovery/financial/deploy/merge.
+
 Workstream 4B continuation: read docs/CUSTOMER_REQUESTS_PERSISTENCE.md, validation and
 CUSTOMER_REQUESTS_FORWARD_REVIEW.json. Separate default-deny forward proposal after
 unchanged14 extends existing private decision ledger; no second business store. Native

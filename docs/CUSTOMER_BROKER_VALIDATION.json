@@ -1,0 +1,103 @@
+{
+  "workstream": "4B_BROKER_SECURITY_INTEGRATION",
+  "date": "2026-10-31",
+  "baseCommit": "0b0c47103c3f864de49fc33f484b60d76d8baeb3",
+  "status": "LOCAL_IMPLEMENTED_OPERATIONAL_NO_GO",
+  "review": "CUSTOMER_BROKER_REVIEW.json",
+  "tests": {
+    "newNativePostgreSQL17": {
+      "passed": 39,
+      "cluster": "disposable UTF8; TCP disabled; actual separate restricted LOGIN backends and NOLOGIN owners",
+      "companies": 3,
+      "actualClientSigkillPhases": 4,
+      "lostAcknowledgmentPhases": [
+        "registrar COMMIT",
+        "writer result",
+        "consumer COMMIT"
+      ],
+      "actualBackendReplacementTested": true,
+      "ownerAndPrivateColumnDriftBlockBeforeAdmission": true,
+      "auth": "explicit synthetic native Auth/session rows; actual pinned SDK protocol through controlled provider transport",
+      "physicalDatabaseOrDiskRecoveryProven": false,
+      "preAdmissionDatabaseRestoreProtectionProven": false
+    },
+    "original4BGatewayRegression": {
+      "passed": 52,
+      "actualReactToSqlToStaffFlows": 9,
+      "reason": "shared gateway transaction refactor; old cases and business SQL unchanged",
+      "reusedPriorCompletedEvidence": true
+    },
+    "focusedApplication": {
+      "passed": 150,
+      "files": 7,
+      "newBrokerProtocolCases": 22,
+      "scope": "broker proof/intent/default-off and existing request, SDK, receipt, access and closed-Auth contracts"
+    },
+    "existingBrowserRegression": {
+      "passed": 9,
+      "spec": "customer.spec.ts",
+      "viewports": ["desktop", "tablet", "mobile"],
+      "companies": 3,
+      "axeViolations": 0,
+      "overflowFindings": 0,
+      "connectedCallbackAuthOrDataRequests": 0,
+      "uiChanged": false
+    },
+    "static": [
+      "strict types PASS",
+      "lint PASS",
+      "build PASS",
+      "generated database types PASS unchanged",
+      "migration/property/customer/original4B/broker integrity PASS",
+      "format check PASS",
+      "git diff check PASS"
+    ],
+    "correctedDuringValidation": "Restricted catalog lookup initially needed auth schema usage through regclass. Replaced with catalog OIDs; did not broaden runtime grants. Final39 native cases pass."
+  },
+  "mechanisms": {
+    "businessLedger": "existing private.customer_review_decisions; no duplicate business system",
+    "identity": "exact-bearer existing SDK getUser and current session RPC; target/subject/session/audience/role/MFA/expiry checks; opaque30s proof",
+    "requestIdentity": "SQL-generated UUIDs and authorized published source; browser cannot register principal or supply source hashes/roles/user/session",
+    "custody": "separate committed registrar admission then original independent issuer claim then exact bound full-XID one-shot consumer",
+    "reconciliation": "retained server admission reference -> existing exact receipt reader; absent outcome remains UNKNOWN, no replay/replacement",
+    "staff": "existing current eligible session/membership/MFA queue; strict safe projection",
+    "roles": "actual NOLOGIN/NOSUPER/NOBYPASS/NOCREATE/NOINHERIT owners; narrowly granted distinct LOGIN endpoints and independently pre-provisioned one-use issuer/executor pairs",
+    "databaseOwnership": "separate installer table owner; FORCE RLS; explicit per-owner read/insert and false-write row-lock policies",
+    "privateColumns": "core cannot SELECT estimate payload; identity owner cannot SELECT Auth email; drift gate checks exact allowed columns",
+    "connectionCustody": "four actual pinned backends; pre/post-query database/PID/start/session-user/current-user checks; mutator leases destroyed; reader claims transaction-local",
+    "operationalReady": false,
+    "appRouteMounted": false,
+    "connectionOrCredentialFactory": false,
+    "privateWriterAddedToSdkAllowlist": false
+  },
+  "preservation": {
+    "trackedProtectedFilesComparedWithBase": 151,
+    "trackedProtectedFilesChanged": 0,
+    "thirteenHistoricalMigrationsUnchanged": true,
+    "pendingCustomerFourteenUnchanged": true,
+    "customerFourteenSha256": "e3157e004c464fb2a4ab69e7a3a335a81d6bbbb0556d74234f3884f56d784ed1",
+    "original4BProposalUnchanged": true,
+    "original4BProposalSha256": "6178cee11c81593e3a90d0ef75f6194835019112877f50fc6eb5e692768d44af",
+    "frozenFourP1ArtifactsHashVerified": true,
+    "originalNetlifyArchiveHashVerified": true,
+    "approvedUiArtworkRecoveryNetlifyExecutorAndApprovalFilesUnchanged": true,
+    "READMEUnchanged": true,
+    "noJobContractInvoicePaymentOutboxEffects": true,
+    "recoveryHardwareGateUnchanged": true
+  },
+  "unverifiedOperationalDependencies": [
+    "Genuine internally operated Auth/session/provider acceptance",
+    "Historical privileged SECURITY DEFINER helper and installing/provisioning owner TCB",
+    "Core private-schema CREATE and pg_read_all_stats exposure",
+    "Secure operational dedicated connection and credential custody; no pooling",
+    "Independent external custody/anchor for pre-admission database restore or rewind",
+    "Actual physical recovery and separately scoped hosted recovery verification",
+    "Exact target-specific14/4B/broker ownership/hash/grant/mapping/publication authorization"
+  ],
+  "hostedActionsPerformed": false,
+  "credentialsRetrieved": false,
+  "genuineAuthSignInPerformed": false,
+  "newFeatureOrFinancialAuthority": false,
+  "release": "NOT READY / NOT AUTHORIZED",
+  "next": "After independent recovery/original approved P1-on13/separate14 and exact4B+broker ownership/hash/grants/mapping/target approvals, one genuinely authenticated internally operated request -> immutable receipt -> eligible staff read. No4C expansion."
+}

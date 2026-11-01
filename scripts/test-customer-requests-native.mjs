@@ -94,7 +94,9 @@ try {
     [
       'node_modules/vitest/vitest.mjs',
       'run',
-      'tests/database/customer-requests.test.ts',
+      process.argv.includes('--broker')
+        ? 'tests/database/customer-broker.test.ts'
+        : 'tests/database/customer-requests.test.ts',
       '--maxWorkers=1',
     ],
     {
@@ -102,7 +104,9 @@ try {
         ...process.env,
         EV_TEST_PG_SOCKET: temp,
         EV_TEST_PG_CI: '',
-        EV_CUSTOMER_REQUEST_BROWSER: 'true',
+        EV_CUSTOMER_REQUEST_BROWSER: process.argv.includes('--broker')
+          ? ''
+          : 'true',
       },
     },
   );

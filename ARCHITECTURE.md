@@ -1,5 +1,19 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## 4B broker · committed admission over the existing gateway
+
+[Server composition](docs/CUSTOMER_BROKER_INTEGRATION.md) reuses actual SDK verification,
+the existing ledger/claim/consumer/receipt and eligible staff reader. One additional
+private custody-metadata proposal derives source and UUIDs server-side and commits
+admission before the existing issuer claim. Separate restricted registrar/issuer/
+executor/reader backends are pinned before/after queries; no pool return/replay.
+New local ownership proposal and action-time catalog checks bind three NOLOGIN
+owners, narrow column grants, forced RLS and exact runtime function authority.
+No duplicate business store/Auth/estimate engine, App route, network writer, URL or
+credential factory. DisposablePG17-only composition defaults off. Historical helper/
+installer trust, core schema CREATE/stats and external restore custody remain explicit
+operational dependencies; no genuine provider or physical recovery proof is implied.
+
 ## Workstream 4B · existing ledger with separate command custody
 
 [Local persistence](docs/CUSTOMER_REQUESTS_PERSISTENCE.md) adds a forward proposal after

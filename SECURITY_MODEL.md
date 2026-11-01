@@ -1,5 +1,21 @@
 # Security model · Phase 2
 
+## 4B broker · scoped local trust boundary, operational NO-GO
+
+[Broker/security evidence](docs/CUSTOMER_BROKER_INTEGRATION.md) now includes actual
+restricted SQL composition and NOLOGIN function-owner tests. Exact-bearer SDK user/
+current session verification precedes opaque expiring server proofs; SQL still trusts
+that server attestation. Browser intents cannot register principals or supply hashes,
+roles/user/session/source identity. Separate committed admission fixes target custody
+before the original claim; UNKNOWN permits exact read only. Runtime CRUD/helper/SET
+ROLE, foreign/missing/current-access failures and backend replacement deny. Definer
+columns exclude private estimate payload/Auth email; catalog drift blocks dispatch.
+Original4B/14 and existing projections remain unchanged. Controlled Auth fixtures
+are not genuine hosted acceptance. Historical privileged helper/installer TCB, core
+private CREATE/cluster stats, secure connection custody, external database-restore
+protection and physical recovery remain unverified; operationalReady is always false.
+No connected route/capability/private network writer or hosted action is enabled.
+
 ## Workstream 4B · local command custody, operational trust still gated
 
 [Mechanism and limits](docs/CUSTOMER_REQUESTS_PERSISTENCE.md): strict server canonical

@@ -1,5 +1,26 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: 4B broker/security integration · October 31
+
+Owner authorized local broker engineering while independent hardware is unavailable.
+[Working integration](docs/CUSTOMER_BROKER_INTEGRATION.md) reuses the actual SDK/4B
+gateway/decision/receipt/staff contracts. Server-derived source/request identity and
+separate committed admission precede the original issuer/one-shot consumer. Four
+restricted dedicated LOGINs and three actual NOLOGIN owners are exercised in native
+PG17; action-time catalog/session/column checks fail closed.39 new native and150
+focused application cases pass; prior52 native4B/9 actual browser flows also pass
+after the shared gateway refactor. See validation for final static/browser evidence.
+No connected route/factory/credential loader or capability activation is added.
+Historical privileged helpers/installing owner, core CREATE/statistics, genuine Auth,
+dedicated operational custody and external pre-admission restore protection remain
+unverified; operationalReady stays false. Original4B/14/all13/P1/four/Netlify/locked
+UIs/approvals/2A–2F/billing remain unchanged. Physical recovery is still blocked,
+independently of this local work. Next: exact internally authenticated acceptance
+only after recovery/original approved P1-on13/separate14/4B+broker ownership/hash/
+grants/mappings/target review and authorization. No4C expansion or hosted action.
+Release1.0 NOT READY / NOT AUTHORIZED. Older stop-expansion notes below describe
+their checkpoint; this local broker continuation has separate owner direction.
+
 ## Latest: P1 physical recovery prerequisite · October 31
 
 Owner directs recovery closure before further transaction expansion. Preserve the
