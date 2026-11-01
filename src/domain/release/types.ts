@@ -163,6 +163,19 @@ export function verifyLedger(
   events: readonly PaymentEvent[],
 ) {
   const rows = entries.filter((e) => e.invoice_id === invoice.id);
+  const ownEvents = events.filter((e) => e.invoice_id === invoice.id);
+  const eventById = new Map<string, PaymentEvent>();
+  for (const event of ownEvents) {
+    if (
+      eventById.has(event.id) ||
+      event.provider !== 'synthetic' ||
+      !['synthetic_capture', 'synthetic_refund'].includes(event.kind)
+    )
+      throw new Error('Invalid invoice event provenance');
+    eventById.set(event.id, event);
+  }
+  const postedEvents = new Set<string>();
+  const rowIds = new Set<string>();
   let receivable = 0n;
   for (const e of rows) {
     if (
@@ -170,13 +183,42 @@ export function verifyLedger(
       e.currency !== invoice.currency ||
       e.customer_id !== invoice.customer_id ||
       !Number.isSafeInteger(e.amount_minor) ||
-      e.amount_minor <= 0
+      e.amount_minor <= 0 ||
+      rowIds.has(e.id)
     )
       throw new Error('Invalid ledger entry');
+    rowIds.add(e.id);
+    if (e.event_id === null) {
+      if (
+        e.debit_account !== 'receivable' ||
+        !['sales', 'tax_payable'].includes(e.credit_account)
+      )
+        throw new Error('Invalid invoice posting');
+    } else {
+      const event = eventById.get(e.event_id);
+      if (
+        !event ||
+        postedEvents.has(event.id) ||
+        e.amount_minor !== event.amount_minor ||
+        e.debit_account !==
+          (event.kind === 'synthetic_capture'
+            ? 'sandbox_clearing'
+            : 'receivable') ||
+        e.credit_account !==
+          (event.kind === 'synthetic_capture'
+            ? 'receivable'
+            : 'sandbox_clearing')
+      )
+        throw new Error('Ledger event provenance does not reconcile');
+      postedEvents.add(event.id);
+    }
     if (e.debit_account === 'receivable') receivable += BigInt(e.amount_minor);
     if (e.credit_account === 'receivable') receivable -= BigInt(e.amount_minor);
   }
-  if (receivable !== BigInt(invoiceBalance(invoice, events)))
+  if (
+    postedEvents.size !== ownEvents.length ||
+    receivable !== BigInt(invoiceBalance(invoice, events))
+  )
     throw new Error('Ledger does not reconcile');
   return Number(receivable);
 }
