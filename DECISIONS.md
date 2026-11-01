@@ -1,5 +1,22 @@
 # Engineering decisions
 
+## November 1 · coordinate the approved ecosystem through isolated local PRs
+
+Owner explicitly authorized the full parallel program and confirmed the two remote
+scope documents at `dc7ed7c2`. Preserve existing local changes/branches, fetch rather
+than reset, and use one coordination branch with three disjoint managed worktrees.
+Main integrator owns shared contracts and evidence tooling; agents own bounded sales,
+field and finance packages. Reuse actual repositories and canonical calculations;
+fix reproduced projection/ledger failures and add an isolated default-OFF read-only
+schedule instead of duplicating completed business systems. Retain all eighteen seed
+feature IDs, add seven cross-cutting records and distinguish scope/design/local/CI/
+hosted/release. Public source hashes and exact anchors do not certify acceptance.
+Separate reviewed draft PRs are delivery artifacts; no merge or automatic promotion.
+This direction supersedes old blanket expansion pauses for unrelated local work,
+while frozen recovery/P1-on13/separate14/4B+broker, original artifacts/approvals,
+locked UIs, billing proposals and hosted/financial/Netlify/release gates remain.
+See docs/PROGRAM_DELIVERY_STATUS.md; no persistent background execution is promised.
+
 ## October 31 · implement the missing 4B broker locally while hardware is pending
 
 New owner direction authorizes real local server/restricted-PG integration without

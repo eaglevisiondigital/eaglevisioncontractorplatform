@@ -1,5 +1,19 @@
 # Production Release 1.0 acceptance checklist
 
+## November 1 · parallel development evidence, no release upgrade
+
+[Program delivery](PROGRAM_DELIVERY_STATUS.md) and the expanded
+[feature register](FEATURE_ACCEPTANCE_REGISTER.md) record isolated local engineering,
+separate draft PRs and exact CI evidence. They do not reduce release scope or convert
+source/local/synthetic evidence into genuine hosted or commercial acceptance.
+The full product program is development authorization only. Original thirteen
+migrations, pending14, original4B/broker proposals, frozen P1/four artifacts, Netlify
+archive/executor, locked UIs and prior approvals remain protected. Physical recovery,
+operational Auth/custody/security/provider/communication and precise hosted approvals
+remain independent unfinished gates. No module gains financial execution, outside
+access, merge, deployment or launch authority. Release 1.0 remains NOT READY /
+NOT AUTHORIZED; original acceptance checklist below remains in force.
+
 ## 4B broker/security integration · local evidence only · October 31
 
 [Broker implementation](CUSTOMER_BROKER_INTEGRATION.md) now composes existing verified

@@ -1,5 +1,28 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: parallel product program initialized · November 1
+
+Owner confirmed the two scope documents at remote `dc7ed7c2`; they were fetched/read
+without resetting the existing checkout. [Delivery status](docs/PROGRAM_DELIVERY_STATUS.md)
+records the coordination branch and three isolated worktrees/draft PRs. Sales PR#2
+fixes mutable customer-offer source references; finance PR#3 binds existing ledger
+postings to exact payment events; field PR#4 adds a default-OFF loopback-only schedule
+over existing inspection visits and exact evidence. They remain separate unmerged
+review candidates. No locked interface replacement, new business store or engine.
+
+Main coordination adds 25 [feature records](docs/FEATURE_ACCEPTANCE_EVIDENCE.json),
+a declared-public-root source/hash/owner inventory, [shared contracts](docs/program/SHARED_CONTRACTS.md)
+and a read-only offline evidence checker with 18 focused tests. Source citations do
+not certify test execution/CI/hosted/release acceptance. Retained Action B core PASS
+is preserved; new genuine customer lifecycle/operational evidence remains blocked.
+See exact branch CI links and focused results in delivery status. No unnecessary
+manual recovery/Netlify baseline rerun. The broader owner program supersedes older
+stop-expansion notes only for unrelated isolated local engineering; original broker,
+recovery/P1-on13/separate14/4B authority and all release gates stay closed. No hosted
+writes, credentials, financial/provider/messages, deployment or merge. All protected
+artifacts/SQL/approvals/locked UIs and six PROPOSED billing enhancements unchanged.
+Release1.0 remains NOT READY / NOT AUTHORIZED.
+
 ## Latest: 4B broker/security integration · October 31
 
 Owner authorized local broker engineering while independent hardware is unavailable.

@@ -1,3 +1,21 @@
+November1 product-program continuation: read docs/PRODUCT_PROGRAM_2026.md,
+FEATURE_ACCEPTANCE_REGISTER.md, FEATURE_ACCEPTANCE_EVIDENCE.json,
+PROGRAM_DELIVERY_STATUS.md and program/SHARED_CONTRACTS.md. Owner explicitly authorized
+isolated parallel local work; older stop-expansion checkpoints do not halt unrelated
+engineering. Main integrator owns shared contracts/register/check tooling; disjoint
+A2 sales projection, A3 defaultoff loopback-only field preview and A4 existing ledger
+verifier live in separate draft PRs against codex/program-coordination. Do not merge
+or silently promote them. Existing CRM/estimate/property/job/financial objects remain
+authoritative. Source/hash inventory and local/CI proof never grant hosted acceptance.
+Run features:check with relevant checks; preserve original18 IDs and honest UNKNOWNs.
+Approved UIs/artwork remain locked; new field preview is isolated, no actual dispatch.
+No extra synthetic customer transaction layer, hosted action, credential retrieval,
+operational Auth, schema/migration, payment/provider/message execution, Netlify or
+deployment/merge. Recovery/P1-on13/separate14/exact4B+broker gates remain independent;
+all13/customer14/original4B/P1/four/approvals/Netlify/executor/2A–2F/billing preserved.
+Release1.0 remains NOT READY / NOT AUTHORIZED. This directive permits development,
+not operational acceptance or persistent background execution.
+
 4B broker continuation: read docs/CUSTOMER_BROKER_INTEGRATION.md, validation and
 CUSTOMER_BROKER_REVIEW.json before older4B notes. Owner authorized local server/SQL
 composition while physical hardware is pending; no new synthetic feature. Reuse actual
