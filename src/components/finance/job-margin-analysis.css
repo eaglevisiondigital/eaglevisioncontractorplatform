@@ -1,0 +1,9 @@
+.job-margin-analysis {
+  min-width: 0;
+}
+.job-margin-analysis dt {
+  color: #20352f;
+}
+.job-margin-analysis dd {
+  overflow-wrap: anywhere;
+}
