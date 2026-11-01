@@ -101,6 +101,7 @@ interface SampleState {
   templates: EstimateTemplate[];
   taxes: TaxPolicy[];
   jobs: Job[];
+  jobAssignments: Database['public']['Tables']['job_assignments']['Row'][];
   workforce: WorkforceData;
   counter: number;
   adjustments: Record<string, Json>[];
@@ -657,6 +658,7 @@ export class Phase3Repository {
       ],
       taxes: [],
       jobs: [],
+      jobAssignments: [],
       workforce: {
         workers,
         rates,
@@ -2054,19 +2056,116 @@ export class Phase3Repository {
     }
     return clone(result);
   }
-  async assignJob(org: string, jobId: string, userId: string, active: boolean) {
-    if (!this.sample)
+  async assignJob(
+    org: string,
+    jobId: string,
+    userId: string,
+    active: boolean,
+    synthetic?: {
+      reviewer: string;
+      job_revision: number;
+      issued_version_id: string;
+      expected_active: boolean | null;
+      assertCurrent: () => void;
+    },
+  ) {
+    if (!this.sample) {
+      if (synthetic)
+        throw Error('Synthetic assignment cannot use connected RPC');
       return rpc('assign_job', {
         p_org: org,
         p_job: jobId,
         p_user: userId,
         p_active: active,
       });
-    const member = (await this.operations.listMembers(org)).find(
-      (m) => m.user_id === userId && m.active,
+    }
+    await this.operations.listMembers(org);
+    // Re-read current synthetic identities after the await, before the sole write.
+    const members = this.operations.syntheticMemberships(org);
+    const state = this.state(org);
+    const eligible = (user: string) =>
+      members.find(
+        (m) =>
+          m.user_id === user &&
+          m.active &&
+          (['owner', 'admin'].includes(m.role) ||
+            (m.role === 'staff' &&
+              ['office_manager', 'field_staff'].includes(m.staff_type))),
+      );
+    const reviewer = eligible(synthetic?.reviewer ?? org + '-owner');
+    const job = state.jobs.find(
+      (j) => j.id === jobId && j.organization_id === org,
     );
-    if (!member || !this.state(org).jobs.some((j) => j.id === jobId))
-      throw new Error('Active member and job required');
+    if (
+      typeof active !== 'boolean' ||
+      !reviewer ||
+      (reviewer.role === 'staff' && reviewer.staff_type !== 'office_manager') ||
+      !members.some((m) => m.user_id === userId && m.active) ||
+      !job
+    )
+      throw Error(
+        'Current reviewer, active member and exact tenant job required',
+      );
+    const existing = state.jobAssignments.find(
+      (a) => a.job_id === jobId && a.user_id === userId,
+    );
+    if (synthetic) {
+      if (
+        !eligible(userId) ||
+        !state.workforce.workers.some(
+          (w) => w.organization_id === org && w.user_id === userId && w.active,
+        )
+      )
+        throw Error('Current eligible active sample worker required');
+      if (
+        job.lock_revision !== synthetic.job_revision ||
+        job.baseline.issued_version_id !== synthetic.issued_version_id ||
+        (existing?.active ?? null) !== synthetic.expected_active ||
+        !state.history.some(
+          (v) =>
+            v.id === synthetic.issued_version_id &&
+            v.organization_id === org &&
+            v.status === 'issued',
+        )
+      )
+        throw Error('Exact reviewed job or assignment changed');
+      synthetic.assertCurrent();
+    }
+    if (existing) existing.active = active;
+    else
+      state.jobAssignments.push({
+        organization_id: org,
+        job_id: jobId,
+        user_id: userId,
+        active,
+      });
+  }
+  /** Local sample relationships only. Never invokes a connected reader. */
+  syntheticJobAssignments(org: string, actor: string) {
+    const state = this.state(org);
+    const member = this.operations
+      .syntheticMemberships(org)
+      .find((m) => m.user_id === actor && m.active);
+    const manager =
+      member &&
+      (['owner', 'admin'].includes(member.role) ||
+        (member.role === 'staff' && member.staff_type === 'office_manager'));
+    if (
+      !member ||
+      (!manager &&
+        !(member.role === 'staff' && member.staff_type === 'field_staff'))
+    )
+      throw Error('Current eligible synthetic crew member required');
+    if (
+      !manager &&
+      !state.workforce.workers.some(
+        (w) => w.organization_id === org && w.user_id === actor && w.active,
+      )
+    )
+      throw Error('Current active synthetic worker required');
+    return clone(
+      state.jobAssignments.filter((a) => manager || a.user_id === actor),
+    );
   }
   async assignSupervisor(
     org: string,
