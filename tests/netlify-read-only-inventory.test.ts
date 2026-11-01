@@ -49,8 +49,8 @@ it('requires every consecutive Link page and preserves exact identities', async 
   );
   const read: InventoryRead = async (url) => ({
     status: 200,
-    body: url.includes('page=1') ? body : [deploy('f'.repeat(24))],
-    link: url.includes('page=1')
+    body: new URL(url).searchParams.get('page') === '1' ? body : [deploy('f'.repeat(24))],
+    link: new URL(url).searchParams.get('page') === '1'
       ? `<https://api.netlify.com/api/v1/sites/${siteId}/deploys?page=2&per_page=100>; rel="next"`
       : null,
   });
