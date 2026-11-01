@@ -55,14 +55,14 @@
   "fileCount": 401,
   "counts": {
     "A0": 67,
-    "A1": 73,
-    "A2": 37,
-    "A3": 78,
+    "A1": 71,
+    "A2": 38,
+    "A3": 73,
     "A4": 23,
-    "A5": 77,
+    "A5": 79,
     "A6": 0,
-    "A7": 28,
-    "A8": 18
+    "A7": 23,
+    "A8": 27
   },
   "files": [
     {
@@ -103,7 +103,7 @@
     },
     {
       "path": "src/components/Customers.tsx",
-      "owner": "A5",
+      "owner": "A2",
       "bytes": 11447,
       "sha256": "c63173b85bf06c6cb22623b202bf028c0ff6325397532dc591b249735cdef93b"
     },
@@ -229,13 +229,13 @@
     },
     {
       "path": "src/components/property/ContractorBackOfficeDesign.tsx",
-      "owner": "A3",
+      "owner": "A8",
       "bytes": 2203,
       "sha256": "9e72cbcd167685e679e35efd489b433cd743c95870d8e5cf47801b62f6f5ae4c"
     },
     {
       "path": "src/components/property/ContractorBackOfficeLayout.tsx",
-      "owner": "A3",
+      "owner": "A8",
       "bytes": 6190,
       "sha256": "fbbe95af71b0ae10a59f1e6a939bef1a6f7de09214450dc0be0b910745ab7515"
     },
@@ -355,25 +355,25 @@
     },
     {
       "path": "src/components/property/contractor-back-office-design.css",
-      "owner": "A3",
+      "owner": "A8",
       "bytes": 21292,
       "sha256": "2a6f9edffcc039061705769ce4cf3e2e1e6a9f735faa1f7475f3331274ec226d"
     },
     {
       "path": "src/components/property/maintenance.css",
-      "owner": "A3",
+      "owner": "A8",
       "bytes": 1634,
       "sha256": "f50a3e8064cc54181716eea58dc76a73b129bafbddeeb735d826e7db18c8ba2d"
     },
     {
       "path": "src/components/property/property-portal-design.css",
-      "owner": "A5",
+      "owner": "A8",
       "bytes": 29507,
       "sha256": "a7190d6f5d4228ec54168e653658db454ad19a2a69961a9f5eaaf05c52644dc8"
     },
     {
       "path": "src/components/property/repair-readiness.css",
-      "owner": "A3",
+      "owner": "A8",
       "bytes": 1396,
       "sha256": "e13f23a2c86482ae5eba943a964c761adef573486706478f8f3caab136144bf5"
     },
@@ -385,7 +385,7 @@
     },
     {
       "path": "src/components/release/release.css",
-      "owner": "A2",
+      "owner": "A8",
       "bytes": 3329,
       "sha256": "d75f767170e84a7d8405bed25fce6bae718e74eadcfee1334dd93bfbc339a3a5"
     },
@@ -421,7 +421,7 @@
     },
     {
       "path": "src/domain/estimating/customer-preview.ts",
-      "owner": "A5",
+      "owner": "A2",
       "bytes": 1195,
       "sha256": "e7dee9d8e58de5d1e96b6dabf7269dd38b2610b3e7de569362337c012be12e83"
     },
@@ -487,7 +487,7 @@
     },
     {
       "path": "src/domain/property/comparison.ts",
-      "owner": "A7",
+      "owner": "A5",
       "bytes": 8411,
       "sha256": "369fe6b053b154c0bffb2a4932ef74e32a3464c03a193e9b5a837d778f58e018"
     },
@@ -499,7 +499,7 @@
     },
     {
       "path": "src/domain/property/inspection-comparison.ts",
-      "owner": "A7",
+      "owner": "A5",
       "bytes": 6564,
       "sha256": "2b4e746842a23a9a1278eb95f450219cc4caf125cff8db42344697446ac55820"
     },
@@ -1250,8 +1250,8 @@
     {
       "path": "scripts/feature-evidence.mjs",
       "owner": "A8",
-      "bytes": 10704,
-      "sha256": "a1e1622d57a84d775832ef0e67ee82ea41b9d3c124c89abfdcb6812cf9e7b771"
+      "bytes": 12193,
+      "sha256": "e37286ce053ce2ac08fd08fa3aa2bc018befdba8cee6d65531e77a816f73226f"
     },
     {
       "path": "scripts/generate-db-types.mjs",
@@ -1423,7 +1423,7 @@
     },
     {
       "path": "tests/browser/inspection-comparison.spec.ts",
-      "owner": "A7",
+      "owner": "A5",
       "bytes": 10155,
       "sha256": "779b2064b863156f724aa79fd5ba9595239ac6f0dac576fa8346e8dd97e15320"
     },
@@ -1891,13 +1891,13 @@
     },
     {
       "path": "tests/inspection-comparison-preview.test.ts",
-      "owner": "A7",
+      "owner": "A5",
       "bytes": 2169,
       "sha256": "c77e755bbad202348831c7d1642e27a059e72f44301ff567215065fa0739ec34"
     },
     {
       "path": "tests/inspection-comparison.test.ts",
-      "owner": "A7",
+      "owner": "A5",
       "bytes": 9484,
       "sha256": "b6faec7a55e5ab6c615b35d3590616ebce4ea1d9198be9fa3a242be77d56d5d8"
     },
@@ -2018,8 +2018,8 @@
     {
       "path": "tests/program-feature-evidence.test.ts",
       "owner": "A8",
-      "bytes": 6358,
-      "sha256": "03859798b457ebc47db07a2145075ad451945a63eefb12e6bb1f59aaaaa94bf1"
+      "bytes": 8606,
+      "sha256": "15784eb48280ffeae497d3a6911616367b125944d519578e024c88b63f0413c7"
     },
     {
       "path": "tests/property-acceptance-journal.test.ts",
@@ -2413,13 +2413,13 @@
     },
     {
       "path": ".github/workflows/ci.yml",
-      "owner": "A1",
+      "owner": "A8",
       "bytes": 2221,
       "sha256": "5df4000c258a55f4a1fdeaa149fef4699adc9849419363f206e9580f2cbc79f9"
     },
     {
       "path": ".github/workflows/rehearsal.yml",
-      "owner": "A1",
+      "owner": "A8",
       "bytes": 1058,
       "sha256": "80040a3594485a49c5c673fc9526d21e9b32e2a63390ee726dc2dbd0c28ba840"
     },
@@ -2471,5 +2471,6 @@
       "bytes": 960,
       "sha256": "38f97f322f8816a05c71145ff8836b174488efc66259688c16dfdb8a004583fe"
     }
-  ]
+  ],
+  "ownerMeaning": "Primary review lane from explicit paths then keyword fallbacks; not an authorization grant or replacement for named PR write ownership."
 }

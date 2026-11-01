@@ -14,6 +14,7 @@ import {
   inventorySources,
   requiredFeatureIds,
   runFeatureEvidence,
+  sourceOwner,
   validateFeatureEvidence,
 } from '../scripts/feature-evidence.mjs';
 
@@ -53,7 +54,7 @@ function fixture() {
       approval: 'Local test only',
       next: 'Genuine acceptance',
       date: '2026-11-01',
-      dataObjects: [],
+      dataObjects: [] as string[],
       routes: [],
       risks: ['Local evidence is not operational acceptance'],
       dependencies: [] as string[],
@@ -154,6 +155,58 @@ it('rejects unknown and cyclic workstream dependencies', () => {
   manifest.features[0].dependencies = [manifest.features[1].id];
   manifest.features[1].dependencies = [manifest.features[0].id];
   expect(() => validateFeatureEvidence(root, manifest)).toThrow('Cyclic');
+});
+it('requires qualified table references to exist in actual local SQL without inferring installation', () => {
+  const { root, manifest } = fixture();
+  mkdirSync(join(root, 'supabase/migrations'), { recursive: true });
+  writeFileSync(
+    join(root, 'supabase/migrations/example.sql'),
+    'create table public.customers(id uuid);',
+  );
+  manifest.features[0].dataObjects = ['core.customers'];
+  expect(() => validateFeatureEvidence(root, manifest)).toThrow(
+    'table reference',
+  );
+  manifest.features[0].dataObjects = ['public.customers'];
+  expect(validateFeatureEvidence(root, manifest).features[0].hosted).toBe(
+    'blocked',
+  );
+  manifest.features[0].dataObjects = ['public.absent'];
+  expect(() => validateFeatureEvidence(root, manifest)).toThrow(
+    'table reference',
+  );
+});
+it('keeps shared review ownership explicit before ambiguous customer, comparison and design keywords', () => {
+  expect(sourceOwner('src/components/Customers.tsx')).toBe('A2');
+  expect(sourceOwner('src/domain/estimating/customer-preview.ts')).toBe('A2');
+  expect(sourceOwner('src/domain/property/inspection-comparison.ts')).toBe(
+    'A5',
+  );
+  expect(
+    sourceOwner('src/components/property/contractor-back-office-design.css'),
+  ).toBe('A8');
+  expect(
+    sourceOwner('src/components/property/ContractorBackOfficeLayout.tsx'),
+  ).toBe('A8');
+  expect(sourceOwner('tests/program-finance-reconciliation.test.ts')).toBe(
+    'A4',
+  );
+  expect(sourceOwner('server/property/supplier-connectors.ts')).toBe('A7');
+});
+it('rejects linked migration directory chains before enumerating table declaration evidence', () => {
+  for (const level of ['supabase', 'migrations']) {
+    const { root, manifest } = fixture(),
+      outside = mkdtempSync(join(tmpdir(), 'propel-private-schema-'));
+    roots.push(outside);
+    writeFileSync(join(outside, 'private.txt'), 'PRIVATE CONTENT');
+    if (level === 'supabase') symlinkSync(outside, join(root, 'supabase'));
+    else {
+      mkdirSync(join(root, 'supabase'));
+      symlinkSync(outside, join(root, 'supabase/migrations'));
+    }
+    manifest.features[0].dataObjects = ['public.customers'];
+    expect(() => validateFeatureEvidence(root, manifest)).toThrow('links');
+  }
 });
 it('produces deterministic complete source metadata without modifying files or echoing source contents', () => {
   const { root, manifest } = fixture();

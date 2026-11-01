@@ -12,7 +12,7 @@ review candidates. No locked interface replacement, new business store or engine
 
 Main coordination adds 25 [feature records](docs/FEATURE_ACCEPTANCE_EVIDENCE.json),
 a declared-public-root source/hash/owner inventory, [shared contracts](docs/program/SHARED_CONTRACTS.md)
-and a read-only offline evidence checker with 15 focused tests. Source citations do
+and a read-only offline evidence checker with 18 focused tests. Source citations do
 not certify test execution/CI/hosted/release acceptance. Retained Action B core PASS
 is preserved; new genuine customer lifecycle/operational evidence remains blocked.
 See exact branch CI links and focused results in delivery status. No unnecessary

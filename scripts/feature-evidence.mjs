@@ -80,7 +80,7 @@ const fail = (message) => {
   throw Error(message);
 };
 
-function safeFile(root, path) {
+function safeFile(root, path, directory = false) {
   if (
     typeof path !== 'string' ||
     !path ||
@@ -108,7 +108,12 @@ function safeFile(root, path) {
     if (lstatSync(part).isSymbolicLink())
       fail('Evidence links are not followed');
   }
-  if (!lstatSync(full).isFile() || lstatSync(full).size > 8 * 1024 * 1024)
+  const stat = lstatSync(full);
+  if (
+    directory
+      ? !stat.isDirectory()
+      : !stat.isFile() || stat.size > 8 * 1024 * 1024
+  )
     fail('Bounded evidence file required');
   return full;
 }
@@ -159,6 +164,27 @@ export function validateFeatureEvidence(root, manifest) {
     safeFile(root, p);
   const ids = new Set(),
     resolved = [];
+  let declaredTables;
+  function requireDeclaredTable(name) {
+    if (!declaredTables) {
+      declaredTables = new Set();
+      for (const file of readdirSync(
+        safeFile(root, 'supabase/migrations', true),
+      ))
+        if (file.endsWith('.sql')) {
+          const sql = readFileSync(
+            safeFile(root, 'supabase/migrations/' + file),
+            'utf8',
+          );
+          for (const match of sql.matchAll(
+            /\bcreate\s+table\s+(?:if\s+not\s+exists\s+)?((?:public|private)\.[a-z_][a-z_0-9]*)\s*\(/gi,
+          ))
+            declaredTables.add(match[1].toLowerCase());
+        }
+    }
+    if (!declaredTables.has(name))
+      fail('Qualified table reference is absent from local migration source');
+  }
   for (const f of manifest.features) {
     if (!f || !/^[A-Z]{2,5}-\d{3}$/.test(f.id) || ids.has(f.id))
       fail('Unique stable feature ID required');
@@ -176,6 +202,8 @@ export function validateFeatureEvidence(root, manifest) {
         fail(`Missing feature ${key}`);
     if (!/^\d{4}-\d{2}-\d{2}$/.test(f.date)) fail('Evidence date required');
     strings(f.dataObjects, 'data objects', false);
+    for (const object of f.dataObjects)
+      if (/^[a-z_]+\.[a-z_0-9]+$/.test(object)) requireDeclaredTable(object);
     strings(f.routes, 'routes', false);
     strings(f.risks, 'risk limits');
     strings(f.dependencies, 'dependencies', false);
@@ -246,13 +274,27 @@ export function sourceOwner(path) {
     )
   )
     return 'A0';
+  // Explicit review lanes precede keyword fallbacks. These are not access grants.
+  if (
+    /\.css$|^\.github\/workflows\/|^src\/(domain\/brand\.ts|components\/(PlatformBrand|CompanyLogo|WorkspaceNavigation))|ContractorBackOffice(Layout|Design)/.test(
+      path,
+    )
+  )
+    return 'A8';
+  if (
+    /^src\/domain\/estimating\/|^src\/components\/(Customers|CompanyOperations)\.tsx$|^server\/(contracts|communications)\/|^tests\/sales-contract|signatur/.test(
+      path,
+    )
+  )
+    return 'A2';
+  if (/^tests\/program-finance/.test(path)) return 'A4';
   if (
     /^(server\/(payments|providers)\/|src\/domain\/jobs\/financials|tests\/(payments|payment-|provider-|database\/(payment-|provider-)))|\/(contracts|communications)\//.test(
       path,
     )
   )
     return /\/(contracts|communications)\//.test(path) ? 'A2' : 'A4';
-  if (/material|supplier|comparison/.test(path)) return 'A7';
+  if (/material|supplier/.test(path)) return 'A7';
   if (
     /customer|portal|property\/(attention|history|comparison|inspection-comparison|report-page)|property-(attention|history|report-session)|inspection-(comparison|history)/i.test(
       path,

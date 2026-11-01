@@ -22,8 +22,8 @@
       "next": "Close exact independent recovery and broker/security acceptance prerequisites without reopening grants.",
       "date": "2026-11-01",
       "dataObjects": [
-        "core.organizations",
-        "core.organization_members",
+        "public.organizations",
+        "public.memberships",
         "private grants",
         "tenant composite foreign keys"
       ],
@@ -126,10 +126,10 @@
       "next": "Review paginated customer/location selection without creating duplicate CRM.",
       "date": "2026-11-01",
       "dataObjects": [
-        "core.customers",
-        "core.service_locations",
-        "core.projects",
-        "core.leads"
+        "public.customers",
+        "public.service_locations",
+        "public.jobs",
+        "public.intake_requests"
       ],
       "routes": ["/preview > Customers", "/preview > Leads"],
       "risks": [
@@ -179,8 +179,8 @@
       "next": "Review PR2 frozen-offer projection fix; retain exact request/source/version identity.",
       "date": "2026-11-01",
       "dataObjects": [
-        "core.estimates",
-        "core.estimate_versions",
+        "public.estimates",
+        "public.estimate_versions",
         "canonical integer calculation"
       ],
       "routes": ["/preview > Estimates"],
@@ -938,8 +938,8 @@
       "next": "Use checked organization/membership RPCs; inventory settings/import/export gaps without generic CRUD.",
       "date": "2026-11-01",
       "dataObjects": [
-        "core.organizations",
-        "core.organization_members",
+        "public.organizations",
+        "public.memberships",
         "private platform grants",
         "audit events"
       ],

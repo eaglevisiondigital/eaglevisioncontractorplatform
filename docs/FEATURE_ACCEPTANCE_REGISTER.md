@@ -15,7 +15,7 @@ or merge is authorized. **Release 1.0 remains NOT READY / NOT AUTHORIZED.**
 scope/design/local/hosted/release state, exact source/test anchor, source baseline SHA,
 retained validation record, CI identity, route, underlying object, risk, dependency,
 next acceptance and approval boundary. `npm run features:check` verifies citations,
-unique IDs, original-scope coverage and an acyclic dependency graph. It computes
+unique IDs, original-scope coverage and an acyclic dependency graph. Qualified table names must exist in unchanged local migration source; this does not prove hosted installation. It computes
 current file SHA-256 and line references without reading private trees or following
 symlinks. A valid citation does not mean a test ran or passed.
 
@@ -74,7 +74,7 @@ Tests: `tests/database/isolation.test.ts` → enables RLS on every application t
 
 Retained records: [ACTION_B_CONNECTED_RESULT.md](ACTION_B_CONNECTED_RESULT.md).
 
-UI: `/preview`; `/internal-release (operator gated)`. Objects/contracts: core.organizations; core.organization_members; private grants; tenant composite foreign keys.
+UI: `/preview`; `/internal-release (operator gated)`. Objects/contracts: public.organizations; public.memberships; private grants; tenant composite foreign keys.
 
 Limits: 723 retained core connected cases do not certify the new customer broker or every module. Historical helper/installer TCB, core CREATE/statistics and genuine new lifecycle Auth remain unverified.
 
@@ -102,7 +102,7 @@ Tests: `tests/operations-preview.test.ts` → paginates and filters synthetic CR
 
 Retained records: [PHASE2_VALIDATION.md](PHASE2_VALIDATION.md); [ACTION_B_CONNECTED_RESULT.md](ACTION_B_CONNECTED_RESULT.md).
 
-UI: `/preview > Customers`; `/preview > Leads`. Objects/contracts: core.customers; core.service_locations; core.projects; core.leads.
+UI: `/preview > Customers`; `/preview > Leads`. Objects/contracts: public.customers; public.service_locations; public.jobs; public.intake_requests.
 
 Limits: Existing local CRM is implemented; first-page lookup limits and connected lifecycle acceptance need bounded follow-up. Public intake remains gated by approved CAPTCHA and infrastructure.
 
@@ -116,7 +116,7 @@ Tests: `tests/estimating.test.ts` → rounds unit price before extension and rec
 
 Retained records: [PHASE3_VALIDATION.md](PHASE3_VALIDATION.md); [CUSTOMER_ESTIMATE_REVISIONS.md](CUSTOMER_ESTIMATE_REVISIONS.md).
 
-UI: `/preview > Estimates`. Objects/contracts: core.estimates; core.estimate_versions; canonical integer calculation.
+UI: `/preview > Estimates`. Objects/contracts: public.estimates; public.estimate_versions; canonical integer calculation.
 
 Limits: Local estimating exists; issued-safe customer scope requires exact immutable source. Revision, repair-origin and connected issuance guards stay closed.
 
@@ -326,7 +326,7 @@ Tests: `tests/database/isolation.test.ts` → enables RLS on every application t
 
 Retained records: [PHASE2_VALIDATION.md](PHASE2_VALIDATION.md); [ACTION_B_CONNECTED_RESULT.md](ACTION_B_CONNECTED_RESULT.md).
 
-UI: `/preview > Company settings`. Objects/contracts: core.organizations; core.organization_members; private platform grants; audit events.
+UI: `/preview > Company settings`. Objects/contracts: public.organizations; public.memberships; private platform grants; audit events.
 
 Limits: Core retained hosted evidence is partial; platform grants never confer customer data access. Subscriptions, observability/export lifecycle require feature-specific acceptance.
 
