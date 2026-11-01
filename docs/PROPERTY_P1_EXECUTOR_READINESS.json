@@ -1,0 +1,180 @@
+{
+  "status": "LOCAL_IMPLEMENTED_REHEARSED_HOSTED_ACTIVATION_NOT_STARTED",
+  "sourceCommit": "80c5491",
+  "operationSha256": "01b96075d2f04acef730114427bc595986a1f0ce2720ed7fd3c9e84e304e141a",
+  "frozenArtifactHashes": [
+    {
+      "file": "p1-plan.private.json",
+      "sha256": "bbd463ccb28ddbe6a6f873f364e42094d13c7a83767ea19f0c89ed486358a85a"
+    },
+    {
+      "file": "activate-features.proposed.sql",
+      "sha256": "368f9553a044b72d3e527beef8d98762da2e500069c4f34d1ec5014d9c2c1148"
+    },
+    {
+      "file": "deactivate-features.proposed.sql",
+      "sha256": "9f218c649801a48d5afc78f654fc0ed56280c5c9c88368eaba64bec4ac67820c"
+    },
+    {
+      "file": "p2-separate-review.private.json",
+      "sha256": "0d281d124a25c1482654841057e1d4f196d93f9bcd3b2ed6e1d1d21b01c3b195"
+    }
+  ],
+  "frozenPackageUnchanged": true,
+  "historicalMigrationsUnchanged": 13,
+  "codeArtifacts": [
+    {
+      "file": "server/property/execution/callers.ts",
+      "sha256": "509e42c65d9b2d2a5a169c26d35efa2c0399b2b0f545c94df91beb91888905ca"
+    },
+    {
+      "file": "server/property/execution/catalog.sql",
+      "sha256": "f702f0bc89e62b90f379ea8687ab4dbd0f6990aa2e2d0ccf894eecd394870734"
+    },
+    {
+      "file": "server/property/execution/cleanup-auth.ts",
+      "sha256": "8964a8bf5c44aa408e285b6161e114936a543a648466840b21646a7a3ac042d9"
+    },
+    {
+      "file": "server/property/execution/cleanup-process.ts",
+      "sha256": "88bcd6855f60e7de269b04b69356dee83eba10135c59fe6d6236ef64a1f1c57d"
+    },
+    {
+      "file": "server/property/execution/cleanup-worker.mts",
+      "sha256": "e21c11402ca8eb12a0d7568074f30b0f2cd333f8055ceee45c467eba23636552"
+    },
+    {
+      "file": "server/property/execution/column-acl.sql",
+      "sha256": "8a83877b7458c20709c10e9293b6c45a0fac7d51f120514761eba8b0630d2f9e"
+    },
+    {
+      "file": "server/property/execution/executor.ts",
+      "sha256": "802b42b8469d32f13512cbe2b87ffc1c4a63bc3b1811baed47ff26bdbc95f9c4"
+    },
+    {
+      "file": "server/property/execution/management.ts",
+      "sha256": "b31aed27b3cd98baab2bb2f9ef38071440e0f9a760ae46be3e65103890a8276c"
+    },
+    {
+      "file": "server/property/execution/package.ts",
+      "sha256": "0a03f572992081dd9e87ca012ad3416c51703192a6ce307fb4202e3a3d9fde4e"
+    },
+    {
+      "file": "server/property/execution/prepare.ts",
+      "sha256": "f0b01a1518e1349b4563725fbc2b5ca1416798064525f2650d13e7fdd6211956"
+    },
+    {
+      "file": "server/property/execution/recovery.ts",
+      "sha256": "45c2186147e1f138016b3be348a1912490a98e09cb5d445a987d8850a6491ece"
+    },
+    {
+      "file": "server/property/execution/safety.ts",
+      "sha256": "e8a6426ad06b67c7fd685b1da874b4e1e2fdd153e539ccd6981c74cd9978ef77"
+    },
+    {
+      "file": "server/property/execution/verification.ts",
+      "sha256": "0274a8821b491b6c6c2e890b5a408dde27cf3e9338ae7c1360ba06bd2fb1ab7d"
+    },
+    {
+      "file": "server/property/acceptance-journal.ts",
+      "sha256": "6e3e8215f1e8191a4b0a8265911eb0e867df5640046dd292d990e84bb78587d2"
+    },
+    {
+      "file": "scripts/property-p1-inspect.mts",
+      "sha256": "2514f5a6c688a600d96f9f16ee692d48ba6f2cb95a1fc38744964b5ea8e0dec4"
+    }
+  ],
+  "implemented": {
+    "callerBoundSupabaseSdk": true,
+    "verifiedIssuerUserAalAndExistingFactor": true,
+    "pendingOwnerCleanupCustody": true,
+    "sameSessionAal2Upgrade": true,
+    "exact75FixtureAnd69ProbeScheduler": true,
+    "directoryFsyncedExclusiveJournal": true,
+    "crossProcessRunReservation": true,
+    "unknownRecovery": "READ_ONLY_NEVER_REPLAY",
+    "independentCleanupProcess": true,
+    "readOnlyOriginalAuthFinancialAuditVerifier": true,
+    "composedPrivateHandoffApi": true,
+    "offlineInspectCommand": true,
+    "hostedExecuteCli": false
+  },
+  "safety": {
+    "maximumApprovedWindowSeconds": 1800,
+    "automaticCleanupStartsSeconds": 1740,
+    "operatorPresenceLeaseSeconds": 60,
+    "executorHeartbeatSeconds": 5,
+    "preparationMaximumSeconds": 600,
+    "automaticCleanupAttempts": 1,
+    "automaticUnknownRetries": 0,
+    "automaticSecondCleanupAttempt": false,
+    "physicalHostOrProviderOutageGuarantee": false
+  },
+  "localValidation": {
+    "npmCheck": {
+      "status": "PASS",
+      "testsPassed": 809,
+      "nativeOnlySkipped": 50,
+      "lintTypesGeneratedTypesMigrationsPropertyBuild": "PASS"
+    },
+    "newExecutorRegressionsPassed": 61,
+    "nativePostgresql17": {
+      "status": "PASS",
+      "testsPassed": 343,
+      "skipped": 0,
+      "completeDatabaseSuite": true
+    },
+    "browser": {
+      "status": "PASS",
+      "testsPassed": 63,
+      "surfaces": ["desktop", "tablet", "mobile"],
+      "isolatedLoopback": true
+    },
+    "frozenNetlifyOfflineChecks": {
+      "passed": 26,
+      "network": false
+    },
+    "countsOverlap": true,
+    "nativeFinalP1Recheck": {
+      "passed": 4,
+      "skipped": 0,
+      "overlapsCompleteNativeSuite": true
+    }
+  },
+  "hostedThisIncrement": {
+    "reads": 0,
+    "authSignins": 0,
+    "mfaRequests": 0,
+    "featureActivations": 0,
+    "fixtureSteps": 0,
+    "assertionProbes": 0,
+    "domainRecords": 0,
+    "auditEvents": 0,
+    "financialDeltas": 0,
+    "netlifyCalls": 0,
+    "providerCalls": 0
+  },
+  "hostedCaseTracking": {
+    "PASS": 0,
+    "FAIL": 0,
+    "BLOCKED": 24,
+    "NOT_RUN": 48
+  },
+  "remainingActionTimeGates": [
+    "Independent operator review of software and private reference hashes",
+    "Fresh exact-target history/catalog/ACL/Auth/API/713-original-row preflight",
+    "Approved in-memory Keychain custody and operational independent cleanup channel",
+    "Genuine owner-assisted existing-factor MFA and15 exact staff sessions",
+    "Complete supervised window and independent zero-active/session cleanup verification"
+  ],
+  "separateBlockedScope": [
+    "P2 customer mappings/report leases",
+    "12 excluded P1 staff cases",
+    "Scanner/private Storage/media",
+    "External provider activation",
+    "Protected deployment and Release1.0 acceptance"
+  ],
+  "chatDecisionNeeded": "None for unchanged implementation or repeated exact P1 scope approval; supervised continuation remains a later action-time handoff.",
+  "releaseReadiness": "NOT_READY_NOT_AUTHORIZED",
+  "pullRequest": "DRAFT_UNMERGED"
+}

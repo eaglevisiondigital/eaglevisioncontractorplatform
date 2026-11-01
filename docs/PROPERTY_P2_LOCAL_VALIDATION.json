@@ -1,0 +1,120 @@
+{
+  "date": "2026-10-18",
+  "baseCommit": "6ea2757",
+  "status": "LOCAL_IMPLEMENTED_HOSTED_BLOCKED",
+  "localValidation": {
+    "applicationAndPGlite": {
+      "passed": 875,
+      "nativeOnlySkipped": 50
+    },
+    "pythonRecovery": {
+      "passed": 77,
+      "scope": "PRIMARY_LOCAL_REGRESSION_NOT_SECOND_DEVICE_REHEARSAL"
+    },
+    "nativePostgresql17": {
+      "passed": 355,
+      "skipped": 0,
+      "version": "17.11",
+      "disposableUnixSocketOnly": true,
+      "clusterStoppedAndRemoved": true
+    },
+    "browser": {
+      "passed": 69,
+      "projects": ["desktop", "tablet", "mobile"],
+      "loopbackOnly": true,
+      "syntheticOnly": true,
+      "visualReview": ["desktop", "mobile"]
+    },
+    "format": "PASS",
+    "lintStrictGeneratedTypesBuild": "PASS",
+    "migrationAndPropertyIntegrity": "PASS_13_IMMUTABLE_FILES",
+    "frozenP1OperationAndFourArtifacts": "PASS",
+    "countsOverlap": true,
+    "githubCI": {
+      "evidence": "Exact pushed commit checks on draft PR #1; reported separately after push",
+      "includedInLocalCounts": false
+    },
+    "initialSandboxFailures": "Local initdb and loopback browser bind were denied by sandbox; authorized local-only reruns passed"
+  },
+  "sourceArtifacts": [
+    {
+      "file": "src/domain/property/report-page.ts",
+      "sha256": "98e970cc7b97c02ab0e773920e6e465fc3be6d32e81c9348d6e2912e011788b6"
+    },
+    {
+      "file": "src/lib/property-connected.ts",
+      "sha256": "33b9d0fba2ec655ed62a6716c8a12818e4d3e9738e75f73c8895fa5dd37b5cb1"
+    },
+    {
+      "file": "src/lib/property-report-session.ts",
+      "sha256": "eede491e60a2edc042839fe6c532f524f28cb1557aec952a118ce386bab7430b"
+    },
+    {
+      "file": "src/components/property/PropertyReportHistory.tsx",
+      "sha256": "5703355dd3b93f44119e9e3e2055bb897f1a4cbd6519f580ad6499f360d628b5"
+    },
+    {
+      "file": "src/components/property/PropertyPortalPreview.tsx",
+      "sha256": "236fe07dbf9dde7f0d64f0e0a89c4558ef66da9b6438bbe53cdfb24d9fd24bc5"
+    },
+    {
+      "file": "server/property/p2-readiness.ts",
+      "sha256": "395d845cbbae4980f90ce2ea2e05af69861e8a54fab53bc72c6506e1ab719d51"
+    },
+    {
+      "file": "tests/property-report-session.test.ts",
+      "sha256": "f8999f795def6d1cd367f119f0507be75995eb2b059378187b92f68f1f70970a"
+    },
+    {
+      "file": "tests/property-p2-readiness.test.ts",
+      "sha256": "4eb4835b3a69dc648d672ae370d058e3f4b2669ef5cdb7ad3a7dc72a90e762ca"
+    },
+    {
+      "file": "tests/database/property.test.ts",
+      "sha256": "37dd55e9b1f3c10d05d09f7cabca710a6fb72331848806e55ea56f099c366060"
+    },
+    {
+      "file": "tests/browser/property.spec.ts",
+      "sha256": "d5ff3e6a57119b98264d0ae021cf504ab6ee621bcf1f1d5cc28e702cb644cd55"
+    }
+  ],
+  "existingP1OperationSha256": "01b96075d2f04acef730114427bc595986a1f0ce2720ed7fd3c9e84e304e141a",
+  "frozenArtifactsChanged": 0,
+  "historicalMigrationsChanged": 0,
+  "newMigrations": 0,
+  "localP2Groups": 9,
+  "hostedP2": {
+    "PASS": 0,
+    "FAIL": 0,
+    "BLOCKED": 9,
+    "NOT_RUN": 0
+  },
+  "hostedAllProperty": {
+    "PASS": 0,
+    "FAIL": 0,
+    "BLOCKED": 24,
+    "NOT_RUN": 48
+  },
+  "remainingP1StaffGaps": 12,
+  "expandedP1FixtureOperationPreparedOrAuthorized": false,
+  "hostedEffects": {
+    "requests": 0,
+    "authSessions": 0,
+    "mfaChallenges": 0,
+    "credentialsInstalled": 0,
+    "featureFixtureOrGrantWrites": 0,
+    "customerMappings": 0,
+    "reportLeases": 0,
+    "mediaOrProviderCalls": 0,
+    "netlifyChanges": 0,
+    "productionChanges": 0
+  },
+  "freshHostedOriginal713Identity22Mfa4Check": "NOT_RUN_NO_HOSTED_STATE_CLAIM",
+  "screenshots": [
+    "artifacts/property/desktop-customer-report-only.png",
+    "artifacts/property/tablet-customer-report-only.png",
+    "artifacts/property/mobile-customer-report-only.png"
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "pullRequest": "DRAFT_UNMERGED"
+}

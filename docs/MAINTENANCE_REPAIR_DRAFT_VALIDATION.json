@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-28",
+  "base": "ecebe84af1aa95176f84bdabe647343f0ab1a407",
+  "mode": "LOCAL_SYNTHETIC_ONLY",
+  "route": "/preview",
+  "navigation": [
+    "Property operations",
+    "Maintenance & follow-up",
+    "Review finding",
+    "Prepare repair estimate"
+  ],
+  "application": {
+    "files": 5,
+    "passed": 129,
+    "failed": 0,
+    "newRepairCases": 37,
+    "command": "npx vitest run tests/repair-draft.test.ts tests/maintenance-center.test.ts tests/property-operations.test.ts tests/customer-preview.test.ts tests/estimating.test.ts"
+  },
+  "browser": {
+    "files": 5,
+    "uniquePassed": 60,
+    "failed": 0,
+    "newRepairCases": 3,
+    "correctedMaintenanceDeltaPassed": 6,
+    "finalRepairDeltaPassed": 3,
+    "rerunsNotAdditive": true,
+    "viewports": ["desktop", "tablet", "mobile"],
+    "companies": 3,
+    "axeViolations": 0,
+    "horizontalOverflow": false,
+    "repairJourneyOutsideRequests": 0,
+    "bidirectionalExactSourceNavigation": true,
+    "contractorScopeEditing": true,
+    "customerPrivateDataExclusion": true,
+    "lockedPortalPhaseAPixelEquality": true,
+    "initialRegression": "Adjacent panels shared React keys, causing duplicate maintenance editors. Distinct keys and explicit browser regression fix it."
+  },
+  "checks": {
+    "build": true,
+    "typecheck": true,
+    "lint": true,
+    "generatedTypes": true,
+    "migrationIntegrity": true,
+    "propertyCustomerProposalIntegrity": true,
+    "format": true,
+    "diff": true,
+    "protectedTrackedPathsUnchanged": 133,
+    "frozenArtifactsVerified": 4,
+    "historicalPlusPendingSqlUnchanged": true
+  },
+  "priorCi": {
+    "foundationRun": 40786379784,
+    "compatibilityRun": 40786379848,
+    "conclusion": "success",
+    "restarted": false
+  },
+  "preserved": {
+    "historicalMigrations": 13,
+    "pendingCustomerMigration": "UNAPPLIED_NOT_AUTHORIZED",
+    "frozenP1Operation": "01b96075d2f04acef730114427bc595986a1f0ce2720ed7fd3c9e84e304e141a",
+    "frozenArtifacts": 4,
+    "issuedBaselinesImmutable": true,
+    "premiumPortalAndArtworkUnchanged": true,
+    "connectedRoutesClosed": true,
+    "hostedProductCalls": 0,
+    "credentialsRetrieved": 0,
+    "authSessionsCreated": 0,
+    "financialExecution": false,
+    "deployments": 0,
+    "merged": false
+  },
+  "limits": [
+    "Session-only metadata, not durable operational recovery or hosted persistence",
+    "No repair issuance or customer publication authorized by preparation",
+    "No unchanged native SQL/recovery/Mac setup/network baseline rerun locally",
+    "Authenticated physical pairing/independent recovery remains unfinished",
+    "New-commit GitHub CI reported separately"
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

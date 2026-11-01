@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-28",
+  "base": "dffaa7b21027e5c299550d6308253631ebc9ff4c",
+  "mode": "LOCAL_SYNTHETIC_ONLY",
+  "phaseAOwnerApproved": true,
+  "phaseBPresentationReplacementAuthorized": true,
+  "route": "/preview/property-portal",
+  "retainedPhaseA": "/preview/property-portal-design",
+  "onlyVisualCorrection": "transparent logo derivative and removal of white container treatment",
+  "sourceLogoSha256": "b77d8e9e9db486c32ea24031033e4bec758342a4a3418fb438cfad23e0629bb0",
+  "transparentLogoSha256": "dd6e8161dc4be20b97ca10cdb58a191b2bb5d4b92c2e58a2c4dcceed500a9a27",
+  "logo": {
+    "width": 2172,
+    "height": 724,
+    "hasAlpha": true,
+    "sourceUnchanged": true,
+    "solidPixelsUnchanged": 474732,
+    "transparentMattePixels": 1089752,
+    "unmattedEdgePixels": 8044,
+    "unsupportedPixels": 0,
+    "maxRetainedWhiteReconstructionError": 1,
+    "servedCornersAlpha": 0,
+    "containerBackground": "transparent",
+    "padding": 0,
+    "radius": 0,
+    "desktopMobileVisualInspection": true,
+    "otherPageBrandingUnchanged": true
+  },
+  "application": { "files": 6, "passed": 56, "failed": 0 },
+  "browser": {
+    "uniquePassed": 66,
+    "failed": 0,
+    "viewports": ["desktop", "tablet", "mobile"],
+    "contractorPalettes": 3,
+    "phaseAOverviewBodyPixelEquality": true,
+    "axeViolations": 0,
+    "horizontalOverflow": false,
+    "screenshotJourneyOutsideRequests": 0,
+    "exactReportIssuedVersionNavigation": true,
+    "keyboardReducedMotion": true
+  },
+  "checks": {
+    "build": true,
+    "typecheck": true,
+    "lint": true,
+    "format": true,
+    "diff": true,
+    "generatedTypes": true,
+    "migrationIntegrity": true,
+    "propertyCustomerProposals": true,
+    "frozenP1ArtifactsVerified": 4
+  },
+  "priorCi": {
+    "run": 40771547258,
+    "verify": "success",
+    "postgres17": "success",
+    "restarted": false
+  },
+  "notRun": [
+    "full local aggregate including unchanged recovery/native SQL baseline",
+    "completed physical-Mac setup/offline/package/network tests",
+    "actual independent pairing/recovery",
+    "hosted customer/Auth/P1/P2 acceptance"
+  ],
+  "preserved": {
+    "historicalMigrations": 13,
+    "pendingCustomerMigration": "UNAPPLIED_NOT_AUTHORIZED",
+    "frozenP1Operation": "01b96075d2f04acef730114427bc595986a1f0ce2720ed7fd3c9e84e304e141a",
+    "hostedWrites": 0,
+    "credentialsRetrieved": 0,
+    "authSessionsCreated": 0,
+    "financialExecution": false,
+    "deployments": 0,
+    "merged": false
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

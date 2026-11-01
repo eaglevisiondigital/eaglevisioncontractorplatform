@@ -1,0 +1,123 @@
+{
+  "date": "2026-10-18",
+  "baseCommit": "f18da4e",
+  "status": "LOCAL_AUDIT_AND_WORKFLOW_PROPOSALS_HOSTED_DISABLED",
+  "recommendation": {
+    "furtherLocalReview": "GO",
+    "hostedApplicationOrActivation": "NO_GO"
+  },
+  "proposals": {
+    "correctedReadSha256": "60c2336c7a21919f6dece4c7ec52a6640136f805e62d7b0adb2b81f5690a24b1",
+    "workflowSha256": "3511804845e5d08d97e7de1da49318f047f7e4cf51b3dc240df3b6815ab7ae4c",
+    "bundleSha256": "6f2e641f59ab61fa5e14fb0f58a0d4e60bc0e55d7c1a5bdebdf4b8f2f7466f1c",
+    "bundleDefinition": "SHA256(schema bytes followed by workflow bytes)",
+    "historicalMigrationsPreserved": 13,
+    "formalMigrationPrepared": false,
+    "hostedApplied": false,
+    "clientExecutionGrants": 0,
+    "clientTablePolicies": 0,
+    "financialExecution": false
+  },
+  "findings": [
+    {
+      "id": "CUST-1",
+      "originalNativeReproduction": "FAIL_EXPECTED_DENIAL_READ_SUCCEEDED",
+      "correction": "CURRENT_BAN_DELETION_ANONYMOUS_AUTH_GUARDS",
+      "finalRegression": "PASS"
+    },
+    {
+      "id": "CUST-2",
+      "originalNativeReproduction": "FAIL_EXPECTED_DENIAL_DISCOVERY_SUCCEEDED_AFTER_PROMOTION",
+      "correction": "FINAL_FULL_CUSTOMER_GUARD_PER_CONTEXT",
+      "finalRegression": "PASS_STAFF_AND_PLATFORM_LOCK_WAITS"
+    }
+  ],
+  "localTests": {
+    "applicationAndPGlite": {
+      "PASS": 940,
+      "nativeOnlySkipped": 59
+    },
+    "nativePostgresql17": {
+      "PASS": 386,
+      "skipped": 0,
+      "version": "17.11",
+      "unixSocketOnly": true,
+      "clusterStoppedAndRemoved": true,
+      "newCustomerWorkflowAndAuditCases": 19,
+      "newNativeLockWaitOrConcurrencyCases": 7
+    },
+    "recovery": {
+      "PASS": 77,
+      "scope": "PRIMARY_REGRESSION_NOT_SECOND_DEVICE_REHEARSAL"
+    },
+    "browser": {
+      "PASS": 75,
+      "projects": ["desktop", "tablet", "mobile"],
+      "loopbackOnly": true,
+      "existingPreviewPreserved": true
+    },
+    "lintStrictGeneratedTypesBuildFormat": "PASS",
+    "migrationFrozenP1AndProposalIntegrity": "PASS",
+    "countsOverlap": true,
+    "initialEnvironmentFailure": "Three existing Python crypto interoperability tests failed under default Python without cryptography; corrected to existing isolated recovery runtime, no recovery source changes. Final full check passed.",
+    "githubCI": "Exact pushed commit PR checks; verified separately without adding counts"
+  },
+  "hostedPropertyCases": {
+    "PASS": 0,
+    "FAIL": 0,
+    "BLOCKED": 24,
+    "NOT_RUN": 48
+  },
+  "hostedP2Subset": {
+    "PASS": 0,
+    "FAIL": 0,
+    "BLOCKED": 9,
+    "NOT_RUN": 0
+  },
+  "hostedActions": {
+    "requests": 0,
+    "authSessionsOrMfa": 0,
+    "writesOrGrantsOrFixtures": 0,
+    "cleanupProbe": 0,
+    "netlifyOrProvider": 0,
+    "freshOriginal713OrIdentityRosterVerification": false
+  },
+  "preserved": {
+    "historicalSqlFiles": 13,
+    "frozenP1OperationAndArtifacts": true,
+    "baselineRowsExpectedInFrozenPackage": 713,
+    "identitiesAndFactorsUntouched": true,
+    "brandingRecoveryAndNetlifyUntouched": true
+  },
+  "sourceArtifacts": [
+    {
+      "file": "server/customer/schema.proposed.sql",
+      "sha256": "60c2336c7a21919f6dece4c7ec52a6640136f805e62d7b0adb2b81f5690a24b1"
+    },
+    {
+      "file": "server/customer/workflow.proposed.sql",
+      "sha256": "3511804845e5d08d97e7de1da49318f047f7e4cf51b3dc240df3b6815ab7ae4c"
+    },
+    {
+      "file": "src/lib/customer-decision.ts",
+      "sha256": "7bbeb1a146cd0e7af00ed64522180c298d55ad418afd382e8254919f0c4aaaf4"
+    },
+    {
+      "file": "tests/customer-decision.test.ts",
+      "sha256": "e098c5d1f4eca695f12e7399686ee119b026c226d5a7473a16fa1cbb8765c14e"
+    },
+    {
+      "file": "tests/database/property.test.ts",
+      "sha256": "2389f390221f3bf908b67b59381d019ac913aa906901c8bc475af07bfda8feeb"
+    },
+    {
+      "file": "tests/database/bootstrap.sql",
+      "sha256": "7a9d283553f5a48bdf10541ae50b4238592506ce798043bf33e130c38b8dc81d"
+    },
+    {
+      "file": "scripts/check-customer-proposal.mjs",
+      "sha256": "0ab4ba3d2c8920d19b1dff45af9990607bd2185d93fee0b017d5967c77dded78"
+    }
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

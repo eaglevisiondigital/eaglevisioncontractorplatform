@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-18",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "localPreparation": "AUTHORIZED_IMPLEMENTED",
+  "reviewPackage": "CUSTOMER_AUTHORIZATION_MIGRATION_REVIEW.json",
+  "hostedMigration": "NOT_AUTHORIZED_NOT_RUN",
+  "targetSpecificDryRun": "NOT_RUN_REQUIRES_FRESH_TARGET_PREFLIGHT_AFTER_P1",
+  "newFunctionExecutionGrants": "NOT_AUTHORIZED_NONE_CREATED",
+  "customerRuntimeCapabilityChange": "NOT_AUTHORIZED_ALL_FALSE",
+  "customerAuthBrokerAndCallbackActivation": "NOT_AUTHORIZED_NOT_IMPLEMENTED_AS_ACTIVE_ENDPOINT",
+  "customerSignInInvitationOrSignup": "NOT_AUTHORIZED_NONE_CREATED",
+  "customerMappingsAndLeases": "NOT_AUTHORIZED_NONE_CREATED",
+  "p2FixtureIds": "NOT_FROZEN_WAIT_FOR_GENUINE_P1_REPORT_EVIDENCE",
+  "genuineConnectedCustomerAcceptance": "BLOCKED",
+  "financialConsentOrExecution": "NOT_AUTHORIZED_NOT_CONFERRED_BY_REVIEW_DECISIONS",
+  "frozenP1": {
+    "status": "EXISTING_APPROVAL_PRESERVED_NO_DUPLICATE_REQUEST",
+    "operationSha256": "01b96075d2f04acef730114427bc595986a1f0ce2720ed7fd3c9e84e304e141a",
+    "requiresInstalledHistoryCount": 13,
+    "mustPrecedeCustomerMigration": true,
+    "independentOperationalRecovery": "BLOCKED_SEPARATE_VERIFICATION_REQUIRED"
+  },
+  "rejectedHostedRecoveryProbe": "PROHIBITED_NOT_REPEATED",
+  "netlifyProviderMediaAndProduction": "OUT_OF_SCOPE_UNCHANGED",
+  "outsideAccessAndMerge": "NOT_AUTHORIZED"
+}

@@ -1,0 +1,106 @@
+{
+  "package": "WORKSTREAM_2A_DURABLE_MAINTENANCE_FOUNDATION",
+  "date": "2026-10-29",
+  "baseCommit": "c8f09754f122fb2212f05d4a1d1ef9f06f787dbd",
+  "status": "LOCAL_CONTRACT_AND_DISPOSABLE_NATIVE_VALIDATION_COMPLETE",
+  "operationalPersistenceActivated": false,
+  "native": {
+    "engine": "PostgreSQL 17",
+    "newTestsPassed": 40,
+    "file": "tests/database/maintenance-persistence.test.ts",
+    "newDatabasePerSuite": true,
+    "fixtureSchema": "maintenance_2a_test",
+    "historicalMigrationsInNewFixture": 13,
+    "pendingCustomerMigrationLoadedByNewSuite": false,
+    "roles": "Synthetic disposable Auth/session/membership rows only; no genuine authentication claim",
+    "cases": [
+      "All three contractor types",
+      "Exact customer/property/report/version/finding binding",
+      "Current office-manager/estimator authority; field/customer/AAL1-management denials",
+      "Native simultaneous employee CAS conflict",
+      "Concurrent exact replay, payload/actor UUID conflicts",
+      "Append-only notes/receipts/archives",
+      "Actual post-lock-wait membership revocation",
+      "Real clock expiry during a native lock wait",
+      "Session/banned/deleted/anonymous/unconfirmed principal denials including receipt replay",
+      "Disabled property/CRM/estimate gates",
+      "Active same-company responsibility",
+      "Atomic existing-workflow follow-up draft, plan/date uniqueness and stale plan CAS",
+      "Separate Node writer/reader processes with retained state and lost receipt reconciliation",
+      "SIGKILL before commit during edits and follow-up preparation; rollback; absent receipt undetermined",
+      "RLS filtering with test-only temporary SELECT; original direct client ACLs remain denied",
+      "Immutable reports, no inferred resolution after omission, no financial writes from triage",
+      "Private readiness archive fidelity across actual reader process restart",
+      "Actual saved-estimate/policy changes invalidate confirmations without changing history",
+      "Wrong archive target/source-line and customer/private export denials",
+      "Every new composite FK covered by an actual native index prefix"
+    ],
+    "reproducibleRunner": "npm run test:maintenance-native; existing local PG17 only; private Unix socket; TCP disabled; owned cluster stopped/removed",
+    "nativeOnlySkipPolicy": "Default application runs visibly skip these cases; CI native PostgreSQL job runs all. No PGlite/clock mock replacement."
+  },
+  "application": {
+    "focusedPassed": 122,
+    "newContractArchiveTests": 18,
+    "existingRegressionTests": 104,
+    "files": [
+      "tests/maintenance-persistence.test.ts",
+      "tests/maintenance-center.test.ts",
+      "tests/repair-draft.test.ts",
+      "tests/repair-readiness.test.ts",
+      "tests/back-office-copy.test.ts"
+    ],
+    "rerunsAreNonadditive": true
+  },
+  "browser": {
+    "focusedPassed": 6,
+    "file": "tests/browser/contractor-phase-b.spec.ts",
+    "viewports": ["desktop", "tablet", "mobile"],
+    "companies": 3,
+    "modules": 13,
+    "exactReferenceAndCustomerPixels": true,
+    "axeAndHorizontalOverflow": "PASS in exercised states",
+    "newUIChanges": 0
+  },
+  "checks": {
+    "lint": "PASS",
+    "strictTypes": "PASS",
+    "generatedTypes": "PASS",
+    "build": "PASS",
+    "format": "PASS",
+    "migrationIntegrity": "PASS",
+    "propertyProposalIntegrity": "PASS",
+    "customerProposalIntegrity": "PASS",
+    "diff": "PASS"
+  },
+  "integrity": {
+    "baseCommit": "c8f09754f122fb2212f05d4a1d1ef9f06f787dbd",
+    "existingProtectedPathsUnchanged": 211,
+    "allExistingApplicationSourceUnchanged": true,
+    "allExistingServerCodeUnchanged": true,
+    "allExistingMigrationBytesUnchanged": true,
+    "historicalMigrations": 13,
+    "pendingCustomerMigrationUnchanged": true,
+    "frozenArtifactsVerified": 4,
+    "dependencyVersionsAndLockfileUnchanged": true,
+    "hostedActions": 0
+  },
+  "testFindings": [
+    "Existing session helper alone did not deny banned/deleted principals; added current user-state checks only in NEW fixture boundary. Historical SQL untouched.",
+    "Tax fixture projection must omit created_at as existing SQL does; existing native and TypeScript calculations verified equal, no engine change.",
+    "Corrected audit test to existing activity_events table."
+  ],
+  "blockedNotPass": [
+    "Genuine signed JWT/Auth/MFA/PostgREST/HTTP multi-user acceptance",
+    "Operational durable pre-send intent custody and UNKNOWN settlement service",
+    "Durable repair-attempt reservation/recovery and authenticated readiness append commands",
+    "Ordinary native estimate save/issue/duplicate enforcement for new durable repair bindings",
+    "Connected adapter/UI reload persistence and real service deployment",
+    "DB-server outage/disk loss and independent two-Mac recovery",
+    "Migration/grants/features/customer access/provider/Netlify/production/launch activation",
+    "Complete mixed administrative/resource lock-order and operational load acceptance"
+  ],
+  "archiveScope": "Bounded PRIVATE evidence fidelity through canonical review engine. Fixture owner seeding only, no authenticated confirmation writer or safe public import. No historical actor/measurement truth claim.",
+  "approvalRegister": "docs/MAINTENANCE_DURABLE_APPROVAL_REGISTER.json",
+  "ci": "Current-commit full Foundation/native/browser and compatibility results reported on draft PR after push; prior successful c8f0975 workflows not restarted.",
+  "release": "NOT READY / NOT AUTHORIZED"
+}

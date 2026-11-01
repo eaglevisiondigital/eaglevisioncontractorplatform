@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-28",
+  "base": "10a5e942a6cf012f795ba96d414111f218575d4c",
+  "mode": "LOCAL_SYNTHETIC_ONLY",
+  "route": "/preview/property-portal",
+  "view": "Attention center",
+  "application": {
+    "files": 6,
+    "passed": 86,
+    "failed": 0,
+    "newAttentionDomainAndIntegrationTests": 20
+  },
+  "browser": {
+    "uniquePassed": 24,
+    "failed": 0,
+    "viewports": ["desktop", "tablet", "mobile"],
+    "accessibility": true,
+    "overflow": true,
+    "externalRequestsFromAttentionJourney": 0,
+    "exactSourceReportAndVersionVerified": true,
+    "visualInspection": ["desktop", "mobile"]
+  },
+  "rules": {
+    "similarTextNeverGroups": true,
+    "identifierContinuityExplicitlyUncertain": true,
+    "duplicateVersionsDoNotInflateRecurrence": true,
+    "conflictingSameDateEvidenceUncertain": true,
+    "absenceNeverProvesRepair": true,
+    "repairStatus": "undetermined",
+    "exactScopedIssuedLinks": true,
+    "noPrivateOrFinancialFieldsInAttention": true
+  },
+  "checks": {
+    "typecheck": true,
+    "lint": true,
+    "generatedTypes": true,
+    "migrationIntegrity": true,
+    "propertyProposal": true,
+    "customerProposal": true,
+    "build": true,
+    "format": true,
+    "frozenP1Artifacts": 4
+  },
+  "notRun": [
+    "hosted Auth/P1/P2/customer acceptance",
+    "native PostgreSQL unchanged SQL",
+    "completed recovery setup/offline/package/network tests",
+    "actual authenticated physical pairing or independent recovery"
+  ],
+  "preserved": {
+    "historicalMigrations": 13,
+    "pendingCustomerMigration": "UNAPPLIED_NOT_AUTHORIZED",
+    "frozenP1Operation": "01b96075d2f04acef730114427bc595986a1f0ce2720ed7fd3c9e84e304e141a",
+    "financialExecution": false,
+    "hostedChanges": 0,
+    "credentialsRetrieved": 0,
+    "authSessionsCreated": 0,
+    "deployments": 0,
+    "merged": false
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

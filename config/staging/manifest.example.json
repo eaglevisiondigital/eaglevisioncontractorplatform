@@ -1,0 +1,27 @@
+{
+  "environment": "internal-development",
+  "approvalReference": "REPLACE_WITH_EXPLICIT_TEST_ACTION_APPROVAL",
+  "expiresAt": "REPLACE_WITH_EXPIRY_WITHIN_SEVEN_DAYS",
+  "supabaseUrl": "https://REPLACE_WITH_APPROVED_DEVELOPMENT_REF.supabase.co",
+  "forbiddenProjectRefs": [],
+  "syntheticOnly": true,
+  "companies": [
+    {
+      "name": "Straight Edge Property Services",
+      "organizationId": "REPLACE",
+      "ownerTokenEnv": "EV_STAGE_PROPERTY_JWT"
+    },
+    {
+      "name": "Cunningham Construction",
+      "organizationId": "REPLACE",
+      "ownerTokenEnv": "EV_STAGE_CONSTRUCTION_JWT"
+    },
+    {
+      "name": "Sample Roofing Contractor",
+      "organizationId": "REPLACE",
+      "ownerTokenEnv": "EV_STAGE_ROOFING_JWT"
+    }
+  ],
+  "productionPolicy": "separate-clean-database-required",
+  "developmentPromotionAllowed": false
+}

@@ -1,0 +1,147 @@
+{
+  "baseCommit": "7fe6002",
+  "status": "LOCALLY_IMPLEMENTED_HOSTED_AND_DEVICE_UNVERIFIED",
+  "recommendation": "GO_INDEPENDENT_LOCAL_DEVICE_REHEARSAL_NO_GO_HOSTED_RECOVERY_OR_P1_ACTIVATION",
+  "operationSha256": "01b96075d2f04acef730114427bc595986a1f0ce2720ed7fd3c9e84e304e141a",
+  "cleanupSha256": "9f218c649801a48d5afc78f654fc0ed56280c5c9c88368eaba64bec4ac67820c",
+  "historicalMigrationsUnchanged": 13,
+  "frozenArtifactsUnchanged": 4,
+  "implemented": [
+    "Fixed capsule-reloaded HTTPS adapter",
+    "TLS hostname/certificate/AEAD and bounded child-process transport",
+    "Per-run AES-GCM encrypted custody/HKDF/HMAC receipts",
+    "Fsynced independent encrypted journal and no-replay controls",
+    "Positive creation/session/owner-upgrade backup ACK gates in primary harness",
+    "Encrypted local mailboxes and foreground independent supervisor",
+    "One-shot deactivation-first recovery and parallel authenticated session restoration/logout",
+    "Local logout in primary and backup; unrelated sessions preserved"
+  ],
+  "creationUncertainty": "UNRESOLVED_INTENT_BLOCKS_ACTIVATION_NO_UID_ONLY_REVOCATION_OR_RETRY",
+  "credentials": {
+    "retrieved": 0,
+    "installed": 0,
+    "generatedProviderCredentials": 0,
+    "backupRecommendation": "SEPARATELY_APPROVED_PROJECT_SCOPED_DATABASE_PAT",
+    "managementPrivilegeResidual": "PROJECT_DATABASE_RW_IS_NOT_TENANT_SCOPED"
+  },
+  "runtime": {
+    "primaryNodeUnchanged": ">=24 <25",
+    "pythonTarget": "3.13.16",
+    "localTestPython": "3.12.14",
+    "cryptography": "50.0.2",
+    "cffi": "2.1.1",
+    "pycparser": "3.11",
+    "hashPinnedBinaryOnly": true,
+    "actualSecondDeviceVerified": false,
+    "montereyPrivilegedCustody": "DO_NOT_INSTALL_CREDENTIALS_USE_MAINTAINED_OS"
+  },
+  "localValidation": {
+    "applicationTestsPassed": 834,
+    "nativeOnlySkipped": 50,
+    "pythonTestsPassed": 69,
+    "nativePostgresql17Passed": 346,
+    "nativeSkipped": 0,
+    "browserPassed": 63,
+    "browserSurfaces": ["desktop", "tablet", "mobile"],
+    "countsOverlap": true,
+    "tlsEvidence": "MOCK_HTTPS_REQUESTS_AND_REAL_SSL_CONTEXT_NOT_HOSTED_HANDSHAKE",
+    "encryptionEvidence": "REAL_CRYPTOGRAPHY_NODE_PYTHON_SEPARATE_PROCESS_INTEROPERABILITY",
+    "hardwareAndNetwork": "NOT_VERIFIED",
+    "fullApplicationCheck": "PASS_WITH_68_PYTHON_CASES_THEN_FINAL_TLS_ENVIRONMENT_CASE_PASS_IN_69_CASE_TARGETED_RUN"
+  },
+  "hostedEffects": {
+    "projectRequests": 0,
+    "writes": 0,
+    "sessions": 0,
+    "mfaChallenges": 0,
+    "cleanupProbes": 0,
+    "featureOrFixtureActivation": 0,
+    "grants": 0,
+    "netlifyActions": 0,
+    "providerActions": 0
+  },
+  "hostedCaseTracking": {
+    "PASS": 0,
+    "FAIL": 0,
+    "BLOCKED": 24,
+    "NOT_RUN": 48
+  },
+  "remainingGates": [
+    "Maintained independent device and actual operator/power/network",
+    "Private UI/custody composition and paired transfer on actual device",
+    "Separately authorized project-scoped credential/run-key setup",
+    "Exact separate hosted recovery verification including local logout and every probe write",
+    "Fresh genuine MFA and unchanged-scope P1 preflight after verified recovery"
+  ],
+  "existingP1Approval": "PERSISTS_NO_DUPLICATE_FIXTURE_SCOPE_APPROVAL_REQUEST",
+  "previousRejectedProbe": "NOT_REPEATED_OR_BYPASSED",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "pullRequest": "DRAFT_UNMERGED",
+  "sourceArtifacts": [
+    {
+      "file": "recovery/monterey/p1_recovery.py",
+      "sha256": "5e359eb18f8a8ecaee7c249ed310a86ed86805b8357ce89fe838bc280099d6c8"
+    },
+    {
+      "file": "recovery/monterey/https_adapter.py",
+      "sha256": "68f38f26f17ffcd7e5dfc46e127f6663a658938161efc5cf0563a82a005d8e9c"
+    },
+    {
+      "file": "recovery/monterey/custody.py",
+      "sha256": "dd3351efe354949fce42a48024a191eda6479a31afb3fd18b57dd524b1e4cb08"
+    },
+    {
+      "file": "recovery/monterey/device.py",
+      "sha256": "8b9669e9371f29de74ef96f5ba1dababb35c4d74f22f0003c92c2c3b23405534"
+    },
+    {
+      "file": "recovery/monterey/mailbox.py",
+      "sha256": "874651af5858754279050867548a8db7411a0726fdcddc7445266a57981a3efc"
+    },
+    {
+      "file": "recovery/monterey/requirements.lock",
+      "sha256": "548b714984acb70b317815fe97b22132aafd866661874bc09d19e220c2f85d8f"
+    },
+    {
+      "file": "recovery/monterey/test_secure_recovery.py",
+      "sha256": "a71f2bf0d0153fd216d3fc7d885c4d2b16bb9b57e4a5060f9eac87c18631439d"
+    },
+    {
+      "file": "server/property/execution/backup-custody.ts",
+      "sha256": "23984203d95aa59bdf660edf06c3f7683fc8c4e8b40743b4befb406a44bfef49"
+    },
+    {
+      "file": "server/property/execution/backup-mailbox.ts",
+      "sha256": "35bf61b083211709b38cb4cd0b85a3c1f5bba1c0b76dd92d9bd3babb03f450be"
+    },
+    {
+      "file": "server/property/execution/prepare.ts",
+      "sha256": "b487b3423d863148082727c1267ea7f7b102b71ccf10bb9ca64c6e2e3cd6dd59"
+    },
+    {
+      "file": "server/property/execution/callers.ts",
+      "sha256": "62084bd253d50a0a9fc3ac8450d741372f9e2f70638be93c59d5eeb7ef483987"
+    },
+    {
+      "file": "server/property/execution/cleanup-worker.mts",
+      "sha256": "f493a81eb6aa9444811d50e52e2d09efab8c709f50c125700c9ac05c0f528a98"
+    },
+    {
+      "file": "tests/property-p1-backup.test.ts",
+      "sha256": "ce2f2be1039b7562045bc2e882718bcf1af270357a735b5b4ea1eb0efe3daf31"
+    },
+    {
+      "file": "tests/property-p1-mailbox.test.ts",
+      "sha256": "ca97fbb5b40294a7bbb24ccd8a485250e25ff925c76206300f9ea3cf21645f93"
+    },
+    {
+      "file": "tests/helpers/p1-backup-peer.py",
+      "sha256": "5787389bd9fd8804301efa4b4d3507fc7c6d18c483082a6cffc7e90ead28c645"
+    },
+    {
+      "file": "scripts/test-recovery.mjs",
+      "sha256": "95974379bce3208a0b7fcafd1e04535ab1a1381b04ca20d98ab9c0b61c24745d"
+    }
+  ],
+  "hostedHistoryRefreshedDuringTask": false
+}

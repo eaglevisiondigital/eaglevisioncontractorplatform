@@ -1,0 +1,94 @@
+{
+  "date": "2026-10-29",
+  "base": "60603df8ae5971923481fb6233c843b8a5fc52c8",
+  "mode": "LOCAL_SYNTHETIC_ONLY",
+  "route": "/preview",
+  "navigation": [
+    "Property operations",
+    "Maintenance & follow-up",
+    "Review finding",
+    "Prepare repair estimate",
+    "Repair scope readiness"
+  ],
+  "application": {
+    "files": 6,
+    "uniquePassed": 166,
+    "failed": 0,
+    "newReadinessCases": 37,
+    "command": "npx vitest run tests/repair-readiness.test.ts tests/repair-draft.test.ts tests/maintenance-center.test.ts tests/estimating.test.ts tests/property-operations.test.ts tests/customer-preview.test.ts",
+    "execution": "Executed in focused subsets; final readiness/repair/maintenance rerun 101 passed. Counts are unique, not cumulative."
+  },
+  "browser": {
+    "files": 5,
+    "uniquePassed": 48,
+    "failed": 0,
+    "newReadinessCases": 6,
+    "filesExercised": [
+      "repair-readiness.spec.ts",
+      "repair-draft.spec.ts",
+      "maintenance-center.spec.ts",
+      "phase3.spec.ts",
+      "property-design.spec.ts"
+    ],
+    "finalReadinessDeltaPassed": 6,
+    "rerunsNotAdditive": true,
+    "viewports": ["desktop", "tablet", "mobile"],
+    "companies": 3,
+    "axeViolations": 0,
+    "horizontalOverflow": false,
+    "readinessJourneyOutsideRequests": 0,
+    "exactSourceNavigation": true,
+    "customerPrivateDataExclusion": true,
+    "lockedPortalPhaseAPixelEquality": true,
+    "screenshots": "artifacts/property/readiness-{viewport}-{company}.png"
+  },
+  "regressionsCorrected": [
+    "Synthetic create/save retained a shared tax-policy object. Clone saved policy snapshots so later policy edits cannot rewrite saved evidence.",
+    "New pricing labels inherited insufficient contrast. Scoped readiness label color corrected; final Axe checks pass."
+  ],
+  "checks": {
+    "build": true,
+    "typecheck": true,
+    "lint": true,
+    "generatedTypes": true,
+    "migrationIntegrity": true,
+    "propertyCustomerProposalIntegrity": true,
+    "format": true,
+    "diff": true,
+    "protectedTrackedPathsUnchanged": 134,
+    "frozenArtifactsVerified": 4,
+    "historicalPlusPendingSqlUnchanged": true
+  },
+  "priorCi": {
+    "commit": "60603df8ae5971923481fb6233c843b8a5fc52c8",
+    "foundationRun": 40809254844,
+    "compatibilityRun": 40809254820,
+    "conclusion": "success",
+    "restarted": false
+  },
+  "preserved": {
+    "historicalMigrations": 13,
+    "pendingCustomerMigration": "UNAPPLIED_NOT_AUTHORIZED",
+    "frozenP1Operation": "01b96075d2f04acef730114427bc595986a1f0ce2720ed7fd3c9e84e304e141a",
+    "frozenArtifacts": 4,
+    "issuedBaselinesImmutable": true,
+    "premiumPortalAndArtworkUnchanged": true,
+    "connectedRoutesClosed": true,
+    "hostedProductCalls": 0,
+    "credentialsRetrieved": 0,
+    "authSessionsCreated": 0,
+    "financialExecution": false,
+    "deployments": 0,
+    "merged": false
+  },
+  "limits": [
+    "Session-only review; not durable operational evidence, hosted staff authentication or independent measurement verification",
+    "All six groups invalidate conservatively on any exact saved/source/relevant policy/catalog/day change",
+    "Completed review does not authorize issuance, publication, work, customer approval or debt",
+    "Unchanged native SQL/recovery/Mac setup/network baselines not rerun locally; existing GitHub workflows run automatically on push",
+    "Authenticated physical pairing/independent recovery remains unfinished",
+    "Current-commit CI reported separately; contractor back-office owner visual/functional review pending"
+  ],
+  "next": "Owner walkthrough in CONTRACTOR_BACK_OFFICE_REVIEW.md before further feature expansion",
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

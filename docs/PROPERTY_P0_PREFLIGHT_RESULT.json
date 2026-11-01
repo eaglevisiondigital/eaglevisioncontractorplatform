@@ -1,0 +1,68 @@
+{
+  "status": "PREFLIGHT_PASS_EXECUTION_NOT_AUTHORIZED",
+  "reviewedCommit": "7e472b796b2183ef077c7f89a5f34eeb192c7e9f",
+  "targetDesignation": "owner-designated internal development; exact target retained privately",
+  "cliVersion": "2.121.0",
+  "migrations": [
+    {
+      "file": "20261017024327_property_connected_readiness.sql",
+      "sha256": "6bb0b9bf22ec1079d7aa5f74c6e33e14534cc54e30e9034c33949f786cfd3ac9"
+    },
+    {
+      "file": "20261017024328_property_duplicate_index_cleanup.sql",
+      "sha256": "3603fe0482f46b9733a0321cd9009cb1f291993fcbede7132e1bdf721776fdfc"
+    }
+  ],
+  "pendingBundleSha256": "5349a3b175a55bd6f360819c7942fc74f69d9a29c1765a058e20df1319df6dea",
+  "installedBundleSha256": "15a2b9c67766564e91efe7cf3347a7138a10b1a722a5d295ce1f7f3613a2f17e",
+  "fullProposedBundleSha256": "ef6151b4c111f3907205feff27b6f343e34d785e4364209ad7a9f85f2b4ff12d",
+  "proposedTargetBoundOperationSha256": "c7d69d870cf9afc0979614957b3c1d60691ccfa524df7cc32b8bd2e440cbd6ff",
+  "dryRun": {
+    "passed": true,
+    "exitCode": 0,
+    "durationMs": 5697,
+    "migrations": [
+      "20261017024327_property_connected_readiness.sql",
+      "20261017024328_property_duplicate_index_cleanup.sql"
+    ],
+    "seeds": [],
+    "roles": [],
+    "skipVault": true
+  },
+  "drift": {
+    "historyEntries": 11,
+    "catalogFingerprints": 500,
+    "columnAclRecords": 69,
+    "defaultAclRecords": 24,
+    "existingBusinessTables": 79,
+    "savedAuthApiUnchanged": true,
+    "postDryRunUnchanged": true
+  },
+  "nativeTestsPassed": 68,
+  "securityAdvisors": {
+    "WARN": 0,
+    "ERROR": 0,
+    "INFO": 36
+  },
+  "performanceAdvisors": {
+    "WARN": 5,
+    "ERROR": 0,
+    "INFO": 93
+  },
+  "proposedPostInstall": {
+    "historyEntries": 13,
+    "catalogFingerprints": 514,
+    "newPrivateTables": 1,
+    "newFunctions": 6,
+    "newPublicInvokerWrappers": 3,
+    "newReportAccessRows": 0,
+    "newFeatureRows": 0,
+    "newCustomerMappings": 0
+  },
+  "hostedMigrationApplied": false,
+  "executionAuthorized": false,
+  "activationAuthorized": false,
+  "hostedPropertyCasesExecuted": 0,
+  "recommendation": "GO for separate exact development execution approval; refresh preflights before execution; NO-GO for activation/outside access",
+  "report": "docs/PROPERTY_P0_FINAL_PREFLIGHT.md"
+}

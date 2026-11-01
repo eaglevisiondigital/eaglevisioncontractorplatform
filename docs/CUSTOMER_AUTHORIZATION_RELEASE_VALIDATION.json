@@ -1,0 +1,115 @@
+{
+  "date": "2026-10-18",
+  "baseCommit": "cd30969",
+  "status": "LOCAL_RELEASE_PACKAGE_PREPARED_HOSTED_UNVERIFIED",
+  "recommendation": {
+    "separateOwnerReview": "GO",
+    "hostedExecutionNow": "NO_GO",
+    "activation": "NO_GO"
+  },
+  "migration": {
+    "file": "20261018144833_customer_authorization_release_readiness.sql",
+    "sha256": "e3157e004c464fb2a4ab69e7a3a335a81d6bbbb0556d74234f3884f56d784ed1",
+    "pendingBundleSha256": "30e5f91b9e1148e6195b09f98988e132729a6708634caca48b3388fa96da25d2",
+    "historicalDependencies": 13,
+    "historicalBundleSha256": "ef6151b4c111f3907205feff27b6f343e34d785e4364209ad7a9f85f2b4ff12d",
+    "newPrivateTables": 2,
+    "newPublicInvokerWrappers": 11,
+    "newExecutionGrants": 0,
+    "clientPolicies": 0,
+    "capabilitiesEnabled": false,
+    "hostedApplied": false,
+    "pinnedCli": "2.121.0",
+    "targetSpecificDryRun": "NOT_RUN"
+  },
+  "findings": [
+    {
+      "id": "CUST-3",
+      "reproduction": "NATIVE_LEGACY_REPORT_BAN_CHECK_FAILED_BEFORE_CORRECTION",
+      "correctedRegression": "PASS"
+    },
+    {
+      "id": "CUST-4",
+      "reproduction": "NATIVE_PUBLICATION_DECISION_DEADLOCK_BEFORE_CORRECTION",
+      "correctedRegression": "PASS"
+    },
+    {
+      "id": "CUST-5",
+      "reproduction": "NATIVE_IDENTICAL_PUBLICATION_UNIQUE_CONFLICT_BEFORE_CORRECTION",
+      "correctedRegression": "PASS_ONE_PUBLICATION_ONE_AUDIT"
+    },
+    {
+      "id": "CUST-6",
+      "review": "UNCONDITIONAL_STAFF_AUTH_INITIALIZATION_ON_RESERVED_ROUTES",
+      "regression": "PASS_CLOSED_CALLBACK_NO_SDK_CONSTRUCTION"
+    }
+  ],
+  "tests": {
+    "applicationAndPGlite": {
+      "PASS": 988,
+      "SKIPPED": 62,
+      "filesPassed": 59,
+      "filesSkipped": 2
+    },
+    "nativePostgresql17": {
+      "PASS": 393,
+      "SKIPPED": 0,
+      "filesPassed": 17,
+      "version": "17.11",
+      "temporaryUnixSocketCluster": true,
+      "stoppedAndRemoved": true,
+      "overlapsApplicationSuite": true
+    },
+    "recovery": {
+      "PASS": 77,
+      "scope": "PRIMARY_LOCAL_REGRESSION_NOT_INDEPENDENT_DEVICE_REHEARSAL"
+    },
+    "browser": {
+      "PASS": 78,
+      "FAIL": 0,
+      "projects": ["desktop", "tablet", "mobile"],
+      "syntheticLoopbackOnly": true,
+      "earlierRun": "ONE_TABLET_TIMEOUT_WHILE_PARALLEL_BUILD_REPLACED_STATIC_FILES",
+      "stableBuildFullRerun": "78_PASS"
+    },
+    "lintStrictTypesGeneratedTypesMigrationProposalIntegrityBuild": "PASS",
+    "format": "PASS",
+    "frozenP1": {
+      "operationSha256": "01b96075d2f04acef730114427bc595986a1f0ce2720ed7fd3c9e84e304e141a",
+      "artifactsVerified": 4,
+      "originalRowGuardsVerifiedOffline": 713,
+      "hostedOriginalRowsChecked": false,
+      "hostedWrites": 0
+    }
+  },
+  "hosted": {
+    "requests": 0,
+    "newSessions": 0,
+    "mfaChallenges": 0,
+    "fixtures": 0,
+    "features": 0,
+    "mappings": 0,
+    "leases": 0,
+    "migrations": 0,
+    "grants": 0,
+    "advisors": "NOT_RUN",
+    "settings": "NOT_CHANGED",
+    "propertyCases": {
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 24,
+      "NOT_RUN": 48
+    },
+    "p2Groups": "9_BLOCKED"
+  },
+  "limitations": [
+    "No genuine Supabase Auth, PostgREST, local logout, advisor or target dry-run proof this increment",
+    "Production Auth broker, durable nonce/rate store, secure cookie lifecycle and browser-crash request-ID custody remain activation prerequisites",
+    "Unchanged P1 requires thirteen installed migrations; customer migration fourteen follows actual P1 evidence",
+    "P2 IDs/mappings/leases are not frozen before genuine P1 reports",
+    "Independent operational recovery and previously rejected hosted probe remain separate; probe not repeated",
+    "No financial/signature/media/provider/Netlify/production/outside activation"
+  ],
+  "approvalRegister": "CUSTOMER_AUTHORIZATION_APPROVAL_REGISTER.json",
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

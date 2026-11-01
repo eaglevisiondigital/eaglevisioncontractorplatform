@@ -1,0 +1,10 @@
+node_modules
+dist
+package-lock.json
+supabase/config.toml
+supabase/migrations
+supabase/.temp
+test-results
+
+# Private connected-test manifests, credentials and evidence.
+.staging

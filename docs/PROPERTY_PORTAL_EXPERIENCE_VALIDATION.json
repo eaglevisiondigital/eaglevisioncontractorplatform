@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-28",
+  "base": "bd2578f91eeb52b7b4e8f57fca09d4f4cc08e49d",
+  "mode": "LOCAL_SYNTHETIC_ONLY",
+  "route": "/preview/property-portal",
+  "application": {
+    "files": 11,
+    "passed": 174,
+    "failed": 0
+  },
+  "browser": {
+    "passed": 36,
+    "failed": 0,
+    "viewports": ["desktop", "tablet", "mobile"],
+    "accessibility": true,
+    "overflow": true,
+    "externalRequestsInJourney": 0,
+    "visualInspection": ["desktop", "mobile"]
+  },
+  "checks": {
+    "types": true,
+    "lint": true,
+    "generatedTypes": true,
+    "migrationIntegrity": true,
+    "propertyProposal": true,
+    "customerProposal": true,
+    "build": true,
+    "format": true,
+    "frozenP1Artifacts": 4
+  },
+  "notRun": [
+    "hosted Auth/P1/P2/customer acceptance",
+    "native PostgreSQL unchanged SQL",
+    "completed recovery setup/offline/network/package checks",
+    "actual authenticated two-device pairing or independent recovery"
+  ],
+  "ownerReportedRecovery": {
+    "correctedSetupBothMacs": true,
+    "localIPv4": true,
+    "universalClipboard": true,
+    "authenticatedPairing": "INCOMPLETE",
+    "independentRecovery": "INCOMPLETE",
+    "physicalDevicePassClaimed": false
+  },
+  "preserved": {
+    "historicalMigrations": 13,
+    "pendingCustomerMigration": "UNAPPLIED_NOT_AUTHORIZED",
+    "frozenP1Operation": "01b96075d2f04acef730114427bc595986a1f0ce2720ed7fd3c9e84e304e141a",
+    "financialExecution": false,
+    "hostedChanges": 0,
+    "credentialsRetrieved": 0,
+    "authSessionsCreated": 0,
+    "deployments": 0,
+    "merged": false
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

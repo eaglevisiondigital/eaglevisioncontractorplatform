@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-28",
+  "base": "ef6d2e73f7175369c7f2b5ac92a24500a9e1a3e7",
+  "mode": "LOCAL_SYNTHETIC_DESIGN_REVIEW_ONLY",
+  "route": "/preview/property-portal-design",
+  "existingPortalReplacementApproved": false,
+  "existingFunctionalPreviewUnchanged": true,
+  "isolatedInstanceOfExistingSyntheticRepository": true,
+  "scopedLazyLoadedCss": true,
+  "application": { "files": 4, "passed": 20, "failed": 0 },
+  "browser": {
+    "uniquePassed": 33,
+    "newConceptCases": 9,
+    "existingRegressionCases": 24,
+    "failedFinal": 0,
+    "viewports": ["desktop", "tablet", "mobile"],
+    "axeViolations": 0,
+    "horizontalOverflow": false,
+    "screenshotJourneyOutsideRequests": 0,
+    "contractorBrandsVerified": 3,
+    "exactApprovedLogoSha256": "b77d8e9e9db486c32ea24031033e4bec758342a4a3418fb438cfad23e0629bb0",
+    "keyboardFocus": true,
+    "reducedMotion": true,
+    "initialCorrections": [
+      "Evidence-note contrast below4.5; darkened scoped note text",
+      "Negative fixed skip-link positioning leaked into long screenshots; corrected clipped/focused styling"
+    ],
+    "realBrowserScreenshots": "artifacts/property-design/",
+    "screenshotsIgnored": true,
+    "visualInspection": [
+      "desktop overview",
+      "desktop attention",
+      "desktop comparison",
+      "desktop estimates",
+      "mobile overview",
+      "mobile comparison",
+      "empty/error"
+    ]
+  },
+  "checks": {
+    "lint": true,
+    "typecheckAndBuild": true,
+    "generatedTypes": true,
+    "migrationIntegrity": true,
+    "propertyProposal": true,
+    "customerProposal": true,
+    "format": true,
+    "diff": true,
+    "existingProtectedPathsUnchanged": 166,
+    "frozenP1ArtifactsVerified": 4
+  },
+  "priorCi": {
+    "run": 40763735497,
+    "verify": "success",
+    "postgres17": "success",
+    "restarted": false
+  },
+  "notRun": [
+    "full local aggregate with unchanged recovery/native SQL baseline",
+    "completed recovery setup/offline/package/network tests",
+    "actual two-device pairing/recovery",
+    "hosted Auth/customer/P1/P2 acceptance"
+  ],
+  "preserved": {
+    "historicalMigrations": 13,
+    "pendingCustomerMigration": "UNAPPLIED_NOT_AUTHORIZED",
+    "frozenP1Operation": "01b96075d2f04acef730114427bc595986a1f0ce2720ed7fd3c9e84e304e141a",
+    "financialExecution": false,
+    "hostedChanges": 0,
+    "credentialsRetrieved": 0,
+    "authSessionsCreated": 0,
+    "deployments": 0,
+    "merged": false
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

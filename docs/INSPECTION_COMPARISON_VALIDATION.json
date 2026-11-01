@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-28",
+  "base": "a6911d66037aea20435824e4af32ee4ca6108b36",
+  "mode": "LOCAL_SYNTHETIC_ONLY",
+  "route": "/preview/property-portal",
+  "view": "Compare inspections",
+  "application": {
+    "files": 9,
+    "passed": 98,
+    "failed": 0,
+    "newComparisonDomainAndIntegrationTests": 19
+  },
+  "browser": {
+    "uniquePassed": 33,
+    "newComparisonCases": 9,
+    "failedFinal": 0,
+    "viewports": ["desktop", "tablet", "mobile"],
+    "accessibilityViolations": 0,
+    "horizontalOverflow": false,
+    "outsideRequestsFromComparisonJourney": 0,
+    "exactReportAndIssuedVersionNavigation": true,
+    "visualInspection": ["desktop", "mobile"],
+    "initialFailure": "Duplicate accessibility region names; corrected evidence rows to labeled groups; all nine comparison cases rerun PASS"
+  },
+  "rules": {
+    "exactSourceVersions": true,
+    "wholeAuthorizedHistoryIdentityChecks": true,
+    "noFuzzyGrouping": true,
+    "sameDateChronologyNotInferred": true,
+    "publishedChecklistIdsUnavailable": true,
+    "checklistSourcePositionPreserved": true,
+    "ambiguousChecklistLabelsUnmatched": true,
+    "absenceNeverProvesRepair": true,
+    "repairStatus": "undetermined",
+    "financialPrivateDataExcluded": true
+  },
+  "checks": {
+    "typecheck": true,
+    "build": true,
+    "lint": true,
+    "generatedTypes": true,
+    "migrationIntegrity": true,
+    "propertyProposal": true,
+    "customerProposal": true,
+    "format": true,
+    "diff": true,
+    "protectedPathsUnchangedFromBase": 83
+  },
+  "previousCi": {
+    "foundationRun": 40754490668,
+    "verify": "success",
+    "postgres17": "success",
+    "restarted": false
+  },
+  "notRun": [
+    "full local aggregate check including unchanged recovery baseline",
+    "native PostgreSQL unchanged SQL",
+    "completed recovery setup/offline/package/network checks",
+    "hosted Auth/customer/P1/P2 acceptance",
+    "physical authenticated pairing/independent recovery"
+  ],
+  "preserved": {
+    "historicalMigrations": 13,
+    "pendingCustomerMigration": "UNAPPLIED_NOT_AUTHORIZED",
+    "frozenP1Operation": "01b96075d2f04acef730114427bc595986a1f0ce2720ed7fd3c9e84e304e141a",
+    "financialExecution": false,
+    "hostedChanges": 0,
+    "credentialsRetrieved": 0,
+    "authSessionsCreated": 0,
+    "deployments": 0,
+    "merged": false
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-28",
+  "base": "8d6f4c0cfdea3ae2408cb6bf95475c6f09e4df7b",
+  "mode": "LOCAL_SYNTHETIC_ONLY",
+  "route": "/preview/property-portal",
+  "application": {
+    "files": 6,
+    "passed": 74,
+    "failed": 0,
+    "newSearchCases": 27
+  },
+  "browser": {
+    "files": 6,
+    "uniquePassed": 60,
+    "failed": 0,
+    "searchCases": 6,
+    "finalSearchDeltaRerunPassed": 6,
+    "viewports": ["desktop", "tablet", "mobile"],
+    "contractorPalettes": 3,
+    "axeViolations": 0,
+    "horizontalOverflow": false,
+    "searchJourneyOutsideRequests": 0,
+    "exactReportVersionNavigation": true,
+    "propertyContractorErrorReset": true,
+    "approvedOverviewPhaseAPixelEquality": true
+  },
+  "checks": {
+    "build": true,
+    "typecheck": true,
+    "lint": true,
+    "generatedTypes": true,
+    "migrationIntegrity": true,
+    "propertyCustomerIntegrity": true,
+    "format": true,
+    "diff": true,
+    "protectedTrackedPathsUnchanged": 121
+  },
+  "priorCi": {
+    "foundationRun": 40774612538,
+    "compatibilityRun": 40774612564,
+    "conclusion": "success",
+    "restarted": false
+  },
+  "notRun": [
+    "full local aggregate with unchanged recovery/native SQL baselines",
+    "completed Mac setup, package, network and offline tests",
+    "physical independent pairing/recovery",
+    "hosted customer/Auth/P1/P2 acceptance"
+  ],
+  "preserved": {
+    "historicalMigrations": 13,
+    "pendingCustomerMigration": "UNAPPLIED_NOT_AUTHORIZED",
+    "frozenP1Operation": "01b96075d2f04acef730114427bc595986a1f0ce2720ed7fd3c9e84e304e141a",
+    "approvedAppearanceAndTransparentLogo": true,
+    "connectedCustomerRoutesClosed": true,
+    "hostedCalls": 0,
+    "credentialsRetrieved": 0,
+    "authSessionsCreated": 0,
+    "databaseWrites": 0,
+    "financialExecution": false,
+    "deployments": 0,
+    "merged": false
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

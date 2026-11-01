@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "status": "REVIEW_ONLY_NOT_AUTHORIZED",
+  "sourceCommit": "28c7d5e41c28c0714c41525179eb0637216a7729",
+  "developmentHeadAtReview": "e544d3bc032c990aca241dd74f9227184804dee2",
+  "bindings": {
+    "privateTargetBindingFileSha256": "fe5183ee9343f24968d42ea790cd4e95a3d7fee8870c8e3d59608b73150dc135",
+    "artifactManifest": "ACTION_D_ARTIFACTS.json",
+    "archiveSha256": "a902edbc4ae006da9a98094c745cb45789f97e1e18151dd2fd73aa9f6519eafb",
+    "fileManifestSha256": "53dda494253a4bc56c1c4c4a89d225a2a5d3364017493b7820a838944d7e4d76",
+    "originalOperationSha256": "2fed36e5d61f742e218cbd36de03b282e9f8cbbc9f51806513fa0238b04aacfc",
+    "canonicalCreateBodySha256": "3409f4fb4cd0c7a9cd3831ed2ea089cdede8d72742afb8ddeed9d221ce7ee510"
+  },
+  "create": {
+    "method": "POST",
+    "endpoint": "https://api.netlify.com/api/v1/sites/{exact-private-site-id}/deploys",
+    "contentType": "application/json",
+    "maximumAttempts": 1,
+    "expectedStatus": 200,
+    "redactedBody": {
+      "draft": true,
+      "async": false,
+      "files": {
+        "assets/Phase3Workspace-DFI2LmiM.js": "dd965939ffe7a501d60c7340c349c15ea3d26d1c",
+        "assets/ReleaseApp-DIpXAIlL.js": "11e3a0122aa51e97378233ce7ad797f69fb7c3ce",
+        "assets/ReleaseApp-Hv3UGd-c.css": "db823e26709e72ce2d79fdf1eb4b997f33e309a8",
+        "assets/customer-preview-BSqAjb5I.js": "fe3f92d2c833457aa1fb36e62e3724de42c36768",
+        "assets/index-BjgiDsCF.css": "24a1027e2aa3b34cf0d418bbe5f7df0c3be0094d",
+        "assets/index-CKgMnFnP.js": "d97c9e5174770bdcd4937431e4c4cb49f6a545c1",
+        "brand/propel-contractor-suite.png": "5722c07d2e8930c81b9bc4750ffd88883252d528",
+        "index.html": "8132b247bfa7ec37cce46d8921a87b29af244d03",
+        "netlify.toml": "35c9bf91291a2777ee1c6d298c70776da5d01d8a"
+      },
+      "functions": {
+        "intake-profile": "c0915f8580e177864cefbc8ce82dcf01e3391c2124bd60588d1cd846227db106",
+        "intake-submit": "ac737921977fe55aa8b0a341175bb9dc9a8e619145c703821aa8307b07862c57",
+        "material-import": "5593b4fc5d39bdefe6bcf05c4668417388feadcf296b0197200ce31866554cb0",
+        "organization-context": "bd58465365a93f7bd9c1a82342be87af0b8c96881cf558fb8659280e1ce77f42"
+      },
+      "functions_config": {
+        "intake-profile": {
+          "build_data": {
+            "bootstrapVersion": "2.24.0",
+            "runtimeAPIVersion": 2
+          },
+          "priority": 10
+        },
+        "intake-submit": {
+          "build_data": {
+            "bootstrapVersion": "2.24.0",
+            "runtimeAPIVersion": 2
+          },
+          "priority": 10
+        },
+        "material-import": {
+          "build_data": {
+            "bootstrapVersion": "2.24.0",
+            "runtimeAPIVersion": 2
+          },
+          "priority": 10,
+          "routes": [
+            {
+              "pattern": "/api/material-import",
+              "literal": "/api/material-import",
+              "methods": []
+            }
+          ]
+        },
+        "organization-context": {
+          "build_data": {
+            "bootstrapVersion": "2.24.0",
+            "runtimeAPIVersion": 2
+          },
+          "priority": 10
+        }
+      },
+      "environment": [
+        {
+          "key": "SUPABASE_URL",
+          "value": "<SEALED_ORIGINAL>",
+          "is_secret": false,
+          "scopes": ["functions"]
+        },
+        {
+          "key": "SUPABASE_PUBLISHABLE_KEY",
+          "value": "<SEALED_ORIGINAL>",
+          "is_secret": false,
+          "scopes": ["functions"]
+        },
+        {
+          "key": "PUBLIC_INTAKE_ENABLED",
+          "value": "<SEALED_ORIGINAL>",
+          "is_secret": false,
+          "scopes": ["functions"]
+        }
+      ]
+    },
+    "placeholderPolicy": "Not an executable payload. Use byte-bound original private body only after separate execution approval; never send placeholders.",
+    "allowedInitialStates": ["uploading", "uploaded", "processing", "ready"]
+  },
+  "uploads": {
+    "files": {
+      "method": "PUT",
+      "endpoint": "https://api.netlify.com/api/v1/deploys/{new-id}/files/{encoded-original-path}",
+      "contentType": "application/octet-stream",
+      "maximumAttemptsPerDigest": 1,
+      "maximumCount": 9,
+      "expectedStatus": 200,
+      "source": "Original verified dist file bytes, or original netlify.toml; path omits dist/."
+    },
+    "functions": {
+      "method": "PUT",
+      "endpoint": "https://api.netlify.com/api/v1/deploys/{new-id}/functions/{exact-name}?runtime=nodejs24.x&invocation_mode=stream",
+      "contentType": "application/octet-stream",
+      "maximumAttemptsPerDigest": 1,
+      "maximumCount": 4,
+      "expectedStatus": 200,
+      "source": "Original verified .netlify/functions/{name}.zip; only initial required_functions digests."
+    },
+    "selection": "Only exact initial-create required/required_functions arrays; reject missing or malformed lists, unknown/duplicate/nonunique digest mappings and nonempty server/edge requirements. Retain initial lists before optional-field checks. Never reconstruct queues from later GET.",
+    "receiptPolicy": "HTTP200 and exact SHA plus original path/length for files or name/SHA for Functions. File paths accept only the exact original path or that same path with one leading slash. No percent-decoding, case/prefix folding, guessed identity or silent field defaults."
+  },
+  "bounds": {
+    "providerUploadWindowHoursApproximate": 6,
+    "operatorSessionMinutesMaximum": 45,
+    "stopBeforeProviderDeadlineMinutes": 30,
+    "mutationTimeoutSeconds": 60,
+    "readyReadMaximumCount": 60,
+    "readyReadIntervalSeconds": 10,
+    "safeReadTimeoutSeconds": 20,
+    "preflightMaximumAgeHours": 24,
+    "createTimestampMaximumClockSkewSeconds": 120
+  },
+  "preconditions": [
+    "Separate exact A-D owner execution approval",
+    "Fresh exact target, unpublished primary baseline, deploy inventory, Git/domain/build-settings and site/shared environment metadata",
+    "Independent dashboard Private production and previews/team login all-deploys",
+    "Frozen bytes, sealed original value custody and original request/Function metadata match",
+    "Reviewed new executor with durable pre-send/initial-response evidence and offline stop/UNKNOWN tests; no historical mutator reuse",
+    "No credential retrieval or hosted Auth/database operations under this review"
+  ],
+  "verification": {
+    "managementReads": [
+      "GET /api/v1/sites/{site-id}",
+      "GET /api/v1/sites/{site-id}/deploys (all pages)",
+      "GET /api/v1/sites/{site-id}/deploys/{original-id}",
+      "GET /api/v1/sites/{site-id}/deploys/{new-id}",
+      "GET /api/v1/deploys/{new-id}/files"
+    ],
+    "expected": "New ready unpublished manual preview; nine exact static paths/digests/lengths and four exact Function registrations/metadata; original and primary baselines unchanged; no domain or alias settings change. The new immutable permalink is expected, not an alias-setting mutation.",
+    "anonymousPerimeter": "Existing 27 paths, GET/HEAD without cookie/Authorization, no redirect following; no app/file/API bytes;404 alone is inconclusive. No sign-in or Function-runtime acceptance under A-D.",
+    "runtimeEnvironment": "Original request integrity/custody verified offline. Effective provider/runtime values remain unverified; no secret-reading/debug endpoint or compensating config update.",
+    "draftFieldOmitted": "Retain arrays first. Permit only predeclared independent site-scoped read confirming exact new ID/site/manual deploy-preview/null publication/expected HTTPS immutable permalink and unchanged primary; false or contradictory evidence stops. No request replay."
+  },
+  "forbidden": [
+    "Final manifest PUT or any old-deploy mutation",
+    "Automatic retry, new replacement ID or restart after UNKNOWN",
+    "Build, current-HEAD substitution or new source checkout",
+    "Site/team environment or protection update",
+    "Auth, grants, database/migration/fixture/feature/mapping/lease changes",
+    "Publication, deletion, cancellation, restore, domain/alias changes, Git link/build hook",
+    "Provider or financial execution, sending messages, outside access, merge"
+  ],
+  "authority": "A-D proposal only. No mutation executed or execution permission inferred. Release1.0 NOT READY / NOT AUTHORIZED."
+}

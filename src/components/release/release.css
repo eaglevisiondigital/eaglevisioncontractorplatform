@@ -1,0 +1,169 @@
+.release-shell {
+  max-width: 1500px;
+  margin: auto;
+  padding: clamp(16px, 4vw, 48px);
+}
+.release-shell > h1 {
+  margin: 16px 0;
+}
+.release-shell .platform-brand {
+  display: block;
+  margin-bottom: 24px;
+}
+.release-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 24px;
+  margin: 24px 0;
+}
+.release-controls label {
+  min-width: 220px;
+  flex: 1;
+}
+.release-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.release-grid > section {
+  background: #fff;
+  border: 1px solid #dce4e1;
+  border-radius: 10px;
+  padding: clamp(16px, 3vw, 28px);
+  min-width: 0;
+}
+.release-grid h2 {
+  font-size: 1.25rem;
+}
+.release-grid label {
+  display: block;
+  margin: 16px 0;
+}
+.release-grid article {
+  border-top: 1px solid #dce4e1;
+  margin-top: 16px;
+  padding-top: 16px;
+  overflow-wrap: anywhere;
+}
+.release-document {
+  border-top: 5px solid #247364;
+  padding: 20px 0;
+  margin-top: 20px;
+}
+.release-terms {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.release-hash {
+  display: block;
+  overflow-wrap: anywhere;
+}
+.release-shell select {
+  max-width: 100%;
+  width: 100%;
+}
+.release-grid button {
+  margin: 8px 8px 8px 0;
+}
+.release-shell .table-scroll {
+  overflow: auto;
+}
+.release-shell table {
+  min-width: 450px;
+}
+.release-shell td,
+.release-shell th {
+  padding: 10px;
+  text-align: left;
+}
+@media (max-width: 900px) {
+  .release-grid {
+    grid-template-columns: 1fr;
+  }
+  .release-controls {
+    gap: 12px;
+  }
+  .release-controls label {
+    min-width: 0;
+    width: 100%;
+  }
+}
+@media print {
+  .release-shell > *:not(.release-grid),
+  .release-shell .release-grid > section:not(.release-invoice-section),
+  .release-shell .release-invoice-section > *:not(.release-invoice-print) {
+    display: none;
+  }
+  .release-shell .release-grid {
+    display: block;
+  }
+  .release-shell .release-invoice-section {
+    border: 0;
+    padding: 0;
+  }
+  .release-shell .release-invoice-print {
+    background: white;
+    padding: 16px;
+  }
+  .release-shell .release-invoice-print table {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+.release-shell select {
+  padding: 12px;
+  border: 1px solid #bbc9c3;
+  border-radius: 6px;
+  background: white;
+  font: inherit;
+  min-height: 44px;
+}
+@media screen and (max-width: 600px) {
+  .release-document table,
+  .release-document tbody {
+    display: block;
+    min-width: 0;
+    width: 100%;
+  }
+  .release-document thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip-path: inset(50%);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .release-document tbody tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    border-bottom: 1px solid #dce4e1;
+    padding: 8px 0;
+  }
+  .release-document td {
+    padding: 6px 4px;
+    font-size: 0.9rem;
+    overflow-wrap: anywhere;
+  }
+  .release-document td:first-child {
+    grid-column: 1/-1;
+    font-weight: 600;
+  }
+  .release-document td:nth-child(2)::before {
+    content: 'Quantity';
+  }
+  .release-document td:last-child {
+    text-align: right;
+  }
+  .release-document td:last-child::before {
+    content: 'Selling price';
+  }
+  .release-document td:nth-child(2)::before,
+  .release-document td:last-child::before {
+    display: block;
+    font-size: 0.75rem;
+    color: #52665f;
+    margin-bottom: 4px;
+  }
+}

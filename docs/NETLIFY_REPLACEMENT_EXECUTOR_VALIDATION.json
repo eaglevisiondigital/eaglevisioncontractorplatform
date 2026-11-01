@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-30",
+  "clientTimezone": "America/Chicago",
+  "status": "OFFLINE_IMPLEMENTED_NOT_AUTHORIZED",
+  "requestingFinalExecutionAuthorization": "NO_GO",
+  "baselineCommit": "ca0892a7e1b09c35972130d10b626d4bb783f6f0",
+  "reviewContractSha256": "a8e7cd70cc472399ffb4c532117734b1b9f9ef6c5b0ac4e4b4d6861a77497b9f",
+  "executorFingerprint": "75d95c3fb5a9daee1123b536cd1e1d4ce9965785983e7cb2ae26b5d74de43eba",
+  "executorSourceFiles": [
+    {
+      "path": "server/netlify/replacement-package.ts",
+      "sha256": "090705c5276ad2a2b6d60dbc254c1bbaafb951dc5fcdb920bdaafc0f6c55b821"
+    },
+    {
+      "path": "server/netlify/replacement-journal.ts",
+      "sha256": "86e1ef765c37613501cbcb898ade4b049def0109dcf0ebd0446d8e440cae5034"
+    },
+    {
+      "path": "server/netlify/replacement-executor.ts",
+      "sha256": "c4fa8a572e1395f603f54e7512245a2f3db27da159182345780baa4a50a749a5"
+    }
+  ],
+  "offlineTests": {
+    "command": "npx vitest run tests/netlify-replacement.test.ts",
+    "passed": 92,
+    "failed": 0,
+    "actualChildSigkillCases": 2,
+    "transport": "CONTROLLED_INVALID_DOMAIN_FAKE_ONLY",
+    "globalFetchCalls": 0,
+    "matrix": [
+      "One creation;9 static and4 Function PUTs;exact receipts;no final manifest",
+      "Function reuse and explicit empty lists with complete registrations",
+      "Missing/malformed/unknown/duplicate required digests",
+      "Wrong site/ID/context/publication/runtime/route/creation-time evidence",
+      "Draft false/omitted/contradictory and exact corroboration",
+      "Failed/lost creation and upload acknowledgments;UNKNOWN no retry",
+      "Journal reservation/write failures,unsafe paths,truncation and unreadable UNKNOWN",
+      "Process SIGKILL/restart and same-journal concurrency;no new create",
+      "Clock,deadline,manual presence,approval expiry and bounded polling",
+      "Native timeout vs late response;no continuation",
+      "Final registration/perimeter/protection and original/new-ready state drift",
+      "Input/shared-view copying and receipt secret/header exclusion"
+    ],
+    "initialFixtureFailures": "Noncanonical macOS /var paths rejected by unchanged canonical guard;test paths/imports corrected. Final cases pass;no hosted evidence inferred."
+  },
+  "frozenIntegrity": {
+    "status": "PASS",
+    "archiveBytes": 3593733,
+    "archivedEntriesVerified": 14,
+    "materializedEntriesVerified": 14,
+    "deployStaticConfigurationFiles": 9,
+    "functionArchives": 4,
+    "localFunctionManifest": 1,
+    "allCrcsAndLengthsAndHashes": "PASS",
+    "originalArtworkLockToml": "PASS",
+    "functionMetadata": "PASS",
+    "sealedRequestBinding": "PASS",
+    "environmentValuesDecoded": false,
+    "credentialsRetrieved": false,
+    "networkRequests": 0
+  },
+  "preservation": {
+    "protectedTrackedFilesByteIdentical": 494,
+    "frozenP1Artifacts": 4,
+    "frozenP1Operation": "PASS",
+    "originalReviewContractAndFrozenManifest": "UNCHANGED",
+    "baseline": "ca0892a7e1b09c35972130d10b626d4bb783f6f0"
+  },
+  "focusedChecks": {
+    "strictTypecheck": "PASS",
+    "lint": "PASS",
+    "format": "PASS",
+    "diff": "PASS",
+    "privateReferenceExclusion": "PASS"
+  },
+  "currentPreflight": {
+    "ownerExecutionApproval": "ABSENT",
+    "independentDashboard": "NOT_PROVEN_PRIOR_BLANK_PAGE",
+    "siteCompleteDeployPrimaryGitBuildDomainInventory": "ACTION_TIME_READ_REQUIRED",
+    "siteSharedEnvironmentMetadata": "ACTION_TIME_READ_REQUIRED",
+    "sealedBodyAndOriginalArtifacts": "OFFLINE_HASH_PASS_NO_VALUES_RETRIEVED",
+    "liveAdaptersAndGenuineSupervision": "UNWIRED_NOT_OPERATIONAL_EVIDENCE",
+    "hostedRuntimeAuthenticatedTenantAcceptance": "NOT_RUN",
+    "twoComputerRecovery": "SEPARATE_GATE_NOT_PROMOTED"
+  },
+  "proposedApprovalScope": {
+    "status": "TEMPLATE_ONLY_NOT_AUTHORIZATION",
+    "bindingSha256": "fe5183ee9343f24968d42ea790cd4e95a3d7fee8870c8e3d59608b73150dc135",
+    "canonicalBodySha256": "3409f4fb4cd0c7a9cd3831ed2ea089cdede8d72742afb8ddeed9d221ce7ee510",
+    "newDraftCreatesMaximum": 1,
+    "initialRequiredStaticPutsMaximum": 9,
+    "initialRequiredFunctionPutsMaximum": 4,
+    "attemptsPerDigestMaximum": 1,
+    "supervisedMinutesMaximum": 45,
+    "approximateProviderExpiryHours": 6,
+    "providerExpiryMarginMinutes": 30,
+    "manifestPuts": 0,
+    "publications": 0,
+    "uncertainty": "HOLD_READ_ONLY_NO_RETRY_OR_NEW_ID",
+    "extraBindingsRequired": [
+      "Exact private site/original identity",
+      "Exact executor and preflight fingerprints",
+      "Owner-issued time/expiry under trusted custody"
+    ]
+  },
+  "actionsPerformed": {
+    "netlifyRequests": 0,
+    "newDeployments": 0,
+    "uploads": 0,
+    "credentialsOrPrivateValuesRetrieved": 0,
+    "hostedConfigurationChanges": 0,
+    "authDatabaseOperations": 0,
+    "externalMessages": 0,
+    "publication": 0,
+    "applicationRebuilds": 0,
+    "merge": 0
+  },
+  "ci": {
+    "baselineFoundation": "PASS_41057196249",
+    "baselineCompatibility": "PASS_41057196207",
+    "manualReruns": 0,
+    "newCommit": "AUTOMATIC_RESULTS_RECORDED_IN_PR"
+  },
+  "release": "NOT READY / NOT AUTHORIZED"
+}

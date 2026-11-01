@@ -1,0 +1,155 @@
+{
+  "baseCommit": "401c7d8",
+  "status": "DEVICE_IDENTIFIED_OWNER_REPORTED_OFFLINE_PASSES_MAINTAINED_ENVIRONMENT_REQUIRED",
+  "operationSha256": "01b96075d2f04acef730114427bc595986a1f0ce2720ed7fd3c9e84e304e141a",
+  "frozenArtifactsUnchanged": 4,
+  "historicalMigrationFilesUnchanged": 13,
+  "phaseA": {
+    "checklist": "PREPARED",
+    "intakeHelper": "PREPARED_READ_ONLY_NO_CREDENTIALS_OR_NETWORK",
+    "actualDeviceIdentified": true,
+    "actualDeviceAvailable": "OWNER_REPORTED_NOT_INDEPENDENTLY_CONNECTED",
+    "factsCollectedOnSecondDevice": false,
+    "osSupport": "APPLE_COMPATIBILITY_CEILING_CONFIRMED_MONTEREY_CUSTODY_PROHIBITED",
+    "diskAndCustodyVolumeEncryption": "FILEVAULT_DISABLED_OWNER_REPORTED_NOT_READY",
+    "separateCustody": "NOT_INSTALLED_NOT_VERIFIED",
+    "independentPowerNetwork": "HOTSPOT_AND_TWO_WEBSITE_LOADS_OWNER_REPORTED_PASS_POWER_CONTINUITY_NOT_VERIFIED",
+    "operatorAndSupervision": "NOT_VERIFIED",
+    "montereyPrivilegedCustody": "PROHIBITED"
+  },
+  "phaseB": {
+    "status": "BLOCKED_MAINTAINED_ENVIRONMENT_AND_ACTUAL_TWO_DEVICE_PROTOCOL_EVIDENCE_REQUIRED",
+    "actualTwoDeviceAttempts": 0,
+    "counts": {
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 7,
+      "NOT_RUN": 0
+    },
+    "cases": [
+      {
+        "id": "R0-01",
+        "status": "BLOCKED",
+        "reason": "NO_ACTUAL_TWO_DEVICE_PROTOCOL_EVIDENCE_MAINTAINED_OPERATIONAL_ENVIRONMENT_PENDING"
+      },
+      {
+        "id": "R0-02",
+        "status": "BLOCKED",
+        "reason": "NO_ACTUAL_TWO_DEVICE_PROTOCOL_EVIDENCE_MAINTAINED_OPERATIONAL_ENVIRONMENT_PENDING"
+      },
+      {
+        "id": "R0-03",
+        "status": "BLOCKED",
+        "reason": "NO_ACTUAL_TWO_DEVICE_PROTOCOL_EVIDENCE_MAINTAINED_OPERATIONAL_ENVIRONMENT_PENDING"
+      },
+      {
+        "id": "R0-04",
+        "status": "BLOCKED",
+        "reason": "NO_ACTUAL_TWO_DEVICE_PROTOCOL_EVIDENCE_MAINTAINED_OPERATIONAL_ENVIRONMENT_PENDING"
+      },
+      {
+        "id": "R0-05",
+        "status": "BLOCKED",
+        "reason": "NO_ACTUAL_TWO_DEVICE_PROTOCOL_EVIDENCE_MAINTAINED_OPERATIONAL_ENVIRONMENT_PENDING"
+      },
+      {
+        "id": "R0-06",
+        "status": "BLOCKED",
+        "reason": "NO_ACTUAL_TWO_DEVICE_PROTOCOL_EVIDENCE_MAINTAINED_OPERATIONAL_ENVIRONMENT_PENDING"
+      },
+      {
+        "id": "R0-07",
+        "status": "BLOCKED",
+        "reason": "NO_ACTUAL_TWO_DEVICE_PROTOCOL_EVIDENCE_MAINTAINED_OPERATIONAL_ENVIRONMENT_PENDING"
+      }
+    ]
+  },
+  "phaseC": {
+    "status": "BLOCKED_PENDING_ACTUAL_PHASE_B_PASS",
+    "exactHostedProposalPrepared": false,
+    "executableOperationCreated": false,
+    "operationSha256": null,
+    "executionAuthorized": false
+  },
+  "localValidation": {
+    "recoveryAndIntakeRegressionsPassed": 77,
+    "newIntakeTestsPassed": 8,
+    "actualDeviceEvidence": false,
+    "nativeApplicationBrowser": "NOT_RERUN_NO_APPLICATION_SQL_OR_UI_CHANGE",
+    "formatAndIntegrity": "PASS",
+    "latestChange": "DOCUMENTATION_AND_OWNER_EVIDENCE_ONLY_NO_SUCCESSFUL_TEST_REPLAY"
+  },
+  "sourceArtifacts": [
+    {
+      "file": "recovery/monterey/device_facts.py",
+      "sha256": "9e6e5020e85f7b8a09cf177309c3a6de7cde04e28a5231a3c7b0cfd2ed4c8180"
+    },
+    {
+      "file": "recovery/monterey/test_device_facts.py",
+      "sha256": "14af7152bd081ac7681d7875a8928d962e76b77d94804d12bf6ec93c114632f0"
+    }
+  ],
+  "hostedEffects": {
+    "projectRequests": 0,
+    "credentialsRetrievedOrInstalled": 0,
+    "authSessions": 0,
+    "mfaChallenges": 0,
+    "featureOrFixtureWrites": 0,
+    "cleanupProbes": 0,
+    "databaseWrites": 0,
+    "grants": 0,
+    "netlifyChanges": 0,
+    "providerActions": 0
+  },
+  "hostedCaseTracking": {
+    "PASS": 0,
+    "FAIL": 0,
+    "BLOCKED": 24,
+    "NOT_RUN": 48
+  },
+  "existingP1Authorization": "PRESERVED_NO_DUPLICATE_REQUEST_NO_PREMATURE_EXECUTION",
+  "previousRejectedProbe": "NOT_REPEATED_OR_BYPASSED",
+  "nextOwnerInput": "Select access to a maintained Mac or assessment of native encrypted Linux on existing device; preserve completed offline/hotspot evidence. No credentials.",
+  "nextHostedApproval": "Exact Phase C recovery verification after actual Phase B PASS;not duplicate P1 fixture approval.",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "pullRequest": "DRAFT_UNMERGED",
+  "latestUpdate": "2026-10-18",
+  "ownerReportedEvidence": {
+    "source": "OWNER_MESSAGE_2026_10_18",
+    "hardwareFacts": "PRIVATE_IGNORED_EVIDENCE_ONLY",
+    "offlineRecoveryTests": {
+      "PASS": 25,
+      "FAIL": 0,
+      "rawTranscriptAvailable": false,
+      "sourceVersionVerified": false,
+      "repeatRequested": false
+    },
+    "phoneHotspot": "PASS_OWNER_REPORTED",
+    "twoWebsitesLoaded": "PASS_OWNER_REPORTED_NO_ENDPOINT_NAMES_SUPPLIED",
+    "independentCrossDeviceProtocolProven": false,
+    "countsAddedToHostedAcceptance": false,
+    "originalUtilityHashesVerified": 2,
+    "newEncryptedKitRehearsed": false,
+    "fileVault": "DISABLED_OWNER_REPORTED"
+  },
+  "recommendedPath": {
+    "preferred": "BORROW_MAINTAINED_MAC_SMALL_EXISTING_RECOVERY_KIT",
+    "fallback": "ASSESS_NATIVE_MAINTAINED_LINUX_ENCRYPTED_EXTERNAL_SSD_EXISTING_DEVICE",
+    "fallbackCompatibilityVerified": false,
+    "osInstallationAuthorized": false,
+    "credentialsAuthorized": false,
+    "fullPlatformInstallRequired": false,
+    "p1ScopeReapprovalRequired": false
+  },
+  "latestReviewValidation": {
+    "date": "2026-10-18",
+    "format": "PASS",
+    "migrationIntegrity": "PASS_13_FILES_UNCHANGED",
+    "propertyIntegrity": "PASS",
+    "frozenOperationAndFourArtifacts": "PASS",
+    "diffCheck": "PASS",
+    "repeatedOfflineTests": 0,
+    "applicationNativeBrowser": "NOT_RERUN_DOCUMENTATION_ONLY",
+    "hostedChecks": "NOT_RUN"
+  }
+}

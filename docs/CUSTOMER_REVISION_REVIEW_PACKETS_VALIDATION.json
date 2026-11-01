@@ -1,0 +1,142 @@
+{
+  "workstream": "3C",
+  "date": "2026-10-30",
+  "base_commit": "4e5b0dbb6aa9640603f3b6ba0b2f82514190faf3",
+  "status": "IMPLEMENTED_LOCAL_SYNTHETIC_ONLY",
+  "release": "NOT READY / NOT AUTHORIZED",
+  "routes": {
+    "customer": "/preview/property-portal",
+    "staff": "/preview > Estimates > Revision comparison & packet",
+    "handoff": "same-tab actual3A decision -> confirmed3B version3 saved draft"
+  },
+  "source_binding": [
+    "organization",
+    "actual customer and CRM property",
+    "original receipt and offer",
+    "exact immutable issued version",
+    "exact3B private provenance",
+    "current saved draft ID/version/lock revision",
+    "current eligible synthetic reviewer",
+    "exact published inspection association when recorded"
+  ],
+  "packet": {
+    "identity": "UUID",
+    "integrity": "SHA-256 of complete allowlisted snapshot",
+    "archive": "in-memory frozen clone, copy reads",
+    "current_status": "derived outside immutable snapshot; stale after draft edits",
+    "customer_url": false,
+    "customer_response": false,
+    "issued": false,
+    "delivered": false,
+    "durable_auth_or_storage_claim": false
+  },
+  "guards": [
+    "explicit reviewed saved-current confirmation",
+    "dirty editor rejects",
+    "canonical recalculation equals saved calculation",
+    "opaque exact-context review claim",
+    "final post-hash synchronous authority/CAS check",
+    "one packet per request/draft/revision",
+    "UNKNOWN blocks replay and later-revision bypass",
+    "exact read-only reconciliation",
+    "current staff and original binding rechecked on reads",
+    "repair-origin conflict rejects"
+  ],
+  "privacy": {
+    "projection": "strict reconstructed allowlist; projectIssuedReview unchanged and issued-only",
+    "excluded": [
+      "internal cost",
+      "supplier price",
+      "profit/margin",
+      "internal notes",
+      "payroll/employee rates",
+      "private repair/readiness",
+      "other tenant/customer/property records"
+    ],
+    "attachment_metadata": "selected customer-visible exact snapshot only; no URL/file bytes"
+  },
+  "focused_application": {
+    "passed": 203,
+    "files": 9,
+    "new_cases": 25,
+    "log": "private local evidence",
+    "coverage": [
+      "actual3A->3B->3C all3 companies",
+      "unchanged/addition/removal/modification",
+      "canonical625bps tax/5percent discount/schedule",
+      "receipt/provenance/immutable originals",
+      "stale source/CAS/dirty editor",
+      "concurrent staff/duplicates",
+      "inactive/foreign/revoked staff",
+      "tenant/customer/property isolation",
+      "repair restrictions",
+      "lost acknowledgment before and after commit",
+      "UNKNOWN/exact read-only reconciliation",
+      "frozen packet after edits",
+      "no issuance/contract/job/invoice/payment side effects"
+    ]
+  },
+  "browser": {
+    "status": "PASS",
+    "unique_cases": 93,
+    "new_cases": 12,
+    "projects": ["desktop Chrome", "iPad Mini Chromium", "iPhone13 Chromium"],
+    "brands": ["sample-property", "sample-construction", "sample-roofing"],
+    "checks": [
+      "real actual request/staff/editor/comparison/packet/history/customer return",
+      "keyboard confirmation",
+      "axe",
+      "horizontal overflow",
+      "ordinary/connected routes closed",
+      "approved contractor pixel/reference/navigation",
+      "prior3A/3B and estimating modules"
+    ],
+    "final_verification_cases": 15,
+    "retained_other_passes": 78,
+    "initial_run": {
+      "passed": 91,
+      "failed": 2,
+      "details": "Two navigation cases overlapped rebuilding served dist files. Final stable-build rechecks passed unchanged assertions/timeouts; no source/test change for those failures."
+    },
+    "axe_violations": 0,
+    "horizontal_overflow": false
+  },
+  "screenshots": {
+    "source": "actual Chromium, unedited",
+    "path": "artifacts/property/revision-packet-{viewport}-{company}-{comparison|comparison-detail|comparison-viewport|packet|packet-viewport|stale-packet}.png",
+    "git": "ignored; existing CI artifact collection",
+    "count": 54
+  },
+  "checks": {
+    "strict_types": "PASS",
+    "lint": "PASS",
+    "types_generation_comparison": "PASS",
+    "build": "PASS",
+    "migration_integrity": "PASS",
+    "property_integrity": "PASS",
+    "customer_proposal_integrity": "PASS",
+    "format": "PASS",
+    "diff": "PASS"
+  },
+  "preservation": {
+    "protected_existing_tracked_files": 502,
+    "all_unchanged": true,
+    "all13_customer14": true,
+    "p1_operation_and_four_artifacts": true,
+    "original_netlify_archive": true,
+    "netlify_executor_and_recovery": true,
+    "workstreams2A_through2F": true,
+    "six_billing_enhancements": "PROPOSED",
+    "approved_shells_artwork_and_brands": true,
+    "projectIssuedReview": "unchanged issued-only",
+    "private_identifiers_and_correspondence": "not committed"
+  },
+  "local_unrelated_tests": "completed Netlify executor/recovery/maintenance-security suites not rerun",
+  "github": {
+    "pr": 1,
+    "draft": true,
+    "merge_or_deploy": false,
+    "automatic_ci": "Normal automatic workflow on delivery commit; final result recorded in PR/completion evidence, no successful check manually restarted"
+  },
+  "next": "3D separately controlled exact-current packet/draft-bound issuance/delivery review contract and local dry-run content preview; do not activate issue/send/connected/contract/payment authority"
+}

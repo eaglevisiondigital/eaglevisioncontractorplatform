@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-28",
+  "base": "0cf3cda57227319b105e6b5f9f9927b64078cf4f",
+  "mode": "LOCAL_SYNTHETIC_ONLY",
+  "route": "/preview",
+  "navigation": ["Property operations", "Maintenance & follow-up"],
+  "application": {
+    "files": 4,
+    "passed": 65,
+    "failed": 0,
+    "newMaintenanceCases": 27
+  },
+  "browser": {
+    "files": 5,
+    "uniquePassed": 72,
+    "failed": 0,
+    "newMaintenanceCases": 6,
+    "finalMaintenanceDeltaRerunPassed": 6,
+    "viewports": ["desktop", "tablet", "mobile"],
+    "companies": 3,
+    "axeViolations": 0,
+    "horizontalOverflow": false,
+    "maintenanceJourneyOutsideRequests": 0,
+    "exactReportVersionFindingNavigation": true,
+    "preparedVisitNavigation": true,
+    "existingJobIssuedBaselineNavigation": true,
+    "customerPrivateNoteExclusion": true,
+    "lockedOverviewPhaseAPixelEquality": true,
+    "sharedInspectionRefreshRegression": true
+  },
+  "checks": {
+    "build": true,
+    "typecheck": true,
+    "lint": true,
+    "generatedTypes": true,
+    "migrationIntegrity": true,
+    "propertyCustomerProposalIntegrity": true,
+    "format": true,
+    "diff": true,
+    "protectedTrackedPathsUnchanged": 129
+  },
+  "priorCi": {
+    "foundationRun": 40777951396,
+    "compatibilityRun": 40777951381,
+    "conclusion": "success",
+    "restarted": false
+  },
+  "notRun": [
+    "full local aggregate with unchanged native SQL/recovery baselines",
+    "completed Mac setup/package/network/offline tests",
+    "physical authenticated pairing and independent recovery",
+    "hosted customer/Auth/P1/P2/provider acceptance"
+  ],
+  "preserved": {
+    "historicalMigrations": 13,
+    "pendingCustomerMigration": "UNAPPLIED_NOT_AUTHORIZED",
+    "frozenP1Operation": "01b96075d2f04acef730114427bc595986a1f0ce2720ed7fd3c9e84e304e141a",
+    "frozenArtifactsUntouched": 4,
+    "premiumPortalAndArtworkUnchanged": true,
+    "connectedRoutesClosed": true,
+    "hostedProductCalls": 0,
+    "credentialsRetrieved": 0,
+    "authSessionsCreated": 0,
+    "financialExecution": false,
+    "deployments": 0,
+    "merged": false
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

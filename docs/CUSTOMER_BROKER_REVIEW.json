@@ -1,0 +1,57 @@
+{
+  "workstream": "4B_BROKER_SECURITY_INTEGRATION",
+  "baseCommit": "0b0c47103c3f864de49fc33f484b60d76d8baeb3",
+  "hostedApplied": false,
+  "operationalReady": false,
+  "connectedRoutesEnabled": false,
+  "sources": [
+    {
+      "file": "server/customer/broker.proposed.sql",
+      "sha256": "c32d2fa0df717780f6ca8c9a3b88376c6cac408e6c51576175cb929b9ef9f4cb"
+    },
+    {
+      "file": "server/customer/broker-ownership.proposed.sql",
+      "sha256": "bfa30994ad6a4758aa074bc4315b41b9d14499f96d23bad4d61b505fffedb425"
+    },
+    {
+      "file": "server/customer/broker-auth.ts",
+      "sha256": "709018249d889504b860e4cf0f4caa5cbdd1c2b04f58c53226f4499c68fd46d6"
+    },
+    {
+      "file": "server/customer/broker.ts",
+      "sha256": "f983d8ceaa0bb5cd2403008301580894dd7c9023cd2c6d2026c0a2a70c6b979e"
+    },
+    {
+      "file": "server/customer/broker-ownership.ts",
+      "sha256": "582378dedd09fff7983ea351ade026285e9ec51ae38ea004c7e4f8c2719ba25e"
+    },
+    {
+      "file": "server/customer/request-gateway.ts",
+      "sha256": "1472d74e4d3bd94c8be8ef33785e88f2c567dfc632f6c73c5ad6d9c8782a549c"
+    },
+    {
+      "file": "src/lib/customer-connected.ts",
+      "sha256": "7f7edf3efc5f053d6f644d6baae2ec8db2eecd9d3076251071cdd9053e575474"
+    }
+  ],
+  "dependencies": "Unchanged13 + unchanged pending customer14 + unchanged4B forward proposal; separate review files after4B",
+  "protected4BProposalSha256": "6178cee11c81593e3a90d0ef75f6194835019112877f50fc6eb5e692768d44af",
+  "localExecution": "Injected disposable ev_test_<32hex> nativePG17 only; no hosted connection factory/loader/route",
+  "owners": [
+    "customer4b_core",
+    "customer4b_admission_owner",
+    "customer4b_reader_owner"
+  ],
+  "runtime": [
+    "Server-owned restricted registrar/reader LOGINs",
+    "Independently pre-provisioned finite one-use issuer/executor LOGIN pairs; no runtime role creation or rebind"
+  ],
+  "unresolvedOperationalTrust": [
+    "Existing historical SECURITY DEFINER helpers/installing owner",
+    "Core private-schema CREATE and pg_read_all_stats",
+    "Genuine Auth/session provider acceptance and secure dedicated connection custody",
+    "External protection against restoring a pre-admission database snapshot",
+    "Target-specific ownership/grant/recovery/approval evidence"
+  ],
+  "release": "NOT READY / NOT AUTHORIZED"
+}

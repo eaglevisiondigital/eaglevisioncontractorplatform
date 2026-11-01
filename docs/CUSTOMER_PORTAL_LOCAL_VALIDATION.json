@@ -1,0 +1,130 @@
+{
+  "date": "2026-10-18",
+  "baseCommit": "1247614",
+  "status": "LOCAL_LOGIN_DISCOVERY_REVIEW_PREPARATION_HOSTED_DISABLED",
+  "sqlProposal": {
+    "file": "server/customer/schema.proposed.sql",
+    "sha256": "da8d8bd887c071dd27186e425edd877da9e980db2c772f4925d3f538dd1e34f5",
+    "installed": false,
+    "formalMigrationPrepared": false,
+    "clientExecutionGrants": 0,
+    "privateAuthorizationTablesProposed": 1,
+    "financialSourceTablesAdded": 0
+  },
+  "localTests": {
+    "applicationAndPGlite": {
+      "PASS": 917,
+      "nativeOnlySkipped": 52
+    },
+    "recovery": {
+      "PASS": 77,
+      "scope": "PRIMARY_REGRESSION_NOT_SECOND_DEVICE_REHEARSAL"
+    },
+    "nativePostgresql17": {
+      "PASS": 367,
+      "skipped": 0,
+      "version": "17.11",
+      "unixSocketOnly": true,
+      "disposableClusterStoppedAndRemoved": true,
+      "newCustomerLockWaitCases": 2
+    },
+    "browser": {
+      "PASS": 75,
+      "projects": ["desktop", "tablet", "mobile"],
+      "loopbackOnly": true,
+      "accessibilityAndOverflow": "PASS",
+      "desktopMobileVisualReview": "PASS"
+    },
+    "countsOverlap": true,
+    "lintStrictGeneratedTypesBuildFormat": "PASS",
+    "migrationFrozenP1AndProposalIntegrity": "PASS",
+    "initialFailure": "Estimate quantity-label contrast failed in three viewports; scoped color/layout fixes then all75 passed",
+    "githubCI": "Exact pushed commit PR checks; reported separately without adding counts"
+  },
+  "sourceArtifacts": [
+    {
+      "file": "server/customer/schema.proposed.sql",
+      "sha256": "da8d8bd887c071dd27186e425edd877da9e980db2c772f4925d3f538dd1e34f5"
+    },
+    {
+      "file": "src/domain/customer/review.ts",
+      "sha256": "e387500a60595788050d7b93b92ea23c5254c5954507edc3397eb7fa2b9bf858"
+    },
+    {
+      "file": "src/lib/customer-access.ts",
+      "sha256": "7a98b75cd806db76d9489b1abecc0a6d7cc89e70ad29d3ac00ae7f3125b95fb5"
+    },
+    {
+      "file": "src/lib/customer-preview.ts",
+      "sha256": "9cb7bd2941a8933e19b1c023a2f8d58842f65141a46e79376c72fe473a61e452"
+    },
+    {
+      "file": "src/components/property/CustomerPortalPreview.tsx",
+      "sha256": "afdecbb644b8aab2f61eab93d65c898ab57e8e82b49a21ecde14b277ff95aed2"
+    },
+    {
+      "file": "tests/customer-access.test.ts",
+      "sha256": "76e529c17f549d27906a04b15963a1096f099e2c07b6abee89eced65f48a085c"
+    },
+    {
+      "file": "tests/customer-preview.test.ts",
+      "sha256": "fa71bb13137a7c4c619bca2b5d19d4ae67b0cbb92e24013e92a22126901ca370"
+    },
+    {
+      "file": "tests/database/property.test.ts",
+      "sha256": "980af291725f283fb1c1f4799321fb62856798b68f54b837cfd9ad0febfe6005"
+    },
+    {
+      "file": "tests/browser/customer.spec.ts",
+      "sha256": "dd60a7e73fc2cf0efcf6dc71951283dcd8b41e64e74558fc5cc5634d82f038f0"
+    },
+    {
+      "file": "scripts/check-customer-proposal.mjs",
+      "sha256": "94179c855205755e9ae5a3f360795821f151865bfbde390048d0aa0660df4500"
+    },
+    {
+      "file": "src/styles.css",
+      "sha256": "1ab74224355aca80d8ac4b20ecfa25afef7ca1d2f0406733cb9fe505f4e039ac"
+    }
+  ],
+  "historicalMigrationFilesUnchanged": 13,
+  "frozenP1ArtifactsUnchanged": 4,
+  "approvedP1Operation": "01b96075d2f04acef730114427bc595986a1f0ce2720ed7fd3c9e84e304e141a",
+  "hostedCaseTracking": {
+    "P2": {
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 9,
+      "NOT_RUN": 0
+    },
+    "allProperty": {
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 24,
+      "NOT_RUN": 48
+    }
+  },
+  "hostedEffects": {
+    "projectRequests": 0,
+    "authSessionsOrMfa": 0,
+    "mappingLeaseFeatureFixtureGrantWrites": 0,
+    "migrationApplications": 0,
+    "providersOrCommunications": 0,
+    "netlifyOrProduction": 0
+  },
+  "freshHosted713Records22Identities4Factors": "NOT_REFRESHED_NO_HOSTED_STATE_CLAIM",
+  "recoveryOrFrozenDeploymentModified": false,
+  "screenshots": [
+    "artifacts/property/desktop-customer-estimate-review.png",
+    "artifacts/property/tablet-customer-estimate-review.png",
+    "artifacts/property/mobile-customer-estimate-review.png"
+  ],
+  "remaining": [
+    "Independent SQL/read-authorization review",
+    "Checked staff publication and genuine customer decision persistence",
+    "Production authentication/custody/abuse-control composition",
+    "Independent recovery verification,P1 and separate exact hosted P2/estimate approvals"
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "pullRequest": "DRAFT_UNMERGED"
+}

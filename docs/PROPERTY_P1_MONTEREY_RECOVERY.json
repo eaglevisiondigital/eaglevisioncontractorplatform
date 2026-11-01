@@ -1,0 +1,121 @@
+{
+  "reviewBaseCommit": "d8f574a",
+  "status": "OFFLINE_PREPARATION_ONLY_NOT_OPERATIONAL",
+  "recommendedApproach": "MINIMAL_PYTHON_STDLIB_KIT_AFTER_OS_SECURITY_REVIEW",
+  "primaryNodeRequirementUnchanged": ">=24 <25",
+  "operationSha256": "01b96075d2f04acef730114427bc595986a1f0ce2720ed7fd3c9e84e304e141a",
+  "frozenCleanupSha256": "9f218c649801a48d5afc78f654fc0ed56280c5c9c88368eaba64bec4ac67820c",
+  "frozenPlanSha256": "bbd463ccb28ddbe6a6f873f364e42094d13c7a83767ea19f0c89ed486358a85a",
+  "privateCapsuleFiles": [
+    "operation.private.json",
+    "p1-plan.private.json",
+    "deactivate-features.proposed.sql"
+  ],
+  "capsuleHasSecrets": false,
+  "scope": {
+    "tenants": 3,
+    "existingStaffAliases": 15,
+    "customerAndPlatformOperator": false,
+    "activation": false,
+    "arbitrarySql": false,
+    "newGrantsOrLogins": false,
+    "authTableMutation": false,
+    "logoutProposal": "EXACT_EXERCISED_SESSION_SCOPE_LOCAL_SEPARATE_REVIEW",
+    "primaryCleanupChanged": false
+  },
+  "interfaces": {
+    "cli": "OFFLINE_INSPECTION_ONLY",
+    "networkTransport": false,
+    "credentialReader": false,
+    "encryptedHandoffImplemented": false,
+    "hostedExecuteMode": false,
+    "durableIndependentOneShotJournal": true,
+    "parallelSessionRequestsMaximum": 15,
+    "automaticRetry": false
+  },
+  "compatibility": {
+    "pythonTarget": "3.13.16",
+    "pythonOfficialMacMinimum": "10.13",
+    "primaryNode24OfficialMacMinimum": "13.5",
+    "localPythonVersion": "3.9.6",
+    "localVersionUse": "OFFLINE_TESTS_ONLY_NOT_APPROVED_OPERATIONAL_RUNTIME",
+    "ciPythonConfigured": "3.13.16",
+    "actualMontereyTested": false,
+    "osMaintenanceVerified": false,
+    "secondMacNetworkVerified": false,
+    "liveTlsVerified": false
+  },
+  "sourceArtifacts": [
+    {
+      "file": "recovery/monterey/p1_recovery.py",
+      "sha256": "22f30f1667ffc9b50858aad56b135f716964efe64482d8b65c194ab0701a756f"
+    },
+    {
+      "file": "recovery/monterey/test_p1_recovery.py",
+      "sha256": "ad0c41b00f95622d58f5d108a85de0e12a70d888de6baf251c0d4e274f42ecaf"
+    },
+    {
+      "file": "tests/database/property-recovery.test.ts",
+      "sha256": "3cfafa622f0e730797f09d95dbf3755248c91fdca165b36aed14b28e40380993"
+    }
+  ],
+  "localValidation": {
+    "applicationCheck": {
+      "status": "PASS",
+      "testsPassed": 824,
+      "nativeOnlySkipped": 50
+    },
+    "pythonRehearsal": {
+      "passed": 25,
+      "skipped": 0,
+      "uses": "DISPOSABLE_SYNTHETIC_ARTIFACTS_MOCK_PORTS_ONLY",
+      "finalAdditionalGuard": "NO_NETWORK_CREDENTIAL_IMPORT_OR_DYNAMIC_EXECUTION"
+    },
+    "nativePostgresql17Focused": {
+      "passed": 7,
+      "skipped": 0,
+      "newRecoveryQueryAndFrozenCleanupCases": 3,
+      "existingP1Rechecks": 4
+    },
+    "browser": {
+      "status": "PASS",
+      "testsPassed": 63,
+      "surfaces": ["desktop", "tablet", "mobile"],
+      "loopbackOnly": true
+    },
+    "countsOverlap": true,
+    "formatTypesIntegrityBuild": "PASS"
+  },
+  "hostedEffects": {
+    "requests": 0,
+    "writes": 0,
+    "authSessions": 0,
+    "mfaChallenges": 0,
+    "cleanupProbes": 0,
+    "credentialsRetrieved": 0,
+    "featureActivation": 0,
+    "fixtureWrites": 0,
+    "netlifyActions": 0,
+    "providerActions": 0
+  },
+  "hostedCaseTracking": {
+    "PASS": 0,
+    "FAIL": 0,
+    "BLOCKED": 24,
+    "NOT_RUN": 48
+  },
+  "blockedProbe": "NOT_REPEATED_OR_BYPASSED",
+  "remainingGates": [
+    "Actual maintained hardware/OS or explicit security-risk decision",
+    "On-device Python/certificate/network/power tests",
+    "Reviewed independent credential custody",
+    "Reviewed encrypted session escrow and primary acknowledgment gate",
+    "Creation-to-escrow or lost-Auth-response recovery gap",
+    "Reviewed bounded TLS live adapter",
+    "Exact separately authorized hosted recovery verification including no-op writes"
+  ],
+  "existingP1Approval": "UNCHANGED_SCOPE_VALID_NO_DUPLICATE_REQUEST",
+  "readiness": "NO_GO_OPERATIONAL_RECOVERY_OR_P1_ACTIVATION",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "pullRequest": "DRAFT_UNMERGED"
+}

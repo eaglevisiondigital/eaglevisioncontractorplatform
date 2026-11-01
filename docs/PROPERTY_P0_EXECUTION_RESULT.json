@@ -1,0 +1,128 @@
+{
+  "status": "DEVELOPMENT_APPLIED_P0_DISABLED",
+  "result": "APPLIED_VERIFIED",
+  "reviewedSqlCommit": "7e472b7",
+  "sourceCheckpoint": "a9b6a22",
+  "migrationVersions": ["20261017024327", "20261017024328"],
+  "migrations": [
+    {
+      "file": "20261017024327_property_connected_readiness.sql",
+      "sha256": "6bb0b9bf22ec1079d7aa5f74c6e33e14534cc54e30e9034c33949f786cfd3ac9"
+    },
+    {
+      "file": "20261017024328_property_duplicate_index_cleanup.sql",
+      "sha256": "3603fe0482f46b9733a0321cd9009cb1f291993fcbede7132e1bdf721776fdfc"
+    }
+  ],
+  "bundleSha256": "5349a3b175a55bd6f360819c7942fc74f69d9a29c1765a058e20df1319df6dea",
+  "cliVersion": "2.121.0",
+  "dryRun": {
+    "exitCode": 0,
+    "durationMs": 33183,
+    "pendingMigrations": 2,
+    "seeds": [],
+    "roles": []
+  },
+  "apply": {
+    "exitCode": 0,
+    "durationMs": 7961,
+    "attempts": 1,
+    "retries": 0,
+    "seeds": [],
+    "roles": [],
+    "lockObservations": 8,
+    "unexpectedLockWaits": 0
+  },
+  "verification": {
+    "historyCount": 13,
+    "historicalEntriesUnchanged": 11,
+    "newStoredStatements": [25, 6],
+    "storedSqlTokenMatch": true,
+    "hostedNativeCatalogMatch": 514,
+    "existingBusinessTablesUnchanged": 79,
+    "columnAclUnchanged": 69,
+    "defaultAclUnchanged": 24,
+    "schemaAclUnchanged": 4,
+    "identityFactorSessionFingerprintsUnchanged": true,
+    "savedAuthApiUnchanged": true,
+    "existingPropertyTablesEmpty": 8,
+    "retainedIndexConstraintRecords": 6,
+    "redundantIndexAbsent": true,
+    "gates": {
+      "identities": 22,
+      "verified_totp": 4,
+      "sessions": 0,
+      "active_platform_grants": 0,
+      "provider_workloads": 0,
+      "public_buckets": 0,
+      "release_grants": 0,
+      "property_feature_rows": 0,
+      "customer_mapping_rows": 0,
+      "report_access_absent": false,
+      "command_wrapper_absent": false,
+      "workspace_wrapper_absent": false,
+      "report_wrapper_absent": false
+    },
+    "lockObservations": 8,
+    "furtherInventoryPending": false,
+    "reportAccessTable": {
+      "rls": true,
+      "rows": 0,
+      "force": false,
+      "indexes": 5,
+      "policies": 0,
+      "triggers": 3
+    },
+    "validatedTenantForeignKeys": 3,
+    "effectiveForbiddenTableGrants": 0,
+    "newFixedPathFunctions": 6,
+    "publicInvokerWrappers": 3,
+    "authenticatedCheckedPrivateHelpers": 2,
+    "triggerHelperClientExecution": false,
+    "advisors": {
+      "security": {
+        "INFO": 37
+      },
+      "performance": {
+        "INFO": 96,
+        "WARN": 4
+      }
+    },
+    "result": "APPLIED_VERIFIED",
+    "verifiedAt": "2026-10-17T15:32:08.428973+00:00"
+  },
+  "activationAuthorized": false,
+  "hostedAcceptance": {
+    "PASS": "schema, permissions, data/configuration preservation and API exclusion checks",
+    "FAIL": 0,
+    "BLOCKED": [
+      "feature/fixture/mapping/report-lease activation",
+      "media and private scanner/worker infrastructure",
+      "protected Netlify runtime acceptance"
+    ],
+    "NOT_RUN": 72
+  },
+  "releaseReady": false,
+  "outsideAccessAuthorized": false,
+  "localValidation": {
+    "check": {
+      "passed": 719,
+      "nativeOnlySkipped": 49
+    },
+    "focusedNativePostgresql17": {
+      "passed": 68,
+      "skipped": 0
+    },
+    "localBrowser": {
+      "passed": 63,
+      "devices": ["desktop", "tablet", "mobile"],
+      "isolatedPort": 4177
+    },
+    "frozenPackageOffline": {
+      "passed": 26
+    },
+    "formatTypesMigrationDiff": true,
+    "countsOverlap": true,
+    "allNativeOnlyCasesRerun": false
+  }
+}
