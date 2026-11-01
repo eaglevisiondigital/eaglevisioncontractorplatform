@@ -32,11 +32,8 @@ const oldDeploy = {
   build_id: null,
   skew_protection_token: 'DO_NOT_RETAIN',
 };
-const assess = (
-  s: unknown = site,
-  d: unknown = oldDeploy,
-  t = target,
-) => assessNetlifyReadOnlyObservations(s, d, t);
+const assess = (s: unknown = site, d: unknown = oldDeploy, t = target) =>
+  assessNetlifyReadOnlyObservations(s, d, t);
 
 it('records limited connector evidence without claiming readiness', () => {
   const result = assess(JSON.stringify([site]), JSON.stringify(oldDeploy));
