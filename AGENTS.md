@@ -1,3 +1,17 @@
+Cycle2 continuation: read docs/PROGRAM_DELIVERY_STATUS.md, program/SHARED_CONTRACTS.md
+and program/DESIGN_SYSTEM_SPEC.md. Owner authorized next independent local CRM paged
+selection, exact maintenance scheduling handoff, unwired finance export and existing-
+source Passport/Proof-of-Work foundations. Preserve PR stack: child branches from
+exact2/4/3 heads; Passport/coordination from exact5 e44d668. No merges or rewriting
+reviewed parents. Existing objects/types/calculations/projections remain authoritative;
+no new store/schema/ledger/connected capability. Main owns design/evidence/register;
+independent reviewer checks combined types/isolation/ownership/accessibility/compat/
+protected hashes. Five locked CSS/artwork files/13 bindings checked by features:check;
+hash update is not approval. Keep new unfinished work defaultoff/unwired and UNKNOWN
+exact read only/no replay. PR5 Foundation confirmed green, no rerun/weakening. All
+recovery/P1-on13/separate14/4B/broker/NMI/Auth/financial/provider/Netlify/production/
+deploy/merge restrictions and approvals/2A–2F/billing/locked UIs stay intact.
+
 November1 product-program continuation: read docs/PRODUCT_PROGRAM_2026.md,
 FEATURE_ACCEPTANCE_REGISTER.md, FEATURE_ACCEPTANCE_EVIDENCE.json,
 PROGRAM_DELIVERY_STATUS.md and program/SHARED_CONTRACTS.md. Owner explicitly authorized

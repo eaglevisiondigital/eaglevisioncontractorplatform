@@ -1,0 +1,124 @@
+{
+  "schema": "propel-design-contract-v1",
+  "baselineCommit": "e44d668fe8bfd262be126020a0c1be9fa110046b",
+  "approval": "locked_existing_designs",
+  "limits": [
+    "Existing approved artwork/CSS remain byte-identical. A passing source contract does not prove responsive/accessibility/runtime authorization acceptance.",
+    "No new visual design or runtime capability is authorized by this specification. New isolated styles must be scoped and separately reviewed."
+  ],
+  "locks": [
+    {
+      "path": "src/styles.css",
+      "sha256": "01b8bd783e7b6f54247c19ebfc8ca85408fb73a97d734cfccff5d1992f4ceb58"
+    },
+    {
+      "path": "src/components/property/property-portal-design.css",
+      "sha256": "a7190d6f5d4228ec54168e653658db454ad19a2a69961a9f5eaaf05c52644dc8"
+    },
+    {
+      "path": "src/components/property/contractor-back-office-design.css",
+      "sha256": "2a6f9edffcc039061705769ce4cf3e2e1e6a9f735faa1f7475f3331274ec226d"
+    },
+    {
+      "path": "public/brand/propel-contractor-suite.png",
+      "sha256": "b77d8e9e9db486c32ea24031033e4bec758342a4a3418fb438cfad23e0629bb0"
+    },
+    {
+      "path": "public/brand/propel-contractor-suite-transparent.png",
+      "sha256": "dd6e8161dc4be20b97ca10cdb58a191b2bb5d4b92c2e58a2c4dcceed500a9a27"
+    }
+  ],
+  "bindings": [
+    {
+      "id": "platform-emerald",
+      "source": {
+        "path": "src/styles.css",
+        "anchor": "--platform-emerald: #00543e;"
+      }
+    },
+    {
+      "id": "platform-mint",
+      "source": {
+        "path": "src/styles.css",
+        "anchor": "--platform-mint: #48f5ad;"
+      }
+    },
+    {
+      "id": "focus-ring",
+      "source": {
+        "path": "src/styles.css",
+        "anchor": "outline: 3px solid #00865f;"
+      }
+    },
+    {
+      "id": "contractor-brand",
+      "source": {
+        "path": "src/components/property/contractor-back-office-design.css",
+        "anchor": "color: var(--company-color);"
+      }
+    },
+    {
+      "id": "portal-touch-size",
+      "source": {
+        "path": "src/components/property/property-portal-design.css",
+        "anchor": "min-height: 46px;"
+      }
+    },
+    {
+      "id": "portal-breakpoint",
+      "source": {
+        "path": "src/components/property/property-portal-design.css",
+        "anchor": "@media (max-width: 720px)"
+      }
+    },
+    {
+      "id": "staff-breakpoint",
+      "source": {
+        "path": "src/components/property/contractor-back-office-design.css",
+        "anchor": "@media (max-width: 760px)"
+      }
+    },
+    {
+      "id": "workspace-navigation",
+      "source": {
+        "path": "src/components/WorkspaceNavigation.tsx",
+        "anchor": "aria-current={section === name"
+      }
+    },
+    {
+      "id": "resource-status",
+      "source": {
+        "path": "src/components/forms.tsx",
+        "anchor": "export function ResourceStatus"
+      }
+    },
+    {
+      "id": "resource-loader",
+      "source": {
+        "path": "src/components/forms-state.ts",
+        "anchor": "export function useResource"
+      }
+    },
+    {
+      "id": "platform-artwork",
+      "source": {
+        "path": "src/components/PlatformBrand.tsx",
+        "anchor": "transparent ? productBrand.transparentPortalLogo : productBrand.logo"
+      }
+    },
+    {
+      "id": "tenant-palettes",
+      "source": {
+        "path": "src/domain/platform.ts",
+        "anchor": "export const sampleCompanies"
+      }
+    },
+    {
+      "id": "financial-closed",
+      "source": {
+        "path": "src/domain/platform.ts",
+        "anchor": "liveCharges: false"
+      }
+    }
+  ]
+}

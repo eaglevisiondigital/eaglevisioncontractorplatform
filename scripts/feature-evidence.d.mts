@@ -18,6 +18,14 @@ export interface SourceInventory {
   files: InventoryFile[];
 }
 export const requiredFeatureIds: readonly string[];
+export function validateDesignContract(
+  root: string,
+  contract: unknown,
+): {
+  lockedFiles: number;
+  sourceBindings: number;
+  runtimeAcceptance: 'NOT_INFERRED';
+};
 export function validateFeatureEvidence(
   root: string,
   manifest: unknown,

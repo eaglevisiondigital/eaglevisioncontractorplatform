@@ -34,6 +34,20 @@ cases passed in their respective jobs. This is retained evidence, not a rerun or
 certification of the new packages. QA-001 has no prior CI claim. Current branch/PR
 results belong in [delivery status](PROGRAM_DELIVERY_STATUS.md).
 
+## Cycle-two candidates (separate, unmerged)
+
+The [master delivery register](PROGRAM_DELIVERY_STATUS.md) records CRM pagination
+PR7, maintenance-to-schedule PR8, unwired finance export PR6 and existing-source
+Passport foundation PR9, with exact parents/commits/tests/CI. These are isolated
+candidates, not source integrated into this register's baseline or full-capability
+acceptance. In particular CUS-002 has a tested narrow candidate, while warranty,
+physical proof, consumer/wiring and operational acceptance remain absent. The
+original18 scope IDs and broader local/hosted/release statuses below stay honest.
+[Shared design specification](program/DESIGN_SYSTEM_SPEC.md) is now enforced by
+five exact CSS/artwork locks and13 bindings. Source tests grant no visual/hosted
+approval; independently exercised browser states and closed defects are recorded
+in [review evidence](program/CYCLE2_INTEGRATION_REVIEW.md).
+
 ## Reconciled capability inventory
 
 | ID / owner   | Capability                                                                        | Design / local evidence         | Hosted / release              | Next acceptance                                                                                                |

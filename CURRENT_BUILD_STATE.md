@@ -1,5 +1,29 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: coordinated cycle two · November 1
+
+Owner authorized continuing four independent local packages while preserving the
+stacked PR structure. PR#5 Foundation/compatibility are now independently confirmed
+PASS at `e44d668`: 1632 application/661 native/234 browser cases, with321 native-only
+skips in the application job. No genuine failure or validation weakening occurred.
+[Master register](docs/PROGRAM_DELIVERY_STATUS.md) distinguishes active agents,
+completed assignments and exact branch parents. CRM pagination, exact maintenance-to-schedule
+handoff, offline finance reconciliation/export and existing-source Passport/Proof-of-
+Work foundations are separately owned candidates; no merge or operational promotion.
+
+The [shared design specification](docs/program/DESIGN_SYSTEM_SPEC.md) now documents
+actual component/token/state/responsive contracts. Five locked CSS/artwork files and
+13 source bindings are checked through the existing offline evidence tool; no locked
+UI or global style changes. Functional children have source-based tests and separate
+default-OFF/unwired guards where unfinished. Independent combined review covers types,
+tenant/customer/property isolation, ownership, accessibility, compatibility and exact
+protected integrity. See final PR/report evidence before calling any candidate ready.
+Four delivered candidates are draft PRs 6–9; combined 185 focused cases and 15 actual responsive browser cases pass. Independent review closed finance/Passport enum leakage and a design-contract omission bypass before delivery. Main and four worktrees retain 102 exact protected paths and five private frozen bindings.
+Original P1 recovery, NMI, hosted Auth, all 13/pending 14/original 4B/four artifacts,
+Netlify/executor, approvals,2A–2F and six PROPOSED billing enhancements stay unchanged.
+No hosted writes, credentials, payments/provider/messages, deployment or merge.
+Release 1.0 remains NOT READY / NOT AUTHORIZED.
+
 ## Latest: parallel product program initialized · November 1
 
 Owner confirmed the two scope documents at remote `dc7ed7c2`; they were fetched/read

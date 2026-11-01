@@ -1,5 +1,25 @@
 # Engineering decisions
 
+## November 1 · preserve the PR stack and extend existing objects in cycle two
+
+Owner separately authorized the next CRM pagination, exact maintenance scheduling,
+read-only finance export and Passport/Proof-of-Work foundation packages. Create child
+branches from exact PR#2/#4/#3 heads; Passport and coordination use exact PR#5 head.
+No existing PR merge, rewrite or promotion. Reuse existing CRM pagination/selection,
+source/plan/record CAS, invoice/event/ledger verifier and published report projections;
+new read models are not business stores or physical completion evidence. Distinguish
+source/admission metadata from new authority. Keep incomplete modules default OFF
+or unwired; no hosted/Auth/financial/provider or recovery gate changes.
+
+Main integrator expands shared design contracts over actual approved source, with
+five unchanged CSS/artwork hashes and explicit component/token/state rules. Hash
+updates alone cannot confer visual approval. Independent reviewer owns combined
+compatibility/privacy/accessibility/protected-file review rather than authoring the
+reviewed packages. Three subagent slots require truthful queued/active/completed
+rosters. Exact CI evidence is retained; successful checks are never restarted merely
+for a new status message. PR#5 Foundation is confirmed green without code changes.
+See docs/PROGRAM_DELIVERY_STATUS.md and docs/program/DESIGN_SYSTEM_SPEC.md.
+
 ## November 1 · coordinate the approved ecosystem through isolated local PRs
 
 Owner explicitly authorized the full parallel program and confirmed the two remote
