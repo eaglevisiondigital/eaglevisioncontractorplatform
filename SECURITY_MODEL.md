@@ -1,5 +1,18 @@
 # Security model · Phase 2
 
+## Cycle three · current role and evidence remain separate from authority
+
+Asynchronous local read models must recheck the exact current access classification,
+not only that some eligible membership survives a wait. A downgraded manager cannot
+retain an earlier all-job view. Technician data excludes costs/rates/payroll/private
+notes and restricts current assignment/own time. Existing assignment rows have no
+command receipt: a matching current relationship cannot prove an UNKNOWN command
+succeeded or permit replay. Sales preferences do not execute contracts; recorded
+inspection/job facts never verify physical completion. Current consent flags do not
+establish reminder purpose, suppression, sender or recurring enrollment authority.
+DefaultOFF/unwired outputs grant no Auth, financial/provider/message or hosted rights.
+All protected migrations/artifacts/approvals and independent recovery gates remain.
+
 ## Cycle two · source admission and read-only projection boundaries
 
 New candidate lookups must retain exact current company/customer/property identity

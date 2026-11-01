@@ -1,5 +1,28 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: cycle three · local independent foundations · November 1
+
+Owner authorized five bounded local packages after exact PR10 `25ae406` Foundation
+and compatibility SUCCESS. [Cycle-three assignments](docs/program/CYCLE3_ASSIGNMENTS.md)
+record exact parents and successive agent slots. Sales reviews existing issued scope/
+receipt to contract handoff without authority; Field extends existing sample job
+assignment relationships and technician-safe work orders; Finance reuses canonical
+job cost calculations with source/coverage review and unverified NMI gates; Passport
+extends exact authorized job/report documentation; Growth reviews existing recurrence/
+manual follow-up/consent sources with communication permanently BLOCKED.
+
+Main owns shared contracts, source review ownership, combined validation and the
+master register. No existing PR is merged or rewritten. New modules remain default
+OFF/unwired and locked interfaces/artwork unchanged. Genuine recovery/P1-on13,
+separate14/exact4B+broker, NMI/Auth/provider/financial/communication/Netlify/production
+acceptance remain independent. No hosted mutation, credential retrieval, deployment,
+merge or financial execution. See the final register/PRs for exact local proof and CI.
+Delivered draft candidates PR11–15; independent combined review CLEAR with221
+distinct focused cases,18 responsive browser cases and types/lint/build PASS. Three
+reproduced defects closed without weaker validation;125 protected public paths and
+five private frozen bindings exact. See [review evidence](docs/program/CYCLE3_INTEGRATION_REVIEW.md).
+Release1.0 remains NOT READY / NOT AUTHORIZED.
+
 ## Latest: coordinated cycle two · November 1
 
 Owner authorized continuing four independent local packages while preserving the

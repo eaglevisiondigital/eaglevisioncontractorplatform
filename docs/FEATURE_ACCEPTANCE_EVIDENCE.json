@@ -6,7 +6,8 @@
   "limits": [
     "Inventory maps existing public source and retained evidence; it is not a fresh full security audit.",
     "Separate draft PRs for sales, finance and field are not integrated into this source baseline.",
-    "Historical Action B core connected PASS is retained; all new hosted lifecycle acceptance remains blocked."
+    "Historical Action B core connected PASS is retained; all new hosted lifecycle acceptance remains blocked.",
+    "Cycle-two and Cycle-three child candidates remain separate draft PRs; their tested source is not silently integrated into this coordination baseline."
   ],
   "features": [
     {
@@ -40,7 +41,7 @@
         },
         {
           "path": "SECURITY_MODEL.md",
-          "anchor": "# Security model \u00b7 Phase 2"
+          "anchor": "# Security model · Phase 2"
         }
       ],
       "tests": [
@@ -52,7 +53,7 @@
       "records": [
         {
           "path": "docs/ACTION_B_CONNECTED_RESULT.md",
-          "anchor": "# Propel \u00b7 Action B connected acceptance result"
+          "anchor": "# Propel · Action B connected acceptance result"
         }
       ],
       "ci": {
@@ -156,7 +157,7 @@
         },
         {
           "path": "docs/ACTION_B_CONNECTED_RESULT.md",
-          "anchor": "# Propel \u00b7 Action B connected acceptance result"
+          "anchor": "# Propel · Action B connected acceptance result"
         }
       ],
       "ci": {
@@ -176,7 +177,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review PR2 frozen-offer projection fix; retain exact request/source/version identity.",
+      "next": "Review PR11 exact immutable issued-source binding without weakening canonical version/calculation or connected issuance guards.",
       "date": "2026-11-01",
       "dataObjects": [
         "public.estimates",
@@ -212,7 +213,11 @@
         },
         {
           "path": "docs/CUSTOMER_ESTIMATE_REVISIONS.md",
-          "anchor": "# Workstream 3B \u00b7 customer request review and estimate draft revision"
+          "anchor": "# Workstream 3B · customer request review and estimate draft revision"
+        },
+        {
+          "path": "docs/program/CYCLE3_INTEGRATION_REVIEW.md",
+          "anchor": "# Cycle-three independent integration review"
         }
       ],
       "ci": {
@@ -260,7 +265,7 @@
       "records": [
         {
           "path": "docs/CUSTOMER_BROKER_INTEGRATION.md",
-          "anchor": "# Workstream 4B \u00b7 server broker and restricted database integration"
+          "anchor": "# Workstream 4B · server broker and restricted database integration"
         },
         {
           "path": "docs/CUSTOMER_BROKER_VALIDATION.json",
@@ -284,7 +289,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review cross-module source immutability in PR2; separately specify genuine signing acceptance.",
+      "next": "Review PR11 exact issued-scope and actual preference/receipt handoff; genuine signing, terms, Auth and custody acceptance remain separate.",
       "date": "2026-11-01",
       "dataObjects": [
         "Immutable estimate scope",
@@ -321,6 +326,10 @@
         {
           "path": "docs/PHASE3_VALIDATION.md",
           "anchor": "# Phase 3 local validation and activation gates"
+        },
+        {
+          "path": "docs/program/CYCLE3_INTEGRATION_REVIEW.md",
+          "anchor": "# Cycle-three independent integration review"
         }
       ],
       "ci": {
@@ -369,7 +378,7 @@
       "records": [
         {
           "path": "docs/PROPERTY_OPERATIONS_VALIDATION.md",
-          "anchor": "# Property operations and smart procurement \u00b7 local implementation"
+          "anchor": "# Property operations and smart procurement · local implementation"
         },
         {
           "path": "docs/MAINTENANCE_FOLLOW_UP_VALIDATION.json",
@@ -397,7 +406,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review the default-OFF read-only visit timeline; define one exact follow-up handoff before any dispatch.",
+      "next": "Review PR14 technician work orders and optional reviewed crew assignments; capacity, dispatch and connected/offline acceptance remain separate.",
       "date": "2026-11-01",
       "dataObjects": [
         "Existing jobs/assignments/time entries/breaks",
@@ -432,6 +441,10 @@
         {
           "path": "docs/PHASE3_VALIDATION.md",
           "anchor": "# Phase 3 local validation and activation gates"
+        },
+        {
+          "path": "docs/program/CYCLE3_INTEGRATION_REVIEW.md",
+          "anchor": "# Cycle-three independent integration review"
         }
       ],
       "ci": {
@@ -507,7 +520,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Keep existing cost engine; specify accounting export/reconciliation boundaries before adapters.",
+      "next": "Review PR12 canonical source/expense/labor coverage and variance; accounting, NMI and settlement evidence remain separately unverified.",
       "date": "2026-11-01",
       "dataObjects": [
         "Existing job baseline",
@@ -537,6 +550,10 @@
         {
           "path": "docs/PHASE3_VALIDATION.md",
           "anchor": "# Phase 3 local validation and activation gates"
+        },
+        {
+          "path": "docs/program/CYCLE3_INTEGRATION_REVIEW.md",
+          "anchor": "# Cycle-three independent integration review"
         }
       ],
       "ci": {
@@ -608,7 +625,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Specify a single customer-safe service-evidence projection over existing objects; no new property store.",
+      "next": "Review PR15 exact authorized job/report documentation; no warranty, physical completion or unwired consumer promotion.",
       "date": "2026-11-01",
       "dataObjects": [
         "Reuse existing CRM location, report/version, job and private media contracts"
@@ -629,7 +646,11 @@
       "records": [
         {
           "path": "docs/PRODUCT_PROGRAM_2026.md",
-          "anchor": "# Propel Contractor Suite \u2014 integrated product program"
+          "anchor": "# Propel Contractor Suite — integrated product program"
+        },
+        {
+          "path": "docs/program/CYCLE3_INTEGRATION_REVIEW.md",
+          "anchor": "# Cycle-three independent integration review"
         }
       ],
       "ci": {
@@ -649,7 +670,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Define consented program enrollment independently of visit recurrence and financial execution.",
+      "next": "Review PR13 anchored plan/follow-up sources; purpose consent, suppression, enrollment and communication authority remain unverified/blocked.",
       "date": "2026-11-01",
       "dataObjects": [
         "Existing inspection recurrence",
@@ -672,6 +693,10 @@
         {
           "path": "docs/BILLING_ENHANCEMENTS_PROPOSED.json",
           "anchor": "{"
+        },
+        {
+          "path": "docs/program/CYCLE3_INTEGRATION_REVIEW.md",
+          "anchor": "# Cycle-three independent integration review"
         }
       ],
       "ci": {
@@ -691,7 +716,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Specify bounded consent and manual-review contracts before implementation.",
+      "next": "Review PR13 exact channel evidence separately from purpose/suppression/enrollment; no sender, outbox or automatic communication.",
       "date": "2026-11-01",
       "dataObjects": [
         "Reuse CRM and communications preparation; no duplicate lead store"
@@ -711,7 +736,11 @@
       "records": [
         {
           "path": "docs/PRODUCT_PROGRAM_2026.md",
-          "anchor": "# Propel Contractor Suite \u2014 integrated product program"
+          "anchor": "# Propel Contractor Suite — integrated product program"
+        },
+        {
+          "path": "docs/program/CYCLE3_INTEGRATION_REVIEW.md",
+          "anchor": "# Cycle-three independent integration review"
         }
       ],
       "ci": {
@@ -804,7 +833,7 @@
         },
         {
           "path": "docs/PROPERTY_OPERATIONS_VALIDATION.md",
-          "anchor": "# Property operations and smart procurement \u00b7 local implementation"
+          "anchor": "# Property operations and smart procurement · local implementation"
         }
       ],
       "ci": {
@@ -868,6 +897,10 @@
         {
           "path": "docs/program/DESIGN_SYSTEM_SPEC.md",
           "anchor": "# Shared design-system specification"
+        },
+        {
+          "path": "docs/program/CYCLE3_INTEGRATION_REVIEW.md",
+          "anchor": "# Cycle-three independent integration review"
         }
       ],
       "ci": {
@@ -976,7 +1009,7 @@
         },
         {
           "path": "docs/ACTION_B_CONNECTED_RESULT.md",
-          "anchor": "# Propel \u00b7 Action B connected acceptance result"
+          "anchor": "# Propel · Action B connected acceptance result"
         }
       ],
       "ci": {
@@ -1072,7 +1105,7 @@
       "records": [
         {
           "path": "docs/MATERIAL_IMPORT.md",
-          "anchor": "# Smart Material Import \u00b7 implementation and activation boundary"
+          "anchor": "# Smart Material Import · implementation and activation boundary"
         },
         {
           "path": "docs/PHASE3_VALIDATION.md",
@@ -1240,7 +1273,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review exact cycle-two source/CI and combined compatibility; mandatory locked design source checks do not imply runtime or release acceptance.",
+      "next": "Review exact Cycle3 draft heads, normal CI and combined compatibility; mandatory locks and source presence never grant runtime or release acceptance.",
       "date": "2026-11-01",
       "dataObjects": [
         "Read-only public source hashes",
@@ -1280,6 +1313,10 @@
         {
           "path": "docs/program/DESIGN_SYSTEM_SPEC.md",
           "anchor": "# Shared design-system specification"
+        },
+        {
+          "path": "docs/program/CYCLE3_INTEGRATION_REVIEW.md",
+          "anchor": "# Cycle-three independent integration review"
         }
       ],
       "ci": {

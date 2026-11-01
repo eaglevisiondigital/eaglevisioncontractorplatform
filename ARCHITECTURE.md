@@ -1,5 +1,19 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Cycle three · existing-source operational review foundations
+
+Local sales, field, margin, Passport and reminder modules consume existing repository
+objects and immutable source IDs. No parallel property/job/estimate/consent store,
+cost engine, ledger, schema or connected capability is added. The only shared sample
+extension retains existing job_assignments Row semantics and exposes a restricted
+synthetic reader; connected RPC behavior is not widened. Exact manual assignment
+confirmation/CAS and permanent UNKNOWN handling remain distinct from dispatch.
+Issued estimate/receipt identity, eligible staff, job source and customer/property
+boundaries are independently rechecked. Passport documentation is not physical
+completion, warranty or customer authorization. Reminder candidates are not enrollment
+or communication permission. Unmounted components/flagged loopback previews preserve
+the approved App/navigation, locked CSS and artwork. No production promotion.
+
 ## Cycle two · independent extensions over the existing contracts
 
 CRM selection extends actual Operations pagination/exact lookups, field scheduling

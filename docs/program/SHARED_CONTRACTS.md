@@ -125,3 +125,29 @@ Hash updates alone are never owner visual approval. Integration proof and unreso
 operational limits are recorded in [independent review](CYCLE2_INTEGRATION_REVIEW.md)
 and the master delivery register. Existing data owners/types/calculations/projections
 remain authoritative; no shared schema or connected capability is added.
+
+## Cycle-three interchange extensions
+
+[Assignments](CYCLE3_ASSIGNMENTS.md) name exact parent/child ownership. Source IDs
+and existing Row/domain types remain authoritative; none of these is an Auth grant.
+Sales binds issued source + exact offer/receipt + current CRM/member. Field binds
+existing job/issued baseline/assignment tuple/worker and explicit plan/visit links;
+recorded time is not a future dispatch slot. Finance binds immutable issued baseline,
+reviewed expense events and locked labor coverage using existing integer calculators.
+Passport binds only current customer/property-authorized issued versions and exact
+job/report/visit/immutable-plan-job identity. Missing association stays UNKNOWN.
+Growth binds existing plan cadence/revision/manual follow-up and contact-v1 evidence;
+permission to send, purpose/suppression/enrollment/sender remain unverified.
+
+An async read must preserve its access class through the last await. Caller/worker
+role changes cannot retain an earlier manager projection. Existing job_assignments
+has only org/job/user/active, no command receipt/revision: UNKNOWN outcome remains
+UNKNOWN even if an exact read observes an active relationship. No retry/rebind/new
+ID bypass; acknowledged synthetic changes still require exact current-source checks.
+Customer projections never include workforce/private costing/repair review fields.
+
+Finance's standalone root demo HTML is explicitly inventoried; arbitrary root HTML,
+private trees and symlinks remain excluded. Review ownership maps new packages to
+existing business lanes; shared CSS and sender authority retain their existing
+review owners. Source metadata never changes runtime authorization. All five locked
+files/thirteen bindings and the original eighteen feature IDs remain unchanged.
