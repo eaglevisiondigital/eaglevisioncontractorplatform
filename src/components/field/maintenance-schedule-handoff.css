@@ -1,0 +1,155 @@
+.field-schedule .maintenance-handoff {
+  margin-top: 40px;
+  border-top: 2px solid #cbd7ce;
+  padding-top: 34px;
+}
+.field-schedule .handoff-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.field-schedule .handoff-heading h2 {
+  margin-top: 10px;
+}
+.field-schedule .handoff-boundary {
+  background: #e9eee7;
+  border-left: 3px solid var(--field-accent);
+  padding: 14px 18px;
+  font-size: 13px;
+  margin: 20px 0;
+}
+.field-schedule .handoff-columns {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.8fr) minmax(0, 1.2fr);
+  gap: 22px;
+  align-items: start;
+}
+.field-schedule .handoff-count,
+.field-schedule .handoff-source-status {
+  font-size: 12px;
+  color: #49665f;
+}
+.field-schedule .handoff-sources {
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 14px;
+}
+.field-schedule .handoff-sources li,
+.field-schedule .handoff-editor,
+.field-schedule .handoff-empty {
+  background: #fff;
+  border: 1px solid #cbd7ce;
+  border-radius: 10px;
+  padding: 20px;
+}
+.field-schedule .handoff-sources h4 {
+  font:
+    600 19px Georgia,
+    serif;
+  margin: 10px 0;
+}
+.field-schedule .handoff-sources small {
+  display: block;
+  margin: 12px 0;
+  color: #49665f;
+}
+.field-schedule .handoff-sources button {
+  width: 100%;
+}
+.field-schedule .handoff-sources button[aria-pressed='true'] {
+  border: 2px solid var(--field-brand);
+  background: #e9eee7;
+}
+.field-schedule .handoff-editor label {
+  margin: 18px 0;
+}
+.field-schedule .handoff-editor h3 {
+  margin-top: 0;
+}
+.field-schedule .handoff-review {
+  background: #f2f4ee;
+  border-radius: 8px;
+  border: 1px solid #cbd7ce;
+  padding: 18px;
+  margin-top: 22px;
+}
+.field-schedule .handoff-review h4 {
+  font:
+    600 19px Georgia,
+    serif;
+  margin: 0 0 12px;
+}
+.field-schedule .handoff-confirm {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.field-schedule .handoff-confirm input {
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+  min-height: 20px;
+  margin-top: 2px;
+  accent-color: var(--field-brand);
+}
+.field-schedule .handoff-result {
+  border: 2px solid var(--field-brand);
+  background: #fff;
+  border-radius: 10px;
+  padding: 24px;
+  margin-top: 24px;
+}
+.field-schedule .handoff-result button {
+  margin: 8px 8px 0 0;
+}
+.field-schedule .handoff-alert {
+  background: #fff0e9;
+  border: 1px solid #a85a32;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  color: #713b25;
+}
+.field-schedule .handoff-development {
+  border: 1px dashed #aab7b1;
+  padding: 18px;
+  border-radius: 10px;
+  margin-top: 24px;
+  font-size: 13px;
+}
+.field-schedule .handoff-development summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.field-schedule .handoff-development .handoff-confirm {
+  margin-top: 15px;
+}
+.field-schedule .maintenance-handoff dl {
+  grid-template-columns: 155px minmax(0, 1fr);
+}
+@media (max-width: 760px) {
+  .field-schedule .handoff-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .field-schedule .handoff-columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .field-schedule .maintenance-handoff dl {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .field-schedule .maintenance-handoff dd {
+    margin-bottom: 10px;
+  }
+  .field-schedule .handoff-review,
+  .field-schedule .handoff-result {
+    padding: 17px;
+  }
+  .field-schedule .handoff-review button {
+    width: 100%;
+  }
+}

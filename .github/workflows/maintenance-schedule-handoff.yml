@@ -1,0 +1,48 @@
+name: Isolated maintenance schedule handoff
+on:
+  push:
+    branches: ['codex/**']
+    paths:
+      - 'src/**'
+      - 'tests/program/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'vite.config.ts'
+      - 'tsconfig.json'
+      - '.github/workflows/maintenance-schedule-handoff.yml'
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'tests/program/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'vite.config.ts'
+      - 'tsconfig.json'
+      - '.github/workflows/maintenance-schedule-handoff.yml'
+permissions:
+  contents: read
+concurrency:
+  group: maintenance-schedule-handoff-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test -c tests/program/playwright.maintenance-handoff.config.ts --workers=2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: maintenance-schedule-handoff-synthetic-previews
+          path: |
+            artifacts/property/maintenance-handoff-*.png
+            test-results/maintenance-schedule-handoff/
+          retention-days: 7
