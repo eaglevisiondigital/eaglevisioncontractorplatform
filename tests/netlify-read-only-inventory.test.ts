@@ -47,13 +47,16 @@ it('requires every consecutive Link page and preserves exact identities', async 
   const body = Array.from({ length: 100 }, (_, i) =>
     deploy(i.toString(16).padStart(24, '0')),
   );
-  const read: InventoryRead = async (url) => ({
-    status: 200,
-    body: new URL(url).searchParams.get('page') === '1' ? body : [deploy('f'.repeat(24))],
-    link: new URL(url).searchParams.get('page') === '1'
-      ? `<https://api.netlify.com/api/v1/sites/${siteId}/deploys?page=2&per_page=100>; rel="next"`
-      : null,
-  });
+  const read: InventoryRead = async (url) => {
+    const isFirstPage = new URL(url).searchParams.get('page') === '1';
+    return {
+      status: 200,
+      body: isFirstPage ? body : [deploy('f'.repeat(24))],
+      link: isFirstPage
+        ? `<https://api.netlify.com/api/v1/sites/${siteId}/deploys?page=2&per_page=100>; rel="next"`
+        : null,
+    };
+  };
   const result = await collectReadOnlyNetlifyInventory(siteId, read, signal);
   expect(result.records).toHaveLength(101);
 });
