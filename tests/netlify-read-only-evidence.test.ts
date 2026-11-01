@@ -22,7 +22,7 @@ const site = {
     currentDeploy: { state: 'current', currentDeploy: {} },
   },
 };
-const old = {
+const oldDeploy = {
   id: target.originalDeployId,
   site_id: target.siteId,
   state: 'uploading',
@@ -32,73 +32,58 @@ const old = {
   build_id: null,
   skew_protection_token: 'DO_NOT_RETAIN',
 };
+const assess = (
+  s: unknown = site,
+  d: unknown = oldDeploy,
+  t = target,
+) => assessNetlifyReadOnlyObservations(s, d, t);
 
-it('connector evidence never proves deployment readiness', () => {
-  const checked = assessNetlifyReadOnlyObservations(
-    JSON.stringify([site]),
-    JSON.stringify(old),
-    target,
-  );
-  expect(checked.site.connectorReportsTeamLoginAllDeploys).toBe(true);
-  expect(checked.original).toMatchObject({
+it('records limited connector evidence without claiming readiness', () => {
+  const result = assess(JSON.stringify([site]), JSON.stringify(oldDeploy));
+  expect(result.site.connectorReportsTeamLoginAllDeploys).toBe(true);
+  expect(result.original).toMatchObject({
     state: 'uploading',
     unpublished: true,
     manualPreview: true,
   });
-  expect(checked.executorSnapshotAvailable).toBe(false);
-  expect(checked.deploymentAuthorized).toBe(false);
-  expect(checked.site.primaryIndependentlyEstablished).toBe(false);
-  expect(checked.blockers).toContain(
+  expect(result.executorSnapshotAvailable).toBe(false);
+  expect(result.deploymentAuthorized).toBe(false);
+  expect(result.site.primaryIndependentlyEstablished).toBe(false);
+  expect(result.blockers).toContain(
     'INDEPENDENT_DASHBOARD_PROTECTION_WITNESS_MISSING',
   );
-  expect(JSON.stringify(checked)).not.toContain('DO_NOT_RETAIN');
+  expect(JSON.stringify(result)).not.toContain('DO_NOT_RETAIN');
 });
-it('fails closed on wrong site, team and old deploy identity', () => {
-  expect(() =>
-    assessNetlifyReadOnlyObservations(site, old, {
-      ...target,
-      siteId: '00000000-0000-0000-0000-000000000000',
-    }),
-  ).toThrow('IDENTITY_DRIFT');
-  expect(() =>
-    assessNetlifyReadOnlyObservations(
-      {
-        ...site,
-        _enrichedFields: { ...site._enrichedFields, teamId: 'bad' },
-      },
-      old,
-      target,
-    ),
-  ).toThrow('IDENTITY_DRIFT');
-  expect(() =>
-    assessNetlifyReadOnlyObservations(
-      site,
-      { ...old, id: 'abcdefabcdefabcdefabcdef' },
-      target,
-    ),
-  ).toThrow('IDENTITY_DRIFT');
+
+it('rejects incorrect site, team and original deploy identities', () => {
+  const wrongTarget = { ...target, siteId: crypto.randomUUID() };
+  expect(() => assess(site, oldDeploy, wrongTarget)).toThrow('IDENTITY_DRIFT');
+  const wrongTeam = structuredClone(site);
+  wrongTeam._enrichedFields.teamId = 'wrong-team';
+  expect(() => assess(wrongTeam)).toThrow('IDENTITY_DRIFT');
+  const wrongDeploy = { ...oldDeploy, id: 'f'.repeat(24) };
+  expect(() => assess(site, wrongDeploy)).toThrow('IDENTITY_DRIFT');
 });
-it('reports protection or source drift without authorizing a deploy', () => {
-  const a = assessNetlifyReadOnlyObservations(
-    {
-      ...site,
-      _enrichedFields: {
-        ...site._enrichedFields,
-        projectAccessControls: {
-          requiresSSOTeamLogin: true,
-          whichProjectsRequireSSOTeamLogin: 'production',
-        },
-      },
-    },
-    { ...old, state: 'ready', published_at: '2026-10-31T01:00:00Z' },
-    target,
+
+it('reports changed protection and original state without approval', () => {
+  const changedSite = structuredClone(site);
+  changedSite._enrichedFields.projectAccessControls.whichProjectsRequireSSOTeamLogin =
+    'production';
+  const changedDeploy = {
+    ...oldDeploy,
+    state: 'ready',
+    published_at: '2026-10-31T01:00:00Z',
+  };
+  const result = assess(changedSite, changedDeploy);
+  expect(result.blockers).toContain('CONNECTOR_PROTECTION_NOT_CONFIRMED');
+  expect(result.blockers).toContain(
+    'ORIGINAL_DEPLOY_STATE_CHANGED_OR_UNVERIFIED',
   );
-  expect(a.blockers).toContain('CONNECTOR_PROTECTION_NOT_CONFIRMED');
-  expect(a.blockers).toContain('ORIGINAL_DEPLOY_STATE_CHANGED_OR_UNVERIFIED');
-  expect(a.deploymentAuthorized).toBe(false);
+  expect(result.deploymentAuthorized).toBe(false);
 });
-it('rejects malformed, empty or ambiguous connector result shapes', () => {
-  for (const v of ['not json', '[]', '[{},{}]', '{}', null]) {
-    expect(() => assessNetlifyReadOnlyObservations(v, old, target)).toThrow();
+
+it('rejects malformed, ambiguous or empty provider results', () => {
+  for (const invalid of ['not json', '[]', '[{},{}]', '{}', null]) {
+    expect(() => assess(invalid)).toThrow();
   }
 });
