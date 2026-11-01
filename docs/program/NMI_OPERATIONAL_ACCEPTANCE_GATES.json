@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "featureIds": ["FIN-001", "FIN-002", "INT-001"],
+  "sourcePlan": "docs/program/FINANCE_NMI_ACCEPTANCE.md#finite-provider-acceptance-order-all-later-actions-separately-authorized",
+  "purpose": "Finite review evidence contract over the existing NMI acceptance plan. No adapter, provider simulation or authority is created.",
+  "operationalReady": false,
+  "executionAuthorized": false,
+  "credentialRetrievalAuthorized": false,
+  "providerCallsAuthorized": false,
+  "hostedActionsAuthorized": false,
+  "releaseStatus": "NOT READY / NOT AUTHORIZED",
+  "evidenceRule": "Every operational gate is UNVERIFIED. Local tests, source hashes, synthetic receipts and this contract cannot satisfy genuine operational evidence. Gate order never authorizes its actions.",
+  "privateEvidenceRule": "Actual merchant/account/bank/target/user/token identifiers and raw evidence stay in separately approved private custody; only a sanitized review reference, observed time, scope digest and independent reviewer outcome belong in a future public status.",
+  "unknownRule": "Preserve the exact original intent, key, amount and source. UNKNOWN permits exact independently authorized read-only reconciliation only; no replay, replacement key, changed amount, fallback provider or automatic continuation.",
+  "gates": [
+    {
+      "id": "NMI-01",
+      "planStep": 1,
+      "name": "Current local source and containment review",
+      "status": "UNVERIFIED",
+      "requires": [],
+      "requiredEvidence": [
+        "Independent exact-SHA review of existing reserve/finish/inbox/observation/reconciliation",
+        "Default-OFF routes and execution controls independently confirmed"
+      ],
+      "exit": "Reviewed local evidence only; no operational permission"
+    },
+    {
+      "id": "NMI-02",
+      "planStep": 2,
+      "name": "Per-company sandbox merchant and settlement ownership",
+      "status": "UNVERIFIED",
+      "requires": ["NMI-01"],
+      "requiredEvidence": [
+        "Owner-designated exact sandbox account and company/merchant mapping",
+        "Independent evidence of account control, processor/acquirer and authorized settlement recipient",
+        "Currency/rail entitlement, funding/report availability, timezone/cutoff and fee/refund/dispute policy"
+      ],
+      "exit": "Account availability never implies ready merchant, token or bank settlement"
+    },
+    {
+      "id": "NMI-03",
+      "planStep": 3,
+      "name": "Genuine authority and restricted operational custody",
+      "status": "UNVERIFIED",
+      "requires": ["NMI-02"],
+      "requiredEvidence": [
+        "Current genuine Auth/MFA and exact invoice/customer/merchant authority",
+        "Provider-hosted origin and source-bound immutable token consumption",
+        "Dedicated restricted TLS identity, exact grants and bounded workload",
+        "Reviewed helper/installer TCB, callback inbox/signature, egress, abuse and independent reporting ports"
+      ],
+      "exit": "Synthetic staff, test consent and fixture TLS are insufficient"
+    },
+    {
+      "id": "NMI-04",
+      "planStep": 4,
+      "name": "Separate exact sandbox preparation authorization",
+      "status": "UNVERIFIED",
+      "requires": ["NMI-03"],
+      "requiredEvidence": [
+        "Exact owner-approved target/hash/tenant/account/actions/time/containment",
+        "Private credential custody and independently reviewed preparation outcome"
+      ],
+      "exit": "No credential or preparation action authorized by this file"
+    },
+    {
+      "id": "NMI-05",
+      "planStep": 5,
+      "name": "Genuine bounded hosted token and capture acceptance",
+      "status": "UNVERIFIED",
+      "requires": ["NMI-04"],
+      "requiredEvidence": [
+        "Separately authorized provider-hosted token and exact immutable source intent",
+        "Redacted actual approval/decline/loss/timeout evidence",
+        "Independent concurrent duplicate and changed-key denial evidence",
+        "Strict actual response validation without parser weakening"
+      ],
+      "exit": "An ambiguous result remains UNKNOWN; no second charge"
+    },
+    {
+      "id": "NMI-06",
+      "planStep": 6,
+      "name": "Independent reports, callbacks and settlement comparison",
+      "status": "UNVERIFIED",
+      "requires": ["NMI-05"],
+      "requiredEvidence": [
+        "Separate exact read-only report and bounded callback authorization",
+        "Raw-body signature/digest, event/account binding and replay/dedup evidence",
+        "Retained report identity/hash/as-of, delayed/out-of-order evidence",
+        "Exact transaction and independent settlement matching, unresolved discrepancies retained"
+      ],
+      "exit": "Callback success is not bank funding; equal net is not source reconciliation"
+    },
+    {
+      "id": "NMI-07",
+      "planStep": 7,
+      "name": "Separate settled refund acceptance",
+      "status": "UNVERIFIED",
+      "requires": ["NMI-06"],
+      "requiredEvidence": [
+        "Separate authority for exact original settled capture and same tenant/customer/invoice/merchant",
+        "Bounded amount and outstanding refund capacity",
+        "Actual immutable refused/lost/partial result and independent reconciliation"
+      ],
+      "exit": "No void, ACH, recurring, vault-reuse, full-refund shortcut or provider fallback"
+    },
+    {
+      "id": "NMI-08",
+      "planStep": 8,
+      "name": "Accountant, legal/tax and separate release acceptance",
+      "status": "UNVERIFIED",
+      "requires": ["NMI-07"],
+      "requiredEvidence": [
+        "Independent gross/fee/tax/refund/dispute/net/bank-deposit and chart mapping review",
+        "Suspense, UNKNOWN and cutoff exception disposition",
+        "Processor/legal/tax/surcharge/payroll review",
+        "Separate complete Release 1.0 workflow/security and explicit owner launch authorization"
+      ],
+      "exit": "No commercial, legal, tax, provider or launch acceptance is claimed"
+    }
+  ],
+  "independentProtectedDependencies": [
+    "Qualifying physical recovery and separately approved genuine recovery verification",
+    "Original approved P1 fresh preflight on exactly thirteen migrations",
+    "Separately authorized customer14 and exact original4B/broker ownership/hash/grants/mapping/target/Auth acceptance",
+    "Frozen P1/four artifacts, all13/pending14/original4B, approvals and locked UI/artwork",
+    "2A-2F restrictions and six billing enhancements PROPOSED",
+    "Independent Netlify/protection/executor and financial/production/deploy/merge approvals"
+  ]
+}
