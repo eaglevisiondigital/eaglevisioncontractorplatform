@@ -31,7 +31,7 @@ const old = {
   skew_protection_token: 'DO_NOT_RETAIN',
 };
 
-it('records connector protection and old deploy without claiming an independent deployment preflight', () => {
+it('connector evidence never proves deployment readiness', () => {
   const checked = assessNetlifyReadOnlyObservations(
     JSON.stringify([site]),
     JSON.stringify(old),
@@ -60,7 +60,10 @@ it('fails closed on wrong site, team and old deploy identity', () => {
   ).toThrow('IDENTITY_DRIFT');
   expect(() =>
     assessNetlifyReadOnlyObservations(
-      { ...site, _enrichedFields: { ...site._enrichedFields, teamId: 'bad' } },
+      {
+        ...site,
+        _enrichedFields: { ...site._enrichedFields, teamId: 'bad' },
+      },
       old,
       target,
     ),
@@ -73,15 +76,18 @@ it('fails closed on wrong site, team and old deploy identity', () => {
     ),
   ).toThrow('IDENTITY_DRIFT');
 });
-it('reports protection or source drift as blockers, never a replacement approval', () => {
+it('reports protection or source drift without authorizing a deploy', () => {
   const a = assessNetlifyReadOnlyObservations(
-    { ...site, _enrichedFields: {
-      ...site._enrichedFields,
-      projectAccessControls: {
-        requiresSSOTeamLogin: true,
-        whichProjectsRequireSSOTeamLogin: 'production',
+    {
+      ...site,
+      _enrichedFields: {
+        ...site._enrichedFields,
+        projectAccessControls: {
+          requiresSSOTeamLogin: true,
+          whichProjectsRequireSSOTeamLogin: 'production',
+        },
       },
-    } },
+    },
     { ...old, state: 'ready', published_at: '2026-10-31T01:00:00Z' },
     target,
   );
@@ -91,8 +97,6 @@ it('reports protection or source drift as blockers, never a replacement approval
 });
 it('rejects malformed, empty or ambiguous connector result shapes', () => {
   for (const v of ['not json', '[]', '[{},{}]', '{}', null]) {
-    expect(() =>
-      assessNetlifyReadOnlyObservations(v, old, target),
-    ).toThrow();
+    expect(() => assessNetlifyReadOnlyObservations(v, old, target)).toThrow();
   }
 });
