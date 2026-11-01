@@ -239,11 +239,34 @@ it('never exposes another current-customer or foreign-customer job from the actu
     customer_type: 'residential',
     preferred_contact: 'email',
   });
-  for (const customer_id of [boundary.customer_id, foreign!.id]) {
+  const sourceLocation = (
+    await operations.listLocations(
+      boundary.organization_id,
+      boundary.customer_id,
+    )
+  ).find((location) => location.id === boundary.location_id)!;
+  await operations.saveLocation(boundary.organization_id, foreign!.id, {
+    address_line1: sourceLocation.address_line1,
+    address_line2: sourceLocation.address_line2,
+    city: sourceLocation.city,
+    region: sourceLocation.region,
+    postal_code: sourceLocation.postal_code,
+    country_code: sourceLocation.country_code,
+  });
+  const foreignLocations = await operations.listLocations(
+    boundary.organization_id,
+    foreign!.id,
+  );
+  expect(foreignLocations).toHaveLength(1);
+  expect(foreignLocations[0].id).not.toBe(boundary.location_id);
+  for (const [customer_id, location_id] of [
+    [boundary.customer_id, boundary.location_id],
+    [foreign!.id, foreignLocations[0].id],
+  ]) {
     const draft = await repo.estimates.create(model.company, {
       ...current.payload,
       customer_id,
-      location_id: boundary.location_id,
+      location_id,
       project: {
         ...current.payload.project,
         name: current.payload.project.name,
