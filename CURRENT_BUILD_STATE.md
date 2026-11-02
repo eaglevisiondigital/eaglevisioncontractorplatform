@@ -6,7 +6,8 @@ Cycle8 PR56 exact fe813ed Foundation and all22 observed runs PASS; PR52's cancel
 Passport install-timeout is accounted for by its successful same-SHA push run.
 No successful checks were manually restarted. Shared foundation PR59 and seven
 bounded implementation drafts57/58/60–64 remain separate and unmerged. Main composes
-exact reviewed source bytes on codex/program-cycle-nine-integration.
+exact reviewed source bytes on codex/program-cycle-nine-integration, draft PR65
+(implementation a256336d40efdbc625c2bab8756549f860580905).
 
 The isolated `/preview/operating-center` uses one actual repository set with four
 jobs, three customers/properties and two assigned workers, including two jobs on one

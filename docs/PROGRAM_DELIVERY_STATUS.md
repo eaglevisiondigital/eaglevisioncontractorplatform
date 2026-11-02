@@ -2,6 +2,12 @@
 
 ## Cycle nine · multi-job operating center · November 2
 
+Combined candidate: [draft PR65](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/65),
+implementation commit `a256336d40efdbc625c2bab8756549f860580905` on
+`codex/program-cycle-nine-integration`. A subsequent register-only commit records
+this published identity; its automatic checks are separate from the implementation
+commit's runs. Nothing is merged or deployed.
+
 Cycle8 PR56 exact `fe813ed261ad56fffb91ca15ac2aa41a92a8847e` has successful
 Foundation PR41473893613/push41473818269 and all22 observed runs. PR52 exact
 d146a213's dedicated Passport PR41466356421 timed out during dependency installation;
@@ -23,10 +29,10 @@ integration draft also targets that foundation. No parent/history rewrite or mer
 | portfolio-scheduling  | /root/cycle9_field_growth   | `codex/cycle9-portfolio-scheduling`  | [57](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/57) | `a3216be062c1d2e6827f6f7b395a0ce128a1fed9` | 37        | PASS                       |
 | operating-selection   | /root/cycle8_sales_customer | `codex/cycle9-operating-selection`   | [58](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/58) | `d522751b6cfe9f1a44be013198a12f0f840f0821` | 23        | PASS                       |
 | portfolio-finance     | /root/cycle5_profit_guard   | `codex/cycle9-portfolio-finance`     | [60](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/60) | `52abd65613b35a9dbf460f88a7a2b30762c48b2b` | 34        | RUNNING — not yet accepted |
-| portfolio-service     | /root/cycle8_sales_customer | `codex/cycle9-portfolio-service`     | [61](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/61) | `87c6c158ea4532765c074e6919b06e722d454ef7` | 23        | RUNNING — not yet accepted |
+| portfolio-service     | /root/cycle8_sales_customer | `codex/cycle9-portfolio-service`     | [61](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/61) | `87c6c158ea4532765c074e6919b06e722d454ef7` | 23        | PASS                       |
 | portfolio-maintenance | /root/cycle9_field_growth   | `codex/cycle9-portfolio-maintenance` | [62](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/62) | `043c49c2f9d1c766c232ccdca03acef4d309f3eb` | 43        | PASS                       |
 | business-briefing     | /root/cycle5_profit_guard   | `codex/cycle9-business-briefing`     | [63](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/63) | `11074c0fef398c20b92e67feb12719bfe57361b1` | 31        | PASS                       |
-| operating-addons      | /root                       | `codex/cycle9-operating-addons`      | [64](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/64) | `b0f7261d507b63ea0712d6211cbf331b8c359295` | 27        | RUNNING — not yet accepted |
+| operating-addons      | /root                       | `codex/cycle9-operating-addons`      | [64](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/64) | `b0f7261d507b63ea0712d6211cbf331b8c359295` | 27        | PASS                       |
 
 Three implementation slots ran bounded parallel waves in isolated worktrees. Main
 then authored the separate advanced-tool adapter, shared mount and combined proof.

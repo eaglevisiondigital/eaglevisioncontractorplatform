@@ -293,5 +293,7 @@
     "Availability, incomplete costs/history and purpose/suppression/consent-at-send remain UNKNOWN. No dispatch, communication, financial or operational authority.",
     "Explicit exact-file composition on the integration branch; original draft PRs and parents remain unmerged."
   ],
-  "coordination_parent_commit": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765"
+  "coordination_parent_commit": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+  "coordination_draft_pr": 65,
+  "coordination_implementation_commit": "a256336d40efdbc625c2bab8756549f860580905"
 }
