@@ -1,0 +1,52 @@
+name: Isolated technician day board
+on:
+  push:
+    branches: ['codex/**']
+    paths:
+      - 'src/**'
+      - 'tests/field-day-board.test.ts'
+      - 'tests/program/**'
+      - 'tests/browser/fixtures/technician-day-board*'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'vite.config.ts'
+      - 'tsconfig.json'
+      - '.github/workflows/technician-day-board.yml'
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'tests/field-day-board.test.ts'
+      - 'tests/program/**'
+      - 'tests/browser/fixtures/technician-day-board*'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'vite.config.ts'
+      - 'tsconfig.json'
+      - '.github/workflows/technician-day-board.yml'
+permissions:
+  contents: read
+concurrency:
+  group: technician-day-board-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test -c tests/program/playwright.technician-day-board.config.ts --workers=2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: technician-day-board-synthetic-previews
+          path: |
+            artifacts/property/technician-day-board-*.png
+            test-results/technician-day-board/
+          retention-days: 7
