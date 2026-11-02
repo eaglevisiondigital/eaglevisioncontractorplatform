@@ -5,6 +5,7 @@ import { Phase3Repository } from '../src/lib/phase3';
 import {
   readPrototypeSource,
   assertPrototypeSourceCurrent,
+  assertPrototypeSourceCurrentNow,
 } from '../src/lib/program/prototype-source';
 import { prototypeFixture } from './program/prototype-fixture';
 afterEach(() => vi.restoreAllMocks());
@@ -232,4 +233,18 @@ it('an exact existing job from another source is rejected even within the same c
   await expect(
     readPrototypeSource(f.repo, { ...f.target, job_id: other.id }, f.gate),
   ).rejects.toThrow('association');
+});
+
+it('consumer final synchronous checkpoint denies real source drift after awaited verification', async () => {
+  const f = await prototypeFixture();
+  const source = await readPrototypeSource(f.repo, f.target, f.gate);
+  await assertPrototypeSourceCurrent(source);
+  await f.repo.save(f.company.id, f.bundle, {
+    ...f.bundle.version.payload,
+    terms: 'Changed before consumer output',
+  });
+  expect(() => assertPrototypeSourceCurrentNow(source)).toThrow('Stale');
+  expect(() =>
+    assertPrototypeSourceCurrentNow(structuredClone(source)),
+  ).toThrow('Unknown');
 });
