@@ -1,0 +1,151 @@
+.sales-desk {
+  padding: clamp(1rem, 3vw, 1.75rem);
+  border: 1px solid var(--border, #d9dedb);
+  border-radius: 18px;
+  background: var(--surface, #fff);
+  color: var(--ink, #172c28);
+  font-size: 1rem;
+  line-height: 1.55;
+  min-width: 0;
+}
+.sales-desk * {
+  box-sizing: border-box;
+}
+.sales-desk-heading h2 {
+  margin: 0.25rem 0 0.5rem;
+}
+.sales-desk-heading p,
+.sales-desk-boundary {
+  color: var(--muted, #52665f);
+}
+.sales-desk-grid,
+.sales-desk-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.sales-desk-grid > section,
+.sales-desk-packet {
+  padding: 1rem;
+  border: 1px solid var(--border, #d9dedb);
+  border-radius: 12px;
+  background: var(--warm, #f8f7f2);
+  min-width: 0;
+}
+.sales-desk h3 {
+  margin-top: 0;
+}
+.sales-desk dl {
+  display: grid;
+  gap: 0.2rem;
+}
+.sales-desk dt {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.sales-desk dd {
+  margin: 0 0 0.6rem;
+  overflow-wrap: anywhere;
+}
+.sales-desk label {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+}
+.sales-desk-controls label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  gap: 0.4rem;
+}
+.sales-desk select,
+.sales-desk textarea,
+.sales-desk button {
+  min-height: 44px;
+  max-width: 100%;
+  font: inherit;
+}
+.sales-desk select,
+.sales-desk textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #9caea6;
+  border-radius: 8px;
+  background: #fff;
+  color: inherit;
+}
+.sales-desk textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+.sales-desk button {
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--company-color, #24534a);
+  border-radius: 8px;
+  background: var(--company-color, #24534a);
+  color: #fff;
+  cursor: pointer;
+  white-space: normal;
+}
+.sales-desk button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.sales-desk fieldset {
+  margin: 1rem 0;
+  border: 1px solid var(--border, #d9dedb);
+  border-radius: 10px;
+  padding: 1rem;
+}
+.sales-desk fieldset label {
+  padding: 0.45rem 0;
+  min-height: 44px;
+}
+.sales-desk input[type='checkbox'] {
+  min-width: 20px;
+  height: 20px;
+  margin-top: 0.2rem;
+  accent-color: var(--company-color, #24534a);
+}
+.sales-desk details {
+  margin: 1rem 0;
+  overflow-wrap: anywhere;
+}
+.sales-desk summary {
+  min-height: 44px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.sales-desk :focus-visible {
+  outline: 3px solid var(--company-color, #24534a);
+  outline-offset: 3px;
+}
+.sales-desk-packet {
+  margin-top: 1rem;
+}
+.sales-desk-boundary {
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+.sales-desk [role='alert'] {
+  border-left: 4px solid #9b4426;
+  padding: 0.65rem;
+  background: #fff3e9;
+  color: #71341f;
+}
+@media (max-width: 700px) {
+  .sales-desk-grid,
+  .sales-desk-controls {
+    grid-template-columns: 1fr;
+  }
+  .sales-desk button {
+    width: 100%;
+  }
+  .sales-desk {
+    padding: 1rem;
+  }
+  .sales-desk fieldset {
+    padding: 0.75rem;
+  }
+}
