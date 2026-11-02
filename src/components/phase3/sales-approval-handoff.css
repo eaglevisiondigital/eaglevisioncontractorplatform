@@ -99,3 +99,26 @@
 .sales-scope-verification {
   font-weight: 600;
 }
+.sales-contract-preparation {
+  border-top: 1px solid #d9e1da;
+  margin-top: 24px;
+  padding-top: 16px;
+}
+.sales-contract-preparation fieldset {
+  min-width: 0;
+  border: 1px solid #d9e1da;
+  margin: 16px 0;
+  padding: 12px;
+}
+.sales-contract-preparation legend {
+  font-weight: 600;
+}
+.sales-contract-preparation h4,
+.sales-contract-preparation h5 {
+  font-size: 1.05rem;
+}
+.sales-contract-preparation > section {
+  border-left: 3px solid var(--company-color, #176b54);
+  margin-top: 20px;
+  padding-left: 16px;
+}

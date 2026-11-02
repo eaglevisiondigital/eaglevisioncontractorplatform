@@ -12,6 +12,7 @@ import {
   type SalesApprovalHandoff as Handoff,
 } from '../../lib/sales-approval-handoff';
 import './sales-approval-handoff.css';
+import { SalesContractPreparationPreview } from './SalesContractPreparation';
 
 /** Unmounted and default OFF. Only an explicitly composed local test may opt in. */
 export function SalesApprovalHandoff({
@@ -19,11 +20,13 @@ export function SalesApprovalHandoff({
   release,
   target,
   enabled = false,
+  preparationEnabled = false,
 }: {
   repo: Phase3Repository;
   release: ReleasePreview;
   target: SalesHandoffTarget;
   enabled?: boolean;
+  preparationEnabled?: boolean;
 }) {
   return enabled === true && repo.operations.sample ? (
     <ReadOnlyHandoff
@@ -31,6 +34,7 @@ export function SalesApprovalHandoff({
       repo={repo}
       release={release}
       target={target}
+      preparationEnabled={preparationEnabled}
     />
   ) : null;
 }
@@ -38,10 +42,12 @@ function ReadOnlyHandoff({
   repo,
   release,
   target,
+  preparationEnabled,
 }: {
   repo: Phase3Repository;
   release: ReleasePreview;
   target: SalesHandoffTarget;
+  preparationEnabled: boolean;
 }) {
   const [revision, reload] = useState(0);
   const [read, setRead] = useState<{
@@ -413,6 +419,17 @@ function ReadOnlyHandoff({
                     UNKNOWN result permits exact read-only inspection only;
                     never replace its source or replay an action.
                   </p>
+                  {retained.verification?.status !== 'unknown' && (
+                    <SalesContractPreparationPreview
+                      enabled={
+                        preparationEnabled && value.status === 'scope_matched'
+                      }
+                      repo={repo}
+                      release={release}
+                      target={target}
+                      reference={retained.reference}
+                    />
+                  )}
                 </section>
               )}
             </section>
