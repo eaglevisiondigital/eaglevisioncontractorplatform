@@ -175,3 +175,12 @@ it('rechecks company data after fixture initialization awaits', async () => {
   await expect(prepareOperatingSources(company, gate())).rejects.toThrow();
   expect(serializer).not.toHaveBeenCalled();
 });
+it('terminal descriptor admission never evaluates a replaced root gate getter', async () => {
+  const g = gate(),
+    s = await prepareOperatingSources(sampleCompanies[0], g),
+    capture = captureOperatingSources(s, g),
+    spy = vi.fn(() => g);
+  Object.defineProperty(s, 'gate', { get: spy, enumerable: true });
+  expect(capture.check).toThrow();
+  expect(spy).not.toHaveBeenCalled();
+});

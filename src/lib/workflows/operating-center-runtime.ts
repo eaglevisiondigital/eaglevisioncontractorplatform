@@ -147,9 +147,10 @@ export function captureOperatingSources(
   );
   const firstTarget = prototypeFields(entryPins[0].target, targetKeys);
   const actor_id = firstTarget.actor_id as string;
+  const operations = root.operations as Operations,
+    estimates = root.estimates as Phase3Repository,
+    property = root.property as PropertyRepository;
   const snapshot = () => {
-    admit(gate);
-    admit(sources.gate);
     const current = prototypeFields(sources, [
       'company',
       'operations',
@@ -161,13 +162,15 @@ export function captureOperatingSources(
     if (
       Object.keys(current).length !== 6 ||
       Object.keys(root).some((k) => current[k] !== root[k]) ||
-      dataSignature(approvedCompany(sources.company)) !== dataSignature(company)
+      dataSignature(approvedCompany(current.company)) !== dataSignature(company)
     )
       throw Error('Operating source container changed');
-    const ownList = Object.getOwnPropertyDescriptors(sources.entries);
+    admit(gate);
+    admit(current.gate as JourneyAdmission);
+    const ownList = Object.getOwnPropertyDescriptors(list);
     if (
-      Reflect.ownKeys(sources.entries).length !== entries.length + 1 ||
-      sources.entries.length !== entries.length ||
+      Reflect.ownKeys(list).length !== entries.length + 1 ||
+      list.length !== entries.length ||
       entries.some(
         (e, i) =>
           !Object.hasOwn(ownList[String(i)] ?? {}, 'value') ||
@@ -242,19 +245,19 @@ export function captureOperatingSources(
         );
       jobs.add(t.job_id as string);
       const target = t as unknown as PrototypeTarget;
-      const canonical = sources.estimates.readSyntheticPrototypeSources(target);
-      const crm = sources.operations.syntheticEstimateCrm(
+      const canonical = estimates.readSyntheticPrototypeSources(target);
+      const crm = operations.syntheticEstimateCrm(
         organization_id,
         target.customer_id,
         target.location_id,
       );
-      const lead = sources.operations.syntheticIntakeRequest(
+      const lead = operations.syntheticIntakeRequest(
         organization_id,
         target.customer_id,
         target.location_id,
         v.intake_request_id as string,
       );
-      const state = sources.property.read(organization_id);
+      const state = property.read(organization_id);
       if (
         !state.contexts.some(
           (c) =>
@@ -303,18 +306,28 @@ export function captureOperatingSources(
         issued: v.issued,
       };
     });
-    const members = sources.operations.syntheticMemberships(organization_id);
+    const members = operations.syntheticMemberships(organization_id);
     const value = dataSignature({
       selected,
       members,
-      property: sources.property.read(organization_id),
-      assignments: sources.estimates.syntheticJobAssignments(
-        organization_id,
-        actor_id,
-      ),
+      property: property.read(organization_id),
+      assignments: estimates.syntheticJobAssignments(organization_id, actor_id),
     });
+    const terminal = prototypeFields(sources, [
+      'company',
+      'operations',
+      'estimates',
+      'property',
+      'entries',
+      'gate',
+    ]);
+    if (
+      Object.keys(terminal).length !== 6 ||
+      Object.keys(root).some((k) => terminal[k] !== root[k])
+    )
+      throw Error('Operating source container changed');
     admit(gate);
-    admit(sources.gate);
+    admit(terminal.gate as JourneyAdmission);
     return value;
   };
   const pinned = snapshot();
