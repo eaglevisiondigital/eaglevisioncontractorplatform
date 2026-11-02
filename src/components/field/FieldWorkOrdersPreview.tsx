@@ -26,6 +26,17 @@ const CrewCapacityPreview = lazy(() =>
     default: m.CrewCapacityPreview,
   })),
 );
+const TechnicianDayBoard = lazy(() =>
+  import('./TechnicianDayBoard').then((m) => ({
+    default: m.TechnicianDayBoard,
+  })),
+);
+const dayBoardEnabled = fieldWorkOrdersEnabled({
+  development: import.meta.env.DEV,
+  flag: import.meta.env.VITE_TECHNICIAN_DAY_BOARD_PREVIEW,
+  hostname: window.location.hostname,
+  protocol: window.location.protocol,
+});
 const capacityEnabled = fieldWorkOrdersEnabled({
   development: import.meta.env.DEV,
   flag: import.meta.env.VITE_FIELD_CREW_CAPACITY_PREVIEW,
@@ -446,6 +457,19 @@ function CrewDay({
               )}
             </section>
           </div>
+          {dayBoardEnabled && (
+            <Suspense
+              fallback={<p role="status">Loading technician day board…</p>}
+            >
+              <TechnicianDayBoard
+                key={generation}
+                repo={repo}
+                model={model}
+                day={day}
+                onSource={(order) => void open(order)}
+              />
+            </Suspense>
+          )}
           {capacityEnabled && (
             <Suspense
               fallback={<p role="status">Loading crew-day capacity review…</p>}
