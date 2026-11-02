@@ -8,7 +8,8 @@
     "Separate draft PRs for sales, finance and field are not integrated into this source baseline.",
     "Historical Action B core connected PASS is retained; all new hosted lifecycle acceptance remains blocked.",
     "Cycle6 explicitly composes reviewed local candidates on draft PR38 for source-bound testing only. Original PRs remain unmerged; no hosted or release status is promoted.",
-    "Cycle7 adds default-OFF usable unsaved planning/cost forms and exact customer-safe service navigation on reviewed Cycle6 sources. Operational and release labels are unchanged."
+    "Cycle7 adds default-OFF usable unsaved planning/cost forms and exact customer-safe service navigation on reviewed Cycle6 sources. Operational and release labels are unchanged.",
+    "Cycle8 adds six default-OFF source-bound operating reviews over the same actual journey records. Weekly/source-CAS and consent-at-send remain non-operational; selected-job coverage is not whole-company completeness. Full local/hosted/release acceptance is unchanged."
   ],
   "features": [
     {
@@ -42,7 +43,7 @@
         },
         {
           "path": "SECURITY_MODEL.md",
-          "anchor": "# Security model \u00b7 Phase 2"
+          "anchor": "# Security model · Phase 2"
         }
       ],
       "tests": [
@@ -54,7 +55,7 @@
       "records": [
         {
           "path": "docs/ACTION_B_CONNECTED_RESULT.md",
-          "anchor": "# Propel \u00b7 Action B connected acceptance result"
+          "anchor": "# Propel · Action B connected acceptance result"
         }
       ],
       "ci": {
@@ -147,6 +148,10 @@
         {
           "path": "src/lib/workflows/sales-workflow.ts",
           "anchor": "export async function readSalesWorkflow"
+        },
+        {
+          "path": "src/lib/workflows/sales-desk.ts",
+          "anchor": "export async function readSalesDesk"
         }
       ],
       "tests": [
@@ -156,7 +161,11 @@
         },
         {
           "path": "tests/workflows/sales-workflow.test.ts",
-          "anchor": "actual lead \u2192 exact issued scope \u2192 contract preparation"
+          "anchor": "actual lead → exact issued scope → contract preparation"
+        },
+        {
+          "path": "tests/cycle8-sales-desk.test.ts",
+          "anchor": "prevents concurrent and subsequent duplicate preparation"
         }
       ],
       "records": [
@@ -166,11 +175,15 @@
         },
         {
           "path": "docs/ACTION_B_CONNECTED_RESULT.md",
-          "anchor": "# Propel \u00b7 Action B connected acceptance result"
+          "anchor": "# Propel · Action B connected acceptance result"
         },
         {
           "path": "docs/program/CYCLE6_INDEPENDENT_REVIEW.md",
           "anchor": "# Cycle 6 independent integration review"
+        },
+        {
+          "path": "docs/program/CYCLE8_SALES_DESK.md",
+          "anchor": "# Cycle 8 · booking and exact-scope staff review"
         }
       ],
       "ci": {
@@ -225,7 +238,7 @@
         },
         {
           "path": "tests/workflows/sales-workflow.test.ts",
-          "anchor": "actual lead \u2192 exact issued scope \u2192 contract preparation"
+          "anchor": "actual lead → exact issued scope → contract preparation"
         }
       ],
       "records": [
@@ -235,7 +248,7 @@
         },
         {
           "path": "docs/CUSTOMER_ESTIMATE_REVISIONS.md",
-          "anchor": "# Workstream 3B \u00b7 customer request review and estimate draft revision"
+          "anchor": "# Workstream 3B · customer request review and estimate draft revision"
         },
         {
           "path": "docs/program/CYCLE3_INTEGRATION_REVIEW.md",
@@ -307,7 +320,7 @@
       "records": [
         {
           "path": "docs/CUSTOMER_BROKER_INTEGRATION.md",
-          "anchor": "# Workstream 4B \u00b7 server broker and restricted database integration"
+          "anchor": "# Workstream 4B · server broker and restricted database integration"
         },
         {
           "path": "docs/CUSTOMER_BROKER_VALIDATION.json",
@@ -357,6 +370,10 @@
         {
           "path": "src/lib/workflows/sales-workflow.ts",
           "anchor": "export async function prepareSalesWorkflowContract"
+        },
+        {
+          "path": "src/lib/workflows/sales-desk.ts",
+          "anchor": "export async function readSalesDesk"
         }
       ],
       "tests": [
@@ -366,7 +383,11 @@
         },
         {
           "path": "tests/workflows/sales-workflow.test.ts",
-          "anchor": "actual lead \u2192 exact issued scope \u2192 contract preparation"
+          "anchor": "actual lead → exact issued scope → contract preparation"
+        },
+        {
+          "path": "tests/cycle8-sales-desk.test.ts",
+          "anchor": "prevents concurrent and subsequent duplicate preparation"
         }
       ],
       "records": [
@@ -401,6 +422,10 @@
         {
           "path": "docs/program/CYCLE6_INDEPENDENT_REVIEW.md",
           "anchor": "# Cycle 6 independent integration review"
+        },
+        {
+          "path": "docs/program/CYCLE8_SALES_DESK.md",
+          "anchor": "# Cycle 8 · booking and exact-scope staff review"
         }
       ],
       "ci": {
@@ -449,7 +474,7 @@
       "records": [
         {
           "path": "docs/PROPERTY_OPERATIONS_VALIDATION.md",
-          "anchor": "# Property operations and smart procurement \u00b7 local implementation"
+          "anchor": "# Property operations and smart procurement · local implementation"
         },
         {
           "path": "docs/MAINTENANCE_FOLLOW_UP_VALIDATION.json",
@@ -509,6 +534,10 @@
         {
           "path": "src/lib/workflows/booking-scheduling.ts",
           "anchor": "readBookingScheduling"
+        },
+        {
+          "path": "src/lib/workflows/weekly-crew.ts",
+          "anchor": "export async function readWeeklyCrew"
         }
       ],
       "tests": [
@@ -523,6 +552,10 @@
         {
           "path": "tests/cycle7-booking-scheduling.test.ts",
           "anchor": "readBookingScheduling"
+        },
+        {
+          "path": "tests/cycle8-weekly-crew.test.ts",
+          "anchor": "reviews canonical same-day proposal overlaps without claiming a booked slot"
         }
       ],
       "records": [
@@ -557,6 +590,10 @@
         {
           "path": "docs/program/CYCLE7_VALIDATION.md",
           "anchor": "# Cycle 7 practical usability validation"
+        },
+        {
+          "path": "docs/program/CYCLE8_WEEKLY_CREW.md",
+          "anchor": "# Cycle 8 · weekly crew scheduling review"
         }
       ],
       "ci": {
@@ -605,6 +642,10 @@
         {
           "path": "src/lib/workflows/job-review.ts",
           "anchor": "readJobReview"
+        },
+        {
+          "path": "src/lib/workflows/finance-desk.ts",
+          "anchor": "export async function readFinanceDesk"
         }
       ],
       "tests": [
@@ -619,6 +660,10 @@
         {
           "path": "tests/cycle7-job-review.test.ts",
           "anchor": "readJobReview"
+        },
+        {
+          "path": "tests/cycle8-finance-desk.test.ts",
+          "anchor": "rejects stale original live proposal changes across a real digest await"
         }
       ],
       "records": [
@@ -637,6 +682,10 @@
         {
           "path": "docs/program/CYCLE7_VALIDATION.md",
           "anchor": "# Cycle 7 practical usability validation"
+        },
+        {
+          "path": "docs/program/CYCLE8_FINANCE_DESK.md",
+          "anchor": "# Cycle 8 Finance operating review"
         }
       ],
       "ci": {
@@ -683,6 +732,10 @@
         {
           "path": "src/lib/workflows/job-review.ts",
           "anchor": "readJobReview"
+        },
+        {
+          "path": "src/lib/workflows/finance-desk.ts",
+          "anchor": "export async function readFinanceDesk"
         }
       ],
       "tests": [
@@ -697,6 +750,10 @@
         {
           "path": "tests/cycle7-job-review.test.ts",
           "anchor": "readJobReview"
+        },
+        {
+          "path": "tests/cycle8-finance-desk.test.ts",
+          "anchor": "rejects stale original live proposal changes across a real digest await"
         }
       ],
       "records": [
@@ -731,6 +788,10 @@
         {
           "path": "docs/program/CYCLE7_VALIDATION.md",
           "anchor": "# Cycle 7 practical usability validation"
+        },
+        {
+          "path": "docs/program/CYCLE8_FINANCE_DESK.md",
+          "anchor": "# Cycle 8 Finance operating review"
         }
       ],
       "ci": {
@@ -834,18 +895,26 @@
         {
           "path": "src/lib/workflows/customer-workflow.ts",
           "anchor": "export async function prepareCustomerWorkflowPack"
+        },
+        {
+          "path": "src/lib/workflows/completion-review.ts",
+          "anchor": "export async function readCompletionReview"
         }
       ],
       "tests": [
         {
           "path": "tests/workflows/customer-workflow.test.ts",
-          "anchor": "same-repository Field \u2192 customer Passport documentation"
+          "anchor": "same-repository Field → customer Passport documentation"
+        },
+        {
+          "path": "tests/cycle8-completion-review.test.ts",
+          "anchor": "replacing the customer model cannot reopen the same authoritative source claim"
         }
       ],
       "records": [
         {
           "path": "docs/PRODUCT_PROGRAM_2026.md",
-          "anchor": "# Propel Contractor Suite \u2014 integrated product program"
+          "anchor": "# Propel Contractor Suite — integrated product program"
         },
         {
           "path": "docs/program/CYCLE3_INTEGRATION_REVIEW.md",
@@ -870,6 +939,10 @@
         {
           "path": "docs/program/CYCLE6_INDEPENDENT_REVIEW.md",
           "anchor": "# Cycle 6 independent integration review"
+        },
+        {
+          "path": "docs/program/CYCLE8_COMPLETION_REVIEW.md",
+          "anchor": "# Cycle 8 · customer-safe completion documentation review"
         }
       ],
       "ci": {
@@ -910,12 +983,20 @@
         {
           "path": "src/lib/workflows/growth-workflow.ts",
           "anchor": "export async function readGrowthWorkflow"
+        },
+        {
+          "path": "src/lib/workflows/maintenance-desk.ts",
+          "anchor": "export async function readMaintenanceDesk"
         }
       ],
       "tests": [
         {
           "path": "tests/program-growth-workflow.test.ts",
           "anchor": "company %s connects actual journey published finding, weekly plan and blocked visit proposal without effects"
+        },
+        {
+          "path": "tests/cycle8-maintenance-desk.test.ts",
+          "anchor": "detected captured consent withdrawal invalidates exact historical preflight and keeps UNKNOWN"
         }
       ],
       "records": [
@@ -946,6 +1027,10 @@
         {
           "path": "docs/program/CYCLE6_INDEPENDENT_REVIEW.md",
           "anchor": "# Cycle 6 independent integration review"
+        },
+        {
+          "path": "docs/program/CYCLE8_MAINTENANCE_DESK.md",
+          "anchor": "# Cycle 8 · maintenance and renewal planning desk"
         }
       ],
       "ci": {
@@ -984,18 +1069,26 @@
         {
           "path": "src/lib/workflows/booking-scheduling.ts",
           "anchor": "readBookingScheduling"
+        },
+        {
+          "path": "src/lib/workflows/maintenance-desk.ts",
+          "anchor": "export async function readMaintenanceDesk"
         }
       ],
       "tests": [
         {
           "path": "tests/cycle7-booking-scheduling.test.ts",
           "anchor": "readBookingScheduling"
+        },
+        {
+          "path": "tests/cycle8-maintenance-desk.test.ts",
+          "anchor": "detected captured consent withdrawal invalidates exact historical preflight and keeps UNKNOWN"
         }
       ],
       "records": [
         {
           "path": "docs/PRODUCT_PROGRAM_2026.md",
-          "anchor": "# Propel Contractor Suite \u2014 integrated product program"
+          "anchor": "# Propel Contractor Suite — integrated product program"
         },
         {
           "path": "docs/program/CYCLE3_INTEGRATION_REVIEW.md",
@@ -1020,6 +1113,10 @@
         {
           "path": "docs/program/CYCLE7_VALIDATION.md",
           "anchor": "# Cycle 7 practical usability validation"
+        },
+        {
+          "path": "docs/program/CYCLE8_MAINTENANCE_DESK.md",
+          "anchor": "# Cycle 8 · maintenance and renewal planning desk"
         }
       ],
       "ci": {
@@ -1059,12 +1156,20 @@
         {
           "path": "src/lib/workflows/intelligence-workflow.ts",
           "anchor": "export async function prepareIntelligenceWorkflow"
+        },
+        {
+          "path": "src/lib/workflows/daily-operations.ts",
+          "anchor": "export async function readDailyOperations"
         }
       ],
       "tests": [
         {
           "path": "tests/cycle6-intelligence-workflow.test.ts",
           "anchor": "describe("
+        },
+        {
+          "path": "tests/cycle8-daily-operations.test.ts",
+          "anchor": "denies a changed supported Copilot status during final Daily hashing without consuming a dashboard claim"
         }
       ],
       "records": [
@@ -1083,6 +1188,10 @@
         {
           "path": "docs/program/CYCLE6_INDEPENDENT_REVIEW.md",
           "anchor": "# Cycle 6 independent integration review"
+        },
+        {
+          "path": "docs/program/CYCLE8_DAILY_OPERATIONS.md",
+          "anchor": "# Cycle 8 · Daily operating priorities"
         }
       ],
       "ci": {
@@ -1120,12 +1229,20 @@
         {
           "path": "server/property/supplier-connectors.ts",
           "anchor": "export const supplierConnectors"
+        },
+        {
+          "path": "src/lib/workflows/finance-desk.ts",
+          "anchor": "export async function readFinanceDesk"
         }
       ],
       "tests": [
         {
           "path": "tests/provider-webhooks.test.ts",
           "anchor": "uses NMI payment nonce dot raw-body, not the unrelated underwriting protocol"
+        },
+        {
+          "path": "tests/cycle8-finance-desk.test.ts",
+          "anchor": "rejects stale original live proposal changes across a real digest await"
         }
       ],
       "records": [
@@ -1135,7 +1252,7 @@
         },
         {
           "path": "docs/PROPERTY_OPERATIONS_VALIDATION.md",
-          "anchor": "# Property operations and smart procurement \u00b7 local implementation"
+          "anchor": "# Property operations and smart procurement · local implementation"
         },
         {
           "path": "docs/program/CYCLE5_INTEGRATION_REVIEW.md",
@@ -1144,6 +1261,10 @@
         {
           "path": "docs/program/CYCLE5_DELIVERY_INDEX.json",
           "anchor": "\"schema\": \"propel-cycle5-delivery-v1\""
+        },
+        {
+          "path": "docs/program/CYCLE8_FINANCE_DESK.md",
+          "anchor": "# Cycle 8 Finance operating review"
         }
       ],
       "ci": {
@@ -1336,7 +1457,7 @@
         },
         {
           "path": "docs/ACTION_B_CONNECTED_RESULT.md",
-          "anchor": "# Propel \u00b7 Action B connected acceptance result"
+          "anchor": "# Propel · Action B connected acceptance result"
         }
       ],
       "ci": {
@@ -1432,7 +1553,7 @@
       "records": [
         {
           "path": "docs/MATERIAL_IMPORT.md",
-          "anchor": "# Smart Material Import \u00b7 implementation and activation boundary"
+          "anchor": "# Smart Material Import · implementation and activation boundary"
         },
         {
           "path": "docs/PHASE3_VALIDATION.md",
@@ -1633,6 +1754,10 @@
         {
           "path": "scripts/feature-evidence.mjs",
           "anchor": "export function validateDesignContract"
+        },
+        {
+          "path": "scripts/check-cycle8-integrity.mjs",
+          "anchor": "Exact six-package Cycle8 contract required"
         }
       ],
       "tests": [
@@ -1643,6 +1768,10 @@
         {
           "path": "tests/design-system-contract.test.ts",
           "anchor": "binds exact existing design bytes and source tokens without claiming runtime acceptance"
+        },
+        {
+          "path": "tests/cycle8-integration.test.ts",
+          "anchor": "independent composition keeps company %i same exact issued source"
         }
       ],
       "records": [
@@ -1673,6 +1802,10 @@
         {
           "path": "docs/program/CYCLE5_DELIVERY_INDEX.json",
           "anchor": "\"schema\": \"propel-cycle5-delivery-v1\""
+        },
+        {
+          "path": "docs/program/CYCLE8_INTEGRATION_REVIEW.md",
+          "anchor": "# Cycle 8 independent combined source review"
         }
       ],
       "ci": {

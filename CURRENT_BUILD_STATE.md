@@ -1,5 +1,29 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: cycle eight · connected operating review packages · November 2
+
+Verified exact PR49 head `a20f11855388e7cf8283294a3775e1c86a2cc66e`: both
+Foundation41461037539(PR)/41461027121(push), dedicated integration and compatibility
+checks PASS. No successful check was restarted. Six additive local packages use
+separate worktrees and draft PRs on this exact baseline. Main coordinates source
+composition on `codex/program-cycle-eight`; original drafts remain unmerged.
+
+See [assignments](docs/program/CYCLE8_ASSIGNMENTS.md), exact delivery index and
+validation for final author SHAs, application/browser proof, independent review and
+current CI. Weekly crew/source-CAS review, canonical remaining-cost/invoice review,
+booking-to-scope staff handoff, safe completion documentation, consent-bound maintenance
+planning and daily source-linked priorities all retain existing authoritative engines.
+No assignment, synchronization, send, contract or financial authority is inferred.
+383 focused application cases,21 all-brand responsive cases,3 production-OFF cases
+and54 screenshots pass; independent source/application review is CLEAR. A finite
+forward privacy-test correction handles valid UUIDs without weakening leak checks.
+
+New UI remains behind existing default-OFF DEV/flag/HTTP-loopback admission and
+explicit same-tab synthetic preparation. Locked original experiences/artwork, all13
+historical migrations/customer14/4B/P1/four artifacts/approvals/2A–2F/billing, frozen
+Netlify/executor/recovery/NMI/MFA/Auth/provider/financial/hosted/production/deploy/merge
+gates persist. Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Latest: cycle seven · practical contractor review forms · November 2
 
 Continued from actual Cycle6 PRs38–45 without recreating prior packages. Independent

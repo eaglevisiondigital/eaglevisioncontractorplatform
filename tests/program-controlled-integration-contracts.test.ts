@@ -157,6 +157,124 @@ async function fixture(index = 0) {
   };
 }
 
+/** Independent privacy contract: identifiers are valid source evidence, not phone prefixes. */
+function expectCommunicationPrivacy(
+  value: unknown,
+  privateValues: readonly (string | null)[],
+) {
+  const keys: Record<string, readonly string[]> = {
+    '': [
+      'kind',
+      'mode',
+      'target',
+      'consentSourceIds',
+      'recordedPreference',
+      'currentConsentCoverage',
+      'purposeConsent',
+      'sender',
+      'suppression',
+      'verifiedRecipient',
+      'externalContactId',
+      'channelPreparation',
+      'existingPreparationRequirements',
+      'admission',
+      'genuineAuthentication',
+      'authority',
+      'reviewHash',
+    ],
+    target: ['organizationId', 'customerId', 'propertyId', 'channel'],
+    authority: [
+      'externalWrite',
+      'financialExecution',
+      'calendarWrite',
+      'dispatch',
+      'communicate',
+      'hosted',
+    ],
+  };
+  const uuid = /^[a-f0-9]{8}-(?:[a-f0-9]{4}-){3}[a-f0-9]{12}$/i;
+  function visit(node: unknown, path: string) {
+    if (Array.isArray(node)) {
+      expect(['consentSourceIds', 'existingPreparationRequirements']).toContain(
+        path,
+      );
+      expect(Reflect.ownKeys(node).sort()).toEqual(
+        [...node.keys()].map(String).concat('length').sort(),
+      );
+      node.forEach((item) => {
+        expect(typeof item).toBe('string');
+        if (path === 'consentSourceIds') expect(item).toMatch(uuid);
+        else
+          expect([
+            'customerEmail',
+            'contactVerified',
+            'consent',
+            'suppressed',
+            'profile',
+          ]).toContain(item);
+        visit(item, `${path}[]`);
+      });
+      return;
+    }
+    if (node !== null && typeof node === 'object') {
+      expect(Object.getPrototypeOf(node)).toBe(Object.prototype);
+      expect(Object.hasOwn(keys, path)).toBe(true);
+      const descriptors = Object.getOwnPropertyDescriptors(node);
+      expect(Reflect.ownKeys(node).sort()).toEqual([...keys[path]].sort());
+      for (const [key, descriptor] of Object.entries(descriptors)) {
+        expect(key).not.toMatch(/recorded_by|customer_notes/);
+        expect(Object.hasOwn(descriptor, 'value')).toBe(true);
+        visit(descriptor.value, path ? `${path}.${key}` : key);
+      }
+      return;
+    }
+    expect(node === null || ['string', 'boolean'].includes(typeof node)).toBe(
+      true,
+    );
+    if (typeof node === 'string') {
+      if (
+        [
+          'consentSourceIds[]',
+          'target.customerId',
+          'target.propertyId',
+        ].includes(path)
+      ) {
+        // Exact source-ID assertions accompany this shape contract. A UUID may
+        // legitimately contain even a complete fixture phone, not merely its prefix.
+        expect(node).toMatch(uuid);
+        return;
+      }
+      for (const secret of privateValues.filter(
+        (v): v is string => typeof v === 'string' && v.length > 0,
+      ))
+        expect(node).not.toContain(secret);
+    }
+  }
+  visit(value, '');
+}
+
+async function actualCommunicationPrivateValues(
+  f: Awaited<ReturnType<typeof fixture>>,
+) {
+  const customers = await f.operations.listCustomers(f.org, '', '', 0);
+  const customer = customers.rows.find((row) => row.id === f.target.customerId);
+  expect(customer).toBeDefined();
+  const history = await f.operations.customerHistory(
+    f.org,
+    f.target.customerId,
+  );
+  return {
+    customer: customer!,
+    values: [
+      customer!.display_name,
+      customer!.email,
+      customer!.phone,
+      ...history.notes.map((note) => note.body),
+      ...history.consents.map((consent) => consent.recorded_by),
+    ],
+  };
+}
+
 describe('controlled existing-source accounting mapping', () => {
   it.each([0, 1, 2])(
     'maps the actual verified local financial flow for company %i with exact capture/refund identity and no effects',
@@ -601,6 +719,7 @@ describe('actual consent-to-preparation requirement mapping, never sending', () 
         write = vi.spyOn(f.operations, 'recordConsent');
       const result = await f.communicationReview();
       expect(result.consentSourceIds).toEqual([before.consents[0].id]);
+      expect(result.target).toEqual(f.communication);
       expect(result.recordedPreference).toBe('RECORDED_ALLOWANCE_ONLY');
       expect(result).toMatchObject({
         admission: 'NO_GO',
@@ -620,14 +739,91 @@ describe('actual consent-to-preparation requirement mapping, never sending', () 
           'profile',
         ]),
       );
-      expect(JSON.stringify(result)).not.toMatch(
-        /jordan\+|@example|555-|recorded_by|customer_notes/,
-      );
+      const privateFields = await actualCommunicationPrivateValues(f);
+      expectCommunicationPrivacy(result, privateFields.values);
       expect(write).not.toHaveBeenCalled();
       expect(await reconcileControlledIntegrationReview(result)).toEqual({
         status: 'UNKNOWN',
         replacement: null,
       });
+    },
+  );
+  it.each([
+    '32ec6f10-1082-4555-925d-35253eeaa547',
+    '00000555-0100-4555-925d-35253eeaa547',
+  ])(
+    'retains valid source UUID %s while excluding exact actual private values from non-ID fields',
+    async (consentId) => {
+      const f = await fixture(2);
+      await f.operations.recordConsent(f.org, f.target.customerId, true, false);
+      const history = f.operations.customerHistory.bind(f.operations);
+      vi.spyOn(f.operations, 'customerHistory').mockImplementation(
+        async (...args) => {
+          const actual = await history(...args);
+          return {
+            ...actual,
+            consents: actual.consents.map((row, index) =>
+              index === 0 ? { ...row, id: consentId } : row,
+            ),
+          };
+        },
+      );
+      const privateFields = await actualCommunicationPrivateValues(f),
+        result = await f.communicationReview();
+      expect(result.consentSourceIds).toEqual([consentId]);
+      expect(result.target).toEqual(f.communication);
+      expect(JSON.stringify(result)).toContain('555-'); // Valid UUID evidence must not be removed to satisfy a heuristic.
+      if (consentId.startsWith('0000'))
+        expect(consentId).toContain(privateFields.customer.phone!);
+      expectCommunicationPrivacy(result, privateFields.values);
+      expect(result.verifiedRecipient).toBeNull();
+    },
+  );
+  it.each([
+    'root_recorded_by',
+    'target_customer_notes',
+    'authority_recorded_by',
+    'array_customer_notes',
+    'phone_value',
+    'email_value',
+  ] as const)(
+    'privacy contract rejects injected %s instead of masking legitimate identifiers',
+    async (kind) => {
+      const f = await fixture();
+      await f.operations.recordConsent(f.org, f.target.customerId, true, false);
+      const privateFields = await actualCommunicationPrivateValues(f),
+        result = await f.communicationReview();
+      expectCommunicationPrivacy(result, privateFields.values);
+      const injected = structuredClone(result);
+      if (kind === 'root_recorded_by')
+        Object.assign(injected, { recorded_by: f.actor });
+      if (kind === 'target_customer_notes')
+        Object.assign(injected.target, {
+          customer_notes: 'Private note injection',
+        });
+      if (kind === 'authority_recorded_by')
+        Object.assign(injected.authority, { recorded_by: f.actor });
+      if (kind === 'array_customer_notes')
+        Object.assign(injected, {
+          consentSourceIds: [
+            { customer_notes: 'Private nested array injection' },
+          ],
+        });
+      if (kind === 'phone_value') {
+        expect(privateFields.customer.phone).toBeTruthy();
+        Object.assign(injected.target, {
+          organizationId: `Private phone ${privateFields.customer.phone}`,
+        });
+      }
+      if (kind === 'email_value') {
+        expect(privateFields.customer.email).toBeTruthy();
+        Object.assign(injected.target, {
+          organizationId: `Private email ${privateFields.customer.email}`,
+        });
+      }
+      expect(() =>
+        expectCommunicationPrivacy(injected, privateFields.values),
+      ).toThrow();
     },
   );
   it('preserves separate recorded SMS allowance without resolving or exporting a telephone recipient', async () => {

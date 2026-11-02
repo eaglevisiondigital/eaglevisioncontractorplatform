@@ -1,0 +1,106 @@
+.finance-desk {
+  min-width: 0;
+  color: #20352f;
+}
+.finance-desk .finance-desk-heading {
+  display: block;
+  margin: 0 0 1rem;
+}
+.finance-desk .finance-desk-heading h2 {
+  margin: 0.4rem 0 0.75rem;
+  line-height: 1.3;
+}
+.finance-desk p {
+  line-height: 1.55;
+}
+.finance-desk .finance-desk-eyebrow {
+  color: var(--company-color, #00543e);
+  font-weight: 700;
+}
+.finance-desk .finance-desk-grid,
+.finance-desk .finance-desk-inputs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.finance-desk .finance-desk-card {
+  min-width: 0;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid #d9e1da;
+  border-left: 4px solid var(--company-color, #00543e);
+  border-radius: 10px;
+  background: #f5f5ef;
+}
+.finance-desk fieldset {
+  min-width: 0;
+  margin-inline: 0;
+}
+.finance-desk label {
+  display: block;
+  margin: 0.65rem 0 0.35rem;
+  font-weight: 650;
+}
+.finance-desk legend {
+  font-weight: 700;
+}
+.finance-desk input:not([type='checkbox']) {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  min-height: 44px;
+  padding: 0.6rem;
+  border: 1px solid #82958a;
+  border-radius: 6px;
+  background: white;
+  color: #20352f;
+  font: inherit;
+}
+.finance-desk .finance-desk-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  min-height: 44px;
+  line-height: 1.5;
+}
+.finance-desk input[type='checkbox'] {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  margin-top: 0.1rem;
+  accent-color: var(--company-color, #00543e);
+}
+.finance-desk button {
+  min-height: 44px;
+  white-space: normal;
+}
+.finance-desk summary {
+  display: list-item;
+  min-height: 44px;
+  box-sizing: border-box;
+  padding-block: 0.6rem;
+  cursor: pointer;
+}
+.finance-desk dt {
+  color: #3e594f;
+}
+.finance-desk dd {
+  margin: 0.25rem 0 1rem;
+  font-weight: 650;
+}
+.finance-desk p,
+.finance-desk dd,
+.finance-desk code {
+  overflow-wrap: anywhere;
+}
+.finance-desk :focus-visible {
+  outline: 3px solid var(--company-color, #00543e);
+  outline-offset: 4px;
+}
+@media (max-width: 800px) {
+  .finance-desk .finance-desk-grid,
+  .finance-desk .finance-desk-inputs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

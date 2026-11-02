@@ -1,0 +1,121 @@
+.completion-review {
+  border: 1px solid var(--border, #d9dedb);
+  border-radius: 18px;
+  padding: clamp(1rem, 3vw, 1.75rem);
+  background: var(--surface, #fff);
+  color: var(--ink, #172c28);
+  font-size: 1rem;
+  line-height: 1.55;
+  min-width: 0;
+}
+.completion-review * {
+  box-sizing: border-box;
+}
+.completion-review h2 {
+  margin: 0.25rem 0 0.5rem;
+}
+.completion-review h3 {
+  margin-top: 0;
+}
+.completion-review-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.completion-review-grid > section,
+.completion-review-detail,
+.completion-review-packet,
+.completion-review-gaps {
+  background: var(--warm, #f8f7f2);
+  border: 1px solid var(--border, #d9dedb);
+  padding: 1rem;
+  border-radius: 12px;
+  min-width: 0;
+  margin: 1rem 0;
+}
+.completion-review-grid > section {
+  margin: 0;
+}
+.completion-review dl {
+  display: grid;
+  gap: 0.2rem;
+}
+.completion-review dt {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.completion-review dd {
+  margin: 0 0 0.6rem;
+  overflow-wrap: anywhere;
+}
+.completion-review li {
+  overflow-wrap: anywhere;
+}
+.completion-review button {
+  font: inherit;
+  min-height: 44px;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--company-color, #24534a);
+  border-radius: 8px;
+  background: var(--company-color, #24534a);
+  color: #fff;
+  cursor: pointer;
+  max-width: 100%;
+  white-space: normal;
+}
+.completion-review button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.completion-review fieldset {
+  margin: 1rem 0;
+  border: 1px solid var(--border, #d9dedb);
+  border-radius: 10px;
+  padding: 1rem;
+}
+.completion-review label {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+  min-height: 44px;
+  padding: 0.45rem 0;
+}
+.completion-review input[type='checkbox'] {
+  min-width: 20px;
+  height: 20px;
+  margin-top: 0.2rem;
+  accent-color: var(--company-color, #24534a);
+}
+.completion-review :focus-visible {
+  outline: 3px solid var(--company-color, #24534a);
+  outline-offset: 3px;
+}
+.completion-review-boundary,
+.completion-review-heading > p {
+  color: var(--muted, #52665f);
+}
+.completion-review-boundary {
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+.completion-review [role='alert'] {
+  border-left: 4px solid #9b4426;
+  padding: 0.65rem;
+  background: #fff3e9;
+  color: #71341f;
+}
+@media (max-width: 700px) {
+  .completion-review-grid {
+    grid-template-columns: 1fr;
+  }
+  .completion-review button {
+    width: 100%;
+  }
+  .completion-review {
+    padding: 1rem;
+  }
+  .completion-review fieldset {
+    padding: 0.75rem;
+  }
+}

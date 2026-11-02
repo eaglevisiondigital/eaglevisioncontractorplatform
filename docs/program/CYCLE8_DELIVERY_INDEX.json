@@ -1,0 +1,256 @@
+{
+  "schema": "propel-cycle8-delivery-v1",
+  "coordination_branch": "codex/program-cycle-eight",
+  "parent_commit": "a20f11855388e7cf8283294a3775e1c86a2cc66e",
+  "baseline_ci": "docs/program/CYCLE8_BASELINE_CI.json",
+  "independent_review": "docs/program/CYCLE8_INTEGRATION_REVIEW.md",
+  "packages": [
+    {
+      "module": "weekly-crew",
+      "component": "WeeklyCrew",
+      "doc": "CYCLE8_WEEKLY_CREW",
+      "package": "Weekly crew scheduling board",
+      "owner": "/root/cycle5_operations",
+      "branch": "codex/cycle8-weekly-crew",
+      "parent_commit": "a20f11855388e7cf8283294a3775e1c86a2cc66e",
+      "head_commit": "fc08296aaf4fd18e5f9fe147d7e06a01f6619326",
+      "draft_pr": 53,
+      "focused_new_tests": 40,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/weekly-crew.ts",
+          "sha256": "65243b14bcfc925bf7c58741c6e9bd5462e4d1915cf1580f4d9b5faebf4a2e91"
+        },
+        {
+          "path": "src/components/workflows/WeeklyCrew.tsx",
+          "sha256": "6e0ce8319dd3a0c4ccd5dac3e5c263a90fb546b65a76f7ea2e3cc31836f87e3b"
+        },
+        {
+          "path": "src/components/workflows/weekly-crew.css",
+          "sha256": "80d6b1c477ac8f63c89023fa5f06a87229212937736deafe2a0efee81bc39911"
+        },
+        {
+          "path": "tests/cycle8-weekly-crew.test.ts",
+          "sha256": "aeef0210dce4257f463af39ca4e58b149ef6549655054026061ab18d7c326fab"
+        },
+        {
+          "path": "docs/program/CYCLE8_WEEKLY_CREW.md",
+          "sha256": "f7cd1842990febda785655aeeaba6315080076c73c8e49d906f49cf9d3f33655"
+        }
+      ]
+    },
+    {
+      "module": "finance-desk",
+      "component": "FinanceDesk",
+      "doc": "CYCLE8_FINANCE_DESK",
+      "package": "Finance operating review",
+      "owner": "/root/cycle5_profit_guard",
+      "branch": "codex/cycle8-finance-desk",
+      "head_commit": "d146a213b63390db17a946504c52d933a3475306",
+      "draft_pr": 52,
+      "focused_new_tests": 33,
+      "parent_commit": "a20f11855388e7cf8283294a3775e1c86a2cc66e",
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/finance-desk.ts",
+          "sha256": "14b0776afc2c0f562c729c3ebd8232ca28fe2c9c652692ee9764b4c47056c7c6"
+        },
+        {
+          "path": "src/components/workflows/FinanceDesk.tsx",
+          "sha256": "9c62ded375e633b494053341435816367caaf499acdc918ea527388f24c83318"
+        },
+        {
+          "path": "src/components/workflows/finance-desk.css",
+          "sha256": "059e45d1e8193c4252aaef7197d40cae449e23af0e687e9985d4e3c988f4c667"
+        },
+        {
+          "path": "tests/cycle8-finance-desk.test.ts",
+          "sha256": "63eb12fe516fee01e97abdb97ec5c7184155ff546492221f85716f764472d116"
+        },
+        {
+          "path": "docs/program/CYCLE8_FINANCE_DESK.md",
+          "sha256": "d3f56e533028b66cd8fd96dca63c502f05669801fc088affc394cdc4d9607593"
+        }
+      ]
+    },
+    {
+      "module": "sales-desk",
+      "component": "SalesDesk",
+      "doc": "CYCLE8_SALES_DESK",
+      "package": "Sales booking-to-scope review",
+      "owner": "/root/cycle8_sales_customer",
+      "branch": "codex/cycle8-sales-desk",
+      "head_commit": "5d441e50e63eeefe7407256041a8ff792ddbcf5f",
+      "draft_pr": 50,
+      "focused_new_tests": 34,
+      "parent_commit": "a20f11855388e7cf8283294a3775e1c86a2cc66e",
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/sales-desk.ts",
+          "sha256": "2fc10612d72c4cf5060096bcce5b8191f52e4a575d760e15fbf0a8749ee2157c"
+        },
+        {
+          "path": "src/components/workflows/SalesDesk.tsx",
+          "sha256": "ebf3f63d80595d61043fa15675952465291374fb191b86bf31142d4530327bf3"
+        },
+        {
+          "path": "src/components/workflows/sales-desk.css",
+          "sha256": "7b1558abd49556a46f667aee14d7bbe4b205676d86a3e27dbb67a74161b8c755"
+        },
+        {
+          "path": "tests/cycle8-sales-desk.test.ts",
+          "sha256": "721f08b2d41976209d7e6b31535c10863ea35f339c0f52d6f7caef7f874216d2"
+        },
+        {
+          "path": "docs/program/CYCLE8_SALES_DESK.md",
+          "sha256": "3697af0dedb8eaf17a9e2755938247beb9e57ce4f09515140b5af6616c1bb3c9"
+        }
+      ]
+    },
+    {
+      "module": "completion-review",
+      "component": "CompletionReview",
+      "doc": "CYCLE8_COMPLETION_REVIEW",
+      "package": "Customer completion evidence review",
+      "owner": "/root/cycle8_sales_customer",
+      "branch": "codex/cycle8-completion-review",
+      "head_commit": "2156c29293481ef66409cdba4af2141c29fc855f",
+      "draft_pr": 51,
+      "focused_new_tests": 32,
+      "parent_commit": "a20f11855388e7cf8283294a3775e1c86a2cc66e",
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/completion-review.ts",
+          "sha256": "d58469a08c457f1b71a4be55f72a5b3546c31d88aa490ee631fcbade9e8edd1f"
+        },
+        {
+          "path": "src/components/workflows/CompletionReview.tsx",
+          "sha256": "d1b229c15bb773227412289aa49e5749a0c27c0d97d4a0e56363e03ffb07fb17"
+        },
+        {
+          "path": "src/components/workflows/completion-review.css",
+          "sha256": "99f15216eb098c0697583eb06405710632da52cf30334d0113d38b1586ae2543"
+        },
+        {
+          "path": "tests/cycle8-completion-review.test.ts",
+          "sha256": "ee034c869baa0aaf2b525cfc102cf0bbcf6dac7177a236e1aaedae8979db7c8c"
+        },
+        {
+          "path": "docs/program/CYCLE8_COMPLETION_REVIEW.md",
+          "sha256": "55685fd3efa4af4986eb86b4d63cd0cf40efc7bb115a8d9d5dfaa12ec303daaf"
+        }
+      ],
+      "tested_code_commit": "4054a2f27ed40221eb0e9cdc5fc970500610fa29",
+      "metadata_only_correction": "Only package documentation corrected the actual32new/57related test count; business and tests byte-identical."
+    },
+    {
+      "module": "maintenance-desk",
+      "component": "MaintenanceDesk",
+      "doc": "CYCLE8_MAINTENANCE_DESK",
+      "package": "Maintenance and renewal planning",
+      "owner": "/root/cycle5_operations",
+      "branch": "codex/cycle8-maintenance-desk",
+      "parent_commit": "a20f11855388e7cf8283294a3775e1c86a2cc66e",
+      "head_commit": "d220ea766ca875b0247bc5148a25045ddc9453b3",
+      "draft_pr": 55,
+      "focused_new_tests": 51,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/maintenance-desk.ts",
+          "sha256": "6abd3329a06d0a015c2b9143f31855ce52da20671e4d872606fd843633aa1b71"
+        },
+        {
+          "path": "src/components/workflows/MaintenanceDesk.tsx",
+          "sha256": "0ec5c400c775aea01aae894cbea12c1f0f50272bd398691ae47dd8e58ef34b13"
+        },
+        {
+          "path": "src/components/workflows/maintenance-desk.css",
+          "sha256": "9aa0b57fe5fac4700f4184fc06e08a50f4d3b9ea947177dbceafd28ec17c453c"
+        },
+        {
+          "path": "tests/cycle8-maintenance-desk.test.ts",
+          "sha256": "19f40fa2a5384663862d627a60bcba0c9eed638074a0436666f357fc727ca959"
+        },
+        {
+          "path": "docs/program/CYCLE8_MAINTENANCE_DESK.md",
+          "sha256": "2e8b46a2e84e4a5f668235e0999f110a16eb2537e2afbd69ffeaaf99829bb776"
+        }
+      ]
+    },
+    {
+      "module": "daily-operations",
+      "component": "DailyOperations",
+      "doc": "CYCLE8_DAILY_OPERATIONS",
+      "package": "Daily operating priorities",
+      "owner": "/root/cycle5_profit_guard",
+      "branch": "codex/cycle8-daily-operations",
+      "parent_commit": "a20f11855388e7cf8283294a3775e1c86a2cc66e",
+      "head_commit": "319e20affad7863794ee3b013f89a96faede720f",
+      "draft_pr": 54,
+      "focused_new_tests": 33,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/daily-operations.ts",
+          "sha256": "295b8bf4d5bd0481d64bd86fce88ce0a508d878c9763a30cd675f8397778573b"
+        },
+        {
+          "path": "src/components/workflows/DailyOperations.tsx",
+          "sha256": "02a74433cab16f41f4b5221eafe40182b465d748691e1e1d2c909f7a68a0e580"
+        },
+        {
+          "path": "src/components/workflows/daily-operations.css",
+          "sha256": "fbbee44c324354e58dd94f45d11823b7d99f472f2729604db8cc9f2ecc6a6a72"
+        },
+        {
+          "path": "tests/cycle8-daily-operations.test.ts",
+          "sha256": "d61a3d859bac5fca75476049b5cf11423d66488fa7c40973373a2c2fdec03eff"
+        },
+        {
+          "path": "docs/program/CYCLE8_DAILY_OPERATIONS.md",
+          "sha256": "bb2e1565d5149d035fd586addbefad1992614c38c1570ccf4996bdc0222708ba"
+        }
+      ]
+    }
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "limits": [
+    "Explicit exact-source local composition; original PRs remain unmerged.",
+    "Selected job/property evidence is not whole-company or complete history.",
+    "Proposals, source-CAS comparisons and consent preflight confer no dispatch/sync/send/financial authority.",
+    "Same-tab memory and hashes are not operational authentication or durable custody."
+  ],
+  "review_commit": "f62cbeeeb8e0d9b4de4d354a3327278d4a6d75dc",
+  "combined_evidence": {
+    "application_cases": 383,
+    "author_new_cases": 223,
+    "independent_new_cases": 21,
+    "retained_independent_cases": 8,
+    "source_inventory_cases": 73,
+    "browser_cases": 21,
+    "production_off_cases": 3,
+    "screenshots": 54,
+    "protected_public_files": 128,
+    "locked_design_files": 5,
+    "source_bindings": 13,
+    "compatibility_cases": 58
+  },
+  "compatibility_fixes": [
+    {
+      "path": "tests/program-controlled-integration-contracts.test.ts",
+      "base_commit": "a20f11855388e7cf8283294a3775e1c86a2cc66e",
+      "base_sha256": "eec8f1212730af12843533792a6c1d99016da83cf49b7d85771088ae5acb3bf0",
+      "commit": "b2a2ba3d5bd289bdfd1ef8d30e8d16e4e0ccd030",
+      "sha256": "b0293bcfbdb63145b8b9d0bb1e528c8f60813ce48e94930cedc44c848b1b3b3f",
+      "purpose": "Forward test-only correction for deterministic UUID/PII-heuristic false positive; original C5 index remains historical. No product source or protected hash change.",
+      "tests": 58,
+      "delivery": "Exact local author commit composed into Main coordination draft; no separate remote product module."
+    }
+  ],
+  "review_test_commit": "b46f422da1f9f61f551a37ae8411c49c7d4c23d6"
+}

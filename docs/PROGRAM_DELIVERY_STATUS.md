@@ -1,5 +1,78 @@
 # Product program delivery status
 
+## Cycle eight · six connected operating reviews · November 2
+
+Main coordinates `codex/program-cycle-eight`, stacked on exact successful PR49
+`a20f11855388e7cf8283294a3775e1c86a2cc66e`. Both Foundation baseline runs and all16
+observed baseline checks passed; none was restarted. Six separate author drafts
+remain unmerged. [Exact source/hash index](program/CYCLE8_DELIVERY_INDEX.json),
+[baseline CI](program/CYCLE8_BASELINE_CI.json), [independent review](program/CYCLE8_INTEGRATION_REVIEW.md),
+[actual preview/testing](program/CYCLE8_VALIDATION.md) and current CI snapshot retain
+bounded evidence. Main's final pushed SHA/current coordination PR is reported in GitHub.
+
+| Actual implementation agent | Branch                         | Draft PR                                                                          | Exact head                                 | New cases |
+| --------------------------- | ------------------------------ | --------------------------------------------------------------------------------- | ------------------------------------------ | --------- |
+| /root/cycle8_sales_customer | codex/cycle8-sales-desk        | [50](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/50) | `5d441e50e63eeefe7407256041a8ff792ddbcf5f` | 34 PASS   |
+| /root/cycle8_sales_customer | codex/cycle8-completion-review | [51](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/51) | `2156c29293481ef66409cdba4af2141c29fc855f` | 32 PASS   |
+| /root/cycle5_profit_guard   | codex/cycle8-finance-desk      | [52](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/52) | `d146a213b63390db17a946504c52d933a3475306` | 33 PASS   |
+| /root/cycle5_operations     | codex/cycle8-weekly-crew       | [53](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/53) | `fc08296aaf4fd18e5f9fe147d7e06a01f6619326` | 40 PASS   |
+| /root/cycle5_profit_guard   | codex/cycle8-daily-operations  | [54](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/54) | `319e20affad7863794ee3b013f89a96faede720f` | 33 PASS   |
+| /root/cycle5_operations     | codex/cycle8-maintenance-desk  | [55](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/55) | `d220ea766ca875b0247bc5148a25045ddc9453b3` | 51 PASS   |
+
+Three actual implementation agents worked concurrently in bounded waves, each with
+a separate worktree/branch for its second package. `/root/cycle6_integration_review`
+then used the free slot for independent combined probes and source/security review.
+Main owns shared contracts/design, explicit mounts, actual browser checks, CI/tooling
+and registers. All three authors and the independent reviewer have completed their bounded turns;
+Main is finishing publication and exact-head CI reporting. No persistent background agent exists.
+
+Working additions: seven-day exact crew/visit/time evidence and unsaved proposal/CAS
+comparison; canonical remaining-cost/margin/invoice/accounting/procurement review;
+recorded booking-to-issued-scope/local-receipt staff preparation; customer-safe scope
+versus report/ProofOfWork documentation; editable recurring opportunities and fail-closed
+consent preflight; deterministic daily source priorities linked to existing workflows
+and retained Copilot/Voice/trade metadata. All reuse actual shared sources, not copies
+of business truth. Selected-job/property coverage is explicit, not a complete company
+schedule, history or profitability view. No fresh model/provider/telephone execution.
+
+**383 distinct focused application cases PASS** across ten files:223 author cases,
+21 new independent probes,8 retained C7 integration cases,73 source/inventory cases
+and58 focused compatibility/privacy cases.
+The separate reviewer also passes269 selected cases including25 retained independent
+probes; these overlap the383 and are not additive. **21 real browser cases PASS**
+(all three brands/three viewports plus context-return cases), **3 production-OFF PASS**,
+zero axe violations, no page overflow/external requests, correct palettes,44px buttons,
+exact focus/navigation, empty states and explicit confirmation. **54 real screenshots**
+remain ignored locally and are retained by bounded CI artifacts. Main visually reviewed
+all six panels with desktop/tablet/mobile and all three palettes represented.
+
+Strict types, lint, full format, build, generated/proposal/migration checks and integrity
+preserve128 protected hashes,5 locked CSS/artwork files,13 bindings,53 prior owned paths
+and30 exact new author paths. Source register counts now come from actual runner JSON;
+`check-cycle8-results.mjs` prevents reported per-suite counts from drifting. Customer51's
+last commit corrects documentation only; its business/test bytes match reviewed4054a2f.
+
+Current exact-head CI belongs in CYCLE8_CI_SNAPSHOT.json and the live GitHub runs, never
+inferred from these local results. Finance's PR Passport variant hit a verified10-minute
+dependency-install timeout; the same-SHA push Passport passed, so no rerun/budget change.
+A separate Finance Foundation push failure was a reproducible privacy-test false
+positive: a legal consent UUID containing4555- matched a whole-JSON555- heuristic.
+The exact-head PR Foundation passed. Main's explicit forward test-only correction
+uses structural allowlists, exact private values and adversarial regressions; no
+product privacy rule, protected hash or successful check was weakened/restarted.
+
+Source fences now cover live offer/receipt selectors and concurrent existing Copilot
+preparation. Consent has no atomic current reader: preflight is UNKNOWN/BLOCKED with
+null current reference, recipient/provider request and send false; a matched historical
+capture never becomes current permission. No source/test/lock was weakened.
+
+All13/customer14/original4B/P1/four artifacts/approvals/2A–2F/billing/Netlify/archive/
+executor/recovery/NMI/MFA/Auth/private credentials/provider/financial/communication/
+hosted/production/deployment/merge gates remain unchanged. Release1.0 NOT READY /
+NOT AUTHORIZED. Next bounded local package: multi-job operating selection over existing
+CRM/job sources, with independent current-source admission for each row; retain atomic
+crew assignment, offline synchronization and consent-at-send as separate operational gates.
+
 ## Cycle seven · practical contractor usability · November 2
 
 Main draft [PR49](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/49),

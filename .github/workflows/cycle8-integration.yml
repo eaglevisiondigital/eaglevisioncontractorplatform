@@ -1,0 +1,49 @@
+name: Cycle 8 connected operating reviews
+on:
+  push:
+    branches: ['codex/program-cycle-eight']
+  pull_request:
+    paths:
+      - 'src/components/workflows/**'
+      - 'src/lib/workflows/**'
+      - 'tests/cycle8*'
+      - 'tests/program-controlled-integration-contracts.test.ts'
+      - 'tests/program/*cycle8*'
+      - 'scripts/check-cycle8-integrity.mjs'
+      - 'scripts/check-cycle8-results.mjs'
+      - 'docs/program/CYCLE8_DELIVERY_INDEX.json'
+      - '.github/workflows/cycle8-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle8-integration-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  bounded-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node scripts/check-cycle8-integrity.mjs
+      - run: npx vitest run tests/cycle8*.test.ts tests/cycle7-integration.test.ts tests/program-feature-evidence.test.ts tests/program-controlled-integration-contracts.test.ts --reporter=json --outputFile=artifacts/cycle8/application-results.json
+      - run: node scripts/check-cycle8-results.mjs
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test -c tests/program/playwright.cycle8.config.ts --workers=2
+      - run: npx playwright test -c tests/program/playwright.cycle6-off.config.ts --workers=2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle8-operating-review-evidence
+          path: |
+            artifacts/cycle8/*.png
+            artifacts/cycle8/application-results.json
+            test-results/
+          retention-days: 7

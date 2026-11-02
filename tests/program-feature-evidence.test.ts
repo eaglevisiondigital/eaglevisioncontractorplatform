@@ -215,6 +215,29 @@ it('keeps shared review ownership explicit before ambiguous customer, comparison
   );
   expect(sourceOwner('server/property/supplier-connectors.ts')).toBe('A7');
 });
+it.each([
+  ['src/lib/workflows/weekly-crew.ts', 'A3'],
+  ['src/components/workflows/WeeklyCrew.tsx', 'A3'],
+  ['src/lib/workflows/finance-desk.ts', 'A4'],
+  ['src/components/workflows/FinanceDesk.tsx', 'A4'],
+  ['src/lib/workflows/sales-desk.ts', 'A2'],
+  ['src/components/workflows/SalesDesk.tsx', 'A2'],
+  ['src/lib/workflows/completion-review.ts', 'A5'],
+  ['src/components/workflows/CompletionReview.tsx', 'A5'],
+  ['src/lib/workflows/maintenance-desk.ts', 'A6'],
+  ['src/components/workflows/MaintenanceDesk.tsx', 'A6'],
+  ['src/lib/workflows/daily-operations.ts', 'A6'],
+  ['src/components/workflows/DailyOperations.tsx', 'A6'],
+  ['src/components/workflows/weekly-crew.css', 'A8'],
+  ['tests/cycle8-integration.test.ts', 'A8'],
+  ['tests/program/cycle8-usability.spec.ts', 'A8'],
+  ['scripts/check-cycle8-integrity.mjs', 'A8'],
+])(
+  'retains explicit Cycle8 source/design review ownership for %s',
+  (path, owner) => {
+    expect(sourceOwner(path)).toBe(owner);
+  },
+);
 it('rejects linked migration directory chains before enumerating table declaration evidence', () => {
   for (const level of ['supabase', 'migrations']) {
     const { root, manifest } = fixture(),

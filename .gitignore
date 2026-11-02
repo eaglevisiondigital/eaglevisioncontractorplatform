@@ -35,3 +35,4 @@ artifacts/maintenance-service-*/
 # Local synthetic Cycle 6 browser evidence; CI retains its own bounded artifact.
 artifacts/cycle6/
 artifacts/cycle7/
+artifacts/cycle8/
