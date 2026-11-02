@@ -1,5 +1,85 @@
 # Product program delivery status
 
+## Cycle nine · multi-job operating center · November 2
+
+Cycle8 PR56 exact `fe813ed261ad56fffb91ca15ac2aa41a92a8847e` has successful
+Foundation PR41473893613/push41473818269 and all22 observed runs. PR52 exact
+d146a213's dedicated Passport PR41466356421 timed out during dependency installation;
+push41466291706 at the same SHA succeeded. No rerun or validation weakening.
+See [baseline CI](program/CYCLE9_BASELINE_CI.json).
+
+Main works on `codex/program-cycle-nine-integration`, advanced from its initial
+c3bbfeb parent to the final shared foundation before its first implementation commit,
+explicitly composing
+exact final owned files, not merging original draft PRs. Shared foundation is
+[codex/program-cycle-nine / PR59](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/59),
+head `7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765`, base Cycle8 coordination;
+both final Foundation runs41481207721/41481195703 PASS. Authors retain their original
+c3bbfeb parent and independently reviewable drafts against the foundation. Main's
+integration draft also targets that foundation. No parent/history rewrite or merge.
+
+| Package               | Actual agent                | Branch                               | Draft PR                                                                          | Exact final head                           | New cases | Foundation snapshot        |
+| --------------------- | --------------------------- | ------------------------------------ | --------------------------------------------------------------------------------- | ------------------------------------------ | --------- | -------------------------- |
+| portfolio-scheduling  | /root/cycle9_field_growth   | `codex/cycle9-portfolio-scheduling`  | [57](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/57) | `a3216be062c1d2e6827f6f7b395a0ce128a1fed9` | 37        | PASS                       |
+| operating-selection   | /root/cycle8_sales_customer | `codex/cycle9-operating-selection`   | [58](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/58) | `d522751b6cfe9f1a44be013198a12f0f840f0821` | 23        | PASS                       |
+| portfolio-finance     | /root/cycle5_profit_guard   | `codex/cycle9-portfolio-finance`     | [60](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/60) | `52abd65613b35a9dbf460f88a7a2b30762c48b2b` | 34        | RUNNING — not yet accepted |
+| portfolio-service     | /root/cycle8_sales_customer | `codex/cycle9-portfolio-service`     | [61](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/61) | `87c6c158ea4532765c074e6919b06e722d454ef7` | 23        | RUNNING — not yet accepted |
+| portfolio-maintenance | /root/cycle9_field_growth   | `codex/cycle9-portfolio-maintenance` | [62](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/62) | `043c49c2f9d1c766c232ccdca03acef4d309f3eb` | 43        | PASS                       |
+| business-briefing     | /root/cycle5_profit_guard   | `codex/cycle9-business-briefing`     | [63](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/63) | `11074c0fef398c20b92e67feb12719bfe57361b1` | 31        | PASS                       |
+| operating-addons      | /root                       | `codex/cycle9-operating-addons`      | [64](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/64) | `b0f7261d507b63ea0712d6211cbf331b8c359295` | 27        | RUNNING — not yet accepted |
+
+Three implementation slots ran bounded parallel waves in isolated worktrees. Main
+then authored the separate advanced-tool adapter, shared mount and combined proof.
+Independent reviewer `/root/cycle6_integration_review` committed only27 source-bound
+probes and its review at `0825e3c00379a59bea79453a1825a64679cb3847`. Completed
+workers are not represented as still active. Review is CLEAR; reproduced runtime
+serializer/getter/issued-metadata defects are corrected in the shared foundation.
+The final finance52abd656 keyboard-only addendum and Main navigation/checker/scoped
+header fixes were independently inspected. No broad domain repeat for ARIA changes.
+
+One actual Operations/Phase3/Property set now contains four admitted jobs, three
+customers/properties and two assigned workers, including two jobs on one property.
+Search/pages, exact-job navigation, weekly capacity/conflict evidence, canonical
+portfolio finances, safe Passport history/Proof-of-Work documentation, maintenance
+and daily briefing all retain company/customer/property/job/source identity. Sources
+are admitted handles, not another business store or complete company inventory.
+Advanced reviews reuse existing offline, voice, receptionist, Storm/Network,
+accounting and procurement evidence; there is no live provider or execution.
+
+**371 distinct application cases PASS across11 files**:218 new package cases,
+28 foundation,27 independent,21 retained Cycle8 and77 inventory cases. Actual runner
+JSON is checked against every source-index suite count. **30 development browser
+cases and3 production-OFF cases PASS**, all three brands and Desktop Chrome/iPad
+Mini/iPhone13 viewports.72 real PNGs cover operating shell, selected job, weekly
+board, finance, service history, maintenance, briefing and advanced tools. Axe,
+keyboard/source focus, actual header containment, no page overflow,44px controls,
+filters/empty results and company return are checked. Strict types/generated types,
+lint, build, formatting and migration/property/customer/4B/broker/source integrity
+are recorded in [validation](program/CYCLE9_VALIDATION.md).
+
+The [delivery index](program/CYCLE9_DELIVERY_INDEX.json) binds35 disjoint author files,
+two shared foundation files and two independent files by exact SHA-256.128 protected
+hashes,83 prior Cycle6/7/8 owned files, five design/artwork locks and13 bindings PASS.
+Original18 IDs/25 feature records remain unchanged; partial local/blocked hosted/
+not-authorized release labels are not promoted. Exact CI states above are the
+[timestamped snapshot](program/CYCLE9_CI_SNAPSHOT.json), not a prediction of queued
+or later checks. Main's final commit and automatic CI belong to its draft PR.
+
+Preview: `VITE_CONTRACTOR_JOURNEY_PREVIEW=true npm run dev -- --host 127.0.0.1 --port 4219 --strictPort`,
+then http://127.0.0.1:4219/preview/operating-center. Explicitly choose/confirm company
+and prepare once; same-tab only. No persistent server is left running. Production
+route/components remain default OFF. Missing availability/cost/history and purpose
+consent/suppression/sender remain UNKNOWN, not zero, completed, earned or authorized.
+
+Next bounded development: source-bound proposed weekly-plan comparison and stale
+assignment review; canonical portfolio financial exception drill-down; safe service
+request navigation and exact consent-at-send admission design. Existing unfinished
+Auth/durable custody/provider capabilities are not enabled by these prototypes.
+Independent physical recovery, P1-on13, separate customer14/exact4B+broker, MFA/NMI,
+Netlify/executor and financial/communication/hosted/production gates remain external
+acceptance dependencies. No dispatch, contracts, invoices/debt/payment, messages,
+hosted writes, credentials, deployment or merge. Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Cycle eight · six connected operating reviews · November 2
 
 Main coordinates `codex/program-cycle-eight`, stacked on exact successful PR49

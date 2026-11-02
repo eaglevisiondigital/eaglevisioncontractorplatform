@@ -1,5 +1,19 @@
 # Propel Contractor Suite — feature acceptance register
 
+## Cycle-nine multi-job candidate
+
+Seven separately owned packages and shared foundation PR59 are explicitly composed
+for bounded local testing on codex/program-cycle-nine-integration. See
+[exact delivery index](program/CYCLE9_DELIVERY_INDEX.json),
+[validation](program/CYCLE9_VALIDATION.md) and
+[independent review](program/CYCLE9_INTEGRATION_REVIEW.md).
+One actual canonical repository set supports four jobs/three properties/two workers;
+company switching withdraws prior context and exact-source navigation remains fenced.
+371 focused cases PASS; actual responsive/browser and CI evidence remain separate.
+Original18 scope IDs/25 records and partial local/blocked hosted/not-authorized release
+states stay unchanged. No complete coverage, dispatch, real approval, physical repair,
+financial or communication authority is inferred. Advanced modules are review-only.
+
 Date: 2026-11-01. Integrator: main Codex. Confirmed remote source baseline:
 `dc7ed7c2db3cf8ff78a3d6f09098a1b623622874`. The original eighteen scope IDs are
 preserved and seven existing cross-cutting capabilities are now separately recorded.

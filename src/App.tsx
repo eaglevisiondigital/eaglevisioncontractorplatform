@@ -38,6 +38,11 @@ const ContractorJourneyPreview = lazy(() =>
     default: m.ContractorJourneyPreview,
   })),
 );
+const OperatingCenterPreview = lazy(() =>
+  import('./components/workflows/OperatingCenterPreview').then((m) => ({
+    default: m.OperatingCenterPreview,
+  })),
+);
 const Phase3Workspace = lazy(() =>
   import('./components/phase3/Phase3Workspace').then((m) => ({
     default: m.Phase3Workspace,
@@ -192,6 +197,25 @@ export function App() {
         : 'Signed in. If MFA is required, complete verification through your configured identity flow.',
     );
   }
+  if (path === '/preview/operating-center')
+    return journeyEnabled({
+      development: import.meta.env.DEV,
+      flag: import.meta.env.VITE_CONTRACTOR_JOURNEY_PREVIEW,
+      hostname: window.location.hostname,
+      protocol: window.location.protocol,
+    }) ? (
+      <Suspense
+        fallback={<main role="status">Loading local operating center…</main>}
+      >
+        <OperatingCenterPreview />
+      </Suspense>
+    ) : (
+      <main className="landing">
+        <h1>Operating center preview is off</h1>
+        <p>Connected access and operational actions remain closed.</p>
+        <a href="/preview">Return to local back office</a>
+      </main>
+    );
   if (path === '/preview/contractor-journey')
     return journeyEnabled({
       development: import.meta.env.DEV,

@@ -1,0 +1,130 @@
+.portfolio-service {
+  padding: clamp(1rem, 3vw, 1.75rem);
+  border: 1px solid var(--border, #d9dedb);
+  border-radius: 18px;
+  background: var(--surface, #fff);
+  color: var(--ink, #172c28);
+  font-size: 1rem;
+  line-height: 1.55;
+  min-width: 0;
+}
+.portfolio-service * {
+  box-sizing: border-box;
+}
+.portfolio-service h2 {
+  margin: 0.25rem 0 0.5rem;
+}
+.portfolio-service h3,
+.portfolio-service h4,
+.portfolio-service h5 {
+  margin: 0.2rem 0 0.65rem;
+}
+.portfolio-service h5 {
+  font-size: 1rem;
+}
+.portfolio-service p,
+.portfolio-service li {
+  overflow-wrap: anywhere;
+}
+.portfolio-service-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: end;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+.portfolio-service label {
+  display: flex;
+  flex: 1 1 260px;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+.portfolio-service select {
+  font: inherit;
+  padding: 0.65rem;
+  border: 1px solid #9caea6;
+  border-radius: 8px;
+  min-height: 44px;
+  min-width: 0;
+  background: #fff;
+  color: inherit;
+}
+.portfolio-service button {
+  font: inherit;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--company-color, #24534a);
+  border-radius: 8px;
+  background: var(--company-color, #24534a);
+  color: #fff;
+  cursor: pointer;
+  white-space: normal;
+}
+.portfolio-service button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.portfolio-service-property,
+.portfolio-service-detail {
+  padding: 1rem;
+  border: 1px solid var(--border, #d9dedb);
+  border-radius: 12px;
+  background: var(--warm, #f8f7f2);
+  min-width: 0;
+  margin: 1rem 0;
+}
+.portfolio-service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.portfolio-service-grid > section {
+  min-width: 0;
+}
+.portfolio-service article {
+  padding: 1rem 0;
+  border-top: 1px solid var(--border, #d9dedb);
+}
+.portfolio-service details {
+  overflow-wrap: anywhere;
+}
+.portfolio-service summary {
+  min-height: 44px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.portfolio-service-boundary {
+  color: var(--muted, #52665f);
+  font-size: 0.9rem;
+}
+.portfolio-service :focus-visible {
+  outline: 3px solid var(--company-color, #24534a);
+  outline-offset: 3px;
+}
+.portfolio-service [role='alert'] {
+  padding: 0.65rem;
+  border-left: 4px solid #9b4426;
+  background: #fff3e9;
+  color: #71341f;
+}
+@media (max-width: 700px) {
+  .portfolio-service-grid {
+    grid-template-columns: 1fr;
+  }
+  .portfolio-service-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .portfolio-service label {
+    flex: initial;
+  }
+  .portfolio-service button {
+    width: 100%;
+  }
+  .portfolio-service {
+    padding: 1rem;
+  }
+}

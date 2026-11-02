@@ -236,3 +236,23 @@ model instance replacement must also reset presentation, even with identical IDs
 Loading, empty, invalid/stale and UNKNOWN states need keyboard/screen-reader evidence.
 Main captures actual desktop/tablet/mobile screenshots across all three brands and
 checks source navigation, focus, axe, palette, no network execution and production OFF.
+
+## Cycle-nine multi-job operating surface
+
+The isolated operating center uses the same approved contractor palette variables,
+warm neutral canvas, restrained borders/cards, typography, transparent original
+Propel attribution and existing workflow components. No global token, original
+customer portal, contractor Property Operations style or artwork lock changes.
+New CSS is scoped/lazy through the separate preview. Company-first identity and a
+compact local-only badge precede admitted-source counts and one wrapping navigation.
+Active section and exact selected-job context remain explicit on desktop and mobile.
+
+Portfolio cards distinguish original published evidence, staff proposals, unknown
+coverage and blocked execution in text. Identity strings wrap; desktop grids stack
+at the existing760px context boundary. Controls remain at least44px high, labels
+are explicit, source navigation focuses its destination, and empty/filter states
+announce available coverage. Repeated property regions include the exact property
+identity in their accessible names. Scrollable advanced evidence has a named region
+and keyboard focus. No color-only status, inferred completion or fake customer action.
+Real browser evidence covers all three brands and desktop/tablet/mobile; automated
+axe, overflow and touch/focus checks apply only to exercised states.

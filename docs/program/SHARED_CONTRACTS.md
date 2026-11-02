@@ -277,3 +277,32 @@ staff after final awaits. Foreign/source-replaced/stale data is withheld. UNKNOW
 allows exact read-only reconciliation, not retry/new-ID/replacement. Browser memory
 and hashes do not establish genuine Auth, durability or operational concurrency.
 All release/security/recovery/NMI/Netlify/financial/communication gates remain intact.
+
+## Cycle-nine multi-job source composition
+
+`operating-center-runtime` extends the existing journey fixtures over one actual
+Operations/Phase3Repository/PropertyRepository set. Four admitted job handles share
+three exact CRM customers/properties and two existing workers; handles are references,
+not a parallel job/property store. Current root/data descriptors, approved company,
+repository identity, complete immutable issued version, CRM/plan/visit/report/worker
+associations and current eligible staff bind every read before and after awaits.
+Executable getters/serializers, copied/replaced handles, stale or foreign associations
+reject. A missing record never becomes another source or zero-valued evidence.
+
+Author modules reuse the canonical scheduling, costing, issued-safe projection,
+maintenance and Copilot engines. Same-property reports deduplicate only exact
+report/version/content; financial totals count exact distinct jobs and withhold
+incomplete cost coverage. Literal pagination is over admitted handles, not full CRM
+coverage. Purpose consent/suppression/recipient/sender and actual availability remain
+UNKNOWN. Source-linked suggestions never execute work. The advanced adapter reserves
+a same-engine job/kind hold before awaits; UNKNOWN permits exact retained read-only
+reconciliation only. Session memory and hashes do not establish operational custody.
+
+Main owns the default-OFF `/preview/operating-center` mount, company-context navigation,
+shared admission, design and evidence. Exact selected-job callbacks revalidate the
+current original capture before opening existing detail components. Company changes
+withdraw prior gates and hide panels; returning requires explicit confirmation and
+reuses the same retained environment without replay. Original routes and locked
+interfaces remain unchanged. See CYCLE9_DELIVERY_INDEX.json for exact package hashes,
+reviewer commit, draft dependencies and test counts. No public/connected API, schema,
+provider, ledger, message or financial authority is created.

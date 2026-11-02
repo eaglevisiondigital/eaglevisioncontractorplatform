@@ -1,0 +1,221 @@
+.operating-center {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 28px;
+  background: #f5f4ef;
+  color: #243d35;
+  min-height: 100vh;
+  font-family: inherit;
+  --journey-primary: #247364;
+  --journey-accent: #dfb461;
+}
+.operating-center * {
+  box-sizing: border-box;
+}
+.operating-center header {
+  height: auto;
+  min-height: 0;
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+.operating-center header > div {
+  display: block;
+  min-width: 0;
+}
+.operating-center .oc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  margin: 0 0 28px;
+}
+.oc-header h1 {
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  margin: 0.3rem 0;
+  line-height: 1.15;
+}
+.operating-center p {
+  line-height: 1.6;
+}
+.oc-eyebrow {
+  color: var(--journey-primary);
+  font-size: 0.73rem;
+  letter-spacing: 0.1em;
+  font-weight: 750;
+}
+.oc-badge {
+  border: 1px solid #577267;
+  border-radius: 99px;
+  padding: 9px 12px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+.oc-development,
+.oc-context,
+.oc-panel {
+  background: white;
+  border: 1px solid #d8dfd7;
+  padding: 24px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 20px #18352b05;
+  min-width: 0;
+}
+.oc-development summary {
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 44px;
+  padding: 10px 0;
+}
+.operating-center label {
+  display: block;
+  line-height: 1.5;
+  margin: 14px 0;
+}
+.operating-center .oc-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.oc-check input {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  margin-top: 3px;
+}
+.operating-center input:not([type='checkbox']),
+.operating-center select,
+.operating-center button {
+  min-height: 44px;
+  font: inherit;
+  max-width: 100%;
+}
+.oc-development select {
+  display: block;
+  margin-top: 8px;
+}
+.operating-center button {
+  background: var(--journey-primary);
+  color: white;
+  border: 1px solid var(--journey-primary);
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  white-space: normal;
+}
+.operating-center button:disabled {
+  background: #57695f;
+  opacity: 0.7;
+  cursor: default;
+}
+.operating-center :focus-visible {
+  outline: 3px solid #007b66;
+  outline-offset: 4px;
+}
+.oc-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+.oc-metrics p {
+  border-left: 3px solid var(--journey-primary);
+  padding: 8px 14px;
+  margin: 0;
+  background: #f5f7f3;
+}
+.oc-metrics strong {
+  display: block;
+  font-size: 2rem;
+  line-height: 1.3;
+}
+.operating-center .oc-nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: auto;
+  background: transparent;
+  padding: 0;
+  gap: 8px;
+  margin: 20px 0;
+}
+.oc-nav button {
+  background: white;
+  color: var(--journey-primary);
+  border-color: #bdcfc3;
+}
+.oc-nav button[aria-current='page'] {
+  background: var(--journey-primary);
+  color: white;
+}
+.oc-identities {
+  display: grid;
+  grid-template-columns: minmax(100px, 0.3fr) minmax(0, 1fr);
+  gap: 8px 16px;
+}
+.oc-identities dt {
+  font-weight: 700;
+  color: #3e594f;
+}
+.oc-identities dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.oc-error {
+  border: 1px solid #a24222;
+  background: #fff2ee;
+  border-radius: 8px;
+  padding: 16px;
+}
+.operating-center footer {
+  display: block;
+  text-align: center;
+  background: transparent;
+  color: #486057;
+  padding: 25px;
+  font-size: 0.8rem;
+}
+.operating-center footer img {
+  max-width: 180px;
+  background: transparent;
+}
+.operating-center section {
+  min-width: 0;
+  scroll-margin-top: 20px;
+}
+.operating-center pre {
+  overflow: auto;
+  max-width: 100%;
+}
+@media (max-width: 760px) {
+  .operating-center {
+    padding: 12px;
+  }
+  .operating-center .oc-header {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .oc-development,
+  .oc-context,
+  .oc-panel {
+    padding: 16px;
+    border-radius: 12px;
+  }
+  .oc-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .oc-identities {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+  .oc-identities dd {
+    margin-bottom: 10px;
+  }
+  .oc-nav button {
+    flex: 1 0 28%;
+  }
+}

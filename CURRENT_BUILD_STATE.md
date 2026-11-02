@@ -1,5 +1,28 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: cycle nine · multi-job operating center · November 2
+
+Cycle8 PR56 exact fe813ed Foundation and all22 observed runs PASS; PR52's cancelled
+Passport install-timeout is accounted for by its successful same-SHA push run.
+No successful checks were manually restarted. Shared foundation PR59 and seven
+bounded implementation drafts57/58/60–64 remain separate and unmerged. Main composes
+exact reviewed source bytes on codex/program-cycle-nine-integration.
+
+The isolated `/preview/operating-center` uses one actual repository set with four
+jobs, three customers/properties and two assigned workers, including two jobs on one
+property. Search, weekly crew board, portfolio finance, safe property history,
+maintenance, daily briefing and existing-engine advanced reviews keep canonical IDs,
+current synthetic membership, stale-source fences and UNKNOWN/no-replay boundaries.
+371 focused application cases PASS; independent source/application review CLEAR.
+Final browser, CI, exact commits and integrity evidence are recorded in
+[Cycle9 validation](docs/program/CYCLE9_VALIDATION.md) and the master delivery register.
+
+DEV/explicit-flag/HTTP-loopback admission and explicit one-attempt preparation remain
+default OFF. Coverage, availability, consent, physical completion and incomplete costs
+are not inferred. All migrations/customer14/4B/P1/four artifacts/approvals, locked UIs,
+2A–2F/billing/Netlify/executor/recovery/MFA/NMI/Auth/provider/financial/communication/
+hosted/production/deploy/merge gates persist. Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Latest: cycle eight · connected operating review packages · November 2
 
 Verified exact PR49 head `a20f11855388e7cf8283294a3775e1c86a2cc66e`: both

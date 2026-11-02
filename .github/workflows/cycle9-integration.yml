@@ -1,0 +1,49 @@
+name: Cycle 9 multi-job operating center
+on:
+  push:
+    branches: ['codex/program-cycle-nine-integration']
+  pull_request:
+    paths:
+      - 'src/components/workflows/**'
+      - 'src/lib/workflows/**'
+      - 'tests/cycle9*'
+      - 'tests/cycle8-integration.test.ts'
+      - 'tests/program/*cycle9*'
+      - 'scripts/check-cycle9-integrity.mjs'
+      - 'scripts/check-cycle9-results.mjs'
+      - 'docs/program/CYCLE9_DELIVERY_INDEX.json'
+      - '.github/workflows/cycle9-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle9-integration-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  bounded-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node scripts/check-cycle9-integrity.mjs
+      - run: npx vitest run tests/cycle9*.test.ts tests/program-feature-evidence.test.ts tests/cycle8-integration.test.ts --reporter=json --outputFile=artifacts/cycle9/application-results.json
+      - run: node scripts/check-cycle9-results.mjs
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test -c tests/program/playwright.cycle9.config.ts --workers=2
+      - run: npx playwright test -c tests/program/playwright.cycle9-off.config.ts --workers=2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle9-operating-review-evidence
+          path: |
+            artifacts/cycle9/*.png
+            artifacts/cycle9/application-results.json
+            test-results/
+          retention-days: 7

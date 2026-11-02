@@ -1,0 +1,1582 @@
+{
+  "schema": "propel-cycle9-ci-snapshot-v1",
+  "checked_at": "2026-11-02T16:42:22.058Z",
+  "baseline": "docs/program/CYCLE9_BASELINE_CI.json",
+  "packages": [
+    {
+      "pr": 57,
+      "branch": "codex/cycle9-portfolio-scheduling",
+      "head": "a3216be062c1d2e6827f6f7b395a0ce128a1fed9",
+      "runs": [
+        {
+          "id": 41476608415,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "a3216be062c1d2e6827f6f7b395a0ce128a1fed9",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476608415"
+        },
+        {
+          "id": 41476608769,
+          "name": "Cycle 8 connected operating reviews",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "a3216be062c1d2e6827f6f7b395a0ce128a1fed9",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476608769"
+        },
+        {
+          "id": 41476608556,
+          "name": "Proof of Work documentation preview",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "a3216be062c1d2e6827f6f7b395a0ce128a1fed9",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476608556"
+        },
+        {
+          "id": 41476608543,
+          "name": "Isolated crew-day capacity",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "a3216be062c1d2e6827f6f7b395a0ce128a1fed9",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476608543"
+        },
+        {
+          "id": 41476608432,
+          "name": "Cycle 6 local workflow integration",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "a3216be062c1d2e6827f6f7b395a0ce128a1fed9",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476608432"
+        },
+        {
+          "id": 41476608404,
+          "name": "Cycle 7 practical local usability",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "a3216be062c1d2e6827f6f7b395a0ce128a1fed9",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476608404"
+        },
+        {
+          "id": 41476608801,
+          "name": "Passport timeline preview",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "a3216be062c1d2e6827f6f7b395a0ce128a1fed9",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476608801"
+        },
+        {
+          "id": 41476608330,
+          "name": "Isolated field scheduling",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "a3216be062c1d2e6827f6f7b395a0ce128a1fed9",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476608330"
+        },
+        {
+          "id": 41476608394,
+          "name": "Isolated field work orders",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "a3216be062c1d2e6827f6f7b395a0ce128a1fed9",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476608394"
+        },
+        {
+          "id": 41476608347,
+          "name": "Isolated technician day board",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "a3216be062c1d2e6827f6f7b395a0ce128a1fed9",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476608347"
+        },
+        {
+          "id": 41476608345,
+          "name": "Isolated maintenance schedule handoff",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "a3216be062c1d2e6827f6f7b395a0ce128a1fed9",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476608345"
+        },
+        {
+          "id": 41476608304,
+          "name": "Foundation checks",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "a3216be062c1d2e6827f6f7b395a0ce128a1fed9",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476608304"
+        },
+        {
+          "id": 41476567796,
+          "name": "Isolated field scheduling",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "a3216be062c1d2e6827f6f7b395a0ce128a1fed9",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476567796"
+        },
+        {
+          "id": 41476568333,
+          "name": "Isolated maintenance schedule handoff",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "a3216be062c1d2e6827f6f7b395a0ce128a1fed9",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476568333"
+        },
+        {
+          "id": 41476567770,
+          "name": "Isolated field work orders",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "a3216be062c1d2e6827f6f7b395a0ce128a1fed9",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476567770"
+        },
+        {
+          "id": 41476567745,
+          "name": "Isolated technician day board",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "a3216be062c1d2e6827f6f7b395a0ce128a1fed9",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476567745"
+        },
+        {
+          "id": 41476567865,
+          "name": "Isolated crew-day capacity",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "a3216be062c1d2e6827f6f7b395a0ce128a1fed9",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476567865"
+        },
+        {
+          "id": 41476568311,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "a3216be062c1d2e6827f6f7b395a0ce128a1fed9",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476568311"
+        },
+        {
+          "id": 41476567881,
+          "name": "Proof of Work documentation preview",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "a3216be062c1d2e6827f6f7b395a0ce128a1fed9",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476567881"
+        },
+        {
+          "id": 41476567847,
+          "name": "Passport timeline preview",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "a3216be062c1d2e6827f6f7b395a0ce128a1fed9",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476567847"
+        },
+        {
+          "id": 41476567855,
+          "name": "Foundation checks",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "a3216be062c1d2e6827f6f7b395a0ce128a1fed9",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476567855"
+        }
+      ]
+    },
+    {
+      "pr": 58,
+      "branch": "codex/cycle9-operating-selection",
+      "head": "d522751b6cfe9f1a44be013198a12f0f840f0821",
+      "runs": [
+        {
+          "id": 41476664596,
+          "name": "Isolated field scheduling",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "d522751b6cfe9f1a44be013198a12f0f840f0821",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476664596"
+        },
+        {
+          "id": 41476664477,
+          "name": "Isolated technician day board",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "d522751b6cfe9f1a44be013198a12f0f840f0821",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476664477"
+        },
+        {
+          "id": 41476664696,
+          "name": "Passport timeline preview",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "d522751b6cfe9f1a44be013198a12f0f840f0821",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476664696"
+        },
+        {
+          "id": 41476664384,
+          "name": "Isolated maintenance schedule handoff",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "d522751b6cfe9f1a44be013198a12f0f840f0821",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476664384"
+        },
+        {
+          "id": 41476664403,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "d522751b6cfe9f1a44be013198a12f0f840f0821",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476664403"
+        },
+        {
+          "id": 41476664455,
+          "name": "Proof of Work documentation preview",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "d522751b6cfe9f1a44be013198a12f0f840f0821",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476664455"
+        },
+        {
+          "id": 41476664579,
+          "name": "Cycle 8 connected operating reviews",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "d522751b6cfe9f1a44be013198a12f0f840f0821",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476664579"
+        },
+        {
+          "id": 41476664532,
+          "name": "Cycle 7 practical local usability",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "d522751b6cfe9f1a44be013198a12f0f840f0821",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476664532"
+        },
+        {
+          "id": 41476664382,
+          "name": "Isolated crew-day capacity",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "d522751b6cfe9f1a44be013198a12f0f840f0821",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476664382"
+        },
+        {
+          "id": 41476664398,
+          "name": "Cycle 6 local workflow integration",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "d522751b6cfe9f1a44be013198a12f0f840f0821",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476664398"
+        },
+        {
+          "id": 41476664414,
+          "name": "Isolated field work orders",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "d522751b6cfe9f1a44be013198a12f0f840f0821",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476664414"
+        },
+        {
+          "id": 41476664365,
+          "name": "Foundation checks",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "d522751b6cfe9f1a44be013198a12f0f840f0821",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476664365"
+        },
+        {
+          "id": 41476618320,
+          "name": "Isolated technician day board",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "d522751b6cfe9f1a44be013198a12f0f840f0821",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476618320"
+        },
+        {
+          "id": 41476614852,
+          "name": "Proof of Work documentation preview",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "d522751b6cfe9f1a44be013198a12f0f840f0821",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476614852"
+        },
+        {
+          "id": 41476614635,
+          "name": "Isolated field work orders",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "d522751b6cfe9f1a44be013198a12f0f840f0821",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476614635"
+        },
+        {
+          "id": 41476614703,
+          "name": "Isolated field scheduling",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "d522751b6cfe9f1a44be013198a12f0f840f0821",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476614703"
+        },
+        {
+          "id": 41476614710,
+          "name": "Isolated maintenance schedule handoff",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "d522751b6cfe9f1a44be013198a12f0f840f0821",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476614710"
+        },
+        {
+          "id": 41476614708,
+          "name": "Isolated crew-day capacity",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "d522751b6cfe9f1a44be013198a12f0f840f0821",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476614708"
+        },
+        {
+          "id": 41476614752,
+          "name": "Passport timeline preview",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "d522751b6cfe9f1a44be013198a12f0f840f0821",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476614752"
+        },
+        {
+          "id": 41476614716,
+          "name": "Foundation checks",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "d522751b6cfe9f1a44be013198a12f0f840f0821",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476614716"
+        },
+        {
+          "id": 41476614628,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "d522751b6cfe9f1a44be013198a12f0f840f0821",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41476614628"
+        }
+      ]
+    },
+    {
+      "pr": 60,
+      "branch": "codex/cycle9-portfolio-finance",
+      "head": "52abd65613b35a9dbf460f88a7a2b30762c48b2b",
+      "runs": [
+        {
+          "id": 41483601917,
+          "name": "Cycle 6 local workflow integration",
+          "event": "pull_request",
+          "status": "in_progress",
+          "conclusion": null,
+          "head": "52abd65613b35a9dbf460f88a7a2b30762c48b2b",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41483601917"
+        },
+        {
+          "id": 41483601972,
+          "name": "Foundation checks",
+          "event": "pull_request",
+          "status": "in_progress",
+          "conclusion": null,
+          "head": "52abd65613b35a9dbf460f88a7a2b30762c48b2b",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41483601972"
+        },
+        {
+          "id": 41483601903,
+          "name": "Isolated technician day board",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "52abd65613b35a9dbf460f88a7a2b30762c48b2b",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41483601903"
+        },
+        {
+          "id": 41483601846,
+          "name": "Isolated field work orders",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "52abd65613b35a9dbf460f88a7a2b30762c48b2b",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41483601846"
+        },
+        {
+          "id": 41483601923,
+          "name": "Cycle 7 practical local usability",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "52abd65613b35a9dbf460f88a7a2b30762c48b2b",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41483601923"
+        },
+        {
+          "id": 41483601965,
+          "name": "Isolated maintenance schedule handoff",
+          "event": "pull_request",
+          "status": "in_progress",
+          "conclusion": null,
+          "head": "52abd65613b35a9dbf460f88a7a2b30762c48b2b",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41483601965"
+        },
+        {
+          "id": 41483601900,
+          "name": "Passport timeline preview",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "52abd65613b35a9dbf460f88a7a2b30762c48b2b",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41483601900"
+        },
+        {
+          "id": 41483601915,
+          "name": "Isolated crew-day capacity",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "52abd65613b35a9dbf460f88a7a2b30762c48b2b",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41483601915"
+        },
+        {
+          "id": 41483602013,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "52abd65613b35a9dbf460f88a7a2b30762c48b2b",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41483602013"
+        },
+        {
+          "id": 41483601850,
+          "name": "Proof of Work documentation preview",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "52abd65613b35a9dbf460f88a7a2b30762c48b2b",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41483601850"
+        },
+        {
+          "id": 41483601980,
+          "name": "Cycle 8 connected operating reviews",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "52abd65613b35a9dbf460f88a7a2b30762c48b2b",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41483601980"
+        },
+        {
+          "id": 41483601982,
+          "name": "Isolated field scheduling",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "52abd65613b35a9dbf460f88a7a2b30762c48b2b",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41483601982"
+        },
+        {
+          "id": 41483592703,
+          "name": "Foundation checks",
+          "event": "push",
+          "status": "in_progress",
+          "conclusion": null,
+          "head": "52abd65613b35a9dbf460f88a7a2b30762c48b2b",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41483592703"
+        },
+        {
+          "id": 41483592695,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "52abd65613b35a9dbf460f88a7a2b30762c48b2b",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41483592695"
+        },
+        {
+          "id": 41483592792,
+          "name": "Isolated maintenance schedule handoff",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "52abd65613b35a9dbf460f88a7a2b30762c48b2b",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41483592792"
+        },
+        {
+          "id": 41483592846,
+          "name": "Isolated crew-day capacity",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "52abd65613b35a9dbf460f88a7a2b30762c48b2b",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41483592846"
+        },
+        {
+          "id": 41483592706,
+          "name": "Isolated field work orders",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "52abd65613b35a9dbf460f88a7a2b30762c48b2b",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41483592706"
+        },
+        {
+          "id": 41483592855,
+          "name": "Passport timeline preview",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "52abd65613b35a9dbf460f88a7a2b30762c48b2b",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41483592855"
+        },
+        {
+          "id": 41483592823,
+          "name": "Proof of Work documentation preview",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "52abd65613b35a9dbf460f88a7a2b30762c48b2b",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41483592823"
+        },
+        {
+          "id": 41483592838,
+          "name": "Isolated field scheduling",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "52abd65613b35a9dbf460f88a7a2b30762c48b2b",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41483592838"
+        },
+        {
+          "id": 41483592727,
+          "name": "Isolated technician day board",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "52abd65613b35a9dbf460f88a7a2b30762c48b2b",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41483592727"
+        }
+      ]
+    },
+    {
+      "pr": 61,
+      "branch": "codex/cycle9-portfolio-service",
+      "head": "87c6c158ea4532765c074e6919b06e722d454ef7",
+      "runs": [
+        {
+          "id": 41481716598,
+          "name": "Passport timeline preview",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "87c6c158ea4532765c074e6919b06e722d454ef7",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481716598"
+        },
+        {
+          "id": 41481716515,
+          "name": "Foundation checks",
+          "event": "pull_request",
+          "status": "in_progress",
+          "conclusion": null,
+          "head": "87c6c158ea4532765c074e6919b06e722d454ef7",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481716515"
+        },
+        {
+          "id": 41481716653,
+          "name": "Cycle 7 practical local usability",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "87c6c158ea4532765c074e6919b06e722d454ef7",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481716653"
+        },
+        {
+          "id": 41481716514,
+          "name": "Isolated technician day board",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "87c6c158ea4532765c074e6919b06e722d454ef7",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481716514"
+        },
+        {
+          "id": 41481716700,
+          "name": "Isolated maintenance schedule handoff",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "87c6c158ea4532765c074e6919b06e722d454ef7",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481716700"
+        },
+        {
+          "id": 41481716575,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "87c6c158ea4532765c074e6919b06e722d454ef7",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481716575"
+        },
+        {
+          "id": 41481716560,
+          "name": "Isolated field scheduling",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "87c6c158ea4532765c074e6919b06e722d454ef7",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481716560"
+        },
+        {
+          "id": 41481716627,
+          "name": "Proof of Work documentation preview",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "87c6c158ea4532765c074e6919b06e722d454ef7",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481716627"
+        },
+        {
+          "id": 41481716532,
+          "name": "Cycle 8 connected operating reviews",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "87c6c158ea4532765c074e6919b06e722d454ef7",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481716532"
+        },
+        {
+          "id": 41481716666,
+          "name": "Isolated crew-day capacity",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "87c6c158ea4532765c074e6919b06e722d454ef7",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481716666"
+        },
+        {
+          "id": 41481716674,
+          "name": "Isolated field work orders",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "87c6c158ea4532765c074e6919b06e722d454ef7",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481716674"
+        },
+        {
+          "id": 41481716599,
+          "name": "Cycle 6 local workflow integration",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "87c6c158ea4532765c074e6919b06e722d454ef7",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481716599"
+        },
+        {
+          "id": 41481708807,
+          "name": "Isolated maintenance schedule handoff",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "87c6c158ea4532765c074e6919b06e722d454ef7",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481708807"
+        },
+        {
+          "id": 41481708651,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "87c6c158ea4532765c074e6919b06e722d454ef7",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481708651"
+        },
+        {
+          "id": 41481708460,
+          "name": "Foundation checks",
+          "event": "push",
+          "status": "in_progress",
+          "conclusion": null,
+          "head": "87c6c158ea4532765c074e6919b06e722d454ef7",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481708460"
+        },
+        {
+          "id": 41481708659,
+          "name": "Isolated field work orders",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "87c6c158ea4532765c074e6919b06e722d454ef7",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481708659"
+        },
+        {
+          "id": 41481708467,
+          "name": "Passport timeline preview",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "87c6c158ea4532765c074e6919b06e722d454ef7",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481708467"
+        },
+        {
+          "id": 41481708707,
+          "name": "Isolated field scheduling",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "87c6c158ea4532765c074e6919b06e722d454ef7",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481708707"
+        },
+        {
+          "id": 41481708569,
+          "name": "Proof of Work documentation preview",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "87c6c158ea4532765c074e6919b06e722d454ef7",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481708569"
+        },
+        {
+          "id": 41481708668,
+          "name": "Isolated crew-day capacity",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "87c6c158ea4532765c074e6919b06e722d454ef7",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481708668"
+        },
+        {
+          "id": 41481708685,
+          "name": "Isolated technician day board",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "87c6c158ea4532765c074e6919b06e722d454ef7",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481708685"
+        }
+      ]
+    },
+    {
+      "pr": 62,
+      "branch": "codex/cycle9-portfolio-maintenance",
+      "head": "043c49c2f9d1c766c232ccdca03acef4d309f3eb",
+      "runs": [
+        {
+          "id": 41478021846,
+          "name": "Passport timeline preview",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "043c49c2f9d1c766c232ccdca03acef4d309f3eb",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41478021846"
+        },
+        {
+          "id": 41478021668,
+          "name": "Cycle 6 local workflow integration",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "043c49c2f9d1c766c232ccdca03acef4d309f3eb",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41478021668"
+        },
+        {
+          "id": 41478021516,
+          "name": "Isolated field work orders",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "043c49c2f9d1c766c232ccdca03acef4d309f3eb",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41478021516"
+        },
+        {
+          "id": 41478021925,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "043c49c2f9d1c766c232ccdca03acef4d309f3eb",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41478021925"
+        },
+        {
+          "id": 41478021617,
+          "name": "Proof of Work documentation preview",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "043c49c2f9d1c766c232ccdca03acef4d309f3eb",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41478021617"
+        },
+        {
+          "id": 41478022155,
+          "name": "Isolated field scheduling",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "043c49c2f9d1c766c232ccdca03acef4d309f3eb",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41478022155"
+        },
+        {
+          "id": 41478021460,
+          "name": "Isolated crew-day capacity",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "043c49c2f9d1c766c232ccdca03acef4d309f3eb",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41478021460"
+        },
+        {
+          "id": 41478021827,
+          "name": "Cycle 7 practical local usability",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "043c49c2f9d1c766c232ccdca03acef4d309f3eb",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41478021827"
+        },
+        {
+          "id": 41478021754,
+          "name": "Cycle 8 connected operating reviews",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "043c49c2f9d1c766c232ccdca03acef4d309f3eb",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41478021754"
+        },
+        {
+          "id": 41478021834,
+          "name": "Isolated technician day board",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "043c49c2f9d1c766c232ccdca03acef4d309f3eb",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41478021834"
+        },
+        {
+          "id": 41478021693,
+          "name": "Isolated maintenance schedule handoff",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "043c49c2f9d1c766c232ccdca03acef4d309f3eb",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41478021693"
+        },
+        {
+          "id": 41478021528,
+          "name": "Foundation checks",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "043c49c2f9d1c766c232ccdca03acef4d309f3eb",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41478021528"
+        },
+        {
+          "id": 41477974522,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "043c49c2f9d1c766c232ccdca03acef4d309f3eb",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41477974522"
+        },
+        {
+          "id": 41477974526,
+          "name": "Passport timeline preview",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "043c49c2f9d1c766c232ccdca03acef4d309f3eb",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41477974526"
+        },
+        {
+          "id": 41477974458,
+          "name": "Proof of Work documentation preview",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "043c49c2f9d1c766c232ccdca03acef4d309f3eb",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41477974458"
+        },
+        {
+          "id": 41477974436,
+          "name": "Isolated field scheduling",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "043c49c2f9d1c766c232ccdca03acef4d309f3eb",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41477974436"
+        },
+        {
+          "id": 41477974441,
+          "name": "Isolated crew-day capacity",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "043c49c2f9d1c766c232ccdca03acef4d309f3eb",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41477974441"
+        },
+        {
+          "id": 41477974492,
+          "name": "Isolated maintenance schedule handoff",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "043c49c2f9d1c766c232ccdca03acef4d309f3eb",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41477974492"
+        },
+        {
+          "id": 41477974399,
+          "name": "Isolated technician day board",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "043c49c2f9d1c766c232ccdca03acef4d309f3eb",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41477974399"
+        },
+        {
+          "id": 41477974464,
+          "name": "Isolated field work orders",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "043c49c2f9d1c766c232ccdca03acef4d309f3eb",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41477974464"
+        },
+        {
+          "id": 41477974408,
+          "name": "Foundation checks",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "043c49c2f9d1c766c232ccdca03acef4d309f3eb",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41477974408"
+        }
+      ]
+    },
+    {
+      "pr": 63,
+      "branch": "codex/cycle9-business-briefing",
+      "head": "11074c0fef398c20b92e67feb12719bfe57361b1",
+      "runs": [
+        {
+          "id": 41479234036,
+          "name": "Passport timeline preview",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "11074c0fef398c20b92e67feb12719bfe57361b1",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41479234036"
+        },
+        {
+          "id": 41479234088,
+          "name": "Cycle 7 practical local usability",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "11074c0fef398c20b92e67feb12719bfe57361b1",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41479234088"
+        },
+        {
+          "id": 41479233812,
+          "name": "Isolated maintenance schedule handoff",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "11074c0fef398c20b92e67feb12719bfe57361b1",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41479233812"
+        },
+        {
+          "id": 41479233907,
+          "name": "Isolated field work orders",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "11074c0fef398c20b92e67feb12719bfe57361b1",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41479233907"
+        },
+        {
+          "id": 41479234061,
+          "name": "Cycle 6 local workflow integration",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "11074c0fef398c20b92e67feb12719bfe57361b1",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41479234061"
+        },
+        {
+          "id": 41479234105,
+          "name": "Proof of Work documentation preview",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "11074c0fef398c20b92e67feb12719bfe57361b1",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41479234105"
+        },
+        {
+          "id": 41479234187,
+          "name": "Isolated field scheduling",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "11074c0fef398c20b92e67feb12719bfe57361b1",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41479234187"
+        },
+        {
+          "id": 41479234054,
+          "name": "Isolated crew-day capacity",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "11074c0fef398c20b92e67feb12719bfe57361b1",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41479234054"
+        },
+        {
+          "id": 41479234055,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "11074c0fef398c20b92e67feb12719bfe57361b1",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41479234055"
+        },
+        {
+          "id": 41479233846,
+          "name": "Cycle 8 connected operating reviews",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "11074c0fef398c20b92e67feb12719bfe57361b1",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41479233846"
+        },
+        {
+          "id": 41479234111,
+          "name": "Isolated technician day board",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "11074c0fef398c20b92e67feb12719bfe57361b1",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41479234111"
+        },
+        {
+          "id": 41479233959,
+          "name": "Foundation checks",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "11074c0fef398c20b92e67feb12719bfe57361b1",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41479233959"
+        },
+        {
+          "id": 41479225011,
+          "name": "Passport timeline preview",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "11074c0fef398c20b92e67feb12719bfe57361b1",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41479225011"
+        },
+        {
+          "id": 41479224998,
+          "name": "Isolated field scheduling",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "11074c0fef398c20b92e67feb12719bfe57361b1",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41479224998"
+        },
+        {
+          "id": 41479225081,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "11074c0fef398c20b92e67feb12719bfe57361b1",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41479225081"
+        },
+        {
+          "id": 41479225068,
+          "name": "Isolated maintenance schedule handoff",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "11074c0fef398c20b92e67feb12719bfe57361b1",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41479225068"
+        },
+        {
+          "id": 41479225057,
+          "name": "Isolated field work orders",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "11074c0fef398c20b92e67feb12719bfe57361b1",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41479225057"
+        },
+        {
+          "id": 41479225164,
+          "name": "Foundation checks",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "11074c0fef398c20b92e67feb12719bfe57361b1",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41479225164"
+        },
+        {
+          "id": 41479225064,
+          "name": "Isolated crew-day capacity",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "11074c0fef398c20b92e67feb12719bfe57361b1",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41479225064"
+        },
+        {
+          "id": 41479225021,
+          "name": "Proof of Work documentation preview",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "11074c0fef398c20b92e67feb12719bfe57361b1",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41479225021"
+        },
+        {
+          "id": 41479225033,
+          "name": "Isolated technician day board",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "11074c0fef398c20b92e67feb12719bfe57361b1",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41479225033"
+        }
+      ]
+    },
+    {
+      "pr": 64,
+      "branch": "codex/cycle9-operating-addons",
+      "head": "b0f7261d507b63ea0712d6211cbf331b8c359295",
+      "runs": [
+        {
+          "id": 41481711979,
+          "name": "Proof of Work documentation preview",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "b0f7261d507b63ea0712d6211cbf331b8c359295",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481711979"
+        },
+        {
+          "id": 41481711667,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "b0f7261d507b63ea0712d6211cbf331b8c359295",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481711667"
+        },
+        {
+          "id": 41481711900,
+          "name": "Isolated maintenance schedule handoff",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "b0f7261d507b63ea0712d6211cbf331b8c359295",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481711900"
+        },
+        {
+          "id": 41481711788,
+          "name": "Isolated crew-day capacity",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "b0f7261d507b63ea0712d6211cbf331b8c359295",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481711788"
+        },
+        {
+          "id": 41481711752,
+          "name": "Cycle 8 connected operating reviews",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "b0f7261d507b63ea0712d6211cbf331b8c359295",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481711752"
+        },
+        {
+          "id": 41481711757,
+          "name": "Isolated field scheduling",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "b0f7261d507b63ea0712d6211cbf331b8c359295",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481711757"
+        },
+        {
+          "id": 41481711767,
+          "name": "Cycle 7 practical local usability",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "b0f7261d507b63ea0712d6211cbf331b8c359295",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481711767"
+        },
+        {
+          "id": 41481711976,
+          "name": "Isolated technician day board",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "b0f7261d507b63ea0712d6211cbf331b8c359295",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481711976"
+        },
+        {
+          "id": 41481711826,
+          "name": "Passport timeline preview",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "b0f7261d507b63ea0712d6211cbf331b8c359295",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481711826"
+        },
+        {
+          "id": 41481712064,
+          "name": "Foundation checks",
+          "event": "pull_request",
+          "status": "in_progress",
+          "conclusion": null,
+          "head": "b0f7261d507b63ea0712d6211cbf331b8c359295",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481712064"
+        },
+        {
+          "id": 41481711659,
+          "name": "Isolated field work orders",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "b0f7261d507b63ea0712d6211cbf331b8c359295",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481711659"
+        },
+        {
+          "id": 41481711681,
+          "name": "Cycle 6 local workflow integration",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "head": "b0f7261d507b63ea0712d6211cbf331b8c359295",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481711681"
+        },
+        {
+          "id": 41481701466,
+          "name": "Isolated crew-day capacity",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "b0f7261d507b63ea0712d6211cbf331b8c359295",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481701466"
+        },
+        {
+          "id": 41481701386,
+          "name": "Isolated field scheduling",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "b0f7261d507b63ea0712d6211cbf331b8c359295",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481701386"
+        },
+        {
+          "id": 41481701131,
+          "name": "Isolated field work orders",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "b0f7261d507b63ea0712d6211cbf331b8c359295",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481701131"
+        },
+        {
+          "id": 41481700950,
+          "name": "Foundation checks",
+          "event": "push",
+          "status": "in_progress",
+          "conclusion": null,
+          "head": "b0f7261d507b63ea0712d6211cbf331b8c359295",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481700950"
+        },
+        {
+          "id": 41481701002,
+          "name": "Passport timeline preview",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "b0f7261d507b63ea0712d6211cbf331b8c359295",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481701002"
+        },
+        {
+          "id": 41481701293,
+          "name": "Proof of Work documentation preview",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "b0f7261d507b63ea0712d6211cbf331b8c359295",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481701293"
+        },
+        {
+          "id": 41481701410,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "b0f7261d507b63ea0712d6211cbf331b8c359295",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481701410"
+        },
+        {
+          "id": 41481701356,
+          "name": "Isolated technician day board",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "b0f7261d507b63ea0712d6211cbf331b8c359295",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481701356"
+        },
+        {
+          "id": 41481701058,
+          "name": "Isolated maintenance schedule handoff",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "b0f7261d507b63ea0712d6211cbf331b8c359295",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481701058"
+        }
+      ]
+    },
+    {
+      "pr": 59,
+      "branch": "codex/program-cycle-nine",
+      "head": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+      "runs": [
+        {
+          "id": 41481207812,
+          "name": "Isolated technician day board",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481207812"
+        },
+        {
+          "id": 41481207857,
+          "name": "Cycle 6 local workflow integration",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481207857"
+        },
+        {
+          "id": 41481207738,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481207738"
+        },
+        {
+          "id": 41481207823,
+          "name": "Cycle 8 connected operating reviews",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481207823"
+        },
+        {
+          "id": 41481207795,
+          "name": "Isolated maintenance schedule handoff",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481207795"
+        },
+        {
+          "id": 41481207860,
+          "name": "Isolated field scheduling",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481207860"
+        },
+        {
+          "id": 41481207951,
+          "name": "Isolated crew-day capacity",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481207951"
+        },
+        {
+          "id": 41481207840,
+          "name": "Proof of Work documentation preview",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481207840"
+        },
+        {
+          "id": 41481207702,
+          "name": "Cycle 7 practical local usability",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481207702"
+        },
+        {
+          "id": 41481207777,
+          "name": "Passport timeline preview",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481207777"
+        },
+        {
+          "id": 41481207971,
+          "name": "Isolated field work orders",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481207971"
+        },
+        {
+          "id": 41481207721,
+          "name": "Foundation checks",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481207721"
+        },
+        {
+          "id": 41481195542,
+          "name": "Isolated maintenance schedule handoff",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481195542"
+        },
+        {
+          "id": 41481195545,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481195545"
+        },
+        {
+          "id": 41481195560,
+          "name": "Isolated field scheduling",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481195560"
+        },
+        {
+          "id": 41481195719,
+          "name": "Isolated technician day board",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481195719"
+        },
+        {
+          "id": 41481196044,
+          "name": "Isolated crew-day capacity",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481196044"
+        },
+        {
+          "id": 41481196457,
+          "name": "Passport timeline preview",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481196457"
+        },
+        {
+          "id": 41481195638,
+          "name": "Proof of Work documentation preview",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481195638"
+        },
+        {
+          "id": 41481195725,
+          "name": "Isolated field work orders",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481195725"
+        },
+        {
+          "id": 41481195703,
+          "name": "Foundation checks",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41481195703"
+        }
+      ]
+    }
+  ],
+  "coordination": {
+    "branch": "codex/program-cycle-nine-integration",
+    "status": "LOCAL_VALIDATED_NOT_YET_PUSHED_AT_SNAPSHOT",
+    "note": "Final coordination SHA and automatic checks are reported with its draft PR. No success inferred from package, parent or local evidence."
+  },
+  "manual_reruns": 0,
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}
