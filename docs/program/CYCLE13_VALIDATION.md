@@ -37,7 +37,7 @@ source blobs without rebasing, cherry-picking or promoting parent branches.
 
 ## Actual application evidence
 
-524 PASS, zero failed/pending/skipped, eleven exact files. Raw local JSON is ignored at
+525 unique PASS, zero failed/pending/skipped, eleven exact files. Raw local JSON is ignored at
 artifacts/cycle13/application-results.json; check-cycle13-results.mjs independently
 requires each exact source suite/count and passing assertion, not just an overall total.
 
@@ -62,6 +62,26 @@ negative admission, current/revoked membership, stale/final-await evidence, immu
 issued sources, customer/property distinctions, privacy, original UNKNOWN holds,
 changed-digest denial and no business side effects. All37author bytes remain exact.
 No genuine Auth, operational custody, physical recovery or release acceptance is claimed.
+
+## Coordinator capture-provenance correction
+
+The first combined source commit a214b462d8ddcfa5759b466b9aed6216e30d969e passed
+524application cases. Subsequent review found that the gallery builder could label
+earlier PNGs with the later clean checkout SHA. The corrected coordinator binds only
+capture-time sourceCommit records: absent/null stays UNKNOWN, mixed identities and
+malformed/accessor records fail closed. Current checkout cleanliness cannot promote
+historical images. A clean exact capture-time SHA remains source metadata, not proof
+of visual approval or cryptographic attestation of a browser build.
+
+One added regression expands the Main suite19→20; all20focused cases PASS. The local
+525unique-case rollup preserves the initial524report and replaces only that unchanged-
+scope coordinator suite with its actual final20result; every37author/twoindependent
+source byte remains exact. Raw sequence metadata explains this bounded recheck, and
+normal automatic CI runs all525cases against the corrected exact candidate. No passing
+business, security or recovery suite is manually repeated for this metadata fix.
+The two affected screenshot producers were rechecked in actual local browsers (2/2PASS).
+An independent read-only follow-up review is CLEAR; capture-time checkout metadata
+is not independent attestation of the served bundle or owner visual approval.
 
 ## Actual browser and visual evidence
 

@@ -1,3 +1,4 @@
+import { execFileSync } from 'node:child_process';
 import { expect, type Page, type Locator } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import type { CompanyProfile } from '../../src/domain/platform';
@@ -111,4 +112,16 @@ export async function measureClicks(page: Page, task: () => Promise<void>) {
   return page.evaluate(
     () => (window as unknown as { cycle13Clicks: number }).cycle13Clicks,
   );
+}
+
+/** Capture-time metadata only. Later commits cannot promote an earlier PNG. */
+export function captureVisualSourceCommit(): string | null {
+  const head = execFileSync('git', ['rev-parse', 'HEAD'], {
+    encoding: 'utf8',
+  }).trim();
+  const dirty =
+    execFileSync('git', ['status', '--porcelain', '--untracked-files=normal'], {
+      encoding: 'utf8',
+    }).trim().length > 0;
+  return !dirty && /^[a-f0-9]{40}$/.test(head) ? head : null;
 }

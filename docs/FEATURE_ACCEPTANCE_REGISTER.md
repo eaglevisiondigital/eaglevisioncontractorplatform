@@ -10,7 +10,7 @@ service/Passport source continuity, follow-up requirements, exact task navigatio
 and the original seven advanced review modes. Design/QA adds a strict actual-PNG
 gallery and approval inventory. All new capabilities remain default-OFF/unwired.
 
-524application cases PASS across11exact files, including42independent combined
+525unique application cases PASS across11exact files, including42independent combined
 cases;63all-brand desktop/tablet/mobile development cases,3production-OFF cases
 and9approved reference/current capture scenarios PASS.99real PNGs retained;
 45images form18approved-reference/current pairs plus9Operating Center states

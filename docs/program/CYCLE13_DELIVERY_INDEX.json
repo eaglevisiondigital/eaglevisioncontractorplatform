@@ -266,11 +266,11 @@
   "combined_evidence": {
     "focused_new_package_cases": 386,
     "independent_new_cases": 42,
-    "source_ownership_cases": 19,
+    "source_ownership_cases": 20,
     "scorecard_evidence_cases": 4,
     "visual_inventory_cases": 56,
     "source_inventory_cases": 73,
-    "application_cases": 524,
+    "application_cases": 525,
     "development_browser_cases": 63,
     "production_off_browser_cases": 3,
     "approved_visual_browser_cases": 9,

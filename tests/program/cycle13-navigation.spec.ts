@@ -1,6 +1,11 @@
 import { test, expect } from '@playwright/test';
 import { sampleCompanies } from '../../src/domain/platform';
-import { start, nav, audit } from './cycle13-browser-helpers';
+import {
+  start,
+  nav,
+  audit,
+  captureVisualSourceCommit,
+} from './cycle13-browser-helpers';
 import { readFile, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 for (const company of sampleCompanies)
@@ -40,6 +45,7 @@ for (const company of sampleCompanies)
           brand: company.slug,
           viewport: info.project.name,
           path,
+          sourceCommit: captureVisualSourceCommit(),
           sha256: createHash('sha256')
             .update(await readFile(path))
             .digest('hex'),

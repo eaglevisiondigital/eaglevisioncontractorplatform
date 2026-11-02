@@ -1,3 +1,4 @@
+import { captureVisualSourceCommit } from './cycle13-browser-helpers';
 import { test, expect } from '@playwright/test';
 import { sampleCompanies } from '../../src/domain/platform';
 import { contractor } from '../browser/helpers/property-portal';
@@ -78,6 +79,7 @@ for (const company of sampleCompanies)
         brand: company.slug,
         viewport: info.project.name,
         path,
+        sourceCommit: captureVisualSourceCommit(),
         sha256: createHash('sha256')
           .update(await readFile(path))
           .digest('hex'),

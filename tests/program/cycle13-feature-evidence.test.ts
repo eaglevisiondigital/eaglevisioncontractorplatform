@@ -1,3 +1,4 @@
+import { bindCapturedVisualSource } from '../../scripts/cycle13-build-visual-evidence.mjs';
 import { expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { sourceOwner } from '../../scripts/feature-evidence.mjs';
@@ -126,4 +127,35 @@ it('keeps navigation a finite presentation callback over existing job components
     expect(host).toContain('id="operating-selected-' + name + '"');
   expect(host).toContain('captureOperatingSources(sources, sources.gate)');
   expect(host.match(/await prepareOperatingSources\(/g)).toHaveLength(1);
+});
+
+it('never promotes pre-commit screenshots using the later gallery-build checkout', () => {
+  expect(bindCapturedVisualSource([{}, { sourceCommit: null }])).toEqual({
+    sourceCommit: null,
+    sourceState: 'WORKING_TREE_UNCOMMITTED',
+  });
+  const sha = 'a'.repeat(40);
+  expect(
+    bindCapturedVisualSource([{ sourceCommit: sha }, { sourceCommit: sha }]),
+  ).toEqual({ sourceCommit: sha, sourceState: 'COMMITTED' });
+  expect(() => bindCapturedVisualSource([{ sourceCommit: sha }, {}])).toThrow(
+    'Mixed captured',
+  );
+  expect(() =>
+    bindCapturedVisualSource([
+      { sourceCommit: sha },
+      { sourceCommit: 'b'.repeat(40) },
+    ]),
+  ).toThrow('Mixed captured');
+  expect(() =>
+    bindCapturedVisualSource([{ sourceCommit: 'unproven' }]),
+  ).toThrow('Exact captured');
+  const getter = () => {
+    throw Error('getter executed');
+  };
+  const item = Object.defineProperty({}, 'sourceCommit', { get: getter });
+  expect(() => bindCapturedVisualSource([item])).toThrow(
+    'Captured source data required',
+  );
+  expect(() => bindCapturedVisualSource([])).toThrow('Actual captured');
 });
