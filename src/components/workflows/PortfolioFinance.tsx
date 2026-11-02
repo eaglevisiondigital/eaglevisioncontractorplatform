@@ -29,6 +29,7 @@ export function PortfolioFinance({
   onSelectJob?: (jobId: string) => void;
 }) {
   let signature = 'OFF';
+  let sourceCheck: (() => void) | null = null;
   if (enabled)
     try {
       const selected = captureOperatingSources(sources, sources.gate);
@@ -43,6 +44,7 @@ export function PortfolioFinance({
         ),
         property: sources.property.read(selected.organization_id),
       });
+      sourceCheck = selected.check;
     } catch {
       signature = 'UNAVAILABLE';
     }
@@ -50,14 +52,28 @@ export function PortfolioFinance({
     sources,
     enabled,
     signature,
+    sourceCheck,
     generation: 0,
   });
+  let originalChanged = false;
+  try {
+    binding.sourceCheck?.();
+  } catch {
+    originalChanged = true;
+  }
   if (
     binding.sources !== sources ||
     binding.enabled !== enabled ||
-    binding.signature !== signature
+    binding.signature !== signature ||
+    originalChanged
   ) {
-    bind({ sources, enabled, signature, generation: binding.generation + 1 });
+    bind({
+      sources,
+      enabled,
+      signature,
+      sourceCheck,
+      generation: binding.generation + 1,
+    });
     return null;
   }
   return enabled && signature !== 'UNAVAILABLE' && signature !== 'OFF' ? (
