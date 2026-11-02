@@ -133,15 +133,57 @@ test('all three contractors inspect exact immutable scope and actual test receip
       intro!.y + intro!.height,
     );
     expect(reload!.y).toBeGreaterThanOrEqual(header!.y + header!.height);
+    const retain = page.getByRole('button', {
+      name: 'Retain review-only scope reference',
+      exact: true,
+    });
+    await expect(retain).toBeDisabled();
+    await page
+      .getByRole('checkbox', { name: /I reviewed the exact issued scope/ })
+      .check();
+    await retain.focus();
+    await page.keyboard.press('Enter');
+    const retained = page.getByRole('region', {
+      name: 'Retained scope reference',
+      exact: true,
+    });
+    await expect(retained).toBeVisible();
+    await expect(retained).toContainText(
+      'Immutable scope reference — staff review only',
+    );
+    await page
+      .getByRole('button', {
+        name: 'Verify retained exact reference',
+        exact: true,
+      })
+      .click();
+    await expect(retained).toContainText(
+      'Exact retained scope and accepted local test receipt match current original evidence.',
+    );
+    await expect(retained).toContainText('Contract execution: BLOCKED.');
+    await expect(retain).toBeDisabled();
     await page.screenshot({
       path:
         'artifacts/phase3/' +
         info.project.name +
-        '-sales-handoff-' +
+        '-sales-approved-scope-' +
         org +
         '.png',
       fullPage: true,
     });
+    await page
+      .getByRole('region', {
+        name: 'Immutable scope reference review',
+        exact: true,
+      })
+      .screenshot({
+        path:
+          'artifacts/phase3/' +
+          info.project.name +
+          '-sales-approved-scope-reference-' +
+          org +
+          '.png',
+      });
     expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
     expect(
       await page.evaluate(
@@ -239,4 +281,131 @@ test('late source reads cannot restore the prior company scope after context swi
   await expect(page.locator('.sales-handoff')).not.toContainText(
     'Straight Edge',
   );
+});
+
+test('retained reference stays immutable after a new draft and exact verification shows stale or UNKNOWN without replacement', async ({
+  page,
+}) => {
+  await open(page);
+  await prepare(page);
+  const retain = page.getByRole('button', {
+    name: 'Retain review-only scope reference',
+    exact: true,
+  });
+  await page
+    .getByRole('checkbox', { name: /I reviewed the exact issued scope/ })
+    .check();
+  await retain.click();
+  const retained = page.getByRole('region', {
+    name: 'Retained scope reference',
+    exact: true,
+  });
+  await expect(retained).toBeVisible();
+  const facts = retained.locator('dl');
+  const originalFacts = await facts.innerText();
+  await page
+    .getByText('Controlled evidence fault controls', { exact: true })
+    .click();
+  await page
+    .getByRole('button', { name: 'Prepare newer private draft', exact: true })
+    .click();
+  await page
+    .getByRole('button', {
+      name: 'Verify retained exact reference',
+      exact: true,
+    })
+    .click();
+  await expect(retained).toContainText(
+    'STALE — original scope and receipt are retained',
+  );
+  await expect(facts).toHaveText(originalFacts, { useInnerText: true });
+  await page
+    .getByRole('button', { name: 'Reload exact evidence', exact: true })
+    .click();
+  await expect(page.getByRole('status')).toContainText('Handoff blocked');
+  await expect(retain).toBeDisabled();
+  await expect(facts).toHaveText(originalFacts, { useInnerText: true });
+  await page
+    .getByRole('button', { name: 'Fail source reads', exact: true })
+    .click();
+  await page
+    .getByRole('button', {
+      name: 'Verify retained exact reference',
+      exact: true,
+    })
+    .click();
+  await expect(page.getByRole('status')).toContainText('UNKNOWN — no scope');
+  await expect(retained).toHaveCount(0);
+  await page
+    .getByRole('button', { name: 'Restore source reads', exact: true })
+    .click();
+  await page
+    .getByRole('button', { name: 'Reload exact evidence', exact: true })
+    .click();
+  await expect(retained).toBeVisible();
+  await page
+    .getByRole('button', {
+      name: 'Verify retained exact reference',
+      exact: true,
+    })
+    .click();
+  await expect(retained).toContainText(
+    'STALE — original scope and receipt are retained',
+  );
+  await expect(facts).toHaveText(originalFacts, { useInnerText: true });
+  await page
+    .getByRole('button', { name: 'Revoke reviewer', exact: true })
+    .click();
+  await page
+    .getByRole('button', {
+      name: 'Verify retained exact reference',
+      exact: true,
+    })
+    .click();
+  await expect(page.getByRole('status')).toContainText('UNKNOWN — no scope');
+  await expect(retained).toHaveCount(0);
+  expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+});
+
+test('late capture reads cannot retain a previous company reference after switching context', async ({
+  page,
+}) => {
+  await open(page);
+  await prepare(page);
+  await page
+    .getByRole('checkbox', { name: /I reviewed the exact issued scope/ })
+    .check();
+  await page
+    .getByText('Controlled evidence fault controls', { exact: true })
+    .click();
+  await page
+    .getByRole('button', { name: 'Hold source reads', exact: true })
+    .click();
+  await page
+    .getByRole('button', {
+      name: 'Retain review-only scope reference',
+      exact: true,
+    })
+    .click();
+  await expect(
+    page.getByRole('button', {
+      name: 'Reading original evidence…',
+      exact: true,
+    }),
+  ).toBeDisabled();
+  await page.getByLabel('Fixture contractor').selectOption('2');
+  await page
+    .getByRole('button', { name: 'Release prior held response', exact: true })
+    .click();
+  await expect(
+    page.getByRole('region', { name: 'Estimate to contract handoff' }),
+  ).toHaveCount(0);
+  await prepare(page);
+  await expect(page.locator('.sales-handoff')).toContainText('Roofing');
+  await expect(
+    page.getByRole('region', { name: 'Retained scope reference', exact: true }),
+  ).toHaveCount(0);
+  await expect(
+    page.getByRole('checkbox', { name: /I reviewed the exact issued scope/ }),
+  ).not.toBeChecked();
 });
