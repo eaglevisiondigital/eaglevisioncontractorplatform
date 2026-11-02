@@ -31,8 +31,8 @@ Original inputs, source/model instances, current membership and authorization ar
 rechecked after the final await. Historical packet contents remain unchanged when
 later reports or access changes make the current review unavailable.
 
-Validation: 36 new source-based cases plus25 retained customer-workflow cases
-(61 total) PASS. They cover three brands, exact report/job identities, wrong/missing
+Validation: 32 new source-based cases plus25 retained customer-workflow cases
+(57 total) PASS. They cover three brands, exact report/job identities, wrong/missing
 versions, foreign target/model denial, revocation, immutable stale history, concurrent
 duplicate attempts, lost results, final-await input/context/confirmation drift,
 accessor/coercion rejection, strict private-field exclusion and no business writers.
