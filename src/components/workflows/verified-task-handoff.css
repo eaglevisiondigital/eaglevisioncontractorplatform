@@ -1,0 +1,128 @@
+.verified-task-handoff {
+  min-width: 0;
+  padding: 24px;
+  color: #20352f;
+  background: #f5f5ef;
+  border: 1px solid #d9e1da;
+  border-radius: 16px;
+}
+.verified-task-handoff * {
+  box-sizing: border-box;
+}
+.verified-task-handoff :is(h2, h3, h4, p, li, dd, dt, button, label) {
+  overflow-wrap: anywhere;
+}
+.verified-task-handoff h2 {
+  margin: 4px 0 12px;
+  font-size: 1.65rem;
+}
+.verified-task-handoff .handoff-eyebrow {
+  color: #3e594f;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+.verified-task-handoff .handoff-muted {
+  color: #3e594f;
+  font-size: 0.9rem;
+}
+.verified-task-handoff label {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0;
+  font-weight: 600;
+}
+.verified-task-handoff :is(select, input:not([type='checkbox'])) {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  color: #20352f;
+  background: white;
+}
+.verified-task-handoff button {
+  min-height: 44px;
+  max-width: 100%;
+  margin: 8px 0;
+  padding: 10px 14px;
+  color: white;
+  background: var(--journey-primary, #247364);
+  white-space: normal;
+}
+.verified-task-handoff button:disabled {
+  color: #3e594f;
+  background: #d9e1da;
+}
+.verified-task-handoff :focus-visible {
+  outline: 3px solid var(--journey-primary, #247364);
+  outline-offset: 4px;
+}
+.verified-task-handoff fieldset {
+  min-width: 0;
+  padding: 16px;
+  margin: 16px 0;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+}
+.verified-task-handoff legend {
+  font-weight: 700;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.verified-task-handoff .handoff-confirm {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-height: 44px;
+}
+.verified-task-handoff .handoff-confirm input {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+.verified-task-handoff .handoff-card {
+  padding: 20px;
+  margin-top: 20px;
+  min-width: 0;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  background: white;
+}
+.verified-task-handoff dl {
+  display: grid;
+  gap: 6px;
+}
+.verified-task-handoff dt {
+  color: #3e594f;
+  font-weight: 700;
+}
+.verified-task-handoff dd {
+  margin: 0 0 10px;
+}
+.verified-task-handoff .handoff-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.verified-task-handoff .handoff-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.verified-task-handoff .handoff-list {
+  list-style: none;
+  padding: 0;
+}
+.verified-task-handoff .handoff-list > li {
+  padding: 16px 0;
+  border-top: 1px solid #d9e1da;
+}
+@media (max-width: 760px) {
+  .verified-task-handoff {
+    padding: 16px;
+  }
+  .verified-task-handoff .handoff-controls {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .verified-task-handoff .handoff-card {
+    padding: 16px;
+  }
+}
