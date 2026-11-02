@@ -3,6 +3,7 @@ import { sampleCompanies } from '../src/domain/platform';
 import { Operations } from '../src/lib/operations';
 import { Phase3Repository } from '../src/lib/phase3';
 import { prototypeFixture } from './program/prototype-fixture';
+import { readPrototypeSource } from '../src/lib/program/prototype-source';
 import {
   prepareStormNetworkReview,
   reconcileStormNetworkReview,
@@ -181,10 +182,11 @@ it('supports an explicitly unassessed incident with no invented line association
   f.input.conditions = ['CONDITION_NOT_YET_ASSESSED'];
   f.input.scope_line_ids = [];
   f.input.reported_on = null;
+  const source = await readPrototypeSource(f.repo, f.target, f.gate);
   const review = await prepare(f);
   expect(review.triage).toMatchObject({
     reported_on: null,
-    property_snapshot: 'UNKNOWN',
+    property_snapshot: source.snapshot.property_snapshot,
     job_association: 'NOT_SELECTED',
     source_scope: [],
   });

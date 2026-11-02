@@ -93,6 +93,16 @@ binding is lost on refresh/process loss; it is not durable custody.
 npx vitest run tests/program-storm-network-review.test.ts tests/program-prototype-source.test.ts
 ```
 
+## Combined-source compatibility
+
+The unassessed-incident regression compares `property_snapshot` to the exact actual
+`readPrototypeSource` projection. The initial isolated parent has no historical
+location snapshot and reports UNKNOWN; the retained C2/C3 composed estimating source
+records its actual CRM snapshot and reports RECORDED. The test requires exact source
+lineage in either source tree; it does not accept a union of arbitrary statuses or
+change module behavior. An unassessed physical condition remains UNVERIFIED regardless
+of whether the CRM location was recorded.
+
 ## Separate future gates
 
 [Cycle-five research](CYCLE5_EXPANSION_RESEARCH.md) records the public primary
