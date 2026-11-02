@@ -1,0 +1,130 @@
+.crew-assignment-lab {
+  color: #20352f;
+  line-height: 1.55;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.crew-assignment-lab header {
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.crew-assignment-lab header > div {
+  display: block;
+  min-width: 0;
+}
+.crew-assignment-lab h2,
+.crew-assignment-lab h3,
+.crew-assignment-lab h4 {
+  color: #20352f;
+  line-height: 1.25;
+}
+.crew-assignment-lab .cal-eyebrow {
+  color: #526159;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+.crew-assignment-lab .cal-badge {
+  background: #e8eee8;
+  border: 1px solid #cbd8ce;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  white-space: normal;
+  font-size: 0.8rem;
+}
+.crew-assignment-lab .cal-boundary {
+  background: #f5f5ef;
+  border-left: 3px solid var(--journey-primary, #00543e);
+  padding: 1rem;
+}
+.crew-assignment-lab .cal-controls,
+.crew-assignment-lab .cal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.crew-assignment-lab label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: 600;
+  min-width: 0;
+}
+.crew-assignment-lab input,
+.crew-assignment-lab select,
+.crew-assignment-lab button {
+  min-height: 44px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.crew-assignment-lab .cal-check {
+  flex-direction: row;
+  align-items: center;
+  margin: 1rem 0;
+  font-weight: 400;
+}
+.crew-assignment-lab .cal-check input {
+  min-width: 24px;
+  width: 24px;
+  margin-right: 0.4rem;
+}
+.crew-assignment-lab button {
+  background: var(--journey-primary, #00543e);
+  color: white;
+  border: 1px solid transparent;
+  padding: 0.7rem 1rem;
+  white-space: normal;
+  text-align: left;
+}
+.crew-assignment-lab button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.crew-assignment-lab .cal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.crew-assignment-lab .cal-card {
+  padding: 1.2rem;
+  border: 1px solid #d9e1da;
+  border-radius: 14px;
+  background: white;
+  min-width: 0;
+}
+.crew-assignment-lab dl > div {
+  margin-bottom: 0.75rem;
+}
+.crew-assignment-lab dt {
+  color: #526159;
+  font-size: 0.8rem;
+  text-transform: none;
+}
+.crew-assignment-lab dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.crew-assignment-lab :focus-visible {
+  outline: 3px solid var(--journey-accent, #dfb461);
+  outline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .crew-assignment-lab header {
+    display: block;
+  }
+  .crew-assignment-lab .cal-controls,
+  .crew-assignment-lab .cal-grid {
+    grid-template-columns: 1fr;
+  }
+  .crew-assignment-lab .cal-actions {
+    display: grid;
+  }
+  .crew-assignment-lab .cal-badge {
+    display: inline-block;
+  }
+}
