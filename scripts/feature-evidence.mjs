@@ -325,6 +325,30 @@ export function sourceOwner(path) {
     )
   )
     return 'A8';
+  // Cycle12 exact review lanes; classification never grants runtime authority.
+  if (
+    /OperatingCenterCycleTwelve|^tests\/program\/.*cycle12|cycle12-integration|playwright\.cycle12|check-cycle12-/.test(
+      path,
+    )
+  )
+    return 'A8';
+  if (
+    /schedule-proposal-revisions|ScheduleProposalRevisions|server\/field-lab\/proposal-revisions|cycle12-schedule-worker/.test(
+      path,
+    )
+  )
+    return 'A3';
+  if (/financial-evidence-review|FinancialEvidenceReview/.test(path))
+    return 'A4';
+  if (/service-lifecycle-review|ServiceLifecycleReview/.test(path)) return 'A5';
+  if (
+    /consent-cancellation-review|ConsentCancellationReview|verified-operating-suggestions|VerifiedOperatingSuggestions|server\/consent-lab\/cancellation-review|cycle12-consent-worker/.test(
+      path,
+    )
+  )
+    return 'A6';
+  if (/external-proposal-lifecycle|ExternalProposalLifecycle/.test(path))
+    return 'A7';
   // Cycle11 source lanes; metadata only. CSS retains the shared A8 lane.
   if (
     /OperatingCenterCycleEleven|pilot-scorecard|PilotScorecard|cycle11-(integration|feature-evidence|browser|core|reviews|default-off)|playwright\.cycle11|check-cycle11-/.test(

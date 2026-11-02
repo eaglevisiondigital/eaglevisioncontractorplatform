@@ -1,0 +1,56 @@
+name: Cycle 12 exact workflow revision and verification
+on:
+  push:
+    branches: ['codex/program-cycle-twelve']
+  pull_request:
+    paths:
+      - 'src/App.tsx'
+      - 'src/components/workflows/**'
+      - 'src/lib/workflows/**'
+      - 'tests/cycle12*'
+      - 'tests/cycle11-integration.test.ts'
+      - 'server/field-lab/**'
+      - 'server/consent-lab/**'
+      - 'tests/helpers/cycle12*'
+      - 'tests/program/*cycle12*'
+      - 'scripts/check-cycle12-integrity.mjs'
+      - 'scripts/check-cycle12-results.mjs'
+      - 'docs/program/CYCLE12_DELIVERY_INDEX.json'
+      - 'docs/FEATURE_ACCEPTANCE_EVIDENCE.json'
+      - 'scripts/feature-evidence.mjs'
+      - '.github/workflows/cycle12-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle12-integration-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  bounded-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node scripts/check-cycle12-integrity.mjs
+      - run: npx vitest run tests/cycle12*.test.ts tests/program/cycle12-feature-evidence.test.ts tests/program/cycle12-scorecard-evidence.test.ts tests/program-feature-evidence.test.ts tests/cycle11-integration.test.ts --reporter=json --outputFile=artifacts/cycle12/application-results.json
+      - run: node scripts/check-cycle12-results.mjs
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test -c tests/program/playwright.cycle12.config.ts --workers=2
+      - run: npx playwright test -c tests/program/playwright.cycle12-off.config.ts --workers=2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle12-workflow-verification-evidence
+          path: |
+            artifacts/cycle12/*.png
+            artifacts/cycle12/clicks-*.json
+            artifacts/cycle12/application-results.json
+            test-results/
+          retention-days: 7

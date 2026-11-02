@@ -55,6 +55,7 @@ export interface OperatingReviewPanel {
 }
 export interface OperatingReviewGroup {
   label: string;
+  initiallyOpen?: boolean;
   panels: readonly OperatingReviewPanel[];
 }
 export function OperatingCenterPreview({
@@ -349,7 +350,11 @@ export function OperatingCenterPreview({
             </details>
           )}
           {additionalReviewGroups.map((group) => (
-            <details className="oc-development" open key={group.label}>
+            <details
+              className="oc-development"
+              open={group.initiallyOpen ?? true}
+              key={group.label}
+            >
               <summary>{group.label}</summary>
               <nav className="oc-nav" aria-label={group.label}>
                 {group.panels.map((panel) => (

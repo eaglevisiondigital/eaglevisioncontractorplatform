@@ -1,10 +1,11 @@
 # Cycle 12 · bounded implementation and integration contracts
 
 Owner direction: November2, local non-production implementation only. Exact parent
-2691fcf9aafb77f831899144c020a8d562222722, coordination draft75. Main works in
+2691fcf9aafb77f831899144c020a8d562222722, prior coordination draft75. Main works in
 codex/program-cycle-twelve in a separate temporary worktree; original checkout stays
-untouched. Prior exact-head checks are recorded in CYCLE12_BASELINE_CI.json; pending
-Foundation is not green, and completed checks are never manually repeated.
+untouched. Prior exact-head checks are recorded in CYCLE12_BASELINE_CI.json; all158observed
+runs, including both remaining74/75Foundation pairs, nowPASS. No completed check
+was manually repeated. Current-cycle pending CI remains separate.
 
 ## Actual parallel ownership
 

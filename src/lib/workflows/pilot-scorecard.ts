@@ -74,6 +74,10 @@ export function readPilotScorecard(
     hosted: f.hosted,
     release: f.release,
     source: f.sources[0]?.path ?? null,
+    evidence_sources: f.sources.map((s) => ({
+      path: s.path,
+      anchor: s.anchor,
+    })),
     next: f.next,
   }));
   if (

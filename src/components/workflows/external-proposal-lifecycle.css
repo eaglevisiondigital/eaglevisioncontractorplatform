@@ -1,0 +1,227 @@
+.external-proposal-lifecycle {
+  min-width: 0;
+  padding: clamp(1rem, 3vw, 1.75rem);
+  color: #20352f;
+  background: #fff;
+  border: 1px solid #d9e1da;
+  border-radius: 18px;
+  line-height: 1.55;
+}
+.external-proposal-lifecycle * {
+  box-sizing: border-box;
+}
+.external-proposal-lifecycle header {
+  position: static;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  gap: 1rem;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+}
+.external-proposal-lifecycle header > div {
+  display: block;
+  flex: 1 1 300px;
+  min-width: 0;
+}
+.external-proposal-lifecycle h2,
+.external-proposal-lifecycle h3,
+.external-proposal-lifecycle h4 {
+  margin: 0.25rem 0 0.65rem;
+  overflow-wrap: anywhere;
+}
+.external-proposal-lifecycle form,
+.external-proposal-lifecycle-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+.external-proposal-lifecycle label {
+  display: flex;
+  flex: 1 1 200px;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0.65rem 0;
+  font-weight: 600;
+}
+.external-proposal-lifecycle input,
+.external-proposal-lifecycle select,
+.external-proposal-lifecycle textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0.65rem;
+  border: 1px solid #8c9f93;
+  border-radius: 8px;
+  font: inherit;
+  color: inherit;
+  background: #fff;
+}
+.external-proposal-lifecycle textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+.external-proposal-lifecycle button {
+  min-height: 44px;
+  max-width: 100%;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--journey-primary, #247364);
+  border-radius: 8px;
+  font: inherit;
+  color: #fff;
+  background: var(--journey-primary, #247364);
+  cursor: pointer;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.external-proposal-lifecycle button.secondary {
+  color: var(--journey-primary, #247364);
+  background: #fff;
+}
+.external-proposal-lifecycle button:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+.external-proposal-lifecycle fieldset {
+  min-width: 0;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid #b8c7bd;
+  border-radius: 10px;
+}
+.external-proposal-lifecycle legend {
+  max-width: 100%;
+  padding: 0 0.5rem;
+  overflow-wrap: anywhere;
+  font-weight: 700;
+}
+.external-proposal-lifecycle-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+.external-proposal-lifecycle-card,
+.external-proposal-lifecycle article {
+  min-width: 0;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  background: #f8f8f2;
+}
+.external-proposal-lifecycle-card {
+  border-top: 3px solid var(--journey-primary, #247364);
+}
+.external-proposal-lifecycle p,
+.external-proposal-lifecycle dd,
+.external-proposal-lifecycle li,
+.external-proposal-lifecycle footer {
+  overflow-wrap: anywhere;
+}
+.external-proposal-lifecycle dt {
+  color: #4c5e52;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.external-proposal-lifecycle dd {
+  margin: 0.25rem 0 0.65rem;
+}
+.external-proposal-lifecycle-pill {
+  display: inline-block;
+  align-self: start;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid #b9cbbb;
+  border-radius: 20px;
+  color: #314d40;
+  background: #eff4ec;
+  font-size: 0.85rem;
+}
+.external-proposal-lifecycle-eyebrow,
+.external-proposal-lifecycle footer {
+  color: #4c5e52;
+  font-size: 0.9rem;
+}
+.external-proposal-lifecycle-notice {
+  padding: 0.75rem;
+  border-left: 3px solid var(--journey-accent, #dfb461);
+  background: #fffaf0;
+}
+.external-proposal-lifecycle .external-proposal-lifecycle-check {
+  min-height: 44px;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.65rem;
+}
+.external-proposal-lifecycle-check input {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  accent-color: var(--journey-primary, #247364);
+}
+.external-proposal-lifecycle-table {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+.external-proposal-lifecycle table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.external-proposal-lifecycle th,
+.external-proposal-lifecycle td {
+  padding: 0.65rem;
+  border: 1px solid #c7d3cb;
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+.external-proposal-lifecycle th {
+  color: #314d40;
+  background: #eff4ec;
+}
+.external-proposal-lifecycle [role='alert'] {
+  padding: 0.75rem;
+  border-left: 4px solid #9b4426;
+  color: #71341f;
+  background: #fff3e9;
+}
+.external-proposal-lifecycle footer {
+  display: block;
+  margin-top: 1rem;
+  padding: 1rem 0 0;
+  border-top: 1px solid #d9e1da;
+}
+.external-proposal-lifecycle :focus-visible {
+  outline: 3px solid var(--journey-primary, #247364);
+  outline-offset: 3px;
+}
+@media (max-width: 760px) {
+  .external-proposal-lifecycle {
+    padding: 1rem;
+  }
+  .external-proposal-lifecycle-grid {
+    grid-template-columns: 1fr;
+  }
+  .external-proposal-lifecycle form,
+  .external-proposal-lifecycle-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .external-proposal-lifecycle label {
+    flex: initial;
+  }
+  .external-proposal-lifecycle button {
+    width: 100%;
+  }
+  .external-proposal-lifecycle table {
+    min-width: 560px;
+  }
+}

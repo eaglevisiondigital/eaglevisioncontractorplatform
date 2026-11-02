@@ -1,5 +1,18 @@
 # Engineering decisions
 
+## November2 · extend reviewed proposals without operational authority
+
+Cycle12 adds bounded local revision, verification and cancellation views on exact
+2691fcf C11 sources. New work consumes original holds/readers and one OperatingSources
+set; it does not duplicate business stores or widen source admission. Exact missing
+invoice/job associations, physical completion, real consent and workflow authority
+remain UNKNOWN. A separate six-panel collapsed group preserves all prior navigation.
+The existing acceptance register retains25records and every original stage/approval
+value; expanded public citations improve evidence without promotion. New tests and
+source checkers are separate from retained count/hash contracts. All production,
+recovery/Auth/MFA/NMI/P1/customer14/4B/Netlify/financial/message/dispatch gates persist.
+Release1.0 remains NOT READY / NOT AUTHORIZED.
+
 ## November 2 · separate transactional laboratories from canonical operations
 
 Cycle11 keeps the one existing OperatingSources environment, original engines and

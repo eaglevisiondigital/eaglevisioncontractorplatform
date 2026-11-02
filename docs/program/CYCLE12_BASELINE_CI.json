@@ -1,8 +1,8 @@
 {
   "schema": "propel-cycle12-baseline-ci-v1",
-  "observed_at": "2026-11-02 20:48:29 UTC",
+  "observed_at": "2026-11-02 20:57:00 UTC",
   "parent_commit": "2691fcf9aafb77f831899144c020a8d562222722",
-  "meaning": "Exact prior heads; running checks are pending, not failures or green. No reruns requested.",
+  "meaning": "All158 observed checks across exact Cycle11 author/Main heads succeeded. No reruns requested; earlier pending snapshot remains in seed history.",
   "packages": [
     {
       "draft_pr": 74,
@@ -128,8 +128,8 @@
           "id": 41516607772,
           "name": "Foundation checks",
           "event": "pull_request",
-          "status": "in_progress",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "success",
           "head_sha": "8fe0d30ba3f80c4fc12fd14fef0a05088f1ad5df",
           "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41516607772"
         },
@@ -268,8 +268,8 @@
           "id": 41520341473,
           "name": "Foundation checks",
           "event": "pull_request",
-          "status": "in_progress",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "success",
           "head_sha": "2691fcf9aafb77f831899144c020a8d562222722",
           "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41520341473"
         },
@@ -376,8 +376,8 @@
           "id": 41520331817,
           "name": "Foundation checks",
           "event": "push",
-          "status": "in_progress",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "success",
           "head_sha": "2691fcf9aafb77f831899144c020a8d562222722",
           "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41520331817"
         },

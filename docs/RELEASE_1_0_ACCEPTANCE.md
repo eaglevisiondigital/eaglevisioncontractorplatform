@@ -1,5 +1,13 @@
 # Production Release 1.0 acceptance checklist
 
+## Cycle12 local evidence does not grant release authority
+
+Source-bound workflow revisions, exact canonical financial evidence, service-completion requirements, consent cancellation fixtures, verified suggestions and advanced proposal controls are local/synthetic only. Native process/race tests do not establish genuine Auth/global source atomicity or physical recovery. Browser writers remain NOT CONNECTED.
+
+All128protected hashes/182prior C6–C11 author files/five design locks/13bindings, all13/customer14/original4B/P1/four/approvals/2A–2F/billing/frozen Netlify/executor and approved interfaces remain unchanged. Physical recovery, genuine Auth/MFA, NMI and operational source/custody/provider/financial/communication/dispatch/hosted acceptance remain independent gates. Release1.0 NOT READY / NOT AUTHORIZED.
+
+See [bounded validation](program/CYCLE12_VALIDATION.md). All original release checklist items below remain in force.
+
 ## Cycle11 evidence does not close release gates
 
 Cycle11 adds local staff review usability, separate disposable transaction labs
