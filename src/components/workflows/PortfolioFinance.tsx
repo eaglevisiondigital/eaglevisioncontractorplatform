@@ -375,7 +375,12 @@ function PortfolioForm({
             </div>
           </div>
           <p>{review.totals.meaning}</p>
-          <div className="portfolio-cost-table">
+          <div
+            className="portfolio-cost-table"
+            tabIndex={0}
+            role="region"
+            aria-label="Saved versus scenario portfolio cost evidence"
+          >
             <table aria-label="Canonical portfolio cost comparison">
               <thead>
                 <tr>
