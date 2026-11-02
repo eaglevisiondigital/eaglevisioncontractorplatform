@@ -1,0 +1,264 @@
+.passport-timeline {
+  --passport-color: #247364;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 32px;
+  color: #203530;
+  background: #f5f6f2;
+  font-family: 'Avenir Next', Inter, system-ui, sans-serif;
+  overflow-wrap: anywhere;
+}
+.passport-timeline *,
+.passport-timeline *::before,
+.passport-timeline *::after {
+  box-sizing: border-box;
+}
+.passport-timeline .passport-timeline__header {
+  position: static;
+  display: block;
+  height: auto;
+  padding: 8px 0 28px;
+  background: transparent;
+  color: inherit;
+  border: 0;
+}
+.passport-timeline h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  margin: 8px 0;
+  letter-spacing: -0.04em;
+}
+.passport-timeline h2 {
+  font-size: 1.3rem;
+  margin: 6px 0 14px;
+}
+.passport-timeline h3 {
+  margin-top: 24px;
+}
+.passport-timeline h4,
+.passport-timeline h5 {
+  font-size: 1rem;
+  margin: 16px 0 6px;
+}
+.passport-timeline p {
+  line-height: 1.6;
+}
+.passport-timeline button,
+.passport-timeline select {
+  min-height: 46px;
+  border-radius: 9px;
+  font: inherit;
+}
+.passport-timeline button {
+  background: var(--passport-color);
+  border: 1px solid var(--passport-color);
+  color: white;
+  padding: 11px 18px;
+  cursor: pointer;
+}
+.passport-timeline button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+.passport-timeline :focus-visible {
+  outline: 3px solid #00543e;
+  outline-offset: 4px;
+}
+.passport-timeline__eyebrow {
+  color: #435a50;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+.passport-timeline__badge {
+  display: inline-block;
+  background: #e6ece6;
+  color: #2f4f42;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+.passport-timeline__overview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  background: white;
+  border: 1px solid #dde4dd;
+  border-radius: 16px;
+  padding: 28px;
+}
+.passport-timeline__overview > div {
+  min-width: 0;
+}
+.passport-timeline__overview > button {
+  flex-shrink: 0;
+}
+.passport-timeline__notice {
+  font-size: 0.9rem;
+  color: #435a50;
+  background: #edf0e9;
+  padding: 16px;
+  border-radius: 9px;
+}
+.passport-timeline__toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+  margin: 30px 0 20px;
+}
+.passport-timeline__toolbar label {
+  display: grid;
+  gap: 8px;
+  font-weight: 650;
+}
+.passport-timeline select {
+  background: white;
+  border: 1px solid #a9b9ae;
+  padding: 10px;
+  max-width: 100%;
+  color: #203530;
+}
+.passport-timeline__list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 20px;
+}
+.passport-timeline__card {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: 28px;
+  padding: 28px;
+  background: white;
+  border: 1px solid #dde4dd;
+  border-radius: 14px;
+}
+.passport-timeline__date {
+  display: grid;
+  align-content: start;
+  gap: 7px;
+  font-size: 0.85rem;
+  color: #435a50;
+}
+.passport-timeline__date time {
+  font-size: 1.1rem;
+  color: #203530;
+  font-weight: 750;
+}
+.passport-timeline__body {
+  min-width: 0;
+}
+.passport-timeline__body h2 {
+  margin-top: 14px;
+}
+.passport-timeline__body > p {
+  margin: 10px 0;
+}
+.passport-timeline__detail,
+.passport-timeline__empty {
+  background: white;
+  border: 1px solid #dde4dd;
+  border-radius: 14px;
+  padding: 28px;
+  margin: 24px 0;
+}
+.passport-timeline__detail article {
+  border-top: 1px solid #dde4dd;
+  margin-top: 16px;
+}
+.passport-timeline__digest {
+  font:
+    0.78rem/1.7 ui-monospace,
+    monospace;
+}
+.passport-timeline footer {
+  position: static;
+  display: block;
+  padding-top: 24px;
+  color: #435a50;
+  font-size: 0.85rem;
+}
+.passport-timeline footer .platform-brand {
+  display: inline-block;
+  background: transparent;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  width: 175px;
+}
+.passport-timeline footer .platform-brand img {
+  width: 100%;
+  height: auto;
+}
+.passport-timeline details {
+  margin-top: 20px;
+}
+@media (max-width: 720px) {
+  .passport-timeline {
+    padding: 20px 16px;
+  }
+  .passport-timeline__overview {
+    display: grid;
+    padding: 20px;
+  }
+  .passport-timeline__overview > button {
+    width: 100%;
+  }
+  .passport-timeline__toolbar {
+    display: block;
+  }
+  .passport-timeline__toolbar label {
+    width: 100%;
+  }
+  .passport-timeline__card {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 20px;
+  }
+  .passport-timeline__date {
+    border-bottom: 1px solid #dde4dd;
+    padding-bottom: 16px;
+  }
+  .passport-timeline__detail {
+    padding: 20px;
+  }
+}
+.passport-harness-controls {
+  max-width: 1160px;
+  margin: 16px auto;
+  padding: 16px;
+  background: #edf0e9;
+  color: #203530;
+}
+.passport-harness-controls label {
+  display: inline-grid;
+  gap: 8px;
+  margin: 12px;
+}
+.passport-harness-controls button {
+  margin: 8px;
+  min-height: 44px;
+}
+.passport-harness-controls select {
+  max-width: 100%;
+}
+@media (max-width: 720px) {
+  .passport-harness-controls label {
+    display: grid;
+    margin: 12px 0;
+  }
+  .passport-harness-controls button {
+    display: block;
+    max-width: 100%;
+    margin: 10px 0;
+  }
+}
+.passport-timeline__related {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
