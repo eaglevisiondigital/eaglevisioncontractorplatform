@@ -1,5 +1,18 @@
 # Propel Contractor Suite — feature acceptance register
 
+## Cycle-twelve local workflow candidate
+
+Six separate feature drafts82–87 are composed as exact34author blobs on Main
+`codex/program-cycle-twelve`, [draft PR81](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/81),
+from exact prior2691fcf9aafb77f831899144c020a8d562222722. No merge or history rewrite.
+481 focused application cases,48all-brand desktop/tablet/mobile development cases
+and3production-OFF cases PASS;99real screenshots/45trusted-click records retained.
+Independent48-case review CLEAR for bounded local/synthetic use only.
+
+[Source/hash index](program/CYCLE12_DELIVERY_INDEX.json), [validation](program/CYCLE12_VALIDATION.md), [independent review](program/CYCLE12_INTEGRATION_REVIEW.md) and [exact author CI](program/CYCLE12_CI_SNAPSHOT.json) retain separate proof. Original25record stages/approvals/CI values stay byte-for-byte equivalent in a dedicated state fingerprint. Public source citations improve reviewability without accepting any release gate.
+
+All128protected hashes/182prior C6–C11 author files/five design locks/13bindings, all13/customer14/original4B/P1/four/approvals/2A–2F/billing/frozen Netlify/executor and approved interfaces remain unchanged. Physical recovery, genuine Auth/MFA, NMI and operational source/custody/provider/financial/communication/dispatch/hosted acceptance remain independent gates. Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Cycle-eleven local review candidate
 
 Six separate drafts74/76–80 are source-composed on Main draft75; nothing merged.

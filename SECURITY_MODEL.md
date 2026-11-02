@@ -1,5 +1,18 @@
 # Security model · Phase 2
 
+## Cycle12 expiry, revocation and workflow verification
+
+Proposal revision or relabeling never bypasses permanent UNKNOWN custody. Exact
+source/predecessor receipt, current eligible synthetic staff, saved revisions and
+trusted synthetic clock must agree before/after waits; expiration/cancellation/
+revocation retain evidence and cannot authorize retries. Participating test metadata
+transactions do not establish real Auth/global source atomicity or external restore
+protection. Canonical financial proofs never modify ledger/payment state. Missing
+completion/acceptance/warranty evidence stays UNKNOWN. Suggestions and external
+reference proposals never grant actions. No browser writer, network endpoint,
+outbound worker, recipient resolver, hosted grant or credential path is added.
+All original recovery/P1/customer14/4B/MFA/NMI/Auth/Netlify/production gates persist.
+
 ## Cycle11 test custody and review boundaries
 
 Current eligible synthetic membership, exact retained source handles, immutable

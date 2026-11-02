@@ -1,5 +1,25 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: cycle twelve · exact workflow revisions and source-state review
+
+CI portability correction: the first push run recorded480PASS/1compound-test
+timeout at30seconds; its same-head PR integration run passed. Independent review
+adds a finite90second test-only budget to just the three complete six-workflow
+scenarios. All48review cases/assertions and all product expiry/CAS/native wait bounds
+remain exact. Corrected targeted3/full48cases PASS; normal automatic CI checks the
+new source head. [Exact failure/correction evidence](docs/program/CYCLE12_CI_CORRECTION.json).
+
+Six separate feature drafts82–87 are composed as exact34author blobs on Main
+`codex/program-cycle-twelve`, [draft PR81](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/81),
+from exact prior2691fcf9aafb77f831899144c020a8d562222722. No merge or history rewrite.
+481 focused application cases,48all-brand desktop/tablet/mobile development cases
+and3production-OFF cases PASS;99real screenshots/45trusted-click records retained.
+Independent48-case review CLEAR for bounded local/synthetic use only.
+
+All128protected hashes/182prior C6–C11 author files/five design locks/13bindings, all13/customer14/original4B/P1/four/approvals/2A–2F/billing/frozen Netlify/executor and approved interfaces remain unchanged. Physical recovery, genuine Auth/MFA, NMI and operational source/custody/provider/financial/communication/dispatch/hosted acceptance remain independent gates. Release1.0 NOT READY / NOT AUTHORIZED.
+
+See [Cycle12 validation](docs/program/CYCLE12_VALIDATION.md) and exact source/CI indexes. All new panels remain default-OFF, local loopback only or unwired. Temporary test listeners stop.
+
 ## Latest: cycle eleven · source-bound operating reviews and isolated labs
 
 CI portability correction: actual first Ubuntu run412PASS/1FAIL exposed only a

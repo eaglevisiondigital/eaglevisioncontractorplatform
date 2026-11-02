@@ -1,0 +1,134 @@
+.consent-cancellation-review {
+  color: #20352f;
+  line-height: 1.55;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.consent-cancellation-review > header {
+  position: static;
+  width: auto;
+  height: auto;
+  min-height: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.consent-cancellation-review > header > div {
+  display: block;
+  min-width: 0;
+}
+.consent-cancellation-review h2,
+.consent-cancellation-review h3,
+.consent-cancellation-review h4 {
+  color: #20352f;
+  line-height: 1.25;
+}
+.consent-cancellation-review .ccr-eyebrow {
+  color: #526159;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+.consent-cancellation-review .ccr-badge {
+  display: inline-block;
+  background: #e8eee8;
+  border: 1px solid #cbd8ce;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  white-space: normal;
+  font-size: 0.8rem;
+}
+.consent-cancellation-review .ccr-boundary {
+  background: #f5f5ef;
+  border-left: 3px solid var(--journey-primary, #00543e);
+  padding: 1rem;
+}
+.consent-cancellation-review .ccr-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.consent-cancellation-review label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: 600;
+  min-width: 0;
+}
+.consent-cancellation-review input,
+.consent-cancellation-review select,
+.consent-cancellation-review button {
+  min-height: 44px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.consent-cancellation-review input,
+.consent-cancellation-review select {
+  width: 100%;
+}
+.consent-cancellation-review .ccr-check {
+  flex-direction: row;
+  align-items: center;
+  margin: 1rem 0;
+  font-weight: 400;
+}
+.consent-cancellation-review .ccr-check input {
+  min-width: 44px;
+  width: 44px;
+  margin-right: 0.4rem;
+}
+.consent-cancellation-review button {
+  background: var(--journey-primary, #00543e);
+  color: white;
+  border: 1px solid transparent;
+  padding: 0.7rem 1rem;
+  white-space: normal;
+  text-align: left;
+}
+.consent-cancellation-review button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.consent-cancellation-review .ccr-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+.consent-cancellation-review .ccr-card {
+  padding: 1.2rem;
+  border: 1px solid #d9e1da;
+  border-radius: 14px;
+  background: white;
+  min-width: 0;
+  margin: 1rem 0;
+}
+.consent-cancellation-review dl > div {
+  margin-bottom: 0.75rem;
+}
+.consent-cancellation-review dt {
+  color: #526159;
+  font-size: 0.8rem;
+}
+.consent-cancellation-review dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.consent-cancellation-review :focus-visible {
+  outline: 3px solid var(--journey-accent, #dfb461);
+  outline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .consent-cancellation-review > header {
+    display: block;
+  }
+  .consent-cancellation-review .ccr-controls {
+    grid-template-columns: 1fr;
+  }
+  .consent-cancellation-review .ccr-actions {
+    display: grid;
+  }
+}

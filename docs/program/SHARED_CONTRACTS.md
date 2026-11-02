@@ -1,5 +1,24 @@
 # Shared contracts and integration ownership
 
+## Cycle12 proposal and verification contracts
+
+All six packages reuse exact OperatingSources and C11 canonical readers, original
+one-use holds and immutable source references. Proposal expiry/revocation concerns
+local human review metadata only. It never reopens an original UNKNOWN reservation,
+imports a schedule or grants dispatch. Exact read-only predecessor receipts are
+required before later lab revision; filesystem/provisioner/clock and external restore
+trust remain explicit. Browser state is same-tab and never connects to either lab.
+Financial evidence follows actual event→invoice→contract→offer→issued scope→job and
+exact property identity; absent recorded links are UNKNOWN, never a fabricated FK.
+Canonical events/ledger verifier remain the only financial source, with no writer.
+Completion requirements preserve recorded facts separate from unverified physical
+completion/acceptance/warranty. Consent cancellation races serialize participating
+synthetic fixtures only, with no sender or outbound worker. Suggestions recheck exact
+source and workflow state and have no action authority. All7advanced modes extend
+existing proposal/handoff contracts rather than importing data or creating providers.
+Public acceptance scorecards now expose allowlisted source citations while retaining
+all25capability stage/approval values and8independent PhaseOne gates.
+
 ## Cycle11 exact-source review and isolated lab contracts
 
 All six packages consume the same admitted OperatingSources handles, current

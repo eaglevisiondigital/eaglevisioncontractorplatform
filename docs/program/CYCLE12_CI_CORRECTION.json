@@ -1,0 +1,47 @@
+{
+  "schema": "propel-cycle12-ci-correction-v1",
+  "first_head": "d0fa1a0d2e32b6f2a755cd2bd60ed2adb6c31b54",
+  "run_id": 41529254948,
+  "run_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41529254948",
+  "artifact_id": 13182610435,
+  "artifact_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41529254948/artifacts/13182610435",
+  "artifact_report_sha256": "c2faced39726ba8c4e329674820a429ca33bcf2f820e281226b0c4ddce5f59a5",
+  "actual": {
+    "passed": 480,
+    "failed": 1,
+    "pending": 0,
+    "test_file": "tests/cycle12-integration.test.ts",
+    "failed_test": "brand 2 composes all six exact source reviews, original canonical engines and strict customer proof requirements without effects",
+    "failure_kind": "compound_six_workflow_test_timeout_30000ms",
+    "three_brand_durations_ms": [
+      3636.530069, 3354.6967400000003, 3669.326156000001, 461.99690300000657,
+      533.750344, 524.0254339999956, 5601.694634, 4945.9486480000005,
+      5722.764048000001, 184.5753210000039, 183.10508200000186,
+      210.74646499999653, 28693.799372, 28543.738153, 30838.56534200001,
+      5269.093057, 5111.602075, 5306.80364, 1486.953662, 1467.4147880000019,
+      1674.0852510000113, 5802.264509, 5455.528188, 6182.802496999999,
+      56.759438000000955, 57.10401200000342, 63.509877999997116
+    ]
+  },
+  "correction_scope": "Explicit finite 90000ms test budget only for the three full six-workflow integration scenarios. All48cases and unconditional assertions retained. Other45review cases, global30000ms defaults and all actual source/CAS/expiry/native wait bounds unchanged. No author product files or historical check weakened.",
+  "manual_reruns": 0,
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "same_head_counterpart": {
+    "run_id": 41529263547,
+    "run_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41529263547",
+    "event": "pull_request",
+    "conclusion": "success",
+    "meaning": "Exact same d0fa1a0 head passed strict application result-count validation and all development/production-OFF browser stages; push run still preserves its distinct compound test-timeout failure."
+  },
+  "corrected_local": {
+    "full_independent_cases": 48,
+    "failed": 0,
+    "pending": 0,
+    "targeted_compound_cases": 3,
+    "full_report_sha256": "647786f2f212e47e3488da7a92f73c089a51ab593ec22c983397d1507f783087",
+    "assertion_preservation": "Removing only two explanatory comments and the single90000ms test argument reconstructs the prior test file byte-for-byte. No assertion/helper/body changes."
+  },
+  "corrected_independent_commit": "05277c58db46ee8d9670199249f60918955a4b75",
+  "initial_independent_commit": "822858090a2a87870598cfab1eda5a5546127a82",
+  "corrected_head_ci": "UNKNOWN_UNTIL_NEW_MAIN_PUSH"
+}

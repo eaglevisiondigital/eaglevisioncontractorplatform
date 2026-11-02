@@ -39,3 +39,7 @@ artifacts/cycle8/
 artifacts/cycle9/
 artifacts/cycle10/
 artifacts/cycle11/
+
+# Cycle12 local dependencies may be a read-only symlink to the pinned workspace.
+/node_modules
+artifacts/cycle12/

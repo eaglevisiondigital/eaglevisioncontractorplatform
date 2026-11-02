@@ -128,6 +128,13 @@ export function PilotScorecard({
                   <details>
                     <summary>Evidence and next gate</summary>
                     <p>{f.source}</p>
+                    <ul aria-label={`Public source evidence for ${f.id}`}>
+                      {f.evidence_sources.map((s) => (
+                        <li key={`${s.path}:${s.anchor}`}>
+                          {s.path} · {s.anchor}
+                        </li>
+                      ))}
+                    </ul>
                     <p>{f.next}</p>
                     {f.ci.commit && <p>Retained CI commit {f.ci.commit}</p>}
                   </details>

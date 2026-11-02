@@ -1,5 +1,19 @@
 # Shared design-system specification · cycle two
 
+## Cycle12 additive review navigation
+
+The new six-panel Cycle12 group is initially collapsed. Existing8primary sections,
+6Cycle10 reviews and7Cycle11 panels preserve their original visibility and semantics.
+The optional initiallyOpen field defaults true, so retained navigation remains
+compatible. Expanding the new group is an explicit touch/keyboard action counted in
+usability evidence. No locked style, artwork, global type or contractor palette changes.
+Source detail, verification gaps, expiry/revocation and UNKNOWN use text labels,
+current source identities and existing responsive cards. Customer-safe verification
+is visibly distinct from staff provenance. Finance before/after remains a proposal,
+not a resolution. Accessible names retain the full visible action phrase. Public
+scorecard citations stay collapsed within evidence/next-gate disclosures, without
+promoting source/local/CI proof into hosted or release approval.
+
 ## Cycle11 review group and accessible evidence
 
 The original eight-section navigation and six Daily workflow reviews remain exact.

@@ -1,0 +1,256 @@
+{
+  "schema": "propel-cycle12-delivery-v1",
+  "coordination_branch": "codex/program-cycle-twelve",
+  "coordination_draft_pr": 81,
+  "parent_commit": "2691fcf9aafb77f831899144c020a8d562222722",
+  "baseline_ci": "docs/program/CYCLE12_BASELINE_CI.json",
+  "independent_review_commit": "05277c58db46ee8d9670199249f60918955a4b75",
+  "independent_files": [
+    {
+      "path": "tests/cycle12-integration.test.ts",
+      "sha256": "2261de56a0490a3649cf1984da04edb1603121b9957eca51b0e28f901ce46553"
+    },
+    {
+      "path": "docs/program/CYCLE12_INTEGRATION_REVIEW.md",
+      "sha256": "122e92c0f0cd1067c8715f85586b10b86eb8d3e218e2d87be90dcadcfbb29605"
+    }
+  ],
+  "packages": [
+    {
+      "module": "schedule-proposal-revisions",
+      "component": "ScheduleProposalRevisions",
+      "doc": "CYCLE12_SCHEDULE_PROPOSAL_REVISIONS",
+      "owner": "/root/cycle12_field_growth",
+      "branch": "codex/cycle12-schedule-revisions",
+      "parent_commit": "2691fcf9aafb77f831899144c020a8d562222722",
+      "head_commit": "7747245d133b9ed06d3c896a4453635f4606af00",
+      "draft_pr": 84,
+      "focused_new_tests": 47,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/schedule-proposal-revisions.ts",
+          "sha256": "e493bd5c596643449f60b7476dec118e36a3308e4f69f4ea4493a516d1911c99"
+        },
+        {
+          "path": "src/components/workflows/ScheduleProposalRevisions.tsx",
+          "sha256": "a44c117b44cdc0a4979a0d5989a1d9b0b345df4c261fe64ce8c2bbd8e0877299"
+        },
+        {
+          "path": "src/components/workflows/schedule-proposal-revisions.css",
+          "sha256": "3e1154df60150e200eb5be659d60615abfba876ef1170536b369f68fb76be8cc"
+        },
+        {
+          "path": "tests/cycle12-schedule-proposal-revisions.test.ts",
+          "sha256": "17e2798d0942299be39fe597a597f1a70b569560488531e3d1a2f8c45e76053f"
+        },
+        {
+          "path": "docs/program/CYCLE12_SCHEDULE_PROPOSAL_REVISIONS.md",
+          "sha256": "1ae81c172c0795c81fe653fe64b8fe523681b23587401db7b975af314caec638"
+        },
+        {
+          "path": "server/field-lab/proposal-revisions.ts",
+          "sha256": "f5f426ae2fb62dcb158e516dddc1651d9f14444b78fedd6fa1d6d38f6348befa"
+        },
+        {
+          "path": "tests/helpers/cycle12-schedule-worker.ts",
+          "sha256": "7ed86e1c7fd754a1116928ab61306e25dd51f71700ecf0c4545b324a9323b818"
+        }
+      ]
+    },
+    {
+      "module": "financial-evidence-review",
+      "component": "FinancialEvidenceReview",
+      "doc": "CYCLE12_FINANCIAL_EVIDENCE_REVIEW",
+      "owner": "/root/cycle12_finance_intelligence",
+      "branch": "codex/cycle12-canonical-financial-evidence",
+      "parent_commit": "2691fcf9aafb77f831899144c020a8d562222722",
+      "head_commit": "cc24f8992a90c396a755ac7411dd23b696b3aa39",
+      "draft_pr": 83,
+      "focused_new_tests": 43,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/financial-evidence-review.ts",
+          "sha256": "ebe5bf8cfbde77ea6933db0eae70fce361c0e410bc1d04233ec9c612d82b5126"
+        },
+        {
+          "path": "src/components/workflows/FinancialEvidenceReview.tsx",
+          "sha256": "f72ed393dbe2d685f9675e5aed22f6eefb5fbfc6a77c4707410c6115f4d56e2c"
+        },
+        {
+          "path": "src/components/workflows/financial-evidence-review.css",
+          "sha256": "2c6c57587b528334ad08d08fb499dc1056f8efd44ae0ab238b7dc974b3c95ee4"
+        },
+        {
+          "path": "tests/cycle12-financial-evidence-review.test.ts",
+          "sha256": "f6bf543dc823c20f505fd6b1bffe3ab3e4848f2a125ec30682c3b4c3fbe9b62d"
+        },
+        {
+          "path": "docs/program/CYCLE12_FINANCIAL_EVIDENCE_REVIEW.md",
+          "sha256": "691fce039ddc4d94b6702f457ec0d530a92971cf8f9bf62260b75fe608baaad9"
+        }
+      ]
+    },
+    {
+      "module": "service-lifecycle-review",
+      "component": "ServiceLifecycleReview",
+      "doc": "CYCLE12_SERVICE_LIFECYCLE_REVIEW",
+      "owner": "/root/cycle12_customer_advanced",
+      "branch": "codex/cycle12-service-lifecycle",
+      "parent_commit": "2691fcf9aafb77f831899144c020a8d562222722",
+      "head_commit": "ee5db644f770f91dc6d88ce914d66cb9a19c5e12",
+      "draft_pr": 82,
+      "focused_new_tests": 60,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/service-lifecycle-review.ts",
+          "sha256": "1f9a8e21042ec4a8ec449906bb5efe751a5f6500fddbf3ae97b666cf65636f7a"
+        },
+        {
+          "path": "src/components/workflows/ServiceLifecycleReview.tsx",
+          "sha256": "43a5ff02fa27985d29258bd9c879229ae656a42ce833e76f284d2d50359c5b3a"
+        },
+        {
+          "path": "src/components/workflows/service-lifecycle-review.css",
+          "sha256": "6caea258f4712d23dcfa7503a71ecb4d302c9799bebefbb96fd10ed894d13f07"
+        },
+        {
+          "path": "tests/cycle12-service-lifecycle-review.test.ts",
+          "sha256": "1e2dca965428c206befd26a41afb5c49b32de33f3a889b75cdff9187a284bbba"
+        },
+        {
+          "path": "docs/program/CYCLE12_SERVICE_LIFECYCLE_REVIEW.md",
+          "sha256": "302926c60439d5bdaf85a7feaff0d7ac56548ac198de466267af02cf9c133a8a"
+        }
+      ]
+    },
+    {
+      "module": "consent-cancellation-review",
+      "component": "ConsentCancellationReview",
+      "doc": "CYCLE12_CONSENT_CANCELLATION_REVIEW",
+      "owner": "/root/cycle12_field_growth",
+      "branch": "codex/cycle12-consent-cancellation",
+      "parent_commit": "2691fcf9aafb77f831899144c020a8d562222722",
+      "head_commit": "a4e53a300f685ad48a9922feca2fabfd0e17c079",
+      "draft_pr": 87,
+      "focused_new_tests": 46,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/consent-cancellation-review.ts",
+          "sha256": "6fb53c17b1471d3ee227bd249e6ca11fb89c2fb31aabdcaf26a4e5e00cc8e71f"
+        },
+        {
+          "path": "src/components/workflows/ConsentCancellationReview.tsx",
+          "sha256": "8b2887ba30bbc04b27585c8cc235ccf217140d0c9d74a099db34042e626b49fc"
+        },
+        {
+          "path": "src/components/workflows/consent-cancellation-review.css",
+          "sha256": "ca1f941433faa9be4428ecca341b4dd6276bd640a37fbb9d955554d89884ee78"
+        },
+        {
+          "path": "tests/cycle12-consent-cancellation-review.test.ts",
+          "sha256": "e2d706b3e708853a474ed0821fade3be62a69acd9c0bfbab4426e06a937c18b1"
+        },
+        {
+          "path": "docs/program/CYCLE12_CONSENT_CANCELLATION_REVIEW.md",
+          "sha256": "586b6100faac13d1ff330369bbc6231e7c95f8cf241e12c2968b6e1a1d3e9a37"
+        },
+        {
+          "path": "server/consent-lab/cancellation-review.ts",
+          "sha256": "e2cbd332d5b1d22d0d07a7897a8beba0aa13f4a46a270500154f32515a9aad8f"
+        },
+        {
+          "path": "tests/helpers/cycle12-consent-worker.ts",
+          "sha256": "dab3f8b1fd3d6146f0265e61ccc03461be0f2483eed47dfd9f0fcc94532a9a82"
+        }
+      ]
+    },
+    {
+      "module": "verified-operating-suggestions",
+      "component": "VerifiedOperatingSuggestions",
+      "doc": "CYCLE12_VERIFIED_OPERATING_SUGGESTIONS",
+      "owner": "/root/cycle12_finance_intelligence",
+      "branch": "codex/cycle12-verified-suggestions",
+      "parent_commit": "2691fcf9aafb77f831899144c020a8d562222722",
+      "head_commit": "6fbb0ed6006e7c08ed023f82a81f367daa782df7",
+      "draft_pr": 86,
+      "focused_new_tests": 38,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/verified-operating-suggestions.ts",
+          "sha256": "9a495ac33251998ece2118b60a8136c59f4746afce3315a772fe1e7bfeda7288"
+        },
+        {
+          "path": "src/components/workflows/VerifiedOperatingSuggestions.tsx",
+          "sha256": "f9ad81a1aa3b9f8e57881d35e4b5e709f5a810404cd980eb7fa9d217d1ad0578"
+        },
+        {
+          "path": "src/components/workflows/verified-operating-suggestions.css",
+          "sha256": "5828c63bcaafda8f375ae9418267178f6e918286ae8d35b7b07319544dff266d"
+        },
+        {
+          "path": "tests/cycle12-verified-operating-suggestions.test.ts",
+          "sha256": "f0a63b06e4378d835b548da1ff06cf5963211df8fd55ff16bea9a7ab2bb5a0d6"
+        },
+        {
+          "path": "docs/program/CYCLE12_VERIFIED_OPERATING_SUGGESTIONS.md",
+          "sha256": "7e6d076ccc28a984defe83912fc59e9afa228b14746dbb02f5a65f4a29416a69"
+        }
+      ]
+    },
+    {
+      "module": "external-proposal-lifecycle",
+      "component": "ExternalProposalLifecycle",
+      "doc": "CYCLE12_EXTERNAL_PROPOSAL_LIFECYCLE",
+      "owner": "/root/cycle12_customer_advanced",
+      "branch": "codex/cycle12-external-proposal-lifecycle",
+      "parent_commit": "2691fcf9aafb77f831899144c020a8d562222722",
+      "head_commit": "11f0cfbb77ed1822f402442b2e2143fb7a7029f9",
+      "draft_pr": 85,
+      "focused_new_tests": 73,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/external-proposal-lifecycle.ts",
+          "sha256": "156cf9aac2aff86ddf0f385a6f96e286ec41e7e1a6358aadac3d6d793c044576"
+        },
+        {
+          "path": "src/components/workflows/ExternalProposalLifecycle.tsx",
+          "sha256": "d900de8cd07963c19880bd64e704ef20dd0debb3959ab8a6273c20145c0961d7"
+        },
+        {
+          "path": "src/components/workflows/external-proposal-lifecycle.css",
+          "sha256": "2c64c8cc08ee0acbee7f0c71f12305a51ab3d706a3b22a6f09f87e36dd9f6ea8"
+        },
+        {
+          "path": "tests/cycle12-external-proposal-lifecycle.test.ts",
+          "sha256": "39a0002a4097024288c48d907f06ed48de273f7321af4b777c880f099c8202f3"
+        },
+        {
+          "path": "docs/program/CYCLE12_EXTERNAL_PROPOSAL_LIFECYCLE.md",
+          "sha256": "a2aac58414941dcce32bcec33063d9a3170fa93c5fb01fc28c7365606d6710be"
+        }
+      ]
+    }
+  ],
+  "combined_evidence": {
+    "focused_new_package_cases": 307,
+    "independent_new_cases": 48,
+    "source_ownership_cases": 17,
+    "scorecard_evidence_cases": 4,
+    "retained_independent_cases": 32,
+    "source_inventory_cases": 73,
+    "application_cases": 481,
+    "development_browser_cases": 48,
+    "production_off_browser_cases": 3,
+    "protected_hashes": 128,
+    "retained_author_files": 182,
+    "design_locks": 5,
+    "design_bindings": 13
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

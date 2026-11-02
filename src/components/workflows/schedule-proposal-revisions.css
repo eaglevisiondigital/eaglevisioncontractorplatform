@@ -1,0 +1,134 @@
+.schedule-proposal-revisions {
+  color: #20352f;
+  line-height: 1.55;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.schedule-proposal-revisions > header {
+  position: static;
+  width: auto;
+  height: auto;
+  min-height: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.schedule-proposal-revisions > header > div {
+  display: block;
+  min-width: 0;
+}
+.schedule-proposal-revisions h2,
+.schedule-proposal-revisions h3,
+.schedule-proposal-revisions h4 {
+  color: #20352f;
+  line-height: 1.25;
+}
+.schedule-proposal-revisions .spr-eyebrow {
+  color: #526159;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+.schedule-proposal-revisions .spr-badge {
+  display: inline-block;
+  background: #e8eee8;
+  border: 1px solid #cbd8ce;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  white-space: normal;
+  font-size: 0.8rem;
+}
+.schedule-proposal-revisions .spr-boundary {
+  background: #f5f5ef;
+  border-left: 3px solid var(--journey-primary, #00543e);
+  padding: 1rem;
+}
+.schedule-proposal-revisions .spr-controls,
+.schedule-proposal-revisions .spr-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.schedule-proposal-revisions label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: 600;
+  min-width: 0;
+}
+.schedule-proposal-revisions input,
+.schedule-proposal-revisions select,
+.schedule-proposal-revisions button {
+  min-height: 44px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.schedule-proposal-revisions input,
+.schedule-proposal-revisions select {
+  width: 100%;
+}
+.schedule-proposal-revisions .spr-check {
+  flex-direction: row;
+  align-items: center;
+  margin: 1rem 0;
+  font-weight: 400;
+}
+.schedule-proposal-revisions .spr-check input {
+  min-width: 44px;
+  width: 44px;
+  margin-right: 0.4rem;
+}
+.schedule-proposal-revisions button {
+  background: var(--journey-primary, #00543e);
+  color: white;
+  border: 1px solid transparent;
+  padding: 0.7rem 1rem;
+  white-space: normal;
+  text-align: left;
+}
+.schedule-proposal-revisions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.schedule-proposal-revisions .spr-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.schedule-proposal-revisions .spr-card {
+  padding: 1.2rem;
+  border: 1px solid #d9e1da;
+  border-radius: 14px;
+  background: white;
+  min-width: 0;
+}
+.schedule-proposal-revisions dl > div {
+  margin-bottom: 0.75rem;
+}
+.schedule-proposal-revisions dt {
+  color: #526159;
+  font-size: 0.8rem;
+}
+.schedule-proposal-revisions dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.schedule-proposal-revisions :focus-visible {
+  outline: 3px solid var(--journey-accent, #dfb461);
+  outline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .schedule-proposal-revisions > header {
+    display: block;
+  }
+  .schedule-proposal-revisions .spr-controls,
+  .schedule-proposal-revisions .spr-grid {
+    grid-template-columns: 1fr;
+  }
+  .schedule-proposal-revisions .spr-actions {
+    display: grid;
+  }
+}

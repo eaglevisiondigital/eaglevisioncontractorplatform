@@ -1,5 +1,16 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Cycle12 local review extensions
+
+Source-bound schedule-proposal revisions, canonical financial evidence, service
+lifecycle requirements, consent cancellation, verified suggestions and advanced
+proposal lifecycles reuse C11 authority and canonical engines. Additional disposable
+revision/cancellation custody metadata is test-only, not a new business schedule,
+ledger, service or consent store. All browser writers remain disconnected. The one
+OperatingSources host receives a separate optional collapsed group; original
+navigation and every closed connected/financial/provider route remain unchanged.
+No source hash, review expiry or fixture transaction grants operational acceptance.
+
 ## Cycle11 local-only composition
 
 Six optional staff review panels reuse one existing OperatingSources environment
