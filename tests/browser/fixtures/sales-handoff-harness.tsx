@@ -24,10 +24,12 @@ function Harness() {
     [busy, working] = useState(false),
     [error, setError] = useState('');
   const [held, setHeld] = useState<ControlledRead>();
+  const [preparationEnabled, allowPreparation] = useState(false);
   async function prepare() {
     working(true);
     setError('');
     enable(false);
+    allowPreparation(false);
     setContext(undefined);
     try {
       const fixture = await salesHandoffFixture(
@@ -91,6 +93,7 @@ function Harness() {
             disabled={busy}
             onChange={(e) => {
               company(Number(e.target.value));
+              allowPreparation(false);
               setContext(undefined);
               enable(false);
             }}
@@ -123,6 +126,14 @@ function Harness() {
       {f && context && (
         <details>
           <summary>Controlled evidence fault controls</summary>
+          <label>
+            <input
+              type="checkbox"
+              checked={preparationEnabled}
+              onChange={(e) => allowPreparation(e.target.checked)}
+            />
+            Enable preparation checklist
+          </label>
           <div
             style={{
               display: 'flex',
@@ -209,6 +220,7 @@ function Harness() {
           repo={f.repo}
           release={f.release}
           target={context.target}
+          preparationEnabled={preparationEnabled}
         />
       )}
     </main>
