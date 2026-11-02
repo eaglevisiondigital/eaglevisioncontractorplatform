@@ -588,6 +588,60 @@ describe('unposted time/overhead proposals, not workforce acceptance', () => {
       replacement: null,
     });
   });
+  it.each(['confirmation', 'membership'] as const)(
+    'rechecks %s after verification-time workforce await before reporting drift',
+    async (mode) => {
+      const f = await fixture(),
+        actor = `${f.org}-estimator`;
+      await f.operations.manageMember(
+        f.org,
+        actor,
+        true,
+        'admin',
+        'office_manager',
+      );
+      const review = await readProfitGuardReview(
+        f.reader,
+        f.scope,
+        actor,
+        f.admission,
+        f.proposal,
+      );
+      const original = f.repo.workforce.bind(f.repo);
+      let calls = 0;
+      vi.spyOn(f.repo, 'workforce').mockImplementation(async (org) => {
+        const value = await original(org);
+        if (++calls === 3) {
+          await f.repo.recordTime(f.org, f.proposal.workerId, {
+            job_id: f.job.id,
+            overhead_center: null,
+            task: 'Explicit test-time source edit',
+            kind: 'work',
+            started_at: '2099-06-01T10:00:00-05:00',
+            ended_at: '2099-06-01T11:00:00-05:00',
+            billable: false,
+            corrects_id: null,
+          });
+          if (mode === 'confirmation') f.admission.confirmed = false;
+          else
+            await f.operations.manageMember(
+              f.org,
+              actor,
+              false,
+              'admin',
+              'office_manager',
+            );
+          return original(org);
+        }
+        return value;
+      });
+      expect(await verifyProfitGuardReview(review)).toEqual({
+        status: 'UNKNOWN',
+        replacement: null,
+        workforce: 'UNKNOWN',
+      });
+    },
+  );
   it('does not execute proposal getters or serializers', async () => {
     const f = await fixture(),
       input = { ...f.proposal },

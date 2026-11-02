@@ -470,6 +470,7 @@ export async function verifyProfitGuardReview(review: ProfitGuardReview) {
     if (currentCompletion.status === 'UNKNOWN') throw deny();
     if (record.workforceFingerprint !== null) {
       const workforce = await reader.repo.workforce(scope.organizationId);
+      if (access(reader, scope, actor, admission) !== role) throw deny();
       if (workforceFootprint(workforce, scope) !== record.workforceFingerprint)
         return freeze({
           status: 'STALE' as const,
@@ -477,7 +478,9 @@ export async function verifyProfitGuardReview(review: ProfitGuardReview) {
           workforce: 'UNKNOWN' as const,
         });
     }
-    if (JSON.stringify(currentJob(reader, scope)) !== fingerprint)
+    const currentFingerprint = JSON.stringify(currentJob(reader, scope));
+    if (access(reader, scope, actor, admission) !== role) throw deny();
+    if (currentFingerprint !== fingerprint)
       return freeze({
         status: 'STALE' as const,
         replacement: null,

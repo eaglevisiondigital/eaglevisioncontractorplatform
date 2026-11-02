@@ -75,7 +75,8 @@ actual issued-version job, record explicit test expenses through existing method
 then invoke the reader. They verify all three companies, canonical commitment/payment/
 credit behavior, exact IDs, partial/missing coverage, current role and tenant/customer/
 property isolation, accessor rejection, real edits/revocation during the hash wait,
-immutable snapshots, no-replacement reconciliation, existing time validation,
+immutable snapshots, no-replacement reconciliation, verification-time withdrawal/
+revocation before drift reporting, existing time validation,
 worker/entry changes and absence of write/issue/financial effects.
 
 This is an unwired domain foundation. It creates no new preview route and claims no
@@ -85,7 +86,7 @@ A future separately reviewed UI integration should consume these exact cards rat
 than duplicating financial or workforce calculations. Atomic workforce acceptance and
 an authoritative reviewed overhead policy are unresolved dependencies.
 
-Focused application checks: **47 new / 178 combined cases PASS** across the new
+Focused application checks: **49 new / 180 combined cases PASS** across the new
 Profit Guard, retained cost-to-complete, margin and workforce suites. Strict types,
 generated types, full lint, formatting, build and diff checks **PASS**. The exact older Finance parent has no `features:check` script
 or coordinator evidence register; Main owns source registration/combined checker proof.
