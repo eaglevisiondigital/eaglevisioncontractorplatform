@@ -1,0 +1,158 @@
+.weekly-crew {
+  min-width: 0;
+  margin-top: 24px;
+  color: #173e32;
+}
+.weekly-crew .wc-header {
+  height: auto;
+  min-height: 0;
+  font-size: inherit;
+  color: inherit;
+  position: static;
+  top: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  width: auto;
+  max-width: none;
+  z-index: auto;
+}
+.weekly-crew .wc-header > div {
+  display: block;
+  min-width: 0;
+}
+.weekly-crew h2 {
+  font-size: clamp(24px, 3vw, 32px);
+  margin: 4px 0 12px;
+}
+.weekly-crew h3 {
+  font-size: 21px;
+  margin: 8px 0 14px;
+}
+.weekly-crew p,
+.weekly-crew details {
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.weekly-crew .wc-eyebrow {
+  color: #426154;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.05em;
+}
+.weekly-crew .wc-badge {
+  display: inline-block;
+  font-size: 12px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid #a9c2b3;
+  background: #e4eee8;
+}
+.weekly-crew .wc-boundary {
+  padding: 14px 18px;
+  border-left: 3px solid var(--company-color, #00543e);
+  background: #edf0e7;
+}
+.weekly-crew .wc-card {
+  padding: 22px;
+  margin: 20px 0;
+  min-width: 0;
+  border: 1px solid #cedbd2;
+  border-radius: 14px;
+  background: white;
+}
+.weekly-crew .wc-fields,
+.weekly-crew .wc-lanes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.weekly-crew label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  margin: 14px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+.weekly-crew input,
+.weekly-crew select {
+  min-height: 46px;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.weekly-crew .wc-check {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.6;
+}
+.weekly-crew input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+  min-height: 20px;
+  flex: 0 0 auto;
+  margin-top: 3px;
+}
+.weekly-crew button {
+  min-height: 46px;
+  white-space: normal;
+}
+.weekly-crew .wc-week {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 20px 0;
+}
+.weekly-crew .wc-week button {
+  min-width: 0;
+  text-align: left;
+  background: #f2f6f1;
+  color: #173e32;
+  border: 1px solid #a9c2b3;
+  padding: 14px;
+}
+.weekly-crew .wc-week button[aria-pressed='true'] {
+  border: 2px solid var(--company-color, #00543e);
+  background: #e4eee8;
+}
+.weekly-crew .wc-week span {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+}
+.weekly-crew .wc-event {
+  padding: 14px 0;
+  border-top: 1px solid #d5ded7;
+}
+.weekly-crew .wc-state {
+  background: #f7f9f5;
+  border: 1px dashed #99b0a3;
+  border-radius: 10px;
+  padding: 16px;
+}
+@media (max-width: 760px) {
+  .weekly-crew .wc-header {
+    display: block;
+  }
+  .weekly-crew .wc-fields,
+  .weekly-crew .wc-lanes {
+    grid-template-columns: 1fr;
+  }
+  .weekly-crew .wc-week {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .weekly-crew .wc-card {
+    padding: 18px;
+  }
+  .weekly-crew button {
+    width: 100%;
+  }
+}
