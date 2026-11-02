@@ -124,3 +124,33 @@ empty/error/default-OFF and late-context behavior. Retained screenshots are loca
 synthetic evidence. Successful tests do not approve promotion or certify every
 possible state. See the exact combined [review record](CYCLE3_INTEGRATION_REVIEW.md)
 and [delivery register](../PROGRAM_DELIVERY_STATUS.md) before integration.
+
+## Cycle-four interaction and evidence extensions
+
+Keep existing visual variants and five exact locks/thirteen bindings. Field proposal
+forms, Sales retained-reference controls, Finance warning/floor panels and the
+isolated Passport timeline reuse current palettes, typography, warm surfaces, touch
+controls and focus semantics. No global shell/navigation/approved portal redesign.
+
+- Model/company/customer/property/source changes must immediately hide old evidence,
+  even when an exported component is rerendered without a parent React key. Own the
+  identity boundary and discard late async results; a correctly guarded reader alone
+  cannot clear stale UI state. Test actual model replacement and same-model context.
+- Label source facts separately from explicitly confirmed human proposals/local
+  review inputs. Confirmation withdrawal or edited fields invalidates pending review.
+  Never render a proposed timed slot as dispatch or a local floor as company policy.
+- Capacity conflicts use text kind/source labels, not only warning color. Expose
+  unioned proposal hours, out-of-hours coverage, timestamp-recorded evidence and
+  date-only UNKNOWNs distinctly. Do not present payroll/break totals as availability.
+- A retained Sales reference labels original issued version, exact scope hash and
+  reference integrity separately. Current/stale/UNKNOWN never implies contract rights.
+- Margin variance warnings stay separate from incomplete coverage and denominator
+  uncertainty. A missing warning is not complete cost capture or final profitability.
+- Passport timeline source buttons focus exact detail, preserve report/version/job
+  identity and explain different date meanings. Completion-documentation facts remain
+  explicitly unverified as physical completion, approval or warranty.
+
+Exercise real desktop/tablet/mobile/all-brand cases, keyboard/axe, source focus,
+empty/loading/error/OFF and no-parent-key context races. Screenshots and source hashes
+are bounded local evidence, not operational or universal accessibility acceptance.
+See [Cycle4 review](CYCLE4_INTEGRATION_REVIEW.md) and the master delivery register.

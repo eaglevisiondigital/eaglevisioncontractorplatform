@@ -1,5 +1,19 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Cycle four · extend existing projections, not competing systems
+
+Crew-day review consumes actual existing job/crew/visit/time references and explicitly
+confirmed ephemeral timed windows when source timing/availability is absent. It
+creates no schedule store or dispatch. Sales references bind immutable exact issued
+scope and retained synthetic preference receipt without another contract engine.
+Margin warnings reuse canonical jobFinancials and source thresholds; an optional
+confirmed floor is local review input, never company policy. Passport unifies existing
+authorized synthetic job/report projections without a completion ledger. Reminder
+eligibility extends the same recurrence/consent reader; review candidates never
+become operational message requests. Separate exact-parent child PRs remain unwired/
+defaultOFF; main owns shared contracts, source inventory and combined verification.
+No schema/API authority/connected change or operational acceptance is introduced.
+
 ## Cycle three · existing-source operational review foundations
 
 Local sales, field, margin, Passport and reminder modules consume existing repository

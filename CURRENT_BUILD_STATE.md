@@ -1,5 +1,28 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: cycle four · independent local extensions · November 1
+
+Owner authorized crew-day capacity/conflicts, stronger issued-scope references,
+canonical margin warnings, unified customer-safe Passport documentation and reminder
+planning eligibility. All six C3 PRs11–16 have independently verified SUCCESS
+Foundation/compatibility at their exact heads; dedicated Field workflows also pass.
+No successful check rerun or reviewed parent rewritten. Main starts exactc546691
+on codex/program-cycle-four; child worktrees extend exact14/11/12/15/13 sources.
+[Assignments](docs/program/CYCLE4_ASSIGNMENTS.md) define bounded ownership/contracts.
+Working proposals and read projections remain separate from dispatch, contract,
+physical completion, communication or financial authority. Main owns combined
+validation and acceptance registers. Recovery/P1-on13/separate14/exact4B+broker,
+NMI/Auth/provider/financial/Netlify and all production gates remain independent.
+No hosted action, credential retrieval, schema/migration, message, deployment or
+merge. Original protected artifacts/SQL/approvals and locked interfaces stay intact.
+All five author turns are delivered in drafts17–21. Combined417 distinct app/design
+cases and45 responsive browser cases PASS, plus strict types/lint/build/static
+integrity. Independent review CLEAR for isolated local draft review; no operational
+acceptance. [Delivery register](docs/PROGRAM_DELIVERY_STATUS.md) and
+[independent review](docs/program/CYCLE4_INTEGRATION_REVIEW.md) retain exact heads,
+CI snapshots, closed context/admission gaps and128-path protected evidence.
+Release1.0 remains NOT READY / NOT AUTHORIZED.
+
 ## Latest: cycle three · local independent foundations · November 1
 
 Owner authorized five bounded local packages after exact PR10 `25ae406` Foundation

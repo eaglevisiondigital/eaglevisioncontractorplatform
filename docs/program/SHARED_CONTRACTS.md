@@ -151,3 +151,37 @@ private trees and symlinks remain excluded. Review ownership maps new packages t
 existing business lanes; shared CSS and sender authority retain their existing
 review owners. Source metadata never changes runtime authorization. All five locked
 files/thirteen bindings and the original eighteen feature IDs remain unchanged.
+
+## Cycle-four source and review-input contracts
+
+[Cycle4 assignments](CYCLE4_ASSIGNMENTS.md) pin exact green parent heads and bounded
+worktrees. Existing IDs, types, calculations and safe projections remain authoritative.
+No shared schema, business store, ledger or connected route is added. New module
+outputs are read/proposal evidence only, never operational acceptance.
+
+- Field unions explicit confirmed worker/date availability and source-bound proposed
+  timed windows; current existing job/crew/visit/time evidence remains independently
+  identified. Working-hours/overtime policy is not actual availability. Untimed visits
+  do not prove overlaps or free capacity. Ambiguous wall times/DST/relations fail
+  closed; exact source/access changes invalidate an earlier view. No dispatch.
+- Sales extends existing handoff with a deeply frozen primitive allowlisted issued
+  scope/offer/receipt reference and deterministic integrity. Exact read verification
+  never substitutes a newer version or grants contractual approval/custody.
+- Finance warning facts reuse canonical category-overrun and margin-erosion rules;
+  supported variance, zero/unsafe ratios and incomplete coverage remain distinct.
+  Any optional minimum-margin input is explicitly confirmed local review context,
+  not a company policy mutation. NMI's existing eight gates stay UNVERIFIED.
+- Passport timeline uses existing authorized synthetic published-report and job
+  source references. Event chronology is explicit by kind/date/version; missing
+  links remain UNKNOWN. Completion documentation never verifies physical completion.
+- Growth extends the same recurrence/follow-up/CRM-consent reader with optional
+  confirmed bounded calendar-day planning review. Exact retained plan/date visit
+  evidence prevents duplicate occurrence review without claiming work or delivery.
+  Channel denial/ambiguity, incomplete coverage and out-of-window sources withhold
+  eligibility. Staff-review candidacy never enables messages; purpose/suppression/
+  enrollment/sender remain UNVERIFIED and all communication BLOCKED.
+
+All inputs are pinned before awaits and current source/access/confirmation rechecked.
+No retry/replay/new-ID/source replacement after uncertainty. Locked5files/13bindings,
+all13/customer14/original4B/P1/four/approvals/2A–2F/billing/Netlify/executor/recovery/
+NMI/Auth/provider/financial/hosted/deploy/merge gates remain unchanged.

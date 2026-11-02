@@ -1,5 +1,16 @@
 # Bounded development roadmap
 
+Cycle4 local-development update (November1): five independent draft extensions now
+cover crew-day proposal/conflict review, immutable accepted-test scope references,
+canonical margin warnings, unified safe Passport documentation and reminder planning
+eligibility. Exact source/CI, combined checks and remaining dependencies belong in
+[delivery status](PROGRAM_DELIVERY_STATUS.md) and the
+[independent review](program/CYCLE4_INTEGRATION_REVIEW.md). These candidates remain
+unmerged/defaultOFF or unwired. No dispatch, verified physical completion, contract,
+message, payment or hosted authority is introduced. Recovery/P1-on13/separate14/
+exact4B+broker, NMI/Auth/provider/financial/Netlify gates stay independent.
+**Release1.0 remains NOT READY / NOT AUTHORIZED.**
+
 Cycle3 local-development update (November1): five separately stacked draft candidates
 provide issued-scope/preference handoff, technician work orders/manual crew, canonical
 margin coverage, exact customer-safe Passport job documentation and consent-aware

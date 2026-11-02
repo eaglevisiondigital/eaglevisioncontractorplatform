@@ -1,0 +1,549 @@
+{
+  "schema": "propel-cycle4-protected-source-v1",
+  "baseline_commit": "c546691c28dfe6c583414bad08203e76b4413032",
+  "scope": "Public frozen recovery, Netlify, customer4B/broker, historical SQL, canonical calculation, approved artwork/style contracts; not operational acceptance.",
+  "selection": {
+    "prefixes": [
+      "recovery/",
+      "server/customer/",
+      "server/property/",
+      "server/netlify/",
+      "supabase/",
+      "public/",
+      "docs/ACTION_D",
+      "docs/NETLIFY_",
+      "docs/PROPERTY_P1_",
+      "docs/TWO_COMPUTER_",
+      "docs/CUSTOMER_REQUESTS_",
+      "docs/CUSTOMER_BROKER_"
+    ],
+    "exact_paths": [
+      "README.md",
+      "public/brand/propel-contractor-suite-transparent.png",
+      "public/brand/propel-contractor-suite.png",
+      "src/components/property/contractor-back-office-design.css",
+      "src/components/property/property-portal-design.css",
+      "src/domain/estimating/calculation.ts",
+      "src/domain/jobs/financials.ts",
+      "src/domain/property/inspections.ts",
+      "src/styles.css"
+    ]
+  },
+  "count": 128,
+  "aggregate_sha256": "1bdf4fde01e40a76fb5cff044721dc411e562af3dd848c28e3cb62b970e95b3a",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "e8c2639bb5538e9faa77bcf508284c523dcaf6e4f10c2581b0e259836a2bc903"
+    },
+    {
+      "path": "docs/ACTION_D_ARTIFACTS.json",
+      "sha256": "e8c32ad2d351988fb0704a3b9e7f0eacd6f9679bc4c75f482ad87b6d1137015c"
+    },
+    {
+      "path": "docs/ACTION_D_EXECUTION.md",
+      "sha256": "a207c3b26792c9c1deca725a0a10902edd99911a05664c6a84c181c50802d284"
+    },
+    {
+      "path": "docs/ACTION_D_RECOVERY.md",
+      "sha256": "ab0a123f112a66d4cd928b8e73511c559fdae5c2a7aca7752ae89a244314fe68"
+    },
+    {
+      "path": "docs/ACTION_D_RECOVERY_EXECUTION.md",
+      "sha256": "53e42b657a45f01d3e492b276fb238b8403831ba2c2395f727a5980c21320efb"
+    },
+    {
+      "path": "docs/ACTION_D_REVIEW.md",
+      "sha256": "6a461146776bde10db3842762e6d24eb8813e209b6ffc5cc093fed43363a82fd"
+    },
+    {
+      "path": "docs/ACTION_D_SUPPORT.md",
+      "sha256": "60dc963c98a6c5ff726d0878818ea907cd09fea04f75f4aa8e5be56c1d14d303"
+    },
+    {
+      "path": "docs/ACTION_D_SUPPORT_FOLLOWUP.md",
+      "sha256": "29a788b6cf3cb5aa259b18b2b92503ee62774fb94a2803df323234efec3e6cfc"
+    },
+    {
+      "path": "docs/CUSTOMER_BROKER_INTEGRATION.md",
+      "sha256": "505f1f37a57402283bc02296bdd32559991187f6c3c79cd007c568a1909928a2"
+    },
+    {
+      "path": "docs/CUSTOMER_BROKER_REVIEW.json",
+      "sha256": "998b7ad32caf8d5b334317204a93b628d53cf893c1deb66598cca032979510fb"
+    },
+    {
+      "path": "docs/CUSTOMER_BROKER_VALIDATION.json",
+      "sha256": "d7fd0edf66f117c77f16d60ddd6a36ed9c222ca5bd1ce6dc86a617c5fa57d2e7"
+    },
+    {
+      "path": "docs/CUSTOMER_REQUESTS_FORWARD_REVIEW.json",
+      "sha256": "666970070f216c915b1db232e8b6feb68422f1e43721f9e946c44e0b648f442c"
+    },
+    {
+      "path": "docs/CUSTOMER_REQUESTS_PERSISTENCE.md",
+      "sha256": "18a608c5d406f977f10e0b15a7ca808c57ca32e5bf2876c81687a5067db17695"
+    },
+    {
+      "path": "docs/CUSTOMER_REQUESTS_PERSISTENCE_VALIDATION.json",
+      "sha256": "59e1709e7926c42cd25f0c7a8b47abc0b2c59a850d27e4dcba01ae4dccf2ce54"
+    },
+    {
+      "path": "docs/NETLIFY_ACTION_TIME_PREFLIGHT_STATUS.md",
+      "sha256": "118cdf170adba9ceae2c605705fdf261e21568f5cf9ef38a86ea9b95fb9d2bc4"
+    },
+    {
+      "path": "docs/NETLIFY_REPLACEMENT_DRAFT_REVIEW.json",
+      "sha256": "a8e7cd70cc472399ffb4c532117734b1b9f9ef6c5b0ac4e4b4d6861a77497b9f"
+    },
+    {
+      "path": "docs/NETLIFY_REPLACEMENT_DRAFT_REVIEW.md",
+      "sha256": "31e4d9447a48f3a45e5bfe20327c1920b7a5a449bd88ef2674b1723efb1677b1"
+    },
+    {
+      "path": "docs/NETLIFY_REPLACEMENT_DRAFT_VALIDATION.json",
+      "sha256": "8f02395a1918325246ecb5b7528acd66caefed796c6619dc3ee850b12dc228fc"
+    },
+    {
+      "path": "docs/NETLIFY_REPLACEMENT_EXECUTOR.md",
+      "sha256": "c4f6b3120cb822a93e0c6fa57eecbc7ed6b66b3c5392e57ea2557eaf0629eee7"
+    },
+    {
+      "path": "docs/NETLIFY_REPLACEMENT_EXECUTOR_VALIDATION.json",
+      "sha256": "5d94307309e0bbcaa2e778197d70103cd38c6cb579f9e05de400884464ceba81"
+    },
+    {
+      "path": "docs/PROPERTY_P1_ACCEPTANCE_REVIEW.md",
+      "sha256": "c5c25c9c072a59d03a2f76e324c493b091068546013ce55d35c024528ce5b570"
+    },
+    {
+      "path": "docs/PROPERTY_P1_EXECUTION.md",
+      "sha256": "fc0d146842ffb80219a42c51fdf6702db2a819b6ab8a40f10e3dab09789fcf48"
+    },
+    {
+      "path": "docs/PROPERTY_P1_EXECUTION_RESULT.json",
+      "sha256": "aa95720f123814a4e89b1f8b290729f50506aad2ba47262d5609eda6d99ecb74"
+    },
+    {
+      "path": "docs/PROPERTY_P1_EXECUTOR_READINESS.json",
+      "sha256": "5051f29b193ec6d580e4327fadf56d32ee1af9acc1ac2c3830fcb6cfa8f3ffde"
+    },
+    {
+      "path": "docs/PROPERTY_P1_EXECUTOR_READINESS.md",
+      "sha256": "a3af88b8f19b40ae0b7117f8aa659f3546a184027976366c7bf4240edb8d87fa"
+    },
+    {
+      "path": "docs/PROPERTY_P1_GAPS_REVIEW.json",
+      "sha256": "8f9547ab8c5cdc1da1e5697004d8ed2f4f5e118cc12830df354e12ec59388a9c"
+    },
+    {
+      "path": "docs/PROPERTY_P1_INDEPENDENT_AUDIT.json",
+      "sha256": "4af48ddf8d3dd9865acb859f513b33cf5909c6c2297c8e1a51e79248c65fa693"
+    },
+    {
+      "path": "docs/PROPERTY_P1_INDEPENDENT_AUDIT.md",
+      "sha256": "3b2fb1fe496a5df6a3bcfc6c2de765dbeb553f6673d5d4b919f9903e6772f393"
+    },
+    {
+      "path": "docs/PROPERTY_P1_MONTEREY_RECOVERY.json",
+      "sha256": "04c061be50581af1f978c7bb14f58cd04645ff7ba347b684c989d890e7c120e3"
+    },
+    {
+      "path": "docs/PROPERTY_P1_MONTEREY_RECOVERY.md",
+      "sha256": "c42e33f09740739c5316146fbc32148e595e51259b3656b5aa4cf9a920de821c"
+    },
+    {
+      "path": "docs/PROPERTY_P1_R0_DEVICE_READINESS.md",
+      "sha256": "62d24cb8a914003334d77c93868d1c62e132dccd860183ce7bd05c4ec341fad8"
+    },
+    {
+      "path": "docs/PROPERTY_P1_R0_READINESS.json",
+      "sha256": "fe7aa6ea00984e41c4ae11c2eba9da28ba177e718fed204752071b877391848a"
+    },
+    {
+      "path": "docs/PROPERTY_P1_REAUTHORIZATION_PREFLIGHT.json",
+      "sha256": "d3ee1f7cf8a9fed0de62b647ab3a54f3108c7957b8ff4e6cdc925f78dc10dc2e"
+    },
+    {
+      "path": "docs/PROPERTY_P1_REAUTHORIZATION_PREFLIGHT.md",
+      "sha256": "504cef1fbb9d404e9175bddb179d93a21da37a9847fbc48d6ee289e5ecafe3cc"
+    },
+    {
+      "path": "docs/PROPERTY_P1_RECOVERY_COMPLETION.json",
+      "sha256": "3bf01679d7b96256f77cf89e4be89f18e83629c5c9bb87d4f8333dd4399bfada"
+    },
+    {
+      "path": "docs/PROPERTY_P1_RECOVERY_COMPLETION.md",
+      "sha256": "4396eb25ee269641d92f2d70eb7adedf67ffc40986afbd416fbca111ae7bd1cf"
+    },
+    {
+      "path": "docs/PROPERTY_P1_REVIEW.json",
+      "sha256": "ff7a713c00ca8eefa96c740ac83ec02df9813d6913f18050f50c94c7c87f7bc2"
+    },
+    {
+      "path": "docs/PROPERTY_P1_SUPERVISED_RUNBOOK.md",
+      "sha256": "3bb3c2dabbb270282f9900c5b84b79af09e8c6b076f96b546e892b365288cde9"
+    },
+    {
+      "path": "docs/TWO_COMPUTER_REHEARSAL.md",
+      "sha256": "94e09b63e5ac1a872bc744980c730f165a63fdcd235a50320ed602194149f0b1"
+    },
+    {
+      "path": "docs/TWO_COMPUTER_REHEARSAL_COMPATIBILITY.md",
+      "sha256": "858e91279a7a83dab31fc5c7a5255cf43780829f04e6b587a95fb9b137addd49"
+    },
+    {
+      "path": "docs/TWO_COMPUTER_REHEARSAL_VALIDATION.json",
+      "sha256": "04537f7a959122f4e685244feb5a2cae1b887a92d8371453a8539f0d2c14b8fc"
+    },
+    {
+      "path": "public/brand/propel-contractor-suite-transparent.png",
+      "sha256": "dd6e8161dc4be20b97ca10cdb58a191b2bb5d4b92c2e58a2c4dcceed500a9a27"
+    },
+    {
+      "path": "public/brand/propel-contractor-suite.png",
+      "sha256": "b77d8e9e9db486c32ea24031033e4bec758342a4a3418fb438cfad23e0629bb0"
+    },
+    {
+      "path": "recovery/distribution/propel-synthetic-rehearsal.zip",
+      "sha256": "32cb88f123e0fd776986f32d8508c913dbedc1ac977779708d1ba7218bbb8d59"
+    },
+    {
+      "path": "recovery/monterey/Backup.command",
+      "sha256": "4460d74eeac54c7a122e6942e4e8a547d9206debd6b220e93869379fc58b7af7"
+    },
+    {
+      "path": "recovery/monterey/Primary.command",
+      "sha256": "f8954832f3b0194a73afb0c0d4dafd3634ab91e733dcf222bfe71b7c97af2557"
+    },
+    {
+      "path": "recovery/monterey/Recover.command",
+      "sha256": "0846b70c3fb678effec57c5b7e5c97d226d78d6a7145e18f4f30d7c143bcb4ef"
+    },
+    {
+      "path": "recovery/monterey/Setup.command",
+      "sha256": "03624d4f95e3c0283f09b5575383bdc61c3c2e57a213674ebbe239a1f3ea2666"
+    },
+    {
+      "path": "recovery/monterey/custody.py",
+      "sha256": "dd3351efe354949fce42a48024a191eda6479a31afb3fd18b57dd524b1e4cb08"
+    },
+    {
+      "path": "recovery/monterey/device.py",
+      "sha256": "8b9669e9371f29de74ef96f5ba1dababb35c4d74f22f0003c92c2c3b23405534"
+    },
+    {
+      "path": "recovery/monterey/device_facts.py",
+      "sha256": "9e6e5020e85f7b8a09cf177309c3a6de7cde04e28a5231a3c7b0cfd2ed4c8180"
+    },
+    {
+      "path": "recovery/monterey/https_adapter.py",
+      "sha256": "68f38f26f17ffcd7e5dfc46e127f6663a658938161efc5cf0563a82a005d8e9c"
+    },
+    {
+      "path": "recovery/monterey/mailbox.py",
+      "sha256": "874651af5858754279050867548a8db7411a0726fdcddc7445266a57981a3efc"
+    },
+    {
+      "path": "recovery/monterey/p1_recovery.py",
+      "sha256": "5e359eb18f8a8ecaee7c249ed310a86ed86805b8357ce89fe838bc280099d6c8"
+    },
+    {
+      "path": "recovery/monterey/rehearsal-requirements.lock",
+      "sha256": "41621e3ea15cf1ff3766a1e2c2d95d6aea3d6cb7250cb23b72dbf62860c8a81f"
+    },
+    {
+      "path": "recovery/monterey/rehearsal.py",
+      "sha256": "9c3b44dacd26a75b273a7f2606b5cd560bd4b641c84f6b80d0c2b9e3e59c7389"
+    },
+    {
+      "path": "recovery/monterey/requirements.lock",
+      "sha256": "548b714984acb70b317815fe97b22132aafd866661874bc09d19e220c2f85d8f"
+    },
+    {
+      "path": "recovery/monterey/test_device_facts.py",
+      "sha256": "14af7152bd081ac7681d7875a8928d962e76b77d94804d12bf6ec93c114632f0"
+    },
+    {
+      "path": "recovery/monterey/test_p1_recovery.py",
+      "sha256": "ad0c41b00f95622d58f5d108a85de0e12a70d888de6baf251c0d4e274f42ecaf"
+    },
+    {
+      "path": "recovery/monterey/test_rehearsal.py",
+      "sha256": "87e22c7ceefe3972d5f7e623c2627ea26039521bfc801850b458952fffef0bbe"
+    },
+    {
+      "path": "recovery/monterey/test_rehearsal_setup.py",
+      "sha256": "afcc1968c0da37f36283356058530323b643754e56f5bf54ae7b85de3775d537"
+    },
+    {
+      "path": "recovery/monterey/test_secure_recovery.py",
+      "sha256": "a71f2bf0d0153fd216d3fc7d885c4d2b16bb9b57e4a5060f9eac87c18631439d"
+    },
+    {
+      "path": "recovery/monterey/verify_package.py",
+      "sha256": "d0cb1968c8293c446912e5b1a595255aade13868dbc5e6fc23dec4f205529efd"
+    },
+    {
+      "path": "server/customer/broker-auth.ts",
+      "sha256": "709018249d889504b860e4cf0f4caa5cbdd1c2b04f58c53226f4499c68fd46d6"
+    },
+    {
+      "path": "server/customer/broker-ownership.proposed.sql",
+      "sha256": "bfa30994ad6a4758aa074bc4315b41b9d14499f96d23bad4d61b505fffedb425"
+    },
+    {
+      "path": "server/customer/broker-ownership.ts",
+      "sha256": "582378dedd09fff7983ea351ade026285e9ec51ae38ea004c7e4f8c2719ba25e"
+    },
+    {
+      "path": "server/customer/broker.proposed.sql",
+      "sha256": "c32d2fa0df717780f6ca8c9a3b88376c6cac408e6c51576175cb929b9ef9f4cb"
+    },
+    {
+      "path": "server/customer/broker.ts",
+      "sha256": "f983d8ceaa0bb5cd2403008301580894dd7c9023cd2c6d2026c0a2a70c6b979e"
+    },
+    {
+      "path": "server/customer/request-gateway.ts",
+      "sha256": "1472d74e4d3bd94c8be8ef33785e88f2c567dfc632f6c73c5ad6d9c8782a549c"
+    },
+    {
+      "path": "server/customer/request-policy.ts",
+      "sha256": "1f184b8efb58912b0c57c8ee0a765af10171ebd0e238633ee56e5bfb9c00567c"
+    },
+    {
+      "path": "server/customer/requests.proposed.sql",
+      "sha256": "6178cee11c81593e3a90d0ef75f6194835019112877f50fc6eb5e692768d44af"
+    },
+    {
+      "path": "server/customer/schema.proposed.sql",
+      "sha256": "b18a72250fc88bd71ff3e4e3cc1702d8597af280407a52a3e0811605bf0448b9"
+    },
+    {
+      "path": "server/customer/workflow.proposed.sql",
+      "sha256": "253c4fc5f58eef47fed2530372480826db13fa42812cf65791e9ac8ff70728ec"
+    },
+    {
+      "path": "server/netlify/read-only-evidence.ts",
+      "sha256": "ef5472fd9196cb53b5f446d00cf20554f94c6418cb68e47ddb1b32c1db33e866"
+    },
+    {
+      "path": "server/netlify/read-only-inventory.ts",
+      "sha256": "c9bdf8c7ab1cb6e0d05200bc19799cf84a7fc7b7d896c89a2d67b52fc1b01fdd"
+    },
+    {
+      "path": "server/netlify/replacement-executor.ts",
+      "sha256": "c4fa8a572e1395f603f54e7512245a2f3db27da159182345780baa4a50a749a5"
+    },
+    {
+      "path": "server/netlify/replacement-journal.ts",
+      "sha256": "86e1ef765c37613501cbcb898ade4b049def0109dcf0ebd0446d8e440cae5034"
+    },
+    {
+      "path": "server/netlify/replacement-package.ts",
+      "sha256": "090705c5276ad2a2b6d60dbc254c1bbaafb951dc5fcdb920bdaafc0f6c55b821"
+    },
+    {
+      "path": "server/property/acceptance-journal.ts",
+      "sha256": "5fc8fe471c1253e7fb84e9109917273d6776796fea33ccc273602c1e10d178de"
+    },
+    {
+      "path": "server/property/acceptance-plan.ts",
+      "sha256": "9625de62bfb12a8cdffffee48bb033bcbbf4e2abca31a08386205eecb511662a"
+    },
+    {
+      "path": "server/property/command-authority.ts",
+      "sha256": "c0f24d0ccb8dc35cece77a952624ab5b008f080bb1138d1fbf38c94564be7349"
+    },
+    {
+      "path": "server/property/command-custody.ts",
+      "sha256": "c4af64655c50844ed4c5fd7aec44b07a8a47e5ff8b039404dc948435243ffd71"
+    },
+    {
+      "path": "server/property/execution/backup-custody.ts",
+      "sha256": "23984203d95aa59bdf660edf06c3f7683fc8c4e8b40743b4befb406a44bfef49"
+    },
+    {
+      "path": "server/property/execution/backup-mailbox.ts",
+      "sha256": "35bf61b083211709b38cb4cd0b85a3c1f5bba1c0b76dd92d9bd3babb03f450be"
+    },
+    {
+      "path": "server/property/execution/callers.ts",
+      "sha256": "62084bd253d50a0a9fc3ac8450d741372f9e2f70638be93c59d5eeb7ef483987"
+    },
+    {
+      "path": "server/property/execution/catalog.sql",
+      "sha256": "f702f0bc89e62b90f379ea8687ab4dbd0f6990aa2e2d0ccf894eecd394870734"
+    },
+    {
+      "path": "server/property/execution/cleanup-auth.ts",
+      "sha256": "8964a8bf5c44aa408e285b6161e114936a543a648466840b21646a7a3ac042d9"
+    },
+    {
+      "path": "server/property/execution/cleanup-process.ts",
+      "sha256": "88bcd6855f60e7de269b04b69356dee83eba10135c59fe6d6236ef64a1f1c57d"
+    },
+    {
+      "path": "server/property/execution/cleanup-worker.mts",
+      "sha256": "f493a81eb6aa9444811d50e52e2d09efab8c709f50c125700c9ac05c0f528a98"
+    },
+    {
+      "path": "server/property/execution/column-acl.sql",
+      "sha256": "8a83877b7458c20709c10e9293b6c45a0fac7d51f120514761eba8b0630d2f9e"
+    },
+    {
+      "path": "server/property/execution/command-gate.ts",
+      "sha256": "8c87cc770a2c48e98eef0483691c6c40b24d63a614ba24e2c0540e76bd50ac1f"
+    },
+    {
+      "path": "server/property/execution/executor.ts",
+      "sha256": "e29fa6e002dbbecd50f23389f180812f7dd379bf76aa53484ad9fbbac60a534e"
+    },
+    {
+      "path": "server/property/execution/management.ts",
+      "sha256": "b31aed27b3cd98baab2bb2f9ef38071440e0f9a760ae46be3e65103890a8276c"
+    },
+    {
+      "path": "server/property/execution/package.ts",
+      "sha256": "0a03f572992081dd9e87ca012ad3416c51703192a6ce307fb4202e3a3d9fde4e"
+    },
+    {
+      "path": "server/property/execution/prepare.ts",
+      "sha256": "b487b3423d863148082727c1267ea7f7b102b71ccf10bb9ca64c6e2e3cd6dd59"
+    },
+    {
+      "path": "server/property/execution/recovery.ts",
+      "sha256": "45c2186147e1f138016b3be348a1912490a98e09cb5d445a987d8850a6491ece"
+    },
+    {
+      "path": "server/property/execution/safety.ts",
+      "sha256": "e8a6426ad06b67c7fd685b1da874b4e1e2fdd153e539ccd6981c74cd9978ef77"
+    },
+    {
+      "path": "server/property/execution/verification.ts",
+      "sha256": "30e014ba4e6f0e50da366612a672d8e3222413e041c0c69dfe58462f1ed684b1"
+    },
+    {
+      "path": "server/property/maintenance-persistence.ts",
+      "sha256": "2f9c51f7db442224e38c5f11f88c3daba4396121fb32b8129bdf5e9652551c1d"
+    },
+    {
+      "path": "server/property/media.ts",
+      "sha256": "0119b704b1b50bc32ad8d2d39da4e6d816fc3a1d0f3f26effd94f4b97b1fc001"
+    },
+    {
+      "path": "server/property/p1-readiness.ts",
+      "sha256": "92f042ef1a83741244225ab605439da260257454a5a1db52a25a84c6edda1863"
+    },
+    {
+      "path": "server/property/p2-readiness.ts",
+      "sha256": "395d845cbbae4980f90ce2ea2e05af69861e8a54fab53bc72c6506e1ab719d51"
+    },
+    {
+      "path": "server/property/repair-evidence-archive.ts",
+      "sha256": "e85fcce4cfd812fe1208832561630cb151746567aadd2ad08029acdbc342c1c8"
+    },
+    {
+      "path": "server/property/repair-persistence.ts",
+      "sha256": "96abfb5f18f42c7355c6f74925e8fdae725e8cc4e6a67da660869c95445af893"
+    },
+    {
+      "path": "server/property/schema.proposed.sql",
+      "sha256": "c345bdf178c9339dba7ba2707c74233bcfae9a2d2b59abf148f4b7ffff35780c"
+    },
+    {
+      "path": "server/property/supplier-connectors.ts",
+      "sha256": "5cb435f647954214d668bface337c251573f3a1fdadfbf47b94eeecac32feff0"
+    },
+    {
+      "path": "src/components/property/contractor-back-office-design.css",
+      "sha256": "2a6f9edffcc039061705769ce4cf3e2e1e6a9f735faa1f7475f3331274ec226d"
+    },
+    {
+      "path": "src/components/property/property-portal-design.css",
+      "sha256": "a7190d6f5d4228ec54168e653658db454ad19a2a69961a9f5eaaf05c52644dc8"
+    },
+    {
+      "path": "src/domain/estimating/calculation.ts",
+      "sha256": "30480694126b1cc1cd17dc448a91fb944ef227f9d49160ca12d15777d1bf6a70"
+    },
+    {
+      "path": "src/domain/jobs/financials.ts",
+      "sha256": "410c292199397c9ceb5f227343bde9ba1406bab54624c5a94a97c685801fe798"
+    },
+    {
+      "path": "src/domain/property/inspections.ts",
+      "sha256": "7691ced4cc6b78604e782369cfedc5e5e29170109c12485000894d4ffbe8c11f"
+    },
+    {
+      "path": "src/styles.css",
+      "sha256": "01b8bd783e7b6f54247c19ebfc8ca85408fb73a97d734cfccff5d1992f4ceb58"
+    },
+    {
+      "path": "supabase/.gitignore",
+      "sha256": "507699eb91144818edf61d3a079212cacf31d8db520eae428e3b48fcf0d6919c"
+    },
+    {
+      "path": "supabase/config.toml",
+      "sha256": "c4b829818e04831420e9387a16d334d26a02c4ffa9205ae4f21695bcb8914b50"
+    },
+    {
+      "path": "supabase/migrations/20261015183039_phase_1_foundation.sql",
+      "sha256": "62ef02be55f5cf86916de4bf9891d4920f75a35ae421815c2d353bf4cedb73cc"
+    },
+    {
+      "path": "supabase/migrations/20261015201048_phase_2_operations.sql",
+      "sha256": "2a0e65f30e0eef0b85b53d23edc26968336f661d136303d7a1eb25b3f77e1974"
+    },
+    {
+      "path": "supabase/migrations/20261015204729_phase_3_estimating.sql",
+      "sha256": "ef999a3e7d8ee69f1563b3cffaf732f0a29c292161e4ce1729b6a26848bd4415"
+    },
+    {
+      "path": "supabase/migrations/20261015210230_phase_3_material_import.sql",
+      "sha256": "82f7594c18dfdf955ed1d2c83f6c903d8b4aebe7730c2f1a5770d501bd2d84a3"
+    },
+    {
+      "path": "supabase/migrations/20261015210546_phase_3_job_financials.sql",
+      "sha256": "f161cc16ec728b2e7373f3826b5d989a9fad4c1ec6d727fc193f18d5534d8c4c"
+    },
+    {
+      "path": "supabase/migrations/20261015210856_phase_3_workforce.sql",
+      "sha256": "78f2af2164574ba3d6aeb2f2510206d97343c5ad67a2534159a4e2960f5e9ce0"
+    },
+    {
+      "path": "supabase/migrations/20261015221730_phase_3a_release_controls.sql",
+      "sha256": "6dbfc3ed7a0b9905f5d824cb73698c441e8c7ee8aa5d5b0fb8f4883baacb4890"
+    },
+    {
+      "path": "supabase/migrations/20261016024502_release_1_internal_workflow.sql",
+      "sha256": "48522fd3b829a5bc9e482ce33c41ee7b8272edf68dbc7e6c7a699fa178b8714b"
+    },
+    {
+      "path": "supabase/migrations/20261016030324_material_worker_control_store.sql",
+      "sha256": "8359e7ceb4028460b7609bbd235d9941fc69b89b514463e011fec9b44a84d282"
+    },
+    {
+      "path": "supabase/migrations/20261016185108_provider_sandbox_persistence.sql",
+      "sha256": "5dd07b079a591b433fa7ab432fd841026de91a1cd3f1d3a722bef500aa9fd32d"
+    },
+    {
+      "path": "supabase/migrations/20261017005322_property_operations.sql",
+      "sha256": "c345bdf178c9339dba7ba2707c74233bcfae9a2d2b59abf148f4b7ffff35780c"
+    },
+    {
+      "path": "supabase/migrations/20261017024327_property_connected_readiness.sql",
+      "sha256": "6bb0b9bf22ec1079d7aa5f74c6e33e14534cc54e30e9034c33949f786cfd3ac9"
+    },
+    {
+      "path": "supabase/migrations/20261017024328_property_duplicate_index_cleanup.sql",
+      "sha256": "3603fe0482f46b9733a0321cd9009cb1f291993fcbede7132e1bdf721776fdfc"
+    },
+    {
+      "path": "supabase/migrations/20261018144833_customer_authorization_release_readiness.sql",
+      "sha256": "e3157e004c464fb2a4ab69e7a3a335a81d6bbbb0556d74234f3884f56d784ed1"
+    }
+  ],
+  "design_contract_note": "The unchanged coordinator contract separately validates5 locked files/13 bindings against every worktree. Older business parents lack the coordination-only JSON; no file is copied or substituted."
+}

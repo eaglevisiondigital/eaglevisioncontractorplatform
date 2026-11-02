@@ -299,3 +299,20 @@ it('inventories the explicitly declared isolated finance demo without collecting
     false,
   );
 });
+
+it('routes cycle-four actual source and test paths without promoting styles or workflows into a business authority lane', () => {
+  for (const path of [
+    'src/domain/field/crew-capacity.ts',
+    'src/lib/field-crew-capacity.ts',
+    'src/components/field/CrewCapacityPreview.tsx',
+    'tests/field-crew-capacity.test.ts',
+  ])
+    expect(sourceOwner(path)).toBe('A3');
+  expect(sourceOwner('tests/sales-approved-scope-reference.test.ts')).toBe(
+    'A2',
+  );
+  expect(sourceOwner('tests/program-reminder-eligibility.test.ts')).toBe('A6');
+  expect(sourceOwner('src/domain/property/passport-timeline.ts')).toBe('A5');
+  expect(sourceOwner('src/components/field/crew-capacity.css')).toBe('A8');
+  expect(sourceOwner('.github/workflows/field-crew-capacity.yml')).toBe('A8');
+});
