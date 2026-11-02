@@ -296,3 +296,16 @@ it('rejects foreign reconstructed snapshot during preparation and reconciliation
     (await reconcileSalesDesk(JSON.parse(JSON.stringify(packet)))).status,
   ).toBe('UNKNOWN');
 });
+
+it('a second eligible reviewer cannot reopen the same exact source preparation', async () => {
+  const { f, input, gate } = await fixture(),
+    other = f.company.id + '-backup-owner';
+  await f.operations.configure(f.company.id, 'active', 'starter', {}, other);
+  const view = await readSalesDesk(f, input, gate);
+  await prepareSalesDesk(view, confirm());
+  f.target.actor_id = other;
+  const second = await readSalesDesk(f, input, gate);
+  await expect(prepareSalesDesk(second, confirm())).rejects.toThrow(
+    /already attempted/,
+  );
+});

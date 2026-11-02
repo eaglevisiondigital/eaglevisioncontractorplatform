@@ -16,7 +16,7 @@ dispatch or change an appointment. Date-only actual availability remains UNKNOWN
 
 `readSalesDesk(sources, selection, gate)` uses existing booking/capacity readers and
 Sales handoff projections. `prepareSalesDesk(view, confirmation)` requires the exact
-retained view and claims once per repository/target before its first await.
+retained view and claims once per authoritative repository/business-source target, excluding reviewer identity before its first await.
 `reconcileSalesDesk(packet)` reads exact retained evidence only; UNKNOWN is terminal
 for that packet and never permits replacement, replay or a second preparation.
 Currentness checks re-admit the original caller selection, gate, exact shared source
@@ -29,8 +29,8 @@ delivery and operational custody are not claimed. Lead association is explicitly
 staff-selected because estimates have no recorded lead foreign key. No contract,
 signature, invoice, customer obligation or ledger record is created.
 
-Focused validation: 33 new Sales desk cases and 89 retained Sales/booking cases
-(122 total) pass across all three existing contractor companies, including exact
+Focused validation: 34 new Sales desk cases and 89 retained Sales/booking cases
+(123 total) pass across all three existing contractor companies, including exact
 receipt/issued version/appointment identity, foreign target denial, revocation,
 source revision drift, concurrent duplicate attempts, lost-result holds, final-await
 input/target/gate/confirmation/source drift, immutable stale packets, safe-field

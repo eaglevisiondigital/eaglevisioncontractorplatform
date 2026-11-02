@@ -288,7 +288,14 @@ export async function prepareSalesDesk(
   if (!b) throw Error('Exact retained sales desk review required');
   checkNow(b);
   const confirmed = confirmation(input),
-    key = JSON.stringify(b.references.target);
+    key = JSON.stringify({
+      organization_id: b.references.target.organization_id,
+      customer_id: b.references.target.customer_id,
+      location_id: b.references.target.location_id,
+      estimate_id: b.references.target.estimate_id,
+      version_id: b.references.target.version_id,
+      job_id: b.references.target.job_id,
+    });
   let claimed = claims.get(b.references.operations);
   if (!claimed) {
     claimed = new Set();
