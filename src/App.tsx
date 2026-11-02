@@ -39,8 +39,8 @@ const ContractorJourneyPreview = lazy(() =>
   })),
 );
 const OperatingCenterPreview = lazy(() =>
-  import('./components/workflows/OperatingCenterPreview').then((m) => ({
-    default: m.OperatingCenterPreview,
+  import('./components/workflows/OperatingCenterCycleTen').then((m) => ({
+    default: m.OperatingCenterCycleTen,
   })),
 );
 const Phase3Workspace = lazy(() =>

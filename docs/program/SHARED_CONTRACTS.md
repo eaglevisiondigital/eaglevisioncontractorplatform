@@ -306,3 +306,27 @@ reuses the same retained environment without replay. Original routes and locked
 interfaces remain unchanged. See CYCLE9_DELIVERY_INDEX.json for exact package hashes,
 reviewer commit, draft dependencies and test counts. No public/connected API, schema,
 provider, ledger, message or financial authority is created.
+
+## Cycle10 additive everyday review composition
+
+Six finite packages accept the original OperatingSources handle and default enabled
+false. The existing OperatingCenterPreview alone owns admission, actual source
+repositories and company/selected-job state; OperatingCenterCycleTen supplies only
+finite optional render panels. All original eight desks remain accessible. No route,
+query, callback or source-selection UI grants access. Child/root/current membership
+and original live input checks follow final asynchronous boundaries. Detail opening
+and explicit navigation to the existing job are separate read-only actions.
+
+Crew plan A/B rows are unsaved proposals; canonical availability remains UNKNOWN.
+Financial exception ordering uses existing canonical warnings and incomplete cost
+coverage, never invented urgency or profit. Service requests group actual intake IDs;
+staff-selected request/estimate associations are not fabricated recorded foreign keys.
+Customer completion remains a separate strict projection. Follow-up admission re-reads
+exact canonical evidence but cannot produce a send capability, recipient or provider
+request; current purpose/suppression/atomic-send evidence is absent. Intelligence
+explains existing deterministic evidence order without creating another decision
+engine. Advanced handoffs reuse existing engines, preserving missing catalog mapping
+and accounting prerequisites as gaps. Retained session holds are not durable custody.
+
+All13/customer14/original4B/P1/four artifacts/Netlify/executor/recovery/MFA/NMI/Auth,
+provider/financial/communication/hosted/deployment/merge restrictions remain intact.

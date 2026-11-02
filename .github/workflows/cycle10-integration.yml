@@ -1,0 +1,49 @@
+name: Cycle 10 everyday operating reviews
+on:
+  push:
+    branches: ['codex/program-cycle-ten']
+  pull_request:
+    paths:
+      - 'src/components/workflows/**'
+      - 'src/lib/workflows/**'
+      - 'tests/cycle10*'
+      - 'tests/cycle9-integration.test.ts'
+      - 'tests/program/*cycle10*'
+      - 'scripts/check-cycle10-integrity.mjs'
+      - 'scripts/check-cycle10-results.mjs'
+      - 'docs/program/CYCLE10_DELIVERY_INDEX.json'
+      - '.github/workflows/cycle10-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle10-integration-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  bounded-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node scripts/check-cycle10-integrity.mjs
+      - run: npx vitest run tests/cycle10*.test.ts tests/program/cycle10-feature-evidence.test.ts tests/program-feature-evidence.test.ts tests/cycle9-integration.test.ts --reporter=json --outputFile=artifacts/cycle10/application-results.json
+      - run: node scripts/check-cycle10-results.mjs
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test -c tests/program/playwright.cycle10.config.ts --workers=2
+      - run: npx playwright test -c tests/program/playwright.cycle10-off.config.ts --workers=2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle10-operating-review-evidence
+          path: |
+            artifacts/cycle10/*.png
+            artifacts/cycle10/application-results.json
+            test-results/
+          retention-days: 7

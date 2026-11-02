@@ -1,0 +1,156 @@
+.advanced-handoffs {
+  min-width: 0;
+  padding: clamp(1rem, 3vw, 1.75rem);
+  border: 1px solid #d9e1da;
+  border-radius: 18px;
+  background: #fff;
+  color: #20352f;
+  line-height: 1.55;
+}
+.advanced-handoffs * {
+  box-sizing: border-box;
+}
+.advanced-handoffs-heading {
+  position: static;
+  display: block;
+  height: auto;
+  min-height: 0;
+}
+.advanced-handoffs h2 {
+  margin: 0.25rem 0 0.6rem;
+}
+.advanced-handoffs h3,
+.advanced-handoffs h4 {
+  margin: 0.25rem 0 0.7rem;
+}
+.advanced-handoffs-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.advanced-handoffs-controls label,
+.advanced-handoffs-note {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+.advanced-handoffs input:not([type='checkbox']),
+.advanced-handoffs select,
+.advanced-handoffs textarea {
+  font: inherit;
+  min-height: 44px;
+  min-width: 0;
+  max-width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #9aada1;
+  border-radius: 8px;
+  background: #fff;
+  color: inherit;
+}
+.advanced-handoffs textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+.advanced-handoffs-note {
+  margin-bottom: 1rem;
+}
+.advanced-handoffs button {
+  font: inherit;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--journey-primary, #247364);
+  border-radius: 8px;
+  background: var(--journey-primary, #247364);
+  color: #fff;
+  cursor: pointer;
+  white-space: normal;
+}
+.advanced-handoffs button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.advanced-handoffs .advanced-handoffs-secondary {
+  background: #fff;
+  color: var(--journey-primary, #247364);
+}
+.advanced-handoffs-requirements,
+.advanced-handoffs-result {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  background: #f7f7f1;
+  margin: 1rem 0;
+}
+.advanced-handoffs-result {
+  border-top: 3px solid var(--journey-accent, #dfb461);
+}
+.advanced-handoffs p,
+.advanced-handoffs dd,
+.advanced-handoffs li {
+  overflow-wrap: anywhere;
+}
+.advanced-handoffs dl {
+  display: grid;
+  gap: 0.2rem;
+}
+.advanced-handoffs dt {
+  color: #526159;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.advanced-handoffs dd {
+  margin: 0 0 0.65rem;
+}
+.advanced-handoffs-confirmation {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  min-height: 44px;
+  padding: 0.7rem 0;
+  margin: 0.5rem 0;
+}
+.advanced-handoffs input[type='checkbox'] {
+  min-width: 20px;
+  height: 20px;
+  margin-top: 0.15rem;
+  accent-color: var(--journey-primary, #247364);
+}
+.advanced-handoffs summary {
+  min-height: 44px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.advanced-handoffs-boundary {
+  font-size: 0.9rem;
+  color: #566960;
+}
+.advanced-handoffs :focus-visible {
+  outline: 3px solid var(--journey-primary, #247364);
+  outline-offset: 3px;
+}
+.advanced-handoffs [role='alert'] {
+  border-left: 4px solid #9b4426;
+  background: #fff3e9;
+  color: #71341f;
+  padding: 0.65rem;
+}
+.advanced-handoffs article {
+  border-top: 1px solid #d9e1da;
+  padding-top: 0.8rem;
+  margin-top: 0.8rem;
+}
+@media (max-width: 760px) {
+  .advanced-handoffs-controls {
+    grid-template-columns: 1fr;
+  }
+  .advanced-handoffs button {
+    width: 100%;
+  }
+  .advanced-handoffs {
+    padding: 1rem;
+  }
+}

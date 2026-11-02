@@ -1,0 +1,152 @@
+.follow-up-admission {
+  min-width: 0;
+  margin-block: 24px;
+  color: #20352f;
+}
+.follow-up-admission header {
+  height: auto;
+  min-height: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 0;
+  background: none;
+  color: inherit;
+  position: static;
+}
+.follow-up-admission header > div {
+  display: block;
+  min-width: 0;
+}
+.follow-up-admission h2 {
+  font-size: clamp(24px, 3vw, 32px);
+  margin: 6px 0 12px;
+}
+.follow-up-admission h3 {
+  font-size: 23px;
+}
+.follow-up-admission h4 {
+  font-size: 18px;
+}
+.follow-up-admission p,
+.follow-up-admission dd,
+.follow-up-admission li {
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.follow-up-admission .fua-eyebrow {
+  font-size: 11px;
+  font-weight: 750;
+  color: #52695d;
+  letter-spacing: 0.06em;
+}
+.follow-up-admission .fua-badge {
+  display: inline-block;
+  border: 1px solid #b2c6b8;
+  background: #e8eee5;
+  border-radius: 24px;
+  padding: 10px 14px;
+  font-size: 12px;
+}
+.follow-up-admission .fua-boundary {
+  background: #edf0e7;
+  padding: 16px;
+  border-left: 3px solid var(--journey-primary, #00543e);
+}
+.follow-up-admission .fua-card {
+  border: 1px solid #d9e1da;
+  border-radius: 14px;
+  padding: 20px;
+  margin-block: 16px;
+  background: white;
+  min-width: 0;
+}
+.follow-up-admission .fua-controls,
+.follow-up-admission .fua-opportunities {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.follow-up-admission .fua-comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.follow-up-admission label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-block: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  min-width: 0;
+}
+.follow-up-admission input,
+.follow-up-admission select {
+  min-height: 46px;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.follow-up-admission button {
+  min-height: 46px;
+  max-width: 100%;
+  white-space: normal;
+  margin: 5px 10px 5px 0;
+}
+.follow-up-admission .fua-check {
+  flex-direction: row;
+  align-items: center;
+  min-height: 44px;
+}
+.follow-up-admission .fua-check input {
+  width: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  height: 20px;
+}
+.follow-up-admission input:focus-visible,
+.follow-up-admission select:focus-visible,
+.follow-up-admission button:focus-visible {
+  outline: 3px solid var(--journey-primary, #00543e);
+  outline-offset: 3px;
+}
+.follow-up-admission .fua-empty {
+  padding: 16px;
+  border: 1px dashed #a9bdb0;
+  border-radius: 10px;
+}
+.follow-up-admission dd {
+  margin: 4px 0 12px;
+  font-size: 13px;
+}
+.follow-up-admission li {
+  padding-block: 4px;
+}
+@media (max-width: 1000px) {
+  .follow-up-admission .fua-controls,
+  .follow-up-admission .fua-opportunities {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .follow-up-admission header {
+    display: block;
+  }
+  .follow-up-admission .fua-controls,
+  .follow-up-admission .fua-opportunities,
+  .follow-up-admission .fua-comparison {
+    grid-template-columns: 1fr;
+  }
+  .follow-up-admission .fua-card {
+    padding: 16px;
+  }
+  .follow-up-admission button {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+.follow-up-admission dt {
+  color: #526159;
+}

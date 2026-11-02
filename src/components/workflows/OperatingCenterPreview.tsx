@@ -1,4 +1,10 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import {
+  useEffect,
+  useRef,
+  useState,
+  type ReactNode,
+  type CSSProperties,
+} from 'react';
 import { sampleCompanies } from '../../domain/platform';
 import { productBrand } from '../../domain/brand';
 import {
@@ -38,11 +44,22 @@ const panels = [
   ['advanced', 'Advanced reviews'],
 ] as const;
 type Panel = (typeof panels)[number][0];
-export function OperatingCenterPreview() {
+export interface OperatingReviewPanel {
+  id: string;
+  label: string;
+  render: (props: {
+    sources: OperatingSources;
+    enabled: boolean;
+    onSelectJob: (jobId: string) => void;
+  }) => ReactNode;
+}
+export function OperatingCenterPreview({
+  additionalPanels = [],
+}: { additionalPanels?: readonly OperatingReviewPanel[] } = {}) {
   const [companyId, setCompanyId] = useState(sampleCompanies[0].id),
     [confirmed, setConfirmed] = useState(false),
     [epoch, setEpoch] = useState(0),
-    [tab, setTab] = useState<Panel>('selection'),
+    [tab, setTab] = useState<Panel | string>('selection'),
     [error, setError] = useState('');
   const attempts = useRef(new Map<string, Attempt>()),
     generation = useRef(0);
@@ -307,11 +324,30 @@ export function OperatingCenterPreview() {
               </button>
             ))}
           </nav>
+          {additionalPanels.length > 0 && (
+            <details className="oc-development" open>
+              <summary>Daily workflow reviews</summary>
+              <nav aria-label="Daily workflow reviews" className="oc-nav">
+                {additionalPanels.map((panel) => (
+                  <button
+                    key={panel.id}
+                    aria-current={tab === panel.id ? 'page' : undefined}
+                    onClick={() => setTab(panel.id)}
+                  >
+                    {panel.label}
+                  </button>
+                ))}
+              </nav>
+            </details>
+          )}
           <section
             key={`${companyId}:${tab}`}
             className="oc-panel"
             aria-label="Current operating desk"
           >
+            {additionalPanels
+              .find((panel) => panel.id === tab)
+              ?.render({ sources, enabled: true, onSelectJob: openJob })}
             {tab === 'selection' && (
               <OperatingSelection
                 sources={sources}

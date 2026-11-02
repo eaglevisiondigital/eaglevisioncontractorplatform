@@ -1,5 +1,19 @@
 # Propel Contractor Suite — feature acceptance register
 
+## Cycle-ten local review candidate
+
+Six exact isolated drafts66/68–72 are composed on Main draft67 without merging.
+[Source index](program/CYCLE10_DELIVERY_INDEX.json),
+[validation](program/CYCLE10_VALIDATION.md) and
+[independent review](program/CYCLE10_INTEGRATION_REVIEW.md) bind working functionality
+and current evidence.365 focused application cases,57 responsive development and3
+production-OFF cases PASS;63 actual screenshots retained. Exact final-head CI is
+separately recorded and pending results are not called green. Original18 IDs/25
+records and every partial local/blocked hosted/not-authorized release label remain
+unchanged. No invented availability, cost coverage, consent, catalog link, contract,
+physical completion or financial authority. Source hashes/local proof are not release
+acceptance. All PhaseOne/recovery/NMI/MFA/Auth/customer14/4B/Netlify gates persist.
+
 ## Cycle-nine multi-job candidate
 
 Exact prior Main4917593 Foundation and Cycle9 CI are now confirmed green. A finite
