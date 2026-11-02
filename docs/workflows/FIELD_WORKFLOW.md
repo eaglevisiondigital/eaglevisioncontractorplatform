@@ -125,6 +125,12 @@ wrap, and the two-column layout stacks at the existing 760px contractor breakpoi
 - Protected comparison: 128 public frozen hashes, five approved design/artwork hashes
   and thirteen source bindings match without drift. Protected aggregate:
   `1bdf4fde01e40a76fb5cff044721dc411e562af3dd848c28e3cb62b970e95b3a`.
+- A focused real Chromium regression now passes for all three contractor examples:
+  whole rendered report cards open the exact original report through the strict
+  two-field selector, focus the source heading, and hand the identical exact source
+  to Proof of Work. The panel explicitly constructs `{ report_id, published_version }`
+  instead of passing the full card with extra snapshot fields. The strict reader
+  remains unchanged; domain-only selectors had not exercised this caller boundary.
 - Main owns actual combined desktop/tablet/mobile, three-brand, keyboard/axe and
   navigation regression evidence. This branch does not claim those runs before Main
   exercises the integrated mount. No new standalone route or screenshot is invented.

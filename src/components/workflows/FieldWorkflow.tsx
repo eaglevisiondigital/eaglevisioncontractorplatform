@@ -137,7 +137,10 @@ function FieldReview({
     setMessage('');
     setDetail(null);
     try {
-      const source = await openFieldWorkflowReport(view, reference);
+      const source = await openFieldWorkflowReport(view, {
+        report_id: reference.report_id,
+        published_version: reference.published_version,
+      });
       if (live.current && token === epoch.current) {
         setDetail(source);
         if (destination === 'proof') onProofOfWork?.(source.handoff);
