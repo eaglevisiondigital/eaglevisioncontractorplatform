@@ -255,6 +255,18 @@ describe('Cycle 7 existing-source job review', () => {
       monetaryAllocation: null,
     });
   });
+  it('rejects object allocation without invoking caller coercion or inventing an overhead review', async () => {
+    const f = await fixture(),
+      coercion = vi.fn(() => 'job');
+    Object.assign(f.input.time!, {
+      allocation: { toString: coercion },
+      overheadCenter: 'synthetic-overhead',
+    });
+    const read = vi.spyOn(f.repo, 'readSyntheticPrototypeSources');
+    await expect(f.read()).rejects.toThrow();
+    expect(coercion).not.toHaveBeenCalled();
+    expect(read).not.toHaveBeenCalled();
+  });
   it.each([
     'organization_id',
     'customer_id',

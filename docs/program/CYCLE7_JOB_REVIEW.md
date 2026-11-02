@@ -94,7 +94,7 @@ custody or recovery acceptance.
 
 ## Verification and preservation
 
-Forty focused application cases exercise actual complete journeys for all three
+Forty-one focused application cases exercise actual complete journeys for all three
 contractor companies; canonical integer rounding and original issued immutability;
 exact catalog association and missing provenance; actual worker/assignment/tenant/
 customer/property/job/version/currency isolation; time overlap and explicit offsets;
@@ -105,7 +105,7 @@ inspection and no writers. Static panel cases establish default-OFF and accessib
 form labels only. Main owns actual desktop/tablet/mobile, keyboard, axe and context-
 replacement browser proof. No browser acceptance is inferred from static markup.
 
-Author validation: **40 new / 152 related application cases PASS** across Job Review,
+Author validation: **41 new / 153 related application cases PASS** across Job Review,
 retained Finance, Profit Guard and procurement suites. Strict/generated types, full
 lint, formatting, production build, feature evidence, migration integrity, protected
 128-file hashes and five locked design files/thirteen bindings PASS. Main separately

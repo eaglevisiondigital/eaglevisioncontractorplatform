@@ -152,7 +152,8 @@ function selection(input: JobReviewSelection) {
         !(time[key] as string).trim() ||
         (time[key] as string).length > 250,
     ) ||
-      !['job', 'overhead'].includes(String(time.allocation)) ||
+      typeof time.allocation !== 'string' ||
+      !['job', 'overhead'].includes(time.allocation) ||
       (time.allocation === 'job'
         ? time.overheadCenter !== null
         : typeof time.overheadCenter !== 'string' ||
