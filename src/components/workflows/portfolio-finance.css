@@ -1,0 +1,216 @@
+.portfolio-finance {
+  color: #20352f;
+  background: #f5f5ef;
+  border: 1px solid #d9e1da;
+  border-radius: 16px;
+  padding: 24px;
+  min-width: 0;
+}
+.portfolio-finance * {
+  box-sizing: border-box;
+}
+.portfolio-finance h2,
+.portfolio-finance h3,
+.portfolio-finance p {
+  overflow-wrap: anywhere;
+}
+.portfolio-finance h2 {
+  margin: 4px 0 12px;
+  font-size: 1.65rem;
+}
+.portfolio-finance-heading {
+  display: block;
+  position: static;
+  height: auto;
+  margin-bottom: 20px;
+}
+.portfolio-finance-eyebrow {
+  color: #3e594f;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.portfolio-finance-note,
+.portfolio-finance small {
+  color: #3e594f;
+  font-size: 0.87rem;
+}
+.portfolio-proposal-list {
+  display: grid;
+  gap: 12px;
+}
+.portfolio-finance fieldset {
+  min-width: 0;
+  margin: 0;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  padding: 16px;
+  background: #fff;
+}
+.portfolio-finance legend {
+  font-weight: 700;
+  padding: 0 6px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.portfolio-finance fieldset p {
+  margin: 0 0 12px;
+}
+.portfolio-proposal-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+.portfolio-finance label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.portfolio-proposal-grid label {
+  text-transform: capitalize;
+}
+.portfolio-finance input:not([type='checkbox']) {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  margin-top: 6px;
+  background: #fff;
+  color: #20352f;
+}
+.portfolio-finance button {
+  min-height: 44px;
+  background: var(--company-color, #247364);
+  color: #fff;
+  white-space: normal;
+}
+.portfolio-finance button:disabled {
+  background: #d9e1da;
+  color: #3e594f;
+}
+.portfolio-finance :focus-visible {
+  outline: 3px solid var(--company-color, #247364);
+  outline-offset: 4px;
+}
+.portfolio-check {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  margin: 12px 0;
+}
+.portfolio-check input {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+.portfolio-finance-result {
+  margin-top: 24px;
+  display: grid;
+  gap: 16px;
+}
+.portfolio-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.portfolio-metrics > div {
+  background: #fff;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  padding: 16px;
+  display: grid;
+  gap: 6px;
+  overflow-wrap: anywhere;
+}
+.portfolio-metrics strong {
+  font-size: 1.5rem;
+}
+.portfolio-job {
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  min-width: 0;
+}
+.portfolio-cost-table {
+  overflow-x: auto;
+  max-width: 100%;
+}
+.portfolio-cost-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.portfolio-cost-table th,
+.portfolio-cost-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #d9e1da;
+}
+.portfolio-cost-table th {
+  color: #3e594f;
+}
+.portfolio-job h3 {
+  margin: 4px 0 8px;
+}
+.portfolio-job dl {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+.portfolio-job dt {
+  color: #3e594f;
+  font-size: 0.85rem;
+}
+.portfolio-job dd {
+  margin: 4px 0 0;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.portfolio-finance summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 10px 0;
+  font-weight: 600;
+}
+.portfolio-finance details p,
+.portfolio-finance details li {
+  overflow-wrap: anywhere;
+}
+.portfolio-finance [role='alert'] {
+  border-left: 4px solid #a53b2c;
+  padding: 12px;
+  background: #fff5ef;
+}
+.portfolio-finance [role='status'] {
+  padding: 12px;
+  background: #e5f0e9;
+}
+@media (max-width: 900px) {
+  .portfolio-proposal-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .portfolio-job dl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .portfolio-finance {
+    padding: 16px;
+  }
+  .portfolio-proposal-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .portfolio-metrics {
+    grid-template-columns: 1fr;
+  }
+  .portfolio-job {
+    padding: 16px;
+  }
+  .portfolio-finance button {
+    width: 100%;
+  }
+  .portfolio-finance h2 {
+    font-size: 1.4rem;
+  }
+}

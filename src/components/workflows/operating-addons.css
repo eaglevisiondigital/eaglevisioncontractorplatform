@@ -1,0 +1,76 @@
+.operating-addons {
+  border: 1px solid #d8dfd7;
+  border-radius: 14px;
+  background: #fff;
+  padding: 20px;
+  min-width: 0;
+  color: #243d35;
+}
+.operating-addons > header {
+  display: block;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+}
+.operating-addons label {
+  display: block;
+  margin: 14px 0;
+}
+.operating-addons select,
+.operating-addons textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 44px;
+  margin-top: 6px;
+  font: inherit;
+}
+.operating-addons textarea {
+  min-height: 100px;
+}
+.operating-addons .oa-check {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.oa-check input {
+  width: 20px;
+  height: 20px;
+  flex: none;
+}
+.operating-addons button {
+  min-height: 44px;
+  background: var(--journey-primary, #247364);
+  color: white;
+  border: 1px solid var(--journey-primary, #247364);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font: inherit;
+}
+.operating-addons pre {
+  max-height: 440px;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.operating-addons p {
+  overflow-wrap: anywhere;
+}
+.operating-addons summary {
+  min-height: 44px;
+  padding: 10px 0;
+  cursor: pointer;
+}
+.operating-addons :focus-visible {
+  outline: 3px solid #007b66;
+  outline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .operating-addons {
+    padding: 14px;
+  }
+  .operating-addons button {
+    width: 100%;
+    white-space: normal;
+  }
+}

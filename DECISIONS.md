@@ -1,5 +1,43 @@
 # Engineering decisions
 
+## November 2 · isolate forward ownership regressions from retained CI contracts
+
+Keep historical Cycle8 result counts and manifests/checkers/workflow exact. Four
+Cycle9 ownership assertions added to a shared suite made the legacy pipeline reject
+387 successful cases instead of its reviewed383. Move those four assertions unchanged
+into an explicitly run and counted Cycle9 suite; restore shared source byte-for-byte
+to fe813ed. Preserve full371 Cycle9 coverage across12files and original383 Cycle8
+coverage. Do not accept arbitrary counts, skip assertions or rewrite historical
+source/hash evidence. This is validation compatibility only; all business modules,
+locked UI, migration/P1/Netlify/recovery/MFA/NMI/Auth/financial/provider/send/hosted/
+production/deploy/merge gates remain unchanged. Record actual run identities and
+separate prior-head success from new-head automatic CI. Release1.0 NOT READY /
+NOT AUTHORIZED.
+
+## November 2 · compose canonical multi-job operating reviews
+
+Use one explicit disposable repository set, not repeated independent journey stores,
+for the four-job operating scenario. Author packages read pinned canonical handles;
+Main owns the shared fixture/admission, company-aware navigation and evidence index.
+Literal search/pagination covers admitted sources only. Same-property jobs remain
+distinct; property reports deduplicate only exact immutable report/version evidence.
+Cost totals never replace missing coverage with zero; quoted totals are not revenue.
+Current consent, live availability and complete history remain UNKNOWN.
+
+Independent serializer/root-getter and issued-metadata findings were corrected in
+the shared foundation with retained regressions. Main's combined371-case proof,
+actual responsive/axe/browser tests and exact file hashes remain separate from CI
+and operational acceptance. Only scoped new styles/ARIA change for real header and
+keyboard defects; approved original interfaces/artwork remain locked. No business
+engine, schema, ledger, provider or connected route is introduced. Advanced adapters
+reuse existing review engines and reserve same-engine one-use session holds before
+awaits. UNKNOWN never enables retry, replacement, sending, dispatch or execution.
+
+Separate drafts stack on shared foundation PR59; Main explicitly copies reviewed
+owned paths on codex/program-cycle-nine-integration without merging or rewriting
+parents. All PhaseOne/recovery/NMI/Auth/migration/financial/Netlify/production gates
+remain intact. Release1.0 remains NOT READY / NOT AUTHORIZED.
+
 ## November 2 · source-bound weekly and daily operating review
 
 Build six disjoint Cycle8 local packages on exact successful PR49 head a20f118.

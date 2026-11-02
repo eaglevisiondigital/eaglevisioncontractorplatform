@@ -1,5 +1,38 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: cycle nine · multi-job operating center · November 2
+
+CI follow-up: Main4917593 Foundation and dedicated Cycle9 PR/push runs now PASS;
+all author/shared exact heads57–64 are green. A legacy Cycle8 strict count mismatch
+is corrected by moving four unchanged Cycle9 assertions into their own suite and
+restoring the shared test file to exact Cycle8 bytes. No legacy checker/workflow,
+application module or protected file changes. Local Cycle8 application383 and Cycle9
+application371 PASS (overlapping suites); correction CI is separate. See
+[exact closure evidence](docs/program/CYCLE9_CI_CLOSURE.json). No successful checks
+were manually rerun or completed feature packages recreated.
+
+Cycle8 PR56 exact fe813ed Foundation and all22 observed runs PASS; PR52's cancelled
+Passport install-timeout is accounted for by its successful same-SHA push run.
+No successful checks were manually restarted. Shared foundation PR59 and seven
+bounded implementation drafts57/58/60–64 remain separate and unmerged. Main composes
+exact reviewed source bytes on codex/program-cycle-nine-integration, draft PR65
+(implementation a256336d40efdbc625c2bab8756549f860580905).
+
+The isolated `/preview/operating-center` uses one actual repository set with four
+jobs, three customers/properties and two assigned workers, including two jobs on one
+property. Search, weekly crew board, portfolio finance, safe property history,
+maintenance, daily briefing and existing-engine advanced reviews keep canonical IDs,
+current synthetic membership, stale-source fences and UNKNOWN/no-replay boundaries.
+371 focused application cases PASS; independent source/application review CLEAR.
+Final browser, CI, exact commits and integrity evidence are recorded in
+[Cycle9 validation](docs/program/CYCLE9_VALIDATION.md) and the master delivery register.
+
+DEV/explicit-flag/HTTP-loopback admission and explicit one-attempt preparation remain
+default OFF. Coverage, availability, consent, physical completion and incomplete costs
+are not inferred. All migrations/customer14/4B/P1/four artifacts/approvals, locked UIs,
+2A–2F/billing/Netlify/executor/recovery/MFA/NMI/Auth/provider/financial/communication/
+hosted/production/deploy/merge gates persist. Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Latest: cycle eight · connected operating review packages · November 2
 
 Verified exact PR49 head `a20f11855388e7cf8283294a3775e1c86a2cc66e`: both

@@ -1,0 +1,302 @@
+{
+  "schema": "propel-cycle9-delivery-v1",
+  "coordination_branch": "codex/program-cycle-nine-integration",
+  "baseline_commit": "fe813ed261ad56fffb91ca15ac2aa41a92a8847e",
+  "parent_commit": "c3bbfebd8467263f851d7b27ab68eb20c5db4df7",
+  "baseline_ci": "docs/program/CYCLE9_BASELINE_CI.json",
+  "independent_review": "docs/program/CYCLE9_INTEGRATION_REVIEW.md",
+  "independent_review_commit": "0825e3c00379a59bea79453a1825a64679cb3847",
+  "independent_files": [
+    {
+      "path": "tests/cycle9-integration.test.ts",
+      "sha256": "2ad4e749f0958b83df3d3b941d54893f17de7e60f58086a29ab2be2ce9bc6310"
+    },
+    {
+      "path": "docs/program/CYCLE9_INTEGRATION_REVIEW.md",
+      "sha256": "e61876ce99307a5f6395a4659beba57bbd6a342f5b8502f0a5749f1af5f9ac25"
+    }
+  ],
+  "foundation": {
+    "branch": "codex/program-cycle-nine",
+    "draft_pr": 59,
+    "head_commit": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+    "owned_files": [
+      {
+        "path": "src/lib/workflows/operating-center-runtime.ts",
+        "sha256": "7a5272ae344400714dea1efe727a40c19a10c96ccfdf70f7321e127488bbd239"
+      },
+      {
+        "path": "tests/cycle9-operating-runtime.test.ts",
+        "sha256": "149160009f3c7961f49b09e6fc36f8143d937082c79212a7f667bb334a38208a"
+      }
+    ]
+  },
+  "packages": [
+    {
+      "module": "portfolio-scheduling",
+      "component": "PortfolioScheduling",
+      "doc": "CYCLE9_PORTFOLIO_SCHEDULING",
+      "owner": "/root/cycle9_field_growth",
+      "branch": "codex/cycle9-portfolio-scheduling",
+      "parent_commit": "c3bbfebd8467263f851d7b27ab68eb20c5db4df7",
+      "head_commit": "a3216be062c1d2e6827f6f7b395a0ce128a1fed9",
+      "draft_pr": 57,
+      "focused_new_tests": 37,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/portfolio-scheduling.ts",
+          "sha256": "91a3c4c5140d42f74c2333936455db01174be3c07caa10166c55d340ee90ad21"
+        },
+        {
+          "path": "src/components/workflows/PortfolioScheduling.tsx",
+          "sha256": "bac3bc9887216a7304c0aaec8691662ffe2336642184011ed1790d04d87c5450"
+        },
+        {
+          "path": "src/components/workflows/portfolio-scheduling.css",
+          "sha256": "794f9bba4fccbea74ca3e6db4535d099341e6899e8297cc59cade4153d025404"
+        },
+        {
+          "path": "tests/cycle9-portfolio-scheduling.test.ts",
+          "sha256": "86250f22236d24d8bc3a9edf55e7c5f2c347eb297fc5c19a18cbce3e25cec8d0"
+        },
+        {
+          "path": "docs/program/CYCLE9_PORTFOLIO_SCHEDULING.md",
+          "sha256": "a3e4e790370a41975f7eb0d661136243fee1417f8b475a2b7e2ccbcaf6a4c456"
+        }
+      ]
+    },
+    {
+      "module": "operating-selection",
+      "component": "OperatingSelection",
+      "doc": "CYCLE9_OPERATING_SELECTION",
+      "owner": "/root/cycle8_sales_customer",
+      "branch": "codex/cycle9-operating-selection",
+      "parent_commit": "c3bbfebd8467263f851d7b27ab68eb20c5db4df7",
+      "head_commit": "d522751b6cfe9f1a44be013198a12f0f840f0821",
+      "draft_pr": 58,
+      "focused_new_tests": 23,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/operating-selection.ts",
+          "sha256": "0a3448901e308e3f853eb7d2833c2f62932452e024d69fd57b7403295bcb8d64"
+        },
+        {
+          "path": "src/components/workflows/OperatingSelection.tsx",
+          "sha256": "94500406b572cb2949d6e698db50863ecf3261c6bf59056dee33bfa6bdcef11e"
+        },
+        {
+          "path": "src/components/workflows/operating-selection.css",
+          "sha256": "b7e4bd8da700c6cc74716fb842eff990c78b9457611727564de8deae0e094b39"
+        },
+        {
+          "path": "tests/cycle9-operating-selection.test.ts",
+          "sha256": "da41c9e35b93caeaa7dbf84f95c81769344499e6f4bec985e4969cb0fb859917"
+        },
+        {
+          "path": "docs/program/CYCLE9_OPERATING_SELECTION.md",
+          "sha256": "dd5b52c26168c58f0393d020e9948bbd0905b8f3db22812f3959c1bf3ff6e6d5"
+        }
+      ]
+    },
+    {
+      "module": "portfolio-finance",
+      "component": "PortfolioFinance",
+      "doc": "CYCLE9_PORTFOLIO_FINANCE",
+      "owner": "/root/cycle5_profit_guard",
+      "branch": "codex/cycle9-portfolio-finance",
+      "parent_commit": "c3bbfebd8467263f851d7b27ab68eb20c5db4df7",
+      "head_commit": "52abd65613b35a9dbf460f88a7a2b30762c48b2b",
+      "draft_pr": 60,
+      "focused_new_tests": 34,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/portfolio-finance.ts",
+          "sha256": "dbb9ec8954b468f312cb76c684ad8cc1f965a23b57e84b70d06f11073f100f93"
+        },
+        {
+          "path": "src/components/workflows/PortfolioFinance.tsx",
+          "sha256": "3e149cc07cbb097c16b2303ca39bde1ec2ac4c41413501a702fafd016c62a793"
+        },
+        {
+          "path": "src/components/workflows/portfolio-finance.css",
+          "sha256": "d5c7ca0556a41fe7dec95748b65d45f57c20938cb9acdc5d89c1bee019eba170"
+        },
+        {
+          "path": "tests/cycle9-portfolio-finance.test.ts",
+          "sha256": "e2673ae8b26268d9a05913e4d59588949ad5fcc729e34a71cef999fe02adf72a"
+        },
+        {
+          "path": "docs/program/CYCLE9_PORTFOLIO_FINANCE.md",
+          "sha256": "f8e1f4b0ac0e2442548d745fed53750c9daf414a389fa84bfed09c04bd544fc4"
+        }
+      ]
+    },
+    {
+      "module": "portfolio-service",
+      "component": "PortfolioService",
+      "doc": "CYCLE9_PORTFOLIO_SERVICE",
+      "owner": "/root/cycle8_sales_customer",
+      "branch": "codex/cycle9-portfolio-service",
+      "parent_commit": "c3bbfebd8467263f851d7b27ab68eb20c5db4df7",
+      "head_commit": "87c6c158ea4532765c074e6919b06e722d454ef7",
+      "draft_pr": 61,
+      "focused_new_tests": 23,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/portfolio-service.ts",
+          "sha256": "d3ceadd06fa222ac14e752e6dbcfbf8fc94fcf8c64725cbfc918be46f80aef00"
+        },
+        {
+          "path": "src/components/workflows/PortfolioService.tsx",
+          "sha256": "5b0952424d3ab8961389733a4a9dde5c07947f1c643000aadad9b455e33349ba"
+        },
+        {
+          "path": "src/components/workflows/portfolio-service.css",
+          "sha256": "f00b17d11f4deb01c02861724c168976b48b55b9780e2b04e5257d994547474c"
+        },
+        {
+          "path": "tests/cycle9-portfolio-service.test.ts",
+          "sha256": "9256bcc2ae03776ccabd86146a7672123c3e8ff29458a955c60ecfe603ab7145"
+        },
+        {
+          "path": "docs/program/CYCLE9_PORTFOLIO_SERVICE.md",
+          "sha256": "661d8e1ba3dbf1bbb66f587ad705e182f57852aa468d800e521af4bc79638a92"
+        }
+      ]
+    },
+    {
+      "module": "portfolio-maintenance",
+      "component": "PortfolioMaintenance",
+      "doc": "CYCLE9_PORTFOLIO_MAINTENANCE",
+      "owner": "/root/cycle9_field_growth",
+      "branch": "codex/cycle9-portfolio-maintenance",
+      "parent_commit": "c3bbfebd8467263f851d7b27ab68eb20c5db4df7",
+      "head_commit": "043c49c2f9d1c766c232ccdca03acef4d309f3eb",
+      "draft_pr": 62,
+      "focused_new_tests": 43,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/portfolio-maintenance.ts",
+          "sha256": "cb819f141e2dd46d28ba2fc0c0b5e5e85d205aee1aa9bb83016fb15edb965c57"
+        },
+        {
+          "path": "src/components/workflows/PortfolioMaintenance.tsx",
+          "sha256": "46f1d400df6bff9a777f1ed214036ea264a2434972a4f5bd0b66a3c572110b88"
+        },
+        {
+          "path": "src/components/workflows/portfolio-maintenance.css",
+          "sha256": "0538b2dcb3ee1f01689bfaaabde45772a1fd61c3a1562f304d78cdd8ab246b24"
+        },
+        {
+          "path": "tests/cycle9-portfolio-maintenance.test.ts",
+          "sha256": "3d48b04ee57ca26e39a305cc71e49b3e5f1fdd8b5bdc87d1617babd6118c9587"
+        },
+        {
+          "path": "docs/program/CYCLE9_PORTFOLIO_MAINTENANCE.md",
+          "sha256": "c342aac3d2d7e46596dbbe75d4cc0213f012c165ffe9579e64e5d32161dfe2c7"
+        }
+      ]
+    },
+    {
+      "module": "business-briefing",
+      "component": "BusinessBriefing",
+      "doc": "CYCLE9_BUSINESS_BRIEFING",
+      "owner": "/root/cycle5_profit_guard",
+      "branch": "codex/cycle9-business-briefing",
+      "parent_commit": "c3bbfebd8467263f851d7b27ab68eb20c5db4df7",
+      "head_commit": "11074c0fef398c20b92e67feb12719bfe57361b1",
+      "draft_pr": 63,
+      "focused_new_tests": 31,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/business-briefing.ts",
+          "sha256": "746b598d071c548729781b265c3d35e739c16c95e33435b3a6387f9a689cb84b"
+        },
+        {
+          "path": "src/components/workflows/BusinessBriefing.tsx",
+          "sha256": "8aa611384bd2741e1ed835c682ddcd45348babfa761e0c933c86b1af83c72a6e"
+        },
+        {
+          "path": "src/components/workflows/business-briefing.css",
+          "sha256": "5e12fa0bc13a25d735b5c79f6ad73a29db691a5d4ae448cc1391f4cf7319c662"
+        },
+        {
+          "path": "tests/cycle9-business-briefing.test.ts",
+          "sha256": "22ec4fc5e300da70cb1514fc48540d971f8dc716e0a0b33b06b2726bad513c89"
+        },
+        {
+          "path": "docs/program/CYCLE9_BUSINESS_BRIEFING.md",
+          "sha256": "dfecd70e3981b35a7af3f112819ac3ff8e5c14d38d7cce02bc0604eafbeb29b8"
+        }
+      ]
+    },
+    {
+      "module": "operating-addons",
+      "component": "OperatingAddons",
+      "doc": "CYCLE9_OPERATING_ADDONS",
+      "owner": "/root",
+      "branch": "codex/cycle9-operating-addons",
+      "parent_commit": "c3bbfebd8467263f851d7b27ab68eb20c5db4df7",
+      "head_commit": "b0f7261d507b63ea0712d6211cbf331b8c359295",
+      "draft_pr": 64,
+      "focused_new_tests": 27,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/operating-addons.ts",
+          "sha256": "1b6dbc83d98f7e7d8bc87f539eb3a0d3a23e20b4c022456f340beabe372d0407"
+        },
+        {
+          "path": "src/components/workflows/OperatingAddons.tsx",
+          "sha256": "9e273869bc16164413c3ddf0f41e88069f40e929630edb0a7767bbaf45fa4fd5"
+        },
+        {
+          "path": "src/components/workflows/operating-addons.css",
+          "sha256": "3917ecb2dc723d8f9a184650a8a8ac2aa5ac4d27470f65e8f2581f3cc1d9d720"
+        },
+        {
+          "path": "tests/cycle9-operating-addons.test.ts",
+          "sha256": "d95ad870a81ec0a09fdf04d1ac8cbf0dbe608259df6276e150376beb5be6962a"
+        },
+        {
+          "path": "docs/program/CYCLE9_OPERATING_ADDONS.md",
+          "sha256": "f057f623d4af9eba43461dcde24b8d2e234c0d8550d4698772a7be4876c50c0c"
+        }
+      ]
+    }
+  ],
+  "combined_evidence": {
+    "author_new_cases": 218,
+    "foundation_cases": 28,
+    "independent_new_cases": 27,
+    "retained_independent_cases": 21,
+    "source_inventory_cases": 73,
+    "application_cases": 371,
+    "dev_browser_cases": 30,
+    "production_off_cases": 3,
+    "screenshots": 72,
+    "preview_route": "/preview/operating-center",
+    "default_off": true,
+    "same_tab_memory_only": true,
+    "ci_snapshot": "docs/program/CYCLE9_CI_SNAPSHOT.json",
+    "source_ownership_cases": 4,
+    "source_ownership_test": "tests/program/cycle9-feature-evidence.test.ts"
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "limits": [
+    "Four admitted jobs, three customers, three properties and two assigned workers in one actual repository set; not complete company coverage.",
+    "Current staff/source checks are synthetic evidence, not genuine hosted Auth or durable custody.",
+    "Availability, incomplete costs/history and purpose/suppression/consent-at-send remain UNKNOWN. No dispatch, communication, financial or operational authority.",
+    "Explicit exact-file composition on the integration branch; original draft PRs and parents remain unmerged."
+  ],
+  "coordination_parent_commit": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
+  "coordination_draft_pr": 65,
+  "coordination_implementation_commit": "a256336d40efdbc625c2bab8756549f860580905",
+  "ci_closure": "docs/program/CYCLE9_CI_CLOSURE.json"
+}

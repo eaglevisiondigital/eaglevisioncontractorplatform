@@ -2,14 +2,15 @@
   "schema": "propel-feature-evidence-v1",
   "sourceCommit": "dc7ed7c2db3cf8ff78a3d6f09098a1b623622874",
   "execution": "not_authorized",
-  "date": "2026-11-01",
+  "date": "2026-11-02",
   "limits": [
     "Inventory maps existing public source and retained evidence; it is not a fresh full security audit.",
     "Separate draft PRs for sales, finance and field are not integrated into this source baseline.",
     "Historical Action B core connected PASS is retained; all new hosted lifecycle acceptance remains blocked.",
     "Cycle6 explicitly composes reviewed local candidates on draft PR38 for source-bound testing only. Original PRs remain unmerged; no hosted or release status is promoted.",
     "Cycle7 adds default-OFF usable unsaved planning/cost forms and exact customer-safe service navigation on reviewed Cycle6 sources. Operational and release labels are unchanged.",
-    "Cycle8 adds six default-OFF source-bound operating reviews over the same actual journey records. Weekly/source-CAS and consent-at-send remain non-operational; selected-job coverage is not whole-company completeness. Full local/hosted/release acceptance is unchanged."
+    "Cycle8 adds six default-OFF source-bound operating reviews over the same actual journey records. Weekly/source-CAS and consent-at-send remain non-operational; selected-job coverage is not whole-company completeness. Full local/hosted/release acceptance is unchanged.",
+    "Cycle9 composes seven exact draft packages over one four-job/three-property canonical repository set. Coverage/availability/consent gaps remain UNKNOWN; source, local, CI and hosted/release acceptance stay separate. No original scope ID or acceptance state is promoted."
   ],
   "features": [
     {
@@ -43,7 +44,7 @@
         },
         {
           "path": "SECURITY_MODEL.md",
-          "anchor": "# Security model · Phase 2"
+          "anchor": "# Security model \u00b7 Phase 2"
         }
       ],
       "tests": [
@@ -55,7 +56,7 @@
       "records": [
         {
           "path": "docs/ACTION_B_CONNECTED_RESULT.md",
-          "anchor": "# Propel · Action B connected acceptance result"
+          "anchor": "# Propel \u00b7 Action B connected acceptance result"
         }
       ],
       "ci": {
@@ -134,7 +135,11 @@
         "public.jobs",
         "public.intake_requests"
       ],
-      "routes": ["/preview > Customers", "/preview > Leads"],
+      "routes": [
+        "/preview > Customers",
+        "/preview > Leads",
+        "/preview/operating-center (DEV/explicit flag/HTTP loopback only)"
+      ],
       "risks": [
         "Existing local CRM is implemented; first-page lookup limits and connected lifecycle acceptance need bounded follow-up.",
         "Public intake remains gated by approved CAPTCHA and infrastructure."
@@ -152,6 +157,10 @@
         {
           "path": "src/lib/workflows/sales-desk.ts",
           "anchor": "export async function readSalesDesk"
+        },
+        {
+          "path": "src/lib/workflows/operating-selection.ts",
+          "anchor": "export async function readOperatingSelection("
         }
       ],
       "tests": [
@@ -161,11 +170,15 @@
         },
         {
           "path": "tests/workflows/sales-workflow.test.ts",
-          "anchor": "actual lead → exact issued scope → contract preparation"
+          "anchor": "actual lead \u2192 exact issued scope \u2192 contract preparation"
         },
         {
           "path": "tests/cycle8-sales-desk.test.ts",
           "anchor": "prevents concurrent and subsequent duplicate preparation"
+        },
+        {
+          "path": "tests/cycle9-operating-selection.test.ts",
+          "anchor": "it('literal case-insensitive search combines actual customer/property/lead and issued references', async () => {"
         }
       ],
       "records": [
@@ -175,7 +188,7 @@
         },
         {
           "path": "docs/ACTION_B_CONNECTED_RESULT.md",
-          "anchor": "# Propel · Action B connected acceptance result"
+          "anchor": "# Propel \u00b7 Action B connected acceptance result"
         },
         {
           "path": "docs/program/CYCLE6_INDEPENDENT_REVIEW.md",
@@ -183,7 +196,11 @@
         },
         {
           "path": "docs/program/CYCLE8_SALES_DESK.md",
-          "anchor": "# Cycle 8 · booking and exact-scope staff review"
+          "anchor": "# Cycle 8 \u00b7 booking and exact-scope staff review"
+        },
+        {
+          "path": "docs/program/CYCLE9_VALIDATION.md",
+          "anchor": "# Cycle 9 multi-job operating center validation"
         }
       ],
       "ci": {
@@ -210,7 +227,10 @@
         "public.estimate_versions",
         "canonical integer calculation"
       ],
-      "routes": ["/preview > Estimates"],
+      "routes": [
+        "/preview > Estimates",
+        "/preview/operating-center (DEV/explicit flag/HTTP loopback only)"
+      ],
       "risks": [
         "Local estimating exists; issued-safe customer scope requires exact immutable source.",
         "Revision, repair-origin and connected issuance guards stay closed.",
@@ -229,6 +249,10 @@
         {
           "path": "src/lib/workflows/sales-workflow.ts",
           "anchor": "export async function prepareSalesWorkflowContract"
+        },
+        {
+          "path": "src/lib/workflows/operating-selection.ts",
+          "anchor": "export async function readOperatingSelection("
         }
       ],
       "tests": [
@@ -238,7 +262,11 @@
         },
         {
           "path": "tests/workflows/sales-workflow.test.ts",
-          "anchor": "actual lead → exact issued scope → contract preparation"
+          "anchor": "actual lead \u2192 exact issued scope \u2192 contract preparation"
+        },
+        {
+          "path": "tests/cycle9-operating-selection.test.ts",
+          "anchor": "it('literal case-insensitive search combines actual customer/property/lead and issued references', async () => {"
         }
       ],
       "records": [
@@ -248,7 +276,7 @@
         },
         {
           "path": "docs/CUSTOMER_ESTIMATE_REVISIONS.md",
-          "anchor": "# Workstream 3B · customer request review and estimate draft revision"
+          "anchor": "# Workstream 3B \u00b7 customer request review and estimate draft revision"
         },
         {
           "path": "docs/program/CYCLE3_INTEGRATION_REVIEW.md",
@@ -273,6 +301,10 @@
         {
           "path": "docs/program/CYCLE6_INDEPENDENT_REVIEW.md",
           "anchor": "# Cycle 6 independent integration review"
+        },
+        {
+          "path": "docs/program/CYCLE9_VALIDATION.md",
+          "anchor": "# Cycle 9 multi-job operating center validation"
         }
       ],
       "ci": {
@@ -320,7 +352,7 @@
       "records": [
         {
           "path": "docs/CUSTOMER_BROKER_INTEGRATION.md",
-          "anchor": "# Workstream 4B · server broker and restricted database integration"
+          "anchor": "# Workstream 4B \u00b7 server broker and restricted database integration"
         },
         {
           "path": "docs/CUSTOMER_BROKER_VALIDATION.json",
@@ -351,7 +383,10 @@
         "private signature evidence",
         "job change orders"
       ],
-      "routes": ["/preview/release (explicit synthetic sandbox)"],
+      "routes": [
+        "/preview/release (explicit synthetic sandbox)",
+        "/preview/operating-center (DEV/explicit flag/HTTP loopback only)"
+      ],
       "risks": [
         "Contract/sandbox source already exists; legal execution, provider identity and genuine consent are not accepted.",
         "Ordinary contracts and real signatures remain disabled.",
@@ -374,6 +409,10 @@
         {
           "path": "src/lib/workflows/sales-desk.ts",
           "anchor": "export async function readSalesDesk"
+        },
+        {
+          "path": "src/lib/workflows/operating-selection.ts",
+          "anchor": "export async function readOperatingSelection("
         }
       ],
       "tests": [
@@ -383,11 +422,15 @@
         },
         {
           "path": "tests/workflows/sales-workflow.test.ts",
-          "anchor": "actual lead → exact issued scope → contract preparation"
+          "anchor": "actual lead \u2192 exact issued scope \u2192 contract preparation"
         },
         {
           "path": "tests/cycle8-sales-desk.test.ts",
           "anchor": "prevents concurrent and subsequent duplicate preparation"
+        },
+        {
+          "path": "tests/cycle9-operating-selection.test.ts",
+          "anchor": "it('literal case-insensitive search combines actual customer/property/lead and issued references', async () => {"
         }
       ],
       "records": [
@@ -425,7 +468,11 @@
         },
         {
           "path": "docs/program/CYCLE8_SALES_DESK.md",
-          "anchor": "# Cycle 8 · booking and exact-scope staff review"
+          "anchor": "# Cycle 8 \u00b7 booking and exact-scope staff review"
+        },
+        {
+          "path": "docs/program/CYCLE9_VALIDATION.md",
+          "anchor": "# Cycle 9 multi-job operating center validation"
         }
       ],
       "ci": {
@@ -446,14 +493,17 @@
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
       "next": "Review isolated schedule projection in separate field PR; preserve approved workspace.",
-      "date": "2026-11-01",
+      "date": "2026-11-02",
       "dataObjects": [
         "CRM service location",
         "private inspection plans/visits/reports",
         "exact maintenance source/CAS",
         "existing estimate repair origin"
       ],
-      "routes": ["/preview > Property Operations"],
+      "routes": [
+        "/preview > Property Operations",
+        "/preview/operating-center (DEV/explicit flag/HTTP loopback only)"
+      ],
       "risks": [
         "Staff review/scheduling/readiness never prove physical repair or customer authorization.",
         "2A-2F disposable persistence does not establish operational writer custody."
@@ -463,18 +513,26 @@
         {
           "path": "src/lib/property.ts",
           "anchor": "export class PropertyRepository"
+        },
+        {
+          "path": "src/lib/workflows/portfolio-scheduling.ts",
+          "anchor": "export async function readPortfolioScheduling("
         }
       ],
       "tests": [
         {
           "path": "tests/property-operations.test.ts",
           "anchor": "recurrence stays anchored across month ends and DST without shifting local visit dates"
+        },
+        {
+          "path": "tests/cycle9-portfolio-scheduling.test.ts",
+          "anchor": "it('shared crew conflicts across different exact jobs are calculated once by canonical capacity', async () => {"
         }
       ],
       "records": [
         {
           "path": "docs/PROPERTY_OPERATIONS_VALIDATION.md",
-          "anchor": "# Property operations and smart procurement · local implementation"
+          "anchor": "# Property operations and smart procurement \u00b7 local implementation"
         },
         {
           "path": "docs/MAINTENANCE_FOLLOW_UP_VALIDATION.json",
@@ -483,6 +541,10 @@
         {
           "path": "docs/REPAIR_SCOPE_READINESS_VALIDATION.json",
           "anchor": "{"
+        },
+        {
+          "path": "docs/program/CYCLE9_VALIDATION.md",
+          "anchor": "# Cycle 9 multi-job operating center validation"
         }
       ],
       "ci": {
@@ -510,7 +572,8 @@
       ],
       "routes": [
         "/preview > Workforce",
-        "Proposed isolated /preview/field-scheduling in separate draft PR"
+        "Proposed isolated /preview/field-scheduling in separate draft PR",
+        "/preview/operating-center (DEV/explicit flag/HTTP loopback only)"
       ],
       "risks": [
         "Existing timekeeping is executable locally; sample job assignment does not retain dispatch.",
@@ -538,6 +601,10 @@
         {
           "path": "src/lib/workflows/weekly-crew.ts",
           "anchor": "export async function readWeeklyCrew"
+        },
+        {
+          "path": "src/lib/workflows/portfolio-scheduling.ts",
+          "anchor": "export async function readPortfolioScheduling("
         }
       ],
       "tests": [
@@ -556,6 +623,10 @@
         {
           "path": "tests/cycle8-weekly-crew.test.ts",
           "anchor": "reviews canonical same-day proposal overlaps without claiming a booked slot"
+        },
+        {
+          "path": "tests/cycle9-portfolio-scheduling.test.ts",
+          "anchor": "it('shared crew conflicts across different exact jobs are calculated once by canonical capacity', async () => {"
         }
       ],
       "records": [
@@ -593,7 +664,11 @@
         },
         {
           "path": "docs/program/CYCLE8_WEEKLY_CREW.md",
-          "anchor": "# Cycle 8 · weekly crew scheduling review"
+          "anchor": "# Cycle 8 \u00b7 weekly crew scheduling review"
+        },
+        {
+          "path": "docs/program/CYCLE9_VALIDATION.md",
+          "anchor": "# Cycle 9 multi-job operating center validation"
         }
       ],
       "ci": {
@@ -620,7 +695,10 @@
         "ledger entries",
         "merchant configuration"
       ],
-      "routes": ["/preview/release (synthetic only)"],
+      "routes": [
+        "/preview/release (synthetic only)",
+        "/preview/operating-center (DEV/explicit flag/HTTP loopback only)"
+      ],
       "risks": [
         "No live charge, invoice, receivable, settlement, payout or provider execution authority.",
         "NMI merchant/tokenization/consent/custody acceptance and all six billing enhancements remain unaccepted/PROPOSED."
@@ -646,6 +724,10 @@
         {
           "path": "src/lib/workflows/finance-desk.ts",
           "anchor": "export async function readFinanceDesk"
+        },
+        {
+          "path": "src/lib/workflows/portfolio-finance.ts",
+          "anchor": "export async function readPortfolioFinance("
         }
       ],
       "tests": [
@@ -664,6 +746,10 @@
         {
           "path": "tests/cycle8-finance-desk.test.ts",
           "anchor": "rejects stale original live proposal changes across a real digest await"
+        },
+        {
+          "path": "tests/cycle9-portfolio-finance.test.ts",
+          "anchor": "describe('Cycle 9 canonical selected-job portfolio finance', () => {"
         }
       ],
       "records": [
@@ -686,6 +772,10 @@
         {
           "path": "docs/program/CYCLE8_FINANCE_DESK.md",
           "anchor": "# Cycle 8 Finance operating review"
+        },
+        {
+          "path": "docs/program/CYCLE9_VALIDATION.md",
+          "anchor": "# Cycle 9 multi-job operating center validation"
         }
       ],
       "ci": {
@@ -713,7 +803,10 @@
         "approved labor summary",
         "purchase matching"
       ],
-      "routes": ["/preview > Jobs"],
+      "routes": [
+        "/preview > Jobs",
+        "/preview/operating-center (DEV/explicit flag/HTTP loopback only)"
+      ],
       "risks": [
         "Profitability is implemented locally; external accounting and purchase-order lifecycle are not certified.",
         "Incomplete cost inputs cannot be labeled final; no automatic customer billing.",
@@ -736,6 +829,10 @@
         {
           "path": "src/lib/workflows/finance-desk.ts",
           "anchor": "export async function readFinanceDesk"
+        },
+        {
+          "path": "src/lib/workflows/portfolio-finance.ts",
+          "anchor": "export async function readPortfolioFinance("
         }
       ],
       "tests": [
@@ -754,6 +851,10 @@
         {
           "path": "tests/cycle8-finance-desk.test.ts",
           "anchor": "rejects stale original live proposal changes across a real digest await"
+        },
+        {
+          "path": "tests/cycle9-portfolio-finance.test.ts",
+          "anchor": "describe('Cycle 9 canonical selected-job portfolio finance', () => {"
         }
       ],
       "records": [
@@ -792,6 +893,10 @@
         {
           "path": "docs/program/CYCLE8_FINANCE_DESK.md",
           "anchor": "# Cycle 8 Finance operating review"
+        },
+        {
+          "path": "docs/program/CYCLE9_VALIDATION.md",
+          "anchor": "# Cycle 9 multi-job operating center validation"
         }
       ],
       "ci": {
@@ -818,7 +923,11 @@
         "immutable published reports/findings",
         "allowlisted issued estimate scope"
       ],
-      "routes": ["/preview/property-portal", "/preview/property-portal-design"],
+      "routes": [
+        "/preview/property-portal",
+        "/preview/property-portal-design",
+        "/preview/operating-center (DEV/explicit flag/HTTP loopback only)"
+      ],
       "risks": [
         "Approved presentation is locked; missing/access-limited history is not complete coverage.",
         "No connected login, publication, preference authority or inferred repair."
@@ -832,6 +941,10 @@
         {
           "path": "src/lib/workflows/customer-service.ts",
           "anchor": "readCustomerService"
+        },
+        {
+          "path": "src/lib/workflows/portfolio-service.ts",
+          "anchor": "export async function readPortfolioService("
         }
       ],
       "tests": [
@@ -842,6 +955,10 @@
         {
           "path": "tests/cycle7-customer-service.test.ts",
           "anchor": "readCustomerService"
+        },
+        {
+          "path": "tests/cycle9-portfolio-service.test.ts",
+          "anchor": "it('filters by exact property ID while retaining honest available counts', async () => {"
         }
       ],
       "records": [
@@ -856,6 +973,10 @@
         {
           "path": "docs/program/CYCLE7_VALIDATION.md",
           "anchor": "# Cycle 7 practical usability validation"
+        },
+        {
+          "path": "docs/program/CYCLE9_VALIDATION.md",
+          "anchor": "# Cycle 9 multi-job operating center validation"
         }
       ],
       "ci": {
@@ -880,7 +1001,9 @@
       "dataObjects": [
         "Reuse existing CRM location, report/version, job and private media contracts"
       ],
-      "routes": [],
+      "routes": [
+        "/preview/operating-center (DEV/explicit flag/HTTP loopback only)"
+      ],
       "risks": [
         "Published inspection history is not a complete Property Passport, warranty or verified completion system.",
         "Media quarantine, consent, access and retention gates remain unmet.",
@@ -899,22 +1022,30 @@
         {
           "path": "src/lib/workflows/completion-review.ts",
           "anchor": "export async function readCompletionReview"
+        },
+        {
+          "path": "src/lib/workflows/portfolio-service.ts",
+          "anchor": "export async function readPortfolioService("
         }
       ],
       "tests": [
         {
           "path": "tests/workflows/customer-workflow.test.ts",
-          "anchor": "same-repository Field → customer Passport documentation"
+          "anchor": "same-repository Field \u2192 customer Passport documentation"
         },
         {
           "path": "tests/cycle8-completion-review.test.ts",
           "anchor": "replacing the customer model cannot reopen the same authoritative source claim"
+        },
+        {
+          "path": "tests/cycle9-portfolio-service.test.ts",
+          "anchor": "it('filters by exact property ID while retaining honest available counts', async () => {"
         }
       ],
       "records": [
         {
           "path": "docs/PRODUCT_PROGRAM_2026.md",
-          "anchor": "# Propel Contractor Suite — integrated product program"
+          "anchor": "# Propel Contractor Suite \u2014 integrated product program"
         },
         {
           "path": "docs/program/CYCLE3_INTEGRATION_REVIEW.md",
@@ -942,7 +1073,11 @@
         },
         {
           "path": "docs/program/CYCLE8_COMPLETION_REVIEW.md",
-          "anchor": "# Cycle 8 · customer-safe completion documentation review"
+          "anchor": "# Cycle 8 \u00b7 customer-safe completion documentation review"
+        },
+        {
+          "path": "docs/program/CYCLE9_VALIDATION.md",
+          "anchor": "# Cycle 9 multi-job operating center validation"
         }
       ],
       "ci": {
@@ -968,7 +1103,9 @@
         "Existing inspection recurrence",
         "proposed consent/billing linkage"
       ],
-      "routes": [],
+      "routes": [
+        "/preview/operating-center (DEV/explicit flag/HTTP loopback only)"
+      ],
       "risks": [
         "Inspection cadence already exists; paid program enrollment/consent/billing is not implemented acceptance.",
         "Six billing proposals stay PROPOSED; no AR or customer obligations.",
@@ -987,6 +1124,10 @@
         {
           "path": "src/lib/workflows/maintenance-desk.ts",
           "anchor": "export async function readMaintenanceDesk"
+        },
+        {
+          "path": "src/lib/workflows/portfolio-maintenance.ts",
+          "anchor": "export async function readPortfolioMaintenance("
         }
       ],
       "tests": [
@@ -997,6 +1138,10 @@
         {
           "path": "tests/cycle8-maintenance-desk.test.ts",
           "anchor": "detected captured consent withdrawal invalidates exact historical preflight and keeps UNKNOWN"
+        },
+        {
+          "path": "tests/cycle9-portfolio-maintenance.test.ts",
+          "anchor": "it('two jobs at one property retain separate exact plans, occurrences and published report identities', async () => {"
         }
       ],
       "records": [
@@ -1030,7 +1175,11 @@
         },
         {
           "path": "docs/program/CYCLE8_MAINTENANCE_DESK.md",
-          "anchor": "# Cycle 8 · maintenance and renewal planning desk"
+          "anchor": "# Cycle 8 \u00b7 maintenance and renewal planning desk"
+        },
+        {
+          "path": "docs/program/CYCLE9_VALIDATION.md",
+          "anchor": "# Cycle 9 multi-job operating center validation"
         }
       ],
       "ci": {
@@ -1055,7 +1204,9 @@
       "dataObjects": [
         "Reuse CRM and communications preparation; no duplicate lead store"
       ],
-      "routes": [],
+      "routes": [
+        "/preview/operating-center (DEV/explicit flag/HTTP loopback only)"
+      ],
       "risks": [
         "No verified automated sending, consent/opt-out provider pipeline or external booking.",
         "Cycle-five source-bound local candidates are not merged, enabled, hosted-accepted or released; captured consent/workforce and genuine operational gates remain UNKNOWN/BLOCKED."
@@ -1073,6 +1224,10 @@
         {
           "path": "src/lib/workflows/maintenance-desk.ts",
           "anchor": "export async function readMaintenanceDesk"
+        },
+        {
+          "path": "src/lib/workflows/portfolio-maintenance.ts",
+          "anchor": "export async function readPortfolioMaintenance("
         }
       ],
       "tests": [
@@ -1083,12 +1238,16 @@
         {
           "path": "tests/cycle8-maintenance-desk.test.ts",
           "anchor": "detected captured consent withdrawal invalidates exact historical preflight and keeps UNKNOWN"
+        },
+        {
+          "path": "tests/cycle9-portfolio-maintenance.test.ts",
+          "anchor": "it('two jobs at one property retain separate exact plans, occurrences and published report identities', async () => {"
         }
       ],
       "records": [
         {
           "path": "docs/PRODUCT_PROGRAM_2026.md",
-          "anchor": "# Propel Contractor Suite — integrated product program"
+          "anchor": "# Propel Contractor Suite \u2014 integrated product program"
         },
         {
           "path": "docs/program/CYCLE3_INTEGRATION_REVIEW.md",
@@ -1116,7 +1275,11 @@
         },
         {
           "path": "docs/program/CYCLE8_MAINTENANCE_DESK.md",
-          "anchor": "# Cycle 8 · maintenance and renewal planning desk"
+          "anchor": "# Cycle 8 \u00b7 maintenance and renewal planning desk"
+        },
+        {
+          "path": "docs/program/CYCLE9_VALIDATION.md",
+          "anchor": "# Cycle 9 multi-job operating center validation"
         }
       ],
       "ci": {
@@ -1141,7 +1304,9 @@
       "dataObjects": [
         "Existing estimate draft and quarantine/extraction contracts"
       ],
-      "routes": [],
+      "routes": [
+        "/preview/operating-center (DEV/explicit flag/HTTP loopback only)"
+      ],
       "risks": [
         "Material extraction interfaces do not constitute an accepted voice agent/Copilot.",
         "No real AI/provider activation, autonomous financial decisions or customer messages.",
@@ -1160,6 +1325,14 @@
         {
           "path": "src/lib/workflows/daily-operations.ts",
           "anchor": "export async function readDailyOperations"
+        },
+        {
+          "path": "src/lib/workflows/business-briefing.ts",
+          "anchor": "export async function readBusinessBriefing("
+        },
+        {
+          "path": "src/lib/workflows/operating-addons.ts",
+          "anchor": "export async function prepareOperatingAddon("
         }
       ],
       "tests": [
@@ -1170,6 +1343,14 @@
         {
           "path": "tests/cycle8-daily-operations.test.ts",
           "anchor": "denies a changed supported Copilot status during final Daily hashing without consuming a dashboard claim"
+        },
+        {
+          "path": "tests/cycle9-business-briefing.test.ts",
+          "anchor": "describe('Cycle 9 source-bound cross-job business briefing', () => {"
+        },
+        {
+          "path": "tests/cycle9-operating-addons.test.ts",
+          "anchor": "it(`${company.slug}/${kind} reuses exact source without execution`, async () => {"
         }
       ],
       "records": [
@@ -1191,7 +1372,11 @@
         },
         {
           "path": "docs/program/CYCLE8_DAILY_OPERATIONS.md",
-          "anchor": "# Cycle 8 · Daily operating priorities"
+          "anchor": "# Cycle 8 \u00b7 Daily operating priorities"
+        },
+        {
+          "path": "docs/program/CYCLE9_VALIDATION.md",
+          "anchor": "# Cycle 9 multi-job operating center validation"
         }
       ],
       "ci": {
@@ -1212,13 +1397,15 @@
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
       "next": "Review exact Cycle5 candidate heads and retained combined proof; keep default-OFF/unwired and pursue source-custody or isolated workspace composition without real execution.",
-      "date": "2026-11-01",
+      "date": "2026-11-02",
       "dataObjects": [
         "Existing supplier connector contracts",
         "provider-specific webhook envelope",
         "merchant reference"
       ],
-      "routes": [],
+      "routes": [
+        "/preview/operating-center (DEV/explicit flag/HTTP loopback only)"
+      ],
       "risks": [
         "Supplier connectors are disabled interfaces; calendar/phone/accounting operational adapters unverified.",
         "Contract tests do not authorize calls, credentials, ingestion or provider execution.",
@@ -1233,6 +1420,10 @@
         {
           "path": "src/lib/workflows/finance-desk.ts",
           "anchor": "export async function readFinanceDesk"
+        },
+        {
+          "path": "src/lib/workflows/operating-addons.ts",
+          "anchor": "export async function prepareOperatingAddon("
         }
       ],
       "tests": [
@@ -1243,6 +1434,10 @@
         {
           "path": "tests/cycle8-finance-desk.test.ts",
           "anchor": "rejects stale original live proposal changes across a real digest await"
+        },
+        {
+          "path": "tests/cycle9-operating-addons.test.ts",
+          "anchor": "it(`${company.slug}/${kind} reuses exact source without execution`, async () => {"
         }
       ],
       "records": [
@@ -1252,7 +1447,7 @@
         },
         {
           "path": "docs/PROPERTY_OPERATIONS_VALIDATION.md",
-          "anchor": "# Property operations and smart procurement · local implementation"
+          "anchor": "# Property operations and smart procurement \u00b7 local implementation"
         },
         {
           "path": "docs/program/CYCLE5_INTEGRATION_REVIEW.md",
@@ -1265,6 +1460,10 @@
         {
           "path": "docs/program/CYCLE8_FINANCE_DESK.md",
           "anchor": "# Cycle 8 Finance operating review"
+        },
+        {
+          "path": "docs/program/CYCLE9_VALIDATION.md",
+          "anchor": "# Cycle 9 multi-job operating center validation"
         }
       ],
       "ci": {
@@ -1309,12 +1508,20 @@
         {
           "path": "src/styles.css",
           "anchor": ":root"
+        },
+        {
+          "path": "src/components/workflows/OperatingCenterPreview.tsx",
+          "anchor": "export function OperatingCenterPreview()"
         }
       ],
       "tests": [
         {
           "path": "tests/browser/branding.spec.ts",
           "anchor": "approved Propel asset and product identity cover platform surfaces while tenant brands stay independent"
+        },
+        {
+          "path": "tests/cycle9-integration.test.ts",
+          "anchor": "from '../src/lib/workflows/operating-center-runtime'"
         }
       ],
       "records": [
@@ -1349,6 +1556,10 @@
         {
           "path": "docs/program/CYCLE5_DELIVERY_INDEX.json",
           "anchor": "\"schema\": \"propel-cycle5-delivery-v1\""
+        },
+        {
+          "path": "docs/program/CYCLE9_INTEGRATION_REVIEW.md",
+          "anchor": "# Cycle 9 independent combined source review"
         }
       ],
       "ci": {
@@ -1457,7 +1668,7 @@
         },
         {
           "path": "docs/ACTION_B_CONNECTED_RESULT.md",
-          "anchor": "# Propel · Action B connected acceptance result"
+          "anchor": "# Propel \u00b7 Action B connected acceptance result"
         }
       ],
       "ci": {
@@ -1526,13 +1737,16 @@
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
       "next": "Reuse reviewed import engine and exact line provenance; do not add a parallel product/price system.",
-      "date": "2026-11-01",
+      "date": "2026-11-02",
       "dataObjects": [
         "Existing source documents",
         "review lines",
         "estimate input and import provenance"
       ],
-      "routes": ["/preview > Smart Material Import"],
+      "routes": [
+        "/preview > Smart Material Import",
+        "/preview/operating-center (DEV/explicit flag/HTTP loopback only)"
+      ],
       "risks": [
         "Synthetic import/review is executable; real ingestion/provider acceptance remains blocked.",
         "Supplier prices and internal margins never enter customer scope."
@@ -1542,22 +1756,34 @@
         {
           "path": "src/domain/materials/import.ts",
           "anchor": "export function customerMaterialLine"
+        },
+        {
+          "path": "src/lib/workflows/operating-addons.ts",
+          "anchor": "export async function prepareOperatingAddon("
         }
       ],
       "tests": [
         {
           "path": "tests/materials.test.ts",
           "anchor": "retains multi-supplier documents, literal costs and source references"
+        },
+        {
+          "path": "tests/cycle9-operating-addons.test.ts",
+          "anchor": "it(`${company.slug}/${kind} reuses exact source without execution`, async () => {"
         }
       ],
       "records": [
         {
           "path": "docs/MATERIAL_IMPORT.md",
-          "anchor": "# Smart Material Import · implementation and activation boundary"
+          "anchor": "# Smart Material Import \u00b7 implementation and activation boundary"
         },
         {
           "path": "docs/PHASE3_VALIDATION.md",
           "anchor": "# Phase 3 local validation and activation gates"
+        },
+        {
+          "path": "docs/program/CYCLE9_VALIDATION.md",
+          "anchor": "# Cycle 9 multi-job operating center validation"
         }
       ],
       "ci": {
@@ -1578,13 +1804,16 @@
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
       "next": "Preserve original baseline and cost engine while specifying exact future work-order handoffs.",
-      "date": "2026-11-01",
+      "date": "2026-11-02",
       "dataObjects": [
         "Existing jobs",
         "immutable job baseline",
         "expense events/change orders"
       ],
-      "routes": ["/preview > Jobs"],
+      "routes": [
+        "/preview > Jobs",
+        "/preview/operating-center (DEV/explicit flag/HTTP loopback only)"
+      ],
       "risks": [
         "Job baseline is local/retained-core evidence, not customer authorization or dispatch.",
         "Locked costs require append-only corrections."
@@ -1594,18 +1823,30 @@
         {
           "path": "src/domain/jobs/financials.ts",
           "anchor": "export function baselineFromEstimate"
+        },
+        {
+          "path": "src/lib/workflows/portfolio-finance.ts",
+          "anchor": "export async function readPortfolioFinance("
         }
       ],
       "tests": [
         {
           "path": "tests/jobs-workforce.test.ts",
           "anchor": "baseline retains original selected estimate revenue and material/labor cost"
+        },
+        {
+          "path": "tests/cycle9-portfolio-finance.test.ts",
+          "anchor": "describe('Cycle 9 canonical selected-job portfolio finance', () => {"
         }
       ],
       "records": [
         {
           "path": "docs/PHASE3_VALIDATION.md",
           "anchor": "# Phase 3 local validation and activation gates"
+        },
+        {
+          "path": "docs/program/CYCLE9_VALIDATION.md",
+          "anchor": "# Cycle 9 multi-job operating center validation"
         }
       ],
       "ci": {
@@ -1632,7 +1873,10 @@
         "worker rates",
         "payroll preparation records"
       ],
-      "routes": ["/preview > Workforce"],
+      "routes": [
+        "/preview > Workforce",
+        "/preview/operating-center (DEV/explicit flag/HTTP loopback only)"
+      ],
       "risks": [
         "Approved preparation is not legal classification, statutory compliance or payroll disbursement.",
         "Private rates/deductions excluded from field/customer views."
@@ -1646,6 +1890,10 @@
         {
           "path": "src/lib/workflows/job-review.ts",
           "anchor": "readJobReview"
+        },
+        {
+          "path": "src/lib/workflows/portfolio-scheduling.ts",
+          "anchor": "export async function readPortfolioScheduling("
         }
       ],
       "tests": [
@@ -1656,6 +1904,10 @@
         {
           "path": "tests/cycle7-job-review.test.ts",
           "anchor": "readJobReview"
+        },
+        {
+          "path": "tests/cycle9-portfolio-scheduling.test.ts",
+          "anchor": "it('shared crew conflicts across different exact jobs are calculated once by canonical capacity', async () => {"
         }
       ],
       "records": [
@@ -1666,6 +1918,10 @@
         {
           "path": "docs/program/CYCLE7_VALIDATION.md",
           "anchor": "# Cycle 7 practical usability validation"
+        },
+        {
+          "path": "docs/program/CYCLE9_VALIDATION.md",
+          "anchor": "# Cycle 9 multi-job operating center validation"
         }
       ],
       "ci": {
@@ -1686,13 +1942,16 @@
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
       "next": "Retain exact scope/hash/source and separate explicit delivery authorization.",
-      "date": "2026-11-01",
+      "date": "2026-11-02",
       "dataObjects": [
         "Existing communication outbox/preparation",
         "verified sender evidence",
         "internal sink"
       ],
-      "routes": ["/preview/release (internal sink only)"],
+      "routes": [
+        "/preview/release (internal sink only)",
+        "/preview/operating-center (DEV/explicit flag/HTTP loopback only)"
+      ],
       "risks": [
         "Prepared content is not sent/delivered evidence or a live customer URL.",
         "No credential loader, provider execution, real recipient resolution or consent inferred."
@@ -1702,18 +1961,30 @@
         {
           "path": "server/communications/preparation.ts",
           "anchor": "export async function prepareTenantNotification"
+        },
+        {
+          "path": "src/lib/workflows/portfolio-maintenance.ts",
+          "anchor": "export async function readPortfolioMaintenance("
         }
       ],
       "tests": [
         {
           "path": "tests/communications-preparation.test.ts",
           "anchor": "prepares tenant-branded escaped HTML and text but cannot send an email"
+        },
+        {
+          "path": "tests/cycle9-portfolio-maintenance.test.ts",
+          "anchor": "it('two jobs at one property retain separate exact plans, occurrences and published report identities', async () => {"
         }
       ],
       "records": [
         {
           "path": "docs/PROVIDER_INTEGRATION_READINESS.md",
           "anchor": "# Release 1.0 provider integration readiness"
+        },
+        {
+          "path": "docs/program/CYCLE9_VALIDATION.md",
+          "anchor": "# Cycle 9 multi-job operating center validation"
         }
       ],
       "ci": {
@@ -1758,6 +2029,10 @@
         {
           "path": "scripts/check-cycle8-integrity.mjs",
           "anchor": "Exact six-package Cycle8 contract required"
+        },
+        {
+          "path": "src/components/workflows/OperatingCenterPreview.tsx",
+          "anchor": "export function OperatingCenterPreview()"
         }
       ],
       "tests": [
@@ -1772,6 +2047,14 @@
         {
           "path": "tests/cycle8-integration.test.ts",
           "anchor": "independent composition keeps company %i same exact issued source"
+        },
+        {
+          "path": "tests/cycle9-integration.test.ts",
+          "anchor": "from '../src/lib/workflows/operating-center-runtime'"
+        },
+        {
+          "path": "tests/program/cycle9-feature-evidence.test.ts",
+          "anchor": "Cycle9 ownership precedence:"
         }
       ],
       "records": [
@@ -1806,6 +2089,14 @@
         {
           "path": "docs/program/CYCLE8_INTEGRATION_REVIEW.md",
           "anchor": "# Cycle 8 independent combined source review"
+        },
+        {
+          "path": "docs/program/CYCLE9_INTEGRATION_REVIEW.md",
+          "anchor": "# Cycle 9 independent combined source review"
+        },
+        {
+          "path": "docs/program/CYCLE9_CI_CLOSURE.json",
+          "anchor": "\"schema\": \"propel-cycle9-ci-closure-v1\""
         }
       ],
       "ci": {

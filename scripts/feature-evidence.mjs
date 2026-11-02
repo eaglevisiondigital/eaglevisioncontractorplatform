@@ -328,43 +328,47 @@ export function sourceOwner(path) {
   // Cohesive local workflow ownership precedes broad customer/operations keywords.
   // These review lanes classify source; they confer no runtime authority.
   if (
-    /ContractorJourneyPreview|cycle6-independent-review|cycle6-operations-independent-review|check-cycle6-integrity|program-cycle6-journey|cycle7-baseline|cycle7-integration|cycle7-usability|playwright\.cycle7|check-cycle7-integrity|cycle8-integration|cycle8-usability|playwright\.cycle8|check-cycle8-integrity|check-cycle8-results/.test(
+    /OperatingCenterPreview|cycle9-integration|cycle9-browser|cycle9-selection-field|cycle9-portfolios|cycle9-default-off|playwright\.cycle9|check-cycle9-integrity|check-cycle9-results|ContractorJourneyPreview|cycle6-independent-review|cycle6-operations-independent-review|check-cycle6-integrity|program-cycle6-journey|cycle7-baseline|cycle7-integration|cycle7-usability|playwright\.cycle7|check-cycle7-integrity|cycle8-integration|cycle8-usability|playwright\.cycle8|check-cycle8-integrity|check-cycle8-results/.test(
       path,
     )
   )
     return 'A8';
-  if (/journey-runtime/.test(path)) return 'A1';
+  if (/operating-center-runtime|journey-runtime/.test(path)) return 'A1';
   if (
-    /sales-desk|SalesDesk|sales-workflow|SalesWorkflow|sales-contract-preparation|SalesContractPreparation/.test(
+    /operating-selection|OperatingSelection|sales-desk|SalesDesk|sales-workflow|SalesWorkflow|sales-contract-preparation|SalesContractPreparation/.test(
       path,
     )
   )
     return 'A2';
   if (
-    /weekly-crew|WeeklyCrew|field-workflow|FieldWorkflow|operations-workflow|operations-experiments|field-day-board|TechnicianDayBoard|booking-scheduling|BookingScheduling/.test(
+    /portfolio-scheduling|PortfolioScheduling|weekly-crew|WeeklyCrew|field-workflow|FieldWorkflow|operations-workflow|operations-experiments|field-day-board|TechnicianDayBoard|booking-scheduling|BookingScheduling/.test(
       path,
     )
   )
     return 'A3';
   if (
-    /finance-desk|FinanceDesk|finance-workflow|FinanceWorkflow|job-cost-completion|profit-guard|job-review|JobReview/.test(
+    /portfolio-finance|PortfolioFinance|finance-desk|FinanceDesk|finance-workflow|FinanceWorkflow|job-cost-completion|profit-guard|job-review|JobReview/.test(
       path,
     )
   )
     return 'A4';
   if (
-    /completion-review|CompletionReview|customer-workflow|CustomerWorkflow|proof-of-work|ProofOfWork|customer-service|CustomerService/.test(
+    /portfolio-service|PortfolioService|completion-review|CompletionReview|customer-workflow|CustomerWorkflow|proof-of-work|ProofOfWork|customer-service|CustomerService/.test(
       path,
     )
   )
     return 'A5';
   if (
-    /maintenance-desk|MaintenanceDesk|daily-operations|DailyOperations|growth-workflow|GrowthWorkflow|growth-opportunity|maintenance-renewal|intelligence-workflow|IntelligenceWorkflow|business-copilot|voice-estimate|trade-editions|storm-network-review/.test(
+    /portfolio-maintenance|PortfolioMaintenance|business-briefing|BusinessBriefing|maintenance-desk|MaintenanceDesk|daily-operations|DailyOperations|growth-workflow|GrowthWorkflow|growth-opportunity|maintenance-renewal|intelligence-workflow|IntelligenceWorkflow|business-copilot|voice-estimate|trade-editions|storm-network-review/.test(
       path,
     )
   )
     return 'A6';
-  if (/procurement-review|controlled-integration-contracts/.test(path))
+  if (
+    /operating-addons|OperatingAddons|procurement-review|controlled-integration-contracts/.test(
+      path,
+    )
+  )
     return 'A7';
   if (
     /^src\/domain\/estimating\/|^src\/components\/(Customers|CompanyOperations)\.tsx$|^server\/(contracts|communications)\/|^tests\/sales-contract|signatur/.test(
