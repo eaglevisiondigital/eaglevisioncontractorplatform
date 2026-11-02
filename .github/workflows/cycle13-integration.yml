@@ -1,0 +1,49 @@
+name: Cycle 13 operating workflows and visual evidence
+on:
+  push:
+    branches: ['codex/program-cycle-thirteen']
+  pull_request:
+    paths:
+      - 'src/components/workflows/OperatingCenterCycleThirteen.tsx'
+      - 'src/components/workflows/OperatingCenterPreview.tsx'
+      - 'src/lib/workflows/*casework*'
+      - 'src/lib/workflows/operating-navigation.ts'
+      - 'tests/cycle13*'
+      - 'tests/program/*cycle13*'
+      - 'scripts/*cycle13*'
+      - 'docs/program/CYCLE13_DELIVERY_INDEX.json'
+      - '.github/workflows/cycle13-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle13-integration-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  bounded-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node scripts/check-cycle13-integrity.mjs
+      - run: npx vitest run tests/cycle13*.test.ts tests/program/cycle13-feature-evidence.test.ts tests/program/cycle13-scorecard-evidence.test.ts tests/program/cycle13-visual-evidence.test.ts tests/program-feature-evidence.test.ts --reporter=json --outputFile=artifacts/cycle13/application-results.json
+      - run: node scripts/check-cycle13-results.mjs
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test -c tests/program/playwright.cycle13.config.ts --workers=2
+      - run: npx playwright test -c tests/program/playwright.cycle13-off.config.ts --workers=2
+      - run: node scripts/cycle13-build-visual-evidence.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle13-operating-visual-evidence
+          path: |
+            artifacts/cycle13/
+            test-results/
+          retention-days: 7

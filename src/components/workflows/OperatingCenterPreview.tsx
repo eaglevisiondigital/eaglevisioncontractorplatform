@@ -26,6 +26,7 @@ import { SalesDesk } from './SalesDesk';
 import { CompletionReview } from './CompletionReview';
 import { MaintenanceDesk } from './MaintenanceDesk';
 import { DailyOperations } from './DailyOperations';
+import type { OperatingJobSection } from '../../lib/workflows/operating-navigation';
 import './operating-center.css';
 
 type Attempt = {
@@ -50,7 +51,7 @@ export interface OperatingReviewPanel {
   render: (props: {
     sources: OperatingSources;
     enabled: boolean;
-    onSelectJob: (jobId: string) => void;
+    onSelectJob: (jobId: string, section?: OperatingJobSection) => void;
   }) => ReactNode;
 }
 export interface OperatingReviewGroup {
@@ -76,6 +77,7 @@ export function OperatingCenterPreview({
     company: string;
     entry: LocalJourney;
     check: () => void;
+    section?: OperatingJobSection;
   } | null>(null);
   const company = sampleCompanies.find((c) => c.id === companyId)!;
   const [visibleAttempt, setVisibleAttempt] = useState<{
@@ -103,7 +105,13 @@ export function OperatingCenterPreview({
   );
   useEffect(() => {
     if (selected && tab === 'detail')
-      document.getElementById('operating-selected-heading')?.focus();
+      document
+        .getElementById(
+          selected.section
+            ? `operating-selected-${selected.section}`
+            : 'operating-selected-heading',
+        )
+        ?.focus();
   }, [selected, tab]);
   function withdraw() {
     const a = attempts.current.get(companyId);
@@ -154,9 +162,21 @@ export function OperatingCenterPreview({
       if (generation.current === token) setEpoch((v) => v + 1);
     }
   }
-  function openJob(jobId: string) {
+  function openJob(jobId: string, section?: OperatingJobSection) {
     if (!sources) return;
     try {
+      if (
+        section !== undefined &&
+        ![
+          'sales',
+          'field',
+          'finance',
+          'completion',
+          'maintenance',
+          'daily',
+        ].includes(section)
+      )
+        throw Error('Unknown local job section');
       const capture = captureOperatingSources(sources, sources.gate);
       const matches = capture.entries.filter((e) => e.target.job_id === jobId);
       if (matches.length !== 1) throw Error('Exact job unavailable');
@@ -165,6 +185,7 @@ export function OperatingCenterPreview({
         company: companyId,
         entry: matches[0],
         check: capture.check,
+        section,
       });
       setTab('detail');
       setError('');
@@ -454,12 +475,48 @@ export function OperatingCenterPreview({
                     canonical source instances. No navigation creates or
                     replaces a record.
                   </p>
-                  <SalesDesk sources={detail} enabled />
-                  <WeeklyCrew sources={detail} enabled />
-                  <FinanceDesk sources={detail} enabled />
-                  <CompletionReview sources={detail} enabled />
-                  <MaintenanceDesk sources={detail} enabled />
-                  <DailyOperations sources={detail} enabled />
+                  <section
+                    id="operating-selected-sales"
+                    tabIndex={-1}
+                    aria-label="Selected job sales review"
+                  >
+                    <SalesDesk sources={detail} enabled />
+                  </section>
+                  <section
+                    id="operating-selected-field"
+                    tabIndex={-1}
+                    aria-label="Selected job field review"
+                  >
+                    <WeeklyCrew sources={detail} enabled />
+                  </section>
+                  <section
+                    id="operating-selected-finance"
+                    tabIndex={-1}
+                    aria-label="Selected job finance review"
+                  >
+                    <FinanceDesk sources={detail} enabled />
+                  </section>
+                  <section
+                    id="operating-selected-completion"
+                    tabIndex={-1}
+                    aria-label="Selected job completion review"
+                  >
+                    <CompletionReview sources={detail} enabled />
+                  </section>
+                  <section
+                    id="operating-selected-maintenance"
+                    tabIndex={-1}
+                    aria-label="Selected job maintenance review"
+                  >
+                    <MaintenanceDesk sources={detail} enabled />
+                  </section>
+                  <section
+                    id="operating-selected-daily"
+                    tabIndex={-1}
+                    aria-label="Selected job daily review"
+                  >
+                    <DailyOperations sources={detail} enabled />
+                  </section>
                 </>
               ) : (
                 <p>

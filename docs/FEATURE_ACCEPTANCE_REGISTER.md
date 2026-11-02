@@ -1,5 +1,66 @@
 # Propel Contractor Suite — feature acceptance register
 
+## Cycle13 · functioning source-bound operating candidate
+
+Seven separate author drafts89–95 are composed as37exact source blobs on
+`codex/program-cycle-thirteen`, [coordination draft PR88](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/88),
+from exact c41a2424a0bd098905fd60965ef7f78447f1c753. No merge or parent rewrite.
+Six working desks cover work-order instruction proposals, financial casework,
+service/Passport source continuity, follow-up requirements, exact task navigation
+and the original seven advanced review modes. Design/QA adds a strict actual-PNG
+gallery and approval inventory. All new capabilities remain default-OFF/unwired.
+
+524application cases PASS across11exact files, including42independent combined
+cases;63all-brand desktop/tablet/mobile development cases,3production-OFF cases
+and9approved reference/current capture scenarios PASS.99real PNGs retained;
+45images form18approved-reference/current pairs plus9Operating Center states
+without an approved reference. Existing approvals/artwork stay locked. Two external
+original records are MISSING; Operating Center/add-on visual promotion is NOT APPROVED.
+A screenshot/hash or green CI never supplies visual, hosted or release authority.
+
+Work-order text remains caller-held; only its digest composes the unchanged C12
+journal. Advanced original controls retain independent explicit job/mode selection.
+Missing physical completion, cost coverage and current consent remain UNKNOWN.
+The original25capability stages/approvals/CI and18scope IDs stay unchanged.
+All128protected hashes/216prior author files/five locks/thirteen bindings PASS.
+
+[Exact packages/source hashes](program/CYCLE13_DELIVERY_INDEX.json),
+[actual validation](program/CYCLE13_VALIDATION.md),
+[independent review](program/CYCLE13_INTEGRATION_REVIEW.md),
+[visual approval inventory](program/CYCLE13_VISUAL_APPROVAL_REVIEW.md) and
+[exact CI snapshot](program/CYCLE13_CI_SNAPSHOT.json) keep evidence separate.
+Prior C12 c41a242 now has all21checks SUCCESS; none was manually rerun.
+Current C13 pending checks are not called green.
+
+All13/customer14/original4B/P1/four/approvals/2A–2F/billing/Netlify/executor/
+recovery/Auth/MFA/NMI/financial/provider/communication/hosted/production restrictions
+remain intact. No credentials, dispatch, messages, financial execution, hosted
+mutation, migration, deployment or merge. Release1.0 NOT READY / NOT AUTHORIZED.
+
+## PhaseOne gates versus complete ecosystem acceptance
+
+These8existing release gates are separate from the25original product capability
+records below. No new completion percentage or acceptance denominator is introduced.
+The existing source-bound Pilot scorecard presents the same records and gates.
+
+| Existing PhaseOne gate        | Current acceptance boundary                                                                   |
+| ----------------------------- | --------------------------------------------------------------------------------------------- |
+| Independent physical recovery | BLOCKED: qualifying encrypted independent hardware, pairing, supervised primary-loss evidence |
+| Original P1 on13histories     | Existing exact approval preserved; recovery and action-time prerequisites remain BLOCKED      |
+| Customer14 installation       | Pending separate exact installation/grants/mapping/Auth acceptance; not applied               |
+| 4B/broker custody             | Operational principal/helper ownership/external restore/custody unverified                    |
+| Genuine Auth/MFA              | NOT ACCEPTED: synthetic staff is not a genuine authenticated session                          |
+| NMI/financial operations      | NOT ACCEPTED: merchant/provider/settlement/reconciliation requirements remain separate        |
+| Netlify runtime/protection    | BLOCKED: frozen package/offline executor grants no hosted execution                           |
+| Production/release            | NOT AUTHORIZED                                                                                |
+
+Complete ecosystem: original25capability scope/design/local/CI/hosted/release/approval
+values remain exact. C13adds narrower functioning local evidence to their existing
+source citations; it does not mark full business capabilities hosted or releasable.
+The C13visual inventory separately identifies missing approval of the Operating
+Center and advanced prototype presentations. Local engineering continues while
+those independent approvals and external operational prerequisites remain pending.
+
 ## Cycle-twelve local workflow candidate
 
 Six separate feature drafts82–87 are composed as exact34author blobs on Main

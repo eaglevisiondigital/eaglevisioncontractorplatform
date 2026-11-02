@@ -1,0 +1,283 @@
+{
+  "schema": "propel-cycle13-delivery-v1",
+  "coordination_branch": "codex/program-cycle-thirteen",
+  "coordination_draft_pr": 88,
+  "parent_commit": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+  "baseline_ci": "docs/program/CYCLE13_BASELINE_CI.json",
+  "independent_review_commit": "75069a0ebf54c9e6a8e06a08e5ec548d9bd57ed7",
+  "independent_files": [
+    {
+      "path": "tests/cycle13-integration.test.ts",
+      "sha256": "05e96e4452c239d7b0b30b16bac7dba98392b43c63ef359de352ae3f0b0df3bf"
+    },
+    {
+      "path": "docs/program/CYCLE13_INTEGRATION_REVIEW.md",
+      "sha256": "9588237cc254c21b01ca7e86997966dc892569193b06a4c28975151d8d897382"
+    }
+  ],
+  "packages": [
+    {
+      "module": "work-order-revisions",
+      "component": "WorkOrderRevisions",
+      "doc": "CYCLE13_WORK_ORDER_REVISIONS",
+      "owner": "/root/cycle13_field_growth",
+      "branch": "codex/cycle13-work-order-revisions",
+      "parent_commit": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "head_commit": "30bc998f866e3ea515d99526ce7492624903c325",
+      "draft_pr": 90,
+      "focused_new_tests": 40,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE13_WORK_ORDER_REVISIONS.md",
+          "sha256": "fa6d5435e0d06a562c79e79261af27e2ef9ff1facdac229cb09eff3bcf32a9a0"
+        },
+        {
+          "path": "server/field-lab/work-order-revisions.ts",
+          "sha256": "319899565362a1e23c282ddd6c65029a78b045a4fac96112492a50eb871992d7"
+        },
+        {
+          "path": "src/components/workflows/WorkOrderRevisions.tsx",
+          "sha256": "91e99f81d2e015de11e8f4867b1bd2d5fba32402afbdcda3afee31edef7d3c41"
+        },
+        {
+          "path": "src/components/workflows/work-order-revisions.css",
+          "sha256": "b3c64a3f9b88f99836fb394970e5390f20c337edd746076ace46244476a8ced2"
+        },
+        {
+          "path": "src/lib/workflows/work-order-revisions.ts",
+          "sha256": "54db65c65fab710076fe92c5ba5936d9ef71a89b1df401e06482c9105c06b3ec"
+        },
+        {
+          "path": "tests/cycle13-work-order-revisions.test.ts",
+          "sha256": "7be15cb29b3c0052f74c3c00527c05da22221bb3be8812314e27bc993a2df846"
+        },
+        {
+          "path": "tests/helpers/cycle13-work-order-worker.ts",
+          "sha256": "2009cb7accb87360bd2d027dbe8468691f426ed5d6a78538b85b84293285c71b"
+        }
+      ]
+    },
+    {
+      "module": "financial-casework",
+      "component": "FinancialCasework",
+      "doc": "CYCLE13_FINANCIAL_CASEWORK",
+      "owner": "/root/cycle13_finance_intelligence",
+      "branch": "codex/cycle13-financial-casework",
+      "parent_commit": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "head_commit": "79f71ee35a5af3c65717da13fcdfed984dd85884",
+      "draft_pr": 91,
+      "focused_new_tests": 37,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE13_FINANCIAL_CASEWORK.md",
+          "sha256": "e95aea855553dc16ddbd688a2d563558e16be1ca2856c94ca991abfa9f16806f"
+        },
+        {
+          "path": "src/components/workflows/FinancialCasework.tsx",
+          "sha256": "f6f833245d33a6859b3eecdf2c707f0da57145a55e8757e4b23f22e65a4307c9"
+        },
+        {
+          "path": "src/components/workflows/financial-casework.css",
+          "sha256": "1c1ded57bf6f19503c945ad34c883e4bda7fc42fd437b0de92dad7340c3b4632"
+        },
+        {
+          "path": "src/lib/workflows/financial-casework.ts",
+          "sha256": "ade70e38c8d0f6d2502c99912bfa2ca94cbbeb30b35ca68e7c615973ad44feed"
+        },
+        {
+          "path": "tests/cycle13-financial-casework.test.ts",
+          "sha256": "ebb064f98fdd2a98720e2f749805bfaa2ad8e6c1eab546e409ab2a21f76d6937"
+        }
+      ]
+    },
+    {
+      "module": "service-passport-desk",
+      "component": "ServicePassportDesk",
+      "doc": "CYCLE13_SERVICE_PASSPORT_DESK",
+      "owner": "/root/cycle13_customer_advanced",
+      "branch": "codex/cycle13-service-passport-desk",
+      "parent_commit": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "head_commit": "97272beef9dbd5fd26da7861961aed8c99b68a2b",
+      "draft_pr": 89,
+      "focused_new_tests": 79,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE13_SERVICE_PASSPORT_DESK.md",
+          "sha256": "fd26958fb234e944e83fc0607aa112cc92bb0d4d25f0e825038f90fe7e1144d3"
+        },
+        {
+          "path": "src/components/workflows/ServicePassportDesk.tsx",
+          "sha256": "58a700754724e41945781e068e767ed971c38c9dec013f270cc96381630ea368"
+        },
+        {
+          "path": "src/components/workflows/service-passport-desk.css",
+          "sha256": "cb7b87f1b3ad7145d7b6fe9bfe2d95078fd1888ef300c3cdf49e854c48584506"
+        },
+        {
+          "path": "src/lib/workflows/service-passport-desk.ts",
+          "sha256": "b235dc62e3b6e3f0eceed01af3c36ce94fbf1c2d274b1e5f219abef7d9b73f53"
+        },
+        {
+          "path": "tests/cycle13-service-passport-desk.test.ts",
+          "sha256": "c49866ffabe879784c8340f86e76d31d5564a7119d9cff46076ded15f252f6af"
+        }
+      ]
+    },
+    {
+      "module": "follow-up-readiness",
+      "component": "FollowUpReadiness",
+      "doc": "CYCLE13_FOLLOW_UP_READINESS",
+      "owner": "/root/cycle13_field_growth",
+      "branch": "codex/cycle13-follow-up-readiness",
+      "parent_commit": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "head_commit": "19e3f6b84248b18a924bb7b7d9483ade04826229",
+      "draft_pr": 92,
+      "focused_new_tests": 39,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE13_FOLLOW_UP_READINESS.md",
+          "sha256": "ba0f87b80ffe015ed622759ce180cf9059bdd0c971fdc21a284b27b9b7a0c36a"
+        },
+        {
+          "path": "src/components/workflows/FollowUpReadiness.tsx",
+          "sha256": "b8485bd16f77bf554ffe0bcfffcb7ee2f75bf7bb63b256e42f3cb74718320fa8"
+        },
+        {
+          "path": "src/components/workflows/follow-up-readiness.css",
+          "sha256": "3c70991d976c90e3b7e45f5ab6b78f1cb195c96156b537e1055cc785422ac514"
+        },
+        {
+          "path": "src/lib/workflows/follow-up-readiness.ts",
+          "sha256": "389f370881d39404b86c64c60e86c11a77941a858d1a6e05bc8ea0a63862dc56"
+        },
+        {
+          "path": "tests/cycle13-follow-up-readiness.test.ts",
+          "sha256": "42bc826f4a49441528203c19568e3a50ef3f7f443cf5d872a6a8016bd14af0a6"
+        }
+      ]
+    },
+    {
+      "module": "operating-navigation",
+      "component": "OperatingNavigation",
+      "doc": "CYCLE13_OPERATING_NAVIGATION",
+      "owner": "/root/cycle13_finance_intelligence",
+      "branch": "codex/cycle13-operating-navigation",
+      "parent_commit": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "head_commit": "5e757db01f04f23c4a06edc67e371ebe386e5c92",
+      "draft_pr": 94,
+      "focused_new_tests": 46,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE13_OPERATING_NAVIGATION.md",
+          "sha256": "d921f905f8ee7dd7573e17025d2475e2aec5658b3cb40a18d740079e4e5202b2"
+        },
+        {
+          "path": "src/components/workflows/OperatingNavigation.tsx",
+          "sha256": "0a1ae92bbfcdc507b597b1f16b17f8ece70a4710ae61acb0d2f636ecc4b65bc3"
+        },
+        {
+          "path": "src/components/workflows/operating-navigation.css",
+          "sha256": "f027b549106a13b0edf85e7ec026ef9bf2562e345f73c951b4a0f2d5772ecdd6"
+        },
+        {
+          "path": "src/lib/workflows/operating-navigation.ts",
+          "sha256": "757b446b208467ef4df3cc48b23f991ed2d6cfbc0c5b62ffcc0b538d3d9a44e4"
+        },
+        {
+          "path": "tests/cycle13-operating-navigation.test.ts",
+          "sha256": "ac50abb1fb17ceec110ab555bef34fd9660d65d208358e9b25e72ba39806c4b2"
+        }
+      ]
+    },
+    {
+      "module": "addon-review-desk",
+      "component": "AddonReviewDesk",
+      "doc": "CYCLE13_ADDON_REVIEW_DESK",
+      "owner": "/root/cycle13_customer_advanced",
+      "branch": "codex/cycle13-addon-review-desk",
+      "parent_commit": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "head_commit": "d1faa6b6836bba66fb1a609dbd335db4be17583b",
+      "draft_pr": 95,
+      "focused_new_tests": 89,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE13_ADDON_REVIEW_DESK.md",
+          "sha256": "2e313082bd3c0a80c3cdc2feb294178f7f583ea76103f00c9f4d954267678b6e"
+        },
+        {
+          "path": "src/components/workflows/AddonReviewDesk.tsx",
+          "sha256": "2780ed490e8b769f29a88a75baa20acdb2dfe0c24022ea1b9948c8162af14629"
+        },
+        {
+          "path": "src/components/workflows/addon-review-desk.css",
+          "sha256": "6f065286393e13b31554528f12b3a1b55366f61596f6b5376ec4d54b9487aebe"
+        },
+        {
+          "path": "src/lib/workflows/addon-review-desk.ts",
+          "sha256": "e881fc449fba530228135dfbedff9f97e303edacdac5270ef802731b22242dfa"
+        },
+        {
+          "path": "tests/cycle13-addon-review-desk.test.ts",
+          "sha256": "90042d61216296732e0f5124f790bea0c0f2cb34d0d80bf3f775a29f34e29021"
+        }
+      ]
+    },
+    {
+      "module": "visual-approval-inventory",
+      "component": null,
+      "doc": "CYCLE13_VISUAL_APPROVAL_REVIEW",
+      "owner": "/root/cycle13_design_qa",
+      "branch": "codex/cycle13-visual-approval-inventory",
+      "parent_commit": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "head_commit": "cdb1ad08af80faa8c256e996275af7f36a815703",
+      "draft_pr": 93,
+      "focused_new_tests": 56,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE13_VISUAL_APPROVAL_INVENTORY.json",
+          "sha256": "8b716740c920e89b1c73f156d8ccb4f90fe68b9c54cdc70e2c6d484a77b06cbe"
+        },
+        {
+          "path": "docs/program/CYCLE13_VISUAL_APPROVAL_REVIEW.md",
+          "sha256": "08aac9a3c9c49e8e689f49a78abd605d666d49421fd14ace6530eb29d6daf50a"
+        },
+        {
+          "path": "scripts/cycle13-visual-comparison.d.mts",
+          "sha256": "c6126e6b5910308b80837a2148c675dced8b8a3ebb9ef2234cb0791c1bec6a64"
+        },
+        {
+          "path": "scripts/cycle13-visual-comparison.mjs",
+          "sha256": "554ae989fd6ef2e7dc1d7910a90b5f18f97c0482445632d6d1cbb156f4d9c45a"
+        },
+        {
+          "path": "tests/program/cycle13-visual-evidence.test.ts",
+          "sha256": "08c5ef0dd7c330b581d9600c55c7eef65b04bcfedfd8b90c6138736780177e24"
+        }
+      ]
+    }
+  ],
+  "combined_evidence": {
+    "focused_new_package_cases": 386,
+    "independent_new_cases": 42,
+    "source_ownership_cases": 19,
+    "scorecard_evidence_cases": 4,
+    "visual_inventory_cases": 56,
+    "source_inventory_cases": 73,
+    "application_cases": 524,
+    "development_browser_cases": 63,
+    "production_off_browser_cases": 3,
+    "approved_visual_browser_cases": 9,
+    "protected_hashes": 128,
+    "retained_author_files": 216,
+    "design_locks": 5,
+    "design_bindings": 13
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

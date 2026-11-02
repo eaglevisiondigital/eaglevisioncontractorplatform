@@ -13,7 +13,8 @@
     "Cycle9 composes seven exact draft packages over one four-job/three-property canonical repository set. Coverage/availability/consent gaps remain UNKNOWN; source, local, CI and hosted/release acceptance stay separate. No original scope ID or acceptance state is promoted.",
     "Cycle10 adds six isolated everyday review packages over the same exact OperatingSources. Optional presentation panels reuse one environment; no operational or release state is promoted. Source integrity, local tests and exact GitHub CI remain separate.",
     "Cycle11 adds exact-source staff reviews, separate disposable transaction laboratories and a public-evidence scorecard. Synthetic participating fixture atomicity is not operational authorization or global canonical synchronization. Original capability and hosted/release states remain unchanged.",
-    "Cycle12 extends exact-source proposal controls, canonical financial evidence, service-completion requirements, cancellation/suppression fixture review and source/state-checked suggestions. All original scope/design/local/hosted/release/approval/CI labels remain unchanged. Disposable laboratory results are not operational authority, physical recovery or globally atomic Auth/source evidence."
+    "Cycle12 extends exact-source proposal controls, canonical financial evidence, service-completion requirements, cancellation/suppression fixture review and source/state-checked suggestions. All original scope/design/local/hosted/release/approval/CI labels remain unchanged. Disposable laboratory results are not operational authority, physical recovery or globally atomic Auth/source evidence.",
+    "Cycle13 adds exact-source work-order instruction proposals, financial casework, service/Passport continuity, follow-up requirements, local task navigation, advanced review desks and a visual approval inventory. Original25capability stage/approval/CI values and original18 IDs remain unchanged. Digest custody is not full-content durability; new Operating Center visual approval remains separately missing. Local evidence never enables dispatch, messages, finance, providers or hosted release."
   ],
   "features": [
     {
@@ -533,6 +534,10 @@
         {
           "path": "src/lib/workflows/portfolio-scheduling.ts",
           "anchor": "export async function readPortfolioScheduling("
+        },
+        {
+          "path": "src/lib/workflows/work-order-revisions.ts",
+          "anchor": "export async function reviewWorkOrderRevision"
         }
       ],
       "tests": [
@@ -543,6 +548,10 @@
         {
           "path": "tests/cycle9-portfolio-scheduling.test.ts",
           "anchor": "it('shared crew conflicts across different exact jobs are calculated once by canonical capacity', async () => {"
+        },
+        {
+          "path": "tests/cycle13-work-order-revisions.test.ts",
+          "anchor": "import"
         }
       ],
       "records": [
@@ -634,6 +643,10 @@
         {
           "path": "src/lib/workflows/schedule-proposal-revisions.ts",
           "anchor": "reviewScheduleProposalRevision"
+        },
+        {
+          "path": "src/lib/workflows/work-order-revisions.ts",
+          "anchor": "export async function openWorkOrderRevisionSource"
         }
       ],
       "tests": [
@@ -781,6 +794,10 @@
         {
           "path": "src/lib/workflows/financial-evidence-review.ts",
           "anchor": "readFinancialEvidenceSources"
+        },
+        {
+          "path": "src/lib/workflows/financial-casework.ts",
+          "anchor": "export async function readFinancialCasework"
         }
       ],
       "tests": [
@@ -807,6 +824,10 @@
         {
           "path": "tests/cycle12-financial-evidence-review.test.ts",
           "anchor": "readFinancialEvidenceSources"
+        },
+        {
+          "path": "tests/cycle13-financial-casework.test.ts",
+          "anchor": "import"
         }
       ],
       "records": [
@@ -907,6 +928,10 @@
         {
           "path": "src/lib/workflows/financial-evidence-review.ts",
           "anchor": "readFinancialEvidenceSources"
+        },
+        {
+          "path": "src/lib/workflows/financial-casework.ts",
+          "anchor": "export function compareFinancialCaseworkReview"
         }
       ],
       "tests": [
@@ -1039,6 +1064,10 @@
         {
           "path": "src/lib/workflows/portfolio-service.ts",
           "anchor": "export async function readPortfolioService("
+        },
+        {
+          "path": "src/lib/workflows/service-passport-desk.ts",
+          "anchor": "export async function openServicePassportReport"
         }
       ],
       "tests": [
@@ -1053,6 +1082,10 @@
         {
           "path": "tests/cycle9-portfolio-service.test.ts",
           "anchor": "it('filters by exact property ID while retaining honest available counts', async () => {"
+        },
+        {
+          "path": "tests/cycle13-service-passport-desk.test.ts",
+          "anchor": "import"
         }
       ],
       "records": [
@@ -1133,6 +1166,10 @@
         {
           "path": "src/lib/workflows/service-lifecycle-review.ts",
           "anchor": "readServiceLifecycleReview"
+        },
+        {
+          "path": "src/lib/workflows/service-passport-desk.ts",
+          "anchor": "export async function readServicePassportDesk"
         }
       ],
       "tests": [
@@ -1263,6 +1300,10 @@
         {
           "path": "src/lib/workflows/consent-cancellation-review.ts",
           "anchor": "readConsentCancellationSources"
+        },
+        {
+          "path": "src/lib/workflows/follow-up-readiness.ts",
+          "anchor": "export async function readFollowUpReadiness"
         }
       ],
       "tests": [
@@ -1281,6 +1322,10 @@
         {
           "path": "tests/cycle12-consent-cancellation-review.test.ts",
           "anchor": "readConsentCancellationSources"
+        },
+        {
+          "path": "tests/cycle13-follow-up-readiness.test.ts",
+          "anchor": "import"
         }
       ],
       "records": [
@@ -1384,6 +1429,10 @@
         {
           "path": "src/lib/workflows/consent-cancellation-review.ts",
           "anchor": "readConsentCancellationSources"
+        },
+        {
+          "path": "src/lib/workflows/follow-up-readiness.ts",
+          "anchor": "export async function openFollowUpReadinessSource"
         }
       ],
       "tests": [
@@ -1518,6 +1567,10 @@
         {
           "path": "src/lib/workflows/verified-operating-suggestions.ts",
           "anchor": "readVerifiedOperatingSuggestions"
+        },
+        {
+          "path": "src/lib/workflows/operating-navigation.ts",
+          "anchor": "export async function readOperatingNavigation"
         }
       ],
       "tests": [
@@ -1544,6 +1597,10 @@
         {
           "path": "tests/cycle12-verified-operating-suggestions.test.ts",
           "anchor": "readVerifiedOperatingSuggestions"
+        },
+        {
+          "path": "tests/cycle13-operating-navigation.test.ts",
+          "anchor": "import"
         }
       ],
       "records": [
@@ -1641,6 +1698,10 @@
         {
           "path": "src/lib/workflows/external-proposal-lifecycle.ts",
           "anchor": "readExternalProposalSource"
+        },
+        {
+          "path": "src/lib/workflows/addon-review-desk.ts",
+          "anchor": "export async function readAddonReviewDesk"
         }
       ],
       "tests": [
@@ -1663,6 +1724,10 @@
         {
           "path": "tests/cycle12-external-proposal-lifecycle.test.ts",
           "anchor": "readExternalProposalSource"
+        },
+        {
+          "path": "tests/cycle13-addon-review-desk.test.ts",
+          "anchor": "import"
         }
       ],
       "records": [
@@ -1753,6 +1818,10 @@
         {
           "path": "src/components/workflows/OperatingCenterCycleTen.tsx",
           "anchor": "export function OperatingCenterCycleTen"
+        },
+        {
+          "path": "scripts/cycle13-visual-comparison.mjs",
+          "anchor": "export function generateVisualComparison"
         }
       ],
       "tests": [
@@ -1763,6 +1832,10 @@
         {
           "path": "tests/cycle9-integration.test.ts",
           "anchor": "from '../src/lib/workflows/operating-center-runtime'"
+        },
+        {
+          "path": "tests/program/cycle13-visual-evidence.test.ts",
+          "anchor": "import"
         }
       ],
       "records": [
@@ -1849,6 +1922,10 @@
         {
           "path": "server/netlify/read-only-inventory.ts",
           "anchor": "InventoryEvidence"
+        },
+        {
+          "path": "docs/program/CYCLE13_DELIVERY_INDEX.json",
+          "anchor": "propel-cycle13-delivery-v1"
         }
       ],
       "tests": [

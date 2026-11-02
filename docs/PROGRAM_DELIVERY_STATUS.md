@@ -1,5 +1,50 @@
 # Product program delivery status
 
+## Cycle thirteen · source-bound operating desks and visual evidence
+
+Main `codex/program-cycle-thirteen`, [draft PR88](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/88),
+starts at exact c41a2424a0bd098905fd60965ef7f78447f1c753. Seven separate feature drafts
+are composed as exact37author blobs; no parent rewrite, PR merge or promotion.
+Three implementation agents completed two bounded waves; a separate Design/QA agent
+and independent reviewer supplied evidence. No persistent background agents remain.
+
+Source index: [exact packages and hashes](program/CYCLE13_DELIVERY_INDEX.json).
+[Independent review](program/CYCLE13_INTEGRATION_REVIEW.md) is CLEAR for bounded
+local/synthetic use only:42/42cases PASS, commit75069a0ebf54c9e6a8e06a08e5ec548d9bd57ed7.
+Actual combined results and exact GitHub checks are recorded separately in
+[validation](program/CYCLE13_VALIDATION.md) and [CI snapshot](program/CYCLE13_CI_SNAPSHOT.json).
+Original25capability states/approvals/CI and18scope IDs stay unchanged.
+
+| Package                   | Actual agent                       | Branch                                    | Draft                                                                              | Exact author head                          | New cases |
+| ------------------------- | ---------------------------------- | ----------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------ | --------- |
+| work-order-revisions      | /root/cycle13_field_growth         | `codex/cycle13-work-order-revisions`      | [#90](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/90) | `30bc998f866e3ea515d99526ce7492624903c325` | 40        |
+| financial-casework        | /root/cycle13_finance_intelligence | `codex/cycle13-financial-casework`        | [#91](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/91) | `79f71ee35a5af3c65717da13fcdfed984dd85884` | 37        |
+| service-passport-desk     | /root/cycle13_customer_advanced    | `codex/cycle13-service-passport-desk`     | [#89](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/89) | `97272beef9dbd5fd26da7861961aed8c99b68a2b` | 79        |
+| follow-up-readiness       | /root/cycle13_field_growth         | `codex/cycle13-follow-up-readiness`       | [#92](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/92) | `19e3f6b84248b18a924bb7b7d9483ade04826229` | 39        |
+| operating-navigation      | /root/cycle13_finance_intelligence | `codex/cycle13-operating-navigation`      | [#94](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/94) | `5e757db01f04f23c4a06edc67e371ebe386e5c92` | 46        |
+| addon-review-desk         | /root/cycle13_customer_advanced    | `codex/cycle13-addon-review-desk`         | [#95](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/95) | `d1faa6b6836bba66fb1a609dbd335db4be17583b` | 89        |
+| visual-approval-inventory | /root/cycle13_design_qa            | `codex/cycle13-visual-approval-inventory` | [#93](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/93) | `cdb1ad08af80faa8c256e996275af7f36a815703` | 56        |
+
+Main owns the optional typed exact job-section callback, one existing source host,
+initially collapsed six-desk group, shared contracts/design, strict source/result
+checkers and acceptance register. Existing8/6/7/6navigation remains intact.
+Work-order text is caller-held; only its digest uses the original C12 journal.
+Advanced original controls require separate explicit job/mode selection; no automatic
+same-job/mode proposal handoff is claimed. Missing cost/consent/completion evidence
+remains UNKNOWN.
+
+The visual inventory retains777historical PNG identities, five design locks,
+thirteen source bindings and three exact prior local approval scopes. Two external
+original records are MISSING; new Operating Center/add-on visual promotion approvals
+are NOT FOUND. Actual45-image gallery has18reference/current pairs and9current
+Operating Center views with no approved reference. Screenshots/tests never grant
+approval. Local uncommitted captures are explicitly labeled; CI records its checkout.
+
+All128protected hashes/216prior author files, all13/customer14/original4B/P1/four,
+2A–2F/billing/Netlify/executor/recovery/Auth/MFA/NMI/financial/provider/communication/
+production gates persist. No dispatch, messages, financial execution, hosted mutation,
+migration, deployment or merge. Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Cycle twelve · exact proposal controls and source-state verification · November2
 
 Six separate feature drafts82–87 are composed as exact34author blobs on Main
