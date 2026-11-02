@@ -1,0 +1,142 @@
+.work-order-revisions {
+  color: #20352f;
+  line-height: 1.55;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.work-order-revisions > header {
+  position: static;
+  width: auto;
+  height: auto;
+  min-height: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.work-order-revisions > header > div {
+  display: block;
+  min-width: 0;
+}
+.work-order-revisions h2,
+.work-order-revisions h3,
+.work-order-revisions h4 {
+  color: #20352f;
+  line-height: 1.25;
+}
+.work-order-revisions .wor-eyebrow {
+  color: #526159;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+.work-order-revisions .wor-badge {
+  display: inline-block;
+  background: #e8eee8;
+  border: 1px solid #cbd8ce;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  white-space: normal;
+  font-size: 0.8rem;
+}
+.work-order-revisions .wor-boundary {
+  background: #f5f5ef;
+  border-left: 3px solid var(--journey-primary, #00543e);
+  padding: 1rem;
+}
+.work-order-revisions .wor-controls,
+.work-order-revisions .wor-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.work-order-revisions label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: 600;
+  min-width: 0;
+}
+.work-order-revisions textarea,
+.work-order-revisions input,
+.work-order-revisions select,
+.work-order-revisions button {
+  min-height: 44px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.work-order-revisions textarea,
+.work-order-revisions input,
+.work-order-revisions select {
+  width: 100%;
+}
+.work-order-revisions .wor-check {
+  flex-direction: row;
+  align-items: center;
+  margin: 1rem 0;
+  font-weight: 400;
+}
+.work-order-revisions .wor-check input {
+  min-width: 44px;
+  width: 44px;
+  margin-right: 0.4rem;
+}
+.work-order-revisions button {
+  background: var(--journey-primary, #00543e);
+  color: white;
+  border: 1px solid transparent;
+  padding: 0.7rem 1rem;
+  white-space: normal;
+  text-align: left;
+}
+.work-order-revisions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.work-order-revisions .wor-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.work-order-revisions .wor-card {
+  padding: 1.2rem;
+  border: 1px solid #d9e1da;
+  border-radius: 14px;
+  background: white;
+  min-width: 0;
+}
+.work-order-revisions dl > div {
+  margin-bottom: 0.75rem;
+}
+.work-order-revisions dt {
+  color: #526159;
+  font-size: 0.8rem;
+}
+.work-order-revisions dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.work-order-revisions :focus-visible {
+  outline: 3px solid var(--journey-accent, #dfb461);
+  outline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .work-order-revisions > header {
+    display: block;
+  }
+  .work-order-revisions .wor-controls,
+  .work-order-revisions .wor-grid {
+    grid-template-columns: 1fr;
+  }
+  .work-order-revisions .wor-actions {
+    display: grid;
+  }
+}
+
+.work-order-revisions textarea {
+  width: 100%;
+  min-height: 110px;
+  resize: vertical;
+}
