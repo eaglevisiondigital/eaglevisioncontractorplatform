@@ -1,0 +1,231 @@
+.financial-correction {
+  color: #20352f;
+  background: #f5f5ef;
+  border: 1px solid #d9e1da;
+  border-radius: 16px;
+  padding: 24px;
+  min-width: 0;
+}
+.financial-correction * {
+  box-sizing: border-box;
+}
+.financial-correction > header {
+  height: auto;
+  min-height: 0;
+  position: static;
+  display: block;
+  padding: 0;
+  margin: 0 0 20px;
+  background: transparent;
+  color: inherit;
+  border: 0;
+}
+.financial-correction > header > div {
+  display: block;
+  height: auto;
+}
+.financial-correction h2 {
+  font-size: 1.65rem;
+  margin: 4px 0 12px;
+}
+.financial-correction h2,
+.financial-correction h3,
+.financial-correction h4,
+.financial-correction p,
+.financial-correction dd,
+.financial-correction li {
+  overflow-wrap: anywhere;
+}
+.correction-eyebrow {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  color: #3e594f;
+}
+.financial-correction label {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.financial-correction input:not([type='checkbox']),
+.financial-correction textarea {
+  min-height: 44px;
+  min-width: 0;
+  width: 100%;
+  background: #fff;
+  color: #20352f;
+}
+.financial-correction textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+.financial-correction button {
+  min-height: 44px;
+  color: #fff;
+  background: var(--journey-primary, #247364);
+  white-space: normal;
+}
+.financial-correction button:disabled {
+  color: #3e594f;
+  background: #d9e1da;
+}
+.financial-correction :focus-visible {
+  outline: 3px solid var(--journey-primary, #247364);
+  outline-offset: 4px;
+}
+.financial-correction .correction-check {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-height: 44px;
+  margin: 12px 0;
+}
+.correction-check input {
+  height: 22px;
+  width: 22px;
+  flex-shrink: 0;
+}
+.correction-layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.7fr) minmax(0, 1.3fr);
+  gap: 20px;
+  margin-top: 24px;
+  align-items: start;
+}
+.correction-card,
+.correction-packet {
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  min-width: 0;
+}
+.correction-queue {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+.correction-queue li {
+  padding: 16px 0;
+  border-top: 1px solid #d9e1da;
+}
+.correction-tag {
+  background: #e5eee6;
+  color: #25483b;
+  border-radius: 8px;
+  padding: 5px 9px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.financial-correction fieldset {
+  min-width: 0;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 20px 0;
+}
+.financial-correction legend {
+  font-weight: 700;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+.correction-inputs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+.correction-inputs label {
+  text-transform: capitalize;
+}
+.financial-correction dl {
+  display: grid;
+  gap: 8px;
+}
+.financial-correction dt {
+  font-size: 0.85rem;
+  color: #3e594f;
+}
+.financial-correction dd {
+  margin: 0 0 8px;
+}
+.correction-packet {
+  border-top: 3px solid var(--journey-accent, #dfb461);
+}
+.correction-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+}
+.correction-scroll table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.correction-scroll th,
+.correction-scroll td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #d9e1da;
+  white-space: nowrap;
+}
+.correction-scroll caption {
+  text-align: left;
+  font-weight: 700;
+  padding: 12px 0;
+}
+.correction-comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+.correction-comparison > div {
+  background: #f5f5ef;
+  padding: 16px;
+  border-radius: 10px;
+}
+.financial-correction summary {
+  min-height: 44px;
+  padding: 12px 0;
+  cursor: pointer;
+  font-weight: 600;
+}
+.financial-correction [role='status'] {
+  background: #e5f0e9;
+  padding: 12px;
+}
+.financial-correction [role='alert'] {
+  background: #fff5ef;
+  padding: 12px;
+  border-left: 4px solid #a53b2c;
+}
+@media (max-width: 1000px) {
+  .correction-layout {
+    grid-template-columns: 1fr;
+  }
+  .correction-queue {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .financial-correction {
+    padding: 16px;
+  }
+  .financial-correction h2 {
+    font-size: 1.4rem;
+  }
+  .correction-queue,
+  .correction-comparison {
+    grid-template-columns: 1fr;
+  }
+  .correction-card,
+  .correction-packet {
+    padding: 16px;
+  }
+  .financial-correction button {
+    width: 100%;
+  }
+}
