@@ -22,6 +22,10 @@ async function fixture(index = 0) {
       (o) => o.source.job_id === journey.target.job_id,
     )!,
     worker = order.crew.find((w) => w.worker_id === journey.worker_id)!;
+  const matchingVisits = order.visits.filter((v) => v.date === journey.day);
+  if (matchingVisits.length !== 1)
+    throw Error('Exact selected civil-day visit required');
+  const selectedVisit = matchingVisits[0].id;
   const input: OperationsWorkflowInput = {
     operations: {
       day: journey.day,
@@ -29,7 +33,7 @@ async function fixture(index = 0) {
       booking: {
         order,
         worker_id: worker.worker_id,
-        visit_id: journey.visit_id,
+        visit_id: selectedVisit,
         start: journey.day + 'T09:00',
         end: journey.day + 'T11:00',
       },
@@ -41,10 +45,10 @@ async function fixture(index = 0) {
           end: journey.day + 'T16:00',
         },
       ],
-      route: [{ order, visit_id: journey.visit_id }],
+      route: [{ order, visit_id: selectedVisit }],
       capture: {
         order,
-        visit_id: journey.visit_id,
+        visit_id: selectedVisit,
         note: 'Explicit synthetic unsaved observation proposal',
       },
     },
@@ -60,7 +64,7 @@ async function fixture(index = 0) {
       sharing_purpose: 'INTERNAL_COORDINATION_REVIEW',
     },
   };
-  return { ...journey, input, order, gate };
+  return { ...journey, visit_id: selectedVisit, input, order, gate };
 }
 const read = (f: Awaited<ReturnType<typeof fixture>>) =>
   readOperationsWorkflow(f.property, f.target, f.input, f.gate);
@@ -329,7 +333,12 @@ it('a later visit revision invalidates the target review without rewriting histo
   const visit = f.property
     .read(f.company.id)
     .visits.find((v) => v.id === f.visit_id)!;
-  f.property.revise(f.company.id, visit);
+  if (visit.status === 'published') f.property.revise(f.company.id, visit);
+  else
+    f.property.saveVisit(f.company.id, visit, {
+      ...visit.content,
+      summary: 'Explicit revised synthetic scheduling draft',
+    });
   expect(await reconcileOperationsWorkflow(view)).toMatchObject({
     status: 'UNKNOWN',
     replacement: null,
