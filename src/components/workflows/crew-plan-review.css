@@ -45,6 +45,7 @@
   color: #52695d;
 }
 .crew-plan-review .cpr-badge {
+  display: inline-block;
   padding: 10px 14px;
   border: 1px solid #b2c6b8;
   background: #e8eee5;
