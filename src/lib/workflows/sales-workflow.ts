@@ -194,7 +194,10 @@ export async function readSalesWorkflow(
     };
     const source_hash = await documentHash(evidence);
     admitted(gate);
-    if (checkpoint(repo, release, t).fingerprint !== before.fingerprint)
+    if (
+      JSON.stringify(target(selected)) !== JSON.stringify(t) ||
+      checkpoint(repo, release, t).fingerprint !== before.fingerprint
+    )
       return unknown();
     return freezePrototype({
       mode: 'local-synthetic-workflow-review' as const,
@@ -262,6 +265,7 @@ export async function prepareSalesWorkflowContract(
     before = checkpoint(repo, release, t);
   const stable = () => {
     if (
+      JSON.stringify(target(selected)) !== JSON.stringify(t) ||
       JSON.stringify(review(input)) !== JSON.stringify(pinned) ||
       checkpoint(repo, release, t).fingerprint !== before.fingerprint
     )
@@ -345,7 +349,10 @@ export async function verifySalesWorkflowReview(
       handoffTarget(t),
       retained.preparation,
     );
-    if (checkpoint(repo, release, t).fingerprint !== before.fingerprint)
+    if (
+      JSON.stringify(target(selected)) !== JSON.stringify(t) ||
+      checkpoint(repo, release, t).fingerprint !== before.fingerprint
+    )
       return 'unknown';
     if (existing.status === 'unknown') return 'unknown';
     if (JSON.stringify(retained.lead) !== JSON.stringify(before.lead))

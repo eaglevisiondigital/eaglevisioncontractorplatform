@@ -386,3 +386,24 @@ describe('actual lead → exact issued scope → contract preparation', () => {
       ).rejects.toThrow();
   });
 });
+
+describe('original caller selection at the final digest', () => {
+  it('withholds the old property when the original selector changes after hashing', async () => {
+    const f = await salesWorkflowFixture(),
+      digest = crypto.subtle.digest.bind(crypto.subtle);
+    let reached = false;
+    vi.spyOn(crypto.subtle, 'digest').mockImplementation(async (...args) => {
+      const result = await digest(...args);
+      const body = JSON.parse(new TextDecoder().decode(args[1] as ArrayBuffer));
+      if (body.lead && body.source && body.receipt) {
+        reached = true;
+        f.target.location_id = crypto.randomUUID();
+      }
+      return result;
+    });
+    expect(
+      (await readSalesWorkflow(f.repo, f.release, f.target, f.gate)).status,
+    ).toBe('unknown');
+    expect(reached).toBe(true);
+  });
+});
