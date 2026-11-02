@@ -1,5 +1,19 @@
 # Security model · Phase 2
 
+## Cycle11 test custody and review boundaries
+
+Current eligible synthetic membership, exact retained source handles, immutable
+report/version identity and final source checks apply across all review panels.
+Fail-closed disabled gates precede source access. Finance proposals and safe service
+snapshots do not serialize private inputs into customer projections. Proposed
+external references are untrusted and cannot resolve identities by wording.
+The two disposable SQLite laboratories serialize participating test fixtures only;
+their trusted source callback is not genuine operational Auth or global revocation
+atomicity. Permanent attempted commands retain UNKNOWN and allow exact read-only
+reconciliation, never automatic replay, replacement IDs or dispatch/send callbacks.
+No network writer or connected capability is added. Recovery/MFA/NMI/P1/customer14/
+4B/Netlify/provider/financial/communication/hosted release restrictions persist.
+
 ## Cycle four · proposals and eligibility never grant execution
 
 Retain exact source identity/current access classification across asynchronous

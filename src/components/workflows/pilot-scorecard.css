@@ -1,0 +1,81 @@
+.pilot-scorecard {
+  color: #20352f;
+  min-width: 0;
+}
+.pilot-scorecard p,
+.pilot-scorecard td,
+.pilot-scorecard th {
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.pilot-scorecard h2 {
+  font-size: clamp(24px, 3vw, 32px);
+}
+.pilot-scorecard .pilot-gates {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.pilot-scorecard article {
+  padding: 18px;
+  background: #f5f5ef;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  min-width: 0;
+}
+.pilot-scorecard strong {
+  color: #526159;
+}
+.pilot-scorecard summary {
+  min-height: 44px;
+  cursor: pointer;
+  padding-block: 12px;
+}
+.pilot-scorecard input {
+  min-height: 44px;
+  width: 100%;
+  max-width: 560px;
+}
+.pilot-scorecard .pilot-matrix {
+  overflow: auto;
+  max-width: 100%;
+  border: 1px solid #d9e1da;
+  border-radius: 10px;
+  margin-top: 18px;
+}
+.pilot-scorecard table {
+  width: 100%;
+  min-width: 850px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.pilot-scorecard td,
+.pilot-scorecard th {
+  padding: 14px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid #d9e1da;
+}
+.pilot-scorecard th:first-child {
+  min-width: 260px;
+  max-width: 360px;
+}
+.pilot-scorecard caption {
+  text-align: left;
+  padding: 14px;
+  color: #526159;
+}
+.pilot-scorecard :focus-visible {
+  outline: 3px solid var(--journey-primary, #00543e);
+  outline-offset: 3px;
+}
+@media (max-width: 1000px) {
+  .pilot-scorecard .pilot-gates {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .pilot-scorecard .pilot-gates {
+    grid-template-columns: 1fr;
+  }
+}

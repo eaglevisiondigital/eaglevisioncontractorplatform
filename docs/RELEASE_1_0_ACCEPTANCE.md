@@ -1,5 +1,16 @@
 # Production Release 1.0 acceptance checklist
 
+## Cycle11 evidence does not close release gates
+
+Cycle11 adds local staff review usability, separate disposable transaction labs
+and a public-evidence acceptance scorecard. None is a physical two-device recovery
+PASS, genuine Auth/MFA, NMI operational acceptance, P1 execution, customer14/4B
+installation, Netlify protection verification or production authorization. Original
+approvals remain valid only for their exact separate scopes. All capabilities stay
+default-OFF or unwired and all hosted/financial/message/dispatch gates remain closed.
+See program/CYCLE11_VALIDATION.md for bounded local evidence.
+**Release1.0 remains NOT READY / NOT AUTHORIZED.**
+
 Cycle4 local-development update (November1): five independent draft extensions now
 cover crew-day proposal/conflict review, immutable accepted-test scope references,
 canonical margin warnings, unified safe Passport documentation and reminder planning

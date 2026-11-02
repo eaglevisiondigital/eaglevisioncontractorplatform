@@ -1,5 +1,20 @@
 # Shared design-system specification · cycle two
 
+## Cycle11 review group and accessible evidence
+
+The original eight-section navigation and six Daily workflow reviews remain exact.
+One separate collapsible Cycle11 group composes the new scoped panels over the same
+repository set; no new global shell, branding, typography or artwork is introduced.
+Reuse --journey-primary/accent and the existing three company palettes. Preserve
+44px controls, contained auto-height headers, readable labels/contrast and wrapped
+source identifiers. Every accessible name must include the visible button text,
+followed by exact record context. Source inspection stays visible until a separately
+checked job-navigation action. Focus moves to source/review headings, not a hidden
+panel. Table overflow is an explicitly labelled focusable region; page overflow is
+a regression. Actual trusted click counts exclude environment setup, typing and
+scrolling and are evidence, not a promised performance target. Local browser evidence
+covers desktop/tablet/mobile across all three approved contractor brands.
+
 Date: 2026-11-01. Baseline: `e44d668fe8bfd262be126020a0c1be9fa110046b`.
 Owner: main integrator. This specifies reuse and extension of approved source;
 it authorizes no redesign, hosted route or change to existing visual approvals.

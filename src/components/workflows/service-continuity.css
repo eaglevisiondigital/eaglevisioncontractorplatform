@@ -1,0 +1,195 @@
+.service-continuity {
+  min-width: 0;
+  padding: clamp(1rem, 3vw, 1.75rem);
+  background: #fff;
+  border: 1px solid #d9e1da;
+  border-radius: 18px;
+  color: #20352f;
+  line-height: 1.55;
+}
+.service-continuity * {
+  box-sizing: border-box;
+}
+.service-continuity header {
+  position: static;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  gap: 1rem;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+}
+.service-continuity header > div {
+  display: block;
+  flex: 1 1 300px;
+}
+.service-continuity h2,
+.service-continuity h3,
+.service-continuity h4 {
+  margin: 0.25rem 0 0.65rem;
+}
+.service-continuity form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+.service-continuity form label {
+  display: flex;
+  flex: 1 1 185px;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: 600;
+}
+.service-continuity input,
+.service-continuity select {
+  min-width: 0;
+  min-height: 44px;
+  padding: 0.65rem;
+  border: 1px solid #9aada1;
+  border-radius: 8px;
+  font: inherit;
+  background: #fff;
+  color: inherit;
+}
+.service-continuity button {
+  min-height: 44px;
+  max-width: 100%;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--journey-primary, #247364);
+  border-radius: 8px;
+  font: inherit;
+  background: var(--journey-primary, #247364);
+  color: #fff;
+  cursor: pointer;
+  white-space: normal;
+}
+.service-continuity button.secondary {
+  background: #fff;
+  color: var(--journey-primary, #247364);
+}
+.service-continuity button:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+.service-continuity nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+.service-continuity [aria-current='step'] {
+  font-weight: 700;
+  box-shadow: inset 0 -3px 0 var(--journey-accent, #dfb461);
+}
+.service-continuity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.service-continuity article,
+.service-continuity-detail,
+.service-continuity-safe,
+.service-continuity-empty {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  background: #f8f8f2;
+  margin: 1rem 0;
+}
+.service-continuity-grid > article {
+  margin: 0;
+  border-top: 3px solid var(--journey-primary, #247364);
+}
+.service-continuity-safe {
+  background: #f4f7f5;
+  border-top: 3px solid var(--journey-accent, #dfb461);
+}
+.service-continuity-safe article {
+  background: #fff;
+}
+.service-continuity dl {
+  display: grid;
+  gap: 0.2rem;
+}
+.service-continuity dt {
+  color: #526159;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.service-continuity dd {
+  margin: 0 0 0.6rem;
+}
+.service-continuity p,
+.service-continuity dd,
+.service-continuity footer {
+  overflow-wrap: anywhere;
+}
+.service-continuity-pill {
+  display: inline-block;
+  align-self: start;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid #b9cbbb;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #314d40;
+  background: #eff4ec;
+}
+.service-continuity-muted,
+.service-continuity footer {
+  color: #526159;
+  font-size: 0.9rem;
+}
+.service-continuity footer {
+  display: block;
+  margin: 1rem 0 0;
+  padding: 1rem 0 0;
+  border-top: 1px solid #d9e1da;
+}
+.service-continuity-notice {
+  padding: 0.75rem;
+  border-left: 3px solid var(--journey-accent, #dfb461);
+  background: #fffaf0;
+}
+.service-continuity [role='alert'] {
+  padding: 0.75rem;
+  border-left: 4px solid #9b4426;
+  background: #fff3e9;
+  color: #71341f;
+}
+.service-continuity :focus-visible {
+  outline: 3px solid var(--journey-primary, #247364);
+  outline-offset: 3px;
+}
+@media (max-width: 760px) {
+  .service-continuity {
+    padding: 1rem;
+  }
+  .service-continuity-grid {
+    grid-template-columns: 1fr;
+  }
+  .service-continuity form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .service-continuity form label {
+    flex: initial;
+  }
+  .service-continuity button {
+    width: 100%;
+  }
+  .service-continuity nav {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .service-continuity nav > span {
+    display: none;
+  }
+}

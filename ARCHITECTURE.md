@@ -1,5 +1,17 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Cycle11 local-only composition
+
+Six optional staff review panels reuse one existing OperatingSources environment
+and the existing estimating, financial, property, maintenance and source-navigation
+engines. A read-only acceptance scorecard projects the existing public register.
+Separate server/field-lab and server/consent-lab modules use disposable Node24 SQLite
+for test-only command custody, reservations and synthetic authority fixtures. They
+have no App/server route, browser writer, credential loader, provider adapter or
+canonical business-store ownership. Their independently marked local transactions
+are not connected global authorization or live scheduling/sending. All existing
+closed connected routes and separately authorized release gates remain unchanged.
+
 ## Cycle four · extend existing projections, not competing systems
 
 Crew-day review consumes actual existing job/crew/visit/time references and explicitly

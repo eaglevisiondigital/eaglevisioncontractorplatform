@@ -1,5 +1,19 @@
 # Propel Contractor Suite — feature acceptance register
 
+## Cycle-eleven local review candidate
+
+Six separate drafts74/76–80 are source-composed on Main draft75; nothing merged.
+[Delivery/source index](program/CYCLE11_DELIVERY_INDEX.json),
+[actual validation](program/CYCLE11_VALIDATION.md),
+[independent32-case review](program/CYCLE11_INTEGRATION_REVIEW.md) and
+[exact author-head CI](program/CYCLE11_CI_SNAPSHOT.json) retain separate proof.
+413 application cases,21 all-brand responsive scenarios and3production-OFF cases
+PASS, with63actual screenshots. The new staff scorecard reads all25original
+capability records and8PhaseOne gates; DESIGN/LOCAL/CI/HOSTED/RELEASE remain separate.
+No original18 ID, capability scope, local/hosted/release label or approval is promoted.
+Disposable participating transaction fixtures do not prove global Auth/source atomicity,
+operational custody or physical recovery. All existing release restrictions persist.
+
 ## Cycle-ten local review candidate
 
 Six exact isolated drafts66/68–72 are composed on Main draft67 without merging.

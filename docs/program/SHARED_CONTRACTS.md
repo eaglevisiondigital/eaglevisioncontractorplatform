@@ -1,5 +1,23 @@
 # Shared contracts and integration ownership
 
+## Cycle11 exact-source review and isolated lab contracts
+
+All six packages consume the same admitted OperatingSources handles, current
+membership and exact company/customer/property/job/issued/report references.
+Custody is not business ownership: field SQLite contains only lab reservation and
+receipt metadata; consent SQLite contains explicitly marked synthetic authority
+fixtures and ordering evidence. Neither introduces a canonical property, job,
+estimate, financial ledger, recipient directory or operational sender. Source checks
+are revalidated after lock waits; unknown results retain exact read-only custody.
+Browser proposals never invoke the server labs. Participating fixture transactions
+cannot certify atomicity of external canonical repositories or global Auth changes.
+Financial before/after comparisons use existing calculations and never save a cost
+correction. Service continuity separates staff-selected review context from recorded
+job/report identity. External reference labels establish no foreign-key authority.
+The existing acceptance register remains authoritative; the new scorecard is an
+allowlisted public-evidence projection. No source/local/CI proof grants hosted or
+release acceptance. See CYCLE11_DELIVERY_INDEX.json and CYCLE11_VALIDATION.md.
+
 Date: 2026-11-01. Source baseline: `dc7ed7c2db3cf8ff78a3d6f09098a1b623622874`.
 Owner: main Codex integrator. This inventory documents the existing implementation;
 it creates no API, schema, authorization, event bus or operational capability.

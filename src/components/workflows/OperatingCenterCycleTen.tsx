@@ -1,6 +1,7 @@
 import {
   OperatingCenterPreview,
   type OperatingReviewPanel,
+  type OperatingReviewGroup,
 } from './OperatingCenterPreview';
 import { CrewPlanReview } from './CrewPlanReview';
 import { FinancialExceptions } from './FinancialExceptions';
@@ -43,6 +44,13 @@ const reviews: readonly OperatingReviewPanel[] = [
     render: (p) => <AdvancedHandoffs {...p} />,
   },
 ];
-export function OperatingCenterCycleTen() {
-  return <OperatingCenterPreview additionalPanels={reviews} />;
+export function OperatingCenterCycleTen({
+  additionalReviewGroups = [],
+}: { additionalReviewGroups?: readonly OperatingReviewGroup[] } = {}) {
+  return (
+    <OperatingCenterPreview
+      additionalPanels={reviews}
+      additionalReviewGroups={additionalReviewGroups}
+    />
+  );
 }
