@@ -441,6 +441,10 @@ describe('Cycle 7 existing-source job review', () => {
       /PRIVATE|supplier|internal_note|rates|deductions|Human-entered/,
     );
     expect(r.report.snapshot.authority.ledger).toBe(false);
+    const serializer = vi.fn();
+    Object.assign(f.input.finance, { currency: { toJSON: serializer } });
+    await expect(f.read()).rejects.toThrow();
+    expect(serializer).not.toHaveBeenCalled();
   });
   it('reconciles only exact retained evidence, with copied and withdrawn input UNKNOWN', async () => {
     const f = await fixture(),

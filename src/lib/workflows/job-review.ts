@@ -76,6 +76,37 @@ function selection(input: JobReviewSelection) {
           'tax_payable',
           'sandbox_clearing',
         ]);
+  // Do not invoke caller serializers while fingerprinting nested finance identity.
+  if (
+    !Number.isSafeInteger(finance.job_revision) ||
+    Number(finance.job_revision) < 1 ||
+    typeof finance.currency !== 'string' ||
+    !/^[A-Z]{3}$/.test(finance.currency) ||
+    (aliases &&
+      Object.values(aliases).some(
+        (v) => typeof v !== 'string' || !v.trim() || v.length > 80,
+      ))
+  )
+    throw denied();
+  if (
+    release &&
+    (typeof release.as_of !== 'string' ||
+      !Number.isFinite(Date.parse(release.as_of)) ||
+      [
+        'offer_id',
+        'decision_id',
+        'contract_id',
+        'signature_id',
+        'invoice_id',
+      ].some(
+        (k) =>
+          release[k] !== null &&
+          (typeof release[k] !== 'string' ||
+            !(release[k] as string).length ||
+            (release[k] as string).length > 200),
+      ))
+  )
+    throw denied();
   const material =
     p.material === null
       ? null
