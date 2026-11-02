@@ -1,0 +1,606 @@
+{
+  "schema": "propel-cycle5-delivery-v1",
+  "owner_assignment_commit": "3bf2e0cfca691cb164e1c42290ccf09ad6804c8a",
+  "main_branch": "codex/program-cycle-five",
+  "coordination_pr": 27,
+  "shared_source_commit": "d53a902df498cca0053ec33b3514a708000a9748",
+  "coordinator_final_head": "Bound by current PR27 metadata/checks; no self-referential commit claim.",
+  "limits": [
+    "Individual draft candidates are not merged or silently promoted.",
+    "Related application counts overlap and are not summed as unique product acceptance.",
+    "Domain-only expansion prototypes make no UI/browser claim.",
+    "Four early expansion heads share identical Main-owned d53 checkpoint bytes through reviewed additive commits; their logical three-file owned delta is relative to d53, while common ancestor remains083b.",
+    "Consent and workforce async capture are explicitly non-atomic/UNKNOWN; no operational authority."
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "packages": [
+    {
+      "package": "Field day board",
+      "owner": "/root/cycle5_field",
+      "branch": "codex/program-technician-day-board",
+      "head_commit": "389771df7e2ad79017aa45b73d6b726773e3bc8e",
+      "reviewed_source_base": "5a96baf9ebf7c8e17177be67d5d6f2b26cef5f33",
+      "common_ancestor": "5a96baf9ebf7c8e17177be67d5d6f2b26cef5f33",
+      "draft_pr": 23,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/23",
+      "feature_ids": ["FLD-002"],
+      "status": "LOCAL_REVIEWED_DEFAULT_OFF",
+      "owned_files": [
+        {
+          "path": ".github/workflows/technician-day-board.yml",
+          "sha256": "9db37eb6385ff58d6577440ffa780d2d0f99bba5cc3482f18c2b403f29ff47ea"
+        },
+        {
+          "path": "docs/program/TECHNICIAN_DAY_BOARD.md",
+          "sha256": "fadac0653a4ff1540ce7f146ea85510602cb438c280ab523dcd5cbad3d033834"
+        },
+        {
+          "path": "src/components/field/FieldWorkOrdersPreview.tsx",
+          "sha256": "d24ceb985b7e381d0803f1c0c3229c8f1364ee7d1f6c0a0b9f908156aeeea781"
+        },
+        {
+          "path": "src/components/field/TechnicianDayBoard.tsx",
+          "sha256": "29a725b637ab7b62df6e137da8e0a6fcabf807f919d0251c975bd2fd9f93b088"
+        },
+        {
+          "path": "src/components/field/technician-day-board.css",
+          "sha256": "bfd222421f1ddaae959bd9200ca32e3066129f7cc9c5eb7c7abb9154196c9967"
+        },
+        {
+          "path": "src/lib/field-day-board.ts",
+          "sha256": "3384114f9a5514462bbf2da72f024b8bb605375f614e5b5777f7db8a9481798e"
+        },
+        {
+          "path": "tests/browser/fixtures/technician-day-board.html",
+          "sha256": "5fdbe72b13631aa654a4f186350feaa1fd06e790bee6add9f9bc10ef75ec45a1"
+        },
+        {
+          "path": "tests/browser/fixtures/technician-day-board.tsx",
+          "sha256": "e3a292d0b943c050afd001a38fdc155a9fa47318ec10642ecca3c2c9d53567a1"
+        },
+        {
+          "path": "tests/field-day-board.test.ts",
+          "sha256": "c7e60ac8def0622f119a04472bd9f59a452cca0fe425dca8af4a20dc61ce3c1d"
+        },
+        {
+          "path": "tests/program/playwright.technician-day-board.config.ts",
+          "sha256": "e50f9a0e3a5a27152a902745ec61cbb8b1541533e9be0aa054284d04d32d70e9"
+        },
+        {
+          "path": "tests/program/technician-day-board.spec.ts",
+          "sha256": "5ecb12e05b22146bce63033c18ac1135ce81e923797a1e72e2a17371e62de4f0"
+        }
+      ],
+      "reported_local_tests": {
+        "new_application": 37,
+        "related_application": 141,
+        "browser": 9
+      },
+      "independent_review": "CLEAR_FOR_LOCAL_DRAFT_ONLY",
+      "hosted_acceptance": "BLOCKED",
+      "release": "NOT_AUTHORIZED"
+    },
+    {
+      "package": "Sales contract preparation",
+      "owner": "/root/cycle5_sales",
+      "branch": "codex/program-contract-preparation",
+      "head_commit": "34ccf3cce7768ef3da3bfe4256991eae254de00a",
+      "reviewed_source_base": "ed3a099207ad3e29b3b1e70aba2fc809664a60bb",
+      "common_ancestor": "ed3a099207ad3e29b3b1e70aba2fc809664a60bb",
+      "draft_pr": 24,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/24",
+      "feature_ids": ["SAL-001", "EST-001"],
+      "status": "LOCAL_REVIEWED_DEFAULT_OFF",
+      "owned_files": [
+        {
+          "path": "docs/program/CONTRACT_PREPARATION.md",
+          "sha256": "349278a367e92ca39d8c1e7990b3874a46ae662af144a5fca48eb412ca315c00"
+        },
+        {
+          "path": "src/components/phase3/SalesApprovalHandoff.tsx",
+          "sha256": "b4b3ef58f5d49b1cad374618e8b308e3cff54be6bfb1284c83f1be6970624778"
+        },
+        {
+          "path": "src/components/phase3/SalesContractPreparation.tsx",
+          "sha256": "23d24dc0e36e7e2a8baef88bc6a35d0c484db6b849d716dae43d981e90549807"
+        },
+        {
+          "path": "src/components/phase3/sales-approval-handoff.css",
+          "sha256": "ff762fbc4fb200103744be8a04ab8bb6c0142454bc92de57a79dd068e6d3b10c"
+        },
+        {
+          "path": "src/lib/sales-contract-preparation.ts",
+          "sha256": "b466c9f0792d37d78febeebe4bc9e2684a6e2627796f75d1fa23c6f2a9d8b8e7"
+        },
+        {
+          "path": "tests/browser/fixtures/sales-handoff-harness.tsx",
+          "sha256": "314039814806e2306b6f9cf31d70d454a2224cc68db9e751256449e60ae5e486"
+        },
+        {
+          "path": "tests/browser/sales-contract-preparation.spec.ts",
+          "sha256": "542f03c04c4a00a656c67421154cf7863083d1cb3ea7447f35ed96b81f76a649"
+        },
+        {
+          "path": "tests/program/playwright.sales-preparation.config.ts",
+          "sha256": "5b1a9790b1cf343638c396bcdddf8c23551d85f8bad259749cd38e2b5c9dcc2b"
+        },
+        {
+          "path": "tests/sales-contract-preparation.test.ts",
+          "sha256": "26cb05e9298e6d57bc7806e18b18be9575f75c78651595748b6a53d2fe1764ec"
+        }
+      ],
+      "reported_local_tests": {
+        "new_application": 37,
+        "related_application": 109,
+        "browser": 27
+      },
+      "independent_review": "CLEAR_FOR_LOCAL_DRAFT_ONLY",
+      "hosted_acceptance": "BLOCKED",
+      "release": "NOT_AUTHORIZED"
+    },
+    {
+      "package": "Finance cost-to-complete",
+      "owner": "/root/cycle5_finance",
+      "branch": "codex/program-cost-to-complete",
+      "head_commit": "93cfe019ec422450c8662ccc5ccbaa06c7f03729",
+      "reviewed_source_base": "fe9d9ff593dbbed175ac69de1bd44fa1d25725bc",
+      "common_ancestor": "fe9d9ff593dbbed175ac69de1bd44fa1d25725bc",
+      "draft_pr": 25,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/25",
+      "feature_ids": ["FIN-002"],
+      "status": "LOCAL_REVIEWED_DEFAULT_OFF",
+      "owned_files": [
+        {
+          "path": "docs/program/JOB_COST_COMPLETION_REVIEW.md",
+          "sha256": "2dadc4c538e0177958ab848c2076e64e4c70ed75182bc4212db650d42d5563c4"
+        },
+        {
+          "path": "src/components/finance/JobMarginAnalysis.tsx",
+          "sha256": "84e9330a90b556f2d92b67f2b48fd02cd27bc40feef31fa8af45b6f5674b53a6"
+        },
+        {
+          "path": "src/components/finance/job-margin-analysis.css",
+          "sha256": "7d3c5df79850c7ec6ffab07cb3e4b9bf036e08c885a65c5ffc175d3096612592"
+        },
+        {
+          "path": "src/lib/job-cost-completion.ts",
+          "sha256": "0c5bddeab69a2bacc53f8133140546af5741a7d3aeb186d09716a49664276b2b"
+        },
+        {
+          "path": "src/lib/job-margin-analysis.ts",
+          "sha256": "362d02fa52696657af59d7ebe14859bc8b2e2036806b389afe234e1680670cb8"
+        },
+        {
+          "path": "tests/browser/fixtures/job-margin-harness.tsx",
+          "sha256": "e12008fc39b647821abb30a7352cc85f4e982d40e2ca4c9b12155081aacb5b6d"
+        },
+        {
+          "path": "tests/browser/job-margin.spec.ts",
+          "sha256": "a773ef29b20de4748a5c4e2c17795d0eb85eae0b9391cd90d064ef998c0306b8"
+        },
+        {
+          "path": "tests/program-job-cost-completion.test.ts",
+          "sha256": "e96c1523ca249e029bc9b89018fe7ac4ad7b7a713ea7a032b906d30f6ad30786"
+        }
+      ],
+      "reported_local_tests": {
+        "new_application": 37,
+        "related_application": 215,
+        "browser": 9
+      },
+      "independent_review": "CLEAR_FOR_LOCAL_DRAFT_ONLY",
+      "hosted_acceptance": "BLOCKED",
+      "release": "NOT_AUTHORIZED"
+    },
+    {
+      "package": "Maintenance renewal planning",
+      "owner": "/root/cycle5_growth",
+      "branch": "codex/program-renewal-planning",
+      "head_commit": "8f7c974b4e5f207ce92e556eabcdd0cd5d417689",
+      "reviewed_source_base": "3580bf4dceee7c8c4244b902c64c93f9dc0564c8",
+      "common_ancestor": "3580bf4dceee7c8c4244b902c64c93f9dc0564c8",
+      "draft_pr": 26,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/26",
+      "feature_ids": ["GRO-001", "GRO-002"],
+      "status": "LOCAL_REVIEWED_DEFAULT_OFF",
+      "owned_files": [
+        {
+          "path": "docs/program/MAINTENANCE_RENEWAL_PLANNING.md",
+          "sha256": "aa1e2bcb5a59759ca0e10195bc0bf2f02e711ddd66dce2ad43c2c50b1b5d35af"
+        },
+        {
+          "path": "src/lib/maintenance-renewal-planning.ts",
+          "sha256": "8cc52b0ba7bcbab26353ffea23d2590e5bd8c5ce77247504266d12eaf33e351c"
+        },
+        {
+          "path": "tests/program-renewal-planning.test.ts",
+          "sha256": "12d493dd09558d8407ddd471c60e7a44d8999da95039dcb58a1429e95cfa502b"
+        }
+      ],
+      "reported_local_tests": {
+        "new_application": 61,
+        "related_application": 127,
+        "browser": 0
+      },
+      "independent_review": "CLEAR_FOR_LOCAL_DRAFT_ONLY",
+      "hosted_acceptance": "BLOCKED",
+      "release": "NOT_AUTHORIZED"
+    },
+    {
+      "package": "Customer Proof of Work",
+      "owner": "/root/cycle5_customer",
+      "branch": "codex/program-proof-of-work-pack",
+      "head_commit": "75bef0b906f7917fa7cb44aaa964691a97aad62f",
+      "reviewed_source_base": "f7a44a8cc5fd7c4add529b6588925f548d2d85b5",
+      "common_ancestor": "f7a44a8cc5fd7c4add529b6588925f548d2d85b5",
+      "draft_pr": 28,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/28",
+      "feature_ids": ["CUS-002"],
+      "status": "LOCAL_REVIEWED_DEFAULT_OFF",
+      "owned_files": [
+        {
+          "path": ".github/workflows/proof-of-work.yml",
+          "sha256": "ab4fe832bd9ba670b24f3a17e460d16a23084d97318fd6fbb610f5c2004eea9a"
+        },
+        {
+          "path": "docs/program/PROOF_OF_WORK_PACK.md",
+          "sha256": "cd2c9d1a9c5684f93582353e5060890f66ab3bdfbb04ae9fd5b7abf60f9c1ea9"
+        },
+        {
+          "path": "src/components/property/ProofOfWorkPackPreview.tsx",
+          "sha256": "553bcb15bdf597396fc954a5a77d97107893b0094562f78e99cc90b40de10443"
+        },
+        {
+          "path": "src/components/property/proof-of-work-pack.css",
+          "sha256": "7a9372d25b84aa1d9f6b8d0868ee54eadc4d87ba9101baae880439e137661354"
+        },
+        {
+          "path": "src/domain/property/proof-of-work-pack.ts",
+          "sha256": "f3371c464d88dbbbb5f075bcf1f7de869f113cdab43e8acffe768d10f9fedf89"
+        },
+        {
+          "path": "tests/browser/fixtures/proof-of-work-harness.tsx",
+          "sha256": "52dab1f625f6a6d6ab98de1cb9f27daec22e3b80033f2d88114a2cdf8cf4183f"
+        },
+        {
+          "path": "tests/browser/fixtures/proof-of-work-off.html",
+          "sha256": "2bcab8ad50e90fcd5368c7c965815835b70038408491ca5736fbdf55e3ef71d1"
+        },
+        {
+          "path": "tests/browser/fixtures/proof-of-work-off.tsx",
+          "sha256": "0a7b9569360d02e29eed51129943a05351bae51923814a4f028833880ac56682"
+        },
+        {
+          "path": "tests/browser/fixtures/proof-of-work.html",
+          "sha256": "c46d66f2e5d9fb4eda32728a8780952ba9d7676c9d2cca627259e740bde1e854"
+        },
+        {
+          "path": "tests/program-proof-of-work.test.ts",
+          "sha256": "060c362a1f11f464c3871e159ba77c4e359495104eb2274e79e5eb784f7182d4"
+        },
+        {
+          "path": "tests/program/playwright.proof-of-work.config.ts",
+          "sha256": "94945e5bafbda03959ae9580b069b608f10e01fc2e31668ba363b32e497200ad"
+        },
+        {
+          "path": "tests/program/proof-of-work.spec.ts",
+          "sha256": "c1cf51c403f5543344e48e28efaa10b80ecbdbb59c813a034c383124e6fb0597"
+        }
+      ],
+      "reported_local_tests": {
+        "new_application": 40,
+        "related_application": 126,
+        "browser": 12
+      },
+      "independent_review": "CLEAR_FOR_LOCAL_DRAFT_ONLY",
+      "hosted_acceptance": "BLOCKED",
+      "release": "NOT_AUTHORIZED"
+    },
+    {
+      "package": "Business Copilot",
+      "owner": "/root/cycle5_intelligence",
+      "branch": "codex/program-business-copilot",
+      "head_commit": "6d45e29d4a86fbbca617e4024fd3707c67b8d3a5",
+      "reviewed_source_base": "d53a902df498cca0053ec33b3514a708000a9748",
+      "common_ancestor": "083b3230f81b67cc9abbe6c7dd6a982799c99408",
+      "draft_pr": 29,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/29",
+      "feature_ids": ["AI-001"],
+      "status": "LOCAL_REVIEWED_DEFAULT_OFF",
+      "owned_files": [
+        {
+          "path": "docs/program/BUSINESS_COPILOT_PROTOTYPE.md",
+          "sha256": "acbbdffec7ebff1bbb0e1574ebc63d4d270548ae2d2c7dee2bad573d7e979836"
+        },
+        {
+          "path": "src/lib/program/business-copilot.ts",
+          "sha256": "9f6d83cbb722fc787046caf49ce14d226d506eb970538fe44312f65fb98e3660"
+        },
+        {
+          "path": "tests/program-business-copilot.test.ts",
+          "sha256": "0f0cca991df7325dbc49526d932a374020d8a4f80a3d343c060c2018c2cf6aa5"
+        }
+      ],
+      "reported_local_tests": {
+        "new_application": 18,
+        "related_application": 40,
+        "browser": 0
+      },
+      "independent_review": "CLEAR_FOR_LOCAL_DRAFT_ONLY",
+      "hosted_acceptance": "BLOCKED",
+      "release": "NOT_AUTHORIZED"
+    },
+    {
+      "package": "Voice-to-Estimate",
+      "owner": "/root/cycle5_intelligence",
+      "branch": "codex/program-voice-estimate",
+      "head_commit": "bb3db5eb2a14148140b37860e310c5bb4ba1db4f",
+      "reviewed_source_base": "d53a902df498cca0053ec33b3514a708000a9748",
+      "common_ancestor": "083b3230f81b67cc9abbe6c7dd6a982799c99408",
+      "draft_pr": 30,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/30",
+      "feature_ids": ["AI-001", "EST-001"],
+      "status": "LOCAL_REVIEWED_DEFAULT_OFF",
+      "owned_files": [
+        {
+          "path": "docs/program/VOICE_ESTIMATE_PROTOTYPE.md",
+          "sha256": "9a529c2864232c0d118bbf871a4524ef15a6d9f4da700a4acee5c30a99991392"
+        },
+        {
+          "path": "src/lib/program/voice-estimate.ts",
+          "sha256": "38b70986b9b37adbf5a663ddbff3adeba80fea36ffe6a2c537cce36fd90aec35"
+        },
+        {
+          "path": "tests/program-voice-estimate.test.ts",
+          "sha256": "112a6bb933cb293d73695e692b09ae910ecc214fe9c804c5b440f32dfd8da609"
+        }
+      ],
+      "reported_local_tests": {
+        "new_application": 20,
+        "related_application": 42,
+        "browser": 0
+      },
+      "independent_review": "CLEAR_FOR_LOCAL_DRAFT_ONLY",
+      "hosted_acceptance": "BLOCKED",
+      "release": "NOT_AUTHORIZED"
+    },
+    {
+      "package": "Trade editions",
+      "owner": "/root/cycle5_intelligence",
+      "branch": "codex/program-trade-editions",
+      "head_commit": "933c51d6b742354ad623c614cc36e81ae5350c52",
+      "reviewed_source_base": "d53a902df498cca0053ec33b3514a708000a9748",
+      "common_ancestor": "083b3230f81b67cc9abbe6c7dd6a982799c99408",
+      "draft_pr": 31,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/31",
+      "feature_ids": ["EST-001"],
+      "status": "LOCAL_REVIEWED_DEFAULT_OFF",
+      "owned_files": [
+        {
+          "path": "docs/program/TRADE_EDITIONS_PROTOTYPE.md",
+          "sha256": "f5e6735dc5973dfa311d92470270d44ee1d5d3e85bc6ae5a27660e5e56800124"
+        },
+        {
+          "path": "src/lib/program/trade-editions.ts",
+          "sha256": "6d7e5ea95d3fd36f814736e94292b2cd1bdc640bd9b16b5c20a68874d389e487"
+        },
+        {
+          "path": "tests/program-trade-editions.test.ts",
+          "sha256": "7ea97ca9b437d3df747de953dd62775710e8439521564c6a2a5107ab1982cce1"
+        }
+      ],
+      "reported_local_tests": {
+        "new_application": 22,
+        "related_application": 44,
+        "browser": 0
+      },
+      "independent_review": "CLEAR_FOR_LOCAL_DRAFT_ONLY",
+      "hosted_acceptance": "BLOCKED",
+      "release": "NOT_AUTHORIZED"
+    },
+    {
+      "package": "Profit Guard",
+      "owner": "/root/cycle5_profit_guard",
+      "branch": "codex/program-profit-guard",
+      "head_commit": "5c3b404d3aef9e4e8332cba3553ac4113c429301",
+      "reviewed_source_base": "93cfe019ec422450c8662ccc5ccbaa06c7f03729",
+      "common_ancestor": "93cfe019ec422450c8662ccc5ccbaa06c7f03729",
+      "draft_pr": 32,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/32",
+      "feature_ids": ["FIN-002"],
+      "status": "LOCAL_REVIEWED_DEFAULT_OFF",
+      "owned_files": [
+        {
+          "path": "docs/program/PROFIT_GUARD_FOUNDATION.md",
+          "sha256": "5b12d1131b6b167c929aa79f09d2f1f9281f82e5df04d1acf0aa2126e236b095"
+        },
+        {
+          "path": "src/lib/profit-guard.ts",
+          "sha256": "705471b430475ba66474572a8e447b6a3fbbd399044be8a0cfbcd524a4b4355c"
+        },
+        {
+          "path": "tests/program-profit-guard.test.ts",
+          "sha256": "66f532eef23a5f7a5310bfd954040a22f26c9bbdeb4d84434eb84cc763fc72a0"
+        }
+      ],
+      "reported_local_tests": {
+        "new_application": 49,
+        "related_application": 180,
+        "browser": 0
+      },
+      "independent_review": "CLEAR_FOR_LOCAL_DRAFT_ONLY",
+      "hosted_acceptance": "BLOCKED",
+      "release": "NOT_AUTHORIZED"
+    },
+    {
+      "package": "Booking, route and offline review",
+      "owner": "/root/cycle5_operations",
+      "branch": "codex/program-operations-experiments",
+      "head_commit": "120bacfae4f982dbdf9cec18a230d858f016bf29",
+      "reviewed_source_base": "389771df7e2ad79017aa45b73d6b726773e3bc8e",
+      "common_ancestor": "389771df7e2ad79017aa45b73d6b726773e3bc8e",
+      "draft_pr": 33,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/33",
+      "feature_ids": ["FLD-002"],
+      "status": "LOCAL_REVIEWED_DEFAULT_OFF",
+      "owned_files": [
+        {
+          "path": "docs/program/OPERATIONS_EXPERIMENTS.md",
+          "sha256": "4b37e27b7b1ef7b5d67333122a9e7328ac4ab730534e3fc83e8b89988d511d5d"
+        },
+        {
+          "path": "src/lib/operations-experiments.ts",
+          "sha256": "8697d86f71c9be1f37bc46241105a318ae486c174e11d0dbd4ad8fee3686f72d"
+        },
+        {
+          "path": "tests/program-operations-experiments.test.ts",
+          "sha256": "9d25bbbe156189b1c59da63030980d8dc0cac72099146e5999f5171b9800e174"
+        }
+      ],
+      "reported_local_tests": {
+        "new_application": 52,
+        "related_application": 193,
+        "browser": 0
+      },
+      "independent_review": "CLEAR_FOR_LOCAL_DRAFT_ONLY",
+      "hosted_acceptance": "BLOCKED",
+      "release": "NOT_AUTHORIZED"
+    },
+    {
+      "package": "Procurement and subcontractor review",
+      "owner": "/root",
+      "branch": "codex/program-procurement-review",
+      "head_commit": "da78108d20f936c5642d7418b6a4d689e0ee3d08",
+      "reviewed_source_base": "d53a902df498cca0053ec33b3514a708000a9748",
+      "common_ancestor": "083b3230f81b67cc9abbe6c7dd6a982799c99408",
+      "draft_pr": 34,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/34",
+      "feature_ids": ["INT-001", "EST-001"],
+      "status": "LOCAL_REVIEWED_DEFAULT_OFF",
+      "owned_files": [
+        {
+          "path": "docs/program/PROCUREMENT_REVIEW.md",
+          "sha256": "cc8111ac89ac7266aff7679811f7c800b13ae5e9701d5a1d2e4d0fdc651fc7cb"
+        },
+        {
+          "path": "src/lib/program/procurement-review.ts",
+          "sha256": "de9fcbdf21bc93da5afa197e1803834d2e95212169ee2c03c054d11bc886b149"
+        },
+        {
+          "path": "tests/program-procurement-review.test.ts",
+          "sha256": "843b47c193c3f8720a42cc388b880b12e14c9b08fc12863d85972ca13364b295"
+        }
+      ],
+      "reported_local_tests": {
+        "new_application": 27,
+        "related_application": 49,
+        "browser": 0
+      },
+      "independent_review": "CLEAR_FOR_LOCAL_DRAFT_ONLY",
+      "hosted_acceptance": "BLOCKED",
+      "release": "NOT_AUTHORIZED"
+    },
+    {
+      "package": "Growth and synthetic receptionist",
+      "owner": "/root",
+      "branch": "codex/program-growth-intake",
+      "head_commit": "f9446dd798c617254a3f6937c79fdb93271a1192",
+      "reviewed_source_base": "8f7c974b4e5f207ce92e556eabcdd0cd5d417689",
+      "common_ancestor": "8f7c974b4e5f207ce92e556eabcdd0cd5d417689",
+      "draft_pr": 35,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/35",
+      "feature_ids": ["GRO-001", "GRO-002", "AI-001"],
+      "status": "LOCAL_REVIEWED_DEFAULT_OFF",
+      "owned_files": [
+        {
+          "path": "docs/program/GROWTH_OPPORTUNITY_REVIEW.md",
+          "sha256": "61d49629903dd7b895e4fbd6b9b0d07b2f9e6dbf066131f3318341e2be2c3ebe"
+        },
+        {
+          "path": "src/lib/growth-opportunity-review.ts",
+          "sha256": "40be9655f12bfcf8196b094f82c1906621bb3419da19539a5fd02d86fc12cd0d"
+        },
+        {
+          "path": "tests/program-growth-opportunity.test.ts",
+          "sha256": "6502d06520950ce33fb8ceedc390977dfa05443a39320ad51a499a2a96200abd"
+        }
+      ],
+      "reported_local_tests": {
+        "new_application": 15,
+        "related_application": 15,
+        "browser": 0
+      },
+      "independent_review": "CLEAR_FOR_LOCAL_DRAFT_ONLY",
+      "hosted_acceptance": "BLOCKED",
+      "release": "NOT_AUTHORIZED"
+    },
+    {
+      "package": "Controlled integration contracts",
+      "owner": "/root/cycle5_profit_guard",
+      "branch": "codex/program-integration-contracts",
+      "head_commit": "add6550b1ac3af5a958e9ce2c1277c49f011984e",
+      "reviewed_source_base": "93cfe019ec422450c8662ccc5ccbaa06c7f03729",
+      "common_ancestor": "93cfe019ec422450c8662ccc5ccbaa06c7f03729",
+      "draft_pr": 36,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/36",
+      "feature_ids": ["INT-001", "FIN-001"],
+      "status": "LOCAL_REVIEWED_DEFAULT_OFF",
+      "owned_files": [
+        {
+          "path": "docs/program/CONTROLLED_INTEGRATION_CONTRACTS.md",
+          "sha256": "e453a3ba56023593b97c9ee50f5845d36af187d629e6f4fc30fde624cfa5775b"
+        },
+        {
+          "path": "src/lib/controlled-integration-contracts.ts",
+          "sha256": "40d24dae982df8a12b0589dfea97a194be752062f3729afe2027375d1acfddf9"
+        },
+        {
+          "path": "tests/program-controlled-integration-contracts.test.ts",
+          "sha256": "eec8f1212730af12843533792a6c1d99016da83cf49b7d85771088ae5acb3bf0"
+        }
+      ],
+      "reported_local_tests": {
+        "new_application": 50,
+        "related_application": 140,
+        "browser": 0
+      },
+      "independent_review": "CLEAR_FOR_LOCAL_DRAFT_ONLY",
+      "hosted_acceptance": "BLOCKED",
+      "release": "NOT_AUTHORIZED"
+    },
+    {
+      "package": "Storm Mode and Contractor Network",
+      "owner": "/root/cycle5_operations",
+      "branch": "codex/program-storm-network",
+      "head_commit": "7c49ac52c090d5625e3ecbbba5f9ec535369006e",
+      "reviewed_source_base": "d53a902df498cca0053ec33b3514a708000a9748",
+      "common_ancestor": "d53a902df498cca0053ec33b3514a708000a9748",
+      "draft_pr": 37,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/37",
+      "feature_ids": ["FLD-002", "INT-001"],
+      "status": "LOCAL_REVIEWED_DEFAULT_OFF",
+      "owned_files": [
+        {
+          "path": "docs/program/STORM_NETWORK_REVIEW.md",
+          "sha256": "3b2a07246c3691d65d449a60a8dd1ec17a48f3186348c6f1947f37555a8ac6ad"
+        },
+        {
+          "path": "src/lib/program/storm-network-review.ts",
+          "sha256": "49e3dfd4908d46d76ae5051daa44d84c3fee9217b17fce573b819ae18d7cf721"
+        },
+        {
+          "path": "tests/program-storm-network-review.test.ts",
+          "sha256": "00898ccab311dbe82447f98dc9a037de3d87a5c7def55fc16ad9513e96dbf76c"
+        }
+      ],
+      "reported_local_tests": {
+        "new_application": 56,
+        "related_application": 78,
+        "browser": 0
+      },
+      "independent_review": "CLEAR_FOR_LOCAL_DRAFT_ONLY",
+      "hosted_acceptance": "BLOCKED",
+      "release": "NOT_AUTHORIZED"
+    }
+  ]
+}

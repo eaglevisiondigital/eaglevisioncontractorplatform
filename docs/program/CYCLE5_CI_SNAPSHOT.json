@@ -1,0 +1,352 @@
+{
+  "schema": "propel-cycle5-ci-snapshot-v1",
+  "checked_at": "2026-11-02 04:19:27 UTC",
+  "limits": [
+    "Exact-SHA normal automatic runs; no successful check restarted. Pending is not success.",
+    "Coordinator source head is d53a902; final documentation head is independently bound by PR27 metadata/checks."
+  ],
+  "results": [
+    {
+      "pr": 23,
+      "sha": "389771df7e2ad79017aa45b73d6b726773e3bc8e",
+      "runs": [
+        {
+          "id": 41384167868,
+          "name": "Isolated field work orders",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 41384167887,
+          "name": "Isolated technician day board",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 41384167883,
+          "name": "Isolated crew-day capacity",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 41384167982,
+          "name": "Isolated maintenance schedule handoff",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 41384167896,
+          "name": "Synthetic rehearsal compatibility",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 41384167833,
+          "name": "Isolated field scheduling",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 41384167839,
+          "name": "Foundation checks",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "pr": 24,
+      "sha": "34ccf3cce7768ef3da3bfe4256991eae254de00a",
+      "runs": [
+        {
+          "id": 41384171081,
+          "name": "Synthetic rehearsal compatibility",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 41384171079,
+          "name": "Foundation checks",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "pr": 25,
+      "sha": "93cfe019ec422450c8662ccc5ccbaa06c7f03729",
+      "runs": [
+        {
+          "id": 41384176616,
+          "name": "Synthetic rehearsal compatibility",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 41384176599,
+          "name": "Foundation checks",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "pr": 26,
+      "sha": "8f7c974b4e5f207ce92e556eabcdd0cd5d417689",
+      "runs": [
+        {
+          "id": 41384776314,
+          "name": "Synthetic rehearsal compatibility",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 41384776250,
+          "name": "Foundation checks",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "pr": 28,
+      "sha": "75bef0b906f7917fa7cb44aaa964691a97aad62f",
+      "runs": [
+        {
+          "id": 41385502297,
+          "name": "Foundation checks",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 41385502239,
+          "name": "Synthetic rehearsal compatibility",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 41385502253,
+          "name": "Passport timeline preview",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 41385502266,
+          "name": "Proof of Work documentation preview",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "pr": 29,
+      "sha": "6d45e29d4a86fbbca617e4024fd3707c67b8d3a5",
+      "runs": [
+        {
+          "id": 41386582843,
+          "name": "Synthetic rehearsal compatibility",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 41386582864,
+          "name": "Foundation checks",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "pr": 30,
+      "sha": "bb3db5eb2a14148140b37860e310c5bb4ba1db4f",
+      "runs": [
+        {
+          "id": 41386587117,
+          "name": "Foundation checks",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 41386587148,
+          "name": "Synthetic rehearsal compatibility",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "pr": 31,
+      "sha": "933c51d6b742354ad623c614cc36e81ae5350c52",
+      "runs": [
+        {
+          "id": 41386590090,
+          "name": "Foundation checks",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 41386590105,
+          "name": "Synthetic rehearsal compatibility",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "pr": 32,
+      "sha": "5c3b404d3aef9e4e8332cba3553ac4113c429301",
+      "runs": [
+        {
+          "id": 41386742366,
+          "name": "Foundation checks",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 41386742341,
+          "name": "Synthetic rehearsal compatibility",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "pr": 33,
+      "sha": "120bacfae4f982dbdf9cec18a230d858f016bf29",
+      "runs": [
+        {
+          "id": 41386748280,
+          "name": "Isolated technician day board",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 41386748318,
+          "name": "Isolated crew-day capacity",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 41386748224,
+          "name": "Isolated field work orders",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 41386748270,
+          "name": "Synthetic rehearsal compatibility",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 41386748317,
+          "name": "Foundation checks",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 41386748273,
+          "name": "Isolated maintenance schedule handoff",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 41386748344,
+          "name": "Isolated field scheduling",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "pr": 34,
+      "sha": "da78108d20f936c5642d7418b6a4d689e0ee3d08",
+      "runs": [
+        {
+          "id": 41386751902,
+          "name": "Synthetic rehearsal compatibility",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 41386751986,
+          "name": "Foundation checks",
+          "status": "in_progress",
+          "conclusion": null
+        }
+      ]
+    },
+    {
+      "pr": 35,
+      "sha": "f9446dd798c617254a3f6937c79fdb93271a1192",
+      "runs": [
+        {
+          "id": 41386758418,
+          "name": "Synthetic rehearsal compatibility",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 41386758473,
+          "name": "Foundation checks",
+          "status": "in_progress",
+          "conclusion": null
+        }
+      ]
+    },
+    {
+      "pr": 36,
+      "sha": "add6550b1ac3af5a958e9ce2c1277c49f011984e",
+      "runs": [
+        {
+          "id": 41386974471,
+          "name": "Foundation checks",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 41386974576,
+          "name": "Synthetic rehearsal compatibility",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "pr": 37,
+      "sha": "7c49ac52c090d5625e3ecbbba5f9ec535369006e",
+      "runs": [
+        {
+          "id": 41387260743,
+          "name": "Foundation checks",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "id": 41387260744,
+          "name": "Synthetic rehearsal compatibility",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "pr": 27,
+      "sha": "d53a902df498cca0053ec33b3514a708000a9748",
+      "runs": [
+        {
+          "id": 41385386271,
+          "name": "Synthetic rehearsal compatibility",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 41385386279,
+          "name": "Foundation checks",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ]
+}

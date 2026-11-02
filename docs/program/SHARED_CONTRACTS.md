@@ -185,3 +185,21 @@ All inputs are pinned before awaits and current source/access/confirmation reche
 No retry/replay/new-ID/source replacement after uncertainty. Locked5files/13bindings,
 all13/customer14/original4B/P1/four/approvals/2A–2F/billing/Netlify/executor/recovery/
 NMI/Auth/provider/financial/hosted/deploy/merge gates remain unchanged.
+
+## Cycle-five shared boundaries
+
+Exact owner plan3bf2e0c permits local parallel candidates only. Main owns the additive
+sample-only Phase3 synchronous read, allowlisted prototype source and final synchronous
+consumer checkpoint. Children compose these exact bytes; no competing source stores,
+engines, schema, provider ports or connected mounts. Early children retain the reviewed
+identical checkpoint dependency without rewriting parents. Candidate sources remain
+separate drafts; the disposable combined proof is not promotion. See the exact delivery
+index and independent review.
+
+Customer Proof of Work uses existing customer-safe timeline/report/job projections,
+never the internal prototype reader. Typed voice and receptionist input are untrusted
+synthetic observations, never instructions or authority. Geography, supplier identity,
+physical completion, license/vetting and historical coverage gaps remain explicit.
+Async consent/workforce observations are CAPTURED_NOT_ATOMIC/currentnessUNKNOWN;
+immutable hashes and session bindings do not establish durable custody or genuine Auth.
+All financial/dispatch/contract/message/provider/hosted/recovery/production gates persist.

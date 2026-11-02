@@ -1564,3 +1564,24 @@ including all11 skipped/native concurrency cases; **51 desktop/tablet/mobile PAS
 Formatting/diff/private-reference checks PASS. An initial concurrent full-catalog
 run hit10second hook timeouts; bounded workers/30second hooks resolved resource
 contention and the final full/native runs pass. No provider/hosted acceptance is inferred.
+
+## Cycle-five local source boundary
+
+Owner direction at exact3bf2e0c is loaded. Main uses codex/program-cycle-five; five
+primary candidates remain separate stacked drafts. A narrow sample-only synchronous
+Phase3 source read and allowlisted internal prototype projection are independently
+reviewed. No estimating writer, canonical calculation, connected route or protected
+source is changed. Final capture follows public hashing, preventing stale async
+assembly. See docs/program/PROTOTYPE_SOURCE_BOUNDARY.md and execution contracts.
+New expansion work remains default-OFF/unwired; no operational acceptance is claimed.
+The owner assignment document formatting failure is corrected only in this new
+coordination descendant; reviewed parents are not rewritten. Release1.0 remains
+NOT READY / NOT AUTHORIZED and all existing gates persist.
+
+Cycle-five delivery now includes five primary candidates and nine tested expansion
+prototypes in separate drafts23–37 (coordination27), with exact heads/owned hashes in
+docs/program/CYCLE5_DELIVERY_INDEX.json. Main disposable940 app cases/57 browser cases
+PASS; independent333 source/integration cases PASS. Retained canonical CRM/Field
+composite preserved; all128publicprotected/5locks/13bindings match. No source is merged
+or automatically promoted; nine domain-only prototypes have no browser acceptance
+claim. Asyncconsent/workforcecurrentness remainsUNKNOWN; all release gates remain.
