@@ -1,0 +1,142 @@
+.schedule-work-order-continuity {
+  color: #20352f;
+  line-height: 1.55;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.schedule-work-order-continuity > header {
+  position: static;
+  width: auto;
+  height: auto;
+  min-height: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.schedule-work-order-continuity > header > div {
+  display: block;
+  min-width: 0;
+}
+.schedule-work-order-continuity h2,
+.schedule-work-order-continuity h3,
+.schedule-work-order-continuity h4 {
+  color: #20352f;
+  line-height: 1.25;
+}
+.schedule-work-order-continuity .swoc-eyebrow {
+  color: #526159;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+.schedule-work-order-continuity .swoc-badge {
+  display: inline-block;
+  background: #e8eee8;
+  border: 1px solid #cbd8ce;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  white-space: normal;
+  font-size: 0.8rem;
+}
+.schedule-work-order-continuity .swoc-boundary {
+  background: #f5f5ef;
+  border-left: 3px solid var(--journey-primary, #00543e);
+  padding: 1rem;
+}
+.schedule-work-order-continuity .swoc-controls,
+.schedule-work-order-continuity .swoc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.schedule-work-order-continuity label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: 600;
+  min-width: 0;
+}
+.schedule-work-order-continuity textarea,
+.schedule-work-order-continuity input,
+.schedule-work-order-continuity select,
+.schedule-work-order-continuity button {
+  min-height: 44px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.schedule-work-order-continuity textarea,
+.schedule-work-order-continuity input,
+.schedule-work-order-continuity select {
+  width: 100%;
+}
+.schedule-work-order-continuity .swoc-check {
+  flex-direction: row;
+  align-items: center;
+  margin: 1rem 0;
+  font-weight: 400;
+}
+.schedule-work-order-continuity .swoc-check input {
+  min-width: 44px;
+  width: 44px;
+  margin-right: 0.4rem;
+}
+.schedule-work-order-continuity button {
+  background: var(--journey-primary, #00543e);
+  color: white;
+  border: 1px solid transparent;
+  padding: 0.7rem 1rem;
+  white-space: normal;
+  text-align: left;
+}
+.schedule-work-order-continuity button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.schedule-work-order-continuity .swoc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.schedule-work-order-continuity .swoc-card {
+  padding: 1.2rem;
+  border: 1px solid #d9e1da;
+  border-radius: 14px;
+  background: white;
+  min-width: 0;
+}
+.schedule-work-order-continuity dl > div {
+  margin-bottom: 0.75rem;
+}
+.schedule-work-order-continuity dt {
+  color: #526159;
+  font-size: 0.8rem;
+}
+.schedule-work-order-continuity dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.schedule-work-order-continuity :focus-visible {
+  outline: 3px solid var(--journey-accent, #dfb461);
+  outline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .schedule-work-order-continuity > header {
+    display: block;
+  }
+  .schedule-work-order-continuity .swoc-controls,
+  .schedule-work-order-continuity .swoc-grid {
+    grid-template-columns: 1fr;
+  }
+  .schedule-work-order-continuity .swoc-actions {
+    display: grid;
+  }
+}
+
+.schedule-work-order-continuity textarea {
+  width: 100%;
+  min-height: 110px;
+  resize: vertical;
+}
