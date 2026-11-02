@@ -18,9 +18,11 @@ import './job-review.css';
 export function JobReview({
   sources,
   enabled = false,
+  showFinanceDetails = true,
 }: {
   sources: LocalJourney;
   enabled?: boolean;
+  showFinanceDetails?: boolean;
 }) {
   const signature = JSON.stringify([
     sources.target,
@@ -31,14 +33,22 @@ export function JobReview({
     sources,
     signature,
     enabled,
+    showFinanceDetails,
     generation: 0,
   });
   if (
     binding.sources !== sources ||
     binding.signature !== signature ||
-    binding.enabled !== enabled
+    binding.enabled !== enabled ||
+    binding.showFinanceDetails !== showFinanceDetails
   ) {
-    bind({ sources, signature, enabled, generation: binding.generation + 1 });
+    bind({
+      sources,
+      signature,
+      enabled,
+      showFinanceDetails,
+      generation: binding.generation + 1,
+    });
     return null;
   }
   if (!enabled || !sources.gate.enabled || !sources.gate.confirmed)
@@ -53,9 +63,21 @@ export function JobReview({
         </p>
       </section>
     );
-  return <JobReviewForm key={binding.generation} sources={sources} />;
+  return (
+    <JobReviewForm
+      key={binding.generation}
+      sources={sources}
+      showFinanceDetails={showFinanceDetails}
+    />
+  );
 }
-function JobReviewForm({ sources }: { sources: LocalJourney }) {
+function JobReviewForm({
+  sources,
+  showFinanceDetails,
+}: {
+  sources: LocalJourney;
+  showFinanceDetails: boolean;
+}) {
   const id = useId();
   const [materialEnabled, setMaterialEnabled] = useState(false),
     [timeEnabled, setTimeEnabled] = useState(false);
@@ -602,7 +624,40 @@ function JobReviewForm({ sources }: { sources: LocalJourney }) {
               </div>
             </div>
           </section>
-          <FinanceWorkflow review={review.recorded} enabled />
+          {showFinanceDetails ? (
+            <FinanceWorkflow review={review.recorded} enabled />
+          ) : (
+            <section
+              className="job-review-card"
+              aria-label="Job review invoice requirements"
+            >
+              <h3>Invoice requirements for this exact job</h3>
+              <p>
+                <strong>
+                  {review.invoiceRequirements.overall} ·{' '}
+                  {review.invoiceRequirements.status}.
+                </strong>{' '}
+                Issued version{' '}
+                {review.invoiceRequirements.issued.version_number} remains
+                unchanged. The existing Finance view supplies the full source
+                and cost review.
+              </p>
+              <p>
+                No contract, signature, invoice or financial authority is
+                created by these proposals.
+              </p>
+              <details>
+                <summary>Inspect invoice requirement statuses</summary>
+                <ul>
+                  {review.invoiceRequirements.requirements.map((r) => (
+                    <li key={r.id}>
+                      {r.id.replaceAll('_', ' ')}: {r.status}
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            </section>
+          )}
           <section
             className="job-review-card"
             aria-label="Staff financial reference preview"

@@ -7,7 +7,11 @@ Release 1.0 remains **NOT READY / NOT AUTHORIZED**.
 
 ## Functioning staff workflow
 
-`JobReview({sources: LocalJourney, enabled?: boolean})` defaults OFF. Main may mount it
+`JobReview({sources: LocalJourney, enabled?: boolean, showFinanceDetails?: boolean})`
+defaults OFF. `showFinanceDetails` defaults true; Main supplies false when the existing
+Finance view is already present, retaining a concise uniquely named invoice requirements
+summary and avoiding duplicate Finance landmarks. Changing that presentation context
+also resets the form before old results render. Main may mount it
 only in the separately admitted loopback development journey. It uses the actual
 journey's repository, organization, eligible synthetic owner/admin, customer, CRM
 property, immutable issued version, job, worker assignments and existing offer/receipt.
