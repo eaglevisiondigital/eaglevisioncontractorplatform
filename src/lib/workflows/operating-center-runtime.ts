@@ -30,6 +30,68 @@ const targetKeys = [
   'version_id',
   'job_id',
 ];
+/** Reconstruct only own data before serialization. Never invoke caller getters,
+ * toJSON, coercion hooks, sparse array accessors or cyclic/executable evidence. */
+function dataSignature(value: unknown) {
+  const active = new Set<object>();
+  const data = (v: unknown): unknown => {
+    if (
+      v === null ||
+      v === undefined ||
+      typeof v === 'string' ||
+      typeof v === 'boolean'
+    )
+      return v;
+    if (typeof v === 'number' && Number.isFinite(v)) return v;
+    if (!v || typeof v !== 'object' || active.has(v))
+      throw Error('Primitive data-only source evidence required');
+    if (
+      ![null, Object.prototype, Array.prototype].includes(
+        Object.getPrototypeOf(v),
+      )
+    )
+      throw Error('Plain source evidence required');
+    active.add(v);
+    const descriptors = Object.getOwnPropertyDescriptors(v),
+      keys = Reflect.ownKeys(v);
+    if (
+      keys.some(
+        (k) => typeof k !== 'string' || !Object.hasOwn(descriptors[k], 'value'),
+      )
+    )
+      throw Error('Own-data source evidence required');
+    let result: unknown;
+    if (Array.isArray(v)) {
+      if (
+        keys.length !== v.length + 1 ||
+        Array.from({ length: v.length }, (_, i) => descriptors[String(i)]).some(
+          (d) => !d,
+        )
+      )
+        throw Error('Dense source data required');
+      result = Array.from({ length: v.length }, (_, i) =>
+        data(descriptors[String(i)].value),
+      );
+    } else {
+      const plain = Object.create(null) as Record<string, unknown>;
+      for (const key of keys as string[])
+        plain[key] = data(descriptors[key].value);
+      result = plain;
+    }
+    active.delete(v);
+    return result;
+  };
+  return JSON.stringify(data(value));
+}
+function approvedCompany(value: unknown) {
+  const p = prototypeFields(value, Object.keys(sampleCompanies[0]));
+  if (Object.keys(p).length !== Object.keys(sampleCompanies[0]).length)
+    throw Error('Exact approved company fields required');
+  const signature = dataSignature(p);
+  if (!sampleCompanies.some((c) => dataSignature(c) === signature))
+    throw Error('Exact approved synthetic company required');
+  return p;
+}
 /** Capture live source handles and a private exact read fence. Never serialize this
  * closure/repository set into a customer projection or treat it as authentication. */
 export function captureOperatingSources(
@@ -71,16 +133,11 @@ export function captureOperatingSources(
     { length: list.length },
     (_, i) => descriptors[String(i)].value as LocalJourney,
   );
-  const company = prototypeFields(
-    root.company,
-    Object.keys(root.company as object),
-  );
+  const company = approvedCompany(root.company);
   if (
     typeof company.id !== 'string' ||
     !sampleCompanies.some(
-      (c) =>
-        c.id === company.id &&
-        JSON.stringify(c) === JSON.stringify(root.company),
+      (c) => c.id === company.id && dataSignature(c) === dataSignature(company),
     )
   )
     throw Error('Exact approved synthetic company required');
@@ -104,7 +161,7 @@ export function captureOperatingSources(
     if (
       Object.keys(current).length !== 6 ||
       Object.keys(root).some((k) => current[k] !== root[k]) ||
-      JSON.stringify(sources.company) !== JSON.stringify(company)
+      dataSignature(approvedCompany(sources.company)) !== dataSignature(company)
     )
       throw Error('Operating source container changed');
     const ownList = Object.getOwnPropertyDescriptors(sources.entries);
@@ -121,6 +178,30 @@ export function captureOperatingSources(
     const jobs = new Set<string>();
     const selected = entries.map((entry, index) => {
       const v = prototypeFields(entry, Object.keys(entry));
+      for (const key of [
+        'intake_request_id',
+        'offer_id',
+        'receipt_id',
+        'day',
+        'timezone',
+        'worker_id',
+        'plan_id',
+        'visit_id',
+        'scheduled_visit_id',
+        'report_id',
+      ])
+        if (
+          typeof v[key] !== 'string' ||
+          !(v[key] as string).length ||
+          (v[key] as string).length > 200
+        )
+          throw Error('Exact primitive operating selectors required');
+      if (
+        !Number.isSafeInteger(v.published_version) ||
+        Number(v.published_version) < 1
+      )
+        throw Error('Exact published source version required');
+      dataSignature(v.issued);
       if (
         [
           'company',
@@ -223,7 +304,7 @@ export function captureOperatingSources(
       };
     });
     const members = sources.operations.syntheticMemberships(organization_id);
-    const value = JSON.stringify({
+    const value = dataSignature({
       selected,
       members,
       property: sources.property.read(organization_id),
@@ -256,18 +337,21 @@ export async function prepareOperatingSources(
   gate: JourneyAdmission,
 ): Promise<OperatingSources> {
   admit(gate);
-  const approved = sampleCompanies.find((c) => c.id === company.id);
-  if (!approved || JSON.stringify(company) !== JSON.stringify(approved))
-    throw Error('Approved synthetic company required');
+  approvedCompany(company);
+  const checkedCompany = approvedCompany(company);
+  const approved = sampleCompanies.find((c) => c.id === checkedCompany.id);
+  if (!approved) throw Error('Approved synthetic company required');
   const operations = new Operations(true);
   const estimates = new Phase3Repository(operations);
   await estimates.initialize(approved);
   admit(gate);
+  approvedCompany(company);
   const property = new PropertyRepository(operations, estimates);
   await property.initialize(approved);
   const entries: LocalJourney[] = [];
   for (let index = 0; index < 4; index++) {
     admit(gate);
+    approvedCompany(company);
     entries.push(
       await prepareEntry(
         company,
@@ -294,9 +378,10 @@ async function prepareEntry(
   reuse?: LocalJourney,
 ): Promise<LocalJourney> {
   admit(gate);
-  const approved = sampleCompanies.find((c) => c.id === company.id);
-  if (!approved || JSON.stringify(approved) !== JSON.stringify(company))
-    throw Error('Approved synthetic company required');
+  approvedCompany(company);
+  const checkedCompany = approvedCompany(company);
+  const approved = sampleCompanies.find((c) => c.id === checkedCompany.id);
+  if (!approved) throw Error('Approved synthetic company required');
   let lead: ReturnType<Operations['syntheticIntakeRequest']>;
   if (reuse) {
     lead = operations.syntheticIntakeRequest(
@@ -310,6 +395,7 @@ async function prepareEntry(
       (await operations.listIntake(company.id)).rows.map((r) => r.id),
     );
     admit(gate);
+    approvedCompany(company);
     await operations.sampleSubmit(company.slug, {
       name: `Synthetic Operating Customer ${index + 1}`,
       email: `journey-${crypto.randomUUID()}@example.invalid`,
@@ -330,6 +416,7 @@ async function prepareEntry(
       consent_version: 'contact-v1',
     });
     admit(gate);
+    approvedCompany(company);
     const created = (await operations.listIntake(company.id)).rows.filter(
       (r) => !previous.has(r.id),
     );
@@ -349,15 +436,19 @@ async function prepareEntry(
   input.expires_on = '2099-12-31';
   input.tax_policy_id = (await estimates.taxes(company.id))[0].id;
   admit(gate);
+  approvedCompany(company);
   const draft = await estimates.create(company, input);
   admit(gate);
+  approvedCompany(company);
   const issued = await estimates.issue(company.id, draft);
   admit(gate);
+  approvedCompany(company);
   const release = new ReleasePreview(company.id, issued.version);
   await release.command('staff', 'publish_offer', {
     version_id: issued.version.id,
   });
   admit(gate);
+  approvedCompany(company);
   const offer = release.read('staff').release_offers;
   if (offer.length !== 1) throw Error('Exact local offer required');
   await release.command('customer', 'decide_offer', {
@@ -367,11 +458,13 @@ async function prepareEntry(
     consent: true,
   });
   admit(gate);
+  approvedCompany(company);
   const receipts = release.read('staff').release_decisions;
   if (receipts.length !== 1) throw Error('Exact local test receipt required');
   // A separate explicit engineering fixture, never permission derived from a preference/contract packet.
   const jobId = await estimates.approveJob(company.id, issued);
   admit(gate);
+  approvedCompany(company);
   // Existing internal cost-review evidence only: no payment, purchase order or ledger.
   const commitment = await estimates.submitExpense(company.id, jobId, {
     purchase_key: crypto.randomUUID(),
@@ -390,6 +483,7 @@ async function prepareEntry(
     material_approval_id: null,
   });
   admit(gate);
+  approvedCompany(company);
   await estimates.reviewExpense(
     company.id,
     jobId,
@@ -398,6 +492,7 @@ async function prepareEntry(
     'Explicit synthetic engineering fixture; no payment authority.',
   );
   admit(gate);
+  approvedCompany(company);
   const actor = `${company.id}-owner`;
   const workforce = await estimates.workforce(company.id);
   const worker = workforce.workers.find(
@@ -409,6 +504,7 @@ async function prepareEntry(
     throw Error('Exact existing synthetic field worker unavailable');
   const job = (await estimates.jobs(company.id)).find((j) => j.id === jobId)!;
   admit(gate);
+  approvedCompany(company);
   await estimates.assignJob(company.id, jobId, worker.user_id, true, {
     reviewer: actor,
     job_revision: job.lock_revision,
@@ -417,8 +513,10 @@ async function prepareEntry(
     assertCurrent: () => admit(gate),
   });
   admit(gate);
+  approvedCompany(company);
   await property.refreshContexts(company.id);
   admit(gate);
+  approvedCompany(company);
   const context = property
     .read(company.id)
     .contexts.find(
@@ -492,6 +590,7 @@ async function prepareEntry(
   const customerModel = new CustomerPortalPreviewModel(company, property);
   customerModel.admitLocalJourney(target, gate);
   admit(gate);
+  approvedCompany(company);
   estimates.readSyntheticPrototypeSources(target);
   operations.syntheticIntakeRequest(company.id, customer, location, lead.id);
   const final = release.read('staff');

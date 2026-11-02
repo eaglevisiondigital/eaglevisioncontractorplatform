@@ -1,6 +1,7 @@
 import { afterEach, expect, it, vi } from 'vitest';
 import { sampleCompanies } from '../src/domain/platform';
 import { Operations } from '../src/lib/operations';
+import { Phase3Repository } from '../src/lib/phase3';
 import {
   prepareOperatingSources,
   captureOperatingSources,
@@ -124,4 +125,53 @@ it('detects actual CRM changes after a retained read', async () => {
     customer.id,
   );
   expect(c.check).toThrow();
+});
+for (const field of ['day', 'report_id', 'published_version', 'issued'])
+  it(`rejects executable serializer in ${field} without invocation`, async () => {
+    const g = gate(),
+      s = await prepareOperatingSources(sampleCompanies[0], g),
+      spy = vi.fn(() => (field === 'published_version' ? 1 : 'hidden'));
+    Object.assign(s.entries[0], { [field]: { toJSON: spy } });
+    expect(() => captureOperatingSources(s, g)).toThrow();
+    expect(spy).not.toHaveBeenCalled();
+  });
+it('rejects noncanonical company serializers before calling them', async () => {
+  const g = gate(),
+    s = await prepareOperatingSources(sampleCompanies[0], g),
+    spy = vi.fn(() => s.company),
+    company = { ...s.company, toJSON: spy };
+  const entries = s.entries.map((e) => ({ ...e, company }));
+  expect(() =>
+    captureOperatingSources({ ...s, company, entries }, g),
+  ).toThrow();
+  expect(spy).not.toHaveBeenCalled();
+});
+it('terminal source check rejects newly installed serializers', async () => {
+  const g = gate(),
+    s = await prepareOperatingSources(sampleCompanies[0], g),
+    capture = captureOperatingSources(s, g),
+    spy = vi.fn();
+  Object.assign(s.entries[0].issued.version.payload.project, { toJSON: spy });
+  expect(capture.check).toThrow();
+  expect(spy).not.toHaveBeenCalled();
+});
+it('requires own-data company admission before fixture setup', async () => {
+  const spy = vi.fn(() => sampleCompanies[0].id),
+    company = { ...sampleCompanies[0] };
+  Object.defineProperty(company, 'id', { get: spy });
+  await expect(prepareOperatingSources(company, gate())).rejects.toThrow();
+  expect(spy).not.toHaveBeenCalled();
+});
+it('rechecks company data after fixture initialization awaits', async () => {
+  const company = { ...sampleCompanies[0], business_info: {} },
+    serializer = vi.fn(),
+    initialize = Phase3Repository.prototype.initialize;
+  vi.spyOn(Phase3Repository.prototype, 'initialize').mockImplementation(
+    async function (this: Phase3Repository, c) {
+      await initialize.call(this, c);
+      Object.assign(company, { toJSON: serializer });
+    },
+  );
+  await expect(prepareOperatingSources(company, gate())).rejects.toThrow();
+  expect(serializer).not.toHaveBeenCalled();
 });
