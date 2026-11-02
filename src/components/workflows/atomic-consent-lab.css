@@ -1,0 +1,130 @@
+.atomic-consent-lab {
+  color: #20352f;
+  line-height: 1.55;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.atomic-consent-lab header {
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.atomic-consent-lab header > div {
+  display: block;
+  min-width: 0;
+}
+.atomic-consent-lab h2,
+.atomic-consent-lab h3,
+.atomic-consent-lab h4 {
+  color: #20352f;
+  line-height: 1.25;
+}
+.atomic-consent-lab .acl-eyebrow {
+  color: #526159;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+.atomic-consent-lab .acl-badge {
+  background: #e8eee8;
+  border: 1px solid #cbd8ce;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  white-space: normal;
+  font-size: 0.8rem;
+}
+.atomic-consent-lab .acl-boundary {
+  background: #f5f5ef;
+  border-left: 3px solid var(--journey-primary, #00543e);
+  padding: 1rem;
+}
+.atomic-consent-lab .acl-controls,
+.atomic-consent-lab .acl-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.atomic-consent-lab label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: 600;
+  min-width: 0;
+}
+.atomic-consent-lab input,
+.atomic-consent-lab select,
+.atomic-consent-lab button {
+  min-height: 44px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.atomic-consent-lab .acl-check {
+  flex-direction: row;
+  align-items: center;
+  margin: 1rem 0;
+  font-weight: 400;
+}
+.atomic-consent-lab .acl-check input {
+  min-width: 24px;
+  width: 24px;
+  margin-right: 0.4rem;
+}
+.atomic-consent-lab button {
+  background: var(--journey-primary, #00543e);
+  color: white;
+  border: 1px solid transparent;
+  padding: 0.7rem 1rem;
+  white-space: normal;
+  text-align: left;
+}
+.atomic-consent-lab button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.atomic-consent-lab .acl-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.atomic-consent-lab .acl-card {
+  padding: 1.2rem;
+  border: 1px solid #d9e1da;
+  border-radius: 14px;
+  background: white;
+  min-width: 0;
+}
+.atomic-consent-lab dl > div {
+  margin-bottom: 0.75rem;
+}
+.atomic-consent-lab dt {
+  color: #526159;
+  font-size: 0.8rem;
+  text-transform: none;
+}
+.atomic-consent-lab dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.atomic-consent-lab :focus-visible {
+  outline: 3px solid var(--journey-accent, #dfb461);
+  outline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .atomic-consent-lab header {
+    display: block;
+  }
+  .atomic-consent-lab .acl-controls,
+  .atomic-consent-lab .acl-grid {
+    grid-template-columns: 1fr;
+  }
+  .atomic-consent-lab .acl-actions {
+    display: grid;
+  }
+  .atomic-consent-lab .acl-badge {
+    display: inline-block;
+  }
+}
