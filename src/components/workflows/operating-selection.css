@@ -1,0 +1,120 @@
+.operating-selection {
+  padding: clamp(1rem, 3vw, 1.75rem);
+  border: 1px solid var(--border, #d9dedb);
+  border-radius: 18px;
+  background: var(--surface, #fff);
+  color: var(--ink, #172c28);
+  font-size: 1rem;
+  line-height: 1.55;
+  min-width: 0;
+}
+.operating-selection * {
+  box-sizing: border-box;
+}
+.operating-selection h2 {
+  margin: 0.25rem 0 0.5rem;
+}
+.operating-selection h3,
+.operating-selection h4 {
+  margin: 0.2rem 0 0.6rem;
+}
+.operating-selection form {
+  display: flex;
+  gap: 1rem;
+  align-items: end;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+.operating-selection label {
+  display: flex;
+  flex: 1 1 260px;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+.operating-selection input {
+  font: inherit;
+  padding: 0.65rem;
+  border: 1px solid #9caea6;
+  border-radius: 8px;
+  min-height: 44px;
+  min-width: 0;
+  background: #fff;
+  color: inherit;
+}
+.operating-selection button {
+  font: inherit;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--company-color, #24534a);
+  border-radius: 8px;
+  background: var(--company-color, #24534a);
+  color: #fff;
+  cursor: pointer;
+  white-space: normal;
+}
+.operating-selection button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.operating-selection-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.operating-selection article {
+  padding: 1rem;
+  border: 1px solid var(--border, #d9dedb);
+  border-radius: 12px;
+  background: var(--warm, #f8f7f2);
+  min-width: 0;
+}
+.operating-selection dl {
+  display: grid;
+  gap: 0.2rem;
+}
+.operating-selection dt {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.operating-selection dd {
+  margin: 0 0 0.6rem;
+  overflow-wrap: anywhere;
+}
+.operating-selection-pages {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.operating-selection-boundary {
+  color: var(--muted, #52665f);
+  font-size: 0.9rem;
+}
+.operating-selection :focus-visible {
+  outline: 3px solid var(--company-color, #24534a);
+  outline-offset: 3px;
+}
+.operating-selection [role='alert'] {
+  padding: 0.65rem;
+  border-left: 4px solid #9b4426;
+  background: #fff3e9;
+  color: #71341f;
+}
+@media (max-width: 700px) {
+  .operating-selection-grid {
+    grid-template-columns: 1fr;
+  }
+  .operating-selection form,
+  .operating-selection-pages {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .operating-selection label {
+    flex: initial;
+  }
+  .operating-selection button {
+    width: 100%;
+  }
+}
