@@ -1,0 +1,180 @@
+{
+  "schema": "propel-cycle14-baseline-ci-v1",
+  "checkedAt": "2026-11-02T23:10:57.342Z",
+  "exact_head": "8079d2ba8ab8989f168693bd0fc7fa60d30fed1b",
+  "source": "GitHub connector exact commit workflow runs (PR-triggered first page)",
+  "workflow_runs": [
+    {
+      "id": 41541477204,
+      "name": "Synthetic rehearsal compatibility",
+      "status": "completed",
+      "conclusion": "success",
+      "run_number": 388,
+      "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541477204/jobs",
+      "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541477204/logs",
+      "workflow_id": 392146851
+    },
+    {
+      "id": 41541477261,
+      "name": "Isolated crew-day capacity",
+      "status": "completed",
+      "conclusion": "success",
+      "run_number": 192,
+      "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541477261/jobs",
+      "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541477261/logs",
+      "workflow_id": 404043308
+    },
+    {
+      "id": 41541477031,
+      "name": "Cycle 7 practical local usability",
+      "status": "completed",
+      "conclusion": "success",
+      "run_number": 75,
+      "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541477031/jobs",
+      "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541477031/logs",
+      "workflow_id": 404600874
+    },
+    {
+      "id": 41541476907,
+      "name": "Cycle 13 operating workflows and visual evidence",
+      "status": "in_progress",
+      "conclusion": null,
+      "run_number": 4,
+      "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476907/jobs",
+      "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476907/logs",
+      "workflow_id": 405078112
+    },
+    {
+      "id": 41541476957,
+      "name": "Passport timeline preview",
+      "status": "completed",
+      "conclusion": "success",
+      "run_number": 209,
+      "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476957/jobs",
+      "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476957/logs",
+      "workflow_id": 404050751
+    },
+    {
+      "id": 41541476823,
+      "name": "Proof of Work documentation preview",
+      "status": "completed",
+      "conclusion": "success",
+      "run_number": 207,
+      "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476823/jobs",
+      "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476823/logs",
+      "workflow_id": 404104362
+    },
+    {
+      "id": 41541476787,
+      "name": "Cycle 6 local workflow integration",
+      "status": "completed",
+      "conclusion": "success",
+      "run_number": 86,
+      "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476787/jobs",
+      "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476787/logs",
+      "workflow_id": 404543100
+    },
+    {
+      "id": 41541476819,
+      "name": "Foundation checks",
+      "status": "in_progress",
+      "conclusion": null,
+      "run_number": 496,
+      "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476819/jobs",
+      "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476819/logs",
+      "workflow_id": 385897042
+    },
+    {
+      "id": 41541476906,
+      "name": "Isolated technician day board",
+      "status": "completed",
+      "conclusion": "success",
+      "run_number": 190,
+      "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476906/jobs",
+      "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476906/logs",
+      "workflow_id": 404094067
+    },
+    {
+      "id": 41541476936,
+      "name": "Isolated field work orders",
+      "status": "completed",
+      "conclusion": "success",
+      "run_number": 196,
+      "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476936/jobs",
+      "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476936/logs",
+      "workflow_id": 403961558
+    },
+    {
+      "id": 41541476951,
+      "name": "Isolated field scheduling",
+      "status": "completed",
+      "conclusion": "success",
+      "run_number": 200,
+      "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476951/jobs",
+      "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476951/logs",
+      "workflow_id": 403911590
+    },
+    {
+      "id": 41541476919,
+      "name": "Cycle 8 connected operating reviews",
+      "status": "completed",
+      "conclusion": "success",
+      "run_number": 63,
+      "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476919/jobs",
+      "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476919/logs",
+      "workflow_id": 404685247
+    },
+    {
+      "id": 41541476882,
+      "name": "Cycle 12 exact workflow revision and verification",
+      "status": "in_progress",
+      "conclusion": null,
+      "run_number": 14,
+      "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476882/jobs",
+      "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476882/logs",
+      "workflow_id": 405018138
+    },
+    {
+      "id": 41541476792,
+      "name": "Isolated maintenance schedule handoff",
+      "status": "completed",
+      "conclusion": "success",
+      "run_number": 198,
+      "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476792/jobs",
+      "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476792/logs",
+      "workflow_id": 403937754
+    },
+    {
+      "id": 41541476802,
+      "name": "Cycle 9 multi-job operating center",
+      "status": "completed",
+      "conclusion": "success",
+      "run_number": 48,
+      "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476802/jobs",
+      "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476802/logs",
+      "workflow_id": 404752296
+    },
+    {
+      "id": 41541476883,
+      "name": "Cycle 10 everyday operating reviews",
+      "status": "completed",
+      "conclusion": "success",
+      "run_number": 30,
+      "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476883/jobs",
+      "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476883/logs",
+      "workflow_id": 404860371
+    },
+    {
+      "id": 41541476927,
+      "name": "Cycle 11 source-bound workflow laboratories",
+      "status": "completed",
+      "conclusion": "success",
+      "run_number": 22,
+      "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476927/jobs",
+      "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476927/logs",
+      "workflow_id": 404956637
+    }
+  ],
+  "manual_reruns": 0,
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}
