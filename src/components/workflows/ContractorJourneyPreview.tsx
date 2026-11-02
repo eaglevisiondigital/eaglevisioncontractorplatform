@@ -12,6 +12,9 @@ import { FinanceWorkflow } from './FinanceWorkflow';
 import { CustomerWorkflow } from './CustomerWorkflow';
 import { GrowthWorkflow } from './GrowthWorkflow';
 import { IntelligenceWorkflow } from './IntelligenceWorkflow';
+import { BookingScheduling } from './BookingScheduling';
+import { JobReview } from './JobReview';
+import { CustomerService } from './CustomerService';
 import {
   prepareIntelligenceWorkflow,
   inspectIntelligenceWorkflow,
@@ -257,6 +260,7 @@ export function ContractorJourneyPreview() {
         {
           '--journey-primary': company.primary_color,
           '--journey-accent': company.accent_color,
+          '--company-color': company.primary_color,
         } as CSSProperties
       }
       data-epoch={epoch}
@@ -290,7 +294,18 @@ export function ContractorJourneyPreview() {
                   }
                 }
                 generation.current++;
-                setCompanyId(e.target.value);
+                const nextCompany = e.target.value;
+                const retained = attempts.current.get(nextCompany);
+                setCompanyId(nextCompany);
+                setVisibleAttempt(
+                  retained
+                    ? {
+                        company: nextCompany,
+                        state: retained.state,
+                        result: retained.result,
+                      }
+                    : null,
+                );
                 invalidateIntelligence();
                 setIntelligenceBusy(false);
                 setConfirmed(false);
@@ -394,6 +409,7 @@ export function ContractorJourneyPreview() {
             {[
               'Sales',
               'Field',
+              'Booking',
               'Finance',
               'Customer',
               'Growth',
@@ -435,12 +451,24 @@ export function ContractorJourneyPreview() {
               onProofOfWork={proofHandoff}
             />
           </section>
+          <section id="journey-booking" className="journey-card">
+            <h2>Booking &amp; scheduling review</h2>
+            <BookingScheduling
+              repo={journey.property}
+              target={journey.target}
+              sourceVisitId={journey.scheduled_visit_id}
+              day={journey.day}
+              timezone={journey.timezone}
+              enabled
+            />
+          </section>
           <section id="journey-finance" className="journey-card">
             <h2>3 · Cost review & invoice preparation</h2>
             <button disabled={financeBusy} onClick={() => void reviewFinance()}>
               Review costs and invoice preparation
             </button>
             <FinanceWorkflow review={finance} enabled loading={financeBusy} />
+            <JobReview sources={journey} enabled showFinanceDetails={false} />
           </section>
           <section id="journey-customer" tabIndex={-1} className="journey-card">
             <h2>4 · Property history & completion documentation</h2>
@@ -449,6 +477,15 @@ export function ContractorJourneyPreview() {
               {journey.published_version}. Documentation does not verify
               physical completion.
             </p>
+            <CustomerService
+              model={journey.customerModel}
+              target={journey.target}
+              selection={{
+                report_id: journey.report_id,
+                published_version: journey.published_version,
+              }}
+              enabled
+            />
             <CustomerWorkflow
               model={journey.customerModel}
               target={journey.target}

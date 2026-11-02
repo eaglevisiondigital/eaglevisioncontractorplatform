@@ -1,0 +1,111 @@
+{
+  "schema": "propel-cycle7-delivery-v1",
+  "coordination_branch": "codex/program-cycle-seven",
+  "coordination_pr": null,
+  "parent_commit": "f89c2bd32d1f5c8a05a1f12805140235845c81fb",
+  "prior_review": "docs/program/CYCLE7_BASELINE_REVIEW.md",
+  "packages": [
+    {
+      "package": "Customer Service",
+      "owner": "/root/cycle7_customer_service",
+      "branch": "codex/cycle7-customer-service",
+      "parent_commit": "f89c2bd32d1f5c8a05a1f12805140235845c81fb",
+      "head_commit": "31ed4d58b858697459165f16d9657f38ee46e577",
+      "draft_pr": 46,
+      "focused_new_tests": 34,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE7_CUSTOMER_SERVICE.md",
+          "sha256": "3f9b1aa596f9829bbbb1efeabb3f532e89c9a50c662d0f0e8db7b0ae08dacf75"
+        },
+        {
+          "path": "src/components/workflows/CustomerService.tsx",
+          "sha256": "e5d7bfe55be9760775baf5aa8dd1e91e646d3a5cee679927079171a11cfc337f"
+        },
+        {
+          "path": "src/components/workflows/customer-service.css",
+          "sha256": "5cf77d89c71988f4ed369e85ace9e4d33ebf46d4b2b446471fd9b3255a0badf5"
+        },
+        {
+          "path": "src/lib/workflows/customer-service.ts",
+          "sha256": "c7f65d75eb0e594feb35cd8649fb9214e14252bef9d8c4bfb0030d96a8291c8a"
+        },
+        {
+          "path": "tests/cycle7-customer-service.test.ts",
+          "sha256": "4fbc0c87e24158a5934a75ba151b8dbcfba215c5073320f8625b3b292edbc66b"
+        }
+      ]
+    },
+    {
+      "package": "Time, Materials & Invoice Review",
+      "owner": "/root/cycle5_profit_guard",
+      "branch": "codex/cycle7-time-materials-invoice",
+      "parent_commit": "f89c2bd32d1f5c8a05a1f12805140235845c81fb",
+      "head_commit": "63de3caef6bcf19dec76f1797ead4f0be72bb2a7",
+      "draft_pr": 47,
+      "focused_new_tests": 41,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE7_JOB_REVIEW.md",
+          "sha256": "6e29df5094d5c11f5a8362ad136c7fb66e49c260b24bae7a598f911cd45e56e4"
+        },
+        {
+          "path": "src/components/workflows/JobReview.tsx",
+          "sha256": "8ebd0fdba826dcb62ed33f39dd98015ac398f17ed144a364939cdc889cf5f60a"
+        },
+        {
+          "path": "src/components/workflows/job-review.css",
+          "sha256": "e9608c1e4ec9959361af95ba62de9c8e6997a7da6056d08ac5244f74ecc7dc5a"
+        },
+        {
+          "path": "src/lib/workflows/job-review.ts",
+          "sha256": "f6ca9b3e14cc2339c2ccbff8772a847a7f23fc1496a37a6bda6484f8ea35f502"
+        },
+        {
+          "path": "tests/cycle7-job-review.test.ts",
+          "sha256": "b08696b2e73ab7139c17265dc66e033c132644ca374cce124ac525891247b5ec"
+        }
+      ]
+    },
+    {
+      "package": "Booking & Scheduling",
+      "owner": "/root/cycle5_operations",
+      "branch": "codex/cycle7-booking-scheduling",
+      "parent_commit": "f89c2bd32d1f5c8a05a1f12805140235845c81fb",
+      "head_commit": "08acaa571a8a92c0091d7dad1350c0988d2b5551",
+      "draft_pr": 48,
+      "focused_new_tests": 57,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE7_BOOKING_SCHEDULING.md",
+          "sha256": "0a74f8d00fcb1720a077d2cc3ea45608f8e6370bb305e0d0e3eb574ab4764eee"
+        },
+        {
+          "path": "src/components/workflows/BookingScheduling.tsx",
+          "sha256": "e77eae0cb09f74e2f5a0b3b9f0b174f6c26c20cf541dc3c0eb522a3a5df13189"
+        },
+        {
+          "path": "src/components/workflows/booking-scheduling.css",
+          "sha256": "a5f37c36ed00ac1ddd7ee612dc19399d7ac4fb2a37e2f969674158c91fa6e098"
+        },
+        {
+          "path": "src/lib/workflows/booking-scheduling.ts",
+          "sha256": "fd0e70c81d6404b3d41b258bb85384c69554d2f1332ef2cd092176c210593e73"
+        },
+        {
+          "path": "tests/cycle7-booking-scheduling.test.ts",
+          "sha256": "9ce09a7198221f22ffcb8640c6ff8501ee5378cf8cd6eab0cf3ec5fdad5160ff"
+        }
+      ]
+    }
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "limits": [
+    "Explicit local source composition; no PR merge or operational promotion.",
+    "Date/time/material proposals are unsaved and excluded from actual records.",
+    "Customer service is safe evidence navigation; no request, message or financial action."
+  ]
+}

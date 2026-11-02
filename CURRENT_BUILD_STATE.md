@@ -1,5 +1,31 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: cycle seven · practical contractor review forms · November 2
+
+Continued from actual Cycle6 PRs38–45 without recreating prior packages. Independent
+combined baseline review covers all eight workstreams and closes the retained-company
+presentation mismatch. PR38 Foundation cancellations were confirmed15-minute timeouts;
+finite25-minute budget and correct DEV/production browser routing retain all297 cases.
+Both exact f89c2bd Foundation runs now PASS. PR42's exact-head successful push run was
+preserved; no successful check was manually restarted.
+
+Three isolated author drafts deliver booking/rescheduling conflict forms(PR48),
+unsaved time/material/canonical invoice-requirement review(PR47) and customer-safe
+service evidence search/navigation(PR46). Main composes their exact15 owned files
+on codex/program-cycle-seven with existing journey engines/IDs, shared design tokens
+and default-OFF/DEV/HTTP-loopback admission. No duplicate store/schema/engine/writer.
+215 distinct focused application cases and12 all-brand responsive browser cases PASS,
+including8 new independent integration probes, keyboard/source focus, axe, header
+geometry and privacy. Strict types/lint/build/format and existing integrity checks
+are recorded in [Cycle7 validation](docs/program/CYCLE7_VALIDATION.md). Exact commits,
+PRs and current CI belong to the [master register](docs/PROGRAM_DELIVERY_STATUS.md).
+
+Proposals do not move visits, post time/costs, create invoices/debt or send requests.
+Missing workforce/cost/history coverage remains UNKNOWN. Approved customer/back-office
+layouts,128 protected public hashes,5 design locks/13bindings, all13/customer14/4B/P1/
+four artifacts/approvals/2A–2F/proposedbilling/Netlify/executor/recovery/NMI/Auth/financial/
+provider/hosted/deploy/merge gates remain intact. Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Latest: cycle six · connected local contractor journey · November 2
 
 Owner authorized explicit local integration of the reviewed Cycle5 sources (14 local

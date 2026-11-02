@@ -1,5 +1,65 @@
 # Product program delivery status
 
+## Cycle seven · practical contractor usability · November 2
+
+Main branch `codex/program-cycle-seven` is stacked on exact PR38
+`f89c2bd32d1f5c8a05a1f12805140235845c81fb`. All prior drafts remain unmerged.
+[Source/owner/hash index](program/CYCLE7_DELIVERY_INDEX.json),
+[baseline eight-workstream review](program/CYCLE7_BASELINE_REVIEW.md),
+[new independent integration review](program/CYCLE7_INTEGRATION_REVIEW.md) and
+[working preview/checks/screenshots](program/CYCLE7_VALIDATION.md) retain the evidence.
+
+| Actual completed author       | Branch                              | Draft PR                                                                          | Exact head                                 | New cases |
+| ----------------------------- | ----------------------------------- | --------------------------------------------------------------------------------- | ------------------------------------------ | --------- |
+| /root/cycle7_customer_service | codex/cycle7-customer-service       | [46](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/46) | `31ed4d58b858697459165f16d9657f38ee46e577` | 34 PASS   |
+| /root/cycle5_profit_guard     | codex/cycle7-time-materials-invoice | [47](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/47) | `63de3caef6bcf19dec76f1797ead4f0be72bb2a7` | 41 PASS   |
+| /root/cycle5_operations       | codex/cycle7-booking-scheduling     | [48](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/48) | `08acaa571a8a92c0091d7dad1350c0988d2b5551` | 57 PASS   |
+
+Main/root owns the combined loopback mount, shared design/source contracts, checker,
+browser proof and register. Independent `/root/cycle6_integration_review` owns the
+baseline and8 new combined probes, in isolated review worktrees. Three worker slots
+were used in bounded waves; authors and reviewer have completed their turns, and
+Main is finishing publication/CI reporting. No persistent background agent is implied.
+
+Working additions: exact original-visit booking/rescheduling conflict review;
+editable unsaved time/material proposals with canonical calculations and unchanged
+issued customer totals; invoice/export requirements and immutable staff reference
+JSON; customer-safe service-report search with combined filters, accurate available
+counts, exact version navigation and issued job scope. All use the same actual
+Operations/Phase3/Property/customer projections. Existing Sales, Field, Finance,
+Passport, maintenance and Copilot remain available; no duplicate business system.
+
+215 focused application cases PASS across8 suites, including132 new author cases,
+8 new independent/17 retained independent probes,1 exact provenance case and57
+source-inventory cases.12 actual all-brand desktop/tablet/mobile browser cases PASS
+with keyboard/focus, combined filtering, empty/error, context reset, zero axe issues,
+no overflow/external requests, header geometry and correct contractor colors.
+Three production-build OFF cases also PASS.27 screenshot files are local/ignored
+and retained by bounded CI artifacts. [Exact new-draft CI snapshot](program/CYCLE7_CI_SNAPSHOT.json)
+records PR46/48 and parent38 all-green at their exact heads; PR47 final63de3ca
+Foundation is in progress while its other checks pass. Final coordinator results
+are reported separately against its pushed head.
+Types/lint/format/build and protected integrity preserve128 public paths,5 artwork/CSS
+locks and13bindings; all15 new owned author paths match their final recorded hashes.
+
+CI investigation is complete: original PR38/42 cancellations were explicit15m job
+timeouts. PR42 exact c0f5276 push Foundation41448053694 succeeded and was not rerun.
+PR38 now passes Foundation41456878628(PR)/41456870604(push), dedicated Cycle6 and
+compatibility at exactf89c2bd. The finite25m budget and correct environment routing
+preserve all297 browser tests. Current new-draft CI is recorded separately; no
+previous SHA or pending run is called a current success. No successful check was
+manually restarted.
+
+Remaining operational dependencies: maintained independent-device recovery, original
+approved P1-on13 prerequisites, separately authorized customer14/exact4B+broker/Auth
+custody, NMI/legal/tax/merchant/token/settlement evidence, Netlify independent protection
+and exact execution approval, genuine messaging/financial authority and explicit
+release authorization. Proposals remain unsaved, availability/coverage UNKNOWN,
+documentation not physical-completion proof. No migration/store/schema/hosted write,
+customer message, invoice/debt/payment, deployment or merge. Release1.0 NOT READY /
+NOT AUTHORIZED. Next bounded work is a source-bound weekly crew review board using
+existing conflict/cost readers, with all actual scheduling/posting gates intact.
+
 ## Cycle six · cohesive local contractor workflows · November 2
 
 Main integrates explicitly reviewed source candidates on `codex/program-cycle-six`,
