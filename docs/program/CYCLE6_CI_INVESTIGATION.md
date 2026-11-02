@@ -24,5 +24,16 @@ Normal automatic CI will validate the new commit; restarting the old cancelled j
 would reuse its inadequate 15-minute configuration. No successful check was rerun
 manually. PR39–41 and PR43–45 have exact-head Foundation success.
 
+Follow-up harness inspection identified a second CI integration defect: the default
+production browser config discovered the15 development-only journey cases against
+the production server, where the journey must stay OFF. The corrected config assigns
+those same15 cases to an explicit development-loopback server and three equivalent
+viewport projects. All other cases, including production-OFF assertions, retain the
+production server. No case or assertion is removed: the original297 cases remain.
+Dedicated Cycle6 CI already used the correct environment. The default Foundation
+harness now preserves that distinction instead of treating an OFF route as a failed
+development journey. Bounded local production-OFF and development checks validate
+the two environments before automatic CI.
+
 CI proof does not authorize deployment, protected migrations, genuine Auth, messages,
 financial execution or release. Release 1.0 remains NOT READY / NOT AUTHORIZED.
