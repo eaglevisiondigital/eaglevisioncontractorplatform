@@ -134,6 +134,16 @@ export interface SyntheticRevisionIssuance {
   reviewer: string;
   issued_at: string;
 }
+/** Local-only review selector; not an operational principal/capability. */
+export interface SyntheticPrototypeReadTarget {
+  organization_id: string;
+  actor_id: string;
+  customer_id: string;
+  location_id: string;
+  estimate_id: string;
+  version_id: string;
+  job_id: string | null;
+}
 export class Phase3Repository {
   private syntheticIssuances = new Map<
     string,
@@ -456,6 +466,117 @@ export class Phase3Repository {
         (j) => j.id === id && j.organization_id === org,
       ) ?? null,
     );
+  }
+  /** One synchronous snapshot over the existing in-memory source state only.
+   * No connected branch, write, new store, credential or operational authority.
+   */
+  readSyntheticPrototypeSources(target: SyntheticPrototypeReadTarget) {
+    if (this.sample !== true)
+      throw Error('Local synthetic prototype sources only');
+    const keys = [
+      'organization_id',
+      'actor_id',
+      'customer_id',
+      'location_id',
+      'estimate_id',
+      'version_id',
+      'job_id',
+    ];
+    if (
+      !target ||
+      typeof target !== 'object' ||
+      Array.isArray(target) ||
+      ![null, Object.prototype].includes(Object.getPrototypeOf(target))
+    )
+      throw Error('Exact own primitive prototype target required');
+    const descriptors = Object.getOwnPropertyDescriptors(target);
+    if (
+      Reflect.ownKeys(target).length !== keys.length ||
+      Reflect.ownKeys(target).some(
+        (key) =>
+          typeof key !== 'string' ||
+          !keys.includes(key) ||
+          !Object.hasOwn(descriptors[key], 'value'),
+      )
+    )
+      throw Error('Exact own primitive prototype target required');
+    const t = Object.fromEntries(
+      keys.map((key) => [key, descriptors[key].value]),
+    ) as unknown as SyntheticPrototypeReadTarget;
+    if (
+      keys.some((key) =>
+        key === 'job_id' && t.job_id === null
+          ? false
+          : typeof t[key as keyof SyntheticPrototypeReadTarget] !== 'string' ||
+            !(t[key as keyof SyntheticPrototypeReadTarget] as string).length ||
+            (t[key as keyof SyntheticPrototypeReadTarget] as string).length >
+              200,
+      )
+    )
+      throw Error('Exact bounded prototype target required');
+    const members = this.operations
+      .syntheticMemberships(t.organization_id)
+      .filter((m) => m.user_id === t.actor_id);
+    if (
+      members.length !== 1 ||
+      members[0].active !== true ||
+      !['owner', 'admin'].includes(members[0].role)
+    )
+      throw Error('Current synthetic owner/admin required');
+    this.operations.syntheticProperty(
+      t.organization_id,
+      t.customer_id,
+      t.location_id,
+    );
+    const s = this.state(t.organization_id);
+    const estimates = s.estimates.filter(
+      (b) =>
+        b.estimate.id === t.estimate_id &&
+        b.estimate.organization_id === t.organization_id,
+    );
+    const versions = s.history.filter(
+      (v) =>
+        v.id === t.version_id &&
+        v.estimate_id === t.estimate_id &&
+        v.organization_id === t.organization_id,
+    );
+    if (
+      estimates.length !== 1 ||
+      versions.length !== 1 ||
+      estimates[0].estimate.customer_id !== t.customer_id ||
+      versions[0].payload.customer_id !== t.customer_id ||
+      versions[0].payload.location_id !== t.location_id
+    )
+      throw Error(
+        'Exact prototype estimate/customer/property source unavailable',
+      );
+    const jobs =
+      t.job_id === null
+        ? []
+        : s.jobs.filter(
+            (j) => j.id === t.job_id && j.organization_id === t.organization_id,
+          );
+    if (
+      t.job_id !== null &&
+      (jobs.length !== 1 ||
+        jobs[0].baseline.issued_version_id !== t.version_id ||
+        versions[0].status !== 'issued')
+    )
+      throw Error('Exact immutable issued job association unavailable');
+    const entries = s.workforce.entries.filter(
+      (e) => t.job_id !== null && e.job_id === t.job_id,
+    );
+    const ids = new Set(entries.map((e) => e.id));
+    return clone({
+      bundle: { estimate: estimates[0].estimate, version: versions[0] },
+      catalog: s.catalog,
+      job: jobs[0] ?? null,
+      workforce: {
+        workers: s.workforce.workers,
+        entries,
+        reviews: s.workforce.reviews.filter((r) => ids.has(r.entry_id)),
+      },
+    });
   }
   async createSyntheticRepair(
     company: CompanyProfile,

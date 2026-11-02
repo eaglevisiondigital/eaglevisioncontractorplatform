@@ -1320,3 +1320,13 @@ Prepared BFF nonce/rate/CSRF policy is not a deployed authentication service.
 Execute unchanged P1 while history remains13;customer14 and P2 IDs follow actual
 P1 evidence under separate exact approvals. Do not change approved P1 or require
 duplicate fixture approval. No hosted action occurs in release preparation.
+
+## Cycle-five source composition
+
+Use one synchronous sample-only read of existing Phase3/CRM state for expansion
+prototypes rather than asynchronous independently captured business sources. Public
+hashing precedes a final synchronous current-source/access check; exact retained
+objects reconcile read-only. No extra business store or authority. Missing historical
+property snapshots remain UNKNOWN. Internal job aggregates never enter customer-safe
+packs. Every expansion has disjoint ownership and separate draft review; successful
+local checks do not promote it into the approved interfaces or release lane.
