@@ -1,0 +1,112 @@
+.job-review {
+  min-width: 0;
+  color: #20352f;
+}
+.job-review p,
+.job-review small {
+  line-height: 1.55;
+}
+.job-review .job-review-eyebrow {
+  color: var(--company-color, #00543e);
+  font-weight: 700;
+}
+.job-review .job-review-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.job-review .job-review-card {
+  min-width: 0;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid #d9e1da;
+  border-left: 4px solid var(--company-color, #00543e);
+  border-radius: 10px;
+  background: #f5f5ef;
+}
+.job-review fieldset {
+  margin-inline: 0;
+}
+.job-review legend,
+.job-review label {
+  font-weight: 650;
+}
+.job-review label {
+  display: block;
+  margin-block: 0.65rem 0.35rem;
+}
+.job-review input:not([type='checkbox']),
+.job-review select {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  min-height: 44px;
+  padding: 0.6rem;
+  border: 1px solid #82958a;
+  border-radius: 6px;
+  background: white;
+  color: #20352f;
+  font: inherit;
+}
+.job-review .job-review-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  min-height: 44px;
+  line-height: 1.5;
+}
+.job-review input[type='checkbox'] {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  margin-top: 0.1rem;
+  accent-color: var(--company-color, #00543e);
+}
+.job-review button {
+  min-height: 44px;
+  white-space: normal;
+}
+.job-review :focus-visible {
+  outline: 3px solid var(--company-color, #00543e);
+  outline-offset: 4px;
+}
+.job-review dd,
+.job-review code,
+.job-review p,
+.job-review small {
+  overflow-wrap: anywhere;
+}
+.job-review dt {
+  color: #3e594f;
+}
+.job-review dd {
+  margin: 0.25rem 0 1rem;
+  font-weight: 650;
+}
+.job-review summary {
+  display: list-item;
+  padding-block: 0.6rem;
+  min-height: 44px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.job-review pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-height: 24rem;
+  overflow: auto;
+  background: #e9efe8;
+  padding: 1rem;
+  border-radius: 6px;
+}
+.job-review small {
+  display: block;
+  color: #3e594f;
+}
+@media (max-width: 800px) {
+  .job-review .job-review-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
