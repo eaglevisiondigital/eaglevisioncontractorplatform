@@ -6,6 +6,7 @@ import {
   costCategories,
   jobFinancials,
   type Job,
+  type CostCategory,
 } from './financials';
 
 export interface MarginScope {
@@ -25,6 +26,67 @@ export interface LaborCoverage {
   unresolved: number;
   entryIds: string[];
   lockedPeriodIds: string[];
+}
+export interface MarginReviewInput {
+  minimumMarginBps: number;
+  confirmed: true;
+}
+/** Exact decimal percent input; no float rounding, coercion or persisted policy. */
+export function parseLocalMarginPercent(text: string): number {
+  if (typeof text !== 'string')
+    throw new Error(
+      'Enter a percentage from 0 to 100 with up to two decimal places',
+    );
+  const match = /^(0|[1-9]\d?|100)(?:\.(\d{1,2}))?$/.exec(text.trim());
+  if (!match)
+    throw new Error(
+      'Enter a percentage from 0 to 100 with up to two decimal places',
+    );
+  const bps = Number(match[1]) * 100 + Number((match[2] ?? '').padEnd(2, '0'));
+  if (bps > 10000)
+    throw new Error(
+      'Enter a percentage from 0 to 100 with up to two decimal places',
+    );
+  return bps;
+}
+/** Display an admitted integer ratio exactly, including large or negative ratios. */
+export function formatMarginBps(value: number): string {
+  if (!Number.isSafeInteger(value)) throw new Error('Margin ratio unavailable');
+  const bps = BigInt(value),
+    absolute = bps < 0n ? -bps : bps;
+  return `${bps < 0n ? '-' : ''}${absolute / 100n}.${String(absolute % 100n).padStart(2, '0')}%`;
+}
+function admitReview(
+  input: MarginReviewInput | null | undefined,
+): MarginReviewInput | null {
+  if (input == null) return null;
+  if (
+    Object.keys(input).sort().join(',') !== 'confirmed,minimumMarginBps' ||
+    input.confirmed !== true ||
+    !Number.isSafeInteger(input.minimumMarginBps) ||
+    input.minimumMarginBps < 0 ||
+    input.minimumMarginBps > 10000
+  )
+    throw new Error('Explicit valid local margin review input required');
+  return { minimumMarginBps: input.minimumMarginBps, confirmed: true };
+}
+interface WarningReview {
+  availability: 'AVAILABLE' | 'UNAVAILABLE';
+  sourceThresholds: {
+    categoryOverrunBps: number;
+    marginErosionBps: number;
+  } | null;
+  aboveBudgetCategories: {
+    category: CostCategory;
+    thresholdExceeded: boolean;
+  }[];
+  negativeContribution: boolean | null;
+  erosionThresholdExceeded: boolean | null;
+  minimumMargin: {
+    basisPoints: number;
+    source: 'local-confirmed-review-input';
+    assessment: 'BELOW_INPUT' | 'AT_OR_ABOVE_INPUT' | 'UNAVAILABLE';
+  } | null;
 }
 const fail = () =>
   new Error('Exact local job-cost source evidence unavailable');
@@ -82,6 +144,7 @@ export function projectLocalJobMargin(
     job: Job | null;
     issued: EstimateVersion | null;
     labor: LaborCoverage;
+    review?: MarginReviewInput | null;
   },
   options: { enabled: boolean } = { enabled: false },
 ) {
@@ -89,6 +152,7 @@ export function projectLocalJobMargin(
     throw new Error('Local margin analysis is disabled');
   const raw = detached(input);
   const { job, issued, labor } = raw;
+  const review = admitReview(raw.review);
   const scope: MarginScope = {
     organizationId: raw.scope.organizationId,
     jobId: raw.scope.jobId,
@@ -148,6 +212,20 @@ export function projectLocalJobMargin(
       categories: [],
       totals: null,
       coverage: null,
+      warningReview: {
+        availability: 'UNAVAILABLE',
+        sourceThresholds: null,
+        aboveBudgetCategories: [],
+        negativeContribution: null,
+        erosionThresholdExceeded: null,
+        minimumMargin: review
+          ? {
+              basisPoints: review.minimumMarginBps,
+              source: 'local-confirmed-review-input',
+              assessment: 'UNAVAILABLE',
+            }
+          : null,
+      } satisfies WarningReview,
     });
   if (
     job.organization_id !== scope.organizationId ||
@@ -281,6 +359,14 @@ export function projectLocalJobMargin(
       ? ['Forecast or unpaid commitments remain']
       : []),
   ];
+  const marginAvailable =
+    financials.revised_revenue_minor > 0 &&
+    Number.isSafeInteger(financials.projected_margin_bps);
+  // The admitted immutable estimate calculation already bounds the original
+  // ratio. A zero original denominator still cannot support erosion comparison.
+  const originalRatioSupported =
+    job.baseline.revenue_minor > 0 &&
+    Number.isSafeInteger(issued.calculation.profit_margin_bps);
   return immutable({
     ...base,
     source: {
@@ -303,6 +389,32 @@ export function projectLocalJobMargin(
       unresolvedTime: labor.unresolved,
       managementCostsComplete: job.projection.costs_complete,
     },
+    warningReview: {
+      availability: 'AVAILABLE',
+      sourceThresholds: {
+        categoryOverrunBps: job.projection.overrun_bps,
+        marginErosionBps: job.projection.erosion_bps,
+      },
+      aboveBudgetCategories: financials.categories
+        .filter((c) => c.projected_minor > c.budget_minor)
+        .map((c) => ({ category: c.category, thresholdExceeded: c.overrun })),
+      negativeContribution: financials.projected_profit_minor < 0,
+      erosionThresholdExceeded:
+        marginAvailable && originalRatioSupported
+          ? financials.profit_erosion
+          : null,
+      minimumMargin: review
+        ? {
+            basisPoints: review.minimumMarginBps,
+            source: 'local-confirmed-review-input',
+            assessment: !marginAvailable
+              ? 'UNAVAILABLE'
+              : financials.projected_margin_bps < review.minimumMarginBps
+                ? 'BELOW_INPUT'
+                : 'AT_OR_ABOVE_INPUT',
+          }
+        : null,
+    } satisfies WarningReview,
     categories: financials.categories.map((c) => ({
       category: c.category,
       originalMinor: c.original_minor,
@@ -318,12 +430,13 @@ export function projectLocalJobMargin(
       revenueMinor: financials.revised_revenue_minor,
       projectedCostMinor: financials.projected_cost_minor,
       projectedContributionMinor: financials.projected_profit_minor,
-      projectedMarginBps:
-        financials.revised_revenue_minor &&
-        Number.isSafeInteger(financials.projected_margin_bps)
-          ? financials.projected_margin_bps
+      projectedMarginBps: marginAvailable
+        ? financials.projected_margin_bps
+        : null,
+      profitErosion:
+        marginAvailable && originalRatioSupported
+          ? financials.profit_erosion
           : null,
-      profitErosion: financials.profit_erosion,
     },
   });
 }
