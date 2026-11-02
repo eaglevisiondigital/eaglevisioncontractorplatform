@@ -19,7 +19,10 @@ import {
   type DailyActionCenterInput,
   type DailyActionCenterFilter,
 } from '../src/lib/workflows/daily-action-center';
-import { DailyActionCenter } from '../src/components/workflows/DailyActionCenter';
+import {
+  DailyActionCenter,
+  DailyActionSourceButton,
+} from '../src/components/workflows/DailyActionCenter';
 afterEach(() => vi.restoreAllMocks());
 const clear: DailyActionCenterFilter = {
   area: 'all',
@@ -66,6 +69,21 @@ function digestChange(
   return () => fired;
 }
 describe('Cycle 11 deterministic source-linked daily action desk', () => {
+  it('source-button accessible name contains the exact visible action phrase', () => {
+    const markup = renderToStaticMarkup(
+      createElement(DailyActionSourceButton, {
+        kind: 'report',
+        job: 'Exact <published> job',
+        disabled: false,
+        onOpen: () => {},
+      }),
+    );
+    expect(markup).toContain('>Open exact source</button>');
+    expect(/aria-label="([^"]+)"/.exec(markup)?.[1]).toBe(
+      'Open exact source: report for Exact &lt;published&gt; job',
+    );
+    expect(markup).not.toContain('<published>');
+  });
   it.each([0, 1, 2])(
     'company %i keeps exact facts, criteria and recommendations separate without side effects',
     async (index) => {

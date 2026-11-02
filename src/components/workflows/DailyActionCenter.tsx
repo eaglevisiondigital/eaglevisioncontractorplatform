@@ -18,6 +18,30 @@ import {
 } from '../../lib/workflows/daily-action-center';
 import './daily-action-center.css';
 
+/** Preserve the visible phrase in the accessible name for voice navigation. */
+export function DailyActionSourceButton({
+  kind,
+  job,
+  disabled,
+  onOpen,
+}: {
+  kind: string;
+  job: string;
+  disabled: boolean;
+  onOpen: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      disabled={disabled}
+      onClick={onOpen}
+      aria-label={`Open exact source: ${kind} for ${job}`}
+    >
+      Open exact source
+    </button>
+  );
+}
+
 export function DailyActionCenter({
   sources,
   enabled = false,
@@ -549,14 +573,12 @@ function ActionForm({
                     ? ''
                     : ` · published version ${c.source.version}`}
                 </p>
-                <button
-                  type="button"
+                <DailyActionSourceButton
+                  kind={c.source.kind}
+                  job={c.context.job}
                   disabled={busy}
-                  onClick={() => void open(c.key)}
-                  aria-label={`Open exact ${c.source.kind} source for ${c.context.job}`}
-                >
-                  Open exact source
-                </button>
+                  onOpen={() => void open(c.key)}
+                />
               </li>
             ))}
           </ol>
