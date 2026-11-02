@@ -1,0 +1,240 @@
+{
+  "schema": "propel-cycle10-delivery-v1",
+  "coordination_branch": "codex/program-cycle-ten",
+  "coordination_draft_pr": 67,
+  "parent_commit": "cc034258a9d9cd11599080b6d4169bc3ca7cffd7",
+  "baseline_ci": "docs/program/CYCLE10_BASELINE_CI.json",
+  "independent_review_commit": "a8f0951598c734892ea24ceaa1524098c9e7498e",
+  "independent_files": [
+    {
+      "path": "tests/cycle10-integration.test.ts",
+      "sha256": "7af150c82b39e342d8f0126eaaa143115266a2f94751df5aa353fcf41f5fb46f"
+    },
+    {
+      "path": "docs/program/CYCLE10_INTEGRATION_REVIEW.md",
+      "sha256": "3eb62bb660a05bc39bc8715e2c105c02ff6811b0cd1f53a7dfb53dafdd2609ad"
+    }
+  ],
+  "packages": [
+    {
+      "module": "crew-plan-review",
+      "component": "CrewPlanReview",
+      "doc": "CYCLE10_CREW_PLAN_REVIEW",
+      "owner": "/root/cycle10_field_growth",
+      "branch": "codex/cycle10-crew-plan",
+      "parent_commit": "cc034258a9d9cd11599080b6d4169bc3ca7cffd7",
+      "head_commit": "dae605fb2e30b7fdbf1f08222549aa9a8aa5b2ab",
+      "draft_pr": 66,
+      "focused_new_tests": 40,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/crew-plan-review.ts",
+          "sha256": "ca911e5fe3579320da8c315113d267ba7dfd1782b9cbe445e380b5aad559650c"
+        },
+        {
+          "path": "src/components/workflows/CrewPlanReview.tsx",
+          "sha256": "fb9cfc196841d5bac8d95349fcc2fcf4d9684f8643b7190f2aa4b2f3adb3d80c"
+        },
+        {
+          "path": "src/components/workflows/crew-plan-review.css",
+          "sha256": "b86db5c7d65561f1b525515047f62750579a1631b05f16841059f45571ab99d0"
+        },
+        {
+          "path": "tests/cycle10-crew-plan-review.test.ts",
+          "sha256": "398289b68e15d6cb45f0f1bab8f82d4106df88fba97fa3bb796db68bf4d68c4d"
+        },
+        {
+          "path": "docs/program/CYCLE10_CREW_PLAN_REVIEW.md",
+          "sha256": "c8bbc0143921807ad044654bf55a1b4bc2415e86e398dc4ccb9de3a41ae0ee5c"
+        }
+      ]
+    },
+    {
+      "module": "financial-exceptions",
+      "component": "FinancialExceptions",
+      "doc": "CYCLE10_FINANCIAL_EXCEPTIONS",
+      "owner": "/root/cycle5_profit_guard",
+      "branch": "codex/cycle10-financial-exceptions",
+      "parent_commit": "cc034258a9d9cd11599080b6d4169bc3ca7cffd7",
+      "head_commit": "45becf6a524a03c92ddb0d730a3d2c1eadb076c9",
+      "draft_pr": 68,
+      "focused_new_tests": 31,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/financial-exceptions.ts",
+          "sha256": "ff1f4afce1823f47aa6834f406d74214728c73305cd6fbb82a8522e5153989f8"
+        },
+        {
+          "path": "src/components/workflows/FinancialExceptions.tsx",
+          "sha256": "6478fb47268d39cd94d85dc1b7f957ac57e8e9f712474818f0968ae6d27e4cc5"
+        },
+        {
+          "path": "src/components/workflows/financial-exceptions.css",
+          "sha256": "5bc260348ec06490788281d5972e816f07aa7319d62eae9bd9b0abf9a3c8b3f4"
+        },
+        {
+          "path": "tests/cycle10-financial-exceptions.test.ts",
+          "sha256": "531a75280935f04794a54be2dd9724b66fea9295c35e981d2d5f235b12ed7353"
+        },
+        {
+          "path": "docs/program/CYCLE10_FINANCIAL_EXCEPTIONS.md",
+          "sha256": "8c6b23c983322a7a9b7253759497b306a3d45eb3a8a4e0c4de224e1787299400"
+        }
+      ]
+    },
+    {
+      "module": "service-desk",
+      "component": "ServiceDesk",
+      "doc": "CYCLE10_SERVICE_DESK",
+      "owner": "/root/cycle8_sales_customer",
+      "branch": "codex/cycle10-service-desk",
+      "parent_commit": "cc034258a9d9cd11599080b6d4169bc3ca7cffd7",
+      "head_commit": "e5e097f605fd7340424cc17d69d3819ae7e8fa87",
+      "draft_pr": 69,
+      "focused_new_tests": 31,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/service-desk.ts",
+          "sha256": "fc8582495db529d17411b7b91b13043b5e0dad1ebdb4e513de68e918e8f9df79"
+        },
+        {
+          "path": "src/components/workflows/ServiceDesk.tsx",
+          "sha256": "48893f18392602a95d1af489751d3fbab34eed8040973a80bc544a83ca557dcb"
+        },
+        {
+          "path": "src/components/workflows/service-desk.css",
+          "sha256": "dbe893364c7999241436f075c0f8e4379a3af11ab6d7455575910a1d81e64603"
+        },
+        {
+          "path": "tests/cycle10-service-desk.test.ts",
+          "sha256": "8af70176000ca0dbc5238f14dcbc2461b02e7ef51ad2799347351e75d39e3c22"
+        },
+        {
+          "path": "docs/program/CYCLE10_SERVICE_DESK.md",
+          "sha256": "3f927cbaa87bbff3ddd800038a5b964f7caf271d8f956465cf72ce49f84805a6"
+        }
+      ]
+    },
+    {
+      "module": "follow-up-admission",
+      "component": "FollowUpAdmission",
+      "doc": "CYCLE10_FOLLOW_UP_ADMISSION",
+      "owner": "/root/cycle10_field_growth",
+      "branch": "codex/cycle10-follow-up-admission",
+      "parent_commit": "cc034258a9d9cd11599080b6d4169bc3ca7cffd7",
+      "head_commit": "0ac078ecef53cd524be20096087ed1f5d6824c73",
+      "draft_pr": 70,
+      "focused_new_tests": 40,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/follow-up-admission.ts",
+          "sha256": "6251c75ba24727cbd770f840c6fc3c6d88fa6fa068aa8388e44fac24f696c496"
+        },
+        {
+          "path": "src/components/workflows/FollowUpAdmission.tsx",
+          "sha256": "dfe88bfc23ee1fbf52ee4589007f973227c3feca4e5021e4a30cff25c1761d8a"
+        },
+        {
+          "path": "src/components/workflows/follow-up-admission.css",
+          "sha256": "d009a092219c551604414caaab7d7d91b015a9af19aa7a81b50b1b647424fa46"
+        },
+        {
+          "path": "tests/cycle10-follow-up-admission.test.ts",
+          "sha256": "2f95f5c4fcb91095b331d1d2ce10eddde3ccbf648b45dfc1f65a5b9cd5b95a9b"
+        },
+        {
+          "path": "docs/program/CYCLE10_FOLLOW_UP_ADMISSION.md",
+          "sha256": "3111ae60fe90d2f2b01b7ab25ba806a7df704fcdbe46aa745b81fa0e4dda45be"
+        }
+      ]
+    },
+    {
+      "module": "priority-explanations",
+      "component": "PriorityExplanations",
+      "doc": "CYCLE10_PRIORITY_EXPLANATIONS",
+      "owner": "/root/cycle5_profit_guard",
+      "branch": "codex/cycle10-priority-explanations",
+      "parent_commit": "cc034258a9d9cd11599080b6d4169bc3ca7cffd7",
+      "head_commit": "53eec89532b3282b30c0a2d9b63255257d3533ab",
+      "draft_pr": 71,
+      "focused_new_tests": 30,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/priority-explanations.ts",
+          "sha256": "5605da1bac5c941ceb9ea7d0df7ad792a34f18373e02ab3d09ce4d3bd01e78a0"
+        },
+        {
+          "path": "src/components/workflows/PriorityExplanations.tsx",
+          "sha256": "f84bbc0a3d7cd6a1b0a79ac5084178586710174c2889bbae888b21982c67e43c"
+        },
+        {
+          "path": "src/components/workflows/priority-explanations.css",
+          "sha256": "f11d69c9f453d575b6c2647c76da95ca4925936167596a988f3516bda9ee947c"
+        },
+        {
+          "path": "tests/cycle10-priority-explanations.test.ts",
+          "sha256": "2e48342f92c5e3710af4eb9bf21ddffdec81738c764a97f30ff2570e74201452"
+        },
+        {
+          "path": "docs/program/CYCLE10_PRIORITY_EXPLANATIONS.md",
+          "sha256": "0c8d8fb755559a8428827101d416b181d9018603f2fe81c9e00efecdeb6fbfa1"
+        }
+      ]
+    },
+    {
+      "module": "advanced-handoffs",
+      "component": "AdvancedHandoffs",
+      "doc": "CYCLE10_ADVANCED_HANDOFFS",
+      "owner": "/root/cycle8_sales_customer",
+      "branch": "codex/cycle10-advanced-handoffs",
+      "parent_commit": "cc034258a9d9cd11599080b6d4169bc3ca7cffd7",
+      "head_commit": "414eb9b6397ffc08e0f0d6cd8757251e2ac84b16",
+      "draft_pr": 72,
+      "focused_new_tests": 48,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/advanced-handoffs.ts",
+          "sha256": "61c141d0fa24acb8d0eb84c194f6c19576356b875ad95865b72a08b92406db16"
+        },
+        {
+          "path": "src/components/workflows/AdvancedHandoffs.tsx",
+          "sha256": "d3beeaf60d469363b12e402f5691d56c9ef6369e2896252a57b954819cb53f01"
+        },
+        {
+          "path": "src/components/workflows/advanced-handoffs.css",
+          "sha256": "b3b4cfdd0ea00d3eb0eef79aecd7b22c1f23319902d91eb7c7cb49295e632ec6"
+        },
+        {
+          "path": "tests/cycle10-advanced-handoffs.test.ts",
+          "sha256": "7e13d8147f60684a6928dbc93396ee2651228c438fadabd15ea70f3e95548c85"
+        },
+        {
+          "path": "docs/program/CYCLE10_ADVANCED_HANDOFFS.md",
+          "sha256": "90c97b7b67882cf3dbce2149f35a8963e5956183bb54b21017b6583b20d939a0"
+        }
+      ]
+    }
+  ],
+  "combined_evidence": {
+    "focused_new_package_cases": 220,
+    "independent_new_cases": 30,
+    "source_ownership_cases": 15,
+    "retained_independent_cases": 27,
+    "source_inventory_cases": 73,
+    "application_cases": 365,
+    "development_browser_cases": 57,
+    "production_off_browser_cases": 3,
+    "baseline_checks": 23,
+    "protected_hashes": 128,
+    "retained_author_files": 118,
+    "design_locks": 5,
+    "design_bindings": 13
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

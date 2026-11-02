@@ -325,6 +325,23 @@ export function sourceOwner(path) {
     )
   )
     return 'A8';
+  // Cycle10 additive review lanes precede broad filename matches; CSS stays A8 above.
+  if (
+    /OperatingCenterCycleTen|cycle10-(integration|feature-evidence|browser|desks|reviews|handoffs|default-off)|playwright\.cycle10|check-cycle10-/.test(
+      path,
+    )
+  )
+    return 'A8';
+  if (/crew-plan-review|CrewPlanReview/.test(path)) return 'A3';
+  if (/financial-exceptions|FinancialExceptions/.test(path)) return 'A4';
+  if (/service-desk|ServiceDesk/.test(path)) return 'A2';
+  if (
+    /follow-up-admission|FollowUpAdmission|priority-explanations|PriorityExplanations/.test(
+      path,
+    )
+  )
+    return 'A6';
+  if (/advanced-handoffs|AdvancedHandoffs/.test(path)) return 'A7';
   // Cohesive local workflow ownership precedes broad customer/operations keywords.
   // These review lanes classify source; they confer no runtime authority.
   if (

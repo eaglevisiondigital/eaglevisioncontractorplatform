@@ -10,7 +10,8 @@
     "Cycle6 explicitly composes reviewed local candidates on draft PR38 for source-bound testing only. Original PRs remain unmerged; no hosted or release status is promoted.",
     "Cycle7 adds default-OFF usable unsaved planning/cost forms and exact customer-safe service navigation on reviewed Cycle6 sources. Operational and release labels are unchanged.",
     "Cycle8 adds six default-OFF source-bound operating reviews over the same actual journey records. Weekly/source-CAS and consent-at-send remain non-operational; selected-job coverage is not whole-company completeness. Full local/hosted/release acceptance is unchanged.",
-    "Cycle9 composes seven exact draft packages over one four-job/three-property canonical repository set. Coverage/availability/consent gaps remain UNKNOWN; source, local, CI and hosted/release acceptance stay separate. No original scope ID or acceptance state is promoted."
+    "Cycle9 composes seven exact draft packages over one four-job/three-property canonical repository set. Coverage/availability/consent gaps remain UNKNOWN; source, local, CI and hosted/release acceptance stay separate. No original scope ID or acceptance state is promoted.",
+    "Cycle10 adds six isolated everyday review packages over the same exact OperatingSources. Optional presentation panels reuse one environment; no operational or release state is promoted. Source integrity, local tests and exact GitHub CI remain separate."
   ],
   "features": [
     {
@@ -127,7 +128,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review the source-bound local intake/issued-scope/receipt handoff in draft39; recorded estimate-origin linkage and operational authentication remain separate.",
+      "next": "Review exact Cycle10 candidate tests and source-bound integration; pursue separately authorized operational evidence without enabling execution.",
       "date": "2026-11-02",
       "dataObjects": [
         "public.customers",
@@ -142,7 +143,8 @@
       ],
       "risks": [
         "Existing local CRM is implemented; first-page lookup limits and connected lifecycle acceptance need bounded follow-up.",
-        "Public intake remains gated by approved CAPTCHA and infrastructure."
+        "Public intake remains gated by approved CAPTCHA and infrastructure.",
+        "Cycle10 is local source-bound review only; partial local, blocked/not accepted hosted and not-authorized release labels remain unchanged."
       ],
       "dependencies": ["SEC-001"],
       "sources": [
@@ -161,6 +163,10 @@
         {
           "path": "src/lib/workflows/operating-selection.ts",
           "anchor": "export async function readOperatingSelection("
+        },
+        {
+          "path": "src/lib/workflows/service-desk.ts",
+          "anchor": "readServiceDesk"
         }
       ],
       "tests": [
@@ -179,6 +185,10 @@
         {
           "path": "tests/cycle9-operating-selection.test.ts",
           "anchor": "it('literal case-insensitive search combines actual customer/property/lead and issued references', async () => {"
+        },
+        {
+          "path": "tests/cycle10-service-desk.test.ts",
+          "anchor": "from 'vitest'"
         }
       ],
       "records": [
@@ -201,6 +211,10 @@
         {
           "path": "docs/program/CYCLE9_VALIDATION.md",
           "anchor": "# Cycle 9 multi-job operating center validation"
+        },
+        {
+          "path": "docs/program/CYCLE10_VALIDATION.md",
+          "anchor": "# Cycle 10 local implementation and verification"
         }
       ],
       "ci": {
@@ -564,7 +578,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review draft40 exact job/crew/date-only evidence/report handoff; actual timed availability, dispatch and offline operational acceptance remain blocked.",
+      "next": "Review exact Cycle10 candidate tests and source-bound integration; pursue separately authorized operational evidence without enabling execution.",
       "date": "2026-11-02",
       "dataObjects": [
         "Existing jobs/assignments/time entries/breaks",
@@ -578,7 +592,8 @@
       "risks": [
         "Existing timekeeping is executable locally; sample job assignment does not retain dispatch.",
         "Operational crew scheduling, offline conflict custody and proof-of-work remain UNKNOWN.",
-        "Cycle-five source-bound local candidates are not merged, enabled, hosted-accepted or released; captured consent/workforce and genuine operational gates remain UNKNOWN/BLOCKED."
+        "Cycle-five source-bound local candidates are not merged, enabled, hosted-accepted or released; captured consent/workforce and genuine operational gates remain UNKNOWN/BLOCKED.",
+        "Cycle10 is local source-bound review only; partial local, blocked/not accepted hosted and not-authorized release labels remain unchanged."
       ],
       "dependencies": ["FLD-001"],
       "sources": [
@@ -605,6 +620,10 @@
         {
           "path": "src/lib/workflows/portfolio-scheduling.ts",
           "anchor": "export async function readPortfolioScheduling("
+        },
+        {
+          "path": "src/lib/workflows/crew-plan-review.ts",
+          "anchor": "reviewCrewPlans"
         }
       ],
       "tests": [
@@ -627,6 +646,10 @@
         {
           "path": "tests/cycle9-portfolio-scheduling.test.ts",
           "anchor": "it('shared crew conflicts across different exact jobs are calculated once by canonical capacity', async () => {"
+        },
+        {
+          "path": "tests/cycle10-crew-plan-review.test.ts",
+          "anchor": "from 'vitest'"
         }
       ],
       "records": [
@@ -669,6 +692,10 @@
         {
           "path": "docs/program/CYCLE9_VALIDATION.md",
           "anchor": "# Cycle 9 multi-job operating center validation"
+        },
+        {
+          "path": "docs/program/CYCLE10_VALIDATION.md",
+          "anchor": "# Cycle 10 local implementation and verification"
         }
       ],
       "ci": {
@@ -795,7 +822,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review current source-bound cost coverage and optional exact accounting/procurement handoffs; missing labor and final costs remain UNKNOWN.",
+      "next": "Review exact Cycle10 candidate tests and source-bound integration; pursue separately authorized operational evidence without enabling execution.",
       "date": "2026-11-02",
       "dataObjects": [
         "Existing job baseline",
@@ -810,7 +837,8 @@
       "risks": [
         "Profitability is implemented locally; external accounting and purchase-order lifecycle are not certified.",
         "Incomplete cost inputs cannot be labeled final; no automatic customer billing.",
-        "Cycle-five source-bound local candidates are not merged, enabled, hosted-accepted or released; captured consent/workforce and genuine operational gates remain UNKNOWN/BLOCKED."
+        "Cycle-five source-bound local candidates are not merged, enabled, hosted-accepted or released; captured consent/workforce and genuine operational gates remain UNKNOWN/BLOCKED.",
+        "Cycle10 is local source-bound review only; partial local, blocked/not accepted hosted and not-authorized release labels remain unchanged."
       ],
       "dependencies": ["EST-001"],
       "sources": [
@@ -833,6 +861,10 @@
         {
           "path": "src/lib/workflows/portfolio-finance.ts",
           "anchor": "export async function readPortfolioFinance("
+        },
+        {
+          "path": "src/lib/workflows/financial-exceptions.ts",
+          "anchor": "readFinancialExceptions"
         }
       ],
       "tests": [
@@ -855,6 +887,10 @@
         {
           "path": "tests/cycle9-portfolio-finance.test.ts",
           "anchor": "describe('Cycle 9 canonical selected-job portfolio finance', () => {"
+        },
+        {
+          "path": "tests/cycle10-financial-exceptions.test.ts",
+          "anchor": "from 'vitest'"
         }
       ],
       "records": [
@@ -897,6 +933,10 @@
         {
           "path": "docs/program/CYCLE9_VALIDATION.md",
           "anchor": "# Cycle 9 multi-job operating center validation"
+        },
+        {
+          "path": "docs/program/CYCLE10_VALIDATION.md",
+          "anchor": "# Cycle 10 local implementation and verification"
         }
       ],
       "ci": {
@@ -996,7 +1036,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review draft42 exact shared-job/report Passport and immutable documentation pack; physical completion, warranty, Auth and delivery remain unverified.",
+      "next": "Review exact Cycle10 candidate tests and source-bound integration; pursue separately authorized operational evidence without enabling execution.",
       "date": "2026-11-02",
       "dataObjects": [
         "Reuse existing CRM location, report/version, job and private media contracts"
@@ -1007,7 +1047,8 @@
       "risks": [
         "Published inspection history is not a complete Property Passport, warranty or verified completion system.",
         "Media quarantine, consent, access and retention gates remain unmet.",
-        "Cycle-five source-bound local candidates are not merged, enabled, hosted-accepted or released; captured consent/workforce and genuine operational gates remain UNKNOWN/BLOCKED."
+        "Cycle-five source-bound local candidates are not merged, enabled, hosted-accepted or released; captured consent/workforce and genuine operational gates remain UNKNOWN/BLOCKED.",
+        "Cycle10 is local source-bound review only; partial local, blocked/not accepted hosted and not-authorized release labels remain unchanged."
       ],
       "dependencies": ["CUS-001", "FLD-001"],
       "sources": [
@@ -1026,6 +1067,10 @@
         {
           "path": "src/lib/workflows/portfolio-service.ts",
           "anchor": "export async function readPortfolioService("
+        },
+        {
+          "path": "src/lib/workflows/service-desk.ts",
+          "anchor": "openServiceDeskReport"
         }
       ],
       "tests": [
@@ -1040,6 +1085,10 @@
         {
           "path": "tests/cycle9-portfolio-service.test.ts",
           "anchor": "it('filters by exact property ID while retaining honest available counts', async () => {"
+        },
+        {
+          "path": "tests/cycle10-service-desk.test.ts",
+          "anchor": "from 'vitest'"
         }
       ],
       "records": [
@@ -1078,6 +1127,10 @@
         {
           "path": "docs/program/CYCLE9_VALIDATION.md",
           "anchor": "# Cycle 9 multi-job operating center validation"
+        },
+        {
+          "path": "docs/program/CYCLE10_VALIDATION.md",
+          "anchor": "# Cycle 10 local implementation and verification"
         }
       ],
       "ci": {
@@ -1199,7 +1252,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review exact Cycle5 candidate heads and retained combined proof; keep default-OFF/unwired and pursue source-custody or isolated workspace composition without real execution.",
+      "next": "Review exact Cycle10 candidate tests and source-bound integration; pursue separately authorized operational evidence without enabling execution.",
       "date": "2026-11-02",
       "dataObjects": [
         "Reuse CRM and communications preparation; no duplicate lead store"
@@ -1209,7 +1262,8 @@
       ],
       "risks": [
         "No verified automated sending, consent/opt-out provider pipeline or external booking.",
-        "Cycle-five source-bound local candidates are not merged, enabled, hosted-accepted or released; captured consent/workforce and genuine operational gates remain UNKNOWN/BLOCKED."
+        "Cycle-five source-bound local candidates are not merged, enabled, hosted-accepted or released; captured consent/workforce and genuine operational gates remain UNKNOWN/BLOCKED.",
+        "Cycle10 is local source-bound review only; partial local, blocked/not accepted hosted and not-authorized release labels remain unchanged."
       ],
       "dependencies": ["CRM-001"],
       "sources": [
@@ -1228,6 +1282,10 @@
         {
           "path": "src/lib/workflows/portfolio-maintenance.ts",
           "anchor": "export async function readPortfolioMaintenance("
+        },
+        {
+          "path": "src/lib/workflows/follow-up-admission.ts",
+          "anchor": "prepareFollowUpAdmission"
         }
       ],
       "tests": [
@@ -1242,6 +1300,10 @@
         {
           "path": "tests/cycle9-portfolio-maintenance.test.ts",
           "anchor": "it('two jobs at one property retain separate exact plans, occurrences and published report identities', async () => {"
+        },
+        {
+          "path": "tests/cycle10-follow-up-admission.test.ts",
+          "anchor": "from 'vitest'"
         }
       ],
       "records": [
@@ -1280,6 +1342,10 @@
         {
           "path": "docs/program/CYCLE9_VALIDATION.md",
           "anchor": "# Cycle 9 multi-job operating center validation"
+        },
+        {
+          "path": "docs/program/CYCLE10_VALIDATION.md",
+          "anchor": "# Cycle 10 local implementation and verification"
         }
       ],
       "ci": {
@@ -1299,7 +1365,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review draft44 actual-source Copilot and literal Voice/Trade/optional Procurement composition; no model, action executor or provider activation.",
+      "next": "Review exact Cycle10 candidate tests and source-bound integration; pursue separately authorized operational evidence without enabling execution.",
       "date": "2026-11-02",
       "dataObjects": [
         "Existing estimate draft and quarantine/extraction contracts"
@@ -1310,7 +1376,8 @@
       "risks": [
         "Material extraction interfaces do not constitute an accepted voice agent/Copilot.",
         "No real AI/provider activation, autonomous financial decisions or customer messages.",
-        "Cycle-five source-bound local candidates are not merged, enabled, hosted-accepted or released; captured consent/workforce and genuine operational gates remain UNKNOWN/BLOCKED."
+        "Cycle-five source-bound local candidates are not merged, enabled, hosted-accepted or released; captured consent/workforce and genuine operational gates remain UNKNOWN/BLOCKED.",
+        "Cycle10 is local source-bound review only; partial local, blocked/not accepted hosted and not-authorized release labels remain unchanged."
       ],
       "dependencies": ["EST-001"],
       "sources": [
@@ -1333,6 +1400,10 @@
         {
           "path": "src/lib/workflows/operating-addons.ts",
           "anchor": "export async function prepareOperatingAddon("
+        },
+        {
+          "path": "src/lib/workflows/priority-explanations.ts",
+          "anchor": "readPriorityExplanations"
         }
       ],
       "tests": [
@@ -1351,6 +1422,10 @@
         {
           "path": "tests/cycle9-operating-addons.test.ts",
           "anchor": "it(`${company.slug}/${kind} reuses exact source without execution`, async () => {"
+        },
+        {
+          "path": "tests/cycle10-priority-explanations.test.ts",
+          "anchor": "from 'vitest'"
         }
       ],
       "records": [
@@ -1377,6 +1452,10 @@
         {
           "path": "docs/program/CYCLE9_VALIDATION.md",
           "anchor": "# Cycle 9 multi-job operating center validation"
+        },
+        {
+          "path": "docs/program/CYCLE10_VALIDATION.md",
+          "anchor": "# Cycle 10 local implementation and verification"
         }
       ],
       "ci": {
@@ -1424,6 +1503,10 @@
         {
           "path": "src/lib/workflows/operating-addons.ts",
           "anchor": "export async function prepareOperatingAddon("
+        },
+        {
+          "path": "src/lib/workflows/advanced-handoffs.ts",
+          "anchor": "export async function readAdvancedHandoffRequirements"
         }
       ],
       "tests": [
@@ -1438,6 +1521,10 @@
         {
           "path": "tests/cycle9-operating-addons.test.ts",
           "anchor": "it(`${company.slug}/${kind} reuses exact source without execution`, async () => {"
+        },
+        {
+          "path": "tests/cycle10-advanced-handoffs.test.ts",
+          "anchor": "from 'vitest'"
         }
       ],
       "records": [
@@ -1464,6 +1551,10 @@
         {
           "path": "docs/program/CYCLE9_VALIDATION.md",
           "anchor": "# Cycle 9 multi-job operating center validation"
+        },
+        {
+          "path": "docs/program/CYCLE10_VALIDATION.md",
+          "anchor": "# Cycle 10 local implementation and verification"
         }
       ],
       "ci": {
@@ -1511,7 +1602,11 @@
         },
         {
           "path": "src/components/workflows/OperatingCenterPreview.tsx",
-          "anchor": "export function OperatingCenterPreview()"
+          "anchor": "export function OperatingCenterPreview("
+        },
+        {
+          "path": "src/components/workflows/OperatingCenterCycleTen.tsx",
+          "anchor": "export function OperatingCenterCycleTen"
         }
       ],
       "tests": [
@@ -1560,6 +1655,10 @@
         {
           "path": "docs/program/CYCLE9_INTEGRATION_REVIEW.md",
           "anchor": "# Cycle 9 independent combined source review"
+        },
+        {
+          "path": "docs/program/CYCLE10_VALIDATION.md",
+          "anchor": "# Cycle 10 local implementation and verification"
         }
       ],
       "ci": {
@@ -2032,7 +2131,11 @@
         },
         {
           "path": "src/components/workflows/OperatingCenterPreview.tsx",
-          "anchor": "export function OperatingCenterPreview()"
+          "anchor": "export function OperatingCenterPreview("
+        },
+        {
+          "path": "scripts/check-cycle10-integrity.mjs",
+          "anchor": "export function validateCycle10Manifest"
         }
       ],
       "tests": [
@@ -2055,6 +2158,10 @@
         {
           "path": "tests/program/cycle9-feature-evidence.test.ts",
           "anchor": "Cycle9 ownership precedence:"
+        },
+        {
+          "path": "tests/program/cycle10-feature-evidence.test.ts",
+          "anchor": "Cycle10 ownership precedence:"
         }
       ],
       "records": [
@@ -2097,6 +2204,14 @@
         {
           "path": "docs/program/CYCLE9_CI_CLOSURE.json",
           "anchor": "\"schema\": \"propel-cycle9-ci-closure-v1\""
+        },
+        {
+          "path": "docs/program/CYCLE10_VALIDATION.md",
+          "anchor": "# Cycle 10 local implementation and verification"
+        },
+        {
+          "path": "docs/program/CYCLE10_DELIVERY_INDEX.json",
+          "anchor": "\"schema\": \"propel-cycle10-delivery-v1\""
         }
       ],
       "ci": {

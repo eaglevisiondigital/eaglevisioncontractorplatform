@@ -256,3 +256,20 @@ identity in their accessible names. Scrollable advanced evidence has a named reg
 and keyboard focus. No color-only status, inferred completion or fake customer action.
 Real browser evidence covers all three brands and desktop/tablet/mobile; automated
 axe, overflow and touch/focus checks apply only to exercised states.
+
+## Cycle10 scoped review panels
+
+Use the existing Operating Center shell and --journey-primary/--journey-accent
+contractor colors. A separate labeled Daily workflow reviews navigation group adds
+six finite panels; the original navigation and source environment remain intact.
+Every panel CSS is locally scoped; customer portal, approved back-office layout,
+artwork and global styles remain locked. Explain facts, proposals, missing evidence
+and suggestions separately, with text labels independent of color.
+
+Opening exact source detail focuses its heading. A separate explicit job-navigation
+control retains the original company and source identity. Named keyboard-focusable
+evidence regions contain long machine references. Maintain44px controls, automatic
+header height, inline-block padded badges, adequate muted-label contrast on warm
+surfaces and no document overflow at Desktop/iPadMini/iPhone13 viewports. Actual
+axe, geometry, touch and all-brand browser evidence belong in Cycle10 validation;
+source/token checks alone do not assert accessibility or release acceptance.

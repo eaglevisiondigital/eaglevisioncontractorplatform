@@ -1,0 +1,176 @@
+.crew-plan-review {
+  color: #20352f;
+  min-width: 0;
+  margin-block: 24px;
+}
+.crew-plan-review header {
+  height: auto;
+  min-height: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 0;
+  background: none;
+  color: inherit;
+  position: static;
+}
+.crew-plan-review header > div {
+  display: block;
+  min-width: 0;
+}
+.crew-plan-review h2 {
+  font-size: clamp(24px, 3vw, 32px);
+  margin: 6px 0 12px;
+}
+.crew-plan-review h3 {
+  font-size: 23px;
+}
+.crew-plan-review h4 {
+  font-size: 18px;
+}
+.crew-plan-review h5 {
+  font-size: 16px;
+}
+.crew-plan-review p,
+.crew-plan-review li,
+.crew-plan-review dd {
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.crew-plan-review .cpr-eyebrow {
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  color: #52695d;
+}
+.crew-plan-review .cpr-badge {
+  display: inline-block;
+  padding: 10px 14px;
+  border: 1px solid #b2c6b8;
+  background: #e8eee5;
+  border-radius: 24px;
+  font-size: 12px;
+}
+.crew-plan-review .cpr-boundary {
+  padding: 16px;
+  border-left: 3px solid var(--journey-primary, #00543e);
+  background: #edf0e7;
+}
+.crew-plan-review .cpr-card,
+.crew-plan-review .cpr-change {
+  background: white;
+  border: 1px solid #d9e1da;
+  padding: 20px;
+  margin: 16px 0;
+  border-radius: 14px;
+  min-width: 0;
+}
+.crew-plan-review .cpr-change {
+  border-left: 4px solid var(--journey-accent, #bc8d48);
+}
+.crew-plan-review .cpr-controls,
+.crew-plan-review .cpr-jobs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.crew-plan-review .cpr-comparison,
+.crew-plan-review .cpr-week {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.crew-plan-review label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 12px 0;
+  min-width: 0;
+}
+.crew-plan-review input,
+.crew-plan-review select {
+  min-width: 0;
+  max-width: 100%;
+  min-height: 46px;
+  box-sizing: border-box;
+}
+.crew-plan-review button {
+  min-height: 46px;
+  margin: 5px 10px 5px 0;
+  max-width: 100%;
+  white-space: normal;
+}
+.crew-plan-review button:focus-visible,
+.crew-plan-review input:focus-visible,
+.crew-plan-review select:focus-visible,
+.crew-plan-review summary:focus-visible {
+  outline: 3px solid var(--journey-primary, #00543e);
+  outline-offset: 3px;
+}
+.crew-plan-review .cpr-check {
+  flex-direction: row;
+  align-items: center;
+  min-height: 44px;
+}
+.crew-plan-review .cpr-check input {
+  width: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  height: 20px;
+}
+.crew-plan-review summary {
+  cursor: pointer;
+  min-height: 44px;
+  font-weight: 650;
+}
+.crew-plan-review .cpr-lane {
+  border-top: 1px solid #d9e1da;
+  padding-block: 12px;
+}
+.crew-plan-review .cpr-conflict {
+  border-left: 3px solid #9e5d22;
+  padding-left: 10px;
+  font-weight: 650;
+}
+.crew-plan-review .cpr-empty {
+  padding: 16px;
+  border: 1px dashed #a9bdb0;
+  border-radius: 10px;
+}
+.crew-plan-review li {
+  padding-block: 6px;
+}
+.crew-plan-review dd {
+  margin: 4px 0 12px;
+  font-size: 13px;
+}
+@media (max-width: 1000px) {
+  .crew-plan-review .cpr-controls,
+  .crew-plan-review .cpr-jobs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .crew-plan-review header {
+    display: block;
+  }
+  .crew-plan-review .cpr-controls,
+  .crew-plan-review .cpr-jobs,
+  .crew-plan-review .cpr-comparison,
+  .crew-plan-review .cpr-week {
+    grid-template-columns: 1fr;
+  }
+  .crew-plan-review .cpr-card {
+    padding: 16px;
+  }
+  .crew-plan-review button {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+.crew-plan-review dt {
+  color: #526159;
+}

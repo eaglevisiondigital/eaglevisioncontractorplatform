@@ -1,5 +1,29 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: cycle ten · everyday operating reviews · November 2
+
+Six separately owned local packages are composed on `codex/program-cycle-ten`,
+draft PR67, from exact successful cc034258. Crew A/B comparison, financial exception
+drill-down, actual service-request/staff preparation and safe reports, blocked final
+follow-up admission, explainable priorities and seven advanced review handoffs reuse
+one actual OperatingSources environment and all original engines/navigation. No new
+store/schema/ledger/connected capability. Source detail and job navigation are separate.
+
+365 application cases,57 distinct all-brand desktop/tablet/mobile browser cases and3
+production-OFF cases PASS; independent30-case review CLEAR. Scoped contrast/header
+fixes and two independently reproduced OFF/source-render defects are closed. Types,
+lint/build/format, generated types and protected/source/migration checks PASS.
+Exact author heads/hashes, actual tests,63 PNGs and CI are in
+[Cycle10 validation](docs/program/CYCLE10_VALIDATION.md) and the master delivery register.
+Final-head CI is queued/in progress at the recorded snapshot; no pending green claim.
+
+All128 protected hashes/118 prior indexed author files/five design locks/13 bindings,
+all13/customer14/original4B/P1/four/approvals/2A–2F/billing/frozen Netlify/executor and
+locked interfaces remain unchanged. Physical recovery, genuine Auth/MFA/NMI/operational
+custody and provider/financial/communication/hosted/release gates remain separate.
+No dispatch, payment, message, hosted mutation, credentials, deployment or merge.
+Release1.0 NOT READY / NOT AUTHORIZED. Test listeners stopped; owner preview untouched.
+
 ## Latest: cycle nine · multi-job operating center · November 2
 
 CI follow-up: Main4917593 Foundation and dedicated Cycle9 PR/push runs now PASS;

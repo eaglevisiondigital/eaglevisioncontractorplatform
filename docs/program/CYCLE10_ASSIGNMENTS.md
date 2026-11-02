@@ -6,13 +6,13 @@ Main coordinates codex/program-cycle-ten. Each isolated implementation branch st
 from this exact successful baseline and targets the coordination branch as a draft.
 No branch/PR merge, parent rewrite, deployment or operational promotion.
 
-| Actual owner                    | First package                                          | Second package                  | Isolated branches                                                       |
-| ------------------------------- | ------------------------------------------------------ | ------------------------------- | ----------------------------------------------------------------------- |
-| /root/cycle10_field_growth      | Crew-plan comparison                                   | Follow-up admission             | codex/cycle10-crew-plan; codex/cycle10-follow-up-admission              |
-| /root/cycle5_profit_guard       | Financial exceptions                                   | Priority explanations           | codex/cycle10-financial-exceptions; codex/cycle10-priority-explanations |
-| /root/cycle8_sales_customer     | Service-request and safe customer desk                 | No overlapping source ownership | codex/cycle10-service-desk                                              |
-| /root                           | Advanced handoffs; shared mount/contracts/CI/registers | Combined browser evidence       | codex/cycle10-advanced-handoffs; codex/program-cycle-ten                |
-| /root/cycle6_integration_review | Independent combined review after implementation       | No business ownership           | codex/cycle10-integration-review                                        |
+| Actual owner                     | First package                                    | Second package            | Isolated branches                                                       |
+| -------------------------------- | ------------------------------------------------ | ------------------------- | ----------------------------------------------------------------------- |
+| /root/cycle10_field_growth       | Crew-plan comparison                             | Follow-up admission       | codex/cycle10-crew-plan; codex/cycle10-follow-up-admission              |
+| /root/cycle5_profit_guard        | Financial exceptions                             | Priority explanations     | codex/cycle10-financial-exceptions; codex/cycle10-priority-explanations |
+| /root/cycle8_sales_customer      | Service-request and safe customer desk           | Advanced handoffs         | codex/cycle10-service-desk; codex/cycle10-advanced-handoffs             |
+| /root                            | Shared mount/contracts/CI/registers              | Combined browser evidence | codex/program-cycle-ten                                                 |
+| /root/cycle10_independent_review | Independent combined review after implementation | No business ownership     | codex/cycle10-integration-review                                        |
 
 Three worker slots execute bounded parallel waves; completed agents are not reported
 as active. Each package owns five NEW files only: src/lib/workflows/<module>.ts,
