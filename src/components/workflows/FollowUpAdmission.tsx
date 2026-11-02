@@ -102,6 +102,7 @@ function FollowUpForm({ sources, onSelectJob }: FollowUpAdmissionProps) {
     [unknown, setUnknown] = useState(false),
     [error, setError] = useState(''),
     [message, setMessage] = useState(''),
+    [sourceKey, setSourceKey] = useState(''),
     [sourceDetail, setSourceDetail] = useState<Awaited<
       ReturnType<typeof openFollowUpSource>
     > | null>(null);
@@ -256,7 +257,7 @@ function FollowUpForm({ sources, onSelectJob }: FollowUpAdmissionProps) {
       if (live.current) setBusy(false);
     }
   }
-  async function open(key: string) {
+  async function open(key: string, navigate = false) {
     if (!desk || pending.current) return;
     const token = generation.current;
     pending.current = true;
@@ -266,7 +267,8 @@ function FollowUpForm({ sources, onSelectJob }: FollowUpAdmissionProps) {
       if (live.current && token === generation.current) {
         assertFollowUpCurrentNow(desk);
         setSourceDetail(detail);
-        onSelectJob?.(detail.job_id);
+        setSourceKey(key);
+        if (navigate) onSelectJob?.(detail.job_id);
       }
     } catch {
       if (live.current && token === generation.current) {
@@ -605,6 +607,14 @@ function FollowUpForm({ sources, onSelectJob }: FollowUpAdmissionProps) {
           <h3 tabIndex={-1} ref={sourceHeading}>
             Exact follow-up source
           </h3>
+          {onSelectJob && (
+            <button
+              disabled={busy || !sourceKey}
+              onClick={() => void open(sourceKey, true)}
+            >
+              Display existing job workflow
+            </button>
+          )}
           <p>
             {sourceDetail.customer_label} · {sourceDetail.property_label}
           </p>
