@@ -1,3 +1,4 @@
+import { CustomerPortalPreviewModel } from '../src/lib/customer-preview';
 import { afterEach, expect, it, vi } from 'vitest';
 import { sampleCompanies } from '../src/domain/platform';
 import { prepareLocalJourney } from '../src/lib/workflows/journey-runtime';
@@ -301,4 +302,35 @@ it('rejects imported snapshots and reconciling a reconstructed packet', async ()
     (await reconcileCompletionReview(JSON.parse(JSON.stringify(packet))))
       .status,
   ).toBe('UNKNOWN');
+});
+
+it('replacing the customer model cannot reopen the same authoritative source claim', async () => {
+  const { sources, selection, gate } = await fixture(),
+    view = await readCompletionReview(sources, selection, gate);
+  await prepareCompletionReview(view, confirmation());
+  const replacement = new CustomerPortalPreviewModel(
+    sources.company,
+    sources.property,
+  );
+  replacement.admitLocalJourney(sources.target, gate);
+  const fresh = await readCompletionReview(
+    { ...sources, customerModel: replacement },
+    selection,
+    gate,
+  );
+  await expect(prepareCompletionReview(fresh, confirmation())).rejects.toThrow(
+    /already attempted/,
+  );
+});
+it('a second eligible reviewer cannot reopen the same customer documentation claim', async () => {
+  const { sources: f, selection, gate } = await fixture(),
+    other = f.company.id + '-backup-owner';
+  await f.operations.configure(f.company.id, 'active', 'starter', {}, other);
+  const view = await readCompletionReview(f, selection, gate);
+  await prepareCompletionReview(view, confirmation());
+  f.target.actor_id = other;
+  const fresh = await readCompletionReview(f, selection, gate);
+  await expect(prepareCompletionReview(fresh, confirmation())).rejects.toThrow(
+    /already attempted/,
+  );
 });

@@ -261,11 +261,18 @@ export async function prepareCompletionReview(
   if (!b) throw Error('Exact retained documentation review required');
   current(b);
   const confirmed = confirm(input),
-    key = JSON.stringify(b.target);
-  let claimed = claims.get(b.model);
+    key = JSON.stringify({
+      organization_id: b.target.organization_id,
+      customer_id: b.target.customer_id,
+      location_id: b.target.location_id,
+      estimate_id: b.target.estimate_id,
+      version_id: b.target.version_id,
+      job_id: b.target.job_id,
+    });
+  let claimed = claims.get(b.sources.operations);
   if (!claimed) {
     claimed = new Set();
-    claims.set(b.model, claimed);
+    claims.set(b.sources.operations, claimed);
   }
   if (claimed.has(key))
     throw Error('Preparation already attempted; UNKNOWN cannot be replayed');

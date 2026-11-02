@@ -23,16 +23,16 @@ notes, amounts/costs, suppliers, payroll and margin fields do not enter the snap
 After three explicit documentation-review checks and a separate confirmation,
 `prepareCompletionReview(view, confirmation)` calls the existing two-source Proof
 of Work preparation and freezes its SHA-256-bound summary. It claims one attempt per
-model/target before the first await. Failed/lost outcomes cannot be retried using a
-fresh source view. `reconcileCompletionReview(packet)` reads the exact retained
+authoritative Operations/business-source target, excluding reviewer identity before the first await. Failed/lost outcomes cannot be retried using a
+fresh source view, replacement customer model or second eligible reviewer. `reconcileCompletionReview(packet)` reads the exact retained
 packet only and permanently holds UNKNOWN. `openCompletionSource(view)` re-reads
 only its original report/version and focuses the exact source detail in the UI.
 Original inputs, source/model instances, current membership and authorization are
 rechecked after the final await. Historical packet contents remain unchanged when
 later reports or access changes make the current review unavailable.
 
-Validation: 34 new source-based cases plus25 retained customer-workflow cases
-(59 total) PASS. They cover three brands, exact report/job identities, wrong/missing
+Validation: 36 new source-based cases plus25 retained customer-workflow cases
+(61 total) PASS. They cover three brands, exact report/job identities, wrong/missing
 versions, foreign target/model denial, revocation, immutable stale history, concurrent
 duplicate attempts, lost results, final-await input/context/confirmation drift,
 accessor/coercion rejection, strict private-field exclusion and no business writers.
