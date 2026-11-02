@@ -1,0 +1,267 @@
+.financial-exceptions {
+  color: #20352f;
+  background: #f5f5ef;
+  border: 1px solid #d9e1da;
+  border-radius: 16px;
+  padding: 24px;
+  min-width: 0;
+}
+.financial-exceptions * {
+  box-sizing: border-box;
+}
+.financial-exceptions > header {
+  height: auto;
+  min-height: 0;
+  position: static;
+  display: block;
+  padding: 0;
+  margin: 0 0 20px;
+  background: transparent;
+  color: inherit;
+  border: 0;
+}
+.financial-exceptions > header > div {
+  display: block;
+  height: auto;
+}
+.financial-exceptions h2 {
+  font-size: 1.65rem;
+  margin: 4px 0 12px;
+}
+.financial-exceptions h2,
+.financial-exceptions h3,
+.financial-exceptions p,
+.financial-exceptions dd {
+  overflow-wrap: anywhere;
+}
+.financial-exceptions-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #3e594f;
+}
+.financial-exceptions label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.financial-exceptions input:not([type='checkbox']),
+.financial-exceptions select {
+  min-height: 44px;
+  min-width: 0;
+  width: 100%;
+  background: #fff;
+  color: #20352f;
+}
+.financial-exceptions input[readonly] {
+  background: #f0f3ed;
+}
+.financial-exceptions button {
+  min-height: 44px;
+  color: #fff;
+  background: var(--journey-primary, #247364);
+  white-space: normal;
+}
+.financial-exceptions button:disabled {
+  background: #d9e1da;
+  color: #3e594f;
+}
+.financial-exceptions :focus-visible {
+  outline: 3px solid var(--journey-primary, #247364);
+  outline-offset: 4px;
+}
+.financial-exceptions .exception-check {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  margin: 12px 0;
+}
+.exception-check input {
+  height: 22px;
+  width: 22px;
+  flex-shrink: 0;
+}
+.exception-proposals {
+  margin: 16px 0;
+}
+.financial-exceptions summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 10px 0;
+  font-weight: 600;
+}
+.financial-exceptions fieldset {
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 12px 0;
+  min-width: 0;
+  background: #fff;
+}
+.financial-exceptions legend {
+  font-weight: 700;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.exception-category-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+.exception-category-grid label {
+  text-transform: capitalize;
+}
+.financial-exceptions-result {
+  display: grid;
+  gap: 20px;
+  margin-top: 24px;
+}
+.exception-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.exception-metrics > div {
+  background: #fff;
+  border: 1px solid #d9e1da;
+  border-top: 3px solid var(--journey-accent, #dfb461);
+  border-radius: 12px;
+  padding: 16px;
+  display: grid;
+  gap: 6px;
+}
+.exception-metrics strong {
+  font-size: 1.5rem;
+}
+.exception-note,
+.exception-metrics small {
+  color: #3e594f;
+  font-size: 0.87rem;
+  overflow-wrap: anywhere;
+}
+.exception-filters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  background: #fff;
+}
+.exception-filters > label:first-child {
+  grid-column: 1/-1;
+}
+.exception-queue {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.exception-queue article,
+.exception-empty,
+.exception-detail {
+  height: 100%;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  min-width: 0;
+}
+.exception-queue h3 {
+  font-size: 1.05rem;
+  margin: 14px 0 8px;
+}
+.exception-job {
+  color: #3e594f;
+  font-weight: 700;
+}
+.exception-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.exception-tags span {
+  background: #e5eee6;
+  color: #25483b;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 5px 9px;
+  border-radius: 8px;
+}
+.exception-detail dl {
+  display: grid;
+  gap: 12px;
+}
+.exception-detail dt {
+  color: #3e594f;
+  font-size: 0.85rem;
+}
+.exception-detail dd {
+  margin: 4px 0 0;
+}
+.exception-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.exception-scroll table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.exception-scroll th,
+.exception-scroll td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #d9e1da;
+}
+.exception-scroll th {
+  color: #3e594f;
+}
+.exception-detail li {
+  overflow-wrap: anywhere;
+}
+.financial-exceptions [role='status'] {
+  background: #e5f0e9;
+  padding: 12px;
+}
+.financial-exceptions [role='alert'] {
+  background: #fff5ef;
+  padding: 12px;
+  border-left: 4px solid #a53b2c;
+}
+@media (max-width: 900px) {
+  .exception-category-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .financial-exceptions {
+    padding: 16px;
+  }
+  .financial-exceptions h2 {
+    font-size: 1.4rem;
+  }
+  .exception-category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .exception-metrics,
+  .exception-filters,
+  .exception-queue {
+    grid-template-columns: 1fr;
+  }
+  .exception-filters > label:first-child {
+    grid-column: auto;
+  }
+  .financial-exceptions button {
+    width: 100%;
+  }
+  .exception-queue article,
+  .exception-empty,
+  .exception-detail {
+    padding: 16px;
+  }
+}
