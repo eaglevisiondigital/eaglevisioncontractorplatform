@@ -754,6 +754,24 @@ export class Operations {
     )
       throw Error('CRM customer/property unavailable');
   }
+  /** Exact synchronous local lead checkpoint; never a connected reader or origin claim. */
+  syntheticIntakeRequest(
+    org: string,
+    customer: string,
+    location: string,
+    request: string,
+  ) {
+    this.syntheticProperty(org, customer, location);
+    const matches = this.requests.filter(
+      (r) =>
+        r.organization_id === org &&
+        r.customer_id === customer &&
+        r.service_location_id === location &&
+        r.id === request,
+    );
+    if (matches.length !== 1) throw Error('Exact synthetic lead unavailable');
+    return structuredClone(matches[0]);
+  }
   /** Current in-memory relationships only; never queries connected membership data. */
   syntheticMemberships(org: string) {
     if (!this.sample) throw Error('Synthetic memberships unavailable');
