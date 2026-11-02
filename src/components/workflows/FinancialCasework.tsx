@@ -132,11 +132,11 @@ function CaseworkDesk({
     [error, setError] = useState(''),
     [workflow, setWorkflow] = useState(false);
   useEffect(() => {
-    const original = gate.current;
+    const admissionRef = gate;
     const epoch = generation;
     return () => {
       epoch.current++;
-      original.confirmed = false;
+      admissionRef.current.confirmed = false;
     };
   }, [sources]);
   useEffect(() => {
