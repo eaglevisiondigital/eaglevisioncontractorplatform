@@ -56,3 +56,48 @@
   outline: 3px solid #00543e;
   outline-offset: 4px;
 }
+
+.job-margin-analysis .job-cost-completion {
+  background: #f5f5ef;
+  border: 1px solid #d9e1da;
+  border-left: 4px solid var(--company-color, #00543e);
+  border-radius: 9px;
+  margin-block: 1rem;
+  padding: 1rem;
+  color: #20352f;
+}
+.job-margin-analysis .job-cost-completion button,
+.job-margin-analysis .job-cost-completion summary {
+  min-height: 46px;
+}
+.job-margin-analysis .job-cost-completion summary {
+  cursor: pointer;
+  padding-block: 0.5rem;
+}
+.job-margin-analysis .job-cost-sources {
+  list-style: none;
+  padding-left: 0;
+}
+.job-margin-analysis .job-cost-sources li {
+  border-top: 1px solid #d9e1da;
+  padding-block: 0.5rem;
+  overflow-wrap: anywhere;
+}
+.job-margin-analysis .job-cost-completion-totals {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 0.5rem 1rem;
+}
+.job-margin-analysis .job-cost-completion-totals dd {
+  margin: 0;
+  text-align: right;
+}
+@media (max-width: 600px) {
+  .job-margin-analysis .job-cost-completion-totals {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .job-margin-analysis .job-cost-completion-totals dd {
+    text-align: left;
+    margin-bottom: 0.5rem;
+  }
+}

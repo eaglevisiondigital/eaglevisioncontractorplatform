@@ -139,7 +139,9 @@ test('source-bound warnings and explicitly confirmed local margin review stay sc
       name: 'Source-bound cost and margin warnings',
     }),
     input = panel.getByLabel('Minimum projected margin (%)'),
-    confirm = panel.getByRole('checkbox'),
+    confirm = panel.getByRole('checkbox', {
+      name: /I confirm this percentage/,
+    }),
     apply = panel.getByRole('button', { name: 'Review margin threshold' });
   for (const [index, company] of [
     'sample-property',
@@ -233,5 +235,155 @@ test('source-bound warnings and explicitly confirmed local margin review stay sc
       'No local minimum-margin review input has been applied',
     );
   }
+  expect(external).toEqual([]);
+});
+
+test('explicit cost-to-complete review preserves actual source provenance, UNKNOWNs and late-read isolation', async ({
+  page,
+}, info) => {
+  const external: string[] = [];
+  page.on('request', (request) => {
+    if (
+      new URL(request.url()).origin !==
+      new URL(String(info.project.use.baseURL)).origin
+    )
+      external.push(request.url());
+  });
+  await page.route('**/preview-job-margin-demo.html', (route) =>
+    route.fulfill({
+      contentType: 'text/html',
+      body: '<html lang="en"><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>Local cost completion review</title></head><body><div id="root"></div></body></html>',
+    }),
+  );
+  await page.goto('/preview-job-margin-demo.html');
+  await page.addStyleTag({
+    content:
+      (await readFile('src/styles.css', 'utf8')) + '\n' + componentStyles,
+  });
+  await page.addScriptTag({ content: script });
+  const panel = page.getByRole('region', {
+      name: 'Cost-to-complete review',
+      exact: true,
+    }),
+    checkbox = panel.getByRole('checkbox'),
+    review = panel.getByRole('button', {
+      name: 'Review exact cost to complete',
+    }),
+    evidence = panel.getByRole('region', {
+      name: 'Exact cost completion evidence',
+    });
+  for (const [index, company] of [
+    'sample-property',
+    'sample-construction',
+    'sample-roofing',
+  ].entries()) {
+    await page.getByLabel('Contractor example').selectOption(String(index));
+    await expect(review).toBeDisabled();
+    await expect(evidence).toHaveCount(0);
+    await page
+      .getByRole('button', {
+        name: 'Prepare synthetic commitment and credit example',
+      })
+      .click();
+    await expect(
+      page.getByRole('button', {
+        name: 'Prepare synthetic commitment and credit example',
+      }),
+    ).toBeEnabled();
+    await checkbox.focus();
+    await page.keyboard.press('Space');
+    await review.focus();
+    await page.keyboard.press('Enter');
+    await expect(evidence).toContainText(
+      'PARTIAL — remaining costs and coverage need review',
+    );
+    await expect(evidence).toContainText(
+      'Cost to complete: commitments + forecast',
+    );
+    await expect(evidence).toContainText(
+      'Void: UNKNOWN · Refund: UNKNOWN · Settlement: UNKNOWN',
+    );
+    await expect(evidence).toBeFocused();
+    const credit = evidence
+      .locator('details')
+      .filter({ has: page.locator('summary').filter({ hasText: 'credit' }) });
+    await credit.locator('summary').click();
+    await expect(credit).toContainText('Exact original expense adjustment');
+    await expect(credit).toContainText(
+      'Internal approved-cost adjustment; no provider refund or void evidence',
+    );
+    expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
+    await mkdir('artifacts/finance', { recursive: true });
+    await page.screenshot({
+      path: `artifacts/finance/job-cost-completion-${info.project.name}-${company}.png`,
+      fullPage: true,
+    });
+    await panel.screenshot({
+      path: `artifacts/finance/job-cost-completion-detail-${info.project.name}-${company}.png`,
+    });
+    await checkbox.uncheck();
+    await expect(evidence).toHaveCount(0);
+    await expect(review).toBeDisabled();
+    await page
+      .getByRole('button', { name: 'Pause next job-source read' })
+      .click();
+    await checkbox.check();
+    await review.click();
+    await expect(panel).toContainText('Reading exact job cost evidence');
+    await checkbox.uncheck();
+    await page
+      .getByRole('button', { name: 'Release paused source reads' })
+      .click();
+    await expect(evidence).toHaveCount(0);
+    await expect(review).toBeDisabled();
+  }
+  await page
+    .getByRole('button', { name: 'Pause next job-source read' })
+    .click();
+  await checkbox.check();
+  await review.click();
+  await page.getByLabel('Contractor example').selectOption('0');
+  await page
+    .getByRole('button', { name: 'Release paused source reads' })
+    .click();
+  await expect(evidence).toHaveCount(0);
+  await expect(checkbox).not.toBeChecked();
+  await checkbox.check();
+  await page.getByRole('button', { name: 'Use field identity' }).click();
+  await expect(evidence).toHaveCount(0);
+  await expect(checkbox).not.toBeChecked();
+  await checkbox.check();
+  await review.click();
+  await expect(panel.getByRole('alert')).toContainText('eligible');
+  await page.getByRole('button', { name: 'Use owner identity' }).click();
+  await page.getByRole('button', { name: 'Toggle missing exact job' }).click();
+  await checkbox.check();
+  await review.click();
+  await expect(evidence).toContainText(
+    'UNKNOWN — cost-to-complete totals withheld',
+  );
+  await expect(
+    evidence.getByText('Projected total: recorded + cost to complete', {
+      exact: true,
+    }),
+  ).toHaveCount(0);
+  await page.getByRole('button', { name: 'Toggle default-off reader' }).click();
+  await checkbox.check();
+  await review.click();
+  await expect(panel.getByRole('alert')).toContainText('disabled');
+  await page
+    .getByRole('button', { name: 'Toggle cost completion extension' })
+    .click();
+  await expect(panel).toHaveCount(0);
+  await page
+    .getByRole('button', { name: 'Toggle cost completion extension' })
+    .click();
+  await expect(checkbox).not.toBeChecked();
+  await expect(evidence).toHaveCount(0);
   expect(external).toEqual([]);
 });
