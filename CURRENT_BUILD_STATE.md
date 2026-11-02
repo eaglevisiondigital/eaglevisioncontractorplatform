@@ -2,6 +2,13 @@
 
 ## Latest: cycle twelve · exact workflow revisions and source-state review
 
+CI portability correction: the first push run recorded480PASS/1compound-test
+timeout at30seconds; its same-head PR integration run passed. Independent review
+adds a finite90second test-only budget to just the three complete six-workflow
+scenarios. All48review cases/assertions and all product expiry/CAS/native wait bounds
+remain exact. Corrected targeted3/full48cases PASS; normal automatic CI checks the
+new source head. [Exact failure/correction evidence](docs/program/CYCLE12_CI_CORRECTION.json).
+
 Six separate feature drafts82–87 are composed as exact34author blobs on Main
 `codex/program-cycle-twelve`, [draft PR81](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/81),
 from exact prior2691fcf9aafb77f831899144c020a8d562222722. No merge or history rewrite.

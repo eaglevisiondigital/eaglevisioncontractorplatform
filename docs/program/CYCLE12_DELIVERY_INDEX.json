@@ -4,15 +4,15 @@
   "coordination_draft_pr": 81,
   "parent_commit": "2691fcf9aafb77f831899144c020a8d562222722",
   "baseline_ci": "docs/program/CYCLE12_BASELINE_CI.json",
-  "independent_review_commit": "822858090a2a87870598cfab1eda5a5546127a82",
+  "independent_review_commit": "05277c58db46ee8d9670199249f60918955a4b75",
   "independent_files": [
     {
       "path": "tests/cycle12-integration.test.ts",
-      "sha256": "c0942052f7445eaedc175cabf585144cab3fdfd8e94908eae83bebf2a6244123"
+      "sha256": "2261de56a0490a3649cf1984da04edb1603121b9957eca51b0e28f901ce46553"
     },
     {
       "path": "docs/program/CYCLE12_INTEGRATION_REVIEW.md",
-      "sha256": "71391308ee011be2251df8222e95ab23cdc3b1522c26731140c96ec40a065699"
+      "sha256": "122e92c0f0cd1067c8715f85586b10b86eb8d3e218e2d87be90dcadcfbb29605"
     }
   ],
   "packages": [

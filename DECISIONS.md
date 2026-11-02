@@ -1,5 +1,10 @@
 # Engineering decisions
 
+Cycle12 CI portability: retain first480PASS/1timeout and same-head PR integration PASS.
+Only three compound six-workflow review tests receive an explicit90second runtime
+budget; all assertions, global/default/native/product deadlines and34author blobs
+stay exact. Independent targeted3/full48 rechecks pass; no manual CI rerun or skip.
+
 ## November2 · extend reviewed proposals without operational authority
 
 Cycle12 adds bounded local revision, verification and cancellation views on exact

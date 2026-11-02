@@ -311,6 +311,8 @@ async function proposals(f: Fixture, v: Views) {
 }
 type Proposals = Awaited<ReturnType<typeof proposals>>;
 
+// Actual CI measured 28.5–30.8s for these complete six-workflow scenarios.
+// Bound only their test execution; product expiry, CAS and native waits are unchanged.
 it.each([0, 1, 2])(
   'brand %i composes all six exact source reviews, original canonical engines and strict customer proof requirements without effects',
   async (brand) => {
@@ -522,6 +524,7 @@ it.each([0, 1, 2])(
     expect(network).not.toHaveBeenCalled();
     writers.forEach((w) => expect(w).not.toHaveBeenCalled());
   },
+  90_000,
 );
 
 it('honest empty financial sources stay UNKNOWN across the actual same-property jobs', async () => {

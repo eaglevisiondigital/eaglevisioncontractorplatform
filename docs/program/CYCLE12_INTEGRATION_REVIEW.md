@@ -1,6 +1,6 @@
 # Cycle12 independent combined-source review
 
-Status: CLEAR within the bounded local source-review scope. No product-source findings remain. This report grants no operational or release authority.
+Status: CLEAR within the bounded local source-review scope. No product-source findings remain. The test-only CI portability correction passes local verification; corrected exact-head CI remains unverified. This report grants no operational or release authority.
 
 ## Exact source scope
 
@@ -77,13 +77,48 @@ validation, not independently claimed browser execution here.
 
 ## Verification
 
-Final exact-byte verification:
+Original local verification at reviewer commit `822858090a2a87870598cfab1eda5a5546127a82`:
 
 - `npx vitest run tests/cycle12-integration.test.ts --reporter=json --outputFile=/private/tmp/propel-cycle12-independent-results.json`: **48 PASS / 0 FAIL / 0 pending**, actual machine-readable result retained at that private path.
 - `npx tsc --noEmit --pretty false`: PASS over all six final author packages and the combined test.
 - `npx eslint tests/cycle12-integration.test.ts`: PASS.
 - Prettier check for both owned files and whitespace checks: PASS.
 - `node scripts/check-cycle11-integrity.mjs`: PASS, including protected and all retained author/independent source identities.
+
+### Actual CI timeout and bounded portability correction
+
+Dedicated Main CI run `41529254948` at exact Main head
+`d0fa1a0d2e32b6f2a755cd2bd60ed2adb6c31b54` recorded **480 PASS / 1 FAIL /
+0 pending** across 481 cases. Its actual retained application JSON is
+`/private/tmp/propel-cycle12-failed-ci/artifacts/cycle12/application-results.json`.
+The sole failure was the third all-six-workflow composition scenario exceeding
+the existing 30-second Vitest execution budget, with no failed assertion. The
+other two composition scenarios also approached that budget:
+
+| Brand scenario | Actual CI duration | Outcome                |
+| -------------- | -----------------: | ---------------------- |
+| 0              |       28,693.799ms | PASS                   |
+| 1              |       28,543.738ms | PASS                   |
+| 2              |       30,838.565ms | Test execution timeout |
+
+Only these three parameterized composition cases receive an explicit finite
+90-second test execution budget. All 48 cases and unconditional assertions remain
+intact, using the actual existing engines. The other 45 cases retain their existing
+30-second default or explicit native-test bound. Product review expiry, admission,
+source/CAS/UNKNOWN semantics, native waits, worker deadlines and all author bytes
+remain unchanged. No global timeout, engine mock, assertion removal or split weakens
+the combined-source check. The original failed CI remains evidence; local success
+does not relabel it green or establish corrected-head CI acceptance. No manual CI
+rerun is requested or performed.
+
+Corrected local verification:
+
+- Targeted test-name filter selected all three complete composition cases: **3 PASS**, with 45 unrelated cases excluded only by the command-line filter. Actual durations were 16,210.693ms, 14,203.188ms and 26,185.104ms. Machine-readable result: `/private/tmp/propel-cycle12-independent-targeted-corrected.json`.
+- Complete unchanged suite: **48 PASS / 0 FAIL / 0 pending**, 166,403.733ms suite duration. Its three composition cases took 13,417.519ms, 11,953.370ms and 16,151.144ms. Machine-readable result: `/private/tmp/propel-cycle12-independent-corrected.json`.
+- Strict TypeScript, scoped ESLint, Prettier and whitespace checks: PASS.
+- Removing only the two explanatory comments and one explicit test-budget argument reproduces the previous test file byte-for-byte. All assertion bodies and 48 cases are unchanged. All 34 author blobs still exactly match their listed commits.
+
+Corrected exact-head automatic CI: UNKNOWN until its new-source run completes.
 
 Independent additional cross-check: five finished author suites (Field, Finance,
 Customer, Intelligence, Advanced) passed 261 cases on exact copied source bytes.

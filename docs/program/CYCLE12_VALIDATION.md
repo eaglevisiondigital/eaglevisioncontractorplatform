@@ -20,7 +20,7 @@ Independent48-case review CLEAR for bounded local/synthetic use only.
 
 Three actual implementation agents executed two concurrent bounded waves in isolated
 worktrees. Independent reviewer `/root/cycle12_independent_review` committed only
-its combined tests and review at `822858090a2a87870598cfab1eda5a5546127a82`. Main owns
+its combined tests and review at `05277c58db46ee8d9670199249f60918955a4b75`. Main owns
 contracts/design, finite optional mount, public-evidence scorecard citations, checks,
 browser evidence and complete acceptance/delivery registers. All specialized assignments ended;
 no completed worker is represented as active or persistent background task.
@@ -109,6 +109,18 @@ where measured. Test listeners stop automatically; the owner's4186preview is unt
 No persistent preview server is left running.
 
 ## GitHub and acceptance boundaries
+
+CI portability correction: the first push run recorded480PASS/1compound-test
+timeout at30seconds; its same-head PR integration run passed. Independent review
+adds a finite90second test-only budget to just the three complete six-workflow
+scenarios. All48review cases/assertions and all product expiry/CAS/native wait bounds
+remain exact. Corrected targeted3/full48cases PASS; normal automatic CI checks the
+new source head. [Exact failure/correction evidence](CYCLE12_CI_CORRECTION.json).
+
+The initial complete local481-case run and51browser cases remain retained evidence.
+The correction rechecks exactly3targeted composition cases and the full48-case
+independent suite; no application assertion is dropped or made conditional. Only
+test scheduling metadata changes, not business code or operational time bounds.
 
 Prior PR74/75 remaining Foundation pairs and every PR74–80 exact-head run nowPASS:
 158successful runs in CYCLE12_BASELINE_CI.json; none manually rerun. Current author
