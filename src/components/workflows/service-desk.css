@@ -1,0 +1,177 @@
+.service-desk {
+  min-width: 0;
+  padding: clamp(1rem, 3vw, 1.75rem);
+  border: 1px solid #d9e1da;
+  border-radius: 18px;
+  background: #fff;
+  color: #20352f;
+  line-height: 1.55;
+}
+.service-desk * {
+  box-sizing: border-box;
+}
+.service-desk-heading {
+  position: static;
+  display: block;
+  height: auto;
+  min-height: 0;
+}
+.service-desk h2 {
+  margin: 0.25rem 0 0.6rem;
+}
+.service-desk h3 {
+  margin: 0.25rem 0 0.65rem;
+}
+.service-desk form {
+  display: flex;
+  align-items: end;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+.service-desk form label {
+  flex: 1 1 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+.service-desk input:not([type='checkbox']),
+.service-desk select {
+  font: inherit;
+  min-height: 44px;
+  min-width: 0;
+  padding: 0.6rem;
+  border: 1px solid #9aada1;
+  border-radius: 8px;
+  background: #fff;
+  color: inherit;
+}
+.service-desk button {
+  font: inherit;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--journey-primary, #247364);
+  border-radius: 8px;
+  background: var(--journey-primary, #247364);
+  color: #fff;
+  cursor: pointer;
+  white-space: normal;
+}
+.service-desk button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.service-desk .service-desk-secondary {
+  margin: 0.5rem;
+  background: #fff;
+  color: var(--journey-primary, #247364);
+}
+.service-desk-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.service-desk-card,
+.service-desk-staff,
+.service-desk-safe {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  background: #f7f7f1;
+  margin: 1rem 0;
+}
+.service-desk-grid .service-desk-card {
+  margin: 0;
+}
+.service-desk-job {
+  margin-top: 1rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid #d9e1da;
+}
+.service-desk-staff {
+  border-top: 3px solid var(--journey-primary, #247364);
+}
+.service-desk-safe {
+  background: #f4f7f5;
+  border-top: 3px solid var(--journey-accent, #dfb461);
+}
+.service-desk p,
+.service-desk dd {
+  overflow-wrap: anywhere;
+}
+.service-desk dl {
+  display: grid;
+  gap: 0.2rem;
+}
+.service-desk dt {
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.service-desk dd {
+  margin: 0 0 0.6rem;
+}
+.service-desk fieldset {
+  min-width: 0;
+  border: 1px solid #d9e1da;
+  border-radius: 10px;
+  margin: 1rem 0;
+  padding: 1rem;
+}
+.service-desk fieldset label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  min-height: 44px;
+  padding: 0.5rem 0;
+}
+.service-desk input[type='checkbox'] {
+  min-width: 20px;
+  height: 20px;
+  margin-top: 0.15rem;
+  accent-color: var(--journey-primary, #247364);
+}
+.service-desk-pages {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.service-desk-boundary {
+  font-size: 0.9rem;
+  color: #566960;
+}
+.service-desk :focus-visible {
+  outline: 3px solid var(--journey-primary, #247364);
+  outline-offset: 3px;
+}
+.service-desk [role='alert'] {
+  border-left: 4px solid #9b4426;
+  background: #fff3e9;
+  color: #71341f;
+  padding: 0.65rem;
+}
+@media (max-width: 760px) {
+  .service-desk-grid {
+    grid-template-columns: 1fr;
+  }
+  .service-desk form,
+  .service-desk-pages {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .service-desk form label {
+    flex: initial;
+  }
+  .service-desk button {
+    width: 100%;
+  }
+  .service-desk .service-desk-secondary {
+    margin: 0.5rem 0;
+  }
+  .service-desk {
+    padding: 1rem;
+  }
+}
