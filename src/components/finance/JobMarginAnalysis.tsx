@@ -1,5 +1,6 @@
 import './job-margin-analysis.css';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import type { JobCostCompletionReview } from '../../lib/job-cost-completion';
 import {
   type MarginScope,
   type MarginReviewInput,
@@ -16,7 +17,9 @@ export function JobMarginAnalysis({
   reader,
   scope,
   actor,
+  completionEnabled = false,
 }: {
+  completionEnabled?: boolean;
   reader: LocalJobMarginReader;
   scope: MarginScope;
   actor: string;
@@ -31,6 +34,7 @@ export function JobMarginAnalysis({
       reader={reader}
       scope={scope}
       actor={actor}
+      completionEnabled={completionEnabled}
     />
   );
 }
@@ -38,7 +42,9 @@ function MarginSnapshot({
   reader,
   scope,
   actor,
+  completionEnabled,
 }: {
+  completionEnabled: boolean;
   reader: LocalJobMarginReader;
   scope: MarginScope;
   actor: string;
@@ -121,6 +127,9 @@ function MarginSnapshot({
         </div>
         {error && <p role="alert">{error}</p>}
       </form>
+      {completionEnabled && (
+        <CompletionReview reader={reader} scope={scope} actor={actor} />
+      )}
       <MarginEvidence
         key={JSON.stringify(review)}
         reader={reader}
@@ -338,5 +347,252 @@ function MarginEvidence({
         </>
       )}
     </>
+  );
+}
+
+/** Exact-context session view. A separate explicit confirmation precedes every read. */
+function CompletionReview({
+  reader,
+  scope,
+  actor,
+}: {
+  reader: LocalJobMarginReader;
+  scope: MarginScope;
+  actor: string;
+}) {
+  const [confirmed, setConfirmed] = useState(false),
+    [busy, setBusy] = useState(false),
+    [error, setError] = useState(''),
+    [result, setResult] = useState<JobCostCompletionReview | null>(null);
+  const lifetime = useRef({
+      admission: { enabled: true, confirmed: false },
+      generation: 0,
+    }),
+    evidence = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    const control = lifetime.current;
+    control.admission.enabled = true;
+    return () => {
+      control.admission.enabled = false;
+      control.admission.confirmed = false;
+      control.generation++;
+    };
+  }, []);
+  const clear = () => {
+    lifetime.current.admission.confirmed = false;
+    lifetime.current.generation++;
+    setConfirmed(false);
+    setBusy(false);
+    setResult(null);
+    setError('');
+  };
+  return (
+    <section
+      className="job-cost-completion"
+      aria-label="Cost-to-complete review"
+    >
+      <h3>Cost-to-complete review</h3>
+      <p>
+        Inspect the exact saved job, issued baseline, expense decisions and
+        locked labor. No changes are posted. A forecast may overlap an unpaid
+        commitment; the existing engine treats them as separate, additive
+        inputs.
+      </p>
+      <label className="job-margin-confirm">
+        <input
+          type="checkbox"
+          checked={confirmed}
+          onChange={(event) => {
+            clear();
+            lifetime.current.admission.confirmed = event.target.checked;
+            setConfirmed(event.target.checked);
+          }}
+        />
+        I confirm this is a local read-only review of the selected job revision.
+      </label>
+      <div className="job-margin-review-actions">
+        <button
+          disabled={!confirmed || busy}
+          onClick={() => {
+            const epoch = ++lifetime.current.generation;
+            setBusy(true);
+            setResult(null);
+            setError('');
+            void reader
+              .readCompletion(scope, actor, lifetime.current.admission)
+              .then((value) => {
+                if (epoch !== lifetime.current.generation) return;
+                setResult(value);
+                requestAnimationFrame(() => {
+                  if (epoch === lifetime.current.generation)
+                    evidence.current?.focus();
+                });
+              })
+              .catch((cause: unknown) => {
+                if (epoch !== lifetime.current.generation) return;
+                setError(
+                  cause instanceof Error
+                    ? cause.message
+                    : 'Exact cost review unavailable',
+                );
+              })
+              .finally(() => {
+                if (epoch === lifetime.current.generation) setBusy(false);
+              });
+          }}
+        >
+          Review exact cost to complete
+        </button>
+        <button type="button" className="secondary" onClick={clear}>
+          Clear cost review
+        </button>
+      </div>
+      {busy && <p role="status">Reading exact job cost evidence…</p>}
+      {error && <p role="alert">{error}</p>}
+      {result && (
+        <section
+          ref={evidence}
+          tabIndex={-1}
+          aria-label="Exact cost completion evidence"
+        >
+          <h4>Saved job cost evidence</h4>
+          <p role="status">
+            {result.status === 'UNKNOWN'
+              ? 'UNKNOWN — cost-to-complete totals withheld'
+              : result.status === 'PARTIAL'
+                ? 'PARTIAL — remaining costs and coverage need review'
+                : 'Management-declared costs complete — not verified physical completion'}
+          </p>
+          <p>{result.authority}</p>
+          <dl>
+            <dt>Job</dt>
+            <dd>{result.scope.jobId}</dd>
+            <dt>Job revision</dt>
+            <dd>{result.scope.jobRevision}</dd>
+            <dt>Issued baseline</dt>
+            <dd>{result.scope.issuedVersionId}</dd>
+            <dt>Customer</dt>
+            <dd>{result.scope.customerId}</dd>
+            <dt>Property</dt>
+            <dd>
+              {result.scope.propertyId ?? 'Not recorded — no inferred property'}
+            </dd>
+          </dl>
+          {result.totals && (
+            <dl className="job-cost-completion-totals">
+              <dt>Recorded expense and locked labor</dt>
+              <dd>
+                {formatMinor(
+                  result.totals.recordedMinor,
+                  result.scope.currency,
+                )}
+              </dd>
+              <dt>Unpaid purchase commitments</dt>
+              <dd>
+                {formatMinor(
+                  result.totals.unpaidCommitmentMinor,
+                  result.scope.currency,
+                )}
+              </dd>
+              <dt>Remaining saved forecast</dt>
+              <dd>
+                {formatMinor(
+                  result.totals.remainingForecastMinor,
+                  result.scope.currency,
+                )}
+              </dd>
+              <dt>Cost to complete: commitments + forecast</dt>
+              <dd>
+                {formatMinor(
+                  result.totals.costToCompleteMinor,
+                  result.scope.currency,
+                )}
+              </dd>
+              <dt>Projected total: recorded + cost to complete</dt>
+              <dd>
+                {formatMinor(
+                  result.totals.projectedMinor,
+                  result.scope.currency,
+                )}
+              </dd>
+            </dl>
+          )}
+          <p>
+            Commitments are already net of recorded purchase costs and credits
+            in the canonical engine. Recorded costs are not added again to cost
+            to complete. Remaining forecasts are not automatically reconciled
+            with commitments.
+          </p>
+          {result.reasons.length > 0 && (
+            <ul>
+              {result.reasons.map((reason) => (
+                <li key={reason}>{reason}</li>
+              ))}
+            </ul>
+          )}
+          <h4>Exact expense and review sources</h4>
+          {result.expenses.length ? (
+            <ul className="job-cost-sources">
+              {result.expenses.map((row) => (
+                <li key={row.id}>
+                  <details>
+                    <summary>
+                      {row.category} · {row.kind} ·{' '}
+                      {formatMinor(row.amountMinor, result.scope.currency)} ·{' '}
+                      {row.review?.decision ?? 'pending review'}
+                    </summary>
+                    <dl>
+                      <dt>Expense</dt>
+                      <dd>{row.id}</dd>
+                      <dt>Review event</dt>
+                      <dd>
+                        {row.review?.id ??
+                          'Missing — excluded from canonical cost'}
+                      </dd>
+                      <dt>Cost inclusion</dt>
+                      <dd>
+                        {row.inclusion === 'CANONICAL_SOURCE'
+                          ? 'Approved canonical source; commitments may already be offset'
+                          : 'Excluded — not approved'}
+                      </dd>
+                      <dt>Exact original expense adjustment</dt>
+                      <dd>
+                        {row.adjustsExpenseId ?? 'Not a credit adjustment'}
+                      </dd>
+                      <dt>Estimate line</dt>
+                      <dd>
+                        {row.sourceLineId ?? 'Unmapped — no inferred line'}
+                      </dd>
+                      <dt>Recorded quantity (thousandths) / unit</dt>
+                      <dd>
+                        {row.quantityMilli ?? 'Not recorded'} /{' '}
+                        {row.unit ?? 'Not recorded'}
+                      </dd>
+                    </dl>
+                    <p>{row.meaning}</p>
+                  </details>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>
+              No accessible expense-source rows in this exact review. Missing
+              evidence is not zero cost.
+            </p>
+          )}
+          <h4>Provider provenance remains UNKNOWN</h4>
+          <p>{result.providerEvidence.reason}</p>
+          <p>
+            Void: UNKNOWN · Refund: UNKNOWN · Settlement: UNKNOWN. No payment
+            event has been substituted from another source.
+          </p>
+          <p>
+            Labor source entries: {result.laborSource.entryIds.length} · locked
+            periods: {result.laborSource.lockedPeriodIds.length}.{' '}
+            {result.laborSource.meaning}
+          </p>
+        </section>
+      )}
+    </section>
   );
 }

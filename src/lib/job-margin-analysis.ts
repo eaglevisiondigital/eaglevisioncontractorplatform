@@ -8,6 +8,11 @@ import {
 } from '../domain/jobs/margin-analysis';
 import type { Job } from '../domain/jobs/financials';
 import { sampleCompanies } from '../domain/platform';
+import {
+  completionReviewGuard,
+  projectJobCostCompletion,
+  type CompletionReviewAdmission,
+} from './job-cost-completion';
 
 function coverage(workforce: WorkforceData, job: Job): LaborCoverage {
   const entries = workforce.entries.filter((e) => e.job_id === job.id);
@@ -128,17 +133,22 @@ export class LocalJobMarginReader {
     if (!member?.active || !['owner', 'admin'].includes(member.role))
       throw Error('Current eligible synthetic financial staff required');
   }
-  async read(
+  private async readEvidence(
     scope: MarginScope,
     actor: string,
     review: MarginReviewInput | null = null,
+    guard: () => void = () => {},
   ) {
     const request = detached(scope),
       reviewInput = detached(review);
-    this.access(request.organizationId, actor);
+    const check = () => {
+      guard();
+      this.access(request.organizationId, actor);
+    };
+    check();
     const capture = async () => {
       const jobs = await this.repo.jobs(request.organizationId);
-      this.access(request.organizationId, actor);
+      check();
       if (jobs.filter((j) => j.id === request.jobId).length > 1)
         throw Error('Ambiguous exact job');
       const job = jobs.find((j) => j.id === request.jobId) ?? null;
@@ -147,12 +157,12 @@ export class LocalJobMarginReader {
             await this.repo.history(request.organizationId, request.estimateId)
           ).filter((v) => v.id === request.issuedVersionId)
         : [];
-      this.access(request.organizationId, actor);
+      check();
       if (issued.length > 1) throw Error('Ambiguous issued source');
       const workforce = job
         ? await this.repo.workforce(request.organizationId)
         : null;
-      this.access(request.organizationId, actor);
+      check();
       if (request.propertyId !== null)
         this.repo.operations.syntheticProperty(
           request.organizationId,
@@ -168,7 +178,7 @@ export class LocalJobMarginReader {
             '',
             page,
           );
-          this.access(request.organizationId, actor);
+          check();
           if (
             customers.rows.some(
               (c) =>
@@ -203,9 +213,32 @@ export class LocalJobMarginReader {
     };
     const first = await capture();
     const final = await capture();
-    this.access(request.organizationId, actor);
+    check();
     if (JSON.stringify(first) !== JSON.stringify(final))
       throw Error('Job sources changed during read; refresh exact selection');
-    return projectLocalJobMargin(final, { enabled: true });
+    return final;
+  }
+  async read(
+    scope: MarginScope,
+    actor: string,
+    review: MarginReviewInput | null = null,
+  ) {
+    const evidence = await this.readEvidence(scope, actor, review);
+    this.access(evidence.scope.organizationId, actor);
+    return projectLocalJobMargin(evidence, { enabled: true });
+  }
+  /** Explicit, session-only review; no writer, provider event inference or dispatch. */
+  async readCompletion(
+    scope: MarginScope,
+    actor: string,
+    admission: CompletionReviewAdmission = { enabled: false, confirmed: false },
+  ) {
+    const guard = completionReviewGuard(admission);
+    guard();
+    const evidence = await this.readEvidence(scope, actor, null, guard);
+    guard();
+    this.access(evidence.scope.organizationId, actor);
+    const margin = projectLocalJobMargin(evidence, { enabled: true });
+    return projectJobCostCompletion(margin, evidence.job);
   }
 }

@@ -35,7 +35,27 @@ if (allowed)
           propertyId: issued.payload.location_id,
           currency: job.baseline.currency,
         };
+        const jobs = repo.jobs.bind(repo);
+        let pauseNext = false;
+        let release: (() => void) | null = null;
+        repo.jobs = async (...args) => {
+          const result = await jobs(...args);
+          if (pauseNext) {
+            pauseNext = false;
+            await new Promise<void>((resolve) => {
+              release = resolve;
+            });
+            release = null;
+          }
+          return result;
+        };
         return {
+          pauseNext: () => {
+            pauseNext = true;
+          },
+          release: () => {
+            release?.();
+          },
           company,
           repo,
           scope,
@@ -49,6 +69,7 @@ if (allowed)
         [role, actor] = useState('owner'),
         [missing, absent] = useState(false),
         [enabled, enable] = useState(true),
+        [completionVisible, showCompletion] = useState(true),
         [scopes, updateScopes] = useState<Record<string, MarginScope>>({}),
         [busy, setBusy] = useState(false),
         [error, setError] = useState('');
@@ -121,6 +142,80 @@ if (allowed)
             Prepare synthetic cost-risk example
           </button>
           {error && <p role="alert">{error}</p>}
+          <button
+            disabled={busy}
+            onClick={() => {
+              setBusy(true);
+              setError('');
+              void (async () => {
+                let payment = '';
+                for (const [kind, amount] of [
+                  ['commitment', 10000],
+                  ['payment', 4000],
+                  ['credit', 1000],
+                ] as const) {
+                  const id = await workspace.repo.submitExpense(
+                    workspace.company.id,
+                    currentScope.jobId,
+                    {
+                      kind,
+                      category: 'equipment',
+                      amount_minor: amount,
+                      supplier: 'Synthetic equipment supplier',
+                      purchase_key: 'completion-review-example',
+                      reference: crypto.randomUUID(),
+                      description: 'Synthetic source review',
+                      estimate_line_id: null,
+                      quantity_milli: 1000,
+                      unit: 'each',
+                      unit_cost_minor: amount,
+                      document_ids: [],
+                      material_approval_id: null,
+                      adjusts_expense_id: kind === 'credit' ? payment : null,
+                    },
+                  );
+                  if (kind === 'payment') payment = id;
+                  await workspace.repo.reviewExpense(
+                    workspace.company.id,
+                    currentScope.jobId,
+                    id,
+                    'approved',
+                    'Explicit synthetic review',
+                  );
+                }
+                const job = (
+                  await workspace.repo.jobs(workspace.company.id)
+                ).find((row) => row.id === currentScope.jobId)!;
+                updateScopes((old) => ({
+                  ...old,
+                  [workspace.company.id]: {
+                    ...currentScope,
+                    jobRevision: job.lock_revision,
+                  },
+                }));
+              })()
+                .catch((cause) =>
+                  setError(
+                    cause instanceof Error
+                      ? cause.message
+                      : 'Synthetic source preparation unavailable',
+                  ),
+                )
+                .finally(() => setBusy(false));
+            }}
+          >
+            Prepare synthetic commitment and credit example
+          </button>
+          <button onClick={() => workspace.pauseNext()}>
+            Pause next job-source read
+          </button>
+          <button
+            onClick={() =>
+              workspaces.forEach((workspace) => workspace.release())
+            }
+          >
+            Release paused source reads
+          </button>
           <button onClick={() => actor('field')}>Use field identity</button>
           <button onClick={() => actor('estimator')}>
             Use estimator identity
@@ -132,7 +227,11 @@ if (allowed)
           <button onClick={() => enable(!enabled)}>
             Toggle default-off reader
           </button>
+          <button onClick={() => showCompletion(!completionVisible)}>
+            Toggle cost completion extension
+          </button>
           <JobMarginAnalysis
+            completionEnabled={completionVisible}
             reader={enabled ? workspace.reader : workspace.disabled}
             scope={
               missing
