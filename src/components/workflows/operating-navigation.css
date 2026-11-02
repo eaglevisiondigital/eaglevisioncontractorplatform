@@ -1,0 +1,188 @@
+.operating-navigation {
+  min-width: 0;
+  padding: 24px;
+  color: #20352f;
+  background: #f5f5ef;
+  border: 1px solid #d9e1da;
+  border-radius: 16px;
+}
+.operating-navigation * {
+  box-sizing: border-box;
+}
+.operating-navigation :is(h2, h3, h4, p, li, dd, dt, button, label) {
+  overflow-wrap: anywhere;
+}
+.operating-navigation h2 {
+  font-size: 1.65rem;
+  margin: 4px 0 12px;
+}
+.operating-navigation h3 {
+  margin-top: 0;
+}
+.operating-navigation h4 {
+  margin-bottom: 8px;
+}
+.operating-navigation .navigation-intro {
+  position: static;
+  display: block;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+}
+.operating-navigation .navigation-eyebrow {
+  color: #3e594f;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.operating-navigation .navigation-muted {
+  color: #3e594f;
+  font-size: 0.9rem;
+}
+.operating-navigation label {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+}
+.operating-navigation :is(input:not([type='checkbox']), select) {
+  min-height: 44px;
+  min-width: 0;
+  width: 100%;
+  color: #20352f;
+  background: white;
+}
+.operating-navigation button {
+  min-height: 44px;
+  max-width: 100%;
+  padding: 10px 14px;
+  color: white;
+  background: var(--journey-primary, #247364);
+  white-space: normal;
+}
+.operating-navigation button:disabled {
+  color: #3e594f;
+  background: #d9e1da;
+}
+.operating-navigation :focus-visible {
+  outline: 3px solid var(--journey-primary, #247364);
+  outline-offset: 4px;
+}
+.operating-navigation fieldset {
+  min-width: 0;
+  padding: 16px;
+  margin: 16px 0;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+}
+.operating-navigation legend {
+  font-weight: 700;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.operating-navigation .navigation-confirm {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-height: 44px;
+  margin: 16px 0;
+}
+.operating-navigation .navigation-confirm input {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+.operating-navigation .navigation-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 12px 0;
+}
+.operating-navigation .navigation-filters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+.operating-navigation .navigation-layout {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.85fr) minmax(0, 1.15fr);
+  gap: 20px;
+  align-items: start;
+}
+.operating-navigation .navigation-card {
+  min-width: 0;
+  padding: 20px;
+  background: white;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+}
+.operating-navigation .navigation-queue {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.operating-navigation .navigation-queue > li {
+  border-top: 1px solid #d9e1da;
+  padding: 16px 0;
+}
+.operating-navigation .navigation-status {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 8px;
+  color: #25483b;
+  background: #e5eee6;
+  font-weight: 700;
+}
+.operating-navigation .navigation-identity {
+  font-size: 0.85rem;
+  color: #3e594f;
+}
+.operating-navigation dl {
+  display: grid;
+  gap: 5px;
+}
+.operating-navigation dt {
+  font-weight: 700;
+  color: #3e594f;
+}
+.operating-navigation dd {
+  margin: 0 0 10px;
+}
+.operating-navigation summary {
+  min-height: 44px;
+  padding: 12px 0;
+  font-weight: 700;
+  cursor: pointer;
+}
+.operating-navigation .navigation-source {
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+}
+.operating-navigation pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: #20352f;
+  background: #f5f5ef;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 0.85rem;
+}
+@media (max-width: 760px) {
+  .operating-navigation {
+    padding: 16px;
+  }
+  .operating-navigation .navigation-layout,
+  .operating-navigation .navigation-filters {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .operating-navigation .navigation-card {
+    padding: 16px;
+  }
+  .operating-navigation .navigation-actions > button {
+    width: 100%;
+  }
+}

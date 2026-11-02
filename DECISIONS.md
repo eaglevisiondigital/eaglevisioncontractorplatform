@@ -1,5 +1,23 @@
 # Engineering decisions
 
+## November2 · Cycle13 source-bound operating continuity
+
+Owner direction authorizes seven separately owned local draft packages and an
+independent combined review. Six functional desks extend existing sources/engines;
+Design/QA supplies a finite actual-image comparison tool and truthful approval inventory.
+No duplicate property/inspection/estimate/financial/consent system is introduced.
+Presentation-only exact job-section navigation is validated independently of authority.
+Digest-only work-order custody and manual original advanced-control selectors remain
+explicit limits, not operational persistence or automatic handoff claims.
+
+The source register retains its original25capability stage/approval/CI values. New
+public citations and visual evidence do not accept PhaseOne recovery, P1, customer14,
+4B/broker, Auth/MFA, NMI, Netlify or production release. All13histories/four frozen
+artifacts/approvals/2A–2F/billing and locked designs remain intact. No merge, deployment,
+hosted mutation, dispatch, communication, financial/provider execution or persistent
+background work is authorized. Exact Cycle12 c41a242 now has all21runs SUCCESS,
+including both Foundation and dedicated checks, without any manual rerun.
+
 Cycle12 CI portability: retain first480PASS/1timeout and same-head PR integration PASS.
 Only three compound six-workflow review tests receive an explicit90second runtime
 budget; all assertions, global/default/native/product deadlines and34author blobs

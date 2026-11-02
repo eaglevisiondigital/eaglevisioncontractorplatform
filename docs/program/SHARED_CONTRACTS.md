@@ -1,5 +1,41 @@
 # Shared contracts and integration ownership
 
+## Cycle13 operating desks and presentation navigation
+
+Six additive desks reuse the exact existing OperatingSources, company membership,
+CRM/property/job/report/issued-version records and original one-use review controls.
+No business store, calculation engine, schema, ledger, dispatcher or sender is added.
+Admission precedes descriptors/serialization; original handles, current membership,
+source revisions, input and gate are rechecked after final awaits and navigation.
+UNKNOWN never permits another attempt, new digest/view/label or replacement source.
+
+Work-order instructions are explicit staff proposals, separate from immutable issued
+scope. The existing C12 journal binds their full-payload digest through the original
+command/series/predecessor contract. This is digest custody only: text remains
+caller-held and missing exact payload reconciles UNKNOWN. The browser is not wired
+to that journal. Finance reads canonical saved costs and exact invoice/event/ledger
+relationships; missing linkage and cost coverage stay UNKNOWN. Passport distinguishes
+recorded job links from manually selected context and never verifies physical work.
+Growth planning and historical channel evidence do not establish current consent.
+
+OperatingJobSection is a presentation-only exported C13 union of six EXISTING job
+sections: sales, field, finance, completion, maintenance and daily. The optional
+onSelectJob(jobId, section?) callback retains old one-argument focus behavior. Main
+captures one current authorized job, denies unknown sections and focuses the existing
+component; it grants no action authority. Intelligence maps only evidenced source
+kinds, inspects first, then checks again immediately before callback.
+
+Advanced source inspection can open the unchanged original C12 controls on the same
+repository root. Those controls retain independent explicit job/mode selectors; this
+is a manual handoff, not an automatically bound same-job/mode proposal. Original
+engine reservations and UNKNOWN holds remain authoritative across new desk views.
+
+Visual evidence is distinct from approval. Three exact existing local approval scopes,
+five locked files and thirteen bindings stay fixed. A PNG/hash or green test does not
+approve a new Operating Center or add-on design. Missing external originals and
+unproven capture commits remain MISSING/UNKNOWN. No original18 ID,25record stage,
+approval, hosted status or release gate is promoted.
+
 ## Cycle12 proposal and verification contracts
 
 All six packages reuse exact OperatingSources and C11 canonical readers, original

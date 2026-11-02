@@ -1,5 +1,42 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Cycle13 · functioning source-bound operating candidate
+
+Seven separate author drafts89–95 are composed as37exact source blobs on
+`codex/program-cycle-thirteen`, [coordination draft PR88](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/88),
+from exact c41a2424a0bd098905fd60965ef7f78447f1c753. No merge or parent rewrite.
+Six working desks cover work-order instruction proposals, financial casework,
+service/Passport source continuity, follow-up requirements, exact task navigation
+and the original seven advanced review modes. Design/QA adds a strict actual-PNG
+gallery and approval inventory. All new capabilities remain default-OFF/unwired.
+
+525unique application cases PASS across11exact files, including42independent combined
+cases;63all-brand desktop/tablet/mobile development cases,3production-OFF cases
+and9approved reference/current capture scenarios PASS.99real PNGs retained;
+45images form18approved-reference/current pairs plus9Operating Center states
+without an approved reference. Existing approvals/artwork stay locked. Two external
+original records are MISSING; Operating Center/add-on visual promotion is NOT APPROVED.
+A screenshot/hash or green CI never supplies visual, hosted or release authority.
+
+Work-order text remains caller-held; only its digest composes the unchanged C12
+journal. Advanced original controls retain independent explicit job/mode selection.
+Missing physical completion, cost coverage and current consent remain UNKNOWN.
+The original25capability stages/approvals/CI and18scope IDs stay unchanged.
+All128protected hashes/216prior author files/five locks/thirteen bindings PASS.
+
+[Exact packages/source hashes](docs/program/CYCLE13_DELIVERY_INDEX.json),
+[actual validation](docs/program/CYCLE13_VALIDATION.md),
+[independent review](docs/program/CYCLE13_INTEGRATION_REVIEW.md),
+[visual approval inventory](docs/program/CYCLE13_VISUAL_APPROVAL_REVIEW.md) and
+[exact CI snapshot](docs/program/CYCLE13_CI_SNAPSHOT.json) keep evidence separate.
+Prior C12 c41a242 now has all21checks SUCCESS; none was manually rerun.
+Current C13 pending checks are not called green.
+
+All13/customer14/original4B/P1/four/approvals/2A–2F/billing/Netlify/executor/
+recovery/Auth/MFA/NMI/financial/provider/communication/hosted/production restrictions
+remain intact. No credentials, dispatch, messages, financial execution, hosted
+mutation, migration, deployment or merge. Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Latest: cycle twelve · exact workflow revisions and source-state review
 
 CI portability correction: the first push run recorded480PASS/1compound-test

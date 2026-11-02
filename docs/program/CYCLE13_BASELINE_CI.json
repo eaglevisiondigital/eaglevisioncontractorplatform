@@ -1,0 +1,434 @@
+{
+  "schema": "propel-cycle13-baseline-ci-v1",
+  "baseline_commit": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+  "coordination_draft_pr": 81,
+  "checked_at": "2026-11-02 22:25:12 UTC",
+  "runs": [
+    {
+      "id": 41531817601,
+      "name": "Cycle 6 local workflow integration",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817601",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817600,
+      "name": "Cycle 9 multi-job operating center",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817600",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817618,
+      "name": "Cycle 10 everyday operating reviews",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817618",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817620,
+      "name": "Cycle 11 source-bound workflow laboratories",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817620",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817665,
+      "name": "Cycle 12 exact workflow revision and verification",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817665",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817756,
+      "name": "Proof of Work documentation preview",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817756",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817568,
+      "name": "Passport timeline preview",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817568",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817701,
+      "name": "Isolated crew-day capacity",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817701",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817938,
+      "name": "Isolated field work orders",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817938",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817726,
+      "name": "Cycle 8 connected operating reviews",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817726",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817625,
+      "name": "Isolated maintenance schedule handoff",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817625",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817537,
+      "name": "Cycle 7 practical local usability",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817537",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817654,
+      "name": "Isolated field scheduling",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817654",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817596,
+      "name": "Isolated technician day board",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817596",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817762,
+      "name": "Synthetic rehearsal compatibility",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817762",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817655,
+      "name": "Foundation checks",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817655",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531812626,
+      "name": "Synthetic rehearsal compatibility",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531812626",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531812711,
+      "name": "Cycle 12 exact workflow revision and verification",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531812711",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531812597,
+      "name": "Passport timeline preview",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531812597",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531812833,
+      "name": "Proof of Work documentation preview",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531812833",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531812543,
+      "name": "Foundation checks",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531812543",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    }
+  ],
+  "manual_reruns": 0,
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "initial_checked_at": "2026-11-02 22:03:27 UTC",
+  "initial_runs": [
+    {
+      "id": 41531817756,
+      "name": "Proof of Work documentation preview",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817756",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817568,
+      "name": "Passport timeline preview",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817568",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817701,
+      "name": "Isolated crew-day capacity",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817701",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817938,
+      "name": "Isolated field work orders",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817938",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817726,
+      "name": "Cycle 8 connected operating reviews",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817726",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817625,
+      "name": "Isolated maintenance schedule handoff",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817625",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817537,
+      "name": "Cycle 7 practical local usability",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817537",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817654,
+      "name": "Isolated field scheduling",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817654",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817665,
+      "name": "Cycle 12 exact workflow revision and verification",
+      "event": "pull_request",
+      "status": "in_progress",
+      "conclusion": null,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817665",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817655,
+      "name": "Foundation checks",
+      "event": "pull_request",
+      "status": "in_progress",
+      "conclusion": null,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817655",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817596,
+      "name": "Isolated technician day board",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817596",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817762,
+      "name": "Synthetic rehearsal compatibility",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817762",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817601,
+      "name": "Cycle 6 local workflow integration",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817601",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817600,
+      "name": "Cycle 9 multi-job operating center",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817600",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817618,
+      "name": "Cycle 10 everyday operating reviews",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817618",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531817620,
+      "name": "Cycle 11 source-bound workflow laboratories",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531817620",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531812626,
+      "name": "Synthetic rehearsal compatibility",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531812626",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531812543,
+      "name": "Foundation checks",
+      "event": "push",
+      "status": "in_progress",
+      "conclusion": null,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531812543",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531812597,
+      "name": "Passport timeline preview",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531812597",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531812711,
+      "name": "Cycle 12 exact workflow revision and verification",
+      "event": "push",
+      "status": "in_progress",
+      "conclusion": null,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531812711",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    },
+    {
+      "id": 41531812833,
+      "name": "Proof of Work documentation preview",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41531812833",
+      "head_sha": "c41a2424a0bd098905fd60965ef7f78447f1c753",
+      "attempt": 1
+    }
+  ],
+  "final_verdict": "ALL_21_EXACT_HEAD_RUNS_SUCCESS_NO_MANUAL_RERUN"
+}

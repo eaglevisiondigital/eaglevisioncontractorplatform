@@ -325,6 +325,28 @@ export function sourceOwner(path) {
     )
   )
     return 'A8';
+  // Cycle13 disjoint metadata lanes; never access grants.
+  if (
+    /OperatingCenterCycleThirteen|^tests\/program\/.*cycle13|cycle13-integration|playwright\.cycle13|check-cycle13-|cycle13-visual-comparison|cycle13-build-visual-evidence/.test(
+      path,
+    )
+  )
+    return 'A8';
+  if (
+    /work-order-revisions|WorkOrderRevisions|cycle13-work-order-worker/.test(
+      path,
+    )
+  )
+    return 'A3';
+  if (/financial-casework|FinancialCasework/.test(path)) return 'A4';
+  if (/service-passport-desk|ServicePassportDesk/.test(path)) return 'A5';
+  if (
+    /follow-up-readiness|FollowUpReadiness|operating-navigation|OperatingNavigation/.test(
+      path,
+    )
+  )
+    return 'A6';
+  if (/addon-review-desk|AddonReviewDesk/.test(path)) return 'A7';
   // Cycle12 exact review lanes; classification never grants runtime authority.
   if (
     /OperatingCenterCycleTwelve|^tests\/program\/.*cycle12|cycle12-integration|playwright\.cycle12|check-cycle12-/.test(

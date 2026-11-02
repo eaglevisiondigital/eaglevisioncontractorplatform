@@ -1,5 +1,29 @@
 # Shared design-system specification · cycle two
 
+## Cycle13 visual evidence without redesign or approval promotion
+
+The six new desks remain in an initially collapsed review group. Original8primary,
+6Cycle10,7Cycle11 and6Cycle12 navigation entries and the approved customer/back-office
+layouts stay unchanged. New scoped styles consume the existing contractor primary
+and accent colors, contain source identifiers and provide44px touch controls, visible
+labels, keyboard-readable tables and focusable exact-source headings. Definition terms
+use an explicit existing dark color to avoid inheriting low-contrast muted text.
+
+The visual inventory maps original approved artwork, the exact transparent derivative,
+locked CSS and public approval records. The comparison generator embeds actual PNG
+bytes without edits, uses hashes and finite public paths, rejects private links and
+never infers approval or pixel equality. Current-versus-retained reference captures
+cover all three brands and desktop/tablet/mobile; the known approved logo treatment
+is a scoped exception. New Operating Center/add-on visual promotion remains pending
+explicit owner acceptance, and absent external originals are not reconstructed.
+
+Approved reference captures use the local production build, as the retained approved
+browser suite does; new operational desks are DEV/loopback/default-OFF and tested
+separately. This does not activate connected customer routes. An uncommitted local
+capture is labeled WORKING_TREE_UNCOMMITTED, never assigned an invented exact SHA.
+Normal CI captures identify the actual checkout. No artwork, palette or locked token
+is regenerated. Source/hash integrity, accessibility and owner approval remain separate.
+
 ## Cycle12 additive review navigation
 
 The new six-panel Cycle12 group is initially collapsed. Existing8primary sections,
