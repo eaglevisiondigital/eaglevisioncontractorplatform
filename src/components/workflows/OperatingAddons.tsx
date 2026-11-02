@@ -249,7 +249,13 @@ function AddonForm({
           <p>Integrity: {view.sha256}</p>
           <details>
             <summary>Inspect exact source-bound evidence</summary>
-            <pre>{JSON.stringify(view.snapshot.evidence, null, 2)}</pre>
+            <pre
+              tabIndex={0}
+              role="region"
+              aria-label="Advanced tool source evidence"
+            >
+              {JSON.stringify(view.snapshot.evidence, null, 2)}
+            </pre>
           </details>
           <button
             onClick={() => {
