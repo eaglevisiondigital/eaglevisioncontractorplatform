@@ -1,8 +1,16 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import {
+  lazy,
+  Suspense,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import type { CompanyProfile } from '../../domain/platform';
 import type { PropertyRepository } from '../../lib/property';
 import {
   confirmCrewAssignment,
+  fieldWorkOrdersEnabled,
   dailyCrewSchedule,
   openFieldWorkOrder,
   readFieldWorkOrders,
@@ -13,6 +21,17 @@ import {
 } from '../../lib/field-work-orders';
 import { useResource } from '../forms-state';
 import './field-work-orders.css';
+const CrewCapacityPreview = lazy(() =>
+  import('./CrewCapacityPreview').then((m) => ({
+    default: m.CrewCapacityPreview,
+  })),
+);
+const capacityEnabled = fieldWorkOrdersEnabled({
+  development: import.meta.env.DEV,
+  flag: import.meta.env.VITE_FIELD_CREW_CAPACITY_PREVIEW,
+  hostname: window.location.hostname,
+  protocol: window.location.protocol,
+});
 
 export function FieldWorkOrdersPreview({
   company,
@@ -427,6 +446,19 @@ function CrewDay({
               )}
             </section>
           </div>
+          {capacityEnabled && (
+            <Suspense
+              fallback={<p role="status">Loading crew-day capacity review…</p>}
+            >
+              <CrewCapacityPreview
+                key={generation}
+                repo={repo}
+                model={model}
+                day={day}
+                onSource={(order) => void open(order)}
+              />
+            </Suspense>
+          )}
           {selected && (
             <section
               className="wo-detail"

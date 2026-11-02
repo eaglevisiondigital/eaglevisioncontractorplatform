@@ -344,8 +344,8 @@ export async function readFieldWorkOrders(
     orders,
   };
 }
-/** A stale or copied card cannot navigate to a different job, source or crew. */
-export async function openFieldWorkOrder(
+/** Admit an exact retained producer card without invoking caller getters/serializers. */
+export function fieldWorkOrderBinding(
   repo: PropertyRepository,
   org: string,
   actor: string,
@@ -356,10 +356,45 @@ export async function openFieldWorkOrder(
     !claim ||
     claim.repo !== repo ||
     claim.org !== org ||
-    claim.actor !== actor ||
-    claim.display !== JSON.stringify(order)
+    claim.actor !== actor
   )
     throw Error('Exact retained work-order reference required');
+  if (eligible(repo, org, actor) !== claim.manager)
+    throw Error('Sample staff access changed. Reload field records.');
+  const compare = (value: unknown, expected: unknown): boolean => {
+    if (!expected || typeof expected !== 'object') return value === expected;
+    if (
+      !value ||
+      typeof value !== 'object' ||
+      Object.getPrototypeOf(value) !== Object.getPrototypeOf(expected)
+    )
+      return false;
+    const descriptors = Object.getOwnPropertyDescriptors(value),
+      keys = Reflect.ownKeys(expected);
+    if (Reflect.ownKeys(value).length !== keys.length) return false;
+    return keys.every((key) => {
+      if (typeof key !== 'string') return false;
+      const descriptor = descriptors[key];
+      return (
+        !!descriptor &&
+        'value' in descriptor &&
+        compare(descriptor.value, (expected as Record<string, unknown>)[key])
+      );
+    });
+  };
+  if (!compare(order, JSON.parse(claim.display)))
+    throw Error('Exact retained work-order data fields required');
+  return claim.display;
+}
+/** A stale or copied card cannot navigate to a different job, source or crew. */
+export async function openFieldWorkOrder(
+  repo: PropertyRepository,
+  org: string,
+  actor: string,
+  order: WorkOrder,
+) {
+  fieldWorkOrderBinding(repo, org, actor, order);
+  const claim = claims.get(order)!;
   if (eligible(repo, org, actor) !== claim.manager)
     throw Error('Sample staff access changed. Reload field records.');
   const current = (await readFieldWorkOrders(repo, org, actor)).orders.find(
@@ -367,6 +402,7 @@ export async function openFieldWorkOrder(
   );
   if (eligible(repo, org, actor) !== claim.manager)
     throw Error('Sample staff access changed. Reload field records.');
+  fieldWorkOrderBinding(repo, org, actor, order);
   const fresh = current && claims.get(current);
   if (
     !current ||
@@ -374,7 +410,7 @@ export async function openFieldWorkOrder(
     !same(claim.job, fresh.job) ||
     !same(claim.version, fresh.version) ||
     claim.propertyState !== fresh.propertyState ||
-    !same(current, order)
+    fresh.display !== claim.display
   )
     throw Error(
       'Work-order source changed or access unavailable. Reload field records.',
