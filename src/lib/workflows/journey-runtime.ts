@@ -11,8 +11,8 @@ import {
 } from '../program/prototype-source';
 
 export interface JourneyAdmission {
-  enabled?: boolean;
-  confirmed?: boolean;
+  enabled: boolean;
+  confirmed: boolean;
 }
 export function journeyEnabled(environment: {
   development: boolean;
@@ -114,6 +114,32 @@ export async function prepareLocalJourney(
   // A separate explicit engineering fixture, never permission derived from a preference/contract packet.
   const jobId = await estimates.approveJob(company.id, issued);
   admit(gate);
+  // Existing internal cost-review evidence only: no payment, purchase order or ledger.
+  const commitment = await estimates.submitExpense(company.id, jobId, {
+    purchase_key: crypto.randomUUID(),
+    supplier: 'Synthetic planning supplier',
+    reference: 'LOCAL-COMMITMENT-ONLY',
+    category: 'materials',
+    kind: 'commitment',
+    amount_minor: 12500,
+    description:
+      'Local assumed material commitment for cost review; no purchase executed.',
+    estimate_line_id: null,
+    quantity_milli: null,
+    unit: null,
+    unit_cost_minor: null,
+    document_ids: [],
+    material_approval_id: null,
+  });
+  admit(gate);
+  await estimates.reviewExpense(
+    company.id,
+    jobId,
+    commitment,
+    'approved',
+    'Explicit synthetic engineering fixture; no payment authority.',
+  );
+  admit(gate);
   const actor = `${company.id}-owner`;
   const workforce = await estimates.workforce(company.id);
   const worker = workforce.workers.find(
@@ -187,6 +213,13 @@ export async function prepareLocalJourney(
   property.submit(company.id, visit);
   visit = property.read(company.id).visits.find((v) => v.id === visit.id)!;
   const report = property.publish(company.id, visit);
+  // Retain a separate actual scheduling draft; a date-only visit is not dispatch.
+  const scheduledVisit = property.addVisit(
+    company.id,
+    plan.id,
+    '2026-12-28',
+    'during',
+  );
   const target: PrototypeTarget = {
     organization_id: company.id,
     actor_id: actor,
@@ -221,11 +254,12 @@ export async function prepareLocalJourney(
     intake_request_id: lead.id,
     offer_id: offer[0].id,
     receipt_id: receipts[0].id,
-    day,
+    day: scheduledVisit.visited_on,
     timezone: 'America/Chicago',
     worker_id: worker.id,
     plan_id: plan.id,
     visit_id: visit.id,
+    scheduled_visit_id: scheduledVisit.id,
     report_id: report.id,
     published_version: report.version,
     issued,

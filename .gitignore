@@ -31,3 +31,6 @@ artifacts/property-design/
 
 # Disposable Workstream 2C stdio-service compilation; never an application artifact.
 artifacts/maintenance-service-*/
+
+# Local synthetic Cycle 6 browser evidence; CI retains its own bounded artifact.
+artifacts/cycle6/

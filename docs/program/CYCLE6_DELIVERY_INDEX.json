@@ -1,0 +1,272 @@
+{
+  "schema": "propel-cycle6-delivery-v1",
+  "coordination_branch": "codex/program-cycle-six",
+  "coordination_pr": 38,
+  "parent_commit": "de38d803327ebb7bd8ecf9c94324db5605b30040",
+  "reviewed_source_composition": "9d9d1bcdcac3777a60cfbd2c4f829a691ca1dd9d",
+  "shared_runtime_commit": "58dfbd9c298495d6f82adbb08e46d892fdd395fe",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "packages": [
+    {
+      "package": "Sales",
+      "owner": "/root/cycle6_sales",
+      "branch": "codex/cycle6-sales",
+      "head_commit": "d2909a470713e808bc324a2e5d67b2a3967c94af",
+      "source_base": "857299483bd2d9423e75632b1209fed0fe65be43",
+      "draft_pr": 39,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/39",
+      "focused_new_tests": 32,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE6_SALES_WORKFLOW.md",
+          "sha256": "7747f8030619076eff4c50599e7b9f5c733986d41893bfa804c4c97d2ee8438c"
+        },
+        {
+          "path": "src/components/workflows/SalesWorkflow.tsx",
+          "sha256": "c43c924060f2f62a38f379934c2688dca85592423f9c922a565a1dd8d1dc263a"
+        },
+        {
+          "path": "src/components/workflows/sales-workflow.css",
+          "sha256": "2c50319d51903eed8bd770ea7ee95d4859d847f014f97da13348f0379b7b3d8b"
+        },
+        {
+          "path": "src/lib/workflows/sales-workflow.ts",
+          "sha256": "2f675709532f2080f69c7370ade15f0fd2f7f6d86b4a02776ff9a450d2c470e0"
+        },
+        {
+          "path": "tests/workflows/sales-workflow-fixture.ts",
+          "sha256": "faf2850d039bc675fcc4af9f77126baa8977eddc6e020ba4813567c07e5772df"
+        },
+        {
+          "path": "tests/workflows/sales-workflow.test.ts",
+          "sha256": "64e0addd83ad3bbe8e866db14a236f79f6cf3a585fae77a27c80f070a0806d67"
+        }
+      ]
+    },
+    {
+      "package": "Field",
+      "owner": "/root/cycle5_operations",
+      "branch": "codex/cycle6-field",
+      "head_commit": "9e8ed2d7502a75fbcc4c36d9ec9dfff7d0042917",
+      "source_base": "857299483bd2d9423e75632b1209fed0fe65be43",
+      "draft_pr": 40,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/40",
+      "focused_new_tests": 34,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/workflows/FIELD_WORKFLOW.md",
+          "sha256": "bb2677331be9fee6525e06751323b13c1c7db767d0f1283c86b5fc574c9eed13"
+        },
+        {
+          "path": "src/components/workflows/FieldWorkflow.tsx",
+          "sha256": "c34c4fd0cc4f7b8c380eea7dd37cee03dfc38ac02c0e3f411fd06dafd2987803"
+        },
+        {
+          "path": "src/components/workflows/field-workflow.css",
+          "sha256": "ce8b4bb1e23df4327acca34212815c164e0d6f0075574f77cd14417f9b088503"
+        },
+        {
+          "path": "src/lib/workflows/field-workflow.ts",
+          "sha256": "e7b36caddd5cd3499f098271888536dd810ebc81f6912b4060295f3c9c9289f1"
+        },
+        {
+          "path": "tests/browser/fixtures/cycle6-field.html",
+          "sha256": "f47b0d4272c84f82017769ce13ab15a48b82cc25f0b4e0c5d46e598bad652fc3"
+        },
+        {
+          "path": "tests/browser/fixtures/cycle6-field.tsx",
+          "sha256": "8c1af43d807310b6c32b20c72984723fc967b711e6aad22aa57d7b48e54c1fac"
+        },
+        {
+          "path": "tests/program-field-workflow.test.ts",
+          "sha256": "c35ea700bd02267837dd432edff43dde0eb168ec40bd600062ef4f7daf83f64c"
+        },
+        {
+          "path": "tests/program/cycle6-field.spec.ts",
+          "sha256": "2e889a520d5670c115b04d329291fb745dac538dc3edf68166c6ee537257e39e"
+        },
+        {
+          "path": "tests/program/playwright.cycle6-field.config.ts",
+          "sha256": "a6405f4f0008adc81c43f21eef15a371bf6a99c3f4dc0bad44c819c90dc52eb5"
+        }
+      ]
+    },
+    {
+      "package": "Finance",
+      "owner": "/root/cycle5_profit_guard",
+      "branch": "codex/cycle6-finance",
+      "head_commit": "f115a428ffd41c285051bfc41e5278614217b02c",
+      "source_base": "857299483bd2d9423e75632b1209fed0fe65be43",
+      "draft_pr": 41,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/41",
+      "focused_new_tests": 36,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE6_FINANCE_WORKFLOW.md",
+          "sha256": "cccec0b3dd7fb2c4d3ee227fe3d38bcf2a72ebe679bb507104688a3d881dc8a8"
+        },
+        {
+          "path": "src/components/workflows/FinanceWorkflow.tsx",
+          "sha256": "06f23df2e0ce9a5549ae3aece63177234f6407bed12089a784a2b58ef6bdf7f1"
+        },
+        {
+          "path": "src/components/workflows/finance-workflow.css",
+          "sha256": "a119a37d82e18f68e8c43fda07d9b8ce7c09b89c16586f0a6497e69d74d61b58"
+        },
+        {
+          "path": "src/lib/workflows/finance-workflow.ts",
+          "sha256": "c02f3e65aba0c9d3572464cd469aa38f965255bc08de677f89f7e8cb742e70b7"
+        },
+        {
+          "path": "tests/cycle6-finance-workflow.test.ts",
+          "sha256": "0ce3f9cffcaa416cb3fd7b9e298284aa06297fd4018cc353f8576e03406075db"
+        }
+      ]
+    },
+    {
+      "package": "Customer",
+      "owner": "/root/cycle6_sales",
+      "branch": "codex/cycle6-customer",
+      "head_commit": "c0f5276431cba959d4814497a6ae948b40eedd7d",
+      "source_base": "58dfbd9c298495d6f82adbb08e46d892fdd395fe",
+      "draft_pr": 42,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/42",
+      "focused_new_tests": 29,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE6_CUSTOMER_WORKFLOW.md",
+          "sha256": "91dcbc15dcf2d341be76550a5d9c609622ac212c0000852d1e0b2f0318ff68cc"
+        },
+        {
+          "path": "src/components/workflows/CustomerWorkflow.tsx",
+          "sha256": "58993ee5bb33daba6d9166355f56095d99c555ffbbe4c974fdd20e3ae40eff76"
+        },
+        {
+          "path": "src/components/workflows/customer-workflow.css",
+          "sha256": "964c792e78a732f21235ad8311671b8bfe45a44004c650c01bc254404dd9677f"
+        },
+        {
+          "path": "src/lib/workflows/customer-workflow.ts",
+          "sha256": "82df3964a2de093ccd72d449d6afe29765b10f993da65362735c512c58fb8d4e"
+        },
+        {
+          "path": "tests/workflows/customer-workflow.test.ts",
+          "sha256": "c873dc8815c6f62f72bab258276e7ad7318ee84efa01ccbb32564d85c52a564f"
+        }
+      ]
+    },
+    {
+      "package": "Growth",
+      "owner": "/root/cycle5_operations",
+      "branch": "codex/cycle6-growth",
+      "head_commit": "2f63fce4b97bdcf9667f1f6acfbcf1f498d736c9",
+      "source_base": "58dfbd9c298495d6f82adbb08e46d892fdd395fe",
+      "draft_pr": 43,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/43",
+      "focused_new_tests": 39,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/workflows/GROWTH_WORKFLOW.md",
+          "sha256": "70e4b09a76a5a24571091d023d76545666bc6f062338634e033f90ad47e44ae8"
+        },
+        {
+          "path": "src/components/workflows/GrowthWorkflow.tsx",
+          "sha256": "d699bfa661140a60e9d1ffb0c6982cfe0469005e06a287343c535aaff03fa59d"
+        },
+        {
+          "path": "src/components/workflows/growth-workflow.css",
+          "sha256": "211e560cb013d378b6535e8f8bd234c46c452c2c1a2c0b7937aa97fc5a87ae39"
+        },
+        {
+          "path": "src/lib/workflows/growth-workflow.ts",
+          "sha256": "2cc783f8382cb43d276b32ca7b372c811aced511e582276f53de96de746251dd"
+        },
+        {
+          "path": "tests/program-growth-workflow.test.ts",
+          "sha256": "794d4fb1725eb57e4f736a9edaffafc26f3f725008333f6e4b3ffa7ea730a730"
+        }
+      ]
+    },
+    {
+      "package": "Intelligence",
+      "owner": "/root/cycle5_profit_guard",
+      "branch": "codex/cycle6-intelligence",
+      "head_commit": "bc52dffaf8720c5124df6ff63663ccc91b715525",
+      "source_base": "58dfbd9c298495d6f82adbb08e46d892fdd395fe",
+      "draft_pr": 44,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/44",
+      "focused_new_tests": 40,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE6_INTELLIGENCE_WORKFLOW.md",
+          "sha256": "b3308c161ced506b65592b154d729dd2294582faacec452b9ddf5348539d650b"
+        },
+        {
+          "path": "src/components/workflows/IntelligenceWorkflow.tsx",
+          "sha256": "03b446945700120c95f5bc7c12968d4d1fcc424fbb000c27d3a05de4b20245f5"
+        },
+        {
+          "path": "src/components/workflows/intelligence-workflow.css",
+          "sha256": "af648b01edb0a492756626764a9cb5021c9ff9e28dd47d206afd3158f8f27919"
+        },
+        {
+          "path": "src/lib/workflows/intelligence-workflow.ts",
+          "sha256": "4adb1701c5f8550c6c1204b8c30cc4446b2541516945653fda27fa562ca2f587"
+        },
+        {
+          "path": "tests/cycle6-intelligence-workflow.test.ts",
+          "sha256": "ad7afaf92922c839246f108b677fcacfe3ae1fc12a7b222b9c0bcd82c2bea828"
+        }
+      ]
+    },
+    {
+      "package": "Secondary Operations",
+      "owner": "/root/cycle5_operations",
+      "branch": "codex/cycle6-operations",
+      "head_commit": "43e5145759c8efa9e66426d251beab958d834113",
+      "source_base": "58dfbd9c298495d6f82adbb08e46d892fdd395fe",
+      "draft_pr": 45,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/45",
+      "focused_new_tests": 42,
+      "status": "LOCAL_TESTED_UNMOUNTED_NO_UI_CLAIM",
+      "owned_files": [
+        {
+          "path": "docs/workflows/OPERATIONS_WORKFLOW.md",
+          "sha256": "a9ef55b3178cb220c47a3f1eb7c50d8362bb6645b3c17f62ad3b5aa555066886"
+        },
+        {
+          "path": "src/lib/workflows/operations-workflow.ts",
+          "sha256": "0bbfe8c6353921b7ab3ba7f726e4de2efc7d8e6a53ee9cd5cc15874c6bd804a7"
+        },
+        {
+          "path": "tests/program-operations-workflow.test.ts",
+          "sha256": "2fec682208a52ae021a5f8c2ed2db11fa35183e591dae2c1ad45cbc08932ba1e"
+        }
+      ]
+    }
+  ],
+  "combined_evidence": {
+    "domain": "Current focused test evidence is documented in CYCLE6_VALIDATION.md; overlapping retained suites are not added.",
+    "browser_cases": 18,
+    "browser_scope": "15 complete journey/context/cancellation cases across all brands/viewports;3 production-default-off cases.",
+    "independent_cases": 17,
+    "protected_public_files": 128,
+    "locked_design_files": 5,
+    "source_bindings": 13,
+    "workflow_application_cases": 273,
+    "source_inventory_cases": 42,
+    "total_application_cases": 315
+  },
+  "limits": [
+    "Original PRs remain draft and unmerged; explicit local source composition is not operational promotion.",
+    "No genuine Auth, durable custody, dispatch, physical completion, legal approval, invoice creation, payment, recipient or sending.",
+    "Missing labor/cost coverage and atomic consent remain UNKNOWN; no inference or replay.",
+    "Secondary booking/offline/Storm/Network composition is independently reviewed and unmounted; workforce currentness remains CAPTURED_NOT_ATOMIC/capacity authority UNVERIFIED."
+  ]
+}

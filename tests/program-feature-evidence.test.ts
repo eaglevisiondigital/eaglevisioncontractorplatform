@@ -316,3 +316,31 @@ it('routes cycle-four actual source and test paths without promoting styles or w
   expect(sourceOwner('src/components/field/crew-capacity.css')).toBe('A8');
   expect(sourceOwner('.github/workflows/field-crew-capacity.yml')).toBe('A8');
 });
+
+it.each([
+  ['src/lib/workflows/journey-runtime.ts', 'A1'],
+  ['src/components/workflows/ContractorJourneyPreview.tsx', 'A8'],
+  ['src/lib/workflows/sales-workflow.ts', 'A2'],
+  ['src/lib/workflows/field-workflow.ts', 'A3'],
+  ['src/lib/workflows/operations-workflow.ts', 'A3'],
+  ['src/lib/workflows/finance-workflow.ts', 'A4'],
+  ['src/lib/workflows/customer-workflow.ts', 'A5'],
+  ['src/lib/workflows/growth-workflow.ts', 'A6'],
+  ['src/lib/workflows/intelligence-workflow.ts', 'A6'],
+  ['src/lib/program/procurement-review.ts', 'A7'],
+  ['src/lib/controlled-integration-contracts.ts', 'A7'],
+  ['src/lib/program/voice-estimate.ts', 'A6'],
+  ['src/lib/program/business-copilot.ts', 'A6'],
+  ['tests/cycle6-intelligence-workflow.test.ts', 'A6'],
+  ['tests/program-operations-workflow.test.ts', 'A3'],
+  ['tests/workflows/customer-workflow.test.ts', 'A5'],
+  ['tests/workflows/cycle6-independent-review.test.ts', 'A8'],
+  ['tests/cycle6-operations-independent-review.test.ts', 'A8'],
+  ['src/components/workflows/intelligence-workflow.css', 'A8'],
+  ['.github/workflows/cycle6-journey.yml', 'A8'],
+])(
+  'routes actual cohesive source %s to review owner %s without changing access',
+  (path, owner) => {
+    expect(sourceOwner(path)).toBe(owner);
+  },
+);

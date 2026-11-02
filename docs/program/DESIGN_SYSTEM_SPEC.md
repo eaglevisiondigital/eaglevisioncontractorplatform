@@ -178,3 +178,20 @@ the remainder of the back office and customer experience remain intact.
 - Unmounted expansion domain prototypes make no UI/accessibility claim. Any future
   mount must use these same tokens and receive actual responsive/keyboard/axe/source
   navigation evidence before separate integration review.
+
+## Cycle-six cohesive workflow presentation
+
+The isolated contractor journey reuses the current palettes, warm surfaces, typography,
+transparent approved attribution and existing components. It adds no global style or
+artwork changes. New scoped source labels use sufficient contrast on white/warm cards;
+all company/customer/property/source handoffs retain exact identity. Legal preparation,
+recorded visit dates, internal cost coverage, customer documentation and reminder review
+are separately labeled; no color-only authority status. Context/confirmation changes
+hide old results immediately. Main owns the route and shared journey confirmation;
+each panel retains its own explicit source review and currentness checks.
+
+Contract snapshots remain staff-only. Customer panels receive allowlisted published
+report/issued scope evidence, never the staff cost/assignment/source snapshot. Mobile
+stacks comparisons and source cards without page overflow; desktop/tablet preserve
+readable hierarchy. Actual browser, keyboard/axe and context-reset evidence is required
+for the combined candidate; passing domain tests is not visual acceptance.

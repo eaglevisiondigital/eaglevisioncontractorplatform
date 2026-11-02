@@ -7,8 +7,7 @@
     "Inventory maps existing public source and retained evidence; it is not a fresh full security audit.",
     "Separate draft PRs for sales, finance and field are not integrated into this source baseline.",
     "Historical Action B core connected PASS is retained; all new hosted lifecycle acceptance remains blocked.",
-    "Cycle-two, Cycle-three and Cycle-four child candidates remain separate draft PRs; their tested source is not silently integrated into this coordination baseline.",
-    "Cycle-five fourteen local candidates remain separate unmerged drafts23\u201337; tested prototype evidence does not promote operational scope into this coordination baseline."
+    "Cycle6 explicitly composes reviewed local candidates on draft PR38 for source-bound testing only. Original PRs remain unmerged; no hosted or release status is promoted."
   ],
   "features": [
     {
@@ -125,8 +124,8 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review paginated customer/location selection without creating duplicate CRM.",
-      "date": "2026-11-01",
+      "next": "Review the source-bound local intake/issued-scope/receipt handoff in draft39; recorded estimate-origin linkage and operational authentication remain separate.",
+      "date": "2026-11-02",
       "dataObjects": [
         "public.customers",
         "public.service_locations",
@@ -143,12 +142,20 @@
         {
           "path": "src/lib/operations.ts",
           "anchor": "export class Operations"
+        },
+        {
+          "path": "src/lib/workflows/sales-workflow.ts",
+          "anchor": "export async function readSalesWorkflow"
         }
       ],
       "tests": [
         {
           "path": "tests/operations-preview.test.ts",
           "anchor": "paginates and filters synthetic CRM records without mixing company workspaces"
+        },
+        {
+          "path": "tests/workflows/sales-workflow.test.ts",
+          "anchor": "actual lead \u2192 exact issued scope \u2192 contract preparation"
         }
       ],
       "records": [
@@ -159,6 +166,10 @@
         {
           "path": "docs/ACTION_B_CONNECTED_RESULT.md",
           "anchor": "# Propel \u00b7 Action B connected acceptance result"
+        },
+        {
+          "path": "docs/program/CYCLE6_INDEPENDENT_REVIEW.md",
+          "anchor": "# Cycle 6 independent integration review"
         }
       ],
       "ci": {
@@ -178,8 +189,8 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review exact Cycle5 candidate heads and retained combined proof; keep default-OFF/unwired and pursue source-custody or isolated workspace composition without real execution.",
-      "date": "2026-11-01",
+      "next": "Review Cycle6 exact issued scope and immutable contract-preparation references without signing or canonical-engine changes.",
+      "date": "2026-11-02",
       "dataObjects": [
         "public.estimates",
         "public.estimate_versions",
@@ -200,12 +211,20 @@
         {
           "path": "src/domain/estimating/calculation.ts",
           "anchor": "export function calculateEstimate"
+        },
+        {
+          "path": "src/lib/workflows/sales-workflow.ts",
+          "anchor": "export async function prepareSalesWorkflowContract"
         }
       ],
       "tests": [
         {
           "path": "tests/estimating.test.ts",
           "anchor": "rounds unit price before extension and reconciles payment shares"
+        },
+        {
+          "path": "tests/workflows/sales-workflow.test.ts",
+          "anchor": "actual lead \u2192 exact issued scope \u2192 contract preparation"
         }
       ],
       "records": [
@@ -236,6 +255,10 @@
         {
           "path": "docs/program/CYCLE5_DELIVERY_INDEX.json",
           "anchor": "\"schema\": \"propel-cycle5-delivery-v1\""
+        },
+        {
+          "path": "docs/program/CYCLE6_INDEPENDENT_REVIEW.md",
+          "anchor": "# Cycle 6 independent integration review"
         }
       ],
       "ci": {
@@ -307,8 +330,8 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review exact Cycle5 candidate heads and retained combined proof; keep default-OFF/unwired and pursue source-custody or isolated workspace composition without real execution.",
-      "date": "2026-11-01",
+      "next": "Local contract-preparation snapshot is implemented; genuine legal approval, signatures, custody and delivery remain unverified.",
+      "date": "2026-11-02",
       "dataObjects": [
         "Immutable estimate scope",
         "private signature evidence",
@@ -329,12 +352,20 @@
         {
           "path": "src/domain/jobs/financials.ts",
           "anchor": "export interface ChangeOrder"
+        },
+        {
+          "path": "src/lib/workflows/sales-workflow.ts",
+          "anchor": "export async function prepareSalesWorkflowContract"
         }
       ],
       "tests": [
         {
           "path": "tests/signature-provider.test.ts",
           "anchor": "binds sandbox completion to original bytes, signer, consent, account and immutable evidence hashes"
+        },
+        {
+          "path": "tests/workflows/sales-workflow.test.ts",
+          "anchor": "actual lead \u2192 exact issued scope \u2192 contract preparation"
         }
       ],
       "records": [
@@ -365,6 +396,10 @@
         {
           "path": "docs/program/CYCLE5_DELIVERY_INDEX.json",
           "anchor": "\"schema\": \"propel-cycle5-delivery-v1\""
+        },
+        {
+          "path": "docs/program/CYCLE6_INDEPENDENT_REVIEW.md",
+          "anchor": "# Cycle 6 independent integration review"
         }
       ],
       "ci": {
@@ -441,8 +476,8 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review exact Cycle5 candidate heads and retained combined proof; keep default-OFF/unwired and pursue source-custody or isolated workspace composition without real execution.",
-      "date": "2026-11-01",
+      "next": "Review draft40 exact job/crew/date-only evidence/report handoff; actual timed availability, dispatch and offline operational acceptance remain blocked.",
+      "date": "2026-11-02",
       "dataObjects": [
         "Existing jobs/assignments/time entries/breaks",
         "employer week and policy"
@@ -465,12 +500,20 @@
         {
           "path": "src/domain/workforce/payroll.ts",
           "anchor": "export function preparePayroll"
+        },
+        {
+          "path": "src/lib/workflows/field-workflow.ts",
+          "anchor": "export async function readFieldWorkflow"
         }
       ],
       "tests": [
         {
           "path": "tests/jobs-workforce.test.ts",
           "anchor": "rejects overlaps across jobs, including open clocks and breaks"
+        },
+        {
+          "path": "tests/program-field-workflow.test.ts",
+          "anchor": "company %s follows actual job, crew, day and published report without effects"
         }
       ],
       "records": [
@@ -497,6 +540,10 @@
         {
           "path": "docs/program/CYCLE5_DELIVERY_INDEX.json",
           "anchor": "\"schema\": \"propel-cycle5-delivery-v1\""
+        },
+        {
+          "path": "docs/program/CYCLE6_INDEPENDENT_REVIEW.md",
+          "anchor": "# Cycle 6 independent integration review"
         }
       ],
       "ci": {
@@ -516,8 +563,8 @@
       "hosted": "blocked",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review PR3 exact event-to-posting verifier fix and finite NMI acceptance plan.",
-      "date": "2026-11-01",
+      "next": "Review draft41 canonical invoice requirements without invoice or ledger creation; NMI/merchant/token/settlement/consent acceptance remains separate.",
+      "date": "2026-11-02",
       "dataObjects": [
         "Existing internal/sandbox invoice and payment events",
         "ledger entries",
@@ -537,12 +584,20 @@
         {
           "path": "src/domain/platform.ts",
           "anchor": "export const paymentCapabilities"
+        },
+        {
+          "path": "src/lib/workflows/finance-workflow.ts",
+          "anchor": "export async function readFinanceWorkflow"
         }
       ],
       "tests": [
         {
           "path": "tests/payments-sandbox.test.ts",
           "anchor": "formats currency exactly without floating-point multiplication"
+        },
+        {
+          "path": "tests/cycle6-finance-workflow.test.ts",
+          "anchor": "describe("
         }
       ],
       "records": [
@@ -553,6 +608,10 @@
         {
           "path": "docs/BILLING_ENHANCEMENTS_PROPOSED.json",
           "anchor": "{"
+        },
+        {
+          "path": "docs/program/CYCLE6_INDEPENDENT_REVIEW.md",
+          "anchor": "# Cycle 6 independent integration review"
         }
       ],
       "ci": {
@@ -572,8 +631,8 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review exact Cycle5 candidate heads and retained combined proof; keep default-OFF/unwired and pursue source-custody or isolated workspace composition without real execution.",
-      "date": "2026-11-01",
+      "next": "Review current source-bound cost coverage and optional exact accounting/procurement handoffs; missing labor and final costs remain UNKNOWN.",
+      "date": "2026-11-02",
       "dataObjects": [
         "Existing job baseline",
         "expenses/events",
@@ -591,12 +650,20 @@
         {
           "path": "src/domain/jobs/financials.ts",
           "anchor": "export function jobFinancials"
+        },
+        {
+          "path": "src/lib/workflows/finance-workflow.ts",
+          "anchor": "export async function readFinanceWorkflow"
         }
       ],
       "tests": [
         {
           "path": "tests/jobs-workforce.test.ts",
           "anchor": "forecasts include remaining costs and approved labor only once"
+        },
+        {
+          "path": "tests/cycle6-finance-workflow.test.ts",
+          "anchor": "describe("
         }
       ],
       "records": [
@@ -623,6 +690,10 @@
         {
           "path": "docs/program/CYCLE5_DELIVERY_INDEX.json",
           "anchor": "\"schema\": \"propel-cycle5-delivery-v1\""
+        },
+        {
+          "path": "docs/program/CYCLE6_INDEPENDENT_REVIEW.md",
+          "anchor": "# Cycle 6 independent integration review"
         }
       ],
       "ci": {
@@ -694,8 +765,8 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review exact Cycle5 candidate heads and retained combined proof; keep default-OFF/unwired and pursue source-custody or isolated workspace composition without real execution.",
-      "date": "2026-11-01",
+      "next": "Review draft42 exact shared-job/report Passport and immutable documentation pack; physical completion, warranty, Auth and delivery remain unverified.",
+      "date": "2026-11-02",
       "dataObjects": [
         "Reuse existing CRM location, report/version, job and private media contracts"
       ],
@@ -710,9 +781,18 @@
         {
           "path": "docs/PRODUCT_PROGRAM_2026.md",
           "anchor": "Property Passport"
+        },
+        {
+          "path": "src/lib/workflows/customer-workflow.ts",
+          "anchor": "export async function prepareCustomerWorkflowPack"
         }
       ],
-      "tests": [],
+      "tests": [
+        {
+          "path": "tests/workflows/customer-workflow.test.ts",
+          "anchor": "same-repository Field \u2192 customer Passport documentation"
+        }
+      ],
       "records": [
         {
           "path": "docs/PRODUCT_PROGRAM_2026.md",
@@ -737,6 +817,10 @@
         {
           "path": "docs/program/CYCLE5_DELIVERY_INDEX.json",
           "anchor": "\"schema\": \"propel-cycle5-delivery-v1\""
+        },
+        {
+          "path": "docs/program/CYCLE6_INDEPENDENT_REVIEW.md",
+          "anchor": "# Cycle 6 independent integration review"
         }
       ],
       "ci": {
@@ -756,8 +840,8 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review exact Cycle5 candidate heads and retained combined proof; keep default-OFF/unwired and pursue source-custody or isolated workspace composition without real execution.",
-      "date": "2026-11-01",
+      "next": "Review draft43 maintenance opportunities and explicit staff proposals; enrollment, atomic purpose/channel consent, suppression and sending remain blocked.",
+      "date": "2026-11-02",
       "dataObjects": [
         "Existing inspection recurrence",
         "proposed consent/billing linkage"
@@ -773,9 +857,18 @@
         {
           "path": "docs/PRODUCT_PROGRAM_2026.md",
           "anchor": "recurring maintenance"
+        },
+        {
+          "path": "src/lib/workflows/growth-workflow.ts",
+          "anchor": "export async function readGrowthWorkflow"
         }
       ],
-      "tests": [],
+      "tests": [
+        {
+          "path": "tests/program-growth-workflow.test.ts",
+          "anchor": "company %s connects actual journey published finding, weekly plan and blocked visit proposal without effects"
+        }
+      ],
       "records": [
         {
           "path": "docs/BILLING_ENHANCEMENTS_PROPOSED.json",
@@ -800,6 +893,10 @@
         {
           "path": "docs/program/CYCLE5_DELIVERY_INDEX.json",
           "anchor": "\"schema\": \"propel-cycle5-delivery-v1\""
+        },
+        {
+          "path": "docs/program/CYCLE6_INDEPENDENT_REVIEW.md",
+          "anchor": "# Cycle 6 independent integration review"
         }
       ],
       "ci": {
@@ -880,8 +977,8 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review exact Cycle5 candidate heads and retained combined proof; keep default-OFF/unwired and pursue source-custody or isolated workspace composition without real execution.",
-      "date": "2026-11-01",
+      "next": "Review draft44 actual-source Copilot and literal Voice/Trade/optional Procurement composition; no model, action executor or provider activation.",
+      "date": "2026-11-02",
       "dataObjects": [
         "Existing estimate draft and quarantine/extraction contracts"
       ],
@@ -896,9 +993,18 @@
         {
           "path": "docs/PRODUCT_PROGRAM_2026.md",
           "anchor": "voice-to-estimate"
+        },
+        {
+          "path": "src/lib/workflows/intelligence-workflow.ts",
+          "anchor": "export async function prepareIntelligenceWorkflow"
         }
       ],
-      "tests": [],
+      "tests": [
+        {
+          "path": "tests/cycle6-intelligence-workflow.test.ts",
+          "anchor": "describe("
+        }
+      ],
       "records": [
         {
           "path": "docs/PHASE3A_WORKER.md",
@@ -911,6 +1017,10 @@
         {
           "path": "docs/program/CYCLE5_DELIVERY_INDEX.json",
           "anchor": "\"schema\": \"propel-cycle5-delivery-v1\""
+        },
+        {
+          "path": "docs/program/CYCLE6_INDEPENDENT_REVIEW.md",
+          "anchor": "# Cycle 6 independent integration review"
         }
       ],
       "ci": {

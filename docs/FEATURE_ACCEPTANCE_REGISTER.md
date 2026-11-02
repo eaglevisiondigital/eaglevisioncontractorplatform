@@ -34,6 +34,19 @@ cases passed in their respective jobs. This is retained evidence, not a rerun or
 certification of the new packages. QA-001 has no prior CI claim. Current branch/PR
 results belong in [delivery status](PROGRAM_DELIVERY_STATUS.md).
 
+## Cycle-six local integration candidate
+
+The owner now authorizes explicit local integration of the reviewed Cycle5 sources.
+[Shared workflow contract](program/CYCLE6_SHARED_WORKFLOWS.md) defines one default-OFF
+loopback demonstration over the same Operations/Phase3/Property/ReleasePreview instances.
+Coordination is draft PR38; Sales39 and Field40 are separate bounded draft branches.
+Source composition is explicit in commits9d9d1bc and8572994, not a PR merge or
+operational promotion. Existing reports, estimates, source IDs and calculation engines
+remain authoritative. Full-capability local/hosted/release states below remain partial,
+blocked/not accepted and NOT AUTHORIZED. Original eighteen IDs and25records stay intact.
+Exact final package heads, combined tests and independent review belong in the current
+master delivery register; no queued CI is called successful.
+
 ## Cycle-four candidates (separate, unmerged)
 
 Five bounded implementations extend the actual reviewed Cycle3 sources: source-bound

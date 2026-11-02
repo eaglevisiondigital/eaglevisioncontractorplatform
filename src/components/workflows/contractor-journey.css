@@ -1,0 +1,244 @@
+.contractor-journey {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 28px;
+  color: #243d35;
+  background: #f5f4ef;
+  min-height: 100vh;
+  --journey-primary: #00543e;
+  --journey-accent: #48f5ad;
+}
+.contractor-journey * {
+  box-sizing: border-box;
+}
+.contractor-journey h1 {
+  font-size: clamp(1.75rem, 3vw, 2.7rem);
+  margin: 0.25rem 0;
+}
+.contractor-journey h2 {
+  font-size: 1.35rem;
+  margin: 0 0 1rem;
+}
+.contractor-journey p {
+  line-height: 1.6;
+}
+.journey-header {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  margin-bottom: 28px;
+}
+.journey-header img {
+  max-width: 150px;
+  max-height: 80px;
+  object-fit: contain;
+}
+.journey-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.11em;
+  color: var(--journey-primary);
+  margin: 0;
+}
+.journey-badge {
+  margin-left: auto;
+  border: 1px solid #577267;
+  border-radius: 99px;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+.journey-card,
+.journey-controls {
+  background: #fff;
+  border: 1px solid #d8dfd7;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 20px #18352b05;
+}
+.journey-controls summary {
+  font-weight: 650;
+  cursor: pointer;
+}
+.journey-controls label {
+  display: block;
+  margin: 14px 0;
+}
+.contractor-journey select {
+  display: block;
+  margin-top: 8px;
+  max-width: 100%;
+  min-height: 44px;
+}
+.journey-check {
+  display: flex !important;
+  gap: 12px;
+  align-items: start;
+}
+.journey-check input {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.contractor-journey button,
+.journey-nav a {
+  min-height: 44px;
+  border-radius: 8px;
+  font: inherit;
+  padding: 10px 14px;
+}
+.contractor-journey button {
+  background: var(--journey-primary);
+  color: white;
+  border: 1px solid var(--journey-primary);
+  cursor: pointer;
+}
+.contractor-journey button:disabled {
+  background: #57695f;
+  cursor: default;
+  opacity: 0.65;
+}
+.contractor-journey :focus-visible {
+  outline: 3px solid #007b66;
+  outline-offset: 4px;
+}
+.journey-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0;
+}
+.journey-nav a {
+  color: var(--journey-primary);
+  background: #fff;
+  border: 1px solid #bdcfc3;
+  text-decoration: none;
+}
+.journey-context {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 20px;
+}
+.journey-context p:last-child {
+  grid-column: 1/-1;
+}
+.journey-context dl {
+  margin: 0;
+  min-width: 0;
+}
+.journey-context dt {
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-top: 8px;
+}
+.journey-context dd {
+  margin: 4px 0;
+  overflow-wrap: anywhere;
+  font-size: 0.85rem;
+}
+.journey-error {
+  background: #fff2ee;
+  border: 1px solid #a24222;
+  padding: 16px;
+  border-radius: 10px;
+}
+.contractor-journey footer {
+  text-align: center;
+  font-size: 0.78rem;
+  color: #486057;
+  padding: 25px;
+}
+.contractor-journey footer img {
+  max-width: 180px;
+  background: transparent;
+}
+.contractor-journey section {
+  scroll-margin-top: 20px;
+  min-width: 0;
+}
+.contractor-journey pre {
+  overflow: auto;
+  max-width: 100%;
+}
+@media (max-width: 760px) {
+  .contractor-journey {
+    padding: 12px;
+  }
+  .journey-header {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .journey-header img {
+    max-width: 110px;
+  }
+  .journey-badge {
+    margin: 0;
+  }
+  .journey-card,
+  .journey-controls {
+    padding: 16px;
+    border-radius: 12px;
+  }
+  .journey-context {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .journey-nav a {
+    flex: 1 0 28%;
+    text-align: center;
+  }
+  .contractor-journey button {
+    max-width: 100%;
+    white-space: normal;
+  }
+  .contractor-journey dd {
+    overflow-wrap: anywhere;
+  }
+}
+/* Source labels must meet contrast inside the isolated warm surfaces. */
+.contractor-journey dt {
+  color: #3e594f;
+}
+.contractor-journey .journey-controls {
+  width: auto;
+  max-width: none;
+  position: static;
+}
+.contractor-journey .journey-nav {
+  flex-direction: row;
+  align-items: stretch;
+  width: auto;
+  padding: 0;
+}
+.contractor-journey .journey-header > div {
+  flex: 1;
+  min-width: 0;
+}
+.contractor-journey .finance-workflow > header {
+  display: block;
+  padding: 0;
+  background: transparent;
+}
+.contractor-journey footer {
+  display: block;
+  background: transparent;
+}
+.contractor-journey .intelligence-workflow > header {
+  display: block;
+  padding: 0;
+  background: transparent;
+}
+.contractor-journey textarea {
+  display: block;
+  width: 100%;
+  min-height: 100px;
+  margin: 8px 0;
+}
+.contractor-journey fieldset {
+  min-width: 0;
+  border: 1px solid #bdcfc3;
+  border-radius: 10px;
+  padding: 16px;
+  margin: 16px 0;
+}

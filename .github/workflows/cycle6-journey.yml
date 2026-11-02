@@ -1,0 +1,45 @@
+name: Cycle 6 local workflow integration
+on:
+  push:
+    branches: ['codex/program-cycle-six']
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'tests/workflows/**'
+      - 'tests/*workflow*'
+      - 'tests/*cycle6*'
+      - 'tests/browser/cycle6*'
+      - 'tests/program/playwright.cycle6*'
+      - '.github/workflows/cycle6-journey.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle6-journey-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  local-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node scripts/check-cycle6-integrity.mjs
+      - run: npx vitest run tests/program-feature-evidence.test.ts tests/workflows tests/program-cycle6-journey.test.ts tests/program-field-workflow.test.ts tests/cycle6-finance-workflow.test.ts tests/program-growth-workflow.test.ts tests/cycle6-intelligence-workflow.test.ts tests/program-operations-workflow.test.ts tests/cycle6-operations-independent-review.test.ts
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test -c tests/program/playwright.cycle6.config.ts --workers=2
+      - run: npx playwright test -c tests/program/playwright.cycle6-off.config.ts --workers=2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle6-synthetic-workflow-evidence
+          path: |
+            artifacts/cycle6/*.png
+            test-results/
+          retention-days: 7

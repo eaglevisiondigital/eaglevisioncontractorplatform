@@ -1,0 +1,135 @@
+.growth-workflow {
+  min-width: 0;
+  margin-top: 24px;
+  color: #173e32;
+}
+.growth-workflow .gw-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+.growth-workflow h2 {
+  font-size: clamp(24px, 3vw, 32px);
+  margin: 4px 0 10px;
+}
+.growth-workflow h3 {
+  margin: 26px 0 14px;
+  font-size: 21px;
+}
+.growth-workflow h4 {
+  margin: 6px 0 14px;
+  font-size: 17px;
+}
+.growth-workflow p,
+.growth-workflow details {
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.growth-workflow .gw-eyebrow {
+  color: #426154;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  font-weight: 750;
+}
+.growth-workflow .gw-badge {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: #e4eee8;
+  border: 1px solid #a9c2b3;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.growth-workflow .gw-boundary,
+.growth-workflow .gw-status {
+  background: #edf0e7;
+  border-left: 3px solid var(--company-color, #00543e);
+  padding: 16px 18px;
+}
+.growth-workflow .gw-status {
+  display: grid;
+  gap: 8px;
+}
+.growth-workflow .gw-controls,
+.growth-workflow .gw-controls label {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.growth-workflow input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+}
+.growth-workflow button {
+  min-height: 46px;
+  white-space: normal;
+}
+.growth-workflow .gw-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin: 18px 0 24px;
+}
+.growth-workflow .gw-card {
+  background: white;
+  padding: 22px;
+  border: 1px solid #cedbd2;
+  border-radius: 14px;
+  min-width: 0;
+}
+.growth-workflow .gw-state {
+  padding: 18px;
+  background: #f7f9f5;
+  border: 1px dashed #99b0a3;
+  border-radius: 10px;
+}
+.growth-workflow summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 10px 0;
+}
+.growth-workflow .gw-opportunity {
+  margin-top: 24px;
+  padding: 18px 22px;
+  border: 1px solid #cedbd2;
+  border-radius: 14px;
+  background: white;
+}
+.growth-workflow .gw-opportunity label {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0;
+}
+.growth-workflow .gw-opportunity textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+.growth-workflow .gw-result {
+  margin-top: 24px;
+  background: white;
+  border: 2px solid var(--company-color, #00543e);
+  border-radius: 14px;
+  padding: 22px;
+}
+@media (max-width: 760px) {
+  .growth-workflow .gw-heading {
+    display: block;
+  }
+  .growth-workflow .gw-badge {
+    margin-bottom: 14px;
+  }
+  .growth-workflow .gw-grid {
+    grid-template-columns: 1fr;
+  }
+  .growth-workflow .gw-card,
+  .growth-workflow .gw-opportunity,
+  .growth-workflow .gw-result {
+    padding: 18px;
+  }
+  .growth-workflow .gw-controls button {
+    width: 100%;
+  }
+}

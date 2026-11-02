@@ -1,4 +1,5 @@
 import { fieldSchedulingPreviewEnabled } from './lib/field-scheduling';
+import { journeyEnabled } from './lib/workflows/journey-runtime';
 import { WorkspaceNavigation } from './components/WorkspaceNavigation';
 import {
   lazy,
@@ -30,6 +31,11 @@ import { productBrand } from './domain/brand';
 const FieldSchedulingPreview = lazy(() =>
   import('./components/field/FieldSchedulingPreview').then((m) => ({
     default: m.FieldSchedulingPreview,
+  })),
+);
+const ContractorJourneyPreview = lazy(() =>
+  import('./components/workflows/ContractorJourneyPreview').then((m) => ({
+    default: m.ContractorJourneyPreview,
   })),
 );
 const Phase3Workspace = lazy(() =>
@@ -186,6 +192,25 @@ export function App() {
         : 'Signed in. If MFA is required, complete verification through your configured identity flow.',
     );
   }
+  if (path === '/preview/contractor-journey')
+    return journeyEnabled({
+      development: import.meta.env.DEV,
+      flag: import.meta.env.VITE_CONTRACTOR_JOURNEY_PREVIEW,
+      hostname: window.location.hostname,
+      protocol: window.location.protocol,
+    }) ? (
+      <Suspense
+        fallback={<main role="status">Loading local contractor journey…</main>}
+      >
+        <ContractorJourneyPreview />
+      </Suspense>
+    ) : (
+      <main className="landing">
+        <h1>Contractor journey preview is off</h1>
+        <p>Connected access and operational actions remain closed.</p>
+        <a href="/preview">Return to local back office</a>
+      </main>
+    );
   if (path === '/preview/field-scheduling')
     return fieldSchedulingPreviewEnabled({
       development: import.meta.env.DEV,
