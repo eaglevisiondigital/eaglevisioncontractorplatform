@@ -1,0 +1,128 @@
+.sales-workflow {
+  color: #20352f;
+  background: #f5f5ef;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  padding: clamp(16px, 3vw, 28px);
+  min-width: 0;
+}
+.sales-workflow h2,
+.sales-workflow h3 {
+  margin-top: 0;
+}
+.sales-workflow header {
+  position: static;
+  height: auto;
+  display: block;
+  margin-bottom: 18px;
+}
+.sales-workflow .eyebrow {
+  color: var(--company-color, #247364);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.sales-workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+.sales-workflow-grid > section,
+.sales-workflow-packet {
+  min-width: 0;
+  background: white;
+  border: 1px solid #d9e1da;
+  border-radius: 10px;
+  padding: 18px;
+}
+.sales-workflow dl {
+  display: grid;
+  grid-template-columns: minmax(100px, 1fr) minmax(0, 2fr);
+  gap: 6px 12px;
+}
+.sales-workflow dt {
+  font-weight: 600;
+}
+.sales-workflow dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.sales-workflow p,
+.sales-workflow li {
+  overflow-wrap: anywhere;
+}
+.sales-workflow fieldset {
+  margin: 18px 0;
+  border: 1px solid #d9e1da;
+  border-radius: 8px;
+  padding: 16px;
+  min-width: 0;
+}
+.sales-workflow fieldset label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  line-height: 1.5;
+}
+.sales-workflow input[type='checkbox'] {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  margin: 2px 0 0;
+}
+.sales-workflow button,
+.sales-workflow summary {
+  min-height: 44px;
+}
+.sales-workflow button {
+  max-width: 100%;
+  white-space: normal;
+  border: 1px solid var(--company-color, #247364);
+  border-radius: 6px;
+  background: var(--company-color, #247364);
+  color: white;
+  padding: 12px 18px;
+  font: inherit;
+}
+.sales-workflow button:disabled {
+  background: #e4e8e5;
+  color: #4d5a54;
+  border-color: #bbc5be;
+}
+.sales-workflow :focus-visible {
+  outline: 3px solid var(--company-color, #247364);
+  outline-offset: 4px;
+}
+.sales-workflow details {
+  border-bottom: 1px solid #d9e1da;
+}
+.sales-workflow summary {
+  cursor: pointer;
+  padding: 12px 0;
+  font-weight: 600;
+}
+.sales-workflow-packet {
+  margin-top: 20px;
+}
+.sales-workflow-boundary {
+  color: #566960;
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+@media (max-width: 760px) {
+  .sales-workflow-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .sales-workflow dl {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .sales-workflow dd {
+    margin-bottom: 8px;
+  }
+  .sales-workflow button {
+    width: 100%;
+  }
+}
