@@ -1,0 +1,107 @@
+.finance-workflow {
+  min-width: 0;
+  color: #20352f;
+}
+.finance-workflow p {
+  line-height: 1.55;
+}
+.finance-workflow code,
+.finance-workflow dd {
+  overflow-wrap: anywhere;
+}
+.finance-workflow .finance-workflow-eyebrow {
+  font-weight: 700;
+  color: var(--company-color, #00543e);
+}
+.finance-workflow .finance-workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.finance-workflow .finance-workflow-card {
+  min-width: 0;
+  background: #f5f5ef;
+  border: 1px solid #d9e1da;
+  border-left: 4px solid var(--company-color, #00543e);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-block: 1rem;
+}
+.finance-workflow .finance-workflow-grid .finance-workflow-card {
+  margin-block: 0 1rem;
+}
+.finance-workflow .finance-workflow-totals {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 0.6rem;
+}
+.finance-workflow .finance-workflow-totals dd {
+  margin: 0;
+  text-align: right;
+  font-weight: 700;
+}
+.finance-workflow .finance-workflow-status {
+  font-weight: 700;
+}
+.finance-workflow .finance-workflow-signals,
+.finance-workflow .finance-workflow-requirements {
+  list-style: none;
+  padding: 0;
+}
+.finance-workflow .finance-workflow-signals li {
+  border-top: 1px solid #d9e1da;
+  padding-block: 0.75rem;
+  display: grid;
+  gap: 0.4rem;
+}
+.finance-workflow .finance-workflow-requirements {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+.finance-workflow .finance-workflow-requirements li {
+  min-width: 0;
+  border-top: 1px solid #d9e1da;
+  padding-block: 0.75rem;
+}
+.finance-workflow .finance-workflow-requirements span {
+  display: block;
+  margin-block: 0.5rem;
+  overflow-wrap: anywhere;
+}
+.finance-workflow .finance-workflow-source dd {
+  margin: 0.25rem 0 1rem;
+}
+.finance-workflow summary {
+  min-height: 44px;
+  cursor: pointer;
+  display: list-item;
+  padding-block: 0.65rem;
+  box-sizing: border-box;
+}
+.finance-workflow :focus-visible {
+  outline: 3px solid var(--company-color, #00543e);
+  outline-offset: 4px;
+}
+@media (max-width: 900px) {
+  .finance-workflow .finance-workflow-requirements {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 650px) {
+  .finance-workflow .finance-workflow-grid,
+  .finance-workflow .finance-workflow-requirements {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .finance-workflow .finance-workflow-totals {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .finance-workflow .finance-workflow-totals dd {
+    text-align: left;
+    margin-bottom: 0.4rem;
+  }
+}
+
+.finance-workflow dt {
+  color: #3e594f;
+}
