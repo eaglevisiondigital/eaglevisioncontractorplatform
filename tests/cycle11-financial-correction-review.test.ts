@@ -11,7 +11,10 @@ import {
   reconcileFinancialCorrection,
   type FinancialCorrectionProposal,
 } from '../src/lib/workflows/financial-correction-review';
-import { FinancialCorrectionReview } from '../src/components/workflows/FinancialCorrectionReview';
+import {
+  FinancialCorrectionReview,
+  FinancialCorrectionSourceButton,
+} from '../src/components/workflows/FinancialCorrectionReview';
 afterEach(() => vi.restoreAllMocks());
 async function fixture(index = 0, known = false) {
   const gate = { enabled: true, confirmed: true },
@@ -85,6 +88,23 @@ function sourceSnapshot(f: Awaited<ReturnType<typeof fixture>>) {
   );
 }
 describe('Cycle 11 exact-source financial correction proposals', () => {
+  it('source action accessible name preserves the visible label for speech navigation', () => {
+    const markup = renderToStaticMarkup(
+      createElement(FinancialCorrectionSourceButton, {
+        title: 'Cost coverage <unverified>',
+        job: 'Exact synthetic job',
+        disabled: false,
+        onInspect: () => {},
+      }),
+    );
+    const accessibleName = /aria-label="([^"]+)"/.exec(markup)?.[1];
+    expect(markup).toContain('>Inspect source</button>');
+    expect(accessibleName).toBe(
+      'Inspect source: Cost coverage &lt;unverified&gt; for Exact synthetic job',
+    );
+    expect(accessibleName).toContain('Inspect source');
+    expect(markup).not.toContain('<unverified>');
+  });
   it.each([0, 1, 2])(
     'company %i prepares a current immutable source-bound proposal while UNKNOWN remains UNKNOWN',
     async (index) => {

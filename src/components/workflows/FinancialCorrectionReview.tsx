@@ -21,6 +21,30 @@ import {
 } from '../../lib/workflows/financial-correction-review';
 import './financial-correction-review.css';
 
+/** Include the visible action words in the accessible name for speech input. */
+export function FinancialCorrectionSourceButton({
+  title,
+  job,
+  disabled,
+  onInspect,
+}: {
+  title: string;
+  job: string;
+  disabled: boolean;
+  onInspect: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      disabled={disabled}
+      onClick={onInspect}
+      aria-label={`Inspect source: ${title} for ${job}`}
+    >
+      Inspect source
+    </button>
+  );
+}
+
 export function FinancialCorrectionReview({
   sources,
   enabled = false,
@@ -337,14 +361,12 @@ function CorrectionForm({
                     </p>
                     <span className="correction-tag">{row.status}</span>
                     <h4>{row.title}</h4>
-                    <button
-                      type="button"
+                    <FinancialCorrectionSourceButton
+                      title={row.title}
+                      job={job.name}
                       disabled={busy || held}
-                      onClick={() => open(row.id)}
-                      aria-label={`Inspect ${row.title} for ${job.name}`}
-                    >
-                      Inspect source
-                    </button>
+                      onInspect={() => open(row.id)}
+                    />
                   </li>
                 );
               })}
