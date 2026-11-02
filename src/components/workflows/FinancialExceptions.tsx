@@ -241,8 +241,6 @@ function ExceptionForm({
     if (!review) return;
     try {
       const next = openFinancialException(review, id);
-      onSelectJob?.(next.target.job_id!);
-      openFinancialException(review, id);
       setDetail(next);
       setStatus('Exact job and issued version opened. Staff review only.');
     } catch {
@@ -250,6 +248,19 @@ function ExceptionForm({
       setDetail(null);
       setHeld(true);
       setError('UNKNOWN — exact source navigation is unavailable.');
+    }
+  }
+  function displayJob() {
+    if (!review || !detail) return;
+    try {
+      const current = openFinancialException(review, detail.exception.id);
+      onSelectJob?.(current.target.job_id!);
+      openFinancialException(review, detail.exception.id);
+    } catch {
+      setReview(null);
+      setDetail(null);
+      setHeld(true);
+      setError('UNKNOWN — existing job navigation source changed.');
     }
   }
   async function reconcile() {
@@ -674,6 +685,13 @@ function ExceptionForm({
                     'None recorded'}
                 </p>
               </details>
+              <button
+                type="button"
+                onClick={displayJob}
+                disabled={!onSelectJob}
+              >
+                Display existing job workflow
+              </button>
               <button type="button" onClick={() => setDetail(null)}>
                 Close exact source
               </button>
