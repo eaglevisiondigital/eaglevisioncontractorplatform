@@ -1,5 +1,39 @@
 # Product program delivery status
 
+## Cycle14 · cohesive exact-source operating entry
+
+Main [draft96](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/96),
+codex/program-cycle-fourteen, preserves exact parent8079d2b and composes30new
+author blobs from separate unmerged drafts97–102. Three actual workers completed
+two bounded packages each in isolated worktrees. /root/cycle14_field_growth owns
+Field98/Growth100; /root/cycle13_finance_intelligence owns Finance99/Intelligence102;
+/root/cycle13_customer_advanced owns Advanced97/Customer101. Main coordinates
+contracts, source/index tooling, browser/visual evidence, CI and acceptance registers.
+/root/cycle13_independent_review supplied47passing independent cases, CLEAR for
+local/synthetic use, exact review commit84253f4e5dc2782e081caedce43e4d605aa9f514.
+
+[Consolidated branches/full SHAs/actual evidence](program/CYCLE14_VALIDATION.md),
+[exact source/hash index](program/CYCLE14_DELIVERY_INDEX.json),
+[two-scope owner visual package](program/CYCLE14_VISUAL_REVIEW.md) and
+[honest CI snapshot](program/CYCLE14_CI_SNAPSHOT.json) preserve separate evidence.
+407unique application cases PASS (raw full run plus bounded coordinator correction).69actual browser cases PASS;72PNGs;18actual paired
+visual comparisons. All three contractor brands and desktop/tablet/mobile covered.
+Only Operating Center/advanced visuals need new approval; all three prior approval
+scopes remain fixed. Original external logo/mockup assets remain MISSING.
+
+Pinned advanced entry removes repeated job/mode/source selection while explicit
+original review/preparation and terminal holds stay mandatory. Existing schedule,
+ledger, report/version, maintenance and suggestion sources remain authoritative.
+Prior8079Cycle12/13 integrations PASS; Foundation timed out at25minutes after
+application checks PASS. New finite45-minute budget preserves every other workflow
+byte; no successful rerun or old cancellation replay. Final-head CI is separate.
+
+All128protected hashes/253prior author files, five locks/thirteen bindings and
+original18IDs/25capability states/approvals stay exact. All13/customer14/original4B/
+P1/four/Netlify/executor/recovery/Auth/MFA/NMI/financial/provider/communication/
+hosted/production restrictions persist. No merges, deployments, hosted mutations,
+dispatch, messages or financial execution. Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Cycle thirteen · source-bound operating desks and visual evidence
 
 Main `codex/program-cycle-thirteen`, [draft PR88](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/88),

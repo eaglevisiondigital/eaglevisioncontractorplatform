@@ -1,0 +1,233 @@
+{
+  "schema": "propel-cycle14-delivery-v1",
+  "coordination_branch": "codex/program-cycle-fourteen",
+  "coordination_draft_pr": 96,
+  "parent_commit": "8079d2ba8ab8989f168693bd0fc7fa60d30fed1b",
+  "independent_review_commit": "84253f4e5dc2782e081caedce43e4d605aa9f514",
+  "independent_files": [
+    {
+      "path": "tests/cycle14-integration.test.ts",
+      "sha256": "f99eaf41ea56d69f85f669ab8b0ffd4dbde5a276a430d4507cb4a97eef2b3350"
+    },
+    {
+      "path": "docs/program/CYCLE14_INTEGRATION_REVIEW.md",
+      "sha256": "becfebe05ab962152521e75ed0129a7380e8a802c6a7e1cd0a56ec14d081bfa5"
+    }
+  ],
+  "packages": [
+    {
+      "module": "schedule-work-order-continuity",
+      "component": "ScheduleWorkOrderContinuity",
+      "owner": "/root/cycle14_field_growth",
+      "branch": "codex/cycle14-field-continuity",
+      "parent_commit": "8079d2ba8ab8989f168693bd0fc7fa60d30fed1b",
+      "head_commit": "6be1e3daf6b3bd285542424746b8875a8be0847b",
+      "draft_pr": 98,
+      "focused_new_tests": 37,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE14_SCHEDULE_WORK_ORDER_CONTINUITY.md",
+          "sha256": "3815bceb615f47a492b3c13d63e03a87e33ae5b46be9688483b3d84c9502505e"
+        },
+        {
+          "path": "src/components/workflows/ScheduleWorkOrderContinuity.tsx",
+          "sha256": "7c78568a0784a829a72ed8df79a03d86834d70c04a79d378a721fee68d7309e3"
+        },
+        {
+          "path": "src/components/workflows/schedule-work-order-continuity.css",
+          "sha256": "06ca89c7948ca8d9409eff7db98b15fc095af0626bd77a5c8bfc954595f10b85"
+        },
+        {
+          "path": "src/lib/workflows/schedule-work-order-continuity.ts",
+          "sha256": "be2c7fcc8238e74d6ef16452258be59fb09689c861564366d66f85f9d84f4aa8"
+        },
+        {
+          "path": "tests/cycle14-schedule-work-order-continuity.test.ts",
+          "sha256": "1dd87ea1c3445709c54c03a1d4bcc442eba1d6e1e670b9380cff7f625ea0705b"
+        }
+      ]
+    },
+    {
+      "module": "finance-case-continuity",
+      "component": "FinanceCaseContinuity",
+      "owner": "/root/cycle13_finance_intelligence",
+      "branch": "codex/cycle14-finance-continuity",
+      "parent_commit": "8079d2ba8ab8989f168693bd0fc7fa60d30fed1b",
+      "head_commit": "1be7d564c8b938c328435a24a30badd8bd51a9ad",
+      "draft_pr": 99,
+      "focused_new_tests": 20,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE14_FINANCE_CASE_CONTINUITY.md",
+          "sha256": "f341aabdff0bfaa30eb1e016ce4e32e1f0dba26d7431ddd62565e3f3dd66ffd8"
+        },
+        {
+          "path": "src/components/workflows/FinanceCaseContinuity.tsx",
+          "sha256": "fec12c003773936d58b2be5d3910cd0596c5384905bd05ab659e78cd3bd0065c"
+        },
+        {
+          "path": "src/components/workflows/finance-case-continuity.css",
+          "sha256": "34be773c062da0575c81eeb94c3345184e46402789e2c73a62701ed37d311b94"
+        },
+        {
+          "path": "src/lib/workflows/finance-case-continuity.ts",
+          "sha256": "7663ec47c327a50f1b4376ffd3a46f3a9d4fde071fcc08507d114e36f051c962"
+        },
+        {
+          "path": "tests/cycle14-finance-case-continuity.test.ts",
+          "sha256": "03c77161257ab42568fed907e18cd8a32177d1c540b13be6171d004a269b9a54"
+        }
+      ]
+    },
+    {
+      "module": "service-source-continuity",
+      "component": "ServiceSourceContinuity",
+      "owner": "/root/cycle13_customer_advanced",
+      "branch": "codex/cycle14-service-source-continuity",
+      "parent_commit": "8079d2ba8ab8989f168693bd0fc7fa60d30fed1b",
+      "head_commit": "748c3f5ec3bac65539a7614b8829d66f77298135",
+      "draft_pr": 101,
+      "focused_new_tests": 41,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE14_SERVICE_SOURCE_CONTINUITY.md",
+          "sha256": "0b73ee08be42cabc0eb062f4af6282d305c35e9eefbcda8fdc5b0a93cf42cfae"
+        },
+        {
+          "path": "src/components/workflows/ServiceSourceContinuity.tsx",
+          "sha256": "2061bfe76dce4714091ab5a930e4bab403a1fd1427fd86bd8278175debe8097f"
+        },
+        {
+          "path": "src/components/workflows/service-source-continuity.css",
+          "sha256": "7f24b1a9ff73b8569f8e822ebe6a4779e50eff562a2ab3d8fa763a0ae3c1c451"
+        },
+        {
+          "path": "src/lib/workflows/service-source-continuity.ts",
+          "sha256": "92b5cc0b7debaaa0de399099413d07b19959137e0af4522613dbe7a5fe53c46c"
+        },
+        {
+          "path": "tests/cycle14-service-source-continuity.test.ts",
+          "sha256": "e67e0cc2e95aba653fe51442d1fee0909d988ce357d0fbb46003791f8c40cf2a"
+        }
+      ]
+    },
+    {
+      "module": "maintenance-planning-continuity",
+      "component": "MaintenancePlanningContinuity",
+      "owner": "/root/cycle14_field_growth",
+      "branch": "codex/cycle14-maintenance-continuity",
+      "parent_commit": "8079d2ba8ab8989f168693bd0fc7fa60d30fed1b",
+      "head_commit": "6bb886ca1f080d06dd4bfc6e09a1b63116edb74f",
+      "draft_pr": 100,
+      "focused_new_tests": 37,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE14_MAINTENANCE_PLANNING_CONTINUITY.md",
+          "sha256": "28555df7d40cd1500fbebc6ad4affbc1682e78f259360a70d44c32f6086eed0a"
+        },
+        {
+          "path": "src/components/workflows/MaintenancePlanningContinuity.tsx",
+          "sha256": "a01c98a8872485ef70c9932e7275619f4a61c5662ad913b32a611bb44e36ae21"
+        },
+        {
+          "path": "src/components/workflows/maintenance-planning-continuity.css",
+          "sha256": "bdb0438d28a0c05904bda1add31a1ab3e36bcf68cfe6c92982623a9e46b19955"
+        },
+        {
+          "path": "src/lib/workflows/maintenance-planning-continuity.ts",
+          "sha256": "166d15d1a146cc697b92dacb2813bbbfed4d1d97cc0c7cc5044fb77afa86de3d"
+        },
+        {
+          "path": "tests/cycle14-maintenance-planning-continuity.test.ts",
+          "sha256": "3ae8e3ba9b550302ae11be27ae720621efdee95c98fb2d9a48604835118d14d6"
+        }
+      ]
+    },
+    {
+      "module": "verified-task-handoff",
+      "component": "VerifiedTaskHandoff",
+      "owner": "/root/cycle13_finance_intelligence",
+      "branch": "codex/cycle14-verified-task-handoff",
+      "parent_commit": "8079d2ba8ab8989f168693bd0fc7fa60d30fed1b",
+      "head_commit": "cbe634562a311c4a5569c76cfec919e90d57adfe",
+      "draft_pr": 102,
+      "focused_new_tests": 32,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE14_VERIFIED_TASK_HANDOFF.md",
+          "sha256": "c69e2f065d2299b4aa9c99cd73e5bbab4d44bb4ccad91a9af3ac3c5694fce1d0"
+        },
+        {
+          "path": "src/components/workflows/VerifiedTaskHandoff.tsx",
+          "sha256": "79f1de8cebb09be6f8fa3d7866370ad3d705451bbca56b48ce149cbee874cb7c"
+        },
+        {
+          "path": "src/components/workflows/verified-task-handoff.css",
+          "sha256": "f8df9a05b419181aedbacbeb4fadd1d82f5b1dafa9735072c3f4bcd64d06cc8d"
+        },
+        {
+          "path": "src/lib/workflows/verified-task-handoff.ts",
+          "sha256": "9a165afb98a8d7b1be6cf83f1df023ad3182bf6d8273af6bc37a7a0120ab03b8"
+        },
+        {
+          "path": "tests/cycle14-verified-task-handoff.test.ts",
+          "sha256": "1093e16cc1e783d1778849e4b53312ce619000ceeed1f70d5daa168424716e5b"
+        }
+      ]
+    },
+    {
+      "module": "source-bound-addons",
+      "component": "SourceBoundAddons",
+      "owner": "/root/cycle13_customer_advanced",
+      "branch": "codex/cycle14-source-bound-addons",
+      "parent_commit": "8079d2ba8ab8989f168693bd0fc7fa60d30fed1b",
+      "head_commit": "8a89b92efa749d6e685c0b2f6791bdf75cf3c0a9",
+      "draft_pr": 97,
+      "focused_new_tests": 85,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE14_SOURCE_BOUND_ADDONS.md",
+          "sha256": "c13ae6682bc0eb84b2f76c69b51a7d787a9cb33a99dd1ef2c5180ec9b378854a"
+        },
+        {
+          "path": "src/components/workflows/SourceBoundAddons.tsx",
+          "sha256": "5b1a0f3aae0cb7067993f1411cbc622e0ac86eae2cc046c590e8fa2355e0ddaa"
+        },
+        {
+          "path": "src/components/workflows/source-bound-addons.css",
+          "sha256": "d2c85a8deabeb9aa49cb2f49218cd9db73abdd97f35f1e4cd1c3e198dda74ba2"
+        },
+        {
+          "path": "src/lib/workflows/source-bound-addons.ts",
+          "sha256": "2aa04f813a0a7510a0a4960227a06912307a0782cf053ef9d8cbb258ac01fca8"
+        },
+        {
+          "path": "tests/cycle14-source-bound-addons.test.ts",
+          "sha256": "961493a64d313d78b5aa962b2c2f5923e98bea6abf89ae6b0aac289956e7861c"
+        }
+      ]
+    }
+  ],
+  "combined_evidence": {
+    "author_cases": 252,
+    "independent_cases": 47,
+    "coordinator_cases": 15,
+    "visual_cases": 16,
+    "retained_scorecard_cases": 4,
+    "source_inventory_cases": 73,
+    "application_cases": 407,
+    "development_browser_cases": 63,
+    "production_off_cases": 3,
+    "protected_hashes": 128,
+    "retained_author_files": 253,
+    "design_locks": 5,
+    "design_bindings": 13
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

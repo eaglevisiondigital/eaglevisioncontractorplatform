@@ -1,5 +1,16 @@
 # Engineering decisions
 
+## Cycle14 use inspected source identity for explicit workflow entry
+
+Retain all original engines and author bytes. Pass a currently captured selected-job
+hint through the existing presentation host, then independently admit it in each
+new continuity reader. Carry one inspected C13 advanced detail into the original C12
+lifecycle instead of asking for the same job/mode/source twice. Explicit confirmation
+and original permanent reservation/UNKNOWN behavior remain mandatory. No new business
+state or automatic proposal is created. Two unapproved visual scopes receive an
+actual-pixel owner review with missing originals labeled; existing three approvals
+remain locked and no local test promotes operational or release acceptance.
+
 ## November2 · Cycle13 source-bound operating continuity
 
 Owner direction authorizes seven separately owned local draft packages and an

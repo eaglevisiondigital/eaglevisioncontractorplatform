@@ -1,6 +1,6 @@
 {
   "schema": "propel-cycle14-baseline-ci-v1",
-  "checkedAt": "2026-11-02T23:10:57.342Z",
+  "checkedAt": "2026-11-02T23:42:29.768Z",
   "exact_head": "8079d2ba8ab8989f168693bd0fc7fa60d30fed1b",
   "source": "GitHub connector exact commit workflow runs (PR-triggered first page)",
   "workflow_runs": [
@@ -35,16 +35,6 @@
       "workflow_id": 404600874
     },
     {
-      "id": 41541476907,
-      "name": "Cycle 13 operating workflows and visual evidence",
-      "status": "in_progress",
-      "conclusion": null,
-      "run_number": 4,
-      "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476907/jobs",
-      "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476907/logs",
-      "workflow_id": 405078112
-    },
-    {
       "id": 41541476957,
       "name": "Passport timeline preview",
       "status": "completed",
@@ -73,16 +63,6 @@
       "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476787/jobs",
       "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476787/logs",
       "workflow_id": 404543100
-    },
-    {
-      "id": 41541476819,
-      "name": "Foundation checks",
-      "status": "in_progress",
-      "conclusion": null,
-      "run_number": 496,
-      "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476819/jobs",
-      "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476819/logs",
-      "workflow_id": 385897042
     },
     {
       "id": 41541476906,
@@ -125,16 +105,6 @@
       "workflow_id": 404685247
     },
     {
-      "id": 41541476882,
-      "name": "Cycle 12 exact workflow revision and verification",
-      "status": "in_progress",
-      "conclusion": null,
-      "run_number": 14,
-      "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476882/jobs",
-      "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476882/logs",
-      "workflow_id": 405018138
-    },
-    {
       "id": 41541476792,
       "name": "Isolated maintenance schedule handoff",
       "status": "completed",
@@ -173,8 +143,49 @@
       "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476927/jobs",
       "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476927/logs",
       "workflow_id": 404956637
+    },
+    {
+      "id": 41541476882,
+      "name": "Cycle 12 exact workflow revision and verification",
+      "status": "completed",
+      "conclusion": "success",
+      "run_number": 14,
+      "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476882/jobs",
+      "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476882/logs",
+      "workflow_id": 405018138
+    },
+    {
+      "id": 41541476907,
+      "name": "Cycle 13 operating workflows and visual evidence",
+      "status": "completed",
+      "conclusion": "success",
+      "run_number": 4,
+      "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476907/jobs",
+      "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476907/logs",
+      "workflow_id": 405078112
+    },
+    {
+      "id": 41541476819,
+      "name": "Foundation checks",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "run_number": 496,
+      "jobs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476819/jobs",
+      "logs_url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41541476819/logs",
+      "workflow_id": 385897042
     }
   ],
   "manual_reruns": 0,
-  "release": "NOT_READY_NOT_AUTHORIZED"
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "cancellation_evidence": {
+    "run_id": 41541476819,
+    "job_id": 125607030766,
+    "native_job": "SUCCESS",
+    "application_check": "SUCCESS",
+    "browser": "CANCELLED_IN_PROGRESS_NOT_PASS",
+    "annotation": "The job has exceeded the maximum execution time of 25m0s",
+    "correction": "New C14 source preserves every prior Foundation byte except finite verify job budget25→45minutes; old8079 cancellation unchanged.",
+    "successful_reruns": 0,
+    "unchanged_cancelled_reruns": 0
+  }
 }

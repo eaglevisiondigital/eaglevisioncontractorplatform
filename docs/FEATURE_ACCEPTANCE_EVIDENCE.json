@@ -647,6 +647,10 @@
         {
           "path": "src/lib/workflows/work-order-revisions.ts",
           "anchor": "export async function openWorkOrderRevisionSource"
+        },
+        {
+          "path": "docs/program/CYCLE14_SCHEDULE_WORK_ORDER_CONTINUITY.md",
+          "anchor": "Cycle14"
         }
       ],
       "tests": [
@@ -798,6 +802,10 @@
         {
           "path": "src/lib/workflows/financial-casework.ts",
           "anchor": "export async function readFinancialCasework"
+        },
+        {
+          "path": "docs/program/CYCLE14_FINANCE_CASE_CONTINUITY.md",
+          "anchor": "Cycle14"
         }
       ],
       "tests": [
@@ -932,6 +940,10 @@
         {
           "path": "src/lib/workflows/financial-casework.ts",
           "anchor": "export function compareFinancialCaseworkReview"
+        },
+        {
+          "path": "docs/program/CYCLE14_FINANCE_CASE_CONTINUITY.md",
+          "anchor": "Cycle14"
         }
       ],
       "tests": [
@@ -1170,6 +1182,10 @@
         {
           "path": "src/lib/workflows/service-passport-desk.ts",
           "anchor": "export async function readServicePassportDesk"
+        },
+        {
+          "path": "docs/program/CYCLE14_SERVICE_SOURCE_CONTINUITY.md",
+          "anchor": "Cycle14"
         }
       ],
       "tests": [
@@ -1304,6 +1320,10 @@
         {
           "path": "src/lib/workflows/follow-up-readiness.ts",
           "anchor": "export async function readFollowUpReadiness"
+        },
+        {
+          "path": "docs/program/CYCLE14_MAINTENANCE_PLANNING_CONTINUITY.md",
+          "anchor": "Cycle14"
         }
       ],
       "tests": [
@@ -1433,6 +1453,10 @@
         {
           "path": "src/lib/workflows/follow-up-readiness.ts",
           "anchor": "export async function openFollowUpReadinessSource"
+        },
+        {
+          "path": "docs/program/CYCLE14_MAINTENANCE_PLANNING_CONTINUITY.md",
+          "anchor": "Cycle14"
         }
       ],
       "tests": [
@@ -1571,6 +1595,10 @@
         {
           "path": "src/lib/workflows/operating-navigation.ts",
           "anchor": "export async function readOperatingNavigation"
+        },
+        {
+          "path": "docs/program/CYCLE14_VERIFIED_TASK_HANDOFF.md",
+          "anchor": "Cycle14"
         }
       ],
       "tests": [
@@ -1702,6 +1730,10 @@
         {
           "path": "src/lib/workflows/addon-review-desk.ts",
           "anchor": "export async function readAddonReviewDesk"
+        },
+        {
+          "path": "docs/program/CYCLE14_SOURCE_BOUND_ADDONS.md",
+          "anchor": "Cycle14"
         }
       ],
       "tests": [
@@ -1822,6 +1854,10 @@
         {
           "path": "scripts/cycle13-visual-comparison.mjs",
           "anchor": "export function generateVisualComparison"
+        },
+        {
+          "path": "docs/program/CYCLE14_VISUAL_REVIEW.md",
+          "anchor": "Cycle14"
         }
       ],
       "tests": [
@@ -2383,6 +2419,10 @@
         {
           "path": "scripts/check-cycle12-integrity.mjs",
           "anchor": "export function validateCycle12Manifest"
+        },
+        {
+          "path": "docs/program/CYCLE14_VISUAL_REVIEW.md",
+          "anchor": "Cycle14"
         }
       ],
       "tests": [

@@ -1,5 +1,15 @@
 # Security model · Phase 2
 
+## Cycle14 navigation is not authority
+
+A retained selected-job hint and pinned advanced detail cannot broaden access,
+reset an original attempt or authorize a business action. Current source/root/model,
+membership, exact versions, input and deadline checks apply before/after awaits,
+render and navigation. UNKNOWN remains permanent exact read-only/no replay. Customer
+report/finding evidence stays allowlisted; staff casework remains internal. Screenshots
+and visual review cannot grant hosted, financial, completion or release authority.
+No sender, writer, credential loader, Auth session or dispatch capability is added.
+
 ## Cycle12 expiry, revocation and workflow verification
 
 Proposal revision or relabeling never bypasses permanent UNKNOWN custody. Exact

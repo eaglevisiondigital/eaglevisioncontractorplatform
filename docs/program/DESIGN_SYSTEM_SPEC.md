@@ -1,5 +1,20 @@
 # Shared design-system specification · cycle two
 
+## Cycle14 continuity and focused owner review
+
+One initially collapsed six-panel group composes the original Operating Center
+host and all existing navigation. Source-pinned entry removes repeated selection;
+source identity and separate explicit review/confirm controls stay visible. Existing
+contractor tokens, warm surfaces,44px touch controls, accessible source headings,
+wrapped identifiers and stacked mobile evidence remain required. No approved CSS,
+artwork, portal or Property Operations visual scope is redesigned.
+
+The two-scope standalone owner review presents Operating Center panels and advanced
+panels only. Fresh captures of retained Cycle13 components are engineering references, never
+approved originals. Missing external logo attachment/original mockup remain MISSING.
+Current screenshots, source provenance, accessibility and CI do not grant approval.
+The three existing exact approval scopes are preserved without resubmission.
+
 ## Cycle13 visual evidence without redesign or approval promotion
 
 The six new desks remain in an initially collapsed review group. Original8primary,

@@ -1,5 +1,26 @@
 # Shared contracts and integration ownership
 
+## Cycle14 pinned workflow entry
+
+The existing OperatingReviewPanel presentation contract gains only optional
+selectedJobId. Main derives it from the retained current selected-job capture,
+never from a URL or caller metadata. Company withdrawal, stale capture or source
+replacement removes the value. Existing one-argument callbacks remain compatible.
+New panels must independently validate this presentation hint against the same
+OperatingSources and exact customer/property/job/version/source identities.
+
+Advanced entry chooses its job/mode/edition once, explicitly reads the unchanged
+C13 source and carries its retained detail into original C12 lifecycle functions.
+No second selector, source-copy form, new reservation or business engine exists.
+Preselection and read-only source loading never start a review or confer authority.
+Original confirmation, deadlines, one-use holds and exact reconciliation remain
+binding across panels and remounts. UNKNOWN never permits replay or replacement.
+
+Financial source links, customer report/version/finding links, field predecessor
+receipts, maintenance purpose and Copilot task destinations remain exact original
+objects. Missing evidence stays UNKNOWN; proposals do not verify completion,
+consent, availability, invoice authority or canonical ledger changes.
+
 ## Cycle13 operating desks and presentation navigation
 
 Six additive desks reuse the exact existing OperatingSources, company membership,

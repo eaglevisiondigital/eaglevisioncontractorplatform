@@ -1,5 +1,16 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Cycle14 exact-source workflow continuity
+
+Six additive local continuity panels reuse the existing OperatingSources and all
+canonical engines. Optional selectedJobId is a checked presentation hint derived
+from the retained current job capture; each reader independently revalidates
+company/customer/property/job/version identity. Original C12/C13 lifecycle and
+UNKNOWN holds remain the only attempt owners. No new business store, schema,
+ledger, sender, dispatch or connected authority is introduced. Source-pinned advanced
+controls remove repeated selection without automatic preparation. Approved interfaces
+and all independent PhaseOne/recovery/security/financial gates remain unchanged.
+
 ## Cycle12 local review extensions
 
 Source-bound schedule-proposal revisions, canonical financial evidence, service

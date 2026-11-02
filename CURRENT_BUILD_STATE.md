@@ -1,5 +1,38 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: Cycle14 · exact-source workflow continuity
+
+Main codex/program-cycle-fourteen, draft96, composes six separate drafts97–102
+from exact8079d2ba8ab8989f168693bd0fc7fa60d30fed1b without merging or rewriting.
+One current selected-job hint feeds independently verified advanced entry with
+once-only job/mode/source selection; original C12 confirmation/one-use/UNKNOWN
+controls remain authoritative. Field schedule→instruction continuity, canonical
+financial drill-down, service/report/Passport navigation, blocked maintenance
+planning and finite-window Copilot navigation share the existing source set.
+
+407unique application cases PASS (raw full run plus bounded coordinator correction). Independent47-case review CLEAR;69focused browser
+cases PASS across all3brands and desktop/tablet/mobile, including3production-OFF
+and3standalone-gallery cases.72actual PNGs retained;36 form18two-scope visual pairs.
+The three existing visual approvals remain preserved. New Operating Center/advanced
+approval stays PENDING; missing external originals stay MISSING, never recreated.
+Strict/generated types, lint/build/format, static migration/customer/4B/broker and
+protected integrity checks PASS. All128protected hashes/253prior author files,
+five locked files/thirteen bindings remain exact.
+
+Prior8079Cycle12/13 integrations PASS. Prior Foundation CANCELLED at25minutes
+after application checks PASS, while its browser step remained in progress.
+New C14 changes only the finite job budget25→45minutes and retains every validation
+byte otherwise. No successful CI or unchanged cancelled run was manually rerun.
+Final-head normal CI remains separately observed; no pending green claim.
+
+[Actual validation/roster](docs/program/CYCLE14_VALIDATION.md),
+[exact source index](docs/program/CYCLE14_DELIVERY_INDEX.json),
+[focused visual review](docs/program/CYCLE14_VISUAL_REVIEW.md).
+All13/customer14/original4B/P1/four/approvals/2A–2F/billing/frozen Netlify/executor,
+recovery/Auth/MFA/NMI/financial/provider/communication/hosted/production gates remain
+unchanged. No credentials, dispatch, messages, payments, hosted mutations, migration,
+deployment or merge. Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Cycle13 · functioning source-bound operating candidate
 
 Seven separate author drafts89–95 are composed as37exact source blobs on

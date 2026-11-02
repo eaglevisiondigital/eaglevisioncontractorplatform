@@ -1,5 +1,32 @@
 # Propel Contractor Suite — feature acceptance register
 
+## Cycle14 · source-bound continuity, local evidence only
+
+Six unmerged feature drafts97–102 are composed on Main96 from exact8079d2b.
+The existing source set now carries current job/company context into original
+advanced workflow controls without a second selection/copy step. Field revision,
+financial case/source drill-down, service/report/Passport continuity, consent-aware
+planning and finite-window Copilot handoff use original engines and holds.
+407unique application cases PASS (raw full run plus bounded coordinator correction). Independent47-case review CLEAR;69actual responsive
+browser/gallery cases PASS;72synthetic PNGs and18two-scope pairs retained.
+[Exact roster/source index](program/CYCLE14_DELIVERY_INDEX.json),
+[validation](program/CYCLE14_VALIDATION.md),
+[independent review](program/CYCLE14_INTEGRATION_REVIEW.md) and
+[visual review](program/CYCLE14_VISUAL_REVIEW.md) record the bounded proof.
+
+The three existing exact visual approvals stay unchanged. Operating Center and
+advanced panels remain PENDING visual approval; missing external originals stay
+MISSING. A screenshot, source hash, accessibility test or green CI never grants
+visual, physical completion, genuine Auth or hosted/release acceptance.
+All original18IDs and25capability stage/approval/CI values remain unchanged;
+new public source citations do not promote those values or create new denominators.
+
+The eight existing PhaseOne gates below remain separate and closed. Recovery/P1,
+Auth/MFA, NMI, customer14/4B, Netlify/executor and financial/provider/communication/
+hosted/production restrictions remain intact. No merge, deployment, dispatch,
+messages, payments, credentials, migration or hosted mutation. Release1.0 NOT READY /
+NOT AUTHORIZED.
+
 ## Cycle13 · functioning source-bound operating candidate
 
 Seven separate author drafts89–95 are composed as37exact source blobs on
