@@ -4,19 +4,20 @@ Owner plan: exact `3bf2e0cfca691cb164e1c42290ccf09ad6804c8a`,
 `CYCLE5_PARALLEL_BUILD_ASSIGNMENTS.md`. Main starts `codex/program-cycle-five`
 from that commit, a documentation-only descendant of reviewed exactPR22 f07b726.
 Predecessor business heads17–21 were re-read and remain exact/draft/unmerged.
-The new3bf2e0c Foundation run is independently pending; compatibility succeeded.
+The exact3bf2e0c Foundation run failed only on assignment-document formatting;
+compatibility succeeded. New Main corrects the formatting without rewriting the parent.
 No previous successful check is restarted.
 
 ## Actual first-wave allocation
 
-| Actual owner           | New branch / exact parent                                                           | Bounded ownership                                                                                                                |
-| ---------------------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `/root/cycle5_field`   | `codex/program-technician-day-board` /20 `5a96baf9ebf7c8e17177be67d5d6f2b26cef5f33` | New day-board reader/component/scoped styles/tests; narrow existing work-order mount only. Reuse capacity engine.                |
-| `/root/cycle5_sales`   | `codex/program-contract-preparation` /18 `ed3a099207ad3e29b3b1e70aba2fc809664a60bb` | New preparation/checklist projection and existing scope-reference UI extension. No contract/signature commands.                  |
-| `/root/cycle5_finance` | `codex/program-cost-to-complete` /17 `fe9d9ff593dbbed175ac69de1bd44fa1d25725bc`     | Existing job-margin reader/view and narrow canonical commitment/coverage projection. No payment-event/job relationship invented. |
-| Customer agent, queued | `codex/program-proof-of-work-pack` /21 `f7a44a8cc5fd7c4add529b6588925f548d2d85b5`   | Existing timeline/report safe completion pack; media remains absent unless existing authorized projection proves it.             |
-| Growth agent, queued   | `codex/program-renewal-planning` /19 `3580bf4dceee7c8c4244b902c64c93f9dc0564c8`     | Existing recurrence/follow-up eligibility to explicit local renewal/visit proposals. No message queue/worker/billing.            |
-| `/root`                | `codex/program-cycle-five` /22 `3bf2e0cfca691cb164e1c42290ccf09ad6804c8a`           | Shared contracts, research/source mapping, evidence tooling/register, isolated expansion prototypes and disposable integration.  |
+| Actual owner            | New branch / exact parent                                                           | Bounded ownership                                                                                                                |
+| ----------------------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `/root/cycle5_field`    | `codex/program-technician-day-board` /20 `5a96baf9ebf7c8e17177be67d5d6f2b26cef5f33` | New day-board reader/component/scoped styles/tests; narrow existing work-order mount only. Reuse capacity engine.                |
+| `/root/cycle5_sales`    | `codex/program-contract-preparation` /18 `ed3a099207ad3e29b3b1e70aba2fc809664a60bb` | New preparation/checklist projection and existing scope-reference UI extension. No contract/signature commands.                  |
+| `/root/cycle5_finance`  | `codex/program-cost-to-complete` /17 `fe9d9ff593dbbed175ac69de1bd44fa1d25725bc`     | Existing job-margin reader/view and narrow canonical commitment/coverage projection. No payment-event/job relationship invented. |
+| `/root/cycle5_customer` | `codex/program-proof-of-work-pack` /21 `f7a44a8cc5fd7c4add529b6588925f548d2d85b5`   | Existing timeline/report safe completion pack; media remains absent unless existing authorized projection proves it.             |
+| `/root/cycle5_growth`   | `codex/program-renewal-planning` /19 `3580bf4dceee7c8c4244b902c64c93f9dc0564c8`     | Existing recurrence/follow-up eligibility to explicit local renewal/visit proposals. No message queue/worker/billing.            |
+| `/root`                 | `codex/program-cycle-five` /22 `3bf2e0cfca691cb164e1c42290ccf09ad6804c8a`           | Shared contracts, research/source mapping, evidence tooling/register, isolated expansion prototypes and disposable integration.  |
 
 Three worker slots require successive assignments. Queued does not mean running.
 No persistent background execution is authorized. Main reviews owned diffs before
@@ -78,3 +79,8 @@ recovery/P1-on13/separate14/exact4B+broker, genuine Auth/NMI/merchant/settlement
 provider/financial/communication/hosted/deploy/merge gates remain independent.
 No protected migration, credentials, hosted mutation, dispatch, customer communication,
 financial execution, deployment or merge. Release1.0 NOT READY / NOT AUTHORIZED.
+
+All bounded author and independent-review turns are complete. Full actual roster,
+branches, exact SHAs, tests and draft PRs are recorded in CYCLE5_DELIVERY_INDEX.json
+and CYCLE5_INTEGRATION_REVIEW.md. Nine expansion packages remain unwired; no queued
+work is described as active. There is no persistent background execution.

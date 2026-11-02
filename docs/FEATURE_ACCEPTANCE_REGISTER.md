@@ -471,3 +471,23 @@ Dependencies: UX-001. Next: Run features:check in normal CI; inspect exact branc
 The original thirteen migrations, pending customer14, original4B and broker proposals,
 frozen P1 operation/four artifacts, Netlify archive/executor, locked interfaces,
 approvals, 2A–2F and six PROPOSED billing enhancements remain unchanged.
+
+## Cycle-five candidates · separate from baseline acceptance
+
+The original18 IDs and25 records are preserved. Five primary packages and nine
+expansion prototypes now have exact source-based tests and separate drafts23–37,
+with Main coordination27. [Delivery index](program/CYCLE5_DELIVERY_INDEX.json) records
+actual canonical agent IDs, branches, full commits, owned hashes and focused outcomes.
+[Independent combined review](program/CYCLE5_INTEGRATION_REVIEW.md) records940 Main
+app cases/57 browsers and333 independent focused cases;
+[CI snapshot](program/CYCLE5_CI_SNAPSHOT.json) distinguishes exact-SHA successful and
+pending runs. These are tested candidates, not silently integrated baseline statuses.
+
+EST-001/SAL-001 gain local contract preparation; FLD-002 gains technician/booking/
+offline/incident review; FIN-002 gains cost-to-complete and Profit Guard; CUS-002 gains
+immutable safe documentation packs; GRO-001/GRO-002 gain renewal and consent-aware
+Growth review. AI-001/INT-001 have bounded deterministic synthetic transcript/Copilot/
+receptionist, procurement, integration, trade and same-tenant sharing prototypes.
+There is no model, speech, vendor, partner, dispatch, message or financial service
+activation. Atomic consent/time custody, genuineAuth/recovery/NMI and all Phase One
+operational acceptance remain separately blocked. No new source store/schema/ledger.

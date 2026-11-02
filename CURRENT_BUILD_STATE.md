@@ -1577,3 +1577,11 @@ New expansion work remains default-OFF/unwired; no operational acceptance is cla
 The owner assignment document formatting failure is corrected only in this new
 coordination descendant; reviewed parents are not rewritten. Release1.0 remains
 NOT READY / NOT AUTHORIZED and all existing gates persist.
+
+Cycle-five delivery now includes five primary candidates and nine tested expansion
+prototypes in separate drafts23–37 (coordination27), with exact heads/owned hashes in
+docs/program/CYCLE5_DELIVERY_INDEX.json. Main disposable940 app cases/57 browser cases
+PASS; independent333 source/integration cases PASS. Retained canonical CRM/Field
+composite preserved; all128publicprotected/5locks/13bindings match. No source is merged
+or automatically promoted; nine domain-only prototypes have no browser acceptance
+claim. Asyncconsent/workforcecurrentness remainsUNKNOWN; all release gates remain.

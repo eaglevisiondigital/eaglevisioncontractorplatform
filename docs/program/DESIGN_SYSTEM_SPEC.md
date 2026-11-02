@@ -154,3 +154,27 @@ Exercise real desktop/tablet/mobile/all-brand cases, keyboard/axe, source focus,
 empty/loading/error/OFF and no-parent-key context races. Screenshots and source hashes
 are bounded local evidence, not operational or universal accessibility acceptance.
 See [Cycle4 review](CYCLE4_INTEGRATION_REVIEW.md) and the master delivery register.
+
+## Cycle-five source-bound presentation
+
+Preserve the same five exact locks/thirteen bindings. Technician lanes, contract
+preparation, cost-to-complete review and the isolated Proof of Work pack use existing
+contractor palettes, typography, surfaces, field labels and transparent attribution.
+No new global token, brand, artwork or portal redesign. New sections are default-OFF;
+the remainder of the back office and customer experience remain intact.
+
+- Distinguish proposed capacity, legal preparation, recorded cost coverage and
+  documentation availability with explicit text. CURRENT means only matching source
+  evidence at the check; it grants no signing, dispatch, completion or delivery rights.
+- Side-by-side source facts and manual proposals must remain readable when stacked.
+  Use accessible labels and source focus targets, touch controls and no color-only
+  status. Keep development controls collapsed on small screens.
+- Components own context/liveness boundaries, including model replacement without a
+  parent key and React StrictMode effect remount. Withdrawing confirmation or changing
+  company/property must hide pending old evidence and discard late results.
+- Customer packs never inherit staff financial/workforce projections. Unavailable
+  media must remain explicitly unavailable; no empty photo frame implies inspection
+  coverage or warranty.
+- Unmounted expansion domain prototypes make no UI/accessibility claim. Any future
+  mount must use these same tokens and receive actual responsive/keyboard/axe/source
+  navigation evidence before separate integration review.

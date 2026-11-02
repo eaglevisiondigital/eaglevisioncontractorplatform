@@ -7,7 +7,8 @@
     "Inventory maps existing public source and retained evidence; it is not a fresh full security audit.",
     "Separate draft PRs for sales, finance and field are not integrated into this source baseline.",
     "Historical Action B core connected PASS is retained; all new hosted lifecycle acceptance remains blocked.",
-    "Cycle-two, Cycle-three and Cycle-four child candidates remain separate draft PRs; their tested source is not silently integrated into this coordination baseline."
+    "Cycle-two, Cycle-three and Cycle-four child candidates remain separate draft PRs; their tested source is not silently integrated into this coordination baseline.",
+    "Cycle-five fourteen local candidates remain separate unmerged drafts23\u201337; tested prototype evidence does not promote operational scope into this coordination baseline."
   ],
   "features": [
     {
@@ -177,7 +178,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review PR18 exact immutable accepted-test-preference/issued-scope references; canonical version/calculation and connected issuance guards remain unchanged.",
+      "next": "Review exact Cycle5 candidate heads and retained combined proof; keep default-OFF/unwired and pursue source-custody or isolated workspace composition without real execution.",
       "date": "2026-11-01",
       "dataObjects": [
         "public.estimates",
@@ -187,7 +188,8 @@
       "routes": ["/preview > Estimates"],
       "risks": [
         "Local estimating exists; issued-safe customer scope requires exact immutable source.",
-        "Revision, repair-origin and connected issuance guards stay closed."
+        "Revision, repair-origin and connected issuance guards stay closed.",
+        "Cycle-five source-bound local candidates are not merged, enabled, hosted-accepted or released; captured consent/workforce and genuine operational gates remain UNKNOWN/BLOCKED."
       ],
       "dependencies": ["CRM-001"],
       "sources": [
@@ -226,6 +228,14 @@
         {
           "path": "docs/program/CYCLE4_PROTECTED_SOURCE.json",
           "anchor": "\"schema\": \"propel-cycle4-protected-source-v1\""
+        },
+        {
+          "path": "docs/program/CYCLE5_INTEGRATION_REVIEW.md",
+          "anchor": "# Cycle-five local integration and independent review"
+        },
+        {
+          "path": "docs/program/CYCLE5_DELIVERY_INDEX.json",
+          "anchor": "\"schema\": \"propel-cycle5-delivery-v1\""
         }
       ],
       "ci": {
@@ -297,7 +307,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review PR18 retained exact scope/hash/receipt and current/stale/UNKNOWN verification; genuine signing, terms, Auth and custody acceptance remain separate.",
+      "next": "Review exact Cycle5 candidate heads and retained combined proof; keep default-OFF/unwired and pursue source-custody or isolated workspace composition without real execution.",
       "date": "2026-11-01",
       "dataObjects": [
         "Immutable estimate scope",
@@ -307,7 +317,8 @@
       "routes": ["/preview/release (explicit synthetic sandbox)"],
       "risks": [
         "Contract/sandbox source already exists; legal execution, provider identity and genuine consent are not accepted.",
-        "Ordinary contracts and real signatures remain disabled."
+        "Ordinary contracts and real signatures remain disabled.",
+        "Cycle-five source-bound local candidates are not merged, enabled, hosted-accepted or released; captured consent/workforce and genuine operational gates remain UNKNOWN/BLOCKED."
       ],
       "dependencies": ["EST-001"],
       "sources": [
@@ -346,6 +357,14 @@
         {
           "path": "docs/program/CYCLE4_PROTECTED_SOURCE.json",
           "anchor": "\"schema\": \"propel-cycle4-protected-source-v1\""
+        },
+        {
+          "path": "docs/program/CYCLE5_INTEGRATION_REVIEW.md",
+          "anchor": "# Cycle-five local integration and independent review"
+        },
+        {
+          "path": "docs/program/CYCLE5_DELIVERY_INDEX.json",
+          "anchor": "\"schema\": \"propel-cycle5-delivery-v1\""
         }
       ],
       "ci": {
@@ -422,7 +441,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review PR20 exact source-bound crew-day proposals/conflicts; genuine timed-slot/availability ownership, dispatch and connected/offline acceptance remain separate.",
+      "next": "Review exact Cycle5 candidate heads and retained combined proof; keep default-OFF/unwired and pursue source-custody or isolated workspace composition without real execution.",
       "date": "2026-11-01",
       "dataObjects": [
         "Existing jobs/assignments/time entries/breaks",
@@ -434,7 +453,8 @@
       ],
       "risks": [
         "Existing timekeeping is executable locally; sample job assignment does not retain dispatch.",
-        "Operational crew scheduling, offline conflict custody and proof-of-work remain UNKNOWN."
+        "Operational crew scheduling, offline conflict custody and proof-of-work remain UNKNOWN.",
+        "Cycle-five source-bound local candidates are not merged, enabled, hosted-accepted or released; captured consent/workforce and genuine operational gates remain UNKNOWN/BLOCKED."
       ],
       "dependencies": ["FLD-001"],
       "sources": [
@@ -469,6 +489,14 @@
         {
           "path": "docs/program/CYCLE4_PROTECTED_SOURCE.json",
           "anchor": "\"schema\": \"propel-cycle4-protected-source-v1\""
+        },
+        {
+          "path": "docs/program/CYCLE5_INTEGRATION_REVIEW.md",
+          "anchor": "# Cycle-five local integration and independent review"
+        },
+        {
+          "path": "docs/program/CYCLE5_DELIVERY_INDEX.json",
+          "anchor": "\"schema\": \"propel-cycle5-delivery-v1\""
         }
       ],
       "ci": {
@@ -544,7 +572,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review PR17 canonical variance/margin warnings and optional confirmed local floor; accounting, NMI and settlement evidence remain separately unverified.",
+      "next": "Review exact Cycle5 candidate heads and retained combined proof; keep default-OFF/unwired and pursue source-custody or isolated workspace composition without real execution.",
       "date": "2026-11-01",
       "dataObjects": [
         "Existing job baseline",
@@ -555,7 +583,8 @@
       "routes": ["/preview > Jobs"],
       "risks": [
         "Profitability is implemented locally; external accounting and purchase-order lifecycle are not certified.",
-        "Incomplete cost inputs cannot be labeled final; no automatic customer billing."
+        "Incomplete cost inputs cannot be labeled final; no automatic customer billing.",
+        "Cycle-five source-bound local candidates are not merged, enabled, hosted-accepted or released; captured consent/workforce and genuine operational gates remain UNKNOWN/BLOCKED."
       ],
       "dependencies": ["EST-001"],
       "sources": [
@@ -586,6 +615,14 @@
         {
           "path": "docs/program/CYCLE4_PROTECTED_SOURCE.json",
           "anchor": "\"schema\": \"propel-cycle4-protected-source-v1\""
+        },
+        {
+          "path": "docs/program/CYCLE5_INTEGRATION_REVIEW.md",
+          "anchor": "# Cycle-five local integration and independent review"
+        },
+        {
+          "path": "docs/program/CYCLE5_DELIVERY_INDEX.json",
+          "anchor": "\"schema\": \"propel-cycle5-delivery-v1\""
         }
       ],
       "ci": {
@@ -657,7 +694,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review the Cycle4 unified authorized report/job timeline candidate; no warranty, verified physical completion, delivery or consumer promotion.",
+      "next": "Review exact Cycle5 candidate heads and retained combined proof; keep default-OFF/unwired and pursue source-custody or isolated workspace composition without real execution.",
       "date": "2026-11-01",
       "dataObjects": [
         "Reuse existing CRM location, report/version, job and private media contracts"
@@ -665,7 +702,8 @@
       "routes": [],
       "risks": [
         "Published inspection history is not a complete Property Passport, warranty or verified completion system.",
-        "Media quarantine, consent, access and retention gates remain unmet."
+        "Media quarantine, consent, access and retention gates remain unmet.",
+        "Cycle-five source-bound local candidates are not merged, enabled, hosted-accepted or released; captured consent/workforce and genuine operational gates remain UNKNOWN/BLOCKED."
       ],
       "dependencies": ["CUS-001", "FLD-001"],
       "sources": [
@@ -691,6 +729,14 @@
         {
           "path": "docs/program/CYCLE4_PROTECTED_SOURCE.json",
           "anchor": "\"schema\": \"propel-cycle4-protected-source-v1\""
+        },
+        {
+          "path": "docs/program/CYCLE5_INTEGRATION_REVIEW.md",
+          "anchor": "# Cycle-five local integration and independent review"
+        },
+        {
+          "path": "docs/program/CYCLE5_DELIVERY_INDEX.json",
+          "anchor": "\"schema\": \"propel-cycle5-delivery-v1\""
         }
       ],
       "ci": {
@@ -710,7 +756,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review PR19 bounded anchored planning eligibility and exact visit evidence; purpose, suppression, enrollment and communication authority remain unverified/blocked.",
+      "next": "Review exact Cycle5 candidate heads and retained combined proof; keep default-OFF/unwired and pursue source-custody or isolated workspace composition without real execution.",
       "date": "2026-11-01",
       "dataObjects": [
         "Existing inspection recurrence",
@@ -719,7 +765,8 @@
       "routes": [],
       "risks": [
         "Inspection cadence already exists; paid program enrollment/consent/billing is not implemented acceptance.",
-        "Six billing proposals stay PROPOSED; no AR or customer obligations."
+        "Six billing proposals stay PROPOSED; no AR or customer obligations.",
+        "Cycle-five source-bound local candidates are not merged, enabled, hosted-accepted or released; captured consent/workforce and genuine operational gates remain UNKNOWN/BLOCKED."
       ],
       "dependencies": ["FLD-001", "FIN-001"],
       "sources": [
@@ -745,6 +792,14 @@
         {
           "path": "docs/program/CYCLE4_PROTECTED_SOURCE.json",
           "anchor": "\"schema\": \"propel-cycle4-protected-source-v1\""
+        },
+        {
+          "path": "docs/program/CYCLE5_INTEGRATION_REVIEW.md",
+          "anchor": "# Cycle-five local integration and independent review"
+        },
+        {
+          "path": "docs/program/CYCLE5_DELIVERY_INDEX.json",
+          "anchor": "\"schema\": \"propel-cycle5-delivery-v1\""
         }
       ],
       "ci": {
@@ -764,14 +819,15 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review PR19 exact current channel/planning evidence separately from purpose/suppression/enrollment; no recipient, sender, outbox or automatic communication.",
+      "next": "Review exact Cycle5 candidate heads and retained combined proof; keep default-OFF/unwired and pursue source-custody or isolated workspace composition without real execution.",
       "date": "2026-11-01",
       "dataObjects": [
         "Reuse CRM and communications preparation; no duplicate lead store"
       ],
       "routes": [],
       "risks": [
-        "No verified automated sending, consent/opt-out provider pipeline or external booking."
+        "No verified automated sending, consent/opt-out provider pipeline or external booking.",
+        "Cycle-five source-bound local candidates are not merged, enabled, hosted-accepted or released; captured consent/workforce and genuine operational gates remain UNKNOWN/BLOCKED."
       ],
       "dependencies": ["CRM-001"],
       "sources": [
@@ -797,6 +853,14 @@
         {
           "path": "docs/program/CYCLE4_PROTECTED_SOURCE.json",
           "anchor": "\"schema\": \"propel-cycle4-protected-source-v1\""
+        },
+        {
+          "path": "docs/program/CYCLE5_INTEGRATION_REVIEW.md",
+          "anchor": "# Cycle-five local integration and independent review"
+        },
+        {
+          "path": "docs/program/CYCLE5_DELIVERY_INDEX.json",
+          "anchor": "\"schema\": \"propel-cycle5-delivery-v1\""
         }
       ],
       "ci": {
@@ -816,7 +880,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Define one bounded human-confirmed draft input with evaluation/privacy criteria; remain default OFF.",
+      "next": "Review exact Cycle5 candidate heads and retained combined proof; keep default-OFF/unwired and pursue source-custody or isolated workspace composition without real execution.",
       "date": "2026-11-01",
       "dataObjects": [
         "Existing estimate draft and quarantine/extraction contracts"
@@ -824,7 +888,8 @@
       "routes": [],
       "risks": [
         "Material extraction interfaces do not constitute an accepted voice agent/Copilot.",
-        "No real AI/provider activation, autonomous financial decisions or customer messages."
+        "No real AI/provider activation, autonomous financial decisions or customer messages.",
+        "Cycle-five source-bound local candidates are not merged, enabled, hosted-accepted or released; captured consent/workforce and genuine operational gates remain UNKNOWN/BLOCKED."
       ],
       "dependencies": ["EST-001"],
       "sources": [
@@ -838,6 +903,14 @@
         {
           "path": "docs/PHASE3A_WORKER.md",
           "anchor": "# Document worker and provider activation contract"
+        },
+        {
+          "path": "docs/program/CYCLE5_INTEGRATION_REVIEW.md",
+          "anchor": "# Cycle-five local integration and independent review"
+        },
+        {
+          "path": "docs/program/CYCLE5_DELIVERY_INDEX.json",
+          "anchor": "\"schema\": \"propel-cycle5-delivery-v1\""
         }
       ],
       "ci": {
@@ -857,7 +930,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Inventory exact provider interfaces; choose one non-network export/import contract after owner priority.",
+      "next": "Review exact Cycle5 candidate heads and retained combined proof; keep default-OFF/unwired and pursue source-custody or isolated workspace composition without real execution.",
       "date": "2026-11-01",
       "dataObjects": [
         "Existing supplier connector contracts",
@@ -867,7 +940,8 @@
       "routes": [],
       "risks": [
         "Supplier connectors are disabled interfaces; calendar/phone/accounting operational adapters unverified.",
-        "Contract tests do not authorize calls, credentials, ingestion or provider execution."
+        "Contract tests do not authorize calls, credentials, ingestion or provider execution.",
+        "Cycle-five source-bound local candidates are not merged, enabled, hosted-accepted or released; captured consent/workforce and genuine operational gates remain UNKNOWN/BLOCKED."
       ],
       "dependencies": ["CRM-001"],
       "sources": [
@@ -890,6 +964,14 @@
         {
           "path": "docs/PROPERTY_OPERATIONS_VALIDATION.md",
           "anchor": "# Property operations and smart procurement \u00b7 local implementation"
+        },
+        {
+          "path": "docs/program/CYCLE5_INTEGRATION_REVIEW.md",
+          "anchor": "# Cycle-five local integration and independent review"
+        },
+        {
+          "path": "docs/program/CYCLE5_DELIVERY_INDEX.json",
+          "anchor": "\"schema\": \"propel-cycle5-delivery-v1\""
         }
       ],
       "ci": {
@@ -909,7 +991,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Preserve five locked styles/artwork and thirteen bindings; inspect Cycle4 actual desktop/tablet/mobile states and source-context isolation.",
+      "next": "Review exact Cycle5 candidate heads and retained combined proof; keep default-OFF/unwired and pursue source-custody or isolated workspace composition without real execution.",
       "date": "2026-11-01",
       "dataObjects": [
         "CompanyProfile",
@@ -922,7 +1004,8 @@
       ],
       "risks": [
         "Approved customer/back-office layouts and original artwork are locked.",
-        "New isolated schedule preview requires explicit visual integration review before promotion."
+        "New isolated schedule preview requires explicit visual integration review before promotion.",
+        "Cycle-five source-bound local candidates are not merged, enabled, hosted-accepted or released; captured consent/workforce and genuine operational gates remain UNKNOWN/BLOCKED."
       ],
       "dependencies": [],
       "sources": [
@@ -965,6 +1048,14 @@
         {
           "path": "docs/program/CYCLE4_PROTECTED_SOURCE.json",
           "anchor": "\"schema\": \"propel-cycle4-protected-source-v1\""
+        },
+        {
+          "path": "docs/program/CYCLE5_INTEGRATION_REVIEW.md",
+          "anchor": "# Cycle-five local integration and independent review"
+        },
+        {
+          "path": "docs/program/CYCLE5_DELIVERY_INDEX.json",
+          "anchor": "\"schema\": \"propel-cycle5-delivery-v1\""
         }
       ],
       "ci": {
@@ -1337,7 +1428,7 @@
       "hosted": "not_accepted",
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
-      "next": "Review exact Cycle4 child heads and combined source proof; preserve original18 IDs/25 records, independent protected manifest and honest operational gaps.",
+      "next": "Review exact Cycle5 candidate heads and retained combined proof; keep default-OFF/unwired and pursue source-custody or isolated workspace composition without real execution.",
       "date": "2026-11-01",
       "dataObjects": [
         "Read-only public source hashes",
@@ -1346,7 +1437,8 @@
       "routes": [],
       "risks": [
         "Source/anchor presence does not prove execution, test success, genuine Auth or release.",
-        "Cross-worktree changes remain separate draft PRs; no automatic integration or deployment."
+        "Cross-worktree changes remain separate draft PRs; no automatic integration or deployment.",
+        "Cycle-five source-bound local candidates are not merged, enabled, hosted-accepted or released; captured consent/workforce and genuine operational gates remain UNKNOWN/BLOCKED."
       ],
       "dependencies": ["UX-001"],
       "sources": [
@@ -1389,6 +1481,14 @@
         {
           "path": "docs/program/CYCLE4_PROTECTED_SOURCE.json",
           "anchor": "\"schema\": \"propel-cycle4-protected-source-v1\""
+        },
+        {
+          "path": "docs/program/CYCLE5_INTEGRATION_REVIEW.md",
+          "anchor": "# Cycle-five local integration and independent review"
+        },
+        {
+          "path": "docs/program/CYCLE5_DELIVERY_INDEX.json",
+          "anchor": "\"schema\": \"propel-cycle5-delivery-v1\""
         }
       ],
       "ci": {

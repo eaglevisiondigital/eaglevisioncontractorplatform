@@ -1330,3 +1330,11 @@ objects reconcile read-only. No extra business store or authority. Missing histo
 property snapshots remain UNKNOWN. Internal job aggregates never enter customer-safe
 packs. Every expansion has disjoint ownership and separate draft review; successful
 local checks do not promote it into the approved interfaces or release lane.
+
+Cycle-five completed bounded local preparation in separate drafts. Preserve the
+actual consent-return race as CAPTURED_NOT_ATOMIC/UNKNOWN, rather than expanding a
+shared core just to claim operational currentness. Keep prototype source, customer-safe
+pack and provider acceptance separate; no external action follows a local status/hash.
+The combined Storm test follows actual CRM snapshot lineage instead of assuming an
+older parent gap. All corrected findings and exact evidence are retained in the new
+Cycle-five review and delivery index. No merge/deploy/hosted/release authority.
