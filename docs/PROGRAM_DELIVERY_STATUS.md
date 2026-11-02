@@ -17,16 +17,18 @@ completed their bounded implementation turns; the freed Finance slot launched
 Passport and the freed Sales slot launched independent review. Main authors Growth
 and shared contracts/design/evidence. No persistent background workers are implied.
 All worktrees are separate; no agent edited another package or a protected engine.
+All five author turns and independent review are now complete. Only main is finishing
+delivery/CI verification; there are no persistent background development agents.
 
-| Actual owner                                 | Branch / exact reviewed parent                                                             | Draft / exact implementation head                                                                                              |
-| -------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| `/root/cycle4_finance`, delivered by main    | `codex/program-job-margin-warnings` / PR12 `1104a1e0bf44fa1089e78408ed6a9eeb7d2c7b20`      | [#17](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/17), `fe9d9ff593dbbed175ac69de1bd44fa1d25725bc` |
-| `/root/cycle4_sales`, delivered by main      | `codex/program-approved-scope-reference` / PR11 `4460c4a200e00c1b976a2305e04c3c01e1c386f5` | [#18](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/18), `ed3a099207ad3e29b3b1e70aba2fc809664a60bb` |
-| `/root`, Growth author                       | `codex/program-reminder-eligibility` / PR13 `169e67955eedd70285a6f42993da6632e5749401`     | [#19](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/19), `3580bf4dceee7c8c4244b902c64c93f9dc0564c8` |
-| `/root/cycle4_field`, delivered by main      | `codex/program-crew-day-capacity` / PR14 `921c8083046901f457374677d52fe7b14e097c86`        | [#20](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/20), `5a96baf9ebf7c8e17177be67d5d6f2b26cef5f33` |
-| `/root/cycle4_passport`                      | `codex/program-passport-timeline` / PR15 `d14da6a4b4aae505eedfbd5c6d8b912ecc6c3fb4`        | [#21](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/21), `f7a44a8cc5fd7c4add529b6588925f548d2d85b5` |
-| `/root`, integration/design/register/tooling | `codex/program-cycle-four` / PR16 `c546691c28dfe6c583414bad08203e76b4413032`               | Separate coordination draft after final combined proof                                                                         |
-| `/root/cycle4_integration_review`            | Read-only actual source/disposable composition; no authored package                        | [Independent record](program/CYCLE4_INTEGRATION_REVIEW.md)                                                                     |
+| Actual owner                                 | Branch / exact reviewed parent                                                             | Draft / exact implementation head                                                                                                     |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `/root/cycle4_finance`, delivered by main    | `codex/program-job-margin-warnings` / PR12 `1104a1e0bf44fa1089e78408ed6a9eeb7d2c7b20`      | [#17](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/17), `fe9d9ff593dbbed175ac69de1bd44fa1d25725bc`        |
+| `/root/cycle4_sales`, delivered by main      | `codex/program-approved-scope-reference` / PR11 `4460c4a200e00c1b976a2305e04c3c01e1c386f5` | [#18](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/18), `ed3a099207ad3e29b3b1e70aba2fc809664a60bb`        |
+| `/root`, Growth author                       | `codex/program-reminder-eligibility` / PR13 `169e67955eedd70285a6f42993da6632e5749401`     | [#19](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/19), `3580bf4dceee7c8c4244b902c64c93f9dc0564c8`        |
+| `/root/cycle4_field`, delivered by main      | `codex/program-crew-day-capacity` / PR14 `921c8083046901f457374677d52fe7b14e097c86`        | [#20](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/20), `5a96baf9ebf7c8e17177be67d5d6f2b26cef5f33`        |
+| `/root/cycle4_passport`                      | `codex/program-passport-timeline` / PR15 `d14da6a4b4aae505eedfbd5c6d8b912ecc6c3fb4`        | [#21](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/21), `f7a44a8cc5fd7c4add529b6588925f548d2d85b5`        |
+| `/root`, integration/design/register/tooling | `codex/program-cycle-four` / PR16 `c546691c28dfe6c583414bad08203e76b4413032`               | [#22](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/22), current coordination head in its exact-SHA checks |
+| `/root/cycle4_integration_review`            | Read-only actual source/disposable composition; no authored package                        | [Independent record](program/CYCLE4_INTEGRATION_REVIEW.md)                                                                            |
 
 ### Functioning implementation and evidence
 
@@ -93,8 +95,11 @@ runtime result. No previous successful run is restarted.
 | 20 / `5a96baf` | [41376056963](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41376056963) SUCCESS     | [41376056921](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41376056921) SUCCESS | [Capacity41376056946](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41376056946), [work orders41376056942](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41376056942), [handoff41376056768](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41376056768), [scheduling41376056828](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41376056828) SUCCESS |
 | 21 / `f7a44a8` | [41377060625](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41377060625) IN_PROGRESS | [41377060568](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41377060568) SUCCESS | [Timeline41377060567](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41377060567) SUCCESS                                                                                                                                                                                                                                                                                                                                                                    |
 
-Coordination is a separate draft against exactPR16; its final head gets automatic
-Foundation/compatibility checks after push. No child source is merged into it.
+Coordination [PR22](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/22)
+is a separate draft against exactPR16; its final head gets automatic Foundation/
+compatibility checks after push. Its current SHA is bound by the GitHub PR metadata
+and final delivery, avoiding a self-referential commit hash in this file. No child
+source is merged into it.
 
 Use the child worktree, not this unmerged coordination checkout:
 

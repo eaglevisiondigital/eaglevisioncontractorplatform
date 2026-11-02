@@ -17,8 +17,8 @@ draft/unmerged and unchanged.
 | `/root/cycle4_integration_review` | Read-only independent disposable composition                                               | Combined types/API/schema consistency, ownership/isolation, mobile/accessibility, compatibility and protected integrity.        |
 
 Three subagent slots required successive assignments. All five feature author turns
-are complete; main delivered their isolated candidates as drafts17–21 and independent
-review confirmed combined source integrity. Actual heads/PRs/tests/CI are retained
+are complete; main delivered their isolated candidates as drafts17–21, coordination
+as draft22, and independent review confirmed combined source integrity. Actual heads/PRs/tests/CI are retained
 in the [master delivery register](../PROGRAM_DELIVERY_STATUS.md). No persistent
 background author is implied. Main owns shared contracts/design/tooling/register
 and delivery. No
