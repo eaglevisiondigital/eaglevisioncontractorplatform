@@ -1,0 +1,112 @@
+.finance-case-continuity {
+  min-width: 0;
+  padding: 24px;
+  color: #20352f;
+  background: #f5f5ef;
+  border: 1px solid #d9e1da;
+  border-radius: 16px;
+}
+.finance-case-continuity * {
+  box-sizing: border-box;
+}
+.finance-case-continuity :is(h2, h3, h4, p, li, dd, dt, button, label) {
+  overflow-wrap: anywhere;
+}
+.finance-case-continuity h2 {
+  margin: 4px 0 12px;
+  font-size: 1.65rem;
+}
+.finance-case-continuity .continuity-eyebrow {
+  color: #3e594f;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+.finance-case-continuity .continuity-muted {
+  color: #3e594f;
+  font-size: 0.9rem;
+}
+.finance-case-continuity label {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0;
+  font-weight: 600;
+}
+.finance-case-continuity select {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  color: #20352f;
+  background: white;
+}
+.finance-case-continuity button {
+  min-height: 44px;
+  max-width: 100%;
+  margin: 8px 0;
+  padding: 10px 14px;
+  color: white;
+  background: var(--journey-primary, #247364);
+  white-space: normal;
+}
+.finance-case-continuity button:disabled {
+  color: #3e594f;
+  background: #d9e1da;
+}
+.finance-case-continuity :focus-visible {
+  outline: 3px solid var(--journey-primary, #247364);
+  outline-offset: 4px;
+}
+.finance-case-continuity .continuity-confirm {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-height: 44px;
+}
+.finance-case-continuity .continuity-confirm input {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+.finance-case-continuity .continuity-card {
+  padding: 20px;
+  margin-top: 20px;
+  min-width: 0;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  background: white;
+}
+.finance-case-continuity .continuity-selection {
+  border-top: 2px solid var(--journey-accent, #b4cabb);
+  margin-top: 20px;
+}
+.finance-case-continuity dl {
+  display: grid;
+  gap: 6px;
+}
+.finance-case-continuity dt {
+  color: #3e594f;
+  font-weight: 700;
+}
+.finance-case-continuity dd {
+  margin: 0 0 10px;
+}
+.finance-case-continuity .continuity-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 0.6fr) minmax(0, 1.4fr);
+  gap: 16px;
+}
+.finance-case-continuity .continuity-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+@media (max-width: 760px) {
+  .finance-case-continuity {
+    padding: 16px;
+  }
+  .finance-case-continuity .continuity-controls {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .finance-case-continuity .continuity-card {
+    padding: 16px;
+  }
+}
