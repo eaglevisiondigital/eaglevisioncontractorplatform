@@ -5,7 +5,6 @@ import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
-import { execFileSync } from 'node:child_process';
 import { sampleCompanies } from '../src/domain/platform';
 import {
   prepareOperatingSources,
@@ -749,15 +748,15 @@ it('source withdrawal after each permanent claim retains UNKNOWN even after pres
 });
 it('the common owner-brief correction changes only whitespace and preserves the reviewed exact source semantics', () => {
   const path = 'docs/program/CYCLE11_IMPLEMENTATION_BRIEF.md';
-  const owner = execFileSync(
-    'git',
-    ['show', 'b6ac4fc28c5a50d2029db4a5a69d345af0e3f35b:' + path],
-    { encoding: 'utf8' },
-  );
+  // Fixed evidence derived independently from exact b6ac4fc owner bytes.
+  // CI may omit historical trees; neither missing history nor current content
+  // may choose or weaken this expected source identity.
   const current = readFileSync(new URL('../' + path, import.meta.url), 'utf8');
-  expect(current.replace(/\s+/g, ' ').trim()).toBe(
-    owner.replace(/\s+/g, ' ').trim(),
-  );
+  expect(
+    createHash('sha256')
+      .update(current.replace(/\s+/g, ' ').trim())
+      .digest('hex'),
+  ).toBe('23b90446a4b7afc8d68cb39eed652e9741e6820bfe3a528faad51bccbf7e41ed');
   expect(createHash('sha256').update(current).digest('hex')).toBe(
     '78b9aeeebe91dbeaed2a11f0240dbfb88771241e52cc2137bfbfb8bcca0663f1',
   );

@@ -2,6 +2,13 @@
 
 ## Latest: cycle eleven · source-bound operating reviews and isolated labs
 
+CI portability correction: actual first Ubuntu run412PASS/1FAIL exposed only a
+historical-Git-tree dependency in an evidence test. The independently reviewed
+constant owner semantic-hash comparison retains both unconditional assertions and
+32cases without requiring history. Product code and all protected evidence stay
+unchanged; normal automatic checks run on the new source commit. See
+[exact failure and correction](docs/program/CYCLE11_CI_CORRECTION.json).
+
 Six separate feature drafts74/76–80 are composed on Main draft75 from exact owner
 plan b6ac4fc. Field source-bound readiness plus durable test custody, financial
 proposed-correction comparison, request/job/documentation/Passport continuity,

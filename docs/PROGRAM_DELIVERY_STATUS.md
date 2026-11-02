@@ -20,7 +20,7 @@ The shared brief-format patch is Main-owned and independently verified whitespac
 | sync-admission-review       | /root/cycle11_customer_advanced    | `codex/cycle11-sync-admission-review`       | [#79](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/79) | `6108876998b891108964a4a9a7a58bef6e0b31ef` | 41    |
 
 Independent reviewer `/root/cycle11_independent_review` committed only32 combined
-regressions and its sanitized review at `8b47fc2e91c46dbe29b6aaeaebc2e191ed9afac8`.
+regressions and its sanitized review at `dc0e9821f57b8dbd909d845fd3378387da5127a0`.
 Verdict CLEAR for bounded local/synthetic use. Main owns shared contracts/design,
 one-environment mount, seven-panel optional group, pilot scorecard, integrity/result
 checks, exact-head CI snapshot, browser evidence and master acceptance records.

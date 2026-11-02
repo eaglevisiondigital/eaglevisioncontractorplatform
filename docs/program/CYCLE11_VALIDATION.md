@@ -18,7 +18,7 @@ No source branch was merged or rewritten. Main-owned brief formatting is whitesp
 
 The three implementation agents used separate worktrees in two concurrent waves.
 Independent `/root/cycle11_independent_review` completed32new combined cases and a
-review at8b47fc2e91c46dbe29b6aaeaebc2e191ed9afac8. All assignments are completed;
+review atdc0e9821f57b8dbd909d845fd3378387da5127a0. All assignments are completed;
 no unattended agent or persistent execution remains. Main owns composition/acceptance.
 
 - Field: select actual job/assigned technician, inspect timed human proposal,
@@ -143,3 +143,15 @@ Next bounded engineering package: extend the disposable crew reservation lab int
 an exact-source schedule-proposal revision review with independently controlled
 expiry/revocation and read-only reconciliation. Keep its business writer disconnected
 until genuine server authority and recovery are separately accepted.
+
+## Actual first CI failure and portable evidence correction
+
+The first Main candidate f539baf0bcb68792ac9677d6eaef76837b36bc49 ran the real
+Ubuntu/Node24 application suites:412PASS/1FAIL. The sole failed independent case
+assumed the historical owner tree was present in a shallow Git checkout. Every
+source-domain/native process test passed. The independently reviewed correction
+compares the normalized current owner brief to a fixed SHA256 derived from exact
+b6ac4fc owner bytes, and still checks its exact formatted bytes. No assertions,
+cases or product code are removed; no missing-history fallback or skip is added.
+See CYCLE11_CI_CORRECTION.json. A subsequent source commit receives normal automatic
+CI; successful older checks are not manually rerun. Pending is never green.

@@ -137,3 +137,19 @@ dispatch, financial execution or customer communications were used in this revie
 
 No unresolved source-domain/security blocker was identified for this bounded
 candidate. Operational and Release 1.0 acceptance remain blocked independently.
+
+## Portable CI evidence correction
+
+Actual Main run41518243306 on f539baf0bcb68792ac9677d6eaef76837b36bc49 produced
+412PASS/1FAIL. The only failure was this review's runtime git-show comparison:
+the shallow CI checkout lacked the historical b6ac4fc owner tree. All domain and
+real-process tests passed. Main applied a narrow correction to this owned test after
+interrupting the reviewer's read-only diagnosis. The current normalized brief is
+compared to the fixed independently derived owner semantic digest
+23b90446a4b7afc8d68cb39eed652e9741e6820bfe3a528faad51bccbf7e41ed, while the exact
+formatted-byte digest assertion remains. Normalization collapses whitespace only;
+no non-whitespace content is removed. No case, assertion, validation or product code
+is omitted; there is no environment fallback or skip. This preserves the actual
+owner source identity without requiring repository history during CI.
+The independent reviewer verified Main's portable correction against the exact local
+owner commit and confirmed both the normalized semantic digest and formatted-byte digest.

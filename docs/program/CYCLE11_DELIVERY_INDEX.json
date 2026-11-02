@@ -8,15 +8,15 @@
     "path": "docs/program/CYCLE11_IMPLEMENTATION_BRIEF.md",
     "sha256": "78b9aeeebe91dbeaed2a11f0240dbfb88771241e52cc2137bfbfb8bcca0663f1"
   },
-  "independent_review_commit": "8b47fc2e91c46dbe29b6aaeaebc2e191ed9afac8",
+  "independent_review_commit": "dc0e9821f57b8dbd909d845fd3378387da5127a0",
   "independent_files": [
     {
       "path": "tests/cycle11-integration.test.ts",
-      "sha256": "62b24b9ee359000777569d233514e187d8162e5256d588712dfe4249cd0cfc25"
+      "sha256": "2231b554d50f24127f8b4d96b196e01c0ee464570b7822366bc54478cf413d49"
     },
     {
       "path": "docs/program/CYCLE11_INTEGRATION_REVIEW.md",
-      "sha256": "c3e40016b160d688404ea9f01c19d0a6fc192adabe6581611b4ce5279d2acc14"
+      "sha256": "f5a529fcb1624ec63ca48ffb9a4c06c3c73ce8a6b109180339e940395c592602"
     }
   ],
   "packages": [
