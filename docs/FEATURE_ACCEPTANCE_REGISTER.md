@@ -34,6 +34,18 @@ cases passed in their respective jobs. This is retained evidence, not a rerun or
 certification of the new packages. QA-001 has no prior CI claim. Current branch/PR
 results belong in [delivery status](PROGRAM_DELIVERY_STATUS.md).
 
+## Cycle-eight operating reviews
+
+Six bounded packages build on exact successful PR49 head a20f118. See
+[assignments](program/CYCLE8_ASSIGNMENTS.md), [source index](program/CYCLE8_DELIVERY_INDEX.json),
+[validation](program/CYCLE8_VALIDATION.md) and [independent review](program/CYCLE8_INTEGRATION_REVIEW.md).
+Author drafts remain separate; Main composes exact reviewed paths for local testing.
+Weekly crew/source synchronization and consent-at-send remain non-operational review
+contracts. Canonical finance proposals, safe completion evidence and daily priorities
+never establish dispatch, final profit, physical completion, contract or send authority.
+Original18 IDs/25records and local partial/hosted blocked/release NOT AUTHORIZED states
+remain unchanged. Exact tests and CI are separate from source inventory.
+
 ## Cycle-seven bounded usability candidate
 
 Three separately owned draft packages add useful unsaved booking/scheduling and

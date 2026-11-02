@@ -248,3 +248,32 @@ both withhold stale results and show the selected company's retained attempt sta
 No hidden map claim may appear to offer a fresh preparation; UNKNOWN stays terminal
 and can only reconcile its exact original source. See CYCLE7_ASSIGNMENTS.md for
 bounded ownership. No new store, schema, financial/customer/hosted authority.
+
+## Cycle-eight source-bound operating desks
+
+Six additive adapters consume the same `LocalJourney` instances. Each defaults OFF
+and is mounted only after existing explicit local confirmation. New adapters retain
+original company/customer/property/job/issued-version/receipt/report/visit identities
+and source revisions. Main owns the composition, fixture, shared design and registers;
+no author changes the indexed C6/C7 implementation. Exact byte/hash ownership remains
+reviewable in a new delivery index, not an implicit PR merge.
+
+Weekly board coverage is explicitly the selected job/property, with canonical
+conflicts from authorized recorded work orders. Recorded dates and unsaved windows
+remain distinct. A two-reviewer/source-sync comparison is read-only evidence; it
+cannot reserve capacity, claim atomic crew assignment or replay offline actions.
+Finance remaining-cost inputs are unsaved scenarios through existing calculators;
+coverage gaps withhold final margin. No invoice means no accounting/export identity.
+Sales reviews the actual booking/lead/issued-scope/test-receipt chain; no inferred
+lead FK, genuine approval, signature or contract is created. Passport completion
+documents preserve published sources and UNVERIFIED physical completion. Maintenance
+and renewal reviews preserve recorded cadence and purpose/channel consent limits.
+Consent-at-send checks are an isolated fail-closed contract review, never a sender.
+Daily Copilot priority is a deterministic review suggestion from verified sources,
+with explicit missing evidence; no autonomous action or provider/model call.
+
+Every retained result must fence original live caller inputs and current eligible
+staff after final awaits. Foreign/source-replaced/stale data is withheld. UNKNOWN
+allows exact read-only reconciliation, not retry/new-ID/replacement. Browser memory
+and hashes do not establish genuine Auth, durability or operational concurrency.
+All release/security/recovery/NMI/Netlify/financial/communication gates remain intact.

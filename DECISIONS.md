@@ -1,5 +1,29 @@
 # Engineering decisions
 
+## November 2 · source-bound weekly and daily operating review
+
+Build six disjoint Cycle8 local packages on exact successful PR49 head a20f118.
+Retain C6/C7 indexed source bytes and all protected interfaces/artifacts. Main composes
+exact reviewed files, not PR merges. Shared actual Operations/Phase3/Property/Release
+instances and canonical calculators remain authoritative; no new business schema,
+store, ledger, provider or connected factory.
+
+Two-reviewer crew/source comparisons and consent-at-send checks are explicit isolated
+review prototypes. They do not acquire operational locks, establish workforce
+availability, synchronize offline mutations or send messages. Financial forecasts
+remain unsaved human scenarios; missing coverage is UNKNOWN, not zero/final profit.
+Completion evidence is allowlisted published documentation, not certification.
+Daily priority suggestions cite source identity and missing evidence; they never
+execute AI actions. Exact sources/current eligible staff/final-await fences and
+UNKNOWN read-only/no replay apply to every panel. Same-tab memory is not durability
+or genuine Auth. All independent recovery/NMI/release gates remain unchanged.
+
+Replace a proven whole-JSON phone-prefix test heuristic with structural allowlists,
+exact selected-source identity and actual private-value exclusion. A valid source UUID
+is not a telephone leak. Keep two deterministic UUID cases and six injected private
+key/value regressions. This is one explicit forward test-only correction; historical
+C5 evidence,128 protected hashes and all production validation remain unchanged.
+
 ## November 2 · extend reviewed sources with practical local review controls
 
 Retain every successful exact-head check. GitHub cancellation annotations prove the

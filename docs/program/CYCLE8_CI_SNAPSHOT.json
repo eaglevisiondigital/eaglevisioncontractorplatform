@@ -1,0 +1,479 @@
+{
+  "schema": "propel-cycle8-ci-snapshot-v1",
+  "checked_at": "2026-11-02 15:39:21 UTC",
+  "baseline_pr": 49,
+  "baseline_head": "a20f11855388e7cf8283294a3775e1c86a2cc66e",
+  "baseline_result": "SUCCESS_BOTH_FOUNDATION_AND_ALL16_OBSERVED_RUNS",
+  "manual_reruns": 0,
+  "coordination": {
+    "branch": "codex/program-cycle-eight",
+    "state": "NOT_YET_PUSHED_AT_THIS_SNAPSHOT",
+    "note": "Read final exact-head coordination CI from the resulting draft PR; no PASS is inferred."
+  },
+  "authors": [
+    {
+      "pr": 50,
+      "head": "5d441e50e63eeefe7407256041a8ff792ddbcf5f",
+      "branch": "codex/cycle8-sales-desk",
+      "base": "codex/program-cycle-seven",
+      "draft": true,
+      "state": "open",
+      "runs": [
+        {
+          "id": 41466347241,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41466347241",
+          "head": "5d441e50e63eeefe7407256041a8ff792ddbcf5f"
+        },
+        {
+          "id": 41466347383,
+          "name": "Cycle 6 local workflow integration",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41466347383",
+          "head": "5d441e50e63eeefe7407256041a8ff792ddbcf5f"
+        },
+        {
+          "id": 41466347401,
+          "name": "Cycle 7 practical local usability",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41466347401",
+          "head": "5d441e50e63eeefe7407256041a8ff792ddbcf5f"
+        },
+        {
+          "id": 41466347235,
+          "name": "Foundation checks",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41466347235",
+          "head": "5d441e50e63eeefe7407256041a8ff792ddbcf5f"
+        },
+        {
+          "id": 41466337762,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41466337762",
+          "head": "5d441e50e63eeefe7407256041a8ff792ddbcf5f"
+        },
+        {
+          "id": 41466338048,
+          "name": "Foundation checks",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41466338048",
+          "head": "5d441e50e63eeefe7407256041a8ff792ddbcf5f"
+        }
+      ],
+      "summary": {
+        "success": 20,
+        "pending": 0,
+        "failure": 0,
+        "cancelled": 0
+      }
+    },
+    {
+      "pr": 51,
+      "head": "2156c29293481ef66409cdba4af2141c29fc855f",
+      "branch": "codex/cycle8-completion-review",
+      "base": "codex/program-cycle-seven",
+      "draft": true,
+      "state": "open",
+      "runs": [
+        {
+          "id": 41470509535,
+          "name": "Cycle 7 practical local usability",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41470509535",
+          "head": "2156c29293481ef66409cdba4af2141c29fc855f"
+        },
+        {
+          "id": 41470509827,
+          "name": "Cycle 6 local workflow integration",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41470509827",
+          "head": "2156c29293481ef66409cdba4af2141c29fc855f"
+        },
+        {
+          "id": 41470509680,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41470509680",
+          "head": "2156c29293481ef66409cdba4af2141c29fc855f"
+        },
+        {
+          "id": 41470510012,
+          "name": "Foundation checks",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41470510012",
+          "head": "2156c29293481ef66409cdba4af2141c29fc855f"
+        },
+        {
+          "id": 41470500968,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41470500968",
+          "head": "2156c29293481ef66409cdba4af2141c29fc855f"
+        },
+        {
+          "id": 41470501022,
+          "name": "Foundation checks",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41470501022",
+          "head": "2156c29293481ef66409cdba4af2141c29fc855f"
+        }
+      ],
+      "summary": {
+        "success": 15,
+        "pending": 0,
+        "failure": 0,
+        "cancelled": 0
+      }
+    },
+    {
+      "pr": 52,
+      "head": "d146a213b63390db17a946504c52d933a3475306",
+      "branch": "codex/cycle8-finance-desk",
+      "base": "codex/program-cycle-seven",
+      "draft": true,
+      "state": "open",
+      "runs": [
+        {
+          "id": 41466356624,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41466356624",
+          "head": "d146a213b63390db17a946504c52d933a3475306"
+        },
+        {
+          "id": 41466356638,
+          "name": "Cycle 7 practical local usability",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41466356638",
+          "head": "d146a213b63390db17a946504c52d933a3475306"
+        },
+        {
+          "id": 41466357018,
+          "name": "Cycle 6 local workflow integration",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41466357018",
+          "head": "d146a213b63390db17a946504c52d933a3475306"
+        },
+        {
+          "id": 41466356421,
+          "name": "Passport timeline preview",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41466356421",
+          "head": "d146a213b63390db17a946504c52d933a3475306"
+        },
+        {
+          "id": 41466356510,
+          "name": "Foundation checks",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41466356510",
+          "head": "d146a213b63390db17a946504c52d933a3475306"
+        },
+        {
+          "id": 41466291706,
+          "name": "Passport timeline preview",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41466291706",
+          "head": "d146a213b63390db17a946504c52d933a3475306"
+        },
+        {
+          "id": 41466291549,
+          "name": "Foundation checks",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "failure",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41466291549",
+          "head": "d146a213b63390db17a946504c52d933a3475306"
+        },
+        {
+          "id": 41466291204,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41466291204",
+          "head": "d146a213b63390db17a946504c52d933a3475306"
+        }
+      ],
+      "summary": {
+        "success": 18,
+        "pending": 0,
+        "failure": 1,
+        "cancelled": 1
+      }
+    },
+    {
+      "pr": 53,
+      "head": "fc08296aaf4fd18e5f9fe147d7e06a01f6619326",
+      "branch": "codex/cycle8-weekly-crew",
+      "base": "codex/program-cycle-seven",
+      "draft": true,
+      "state": "open",
+      "runs": [
+        {
+          "id": 41466539812,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41466539812",
+          "head": "fc08296aaf4fd18e5f9fe147d7e06a01f6619326"
+        },
+        {
+          "id": 41466540206,
+          "name": "Cycle 6 local workflow integration",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41466540206",
+          "head": "fc08296aaf4fd18e5f9fe147d7e06a01f6619326"
+        },
+        {
+          "id": 41466539576,
+          "name": "Cycle 7 practical local usability",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41466539576",
+          "head": "fc08296aaf4fd18e5f9fe147d7e06a01f6619326"
+        },
+        {
+          "id": 41466539679,
+          "name": "Foundation checks",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41466539679",
+          "head": "fc08296aaf4fd18e5f9fe147d7e06a01f6619326"
+        },
+        {
+          "id": 41466523890,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41466523890",
+          "head": "fc08296aaf4fd18e5f9fe147d7e06a01f6619326"
+        },
+        {
+          "id": 41466523909,
+          "name": "Foundation checks",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41466523909",
+          "head": "fc08296aaf4fd18e5f9fe147d7e06a01f6619326"
+        }
+      ],
+      "summary": {
+        "success": 20,
+        "pending": 0,
+        "failure": 0,
+        "cancelled": 0
+      }
+    },
+    {
+      "pr": 54,
+      "head": "319e20affad7863794ee3b013f89a96faede720f",
+      "branch": "codex/cycle8-daily-operations",
+      "base": "codex/program-cycle-seven",
+      "draft": true,
+      "state": "open",
+      "runs": [
+        {
+          "id": 41468967160,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41468967160",
+          "head": "319e20affad7863794ee3b013f89a96faede720f"
+        },
+        {
+          "id": 41468967330,
+          "name": "Cycle 6 local workflow integration",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41468967330",
+          "head": "319e20affad7863794ee3b013f89a96faede720f"
+        },
+        {
+          "id": 41468967350,
+          "name": "Cycle 7 practical local usability",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41468967350",
+          "head": "319e20affad7863794ee3b013f89a96faede720f"
+        },
+        {
+          "id": 41468968574,
+          "name": "Foundation checks",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41468968574",
+          "head": "319e20affad7863794ee3b013f89a96faede720f"
+        },
+        {
+          "id": 41468911901,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41468911901",
+          "head": "319e20affad7863794ee3b013f89a96faede720f"
+        },
+        {
+          "id": 41468912057,
+          "name": "Foundation checks",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41468912057",
+          "head": "319e20affad7863794ee3b013f89a96faede720f"
+        }
+      ],
+      "summary": {
+        "success": 20,
+        "pending": 0,
+        "failure": 0,
+        "cancelled": 0
+      }
+    },
+    {
+      "pr": 55,
+      "head": "d220ea766ca875b0247bc5148a25045ddc9453b3",
+      "branch": "codex/cycle8-maintenance-desk",
+      "base": "codex/program-cycle-seven",
+      "draft": true,
+      "state": "open",
+      "runs": [
+        {
+          "id": 41469445868,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41469445868",
+          "head": "d220ea766ca875b0247bc5148a25045ddc9453b3"
+        },
+        {
+          "id": 41469445728,
+          "name": "Cycle 6 local workflow integration",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41469445728",
+          "head": "d220ea766ca875b0247bc5148a25045ddc9453b3"
+        },
+        {
+          "id": 41469446044,
+          "name": "Cycle 7 practical local usability",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41469446044",
+          "head": "d220ea766ca875b0247bc5148a25045ddc9453b3"
+        },
+        {
+          "id": 41469445884,
+          "name": "Foundation checks",
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41469445884",
+          "head": "d220ea766ca875b0247bc5148a25045ddc9453b3"
+        },
+        {
+          "id": 41469429618,
+          "name": "Synthetic rehearsal compatibility",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41469429618",
+          "head": "d220ea766ca875b0247bc5148a25045ddc9453b3"
+        },
+        {
+          "id": 41469429614,
+          "name": "Foundation checks",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41469429614",
+          "head": "d220ea766ca875b0247bc5148a25045ddc9453b3"
+        }
+      ],
+      "summary": {
+        "success": 20,
+        "pending": 0,
+        "failure": 0,
+        "cancelled": 0
+      }
+    }
+  ],
+  "investigations": [
+    {
+      "pr": 52,
+      "head": "d146a213b63390db17a946504c52d933a3475306",
+      "run": 41466356421,
+      "workflow": "Passport timeline preview",
+      "result": "CANCELLED_INSTALL_TIMEOUT",
+      "annotation": "The job has exceeded the maximum execution time of 10m0s",
+      "successful_same_sha_push": 41466291706,
+      "action": "Preserve successful exact-head push; no rerun or timeout change."
+    },
+    {
+      "pr": 52,
+      "head": "d146a213b63390db17a946504c52d933a3475306",
+      "run": 41466291549,
+      "workflow": "Foundation checks",
+      "result": "FAILURE_FALSE_POSITIVE_TEST_ASSERTION",
+      "successful_same_sha_pr": 41466356510,
+      "cause": "A legal consent UUID containing a 4555- segment matched a whole-JSON /555-/ privacy heuristic.",
+      "action": "Forward test-only structural allowlist and exact-private-value regression correction on coordination branch; no product source or protected hash change.",
+      "local_test_fix_commit": "b2a2ba3d5bd289bdfd1ef8d30e8d16e4e0ccd030",
+      "focused_fix_tests": 58,
+      "independent_review_commit": "f62cbeeeb8e0d9b4de4d354a3327278d4a6d75dc"
+    }
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

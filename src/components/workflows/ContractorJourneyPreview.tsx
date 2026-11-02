@@ -15,6 +15,12 @@ import { IntelligenceWorkflow } from './IntelligenceWorkflow';
 import { BookingScheduling } from './BookingScheduling';
 import { JobReview } from './JobReview';
 import { CustomerService } from './CustomerService';
+import { WeeklyCrew } from './WeeklyCrew';
+import { FinanceDesk } from './FinanceDesk';
+import { SalesDesk } from './SalesDesk';
+import { CompletionReview } from './CompletionReview';
+import { MaintenanceDesk } from './MaintenanceDesk';
+import { DailyOperations } from './DailyOperations';
 import {
   prepareIntelligenceWorkflow,
   inspectIntelligenceWorkflow,
@@ -439,6 +445,7 @@ export function ContractorJourneyPreview() {
               }}
               enabled
             />
+            <SalesDesk sources={journey} enabled />
           </section>
           <section id="journey-field" className="journey-card">
             <h2>2 · Work order, crew & field documentation</h2>
@@ -450,6 +457,7 @@ export function ContractorJourneyPreview() {
               enabled
               onProofOfWork={proofHandoff}
             />
+            <WeeklyCrew sources={journey} enabled />
           </section>
           <section id="journey-booking" className="journey-card">
             <h2>Booking &amp; scheduling review</h2>
@@ -469,6 +477,7 @@ export function ContractorJourneyPreview() {
             </button>
             <FinanceWorkflow review={finance} enabled loading={financeBusy} />
             <JobReview sources={journey} enabled showFinanceDetails={false} />
+            <FinanceDesk sources={journey} enabled />
           </section>
           <section id="journey-customer" tabIndex={-1} className="journey-card">
             <h2>4 · Property history & completion documentation</h2>
@@ -502,6 +511,7 @@ export function ContractorJourneyPreview() {
               }
               enabled
             />
+            <CompletionReview sources={journey} enabled />
           </section>
           <section id="journey-growth" className="journey-card">
             <h2>5 · Maintenance opportunity</h2>
@@ -520,6 +530,7 @@ export function ContractorJourneyPreview() {
               }}
               enabled
             />
+            <MaintenanceDesk sources={journey} enabled />
           </section>
           <section id="journey-intelligence" className="journey-card">
             <h2>6 · Read-only Business Copilot</h2>
@@ -623,6 +634,7 @@ export function ContractorJourneyPreview() {
             {intelligenceStatus && (
               <p role="status">Retained review: {intelligenceStatus}</p>
             )}
+            <DailyOperations sources={journey} enabled />
           </section>
         </>
       )}

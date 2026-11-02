@@ -213,3 +213,26 @@ or imply a new business attempt. Returning to a contractor restores its retained
 attempt presentation, then requires explicit confirmation before showing sources.
 Main verifies the actual combined forms at desktop/tablet/mobile across all three
 brands, plus production-default-OFF and keyboard/axe/source-context regressions.
+
+## Cycle-eight operating review panels
+
+Add to the isolated contractor journey using existing contractor primary/accent
+tokens. The approved premium portals, global styles and original artwork remain
+unchanged. Each panel has a unique named region, clear source/coverage summary,
+visible labels, explicit review action, text statuses and retained-source check.
+Use narrowly scoped CSS. Raw headers must reset inherited fixed/flex global rules;
+long UUIDs and structured evidence must wrap. Controls are at least44px high and
+comparisons/week cards stack on mobile without overflow. Never encode status in
+color alone or present a proposal as an operational action.
+
+Weekly views distinguish recorded visits from unsaved windows and UNKNOWN availability.
+Finance distinguishes recorded costs, proposed remaining inputs and coverage gaps.
+Sales uses exact original scope/receipt labels. Customer views exclude staff costs,
+notes and assignments entirely. Growth shows planning/consent limits beside each
+opportunity; Copilot priorities cite source identities and missing evidence.
+
+Changing input or context withholds prior output and clears confirmation. Repository/
+model instance replacement must also reset presentation, even with identical IDs.
+Loading, empty, invalid/stale and UNKNOWN states need keyboard/screen-reader evidence.
+Main captures actual desktop/tablet/mobile screenshots across all three brands and
+checks source navigation, focus, axe, palette, no network execution and production OFF.

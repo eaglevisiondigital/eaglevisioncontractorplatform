@@ -1,0 +1,131 @@
+.maintenance-desk {
+  min-width: 0;
+  margin-top: 24px;
+  color: #173e32;
+}
+.maintenance-desk .md-header {
+  position: static;
+  height: auto;
+  min-height: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: inherit;
+  color: inherit;
+}
+.maintenance-desk .md-header > div {
+  display: block;
+  min-width: 0;
+}
+.maintenance-desk h2 {
+  font-size: clamp(24px, 3vw, 32px);
+  margin: 4px 0 12px;
+}
+.maintenance-desk h3 {
+  font-size: 21px;
+  margin: 10px 0 16px;
+}
+.maintenance-desk p,
+.maintenance-desk li {
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.maintenance-desk .md-eyebrow {
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.05em;
+  color: #426154;
+}
+.maintenance-desk .md-badge {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid #a9c2b3;
+  background: #e4eee8;
+  font-size: 12px;
+}
+.maintenance-desk .md-boundary {
+  padding: 14px 18px;
+  border-left: 3px solid var(--company-color, #00543e);
+  background: #edf0e7;
+}
+.maintenance-desk .md-fields,
+.maintenance-desk .md-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 18px 0;
+}
+.maintenance-desk label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  margin: 12px 0;
+  font-weight: 600;
+  font-size: 14px;
+}
+.maintenance-desk input,
+.maintenance-desk select {
+  min-height: 46px;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.maintenance-desk .md-check {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.6;
+}
+.maintenance-desk input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+  min-height: 20px;
+  flex: 0 0 auto;
+  margin-top: 3px;
+}
+.maintenance-desk button {
+  min-height: 46px;
+  white-space: normal;
+  margin: 8px 8px 8px 0;
+}
+.maintenance-desk .md-card,
+.maintenance-desk .md-detail {
+  min-width: 0;
+  border: 1px solid #cedbd2;
+  border-radius: 14px;
+  background: white;
+  padding: 22px;
+}
+.maintenance-desk .md-detail {
+  margin: 20px 0;
+  border: 2px solid var(--company-color, #00543e);
+}
+.maintenance-desk .md-state {
+  background: #f7f9f5;
+  border: 1px dashed #99b0a3;
+  padding: 16px;
+  border-radius: 10px;
+}
+@media (max-width: 760px) {
+  .maintenance-desk .md-header {
+    display: block;
+  }
+  .maintenance-desk .md-fields,
+  .maintenance-desk .md-cards {
+    grid-template-columns: 1fr;
+  }
+  .maintenance-desk .md-card,
+  .maintenance-desk .md-detail {
+    padding: 18px;
+  }
+  .maintenance-desk button {
+    width: 100%;
+  }
+}
