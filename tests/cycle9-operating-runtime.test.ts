@@ -184,3 +184,31 @@ it('terminal descriptor admission never evaluates a replaced root gate getter', 
   expect(capture.check).toThrow();
   expect(spy).not.toHaveBeenCalled();
 });
+for (const field of ['id', 'version_number'])
+  it(`issued handle ${field} must match the exact immutable canonical version`, async () => {
+    const g = gate(),
+      s = await prepareOperatingSources(sampleCompanies[0], g),
+      issued = structuredClone(s.entries[0].issued);
+    if (field === 'id') issued.version.id = s.entries[1].target.version_id;
+    else issued.version.version_number += 40;
+    const entries = s.entries.map((e, i) => (i === 0 ? { ...e, issued } : e));
+    expect(() => captureOperatingSources({ ...s, entries }, g)).toThrow();
+  });
+for (const field of [
+  'plan_id',
+  'visit_id',
+  'scheduled_visit_id',
+  'report_id',
+  'worker_id',
+  'day',
+  'timezone',
+] as const)
+  it(`initial ${field} must belong to the exact job source`, async () => {
+    const g = gate(),
+      s = await prepareOperatingSources(sampleCompanies[0], g);
+    const value = field === 'timezone' ? 'Europe/London' : s.entries[1][field];
+    const entries = s.entries.map((e, i) =>
+      i === 0 ? { ...e, [field]: value } : e,
+    );
+    expect(() => captureOperatingSources({ ...s, entries }, g)).toThrow();
+  });

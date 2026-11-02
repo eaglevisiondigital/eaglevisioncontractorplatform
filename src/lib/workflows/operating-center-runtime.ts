@@ -258,6 +258,75 @@ export function captureOperatingSources(
         v.intake_request_id as string,
       );
       const state = property.read(organization_id);
+      const issued = prototypeFields(v.issued, ['estimate', 'version']);
+      const issuedEstimate = prototypeFields(
+        issued.estimate,
+        Object.keys(issued.estimate as object),
+      );
+      if (
+        Object.keys(issued).length !== 2 ||
+        issuedEstimate.id !== target.estimate_id ||
+        issuedEstimate.organization_id !== organization_id ||
+        issuedEstimate.customer_id !== target.customer_id ||
+        dataSignature(issued.version) !==
+          dataSignature(canonical.bundle.version)
+      )
+        throw Error('Exact immutable issued handle/version required');
+      const plan = state.plans.filter(
+        (p) =>
+          p.id === v.plan_id &&
+          p.organization_id === organization_id &&
+          p.customer_id === target.customer_id &&
+          p.location_id === target.location_id &&
+          p.job_id === target.job_id,
+      );
+      const publishedVisit = state.visits.filter(
+        (x) =>
+          x.id === v.visit_id &&
+          x.organization_id === organization_id &&
+          x.plan_id === v.plan_id &&
+          x.status === 'published',
+      );
+      const scheduledVisit = state.visits.filter(
+        (x) =>
+          x.id === v.scheduled_visit_id &&
+          x.organization_id === organization_id &&
+          x.plan_id === v.plan_id &&
+          x.visited_on === v.day,
+      );
+      const report = state.reports.filter(
+        (r) =>
+          r.id === v.report_id &&
+          r.version === v.published_version &&
+          r.organization_id === organization_id &&
+          r.customer_id === target.customer_id &&
+          r.location_id === target.location_id &&
+          r.visit_id === v.visit_id,
+      );
+      const worker = canonical.workforce.workers.filter(
+        (w) =>
+          w.id === v.worker_id &&
+          w.active &&
+          w.organization_id === organization_id &&
+          w.user_id,
+      );
+      if (
+        plan.length !== 1 ||
+        plan[0].timezone !== v.timezone ||
+        publishedVisit.length !== 1 ||
+        scheduledVisit.length !== 1 ||
+        report.length !== 1 ||
+        worker.length !== 1 ||
+        !estimates
+          .syntheticJobAssignments(organization_id, actor_id)
+          .some(
+            (a) =>
+              a.job_id === target.job_id &&
+              a.user_id === worker[0].user_id &&
+              a.active,
+          )
+      )
+        throw Error('Exact plan/visit/report/assigned-worker binding required');
       if (
         !state.contexts.some(
           (c) =>
