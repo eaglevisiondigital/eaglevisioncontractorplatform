@@ -4,6 +4,10 @@ import type { ReleasePreview } from '../../domain/release/preview';
 import { formatMinor } from '../../domain/estimating/calculation';
 import {
   readSalesApprovalHandoff,
+  captureSalesApprovedScopeReference,
+  verifySalesApprovedScopeReference,
+  type SalesApprovedScopeReference,
+  type SalesScopeReferenceRead,
   type SalesHandoffTarget,
   type SalesApprovalHandoff as Handoff,
 } from '../../lib/sales-approval-handoff';
@@ -46,6 +50,18 @@ function ReadOnlyHandoff({
     revision: number;
     value: Handoff;
   }>();
+  const [confirmed, confirm] = useState<Handoff>();
+  const [capture, setCapture] = useState<{
+    repo: Phase3Repository;
+    release: ReleasePreview;
+    reference: SalesApprovedScopeReference;
+    verification?: SalesScopeReferenceRead;
+  }>();
+  const [action, setAction] = useState<{
+    repo: Phase3Repository;
+    release: ReleasePreview;
+    kind: 'capture' | 'verify' | 'error';
+  }>();
   useEffect(() => {
     let current = true;
     void readSalesApprovalHandoff(repo, release, target).then((value) => {
@@ -63,6 +79,92 @@ function ReadOnlyHandoff({
       : undefined;
   const source = value?.source,
     scope = source?.scope;
+  const retained =
+    capture?.repo === repo && capture.release === release ? capture : undefined;
+  const currentAction =
+    action?.repo === repo && action.release === release
+      ? action.kind
+      : undefined;
+  const busy = currentAction === 'capture' || currentAction === 'verify';
+  async function retain() {
+    if (
+      !value ||
+      confirmed !== value ||
+      value.status !== 'scope_matched' ||
+      busy
+    )
+      return;
+    setAction({ repo, release, kind: 'capture' });
+    try {
+      const reference = await captureSalesApprovedScopeReference(
+        repo,
+        release,
+        target,
+        true,
+        value.source!.scope_hash,
+      );
+      setCapture({ repo, release, reference });
+      confirm(undefined);
+      setAction(undefined);
+    } catch {
+      setAction({ repo, release, kind: 'error' });
+      hideUnavailable(
+        'UNKNOWN — reference capture was denied, stale or unavailable. No command was executed.',
+      );
+    }
+  }
+  async function verify() {
+    if (!retained || busy) return;
+    setAction({ repo, release, kind: 'verify' });
+    const verification = await verifySalesApprovedScopeReference(
+      repo,
+      release,
+      target,
+      retained.reference,
+    );
+    setCapture((previous) =>
+      previous?.reference === retained.reference
+        ? { ...previous, verification }
+        : previous,
+    );
+    if (verification.status === 'unknown') hideUnavailable(verification.reason);
+    if (verification.status === 'stale') {
+      setRead((previous) =>
+        previous?.repo === repo &&
+        previous.release === release &&
+        previous.revision === revision
+          ? {
+              ...previous,
+              value: {
+                ...previous.value,
+                status: 'blocked',
+                blockers: [...previous.value.blockers, verification.reason],
+              },
+            }
+          : previous,
+      );
+    }
+    setAction(undefined);
+  }
+  function hideUnavailable(reason: string) {
+    setRead((previous) =>
+      previous?.repo === repo &&
+      previous.release === release &&
+      previous.revision === revision
+        ? {
+            ...previous,
+            value: {
+              ...previous.value,
+              status: 'unknown',
+              source: null,
+              offer: null,
+              receipt: null,
+              blockers: [reason],
+            },
+          }
+        : previous,
+    );
+  }
   return (
     <section
       className="sales-handoff"
@@ -213,6 +315,107 @@ function ReadOnlyHandoff({
                 </p>
               </details>
             </>
+          )}
+          {value.status !== 'unknown' && (
+            <section
+              className="sales-scope-reference"
+              aria-label="Immutable scope reference review"
+            >
+              <h3>Retain the exact reviewed scope</h3>
+              <p>
+                Preserve this issued scope and its accepted local test
+                preference as a read-only reference. No contract, signing, work,
+                payment or delivery authority is created. This same-tab evidence
+                is lost on refresh.
+              </p>
+              <label className="sales-scope-confirmation">
+                <input
+                  type="checkbox"
+                  checked={confirmed === value}
+                  disabled={value.status !== 'scope_matched' || busy}
+                  onChange={(e) =>
+                    confirm(e.target.checked ? value : undefined)
+                  }
+                />
+                I reviewed the exact issued scope and accepted test receipt;
+                retain a review-only reference.
+              </label>
+              <button
+                type="button"
+                disabled={
+                  confirmed !== value ||
+                  value.status !== 'scope_matched' ||
+                  busy
+                }
+                onClick={() => void retain()}
+              >
+                {currentAction === 'capture'
+                  ? 'Reading original evidence…'
+                  : 'Retain review-only scope reference'}
+              </button>
+              {currentAction === 'error' && (
+                <p role="alert">
+                  Reference unavailable — current exact evidence is missing,
+                  stale or denied. No contract or other action was executed.
+                </p>
+              )}
+              {retained && (
+                <section aria-label="Retained scope reference">
+                  <h4>Immutable scope reference — staff review only</h4>
+                  <p>
+                    Accepted local test preference. Genuine customer approval
+                    and contract execution remain unverified.
+                  </p>
+                  {retained.verification?.status !== 'unknown' && (
+                    <dl>
+                      <dt>Original estimate / version</dt>
+                      <dd>
+                        {retained.reference.source.estimate_number} · issued
+                        version {retained.reference.source.version_number} ·
+                        saved revision {retained.reference.source.lock_revision}
+                      </dd>
+                      <dt>Exact issued version</dt>
+                      <dd>{retained.reference.source.version_id}</dd>
+                      <dt>Property</dt>
+                      <dd>{retained.reference.source.location_id}</dd>
+                      <dt>Original offer / receipt</dt>
+                      <dd>
+                        {retained.reference.offer.id} /{' '}
+                        {retained.reference.receipt.id}
+                      </dd>
+                      <dt>Retained scope hash</dt>
+                      <dd>{retained.reference.source.scope_hash}</dd>
+                      <dt>Reference integrity hash</dt>
+                      <dd>{retained.reference.integrity.sha256}</dd>
+                    </dl>
+                  )}
+                  <button
+                    type="button"
+                    disabled={busy}
+                    onClick={() => void verify()}
+                  >
+                    {currentAction === 'verify'
+                      ? 'Verifying original sources…'
+                      : 'Verify retained exact reference'}
+                  </button>
+                  <p aria-live="polite" className="sales-scope-verification">
+                    {retained.verification?.reason ??
+                      'Retained snapshot — not independently checked since capture. Verify the original sources before further review.'}
+                  </p>
+                  {retained.verification && (
+                    <p>
+                      Exact verification as of {retained.verification.as_of}.
+                      Contract execution: BLOCKED.
+                    </p>
+                  )}
+                  <p>
+                    Later draft edits cannot alter this reference. A stale or
+                    UNKNOWN result permits exact read-only inspection only;
+                    never replace its source or replay an action.
+                  </p>
+                </section>
+              )}
+            </section>
           )}
           <section aria-label="Handoff blockers">
             <h3>Before a contractual handoff</h3>
