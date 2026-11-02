@@ -197,7 +197,7 @@ function CrewPlanForm({ sources, onSelectJob }: CrewPlanReviewProps) {
       if (live.current) setBusy(false);
     }
   }
-  async function open(jobId: string) {
+  async function open(jobId: string, navigate = false) {
     if (!view || pending.current) return;
     const token = generation.current;
     pending.current = true;
@@ -207,7 +207,7 @@ function CrewPlanForm({ sources, onSelectJob }: CrewPlanReviewProps) {
       if (live.current && token === generation.current) {
         assertCrewPlanCurrentNow(view);
         setDetail(target);
-        onSelectJob?.(target.job_id);
+        if (navigate) onSelectJob?.(target.job_id);
       }
     } catch {
       if (live.current && token === generation.current) {
@@ -712,6 +712,14 @@ function CrewPlanForm({ sources, onSelectJob }: CrewPlanReviewProps) {
             Exact crew-plan source
           </h3>
           <p>{detail.title}</p>
+          {onSelectJob && (
+            <button
+              disabled={busy}
+              onClick={() => void open(detail.job_id, true)}
+            >
+              Display existing job workflow
+            </button>
+          )}
           <dl>
             {Object.entries(detail)
               .filter(([k]) => k !== 'title')
