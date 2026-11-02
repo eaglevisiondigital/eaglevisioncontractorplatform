@@ -1,0 +1,163 @@
+.portfolio-scheduling {
+  min-width: 0;
+  margin-top: 24px;
+  color: #20352f;
+}
+.portfolio-scheduling .ps-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+}
+.portfolio-scheduling h2 {
+  font-size: clamp(24px, 3vw, 32px);
+  margin: 6px 0 12px;
+}
+.portfolio-scheduling h3 {
+  font-size: 23px;
+}
+.portfolio-scheduling h4 {
+  font-size: 18px;
+  margin: 4px 0 10px;
+}
+.portfolio-scheduling h5 {
+  font-size: 16px;
+  margin: 12px 0;
+}
+.portfolio-scheduling p,
+.portfolio-scheduling dd {
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.portfolio-scheduling .ps-eyebrow {
+  font-size: 11px;
+  font-weight: 750;
+  color: #52695d;
+  letter-spacing: 0.06em;
+}
+.portfolio-scheduling .ps-badge {
+  border: 1px solid #b2c6b8;
+  background: #e8eee5;
+  padding: 10px 14px;
+  border-radius: 30px;
+  font-size: 12px;
+}
+.portfolio-scheduling .ps-boundary {
+  padding: 16px;
+  border-left: 3px solid var(--company-color, #00543e);
+  background: #edf0e7;
+}
+.portfolio-scheduling .ps-card,
+.portfolio-scheduling .ps-day {
+  padding: 20px;
+  margin: 16px 0;
+  border: 1px solid #d9e1da;
+  border-radius: 14px;
+  background: white;
+  min-width: 0;
+}
+.portfolio-scheduling .ps-fields,
+.portfolio-scheduling .ps-jobs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.portfolio-scheduling label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+  min-width: 0;
+}
+.portfolio-scheduling input,
+.portfolio-scheduling select {
+  min-height: 46px;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.portfolio-scheduling .ps-check {
+  flex-direction: row;
+  align-items: flex-start;
+  line-height: 1.6;
+}
+.portfolio-scheduling input[type='checkbox'] {
+  min-height: 20px;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  margin-top: 3px;
+}
+.portfolio-scheduling button {
+  min-height: 46px;
+  white-space: normal;
+  max-width: 100%;
+  margin: 5px 10px 5px 0;
+}
+.portfolio-scheduling .ps-week {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.portfolio-scheduling .ps-day {
+  margin: 0;
+}
+.portfolio-scheduling .ps-lane {
+  border-top: 1px solid #d9e1da;
+  padding: 10px 0;
+}
+.portfolio-scheduling .ps-event {
+  padding: 12px;
+  background: #f5f7f1;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+.portfolio-scheduling .ps-conflict {
+  border-left: 3px solid #9e5d22;
+  padding-left: 10px;
+  font-weight: 600;
+}
+.portfolio-scheduling .ps-empty {
+  padding: 18px;
+  border: 1px dashed #a9bdb0;
+  border-radius: 10px;
+}
+.portfolio-scheduling dd {
+  margin: 4px 0 12px;
+  font-size: 13px;
+}
+.portfolio-scheduling summary {
+  cursor: pointer;
+  min-height: 44px;
+  font-weight: 650;
+}
+.portfolio-scheduling ul {
+  padding-left: 22px;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 1000px) {
+  .portfolio-scheduling .ps-fields,
+  .portfolio-scheduling .ps-jobs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .portfolio-scheduling .ps-header {
+    display: block;
+  }
+  .portfolio-scheduling .ps-fields,
+  .portfolio-scheduling .ps-jobs,
+  .portfolio-scheduling .ps-week {
+    grid-template-columns: 1fr;
+  }
+  .portfolio-scheduling .ps-card,
+  .portfolio-scheduling .ps-day {
+    padding: 16px;
+  }
+  .portfolio-scheduling button {
+    width: 100%;
+    margin-right: 0;
+  }
+}
