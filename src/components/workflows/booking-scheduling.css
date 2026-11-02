@@ -1,0 +1,155 @@
+.booking-scheduling {
+  margin-top: 24px;
+  min-width: 0;
+  color: #173e32;
+}
+.booking-scheduling .bs-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.booking-scheduling h2 {
+  font-size: clamp(24px, 3vw, 32px);
+  margin: 4px 0 12px;
+}
+.booking-scheduling h3 {
+  font-size: 21px;
+  margin: 8px 0 14px;
+}
+.booking-scheduling p,
+.booking-scheduling details {
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+.booking-scheduling .bs-eyebrow {
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.05em;
+  color: #426154;
+}
+.booking-scheduling .bs-badge {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #e4eee8;
+  border: 1px solid #a9c2b3;
+  font-size: 12px;
+}
+.booking-scheduling .bs-boundary {
+  padding: 14px 18px;
+  border-left: 3px solid var(--company-color, #00543e);
+  background: #edf0e7;
+}
+.booking-scheduling .bs-card,
+.booking-scheduling .bs-result {
+  min-width: 0;
+  background: white;
+  border: 1px solid #cedbd2;
+  border-radius: 14px;
+  padding: 24px;
+  margin: 20px 0;
+}
+.booking-scheduling .bs-result {
+  border: 2px solid var(--company-color, #00543e);
+}
+.booking-scheduling .bs-fields,
+.booking-scheduling .bs-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.booking-scheduling .bs-fields label {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.booking-scheduling input,
+.booking-scheduling select {
+  max-width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  box-sizing: border-box;
+}
+.booking-scheduling .bs-confirm {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.6;
+  margin: 18px 0;
+}
+.booking-scheduling .bs-note {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 18px;
+}
+.booking-scheduling textarea {
+  min-height: 88px;
+  max-width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+}
+.booking-scheduling input[type='checkbox'] {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  min-height: 20px;
+  margin-top: 3px;
+}
+.booking-scheduling button {
+  min-height: 46px;
+  white-space: normal;
+}
+.booking-scheduling .bs-state {
+  padding: 16px;
+  background: #f7f9f5;
+  border: 1px dashed #99b0a3;
+  border-radius: 10px;
+}
+.booking-scheduling .bs-comparison > div {
+  min-width: 0;
+  border-top: 1px solid #d5ded7;
+}
+.booking-scheduling .bs-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.booking-scheduling .bs-metrics div {
+  padding: 14px;
+  border-radius: 10px;
+  background: #f2f6f1;
+}
+.booking-scheduling dt {
+  font-size: 13px;
+}
+.booking-scheduling dd {
+  margin: 6px 0 0;
+  font-size: 21px;
+  font-weight: 650;
+}
+.booking-scheduling summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 10px 0;
+}
+@media (max-width: 760px) {
+  .booking-scheduling .bs-heading {
+    display: block;
+  }
+  .booking-scheduling .bs-fields,
+  .booking-scheduling .bs-comparison {
+    grid-template-columns: 1fr;
+  }
+  .booking-scheduling .bs-card,
+  .booking-scheduling .bs-result {
+    padding: 18px;
+  }
+  .booking-scheduling button {
+    width: 100%;
+  }
+}
