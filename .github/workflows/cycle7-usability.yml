@@ -1,0 +1,44 @@
+name: Cycle 7 practical local usability
+on:
+  push:
+    branches: ['codex/program-cycle-seven']
+  pull_request:
+    paths:
+      - 'src/components/workflows/**'
+      - 'src/lib/workflows/**'
+      - 'tests/cycle7*'
+      - 'tests/program/*cycle7*'
+      - 'scripts/check-cycle7-integrity.mjs'
+      - '.github/workflows/cycle7-usability.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle7-usability-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  bounded-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node scripts/check-cycle6-integrity.mjs
+      - run: node scripts/check-cycle7-integrity.mjs
+      - run: npx vitest run tests/cycle7*.test.ts tests/program-feature-evidence.test.ts tests/workflows/cycle6-independent-review.test.ts tests/cycle6-operations-independent-review.test.ts
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test -c tests/program/playwright.cycle7-review.config.ts --workers=2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle7-local-usability-evidence
+          path: |
+            artifacts/cycle7/*.png
+            test-results/
+          retention-days: 7

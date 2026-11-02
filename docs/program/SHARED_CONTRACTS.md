@@ -229,3 +229,22 @@ command. Passport documentation is not physical completion, acceptance or warran
 Captured consent is not atomic message authority; no recipient is resolved. Copilot
 and literal Voice/Trade suggestions reuse existing engines with one session attempt,
 exact immutable source checks and no autonomous command/model/provider execution.
+
+## Cycle-seven practical review forms
+
+Extend the same actual journey sources with isolated booking/scheduling and staff
+time/material/invoice review. New forms are ephemeral proposals, not business truth.
+Retain original visit/plan/job/assignment revisions when proposing another day; use
+the existing canonical capacity engine's job-window input rather than pretending
+the recorded visit moved. Missing atomic workforce/availability remains UNKNOWN.
+Time uses existing canonical validation and never posts wages or payroll. Material
+what-if uses a detached original issued input and the canonical estimator; actual
+job costs and customer issued totals remain unchanged. Missing genuine invoice or
+accounting provenance is UNKNOWN; a JSON review reference is not a ledger export.
+
+Main owns component mounting, shared identity, design and registers. Authors own
+disjoint new adapters/panels/tests on exact reviewed parents. Context changes must
+both withhold stale results and show the selected company's retained attempt state.
+No hidden map claim may appear to offer a fresh preparation; UNKNOWN stays terminal
+and can only reconcile its exact original source. See CYCLE7_ASSIGNMENTS.md for
+bounded ownership. No new store, schema, financial/customer/hosted authority.

@@ -1,0 +1,296 @@
+{
+  "schema": "propel-cycle7-parent-ci-v1",
+  "observed_at": "2026-11-02 13:47:12 UTC",
+  "scope": "Exact Cycle6 heads before next-package work. No manual reruns.",
+  "prs": [
+    {
+      "pr": 38,
+      "head": "7b83aff9810c4055bcdcd73fd2d20f6f53c3c893",
+      "branch": "codex/program-cycle-six",
+      "base": "codex/program-cycle-five",
+      "draft": true,
+      "foundation": [
+        {
+          "id": 41452241324,
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "head": "7b83aff9810c4055bcdcd73fd2d20f6f53c3c893",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41452241324"
+        },
+        {
+          "id": 41452228940,
+          "event": "push",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "head": "7b83aff9810c4055bcdcd73fd2d20f6f53c3c893",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41452228940"
+        }
+      ],
+      "compatibility": [
+        {
+          "id": 41452241332,
+          "status": "completed",
+          "conclusion": "success",
+          "head": "7b83aff9810c4055bcdcd73fd2d20f6f53c3c893",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41452241332"
+        }
+      ]
+    },
+    {
+      "pr": 39,
+      "head": "d2909a470713e808bc324a2e5d67b2a3967c94af",
+      "branch": "codex/cycle6-sales",
+      "base": "codex/program-cycle-six",
+      "draft": true,
+      "foundation": [
+        {
+          "id": 41448059117,
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "d2909a470713e808bc324a2e5d67b2a3967c94af",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41448059117"
+        },
+        {
+          "id": 41448048550,
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "d2909a470713e808bc324a2e5d67b2a3967c94af",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41448048550"
+        }
+      ],
+      "compatibility": [
+        {
+          "id": 41448059147,
+          "status": "completed",
+          "conclusion": "success",
+          "head": "d2909a470713e808bc324a2e5d67b2a3967c94af",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41448059147"
+        }
+      ]
+    },
+    {
+      "pr": 40,
+      "head": "9e8ed2d7502a75fbcc4c36d9ec9dfff7d0042917",
+      "branch": "codex/cycle6-field",
+      "base": "codex/program-cycle-six",
+      "draft": true,
+      "foundation": [
+        {
+          "id": 41447475426,
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "9e8ed2d7502a75fbcc4c36d9ec9dfff7d0042917",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41447475426"
+        },
+        {
+          "id": 41447470422,
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "9e8ed2d7502a75fbcc4c36d9ec9dfff7d0042917",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41447470422"
+        }
+      ],
+      "compatibility": [
+        {
+          "id": 41447475507,
+          "status": "completed",
+          "conclusion": "success",
+          "head": "9e8ed2d7502a75fbcc4c36d9ec9dfff7d0042917",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41447475507"
+        }
+      ]
+    },
+    {
+      "pr": 41,
+      "head": "f115a428ffd41c285051bfc41e5278614217b02c",
+      "branch": "codex/cycle6-finance",
+      "base": "codex/program-cycle-six",
+      "draft": true,
+      "foundation": [
+        {
+          "id": 41446918980,
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "f115a428ffd41c285051bfc41e5278614217b02c",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41446918980"
+        },
+        {
+          "id": 41446868896,
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "f115a428ffd41c285051bfc41e5278614217b02c",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41446868896"
+        }
+      ],
+      "compatibility": [
+        {
+          "id": 41446919197,
+          "status": "completed",
+          "conclusion": "success",
+          "head": "f115a428ffd41c285051bfc41e5278614217b02c",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41446919197"
+        }
+      ]
+    },
+    {
+      "pr": 42,
+      "head": "c0f5276431cba959d4814497a6ae948b40eedd7d",
+      "branch": "codex/cycle6-customer",
+      "base": "codex/program-cycle-six",
+      "draft": true,
+      "foundation": [
+        {
+          "id": 41448061158,
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "head": "c0f5276431cba959d4814497a6ae948b40eedd7d",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41448061158"
+        },
+        {
+          "id": 41448053694,
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "c0f5276431cba959d4814497a6ae948b40eedd7d",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41448053694"
+        }
+      ],
+      "compatibility": [
+        {
+          "id": 41448060833,
+          "status": "completed",
+          "conclusion": "success",
+          "head": "c0f5276431cba959d4814497a6ae948b40eedd7d",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41448060833"
+        }
+      ]
+    },
+    {
+      "pr": 43,
+      "head": "2f63fce4b97bdcf9667f1f6acfbcf1f498d736c9",
+      "branch": "codex/cycle6-growth",
+      "base": "codex/program-cycle-six",
+      "draft": true,
+      "foundation": [
+        {
+          "id": 41448824832,
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "2f63fce4b97bdcf9667f1f6acfbcf1f498d736c9",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41448824832"
+        },
+        {
+          "id": 41448759976,
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "2f63fce4b97bdcf9667f1f6acfbcf1f498d736c9",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41448759976"
+        }
+      ],
+      "compatibility": [
+        {
+          "id": 41448824704,
+          "status": "completed",
+          "conclusion": "success",
+          "head": "2f63fce4b97bdcf9667f1f6acfbcf1f498d736c9",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41448824704"
+        }
+      ]
+    },
+    {
+      "pr": 44,
+      "head": "bc52dffaf8720c5124df6ff63663ccc91b715525",
+      "branch": "codex/cycle6-intelligence",
+      "base": "codex/program-cycle-six",
+      "draft": true,
+      "foundation": [
+        {
+          "id": 41448868328,
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "bc52dffaf8720c5124df6ff63663ccc91b715525",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41448868328"
+        },
+        {
+          "id": 41448803269,
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "bc52dffaf8720c5124df6ff63663ccc91b715525",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41448803269"
+        }
+      ],
+      "compatibility": [
+        {
+          "id": 41448868355,
+          "status": "completed",
+          "conclusion": "success",
+          "head": "bc52dffaf8720c5124df6ff63663ccc91b715525",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41448868355"
+        }
+      ]
+    },
+    {
+      "pr": 45,
+      "head": "43e5145759c8efa9e66426d251beab958d834113",
+      "branch": "codex/cycle6-operations",
+      "base": "codex/program-cycle-six",
+      "draft": true,
+      "foundation": [
+        {
+          "id": 41451304499,
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "43e5145759c8efa9e66426d251beab958d834113",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41451304499"
+        },
+        {
+          "id": 41451296987,
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "head": "43e5145759c8efa9e66426d251beab958d834113",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41451296987"
+        }
+      ],
+      "compatibility": [
+        {
+          "id": 41451304479,
+          "status": "completed",
+          "conclusion": "success",
+          "head": "43e5145759c8efa9e66426d251beab958d834113",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41451304479"
+        }
+      ]
+    }
+  ],
+  "findings": {
+    "pr42": "Explicit 15m job timeout after 279 browser passes; exact-head push Foundation SUCCESS. No rerun.",
+    "pr38": "Both original Foundation runs exceeded 15m during 297 browser cases; app and PostgreSQL passed. CI-only finite25m correction a6ea48fec561754bfb9d393996661c0b1cec4830 automatic CI pending.",
+    "release": "NOT_READY_NOT_AUTHORIZED"
+  },
+  "follow_up": {
+    "head": "f89c2bd32d1f5c8a05a1f12805140235845c81fb",
+    "foundation_pr": {
+      "id": 41456878628,
+      "conclusion": "success"
+    },
+    "foundation_push": {
+      "id": 41456870604,
+      "conclusion": "success"
+    },
+    "scope": "Corrected parent CI supersedes the original PR38 pending/cancelled evidence above. PR42 exact-head success remains preserved; no manual reruns."
+  }
+}

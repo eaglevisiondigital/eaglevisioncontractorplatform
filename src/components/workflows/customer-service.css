@@ -1,0 +1,133 @@
+.customer-service {
+  color: #203530;
+  background: #f5f6f2;
+  border: 1px solid #dde4dd;
+  border-radius: 12px;
+  padding: clamp(16px, 3vw, 28px);
+  min-width: 0;
+}
+.customer-service header {
+  position: static;
+  height: auto;
+  display: block;
+  margin-bottom: 18px;
+}
+.customer-service h2,
+.customer-service h3,
+.customer-service h4 {
+  margin-top: 0;
+}
+.customer-service .eyebrow {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: var(--company-color, #247364);
+}
+.customer-service label {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+  margin: 12px 0;
+  min-width: 0;
+}
+.customer-service input,
+.customer-service select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  min-height: 46px;
+  border: 1px solid #81988c;
+  border-radius: 8px;
+  background: white;
+  color: #203530;
+  padding: 10px;
+  font: inherit;
+}
+.customer-service-filters,
+.customer-service-results {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.customer-service-results,
+.customer-service-active {
+  list-style: none;
+  padding: 0;
+}
+.customer-service-results > li,
+.customer-service-detail {
+  background: white;
+  border: 1px solid #dde4dd;
+  border-radius: 10px;
+  padding: 18px;
+  min-width: 0;
+}
+.customer-service-actions,
+.customer-service-active {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.customer-service button {
+  min-height: 46px;
+  max-width: 100%;
+  white-space: normal;
+  border: 1px solid var(--company-color, #247364);
+  border-radius: 9px;
+  background: var(--company-color, #247364);
+  color: white;
+  padding: 12px 18px;
+  font: inherit;
+}
+.customer-service button:disabled {
+  background: #e4e8e5;
+  color: #4d5a54;
+  border-color: #bbc5be;
+}
+.customer-service dl {
+  display: grid;
+  grid-template-columns: minmax(100px, 1fr) minmax(0, 2fr);
+  gap: 6px 12px;
+}
+.customer-service dt {
+  font-weight: 600;
+}
+.customer-service dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.customer-service p,
+.customer-service li,
+.customer-service button {
+  overflow-wrap: anywhere;
+}
+.customer-service summary {
+  min-height: 44px;
+  padding: 12px 0;
+  cursor: pointer;
+  font-weight: 600;
+}
+.customer-service :focus-visible {
+  outline: 3px solid var(--company-color, #247364);
+  outline-offset: 4px;
+}
+.customer-service-boundary {
+  color: #586b64;
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+@media (max-width: 760px) {
+  .customer-service-filters,
+  .customer-service-results,
+  .customer-service dl {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .customer-service button,
+  .customer-service-actions {
+    width: 100%;
+  }
+  .customer-service dd {
+    margin-bottom: 8px;
+  }
+}

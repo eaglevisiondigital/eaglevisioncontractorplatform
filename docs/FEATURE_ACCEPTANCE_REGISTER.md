@@ -34,6 +34,23 @@ cases passed in their respective jobs. This is retained evidence, not a rerun or
 certification of the new packages. QA-001 has no prior CI claim. Current branch/PR
 results belong in [delivery status](PROGRAM_DELIVERY_STATUS.md).
 
+## Cycle-seven bounded usability candidate
+
+Three separately owned draft packages add useful unsaved booking/scheduling and
+staff time/material/invoice review, plus existing-source customer service navigation.
+See [exact source index](program/CYCLE7_DELIVERY_INDEX.json),
+[independent review](program/CYCLE7_INTEGRATION_REVIEW.md) and
+[actual validation](program/CYCLE7_VALIDATION.md).215 focused application cases and12
+responsive browser cases pass. The eight-workstream Cycle6 baseline was independently
+reviewed first; PR38's actual timeout/harness defects are corrected and exact-head
+Foundation now passes. PR42's successful exact-head check was preserved without rerun.
+
+Original18 IDs and25 feature records remain intact. New citations document bounded
+local work; full-feature local states remain partial, hosted states blocked and
+release NOT AUTHORIZED. Proposals never become scheduling, actual costs, invoices,
+messages, legal approval or physical-completion evidence. All protected files and
+independent recovery/NMI/Auth/Netlify/production requirements remain unchanged.
+
 ## Cycle-six local integration candidate
 
 The owner now authorizes explicit local integration of the reviewed Cycle5 sources.

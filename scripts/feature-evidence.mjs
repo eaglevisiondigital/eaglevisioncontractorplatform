@@ -328,7 +328,7 @@ export function sourceOwner(path) {
   // Cohesive local workflow ownership precedes broad customer/operations keywords.
   // These review lanes classify source; they confer no runtime authority.
   if (
-    /ContractorJourneyPreview|cycle6-independent-review|cycle6-operations-independent-review|check-cycle6-integrity|program-cycle6-journey/.test(
+    /ContractorJourneyPreview|cycle6-independent-review|cycle6-operations-independent-review|check-cycle6-integrity|program-cycle6-journey|cycle7-baseline|cycle7-integration|cycle7-usability|playwright\.cycle7|check-cycle7-integrity/.test(
       path,
     )
   )
@@ -341,18 +341,22 @@ export function sourceOwner(path) {
   )
     return 'A2';
   if (
-    /field-workflow|FieldWorkflow|operations-workflow|operations-experiments|field-day-board|TechnicianDayBoard/.test(
+    /field-workflow|FieldWorkflow|operations-workflow|operations-experiments|field-day-board|TechnicianDayBoard|booking-scheduling|BookingScheduling/.test(
       path,
     )
   )
     return 'A3';
   if (
-    /finance-workflow|FinanceWorkflow|job-cost-completion|profit-guard/.test(
+    /finance-workflow|FinanceWorkflow|job-cost-completion|profit-guard|job-review|JobReview/.test(
       path,
     )
   )
     return 'A4';
-  if (/customer-workflow|CustomerWorkflow|proof-of-work|ProofOfWork/.test(path))
+  if (
+    /customer-workflow|CustomerWorkflow|proof-of-work|ProofOfWork|customer-service|CustomerService/.test(
+      path,
+    )
+  )
     return 'A5';
   if (
     /growth-workflow|GrowthWorkflow|growth-opportunity|maintenance-renewal|intelligence-workflow|IntelligenceWorkflow|business-copilot|voice-estimate|trade-editions|storm-network-review/.test(

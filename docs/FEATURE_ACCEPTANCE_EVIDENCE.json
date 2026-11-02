@@ -7,7 +7,8 @@
     "Inventory maps existing public source and retained evidence; it is not a fresh full security audit.",
     "Separate draft PRs for sales, finance and field are not integrated into this source baseline.",
     "Historical Action B core connected PASS is retained; all new hosted lifecycle acceptance remains blocked.",
-    "Cycle6 explicitly composes reviewed local candidates on draft PR38 for source-bound testing only. Original PRs remain unmerged; no hosted or release status is promoted."
+    "Cycle6 explicitly composes reviewed local candidates on draft PR38 for source-bound testing only. Original PRs remain unmerged; no hosted or release status is promoted.",
+    "Cycle7 adds default-OFF usable unsaved planning/cost forms and exact customer-safe service navigation on reviewed Cycle6 sources. Operational and release labels are unchanged."
   ],
   "features": [
     {
@@ -504,6 +505,10 @@
         {
           "path": "src/lib/workflows/field-workflow.ts",
           "anchor": "export async function readFieldWorkflow"
+        },
+        {
+          "path": "src/lib/workflows/booking-scheduling.ts",
+          "anchor": "readBookingScheduling"
         }
       ],
       "tests": [
@@ -514,6 +519,10 @@
         {
           "path": "tests/program-field-workflow.test.ts",
           "anchor": "company %s follows actual job, crew, day and published report without effects"
+        },
+        {
+          "path": "tests/cycle7-booking-scheduling.test.ts",
+          "anchor": "readBookingScheduling"
         }
       ],
       "records": [
@@ -544,6 +553,10 @@
         {
           "path": "docs/program/CYCLE6_INDEPENDENT_REVIEW.md",
           "anchor": "# Cycle 6 independent integration review"
+        },
+        {
+          "path": "docs/program/CYCLE7_VALIDATION.md",
+          "anchor": "# Cycle 7 practical usability validation"
         }
       ],
       "ci": {
@@ -588,6 +601,10 @@
         {
           "path": "src/lib/workflows/finance-workflow.ts",
           "anchor": "export async function readFinanceWorkflow"
+        },
+        {
+          "path": "src/lib/workflows/job-review.ts",
+          "anchor": "readJobReview"
         }
       ],
       "tests": [
@@ -598,6 +615,10 @@
         {
           "path": "tests/cycle6-finance-workflow.test.ts",
           "anchor": "describe("
+        },
+        {
+          "path": "tests/cycle7-job-review.test.ts",
+          "anchor": "readJobReview"
         }
       ],
       "records": [
@@ -612,6 +633,10 @@
         {
           "path": "docs/program/CYCLE6_INDEPENDENT_REVIEW.md",
           "anchor": "# Cycle 6 independent integration review"
+        },
+        {
+          "path": "docs/program/CYCLE7_VALIDATION.md",
+          "anchor": "# Cycle 7 practical usability validation"
         }
       ],
       "ci": {
@@ -654,6 +679,10 @@
         {
           "path": "src/lib/workflows/finance-workflow.ts",
           "anchor": "export async function readFinanceWorkflow"
+        },
+        {
+          "path": "src/lib/workflows/job-review.ts",
+          "anchor": "readJobReview"
         }
       ],
       "tests": [
@@ -664,6 +693,10 @@
         {
           "path": "tests/cycle6-finance-workflow.test.ts",
           "anchor": "describe("
+        },
+        {
+          "path": "tests/cycle7-job-review.test.ts",
+          "anchor": "readJobReview"
         }
       ],
       "records": [
@@ -694,6 +727,10 @@
         {
           "path": "docs/program/CYCLE6_INDEPENDENT_REVIEW.md",
           "anchor": "# Cycle 6 independent integration review"
+        },
+        {
+          "path": "docs/program/CYCLE7_VALIDATION.md",
+          "anchor": "# Cycle 7 practical usability validation"
         }
       ],
       "ci": {
@@ -714,7 +751,7 @@
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
       "next": "Preserve locked portal; review shared projection changes through exact provenance tests.",
-      "date": "2026-11-01",
+      "date": "2026-11-02",
       "dataObjects": [
         "CRM customer/location",
         "immutable published reports/findings",
@@ -730,12 +767,20 @@
         {
           "path": "src/domain/customer/review.ts",
           "anchor": "export function projectIssuedReview"
+        },
+        {
+          "path": "src/lib/workflows/customer-service.ts",
+          "anchor": "readCustomerService"
         }
       ],
       "tests": [
         {
           "path": "tests/property-attention.test.ts",
           "anchor": "groups repeated identifiers conservatively, distinguishes observations and recommendations, retains all exact sources"
+        },
+        {
+          "path": "tests/cycle7-customer-service.test.ts",
+          "anchor": "readCustomerService"
         }
       ],
       "records": [
@@ -746,6 +791,10 @@
         {
           "path": "docs/INSPECTION_HISTORY_SEARCH_VALIDATION.json",
           "anchor": "{"
+        },
+        {
+          "path": "docs/program/CYCLE7_VALIDATION.md",
+          "anchor": "# Cycle 7 practical usability validation"
         }
       ],
       "ci": {
@@ -917,7 +966,7 @@
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
       "next": "Review exact Cycle5 candidate heads and retained combined proof; keep default-OFF/unwired and pursue source-custody or isolated workspace composition without real execution.",
-      "date": "2026-11-01",
+      "date": "2026-11-02",
       "dataObjects": [
         "Reuse CRM and communications preparation; no duplicate lead store"
       ],
@@ -931,9 +980,18 @@
         {
           "path": "docs/PRODUCT_PROGRAM_2026.md",
           "anchor": "followups, reviews, referrals"
+        },
+        {
+          "path": "src/lib/workflows/booking-scheduling.ts",
+          "anchor": "readBookingScheduling"
         }
       ],
-      "tests": [],
+      "tests": [
+        {
+          "path": "tests/cycle7-booking-scheduling.test.ts",
+          "anchor": "readBookingScheduling"
+        }
+      ],
       "records": [
         {
           "path": "docs/PRODUCT_PROGRAM_2026.md",
@@ -958,6 +1016,10 @@
         {
           "path": "docs/program/CYCLE5_DELIVERY_INDEX.json",
           "anchor": "\"schema\": \"propel-cycle5-delivery-v1\""
+        },
+        {
+          "path": "docs/program/CYCLE7_VALIDATION.md",
+          "anchor": "# Cycle 7 practical usability validation"
         }
       ],
       "ci": {
@@ -1443,7 +1505,7 @@
       "release": "not_authorized",
       "approval": "November 1 owner directive permits isolated local engineering and draft PRs only; original action-specific approvals remain separate.",
       "next": "Preserve existing engine; define actual assignment/availability interfaces before dispatch.",
-      "date": "2026-11-01",
+      "date": "2026-11-02",
       "dataObjects": [
         "Time entries/breaks",
         "worker rates",
@@ -1459,18 +1521,30 @@
         {
           "path": "src/domain/workforce/payroll.ts",
           "anchor": "export function preparePayroll"
+        },
+        {
+          "path": "src/lib/workflows/job-review.ts",
+          "anchor": "readJobReview"
         }
       ],
       "tests": [
         {
           "path": "tests/jobs-workforce.test.ts",
           "anchor": "combines overtime across multiple jobs and overhead in one employer week"
+        },
+        {
+          "path": "tests/cycle7-job-review.test.ts",
+          "anchor": "readJobReview"
         }
       ],
       "records": [
         {
           "path": "docs/PHASE3_VALIDATION.md",
           "anchor": "# Phase 3 local validation and activation gates"
+        },
+        {
+          "path": "docs/program/CYCLE7_VALIDATION.md",
+          "anchor": "# Cycle 7 practical usability validation"
         }
       ],
       "ci": {

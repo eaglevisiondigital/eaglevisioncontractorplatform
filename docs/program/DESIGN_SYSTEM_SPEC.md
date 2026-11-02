@@ -195,3 +195,21 @@ report/issued scope evidence, never the staff cost/assignment/source snapshot. M
 stacks comparisons and source cards without page overflow; desktop/tablet preserve
 readable hierarchy. Actual browser, keyboard/axe and context-reset evidence is required
 for the combined candidate; passing domain tests is not visual acceptance.
+
+## Cycle-seven editable review controls
+
+Keep the approved portals and five locked CSS/artwork files byte-identical. New
+booking and job-review styles are scoped beneath their own panel root and reuse
+the journey contractor tokens. Label recorded date/time/cost facts separately from
+unsaved human proposals. Show units, timezone, original visit date and exact source
+identity beside the inputs. Never style a review result as a booked slot, posted
+time, purchase, issued invoice or final profit.
+
+Input changes immediately clear confirmation and previous results. Controls have
+visible labels, at least44px touch targets, persistent keyboard focus, descriptive
+errors/status and mobile stacking. Long IDs and JSON previews wrap within the card;
+no page overflow. Reset clears presentation only and cannot erase UNKNOWN custody
+or imply a new business attempt. Returning to a contractor restores its retained
+attempt presentation, then requires explicit confirmation before showing sources.
+Main verifies the actual combined forms at desktop/tablet/mobile across all three
+brands, plus production-default-OFF and keyboard/axe/source-context regressions.

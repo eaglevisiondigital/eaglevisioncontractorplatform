@@ -1,5 +1,27 @@
 # Engineering decisions
 
+## November 2 · extend reviewed sources with practical local review controls
+
+Retain every successful exact-head check. GitHub cancellation annotations prove the
+old Foundation job exceeded15 minutes; keep its full test set and finite25-minute
+budget. Development-only browser cases use an explicit loopback development server;
+production-OFF cases retain production. No excluded assertion or widened runtime gate.
+
+Separate new author drafts own booking, time/material/invoice review and safe service
+evidence navigation. Main owns composition, shared contracts/design, source checker,
+responsive browser proof and acceptance register. Actual existing visit revisions,
+crew/job/property/issued/report identities remain authoritative. Alternate-day input
+is an unsaved job window, never a moved visit. Canonical time/material calculations
+are proposals only; missing costs/invoice/accounting evidence stays UNKNOWN.
+
+Use exact customer-safe published projections for service navigation, without adding
+requests, responses, a new transaction store or communication authority. Reject
+nonprimitive enum values before fingerprinting; no caller coercion. Components hide
+old results on source replacement and retained UNKNOWN does not permit replay.
+Avoid duplicated Finance landmarks and reset scoped header geometry inherited from
+the global shell. Preserve original approved layouts/artwork and every operational,
+recovery, financial/provider, hosted and release gate.
+
 ## November 2 · compose one exact-source local contractor journey
 
 Owner authorizes local integration of reviewed sources on a new isolated coordinator,
