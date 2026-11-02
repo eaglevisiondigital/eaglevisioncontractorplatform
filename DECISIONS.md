@@ -1,5 +1,19 @@
 # Engineering decisions
 
+## November 1 · execute bounded cycle-four packages on verified green parents
+
+Owner explicitly authorized working local capacity/conflict review, immutable
+approval-scope references, canonical costing warnings, a unified safe Passport
+timeline and consent-aware reminder eligibility. All C3 exact heads are green.
+Use separate child worktrees/PRs over exact14/11/12/15/13; coordination starts exact
+PR16 c546691. Reuse authoritative existing IDs/readers/calculations; no new business
+store/schema/ledger or operational writer. Field timing/available hours absent from
+existing records must be explicit ephemeral proposals and leave missing evidence
+UNKNOWN. Independent combined review precedes delivery; exact SHA CI and local
+proof do not permit promotion/merge or collapse release gates. Main owns shared
+design/contracts/register; preserve all13/customer14/4B/P1/four/approvals/lockedUIs/
+2A–2F/billing/Netlify/recovery/NMI/Auth/financial/provider/communication restrictions.
+
 ## November 1 · deliver five isolated cycle-three extensions without integration
 
 The owner explicitly authorized working local sales handoff, technician work orders/

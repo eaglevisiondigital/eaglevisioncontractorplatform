@@ -1,5 +1,18 @@
 # Security model · Phase 2
 
+## Cycle four · proposals and eligibility never grant execution
+
+Retain exact source identity/current access classification across asynchronous
+reads and source navigation. Explicit review inputs are pinned primitives, bounded
+and separate from source policy; confirmation changes invalidate the review. Future
+timed windows do not establish actual staff availability, dispatch or physical work.
+Scope reference integrity does not establish genuine customer/signature authority.
+After-phase reports/checklists remain documentation, never verified completion.
+Recorded channel preference and staff planning eligibility do not establish purpose
+consent, suppression, enrollment, sender or communication authority. Missing or
+conflicting evidence stays UNKNOWN with no replay/substitution. All locked source,
+financial/provider/Auth/recovery/hosted gates remain unchanged.
+
 ## Cycle three · current role and evidence remain separate from authority
 
 Asynchronous local read models must recheck the exact current access classification,

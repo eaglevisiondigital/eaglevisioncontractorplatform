@@ -1,3 +1,19 @@
+Cycle4 continuation: owner authorized isolated source-bound crew-day capacity/conflict
+review, immutable accepted-test-preference scope references, canonical margin warnings,
+unified safe Passport timeline and reminder planning eligibility. Read docs/program/
+CYCLE4_ASSIGNMENTS.md and latest shared/design contracts first. Parents exact14/11/12/
+15/13, coordination exact16 c546691; all C3 head CI confirmed green, no rerun/merge/
+rewrite/promotion. Main owns contracts/register/checker; children extend existing
+components/engines only. Field timed windows/working hours are explicit ephemeral
+human proposals, not dispatch or actual availability; date-only evidence UNKNOWN.
+Sales references are not genuine contract approval; Passport documentation is not
+verified physical completion; Growth staff-review eligibility never permits sending.
+No new schema/store/ledger/connected capability. Keep unfinished work defaultOFF/
+unwired, UNKNOWN exact-read-only/no replay, locked5files/13bindings and original18IDs.
+All13/customer14/4B/P1/four/approvals/2A–2F/billing/Netlify/executor/recovery/NMI/Auth/
+provider/financial/hosted/production/deploy/merge gates intact. Release1.0 NOT READY /
+NOT AUTHORIZED. No persistent background execution.
+
 Cycle3 continuation: owner authorized isolated local sales approval-to-contract review,
 field work orders/retained existing sample assignments/daily planning, existing-engine
 margin analysis, existing-source Passport job documentation and consent-aware reminder

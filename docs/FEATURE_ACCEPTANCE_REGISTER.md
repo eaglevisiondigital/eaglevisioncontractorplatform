@@ -34,6 +34,20 @@ cases passed in their respective jobs. This is retained evidence, not a rerun or
 certification of the new packages. QA-001 has no prior CI claim. Current branch/PR
 results belong in [delivery status](PROGRAM_DELIVERY_STATUS.md).
 
+## Cycle-four candidates (separate, unmerged)
+
+Five bounded implementations extend the actual reviewed Cycle3 sources: source-bound
+crew-day capacity proposals/conflicts, immutable accepted-test-preference scope
+references, canonical variance/margin warnings, unified authorized Passport timeline
+and consent-aware reminder planning eligibility. Exact heads/parents, draft PRs,
+actual owners and CI live in the [master delivery register](PROGRAM_DELIVERY_STATUS.md).
+The [independent combined review](program/CYCLE4_INTEGRATION_REVIEW.md) records source
+composition, focused runtime proof, responsive accessibility and protected integrity.
+No child source is silently promoted into this coordination baseline. Original18
+scope IDs,25 feature records and full-capability local/hosted/release labels below
+remain unchanged. An available document is not verified completion; proposed hours
+are not actual availability; staff review never grants contract or message authority.
+
 ## Cycle-three candidates (separate, unmerged)
 
 The [master delivery register](PROGRAM_DELIVERY_STATUS.md) now records five further
@@ -63,33 +77,33 @@ in [review evidence](program/CYCLE2_INTEGRATION_REVIEW.md).
 
 ## Reconciled capability inventory
 
-| ID / owner   | Capability                                                                        | Design / local evidence         | Hosted / release              | Next acceptance                                                                                                                                 |
-| ------------ | --------------------------------------------------------------------------------- | ------------------------------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| SEC-001 / A0 | Tenant isolation, RLS, MFA and role authority                                     | Existing design / LOCAL partial | blocked / NOT AUTHORIZED      | Close exact independent recovery and broker/security acceptance prerequisites without reopening grants.                                         |
-| SEC-002 / A0 | Independent recovery, containment and no replay                                   | Existing design / LOCAL partial | blocked / NOT AUTHORIZED      | Run only the existing owner-operated physical rehearsal once qualifying hardware is available.                                                  |
-| CRM-001 / A2 | Leads, intake, customer and service-location CRM                                  | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Review paginated customer/location selection without creating duplicate CRM.                                                                    |
-| EST-001 / A2 | Canonical estimating, immutable issued versions and revisions                     | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Review PR11 exact immutable issued-source binding without weakening canonical version/calculation or connected issuance guards.                 |
-| EST-002 / A5 | Customer decision, committed admission, durable receipt and eligible staff reader | Existing design / LOCAL partial | blocked / NOT AUTHORIZED      | After recovery/P1-on13, separately review unchanged14 and exact4B+broker ownership/hash/grants/mapping/target.                                  |
-| SAL-001 / A2 | Contracts, e-sign sandbox and change-order foundation                             | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Review PR11 exact issued-scope and actual preference/receipt handoff; genuine signing, terms, Auth and custody acceptance remain separate.      |
-| FLD-001 / A3 | Inspection plans, visits, maintenance triage and repair readiness                 | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Review isolated schedule projection in separate field PR; preserve approved workspace.                                                          |
-| FLD-002 / A3 | Schedule viewing, timekeeping, dispatch and offline field work                    | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Review PR14 technician work orders and optional reviewed crew assignments; capacity, dispatch and connected/offline acceptance remain separate. |
-| FIN-001 / A4 | Invoice schedules, tokenized payment and reconciliation foundations               | Existing design / LOCAL partial | blocked / NOT AUTHORIZED      | Review PR3 exact event-to-posting verifier fix and finite NMI acceptance plan.                                                                  |
-| FIN-002 / A4 | Job profitability, purchasing and accounting scope                                | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Review PR12 canonical source/expense/labor coverage and variance; accounting, NMI and settlement evidence remain separately unverified.         |
-| CUS-001 / A5 | Branded portal, report history, attention, comparison and search                  | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Preserve locked portal; review shared projection changes through exact provenance tests.                                                        |
-| CUS-002 / A5 | Property Passport, warranty and proof-of-work expansion                           | Scope only                      | not_accepted / NOT AUTHORIZED | Review PR15 exact authorized job/report documentation; no warranty, physical completion or unwired consumer promotion.                          |
-| GRO-001 / A6 | Maintenance revenue and recurring-program expansion                               | Scope only                      | not_accepted / NOT AUTHORIZED | Review PR13 anchored plan/follow-up sources; purpose consent, suppression, enrollment and communication authority remain unverified/blocked.    |
-| GRO-002 / A6 | Reviews, referrals, follow-ups and booking automation                             | Scope only                      | not_accepted / NOT AUTHORIZED | Review PR13 exact channel evidence separately from purpose/suppression/enrollment; no sender, outbox or automatic communication.                |
-| AI-001 / A6  | Voice-to-estimate, Copilot, answering and storm-mode scope                        | Scope only                      | not_accepted / NOT AUTHORIZED | Define one bounded human-confirmed draft input with evaluation/privacy criteria; remain default OFF.                                            |
-| INT-001 / A7 | Supplier, accounting, calendar and telephony interfaces                           | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Inventory exact provider interfaces; choose one non-network export/import contract after owner priority.                                        |
-| UX-001 / A8  | Shared accessible responsive design and approved branding                         | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Use documented shared contracts; review responsive screenshots and existing exact-brand regressions.                                            |
-| OPS-001 / A0 | Release, protected Netlify replacement and operational acceptance                 | Existing design / LOCAL partial | blocked / NOT AUTHORIZED      | Retain original evidence; request exact hosted scope only after independently proven prerequisites.                                             |
-| PLT-001 / A1 | Organization settings, roles, audit and platform administration                   | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Use checked organization/membership RPCs; inventory settings/import/export gaps without generic CRUD.                                           |
-| DOC-001 / A1 | Private documents and quarantine controls                                         | Existing design / LOCAL partial | blocked / NOT AUTHORIZED      | Retain quarantine/default-off controls; separately review actual worker/scanner/provider acceptance.                                            |
-| MAT-001 / A7 | Smart Material Import and reviewed customer-safe material lines                   | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Reuse reviewed import engine and exact line provenance; do not add a parallel product/price system.                                             |
-| JOB-001 / A3 | Immutable job baselines, costs and approved change tracking                       | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Preserve original baseline and cost engine while specifying exact future work-order handoffs.                                                   |
-| WRK-001 / A3 | Workforce, overtime and payroll preparation                                       | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Preserve existing engine; define actual assignment/availability interfaces before dispatch.                                                     |
-| COM-001 / A2 | Verified sender preparation, escaped templates and internal sinks                 | Existing design / LOCAL partial | blocked / NOT AUTHORIZED      | Retain exact scope/hash/source and separate explicit delivery authorization.                                                                    |
-| QA-001 / A8  | Feature evidence, source ownership inventory and release-label checks             | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Run features:check in normal CI; inspect exact branch run and retain honest unknown gaps.                                                       |
+| ID / owner   | Capability                                                                        | Design / local evidence         | Hosted / release              | Next acceptance                                                                                                                                                     |
+| ------------ | --------------------------------------------------------------------------------- | ------------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SEC-001 / A0 | Tenant isolation, RLS, MFA and role authority                                     | Existing design / LOCAL partial | blocked / NOT AUTHORIZED      | Close exact independent recovery and broker/security acceptance prerequisites without reopening grants.                                                             |
+| SEC-002 / A0 | Independent recovery, containment and no replay                                   | Existing design / LOCAL partial | blocked / NOT AUTHORIZED      | Run only the existing owner-operated physical rehearsal once qualifying hardware is available.                                                                      |
+| CRM-001 / A2 | Leads, intake, customer and service-location CRM                                  | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Review paginated customer/location selection without creating duplicate CRM.                                                                                        |
+| EST-001 / A2 | Canonical estimating, immutable issued versions and revisions                     | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Review PR18 exact immutable accepted-test-preference/issued-scope references; canonical version/calculation and connected issuance guards remain unchanged.         |
+| EST-002 / A5 | Customer decision, committed admission, durable receipt and eligible staff reader | Existing design / LOCAL partial | blocked / NOT AUTHORIZED      | After recovery/P1-on13, separately review unchanged14 and exact4B+broker ownership/hash/grants/mapping/target.                                                      |
+| SAL-001 / A2 | Contracts, e-sign sandbox and change-order foundation                             | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Review PR18 retained exact scope/hash/receipt and current/stale/UNKNOWN verification; genuine signing, terms, Auth and custody acceptance remain separate.          |
+| FLD-001 / A3 | Inspection plans, visits, maintenance triage and repair readiness                 | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Review isolated schedule projection in separate field PR; preserve approved workspace.                                                                              |
+| FLD-002 / A3 | Schedule viewing, timekeeping, dispatch and offline field work                    | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Review PR20 exact source-bound crew-day proposals/conflicts; genuine timed-slot/availability ownership, dispatch and connected/offline acceptance remain separate.  |
+| FIN-001 / A4 | Invoice schedules, tokenized payment and reconciliation foundations               | Existing design / LOCAL partial | blocked / NOT AUTHORIZED      | Review PR3 exact event-to-posting verifier fix and finite NMI acceptance plan.                                                                                      |
+| FIN-002 / A4 | Job profitability, purchasing and accounting scope                                | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Review PR17 canonical variance/margin warnings and optional confirmed local floor; accounting, NMI and settlement evidence remain separately unverified.            |
+| CUS-001 / A5 | Branded portal, report history, attention, comparison and search                  | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Preserve locked portal; review shared projection changes through exact provenance tests.                                                                            |
+| CUS-002 / A5 | Property Passport, warranty and proof-of-work expansion                           | Scope only                      | not_accepted / NOT AUTHORIZED | Review the Cycle4 unified authorized report/job timeline candidate; no warranty, verified physical completion, delivery or consumer promotion.                      |
+| GRO-001 / A6 | Maintenance revenue and recurring-program expansion                               | Scope only                      | not_accepted / NOT AUTHORIZED | Review PR19 bounded anchored planning eligibility and exact visit evidence; purpose, suppression, enrollment and communication authority remain unverified/blocked. |
+| GRO-002 / A6 | Reviews, referrals, follow-ups and booking automation                             | Scope only                      | not_accepted / NOT AUTHORIZED | Review PR19 exact current channel/planning evidence separately from purpose/suppression/enrollment; no recipient, sender, outbox or automatic communication.        |
+| AI-001 / A6  | Voice-to-estimate, Copilot, answering and storm-mode scope                        | Scope only                      | not_accepted / NOT AUTHORIZED | Define one bounded human-confirmed draft input with evaluation/privacy criteria; remain default OFF.                                                                |
+| INT-001 / A7 | Supplier, accounting, calendar and telephony interfaces                           | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Inventory exact provider interfaces; choose one non-network export/import contract after owner priority.                                                            |
+| UX-001 / A8  | Shared accessible responsive design and approved branding                         | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Preserve five locked styles/artwork and thirteen bindings; inspect Cycle4 actual desktop/tablet/mobile states and source-context isolation.                         |
+| OPS-001 / A0 | Release, protected Netlify replacement and operational acceptance                 | Existing design / LOCAL partial | blocked / NOT AUTHORIZED      | Retain original evidence; request exact hosted scope only after independently proven prerequisites.                                                                 |
+| PLT-001 / A1 | Organization settings, roles, audit and platform administration                   | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Use checked organization/membership RPCs; inventory settings/import/export gaps without generic CRUD.                                                               |
+| DOC-001 / A1 | Private documents and quarantine controls                                         | Existing design / LOCAL partial | blocked / NOT AUTHORIZED      | Retain quarantine/default-off controls; separately review actual worker/scanner/provider acceptance.                                                                |
+| MAT-001 / A7 | Smart Material Import and reviewed customer-safe material lines                   | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Reuse reviewed import engine and exact line provenance; do not add a parallel product/price system.                                                                 |
+| JOB-001 / A3 | Immutable job baselines, costs and approved change tracking                       | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Preserve original baseline and cost engine while specifying exact future work-order handoffs.                                                                       |
+| WRK-001 / A3 | Workforce, overtime and payroll preparation                                       | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Preserve existing engine; define actual assignment/availability interfaces before dispatch.                                                                         |
+| COM-001 / A2 | Verified sender preparation, escaped templates and internal sinks                 | Existing design / LOCAL partial | blocked / NOT AUTHORIZED      | Retain exact scope/hash/source and separate explicit delivery authorization.                                                                                        |
+| QA-001 / A8  | Feature evidence, source ownership inventory and release-label checks             | Existing design / LOCAL partial | not_accepted / NOT AUTHORIZED | Run features:check in normal CI; inspect exact branch run and retain honest unknown gaps.                                                                           |
 
 ## Exact implementation, interface and acceptance records
 
@@ -147,7 +161,7 @@ UI: `/preview > Estimates`. Objects/contracts: public.estimates; public.estimate
 
 Limits: Local estimating exists; issued-safe customer scope requires exact immutable source. Revision, repair-origin and connected issuance guards stay closed.
 
-Dependencies: CRM-001. Next: Review PR11 exact immutable issued-source binding without weakening canonical version/calculation or connected issuance guards.
+Dependencies: CRM-001. Next: Review PR18 exact immutable accepted-test-preference/issued-scope references; canonical version/calculation and connected issuance guards remain unchanged.
 
 ### EST-002 · A5 · Customer decision, committed admission, durable receipt and eligible staff reader
 
@@ -175,7 +189,7 @@ UI: `/preview/release (explicit synthetic sandbox)`. Objects/contracts: Immutabl
 
 Limits: Contract/sandbox source already exists; legal execution, provider identity and genuine consent are not accepted. Ordinary contracts and real signatures remain disabled.
 
-Dependencies: EST-001. Next: Review PR11 exact issued-scope and actual preference/receipt handoff; genuine signing, terms, Auth and custody acceptance remain separate.
+Dependencies: EST-001. Next: Review PR18 retained exact scope/hash/receipt and current/stale/UNKNOWN verification; genuine signing, terms, Auth and custody acceptance remain separate.
 
 ### FLD-001 · A3 · Inspection plans, visits, maintenance triage and repair readiness
 
@@ -203,7 +217,7 @@ UI: `/preview > Workforce`; `Proposed isolated /preview/field-scheduling in sepa
 
 Limits: Existing timekeeping is executable locally; sample job assignment does not retain dispatch. Operational crew scheduling, offline conflict custody and proof-of-work remain UNKNOWN.
 
-Dependencies: FLD-001. Next: Review PR14 technician work orders and optional reviewed crew assignments; capacity, dispatch and connected/offline acceptance remain separate.
+Dependencies: FLD-001. Next: Review PR20 exact source-bound crew-day proposals/conflicts; genuine timed-slot/availability ownership, dispatch and connected/offline acceptance remain separate.
 
 ### FIN-001 · A4 · Invoice schedules, tokenized payment and reconciliation foundations
 
@@ -231,7 +245,7 @@ UI: `/preview > Jobs`. Objects/contracts: Existing job baseline; expenses/events
 
 Limits: Profitability is implemented locally; external accounting and purchase-order lifecycle are not certified. Incomplete cost inputs cannot be labeled final; no automatic customer billing.
 
-Dependencies: EST-001. Next: Review PR12 canonical source/expense/labor coverage and variance; accounting, NMI and settlement evidence remain separately unverified.
+Dependencies: EST-001. Next: Review PR17 canonical variance/margin warnings and optional confirmed local floor; accounting, NMI and settlement evidence remain separately unverified.
 
 ### CUS-001 · A5 · Branded portal, report history, attention, comparison and search
 
@@ -259,7 +273,7 @@ UI: No mounted operational route. Objects/contracts: Reuse existing CRM location
 
 Limits: Published inspection history is not a complete Property Passport, warranty or verified completion system. Media quarantine, consent, access and retention gates remain unmet.
 
-Dependencies: CUS-001, FLD-001. Next: Review PR15 exact authorized job/report documentation; no warranty, physical completion or unwired consumer promotion.
+Dependencies: CUS-001, FLD-001. Next: Review the Cycle4 unified authorized report/job timeline candidate; no warranty, verified physical completion, delivery or consumer promotion.
 
 ### GRO-001 · A6 · Maintenance revenue and recurring-program expansion
 
@@ -273,7 +287,7 @@ UI: No mounted operational route. Objects/contracts: Existing inspection recurre
 
 Limits: Inspection cadence already exists; paid program enrollment/consent/billing is not implemented acceptance. Six billing proposals stay PROPOSED; no AR or customer obligations.
 
-Dependencies: FLD-001, FIN-001. Next: Review PR13 anchored plan/follow-up sources; purpose consent, suppression, enrollment and communication authority remain unverified/blocked.
+Dependencies: FLD-001, FIN-001. Next: Review PR19 bounded anchored planning eligibility and exact visit evidence; purpose, suppression, enrollment and communication authority remain unverified/blocked.
 
 ### GRO-002 · A6 · Reviews, referrals, follow-ups and booking automation
 
@@ -287,7 +301,7 @@ UI: No mounted operational route. Objects/contracts: Reuse CRM and communication
 
 Limits: No verified automated sending, consent/opt-out provider pipeline or external booking.
 
-Dependencies: CRM-001. Next: Review PR13 exact channel evidence separately from purpose/suppression/enrollment; no sender, outbox or automatic communication.
+Dependencies: CRM-001. Next: Review PR19 exact current channel/planning evidence separately from purpose/suppression/enrollment; no recipient, sender, outbox or automatic communication.
 
 ### AI-001 · A6 · Voice-to-estimate, Copilot, answering and storm-mode scope
 
@@ -329,7 +343,7 @@ UI: `/preview`; `/preview/property-portal`; `/preview/contractor-design`. Object
 
 Limits: Approved customer/back-office layouts and original artwork are locked. New isolated schedule preview requires explicit visual integration review before promotion.
 
-Dependencies: None within this register. Next: Use documented shared contracts; review responsive screenshots and existing exact-brand regressions.
+Dependencies: None within this register. Next: Preserve five locked styles/artwork and thirteen bindings; inspect Cycle4 actual desktop/tablet/mobile states and source-context isolation.
 
 ### OPS-001 · A0 · Release, protected Netlify replacement and operational acceptance
 

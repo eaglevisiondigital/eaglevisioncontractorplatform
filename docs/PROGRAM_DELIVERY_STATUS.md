@@ -1,5 +1,138 @@
 # Product program delivery status
 
+## Cycle four · isolated implementation candidates · November 1
+
+Coordination branch `codex/program-cycle-four` starts at exact PR16
+`c546691c28dfe6c583414bad08203e76b4413032`. All six Cycle3 exact heads have
+independently confirmed Foundation/compatibility SUCCESS. Retained Foundation runs:
+PR11 41361984405, PR12 41361993346, PR13 41362034657, PR14 41363020028,
+PR15 41362959691, PR16 41363601908. PR14's dedicated scheduling/handoff/work-order
+workflows also passed. No successful check rerun, parent rewrite, merge or promotion.
+Older CI snapshots below are historical, not current failures.
+
+### Actual owners, worktrees and stack
+
+Three subagent slots require successive assignments. Sales/Finance/Field authors
+completed their bounded implementation turns; the freed Finance slot launched
+Passport and the freed Sales slot launched independent review. Main authors Growth
+and shared contracts/design/evidence. No persistent background workers are implied.
+All worktrees are separate; no agent edited another package or a protected engine.
+All five author turns and independent review are now complete. Only main is finishing
+delivery/CI verification; there are no persistent background development agents.
+
+| Actual owner                                 | Branch / exact reviewed parent                                                             | Draft / exact implementation head                                                                                                     |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `/root/cycle4_finance`, delivered by main    | `codex/program-job-margin-warnings` / PR12 `1104a1e0bf44fa1089e78408ed6a9eeb7d2c7b20`      | [#17](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/17), `fe9d9ff593dbbed175ac69de1bd44fa1d25725bc`        |
+| `/root/cycle4_sales`, delivered by main      | `codex/program-approved-scope-reference` / PR11 `4460c4a200e00c1b976a2305e04c3c01e1c386f5` | [#18](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/18), `ed3a099207ad3e29b3b1e70aba2fc809664a60bb`        |
+| `/root`, Growth author                       | `codex/program-reminder-eligibility` / PR13 `169e67955eedd70285a6f42993da6632e5749401`     | [#19](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/19), `3580bf4dceee7c8c4244b902c64c93f9dc0564c8`        |
+| `/root/cycle4_field`, delivered by main      | `codex/program-crew-day-capacity` / PR14 `921c8083046901f457374677d52fe7b14e097c86`        | [#20](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/20), `5a96baf9ebf7c8e17177be67d5d6f2b26cef5f33`        |
+| `/root/cycle4_passport`                      | `codex/program-passport-timeline` / PR15 `d14da6a4b4aae505eedfbd5c6d8b912ecc6c3fb4`        | [#21](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/21), `f7a44a8cc5fd7c4add529b6588925f548d2d85b5`        |
+| `/root`, integration/design/register/tooling | `codex/program-cycle-four` / PR16 `c546691c28dfe6c583414bad08203e76b4413032`               | [#22](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/22), current coordination head in its exact-SHA checks |
+| `/root/cycle4_integration_review`            | Read-only actual source/disposable composition; no authored package                        | [Independent record](program/CYCLE4_INTEGRATION_REVIEW.md)                                                                            |
+
+### Functioning implementation and evidence
+
+| Candidate                | Working extension over existing authority                                                                                                                                                                                                                                                                                                                                                                                                                                     | Focused local proof                                                                                                                                                                                                                                                                                                        |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Field / FLD-002          | Exact current work orders/crew/job/visit/time plus explicitly confirmed ephemeral working-hours/timed-window proposals. Union/intersection math distinguishes overlapping jobs/visits, duplicate/adjacent/ambiguous windows, proposed-hours coverage, recorded segment overlaps, cross-midnight/TZ/DST. Date-only visits and actual availability UNKNOWN; no schedule store or dispatch. Strict retained-card data admission preserves existing assignment/source navigation. | 151 related app cases, including57 new;6 actual browser cases across three brands/desktop/tablet/mobile, keyboard/focus/axe/OFF/overflow/no external requests PASS. Types/full lint/format/build and5locks/13bindings PASS.                                                                                                |
+| Sales / SAL-001, EST-001 | Same existing handoff now explicitly retains exact displayed issued-scope hash and actual accepted local test receipt in a detached frozen allowlist. Deterministic integrity and independent original-source verification distinguish current/stale/UNKNOWN. No newer source substitution, contract, signing or genuine approval.                                                                                                                                            | 105 related app cases, including39 new;15 actual browser cases across brands/viewports, strict types/lint/format/build PASS. Source races, invalid reference/hash, no serializers/getters, UNKNOWN hiding and key/context behavior verified.                                                                               |
+| Finance / FIN-002        | Existing canonical category overrun, negative projected contribution and margin erosion warnings separated from coverage. Optional explicitly confirmed local minimum-margin input never changes company policy or saved job thresholds. Zero/unsafe ratios unavailable; no new calculator/ledger.                                                                                                                                                                            | 178 related app cases, including37 new;6 actual browser cases, all brands/viewports, confirmation/input/source reset, role denial, axe/overflow/external-request checks PASS. Types/generated types/full lint/format/build PASS. Existing eight NMI gates exact/UNVERIFIED.                                                |
+| Growth / GRO-001,GRO-002 | Same actual recurrence/manual follow-up/CRM-consent reader adds confirmed bounded calendar-day planning horizon and exact visit/channel evidence. Staff-review candidates, existing visits, channel denial, out-of-window and UNKNOWN are distinct. Every message eligibility BLOCKED; recipient/provider null, purpose/suppression/enrollment/sender UNVERIFIED.                                                                                                             | 34 new plus32 retained app cases =66 PASS, all three companies, actual source/role/consent/confirmation drift, TZ/DST, malformed/accessor data, privacy/no mutation/truncation. Types/lint/format/features/build PASS; no new UI/browser claim.                                                                            |
+| Passport / CUS-002       | Unified immutable existing report/job timeline with exact source digests/navigation and separate recorded visit/issued UTC date meanings; component-owned model/context reset and live admission checks. No physical completion/warranty/customer approval inference.                                                                                                                                                                                                         | 28 new app cases PASS; prior131 related cases passed before3 added admission regressions.12 actual browser cases across all brands/viewports PASS, including real model/property replacement, late reads, source focus, axe/empty/error/OFF/privacy/no overflow/no external requests. Types/lint/format/build/design PASS. |
+| Main / QA-001,UX-001     | Shared contracts, expanded source-owner mapping and deterministic public protected manifest. Original18 IDs/25 records, mandatory5locks/13bindings preserved.                                                                                                                                                                                                                                                                                                                 | 27 evidence/design app cases PASS; source citations/hashes are not runtime or operational acceptance.                                                                                                                                                                                                                      |
+
+These related branch counts overlap and are not product-wide acceptance totals.
+Final combined proof is **417 distinct app/design cases and45 actual browser cases
+PASS**, plus strict types, lint, local build and static integrity checks. Independent
+review is CLEAR for isolated local draft review; see its exact scope in the review. No unrelated recovery/Netlify/native baseline was
+repeated manually; normal automatic CI runs against each exact new candidate head.
+
+### Combined compatibility and preservation
+
+Main composes exact C2/C3 ancestor patches and C4 child patches in a disposable
+checkout, without Git merge/promotion. Shared Phase3 must retain the reviewed
+CRM+Field composite SHA256
+`7f4854eb4130da056b0220d513b99b0b1cd904076971ccef58931f63bd522ae7`.
+No C4 package edits Phase3, Operations, canonical calculations, SQL or generated
+schema. Reader/proposal additions do not create a new public API or authority.
+
+The new [protected source manifest](program/CYCLE4_PROTECTED_SOURCE.json) explicitly
+selects128 common public paths from exactc546691, including historical SQL,
+recovery/Netlify/customer4B/broker sources, approved source/artwork and canonical
+calculations. Main and independent reviewer reproduce aggregate SHA256
+`1bdf4fde01e40a76fb5cff044721dc411e562af3dd848c28e3cb62b970e95b3a`
+and exact matches in coordination plus all five worktrees. This is a new documented
+selector, not a claim to reproduce the historical C3 125-path selector. The unchanged
+coordinator design contract separately validates5lockedfiles/13bindings in each
+older-parent child without copying missing coordination metadata into its history.
+Exact-parent owned-diff audits complement this common manifest. Private frozen
+P1/Netlify bindings are verified by main separately with hashes only.
+
+Independent source review prompted the Passport component to own model/context
+identity rather than relying on its fixture's key. The reviewer did not complete a
+pre-fix runtime reproduction; the actual-component post-fix real-company rerender
+proved old cards removed immediately. Permanent no-parent-key/late-read regressions
+are retained. Field's new confirmation/time/card input boundary was tightened by
+main precommit review; actual invalid/accessor/withdrawn confirmation cases verify
+denial without executing serializers. The second Passport finding was independently reproduced against pre-fix actual
+models: withdrawing the original admission while an async read was pending still
+returned a timeline/AVAILABLE. The fix retains the live original gate through
+inherited reads and checks every new async boundary. Three permanent regressions
+and the unchanged two independent reproductions pass. No validation was weakened.
+
+### Automatic CI and local use
+
+Each query uses the exact implementation SHA above. Automatic CI snapshot at
+coordination preparation; pending remains pending. Later final outcomes belong in
+the PR checks and delivery response, without pretending that a source citation is a
+runtime result. No previous successful run is restarted.
+
+| Draft          | Foundation                                                                                                              | Compatibility                                                                                                       | Dedicated local-browser workflows                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 17 / `fe9d9ff` | [41375265295](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41375265295) SUCCESS     | [41375265115](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41375265115) SUCCESS | Covered by Foundation browser job                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| 18 / `ed3a099` | [41375703938](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41375703938) SUCCESS     | [41375703860](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41375703860) SUCCESS | Covered by Foundation browser job                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| 19 / `3580bf4` | [41375912467](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41375912467) SUCCESS     | [41375912537](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41375912537) SUCCESS | Unwired reader, no new UI                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| 20 / `5a96baf` | [41376056963](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41376056963) SUCCESS     | [41376056921](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41376056921) SUCCESS | [Capacity41376056946](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41376056946), [work orders41376056942](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41376056942), [handoff41376056768](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41376056768), [scheduling41376056828](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41376056828) SUCCESS |
+| 21 / `f7a44a8` | [41377060625](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41377060625) IN_PROGRESS | [41377060568](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41377060568) SUCCESS | [Timeline41377060567](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41377060567) SUCCESS                                                                                                                                                                                                                                                                                                                                                                    |
+
+Coordination [PR22](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/22)
+is a separate draft against exactPR16; its final head gets automatic Foundation/
+compatibility checks after push. Its current SHA is bound by the GitHub PR metadata
+and final delivery, avoiding a self-referential commit hash in this file. No child
+source is merged into it.
+
+Use the child worktree, not this unmerged coordination checkout:
+
+- Field: existing `/preview/field-scheduling`, with all three separate flags
+  `VITE_FIELD_SCHEDULING_PREVIEW=true`, `VITE_FIELD_WORK_ORDERS_PREVIEW=true`,
+  `VITE_FIELD_CREW_CAPACITY_PREVIEW=true` on literal loopback. Existing C3 work-order
+  review/manual sample assignment remains available; proposed capacity never writes
+  shifts or dispatches work. Exact command/port in its package document.
+- Sales: existing flagged DEV/loopback `tests/browser/fixtures/sales-handoff.html`
+  on4196. Prepare actual local test evidence, review exact scope/receipt, explicitly
+  confirm capture, then verify the retained reference read-only.
+- Finance: existing flagged DEV/loopback `/preview-job-margin-demo.html` on4188.
+  Review current coverage and saved warning thresholds, enter/confirm an optional
+  local floor, or explicitly prepare the synthetic risk example through the existing
+  sample forecast workflow. No policy, issued source or customer obligation changes.
+- Passport: `VITE_PASSPORT_TIMELINE_TEST=true npm run dev -- --host 127.0.0.1 --port 4193 --strictPort`, then `/tests/browser/fixtures/passport-timeline.html`. Prepare existing synthetic evidence explicitly, load timeline and open exact report/job sources; existing approved portal/App remain untouched.
+- Growth: unwired reader, no route/sender/outbox/scheduler or background execution.
+
+Synthetic screenshot evidence remains in the respective ignored artifact directories;
+actual desktop/tablet/mobile states across all three existing palettes are tested.
+New styles are scoped and use current design tokens. No invented/rebuilt artwork.
+
+Next dependencies: review the separate drafts and exact final CI before any proposed
+integration. A genuine working-hours/timed-slot source and capacity acceptance remain
+separate from ephemeral review. Signing/terms/Auth/custody, accountant/NMI settlement,
+completion-document custody and purpose/suppression/enrollment/sender policies need
+separately bounded acceptance. No source hash or successful local/CI run opens them.
+All13/customer14/original4B/P1/four/approvals/2A–2F/billing, original Netlify package/
+executor, recovery/P1-on13/separate14/exact4B+broker, NMI/Auth/financial/provider/
+communication/hosted/production gates remain intact. No hosted writes, credentials,
+financial/message execution, deployment or merge. **Release1.0 remains NOT READY /
+NOT AUTHORIZED.**
+
 ## Cycle three · delivered isolated foundations · November 1
 
 Main branch `codex/program-cycle-three` starts at exact PR10

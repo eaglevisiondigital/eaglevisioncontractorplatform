@@ -1,12 +1,12 @@
 {
   "schema": "propel-public-source-inventory-v1",
   "date": "2026-11-01",
-  "baselineCommit": "25ae406974f470d1a46d3909ddd00fe07c388240",
-  "package": "Cycle-three coordination candidate over exact PR10; shared contracts/design/check tooling included, separate parent/child packages excluded.",
+  "baselineCommit": "c546691c28dfe6c583414bad08203e76b4413032",
+  "package": "Cycle-four coordination candidate over exact PR16; shared contracts/design/check tooling included, separate parent/child packages excluded.",
   "limits": [
     "Path/hash/primary-owner inventory of declared public roots and configuration only; not a line-by-line security certification.",
     "Private/hidden trees, symlinks, dependencies, build output and browser artifacts excluded.",
-    "PR2–PR4, cycle-two PR6–PR9 and cycle-three PR11–PR15 remain separate; not represented as integrated source.",
+    "PR2–PR4, Cycle-two PR6–PR9, Cycle-three PR11–PR15 and Cycle-four PR17–PR21 remain separate; not represented as integrated source.",
     "Per-file SHA-256 binds this snapshot; rerun the read-only tool for current source."
   ],
   "roots": [
@@ -1251,8 +1251,8 @@
     {
       "path": "scripts/feature-evidence.mjs",
       "owner": "A8",
-      "bytes": 14618,
-      "sha256": "4414b7c229f1474ed33249e099b21b3621eb7775d55dcdc9905ac83e39bb9ff5"
+      "bytes": 14735,
+      "sha256": "8a8a2479aaae60c356cec3f28918fb88ca3b66ac70e1895c205978b59e00417f"
     },
     {
       "path": "scripts/generate-db-types.mjs",
@@ -2025,8 +2025,8 @@
     {
       "path": "tests/program-feature-evidence.test.ts",
       "owner": "A8",
-      "bytes": 11652,
-      "sha256": "ff5105186bbd86f072ddfecb7adae24d5f7a7d818763d13eda96f8313fc6b2f9"
+      "bytes": 12433,
+      "sha256": "2e8278f4d2362c9b6f74b073aa0900fc19a950978dfa4fafca52d32d7f83c899"
     },
     {
       "path": "tests/property-acceptance-journal.test.ts",
