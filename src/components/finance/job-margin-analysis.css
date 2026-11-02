@@ -1,0 +1,103 @@
+.job-margin-analysis {
+  min-width: 0;
+}
+.job-margin-analysis dt {
+  color: #20352f;
+}
+.job-margin-analysis dd {
+  overflow-wrap: anywhere;
+}
+
+.job-margin-analysis .job-margin-review,
+.job-margin-analysis .job-margin-warnings {
+  background: #f5f5ef;
+  border: 1px solid #d9e1da;
+  border-left: 4px solid var(--company-color, #00543e);
+  border-radius: 9px;
+  margin-block: 1rem;
+  padding: 1rem;
+  color: #20352f;
+}
+.job-margin-analysis .job-margin-review label {
+  display: block;
+  margin-block: 0.8rem;
+}
+.job-margin-analysis .job-margin-review input[type='text'] {
+  display: block;
+  width: min(100%, 16rem);
+  min-height: 46px;
+  box-sizing: border-box;
+}
+.job-margin-analysis .job-margin-confirm {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  line-height: 1.5;
+}
+.job-margin-analysis .job-margin-confirm input {
+  width: 1.35rem;
+  height: 1.35rem;
+  flex: 0 0 auto;
+}
+.job-margin-analysis .job-margin-review-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.job-margin-analysis .job-margin-review-actions button,
+.job-margin-analysis > button {
+  min-height: 46px;
+}
+.job-margin-analysis .job-margin-signals,
+.job-margin-analysis .job-margin-warnings ul {
+  padding-left: 1.25rem;
+}
+.job-margin-analysis :focus-visible {
+  outline: 3px solid #00543e;
+  outline-offset: 4px;
+}
+
+.job-margin-analysis .job-cost-completion {
+  background: #f5f5ef;
+  border: 1px solid #d9e1da;
+  border-left: 4px solid var(--company-color, #00543e);
+  border-radius: 9px;
+  margin-block: 1rem;
+  padding: 1rem;
+  color: #20352f;
+}
+.job-margin-analysis .job-cost-completion button,
+.job-margin-analysis .job-cost-completion summary {
+  min-height: 46px;
+}
+.job-margin-analysis .job-cost-completion summary {
+  cursor: pointer;
+  padding-block: 0.5rem;
+}
+.job-margin-analysis .job-cost-sources {
+  list-style: none;
+  padding-left: 0;
+}
+.job-margin-analysis .job-cost-sources li {
+  border-top: 1px solid #d9e1da;
+  padding-block: 0.5rem;
+  overflow-wrap: anywhere;
+}
+.job-margin-analysis .job-cost-completion-totals {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 0.5rem 1rem;
+}
+.job-margin-analysis .job-cost-completion-totals dd {
+  margin: 0;
+  text-align: right;
+}
+@media (max-width: 600px) {
+  .job-margin-analysis .job-cost-completion-totals {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .job-margin-analysis .job-cost-completion-totals dd {
+    text-align: left;
+    margin-bottom: 0.5rem;
+  }
+}

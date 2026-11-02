@@ -1,0 +1,126 @@
+.field-schedule .crew-capacity {
+  margin-top: 32px;
+  padding: 24px;
+  border: 1px solid #bac9bf;
+  border-radius: 12px;
+  background: #f2f4ee;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.field-schedule .crew-capacity .capacity-heading p,
+.field-schedule .crew-capacity .capacity-boundary,
+.field-schedule .crew-capacity li,
+.field-schedule .crew-capacity .capacity-result > p {
+  font-size: 13px;
+}
+.field-schedule .crew-capacity .capacity-boundary {
+  border-left: 3px solid var(--field-brand);
+  padding: 14px;
+  background: white;
+}
+.field-schedule .crew-capacity fieldset {
+  border: 1px solid #bac9bf;
+  padding: 18px;
+  min-width: 0;
+  margin: 20px 0;
+}
+.field-schedule .crew-capacity legend {
+  padding: 0 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+.field-schedule .crew-capacity .capacity-controls,
+.field-schedule .crew-capacity .capacity-inputs {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 18px;
+}
+.field-schedule .crew-capacity .capacity-inputs > div,
+.field-schedule .crew-capacity .capacity-controls > label {
+  min-width: 0;
+}
+.field-schedule .crew-capacity .capacity-inputs {
+  margin-top: 20px;
+}
+.field-schedule .crew-capacity .capacity-inputs label {
+  margin-bottom: 14px;
+}
+.field-schedule .crew-capacity .capacity-inputs li {
+  margin-bottom: 14px;
+  padding: 10px 0;
+}
+.field-schedule .crew-capacity .capacity-inputs button {
+  margin-top: 8px;
+}
+.field-schedule .crew-capacity .capacity-confirm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  margin: 20px 0;
+}
+.field-schedule .crew-capacity .capacity-confirm input {
+  width: 22px;
+  min-height: 22px;
+  flex: 0 0 22px;
+}
+.field-schedule .crew-capacity .capacity-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.field-schedule .crew-capacity .capacity-state,
+.field-schedule .crew-capacity .capacity-empty {
+  padding: 14px;
+  background: white;
+  border: 1px dashed #bac9bf;
+}
+.field-schedule .crew-capacity .capacity-result {
+  margin-top: 24px;
+  border-top: 2px solid var(--field-brand);
+  padding-top: 18px;
+}
+.field-schedule .crew-capacity .capacity-workers,
+.field-schedule .crew-capacity .capacity-overlaps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  list-style: none;
+  padding: 0;
+  gap: 14px;
+}
+.field-schedule .crew-capacity .capacity-workers > li,
+.field-schedule .crew-capacity .capacity-overlaps > li,
+.field-schedule .crew-capacity .capacity-source {
+  background: white;
+  border: 1px solid #d6ddd5;
+  padding: 18px;
+  border-radius: 9px;
+  min-width: 0;
+}
+.field-schedule .crew-capacity .capacity-source {
+  margin-top: 12px;
+}
+.field-schedule .crew-capacity .capacity-source p {
+  font-size: 12px;
+}
+.field-schedule .crew-capacity small,
+.field-schedule .crew-capacity .capacity-overlaps span {
+  display: block;
+  margin-top: 8px;
+}
+@media (max-width: 760px) {
+  .field-schedule .crew-capacity {
+    padding: 16px;
+  }
+  .field-schedule .crew-capacity .capacity-controls,
+  .field-schedule .crew-capacity .capacity-inputs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .field-schedule .crew-capacity fieldset {
+    padding: 12px;
+  }
+}
+.field-schedule .crew-capacity .capacity-inputs li button {
+  display: block;
+}

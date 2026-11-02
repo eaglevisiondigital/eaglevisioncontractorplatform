@@ -1,0 +1,173 @@
+.field-schedule .field-work-orders {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 2px solid #bac9bf;
+}
+.field-schedule .field-work-orders .wo-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.field-schedule .field-work-orders .wo-heading > * {
+  min-width: 0;
+}
+.field-schedule .field-work-orders .wo-heading label {
+  min-width: 220px;
+}
+.field-schedule .field-work-orders .wo-boundary {
+  padding: 14px 18px;
+  border-left: 3px solid var(--field-accent);
+  background: #ebece4;
+  font-size: 13px;
+  margin: 20px 0;
+}
+.field-schedule .field-work-orders .wo-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 12px;
+  align-items: end;
+  padding: 18px;
+  background: white;
+  border: 1px solid #d6ddd5;
+  border-radius: 12px;
+}
+.field-schedule .field-work-orders .wo-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+.field-schedule .field-work-orders .wo-grid > * {
+  min-width: 0;
+}
+.field-schedule .field-work-orders h4 {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 10px 0;
+}
+.field-schedule .field-work-orders .wo-kicker {
+  font-size: 11px;
+  color: #3d5b51;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.field-schedule .field-work-orders .wo-list {
+  display: grid;
+  gap: 14px;
+  list-style: none;
+  padding: 0;
+}
+.field-schedule .field-work-orders .wo-list > li {
+  min-width: 0;
+  padding: 20px;
+  background: white;
+  border: 1px solid #d6ddd5;
+  border-radius: 12px;
+  overflow-wrap: anywhere;
+}
+.field-schedule .field-work-orders .wo-list p,
+.field-schedule .field-work-orders .wo-day > p {
+  font-size: 13px;
+}
+.field-schedule .field-work-orders .wo-list button {
+  margin-top: 8px;
+}
+.field-schedule .field-work-orders .wo-empty,
+.field-schedule .field-work-orders .wo-state {
+  border: 1px dashed #aab7b1;
+  border-radius: 9px;
+  padding: 18px;
+  background: #fff;
+  font-size: 13px;
+}
+.field-schedule .field-work-orders .wo-detail,
+.field-schedule .field-work-orders .wo-review,
+.field-schedule .field-work-orders .wo-result {
+  min-width: 0;
+  margin-top: 28px;
+  padding: 24px;
+  border: 2px solid var(--field-brand);
+  background: #fff;
+  border-radius: 12px;
+  overflow-wrap: anywhere;
+}
+.field-schedule .field-work-orders .wo-scope {
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+.field-schedule .field-work-orders .wo-scope li {
+  background: #f1f4ee;
+  padding: 14px;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.field-schedule .field-work-orders .wo-scope span {
+  display: block;
+  margin-top: 5px;
+}
+.field-schedule .field-work-orders .wo-assignment {
+  border-top: 1px solid #d6ddd5;
+  margin-top: 24px;
+  padding-top: 16px;
+}
+.field-schedule .field-work-orders .wo-assignment label {
+  max-width: 380px;
+  margin-bottom: 14px;
+}
+.field-schedule .field-work-orders .wo-check {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.field-schedule .field-work-orders .wo-check input {
+  width: 22px;
+  height: 22px;
+  min-height: 22px;
+  flex-shrink: 0;
+}
+.field-schedule .field-work-orders .wo-development {
+  padding: 16px;
+  margin-top: 24px;
+  border: 1px dashed #aab7b1;
+  border-radius: 9px;
+  font-size: 13px;
+}
+.field-schedule .field-work-orders .wo-development summary {
+  min-height: 32px;
+  cursor: pointer;
+  font-weight: 600;
+}
+@media (max-width: 760px) {
+  .field-schedule .field-work-orders .wo-heading {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .field-schedule .field-work-orders .wo-heading label {
+    min-width: 0;
+  }
+  .field-schedule .field-work-orders .wo-controls,
+  .field-schedule .field-work-orders .wo-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .field-schedule .field-work-orders .wo-controls {
+    padding: 16px;
+  }
+  .field-schedule .field-work-orders .wo-detail,
+  .field-schedule .field-work-orders .wo-review,
+  .field-schedule .field-work-orders .wo-result {
+    padding: 18px;
+  }
+  .field-schedule .field-work-orders button {
+    width: 100%;
+  }
+  .field-schedule .field-work-orders .wo-heading h3 {
+    margin: 0;
+  }
+}
