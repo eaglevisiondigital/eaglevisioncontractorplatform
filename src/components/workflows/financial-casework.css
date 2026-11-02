@@ -1,0 +1,192 @@
+.financial-casework {
+  min-width: 0;
+  padding: 24px;
+  color: #20352f;
+  background: #f5f5ef;
+  border: 1px solid #d9e1da;
+  border-radius: 16px;
+}
+.financial-casework * {
+  box-sizing: border-box;
+}
+.financial-casework :is(h2, h3, h4, p, li, dd, dt, button, label) {
+  overflow-wrap: anywhere;
+}
+.financial-casework h2 {
+  font-size: 1.65rem;
+  margin: 4px 0 12px;
+}
+.financial-casework h3 {
+  margin-top: 0;
+}
+.financial-casework h4 {
+  margin-bottom: 8px;
+}
+.financial-casework .casework-intro {
+  position: static;
+  display: block;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+}
+.financial-casework .casework-eyebrow {
+  color: #3e594f;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.financial-casework .casework-muted {
+  color: #3e594f;
+  font-size: 0.9rem;
+}
+.financial-casework label {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+}
+.financial-casework :is(input:not([type='checkbox']), select) {
+  min-height: 44px;
+  min-width: 0;
+  width: 100%;
+  color: #20352f;
+  background: white;
+}
+.financial-casework button {
+  min-height: 44px;
+  max-width: 100%;
+  padding: 10px 14px;
+  color: white;
+  background: var(--journey-primary, #247364);
+  white-space: normal;
+}
+.financial-casework button:disabled {
+  color: #3e594f;
+  background: #d9e1da;
+}
+.financial-casework :focus-visible {
+  outline: 3px solid var(--journey-primary, #247364);
+  outline-offset: 4px;
+}
+.financial-casework .casework-confirm {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-height: 44px;
+  margin: 16px 0;
+}
+.financial-casework .casework-confirm input {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+.financial-casework .casework-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 12px 0;
+}
+.financial-casework .casework-filters {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+  margin: 24px 0 12px;
+}
+.financial-casework .casework-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.65fr) minmax(0, 1.35fr);
+  gap: 20px;
+  align-items: start;
+}
+.financial-casework .casework-card {
+  min-width: 0;
+  padding: 20px;
+  background: white;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+}
+.financial-casework .casework-queue {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.financial-casework .casework-queue > li {
+  border-top: 1px solid #d9e1da;
+  padding: 16px 0;
+}
+.financial-casework .casework-queue h4 {
+  margin-top: 0;
+}
+.financial-casework .casework-status {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 8px;
+  color: #25483b;
+  background: #e5eee6;
+  font-weight: 700;
+}
+.financial-casework .casework-identity {
+  font-size: 0.85rem;
+  color: #3e594f;
+}
+.financial-casework dl {
+  display: grid;
+  gap: 5px;
+}
+.financial-casework dt {
+  font-weight: 700;
+  color: #3e594f;
+}
+.financial-casework dd {
+  margin: 0 0 10px;
+}
+.financial-casework .casework-invoice {
+  padding-top: 12px;
+  border-top: 1px solid #d9e1da;
+}
+.financial-casework .casework-scroll {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+}
+.financial-casework table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.financial-casework :is(th, td) {
+  padding: 10px;
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+  min-width: 120px;
+  border-bottom: 1px solid #d9e1da;
+}
+.financial-casework caption {
+  text-align: left;
+  font-weight: 700;
+  padding: 12px 0;
+}
+.financial-casework .casework-original {
+  min-width: 0;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 2px solid var(--journey-accent, #b4cabb);
+}
+@media (max-width: 760px) {
+  .financial-casework {
+    padding: 16px;
+  }
+  .financial-casework .casework-layout,
+  .financial-casework .casework-filters {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .financial-casework .casework-card {
+    padding: 16px;
+  }
+  .financial-casework .casework-actions > button {
+    width: 100%;
+  }
+}
