@@ -10,6 +10,8 @@ import {
 } from '../domain/customer/review';
 import type { EstimateVersion } from '../domain/estimating/types';
 import { customerPreview } from '../domain/estimating/customer-preview';
+import type { PrototypeTarget } from './program/prototype-source';
+import { prototypeFields } from './program/prototype-source';
 import { projectPublishedHistory } from '../domain/property/report-page';
 import { buildPropertyAttention } from '../domain/property/attention';
 import {
@@ -44,6 +46,7 @@ export class CustomerPortalPreviewModel {
   private customerId = '';
   private primaryLocation = '';
   private locationId = '';
+  private journeyTarget: PrototypeTarget | null = null;
   readonly repo: PropertyRepository;
   constructor(
     readonly company: CompanyProfile,
@@ -80,6 +83,36 @@ export class CustomerPortalPreviewModel {
     this.active = false;
     this.locationId = '';
   }
+  /** Owner-confirmed same-repository local rendering only; never login or connected admission. */
+  admitLocalJourney(
+    target: PrototypeTarget,
+    gate: { enabled?: boolean; confirmed?: boolean },
+  ) {
+    const g = prototypeFields(gate, ['enabled', 'confirmed']);
+    if (g.enabled !== true || g.confirmed !== true || this.active)
+      throw Error('Explicit new synthetic journey rendering required');
+    const source = this.repo.estimates.readSyntheticPrototypeSources(target);
+    if (
+      target.organization_id !== this.company.id ||
+      source.bundle.version.status !== 'issued' ||
+      !this.repo
+        .read(this.company.id)
+        .contexts.some(
+          (c) =>
+            c.customer_id === target.customer_id &&
+            c.location_id === target.location_id &&
+            c.job_id === target.job_id,
+        )
+    )
+      throw Error('Exact issued journey property required');
+    this.journeyTarget = structuredClone(target);
+    this.versions = [structuredClone(source.bundle.version)];
+    this.customerId = target.customer_id;
+    this.primaryLocation = target.location_id;
+    this.locationId = target.location_id;
+    this.active = true;
+    this.epoch++;
+  }
   properties() {
     if (!this.active) throw Error('Customer session unavailable');
     const seen = new Set<string>();
@@ -101,6 +134,17 @@ export class CustomerPortalPreviewModel {
   }
   private context(): CustomerContext {
     if (!this.active) throw Error('Customer session unavailable');
+    if (this.journeyTarget) {
+      const source = this.repo.estimates.readSyntheticPrototypeSources(
+        this.journeyTarget,
+      );
+      if (
+        this.locationId !== this.journeyTarget.location_id ||
+        JSON.stringify(source.bundle.version) !==
+          JSON.stringify(this.versions[0])
+      )
+        throw Error('Local journey source changed');
+    }
     const s = this.repo.read(this.company.id),
       c = s.contexts.find(
         (x) =>

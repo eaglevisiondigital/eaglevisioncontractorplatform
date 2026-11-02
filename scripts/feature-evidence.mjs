@@ -325,6 +325,43 @@ export function sourceOwner(path) {
     )
   )
     return 'A8';
+  // Cohesive local workflow ownership precedes broad customer/operations keywords.
+  // These review lanes classify source; they confer no runtime authority.
+  if (
+    /ContractorJourneyPreview|cycle6-independent-review|cycle6-operations-independent-review|check-cycle6-integrity|program-cycle6-journey/.test(
+      path,
+    )
+  )
+    return 'A8';
+  if (/journey-runtime/.test(path)) return 'A1';
+  if (
+    /sales-workflow|SalesWorkflow|sales-contract-preparation|SalesContractPreparation/.test(
+      path,
+    )
+  )
+    return 'A2';
+  if (
+    /field-workflow|FieldWorkflow|operations-workflow|operations-experiments|field-day-board|TechnicianDayBoard/.test(
+      path,
+    )
+  )
+    return 'A3';
+  if (
+    /finance-workflow|FinanceWorkflow|job-cost-completion|profit-guard/.test(
+      path,
+    )
+  )
+    return 'A4';
+  if (/customer-workflow|CustomerWorkflow|proof-of-work|ProofOfWork/.test(path))
+    return 'A5';
+  if (
+    /growth-workflow|GrowthWorkflow|growth-opportunity|maintenance-renewal|intelligence-workflow|IntelligenceWorkflow|business-copilot|voice-estimate|trade-editions|storm-network-review/.test(
+      path,
+    )
+  )
+    return 'A6';
+  if (/procurement-review|controlled-integration-contracts/.test(path))
+    return 'A7';
   if (
     /^src\/domain\/estimating\/|^src\/components\/(Customers|CompanyOperations)\.tsx$|^server\/(contracts|communications)\/|^tests\/sales-contract|signatur/.test(
       path,

@@ -203,3 +203,29 @@ physical completion, license/vetting and historical coverage gaps remain explici
 Async consent/workforce observations are CAPTURED_NOT_ATOMIC/currentnessUNKNOWN;
 immutable hashes and session bindings do not establish durable custody or genuine Auth.
 All financial/dispatch/contract/message/provider/hosted/recovery/production gates persist.
+
+## Cycle-six explicit local integration
+
+The owner now authorizes a cohesive local source candidate in draft PR38. Original
+PRs remain draft/unmerged; this supersedes earlier isolated-source holds for this
+new local candidate only. See [exact workflow contract](CYCLE6_SHARED_WORKFLOWS.md)
+and [delivery index](CYCLE6_DELIVERY_INDEX.json). One confirmed loopback-only runtime
+reuses the same Operations, Phase3Repository, PropertyRepository and ReleasePreview.
+The customer documentation model receives a narrow exact issued-job admission and
+allowlisted published-report projection; no customer login, mapping or lease exists.
+
+Every handoff binds company/current reviewer/customer/location/estimate/issued version/
+job plus its actual intake, offer/receipt, plan/visit/report/published version. Lead
+selection is explicitly staff-selected because estimates have no recorded lead FK.
+Reports join jobs only through recorded visit→plan→job relationships. Read wrappers
+re-admit original caller selections after final awaits; copied/pinned identities do
+not hide a later property/report change. UNKNOWN never selects a replacement.
+
+Preparation is separately confirmed. Contract review is not signing. Date-only visits
+and assignment rows are not timed capacity or dispatch. Internal commitment review
+is not payment or a purchase order. Invoice requirements show canonical scope/totals
+and missing legal/contract/cost gates without calling the ledger-writing invoice
+command. Passport documentation is not physical completion, acceptance or warranty.
+Captured consent is not atomic message authority; no recipient is resolved. Copilot
+and literal Voice/Trade suggestions reuse existing engines with one session attempt,
+exact immutable source checks and no autonomous command/model/provider execution.

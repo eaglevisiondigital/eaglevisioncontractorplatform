@@ -1,0 +1,234 @@
+.proof-pack {
+  --proof-color: #247364;
+  color: #203530;
+  background: #f5f6f2;
+  font-family: Inter, system-ui, sans-serif;
+  line-height: 1.55;
+  min-height: 100vh;
+  padding: clamp(20px, 4vw, 56px);
+  overflow-wrap: anywhere;
+}
+.proof-pack *,
+.proof-pack *::before,
+.proof-pack *::after {
+  box-sizing: border-box;
+}
+.proof-pack > * {
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.proof-pack h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: -0.045em;
+  margin: 4px 0 12px;
+}
+.proof-pack h2 {
+  font-size: 1.45rem;
+  letter-spacing: -0.02em;
+}
+.proof-pack h3 {
+  font-size: 1.12rem;
+}
+.proof-pack h4,
+.proof-pack h5 {
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+.proof-pack p {
+  max-width: 80ch;
+}
+.proof-pack__header {
+  padding-bottom: 24px;
+  border-bottom: 1px solid #dde4dd;
+}
+.proof-pack__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #586b64;
+}
+.proof-pack__badge {
+  display: inline-block;
+  border: 1px solid #cedad2;
+  border-radius: 99px;
+  padding: 5px 11px;
+  font-size: 0.78rem;
+  background: #eef3ee;
+  color: #304d40;
+}
+.proof-pack__overview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 0;
+}
+.proof-pack button {
+  background: var(--proof-color);
+  color: white;
+  border: 0;
+  min-height: 46px;
+  border-radius: 9px;
+  padding: 11px 18px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.proof-pack button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.proof-pack :is(button, input, summary):focus-visible {
+  outline: 3px solid var(--proof-color);
+  outline-offset: 4px;
+}
+.proof-pack__notice,
+.proof-pack__media {
+  background: #edf1e8;
+  border-left: 4px solid var(--proof-color);
+  padding: 16px 20px;
+  border-radius: 6px;
+}
+.proof-pack__selection {
+  margin-top: 32px;
+}
+.proof-pack__cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.proof-pack__card,
+.proof-pack__packet,
+.proof-pack__source {
+  background: #fff;
+  border: 1px solid #dde4dd;
+  border-radius: 16px;
+  padding: 24px;
+  min-width: 0;
+}
+.proof-pack__check {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  min-height: 46px;
+  padding: 6px 0;
+}
+.proof-pack__check input {
+  accent-color: var(--proof-color);
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+.proof-pack__check strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 1.1rem;
+}
+.proof-pack__actions {
+  padding: 20px 0 28px;
+}
+.proof-pack__packet,
+.proof-pack__source {
+  margin-top: 28px;
+}
+.proof-pack__packet header button {
+  display: block;
+  margin-top: 18px;
+}
+.proof-pack__evidence {
+  padding: 24px 0;
+  border-bottom: 1px solid #dde4dd;
+}
+.proof-pack__digest {
+  font-size: 0.8rem;
+  color: #586b64;
+  word-break: break-all;
+}
+.proof-pack summary {
+  cursor: pointer;
+  padding: 18px 0;
+  min-height: 46px;
+}
+.proof-pack footer {
+  padding-top: 32px;
+  color: #586b64;
+}
+.proof-pack footer .platform-brand {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+.proof-pack footer .platform-brand img {
+  max-width: 180px;
+}
+.proof-pack__empty {
+  border: 1px dashed #bccbc1;
+  border-radius: 12px;
+  padding: 20px;
+}
+@media (max-width: 700px) {
+  .proof-pack__overview {
+    display: block;
+  }
+  .proof-pack__cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .proof-pack__card,
+  .proof-pack__packet,
+  .proof-pack__source {
+    padding: 18px;
+  }
+  .proof-pack__overview button,
+  .proof-pack__actions button,
+  .proof-pack__packet header button {
+    width: 100%;
+  }
+}
+/* Neutralize inherited workspace header geometry only inside this preview. */
+.proof-pack .proof-pack__header,
+.proof-pack .proof-pack__packet > header {
+  display: block;
+  position: static;
+  height: auto;
+  padding: 8px 0 24px;
+  color: inherit;
+  background: transparent;
+  font-size: 1rem;
+}
+.proof-harness {
+  display: block;
+  width: auto;
+  max-width: 1140px;
+  margin: 16px auto;
+  padding: 16px;
+  border: 1px solid #dde4dd;
+  border-radius: 10px;
+  background: #edf1e8;
+}
+.proof-harness-controls label {
+  display: inline-grid;
+  gap: 8px;
+  margin: 12px;
+}
+.proof-harness-controls button {
+  margin: 8px;
+  min-height: 46px;
+}
+.proof-harness-controls select {
+  max-width: 100%;
+}
+@media (max-width: 700px) {
+  .proof-harness-controls label {
+    display: grid;
+    margin: 12px 0;
+  }
+  .proof-harness-controls button {
+    display: block;
+    max-width: 100%;
+    margin: 10px 0;
+  }
+}

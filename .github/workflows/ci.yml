@@ -11,7 +11,9 @@ concurrency:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    # The full application + responsive browser suite exceeds the original
+    # scaffold budget. Keep every check and assertion; retain a finite timeout.
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

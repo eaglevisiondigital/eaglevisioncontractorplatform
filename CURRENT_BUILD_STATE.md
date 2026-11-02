@@ -1,5 +1,31 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: cycle six · connected local contractor journey · November 2
+
+Owner authorized explicit local integration of the reviewed Cycle5 sources (14 local
+packages/coordination27; prior pending checks confirmed green at exact heads). Main
+uses codex/program-cycle-six from de38d803, draftPR38; separate author drafts39–44
+retain Sales/Field/Finance/Customer/Growth/Intelligence ownership and unmerged parents.
+One explicit default-OFF loopback journey composes actual intake, issued scope,
+LOCAL-TEST receipt, contract preparation, job/crew/visit/report, canonical cost and
+invoice requirements, safe Passport pack, maintenance proposal and source-linked
+Copilot/Voice/Trade review. No duplicate business store or estimating engine.
+
+315 focused application cases (273workflow +42inventory),17 independent review cases within that count,
+15 complete responsive journey/browser cases and3 production-OFF cases PASS. Types,
+lint, build, feature/migration/type integrity and128protected/5locks/13bindings pass.
+Exact source hashes/branches/PRs and CI snapshots are in the
+[delivery register](docs/PROGRAM_DELIVERY_STATUS.md) and
+[Cycle6 validation](docs/program/CYCLE6_VALIDATION.md). Three reproduced selector/caller
+bugs are closed without weakened validation. Independent core review is CLEAR for
+bounded local integration only; secondary Operations is separately reviewed and remains unmounted.
+
+No genuine approval, signing, dispatch, physical completion, invoice/debt/payment,
+recipient/send, Auth or operational custody is claimed. Missing coverage and atomic
+consent stay UNKNOWN. All13/customer14/original4B/P1/four/approvals/2A–2F/proposedbilling,
+lockedUIs/artwork/Netlify/executor/recovery/NMI/MFA/Auth/provider/hosted/deploy/merge gates
+remain intact. Release1.0 remains NOT READY / NOT AUTHORIZED.
+
 ## Latest: cycle four · independent local extensions · November 1
 
 Owner authorized crew-day capacity/conflicts, stronger issued-scope references,

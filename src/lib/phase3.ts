@@ -101,6 +101,7 @@ interface SampleState {
   templates: EstimateTemplate[];
   taxes: TaxPolicy[];
   jobs: Job[];
+  jobAssignments: Database['public']['Tables']['job_assignments']['Row'][];
   workforce: WorkforceData;
   counter: number;
   adjustments: Record<string, Json>[];
@@ -778,6 +779,7 @@ export class Phase3Repository {
       ],
       taxes: [],
       jobs: [],
+      jobAssignments: [],
       workforce: {
         workers,
         rates,
@@ -981,6 +983,7 @@ export class Phase3Repository {
         p_payload: payload,
         p_key: key,
       });
+    payload = clone(payload);
     const s = this.state(company.id);
     const calc = calculateEstimate(
       payload,
@@ -989,10 +992,16 @@ export class Phase3Repository {
     if (payload.lines.some((l) => l.import_approval_id))
       throw new Error('Create a draft before importing');
     const settings = await this.operations.getSettings(company.id);
-    const customer = (
-      await this.operations.listCustomers(company.id, '', '', 0)
-    ).rows.find((c) => c.id === payload.customer_id);
-    if (!customer) throw new Error('Customer unavailable');
+    await this.operations.estimateCrm(
+      company.id,
+      payload.customer_id,
+      payload.location_id,
+    );
+    const { customer, location } = this.operations.syntheticEstimateCrm(
+      company.id,
+      payload.customer_id,
+      payload.location_id,
+    );
     const id = crypto.randomUUID(),
       vid = crypto.randomUUID();
     const bundle: EstimateBundle = {
@@ -1034,7 +1043,16 @@ export class Phase3Repository {
           email: customer.email,
           phone: customer.phone,
         },
-        location_snapshot: null,
+        location_snapshot: location
+          ? {
+              id: location.id,
+              address_line1: location.address_line1,
+              city: location.city,
+              region: location.region,
+              postal_code: location.postal_code,
+              country_code: location.country_code,
+            }
+          : null,
         tax_policy_snapshot: clone(
           s.taxes.find((t) => t.id === payload.tax_policy_id) ?? null,
         ),
@@ -1063,6 +1081,8 @@ export class Phase3Repository {
         p_lock: b.version.lock_revision,
         p_payload: payload,
       });
+    b = clone(b);
+    payload = clone(payload);
     const s = this.state(org),
       current = s.estimates.find((x) => x.estimate.id === b.estimate.id);
     if (
@@ -1123,6 +1143,30 @@ export class Phase3Repository {
       )
         throw new Error('Imported pricing changed; review again');
     }
+    await this.operations.estimateCrm(
+      org,
+      payload.customer_id,
+      payload.location_id,
+    );
+    const { customer, location } = this.operations.syntheticEstimateCrm(
+      org,
+      payload.customer_id,
+      payload.location_id,
+    );
+    const fresh = s.estimates.find((x) => x.estimate.id === b.estimate.id);
+    // CRM reads may wait; keep the original draft CAS and source authority current.
+    if (
+      !fresh ||
+      fresh !== current ||
+      fresh.version.id !== b.version.id ||
+      fresh.version.lock_revision !== b.version.lock_revision ||
+      fresh.version.status !== 'draft' ||
+      fresh.estimate.status === 'archived'
+    )
+      throw new Error('Draft changed or immutable; reload');
+    if (change) this.requireSyntheticEstimator(org, change.origin.reviewed_by);
+    change?.authorize();
+    repair?.authorize();
     const calc = calculateEstimate(
       payload,
       s.taxes.find((t) => t.id === payload.tax_policy_id)?.rate_bps ?? 0,
@@ -1130,6 +1174,22 @@ export class Phase3Repository {
     current.version = {
       ...current.version,
       payload: clone(payload),
+      customer_snapshot: {
+        id: customer.id,
+        display_name: customer.display_name,
+        email: customer.email,
+        phone: customer.phone,
+      },
+      location_snapshot: location
+        ? {
+            id: location.id,
+            address_line1: location.address_line1,
+            city: location.city,
+            region: location.region,
+            postal_code: location.postal_code,
+            country_code: location.country_code,
+          }
+        : null,
       calculation: calc,
       lock_revision: current.version.lock_revision + 1,
       tax_policy_snapshot: clone(
@@ -1138,6 +1198,7 @@ export class Phase3Repository {
     };
     current.estimate = {
       ...current.estimate,
+      customer_id: customer.id,
       total_minor: calc.total_minor,
       project_name: payload.project.name,
       updated_at: now(),
@@ -2175,19 +2236,116 @@ export class Phase3Repository {
     }
     return clone(result);
   }
-  async assignJob(org: string, jobId: string, userId: string, active: boolean) {
-    if (!this.sample)
+  async assignJob(
+    org: string,
+    jobId: string,
+    userId: string,
+    active: boolean,
+    synthetic?: {
+      reviewer: string;
+      job_revision: number;
+      issued_version_id: string;
+      expected_active: boolean | null;
+      assertCurrent: () => void;
+    },
+  ) {
+    if (!this.sample) {
+      if (synthetic)
+        throw Error('Synthetic assignment cannot use connected RPC');
       return rpc('assign_job', {
         p_org: org,
         p_job: jobId,
         p_user: userId,
         p_active: active,
       });
-    const member = (await this.operations.listMembers(org)).find(
-      (m) => m.user_id === userId && m.active,
+    }
+    await this.operations.listMembers(org);
+    // Re-read current synthetic identities after the await, before the sole write.
+    const members = this.operations.syntheticMemberships(org);
+    const state = this.state(org);
+    const eligible = (user: string) =>
+      members.find(
+        (m) =>
+          m.user_id === user &&
+          m.active &&
+          (['owner', 'admin'].includes(m.role) ||
+            (m.role === 'staff' &&
+              ['office_manager', 'field_staff'].includes(m.staff_type))),
+      );
+    const reviewer = eligible(synthetic?.reviewer ?? org + '-owner');
+    const job = state.jobs.find(
+      (j) => j.id === jobId && j.organization_id === org,
     );
-    if (!member || !this.state(org).jobs.some((j) => j.id === jobId))
-      throw new Error('Active member and job required');
+    if (
+      typeof active !== 'boolean' ||
+      !reviewer ||
+      (reviewer.role === 'staff' && reviewer.staff_type !== 'office_manager') ||
+      !members.some((m) => m.user_id === userId && m.active) ||
+      !job
+    )
+      throw Error(
+        'Current reviewer, active member and exact tenant job required',
+      );
+    const existing = state.jobAssignments.find(
+      (a) => a.job_id === jobId && a.user_id === userId,
+    );
+    if (synthetic) {
+      if (
+        !eligible(userId) ||
+        !state.workforce.workers.some(
+          (w) => w.organization_id === org && w.user_id === userId && w.active,
+        )
+      )
+        throw Error('Current eligible active sample worker required');
+      if (
+        job.lock_revision !== synthetic.job_revision ||
+        job.baseline.issued_version_id !== synthetic.issued_version_id ||
+        (existing?.active ?? null) !== synthetic.expected_active ||
+        !state.history.some(
+          (v) =>
+            v.id === synthetic.issued_version_id &&
+            v.organization_id === org &&
+            v.status === 'issued',
+        )
+      )
+        throw Error('Exact reviewed job or assignment changed');
+      synthetic.assertCurrent();
+    }
+    if (existing) existing.active = active;
+    else
+      state.jobAssignments.push({
+        organization_id: org,
+        job_id: jobId,
+        user_id: userId,
+        active,
+      });
+  }
+  /** Local sample relationships only. Never invokes a connected reader. */
+  syntheticJobAssignments(org: string, actor: string) {
+    const state = this.state(org);
+    const member = this.operations
+      .syntheticMemberships(org)
+      .find((m) => m.user_id === actor && m.active);
+    const manager =
+      member &&
+      (['owner', 'admin'].includes(member.role) ||
+        (member.role === 'staff' && member.staff_type === 'office_manager'));
+    if (
+      !member ||
+      (!manager &&
+        !(member.role === 'staff' && member.staff_type === 'field_staff'))
+    )
+      throw Error('Current eligible synthetic crew member required');
+    if (
+      !manager &&
+      !state.workforce.workers.some(
+        (w) => w.organization_id === org && w.user_id === actor && w.active,
+      )
+    )
+      throw Error('Current active synthetic worker required');
+    return clone(
+      state.jobAssignments.filter((a) => manager || a.user_id === actor),
+    );
   }
   async assignSupervisor(
     org: string,

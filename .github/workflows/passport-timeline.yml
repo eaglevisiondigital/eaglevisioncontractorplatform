@@ -1,0 +1,31 @@
+name: Passport timeline preview
+on:
+  push:
+    branches: ['codex/**']
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: passport-timeline-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  local-preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test --config tests/program/playwright.passport-timeline.config.ts
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: passport-timeline-synthetic-previews
+          path: |
+            artifacts/property/passport-timeline-*.png
+            test-results/
+          retention-days: 7

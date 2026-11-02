@@ -1,0 +1,50 @@
+name: Isolated field work orders
+on:
+  push:
+    branches: ['codex/**']
+    paths:
+      - 'src/**'
+      - 'tests/field-work-orders.test.ts'
+      - 'tests/program/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'vite.config.ts'
+      - 'tsconfig.json'
+      - '.github/workflows/field-work-orders.yml'
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'tests/field-work-orders.test.ts'
+      - 'tests/program/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'vite.config.ts'
+      - 'tsconfig.json'
+      - '.github/workflows/field-work-orders.yml'
+permissions:
+  contents: read
+concurrency:
+  group: field-work-orders-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test -c tests/program/playwright.field-work-orders.config.ts --workers=2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: field-work-orders-synthetic-previews
+          path: |
+            artifacts/property/field-work-orders-*.png
+            test-results/field-work-orders/
+          retention-days: 7

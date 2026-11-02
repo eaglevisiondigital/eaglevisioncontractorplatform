@@ -9,6 +9,18 @@ import { validateIntake, type IntakePayload } from '../domain/intake';
 export type Row<T extends keyof Database['public']['Tables']> =
   Database['public']['Tables'][T]['Row'];
 export type Customer = Row<'customers'>;
+export type ServiceLocation = Row<'service_locations'>;
+export const crmPageSize = 10;
+function validateCrmPage(query: string, page: number) {
+  if (
+    typeof query !== 'string' ||
+    query.length > 100 ||
+    !Number.isSafeInteger(page) ||
+    page < 0 ||
+    page > 100000
+  )
+    throw Error('Invalid CRM search or page');
+}
 export type CustomerDraft = Pick<
   Customer,
   'display_name' | 'email' | 'phone' | 'customer_type' | 'preferred_contact'
@@ -255,6 +267,7 @@ export class Operations {
     kind = '',
     page = 0,
   ): Promise<Page<Customer>> {
+    validateCrmPage(q, page);
     if (this.sample) {
       const all = this.customers.filter(
         (c) =>
@@ -282,6 +295,147 @@ export class Operations {
       .order('id')
       .range(page * 10, page * 10 + 9);
     return { rows: checked(result), count: result.count ?? 0 };
+  }
+  private requireSyntheticCrm(org: string) {
+    const company = this.companies.find((c) => c.id === org);
+    if (
+      !company ||
+      (company.status && company.status !== 'active') ||
+      !this.modules.some(
+        (m) => m.organization_id === org && m.module === 'crm' && m.enabled,
+      )
+    )
+      throw Error('CRM customer/property unavailable');
+  }
+  /** Exact RLS-scoped read; never searches only the first customer page. */
+  async getCustomer(org: string, id: string): Promise<Customer> {
+    if (this.sample) this.requireSyntheticCrm(org);
+    const row = this.sample
+      ? this.customers.find((c) => c.organization_id === org && c.id === id)
+      : checked(
+          await requireClient()
+            .from('customers')
+            .select('*')
+            .eq('organization_id', org)
+            .eq('id', id)
+            .maybeSingle(),
+        );
+    if (!row || row.organization_id !== org || row.id !== id)
+      throw Error('Customer unavailable');
+    return structuredClone(row);
+  }
+  /** Exact property identity always includes its customer and contractor. */
+  async getLocation(
+    org: string,
+    customer: string,
+    id: string,
+  ): Promise<ServiceLocation> {
+    await this.getCustomer(org, customer);
+    if (this.sample) this.requireSyntheticCrm(org);
+    const row = this.sample
+      ? this.locations.find(
+          (l) =>
+            l.organization_id === org &&
+            l.customer_id === customer &&
+            l.id === id,
+        )
+      : checked(
+          await requireClient()
+            .from('service_locations')
+            .select('*')
+            .eq('organization_id', org)
+            .eq('customer_id', customer)
+            .eq('id', id)
+            .maybeSingle(),
+        );
+    if (
+      !row ||
+      row.organization_id !== org ||
+      row.customer_id !== customer ||
+      row.id !== id
+    )
+      throw Error('Job location unavailable');
+    return structuredClone(row);
+  }
+  async listLocationPage(
+    org: string,
+    customer: string,
+    q = '',
+    page = 0,
+  ): Promise<Page<ServiceLocation>> {
+    validateCrmPage(q, page);
+    await this.getCustomer(org, customer);
+    if (this.sample) {
+      this.requireSyntheticCrm(org);
+      const all = this.locations.filter(
+        (l) =>
+          l.organization_id === org &&
+          l.customer_id === customer &&
+          match(
+            `${l.address_line1} ${l.address_line2 ?? ''} ${l.city} ${l.region} ${l.postal_code}`,
+            q,
+          ),
+      );
+      return {
+        rows: structuredClone(
+          all.slice(page * crmPageSize, (page + 1) * crmPageSize),
+        ),
+        count: all.length,
+      };
+    }
+    let query = requireClient()
+      .from('service_locations')
+      .select('*', { count: 'exact' })
+      .eq('organization_id', org)
+      .eq('customer_id', customer);
+    const search = q.replace(/[^\p{L}\p{N} @+_-]/gu, '').slice(0, 100);
+    if (search)
+      query = query.or(
+        `address_line1.ilike.%${search}%,address_line2.ilike.%${search}%,city.ilike.%${search}%,region.ilike.%${search}%,postal_code.ilike.%${search}%`,
+      );
+    const result = await query
+      .order('created_at', { ascending: false })
+      .order('id')
+      .range(page * crmPageSize, (page + 1) * crmPageSize - 1);
+    return { rows: checked(result), count: result.count ?? 0 };
+  }
+  /** Synchronous final check for the explicit in-memory repository, not real Auth. */
+  syntheticEstimateCrm(
+    org: string,
+    customerId: string,
+    locationId: string | null,
+  ) {
+    if (!this.sample) throw Error('Synthetic CRM context unavailable');
+    this.requireSyntheticCrm(org);
+    const customer = this.customers.find(
+      (c) => c.organization_id === org && c.id === customerId,
+    );
+    const location =
+      locationId === null
+        ? null
+        : this.locations.find(
+            (l) =>
+              l.organization_id === org &&
+              l.customer_id === customerId &&
+              l.id === locationId,
+          );
+    if (!customer || (locationId !== null && !location))
+      throw Error('CRM customer/property unavailable');
+    return structuredClone({ customer, location: location ?? null });
+  }
+  async estimateCrm(
+    org: string,
+    customerId: string,
+    locationId: string | null,
+  ) {
+    const customer = await this.getCustomer(org, customerId);
+    const location =
+      locationId === null
+        ? null
+        : await this.getLocation(org, customerId, locationId);
+    return this.sample
+      ? this.syntheticEstimateCrm(org, customerId, locationId)
+      : { customer, location };
   }
   async saveCustomer(org: string, draft: CustomerDraft, id?: string) {
     if (!draft.display_name.trim() || draft.display_name.length > 200)
@@ -599,6 +753,24 @@ export class Operations {
       )
     )
       throw Error('CRM customer/property unavailable');
+  }
+  /** Exact synchronous local lead checkpoint; never a connected reader or origin claim. */
+  syntheticIntakeRequest(
+    org: string,
+    customer: string,
+    location: string,
+    request: string,
+  ) {
+    this.syntheticProperty(org, customer, location);
+    const matches = this.requests.filter(
+      (r) =>
+        r.organization_id === org &&
+        r.customer_id === customer &&
+        r.service_location_id === location &&
+        r.id === request,
+    );
+    if (matches.length !== 1) throw Error('Exact synthetic lead unavailable');
+    return structuredClone(matches[0]);
   }
   /** Current in-memory relationships only; never queries connected membership data. */
   syntheticMemberships(org: string) {

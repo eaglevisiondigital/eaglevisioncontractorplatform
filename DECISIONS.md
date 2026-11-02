@@ -1,5 +1,28 @@
 # Engineering decisions
 
+## November 2 · compose one exact-source local contractor journey
+
+Owner authorizes local integration of reviewed sources on a new isolated coordinator,
+with separate draft author branches and no PR merge/promotion. Use the same existing
+Operations/Phase3/Property/ReleasePreview instances and exact CRM/source identities.
+Estimates have no lead FK: association must be explicitly staff-selected, never
+invented recorded provenance. Narrow synthetic customer-model admission binds current
+staff and issued job/property for safe rendering only; no Auth/mapping/lease activation.
+
+Contract preparation never signs. Separate engineering job/assignment/report fixtures
+never derive permission from customer preferences. Internal commitment review is not
+purchase/payment. Invoice preparation must use canonical allowlisted scope/totals and
+missing requirements without invoking the invoice command that also writes ledger rows.
+Published documentation does not prove repair; Growth captured consent is not atomic
+message authority. Copilot/literal Voice/Trade suggestions use existing review modules,
+permanent session UNKNOWN holds and exact retained inspection, with no autonomous action.
+
+Recheck original caller target/report selectors after final asynchronous work, as well
+as source snapshots and current membership. Keep strict two-field report selectors at
+UI callers. Cross-panel source navigation must preserve keyboard focus after rendering.
+All protected SQL/approval/P1/customer14/4B/Netlify/recovery/NMI/Auth/financial/provider/
+communication/deployment/merge restrictions remain separate and unchanged.
+
 ## November 1 · execute bounded cycle-four packages on verified green parents
 
 Owner explicitly authorized working local capacity/conflict review, immutable

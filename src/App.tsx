@@ -1,3 +1,5 @@
+import { fieldSchedulingPreviewEnabled } from './lib/field-scheduling';
+import { journeyEnabled } from './lib/workflows/journey-runtime';
 import { WorkspaceNavigation } from './components/WorkspaceNavigation';
 import {
   lazy,
@@ -26,6 +28,16 @@ import { CompanyLogo } from './components/CompanyLogo';
 import { PlatformBrand } from './components/PlatformBrand';
 import { productBrand } from './domain/brand';
 
+const FieldSchedulingPreview = lazy(() =>
+  import('./components/field/FieldSchedulingPreview').then((m) => ({
+    default: m.FieldSchedulingPreview,
+  })),
+);
+const ContractorJourneyPreview = lazy(() =>
+  import('./components/workflows/ContractorJourneyPreview').then((m) => ({
+    default: m.ContractorJourneyPreview,
+  })),
+);
 const Phase3Workspace = lazy(() =>
   import('./components/phase3/Phase3Workspace').then((m) => ({
     default: m.Phase3Workspace,
@@ -180,6 +192,49 @@ export function App() {
         : 'Signed in. If MFA is required, complete verification through your configured identity flow.',
     );
   }
+  if (path === '/preview/contractor-journey')
+    return journeyEnabled({
+      development: import.meta.env.DEV,
+      flag: import.meta.env.VITE_CONTRACTOR_JOURNEY_PREVIEW,
+      hostname: window.location.hostname,
+      protocol: window.location.protocol,
+    }) ? (
+      <Suspense
+        fallback={<main role="status">Loading local contractor journey…</main>}
+      >
+        <ContractorJourneyPreview />
+      </Suspense>
+    ) : (
+      <main className="landing">
+        <h1>Contractor journey preview is off</h1>
+        <p>Connected access and operational actions remain closed.</p>
+        <a href="/preview">Return to local back office</a>
+      </main>
+    );
+  if (path === '/preview/field-scheduling')
+    return fieldSchedulingPreviewEnabled({
+      development: import.meta.env.DEV,
+      flag: import.meta.env.VITE_FIELD_SCHEDULING_PREVIEW,
+      hostname: window.location.hostname,
+      protocol: window.location.protocol,
+    }) ? (
+      <Suspense
+        fallback={
+          <main role="status">Loading isolated inspection schedule…</main>
+        }
+      >
+        <FieldSchedulingPreview />
+      </Suspense>
+    ) : (
+      <main className="landing">
+        <h1>Field scheduling preview is disabled</h1>
+        <p>
+          This isolated development prototype is unavailable. Connected field
+          access and dispatch remain closed.
+        </p>
+        <a href="/preview">Return to local back office</a>
+      </main>
+    );
   if (path === '/preview/contractor-design')
     return (
       <Suspense fallback={<main>Loading isolated contractor concept…</main>}>

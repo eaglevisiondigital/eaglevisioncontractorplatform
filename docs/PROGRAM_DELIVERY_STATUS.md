@@ -1,5 +1,74 @@
 # Product program delivery status
 
+## Cycle six · cohesive local contractor workflows · November 2
+
+Main integrates explicitly reviewed source candidates on `codex/program-cycle-six`,
+draft PR38 against exact Cycle5 coordinator de38d803. Original drafts remain unmerged.
+[Exact source/owner/hash index](program/CYCLE6_DELIVERY_INDEX.json),
+[validation and preview instructions](program/CYCLE6_VALIDATION.md),
+[independent review](program/CYCLE6_INDEPENDENT_REVIEW.md) and
+[exact-head CI snapshot](program/CYCLE6_CI_SNAPSHOT.json) are authoritative for this cycle.
+Old cycle-specific isolated-source restrictions below are historical for those branches;
+the owner now explicitly authorizes this separate local integration candidate.
+
+| Package / actual agent                           | Branch                      | Draft PR                                                                          | Exact head                                 | New focused cases                      |
+| ------------------------------------------------ | --------------------------- | --------------------------------------------------------------------------------- | ------------------------------------------ | -------------------------------------- |
+| Sales · `/root/cycle6_sales`                     | `codex/cycle6-sales`        | [39](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/39) | `d2909a470713e808bc324a2e5d67b2a3967c94af` | 32 PASS                                |
+| Field · `/root/cycle5_operations`                | `codex/cycle6-field`        | [40](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/40) | `9e8ed2d7502a75fbcc4c36d9ec9dfff7d0042917` | 34 PASS +3 actual caller browser cases |
+| Finance · `/root/cycle5_profit_guard`            | `codex/cycle6-finance`      | [41](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/41) | `f115a428ffd41c285051bfc41e5278614217b02c` | 36 PASS                                |
+| Customer · `/root/cycle6_sales`                  | `codex/cycle6-customer`     | [42](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/42) | `c0f5276431cba959d4814497a6ae948b40eedd7d` | 29 PASS                                |
+| Growth · `/root/cycle5_operations`               | `codex/cycle6-growth`       | [43](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/43) | `2f63fce4b97bdcf9667f1f6acfbcf1f498d736c9` | 39 PASS                                |
+| Intelligence · `/root/cycle5_profit_guard`       | `codex/cycle6-intelligence` | [44](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/44) | `bc52dffaf8720c5124df6ff63663ccc91b715525` | 40 PASS                                |
+| Secondary Operations · `/root/cycle5_operations` | `codex/cycle6-operations`   | [45](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/45) | `43e5145759c8efa9e66426d251beab958d834113` | 42 PASS; unmounted                     |
+
+Three actual worker slots run concurrently in bounded waves; agents are reused, not
+reported as six simultaneous workers. Main `/root` owns source composition/runtime,
+App route, contracts/design/checker and registers. Independent reviewer
+`/root/cycle6_integration_review` owns17 additional combined cases and source review.
+Sales/Customer and Finance/Intelligence author turns are completed; Field/Growth are
+completed; its secondary Operations handoff is also completed and remains unmounted.
+The reviewer independently checked all seven source packages before final delivery.
+No persistent background execution is delegated.
+
+Actual simulated journey: intake lead → exact issued estimate/LOCAL-TEST preference →
+immutable contract-preparation review → separately confirmed existing-engine job/crew/
+date-only visit → exact published report → canonical cost/invoice requirements →
+customer-safe Passport/two-source pack → recurring maintenance planning proposal.
+All transitions preserve exact company/customer/property/job/source identity. Lead
+association is explicit staff selection, not an invented FK or genuine legal approval.
+Copilot reads the same sources and composes literal Voice/Trade/optional Procurement
+review; no model/provider/action engine. Finance's optional accounting handoff reuses
+exact existing invoice provenance without creating an invoice or executing an export.
+Growth's optional purpose review reuses existing reputation/receptionist eligibility,
+never a recipient or send operation. Secondary booking/offline/Storm/Network source
+composition remains unmounted and is not a dispatch or outside-access capability.
+
+Combined273 distinct workflow application cases across10 suites PASS, plus42
+source-ownership/inventory cases (315 total across11 suites), including17 independent
+cases. Fifteen full responsive browser cases PASS across3 brands and3 viewports,
+with keyboard/source navigation, actual immutable packets/proposals, axe zero violations,
+no page overflow or external request, and context/confirmation reset. Three additional
+production-build browser cases prove default-OFF. Types/full lint/build/generated types,
+feature evidence and migration integrity pass;128 frozen public hashes,5 CSS/artwork
+locks and13bindings remain exact. No unrelated completed recovery/Netlify baseline was
+manually repeated. Normal automatic CI remains enabled; successful runs are not restarted.
+At the recorded exact-head snapshot Sales39,Field40,Finance41,Growth43 and
+Intelligence44 have successful Foundation/compatibility and all other listed runs.
+Customer42 has successful exact-head push Foundation41448053694 and compatibility;
+its duplicate PR Foundation41448061158 was cancelled, not failed or silently called
+successful. No redundant rerun was needed. Operations45 Foundation remains pending;
+its other listed checks succeeded. Final coordinator CI belongs to its separately
+pushed exact head and is reported independently.
+
+Remaining operational gates: independent maintained-device recovery, original approved
+P1-on13 prerequisites, separately authorized customer14/exact4B+broker/Auth custody,
+NMI merchant/token/settlement/consent/legal/tax/provider acceptance, Netlify independent
+protection/exact execution authority and explicit release approval. Missing labor/final
+cost coverage and atomic consent/workforce evidence remain UNKNOWN. No contract,
+signature, dispatch, verified physical completion, invoice/debt/payment, message,
+hosted mutation, protected migration, deployment or merge. All approvals/frozen artifacts/
+2A–2F/proposed billing/locked interfaces remain intact. Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Cycle five · source-bound local buildout · November 2
 
 Five primary implementations and nine expansion prototypes are implemented and pushed
