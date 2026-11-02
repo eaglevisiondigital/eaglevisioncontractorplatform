@@ -5,7 +5,11 @@ import {
   type ContractPreparationCheck,
 } from '../../lib/sales-contract-preparation';
 import type { SalesDeskConfirmation } from '../../lib/workflows/sales-desk';
-import type { OperatingSources } from '../../lib/workflows/operating-center-runtime';
+import {
+  captureOperatingSources,
+  type OperatingSources,
+} from '../../lib/workflows/operating-center-runtime';
+import { journeyEnabled } from '../../lib/workflows/journey-runtime';
 import {
   assertServiceDeskCurrentNow,
   assertServiceDeskDetailCurrentNow,
@@ -24,45 +28,61 @@ export interface ServiceDeskProps {
   enabled?: boolean;
   onSelectJob?: (jobId: string) => void;
 }
-export function ServiceDesk(props: ServiceDeskProps) {
-  const signature = JSON.stringify({
-    targets: props.sources.entries.map((e) => e.target),
-    enabled: props.enabled,
-  });
-  const refs = [
-    props.sources.operations,
-    props.sources.estimates,
-    props.sources.property,
-    ...props.sources.entries.flatMap((e) => [
-      e,
-      e.target,
-      e.customerModel,
-      e.release,
-    ]),
-  ];
-  const [binding, bind] = useState({
-    sources: props.sources,
-    signature,
-    refs,
-    generation: 0,
-  });
-  if (
-    binding.sources !== props.sources ||
-    binding.signature !== signature ||
-    binding.refs.length !== refs.length ||
-    binding.refs.some((ref, i) => ref !== refs[i])
-  ) {
-    bind({
-      sources: props.sources,
-      signature,
-      refs,
-      generation: binding.generation + 1,
+export function ServiceDesk({
+  sources,
+  enabled = false,
+  onSelectJob,
+}: ServiceDeskProps) {
+  const admitted =
+    typeof window !== 'undefined' &&
+    journeyEnabled({
+      development: import.meta.env.DEV,
+      flag: enabled ? 'true' : undefined,
+      hostname: window.location.hostname,
+      protocol: window.location.protocol,
     });
+  let check: (() => void) | null = null;
+  if (admitted)
+    try {
+      check = captureOperatingSources(sources, {
+        enabled: true,
+        confirmed: true,
+      }).check;
+    } catch {
+      /* Withhold unavailable sources before reading presentation fields. */
+    }
+  const [binding, bind] = useState({ sources, admitted, check, generation: 0 });
+  let changed = false;
+  try {
+    binding.check?.();
+  } catch {
+    changed = true;
+  }
+  if (
+    binding.sources !== sources ||
+    binding.admitted !== admitted ||
+    changed ||
+    Boolean(binding.check) !== Boolean(check)
+  ) {
+    bind({ sources, admitted, check, generation: binding.generation + 1 });
     return null;
   }
-  return props.enabled === true ? (
-    <Desk key={binding.generation} {...props} />
-  ) : null;
+  return admitted && check ? (
+    <Desk
+      key={binding.generation}
+      sources={sources}
+      onSelectJob={onSelectJob}
+    />
+  ) : (
+    <section className="service-desk" aria-label="Service request desk">
+      <h2>Existing service requests</h2>
+      <p>
+        {admitted
+          ? 'Current authorized sources are unavailable. Previous service evidence is withheld.'
+          : 'Service request review is off. Explicit local source confirmation is required.'}
+      </p>
+    </section>
+  );
 }
 function Desk({ sources, onSelectJob }: ServiceDeskProps) {
   const [query, setQuery] = useState(''),
