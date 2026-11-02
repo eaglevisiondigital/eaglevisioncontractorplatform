@@ -209,7 +209,9 @@ function Portfolio({ sources, onSelectJob }: PortfolioServiceProps) {
                 </p>
               </details>
               <div className="portfolio-service-grid">
-                <section aria-label="Issued job documentation">
+                <section
+                  aria-label={`Issued job documentation for ${property.property_label} · property ${property.location_id}`}
+                >
                   <h4>Issued job scopes</h4>
                   {property.jobs.map((job) => (
                     <article key={job.job_id}>
@@ -230,7 +232,9 @@ function Portfolio({ sources, onSelectJob }: PortfolioServiceProps) {
                     </article>
                   ))}
                 </section>
-                <section aria-label="Published service report history">
+                <section
+                  aria-label={`Published service report history for ${property.property_label} · property ${property.location_id}`}
+                >
                   <h4>Published reports · counted once per exact version</h4>
                   {property.reports.map((item) => (
                     <article
