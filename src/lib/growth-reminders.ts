@@ -13,6 +13,20 @@ export interface ReminderWindow {
   as_of: string;
   channel: 'email' | 'sms';
 }
+export interface ReminderEligibilityPolicy {
+  enabled?: boolean;
+  confirmed: boolean;
+  lead_days: number;
+  overdue_days: number;
+}
+interface EligibilityVisit {
+  id: string;
+  plan_id: string;
+  revision: number;
+  on: string;
+  status: 'draft' | 'submitted' | 'published';
+  phase: 'before' | 'during' | 'after';
+}
 interface Candidate {
   key: string;
   kind: 'inspection_occurrence' | 'staff_follow_up';
@@ -51,7 +65,10 @@ export async function readGrowthReminderReview(
   boundary: ReportBoundary,
   actor: string,
   query: ReminderWindow,
-  admission: { enabled?: boolean } = {},
+  admission: {
+    enabled?: boolean;
+    eligibility?: ReminderEligibilityPolicy;
+  } = {},
 ) {
   const target = {
     organization_id: boundary.organization_id,
@@ -64,6 +81,45 @@ export async function readGrowthReminderReview(
     as_of: query.as_of,
     channel: query.channel,
   };
+  function currentPolicy() {
+    const descriptor = Object.getOwnPropertyDescriptor(
+      admission,
+      'eligibility',
+    );
+    if (!descriptor) return null;
+    if (!('value' in descriptor))
+      throw Error('Primitive eligibility review required');
+    const value: unknown = descriptor.value;
+    if (value === undefined) return null;
+    if (!value || typeof value !== 'object' || Array.isArray(value))
+      throw Error('Primitive eligibility review required');
+    const field = (name: string) => {
+      const d = Object.getOwnPropertyDescriptor(value, name);
+      if (!d) return undefined;
+      if (!('value' in d)) throw Error('Primitive eligibility review required');
+      return d.value as unknown;
+    };
+    const enabled = field('enabled');
+    if (enabled === undefined || enabled === false) return null;
+    const confirmed = field('confirmed'),
+      lead_days = field('lead_days'),
+      overdue_days = field('overdue_days');
+    if (
+      enabled !== true ||
+      confirmed !== true ||
+      typeof lead_days !== 'number' ||
+      !Number.isSafeInteger(lead_days) ||
+      lead_days < 0 ||
+      lead_days > 30 ||
+      typeof overdue_days !== 'number' ||
+      !Number.isSafeInteger(overdue_days) ||
+      overdue_days < 0 ||
+      overdue_days > 93
+    )
+      throw Error('Explicit bounded eligibility review required');
+    return { confirmed, lead_days, overdue_days };
+  }
+  const policy = currentPolicy();
   maintenanceDate(window.from);
   maintenanceDate(window.through);
   if (
@@ -75,6 +131,21 @@ export async function readGrowthReminderReview(
     throw Error('Invalid reminder window');
   const instant = Temporal.Instant.from(window.as_of);
   function authority() {
+    if (policy) {
+      let live: ReturnType<typeof currentPolicy>;
+      try {
+        live = currentPolicy();
+      } catch {
+        throw Error('Eligibility confirmation changed; reload review');
+      }
+      if (
+        !live ||
+        live.confirmed !== policy.confirmed ||
+        live.lead_days !== policy.lead_days ||
+        live.overdue_days !== policy.overdue_days
+      )
+        throw Error('Eligibility confirmation changed; reload review');
+    }
     if (
       admission.enabled !== true ||
       !repo.operations.sample ||
@@ -242,7 +313,43 @@ export async function readGrowthReminderReview(
     rows.sort(
       (a, b) => a.due_on.localeCompare(b.due_on) || a.key.localeCompare(b.key),
     );
-    return { rows, truncated };
+    // Visits have a plan/date/status, not a completion receipt or notification
+    // record. Only exact selected-plan identities enter the optional review.
+    const eligibilityVisits: EligibilityVisit[] = [];
+    if (policy) {
+      for (const visit of state.visits) {
+        if (!plans.some((p) => p.id === visit.plan_id)) continue;
+        if (
+          visit.organization_id !== target.organization_id ||
+          !reportUuid(visit.id) ||
+          !['draft', 'submitted', 'published'].includes(visit.status) ||
+          !['before', 'during', 'after'].includes(visit.phase)
+        )
+          throw Error('Invalid exact reminder visit');
+        revision(visit.revision);
+        if (visit.revision < 1)
+          throw Error('Invalid exact reminder visit revision');
+        maintenanceDate(visit.visited_on);
+        if (visit.visited_on < window.from || visit.visited_on > window.through)
+          continue;
+        eligibilityVisits.push({
+          id: visit.id,
+          plan_id: visit.plan_id,
+          revision: visit.revision,
+          on: visit.visited_on,
+          status: visit.status,
+          phase: visit.phase,
+        });
+      }
+      if (
+        eligibilityVisits.length > 5000 ||
+        new Set(eligibilityVisits.map((v) => v.id)).size !==
+          eligibilityVisits.length
+      )
+        throw Error('Ambiguous reminder visit identity');
+      eligibilityVisits.sort((a, b) => a.id.localeCompare(b.id));
+    }
+    return { rows, truncated, eligibilityVisits };
   }
   function consent(history: CustomerHistory) {
     if (!Array.isArray(history.consents) || history.consents.length > 500)
@@ -311,6 +418,78 @@ export async function readGrowthReminderReview(
     JSON.stringify(first) !== JSON.stringify(second)
   )
     throw Error('Reminder evidence changed; reload review');
+  const eligibilityReview = policy
+    ? (() => {
+        const items = current.rows.map((candidate) => {
+          const today = instant
+            .toZonedDateTimeISO(candidate.timezone)
+            .toPlainDate();
+          const days = today.until(candidate.due_on, {
+            largestUnit: 'days',
+          }).days;
+          const inWindow =
+            days >= -policy.overdue_days && days <= policy.lead_days;
+          const visits = current.eligibilityVisits.filter(
+            (v) =>
+              v.plan_id === candidate.source.plan_id &&
+              v.on === candidate.due_on,
+          );
+          const ambiguous = visits.length > 1;
+          const channel = second.observed_channel_state;
+          const planningStatus =
+            current.truncated || ambiguous || channel === 'UNKNOWN'
+              ? ('UNKNOWN' as const)
+              : channel === 'RECORDED_DENIED'
+                ? ('CHANNEL_DENIED' as const)
+                : visits.length === 1
+                  ? ('EXACT_VISIT_RECORDED' as const)
+                  : !inWindow
+                    ? ('OUTSIDE_REVIEW_WINDOW' as const)
+                    : ('STAFF_REVIEW_CANDIDATE' as const);
+          const reasons: string[] = [];
+          if (current.truncated) reasons.push('INCOMPLETE_CANDIDATE_COVERAGE');
+          if (ambiguous) reasons.push('AMBIGUOUS_EXACT_VISITS');
+          if (channel === 'UNKNOWN') reasons.push('CHANNEL_EVIDENCE_UNKNOWN');
+          if (channel === 'RECORDED_DENIED') reasons.push('CHANNEL_DECLINED');
+          if (visits.length === 1) reasons.push('EXACT_PLAN_DATE_VISIT_EXISTS');
+          if (!inWindow) reasons.push('OUTSIDE_CONFIRMED_PLANNING_WINDOW');
+          return {
+            candidate_key: candidate.key,
+            calendar_days_from_as_of: days,
+            planning_status: planningStatus,
+            eligible_for_staff_review:
+              planningStatus === 'STAFF_REVIEW_CANDIDATE',
+            source: { ...candidate.source },
+            exact_visits: visits.map((v) => ({ ...v })),
+            channel_reference: second.reference
+              ? { ...second.reference }
+              : null,
+            reasons,
+            message_eligibility: 'BLOCKED' as const,
+            unverified: [
+              'purpose_consent',
+              'suppression',
+              'recurring_enrollment',
+              'sender_authority',
+            ] as const,
+          };
+        });
+        return {
+          policy: {
+            confirmed: true as const,
+            lead_days: policy.lead_days,
+            overdue_days: policy.overdue_days,
+          },
+          scope: 'STAFF_PLANNING_ONLY' as const,
+          items,
+          eligible_for_staff_review_count: items.filter(
+            (i) => i.eligible_for_staff_review,
+          ).length,
+          count_is_complete: !current.truncated,
+          message_eligibility: 'BLOCKED' as const,
+        };
+      })()
+    : null;
   return frozen({
     boundary: target,
     window,
@@ -320,6 +499,7 @@ export async function readGrowthReminderReview(
     count_is_complete: !current.truncated,
     candidates: current.rows,
     consent: second,
+    eligibility_review: eligibilityReview,
     purpose_consent: 'UNVERIFIED' as const,
     suppression: 'UNVERIFIED' as const,
     recurring_enrollment: 'UNVERIFIED' as const,
