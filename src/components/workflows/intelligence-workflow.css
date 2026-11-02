@@ -1,0 +1,73 @@
+.intelligence-workflow {
+  min-width: 0;
+  color: #20352f;
+}
+.intelligence-workflow p {
+  line-height: 1.55;
+}
+.intelligence-workflow code,
+.intelligence-workflow dd {
+  overflow-wrap: anywhere;
+}
+.intelligence-workflow dt {
+  color: #3e594f;
+  font-weight: 700;
+}
+.intelligence-workflow dd {
+  margin: 0.25rem 0 1rem;
+}
+.intelligence-workflow .intelligence-workflow-eyebrow {
+  color: var(--company-color, #00543e);
+  font-weight: 700;
+}
+.intelligence-workflow .intelligence-workflow-card {
+  min-width: 0;
+  padding: 1rem;
+  margin-block: 1rem;
+  border: 1px solid #d9e1da;
+  border-left: 4px solid var(--company-color, #00543e);
+  border-radius: 10px;
+  background: #f5f5ef;
+}
+.intelligence-workflow .intelligence-workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.intelligence-workflow .intelligence-workflow-grid .intelligence-workflow-card {
+  margin-block: 0 1rem;
+}
+.intelligence-workflow .intelligence-workflow-priorities,
+.intelligence-workflow .intelligence-workflow-clauses,
+.intelligence-workflow .intelligence-workflow-checklist {
+  list-style: none;
+  padding: 0;
+}
+.intelligence-workflow .intelligence-workflow-priorities > li,
+.intelligence-workflow .intelligence-workflow-clauses > li,
+.intelligence-workflow .intelligence-workflow-checklist > li {
+  border-top: 1px solid #d9e1da;
+  padding-block: 1rem;
+}
+.intelligence-workflow blockquote {
+  margin: 0.5rem 0;
+  padding: 0.75rem;
+  border-left: 3px solid #3e594f;
+  background: #fff;
+  overflow-wrap: anywhere;
+}
+.intelligence-workflow summary {
+  min-height: 44px;
+  box-sizing: border-box;
+  padding-block: 0.65rem;
+  cursor: pointer;
+}
+.intelligence-workflow :focus-visible {
+  outline: 3px solid var(--company-color, #00543e);
+  outline-offset: 4px;
+}
+@media (max-width: 700px) {
+  .intelligence-workflow .intelligence-workflow-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
