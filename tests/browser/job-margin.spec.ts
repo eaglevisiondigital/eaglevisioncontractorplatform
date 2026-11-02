@@ -44,7 +44,11 @@ test('actual isolated margin component is accessible across companies, denies pr
 }, info) => {
   const external: string[] = [];
   page.on('request', (r) => {
-    if (!r.url().startsWith('http://127.0.0.1:4173/')) external.push(r.url());
+    if (
+      new URL(r.url()).origin !==
+      new URL(String(info.project.use.baseURL)).origin
+    )
+      external.push(r.url());
   });
   await page.route('**/preview-job-margin-demo.html', (route) =>
     route.fulfill({
@@ -101,5 +105,133 @@ test('actual isolated margin component is accessible across companies, denies pr
   await expect(panel.getByRole('table')).toHaveCount(0);
   await page.getByRole('button', { name: 'Toggle default-off reader' }).click();
   await expect(panel.getByRole('alert')).toContainText('disabled');
+  expect(external).toEqual([]);
+});
+
+test('source-bound warnings and explicitly confirmed local margin review stay scoped across contractor and role changes', async ({
+  page,
+}, info) => {
+  const external: string[] = [];
+  page.on('request', (r) => {
+    if (
+      new URL(r.url()).origin !==
+      new URL(String(info.project.use.baseURL)).origin
+    )
+      external.push(r.url());
+  });
+  await page.route('**/preview-job-margin-demo.html', (route) =>
+    route.fulfill({
+      contentType: 'text/html',
+      body: '<html lang="en"><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>Source-bound margin review test</title></head><body><div id="root"></div></body></html>',
+    }),
+  );
+  await page.goto('/preview-job-margin-demo.html');
+  await page.addStyleTag({
+    content:
+      (await readFile('src/styles.css', 'utf8')) + '\n' + componentStyles,
+  });
+  await page.addScriptTag({ content: script });
+  const panel = page.getByRole('region', {
+      name: 'Local job margin analysis',
+      exact: true,
+    }),
+    warnings = panel.getByRole('region', {
+      name: 'Source-bound cost and margin warnings',
+    }),
+    input = panel.getByLabel('Minimum projected margin (%)'),
+    confirm = panel.getByRole('checkbox'),
+    apply = panel.getByRole('button', { name: 'Review margin threshold' });
+  for (const [index, company] of [
+    'sample-property',
+    'sample-construction',
+    'sample-roofing',
+  ].entries()) {
+    await page.getByLabel('Contractor example').selectOption(String(index));
+    await expect(warnings).toContainText(
+      'No local minimum-margin review input has been applied',
+    );
+    await expect(input).toHaveValue('');
+    await expect(apply).toBeDisabled();
+    await input.fill('100.01');
+    await confirm.check();
+    await apply.click();
+    await expect(panel.getByRole('alert')).toContainText(
+      'percentage from 0 to 100',
+    );
+    await expect(warnings).toContainText(
+      'No local minimum-margin review input has been applied',
+    );
+    await input.fill('99.99');
+    await expect(confirm).not.toBeChecked();
+    await confirm.focus();
+    await page.keyboard.press('Space');
+    await apply.focus();
+    await page.keyboard.press('Enter');
+    await expect(warnings).toContainText(
+      'Confirmed local review input: 99.99%',
+    );
+    await expect(warnings).toContainText(
+      'Warning: projected margin is below this input',
+    );
+    await expect(warnings).toContainText('Coverage remains PARTIAL');
+    await expect(warnings).toContainText('not final profitability');
+    await page
+      .getByRole('button', { name: 'Prepare synthetic cost-risk example' })
+      .click();
+    await expect(warnings).toContainText(
+      'Warning: projected contribution is negative',
+    );
+    await expect(warnings).toContainText(
+      'materials — projected cost exceeds budget and the saved overrun threshold',
+    );
+    await expect(warnings).toContainText(
+      'projected margin erosion exceeds the saved threshold',
+    );
+    // A saved source revision change clears the prior review input; it is never a saved company policy.
+    await expect(input).toHaveValue('');
+    await expect(warnings).toContainText(
+      'No local minimum-margin review input has been applied',
+    );
+    await input.fill('25.50');
+    await confirm.check();
+    await apply.click();
+    await expect(warnings).toContainText(
+      'Confirmed local review input: 25.50%',
+    );
+    expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
+    await mkdir('artifacts/finance', { recursive: true });
+    await page.screenshot({
+      path: `artifacts/finance/job-margin-warnings-${info.project.name}-${company}.png`,
+      fullPage: true,
+    });
+    await input.fill('30');
+    await expect(warnings).toContainText(
+      'No local minimum-margin review input has been applied',
+    );
+    await expect(confirm).not.toBeChecked();
+    await page.getByRole('button', { name: 'Use field identity' }).click();
+    await expect(panel.getByRole('alert')).toContainText('eligible');
+    await expect(warnings).toHaveCount(0);
+    await expect(panel.getByRole('table')).toHaveCount(0);
+    await page.getByRole('button', { name: 'Use owner identity' }).click();
+    await expect(warnings).toContainText(
+      'No local minimum-margin review input has been applied',
+    );
+    await input.fill('25');
+    await confirm.check();
+    await apply.click();
+    await expect(warnings).toContainText(
+      'Confirmed local review input: 25.00%',
+    );
+    await panel.getByRole('button', { name: 'Clear review input' }).click();
+    await expect(warnings).toContainText(
+      'No local minimum-margin review input has been applied',
+    );
+  }
   expect(external).toEqual([]);
 });

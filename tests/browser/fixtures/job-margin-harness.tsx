@@ -1,6 +1,6 @@
 // Standalone development/browser-test composition only; never imported by App.
 // The /preview-prefixed HTML keeps the existing staff Supabase/Auth initializer closed.
-import { useState } from 'react';
+import { useState, type CSSProperties } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Operations } from '../../../src/lib/operations';
 import { Phase3Repository } from '../../../src/lib/phase3';
@@ -48,10 +48,21 @@ if (allowed)
       const [index, select] = useState(0),
         [role, actor] = useState('owner'),
         [missing, absent] = useState(false),
-        [enabled, enable] = useState(true);
-      const workspace = workspaces[index];
+        [enabled, enable] = useState(true),
+        [scopes, updateScopes] = useState<Record<string, MarginScope>>({}),
+        [busy, setBusy] = useState(false),
+        [error, setError] = useState('');
+      const workspace = workspaces[index],
+        currentScope = scopes[workspace.company.id] ?? workspace.scope;
       return (
-        <main className="company-shell p3-workspace">
+        <main
+          className="company-shell p3-workspace"
+          style={
+            {
+              '--company-color': workspace.company.primary_color,
+            } as CSSProperties
+          }
+        >
           <h1>Isolated job costing component test</h1>
           <label>
             Contractor example
@@ -71,6 +82,45 @@ if (allowed)
             </select>
           </label>
           <h2>{workspace.company.name}</h2>
+          <button
+            disabled={busy}
+            onClick={() => {
+              setBusy(true);
+              setError('');
+              void (async () => {
+                const job = (
+                  await workspace.repo.jobs(workspace.company.id)
+                ).find((row) => row.id === currentScope.jobId);
+                if (!job) throw Error('Synthetic job unavailable');
+                const projection = structuredClone(job.projection);
+                projection.remaining.materials =
+                  job.baseline.revenue_minor + job.baseline.costs.materials;
+                await workspace.repo.projection(
+                  workspace.company.id,
+                  job,
+                  projection,
+                );
+                updateScopes((old) => ({
+                  ...old,
+                  [workspace.company.id]: {
+                    ...currentScope,
+                    jobRevision: job.lock_revision + 1,
+                  },
+                }));
+              })()
+                .catch((cause) =>
+                  setError(
+                    cause instanceof Error
+                      ? cause.message
+                      : 'Unable to prepare local example',
+                  ),
+                )
+                .finally(() => setBusy(false));
+            }}
+          >
+            Prepare synthetic cost-risk example
+          </button>
+          {error && <p role="alert">{error}</p>}
           <button onClick={() => actor('field')}>Use field identity</button>
           <button onClick={() => actor('estimator')}>
             Use estimator identity
@@ -87,10 +137,10 @@ if (allowed)
             scope={
               missing
                 ? {
-                    ...workspace.scope,
+                    ...currentScope,
                     jobId: '11111111-1111-4111-8111-111111111111',
                   }
-                : workspace.scope
+                : currentScope
             }
             actor={`${workspace.company.id}-${role}`}
           />

@@ -6,6 +6,9 @@ import { LocalJobMarginReader } from '../src/lib/job-margin-analysis';
 import {
   projectLocalJobMargin,
   type MarginScope,
+  parseLocalMarginPercent,
+  formatMarginBps,
+  type MarginReviewInput,
 } from '../src/domain/jobs/margin-analysis';
 import {
   jobFinancials,
@@ -514,5 +517,368 @@ describe('existing-source local job margin analysis', () => {
     });
     expect(() => project(f.input)).toThrow();
     expect(getter).not.toHaveBeenCalled();
+  });
+});
+
+describe('Cycle4 existing-engine warning review', () => {
+  it.each([0, 1, 2])(
+    'binds warnings to actual saved job revision and canonical thresholds for company %i',
+    async (index) => {
+      const f = await fixture(index),
+        before = await f.repo.jobs(f.org);
+      const projection = structuredClone(f.job.projection);
+      projection.remaining.materials += f.job.baseline.costs.materials;
+      projection.overrun_bps = 1500;
+      projection.erosion_bps = 250;
+      await f.repo.projection(f.org, f.job, projection);
+      const job = (await f.repo.jobs(f.org))[0],
+        canonical = jobFinancials(job);
+      f.scope.jobRevision = job.lock_revision;
+      const result = await f.reader.read(f.scope, f.actor, {
+        minimumMarginBps: 5000,
+        confirmed: true,
+      });
+      expect(result.scope.issuedVersionId).toBe(
+        before[0].baseline.issued_version_id,
+      );
+      expect(result.warningReview.sourceThresholds).toEqual({
+        categoryOverrunBps: 1500,
+        marginErosionBps: 250,
+      });
+      expect(result.warningReview.aboveBudgetCategories).toEqual(
+        canonical.categories
+          .filter((c) => c.projected_minor > c.budget_minor)
+          .map((c) => ({ category: c.category, thresholdExceeded: c.overrun })),
+      );
+      expect(result.warningReview.negativeContribution).toBe(
+        canonical.projected_profit_minor < 0,
+      );
+      expect(result.warningReview.erosionThresholdExceeded).toBe(
+        canonical.profit_erosion,
+      );
+      expect(result.warningReview.minimumMargin?.assessment).toBe(
+        canonical.projected_margin_bps < 5000
+          ? 'BELOW_INPUT'
+          : 'AT_OR_ABOVE_INPUT',
+      );
+      expect(await f.repo.jobs(f.org)).toEqual([job]);
+      expect(
+        (await f.repo.history(f.org, f.scope.estimateId)).find(
+          (v) => v.id === f.issued.id,
+        ),
+      ).toEqual(f.issued);
+    },
+  );
+  it('distinguishes positive category variance at the exact saved threshold from exceeding it', async () => {
+    const f = await fixture(),
+      input = structuredClone(f.input);
+    input.job.expenses = [];
+    input.job.events = [];
+    const budget = input.job.baseline.costs.materials;
+    input.job.projection.overrun_bps = 1000;
+    const cutoff = budget + Number((BigInt(budget) * 1000n) / 10000n);
+    input.job.projection.remaining.materials = cutoff;
+    expect(project(input).warningReview.aboveBudgetCategories).toContainEqual({
+      category: 'materials',
+      thresholdExceeded: false,
+    });
+    input.job.projection.remaining.materials++;
+    expect(project(input).warningReview.aboveBudgetCategories).toContainEqual({
+      category: 'materials',
+      thresholdExceeded: true,
+    });
+    expect(project(input).categories[0].overrun).toBe(
+      jobFinancials(input.job).categories[0].overrun,
+    );
+  });
+  it('handles a zero category budget as unplanned projected cost without inventing a percent variance', async () => {
+    const f = await fixture(),
+      input = structuredClone(f.input);
+    expect(input.job.baseline.costs.other).toBe(0);
+    input.job.projection.remaining.other = 1;
+    const result = project(input);
+    expect(result.warningReview.aboveBudgetCategories).toContainEqual({
+      category: 'other',
+      thresholdExceeded: true,
+    });
+    expect(
+      result.categories.find((r) => r.category === 'other')?.varianceMinor,
+    ).toBe(1);
+    expect(JSON.stringify(result.warningReview)).not.toMatch(
+      /Infinity|NaN|variancePercent/,
+    );
+  });
+  it('compares an exact canonical margin floor without rounding the decision or changing the saved policy', async () => {
+    const f = await fixture(),
+      margin = jobFinancials(f.job).projected_margin_bps;
+    expect(margin).toBeGreaterThan(0);
+    expect(margin).toBeLessThan(10000);
+    const before = await f.repo.jobs(f.org);
+    const at = await f.reader.read(f.scope, f.actor, {
+      minimumMarginBps: margin,
+      confirmed: true,
+    });
+    expect(at.warningReview.minimumMargin?.assessment).toBe(
+      'AT_OR_ABOVE_INPUT',
+    );
+    const above = await f.reader.read(f.scope, f.actor, {
+      minimumMarginBps: margin + 1,
+      confirmed: true,
+    });
+    expect(above.warningReview.minimumMargin?.assessment).toBe('BELOW_INPUT');
+    expect(at.totals).toEqual(above.totals);
+    expect(at.warningReview.sourceThresholds).toEqual(
+      above.warningReview.sourceThresholds,
+    );
+    expect(await f.repo.jobs(f.org)).toEqual(before);
+    expect(Object.isFrozen(at.warningReview.minimumMargin)).toBe(true);
+  });
+  it('pins confirmed primitive review input before asynchronous reads and resets only by an explicit separate read', async () => {
+    const f = await fixture(),
+      review: MarginReviewInput = { minimumMarginBps: 2500, confirmed: true };
+    const pending = f.reader.read(f.scope, f.actor, review);
+    review.minimumMarginBps = 9900;
+    expect((await pending).warningReview.minimumMargin?.basisPoints).toBe(2500);
+    expect(
+      (await f.reader.read(f.scope, f.actor)).warningReview.minimumMargin,
+    ).toBeNull();
+  });
+  it.each([
+    { minimumMarginBps: -1, confirmed: true },
+    { minimumMarginBps: 10001, confirmed: true },
+    { minimumMarginBps: 0.1, confirmed: true },
+    { minimumMarginBps: Number.MAX_SAFE_INTEGER + 1, confirmed: true },
+    { minimumMarginBps: 2500, confirmed: false },
+    { minimumMarginBps: '2500', confirmed: true },
+    { minimumMarginBps: 2500, confirmed: true, companyPolicy: true },
+  ])(
+    'rejects an unconfirmed, coerced or out-of-bounds floor %#',
+    async (review) => {
+      const f = await fixture();
+      await expect(
+        f.reader.read(f.scope, f.actor, review as MarginReviewInput),
+      ).rejects.toThrow(/review input/);
+    },
+  );
+  it('retains UNKNOWN for missing evidence while preserving only the unavailable local-input assessment', async () => {
+    const f = await fixture(),
+      review: MarginReviewInput = { minimumMarginBps: 2500, confirmed: true };
+    const result = projectLocalJobMargin(
+      { ...f.input, job: null, review },
+      { enabled: true },
+    );
+    expect(result).toMatchObject({
+      status: 'UNKNOWN',
+      totals: null,
+      categories: [],
+      warningReview: {
+        availability: 'UNAVAILABLE',
+        sourceThresholds: null,
+        negativeContribution: null,
+        erosionThresholdExceeded: null,
+        aboveBudgetCategories: [],
+        minimumMargin: { assessment: 'UNAVAILABLE' },
+      },
+    });
+  });
+  it('keeps negative contribution visible but withholds zero-revenue margin and erosion assessments', async () => {
+    const f = await fixture(),
+      input = structuredClone(f.input);
+    for (const line of input.issued.payload.lines) line.unit_price_minor = 0;
+    input.issued.calculation = calculateEstimate(input.issued.payload, 0);
+    input.job.baseline = baselineFromEstimate(
+      input.issued.id,
+      input.issued.payload,
+      input.issued.calculation,
+    );
+    const result = projectLocalJobMargin(
+      { ...input, review: { minimumMarginBps: 0, confirmed: true } },
+      { enabled: true },
+    );
+    expect(result.totals?.projectedMarginBps).toBeNull();
+    expect(result.warningReview).toMatchObject({
+      negativeContribution: true,
+      erosionThresholdExceeded: null,
+      minimumMargin: { assessment: 'UNAVAILABLE' },
+    });
+    expect(result.status).toBe('PARTIAL');
+  });
+  it('withholds unsafe canonical ratios while keeping exact safe minor-unit contribution and a negative warning', async () => {
+    const f = await fixture(),
+      input = structuredClone(f.input);
+    input.job.expenses = [];
+    input.job.events = [];
+    for (const line of input.issued.payload.lines) line.unit_price_minor = 0;
+    input.issued.payload.lines[0].fixed_markup_minor = 1;
+    input.issued.calculation = calculateEstimate(input.issued.payload, 0);
+    input.job.baseline = baselineFromEstimate(
+      input.issued.id,
+      input.issued.payload,
+      input.issued.calculation,
+    );
+    for (const category of Object.keys(
+      input.job.projection.remaining,
+    ) as (keyof typeof input.job.projection.remaining)[])
+      input.job.projection.remaining[category] = 0;
+    input.job.projection.remaining.other = 9e12;
+    const result = projectLocalJobMargin(
+      { ...input, review: { minimumMarginBps: 5000, confirmed: true } },
+      { enabled: true },
+    );
+    expect(result.totals?.projectedContributionMinor).toBe(1 - 9e12);
+    expect(result.totals?.projectedMarginBps).toBeNull();
+    expect(result.warningReview).toMatchObject({
+      negativeContribution: true,
+      erosionThresholdExceeded: null,
+      minimumMargin: { assessment: 'UNAVAILABLE' },
+    });
+  });
+  it('withholds erosion for zero original revenue after an exact approved revenue change supports a current ratio', async () => {
+    const f = await fixture(),
+      input = structuredClone(f.input);
+    input.job.expenses = [];
+    input.job.events = [];
+    for (const line of input.issued.payload.lines) {
+      line.unit_price_minor = 0;
+      line.unit_cost_minor = 0;
+      line.fixed_markup_minor = 0;
+    }
+    input.issued.calculation = calculateEstimate(input.issued.payload, 0);
+    input.job.baseline = baselineFromEstimate(
+      input.issued.id,
+      input.issued.payload,
+      input.issued.calculation,
+    );
+    for (const category of Object.keys(
+      input.job.projection.remaining,
+    ) as (keyof typeof input.job.projection.remaining)[])
+      input.job.projection.remaining[category] = 0;
+    input.job.changes = [
+      {
+        id: crypto.randomUUID(),
+        category: 'other',
+        description: 'Synthetic approved source boundary',
+        status: 'approved',
+        cost_minor: 0,
+        revenue_minor: 9e12,
+        authorization_reference: 'Synthetic exact authorization fixture',
+      },
+    ];
+    const result = project(input);
+    expect(result.totals?.projectedMarginBps).toBe(10000);
+    expect(result.totals?.profitErosion).toBeNull();
+    expect(result.warningReview.erosionThresholdExceeded).toBeNull();
+    expect(result.totals?.projectedContributionMinor).toBe(
+      jobFinancials(input.job).projected_profit_minor,
+    );
+  });
+  it.each([0, 1, 2])(
+    'rejects an actual owner/admin-to-estimator downgrade immediately after the job read for company %i',
+    async (index) => {
+      const f = await fixture(index),
+        actor = `${f.org}-estimator`;
+      await f.operations.manageMember(
+        f.org,
+        actor,
+        true,
+        'admin',
+        'office_manager',
+      );
+      const jobs = f.repo.jobs.bind(f.repo),
+        history = vi.spyOn(f.repo, 'history');
+      vi.spyOn(f.repo, 'jobs').mockImplementation(async (...args) => {
+        const result = await jobs(...args);
+        await f.operations.manageMember(
+          f.org,
+          actor,
+          true,
+          'staff',
+          'estimator',
+        );
+        return result;
+      });
+      await expect(
+        f.reader.read(f.scope, actor, {
+          minimumMarginBps: 2500,
+          confirmed: true,
+        }),
+      ).rejects.toThrow(/eligible/);
+      expect(history).not.toHaveBeenCalled();
+    },
+  );
+  it('rechecks membership after an awaited current CRM page instead of trusting cached financial classification', async () => {
+    const f = await fixture(),
+      actor = `${f.org}-estimator`;
+    await f.operations.manageMember(
+      f.org,
+      actor,
+      true,
+      'admin',
+      'office_manager',
+    );
+    const customers = f.operations.listCustomers.bind(f.operations);
+    vi.spyOn(f.operations, 'listCustomers').mockImplementation(
+      async (...args) => {
+        const result = await customers(...args);
+        await f.operations.manageMember(
+          f.org,
+          actor,
+          false,
+          'admin',
+          'office_manager',
+        );
+        return result;
+      },
+    );
+    await expect(f.reader.read(f.scope, actor)).rejects.toThrow(/eligible/);
+  });
+  it('keeps floor evidence scoped to one currency and source version, never exposing internal notes or contact data', async () => {
+    const f = await fixture(),
+      before = structuredClone(f.issued);
+    const result = await f.reader.read(f.scope, f.actor, {
+      minimumMarginBps: 2500,
+      confirmed: true,
+    });
+    await expect(
+      f.reader.read({ ...f.scope, currency: 'CAD' }, f.actor, {
+        minimumMarginBps: 2500,
+        confirmed: true,
+      }),
+    ).rejects.toThrow();
+    expect(JSON.stringify(result.warningReview)).not.toMatch(
+      /unit_cost|supplier|payroll|worker|note|email|phone|address|cash_hour|deduction/,
+    );
+    expect(f.issued).toEqual(before);
+  });
+  it.each(['0', '0.01', '25.50', '100.00'])(
+    'parses exact local percent input %s without floats',
+    (text) => {
+      const expected = { '0': 0, '0.01': 1, '25.50': 2550, '100.00': 10000 };
+      expect(parseLocalMarginPercent(text)).toBe(
+        expected[text as keyof typeof expected],
+      );
+    },
+  );
+  it.each([
+    '',
+    '01',
+    '.25',
+    '1e2',
+    '25.555',
+    '-1',
+    '100.01',
+    'Infinity',
+    '25%',
+  ])('rejects invalid percent input %s', (text) => {
+    expect(() => parseLocalMarginPercent(text)).toThrow(/percentage/);
+  });
+  it('formats exact negative and large integer ratios without rounding away basis points', () => {
+    expect(formatMarginBps(-1)).toBe('-0.01%');
+    expect(formatMarginBps(0)).toBe('0.00%');
+    expect(formatMarginBps(Number.MAX_SAFE_INTEGER)).toBe('90071992547409.91%');
+    expect(formatMarginBps(-Number.MAX_SAFE_INTEGER)).toBe(
+      '-90071992547409.91%',
+    );
+    expect(() => formatMarginBps(0.5)).toThrow(/unavailable/);
   });
 });

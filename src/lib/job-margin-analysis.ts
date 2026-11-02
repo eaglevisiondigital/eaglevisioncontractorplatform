@@ -4,6 +4,7 @@ import {
   projectLocalJobMargin,
   type MarginScope,
   type LaborCoverage,
+  type MarginReviewInput,
 } from '../domain/jobs/margin-analysis';
 import type { Job } from '../domain/jobs/financials';
 import { sampleCompanies } from '../domain/platform';
@@ -127,11 +128,17 @@ export class LocalJobMarginReader {
     if (!member?.active || !['owner', 'admin'].includes(member.role))
       throw Error('Current eligible synthetic financial staff required');
   }
-  async read(scope: MarginScope, actor: string) {
-    const request = detached(scope);
+  async read(
+    scope: MarginScope,
+    actor: string,
+    review: MarginReviewInput | null = null,
+  ) {
+    const request = detached(scope),
+      reviewInput = detached(review);
     this.access(request.organizationId, actor);
     const capture = async () => {
       const jobs = await this.repo.jobs(request.organizationId);
+      this.access(request.organizationId, actor);
       if (jobs.filter((j) => j.id === request.jobId).length > 1)
         throw Error('Ambiguous exact job');
       const job = jobs.find((j) => j.id === request.jobId) ?? null;
@@ -140,6 +147,7 @@ export class LocalJobMarginReader {
             await this.repo.history(request.organizationId, request.estimateId)
           ).filter((v) => v.id === request.issuedVersionId)
         : [];
+      this.access(request.organizationId, actor);
       if (issued.length > 1) throw Error('Ambiguous issued source');
       const workforce = job
         ? await this.repo.workforce(request.organizationId)
@@ -160,6 +168,7 @@ export class LocalJobMarginReader {
             '',
             page,
           );
+          this.access(request.organizationId, actor);
           if (
             customers.rows.some(
               (c) =>
@@ -176,6 +185,7 @@ export class LocalJobMarginReader {
       }
       return detached({
         scope: request,
+        review: reviewInput,
         job,
         issued: issued[0] ?? null,
         labor:
