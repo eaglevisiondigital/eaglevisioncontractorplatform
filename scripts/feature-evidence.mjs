@@ -325,6 +325,29 @@ export function sourceOwner(path) {
     )
   )
     return 'A8';
+  // Cycle11 source lanes; metadata only. CSS retains the shared A8 lane.
+  if (
+    /OperatingCenterCycleEleven|pilot-scorecard|PilotScorecard|cycle11-(integration|feature-evidence|browser|core|reviews|default-off)|playwright\.cycle11|check-cycle11-/.test(
+      path,
+    )
+  )
+    return 'A8';
+  if (
+    /crew-assignment-lab|CrewAssignmentLab|server\/field-lab|cycle11-crew-worker/.test(
+      path,
+    )
+  )
+    return 'A3';
+  if (/financial-correction-review|FinancialCorrectionReview/.test(path))
+    return 'A4';
+  if (/service-continuity|ServiceContinuity/.test(path)) return 'A5';
+  if (
+    /atomic-consent-lab|AtomicConsentLab|server\/consent-lab|cycle11-consent-worker|daily-action-center|DailyActionCenter/.test(
+      path,
+    )
+  )
+    return 'A6';
+  if (/sync-admission-review|SyncAdmissionReview/.test(path)) return 'A7';
   // Cycle10 additive review lanes precede broad filename matches; CSS stays A8 above.
   if (
     /OperatingCenterCycleTen|cycle10-(integration|feature-evidence|browser|desks|reviews|handoffs|default-off)|playwright\.cycle10|check-cycle10-/.test(

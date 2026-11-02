@@ -1,0 +1,251 @@
+.sync-admission-review {
+  min-width: 0;
+  padding: clamp(1rem, 3vw, 1.75rem);
+  background: #fff;
+  border: 1px solid #d9e1da;
+  border-radius: 18px;
+  color: #20352f;
+  line-height: 1.55;
+}
+.sync-admission-review * {
+  box-sizing: border-box;
+}
+.sync-admission-review header {
+  position: static;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  gap: 1rem;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+}
+.sync-admission-review header > div {
+  display: block;
+  flex: 1 1 300px;
+}
+.sync-admission-review h2,
+.sync-admission-review h3,
+.sync-admission-review h4 {
+  margin: 0.25rem 0 0.65rem;
+}
+.sync-admission-review form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+.sync-admission-review form label {
+  display: flex;
+  flex: 1 1 185px;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: 600;
+}
+.sync-admission-review input,
+.sync-admission-review select {
+  min-width: 0;
+  min-height: 44px;
+  padding: 0.65rem;
+  border: 1px solid #9aada1;
+  border-radius: 8px;
+  font: inherit;
+  background: #fff;
+  color: inherit;
+}
+.sync-admission-review button {
+  min-height: 44px;
+  max-width: 100%;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--journey-primary, #247364);
+  border-radius: 8px;
+  font: inherit;
+  background: var(--journey-primary, #247364);
+  color: #fff;
+  cursor: pointer;
+  white-space: normal;
+}
+.sync-admission-review button.secondary {
+  background: #fff;
+  color: var(--journey-primary, #247364);
+}
+.sync-admission-review button:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+.sync-admission-review nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+.sync-admission-review [aria-current='step'] {
+  font-weight: 700;
+  box-shadow: inset 0 -3px 0 var(--journey-accent, #dfb461);
+}
+.sync-admission-review-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.sync-admission-review article,
+.sync-admission-review-detail,
+.sync-admission-review-safe,
+.sync-admission-review-empty {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  background: #f8f8f2;
+  margin: 1rem 0;
+}
+.sync-admission-review-grid > article {
+  margin: 0;
+  border-top: 3px solid var(--journey-primary, #247364);
+}
+.sync-admission-review-safe {
+  background: #f4f7f5;
+  border-top: 3px solid var(--journey-accent, #dfb461);
+}
+.sync-admission-review-safe article {
+  background: #fff;
+}
+.sync-admission-review dl {
+  display: grid;
+  gap: 0.2rem;
+}
+.sync-admission-review dt {
+  color: #526159;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.sync-admission-review dd {
+  margin: 0 0 0.6rem;
+}
+.sync-admission-review p,
+.sync-admission-review dd,
+.sync-admission-review footer {
+  overflow-wrap: anywhere;
+}
+.sync-admission-review-pill {
+  display: inline-block;
+  align-self: start;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid #b9cbbb;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #314d40;
+  background: #eff4ec;
+}
+.sync-admission-review-muted,
+.sync-admission-review footer {
+  color: #526159;
+  font-size: 0.9rem;
+}
+.sync-admission-review footer {
+  display: block;
+  margin: 1rem 0 0;
+  padding: 1rem 0 0;
+  border-top: 1px solid #d9e1da;
+}
+.sync-admission-review-notice {
+  padding: 0.75rem;
+  border-left: 3px solid var(--journey-accent, #dfb461);
+  background: #fffaf0;
+}
+.sync-admission-review [role='alert'] {
+  padding: 0.75rem;
+  border-left: 4px solid #9b4426;
+  background: #fff3e9;
+  color: #71341f;
+}
+.sync-admission-review :focus-visible {
+  outline: 3px solid var(--journey-primary, #247364);
+  outline-offset: 3px;
+}
+@media (max-width: 760px) {
+  .sync-admission-review {
+    padding: 1rem;
+  }
+  .sync-admission-review-grid {
+    grid-template-columns: 1fr;
+  }
+  .sync-admission-review form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .sync-admission-review form label {
+    flex: initial;
+  }
+  .sync-admission-review button {
+    width: 100%;
+  }
+  .sync-admission-review nav {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .sync-admission-review nav > span {
+    display: none;
+  }
+}
+
+.sync-admission-fields,
+.sync-admission-differences {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  min-width: 0;
+}
+.sync-admission-review fieldset {
+  min-width: 0;
+  width: 100%;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  padding: 1rem;
+}
+.sync-admission-review fieldset label {
+  margin: 0.6rem 0;
+}
+.sync-admission-review .sync-admission-confirm {
+  display: flex;
+  align-items: start;
+  gap: 0.6rem;
+  min-height: 44px;
+  margin: 1rem 0;
+}
+.sync-admission-confirm input {
+  min-width: 20px;
+  width: 20px;
+  height: 20px;
+  min-height: 20px;
+  margin-top: 0.3rem;
+  accent-color: var(--journey-primary, #247364);
+}
+.sync-admission-review .sync-admission-source,
+.sync-admission-review .sync-admission-result {
+  padding: 1rem;
+  background: #f4f7f5;
+  border: 1px solid #d9e1da;
+  border-top: 3px solid var(--journey-accent, #dfb461);
+  border-radius: 12px;
+  margin: 1rem 0;
+}
+.sync-admission-badge {
+  display: inline-block;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid #b9cbbb;
+  border-radius: 20px;
+  color: #314d40;
+  background: #eff4ec;
+}
+@media (max-width: 760px) {
+  .sync-admission-fields,
+  .sync-admission-differences {
+    grid-template-columns: 1fr;
+  }
+}

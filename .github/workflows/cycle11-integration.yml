@@ -1,0 +1,53 @@
+name: Cycle 11 source-bound workflow laboratories
+on:
+  push:
+    branches: ['codex/program-cycle-eleven']
+  pull_request:
+    paths:
+      - 'src/components/workflows/**'
+      - 'src/lib/workflows/**'
+      - 'tests/cycle11*'
+      - 'tests/cycle10-integration.test.ts'
+      - 'server/field-lab/**'
+      - 'server/consent-lab/**'
+      - 'tests/helpers/cycle11*'
+      - 'tests/program/*cycle11*'
+      - 'scripts/check-cycle11-integrity.mjs'
+      - 'scripts/check-cycle11-results.mjs'
+      - 'docs/program/CYCLE11_DELIVERY_INDEX.json'
+      - '.github/workflows/cycle11-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle11-integration-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  bounded-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node scripts/check-cycle11-integrity.mjs
+      - run: npx vitest run tests/cycle11*.test.ts tests/program/cycle11-feature-evidence.test.ts tests/program/cycle11-pilot-scorecard.test.ts tests/program-feature-evidence.test.ts tests/cycle10-integration.test.ts --reporter=json --outputFile=artifacts/cycle11/application-results.json
+      - run: node scripts/check-cycle11-results.mjs
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test -c tests/program/playwright.cycle11.config.ts --workers=2
+      - run: npx playwright test -c tests/program/playwright.cycle11-off.config.ts --workers=2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle11-workflow-lab-evidence
+          path: |
+            artifacts/cycle11/*.png
+            artifacts/cycle11/clicks-*.json
+            artifacts/cycle11/application-results.json
+            test-results/
+          retention-days: 7

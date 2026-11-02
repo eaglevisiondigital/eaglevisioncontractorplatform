@@ -1,5 +1,35 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: cycle eleven · source-bound operating reviews and isolated labs
+
+CI portability correction: actual first Ubuntu run412PASS/1FAIL exposed only a
+historical-Git-tree dependency in an evidence test. The independently reviewed
+constant owner semantic-hash comparison retains both unconditional assertions and
+32cases without requiring history. Product code and all protected evidence stay
+unchanged; normal automatic checks run on the new source commit. See
+[exact failure and correction](docs/program/CYCLE11_CI_CORRECTION.json).
+
+Six separate feature drafts74/76–80 are composed on Main draft75 from exact owner
+plan b6ac4fc. Field source-bound readiness plus durable test custody, financial
+proposed-correction comparison, request/job/documentation/Passport continuity,
+blocked consent requirements with atomic fixture tests, explainable daily review
+and seven advanced reference-admission modes reuse the existing canonical engines.
+One seven-panel optional review group preserves all8original and6Cycle10 sections.
+A public-source pilot scorecard separates25capabilities from8PhaseOne release gates.
+
+413 application cases,21 responsive/all-brand browser scenarios and3production-OFF
+cases PASS.63 actual screenshots and9trusted-click records retained; independent32
+combined probes CLEAR. Types/generated types, lint/build/format, source/protected and
+migration/4B integrity PASS. Exact author heads, pending CI and honest limitations:
+[Cycle11 validation](docs/program/CYCLE11_VALIDATION.md) and the master delivery register.
+
+SQLite laboratories use only disposable command/reservation and marked synthetic
+fixtures. Browser writers remain NOT CONNECTED; no canonical dispatch, cost save,
+message, sync/import or acceptance authority is introduced. No physical recovery,
+genuine Auth/MFA, NMI, P1/customer14/4B/Netlify/hosted gate is promoted. All128protected
+hashes/148prior author files/five design locks/13bindings and all original approvals
+and restrictions remain unchanged. Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Latest: cycle ten · everyday operating reviews · November 2
 
 Six separately owned local packages are composed on `codex/program-cycle-ten`,

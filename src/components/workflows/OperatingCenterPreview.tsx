@@ -53,9 +53,17 @@ export interface OperatingReviewPanel {
     onSelectJob: (jobId: string) => void;
   }) => ReactNode;
 }
+export interface OperatingReviewGroup {
+  label: string;
+  panels: readonly OperatingReviewPanel[];
+}
 export function OperatingCenterPreview({
   additionalPanels = [],
-}: { additionalPanels?: readonly OperatingReviewPanel[] } = {}) {
+  additionalReviewGroups = [],
+}: {
+  additionalPanels?: readonly OperatingReviewPanel[];
+  additionalReviewGroups?: readonly OperatingReviewGroup[];
+} = {}) {
   const [companyId, setCompanyId] = useState(sampleCompanies[0].id),
     [confirmed, setConfirmed] = useState(false),
     [epoch, setEpoch] = useState(0),
@@ -340,12 +348,31 @@ export function OperatingCenterPreview({
               </nav>
             </details>
           )}
+          {additionalReviewGroups.map((group) => (
+            <details className="oc-development" open key={group.label}>
+              <summary>{group.label}</summary>
+              <nav className="oc-nav" aria-label={group.label}>
+                {group.panels.map((panel) => (
+                  <button
+                    key={panel.id}
+                    aria-current={tab === panel.id ? 'page' : undefined}
+                    onClick={() => setTab(panel.id)}
+                  >
+                    {panel.label}
+                  </button>
+                ))}
+              </nav>
+            </details>
+          ))}
           <section
             key={`${companyId}:${tab}`}
             className="oc-panel"
             aria-label="Current operating desk"
           >
-            {additionalPanels
+            {[
+              ...additionalPanels,
+              ...additionalReviewGroups.flatMap((group) => group.panels),
+            ]
               .find((panel) => panel.id === tab)
               ?.render({ sources, enabled: true, onSelectJob: openJob })}
             {tab === 'selection' && (

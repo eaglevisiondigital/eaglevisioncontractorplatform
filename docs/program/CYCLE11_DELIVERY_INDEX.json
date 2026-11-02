@@ -1,0 +1,260 @@
+{
+  "schema": "propel-cycle11-delivery-v1",
+  "coordination_branch": "codex/program-cycle-eleven",
+  "coordination_draft_pr": 75,
+  "parent_commit": "b6ac4fc28c5a50d2029db4a5a69d345af0e3f35b",
+  "baseline_ci": "docs/program/CYCLE11_BASELINE_CI.json",
+  "shared_brief": {
+    "path": "docs/program/CYCLE11_IMPLEMENTATION_BRIEF.md",
+    "sha256": "78b9aeeebe91dbeaed2a11f0240dbfb88771241e52cc2137bfbfb8bcca0663f1"
+  },
+  "independent_review_commit": "dc0e9821f57b8dbd909d845fd3378387da5127a0",
+  "independent_files": [
+    {
+      "path": "tests/cycle11-integration.test.ts",
+      "sha256": "2231b554d50f24127f8b4d96b196e01c0ee464570b7822366bc54478cf413d49"
+    },
+    {
+      "path": "docs/program/CYCLE11_INTEGRATION_REVIEW.md",
+      "sha256": "f5a529fcb1624ec63ca48ffb9a4c06c3c73ce8a6b109180339e940395c592602"
+    }
+  ],
+  "packages": [
+    {
+      "module": "crew-assignment-lab",
+      "component": "CrewAssignmentLab",
+      "doc": "CYCLE11_CREW_ASSIGNMENT_LAB",
+      "owner": "/root/cycle11_field_growth",
+      "branch": "codex/cycle11-crew-assignment-lab",
+      "parent_commit": "b6ac4fc28c5a50d2029db4a5a69d345af0e3f35b",
+      "head_commit": "c97c4bb80d1de5a9275333f657bbc59be3bdac54",
+      "draft_pr": 77,
+      "focused_new_tests": 35,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/crew-assignment-lab.ts",
+          "sha256": "6a1d7f73cf3e04f21504efe354e6f4494e54cec7bef7fea6cd51a1e0358fe567"
+        },
+        {
+          "path": "src/components/workflows/CrewAssignmentLab.tsx",
+          "sha256": "2329939aef643ee34a98ea29794c81158469afd77ace25e6e367d26b496010ab"
+        },
+        {
+          "path": "src/components/workflows/crew-assignment-lab.css",
+          "sha256": "61e15a88614154dc9a3a4814125418a0e368f53922683845ee49b2f96e6b32ee"
+        },
+        {
+          "path": "tests/cycle11-crew-assignment-lab.test.ts",
+          "sha256": "71d13834d7aeed0efb4f36dadba1e339c404d1accab414cb6443d7402d771c3e"
+        },
+        {
+          "path": "docs/program/CYCLE11_CREW_ASSIGNMENT_LAB.md",
+          "sha256": "4780fc0975739bd6d4b9a7dfb852e50a123ed1ed284cbd3a5d96ec65004b5bc2"
+        },
+        {
+          "path": "server/field-lab/crew-transaction.ts",
+          "sha256": "dc23c592e2a489ec871d7c699c21b3104ad3426169f3c22a9a2786876c1513f7"
+        },
+        {
+          "path": "tests/helpers/cycle11-crew-worker.ts",
+          "sha256": "c854e6a21c7487a3f0a098b750dfc4f77a4e3248574c47f5dd6302ba5f4d0f81"
+        }
+      ]
+    },
+    {
+      "module": "financial-correction-review",
+      "component": "FinancialCorrectionReview",
+      "doc": "CYCLE11_FINANCIAL_CORRECTION_REVIEW",
+      "owner": "/root/cycle11_finance_intelligence",
+      "branch": "codex/cycle11-financial-correction-review",
+      "parent_commit": "b6ac4fc28c5a50d2029db4a5a69d345af0e3f35b",
+      "head_commit": "8fe0d30ba3f80c4fc12fd14fef0a05088f1ad5df",
+      "draft_pr": 74,
+      "focused_new_tests": 41,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/financial-correction-review.ts",
+          "sha256": "eb56c171ec26c2724fbc0760bcb2d1f016d42be5055bdb11ecc8112fe4b7eb14"
+        },
+        {
+          "path": "src/components/workflows/FinancialCorrectionReview.tsx",
+          "sha256": "c715cde6538d03c4b7243bba9c2e1f1f0d7cb65e44c0323a76588e319eece3ac"
+        },
+        {
+          "path": "src/components/workflows/financial-correction-review.css",
+          "sha256": "56c69e52c22ca8f6227aa10f45b4c9f04532f1c76ef2ffd81b138935cdca0294"
+        },
+        {
+          "path": "tests/cycle11-financial-correction-review.test.ts",
+          "sha256": "67121abe65f056d7e7edfb0732436c25311552688f040d2416addbf4ee6b554f"
+        },
+        {
+          "path": "docs/program/CYCLE11_FINANCIAL_CORRECTION_REVIEW.md",
+          "sha256": "238a39fe764eb4273878d4206cae58bfcd56d844f1d19e0c5c8500b6eebe32bb"
+        }
+      ]
+    },
+    {
+      "module": "service-continuity",
+      "component": "ServiceContinuity",
+      "doc": "CYCLE11_SERVICE_CONTINUITY",
+      "owner": "/root/cycle11_customer_advanced",
+      "branch": "codex/cycle11-service-continuity",
+      "parent_commit": "b6ac4fc28c5a50d2029db4a5a69d345af0e3f35b",
+      "head_commit": "7165c467b4dbbe8071b8ac60afd5d3d96ab1e88b",
+      "draft_pr": 76,
+      "focused_new_tests": 43,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/service-continuity.ts",
+          "sha256": "41c3e612382a679a586782fa6706cc33cd90fa4ae1ddad0acfa1b0b9b212c44f"
+        },
+        {
+          "path": "src/components/workflows/ServiceContinuity.tsx",
+          "sha256": "10b1f87406c0df9959c6f2f5a7c64dadca58dfaf359dad51f6f5f9d5272068c4"
+        },
+        {
+          "path": "src/components/workflows/service-continuity.css",
+          "sha256": "d00bec63b36772b983f06edf9b4c64fe4b0bc81c9af5a04999bd977bc5db3e3e"
+        },
+        {
+          "path": "tests/cycle11-service-continuity.test.ts",
+          "sha256": "774bf5a65bbad75ec94691071ccb4c59ce0ff258bddbd0d6ac188874b88cc152"
+        },
+        {
+          "path": "docs/program/CYCLE11_SERVICE_CONTINUITY.md",
+          "sha256": "8e177d0fc1df843b62039a790f1d23e0c7a6edae8fadf6c723af7d793a15d34e"
+        }
+      ]
+    },
+    {
+      "module": "atomic-consent-lab",
+      "component": "AtomicConsentLab",
+      "doc": "CYCLE11_ATOMIC_CONSENT_LAB",
+      "owner": "/root/cycle11_field_growth",
+      "branch": "codex/cycle11-atomic-consent-lab",
+      "parent_commit": "b6ac4fc28c5a50d2029db4a5a69d345af0e3f35b",
+      "head_commit": "e3379b9c9cacaba16e505a3c6f9806c803b4a39a",
+      "draft_pr": 80,
+      "focused_new_tests": 60,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/atomic-consent-lab.ts",
+          "sha256": "264fb7068f8b7285a91d853261ac23f39189a5f5dd154a2f5f9e06c5cd825538"
+        },
+        {
+          "path": "src/components/workflows/AtomicConsentLab.tsx",
+          "sha256": "5f6f07ace8d36ef331a6d9184c4df0c703a0d5cfaae3d573376456437b0727bb"
+        },
+        {
+          "path": "src/components/workflows/atomic-consent-lab.css",
+          "sha256": "3d655296a26f1ef488fb9e9007b1139fb58a5138d7af3c50e5f66734b95a3ca8"
+        },
+        {
+          "path": "tests/cycle11-atomic-consent-lab.test.ts",
+          "sha256": "c90c25098817fbffa521bfa3546aeb13efad54904a6d241814fce5d0bdeee5a6"
+        },
+        {
+          "path": "docs/program/CYCLE11_ATOMIC_CONSENT_LAB.md",
+          "sha256": "df7e6c2efbd3a998175911f596b9a234e56f624cd960fdd895ec8b147b401789"
+        },
+        {
+          "path": "server/consent-lab/atomic-boundary.ts",
+          "sha256": "ec2c44ed05b360b8de647a9a4a8626ccf24934b618855c12c56cca3ca18ce42d"
+        },
+        {
+          "path": "tests/helpers/cycle11-consent-worker.ts",
+          "sha256": "874303c17b781c9b8e4fabdfb6dd53bb3b3065ada444e32349ec2502c1a62964"
+        }
+      ]
+    },
+    {
+      "module": "daily-action-center",
+      "component": "DailyActionCenter",
+      "doc": "CYCLE11_DAILY_ACTION_CENTER",
+      "owner": "/root/cycle11_finance_intelligence",
+      "branch": "codex/cycle11-daily-action-center",
+      "parent_commit": "b6ac4fc28c5a50d2029db4a5a69d345af0e3f35b",
+      "head_commit": "a86d117dcfe5f339bb53cc3824e7d731f91c37f9",
+      "draft_pr": 78,
+      "focused_new_tests": 36,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/daily-action-center.ts",
+          "sha256": "065a8d008a4dba03bebe66a56dabe49c445f1cda2f717dfffe2d00c088d07229"
+        },
+        {
+          "path": "src/components/workflows/DailyActionCenter.tsx",
+          "sha256": "5be3e1401f187015227a53a608959c0ede4bb6c95a54885be064a9e5afe720ff"
+        },
+        {
+          "path": "src/components/workflows/daily-action-center.css",
+          "sha256": "2cbccc478fdb93fa8ce58b954e528d9e4beb2791a01e302bf225242ec82ba27f"
+        },
+        {
+          "path": "tests/cycle11-daily-action-center.test.ts",
+          "sha256": "e778faaa80240da0885dd2a4f93b42cf7fb625634e610f24938de8a1c847b59a"
+        },
+        {
+          "path": "docs/program/CYCLE11_DAILY_ACTION_CENTER.md",
+          "sha256": "b1902690f83030e493720c615ce1b57991e92e9f5d4fd1576eab4c4264d4bada"
+        }
+      ]
+    },
+    {
+      "module": "sync-admission-review",
+      "component": "SyncAdmissionReview",
+      "doc": "CYCLE11_SYNC_ADMISSION_REVIEW",
+      "owner": "/root/cycle11_customer_advanced",
+      "branch": "codex/cycle11-sync-admission-review",
+      "parent_commit": "b6ac4fc28c5a50d2029db4a5a69d345af0e3f35b",
+      "head_commit": "6108876998b891108964a4a9a7a58bef6e0b31ef",
+      "draft_pr": 79,
+      "focused_new_tests": 41,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/sync-admission-review.ts",
+          "sha256": "274b74bd7da08e1e0bc2ccfc3f759f4ed0cdc0a3122ebd5302fb94b18be0b067"
+        },
+        {
+          "path": "src/components/workflows/SyncAdmissionReview.tsx",
+          "sha256": "61b5edfaa77e9ceda41dc9c90f69a865087a37638445a29241ae644a55c106fa"
+        },
+        {
+          "path": "src/components/workflows/sync-admission-review.css",
+          "sha256": "f9945d0af22c2dbb806a91282390a9cbefc0dbc48a61cf33b5c9885609d09e04"
+        },
+        {
+          "path": "tests/cycle11-sync-admission-review.test.ts",
+          "sha256": "173f5cfde929f5bf4f3c1c561351084186af9d8b79651e1386a5237fc20ed287"
+        },
+        {
+          "path": "docs/program/CYCLE11_SYNC_ADMISSION_REVIEW.md",
+          "sha256": "7da13fed107210b90bf9e7c5640520399bf9a626715fff356f23ca010cd22271"
+        }
+      ]
+    }
+  ],
+  "combined_evidence": {
+    "focused_new_package_cases": 256,
+    "independent_new_cases": 32,
+    "source_ownership_cases": 17,
+    "pilot_scorecard_cases": 5,
+    "retained_independent_cases": 30,
+    "source_inventory_cases": 73,
+    "application_cases": 413,
+    "development_browser_cases": 21,
+    "production_off_browser_cases": 3,
+    "protected_hashes": 128,
+    "retained_author_files": 148,
+    "design_locks": 5,
+    "design_bindings": 13
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

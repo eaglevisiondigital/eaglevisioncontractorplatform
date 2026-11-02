@@ -1,0 +1,21 @@
+{
+  "schema": "propel-cycle11-ci-correction-v1",
+  "failed_head": "f539baf0bcb68792ac9677d6eaef76837b36bc49",
+  "run_id": 41518243306,
+  "job_id": 125527239355,
+  "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41518243306",
+  "actual_passed": 412,
+  "actual_failed": 1,
+  "failed_test": "the common owner-brief correction changes only whitespace and preserves the reviewed exact source semantics",
+  "cause": "The evidence test required a historical Git tree unavailable in the shallow CI checkout. All domain and native process cases passed.",
+  "owner_source_commit": "b6ac4fc28c5a50d2029db4a5a69d345af0e3f35b",
+  "owner_source_path": "docs/program/CYCLE11_IMPLEMENTATION_BRIEF.md",
+  "normalized_owner_sha256": "23b90446a4b7afc8d68cb39eed652e9741e6820bfe3a528faad51bccbf7e41ed",
+  "normalization": "Collapse whitespace to one ASCII space and trim, preserving every non-whitespace character.",
+  "formatted_sha256": "78b9aeeebe91dbeaed2a11f0240dbfb88771241e52cc2137bfbfb8bcca0663f1",
+  "correction": "Compare the actual normalized current brief to the fixed semantic digest independently derived from exact owner bytes, while retaining the exact formatted-byte digest check. No skip, environment fallback or historical workflow change.",
+  "status": "SOURCE_CORRECTION_INDEPENDENTLY_VERIFIED_LOCAL_TESTED",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "independent_correction_commit": "dc0e9821f57b8dbd909d845fd3378387da5127a0",
+  "local_corrected_suite_cases": 32
+}

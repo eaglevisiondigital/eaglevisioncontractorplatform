@@ -1,0 +1,302 @@
+{
+  "schema": "propel-cycle11-baseline-ci-v1",
+  "observed_at": "2026-11-02 19:53:44 UTC",
+  "baseline_commit": "b5721836d248f360312a6c0815ea896ef965ef8e",
+  "plan_commit": "b6ac4fc28c5a50d2029db4a5a69d345af0e3f35b",
+  "plan_draft_pr": 73,
+  "runs": [
+    {
+      "id": 41512477184,
+      "name": "Synthetic rehearsal compatibility",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "push",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41512477184"
+    },
+    {
+      "id": 41512477261,
+      "name": "Passport timeline preview",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "event": "push",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41512477261"
+    },
+    {
+      "id": 41512477313,
+      "name": "Proof of Work documentation preview",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "event": "push",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41512477313"
+    },
+    {
+      "id": 41512477249,
+      "name": "Foundation checks",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "event": "push",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41512477249"
+    },
+    {
+      "id": 41501820889,
+      "name": "Foundation checks",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "pull_request",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41501820889"
+    },
+    {
+      "id": 41501820728,
+      "name": "Isolated maintenance schedule handoff",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "pull_request",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41501820728"
+    },
+    {
+      "id": 41501820685,
+      "name": "Passport timeline preview",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "pull_request",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41501820685"
+    },
+    {
+      "id": 41501820737,
+      "name": "Cycle 7 practical local usability",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "pull_request",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41501820737"
+    },
+    {
+      "id": 41501820782,
+      "name": "Isolated field work orders",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "pull_request",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41501820782"
+    },
+    {
+      "id": 41501820692,
+      "name": "Cycle 8 connected operating reviews",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "pull_request",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41501820692"
+    },
+    {
+      "id": 41501820850,
+      "name": "Cycle 9 multi-job operating center",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "pull_request",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41501820850"
+    },
+    {
+      "id": 41501820645,
+      "name": "Cycle 10 everyday operating reviews",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "pull_request",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41501820645"
+    },
+    {
+      "id": 41501820894,
+      "name": "Cycle 6 local workflow integration",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "pull_request",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41501820894"
+    },
+    {
+      "id": 41501820780,
+      "name": "Proof of Work documentation preview",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "pull_request",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41501820780"
+    },
+    {
+      "id": 41501821017,
+      "name": "Synthetic rehearsal compatibility",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "pull_request",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41501821017"
+    },
+    {
+      "id": 41501821170,
+      "name": "Isolated technician day board",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "pull_request",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41501821170"
+    },
+    {
+      "id": 41501820731,
+      "name": "Isolated crew-day capacity",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "pull_request",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41501820731"
+    },
+    {
+      "id": 41501820817,
+      "name": "Isolated field scheduling",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "pull_request",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41501820817"
+    },
+    {
+      "id": 41501812019,
+      "name": "Isolated field work orders",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "push",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41501812019"
+    },
+    {
+      "id": 41501812015,
+      "name": "Isolated technician day board",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "push",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41501812015"
+    },
+    {
+      "id": 41501811949,
+      "name": "Isolated field scheduling",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "push",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41501811949"
+    },
+    {
+      "id": 41501811977,
+      "name": "Isolated crew-day capacity",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "push",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41501811977"
+    },
+    {
+      "id": 41501811989,
+      "name": "Foundation checks",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "push",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41501811989"
+    },
+    {
+      "id": 41501811925,
+      "name": "Isolated maintenance schedule handoff",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "push",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41501811925"
+    },
+    {
+      "id": 41501812033,
+      "name": "Passport timeline preview",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "push",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41501812033"
+    },
+    {
+      "id": 41501811868,
+      "name": "Synthetic rehearsal compatibility",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "push",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41501811868"
+    },
+    {
+      "id": 41501812065,
+      "name": "Cycle 10 everyday operating reviews",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "push",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41501812065"
+    },
+    {
+      "id": 41501811905,
+      "name": "Proof of Work documentation preview",
+      "status": "completed",
+      "conclusion": "success",
+      "event": "push",
+      "head_sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41501811905"
+    }
+  ],
+  "cancelled_seed_runs": [
+    {
+      "id": 41512477261,
+      "name": "Passport timeline preview",
+      "branch": "codex/program-cycle-eleven-plan",
+      "sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "created_at": "2026-11-02T19:42:45Z",
+      "updated_at": "2026-11-02T19:42:48Z",
+      "run_attempt": 1
+    },
+    {
+      "id": 41512477313,
+      "name": "Proof of Work documentation preview",
+      "branch": "codex/program-cycle-eleven-plan",
+      "sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "created_at": "2026-11-02T19:42:45Z",
+      "updated_at": "2026-11-02T19:42:48Z",
+      "run_attempt": 1
+    },
+    {
+      "id": 41512477249,
+      "name": "Foundation checks",
+      "branch": "codex/program-cycle-eleven-plan",
+      "sha": "b5721836d248f360312a6c0815ea896ef965ef8e",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "created_at": "2026-11-02T19:42:45Z",
+      "updated_at": "2026-11-02T19:42:49Z",
+      "run_attempt": 1
+    }
+  ],
+  "cancellation_assessment": "Three seed push runs at the old b572183 head belong to codex/program-cycle-eleven-plan and ended within four seconds as its plan commit superseded that initial head. Exact-head successful Foundation PR/push and integration checks on Cycle10 are retained; no rerun needed.",
+  "manual_reruns": 0,
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

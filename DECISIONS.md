@@ -1,5 +1,27 @@
 # Engineering decisions
 
+## November 2 · separate transactional laboratories from canonical operations
+
+Cycle11 keeps the one existing OperatingSources environment, original engines and
+all earlier source hashes. Six isolated author packages and one optional review
+navigation group extend staff review only; the original eight sections and six
+Cycle10 reviews remain intact. A public-evidence scorecard reads the existing25
+capability records rather than creating acceptance or operational authority.
+
+Disposable Node24 SQLite labs persist only command custody, synthetic authority
+fixtures and reservation metadata. Claim commit precedes mutation; exact read-only
+receipts reconcile ambiguity without replay, replacement IDs or automatic retry.
+These participating trusted fixtures are neither the authoritative business schedule
+nor genuine Auth, whole-platform revocation atomicity or physical recovery proof.
+The browser never connects to either writer. Financial proposals remain detached
+from saved costs; exact customer documentation never implies physical completion.
+Shared brief formatting is a single Main-owned whitespace-only patch on the exact
+owner plan, not competing author ownership. Source indexes bind all34 disjoint
+new author files, separate independent evidence and unchanged prior148 author files.
+All original PhaseOne/recovery/MFA/NMI/Auth/customer14/4B/P1/four/Netlify/executor,
+financial/provider/message/hosted/deployment/merge restrictions remain in force.
+Release1.0 remains NOT READY / NOT AUTHORIZED.
+
 ## November 2 · isolate forward ownership regressions from retained CI contracts
 
 Keep historical Cycle8 result counts and manifests/checkers/workflow exact. Four

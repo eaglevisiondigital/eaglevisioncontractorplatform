@@ -11,7 +11,8 @@
     "Cycle7 adds default-OFF usable unsaved planning/cost forms and exact customer-safe service navigation on reviewed Cycle6 sources. Operational and release labels are unchanged.",
     "Cycle8 adds six default-OFF source-bound operating reviews over the same actual journey records. Weekly/source-CAS and consent-at-send remain non-operational; selected-job coverage is not whole-company completeness. Full local/hosted/release acceptance is unchanged.",
     "Cycle9 composes seven exact draft packages over one four-job/three-property canonical repository set. Coverage/availability/consent gaps remain UNKNOWN; source, local, CI and hosted/release acceptance stay separate. No original scope ID or acceptance state is promoted.",
-    "Cycle10 adds six isolated everyday review packages over the same exact OperatingSources. Optional presentation panels reuse one environment; no operational or release state is promoted. Source integrity, local tests and exact GitHub CI remain separate."
+    "Cycle10 adds six isolated everyday review packages over the same exact OperatingSources. Optional presentation panels reuse one environment; no operational or release state is promoted. Source integrity, local tests and exact GitHub CI remain separate.",
+    "Cycle11 adds exact-source staff reviews, separate disposable transaction laboratories and a public-evidence scorecard. Synthetic participating fixture atomicity is not operational authorization or global canonical synchronization. Original capability and hosted/release states remain unchanged."
   ],
   "features": [
     {
@@ -45,7 +46,7 @@
         },
         {
           "path": "SECURITY_MODEL.md",
-          "anchor": "# Security model \u00b7 Phase 2"
+          "anchor": "# Security model · Phase 2"
         }
       ],
       "tests": [
@@ -57,7 +58,7 @@
       "records": [
         {
           "path": "docs/ACTION_B_CONNECTED_RESULT.md",
-          "anchor": "# Propel \u00b7 Action B connected acceptance result"
+          "anchor": "# Propel · Action B connected acceptance result"
         }
       ],
       "ci": {
@@ -176,7 +177,7 @@
         },
         {
           "path": "tests/workflows/sales-workflow.test.ts",
-          "anchor": "actual lead \u2192 exact issued scope \u2192 contract preparation"
+          "anchor": "actual lead → exact issued scope → contract preparation"
         },
         {
           "path": "tests/cycle8-sales-desk.test.ts",
@@ -198,7 +199,7 @@
         },
         {
           "path": "docs/ACTION_B_CONNECTED_RESULT.md",
-          "anchor": "# Propel \u00b7 Action B connected acceptance result"
+          "anchor": "# Propel · Action B connected acceptance result"
         },
         {
           "path": "docs/program/CYCLE6_INDEPENDENT_REVIEW.md",
@@ -206,7 +207,7 @@
         },
         {
           "path": "docs/program/CYCLE8_SALES_DESK.md",
-          "anchor": "# Cycle 8 \u00b7 booking and exact-scope staff review"
+          "anchor": "# Cycle 8 · booking and exact-scope staff review"
         },
         {
           "path": "docs/program/CYCLE9_VALIDATION.md",
@@ -276,7 +277,7 @@
         },
         {
           "path": "tests/workflows/sales-workflow.test.ts",
-          "anchor": "actual lead \u2192 exact issued scope \u2192 contract preparation"
+          "anchor": "actual lead → exact issued scope → contract preparation"
         },
         {
           "path": "tests/cycle9-operating-selection.test.ts",
@@ -290,7 +291,7 @@
         },
         {
           "path": "docs/CUSTOMER_ESTIMATE_REVISIONS.md",
-          "anchor": "# Workstream 3B \u00b7 customer request review and estimate draft revision"
+          "anchor": "# Workstream 3B · customer request review and estimate draft revision"
         },
         {
           "path": "docs/program/CYCLE3_INTEGRATION_REVIEW.md",
@@ -366,7 +367,7 @@
       "records": [
         {
           "path": "docs/CUSTOMER_BROKER_INTEGRATION.md",
-          "anchor": "# Workstream 4B \u00b7 server broker and restricted database integration"
+          "anchor": "# Workstream 4B · server broker and restricted database integration"
         },
         {
           "path": "docs/CUSTOMER_BROKER_VALIDATION.json",
@@ -436,7 +437,7 @@
         },
         {
           "path": "tests/workflows/sales-workflow.test.ts",
-          "anchor": "actual lead \u2192 exact issued scope \u2192 contract preparation"
+          "anchor": "actual lead → exact issued scope → contract preparation"
         },
         {
           "path": "tests/cycle8-sales-desk.test.ts",
@@ -482,7 +483,7 @@
         },
         {
           "path": "docs/program/CYCLE8_SALES_DESK.md",
-          "anchor": "# Cycle 8 \u00b7 booking and exact-scope staff review"
+          "anchor": "# Cycle 8 · booking and exact-scope staff review"
         },
         {
           "path": "docs/program/CYCLE9_VALIDATION.md",
@@ -546,7 +547,7 @@
       "records": [
         {
           "path": "docs/PROPERTY_OPERATIONS_VALIDATION.md",
-          "anchor": "# Property operations and smart procurement \u00b7 local implementation"
+          "anchor": "# Property operations and smart procurement · local implementation"
         },
         {
           "path": "docs/MAINTENANCE_FOLLOW_UP_VALIDATION.json",
@@ -624,6 +625,10 @@
         {
           "path": "src/lib/workflows/crew-plan-review.ts",
           "anchor": "reviewCrewPlans"
+        },
+        {
+          "path": "src/lib/workflows/crew-assignment-lab.ts",
+          "anchor": "admitCrewAssignment"
         }
       ],
       "tests": [
@@ -687,7 +692,7 @@
         },
         {
           "path": "docs/program/CYCLE8_WEEKLY_CREW.md",
-          "anchor": "# Cycle 8 \u00b7 weekly crew scheduling review"
+          "anchor": "# Cycle 8 · weekly crew scheduling review"
         },
         {
           "path": "docs/program/CYCLE9_VALIDATION.md",
@@ -696,6 +701,10 @@
         {
           "path": "docs/program/CYCLE10_VALIDATION.md",
           "anchor": "# Cycle 10 local implementation and verification"
+        },
+        {
+          "path": "docs/program/CYCLE11_CREW_ASSIGNMENT_LAB.md",
+          "anchor": "Cycle 11"
         }
       ],
       "ci": {
@@ -865,6 +874,10 @@
         {
           "path": "src/lib/workflows/financial-exceptions.ts",
           "anchor": "readFinancialExceptions"
+        },
+        {
+          "path": "src/lib/workflows/financial-correction-review.ts",
+          "anchor": "readFinancialCorrectionSources"
         }
       ],
       "tests": [
@@ -937,6 +950,10 @@
         {
           "path": "docs/program/CYCLE10_VALIDATION.md",
           "anchor": "# Cycle 10 local implementation and verification"
+        },
+        {
+          "path": "docs/program/CYCLE11_FINANCIAL_CORRECTION_REVIEW.md",
+          "anchor": "Cycle 11"
         }
       ],
       "ci": {
@@ -1071,12 +1088,16 @@
         {
           "path": "src/lib/workflows/service-desk.ts",
           "anchor": "openServiceDeskReport"
+        },
+        {
+          "path": "src/lib/workflows/service-continuity.ts",
+          "anchor": "readServiceContinuity"
         }
       ],
       "tests": [
         {
           "path": "tests/workflows/customer-workflow.test.ts",
-          "anchor": "same-repository Field \u2192 customer Passport documentation"
+          "anchor": "same-repository Field → customer Passport documentation"
         },
         {
           "path": "tests/cycle8-completion-review.test.ts",
@@ -1094,7 +1115,7 @@
       "records": [
         {
           "path": "docs/PRODUCT_PROGRAM_2026.md",
-          "anchor": "# Propel Contractor Suite \u2014 integrated product program"
+          "anchor": "# Propel Contractor Suite — integrated product program"
         },
         {
           "path": "docs/program/CYCLE3_INTEGRATION_REVIEW.md",
@@ -1122,7 +1143,7 @@
         },
         {
           "path": "docs/program/CYCLE8_COMPLETION_REVIEW.md",
-          "anchor": "# Cycle 8 \u00b7 customer-safe completion documentation review"
+          "anchor": "# Cycle 8 · customer-safe completion documentation review"
         },
         {
           "path": "docs/program/CYCLE9_VALIDATION.md",
@@ -1131,6 +1152,10 @@
         {
           "path": "docs/program/CYCLE10_VALIDATION.md",
           "anchor": "# Cycle 10 local implementation and verification"
+        },
+        {
+          "path": "docs/program/CYCLE11_SERVICE_CONTINUITY.md",
+          "anchor": "Cycle 11"
         }
       ],
       "ci": {
@@ -1181,6 +1206,10 @@
         {
           "path": "src/lib/workflows/portfolio-maintenance.ts",
           "anchor": "export async function readPortfolioMaintenance("
+        },
+        {
+          "path": "src/lib/workflows/atomic-consent-lab.ts",
+          "anchor": "readAtomicConsentLab"
         }
       ],
       "tests": [
@@ -1228,11 +1257,15 @@
         },
         {
           "path": "docs/program/CYCLE8_MAINTENANCE_DESK.md",
-          "anchor": "# Cycle 8 \u00b7 maintenance and renewal planning desk"
+          "anchor": "# Cycle 8 · maintenance and renewal planning desk"
         },
         {
           "path": "docs/program/CYCLE9_VALIDATION.md",
           "anchor": "# Cycle 9 multi-job operating center validation"
+        },
+        {
+          "path": "docs/program/CYCLE11_ATOMIC_CONSENT_LAB.md",
+          "anchor": "Cycle 11"
         }
       ],
       "ci": {
@@ -1309,7 +1342,7 @@
       "records": [
         {
           "path": "docs/PRODUCT_PROGRAM_2026.md",
-          "anchor": "# Propel Contractor Suite \u2014 integrated product program"
+          "anchor": "# Propel Contractor Suite — integrated product program"
         },
         {
           "path": "docs/program/CYCLE3_INTEGRATION_REVIEW.md",
@@ -1337,7 +1370,7 @@
         },
         {
           "path": "docs/program/CYCLE8_MAINTENANCE_DESK.md",
-          "anchor": "# Cycle 8 \u00b7 maintenance and renewal planning desk"
+          "anchor": "# Cycle 8 · maintenance and renewal planning desk"
         },
         {
           "path": "docs/program/CYCLE9_VALIDATION.md",
@@ -1404,6 +1437,10 @@
         {
           "path": "src/lib/workflows/priority-explanations.ts",
           "anchor": "readPriorityExplanations"
+        },
+        {
+          "path": "src/lib/workflows/daily-action-center.ts",
+          "anchor": "readDailyActionCenter"
         }
       ],
       "tests": [
@@ -1447,7 +1484,7 @@
         },
         {
           "path": "docs/program/CYCLE8_DAILY_OPERATIONS.md",
-          "anchor": "# Cycle 8 \u00b7 Daily operating priorities"
+          "anchor": "# Cycle 8 · Daily operating priorities"
         },
         {
           "path": "docs/program/CYCLE9_VALIDATION.md",
@@ -1456,6 +1493,10 @@
         {
           "path": "docs/program/CYCLE10_VALIDATION.md",
           "anchor": "# Cycle 10 local implementation and verification"
+        },
+        {
+          "path": "docs/program/CYCLE11_DAILY_ACTION_CENTER.md",
+          "anchor": "Cycle 11"
         }
       ],
       "ci": {
@@ -1507,6 +1548,10 @@
         {
           "path": "src/lib/workflows/advanced-handoffs.ts",
           "anchor": "export async function readAdvancedHandoffRequirements"
+        },
+        {
+          "path": "src/lib/workflows/sync-admission-review.ts",
+          "anchor": "readSyncAdmissionSource"
         }
       ],
       "tests": [
@@ -1534,7 +1579,7 @@
         },
         {
           "path": "docs/PROPERTY_OPERATIONS_VALIDATION.md",
-          "anchor": "# Property operations and smart procurement \u00b7 local implementation"
+          "anchor": "# Property operations and smart procurement · local implementation"
         },
         {
           "path": "docs/program/CYCLE5_INTEGRATION_REVIEW.md",
@@ -1555,6 +1600,10 @@
         {
           "path": "docs/program/CYCLE10_VALIDATION.md",
           "anchor": "# Cycle 10 local implementation and verification"
+        },
+        {
+          "path": "docs/program/CYCLE11_SYNC_ADMISSION_REVIEW.md",
+          "anchor": "Cycle 11"
         }
       ],
       "ci": {
@@ -1767,7 +1816,7 @@
         },
         {
           "path": "docs/ACTION_B_CONNECTED_RESULT.md",
-          "anchor": "# Propel \u00b7 Action B connected acceptance result"
+          "anchor": "# Propel · Action B connected acceptance result"
         }
       ],
       "ci": {
@@ -1874,7 +1923,7 @@
       "records": [
         {
           "path": "docs/MATERIAL_IMPORT.md",
-          "anchor": "# Smart Material Import \u00b7 implementation and activation boundary"
+          "anchor": "# Smart Material Import · implementation and activation boundary"
         },
         {
           "path": "docs/PHASE3_VALIDATION.md",
@@ -2136,6 +2185,10 @@
         {
           "path": "scripts/check-cycle10-integrity.mjs",
           "anchor": "export function validateCycle10Manifest"
+        },
+        {
+          "path": "src/lib/workflows/pilot-scorecard.ts",
+          "anchor": "readPilotScorecard"
         }
       ],
       "tests": [
