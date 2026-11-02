@@ -61,9 +61,10 @@ A later read-only review also cleared Main's mount/navigation/checkers and Finan
 
 ## Focused verification
 
-The actual Vitest JSON reports **371 PASS, zero failed or pending, eleven files**:
+The actual Vitest JSON reports **371 PASS, zero failed or pending, twelve files**:
 218 new author/addon cases,28 shared foundation,27 independent integration,21
-retained Cycle8 integration and77 source-inventory cases. check-cycle9-results.mjs
+retained Cycle8 integration,73 retained source-inventory cases and4 separately
+retained Cycle9 ownership cases. check-cycle9-results.mjs
 checks every actual suite count/status against the source-bound index. Domain
 coverage includes three brands, exact source/version navigation, duplicate/foreign/
 stale associations, revoked staff, final-await source/input changes, canonical known
@@ -116,3 +117,45 @@ The unpublished Main branch advances by fast-forward from its initial c3bbfeb pa
 to the final shared foundation7d5a3a7 before its first implementation commit. No
 reviewed author parent is rewritten and no PR is merged. The combined draft therefore
 stacks directly on the exact final shared foundation.
+
+## Exact-head CI closure and finite compatibility correction
+
+On continuation, GitHub confirmed successful Foundation PR41485831229/push41485824295
+and Cycle9 PR41485831206/push41485824285 at exact Main4917593d891159fce9a1474e710a3dbc8667dd01.
+Every unchanged author/shared PR57–64 head also has successful PR and push Foundation.
+No successful check was manually restarted and no completed package was recreated.
+
+The additional legacy Cycle8 PR run41485831331 failed its strict result-count checker,
+not a product assertion. Actual uploaded JSON artifact13160429565 contains387 passed,
+zero failed/pending; shared inventory77. Historical Cycle8 expected383/73. Four new
+Cycle9 ownership cases had been placed in the shared suite. The finite correction
+moves the exact same four assertions to tests/program/cycle9-feature-evidence.test.ts,
+explicitly included and counted in the Cycle9 workflow/results contract. Shared
+program-feature-evidence.test.ts is byte-for-byte restored to successful Cycle8
+fe813ed; the Cycle8 manifest, both checkers and workflow remain entirely unchanged.
+No validation relaxation, excluded assertion or historical evidence rewrite.
+
+Focused verification after this correction: Cycle8 **383 PASS across10 files**, with
+its unchanged strict checker; Cycle9 **371 PASS across12 files**, now73 shared plus4
+forward ownership cases instead of77 combined. These suites overlap and their totals
+must not be added as distinct cases. All previous business/domain/UI source bytes,
+independent review and30 DEV/3 production-OFF browser cases with72 PNGs are retained;
+no unrelated successful local browser/recovery/native-security suite was rerun.
+The correction commit has its own normal automatic CI; prior green runs are never
+assigned to its new SHA. See CYCLE9_CI_CLOSURE.json for exact observed heads/runs.
+
+The cancelled legacy Cycle6 run41481711681 on addon b0f7261d was a10-minute job
+budget exhausted by dependency downloads, including an8m45 Ubuntu font download.
+Its346 application cases and15 DEV browsers passed before cancellation;3 OFF cases
+were skipped. Same-SHA successful Foundation41481712064 passed297 browser cases,
+including those15 DEV and3 OFF cases. Existing evidence closes that coverage gap;
+no rerun, timeout widening or workflow change is needed. The earlier PR52 Passport
+install timeout remains covered by its successful exact-SHA push evidence.
+
+Independent /root/cycle6_integration_review inspected the failure artifact and exact
+finite move: CLEAR, all four assertions unchanged, historical files restored/exact.
+/root/cycle8_sales_customer independently inspected cancellation annotations, logs
+and exact-head browser/config coverage. Original reviewer commit0825e3c is unchanged.
+These are completed follow-up reviews, not additional feature implementations.
+All release/default-off/protected-file/recovery/financial/communication/hosted gates
+remain unchanged. Release1.0 NOT READY / NOT AUTHORIZED.

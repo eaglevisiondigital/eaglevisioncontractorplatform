@@ -276,7 +276,7 @@
     "foundation_cases": 28,
     "independent_new_cases": 27,
     "retained_independent_cases": 21,
-    "source_inventory_cases": 77,
+    "source_inventory_cases": 73,
     "application_cases": 371,
     "dev_browser_cases": 30,
     "production_off_cases": 3,
@@ -284,7 +284,9 @@
     "preview_route": "/preview/operating-center",
     "default_off": true,
     "same_tab_memory_only": true,
-    "ci_snapshot": "docs/program/CYCLE9_CI_SNAPSHOT.json"
+    "ci_snapshot": "docs/program/CYCLE9_CI_SNAPSHOT.json",
+    "source_ownership_cases": 4,
+    "source_ownership_test": "tests/program/cycle9-feature-evidence.test.ts"
   },
   "release": "NOT_READY_NOT_AUTHORIZED",
   "limits": [
@@ -295,5 +297,6 @@
   ],
   "coordination_parent_commit": "7d5a3a797fc0552369c29d1d3ba8db0d2bdcf765",
   "coordination_draft_pr": 65,
-  "coordination_implementation_commit": "a256336d40efdbc625c2bab8756549f860580905"
+  "coordination_implementation_commit": "a256336d40efdbc625c2bab8756549f860580905",
+  "ci_closure": "docs/program/CYCLE9_CI_CLOSURE.json"
 }

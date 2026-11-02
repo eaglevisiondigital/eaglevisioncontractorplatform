@@ -2,6 +2,11 @@
 
 ## Cycle-nine multi-job candidate
 
+Exact prior Main4917593 Foundation and Cycle9 CI are now confirmed green. A finite
+forward compatibility correction isolates four unchanged ownership cases, preserving
+historical Cycle8 count383 and complete Cycle9 count371. All original scope/local/
+hosted/release labels remain unchanged. See [exact CI closure](program/CYCLE9_CI_CLOSURE.json).
+
 Seven separately owned packages and shared foundation PR59 are explicitly composed
 for bounded local testing on codex/program-cycle-nine-integration. See
 [exact delivery index](program/CYCLE9_DELIVERY_INDEX.json),

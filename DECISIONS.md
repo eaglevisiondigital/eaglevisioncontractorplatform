@@ -1,5 +1,19 @@
 # Engineering decisions
 
+## November 2 · isolate forward ownership regressions from retained CI contracts
+
+Keep historical Cycle8 result counts and manifests/checkers/workflow exact. Four
+Cycle9 ownership assertions added to a shared suite made the legacy pipeline reject
+387 successful cases instead of its reviewed383. Move those four assertions unchanged
+into an explicitly run and counted Cycle9 suite; restore shared source byte-for-byte
+to fe813ed. Preserve full371 Cycle9 coverage across12files and original383 Cycle8
+coverage. Do not accept arbitrary counts, skip assertions or rewrite historical
+source/hash evidence. This is validation compatibility only; all business modules,
+locked UI, migration/P1/Netlify/recovery/MFA/NMI/Auth/financial/provider/send/hosted/
+production/deploy/merge gates remain unchanged. Record actual run identities and
+separate prior-head success from new-head automatic CI. Release1.0 NOT READY /
+NOT AUTHORIZED.
+
 ## November 2 · compose canonical multi-job operating reviews
 
 Use one explicit disposable repository set, not repeated independent journey stores,

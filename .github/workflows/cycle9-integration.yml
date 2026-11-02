@@ -32,7 +32,7 @@ jobs:
       - run: npm run typecheck
       - run: npm run features:check
       - run: node scripts/check-cycle9-integrity.mjs
-      - run: npx vitest run tests/cycle9*.test.ts tests/program-feature-evidence.test.ts tests/cycle8-integration.test.ts --reporter=json --outputFile=artifacts/cycle9/application-results.json
+      - run: npx vitest run tests/cycle9*.test.ts tests/program/cycle9-feature-evidence.test.ts tests/program-feature-evidence.test.ts tests/cycle8-integration.test.ts --reporter=json --outputFile=artifacts/cycle9/application-results.json
       - run: node scripts/check-cycle9-results.mjs
       - run: npm run build
       - run: npx playwright install --with-deps chromium

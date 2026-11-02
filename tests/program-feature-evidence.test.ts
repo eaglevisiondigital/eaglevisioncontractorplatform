@@ -20,15 +20,6 @@ import {
 } from '../scripts/feature-evidence.mjs';
 
 const roots: string[] = [];
-for (const [path, owner] of [
-  ['src/lib/workflows/operating-center-runtime.ts', 'A1'],
-  ['src/components/workflows/OperatingSelection.tsx', 'A2'],
-  ['src/lib/workflows/portfolio-finance.ts', 'A4'],
-  ['src/lib/workflows/operating-addons.ts', 'A7'],
-])
-  it(`Cycle9 ownership precedence: ${path}`, () => {
-    expect(sourceOwner(path)).toBe(owner);
-  });
 afterEach(() => {
   for (const root of roots.splice(0))
     rmSync(root, { recursive: true, force: true });

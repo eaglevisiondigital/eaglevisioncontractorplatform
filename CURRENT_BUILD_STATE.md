@@ -2,6 +2,15 @@
 
 ## Latest: cycle nine · multi-job operating center · November 2
 
+CI follow-up: Main4917593 Foundation and dedicated Cycle9 PR/push runs now PASS;
+all author/shared exact heads57–64 are green. A legacy Cycle8 strict count mismatch
+is corrected by moving four unchanged Cycle9 assertions into their own suite and
+restoring the shared test file to exact Cycle8 bytes. No legacy checker/workflow,
+application module or protected file changes. Local Cycle8 application383 and Cycle9
+application371 PASS (overlapping suites); correction CI is separate. See
+[exact closure evidence](docs/program/CYCLE9_CI_CLOSURE.json). No successful checks
+were manually rerun or completed feature packages recreated.
+
 Cycle8 PR56 exact fe813ed Foundation and all22 observed runs PASS; PR52's cancelled
 Passport install-timeout is accounted for by its successful same-SHA push run.
 No successful checks were manually restarted. Shared foundation PR59 and seven

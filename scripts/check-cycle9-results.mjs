@@ -27,6 +27,10 @@ const expected = new Map([
     manifest.combined_evidence.source_inventory_cases,
   ],
   [
+    'cycle9-feature-evidence.test.ts',
+    manifest.combined_evidence.source_ownership_cases,
+  ],
+  [
     'cycle9-operating-runtime.test.ts',
     manifest.combined_evidence.foundation_cases,
   ],

@@ -2051,6 +2051,10 @@
         {
           "path": "tests/cycle9-integration.test.ts",
           "anchor": "from '../src/lib/workflows/operating-center-runtime'"
+        },
+        {
+          "path": "tests/program/cycle9-feature-evidence.test.ts",
+          "anchor": "Cycle9 ownership precedence:"
         }
       ],
       "records": [
@@ -2089,6 +2093,10 @@
         {
           "path": "docs/program/CYCLE9_INTEGRATION_REVIEW.md",
           "anchor": "# Cycle 9 independent combined source review"
+        },
+        {
+          "path": "docs/program/CYCLE9_CI_CLOSURE.json",
+          "anchor": "\"schema\": \"propel-cycle9-ci-closure-v1\""
         }
       ],
       "ci": {

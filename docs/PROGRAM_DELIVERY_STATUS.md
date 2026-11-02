@@ -2,6 +2,18 @@
 
 ## Cycle nine · multi-job operating center · November 2
 
+Continuation CI closure: exact Main4917593 Foundation PR41485831229/push41485824295
+and both dedicated Cycle9 runs41485831206/41485824285 are confirmed PASS. All unchanged
+PR57–64 final heads also have successful Foundation PR/push checks. A legacy Cycle8
+job failed only because four new ownership cases changed its strict historical count.
+They now live unchanged in a dedicated Cycle9 test file; the shared suite and every
+Cycle8 manifest/checker/workflow match successful fe813ed exactly. Post-fix local
+Cycle8 application383 and Cycle9 application371 pass; suites overlap, not754 distinct
+cases. The correction commit has separate normal automatic CI. Exact run identities,
+actual failure evidence and independently reviewed cancellation coverage are retained
+in [CI closure](program/CYCLE9_CI_CLOSURE.json) and [validation](program/CYCLE9_VALIDATION.md).
+No duplicate packages, reruns of successful checks or release promotion.
+
 Combined candidate: [draft PR65](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/65),
 implementation commit `a256336d40efdbc625c2bab8756549f860580905` on
 `codex/program-cycle-nine-integration`. A subsequent register-only commit records
@@ -24,15 +36,15 @@ both final Foundation runs41481207721/41481195703 PASS. Authors retain their ori
 c3bbfeb parent and independently reviewable drafts against the foundation. Main's
 integration draft also targets that foundation. No parent/history rewrite or merge.
 
-| Package               | Actual agent                | Branch                               | Draft PR                                                                          | Exact final head                           | New cases | Foundation snapshot        |
-| --------------------- | --------------------------- | ------------------------------------ | --------------------------------------------------------------------------------- | ------------------------------------------ | --------- | -------------------------- |
-| portfolio-scheduling  | /root/cycle9_field_growth   | `codex/cycle9-portfolio-scheduling`  | [57](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/57) | `a3216be062c1d2e6827f6f7b395a0ce128a1fed9` | 37        | PASS                       |
-| operating-selection   | /root/cycle8_sales_customer | `codex/cycle9-operating-selection`   | [58](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/58) | `d522751b6cfe9f1a44be013198a12f0f840f0821` | 23        | PASS                       |
-| portfolio-finance     | /root/cycle5_profit_guard   | `codex/cycle9-portfolio-finance`     | [60](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/60) | `52abd65613b35a9dbf460f88a7a2b30762c48b2b` | 34        | RUNNING — not yet accepted |
-| portfolio-service     | /root/cycle8_sales_customer | `codex/cycle9-portfolio-service`     | [61](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/61) | `87c6c158ea4532765c074e6919b06e722d454ef7` | 23        | PASS                       |
-| portfolio-maintenance | /root/cycle9_field_growth   | `codex/cycle9-portfolio-maintenance` | [62](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/62) | `043c49c2f9d1c766c232ccdca03acef4d309f3eb` | 43        | PASS                       |
-| business-briefing     | /root/cycle5_profit_guard   | `codex/cycle9-business-briefing`     | [63](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/63) | `11074c0fef398c20b92e67feb12719bfe57361b1` | 31        | PASS                       |
-| operating-addons      | /root                       | `codex/cycle9-operating-addons`      | [64](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/64) | `b0f7261d507b63ea0712d6211cbf331b8c359295` | 27        | PASS                       |
+| Package               | Actual agent                | Branch                               | Draft PR                                                                          | Exact final head                           | New cases | Foundation snapshot |
+| --------------------- | --------------------------- | ------------------------------------ | --------------------------------------------------------------------------------- | ------------------------------------------ | --------- | ------------------- |
+| portfolio-scheduling  | /root/cycle9_field_growth   | `codex/cycle9-portfolio-scheduling`  | [57](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/57) | `a3216be062c1d2e6827f6f7b395a0ce128a1fed9` | 37        | PASS                |
+| operating-selection   | /root/cycle8_sales_customer | `codex/cycle9-operating-selection`   | [58](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/58) | `d522751b6cfe9f1a44be013198a12f0f840f0821` | 23        | PASS                |
+| portfolio-finance     | /root/cycle5_profit_guard   | `codex/cycle9-portfolio-finance`     | [60](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/60) | `52abd65613b35a9dbf460f88a7a2b30762c48b2b` | 34        | PASS                |
+| portfolio-service     | /root/cycle8_sales_customer | `codex/cycle9-portfolio-service`     | [61](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/61) | `87c6c158ea4532765c074e6919b06e722d454ef7` | 23        | PASS                |
+| portfolio-maintenance | /root/cycle9_field_growth   | `codex/cycle9-portfolio-maintenance` | [62](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/62) | `043c49c2f9d1c766c232ccdca03acef4d309f3eb` | 43        | PASS                |
+| business-briefing     | /root/cycle5_profit_guard   | `codex/cycle9-business-briefing`     | [63](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/63) | `11074c0fef398c20b92e67feb12719bfe57361b1` | 31        | PASS                |
+| operating-addons      | /root                       | `codex/cycle9-operating-addons`      | [64](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/64) | `b0f7261d507b63ea0712d6211cbf331b8c359295` | 27        | PASS                |
 
 Three implementation slots ran bounded parallel waves in isolated worktrees. Main
 then authored the separate advanced-tool adapter, shared mount and combined proof.
@@ -52,8 +64,9 @@ are admitted handles, not another business store or complete company inventory.
 Advanced reviews reuse existing offline, voice, receptionist, Storm/Network,
 accounting and procurement evidence; there is no live provider or execution.
 
-**371 distinct application cases PASS across11 files**:218 new package cases,
-28 foundation,27 independent,21 retained Cycle8 and77 inventory cases. Actual runner
+**371 distinct application cases PASS across12 files**:218 new package cases,
+28 foundation,27 independent,21 retained Cycle8,73 shared inventory and4 separately
+retained Cycle9 ownership cases. Actual runner
 JSON is checked against every source-index suite count. **30 development browser
 cases and3 production-OFF cases PASS**, all three brands and Desktop Chrome/iPad
 Mini/iPhone13 viewports.72 real PNGs cover operating shell, selected job, weekly
