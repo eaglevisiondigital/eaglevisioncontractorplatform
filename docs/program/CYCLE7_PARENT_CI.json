@@ -280,5 +280,17 @@
     "pr42": "Explicit 15m job timeout after 279 browser passes; exact-head push Foundation SUCCESS. No rerun.",
     "pr38": "Both original Foundation runs exceeded 15m during 297 browser cases; app and PostgreSQL passed. CI-only finite25m correction a6ea48fec561754bfb9d393996661c0b1cec4830 automatic CI pending.",
     "release": "NOT_READY_NOT_AUTHORIZED"
+  },
+  "follow_up": {
+    "head": "f89c2bd32d1f5c8a05a1f12805140235845c81fb",
+    "foundation_pr": {
+      "id": 41456878628,
+      "conclusion": "success"
+    },
+    "foundation_push": {
+      "id": 41456870604,
+      "conclusion": "success"
+    },
+    "scope": "Corrected parent CI supersedes the original PR38 pending/cancelled evidence above. PR42 exact-head success remains preserved; no manual reruns."
   }
 }

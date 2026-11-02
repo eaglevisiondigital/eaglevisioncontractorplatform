@@ -2,7 +2,8 @@
 
 ## Cycle seven · practical contractor usability · November 2
 
-Main branch `codex/program-cycle-seven` is stacked on exact PR38
+Main draft [PR49](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/49),
+branch `codex/program-cycle-seven`, is stacked on exact PR38
 `f89c2bd32d1f5c8a05a1f12805140235845c81fb`. All prior drafts remain unmerged.
 [Source/owner/hash index](program/CYCLE7_DELIVERY_INDEX.json),
 [baseline eight-workstream review](program/CYCLE7_BASELINE_REVIEW.md),
@@ -15,6 +16,8 @@ Main branch `codex/program-cycle-seven` is stacked on exact PR38
 | /root/cycle5_profit_guard     | codex/cycle7-time-materials-invoice | [47](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/47) | `63de3caef6bcf19dec76f1797ead4f0be72bb2a7` | 41 PASS   |
 | /root/cycle5_operations       | codex/cycle7-booking-scheduling     | [48](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/48) | `08acaa571a8a92c0091d7dad1350c0988d2b5551` | 57 PASS   |
 
+Main implementation commit `005871d145d7a4bc8181d34a740ba6cf647bdb41` contains the
+verified source composition; subsequent metadata-only head/CI is reported on PR49.
 Main/root owns the combined loopback mount, shared design/source contracts, checker,
 browser proof and register. Independent `/root/cycle6_integration_review` owns the
 baseline and8 new combined probes, in isolated review worktrees. Three worker slots

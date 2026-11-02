@@ -1,7 +1,7 @@
 {
   "schema": "propel-cycle7-delivery-v1",
   "coordination_branch": "codex/program-cycle-seven",
-  "coordination_pr": null,
+  "coordination_pr": 49,
   "parent_commit": "f89c2bd32d1f5c8a05a1f12805140235845c81fb",
   "prior_review": "docs/program/CYCLE7_BASELINE_REVIEW.md",
   "packages": [
@@ -107,5 +107,17 @@
     "Explicit local source composition; no PR merge or operational promotion.",
     "Date/time/material proposals are unsaved and excluded from actual records.",
     "Customer service is safe evidence navigation; no request, message or financial action."
-  ]
+  ],
+  "reviewed_main_implementation": "005871d145d7a4bc8181d34a740ba6cf647bdb41",
+  "combined_evidence": {
+    "application_cases": 215,
+    "browser_cases": 12,
+    "production_off_cases": 3,
+    "independent_new_cases": 8,
+    "author_new_cases": 132,
+    "protected_public_files": 128,
+    "locked_design_files": 5,
+    "source_bindings": 13,
+    "screenshots": 27
+  }
 }
