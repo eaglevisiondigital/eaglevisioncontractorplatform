@@ -296,6 +296,13 @@ export async function assertPrototypeSourceCurrent(source: PrototypeSource) {
   admission(binding.gate);
   if ((await documentHash(source.snapshot)) !== source.sha256)
     throw Error('Prototype integrity mismatch');
+  assertPrototypeSourceCurrentNow(source);
+}
+/** Final synchronous consumer checkpoint, after any awaited read/hash/verification. */
+export function assertPrototypeSourceCurrentNow(source: PrototypeSource) {
+  const binding = bindings.get(source);
+  if (!binding) throw Error('Unknown prototype source; no imported authority');
+  admission(binding.gate);
   const final = capture(
     binding.repo,
     binding.target,
