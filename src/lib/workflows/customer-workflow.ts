@@ -216,7 +216,12 @@ export async function readCustomerWorkflow(
       sources,
     });
     admission(gate);
-    if (checkpoint(model, t, s) !== before) return unknown();
+    if (
+      JSON.stringify(target(selected)) !== JSON.stringify(t) ||
+      JSON.stringify(selection(report)) !== JSON.stringify(s) ||
+      checkpoint(model, t, s) !== before
+    )
+      return unknown();
     return freezePrototype({
       status: 'CURRENT' as const,
       timeline,
@@ -261,7 +266,11 @@ export async function prepareCustomerWorkflowPack(
       enabled: live.enabled === true,
       confirmed: live.confirmed === true,
     });
-    if (JSON.stringify(live) !== pinned)
+    if (
+      JSON.stringify(target(selected)) !== JSON.stringify(t) ||
+      JSON.stringify(selection(report)) !== JSON.stringify(s) ||
+      JSON.stringify(live) !== pinned
+    )
       throw Error('Documentation confirmation changed');
   };
   guard();
@@ -323,7 +332,12 @@ export async function verifyCustomerWorkflowPack(
       enabled: true,
     });
     admission(gate);
-    if (checkpoint(model, t, s) !== before) return 'UNKNOWN';
+    if (
+      JSON.stringify(target(selected)) !== JSON.stringify(t) ||
+      JSON.stringify(selection(report)) !== JSON.stringify(s) ||
+      checkpoint(model, t, s) !== before
+    )
+      return 'UNKNOWN';
     return result.status;
   } catch {
     return 'UNKNOWN';

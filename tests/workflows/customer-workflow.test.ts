@@ -413,3 +413,31 @@ describe('same-repository Field → customer Passport documentation', () => {
     expect(called).toBe(false);
   });
 });
+
+describe('original customer navigation selection at the final digest', () => {
+  it('withholds the old report when the caller changes its exact published version', async () => {
+    const f = await fixture(),
+      digest = crypto.subtle.digest.bind(crypto.subtle);
+    let reached = false;
+    vi.spyOn(crypto.subtle, 'digest').mockImplementation(async (...args) => {
+      const result = await digest(...args);
+      const body = JSON.parse(new TextDecoder().decode(args[1] as ArrayBuffer));
+      if (body.timeline_sha256 && body.sources) {
+        reached = true;
+        f.selection.published_version++;
+      }
+      return result;
+    });
+    expect(
+      (
+        await readCustomerWorkflow(
+          f.customerModel,
+          f.target,
+          f.selection,
+          gate(),
+        )
+      ).status,
+    ).toBe('UNKNOWN');
+    expect(reached).toBe(true);
+  });
+});
