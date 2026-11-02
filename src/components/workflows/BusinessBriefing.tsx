@@ -26,6 +26,7 @@ export function BusinessBriefing({
   onSelectJob?: (jobId: string) => void;
 }) {
   let signature = 'OFF';
+  let sourceCheck: (() => void) | null = null;
   if (enabled)
     try {
       const captured = captureOperatingSources(sources, sources.gate);
@@ -45,6 +46,7 @@ export function BusinessBriefing({
         ),
         property: sources.property.read(captured.organization_id),
       });
+      sourceCheck = captured.check;
     } catch {
       signature = 'UNAVAILABLE';
     }
@@ -52,14 +54,28 @@ export function BusinessBriefing({
     sources,
     enabled,
     signature,
+    sourceCheck,
     generation: 0,
   });
+  let originalChanged = false;
+  try {
+    binding.sourceCheck?.();
+  } catch {
+    originalChanged = true;
+  }
   if (
     binding.sources !== sources ||
     binding.enabled !== enabled ||
-    binding.signature !== signature
+    binding.signature !== signature ||
+    originalChanged
   ) {
-    bind({ sources, enabled, signature, generation: binding.generation + 1 });
+    bind({
+      sources,
+      enabled,
+      signature,
+      sourceCheck,
+      generation: binding.generation + 1,
+    });
     return null;
   }
   return enabled && signature !== 'OFF' && signature !== 'UNAVAILABLE' ? (
