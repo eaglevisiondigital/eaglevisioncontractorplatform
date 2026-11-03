@@ -1,0 +1,88 @@
+.published-service-continuity {
+  min-width: 0;
+  color: #233d32;
+  line-height: 1.55;
+}
+.published-service-continuity > header {
+  display: block;
+  position: static;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+}
+.published-service-continuity h2,
+.published-service-continuity p,
+.published-service-continuity code,
+.published-service-continuity label {
+  overflow-wrap: anywhere;
+}
+.published-service-continuity .saved-evidence-controls {
+  min-width: 0;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  background: #f8f8f2;
+}
+.published-service-continuity .saved-evidence-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+  margin: 0.75rem 0;
+  font-weight: 600;
+}
+.published-service-continuity .saved-evidence-controls input,
+.published-service-continuity .saved-evidence-controls button,
+.published-service-continuity .saved-evidence-controls summary {
+  box-sizing: border-box;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 0.65rem;
+  font: inherit;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+.published-service-continuity .saved-evidence-controls input {
+  width: 100%;
+  min-width: 0;
+  color: inherit;
+  background: #fff;
+  border: 1px solid #8c9f93;
+  border-radius: 8px;
+}
+.published-service-continuity .saved-evidence-controls button {
+  margin: 0.25rem 0.5rem 0.25rem 0;
+  color: #fff;
+  background: var(--journey-primary, #247364);
+  border: 1px solid var(--journey-primary, #247364);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.published-service-continuity .saved-evidence-controls button:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+.published-service-continuity .saved-evidence-controls pre {
+  max-width: 100%;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.published-service-continuity :focus-visible {
+  outline: 3px solid var(--journey-primary, #247364);
+  outline-offset: 3px;
+}
+.published-service-continuity [role='alert'] {
+  padding: 0.75rem;
+  color: #71341f;
+  border-left: 4px solid #9b4426;
+  background: #fff3e9;
+}
+@media (max-width: 760px) {
+  .published-service-continuity .saved-evidence-controls button {
+    width: 100%;
+    margin-right: 0;
+  }
+}
