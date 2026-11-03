@@ -59,6 +59,7 @@ jobs:
       - run: npm run typecheck
       - run: npm run features:check
       - run: node scripts/check-cycle18-integrity.mjs
+      - run: node scripts/check-cycle18-browser-selection.mjs
       - run: npx vitest run tests/cycle18*.test.ts tests/program/cycle18-composition.test.ts tests/program/cycle13-scorecard-evidence.test.ts tests/program-feature-evidence.test.ts tests/program/cycle17-composition.test.ts tests/program/cycle17-feature-evidence.test.ts --maxWorkers=2 --reporter=json --outputFile=artifacts/cycle18/application-results.json
       - run: node scripts/check-cycle18-results.mjs
       - run: npm run build

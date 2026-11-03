@@ -33,7 +33,7 @@ call, duplicate ranking engine, new stores, contracts, invoices or reminder enro
 | --------------------- | ---------------------------------- | ----------------------------------- | -------: | ---------------------------------------- | ----: |
 | field-agenda          | /root/cycle18_field_growth         | codex/cycle18-field-agenda          |      126 | 2e1346165b50a33e2a695c159e47107302210ce6 |    45 |
 | cost-invoice-review   | /root/cycle17_finance_intelligence | codex/cycle18-cost-invoice-review   |      129 | 1b5040904fe11307c790bf64f5c6488e2a23f983 |    53 |
-| service-update-review | /root/cycle13_customer_advanced    | codex/cycle18-service-update-review |      127 | 8f9292e7daa74ac962b0d2896337ae511b49d1e6 |    55 |
+| service-update-review | /root/cycle13_customer_advanced    | codex/cycle18-service-update-review |      127 | 1ed580ebd53bd5a9a893fd63c81dc905650d40de |    55 |
 | maintenance-agenda    | /root/cycle18_field_growth         | codex/cycle18-maintenance-agenda    |      128 | 8a16ca1f00230486c443579fb5c68efce6a0160f |    52 |
 | priority-actions      | /root/cycle13_customer_advanced    | codex/cycle18-priority-actions      |      130 | 695dfb8cb5fa0313d69f6e3532ae2c55203c9641 |    58 |
 
@@ -73,7 +73,7 @@ traffic. Full external-origin and accessibility assertions remain intact.
 Final combined application run PASSED446/446unique cases across12
 exact files:263author,20Root runtime,8composition,58independent and97retained cases.
 Strict single-run validator passed;0failed/skipped/pending,446unique cases, maximum
-22.939sunder unchanged30sbudget. Independent review commit
+22.018sunder unchanged30sbudget. Independent review commit
 3b7542a9c0d6b02267333d878191722399cee3b3 is an exact two-file local source-admission
 record; it was not separately pushed as an incomplete branch. Its unchanged test
 and review JSON are published in coordination draft125 and content-bound in the index.
@@ -117,3 +117,17 @@ verified completion, issuance/delivery, dispatch, consent-at-send/NMI/Auth and p
 recovery remain separately accepted workstreams, not implicit next execution.
 
 Release1.0 NOT READY / NOT AUTHORIZED.
+
+## CI follow-up
+
+See CYCLE18_CI_RECONCILIATION.md. Exact4fae8ed GitHub evidence includes446application
+PASS and30DEV browser PASS plus2wronglycollectedOFF failures. Collection mode is now
+checked from actual Playwright output; the separate production assertions remain.
+Customer55case complete follow-up PASS retains all82existing assertions plus eight
+identity guards and changes only four single-job claim fixtures. All application
+runtime remains byte-identical to e99000e; old failures remain, new CI is separate.
+
+Post-correction combined verification: a new complete446/446unique-case run across
+the same12exact files passed with0failed/skipped/pending. It includes the corrected
+Customer55, independent58 and all retained cases. Strict completeness validation
+passed. Exact report SHA256 and maximum case duration are in the delivery index.

@@ -42,6 +42,33 @@ async function opened(brand = 0, index = 0) {
     report = await inspectServiceUpdateReport(view, reference);
   return { ...f, view, reference, report };
 }
+// Claim-ownership cases concern one exact job, not portfolio traversal. Prepare
+// the unchanged complete repositories, then admit only that original handle.
+async function openedCanonicalJob(brand = 0) {
+  const f = await fixture(brand),
+    sources = { ...f.sources, entries: [f.entry] },
+    view = await readServiceUpdateReview(sources, f.input, f.gate),
+    reference = view.evidence.find(
+      (e) => e.reference.report_id === f.entry.report_id,
+    )!.reference,
+    report = await inspectServiceUpdateReport(view, reference);
+  return { ...f, sources, view, reference, report };
+}
+function assertCanonicalPeers(
+  first: Awaited<ReturnType<typeof readServiceUpdateReview>>,
+  second: Awaited<ReturnType<typeof readServiceUpdateReview>>,
+) {
+  const a = serviceUpdateOriginalProps(first).sources,
+    b = serviceUpdateOriginalProps(second).sources;
+  expect(first).not.toBe(second);
+  expect(a).not.toBe(b);
+  expect(a.entries).toHaveLength(1);
+  expect(b.entries).toBe(a.entries);
+  expect(a.entries[0]).toBe(b.entries[0]);
+  expect(a.operations).toBe(b.operations);
+  expect(a.estimates).toBe(b.estimates);
+  expect(a.property).toBe(b.property);
+}
 function during(change: () => void | Promise<void>) {
   const original = crypto.subtle.digest.bind(crypto.subtle);
   let seen = false;
@@ -518,7 +545,7 @@ it.each([
 it.each([0, 1, 2])(
   'brand %i fresh-wrapper deferred callback retains canonical PENDING ownership',
   async (brand) => {
-    const f = await opened(brand),
+    const f = await openedCanonicalJob(brand),
       second = await readServiceUpdateReview(
         { ...f.sources },
         { ...f.input },
@@ -528,6 +555,7 @@ it.each([0, 1, 2])(
         (e) => e.reference.report_id === f.entry.report_id,
       )!.reference,
       report = await inspectServiceUpdateReport(second, ref);
+    assertCanonicalPeers(f.view, second);
     let entered!: () => void, release!: () => void;
     const started = new Promise<void>((resolve) => {
         entered = resolve;
@@ -582,7 +610,7 @@ it.each([0, 1, 2])(
   },
 );
 it('known pre-dispatch withdrawal releases only its canonical claim for another fresh view', async () => {
-  const f = await opened(),
+  const f = await openedCanonicalJob(),
     second = await readServiceUpdateReview(
       { ...f.sources },
       { ...f.input },
@@ -600,6 +628,7 @@ it('known pre-dispatch withdrawal releases only its canonical claim for another 
       live.current = undefined;
       live.generation++;
     });
+  assertCanonicalPeers(f.view, second);
   await expect(
     continueServiceUpdateReview(f.view, f.report, firstCallback, live),
   ).rejects.toThrow(/withdrawn|replaced/);

@@ -21,12 +21,18 @@ export default defineConfig({
     { name: 'desktop', use: { ...devices['Desktop Chrome'] } },
     {
       name: 'tablet',
-      testIgnore: 'cycle18-company-switch.spec.ts',
+      testIgnore: [
+        'cycle18-default-off.spec.ts',
+        'cycle18-company-switch.spec.ts',
+      ],
       use: { ...devices['iPad Mini'], defaultBrowserType: 'chromium' },
     },
     {
       name: 'mobile',
-      testIgnore: 'cycle18-company-switch.spec.ts',
+      testIgnore: [
+        'cycle18-default-off.spec.ts',
+        'cycle18-company-switch.spec.ts',
+      ],
       use: { ...devices['iPhone 13'], defaultBrowserType: 'chromium' },
     },
   ],

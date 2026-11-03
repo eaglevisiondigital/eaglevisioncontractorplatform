@@ -2,6 +2,16 @@
 
 ## Cycle18 · daily workflow, local verification complete
 
+Cycle18 CI follow-up: at `4fae8ed5a203f644a205bbb80109d74dfcaab181`, GitHub
+confirmed446application and30DEV browser cases PASS, but the dedicated workflow
+FAILED because project overrides wrongly collected two production-OFF cases on the
+DEV server. Collection is corrected and checked through actual Playwright JSON.
+Two cancelled Customer Foundation runs also logged four failures before the45minute
+limit. Their exact exception remains unknown; four one-job claim fixtures were
+narrowed over the SAME original repositories, preserving all82assertions and adding
+eight identity checks. No runtime, assertion, timeout or Foundation change. See
+CYCLE18_CI_RECONCILIATION.md; final exact-head automatic CI remains separate/PENDING.
+
 Five bounded author packages are implemented in drafts126–130, composed on draft125
 against exact Cycle17 ab7a95596f89f7bceb1fc089cdaa790a55fb10d5. The complete
 446/446case single application run passes, including263author,58independent,28Main

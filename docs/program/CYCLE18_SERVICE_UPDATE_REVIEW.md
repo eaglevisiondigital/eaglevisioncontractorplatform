@@ -95,3 +95,49 @@ regressions were additionally checked at final source in
 `/private/tmp/cycle18-customer-pending-final-scoped.json` (5PASS/50unselected pending;
 these are the same cases, not additional unique coverage). Scoped lint/format/types
 PASS; all55full-suite assertions and final product bytes remain unchanged.
+
+## Focused CI fixture-scope reconciliation
+
+Exact Customer8f9292e is included in Main4fae8ed5a203f644a205bbb80109d74dfcaab181.
+Foundation runs41650057540 and41650046552 each printed the same four failed cases:
+three branded fresh-wrapper deferred callback ownership cases and the known
+pre-dispatch withdrawal claim-release case. Durations were30,095–31,890ms before
+the overall45-minute cancellation. Final Vitest exception details were unavailable;
+these failures are preserved, and timeout remains suggested by duration rather than
+proven from a final exception. Passing local/focused evidence never relabels them.
+
+Those four cases repeatedly admitted all four prepared job handles even though the
+claim under review binds one canonical organization/job. Each creates two independent
+source views, inspects both reports and exercises a later successful continuation.
+Their original four-job setup therefore repeated unrelated source traversal. The
+correction changes only those four tests to an exact one-job handle subset over the
+SAME fully prepared Operations/estimates/property repositories. No business source
+record is copied or fabricated; original property/report history remains in the same
+repositories. The other51cases keep their prior setup unchanged, including the
+full-portfolio ambiguous deferred UNKNOWN case.
+
+| Case                          | Before local ms | After local ms |
+| ----------------------------- | --------------: | -------------: |
+| Brand0deferred ownership      |        11278.85 |        3823.87 |
+| Brand1deferred ownership      |        11204.28 |        3645.98 |
+| Brand2deferred ownership      |        13262.94 |        3770.58 |
+| Known pre-dispatch withdrawal |        10445.03 |        3156.83 |
+
+Both local targeted runs passed4cases, with51unselected cases explicitly pending.
+Raw `/private/tmp/cycle18-customer-ci-before.json` and
+`/private/tmp/cycle18-customer-ci-after.json`; timing/source diagnosis is also in
+`/private/tmp/cycle18-customer-ci-fixture-measurement.json`. The measured reduction
+of66.1–71.6% demonstrates eliminated unrelated local source traversal; it does not
+prove the unavailable CI exception or promise a remote runtime.
+
+All82prior expect+matcher AST expressions remain identical, with8shared identity
+assertions added and called in exactly these four cases. They verify different views
+and root wrappers over the same Operations, estimates, property and original job
+handle. The deferred first callback, both competing attempts, final successful
+continuation and every original assertion remain. No timeout, test skip, concurrency
+configuration, Foundation budget, workflow, runtime library, component or CSS changes.
+Assertion proof: `/private/tmp/cycle18-customer-ci-assertion-preservation.json`.
+**55/55unique cases PASS, zero failed/pending**, in 218.10seconds, maximum9.44seconds.
+The complete suite ran once after this correction; final raw result:
+`/private/tmp/cycle18-customer-ci-correction-full.json`. New-head normal automatic CI
+remains separate, with no manual rerun or unrelated recovery/Netlify/native checks.

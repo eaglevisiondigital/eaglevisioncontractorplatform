@@ -78,7 +78,7 @@
       "owner": "/root/cycle13_customer_advanced",
       "branch": "codex/cycle18-service-update-review",
       "parent_commit": "428c2a9afce95c98cc8be4a725a3e22b02b0e70d",
-      "head_commit": "8f9292e7daa74ac962b0d2896337ae511b49d1e6",
+      "head_commit": "1ed580ebd53bd5a9a893fd63c81dc905650d40de",
       "draft_pr": 127,
       "focused_new_tests": 55,
       "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
@@ -97,13 +97,15 @@
         },
         {
           "path": "tests/cycle18-service-update-review.test.ts",
-          "sha256": "aa6203af4d3331245f4ed5280959dc690001bdc80a351dc66bf8c8c92db3416c"
+          "sha256": "8a36491c2556f8acb372bc1bebb2dd588c7293e31cdfb79db6fa55ae0466a548"
         },
         {
           "path": "docs/program/CYCLE18_SERVICE_UPDATE_REVIEW.md",
-          "sha256": "3177642de2eca094abc8aebc42fe99c930cc699837338d4aadfb9dc69c07a447"
+          "sha256": "89d863d2438dee1d6d271525df21e05be9ada6007e5e28444b63485c5c5ddd91"
         }
-      ]
+      ],
+      "previous_implementation_head": "8f9292e7daa74ac962b0d2896337ae511b49d1e6",
+      "ci_fixture_correction": "Only four single-job claim fixtures and documentation changed; same canonical repositories, all82 prior assertions preserved plus8 identity guards; other51 cases and all runtime bytes unchanged. Complete55case local PASS; prior CI failures/cancellations retained."
     },
     {
       "module": "maintenance-agenda",
@@ -197,11 +199,28 @@
     "final_selection_company_cases": 12,
     "production_off_browser_cases": 3,
     "screenshots": 63,
-    "browser_evidence_boundaries": "Full18case all-brand matrix and63clean screenshots at28d551b4b731a3f517a902b0d03c4af5d634b0e3; final initial-selection/company-switch12 and productionOFF3 at e99000e3594706b425aad19e6edebd0793e4162c. Only initial no-job continuation and copy changed; all author/domain bytes identical. No invented single-run browser or hosted acceptance.",
-    "application_report_sha256": "8ef5bd69d8b8c08675b23b95a3f22bf9f985645676a6bd28c5348ec8ebe3e6a7",
-    "application_maximum_case_ms": 22939.273,
+    "browser_evidence_boundaries": "Full18case all-brand matrix and63clean screenshots at28d551b4b731a3f517a902b0d03c4af5d634b0e3; initial-selection/company-switch12 and productionOFF3 at e99000e3594706b425aad19e6edebd0793e4162c. Runtime remains identical to e99000e. Later CI correction changes collection/test fixtures/docs only. The failed4fae8ed dedicated run additionally recorded all30DEV browser cases PASS, plus2 wrongly collected OFF failures. No invented single-run browser or hosted acceptance.",
+    "application_report_sha256": "cbce249597c8c08b9c1731becede659407a4d56045639d6db42f36a6dc689a38",
+    "application_maximum_case_ms": 22017.71612500002,
     "application_test_timeout_ms": 30000,
     "protected_integrity": "PASS_128_HASHES_5_LOCKS_13_BINDINGS",
     "local_scope": "SYNTHETIC_DEFAULT_OFF_NOT_OPERATIONAL"
+  },
+  "ci_followup": {
+    "previous_candidate": "4fae8ed5a203f644a205bbb80109d74dfcaab181",
+    "previous_dedicated_run": 41657739100,
+    "previous_application_cases_passed": 446,
+    "previous_development_browser_cases_passed": 30,
+    "previous_browser_cases_failed": 2,
+    "browser_failure": "Production-OFF tests wrongly collected in DEV tablet/mobile through project-level testIgnore replacement. Actual assertions unchanged.",
+    "collection_check": "Actual Playwright JSON confirms30DEV/3OFF unique cases and exact server modes; augments only Cycle18 workflow.",
+    "customer_head": "1ed580ebd53bd5a9a893fd63c81dc905650d40de",
+    "customer_complete_cases_passed": 55,
+    "customer_maximum_case_ms": 9434.633167000022,
+    "new_automatic_ci": "PENDING_SEPARATE_EXACT_HEAD_OBSERVATION",
+    "product_runtime_changed": false,
+    "post_correction_combined_application_cases_passed": 446,
+    "post_correction_application_report_sha256": "cbce249597c8c08b9c1731becede659407a4d56045639d6db42f36a6dc689a38",
+    "post_correction_application_maximum_case_ms": 22017.71612500002
   }
 }

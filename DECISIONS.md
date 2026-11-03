@@ -1,5 +1,16 @@
 # Engineering decisions
 
+## Cycle18 CI · preserve mode-specific coverage and exact claim tests
+
+Project-level Playwright exclusions replace inherited exclusions. Explicitly retain
+both original exclusions in tablet/mobile; validate actual collected tuples and
+server modes before execution. All30DEV assertions and separate3productionOFF
+assertions remain. Four Customer concurrency cases admit one exact original job
+over the SAME canonical repositories; all82assertions remain and eight identity
+checks are added. This removes unrelated portfolio traversal, not source guards.
+Historical failures/cancellations remain visible; final CI is never inferred from
+local PASS. Foundation budget, all runtimes and protected controls are unchanged.
+
 ## Cycle18 · retained review steps and observed acknowledgments
 
 Five isolated packages compose over existing canonical readers, engines and the
