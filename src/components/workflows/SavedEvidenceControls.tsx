@@ -195,7 +195,7 @@ function Controls<P>({
       </label>
       <button
         type="button"
-        disabled={busy || !file || !access}
+        disabled={busy || !file}
         onClick={() => void run('reconcile')}
       >
         Reconcile exact saved {recipe.title.toLowerCase()} source

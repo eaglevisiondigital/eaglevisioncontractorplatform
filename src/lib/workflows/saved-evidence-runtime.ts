@@ -21,7 +21,12 @@ export interface EvidenceRecipe<P> {
   ) => Promise<SavedRevisionSnapshot<unknown>>;
   readonly project: (snapshot: SavedRevisionSnapshot<unknown>) => P;
   /** Exact bounded domain allowlist; return every and only accepted field. */
-  readonly parse: (value: unknown) => P;
+  readonly parse: (value: unknown, identity: EvidenceIdentity) => P;
+  /** Synchronous ownership/history witness over the actual freshly read source. */
+  readonly assertSource: (
+    payload: P,
+    current: SavedRevisionSnapshot<unknown>,
+  ) => void;
 }
 export type EvidenceIdentity = Omit<
   SavedRevisionSnapshot<unknown>['identity'],
@@ -182,7 +187,7 @@ export async function decodeSavedEvidence<P>(
   )
     throw Error('Exact evidence schema/kind/integrity required');
   const safe = data(f.payload),
-    payload = recipe.parse(safe);
+    payload = recipe.parse(safe, exactIdentity(f.identity));
   if (!same(payload, safe))
     throw Error('Strict complete domain allowlist required');
   const body = {
@@ -210,6 +215,20 @@ function bind<P>(
   files.set(file, b as Binding<unknown>);
   return file;
 }
+function sourceWitness<P>(
+  recipe: EvidenceRecipe<P>,
+  payload: P,
+  current: SavedRevisionSnapshot<unknown>,
+) {
+  const result = (
+    recipe.assertSource as (p: P, s: SavedRevisionSnapshot<unknown>) => unknown
+  )(payload, current);
+  if (result !== undefined) {
+    void Promise.resolve(result).catch(() => undefined);
+    throw Error('Synchronous canonical source witness required');
+  }
+  assertSavedRevisionCurrent(current);
+}
 function recipeCopy<P>(recipe: EvidenceRecipe<P>): EvidenceRecipe<P> {
   const r = evidenceFields(recipe, [
     'kind',
@@ -223,7 +242,9 @@ function recipeCopy<P>(recipe: EvidenceRecipe<P>): EvidenceRecipe<P> {
       r.kind as string,
     ) ||
     !evidenceText(r.title, 100) ||
-    ['read', 'project', 'parse'].some((k) => typeof r[k] !== 'function')
+    ['read', 'project', 'parse', 'assertSource'].some(
+      (k) => typeof r[k] !== 'function',
+    )
   )
     throw Error('Trusted exact evidence recipe required');
   return Object.freeze({ ...r }) as unknown as EvidenceRecipe<P>;
@@ -259,9 +280,10 @@ export async function prepareSavedEvidence<P>(
   assertSavedRevisionCurrent(snapshot);
   if (snapshot.kind !== recipe.kind) throw Error('Exact source kind required');
   const safe = data(recipe.project(snapshot)),
-    payload = recipe.parse(safe);
+    payload = recipe.parse(safe, identity(snapshot));
   if (!same(safe, payload))
     throw Error('Strict complete domain projection required');
+  sourceWitness(recipe, payload, snapshot);
   const body = {
     schema: evidenceSchema,
     kind: recipe.kind,
@@ -275,6 +297,7 @@ export async function prepareSavedEvidence<P>(
   const envelope = await decodeSavedEvidence(text, recipe);
   assertSavedRevisionCurrent(snapshot);
   admit(gate);
+  sourceWitness(recipe, envelope.payload, snapshot);
   return bind(envelope, text, { snapshot, recipe, sources, job, gate });
 }
 /** File ownership comes from fresh canonical access, never a file's asserted IDs/hash. */
@@ -297,23 +320,31 @@ export async function openSavedEvidence<P>(
     !same(identity(snapshot), envelope.identity)
   )
     throw Error('Exact authorized source ownership required');
+  sourceWitness(recipe, envelope.payload, snapshot);
   return bind(envelope, text, { snapshot, recipe, sources, job, gate });
 }
 export function assertSavedEvidenceAccess<P>(file: SavedEvidenceFile<P>) {
   const b = files.get(file);
   if (!b) throw Error('Original opened evidence required');
   admit(b.gate);
-  assertSavedRevisionAccess(b.snapshot);
+  assertSavedRevisionCurrent(b.snapshot);
 }
 export async function reconcileSavedEvidence<P>(file: SavedEvidenceFile<P>) {
   const b = files.get(file) as Binding<P> | undefined;
   if (!b) throw Error('Original opened evidence required');
-  assertSavedEvidenceAccess(file);
+  admit(b.gate);
+  assertSavedRevisionAccess(b.snapshot);
   const current = await b.recipe.read(b.sources, b.job, b.gate);
   compareSavedRevisions(b.snapshot, current);
-  const payload = b.recipe.parse(data(b.recipe.project(current)));
+  const payload = b.recipe.parse(
+    data(b.recipe.project(current)),
+    identity(current),
+  );
+  sourceWitness(b.recipe, file.envelope.payload, current);
+  sourceWitness(b.recipe, payload, current);
   assertSavedRevisionCurrent(current);
-  assertSavedEvidenceAccess(file);
+  assertSavedRevisionAccess(b.snapshot);
+  b.snapshot = current; // Read observation only; immutable file and original command holds unchanged.
   return Object.freeze({
     status: same(payload, file.envelope.payload)
       ? ('CURRENT_MATCH' as const)

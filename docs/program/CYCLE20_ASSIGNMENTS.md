@@ -12,15 +12,18 @@ Five author packages each exactly5NEWfiles: src/lib/workflows/{stem}.ts,
 src/components/workflows/{Component}.tsx, src/components/workflows/{stem}.css,
 tests/cycle20-{stem}.test.ts, docs/program/CYCLE20_{STEM_UPPER}.md.
 
-| Package      | Branch/stem                                                               | Component                   |
-| ------------ | ------------------------------------------------------------------------- | --------------------------- |
-| Field        | codex/cycle20-work-order-evidence / work-order-evidence-continuity        | WorkOrderEvidenceContinuity |
-| Finance      | codex/cycle20-recorded-cost-continuity / recorded-cost-continuity         | RecordedCostContinuity      |
-| Customer     | codex/cycle20-published-service-continuity / published-service-continuity | PublishedServiceContinuity  |
-| Growth       | codex/cycle20-maintenance-renewal-evidence / maintenance-renewal-evidence | MaintenanceRenewalEvidence  |
-| Intelligence | codex/cycle20-recorded-priority-navigation / recorded-priority-navigation | RecordedPriorityNavigation  |
+| Package      | Branch/stem                                                                    | Component                   |
+| ------------ | ------------------------------------------------------------------------------ | --------------------------- |
+| Field        | codex/cycle20-work-order-source-evidence / work-order-evidence-continuity      | WorkOrderEvidenceContinuity |
+| Finance      | codex/cycle20-recorded-cost-source-review / recorded-cost-continuity           | RecordedCostContinuity      |
+| Customer     | codex/cycle20-published-service-source-review / published-service-continuity   | PublishedServiceContinuity  |
+| Growth       | codex/cycle20-maintenance-renewal-source-review / maintenance-renewal-evidence | MaintenanceRenewalEvidence  |
+| Intelligence | codex/cycle20-priority-source-navigation / recorded-priority-navigation        | RecordedPriorityNavigation  |
 
-Shared EvidenceRecipe<P> kind/title/read(existing C19 Snapshot<unknown>)/project/parse.
+Shared EvidenceRecipe<P> kind/title/read(existing C19 Snapshot<unknown>)/project/parse/assertSource.
+parse(value,EvidenceIdentity) binds content to outer exact identity. Synchronous
+assertSource(payload,currentSnapshot) proves actual fresh canonical ownership/history
+onprepare/open/reconcile; checksum or file assertion never supplies that witness.
 Use strict bounded complete domain allowlist; reject unknown fields/executable data,
 wrong tenant/customer/property/job/issued/report/source identity, malformed versions,
 private data and forged authority markers. prepareSavedEvidence outputs exact canonical
@@ -53,3 +56,11 @@ P1/four/Netlify/executor/2A–2F/billing/recovery/Auth/MFA/NMI/provider/financia
 communication/dispatch/production/deploy/merge preserved. No baseline reruns or background
 execution. November4 kit/quickcard unchanged; actual physical recoveryUNVERIFIED.
 Release1.0 NOT READY / NOT AUTHORIZED.
+
+Forward shared support follows the initial unreviewed330a638 seed. Author unpublished
+worktrees are preserved; exactly5owned files copy to NEW branches from support seed
+without reset/rebase/merge. Main same-custody readSavedDraftEdit/executeSavedDraftEdit
+allow exact bounded original draft summary and existing checklist boolean edits only.
+No added findings/labels/private fields or new attempt owner; prior visit-draft hold
+still blocks. Domain recipes must enforce actual current source IDs and immutable
+historical content, not only outer envelope identity.
