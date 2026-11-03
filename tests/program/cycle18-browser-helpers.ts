@@ -12,9 +12,13 @@ export async function start(
   const requests: string[] = [];
   external.set(page, requests);
   page.on('request', (r) => {
+    const url = new URL(r.url());
     if (
-      !r.url().startsWith('http://127.0.0.1:4361') &&
-      !r.url().startsWith('data:')
+      url.protocol !== 'data:' &&
+      !(
+        ['http:', 'blob:'].includes(url.protocol) &&
+        url.origin === 'http://127.0.0.1:4361'
+      )
     )
       requests.push(r.url());
   });

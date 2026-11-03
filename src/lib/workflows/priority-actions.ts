@@ -48,7 +48,8 @@ interface Binding {
 }
 const reviews = new WeakMap<object, Binding>(),
   tasks = new WeakMap<object, Binding>(),
-  holds = new WeakMap<object, Set<string>>();
+  holds = new WeakMap<object, Set<string>>(),
+  pendingClaims = new WeakMap<object, Map<string, object>>();
 function admit(gate: JourneyAdmission) {
   const p = prototypeFields(gate, ['enabled', 'confirmed']);
   if (
@@ -286,6 +287,13 @@ export async function continuePriorityAction(
   if (tasks.get(task) !== b)
     throw Error('Exact retained priority inspection required');
   if (b.pending) throw Error('Priority continuation already pending');
+  const key = JSON.stringify([b.capture.organization_id, task.target.job_id]);
+  let claims = pendingClaims.get(b.operations);
+  if (!claims) pendingClaims.set(b.operations, (claims = new Map()));
+  if (claims.has(key))
+    throw Error('Priority continuation already pending for the canonical job');
+  const claim = {};
+  claims.set(key, claim); // Before the first await, across retained wrappers.
   b.pending = true;
   let invoked = false;
   try {
@@ -307,6 +315,7 @@ export async function continuePriorityAction(
     if (invoked || !(error instanceof Withdrawn)) hold(b);
     throw error;
   } finally {
+    if (claims.get(key) === claim) claims.delete(key);
     b.pending = false;
   }
 }

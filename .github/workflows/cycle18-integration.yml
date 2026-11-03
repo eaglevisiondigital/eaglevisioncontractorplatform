@@ -1,0 +1,75 @@
+name: Cycle 18 source-bound daily workflow
+on:
+  push:
+    branches: ['codex/program-cycle-eighteen']
+  pull_request:
+    paths:
+      - 'src/App.tsx'
+      - 'src/components/workflows/OperatingCenterCycleEighteen.tsx'
+      - 'src/components/workflows/OperatingCenterCycleFifteen.tsx'
+      - 'src/components/workflows/OperatingCenterCycleFourteen.tsx'
+      - 'src/components/workflows/DailyWorkbench.tsx'
+      - 'src/components/workflows/daily-workbench.css'
+      - 'src/components/workflows/SharedRecordSearch.tsx'
+      - 'src/components/workflows/daily-guide-search.css'
+      - 'src/lib/workflows/daily-workbench-contract.ts'
+      - 'src/lib/workflows/daily-workbench-runtime.ts'
+      - 'src/lib/workflows/operating-center-runtime.ts'
+      - 'src/lib/workflows/operating-navigation.ts'
+      - 'src/lib/workflows/field-agenda.ts'
+      - 'src/components/workflows/FieldAgenda.tsx'
+      - 'src/components/workflows/field-agenda.css'
+      - 'src/lib/workflows/cost-invoice-review.ts'
+      - 'src/components/workflows/CostInvoiceReview.tsx'
+      - 'src/components/workflows/cost-invoice-review.css'
+      - 'src/lib/workflows/service-update-review.ts'
+      - 'src/components/workflows/ServiceUpdateReview.tsx'
+      - 'src/components/workflows/service-update-review.css'
+      - 'src/lib/workflows/maintenance-agenda.ts'
+      - 'src/components/workflows/MaintenanceAgenda.tsx'
+      - 'src/components/workflows/maintenance-agenda.css'
+      - 'src/lib/workflows/priority-actions.ts'
+      - 'src/components/workflows/PriorityActions.tsx'
+      - 'src/components/workflows/priority-actions.css'
+      - 'tests/cycle18*'
+      - 'tests/program/*cycle18*'
+      - 'tests/program/cycle13-scorecard-evidence.test.ts'
+      - 'tests/program-feature-evidence.test.ts'
+      - 'tests/program/cycle17-composition.test.ts'
+      - 'tests/program/cycle17-feature-evidence.test.ts'
+      - 'scripts/*cycle18*'
+      - 'docs/program/CYCLE18_DELIVERY_INDEX.json'
+      - '.github/workflows/cycle18-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle18-integration-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  bounded-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node scripts/check-cycle18-integrity.mjs
+      - run: npx vitest run tests/cycle18*.test.ts tests/program/cycle18-composition.test.ts tests/program/cycle13-scorecard-evidence.test.ts tests/program-feature-evidence.test.ts tests/program/cycle17-composition.test.ts tests/program/cycle17-feature-evidence.test.ts --maxWorkers=2 --reporter=json --outputFile=artifacts/cycle18/application-results.json
+      - run: node scripts/check-cycle18-results.mjs
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test -c tests/program/playwright.cycle18.config.ts --workers=2
+      - run: npx playwright test -c tests/program/playwright.cycle18-off.config.ts --workers=2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle18-daily-workflow-evidence
+          path: |
+            artifacts/cycle18/
+            test-results/
+          retention-days: 7

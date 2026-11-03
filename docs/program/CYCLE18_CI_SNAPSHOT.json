@@ -1,0 +1,260 @@
+{
+  "schema": "propel-cycle18-ci-observation-v1",
+  "observed_at": "2026-11-03T13:55:58.293515+00:00",
+  "observation_window_start": "2026-11-03T13:55:44.809754+00:00",
+  "coordination_product_ci": "NOT_PUBLISHED_AT_SNAPSHOT",
+  "coordination_remote_head_is_plan_only": true,
+  "manual_reruns": 0,
+  "cycle17_closeout": {
+    "main_head": "ab7a95596f89f7bceb1fc089cdaa790a55fb10d5",
+    "main_successful_foundation_run": 41639737585,
+    "main_pr_foundation_cancelled_run": 41639745761,
+    "cancelled_verify_runs": 10,
+    "cancellation_reason": "EXPLICIT_PROVIDER_45_MINUTE_EXECUTION_LIMIT",
+    "all_cancelled_native_pg17_success": true,
+    "all30_author_blobs_equal": true,
+    "all_foundation_workflows_equal": true,
+    "head_tree": "5cbdaf360b20397e3459aee63956fcf9f86f4c8c",
+    "pr_merge_tree": "5cbdaf360b20397e3459aee63956fcf9f86f4c8c",
+    "tree_equal": true,
+    "unique_coverage_gap": false,
+    "cancelled_checks_relabelled": false,
+    "application_passed": 6598,
+    "application_declared_skipped": 321,
+    "browser_passed": 297,
+    "proof_refs": [
+      "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41639737585",
+      "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41639745761",
+      "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41639737767",
+      "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41639745737",
+      "CYCLE17_DELIVERY_INDEX.json",
+      "CYCLE17_CLOSEOUT_CI_RECONCILIATION.md"
+    ]
+  },
+  "prs": [
+    {
+      "pr": 125,
+      "head": "428c2a9afce95c98cc8be4a725a3e22b02b0e70d",
+      "branch": "codex/program-cycle-eighteen",
+      "base": "codex/program-cycle-seventeen",
+      "draft": true,
+      "state": "open",
+      "merged": false,
+      "workflow_run_counts": {
+        "success": 23,
+        "in_progress": 2
+      },
+      "check_counts": {
+        "success": 25,
+        "in_progress": 2
+      },
+      "all_exact_head": true,
+      "inventory_complete": true,
+      "foundation": [
+        {
+          "run_id": 41643392682,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41643392682",
+          "event": "pull_request",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "run_id": 41642950671,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41642950671",
+          "event": "push",
+          "status": "in_progress",
+          "conclusion": null
+        }
+      ]
+    },
+    {
+      "pr": 126,
+      "head": "2e1346165b50a33e2a695c159e47107302210ce6",
+      "branch": "codex/cycle18-field-agenda",
+      "base": "codex/program-cycle-eighteen",
+      "draft": true,
+      "state": "open",
+      "merged": false,
+      "workflow_run_counts": {
+        "success": 15,
+        "in_progress": 2,
+        "queued": 7,
+        "pending": 1
+      },
+      "check_counts": {
+        "queued": 9,
+        "success": 15,
+        "in_progress": 3
+      },
+      "all_exact_head": true,
+      "inventory_complete": true,
+      "foundation": [
+        {
+          "run_id": 41646646066,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41646646066",
+          "event": "pull_request",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "run_id": 41646635744,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41646635744",
+          "event": "push",
+          "status": "in_progress",
+          "conclusion": null
+        }
+      ]
+    },
+    {
+      "pr": 127,
+      "head": "21ef989a0e7b05ecd3f05a65d7947a5acd2e8d10",
+      "branch": "codex/cycle18-service-update-review",
+      "base": "codex/program-cycle-eighteen",
+      "draft": true,
+      "state": "open",
+      "merged": false,
+      "workflow_run_counts": {
+        "in_progress": 5,
+        "success": 18,
+        "queued": 2
+      },
+      "check_counts": {
+        "queued": 4,
+        "in_progress": 5,
+        "success": 18
+      },
+      "all_exact_head": true,
+      "inventory_complete": true,
+      "foundation": [
+        {
+          "run_id": 41646515924,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41646515924",
+          "event": "pull_request",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "run_id": 41646506772,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41646506772",
+          "event": "push",
+          "status": "queued",
+          "conclusion": null
+        }
+      ]
+    },
+    {
+      "pr": 128,
+      "head": "8a16ca1f00230486c443579fb5c68efce6a0160f",
+      "branch": "codex/cycle18-maintenance-agenda",
+      "base": "codex/program-cycle-eighteen",
+      "draft": true,
+      "state": "open",
+      "merged": false,
+      "workflow_run_counts": {
+        "success": 11,
+        "queued": 10,
+        "pending": 1,
+        "in_progress": 3
+      },
+      "check_counts": {
+        "queued": 12,
+        "in_progress": 4,
+        "success": 11
+      },
+      "all_exact_head": true,
+      "inventory_complete": true,
+      "foundation": [
+        {
+          "run_id": 41646684930,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41646684930",
+          "event": "pull_request",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "run_id": 41646675316,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41646675316",
+          "event": "push",
+          "status": "queued",
+          "conclusion": null
+        }
+      ]
+    },
+    {
+      "pr": 129,
+      "head": "1b5040904fe11307c790bf64f5c6488e2a23f983",
+      "branch": "codex/cycle18-cost-invoice-review",
+      "base": "codex/program-cycle-eighteen",
+      "draft": true,
+      "state": "open",
+      "merged": false,
+      "workflow_run_counts": {
+        "success": 21,
+        "in_progress": 3,
+        "queued": 1
+      },
+      "check_counts": {
+        "success": 23,
+        "in_progress": 3,
+        "queued": 1
+      },
+      "all_exact_head": true,
+      "inventory_complete": true,
+      "foundation": [
+        {
+          "run_id": 41646273401,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41646273401",
+          "event": "pull_request",
+          "status": "in_progress",
+          "conclusion": null
+        },
+        {
+          "run_id": 41646226243,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41646226243",
+          "event": "push",
+          "status": "in_progress",
+          "conclusion": null
+        }
+      ]
+    },
+    {
+      "pr": 130,
+      "head": "8c3e7fdd940444c9f8ff62ed9819083ba2e1702f",
+      "branch": "codex/cycle18-priority-actions",
+      "base": "codex/program-cycle-eighteen",
+      "draft": true,
+      "state": "open",
+      "merged": false,
+      "workflow_run_counts": {
+        "queued": 19,
+        "success": 4,
+        "in_progress": 2
+      },
+      "check_counts": {
+        "in_progress": 2,
+        "queued": 21,
+        "success": 4
+      },
+      "all_exact_head": true,
+      "inventory_complete": true,
+      "foundation": [
+        {
+          "run_id": 41647886800,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41647886800",
+          "event": "pull_request",
+          "status": "queued",
+          "conclusion": null
+        },
+        {
+          "run_id": 41647853572,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41647853572",
+          "event": "push",
+          "status": "queued",
+          "conclusion": null
+        }
+      ]
+    }
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "scope_limit": "Coordination head428c2a9 is plan-only at this snapshot. Pending/queued checks and local tests do not establish published combined implementation acceptance. All operational/release gates remain unchanged."
+}

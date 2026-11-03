@@ -622,3 +622,138 @@ it('both shared presentation modes admit exact source hints without automatic re
   ).toContain('UNKNOWN');
   expect(command).not.toHaveBeenCalled();
 });
+it.each([0, 1, 2])(
+  'brand %i fresh-wrapper deferred callback retains canonical PENDING ownership',
+  async (brand) => {
+    const f = await opened(brand),
+      second = await readPriorityActions(
+        { ...f.sources },
+        { ...f.input },
+        f.gate,
+      ),
+      task = await inspectPriorityAction(second, f.row.key);
+    let entered!: () => void, release!: () => void;
+    const started = new Promise<void>((resolve) => {
+        entered = resolve;
+      }),
+      deferred = new Promise<void>((resolve) => {
+        release = resolve;
+      }),
+      firstCallback = vi.fn(async () => {
+        entered();
+        await deferred;
+      }),
+      secondCallback = vi.fn(async () => {}),
+      first = continuePriorityAction(f.review, f.task, firstCallback, {
+        current: firstCallback,
+        generation: 0,
+      });
+    await started;
+    let blocked: PromiseSettledResult<string>[];
+    try {
+      blocked = await Promise.allSettled([
+        continuePriorityAction(second, task, secondCallback, {
+          current: secondCallback,
+          generation: 0,
+        }),
+      ]);
+      const repeated = await Promise.allSettled([
+        continuePriorityAction(second, task, secondCallback, {
+          current: secondCallback,
+          generation: 0,
+        }),
+      ]);
+      blocked.push(...repeated);
+    } finally {
+      release();
+    }
+    await expect(first).resolves.toBe(f.input.job_id);
+    expect(firstCallback).toHaveBeenCalledTimes(1);
+    expect(secondCallback).not.toHaveBeenCalled();
+    expect(
+      blocked.every(
+        (r) => r.status === 'rejected' && /pending/i.test(String(r.reason)),
+      ),
+    ).toBe(true);
+    expect(() => assertPriorityActionsCurrent(second)).not.toThrow();
+    await expect(
+      continuePriorityAction(second, task, secondCallback, {
+        current: secondCallback,
+        generation: 0,
+      }),
+    ).resolves.toBe(f.input.job_id);
+    expect(secondCallback).toHaveBeenCalledTimes(1);
+  },
+);
+it('known pre-dispatch withdrawal releases only its canonical claim for another fresh view', async () => {
+  const f = await opened(),
+    second = await readPriorityActions(
+      { ...f.sources },
+      { ...f.input },
+      f.gate,
+    ),
+    task = await inspectPriorityAction(second, f.row.key),
+    firstCallback = vi.fn(),
+    secondCallback = vi.fn(),
+    live: PriorityLiveCallback = { current: firstCallback, generation: 0 },
+    seen = during(() => {
+      live.current = undefined;
+      live.generation++;
+    });
+  await expect(
+    continuePriorityAction(f.review, f.task, firstCallback, live),
+  ).rejects.toThrow(/withdrawn|replaced/);
+  seen();
+  vi.restoreAllMocks();
+  expect(firstCallback).not.toHaveBeenCalled();
+  await expect(
+    continuePriorityAction(second, task, secondCallback, {
+      current: secondCallback,
+      generation: 0,
+    }),
+  ).resolves.toBe(f.input.job_id);
+  expect(secondCallback).toHaveBeenCalledTimes(1);
+});
+it('ambiguous deferred callback keeps UNKNOWN after its pending claim releases, including an existing fresh view', async () => {
+  const f = await opened(),
+    second = await readPriorityActions(
+      { ...f.sources },
+      { ...f.input },
+      f.gate,
+    ),
+    task = await inspectPriorityAction(second, f.row.key);
+  let entered!: () => void, reject!: (error: Error) => void;
+  const started = new Promise<void>((resolve) => {
+      entered = resolve;
+    }),
+    deferred = new Promise<void>((_, fail) => {
+      reject = fail;
+    }),
+    firstCallback = vi.fn(async () => {
+      entered();
+      await deferred;
+    }),
+    secondCallback = vi.fn(),
+    first = continuePriorityAction(f.review, f.task, firstCallback, {
+      current: firstCallback,
+      generation: 0,
+    }),
+    observed = Promise.allSettled([first]);
+  await started;
+  await expect(
+    continuePriorityAction(second, task, secondCallback, {
+      current: secondCallback,
+      generation: 0,
+    }),
+  ).rejects.toThrow(/pending/i);
+  reject(Error('lost deferred callback ACK'));
+  expect((await observed)[0].status).toBe('rejected');
+  await expect(
+    continuePriorityAction(second, task, secondCallback, {
+      current: secondCallback,
+      generation: 0,
+    }),
+  ).rejects.toThrow(/UNKNOWN/);
+  expect(firstCallback).toHaveBeenCalledTimes(1);
+  expect(secondCallback).not.toHaveBeenCalled();
+});

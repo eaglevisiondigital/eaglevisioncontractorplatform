@@ -88,8 +88,9 @@ heading focus and responsive layout exclude original control CSS. Loading, empty
 OFF and UNKNOWN states are explicit. Main owns actual responsive browser, axe, focus,
 touch, source continuity and production-OFF evidence; local/CI proof is not approval.
 
-Focused raw results `/private/tmp/cycle18-priority-actions-final-results.json` (local,
-not committed). **53 unique focused cases PASS, zero failed/pending**, maximum3.37seconds; unchanged
+Focused raw results `/private/tmp/cycle18-priority-canonical-pending-final.json` (local,
+not committed). **58 unique focused cases PASS, zero failed/pending** after canonical pending-claim
+correction; unchanged
 30-second timeout. All three brands exercise original sources/filters/versions/privacy,
 source restoration and exact continuation. Seven original add-on modes and original
 UNKNOWN/lost-ACK no-reset are exercised through valid exact-source wrappers. Original
@@ -106,3 +107,22 @@ settlement/provider/financial/communication/hosted/production gates stay unchang
 Operating Center/advanced visual promotion remains PENDING. No hosted mutation,
 credential retrieval, migration, publication, deploy, merge or persistent listener.
 **Release1.0 NOT READY / NOT AUTHORIZED.**
+
+The all-brand deferred-callback race against8c3e7fd reproduced3/3FAIL in
+`/private/tmp/cycle18-priority-canonical-pending-red.json` (53unselected cases remain
+pending in that targeted RED record). Fresh read wrappers over the SAME canonical
+Operations/job invoked a competing callback twice while the first was awaiting.
+Private canonical Operations+organization/job PENDING metadata now claims before the
+first await. A rejected competitor never enters another claim's cleanup; only the
+matching owner token releases pending. UNKNOWN stays in its separate permanent hold
+set and cannot be cleared by pending cleanup, fresh views or restored source inputs.
+Five added cases retain original53assertions: three all-brand ownership races, known
+pre-dispatch cancellation releasing its own claim, and deferred callback rejection
+preserving UNKNOWN for an already-read competing view. Existing source/live checks
+before/after every await remain exact. No business reservation/window/engine changes.
+
+After removing an unused empty-array initialization in the NEW race test, its5new
+regressions were additionally checked at final source in
+`/private/tmp/cycle18-priority-pending-final-scoped.json` (5PASS/53unselected pending;
+these are the same cases, not additional unique coverage). Scoped lint/format/types
+PASS; all58full-suite assertions and final product bytes remain unchanged.
