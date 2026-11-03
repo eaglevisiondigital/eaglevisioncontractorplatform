@@ -1,0 +1,104 @@
+.finance-case-desk {
+  color: #23382e;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.finance-case-desk h2,
+.finance-case-desk h3,
+.finance-case-desk h4 {
+  color: #193c2e;
+}
+.finance-case-desk-eyebrow {
+  color: var(--journey-primary, #216449);
+  font-weight: 700;
+}
+.finance-case-desk button,
+.finance-case-desk input:not([type='checkbox']),
+.finance-case-desk select {
+  min-height: 44px;
+  max-width: 100%;
+}
+.finance-case-desk button {
+  margin: 0.3rem 0.5rem 0.3rem 0;
+}
+.finance-case-desk label {
+  display: block;
+  margin: 0.7rem 0;
+}
+.finance-case-desk input[type='checkbox'] {
+  width: 1.15rem;
+  height: 1.15rem;
+  vertical-align: middle;
+}
+.finance-case-desk-filters,
+.finance-case-desk-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.finance-case-desk-filters label {
+  display: grid;
+  gap: 0.4rem;
+}
+.finance-case-desk-jobs,
+.finance-case-desk-sources {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+.finance-case-desk-jobs > li,
+.finance-case-desk-sources > li,
+.finance-case-desk-summary > div,
+.finance-case-desk-evidence {
+  min-width: 0;
+  border: 1px solid #d4ded7;
+  border-radius: 12px;
+  background: #fff;
+  padding: 1rem;
+}
+.finance-case-desk-detail {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #cad9ce;
+  border-radius: 14px;
+  background: #f7faf7;
+}
+.finance-case-desk nav {
+  display: block;
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+}
+.finance-case-desk dd {
+  margin: 0 0 0.6rem;
+}
+.finance-case-desk dt {
+  font-weight: 650;
+}
+.finance-case-desk-muted {
+  color: #4b5d52;
+  font-size: 0.9rem;
+}
+.finance-case-desk [hidden] {
+  display: none !important;
+}
+.finance-case-desk :focus-visible {
+  outline: 3px solid var(--journey-primary, #216449);
+  outline-offset: 3px;
+}
+@media (max-width: 760px) {
+  .finance-case-desk-filters,
+  .finance-case-desk-summary,
+  .finance-case-desk-jobs,
+  .finance-case-desk-sources {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .finance-case-desk-detail {
+    padding: 0.75rem;
+  }
+  .finance-case-desk button {
+    width: 100%;
+    margin: 0.3rem 0;
+  }
+}
