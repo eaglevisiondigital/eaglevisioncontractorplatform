@@ -1,0 +1,209 @@
+.service-review-path {
+  min-width: 0;
+  padding: clamp(1rem, 3vw, 1.75rem);
+  color: #20352f;
+  background: #fff;
+  border: 1px solid #d9e1da;
+  border-radius: 18px;
+  line-height: 1.55;
+}
+.service-review-path * {
+  box-sizing: border-box;
+}
+.service-review-path header {
+  position: static;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  gap: 1rem;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+}
+.service-review-path header > div {
+  display: block;
+  flex: 1 1 300px;
+  min-width: 0;
+}
+.service-review-path h2,
+.service-review-path h3,
+.service-review-path h4 {
+  margin: 0.25rem 0 0.65rem;
+  overflow-wrap: anywhere;
+}
+.service-review-path form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+.service-review-path label {
+  display: flex;
+  flex: 1 1 180px;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: 600;
+}
+.service-review-path input,
+.service-review-path select {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0.65rem;
+  border: 1px solid #8c9f93;
+  border-radius: 8px;
+  font: inherit;
+  color: inherit;
+  background: #fff;
+}
+.service-review-path button {
+  min-height: 44px;
+  max-width: 100%;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--journey-primary, #247364);
+  border-radius: 8px;
+  font: inherit;
+  color: #fff;
+  background: var(--journey-primary, #247364);
+  cursor: pointer;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.service-review-path button.secondary {
+  color: var(--journey-primary, #247364);
+  background: #fff;
+}
+.service-review-path button:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+.service-review-path nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 1rem 0;
+}
+.service-review-path-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.service-review-path article,
+.service-review-path-staff,
+.service-review-path-safe {
+  min-width: 0;
+  padding: 1rem;
+  margin: 1rem 0;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  background: #f8f8f2;
+}
+.service-review-path-grid > article {
+  margin: 0;
+  border-top: 3px solid var(--journey-primary, #247364);
+}
+.service-review-path-safe {
+  background: #f4f7f5;
+  border-top: 3px solid var(--journey-accent, #dfb461);
+}
+.service-review-path-safe article {
+  background: #fff;
+}
+.service-review-path dl {
+  display: grid;
+  gap: 0.2rem;
+}
+.service-review-path dt {
+  color: #3e594f;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.service-review-path dd {
+  margin: 0 0 0.65rem;
+}
+.service-review-path p,
+.service-review-path dd,
+.service-review-path li,
+.service-review-path nav,
+.service-review-path footer {
+  overflow-wrap: anywhere;
+}
+.service-review-path-pill {
+  display: inline-block;
+  align-self: start;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid #b9cbbb;
+  border-radius: 20px;
+  color: #314d40;
+  background: #eff4ec;
+  font-size: 0.85rem;
+}
+.service-review-path-muted,
+.service-review-path-eyebrow,
+.service-review-path footer {
+  color: #3e594f;
+  font-size: 0.9rem;
+}
+.service-review-path-notice {
+  padding: 0.75rem;
+  border-left: 3px solid var(--journey-accent, #dfb461);
+  background: #fffaf0;
+}
+.service-review-path [role='alert'] {
+  padding: 0.75rem;
+  border-left: 4px solid #9b4426;
+  color: #71341f;
+  background: #fff3e9;
+}
+.service-review-path footer {
+  display: block;
+  padding: 1rem 0 0;
+  margin-top: 1rem;
+  border-top: 1px solid #d9e1da;
+}
+.service-review-path :focus-visible {
+  outline: 3px solid var(--journey-primary, #247364);
+  outline-offset: 3px;
+}
+@media (max-width: 760px) {
+  .service-review-path {
+    padding: 1rem;
+  }
+  .service-review-path-grid {
+    grid-template-columns: 1fr;
+  }
+  .service-review-path form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .service-review-path label {
+    flex: initial;
+  }
+  .service-review-path button {
+    width: 100%;
+  }
+}
+
+.service-review-path dt {
+  color: #3e594f;
+}
+.service-review-path h5 {
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+}
+
+.service-review-path-check {
+  flex-direction: row !important;
+  align-items: center;
+}
+.service-review-path-check input {
+  width: 24px;
+  min-width: 24px;
+  min-height: 44px;
+  margin: 0 0.5rem 0 0;
+}
