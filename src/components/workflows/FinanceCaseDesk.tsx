@@ -369,7 +369,7 @@ function Desk({ sources, selectedJobId, onSelectJob }: Props) {
                   </p>
                   <button
                     type="button"
-                    aria-label={`Review finance case for ${job.target.job_id}`}
+                    aria-label={`Review job case for ${job.target.job_id}`}
                     onClick={() => choose(job.target.job_id!)}
                   >
                     Review job case
@@ -505,7 +505,7 @@ function Desk({ sources, selectedJobId, onSelectJob }: Props) {
                       </p>
                       <button
                         type="button"
-                        aria-label={`Inspect financial ${source.kind} ${source.id}`}
+                        aria-label={`Inspect exact source: financial ${source.kind} ${source.id}`}
                         onClick={() => {
                           try {
                             setEvidence(
