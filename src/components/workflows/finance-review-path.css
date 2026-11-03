@@ -1,0 +1,98 @@
+.finance-review-path {
+  min-width: 0;
+  padding: 24px;
+  color: #20352f;
+  background: #f5f5ef;
+  border: 1px solid #d9e1da;
+  border-radius: 16px;
+}
+.finance-review-path * {
+  box-sizing: border-box;
+}
+.finance-review-path :is(h2, h3, h4, p, li, dd, dt, label, button) {
+  overflow-wrap: anywhere;
+}
+.finance-review-path h2 {
+  font-size: 1.65rem;
+  margin: 4px 0 12px;
+}
+.finance-review-path .path-eyebrow,
+.finance-review-path .path-muted {
+  color: #3e594f;
+}
+.finance-review-path label {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0;
+  font-weight: 600;
+}
+.finance-review-path select {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  color: #20352f;
+  background: white;
+}
+.finance-review-path button {
+  min-height: 44px;
+  max-width: 100%;
+  padding: 10px 14px;
+  margin: 8px 8px 8px 0;
+  color: white;
+  background: var(--journey-primary, #247364);
+  white-space: normal;
+}
+.finance-review-path button:disabled {
+  color: #3e594f;
+  background: #d9e1da;
+}
+.finance-review-path :focus-visible {
+  outline: 3px solid var(--journey-primary, #247364);
+  outline-offset: 4px;
+}
+.finance-review-path .path-confirm {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-height: 44px;
+}
+.finance-review-path .path-confirm input {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+.finance-review-path .path-card {
+  min-width: 0;
+  padding: 20px;
+  margin-top: 20px;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  background: white;
+}
+.finance-review-path dl {
+  display: grid;
+  gap: 6px;
+}
+.finance-review-path dt {
+  color: #3e594f;
+  font-weight: 700;
+}
+.finance-review-path dd {
+  margin: 0 0 10px;
+}
+.finance-review-path .path-list {
+  list-style: none;
+  padding: 0;
+}
+.finance-review-path .path-list > li {
+  padding: 16px 0;
+  border-top: 1px solid #d9e1da;
+}
+@media (max-width: 760px) {
+  .finance-review-path {
+    padding: 16px;
+  }
+  .finance-review-path .path-card {
+    padding: 16px;
+  }
+}
