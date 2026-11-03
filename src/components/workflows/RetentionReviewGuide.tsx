@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Temporal } from '@js-temporal/polyfill';
 import { journeyEnabled } from '../../lib/workflows/journey-runtime';
 import {
@@ -139,17 +139,30 @@ function Guide({
     [message, setMessage] = useState(
       'Inspect current local plan occurrences and historical contact evidence.',
     );
+  const callbackToken = useMemo(
+    () => ({ callback: onSelectJob }),
+    [onSelectJob],
+  );
   const gate = useRef({ enabled: true, confirmed: false }),
     live = useRef(true),
     currentCallback = useRef(onSelectJob),
+    callbackGeneration = useRef(0),
+    currentCallbackToken = useRef<typeof callbackToken | undefined>(
+      callbackToken,
+    ),
     pending = useRef(false),
     heading = useRef<HTMLHeadingElement>(null);
   useLayoutEffect(() => {
+    const generation = callbackGeneration;
+    generation.current++;
     currentCallback.current = onSelectJob;
+    currentCallbackToken.current = callbackToken;
     return () => {
+      generation.current++;
       currentCallback.current = undefined;
+      currentCallbackToken.current = undefined;
     };
-  }, [onSelectJob]);
+  }, [onSelectJob, callbackToken]);
   useEffect(() => {
     live.current = true;
     const own = gate.current;
@@ -673,13 +686,15 @@ function Guide({
                     disabled={busy}
                     onClick={() =>
                       void run(async () => {
-                        const callback = onSelectJob;
+                        const callback = onSelectJob,
+                          generation = callbackGeneration.current;
                         await navigateRetentionReviewJob(
                           currentDetail,
                           (jobId, section) => {
                             if (
                               live.current &&
-                              currentCallback.current === callback
+                              currentCallback.current === callback &&
+                              callbackGeneration.current === generation
                             )
                               callback(jobId, section);
                           },
@@ -713,7 +728,8 @@ function Guide({
                     ? (jobId, section?: OperatingJobSection) => {
                         if (
                           live.current &&
-                          currentCallback.current === onSelectJob
+                          currentCallback.current === onSelectJob &&
+                          currentCallbackToken.current === callbackToken
                         )
                           onSelectJob(jobId, section);
                       }
