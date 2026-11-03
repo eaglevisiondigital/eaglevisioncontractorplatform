@@ -1,5 +1,9 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Cycle22 · parallel current-source implementation in progress
+
+Five bounded author packages extend existing native correction, cost-coverage, published-service, maintenance and owner-priority readers. Main retains the original host/custody/navigation, default-off composition, integration and acceptance register. No new business store, evidence archive or restart adapter. Exact base2fecb892 is the C21 test-only preparer-evidence correction over27cb44bb; original failed artifacts and all safety gates remain intact. Module/browser/independent verification and final CI are not yet claimed. See docs/program/CYCLE22_ASSIGNMENTS.md. Physical Air readiness/recovery UNVERIFIED/NOT RUN; Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Cycle21 CI · preserve the guarded original preparer seam
 
 Downloaded exact-head C11/C13/C14 artifacts prove four obsolete literal-call assertions, not timeout evidence. Three Main-owned tests now require the actual single awaited preparer call plus its original default binding; every other assertion remains.52 evidence cases and10 native preparation cases pass. Product/protected source, workflows and budgets are unchanged. Original failed runs remain failures; corrected-head automatic CI and other pending checks remain separate. See docs/program/CYCLE21_PREPARER_CI_CORRECTION.md and JSON. No operational or release gate is promoted.
