@@ -16,12 +16,18 @@ export default defineConfig({
     { name: 'desktop', use: { ...devices['Desktop Chrome'] } },
     {
       name: 'tablet',
-      testIgnore: 'cycle16-search-race.spec.ts',
+      testIgnore: [
+        'cycle16-search-race.spec.ts',
+        'cycle16-default-off.spec.ts',
+      ],
       use: { ...devices['iPad Mini'], defaultBrowserType: 'chromium' },
     },
     {
       name: 'mobile',
-      testIgnore: 'cycle16-search-race.spec.ts',
+      testIgnore: [
+        'cycle16-search-race.spec.ts',
+        'cycle16-default-off.spec.ts',
+      ],
       use: { ...devices['iPhone 13'], defaultBrowserType: 'chromium' },
     },
   ],

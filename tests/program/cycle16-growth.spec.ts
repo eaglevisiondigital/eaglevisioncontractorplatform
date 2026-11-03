@@ -31,7 +31,7 @@ for (const company of sampleCompanies)
       }),
     ).toBeFocused();
     await r
-      .getByRole('textbox', {
+      .getByRole('searchbox', {
         name: 'Search captured retention evidence',
         exact: true,
       })

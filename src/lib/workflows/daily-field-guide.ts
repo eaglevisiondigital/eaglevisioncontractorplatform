@@ -288,6 +288,31 @@ export async function inspectDailyFieldStep(
     authority: 'READ_ONLY' as const,
   });
 }
+/** Presentation-only allowlist: the original reader still admits the exact report/version. */
+export function dailyFieldReportReference(
+  displayed: DailyFieldGuideView['published_reports'][number],
+): FieldReportReference {
+  const value = prototypeFields(displayed, [
+    'report_id',
+    'published_version',
+    'visit_id',
+    'plan_id',
+    'job_id',
+  ]);
+  if (
+    Object.keys(value).length !== 5 ||
+    typeof value.report_id !== 'string' ||
+    !value.report_id ||
+    typeof value.published_version !== 'number' ||
+    !Number.isSafeInteger(value.published_version) ||
+    value.published_version < 1
+  )
+    throw Error('Exact displayed report reference required');
+  return {
+    report_id: value.report_id,
+    published_version: value.published_version,
+  };
+}
 export async function inspectDailyFieldReport(
   view: DailyFieldGuideView,
   reference: FieldReportReference,

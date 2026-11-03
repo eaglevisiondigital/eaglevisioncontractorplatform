@@ -11,6 +11,7 @@ import {
   assertDailyFieldGuideNow,
   inspectDailyFieldStep,
   inspectDailyFieldReport,
+  dailyFieldReportReference,
   reconcileDailyFieldGuide,
   openDailyFieldControls,
   navigateDailyFieldJob,
@@ -436,7 +437,7 @@ function Guide({ sources, selectedJobId, onSelectJob }: DailyFieldGuideProps) {
                         void run(async () => {
                           const result = await inspectDailyFieldReport(
                             current,
-                            r,
+                            dailyFieldReportReference(r),
                           );
                           if (live.current) {
                             setReport(result);

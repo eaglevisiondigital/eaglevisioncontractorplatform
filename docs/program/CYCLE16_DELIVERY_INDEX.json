@@ -14,18 +14,18 @@
       "owner": "/root/cycle16_field_growth",
       "branch": "codex/cycle16-daily-field-guide",
       "parent_commit": "b4014771050b28d1ec1dffd0fa42cb3617a5fae9",
-      "head_commit": "124a5d15e3ea755eb8a5e15f404e27b5dad3db25",
+      "head_commit": "7eee0b4527646c470d3604b6d21ac7578d073fee",
       "draft_pr": 112,
-      "focused_new_tests": 36,
+      "focused_new_tests": 37,
       "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
       "owned_files": [
         {
           "path": "src/lib/workflows/daily-field-guide.ts",
-          "sha256": "6071fe7325c0d1f6438e72300d8c90104fdcb2bae6a83d3c47c27041cd017482"
+          "sha256": "6fcaea74f19b422424e0b562d91fb94e1d9654b0598b20c6551d3ba405c5410d"
         },
         {
           "path": "src/components/workflows/DailyFieldGuide.tsx",
-          "sha256": "582878384f752abadabc0dac269e00ec698780853be11d8891cac17e9ae1067b"
+          "sha256": "5076dc00bb511b46b957143698a8c8552a969a95dda1233ae40d2c3cc4ec99e6"
         },
         {
           "path": "src/components/workflows/daily-field-guide.css",
@@ -33,7 +33,7 @@
         },
         {
           "path": "tests/cycle16-daily-field-guide.test.ts",
-          "sha256": "384cb651fc3ab12781fa4fb5d9d3316bd9e3af549600a63c43ce76021c1a00b4"
+          "sha256": "6e5fe39b14417ee237ddf849b230d8cdf3affcb477b91e03fcc4bb7f5dd796f4"
         },
         {
           "path": "docs/program/CYCLE16_DAILY_FIELD_GUIDE.md",
@@ -208,7 +208,7 @@
     }
   ],
   "combined_evidence": {
-    "author_cases": 303,
+    "author_cases": 304,
     "independent_cases": 0,
     "coordinator_cases": 23,
     "retained_scorecard_cases": 4,
