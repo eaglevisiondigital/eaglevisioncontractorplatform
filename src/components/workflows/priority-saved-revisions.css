@@ -1,0 +1,94 @@
+.priority-saved-revisions {
+  color: #23382e;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.priority-saved-revisions h2,
+.priority-saved-revisions h3,
+.priority-saved-revisions h4,
+.priority-saved-revisions h5 {
+  color: #193c2e;
+}
+.priority-saved-revisions-eyebrow {
+  color: var(--journey-primary, #216449);
+  font-weight: 700;
+}
+.priority-saved-revisions button,
+.priority-saved-revisions input:not([type='checkbox']),
+.priority-saved-revisions summary {
+  min-height: 44px;
+  max-width: 100%;
+}
+.priority-saved-revisions button {
+  margin: 0.5rem 0.5rem 0.5rem 0;
+}
+.priority-saved-revisions label {
+  display: block;
+  margin: 0.8rem 0;
+}
+.priority-saved-revisions input[type='checkbox'] {
+  width: 1.15rem;
+  height: 1.15rem;
+  vertical-align: middle;
+}
+.priority-saved-revisions-context,
+.priority-saved-revisions-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+.priority-saved-revisions-context > div,
+.priority-saved-revisions-columns > section,
+.priority-saved-revisions li {
+  min-width: 0;
+  border: 1px solid #d4ded7;
+  border-radius: 12px;
+  background: white;
+  padding: 1rem;
+}
+.priority-saved-revisions dt,
+.priority-saved-revisions-limit {
+  color: #4b5d52;
+}
+.priority-saved-revisions dt {
+  font-weight: 650;
+}
+.priority-saved-revisions dd {
+  margin: 0 0 0.7rem;
+}
+.priority-saved-revisions ul {
+  list-style: none;
+  padding: 0;
+}
+.priority-saved-revisions li {
+  margin-bottom: 0.8rem;
+}
+.priority-saved-revisions pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 0.85rem;
+}
+.priority-saved-revisions :focus-visible {
+  outline: 3px solid var(--journey-primary, #216449);
+  outline-offset: 3px;
+}
+@media (max-width: 760px) {
+  .priority-saved-revisions-context,
+  .priority-saved-revisions-columns {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .priority-saved-revisions button {
+    width: 100%;
+  }
+}
+
+.priority-saved-revisions-filters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+@media (max-width: 760px) {
+  .priority-saved-revisions-filters {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

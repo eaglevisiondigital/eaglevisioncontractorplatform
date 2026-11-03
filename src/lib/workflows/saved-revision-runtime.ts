@@ -37,6 +37,8 @@ interface Binding {
   immutable: string;
   access: string;
   domainFence?: () => void;
+  rootPins: Record<string, unknown>;
+  entryPins: Record<string, unknown>;
 }
 const snapshots = new WeakMap<object, Binding>();
 function admit(gate: JourneyAdmission) {
@@ -149,6 +151,19 @@ export function assertSavedRevisionAccess<T>(
 ) {
   const b = original(snapshot);
   admit(b.gate);
+  const currentRoot = prototypeFields(b.sources, Object.keys(b.rootPins)),
+    currentEntry = prototypeFields(b.entry, Object.keys(b.entryPins));
+  if (
+    Object.keys(currentRoot).length !== Object.keys(b.rootPins).length ||
+    Object.keys(currentEntry).length !== Object.keys(b.entryPins).length ||
+    Object.keys(b.rootPins).some(
+      (key) => currentRoot[key] !== b.rootPins[key],
+    ) ||
+    Object.keys(b.entryPins).some(
+      (key) => currentEntry[key] !== b.entryPins[key],
+    )
+  )
+    throw Error('Original saved-source handles or selectors changed');
   const fresh = captureOperatingSources(b.sources, b.gate);
   const matches = fresh.entries.filter(
     (e) => e.target.job_id === snapshot.identity.job_id,
@@ -211,7 +226,16 @@ export async function readSavedRevision<T>(
   const entry = matches[0],
     t = identity(entry),
     pin = immutable(entry),
-    role = access(sources, t);
+    role = access(sources, t),
+    rootPins = prototypeFields(sources, [
+      'company',
+      'operations',
+      'estimates',
+      'property',
+      'entries',
+      'gate',
+    ]),
+    entryPins = prototypeFields(entry, Object.keys(entry));
   capture.check();
   const evidence = ownCopy(await project(entry)) as T;
   capture.check();
@@ -237,6 +261,8 @@ export async function readSavedRevision<T>(
     immutable: pin,
     access: role,
     domainFence: assertDomainNow,
+    rootPins,
+    entryPins,
   });
   assertSavedRevisionCurrent(snapshot);
   return snapshot;
