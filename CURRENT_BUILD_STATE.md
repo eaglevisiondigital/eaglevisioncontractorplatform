@@ -1,5 +1,17 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Cycle 23 · bounded implementation in progress
+
+Base exact3e35fb29, with Cycle22 feature drafts preserved. Five isolated packages
+refine native task consistency, recorded costs, safe service continuity, maintenance
+requirements and recorded priorities. Existing engines/custody/readers/navigation
+remain authoritative; no competing business/evidence store or adapter is authorized.
+Main separately prepares a review-only canonical restart-persistence architecture
+proposal. See docs/program/CYCLE23_ASSIGNMENTS.md. Current-head CI remains observed
+separately; no queued result is green. All prior release/design/financial/recovery
+gates persist, including actual Danny Air readiness/rehearsal/cleanup NOT RUN.
+Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Cycle 22 · current-source workflows delivered locally
 
 Draft PR149 composes Field152, Finance151, Customer150, Growth153 and Intelligence154

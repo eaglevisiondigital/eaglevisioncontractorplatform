@@ -1728,3 +1728,10 @@ invalidation so original time-sensitive labels refresh on return; all original
 authority, expiry, callbacks and custody remain byte-identical after presentation
 normalization. Actual profile, pre-active RED, final responsive/expiry PASS and
 13-case independent delta review are retained; no assertion or budget was removed.
+
+Cycle23 uses exact Cycle22 Main3e35fb29 and independent codex worktrees/drafts.
+Canonical engines, original one-use custody and exact-source read checks remain
+authoritative. Restart persistence is a separately reviewed architecture proposal
+only: no restoration adapter, store, schema, migration, privileged writer or
+operational Auth/credential path is authorized. Historical evidence is never
+business-state restoration. No existing release/production gate is promoted.
