@@ -91,6 +91,7 @@ async function rehash(
   const r = JSON.parse(text);
   change(r);
   const { sha256: _, ...body } = r;
+  void _;
   return JSON.stringify({ ...body, sha256: await documentHash(body) });
 }
 it.each([0, 1, 2])(
