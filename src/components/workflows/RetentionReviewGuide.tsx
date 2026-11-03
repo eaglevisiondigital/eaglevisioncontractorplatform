@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Temporal } from '@js-temporal/polyfill';
 import { journeyEnabled } from '../../lib/workflows/journey-runtime';
 import {
@@ -141,8 +141,15 @@ function Guide({
     );
   const gate = useRef({ enabled: true, confirmed: false }),
     live = useRef(true),
+    currentCallback = useRef(onSelectJob),
     pending = useRef(false),
     heading = useRef<HTMLHeadingElement>(null);
+  useLayoutEffect(() => {
+    currentCallback.current = onSelectJob;
+    return () => {
+      currentCallback.current = undefined;
+    };
+  }, [onSelectJob]);
   useEffect(() => {
     live.current = true;
     const own = gate.current;
@@ -666,9 +673,16 @@ function Guide({
                     disabled={busy}
                     onClick={() =>
                       void run(async () => {
+                        const callback = onSelectJob;
                         await navigateRetentionReviewJob(
                           currentDetail,
-                          onSelectJob,
+                          (jobId, section) => {
+                            if (
+                              live.current &&
+                              currentCallback.current === callback
+                            )
+                              callback(jobId, section);
+                          },
                         );
                       })
                     }
@@ -694,7 +708,17 @@ function Guide({
                 sources={sources}
                 enabled
                 selectedJobId={controlsJob}
-                onSelectJob={onSelectJob}
+                onSelectJob={
+                  onSelectJob
+                    ? (jobId) => {
+                        if (
+                          live.current &&
+                          currentCallback.current === onSelectJob
+                        )
+                          onSelectJob(jobId);
+                      }
+                    : undefined
+                }
               />
             </div>
           )}
