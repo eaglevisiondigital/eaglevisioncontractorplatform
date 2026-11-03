@@ -1,0 +1,80 @@
+.work-order-evidence-continuity {
+  min-width: 0;
+  color: #20352f;
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+}
+.work-order-evidence-continuity .saved-evidence-controls {
+  margin-top: 1.25rem;
+  padding: 1.1rem;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  background: #fff;
+  min-width: 0;
+}
+.work-order-evidence-continuity button,
+.work-order-evidence-continuity input,
+.work-order-evidence-continuity select {
+  min-height: 44px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.work-order-evidence-continuity .saved-evidence-controls button {
+  margin: 0.4rem 0.5rem 0.4rem 0;
+  background: var(--journey-primary, #00543e);
+  color: #fff;
+  white-space: normal;
+}
+.work-order-evidence-continuity label {
+  display: block;
+  margin: 0.75rem 0;
+  color: #526159;
+}
+.work-order-evidence-continuity pre {
+  max-width: 100%;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 0.82rem;
+}
+.work-order-evidence-continuity code {
+  overflow-wrap: anywhere;
+}
+.work-order-evidence-continuity :focus-visible {
+  outline: 3px solid var(--journey-accent, #dfb461);
+  outline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .work-order-evidence-continuity .saved-evidence-controls {
+    padding: 1rem;
+  }
+  .work-order-evidence-continuity .saved-evidence-controls button {
+    width: 100%;
+    margin: 0.4rem 0;
+  }
+}
+.work-order-evidence-continuity .work-order-draft-editor {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  min-width: 0;
+}
+.work-order-evidence-continuity textarea {
+  min-height: 110px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.work-order-evidence-continuity fieldset {
+  min-width: 0;
+  border: 1px solid #d9e1da;
+  border-radius: 8px;
+}
+.work-order-evidence-continuity input[type='checkbox'] {
+  width: 24px;
+  height: 24px;
+  min-height: 24px;
+  vertical-align: middle;
+  margin: 10px;
+}
