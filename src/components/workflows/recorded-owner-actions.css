@@ -1,0 +1,76 @@
+.recorded-owner-actions {
+  color: #27352f;
+  overflow-wrap: anywhere;
+}
+.recorded-owner-actions h2,
+.recorded-owner-actions h3 {
+  color: #203e32;
+}
+.recorded-owner-actions button,
+.recorded-owner-actions input:not([type='checkbox']),
+.recorded-owner-actions select,
+.recorded-owner-actions summary {
+  min-height: 44px;
+}
+.recorded-owner-actions button:focus-visible,
+.recorded-owner-actions summary:focus-visible {
+  outline: 3px solid var(--journey-accent, #b58a49);
+  outline-offset: 3px;
+}
+.recorded-owner-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+.recorded-owner-cards > li,
+.recorded-owner-inspection {
+  background: #fffdf8;
+  border: 1px solid #dcded4;
+  border-radius: 14px;
+  padding: 1rem;
+}
+.recorded-owner-label {
+  font-weight: 700;
+  color: var(--journey-primary, #294f3e);
+}
+.recorded-owner-actions details {
+  margin-block: 0.75rem;
+}
+.recorded-owner-actions summary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.recorded-owner-actions [role='alert'] {
+  padding: 0.75rem;
+  border-left: 4px solid #a45129;
+  background: #fff1e3;
+}
+.recorded-owner-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: end;
+}
+.recorded-owner-filters label {
+  display: grid;
+  gap: 0.4rem;
+}
+.recorded-owner-filters label:has(input[type='checkbox']) {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+}
+@media (max-width: 640px) {
+  .recorded-owner-filters,
+  .recorded-owner-filters label {
+    display: grid;
+    width: 100%;
+  }
+  .recorded-owner-actions button {
+    max-width: 100%;
+    white-space: normal;
+  }
+}
