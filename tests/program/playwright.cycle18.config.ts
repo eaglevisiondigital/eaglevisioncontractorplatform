@@ -10,7 +10,7 @@ export default defineConfig({
   testIgnore: 'cycle18-default-off.spec.ts',
   timeout: 150000,
   fullyParallel: false,
-  use: { baseURL: 'http://127.0.0.1:4361' },
+  use: { baseURL: 'http://127.0.0.1:4361', actionTimeout: 15000 },
   webServer: {
     command:
       'VITE_CONTRACTOR_JOURNEY_PREVIEW=true npm run dev -- --host 127.0.0.1 --port 4361 --strictPort',

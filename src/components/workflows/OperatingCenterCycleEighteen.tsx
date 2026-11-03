@@ -21,7 +21,7 @@ const groups = taskReviewGroups({
 });
 export const cycle18WorkflowGroups = groups.map((group) => ({
   ...group,
-  label: 'Daily workflow reviews',
+  label: 'Retained daily workflow',
   panels: group.panels.map((panel) =>
     panel.id === 'schedule-work-order-continuity'
       ? { ...panel, label: 'Daily contractor workflow' }

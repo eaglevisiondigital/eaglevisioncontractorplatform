@@ -63,11 +63,12 @@ export async function start(
 }
 export async function nav(page: Page, name: string) {
   const group = page.getByRole('navigation', {
-    name: 'Daily workflow reviews',
+    name: 'Retained daily workflow',
     exact: true,
   });
   if (!(await group.isVisible()))
-    await page.getByText('Daily workflow reviews', { exact: true }).click();
+    await page.getByText('Retained daily workflow', { exact: true }).click();
+  await expect(group.getByRole('button', { name, exact: true })).toBeVisible();
   await group.getByRole('button', { name, exact: true }).click();
   await expect(
     group.getByRole('button', { name, exact: true }),

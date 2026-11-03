@@ -138,7 +138,9 @@ export async function continueDailyWorkContext(
     map(b).set(b.key, 'PENDING');
     await revalidateOperatingSelection(b.sources, b.selection, b.job);
     current(b);
-    if (live() !== callback) {
+    const before = live();
+    current(b);
+    if (before !== callback) {
       map(b).delete(b.key);
       return {
         status: 'WITHHELD_NO_DISPATCH' as const,
@@ -148,7 +150,9 @@ export async function continueDailyWorkContext(
     dispatched = true;
     await callback();
     current(b);
-    if (live() !== callback)
+    const after = live();
+    current(b);
+    if (after !== callback)
       throw Error('Dispatched local continuation became uncertain');
     map(b).delete(b.key);
     return {

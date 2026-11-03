@@ -15,6 +15,17 @@ for (const company of sampleCompanies) {
     await expect(
       r.getByRole('region', { name: 'Daily priority actions', exact: true }),
     ).toBeVisible();
+    const priorities = r.getByRole('region', {
+      name: 'Daily priority actions',
+      exact: true,
+    });
+    await priorities
+      .getByRole('button', {
+        name: 'Review daily priority sources',
+        exact: true,
+      })
+      .click();
+    await expect(priorities).toContainText('available source cards');
     const search = r.getByRole('region', {
       name: 'Shared record search',
       exact: true,
@@ -95,7 +106,10 @@ for (const company of sampleCompanies) {
         name: 'Cost and invoice breadcrumbs',
         exact: true,
       }),
-    ).toContainText(job);
+    ).toBeVisible();
+    await expect(
+      finance.getByText(new RegExp('Job ' + job + ' · saved revision')),
+    ).toContainText(version);
     await finance.evaluate((e) =>
       e.setAttribute('data-c18-retained', 'finance-once'),
     );
@@ -213,6 +227,12 @@ for (const company of sampleCompanies) {
       exact: true,
     });
     await expect(advanced).toBeVisible();
+    await advanced
+      .getByRole('button', { name: 'Open advanced task controls', exact: true })
+      .click();
+    await expect(
+      advanced.getByRole('region', { name: 'Add-on task desk', exact: true }),
+    ).toBeVisible();
     await audit(page, advanced);
     await capture(page, r, 'daily-advanced', company.slug, info.project.name);
     await steps.getByRole('button', { name: /^Today’s priorities/ }).click();

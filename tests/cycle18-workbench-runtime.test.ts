@@ -227,3 +227,31 @@ it('copied context, missing job and unknown navigation never acquire authority',
   ).toBe('UNKNOWN');
   expect(called).not.toHaveBeenCalled();
 });
+
+it.each(['before', 'after'] as const)(
+  'source drift inside %s live-lease inspection fails closed',
+  async (phase) => {
+    const { s, v, g } = await fixture();
+    let inspections = 0;
+    const callback = vi.fn();
+    const result = await continueDailyWorkContext(
+      v,
+      'finance',
+      callback,
+      () => {
+        inspections++;
+        if (inspections === (phase === 'before' ? 1 : 2)) g.confirmed = false;
+        return callback;
+      },
+    );
+    expect(result.status).toBe('UNKNOWN');
+    expect(callback).toHaveBeenCalledTimes(phase === 'before' ? 0 : 1);
+    g.confirmed = true;
+    const fresh = await readDailyWorkContext({ ...s }, v.job_id, g);
+    const retry = vi.fn();
+    expect(
+      (await continueDailyWorkContext(fresh, 'finance', retry)).status,
+    ).toBe('UNKNOWN');
+    expect(retry).not.toHaveBeenCalled();
+  },
+);
