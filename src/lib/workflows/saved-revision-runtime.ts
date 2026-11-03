@@ -36,6 +36,7 @@ interface Binding {
   capture: ReturnType<typeof captureOperatingSources>;
   immutable: string;
   access: string;
+  domainFence?: () => void;
 }
 const snapshots = new WeakMap<object, Binding>();
 function admit(gate: JourneyAdmission) {
@@ -172,6 +173,13 @@ export function assertSavedRevisionCurrent<T>(
     access(b.sources, snapshot.identity) !== b.access
   )
     throw Error('Immutable source or staff changed');
+  if (b.domainFence) {
+    const result = (b.domainFence as () => unknown)();
+    if (result !== undefined) {
+      void Promise.resolve(result).catch(() => undefined);
+      throw Error('Synchronous read-only domain fence required');
+    }
+  }
   b.capture.check();
 }
 /** Trusted application-owned projector must use original read APIs and return a
@@ -182,6 +190,7 @@ export async function readSavedRevision<T>(
   kind: SavedRevisionKind,
   gate: JourneyAdmission = { enabled: false, confirmed: false },
   project: (entry: LocalJourney) => T | Promise<T>,
+  assertDomainNow?: () => void,
 ): Promise<SavedRevisionSnapshot<T>> {
   admit(gate); // OFF before sources, selector or projector access.
   if (
@@ -197,6 +206,8 @@ export async function readSavedRevision<T>(
     matches = capture.entries.filter((e) => e.target.job_id === jobId);
   if (matches.length !== 1 || typeof project !== 'function')
     throw Error('Exact authorized job and read projection required');
+  if (assertDomainNow !== undefined && typeof assertDomainNow !== 'function')
+    throw Error('Trusted read-only domain fence required');
   const entry = matches[0],
     t = identity(entry),
     pin = immutable(entry),
@@ -225,6 +236,7 @@ export async function readSavedRevision<T>(
     capture,
     immutable: pin,
     access: role,
+    domainFence: assertDomainNow,
   });
   assertSavedRevisionCurrent(snapshot);
   return snapshot;

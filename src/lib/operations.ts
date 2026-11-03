@@ -523,6 +523,32 @@ export class Operations {
       ).values(),
     ];
   }
+  /** Exact synchronous evidence for the explicit synthetic repository only.
+   * Reads the original consent rows; no new store, route or send authority. */
+  syntheticContactConsentSources(org: string, customer: string, actor: string) {
+    if (!this.sample) throw Error('Synthetic consent source unavailable');
+    if (
+      [org, customer, actor].some(
+        (value) => typeof value !== 'string' || !value || value.length > 200,
+      )
+    )
+      throw Error('Exact synthetic consent identity required');
+    this.syntheticEstimateCrm(org, customer, null);
+    const member = this.syntheticMemberships(org).filter(
+      (m) => m.user_id === actor,
+    );
+    if (
+      member.length !== 1 ||
+      !member[0].active ||
+      !['owner', 'admin'].includes(member[0].role)
+    )
+      throw Error('Current eligible synthetic staff required');
+    return structuredClone(
+      this.consents.filter(
+        (row) => row.organization_id === org && row.customer_id === customer,
+      ),
+    );
+  }
   async customerHistory(
     org: string,
     customer: string,

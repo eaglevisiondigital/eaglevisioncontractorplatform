@@ -5,13 +5,13 @@ five isolated local packages, not new tasks/stores/engines or operational writer
 Main owns shared saved-revision runtime/contract, same-host composition, bounded
 synthetic source exercises, registers, design and combined independent verification.
 
-| Package      | Branch                                    | Stem/component                                          |
-| ------------ | ----------------------------------------- | ------------------------------------------------------- |
-| Field        | codex/cycle19-field-saved-revisions       | field-saved-revisions / FieldSavedRevisions             |
-| Finance      | codex/cycle19-cost-saved-revisions        | cost-saved-revisions / CostSavedRevisions               |
-| Customer     | codex/cycle19-service-revision-review     | service-revision-review / ServiceRevisionReview         |
-| Growth       | codex/cycle19-maintenance-saved-revisions | maintenance-saved-revisions / MaintenanceSavedRevisions |
-| Intelligence | codex/cycle19-priority-saved-revisions    | priority-saved-revisions / PrioritySavedRevisions       |
+| Package      | Branch                                     | Stem/component                                          |
+| ------------ | ------------------------------------------ | ------------------------------------------------------- |
+| Field        | codex/cycle19-field-saved-revisions        | field-saved-revisions / FieldSavedRevisions             |
+| Finance      | codex/cycle19-cost-saved-revisions         | cost-saved-revisions / CostSavedRevisions               |
+| Customer     | codex/cycle19-service-revision-review      | service-revision-review / ServiceRevisionReview         |
+| Growth       | codex/cycle19-maintenance-source-revisions | maintenance-saved-revisions / MaintenanceSavedRevisions |
+| Intelligence | codex/cycle19-priority-saved-revisions     | priority-saved-revisions / PrioritySavedRevisions       |
 
 Each author owns exactly5NEWfiles: src/lib/workflows/{stem}.ts,
 src/components/workflows/{Component}.tsx, same directory/{stem}.css,
@@ -86,3 +86,16 @@ provider/financial/hosted/production gates unchanged. No credentials, hosted wri
 schema, messages, dispatch, payments, deployment, publication or merge. Original
 November4Air checklist remains authoritative, physical readiness/recoveryUNVERIFIED.
 Release1.0 NOT READY / NOT AUTHORIZED.
+
+## Shared follow-up seed
+
+Growth alone starts from the forward Main shared-support seed adding an optional
+sixth readSavedRevision argument: a trusted synchronous read-only domain fence.
+It runs on assert-current and adoption, never historical assert-access. Use it for
+private maintenance records and the original Operations synthetic consent rows,
+which are outside the original operating capture. New synchronous
+syntheticContactConsentSources(org,customer,actor) reads those SAME rows with exact
+current owner/admin/customer admission; no connected path or send authority.
+Other packages remain compatible with the original five-argument signature.
+Growth's unpublished earlier worktree is preserved unchanged; its five owned files
+are copied onto the new seed without reset, rebase, rewrite or merge.
