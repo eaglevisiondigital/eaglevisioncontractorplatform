@@ -325,6 +325,23 @@ export function sourceOwner(path) {
     )
   )
     return 'A8';
+  // Cycle15 exact consumer lanes, never access grants or acceptance promotion.
+  if (
+    /OperatingCenterCycleFifteen|task-review-paths|^tests\/program\/.*cycle15|cycle15-integration|playwright\.cycle15|check-cycle15-/.test(
+      path,
+    )
+  )
+    return 'A8';
+  if (/field-task-continuity|FieldTaskContinuity/.test(path)) return 'A3';
+  if (/finance-review-path|FinanceReviewPath/.test(path)) return 'A4';
+  if (/service-review-path|ServiceReviewPath/.test(path)) return 'A5';
+  if (
+    /maintenance-review-path|MaintenanceReviewPath|explainable-task-links|ExplainableTaskLinks/.test(
+      path,
+    )
+  )
+    return 'A6';
+  if (/addon-task-continuity|AddonTaskContinuity/.test(path)) return 'A7';
   // Cycle14 disjoint metadata lanes; classification is never an access grant.
   if (
     /OperatingCenterCycleFourteen|cycle14|playwright\.cycle14/.test(path) &&

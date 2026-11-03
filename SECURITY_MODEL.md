@@ -1,5 +1,17 @@
 # Security model · Phase 2
 
+## Cycle15 local returns do not renew authority
+
+Guided presentation must reuse exact admitted objects and original attempt holds.
+Switching mode, reselecting context or remounting never authorizes a retry after
+UNKNOWN. Current membership/source/model/lock/deadline checks precede serialization,
+return and navigation. Invalid selected-job hints never fall back to another job.
+Local retained context is lost on unmount unless original controls remain mounted;
+neither case is durable custody or genuine Auth. Missing request/job FKs, availability,
+cost coverage, consent and physical completion are never inferred. Customer-safe
+report projections exclude staff financial and private notes. No network mutator,
+sender, dispatcher, provider, migration or financial authority is introduced.
+
 ## Cycle14 navigation is not authority
 
 A retained selected-job hint and pinned advanced detail cannot broaden access,
