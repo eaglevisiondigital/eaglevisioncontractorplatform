@@ -110,3 +110,27 @@
 .saved-revision-workbench .srw-tabs {
   flex-direction: row;
 }
+
+.saved-revision-workbench .saved-evidence-controls {
+  border: 1px solid #c8d4cf;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  background: #f8f9f7;
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.75rem;
+}
+.saved-revision-workbench .saved-evidence-controls button,
+.saved-revision-workbench .saved-evidence-controls input {
+  min-height: 44px;
+}
+.saved-revision-workbench .saved-evidence-controls pre {
+  max-height: 28rem;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 0.8rem;
+}
+.saved-revision-workbench .saved-evidence-controls code {
+  overflow-wrap: anywhere;
+}

@@ -1,0 +1,54 @@
+.recorded-cost-continuity {
+  color: #23382e;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.recorded-cost-continuity .recorded-cost-preparation {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #d4ded7;
+  border-radius: 12px;
+  background: #f7faf7;
+}
+.recorded-cost-continuity .recorded-cost-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.recorded-cost-continuity label {
+  display: block;
+  margin: 0.8rem 0;
+}
+.recorded-cost-continuity button,
+.recorded-cost-continuity input:not([type='checkbox']),
+.recorded-cost-continuity summary {
+  min-height: 44px;
+  max-width: 100%;
+}
+.recorded-cost-continuity button {
+  margin: 0.5rem 0.5rem 0.5rem 0;
+}
+.recorded-cost-continuity input[type='checkbox'] {
+  width: 1.15rem;
+  height: 1.15rem;
+  vertical-align: middle;
+}
+.recorded-cost-continuity pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.recorded-cost-continuity :focus-visible {
+  outline: 3px solid var(--journey-primary, #216449);
+  outline-offset: 3px;
+}
+.recorded-cost-continuity dt {
+  color: #4b5d52;
+}
+@media (max-width: 760px) {
+  .recorded-cost-continuity .recorded-cost-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .recorded-cost-continuity button {
+    width: 100%;
+  }
+}
