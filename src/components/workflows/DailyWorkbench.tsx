@@ -1,9 +1,11 @@
 import {
+  memo,
   useCallback,
   useEffect,
   useLayoutEffect,
   useRef,
   useState,
+  type ComponentType,
 } from 'react';
 import { journeyEnabled } from '../../lib/workflows/journey-runtime';
 import { captureOperatingSources } from '../../lib/workflows/operating-center-runtime';
@@ -27,6 +29,25 @@ import { ServiceUpdateReview } from './ServiceUpdateReview';
 import { MaintenanceAgenda } from './MaintenanceAgenda';
 import { PriorityActions } from './PriorityActions';
 import './daily-workbench.css';
+// Retain original pane state without repeating every hidden review on unrelated
+// parent status changes. Visibility transitions rerender the original pane so
+// its existing clock/source checks update; active is presentation only and is
+// never forwarded to a source reader, action, callback or custody record.
+function retainDailyPane(Original: ComponentType<DailyWorkbenchProps>) {
+  return memo(function RetainedPane({
+    active,
+    ...props
+  }: DailyWorkbenchProps & { active: boolean }) {
+    void active;
+    return <Original {...props} />;
+  });
+}
+const RetainedFieldAgenda = retainDailyPane(FieldAgenda);
+const RetainedCostInvoiceReview = retainDailyPane(CostInvoiceReview);
+const RetainedServiceUpdateReview = retainDailyPane(ServiceUpdateReview);
+const RetainedMaintenanceAgenda = retainDailyPane(MaintenanceAgenda);
+const RetainedPriorityActions = retainDailyPane(PriorityActions);
+
 const labels: Record<DailyWorkbenchStep, string> = {
   priorities: 'Today’s priorities',
   field: 'Work orders',
@@ -386,25 +407,40 @@ function Workbench({
       {current && (
         <div className="daily-workbench-panels">
           <div hidden={step !== 'priorities'}>
-            <PriorityActions {...props} view="priorities" />
+            <RetainedPriorityActions
+              active={step === 'priorities'}
+              {...props}
+              view="priorities"
+            />
           </div>
           <div hidden={step !== 'field'}>
-            <FieldAgenda {...props} />
+            <RetainedFieldAgenda active={step === 'field'} {...props} />
           </div>
           <div hidden={step !== 'finance' && step !== 'invoice'}>
-            <CostInvoiceReview
+            <RetainedCostInvoiceReview
+              active={step === 'finance' || step === 'invoice'}
               {...props}
               focus={step === 'invoice' ? 'invoice' : 'review'}
             />
           </div>
           <div hidden={step !== 'customer'}>
-            <ServiceUpdateReview {...props} />
+            <RetainedServiceUpdateReview
+              active={step === 'customer'}
+              {...props}
+            />
           </div>
           <div hidden={step !== 'maintenance'}>
-            <MaintenanceAgenda {...props} />
+            <RetainedMaintenanceAgenda
+              active={step === 'maintenance'}
+              {...props}
+            />
           </div>
           <div hidden={step !== 'advanced'}>
-            <PriorityActions {...props} view="advanced" />
+            <RetainedPriorityActions
+              active={step === 'advanced'}
+              {...props}
+              view="advanced"
+            />
           </div>
         </div>
       )}
