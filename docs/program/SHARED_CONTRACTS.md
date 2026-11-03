@@ -1,5 +1,23 @@
 # Shared contracts and integration ownership
 
+## Cycle22 current-source review and retained job handoff
+
+All new views consume the original OperatingSources, C21 correction forms and native
+repositories. A view may retain display/source references only; it owns no command
+attempt, business record, archive or restoration authority. Exact source/result IDs,
+current member/source gates and existing UNKNOWN receipts govern every comparison.
+Canonical financial calculations, published projections, recurrence and priority
+ranking are reused unchanged. Missing time/cost/consent/completion relationships
+remain UNKNOWN; no matching by wording or inferred repair/acceptance.
+
+The original onSelectJob presentation contract may update the existing workbench
+selection after fresh original capture checks and finite section validation. Same-
+property cross-job handoffs additionally require the originating customer view's
+exact customer/property/FK checks. Existing onContinue stays same-job-only. Neither
+callback establishes authorization or resets original one-use holds. Optional C22
+renderers replace the same five existing tabs and retain the original fixture and
+advanced controls; no new navigation registry or environment is introduced.
+
 ## Cycle21 native correction custody and source ownership
 
 The original saved-source exercise owns the single Operations/company/job attempt

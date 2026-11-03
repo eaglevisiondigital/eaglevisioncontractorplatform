@@ -1,5 +1,15 @@
 # Shared design-system specification · cycle two
 
+## Cycle22 current requirements within the existing workbench
+
+The current-source requirement option defaults false. It uses the same retained job
+selector/five tabs, original contractor tokens and scoped warm cards. Exact original
+versus recorded references, stale/UNKNOWN labels and source requirements stay readable
+without color-only meaning. Existing C21 controls remain available, collapsed where
+appropriate; no duplicate forms or sidebar. All three approved visual scopes/artwork
+remain locked. Operating Center and advanced visual approval stays PENDING. Actual
+browser captures and a11y checks are evidence, never owner visual approval.
+
 ## Cycle21 scoped correction forms and retained context
 
 The optional correction mode defaults false and reuses the existing six renderer
