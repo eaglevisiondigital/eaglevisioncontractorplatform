@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client';
 import { sampleCompanies } from '../../src/domain/platform';
 import { prepareOperatingSources } from '../../src/lib/workflows/operating-center-runtime';
 import { DailyWorkbench } from '../../src/components/workflows/DailyWorkbench';
-export async function mountDailyWorkbench(brand: number) {
+export async function mountDailyWorkbench(brand: number, withHint = true) {
   const source = await prepareOperatingSources(sampleCompanies[brand], {
     enabled: true,
     confirmed: true,
@@ -27,7 +27,7 @@ export async function mountDailyWorkbench(brand: number) {
         <DailyWorkbench
           key={generation}
           sources={source}
-          selectedJobId={job}
+          selectedJobId={withHint ? job : undefined}
           enabled
         />
       </StrictMode>,

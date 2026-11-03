@@ -107,7 +107,7 @@ function Workbench({
     [visited, setVisited] = useState<DailyWorkbenchStep[]>(['priorities']),
     [busy, setBusy] = useState(false),
     [status, setStatus] = useState(
-      'Choose a source-verified priority or find an exact prepared job.',
+      'Review priorities, then use Find another record to select an exact prepared job.',
     );
   const [admission] = useState(() => ({ enabled: true, confirmed: true }));
   const gate = useRef(admission),
@@ -290,7 +290,7 @@ function Workbench({
     enabled: true,
     selectedJobId: current ? context?.job_id : undefined,
     onSelectJob,
-    onContinue: continuation,
+    onContinue: context ? continuation : undefined,
   };
   return (
     <section
