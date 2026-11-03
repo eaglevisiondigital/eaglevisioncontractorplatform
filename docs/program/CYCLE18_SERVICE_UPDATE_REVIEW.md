@@ -57,9 +57,9 @@ Original control CSS is outside new UI-wrapper selectors. Main owns actual respo
 browser/axe/focus/touch/overflow and continuation validation; local unit/SSR proof is
 not visual or hosted acceptance.
 
-Focused raw result `/private/tmp/cycle18-customer-postcallback-final-results.json` (local, not committed).
-**50 unique focused cases PASS, zero failed/pending** after the post-callback
-revalidation correction. All three
+Focused raw result `/private/tmp/cycle18-customer-canonical-pending-final.json` (local, not committed).
+**55 unique focused cases PASS, zero failed/pending** after post-callback
+revalidation and canonical pending-claim corrections. All three
 brands cover actual safe sources, literal combined filters, immutable report/finding
 identity, privacy and continuation. Separate cases cover source restoration, global
 UNKNOWN fresh wrappers, callback withdrawal/throw/rejection/concurrency, final-await
@@ -76,3 +76,22 @@ states/eight PhaseOne gates/three approved scopes, historical13/customer14/4B/P1
 2A–2F/billing/approvals/frozen Netlify/executor/recovery/Auth/MFA/NMI/provider/financial/
 communication/hosted/production gates remain. No credential retrieval, migration,
 message, dispatch, financial effect, provider call, deploy, merge or persistent listener.
+
+The all-brand deferred-callback race against21ef989 reproduced3/3FAIL in
+`/private/tmp/cycle18-customer-canonical-pending-red.json` (50unselected cases remain
+pending in that targeted RED record). Two separately read wrappers used the SAME
+canonical repositories/job; the competing callback ran twice while the first awaited.
+The correction acquires private canonical Operations+organization/job PENDING metadata
+before the first await. A competing caller rejects before entering cleanup; only the
+matching claim owner may release its marker. Permanent UNKNOWN remains in its separate
+hold set and survives pending cleanup. Five added cases preserve original50assertions:
+three all-brand deferred ownership races, known pre-dispatch release to a fresh view,
+and ambiguous deferred rejection retaining UNKNOWN for an already-read competing view.
+Success releases its own claim; pending denial never renews/replaces another attempt.
+No original control reservation, expiry, source body or final current/live fence changes.
+
+After removing an unused empty-array initialization in the NEW race test, its5new
+regressions were additionally checked at final source in
+`/private/tmp/cycle18-customer-pending-final-scoped.json` (5PASS/50unselected pending;
+these are the same cases, not additional unique coverage). Scoped lint/format/types
+PASS; all55full-suite assertions and final product bytes remain unchanged.

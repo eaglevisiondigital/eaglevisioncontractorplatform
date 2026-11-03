@@ -69,7 +69,8 @@ interface Binding {
   pending: boolean;
 }
 const holds = new WeakMap<object, Set<string>>(),
-  bindings = new WeakMap<object, Binding>();
+  bindings = new WeakMap<object, Binding>(),
+  pendingClaims = new WeakMap<object, Map<string, object>>();
 function hold(b: Binding) {
   b.held = true;
   let set = holds.get(b.operations);
@@ -259,6 +260,12 @@ export async function continueServiceUpdateReview(
   if (reports.get(report) !== view)
     throw Error('Inspect exact summary report before continuation');
   if (b.pending) throw Error('Service continuation already pending');
+  let claims = pendingClaims.get(b.operations);
+  if (!claims) pendingClaims.set(b.operations, (claims = new Map()));
+  if (claims.has(b.key))
+    throw Error('Service continuation already pending for the canonical job');
+  const claim = {};
+  claims.set(b.key, claim); // Before the first await, across retained wrappers.
   b.pending = true;
   let invoked = false;
   try {
@@ -280,6 +287,7 @@ export async function continueServiceUpdateReview(
     if (invoked || !(error instanceof Withdrawn)) hold(b);
     throw error;
   } finally {
+    if (claims.get(b.key) === claim) claims.delete(b.key);
     b.pending = false;
   }
 }

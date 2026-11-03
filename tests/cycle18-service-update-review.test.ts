@@ -515,3 +515,149 @@ it.each([
     expect(JSON.stringify(f.view)).toBe(bytes);
   },
 );
+it.each([0, 1, 2])(
+  'brand %i fresh-wrapper deferred callback retains canonical PENDING ownership',
+  async (brand) => {
+    const f = await opened(brand),
+      second = await readServiceUpdateReview(
+        { ...f.sources },
+        { ...f.input },
+        f.gate,
+      ),
+      ref = second.evidence.find(
+        (e) => e.reference.report_id === f.entry.report_id,
+      )!.reference,
+      report = await inspectServiceUpdateReport(second, ref);
+    let entered!: () => void, release!: () => void;
+    const started = new Promise<void>((resolve) => {
+        entered = resolve;
+      }),
+      deferred = new Promise<void>((resolve) => {
+        release = resolve;
+      }),
+      firstCallback = vi.fn(async () => {
+        entered();
+        await deferred;
+      }),
+      secondCallback = vi.fn(async () => {}),
+      first = continueServiceUpdateReview(f.view, f.report, firstCallback, {
+        current: firstCallback,
+        generation: 0,
+      });
+    await started;
+    let blocked: PromiseSettledResult<string>[];
+    try {
+      blocked = await Promise.allSettled([
+        continueServiceUpdateReview(second, report, secondCallback, {
+          current: secondCallback,
+          generation: 0,
+        }),
+      ]);
+      const repeated = await Promise.allSettled([
+        continueServiceUpdateReview(second, report, secondCallback, {
+          current: secondCallback,
+          generation: 0,
+        }),
+      ]);
+      blocked.push(...repeated);
+    } finally {
+      release();
+    }
+    await expect(first).resolves.toBe(f.input.job_id);
+    expect(firstCallback).toHaveBeenCalledTimes(1);
+    expect(secondCallback).not.toHaveBeenCalled();
+    expect(
+      blocked.every(
+        (r) => r.status === 'rejected' && /pending/i.test(String(r.reason)),
+      ),
+    ).toBe(true);
+    expect(() => assertServiceUpdateCurrent(second)).not.toThrow();
+    await expect(
+      continueServiceUpdateReview(second, report, secondCallback, {
+        current: secondCallback,
+        generation: 0,
+      }),
+    ).resolves.toBe(f.input.job_id);
+    expect(secondCallback).toHaveBeenCalledTimes(1);
+  },
+);
+it('known pre-dispatch withdrawal releases only its canonical claim for another fresh view', async () => {
+  const f = await opened(),
+    second = await readServiceUpdateReview(
+      { ...f.sources },
+      { ...f.input },
+      f.gate,
+    ),
+    report = await inspectServiceUpdateReport(
+      second,
+      second.evidence.find((e) => e.reference.report_id === f.entry.report_id)!
+        .reference,
+    ),
+    firstCallback = vi.fn(),
+    secondCallback = vi.fn(),
+    live: ServiceUpdateLiveCallback = { current: firstCallback, generation: 0 },
+    seen = during(() => {
+      live.current = undefined;
+      live.generation++;
+    });
+  await expect(
+    continueServiceUpdateReview(f.view, f.report, firstCallback, live),
+  ).rejects.toThrow(/withdrawn|replaced/);
+  seen();
+  vi.restoreAllMocks();
+  expect(firstCallback).not.toHaveBeenCalled();
+  await expect(
+    continueServiceUpdateReview(second, report, secondCallback, {
+      current: secondCallback,
+      generation: 0,
+    }),
+  ).resolves.toBe(f.input.job_id);
+  expect(secondCallback).toHaveBeenCalledTimes(1);
+});
+it('ambiguous deferred callback keeps UNKNOWN after its pending claim releases, including an existing fresh view', async () => {
+  const f = await opened(),
+    second = await readServiceUpdateReview(
+      { ...f.sources },
+      { ...f.input },
+      f.gate,
+    ),
+    report = await inspectServiceUpdateReport(
+      second,
+      second.evidence.find((e) => e.reference.report_id === f.entry.report_id)!
+        .reference,
+    );
+  let entered!: () => void, reject!: (error: Error) => void;
+  const started = new Promise<void>((resolve) => {
+      entered = resolve;
+    }),
+    deferred = new Promise<void>((_, fail) => {
+      reject = fail;
+    }),
+    firstCallback = vi.fn(async () => {
+      entered();
+      await deferred;
+    }),
+    secondCallback = vi.fn(),
+    first = continueServiceUpdateReview(f.view, f.report, firstCallback, {
+      current: firstCallback,
+      generation: 0,
+    }),
+    observed = Promise.allSettled([first]);
+  await started;
+  await expect(
+    continueServiceUpdateReview(second, report, secondCallback, {
+      current: secondCallback,
+      generation: 0,
+    }),
+  ).rejects.toThrow(/pending/i);
+  reject(Error('lost deferred callback ACK'));
+  expect((await observed)[0].status).toBe('rejected');
+  await expect(
+    continueServiceUpdateReview(second, report, secondCallback, {
+      current: secondCallback,
+      generation: 0,
+    }),
+  ).rejects.toThrow(/UNKNOWN/);
+  expect(firstCallback).toHaveBeenCalledTimes(1);
+  expect(secondCallback).not.toHaveBeenCalled();
+});
