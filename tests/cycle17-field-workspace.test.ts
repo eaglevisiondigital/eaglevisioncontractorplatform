@@ -312,6 +312,73 @@ it('a callback that navigates then throws retains UNKNOWN and forbids a second n
   await expect(open(view, 'controls')).rejects.toThrow();
   expect(JSON.stringify(view)).toBe(snapshot);
 });
+it('fresh wrappers and technician selections cannot bypass UNKNOWN for the same canonical company/job', async () => {
+  const f = await fixture(),
+    first = await read(f.sources, f.input, f.gate),
+    callback = vi.fn(() => {
+      throw Error('Lost navigation acknowledgement');
+    });
+  await expect(navigate(first, callback)).rejects.toThrow();
+  const wrapper = { ...f.sources },
+    fresh = await read(
+      wrapper,
+      { job_id: f.input.job_id, worker_id: f.entry.worker_id },
+      f.gate,
+    ),
+    replacement = vi.fn();
+  await expect(navigate(fresh, replacement)).rejects.toThrow();
+  expect((await reconcile(first)).status).toBe('UNKNOWN');
+  expect((await reconcile(fresh)).status).toBe('UNKNOWN');
+  expect(callback).toHaveBeenCalledTimes(1);
+  expect(replacement).not.toHaveBeenCalled();
+  const other = await read(
+      wrapper,
+      { job_id: f.sources.entries[0].target.job_id!, worker_id: '' },
+      f.gate,
+    ),
+    separate = vi.fn();
+  await navigate(other, separate);
+  expect(separate).toHaveBeenCalledExactlyOnceWith(
+    other.source.job_id,
+    'field',
+  );
+});
+it('UNKNOWN bookkeeping uses the canonical handle pinned before a mutable source getter is replaced', async () => {
+  const f = await fixture(),
+    wrapper = { ...f.sources },
+    view = await read(f.sources, f.input, f.gate),
+    callback = vi.fn(),
+    original = crypto.subtle.digest.bind(crypto.subtle);
+  vi.spyOn(crypto.subtle, 'digest').mockImplementation(async (...args) => {
+    const result = await original(...args);
+    Object.defineProperty(f.sources, 'operations', {
+      configurable: true,
+      get() {
+        throw Error('Mutable source handle unavailable');
+      },
+    });
+    return result;
+  });
+  await expect(navigate(view, callback)).rejects.toThrow();
+  vi.restoreAllMocks();
+  const fresh = await read(wrapper, { ...f.input }, f.gate);
+  await expect(navigate(fresh, callback)).rejects.toThrow();
+  expect((await reconcile(fresh)).status).toBe('UNKNOWN');
+  expect(callback).not.toHaveBeenCalled();
+});
+it('a known withdrawn callback that performs no action does not become an ambiguous failure', async () => {
+  const f = await fixture(),
+    view = await read(f.sources, f.input, f.gate),
+    callback = vi.fn(),
+    current = false;
+  await navigate(view, (jobId, section) => {
+    if (current) callback(jobId, section);
+  });
+  expect(callback).not.toHaveBeenCalled();
+  expect((await reconcile(view)).status).toBe('CURRENT_REVIEW_ONLY');
+  await navigate(view, callback);
+  expect(callback).toHaveBeenCalledExactlyOnceWith(view.source.job_id, 'field');
+});
 it.each([0, 1, 2])(
   'brand %s preselects the exact host job with one source confirmation',
   async (brand) => {

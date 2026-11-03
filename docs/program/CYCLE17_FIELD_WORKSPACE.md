@@ -22,6 +22,9 @@ and per-callback tokens, preventing removal/restoration races without remounts.
 Original optional destination sections are preserved.
 If navigation runs and its callback throws, the retained workspace becomes terminal
 UNKNOWN. Exact read-only reconciliation cannot authorize another callback or replay.
+That outcome is private WeakMap metadata bound to the pinned canonical Operations
+handle and exact company/job, not a wrapper/view/technician/source revision. Fresh
+read-only wrappers cannot reset it; unrelated exact jobs retain independent review.
 
 Readiness explicitly records same-tab browser references and disconnected
 operational custody. Independent physical recovery/Auth acceptance is UNVERIFIED;
