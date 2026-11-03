@@ -279,7 +279,7 @@ export async function executeSavedSourceExercise(
         worker_id: e.worker_id,
         submitted: false,
       };
-      function timeAck(submitted: boolean, reviewed: boolean) {
+      const timeAck = (submitted: boolean, reviewed: boolean) => {
         check(view, b);
         const now = s.estimates.readSyntheticPrototypeSources(e.target),
           reason =
@@ -298,7 +298,7 @@ export async function executeSavedSourceExercise(
           ])
         )
           throw Error('Exact saved time/review acknowledgment unavailable');
-      }
+      };
       timeAck(false, false);
       ack(await s.estimates.submitTime(org, id));
       timeAck(true, false);

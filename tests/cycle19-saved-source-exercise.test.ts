@@ -273,7 +273,7 @@ it.each(['time', 'material'] as const)(
       vi.spyOn(f.sources.estimates, 'submitExpense').mockImplementation(
         async (...args) => {
           await original(...args);
-          return undefined;
+          return undefined as never;
         },
       );
     }
