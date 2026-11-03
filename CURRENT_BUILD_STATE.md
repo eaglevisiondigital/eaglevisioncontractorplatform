@@ -1,5 +1,21 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Latest: Cycle17 retained daily workspaces · final verification pending
+
+Six local packages are implemented in separate drafts119–124 against Main118,
+from exact Cycle16 source3cbea85ce464b3e67fb78c8992ec192cdd8d2407. Direct original
+controls, exact breadcrumbs and retained context use the same six slots/source host.
+299focused author cases PASS; independent combined and responsive acceptance remain
+PENDING until their actual final reports. Cycle16 Main30checks PASS; seven child
+browser-timeout cancellations retain their exact status with successful unchanged-source
+Main coverage, no manual rerun. No operational acceptance or release promotion.
+
+The owner reports a newer MacBook Air candidate may be available November4. Exact
+maintained OS, encryption, independent power/network and actual pairing/recovery are
+UNVERIFIED; completed setup/offline evidence is preserved. No credentials or hosted
+verification are authorized. All existing protected gates remain closed.
+Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Cycle16 · daily guides in isolated local development
 
 Main draft111 (`codex/program-cycle-sixteen`) preserves exact Cycle15 parent

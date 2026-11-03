@@ -1,0 +1,71 @@
+name: Cycle 17 retained daily workspaces
+on:
+  push:
+    branches: ['codex/program-cycle-seventeen']
+  pull_request:
+    paths:
+      - 'src/App.tsx'
+      - 'src/components/workflows/OperatingCenterCycleSeventeen.tsx'
+      - 'src/components/workflows/OperatingCenterCycleFourteen.tsx'
+      - 'src/components/workflows/task-review-paths*'
+      - 'src/components/workflows/OperatingCenterCycleFifteen.tsx'
+      - 'src/components/workflows/SharedRecordSearch.tsx'
+      - 'src/components/workflows/daily-guide-search.css'
+      - 'src/components/workflows/FieldWorkspace.tsx'
+      - 'src/components/workflows/field-workspace.css'
+      - 'src/lib/workflows/field-workspace.ts'
+      - 'src/components/workflows/FinanceCaseDesk.tsx'
+      - 'src/components/workflows/finance-case-desk.css'
+      - 'src/lib/workflows/finance-case-desk.ts'
+      - 'src/components/workflows/ServicePassportPath.tsx'
+      - 'src/components/workflows/service-passport-path.css'
+      - 'src/lib/workflows/service-passport-path.ts'
+      - 'src/components/workflows/RetainedMaintenanceDesk.tsx'
+      - 'src/components/workflows/retained-maintenance-desk.css'
+      - 'src/lib/workflows/retained-maintenance-desk.ts'
+      - 'src/components/workflows/OwnerActionDesk.tsx'
+      - 'src/components/workflows/owner-action-desk.css'
+      - 'src/lib/workflows/owner-action-desk.ts'
+      - 'src/components/workflows/AddonTaskDesk.tsx'
+      - 'src/components/workflows/addon-task-desk.css'
+      - 'src/lib/workflows/addon-task-desk.ts'
+      - 'tests/cycle17*'
+      - 'tests/program/*cycle17*'
+      - 'scripts/*cycle17*'
+      - 'docs/program/CYCLE17_DELIVERY_INDEX.json'
+      - '.github/workflows/cycle17-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle17-integration-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  bounded-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node scripts/check-cycle17-integrity.mjs
+      - run: npx vitest run tests/cycle17*.test.ts tests/program/cycle17*.test.ts tests/program/cycle13-scorecard-evidence.test.ts tests/program-feature-evidence.test.ts --maxWorkers=2 --reporter=json --outputFile=artifacts/cycle17/application-results.json
+      - run: node scripts/check-cycle17-results.mjs
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test -c tests/program/playwright.cycle17.config.ts --workers=2
+      - run: npx playwright test -c tests/program/playwright.cycle17-off.config.ts --workers=2
+      - run: node scripts/cycle17-build-visual-review.mjs
+      - run: npx playwright test -c tests/program/playwright.cycle17-gallery.config.ts --workers=1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle17-guided-task-evidence
+          path: |
+            artifacts/cycle17/
+            test-results/
+          retention-days: 7

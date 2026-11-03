@@ -1,0 +1,239 @@
+{
+  "schema": "propel-cycle16-closeout-ci-v1",
+  "observed_at": "2026-11-03T11:52:34.878963+00:00",
+  "main_head": "3cbea85ce464b3e67fb78c8992ec192cdd8d2407",
+  "main_draft_pr": 111,
+  "main_check_inventory": {
+    "success": 30,
+    "failed": 0,
+    "cancelled": 0,
+    "pending": 0,
+    "workflow_runs": 28
+  },
+  "main_foundation": {
+    "application_passed": 6195,
+    "application_skipped_by_existing_environment_conditions": 321,
+    "browser_passed": 297,
+    "push_job": 125731215634,
+    "pull_request_job": 125731229712
+  },
+  "main_dedicated": {
+    "job": 125731230308,
+    "application_passed": 440,
+    "development_browser_passed": 81,
+    "production_off_passed": 3
+  },
+  "features": [
+    {
+      "pr": 112,
+      "head_commit": "7eee0b4527646c470d3604b6d21ac7578d073fee",
+      "draft": true,
+      "cancelled_verify": [
+        {
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41577289458/job/125723653534",
+          "outcome": "CANCELLED",
+          "cause": "45-minute maximum execution time exceeded during npm run test:browser",
+          "started_at": "2026-11-03T04:28:52Z",
+          "completed_at": "2026-11-03T05:14:42Z"
+        }
+      ],
+      "own_successful_verify": [
+        "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41577283882/job/125723634028"
+      ],
+      "native_pg17": "PASS",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/daily-field-guide.ts",
+          "sha256": "6fcaea74f19b422424e0b562d91fb94e1d9654b0598b20c6551d3ba405c5410d",
+          "identical_in_successful_main": true
+        },
+        {
+          "path": "src/components/workflows/DailyFieldGuide.tsx",
+          "sha256": "5076dc00bb511b46b957143698a8c8552a969a95dda1233ae40d2c3cc4ec99e6",
+          "identical_in_successful_main": true
+        },
+        {
+          "path": "src/components/workflows/daily-field-guide.css",
+          "sha256": "483138cdd86f115acb99560af22702b253c9834a3254bfa034045db8855f8546",
+          "identical_in_successful_main": true
+        },
+        {
+          "path": "tests/cycle16-daily-field-guide.test.ts",
+          "sha256": "6e5fe39b14417ee237ddf849b230d8cdf3affcb477b91e03fcc4bb7f5dd796f4",
+          "identical_in_successful_main": true
+        },
+        {
+          "path": "docs/program/CYCLE16_DAILY_FIELD_GUIDE.md",
+          "sha256": "d60f9ab484df2e6cf091bbea063a403ff6a1ceb8b7f118125651b419de68c26f",
+          "identical_in_successful_main": true
+        }
+      ],
+      "foundation_workflow_sha256": "df337433bfde1768ccbe396326793559f21113aa7c24e37fbd5955c4c29f87be",
+      "unique_missing_coverage": false,
+      "coverage_basis": "Exact five author files/tests unchanged in successful combined Main; identical Foundation workflow, successful full application/browser and C16 dedicated all-brand/viewport coverage. This does not relabel the individual cancellation PASS."
+    },
+    {
+      "pr": 114,
+      "head_commit": "3638221632cb91b0855b3102ff482bcd2fa2152b",
+      "draft": true,
+      "cancelled_verify": [
+        {
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41576488954/job/125721082880",
+          "outcome": "CANCELLED",
+          "cause": "45-minute maximum execution time exceeded during npm run test:browser",
+          "started_at": "2026-11-03T04:27:27Z",
+          "completed_at": "2026-11-03T05:13:01Z"
+        },
+        {
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41576483267/job/125721064483",
+          "outcome": "CANCELLED",
+          "cause": "45-minute maximum execution time exceeded during npm run test:browser",
+          "started_at": "2026-11-03T04:16:12Z",
+          "completed_at": "2026-11-03T05:01:44Z"
+        }
+      ],
+      "own_successful_verify": [],
+      "native_pg17": "PASS",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/retention-review-guide.ts",
+          "sha256": "0cad591b5ea33cf55f1af4b5fc94611c199c4fca00901f0e806e01d2be95f5f5",
+          "identical_in_successful_main": true
+        },
+        {
+          "path": "src/components/workflows/RetentionReviewGuide.tsx",
+          "sha256": "0871af0d6f167ba8a99983e7540336f9352711ccca9bbddc1e69df4d48f834fc",
+          "identical_in_successful_main": true
+        },
+        {
+          "path": "src/components/workflows/retention-review-guide.css",
+          "sha256": "10ab6e706a9beeef4e0d0d5a52d21a2a9df26c272d4c7da5fa0cec02e6b9f990",
+          "identical_in_successful_main": true
+        },
+        {
+          "path": "tests/cycle16-retention-review-guide.test.ts",
+          "sha256": "a401ddd842903bee5ecaa8cf92fa8ff6ce19f91a137fc07bf39a929bd8fbb4a8",
+          "identical_in_successful_main": true
+        },
+        {
+          "path": "docs/program/CYCLE16_RETENTION_REVIEW_GUIDE.md",
+          "sha256": "63d50e3fcd363882bbad8ae92c6c18f8a307bec277c48d5ed60ece17e212770d",
+          "identical_in_successful_main": true
+        }
+      ],
+      "foundation_workflow_sha256": "df337433bfde1768ccbe396326793559f21113aa7c24e37fbd5955c4c29f87be",
+      "unique_missing_coverage": false,
+      "coverage_basis": "Exact five author files/tests unchanged in successful combined Main; identical Foundation workflow, successful full application/browser and C16 dedicated all-brand/viewport coverage. This does not relabel the individual cancellation PASS."
+    },
+    {
+      "pr": 115,
+      "head_commit": "09b98ee121aa3b3ce3361a5d516d408eef04d4ec",
+      "draft": true,
+      "cancelled_verify": [
+        {
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41574522304/job/125714835999",
+          "outcome": "CANCELLED",
+          "cause": "45-minute maximum execution time exceeded during npm run test:browser",
+          "started_at": "2026-11-03T04:06:26Z",
+          "completed_at": "2026-11-03T04:52:02Z"
+        },
+        {
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41574503453/job/125714774986",
+          "outcome": "CANCELLED",
+          "cause": "45-minute maximum execution time exceeded during npm run test:browser",
+          "started_at": "2026-11-03T03:55:41Z",
+          "completed_at": "2026-11-03T04:41:34Z"
+        }
+      ],
+      "own_successful_verify": [],
+      "native_pg17": "PASS",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/service-completion-guide.ts",
+          "sha256": "67fe6c553fe02b4486ef0335e514aa4a669f03a370b192222fbc9ab7c0af2790",
+          "identical_in_successful_main": true
+        },
+        {
+          "path": "src/components/workflows/ServiceCompletionGuide.tsx",
+          "sha256": "5bf27c8461e3d71836b66f51b19deabb1a4c8de8a338a75084ecacba9753daf8",
+          "identical_in_successful_main": true
+        },
+        {
+          "path": "src/components/workflows/service-completion-guide.css",
+          "sha256": "eb27f5cd36075e21b66489371b0995ff319e8b8024492fb4882f917794f065ed",
+          "identical_in_successful_main": true
+        },
+        {
+          "path": "tests/cycle16-service-completion-guide.test.ts",
+          "sha256": "0a2f9c4d199340cf5f10e03c0bd73bb6e5b1e54afa622c8f252a7d32b6602f2f",
+          "identical_in_successful_main": true
+        },
+        {
+          "path": "docs/program/CYCLE16_SERVICE_COMPLETION_GUIDE.md",
+          "sha256": "c9a139a2b887682552c50b1aa17caf7923e18d3f5771ef7f0e43bec82fd079ec",
+          "identical_in_successful_main": true
+        }
+      ],
+      "foundation_workflow_sha256": "df337433bfde1768ccbe396326793559f21113aa7c24e37fbd5955c4c29f87be",
+      "unique_missing_coverage": false,
+      "coverage_basis": "Exact five author files/tests unchanged in successful combined Main; identical Foundation workflow, successful full application/browser and C16 dedicated all-brand/viewport coverage. This does not relabel the individual cancellation PASS."
+    },
+    {
+      "pr": 117,
+      "head_commit": "fecfcf104e7f3988a53c85a77353824edfa6f85b",
+      "draft": true,
+      "cancelled_verify": [
+        {
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41576258743/job/125720340686",
+          "outcome": "CANCELLED",
+          "cause": "45-minute maximum execution time exceeded during npm run test:browser",
+          "started_at": "2026-11-03T04:28:20Z",
+          "completed_at": "2026-11-03T05:14:05Z"
+        },
+        {
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41576232389/job/125720256518",
+          "outcome": "CANCELLED",
+          "cause": "45-minute maximum execution time exceeded during npm run test:browser",
+          "started_at": "2026-11-03T04:13:24Z",
+          "completed_at": "2026-11-03T04:59:00Z"
+        }
+      ],
+      "own_successful_verify": [],
+      "native_pg17": "PASS",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/addon-readiness-guide.ts",
+          "sha256": "b3c6d6f20aa38d00f88a9987b30117f945c341cda5c591d16d5b8f671a5b60cf",
+          "identical_in_successful_main": true
+        },
+        {
+          "path": "src/components/workflows/AddonReadinessGuide.tsx",
+          "sha256": "c1c41e521ad30f9859c3c00ee739d075cc81d01f07162042330f44bca21d1ba8",
+          "identical_in_successful_main": true
+        },
+        {
+          "path": "src/components/workflows/addon-readiness-guide.css",
+          "sha256": "79b9c7e67739e4a8ae0840ca3ccb2c5c1fc4eb6559c772753807a7037128e970",
+          "identical_in_successful_main": true
+        },
+        {
+          "path": "tests/cycle16-addon-readiness-guide.test.ts",
+          "sha256": "65bddd7746711e5e75d9c06f7b08a8219eb9a8acc3abf907149fb36063cd5292",
+          "identical_in_successful_main": true
+        },
+        {
+          "path": "docs/program/CYCLE16_ADDON_READINESS_GUIDE.md",
+          "sha256": "16a76a96317d7dbac998a389fd9b30d34181d7d54754a45039dd5b9e91aff627",
+          "identical_in_successful_main": true
+        }
+      ],
+      "foundation_workflow_sha256": "df337433bfde1768ccbe396326793559f21113aa7c24e37fbd5955c4c29f87be",
+      "unique_missing_coverage": false,
+      "coverage_basis": "Exact five author files/tests unchanged in successful combined Main; identical Foundation workflow, successful full application/browser and C16 dedicated all-brand/viewport coverage. This does not relabel the individual cancellation PASS."
+    }
+  ],
+  "manual_reruns": 0,
+  "unique_acceptance_coverage_missing": false,
+  "workflow_changed": false,
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

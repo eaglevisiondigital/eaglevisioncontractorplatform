@@ -1,5 +1,23 @@
 # Engineering decisions
 
+## Cycle17 · retained original controls and exact daily context
+
+The owner authorized six bounded local packages on separate drafts against unchanged
+Cycle16. One independent default-false opt-in uses the same six continuity slots and
+OperatingSources host. New adapters are read-only consumers/reference handles, not
+new business stores, engines, canonical tasks or authority. Direct original controls
+stay mounted across local source/breadcrumb returns; their confirmations, fixed
+expiry and terminal holds remain authoritative. A callback dispatched then throwing
+or rejecting is an ambiguous navigation outcome: retain UNKNOWN and forbid replay.
+Known callback withdrawal before dispatch cannot invoke a stale callback.
+
+Exact-source successful Main coverage reconciles Cycle16's seven45-minute feature
+verify cancellations without relabelling individual results or rerunning successful
+checks. Actual browser measurements and visual captures are separate from source
+review. Only Operating Center and advanced panels need owner visual review; existing
+three visual approvals stay locked. No physical, Auth/MFA, NMI, financial, dispatch,
+communication, hosted, migration, Netlify, deployment or release acceptance follows.
+
 ## Cycle16 · source-bound daily guides, not operational state authority
 
 The owner authorized six independent local implementation packages, shared search

@@ -1,5 +1,20 @@
 # Propel Contractor Suite — feature acceptance register
 
+## Cycle17 · retained daily workspaces, final verification pending
+
+Six bounded author drafts119–124 target coordination draft118 on exact Cycle16
+parent3cbea85ce464b3e67fb78c8992ec192cdd8d2407. All299focused author cases PASS;
+combined independent/application/browser/visual proof remains separately pending.
+[Exact source inventory](program/CYCLE17_DELIVERY_INDEX.json) records real workers,
+branches, heads and ownership. No original capability,18scope ID,25stage/approval/CI
+label, eight closed PhaseOne gate or three approved design scope is promoted.
+OperatingCenter/advanced visual approvals remain PENDING and missing originals MISSING.
+Cycle16's seven cancelled child verify jobs are reconciled against exact unchanged
+source/test/workflow bytes and full successful Main coverage, without a manual rerun
+or false individual PASS. [Exact closeout](program/CYCLE16_CLOSEOUT_CI_RECONCILIATION.md).
+No dispatch, communication, financial, hosted, production or release execution.
+Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Cycle16 · daily guides in isolated local development
 
 Main draft111 (`codex/program-cycle-sixteen`) preserves exact Cycle15 parent
