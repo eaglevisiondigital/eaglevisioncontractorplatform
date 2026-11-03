@@ -291,6 +291,27 @@ it('revocation during navigation await prevents the callback', async () => {
   await expect(navigate(v, callback)).rejects.toThrow();
   expect(callback).not.toHaveBeenCalled();
 });
+it('a callback that navigates then throws retains UNKNOWN and forbids a second navigation', async () => {
+  const f = await fixture(),
+    view = await read(f.sources, f.input, f.gate),
+    snapshot = JSON.stringify(view),
+    navigated: string[] = [],
+    first = vi.fn((jobId: string) => {
+      navigated.push(jobId);
+      throw Error('Lost field navigation acknowledgment');
+    }),
+    second = vi.fn();
+  await expect(navigate(view, first)).rejects.toThrow(
+    'Lost field navigation acknowledgment',
+  );
+  await expect(navigate(view, second)).rejects.toThrow();
+  expect(first).toHaveBeenCalledTimes(1);
+  expect(second).not.toHaveBeenCalled();
+  expect(navigated).toEqual([view.source.job_id]);
+  expect((await reconcile(view)).status).toBe('UNKNOWN');
+  await expect(open(view, 'controls')).rejects.toThrow();
+  expect(JSON.stringify(view)).toBe(snapshot);
+});
 it.each([0, 1, 2])(
   'brand %s preselects the exact host job with one source confirmation',
   async (brand) => {

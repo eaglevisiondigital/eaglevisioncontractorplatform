@@ -20,6 +20,8 @@ Same-source concurrent local navigation has one callback; revocation or stale
 evidence withholds it. UI callbacks additionally retain monotonic layout generations
 and per-callback tokens, preventing removal/restoration races without remounts.
 Original optional destination sections are preserved.
+If navigation runs and its callback throws, the retained workspace becomes terminal
+UNKNOWN. Exact read-only reconciliation cannot authorize another callback or replay.
 
 Readiness explicitly records same-tab browser references and disconnected
 operational custody. Independent physical recovery/Auth acceptance is UNVERIFIED;

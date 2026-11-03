@@ -234,6 +234,9 @@ export async function navigateFieldWorkspace(
     await verified(view);
     assertFieldWorkspaceNow(view);
     callback(view.source.job_id, 'field');
+  } catch (error) {
+    b.unknown = true;
+    throw error;
   } finally {
     b.navigationPending = false;
   }
