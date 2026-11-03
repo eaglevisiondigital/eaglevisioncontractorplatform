@@ -13,14 +13,17 @@
   color: #4b5d52;
 }
 .daily-workbench > nav {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  overflow: visible;
   gap: 0.5rem;
   margin: 1rem 0;
 }
 .daily-workbench > nav button {
   min-height: 44px;
-  flex: 1 1 10rem;
+  white-space: normal;
+  min-width: 0;
+  align-items: center;
 }
 .daily-workbench > nav button[aria-current='step'] {
   outline: 2px solid var(--journey-primary, #255747);
@@ -58,7 +61,7 @@
   .daily-workbench-context {
     grid-template-columns: 1fr;
   }
-  .daily-workbench > nav button {
-    flex-basis: 100%;
+  .daily-workbench > nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

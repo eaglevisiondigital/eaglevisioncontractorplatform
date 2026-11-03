@@ -49,6 +49,11 @@ for (const company of sampleCompanies) {
     const context = await r.locator('.daily-workbench-context').innerText();
     const field = r.getByRole('region', { name: 'Field agenda', exact: true });
     await expect(field).toBeVisible();
+    for (const button of await r
+      .getByRole('navigation', { name: 'Daily review steps', exact: true })
+      .getByRole('button')
+      .all())
+      expect((await button.boundingBox())!.height).toBeLessThanOrEqual(100);
     await field
       .getByLabel('I confirm this is a local recorded field agenda review.', {
         exact: true,
