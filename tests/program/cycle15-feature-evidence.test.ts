@@ -85,6 +85,7 @@ it('preserves default-false opt-in and the single original repository host', () 
     'src/components/workflows/OperatingCenterPreview.tsx',
     'utf8',
   );
-  expect(host.match(/await prepareOperatingSources\(/g)).toHaveLength(1);
+  expect(host.match(/await prepareSources\(/g)).toHaveLength(1);
+  expect(host).toContain('prepareSources = prepareOperatingSources');
   expect(host).toContain('selectedJobId: detail?.target.job_id');
 });
