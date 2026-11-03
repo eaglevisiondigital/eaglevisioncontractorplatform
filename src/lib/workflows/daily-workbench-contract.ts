@@ -18,7 +18,10 @@ export interface DailyWorkbenchProps {
   selectedJobId?: string;
   onSelectJob?: (jobId: string, section?: OperatingJobSection) => void;
   /** Independently source-checked local continuation; never a business command. */
-  onContinue?: (jobId: string, step: DailyWorkbenchStep) => void;
+  onContinue?: (
+    jobId: string,
+    step: DailyWorkbenchStep,
+  ) => void | Promise<void>;
   /** Finance's existing evidence view can focus invoice requirements. */
   focus?: 'review' | 'invoice';
   /** Intelligence owns priorities and the original advanced-mode entry. */

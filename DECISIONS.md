@@ -1,5 +1,19 @@
 # Engineering decisions
 
+## Cycle18 · retained review steps and observed acknowledgments
+
+Five isolated packages compose over existing canonical readers, engines and the
+original host. DailyWorkbench retains presentation context only; visited review
+steps do not authorize or prove work, invoice, customer update or repair completion.
+Post-invocation async acknowledgments require final source and callback-generation
+checks. Ambiguity holds canonical Operations/company/job UNKNOWN across wrappers.
+The unchanged synchronous finance port rejects any observed thenable inside its
+original custody boundary. A cancelled StrictMode setup read is withdrawn before
+admission rather than replayed. Independent and actual browser verification are
+pending in this candidate; author tests alone grant no integration acceptance.
+New Air checklist preparation grants no physical PASS, credentials or hosted action.
+All original design, security, recovery, financial and production gates persist.
+
 ## Cycle17 · retained original controls and exact daily context
 
 The owner authorized six bounded local packages on separate drafts against unchanged

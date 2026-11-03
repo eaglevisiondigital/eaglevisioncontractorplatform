@@ -325,6 +325,22 @@ export function sourceOwner(path) {
     )
   )
     return 'A8';
+  // Cycle18 source consumers and shared presentation; never access grants.
+  if (
+    /DailyWorkbench|daily-workbench|OperatingCenterCycleEighteen|^tests\/program\/.*cycle18|cycle18-independent|playwright\.cycle18|check-cycle18-/.test(
+      path,
+    )
+  )
+    return 'A8';
+  if (/field-agenda|FieldAgenda/.test(path)) return 'A3';
+  if (/cost-invoice-review|CostInvoiceReview/.test(path)) return 'A4';
+  if (/service-update-review|ServiceUpdateReview/.test(path)) return 'A5';
+  if (
+    /maintenance-agenda|MaintenanceAgenda|priority-actions|PriorityActions/.test(
+      path,
+    )
+  )
+    return 'A6';
   // Cycle17 consumers retain original source ownership; no authority promotion.
   if (
     /OperatingCenterCycleSeventeen|^tests\/program\/.*cycle17|cycle17-integration|playwright\.cycle17|check-cycle17-|cycle17-build-visual|cycle17-visual-review/.test(

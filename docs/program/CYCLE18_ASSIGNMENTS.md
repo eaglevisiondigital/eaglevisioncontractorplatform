@@ -28,7 +28,7 @@ verification, design/contracts/registers, CI closeout and November4 hardware che
 Shared DailyWorkbenchProps: same OperatingSources/enabled=false/selectedJobId?/
 onSelectJob? plus optional onContinue(jobId,step), focus(review|invoice) and
 view(priorities|advanced). Callbacks are local presentation only. Unused optional
-props confer no authority. Keep one canonical host, original states, controls and
+props confer no authority. Async continuations must be awaited with final source/live callback checks; a retained synchronous original port may instead consume rejection and fail closed on any invoked thenable, retaining canonical UNKNOWN. Never report success before an unobserved async outcome. Keep one canonical host, original states, controls and
 source references; do not invent another dashboard, calculator, summary store or
 customer update transaction.
 
