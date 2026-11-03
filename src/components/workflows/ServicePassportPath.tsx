@@ -276,7 +276,7 @@ function Path({
     } catch {
       if (l.active && id === l.sequence)
         setNavigationError(
-          'Navigation withdrawn or current evidence unavailable. No obsolete or replacement callback ran.',
+          'Navigation cancelled or outcome UNKNOWN. Ambiguous results cannot retry or reselect the same job.',
         );
     } finally {
       if (l.active) {

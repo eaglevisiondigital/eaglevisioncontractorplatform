@@ -47,8 +47,29 @@ function admit(gate: JourneyAdmission) {
 interface Binding {
   gate: JourneyAdmission;
   capture: ReturnType<typeof captureOperatingSources>;
+  operations: OperatingSources['operations'];
+  held: boolean;
 }
 const selections = new WeakMap<object, Binding>();
+// Outcome metadata only: the actual repository identity prevents source-wrapper or
+// fresh selection/mode changes from erasing an ambiguous host navigation result.
+const unknownNavigation = new WeakMap<object, Set<string>>();
+function navigationKey(b: Binding, jobId: string) {
+  return JSON.stringify([b.capture.organization_id, jobId]);
+}
+function requireKnownNavigation(b: Binding, jobId: string) {
+  if (unknownNavigation.get(b.operations)?.has(navigationKey(b, jobId)))
+    throw Error(
+      'UNKNOWN service navigation outcome; no retry or same-job reselection',
+    );
+}
+function holdNavigation(b: PathBinding, jobId: string) {
+  b.parent.held = true;
+  const root = b.parent.operations;
+  let held = unknownNavigation.get(root);
+  if (!held) unknownNavigation.set(root, (held = new Set()));
+  held.add(navigationKey(b.parent, jobId));
+}
 export async function readServicePassportPath(
   sources: OperatingSources,
   gate: JourneyAdmission = { enabled: false, confirmed: false },
@@ -59,13 +80,19 @@ export async function readServicePassportPath(
   admit(gate);
   capture.check();
   assertServiceCompletionGuideCurrent(view);
-  selections.set(view, { gate, capture });
+  selections.set(view, {
+    gate,
+    capture,
+    operations: capture.entries[0].operations,
+    held: false,
+  });
   return view;
 }
 export type ServicePassportSelection = ServiceCompletionGuideView;
 function selection(view: ServicePassportSelection) {
   const b = selections.get(view);
-  if (!b) throw Error('Exact retained service Passport selection required');
+  if (!b || b.held)
+    throw Error('UNKNOWN or unretained service Passport selection');
   admit(b.gate);
   b.capture.check();
   assertServiceCompletionGuideCurrent(view);
@@ -80,8 +107,10 @@ export function selectServicePassportContext(
   view: ServicePassportSelection,
   jobId?: string,
 ) {
-  selection(view);
-  return selectServiceCompletionContext(view, jobId);
+  const b = selection(view),
+    selected = selectServiceCompletionContext(view, jobId);
+  if (selected) requireKnownNavigation(b, selected.job_id);
+  return selected;
 }
 interface PathBinding {
   parent: Binding;
@@ -95,7 +124,15 @@ export async function openServicePassportContext(
   input: ServiceReviewContext,
 ) {
   const parent = selection(view),
-    path = await openServiceCompletionContext(view, input);
+    pin = prototypeFields(input, [
+      'request_id',
+      'job_id',
+      'staff_context_confirmed',
+    ]);
+  if (typeof pin.job_id !== 'string') throw Error('Exact service job required');
+  requireKnownNavigation(parent, pin.job_id);
+  const path = await openServiceCompletionContext(view, input);
+  requireKnownNavigation(parent, path.context.job_id);
   selection(view);
   assertServiceCompletionContextCurrent(path);
   const entry = parent.capture.entries.find(
@@ -116,6 +153,7 @@ function current(path: ServicePassportContext) {
   if (!b) throw Error('Exact retained service Passport context required');
   selection(b.view);
   assertServiceCompletionContextCurrent(path);
+  requireKnownNavigation(b.parent, path.context.job_id);
   return b;
 }
 export function assertServicePassportContextCurrent(
@@ -257,6 +295,7 @@ export interface ServicePassportLiveCallback {
   current: ServicePassportCallback | undefined;
   generation: number;
 }
+class NavigationWithdrawn extends Error {}
 function callback(
   expected: ServicePassportCallback,
   live: ServicePassportLiveCallback,
@@ -270,7 +309,9 @@ function callback(
     !Number.isSafeInteger(p.generation) ||
     p.generation < 0
   )
-    throw Error('Service navigation callback withdrawn or replaced');
+    throw new NavigationWithdrawn(
+      'Service navigation callback withdrawn or replaced',
+    );
   return p.generation;
 }
 /** Read-only navigation; one in-flight callback per exact retained context, never a business reservation. */
@@ -286,6 +327,7 @@ export async function navigateServicePassportJob(
   if (b.navigationPending)
     throw Error('Service job navigation already pending');
   b.navigationPending = true;
+  let invoked = false;
   try {
     const exact = await openServiceReviewReport(path, report.reference);
     current(path);
@@ -297,11 +339,16 @@ export async function navigateServicePassportJob(
       throw Error('Exact report changed');
     const job = selectServiceCompletionJob(path);
     if (callback(expected, live) !== generation)
-      throw Error(
+      throw new NavigationWithdrawn(
         'Service navigation callback withdrawn or replaced during inspection',
       );
-    expected(job, 'completion');
+    invoked = true;
+    await expected(job, 'completion');
     return job;
+  } catch (error) {
+    if (invoked || !(error instanceof NavigationWithdrawn))
+      holdNavigation(b, path.context.job_id);
+    throw error;
   } finally {
     b.navigationPending = false;
   }

@@ -242,6 +242,42 @@ it.each([0, 1, 2])(
     );
   },
 );
+it.each(['throw', 'reject'] as const)(
+  'callback %s after dispatch leaves immutable source bodies and a terminal UNKNOWN selection across fresh same-job reads',
+  async (kind) => {
+    const f = await opened(),
+      snapshot = JSON.stringify([f.path, f.report]),
+      dispatched: string[] = [],
+      callback = vi.fn((job: string) => {
+        dispatched.push(job);
+        if (kind === 'throw') throw Error('host result lost after dispatch');
+        return Promise.reject(Error('host result lost after dispatch'));
+      }),
+      live = { current: callback, generation: 0 };
+    await expect(
+      navigateServicePassportJob(f.path, f.report, callback, live),
+    ).rejects.toThrow(/lost after dispatch/);
+    expect(dispatched).toEqual([f.input.job_id]);
+    expect(JSON.stringify([f.path, f.report])).toBe(snapshot);
+    await expect(
+      navigateServicePassportJob(f.path, f.report, callback, live),
+    ).rejects.toThrow(/UNKNOWN/);
+    expect(() => selectServicePassportContext(f.view, f.input.job_id)).toThrow(
+      /UNKNOWN/,
+    );
+    await expect(openServicePassportContext(f.view, f.input)).rejects.toThrow(
+      /UNKNOWN/,
+    );
+    const fresh = await readServicePassportPath(f.sources, f.gate);
+    expect(() => selectServicePassportContext(fresh, f.input.job_id)).toThrow(
+      /UNKNOWN/,
+    );
+    await expect(
+      openServicePassportContext(fresh, { ...f.input }),
+    ).rejects.toThrow(/UNKNOWN/);
+    expect(callback).toHaveBeenCalledTimes(1);
+  },
+);
 it.each(['removed', 'replaced', 'restored'] as const)(
   'callback %s during source inspection never runs an obsolete or replacement callback',
   async (kind) => {

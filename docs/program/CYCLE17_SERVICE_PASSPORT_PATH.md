@@ -75,7 +75,13 @@ replacement or restoration cannot revive an obsolete callback. Callback prop cha
 never key/remount the original control. One in-flight navigation per retained path
 prevents duplicate concurrent callbacks; it is presentation-only metadata, not a
 business reservation or new ID. Source/member/context checks also run after the final
-await. Cancellation never invokes an obsolete or substitute callback.
+await. Callback withdrawal observed before dispatch is clean cancellation. A source
+read with an ambiguous outcome or a callback that throws/rejects after dispatch holds
+the originating path/selection UNKNOWN. A private outcome marker on the original
+Operations identity also denies fresh same-job selection/source wrappers; no new mode,
+label, expiry or ID clears it. Immutable path/report/packet bodies stay unchanged.
+Callbacks are awaited, so asynchronous host rejection receives the same terminal fence.
+These are navigation outcome metadata, not a new business reservation or retry engine.
 
 ## Access, privacy and validation limits
 
@@ -95,16 +101,17 @@ empty/OFF/denied/UNKNOWN states and source/breadcrumb/review heading focus are p
 Main owns actual all-brand desktop/tablet/mobile, keyboard/axe/touch/overflow, delayed
 callback and retained-control browser proof. No source/SSR result is visual approval.
 
-**53 unique focused cases PASS, zero failed/pending**, in 173.63 seconds locally;
-slowest case 7.78 seconds. All individual cases retain the original global 30-second
+**55 unique focused cases PASS, zero failed/pending** after the navigation-outcome
+correction. All individual cases retain the original global 30-second
 budget; no CI/global timeout/assertion is weakened. Raw results:
-`/private/tmp/cycle17-customer-focused-results.json` (local, not committed).
+`/private/tmp/cycle17-customer-final-results.json` (local, not committed).
 All three brands exercise exact breadcrumbs/controls, literal filters, host navigation,
 foreign tenant/wrong same-company property/current-member denial and private projection
 isolation. Separate cases cover original completion preparation/UNKNOWN no-replay,
 sibling report associations, stale model/version/source/confirmation, final-await
 source/callback withdrawal/restoration, duplicate concurrent callbacks, strict getters,
-copied objects, immutable published content and default/production/HTTPS/nonloopback OFF.
+copied objects, immutable published content, synchronous/asynchronous callback failure
+with same-job reselection denial, and default/production/HTTPS/nonloopback OFF.
 Strict/generated types, owned ESLint/Prettier, build, features:check and Cycle16
 protected/design/retained-author integrity PASS. The retained large-chunk build advisory
 remains. Browser/combined and CI acceptance stay separate with Main.
