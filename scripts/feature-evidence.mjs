@@ -325,6 +325,22 @@ export function sourceOwner(path) {
     )
   )
     return 'A8';
+  // Cycle19 author ownership is review metadata, never authorization.
+  if (
+    /SavedRevisionWorkbench|saved-revision-(runtime|contract|exercise|workbench)|OperatingCenterCycleNineteen|^tests\/program\/.*cycle19|cycle19-independent|playwright\.cycle19|check-cycle19-/.test(
+      path,
+    )
+  )
+    return 'A8';
+  if (/field-saved-revisions|FieldSavedRevisions/.test(path)) return 'A3';
+  if (/cost-saved-revisions|CostSavedRevisions/.test(path)) return 'A4';
+  if (/service-revision-review|ServiceRevisionReview/.test(path)) return 'A5';
+  if (
+    /maintenance-saved-revisions|MaintenanceSavedRevisions|priority-saved-revisions|PrioritySavedRevisions/.test(
+      path,
+    )
+  )
+    return 'A6';
   // Cycle18 source consumers and shared presentation; never access grants.
   if (
     /DailyWorkbench|daily-workbench|OperatingCenterCycleEighteen|^tests\/program\/.*cycle18|cycle18-independent|playwright\.cycle18|check-cycle18-/.test(

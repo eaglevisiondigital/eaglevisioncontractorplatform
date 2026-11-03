@@ -1,0 +1,178 @@
+{
+  "schema": "propel-cycle19-independent-review-v1",
+  "reviewer": "/root/cycle18_independent_review",
+  "branch": "codex/cycle19-independent-final-review",
+  "initial_candidate": "482bef2bf661682c3654d09ee00756bb556106a1",
+  "reviewed_candidate": "ad37d4116047a598fb52b7a74bb4639574235a88",
+  "status": "CLEAR_LOCAL_SYNTHETIC_ONLY",
+  "owned_files": [
+    "tests/cycle19-independent-integration-review.test.ts",
+    "docs/program/CYCLE19_INDEPENDENT_REVIEW.json"
+  ],
+  "source_admission": {
+    "packages": [
+      {
+        "module": "field",
+        "head": "2d9867ca91bc3a7ebfab063175a63d1a382ae04f",
+        "draft_pr": 132,
+        "owned_files": 5,
+        "all_owned_blobs_equal": true
+      },
+      {
+        "module": "finance",
+        "head": "8243be60ac191360b6df0d999d2e144ea19686ab",
+        "draft_pr": 133,
+        "owned_files": 5,
+        "all_owned_blobs_equal": true
+      },
+      {
+        "module": "customer",
+        "head": "c80dfbbbda13b82867efce0ecae4c4ab9f02c9e6",
+        "draft_pr": 134,
+        "owned_files": 5,
+        "all_owned_blobs_equal": true
+      },
+      {
+        "module": "growth",
+        "head": "ce7bc07bdc40579391fbddb9a1ab95d33a5a2deb",
+        "draft_pr": 136,
+        "owned_files": 5,
+        "all_owned_blobs_equal": true
+      },
+      {
+        "module": "intelligence",
+        "head": "bf266893a635d2c439d5412c8fe80b40819802f1",
+        "draft_pr": 135,
+        "owned_files": 5,
+        "all_owned_blobs_equal": true
+      }
+    ],
+    "author_files": 25,
+    "retained_records_and_ci": {
+      ".github/workflows/ci.yml": {
+        "unchanged_from_cycle18": true,
+        "sha256": "df337433bfde1768ccbe396326793559f21113aa7c24e37fbd5955c4c29f87be"
+      },
+      "tests/cycle18-independent-integration-review.test.ts": {
+        "unchanged_from_cycle18": true,
+        "sha256": "a21b987039f312f19bf103308f0fbeac26f72cc97f8a8607937b86b57d838217"
+      },
+      "docs/FEATURE_ACCEPTANCE_EVIDENCE.json": {
+        "unchanged_from_cycle18": true,
+        "sha256": "6b4a4e4493519b895d3a9ddcac434acf7233c5e87514341767ea321b48c4577b"
+      },
+      "docs/FEATURE_SOURCE_INVENTORY.json": {
+        "unchanged_from_cycle18": true,
+        "sha256": "f97017445306ad390ef4b1a479158f35d3b19094b5e470f1f05b00a62ce1fd63"
+      }
+    },
+    "meaning": "Exact source and local review evidence only; never operational acceptance or replacement CI."
+  },
+  "findings": [
+    {
+      "id": "C19-IR-01",
+      "status": "FIXED_VERIFIED",
+      "observation": "Historical saved-source Access rebuilt a fresh capture without explicitly pinning the original source root and entry handles. Equal-value source-array/container replacement could pass historical Access while Current rejected it.",
+      "initial_evidence": "Source review before the functioning candidate; no initial failing-test claim.",
+      "correction": "Main pins original own-data root and entry selectors/handles separately from mutable record signatures. Known canonical record changes remain eligible for explicit historical comparison.",
+      "verification": "Five independent final-candidate substitution cases deny entries/gate/company/entry gate/model replacement. Three brand cases permit actual saved visit revisions and preserve immutable old evidence."
+    },
+    {
+      "id": "C19-IR-02",
+      "status": "FIXED_VERIFIED",
+      "observation": "Initial SourceExercise cleanup changed only its live UI flag while the actual read/executor gate was a separate permanently true literal. A context change during an awaited write could permit later submit/review stages.",
+      "correction": "Main passes the mounted admission ref into the original executor and revokes enabled/confirmed in cleanup.",
+      "verification": "Source diff reviewed. The independent actual post-record gate-withdrawal case blocks submitTime/reviewTime, preserves UNKNOWN after restoring admission and fresh wrapping. Actual component-unmount browser evidence is separately owned by Main."
+    },
+    {
+      "id": "C19-IR-03",
+      "status": "FIXED_SOURCE_REVIEWED",
+      "observation": "Unexpected rejected thenables from nominally synchronous void/publication methods could otherwise emit an unhandled rejection while retaining UNKNOWN.",
+      "correction": "Unexpected void/publication ACKs are observed without awaiting/continuing them, then fail closed. Publication requires exact own-data report fields.",
+      "verification": "Final exact source inspected; independent malformed no-write/wrong UUID/wrong void tests hold UNKNOWN. No initial runtime reproduction or separate browser claim."
+    },
+    {
+      "id": "C19-IR-04",
+      "status": "FIXED_VERIFIED",
+      "observation": "Strict TypeScript on initial functioning candidate found an un-narrowed Binding captured in a nested function and an incorrectly typed undefined acknowledgment mock.",
+      "correction_commit": "ad37d4116047a598fb52b7a74bb4639574235a88",
+      "correction": "Nested helper is an arrow closure retaining the already validated Binding; deliberately invalid test ACK is explicitly cast never. No assertion or runtime validation removed.",
+      "verification": "Exact three-line source/test diff reviewed and full strict typecheck passed on corrected candidate."
+    }
+  ],
+  "coverage": [
+    "One exact original repository set across all five projections and all three approved brands; same tenant/customer/property/job/issued identity.",
+    "Actual saved visit edit; immutable original snapshot; explicit confirmation; competing opaque selection generation CAS; duplicate/copy/same-property sibling denial.",
+    "Current staff revocation, immutable target mismatch, original handle replacement, and actual source change during asynchronous hashing.",
+    "Sixth synchronous private-domain fence at generic comparison/adoption while historical evidence remains readable.",
+    "Actual recorded consent revocation and original synchronous row reader; purpose/suppression/enrollment/send remain blocked or unknown.",
+    "Canonical Operations/org/job pending and UNKNOWN custody across fresh wrappers, lost ACK, malformed ACK, different-kind bypass and post-ACK admission withdrawal.",
+    "Actual original report revision/publication appends exact new UUID/version, retains every old report byte, preserves safe report privacy and unverified physical completion.",
+    "Actual material review and local saved adoption cannot clear the original Finance UNKNOWN control across fresh wrappers; no callback replay in all three brands.",
+    "Default OFF, production, remote host and HTTPS deny before source getters and render no synthetic exercise controls.",
+    "Read-only five-projection composition observes original canonical snapshots and writer/network spies; customer-safe report output excludes internal costs/staff notes."
+  ],
+  "focused_tests": {
+    "status": "PASS",
+    "cases": 36,
+    "passed": 36,
+    "failed": 0,
+    "skipped_or_pending": 0,
+    "unique_case_names": 36,
+    "test_timeout_ms": 30000,
+    "timeout_changed": false,
+    "max_workers": 1,
+    "maximum_case_ms": 5610,
+    "test_file_sha256": "af2bfbed97ab7a73150a6ba9a7824e2657b282f205ec3fbd2e77c4292d3f0c36",
+    "private_result_name": "cycle19-independent-final-results.json",
+    "private_result_sha256": "3af162665b38abbe51b64a3873c76c842a7b7cf2fb72a9e713259e09b5aaee52"
+  },
+  "verification": {
+    "strict_types": "PASS_FULL_TSC_NO_EMIT",
+    "scoped_eslint": "PASS",
+    "scoped_prettier": "PASS",
+    "feature_evidence": "PASS_25_RECORDS_5_LOCKS_13_BINDINGS",
+    "retained_integrity": "PASS_CYCLE6_THROUGH_CYCLE18_128_PROTECTED_HASHES",
+    "protected_source_changes": 0
+  },
+  "ci_coverage_assessment": {
+    "evidence": "Independent read-only assessment of Main private cycle19-ci-final-closeout.json, observed 2026-11-03T16:33:43.106168+00:00. No new provider action or rerun.",
+    "main_cycle18_exact_head": "c71273f6a4903efcd2607e77b0916eeed6d2681f",
+    "foundation_push": {
+      "run": 41664482359,
+      "status": "FAILURE",
+      "failed_case": "finance: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay",
+      "reported_error": "Test timed out in 30000ms",
+      "passed": 6946,
+      "failed": 1,
+      "declared_skipped": 321,
+      "total": 7268
+    },
+    "foundation_pr": {
+      "run": 41664495457,
+      "status": "CANCELLED",
+      "provider_reason": "45-minute execution limit",
+      "failure_markers_before_cancellation": 10,
+      "final_case_exceptions": "UNAVAILABLE_NOT_INFERRED"
+    },
+    "dedicated_pr": {
+      "run": 41664495173,
+      "status": "FAILURE",
+      "actual_browser_failures": 9
+    },
+    "successful_companions": "Preserve dedicated push 41664482630 PASS, 27 successful Main workflows, native PG17 and original successful child companions separately; none changes a failed/cancelled run into PASS.",
+    "remaining_unique_coverage": "No successful current Main whole-Foundation result at c712; Customer127 final1ed and Finance129 exact-head Foundation cancellations remain unclosed. Focused Cycle19 local tests do not replace that coverage.",
+    "cycle19_exact_head_ci": "SEPARATE_PENDING_OBSERVATION_NOT_CLAIMED_GREEN",
+    "manual_reruns": 0,
+    "workflow_changes": 0,
+    "assertion_removal": 0
+  },
+  "limits": [
+    "Independent source/application tests only. Main owns actual browser/responsive/accessibility/screenshots and combined final-candidate workflow evidence.",
+    "Local synthetic saves use original canonical methods; read/adopt and prior UNKNOWN holds remain separate. No durable custody, genuine authentication or operational availability/consent/completion is established.",
+    "Operating Center and advanced visual scopes remain PENDING. Three approved interfaces and artwork remain unchanged.",
+    "No new business store, schema, ledger, engine, provider worker, connected route, dispatch or communication authority.",
+    "No credentials, hosted action, protected migration, financial execution, message, deployment, publication or merge."
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

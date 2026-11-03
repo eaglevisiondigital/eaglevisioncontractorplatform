@@ -410,3 +410,27 @@ visible labels, keyboard focus and aria-current preserve established patterns. N
 approved artwork or five locked files changes. Operating Center and advanced visual
 promotion remains PENDING. Physical recovery/Auth/MFA/NMI/customer14/4B/financial/
 communication/provider/hosted/production/deployment/merge gates remain closed.
+
+## Cycle19 saved canonical source revisions
+
+One unchanged OperatingSources root/entry handle set supplies strict allowlisted
+immutable snapshots. Root and all entry selectors are pinned separately from mutable
+record fences. Known saved revisions stale old Current checks while fresh Access
+validates original handles/current eligible staff/immutable issued scope. No old
+control hold or UNKNOWN is cleared. Comparison binds same identity and one opaque
+selection generation; confirmation plus final current-source/domain fence precedes
+presentation CAS. Growth additionally fences original private follow-ups and contact
+rows synchronously; missing purpose/suppression/atomic sending remains UNKNOWN.
+
+A task is the existing TimeEntry.task with exact correction links, not another task
+store. Approved but unposted time is not canonical labor cost. Material review uses
+existing commitments/events, never purchasing or payment. Customer selects exact same
+visit/plan/job published versions and excludes workforce/cost/private information.
+Intelligence reuses original deterministic priority engine, never inferred action.
+
+Main default-false SavedRevisionWorkbench retains one job and lazily mounts visited
+panels, preserving their selections. Source exercise is collapsed, explicit, one-use
+per canonicalOperations/company/job and finite kind; gate revocation/any invoked
+uncertainty retains global UNKNOWN with no replay. It is disposable same-tab fixture
+engineering, never a connected writer or durable business store. No original engines
+or approved views/locks change. Existing slot IDs/default paths remain unchanged.

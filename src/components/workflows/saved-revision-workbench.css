@@ -101,3 +101,12 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Scope the shell against inherited back-office header/navigation flex rules. */
+.saved-revision-workbench > header {
+  display: block;
+  max-width: 76ch;
+}
+.saved-revision-workbench .srw-tabs {
+  flex-direction: row;
+}

@@ -1,0 +1,305 @@
+{
+  "schema": "propel-cycle19-final-cycle18-ci-closeout-v1",
+  "repository": "eaglevisiondigital/eaglevisioncontractorplatform",
+  "observed_at": "2026-11-03T16:33:43.106168+00:00",
+  "main_exact_head": "c71273f6a4903efcd2607e77b0916eeed6d2681f",
+  "same_main_merge_tree_proof": {
+    "merge_commit": {
+      "sha": "e4229c72ec4c4f6cc0cab2fa35378078c9b10a96",
+      "node_id": "C_kwDOVLTSE9oAKGU0MjI5YzcyZWM0YzRmNmNjMGNhYjJmYTM1Mzc4MDc4YzliMTBhOTY",
+      "url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/git/commits/e4229c72ec4c4f6cc0cab2fa35378078c9b10a96",
+      "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/commit/e4229c72ec4c4f6cc0cab2fa35378078c9b10a96",
+      "author": {
+        "name": "eaglevisiondigital",
+        "email": "dfowler4232@gmail.com",
+        "date": "2026-11-03T15:29:54Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-11-03T15:29:54Z"
+      },
+      "tree": {
+        "sha": "c45a221a8220ba45272c5520315827ffe4f2b67c",
+        "url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/git/trees/c45a221a8220ba45272c5520315827ffe4f2b67c"
+      },
+      "message": "Merge c71273f6a4903efcd2607e77b0916eeed6d2681f into ab7a95596f89f7bceb1fc089cdaa790a55fb10d5",
+      "parents": [
+        {
+          "sha": "ab7a95596f89f7bceb1fc089cdaa790a55fb10d5",
+          "url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/git/commits/ab7a95596f89f7bceb1fc089cdaa790a55fb10d5",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/commit/ab7a95596f89f7bceb1fc089cdaa790a55fb10d5"
+        },
+        {
+          "sha": "c71273f6a4903efcd2607e77b0916eeed6d2681f",
+          "url": "https://api.github.com/repos/eaglevisiondigital/eaglevisioncontractorplatform/git/commits/c71273f6a4903efcd2607e77b0916eeed6d2681f",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/commit/c71273f6a4903efcd2607e77b0916eeed6d2681f"
+        }
+      ],
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJq6f3yCRC1aQ7uu5UhlAAA7poQABZsXgNW9rYH6rZBl+NHENFd\ntnfUAto22Pc+2xmfnwNDCyY4N4PdxOuBIuxVsdW7jFM/fMRhuQGPaPF/uEEpo7Gt\nndcPjA3MZxa4TKMG9u6oDLJjIzDxf0WMjI2qbe8o7/f6VM2SGlcmPcGzcSiXCPbO\nJnKy4AUu8yWXE0mgqA1Fu3m+Qo84O8Ewhvd/CqxSGaAd4nGX73tiP9alk+rSu9cX\niMH+I00p60sDfwHb9RM9rvWXhc/6wUSHtCZIGDpt2qT7qyn2A26HOX4N7ANzvdzw\nQAJFHLPAgQDeYrAM1+z2eyRxCSvIrkDIEZDu8ZT8MyhEiJ3OnEz8SIb+hTMQMAMr\nmh5exzNBuU29xqMJUW8/t8+iJcATSmpWC8PauOg6D8Bc6RPl9LRWxipvr+DJdHlS\nGO7oQAnRRZA9jw2joCGdafb6Ke8P9w9il3XB4vw2p26Hh6eoxmR9V7G82MSwmNrt\nIE/wefsOgcTej2Fzo2w3lRy6ADLuhtnQc5tmAicSnXugXUmY/U75DxMNnCDE6+0/\nCirmmv/U12eoJ3DyHILhz7hqAVZiZAqvU5noSczccT68OwW6WA+V6gyGlpgqQeQz\njHG0ndejglPuMHjqdQaOwRux3hkAEZFf5OvZRMPAwgRkzzSrk/Qsofr31TgFIW/n\nf5KSMerxf4Db38NMj7TQ\n=GKp+\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree c45a221a8220ba45272c5520315827ffe4f2b67c\nparent ab7a95596f89f7bceb1fc089cdaa790a55fb10d5\nparent c71273f6a4903efcd2607e77b0916eeed6d2681f\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1793719794 +0000\ncommitter GitHub <noreply@github.com> 1793719794 +0000\n\nMerge c71273f6a4903efcd2607e77b0916eeed6d2681f into ab7a95596f89f7bceb1fc089cdaa790a55fb10d5\n",
+        "verified_at": "2026-11-03T15:29:54Z"
+      }
+    },
+    "main_head_tree": "c45a221a8220ba45272c5520315827ffe4f2b67c",
+    "merge_tree": "c45a221a8220ba45272c5520315827ffe4f2b67c",
+    "equal": true
+  },
+  "exact_source_proof": [
+    {
+      "pr": 126,
+      "head": "2e1346165b50a33e2a695c159e47107302210ce6",
+      "files": [
+        {
+          "path": "src/lib/workflows/field-agenda.ts",
+          "child_blob": "ae950fed81114f3b30cc950615c6f8a866d24b22",
+          "main_blob": "ae950fed81114f3b30cc950615c6f8a866d24b22",
+          "equal": true
+        },
+        {
+          "path": "src/components/workflows/FieldAgenda.tsx",
+          "child_blob": "20a8d23240f2592aa74120f34b069f686238871d",
+          "main_blob": "20a8d23240f2592aa74120f34b069f686238871d",
+          "equal": true
+        },
+        {
+          "path": "src/components/workflows/field-agenda.css",
+          "child_blob": "424b91f696682b56b78c23c8948489f671d05da6",
+          "main_blob": "424b91f696682b56b78c23c8948489f671d05da6",
+          "equal": true
+        },
+        {
+          "path": "tests/cycle18-field-agenda.test.ts",
+          "child_blob": "d899532022b78cee56f7e655cbe174fab8903d54",
+          "main_blob": "d899532022b78cee56f7e655cbe174fab8903d54",
+          "equal": true
+        },
+        {
+          "path": "docs/program/CYCLE18_FIELD_AGENDA.md",
+          "child_blob": "87380915045a0fbe14509285d468732f29e4233a",
+          "main_blob": "87380915045a0fbe14509285d468732f29e4233a",
+          "equal": true
+        }
+      ],
+      "all_owned_equal": true,
+      "foundation_workflow_equal": true,
+      "foundation_blob": "198f068c05c78fa9a8bc3d69d126e560d7228abf"
+    },
+    {
+      "pr": 129,
+      "head": "1b5040904fe11307c790bf64f5c6488e2a23f983",
+      "files": [
+        {
+          "path": "src/lib/workflows/cost-invoice-review.ts",
+          "child_blob": "fa89cfca15330365cacb98fc5366a0192e622ebd",
+          "main_blob": "fa89cfca15330365cacb98fc5366a0192e622ebd",
+          "equal": true
+        },
+        {
+          "path": "src/components/workflows/CostInvoiceReview.tsx",
+          "child_blob": "57110937e12c454f6e1d33c9110fa1cf8e64df2c",
+          "main_blob": "57110937e12c454f6e1d33c9110fa1cf8e64df2c",
+          "equal": true
+        },
+        {
+          "path": "src/components/workflows/cost-invoice-review.css",
+          "child_blob": "3fdd40434202a0b7c92ea5395f43f99693ba1ed3",
+          "main_blob": "3fdd40434202a0b7c92ea5395f43f99693ba1ed3",
+          "equal": true
+        },
+        {
+          "path": "tests/cycle18-cost-invoice-review.test.ts",
+          "child_blob": "2d05c58a36d7dbd1350c1109403b73d488236484",
+          "main_blob": "2d05c58a36d7dbd1350c1109403b73d488236484",
+          "equal": true
+        },
+        {
+          "path": "docs/program/CYCLE18_COST_INVOICE_REVIEW.md",
+          "child_blob": "3ff71d9f578d993f437597560c2582c69425838b",
+          "main_blob": "3ff71d9f578d993f437597560c2582c69425838b",
+          "equal": true
+        }
+      ],
+      "all_owned_equal": true,
+      "foundation_workflow_equal": true,
+      "foundation_blob": "198f068c05c78fa9a8bc3d69d126e560d7228abf"
+    },
+    {
+      "pr": 127,
+      "head": "1ed580ebd53bd5a9a893fd63c81dc905650d40de",
+      "files": [
+        {
+          "path": "src/lib/workflows/service-update-review.ts",
+          "child_blob": "2183cca1ba25e82c9c4cd74ed73e3634e4d06cc8",
+          "main_blob": "2183cca1ba25e82c9c4cd74ed73e3634e4d06cc8",
+          "equal": true
+        },
+        {
+          "path": "src/components/workflows/ServiceUpdateReview.tsx",
+          "child_blob": "09f9d71808cf2c131cf75d019faea8983083106b",
+          "main_blob": "09f9d71808cf2c131cf75d019faea8983083106b",
+          "equal": true
+        },
+        {
+          "path": "src/components/workflows/service-update-review.css",
+          "child_blob": "ae352d787dcfe5e0911e98b57073911bf71ccc9f",
+          "main_blob": "ae352d787dcfe5e0911e98b57073911bf71ccc9f",
+          "equal": true
+        },
+        {
+          "path": "tests/cycle18-service-update-review.test.ts",
+          "child_blob": "f6b33bf85dc8665d470a8c56486dd714fa636b01",
+          "main_blob": "f6b33bf85dc8665d470a8c56486dd714fa636b01",
+          "equal": true
+        },
+        {
+          "path": "docs/program/CYCLE18_SERVICE_UPDATE_REVIEW.md",
+          "child_blob": "e4e9316f599ee7f62970026416faee3e92d2178e",
+          "main_blob": "e4e9316f599ee7f62970026416faee3e92d2178e",
+          "equal": true
+        }
+      ],
+      "all_owned_equal": true,
+      "foundation_workflow_equal": true,
+      "foundation_blob": "198f068c05c78fa9a8bc3d69d126e560d7228abf"
+    },
+    {
+      "pr": 128,
+      "head": "8a16ca1f00230486c443579fb5c68efce6a0160f",
+      "files": [
+        {
+          "path": "src/lib/workflows/maintenance-agenda.ts",
+          "child_blob": "2e9b34a43cf93a6a98c9caa458d7ed11bc5a7f22",
+          "main_blob": "2e9b34a43cf93a6a98c9caa458d7ed11bc5a7f22",
+          "equal": true
+        },
+        {
+          "path": "src/components/workflows/MaintenanceAgenda.tsx",
+          "child_blob": "04e6b86a5150ccfaa2ed511465147bea5597faf8",
+          "main_blob": "04e6b86a5150ccfaa2ed511465147bea5597faf8",
+          "equal": true
+        },
+        {
+          "path": "src/components/workflows/maintenance-agenda.css",
+          "child_blob": "3e1b66edd71408725997d348f5442de45b842718",
+          "main_blob": "3e1b66edd71408725997d348f5442de45b842718",
+          "equal": true
+        },
+        {
+          "path": "tests/cycle18-maintenance-agenda.test.ts",
+          "child_blob": "6aef94184f971567b0da3ed58fb65c3ce6834766",
+          "main_blob": "6aef94184f971567b0da3ed58fb65c3ce6834766",
+          "equal": true
+        },
+        {
+          "path": "docs/program/CYCLE18_MAINTENANCE_AGENDA.md",
+          "child_blob": "a7097420bad42218a74d8c96f7e6babd99a71dc1",
+          "main_blob": "a7097420bad42218a74d8c96f7e6babd99a71dc1",
+          "equal": true
+        }
+      ],
+      "all_owned_equal": true,
+      "foundation_workflow_equal": true,
+      "foundation_blob": "198f068c05c78fa9a8bc3d69d126e560d7228abf"
+    },
+    {
+      "pr": 130,
+      "head": "695dfb8cb5fa0313d69f6e3532ae2c55203c9641",
+      "files": [
+        {
+          "path": "src/lib/workflows/priority-actions.ts",
+          "child_blob": "be2c65713f60c09cc4d32cda27cf227145b40939",
+          "main_blob": "be2c65713f60c09cc4d32cda27cf227145b40939",
+          "equal": true
+        },
+        {
+          "path": "src/components/workflows/PriorityActions.tsx",
+          "child_blob": "11d5b64c2ffc759aead042a56d5c9714e3072002",
+          "main_blob": "11d5b64c2ffc759aead042a56d5c9714e3072002",
+          "equal": true
+        },
+        {
+          "path": "src/components/workflows/priority-actions.css",
+          "child_blob": "0d627c516917a1e824e8d34ad123b49d4ad22795",
+          "main_blob": "0d627c516917a1e824e8d34ad123b49d4ad22795",
+          "equal": true
+        },
+        {
+          "path": "tests/cycle18-priority-actions.test.ts",
+          "child_blob": "bbb76e9ce31ce2a30288e0c013d12a2fc1b5478e",
+          "main_blob": "bbb76e9ce31ce2a30288e0c013d12a2fc1b5478e",
+          "equal": true
+        },
+        {
+          "path": "docs/program/CYCLE18_PRIORITY_ACTIONS.md",
+          "child_blob": "22f5e5cfa6d5bd792f633d6039094c26e351454d",
+          "main_blob": "22f5e5cfa6d5bd792f633d6039094c26e351454d",
+          "equal": true
+        }
+      ],
+      "all_owned_equal": true,
+      "foundation_workflow_equal": true,
+      "foundation_blob": "198f068c05c78fa9a8bc3d69d126e560d7228abf"
+    }
+  ],
+  "release": "NOT READY / NOT AUTHORIZED",
+  "sanitized_findings": {
+    "main_exact_head": "c71273f6a4903efcd2607e77b0916eeed6d2681f",
+    "main_foundation_push": {
+      "run_id": 41664482359,
+      "status": "FAILURE",
+      "verify_job": 126016232589,
+      "verify_elapsed_seconds": 2250,
+      "application": {
+        "passed": 6946,
+        "failed": 1,
+        "declared_skipped": 321,
+        "total": 7268
+      },
+      "failed_case": "finance: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay",
+      "source": "tests/cycle18-independent-integration-review.test.ts:535",
+      "demonstrated_error": "Test timed out in 30000ms",
+      "reported_case_duration_ms": 30061,
+      "later_foundation_staging_browser_build": "not reached after npm run check failure"
+    },
+    "main_foundation_pr": {
+      "run_id": 41664495457,
+      "status": "CANCELLED",
+      "verify_job": 126016892462,
+      "verify_elapsed_seconds": 2767,
+      "demonstrated_provider_reason": "The job has exceeded the maximum execution time of 45m0s",
+      "application_failures_logged_before_cancel": 10,
+      "final_failure_exceptions": "not printed before cancellation; retain failed-case markers without speculative cause"
+    },
+    "current_customer": {
+      "pr": 127,
+      "head": "1ed580ebd53bd5a9a893fd63c81dc905650d40de",
+      "run_id": 41662377405,
+      "status": "CANCELLED",
+      "provider_reason": "maximum execution time45m0s",
+      "failed_suite_markers_in_log": 0,
+      "failed_case_markers_in_log": 0,
+      "native_pg17": "PASS",
+      "do_not_relabel": "not a Foundation PASS"
+    },
+    "preserved_success": [
+      "Main dedicated push41664482630 PASS at c712",
+      "Main27successful workflows at exacthead",
+      "All3 nativePG17 Foundation jobs PASS",
+      "Child126/128/130 original exacthead Foundation companions PASS"
+    ],
+    "unresolved_unique_coverage": [
+      "No Foundation SUCCESS exists at Mainc712; explicit source-admission regression timeout remains unclosed",
+      "DedicatedPR41664495173 has9actualbrowserfailures despite identical-tree dedicatedpushPASS; not a source drift diagnosis",
+      "Child129 exacthead has only cancelled Foundation results; successful currentMain whole-suite execution is unavailable",
+      "CurrentCustomer127 final1ed has only cancelled Foundation and3otherPASS; currentMain inclusion doesnot establish allacceptance"
+    ],
+    "new_cycle19": "PR132\u2013136 each draft/open/unmerged with expected coordinationbase, no failed/cancelled workflow conclusion at observation; pending/running/queued are not green",
+    "action": "No manualreruns, sourcechanges, timeoutchanges, skippedassertions or workflowweakening"
+  },
+  "private_raw_sha256": "f750c762e1d774dd04ff2216a0d10c1cb5d7505875c2e46616d69ff31f9d3659",
+  "manual_reruns": 0
+}
