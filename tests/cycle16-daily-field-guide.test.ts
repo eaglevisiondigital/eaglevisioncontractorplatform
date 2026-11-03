@@ -9,6 +9,7 @@ import {
   reconcileDailyFieldGuide as reconcile,
   inspectDailyFieldStep as inspect,
   inspectDailyFieldReport as report,
+  dailyFieldReportReference,
   openDailyFieldControls as controls,
   navigateDailyFieldJob as navigate,
 } from '../src/lib/workflows/daily-field-guide';
@@ -208,6 +209,26 @@ it('opens only the exact original published report/version', async () => {
       published_version: other.published_version,
     }),
   ).rejects.toThrow();
+});
+it('displayed five-field report rows enter the exact original reader through the narrow UI reference mapper', async () => {
+  const f = await fixture(),
+    view = await read(f.sources, f.input, f.gate),
+    displayed = (await inspect(view, 'reports')).reports[0],
+    reference = dailyFieldReportReference(displayed);
+  expect(Object.keys(displayed)).toEqual([
+    'report_id',
+    'published_version',
+    'visit_id',
+    'plan_id',
+    'job_id',
+  ]);
+  expect(Object.keys(reference)).toEqual(['report_id', 'published_version']);
+  const original = await report(view, reference);
+  expect(original.report.report_id).toBe(displayed.report_id);
+  expect(original.report.published_version).toBe(displayed.published_version);
+  expect(original.handoff.job_id).toBe(displayed.job_id);
+  // The original strict two-field boundary remains unchanged and rejects extra fields.
+  await expect(report(view, displayed)).rejects.toThrow();
 });
 it('repeated original-control entry retains exact job and creates no review or successor', async () => {
   const f = await fixture(),
