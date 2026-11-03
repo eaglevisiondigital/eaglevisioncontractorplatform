@@ -39,7 +39,7 @@ for (const company of sampleCompanies)
         exact: true,
       }),
     ).toBeFocused();
-    const context = await r.locator('dl').first().innerText();
+    const context = await r.locator('dl').first().textContent();
     await r
       .getByLabel(
         'I confirm this plan only inspects original missing consent requirements.',
@@ -86,7 +86,7 @@ for (const company of sampleCompanies)
         exact: true,
       }),
     ).toBeFocused();
-    await expect(r.locator('dl').first()).toHaveText(context);
+    await expect(r.locator('dl').first()).toHaveText(context!);
     await expect(
       r.getByRole('button', {
         name: 'Prepare maintenance path requirements',

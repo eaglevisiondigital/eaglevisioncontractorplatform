@@ -14,8 +14,14 @@ for (const company of sampleCompanies) {
     await expect(
       r.getByRole('button', { name: 'Open service review path', exact: true }),
     ).toBeDisabled();
-    const request = r.getByLabel('Service request', { exact: true }),
-      job = r.getByLabel('Service review job', { exact: true });
+    const request = r.getByRole('combobox', {
+        name: 'Service request',
+        exact: true,
+      }),
+      job = r.getByRole('combobox', {
+        name: 'Service review job',
+        exact: true,
+      });
     await expect(request).not.toHaveValue('');
     const originalRequest = await request.inputValue(),
       originalJob = await job.inputValue();
@@ -109,7 +115,7 @@ for (const company of sampleCompanies) {
       exact: true,
     });
     await expect(
-      r.getByLabel('Service request', { exact: true }),
+      r.getByRole('combobox', { name: 'Service request', exact: true }),
     ).not.toHaveValue('');
     await r
       .getByLabel(

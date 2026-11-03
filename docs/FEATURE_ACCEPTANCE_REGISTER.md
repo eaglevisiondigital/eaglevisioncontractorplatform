@@ -1,5 +1,22 @@
 # Propel Contractor Suite — feature acceptance register
 
+## Cycle15 · functioning local paths; acceptance states unchanged
+
+Six exact five-file author packages are implemented and composed in Main draft107.
+An explicit default-false presentation opt-in uses the same source repository host
+and original continuity navigation slots. [Exact index](program/CYCLE15_DELIVERY_INDEX.json),
+[local/independent/browser proof](program/CYCLE15_VALIDATION.md) and
+[CI snapshot](program/CYCLE15_CI_SNAPSHOT.json) preserve separate evidence stages.
+Source-safe local return is not persistence, genuine authentication, authorization,
+physical completion, cost coverage, consent, issuance or operational acceptance.
+
+The original25capability stage/approval/CI records and original18scopeIDs remain
+unchanged; source citations extend only retained evidence. All8PhaseOne gates stay
+closed, three visual approval scopes remain locked, and Operating Center/advanced
+visual approvals remain PENDING with missing originals MISSING. No financial,
+provider, communication, dispatch, database/hosted, production or release activation.
+**Release1.0 NOT READY / NOT AUTHORIZED.**
+
 ## Cycle14 corrected CI; no capability or release promotion
 
 Final exact-head inventory:30/30checks SUCCESS, including push and PR Foundation

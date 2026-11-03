@@ -39,7 +39,7 @@ for (const company of sampleCompanies)
         exact: true,
       }),
     ).toBeFocused();
-    const identity = await r.locator('dl').first().innerText();
+    const identity = await r.locator('dl').first().textContent();
     await expect(r).toContainText(
       'Return and stage changes retain this deadline',
     );
@@ -55,6 +55,17 @@ for (const company of sampleCompanies)
         exact: true,
       }),
     ).toBeFocused();
+    const section = (await r.getByText(/^Existing section:/).textContent())!
+      .split(':')[1]
+      .trim();
+    expect([
+      'sales',
+      'field',
+      'finance',
+      'completion',
+      'maintenance',
+      'daily',
+    ]).toContain(section);
     await expect(r).toContainText('Missing evidence and blocked actions');
     await audit(page, r);
     await capture(
@@ -76,7 +87,7 @@ for (const company of sampleCompanies)
         exact: true,
       }),
     ).toBeFocused();
-    await expect(r.locator('dl').first()).toHaveText(identity);
+    await expect(r.locator('dl').first()).toHaveText(identity!);
     await r
       .getByRole('button', {
         name: 'Inspect original review destination',
@@ -86,5 +97,8 @@ for (const company of sampleCompanies)
     await r
       .getByRole('button', { name: 'Open original task review', exact: true })
       .click();
-    await expect(page.locator('#operating-selected-heading')).toBeFocused();
+    await expect(page.locator(`#operating-selected-${section}`)).toBeFocused();
+    await expect(
+      page.getByRole('heading', { name: 'Exact selected job', exact: true }),
+    ).toBeVisible();
   });

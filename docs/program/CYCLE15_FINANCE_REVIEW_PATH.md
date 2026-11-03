@@ -49,11 +49,24 @@ snapshot hashes and immutable event/posting content, canonical aggregates, wrong
 job/property/tenant, stale invoice/issued/job/as-of evidence, final hash await changes,
 revocation, inconsistent posting identity, privacy/no writers, original correction
 concurrency/remount/relabel holds, copied anchors and default-OFF/getter admission.
-Validation: all25 focused cases PASS (123.25s suite; slowest15.22s compound
+Initial local validation on622c33e: all25 focused cases PASS (123.25s suite; slowest15.22s compound
 positive/canonical case, within the unchanged30s project budget). Strict/generated
 types, scoped ESLint/Prettier, production build, features/design evidence and C14
 protected/prior-author integrity PASS. Main owns mounted responsive/keyboard/axe
 and combined browser proof. No historical successful recovery/Netlify suite is rerun.
+
+CI correction: Foundation push41560686110/job125670279992 on exact622c33e reported
+one30s timeout in the combined concurrency/fresh/relabel/copied-return case; all
+other5532 cases passed and321 skipped, with no assertion failure. Split copied-return
+identity into its own case and retain the concurrent independent source reads plus
+original correction preparation/relabel denial on one actual canonical job. The
+original invariant is keyed to that exact repository/job/exception; unrelated
+portfolio jobs remain covered by the other cases. No assertion, concurrency, original
+hold check, product code or timeout budget is removed or weakened. Corrected focused
+validation: all26 cases PASS, zero skipped (104.59s suite; concurrent exact-job hold
+case2.14s, copied-return case4.15s, slowest case8.67s). Strict/generated types, test
+ESLint and scoped Prettier PASS. Normal automatic CI evaluates the new head; no
+manual workflow rerun or historical suite replay.
 
 All protected/prior author bytes, five design locks/thirteen bindings, all13/customer14/
 4B/P1/four/approvals/2A–2F/billing/Netlify/executor/recovery/Auth/MFA/NMI/financial/

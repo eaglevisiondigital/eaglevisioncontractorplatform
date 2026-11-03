@@ -1,5 +1,26 @@
 # Product program delivery status
 
+## Cycle15 · six implemented task-continuity packages
+
+The current implementation supersedes the historical prepared-only section below.
+Main draft107 (`codex/program-cycle-fifteen`) targets the unchanged Cycle14 branch.
+Six independent unmerged author drafts preserve exact610e38 source parent:
+Field104, Finance106, Customer105, Growth108, Intelligence110 and Advanced109.
+Actual workers `/root/cycle15_field_growth`, `/root/cycle13_finance_intelligence`
+and `/root/cycle13_customer_advanced` completed two isolated waves. Main owns
+composition, contracts, browser/QA and registers; `/root/cycle13_independent_review`
+owns separate combined probes. These are real completed assignments, not proposed
+workers. No persistent background work is authorized.
+
+[Full branches, SHAs, file hashes and case counts](program/CYCLE15_DELIVERY_INDEX.json),
+[combined validation and preview instructions](program/CYCLE15_VALIDATION.md) and
+[timestamped exact-head CI](program/CYCLE15_CI_SNAPSHOT.json) are separate evidence.
+Original25capability states/18IDs, all8closed PhaseOne gates and three exact design
+approvals stay unchanged. Existing canonical sources/engines/tenant checks and all
+recovery/Auth/MFA/NMI/customer14/4B/financial/Netlify/production restrictions persist.
+No merge, deployment, hosted mutation, dispatch, communication or financial execution.
+Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Cycle14 reconciliation; Cycle15 prepared ownership
 
 Final exact-head inventory:30/30checks SUCCESS, including push and PR Foundation

@@ -40,8 +40,9 @@ for (const company of sampleCompanies)
     ).toBeFocused();
     await expect(r).toContainText('Missing costs remain UNKNOWN, never zero');
     await expect(r).toContainText('grants no permission to issue');
-    const ids = await r.locator('dl').first().innerText();
-    const source = r.getByLabel('Exact linked financial source', {
+    const ids = await r.locator('dl').first().textContent();
+    const source = r.getByRole('combobox', {
+      name: 'Exact linked financial source',
       exact: true,
     });
     await source.selectOption({ index: 1 });
@@ -74,7 +75,7 @@ for (const company of sampleCompanies)
       }),
     ).toBeFocused();
     await expect(source).toHaveValue(selected);
-    await expect(r.locator('dl').first()).toHaveText(ids);
+    await expect(r.locator('dl').first()).toHaveText(ids!);
     await r
       .getByLabel('I confirm this company’s current local financial sources.', {
         exact: true,

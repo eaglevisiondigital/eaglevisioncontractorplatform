@@ -1,5 +1,23 @@
 # Engineering decisions
 
+## Cycle15 · retain exact task context through original review controls
+
+Compose six narrow default-OFF consumers in the original continuity slots; do not
+create another navigation registry, canonical store, estimate/ledger engine or source
+relationship. Main alone owns composition/contracts/evidence. Six child drafts keep
+exact five-path ownership and the reconciled610e38 source parent. The same source
+host survives presentation-mode changes; explicit confirmations and original holds
+remain mandatory. Local Return/Resume does not renew an expiry or retry UNKNOWN.
+Advanced retains the same original control instance rather than remounting its state.
+
+Current request types lack request→estimate/job FK: show UNKNOWN and separately
+confirmed staff context, never fabricate a positive link. Financial event/posting
+identity uses exact immutable content/IDs; invoice snapshot/hash, issued source,
+job revision and as-of retain their actual roles. Cost/availability/consent gaps do
+not imply zero, repair, permission or successful delivery. Preserve all approved
+visuals and separately pending Operating Center/advanced approval. Local tests and
+CI evidence never promote capability, security, hosted or release acceptance.
+
 ## Cycle14 reconciliation and separate Cycle15 preparation
 
 Keep the test-only OS-native temporary-directory correction at exact610e38a on

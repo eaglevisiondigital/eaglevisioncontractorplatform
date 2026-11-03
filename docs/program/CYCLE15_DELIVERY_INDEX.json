@@ -4,9 +4,18 @@
   "coordination_draft_pr": 107,
   "parent_commit": "610e38abc37a16a9a894e946c0c4c4df16120985",
   "plan_commit": "b3ff9c9cffcfc8701da99710307a8bec3b53d147",
-  "independent_review_commit": null,
-  "independent_files": [],
-  "independent_status": "PENDING_ACTUAL_REVIEW",
+  "independent_review_commit": "7cedcb8f4d1eefa02c1bc50ceb0fe6065dc444b2",
+  "independent_files": [
+    {
+      "path": "tests/cycle15-integration.test.ts",
+      "sha256": "3404c19cb16a69b0aee0c3d1a723f19acd6f590751f117d2941b0aafc3050269"
+    },
+    {
+      "path": "docs/program/CYCLE15_INTEGRATION_REVIEW.md",
+      "sha256": "9e9805694fa7c28ec6ecb93c883845632de6324000d4e924739f7a5c2fd1a060"
+    }
+  ],
+  "independent_status": "CLEAR_LOCAL_SYNTHETIC_ONLY",
   "packages": [
     {
       "module": "field-task-continuity",
@@ -47,9 +56,9 @@
       "owner": "/root/cycle13_finance_intelligence",
       "branch": "codex/cycle15-finance-review-path",
       "parent_commit": "610e38abc37a16a9a894e946c0c4c4df16120985",
-      "head_commit": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+      "head_commit": "54b30248cda9635ec1316adaa84a02a86d941051",
       "draft_pr": 106,
-      "focused_new_tests": 25,
+      "focused_new_tests": 26,
       "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
       "owned_files": [
         {
@@ -66,11 +75,11 @@
         },
         {
           "path": "tests/cycle15-finance-review-path.test.ts",
-          "sha256": "2f0ea4360cbe512c0ea1a4cb8860cb52a1f63fec4dbe30c84308fbdae2843cd7"
+          "sha256": "17d4e8a7f9355b53a382acfa667eabaedb79d39fbc30922d62eaf3ff66de8586"
         },
         {
           "path": "docs/program/CYCLE15_FINANCE_REVIEW_PATH.md",
-          "sha256": "9a5c5b8ac319c4f1f7ff356cb87ae7d0d3e949ed812bad4813852555f46402ea"
+          "sha256": "9d85375621d824b2f9bad5e77085671825758482435ab27b8908b266157d8fce"
         }
       ]
     },
@@ -80,9 +89,9 @@
       "owner": "/root/cycle13_customer_advanced",
       "branch": "codex/cycle15-service-review-path",
       "parent_commit": "610e38abc37a16a9a894e946c0c4c4df16120985",
-      "head_commit": "05380cf1c85294e768e65258480dae80862e539a",
+      "head_commit": "9b8f35d65c1c66362fc0a106ca7cfb729b2917e0",
       "draft_pr": 105,
-      "focused_new_tests": 51,
+      "focused_new_tests": 60,
       "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
       "owned_files": [
         {
@@ -99,11 +108,11 @@
         },
         {
           "path": "tests/cycle15-service-review-path.test.ts",
-          "sha256": "a0113a557eff6eb4b0d3b36c60f5d1c845cfb5dabb0c3d0b2cf1f2eae5fd932a"
+          "sha256": "5eabe35c722f0d1ab94ac461a8ef78d721c2c529f357ff790f47a5c9459cb9d8"
         },
         {
           "path": "docs/program/CYCLE15_SERVICE_REVIEW_PATH.md",
-          "sha256": "ece6a7222d379eaca50b9e747960f9501c92a012114843249c12c3d64d562baa"
+          "sha256": "1e222aed4d17020e222b9ce1453c91d96ca29066e79e88d90cf8cd38db438adb"
         }
       ]
     },
@@ -208,12 +217,12 @@
     }
   ],
   "combined_evidence": {
-    "author_cases": 251,
-    "independent_cases": null,
+    "author_cases": 261,
+    "independent_cases": 46,
     "coordinator_cases": 17,
     "retained_scorecard_cases": 4,
     "source_inventory_cases": 73,
-    "application_cases": null,
+    "application_cases": 401,
     "protected_hashes": 128,
     "retained_author_files": 283,
     "design_locks": 5,

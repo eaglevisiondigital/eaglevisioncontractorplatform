@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test';
 import { sampleCompanies } from '../../src/domain/platform';
-import { advancedHandoffKinds } from '../../src/lib/workflows/advanced-handoffs';
 import { start, nav, audit, capture } from './cycle15-browser-helpers';
 for (const company of sampleCompanies)
   test(`advanced original mounted control and exact return / ${company.slug}`, async ({
@@ -15,14 +14,28 @@ for (const company of sampleCompanies)
     const viewIndex = ['desktop', 'tablet', 'mobile'].indexOf(
       info.project.name,
     );
+    await expect(
+      r
+        .getByRole('combobox', { name: 'Task source mode', exact: true })
+        .locator('option'),
+    ).toHaveCount(7);
+    const kinds = await r
+      .getByRole('combobox', { name: 'Task source mode', exact: true })
+      .locator('option')
+      .evaluateAll((options) =>
+        options.map((option) => (option as HTMLOptionElement).value),
+      );
+    expect(kinds).toHaveLength(7);
     const kind =
-      advancedHandoffKinds[
-        (sampleCompanies.indexOf(company) * 3 + viewIndex) %
-          advancedHandoffKinds.length
-      ];
-    const jobs = r.getByLabel('Task source job', { exact: true });
+      kinds[(sampleCompanies.indexOf(company) * 3 + viewIndex) % kinds.length];
+    const jobs = r.getByRole('combobox', {
+      name: 'Task source job',
+      exact: true,
+    });
     const job = await jobs.inputValue();
-    await r.getByLabel('Task source mode', { exact: true }).selectOption(kind);
+    await r
+      .getByRole('combobox', { name: 'Task source mode', exact: true })
+      .selectOption(kind);
     await r
       .getByRole('button', {
         name: 'Inspect advanced task source',
@@ -36,7 +49,7 @@ for (const company of sampleCompanies)
     await expect(original).toContainText('PINNED_NOT_REVIEWED');
     await expect(original).toContainText(job);
     await expect(original.getByRole('combobox')).toHaveCount(0);
-    const label = `Retained ${kind} review ${company.slug}`;
+    const label = `Retained-${kind}-review-${company.slug}`;
     await original
       .getByLabel('Bound review label', { exact: true })
       .fill(label);

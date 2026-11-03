@@ -56,10 +56,15 @@ function digestChange(mode: string, change: () => void | Promise<void>) {
   });
   return () => expect(fired).toBe(true);
 }
-it.each([0, 1, 2])(
-  'brand %i follows actual request/explicit context/original report/finding/Passport and returns exact selection without effects',
-  async (index) => {
-    const { sources, gate } = await fixture(index),
+it.each(
+  [0, 1, 2].flatMap((brand) =>
+    [0, 1, 2, 3].map((entryIndex) => [brand, entryIndex] as const),
+  ),
+)(
+  'brand %i job context %i follows actual request/explicit context/original report/finding/Passport and returns exact selection without effects',
+  async (index, entryIndex) => {
+    const gate = { enabled: true, confirmed: true },
+      sources = await prepareOperatingSources(sampleCompanies[index], gate),
       before = sources.property.read(sources.company.id),
       releases = sources.entries.map((e) => e.release.read('staff')),
       writers = [
@@ -79,54 +84,56 @@ it.each([0, 1, 2])(
       request_job_relationship:
         'UNKNOWN_NO_RECORDED_FK_IN_CURRENT_SOURCE_CONTRACT',
     });
-    for (const group of view.requests)
-      for (const job of group.jobs) {
-        const input = {
-            request_id: group.request.id,
-            job_id: job.job_id,
-            staff_context_confirmed: true,
-          },
-          path = await openServiceReviewPath(view, input);
-        expect(path.request.id).toBe(group.request.id);
-        expect(path.context).toMatchObject({
-          relationship: 'EXPLICIT_STAFF_SELECTED_CONTEXT',
-          recorded_request_job_link:
-            'UNKNOWN_ABSENT_FROM_CURRENT_SOURCE_CONTRACT',
-        });
-        expect(path.recorded_job_scope).toMatchObject({
-          job_id: job.job_id,
-          issued_version_id: job.issued_version_id,
-          meaning: 'EXACT_RECORDED_ISSUED_JOB_BASELINE',
-        });
-        expect(path.customer_safe.timeline.snapshot.format).toBe(
-          'synthetic-property-passport-timeline-v1',
-        );
-        for (const doc of path.customer_safe.documentation) {
-          const report = await openServiceReviewReport(
-            path,
-            doc.report.reference,
-          );
-          expect(report).toEqual(doc.report);
-          const finding = await openServiceReviewFinding(
-            path,
-            report.observations[0].reference,
-          );
-          expect(finding.finding).toEqual(report.observations[0]);
-        }
-        expect(returnServiceReviewRequest(path)).toEqual({
-          view,
-          selection: { request_id: group.request.id, job_id: job.job_id },
-        });
-        expect(returnServiceReviewRequest(path).view).toBe(view);
-        expect(selectServiceReviewJob(path)).toBe(job.job_id);
-        expect(path.customer_safe).toMatchObject({
-          physical_completion: 'UNKNOWN',
-          customer_acceptance: 'UNKNOWN',
-          warranty: 'UNKNOWN',
-          history_completeness: 'UNKNOWN',
-        });
-        expect(Object.isFrozen(path.customer_safe.documentation)).toBe(true);
-      }
+    const jobId = sources.entries[entryIndex].target.job_id!,
+      groups = view.requests.filter((r) =>
+        r.jobs.some((j) => j.job_id === jobId),
+      );
+    expect(groups).toHaveLength(1);
+    const group = groups[0],
+      jobs = group.jobs.filter((j) => j.job_id === jobId);
+    expect(jobs).toHaveLength(1);
+    const job = jobs[0];
+    const input = {
+        request_id: group.request.id,
+        job_id: job.job_id,
+        staff_context_confirmed: true,
+      },
+      path = await openServiceReviewPath(view, input);
+    expect(path.request.id).toBe(group.request.id);
+    expect(path.context).toMatchObject({
+      relationship: 'EXPLICIT_STAFF_SELECTED_CONTEXT',
+      recorded_request_job_link: 'UNKNOWN_ABSENT_FROM_CURRENT_SOURCE_CONTRACT',
+    });
+    expect(path.recorded_job_scope).toMatchObject({
+      job_id: job.job_id,
+      issued_version_id: job.issued_version_id,
+      meaning: 'EXACT_RECORDED_ISSUED_JOB_BASELINE',
+    });
+    expect(path.customer_safe.timeline.snapshot.format).toBe(
+      'synthetic-property-passport-timeline-v1',
+    );
+    for (const doc of path.customer_safe.documentation) {
+      const report = await openServiceReviewReport(path, doc.report.reference);
+      expect(report).toEqual(doc.report);
+      const finding = await openServiceReviewFinding(
+        path,
+        report.observations[0].reference,
+      );
+      expect(finding.finding).toEqual(report.observations[0]);
+    }
+    expect(returnServiceReviewRequest(path)).toEqual({
+      view,
+      selection: { request_id: group.request.id, job_id: job.job_id },
+    });
+    expect(returnServiceReviewRequest(path).view).toBe(view);
+    expect(selectServiceReviewJob(path)).toBe(job.job_id);
+    expect(path.customer_safe).toMatchObject({
+      physical_completion: 'UNKNOWN',
+      customer_acceptance: 'UNKNOWN',
+      warranty: 'UNKNOWN',
+      history_completeness: 'UNKNOWN',
+    });
+    expect(Object.isFrozen(path.customer_safe.documentation)).toBe(true);
     expect(sources.property.read(sources.company.id)).toEqual(before);
     expect(sources.entries.map((e) => e.release.read('staff'))).toEqual(
       releases,
@@ -158,7 +165,7 @@ it('two staff-selected contexts on one request/property never become an inferred
   expect(
     a.customer_safe.documentation.map((d) => d.selected_job_association).sort(),
   ).toEqual(['EXACT_RECORDED_JOB_LINK', 'UNKNOWN']);
-});
+}, 60_000);
 it.each([
   'foreign-request',
   'unrelated-job',

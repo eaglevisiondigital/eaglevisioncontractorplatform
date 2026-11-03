@@ -88,9 +88,36 @@ Loading, OFF, no-source, denied/stale and UNKNOWN states are explicit. Main owns
 actual mounted desktop/tablet/mobile, all-brand, keyboard/axe and task/return proof;
 static render or source tests are not visual approval.
 
+## Bounded Customer CI timeout correction
+
+At author head `05380cf1c85294e768e65258480dae80862e539a`, Foundation push
+[41560185040/job125668683361](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560185040/job/125668683361)
+timed out on the three four-job brand compounds. PR
+[41560302184/job125669056122](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560302184/job/125669056122)
+also timed out on the sibling-context comparison. These were the only failures;
+PR CI passed 5,555 other cases. There was no failed business assertion. The sibling
+comparison passed in Foundation at 29,755ms and reached 30,248ms in PR CI against the
+unchanged global 30,000ms test budget.
+
+Each original brand/job path is now a separate case: twelve cases still cover the
+same four actual source entries for each of three brands. Each retains every
+request, issued scope, report, finding, Passport, return and zero-effect assertion,
+including the full documentation loop. Exact request/job lookup cardinality checks
+were added. Only the redundant initial request-view read was removed from these
+cases; the request read under writer spies remains.
+
+The sibling-context comparison jointly opens both original paths to compare their
+property and distinct issued versions. Its body and assertions are unchanged, with
+one finite 60,000ms per-case budget. Global timeout, workflows and product files are
+unchanged. All subsequent cases are byte-identical. No assertions were removed and
+no manual CI rerun was requested. The prior failed runs remain historical evidence;
+a new push-triggered result must be assessed separately.
+
 ## Focused proof and closed gates
 
-**51 focused cases PASS, zero failed/pending.** All three brands exercise actual
+**60 focused cases PASS, zero failed/pending after the bounded CI correction.**
+The twelve split paths took 3.28–5.16 seconds each locally; the retained sibling
+comparison took 2.46 seconds. All three brands exercise actual
 request/context/issued/report/finding/Passport continuity and exact retained return
 with zero writers/new IDs. Negative cases cover absent FK and sibling contexts,
 foreign/unrelated hints and jobs, missing/ambiguous/unpublished/replaced versions,
@@ -98,8 +125,10 @@ company/member/model/repository/root withdrawal, saved-CAS and final confirmatio
 races, wrong report/finding identity, lost ACK/terminal UNKNOWN, allowlist/privacy,
 getters/serializers/coercion, OFF/production/HTTPS/nonloopback and current UI admission.
 
-Strict types, generated types, owned ESLint/Prettier, production build,
-`features:check` and unchanged Cycle14 integrity verification PASS. No completed
+Strict types, generated types and owned ESLint/Prettier PASS again for the
+correction. The original product delivery also passed production build,
+`features:check` and unchanged Cycle14 integrity verification; those unchanged
+product checks are retained evidence, not rerun by this test/documentation patch. No completed
 recovery, Netlify or broad historical acceptance suite is rerun. Original128protected
 sources,283prior author files, five locks/thirteen bindings and all scope IDs and
 approval stages remain exact. All13/customer14/4B/P1/four/approvals/2A–2F/billing/
