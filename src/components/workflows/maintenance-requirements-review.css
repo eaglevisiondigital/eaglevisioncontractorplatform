@@ -1,0 +1,65 @@
+.maintenance-requirements-review {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: #20352f;
+  line-height: 1.5;
+}
+.maintenance-requirements-review .maintenance-requirements-card {
+  background: #fff;
+  padding: 1.1rem;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+}
+.maintenance-requirements-review .maintenance-requirements-card h3 {
+  margin: 0 0 0.7rem;
+}
+.maintenance-requirements-review .maintenance-requirements-card dt {
+  color: #526159;
+}
+.maintenance-requirements-review .maintenance-requirements-card dd {
+  margin: 0 0 0.7rem;
+}
+.maintenance-requirements-review .maintenance-requirements-card button {
+  min-height: 44px;
+  max-width: 100%;
+  background: var(--journey-primary, #00543e);
+  color: #fff;
+  white-space: normal;
+}
+.maintenance-requirements-review .maintenance-requirements-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.maintenance-requirements-review .maintenance-occurrences {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  padding: 0;
+  list-style: none;
+}
+.maintenance-requirements-review .maintenance-occurrences > li {
+  padding: 0.8rem;
+  border: 1px solid #d9e1da;
+  border-radius: 10px;
+  min-width: 0;
+}
+.maintenance-requirements-review summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #526159;
+}
+.maintenance-requirements-review :focus-visible {
+  outline: 3px solid var(--journey-accent, #dfb461);
+  outline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .maintenance-requirements-review .maintenance-occurrences {
+    grid-template-columns: 1fr;
+  }
+  .maintenance-requirements-review .maintenance-requirements-card button {
+    width: 100%;
+  }
+}
