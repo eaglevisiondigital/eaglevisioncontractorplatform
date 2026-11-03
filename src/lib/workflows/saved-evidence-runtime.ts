@@ -236,6 +236,7 @@ function recipeCopy<P>(recipe: EvidenceRecipe<P>): EvidenceRecipe<P> {
     'read',
     'project',
     'parse',
+    'assertSource',
   ]);
   if (
     !['field', 'finance', 'customer', 'maintenance', 'priorities'].includes(

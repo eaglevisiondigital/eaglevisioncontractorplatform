@@ -235,7 +235,10 @@ async function executeSourceExercise(
           edit?.summary ??
           'Synthetic saved draft observation revision; physical completion remains unverified.',
         checklist: edit
-          ? edit.checklist.map((row) => ({ ...row }))
+          ? visit!.content.checklist.map((row, index) => ({
+              ...row,
+              completed: edit.checklist[index].completed,
+            }))
           : visit!.content.checklist,
       };
       invoked = true;
@@ -522,7 +525,7 @@ async function executeSourceExercise(
 
 export interface SavedDraftEdit {
   summary: string;
-  checklist: { label: string; completed: boolean }[];
+  checklist: { id: string; label: string; completed: boolean }[];
 }
 export function readSavedDraftEdit(view: SavedSourceExerciseView) {
   const b = bindings.get(view);
@@ -565,14 +568,15 @@ export async function executeSavedDraftEdit(
     const d = ds[String(index)];
     if (!d || !Object.hasOwn(d, 'value'))
       throw Error('Own saved checklist required');
-    const c = prototypeFields(d.value, ['label', 'completed']);
+    const c = prototypeFields(d.value, ['id', 'label', 'completed']);
     if (
-      Object.keys(c).length !== 2 ||
+      Object.keys(c).length !== 3 ||
+      c.id !== row.id ||
       c.label !== row.label ||
       typeof c.completed !== 'boolean'
     )
       throw Error('Exact original checklist identity required');
-    return { label: row.label, completed: c.completed };
+    return { id: row.id, label: row.label, completed: c.completed };
   });
   return executeSourceExercise(view, 'visit-draft', confirmed, {
     summary: f.summary,
