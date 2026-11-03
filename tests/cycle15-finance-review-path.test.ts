@@ -346,11 +346,14 @@ describe('Cycle15 exact exception to canonical evidence and local return', () =>
       }).selection.status,
     ).toBe('UNKNOWN');
   });
-  it('concurrent/fresh/relabelled views and copied return anchors cannot reset original correction holds', async () => {
+  it('concurrent fresh and relabelled views cannot reset the original exact-job correction hold', async () => {
     const f = await fixture(),
-      [a, b] = await Promise.all([f.read(), f.read()]),
-      id = first(a, f.entry.target.job_id!),
-      path = openFinanceReviewPath(a, id),
+      // This invariant is scoped to one canonical job/exception. Other cases
+      // exercise portfolio membership; reading unrelated jobs here hid the
+      // actual concurrency/hold check behind unnecessary full-portfolio work.
+      sources = { ...f.sources, entries: [f.entry] },
+      read = () => readFinanceReviewPath(sources, f.input, f.gate),
+      [a, b] = await Promise.all([read(), read()]),
       detail = openFinancialCaseworkJob(a, f.entry.target.job_id!),
       proposal = {
         remaining: { ...detail.evidence.correction.before.remaining },
@@ -369,8 +372,21 @@ describe('Cycle15 exact exception to canonical evidence and local return', () =>
         source_sha256: fresh.evidence.correction.source_sha256,
       }),
     ).rejects.toThrow('already held');
+  });
+  it('a copied return anchor cannot acquire the retained exact case identity', async () => {
+    const f = await fixture(),
+      review = await f.read(),
+      path = openFinanceReviewPath(
+        review,
+        first(review, f.entry.target.job_id!),
+      );
     expect(returnFinanceReviewPath(structuredClone(path))).toEqual({
       status: 'UNKNOWN',
+      replacement: null,
+    });
+    expect(returnFinanceReviewPath(path)).toEqual({
+      status: 'CURRENT_EXACT_CASE_RETURN',
+      anchor: path.anchor,
       replacement: null,
     });
   });
