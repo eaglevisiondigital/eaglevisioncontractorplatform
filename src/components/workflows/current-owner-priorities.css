@@ -1,0 +1,79 @@
+.current-owner-priorities {
+  color: #27352f;
+  overflow-wrap: anywhere;
+}
+.current-owner-priorities h2,
+.current-owner-priorities h3,
+.current-owner-priorities h4 {
+  color: #203e32;
+}
+.current-owner-priorities button,
+.current-owner-priorities input:not([type='checkbox']),
+.current-owner-priorities select,
+.current-owner-priorities summary {
+  min-height: 44px;
+}
+.current-owner-priorities button:focus-visible,
+.current-owner-priorities summary:focus-visible {
+  outline: 3px solid var(--journey-accent, #b58a49);
+  outline-offset: 3px;
+}
+.current-owner-state {
+  margin-block: 1.5rem;
+}
+.current-owner-state-cards {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: 1rem;
+}
+.current-owner-state-cards > li,
+.current-owner-inspected {
+  background: #fffdf8;
+  border: 1px solid #dcded4;
+  border-radius: 14px;
+  padding: 1rem;
+}
+.current-owner-state-label {
+  font-weight: 700;
+  color: var(--journey-primary, #294f3e);
+}
+.current-owner-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.current-owner-filters label {
+  display: grid;
+  gap: 0.4rem;
+  flex: 1;
+  min-width: min(100%, 15rem);
+}
+.current-owner-priorities details {
+  margin-block: 0.7rem;
+}
+.current-owner-priorities summary {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.current-owner-priorities [role='alert'] {
+  background: #fff1e3;
+  border-left: 4px solid #a45129;
+  padding: 0.75rem;
+}
+@media (max-width: 640px) {
+  .current-owner-filters {
+    display: grid;
+  }
+  .current-owner-filters input,
+  .current-owner-filters select {
+    width: 100%;
+    min-width: 0;
+  }
+  .current-owner-priorities button {
+    max-width: 100%;
+    white-space: normal;
+  }
+}
