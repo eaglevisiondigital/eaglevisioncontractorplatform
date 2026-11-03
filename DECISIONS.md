@@ -9,8 +9,9 @@ Post-invocation async acknowledgments require final source and callback-generati
 checks. Ambiguity holds canonical Operations/company/job UNKNOWN across wrappers.
 The unchanged synchronous finance port rejects any observed thenable inside its
 original custody boundary. A cancelled StrictMode setup read is withdrawn before
-admission rather than replayed. Independent and actual browser verification are
-pending in this candidate; author tests alone grant no integration acceptance.
+admission rather than replayed. Independent58case and complete446case source verification, plus30development/
+3productionOFF actual browser cases, now pass with exact source boundaries. Local
+evidence alone grants no operational or visual approval.
 New Air checklist preparation grants no physical PASS, credentials or hosted action.
 All original design, security, recovery, financial and production gates persist.
 

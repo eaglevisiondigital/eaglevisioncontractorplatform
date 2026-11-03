@@ -4,7 +4,7 @@
   "coordination_draft_pr": 125,
   "parent_commit": "ab7a95596f89f7bceb1fc089cdaa790a55fb10d5",
   "plan_commit": "428c2a9afce95c98cc8be4a725a3e22b02b0e70d",
-  "independent_status": "PENDING",
+  "independent_status": "CLEAR_LOCAL_SYNTHETIC_ONLY",
   "packages": [
     {
       "module": "field-agenda",
@@ -172,5 +172,36 @@
       ]
     }
   ],
-  "release": "NOT_READY_NOT_AUTHORIZED"
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "independent_review_commit": "3b7542a9c0d6b02267333d878191722399cee3b3",
+  "independent_files": [
+    {
+      "path": "tests/cycle18-independent-integration-review.test.ts",
+      "sha256": "a21b987039f312f19bf103308f0fbeac26f72cc97f8a8607937b86b57d838217"
+    },
+    {
+      "path": "docs/program/CYCLE18_INDEPENDENT_REVIEW.json",
+      "sha256": "e95e38164b1ea1fe87504b3d7f368250dc9a237b2043748e12a8793b4c2f94b4"
+    }
+  ],
+  "reviewed_code_candidate": "e99000e3594706b425aad19e6edebd0793e4162c",
+  "combined_evidence": {
+    "application_cases": 446,
+    "application_status": "PASS_COMPLETE_SINGLE_RUN",
+    "author_cases": 263,
+    "independent_cases": 58,
+    "coordinator_cases": 28,
+    "retained_cases": 97,
+    "development_browser_cases": 30,
+    "full_workflow_strictmode_cases": 18,
+    "final_selection_company_cases": 12,
+    "production_off_browser_cases": 3,
+    "screenshots": 63,
+    "browser_evidence_boundaries": "Full18case all-brand matrix and63clean screenshots at28d551b4b731a3f517a902b0d03c4af5d634b0e3; final initial-selection/company-switch12 and productionOFF3 at e99000e3594706b425aad19e6edebd0793e4162c. Only initial no-job continuation and copy changed; all author/domain bytes identical. No invented single-run browser or hosted acceptance.",
+    "application_report_sha256": "8ef5bd69d8b8c08675b23b95a3f22bf9f985645676a6bd28c5348ec8ebe3e6a7",
+    "application_maximum_case_ms": 22939.273,
+    "application_test_timeout_ms": 30000,
+    "protected_integrity": "PASS_128_HASHES_5_LOCKS_13_BINDINGS",
+    "local_scope": "SYNTHETIC_DEFAULT_OFF_NOT_OPERATIONAL"
+  }
 }

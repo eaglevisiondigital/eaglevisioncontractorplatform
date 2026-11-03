@@ -1,27 +1,40 @@
 # Propel Contractor Suite — feature acceptance register
 
-## Cycle18 · five daily workflow packages, combined acceptance pending
+## Cycle18 · daily workflow, local verification complete
 
-Five bounded author drafts126–130 target coordination draft125 on exact Cycle17
-ab7a95596f89f7bceb1fc089cdaa790a55fb10d5. All five author suites pass (253 unique
-cases); combined application, actual responsive browser and independent acceptance
-are still in progress. New DailyWorkbench is an explicit default-false option over
-one original source host and the same six slot identities. It retains exact job,
-customer, property and issued version across local reviews; visited never means
-physical completion, invoice issued or customer message sent. Original controls
-and human confirmations remain authoritative. Exact source/head hashes are recorded
-in CYCLE18_DELIVERY_INDEX.json; pending GitHub checks are not green.
+Five bounded author packages are implemented in drafts126–130, composed on draft125
+against exact Cycle17 ab7a95596f89f7bceb1fc089cdaa790a55fb10d5. The complete
+446/446case single application run passes, including263author,58independent,28Main
+and97retained cases. Strict completeness/type/generatedtype/lint/format/build and
+128protected hashes/fiveassets/13bindings/proposal integrity pass. Actual30development
+plus3productionOFF browser cases pass across all3brands and desktop/tablet/mobile.
+63clean-source captures preserve explicit source boundaries and visual approval
+PENDING. Exact author branches/SHAs/PRs and actual agents are in CYCLE18_DELIVERY_INDEX
+and CYCLE18_VALIDATION.
 
-The November4 newer-Air checklist reuses the unchanged credential-free recovery kit.
-Actual maintained OS, FileVault, independent power/network, pairing and recovery
-remain UNVERIFIED. Completed25offline/setup/network evidence is preserved. Original
-P1 approval remains valid for its frozen scope with unchanged prerequisites.
+One default-false daily workbench reuses original sources, engines, confirmations
+and retained controls across priority, field, cost, invoice requirements, safe service
+evidence, maintenance and advanced review. One original exact selector retains
+company/customer/property/job/issued version; next-job navigation uses verified
+available records. Visited never means physical repair, invoice issued or customer
+message delivered. Post-ACK source/lease fences and canonical pending/UNKNOWN holds
+prevent competing/fresh-wrapper replay. No business store, schema or engine duplicated.
 
-Three approved design scopes, five locked assets,13bindings,25capability states,
-18originalIDs and eight closed PhaseOne gates remain unchanged. Operating Center
-and advanced visual promotion approvals remain PENDING. No hosted/financial/message/
-dispatch/provider/migration/deployment/merge execution. Release1.0 NOT READY /
-NOT AUTHORIZED.
+Cycle17 CI coverage is reconciled: ten explicit45minute cancellations remain
+CANCELLED; successful exact-source Main Foundation/native/dedicated coverage supplies
+all unique acceptance coverage. No manual rerun, assertion removal or timeout change.
+Cycle18 automatic exact-head GitHub checks remain a separate observation; local PASS
+is not CI green, hosted acceptance or release permission.
+
+The November4 newer-Air checklist reuses the unchanged credential-free kit and
+preserves25completedoffline/setup/network evidence. Actual OS/FileVault/power/network/
+pairing/ACK/primaryloss/recovery remain UNVERIFIED. Existing frozen P1 approval stays
+valid for its unchanged scope with all prerequisites. Historical13/customer14/4B/P1/
+four artifacts, Netlify/executor,2A–2F/billing, Auth/MFA/NMI/financial/provider/
+communication/hosted/production gates persist. Three approved design scopes stay
+locked; Operating Center/advanced visual promotion PENDING; missing originals MISSING.
+No dispatch, message, payment, hosted mutation, deployment or merge.
+Release1.0 NOT READY / NOT AUTHORIZED.
 
 ## Cycle17 · retained daily workspaces, local verification complete
 
