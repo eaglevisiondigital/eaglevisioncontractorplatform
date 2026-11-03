@@ -35,6 +35,11 @@ without remounting. Original optional destination sections are preserved. Counts
 captured/access-limited, never complete history or evidence of physical completion.
 If a navigation callback runs then throws, the entire retained desk becomes UNKNOWN;
 the same occurrence cannot be reselected from that desk to replay the callback.
+The ambiguity follows the pinned canonical Operations handle and exact company/job
+in private WeakMap outcome metadata. Fresh wrappers, desks, purposes, occurrences
+and source revisions do not reset it. Source-only snapshots may still be read, but
+callback admission and reconciliation stay UNKNOWN; unrelated exact jobs remain
+independent. This is not a maintenance/consent store or durable operational journal.
 
 Focused source tests cover all three brands, exact breadcrumbs/versions, safe source
 filter counts/reset, wrong same-company property and foreign tenant, copied handles,
