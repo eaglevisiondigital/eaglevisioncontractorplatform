@@ -174,7 +174,7 @@ it.each([
   ['billable', 'true'],
   ['private_notes', 'PRIVATE'],
 ] as const)(
-  'invalid %s form field is denied before the original writer',
+  'case %# invalid %s form field is denied before the original writer',
   async (key, value) => {
     const f = await fixture(),
       r = await readTaskCorrectionReview(f.sources, f.job, f.gate),
