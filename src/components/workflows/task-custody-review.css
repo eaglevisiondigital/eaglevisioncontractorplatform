@@ -1,0 +1,58 @@
+.task-custody-review {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: #20352f;
+  line-height: 1.5;
+}
+.task-custody-review .task-custody-card {
+  background: #fff;
+  padding: 1.1rem;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+}
+.task-custody-review .task-custody-card h3 {
+  margin: 0 0 0.7rem;
+}
+.task-custody-review .task-custody-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.task-custody-review .task-custody-columns article {
+  min-width: 0;
+  border: 1px solid #d9e1da;
+  border-radius: 10px;
+  padding: 0.9rem;
+}
+.task-custody-review .task-custody-card dt {
+  color: #526159;
+}
+.task-custody-review .task-custody-card dd {
+  margin: 0 0 0.7rem;
+}
+.task-custody-review .task-custody-card button {
+  min-height: 44px;
+  max-width: 100%;
+  background: var(--journey-primary, #00543e);
+  color: #fff;
+  white-space: normal;
+}
+.task-custody-review summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #526159;
+}
+.task-custody-review :focus-visible {
+  outline: 3px solid var(--journey-accent, #dfb461);
+  outline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .task-custody-review .task-custody-columns {
+    grid-template-columns: 1fr;
+  }
+  .task-custody-review .task-custody-card button {
+    width: 100%;
+  }
+}
