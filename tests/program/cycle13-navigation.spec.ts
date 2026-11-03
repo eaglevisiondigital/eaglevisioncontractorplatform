@@ -118,7 +118,12 @@ for (const company of sampleCompanies)
         exact: true,
       }),
     ).toBeDisabled();
-    await page.getByRole('checkbox').check();
+    await page
+      .getByLabel(
+        'I confirm this disposable multi-job simulation; no dispatch, contract, invoice, payment or message is authorized.',
+        { exact: true },
+      )
+      .check();
     await expect(
       page.getByRole('region', {
         name: 'Shared operating environment',
