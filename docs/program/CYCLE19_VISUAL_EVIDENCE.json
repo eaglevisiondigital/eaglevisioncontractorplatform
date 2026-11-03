@@ -1,0 +1,278 @@
+{
+  "schema": "propel-cycle19-real-captures-v1",
+  "approval": "PENDING",
+  "locked_scopes": "THREE_APPROVED_SCOPES_UNCHANGED",
+  "missing_originals": "PRESERVED_MISSING_AS_CYCLE13_17_INVENTORY",
+  "files": [
+    {
+      "file": "cost-desktop-cunningham.png",
+      "sha256": "5b4c28706331f0ab6a51bd5f679ebf5a9a7e954b5899fbb5e0308f12269ff81b",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "cost-desktop-roofing-example.png",
+      "sha256": "b6c815c55a910abfcd2307efd08aec62048ba0d7c4fa2b6d6f69cdf9af3e1323",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "cost-desktop-straight-edge.png",
+      "sha256": "a3b0318ec4105f955cbceab7473a0b1124e29922680c17fb6f4e98037015c628",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "cost-mobile-cunningham.png",
+      "sha256": "8fd18f49cc4fe095f54bafdbe893ec47a6799c60fe7bba63bc627c286c956c4e",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "cost-mobile-roofing-example.png",
+      "sha256": "7cd4fc4eb628574e9885f65e88f1242f9c1f564c41106762e4979fff557f3ab1",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "cost-mobile-straight-edge.png",
+      "sha256": "1046191322a0bad60f2e5b72deda2b73de395a83355323512cafe8f602e19b26",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "cost-tablet-cunningham.png",
+      "sha256": "c2dbe857fc452297017268bed902b12beb092bb173071188ab55130e110bc54c",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "cost-tablet-roofing-example.png",
+      "sha256": "c14ca3d9c65d28a6ae2f76d10e359217774c8f21d9910ab7032393d28c7d2c14",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "cost-tablet-straight-edge.png",
+      "sha256": "0b1a163967ea9561cce906960d686729109b5ccc11b49e0ac7897667e812c6b0",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "field-desktop-cunningham.png",
+      "sha256": "4ee598dc357714ac7045ddada78b8d5873f7c69646f8bda83bba18780973323e",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "field-desktop-roofing-example.png",
+      "sha256": "8ad27c5162120a1a5495094e331c00c48a364036eb19d9dfa8fb1812e8605766",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "field-desktop-straight-edge.png",
+      "sha256": "8822429ad95911bcb941c808f2899b7215f9e2ce7524acb543dbf06ac387f638",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "field-mobile-cunningham.png",
+      "sha256": "001a5d760beb3af3846b87a3b44782abd4f094e311dc6ef78d019535fd0f89e4",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "field-mobile-roofing-example.png",
+      "sha256": "103fbf8c4271fd133f29f3a40135b28a92cb95ef33aec48e3fd0cef9fa26e799",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "field-mobile-straight-edge.png",
+      "sha256": "cfe321d806cebae4feae89eabb182ccadef2cbd1b6fd4a69ad8f95b7195f8e62",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "field-tablet-cunningham.png",
+      "sha256": "e0d1e942dfe68b8486aa04429596142c74ff430fef2a8ffa2c671527cbb53fd0",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "field-tablet-roofing-example.png",
+      "sha256": "397c71a7627a487b1970adf58432385c107ecbb4d518133fe4fffca8f3da3dfd",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "field-tablet-straight-edge.png",
+      "sha256": "0c45df34f1168af5467d88fb9e8cbdd10846ed4a8e2966fa58dcefe5c4564d1b",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "service-desktop-cunningham.png",
+      "sha256": "a2ee80e4fe3d53c3ba080611811a8113cefc475c8854f38ab7260a4575b5e59b",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "service-desktop-roofing-example.png",
+      "sha256": "ddf964b6336dd7529e98166e615e62197a47690985ea9bca6751b915eb287658",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "service-desktop-straight-edge.png",
+      "sha256": "59c88f0bcbc3952ad0e8bbb225358bf61535cdb5609756497b51e470029737df",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "service-mobile-cunningham.png",
+      "sha256": "57ef9e89302930ba915a7bf190ae28f7c94edf51159d66b86bc3b407e4f71963",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "service-mobile-roofing-example.png",
+      "sha256": "434fa59822b7b14ef9f30bd861d2a377f8061c691546d8df8911807442ce7bcc",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "service-mobile-straight-edge.png",
+      "sha256": "86ca47e96a83145c41bf92fdb7609ec903ee93e6fcb01c38d8bf11d243cb36a6",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "service-tablet-cunningham.png",
+      "sha256": "d2080b3bfecec5b57210e9bc419bd1baaec2bdf51350c03f5e80c32fc780912c",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "service-tablet-roofing-example.png",
+      "sha256": "9bd6adbf325dbd43551a7413a89ca6a0b8c87896af0f3a621d99eada2d1fe4ea",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    },
+    {
+      "file": "service-tablet-straight-edge.png",
+      "sha256": "809b25a829dc13b99d330a103c8dcba2943a92ee63f7f3bc886609cc75346656",
+      "meta": {
+        "head": "ad37d4116047a598fb52b7a74bb4639574235a88",
+        "dirty": true,
+        "approval": "PENDING",
+        "physical_recovery": "UNVERIFIED"
+      }
+    }
+  ]
+}

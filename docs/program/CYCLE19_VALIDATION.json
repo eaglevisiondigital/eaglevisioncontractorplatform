@@ -1,0 +1,64 @@
+{
+  "schema": "propel-cycle19-validation-v1",
+  "reviewed_code": "ad37d4116047a598fb52b7a74bb4639574235a88",
+  "independent_review": "d34259e40b3e3e4c969b6bed7bd5bf2efe363615",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "application": {
+    "passed": 313,
+    "failed": 0,
+    "pending": 0,
+    "suites": 8,
+    "author": 192,
+    "main": 85,
+    "independent": 36
+  },
+  "retained_c18": {
+    "passed": 58,
+    "failed": 0,
+    "source": "UNCHANGED",
+    "scope": "separate bounded335case run,277C19overlap not extra cases"
+  },
+  "browser": {
+    "development": 12,
+    "production_off": 3,
+    "brands": 3,
+    "layouts": ["desktop", "tablet", "mobile"],
+    "axe_violations": 0,
+    "outside_requests": 0,
+    "captures": 27
+  },
+  "integrity": {
+    "retained_author_files": 398,
+    "new_author_files": 25,
+    "independent_files": 2,
+    "protected_hashes": 128,
+    "design_locks": 5,
+    "design_bindings": 13
+  },
+  "physical_recovery": "UNVERIFIED",
+  "visual_approval": "PENDING",
+  "ci": "SEPARATE_EXACT_HEAD_OBSERVATION",
+  "reports": [
+    {
+      "name": "application-results.json",
+      "sha256": "0a9d366df74a90d58c3747bd3831c1f6f4cfbd11379028e24850d2f380fd7ba4"
+    },
+    {
+      "name": "browser-results.json",
+      "sha256": "fb58383f9601c2ccc825134db0d34b5c2c38f76949368c77281c3a0899a5aa62"
+    },
+    {
+      "name": "browser-off-results.json",
+      "sha256": "ed2c6414c7a4a1d2bef53ded99afc5e6fc12bc2ca8cc03eb6227a2be7e8cded4"
+    },
+    {
+      "name": "cycle19-application-candidate.json",
+      "sha256": "e2bcaa3fc2532d9ea41d6bf790a3f5f21236671d2dbaa1d8d3bdf4c098025ed1"
+    }
+  ],
+  "lint": {
+    "errors": 0,
+    "retained_warnings": 1,
+    "source": "OperatingCenterCycleFourteen.tsx unchanged Fast Refresh warning"
+  }
+}

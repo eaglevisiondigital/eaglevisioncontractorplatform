@@ -1,5 +1,14 @@
 # Engineering decisions
 
+## Cycle19 · compare saved evidence without replaying original controls
+
+Keep immutable before/current evidence and synchronous terminal source fences over
+existing repositories. Adoption changes a local opaque review selection only. Pin
+original container/selector handles independently of mutable canonical signatures.
+Use explicit disposable source exercises for actual-save browser proof; no automatic
+command on read/render/navigation/adoption, no replacement IDs after UNKNOWN. Existing
+customer/contractor designs and all operational/recovery/financial gates remain locked.
+
 ## Cycle18 CI · preserve mode-specific coverage and exact claim tests
 
 Project-level Playwright exclusions replace inherited exclusions. Explicitly retain

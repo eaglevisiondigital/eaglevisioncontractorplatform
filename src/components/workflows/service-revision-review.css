@@ -1,0 +1,168 @@
+.service-revision-review {
+  min-width: 0;
+  padding: 1.4rem;
+  color: #233d32;
+  background: #fff;
+  border: 1px solid #d9e1da;
+  border-radius: 18px;
+  line-height: 1.55;
+}
+.service-revision-review > header {
+  position: static;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  gap: 1rem;
+  color: inherit;
+  background: transparent;
+}
+.service-revision-review > header > div {
+  display: block;
+  flex: 1 1 320px;
+  min-width: 0;
+}
+.service-revision-review > header > span {
+  display: inline-block;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid #b9cbbb;
+  border-radius: 18px;
+  background: #eff4ec;
+}
+.service-revision-review > header h2 {
+  margin: 0.3rem 0 0.75rem;
+  font-size: 1.5rem;
+  overflow-wrap: anywhere;
+}
+.service-revision-review-ui {
+  min-width: 0;
+  margin: 1rem 0;
+}
+.service-revision-review-ui p,
+.service-revision-review-ui li,
+.service-revision-review-ui dd,
+.service-revision-review-ui h3,
+.service-revision-review-ui h4,
+.service-revision-review-ui nav,
+.service-revision-review > p {
+  overflow-wrap: anywhere;
+}
+.service-revision-review-ui label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: 600;
+  min-width: 0;
+  margin: 0.6rem 0;
+}
+.service-revision-review-ui input,
+.service-revision-review-ui select {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0.65rem;
+  color: inherit;
+  background: #fff;
+  border: 1px solid #8c9f93;
+  border-radius: 8px;
+  font: inherit;
+}
+.service-revision-review-ui button,
+.service-revision-review-ui summary {
+  box-sizing: border-box;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 0.65rem 1rem;
+  font: inherit;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+.service-revision-review-ui button {
+  display: inline-block;
+  margin: 0.3rem 0.4rem 0.3rem 0;
+  border: 1px solid var(--journey-primary, #247364);
+  border-radius: 8px;
+  color: #fff;
+  background: var(--journey-primary, #247364);
+}
+.service-revision-review-ui button.secondary {
+  color: var(--journey-primary, #247364);
+  background: #fff;
+}
+.service-revision-review-ui button:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+.service-revision-review-ui button[aria-current='step'] {
+  border-width: 2px;
+  background: #eff4ec;
+}
+.service-revision-review-ui nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  align-items: center;
+  margin: 1rem 0;
+}
+.service-revision-review-ui article {
+  min-width: 0;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  background: #f8f8f2;
+}
+.service-revision-review-ui dt {
+  color: #3e594f;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.service-revision-review-ui dd {
+  margin: 0 0 0.65rem;
+}
+.service-revision-review-ui aside {
+  padding: 0.8rem;
+  border-left: 3px solid var(--journey-accent, #dfb461);
+  background: #fffaf0;
+}
+.service-revision-review > [role='alert'] {
+  padding: 0.8rem;
+  border-left: 4px solid #9b4426;
+  color: #71341f;
+  background: #fff3e9;
+  overflow-wrap: anywhere;
+}
+.service-revision-review > footer {
+  display: block;
+  padding: 1rem 0 0;
+  margin-top: 1rem;
+  border-top: 1px solid #d9e1da;
+  color: #3e594f;
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+.service-revision-review-ui :focus-visible {
+  outline: 3px solid var(--journey-primary, #247364);
+  outline-offset: 3px;
+}
+@media (max-width: 760px) {
+  .service-revision-review {
+    padding: 1rem;
+  }
+  .service-revision-review-ui button {
+    width: 100%;
+  }
+}
+
+.service-revision-review-ui .confirmation {
+  flex-direction: row;
+  align-items: center;
+}
+.service-revision-review-ui .confirmation input {
+  width: 44px;
+  min-width: 44px;
+}

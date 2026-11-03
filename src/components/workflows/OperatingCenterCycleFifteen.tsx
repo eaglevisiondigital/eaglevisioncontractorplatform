@@ -11,6 +11,7 @@ import { AddonTaskContinuity } from './AddonTaskContinuity';
 import { cycle16DailyGroups } from './OperatingCenterCycleSixteen';
 import { cycle17WorkspaceGroups } from './OperatingCenterCycleSeventeen';
 import { cycle18WorkflowGroups } from './OperatingCenterCycleEighteen';
+import { cycle19SavedGroups } from './OperatingCenterCycleNineteen';
 import './task-review-paths.css';
 
 const guided = taskReviewGroups({
@@ -27,6 +28,7 @@ const guided = taskReviewGroups({
 });
 
 export function OperatingCenterCycleFifteen() {
+  const [savedRevisions, setSavedRevisions] = useState(false);
   const [dailyWorkbench, setDailyWorkbench] = useState(false);
   const [taskPaths, setTaskPaths] = useState(false);
   const [dailyGuides, setDailyGuides] = useState(false);
@@ -39,6 +41,14 @@ export function OperatingCenterCycleFifteen() {
       <section aria-label="Review path options">
         <fieldset className="task-review-options">
           <legend>Review options</legend>
+          <label>
+            <input
+              type="checkbox"
+              checked={savedRevisions}
+              onChange={(event) => setSavedRevisions(event.target.checked)}
+            />
+            Use saved source continuity
+          </label>
           <label>
             <input
               type="checkbox"
@@ -79,7 +89,11 @@ export function OperatingCenterCycleFifteen() {
       </section>
       <OperatingCenterCycleThirteen
         additionalReviewGroups={
-          dailyWorkbench ? cycle18WorkflowGroups : retainedGroups
+          savedRevisions
+            ? cycle19SavedGroups
+            : dailyWorkbench
+              ? cycle18WorkflowGroups
+              : retainedGroups
         }
       />
     </>

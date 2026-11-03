@@ -1,0 +1,112 @@
+.saved-revision-workbench {
+  color: #172f38;
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
+.saved-revision-workbench .srw-eyebrow {
+  color: #345860;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+}
+.saved-revision-workbench h2 {
+  margin: 0.25rem 0 0.75rem;
+}
+.saved-revision-workbench .srw-context {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  background: #f1f4f2;
+  border: 1px solid #c8d4cf;
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+.saved-revision-workbench code {
+  overflow-wrap: anywhere;
+  font-size: 0.8rem;
+}
+.saved-revision-workbench .srw-context span {
+  margin-left: auto;
+  font-size: 0.8rem;
+}
+.saved-revision-workbench .srw-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  border-bottom: 1px solid #c8d4cf;
+  padding-bottom: 0.75rem;
+}
+.saved-revision-workbench .srw-tabs button,
+.saved-revision-workbench .srw-exercise button {
+  min-height: 44px;
+  white-space: normal;
+  background: #fff;
+  color: #173e47;
+  border: 1px solid #9ab0ad;
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.9rem;
+}
+.saved-revision-workbench .srw-tabs button[aria-current] {
+  background: var(--journey-primary, #173e47);
+  color: #fff;
+  border-color: var(--journey-primary, #173e47);
+}
+.saved-revision-workbench button:focus-visible,
+.saved-revision-workbench input:focus-visible,
+.saved-revision-workbench summary:focus-visible {
+  outline: 3px solid #24767e;
+  outline-offset: 3px;
+}
+.saved-revision-workbench .srw-exercise {
+  border: 1px dashed #9ab0ad;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  background: #f8f9f7;
+}
+.saved-revision-workbench summary {
+  min-height: 44px;
+  cursor: pointer;
+  font-weight: 650;
+}
+.saved-revision-workbench .srw-exercise-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.saved-revision-workbench .srw-exercise button:disabled {
+  color: #576767;
+  background: #edf0ed;
+  cursor: default;
+}
+.saved-revision-workbench .srw-limit {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #425d63;
+}
+.saved-revision-workbench [hidden] {
+  display: none !important;
+}
+@media (max-width: 600px) {
+  .saved-revision-workbench .srw-tabs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .saved-revision-workbench .srw-context span {
+    margin-left: 0;
+  }
+  .saved-revision-workbench .srw-exercise-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Scope the shell against inherited back-office header/navigation flex rules. */
+.saved-revision-workbench > header {
+  display: block;
+  max-width: 76ch;
+}
+.saved-revision-workbench .srw-tabs {
+  flex-direction: row;
+}

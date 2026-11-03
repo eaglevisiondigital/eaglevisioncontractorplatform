@@ -1,0 +1,231 @@
+{
+  "schema": "propel-cycle19-delivery-v1",
+  "coordination_branch": "codex/program-cycle-nineteen",
+  "coordination_draft_pr": 131,
+  "parent_commit": "c71273f6a4903efcd2607e77b0916eeed6d2681f",
+  "plan_commit": "8b50c9fe1b9462b34f3755a0e32a244333797696",
+  "growth_support_commit": "3a7333531b090702a49788a4f702bc4228d8ba00",
+  "independent_status": "CLEAR_LOCAL_SYNTHETIC_ONLY",
+  "independent_review_commit": "d34259e40b3e3e4c969b6bed7bd5bf2efe363615",
+  "independent_files": [
+    {
+      "path": "tests/cycle19-independent-integration-review.test.ts",
+      "sha256": "af2bfbed97ab7a73150a6ba9a7824e2657b282f205ec3fbd2e77c4292d3f0c36",
+      "blob": "fcfb6ee309c8e4697e321fd73db4b9ed51d57233"
+    },
+    {
+      "path": "docs/program/CYCLE19_INDEPENDENT_REVIEW.json",
+      "sha256": "9b332b1b9ef878b21bc4168c75592c3edbccafc44f75d7cc1ce8782324572a60",
+      "blob": "71680a3a7395de668117e38a0f63629cf69db25a"
+    }
+  ],
+  "reviewed_code_candidate": "ad37d4116047a598fb52b7a74bb4639574235a88",
+  "packages": [
+    {
+      "module": "field-saved-revisions",
+      "component": "FieldSavedRevisions",
+      "owner": "/root/cycle19_field_growth",
+      "branch": "codex/cycle19-field-saved-revisions",
+      "parent_commit": "8b50c9fe1b9462b34f3755a0e32a244333797696",
+      "head_commit": "2d9867ca91bc3a7ebfab063175a63d1a382ae04f",
+      "draft_pr": 132,
+      "focused_new_tests": 26,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/field-saved-revisions.ts",
+          "sha256": "9812a49ce0106993ac616df1a3b80a110762aa0a584ac9b8407d5c7459afe9ce",
+          "blob": "71d39b2882e8a29fd7c1e4236cd27ceff45543e9"
+        },
+        {
+          "path": "src/components/workflows/FieldSavedRevisions.tsx",
+          "sha256": "29d3cf98aa81dad8e0d99c7bc5847860e14dc28d78a3636e889d0c0293e1e959",
+          "blob": "842e848301e90594b1efa3cb34a1aa4415f89eb6"
+        },
+        {
+          "path": "src/components/workflows/field-saved-revisions.css",
+          "sha256": "4c421a1203dfb353ce49f2e86d66ad2937f0b21d293dcc4ac7f497d5c775ce4f",
+          "blob": "585a68f9d49d2eb8796b4ce814fdadbb8ce984bf"
+        },
+        {
+          "path": "tests/cycle19-field-saved-revisions.test.ts",
+          "sha256": "c7291c62118117b0abefb42a88c883113ac3f35201af4c1b59b3a9d5fd5158af",
+          "blob": "d3094f58cd3970b5cbf4e798a34b867404f0ec1a"
+        },
+        {
+          "path": "docs/program/CYCLE19_FIELD_SAVED_REVISIONS.md",
+          "sha256": "ebe8944a70d20638b2c4040a3b1390ff2e9e3dd1db74ea89555d0aac2e600faf",
+          "blob": "d143b8722493727841696fb5e450e20cc6a2f9e0"
+        }
+      ]
+    },
+    {
+      "module": "cost-saved-revisions",
+      "component": "CostSavedRevisions",
+      "owner": "/root/cycle17_finance_intelligence",
+      "branch": "codex/cycle19-cost-saved-revisions",
+      "parent_commit": "8b50c9fe1b9462b34f3755a0e32a244333797696",
+      "head_commit": "8243be60ac191360b6df0d999d2e144ea19686ab",
+      "draft_pr": 133,
+      "focused_new_tests": 42,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/cost-saved-revisions.ts",
+          "sha256": "38e732a03ebca2760efb3a5ea326c79e24f517c9d0c5035653bcbd2d94f543c6",
+          "blob": "0f547f5984be5ccd8095c9f64d43f4fa70cac659"
+        },
+        {
+          "path": "src/components/workflows/CostSavedRevisions.tsx",
+          "sha256": "9d0c990ad983d21e5baaaf4e7cb7172e73f242f06eaf5981380a12bb8008733f",
+          "blob": "6a2c8200b0b50a9ff8023e92c8672d9ef034f4dd"
+        },
+        {
+          "path": "src/components/workflows/cost-saved-revisions.css",
+          "sha256": "5034c6f2791383f2f31edd198b06227280584cb802b110eddb40e27099c25ed2",
+          "blob": "72cdb18a1276df9f37e3017338a697b97517450a"
+        },
+        {
+          "path": "tests/cycle19-cost-saved-revisions.test.ts",
+          "sha256": "daa33576d6720b92cf01c147f0962e0421703a85663017de5144adf0718be6aa",
+          "blob": "a859686d6a7c745994c24273fcec7fd04176d036"
+        },
+        {
+          "path": "docs/program/CYCLE19_COST_SAVED_REVISIONS.md",
+          "sha256": "2d34b576029444a3e3ce6aad6be98e4ba1b85cf996fd82cababb6edbfc5b7dae",
+          "blob": "55ce55dae8c38ed4b92a73df0a0587911a98b8f1"
+        }
+      ]
+    },
+    {
+      "module": "service-revision-review",
+      "component": "ServiceRevisionReview",
+      "owner": "/root/cycle13_customer_advanced",
+      "branch": "codex/cycle19-service-revision-review",
+      "parent_commit": "8b50c9fe1b9462b34f3755a0e32a244333797696",
+      "head_commit": "c80dfbbbda13b82867efce0ecae4c4ab9f02c9e6",
+      "draft_pr": 134,
+      "focused_new_tests": 47,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/service-revision-review.ts",
+          "sha256": "20a0873fe6431c64eab3b10eafcfadb7e3f076e1dede5314c526760128e7e21e",
+          "blob": "24150fc86c56db95dc410b4c920d2cbad79b06a5"
+        },
+        {
+          "path": "src/components/workflows/ServiceRevisionReview.tsx",
+          "sha256": "41a234d3fdc9c87d7e0cce1ec3567f207afd09252db32e41c0bd5262bf3a74de",
+          "blob": "d1175d264c194edd656a3a1a57b4fcb8f2a26abd"
+        },
+        {
+          "path": "src/components/workflows/service-revision-review.css",
+          "sha256": "6095a98fd690721e472ac5bf707d6459c626856c83b1405cd2cfdf4811c3619e",
+          "blob": "e9933588351c7104d786a13d098087b93d127bd2"
+        },
+        {
+          "path": "tests/cycle19-service-revision-review.test.ts",
+          "sha256": "3e60de904653df35b5b07742c734443a6681f1fb49194b0c9757e0834b6a8d5f",
+          "blob": "90112bcb34a954f523b647d57ce62ec251a9ba87"
+        },
+        {
+          "path": "docs/program/CYCLE19_SERVICE_REVISION_REVIEW.md",
+          "sha256": "0479937e604d00b03e51d30e5ae35ce8fc0abefa965306bf24a4b1a596f65384",
+          "blob": "9878baa072b33a71bea643a50612b46e9b2affcd"
+        }
+      ]
+    },
+    {
+      "module": "maintenance-saved-revisions",
+      "component": "MaintenanceSavedRevisions",
+      "owner": "/root/cycle19_field_growth",
+      "branch": "codex/cycle19-maintenance-source-revisions",
+      "parent_commit": "3a7333531b090702a49788a4f702bc4228d8ba00",
+      "head_commit": "ce7bc07bdc40579391fbddb9a1ab95d33a5a2deb",
+      "draft_pr": 136,
+      "focused_new_tests": 33,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/maintenance-saved-revisions.ts",
+          "sha256": "f0eb12011db871aeaf42e9d219bcc14aa5dde1828aa033b801059cebca9d2778",
+          "blob": "411ec4bfe2bdfc2c2c4d2066413c6eee73d94387"
+        },
+        {
+          "path": "src/components/workflows/MaintenanceSavedRevisions.tsx",
+          "sha256": "d8f8dec51e0c631d9da5384298669f05cfee4a962a72a04d931a3472dce85ad7",
+          "blob": "106dcee1e0537d9008e935b278d53dda063936c6"
+        },
+        {
+          "path": "src/components/workflows/maintenance-saved-revisions.css",
+          "sha256": "a3a7fd469d471c6154dceef0385702e0a6cee962e83c5080b06f916d251bfe0b",
+          "blob": "876c2168f394e4a59cc150b60e85e53a6cbc1897"
+        },
+        {
+          "path": "tests/cycle19-maintenance-saved-revisions.test.ts",
+          "sha256": "06dac4319025a1844f49a7dc4f55ec2efd2e3602fd5472914243362c1aae0089",
+          "blob": "a7b2bcc5c0c0010b1c7f0f09af33793f54633a4c"
+        },
+        {
+          "path": "docs/program/CYCLE19_MAINTENANCE_SAVED_REVISIONS.md",
+          "sha256": "1b086c6c60639e65601e66dc69316cc584624ff402ab305d9e96f4cb0d67728d",
+          "blob": "b0951442a1c43ed2ca51b3f1a81622ad76dce4ea"
+        }
+      ]
+    },
+    {
+      "module": "priority-saved-revisions",
+      "component": "PrioritySavedRevisions",
+      "owner": "/root/cycle17_finance_intelligence",
+      "branch": "codex/cycle19-priority-saved-revisions",
+      "parent_commit": "8b50c9fe1b9462b34f3755a0e32a244333797696",
+      "head_commit": "bf266893a635d2c439d5412c8fe80b40819802f1",
+      "draft_pr": 135,
+      "focused_new_tests": 44,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/priority-saved-revisions.ts",
+          "sha256": "396db802b7982ea1b91f034e1e70066b3598672ae2a33116ffa97b74775f4f7b",
+          "blob": "5f0121102e8dcadfa1fe40e538fb18508d7d6b5c"
+        },
+        {
+          "path": "src/components/workflows/PrioritySavedRevisions.tsx",
+          "sha256": "e8fb0095c31e8dbcd3b80534b94784572a11e41538b110fe96f73df9c9fae347",
+          "blob": "f4b61135fec3ea9aab4c02a6e0860278b7a65e20"
+        },
+        {
+          "path": "src/components/workflows/priority-saved-revisions.css",
+          "sha256": "a2fecac48546e2f33ed08ca0169fe563a4d8319d7bd9dc4b2e10b433ff04bb9a",
+          "blob": "7c68b6c865805b3ae88f0fbd946e499fc4b8f08d"
+        },
+        {
+          "path": "tests/cycle19-priority-saved-revisions.test.ts",
+          "sha256": "6ea35f259698d499186b7b02b9ff76a93a598be3c19c6d51f66ae73bfdd594f7",
+          "blob": "9459d208907ed53d1c1256a5c830060e3c562b69"
+        },
+        {
+          "path": "docs/program/CYCLE19_PRIORITY_SAVED_REVISIONS.md",
+          "sha256": "6d799d2c65f6dbf52ba72fde5ea574707bfe22d5877aacd6780b2f8fde36ce81",
+          "blob": "0da288196de4f32cd42e8850b6da82375e137a52"
+        }
+      ]
+    }
+  ],
+  "combined_evidence": {
+    "application_cases": 313,
+    "application_status": "PENDING_COMPLETE_SINGLE_RUN",
+    "author_cases": 192,
+    "coordinator_cases": 85,
+    "runtime_cases": 35,
+    "source_exercise_cases": 50,
+    "independent_cases": 36,
+    "development_browser_cases": 12,
+    "production_off_browser_cases": 3,
+    "browser_status": "PENDING_SEPARATE_MAIN_VERIFICATION",
+    "protected_integrity": "PENDING_CURRENT_MAIN_CHECK",
+    "local_scope": "SYNTHETIC_DEFAULT_OFF_NOT_OPERATIONAL"
+  },
+  "ci_boundary": "Earlier Cycle18 checks remain their recorded successes, failures or cancellations. This source inventory supplies no CI or operational acceptance.",
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

@@ -1,0 +1,72 @@
+name: Cycle 19 saved source continuity
+on:
+  push:
+    branches: ['codex/program-cycle-nineteen']
+  pull_request:
+    paths:
+      - 'src/App.tsx'
+      - 'src/components/workflows/OperatingCenterCycleNineteen.tsx'
+      - 'src/components/workflows/OperatingCenterCycleFifteen.tsx'
+      - 'src/components/workflows/SavedRevisionWorkbench.tsx'
+      - 'src/components/workflows/saved-revision-workbench.css'
+      - 'src/components/workflows/SharedRecordSearch.tsx'
+      - 'src/lib/workflows/saved-revision-runtime.ts'
+      - 'src/lib/workflows/saved-revision-contract.ts'
+      - 'src/lib/workflows/saved-revision-exercise.ts'
+      - 'src/lib/workflows/operating-center-runtime.ts'
+      - 'src/lib/operations.ts'
+      - 'src/lib/workflows/field-saved-revisions.ts'
+      - 'src/components/workflows/FieldSavedRevisions.tsx'
+      - 'src/components/workflows/field-saved-revisions.css'
+      - 'src/lib/workflows/cost-saved-revisions.ts'
+      - 'src/components/workflows/CostSavedRevisions.tsx'
+      - 'src/components/workflows/cost-saved-revisions.css'
+      - 'src/lib/workflows/service-revision-review.ts'
+      - 'src/components/workflows/ServiceRevisionReview.tsx'
+      - 'src/components/workflows/service-revision-review.css'
+      - 'src/lib/workflows/maintenance-saved-revisions.ts'
+      - 'src/components/workflows/MaintenanceSavedRevisions.tsx'
+      - 'src/components/workflows/maintenance-saved-revisions.css'
+      - 'src/lib/workflows/priority-saved-revisions.ts'
+      - 'src/components/workflows/PrioritySavedRevisions.tsx'
+      - 'src/components/workflows/priority-saved-revisions.css'
+      - 'tests/cycle19*'
+      - 'tests/program/*cycle19*'
+      - 'scripts/*cycle19*'
+      - 'docs/program/CYCLE19_DELIVERY_INDEX.json'
+      - 'docs/program/CYCLE19_INDEPENDENT_REVIEW.json'
+      - '.github/workflows/cycle19-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle19-integration-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  bounded-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node scripts/check-cycle19-integrity.mjs
+      - run: node scripts/check-cycle19-browser-selection.mjs
+      - run: npx vitest run tests/cycle19*.test.ts --maxWorkers=2 --reporter=json --outputFile=artifacts/cycle19/application-results.json
+      - run: node scripts/check-cycle19-results.mjs
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test -c tests/program/playwright.cycle19.config.ts --workers=2
+      - run: npx playwright test -c tests/program/playwright.cycle19-off.config.ts --workers=2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle19-saved-source-evidence
+          path: |
+            artifacts/cycle19/
+            test-results/
+          retention-days: 7
