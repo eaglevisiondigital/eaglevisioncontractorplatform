@@ -1,0 +1,60 @@
+name: Cycle 15 guided task continuity
+on:
+  push:
+    branches: ['codex/program-cycle-fifteen']
+  pull_request:
+    paths:
+      - 'src/App.tsx'
+      - 'src/components/workflows/OperatingCenterCycleFifteen.tsx'
+      - 'src/components/workflows/OperatingCenterCycleFourteen.tsx'
+      - 'src/components/workflows/task-review-paths*'
+      - 'src/components/workflows/FieldTaskContinuity.tsx'
+      - 'src/components/workflows/FinanceReviewPath.tsx'
+      - 'src/components/workflows/ServiceReviewPath.tsx'
+      - 'src/components/workflows/MaintenanceReviewPath.tsx'
+      - 'src/components/workflows/ExplainableTaskLinks.tsx'
+      - 'src/components/workflows/AddonTaskContinuity.tsx'
+      - 'src/lib/workflows/field-task-continuity.ts'
+      - 'src/lib/workflows/finance-review-path.ts'
+      - 'src/lib/workflows/service-review-path.ts'
+      - 'src/lib/workflows/maintenance-review-path.ts'
+      - 'src/lib/workflows/explainable-task-links.ts'
+      - 'src/lib/workflows/addon-task-continuity.ts'
+      - 'tests/cycle15*'
+      - 'tests/program/*cycle15*'
+      - 'scripts/*cycle15*'
+      - 'docs/program/CYCLE15_DELIVERY_INDEX.json'
+      - '.github/workflows/cycle15-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle15-integration-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  bounded-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node scripts/check-cycle15-integrity.mjs
+      - run: npx vitest run tests/cycle15*.test.ts tests/program/cycle15*.test.ts tests/program/cycle13-scorecard-evidence.test.ts tests/program-feature-evidence.test.ts --maxWorkers=2 --reporter=json --outputFile=artifacts/cycle15/application-results.json
+      - run: node scripts/check-cycle15-results.mjs
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test -c tests/program/playwright.cycle15.config.ts --workers=2
+      - run: npx playwright test -c tests/program/playwright.cycle15-off.config.ts --workers=2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle15-guided-task-evidence
+          path: |
+            artifacts/cycle15/
+            test-results/
+          retention-days: 7

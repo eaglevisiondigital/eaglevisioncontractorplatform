@@ -1,5 +1,18 @@
 # Shared design-system specification · cycle two
 
+## Cycle15 guided paths without another navigation group
+
+A compact accessible review-options region provides one explicit checkbox, default
+off. It selects task renderers inside the existing six continuity destinations;
+all original groups/labels and the original default renderers remain available.
+New consumers use scoped CSS, existing contractor colors, warm surfaces, readable
+source identities,44px controls and source-heading focus on local forward/return.
+Source context and authority/UNKNOWN labels stay visible; internal evidence can be
+disclosed without replacing the approved shell or introducing a second sidebar.
+The three approved visual scopes and exact artwork remain locked. Operating Center
+and advanced panels still require separate owner visual approval; browser evidence
+and passing CI never supply that approval.
+
 ## Cycle14 continuity and focused owner review
 
 One initially collapsed six-panel group composes the original Operating Center

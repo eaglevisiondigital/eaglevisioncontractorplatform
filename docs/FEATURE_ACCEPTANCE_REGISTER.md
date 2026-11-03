@@ -1,5 +1,42 @@
 # Propel Contractor Suite — feature acceptance register
 
+## Cycle15 · functioning local paths; acceptance states unchanged
+
+Six exact five-file author packages are implemented and composed in Main draft107.
+An explicit default-false presentation opt-in uses the same source repository host
+and original continuity navigation slots. [Exact index](program/CYCLE15_DELIVERY_INDEX.json),
+[local/independent/browser proof](program/CYCLE15_VALIDATION.md) and
+[CI snapshot](program/CYCLE15_CI_SNAPSHOT.json) preserve separate evidence stages.
+Source-safe local return is not persistence, genuine authentication, authorization,
+physical completion, cost coverage, consent, issuance or operational acceptance.
+
+The original25capability stage/approval/CI records and original18scopeIDs remain
+unchanged; source citations extend only retained evidence. All8PhaseOne gates stay
+closed, three visual approval scopes remain locked, and Operating Center/advanced
+visual approvals remain PENDING with missing originals MISSING. No financial,
+provider, communication, dispatch, database/hosted, production or release activation.
+**Release1.0 NOT READY / NOT AUTHORIZED.**
+
+## Cycle14 corrected CI; no capability or release promotion
+
+Final exact-head inventory:30/30checks SUCCESS, including push and PR Foundation
+41551522379/41551530611 with nativePG17. No pending, failed or cancelled check remains
+at the corrected Main head; historical child cancellations remain separately recorded.
+
+Exact610e38abc37a16a9a894e946c0c4c4df16120985 corrects only the two platform-specific
+temporary-directory fixtures. Corrected raw CI:407PASS/0FAIL/0pending;69actual
+responsive browser/gallery cases PASS. Both Cycle14 dedicated runs PASS. All
+broader exact-head outcomes and unchanged child25-minute cancellations remain
+separate in [CI reconciliation](program/CYCLE14_CI_RECONCILIATION.json).
+No successful run was manually restarted and no child head receives Main's result.
+
+[Cycle15 task-continuity assignments](program/CYCLE15_ASSIGNMENTS.md) are prepared,
+independently reviewed and NOT IMPLEMENTED. They create no new feature state,
+acceptance denominator, visual approval, source authority or operational capability.
+The original25capability records/18IDs, all8closed PhaseOne gates, three exact
+design approvals and all protected artifacts/release controls remain unchanged.
+Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Cycle14 runner portability · no acceptance promotion
 
 The first exact876ea772 dedicated run FAILED405/407 because two temporary-directory

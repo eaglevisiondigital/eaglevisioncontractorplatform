@@ -1,0 +1,164 @@
+{
+  "schema": "propel-cycle15-validation-v1",
+  "checked_at": "2026-11-03T02:29:17.436541+00:00",
+  "source_candidate_commit": "f8f7f0bea740ef4218aaa39d8ab8c91ca973f502",
+  "parent_commit": "610e38abc37a16a9a894e946c0c4c4df16120985",
+  "plan_commit": "b3ff9c9cffcfc8701da99710307a8bec3b53d147",
+  "author_heads": [
+    {
+      "module": "field-task-continuity",
+      "owner": "/root/cycle15_field_growth",
+      "branch": "codex/cycle15-field-task-continuity",
+      "head_commit": "b5a3145178efc256308e49dac92435bba64d3549",
+      "draft_pr": 104,
+      "focused_new_tests": 30
+    },
+    {
+      "module": "finance-review-path",
+      "owner": "/root/cycle13_finance_intelligence",
+      "branch": "codex/cycle15-finance-review-path",
+      "head_commit": "54b30248cda9635ec1316adaa84a02a86d941051",
+      "draft_pr": 106,
+      "focused_new_tests": 26
+    },
+    {
+      "module": "service-review-path",
+      "owner": "/root/cycle13_customer_advanced",
+      "branch": "codex/cycle15-service-review-path",
+      "head_commit": "9b8f35d65c1c66362fc0a106ca7cfb729b2917e0",
+      "draft_pr": 105,
+      "focused_new_tests": 60
+    },
+    {
+      "module": "maintenance-review-path",
+      "owner": "/root/cycle15_field_growth",
+      "branch": "codex/cycle15-maintenance-review-path",
+      "head_commit": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+      "draft_pr": 108,
+      "focused_new_tests": 34
+    },
+    {
+      "module": "explainable-task-links",
+      "owner": "/root/cycle13_finance_intelligence",
+      "branch": "codex/cycle15-explainable-task-links",
+      "head_commit": "c7a91e871b269f75883171f0d289488dcbf1c262",
+      "draft_pr": 110,
+      "focused_new_tests": 40
+    },
+    {
+      "module": "addon-task-continuity",
+      "owner": "/root/cycle13_customer_advanced",
+      "branch": "codex/cycle15-addon-task-continuity",
+      "head_commit": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+      "draft_pr": 109,
+      "focused_new_tests": 71
+    }
+  ],
+  "independent_review_commit": "7cedcb8f4d1eefa02c1bc50ceb0fe6065dc444b2",
+  "application": {
+    "passed": 401,
+    "failed": 0,
+    "pending": 0,
+    "files": 11,
+    "unique_file_and_case_identities": 401,
+    "raw_sha256": "4885a172be5bbded9524a289b3b368e85e97eac015af8260aaee103fdd170fea",
+    "file_counts": [
+      {
+        "file": "cycle15-addon-task-continuity.test.ts",
+        "passed": 71
+      },
+      {
+        "file": "cycle15-explainable-task-links.test.ts",
+        "passed": 40
+      },
+      {
+        "file": "cycle15-field-task-continuity.test.ts",
+        "passed": 30
+      },
+      {
+        "file": "cycle15-finance-review-path.test.ts",
+        "passed": 26
+      },
+      {
+        "file": "cycle15-integration.test.ts",
+        "passed": 46
+      },
+      {
+        "file": "cycle15-maintenance-review-path.test.ts",
+        "passed": 34
+      },
+      {
+        "file": "cycle15-service-review-path.test.ts",
+        "passed": 60
+      },
+      {
+        "file": "program-feature-evidence.test.ts",
+        "passed": 73
+      },
+      {
+        "file": "cycle13-scorecard-evidence.test.ts",
+        "passed": 4
+      },
+      {
+        "file": "cycle15-composition.test.ts",
+        "passed": 4
+      },
+      {
+        "file": "cycle15-feature-evidence.test.ts",
+        "passed": 13
+      }
+    ]
+  },
+  "browser": {
+    "development_passed": 72,
+    "production_off_passed": 3,
+    "brands": 3,
+    "viewports": ["desktop", "tablet", "mobile"],
+    "pngs": 54,
+    "failed_final": 0,
+    "raw_files": [
+      {
+        "path": "browser-results.json",
+        "sha256": "1986f63000c2fe54a7bacde84de517ab167ce961aef4a421b6b9645849311720"
+      },
+      {
+        "path": "browser-focused-results.json",
+        "sha256": "87eeeded89f4eff4142bc64afe5f247503e32a7d0dc34f77fb034749545c7cb8"
+      },
+      {
+        "path": "production-off-results.json",
+        "sha256": "4f55356e26ac6a592fd3f98a7c6e57429eae926b55ec35882b002d067ef8a711"
+      }
+    ],
+    "clicks": {
+      "pairs": 9,
+      "guided_each": 5,
+      "retained_each": 5,
+      "limit": "Core review controls only; different evidence destinations, no speed/completion equivalence."
+    },
+    "capture_limit": "Actual source-bound captures; metadata marks working-tree captures honestly. No owner visual approval inferred."
+  },
+  "static": {
+    "strict_types": "PASS",
+    "generated_types": "PASS",
+    "lint": "PASS_WITH_ONE_FAST_REFRESH_WARNING",
+    "formatting": "PASS",
+    "build": "PASS_WITH_RETAINED_CHUNK_SIZE_WARNING",
+    "feature_evidence": "PASS",
+    "protected_integrity": "PASS"
+  },
+  "preservation": {
+    "protected_hashes": 128,
+    "prior_author_files": 283,
+    "new_author_files": 30,
+    "independent_files": 2,
+    "design_locks": 5,
+    "source_bindings": 13,
+    "capability_states": 25,
+    "original_scope_ids": 18,
+    "closed_phase_one_gates": 8
+  },
+  "github_ci": "SEPARATE_EXACT_HEAD_CHECKS_NOT_INFERRED_FROM_LOCAL_TESTS",
+  "operational_ready": false,
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

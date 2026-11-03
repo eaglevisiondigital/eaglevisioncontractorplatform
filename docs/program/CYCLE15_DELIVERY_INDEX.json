@@ -1,0 +1,232 @@
+{
+  "schema": "propel-cycle15-delivery-v1",
+  "coordination_branch": "codex/program-cycle-fifteen",
+  "coordination_draft_pr": 107,
+  "parent_commit": "610e38abc37a16a9a894e946c0c4c4df16120985",
+  "plan_commit": "b3ff9c9cffcfc8701da99710307a8bec3b53d147",
+  "independent_review_commit": "7cedcb8f4d1eefa02c1bc50ceb0fe6065dc444b2",
+  "independent_files": [
+    {
+      "path": "tests/cycle15-integration.test.ts",
+      "sha256": "3404c19cb16a69b0aee0c3d1a723f19acd6f590751f117d2941b0aafc3050269"
+    },
+    {
+      "path": "docs/program/CYCLE15_INTEGRATION_REVIEW.md",
+      "sha256": "9e9805694fa7c28ec6ecb93c883845632de6324000d4e924739f7a5c2fd1a060"
+    }
+  ],
+  "independent_status": "CLEAR_LOCAL_SYNTHETIC_ONLY",
+  "packages": [
+    {
+      "module": "field-task-continuity",
+      "component": "FieldTaskContinuity",
+      "owner": "/root/cycle15_field_growth",
+      "branch": "codex/cycle15-field-task-continuity",
+      "parent_commit": "610e38abc37a16a9a894e946c0c4c4df16120985",
+      "head_commit": "b5a3145178efc256308e49dac92435bba64d3549",
+      "draft_pr": 104,
+      "focused_new_tests": 30,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/field-task-continuity.ts",
+          "sha256": "e6d0a05fee7a572c72e910b28421d00b1a8748591dcf4720c7021298943d50be"
+        },
+        {
+          "path": "src/components/workflows/FieldTaskContinuity.tsx",
+          "sha256": "a37dd6399c90cb37c0594517ad62e9f6fa479fbe09b506f9445a88f47a0c7303"
+        },
+        {
+          "path": "src/components/workflows/field-task-continuity.css",
+          "sha256": "5ebb9a026fcba2dfada8aa9bd4b53eccd622d4943c67c7300f0ec0755045c8a9"
+        },
+        {
+          "path": "tests/cycle15-field-task-continuity.test.ts",
+          "sha256": "b8a66e4e0ca3ccc14e34aaea6e98e5c5b03073b08a76f5af35ccf5adbfaccc95"
+        },
+        {
+          "path": "docs/program/CYCLE15_FIELD_TASK_CONTINUITY.md",
+          "sha256": "1dfe00aab4caef9dd8bc23ce5a23125b0e03a6160ca0d96b0643dba6407f57dd"
+        }
+      ]
+    },
+    {
+      "module": "finance-review-path",
+      "component": "FinanceReviewPath",
+      "owner": "/root/cycle13_finance_intelligence",
+      "branch": "codex/cycle15-finance-review-path",
+      "parent_commit": "610e38abc37a16a9a894e946c0c4c4df16120985",
+      "head_commit": "54b30248cda9635ec1316adaa84a02a86d941051",
+      "draft_pr": 106,
+      "focused_new_tests": 26,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/finance-review-path.ts",
+          "sha256": "b18cf81fa91a0fd3249a768540301ad3eaa062347ac2c9b836cce0753c9c5415"
+        },
+        {
+          "path": "src/components/workflows/FinanceReviewPath.tsx",
+          "sha256": "bedbee72e851c2686a0fbaff5f00733cbe3c73ecfb905c619b6287b08a07b9a6"
+        },
+        {
+          "path": "src/components/workflows/finance-review-path.css",
+          "sha256": "961167e1257ee4a29c410ff25c6bfb17456249c89770e66edcdced1c33fb3e60"
+        },
+        {
+          "path": "tests/cycle15-finance-review-path.test.ts",
+          "sha256": "17d4e8a7f9355b53a382acfa667eabaedb79d39fbc30922d62eaf3ff66de8586"
+        },
+        {
+          "path": "docs/program/CYCLE15_FINANCE_REVIEW_PATH.md",
+          "sha256": "9d85375621d824b2f9bad5e77085671825758482435ab27b8908b266157d8fce"
+        }
+      ]
+    },
+    {
+      "module": "service-review-path",
+      "component": "ServiceReviewPath",
+      "owner": "/root/cycle13_customer_advanced",
+      "branch": "codex/cycle15-service-review-path",
+      "parent_commit": "610e38abc37a16a9a894e946c0c4c4df16120985",
+      "head_commit": "9b8f35d65c1c66362fc0a106ca7cfb729b2917e0",
+      "draft_pr": 105,
+      "focused_new_tests": 60,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/service-review-path.ts",
+          "sha256": "a35485217609aae8ab1092d3692619051aa53e1e083ac54c7737280b352876b5"
+        },
+        {
+          "path": "src/components/workflows/ServiceReviewPath.tsx",
+          "sha256": "f490f5fea05a858b05acc05353d0ec177af422f907a804f99f673baa9cc0fa0a"
+        },
+        {
+          "path": "src/components/workflows/service-review-path.css",
+          "sha256": "0c72ed1652c7efe55e014289e52e3bc581b725fd913821d6a043ee9409cc87f9"
+        },
+        {
+          "path": "tests/cycle15-service-review-path.test.ts",
+          "sha256": "5eabe35c722f0d1ab94ac461a8ef78d721c2c529f357ff790f47a5c9459cb9d8"
+        },
+        {
+          "path": "docs/program/CYCLE15_SERVICE_REVIEW_PATH.md",
+          "sha256": "1e222aed4d17020e222b9ce1453c91d96ca29066e79e88d90cf8cd38db438adb"
+        }
+      ]
+    },
+    {
+      "module": "maintenance-review-path",
+      "component": "MaintenanceReviewPath",
+      "owner": "/root/cycle15_field_growth",
+      "branch": "codex/cycle15-maintenance-review-path",
+      "parent_commit": "610e38abc37a16a9a894e946c0c4c4df16120985",
+      "head_commit": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+      "draft_pr": 108,
+      "focused_new_tests": 34,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/maintenance-review-path.ts",
+          "sha256": "1ed715ad5d7b9b52a44257de3a0e71dfe53fe68898e37abda7df1c60c29fbf68"
+        },
+        {
+          "path": "src/components/workflows/MaintenanceReviewPath.tsx",
+          "sha256": "7bbf1c3d39486081cd95f684f6081ba6e376e4d8a91f3077867d57ff2e3f2da8"
+        },
+        {
+          "path": "src/components/workflows/maintenance-review-path.css",
+          "sha256": "227183567c89347f3053e636ffec9d07862f881cea30d26b56e237a322241675"
+        },
+        {
+          "path": "tests/cycle15-maintenance-review-path.test.ts",
+          "sha256": "db04eabf79a557ad7148ba29cb8baf76be9af7a4134910a9f1ebf4f80dfed7a8"
+        },
+        {
+          "path": "docs/program/CYCLE15_MAINTENANCE_REVIEW_PATH.md",
+          "sha256": "e340cd449f718b29670618bf67c68cc80324a44987260ed57c4f421e4d95cc73"
+        }
+      ]
+    },
+    {
+      "module": "explainable-task-links",
+      "component": "ExplainableTaskLinks",
+      "owner": "/root/cycle13_finance_intelligence",
+      "branch": "codex/cycle15-explainable-task-links",
+      "parent_commit": "610e38abc37a16a9a894e946c0c4c4df16120985",
+      "head_commit": "c7a91e871b269f75883171f0d289488dcbf1c262",
+      "draft_pr": 110,
+      "focused_new_tests": 40,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/explainable-task-links.ts",
+          "sha256": "c58f37fa99c6a7b77a1582068381cff96e9077243e7c9637930e411c7624e7be"
+        },
+        {
+          "path": "src/components/workflows/ExplainableTaskLinks.tsx",
+          "sha256": "8b3a6cde4269405ebe1a4bc5846884a7f3a5d1c5647980a8bc0b023b24f8d4f8"
+        },
+        {
+          "path": "src/components/workflows/explainable-task-links.css",
+          "sha256": "f43beaa6d01e36c70e61d837d7cd6af4fab66825b3424b7575f801cf7d7190cc"
+        },
+        {
+          "path": "tests/cycle15-explainable-task-links.test.ts",
+          "sha256": "2fc4319709d5f474c6ce05ca226784a8a42fd0022d000c6aef4ba7a9712ee675"
+        },
+        {
+          "path": "docs/program/CYCLE15_EXPLAINABLE_TASK_LINKS.md",
+          "sha256": "2be8a00b2cdc97d985a4756ce5b4c45d0f26083b9193f550095c6b94e400593d"
+        }
+      ]
+    },
+    {
+      "module": "addon-task-continuity",
+      "component": "AddonTaskContinuity",
+      "owner": "/root/cycle13_customer_advanced",
+      "branch": "codex/cycle15-addon-task-continuity",
+      "parent_commit": "610e38abc37a16a9a894e946c0c4c4df16120985",
+      "head_commit": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+      "draft_pr": 109,
+      "focused_new_tests": 71,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/addon-task-continuity.ts",
+          "sha256": "ec1a38c24ba92d2b0c60d19c44a779390c2d65f4ff7931bb59cd02f5b8493650"
+        },
+        {
+          "path": "src/components/workflows/AddonTaskContinuity.tsx",
+          "sha256": "1bead941a366369322d07f9ad3bfd368c216013583690c5d27131d6292397cbf"
+        },
+        {
+          "path": "src/components/workflows/addon-task-continuity.css",
+          "sha256": "22aa0f15ac4aa3b5d668a6521010e6177255111376dfcf6b47007063ff31008c"
+        },
+        {
+          "path": "tests/cycle15-addon-task-continuity.test.ts",
+          "sha256": "9096ccac1f1657cd53d95567fae974a28edbc8212b27a847702732620c81da61"
+        },
+        {
+          "path": "docs/program/CYCLE15_ADDON_TASK_CONTINUITY.md",
+          "sha256": "0b842abefe88584e7224d78894abd89d087a0ae5a98eb3e416411cf9fe694b87"
+        }
+      ]
+    }
+  ],
+  "combined_evidence": {
+    "author_cases": 261,
+    "independent_cases": 46,
+    "coordinator_cases": 17,
+    "retained_scorecard_cases": 4,
+    "source_inventory_cases": 73,
+    "application_cases": 401,
+    "protected_hashes": 128,
+    "retained_author_files": 283,
+    "design_locks": 5,
+    "design_bindings": 13
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

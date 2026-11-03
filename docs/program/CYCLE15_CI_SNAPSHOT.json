@@ -1,0 +1,2111 @@
+{
+  "schema": "propel-cycle15-ci-snapshot-v1",
+  "checked_at": "2026-11-03T02:16:02.836192+00:00",
+  "repository": "eaglevisiondigital/eaglevisioncontractorplatform",
+  "children": [
+    {
+      "draft_pr": 104,
+      "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+      "branch": "codex/cycle15-field-task-continuity",
+      "base": "codex/program-cycle-fifteen",
+      "observed_pr_state": "draft_open_unmerged",
+      "check_count": 27,
+      "checks": [
+        {
+          "id": 125672200687,
+          "name": "postgres17",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561118970/job/125672200687",
+          "started_at": "2026-11-03T02:00:50Z",
+          "completed_at": "2026-11-03T02:02:48Z"
+        },
+        {
+          "id": 125672200348,
+          "name": "verify",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "in_progress",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561118970/job/125672200348",
+          "started_at": "2026-11-03T01:51:28Z",
+          "completed_at": null
+        },
+        {
+          "id": 125672165556,
+          "name": "browser",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561118991/job/125672165556",
+          "started_at": "2026-11-03T01:46:41Z",
+          "completed_at": "2026-11-03T01:48:21Z"
+        },
+        {
+          "id": 125672163381,
+          "name": "bounded-integration",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561123413/job/125672163381",
+          "started_at": "2026-11-03T01:49:52Z",
+          "completed_at": "2026-11-03T01:55:24Z"
+        },
+        {
+          "id": 125672079301,
+          "name": "bounded-integration",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561123444/job/125672079301",
+          "started_at": "2026-11-03T01:57:44Z",
+          "completed_at": "2026-11-03T02:05:04Z"
+        },
+        {
+          "id": 125671949679,
+          "name": "postgres17",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561123508/job/125671949679",
+          "started_at": "2026-11-03T01:59:49Z",
+          "completed_at": "2026-11-03T02:01:50Z"
+        },
+        {
+          "id": 125671949367,
+          "name": "verify",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "in_progress",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561123508/job/125671949367",
+          "started_at": "2026-11-03T01:59:49Z",
+          "completed_at": null
+        },
+        {
+          "id": 125671880219,
+          "name": "bounded-integration",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561123292/job/125671880219",
+          "started_at": "2026-11-03T01:54:21Z",
+          "completed_at": "2026-11-03T01:59:28Z"
+        },
+        {
+          "id": 125671714242,
+          "name": "local-integration",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561123332/job/125671714242",
+          "started_at": "2026-11-03T01:57:03Z",
+          "completed_at": "2026-11-03T01:59:32Z"
+        },
+        {
+          "id": 125671711080,
+          "name": "browser",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561123363/job/125671711080",
+          "started_at": "2026-11-03T01:51:45Z",
+          "completed_at": "2026-11-03T01:53:34Z"
+        },
+        {
+          "id": 125671710437,
+          "name": "local-preview",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561123463/job/125671710437",
+          "started_at": "2026-11-03T01:56:06Z",
+          "completed_at": "2026-11-03T01:56:53Z"
+        },
+        {
+          "id": 125671708629,
+          "name": "bounded-integration",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561123461/job/125671708629",
+          "started_at": "2026-11-03T01:42:49Z",
+          "completed_at": "2026-11-03T01:46:37Z"
+        },
+        {
+          "id": 125671708180,
+          "name": "bounded-integration",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561123453/job/125671708180",
+          "started_at": "2026-11-03T01:50:23Z",
+          "completed_at": "2026-11-03T01:52:27Z"
+        },
+        {
+          "id": 125671708121,
+          "name": "browser",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561123451/job/125671708121",
+          "started_at": "2026-11-03T01:49:20Z",
+          "completed_at": "2026-11-03T01:50:40Z"
+        },
+        {
+          "id": 125671707997,
+          "name": "local-preview",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561123394/job/125671707997",
+          "started_at": "2026-11-03T01:42:33Z",
+          "completed_at": "2026-11-03T01:44:24Z"
+        },
+        {
+          "id": 125671707913,
+          "name": "browser",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561123428/job/125671707913",
+          "started_at": "2026-11-03T01:41:13Z",
+          "completed_at": "2026-11-03T01:42:32Z"
+        },
+        {
+          "id": 125671707794,
+          "name": "bounded-integration",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561123393/job/125671707794",
+          "started_at": "2026-11-03T01:40:37Z",
+          "completed_at": "2026-11-03T01:42:38Z"
+        },
+        {
+          "id": 125671707707,
+          "name": "browser",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561123427/job/125671707707",
+          "started_at": "2026-11-03T01:43:39Z",
+          "completed_at": "2026-11-03T01:45:23Z"
+        },
+        {
+          "id": 125671707684,
+          "name": "synthetic-crypto48",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561123407/job/125671707684",
+          "started_at": "2026-11-03T01:53:37Z",
+          "completed_at": "2026-11-03T01:54:30Z"
+        },
+        {
+          "id": 125671707616,
+          "name": "browser",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561123318/job/125671707616",
+          "started_at": "2026-11-03T01:53:01Z",
+          "completed_at": "2026-11-03T01:55:49Z"
+        },
+        {
+          "id": 125671694609,
+          "name": "browser",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561119052/job/125671694609",
+          "started_at": "2026-11-03T01:39:18Z",
+          "completed_at": "2026-11-03T01:40:36Z"
+        },
+        {
+          "id": 125671694594,
+          "name": "local-preview",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561119139/job/125671694594",
+          "started_at": "2026-11-03T01:40:17Z",
+          "completed_at": "2026-11-03T01:41:05Z"
+        },
+        {
+          "id": 125671694584,
+          "name": "browser",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561118989/job/125671694584",
+          "started_at": "2026-11-03T01:48:11Z",
+          "completed_at": "2026-11-03T01:49:17Z"
+        },
+        {
+          "id": 125671694450,
+          "name": "browser",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561118986/job/125671694450",
+          "started_at": "2026-11-03T01:40:37Z",
+          "completed_at": "2026-11-03T01:41:50Z"
+        },
+        {
+          "id": 125671694190,
+          "name": "browser",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561119022/job/125671694190",
+          "started_at": "2026-11-03T01:46:56Z",
+          "completed_at": "2026-11-03T01:48:09Z"
+        },
+        {
+          "id": 125671694066,
+          "name": "local-preview",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561119024/job/125671694066",
+          "started_at": "2026-11-03T01:46:15Z",
+          "completed_at": "2026-11-03T01:47:14Z"
+        },
+        {
+          "id": 125671693934,
+          "name": "synthetic-crypto48",
+          "head_sha": "b5a3145178efc256308e49dac92435bba64d3549",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561119093/job/125671693934",
+          "started_at": "2026-11-03T01:43:00Z",
+          "completed_at": "2026-11-03T01:44:05Z"
+        }
+      ]
+    },
+    {
+      "draft_pr": 106,
+      "head_sha": "54b30248cda9635ec1316adaa84a02a86d941051",
+      "branch": "codex/cycle15-finance-review-path",
+      "base": "codex/program-cycle-fifteen",
+      "observed_pr_state": "draft_open_unmerged",
+      "check_count": 22,
+      "checks": [
+        {
+          "id": 125682906182,
+          "name": "browser",
+          "head_sha": "54b30248cda9635ec1316adaa84a02a86d941051",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564583434/job/125682906182",
+          "started_at": "2026-11-03T02:13:13Z",
+          "completed_at": "2026-11-03T02:14:21Z"
+        },
+        {
+          "id": 125682906152,
+          "name": "bounded-integration",
+          "head_sha": "54b30248cda9635ec1316adaa84a02a86d941051",
+          "status": "in_progress",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564583267/job/125682906152",
+          "started_at": "2026-11-03T02:15:55Z",
+          "completed_at": null
+        },
+        {
+          "id": 125682906073,
+          "name": "local-preview",
+          "head_sha": "54b30248cda9635ec1316adaa84a02a86d941051",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564583087/job/125682906073",
+          "started_at": "2026-11-03T02:13:04Z",
+          "completed_at": "2026-11-03T02:14:27Z"
+        },
+        {
+          "id": 125682905922,
+          "name": "browser",
+          "head_sha": "54b30248cda9635ec1316adaa84a02a86d941051",
+          "status": "in_progress",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564583256/job/125682905922",
+          "started_at": "2026-11-03T02:14:46Z",
+          "completed_at": null
+        },
+        {
+          "id": 125682905841,
+          "name": "browser",
+          "head_sha": "54b30248cda9635ec1316adaa84a02a86d941051",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564583159/job/125682905841",
+          "started_at": "2026-11-03T02:13:51Z",
+          "completed_at": "2026-11-03T02:15:18Z"
+        },
+        {
+          "id": 125682905712,
+          "name": "local-integration",
+          "head_sha": "54b30248cda9635ec1316adaa84a02a86d941051",
+          "status": "in_progress",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564583143/job/125682905712",
+          "started_at": "2026-11-03T02:13:29Z",
+          "completed_at": null
+        },
+        {
+          "id": 125682905269,
+          "name": "bounded-integration",
+          "head_sha": "54b30248cda9635ec1316adaa84a02a86d941051",
+          "status": "in_progress",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564583054/job/125682905269",
+          "started_at": "2026-11-03T02:15:21Z",
+          "completed_at": null
+        },
+        {
+          "id": 125682905201,
+          "name": "bounded-integration",
+          "head_sha": "54b30248cda9635ec1316adaa84a02a86d941051",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564583099/job/125682905201",
+          "started_at": "2026-11-03T02:14:00Z",
+          "completed_at": "2026-11-03T02:15:46Z"
+        },
+        {
+          "id": 125682905008,
+          "name": "local-preview",
+          "head_sha": "54b30248cda9635ec1316adaa84a02a86d941051",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564583032/job/125682905008",
+          "started_at": "2026-11-03T02:12:20Z",
+          "completed_at": "2026-11-03T02:13:25Z"
+        },
+        {
+          "id": 125682904988,
+          "name": "browser",
+          "head_sha": "54b30248cda9635ec1316adaa84a02a86d941051",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564583035/job/125682904988",
+          "started_at": "2026-11-03T02:13:28Z",
+          "completed_at": "2026-11-03T02:15:17Z"
+        },
+        {
+          "id": 125682904895,
+          "name": "synthetic-crypto48",
+          "head_sha": "54b30248cda9635ec1316adaa84a02a86d941051",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564583053/job/125682904895",
+          "started_at": "2026-11-03T02:13:30Z",
+          "completed_at": "2026-11-03T02:14:26Z"
+        },
+        {
+          "id": 125682904873,
+          "name": "bounded-integration",
+          "head_sha": "54b30248cda9635ec1316adaa84a02a86d941051",
+          "status": "in_progress",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564582950/job/125682904873",
+          "started_at": "2026-11-03T02:14:24Z",
+          "completed_at": null
+        },
+        {
+          "id": 125682904730,
+          "name": "bounded-integration",
+          "head_sha": "54b30248cda9635ec1316adaa84a02a86d941051",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564583011/job/125682904730",
+          "started_at": "2026-11-03T02:11:53Z",
+          "completed_at": "2026-11-03T02:14:41Z"
+        },
+        {
+          "id": 125682904716,
+          "name": "verify",
+          "head_sha": "54b30248cda9635ec1316adaa84a02a86d941051",
+          "status": "in_progress",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564582933/job/125682904716",
+          "started_at": "2026-11-03T02:11:50Z",
+          "completed_at": null
+        },
+        {
+          "id": 125682904686,
+          "name": "browser",
+          "head_sha": "54b30248cda9635ec1316adaa84a02a86d941051",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564582896/job/125682904686",
+          "started_at": "2026-11-03T02:11:49Z",
+          "completed_at": "2026-11-03T02:13:49Z"
+        },
+        {
+          "id": 125682904519,
+          "name": "postgres17",
+          "head_sha": "54b30248cda9635ec1316adaa84a02a86d941051",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564582933/job/125682904519",
+          "started_at": "2026-11-03T02:12:00Z",
+          "completed_at": "2026-11-03T02:14:44Z"
+        },
+        {
+          "id": 125682904306,
+          "name": "bounded-integration",
+          "head_sha": "54b30248cda9635ec1316adaa84a02a86d941051",
+          "status": "in_progress",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564582916/job/125682904306",
+          "started_at": "2026-11-03T02:11:49Z",
+          "completed_at": null
+        },
+        {
+          "id": 125682883716,
+          "name": "postgres17",
+          "head_sha": "54b30248cda9635ec1316adaa84a02a86d941051",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564576360/job/125682883716",
+          "started_at": "2026-11-03T02:11:46Z",
+          "completed_at": "2026-11-03T02:13:58Z"
+        },
+        {
+          "id": 125682883266,
+          "name": "synthetic-crypto48",
+          "head_sha": "54b30248cda9635ec1316adaa84a02a86d941051",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564576394/job/125682883266",
+          "started_at": "2026-11-03T02:11:46Z",
+          "completed_at": "2026-11-03T02:12:18Z"
+        },
+        {
+          "id": 125682883250,
+          "name": "verify",
+          "head_sha": "54b30248cda9635ec1316adaa84a02a86d941051",
+          "status": "in_progress",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564576360/job/125682883250",
+          "started_at": "2026-11-03T02:11:46Z",
+          "completed_at": null
+        },
+        {
+          "id": 125682882930,
+          "name": "local-preview",
+          "head_sha": "54b30248cda9635ec1316adaa84a02a86d941051",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564576276/job/125682882930",
+          "started_at": "2026-11-03T02:11:46Z",
+          "completed_at": "2026-11-03T02:13:27Z"
+        },
+        {
+          "id": 125682882550,
+          "name": "local-preview",
+          "head_sha": "54b30248cda9635ec1316adaa84a02a86d941051",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564576258/job/125682882550",
+          "started_at": "2026-11-03T02:11:46Z",
+          "completed_at": "2026-11-03T02:13:01Z"
+        }
+      ]
+    },
+    {
+      "draft_pr": 105,
+      "head_sha": "9b8f35d65c1c66362fc0a106ca7cfb729b2917e0",
+      "branch": "codex/cycle15-service-review-path",
+      "base": "codex/program-cycle-fifteen",
+      "observed_pr_state": "draft_open_unmerged",
+      "check_count": 17,
+      "checks": [
+        {
+          "id": 125683692539,
+          "name": "synthetic-crypto48",
+          "head_sha": "9b8f35d65c1c66362fc0a106ca7cfb729b2917e0",
+          "status": "queued",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564819179/job/125683692539",
+          "started_at": "2026-11-03T02:14:04Z",
+          "completed_at": null
+        },
+        {
+          "id": 125683685624,
+          "name": "browser",
+          "head_sha": "9b8f35d65c1c66362fc0a106ca7cfb729b2917e0",
+          "status": "queued",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564819173/job/125683685624",
+          "started_at": "2026-11-03T02:14:02Z",
+          "completed_at": null
+        },
+        {
+          "id": 125683685610,
+          "name": "browser",
+          "head_sha": "9b8f35d65c1c66362fc0a106ca7cfb729b2917e0",
+          "status": "queued",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564818962/job/125683685610",
+          "started_at": "2026-11-03T02:14:02Z",
+          "completed_at": null
+        },
+        {
+          "id": 125683685582,
+          "name": "local-preview",
+          "head_sha": "9b8f35d65c1c66362fc0a106ca7cfb729b2917e0",
+          "status": "in_progress",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564819167/job/125683685582",
+          "started_at": "2026-11-03T02:15:19Z",
+          "completed_at": null
+        },
+        {
+          "id": 125683685447,
+          "name": "bounded-integration",
+          "head_sha": "9b8f35d65c1c66362fc0a106ca7cfb729b2917e0",
+          "status": "in_progress",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564819081/job/125683685447",
+          "started_at": "2026-11-03T02:15:49Z",
+          "completed_at": null
+        },
+        {
+          "id": 125683685410,
+          "name": "browser",
+          "head_sha": "9b8f35d65c1c66362fc0a106ca7cfb729b2917e0",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564819171/job/125683685410",
+          "started_at": "2026-11-03T02:14:29Z",
+          "completed_at": "2026-11-03T02:15:52Z"
+        },
+        {
+          "id": 125683685310,
+          "name": "postgres17",
+          "head_sha": "9b8f35d65c1c66362fc0a106ca7cfb729b2917e0",
+          "status": "queued",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564819093/job/125683685310",
+          "started_at": "2026-11-03T02:14:02Z",
+          "completed_at": null
+        },
+        {
+          "id": 125683685305,
+          "name": "bounded-integration",
+          "head_sha": "9b8f35d65c1c66362fc0a106ca7cfb729b2917e0",
+          "status": "queued",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564819151/job/125683685305",
+          "started_at": "2026-11-03T02:14:02Z",
+          "completed_at": null
+        },
+        {
+          "id": 125683685117,
+          "name": "local-preview",
+          "head_sha": "9b8f35d65c1c66362fc0a106ca7cfb729b2917e0",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564819049/job/125683685117",
+          "started_at": "2026-11-03T02:14:29Z",
+          "completed_at": "2026-11-03T02:15:18Z"
+        },
+        {
+          "id": 125683685034,
+          "name": "bounded-integration",
+          "head_sha": "9b8f35d65c1c66362fc0a106ca7cfb729b2917e0",
+          "status": "queued",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564819133/job/125683685034",
+          "started_at": "2026-11-03T02:14:02Z",
+          "completed_at": null
+        },
+        {
+          "id": 125683684910,
+          "name": "verify",
+          "head_sha": "9b8f35d65c1c66362fc0a106ca7cfb729b2917e0",
+          "status": "queued",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564819093/job/125683684910",
+          "started_at": "2026-11-03T02:14:02Z",
+          "completed_at": null
+        },
+        {
+          "id": 125683684876,
+          "name": "browser",
+          "head_sha": "9b8f35d65c1c66362fc0a106ca7cfb729b2917e0",
+          "status": "queued",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564819044/job/125683684876",
+          "started_at": "2026-11-03T02:14:02Z",
+          "completed_at": null
+        },
+        {
+          "id": 125683684857,
+          "name": "local-integration",
+          "head_sha": "9b8f35d65c1c66362fc0a106ca7cfb729b2917e0",
+          "status": "queued",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564819010/job/125683684857",
+          "started_at": "2026-11-03T02:14:02Z",
+          "completed_at": null
+        },
+        {
+          "id": 125683684765,
+          "name": "bounded-integration",
+          "head_sha": "9b8f35d65c1c66362fc0a106ca7cfb729b2917e0",
+          "status": "in_progress",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564819032/job/125683684765",
+          "started_at": "2026-11-03T02:15:21Z",
+          "completed_at": null
+        },
+        {
+          "id": 125683684732,
+          "name": "bounded-integration",
+          "head_sha": "9b8f35d65c1c66362fc0a106ca7cfb729b2917e0",
+          "status": "queued",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564819035/job/125683684732",
+          "started_at": "2026-11-03T02:14:02Z",
+          "completed_at": null
+        },
+        {
+          "id": 125683684536,
+          "name": "bounded-integration",
+          "head_sha": "9b8f35d65c1c66362fc0a106ca7cfb729b2917e0",
+          "status": "queued",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564819019/job/125683684536",
+          "started_at": "2026-11-03T02:14:02Z",
+          "completed_at": null
+        },
+        {
+          "id": 125683684493,
+          "name": "browser",
+          "head_sha": "9b8f35d65c1c66362fc0a106ca7cfb729b2917e0",
+          "status": "in_progress",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41564818933/job/125683684493",
+          "started_at": "2026-11-03T02:14:43Z",
+          "completed_at": null
+        }
+      ]
+    },
+    {
+      "draft_pr": 108,
+      "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+      "branch": "codex/cycle15-maintenance-review-path",
+      "base": "codex/program-cycle-fifteen",
+      "observed_pr_state": "draft_open_unmerged",
+      "check_count": 27,
+      "checks": [
+        {
+          "id": 125671839056,
+          "name": "local-integration",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561159639/job/125671839056",
+          "started_at": "2026-11-03T01:42:35Z",
+          "completed_at": "2026-11-03T01:45:05Z"
+        },
+        {
+          "id": 125671828108,
+          "name": "bounded-integration",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561159809/job/125671828108",
+          "started_at": "2026-11-03T01:49:24Z",
+          "completed_at": "2026-11-03T01:52:58Z"
+        },
+        {
+          "id": 125671828103,
+          "name": "browser",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561159784/job/125671828103",
+          "started_at": "2026-11-03T01:57:57Z",
+          "completed_at": "2026-11-03T01:59:46Z"
+        },
+        {
+          "id": 125671827893,
+          "name": "local-preview",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561159727/job/125671827893",
+          "started_at": "2026-11-03T01:56:31Z",
+          "completed_at": "2026-11-03T01:57:54Z"
+        },
+        {
+          "id": 125671827706,
+          "name": "local-preview",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561159748/job/125671827706",
+          "started_at": "2026-11-03T01:40:39Z",
+          "completed_at": "2026-11-03T01:42:03Z"
+        },
+        {
+          "id": 125671827609,
+          "name": "bounded-integration",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561159768/job/125671827609",
+          "started_at": "2026-11-03T01:40:05Z",
+          "completed_at": "2026-11-03T01:52:15Z"
+        },
+        {
+          "id": 125671827481,
+          "name": "browser",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561159687/job/125671827481",
+          "started_at": "2026-11-03T01:54:03Z",
+          "completed_at": "2026-11-03T01:55:28Z"
+        },
+        {
+          "id": 125671827342,
+          "name": "bounded-integration",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561159652/job/125671827342",
+          "started_at": "2026-11-03T01:55:23Z",
+          "completed_at": "2026-11-03T01:57:01Z"
+        },
+        {
+          "id": 125671827332,
+          "name": "synthetic-crypto48",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561159713/job/125671827332",
+          "started_at": "2026-11-03T01:45:30Z",
+          "completed_at": "2026-11-03T01:46:32Z"
+        },
+        {
+          "id": 125671827182,
+          "name": "verify",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "in_progress",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561159575/job/125671827182",
+          "started_at": "2026-11-03T01:59:34Z",
+          "completed_at": null
+        },
+        {
+          "id": 125671827054,
+          "name": "bounded-integration",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561159665/job/125671827054",
+          "started_at": "2026-11-03T01:55:56Z",
+          "completed_at": "2026-11-03T02:01:58Z"
+        },
+        {
+          "id": 125671826997,
+          "name": "bounded-integration",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561159553/job/125671826997",
+          "started_at": "2026-11-03T01:56:08Z",
+          "completed_at": "2026-11-03T02:01:45Z"
+        },
+        {
+          "id": 125671826863,
+          "name": "browser",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561159669/job/125671826863",
+          "started_at": "2026-11-03T01:40:33Z",
+          "completed_at": "2026-11-03T01:41:33Z"
+        },
+        {
+          "id": 125671826802,
+          "name": "bounded-integration",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561159573/job/125671826802",
+          "started_at": "2026-11-03T01:41:34Z",
+          "completed_at": "2026-11-03T01:45:14Z"
+        },
+        {
+          "id": 125671826796,
+          "name": "browser",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561159568/job/125671826796",
+          "started_at": "2026-11-03T01:58:20Z",
+          "completed_at": "2026-11-03T02:00:12Z"
+        },
+        {
+          "id": 125671826771,
+          "name": "browser",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561159613/job/125671826771",
+          "started_at": "2026-11-03T01:57:29Z",
+          "completed_at": "2026-11-03T01:59:30Z"
+        },
+        {
+          "id": 125671826751,
+          "name": "postgres17",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561159575/job/125671826751",
+          "started_at": "2026-11-03T01:48:30Z",
+          "completed_at": "2026-11-03T01:51:12Z"
+        },
+        {
+          "id": 125671740050,
+          "name": "browser",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561133258/job/125671740050",
+          "started_at": "2026-11-03T01:52:36Z",
+          "completed_at": "2026-11-03T01:54:18Z"
+        },
+        {
+          "id": 125671739738,
+          "name": "verify",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "in_progress",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561133169/job/125671739738",
+          "started_at": "2026-11-03T01:45:26Z",
+          "completed_at": null
+        },
+        {
+          "id": 125671739511,
+          "name": "browser",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561133219/job/125671739511",
+          "started_at": "2026-11-03T01:55:51Z",
+          "completed_at": "2026-11-03T01:57:27Z"
+        },
+        {
+          "id": 125671739497,
+          "name": "postgres17",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561133169/job/125671739497",
+          "started_at": "2026-11-03T01:53:37Z",
+          "completed_at": "2026-11-03T01:56:06Z"
+        },
+        {
+          "id": 125671739218,
+          "name": "browser",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561133206/job/125671739218",
+          "started_at": "2026-11-03T01:47:50Z",
+          "completed_at": "2026-11-03T01:48:54Z"
+        },
+        {
+          "id": 125671739169,
+          "name": "local-preview",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561133146/job/125671739169",
+          "started_at": "2026-11-03T01:39:45Z",
+          "completed_at": "2026-11-03T01:41:29Z"
+        },
+        {
+          "id": 125671738962,
+          "name": "browser",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561133171/job/125671738962",
+          "started_at": "2026-11-03T01:39:56Z",
+          "completed_at": "2026-11-03T01:41:26Z"
+        },
+        {
+          "id": 125671738635,
+          "name": "browser",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561133098/job/125671738635",
+          "started_at": "2026-11-03T01:55:38Z",
+          "completed_at": "2026-11-03T01:57:41Z"
+        },
+        {
+          "id": 125671738601,
+          "name": "synthetic-crypto48",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561133105/job/125671738601",
+          "started_at": "2026-11-03T01:41:28Z",
+          "completed_at": "2026-11-03T01:41:54Z"
+        },
+        {
+          "id": 125671738276,
+          "name": "local-preview",
+          "head_sha": "f4b17cba20d97e42d5b08f42883aaf22ceaa4d39",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561133066/job/125671738276",
+          "started_at": "2026-11-03T01:54:33Z",
+          "completed_at": "2026-11-03T01:55:53Z"
+        }
+      ]
+    },
+    {
+      "draft_pr": 110,
+      "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+      "branch": "codex/cycle15-explainable-task-links",
+      "base": "codex/program-cycle-fifteen",
+      "observed_pr_state": "draft_open_unmerged",
+      "check_count": 27,
+      "checks": [
+        {
+          "id": 125673263587,
+          "name": "verify",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "in_progress",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561601428/job/125673263587",
+          "started_at": "2026-11-03T01:48:18Z",
+          "completed_at": null
+        },
+        {
+          "id": 125673263302,
+          "name": "postgres17",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561601428/job/125673263302",
+          "started_at": "2026-11-03T01:44:17Z",
+          "completed_at": "2026-11-03T01:46:53Z"
+        },
+        {
+          "id": 125673262990,
+          "name": "browser",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561601222/job/125673262990",
+          "started_at": "2026-11-03T01:58:42Z",
+          "completed_at": "2026-11-03T02:00:04Z"
+        },
+        {
+          "id": 125673262778,
+          "name": "bounded-integration",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561601320/job/125673262778",
+          "started_at": "2026-11-03T02:00:11Z",
+          "completed_at": "2026-11-03T02:06:15Z"
+        },
+        {
+          "id": 125673262730,
+          "name": "bounded-integration",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561601308/job/125673262730",
+          "started_at": "2026-11-03T02:00:48Z",
+          "completed_at": "2026-11-03T02:13:10Z"
+        },
+        {
+          "id": 125673262596,
+          "name": "bounded-integration",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561601226/job/125673262596",
+          "started_at": "2026-11-03T01:47:12Z",
+          "completed_at": "2026-11-03T01:49:49Z"
+        },
+        {
+          "id": 125673262475,
+          "name": "local-preview",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561601290/job/125673262475",
+          "started_at": "2026-11-03T01:45:08Z",
+          "completed_at": "2026-11-03T01:46:00Z"
+        },
+        {
+          "id": 125673262463,
+          "name": "bounded-integration",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561601260/job/125673262463",
+          "started_at": "2026-11-03T02:01:20Z",
+          "completed_at": "2026-11-03T02:04:31Z"
+        },
+        {
+          "id": 125673262423,
+          "name": "browser",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561601272/job/125673262423",
+          "started_at": "2026-11-03T01:59:32Z",
+          "completed_at": "2026-11-03T02:00:48Z"
+        },
+        {
+          "id": 125673262407,
+          "name": "browser",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561601188/job/125673262407",
+          "started_at": "2026-11-03T01:52:17Z",
+          "completed_at": "2026-11-03T01:54:15Z"
+        },
+        {
+          "id": 125673262332,
+          "name": "local-preview",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561601280/job/125673262332",
+          "started_at": "2026-11-03T01:55:30Z",
+          "completed_at": "2026-11-03T01:56:28Z"
+        },
+        {
+          "id": 125673262257,
+          "name": "bounded-integration",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561601224/job/125673262257",
+          "started_at": "2026-11-03T01:50:42Z",
+          "completed_at": "2026-11-03T01:54:00Z"
+        },
+        {
+          "id": 125673262170,
+          "name": "browser",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561601249/job/125673262170",
+          "started_at": "2026-11-03T01:48:27Z",
+          "completed_at": "2026-11-03T01:49:30Z"
+        },
+        {
+          "id": 125673261992,
+          "name": "local-integration",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561601136/job/125673261992",
+          "started_at": "2026-11-03T01:56:36Z",
+          "completed_at": "2026-11-03T02:00:01Z"
+        },
+        {
+          "id": 125673261937,
+          "name": "bounded-integration",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561601196/job/125673261937",
+          "started_at": "2026-11-03T01:49:26Z",
+          "completed_at": "2026-11-03T01:54:35Z"
+        },
+        {
+          "id": 125673261904,
+          "name": "browser",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561601208/job/125673261904",
+          "started_at": "2026-11-03T01:51:19Z",
+          "completed_at": "2026-11-03T01:52:33Z"
+        },
+        {
+          "id": 125673261899,
+          "name": "synthetic-crypto48",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561601202/job/125673261899",
+          "started_at": "2026-11-03T01:49:48Z",
+          "completed_at": "2026-11-03T01:50:21Z"
+        },
+        {
+          "id": 125673245135,
+          "name": "postgres17",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561595656/job/125673245135",
+          "started_at": "2026-11-03T02:01:47Z",
+          "completed_at": "2026-11-03T02:04:15Z"
+        },
+        {
+          "id": 125673244939,
+          "name": "verify",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "in_progress",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561595656/job/125673244939",
+          "started_at": "2026-11-03T02:01:53Z",
+          "completed_at": null
+        },
+        {
+          "id": 125673244887,
+          "name": "browser",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561595693/job/125673244887",
+          "started_at": "2026-11-03T02:00:58Z",
+          "completed_at": "2026-11-03T02:02:12Z"
+        },
+        {
+          "id": 125673244625,
+          "name": "local-preview",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561595518/job/125673244625",
+          "started_at": "2026-11-03T02:00:40Z",
+          "completed_at": "2026-11-03T02:01:45Z"
+        },
+        {
+          "id": 125673244601,
+          "name": "browser",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561595630/job/125673244601",
+          "started_at": "2026-11-03T01:55:26Z",
+          "completed_at": "2026-11-03T01:57:16Z"
+        },
+        {
+          "id": 125673244564,
+          "name": "synthetic-crypto48",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561595657/job/125673244564",
+          "started_at": "2026-11-03T01:44:20Z",
+          "completed_at": "2026-11-03T01:45:13Z"
+        },
+        {
+          "id": 125673244519,
+          "name": "local-preview",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561595536/job/125673244519",
+          "started_at": "2026-11-03T01:48:56Z",
+          "completed_at": "2026-11-03T01:49:45Z"
+        },
+        {
+          "id": 125673244434,
+          "name": "browser",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561595507/job/125673244434",
+          "started_at": "2026-11-03T01:45:35Z",
+          "completed_at": "2026-11-03T01:47:15Z"
+        },
+        {
+          "id": 125673244399,
+          "name": "browser",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561595564/job/125673244399",
+          "started_at": "2026-11-03T01:52:35Z",
+          "completed_at": "2026-11-03T01:54:08Z"
+        },
+        {
+          "id": 125673244330,
+          "name": "browser",
+          "head_sha": "c7a91e871b269f75883171f0d289488dcbf1c262",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561595551/job/125673244330",
+          "started_at": "2026-11-03T01:46:52Z",
+          "completed_at": "2026-11-03T01:48:24Z"
+        }
+      ]
+    },
+    {
+      "draft_pr": 109,
+      "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+      "branch": "codex/cycle15-addon-task-continuity",
+      "base": "codex/program-cycle-fifteen",
+      "observed_pr_state": "draft_open_unmerged",
+      "check_count": 27,
+      "checks": [
+        {
+          "id": 125671912454,
+          "name": "verify",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "in_progress",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561185338/job/125671912454",
+          "started_at": "2026-11-03T02:01:48Z",
+          "completed_at": null
+        },
+        {
+          "id": 125671912317,
+          "name": "local-preview",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561185389/job/125671912317",
+          "started_at": "2026-11-03T01:54:10Z",
+          "completed_at": "2026-11-03T01:55:29Z"
+        },
+        {
+          "id": 125671912259,
+          "name": "local-integration",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561185326/job/125671912259",
+          "started_at": "2026-11-03T01:45:17Z",
+          "completed_at": "2026-11-03T01:48:08Z"
+        },
+        {
+          "id": 125671912158,
+          "name": "browser",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561185245/job/125671912158",
+          "started_at": "2026-11-03T01:44:09Z",
+          "completed_at": "2026-11-03T01:45:28Z"
+        },
+        {
+          "id": 125671912122,
+          "name": "postgres17",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561185338/job/125671912122",
+          "started_at": "2026-11-03T02:00:03Z",
+          "completed_at": "2026-11-03T02:02:53Z"
+        },
+        {
+          "id": 125671911912,
+          "name": "browser",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561185164/job/125671911912",
+          "started_at": "2026-11-03T01:44:08Z",
+          "completed_at": "2026-11-03T01:45:37Z"
+        },
+        {
+          "id": 125671911874,
+          "name": "browser",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561185243/job/125671911874",
+          "started_at": "2026-11-03T01:49:33Z",
+          "completed_at": "2026-11-03T01:51:25Z"
+        },
+        {
+          "id": 125671911860,
+          "name": "local-preview",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561185211/job/125671911860",
+          "started_at": "2026-11-03T01:57:18Z",
+          "completed_at": "2026-11-03T01:58:40Z"
+        },
+        {
+          "id": 125671911803,
+          "name": "bounded-integration",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561185163/job/125671911803",
+          "started_at": "2026-11-03T01:47:42Z",
+          "completed_at": "2026-11-03T01:53:35Z"
+        },
+        {
+          "id": 125671911801,
+          "name": "browser",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561185179/job/125671911801",
+          "started_at": "2026-11-03T01:59:31Z",
+          "completed_at": "2026-11-03T02:00:46Z"
+        },
+        {
+          "id": 125671911758,
+          "name": "bounded-integration",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561185187/job/125671911758",
+          "started_at": "2026-11-03T01:41:28Z",
+          "completed_at": "2026-11-03T01:46:49Z"
+        },
+        {
+          "id": 125671911734,
+          "name": "bounded-integration",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561185229/job/125671911734",
+          "started_at": "2026-11-03T01:46:03Z",
+          "completed_at": "2026-11-03T01:56:03Z"
+        },
+        {
+          "id": 125671911563,
+          "name": "bounded-integration",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561185132/job/125671911563",
+          "started_at": "2026-11-03T01:45:15Z",
+          "completed_at": "2026-11-03T01:47:09Z"
+        },
+        {
+          "id": 125671911559,
+          "name": "browser",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561185129/job/125671911559",
+          "started_at": "2026-11-03T01:54:38Z",
+          "completed_at": "2026-11-03T01:56:17Z"
+        },
+        {
+          "id": 125671911552,
+          "name": "bounded-integration",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561185156/job/125671911552",
+          "started_at": "2026-11-03T01:56:10Z",
+          "completed_at": "2026-11-03T02:00:56Z"
+        },
+        {
+          "id": 125671911257,
+          "name": "bounded-integration",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561185137/job/125671911257",
+          "started_at": "2026-11-03T01:47:17Z",
+          "completed_at": "2026-11-03T01:49:23Z"
+        },
+        {
+          "id": 125671911157,
+          "name": "synthetic-crypto48",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561185138/job/125671911157",
+          "started_at": "2026-11-03T01:46:38Z",
+          "completed_at": "2026-11-03T01:47:39Z"
+        },
+        {
+          "id": 125671728592,
+          "name": "verify",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "in_progress",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561129780/job/125671728592",
+          "started_at": "2026-11-03T01:58:02Z",
+          "completed_at": null
+        },
+        {
+          "id": 125671728389,
+          "name": "postgres17",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561129780/job/125671728389",
+          "started_at": "2026-11-03T01:52:29Z",
+          "completed_at": "2026-11-03T01:54:30Z"
+        },
+        {
+          "id": 125671728099,
+          "name": "local-preview",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561129639/job/125671728099",
+          "started_at": "2026-11-03T01:56:19Z",
+          "completed_at": "2026-11-03T01:57:59Z"
+        },
+        {
+          "id": 125671728036,
+          "name": "browser",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561129641/job/125671728036",
+          "started_at": "2026-11-03T01:54:38Z",
+          "completed_at": "2026-11-03T01:56:07Z"
+        },
+        {
+          "id": 125671728019,
+          "name": "browser",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561129768/job/125671728019",
+          "started_at": "2026-11-03T01:41:32Z",
+          "completed_at": "2026-11-03T01:43:36Z"
+        },
+        {
+          "id": 125671727890,
+          "name": "browser",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561129627/job/125671727890",
+          "started_at": "2026-11-03T01:43:29Z",
+          "completed_at": "2026-11-03T01:45:42Z"
+        },
+        {
+          "id": 125671727654,
+          "name": "browser",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561129725/job/125671727654",
+          "started_at": "2026-11-03T01:51:08Z",
+          "completed_at": "2026-11-03T01:52:33Z"
+        },
+        {
+          "id": 125671727647,
+          "name": "browser",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561129695/job/125671727647",
+          "started_at": "2026-11-03T01:44:27Z",
+          "completed_at": "2026-11-03T01:45:22Z"
+        },
+        {
+          "id": 125671727402,
+          "name": "local-preview",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561129698/job/125671727402",
+          "started_at": "2026-11-03T01:56:56Z",
+          "completed_at": "2026-11-03T01:58:18Z"
+        },
+        {
+          "id": 125671727376,
+          "name": "synthetic-crypto48",
+          "head_sha": "7d6324ca0d488f19cd9a24d548ffbcc718265c6b",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41561129628/job/125671727376",
+          "started_at": "2026-11-03T01:47:12Z",
+          "completed_at": "2026-11-03T01:47:47Z"
+        }
+      ]
+    }
+  ],
+  "main": {
+    "draft_pr": 107,
+    "branch": "codex/program-cycle-fifteen",
+    "base": "codex/program-cycle-fourteen",
+    "head_sha": null,
+    "status": "AWAITING_FINAL_PUBLICATION_AT_SNAPSHOT",
+    "note": "This pre-publication source record cannot attest its own future commit hash. Verify the published exact head/checks separately after push; pending never implies PASS.",
+    "source_candidate_commit": "f8f7f0bea740ef4218aaa39d8ab8c91ca973f502"
+  },
+  "manual_reruns": 0,
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "prior_failed_heads": [
+    {
+      "draft_pr": 106,
+      "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+      "branch": "codex/cycle15-finance-review-path",
+      "base": "codex/program-cycle-fifteen",
+      "observed_pr_state": "draft_open_unmerged",
+      "check_count": 27,
+      "checks": [
+        {
+          "id": 125670301728,
+          "name": "bounded-integration",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560693186/job/125670301728",
+          "started_at": "2026-11-03T01:45:44Z",
+          "completed_at": "2026-11-03T01:48:28Z"
+        },
+        {
+          "id": 125670301637,
+          "name": "browser",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560693198/job/125670301637",
+          "started_at": "2026-11-03T01:42:41Z",
+          "completed_at": "2026-11-03T01:44:10Z"
+        },
+        {
+          "id": 125670301618,
+          "name": "browser",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560693271/job/125670301618",
+          "started_at": "2026-11-03T01:40:08Z",
+          "completed_at": "2026-11-03T01:41:31Z"
+        },
+        {
+          "id": 125670301416,
+          "name": "bounded-integration",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560693165/job/125670301416",
+          "started_at": "2026-11-03T01:39:45Z",
+          "completed_at": "2026-11-03T01:41:25Z"
+        },
+        {
+          "id": 125670301356,
+          "name": "synthetic-crypto48",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560693302/job/125670301356",
+          "started_at": "2026-11-03T01:48:16Z",
+          "completed_at": "2026-11-03T01:49:21Z"
+        },
+        {
+          "id": 125670301309,
+          "name": "local-integration",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560693082/job/125670301309",
+          "started_at": "2026-11-03T01:37:11Z",
+          "completed_at": "2026-11-03T01:39:43Z"
+        },
+        {
+          "id": 125670301101,
+          "name": "local-preview",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560692963/job/125670301101",
+          "started_at": "2026-11-03T01:41:08Z",
+          "completed_at": "2026-11-03T01:42:46Z"
+        },
+        {
+          "id": 125670301084,
+          "name": "bounded-integration",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560693002/job/125670301084",
+          "started_at": "2026-11-03T01:36:00Z",
+          "completed_at": "2026-11-03T01:48:15Z"
+        },
+        {
+          "id": 125670300927,
+          "name": "browser",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560692984/job/125670300927",
+          "started_at": "2026-11-03T01:37:23Z",
+          "completed_at": "2026-11-03T01:39:15Z"
+        },
+        {
+          "id": 125670300889,
+          "name": "bounded-integration",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560693005/job/125670300889",
+          "started_at": "2026-11-03T01:42:13Z",
+          "completed_at": "2026-11-03T01:47:08Z"
+        },
+        {
+          "id": 125670300832,
+          "name": "bounded-integration",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560693001/job/125670300832",
+          "started_at": "2026-11-03T01:47:18Z",
+          "completed_at": "2026-11-03T01:51:05Z"
+        },
+        {
+          "id": 125670300827,
+          "name": "verify",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "in_progress",
+          "conclusion": null,
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560692873/job/125670300827",
+          "started_at": "2026-11-03T01:41:58Z",
+          "completed_at": null
+        },
+        {
+          "id": 125670300679,
+          "name": "browser",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560692920/job/125670300679",
+          "started_at": "2026-11-03T01:54:18Z",
+          "completed_at": "2026-11-03T01:55:35Z"
+        },
+        {
+          "id": 125670300615,
+          "name": "local-preview",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560692865/job/125670300615",
+          "started_at": "2026-11-03T01:36:18Z",
+          "completed_at": "2026-11-03T01:37:09Z"
+        },
+        {
+          "id": 125670300394,
+          "name": "postgres17",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560692873/job/125670300394",
+          "started_at": "2026-11-03T01:36:36Z",
+          "completed_at": "2026-11-03T01:38:57Z"
+        },
+        {
+          "id": 125670300292,
+          "name": "bounded-integration",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560692890/job/125670300292",
+          "started_at": "2026-11-03T01:39:00Z",
+          "completed_at": "2026-11-03T01:44:18Z"
+        },
+        {
+          "id": 125670300123,
+          "name": "browser",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560692867/job/125670300123",
+          "started_at": "2026-11-03T01:37:35Z",
+          "completed_at": "2026-11-03T01:39:22Z"
+        },
+        {
+          "id": 125670279992,
+          "name": "verify",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "failure",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560686110/job/125670279992",
+          "started_at": "2026-11-03T01:35:39Z",
+          "completed_at": "2026-11-03T02:00:38Z"
+        },
+        {
+          "id": 125670279499,
+          "name": "postgres17",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560686110/job/125670279499",
+          "started_at": "2026-11-03T01:35:20Z",
+          "completed_at": "2026-11-03T01:38:08Z"
+        },
+        {
+          "id": 125670278990,
+          "name": "browser",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560685993/job/125670278990",
+          "started_at": "2026-11-03T01:36:58Z",
+          "completed_at": "2026-11-03T01:38:55Z"
+        },
+        {
+          "id": 125670278951,
+          "name": "browser",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560685902/job/125670278951",
+          "started_at": "2026-11-03T01:41:55Z",
+          "completed_at": "2026-11-03T01:43:20Z"
+        },
+        {
+          "id": 125670278895,
+          "name": "browser",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560685893/job/125670278895",
+          "started_at": "2026-11-03T01:35:20Z",
+          "completed_at": "2026-11-03T01:37:32Z"
+        },
+        {
+          "id": 125670278859,
+          "name": "synthetic-crypto48",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560685988/job/125670278859",
+          "started_at": "2026-11-03T01:50:03Z",
+          "completed_at": "2026-11-03T01:50:39Z"
+        },
+        {
+          "id": 125670278843,
+          "name": "browser",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560685898/job/125670278843",
+          "started_at": "2026-11-03T01:48:27Z",
+          "completed_at": "2026-11-03T01:50:00Z"
+        },
+        {
+          "id": 125670278707,
+          "name": "local-preview",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560685888/job/125670278707",
+          "started_at": "2026-11-03T01:35:20Z",
+          "completed_at": "2026-11-03T01:37:08Z"
+        },
+        {
+          "id": 125670278515,
+          "name": "local-preview",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560685883/job/125670278515",
+          "started_at": "2026-11-03T01:50:42Z",
+          "completed_at": "2026-11-03T01:51:41Z"
+        },
+        {
+          "id": 125670278391,
+          "name": "browser",
+          "head_sha": "622c33e6ea24dd6d9d856d9547b71ee5740b05a4",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560685931/job/125670278391",
+          "started_at": "2026-11-03T01:41:36Z",
+          "completed_at": "2026-11-03T01:42:56Z"
+        }
+      ]
+    },
+    {
+      "draft_pr": 105,
+      "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+      "branch": "codex/cycle15-service-review-path",
+      "base": "codex/program-cycle-fifteen",
+      "observed_pr_state": "draft_open_unmerged",
+      "check_count": 27,
+      "checks": [
+        {
+          "id": 125669056122,
+          "name": "verify",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "failure",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560302184/job/125669056122",
+          "started_at": "2026-11-03T01:35:46Z",
+          "completed_at": "2026-11-03T02:00:06Z"
+        },
+        {
+          "id": 125669056076,
+          "name": "local-preview",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560302335/job/125669056076",
+          "started_at": "2026-11-03T01:35:46Z",
+          "completed_at": "2026-11-03T01:36:56Z"
+        },
+        {
+          "id": 125669056041,
+          "name": "browser",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560302249/job/125669056041",
+          "started_at": "2026-11-03T01:34:44Z",
+          "completed_at": "2026-11-03T01:36:15Z"
+        },
+        {
+          "id": 125669055950,
+          "name": "browser",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560302263/job/125669055950",
+          "started_at": "2026-11-03T01:32:07Z",
+          "completed_at": "2026-11-03T01:33:32Z"
+        },
+        {
+          "id": 125669055931,
+          "name": "bounded-integration",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560302153/job/125669055931",
+          "started_at": "2026-11-03T01:31:54Z",
+          "completed_at": "2026-11-03T01:35:17Z"
+        },
+        {
+          "id": 125669055709,
+          "name": "local-preview",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560302208/job/125669055709",
+          "started_at": "2026-11-03T01:33:21Z",
+          "completed_at": "2026-11-03T01:34:53Z"
+        },
+        {
+          "id": 125669055707,
+          "name": "local-integration",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560302140/job/125669055707",
+          "started_at": "2026-11-03T01:34:54Z",
+          "completed_at": "2026-11-03T01:37:27Z"
+        },
+        {
+          "id": 125669055681,
+          "name": "bounded-integration",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560302309/job/125669055681",
+          "started_at": "2026-11-03T01:33:25Z",
+          "completed_at": "2026-11-03T01:43:29Z"
+        },
+        {
+          "id": 125669055639,
+          "name": "browser",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560302268/job/125669055639",
+          "started_at": "2026-11-03T01:32:51Z",
+          "completed_at": "2026-11-03T01:33:48Z"
+        },
+        {
+          "id": 125669055636,
+          "name": "bounded-integration",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560302215/job/125669055636",
+          "started_at": "2026-11-03T01:35:04Z",
+          "completed_at": "2026-11-03T01:40:02Z"
+        },
+        {
+          "id": 125669055625,
+          "name": "postgres17",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560302184/job/125669055625",
+          "started_at": "2026-11-03T01:33:23Z",
+          "completed_at": "2026-11-03T01:35:30Z"
+        },
+        {
+          "id": 125669055613,
+          "name": "bounded-integration",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560302174/job/125669055613",
+          "started_at": "2026-11-03T01:36:56Z",
+          "completed_at": "2026-11-03T01:40:35Z"
+        },
+        {
+          "id": 125669055563,
+          "name": "browser",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560302179/job/125669055563",
+          "started_at": "2026-11-03T01:37:11Z",
+          "completed_at": "2026-11-03T01:38:55Z"
+        },
+        {
+          "id": 125669055385,
+          "name": "bounded-integration",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560302195/job/125669055385",
+          "started_at": "2026-11-03T01:32:24Z",
+          "completed_at": "2026-11-03T01:33:53Z"
+        },
+        {
+          "id": 125669055371,
+          "name": "bounded-integration",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560302200/job/125669055371",
+          "started_at": "2026-11-03T01:31:55Z",
+          "completed_at": "2026-11-03T01:35:18Z"
+        },
+        {
+          "id": 125669055018,
+          "name": "synthetic-crypto48",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560302124/job/125669055018",
+          "started_at": "2026-11-03T01:32:40Z",
+          "completed_at": "2026-11-03T01:33:18Z"
+        },
+        {
+          "id": 125669054855,
+          "name": "browser",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560302143/job/125669054855",
+          "started_at": "2026-11-03T01:31:47Z",
+          "completed_at": "2026-11-03T01:33:21Z"
+        },
+        {
+          "id": 125668684342,
+          "name": "browser",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560185043/job/125668684342",
+          "started_at": "2026-11-03T01:34:23Z",
+          "completed_at": "2026-11-03T01:35:43Z"
+        },
+        {
+          "id": 125668683794,
+          "name": "postgres17",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560185040/job/125668683794",
+          "started_at": "2026-11-03T01:32:23Z",
+          "completed_at": "2026-11-03T01:34:41Z"
+        },
+        {
+          "id": 125668683518,
+          "name": "browser",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560185037/job/125668683518",
+          "started_at": "2026-11-03T01:33:14Z",
+          "completed_at": "2026-11-03T01:34:21Z"
+        },
+        {
+          "id": 125668683410,
+          "name": "synthetic-crypto48",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560185099/job/125668683410",
+          "started_at": "2026-11-03T01:31:20Z",
+          "completed_at": "2026-11-03T01:32:38Z"
+        },
+        {
+          "id": 125668683361,
+          "name": "verify",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "failure",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560185040/job/125668683361",
+          "started_at": "2026-11-03T01:30:52Z",
+          "completed_at": "2026-11-03T01:55:20Z"
+        },
+        {
+          "id": 125668683302,
+          "name": "local-preview",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560185030/job/125668683302",
+          "started_at": "2026-11-03T01:33:31Z",
+          "completed_at": "2026-11-03T01:34:40Z"
+        },
+        {
+          "id": 125668683292,
+          "name": "browser",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560185058/job/125668683292",
+          "started_at": "2026-11-03T01:31:23Z",
+          "completed_at": "2026-11-03T01:33:24Z"
+        },
+        {
+          "id": 125668683226,
+          "name": "browser",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560184977/job/125668683226",
+          "started_at": "2026-11-03T01:32:11Z",
+          "completed_at": "2026-11-03T01:34:13Z"
+        },
+        {
+          "id": 125668683119,
+          "name": "browser",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560184983/job/125668683119",
+          "started_at": "2026-11-03T01:34:43Z",
+          "completed_at": "2026-11-03T01:35:57Z"
+        },
+        {
+          "id": 125668683089,
+          "name": "local-preview",
+          "head_sha": "05380cf1c85294e768e65258480dae80862e539a",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41560185044/job/125668683089",
+          "started_at": "2026-11-03T01:32:35Z",
+          "completed_at": "2026-11-03T01:33:29Z"
+        }
+      ]
+    }
+  ],
+  "correction_record": "docs/program/CYCLE15_CI_CORRECTION.md"
+}

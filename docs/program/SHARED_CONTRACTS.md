@@ -1,5 +1,25 @@
 # Shared contracts and integration ownership
 
+## Cycle15 task paths within the existing source host
+
+One explicit local guided-path checkbox defaults false and replaces only the six
+existing Cycle14 renderer slots. Their IDs, labels, group and same OperatingSources
+host remain authoritative; no extra navigation inventory or environment is created.
+The only retained-host addition exports its existing readonly group list. A source
+hash regression proves every other host/App-route byte remains exact. Renderers
+receive the same independently checked selectedJobId hint and original callback.
+Navigation is not authorization, and changing mode never resets original holds.
+
+Each new consumer follows actual existing readers, retains exact local detail and
+checks again before returning. A local return works while its component remains
+mounted; host navigation may unmount that context and never renews a review. Advanced
+Return/Resume keeps its original controls mounted rather than copying their state.
+Request-to-job association remains UNKNOWN absent a recorded FK; staff-selected
+context is explicit. Financial events use actual immutable IDs/content, invoice
+snapshots/hashes, job revisions and as-of evidence, never invented version fields.
+Test-only consent laboratories do not confer browser/operational sending authority.
+No new canonical store, business engine, ledger, schema or connected route exists.
+
 ## Cycle14 pinned workflow entry
 
 The existing OperatingReviewPanel presentation contract gains only optional

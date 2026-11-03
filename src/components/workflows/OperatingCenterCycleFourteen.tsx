@@ -48,3 +48,5 @@ const groups: readonly OperatingReviewGroup[] = [
 export function OperatingCenterCycleFourteen() {
   return <OperatingCenterCycleThirteen additionalReviewGroups={groups} />;
 }
+
+export { groups as cycle14ContinuityGroups };

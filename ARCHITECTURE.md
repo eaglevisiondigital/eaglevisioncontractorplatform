@@ -1,5 +1,16 @@
 # Platform architecture · shared foundation through internal Phase 3A
 
+## Cycle15 task continuity is source composition
+
+Six narrow consumers compose the existing field, financial, service/Passport,
+maintenance, suggestion and advanced-control readers. One default-off presentation
+switch replaces existing renderer slots in the same host, without a second source
+environment, navigation registry, attempt owner, business store or engine. Local
+return context is a retained reference, not persistence or authority. Source/version,
+current membership, gate and original UNKNOWN checks apply before/after reads and
+return/navigation. Unrecorded relationships and missing evidence remain UNKNOWN.
+All independent operational/recovery/security/financial release gates persist.
+
 ## Cycle14 exact-source workflow continuity
 
 Six additive local continuity panels reuse the existing OperatingSources and all

@@ -1,0 +1,334 @@
+{
+  "schema": "propel-cycle14-ci-reconciliation-v1",
+  "observed_at": "2026-11-03T01:02:58.135546+00:00",
+  "implementation_pr": 96,
+  "implementation_head": "610e38abc37a16a9a894e946c0c4c4df16120985",
+  "original_failure": {
+    "head": "876ea772c39fbe21f1014dc203951e41752dd854",
+    "run": 41549008289,
+    "artifact": 13190407765,
+    "passed": 405,
+    "failed": 2,
+    "reason": "Two mkdtemp fixtures assumed macOS /private/tmp; Ubuntu ENOENT before assertions",
+    "detail": "CYCLE14_CI_CORRECTION.json"
+  },
+  "correction": {
+    "scope": "OS-native temporary prefix in two test fixtures; no assertion/timeout/product/protected change",
+    "focused_tests": 16,
+    "independent_review": "CLEAR; normalized corrected file exactly reproduces original assertions"
+  },
+  "corrected_artifact": {
+    "run": 41551530586,
+    "artifact": 13193242283,
+    "zip_sha256": "d3c679140cb55526f28792c8eb06519f920a2e66883bab35d53473bfe1f21575",
+    "json_sha256": "26d033faf6e0e6b8b712906e8cd867646f5a241e884268d3014de9b60384e9fd",
+    "digest_independently_verified": true,
+    "actual_passed": 407,
+    "failed": 0,
+    "pending": 0,
+    "browser_development": 63,
+    "browser_production_off": 3,
+    "browser_gallery": 3,
+    "actual_pngs": 72
+  },
+  "checks": [
+    {
+      "name": "postgres17",
+      "id": 125640466697,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551530611/job/125640466697"
+    },
+    {
+      "name": "verify",
+      "id": 125640466293,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551530611/job/125640466293"
+    },
+    {
+      "name": "bounded-integration",
+      "id": 125640047317,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551531396/job/125640047317"
+    },
+    {
+      "name": "bounded-integration",
+      "id": 125640044500,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551531119/job/125640044500"
+    },
+    {
+      "name": "synthetic-crypto48",
+      "id": 125640044080,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551530725/job/125640044080"
+    },
+    {
+      "name": "bounded-integration",
+      "id": 125640043903,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551530749/job/125640043903"
+    },
+    {
+      "name": "local-integration",
+      "id": 125640043883,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551530705/job/125640043883"
+    },
+    {
+      "name": "bounded-integration",
+      "id": 125640043833,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551530748/job/125640043833"
+    },
+    {
+      "name": "local-preview",
+      "id": 125640043546,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551530713/job/125640043546"
+    },
+    {
+      "name": "bounded-integration",
+      "id": 125640043322,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551530712/job/125640043322"
+    },
+    {
+      "name": "browser",
+      "id": 125640043206,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551530642/job/125640043206"
+    },
+    {
+      "name": "browser",
+      "id": 125640042976,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551530631/job/125640042976"
+    },
+    {
+      "name": "bounded-integration",
+      "id": 125640042853,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551530629/job/125640042853"
+    },
+    {
+      "name": "local-preview",
+      "id": 125640042802,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551530587/job/125640042802"
+    },
+    {
+      "name": "browser",
+      "id": 125640042786,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551530614/job/125640042786"
+    },
+    {
+      "name": "browser",
+      "id": 125640042772,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551530688/job/125640042772"
+    },
+    {
+      "name": "bounded-integration",
+      "id": 125640042754,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551530586/job/125640042754"
+    },
+    {
+      "name": "bounded-integration",
+      "id": 125640042587,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551530582/job/125640042587"
+    },
+    {
+      "name": "browser",
+      "id": 125640042584,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551530588/job/125640042584"
+    },
+    {
+      "name": "postgres17",
+      "id": 125640016298,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551522379/job/125640016298"
+    },
+    {
+      "name": "local-preview",
+      "id": 125640016125,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551522384/job/125640016125"
+    },
+    {
+      "name": "local-preview",
+      "id": 125640016081,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551522362/job/125640016081"
+    },
+    {
+      "name": "verify",
+      "id": 125640015941,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551522379/job/125640015941"
+    },
+    {
+      "name": "bounded-integration",
+      "id": 125640015806,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551522291/job/125640015806"
+    },
+    {
+      "name": "browser",
+      "id": 125640015799,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551522321/job/125640015799"
+    },
+    {
+      "name": "browser",
+      "id": 125640015762,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551522330/job/125640015762"
+    },
+    {
+      "name": "browser",
+      "id": 125640015747,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551522277/job/125640015747"
+    },
+    {
+      "name": "synthetic-crypto48",
+      "id": 125640015705,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551522273/job/125640015705"
+    },
+    {
+      "name": "browser",
+      "id": 125640015584,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551522278/job/125640015584"
+    },
+    {
+      "name": "browser",
+      "id": 125640015490,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41551522271/job/125640015490"
+    }
+  ],
+  "check_counts": {
+    "total": 30,
+    "success": 30,
+    "pending": 0,
+    "failed": 0,
+    "cancelled": 0
+  },
+  "child_heads": [
+    {
+      "pr": 97,
+      "head": "8a89b92efa749d6e685c0b2f6791bdf75cf3c0a9",
+      "foundation_run": 41544676736,
+      "foundation": "cancelled",
+      "native_postgres17": "success",
+      "draft": true,
+      "merged": false,
+      "cancellation_reason": "Provider annotation: job exceeded maximum execution time of25m0s"
+    },
+    {
+      "pr": 98,
+      "head": "6be1e3daf6b3bd285542424746b8875a8be0847b",
+      "foundation_run": 41544760255,
+      "foundation": "cancelled",
+      "native_postgres17": "success",
+      "draft": true,
+      "merged": false,
+      "cancellation_reason": "Provider annotation: job exceeded maximum execution time of25m0s"
+    },
+    {
+      "pr": 99,
+      "head": "1be7d564c8b938c328435a24a30badd8bd51a9ad",
+      "foundation_run": 41544766116,
+      "foundation": "cancelled",
+      "native_postgres17": "success",
+      "draft": true,
+      "merged": false,
+      "cancellation_reason": "Provider annotation: job exceeded maximum execution time of25m0s"
+    },
+    {
+      "pr": 100,
+      "head": "6bb886ca1f080d06dd4bfc6e09a1b63116edb74f",
+      "foundation_run": 41544767998,
+      "foundation": "success",
+      "native_postgres17": "success",
+      "draft": true,
+      "merged": false,
+      "cancellation_reason": null
+    },
+    {
+      "pr": 101,
+      "head": "748c3f5ec3bac65539a7614b8829d66f77298135",
+      "foundation_run": 41544905041,
+      "foundation": "cancelled",
+      "native_postgres17": "success",
+      "draft": true,
+      "merged": false,
+      "cancellation_reason": "Provider annotation: job exceeded maximum execution time of25m0s"
+    },
+    {
+      "pr": 102,
+      "head": "cbe634562a311c4a5569c76cfec919e90d57adfe",
+      "foundation_run": 41545157350,
+      "foundation": "cancelled",
+      "native_postgres17": "success",
+      "draft": true,
+      "merged": false,
+      "cancellation_reason": "Provider annotation: job exceeded maximum execution time of25m0s"
+    }
+  ],
+  "unchanged_child_cancellations_replayed": false,
+  "successful_manual_reruns": 0,
+  "old_failed_outcome_preserved": true,
+  "cycle15": "PREPARED_ONLY_IMPLEMENTATION_NOT_STARTED",
+  "cycle15_brief_independent_review": {
+    "agent": "/root/cycle13_independent_review",
+    "verdict": "CLEAR_FOR_PREPARATION_ONLY",
+    "source_files_confirmed": 19,
+    "unique_absent_reserved_paths": 30,
+    "actions": "read-only; no edits/tests/commits/GitHub mutations"
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "all_corrected_head_checks_success": true,
+  "foundation_runs": {
+    "pull_request": 41551530611,
+    "push": 41551522379,
+    "conclusion": "success",
+    "verify_and_postgres17": "success"
+  }
+}

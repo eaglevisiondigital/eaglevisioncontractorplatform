@@ -1,5 +1,40 @@
 # Engineering decisions
 
+## Cycle15 · retain exact task context through original review controls
+
+Compose six narrow default-OFF consumers in the original continuity slots; do not
+create another navigation registry, canonical store, estimate/ledger engine or source
+relationship. Main alone owns composition/contracts/evidence. Six child drafts keep
+exact five-path ownership and the reconciled610e38 source parent. The same source
+host survives presentation-mode changes; explicit confirmations and original holds
+remain mandatory. Local Return/Resume does not renew an expiry or retry UNKNOWN.
+Advanced retains the same original control instance rather than remounting its state.
+
+Current request types lack request→estimate/job FK: show UNKNOWN and separately
+confirmed staff context, never fabricate a positive link. Financial event/posting
+identity uses exact immutable content/IDs; invoice snapshot/hash, issued source,
+job revision and as-of retain their actual roles. Cost/availability/consent gaps do
+not imply zero, repair, permission or successful delivery. Preserve all approved
+visuals and separately pending Operating Center/advanced approval. Local tests and
+CI evidence never promote capability, security, hosted or release acceptance.
+
+## Cycle14 reconciliation and separate Cycle15 preparation
+
+Keep the test-only OS-native temporary-directory correction at exact610e38a on
+draft96. Preserve the original failed405/407 artifact and its two ENOENT setup
+failures; the corrected raw CI artifact reports407/407. All assertions, protected
+guards and feature author blobs remain unchanged. Normal automatic checks are not
+manual reruns, and successful history or known-budget child cancellations are not
+replayed. Exact run outcomes belong in the timestamped reconciliation record.
+
+Prepare the next six independent packages on a separate docs-only plan branch.
+Use existing source contracts and original controls, finite disjoint file ownership
+and fewer repeated task selections; do not add another navigation inventory or
+business engine. Recorded links differ from staff context; immutable financial
+events have no invented version field; consent labs remain disposable test-only.
+Independent review is CLEAR for preparation, not implementation or release.
+All previous author/source/design/financial/recovery/hosted gates stay intact.
+
 ## Cycle14 CI · platform-native temporary fixtures
 
 Use Node tmpdir plus path.join for the two gallery-output safety fixture roots.
