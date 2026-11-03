@@ -1,0 +1,92 @@
+.maintenance-plan-correction {
+  min-width: 0;
+  color: #20352f;
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+}
+.maintenance-plan-correction .maintenance-plan-form {
+  min-width: 0;
+  margin: 0 0 1.25rem;
+  padding: 1.1rem;
+  background: #fff;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+}
+.maintenance-plan-correction .maintenance-plan-form h3 {
+  margin: 0 0 0.75rem;
+}
+.maintenance-plan-correction .maintenance-plan-form label {
+  display: block;
+  margin: 0.8rem 0;
+  color: #526159;
+}
+.maintenance-plan-correction .maintenance-plan-form input,
+.maintenance-plan-correction .maintenance-plan-form select,
+.maintenance-plan-correction .maintenance-plan-form button {
+  min-height: 44px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.maintenance-plan-correction
+  .maintenance-plan-form
+  input:not([type='checkbox']),
+.maintenance-plan-correction .maintenance-plan-form select {
+  width: 100%;
+}
+.maintenance-plan-correction .maintenance-plan-form button {
+  margin: 0.4rem 0.5rem 0.4rem 0;
+  background: var(--journey-primary, #00543e);
+  color: #fff;
+  white-space: normal;
+}
+.maintenance-plan-correction .maintenance-plan-form button:disabled {
+  opacity: 0.65;
+}
+.maintenance-plan-correction .maintenance-plan-form dt {
+  color: #526159;
+}
+.maintenance-plan-correction .maintenance-plan-form dd {
+  margin: 0 0 0.7rem;
+}
+.maintenance-plan-correction .maintenance-plan-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.maintenance-plan-correction .maintenance-plan-check {
+  display: flex !important;
+  gap: 0.6rem;
+  align-items: center;
+  min-height: 44px;
+}
+.maintenance-plan-correction .maintenance-plan-check input {
+  flex: 0 0 24px;
+  min-height: 24px;
+  width: 24px;
+  height: 24px;
+}
+.maintenance-plan-correction .maintenance-plan-form :focus-visible {
+  outline: 3px solid var(--journey-accent, #dfb461);
+  outline-offset: 4px;
+}
+.maintenance-plan-correction > details > summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #526159;
+}
+.maintenance-plan-correction > details > summary:focus-visible {
+  outline: 3px solid var(--journey-accent, #dfb461);
+  outline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .maintenance-plan-correction .maintenance-plan-fields {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .maintenance-plan-correction .maintenance-plan-form button {
+    width: 100%;
+    margin: 0.4rem 0;
+  }
+}
