@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { journeyEnabled } from '../../lib/workflows/journey-runtime';
 import {
   captureOperatingSources,
@@ -118,8 +118,15 @@ function Guide({ sources, selectedJobId, onSelectJob }: DailyFieldGuideProps) {
     );
   const gate = useRef({ enabled: true, confirmed: false }),
     live = useRef(true),
+    currentCallback = useRef(onSelectJob),
     pending = useRef(false),
     heading = useRef<HTMLHeadingElement>(null);
+  useLayoutEffect(() => {
+    currentCallback.current = onSelectJob;
+    return () => {
+      currentCallback.current = undefined;
+    };
+  }, [onSelectJob]);
   useEffect(() => {
     live.current = true;
     const own = gate.current;
@@ -466,7 +473,14 @@ function Guide({ sources, selectedJobId, onSelectJob }: DailyFieldGuideProps) {
                   disabled={busy}
                   onClick={() =>
                     void run(async () => {
-                      await navigateDailyFieldJob(current, onSelectJob);
+                      const callback = onSelectJob;
+                      await navigateDailyFieldJob(current, (jobId, section) => {
+                        if (
+                          live.current &&
+                          currentCallback.current === callback
+                        )
+                          callback(jobId, section);
+                      });
                     })
                   }
                 >
@@ -484,7 +498,17 @@ function Guide({ sources, selectedJobId, onSelectJob }: DailyFieldGuideProps) {
                 sources={sources}
                 enabled
                 selectedJobId={current.source.job_id}
-                onSelectJob={onSelectJob}
+                onSelectJob={
+                  onSelectJob
+                    ? (jobId) => {
+                        if (
+                          live.current &&
+                          currentCallback.current === onSelectJob
+                        )
+                          onSelectJob(jobId);
+                      }
+                    : undefined
+                }
               />
             </div>
           )}
