@@ -9,6 +9,8 @@ import {
   mkdtempSync,
 } from 'node:fs';
 import { createHash } from 'node:crypto';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import {
   createOwnerVisualReview,
   readReviewImage,
@@ -212,7 +214,7 @@ it('rejects symlink image evidence and requires local regular files', () => {
 });
 
 it('refuses hard-linked output HTML and manifest without changing either link', () => {
-  const root = mkdtempSync('/private/tmp/propel-c14-output-');
+  const root = mkdtempSync(join(tmpdir(), 'propel-c14-output-'));
   try {
     mkdirSync(`${root}/artifacts/cycle14`, { recursive: true });
     writeFileSync(`${root}/sentinel`, 'retain exact original');
@@ -235,7 +237,7 @@ it('refuses hard-linked output HTML and manifest without changing either link', 
   }
 });
 it('atomically replaces only the two exact regular local outputs', () => {
-  const root = mkdtempSync('/private/tmp/propel-c14-output-');
+  const root = mkdtempSync(join(tmpdir(), 'propel-c14-output-'));
   try {
     for (const file of ['owner-visual-review.html', 'visual-manifest.json']) {
       const p = `artifacts/cycle14/${file}`;

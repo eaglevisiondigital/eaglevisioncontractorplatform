@@ -1,5 +1,19 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Cycle14 CI portability correction
+
+Exact876ea772c39fbe21f1014dc203951e41752dd854 dedicated run41549008289
+FAILED405PASS/2FAIL. The verified artifact shows both gallery-output safety fixtures
+failed at mkdtemp before assertions because Ubuntu has no /private/tmp. They now use
+join(tmpdir(),prefix). All16focused visual cases PASS. Normalizing only those two
+prefixes/imports reproduces the entire original test file exactly: no assertion,
+timeout, output guard, protected file or product behavior changed.
+[Exact artifact and correction](docs/program/CYCLE14_CI_CORRECTION.json).
+New-head normal automatic CI remains separate; no successful check is restarted.
+Prior successful Cycle12/13 integrations are preserved. The failed407case run is not
+called passed and the new full CI outcome is checked after publication, in PR96.
+All existing security/recovery/financial/hosted/release restrictions remain unchanged.
+
 ## Latest: Cycle14 · exact-source workflow continuity
 
 Main codex/program-cycle-fourteen, draft96, composes six separate drafts97–102

@@ -1,5 +1,18 @@
 # Product program delivery status
 
+## Cycle14 exact-head CI reconciliation
+
+Main876ea772c39fbe21f1014dc203951e41752dd854 dedicated41549008289 failed
+405PASS/2FAIL. Artifact13190407765 was downloaded and its ZIP digest independently
+verified. Both failures are the macOS-only /private/tmp fixture prefix in the two
+hard-link/atomic-output tests. No business assertion failed. The corrected native
+OS temporary path passes16/16 while preserving every prior assertion and guard.
+[Exact source, case identities and artifact hashes](program/CYCLE14_CI_CORRECTION.json).
+Existing successful runs remain untouched; normal new-head CI is inspected in PR96
+after publication. Pending remains pending; the old failed outcome stays recorded.
+All author heads, draft status, source indexes, locked design and release gates remain
+unchanged. Cycle15 assignments are prepared only after this CI reconciliation.
+
 ## Cycle14 · cohesive exact-source operating entry
 
 Main [draft96](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/96),

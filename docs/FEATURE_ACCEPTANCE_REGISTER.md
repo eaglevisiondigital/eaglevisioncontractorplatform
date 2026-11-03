@@ -1,5 +1,15 @@
 # Propel Contractor Suite — feature acceptance register
 
+## Cycle14 runner portability · no acceptance promotion
+
+The first exact876ea772 dedicated run FAILED405/407 because two temporary-directory
+fixtures assumed macOS /private/tmp. Both safety assertions remain intact and pass
+16/16 with the OS-native temporary prefix. The original failed artifact and exact
+test-only correction remain in [CYCLE14_CI_CORRECTION.json](program/CYCLE14_CI_CORRECTION.json).
+This does not change any capability stage, visual approval, protected source or
+operational/release gate. New-head CI is separately checked after publication; no
+successful old run is restarted and no pending run is called green.
+
 ## Cycle14 · source-bound continuity, local evidence only
 
 Six unmerged feature drafts97–102 are composed on Main96 from exact8079d2b.

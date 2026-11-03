@@ -1,5 +1,15 @@
 # Engineering decisions
 
+## Cycle14 CI · platform-native temporary fixtures
+
+Use Node tmpdir plus path.join for the two gallery-output safety fixture roots.
+The failed Ubuntu artifact proves /private/tmp was absent before the assertions
+could run. Preserve every hard-link, atomic replacement, exact output and cleanup
+assertion and all product/protected bytes. Correct only the demonstrated test-path
+assumption; do not create a macOS directory on the runner, skip tests, retry a known
+failure or widen timeouts. Preserve exact successful CI and record new-head results
+separately. Local tests never promote release or visual acceptance.
+
 ## Cycle14 use inspected source identity for explicit workflow entry
 
 Retain all original engines and author bytes. Pass a currently captured selected-job
