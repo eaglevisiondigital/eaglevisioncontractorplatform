@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useId, useRef, useState } from 'react';
 import { formatMinor } from '../../domain/estimating/calculation';
 import { prototypeFields } from '../../lib/program/prototype-source';
 import {
@@ -137,7 +137,8 @@ function Guide({
   const id = useId(),
     epoch = useRef(0),
     gate = useRef({ enabled: true, confirmed: false }),
-    heading = useRef<HTMLHeadingElement>(null);
+    heading = useRef<HTMLHeadingElement>(null),
+    latestCallback = useRef<typeof onSelectJob>(undefined);
   const [confirmed, confirm] = useState(false),
     [busy, setBusy] = useState(false),
     [review, setReview] = useState<FinancialCaseworkReview | null>(null),
@@ -161,6 +162,12 @@ function Guide({
       admission.current.confirmed = false;
     };
   }, [sources]);
+  useLayoutEffect(() => {
+    latestCallback.current = onSelectJob;
+    return () => {
+      latestCallback.current = undefined;
+    };
+  }, [onSelectJob]);
   useEffect(() => {
     if (selected) heading.current?.focus();
   }, [selected, showSource]);
@@ -542,9 +549,23 @@ function Guide({
                               section !== 'finance'
                             )
                               throw Error('Exact financial navigation only');
+                            const expected = onSelectJob;
                             if (
-                              navigateDailyFinanceReview(selected, onSelectJob)
-                                .status === 'UNKNOWN'
+                              !expected ||
+                              latestCallback.current !== expected
+                            )
+                              throw Error('Current financial callback changed');
+                            if (
+                              navigateDailyFinanceReview(
+                                selected,
+                                (targetId, targetSection) => {
+                                  if (latestCallback.current !== expected)
+                                    throw Error(
+                                      'Current financial callback changed',
+                                    );
+                                  expected(targetId, targetSection);
+                                },
+                              ).status === 'UNKNOWN'
                             )
                               throw Error('Current guide navigation UNKNOWN');
                           }

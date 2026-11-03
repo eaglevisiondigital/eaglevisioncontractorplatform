@@ -52,6 +52,16 @@ financial projections never enter customer/technician output; private notes, sup
 unit costs and workforce rates remain excluded. No cost/ledger/invoice/payment writer,
 external request, sender, dispatch, provider, credential, schema or hosted capability.
 
+The original source control's host callback also checks that its captured onSelectJob
+still equals the latest committed callback before delegation and inside the final
+original navigation callback. A useLayoutEffect synchronizes the live ref and clears
+it on cleanup. Callback changes do not remount the guide/source controls or reset
+holds; stale/withdrawn callbacks are rejected rather than called or replaced. Main's
+delayed actual browser regression owns mounted callback-race evidence. This bounded
+correction changes only this package's consumer/documentation; canonical APIs remain
+unchanged. All29 focused cases PASS again, zero skipped (23.17s suite; slowest4.53s),
+with strict/generated types, component ESLint, scoped Prettier and diff checks PASS.
+
 Region: **Daily financial guide**. Actions/labels: **Read daily financial sources**,
 **Search daily financial evidence**, **Financial review area**, **Exact financial job**,
 **Inspect next financial review**, **Open original financial source path**,
