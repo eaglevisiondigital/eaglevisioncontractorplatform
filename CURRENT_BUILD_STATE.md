@@ -1,5 +1,27 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Cycle16 · daily guides in isolated local development
+
+Main draft111 (`codex/program-cycle-sixteen`) preserves exact Cycle15 parent
+b4014771050b28d1ec1dffd0fa42cb3617a5fae9. Six bounded packages use original
+sources/engines and the same six continuity destinations; an independent default-false
+presentation opt-in and original-reader shared search reduce repeated job selection.
+Implementation and combined validation are in progress; exact final source, test and
+CI evidence will be recorded in the Cycle16 delivery index and validation record.
+No operational or release acceptance is claimed.
+
+[Cycle15 CI closeout](docs/program/CYCLE15_CLOSEOUT_CI_RECONCILIATION.md) retains the
+cancelled45-minute PR job separately from full equivalent-tree exact-head push
+Foundation/297browser/nativePG17/dedicated PASS. No unique coverage is missing and
+no manual rerun, budget change or assertion removal was necessary.
+
+All original25capability states/18IDs/eight closed PhaseOne gates/three approved
+design scopes remain unchanged. Operating Center/advanced visuals remain separately
+PENDING. All protected artifacts, recovery/Auth/MFA/NMI/customer14/4B/Netlify/financial/
+provider/communication/hosted/production gates persist. No merge, deployment, hosted
+mutation, dispatch, payment or customer communication. Release1.0 NOT READY /
+NOT AUTHORIZED.
+
 ## Cycle15 · source-bound guided task paths (local only)
 
 Main `codex/program-cycle-fifteen`, draft107, composes six exact author commits

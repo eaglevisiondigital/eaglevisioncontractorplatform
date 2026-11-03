@@ -1,0 +1,82 @@
+.daily-guide-search {
+  border: 1px solid #dce4df;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 20px;
+  background: #f7f7f1;
+  color: #20352f;
+}
+.daily-guide-search span {
+  overflow-wrap: anywhere;
+}
+.daily-guide-search form {
+  display: grid;
+  grid-template-columns: minmax(180px, 2fr) minmax(150px, 1fr) auto;
+  gap: 12px;
+  align-items: end;
+}
+.daily-guide-search label {
+  display: grid;
+  gap: 8px;
+  font-weight: 600;
+  color: #20352f;
+}
+.daily-guide-search input,
+.daily-guide-search select {
+  min-width: 0;
+  width: 100%;
+  min-height: 44px;
+  box-sizing: border-box;
+}
+.daily-guide-search button {
+  min-height: 44px;
+  height: auto;
+  white-space: normal;
+  background: var(--journey-primary, #247364);
+  color: white;
+  border: 1px solid var(--journey-primary, #247364);
+  border-radius: 9px;
+  padding: 10px 14px;
+}
+.daily-guide-search button:disabled {
+  opacity: 0.55;
+}
+.daily-guide-search button:focus-visible {
+  outline: 3px solid var(--journey-primary, #247364);
+  outline-offset: 3px;
+}
+.daily-guide-results {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+.daily-guide-results article {
+  background: white;
+  border: 1px solid #dce4df;
+  border-radius: 12px;
+  padding: 16px;
+  min-width: 0;
+}
+.daily-guide-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+@media (max-width: 800px) {
+  .daily-guide-search form,
+  .daily-guide-results {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  .daily-guide-search {
+    padding: 12px;
+  }
+  .daily-guide-actions {
+    display: grid;
+  }
+  .daily-guide-search button {
+    width: 100%;
+  }
+}

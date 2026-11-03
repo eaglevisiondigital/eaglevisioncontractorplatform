@@ -1,0 +1,223 @@
+{
+  "schema": "propel-cycle16-delivery-v1",
+  "coordination_branch": "codex/program-cycle-sixteen",
+  "coordination_draft_pr": 111,
+  "parent_commit": "b4014771050b28d1ec1dffd0fa42cb3617a5fae9",
+  "plan_commit": "cf8e2fcf57d8455c118310a553096577599c3232",
+  "independent_review_commit": null,
+  "independent_files": [],
+  "independent_status": "PENDING",
+  "packages": [
+    {
+      "module": "daily-field-guide",
+      "component": "DailyFieldGuide",
+      "owner": "/root/cycle16_field_growth",
+      "branch": "codex/cycle16-daily-field-guide",
+      "parent_commit": "b4014771050b28d1ec1dffd0fa42cb3617a5fae9",
+      "head_commit": "124a5d15e3ea755eb8a5e15f404e27b5dad3db25",
+      "draft_pr": 112,
+      "focused_new_tests": 36,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/daily-field-guide.ts",
+          "sha256": "6071fe7325c0d1f6438e72300d8c90104fdcb2bae6a83d3c47c27041cd017482"
+        },
+        {
+          "path": "src/components/workflows/DailyFieldGuide.tsx",
+          "sha256": "582878384f752abadabc0dac269e00ec698780853be11d8891cac17e9ae1067b"
+        },
+        {
+          "path": "src/components/workflows/daily-field-guide.css",
+          "sha256": "483138cdd86f115acb99560af22702b253c9834a3254bfa034045db8855f8546"
+        },
+        {
+          "path": "tests/cycle16-daily-field-guide.test.ts",
+          "sha256": "384cb651fc3ab12781fa4fb5d9d3316bd9e3af549600a63c43ce76021c1a00b4"
+        },
+        {
+          "path": "docs/program/CYCLE16_DAILY_FIELD_GUIDE.md",
+          "sha256": "d60f9ab484df2e6cf091bbea063a403ff6a1ceb8b7f118125651b419de68c26f"
+        }
+      ]
+    },
+    {
+      "module": "daily-finance-guide",
+      "component": "DailyFinanceGuide",
+      "owner": "/root/cycle13_finance_intelligence",
+      "branch": "codex/cycle16-daily-finance-guide",
+      "parent_commit": "b4014771050b28d1ec1dffd0fa42cb3617a5fae9",
+      "head_commit": "9a78dac5954740fd35e0aaf989846feee6bce8fb",
+      "draft_pr": 113,
+      "focused_new_tests": 29,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/daily-finance-guide.ts",
+          "sha256": "d46bcd1afc8356200312e9e26b610ca64ee0264432738838522c06597e248730"
+        },
+        {
+          "path": "src/components/workflows/DailyFinanceGuide.tsx",
+          "sha256": "752b4645237b922cb9de21d7497127d46ed7d46147059a2d24a5be5763779596"
+        },
+        {
+          "path": "src/components/workflows/daily-finance-guide.css",
+          "sha256": "44a22a3f250c859531b75395499a373384b636a6c25ceb3e910e3d729ba3e30d"
+        },
+        {
+          "path": "tests/cycle16-daily-finance-guide.test.ts",
+          "sha256": "bf21580fc3f462f1f6ac9c62351746c025068a3d4903b36af5b823f4d2efe370"
+        },
+        {
+          "path": "docs/program/CYCLE16_DAILY_FINANCE_GUIDE.md",
+          "sha256": "a020ec78cb407c123f144fbb0ef72d576cdab93db4f7efca81334b5b646fb44a"
+        }
+      ]
+    },
+    {
+      "module": "service-completion-guide",
+      "component": "ServiceCompletionGuide",
+      "owner": "/root/cycle13_customer_advanced",
+      "branch": "codex/cycle16-service-completion-guide",
+      "parent_commit": "b4014771050b28d1ec1dffd0fa42cb3617a5fae9",
+      "head_commit": "09b98ee121aa3b3ce3361a5d516d408eef04d4ec",
+      "draft_pr": 115,
+      "focused_new_tests": 60,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/service-completion-guide.ts",
+          "sha256": "67fe6c553fe02b4486ef0335e514aa4a669f03a370b192222fbc9ab7c0af2790"
+        },
+        {
+          "path": "src/components/workflows/ServiceCompletionGuide.tsx",
+          "sha256": "5bf27c8461e3d71836b66f51b19deabb1a4c8de8a338a75084ecacba9753daf8"
+        },
+        {
+          "path": "src/components/workflows/service-completion-guide.css",
+          "sha256": "eb27f5cd36075e21b66489371b0995ff319e8b8024492fb4882f917794f065ed"
+        },
+        {
+          "path": "tests/cycle16-service-completion-guide.test.ts",
+          "sha256": "0a2f9c4d199340cf5f10e03c0bd73bb6e5b1e54afa622c8f252a7d32b6602f2f"
+        },
+        {
+          "path": "docs/program/CYCLE16_SERVICE_COMPLETION_GUIDE.md",
+          "sha256": "c9a139a2b887682552c50b1aa17caf7923e18d3f5771ef7f0e43bec82fd079ec"
+        }
+      ]
+    },
+    {
+      "module": "retention-review-guide",
+      "component": "RetentionReviewGuide",
+      "owner": "/root/cycle16_field_growth",
+      "branch": "codex/cycle16-retention-review-guide",
+      "parent_commit": "b4014771050b28d1ec1dffd0fa42cb3617a5fae9",
+      "head_commit": "3638221632cb91b0855b3102ff482bcd2fa2152b",
+      "draft_pr": 114,
+      "focused_new_tests": 42,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/retention-review-guide.ts",
+          "sha256": "0cad591b5ea33cf55f1af4b5fc94611c199c4fca00901f0e806e01d2be95f5f5"
+        },
+        {
+          "path": "src/components/workflows/RetentionReviewGuide.tsx",
+          "sha256": "0871af0d6f167ba8a99983e7540336f9352711ccca9bbddc1e69df4d48f834fc"
+        },
+        {
+          "path": "src/components/workflows/retention-review-guide.css",
+          "sha256": "10ab6e706a9beeef4e0d0d5a52d21a2a9df26c272d4c7da5fa0cec02e6b9f990"
+        },
+        {
+          "path": "tests/cycle16-retention-review-guide.test.ts",
+          "sha256": "a401ddd842903bee5ecaa8cf92fa8ff6ce19f91a137fc07bf39a929bd8fbb4a8"
+        },
+        {
+          "path": "docs/program/CYCLE16_RETENTION_REVIEW_GUIDE.md",
+          "sha256": "63d50e3fcd363882bbad8ae92c6c18f8a307bec277c48d5ed60ece17e212770d"
+        }
+      ]
+    },
+    {
+      "module": "owner-briefing-guide",
+      "component": "OwnerBriefingGuide",
+      "owner": "/root/cycle13_finance_intelligence",
+      "branch": "codex/cycle16-owner-briefing-guide",
+      "parent_commit": "b4014771050b28d1ec1dffd0fa42cb3617a5fae9",
+      "head_commit": "9210e6f06c271f563fe448b40479fb471c1f031c",
+      "draft_pr": 116,
+      "focused_new_tests": 38,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/owner-briefing-guide.ts",
+          "sha256": "0c2a197c118fb5705ff6448f4e269528e427015444aa20b9cdbf6eb0674215c3"
+        },
+        {
+          "path": "src/components/workflows/OwnerBriefingGuide.tsx",
+          "sha256": "d4e53738e7d544439b41cf5f48aab92c86c511530c80b6199cf0803e0597c2d0"
+        },
+        {
+          "path": "src/components/workflows/owner-briefing-guide.css",
+          "sha256": "a896c2cb9013d2cb7e96bb97dff9af085318dd06981cbf0aee1e1e16ff1995be"
+        },
+        {
+          "path": "tests/cycle16-owner-briefing-guide.test.ts",
+          "sha256": "f466705fac2fd912cab8bb9edd684702623f3e6f49baae28bbca566b6a60c8d0"
+        },
+        {
+          "path": "docs/program/CYCLE16_OWNER_BRIEFING_GUIDE.md",
+          "sha256": "cef044b8d357b30c3a70b757272ccf9e0e50a6aa2e5e23fe528508695cc52640"
+        }
+      ]
+    },
+    {
+      "module": "addon-readiness-guide",
+      "component": "AddonReadinessGuide",
+      "owner": "/root/cycle13_customer_advanced",
+      "branch": "codex/cycle16-addon-readiness-guide",
+      "parent_commit": "b4014771050b28d1ec1dffd0fa42cb3617a5fae9",
+      "head_commit": "fecfcf104e7f3988a53c85a77353824edfa6f85b",
+      "draft_pr": 117,
+      "focused_new_tests": 98,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/addon-readiness-guide.ts",
+          "sha256": "b3c6d6f20aa38d00f88a9987b30117f945c341cda5c591d16d5b8f671a5b60cf"
+        },
+        {
+          "path": "src/components/workflows/AddonReadinessGuide.tsx",
+          "sha256": "c1c41e521ad30f9859c3c00ee739d075cc81d01f07162042330f44bca21d1ba8"
+        },
+        {
+          "path": "src/components/workflows/addon-readiness-guide.css",
+          "sha256": "79b9c7e67739e4a8ae0840ca3ccb2c5c1fc4eb6559c772753807a7037128e970"
+        },
+        {
+          "path": "tests/cycle16-addon-readiness-guide.test.ts",
+          "sha256": "65bddd7746711e5e75d9c06f7b08a8219eb9a8acc3abf907149fb36063cd5292"
+        },
+        {
+          "path": "docs/program/CYCLE16_ADDON_READINESS_GUIDE.md",
+          "sha256": "16a76a96317d7dbac998a389fd9b30d34181d7d54754a45039dd5b9e91aff627"
+        }
+      ]
+    }
+  ],
+  "combined_evidence": {
+    "author_cases": 303,
+    "independent_cases": 0,
+    "coordinator_cases": 23,
+    "retained_scorecard_cases": 4,
+    "source_inventory_cases": 73,
+    "application_cases": 0,
+    "protected_hashes": 128,
+    "retained_author_files": 313,
+    "design_locks": 5,
+    "design_bindings": 13
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

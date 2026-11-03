@@ -1,5 +1,19 @@
 # Shared contracts and integration ownership
 
+## Cycle16 daily guides over the same source host
+
+Daily-guide selection is a presentation hint only. The original OperatingSources,
+canonical repositories, immutable report/version and issued estimate references
+remain authoritative. A shared literal paginated search calls the original selection
+reader and revalidates the exact row before the existing job/section callback. It
+never copies records or establishes missing request/job/report relationships. Each
+receiving guide independently admits the selected job; invalid hints have no fallback.
+
+All six guides preserve original manual controls, terminal holds and exact read-only
+UNKNOWN reconciliation. Local Return/Resume retains the original mounted instance;
+host navigation, refresh and process loss may discard it. No durability, operational
+availability, completion, consent, contract, invoice or payment authority is implied.
+
 ## Cycle15 task paths within the existing source host
 
 One explicit local guided-path checkbox defaults false and replaces only the six

@@ -1,0 +1,174 @@
+.service-completion-guide {
+  min-width: 0;
+  padding: 1.4rem;
+  color: #233d32;
+  background: #fff;
+  border: 1px solid #d9e1da;
+  border-radius: 18px;
+  line-height: 1.55;
+}
+.service-completion-guide * {
+  box-sizing: border-box;
+}
+.service-completion-guide header {
+  position: static;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  gap: 1rem;
+  color: inherit;
+  background: transparent;
+}
+.service-completion-guide header > div {
+  display: block;
+  flex: 1 1 320px;
+  min-width: 0;
+}
+.service-completion-guide header > span {
+  display: inline-block;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid #b9cbbb;
+  border-radius: 18px;
+  background: #eff4ec;
+}
+.service-completion-guide h2,
+.service-completion-guide h3,
+.service-completion-guide h4,
+.service-completion-guide h5 {
+  margin: 0.3rem 0 0.75rem;
+  font-size: 1.1rem;
+}
+.service-completion-guide h2 {
+  font-size: 1.5rem;
+}
+.service-completion-guide p,
+.service-completion-guide li,
+.service-completion-guide dd,
+.service-completion-guide nav,
+.service-completion-guide h2,
+.service-completion-guide h3,
+.service-completion-guide h4,
+.service-completion-guide h5 {
+  overflow-wrap: anywhere;
+}
+.service-completion-guide-filters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+.service-completion-guide label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: 600;
+  min-width: 0;
+  margin: 0.5rem 0;
+}
+.service-completion-guide input,
+.service-completion-guide select {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0.65rem;
+  color: inherit;
+  background: #fff;
+  border: 1px solid #8c9f93;
+  border-radius: 8px;
+  font: inherit;
+}
+.service-completion-guide button,
+.service-completion-guide summary {
+  min-height: 44px;
+  max-width: 100%;
+  padding: 0.65rem 1rem;
+  font: inherit;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+.service-completion-guide button {
+  margin: 0.3rem 0.4rem 0.3rem 0;
+  border: 1px solid var(--journey-primary, #247364);
+  border-radius: 8px;
+  color: #fff;
+  background: var(--journey-primary, #247364);
+}
+.service-completion-guide button.secondary {
+  color: var(--journey-primary, #247364);
+  background: #fff;
+}
+.service-completion-guide button:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+.service-completion-guide label.service-completion-guide-check {
+  flex-direction: row;
+  align-items: center;
+}
+.service-completion-guide-check input {
+  width: 24px;
+  min-width: 24px;
+  min-height: 44px;
+  margin: 0 0.5rem 0 0;
+}
+.service-completion-guide article {
+  min-width: 0;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  background: #f8f8f2;
+}
+.service-completion-guide dt {
+  color: #3e594f;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.service-completion-guide dd {
+  margin: 0 0 0.65rem;
+}
+.service-completion-guide nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 1rem 0;
+}
+.service-completion-guide aside {
+  padding: 0.8rem;
+  border-left: 3px solid var(--journey-accent, #dfb461);
+  background: #fffaf0;
+}
+.service-completion-guide [role='alert'] {
+  padding: 0.8rem;
+  border-left: 4px solid #9b4426;
+  color: #71341f;
+  background: #fff3e9;
+}
+.service-completion-guide footer {
+  display: block;
+  padding: 1rem 0 0;
+  margin-top: 1rem;
+  border-top: 1px solid #d9e1da;
+  color: #3e594f;
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+.service-completion-guide :focus-visible {
+  outline: 3px solid var(--journey-primary, #247364);
+  outline-offset: 3px;
+}
+@media (max-width: 760px) {
+  .service-completion-guide {
+    padding: 1rem;
+  }
+  .service-completion-guide-filters {
+    grid-template-columns: 1fr;
+  }
+  .service-completion-guide button {
+    width: 100%;
+  }
+}

@@ -1,5 +1,21 @@
 # Shared design-system specification · cycle two
 
+## Cycle16 daily guides and shared record search
+
+An independent default-false daily-guide option substitutes the same six existing
+continuity slots. No new global navigation group, design token, company artwork or
+approved shell is introduced. The retained task-path option stays available. New
+scoped warm cards, source labels, explicit UNKNOWN states,44px controls and stacked
+mobile layouts use existing contractor primary/accent tokens.
+
+Shared record search starts collapsed. It searches only the current prepared source
+set using the original reader, offers two rows per page and labels incomplete history.
+Exact source navigation carries the job and original destination into the existing
+host; separate review confirmations remain mandatory. Task metrics count actual
+trusted clicks and identify excluded setup/typing; no unmeasured speed gain is claimed.
+The three prior design approvals remain locked. Operating Center and advanced panels
+still need separate visual approval, and missing original assets remain MISSING.
+
 ## Cycle15 guided paths without another navigation group
 
 A compact accessible review-options region provides one explicit checkbox, default

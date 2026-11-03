@@ -1,0 +1,69 @@
+name: Cycle 16 daily workflow guides
+on:
+  push:
+    branches: ['codex/program-cycle-sixteen']
+  pull_request:
+    paths:
+      - 'src/App.tsx'
+      - 'src/components/workflows/OperatingCenterCycleSixteen.tsx'
+      - 'src/components/workflows/OperatingCenterCycleFourteen.tsx'
+      - 'src/components/workflows/task-review-paths*'
+      - 'src/components/workflows/OperatingCenterCycleFifteen.tsx'
+      - 'src/components/workflows/SharedRecordSearch.tsx'
+      - 'src/components/workflows/daily-guide-search.css'
+      - 'src/components/workflows/DailyFieldGuide.tsx'
+      - 'src/components/workflows/daily-field-guide.css'
+      - 'src/lib/workflows/daily-field-guide.ts'
+      - 'src/components/workflows/DailyFinanceGuide.tsx'
+      - 'src/components/workflows/daily-finance-guide.css'
+      - 'src/lib/workflows/daily-finance-guide.ts'
+      - 'src/components/workflows/ServiceCompletionGuide.tsx'
+      - 'src/components/workflows/service-completion-guide.css'
+      - 'src/lib/workflows/service-completion-guide.ts'
+      - 'src/components/workflows/RetentionReviewGuide.tsx'
+      - 'src/components/workflows/retention-review-guide.css'
+      - 'src/lib/workflows/retention-review-guide.ts'
+      - 'src/components/workflows/OwnerBriefingGuide.tsx'
+      - 'src/components/workflows/owner-briefing-guide.css'
+      - 'src/lib/workflows/owner-briefing-guide.ts'
+      - 'src/components/workflows/AddonReadinessGuide.tsx'
+      - 'src/components/workflows/addon-readiness-guide.css'
+      - 'src/lib/workflows/addon-readiness-guide.ts'
+      - 'tests/cycle16*'
+      - 'tests/program/*cycle16*'
+      - 'scripts/*cycle16*'
+      - 'docs/program/CYCLE16_DELIVERY_INDEX.json'
+      - '.github/workflows/cycle16-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle16-integration-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  bounded-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node scripts/check-cycle16-integrity.mjs
+      - run: npx vitest run tests/cycle16*.test.ts tests/program/cycle16*.test.ts tests/program/cycle13-scorecard-evidence.test.ts tests/program-feature-evidence.test.ts --maxWorkers=2 --reporter=json --outputFile=artifacts/cycle16/application-results.json
+      - run: node scripts/check-cycle16-results.mjs
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test -c tests/program/playwright.cycle16.config.ts --workers=2
+      - run: npx playwright test -c tests/program/playwright.cycle16-off.config.ts --workers=2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle16-guided-task-evidence
+          path: |
+            artifacts/cycle16/
+            test-results/
+          retention-days: 7
