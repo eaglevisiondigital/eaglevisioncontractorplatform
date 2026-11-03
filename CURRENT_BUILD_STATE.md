@@ -1,5 +1,19 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Cycle 21 · canonical correction implementation in progress
+
+Owner authorized five isolated local packages on exact Cycle20 8d607d9. Shared
+correction APIs now extend the original source-exercise custody and native engines:
+exact task correction with explicit internal submission/review, original plan CAS,
+and manual review of existing pending material commitments. Native locked periods,
+current sources, live inputs and permanent UNKNOWN/no-replay apply. No restart adapter,
+business store, evidence-file layer, payment, dispatch or communication is added.
+The31new shared cases plus50unchanged original exercise cases pass; strict types and
+global lint pass (retained Fast Refresh warning). Module/browser/independent integration
+and final exact-head CI remain separate pending verification. Author ownership and
+boundaries are in docs/program/CYCLE21_ASSIGNMENTS.md. Existing gates stay unchanged;
+Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Cycle 20 · saved evidence and canonical review continuity
 
 Five isolated author packages are published in draft PRs #138–#142, composed on

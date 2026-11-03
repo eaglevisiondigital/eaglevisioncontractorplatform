@@ -1683,3 +1683,14 @@ original author and locked styles remain exact. Portable repository-relative bro
 artifacts replace macOS-only temporary paths.
 Independent source and tooling reviews preserve strict assertions and exact author
 blobs. All prior approvals, protected artifacts and release restrictions remain intact.
+
+## Cycle 21 · corrections reuse original authority
+
+Extend the same original Operations/company/job command custody for typed task and
+plan corrections and exact pending material review. Corrected time appends native
+corrects_id, retaining the original entry; explicit internal submission/review never
+posts payroll. Old and new locked periods deny movement. Material review selects only
+an existing pending materials commitment without ambiguous adjustment links, invoking
+the original event/cost validator without creating a payment, credit or expense.
+Reconciliation reads exact known result identities; lost acknowledgments stay UNKNOWN
+and unattributed changes are not owned receipts. No second evidence/store/restore layer.
