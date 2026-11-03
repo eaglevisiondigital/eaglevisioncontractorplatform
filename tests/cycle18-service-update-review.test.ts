@@ -417,3 +417,101 @@ it('React admits exact hints, displays source context, and never prepares origin
   ).toContain('UNKNOWN');
   expect(writer).not.toHaveBeenCalled();
 });
+it.each([
+  'member',
+  'property',
+  'company',
+  'callback-replaced',
+  'callback-restored',
+  'input',
+  'root',
+] as const)(
+  'async invoked callback %s drift is terminal after final await and restoration',
+  async (kind) => {
+    const brand = kind === 'member' ? 0 : kind === 'property' ? 1 : 2,
+      f = await opened(brand),
+      bytes = JSON.stringify(f.view),
+      company = f.sources.company,
+      location = f.entry.target.location_id,
+      entries = f.sources.entries,
+      replacement = vi.fn();
+    let restore = async () => {};
+    const cb = vi.fn(async () => {
+        await Promise.resolve();
+        if (kind === 'member') {
+          await f.sources.operations.configure(
+            company.id,
+            'active',
+            'starter',
+            {},
+            company.id + '-backup-owner',
+          );
+          await f.sources.operations.revokeOwner(
+            company.id,
+            f.entry.target.actor_id,
+          );
+          restore = () =>
+            f.sources.operations.configure(
+              company.id,
+              'active',
+              'starter',
+              {},
+              f.entry.target.actor_id,
+            );
+        }
+        if (kind === 'property') {
+          f.entry.target.location_id = f.sources.entries[1].target.location_id;
+          restore = async () => {
+            f.entry.target.location_id = location;
+          };
+        }
+        if (kind === 'company') {
+          f.sources.company = sampleCompanies[(brand + 1) % 3];
+          restore = async () => {
+            f.sources.company = company;
+          };
+        }
+        if (kind === 'input') {
+          f.input.staff_context_confirmed = false;
+          restore = async () => {
+            f.input.staff_context_confirmed = true;
+          };
+        }
+        if (kind === 'root') {
+          f.sources.entries = [...f.sources.entries];
+          restore = async () => {
+            f.sources.entries = entries;
+          };
+        }
+        if (kind === 'callback-replaced') {
+          live.current = replacement;
+          live.generation++;
+          restore = async () => {
+            live.current = cb;
+            live.generation++;
+          };
+        }
+        if (kind === 'callback-restored') {
+          live.current = undefined;
+          live.generation++;
+          live.current = cb;
+          live.generation++;
+        }
+      }),
+      live: ServiceUpdateLiveCallback = { current: cb, generation: 0 };
+    await expect(
+      continueServiceUpdateReview(f.view, f.report, cb, live),
+    ).rejects.toThrow();
+    await restore();
+    expect(() => assertServiceUpdateCurrent(f.view)).toThrow(/UNKNOWN/);
+    await expect(
+      continueServiceUpdateReview(f.view, f.report, cb, live),
+    ).rejects.toThrow(/UNKNOWN/);
+    await expect(
+      readServiceUpdateReview({ ...f.sources }, { ...f.input }, f.gate),
+    ).rejects.toThrow(/UNKNOWN/);
+    expect(cb).toHaveBeenCalledTimes(1);
+    expect(replacement).not.toHaveBeenCalled();
+    expect(JSON.stringify(f.view)).toBe(bytes);
+  },
+);

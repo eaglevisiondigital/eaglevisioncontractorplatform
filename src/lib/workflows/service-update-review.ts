@@ -270,6 +270,11 @@ export async function continueServiceUpdateReview(
       );
     invoked = true;
     await expected(view.job_id, 'maintenance');
+    current(view);
+    if (callback(expected, live) !== generation)
+      throw new Withdrawn(
+        'Service continuation callback changed after dispatch',
+      );
     return view.job_id;
   } catch (error) {
     if (invoked || !(error instanceof Withdrawn)) hold(b);

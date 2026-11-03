@@ -35,7 +35,10 @@ private staff composition references and are never serialized into the safe summ
 Optional **Continue to maintenance review** appears after exact report inspection.
 `continueServiceUpdateReview` re-reads that exact report, then checks current source,
 input, gate and own-data live callback identity/generation before invoking the local
-`onContinue(jobId,'maintenance')`. It awaits callbacks, prevents concurrent duplicate
+`onContinue(jobId,'maintenance')`. It awaits callbacks and rechecks exact current source/input/gate and callback
+generation after that final callback await. Post-dispatch withdrawal/substitution is
+ambiguous UNKNOWN; restoring source values or the same function cannot revive it.
+It prevents concurrent duplicate
 activation, and holds ambiguous invoked outcomes UNKNOWN on canonical Operations plus
 exact organization/job. Fresh wrappers/revisions cannot clear that hold. Observed
 revocation/stale/property/company failures similarly terminalize the retained binding
@@ -54,15 +57,18 @@ Original control CSS is outside new UI-wrapper selectors. Main owns actual respo
 browser/axe/focus/touch/overflow and continuation validation; local unit/SSR proof is
 not visual or hosted acceptance.
 
-Focused raw result `/private/tmp/cycle18-customer-results.json` (local, not committed).
-**43 unique focused cases PASS, zero failed/pending**, maximum6.24seconds. All three
+Focused raw result `/private/tmp/cycle18-customer-postcallback-final-results.json` (local, not committed).
+**50 unique focused cases PASS, zero failed/pending** after the post-callback
+revalidation correction. All three
 brands cover actual safe sources, literal combined filters, immutable report/finding
 identity, privacy and continuation. Separate cases cover source restoration, global
 UNKNOWN fresh wrappers, callback withdrawal/throw/rejection/concurrency, final-await
-source/input/gate/member checks, wrong property/tenant and OFF/getter denial. After a
-nullable option-value TypeScript correction, all6render/OFF cases additionally PASS
-at final source in `/private/tmp/cycle18-customer-final-render-results.json`; its37
-unselected cases are recorded as pending, never counted as another full suite.
+source/input/gate/member checks, wrong property/tenant and OFF/getter denial. Seven added async invoked-callback regressions cover actual staff revocation, same-company
+property substitution, foreign approved company, callback replacement/restoration,
+input change and root-handle replacement. All seven first failed against1b10fa6 in
+`/private/tmp/cycle18-customer-postcallback-reproduction.json`. Each requires denial,
+immutable summary bytes, no second/replacement callback and canonical UNKNOWN after
+source restoration/fresh-wrapper reads. All original43 cases/assertions are preserved.
 Strict/generated types, scoped ESLint/Prettier and C17 integrity PASS. No timeout,
 assertion, protected file or workflow changes. No completed recovery/Netlify/native
 baseline suite is rerun. All protected/design locks, original18 IDs/25stage and approval
