@@ -246,8 +246,12 @@ export async function continueMaintenanceAgenda(
     check(b);
     if (!stillCurrent())
       return { status: 'WITHDRAWN' as const, send: false as const };
+    check(b);
     invoked = true;
     await callback(row.context.job_id, 'priorities');
+    check(b);
+    if (!stillCurrent())
+      throw Error('Maintenance continuation lease changed after invocation');
     check(b);
     return { status: 'LOCAL_NAVIGATION_ONLY' as const, send: false as const };
   } catch (error) {

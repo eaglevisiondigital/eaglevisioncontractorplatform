@@ -448,3 +448,147 @@ it('mutable source getter replacement cannot rebind an ambiguous outcome to anot
   await expect(next(fresh, row.key, retry)).rejects.toThrow();
   expect(retry).not.toHaveBeenCalled();
 });
+it.each([0, 1, 2])(
+  'brand %s awaits a resolved current asynchronous continuation before reporting local success',
+  async (brand) => {
+    const f = await fixture(brand),
+      view = await read(f.sources, f.input, f.gate),
+      row = view.rows[0];
+    let release!: () => void, started!: () => void;
+    const pending = new Promise<void>((resolve) => {
+        release = resolve;
+      }),
+      invoked = new Promise<void>((resolve) => {
+        started = resolve;
+      }),
+      callback = vi.fn(async () => {
+        started();
+        await pending;
+      }),
+      settled = vi.fn();
+    const attempt = next(view, row.key, callback).then((result) => {
+      settled();
+      return result;
+    });
+    await invoked;
+    expect(settled).not.toHaveBeenCalled();
+    expect(callback).toHaveBeenCalledExactlyOnceWith(
+      row.context.job_id,
+      'priorities',
+    );
+    release();
+    expect(await attempt).toMatchObject({
+      status: 'LOCAL_NAVIGATION_ONLY',
+      send: false,
+    });
+    expect(settled).toHaveBeenCalledTimes(1);
+    expect((await reconcile(view)).status).toBe('CAPTURED_NOT_ATOMIC');
+  },
+);
+it.each(['withdraw', 'replace', 'replace_then_restore'] as const)(
+  'asynchronous invoked callback %s before acknowledgment retains canonical UNKNOWN',
+  async (change) => {
+    const f = await fixture(),
+      view = await read(f.sources, f.input, f.gate),
+      row = view.rows[0];
+    let release!: () => void,
+      started!: () => void,
+      generation = 0;
+    const pending = new Promise<void>((resolve) => {
+        release = resolve;
+      }),
+      invoked = new Promise<void>((resolve) => {
+        started = resolve;
+      }),
+      callback = vi.fn(async () => {
+        started();
+        await pending;
+      });
+    let liveCallback: typeof callback | undefined = callback;
+    const attempt = next(
+      view,
+      row.key,
+      callback,
+      () => generation === 0 && liveCallback === callback,
+    );
+    await invoked;
+    generation++;
+    liveCallback = change === 'withdraw' ? undefined : vi.fn();
+    if (change === 'replace_then_restore') {
+      generation++;
+      liveCallback = callback;
+    }
+    release();
+    await expect(attempt).rejects.toThrow('lease changed after invocation');
+    expect(callback).toHaveBeenCalledTimes(1);
+    const fresh = await read(
+        { ...f.sources },
+        { ...f.input, purpose: 'service_follow_up' },
+        f.gate,
+      ),
+      retry = vi.fn();
+    await expect(next(fresh, row.key, retry)).rejects.toThrow();
+    expect((await reconcile(view)).status).toBe('UNKNOWN');
+    expect((await reconcile(fresh)).status).toBe('UNKNOWN');
+    expect(retry).not.toHaveBeenCalled();
+  },
+);
+it('source change while an invoked asynchronous callback waits cannot report success or retry through a restored wrapper', async () => {
+  const f = await fixture(),
+    wrapper = { ...f.sources },
+    view = await read(f.sources, f.input, f.gate),
+    row = view.rows[0],
+    originalEntries = f.sources.entries;
+  let release!: () => void, started!: () => void;
+  const pending = new Promise<void>((resolve) => {
+      release = resolve;
+    }),
+    invoked = new Promise<void>((resolve) => {
+      started = resolve;
+    }),
+    callback = vi.fn(async () => {
+      started();
+      await pending;
+    });
+  const attempt = next(view, row.key, callback);
+  await invoked;
+  f.sources.entries = [...originalEntries];
+  release();
+  await expect(attempt).rejects.toThrow();
+  f.sources.entries = originalEntries;
+  const fresh = await read(wrapper, { ...f.input }, f.gate),
+    retry = vi.fn();
+  await expect(next(fresh, row.key, retry)).rejects.toThrow();
+  expect((await reconcile(fresh)).status).toBe('UNKNOWN');
+  expect(callback).toHaveBeenCalledTimes(1);
+  expect(retry).not.toHaveBeenCalled();
+});
+it('a late rejected asynchronous acknowledgment stays UNKNOWN after purpose and callback restoration', async () => {
+  const f = await fixture(),
+    view = await read(f.sources, f.input, f.gate),
+    row = view.rows[0];
+  let reject!: (error: Error) => void, started!: () => void;
+  const pending = new Promise<void>((_resolve, rejectPromise) => {
+      reject = rejectPromise;
+    }),
+    invoked = new Promise<void>((resolve) => {
+      started = resolve;
+    }),
+    callback = vi.fn(async () => {
+      started();
+      await pending;
+    });
+  const attempt = next(view, row.key, callback);
+  await invoked;
+  reject(Error('Late acknowledgment lost'));
+  await expect(attempt).rejects.toThrow('Late acknowledgment lost');
+  const fresh = await read(
+      { ...f.sources },
+      { ...f.input, purpose: 'service_follow_up' },
+      f.gate,
+    ),
+    retry = vi.fn();
+  await expect(next(fresh, row.key, retry)).rejects.toThrow();
+  expect((await reconcile(fresh)).status).toBe('UNKNOWN');
+  expect(retry).not.toHaveBeenCalled();
+});

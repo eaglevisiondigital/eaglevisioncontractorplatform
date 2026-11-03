@@ -39,9 +39,16 @@ staff/input/source revocation, consent/suppression races, concurrency, UNKNOWN
 fresh-wrapper preservation and clean withdrawn callbacks. Main owns actual responsive
 browser/accessibility, independent combined integration and exact-head CI evidence.
 
-Author verification: 44/44 focused application cases PASS, zero skipped. Strict
+Author verification: 52/52 focused application cases PASS, zero skipped. Strict
 TypeScript, scoped ESLint/Prettier and the unchanged Cycle17 protected-integrity
 chain PASS (128 protected hashes, five locks/thirteen bindings, 343 retained author
 files). Raw application JSON is outside Git at
 `/private/tmp/cycle18-maintenance-agenda-results.json`. Browser and exact-head GitHub
 CI outcomes remain Main-owned separate evidence, not inferred from author checks.
+
+Independent-review correction: invoked asynchronous continuation is awaited before
+final source and callback-generation checks. Withdrawal, replacement or restoration
+of a replaced callback during that await retains canonical UNKNOWN for the exact
+organization/job, including fresh wrapper/purpose/occurrence attempts. A stable
+resolved callback is local navigation only; late rejection/source drift cannot replay.
+All44 earlier assertions/cases remain; eight added actual-source async cases pass.
