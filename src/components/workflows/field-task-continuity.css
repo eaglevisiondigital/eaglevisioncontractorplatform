@@ -1,0 +1,142 @@
+.field-task-continuity {
+  color: #20352f;
+  line-height: 1.55;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.field-task-continuity > header {
+  position: static;
+  width: auto;
+  height: auto;
+  min-height: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.field-task-continuity > header > div {
+  display: block;
+  min-width: 0;
+}
+.field-task-continuity h2,
+.field-task-continuity h3,
+.field-task-continuity h4 {
+  color: #20352f;
+  line-height: 1.25;
+}
+.field-task-continuity .ftc-eyebrow {
+  color: #526159;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+.field-task-continuity .ftc-badge {
+  display: inline-block;
+  background: #e8eee8;
+  border: 1px solid #cbd8ce;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  white-space: normal;
+  font-size: 0.8rem;
+}
+.field-task-continuity .ftc-boundary {
+  background: #f5f5ef;
+  border-left: 3px solid var(--journey-primary, #00543e);
+  padding: 1rem;
+}
+.field-task-continuity .ftc-controls,
+.field-task-continuity .ftc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.field-task-continuity label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: 600;
+  min-width: 0;
+}
+.field-task-continuity textarea,
+.field-task-continuity input,
+.field-task-continuity select,
+.field-task-continuity button {
+  min-height: 44px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.field-task-continuity textarea,
+.field-task-continuity input,
+.field-task-continuity select {
+  width: 100%;
+}
+.field-task-continuity .ftc-check {
+  flex-direction: row;
+  align-items: center;
+  margin: 1rem 0;
+  font-weight: 400;
+}
+.field-task-continuity .ftc-check input {
+  min-width: 44px;
+  width: 44px;
+  margin-right: 0.4rem;
+}
+.field-task-continuity button {
+  background: var(--journey-primary, #00543e);
+  color: white;
+  border: 1px solid transparent;
+  padding: 0.7rem 1rem;
+  white-space: normal;
+  text-align: left;
+}
+.field-task-continuity button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.field-task-continuity .ftc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.field-task-continuity .ftc-card {
+  padding: 1.2rem;
+  border: 1px solid #d9e1da;
+  border-radius: 14px;
+  background: white;
+  min-width: 0;
+}
+.field-task-continuity dl > div {
+  margin-bottom: 0.75rem;
+}
+.field-task-continuity dt {
+  color: #526159;
+  font-size: 0.8rem;
+}
+.field-task-continuity dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.field-task-continuity :focus-visible {
+  outline: 3px solid var(--journey-accent, #dfb461);
+  outline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .field-task-continuity > header {
+    display: block;
+  }
+  .field-task-continuity .ftc-controls,
+  .field-task-continuity .ftc-grid {
+    grid-template-columns: 1fr;
+  }
+  .field-task-continuity .ftc-actions {
+    display: grid;
+  }
+}
+
+.field-task-continuity textarea {
+  width: 100%;
+  min-height: 110px;
+  resize: vertical;
+}
