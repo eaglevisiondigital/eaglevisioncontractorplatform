@@ -470,7 +470,7 @@ function Desk({ sources, selectedJobId, onSelectJob }: Props) {
                   <button
                     type="button"
                     disabled={busy}
-                    aria-label={`Review owner task ${row.key}`}
+                    aria-label={`Review next action: owner task ${row.key}`}
                     onClick={() => void inspect(row.key)}
                   >
                     Review next action
