@@ -6,9 +6,12 @@ Main draft111 (`codex/program-cycle-sixteen`) preserves exact Cycle15 parent
 b4014771050b28d1ec1dffd0fa42cb3617a5fae9. Six bounded packages use original
 sources/engines and the same six continuity destinations; an independent default-false
 presentation opt-in and original-reader shared search reduce repeated job selection.
-Implementation and combined validation are in progress; exact final source, test and
-CI evidence will be recorded in the Cycle16 delivery index and validation record.
-No operational or release acceptance is claimed.
+All six packages are implemented in separate drafts112–117 and composed in Main111.
+The complete440-case application run,36independent cases and81development/3production-OFF
+browser cases PASS. Sixty-three real all-brand responsive PNGs identify the clean source.
+Exact author heads and proof remain in the Cycle16 delivery index and validation record.
+Automatic GitHub CI is separate; pending checks are never called green. No operational
+or release acceptance is claimed.
 
 [Cycle15 CI closeout](docs/program/CYCLE15_CLOSEOUT_CI_RECONCILIATION.md) retains the
 cancelled45-minute PR job separately from full equivalent-tree exact-head push
