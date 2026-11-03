@@ -35,9 +35,16 @@ revoked restoration, concurrent continuation, callback withdrawal, thrown/reject
 acknowledgment, canonical fresh-wrapper holds and mutable source handles. Main owns
 the combined responsive/browser/accessibility/integrity evidence and final register.
 
-Author verification: 37/37 focused application cases PASS, zero skipped; strict
+Author verification: 45/45 focused application cases PASS, zero skipped; strict
 TypeScript and scoped ESLint/Prettier PASS. The unchanged Cycle17 protected-source
 integrity chain PASS (128 protected hashes, five locks/thirteen bindings and 343
 retained author files). Raw application JSON is retained outside Git at
 `/private/tmp/cycle18-field-agenda-results.json`. No browser or GitHub PASS is inferred
 from these author checks; Main records those exact-head outcomes separately.
+
+Independent-review correction: invoked asynchronous continuation is awaited, then
+both exact sources and the live callback generation are checked again. Callback
+withdrawal, replacement or replacement/restoration during that await retains canonical
+UNKNOWN rather than reporting success. A stable resolved callback is still local
+navigation only; late rejection and source changes never permit replay. The existing
+37 source cases are preserved; eight added actual-source async cases cover this fence.

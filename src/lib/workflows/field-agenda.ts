@@ -288,8 +288,12 @@ export async function continueFieldAgenda(
     check(b);
     if (!stillCurrent())
       return { status: 'WITHDRAWN' as const, dispatch: false as const };
+    check(b);
     invoked = true;
     await callback(jobId, 'finance');
+    check(b);
+    if (!stillCurrent())
+      throw Error('Field continuation lease changed after invocation');
     check(b);
     return {
       status: 'LOCAL_NAVIGATION_ONLY' as const,
