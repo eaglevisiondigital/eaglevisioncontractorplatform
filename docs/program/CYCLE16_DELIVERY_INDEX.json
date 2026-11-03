@@ -4,9 +4,18 @@
   "coordination_draft_pr": 111,
   "parent_commit": "b4014771050b28d1ec1dffd0fa42cb3617a5fae9",
   "plan_commit": "cf8e2fcf57d8455c118310a553096577599c3232",
-  "independent_review_commit": null,
-  "independent_files": [],
-  "independent_status": "PENDING",
+  "independent_review_commit": "9b73bdf733dec476a6ce7899ffd48d6a61140e8b",
+  "independent_files": [
+    {
+      "path": "tests/cycle16-integration.test.ts",
+      "sha256": "e92bf92bf96a87b7005ab715406ae424e2f2ccb4ec28da45a3cfc14412f4b247"
+    },
+    {
+      "path": "docs/program/CYCLE16_INTEGRATION_REVIEW.md",
+      "sha256": "3dfff60d6265ed6fb669650a2167c02c6c4d99d0f2811a2518f406a9b00dfbf1"
+    }
+  ],
+  "independent_status": "CLEAR_LOCAL_SYNTHETIC_ONLY",
   "packages": [
     {
       "module": "daily-field-guide",
@@ -209,11 +218,11 @@
   ],
   "combined_evidence": {
     "author_cases": 304,
-    "independent_cases": 0,
+    "independent_cases": 36,
     "coordinator_cases": 23,
     "retained_scorecard_cases": 4,
     "source_inventory_cases": 73,
-    "application_cases": 0,
+    "application_cases": 440,
     "protected_hashes": 128,
     "retained_author_files": 313,
     "design_locks": 5,

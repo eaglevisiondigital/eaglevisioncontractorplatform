@@ -43,7 +43,7 @@ for (const company of sampleCompanies)
       })
       .fill('');
     await r
-      .getByRole('button', { name: 'Inspect owner task source', exact: true })
+      .getByRole('button', { name: /^Inspect owner task source:/ })
       .first()
       .click();
     await r
