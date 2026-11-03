@@ -77,7 +77,8 @@ it('retains one actual environment and current captured job presentation hint', 
     'src/components/workflows/OperatingCenterPreview.tsx',
     'utf8',
   );
-  expect(host.match(/await prepareOperatingSources\(/g)).toHaveLength(1);
+  expect(host.match(/await prepareSources\(/g)).toHaveLength(1);
+  expect(host).toContain('prepareSources = prepareOperatingSources');
   expect(host).toContain('selectedJobId: detail?.target.job_id');
   expect(host).toContain('selected.check()');
   expect(host).toContain('setSelected(null)');

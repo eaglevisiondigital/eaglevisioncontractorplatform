@@ -1,5 +1,9 @@
 # Engineering decisions
 
+## Cycle21 CI · verify the single preparer and its original default
+
+Keep the existing source-factory injection seam and native one-attempt host. Source evidence must inspect the actual awaited preparer and its default original factory, rather than a pre-refactor call name. Preserve finite navigation/no-extra-repository assertions and all original failed artifacts. This test-only correction grants no operational authority.
+
 ## Cycle21 · correct native source records without a restoration layer
 
 Reuse the original Operations/company/job command-family custody and canonical

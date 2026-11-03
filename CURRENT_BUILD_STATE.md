@@ -1,5 +1,9 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Cycle21 CI · preserve the guarded original preparer seam
+
+Downloaded exact-head C11/C13/C14 artifacts prove four obsolete literal-call assertions, not timeout evidence. Three Main-owned tests now require the actual single awaited preparer call plus its original default binding; every other assertion remains.52 evidence cases and10 native preparation cases pass. Product/protected source, workflows and budgets are unchanged. Original failed runs remain failures; corrected-head automatic CI and other pending checks remain separate. See docs/program/CYCLE21_PREPARER_CI_CORRECTION.md and JSON. No operational or release gate is promoted.
+
 ## Cycle 21 · native corrections and exact-source review delivered locally
 
 Coordination draft #143 composes five isolated feature drafts #144–#148 over exact

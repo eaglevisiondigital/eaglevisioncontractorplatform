@@ -74,7 +74,8 @@ it('retains one existing environment host and finite optional reviews', () => {
       'src/components/workflows/OperatingCenterCycleEleven.tsx',
       'utf8',
     );
-  expect(host.match(/await prepareOperatingSources\(/g)).toHaveLength(1);
+  expect(host.match(/await prepareSources\(/g)).toHaveLength(1);
+  expect(host).toContain('prepareSources = prepareOperatingSources');
   expect(wrapper).not.toMatch(
     /prepareOperatingSources|new (Operations|Phase3Repository|PropertyRepository)/,
   );

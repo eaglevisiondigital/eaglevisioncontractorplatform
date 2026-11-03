@@ -75,7 +75,8 @@ it('retains one existing environment host and finite optional reviews', () => {
       'src/components/workflows/OperatingCenterCycleThirteen.tsx',
       'utf8',
     );
-  expect(host.match(/await prepareOperatingSources\(/g)).toHaveLength(1);
+  expect(host.match(/await prepareSources\(/g)).toHaveLength(1);
+  expect(host).toContain('prepareSources = prepareOperatingSources');
   expect(wrapper).not.toMatch(
     /prepareOperatingSources|new (Operations|Phase3Repository|PropertyRepository)/,
   );
@@ -126,7 +127,8 @@ it('keeps navigation a finite presentation callback over existing job components
   ])
     expect(host).toContain('id="operating-selected-' + name + '"');
   expect(host).toContain('captureOperatingSources(sources, sources.gate)');
-  expect(host.match(/await prepareOperatingSources\(/g)).toHaveLength(1);
+  expect(host.match(/await prepareSources\(/g)).toHaveLength(1);
+  expect(host).toContain('prepareSources = prepareOperatingSources');
 });
 
 it('never promotes pre-commit screenshots using the later gallery-build checkout', () => {
