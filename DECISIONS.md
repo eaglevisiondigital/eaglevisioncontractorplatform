@@ -11,6 +11,14 @@ expiry and terminal holds remain authoritative. A callback dispatched then throw
 or rejecting is an ambiguous navigation outcome: retain UNKNOWN and forbid replay.
 Known callback withdrawal before dispatch cannot invoke a stale callback.
 
+Independent regressions demonstrated that a per-view hold is insufficient after an
+ambiguous callback. Field/Finance/Growth now pin canonical Operations plus exact
+company/job before await; fresh wrappers, revised sources or changed presentation
+cannot clear UNKNOWN. Customer observed selection/context failures terminalize the
+retained parent, including its filter path. Read-only evidence and known pre-dispatch
+withdrawal remain separate from replay. All original failing assertions remain in
+final45-case independent PASS; no historical or operational evidence is relabeled.
+
 Exact-source successful Main coverage reconciles Cycle16's seven45-minute feature
 verify cancellations without relabelling individual results or rerunning successful
 checks. Actual browser measurements and visual captures are separate from source

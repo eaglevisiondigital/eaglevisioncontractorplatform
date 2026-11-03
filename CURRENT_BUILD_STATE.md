@@ -1,20 +1,42 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
-## Latest: Cycle17 retained daily workspaces · final verification pending
+## Latest: Cycle17 retained daily workspaces · local verification complete
 
-Six local packages are implemented in separate drafts119–124 against Main118,
-from exact Cycle16 source3cbea85ce464b3e67fb78c8992ec192cdd8d2407. Direct original
-controls, exact breadcrumbs and retained context use the same six slots/source host.
-318focused author cases PASS; independent combined and responsive acceptance remain
-PENDING until their actual final reports. Cycle16 Main30checks PASS; seven child
-browser-timeout cancellations retain their exact status with successful unchanged-source
-Main coverage, no manual rerun. No operational acceptance or release promotion.
+Six bounded author drafts119–124 target coordination draft118 on exact Cycle16
+parent3cbea85ce464b3e67fb78c8992ec192cdd8d2407. Complete480/480application cases
+PASS, including318author,45independent,40coordinator/visual and77retained inventory
+cases. Actual84development/3production-OFF/3offline-gallery browser cases PASS
+across all three contractor brands and desktop/tablet/mobile.72clean-source workspace
+PNGs plus3gallery captures retain explicit source/hash evidence;18reference/current
+pairs cover only the two unapproved scopes. [Full validation and actual agent roster](docs/program/CYCLE17_VALIDATION.md).
+
+[Exact source inventory](docs/program/CYCLE17_DELIVERY_INDEX.json) records all six branch
+heads,30author blobs and two independent review files. Original controls stay mounted
+across local source/return tabs. Shared exact job selection reaches Finance, Customer,
+Maintenance and Advanced with zero receiving job-reselection actions. Direct Field
+controls eliminate one additional post-load click; required confirmations remain.
+Canonical UNKNOWN outcomes and observed Customer source failures cannot revive
+through fresh wrappers or restored inputs. Same-tab references are not durable state.
+
+No original capability,18scope ID,25stage/approval/CI label, eight closed PhaseOne gate
+or three approved design scope is promoted. OperatingCenter/advanced visual approvals
+remain PENDING and missing originals MISSING. [Owner review](docs/program/CYCLE17_VISUAL_REVIEW.md).
+Cycle16's seven cancelled child verify jobs remain CANCELLED; exact unchanged-source
+successful Main coverage is documented without manual rerun or false individual PASS.
+[Exact closeout](docs/program/CYCLE16_CLOSEOUT_CI_RECONCILIATION.md). Automatic current CI
+is separate from local PASS; the [timestamped pre-publication snapshot](docs/program/CYCLE17_CI_SNAPSHOT.json)
+never presents plan-only CI as product validation. Final exact-head observations are
+reported separately; pending checks are not green.
+
+No dispatch, communication, financial, hosted, production or release execution.
+Release1.0 NOT READY / NOT AUTHORIZED.
 
 The owner reports a newer MacBook Air candidate may be available November4. Exact
 maintained OS, encryption, independent power/network and actual pairing/recovery are
 UNVERIFIED; completed setup/offline evidence is preserved. No credentials or hosted
-verification are authorized. All existing protected gates remain closed.
-Release1.0 NOT READY / NOT AUTHORIZED.
+verification are authorized. Existing P1 approval remains valid for its frozen scope,
+subject to the unchanged recovery prerequisites and separately reviewed hosted checks.
+All existing protected gates remain closed.
 
 ## Cycle16 · daily guides in isolated local development
 

@@ -4,9 +4,18 @@
   "coordination_draft_pr": 118,
   "parent_commit": "3cbea85ce464b3e67fb78c8992ec192cdd8d2407",
   "plan_commit": "624ae715d05cc8bf602fcefe3843063fc1debc8d",
-  "independent_review_commit": null,
-  "independent_files": [],
-  "independent_status": "PENDING_FINAL_REVIEW",
+  "independent_review_commit": "13204765a304d428d6f5d22915d5347f74bf1d55",
+  "independent_files": [
+    {
+      "path": "tests/cycle17-integration.test.ts",
+      "sha256": "bafd0e74bd26de2aa57e10861839781dcc2cc356d0a4ab0f39d4fa8f0d28d826"
+    },
+    {
+      "path": "docs/program/CYCLE17_INTEGRATION_REVIEW.md",
+      "sha256": "3867182068cb908c91c8e1db9b740d133b663c7d7322d641ceb133f1ece76223"
+    }
+  ],
+  "independent_status": "CLEAR_LOCAL_SYNTHETIC_ONLY",
   "packages": [
     {
       "module": "field-workspace",
@@ -209,8 +218,8 @@
   ],
   "combined_evidence": {
     "author_cases": 318,
-    "independent_cases": null,
-    "application_cases": null
+    "independent_cases": 45,
+    "application_cases": 480
   },
   "release": "NOT_READY_NOT_AUTHORIZED"
 }

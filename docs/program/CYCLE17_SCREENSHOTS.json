@@ -1,0 +1,733 @@
+{
+  "schema": "propel-cycle17-screenshots-v1",
+  "capture_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+  "actual_pngs": 72,
+  "gallery_pairs": 18,
+  "visual_approval": "PENDING",
+  "missing_original_mockups": [
+    "Operating Center panels",
+    "Advanced add-on panels"
+  ],
+  "captures": [
+    {
+      "path": "artifacts/cycle17/current-advanced-panels-desktop-cunningham.png",
+      "sha256": "3da18acb99e63584e5588ab3863fa12dca7e9b1c6044708c44ed604bcdbe2445",
+      "width": 1174,
+      "height": 1350,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "cunningham",
+      "viewport": "desktop",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/current-advanced-panels-desktop-roofing-example.png",
+      "sha256": "ba0f0b0bfabe2c34cd651d26663ea57d77a3ee895339d5094e22123cfff24c49",
+      "width": 1174,
+      "height": 1350,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "roofing-example",
+      "viewport": "desktop",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/current-advanced-panels-desktop-straight-edge.png",
+      "sha256": "c61423dc32ee30f7e15248fc41893ef179d1ea21720ba60142e53173f2911af2",
+      "width": 1174,
+      "height": 1407,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "straight-edge",
+      "viewport": "desktop",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/current-advanced-panels-mobile-cunningham.png",
+      "sha256": "497efe3974ce46372c32b3f265ec250ad43fbcd0d4e9e7a2a90c82e067ab9017",
+      "width": 996,
+      "height": 7002,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "cunningham",
+      "viewport": "mobile",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/current-advanced-panels-mobile-roofing-example.png",
+      "sha256": "bb15e775f2cf4aa26970f45982acc2230933c64875f8ef1933b510517760f093",
+      "width": 996,
+      "height": 7002,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "roofing-example",
+      "viewport": "mobile",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/current-advanced-panels-mobile-straight-edge.png",
+      "sha256": "a5d47e0bb3522b76b036532fc0015afc5e0cbc57c2d97aaa6e3c833c16b78772",
+      "width": 996,
+      "height": 7398,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "straight-edge",
+      "viewport": "mobile",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/current-advanced-panels-tablet-cunningham.png",
+      "sha256": "73e8be52d79600bff1324039f3157b88ea4214c513679a3030a2beebaa1db4ff",
+      "width": 1324,
+      "height": 3388,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "cunningham",
+      "viewport": "tablet",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/current-advanced-panels-tablet-roofing-example.png",
+      "sha256": "ebd1f8da2dc3d920e6644fc93442e5567e56f84da688188a377e6bccf4b7294e",
+      "width": 1324,
+      "height": 3388,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "roofing-example",
+      "viewport": "tablet",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/current-advanced-panels-tablet-straight-edge.png",
+      "sha256": "142f08dace5346904ec455029458227ddfd66f5c6726126a0a1f03297291845f",
+      "width": 1324,
+      "height": 3552,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "straight-edge",
+      "viewport": "tablet",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/current-operating-panels-desktop-cunningham.png",
+      "sha256": "5e6485d7e6ed8e11d34623251f96e138d88f1f3559d1edfff7e5b48e3ba618ac",
+      "width": 1174,
+      "height": 1258,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "cunningham",
+      "viewport": "desktop",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/current-operating-panels-desktop-roofing-example.png",
+      "sha256": "f64036f72c43a141ca9450f6db38bc439efec163b8cd2a69eb778de4667e21ae",
+      "width": 1174,
+      "height": 1243,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "roofing-example",
+      "viewport": "desktop",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/current-operating-panels-desktop-straight-edge.png",
+      "sha256": "51438ee4d45f0b755f8d023af1b1f27ed3198a6218bbfc6e177499de55e4004d",
+      "width": 1174,
+      "height": 1258,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "straight-edge",
+      "viewport": "desktop",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/current-operating-panels-mobile-cunningham.png",
+      "sha256": "78979111610e6052a9d9e29bfb72661c31b8b6d6483a4a49aeb703057f708efe",
+      "width": 996,
+      "height": 7503,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "cunningham",
+      "viewport": "mobile",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/current-operating-panels-mobile-roofing-example.png",
+      "sha256": "fa35d953305de716515eb0eae425498f32c77c7448a889430f6b097fceeeb4cb",
+      "width": 996,
+      "height": 7389,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "roofing-example",
+      "viewport": "mobile",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/current-operating-panels-mobile-straight-edge.png",
+      "sha256": "da729ed553a958b9cfa33a13a2ab5ec6dc2af0c28f9f7a8c66bd2082bd6abf45",
+      "width": 996,
+      "height": 7434,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "straight-edge",
+      "viewport": "mobile",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/current-operating-panels-tablet-cunningham.png",
+      "sha256": "8f72615a4ab785eb83ab118e1c5bcbcdcba1e4def481178fca4826cf33fa556f",
+      "width": 1324,
+      "height": 3116,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "cunningham",
+      "viewport": "tablet",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/current-operating-panels-tablet-roofing-example.png",
+      "sha256": "f2524020d51392003a33a82f60f95e6d112908d88d193c40365b8a279e13abbc",
+      "width": 1324,
+      "height": 3116,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "roofing-example",
+      "viewport": "tablet",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/current-operating-panels-tablet-straight-edge.png",
+      "sha256": "55854b3c7d3756a037b3ce09a4ec0627c7639eb764de6ee1aa46ea3572c61b66",
+      "width": 1324,
+      "height": 3100,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "straight-edge",
+      "viewport": "tablet",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/finance-case-desk-desktop-cunningham.png",
+      "sha256": "8839a5c95c6ff5301c5bd0178565163afdb5c973c16aea48bf0939415e0451d6",
+      "width": 1174,
+      "height": 3725,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "cunningham",
+      "viewport": "desktop",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/finance-case-desk-desktop-roofing-example.png",
+      "sha256": "27d024d2cb3cf2776c81db8e17651002646a75f2e4044a7bf86223574f3a8809",
+      "width": 1174,
+      "height": 3725,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "roofing-example",
+      "viewport": "desktop",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/finance-case-desk-desktop-straight-edge.png",
+      "sha256": "a83e27d189c54b89cf6866702762e617571caf46d87ad7cf5e6fe30ca1b4ca5a",
+      "width": 1174,
+      "height": 3725,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "straight-edge",
+      "viewport": "desktop",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/finance-case-desk-mobile-cunningham.png",
+      "sha256": "df63a2f54b1b3b9e721ffbb7b809599814ddf4a3f6a9ea529c212d7664139a1f",
+      "width": 996,
+      "height": 22356,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "cunningham",
+      "viewport": "mobile",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/finance-case-desk-mobile-roofing-example.png",
+      "sha256": "943b72c56de5b5815c1f3b49ba7135fd183c4db57269b783f9ef821a2dab61aa",
+      "width": 996,
+      "height": 22296,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "roofing-example",
+      "viewport": "mobile",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/finance-case-desk-mobile-straight-edge.png",
+      "sha256": "d8dccd05cf90e52254cf4f448f99eb19a811ed9f7412474d31d4cb72dcf9d963",
+      "width": 996,
+      "height": 22296,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "straight-edge",
+      "viewport": "mobile",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/finance-case-desk-tablet-cunningham.png",
+      "sha256": "9bcc2acf8c16d64df36365b2fb49334368606f7ab07f9c87c1c90652fe014275",
+      "width": 1324,
+      "height": 8582,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "cunningham",
+      "viewport": "tablet",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/finance-case-desk-tablet-roofing-example.png",
+      "sha256": "e4d59ed60813b3fece7eee8796c1e3dcbf7d2f0bc70b5abd938ee722525ac0e3",
+      "width": 1324,
+      "height": 8582,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "roofing-example",
+      "viewport": "tablet",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/finance-case-desk-tablet-straight-edge.png",
+      "sha256": "452634ea7c8ceac42c00fe0094e0d82543be81fbf9f8132ebc86357cc9fdea0a",
+      "width": 1324,
+      "height": 8536,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "straight-edge",
+      "viewport": "tablet",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/owner-action-desk-desktop-cunningham.png",
+      "sha256": "029ec5adc8a5927be3e4e6bb2c6c431c30ed10de23ab97fdb002a284240ea939",
+      "width": 1174,
+      "height": 1658,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "cunningham",
+      "viewport": "desktop",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/owner-action-desk-desktop-roofing-example.png",
+      "sha256": "486e3d26168a9b759777d3f2379554b32f342385567400121eedac4da698fab2",
+      "width": 1174,
+      "height": 1658,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "roofing-example",
+      "viewport": "desktop",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/owner-action-desk-desktop-straight-edge.png",
+      "sha256": "461d7d65c38ac58851353fd9cc99ac75ce44cc249f940c963a009fbb8c7f5a92",
+      "width": 1174,
+      "height": 1658,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "straight-edge",
+      "viewport": "desktop",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/owner-action-desk-mobile-cunningham.png",
+      "sha256": "eb6f19c6b9a4de8100e12762caca7a30fdf3d54f31882b0af211e9d29175a3f6",
+      "width": 996,
+      "height": 9939,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "cunningham",
+      "viewport": "mobile",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/owner-action-desk-mobile-roofing-example.png",
+      "sha256": "802c1e0908287505f93c938f4bee2557991c17d99376ccb25b718e7fcd7e91c3",
+      "width": 996,
+      "height": 9939,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "roofing-example",
+      "viewport": "mobile",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/owner-action-desk-mobile-straight-edge.png",
+      "sha256": "2da0849a87ac2cd521861c8c4d3920cbd250910785888c3d12c4a857f0d886ee",
+      "width": 996,
+      "height": 9939,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "straight-edge",
+      "viewport": "mobile",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/owner-action-desk-tablet-cunningham.png",
+      "sha256": "d4dcd65513af0abf97e606db70898303e094ac341195142dc6ba631093360c35",
+      "width": 1324,
+      "height": 3916,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "cunningham",
+      "viewport": "tablet",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/owner-action-desk-tablet-roofing-example.png",
+      "sha256": "65366b32197a1d8f4a82eb03f6757e7e006296430562fcd44016157c6f437814",
+      "width": 1324,
+      "height": 3936,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "roofing-example",
+      "viewport": "tablet",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/owner-action-desk-tablet-straight-edge.png",
+      "sha256": "8857c0dcf97f12f7b406dff2d7d770b116a00e7f248631ee22165b82ddf183ab",
+      "width": 1324,
+      "height": 3890,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "straight-edge",
+      "viewport": "tablet",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/reference-advanced-panels-desktop-cunningham.png",
+      "sha256": "32bf7626c30fcb6edc2871566f21102df9757b2a732cf812b446aeacda64c989",
+      "width": 1174,
+      "height": 3341,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "cunningham",
+      "viewport": "desktop",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/reference-advanced-panels-desktop-roofing-example.png",
+      "sha256": "bd0fbf93e5819f56dd84b251ee422e8ff881b355a82f73dd8eed9b4152d774ab",
+      "width": 1174,
+      "height": 3365,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "roofing-example",
+      "viewport": "desktop",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/reference-advanced-panels-desktop-straight-edge.png",
+      "sha256": "2801907116bef8afdaabd55c5a2d44611b3a3de62aff22356f45181eb3d00073",
+      "width": 1174,
+      "height": 3447,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "straight-edge",
+      "viewport": "desktop",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/reference-advanced-panels-mobile-cunningham.png",
+      "sha256": "edde7e84f27d0f501b7c12f1fcdd481a44630f7b255b905ebcff47ce0975539b",
+      "width": 996,
+      "height": 18021,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "cunningham",
+      "viewport": "mobile",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/reference-advanced-panels-mobile-roofing-example.png",
+      "sha256": "91bd60169f0fcbba18dac4f1530420bf839724e356692653e4bbeab0191e1aa4",
+      "width": 996,
+      "height": 17796,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "roofing-example",
+      "viewport": "mobile",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/reference-advanced-panels-mobile-straight-edge.png",
+      "sha256": "24e8a560da19eea7cdbea46ce4ea414f35ad82f2a364091258f40c9989484adf",
+      "width": 996,
+      "height": 18399,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "straight-edge",
+      "viewport": "mobile",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/reference-advanced-panels-tablet-cunningham.png",
+      "sha256": "dac106f265c6c84ffb29cbf8d4a1f369b176692ef958055298d3cc73225333b9",
+      "width": 1324,
+      "height": 7862,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "cunningham",
+      "viewport": "tablet",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/reference-advanced-panels-tablet-roofing-example.png",
+      "sha256": "dafc55ab45929d7af76a6edcf7230044e2f01805113d0c463cd5890db5197e64",
+      "width": 1324,
+      "height": 7812,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "roofing-example",
+      "viewport": "tablet",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/reference-advanced-panels-tablet-straight-edge.png",
+      "sha256": "f41aa2a7056e352c942b8a6afc93a06db22c3ed371f098b1b3c9bb5298065a3d",
+      "width": 1324,
+      "height": 8124,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "straight-edge",
+      "viewport": "tablet",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/reference-operating-panels-desktop-cunningham.png",
+      "sha256": "6db4c8ef1472453cadd3534a9d92060087b33331631446b105622e37f5249115",
+      "width": 1174,
+      "height": 1453,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "cunningham",
+      "viewport": "desktop",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/reference-operating-panels-desktop-roofing-example.png",
+      "sha256": "8ee1ccfda4b60cd658300529b75a1942dbf2d443ae16f653a014f3f40dc0478f",
+      "width": 1174,
+      "height": 1474,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "roofing-example",
+      "viewport": "desktop",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/reference-operating-panels-desktop-straight-edge.png",
+      "sha256": "07c3bbb4e78446821365813971ab96dba1b75d8ab3653720c48aace71e93da36",
+      "width": 1174,
+      "height": 1474,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "straight-edge",
+      "viewport": "desktop",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/reference-operating-panels-mobile-cunningham.png",
+      "sha256": "54e8c80d43519c7ae95b703a440e1828f4f2b12ba3487d9df6d110beb401bda4",
+      "width": 996,
+      "height": 5991,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "cunningham",
+      "viewport": "mobile",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/reference-operating-panels-mobile-roofing-example.png",
+      "sha256": "c52863211df5a7652afe526ca27cf4fa01b5584a699d65c28f3f9e83973391ca",
+      "width": 996,
+      "height": 5991,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "roofing-example",
+      "viewport": "mobile",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/reference-operating-panels-mobile-straight-edge.png",
+      "sha256": "c170c36b4e67ed72d206425f30058e3c913e1f618460f205efab012e72f228c7",
+      "width": 996,
+      "height": 5991,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "straight-edge",
+      "viewport": "mobile",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/reference-operating-panels-tablet-cunningham.png",
+      "sha256": "770e82a1a13aeab9e46558d74f380417b39264c8053cd00234ec6ac5808523f1",
+      "width": 1324,
+      "height": 3036,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "cunningham",
+      "viewport": "tablet",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/reference-operating-panels-tablet-roofing-example.png",
+      "sha256": "e1e523231ff3214072d767abda1e20e05f0d2afc63894db543dbbdb477a4b083",
+      "width": 1324,
+      "height": 3036,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "roofing-example",
+      "viewport": "tablet",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/reference-operating-panels-tablet-straight-edge.png",
+      "sha256": "1ff4c971b7304531dcf2c824051b178606cb7f6415ea55945bb1de2a3327f360",
+      "width": 1324,
+      "height": 3036,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "straight-edge",
+      "viewport": "tablet",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/retained-maintenance-desk-desktop-cunningham.png",
+      "sha256": "9938c8531c7770c7118dccf362dbe73091341319c8bd887a005068ab927a0ba6",
+      "width": 1174,
+      "height": 1156,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "cunningham",
+      "viewport": "desktop",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/retained-maintenance-desk-desktop-roofing-example.png",
+      "sha256": "058c857b34a4293fc0e9b1826352505592617ded1de8bd8635924926890f4cf3",
+      "width": 1174,
+      "height": 1156,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "roofing-example",
+      "viewport": "desktop",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/retained-maintenance-desk-desktop-straight-edge.png",
+      "sha256": "a926f58c9ef853d7fda82beb08774f2a9ba3fd64e97b1ec860ea37c1eb4ffefb",
+      "width": 1174,
+      "height": 1156,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "straight-edge",
+      "viewport": "desktop",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/retained-maintenance-desk-mobile-cunningham.png",
+      "sha256": "969beeec3720d479833d8d29d9d8246e50c057baacd7f3619d746fb559235e93",
+      "width": 996,
+      "height": 6963,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "cunningham",
+      "viewport": "mobile",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/retained-maintenance-desk-mobile-roofing-example.png",
+      "sha256": "765446e7fbead9d3ec158653a24626d4898510be3958736f54becd0cdebd4db0",
+      "width": 996,
+      "height": 7026,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "roofing-example",
+      "viewport": "mobile",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/retained-maintenance-desk-mobile-straight-edge.png",
+      "sha256": "1773cfefd8ace2c7c43a87fdab1bc8a9c7e17821ff0d031eae80bd0fc33fe0b4",
+      "width": 996,
+      "height": 6963,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "straight-edge",
+      "viewport": "mobile",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/retained-maintenance-desk-tablet-cunningham.png",
+      "sha256": "064e9a6c3809298d3be37a417377886b6c45f9cff261eac17248897e47c840a3",
+      "width": 1324,
+      "height": 3024,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "cunningham",
+      "viewport": "tablet",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/retained-maintenance-desk-tablet-roofing-example.png",
+      "sha256": "cab953348c213aa7b8756d4f832c5b4d4340c25fb3c5c399522491be704bf9d4",
+      "width": 1324,
+      "height": 3024,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "roofing-example",
+      "viewport": "tablet",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/retained-maintenance-desk-tablet-straight-edge.png",
+      "sha256": "fcd701ae39d0f2f46565e521ade9a9f64322350273a5a3fd17534d91eefc2720",
+      "width": 1324,
+      "height": 3024,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "straight-edge",
+      "viewport": "tablet",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/service-passport-path-desktop-cunningham.png",
+      "sha256": "16c0a3da57141a91c9a6758bdfc9012f2203254d45a6ccbf981d501c39da6ae3",
+      "width": 1174,
+      "height": 1385,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "cunningham",
+      "viewport": "desktop",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/service-passport-path-desktop-roofing-example.png",
+      "sha256": "d6d646c3ef6e8b119321450c5bccab3238a53cf3e3bb73dc656a30dd3b3d9bd1",
+      "width": 1174,
+      "height": 1385,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "roofing-example",
+      "viewport": "desktop",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/service-passport-path-desktop-straight-edge.png",
+      "sha256": "def4d638401562c80dc29213b365133233786b0ac42c7fdb7dc8b748c85987b6",
+      "width": 1174,
+      "height": 1385,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "straight-edge",
+      "viewport": "desktop",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/service-passport-path-mobile-cunningham.png",
+      "sha256": "79332bfb60845cef2bf1372ebe56bf58ab8f3efa16be0e63a051fad207e0393c",
+      "width": 996,
+      "height": 6258,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "cunningham",
+      "viewport": "mobile",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/service-passport-path-mobile-roofing-example.png",
+      "sha256": "e609f5057dc316a45b0117a2c003a9ce64b09eb14ec6c9b40d78e3d76937539b",
+      "width": 996,
+      "height": 6258,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "roofing-example",
+      "viewport": "mobile",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/service-passport-path-mobile-straight-edge.png",
+      "sha256": "c11efc214697446a15fc1f00c37f4c38c40e3167dcc0e92f0a014de5c7937c68",
+      "width": 996,
+      "height": 6258,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "straight-edge",
+      "viewport": "mobile",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/service-passport-path-tablet-cunningham.png",
+      "sha256": "1d143fa57714fe9e50feeff87d7be9d961bfcdb78cf0efafe3cf44f594995724",
+      "width": 1324,
+      "height": 3226,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "cunningham",
+      "viewport": "tablet",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/service-passport-path-tablet-roofing-example.png",
+      "sha256": "da45790b88cb01bd9315d4c6c93808d1c93220ba13bc1c50333a6e7e959b356c",
+      "width": 1324,
+      "height": 3226,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "roofing-example",
+      "viewport": "tablet",
+      "visual_approval": "PENDING"
+    },
+    {
+      "path": "artifacts/cycle17/service-passport-path-tablet-straight-edge.png",
+      "sha256": "481ad22eac92fc28d28077fac1825d9f6e5bbff198fa1093482c89b29601b63a",
+      "width": 1324,
+      "height": 3178,
+      "source_commit": "19a64e3ed80c7bf7b0180224a881867425521db1",
+      "brand": "straight-edge",
+      "viewport": "tablet",
+      "visual_approval": "PENDING"
+    }
+  ]
+}
