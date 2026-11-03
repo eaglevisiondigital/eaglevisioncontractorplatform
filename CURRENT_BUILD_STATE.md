@@ -1,18 +1,31 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
-## Cycle 21 · canonical correction implementation in progress
+## Cycle 21 · native corrections and exact-source review delivered locally
 
-Owner authorized five isolated local packages on exact Cycle20 8d607d9. Shared
-correction APIs now extend the original source-exercise custody and native engines:
-exact task correction with explicit internal submission/review, original plan CAS,
-and manual review of existing pending material commitments. Native locked periods,
-current sources, live inputs and permanent UNKNOWN/no-replay apply. No restart adapter,
-business store, evidence-file layer, payment, dispatch or communication is added.
-The31new shared cases plus50unchanged original exercise cases pass; strict types and
-global lint pass (retained Fast Refresh warning). Module/browser/independent integration
-and final exact-head CI remain separate pending verification. Author ownership and
-boundaries are in docs/program/CYCLE21_ASSIGNMENTS.md. Existing gates stay unchanged;
-Release1.0 NOT READY / NOT AUTHORIZED.
+Coordination draft #143 composes five isolated feature drafts #144–#148 over exact
+Cycle20 8d607d9, using support b918231. Actual author ownership, current heads, original
+commits and title-only forward corrections are pinned in CYCLE21_SOURCE_MANIFEST.
+The original source host/workbench and native engines own task corrections, existing
+pending material reviews, plan CAS, immutable published history and recorded owner
+priorities. No new store, evidence layer or restart adapter is implemented.
+
+Final338 unique application cases across9files and30actual browser cases pass across
+all3brands/desktop/tablet/mobile;84PNGcompanions retain source hashes. Independent41
+cases are CLEAR_LOCAL_SYNTHETIC_ONLY, including12actual-job journeys. The strict
+collector rejected duplicate parameterized test titles before two one-line label-only
+followups; every input/assertion/runtime byte was preserved and independently checked.
+Types, generated types, lint/format, build and protected/source/migration checks pass
+with retained warnings. See docs/program/CYCLE21_VALIDATION.md and JSON.
+
+Cycle20 remains NOT CI GREEN: dedicated new coverage passed, while Main Foundation
+browser completion and retained C18 failures remain explicit gaps. Current feature CI
+is separately observed; final Main automatic CI starts on publication. No successful
+check is restarted. All25capability states/18IDs/eightclosedPhaseOnegates/threeapproved
+design scopes/128protected files/5locks13bindings remain unchanged. Physical Air
+readiness and independent recovery remain UNVERIFIED/NOT RUN; use the unchanged
+Nov4checklist/quickcard/kit. Existing P1/customer14/4B/Netlify/Auth/MFA/NMI/recovery and
+financial/provider/hosted/production restrictions remain. Release1.0 NOT READY /
+NOT AUTHORIZED.
 
 ## Cycle 20 · saved evidence and canonical review continuity
 

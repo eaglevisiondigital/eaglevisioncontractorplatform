@@ -61,3 +61,6 @@ artifacts/cycle19/
 
 # Disposable Cycle20 evidence files, downloads and responsive browser artifacts.
 artifacts/cycle20/
+
+# Disposable Cycle21 native correction/browser evidence; CI retains bounded artifacts.
+artifacts/cycle21/

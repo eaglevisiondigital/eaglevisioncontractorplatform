@@ -1,0 +1,51 @@
+{
+  "schema": "propel-cycle21-test-title-correction-v1",
+  "initial_aggregate": "REJECTED_DUPLICATE_CASE_TITLES",
+  "initial_assertion_passes": 338,
+  "initial_report_sha256": "dfaabb29dfe10dd94cdabad43274675d49f48da9156b749d759547ca64260d12",
+  "correction": "Two parameterized test-title lines add case indexes; no input, assertion, fixture or runtime change. Strict unique-name validation is preserved.",
+  "followups": [
+    {
+      "pr": 147,
+      "branch": "codex/cycle21-task-correction-workflow",
+      "old_head": "b64312d96b3ae0ca3dd03c9420e8338294fc2581",
+      "new_head": "4681fc9d76a31044eded27b6f3340c2cb0b2c89c",
+      "changed_file": "tests/cycle21-task-correction-review.test.ts",
+      "old_blob": "6158f7a31f57746ade98db0674359a543bf9adc0",
+      "new_blob": "848ebf3cda2f3768283517ee23da39481d55e567",
+      "sha256": "36da2b08f54bd8f661ea1c83e36add3420070c8ea9cdded344d0288a82036a1d",
+      "preserved": "Every input, assertion and runtime byte; only case index added to parametrized test title.",
+      "raw_report": "cycle21-field-title-final.json",
+      "raw_report_sha256": "700d1f9ef08de9fac8007faa15a2668e5ee1aa6a87137e5644e6de3df9246eb9",
+      "passed": 35,
+      "unique_full_names": 35,
+      "types": "PASS",
+      "scoped_lint": "PASS",
+      "format": "PASS",
+      "ci": "PENDING_AUTOMATIC_EXACT_HEAD"
+    },
+    {
+      "pr": 148,
+      "branch": "codex/cycle21-maintenance-plan-workflow",
+      "old_head": "ab5697867ca0e8badf25f91f69d695b627f475f9",
+      "new_head": "25136cd9175f0ffe7a5c1804141b5e9532a9ca08",
+      "changed_file": "tests/cycle21-maintenance-plan-correction.test.ts",
+      "old_blob": "41a436bcf9ad81a0faa05ee805dbdd2c082d80bc",
+      "new_blob": "0bb25838aa07fb40543aae6f4999ac94e11a3d3c",
+      "sha256": "857bf688d85650abf01d178859b33de33859905b4edc301f0dce31f621c1a77b",
+      "preserved": "Every input, assertion and runtime byte; only case index added to parametrized test title.",
+      "raw_report": "cycle21-growth-title-final.json",
+      "raw_report_sha256": "46dcc352bfb993f1b848b097d311400028973ea19a14cc53d32c8917fbfed3d2",
+      "passed": 36,
+      "unique_full_names": 36,
+      "types": "PASS",
+      "scoped_lint": "PASS",
+      "format": "PASS",
+      "ci": "PENDING_AUTOMATIC_EXACT_HEAD"
+    }
+  ],
+  "independent_delta_reviewer": "/root/cycle21_independent_review",
+  "independent_delta_verdict": "PASS_BYTE_EXACT_EXCEPT_ONE_TITLE_LINE_PER_FILE",
+  "frozen_independent_commit_unchanged": "36a6ad72dbc8ae893ffcdcd67f75df4c774eea2d",
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

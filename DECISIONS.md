@@ -1,5 +1,22 @@
 # Engineering decisions
 
+## Cycle21 · correct native source records without a restoration layer
+
+Reuse the original Operations/company/job command-family custody and canonical
+repositories. Explicit task corrections append through native corrects_id and internal
+review, pending material reviews use existing reviewExpense, and plan edits use original
+CAS. Current staff/source/input checks fence every await; ambiguous outcomes retain
+UNKNOWN across wrappers and reconcile only by exact read-only evidence. No new business
+store, evidence archive or restart adapter is introduced. Optional correction fixtures
+run only inside the original explicit preparation hold, never on read or tab selection.
+
+Historical evidence files cannot restore canonical business state. Any future restart
+adapter first needs separate authority, consistency and recovery review. Published
+history stays immutable and customer-safe. Final evidence must validate unique actual
+case identities; a label-only forward fix is preferable to weakening the collector.
+The frozen independent review is retained, with a separately verified title-only delta.
+All original designs and release/recovery/financial/provider restrictions stay intact.
+
 ## Cycle19 · compare saved evidence without replaying original controls
 
 Keep immutable before/current evidence and synchronous terminal source fences over

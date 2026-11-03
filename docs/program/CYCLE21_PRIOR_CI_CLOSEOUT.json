@@ -1,0 +1,2318 @@
+{
+  "schema": "propel-cycle21-prior-ci-closeout-v1",
+  "observed_at": "2026-11-03T20:57:13.126Z",
+  "reviewer_agent": "/root/cycle11_field_growth",
+  "scope": "Read-only reconciliation of exact Cycle20 draft PR heads; separate from current Cycle21 results.",
+  "verdict": "NOT_CI_GREEN",
+  "aggregate": {
+    "checks": 144,
+    "success": 133,
+    "cancelled": 10,
+    "failure": 1
+  },
+  "prs": [
+    {
+      "pr": 137,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/137",
+      "head": "8d607d9c30e82699f1af4634c29fa38a3756fb73",
+      "branch": "codex/program-cycle-twenty",
+      "base": "codex/program-cycle-nineteen",
+      "draft": true,
+      "counts": {
+        "SUCCESS": 31,
+        "CANCELLED": 2,
+        "FAILURE": 1
+      },
+      "checks": [
+        {
+          "workflow": "Cycle 18 source-bound daily workflow",
+          "job": "bounded-integration",
+          "conclusion": "FAILURE",
+          "run_id": 41702379439,
+          "job_id": 126148710245,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702379439/job/126148710245"
+        },
+        {
+          "workflow": "Foundation checks",
+          "job": "verify",
+          "conclusion": "CANCELLED",
+          "run_id": 41702379630,
+          "job_id": 126148709336,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702379630/job/126148709336"
+        },
+        {
+          "workflow": "Foundation checks",
+          "job": "verify",
+          "conclusion": "CANCELLED",
+          "run_id": 41702371377,
+          "job_id": 126148681609,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702371377/job/126148681609"
+        },
+        {
+          "workflow": "Cycle 10 everyday operating reviews",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41702379382,
+          "job_id": 126148708595,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702379382/job/126148708595"
+        },
+        {
+          "workflow": "Cycle 11 source-bound workflow laboratories",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41702379857,
+          "job_id": 126148715708,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702379857/job/126148715708"
+        },
+        {
+          "workflow": "Cycle 12 exact workflow revision and verification",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41702379690,
+          "job_id": 126148709952,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702379690/job/126148709952"
+        },
+        {
+          "workflow": "Cycle 15 guided task continuity",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41702379608,
+          "job_id": 126148709552,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702379608/job/126148709552"
+        },
+        {
+          "workflow": "Cycle 16 daily workflow guides",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41702379553,
+          "job_id": 126148714071,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702379553/job/126148714071"
+        },
+        {
+          "workflow": "Cycle 17 retained daily workspaces",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41702379478,
+          "job_id": 126148708814,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702379478/job/126148708814"
+        },
+        {
+          "workflow": "Cycle 19 saved source continuity",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41702379887,
+          "job_id": 126148733079,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702379887/job/126148733079"
+        },
+        {
+          "workflow": "Cycle 20 exact saved evidence continuity",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41702380048,
+          "job_id": 126148711268,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702380048/job/126148711268"
+        },
+        {
+          "workflow": "Cycle 20 exact saved evidence continuity",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41702371533,
+          "job_id": 126148681926,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702371533/job/126148681926"
+        },
+        {
+          "workflow": "Cycle 6 local workflow integration",
+          "job": "local-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41702379394,
+          "job_id": 126148708447,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702379394/job/126148708447"
+        },
+        {
+          "workflow": "Cycle 7 practical local usability",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41702379543,
+          "job_id": 126148709796,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702379543/job/126148709796"
+        },
+        {
+          "workflow": "Cycle 8 connected operating reviews",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41702379585,
+          "job_id": 126148709651,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702379585/job/126148709651"
+        },
+        {
+          "workflow": "Cycle 9 multi-job operating center",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41702379472,
+          "job_id": 126148708593,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702379472/job/126148708593"
+        },
+        {
+          "workflow": "Isolated crew-day capacity",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41702379861,
+          "job_id": 126148710981,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702379861/job/126148710981"
+        },
+        {
+          "workflow": "Isolated crew-day capacity",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41702371413,
+          "job_id": 126148681382,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702371413/job/126148681382"
+        },
+        {
+          "workflow": "Isolated field scheduling",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41702379401,
+          "job_id": 126148709397,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702379401/job/126148709397"
+        },
+        {
+          "workflow": "Isolated field scheduling",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41702371451,
+          "job_id": 126148682040,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702371451/job/126148682040"
+        },
+        {
+          "workflow": "Isolated field work orders",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41702379643,
+          "job_id": 126148709469,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702379643/job/126148709469"
+        },
+        {
+          "workflow": "Isolated field work orders",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41702371477,
+          "job_id": 126148682198,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702371477/job/126148682198"
+        },
+        {
+          "workflow": "Isolated maintenance schedule handoff",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41702379606,
+          "job_id": 126148709749,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702379606/job/126148709749"
+        },
+        {
+          "workflow": "Isolated maintenance schedule handoff",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41702371441,
+          "job_id": 126148682415,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702371441/job/126148682415"
+        },
+        {
+          "workflow": "Isolated technician day board",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41702379545,
+          "job_id": 126148710592,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702379545/job/126148710592"
+        },
+        {
+          "workflow": "Isolated technician day board",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41702371528,
+          "job_id": 126148682519,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702371528/job/126148682519"
+        },
+        {
+          "workflow": "Passport timeline preview",
+          "job": "local-preview",
+          "conclusion": "SUCCESS",
+          "run_id": 41702379897,
+          "job_id": 126148710640,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702379897/job/126148710640"
+        },
+        {
+          "workflow": "Passport timeline preview",
+          "job": "local-preview",
+          "conclusion": "SUCCESS",
+          "run_id": 41702371586,
+          "job_id": 126148682112,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702371586/job/126148682112"
+        },
+        {
+          "workflow": "Proof of Work documentation preview",
+          "job": "local-preview",
+          "conclusion": "SUCCESS",
+          "run_id": 41702379906,
+          "job_id": 126148711733,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702379906/job/126148711733"
+        },
+        {
+          "workflow": "Proof of Work documentation preview",
+          "job": "local-preview",
+          "conclusion": "SUCCESS",
+          "run_id": 41702371354,
+          "job_id": 126148681523,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702371354/job/126148681523"
+        },
+        {
+          "workflow": "Synthetic rehearsal compatibility",
+          "job": "synthetic-crypto48",
+          "conclusion": "SUCCESS",
+          "run_id": 41702379556,
+          "job_id": 126148709477,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702379556/job/126148709477"
+        },
+        {
+          "workflow": "Synthetic rehearsal compatibility",
+          "job": "synthetic-crypto48",
+          "conclusion": "SUCCESS",
+          "run_id": 41702371405,
+          "job_id": 126148681026,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702371405/job/126148681026"
+        },
+        {
+          "workflow": "Foundation checks",
+          "job": "postgres17",
+          "conclusion": "SUCCESS",
+          "run_id": 41702379630,
+          "job_id": 126148709866,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702379630/job/126148709866"
+        },
+        {
+          "workflow": "Foundation checks",
+          "job": "postgres17",
+          "conclusion": "SUCCESS",
+          "run_id": 41702371377,
+          "job_id": 126148682156,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702371377/job/126148682156"
+        }
+      ]
+    },
+    {
+      "pr": 138,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/138",
+      "head": "eb3406a4c4880107c740d39cb370cceb3ea2e4a3",
+      "branch": "codex/cycle20-published-service-source-review",
+      "base": "codex/program-cycle-twenty",
+      "draft": true,
+      "counts": {
+        "SUCCESS": 20,
+        "CANCELLED": 2,
+        "FAILURE": 0
+      },
+      "checks": [
+        {
+          "workflow": "Foundation checks",
+          "job": "verify",
+          "conclusion": "CANCELLED",
+          "run_id": 41701098844,
+          "job_id": 126144269276,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701098844/job/126144269276"
+        },
+        {
+          "workflow": "Foundation checks",
+          "job": "verify",
+          "conclusion": "CANCELLED",
+          "run_id": 41701089522,
+          "job_id": 126144234222,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701089522/job/126144234222"
+        },
+        {
+          "workflow": "Cycle 10 everyday operating reviews",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701098994,
+          "job_id": 126144269890,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701098994/job/126144269890"
+        },
+        {
+          "workflow": "Cycle 11 source-bound workflow laboratories",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701098916,
+          "job_id": 126144269858,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701098916/job/126144269858"
+        },
+        {
+          "workflow": "Cycle 12 exact workflow revision and verification",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701099091,
+          "job_id": 126144270052,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701099091/job/126144270052"
+        },
+        {
+          "workflow": "Cycle 6 local workflow integration",
+          "job": "local-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701099042,
+          "job_id": 126144269791,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701099042/job/126144269791"
+        },
+        {
+          "workflow": "Cycle 7 practical local usability",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701099104,
+          "job_id": 126144270330,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701099104/job/126144270330"
+        },
+        {
+          "workflow": "Cycle 8 connected operating reviews",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701098949,
+          "job_id": 126144270014,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701098949/job/126144270014"
+        },
+        {
+          "workflow": "Cycle 9 multi-job operating center",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701098892,
+          "job_id": 126144269084,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701098892/job/126144269084"
+        },
+        {
+          "workflow": "Isolated crew-day capacity",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41701098917,
+          "job_id": 126144269259,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701098917/job/126144269259"
+        },
+        {
+          "workflow": "Isolated field scheduling",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41701099068,
+          "job_id": 126144270166,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701099068/job/126144270166"
+        },
+        {
+          "workflow": "Isolated field work orders",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41701098859,
+          "job_id": 126144282569,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701098859/job/126144282569"
+        },
+        {
+          "workflow": "Isolated maintenance schedule handoff",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41701098899,
+          "job_id": 126144268759,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701098899/job/126144268759"
+        },
+        {
+          "workflow": "Isolated technician day board",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41701099016,
+          "job_id": 126144269382,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701099016/job/126144269382"
+        },
+        {
+          "workflow": "Passport timeline preview",
+          "job": "local-preview",
+          "conclusion": "SUCCESS",
+          "run_id": 41701098840,
+          "job_id": 126144269119,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701098840/job/126144269119"
+        },
+        {
+          "workflow": "Passport timeline preview",
+          "job": "local-preview",
+          "conclusion": "SUCCESS",
+          "run_id": 41701089440,
+          "job_id": 126144234013,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701089440/job/126144234013"
+        },
+        {
+          "workflow": "Proof of Work documentation preview",
+          "job": "local-preview",
+          "conclusion": "SUCCESS",
+          "run_id": 41701098954,
+          "job_id": 126144270013,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701098954/job/126144270013"
+        },
+        {
+          "workflow": "Proof of Work documentation preview",
+          "job": "local-preview",
+          "conclusion": "SUCCESS",
+          "run_id": 41701089446,
+          "job_id": 126144234259,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701089446/job/126144234259"
+        },
+        {
+          "workflow": "Synthetic rehearsal compatibility",
+          "job": "synthetic-crypto48",
+          "conclusion": "SUCCESS",
+          "run_id": 41701098929,
+          "job_id": 126144269454,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701098929/job/126144269454"
+        },
+        {
+          "workflow": "Synthetic rehearsal compatibility",
+          "job": "synthetic-crypto48",
+          "conclusion": "SUCCESS",
+          "run_id": 41701089574,
+          "job_id": 126144235202,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701089574/job/126144235202"
+        },
+        {
+          "workflow": "Foundation checks",
+          "job": "postgres17",
+          "conclusion": "SUCCESS",
+          "run_id": 41701098844,
+          "job_id": 126144268957,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701098844/job/126144268957"
+        },
+        {
+          "workflow": "Foundation checks",
+          "job": "postgres17",
+          "conclusion": "SUCCESS",
+          "run_id": 41701089522,
+          "job_id": 126144234610,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701089522/job/126144234610"
+        }
+      ]
+    },
+    {
+      "pr": 139,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/139",
+      "head": "077187201ebe3d5eea2905a3db949e57f7727147",
+      "branch": "codex/cycle20-work-order-source-evidence",
+      "base": "codex/program-cycle-twenty",
+      "draft": true,
+      "counts": {
+        "SUCCESS": 20,
+        "CANCELLED": 2,
+        "FAILURE": 0
+      },
+      "checks": [
+        {
+          "workflow": "Foundation checks",
+          "job": "verify",
+          "conclusion": "CANCELLED",
+          "run_id": 41700980015,
+          "job_id": 126143862473,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41700980015/job/126143862473"
+        },
+        {
+          "workflow": "Foundation checks",
+          "job": "verify",
+          "conclusion": "CANCELLED",
+          "run_id": 41700966804,
+          "job_id": 126143817012,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41700966804/job/126143817012"
+        },
+        {
+          "workflow": "Cycle 10 everyday operating reviews",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41700979765,
+          "job_id": 126143860634,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41700979765/job/126143860634"
+        },
+        {
+          "workflow": "Cycle 11 source-bound workflow laboratories",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41700979997,
+          "job_id": 126143861938,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41700979997/job/126143861938"
+        },
+        {
+          "workflow": "Cycle 12 exact workflow revision and verification",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41700979617,
+          "job_id": 126143860341,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41700979617/job/126143860341"
+        },
+        {
+          "workflow": "Cycle 6 local workflow integration",
+          "job": "local-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41700979830,
+          "job_id": 126143862575,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41700979830/job/126143862575"
+        },
+        {
+          "workflow": "Cycle 7 practical local usability",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41700979733,
+          "job_id": 126143860884,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41700979733/job/126143860884"
+        },
+        {
+          "workflow": "Cycle 8 connected operating reviews",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41700979774,
+          "job_id": 126143861042,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41700979774/job/126143861042"
+        },
+        {
+          "workflow": "Cycle 9 multi-job operating center",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41700979755,
+          "job_id": 126143864619,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41700979755/job/126143864619"
+        },
+        {
+          "workflow": "Isolated crew-day capacity",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41700979756,
+          "job_id": 126143860792,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41700979756/job/126143860792"
+        },
+        {
+          "workflow": "Isolated field scheduling",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41700979668,
+          "job_id": 126143860247,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41700979668/job/126143860247"
+        },
+        {
+          "workflow": "Isolated field work orders",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41700979893,
+          "job_id": 126143861237,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41700979893/job/126143861237"
+        },
+        {
+          "workflow": "Isolated maintenance schedule handoff",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41700979764,
+          "job_id": 126143860812,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41700979764/job/126143860812"
+        },
+        {
+          "workflow": "Isolated technician day board",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41700979782,
+          "job_id": 126143861673,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41700979782/job/126143861673"
+        },
+        {
+          "workflow": "Passport timeline preview",
+          "job": "local-preview",
+          "conclusion": "SUCCESS",
+          "run_id": 41700979769,
+          "job_id": 126143860601,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41700979769/job/126143860601"
+        },
+        {
+          "workflow": "Passport timeline preview",
+          "job": "local-preview",
+          "conclusion": "SUCCESS",
+          "run_id": 41700966784,
+          "job_id": 126143817875,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41700966784/job/126143817875"
+        },
+        {
+          "workflow": "Proof of Work documentation preview",
+          "job": "local-preview",
+          "conclusion": "SUCCESS",
+          "run_id": 41700979828,
+          "job_id": 126143861117,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41700979828/job/126143861117"
+        },
+        {
+          "workflow": "Proof of Work documentation preview",
+          "job": "local-preview",
+          "conclusion": "SUCCESS",
+          "run_id": 41700966748,
+          "job_id": 126143816345,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41700966748/job/126143816345"
+        },
+        {
+          "workflow": "Synthetic rehearsal compatibility",
+          "job": "synthetic-crypto48",
+          "conclusion": "SUCCESS",
+          "run_id": 41700979840,
+          "job_id": 126143865849,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41700979840/job/126143865849"
+        },
+        {
+          "workflow": "Synthetic rehearsal compatibility",
+          "job": "synthetic-crypto48",
+          "conclusion": "SUCCESS",
+          "run_id": 41700966738,
+          "job_id": 126143815761,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41700966738/job/126143815761"
+        },
+        {
+          "workflow": "Foundation checks",
+          "job": "postgres17",
+          "conclusion": "SUCCESS",
+          "run_id": 41700980015,
+          "job_id": 126143862495,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41700980015/job/126143862495"
+        },
+        {
+          "workflow": "Foundation checks",
+          "job": "postgres17",
+          "conclusion": "SUCCESS",
+          "run_id": 41700966804,
+          "job_id": 126143816702,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41700966804/job/126143816702"
+        }
+      ]
+    },
+    {
+      "pr": 140,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/140",
+      "head": "a7961bfe5a853bb822ddac65ba35dd2d3f029f0d",
+      "branch": "codex/cycle20-maintenance-renewal-source-review",
+      "base": "codex/program-cycle-twenty",
+      "draft": true,
+      "counts": {
+        "SUCCESS": 20,
+        "CANCELLED": 2,
+        "FAILURE": 0
+      },
+      "checks": [
+        {
+          "workflow": "Foundation checks",
+          "job": "verify",
+          "conclusion": "CANCELLED",
+          "run_id": 41701144638,
+          "job_id": 126144428239,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701144638/job/126144428239"
+        },
+        {
+          "workflow": "Foundation checks",
+          "job": "verify",
+          "conclusion": "CANCELLED",
+          "run_id": 41701133590,
+          "job_id": 126144390686,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701133590/job/126144390686"
+        },
+        {
+          "workflow": "Cycle 10 everyday operating reviews",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701144716,
+          "job_id": 126144428950,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701144716/job/126144428950"
+        },
+        {
+          "workflow": "Cycle 11 source-bound workflow laboratories",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701144808,
+          "job_id": 126144430213,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701144808/job/126144430213"
+        },
+        {
+          "workflow": "Cycle 12 exact workflow revision and verification",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701144588,
+          "job_id": 126144428428,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701144588/job/126144428428"
+        },
+        {
+          "workflow": "Cycle 6 local workflow integration",
+          "job": "local-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701144551,
+          "job_id": 126144428267,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701144551/job/126144428267"
+        },
+        {
+          "workflow": "Cycle 7 practical local usability",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701144833,
+          "job_id": 126144429547,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701144833/job/126144429547"
+        },
+        {
+          "workflow": "Cycle 8 connected operating reviews",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701144836,
+          "job_id": 126144428660,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701144836/job/126144428660"
+        },
+        {
+          "workflow": "Cycle 9 multi-job operating center",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701145032,
+          "job_id": 126144431470,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701145032/job/126144431470"
+        },
+        {
+          "workflow": "Isolated crew-day capacity",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41701144811,
+          "job_id": 126144430352,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701144811/job/126144430352"
+        },
+        {
+          "workflow": "Isolated field scheduling",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41701144972,
+          "job_id": 126144431323,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701144972/job/126144431323"
+        },
+        {
+          "workflow": "Isolated field work orders",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41701144768,
+          "job_id": 126144428739,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701144768/job/126144428739"
+        },
+        {
+          "workflow": "Isolated maintenance schedule handoff",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41701144606,
+          "job_id": 126144428302,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701144606/job/126144428302"
+        },
+        {
+          "workflow": "Isolated technician day board",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41701144790,
+          "job_id": 126144429261,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701144790/job/126144429261"
+        },
+        {
+          "workflow": "Passport timeline preview",
+          "job": "local-preview",
+          "conclusion": "SUCCESS",
+          "run_id": 41701144672,
+          "job_id": 126144428568,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701144672/job/126144428568"
+        },
+        {
+          "workflow": "Passport timeline preview",
+          "job": "local-preview",
+          "conclusion": "SUCCESS",
+          "run_id": 41701133981,
+          "job_id": 126144392458,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701133981/job/126144392458"
+        },
+        {
+          "workflow": "Proof of Work documentation preview",
+          "job": "local-preview",
+          "conclusion": "SUCCESS",
+          "run_id": 41701145353,
+          "job_id": 126144431374,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701145353/job/126144431374"
+        },
+        {
+          "workflow": "Proof of Work documentation preview",
+          "job": "local-preview",
+          "conclusion": "SUCCESS",
+          "run_id": 41701133647,
+          "job_id": 126144391646,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701133647/job/126144391646"
+        },
+        {
+          "workflow": "Synthetic rehearsal compatibility",
+          "job": "synthetic-crypto48",
+          "conclusion": "SUCCESS",
+          "run_id": 41701144687,
+          "job_id": 126144428535,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701144687/job/126144428535"
+        },
+        {
+          "workflow": "Synthetic rehearsal compatibility",
+          "job": "synthetic-crypto48",
+          "conclusion": "SUCCESS",
+          "run_id": 41701133527,
+          "job_id": 126144390401,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701133527/job/126144390401"
+        },
+        {
+          "workflow": "Foundation checks",
+          "job": "postgres17",
+          "conclusion": "SUCCESS",
+          "run_id": 41701144638,
+          "job_id": 126144428846,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701144638/job/126144428846"
+        },
+        {
+          "workflow": "Foundation checks",
+          "job": "postgres17",
+          "conclusion": "SUCCESS",
+          "run_id": 41701133590,
+          "job_id": 126144390011,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701133590/job/126144390011"
+        }
+      ]
+    },
+    {
+      "pr": 141,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/141",
+      "head": "f925e83ccd1b82ea28242731189181bcaee11605",
+      "branch": "codex/cycle20-priority-source-navigation",
+      "base": "codex/program-cycle-twenty",
+      "draft": true,
+      "counts": {
+        "SUCCESS": 20,
+        "CANCELLED": 2,
+        "FAILURE": 0
+      },
+      "checks": [
+        {
+          "workflow": "Foundation checks",
+          "job": "verify",
+          "conclusion": "CANCELLED",
+          "run_id": 41701193493,
+          "job_id": 126144597746,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701193493/job/126144597746"
+        },
+        {
+          "workflow": "Foundation checks",
+          "job": "verify",
+          "conclusion": "CANCELLED",
+          "run_id": 41701183044,
+          "job_id": 126144563269,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701183044/job/126144563269"
+        },
+        {
+          "workflow": "Cycle 10 everyday operating reviews",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701193740,
+          "job_id": 126144598806,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701193740/job/126144598806"
+        },
+        {
+          "workflow": "Cycle 11 source-bound workflow laboratories",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701193621,
+          "job_id": 126144597020,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701193621/job/126144597020"
+        },
+        {
+          "workflow": "Cycle 12 exact workflow revision and verification",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701193790,
+          "job_id": 126144597909,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701193790/job/126144597909"
+        },
+        {
+          "workflow": "Cycle 6 local workflow integration",
+          "job": "local-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701193687,
+          "job_id": 126144599048,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701193687/job/126144599048"
+        },
+        {
+          "workflow": "Cycle 7 practical local usability",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701193682,
+          "job_id": 126144612825,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701193682/job/126144612825"
+        },
+        {
+          "workflow": "Cycle 8 connected operating reviews",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701193689,
+          "job_id": 126144598536,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701193689/job/126144598536"
+        },
+        {
+          "workflow": "Cycle 9 multi-job operating center",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701193357,
+          "job_id": 126144596636,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701193357/job/126144596636"
+        },
+        {
+          "workflow": "Isolated crew-day capacity",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41701193364,
+          "job_id": 126144596434,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701193364/job/126144596434"
+        },
+        {
+          "workflow": "Isolated field scheduling",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41701193799,
+          "job_id": 126144599029,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701193799/job/126144599029"
+        },
+        {
+          "workflow": "Isolated field work orders",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41701193553,
+          "job_id": 126144597736,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701193553/job/126144597736"
+        },
+        {
+          "workflow": "Isolated maintenance schedule handoff",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41701193910,
+          "job_id": 126144598907,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701193910/job/126144598907"
+        },
+        {
+          "workflow": "Isolated technician day board",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41701193704,
+          "job_id": 126144599460,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701193704/job/126144599460"
+        },
+        {
+          "workflow": "Passport timeline preview",
+          "job": "local-preview",
+          "conclusion": "SUCCESS",
+          "run_id": 41701193808,
+          "job_id": 126144598634,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701193808/job/126144598634"
+        },
+        {
+          "workflow": "Passport timeline preview",
+          "job": "local-preview",
+          "conclusion": "SUCCESS",
+          "run_id": 41701183112,
+          "job_id": 126144563024,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701183112/job/126144563024"
+        },
+        {
+          "workflow": "Proof of Work documentation preview",
+          "job": "local-preview",
+          "conclusion": "SUCCESS",
+          "run_id": 41701193751,
+          "job_id": 126144599539,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701193751/job/126144599539"
+        },
+        {
+          "workflow": "Proof of Work documentation preview",
+          "job": "local-preview",
+          "conclusion": "SUCCESS",
+          "run_id": 41701183016,
+          "job_id": 126144562571,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701183016/job/126144562571"
+        },
+        {
+          "workflow": "Synthetic rehearsal compatibility",
+          "job": "synthetic-crypto48",
+          "conclusion": "SUCCESS",
+          "run_id": 41701194199,
+          "job_id": 126144599348,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701194199/job/126144599348"
+        },
+        {
+          "workflow": "Synthetic rehearsal compatibility",
+          "job": "synthetic-crypto48",
+          "conclusion": "SUCCESS",
+          "run_id": 41701182972,
+          "job_id": 126144562912,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701182972/job/126144562912"
+        },
+        {
+          "workflow": "Foundation checks",
+          "job": "postgres17",
+          "conclusion": "SUCCESS",
+          "run_id": 41701193493,
+          "job_id": 126144598212,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701193493/job/126144598212"
+        },
+        {
+          "workflow": "Foundation checks",
+          "job": "postgres17",
+          "conclusion": "SUCCESS",
+          "run_id": 41701183044,
+          "job_id": 126144563060,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701183044/job/126144563060"
+        }
+      ]
+    },
+    {
+      "pr": 142,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/142",
+      "head": "f3f6b67e33358a34c297f3c19cfca0ad21f8b21d",
+      "branch": "codex/cycle20-recorded-cost-source-review",
+      "base": "codex/program-cycle-twenty",
+      "draft": true,
+      "counts": {
+        "SUCCESS": 22,
+        "CANCELLED": 0,
+        "FAILURE": 0
+      },
+      "checks": [
+        {
+          "workflow": "Cycle 10 everyday operating reviews",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701049772,
+          "job_id": 126144098726,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701049772/job/126144098726"
+        },
+        {
+          "workflow": "Cycle 11 source-bound workflow laboratories",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701049471,
+          "job_id": 126144097826,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701049471/job/126144097826"
+        },
+        {
+          "workflow": "Cycle 12 exact workflow revision and verification",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701049574,
+          "job_id": 126144097862,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701049574/job/126144097862"
+        },
+        {
+          "workflow": "Cycle 6 local workflow integration",
+          "job": "local-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701049512,
+          "job_id": 126144097498,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701049512/job/126144097498"
+        },
+        {
+          "workflow": "Cycle 7 practical local usability",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701049665,
+          "job_id": 126144100685,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701049665/job/126144100685"
+        },
+        {
+          "workflow": "Cycle 8 connected operating reviews",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701049657,
+          "job_id": 126144098130,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701049657/job/126144098130"
+        },
+        {
+          "workflow": "Cycle 9 multi-job operating center",
+          "job": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "run_id": 41701049460,
+          "job_id": 126144098304,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701049460/job/126144098304"
+        },
+        {
+          "workflow": "Foundation checks",
+          "job": "verify",
+          "conclusion": "SUCCESS",
+          "run_id": 41701049893,
+          "job_id": 126144100396,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701049893/job/126144100396"
+        },
+        {
+          "workflow": "Foundation checks",
+          "job": "verify",
+          "conclusion": "SUCCESS",
+          "run_id": 41701038957,
+          "job_id": 126144068110,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701038957/job/126144068110"
+        },
+        {
+          "workflow": "Isolated crew-day capacity",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41701049456,
+          "job_id": 126144097970,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701049456/job/126144097970"
+        },
+        {
+          "workflow": "Isolated field scheduling",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41701049543,
+          "job_id": 126144097717,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701049543/job/126144097717"
+        },
+        {
+          "workflow": "Isolated field work orders",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41701049710,
+          "job_id": 126144099856,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701049710/job/126144099856"
+        },
+        {
+          "workflow": "Isolated maintenance schedule handoff",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41701049711,
+          "job_id": 126144098873,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701049711/job/126144098873"
+        },
+        {
+          "workflow": "Isolated technician day board",
+          "job": "browser",
+          "conclusion": "SUCCESS",
+          "run_id": 41701049587,
+          "job_id": 126144098002,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701049587/job/126144098002"
+        },
+        {
+          "workflow": "Passport timeline preview",
+          "job": "local-preview",
+          "conclusion": "SUCCESS",
+          "run_id": 41701049674,
+          "job_id": 126144098868,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701049674/job/126144098868"
+        },
+        {
+          "workflow": "Passport timeline preview",
+          "job": "local-preview",
+          "conclusion": "SUCCESS",
+          "run_id": 41701038808,
+          "job_id": 126144062408,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701038808/job/126144062408"
+        },
+        {
+          "workflow": "Proof of Work documentation preview",
+          "job": "local-preview",
+          "conclusion": "SUCCESS",
+          "run_id": 41701049690,
+          "job_id": 126144098638,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701049690/job/126144098638"
+        },
+        {
+          "workflow": "Proof of Work documentation preview",
+          "job": "local-preview",
+          "conclusion": "SUCCESS",
+          "run_id": 41701038589,
+          "job_id": 126144059854,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701038589/job/126144059854"
+        },
+        {
+          "workflow": "Synthetic rehearsal compatibility",
+          "job": "synthetic-crypto48",
+          "conclusion": "SUCCESS",
+          "run_id": 41701049647,
+          "job_id": 126144098616,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701049647/job/126144098616"
+        },
+        {
+          "workflow": "Synthetic rehearsal compatibility",
+          "job": "synthetic-crypto48",
+          "conclusion": "SUCCESS",
+          "run_id": 41701038768,
+          "job_id": 126144061320,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701038768/job/126144061320"
+        },
+        {
+          "workflow": "Foundation checks",
+          "job": "postgres17",
+          "conclusion": "SUCCESS",
+          "run_id": 41701049893,
+          "job_id": 126144100737,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701049893/job/126144100737"
+        },
+        {
+          "workflow": "Foundation checks",
+          "job": "postgres17",
+          "conclusion": "SUCCESS",
+          "run_id": 41701038957,
+          "job_id": 126144067827,
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701038957/job/126144067827"
+        }
+      ]
+    }
+  ],
+  "foundation": {
+    "configured_verify_budget_minutes": 45,
+    "postgres17": "All12 exact-head companion jobs SUCCESS; disposable CI PostgreSQL is not hosted migration/Auth/operational acceptance.",
+    "verify_runs": [
+      {
+        "pr": 137,
+        "head": "8d607d9c30e82699f1af4634c29fa38a3756fb73",
+        "event": "push",
+        "run_id": 41702371377,
+        "job_id": 126148681609,
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702371377/job/126148681609",
+        "conclusion": "CANCELLED",
+        "started_at": "2026-11-03T19:28:57Z",
+        "completed_at": "2026-11-03T20:14:17Z",
+        "duration_seconds": 2720,
+        "reason": "PROVIDER_45_MINUTE_JOB_LIMIT",
+        "failure_annotations": [
+          "The job has exceeded the maximum execution time of 45m0s",
+          "The operation was canceled."
+        ],
+        "steps": [
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm ci",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install --require-hashes --only-binary=:all: -r recovery/monterey/requirements.lock",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run format:check",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run check",
+            "status": "completed",
+            "conclusion": "cancelled"
+          },
+          {
+            "name": "Run npm run staging:plan",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Run npx playwright install --with-deps chromium",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Run npm run test:browser",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Run actions/upload-artifact@v4",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ],
+        "application_rollup": [],
+        "observed_retained_c18_failed_cases": 10,
+        "application_failure_details": "Retained58-case C18 suite already logged failures before job cancellation; final aggregate exception details were not emitted. Preserve observed failures; underlying cause UNDETERMINED.",
+        "broad_browser": "NOT_REACHED"
+      },
+      {
+        "pr": 137,
+        "head": "8d607d9c30e82699f1af4634c29fa38a3756fb73",
+        "event": "pull_request",
+        "run_id": 41702379630,
+        "job_id": 126148709336,
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702379630/job/126148709336",
+        "conclusion": "CANCELLED",
+        "started_at": "2026-11-03T19:44:08Z",
+        "completed_at": "2026-11-03T20:29:36Z",
+        "duration_seconds": 2728,
+        "reason": "PROVIDER_45_MINUTE_JOB_LIMIT",
+        "failure_annotations": [
+          "The job has exceeded the maximum execution time of 45m0s",
+          "The operation was canceled."
+        ],
+        "steps": [
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm ci",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install --require-hashes --only-binary=:all: -r recovery/monterey/requirements.lock",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run format:check",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run check",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run staging:plan",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npx playwright install --with-deps chromium",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run test:browser",
+            "status": "completed",
+            "conclusion": "cancelled"
+          },
+          {
+            "name": "Run actions/upload-artifact@v4",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ],
+        "application_rollup": [
+          "2026-11-03T20:23:38.3129937Z  Test Files  250 passed | 7 skipped (257)",
+          "2026-11-03T20:23:38.3174473Z       Tests  7546 passed | 321 skipped (7867)"
+        ],
+        "observed_retained_c18_failed_cases": 0,
+        "application_failure_details": null,
+        "broad_browser": "STARTED_WITHOUT_FINAL_ROLLUP"
+      },
+      {
+        "pr": 138,
+        "head": "eb3406a4c4880107c740d39cb370cceb3ea2e4a3",
+        "event": "pull_request",
+        "run_id": 41701098844,
+        "job_id": 126144269276,
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701098844/job/126144269276",
+        "conclusion": "CANCELLED",
+        "started_at": "2026-11-03T19:24:54Z",
+        "completed_at": "2026-11-03T20:10:16Z",
+        "duration_seconds": 2722,
+        "reason": "PROVIDER_45_MINUTE_JOB_LIMIT",
+        "failure_annotations": [
+          "The job has exceeded the maximum execution time of 45m0s",
+          "The operation was canceled."
+        ],
+        "steps": [
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm ci",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install --require-hashes --only-binary=:all: -r recovery/monterey/requirements.lock",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run format:check",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run check",
+            "status": "completed",
+            "conclusion": "cancelled"
+          },
+          {
+            "name": "Run npm run staging:plan",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Run npx playwright install --with-deps chromium",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Run npm run test:browser",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Run actions/upload-artifact@v4",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ],
+        "application_rollup": [],
+        "observed_retained_c18_failed_cases": 10,
+        "application_failure_details": "Retained58-case C18 suite already logged failures before job cancellation; final aggregate exception details were not emitted. Preserve observed failures; underlying cause UNDETERMINED.",
+        "broad_browser": "NOT_REACHED"
+      },
+      {
+        "pr": 138,
+        "head": "eb3406a4c4880107c740d39cb370cceb3ea2e4a3",
+        "event": "push",
+        "run_id": 41701089522,
+        "job_id": 126144234222,
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701089522/job/126144234222",
+        "conclusion": "CANCELLED",
+        "started_at": "2026-11-03T19:13:48Z",
+        "completed_at": "2026-11-03T19:59:12Z",
+        "duration_seconds": 2724,
+        "reason": "PROVIDER_45_MINUTE_JOB_LIMIT",
+        "failure_annotations": [
+          "The job has exceeded the maximum execution time of 45m0s",
+          "The operation was canceled."
+        ],
+        "steps": [
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm ci",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install --require-hashes --only-binary=:all: -r recovery/monterey/requirements.lock",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run format:check",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run check",
+            "status": "completed",
+            "conclusion": "cancelled"
+          },
+          {
+            "name": "Run npm run staging:plan",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Run npx playwright install --with-deps chromium",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Run npm run test:browser",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Run actions/upload-artifact@v4",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ],
+        "application_rollup": [],
+        "observed_retained_c18_failed_cases": 5,
+        "application_failure_details": "Retained58-case C18 suite already logged failures before job cancellation; final aggregate exception details were not emitted. Preserve observed failures; underlying cause UNDETERMINED.",
+        "broad_browser": "NOT_REACHED"
+      },
+      {
+        "pr": 139,
+        "head": "077187201ebe3d5eea2905a3db949e57f7727147",
+        "event": "pull_request",
+        "run_id": 41700980015,
+        "job_id": 126143862473,
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41700980015/job/126143862473",
+        "conclusion": "CANCELLED",
+        "started_at": "2026-11-03T19:11:50Z",
+        "completed_at": "2026-11-03T19:57:12Z",
+        "duration_seconds": 2722,
+        "reason": "PROVIDER_45_MINUTE_JOB_LIMIT",
+        "failure_annotations": [
+          "The job has exceeded the maximum execution time of 45m0s",
+          "The operation was canceled."
+        ],
+        "steps": [
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm ci",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install --require-hashes --only-binary=:all: -r recovery/monterey/requirements.lock",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run format:check",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run check",
+            "status": "completed",
+            "conclusion": "cancelled"
+          },
+          {
+            "name": "Run npm run staging:plan",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Run npx playwright install --with-deps chromium",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Run npm run test:browser",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Run actions/upload-artifact@v4",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ],
+        "application_rollup": [],
+        "observed_retained_c18_failed_cases": 10,
+        "application_failure_details": "Retained58-case C18 suite already logged failures before job cancellation; final aggregate exception details were not emitted. Preserve observed failures; underlying cause UNDETERMINED.",
+        "broad_browser": "NOT_REACHED"
+      },
+      {
+        "pr": 139,
+        "head": "077187201ebe3d5eea2905a3db949e57f7727147",
+        "event": "push",
+        "run_id": 41700966804,
+        "job_id": 126143817012,
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41700966804/job/126143817012",
+        "conclusion": "CANCELLED",
+        "started_at": "2026-11-03T19:11:44Z",
+        "completed_at": "2026-11-03T19:57:13Z",
+        "duration_seconds": 2729,
+        "reason": "PROVIDER_45_MINUTE_JOB_LIMIT",
+        "failure_annotations": [
+          "The job has exceeded the maximum execution time of 45m0s",
+          "The operation was canceled."
+        ],
+        "steps": [
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm ci",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install --require-hashes --only-binary=:all: -r recovery/monterey/requirements.lock",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run format:check",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run check",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run staging:plan",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npx playwright install --with-deps chromium",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run test:browser",
+            "status": "completed",
+            "conclusion": "cancelled"
+          },
+          {
+            "name": "Run actions/upload-artifact@v4",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ],
+        "application_rollup": [
+          "2026-11-03T19:49:21.2159681Z  Test Files  244 passed | 7 skipped (251)",
+          "2026-11-03T19:49:21.2191376Z       Tests  7312 passed | 321 skipped (7633)"
+        ],
+        "observed_retained_c18_failed_cases": 0,
+        "application_failure_details": null,
+        "broad_browser": "STARTED_WITHOUT_FINAL_ROLLUP"
+      },
+      {
+        "pr": 140,
+        "head": "a7961bfe5a853bb822ddac65ba35dd2d3f029f0d",
+        "event": "pull_request",
+        "run_id": 41701144638,
+        "job_id": 126144428239,
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701144638/job/126144428239",
+        "conclusion": "CANCELLED",
+        "started_at": "2026-11-03T19:14:58Z",
+        "completed_at": "2026-11-03T20:00:21Z",
+        "duration_seconds": 2723,
+        "reason": "PROVIDER_45_MINUTE_JOB_LIMIT",
+        "failure_annotations": [
+          "The job has exceeded the maximum execution time of 45m0s",
+          "The operation was canceled."
+        ],
+        "steps": [
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm ci",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install --require-hashes --only-binary=:all: -r recovery/monterey/requirements.lock",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run format:check",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run check",
+            "status": "completed",
+            "conclusion": "cancelled"
+          },
+          {
+            "name": "Run npm run staging:plan",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Run npx playwright install --with-deps chromium",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Run npm run test:browser",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Run actions/upload-artifact@v4",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ],
+        "application_rollup": [],
+        "observed_retained_c18_failed_cases": 10,
+        "application_failure_details": "Retained58-case C18 suite already logged failures before job cancellation; final aggregate exception details were not emitted. Preserve observed failures; underlying cause UNDETERMINED.",
+        "broad_browser": "NOT_REACHED"
+      },
+      {
+        "pr": 140,
+        "head": "a7961bfe5a853bb822ddac65ba35dd2d3f029f0d",
+        "event": "push",
+        "run_id": 41701133590,
+        "job_id": 126144390686,
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701133590/job/126144390686",
+        "conclusion": "CANCELLED",
+        "started_at": "2026-11-03T19:35:15Z",
+        "completed_at": "2026-11-03T20:20:45Z",
+        "duration_seconds": 2730,
+        "reason": "PROVIDER_45_MINUTE_JOB_LIMIT",
+        "failure_annotations": [
+          "The job has exceeded the maximum execution time of 45m0s",
+          "The operation was canceled."
+        ],
+        "steps": [
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm ci",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install --require-hashes --only-binary=:all: -r recovery/monterey/requirements.lock",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run format:check",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run check",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run staging:plan",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npx playwright install --with-deps chromium",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run test:browser",
+            "status": "completed",
+            "conclusion": "cancelled"
+          },
+          {
+            "name": "Run actions/upload-artifact@v4",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ],
+        "application_rollup": [
+          "2026-11-03T20:12:51.6559029Z  Test Files  244 passed | 7 skipped (251)",
+          "2026-11-03T20:12:51.6588801Z       Tests  7311 passed | 321 skipped (7632)"
+        ],
+        "observed_retained_c18_failed_cases": 0,
+        "application_failure_details": null,
+        "broad_browser": "STARTED_WITHOUT_FINAL_ROLLUP"
+      },
+      {
+        "pr": 141,
+        "head": "f925e83ccd1b82ea28242731189181bcaee11605",
+        "event": "pull_request",
+        "run_id": 41701193493,
+        "job_id": 126144597746,
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701193493/job/126144597746",
+        "conclusion": "CANCELLED",
+        "started_at": "2026-11-03T19:31:51Z",
+        "completed_at": "2026-11-03T20:17:10Z",
+        "duration_seconds": 2719,
+        "reason": "PROVIDER_45_MINUTE_JOB_LIMIT",
+        "failure_annotations": [
+          "The job has exceeded the maximum execution time of 45m0s",
+          "The operation was canceled."
+        ],
+        "steps": [
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm ci",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install --require-hashes --only-binary=:all: -r recovery/monterey/requirements.lock",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run format:check",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run check",
+            "status": "completed",
+            "conclusion": "cancelled"
+          },
+          {
+            "name": "Run npm run staging:plan",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Run npx playwright install --with-deps chromium",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Run npm run test:browser",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Run actions/upload-artifact@v4",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ],
+        "application_rollup": [],
+        "observed_retained_c18_failed_cases": 9,
+        "application_failure_details": "Retained58-case C18 suite already logged failures before job cancellation; final aggregate exception details were not emitted. Preserve observed failures; underlying cause UNDETERMINED.",
+        "broad_browser": "NOT_REACHED"
+      },
+      {
+        "pr": 141,
+        "head": "f925e83ccd1b82ea28242731189181bcaee11605",
+        "event": "push",
+        "run_id": 41701183044,
+        "job_id": 126144563269,
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701183044/job/126144563269",
+        "conclusion": "CANCELLED",
+        "started_at": "2026-11-03T19:17:19Z",
+        "completed_at": "2026-11-03T20:02:42Z",
+        "duration_seconds": 2723,
+        "reason": "PROVIDER_45_MINUTE_JOB_LIMIT",
+        "failure_annotations": [
+          "The job has exceeded the maximum execution time of 45m0s",
+          "The operation was canceled."
+        ],
+        "steps": [
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm ci",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install --require-hashes --only-binary=:all: -r recovery/monterey/requirements.lock",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run format:check",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run check",
+            "status": "completed",
+            "conclusion": "cancelled"
+          },
+          {
+            "name": "Run npm run staging:plan",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Run npx playwright install --with-deps chromium",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Run npm run test:browser",
+            "status": "completed",
+            "conclusion": "skipped"
+          },
+          {
+            "name": "Run actions/upload-artifact@v4",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ],
+        "application_rollup": [],
+        "observed_retained_c18_failed_cases": 10,
+        "application_failure_details": "Retained58-case C18 suite already logged failures before job cancellation; final aggregate exception details were not emitted. Preserve observed failures; underlying cause UNDETERMINED.",
+        "broad_browser": "NOT_REACHED"
+      },
+      {
+        "pr": 142,
+        "head": "f3f6b67e33358a34c297f3c19cfca0ad21f8b21d",
+        "event": "pull_request",
+        "run_id": 41701049893,
+        "job_id": 126144100396,
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701049893/job/126144100396",
+        "conclusion": "SUCCESS",
+        "started_at": "2026-11-03T19:16:52Z",
+        "completed_at": "2026-11-03T19:57:32Z",
+        "duration_seconds": 2440,
+        "reason": "COMPLETED_SUCCESS",
+        "failure_annotations": [],
+        "steps": [
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm ci",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install --require-hashes --only-binary=:all: -r recovery/monterey/requirements.lock",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run format:check",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run check",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run staging:plan",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npx playwright install --with-deps chromium",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run test:browser",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/upload-artifact@v4",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ],
+        "application_rollup": [
+          "2026-11-03T19:47:21.3109245Z  Test Files  244 passed | 7 skipped (251)",
+          "2026-11-03T19:47:21.3133689Z       Tests  7320 passed | 321 skipped (7641)"
+        ],
+        "observed_retained_c18_failed_cases": 0,
+        "application_failure_details": null,
+        "broad_browser": "ACTUAL_297_PASS"
+      },
+      {
+        "pr": 142,
+        "head": "f3f6b67e33358a34c297f3c19cfca0ad21f8b21d",
+        "event": "push",
+        "run_id": 41701038957,
+        "job_id": 126144068110,
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41701038957/job/126144068110",
+        "conclusion": "SUCCESS",
+        "started_at": "2026-11-03T19:15:22Z",
+        "completed_at": "2026-11-03T19:54:52Z",
+        "duration_seconds": 2370,
+        "reason": "COMPLETED_SUCCESS",
+        "failure_annotations": [],
+        "steps": [
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm ci",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run python -m pip install --require-hashes --only-binary=:all: -r recovery/monterey/requirements.lock",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run format:check",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run check",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run staging:plan",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npx playwright install --with-deps chromium",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run test:browser",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/upload-artifact@v4",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ],
+        "application_rollup": [
+          "2026-11-03T19:45:06.1061298Z  Test Files  244 passed | 7 skipped (251)",
+          "2026-11-03T19:45:06.1078803Z       Tests  7320 passed | 321 skipped (7641)"
+        ],
+        "observed_retained_c18_failed_cases": 0,
+        "application_failure_details": null,
+        "broad_browser": "ACTUAL_297_PASS"
+      }
+    ],
+    "main_pull_request": {
+      "run_id": 41702379630,
+      "application_passed": 7546,
+      "application_declared_skips": 321,
+      "application_failed": 0,
+      "npm_check": "PASS",
+      "staging_plan": "PASS",
+      "browser_declared": 297,
+      "browser_completed_rollup": false,
+      "conclusion": "CANCELLED",
+      "gap": "Exact Main full Foundation297-browser completion remains unproven. The terminal log ends in cancellation, not a browser PASS rollup."
+    },
+    "finance_child": {
+      "pr": 142,
+      "head": "f3f6b67e33358a34c297f3c19cfca0ad21f8b21d",
+      "verify_runs": [41701049893, 41701038957],
+      "application_passed_each": 7320,
+      "application_declared_skips_each": 321,
+      "browser_passed_each": 297,
+      "boundary": "Both Finance-child Foundation runs passed. Their different source head and missing combined Main composition cannot promote Main or other child Foundation results."
+    }
+  },
+  "cycle20_dedicated": [
+    {
+      "event": "push",
+      "run_id": 41702371533,
+      "job_id": 126148681926,
+      "head": "8d607d9c30e82699f1af4634c29fa38a3756fb73",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702371533/job/126148681926",
+      "conclusion": "SUCCESS",
+      "application_cases": 286,
+      "exact_application_files": 8,
+      "development_browser_cases": 36,
+      "production_off_browser_cases": 3,
+      "collection_is_not_browser_pass": true,
+      "actual_run_rollups": [
+        "2026-11-03T19:47:20.6846862Z Cycle20: 286 actual PASS across 8 exact new files; no release authority.",
+        "2026-11-03T19:51:27.1590897Z   36 passed (3.4m)",
+        "2026-11-03T19:51:29.7154913Z   3 passed (1.9s)"
+      ],
+      "types": "PASS",
+      "feature_inventory": "PASS",
+      "exact_source_integrity": "PASS",
+      "build": "PASS"
+    },
+    {
+      "event": "pull_request",
+      "run_id": 41702380048,
+      "job_id": 126148711268,
+      "head": "8d607d9c30e82699f1af4634c29fa38a3756fb73",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702380048/job/126148711268",
+      "conclusion": "SUCCESS",
+      "application_cases": 286,
+      "exact_application_files": 8,
+      "development_browser_cases": 36,
+      "production_off_browser_cases": 3,
+      "collection_is_not_browser_pass": true,
+      "actual_run_rollups": [
+        "2026-11-03T19:41:24.5411895Z Cycle20: 286 actual PASS across 8 exact new files; no release authority.",
+        "2026-11-03T19:45:18.7438668Z   36 passed (3.2m)",
+        "2026-11-03T19:45:24.2445432Z   3 passed (4.9s)"
+      ],
+      "types": "PASS",
+      "feature_inventory": "PASS",
+      "exact_source_integrity": "PASS",
+      "build": "PASS"
+    }
+  ],
+  "retained_cycle18": {
+    "current_main": {
+      "head": "8d607d9c30e82699f1af4634c29fa38a3756fb73",
+      "run_id": 41702379439,
+      "job_id": 126148710245,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41702379439/job/126148710245",
+      "conclusion": "FAILURE",
+      "application_passed": 446,
+      "application_exact_files": 12,
+      "types": "PASS",
+      "feature_inventory": "PASS",
+      "exact_source_integrity": "PASS",
+      "build": "PASS",
+      "browser_passed": 21,
+      "browser_failed": 9,
+      "failed_all_brand_layout_cells": true,
+      "failure": "Nine locator.click15000ms timeouts at tests/program/cycle18-daily-workbench.spec.ts:243 on Today’s priorities.",
+      "production_off": "NOT_REACHED",
+      "cause": "UNDETERMINED"
+    },
+    "historical": {
+      "head": "c71273f6a4903efcd2607e77b0916eeed6d2681f",
+      "reference": "docs/program/CYCLE18_FINAL_CI_CLOSEOUT.json",
+      "preserved": "Dedicated PR41664495173FAIL9browser timeouts; Foundation push41664482359FAIL6946pass/1fail/321declaredskips; Foundation PR41664495457CANCELLED with10failed markers. All remain FAIL/CANCELLED; later bounded success cannot erase history."
+    }
+  },
+  "coverage": {
+    "new_cycle20": "All286 exact new C20 application cases and36DEV/3OFF browser cases are covered by both successful exact Main dedicated runs, with source hashes, types, feature checks and build.",
+    "legacy_main_gap": "Full exact-Main297-case Foundation browser completion is missing, and retained C18 daily-workbench browser failures remain unresolved. Do not claim aggregate CI green or full compatibility acceptance.",
+    "partial_application_failures": "Seven cancelled Foundation logs already report5–10 retained C18 independent-case failures. Job cancellation annotations prove the45minute limit; they do not establish that the preceding failures are harmless or only infrastructure.",
+    "no_promotion": "Successful dedicated checks remain successful; cancelled Foundation jobs remain CANCELLED and observed failures stay recorded. Declared database skips are not passes.",
+    "next": "Read existing failure artifacts/trace and isolate the retained C18 issue before proposing a narrowly justified future run. No automatic retry, timeout increase or validation weakening."
+  },
+  "actions": {
+    "read_only": true,
+    "workflow_reruns": 0,
+    "successful_checks_restarted": 0,
+    "workflow_or_source_changes": 0,
+    "hosted_mutations": 0,
+    "deployments": 0,
+    "merges": 0
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

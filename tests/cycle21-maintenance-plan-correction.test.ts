@@ -150,7 +150,7 @@ it.each([
   ['interval_days', '14'],
   ['private_notes', 'PRIVATE'],
 ] as const)(
-  'invalid %s field never reaches the original plan writer',
+  'case %# invalid %s field never reaches the original plan writer',
   async (key, value) => {
     const f = await fixture(),
       r = await readMaintenancePlanCorrectionReview(f.sources, f.job, f.gate),
