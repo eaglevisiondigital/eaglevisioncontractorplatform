@@ -1,0 +1,225 @@
+{
+  "schema": "propel-cycle17-delivery-v1",
+  "coordination_branch": "codex/program-cycle-seventeen",
+  "coordination_draft_pr": 118,
+  "parent_commit": "3cbea85ce464b3e67fb78c8992ec192cdd8d2407",
+  "plan_commit": "624ae715d05cc8bf602fcefe3843063fc1debc8d",
+  "independent_review_commit": "13204765a304d428d6f5d22915d5347f74bf1d55",
+  "independent_files": [
+    {
+      "path": "tests/cycle17-integration.test.ts",
+      "sha256": "bafd0e74bd26de2aa57e10861839781dcc2cc356d0a4ab0f39d4fa8f0d28d826"
+    },
+    {
+      "path": "docs/program/CYCLE17_INTEGRATION_REVIEW.md",
+      "sha256": "3867182068cb908c91c8e1db9b740d133b663c7d7322d641ceb133f1ece76223"
+    }
+  ],
+  "independent_status": "CLEAR_LOCAL_SYNTHETIC_ONLY",
+  "packages": [
+    {
+      "module": "field-workspace",
+      "component": "FieldWorkspace",
+      "owner": "/root/cycle16_field_growth",
+      "branch": "codex/cycle17-field-workspace",
+      "parent_commit": "3cbea85ce464b3e67fb78c8992ec192cdd8d2407",
+      "head_commit": "23829f2995b113eb5426b0a5328e12624efd3be5",
+      "draft_pr": 119,
+      "focused_new_tests": 34,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/field-workspace.ts",
+          "sha256": "682306378cd16d8cde94ab153633b1621f44d3696d6f7b2743e57d33116f97f8"
+        },
+        {
+          "path": "src/components/workflows/FieldWorkspace.tsx",
+          "sha256": "f7611e9f0f15448af624e595803fd94f903aed668a29ead321b395061fdf5268"
+        },
+        {
+          "path": "src/components/workflows/field-workspace.css",
+          "sha256": "e3538ebdf894a0e798c6cc9b54a6b84e274b7ff0b5a6fa5a30611d0f0456c54f"
+        },
+        {
+          "path": "tests/cycle17-field-workspace.test.ts",
+          "sha256": "7a13c5fae9bb21f83c7bb4f5577cfe6a80c69b28f91d80695df76ae8c1988e6f"
+        },
+        {
+          "path": "docs/program/CYCLE17_FIELD_WORKSPACE.md",
+          "sha256": "e1892f929ed87bba54e26ad23b88d5546f3e5da75c7277a7d71d68084784198d"
+        }
+      ]
+    },
+    {
+      "module": "finance-case-desk",
+      "component": "FinanceCaseDesk",
+      "owner": "/root/cycle17_finance_intelligence",
+      "branch": "codex/cycle17-finance-case-desk",
+      "parent_commit": "3cbea85ce464b3e67fb78c8992ec192cdd8d2407",
+      "head_commit": "5a904903c2fb049bf4e39c2b18f3fcc30e196337",
+      "draft_pr": 120,
+      "focused_new_tests": 40,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/finance-case-desk.ts",
+          "sha256": "d88ca1cfbe0d01d417af1ca083313a5af55e9945e6354055b29fdbc3725201bf"
+        },
+        {
+          "path": "src/components/workflows/FinanceCaseDesk.tsx",
+          "sha256": "68dd3b8cc997019dccf7d285b541eb4ae32b0467e094e87f1970e9181057d76f"
+        },
+        {
+          "path": "src/components/workflows/finance-case-desk.css",
+          "sha256": "b76ef7136ef8698c1cc7f19bce538493dc8c0c3e6f745efab65efd3442a61c7c"
+        },
+        {
+          "path": "tests/cycle17-finance-case-desk.test.ts",
+          "sha256": "e1789a56852c2387ba5a8da34f4a45da6cb9605847b998f5b2f0084b388eb041"
+        },
+        {
+          "path": "docs/program/CYCLE17_FINANCE_CASE_DESK.md",
+          "sha256": "db4485445f5b5387bc9514a872ede304ca0fafb26dc271a654f72c9c4a60fa3e"
+        }
+      ]
+    },
+    {
+      "module": "service-passport-path",
+      "component": "ServicePassportPath",
+      "owner": "/root/cycle13_customer_advanced",
+      "branch": "codex/cycle17-service-passport-path",
+      "parent_commit": "3cbea85ce464b3e67fb78c8992ec192cdd8d2407",
+      "head_commit": "65bb85a670e349fd81a82bca21687c37870898b2",
+      "draft_pr": 122,
+      "focused_new_tests": 58,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/service-passport-path.ts",
+          "sha256": "a47e007a4f0089a593e080cdc21dd9eb2756df339c514dbc85b5b053769452ee"
+        },
+        {
+          "path": "src/components/workflows/ServicePassportPath.tsx",
+          "sha256": "b5d18939d669cb723472f4256dd7491af2df865b6678158a7dc92b159d5678d8"
+        },
+        {
+          "path": "src/components/workflows/service-passport-path.css",
+          "sha256": "df226137a11919264cd259b3eee7be66a24353563c79c2c3617a0f5f62e8e8b2"
+        },
+        {
+          "path": "tests/cycle17-service-passport-path.test.ts",
+          "sha256": "4d6213662adf4777902d94b25f3ed694d7042c1ca86a3c09a795a53638357304"
+        },
+        {
+          "path": "docs/program/CYCLE17_SERVICE_PASSPORT_PATH.md",
+          "sha256": "cb66e51c8de0b8c86b9d0cba516b4abc98475aab38a3ffe17165cfcc0c7c2f85"
+        }
+      ]
+    },
+    {
+      "module": "retained-maintenance-desk",
+      "component": "RetainedMaintenanceDesk",
+      "owner": "/root/cycle16_field_growth",
+      "branch": "codex/cycle17-retained-maintenance-desk",
+      "parent_commit": "3cbea85ce464b3e67fb78c8992ec192cdd8d2407",
+      "head_commit": "5274b98cb34a759f5f86ee8a5ec783939b4851d4",
+      "draft_pr": 121,
+      "focused_new_tests": 38,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/retained-maintenance-desk.ts",
+          "sha256": "00dbc8fd958447c262d61bc131c69f1d62a042be9e492cc5bbf4348188234c26"
+        },
+        {
+          "path": "src/components/workflows/RetainedMaintenanceDesk.tsx",
+          "sha256": "dfcdd19018ac7619c75a4b1f79878daf031f3bdf0ba0a7aacd79e57628fa99dd"
+        },
+        {
+          "path": "src/components/workflows/retained-maintenance-desk.css",
+          "sha256": "776153ef58311ad532bfd01198cc0a7168589c2480952849d167090c691daf49"
+        },
+        {
+          "path": "tests/cycle17-retained-maintenance-desk.test.ts",
+          "sha256": "96d85d198b4eff990623ca682ae5a604a49b473918dbafa4ef397071839028ba"
+        },
+        {
+          "path": "docs/program/CYCLE17_RETAINED_MAINTENANCE_DESK.md",
+          "sha256": "28a797d6dbe9a231311b6686bcb3aeb9e5e98dc6d0a9aa15f1f5084e152779da"
+        }
+      ]
+    },
+    {
+      "module": "owner-action-desk",
+      "component": "OwnerActionDesk",
+      "owner": "/root/cycle17_finance_intelligence",
+      "branch": "codex/cycle17-owner-action-desk",
+      "parent_commit": "3cbea85ce464b3e67fb78c8992ec192cdd8d2407",
+      "head_commit": "f3a84fc5eddfa114f0f758dbc2104247b86cc361",
+      "draft_pr": 123,
+      "focused_new_tests": 40,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/owner-action-desk.ts",
+          "sha256": "71716c7a59311668e4538392153d355731c89ca9c65f9eacdd983c726ace8b99"
+        },
+        {
+          "path": "src/components/workflows/OwnerActionDesk.tsx",
+          "sha256": "77b7cc70001f6a69db54d758e275b6d6fbec11279988834f5831d480439e6619"
+        },
+        {
+          "path": "src/components/workflows/owner-action-desk.css",
+          "sha256": "361bcd0dde2aaf4255721b2a9f49e1048d4ba4fe1d17d34ef2e976b14a0a14cc"
+        },
+        {
+          "path": "tests/cycle17-owner-action-desk.test.ts",
+          "sha256": "6960924419a10cef2dd62eeb79f65fe11e3f5240557e26f1230d5b98abff1360"
+        },
+        {
+          "path": "docs/program/CYCLE17_OWNER_ACTION_DESK.md",
+          "sha256": "8fa66e6ca0f7bcdcda15af6c47083268fa6114cd9ad22945b36b344e39d8ec1e"
+        }
+      ]
+    },
+    {
+      "module": "addon-task-desk",
+      "component": "AddonTaskDesk",
+      "owner": "/root/cycle13_customer_advanced",
+      "branch": "codex/cycle17-addon-task-desk",
+      "parent_commit": "3cbea85ce464b3e67fb78c8992ec192cdd8d2407",
+      "head_commit": "cef7b9502901ec53de51bb0a8e502d15aa9d5539",
+      "draft_pr": 124,
+      "focused_new_tests": 108,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/addon-task-desk.ts",
+          "sha256": "cadaaa720ba5fccc9d79812d4e445a8934143db50c8ff9899ed32cdea4072267"
+        },
+        {
+          "path": "src/components/workflows/AddonTaskDesk.tsx",
+          "sha256": "7ef56f4b45fb827711edd0b71e63cce59739bbba9b8f3f20779b611f70f2fdcb"
+        },
+        {
+          "path": "src/components/workflows/addon-task-desk.css",
+          "sha256": "2c7c2f3b26dd7d0eb37a5c1159f5c79c3ea80b5e676289a218241ef228f4b0e0"
+        },
+        {
+          "path": "tests/cycle17-addon-task-desk.test.ts",
+          "sha256": "f99694424b40d44887be60d614fd59fc0fa08d7973ddd30516ae5f288c561dca"
+        },
+        {
+          "path": "docs/program/CYCLE17_ADDON_TASK_DESK.md",
+          "sha256": "a97a083d0d8cd4007ed659abe9cee464296ed928d7b5badcea49cc714c2f93f3"
+        }
+      ]
+    }
+  ],
+  "combined_evidence": {
+    "author_cases": 318,
+    "independent_cases": 45,
+    "application_cases": 480
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

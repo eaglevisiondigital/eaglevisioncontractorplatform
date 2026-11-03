@@ -458,3 +458,20 @@ and accounting prerequisites as gaps. Retained session holds are not durable cus
 
 All13/customer14/original4B/P1/four artifacts/Netlify/executor/recovery/MFA/NMI/Auth,
 provider/financial/communication/hosted/deployment/merge restrictions remain intact.
+
+## Cycle17 retained daily workspaces
+
+The same six original slots optionally mount thin retained workspaces over one
+OperatingSources host. Exact company/customer/property/job/source/version and
+selected technician, occurrence or add-on mode stay explicit. Hints select only;
+no fallback after stale/ambiguous hints. Source handles and original control holds
+remain authoritative, with separate required human confirmations. Return/Resume
+keeps original mounted control state and deadlines; UNKNOWN never resets/replays.
+
+Use existing contractor tokens, warm surfaces and typography. Compact breadcrumbs
+are named navigation with current-step text, keyboard focus,44px controls and mobile
+wrapping. Source/readiness/authority facts remain separate. Main measures trusted
+clicks and selection actions with stated task boundaries; no efficiency or durable
+acceptance claim from source inspection. Three existing visual approvals stay locked.
+Operating Center/advanced owner visual approval remains PENDING; missing originals
+stay MISSING. No provider, financial, dispatch, communication or hosted action.

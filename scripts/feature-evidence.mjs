@@ -325,6 +325,23 @@ export function sourceOwner(path) {
     )
   )
     return 'A8';
+  // Cycle17 consumers retain original source ownership; no authority promotion.
+  if (
+    /OperatingCenterCycleSeventeen|^tests\/program\/.*cycle17|cycle17-integration|playwright\.cycle17|check-cycle17-|cycle17-build-visual|cycle17-visual-review/.test(
+      path,
+    )
+  )
+    return 'A8';
+  if (/field-workspace|FieldWorkspace/.test(path)) return 'A3';
+  if (/finance-case-desk|FinanceCaseDesk/.test(path)) return 'A4';
+  if (/service-passport-path|ServicePassportPath/.test(path)) return 'A5';
+  if (
+    /retained-maintenance-desk|RetainedMaintenanceDesk|owner-action-desk|OwnerActionDesk/.test(
+      path,
+    )
+  )
+    return 'A6';
+  if (/addon-task-desk|AddonTaskDesk/.test(path)) return 'A7';
   // Cycle16 exact consumer metadata, never authority or acceptance promotion.
   if (
     /OperatingCenterCycleSixteen|SharedRecordSearch|daily-guide-search|^tests\/program\/.*cycle16|cycle16-integration|playwright\.cycle16|check-cycle16-/.test(

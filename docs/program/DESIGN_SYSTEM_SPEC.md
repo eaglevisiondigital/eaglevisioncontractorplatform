@@ -370,3 +370,20 @@ header height, inline-block padded badges, adequate muted-label contrast on warm
 surfaces and no document overflow at Desktop/iPadMini/iPhone13 viewports. Actual
 axe, geometry, touch and all-brand browser evidence belong in Cycle10 validation;
 source/token checks alone do not assert accessibility or release acceptance.
+
+## Cycle17 retained daily workspaces
+
+The same six original slots optionally mount thin retained workspaces over one
+OperatingSources host. Exact company/customer/property/job/source/version and
+selected technician, occurrence or add-on mode stay explicit. Hints select only;
+no fallback after stale/ambiguous hints. Source handles and original control holds
+remain authoritative, with separate required human confirmations. Return/Resume
+keeps original mounted control state and deadlines; UNKNOWN never resets/replays.
+
+Use existing contractor tokens, warm surfaces and typography. Compact breadcrumbs
+are named navigation with current-step text, keyboard focus,44px controls and mobile
+wrapping. Source/readiness/authority facts remain separate. Main measures trusted
+clicks and selection actions with stated task boundaries; no efficiency or durable
+acceptance claim from source inspection. Three existing visual approvals stay locked.
+Operating Center/advanced owner visual approval remains PENDING; missing originals
+stay MISSING. No provider, financial, dispatch, communication or hosted action.

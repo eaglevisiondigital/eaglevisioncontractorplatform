@@ -1,0 +1,138 @@
+.retained-maintenance-desk {
+  color: #20352f;
+  line-height: 1.55;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.retained-maintenance-desk > header {
+  position: static;
+  display: block;
+  width: auto;
+  height: auto;
+  min-height: 0;
+  margin-bottom: 1rem;
+}
+.retained-maintenance-desk h2,
+.retained-maintenance-desk h3,
+.retained-maintenance-desk h4 {
+  color: #20352f;
+  line-height: 1.25;
+}
+.retained-maintenance-desk .rmd-eyebrow {
+  color: #526159;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+.retained-maintenance-desk .rmd-boundary {
+  border-left: 3px solid var(--journey-primary, #00543e);
+  padding: 1rem;
+  background: #f5f5ef;
+}
+.retained-maintenance-desk .rmd-card {
+  background: white;
+  border: 1px solid #d9e1da;
+  padding: 1rem;
+  border-radius: 14px;
+  margin: 1rem 0;
+  min-width: 0;
+}
+.retained-maintenance-desk .rmd-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.retained-maintenance-desk .rmd-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+.retained-maintenance-desk button,
+.retained-maintenance-desk input,
+.retained-maintenance-desk select {
+  min-height: 44px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.retained-maintenance-desk button {
+  color: white;
+  background: var(--journey-primary, #00543e);
+  border: 1px solid transparent;
+  padding: 0.7rem 1rem;
+  white-space: normal;
+  text-align: left;
+  cursor: pointer;
+}
+.retained-maintenance-desk button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.retained-maintenance-desk button[aria-pressed='true'] {
+  outline: 2px solid #20352f;
+  outline-offset: 2px;
+}
+.retained-maintenance-desk label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: 600;
+  margin: 1rem 0;
+  min-width: 0;
+}
+.retained-maintenance-desk input,
+.retained-maintenance-desk select {
+  width: 100%;
+}
+.retained-maintenance-desk .rmd-check {
+  flex-direction: row;
+  align-items: center;
+  font-weight: 400;
+}
+.retained-maintenance-desk .rmd-check input {
+  width: 44px;
+  min-width: 44px;
+}
+.retained-maintenance-desk .rmd-breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 1rem 0;
+  padding: 0;
+  gap: 0.75rem;
+}
+.retained-maintenance-desk .rmd-breadcrumbs li {
+  flex: 1 1 180px;
+  min-width: 0;
+  border-left: 2px solid var(--journey-accent, #dfb461);
+  padding: 0.4rem 0.7rem;
+}
+.retained-maintenance-desk .rmd-breadcrumbs span,
+.retained-maintenance-desk .rmd-breadcrumbs strong,
+.retained-maintenance-desk .rmd-breadcrumbs small {
+  display: block;
+}
+.retained-maintenance-desk .rmd-breadcrumbs span,
+.retained-maintenance-desk dt {
+  color: #526159;
+  font-size: 0.8rem;
+}
+.retained-maintenance-desk dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.retained-maintenance-desk [hidden] {
+  display: none;
+}
+.retained-maintenance-desk :focus-visible {
+  outline: 3px solid var(--journey-accent, #dfb461);
+  outline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .retained-maintenance-desk .rmd-grid {
+    grid-template-columns: 1fr;
+  }
+  .retained-maintenance-desk .rmd-toolbar {
+    display: grid;
+  }
+}

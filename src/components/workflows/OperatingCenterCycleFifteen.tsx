@@ -9,6 +9,7 @@ import { MaintenanceReviewPath } from './MaintenanceReviewPath';
 import { ExplainableTaskLinks } from './ExplainableTaskLinks';
 import { AddonTaskContinuity } from './AddonTaskContinuity';
 import { cycle16DailyGroups } from './OperatingCenterCycleSixteen';
+import { cycle17WorkspaceGroups } from './OperatingCenterCycleSeventeen';
 import './task-review-paths.css';
 
 const guided = taskReviewGroups({
@@ -27,7 +28,9 @@ const guided = taskReviewGroups({
 export function OperatingCenterCycleFifteen() {
   const [taskPaths, setTaskPaths] = useState(false);
   const [dailyGuides, setDailyGuides] = useState(false);
+  const [retainedWorkspaces, setRetainedWorkspaces] = useState(false);
   const retained = taskPaths ? guided : cycle14ContinuityGroups;
+  const baseline = dailyGuides ? cycle16DailyGroups : retained;
   return (
     <>
       <section aria-label="Review path options">
@@ -49,6 +52,14 @@ export function OperatingCenterCycleFifteen() {
             />
             Use daily workflow guides
           </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={retainedWorkspaces}
+              onChange={(event) => setRetainedWorkspaces(event.target.checked)}
+            />
+            Use retained daily workspaces
+          </label>
           <p>
             Keep exact source context while reviewing a task. Separate review
             confirmations still apply.
@@ -56,7 +67,9 @@ export function OperatingCenterCycleFifteen() {
         </fieldset>
       </section>
       <OperatingCenterCycleThirteen
-        additionalReviewGroups={dailyGuides ? cycle16DailyGroups : retained}
+        additionalReviewGroups={
+          retainedWorkspaces ? cycle17WorkspaceGroups : baseline
+        }
       />
     </>
   );
