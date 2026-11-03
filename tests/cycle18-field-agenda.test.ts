@@ -17,6 +17,21 @@ afterEach(() => {
   vi.restoreAllMocks();
   vi.unstubAllGlobals();
 });
+it('admitted component rejects accessor source containers before invoking their getters', () => {
+  vi.stubGlobal('window', {
+    location: { hostname: 'localhost', protocol: 'http:' },
+  });
+  const getter = vi.fn(),
+    sources = Object.defineProperty({}, 'gate', { get: getter }) as Awaited<
+      ReturnType<typeof fixture>
+    >['sources'];
+  expect(
+    renderToStaticMarkup(
+      createElement(FieldAgenda, { sources, enabled: true }),
+    ),
+  ).toContain('Current authorized field sources unavailable');
+  expect(getter).not.toHaveBeenCalled();
+});
 async function fixture(brand = 0) {
   const gate = { enabled: true, confirmed: true },
     sources = await prepareOperatingSources(sampleCompanies[brand], gate);

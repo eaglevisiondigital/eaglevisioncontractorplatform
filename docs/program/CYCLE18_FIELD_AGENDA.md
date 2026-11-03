@@ -35,7 +35,7 @@ revoked restoration, concurrent continuation, callback withdrawal, thrown/reject
 acknowledgment, canonical fresh-wrapper holds and mutable source handles. Main owns
 the combined responsive/browser/accessibility/integrity evidence and final register.
 
-Author verification: 36/36 focused application cases PASS, zero skipped; strict
+Author verification: 37/37 focused application cases PASS, zero skipped; strict
 TypeScript and scoped ESLint/Prettier PASS. The unchanged Cycle17 protected-source
 integrity chain PASS (128 protected hashes, five locks/thirteen bindings and 343
 retained author files). Raw application JSON is retained outside Git at

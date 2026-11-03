@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { journeyEnabled } from '../../lib/workflows/journey-runtime';
+import { prototypeFields } from '../../lib/program/prototype-source';
 import { captureOperatingSources } from '../../lib/workflows/operating-center-runtime';
 import type { DailyWorkbenchProps } from '../../lib/workflows/daily-workbench-contract';
 import {
@@ -27,7 +28,18 @@ export function FieldAgenda(props: DailyWorkbenchProps) {
   let check: (() => void) | null = null;
   if (admitted)
     try {
-      check = captureOperatingSources(props.sources, props.sources.gate).check;
+      const root = prototypeFields(props.sources, [
+        'company',
+        'operations',
+        'estimates',
+        'property',
+        'entries',
+        'gate',
+      ]);
+      check = captureOperatingSources(
+        props.sources,
+        root.gate as Parameters<typeof captureOperatingSources>[1],
+      ).check;
     } catch {
       /* Withhold invalid sources. */
     }
