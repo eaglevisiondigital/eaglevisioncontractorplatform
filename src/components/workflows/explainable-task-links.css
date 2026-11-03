@@ -1,0 +1,128 @@
+.explainable-task-links {
+  min-width: 0;
+  padding: 24px;
+  color: #20352f;
+  background: #f5f5ef;
+  border: 1px solid #d9e1da;
+  border-radius: 16px;
+}
+.explainable-task-links * {
+  box-sizing: border-box;
+}
+.explainable-task-links :is(h2, h3, h4, p, li, dd, dt, button, label) {
+  overflow-wrap: anywhere;
+}
+.explainable-task-links h2 {
+  margin: 4px 0 12px;
+  font-size: 1.65rem;
+}
+.explainable-task-links .explanation-eyebrow {
+  color: #3e594f;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+.explainable-task-links .explanation-muted {
+  color: #3e594f;
+  font-size: 0.9rem;
+}
+.explainable-task-links label {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0;
+  font-weight: 600;
+}
+.explainable-task-links :is(select, input:not([type='checkbox'])) {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  color: #20352f;
+  background: white;
+}
+.explainable-task-links button {
+  min-height: 44px;
+  max-width: 100%;
+  margin: 8px 0;
+  padding: 10px 14px;
+  color: white;
+  background: var(--journey-primary, #247364);
+  white-space: normal;
+}
+.explainable-task-links button:disabled {
+  color: #3e594f;
+  background: #d9e1da;
+}
+.explainable-task-links :focus-visible {
+  outline: 3px solid var(--journey-primary, #247364);
+  outline-offset: 4px;
+}
+.explainable-task-links fieldset {
+  min-width: 0;
+  padding: 16px;
+  margin: 16px 0;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+}
+.explainable-task-links legend {
+  font-weight: 700;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.explainable-task-links .explanation-confirm {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-height: 44px;
+}
+.explainable-task-links .explanation-confirm input {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+.explainable-task-links .explanation-card {
+  padding: 20px;
+  margin-top: 20px;
+  min-width: 0;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  background: white;
+}
+.explainable-task-links dl {
+  display: grid;
+  gap: 6px;
+}
+.explainable-task-links dt {
+  color: #3e594f;
+  font-weight: 700;
+}
+.explainable-task-links dd {
+  margin: 0 0 10px;
+}
+.explainable-task-links .explanation-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.explainable-task-links .explanation-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.explainable-task-links .explanation-list {
+  list-style: none;
+  padding: 0;
+}
+.explainable-task-links .explanation-list > li {
+  padding: 16px 0;
+  border-top: 1px solid #d9e1da;
+}
+@media (max-width: 760px) {
+  .explainable-task-links {
+    padding: 16px;
+  }
+  .explainable-task-links .explanation-controls {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .explainable-task-links .explanation-card {
+    padding: 16px;
+  }
+}
