@@ -26,16 +26,27 @@ interface Binding {
   capture: ReturnType<typeof captureOperatingSources>;
   gate: JourneyAdmission;
   unknown: boolean;
-  navigationPending: boolean;
+  navigationOutcomes: Map<string, 'PENDING' | 'UNKNOWN'>;
+  navigationKey: string;
 }
 // Reader references only. Original task controls remain the sole attempt owners.
 const retained = new WeakMap<object, Binding>();
-function check(b: Binding) {
+// Ambiguous local navigation follows the canonical Operations handle and exact org/job,
+// not a replaceable wrapper, view, selected worker or source revision. No business rows.
+const navigationOutcomes = new WeakMap<
+  OperatingSources['operations'],
+  Map<string, 'PENDING' | 'UNKNOWN'>
+>();
+function check(b: Binding, evidenceOnly = false) {
   try {
     admit(b.gate);
     b.capture.check();
     assertDailyFieldGuideNow(b.original);
-    if (b.unknown) throw Error('Field workspace source UNKNOWN');
+    if (
+      b.unknown ||
+      (!evidenceOnly && b.navigationOutcomes.get(b.navigationKey) === 'UNKNOWN')
+    )
+      throw Error('Field workspace source UNKNOWN');
   } catch (error) {
     b.unknown = true;
     throw error;
@@ -48,16 +59,37 @@ export async function readFieldWorkspace(
   gate: JourneyAdmission = { enabled: false, confirmed: false },
 ) {
   admit(gate); // OFF before source/input access.
-  const capture = captureOperatingSources(sources, gate),
+  const root = prototypeFields(sources, [
+      'company',
+      'operations',
+      'estimates',
+      'property',
+      'entries',
+      'gate',
+    ]),
+    capture = captureOperatingSources(sources, gate),
+    operations = root.operations as OperatingSources['operations'],
+    selection = prototypeFields(input, ['job_id', 'worker_id']);
+  if (typeof selection.job_id !== 'string' || !selection.job_id)
+    throw Error('Exact field job required');
+  const outcomes =
+    navigationOutcomes.get(operations) ??
+    new Map<string, 'PENDING' | 'UNKNOWN'>();
+  navigationOutcomes.set(operations, outcomes);
+  const navigationKey = JSON.stringify([
+      capture.organization_id,
+      selection.job_id,
+    ]),
     original = await readDailyFieldGuide(sources, input, gate),
     b: Binding = {
       original,
       capture,
       gate,
       unknown: false,
-      navigationPending: false,
+      navigationOutcomes: outcomes,
+      navigationKey,
     };
-  check(b);
+  check(b, true); // Fresh source reads never clear or authorize an UNKNOWN navigation.
   const body = {
     mode: 'LOCAL_RETAINED_FIELD_WORKSPACE' as const,
     source: original.source,
@@ -141,12 +173,12 @@ export async function readFieldWorkspace(
     original_source_sha256: original.integrity.sha256,
   };
   const sha256 = await documentHash(body);
-  check(b);
+  check(b, true);
   if (
     (await reconcileDailyFieldGuide(original)).status !== 'CURRENT_REVIEW_ONLY'
   )
     throw Error('Original field source UNKNOWN');
-  check(b);
+  check(b, true);
   const view = freezePrototype({
     ...body,
     integrity: { algorithm: 'SHA-256' as const, sha256 },
@@ -227,17 +259,19 @@ export async function navigateFieldWorkspace(
   const b = retained.get(view);
   if (!b) throw Error('Exact retained field workspace required');
   check(b);
-  if (b.navigationPending)
+  if (b.navigationOutcomes.get(b.navigationKey) === 'PENDING')
     throw Error('Exact field navigation already pending');
-  b.navigationPending = true;
+  b.navigationOutcomes.set(b.navigationKey, 'PENDING');
   try {
     await verified(view);
     assertFieldWorkspaceNow(view);
     callback(view.source.job_id, 'field');
   } catch (error) {
     b.unknown = true;
+    b.navigationOutcomes.set(b.navigationKey, 'UNKNOWN');
     throw error;
   } finally {
-    b.navigationPending = false;
+    if (b.navigationOutcomes.get(b.navigationKey) === 'PENDING')
+      b.navigationOutcomes.delete(b.navigationKey);
   }
 }

@@ -404,4 +404,97 @@ describe('Cycle17 retained canonical financial case desk', () => {
       ).not.toContain('<input');
     },
   );
+  it.each(
+    [0, 1, 2].flatMap((index) =>
+      (
+        ['fresh-wrapper', 'saved-revision', 'mutated-root-on-loss'] as const
+      ).map((mode) => ({ index, mode })),
+    ),
+  )(
+    'brand $index retains ambiguous canonical navigation across $mode without a second callback',
+    async ({ index, mode }) => {
+      const f = await fixture(index),
+        first = openFinanceCaseDesk(await f.read(), f.entry.target.job_id!),
+        canonical = f.sources.operations;
+      const different =
+        mode === 'mutated-root-on-loss' ? await fixture((index + 1) % 3) : null;
+      const firstCallback = vi.fn(() => {
+        if (different) f.sources.operations = different.sources.operations;
+        throw Error('Host navigated, acknowledgment lost');
+      });
+      expect(navigateFinanceCaseDesk(first, firstCallback).status).toBe(
+        'UNKNOWN',
+      );
+      expect(firstCallback).toHaveBeenCalledExactlyOnceWith(
+        f.entry.target.job_id,
+        'finance',
+      );
+      f.sources.operations = canonical;
+      if (mode === 'saved-revision') {
+        const job = f.sources.estimates.readSyntheticPrototypeSources(
+          f.entry.target,
+        ).job!;
+        await f.sources.estimates.projection(f.sources.company.id, job, {
+          ...job.projection,
+          remaining: {
+            ...job.projection.remaining,
+            other: job.projection.remaining.other + 1,
+          },
+        });
+      }
+      const freshSources = { ...f.sources, entries: [...f.sources.entries] },
+        freshReview = await readFinanceCaseDesk(
+          freshSources,
+          { ...f.input, input_revision: 2 },
+          f.gate,
+        ),
+        fresh = openFinanceCaseDesk(freshReview, f.entry.target.job_id!),
+        source = fresh.sources[0],
+        secondCallback = vi.fn();
+      // Source inspection is still genuinely read-only; no business data is lost.
+      expect(
+        inspectFinanceCaseDeskSource(fresh, {
+          kind: source.kind,
+          id: source.id,
+        }).selection.status,
+      ).toBe('EXACT_RECORDED_SOURCE');
+      expect(returnFinanceCaseDesk(fresh)).toEqual({
+        status: 'UNKNOWN',
+        replacement: null,
+      });
+      expect(navigateFinanceCaseDesk(fresh, secondCallback)).toEqual({
+        status: 'UNKNOWN',
+        replacement: null,
+      });
+      expect(secondCallback).not.toHaveBeenCalled();
+      expect(returnFinanceCaseDesk(first)).toEqual({
+        status: 'UNKNOWN',
+        replacement: null,
+      });
+    },
+  );
+  it('reserves the canonical org/job before forwarding against a concurrent fresh wrapper', async () => {
+    const f = await fixture(),
+      [a, b] = await Promise.all([
+        f.read(),
+        readFinanceCaseDesk(
+          { ...f.sources, entries: [...f.sources.entries] },
+          { ...f.input, input_revision: 2 },
+          f.gate,
+        ),
+      ]),
+      one = openFinanceCaseDesk(a, f.entry.target.job_id!),
+      two = openFinanceCaseDesk(b, f.entry.target.job_id!),
+      second = vi.fn();
+    let nested: unknown;
+    const first = vi.fn(() => {
+      nested = navigateFinanceCaseDesk(two, second);
+    });
+    expect(navigateFinanceCaseDesk(one, first).status).toBe(
+      'EXACT_FINANCE_DESK_NAVIGATION_REQUESTED',
+    );
+    expect(nested).toEqual({ status: 'UNKNOWN', replacement: null });
+    expect(first).toHaveBeenCalledTimes(1);
+    expect(second).not.toHaveBeenCalled();
+  });
 });

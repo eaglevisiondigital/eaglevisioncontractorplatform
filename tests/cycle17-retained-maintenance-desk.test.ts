@@ -344,6 +344,82 @@ it('a callback that navigates then throws retains desk UNKNOWN and forbids callb
   await expect(open(selected, 'controls')).rejects.toThrow();
   expect(JSON.stringify(selected)).toBe(snapshot);
 });
+it('fresh wrappers, purposes and newly selected cases cannot bypass canonical company/job UNKNOWN', async () => {
+  const f = await fixture(),
+    view = await read(f.sources, f.input, f.gate),
+    selected = await select(view, view.rows[0].key),
+    callback = vi.fn(() => {
+      throw Error('Lost navigation acknowledgement');
+    });
+  await expect(navigate(selected, callback)).rejects.toThrow();
+  const wrapper = { ...f.sources },
+    fresh = await read(
+      wrapper,
+      { ...f.input, purpose: 'service_follow_up' },
+      f.gate,
+    ),
+    newCase = await select(fresh, fresh.rows[0].key),
+    replacement = vi.fn();
+  await expect(navigate(newCase, replacement)).rejects.toThrow();
+  expect((await reconcile(view)).status).toBe('UNKNOWN');
+  expect((await reconcile(fresh)).status).toBe('UNKNOWN');
+  expect(callback).toHaveBeenCalledTimes(1);
+  expect(replacement).not.toHaveBeenCalled();
+  const other = await read(
+      wrapper,
+      { ...f.input, job_id: f.sources.entries[0].target.job_id! },
+      f.gate,
+    ),
+    otherCase = await select(other, other.rows[0].key),
+    separate = vi.fn();
+  await navigate(otherCase, separate);
+  expect(separate).toHaveBeenCalledExactlyOnceWith(
+    otherCase.row.context.job_id,
+    'maintenance',
+  );
+});
+it('UNKNOWN bookkeeping retains the canonical handle even after an awaited source getter replacement', async () => {
+  const f = await fixture(),
+    wrapper = { ...f.sources },
+    view = await read(f.sources, f.input, f.gate),
+    selected = await select(view, view.rows[0].key),
+    callback = vi.fn(),
+    original = crypto.subtle.digest.bind(crypto.subtle);
+  vi.spyOn(crypto.subtle, 'digest').mockImplementation(async (...args) => {
+    const result = await original(...args);
+    Object.defineProperty(f.sources, 'operations', {
+      configurable: true,
+      get() {
+        throw Error('Mutable source handle unavailable');
+      },
+    });
+    return result;
+  });
+  await expect(navigate(selected, callback)).rejects.toThrow();
+  vi.restoreAllMocks();
+  const fresh = await read(wrapper, { ...f.input }, f.gate),
+    newCase = await select(fresh, fresh.rows[0].key);
+  await expect(navigate(newCase, callback)).rejects.toThrow();
+  expect((await reconcile(fresh)).status).toBe('UNKNOWN');
+  expect(callback).not.toHaveBeenCalled();
+});
+it('a known withdrawn callback without an action retains current read-only consent evidence', async () => {
+  const f = await fixture(),
+    view = await read(f.sources, f.input, f.gate),
+    selected = await select(view, view.rows[0].key),
+    callback = vi.fn(),
+    current = false;
+  await navigate(selected, (jobId, section) => {
+    if (current) callback(jobId, section);
+  });
+  expect(callback).not.toHaveBeenCalled();
+  expect((await reconcile(view)).status).toBe('CAPTURED_NOT_ATOMIC');
+  await navigate(selected, callback);
+  expect(callback).toHaveBeenCalledExactlyOnceWith(
+    selected.row.context.job_id,
+    'maintenance',
+  );
+});
 it('revoked original review remains terminal across new desk source/controls navigation', async () => {
   const f = await fixture(),
     original = await readMaintenancePlanningContinuity(

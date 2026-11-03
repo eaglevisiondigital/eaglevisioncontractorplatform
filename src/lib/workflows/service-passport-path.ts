@@ -22,15 +22,13 @@ import {
   selectServiceCompletionJob,
   type ServiceCompletionGuideView,
   type ServiceCompletionContext,
+  type ServiceCompletionFilters,
 } from './service-completion-guide';
 import {
   openServiceReviewReport,
   type ServiceReviewContext,
 } from './service-review-path';
-export {
-  serviceCompletionGuideEnabled as servicePassportPathEnabled,
-  filterServiceCompletionRequests as filterServicePassportPaths,
-};
+export { serviceCompletionGuideEnabled as servicePassportPathEnabled };
 export type { ServiceCompletionFilters as ServicePassportFilters } from './service-completion-guide';
 function admit(gate: JourneyAdmission) {
   const p = prototypeFields(gate, ['enabled', 'confirmed']);
@@ -93,10 +91,17 @@ function selection(view: ServicePassportSelection) {
   const b = selections.get(view);
   if (!b || b.held)
     throw Error('UNKNOWN or unretained service Passport selection');
-  admit(b.gate);
-  b.capture.check();
-  assertServiceCompletionGuideCurrent(view);
-  return b;
+  try {
+    admit(b.gate);
+    b.capture.check();
+    assertServiceCompletionGuideCurrent(view);
+    return b;
+  } catch (error) {
+    // Observing a withdrawn source is terminal even if restored before the
+    // original reader sees it. Do not let an earlier facade check mask its hold.
+    b.held = true;
+    throw error;
+  }
 }
 export function assertServicePassportSelectionCurrent(
   view: ServicePassportSelection,
@@ -111,6 +116,13 @@ export function selectServicePassportContext(
     selected = selectServiceCompletionContext(view, jobId);
   if (selected) requireKnownNavigation(b, selected.job_id);
   return selected;
+}
+export function filterServicePassportPaths(
+  view: ServicePassportSelection,
+  input: ServiceCompletionFilters,
+) {
+  selection(view);
+  return filterServiceCompletionRequests(view, input);
 }
 interface PathBinding {
   parent: Binding;
@@ -151,10 +163,15 @@ export type ServicePassportContext = ServiceCompletionContext;
 function current(path: ServicePassportContext) {
   const b = paths.get(path);
   if (!b) throw Error('Exact retained service Passport context required');
-  selection(b.view);
-  assertServiceCompletionContextCurrent(path);
-  requireKnownNavigation(b.parent, path.context.job_id);
-  return b;
+  try {
+    selection(b.view);
+    assertServiceCompletionContextCurrent(path);
+    requireKnownNavigation(b.parent, path.context.job_id);
+    return b;
+  } catch (error) {
+    b.parent.held = true;
+    throw error;
+  }
 }
 export function assertServicePassportContextCurrent(
   path: ServicePassportContext,

@@ -14,14 +14,14 @@
       "owner": "/root/cycle16_field_growth",
       "branch": "codex/cycle17-field-workspace",
       "parent_commit": "3cbea85ce464b3e67fb78c8992ec192cdd8d2407",
-      "head_commit": "5aca826003c422b05c625262eb4e7e45fdc9d559",
+      "head_commit": "23829f2995b113eb5426b0a5328e12624efd3be5",
       "draft_pr": 119,
-      "focused_new_tests": 31,
+      "focused_new_tests": 34,
       "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
       "owned_files": [
         {
           "path": "src/lib/workflows/field-workspace.ts",
-          "sha256": "4e66a7a3903b6cd480083ce48a47deb71c5254a1b984acd183db34583de29ca2"
+          "sha256": "682306378cd16d8cde94ab153633b1621f44d3696d6f7b2743e57d33116f97f8"
         },
         {
           "path": "src/components/workflows/FieldWorkspace.tsx",
@@ -33,11 +33,11 @@
         },
         {
           "path": "tests/cycle17-field-workspace.test.ts",
-          "sha256": "5f942eb6ee4ed1956b727e48af7904988df5f34e73bcf6515480cbc7b587be28"
+          "sha256": "7a13c5fae9bb21f83c7bb4f5577cfe6a80c69b28f91d80695df76ae8c1988e6f"
         },
         {
           "path": "docs/program/CYCLE17_FIELD_WORKSPACE.md",
-          "sha256": "abfc2cd04437bb5812c1098fb247c5cc57474e4d580d6aaf7f35a5d39b6d290f"
+          "sha256": "e1892f929ed87bba54e26ad23b88d5546f3e5da75c7277a7d71d68084784198d"
         }
       ]
     },
@@ -47,14 +47,14 @@
       "owner": "/root/cycle17_finance_intelligence",
       "branch": "codex/cycle17-finance-case-desk",
       "parent_commit": "3cbea85ce464b3e67fb78c8992ec192cdd8d2407",
-      "head_commit": "e4c6e5997ca77e2bb3200b1cc23b9211bd41ed0d",
+      "head_commit": "5a904903c2fb049bf4e39c2b18f3fcc30e196337",
       "draft_pr": 120,
-      "focused_new_tests": 30,
+      "focused_new_tests": 40,
       "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
       "owned_files": [
         {
           "path": "src/lib/workflows/finance-case-desk.ts",
-          "sha256": "d253a870905a2de40f6dd00d4c1cdf1a60475e3af72770501b2f4ceac0408d52"
+          "sha256": "d88ca1cfbe0d01d417af1ca083313a5af55e9945e6354055b29fdbc3725201bf"
         },
         {
           "path": "src/components/workflows/FinanceCaseDesk.tsx",
@@ -66,11 +66,11 @@
         },
         {
           "path": "tests/cycle17-finance-case-desk.test.ts",
-          "sha256": "abe306008eb2ae9b0a3702520a6a338468d5dd223bb78fd074a7a0930117be82"
+          "sha256": "e1789a56852c2387ba5a8da34f4a45da6cb9605847b998f5b2f0084b388eb041"
         },
         {
           "path": "docs/program/CYCLE17_FINANCE_CASE_DESK.md",
-          "sha256": "c076840893a6abd20996707cb8901060c69fc755718245ea342faa38f57907eb"
+          "sha256": "db4485445f5b5387bc9514a872ede304ca0fafb26dc271a654f72c9c4a60fa3e"
         }
       ]
     },
@@ -80,14 +80,14 @@
       "owner": "/root/cycle13_customer_advanced",
       "branch": "codex/cycle17-service-passport-path",
       "parent_commit": "3cbea85ce464b3e67fb78c8992ec192cdd8d2407",
-      "head_commit": "526ede9fa9b2ada04fd623ec782d3bb31333b1c4",
+      "head_commit": "65bb85a670e349fd81a82bca21687c37870898b2",
       "draft_pr": 122,
-      "focused_new_tests": 55,
+      "focused_new_tests": 58,
       "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
       "owned_files": [
         {
           "path": "src/lib/workflows/service-passport-path.ts",
-          "sha256": "9b1d1ffcd1deb424f4d956aeb3008f4de7b8c44c49cd1a7dbb9737f5e7223539"
+          "sha256": "a47e007a4f0089a593e080cdc21dd9eb2756df339c514dbc85b5b053769452ee"
         },
         {
           "path": "src/components/workflows/ServicePassportPath.tsx",
@@ -99,11 +99,11 @@
         },
         {
           "path": "tests/cycle17-service-passport-path.test.ts",
-          "sha256": "5ee9fde61cc99b76bc9849433cc4ddf5ac8e595d94b66b4a49006c208366e7f1"
+          "sha256": "4d6213662adf4777902d94b25f3ed694d7042c1ca86a3c09a795a53638357304"
         },
         {
           "path": "docs/program/CYCLE17_SERVICE_PASSPORT_PATH.md",
-          "sha256": "b53a725b3a7c3ff7154c7bb24fbe1caa950054a09373f90c4baa32eac0740c58"
+          "sha256": "cb66e51c8de0b8c86b9d0cba516b4abc98475aab38a3ffe17165cfcc0c7c2f85"
         }
       ]
     },
@@ -113,14 +113,14 @@
       "owner": "/root/cycle16_field_growth",
       "branch": "codex/cycle17-retained-maintenance-desk",
       "parent_commit": "3cbea85ce464b3e67fb78c8992ec192cdd8d2407",
-      "head_commit": "cace5d31c6a50567c1f41790f0fe3d3e26d4dbe9",
+      "head_commit": "5274b98cb34a759f5f86ee8a5ec783939b4851d4",
       "draft_pr": 121,
-      "focused_new_tests": 35,
+      "focused_new_tests": 38,
       "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
       "owned_files": [
         {
           "path": "src/lib/workflows/retained-maintenance-desk.ts",
-          "sha256": "6e64e98302957c6790f0de01a71b310c0389899baa2b3c7d760c91b06acbcdeb"
+          "sha256": "00dbc8fd958447c262d61bc131c69f1d62a042be9e492cc5bbf4348188234c26"
         },
         {
           "path": "src/components/workflows/RetainedMaintenanceDesk.tsx",
@@ -132,11 +132,11 @@
         },
         {
           "path": "tests/cycle17-retained-maintenance-desk.test.ts",
-          "sha256": "a86588b4989cec279ce070fd6c7b38a16b97d2a21d59c56347bbc91e8c82a916"
+          "sha256": "96d85d198b4eff990623ca682ae5a604a49b473918dbafa4ef397071839028ba"
         },
         {
           "path": "docs/program/CYCLE17_RETAINED_MAINTENANCE_DESK.md",
-          "sha256": "27109ab29ddbe3f5353f28218e990ff08de92bc06c9f474bb5f7041d61f76c77"
+          "sha256": "28a797d6dbe9a231311b6686bcb3aeb9e5e98dc6d0a9aa15f1f5084e152779da"
         }
       ]
     },
@@ -208,7 +208,7 @@
     }
   ],
   "combined_evidence": {
-    "author_cases": 299,
+    "author_cases": 318,
     "independent_cases": null,
     "application_cases": null
   },

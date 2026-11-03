@@ -30,14 +30,29 @@ interface DeskBinding {
   capture: ReturnType<typeof captureOperatingSources>;
   gate: JourneyAdmission;
   unknown: boolean;
+  navigationOutcomes: Map<string, 'PENDING' | 'UNKNOWN'>;
+  navigationKeys: readonly string[];
 }
 const desks = new WeakMap<object, DeskBinding>();
-function check(b: DeskBinding) {
+// Outcome metadata follows the pinned canonical Operations handle and exact org/job.
+// A fresh desk, purpose, occurrence, revision or wrapper cannot reset ambiguity.
+const navigationOutcomes = new WeakMap<
+  OperatingSources['operations'],
+  Map<string, 'PENDING' | 'UNKNOWN'>
+>();
+function check(b: DeskBinding, evidenceOnly = false) {
   try {
     admit(b.gate);
     b.capture.check();
     assertRetentionReviewGuideNow(b.original);
-    if (b.unknown) throw Error('Retained maintenance source UNKNOWN');
+    if (
+      b.unknown ||
+      (!evidenceOnly &&
+        b.navigationKeys.some(
+          (key) => b.navigationOutcomes.get(key) === 'UNKNOWN',
+        ))
+    )
+      throw Error('Retained maintenance source UNKNOWN');
   } catch (error) {
     b.unknown = true;
     throw error;
@@ -50,10 +65,37 @@ export async function readRetainedMaintenanceDesk(
   gate: JourneyAdmission = { enabled: false, confirmed: false },
 ) {
   admit(gate);
-  const capture = captureOperatingSources(sources, gate),
-    original = await readRetentionReviewGuide(sources, input, gate),
-    b: DeskBinding = { original, capture, gate, unknown: false };
-  check(b);
+  const root = prototypeFields(sources, [
+      'company',
+      'operations',
+      'estimates',
+      'property',
+      'entries',
+      'gate',
+    ]),
+    capture = captureOperatingSources(sources, gate),
+    operations = root.operations as OperatingSources['operations'];
+  const outcomes =
+    navigationOutcomes.get(operations) ??
+    new Map<string, 'PENDING' | 'UNKNOWN'>();
+  navigationOutcomes.set(operations, outcomes);
+  const original = await readRetentionReviewGuide(sources, input, gate),
+    navigationKeys = capture.entries
+      .filter(
+        (e) =>
+          !original.selected_job_id ||
+          e.target.job_id === original.selected_job_id,
+      )
+      .map((e) => JSON.stringify([capture.organization_id, e.target.job_id])),
+    b: DeskBinding = {
+      original,
+      capture,
+      gate,
+      unknown: false,
+      navigationOutcomes: outcomes,
+      navigationKeys,
+    };
+  check(b, true); // Read-only snapshots never clear or authorize UNKNOWN navigation.
   const body = {
     mode: 'LOCAL_RETAINED_MAINTENANCE_DESK' as const,
     organization_id: original.organization_id,
@@ -72,13 +114,13 @@ export async function readRetainedMaintenanceDesk(
     custody: 'SAME_TAB_REFERENCE_ONLY' as const,
   };
   const sha256 = await documentHash(body);
-  check(b);
+  check(b, true);
   if (
     (await reconcileRetentionReviewGuide(original)).status !==
     'CAPTURED_NOT_ATOMIC'
   )
     throw Error('Original consent source UNKNOWN');
-  check(b);
+  check(b, true);
   const view = freezePrototype({
     ...body,
     integrity: { algorithm: 'SHA-256' as const, sha256 },
@@ -142,7 +184,8 @@ async function verified(view: RetainedMaintenanceDeskView) {
 interface CaseBinding {
   desk: RetainedMaintenanceDeskView;
   original: RetentionReviewItem;
-  navigationPending: boolean;
+  navigationOutcomes: Map<string, 'PENDING' | 'UNKNOWN'>;
+  navigationKey: string;
 }
 const cases = new WeakMap<object, CaseBinding>();
 /** Exact occurrence breadcrumbs remain selected while original controls keep their separate confirmations. */
@@ -150,9 +193,24 @@ export async function selectRetainedMaintenanceCase(
   view: RetainedMaintenanceDeskView,
   key: string,
 ) {
-  const b = await verified(view),
-    original = await inspectRetentionReviewItem(b.original, key);
-  assertRetainedMaintenanceDeskNow(view);
+  const b = desks.get(view);
+  if (!b) throw Error('Exact retained maintenance desk required');
+  check(b, true);
+  const selected = view.rows.find((r) => r.key === key);
+  if (!selected) throw Error('Exact displayed maintenance occurrence required');
+  const navigationKey = JSON.stringify([
+      selected.context.organization_id,
+      selected.context.job_id,
+    ]),
+    outcomes = b.navigationOutcomes;
+  if (
+    (await reconcileRetentionReviewGuide(b.original)).status !==
+    'CAPTURED_NOT_ATOMIC'
+  )
+    throw Error('Original contact observations changed');
+  check(b, true);
+  const original = await inspectRetentionReviewItem(b.original, key);
+  check(b, true);
   const row = original.row;
   const body = {
     mode: 'LOCAL_RETAINED_MAINTENANCE_CASE' as const,
@@ -203,13 +261,18 @@ export async function selectRetainedMaintenanceCase(
   };
   const sha256 = await documentHash(body);
   await returnRetentionReviewGuide(original);
-  assertRetainedMaintenanceDeskNow(view);
+  check(b, true);
   assertRetentionReviewItemNow(original);
   const result = freezePrototype({
     ...body,
     integrity: { algorithm: 'SHA-256' as const, sha256 },
   });
-  cases.set(result, { desk: view, original, navigationPending: false });
+  cases.set(result, {
+    desk: view,
+    original,
+    navigationOutcomes: outcomes,
+    navigationKey,
+  });
   return result;
 }
 export type RetainedMaintenanceCase = Awaited<
@@ -244,9 +307,9 @@ export async function navigateRetainedMaintenanceCase(
   const b = cases.get(view);
   if (!b) throw Error('Exact retained maintenance case required');
   assertRetainedMaintenanceCaseNow(view);
-  if (b.navigationPending)
+  if (b.navigationOutcomes.get(b.navigationKey) === 'PENDING')
     throw Error('Exact maintenance navigation already pending');
-  b.navigationPending = true;
+  b.navigationOutcomes.set(b.navigationKey, 'PENDING');
   try {
     await openRetainedMaintenanceSection(view, 'sources');
     assertRetainedMaintenanceCaseNow(view);
@@ -254,8 +317,10 @@ export async function navigateRetainedMaintenanceCase(
   } catch (error) {
     const desk = desks.get(b.desk);
     if (desk) desk.unknown = true;
+    b.navigationOutcomes.set(b.navigationKey, 'UNKNOWN');
     throw error;
   } finally {
-    b.navigationPending = false;
+    if (b.navigationOutcomes.get(b.navigationKey) === 'PENDING')
+      b.navigationOutcomes.delete(b.navigationKey);
   }
 }

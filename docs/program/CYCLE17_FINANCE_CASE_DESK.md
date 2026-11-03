@@ -42,3 +42,17 @@ Validation: 30/30 focused application cases pass; strict typecheck, targeted ESL
 Prettier and `features:check` pass. Existing design locks: five exact files and
 thirteen source bindings preserved. No prior author file changed. Actual browser
 and combined-candidate acceptance is reported by Main rather than inferred here.
+
+Independent review found and reproduced an ambiguous-navigation replay through a
+fresh presentation wrapper. The corrected outcome metadata is pinned before waits
+to canonical Operations plus exact organization/job. A pre-forward reservation and
+terminal UNKNOWN survive fresh reads, saved revisions and callback-time source-root
+replacement. Read-only canonical source inspection remains available; exact return
+reports UNKNOWN without re-forwarding. This is same-tab metadata, not durable
+custody or another business engine. Ten actual-source regressions retain all prior
+30 cases and cover all three brands plus concurrent fresh wrappers.
+
+Final corrected validation: 40/40 focused application cases pass. Strict typecheck,
+targeted ESLint, Prettier, diff and feature/design integrity checks pass. Main and
+the independent reviewer separately rerun their unchanged demonstrated acceptance
+assertions against this corrected exact source candidate.

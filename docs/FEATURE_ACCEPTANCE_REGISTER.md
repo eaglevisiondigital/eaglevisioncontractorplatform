@@ -3,7 +3,7 @@
 ## Cycle17 · retained daily workspaces, final verification pending
 
 Six bounded author drafts119–124 target coordination draft118 on exact Cycle16
-parent3cbea85ce464b3e67fb78c8992ec192cdd8d2407. All299focused author cases PASS;
+parent3cbea85ce464b3e67fb78c8992ec192cdd8d2407. All318focused author cases PASS;
 combined independent/application/browser/visual proof remains separately pending.
 [Exact source inventory](program/CYCLE17_DELIVERY_INDEX.json) records real workers,
 branches, heads and ownership. No original capability,18scope ID,25stage/approval/CI

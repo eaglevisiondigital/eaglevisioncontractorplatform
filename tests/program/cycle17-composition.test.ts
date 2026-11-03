@@ -95,7 +95,7 @@ it('records cancellation evidence without granting a false individual PASS', () 
     failed: 0,
     cancelled: 0,
     pending: 0,
-    workflow_runs: 18,
+    workflow_runs: 28,
   });
   expect(r.manual_reruns).toBe(0);
   expect(r.workflow_changed).toBe(false);

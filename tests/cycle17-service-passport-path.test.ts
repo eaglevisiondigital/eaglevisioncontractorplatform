@@ -625,3 +625,72 @@ it('published report/version content remains immutable after an unpublished late
   expect(() => servicePassportBreadcrumbs(f.path, f.report)).toThrow();
   expect(JSON.stringify(f.report)).toBe(before);
 });
+
+it.each([
+  [0, 'revoked member'],
+  [1, 'wrong same-company property'],
+  [2, 'foreign approved company'],
+] as const)(
+  'brand %i observed %s remains terminal after restoring the actual canonical source',
+  async (brand, kind) => {
+    const f = await opened(brand),
+      bytes = JSON.stringify([f.path, f.report]),
+      property = f.entry.target.location_id,
+      company = f.sources.company,
+      callback = vi.fn();
+    let restore = () => {};
+    if (kind === 'revoked member') {
+      const membership = vi
+        .spyOn(f.sources.operations, 'syntheticMemberships')
+        .mockReturnValue([]);
+      restore = () => membership.mockRestore();
+    }
+    if (kind === 'wrong same-company property') {
+      const other = f.sources.property
+        .read(company.id)
+        .plans.find((p) => p.location_id !== property)!.location_id;
+      expect(other).not.toBe(property);
+      f.entry.target.location_id = other;
+      restore = () => {
+        f.entry.target.location_id = property;
+      };
+    }
+    if (kind === 'foreign approved company') {
+      f.sources.company = sampleCompanies[(brand + 1) % 3];
+      restore = () => {
+        f.sources.company = company;
+      };
+    }
+    expect(() => assertServicePassportContextCurrent(f.path)).toThrow();
+    restore();
+    expect(() => assertServicePassportSelectionCurrent(f.view)).toThrow(
+      /UNKNOWN/,
+    );
+    expect(() => assertServicePassportContextCurrent(f.path)).toThrow(
+      /UNKNOWN/,
+    );
+    expect(() => servicePassportBreadcrumbs(f.path, f.report)).toThrow(
+      /UNKNOWN/,
+    );
+    expect(() => returnServicePassportSelection(f.path)).toThrow(/UNKNOWN/);
+    expect(() => openServicePassportOriginalReview(f.path, f.report)).toThrow(
+      /UNKNOWN/,
+    );
+    expect(() =>
+      filterServicePassportPaths(f.view, {
+        query: '',
+        customer_id: '',
+        location_id: '',
+        request_state: '',
+      }),
+    ).toThrow(/UNKNOWN/);
+    await expect(
+      navigateServicePassportJob(f.path, f.report, callback, {
+        current: callback,
+        generation: 0,
+      }),
+    ).rejects.toThrow(/UNKNOWN/);
+    expect(callback).not.toHaveBeenCalled();
+    expect(JSON.stringify([f.path, f.report])).toBe(bytes);
+  },
+);

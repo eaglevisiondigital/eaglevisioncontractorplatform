@@ -327,7 +327,7 @@ export function sourceOwner(path) {
     return 'A8';
   // Cycle17 consumers retain original source ownership; no authority promotion.
   if (
-    /OperatingCenterCycleSeventeen|^tests\/program\/.*cycle17|cycle17-integration|playwright\.cycle17|check-cycle17-|cycle17-build-visual/.test(
+    /OperatingCenterCycleSeventeen|^tests\/program\/.*cycle17|cycle17-integration|playwright\.cycle17|check-cycle17-|cycle17-build-visual|cycle17-visual-review/.test(
       path,
     )
   )
