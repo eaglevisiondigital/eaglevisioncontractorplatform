@@ -1,5 +1,32 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Cycle14 corrected CI evidence; Cycle15 assignments prepared
+
+Final exact-head inventory:30/30checks SUCCESS, including push and PR Foundation
+41551522379/41551530611 with nativePG17. No pending, failed or cancelled check remains
+at the corrected Main head; historical child cancellations remain separately recorded.
+
+The corrected implementation is exact610e38abc37a16a9a894e946c0c4c4df16120985
+on draft96. Both normal Cycle14 dedicated runs41551530586/41551522291 PASS.
+The downloaded corrected artifact independently matches its provider SHA256 and
+contains407actual PASS,0FAIL,0pending;69browser/gallery cases and72PNGs retained.
+Retained Cycle12/13 integration checks PASS at that same head. The final broader
+Foundation statuses are recorded separately in the timestamped
+[CI reconciliation](docs/program/CYCLE14_CI_RECONCILIATION.json), never inferred.
+
+Five unchanged author-head Foundation runs ended at their existing25-minute limit;
+Growth100 Foundation and every child nativePG17 job PASS. No unchanged cancelled
+run or successful historical check was manually restarted. Those child SHAs remain
+draft/unmerged, and Main success is not assigned to them.
+
+[Cycle15 assignments](docs/program/CYCLE15_ASSIGNMENTS.md) are PREPARED ONLY:
+six bounded task-continuity packages,30disjoint reserved paths, existing sources,
+two implementation waves and separate independent integration review. The brief
+received read-only independent CLEAR after source-contract clarifications.
+No Cycle15 feature agents, feature code, test result or operational acceptance is
+claimed. All prior feature states, visual approvals and release gates stay exact.
+Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Cycle14 CI portability correction
 
 Exact876ea772c39fbe21f1014dc203951e41752dd854 dedicated run41549008289
