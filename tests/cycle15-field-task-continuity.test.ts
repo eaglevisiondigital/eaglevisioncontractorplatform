@@ -155,7 +155,9 @@ it.each(['CANCEL', 'REVOKE'] as const)(
       v = await read(f.sources, f.packet, f.gate);
     closeScheduleWorkOrderContinuity(f.packet, action);
     await expect(back(v)).rejects.toThrow();
-    expect((await reconcile(v)).status).toBe('UNKNOWN');
+    expect((await reconcile(v)).status).toBe(
+      action === 'CANCEL' ? 'CANCELLED' : 'REVOKED',
+    );
     await expect(read(f.sources, f.packet, f.gate)).rejects.toThrow();
   },
 );
@@ -165,7 +167,7 @@ it('expiration withholds evidence and cannot silently start a replacement lineag
   vi.spyOn(Date, 'now').mockReturnValue(f.input.expires_at);
   expect(() => current(v)).toThrow();
   await expect(back(v)).rejects.toThrow();
-  expect((await reconcile(v)).status).toBe('UNKNOWN');
+  expect((await reconcile(v)).status).toBe('EXPIRED');
 });
 it.each(['source', 'staff', 'gate', 'job', 'instructions', 'clock'] as const)(
   'post-return %s change retains UNKNOWN and immutable snapshot',
@@ -304,3 +306,18 @@ it('foreign selected job hint does not select a fallback job', async () => {
   );
   expect(html).toMatch(/<button disabled="">Review field task schedule/);
 });
+it.each(['staff', 'source'] as const)(
+  'known cancellation never masks current %s withdrawal',
+  async (kind) => {
+    const f = await fixture(),
+      v = await read(f.sources, f.packet, f.gate);
+    closeScheduleWorkOrderContinuity(f.packet, 'CANCEL');
+    if (kind === 'staff')
+      vi.spyOn(f.sources.operations, 'syntheticMemberships').mockReturnValue(
+        [],
+      );
+    else f.sources.entries = [...f.sources.entries];
+    expect((await reconcile(v)).status).toBe('UNKNOWN');
+    await expect(back(v)).rejects.toThrow();
+  },
+);

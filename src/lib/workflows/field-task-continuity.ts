@@ -179,18 +179,27 @@ export function assertFieldTaskEvidenceNow(view: FieldTaskEvidence) {
 /** Reconcile only original held readers; no review, successor, retry or business writer. */
 export async function reconcileFieldTaskEvidence(view: FieldTaskEvidence) {
   const result = {
-    status: 'UNKNOWN' as 'UNKNOWN' | 'CURRENT_REVIEW_ONLY',
+    status: 'UNKNOWN' as
+      'UNKNOWN' | 'CURRENT_REVIEW_ONLY' | 'CANCELLED' | 'REVOKED' | 'EXPIRED',
     replay: 'FORBIDDEN' as const,
     replacement: null,
   };
   const b = retained.get(view);
   if (!b) return result;
   try {
-    check(b);
+    on(b.gate);
+    b.capture.check();
+    const original = await reconcileScheduleWorkOrderContinuity(b.continuity);
+    on(b.gate);
+    b.capture.check();
     if (
-      (await reconcileScheduleWorkOrderContinuity(b.continuity)).status !==
-      'PREPARED_REVIEW_ONLY'
+      original.status === 'CANCELLED' ||
+      original.status === 'REVOKED' ||
+      original.status === 'EXPIRED'
     )
+      return { ...result, status: original.status };
+    check(b);
+    if (original.status !== 'PREPARED_REVIEW_ONLY')
       throw Error('Original continuity not current');
     check(b);
     if ((await verifyFieldWorkflow(b.field)).status !== 'CURRENT')

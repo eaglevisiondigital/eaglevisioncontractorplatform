@@ -32,13 +32,15 @@ acknowledgement retains UNKNOWN without reopening a review or new identity.
 
 ## Focused verification
 
-28application cases PASS: actual predecessor→instructions→technician-day→return
+30unique application cases PASS (28full-run plus2focused current-access terminal-status cases): actual predecessor→instructions→technician-day→return
 across all3brands; immutable exact identity; no canonical writes/network; foreign
 company/property context; copied views; cancellation/revocation/expiry; original
 competing successor; membership/job/handle/input/clock drift; changes during awaits;
 lost acknowledgement and no replay; initial accessible selected-job controls and
 protocol/default-OFF admission. The first run exposed one missing synchronous job
-reader fence; the canonical job lock/version check was added, then all28passed.
+reader fence; the canonical job lock/version check was added, then all28passed. Known original CANCELLED/REVOKED/EXPIRED statuses are retained
+by exact read-only reconciliation; current access or source mismatch still returns
+UNKNOWN and never permits navigation.
 
 Strict types, scoped ESLint, formatting, build, feature evidence and C14 protected
 integrity are run for this package. Main owns combined actual desktop/tablet/mobile,
