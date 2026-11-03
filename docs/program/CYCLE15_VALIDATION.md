@@ -62,7 +62,10 @@ unmount it. No refresh/process-crash durability, genuine Auth or recovery claim.
 ## Combined proof
 
 Initial frozen candidate:391/391unique application cases PASS,0failed/pending.
-Final CI test-structure corrections are re-admitted and validated separately below.
+Final corrected candidate f8f7f0bea740ef4218aaa39d8ab8c91ca973f502:
+**401/401unique file/case identities PASS,0failed/pending,11exact files**. The strict raw-results
+checker PASS confirms261author +46independent +17coordinator +4scorecard +73inventory.
+[Sanitized raw-result digests and counts](CYCLE15_VALIDATION.json).
 Browser:72unique development +3production-OFF PASS;54actual PNGs.
 Independent46PASS; strict/generated types, lint, formatting, build, feature/design
 and protected-integrity checks PASS. CI is exact-head and separately pending.

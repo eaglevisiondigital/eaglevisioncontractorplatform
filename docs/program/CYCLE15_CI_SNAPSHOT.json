@@ -1540,7 +1540,8 @@
     "base": "codex/program-cycle-fourteen",
     "head_sha": null,
     "status": "AWAITING_FINAL_PUBLICATION_AT_SNAPSHOT",
-    "note": "This pre-publication source record cannot attest its own future commit hash. Verify the published exact head/checks separately after push; pending never implies PASS."
+    "note": "This pre-publication source record cannot attest its own future commit hash. Verify the published exact head/checks separately after push; pending never implies PASS.",
+    "source_candidate_commit": "f8f7f0bea740ef4218aaa39d8ab8c91ca973f502"
   },
   "manual_reruns": 0,
   "release": "NOT_READY_NOT_AUTHORIZED",
