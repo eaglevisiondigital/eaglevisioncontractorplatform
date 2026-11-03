@@ -1,5 +1,7 @@
 # Engineering decisions
 
+Retained source-inspection assertions must verify the actual single trusted preparer seam and its original default. Five further demonstrated literal mismatches corrected forward; no assertion removed, runtime bypass or historical failure relabel. No operational authority.
+
 ## Cycle21 CI · verify the single preparer and its original default
 
 Keep the existing source-factory injection seam and native one-attempt host. Source evidence must inspect the actual awaited preparer and its default original factory, rather than a pre-refactor call name. Preserve finite navigation/no-extra-repository assertions and all original failed artifacts. This test-only correction grants no operational authority.

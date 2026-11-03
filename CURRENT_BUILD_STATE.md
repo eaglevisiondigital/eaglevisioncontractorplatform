@@ -1,5 +1,7 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+Cycle21 retained host-assertion follow-up: exact2fec Cycle18 run41724793162 showed immediate obsolete preparer literal in C17 (445pass/1fail); local5suites reproduced66pass/5fail, same71nowPASS requiring actualsinglecall+originaldefault. No runtime/protected/workflow/timeout changes or manualCIreruns; historical failures unchanged.
+
 ## Cycle21 CI · preserve the guarded original preparer seam
 
 Downloaded exact-head C11/C13/C14 artifacts prove four obsolete literal-call assertions, not timeout evidence. Three Main-owned tests now require the actual single awaited preparer call plus its original default binding; every other assertion remains.52 evidence cases and10 native preparation cases pass. Product/protected source, workflows and budgets are unchanged. Original failed runs remain failures; corrected-head automatic CI and other pending checks remain separate. See docs/program/CYCLE21_PREPARER_CI_CORRECTION.md and JSON. No operational or release gate is promoted.
