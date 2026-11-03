@@ -1,5 +1,26 @@
 # Engineering decisions
 
+## Cycle14 CI · platform-native temporary fixtures
+
+Use Node tmpdir plus path.join for the two gallery-output safety fixture roots.
+The failed Ubuntu artifact proves /private/tmp was absent before the assertions
+could run. Preserve every hard-link, atomic replacement, exact output and cleanup
+assertion and all product/protected bytes. Correct only the demonstrated test-path
+assumption; do not create a macOS directory on the runner, skip tests, retry a known
+failure or widen timeouts. Preserve exact successful CI and record new-head results
+separately. Local tests never promote release or visual acceptance.
+
+## Cycle14 use inspected source identity for explicit workflow entry
+
+Retain all original engines and author bytes. Pass a currently captured selected-job
+hint through the existing presentation host, then independently admit it in each
+new continuity reader. Carry one inspected C13 advanced detail into the original C12
+lifecycle instead of asking for the same job/mode/source twice. Explicit confirmation
+and original permanent reservation/UNKNOWN behavior remain mandatory. No new business
+state or automatic proposal is created. Two unapproved visual scopes receive an
+actual-pixel owner review with missing originals labeled; existing three approvals
+remain locked and no local test promotes operational or release acceptance.
+
 ## November2 · Cycle13 source-bound operating continuity
 
 Owner direction authorizes seven separately owned local draft packages and an

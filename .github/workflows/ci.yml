@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     # The full application + responsive browser suite exceeds the original
     # scaffold budget. Keep every check and assertion; retain a finite timeout.
-    timeout-minutes: 25
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

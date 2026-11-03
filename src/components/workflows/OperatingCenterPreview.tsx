@@ -51,6 +51,7 @@ export interface OperatingReviewPanel {
   render: (props: {
     sources: OperatingSources;
     enabled: boolean;
+    selectedJobId?: string;
     onSelectJob: (jobId: string, section?: OperatingJobSection) => void;
   }) => ReactNode;
 }
@@ -395,12 +396,24 @@ export function OperatingCenterPreview({
             className="oc-panel"
             aria-label="Current operating desk"
           >
-            {[
-              ...additionalPanels,
-              ...additionalReviewGroups.flatMap((group) => group.panels),
-            ]
-              .find((panel) => panel.id === tab)
-              ?.render({ sources, enabled: true, onSelectJob: openJob })}
+            {selected && !detail ? (
+              <p role="alert">
+                Retained selected job context is UNKNOWN. Continuity controls
+                are withheld; no other job is substituted.
+              </p>
+            ) : (
+              [
+                ...additionalPanels,
+                ...additionalReviewGroups.flatMap((group) => group.panels),
+              ]
+                .find((panel) => panel.id === tab)
+                ?.render({
+                  sources,
+                  enabled: true,
+                  selectedJobId: detail?.target.job_id ?? undefined,
+                  onSelectJob: openJob,
+                })
+            )}
             {tab === 'selection' && (
               <OperatingSelection
                 sources={sources}

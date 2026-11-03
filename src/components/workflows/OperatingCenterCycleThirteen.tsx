@@ -44,6 +44,12 @@ const groups: readonly OperatingReviewGroup[] = [
     ],
   },
 ];
-export function OperatingCenterCycleThirteen() {
-  return <OperatingCenterCycleTwelve additionalReviewGroups={groups} />;
+export function OperatingCenterCycleThirteen({
+  additionalReviewGroups = [],
+}: { additionalReviewGroups?: readonly OperatingReviewGroup[] } = {}) {
+  return (
+    <OperatingCenterCycleTwelve
+      additionalReviewGroups={[...groups, ...additionalReviewGroups]}
+    />
+  );
 }

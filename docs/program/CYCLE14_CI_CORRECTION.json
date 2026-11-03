@@ -1,0 +1,47 @@
+{
+  "schema": "propel-cycle14-ci-correction-v1",
+  "observedAt": "2026-11-03T00:14:24.374628+00:00",
+  "failed_head": "876ea772c39fbe21f1014dc203951e41752dd854",
+  "failed_run": 41549008289,
+  "job_id": 125631566184,
+  "artifact_id": 13190407765,
+  "artifact_zip_sha256": "8dd2bd99387e34bba4ff78acc9835213821b169dc2ca50a48c60da8ca8c77369",
+  "raw_result_sha256": "fa3b15287cbddb8f2de6cd107256a121fab21f253dd289b002cf5f00570d1222",
+  "actual_outcome": {
+    "passed": 405,
+    "failed": 2,
+    "pending": 0,
+    "total": 407
+  },
+  "failures": [
+    {
+      "suite": "cycle14-visual-review.test.ts",
+      "case": "refuses hard-linked output HTML and manifest without changing either link",
+      "duration_ms": 2.7742489999999407,
+      "reason": "ENOENT: Ubuntu has no /private/tmp; mkdtemp failed before assertions"
+    },
+    {
+      "suite": "cycle14-visual-review.test.ts",
+      "case": "atomically replaces only the two exact regular local outputs",
+      "duration_ms": 0.401787000000013,
+      "reason": "ENOENT: Ubuntu has no /private/tmp; mkdtemp failed before assertions"
+    }
+  ],
+  "correction": {
+    "file": "tests/program/cycle14-visual-review.test.ts",
+    "scope": "Only OS-native mkdtemp prefix and two standard-library imports; no assertion/timeout/guard/product change",
+    "previous_test_sha256": "d1e3c1f7c741652d5c8c659728b4fe7422fa25f8f496a7024d49dad42d2f3762",
+    "corrected_test_sha256": "36f88bf5917ffc7308d9413bab081954033e6a7ceefba1992dbb770cb7e041a9",
+    "normalized_to_previous_bytes": true
+  },
+  "focused_actual_result": {
+    "passed": 16,
+    "failed": 0,
+    "pending": 0,
+    "result_sha256": "a7754b24bc3afd525cdec77ae3c23255e1dc2e18ad8cbe84ea156286bb164455"
+  },
+  "successful_manual_reruns": 0,
+  "old_failure_replayed": false,
+  "new_head_ci": "NORMAL_AUTOMATIC_CHECKS_AFTER_PUBLICATION_NO_GREEN_INFERENCE",
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

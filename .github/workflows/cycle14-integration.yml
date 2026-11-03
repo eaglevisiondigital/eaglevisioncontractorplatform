@@ -1,0 +1,48 @@
+name: Cycle 14 source continuity and focused visual review
+on:
+  push:
+    branches: ['codex/program-cycle-fourteen']
+  pull_request:
+    paths:
+      - 'src/components/workflows/OperatingCenterCycleFourteen.tsx'
+      - 'src/components/workflows/OperatingCenterPreview.tsx'
+      - 'tests/cycle14*'
+      - 'tests/program/*cycle14*'
+      - 'scripts/*cycle14*'
+      - 'docs/program/CYCLE14_DELIVERY_INDEX.json'
+      - '.github/workflows/cycle14-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle14-integration-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  bounded-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node scripts/check-cycle14-integrity.mjs
+      - run: npx vitest run tests/cycle14*.test.ts tests/program/cycle14-feature-evidence.test.ts tests/program/cycle14-visual-review.test.ts tests/program/cycle13-scorecard-evidence.test.ts tests/program-feature-evidence.test.ts --maxWorkers=2 --reporter=json --outputFile=artifacts/cycle14/application-results.json
+      - run: node scripts/check-cycle14-results.mjs
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test -c tests/program/playwright.cycle14.config.ts --workers=2
+      - run: npx playwright test -c tests/program/playwright.cycle14-off.config.ts --workers=2
+      - run: node scripts/cycle14-build-visual-review.mjs
+      - run: npx playwright test -c tests/program/playwright.cycle14-gallery.config.ts --workers=2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle14-continuity-visual-evidence
+          path: |
+            artifacts/cycle14/
+            test-results/
+          retention-days: 7

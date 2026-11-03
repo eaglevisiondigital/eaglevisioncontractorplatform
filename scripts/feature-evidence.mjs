@@ -325,6 +325,26 @@ export function sourceOwner(path) {
     )
   )
     return 'A8';
+  // Cycle14 disjoint metadata lanes; classification is never an access grant.
+  if (
+    /OperatingCenterCycleFourteen|cycle14|playwright\.cycle14/.test(path) &&
+    /^(scripts\/|tests\/program\/)|OperatingCenterCycleFourteen|cycle14-integration/.test(
+      path,
+    )
+  )
+    return 'A8';
+  if (/schedule-work-order-continuity|ScheduleWorkOrderContinuity/.test(path))
+    return 'A3';
+  if (/finance-case-continuity|FinanceCaseContinuity/.test(path)) return 'A4';
+  if (/service-source-continuity|ServiceSourceContinuity/.test(path))
+    return 'A5';
+  if (
+    /maintenance-planning-continuity|MaintenancePlanningContinuity|verified-task-handoff|VerifiedTaskHandoff/.test(
+      path,
+    )
+  )
+    return 'A6';
+  if (/source-bound-addons|SourceBoundAddons/.test(path)) return 'A7';
   // Cycle13 disjoint metadata lanes; never access grants.
   if (
     /OperatingCenterCycleThirteen|^tests\/program\/.*cycle13|cycle13-integration|playwright\.cycle13|check-cycle13-|cycle13-visual-comparison|cycle13-build-visual-evidence/.test(
