@@ -90,6 +90,13 @@ getters/serialization. Current company/member/root/model/customer/property/job/i
 revision, original staff confirmation and exact published reference remain binding
 before/after awaits, render, breadcrumb returns and callbacks. Observed source
 uncertainty is terminal for the retained original path; no fallback/replay/rebinding.
+The C17 selection facade latches its own observed gate/capture/original-reader failures
+before propagating them. Restoring revoked membership, a substituted same-company
+property or another approved company cannot revive the retained view/path. Context
+checks latch the same parent selection if an original context fence fails. Literal
+search also passes through this exact retained-selection fence rather than bypassing
+it via a direct original-filter alias. All original canonical checks remain intact;
+clean callback withdrawal before dispatch is separate and keeps valid controls usable.
 Private internal costs/rates/notes/workforce/receipts and other customers do not enter
 safe reports/Passport output. Original control props are private staff composition
 references and are never serialized into a customer projection.
@@ -101,10 +108,10 @@ empty/OFF/denied/UNKNOWN states and source/breadcrumb/review heading focus are p
 Main owns actual all-brand desktop/tablet/mobile, keyboard/axe/touch/overflow, delayed
 callback and retained-control browser proof. No source/SSR result is visual approval.
 
-**55 unique focused cases PASS, zero failed/pending** after the navigation-outcome
-correction. All individual cases retain the original global 30-second
+**58 unique focused cases PASS, zero failed/pending** after navigation-outcome and
+observed-source-restoration corrections. All individual cases retain the original global 30-second
 budget; no CI/global timeout/assertion is weakened. Raw results:
-`/private/tmp/cycle17-customer-final-results.json` (local, not committed).
+`/private/tmp/cycle17-customer-restoration-final-results.json` (local, not committed).
 All three brands exercise exact breadcrumbs/controls, literal filters, host navigation,
 foreign tenant/wrong same-company property/current-member denial and private projection
 isolation. Separate cases cover original completion preparation/UNKNOWN no-replay,
@@ -112,6 +119,13 @@ sibling report associations, stale model/version/source/confirmation, final-awai
 source/callback withdrawal/restoration, duplicate concurrent callbacks, strict getters,
 copied objects, immutable published content, synchronous/asynchronous callback failure
 with same-job reselection denial, and default/production/HTTPS/nonloopback OFF.
+Three new actual-source restore regressions first failed against526ede9 (all3failed;
+raw `/private/tmp/cycle17-customer-restore-reproduction.json`). They separately cover
+brand0 withdrawn membership restored, brand1 recorded same-company property restored,
+and brand2 foreign approved company restored. Each checks retained selection/context,
+breadcrumbs, original control, return, search and callback remain denied after restore,
+with immutable source bytes and no callback invocation. No prior test/assertion or
+30-second timeout is removed or weakened.
 Strict/generated types, owned ESLint/Prettier, build, features:check and Cycle16
 protected/design/retained-author integrity PASS. The retained large-chunk build advisory
 remains. Browser/combined and CI acceptance stay separate with Main.
