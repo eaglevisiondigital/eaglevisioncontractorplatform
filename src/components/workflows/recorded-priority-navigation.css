@@ -1,0 +1,48 @@
+.recorded-priority-navigation {
+  color: #23382e;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.recorded-priority-navigation .recorded-priority-links {
+  padding: 1rem;
+  margin-top: 1rem;
+  border: 1px solid #d4ded7;
+  border-radius: 12px;
+  background: #f7faf7;
+}
+.recorded-priority-navigation button,
+.recorded-priority-navigation summary {
+  min-height: 44px;
+  max-width: 100%;
+}
+.recorded-priority-navigation button {
+  margin: 0.5rem 0.5rem 0.5rem 0;
+}
+.recorded-priority-navigation ul {
+  padding: 0;
+  list-style: none;
+}
+.recorded-priority-navigation li,
+.recorded-priority-navigation .recorded-priority-inspection {
+  padding: 1rem;
+  margin: 0.8rem 0;
+  border: 1px solid #d4ded7;
+  border-radius: 10px;
+  background: white;
+}
+.recorded-priority-navigation dt {
+  color: #4b5d52;
+}
+.recorded-priority-navigation pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.recorded-priority-navigation :focus-visible {
+  outline: 3px solid var(--journey-primary, #216449);
+  outline-offset: 3px;
+}
+@media (max-width: 760px) {
+  .recorded-priority-navigation button {
+    width: 100%;
+  }
+}

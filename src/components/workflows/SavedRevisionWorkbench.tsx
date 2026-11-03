@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState, type ComponentType } from 'react';
 import { journeyEnabled } from '../../lib/workflows/journey-runtime';
 import { captureOperatingSources } from '../../lib/workflows/operating-center-runtime';
 import type { SavedRevisionPanelProps } from '../../lib/workflows/saved-revision-contract';
@@ -23,6 +23,13 @@ const tabs = [
   ['priorities', 'Recorded priorities'],
 ] as const;
 type Tab = (typeof tabs)[number][0];
+type PanelProps = SavedRevisionPanelProps & { onSourcesSaved?: () => void };
+export type SavedWorkbenchPanels = Readonly<
+  Record<Tab, ComponentType<PanelProps>>
+>;
+interface Props extends SavedRevisionPanelProps {
+  reviewPanels?: SavedWorkbenchPanels;
+}
 const exerciseLabels: Record<SavedSourceExercise, string> = {
   'visit-draft': 'Save synthetic visit draft revision',
   'time-record': 'Record synthetic reviewed time',
@@ -31,7 +38,7 @@ const exerciseLabels: Record<SavedSourceExercise, string> = {
   'plan-revision': 'Save synthetic maintenance plan revision',
   'report-revision': 'Append synthetic published report version',
 };
-export function SavedRevisionWorkbench(props: SavedRevisionPanelProps) {
+export function SavedRevisionWorkbench(props: Props) {
   let admitted = false;
   if (
     typeof window !== 'undefined' &&
@@ -84,7 +91,7 @@ export function SavedRevisionWorkbench(props: SavedRevisionPanelProps) {
     </section>
   );
 }
-function Workbench({ sources, selectedJobId }: SavedRevisionPanelProps) {
+function Workbench({ sources, selectedJobId, reviewPanels }: Props) {
   const [job, setJob] = useState(selectedJobId ?? ''),
     [tab, setTab] = useState<Tab>('field'),
     [visited, setVisited] = useState<Tab[]>(['field']),
@@ -92,7 +99,7 @@ function Workbench({ sources, selectedJobId }: SavedRevisionPanelProps) {
     [message, setMessage] = useState(
       'Select one exact job. Saved review selections remain local and do not authorize actions.',
     );
-  const panels: Record<Tab, typeof FieldSavedRevisions> = {
+  const panels: SavedWorkbenchPanels = reviewPanels ?? {
     field: FieldSavedRevisions,
     finance: CostSavedRevisions,
     customer: ServiceRevisionReview,
@@ -148,7 +155,39 @@ function Workbench({ sources, selectedJobId }: SavedRevisionPanelProps) {
         const Panel = panels[id];
         return visited.includes(id) ? (
           <div key={`${job}:${id}`} hidden={tab !== id}>
-            <Panel sources={sources} enabled selectedJobId={job || undefined} />
+            <Panel
+              sources={sources}
+              enabled
+              selectedJobId={job || undefined}
+              onSourcesSaved={() => {
+                setSearchRevision((n) => n + 1);
+                setMessage(
+                  'Exact canonical source saved; read updates explicitly. Original holds remain unchanged.',
+                );
+              }}
+              onContinue={(id, destination) => {
+                const current = captureOperatingSources(sources, {
+                  enabled: true,
+                  confirmed: true,
+                });
+                current.check();
+                if (id !== job) throw Error('Exact retained job required');
+                const map = {
+                  field: 'field',
+                  finance: 'finance',
+                  invoice: 'finance',
+                  customer: 'customer',
+                  maintenance: 'maintenance',
+                  priorities: 'priorities',
+                } as const;
+                if (destination === 'advanced')
+                  throw Error('Use existing advanced review navigation');
+                const next = map[destination];
+                setTab(next);
+                setVisited((previous) => [...new Set([...previous, next])]);
+                current.check();
+              }}
+            />
           </div>
         ) : null;
       })}

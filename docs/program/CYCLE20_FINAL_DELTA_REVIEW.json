@@ -1,0 +1,67 @@
+{
+  "schema": "propel-cycle20-final-delta-review-record-v1",
+  "recorded_by": "/root",
+  "reviewer": "/root/cycle20_independent_review",
+  "status": "CLEAR_LOCAL_SYNTHETIC_ONLY",
+  "original_review_commit": "a57928e0abb6d9c7cca1d10fae2d508b643de288",
+  "original_review_files_unchanged": true,
+  "basis": "Reviewer messages: final source/tooling delta plus narrow Finance visual and five child lint-only followup review; no app/browser case reruns by reviewer.",
+  "negative_validation_probes": {
+    "report_and_review_identity": 20,
+    "followup_head_and_shared_test_identity": 39
+  },
+  "corrections": [
+    "Named keyboard-focusable historical JSON region, retaining full Axe assertions",
+    "Portable repo-relative browser artifacts",
+    "Exact review commit/two-file pins",
+    "Exact original-to-forward child commit binding and common one-line test lint correction",
+    "C20-only Finance header document flow with actual-host/fixture geometry guards"
+  ],
+  "reviewed_source_files": [
+    {
+      "path": "src/components/workflows/SavedEvidenceControls.tsx",
+      "sha256": "8a76a8092305fb397e860e1aed895d2b24f4836c14e3f0c5e85263e73fe0140e"
+    },
+    {
+      "path": "src/components/workflows/saved-revision-workbench.css",
+      "sha256": "5488e92c5f6e487d716da7f1667b6d6d83a4b406de5c405c834bb2f176fb9730"
+    },
+    {
+      "path": "tests/program/cycle20-saved-evidence.spec.ts",
+      "sha256": "b7680eed7c2e5438e4ae74b7693b98aa842e83ea4891a34de7a418029c6719f9"
+    },
+    {
+      "path": "tests/program/cycle20-browser-harness.tsx",
+      "sha256": "3c065ba23f9bca5ddad28dc622a524852a4e727397a26927124e9bc9c84c4b6d"
+    },
+    {
+      "path": "tests/program/playwright.cycle20.config.ts",
+      "sha256": "fef97b2960edc5141de30a45ea365eb2d515a805898fe34c17665ef698ee6bcb"
+    },
+    {
+      "path": "tests/program/playwright.cycle20-off.config.ts",
+      "sha256": "94ff525bb9c07c2e71733091703e92b8da639f392182bbefcecdb5a2cde547b8"
+    },
+    {
+      "path": "tests/program/cycle20-default-off.spec.ts",
+      "sha256": "4d657f98693a6fcbb69b86354a6415d10302b48fe4553d4cf099fac0dda552e9"
+    },
+    {
+      "path": "scripts/check-cycle20-integrity.mjs",
+      "sha256": "84538dce6b84c275db711dec6866974765ec4ffbb32613b8277d44fba02bc5d6"
+    },
+    {
+      "path": "scripts/check-cycle20-results.mjs",
+      "sha256": "afc0cea07df5e852471151278550529a2d008326673279e1d895e88a78db51ad"
+    },
+    {
+      "path": "scripts/check-cycle20-browser-selection.mjs",
+      "sha256": "cc8d243172a6968482a2755c9a60b2a523f12fa6f95e779796521c0d5a9ead76"
+    },
+    {
+      "path": ".github/workflows/cycle20-integration.yml",
+      "sha256": "3126459eb03af180e9ab763232ce0ac55bb239307637e4e809c46cd960477ff4"
+    }
+  ],
+  "authority": "Source integrity and local tests only; no visual, CI, physical recovery or release approval inferred"
+}

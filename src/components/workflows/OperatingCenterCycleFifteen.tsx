@@ -11,6 +11,7 @@ import { AddonTaskContinuity } from './AddonTaskContinuity';
 import { cycle16DailyGroups } from './OperatingCenterCycleSixteen';
 import { cycle17WorkspaceGroups } from './OperatingCenterCycleSeventeen';
 import { cycle18WorkflowGroups } from './OperatingCenterCycleEighteen';
+import { cycle20EvidenceGroups } from './OperatingCenterCycleTwenty';
 import { cycle19SavedGroups } from './OperatingCenterCycleNineteen';
 import './task-review-paths.css';
 
@@ -28,6 +29,7 @@ const guided = taskReviewGroups({
 });
 
 export function OperatingCenterCycleFifteen() {
+  const [savedEvidence, setSavedEvidence] = useState(false);
   const [savedRevisions, setSavedRevisions] = useState(false);
   const [dailyWorkbench, setDailyWorkbench] = useState(false);
   const [taskPaths, setTaskPaths] = useState(false);
@@ -41,6 +43,14 @@ export function OperatingCenterCycleFifteen() {
       <section aria-label="Review path options">
         <fieldset className="task-review-options">
           <legend>Review options</legend>
+          <label>
+            <input
+              type="checkbox"
+              checked={savedEvidence}
+              onChange={(event) => setSavedEvidence(event.target.checked)}
+            />
+            Use saved evidence files
+          </label>
           <label>
             <input
               type="checkbox"
@@ -89,11 +99,13 @@ export function OperatingCenterCycleFifteen() {
       </section>
       <OperatingCenterCycleThirteen
         additionalReviewGroups={
-          savedRevisions
-            ? cycle19SavedGroups
-            : dailyWorkbench
-              ? cycle18WorkflowGroups
-              : retainedGroups
+          savedEvidence
+            ? cycle20EvidenceGroups
+            : savedRevisions
+              ? cycle19SavedGroups
+              : dailyWorkbench
+                ? cycle18WorkflowGroups
+                : retainedGroups
         }
       />
     </>

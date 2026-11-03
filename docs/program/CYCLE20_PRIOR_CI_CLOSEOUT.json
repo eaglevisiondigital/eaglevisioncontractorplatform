@@ -1,0 +1,1084 @@
+{
+  "schema": "propel-cycle20-prior-ci-closeout-v1",
+  "observed_at": "2026-11-03T17:32:35.360139+00:00",
+  "read_only": true,
+  "manual_reruns": 0,
+  "prs": [
+    {
+      "pr": 131,
+      "head": "13977f8c870fb57a94ec7f8c4d73768b3083819f",
+      "draft": true,
+      "checks": [
+        {
+          "name": "bounded-integration",
+          "conclusion": "FAILURE",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677657862/job/126062502490"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677657448/job/126062500768"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677657649/job/126062500834"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677657826/job/126062503653"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677658099/job/126062502513"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677657644/job/126062500926"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677657828/job/126062501396"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677657933/job/126062502914"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677644020/job/126062451487"
+        },
+        {
+          "name": "local-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677657934/job/126062502318"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677657563/job/126062500283"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677657672/job/126062502011"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677657665/job/126062501842"
+        },
+        {
+          "name": "verify",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677658016/job/126062703976"
+        },
+        {
+          "name": "verify",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677644091/job/126062803798"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677657861/job/126062502870"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677643915/job/126062451332"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677657925/job/126062502778"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677643741/job/126062449003"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677657938/job/126062502377"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677644242/job/126062452159"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677658020/job/126062503228"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677644089/job/126062450973"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677657587/job/126062502643"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677643931/job/126062452880"
+        },
+        {
+          "name": "local-preview",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677657654/job/126062500963"
+        },
+        {
+          "name": "local-preview",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677643729/job/126062448435"
+        },
+        {
+          "name": "local-preview",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677657867/job/126062503844"
+        },
+        {
+          "name": "local-preview",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677643949/job/126062450902"
+        },
+        {
+          "name": "synthetic-crypto48",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677658112/job/126062504585"
+        },
+        {
+          "name": "synthetic-crypto48",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677643984/job/126062449518"
+        },
+        {
+          "name": "postgres17",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677658016/job/126062704574"
+        },
+        {
+          "name": "postgres17",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41677644091/job/126062804008"
+        }
+      ]
+    },
+    {
+      "pr": 132,
+      "head": "2d9867ca91bc3a7ebfab063175a63d1a382ae04f",
+      "draft": true,
+      "checks": [
+        {
+          "name": "verify",
+          "conclusion": "CANCELLED",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673329371/job/126047197708"
+        },
+        {
+          "name": "verify",
+          "conclusion": "CANCELLED",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673224289/job/126046825092"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673329119/job/126047200158"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673329192/job/126047196511"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673329226/job/126047196520"
+        },
+        {
+          "name": "local-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673329131/job/126047200446"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673329268/job/126047197170"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673329115/job/126047196206"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673329165/job/126047196689"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673329122/job/126047197483"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673224128/job/126046824395"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673329282/job/126047196453"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673224274/job/126046818356"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673329364/job/126047197420"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673224260/job/126046818990"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673329106/job/126047196460"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673224193/job/126046818469"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673329228/job/126047197807"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673224061/job/126046817584"
+        },
+        {
+          "name": "local-preview",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673329301/job/126047197017"
+        },
+        {
+          "name": "local-preview",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673224229/job/126046818059"
+        },
+        {
+          "name": "local-preview",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673329234/job/126047196443"
+        },
+        {
+          "name": "local-preview",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673224076/job/126046816824"
+        },
+        {
+          "name": "synthetic-crypto48",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673329082/job/126047195297"
+        },
+        {
+          "name": "synthetic-crypto48",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673224171/job/126046818665"
+        },
+        {
+          "name": "postgres17",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673329371/job/126047197057"
+        },
+        {
+          "name": "postgres17",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673224289/job/126046824605"
+        }
+      ]
+    },
+    {
+      "pr": 133,
+      "head": "8243be60ac191360b6df0d999d2e144ea19686ab",
+      "draft": true,
+      "checks": [
+        {
+          "name": "verify",
+          "conclusion": "CANCELLED",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673887023/job/126049168322"
+        },
+        {
+          "name": "verify",
+          "conclusion": "CANCELLED",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673746904/job/126048685114"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673887002/job/126049169355"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673886979/job/126049168264"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673887056/job/126049167939"
+        },
+        {
+          "name": "local-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673887015/job/126049167667"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673887099/job/126049169398"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673887000/job/126049168545"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673887132/job/126049168350"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673887110/job/126049168262"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673746641/job/126048679846"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673887055/job/126049169384"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673746784/job/126048680542"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673887039/job/126049167869"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673746921/job/126048681663"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673887073/job/126049167874"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673746455/job/126048679573"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673887068/job/126049168942"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673746811/job/126048682323"
+        },
+        {
+          "name": "local-preview",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673887049/job/126049167798"
+        },
+        {
+          "name": "local-preview",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673746865/job/126048683282"
+        },
+        {
+          "name": "local-preview",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673887204/job/126049168297"
+        },
+        {
+          "name": "local-preview",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673746863/job/126048681659"
+        },
+        {
+          "name": "synthetic-crypto48",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673886989/job/126049167234"
+        },
+        {
+          "name": "synthetic-crypto48",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673747010/job/126048680971"
+        },
+        {
+          "name": "postgres17",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673887023/job/126049167660"
+        },
+        {
+          "name": "postgres17",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41673746904/job/126048684175"
+        }
+      ]
+    },
+    {
+      "pr": 134,
+      "head": "c80dfbbbda13b82867efce0ecae4c4ab9f02c9e6",
+      "draft": true,
+      "checks": [
+        {
+          "name": "verify",
+          "conclusion": "FAILURE",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674086777/job/126049884544"
+        },
+        {
+          "name": "verify",
+          "conclusion": "CANCELLED",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674097093/job/126049919353"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674096654/job/126049917574"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674097017/job/126049919796"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674096875/job/126049918314"
+        },
+        {
+          "name": "local-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674096954/job/126049920949"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674097026/job/126049920216"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674096737/job/126049918612"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674096986/job/126049919829"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674097008/job/126049919361"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674086184/job/126049878499"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674097471/job/126049921545"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674086167/job/126049879102"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674096801/job/126049918969"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674086605/job/126049882342"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674096832/job/126049919681"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674086155/job/126049878537"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674097168/job/126049933528"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674086771/job/126049882019"
+        },
+        {
+          "name": "local-preview",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674096734/job/126049918283"
+        },
+        {
+          "name": "local-preview",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674086153/job/126049880608"
+        },
+        {
+          "name": "local-preview",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674096990/job/126049918603"
+        },
+        {
+          "name": "local-preview",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674086139/job/126049877990"
+        },
+        {
+          "name": "synthetic-crypto48",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674096635/job/126049916995"
+        },
+        {
+          "name": "synthetic-crypto48",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674086770/job/126049881106"
+        },
+        {
+          "name": "postgres17",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674097093/job/126049920155"
+        },
+        {
+          "name": "postgres17",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674086777/job/126049884279"
+        }
+      ]
+    },
+    {
+      "pr": 135,
+      "head": "bf266893a635d2c439d5412c8fe80b40819802f1",
+      "draft": true,
+      "checks": [
+        {
+          "name": "verify",
+          "conclusion": "CANCELLED",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674262530/job/126050511435"
+        },
+        {
+          "name": "verify",
+          "conclusion": "CANCELLED",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674207037/job/126050313718"
+        },
+        {
+          "name": "local-preview",
+          "conclusion": "CANCELLED",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674262600/job/126050511715"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674262563/job/126050511312"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674262554/job/126050512151"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674262559/job/126050511378"
+        },
+        {
+          "name": "local-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674262560/job/126050511465"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674262547/job/126050511548"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674262599/job/126050513303"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674262477/job/126050511171"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674262569/job/126050513057"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674207177/job/126050313000"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674262462/job/126050511118"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674206954/job/126050342483"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674262594/job/126050512424"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674207178/job/126050314877"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674262572/job/126050511975"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674206786/job/126050313376"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674262534/job/126050511877"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674206755/job/126050313188"
+        },
+        {
+          "name": "local-preview",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674207016/job/126050313766"
+        },
+        {
+          "name": "local-preview",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674262587/job/126050513160"
+        },
+        {
+          "name": "local-preview",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674206670/job/126050311969"
+        },
+        {
+          "name": "synthetic-crypto48",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674262498/job/126050510755"
+        },
+        {
+          "name": "synthetic-crypto48",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674206970/job/126050311608"
+        },
+        {
+          "name": "postgres17",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674262530/job/126050512017"
+        },
+        {
+          "name": "postgres17",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674207037/job/126050312963"
+        }
+      ]
+    },
+    {
+      "pr": 136,
+      "head": "ce7bc07bdc40579391fbddb9a1ab95d33a5a2deb",
+      "draft": true,
+      "checks": [
+        {
+          "name": "verify",
+          "conclusion": "CANCELLED",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674995588/job/126053112220"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41675058552/job/126053335867"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41675058239/job/126053335195"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41675058563/job/126053336301"
+        },
+        {
+          "name": "local-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41675058632/job/126053337474"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41675058565/job/126053335553"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41675058524/job/126053336691"
+        },
+        {
+          "name": "bounded-integration",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41675058725/job/126053340467"
+        },
+        {
+          "name": "verify",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41675058353/job/126053335040"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41675058629/job/126053337293"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674995871/job/126053113098"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41675058703/job/126053336453"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674995539/job/126053111050"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41675058238/job/126053335781"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674995676/job/126053112856"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41675058685/job/126053337663"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674995665/job/126053114074"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41675058504/job/126053336190"
+        },
+        {
+          "name": "browser",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674995623/job/126053111559"
+        },
+        {
+          "name": "local-preview",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41675058501/job/126053336093"
+        },
+        {
+          "name": "local-preview",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674995698/job/126053111890"
+        },
+        {
+          "name": "local-preview",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41675058794/job/126053337213"
+        },
+        {
+          "name": "local-preview",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674995603/job/126053111344"
+        },
+        {
+          "name": "synthetic-crypto48",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41675058434/job/126053336528"
+        },
+        {
+          "name": "synthetic-crypto48",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674995718/job/126053112734"
+        },
+        {
+          "name": "postgres17",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41675058353/job/126053335826"
+        },
+        {
+          "name": "postgres17",
+          "conclusion": "SUCCESS",
+          "status": "COMPLETED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41674995588/job/126053111679"
+        }
+      ]
+    }
+  ],
+  "passport": {
+    "cancelled_run": 41674262600,
+    "reason": "10-minute job limit reached during npm ci; browser tests did not start",
+    "same_exact_head_success_run": 41674207016,
+    "combined_main_success_runs": [41677643729, 41677657654],
+    "unique_coverage_gap": false,
+    "cancellation_retained": true
+  },
+  "remaining_historical_failures": {
+    "current_main_cycle18_pr_run": 41677657862,
+    "browser_failures": 9,
+    "browser_passes": 21,
+    "source": "tests/program/cycle18-daily-workbench.spec.ts:243",
+    "operation": "Today\u2019s priorities click reached visible/enabled/stable then performing-click timed out at 15000ms",
+    "customer19_foundation_run": 41674086777,
+    "case": "finance: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay",
+    "timeout_ms": 30000,
+    "passed": 6993,
+    "declared_skips": 321,
+    "root_cause": "UNDETERMINED; no runner-only attribution",
+    "historical_conclusions_preserved": true
+  },
+  "combined_main_foundation_success_runs": [41677644091, 41677658016],
+  "combined_main_cycle19_success_runs": [41677644020, 41677657933],
+  "earlier29_author_reviewer_ci_blobs_exact": true,
+  "release": "NOT READY / NOT AUTHORIZED"
+}

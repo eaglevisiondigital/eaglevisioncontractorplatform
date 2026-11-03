@@ -1,4 +1,4 @@
-import { prototypeFields } from '../program/prototype-source';
+import { freezePrototype, prototypeFields } from '../program/prototype-source';
 import type { PublishedReport } from '../../domain/property/inspections';
 import { reportUuid } from '../../domain/property/report-page';
 import type { OperatingSources } from './operating-center-runtime';
@@ -164,10 +164,11 @@ export function inspectSavedSourceExercise(view: SavedSourceExerciseView) {
 }
 /** Explicit disposable LOCAL fixture exercise only. Original commands run only
  * after confirmation and current CAS; UNKNOWN never repairs/replays/replaces. */
-export async function executeSavedSourceExercise(
+async function executeSourceExercise(
   view: SavedSourceExerciseView,
   kind: SavedSourceExercise,
   confirmed: boolean,
+  edit?: SavedDraftEdit,
 ) {
   if (confirmed !== true || !savedSourceExercises.includes(kind))
     throw Error('Explicit disposable source exercise confirmation required');
@@ -231,7 +232,14 @@ export async function executeSavedSourceExercise(
       const content = {
         ...visit!.content,
         summary:
+          edit?.summary ??
           'Synthetic saved draft observation revision; physical completion remains unverified.',
+        checklist: edit
+          ? visit!.content.checklist.map((row, index) => ({
+              ...row,
+              completed: edit.checklist[index].completed,
+            }))
+          : visit!.content.checklist,
       };
       invoked = true;
       ack(s.property.saveVisit(org, visit!, content));
@@ -513,4 +521,73 @@ export async function executeSavedSourceExercise(
     if (invoked) a.unknown = true;
     throw error;
   }
+}
+
+export interface SavedDraftEdit {
+  summary: string;
+  checklist: { id: string; label: string; completed: boolean }[];
+}
+export function readSavedDraftEdit(view: SavedSourceExerciseView) {
+  const b = bindings.get(view);
+  if (!b) throw Error('Original saved source required');
+  check(view, b, true);
+  const v = b.sources.property
+    .read(view.identity.organization_id)
+    .visits.find((v) => v.id === view.evidence.visit_id);
+  if (!v || v.status !== 'draft') throw Error('Exact current draft required');
+  const a = attempt(b);
+  return freezePrototype({
+    visit_id: v.id,
+    revision: v.revision,
+    summary: v.content.summary,
+    checklist: v.content.checklist.map((row) => ({ ...row })),
+    can_edit: !a.unknown && !a.pending && !a.done.has('visit-draft'),
+  });
+}
+export async function executeSavedDraftEdit(
+  view: SavedSourceExerciseView,
+  input: SavedDraftEdit,
+  confirmed: boolean,
+) {
+  const current = readSavedDraftEdit(view),
+    f = prototypeFields(input, ['summary', 'checklist']);
+  if (
+    Object.keys(f).length !== 2 ||
+    typeof f.summary !== 'string' ||
+    !f.summary.trim() ||
+    f.summary !== f.summary.trim() ||
+    f.summary.length > 2000 ||
+    !Array.isArray(f.checklist) ||
+    f.checklist.length !== current.checklist.length
+  )
+    throw Error('Exact bounded draft edit required');
+  const ds = Object.getOwnPropertyDescriptors(f.checklist);
+  if (Reflect.ownKeys(f.checklist).length !== f.checklist.length + 1)
+    throw Error('Dense saved checklist required');
+  const checklist = current.checklist.map((row, index) => {
+    const d = ds[String(index)];
+    if (!d || !Object.hasOwn(d, 'value'))
+      throw Error('Own saved checklist required');
+    const c = prototypeFields(d.value, ['id', 'label', 'completed']);
+    if (
+      Object.keys(c).length !== 3 ||
+      c.id !== row.id ||
+      c.label !== row.label ||
+      typeof c.completed !== 'boolean'
+    )
+      throw Error('Exact original checklist identity required');
+    return { id: row.id, label: row.label, completed: c.completed };
+  });
+  return executeSourceExercise(view, 'visit-draft', confirmed, {
+    summary: f.summary,
+    checklist,
+  });
+}
+/** Existing fixed synthetic exercise API remains unchanged. */
+export async function executeSavedSourceExercise(
+  view: SavedSourceExerciseView,
+  kind: SavedSourceExercise,
+  confirmed: boolean,
+) {
+  return executeSourceExercise(view, kind, confirmed);
 }

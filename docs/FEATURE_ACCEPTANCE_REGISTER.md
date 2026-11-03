@@ -1,5 +1,41 @@
 # Propel Contractor Suite — feature acceptance register
 
+## Cycle 20 · saved evidence and canonical review continuity
+
+Five isolated author packages are published in draft PRs #138–#142, composed on
+Main draft #137 (`codex/program-cycle-twenty`) from exact Cycle 19
+`13977f8c870fb57a94ec7f8c4d73768b3083819f`. One default-false **Use saved evidence
+files** option extends the existing Operating Center and retained job selection.
+Field edits the original draft summary/checklist under existing one-use custody.
+Finance explicitly previews and confirms organization-wide ended-period labor
+preparation through the original engine; canonical costs and job revisions update,
+without ledger, invoice, settlement or payment execution. Customer archives only
+published-safe exact report/version history; Growth retains actual renewal evidence;
+Intelligence inspects current recorded priorities before original authorized navigation.
+
+Full-content JSON files can be downloaded, reopened and reconciled read-only against
+current exact sources. Immutable file bytes are historical evidence, not authenticated
+old mutable facts, canonical restoration, durable command custody or customer approval.
+Missing source IDs and disappeared derived priority cards remain UNKNOWN. The test-only
+private file adapter verifies full bytes/fsync/process-loss evidence, with local owner
+and disk trusted. Browser download alone is not a durable-save acknowledgment.
+
+Exact source admission, the independent review, final focused application/browser
+results and CI limitations are recorded in [Cycle 20 validation](program/CYCLE20_VALIDATION.md)
+and [the source manifest](program/CYCLE20_SOURCE_MANIFEST.json). Prior CI is reconciled
+in CYCLE20_PRIOR_CI_CLOSEOUT: Main Cycle 19 Foundation/dedicated checks passed; historical
+Cycle 18 timeouts remain failures. Passport #135's install-time cancellation has exact
+successful companion coverage; no successful check was rerun or assertion weakened.
+
+The existing November 4 kit and quickcard are prepared without repetition. Actual
+Air readiness, pairing, transfer/ACKs, supervision and independent recovery remain
+UNVERIFIED / NOT RUN. All 25 capability states, original 18 IDs, eight Phase One gates,
+three approved design scopes, 128 protected files, five design locks/13 bindings,
+13 history/customer14/4B/frozen P1/four artifacts/Netlify/executor/2A–2F/billing/Auth/
+MFA/NMI/recovery/financial/provider/communication/hosted/production gates remain intact.
+Operating Center/advanced visual approval stays PENDING. No merge, deployment, hosted
+mutation, dispatch, payment or communication. Release 1.0 NOT READY / NOT AUTHORIZED.
+
 ## Cycle19 · saved source revision continuity
 
 Five isolated draft packages132–136 are composed on coordination draft131 against
