@@ -101,6 +101,9 @@ for (const company of sampleCompanies)
       }) + '\n',
     );
     await page
+      .getByText('Disposable development controls', { exact: true })
+      .click();
+    await page
       .getByRole('combobox', { name: 'Contractor', exact: true })
       .selectOption(sampleCompanies.find((c) => c.id !== company.id)!.id);
     await expect(
