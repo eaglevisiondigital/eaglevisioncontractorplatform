@@ -1,0 +1,36 @@
+{
+  "schema": "propel-cycle21-preparer-ci-followup-v1",
+  "failed_head": "2fecb89213647b567746c0413a9ba3e41ce748ae",
+  "run": 41724793162,
+  "workflow": "Cycle 18 source-bound daily workflow",
+  "artifact_report_sha256": "514124de7ef92fd7a5d4b73ab15284b0dd5390cc0af7328a55f10f5f93608acc",
+  "passed": 445,
+  "failed": 1,
+  "case": {
+    "file": "tests/program/cycle17-feature-evidence.test.ts",
+    "name": "preserves default-false opt-in and the single original repository host",
+    "duration_ms": 2.753580999999997
+  },
+  "diagnosis": "Same immediate obsolete preparer literal assertion; no timeout or demonstrated runtime defect.",
+  "additional_local_reproduction": {
+    "suites": [10, 12, 15, 16, 17],
+    "passed": 66,
+    "failed": 5,
+    "raw_sha256": "1dbb5938dd23939fe87ffd26f4e57d0255e475de85000da26845683860579234"
+  },
+  "correction": "Each of five demonstrated failing assertions now requires exactly one actual awaited prepareSources call AND the original prepareOperatingSources default. All other assertions retained.",
+  "validation": {
+    "passed": 71,
+    "failed": 0,
+    "unique": 71,
+    "raw_sha256": "d76c1011357a19ec23d76312d01cced09a06cb93b9719675a481967e3eaa35e1"
+  },
+  "runtime_changes": 0,
+  "workflow_changes": 0,
+  "protected_changes": 0,
+  "timeouts_changed": 0,
+  "assertions_removed": 0,
+  "manual_reruns": 0,
+  "historical_failures": "Original failures/timeouts/cancellations remain unchanged.",
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

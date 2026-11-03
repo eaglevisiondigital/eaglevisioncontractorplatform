@@ -1,4 +1,5 @@
 import { prepareCorrectionPreviewSources } from '../../lib/workflows/correction-preview-sources';
+import { cycle22RequirementGroups } from './OperatingCenterCycleTwentyTwo';
 import { cycle21CorrectionGroups } from './OperatingCenterCycleTwentyOne';
 import { useState } from 'react';
 import { OperatingCenterCycleThirteen } from './OperatingCenterCycleThirteen';
@@ -31,6 +32,7 @@ const guided = taskReviewGroups({
 });
 
 export function OperatingCenterCycleFifteen() {
+  const [requirements, setRequirements] = useState(false);
   const [corrections, setCorrections] = useState(false);
   const [savedEvidence, setSavedEvidence] = useState(false);
   const [savedRevisions, setSavedRevisions] = useState(false);
@@ -46,6 +48,14 @@ export function OperatingCenterCycleFifteen() {
       <section aria-label="Review path options">
         <fieldset className="task-review-options">
           <legend>Review options</legend>
+          <label>
+            <input
+              type="checkbox"
+              checked={requirements}
+              onChange={(event) => setRequirements(event.target.checked)}
+            />
+            Use current source requirements
+          </label>
           <label>
             <input
               type="checkbox"
@@ -116,18 +126,22 @@ export function OperatingCenterCycleFifteen() {
       </section>
       <OperatingCenterCycleThirteen
         prepareSources={
-          corrections ? prepareCorrectionPreviewSources : undefined
+          requirements || corrections
+            ? prepareCorrectionPreviewSources
+            : undefined
         }
         additionalReviewGroups={
-          corrections
-            ? cycle21CorrectionGroups
-            : savedEvidence
-              ? cycle20EvidenceGroups
-              : savedRevisions
-                ? cycle19SavedGroups
-                : dailyWorkbench
-                  ? cycle18WorkflowGroups
-                  : retainedGroups
+          requirements
+            ? cycle22RequirementGroups
+            : corrections
+              ? cycle21CorrectionGroups
+              : savedEvidence
+                ? cycle20EvidenceGroups
+                : savedRevisions
+                  ? cycle19SavedGroups
+                  : dailyWorkbench
+                    ? cycle18WorkflowGroups
+                    : retainedGroups
         }
       />
     </>

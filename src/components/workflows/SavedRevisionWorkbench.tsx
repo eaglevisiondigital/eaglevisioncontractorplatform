@@ -8,6 +8,7 @@ import {
   savedSourceExercises,
   type SavedSourceExercise,
 } from '../../lib/workflows/saved-revision-exercise';
+import { resolveSavedWorkbenchSelection } from '../../lib/workflows/saved-workbench-selection';
 import { SharedRecordSearch } from './SharedRecordSearch';
 import { FieldSavedRevisions } from './FieldSavedRevisions';
 import { CostSavedRevisions } from './CostSavedRevisions';
@@ -131,7 +132,8 @@ function Workbench({ sources, selectedJobId, reviewPanels }: Props) {
         enabled
         selectedJobId={job || undefined}
         onSelectJob={(id) => {
-          setJob(id);
+          const selected = resolveSavedWorkbenchSelection(sources, id);
+          setJob(selected.job_id);
           setMessage('Exact job retained across all five review panels.');
         }}
       />
@@ -159,6 +161,23 @@ function Workbench({ sources, selectedJobId, reviewPanels }: Props) {
               sources={sources}
               enabled
               selectedJobId={job || undefined}
+              onSelectJob={(id, section) => {
+                const selected = resolveSavedWorkbenchSelection(
+                  sources,
+                  id,
+                  section,
+                );
+                setJob(selected.job_id);
+                if (selected.tab) {
+                  setTab(selected.tab);
+                  setVisited((previous) => [
+                    ...new Set([...previous, selected.tab!]),
+                  ]);
+                }
+                setMessage(
+                  'Exact authorized property job retained across the original review panels.',
+                );
+              }}
               onSourcesSaved={() => {
                 setSearchRevision((n) => n + 1);
                 setMessage(

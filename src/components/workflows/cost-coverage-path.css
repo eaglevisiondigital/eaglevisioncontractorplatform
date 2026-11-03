@@ -1,0 +1,67 @@
+.cost-coverage-path {
+  color: #27352f;
+  overflow-wrap: anywhere;
+}
+.cost-coverage-path h2,
+.cost-coverage-path h3,
+.cost-coverage-path h4 {
+  color: #203e32;
+}
+.cost-coverage-path button,
+.cost-coverage-path input:not([type='checkbox']),
+.cost-coverage-path select {
+  min-height: 44px;
+}
+.cost-coverage-path button:focus-visible {
+  outline: 3px solid var(--journey-accent, #b58a49);
+  outline-offset: 3px;
+}
+.cost-coverage-sources {
+  margin-block: 1.5rem;
+}
+.cost-coverage-status,
+.cost-coverage-detail,
+.cost-coverage-rows > li {
+  border: 1px solid #dcded4;
+  border-radius: 14px;
+  background: #fffdf8;
+  padding: 1rem;
+}
+.cost-coverage-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-block: 1rem;
+}
+.cost-coverage-filters label {
+  display: grid;
+  gap: 0.4rem;
+  flex: 1;
+  min-width: min(100%, 14rem);
+}
+.cost-coverage-rows {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+.cost-coverage-path [role='alert'] {
+  border-left: 4px solid #a45129;
+  background: #fff1e3;
+  padding: 0.75rem;
+}
+@media (max-width: 640px) {
+  .cost-coverage-path button {
+    max-width: 100%;
+    white-space: normal;
+  }
+  .cost-coverage-filters {
+    display: grid;
+  }
+  .cost-coverage-filters input,
+  .cost-coverage-filters select {
+    width: 100%;
+    min-width: 0;
+  }
+}
