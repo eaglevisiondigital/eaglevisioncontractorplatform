@@ -500,12 +500,12 @@ function Guide({ sources, selectedJobId, onSelectJob }: DailyFieldGuideProps) {
                 selectedJobId={current.source.job_id}
                 onSelectJob={
                   onSelectJob
-                    ? (jobId) => {
+                    ? (jobId, section?: OperatingJobSection) => {
                         if (
                           live.current &&
                           currentCallback.current === onSelectJob
                         )
-                          onSelectJob(jobId);
+                          onSelectJob(jobId, section);
                       }
                     : undefined
                 }
