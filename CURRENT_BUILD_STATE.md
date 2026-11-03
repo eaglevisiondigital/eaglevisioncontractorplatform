@@ -1,8 +1,43 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
-## Cycle22 · parallel current-source implementation in progress
+## Cycle 22 · current-source workflows delivered locally
 
-Five bounded author packages extend existing native correction, cost-coverage, published-service, maintenance and owner-priority readers. Main retains the original host/custody/navigation, default-off composition, integration and acceptance register. No new business store, evidence archive or restart adapter. Exact base2fecb892 is the C21 test-only preparer-evidence correction over27cb44bb; original failed artifacts and all safety gates remain intact. Module/browser/independent verification and final CI are not yet claimed. See docs/program/CYCLE22_ASSIGNMENTS.md. Physical Air readiness/recovery UNVERIFIED/NOT RUN; Release1.0 NOT READY / NOT AUTHORIZED.
+Draft PR149 composes Field152, Finance151, Customer150, Growth153 and Intelligence154
+on the original repositories, correction custody and workbench. Frozen runtime
+ff673f41078002a6e741a450bba899d01d50ec77 received independent review
+b8e0cade3ae7de9773ce11cc0ab2cbae5274cd69:50/50 actual cases passed with no
+demonstrated source blocker. Combined verification passed300 unique application
+cases,27 DEV plus3 production-OFF browser cases,9 actual keyboard journeys and81
+source-bound screenshots. Strict/generated types, lint, format, build and protected
+integrity pass; one original lint/chunk warning remains.
+
+Original author/source commits stay frozen. Five test-only child forward commits
+carry the proven shared preparer assertion correction; all25 feature blobs remain
+unchanged and71 representative cases pass. Current exact-head automatic CI is
+separate/pending, with historical failed/cancelled evidence retained. See the
+CYCLE22_VALIDATION, SOURCE_MANIFEST, CI_FORWARD_PATCH and CI_STATUS records. No new
+business store, evidence layer, restart adapter or operational authority. Historical
+files cannot restore canonical state.
+
+All approved designs and release protections remain. Danny's actual Air readiness,
+pairing, transfer/ACKs, independent recovery and cleanup are UNVERIFIED / NOT RUN;
+use the unchanged November4 procedure and retained kit without baseline repetition.
+Release1.0 remains NOT READY / NOT AUTHORIZED.
+
+CI follow-up: exact artifacts separately demonstrated missing historical Git
+objects in shallow Foundation checkout, an eight-checkbox legacy test ambiguity
+and expensive rerenders of loaded hidden C18 panes. Independently reviewed shared
+commit1eff2018 adds one bounded anonymous public test-history precondition and
+retained-pane presentation invalidation. Foundation workflow and original authority
+checks remain exact.149 history/source cases,59 combined CI delta cases,9 original
+C13 and9 original C18 responsive cases, plus3 actual expiry cases PASS. Original
+failures/cancellations remain retained; new exact-head automatic CI stays separate.
+
+## Retained CI continuity notes
+
+Cycle21 retained host-assertion follow-up: exact2fec Cycle18 run41724793162 showed immediate obsolete preparer literal in C17 (445pass/1fail); local5suites reproduced66pass/5fail, same71nowPASS requiring actualsinglecall+originaldefault. No runtime/protected/workflow/timeout changes or manualCIreruns; historical failures unchanged.
+
+Cycle22 five packages published in drafts150–154; combined runtime ff673f41078002a6e741a450bba899d01d50ec77 frozen for independent review. Maindraft149 reuses existing host/workbench/native custody and source-only same-property callback. Combined300application/30browser+9keyboardPASS;50independentcasesPASS;81source-boundPNGs. Exact-headautomaticCI remains separate/pending. C21 CI-only followup36d805b corrects five additional demonstrated obsolete literals (71PASS), no runtime/protected/workflow changes. Nov4 physical readiness/rehearsal remain UNVERIFIED/NOT RUN.
 
 ## Cycle21 CI · preserve the guarded original preparer seam
 

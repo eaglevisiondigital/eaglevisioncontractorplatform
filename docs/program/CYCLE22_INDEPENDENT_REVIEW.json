@@ -1,0 +1,286 @@
+{
+  "schema": "propel-cycle22-independent-review-v1",
+  "reviewed_candidate": "ff673f41078002a6e741a450bba899d01d50ec77",
+  "reviewed_parent": "2fecb89213647b567746c0413a9ba3e41ce748ae",
+  "reviewer_agent": "/root/cycle22_independent_review",
+  "review_branch": "codex/cycle22-independent-review",
+  "scope": "Independent frozen-source and actual local synthetic integration review. No operational, visual, hosted or release approval. Later Main browser, checker, register and documentation deltas are separate evidence.",
+  "status": "CLEAR_LOCAL_SYNTHETIC_ONLY",
+  "feature_heads": [
+    {
+      "module": "task-custody-review",
+      "draft_pr": 152,
+      "head": "51bbe5ada4853f2306ea38b3e1b04a92057d7ea6",
+      "owned_files": 5
+    },
+    {
+      "module": "cost-coverage-path",
+      "draft_pr": 151,
+      "head": "e5b6c9a0fc40b59acf68de7aa068e55d0d2739f4",
+      "owned_files": 5
+    },
+    {
+      "module": "property-service-continuity",
+      "draft_pr": 150,
+      "head": "86dd3a884ac007349ac216f1cdb729ad73ffe351",
+      "owned_files": 5
+    },
+    {
+      "module": "maintenance-requirements-review",
+      "draft_pr": 153,
+      "head": "24253d8ece3392d71dafde9732f42da0538bc1d6",
+      "owned_files": 5
+    },
+    {
+      "module": "current-owner-priorities",
+      "draft_pr": 154,
+      "head": "6def582dee2d67e4577722719dabc5655005e265",
+      "owned_files": 5
+    }
+  ],
+  "reviewed_code": [
+    {
+      "path": "src/lib/workflows/task-custody-review.ts",
+      "git_blob": "80052bab82892d5c420914b8aa8390a59adef13d",
+      "sha256": "25817e74272a661b9f65bd20e732d6adc4feffe78cf74e1beb103ad8ce5d690f"
+    },
+    {
+      "path": "src/components/workflows/TaskCustodyReview.tsx",
+      "git_blob": "92cb037f6789cd14a936c88ea8a96b2bd48671f4",
+      "sha256": "03c2e6fd9e6584d89adfad8b9ab442e6433b878d120e8556579253a2c35f47b0"
+    },
+    {
+      "path": "src/components/workflows/task-custody-review.css",
+      "git_blob": "c1f27f99f8163f595b00db5fe7a7b903d82f0ce0",
+      "sha256": "fc9cdec6690c4ae16dadc7dd52dad4a2df485d184a10fcd79dd40bc6726ef1a3"
+    },
+    {
+      "path": "src/lib/workflows/cost-coverage-path.ts",
+      "git_blob": "63313b93173d111ffbda0a05b5f20a83a6ae161a",
+      "sha256": "f1b21bff936eb790d96da1c9c110c51e925ebb5eb7f0965d94901a16280e7bdc"
+    },
+    {
+      "path": "src/components/workflows/CostCoveragePath.tsx",
+      "git_blob": "600241e8ac9860695e527a2d1658db627493db13",
+      "sha256": "c4d5f2165872b7ee344964b9c8824cc812e88320dcda644b7d1c730312419547"
+    },
+    {
+      "path": "src/components/workflows/cost-coverage-path.css",
+      "git_blob": "6660e58c3f89507c565832cf043fc997c558b45c",
+      "sha256": "6a3d9f9951587d4414073f169d96f00ae72b63bf9a0053ab7bc100843e0d1e01"
+    },
+    {
+      "path": "src/lib/workflows/property-service-continuity.ts",
+      "git_blob": "b875d7347a3c451dc6c4493a67b52cd38b84d877",
+      "sha256": "516b17894fc390a746f1ac0455c479e79f23ce8792dc19ad9e4afe53be810e24"
+    },
+    {
+      "path": "src/components/workflows/PropertyServiceContinuity.tsx",
+      "git_blob": "5ae445f464489c3d38173266ba1e2473be21fc6d",
+      "sha256": "7ab6cdabd4184eaeb2a631ed0fb7f149a5759768515750fe7214e6e9a7c39ef7"
+    },
+    {
+      "path": "src/components/workflows/property-service-continuity.css",
+      "git_blob": "cebe52097921fa87aec9578331bcd6e90e62e4a4",
+      "sha256": "31a345a4f5d10b56f08b8737b00691e72bf67f4317ea777efcfcb79be7021588"
+    },
+    {
+      "path": "src/lib/workflows/maintenance-requirements-review.ts",
+      "git_blob": "e0d0a10832d647a05e037d1fd898b9277958b16f",
+      "sha256": "2023e10bebf98a2e9b4eee54eda424ce715a7fa188b21eb4496e3d5d92f0cb16"
+    },
+    {
+      "path": "src/components/workflows/MaintenanceRequirementsReview.tsx",
+      "git_blob": "4e4bc1b3435c6918544ecd1b34888f24dc766e7d",
+      "sha256": "24cc494f5b29690f1c044b30b258868ebe9f1000b1b9c6fe07d726b282d34a2c"
+    },
+    {
+      "path": "src/components/workflows/maintenance-requirements-review.css",
+      "git_blob": "5edaffb2091d17f2d2a972fa0dcff3e4ffc57259",
+      "sha256": "8370dcf1150baa297e5b176c3fb6d67a6960c5b845727420b46481f163dfaa37"
+    },
+    {
+      "path": "src/lib/workflows/current-owner-priorities.ts",
+      "git_blob": "e82876f89992d1e2c6f721981af712ab04de4733",
+      "sha256": "14e47eac3b203bd24fc8088f88a8b649fe81ea466ce1713e2a70b2b06cf36190"
+    },
+    {
+      "path": "src/components/workflows/CurrentOwnerPriorities.tsx",
+      "git_blob": "e530a46971cf112e25ee4699ba874fdb783e20c0",
+      "sha256": "9f431495b61382cd2e9feb066560667eeb9119a892d12b3e4b7f5e6b0ece89b9"
+    },
+    {
+      "path": "src/components/workflows/current-owner-priorities.css",
+      "git_blob": "9775bb6186edba5c79003601c67e5e3f3424986d",
+      "sha256": "be23bd11d2acefb931c94e480be70581867499c9fe92edadfbd2104d2f169f17"
+    },
+    {
+      "path": "src/lib/workflows/saved-workbench-selection.ts",
+      "git_blob": "8a0ba24403527cc176854ef28ef8d63f7f346f97",
+      "sha256": "dcac4960214ef1c308a0dbf7c78674b2ced40439990bbe2f707c77f6f3e0bdf8"
+    },
+    {
+      "path": "src/components/workflows/SavedRevisionWorkbench.tsx",
+      "git_blob": "93420af57e47f0040ccbf63b371c782b0e0f5373",
+      "sha256": "8f7e69a34fb48d74583fa42a7484be3e051e1e5d9613c9dc8c7b2c063bb92e14"
+    },
+    {
+      "path": "src/components/workflows/OperatingCenterCycleTwentyTwo.tsx",
+      "git_blob": "14b6736cb43e2360aff91962ee3fd724a6b08f60",
+      "sha256": "68b06250a4b1e5d9cae0b7f6635378cecbc096238ee8de53caf8958c2ef36701"
+    },
+    {
+      "path": "src/components/workflows/OperatingCenterCycleFifteen.tsx",
+      "git_blob": "d1f35d1f4d9e31eedbda156ac23a980731e0912a",
+      "sha256": "aa48e22ab2bdaf2ad6759526359c6ef2beb110c8a865b0f6a319286cae16e865"
+    }
+  ],
+  "original_engine_paths_unchanged": [
+    "src/lib/workflows/saved-revision-exercise.ts",
+    "src/lib/workflows/task-correction-review.ts",
+    "src/lib/workflows/cost-correction-review.ts",
+    "src/lib/workflows/maintenance-plan-correction.ts",
+    "src/lib/workflows/published-service-navigation.ts",
+    "src/lib/workflows/recorded-owner-actions.ts",
+    "src/lib/phase3.ts",
+    "src/lib/property.ts",
+    "src/lib/operations.ts"
+  ],
+  "findings": [
+    {
+      "id": "ONE_CANONICAL_OWNER",
+      "status": "NO_LOCAL_BLOCKER_OBSERVED",
+      "evidence": "All five adapters consume original OperatingSources and retain original C21 forms and native command custody. The nine original engine/custody paths listed here are byte-unchanged from the reviewed parent. New WeakMap/WeakSet structures bind read handles only; no competing business store, ledger, archive, restart adapter or canonical restoration path is introduced."
+    },
+    {
+      "id": "TWELVE_ACTUAL_JOB_JOURNEYS",
+      "status": "PASS",
+      "evidence": "Four native jobs for each of the three contractor brands traverse recorded task correction, original material approval, canonical cost/invoice requirements, native plan revision, immutable published service documentation and original ranked owner review. Each journey uses two explicitly sequential bounded stages over the same actual native fixture. Original time rows, published reports and release records remain unchanged."
+    },
+    {
+      "id": "TASK_CUSTODY_AND_UNKNOWN",
+      "status": "PASS",
+      "evidence": "Original exact source/result IDs and native corrects_id/worker/job relationships bind the correction comparison. Competing staff calls yield one append. Lost native review acknowledgment retains HELD_UNKNOWN even when its exact result is observed. Job navigation and fresh wrappers neither clear custody nor replay recordTime."
+    },
+    {
+      "id": "FINANCE_COVERAGE_AND_REQUIREMENTS",
+      "status": "UNKNOWN_RETAINED",
+      "evidence": "Each actual pending material approval adds exactly 2500 minor units to the original canonical materials commitment. jobFinancials remains the calculation authority. Original review-event/submission identity and invoice requirements are retained. Independent cost coverage stays incomplete, projected customer-safe aggregate costs remain null and invoice readiness remains NO_GO. Unposted labor is not treated as zero cost, payroll, ledger posting, invoice issuance or payment authority."
+    },
+    {
+      "id": "PROPERTY_SOURCE_NAVIGATION",
+      "status": "PASS",
+      "evidence": "The actual customer/property FK-filtered view admits only authorized same-property jobs. Its callback reaches Main resolveSavedWorkbenchSelection with the exact job and finite completion destination. Other properties, foreign native tenants, replaced source handles, invalid section keys and revoked memberships deny without fallback. The original host retains navigation and command ownership."
+    },
+    {
+      "id": "PUBLISHED_VERSION_AND_CUSTOMER_PRIVACY",
+      "status": "PASS",
+      "evidence": "Original issued/published references remain immutable. After a native v2 publication, retained v1 remains selected and is labeled older only within loaded siblings of the exact visit/plan. Original safe projections exclude staff notes, costs, payroll, worker/actor identity and supplier fields. History completeness and request/job association remain UNKNOWN; physical completion, acceptance and warranty remain UNVERIFIED, repair NOT_INFERRED and delivery NOT_SENT."
+    },
+    {
+      "id": "MAINTENANCE_CONSENT_AND_REVOCATION",
+      "status": "REVIEW_ONLY",
+      "evidence": "Actual plan CAS revisions feed current renewal requirements. Recorded consent withdrawal invalidates old evidence and fresh records report RECORDED_DENIED. Purpose consent, suppression, enrollment and sender authority remain UNVERIFIED with CAPTURED_NOT_ATOMIC sources. Recipient/provider request are null and send authority remains false. No recurrence, renewal or eligibility inference grants sending."
+    },
+    {
+      "id": "CURRENT_OWNER_BRIEFING",
+      "status": "REVIEW_ONLY",
+      "evidence": "The original ranker/card keys/source identities/order remain unchanged. Financial facts quote actual saved job revisions and canonical coverage. Original navigation UNKNOWN rejects fresh reads and prevents a replacement callback. Recommendations are recorded review suggestions, never dispatch, completion, financial or communication authority."
+    },
+    {
+      "id": "DEFAULT_OFF_AND_DESIGN",
+      "status": "PASS_WITH_SEPARATE_BROWSER_REVIEW",
+      "evidence": "The new option defaults false and reuses the same existing host, preparer and five workbench slots. All five production-OFF renders avoid source getters and source controls; Field/Growth intentionally render empty. New CSS remains scoped to new components and existing contractor tokens. Browser/accessibility/mobile evidence belongs to Main; three approved visual scopes are unchanged, while Operating Center/advanced approval remains PENDING."
+    }
+  ],
+  "verification": {
+    "independent_application": {
+      "tests": 50,
+      "passed": 50,
+      "failed": 0,
+      "pending": 0,
+      "unique_full_names": 50,
+      "max_ms": 7748.663832999999,
+      "suite_ms": 194138.47290039062,
+      "raw_report": "/private/tmp/cycle22-independent-50-final.json",
+      "raw_sha256": "7575fb02a6b1952597f882de56b3fb79d1150d55b7e893c301cc307da3f9a366",
+      "test_sha256": "49fa5cf5d861c39518d8ffb26bf00d46f0c935a4fec6768dd15dcc323a35602b",
+      "evidence": "24 bounded stage cases across 12 actual-job journeys, nine combined tenant/revocation/navigation cases, six concurrency/UNKNOWN/consent/version cases, ten default-admission/production-OFF cases and one exact-source ownership review. Native engines provide business state; spies inject adversarial acknowledgment loss or current-membership revocation only."
+    },
+    "test_development": {
+      "first_run": {
+        "tests": 38,
+        "passed": 33,
+        "failed": 5,
+        "pending": 0,
+        "raw_report": "/private/tmp/cycle22-independent-first.json",
+        "raw_sha256": "d119a6dddb7b4a65e8075946514cf7da5d7ea25b235baac06a728fa989eb1df6",
+        "failures": [
+          {
+            "name": "independent brand 0 actual job 1: canonical corrections feed the same five review paths",
+            "duration_ms": 30164.868541999997,
+            "category": "TIMEOUT_CAUSE_UNDETERMINED"
+          },
+          {
+            "name": "independent finance navigation: an ambiguous callback remains under original UNKNOWN across fresh coverage wrappers",
+            "duration_ms": 2356.5347909999837,
+            "category": "REVIEW_TEST_EXPECTATION_ERROR"
+          },
+          {
+            "name": "independent owner navigation: current recorded suggestions never recreate an ambiguous original action",
+            "duration_ms": 8144.5129169999855,
+            "category": "REVIEW_TEST_EXPECTATION_ERROR"
+          },
+          {
+            "name": "independent production-OFF case 0: field renders no source controls or getters",
+            "duration_ms": 19.27874999999767,
+            "category": "REVIEW_TEST_EXPECTATION_ERROR"
+          },
+          {
+            "name": "independent production-OFF case 3: growth renders no source controls or getters",
+            "duration_ms": 1.2084580000082497,
+            "category": "REVIEW_TEST_EXPECTATION_ERROR"
+          }
+        ]
+      },
+      "corrections": "Four review-test expectations were corrected to the stricter original UNKNOWN guard rejection and exact empty production renders. One 30164.9ms combined scenario timeout is retained with cause UNDETERMINED; all assertions were partitioned into two explicitly sequential stages for each of the twelve native journeys over the same fixture. No assertion, product/runtime source or timeout budget was removed or changed.",
+      "split_collection": {
+        "tests": 0,
+        "failed_suites": 1,
+        "raw_report": "/private/tmp/cycle22-independent-split-collection.json",
+        "raw_sha256": "01110aac1bb42345d19fb606680743edd51d81d22c8f7b16d286fdec4f0b10e9",
+        "correction": "Installed Vitest 5.0.5 does not expose describe.sequential; its actual SuiteOptions types require { concurrent: false }. Only this new review test was corrected."
+      }
+    },
+    "types": "PASS: final strict tsc --noEmit",
+    "scoped_lint": "PASS: independent test file",
+    "format": "PASS: both independent owned files",
+    "exact_author_sources": "PASS: all 25 new author files match exact published feature-head bytes, Git blobs and manifest SHA-256",
+    "retained_cycle21_integrity": "PASS: all 473 previous author files; 128 protected files; 5 design locks / 13 bindings",
+    "original_native_owners": "PASS: nine listed original engine/custody paths byte-unchanged from 2fecb892",
+    "browser_accessibility_responsive": "MAIN_OWNED_SEPARATE: no browser or visual approval inferred by this review",
+    "ci": "MAIN_OWNED_EXACT_HEAD_RECONCILIATION: no workflow rerun or historical failure relabeling by reviewer"
+  },
+  "explicit_limits": [
+    "Synthetic current memberships and local repositories are not genuine hosted Auth/MFA or operational least-privilege acceptance.",
+    "Read-only weak references and original same-tab custody do not survive process loss and are not canonical restart restoration.",
+    "Source consistency is checked at captured read boundaries; CAPTURED_NOT_ATOMIC is retained for consent and availability is not dispatch proof.",
+    "Loaded report sibling versions and available property jobs do not establish complete history, customer acceptance, warranty or verified physical completion.",
+    "Main later browser/checker/register/documentation deltas require separate exact-source admission; this frozen review grants no visual approval.",
+    "Historical CI failures/cancellations and the initial independent timeout remain evidence. No Netlify, recovery, native database or unrelated baseline tests were rerun.",
+    "Danny’s November4 device readiness, authenticated pairing, independent recovery, no-replay demonstration and cleanup remain UNVERIFIED / NOT RUN."
+  ],
+  "protected_boundaries": {
+    "migrations": "ALL13_AND_CUSTOMER14_4B_UNCHANGED",
+    "frozen_p1_four_artifacts": "UNCHANGED",
+    "approved_design_artwork": "UNCHANGED",
+    "connected_routes": "CLOSED",
+    "hosted_writes": false,
+    "credentials_retrieved": false,
+    "canonical_restart_restore": false,
+    "operational_recovery": "UNVERIFIED",
+    "payment_send_dispatch": false,
+    "merge_deployment": false,
+    "release": "NOT READY / NOT AUTHORIZED"
+  }
+}

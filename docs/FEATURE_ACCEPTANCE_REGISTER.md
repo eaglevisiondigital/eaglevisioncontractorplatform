@@ -1,5 +1,63 @@
 # Propel Contractor Suite — feature acceptance register
 
+## Cycle 22 · current native source requirements
+
+Coordination draft [#149](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/149)
+composes five separately published packages on corrected Cycle21 parent
+`2fecb89213647b567746c0413a9ba3e41ce748ae`: Field #152, Finance #151,
+Customer #150, Growth #153 and Intelligence #154. Exact branches, agent IDs,
+published blobs and test counts are pinned in
+[the source manifest](program/CYCLE22_SOURCE_MANIFEST.json). Original author/source
+commits stay frozen; current test-only CI heads are separately verified in
+[the CI forwarding proof](program/CYCLE22_CI_FORWARD_PATCH.json). These are local
+default-OFF reviews; no PR is merged or operational capability promoted.
+
+One **Use current source requirements** option reuses the original admitted host,
+repositories, five workbench tabs, canonical correction controls and original
+one-use custody. Task review compares exact immutable original and recorded
+correction entries. Finance traces actual time/material review events into native
+cost coverage and invoice requirements without posting costs or issuing invoices.
+Customer review follows authorized same-property jobs and exact published sibling
+versions; documentation never proves physical completion or customer acceptance.
+Maintenance review compares recorded plan requirements, actual occurrences and
+consent/suppression evidence while consent-at-send remains UNKNOWN. The owner
+briefing explains current recorded facts behind unchanged ranked suggestions.
+
+A checked callback inside the existing workbench retains an authorized property
+job across the same tabs; no URL, search selection or breadcrumb grants authority.
+No second navigation owner, business store, evidence archive or restart adapter is
+created. Historical files cannot restore canonical state; refresh still loses the
+same-tab fixture and custody. Existing advanced review controls are reused without
+new add-on authority.
+
+[Cycle21 CI correction](program/CYCLE21_PREPARER_CI_CORRECTION.md) and
+[its follow-up](program/CYCLE21_PREPARER_CI_FOLLOWUP.md) preserve exact failed
+artifacts. Nine demonstrated obsolete preparer assertions now require the actual
+single awaited call **and** its original default; no assertion, timeout, workflow
+or protected runtime was weakened. Original C21 integration passed at 27cb. Broad
+Foundation time-limit cancellations and historical Cycle18 failures remain open
+evidence gaps. No successful CI was manually rerun.
+
+The independent combined review passed 50 cases on frozen runtime ff673f4. Actual
+combined 300 application and 30 browser cases plus 9 keyboard journeys passed, with 81 source-bound screenshots.
+See [Cycle22 validation](program/CYCLE22_VALIDATION.md) and the exact
+[CI snapshot](program/CYCLE22_CI_STATUS.json); current CI is separate from local PASS. Passing local checks never grant
+visual, hosted or release acceptance. The three existing approved design scopes
+remain locked; Operating Center and advanced-panel approval stays PENDING.
+
+Danny's November4 Air procedure remains the unchanged C18 checklist, C19 quickcard
+and C20 preparation record with retained 97,334-byte credential-free kit and 25 offline
+checks. Exact OS/FileVault, independent power/network, pairing, durable ACKs, human
+supervision, primary loss, recovery/no-replay and cleanup remain UNVERIFIED/NOT RUN.
+P1's original frozen approval remains valid only within its original prerequisites;
+no duplicate authorization is requested.
+
+All 25 capability states, original 18 IDs, eight closed Phase One gates, approved artwork,
+128 protected files/five locks/13 bindings,13 historical/customer14/4B migrations, frozen
+P1/four artifacts, Netlify/executor/2A–2F/billing/Auth/MFA/NMI/recovery/financial and
+production restrictions remain unchanged. No merge, deployment, hosted mutation,
+payment, dispatch, message or release activation. Release 1.0 NOT READY / NOT AUTHORIZED.
+
 ## Cycle 21 · native corrections and published-source navigation
 
 Coordination draft [#143](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/143)
@@ -935,3 +993,9 @@ receptionist, procurement, integration, trade and same-tenant sharing prototypes
 There is no model, speech, vendor, partner, dispatch, message or financial service
 activation. Atomic consent/time custody, genuineAuth/recovery/NMI and all Phase One
 operational acceptance remain separately blocked. No new source store/schema/ledger.
+
+Final shared CI/render corrections are in
+[CYCLE22_CI_RECONCILIATION_FORWARD.json](program/CYCLE22_CI_RECONCILIATION_FORWARD.json):
+C21 currenthead9223fa14 and final featureCIheads are separate from immutable
+author/source pins. Every draft remains unmerged; automatic current-head outcomes
+are reported separately, never inferred from local tests or historical success.

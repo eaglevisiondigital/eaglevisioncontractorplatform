@@ -1,5 +1,9 @@
 # Engineering decisions
 
+Retained source-inspection assertions must verify the actual single trusted preparer seam and its original default. Five further demonstrated literal mismatches corrected forward; no assertion removed, runtime bypass or historical failure relabel. No operational authority.
+
+Cycle22 source requirements are allowlisted read-only views over actual native source records and original correction controls. Same-property job navigation uses the existing workbench callback with current source/member validation. No new business/evidence store or restart restoration; historical files cannot restore state. Frozen candidate receives independent review and separate browser/CI evidence; protected design/recovery/financial/release gates remain closed.
+
 ## Cycle21 CI · verify the single preparer and its original default
 
 Keep the existing source-factory injection seam and native one-attempt host. Source evidence must inspect the actual awaited preparer and its default original factory, rather than a pre-refactor call name. Preserve finite navigation/no-extra-repository assertions and all original failed artifacts. This test-only correction grants no operational authority.
@@ -1715,3 +1719,12 @@ an existing pending materials commitment without ambiguous adjustment links, inv
 the original event/cost validator without creating a payment, credit or expense.
 Reconciliation reads exact known result identities; lost acknowledgments stay UNKNOWN
 and unattributed changes are not owned receipts. No second evidence/store/restore layer.
+
+Cycle22 CI reconciliation admits one test-only anonymous public Git-history fetch
+only after exact GitHub/repository/shallow and safe config-layout checks. It never
+restores business state, loads credentials or substitutes working files for exact
+Git blobs. Retained DailyWorkbench panes are memoized with explicit visibility
+invalidation so original time-sensitive labels refresh on return; all original
+authority, expiry, callbacks and custody remain byte-identical after presentation
+normalization. Actual profile, pre-active RED, final responsive/expiry PASS and
+13-case independent delta review are retained; no assertion or budget was removed.

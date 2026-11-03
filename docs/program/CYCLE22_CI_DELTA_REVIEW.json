@@ -1,0 +1,205 @@
+{
+  "schema": "propel-cycle22-ci-delta-review-v1",
+  "reviewer_agent": "/root/cycle22_independent_review",
+  "frozen_feature_candidate": "ff673f41078002a6e741a450bba899d01d50ec77",
+  "original_independent_review_commit": "b8e0cade3ae7de9773ce11cc0ab2cbae5274cd69",
+  "original_independent_review_status": "UNCHANGED_CLEAR_LOCAL_SYNTHETIC_ONLY_50_CASES",
+  "status": "CLEAR_LOCAL_CI_DELTA_ONLY",
+  "scope": "Independent review of nine exact local correction files only. This records source/CI-precondition and retained-render correctness, not successful future GitHub execution, owner visual approval, genuine authentication, operational acceptance or release permission. Main commits exact reviewed bytes after this review.",
+  "reviewed_files": [
+    {
+      "path": "scripts/test-git-history.mjs",
+      "sha256": "2c6d9ec071cdb1982606f4553c5273cf6ead8a9ca2b2483bf83b7415e54bd487",
+      "git_blob": "31e70b961a244b40898cebece7335ba41cacc563"
+    },
+    {
+      "path": "tests/setup/git-history.ts",
+      "sha256": "7bc80e906a8203700860c81c4cd4d2a1f0a57abfd902ebed9f1ef7fb5a3c6957",
+      "git_blob": "9d9fa7f54a17b32784b4e75ba6c1d92e72e8b6b2"
+    },
+    {
+      "path": "vite.config.ts",
+      "sha256": "0fdc8ac3b8d922c2229a25d67d0b42ab3c895489bfc7ee514aae0c78853bf48d",
+      "git_blob": "83db48f79c31fac4ecdd7a51143f311b3d72f381"
+    },
+    {
+      "path": "tests/program/test-git-history.test.ts",
+      "sha256": "92b9ca92254e83bf0d30b16e946022378ddac39cd28981092265eb8f66737dcb",
+      "git_blob": "e11209b88fc458e0fca2d808a011f4b3a2f44399"
+    },
+    {
+      "path": "src/components/workflows/DailyWorkbench.tsx",
+      "sha256": "9d311f8ff2dd5a766cbceee967dd51957c21bbee7aac11821b6cb37f8fc29044",
+      "git_blob": "19c513518ed974fe85e26d6b16c57c424f1870d5"
+    },
+    {
+      "path": "tests/program/cycle22-daily-pane-render-guards.test.ts",
+      "sha256": "11833f48e859bb52be5b8364719061b31802260ab1ef5ce9992f32ede78ae585",
+      "git_blob": "a520bf0b21bf03158923b9e1afbc7b35aa3b0eb2"
+    },
+    {
+      "path": "tests/program/cycle13-navigation.spec.ts",
+      "sha256": "1e58d434f57d46385d9d57ba8be9a9dc228373ff221054df1492c5f56996120d",
+      "git_blob": "420987854d84db6c2ef11c5551f744290345c3a3"
+    },
+    {
+      "path": "tests/program/cycle22-daily-clock-retention.spec.ts",
+      "sha256": "50b1ec22a52f9b2ffabf25d8e04f87b98b470a298243ad2a2f1fbbdb1379950c",
+      "git_blob": "ea217141eca8ea2ea96d9f19cc5b7c0fe153b90b"
+    },
+    {
+      "path": "tests/program/playwright.cycle22-clock.config.ts",
+      "sha256": "2648dea4cac29ed479447477ceea20bc1070e0cf81758958222f9e8d2509e37d",
+      "git_blob": "7a83b6f126cd0ec3cbe340b0cceb9aec326535a0"
+    }
+  ],
+  "findings": [
+    {
+      "id": "ANONYMOUS_HISTORY_CONTEXT",
+      "status": "CLEAR_LOCAL_BOUNDARY",
+      "evidence": "Only exact CI=true/GITHUB_ACTIONS=true/public repository context can enter. Only a validated ordinary nonsymlink checkout/config layout is admitted; full-history contexts perform no fetch. One fixed public HTTPS repository/all-heads refspec writes only an isolated local remote-ref namespace. It does not query origin values, credential helpers, environment secrets or private provider configuration. Redirects, cookies, hooks, authentication headers, helpers, auto-maintenance and retries are disabled by the fixed command/environment. No production/app entrypoint exists."
+    },
+    {
+      "id": "NETRC_FALLBACK",
+      "status": "DEMONSTRATED_GAP_CLOSED",
+      "evidence": "Git enables optional netrc use and libcurl can fall back to the account home when HOME is omitted. The helper now creates a fresh empty canonical0700 child-only home/XDG directory and NETRC=devNull, with no ambient HOME lookup or process/shell environment mutation. It validates emptiness before and after the attempted fetch and removes only its own temporary directory in finally on success/failure.",
+      "primary_sources": [
+        "https://github.com/git/git/blob/master/http.c",
+        "https://github.com/curl/curl/blob/master/lib/netrc.c"
+      ]
+    },
+    {
+      "id": "NATIVE_INCLUDE_STARTUP",
+      "status": "DEMONSTRATED_GAP_CLOSED",
+      "evidence": "An independent actual local non-secret fixture showed ordinary rev-parse and --local config commands follow a malformed include during Git startup. An explicit config-file/no-includes/name-only audit from the empty isolated non-repository child cwd with a fixed discovery ceiling safely returns only key names. The final helper uses that audit first, rejects include/helper/rewrite/partial-clone/unsupported keys, then permits ordinary checkout metadata probes. The fixture preserves source/config bytes and performs zero network requests."
+    },
+    {
+      "id": "ONE_ATTEMPT_AND_MONOTONIC_BOUND",
+      "status": "DEMONSTRATED_GAP_CLOSED",
+      "evidence": "The first implementation admitted a fake successful last-HEAD acknowledgment at monotonic25001ms. Current code checks remaining time before every command, elapsed time after each acknowledgment and again after cleanup. Late successful fetch or HEAD acknowledgments, lost/failed acknowledgment, changed HEAD, continued shallowness or context withdrawal fail closed. There is at most one fetch invocation and no continuation after uncertainty or source-guard bypass."
+    },
+    {
+      "id": "EXACT_BLOB_AUTHORITY",
+      "status": "PRESERVED",
+      "evidence": "Offline native shallow and detached PR-merge fixtures recover the actual old Git blob while preserving current HEAD, dirty/untracked worktree bytes, origin config and FETCH_HEAD. The helper does not substitute files, regenerate evidence or weaken exact source validators. Public anonymous provider execution remains a future exact-head CI observation."
+    },
+    {
+      "id": "C13_EXACT_CONSENT_SELECTOR",
+      "status": "CLEAR_TEST_ONLY_CORRECTION",
+      "evidence": "The exact failed artifact demonstrates getByRole(checkbox) matched eight controls. The sole test delta selects the unchanged original explicit disposable-simulation consent label. Every other byte/assertion and original timing budget remain. Nine actual affected cases pass across three brands/three layouts; first infrastructure approval did not execute a test and is not counted as a passing run.",
+      "proof": {
+        "path": "artifacts/cycle22/retained-cycle13-navigation.json",
+        "sha256": "08af3b50d07cf4280b625a1731bfcc1e6f80c7345a26083c8ef6e72658ffd75a"
+      }
+    },
+    {
+      "id": "C18_HIDDEN_RENDER_COST",
+      "status": "CLEAR_BOUNDED_PRODUCT_CORRECTION",
+      "evidence": "Independent CPU-profile aggregation confirms76.491697s sampled,61.351511s canonical snapshot ancestry and49.673704s synchronous React root work. Hidden Cost/Service inner Review renders account for approximately20.754s/13.238s of that sample. This demonstrates repeated expensive hidden-pane renders; it does not establish an infinite callback loop. Five stable React.memo wrappers retain six original panes and original local state; no custom comparator or authority cache is introduced."
+    },
+    {
+      "id": "PARENT_AUTHORITY_AND_CHANGED_PROPS",
+      "status": "PRESERVED",
+      "evidence": "DailyWorkbench itself stays un-memoized. Every parent render retains full pinned canonical/member capture and current-context checks; current=false removes all panes. Identical source-prop references cannot mask native source or membership changes. Changed source/job/callback/focus props and pane-local state still render. The exact source-normalization guard restores the original full body/hash after removing only the finite presentation additions; callbacks, keys, deadlines, source checks and original UNKNOWN custody remain unchanged."
+    },
+    {
+      "id": "CLOCK_ONLY_RETURN_FRESHNESS",
+      "status": "DEMONSTRATED_GAP_CLOSED",
+      "evidence": "A regression on the simple memo version failed only because the expired owner task reappeared without its original UNKNOWN alert after hiding and advancing past its original five-minute expiry. Final wrappers accept an active presentation prop and strip it before forwarding original props. Six activation predicates match original visibility, including the shared finance/invoice pane. Three real desktop-brand cases now preserve the same owner DOM marker/exact context/expiry, show original UNKNOWN on return, and remove expired task detail/action controls; there is no remount, renewed inspection, callback or custody reset.",
+      "red_proof": {
+        "path": "/private/tmp/cycle22-c18-clock-pre-active-red.json",
+        "sha256": "e5dd31acb54d1a0d0374930f59e9dae0062df1960b376dd54be55359869b8ffb"
+      },
+      "final_proof": {
+        "path": "artifacts/cycle22/c18-clock-results.json",
+        "sha256": "a7ea7162e189315aafeb677355838f18d1d325ce5cceef8b90fc4aa0bbf6910a"
+      }
+    }
+  ],
+  "verification": {
+    "original_independent_application": {
+      "tests": 50,
+      "status": "RETAINED_EXACT_NOT_RERUN",
+      "raw_sha256": "7575fb02a6b1952597f882de56b3fb79d1150d55b7e893c301cc307da3f9a366"
+    },
+    "author_history_offline": {
+      "tests": 45,
+      "passed": 45,
+      "failed": 0,
+      "pending": 0,
+      "unique": 45,
+      "proof": {
+        "path": "/private/tmp/cycle22-git-history-final.json",
+        "sha256": "6f482189adab2cfe4bfe534ef42e4141c23fe3cd001134e8a2f37bbcb8161bdb"
+      },
+      "limit": "Injected ports and controlled file transport only; zero live public Git fetches."
+    },
+    "independent_delta_application": {
+      "tests": 13,
+      "passed": 13,
+      "failed": 0,
+      "pending": 0,
+      "unique_full_names": 13,
+      "max_ms": 179.71533299999993,
+      "proof": {
+        "path": "/private/tmp/cycle22-independent-ci-delta-tests.json",
+        "sha256": "0435a2a537c55eabe18b32d0b1fd14a96213dad6901191d8b07459b0f54aa247"
+      }
+    },
+    "c13_actual_browser": {
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "brands": 3,
+      "layouts": 3
+    },
+    "final_clock_actual_browser": {
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "brands": 3,
+      "layout": "desktop"
+    },
+    "c18_affected_nine_after_active_invalidation": {
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "brands": 3,
+      "layouts": 3,
+      "proof": {
+        "path": "/private/tmp/cycle22-c18-active-final-nine.json",
+        "sha256": "632632e41c16b4df7350af44a75e32f4e44d885959e9728c063f17c4da29eb2a"
+      }
+    },
+    "frozen_foundation_sha256": "df337433bfde1768ccbe396326793559f21113aa7c24e37fbd5955c4c29f87be",
+    "current_head_github_ci": "PENDING_AUTOMATIC_PUBLICATION_NOT_INFERRED_FROM_LOCAL_PASS",
+    "scoped_lint": "PASS: independent delta test",
+    "format": "PASS: both independent delta files",
+    "strict_types": "PASS: Main observed final global strict tsc exit0 after all correction/review files; log /private/tmp/cycle22-final-all-types.log",
+    "final_build": "PASS: Main strict TypeScript and Vite build after the nine corrections",
+    "combined_correction_application": {
+      "tests": 59,
+      "passed": 59,
+      "failed": 0,
+      "pending": 0,
+      "unique_full_names": 59,
+      "composition": "45 offline history/helper +1 exact original-body render guard +13 independent CI delta cases",
+      "proof": {
+        "path": "artifacts/cycle22/ci-delta-results.json",
+        "sha256": "e1fd27def132c2f9f09c6959db1c2dfb3cb4b11356e471aa7e017a3d6a79031c"
+      }
+    }
+  },
+  "explicit_limits": [
+    "These corrections do not erase any historical failed/cancelled workflow or prove cause for an unobserved failure.",
+    "The strict history helper deliberately supports only the ordinary canonical GitHub checkout layout; unknown worktree or symlink layouts fail closed.",
+    "The disposable command port and synthetic source membership fixtures are not operational authentication, least privilege or canonical restart restoration.",
+    "The unchanged three approved design scopes/artwork remain locked. Operating Center and advanced visual approval remain PENDING.",
+    "No provider credential, real credential file, private environment value, hosted write, migration, payment, dispatch, message, merge or deployment was executed.",
+    "Danny’s November4 physical readiness, pairing, independent recovery/no-replay and cleanup remain UNVERIFIED / NOT RUN. Release1.0 NOT READY / NOT AUTHORIZED."
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "reviewed_correction_commit": "1eff2018d43da47d06c0fcd8370562d404c52f95"
+}

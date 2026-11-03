@@ -49,3 +49,24 @@ recovery/hosted/production restrictions. No merge, deploy, hosted mutation, paym
 dispatch or communication. Use the retained Nov4checklist/quickcard/kit; new Air
 readiness and physical recovery remain UNVERIFIED / NOT RUN. No restart adapter.
 Release1.0 NOT READY / NOT AUTHORIZED.
+
+## Consolidated ownership and review
+
+Main integration: `/root`, branch `codex/program-cycle-twenty-two-integration`, draft PR149.
+Independent review: `/root/cycle22_independent_review`, branch
+`codex/cycle22-independent-review`, exact two-file review commit
+`b8e0cade3ae7de9773ce11cc0ab2cbae5274cd69` over frozen runtime
+`ff673f41078002a6e741a450bba899d01d50ec77`. The review is local/synthetic only.
+
+The table above records five bounded assignments delivered by three distinct author
+agents. Field/Growth subsequently owned the five Main checker/test/workflow files;
+Customer owned the five Main browser/config/capture files. Main owns source admission,
+shared navigation, registers and publication. No author agent approved its own combined
+runtime. Exact source SHAs and draft dependencies remain in the source manifest.
+
+CI delta closeout: Field/Growth authored the test-only history precondition and
+controlled native fixtures; Customer profiled and corrected Main-owned retained-pane
+rendering with explicit visible expiry invalidation; Main corrected the exact
+legacy consent selector. Independent review added13 separate cases and retained
+the original b8e0/50 evidence. Shared nine-file commit1eff2018 is forwarded only
+through new commits on existing drafts; original author/source pins never move.

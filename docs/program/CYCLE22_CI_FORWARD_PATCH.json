@@ -1,0 +1,800 @@
+{
+  "schema": "propel-cycle22-ci-forward-v1",
+  "shared_patch_source_commit": "36d805b5d8ca16f09697395c8a305b3e7d4318ef",
+  "original_parent": "2fecb89213647b567746c0413a9ba3e41ce748ae",
+  "ci_paths": [
+    "tests/program/cycle10-feature-evidence.test.ts",
+    "tests/program/cycle12-feature-evidence.test.ts",
+    "tests/program/cycle15-feature-evidence.test.ts",
+    "tests/program/cycle16-feature-evidence.test.ts",
+    "tests/program/cycle17-feature-evidence.test.ts"
+  ],
+  "input_equivalence": {
+    "scope": "All published tracked source files except five replaced CI tests and four explicit non-input C21 follow-up documents; CI tests verified after copy",
+    "excluded_non_inputs": [
+      "CURRENT_BUILD_STATE.md",
+      "DECISIONS.md",
+      "docs/program/CYCLE21_PREPARER_CI_FOLLOWUP.json",
+      "docs/program/CYCLE21_PREPARER_CI_FOLLOWUP.md"
+    ],
+    "published_input_files": 1606,
+    "equal_across_all_five": true,
+    "published_input_files_including_ci_tests": 1611,
+    "proof_path": "/private/tmp/cycle22-ci-input-file-equality.json",
+    "proof_sha256": "07654a86b9e435511e24233bcd685a7010c7066638229841f982cb282e3a4b54",
+    "all_five_equal_to_published_source": true
+  },
+  "packages": [
+    {
+      "module": "task-custody-review",
+      "worktree": "/private/tmp/propel-cycle22-field-ready",
+      "branch": "codex/cycle22-task-custody-workflow",
+      "pr": 152,
+      "original_feature_head": "51bbe5ada4853f2306ea38b3e1b04a92057d7ea6",
+      "original_parent": "2fecb89213647b567746c0413a9ba3e41ce748ae",
+      "current_ci_head": "75dc48b4c95d078b196437bbecfc150a7351b8b3",
+      "ci_parent": "51bbe5ada4853f2306ea38b3e1b04a92057d7ea6",
+      "remote_preflight": {
+        "head": "51bbe5ada4853f2306ea38b3e1b04a92057d7ea6",
+        "branch": "codex/cycle22-task-custody-workflow",
+        "base": "codex/program-cycle-twenty-two-integration",
+        "draft": true,
+        "state": "open",
+        "verified_via": "GitHub get_pr_info"
+      },
+      "owned_author_files": [
+        {
+          "path": "src/lib/workflows/task-custody-review.ts",
+          "sha256": "25817e74272a661b9f65bd20e732d6adc4feffe78cf74e1beb103ad8ce5d690f",
+          "blob": "80052bab82892d5c420914b8aa8390a59adef13d"
+        },
+        {
+          "path": "src/components/workflows/TaskCustodyReview.tsx",
+          "sha256": "03c2e6fd9e6584d89adfad8b9ab442e6433b878d120e8556579253a2c35f47b0",
+          "blob": "92cb037f6789cd14a936c88ea8a96b2bd48671f4"
+        },
+        {
+          "path": "src/components/workflows/task-custody-review.css",
+          "sha256": "fc9cdec6690c4ae16dadc7dd52dad4a2df485d184a10fcd79dd40bc6726ef1a3",
+          "blob": "c1f27f99f8163f595b00db5fe7a7b903d82f0ce0"
+        },
+        {
+          "path": "tests/cycle22-task-custody-review.test.ts",
+          "sha256": "39999afea5c2c8be7ad41c2868204c4d4b7c9b9262d8183215cbc57f585f51b5",
+          "blob": "8ac6fae91fff156e52ce46668149dcf51687f8c4"
+        },
+        {
+          "path": "docs/program/CYCLE22_TASK_CUSTODY_REVIEW.md",
+          "sha256": "e78b735421f4a1265571e5ef723d5c9a313054c3399bd68b861a0ab7c5597b0c",
+          "blob": "817ad2a4270abdac3e1eb12689b7f8d9e3b53dc3"
+        }
+      ],
+      "all_published_input_bytes_match": true,
+      "ci_test_files": [
+        {
+          "path": "tests/program/cycle10-feature-evidence.test.ts",
+          "blob": "cd4bcd55c31c2acb442aa238aa02d9e84067936b",
+          "sha256": "7d1f869b4dd4e3d6e2892ef4351db6d91b54d4f674ae48a39bc8cc115432c1d1"
+        },
+        {
+          "path": "tests/program/cycle12-feature-evidence.test.ts",
+          "blob": "f9b445cd5bb9bb917a8ab51b0b3748cf9167f6ba",
+          "sha256": "8e9d590f933632f9dd154464944c83dbe1ef45838a0d39dfc761d017383f8cc3"
+        },
+        {
+          "path": "tests/program/cycle15-feature-evidence.test.ts",
+          "blob": "a90e1df1bc47d611cb7a4eefc4eea66eab6e9584",
+          "sha256": "bc4acb79d737a935798a46e1de3dfa938a67793fcc684806d2b88b1770595c34"
+        },
+        {
+          "path": "tests/program/cycle16-feature-evidence.test.ts",
+          "blob": "9ae0863af6b45e6be30bff125e09b32367580025",
+          "sha256": "0a35d08bb14a336aea9772b4fd62977b58a0cb3312a3818392e81d35a56d5dc4"
+        },
+        {
+          "path": "tests/program/cycle17-feature-evidence.test.ts",
+          "blob": "430e04817ede2d3435fce355ce687811ad3f9c5f",
+          "sha256": "016609f7f4b964cd4f793f82d51a7b0122734f7c8b7211024d6d963f7a028dbf"
+        }
+      ],
+      "forward_diff_only_five_ci_paths": true,
+      "remote_verification": {
+        "pr": 152,
+        "branch": "codex/cycle22-task-custody-workflow",
+        "head": "75dc48b4c95d078b196437bbecfc150a7351b8b3",
+        "base": "codex/program-cycle-twenty-two-integration",
+        "draft": true,
+        "state": "open",
+        "title": "Cycle 22 Field: exact task correction custody review",
+        "verified_via": "GitHub get_pr_info"
+      },
+      "worktree_clean": true,
+      "upstream_matches_ci_head": true,
+      "original_source_manifest_pin_preserved": true,
+      "new_automatic_ci": "NOT_YET_VERIFIED"
+    },
+    {
+      "module": "cost-coverage-path",
+      "worktree": "/private/tmp/propel-cycle22-finance-ready",
+      "branch": "codex/cycle22-cost-coverage-workflow",
+      "pr": 151,
+      "original_feature_head": "e5b6c9a0fc40b59acf68de7aa068e55d0d2739f4",
+      "original_parent": "2fecb89213647b567746c0413a9ba3e41ce748ae",
+      "current_ci_head": "d0b63ade55214779cd0cf37bb947fcbf9e8197e2",
+      "ci_parent": "e5b6c9a0fc40b59acf68de7aa068e55d0d2739f4",
+      "remote_preflight": {
+        "head": "e5b6c9a0fc40b59acf68de7aa068e55d0d2739f4",
+        "branch": "codex/cycle22-cost-coverage-workflow",
+        "base": "codex/program-cycle-twenty-two-integration",
+        "draft": true,
+        "state": "open",
+        "verified_via": "GitHub get_pr_info"
+      },
+      "owned_author_files": [
+        {
+          "path": "src/lib/workflows/cost-coverage-path.ts",
+          "sha256": "f1b21bff936eb790d96da1c9c110c51e925ebb5eb7f0965d94901a16280e7bdc",
+          "blob": "63313b93173d111ffbda0a05b5f20a83a6ae161a"
+        },
+        {
+          "path": "src/components/workflows/CostCoveragePath.tsx",
+          "sha256": "c4d5f2165872b7ee344964b9c8824cc812e88320dcda644b7d1c730312419547",
+          "blob": "600241e8ac9860695e527a2d1658db627493db13"
+        },
+        {
+          "path": "src/components/workflows/cost-coverage-path.css",
+          "sha256": "6a3d9f9951587d4414073f169d96f00ae72b63bf9a0053ab7bc100843e0d1e01",
+          "blob": "6660e58c3f89507c565832cf043fc997c558b45c"
+        },
+        {
+          "path": "tests/cycle22-cost-coverage-path.test.ts",
+          "sha256": "001884769090b1fbb8afaf713aff9c1763b490390e116648a4294ea52b369a65",
+          "blob": "5bd9823b4147940918f80db84080885f8746629b"
+        },
+        {
+          "path": "docs/program/CYCLE22_COST_COVERAGE_PATH.md",
+          "sha256": "42381c85e5f5803e232b172d369743f1d22562939404ef5db6cbd45e7f3806b8",
+          "blob": "a049bc4f57a3dd976c2c9639e7118b5f4ce02ac7"
+        }
+      ],
+      "all_published_input_bytes_match": true,
+      "ci_test_files": [
+        {
+          "path": "tests/program/cycle10-feature-evidence.test.ts",
+          "blob": "cd4bcd55c31c2acb442aa238aa02d9e84067936b",
+          "sha256": "7d1f869b4dd4e3d6e2892ef4351db6d91b54d4f674ae48a39bc8cc115432c1d1"
+        },
+        {
+          "path": "tests/program/cycle12-feature-evidence.test.ts",
+          "blob": "f9b445cd5bb9bb917a8ab51b0b3748cf9167f6ba",
+          "sha256": "8e9d590f933632f9dd154464944c83dbe1ef45838a0d39dfc761d017383f8cc3"
+        },
+        {
+          "path": "tests/program/cycle15-feature-evidence.test.ts",
+          "blob": "a90e1df1bc47d611cb7a4eefc4eea66eab6e9584",
+          "sha256": "bc4acb79d737a935798a46e1de3dfa938a67793fcc684806d2b88b1770595c34"
+        },
+        {
+          "path": "tests/program/cycle16-feature-evidence.test.ts",
+          "blob": "9ae0863af6b45e6be30bff125e09b32367580025",
+          "sha256": "0a35d08bb14a336aea9772b4fd62977b58a0cb3312a3818392e81d35a56d5dc4"
+        },
+        {
+          "path": "tests/program/cycle17-feature-evidence.test.ts",
+          "blob": "430e04817ede2d3435fce355ce687811ad3f9c5f",
+          "sha256": "016609f7f4b964cd4f793f82d51a7b0122734f7c8b7211024d6d963f7a028dbf"
+        }
+      ],
+      "forward_diff_only_five_ci_paths": true,
+      "remote_verification": {
+        "pr": 151,
+        "branch": "codex/cycle22-cost-coverage-workflow",
+        "head": "d0b63ade55214779cd0cf37bb947fcbf9e8197e2",
+        "base": "codex/program-cycle-twenty-two-integration",
+        "draft": true,
+        "state": "open",
+        "title": "Cycle 22: canonical cost coverage and invoice review path",
+        "verified_via": "GitHub get_pr_info"
+      },
+      "worktree_clean": true,
+      "upstream_matches_ci_head": true,
+      "original_source_manifest_pin_preserved": true,
+      "new_automatic_ci": "NOT_YET_VERIFIED"
+    },
+    {
+      "module": "property-service-continuity",
+      "worktree": "/private/tmp/propel-cycle22-customer-ready",
+      "branch": "codex/cycle22-property-service-workflow",
+      "pr": 150,
+      "original_feature_head": "86dd3a884ac007349ac216f1cdb729ad73ffe351",
+      "original_parent": "2fecb89213647b567746c0413a9ba3e41ce748ae",
+      "current_ci_head": "2539e141c5533669cd822651f4f5084a1dace7ac",
+      "ci_parent": "86dd3a884ac007349ac216f1cdb729ad73ffe351",
+      "remote_preflight": {
+        "head": "86dd3a884ac007349ac216f1cdb729ad73ffe351",
+        "branch": "codex/cycle22-property-service-workflow",
+        "base": "codex/program-cycle-twenty-two-integration",
+        "draft": true,
+        "state": "open",
+        "verified_via": "GitHub get_pr_info"
+      },
+      "owned_author_files": [
+        {
+          "path": "src/lib/workflows/property-service-continuity.ts",
+          "sha256": "516b17894fc390a746f1ac0455c479e79f23ce8792dc19ad9e4afe53be810e24",
+          "blob": "b875d7347a3c451dc6c4493a67b52cd38b84d877"
+        },
+        {
+          "path": "src/components/workflows/PropertyServiceContinuity.tsx",
+          "sha256": "7ab6cdabd4184eaeb2a631ed0fb7f149a5759768515750fe7214e6e9a7c39ef7",
+          "blob": "5ae445f464489c3d38173266ba1e2473be21fc6d"
+        },
+        {
+          "path": "src/components/workflows/property-service-continuity.css",
+          "sha256": "31a345a4f5d10b56f08b8737b00691e72bf67f4317ea777efcfcb79be7021588",
+          "blob": "cebe52097921fa87aec9578331bcd6e90e62e4a4"
+        },
+        {
+          "path": "tests/cycle22-property-service-continuity.test.ts",
+          "sha256": "e700dc2a6b466f25ac319fb1f806f50b80fda7afe4894ddf4605ce15a85ee47c",
+          "blob": "aef52764ef6d0b0954d4f11397fa8467baafd50f"
+        },
+        {
+          "path": "docs/program/CYCLE22_PROPERTY_SERVICE_CONTINUITY.md",
+          "sha256": "c077effe2766764e4b3cc4d98093d4f4ce781fe9dfafa23205c736f745880d8b",
+          "blob": "1c69e0f0d54c60f2aed231227ece202feea28814"
+        }
+      ],
+      "all_published_input_bytes_match": true,
+      "ci_test_files": [
+        {
+          "path": "tests/program/cycle10-feature-evidence.test.ts",
+          "blob": "cd4bcd55c31c2acb442aa238aa02d9e84067936b",
+          "sha256": "7d1f869b4dd4e3d6e2892ef4351db6d91b54d4f674ae48a39bc8cc115432c1d1"
+        },
+        {
+          "path": "tests/program/cycle12-feature-evidence.test.ts",
+          "blob": "f9b445cd5bb9bb917a8ab51b0b3748cf9167f6ba",
+          "sha256": "8e9d590f933632f9dd154464944c83dbe1ef45838a0d39dfc761d017383f8cc3"
+        },
+        {
+          "path": "tests/program/cycle15-feature-evidence.test.ts",
+          "blob": "a90e1df1bc47d611cb7a4eefc4eea66eab6e9584",
+          "sha256": "bc4acb79d737a935798a46e1de3dfa938a67793fcc684806d2b88b1770595c34"
+        },
+        {
+          "path": "tests/program/cycle16-feature-evidence.test.ts",
+          "blob": "9ae0863af6b45e6be30bff125e09b32367580025",
+          "sha256": "0a35d08bb14a336aea9772b4fd62977b58a0cb3312a3818392e81d35a56d5dc4"
+        },
+        {
+          "path": "tests/program/cycle17-feature-evidence.test.ts",
+          "blob": "430e04817ede2d3435fce355ce687811ad3f9c5f",
+          "sha256": "016609f7f4b964cd4f793f82d51a7b0122734f7c8b7211024d6d963f7a028dbf"
+        }
+      ],
+      "forward_diff_only_five_ci_paths": true,
+      "remote_verification": {
+        "pr": 150,
+        "branch": "codex/cycle22-property-service-workflow",
+        "head": "2539e141c5533669cd822651f4f5084a1dace7ac",
+        "base": "codex/program-cycle-twenty-two-integration",
+        "draft": true,
+        "state": "open",
+        "title": "Cycle 22: exact property and published service continuity",
+        "verified_via": "GitHub get_pr_info"
+      },
+      "worktree_clean": true,
+      "upstream_matches_ci_head": true,
+      "original_source_manifest_pin_preserved": true,
+      "new_automatic_ci": "NOT_YET_VERIFIED"
+    },
+    {
+      "module": "maintenance-requirements-review",
+      "worktree": "/private/tmp/propel-cycle22-growth-ready",
+      "branch": "codex/cycle22-maintenance-requirements-workflow",
+      "pr": 153,
+      "original_feature_head": "24253d8ece3392d71dafde9732f42da0538bc1d6",
+      "original_parent": "2fecb89213647b567746c0413a9ba3e41ce748ae",
+      "current_ci_head": "e95269a1089239fbb7b373b350cc96e74d08d0b4",
+      "ci_parent": "24253d8ece3392d71dafde9732f42da0538bc1d6",
+      "remote_preflight": {
+        "head": "24253d8ece3392d71dafde9732f42da0538bc1d6",
+        "branch": "codex/cycle22-maintenance-requirements-workflow",
+        "base": "codex/program-cycle-twenty-two-integration",
+        "draft": true,
+        "state": "open",
+        "verified_via": "GitHub get_pr_info"
+      },
+      "owned_author_files": [
+        {
+          "path": "src/lib/workflows/maintenance-requirements-review.ts",
+          "sha256": "2023e10bebf98a2e9b4eee54eda424ce715a7fa188b21eb4496e3d5d92f0cb16",
+          "blob": "e0d0a10832d647a05e037d1fd898b9277958b16f"
+        },
+        {
+          "path": "src/components/workflows/MaintenanceRequirementsReview.tsx",
+          "sha256": "24cc494f5b29690f1c044b30b258868ebe9f1000b1b9c6fe07d726b282d34a2c",
+          "blob": "4e4bc1b3435c6918544ecd1b34888f24dc766e7d"
+        },
+        {
+          "path": "src/components/workflows/maintenance-requirements-review.css",
+          "sha256": "8370dcf1150baa297e5b176c3fb6d67a6960c5b845727420b46481f163dfaa37",
+          "blob": "5edaffb2091d17f2d2a972fa0dcff3e4ffc57259"
+        },
+        {
+          "path": "tests/cycle22-maintenance-requirements-review.test.ts",
+          "sha256": "cd5f924be1cc54e1b83c8596b1f305feaad2f9cd840cf834b1f474605ffd2bd6",
+          "blob": "a1d09d1658af89ee010d5070fff5bc73c39c5f5f"
+        },
+        {
+          "path": "docs/program/CYCLE22_MAINTENANCE_REQUIREMENTS_REVIEW.md",
+          "sha256": "27e9121c0552f1f9e5419fbbe8c3d032041aceb243dbd2ffaefcada009b2febf",
+          "blob": "f3c445f898c9176e20050a76d5f3bbcca06c869b"
+        }
+      ],
+      "all_published_input_bytes_match": true,
+      "ci_test_files": [
+        {
+          "path": "tests/program/cycle10-feature-evidence.test.ts",
+          "blob": "cd4bcd55c31c2acb442aa238aa02d9e84067936b",
+          "sha256": "7d1f869b4dd4e3d6e2892ef4351db6d91b54d4f674ae48a39bc8cc115432c1d1"
+        },
+        {
+          "path": "tests/program/cycle12-feature-evidence.test.ts",
+          "blob": "f9b445cd5bb9bb917a8ab51b0b3748cf9167f6ba",
+          "sha256": "8e9d590f933632f9dd154464944c83dbe1ef45838a0d39dfc761d017383f8cc3"
+        },
+        {
+          "path": "tests/program/cycle15-feature-evidence.test.ts",
+          "blob": "a90e1df1bc47d611cb7a4eefc4eea66eab6e9584",
+          "sha256": "bc4acb79d737a935798a46e1de3dfa938a67793fcc684806d2b88b1770595c34"
+        },
+        {
+          "path": "tests/program/cycle16-feature-evidence.test.ts",
+          "blob": "9ae0863af6b45e6be30bff125e09b32367580025",
+          "sha256": "0a35d08bb14a336aea9772b4fd62977b58a0cb3312a3818392e81d35a56d5dc4"
+        },
+        {
+          "path": "tests/program/cycle17-feature-evidence.test.ts",
+          "blob": "430e04817ede2d3435fce355ce687811ad3f9c5f",
+          "sha256": "016609f7f4b964cd4f793f82d51a7b0122734f7c8b7211024d6d963f7a028dbf"
+        }
+      ],
+      "forward_diff_only_five_ci_paths": true,
+      "remote_verification": {
+        "pr": 153,
+        "branch": "codex/cycle22-maintenance-requirements-workflow",
+        "head": "e95269a1089239fbb7b373b350cc96e74d08d0b4",
+        "base": "codex/program-cycle-twenty-two-integration",
+        "draft": true,
+        "state": "open",
+        "title": "Cycle 22 Growth: current maintenance requirements review",
+        "verified_via": "GitHub get_pr_info"
+      },
+      "worktree_clean": true,
+      "upstream_matches_ci_head": true,
+      "original_source_manifest_pin_preserved": true,
+      "new_automatic_ci": "NOT_YET_VERIFIED"
+    },
+    {
+      "module": "current-owner-priorities",
+      "worktree": "/private/tmp/propel-cycle22-intelligence-ready",
+      "branch": "codex/cycle22-current-priorities-workflow",
+      "pr": 154,
+      "original_feature_head": "6def582dee2d67e4577722719dabc5655005e265",
+      "original_parent": "2fecb89213647b567746c0413a9ba3e41ce748ae",
+      "current_ci_head": "a21c50a2ded7165d2dac949d90e4e1cda4257948",
+      "ci_parent": "6def582dee2d67e4577722719dabc5655005e265",
+      "remote_preflight": {
+        "head": "6def582dee2d67e4577722719dabc5655005e265",
+        "branch": "codex/cycle22-current-priorities-workflow",
+        "base": "codex/program-cycle-twenty-two-integration",
+        "draft": true,
+        "state": "open",
+        "verified_via": "GitHub get_pr_info"
+      },
+      "owned_author_files": [
+        {
+          "path": "src/lib/workflows/current-owner-priorities.ts",
+          "sha256": "14e47eac3b203bd24fc8088f88a8b649fe81ea466ce1713e2a70b2b06cf36190",
+          "blob": "e82876f89992d1e2c6f721981af712ab04de4733"
+        },
+        {
+          "path": "src/components/workflows/CurrentOwnerPriorities.tsx",
+          "sha256": "9f431495b61382cd2e9feb066560667eeb9119a892d12b3e4b7f5e6b0ece89b9",
+          "blob": "e530a46971cf112e25ee4699ba874fdb783e20c0"
+        },
+        {
+          "path": "src/components/workflows/current-owner-priorities.css",
+          "sha256": "be23bd11d2acefb931c94e480be70581867499c9fe92edadfbd2104d2f169f17",
+          "blob": "9775bb6186edba5c79003601c67e5e3f3424986d"
+        },
+        {
+          "path": "tests/cycle22-current-owner-priorities.test.ts",
+          "sha256": "19a7c2e72d26487139a8d9f4ef614bdd41be5d3d3c2e74954de1bb343d72ef52",
+          "blob": "98d4f8666a31ec70a81c8478aaf3215766254844"
+        },
+        {
+          "path": "docs/program/CYCLE22_CURRENT_OWNER_PRIORITIES.md",
+          "sha256": "3b53230c3ceabbefd1e1d13181d6e7fc47bc7dc896207f855f07d6aa3c144f79",
+          "blob": "6f674236d7964325bd6e20eaf4622dd9c6d9bf06"
+        }
+      ],
+      "all_published_input_bytes_match": true,
+      "ci_test_files": [
+        {
+          "path": "tests/program/cycle10-feature-evidence.test.ts",
+          "blob": "cd4bcd55c31c2acb442aa238aa02d9e84067936b",
+          "sha256": "7d1f869b4dd4e3d6e2892ef4351db6d91b54d4f674ae48a39bc8cc115432c1d1"
+        },
+        {
+          "path": "tests/program/cycle12-feature-evidence.test.ts",
+          "blob": "f9b445cd5bb9bb917a8ab51b0b3748cf9167f6ba",
+          "sha256": "8e9d590f933632f9dd154464944c83dbe1ef45838a0d39dfc761d017383f8cc3"
+        },
+        {
+          "path": "tests/program/cycle15-feature-evidence.test.ts",
+          "blob": "a90e1df1bc47d611cb7a4eefc4eea66eab6e9584",
+          "sha256": "bc4acb79d737a935798a46e1de3dfa938a67793fcc684806d2b88b1770595c34"
+        },
+        {
+          "path": "tests/program/cycle16-feature-evidence.test.ts",
+          "blob": "9ae0863af6b45e6be30bff125e09b32367580025",
+          "sha256": "0a35d08bb14a336aea9772b4fd62977b58a0cb3312a3818392e81d35a56d5dc4"
+        },
+        {
+          "path": "tests/program/cycle17-feature-evidence.test.ts",
+          "blob": "430e04817ede2d3435fce355ce687811ad3f9c5f",
+          "sha256": "016609f7f4b964cd4f793f82d51a7b0122734f7c8b7211024d6d963f7a028dbf"
+        }
+      ],
+      "forward_diff_only_five_ci_paths": true,
+      "remote_verification": {
+        "pr": 154,
+        "branch": "codex/cycle22-current-priorities-workflow",
+        "head": "a21c50a2ded7165d2dac949d90e4e1cda4257948",
+        "base": "codex/program-cycle-twenty-two-integration",
+        "draft": true,
+        "state": "open",
+        "title": "Cycle 22: current recorded workflow explanations for owner priorities",
+        "verified_via": "GitHub get_pr_info"
+      },
+      "worktree_clean": true,
+      "upstream_matches_ci_head": true,
+      "original_source_manifest_pin_preserved": true,
+      "new_automatic_ci": "NOT_YET_VERIFIED"
+    }
+  ],
+  "shared_ci_test_files": [
+    {
+      "path": "tests/program/cycle10-feature-evidence.test.ts",
+      "blob": "cd4bcd55c31c2acb442aa238aa02d9e84067936b",
+      "sha256": "7d1f869b4dd4e3d6e2892ef4351db6d91b54d4f674ae48a39bc8cc115432c1d1"
+    },
+    {
+      "path": "tests/program/cycle12-feature-evidence.test.ts",
+      "blob": "f9b445cd5bb9bb917a8ab51b0b3748cf9167f6ba",
+      "sha256": "8e9d590f933632f9dd154464944c83dbe1ef45838a0d39dfc761d017383f8cc3"
+    },
+    {
+      "path": "tests/program/cycle15-feature-evidence.test.ts",
+      "blob": "a90e1df1bc47d611cb7a4eefc4eea66eab6e9584",
+      "sha256": "bc4acb79d737a935798a46e1de3dfa938a67793fcc684806d2b88b1770595c34"
+    },
+    {
+      "path": "tests/program/cycle16-feature-evidence.test.ts",
+      "blob": "9ae0863af6b45e6be30bff125e09b32367580025",
+      "sha256": "0a35d08bb14a336aea9772b4fd62977b58a0cb3312a3818392e81d35a56d5dc4"
+    },
+    {
+      "path": "tests/program/cycle17-feature-evidence.test.ts",
+      "blob": "430e04817ede2d3435fce355ce687811ad3f9c5f",
+      "sha256": "016609f7f4b964cd4f793f82d51a7b0122734f7c8b7211024d6d963f7a028dbf"
+    }
+  ],
+  "copy_status": "EXACT_PUBLISHED_FIVE_FILES_ONLY",
+  "representative_static_validation": {
+    "worktree": "/private/tmp/propel-cycle22-field-ready",
+    "exact_ci_head": "75dc48b4c95d078b196437bbecfc150a7351b8b3",
+    "path": "/private/tmp/cycle22-ci-static-71.json",
+    "sha256": "6aad7ff2e8eee829907ab3b058a5d31f158ce76603afff3149b78add919a1cd9",
+    "passed": 71,
+    "failed": 0,
+    "suites": 5,
+    "scope": "Only the five changed static evidence suites, run once; not full historical application or browser baselines"
+  },
+  "author_equality_checks": [
+    {
+      "module": "task-custody-review",
+      "path": "src/lib/workflows/task-custody-review.ts",
+      "original_feature_head": "51bbe5ada4853f2306ea38b3e1b04a92057d7ea6",
+      "current_ci_head": "75dc48b4c95d078b196437bbecfc150a7351b8b3",
+      "original_blob": "80052bab82892d5c420914b8aa8390a59adef13d",
+      "current_blob": "80052bab82892d5c420914b8aa8390a59adef13d",
+      "original_sha256": "25817e74272a661b9f65bd20e732d6adc4feffe78cf74e1beb103ad8ce5d690f",
+      "current_sha256": "25817e74272a661b9f65bd20e732d6adc4feffe78cf74e1beb103ad8ce5d690f",
+      "equal": true
+    },
+    {
+      "module": "task-custody-review",
+      "path": "src/components/workflows/TaskCustodyReview.tsx",
+      "original_feature_head": "51bbe5ada4853f2306ea38b3e1b04a92057d7ea6",
+      "current_ci_head": "75dc48b4c95d078b196437bbecfc150a7351b8b3",
+      "original_blob": "92cb037f6789cd14a936c88ea8a96b2bd48671f4",
+      "current_blob": "92cb037f6789cd14a936c88ea8a96b2bd48671f4",
+      "original_sha256": "03c2e6fd9e6584d89adfad8b9ab442e6433b878d120e8556579253a2c35f47b0",
+      "current_sha256": "03c2e6fd9e6584d89adfad8b9ab442e6433b878d120e8556579253a2c35f47b0",
+      "equal": true
+    },
+    {
+      "module": "task-custody-review",
+      "path": "src/components/workflows/task-custody-review.css",
+      "original_feature_head": "51bbe5ada4853f2306ea38b3e1b04a92057d7ea6",
+      "current_ci_head": "75dc48b4c95d078b196437bbecfc150a7351b8b3",
+      "original_blob": "c1f27f99f8163f595b00db5fe7a7b903d82f0ce0",
+      "current_blob": "c1f27f99f8163f595b00db5fe7a7b903d82f0ce0",
+      "original_sha256": "fc9cdec6690c4ae16dadc7dd52dad4a2df485d184a10fcd79dd40bc6726ef1a3",
+      "current_sha256": "fc9cdec6690c4ae16dadc7dd52dad4a2df485d184a10fcd79dd40bc6726ef1a3",
+      "equal": true
+    },
+    {
+      "module": "task-custody-review",
+      "path": "tests/cycle22-task-custody-review.test.ts",
+      "original_feature_head": "51bbe5ada4853f2306ea38b3e1b04a92057d7ea6",
+      "current_ci_head": "75dc48b4c95d078b196437bbecfc150a7351b8b3",
+      "original_blob": "8ac6fae91fff156e52ce46668149dcf51687f8c4",
+      "current_blob": "8ac6fae91fff156e52ce46668149dcf51687f8c4",
+      "original_sha256": "39999afea5c2c8be7ad41c2868204c4d4b7c9b9262d8183215cbc57f585f51b5",
+      "current_sha256": "39999afea5c2c8be7ad41c2868204c4d4b7c9b9262d8183215cbc57f585f51b5",
+      "equal": true
+    },
+    {
+      "module": "task-custody-review",
+      "path": "docs/program/CYCLE22_TASK_CUSTODY_REVIEW.md",
+      "original_feature_head": "51bbe5ada4853f2306ea38b3e1b04a92057d7ea6",
+      "current_ci_head": "75dc48b4c95d078b196437bbecfc150a7351b8b3",
+      "original_blob": "817ad2a4270abdac3e1eb12689b7f8d9e3b53dc3",
+      "current_blob": "817ad2a4270abdac3e1eb12689b7f8d9e3b53dc3",
+      "original_sha256": "e78b735421f4a1265571e5ef723d5c9a313054c3399bd68b861a0ab7c5597b0c",
+      "current_sha256": "e78b735421f4a1265571e5ef723d5c9a313054c3399bd68b861a0ab7c5597b0c",
+      "equal": true
+    },
+    {
+      "module": "cost-coverage-path",
+      "path": "src/lib/workflows/cost-coverage-path.ts",
+      "original_feature_head": "e5b6c9a0fc40b59acf68de7aa068e55d0d2739f4",
+      "current_ci_head": "d0b63ade55214779cd0cf37bb947fcbf9e8197e2",
+      "original_blob": "63313b93173d111ffbda0a05b5f20a83a6ae161a",
+      "current_blob": "63313b93173d111ffbda0a05b5f20a83a6ae161a",
+      "original_sha256": "f1b21bff936eb790d96da1c9c110c51e925ebb5eb7f0965d94901a16280e7bdc",
+      "current_sha256": "f1b21bff936eb790d96da1c9c110c51e925ebb5eb7f0965d94901a16280e7bdc",
+      "equal": true
+    },
+    {
+      "module": "cost-coverage-path",
+      "path": "src/components/workflows/CostCoveragePath.tsx",
+      "original_feature_head": "e5b6c9a0fc40b59acf68de7aa068e55d0d2739f4",
+      "current_ci_head": "d0b63ade55214779cd0cf37bb947fcbf9e8197e2",
+      "original_blob": "600241e8ac9860695e527a2d1658db627493db13",
+      "current_blob": "600241e8ac9860695e527a2d1658db627493db13",
+      "original_sha256": "c4d5f2165872b7ee344964b9c8824cc812e88320dcda644b7d1c730312419547",
+      "current_sha256": "c4d5f2165872b7ee344964b9c8824cc812e88320dcda644b7d1c730312419547",
+      "equal": true
+    },
+    {
+      "module": "cost-coverage-path",
+      "path": "src/components/workflows/cost-coverage-path.css",
+      "original_feature_head": "e5b6c9a0fc40b59acf68de7aa068e55d0d2739f4",
+      "current_ci_head": "d0b63ade55214779cd0cf37bb947fcbf9e8197e2",
+      "original_blob": "6660e58c3f89507c565832cf043fc997c558b45c",
+      "current_blob": "6660e58c3f89507c565832cf043fc997c558b45c",
+      "original_sha256": "6a3d9f9951587d4414073f169d96f00ae72b63bf9a0053ab7bc100843e0d1e01",
+      "current_sha256": "6a3d9f9951587d4414073f169d96f00ae72b63bf9a0053ab7bc100843e0d1e01",
+      "equal": true
+    },
+    {
+      "module": "cost-coverage-path",
+      "path": "tests/cycle22-cost-coverage-path.test.ts",
+      "original_feature_head": "e5b6c9a0fc40b59acf68de7aa068e55d0d2739f4",
+      "current_ci_head": "d0b63ade55214779cd0cf37bb947fcbf9e8197e2",
+      "original_blob": "5bd9823b4147940918f80db84080885f8746629b",
+      "current_blob": "5bd9823b4147940918f80db84080885f8746629b",
+      "original_sha256": "001884769090b1fbb8afaf713aff9c1763b490390e116648a4294ea52b369a65",
+      "current_sha256": "001884769090b1fbb8afaf713aff9c1763b490390e116648a4294ea52b369a65",
+      "equal": true
+    },
+    {
+      "module": "cost-coverage-path",
+      "path": "docs/program/CYCLE22_COST_COVERAGE_PATH.md",
+      "original_feature_head": "e5b6c9a0fc40b59acf68de7aa068e55d0d2739f4",
+      "current_ci_head": "d0b63ade55214779cd0cf37bb947fcbf9e8197e2",
+      "original_blob": "a049bc4f57a3dd976c2c9639e7118b5f4ce02ac7",
+      "current_blob": "a049bc4f57a3dd976c2c9639e7118b5f4ce02ac7",
+      "original_sha256": "42381c85e5f5803e232b172d369743f1d22562939404ef5db6cbd45e7f3806b8",
+      "current_sha256": "42381c85e5f5803e232b172d369743f1d22562939404ef5db6cbd45e7f3806b8",
+      "equal": true
+    },
+    {
+      "module": "property-service-continuity",
+      "path": "src/lib/workflows/property-service-continuity.ts",
+      "original_feature_head": "86dd3a884ac007349ac216f1cdb729ad73ffe351",
+      "current_ci_head": "2539e141c5533669cd822651f4f5084a1dace7ac",
+      "original_blob": "b875d7347a3c451dc6c4493a67b52cd38b84d877",
+      "current_blob": "b875d7347a3c451dc6c4493a67b52cd38b84d877",
+      "original_sha256": "516b17894fc390a746f1ac0455c479e79f23ce8792dc19ad9e4afe53be810e24",
+      "current_sha256": "516b17894fc390a746f1ac0455c479e79f23ce8792dc19ad9e4afe53be810e24",
+      "equal": true
+    },
+    {
+      "module": "property-service-continuity",
+      "path": "src/components/workflows/PropertyServiceContinuity.tsx",
+      "original_feature_head": "86dd3a884ac007349ac216f1cdb729ad73ffe351",
+      "current_ci_head": "2539e141c5533669cd822651f4f5084a1dace7ac",
+      "original_blob": "5ae445f464489c3d38173266ba1e2473be21fc6d",
+      "current_blob": "5ae445f464489c3d38173266ba1e2473be21fc6d",
+      "original_sha256": "7ab6cdabd4184eaeb2a631ed0fb7f149a5759768515750fe7214e6e9a7c39ef7",
+      "current_sha256": "7ab6cdabd4184eaeb2a631ed0fb7f149a5759768515750fe7214e6e9a7c39ef7",
+      "equal": true
+    },
+    {
+      "module": "property-service-continuity",
+      "path": "src/components/workflows/property-service-continuity.css",
+      "original_feature_head": "86dd3a884ac007349ac216f1cdb729ad73ffe351",
+      "current_ci_head": "2539e141c5533669cd822651f4f5084a1dace7ac",
+      "original_blob": "cebe52097921fa87aec9578331bcd6e90e62e4a4",
+      "current_blob": "cebe52097921fa87aec9578331bcd6e90e62e4a4",
+      "original_sha256": "31a345a4f5d10b56f08b8737b00691e72bf67f4317ea777efcfcb79be7021588",
+      "current_sha256": "31a345a4f5d10b56f08b8737b00691e72bf67f4317ea777efcfcb79be7021588",
+      "equal": true
+    },
+    {
+      "module": "property-service-continuity",
+      "path": "tests/cycle22-property-service-continuity.test.ts",
+      "original_feature_head": "86dd3a884ac007349ac216f1cdb729ad73ffe351",
+      "current_ci_head": "2539e141c5533669cd822651f4f5084a1dace7ac",
+      "original_blob": "aef52764ef6d0b0954d4f11397fa8467baafd50f",
+      "current_blob": "aef52764ef6d0b0954d4f11397fa8467baafd50f",
+      "original_sha256": "e700dc2a6b466f25ac319fb1f806f50b80fda7afe4894ddf4605ce15a85ee47c",
+      "current_sha256": "e700dc2a6b466f25ac319fb1f806f50b80fda7afe4894ddf4605ce15a85ee47c",
+      "equal": true
+    },
+    {
+      "module": "property-service-continuity",
+      "path": "docs/program/CYCLE22_PROPERTY_SERVICE_CONTINUITY.md",
+      "original_feature_head": "86dd3a884ac007349ac216f1cdb729ad73ffe351",
+      "current_ci_head": "2539e141c5533669cd822651f4f5084a1dace7ac",
+      "original_blob": "1c69e0f0d54c60f2aed231227ece202feea28814",
+      "current_blob": "1c69e0f0d54c60f2aed231227ece202feea28814",
+      "original_sha256": "c077effe2766764e4b3cc4d98093d4f4ce781fe9dfafa23205c736f745880d8b",
+      "current_sha256": "c077effe2766764e4b3cc4d98093d4f4ce781fe9dfafa23205c736f745880d8b",
+      "equal": true
+    },
+    {
+      "module": "maintenance-requirements-review",
+      "path": "src/lib/workflows/maintenance-requirements-review.ts",
+      "original_feature_head": "24253d8ece3392d71dafde9732f42da0538bc1d6",
+      "current_ci_head": "e95269a1089239fbb7b373b350cc96e74d08d0b4",
+      "original_blob": "e0d0a10832d647a05e037d1fd898b9277958b16f",
+      "current_blob": "e0d0a10832d647a05e037d1fd898b9277958b16f",
+      "original_sha256": "2023e10bebf98a2e9b4eee54eda424ce715a7fa188b21eb4496e3d5d92f0cb16",
+      "current_sha256": "2023e10bebf98a2e9b4eee54eda424ce715a7fa188b21eb4496e3d5d92f0cb16",
+      "equal": true
+    },
+    {
+      "module": "maintenance-requirements-review",
+      "path": "src/components/workflows/MaintenanceRequirementsReview.tsx",
+      "original_feature_head": "24253d8ece3392d71dafde9732f42da0538bc1d6",
+      "current_ci_head": "e95269a1089239fbb7b373b350cc96e74d08d0b4",
+      "original_blob": "4e4bc1b3435c6918544ecd1b34888f24dc766e7d",
+      "current_blob": "4e4bc1b3435c6918544ecd1b34888f24dc766e7d",
+      "original_sha256": "24cc494f5b29690f1c044b30b258868ebe9f1000b1b9c6fe07d726b282d34a2c",
+      "current_sha256": "24cc494f5b29690f1c044b30b258868ebe9f1000b1b9c6fe07d726b282d34a2c",
+      "equal": true
+    },
+    {
+      "module": "maintenance-requirements-review",
+      "path": "src/components/workflows/maintenance-requirements-review.css",
+      "original_feature_head": "24253d8ece3392d71dafde9732f42da0538bc1d6",
+      "current_ci_head": "e95269a1089239fbb7b373b350cc96e74d08d0b4",
+      "original_blob": "5edaffb2091d17f2d2a972fa0dcff3e4ffc57259",
+      "current_blob": "5edaffb2091d17f2d2a972fa0dcff3e4ffc57259",
+      "original_sha256": "8370dcf1150baa297e5b176c3fb6d67a6960c5b845727420b46481f163dfaa37",
+      "current_sha256": "8370dcf1150baa297e5b176c3fb6d67a6960c5b845727420b46481f163dfaa37",
+      "equal": true
+    },
+    {
+      "module": "maintenance-requirements-review",
+      "path": "tests/cycle22-maintenance-requirements-review.test.ts",
+      "original_feature_head": "24253d8ece3392d71dafde9732f42da0538bc1d6",
+      "current_ci_head": "e95269a1089239fbb7b373b350cc96e74d08d0b4",
+      "original_blob": "a1d09d1658af89ee010d5070fff5bc73c39c5f5f",
+      "current_blob": "a1d09d1658af89ee010d5070fff5bc73c39c5f5f",
+      "original_sha256": "cd5f924be1cc54e1b83c8596b1f305feaad2f9cd840cf834b1f474605ffd2bd6",
+      "current_sha256": "cd5f924be1cc54e1b83c8596b1f305feaad2f9cd840cf834b1f474605ffd2bd6",
+      "equal": true
+    },
+    {
+      "module": "maintenance-requirements-review",
+      "path": "docs/program/CYCLE22_MAINTENANCE_REQUIREMENTS_REVIEW.md",
+      "original_feature_head": "24253d8ece3392d71dafde9732f42da0538bc1d6",
+      "current_ci_head": "e95269a1089239fbb7b373b350cc96e74d08d0b4",
+      "original_blob": "f3c445f898c9176e20050a76d5f3bbcca06c869b",
+      "current_blob": "f3c445f898c9176e20050a76d5f3bbcca06c869b",
+      "original_sha256": "27e9121c0552f1f9e5419fbbe8c3d032041aceb243dbd2ffaefcada009b2febf",
+      "current_sha256": "27e9121c0552f1f9e5419fbbe8c3d032041aceb243dbd2ffaefcada009b2febf",
+      "equal": true
+    },
+    {
+      "module": "current-owner-priorities",
+      "path": "src/lib/workflows/current-owner-priorities.ts",
+      "original_feature_head": "6def582dee2d67e4577722719dabc5655005e265",
+      "current_ci_head": "a21c50a2ded7165d2dac949d90e4e1cda4257948",
+      "original_blob": "e82876f89992d1e2c6f721981af712ab04de4733",
+      "current_blob": "e82876f89992d1e2c6f721981af712ab04de4733",
+      "original_sha256": "14e47eac3b203bd24fc8088f88a8b649fe81ea466ce1713e2a70b2b06cf36190",
+      "current_sha256": "14e47eac3b203bd24fc8088f88a8b649fe81ea466ce1713e2a70b2b06cf36190",
+      "equal": true
+    },
+    {
+      "module": "current-owner-priorities",
+      "path": "src/components/workflows/CurrentOwnerPriorities.tsx",
+      "original_feature_head": "6def582dee2d67e4577722719dabc5655005e265",
+      "current_ci_head": "a21c50a2ded7165d2dac949d90e4e1cda4257948",
+      "original_blob": "e530a46971cf112e25ee4699ba874fdb783e20c0",
+      "current_blob": "e530a46971cf112e25ee4699ba874fdb783e20c0",
+      "original_sha256": "9f431495b61382cd2e9feb066560667eeb9119a892d12b3e4b7f5e6b0ece89b9",
+      "current_sha256": "9f431495b61382cd2e9feb066560667eeb9119a892d12b3e4b7f5e6b0ece89b9",
+      "equal": true
+    },
+    {
+      "module": "current-owner-priorities",
+      "path": "src/components/workflows/current-owner-priorities.css",
+      "original_feature_head": "6def582dee2d67e4577722719dabc5655005e265",
+      "current_ci_head": "a21c50a2ded7165d2dac949d90e4e1cda4257948",
+      "original_blob": "9775bb6186edba5c79003601c67e5e3f3424986d",
+      "current_blob": "9775bb6186edba5c79003601c67e5e3f3424986d",
+      "original_sha256": "be23bd11d2acefb931c94e480be70581867499c9fe92edadfbd2104d2f169f17",
+      "current_sha256": "be23bd11d2acefb931c94e480be70581867499c9fe92edadfbd2104d2f169f17",
+      "equal": true
+    },
+    {
+      "module": "current-owner-priorities",
+      "path": "tests/cycle22-current-owner-priorities.test.ts",
+      "original_feature_head": "6def582dee2d67e4577722719dabc5655005e265",
+      "current_ci_head": "a21c50a2ded7165d2dac949d90e4e1cda4257948",
+      "original_blob": "98d4f8666a31ec70a81c8478aaf3215766254844",
+      "current_blob": "98d4f8666a31ec70a81c8478aaf3215766254844",
+      "original_sha256": "19a7c2e72d26487139a8d9f4ef614bdd41be5d3d3c2e74954de1bb343d72ef52",
+      "current_sha256": "19a7c2e72d26487139a8d9f4ef614bdd41be5d3d3c2e74954de1bb343d72ef52",
+      "equal": true
+    },
+    {
+      "module": "current-owner-priorities",
+      "path": "docs/program/CYCLE22_CURRENT_OWNER_PRIORITIES.md",
+      "original_feature_head": "6def582dee2d67e4577722719dabc5655005e265",
+      "current_ci_head": "a21c50a2ded7165d2dac949d90e4e1cda4257948",
+      "original_blob": "6f674236d7964325bd6e20eaf4622dd9c6d9bf06",
+      "current_blob": "6f674236d7964325bd6e20eaf4622dd9c6d9bf06",
+      "original_sha256": "3b53230c3ceabbefd1e1d13181d6e7fc47bc7dc896207f855f07d6aa3c144f79",
+      "current_sha256": "3b53230c3ceabbefd1e1d13181d6e7fc47bc7dc896207f855f07d6aa3c144f79",
+      "equal": true
+    }
+  ],
+  "status": "FORWARD_PATCH_PUSHED_REMOTE_HEADS_VERIFIED_AUTOMATIC_CI_PENDING",
+  "remote_verification_report": {
+    "path": "/private/tmp/cycle22-ci-forward-remote-verification.json",
+    "sha256": "06360e61af52df75627c077c05f6079e9debaaa1061ac99ab06d84f31e713be6"
+  },
+  "source_manifest_original_heads_preserved": true,
+  "original_feature_commits_rewritten": false,
+  "manual_ci_reruns": 0,
+  "pr_metadata_mutations": 0,
+  "completed_at_utc": "2026-11-03T22:31:41.375491+00:00",
+  "original_failed_evidence": {
+    "path": "/private/tmp/cycle22-ci/feature-inherited-failures.json",
+    "sha256": "e44842a2b8a88959e53d577488c09f1a9a1be6c24956ec2d97ad2675ac2a0ba6",
+    "preserved": true,
+    "reports": 8
+  }
+}

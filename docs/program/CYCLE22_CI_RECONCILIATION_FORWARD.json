@@ -1,0 +1,399 @@
+{
+  "schema": "propel-cycle22-final-ci-forward-v1",
+  "source_commit": "1eff2018d43da47d06c0fcd8370562d404c52f95",
+  "source_commit_parent": "ff673f41078002a6e741a450bba899d01d50ec77",
+  "source_files": [
+    {
+      "path": "scripts/test-git-history.mjs",
+      "blob": "31e70b961a244b40898cebece7335ba41cacc563",
+      "sha256": "2c6d9ec071cdb1982606f4553c5273cf6ead8a9ca2b2483bf83b7415e54bd487"
+    },
+    {
+      "path": "src/components/workflows/DailyWorkbench.tsx",
+      "blob": "19c513518ed974fe85e26d6b16c57c424f1870d5",
+      "sha256": "9d311f8ff2dd5a766cbceee967dd51957c21bbee7aac11821b6cb37f8fc29044"
+    },
+    {
+      "path": "tests/program/cycle13-navigation.spec.ts",
+      "blob": "420987854d84db6c2ef11c5551f744290345c3a3",
+      "sha256": "1e58d434f57d46385d9d57ba8be9a9dc228373ff221054df1492c5f56996120d"
+    },
+    {
+      "path": "tests/program/cycle22-daily-clock-retention.spec.ts",
+      "blob": "ea217141eca8ea2ea96d9f19cc5b7c0fe153b90b",
+      "sha256": "50b1ec22a52f9b2ffabf25d8e04f87b98b470a298243ad2a2f1fbbdb1379950c"
+    },
+    {
+      "path": "tests/program/cycle22-daily-pane-render-guards.test.ts",
+      "blob": "a520bf0b21bf03158923b9e1afbc7b35aa3b0eb2",
+      "sha256": "11833f48e859bb52be5b8364719061b31802260ab1ef5ce9992f32ede78ae585"
+    },
+    {
+      "path": "tests/program/playwright.cycle22-clock.config.ts",
+      "blob": "7a83b6f126cd0ec3cbe340b0cceb9aec326535a0",
+      "sha256": "2648dea4cac29ed479447477ceea20bc1070e0cf81758958222f9e8d2509e37d"
+    },
+    {
+      "path": "tests/program/test-git-history.test.ts",
+      "blob": "e11209b88fc458e0fca2d808a011f4b3a2f44399",
+      "sha256": "92b9ca92254e83bf0d30b16e946022378ddac39cd28981092265eb8f66737dcb"
+    },
+    {
+      "path": "tests/setup/git-history.ts",
+      "blob": "9d9fa7f54a17b32784b4e75ba6c1d92e72e8b6b2",
+      "sha256": "7bc80e906a8203700860c81c4cd4d2a1f0a57abfd902ebed9f1ef7fb5a3c6957"
+    },
+    {
+      "path": "vite.config.ts",
+      "blob": "83db48f79c31fac4ecdd7a51143f311b3d72f381",
+      "sha256": "0fdc8ac3b8d922c2229a25d67d0b42ab3c895489bfc7ee514aae0c78853bf48d"
+    }
+  ],
+  "protected_file_count_per_branch": 128,
+  "design_locks_per_branch": 5,
+  "design_bindings_per_branch": 13,
+  "author_file_count": 25,
+  "manual_ci_reruns": 0,
+  "pr_metadata_changes": 0,
+  "source_pins_changed": false,
+  "source_commits_rewritten": false,
+  "status": "SIX_FORWARD_COMMITS_PUSHED_REMOTE_PR_HEADS_VERIFIED_AUTOMATIC_CI_NOT_CLAIMED",
+  "public_git_history_fetches_local": 0,
+  "pushed_at_utc": "2026-11-03T23:25:54.858458+00:00",
+  "verified_at_utc": "2026-11-03T23:26:25.491811+00:00",
+  "packages": [
+    {
+      "pr": 143,
+      "branch": "codex/program-cycle-twenty-one",
+      "original_feature_head": null,
+      "parent_ci_head": "36d805b5d8ca16f09697395c8a305b3e7d4318ef",
+      "current_ci_head": "9223fa1485a4369752fd82b0751eab2bb73591d1",
+      "single_forward_commit": true,
+      "normal_push_complete": true,
+      "protected_and_design_and_original_manifest_unchanged": true,
+      "worktree_clean": true,
+      "upstream_exact": true,
+      "remote_verification": {
+        "pr": 143,
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/143",
+        "head": "9223fa1485a4369752fd82b0751eab2bb73591d1",
+        "branch": "codex/program-cycle-twenty-one",
+        "base": "codex/program-cycle-twenty",
+        "draft": true,
+        "state": "open",
+        "title": "Cycle 21: canonical correction and source-bound workflow continuity",
+        "title_unchanged": true,
+        "body_unchanged": true
+      },
+      "preserved_finite_files_sha256": "140f20e3d75afafba7d934f82f2b476bd0b00f08bd91b6ce6636ada23c9d0ce4"
+    },
+    {
+      "pr": 152,
+      "branch": "codex/cycle22-task-custody-workflow",
+      "original_feature_head": "51bbe5ada4853f2306ea38b3e1b04a92057d7ea6",
+      "parent_ci_head": "75dc48b4c95d078b196437bbecfc150a7351b8b3",
+      "current_ci_head": "b355a8db66ed3df05112e6c987abe2de42493cbe",
+      "single_forward_commit": true,
+      "normal_push_complete": true,
+      "protected_and_design_and_original_manifest_unchanged": true,
+      "worktree_clean": true,
+      "upstream_exact": true,
+      "remote_verification": {
+        "pr": 152,
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/152",
+        "head": "b355a8db66ed3df05112e6c987abe2de42493cbe",
+        "branch": "codex/cycle22-task-custody-workflow",
+        "base": "codex/program-cycle-twenty-two-integration",
+        "draft": true,
+        "state": "open",
+        "title": "Cycle 22 Field: exact task correction custody review",
+        "title_unchanged": true,
+        "body_unchanged": true
+      },
+      "preserved_finite_files_sha256": "140f20e3d75afafba7d934f82f2b476bd0b00f08bd91b6ce6636ada23c9d0ce4"
+    },
+    {
+      "pr": 151,
+      "branch": "codex/cycle22-cost-coverage-workflow",
+      "original_feature_head": "e5b6c9a0fc40b59acf68de7aa068e55d0d2739f4",
+      "parent_ci_head": "d0b63ade55214779cd0cf37bb947fcbf9e8197e2",
+      "current_ci_head": "2b95ccd8749fd735b1287aad78aa33e4b8ca6537",
+      "single_forward_commit": true,
+      "normal_push_complete": true,
+      "protected_and_design_and_original_manifest_unchanged": true,
+      "worktree_clean": true,
+      "upstream_exact": true,
+      "remote_verification": {
+        "pr": 151,
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/151",
+        "head": "2b95ccd8749fd735b1287aad78aa33e4b8ca6537",
+        "branch": "codex/cycle22-cost-coverage-workflow",
+        "base": "codex/program-cycle-twenty-two-integration",
+        "draft": true,
+        "state": "open",
+        "title": "Cycle 22: canonical cost coverage and invoice review path",
+        "title_unchanged": true,
+        "body_unchanged": true
+      },
+      "preserved_finite_files_sha256": "140f20e3d75afafba7d934f82f2b476bd0b00f08bd91b6ce6636ada23c9d0ce4"
+    },
+    {
+      "pr": 150,
+      "branch": "codex/cycle22-property-service-workflow",
+      "original_feature_head": "86dd3a884ac007349ac216f1cdb729ad73ffe351",
+      "parent_ci_head": "2539e141c5533669cd822651f4f5084a1dace7ac",
+      "current_ci_head": "077e5dc0057a249e7f492e5367cdd5e7d3bc23d7",
+      "single_forward_commit": true,
+      "normal_push_complete": true,
+      "protected_and_design_and_original_manifest_unchanged": true,
+      "worktree_clean": true,
+      "upstream_exact": true,
+      "remote_verification": {
+        "pr": 150,
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/150",
+        "head": "077e5dc0057a249e7f492e5367cdd5e7d3bc23d7",
+        "branch": "codex/cycle22-property-service-workflow",
+        "base": "codex/program-cycle-twenty-two-integration",
+        "draft": true,
+        "state": "open",
+        "title": "Cycle 22: exact property and published service continuity",
+        "title_unchanged": true,
+        "body_unchanged": true
+      },
+      "preserved_finite_files_sha256": "140f20e3d75afafba7d934f82f2b476bd0b00f08bd91b6ce6636ada23c9d0ce4"
+    },
+    {
+      "pr": 153,
+      "branch": "codex/cycle22-maintenance-requirements-workflow",
+      "original_feature_head": "24253d8ece3392d71dafde9732f42da0538bc1d6",
+      "parent_ci_head": "e95269a1089239fbb7b373b350cc96e74d08d0b4",
+      "current_ci_head": "bd9900bd0097b9a963ced5348ebd9347f0c08183",
+      "single_forward_commit": true,
+      "normal_push_complete": true,
+      "protected_and_design_and_original_manifest_unchanged": true,
+      "worktree_clean": true,
+      "upstream_exact": true,
+      "remote_verification": {
+        "pr": 153,
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/153",
+        "head": "bd9900bd0097b9a963ced5348ebd9347f0c08183",
+        "branch": "codex/cycle22-maintenance-requirements-workflow",
+        "base": "codex/program-cycle-twenty-two-integration",
+        "draft": true,
+        "state": "open",
+        "title": "Cycle 22 Growth: current maintenance requirements review",
+        "title_unchanged": true,
+        "body_unchanged": true
+      },
+      "preserved_finite_files_sha256": "140f20e3d75afafba7d934f82f2b476bd0b00f08bd91b6ce6636ada23c9d0ce4"
+    },
+    {
+      "pr": 154,
+      "branch": "codex/cycle22-current-priorities-workflow",
+      "original_feature_head": "6def582dee2d67e4577722719dabc5655005e265",
+      "parent_ci_head": "a21c50a2ded7165d2dac949d90e4e1cda4257948",
+      "current_ci_head": "ae7088bbddfc914faaec01b3984c8537f81f8c8f",
+      "single_forward_commit": true,
+      "normal_push_complete": true,
+      "protected_and_design_and_original_manifest_unchanged": true,
+      "worktree_clean": true,
+      "upstream_exact": true,
+      "remote_verification": {
+        "pr": 154,
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/154",
+        "head": "ae7088bbddfc914faaec01b3984c8537f81f8c8f",
+        "branch": "codex/cycle22-current-priorities-workflow",
+        "base": "codex/program-cycle-twenty-two-integration",
+        "draft": true,
+        "state": "open",
+        "title": "Cycle 22: current recorded workflow explanations for owner priorities",
+        "title_unchanged": true,
+        "body_unchanged": true
+      },
+      "preserved_finite_files_sha256": "140f20e3d75afafba7d934f82f2b476bd0b00f08bd91b6ce6636ada23c9d0ce4"
+    }
+  ],
+  "author_equality_checks": [
+    {
+      "path": "src/lib/workflows/task-custody-review.ts",
+      "original_blob": "80052bab82892d5c420914b8aa8390a59adef13d",
+      "current_blob": "80052bab82892d5c420914b8aa8390a59adef13d",
+      "sha256": "25817e74272a661b9f65bd20e732d6adc4feffe78cf74e1beb103ad8ce5d690f",
+      "equal": true
+    },
+    {
+      "path": "src/components/workflows/TaskCustodyReview.tsx",
+      "original_blob": "92cb037f6789cd14a936c88ea8a96b2bd48671f4",
+      "current_blob": "92cb037f6789cd14a936c88ea8a96b2bd48671f4",
+      "sha256": "03c2e6fd9e6584d89adfad8b9ab442e6433b878d120e8556579253a2c35f47b0",
+      "equal": true
+    },
+    {
+      "path": "src/components/workflows/task-custody-review.css",
+      "original_blob": "c1f27f99f8163f595b00db5fe7a7b903d82f0ce0",
+      "current_blob": "c1f27f99f8163f595b00db5fe7a7b903d82f0ce0",
+      "sha256": "fc9cdec6690c4ae16dadc7dd52dad4a2df485d184a10fcd79dd40bc6726ef1a3",
+      "equal": true
+    },
+    {
+      "path": "tests/cycle22-task-custody-review.test.ts",
+      "original_blob": "8ac6fae91fff156e52ce46668149dcf51687f8c4",
+      "current_blob": "8ac6fae91fff156e52ce46668149dcf51687f8c4",
+      "sha256": "39999afea5c2c8be7ad41c2868204c4d4b7c9b9262d8183215cbc57f585f51b5",
+      "equal": true
+    },
+    {
+      "path": "docs/program/CYCLE22_TASK_CUSTODY_REVIEW.md",
+      "original_blob": "817ad2a4270abdac3e1eb12689b7f8d9e3b53dc3",
+      "current_blob": "817ad2a4270abdac3e1eb12689b7f8d9e3b53dc3",
+      "sha256": "e78b735421f4a1265571e5ef723d5c9a313054c3399bd68b861a0ab7c5597b0c",
+      "equal": true
+    },
+    {
+      "path": "src/lib/workflows/cost-coverage-path.ts",
+      "original_blob": "63313b93173d111ffbda0a05b5f20a83a6ae161a",
+      "current_blob": "63313b93173d111ffbda0a05b5f20a83a6ae161a",
+      "sha256": "f1b21bff936eb790d96da1c9c110c51e925ebb5eb7f0965d94901a16280e7bdc",
+      "equal": true
+    },
+    {
+      "path": "src/components/workflows/CostCoveragePath.tsx",
+      "original_blob": "600241e8ac9860695e527a2d1658db627493db13",
+      "current_blob": "600241e8ac9860695e527a2d1658db627493db13",
+      "sha256": "c4d5f2165872b7ee344964b9c8824cc812e88320dcda644b7d1c730312419547",
+      "equal": true
+    },
+    {
+      "path": "src/components/workflows/cost-coverage-path.css",
+      "original_blob": "6660e58c3f89507c565832cf043fc997c558b45c",
+      "current_blob": "6660e58c3f89507c565832cf043fc997c558b45c",
+      "sha256": "6a3d9f9951587d4414073f169d96f00ae72b63bf9a0053ab7bc100843e0d1e01",
+      "equal": true
+    },
+    {
+      "path": "tests/cycle22-cost-coverage-path.test.ts",
+      "original_blob": "5bd9823b4147940918f80db84080885f8746629b",
+      "current_blob": "5bd9823b4147940918f80db84080885f8746629b",
+      "sha256": "001884769090b1fbb8afaf713aff9c1763b490390e116648a4294ea52b369a65",
+      "equal": true
+    },
+    {
+      "path": "docs/program/CYCLE22_COST_COVERAGE_PATH.md",
+      "original_blob": "a049bc4f57a3dd976c2c9639e7118b5f4ce02ac7",
+      "current_blob": "a049bc4f57a3dd976c2c9639e7118b5f4ce02ac7",
+      "sha256": "42381c85e5f5803e232b172d369743f1d22562939404ef5db6cbd45e7f3806b8",
+      "equal": true
+    },
+    {
+      "path": "src/lib/workflows/property-service-continuity.ts",
+      "original_blob": "b875d7347a3c451dc6c4493a67b52cd38b84d877",
+      "current_blob": "b875d7347a3c451dc6c4493a67b52cd38b84d877",
+      "sha256": "516b17894fc390a746f1ac0455c479e79f23ce8792dc19ad9e4afe53be810e24",
+      "equal": true
+    },
+    {
+      "path": "src/components/workflows/PropertyServiceContinuity.tsx",
+      "original_blob": "5ae445f464489c3d38173266ba1e2473be21fc6d",
+      "current_blob": "5ae445f464489c3d38173266ba1e2473be21fc6d",
+      "sha256": "7ab6cdabd4184eaeb2a631ed0fb7f149a5759768515750fe7214e6e9a7c39ef7",
+      "equal": true
+    },
+    {
+      "path": "src/components/workflows/property-service-continuity.css",
+      "original_blob": "cebe52097921fa87aec9578331bcd6e90e62e4a4",
+      "current_blob": "cebe52097921fa87aec9578331bcd6e90e62e4a4",
+      "sha256": "31a345a4f5d10b56f08b8737b00691e72bf67f4317ea777efcfcb79be7021588",
+      "equal": true
+    },
+    {
+      "path": "tests/cycle22-property-service-continuity.test.ts",
+      "original_blob": "aef52764ef6d0b0954d4f11397fa8467baafd50f",
+      "current_blob": "aef52764ef6d0b0954d4f11397fa8467baafd50f",
+      "sha256": "e700dc2a6b466f25ac319fb1f806f50b80fda7afe4894ddf4605ce15a85ee47c",
+      "equal": true
+    },
+    {
+      "path": "docs/program/CYCLE22_PROPERTY_SERVICE_CONTINUITY.md",
+      "original_blob": "1c69e0f0d54c60f2aed231227ece202feea28814",
+      "current_blob": "1c69e0f0d54c60f2aed231227ece202feea28814",
+      "sha256": "c077effe2766764e4b3cc4d98093d4f4ce781fe9dfafa23205c736f745880d8b",
+      "equal": true
+    },
+    {
+      "path": "src/lib/workflows/maintenance-requirements-review.ts",
+      "original_blob": "e0d0a10832d647a05e037d1fd898b9277958b16f",
+      "current_blob": "e0d0a10832d647a05e037d1fd898b9277958b16f",
+      "sha256": "2023e10bebf98a2e9b4eee54eda424ce715a7fa188b21eb4496e3d5d92f0cb16",
+      "equal": true
+    },
+    {
+      "path": "src/components/workflows/MaintenanceRequirementsReview.tsx",
+      "original_blob": "4e4bc1b3435c6918544ecd1b34888f24dc766e7d",
+      "current_blob": "4e4bc1b3435c6918544ecd1b34888f24dc766e7d",
+      "sha256": "24cc494f5b29690f1c044b30b258868ebe9f1000b1b9c6fe07d726b282d34a2c",
+      "equal": true
+    },
+    {
+      "path": "src/components/workflows/maintenance-requirements-review.css",
+      "original_blob": "5edaffb2091d17f2d2a972fa0dcff3e4ffc57259",
+      "current_blob": "5edaffb2091d17f2d2a972fa0dcff3e4ffc57259",
+      "sha256": "8370dcf1150baa297e5b176c3fb6d67a6960c5b845727420b46481f163dfaa37",
+      "equal": true
+    },
+    {
+      "path": "tests/cycle22-maintenance-requirements-review.test.ts",
+      "original_blob": "a1d09d1658af89ee010d5070fff5bc73c39c5f5f",
+      "current_blob": "a1d09d1658af89ee010d5070fff5bc73c39c5f5f",
+      "sha256": "cd5f924be1cc54e1b83c8596b1f305feaad2f9cd840cf834b1f474605ffd2bd6",
+      "equal": true
+    },
+    {
+      "path": "docs/program/CYCLE22_MAINTENANCE_REQUIREMENTS_REVIEW.md",
+      "original_blob": "f3c445f898c9176e20050a76d5f3bbcca06c869b",
+      "current_blob": "f3c445f898c9176e20050a76d5f3bbcca06c869b",
+      "sha256": "27e9121c0552f1f9e5419fbbe8c3d032041aceb243dbd2ffaefcada009b2febf",
+      "equal": true
+    },
+    {
+      "path": "src/lib/workflows/current-owner-priorities.ts",
+      "original_blob": "e82876f89992d1e2c6f721981af712ab04de4733",
+      "current_blob": "e82876f89992d1e2c6f721981af712ab04de4733",
+      "sha256": "14e47eac3b203bd24fc8088f88a8b649fe81ea466ce1713e2a70b2b06cf36190",
+      "equal": true
+    },
+    {
+      "path": "src/components/workflows/CurrentOwnerPriorities.tsx",
+      "original_blob": "e530a46971cf112e25ee4699ba874fdb783e20c0",
+      "current_blob": "e530a46971cf112e25ee4699ba874fdb783e20c0",
+      "sha256": "9f431495b61382cd2e9feb066560667eeb9119a892d12b3e4b7f5e6b0ece89b9",
+      "equal": true
+    },
+    {
+      "path": "src/components/workflows/current-owner-priorities.css",
+      "original_blob": "9775bb6186edba5c79003601c67e5e3f3424986d",
+      "current_blob": "9775bb6186edba5c79003601c67e5e3f3424986d",
+      "sha256": "be23bd11d2acefb931c94e480be70581867499c9fe92edadfbd2104d2f169f17",
+      "equal": true
+    },
+    {
+      "path": "tests/cycle22-current-owner-priorities.test.ts",
+      "original_blob": "98d4f8666a31ec70a81c8478aaf3215766254844",
+      "current_blob": "98d4f8666a31ec70a81c8478aaf3215766254844",
+      "sha256": "19a7c2e72d26487139a8d9f4ef614bdd41be5d3d3c2e74954de1bb343d72ef52",
+      "equal": true
+    },
+    {
+      "path": "docs/program/CYCLE22_CURRENT_OWNER_PRIORITIES.md",
+      "original_blob": "6f674236d7964325bd6e20eaf4622dd9c6d9bf06",
+      "current_blob": "6f674236d7964325bd6e20eaf4622dd9c6d9bf06",
+      "sha256": "3b53230c3ceabbefd1e1d13181d6e7fc47bc7dc896207f855f07d6aa3c144f79",
+      "equal": true
+    }
+  ],
+  "all_25_author_files_unchanged": true,
+  "source_manifest_original_heads_preserved": true,
+  "detail_proof": {
+    "path": "/private/tmp/cycle22-ci-final-forward-detail.json",
+    "sha256": "6f01827e9a9087a6c8b5b5b93aaadece32da430b6c92aa6f24696151415dec78"
+  }
+}

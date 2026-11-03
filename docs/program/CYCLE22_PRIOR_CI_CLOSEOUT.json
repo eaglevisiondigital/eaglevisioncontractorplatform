@@ -1,0 +1,588 @@
+{
+  "schema": "propel-cycle22-prior-ci-closeout-v1",
+  "checked_at": "2026-11-03T22:05:03.925343+00:00",
+  "cycle21_original_head": "27cb44bb68521ee21a8e5c6e0b2f3116d33f367b",
+  "cycle21_correction_heads": [
+    "2fecb89213647b567746c0413a9ba3e41ce748ae",
+    "36d805b5d8ca16f09697395c8a305b3e7d4318ef"
+  ],
+  "reported_artifact_failures": [
+    {
+      "run_id": 41722159539,
+      "workflow": "Cycle 11 source-bound workflow laboratories",
+      "head": "27cb44bb68521ee21a8e5c6e0b2f3116d33f367b",
+      "conclusion": "FAILURE",
+      "application_passed": 412,
+      "application_failed": 1,
+      "artifact_report_sha256": "525b0baca438f7e6a8d1c1761cd2bf4a3bca570b08d36b300e76058bc6549332",
+      "failed_cases": [
+        {
+          "file": "cycle11-feature-evidence.test.ts",
+          "case": "retains one existing environment host and finite optional reviews",
+          "duration_ms": 8.923631,
+          "failure": "AssertionError: Target cannot be null or undefined; obsolete await prepareOperatingSources literal matched zero calls."
+        }
+      ]
+    },
+    {
+      "run_id": 41722159721,
+      "workflow": "Cycle 13 operating workflows and visual evidence",
+      "head": "27cb44bb68521ee21a8e5c6e0b2f3116d33f367b",
+      "conclusion": "FAILURE",
+      "application_passed": 523,
+      "application_failed": 2,
+      "artifact_report_sha256": "c62f63224ad3f3621105a697c8c67368a9692d12a1542af1f48c38f3a10c237d",
+      "failed_cases": [
+        {
+          "file": "cycle13-feature-evidence.test.ts",
+          "case": "retains one existing environment host and finite optional reviews",
+          "duration_ms": 7.137957,
+          "failure": "AssertionError: Target cannot be null or undefined; obsolete await prepareOperatingSources literal matched zero calls."
+        },
+        {
+          "file": "cycle13-feature-evidence.test.ts",
+          "case": "keeps navigation a finite presentation callback over existing job components",
+          "duration_ms": 0.7315639999999917,
+          "failure": "AssertionError: Target cannot be null or undefined; obsolete await prepareOperatingSources literal matched zero calls."
+        }
+      ]
+    },
+    {
+      "run_id": 41722159498,
+      "workflow": "Cycle 14 source continuity and focused visual review",
+      "head": "27cb44bb68521ee21a8e5c6e0b2f3116d33f367b",
+      "conclusion": "FAILURE",
+      "application_passed": 406,
+      "application_failed": 1,
+      "artifact_report_sha256": "2ee7dc4ca4cbb455867de6c92afe5ae5da6b3eac0d42a0a7beee4e34b25edde5",
+      "failed_cases": [
+        {
+          "file": "cycle14-feature-evidence.test.ts",
+          "case": "retains one actual environment and current captured job presentation hint",
+          "duration_ms": 3.1320230000000038,
+          "failure": "AssertionError: Target cannot be null or undefined; obsolete await prepareOperatingSources literal matched zero calls."
+        }
+      ]
+    }
+  ],
+  "additional_original_failed_reports": [
+    {
+      "run": 41722159896,
+      "workflow": "Cycle 10 everyday operating reviews",
+      "head": "27cb44bb68521ee21a8e5c6e0b2f3116d33f367b",
+      "conclusion": "failure",
+      "reports": [
+        {
+          "sha256": "cdf4a857b1f00a02d840502b635098fcfa148f37b1e600fa8cbfeb7958f89456",
+          "passed": 364,
+          "failed": 1,
+          "cases": [
+            {
+              "file": "program/cycle10-feature-evidence.test.ts",
+              "case": "retains one existing environment host and finite optional reviews",
+              "duration_ms": 6.7104730000000075,
+              "failure": "AssertionError: Target cannot be null or undefined.\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:2163:20)\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:1958:14)\n    at Proxy.methodWrapper (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/chai/index.js:1737:25)\n    at /home/runner/work/eaglevisioncontractorplatform/eagl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": 41722159708,
+      "workflow": "Cycle 16 daily workflow guides",
+      "head": "27cb44bb68521ee21a8e5c6e0b2f3116d33f367b",
+      "conclusion": "failure",
+      "reports": [
+        {
+          "sha256": "936fb830c34784ffc516583a3b3c3d269f6057f566415ea6470928020fee253d",
+          "passed": 439,
+          "failed": 1,
+          "cases": [
+            {
+              "file": "program/cycle16-feature-evidence.test.ts",
+              "case": "preserves default-false opt-in and the single original repository host",
+              "duration_ms": 3.550820000000016,
+              "failure": "AssertionError: Target cannot be null or undefined.\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:2163:20)\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:1958:14)\n    at Proxy.methodWrapper (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/chai/index.js:1737:25)\n    at /home/runner/work/eaglevisioncontractorplatform/eagl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": 41722159635,
+      "workflow": "Cycle 18 source-bound daily workflow",
+      "head": "27cb44bb68521ee21a8e5c6e0b2f3116d33f367b",
+      "conclusion": "failure",
+      "reports": [
+        {
+          "sha256": "8b252600bd1d392cc2bf075865c5e69bc0a5071781572a19135a84a7aad0b16b",
+          "passed": 445,
+          "failed": 1,
+          "cases": [
+            {
+              "file": "program/cycle17-feature-evidence.test.ts",
+              "case": "preserves default-false opt-in and the single original repository host",
+              "duration_ms": 4.5968269999999904,
+              "failure": "AssertionError: Target cannot be null or undefined.\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:2163:20)\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:1958:14)\n    at Proxy.methodWrapper (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/chai/index.js:1737:25)\n    at /home/runner/work/eaglevisioncontractorplatform/eagl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": 41722159695,
+      "workflow": "Cycle 12 exact workflow revision and verification",
+      "head": "27cb44bb68521ee21a8e5c6e0b2f3116d33f367b",
+      "conclusion": "failure",
+      "reports": [
+        {
+          "sha256": "bf39731a88879af0c0329489964049d44c7f4594452b79b9ae48090c44f16360",
+          "passed": 480,
+          "failed": 1,
+          "cases": [
+            {
+              "file": "program/cycle12-feature-evidence.test.ts",
+              "case": "retains one existing environment host and finite optional reviews",
+              "duration_ms": 5.267540999999994,
+              "failure": "AssertionError: Target cannot be null or undefined.\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:2163:20)\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:1958:14)\n    at Proxy.methodWrapper (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/chai/index.js:1737:25)\n    at /home/runner/work/eaglevisioncontractorplatform/eagl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": 41722159596,
+      "workflow": "Cycle 15 guided task continuity",
+      "head": "27cb44bb68521ee21a8e5c6e0b2f3116d33f367b",
+      "conclusion": "failure",
+      "reports": [
+        {
+          "sha256": "ef4277addad36e840ba05c63576c914d372b81ffec2f8e59d8c3932229091b4b",
+          "passed": 400,
+          "failed": 1,
+          "cases": [
+            {
+              "file": "program/cycle15-feature-evidence.test.ts",
+              "case": "preserves default-false opt-in and the single original repository host",
+              "duration_ms": 4.369185000000016,
+              "failure": "AssertionError: Target cannot be null or undefined.\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:2163:20)\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:1958:14)\n    at Proxy.methodWrapper (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/chai/index.js:1737:25)\n    at /home/runner/work/eaglevisioncontractorplatform/eagl"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "correction": "Nine demonstrated obsolete static host assertions across eight suites now require exactly one actual awaited prepareSources call AND the original prepareOperatingSources default. All other assertions retained. Zero runtime/workflow/protected/timeout changes.",
+  "focused_corrections": {
+    "first_cases_passed": 62,
+    "first_source_cases": 52,
+    "first_original_native_cases": 10,
+    "remaining_source_cases_passed": 71,
+    "failed_after": 0
+  },
+  "original_cycle21_integration": [
+    {
+      "run_id": 41722159591,
+      "head": "27cb44bb68521ee21a8e5c6e0b2f3116d33f367b",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "run_id": 41722151341,
+      "head": "27cb44bb68521ee21a8e5c6e0b2f3116d33f367b",
+      "conclusion": "SUCCESS"
+    }
+  ],
+  "foundation": [
+    {
+      "run": 41722159570,
+      "head": "27cb44bb68521ee21a8e5c6e0b2f3116d33f367b",
+      "conclusion": "cancelled",
+      "jobs": [
+        {
+          "job": "postgres17",
+          "conclusion": "success",
+          "unfinished_steps": [],
+          "started_at": "2026-11-03T21:32:23Z",
+          "completed_at": "2026-11-03T21:34:36Z"
+        },
+        {
+          "job": "verify",
+          "conclusion": "cancelled",
+          "unfinished_steps": ["Run npm run check"],
+          "started_at": "2026-11-03T21:37:20Z",
+          "completed_at": "2026-11-03T21:47:38Z"
+        }
+      ],
+      "cause": "Provider reports cancellation during npm run check; root cause is not established from the available Main annotations."
+    },
+    {
+      "run": 41722151227,
+      "head": "27cb44bb68521ee21a8e5c6e0b2f3116d33f367b",
+      "conclusion": "cancelled",
+      "jobs": [
+        {
+          "job": "postgres17",
+          "conclusion": "success",
+          "unfinished_steps": [],
+          "started_at": "2026-11-03T21:30:08Z",
+          "completed_at": "2026-11-03T21:32:20Z"
+        },
+        {
+          "job": "verify",
+          "conclusion": "cancelled",
+          "unfinished_steps": ["Run npm run check"],
+          "started_at": "2026-11-03T21:37:48Z",
+          "completed_at": "2026-11-03T21:46:50Z"
+        }
+      ],
+      "cause": "Provider reports cancellation during npm run check; root cause is not established from the available Main annotations."
+    },
+    {
+      "run": 41715613860,
+      "head": "a9dd2e2844a1025adcc73ab48e16f5d0a77ba1e4",
+      "conclusion": "cancelled",
+      "jobs": [
+        {
+          "job": "verify",
+          "conclusion": "cancelled",
+          "unfinished_steps": ["Run npm run check"],
+          "started_at": "2026-11-03T20:50:53Z",
+          "completed_at": "2026-11-03T21:36:15Z"
+        },
+        {
+          "job": "postgres17",
+          "conclusion": "success",
+          "unfinished_steps": [],
+          "started_at": "2026-11-03T20:56:11Z",
+          "completed_at": "2026-11-03T20:58:38Z"
+        }
+      ],
+      "cause": "Foundation verify stopped in npm run check. Independent job annotation for a9dd2e28 run41715613860 proves45m limit; other cancellation causes not inferred."
+    },
+    {
+      "run": 41715830488,
+      "head": "d814f54eba1acd1ea7bb7102643356439edce4a6",
+      "conclusion": "cancelled",
+      "jobs": [
+        {
+          "job": "verify",
+          "conclusion": "cancelled",
+          "unfinished_steps": ["Run npm run check"],
+          "started_at": "2026-11-03T20:57:27Z",
+          "completed_at": "2026-11-03T21:43:00Z"
+        },
+        {
+          "job": "postgres17",
+          "conclusion": "success",
+          "unfinished_steps": [],
+          "started_at": "2026-11-03T21:03:34Z",
+          "completed_at": "2026-11-03T21:05:53Z"
+        }
+      ],
+      "cause": "Foundation verify stopped in npm run check. Independent job annotation for a9dd2e28 run41715613860 proves45m limit; other cancellation causes not inferred."
+    },
+    {
+      "run": 41715741911,
+      "head": "d814f54eba1acd1ea7bb7102643356439edce4a6",
+      "conclusion": "cancelled",
+      "jobs": [
+        {
+          "job": "postgres17",
+          "conclusion": "success",
+          "unfinished_steps": [],
+          "started_at": "2026-11-03T20:48:33Z",
+          "completed_at": "2026-11-03T20:53:53Z"
+        },
+        {
+          "job": "verify",
+          "conclusion": "cancelled",
+          "unfinished_steps": ["Run npm run check"],
+          "started_at": "2026-11-03T20:51:16Z",
+          "completed_at": "2026-11-03T21:36:34Z"
+        }
+      ],
+      "cause": "Foundation verify stopped in npm run check. Independent job annotation for a9dd2e28 run41715613860 proves45m limit; other cancellation causes not inferred."
+    },
+    {
+      "run": 41715924581,
+      "head": "161f1c59d864d60aa0f45820eb6417864519baf2",
+      "conclusion": "cancelled",
+      "jobs": [
+        {
+          "job": "postgres17",
+          "conclusion": "success",
+          "unfinished_steps": [],
+          "started_at": "2026-11-03T21:05:26Z",
+          "completed_at": "2026-11-03T21:07:33Z"
+        },
+        {
+          "job": "verify",
+          "conclusion": "cancelled",
+          "unfinished_steps": ["Run npm run check"],
+          "started_at": "2026-11-03T21:07:36Z",
+          "completed_at": "2026-11-03T21:52:55Z"
+        }
+      ],
+      "cause": "Foundation verify stopped in npm run check. Independent job annotation for a9dd2e28 run41715613860 proves45m limit; other cancellation causes not inferred."
+    },
+    {
+      "run": 41715860819,
+      "head": "161f1c59d864d60aa0f45820eb6417864519baf2",
+      "conclusion": "cancelled",
+      "jobs": [
+        {
+          "job": "verify",
+          "conclusion": "cancelled",
+          "unfinished_steps": ["Run npm run check"],
+          "started_at": "2026-11-03T20:56:08Z",
+          "completed_at": "2026-11-03T21:42:21Z"
+        },
+        {
+          "job": "postgres17",
+          "conclusion": "success",
+          "unfinished_steps": [],
+          "started_at": "2026-11-03T20:58:27Z",
+          "completed_at": "2026-11-03T21:01:09Z"
+        }
+      ],
+      "cause": "Foundation verify stopped in npm run check. Independent job annotation for a9dd2e28 run41715613860 proves45m limit; other cancellation causes not inferred."
+    }
+  ],
+  "manual_reruns": 0,
+  "historical_cycle18": "Historical failed/timeout/cancelled runs remain unchanged. Prior browser15s click-timeout root cause remains UNDETERMINED. The current immediate static assertion failure is a separate proven mismatch.",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "cycle22_inherited_failed_artifacts": [
+    {
+      "run": 41725754781,
+      "workflow": "Cycle 10 everyday operating reviews",
+      "head": "86dd3a884ac007349ac216f1cdb729ad73ffe351",
+      "conclusion": "failure",
+      "reports": [
+        {
+          "sha256": "973e3ab6230ed3cbd22fe7e8ad362bf8c1878901ca6af31ff7af5bfaa7ce57af",
+          "passed": 364,
+          "failed": 1,
+          "cases": [
+            {
+              "file": "program/cycle10-feature-evidence.test.ts",
+              "case": "retains one existing environment host and finite optional reviews",
+              "duration_ms": 8.284256,
+              "failure": "AssertionError: Target cannot be null or undefined.\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:2163:20)\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:1958:14)\n    at Proxy.methodWrapper (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/chai/index.js:1737:25)\n    at /home/runner/work/eaglevisioncontractorplatform/eagl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": 41725754854,
+      "workflow": "Cycle 12 exact workflow revision and verification",
+      "head": "86dd3a884ac007349ac216f1cdb729ad73ffe351",
+      "conclusion": "failure",
+      "reports": [
+        {
+          "sha256": "3c22a2b8afef6bb83868336b20dc323633a65a642ab5a30653cec2611c026e4b",
+          "passed": 480,
+          "failed": 1,
+          "cases": [
+            {
+              "file": "program/cycle12-feature-evidence.test.ts",
+              "case": "retains one existing environment host and finite optional reviews",
+              "duration_ms": 7.941057999999998,
+              "failure": "AssertionError: Target cannot be null or undefined.\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:2163:20)\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:1958:14)\n    at Proxy.methodWrapper (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/chai/index.js:1737:25)\n    at /home/runner/work/eaglevisioncontractorplatform/eagl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": 41725906753,
+      "workflow": "Cycle 10 everyday operating reviews",
+      "head": "e5b6c9a0fc40b59acf68de7aa068e55d0d2739f4",
+      "conclusion": "failure",
+      "reports": [
+        {
+          "sha256": "57270b757cbd9c495f46951e2d43e37408f3aa4860866ac6b320c5a49b32e9ff",
+          "passed": 364,
+          "failed": 1,
+          "cases": [
+            {
+              "file": "program/cycle10-feature-evidence.test.ts",
+              "case": "retains one existing environment host and finite optional reviews",
+              "duration_ms": 6.3030569999999955,
+              "failure": "AssertionError: Target cannot be null or undefined.\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:2163:20)\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:1958:14)\n    at Proxy.methodWrapper (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/chai/index.js:1737:25)\n    at /home/runner/work/eaglevisioncontractorplatform/eagl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": 41725906563,
+      "workflow": "Cycle 12 exact workflow revision and verification",
+      "head": "e5b6c9a0fc40b59acf68de7aa068e55d0d2739f4",
+      "conclusion": "failure",
+      "reports": [
+        {
+          "sha256": "aa7950369630ac355f0bfb2dc941a382f00398fa656071c9c1454735cbc0b97e",
+          "passed": 480,
+          "failed": 1,
+          "cases": [
+            {
+              "file": "program/cycle12-feature-evidence.test.ts",
+              "case": "retains one existing environment host and finite optional reviews",
+              "duration_ms": 7.92654200000004,
+              "failure": "AssertionError: Target cannot be null or undefined.\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:2163:20)\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:1958:14)\n    at Proxy.methodWrapper (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/chai/index.js:1737:25)\n    at /home/runner/work/eaglevisioncontractorplatform/eagl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": 41726212560,
+      "workflow": "Cycle 10 everyday operating reviews",
+      "head": "51bbe5ada4853f2306ea38b3e1b04a92057d7ea6",
+      "conclusion": "failure",
+      "reports": [
+        {
+          "sha256": "b06b9074165d7d4cd5c65e0e6b280f71bc5c76b659a7b35eff3f79fb6af6dadc",
+          "passed": 364,
+          "failed": 1,
+          "cases": [
+            {
+              "file": "program/cycle10-feature-evidence.test.ts",
+              "case": "retains one existing environment host and finite optional reviews",
+              "duration_ms": 8.21722699999998,
+              "failure": "AssertionError: Target cannot be null or undefined.\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:2163:20)\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:1958:14)\n    at Proxy.methodWrapper (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/chai/index.js:1737:25)\n    at /home/runner/work/eaglevisioncontractorplatform/eagl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": 41726212600,
+      "workflow": "Cycle 12 exact workflow revision and verification",
+      "head": "51bbe5ada4853f2306ea38b3e1b04a92057d7ea6",
+      "conclusion": "failure",
+      "reports": [
+        {
+          "sha256": "8ea6bcd0228c05bcd47c1399c2da6090aba7a863179d1d371e6ade50020ef61d",
+          "passed": 480,
+          "failed": 1,
+          "cases": [
+            {
+              "file": "program/cycle12-feature-evidence.test.ts",
+              "case": "retains one existing environment host and finite optional reviews",
+              "duration_ms": 8.52057400000001,
+              "failure": "AssertionError: Target cannot be null or undefined.\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:2163:20)\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:1958:14)\n    at Proxy.methodWrapper (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/chai/index.js:1737:25)\n    at /home/runner/work/eaglevisioncontractorplatform/eagl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": 41726225902,
+      "workflow": "Cycle 12 exact workflow revision and verification",
+      "head": "24253d8ece3392d71dafde9732f42da0538bc1d6",
+      "conclusion": "failure",
+      "reports": [
+        {
+          "sha256": "b58175e2edf22688a750408b92959cd27f7e830922598ed15c188af7ceef89cc",
+          "passed": 480,
+          "failed": 1,
+          "cases": [
+            {
+              "file": "program/cycle12-feature-evidence.test.ts",
+              "case": "retains one existing environment host and finite optional reviews",
+              "duration_ms": 7.7376540000000205,
+              "failure": "AssertionError: Target cannot be null or undefined.\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:2163:20)\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:1958:14)\n    at Proxy.methodWrapper (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/chai/index.js:1737:25)\n    at /home/runner/work/eaglevisioncontractorplatform/eagl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": 41726263579,
+      "workflow": "Cycle 12 exact workflow revision and verification",
+      "head": "6def582dee2d67e4577722719dabc5655005e265",
+      "conclusion": "failure",
+      "reports": [
+        {
+          "sha256": "230e0a5ea883a0986c175f6aea5d2fc2a0162ce8e791f5bae2076c9bf6402586",
+          "passed": 480,
+          "failed": 1,
+          "cases": [
+            {
+              "file": "program/cycle12-feature-evidence.test.ts",
+              "case": "retains one existing environment host and finite optional reviews",
+              "duration_ms": 5.434134999999998,
+              "failure": "AssertionError: Target cannot be null or undefined.\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:2163:20)\n    at Proxy.<anonymous> (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/index.aTZaPVhf.js:1958:14)\n    at Proxy.methodWrapper (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/chai/index.js:1737:25)\n    at /home/runner/work/eaglevisioncontractorplatform/eagl"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "child_ci_forwarding": "CYCLE22_CI_FORWARD_PATCH.json; five test-only forward commits, exact25 author files unchanged,1611 shared inputs match,71/71 representative tests PASS; no manual rerun.",
+  "subsequent_observed_failures": [
+    {
+      "run": 41725369426,
+      "head": "a5c2a78ccf4cf073f51e1b3248a66dca7bca7167",
+      "workflow": "Foundation checks",
+      "stage": "npm run check",
+      "passed": 7848,
+      "failed": 36,
+      "declared_skipped": 321,
+      "evidence": "/private/tmp/cycle22-ci/41725369426-foundation-failed.log",
+      "evidence_sha256": "94a22f3f14952981149cc006c827f14a6270f6531cc967702f7c794133cb40ac",
+      "cases": "Five already corrected preparer assertions;31 exact-source validation cases fail because historical author Git objects are unavailable in the shallow Foundation checkout. No source fallback is permitted.",
+      "resolution": "OFFLINE45_PLUS_ORIGINAL46_PLUS_CURRENT58_PASS_INDEPENDENT_HELPER_REVIEW_CLEAR_ACTUAL_GITHUB_PENDING",
+      "frozen_foundation_workflow_sha256": "df337433bfde1768ccbe396326793559f21113aa7c24e37fbd5955c4c29f87be"
+    },
+    {
+      "run": 41726480513,
+      "head": "36d805b5d8ca16f09697395c8a305b3e7d4318ef",
+      "workflow": "Cycle13",
+      "application_passed": 525,
+      "application_failed": 0,
+      "application_sha256": "b5cf9e4df4b401f546a84b3924de6ab7133cb458bdf03006fd4745ecfbffe089",
+      "browser_failed": 9,
+      "case": "one shared environment and withdrawn company context / all3brands3layouts",
+      "demonstrated_cause": "Original page-wide checkbox lookup is ambiguous after later explicit default-off controls (8matches). Exact original disposable-simulation label is required.",
+      "resolution": "EXACT_SELECTOR_CORRECTION_9_OF_9_ORIGINAL_BROWSER_CASES_PASS",
+      "focused_result": {
+        "path": "artifacts/cycle22/retained-cycle13-navigation.json",
+        "sha256": "08af3b50d07cf4280b625a1731bfcc1e6f80c7345a26083c8ef6e72658ffd75a",
+        "passed": 9,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "original_assertions_and_budget_unchanged": true
+      }
+    },
+    {
+      "run": 41726480584,
+      "head": "36d805b5d8ca16f09697395c8a305b3e7d4318ef",
+      "workflow": "Cycle18",
+      "application_passed": 446,
+      "application_failed": 0,
+      "application_sha256": "faf0986e6c0c57129594bef4c3936a37c42e1e36751cadee505e4d0a08dfd448",
+      "browser_passed": 21,
+      "browser_failed": 9,
+      "case": "one selected job through daily reviews and next job / all3brands3layouts",
+      "demonstrated_failure": "15second click completion timeout on original daily workbench navigation; handler completed in failure snapshot.",
+      "resolution": "DEMONSTRATED_RENDER_COST_CORRECTION_PLUS_EXPLICIT_VISIBLE_EXPIRY_INVALIDATION_9_ORIGINAL_BROWSER_AND3_CLOCK_CASES_PASS_INDEPENDENT_DELTA_CLEAR"
+    },
+    {
+      "run": 41731420081,
+      "head": "d0b63ade55214779cd0cf37bb947fcbf9e8197e2",
+      "workflow": "Cycle18",
+      "application_passed": 446,
+      "application_failed": 0,
+      "application_sha256": "881a699ba41c2eab29d6699a34da59650393234efc5e2a40560f5716be44a093",
+      "browser_passed": 29,
+      "browser_failed": 1,
+      "case": "one selected job through daily reviews and next job / roofing-example tablet",
+      "demonstrated_failure": "Same15second Today\u2019s priorities click timeout. Passing29 preserved; no runner-only cause inferred."
+    }
+  ],
+  "shared_ci_correction_commit": "1eff2018d43da47d06c0fcd8370562d404c52f95"
+}

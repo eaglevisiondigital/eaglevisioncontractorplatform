@@ -1,0 +1,94 @@
+name: Cycle 22 current-source operating review
+on:
+  push:
+    branches: ['codex/program-cycle-twenty-two-integration']
+  pull_request:
+    paths:
+      - 'src/lib/workflows/saved-workbench-selection.ts'
+      - 'src/lib/workflows/saved-revision-runtime.ts'
+      - 'src/lib/workflows/saved-revision-exercise.ts'
+      - 'src/lib/workflows/correction-preview-sources.ts'
+      - 'src/components/workflows/SavedRevisionWorkbench.tsx'
+      - 'src/components/workflows/OperatingCenterCycleTwentyTwo.tsx'
+      - 'src/components/workflows/OperatingCenterCycleFifteen.tsx'
+      - 'src/lib/workflows/task-custody-review.ts'
+      - 'src/lib/workflows/cost-coverage-path.ts'
+      - 'src/lib/workflows/property-service-continuity.ts'
+      - 'src/lib/workflows/maintenance-requirements-review.ts'
+      - 'src/lib/workflows/current-owner-priorities.ts'
+      - 'src/lib/workflows/task-correction-review.ts'
+      - 'src/lib/workflows/cost-correction-review.ts'
+      - 'src/lib/workflows/published-service-navigation.ts'
+      - 'src/lib/workflows/maintenance-plan-correction.ts'
+      - 'src/lib/workflows/recorded-owner-actions.ts'
+      - 'src/lib/phase3.ts'
+      - 'src/lib/property.ts'
+      - 'src/lib/operations.ts'
+      - 'src/components/workflows/TaskCustodyReview.tsx'
+      - 'src/components/workflows/CostCoveragePath.tsx'
+      - 'src/components/workflows/PropertyServiceContinuity.tsx'
+      - 'src/components/workflows/MaintenanceRequirementsReview.tsx'
+      - 'src/components/workflows/CurrentOwnerPriorities.tsx'
+      - 'src/components/workflows/TaskCorrectionReview.tsx'
+      - 'src/components/workflows/CostCorrectionReview.tsx'
+      - 'src/components/workflows/PublishedServiceNavigator.tsx'
+      - 'src/components/workflows/MaintenancePlanCorrection.tsx'
+      - 'src/components/workflows/RecordedOwnerActions.tsx'
+      - 'src/components/workflows/task-custody-review.css'
+      - 'src/components/workflows/cost-coverage-path.css'
+      - 'src/components/workflows/property-service-continuity.css'
+      - 'src/components/workflows/maintenance-requirements-review.css'
+      - 'src/components/workflows/current-owner-priorities.css'
+      - 'src/components/workflows/DailyWorkbench.tsx'
+      - 'vite.config.ts'
+      - 'scripts/test-git-history.mjs'
+      - 'tests/setup/git-history.ts'
+      - 'tests/program/test-git-history.test.ts'
+      - 'tests/program/cycle22*'
+      - 'tests/program/playwright.cycle22-clock.config.ts'
+      - 'tests/cycle22*'
+      - 'tests/browser/cycle22*'
+      - 'playwright.cycle22*.ts'
+      - 'scripts/*cycle22*'
+      - 'docs/program/CYCLE22*'
+      - '.github/workflows/cycle22-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle22-integration-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  bounded-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node scripts/check-cycle22.mjs --require-independent
+      - run: npx vitest run tests/cycle22*.test.ts --maxWorkers=2 --reporter=json --outputFile=artifacts/cycle22/application-results.json
+      - run: node scripts/collect-cycle22-results.mjs --application
+      - run: npx vitest run tests/program/test-git-history.test.ts tests/program/cycle22-daily-pane-render-guards.test.ts tests/program/cycle22-ci-delta-review.test.ts --maxWorkers=2 --reporter=json --outputFile=artifacts/cycle22/ci-delta-results.json
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: node scripts/collect-cycle22-results.mjs --collect-browser
+      - run: npx playwright test -c playwright.cycle22.config.ts --workers=1
+      - run: npx playwright test -c playwright.cycle22-off.config.ts --workers=1
+      - run: npx playwright test -c tests/program/playwright.cycle22-clock.config.ts --workers=1
+      - run: node scripts/cycle22-keyboard-check.mjs
+      - run: node scripts/collect-cycle22-results.mjs --complete
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle22-current-source-evidence
+          path: |
+            artifacts/cycle22/
+            test-results/
+          retention-days: 7
