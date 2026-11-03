@@ -1,0 +1,54 @@
+.maintenance-renewal-evidence {
+  min-width: 0;
+  color: #20352f;
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+}
+.maintenance-renewal-evidence .saved-evidence-controls {
+  margin-top: 1.25rem;
+  padding: 1.1rem;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  background: #fff;
+  min-width: 0;
+}
+.maintenance-renewal-evidence button,
+.maintenance-renewal-evidence input,
+.maintenance-renewal-evidence select {
+  min-height: 44px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.maintenance-renewal-evidence .saved-evidence-controls button {
+  margin: 0.4rem 0.5rem 0.4rem 0;
+  background: var(--journey-primary, #00543e);
+  color: #fff;
+  white-space: normal;
+}
+.maintenance-renewal-evidence label {
+  display: block;
+  margin: 0.75rem 0;
+  color: #526159;
+}
+.maintenance-renewal-evidence pre {
+  max-width: 100%;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 0.82rem;
+}
+.maintenance-renewal-evidence code {
+  overflow-wrap: anywhere;
+}
+.maintenance-renewal-evidence :focus-visible {
+  outline: 3px solid var(--journey-accent, #dfb461);
+  outline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .maintenance-renewal-evidence .saved-evidence-controls {
+    padding: 1rem;
+  }
+  .maintenance-renewal-evidence .saved-evidence-controls button {
+    width: 100%;
+    margin: 0.4rem 0;
+  }
+}
