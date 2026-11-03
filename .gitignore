@@ -58,3 +58,6 @@ artifacts/cycle18/
 
 # Disposable Cycle19 local browser/application evidence; CI retains artifacts.
 artifacts/cycle19/
+
+# Disposable Cycle20 evidence files, downloads and responsive browser artifacts.
+artifacts/cycle20/

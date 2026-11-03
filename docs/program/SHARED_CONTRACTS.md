@@ -522,3 +522,27 @@ per canonicalOperations/company/job and finite kind; gate revocation/any invoked
 uncertainty retains global UNKNOWN with no replay. It is disposable same-tab fixture
 engineering, never a connected writer or durable business store. No original engines
 or approved views/locks change. Existing slot IDs/default paths remain unchanged.
+
+## Cycle 20 saved evidence and original canonical actions
+
+Compose the five module wrappers through existing task-review slots and
+SavedRevisionWorkbench tabs. Keep one OperatingSources host and exact selected job;
+refresh shared search only after a known original-engine acknowledgment. Retained
+UNKNOWN/action holds survive presentation changes and new evidence; import/reconcile
+never writes or clears them. Current eligible staff, original root/entry handles,
+company/customer/property/job/issued version and module source ownership are checked
+before and after asynchronous reads/hashing and before exposing details.
+
+EvidenceRecipe uses synchronous allowlisted parse and source-witness callbacks over
+complete plain bounded data. Exact six-ID identity and strict canonical JSON/hash
+bind saved content. Old mutable content has no authenticated historical-truth claim;
+missing/foreign sources deny, while known source revisions permit explicit historical
+comparison. Original immutable published history remains authoritative. Private workforce,
+costs and notes never enter the Customer payload. Ended-period labor preparation is
+explicitly organization-wide; review every affected job/time entry before original
+payroll preparation/locking, with no financial execution. Source-derived priority
+absence remains UNKNOWN. No second store, business engine or connected writer.
+
+Browser files retain bytes only. Private Node test-only file writes and bounded process
+loss prove exact historical bytes, not canonical restoration or operational custody.
+All independent release, recovery, Auth/MFA, NMI, migration and financial gates persist.

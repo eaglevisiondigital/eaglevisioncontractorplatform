@@ -212,7 +212,9 @@ function Controls<P>({
         <details>
           <summary>Opened historical evidence</summary>
           <code>{file.envelope.sha256}</code>
-          <pre>{JSON.stringify(file.envelope.payload, null, 2)}</pre>
+          <pre tabIndex={0} role="region" aria-label="Historical evidence JSON">
+            {JSON.stringify(file.envelope.payload, null, 2)}
+          </pre>
         </details>
       )}
     </section>

@@ -1660,3 +1660,26 @@ application cases,57 development and3 production-OFF browser cases PASS, with se
 exact-head automatic CI. All historical acceptance labels, migrations, P1/four,
 Netlify/executor, recovery/MFA/NMI/Auth/provider/financial/send/hosted/deploy/merge
 gates remain unchanged. No operational or Release1.0 authority is granted.
+
+## November 3 · Cycle 20 historical evidence boundary
+
+Extend the existing repository readers, source fences, draft-edit custody and canonical
+labor preparation. The generic six-ID evidence envelope excludes reviewer identity;
+each module parses a strict allowlist and independently witnesses its exact current
+source. Pure decoding is not authorization. A self-hash is integrity evidence only:
+older mutable assertions remain historical untrusted content; immutable published
+report content must match actual retained versions. A missing old derived priority
+is UNKNOWN, never inferred completion.
+
+Browser download is FILE_PREPARED_NOT_CONFIRMED_SAVED. The unwired synthetic-only Node
+adapter writes private immutable content-addressed files, fsyncs file and directory,
+and permits only exact read-only duplicate reconciliation. Its process-loss test does
+not establish canonical recovery, power-loss durability or operator-resistant custody.
+No general export/restore API, business database, schema or engine is added.
+
+A named focusable JSON region fixes the demonstrated Axe keyboard-scrolling failure.
+A scoped Main Finance header override also fixes reproduced mobile text overlap;
+original author and locked styles remain exact. Portable repository-relative browser
+artifacts replace macOS-only temporary paths.
+Independent source and tooling reviews preserve strict assertions and exact author
+blobs. All prior approvals, protected artifacts and release restrictions remain intact.

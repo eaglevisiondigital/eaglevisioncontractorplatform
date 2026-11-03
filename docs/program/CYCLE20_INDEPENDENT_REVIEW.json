@@ -1,0 +1,189 @@
+{
+  "schema": "propel-cycle20-independent-review-v1",
+  "reviewed_candidate": "b7949d890574bc379bba99595bc2ef32add1c0eb",
+  "reviewer_agent": "/root/cycle20_independent_review",
+  "review_branch": "codex/cycle20-independent-review",
+  "scope": "Independent source and local integration review only; no operational, visual or release approval.",
+  "status": "CLEAR_LOCAL_SYNTHETIC_ONLY",
+  "reviewed_code": [
+    {
+      "path": "server/field-lab/saved-evidence-files.ts",
+      "git_blob": "f5e3cc7a657ff3cb47c870f7369af6053e6d0599",
+      "sha256": "23aba42d3aa4eca09f4113b5a56888897cfe865af41a046f762b740ce85ead7d"
+    },
+    {
+      "path": "src/components/workflows/MaintenanceRenewalEvidence.tsx",
+      "git_blob": "462fd114568adb0495fba3e510de7c15558c1e9c",
+      "sha256": "7eeba682350c7d5a9aae5c77b67313568e0036b936af543f4fe856f1a26190c4"
+    },
+    {
+      "path": "src/components/workflows/OperatingCenterCycleFifteen.tsx",
+      "git_blob": "21de30defd6673eecc30c84d8c2ff7a9c3b1830e",
+      "sha256": "38165ae9748f7bd8ae929e487cfcfafd206ddd1aaf89fe62e83c36740375cdd0"
+    },
+    {
+      "path": "src/components/workflows/OperatingCenterCycleTwenty.tsx",
+      "git_blob": "86aa73b126ef41a8c9d6bb7370c4f9bd7a1e454c",
+      "sha256": "d57f2a963ac13eab39bc4321b8f266024c291cdc13eabeeb0de314e1160b41ff"
+    },
+    {
+      "path": "src/components/workflows/PublishedServiceContinuity.tsx",
+      "git_blob": "0b206b1664cbef3d22c64f8bf35ac2b08f5dcb55",
+      "sha256": "45d0bb3481e4842ea3f7f2da50254fa9d50581d6645b8125793c1342073fa87f"
+    },
+    {
+      "path": "src/components/workflows/RecordedCostContinuity.tsx",
+      "git_blob": "1ae2ed001e49049d7b30e8951332a2e67a1fce5a",
+      "sha256": "52da5881356d45bdc8c5586d03cc095aeb6cb6f0d3fd4334305265cb01ccf712"
+    },
+    {
+      "path": "src/components/workflows/RecordedPriorityNavigation.tsx",
+      "git_blob": "ee5c1f8ae21c4ef739495fa72d3bc35ccd32bf7f",
+      "sha256": "c2913cc1c465b6645d5d916c17c91e3b277d381726f654d3c7f5a46d111202f7"
+    },
+    {
+      "path": "src/components/workflows/SavedEvidenceControls.tsx",
+      "git_blob": "5436690170fccd07ceee307bc3a0667599d93894",
+      "sha256": "bd48701c5cf3294089125592b8b1ebed26fd263fe52d6fa52a85c1a4a9a752a1"
+    },
+    {
+      "path": "src/components/workflows/SavedRevisionWorkbench.tsx",
+      "git_blob": "48ba280db07fe211c3f2105cff8c8bda0f0fc183",
+      "sha256": "a4120301cc9c69220eb1bdbd5da7b69f0d5a546db4a85bca50595ab114b67de1"
+    },
+    {
+      "path": "src/components/workflows/WorkOrderEvidenceContinuity.tsx",
+      "git_blob": "0b7d6fea521676a751bcac7cee2047c9cdbff404",
+      "sha256": "6d889734823e6ee6aa0c3d360e0f8e884f13cb0e4d846292cfa22259bc7dc37d"
+    },
+    {
+      "path": "src/components/workflows/maintenance-renewal-evidence.css",
+      "git_blob": "bb88cc1be46cc72b8c8adfacdead57d5b4177629",
+      "sha256": "3fdf1f7f46c8026e183d56bff1ae218a3af2917fda44071e3afe603e6571a217"
+    },
+    {
+      "path": "src/components/workflows/published-service-continuity.css",
+      "git_blob": "ab792337e6327bef140ce83f21523b75da70b503",
+      "sha256": "fd0a926707db5a5508d99b5fa0cccf9d51d185a540b0a6b0bde66bde26864c29"
+    },
+    {
+      "path": "src/components/workflows/recorded-cost-continuity.css",
+      "git_blob": "1489b422a701631b5662a07945595ffabc868d8c",
+      "sha256": "c60e6779a40fbf64b31c92445974f01ad3bcdc5529581beed8bb9035661ea554"
+    },
+    {
+      "path": "src/components/workflows/recorded-priority-navigation.css",
+      "git_blob": "ea26109b1786c4a5f9aaa9ad37671e72c8a5380a",
+      "sha256": "e58f101c76909e1bbe367062539d55d11d81149f0d04a5fba4e73f2da430c3b3"
+    },
+    {
+      "path": "src/components/workflows/saved-revision-workbench.css",
+      "git_blob": "b3795c5e5db755e7d549abf66fb6a3aa1ecdb478",
+      "sha256": "a6d70f64717130e034c588c1504827d7c3554fea951d0a63c26f8cd264cc4d67"
+    },
+    {
+      "path": "src/components/workflows/work-order-evidence-continuity.css",
+      "git_blob": "732104db8610bec0be6f15f486eb37005e045ce1",
+      "sha256": "c7d51c1d82c86a18ddacf5d3036e0619714713df1993946356dd8403d8dbad88"
+    },
+    {
+      "path": "src/lib/workflows/maintenance-renewal-evidence.ts",
+      "git_blob": "249b796d84a8315cc16bcac676ef7193a5732519",
+      "sha256": "cc79b03b2826dbf79a0c3d4772b93275b6a5e14096bdac22d2cce8e6eefbdeb7"
+    },
+    {
+      "path": "src/lib/workflows/published-service-continuity.ts",
+      "git_blob": "04e3cf7873dbfa62eb2e621bebd24b926780f0d9",
+      "sha256": "e6edb14442670d1a4f72253485741fe7ef40ddd19b80e2e890a309b997b06652"
+    },
+    {
+      "path": "src/lib/workflows/recorded-cost-continuity.ts",
+      "git_blob": "387492d1914a1bd8ffa255703ed9f64a234e37fb",
+      "sha256": "7bcccc150806a40605ed4045b5673555a06da2c0e2ec7cb0bd89d6909f57c03f"
+    },
+    {
+      "path": "src/lib/workflows/recorded-priority-navigation.ts",
+      "git_blob": "3535123047f687b00efb4bb0a545594f600dbd10",
+      "sha256": "b500bf0c9d5c3457d2e675533a10dd1d647ba26d1c10aeb23c4b17e925b80d30"
+    },
+    {
+      "path": "src/lib/workflows/saved-evidence-runtime.ts",
+      "git_blob": "69be2c30b153550e61ef192bfd87d85d91504be7",
+      "sha256": "37c8d26c43db9e9972ddc500ec8046a2a64cda2408eab6a49a01fc955d1464be"
+    },
+    {
+      "path": "src/lib/workflows/saved-revision-exercise.ts",
+      "git_blob": "ffc9d93c91621d0a2fb2fb92439d9c724b234569",
+      "sha256": "5e7fb11743a3bb6709362de50ba2a60d4c5c42f324d0e85f7f8a620640af6f71"
+    },
+    {
+      "path": "src/lib/workflows/work-order-evidence-continuity.ts",
+      "git_blob": "21018fb2c20efbdb3026362a84100225b1741e5f",
+      "sha256": "f5590db477e6c48c44da2db6427894a62ef400b64be961df93027fcdf3368f1f"
+    }
+  ],
+  "new_product_defects": [],
+  "demonstrated_boundaries": [
+    {
+      "id": "EVIDENCE_NOT_CANONICAL_RESTORE",
+      "status": "RETAINED",
+      "evidence": "Private complete-content files reopen only through current exact original canonical sources. Fresh fixture IDs, wrong property/customer/job/company and unrecorded source payloads reject. No import, restore or authority follows a hash."
+    },
+    {
+      "id": "UNAUTHENTICATED_MUTABLE_HISTORY",
+      "status": "EXPLICIT_LIMIT",
+      "evidence": "A local owner can rehash modified older mutable Field assertions. They remain HISTORICAL_EVIDENCE_ONLY/STALE with authority false; current draft is unchanged. Immutable published reports and issued scope are separately checked against exact canonical history and reject rewrites."
+    },
+    {
+      "id": "DISAPPEARED_DERIVED_PRIORITY",
+      "status": "UNKNOWN_NO_COMPLETION_INFERENCE",
+      "evidence": "Actual organization labor preparation may remove a derived cost-review priority card. Its old file reconciliation rejects Unrecorded priority source rejected; absence never proves completion or permits action. Finance becomes stale while unchanged published-safe Customer history matches."
+    },
+    {
+      "id": "FILE_OWNER_AND_DISK_TRUST",
+      "status": "EXPLICIT_LIMIT",
+      "evidence": "Node adapter requires owned private canonical disposable directory and immutable content-addressed files. Same-owner malicious path substitution, disk rollback, encryption and power-loss durability are outside this claim; browser download alone is not a durable acknowledgment."
+    },
+    {
+      "id": "CANONICAL_PREPARATION_ONLY",
+      "status": "RETAINED",
+      "evidence": "Actual original payroll preparation reviews every organization job, ended reviewed entries and original canonical aggregates. It locks original internal period once, never creates payment, ledger, invoice, contract, dispatch or customer authority. Superseded corrected entry cost-coverage remains PARTIAL under existing engine."
+    }
+  ],
+  "historical_ci_diagnosis": {
+    "cycle18_browser": "Reviewed current retained log: 9 failures at enabled/stable click, mostly Today\u2019s priorities line243 and one line228; click began but did not complete within15000ms. Missing trace/cpu/renderer evidence prevents attribution solely to runner. Retain failed status; no timeout/assertion/source changes or rerun performed by reviewer.",
+    "customer19_foundation": "Reviewed retained log:6993 passed,1 failed,321 declared skipped. Exact C18 independent finance invoked source-admission drift case line535 timed out at30000ms. This is a real unsuccessful coverage outcome; bounded later passes do not rewrite historical CI.",
+    "passport135": "Main owns exact-head evidence reconciliation; no review rerun or CI promotion."
+  },
+  "verification": {
+    "independent_application": {
+      "tests": 42,
+      "passed": 42,
+      "failed": 0,
+      "pending": 0,
+      "max_ms": 6666.168791999997,
+      "raw_sha256": "5f796dcd1fa2242d3ff62da5c69511be111505e04d23056a8bd9229f8aa2740c",
+      "evidence": "Actual source-based 3brand/5recipe private-file plus original canonical editing/preparation/navigation integration; no mocks substituted for canonical engines."
+    },
+    "types": "PASS",
+    "scoped_lint": "PASS",
+    "format": "PASS",
+    "retained_cycle19_integrity": "PASS",
+    "feature_inventory": "PASS:25records;5locks/13bindings",
+    "browser_accessibility_responsive": "Main-owned actual browser evidence pending; source review does not infer browser PASS"
+  },
+  "protected_boundaries": {
+    "migrations": "UNCHANGED",
+    "frozen_p1_four_artifacts": "UNCHANGED",
+    "approved_design_artwork": "UNCHANGED",
+    "connected_routes": "CLOSED",
+    "hosted_writes": false,
+    "credentials_retrieved": false,
+    "canonical_restart_restore": false,
+    "operational_recovery": "UNVERIFIED",
+    "payment_send_dispatch": false,
+    "merge_deployment": false,
+    "release": "NOT READY / NOT AUTHORIZED"
+  },
+  "owner_recovery_rehearsal": "November4 independent physical device and actual synthetic demonstration remain unverified. No recovery baseline, device qualification or hosted action performed."
+}

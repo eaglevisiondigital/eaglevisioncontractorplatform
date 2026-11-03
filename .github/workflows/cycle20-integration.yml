@@ -1,0 +1,67 @@
+name: Cycle 20 exact saved evidence continuity
+on:
+  push:
+    branches: ['codex/program-cycle-twenty']
+  pull_request:
+    paths:
+      - 'src/components/workflows/SavedRevisionWorkbench.tsx'
+      - 'src/components/workflows/saved-revision-workbench.css'
+      - 'src/components/workflows/SavedEvidenceControls.tsx'
+      - 'src/lib/workflows/saved-evidence-runtime.ts'
+      - 'src/lib/workflows/saved-revision-exercise.ts'
+      - 'src/lib/workflows/work-order-evidence-continuity.ts'
+      - 'src/components/workflows/WorkOrderEvidenceContinuity.tsx'
+      - 'src/components/workflows/work-order-evidence-continuity.css'
+      - 'src/lib/workflows/recorded-cost-continuity.ts'
+      - 'src/components/workflows/RecordedCostContinuity.tsx'
+      - 'src/components/workflows/recorded-cost-continuity.css'
+      - 'src/lib/workflows/published-service-continuity.ts'
+      - 'src/components/workflows/PublishedServiceContinuity.tsx'
+      - 'src/components/workflows/published-service-continuity.css'
+      - 'src/lib/workflows/maintenance-renewal-evidence.ts'
+      - 'src/components/workflows/MaintenanceRenewalEvidence.tsx'
+      - 'src/components/workflows/maintenance-renewal-evidence.css'
+      - 'src/lib/workflows/recorded-priority-navigation.ts'
+      - 'src/components/workflows/RecordedPriorityNavigation.tsx'
+      - 'src/components/workflows/recorded-priority-navigation.css'
+      - 'server/field-lab/saved-evidence-files.ts'
+      - 'tests/cycle20*'
+      - 'tests/program/*cycle20*'
+      - 'scripts/*cycle20*'
+      - 'docs/program/CYCLE20_SOURCE_MANIFEST.json'
+      - 'docs/program/CYCLE20_INDEPENDENT_REVIEW.json'
+      - '.github/workflows/cycle20-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle20-integration-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  bounded-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node scripts/check-cycle20-integrity.mjs
+      - run: node scripts/check-cycle20-browser-selection.mjs
+      - run: npx vitest run tests/cycle20*.test.ts --maxWorkers=2 --reporter=json --outputFile=artifacts/cycle20/application-results.json
+      - run: node scripts/check-cycle20-results.mjs
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test -c tests/program/playwright.cycle20.config.ts --workers=2
+      - run: npx playwright test -c tests/program/playwright.cycle20-off.config.ts --workers=2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle20-saved-source-file-evidence
+          path: |
+            artifacts/cycle20/
+            test-results/
+          retention-days: 7

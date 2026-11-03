@@ -434,3 +434,16 @@ per canonicalOperations/company/job and finite kind; gate revocation/any invoked
 uncertainty retains global UNKNOWN with no replay. It is disposable same-tab fixture
 engineering, never a connected writer or durable business store. No original engines
 or approved views/locks change. Existing slot IDs/default paths remain unchanged.
+
+## Cycle 20 evidence controls
+
+Reuse the existing warm surfaces, approved contractor colors, typography, task-review
+slots and five retained-job tabs. New evidence controls and draft inputs use visible
+labels, 44px touch targets, wrapping mobile controls and aria-current navigation.
+Escaped historical JSON is collapsed by default and has a named keyboard-focusable
+scroll region. File preparation, stale-source, unknown-source and denied states use
+text rather than color alone. The default-false option preserves the prior experience.
+
+All three approved design scopes and five locked artwork/CSS files remain unchanged.
+Operating Center and advanced panels still require separate owner visual approval;
+passing Axe, browser tests and screenshot comparison do not grant it.

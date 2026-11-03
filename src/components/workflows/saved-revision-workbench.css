@@ -134,3 +134,13 @@
 .saved-revision-workbench .saved-evidence-controls code {
   overflow-wrap: anywhere;
 }
+
+/* Keep the C20 saved-cost heading in document flow at narrow widths. */
+.saved-revision-workbench
+  .recorded-cost-continuity
+  .cost-saved-revisions
+  > header {
+  display: block;
+  height: auto;
+  min-width: 0;
+}

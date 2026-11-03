@@ -1,0 +1,127 @@
+{
+  "schema": "propel-cycle20-local-validation-v1",
+  "reviewed_candidate": "b7949d890574bc379bba99595bc2ef32add1c0eb",
+  "independent_review": "a57928e0abb6d9c7cca1d10fae2d508b643de288",
+  "application": {
+    "passed": 286,
+    "failed": 0,
+    "pending": 0,
+    "raw_sha256": "c5270152b83f845ee25f5db19ab59a1cf5202574e5fe739c5fa880e0d446d1b3",
+    "suites": [
+      {
+        "suite": "cycle20-independent-integration-review.test.ts",
+        "passed": 42,
+        "failed": 0,
+        "pending": 0,
+        "max_ms": 19261.719916999995
+      },
+      {
+        "suite": "cycle20-maintenance-renewal-evidence.test.ts",
+        "passed": 38,
+        "failed": 0,
+        "pending": 0,
+        "max_ms": 6860.897791000001
+      },
+      {
+        "suite": "cycle20-published-service-continuity.test.ts",
+        "passed": 53,
+        "failed": 0,
+        "pending": 0,
+        "max_ms": 3414.9151670000006
+      },
+      {
+        "suite": "cycle20-recorded-cost-continuity.test.ts",
+        "passed": 47,
+        "failed": 0,
+        "pending": 0,
+        "max_ms": 11415.477249999996
+      },
+      {
+        "suite": "cycle20-recorded-priority-navigation.test.ts",
+        "passed": 42,
+        "failed": 0,
+        "pending": 0,
+        "max_ms": 12772.609958000001
+      },
+      {
+        "suite": "cycle20-saved-evidence-files.test.ts",
+        "passed": 12,
+        "failed": 0,
+        "pending": 0,
+        "max_ms": 190.02587499999998
+      },
+      {
+        "suite": "cycle20-saved-evidence-runtime.test.ts",
+        "passed": 13,
+        "failed": 0,
+        "pending": 0,
+        "max_ms": 486.198667
+      },
+      {
+        "suite": "cycle20-work-order-evidence-continuity.test.ts",
+        "passed": 39,
+        "failed": 0,
+        "pending": 0,
+        "max_ms": 460.26895799999994
+      }
+    ]
+  },
+  "browser": {
+    "status": "ACTUAL_36_DEV_3_OFF_PASS",
+    "development": 36,
+    "production_off": 3,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "brand_count": 3,
+    "layouts": ["desktop", "tablet", "mobile"],
+    "reports": [
+      {
+        "path": "artifacts/cycle20/browser-results.json",
+        "sha256": "25efc659c249f8c5dfc7772ae431b384e7cb825b1f3714cfa666654f28beacb2",
+        "stats": {
+          "startTime": "2026-11-03T19:14:01.203Z",
+          "duration": 118703.44200000001,
+          "expected": 36,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        }
+      },
+      {
+        "path": "artifacts/cycle20/browser-off-results.json",
+        "sha256": "ec18a87273d0f76145020c131b413daf66cbf7e71224bfa49fdbccca93c5fbf3",
+        "stats": {
+          "startTime": "2026-11-03T19:17:12.618Z",
+          "duration": 3799.251,
+          "expected": 3,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        }
+      }
+    ],
+    "full_state_pngs": 99,
+    "header_geometry_pngs": 18,
+    "visual_approval": "PENDING"
+  },
+  "original_source_exercise": {
+    "unchanged_cases_passed": 50,
+    "raw_sha256": "096ce34b65af5a2fa81a3e8c3510d4ddb326d3c5101ec61f74744ec8980790df"
+  },
+  "retained_c18_independent": "58 unchanged cases previously passed bounded Cycle19; no rerun this cycle",
+  "durability": "Historical complete file bytes only; canonical restore/operational custody/owner-resistant authenticity/power-loss acceptance NOT PROVEN",
+  "release": "NOT READY / NOT AUTHORIZED",
+  "checks": {
+    "strict_types": "PASS",
+    "generated_types": "PASS",
+    "lint": "PASS_WITH_PREEXISTING_FAST_REFRESH_WARNING",
+    "build": "PASS_WITH_LARGE_CHUNK_WARNING",
+    "format": "PASS",
+    "features": "PASS_25_UNCHANGED_STATES_5_LOCKS_13_BINDINGS",
+    "protected_and_author_integrity": "PASS_128_PROTECTED_423_PRIOR_25_NEW_AUTHOR_BLOBS",
+    "independent_app": "42_INCLUDED_IN_286",
+    "independent_negative_validation_probes": 59,
+    "production_build_off": "PASS_CURRENT_BUILD"
+  }
+}

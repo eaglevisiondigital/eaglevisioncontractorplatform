@@ -1,0 +1,113 @@
+{
+  "schema": "propel-cycle20-ci-correction-v1",
+  "problem": "Shared test seed retained unused destructured underscore; Foundation lint stopped before application tests. Main missed global lint before branching.",
+  "examined_failure_runs": [
+    {
+      "pr": 137,
+      "head": "88ecc8761735f00fcc2bb580dad418f5e46b81c6",
+      "run": 41684502747,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41684502747/job/126086562852",
+      "shared_unused_variable_proven": true
+    },
+    {
+      "pr": 138,
+      "head": "f5b342b6afef7b294a19d33502cf30d9f58e2e7e",
+      "run": 41684643422,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41684643422/job/126087069481",
+      "shared_unused_variable_proven": true
+    },
+    {
+      "pr": 141,
+      "head": "9b28117342b72e6fb20aca5fe09966755b8759c6",
+      "run": 41685104701,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41685104701/job/126088657646",
+      "shared_unused_variable_proven": true
+    },
+    {
+      "pr": 142,
+      "head": "6b3c8c3f86fb3dda498a643991391d1c20aac39d",
+      "run": 41685350937,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41685350937/job/126089515699",
+      "shared_unused_variable_proven": true
+    }
+  ],
+  "additional_field_growth_proof": {
+    "field_job": 126087735457,
+    "growth_job": 126087782955,
+    "same_exact_error": "tests/cycle20-saved-evidence-runtime.test.ts:93:19 unused _"
+  },
+  "correction": "Add void _; without changing an assertion, input, timeout or runtime behavior.",
+  "main_correction_commit": "b7949d890574bc379bba99595bc2ef32add1c0eb",
+  "forward_child_commits": [
+    {
+      "pr": 139,
+      "branch": "codex/cycle20-work-order-source-evidence",
+      "original_head": "97a152651c8783646a6dcd456c815128825eeae7",
+      "actual_head": "077187201ebe3d5eea2905a3db949e57f7727147",
+      "parent_preserved": true,
+      "only_change": "tests/cycle20-saved-evidence-runtime.test.ts",
+      "insertions": 1,
+      "deletions": 0,
+      "sha256": "8796fa2e006e0a33fba1b85a235c6be748e93629bdc3fad820e7c18239113d42",
+      "blob": "291bf9d83af4d09292781e4608f540889b11cfb0",
+      "author_blobs_preserved": 5
+    },
+    {
+      "pr": 142,
+      "branch": "codex/cycle20-recorded-cost-source-review",
+      "original_head": "6b3c8c3f86fb3dda498a643991391d1c20aac39d",
+      "actual_head": "f3f6b67e33358a34c297f3c19cfca0ad21f8b21d",
+      "parent_preserved": true,
+      "only_change": "tests/cycle20-saved-evidence-runtime.test.ts",
+      "insertions": 1,
+      "deletions": 0,
+      "sha256": "8796fa2e006e0a33fba1b85a235c6be748e93629bdc3fad820e7c18239113d42",
+      "blob": "291bf9d83af4d09292781e4608f540889b11cfb0",
+      "author_blobs_preserved": 5
+    },
+    {
+      "pr": 138,
+      "branch": "codex/cycle20-published-service-source-review",
+      "original_head": "f5b342b6afef7b294a19d33502cf30d9f58e2e7e",
+      "actual_head": "eb3406a4c4880107c740d39cb370cceb3ea2e4a3",
+      "parent_preserved": true,
+      "only_change": "tests/cycle20-saved-evidence-runtime.test.ts",
+      "insertions": 1,
+      "deletions": 0,
+      "sha256": "8796fa2e006e0a33fba1b85a235c6be748e93629bdc3fad820e7c18239113d42",
+      "blob": "291bf9d83af4d09292781e4608f540889b11cfb0",
+      "author_blobs_preserved": 5
+    },
+    {
+      "pr": 140,
+      "branch": "codex/cycle20-maintenance-renewal-source-review",
+      "original_head": "153416369729fd34a014cb0929f327c0c176bb61",
+      "actual_head": "a7961bfe5a853bb822ddac65ba35dd2d3f029f0d",
+      "parent_preserved": true,
+      "only_change": "tests/cycle20-saved-evidence-runtime.test.ts",
+      "insertions": 1,
+      "deletions": 0,
+      "sha256": "8796fa2e006e0a33fba1b85a235c6be748e93629bdc3fad820e7c18239113d42",
+      "blob": "291bf9d83af4d09292781e4608f540889b11cfb0",
+      "author_blobs_preserved": 5
+    },
+    {
+      "pr": 141,
+      "branch": "codex/cycle20-priority-source-navigation",
+      "original_head": "9b28117342b72e6fb20aca5fe09966755b8759c6",
+      "actual_head": "f925e83ccd1b82ea28242731189181bcaee11605",
+      "parent_preserved": true,
+      "only_change": "tests/cycle20-saved-evidence-runtime.test.ts",
+      "insertions": 1,
+      "deletions": 0,
+      "sha256": "8796fa2e006e0a33fba1b85a235c6be748e93629bdc3fad820e7c18239113d42",
+      "blob": "291bf9d83af4d09292781e4608f540889b11cfb0",
+      "author_blobs_preserved": 5
+    }
+  ],
+  "original_author_blobs_preserved": 25,
+  "manual_ci_reruns": 0,
+  "parent_rewrites": 0,
+  "new_head_ci": "SEPARATE_AUTOMATIC_OBSERVATION_REQUIRED",
+  "release": "NOT READY / NOT AUTHORIZED"
+}
