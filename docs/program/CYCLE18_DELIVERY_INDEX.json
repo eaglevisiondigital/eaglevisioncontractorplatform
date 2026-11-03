@@ -1,0 +1,226 @@
+{
+  "schema": "propel-cycle18-delivery-v1",
+  "coordination_branch": "codex/program-cycle-eighteen",
+  "coordination_draft_pr": 125,
+  "parent_commit": "ab7a95596f89f7bceb1fc089cdaa790a55fb10d5",
+  "plan_commit": "428c2a9afce95c98cc8be4a725a3e22b02b0e70d",
+  "independent_status": "CLEAR_LOCAL_SYNTHETIC_ONLY",
+  "packages": [
+    {
+      "module": "field-agenda",
+      "component": "FieldAgenda",
+      "owner": "/root/cycle18_field_growth",
+      "branch": "codex/cycle18-field-agenda",
+      "parent_commit": "428c2a9afce95c98cc8be4a725a3e22b02b0e70d",
+      "head_commit": "2e1346165b50a33e2a695c159e47107302210ce6",
+      "draft_pr": 126,
+      "focused_new_tests": 45,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/field-agenda.ts",
+          "sha256": "8bca02753104fc803f2b7d19a895db1f60e54bffdab4ec22d5e61166093e6837"
+        },
+        {
+          "path": "src/components/workflows/FieldAgenda.tsx",
+          "sha256": "6ed7fd409e36877572b5588250baf28c1db604e55679c59c81073ef1af17f54b"
+        },
+        {
+          "path": "src/components/workflows/field-agenda.css",
+          "sha256": "34dac04caacaa566be215ee1e4e98d0773c7dd10946fb550b10d957be8dbd260"
+        },
+        {
+          "path": "tests/cycle18-field-agenda.test.ts",
+          "sha256": "1948d186a1dfec125903ec0b96ca300583cc6f06d8a3ac38da8da58fcc80dc0e"
+        },
+        {
+          "path": "docs/program/CYCLE18_FIELD_AGENDA.md",
+          "sha256": "44d8d45d350d3f53fbc7cb805d8ba2c655d7688b73ba94b9c518e309ccce8145"
+        }
+      ]
+    },
+    {
+      "module": "cost-invoice-review",
+      "component": "CostInvoiceReview",
+      "owner": "/root/cycle17_finance_intelligence",
+      "branch": "codex/cycle18-cost-invoice-review",
+      "parent_commit": "428c2a9afce95c98cc8be4a725a3e22b02b0e70d",
+      "head_commit": "1b5040904fe11307c790bf64f5c6488e2a23f983",
+      "draft_pr": 129,
+      "focused_new_tests": 53,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/cost-invoice-review.ts",
+          "sha256": "9adc5b7dfa591c8d0f0106303077187f2921a0cdff750daa2c3a847544a5f179"
+        },
+        {
+          "path": "src/components/workflows/CostInvoiceReview.tsx",
+          "sha256": "a65598ba53e02bdfbeeb64457e23760d8f2091809cd8e9b94d19d9f4d40857c2"
+        },
+        {
+          "path": "src/components/workflows/cost-invoice-review.css",
+          "sha256": "66e78db639186e141cd4d64711620c2e7af7ed2210d354550d75ff9c27936790"
+        },
+        {
+          "path": "tests/cycle18-cost-invoice-review.test.ts",
+          "sha256": "991d9bf0c9f328096ec4a905ba724603fb842d0331d981be227eadb3e1181c50"
+        },
+        {
+          "path": "docs/program/CYCLE18_COST_INVOICE_REVIEW.md",
+          "sha256": "ca624a5b51f4641ff5746ced0ec2816be8b81e03ca80536572e168952fa63dca"
+        }
+      ]
+    },
+    {
+      "module": "service-update-review",
+      "component": "ServiceUpdateReview",
+      "owner": "/root/cycle13_customer_advanced",
+      "branch": "codex/cycle18-service-update-review",
+      "parent_commit": "428c2a9afce95c98cc8be4a725a3e22b02b0e70d",
+      "head_commit": "1ed580ebd53bd5a9a893fd63c81dc905650d40de",
+      "draft_pr": 127,
+      "focused_new_tests": 55,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/service-update-review.ts",
+          "sha256": "f0d5bc121131b0a7553c81f0131411c154180a8b16c96eef29542ec064810807"
+        },
+        {
+          "path": "src/components/workflows/ServiceUpdateReview.tsx",
+          "sha256": "d2c298e709cd88bdceee344211063245f4accb2b7a77611c82ce4ea206a56023"
+        },
+        {
+          "path": "src/components/workflows/service-update-review.css",
+          "sha256": "ecd1e4865aa83a6c77528298f17836960c523c17ff1de8ab826bc8f5a8b2907e"
+        },
+        {
+          "path": "tests/cycle18-service-update-review.test.ts",
+          "sha256": "8a36491c2556f8acb372bc1bebb2dd588c7293e31cdfb79db6fa55ae0466a548"
+        },
+        {
+          "path": "docs/program/CYCLE18_SERVICE_UPDATE_REVIEW.md",
+          "sha256": "89d863d2438dee1d6d271525df21e05be9ada6007e5e28444b63485c5c5ddd91"
+        }
+      ],
+      "previous_implementation_head": "8f9292e7daa74ac962b0d2896337ae511b49d1e6",
+      "ci_fixture_correction": "Only four single-job claim fixtures and documentation changed; same canonical repositories, all82 prior assertions preserved plus8 identity guards; other51 cases and all runtime bytes unchanged. Complete55case local PASS; prior CI failures/cancellations retained."
+    },
+    {
+      "module": "maintenance-agenda",
+      "component": "MaintenanceAgenda",
+      "owner": "/root/cycle18_field_growth",
+      "branch": "codex/cycle18-maintenance-agenda",
+      "parent_commit": "428c2a9afce95c98cc8be4a725a3e22b02b0e70d",
+      "head_commit": "8a16ca1f00230486c443579fb5c68efce6a0160f",
+      "draft_pr": 128,
+      "focused_new_tests": 52,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/maintenance-agenda.ts",
+          "sha256": "448257b4e9043eb0547f2b2f7190418bae2d220f896a20c39b37983d5ec50899"
+        },
+        {
+          "path": "src/components/workflows/MaintenanceAgenda.tsx",
+          "sha256": "830e1abe52b4ad7add92bb085cb5f15195f3949316349af2e07555b3f6d42fdc"
+        },
+        {
+          "path": "src/components/workflows/maintenance-agenda.css",
+          "sha256": "67df763df7b0273aee642aee6758a6ef03a4f2a48be03fa343c3ca4157459887"
+        },
+        {
+          "path": "tests/cycle18-maintenance-agenda.test.ts",
+          "sha256": "1ae157369a7684c72f833242251916f23275379949b1a5ecb3a939a9a08864d4"
+        },
+        {
+          "path": "docs/program/CYCLE18_MAINTENANCE_AGENDA.md",
+          "sha256": "e1b2135d84ad4b77a3317b47002740ea9e8cb1beb8a2b09775e25241dee902ec"
+        }
+      ]
+    },
+    {
+      "module": "priority-actions",
+      "component": "PriorityActions",
+      "owner": "/root/cycle13_customer_advanced",
+      "branch": "codex/cycle18-priority-actions",
+      "parent_commit": "428c2a9afce95c98cc8be4a725a3e22b02b0e70d",
+      "head_commit": "695dfb8cb5fa0313d69f6e3532ae2c55203c9641",
+      "draft_pr": 130,
+      "focused_new_tests": 58,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/priority-actions.ts",
+          "sha256": "4ca40098b96eff053aed8fcb2d0c0db484e3b6dd8eb9838c410aa6735c2e0a7e"
+        },
+        {
+          "path": "src/components/workflows/PriorityActions.tsx",
+          "sha256": "cd1cf36531aac8806e51007c72c5f2b0d1bb15615045afda0b32c6cc732346db"
+        },
+        {
+          "path": "src/components/workflows/priority-actions.css",
+          "sha256": "fa32d491c52c87ffd1a9b68dafec95a761227369c8e45fa8fd61e3cafdc6b435"
+        },
+        {
+          "path": "tests/cycle18-priority-actions.test.ts",
+          "sha256": "20a9a48b6e72429dc70c47e54e3753f629e17a66a53a567e843ed405bb67758c"
+        },
+        {
+          "path": "docs/program/CYCLE18_PRIORITY_ACTIONS.md",
+          "sha256": "887244805b7468ad041f382486d97ad1dad1faa73e6b0706524e864439d0f2d5"
+        }
+      ]
+    }
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "independent_review_commit": "3b7542a9c0d6b02267333d878191722399cee3b3",
+  "independent_files": [
+    {
+      "path": "tests/cycle18-independent-integration-review.test.ts",
+      "sha256": "a21b987039f312f19bf103308f0fbeac26f72cc97f8a8607937b86b57d838217"
+    },
+    {
+      "path": "docs/program/CYCLE18_INDEPENDENT_REVIEW.json",
+      "sha256": "e95e38164b1ea1fe87504b3d7f368250dc9a237b2043748e12a8793b4c2f94b4"
+    }
+  ],
+  "reviewed_code_candidate": "e99000e3594706b425aad19e6edebd0793e4162c",
+  "combined_evidence": {
+    "application_cases": 446,
+    "application_status": "PASS_COMPLETE_SINGLE_RUN",
+    "author_cases": 263,
+    "independent_cases": 58,
+    "coordinator_cases": 28,
+    "retained_cases": 97,
+    "development_browser_cases": 30,
+    "full_workflow_strictmode_cases": 18,
+    "final_selection_company_cases": 12,
+    "production_off_browser_cases": 3,
+    "screenshots": 63,
+    "browser_evidence_boundaries": "Full18case all-brand matrix and63clean screenshots at28d551b4b731a3f517a902b0d03c4af5d634b0e3; initial-selection/company-switch12 and productionOFF3 at e99000e3594706b425aad19e6edebd0793e4162c. Runtime remains identical to e99000e. Later CI correction changes collection/test fixtures/docs only. The failed4fae8ed dedicated run additionally recorded all30DEV browser cases PASS, plus2 wrongly collected OFF failures. No invented single-run browser or hosted acceptance.",
+    "application_report_sha256": "cbce249597c8c08b9c1731becede659407a4d56045639d6db42f36a6dc689a38",
+    "application_maximum_case_ms": 22017.71612500002,
+    "application_test_timeout_ms": 30000,
+    "protected_integrity": "PASS_128_HASHES_5_LOCKS_13_BINDINGS",
+    "local_scope": "SYNTHETIC_DEFAULT_OFF_NOT_OPERATIONAL"
+  },
+  "ci_followup": {
+    "previous_candidate": "4fae8ed5a203f644a205bbb80109d74dfcaab181",
+    "previous_dedicated_run": 41657739100,
+    "previous_application_cases_passed": 446,
+    "previous_development_browser_cases_passed": 30,
+    "previous_browser_cases_failed": 2,
+    "browser_failure": "Production-OFF tests wrongly collected in DEV tablet/mobile through project-level testIgnore replacement. Actual assertions unchanged.",
+    "collection_check": "Actual Playwright JSON confirms30DEV/3OFF unique cases and exact server modes; augments only Cycle18 workflow.",
+    "customer_head": "1ed580ebd53bd5a9a893fd63c81dc905650d40de",
+    "customer_complete_cases_passed": 55,
+    "customer_maximum_case_ms": 9434.633167000022,
+    "new_automatic_ci": "PENDING_SEPARATE_EXACT_HEAD_OBSERVATION",
+    "product_runtime_changed": false,
+    "post_correction_combined_application_cases_passed": 446,
+    "post_correction_application_report_sha256": "cbce249597c8c08b9c1731becede659407a4d56045639d6db42f36a6dc689a38",
+    "post_correction_application_maximum_case_ms": 22017.71612500002
+  }
+}

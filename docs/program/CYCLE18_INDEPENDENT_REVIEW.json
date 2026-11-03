@@ -1,0 +1,164 @@
+{
+  "schema": "propel-cycle18-independent-review-v1",
+  "reviewer": "/root/cycle18_independent_review",
+  "branch": "codex/cycle18-independent-acceptance",
+  "initial_candidate": "1f2c95b19691b46593bfd2105df446ccdc121943",
+  "reviewed_candidate": "e99000e3594706b425aad19e6edebd0793e4162c",
+  "status": "CLEAR_LOCAL_SYNTHETIC_ONLY",
+  "owned_files": [
+    "tests/cycle18-independent-integration-review.test.ts",
+    "docs/program/CYCLE18_INDEPENDENT_REVIEW.json"
+  ],
+  "findings": [
+    {
+      "id": "C18-IR-01",
+      "status": "FIXED_VERIFIED",
+      "problem": "Two independently read Customer or Priority views sharing the canonical Operations organization and job each invoked a competing host callback while the first callback was still awaited. Their PENDING flag belonged to the view rather than the exact canonical source.",
+      "initial_probe": {
+        "selected_cases": 6,
+        "passed": 4,
+        "failed": 2,
+        "filtered_cases_not_acceptance": 49
+      },
+      "required_correction": "Reserve canonical source-bound PENDING before await; retain UNKNOWN after invoked uncertainty. Preserve known no-dispatch semantics without weakening assertions.",
+      "correction_commits": {
+        "customer": "8f9292e7daa74ac962b0d2896337ae511b49d1e6",
+        "priority": "695dfb8cb5fa0313d69f6e3532ae2c55203c9641"
+      },
+      "verification": "All six exact canonical fresh-view concurrency cases pass in the complete final suite. UNKNOWN remains permanent; known pre-invocation withdrawal does not become an invoked outcome."
+    },
+    {
+      "id": "C18-IR-02",
+      "status": "FIXED_SOURCE_REVIEWED",
+      "problem": "An initial no-context priority continuation would invoke a host callback that required an already selected exact job, retaining unnecessary UNKNOWN instead of selecting the job.",
+      "correction_commit": "e99000e3594706b425aad19e6edebd0793e4162c",
+      "correction": "Withhold onContinue until a context exists and explicitly direct initial selection through the single existing SharedRecordSearch. The acknowledged synchronous continuation remains unchanged.",
+      "verification": "Exact two-line component diff reviewed; final Main initial-selection and company-switch browser evidence is separately owned by Main."
+    }
+  ],
+  "preliminary_findings_from_prior_review": [
+    "Main StrictMode cleanup withdrew admission without restoring it on setup.",
+    "Continuations required final source and live-callback fences after an invoked asynchronous callback.",
+    "Finance legacy synchronous navigation needed fail-closed thenable handling rather than unobserved async success."
+  ],
+  "coverage": [
+    "Actual all-five-package daily journey over one canonical repository set across three brands.",
+    "Current company, customer, property, job, immutable issued version and exact published report identity.",
+    "Canonical invoice totals, missing prerequisites, unknown availability, unverified completion and blocked sending.",
+    "Original owner-control finite source custody remains unclaimed by the priority queue.",
+    "Wrong-property, inactive-member and foreign-company observations remain terminal after restoration.",
+    "Separate post-invocation source and callback-lease drift; fresh-wrapper no-replay and read-only reconciliation.",
+    "Known pre-invocation withdrawal and competing fresh views.",
+    "Default OFF rendering before source getters and no business commands, random identities or network calls."
+  ],
+  "focused_tests": {
+    "status": "PASS",
+    "cases": 58,
+    "passed": 58,
+    "failed": 0,
+    "skipped_or_pending": 0,
+    "unique_case_names": 58,
+    "unchanged_test_timeout_ms": 30000,
+    "maximum_case_ms": 17081,
+    "test_file_sha256": "a21b987039f312f19bf103308f0fbeac26f72cc97f8a8607937b86b57d838217",
+    "same_canonical_journey_phases": "Each brand retains one unchanged canonical fixture and original views across two ordered phases: sources, then all continuations and exact Next. Each phase has its own command/network/random-ID spies and canonical snapshot assertions. No rebuilding, reset, reselection or assertion removal."
+  },
+  "protected_integrity": {
+    "status": "PASS_FINAL_CANDIDATE",
+    "protected_hashes": 128,
+    "locked_assets": 5,
+    "design_bindings": 13,
+    "retained_chain": "Cycle6 through Cycle17"
+  },
+  "limits": [
+    "Source/application review only; actual browser, responsive, accessibility and screenshots are separately owned by Main.",
+    "Same-tab reference and outcome metadata do not establish durability, genuine authentication or physical-device recovery.",
+    "Operating Center and advanced visual approval remain PENDING; existing approved interfaces and artwork remain locked.",
+    "No new business store, schema, ledger, issuing engine, provider worker or communication capability.",
+    "No hosted action, credentials, protected migration, dispatch, payment, message, deployment, publication or merge."
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "trial_observations": [
+    {
+      "trial": "initial remaining source probes",
+      "selected_cases": 49,
+      "passed": 46,
+      "failed": 3,
+      "filtered_not_acceptance": 6,
+      "reason": "Reviewer fixture selected the final sorted job while asserting that a next job existed. Corrected the explicit fixture selection to entry 0 and retained an exact sorted next-source assertion; no product change."
+    },
+    {
+      "trial": "full 55-case run at corrected candidate 28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "passed": 51,
+      "failed": 4,
+      "reason": "Three compound journeys and one following lightweight Root case exceeded the unchanged 30-second budget while browser work ran concurrently; no source assertion failure."
+    },
+    {
+      "trial": "isolated private stage profile on final candidate",
+      "passed_selected_cases": 1,
+      "filtered_not_acceptance": 54,
+      "duration_ms": 25431,
+      "reason": "Every stage completed under the same timeout without a product change. Logging was removed."
+    },
+    {
+      "trial": "complete isolated unchanged 55-case run on final candidate",
+      "passed": 55,
+      "failed": 0,
+      "skipped_or_pending": 0,
+      "maximum_case_ms": 28010,
+      "root_inactive_case_ms": 87,
+      "assessment": "Consistent with runner contention rather than a reproduced product deadlock. The compound-case margin was still insufficient for reliable concurrent CI."
+    },
+    {
+      "trial": "final 58-case bounded run on final candidate",
+      "passed": 58,
+      "failed": 0,
+      "skipped_or_pending": 0,
+      "maximum_case_ms": 17081,
+      "reason": "Split only the three new compound tests into six phases over the same retained sources; all original assertions, concurrency probes and 30-second budget remain."
+    }
+  ],
+  "private_results_not_in_git": [
+    {
+      "name": "cycle18-independent-concurrency-initial.json",
+      "sha256": "f402d0e2ce6e3e8dc74cc6eb2288e78bba38d3a70023ff36565035cc693495b4"
+    },
+    {
+      "name": "cycle18-independent-nonconcurrency-initial.json",
+      "sha256": "60563d19e308e422ea0a2a776fdc250ec29fd895c2e59c6f13b2e5bc6f65425a"
+    },
+    {
+      "name": "cycle18-independent-final-results.json",
+      "sha256": "86fa4d710df8a46edb34ea3c39e44e3cfb8a8e6765124accfef037031449feb4"
+    },
+    {
+      "name": "cycle18-independent-profile.json",
+      "sha256": "d3c0494e70e169a47bdfc49b5a035e5b38567adb8be8d732b2c02c19980e97e2"
+    },
+    {
+      "name": "cycle18-independent-e990-complete-results.json",
+      "sha256": "362e9ec2de2366f3cbbcd408e44739ea7566978c7ed10b5c02b6280b7823a090"
+    },
+    {
+      "name": "cycle18-independent-bounded-complete-results.json",
+      "sha256": "cf98ec50635c3218dac806ae8c0d2676810ede069cc40762e20767028b5137e1"
+    }
+  ],
+  "source_admission": {
+    "status": "PASS",
+    "author_packages": 5,
+    "exact_new_files_per_package": 5,
+    "author_files": 25,
+    "checks": "Every seed-to-author diff contains exactly the five owned additions; every actual local byte matches the exact author commit blob and manifest SHA-256.",
+    "seed": "428c2a9afce95c98cc8be4a725a3e22b02b0e70d",
+    "retained_author_files": 373,
+    "feature_records": 25,
+    "feature_stage_approval_ci_hosted_values": "UNCHANGED_FROM_CYCLE17; only inventory ownership metadata and evidence limits extended"
+  },
+  "quality_checks": {
+    "strict_types": "PASS",
+    "scoped_lint": "PASS",
+    "format": "PASS",
+    "protected_integrity": "PASS"
+  }
+}

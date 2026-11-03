@@ -1,5 +1,31 @@
 # Engineering decisions
 
+## Cycle18 CI · preserve mode-specific coverage and exact claim tests
+
+Project-level Playwright exclusions replace inherited exclusions. Explicitly retain
+both original exclusions in tablet/mobile; validate actual collected tuples and
+server modes before execution. All30DEV assertions and separate3productionOFF
+assertions remain. Four Customer concurrency cases admit one exact original job
+over the SAME canonical repositories; all82assertions remain and eight identity
+checks are added. This removes unrelated portfolio traversal, not source guards.
+Historical failures/cancellations remain visible; final CI is never inferred from
+local PASS. Foundation budget, all runtimes and protected controls are unchanged.
+
+## Cycle18 · retained review steps and observed acknowledgments
+
+Five isolated packages compose over existing canonical readers, engines and the
+original host. DailyWorkbench retains presentation context only; visited review
+steps do not authorize or prove work, invoice, customer update or repair completion.
+Post-invocation async acknowledgments require final source and callback-generation
+checks. Ambiguity holds canonical Operations/company/job UNKNOWN across wrappers.
+The unchanged synchronous finance port rejects any observed thenable inside its
+original custody boundary. A cancelled StrictMode setup read is withdrawn before
+admission rather than replayed. Independent58case and complete446case source verification, plus30development/
+3productionOFF actual browser cases, now pass with exact source boundaries. Local
+evidence alone grants no operational or visual approval.
+New Air checklist preparation grants no physical PASS, credentials or hosted action.
+All original design, security, recovery, financial and production gates persist.
+
 ## Cycle17 · retained original controls and exact daily context
 
 The owner authorized six bounded local packages on separate drafts against unchanged

@@ -1,0 +1,638 @@
+{
+  "schema": "propel-cycle18-local-captures-v1",
+  "scope": "Only Operating Center/advanced panels; visual promotion PENDING",
+  "capture_count": 63,
+  "source_reading": "These are actual clean-source28d551b browser captures. Later e99000e changes only initial no-job continuation admission/copy and browser tests; original selected-job presentation, author25files and domain runtime unchanged.",
+  "files": [
+    {
+      "path": "artifacts/cycle18/daily-advanced-desktop-cunningham.png",
+      "sha256": "32c8377b8c46ab275f17072d239fc325c997795c58994f68fc1826469e480f67",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "cunningham",
+      "viewport": "desktop",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-advanced-desktop-roofing-example.png",
+      "sha256": "b723a67ffa6fd75f38886ba246fdc6c1ba9c4be780ff5097a262ccf47f596b92",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "roofing-example",
+      "viewport": "desktop",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-advanced-desktop-straight-edge.png",
+      "sha256": "51f68768219963acac5e6b065e21881325b62bfdaca2f74f88f87eb5943a2253",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "straight-edge",
+      "viewport": "desktop",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-advanced-mobile-cunningham.png",
+      "sha256": "a57e1dc1e98b9713245e762fb931e4113b189fb18c40aadea46722d5ab6c907a",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "cunningham",
+      "viewport": "mobile",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-advanced-mobile-roofing-example.png",
+      "sha256": "b6dcf61b27653c99882991b4b60a9392e4d5c5c07aa7e9d79a63bb7a6925f82f",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "roofing-example",
+      "viewport": "mobile",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-advanced-mobile-straight-edge.png",
+      "sha256": "bc0136f89bfba8982aef498a6bbf7e28f865daff58987351cf88cccd276623c0",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "straight-edge",
+      "viewport": "mobile",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-advanced-tablet-cunningham.png",
+      "sha256": "63ae586c6d0a43218314caaea7f1cede70011d9b5e9edbbced94a6b270ba5e15",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "cunningham",
+      "viewport": "tablet",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-advanced-tablet-roofing-example.png",
+      "sha256": "8b304292d393dc7a8d5dd3ef2695d19665736ac4c33ad333aa0c5e0937e64571",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "roofing-example",
+      "viewport": "tablet",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-advanced-tablet-straight-edge.png",
+      "sha256": "171b0756b6f74781c40da3bc927e45de3dc0e464df0841768e7172f7edaa80e7",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "straight-edge",
+      "viewport": "tablet",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-cost-desktop-cunningham.png",
+      "sha256": "3e01bbc6d9576a06c9f41604a7522c727470166d11a5b9ba45297b7f198ad959",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "cunningham",
+      "viewport": "desktop",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-cost-desktop-roofing-example.png",
+      "sha256": "af64fdd3bae5fa88d087b4201d9f8cac8279ea607e29b2da625f069f6aa97a71",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "roofing-example",
+      "viewport": "desktop",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-cost-desktop-straight-edge.png",
+      "sha256": "374e3a96a4c4e902dcece414b9c4aa9c2f910f3d3569890d4c60134ea2bba7a9",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "straight-edge",
+      "viewport": "desktop",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-cost-mobile-cunningham.png",
+      "sha256": "57aca3d3663feb41223f45ef101f82b192588ea1fc1beb2873f25e7d81d4dfb2",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "cunningham",
+      "viewport": "mobile",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-cost-mobile-roofing-example.png",
+      "sha256": "542facb9e4d4505b0d0613b99ec3bb8d22797b5f0555cfdb75c52ac18f10dd01",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "roofing-example",
+      "viewport": "mobile",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-cost-mobile-straight-edge.png",
+      "sha256": "eb8f1a2005bca170f93071125c4657e374b6672b7d7fa1ef22c6f9af9c0b1ed6",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "straight-edge",
+      "viewport": "mobile",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-cost-tablet-cunningham.png",
+      "sha256": "cc04b90c8c01bb22f24ed07dc7e4187590db02c787146478bcb931338e1c09ca",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "cunningham",
+      "viewport": "tablet",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-cost-tablet-roofing-example.png",
+      "sha256": "85f453ce1710b935bca2fd06c2306a2890aebcfc44c73b2fbf0b48f234daaf07",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "roofing-example",
+      "viewport": "tablet",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-cost-tablet-straight-edge.png",
+      "sha256": "026b8478178414b768785465e030fb0e72bfcf5b59a1214250ad6dcd096a40fa",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "straight-edge",
+      "viewport": "tablet",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-field-desktop-cunningham.png",
+      "sha256": "909b8cd92785d7a6f9aba255a1b81612b4e608ee58bb77369d8f85bea7d620c5",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "cunningham",
+      "viewport": "desktop",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-field-desktop-roofing-example.png",
+      "sha256": "8e586711d001f53e17c24d2457a2a20d0df1cbad143b4cfa9b95f051824bbcc9",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "roofing-example",
+      "viewport": "desktop",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-field-desktop-straight-edge.png",
+      "sha256": "4dce921e88a04452b6ce54fd27192de403c93993cc543562d7411f4b70516e6d",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "straight-edge",
+      "viewport": "desktop",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-field-mobile-cunningham.png",
+      "sha256": "aecd73a1ec2e98ce1b79dce661cc0c67506beec327124ce0a533a3555622f204",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "cunningham",
+      "viewport": "mobile",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-field-mobile-roofing-example.png",
+      "sha256": "76b3f6fedb3c1d6259dd44a511864fb3f738c2fb0ebe835c1dbf40bbfa8975c1",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "roofing-example",
+      "viewport": "mobile",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-field-mobile-straight-edge.png",
+      "sha256": "b060a3048edeae17f7190a1b1c29da955972f607a5cb8c852f4d9320e89de35a",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "straight-edge",
+      "viewport": "mobile",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-field-tablet-cunningham.png",
+      "sha256": "9f4fd49ff274a07ae3bf45204c88d3a8e8c0734cac2204eea5d4be9b939c7352",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "cunningham",
+      "viewport": "tablet",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-field-tablet-roofing-example.png",
+      "sha256": "316d88286c03eacce53f0d07da5b1e1b784c7d2dad1a1f38184c7745c9ade16d",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "roofing-example",
+      "viewport": "tablet",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-field-tablet-straight-edge.png",
+      "sha256": "efa8c1610ba24cd15a367d10e6d83e59668a246bab06c86d24f9353d7d51b96e",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "straight-edge",
+      "viewport": "tablet",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-invoice-desktop-cunningham.png",
+      "sha256": "2fcb2953e46e31b20e79baaff6570fd3edafa20b027fa6011b124dba7dfefb31",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "cunningham",
+      "viewport": "desktop",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-invoice-desktop-roofing-example.png",
+      "sha256": "9df04acd6dd821af5b086edbf41d9d6b59f80b4d34d9f821ec3d8aa5ce22768f",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "roofing-example",
+      "viewport": "desktop",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-invoice-desktop-straight-edge.png",
+      "sha256": "ceb770a9b906cea83d7a9b9dd965cfd8401766924648a54fc83c1b79d80ad936",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "straight-edge",
+      "viewport": "desktop",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-invoice-mobile-cunningham.png",
+      "sha256": "92e6dfe6ea20ba56c37f0340c8ca708f53384c1bd60762a60f6f08c0b057d944",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "cunningham",
+      "viewport": "mobile",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-invoice-mobile-roofing-example.png",
+      "sha256": "bca3f469c2b3169455c4533876b4253c7bbc0671ab099387227d715a77e7ec57",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "roofing-example",
+      "viewport": "mobile",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-invoice-mobile-straight-edge.png",
+      "sha256": "a1fa5f582c298271035c26c83f38e474b9ba267a6935e402716953ed86045562",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "straight-edge",
+      "viewport": "mobile",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-invoice-tablet-cunningham.png",
+      "sha256": "5a8820143dcbe05b92f02798886a6715c42437470521bd7b0f2965e89085ba0d",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "cunningham",
+      "viewport": "tablet",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-invoice-tablet-roofing-example.png",
+      "sha256": "a94e13ba07a55de8d0308f7fa21076ded1291e5380d1d198d779ce75eb37b054",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "roofing-example",
+      "viewport": "tablet",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-invoice-tablet-straight-edge.png",
+      "sha256": "bdb9bbb90a14ec56d81f43f32574ff328f5929e67f74a7b92a48af516e4a350f",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "straight-edge",
+      "viewport": "tablet",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-maintenance-desktop-cunningham.png",
+      "sha256": "880a2ee0be24e04e4e60f1ab6b064878c4592ad2c522f41d35a02f077b32b7e6",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "cunningham",
+      "viewport": "desktop",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-maintenance-desktop-roofing-example.png",
+      "sha256": "b588de619eab83ef5df1824a1c47dbff5040fadf5b67b922e876a1cb24299e78",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "roofing-example",
+      "viewport": "desktop",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-maintenance-desktop-straight-edge.png",
+      "sha256": "8e6f9c7a5a26d1ddc433afa29977003ec6ecd601d78e4bdc3d42e9a50a281e6d",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "straight-edge",
+      "viewport": "desktop",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-maintenance-mobile-cunningham.png",
+      "sha256": "61b81f25c65b6f2ddf87729effada033ebdec1656a582eebec3b98edffa0f480",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "cunningham",
+      "viewport": "mobile",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-maintenance-mobile-roofing-example.png",
+      "sha256": "c3e40f9da97d46a259f31e565e38e98502d7d076da69dcbb3697913e2395f37b",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "roofing-example",
+      "viewport": "mobile",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-maintenance-mobile-straight-edge.png",
+      "sha256": "0cb1b224c5261fbd1911260f9ce4d97c5ef3ea803991636dfb0ae6f9654752ff",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "straight-edge",
+      "viewport": "mobile",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-maintenance-tablet-cunningham.png",
+      "sha256": "7ff8fba93a416b955266b223e34d7063167cfb44585dfb2a1905fd2d9eddd8dc",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "cunningham",
+      "viewport": "tablet",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-maintenance-tablet-roofing-example.png",
+      "sha256": "674e2584fbdd80b0c881651d9790ba527e8d269244f9a8cc442d19587251218f",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "roofing-example",
+      "viewport": "tablet",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-maintenance-tablet-straight-edge.png",
+      "sha256": "cc5d98018e12ecebdfdc47f1d046b1f5cedfb10c954f38c199808579e7e1134d",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "straight-edge",
+      "viewport": "tablet",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-priorities-desktop-cunningham.png",
+      "sha256": "f9907309d31cd145150bf132a060614c0c2286b83ca73951df688bd64b77b2b5",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "cunningham",
+      "viewport": "desktop",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-priorities-desktop-roofing-example.png",
+      "sha256": "966809f0efee9f2367b7924e5206e334eb3c8addfcb750db1e85f7d9bd1a07de",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "roofing-example",
+      "viewport": "desktop",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-priorities-desktop-straight-edge.png",
+      "sha256": "51b198337596416719b914b646c39b8c1dc248043b4e1a63eeea0dc4647074f1",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "straight-edge",
+      "viewport": "desktop",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-priorities-mobile-cunningham.png",
+      "sha256": "8eec1ac7b7a2d72838fffbcd567700dc7c0286c900e593ca6baebcbe84444414",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "cunningham",
+      "viewport": "mobile",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-priorities-mobile-roofing-example.png",
+      "sha256": "c281b6efedb7c2a54000f5de133a54cc390529513773fddf43e9ea679ffdda6f",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "roofing-example",
+      "viewport": "mobile",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-priorities-mobile-straight-edge.png",
+      "sha256": "52803d4adb3dd7fa29def0c7626fe0a5b72f45cc4f51e2a04981ac62d1f15480",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "straight-edge",
+      "viewport": "mobile",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-priorities-tablet-cunningham.png",
+      "sha256": "30af520f81e052ada933e80644ca08e45c208ddd0a6d86eae5d8c78327b12759",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "cunningham",
+      "viewport": "tablet",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-priorities-tablet-roofing-example.png",
+      "sha256": "fe3e09a375349ebc8d5e8c942db4d82b20d00b7d3916b5b35560c6d3bb6216e3",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "roofing-example",
+      "viewport": "tablet",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-priorities-tablet-straight-edge.png",
+      "sha256": "5b01abdc02f6a1bae1ac832b39675ebb59133314bafec3708b420878a4709a19",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "straight-edge",
+      "viewport": "tablet",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-service-desktop-cunningham.png",
+      "sha256": "4342b215bd97e83c619ab23d795f44be4e220f7977f1fb82db987c6b82928fb5",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "cunningham",
+      "viewport": "desktop",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-service-desktop-roofing-example.png",
+      "sha256": "f4ac6d0c045959a601991e778ebfa78754ca4025e7cf4784bfbc1f1a53a0851c",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "roofing-example",
+      "viewport": "desktop",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-service-desktop-straight-edge.png",
+      "sha256": "f89ccdaafae8d97841797f10ffd95f79c609efdab61f45d38f9320a1680ccb2e",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "straight-edge",
+      "viewport": "desktop",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-service-mobile-cunningham.png",
+      "sha256": "d421127230fca631e457e25c279c8ab093ca7a6dbdbfce2af9865bb3d4a9db22",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "cunningham",
+      "viewport": "mobile",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-service-mobile-roofing-example.png",
+      "sha256": "0008ea25cec8c0d24d76e3c945484734626a883c47c4baa46303cb84fda6ef8f",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "roofing-example",
+      "viewport": "mobile",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-service-mobile-straight-edge.png",
+      "sha256": "bcf77372d082e344f893fbb0fa95d8369b0f65e38977d80a9cb3a07fba8e6fb4",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "straight-edge",
+      "viewport": "mobile",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-service-tablet-cunningham.png",
+      "sha256": "27495b0e3cd82e6746dbda279cd1c758e0414e3ff53d823856fd830e58df279c",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "cunningham",
+      "viewport": "tablet",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-service-tablet-roofing-example.png",
+      "sha256": "e562ee43af7328bce9f45d8cd8812ab5523f093fab0b6dcd6ba248c0f24f083f",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "roofing-example",
+      "viewport": "tablet",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    },
+    {
+      "path": "artifacts/cycle18/daily-service-tablet-straight-edge.png",
+      "sha256": "846a443d55c7d3842648721067c8f385abe7de73e315cd6ab961ec2df1acfed1",
+      "schema": "propel-cycle18-capture-v1",
+      "brand": "straight-edge",
+      "viewport": "tablet",
+      "source": "28d551b4b731a3f517a902b0d03c4af5d634b0e3",
+      "approval": "PENDING",
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    }
+  ]
+}

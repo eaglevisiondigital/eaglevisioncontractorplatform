@@ -475,3 +475,26 @@ clicks and selection actions with stated task boundaries; no efficiency or durab
 acceptance claim from source inspection. Three existing visual approvals stay locked.
 Operating Center/advanced owner visual approval remains PENDING; missing originals
 stay MISSING. No provider, financial, dispatch, communication or hosted action.
+
+## Cycle18 retained daily review composition
+
+Main alone owns DailyWorkbench and the default-false presentation opt-in. The same
+six original slot IDs and one OperatingSources host remain authoritative. Five thin
+consumers reuse original engines and retained controls; no new canonical tasks,
+estimates, ledgers, service relationships, reminder enrollments or priority engine.
+Exact company/customer/property/job/issued version survives explicit local steps.
+Visited labels record presentation visits only. Next job is the next verified record
+in the available prepared list, never complete company coverage or completed work.
+
+Continuation accepts void or Promise<void>. Awaited consumers check original source
+and callback generation before and after invocation; uncertainty retains canonical
+Operations+company/job UNKNOWN across wrappers. The original synchronous finance
+port accepts only undefined acknowledgment; a thenable is observed, rejected inside
+that original port and held UNKNOWN. No unobserved async success or replay.
+
+Original confirmations and control instances stay mounted across review steps.
+Scoped warm surfaces, existing contractor colors,44px controls, wrapping navigation,
+visible labels, keyboard focus and aria-current preserve established patterns. No
+approved artwork or five locked files changes. Operating Center and advanced visual
+promotion remains PENDING. Physical recovery/Auth/MFA/NMI/customer14/4B/financial/
+communication/provider/hosted/production/deployment/merge gates remain closed.

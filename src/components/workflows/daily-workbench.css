@@ -1,0 +1,67 @@
+.daily-workbench {
+  color: #263d35;
+  padding: 1rem;
+  border: 1px solid #d4ddd7;
+  border-radius: 1rem;
+  background: #faf9f5;
+}
+.daily-workbench > header {
+  display: block;
+  margin-bottom: 1rem;
+}
+.daily-workbench > header p {
+  color: #4b5d52;
+}
+.daily-workbench > nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  overflow: visible;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+.daily-workbench > nav button {
+  min-height: 44px;
+  white-space: normal;
+  min-width: 0;
+  align-items: center;
+}
+.daily-workbench > nav button[aria-current='step'] {
+  outline: 2px solid var(--journey-primary, #255747);
+  outline-offset: 2px;
+}
+.daily-workbench > button {
+  min-height: 44px;
+  margin: 0.25rem;
+}
+.daily-workbench-context {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+.daily-workbench-context > div {
+  border-left: 2px solid var(--journey-accent, #c59f58);
+  padding-left: 0.75rem;
+  min-width: 0;
+}
+.daily-workbench-context dt {
+  color: #4b5d52;
+  font-size: 0.875rem;
+}
+.daily-workbench-context dd {
+  margin: 0.25rem 0;
+  overflow-wrap: anywhere;
+}
+.daily-workbench-panels > [hidden] {
+  display: none;
+}
+@media (max-width: 600px) {
+  .daily-workbench {
+    padding: 0.75rem;
+  }
+  .daily-workbench-context {
+    grid-template-columns: 1fr;
+  }
+  .daily-workbench > nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

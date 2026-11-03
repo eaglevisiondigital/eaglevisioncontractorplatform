@@ -1,0 +1,106 @@
+.field-agenda {
+  color: #19382a;
+  display: grid;
+  gap: 1rem;
+}
+.field-agenda h2,
+.field-agenda h3,
+.field-agenda p {
+  margin: 0;
+}
+.field-agenda .fa-eyebrow {
+  color: #4b5d52;
+  font-size: 0.76rem;
+  font-weight: 750;
+  letter-spacing: 0.09em;
+}
+.field-agenda .fa-boundary {
+  background: #f3eee4;
+  border-left: 3px solid var(--brand-primary, #315a40);
+  border-radius: 0.5rem;
+  padding: 0.9rem;
+  line-height: 1.6;
+}
+.field-agenda .fa-card {
+  min-width: 0;
+  display: grid;
+  gap: 0.7rem;
+  background: #fffdf8;
+  border: 1px solid #d9dfd6;
+  border-radius: 1rem;
+  padding: 1.1rem;
+  overflow-wrap: anywhere;
+}
+.field-agenda .fa-grid,
+.field-agenda .fa-filters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.field-agenda label {
+  display: grid;
+  gap: 0.4rem;
+  font-weight: 650;
+}
+.field-agenda input,
+.field-agenda select,
+.field-agenda button {
+  min-height: 44px;
+  max-width: 100%;
+  border: 1px solid #8d9e91;
+  border-radius: 0.65rem;
+  background: #fffdf8;
+  color: #19382a;
+  padding: 0.65rem 0.85rem;
+  font: inherit;
+}
+.field-agenda button {
+  cursor: pointer;
+  font-weight: 650;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.field-agenda button:disabled {
+  opacity: 0.65;
+  cursor: default;
+}
+.field-agenda button:focus-visible,
+.field-agenda input:focus-visible,
+.field-agenda select:focus-visible,
+.field-agenda h3:focus {
+  outline: 3px solid #496d55;
+  outline-offset: 3px;
+}
+.field-agenda .fa-check {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.field-agenda .fa-check input {
+  width: 24px;
+  flex: 0 0 24px;
+}
+.field-agenda .fa-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.field-agenda .fa-tabs button[aria-pressed='true'] {
+  background: #e9efe6;
+  border-color: #315a40;
+}
+.field-agenda [hidden] {
+  display: none;
+}
+@media (max-width: 700px) {
+  .field-agenda .fa-grid,
+  .field-agenda .fa-filters {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .field-agenda .fa-card {
+    padding: 0.9rem;
+  }
+  .field-agenda .fa-tabs button {
+    flex: 1;
+  }
+}

@@ -10,6 +10,7 @@ import { ExplainableTaskLinks } from './ExplainableTaskLinks';
 import { AddonTaskContinuity } from './AddonTaskContinuity';
 import { cycle16DailyGroups } from './OperatingCenterCycleSixteen';
 import { cycle17WorkspaceGroups } from './OperatingCenterCycleSeventeen';
+import { cycle18WorkflowGroups } from './OperatingCenterCycleEighteen';
 import './task-review-paths.css';
 
 const guided = taskReviewGroups({
@@ -26,16 +27,26 @@ const guided = taskReviewGroups({
 });
 
 export function OperatingCenterCycleFifteen() {
+  const [dailyWorkbench, setDailyWorkbench] = useState(false);
   const [taskPaths, setTaskPaths] = useState(false);
   const [dailyGuides, setDailyGuides] = useState(false);
   const [retainedWorkspaces, setRetainedWorkspaces] = useState(false);
   const retained = taskPaths ? guided : cycle14ContinuityGroups;
   const baseline = dailyGuides ? cycle16DailyGroups : retained;
+  const retainedGroups = retainedWorkspaces ? cycle17WorkspaceGroups : baseline;
   return (
     <>
       <section aria-label="Review path options">
         <fieldset className="task-review-options">
           <legend>Review options</legend>
+          <label>
+            <input
+              type="checkbox"
+              checked={dailyWorkbench}
+              onChange={(event) => setDailyWorkbench(event.target.checked)}
+            />
+            Use daily contractor workflow
+          </label>
           <label>
             <input
               type="checkbox"
@@ -68,7 +79,7 @@ export function OperatingCenterCycleFifteen() {
       </section>
       <OperatingCenterCycleThirteen
         additionalReviewGroups={
-          retainedWorkspaces ? cycle17WorkspaceGroups : baseline
+          dailyWorkbench ? cycle18WorkflowGroups : retainedGroups
         }
       />
     </>

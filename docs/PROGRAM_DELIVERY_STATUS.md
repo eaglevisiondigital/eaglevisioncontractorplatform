@@ -1,5 +1,51 @@
 # Product program delivery status
 
+## Cycle18 · daily workflow, local verification complete
+
+Cycle18 CI follow-up: at `4fae8ed5a203f644a205bbb80109d74dfcaab181`, GitHub
+confirmed446application and30DEV browser cases PASS, but the dedicated workflow
+FAILED because project overrides wrongly collected two production-OFF cases on the
+DEV server. Collection is corrected and checked through actual Playwright JSON.
+Two cancelled Customer Foundation runs also logged four failures before the45minute
+limit. Their exact exception remains unknown; four one-job claim fixtures were
+narrowed over the SAME original repositories, preserving all82assertions and adding
+eight identity checks. No runtime, assertion, timeout or Foundation change. See
+CYCLE18_CI_RECONCILIATION.md; final exact-head automatic CI remains separate/PENDING.
+
+Five bounded author packages are implemented in drafts126–130, composed on draft125
+against exact Cycle17 ab7a95596f89f7bceb1fc089cdaa790a55fb10d5. The complete
+446/446case single application run passes, including263author,58independent,28Main
+and97retained cases. Strict completeness/type/generatedtype/lint/format/build and
+128protected hashes/fiveassets/13bindings/proposal integrity pass. Actual30development
+plus3productionOFF browser cases pass across all3brands and desktop/tablet/mobile.
+63clean-source captures preserve explicit source boundaries and visual approval
+PENDING. Exact author branches/SHAs/PRs and actual agents are in CYCLE18_DELIVERY_INDEX
+and CYCLE18_VALIDATION.
+
+One default-false daily workbench reuses original sources, engines, confirmations
+and retained controls across priority, field, cost, invoice requirements, safe service
+evidence, maintenance and advanced review. One original exact selector retains
+company/customer/property/job/issued version; next-job navigation uses verified
+available records. Visited never means physical repair, invoice issued or customer
+message delivered. Post-ACK source/lease fences and canonical pending/UNKNOWN holds
+prevent competing/fresh-wrapper replay. No business store, schema or engine duplicated.
+
+Cycle17 CI coverage is reconciled: ten explicit45minute cancellations remain
+CANCELLED; successful exact-source Main Foundation/native/dedicated coverage supplies
+all unique acceptance coverage. No manual rerun, assertion removal or timeout change.
+Cycle18 automatic exact-head GitHub checks remain a separate observation; local PASS
+is not CI green, hosted acceptance or release permission.
+
+The November4 newer-Air checklist reuses the unchanged credential-free kit and
+preserves25completedoffline/setup/network evidence. Actual OS/FileVault/power/network/
+pairing/ACK/primaryloss/recovery remain UNVERIFIED. Existing frozen P1 approval stays
+valid for its unchanged scope with all prerequisites. Historical13/customer14/4B/P1/
+four artifacts, Netlify/executor,2A–2F/billing, Auth/MFA/NMI/financial/provider/
+communication/hosted/production gates persist. Three approved design scopes stay
+locked; Operating Center/advanced visual promotion PENDING; missing originals MISSING.
+No dispatch, message, payment, hosted mutation, deployment or merge.
+Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Cycle17 · retained daily workspaces, local verification complete
 
 Six bounded author drafts119–124 target coordination draft118 on exact Cycle16

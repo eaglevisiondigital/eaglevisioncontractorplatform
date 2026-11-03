@@ -1,0 +1,110 @@
+.maintenance-agenda {
+  color: #19382a;
+  display: grid;
+  gap: 1rem;
+}
+.maintenance-agenda h2,
+.maintenance-agenda h3,
+.maintenance-agenda h4,
+.maintenance-agenda p {
+  margin: 0;
+}
+.maintenance-agenda .ma-eyebrow {
+  color: #4b5d52;
+  font-size: 0.76rem;
+  font-weight: 750;
+  letter-spacing: 0.09em;
+}
+.maintenance-agenda .ma-boundary {
+  background: #f3eee4;
+  border-left: 3px solid var(--brand-primary, #315a40);
+  border-radius: 0.5rem;
+  padding: 0.9rem;
+  line-height: 1.6;
+}
+.maintenance-agenda .ma-card {
+  min-width: 0;
+  display: grid;
+  gap: 0.7rem;
+  background: #fffdf8;
+  border: 1px solid #d9dfd6;
+  border-radius: 1rem;
+  padding: 1.1rem;
+  overflow-wrap: anywhere;
+}
+.maintenance-agenda .ma-grid,
+.maintenance-agenda .ma-filters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.maintenance-agenda label {
+  display: grid;
+  gap: 0.4rem;
+  font-weight: 650;
+}
+.maintenance-agenda input,
+.maintenance-agenda select,
+.maintenance-agenda button {
+  min-height: 44px;
+  max-width: 100%;
+  border: 1px solid #8d9e91;
+  border-radius: 0.65rem;
+  background: #fffdf8;
+  color: #19382a;
+  padding: 0.65rem 0.85rem;
+  font: inherit;
+}
+.maintenance-agenda button {
+  cursor: pointer;
+  font-weight: 650;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.maintenance-agenda button:disabled {
+  opacity: 0.65;
+  cursor: default;
+}
+.maintenance-agenda button:focus-visible,
+.maintenance-agenda input:focus-visible,
+.maintenance-agenda select:focus-visible,
+.maintenance-agenda h3:focus {
+  outline: 3px solid #496d55;
+  outline-offset: 3px;
+}
+.maintenance-agenda .ma-check {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.maintenance-agenda .ma-check input {
+  width: 24px;
+  flex: 0 0 24px;
+}
+.maintenance-agenda .ma-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.maintenance-agenda .ma-tabs button[aria-pressed='true'] {
+  background: #e9efe6;
+  border-color: #315a40;
+}
+.maintenance-agenda .ma-context {
+  overflow-wrap: anywhere;
+}
+.maintenance-agenda [hidden] {
+  display: none;
+}
+@media (max-width: 700px) {
+  .maintenance-agenda .ma-grid,
+  .maintenance-agenda .ma-filters {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .maintenance-agenda .ma-card {
+    padding: 0.9rem;
+  }
+  .maintenance-agenda .ma-tabs button {
+    flex: 1;
+  }
+}

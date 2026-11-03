@@ -1,0 +1,92 @@
+.cost-invoice-review {
+  color: #23382e;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.cost-invoice-review h2,
+.cost-invoice-review h3,
+.cost-invoice-review h4 {
+  color: #193c2e;
+}
+.cost-invoice-review-eyebrow {
+  color: var(--journey-primary, #216449);
+  font-weight: 700;
+}
+.cost-invoice-review button,
+.cost-invoice-review input:not([type='checkbox']),
+.cost-invoice-review select {
+  min-height: 44px;
+  max-width: 100%;
+}
+.cost-invoice-review button {
+  margin: 0.3rem 0.5rem 0.3rem 0;
+}
+.cost-invoice-review label {
+  display: block;
+  margin: 0.7rem 0;
+}
+.cost-invoice-review input[type='checkbox'] {
+  width: 1.15rem;
+  height: 1.15rem;
+  vertical-align: middle;
+}
+.cost-invoice-review-summary,
+.cost-invoice-review-list,
+.cost-invoice-review-filters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+.cost-invoice-review-filters label {
+  display: grid;
+  gap: 0.4rem;
+}
+.cost-invoice-review-list {
+  list-style: none;
+  padding: 0;
+}
+.cost-invoice-review-summary > section,
+.cost-invoice-review-list > li,
+.cost-invoice-review-invoice,
+.cost-invoice-review-evidence {
+  min-width: 0;
+  border: 1px solid #d4ded7;
+  border-radius: 12px;
+  background: #fff;
+  padding: 1rem;
+}
+.cost-invoice-review nav {
+  display: block;
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+}
+.cost-invoice-review dt {
+  color: #4b5d52;
+  font-weight: 650;
+}
+.cost-invoice-review dd {
+  margin: 0 0 0.6rem;
+}
+.cost-invoice-review-muted,
+.cost-invoice-review small {
+  color: #4b5d52;
+  font-size: 0.9rem;
+}
+.cost-invoice-review [hidden] {
+  display: none !important;
+}
+.cost-invoice-review :focus-visible {
+  outline: 3px solid var(--journey-primary, #216449);
+  outline-offset: 3px;
+}
+@media (max-width: 760px) {
+  .cost-invoice-review-summary,
+  .cost-invoice-review-list,
+  .cost-invoice-review-filters {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .cost-invoice-review button {
+    width: 100%;
+    margin: 0.3rem 0;
+  }
+}
