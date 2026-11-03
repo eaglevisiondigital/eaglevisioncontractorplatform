@@ -1,0 +1,9 @@
+# Restart persistence: review required before implementation
+
+Cycle 21 introduces no restart adapter, database, business store, restore command or evidence layer. Native repositories remain authoritative within the admitted disposable session. Earlier evidence files are historical observations, not canonical restoration, authenticated custody or permission to resume execution. Refresh/process loss loses session state; it is not an accepted recovery path.
+
+A future proposal must be separately reviewed before any adapter is implemented. It must name the existing canonical owner for every field and relationship; retain organization/customer/property/job/version identity; define a single transaction and optimistic-concurrency boundary for each command; and resolve how canonical commits, one-use intent custody and acknowledgments remain consistent after power/process loss. It must specify least-privileged principals, current membership/revocation checks before and after waits, privacy and encryption/key custody, immutable audit limits, retention and deletion, schema ownership and migration authorization.
+
+The recovery contract must retain UNKNOWN after ambiguous writes, permit only exact read-only reconciliation, prevent rollback/restore from reviving used claims, and forbid automatic retry, replacement identities or replay. Independent tests must demonstrate competing writers, stale revisions, revoked authority, interrupted commits, lost acknowledgments, corrupt backups and actual independent restoration. Historical JSON files or a same-machine simulation cannot satisfy these requirements.
+
+This document records the boundary for a future review. It approves no adapter or hosted installation. P1 on the original thirteen migrations, customer14, original 4B/broker, genuine Auth/MFA, NMI, physical recovery and production acceptance remain separate gates. Release 1.0 remains NOT READY / NOT AUTHORIZED.

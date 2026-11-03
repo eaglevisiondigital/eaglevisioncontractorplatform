@@ -1,0 +1,248 @@
+{
+  "schema": "propel-cycle21-sources-v1",
+  "coordination_branch": "codex/program-cycle-twenty-one",
+  "coordination_draft_pr": 143,
+  "parent_commit": "8d607d9c30e82699f1af4634c29fa38a3756fb73",
+  "support_commit": "b918231ff48996575c03d64c9045ead6831b6cd0",
+  "independent_status": "PENDING",
+  "independent_review_commit": null,
+  "independent_files": [],
+  "packages": [
+    {
+      "module": "task-correction-review",
+      "component": "TaskCorrectionReview",
+      "owner": "/root/cycle11_field_growth",
+      "branch": "codex/cycle21-task-correction-workflow",
+      "parent_commit": "b918231ff48996575c03d64c9045ead6831b6cd0",
+      "head_commit": "b64312d96b3ae0ca3dd03c9420e8338294fc2581",
+      "draft_pr": 147,
+      "focused_new_tests": 35,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "ci": "PENDING_AUTOMATIC_EXACT_HEAD",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE21_TASK_CORRECTION_REVIEW.md",
+          "sha256": "537395ad1ef14f7d2cc63a8b7591f9623c3f75ddd050ae9533e3e6255b927a98",
+          "blob": "97862b38c32a6b16ad7c2df8fbf98975e15686f5"
+        },
+        {
+          "path": "src/components/workflows/TaskCorrectionReview.tsx",
+          "sha256": "6b8b07ee6dc64577411678d3230bff12ef4894a881c66d3a7eb3bcc3366c8bcb",
+          "blob": "e96e57428a46936c47965c1d643e09b403366945"
+        },
+        {
+          "path": "src/components/workflows/task-correction-review.css",
+          "sha256": "975aaf2d7490dbbf4d36efa57b5fbaba94363402cd63fd40d555519e44b35f93",
+          "blob": "0fce1e3f8bd0c2e8d99c992efd62e1900a986632"
+        },
+        {
+          "path": "src/lib/workflows/task-correction-review.ts",
+          "sha256": "5dfcb0a9feeeb1ffa530634f997ffb4bcde90a8a18a126e8d8af3e911e5933e8",
+          "blob": "f660a595382ad4650a977f87365c95b57f3ba949"
+        },
+        {
+          "path": "tests/cycle21-task-correction-review.test.ts",
+          "sha256": "c8f5e480c0be73fd48dc51886189477cce36f0814f9ddba28858de868f9941c6",
+          "blob": "6158f7a31f57746ade98db0674359a543bf9adc0"
+        }
+      ],
+      "report": {
+        "path": "/private/tmp/cycle21-field-final.json",
+        "sha256": "0aa60c0c8fafded18c3ff4a294d472ef43a591d9110fdfbd1db3315dce4668ae",
+        "unique_cases": 35
+      },
+      "checks": {
+        "strict_types": "PASS",
+        "scoped_lint": "PASS",
+        "owned_format": "PASS",
+        "build": "PASS",
+        "feature_inventory": "PASS",
+        "cycle20_source_integrity": "PASS",
+        "browser": "MAIN_PENDING_COMPOSITION"
+      }
+    },
+    {
+      "module": "maintenance-plan-correction",
+      "component": "MaintenancePlanCorrection",
+      "owner": "/root/cycle11_field_growth",
+      "branch": "codex/cycle21-maintenance-plan-workflow",
+      "parent_commit": "b918231ff48996575c03d64c9045ead6831b6cd0",
+      "head_commit": "ab5697867ca0e8badf25f91f69d695b627f475f9",
+      "draft_pr": 148,
+      "focused_new_tests": 36,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "ci": "PENDING_AUTOMATIC_EXACT_HEAD",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE21_MAINTENANCE_PLAN_CORRECTION.md",
+          "sha256": "a88484033168a55612dc29400dd79d6467163d8d2c7bca42ce22f9124e66aed4",
+          "blob": "94c66df184cf1629912b6f49402b4ffcc295de52"
+        },
+        {
+          "path": "src/components/workflows/MaintenancePlanCorrection.tsx",
+          "sha256": "6062e5cba6e48316b7ff1345f98a97e2c2cd1d051ff69d3cc7c49d37b120ff10",
+          "blob": "9cfc6d9ddf2c0c98b179815977bc2cffd1bb62c0"
+        },
+        {
+          "path": "src/components/workflows/maintenance-plan-correction.css",
+          "sha256": "5499892c222cae7a6230abe715f53f5f9f03d5bbeb1dca82658b5e2710837a58",
+          "blob": "9c1ba868cda8b6b974ac5e7ef75c2f0ee5a0ddd7"
+        },
+        {
+          "path": "src/lib/workflows/maintenance-plan-correction.ts",
+          "sha256": "cd5d4ce92fa61a32302e543fdd6f21ec7405af75f1e10dd78efb87c6822e577c",
+          "blob": "1cf1fcd645803e5cede7715095dec4c92ea9242b"
+        },
+        {
+          "path": "tests/cycle21-maintenance-plan-correction.test.ts",
+          "sha256": "7b96e6d260d27a6f25cb57ff09a15304242998de7347fd298c9edcfe9361cc26",
+          "blob": "41a436bcf9ad81a0faa05ee805dbdd2c082d80bc"
+        }
+      ],
+      "report": {
+        "path": "/private/tmp/cycle21-growth-initial.json",
+        "sha256": "69f9bbaf6e3947915e7860c174f70046bf90618ed3bf760459abd8b08944303d",
+        "unique_cases": 36
+      },
+      "checks": {
+        "strict_types": "PASS",
+        "scoped_lint": "PASS",
+        "owned_format": "PASS",
+        "build": "PASS",
+        "feature_inventory": "PASS",
+        "cycle20_source_integrity": "PASS",
+        "browser": "MAIN_PENDING_COMPOSITION"
+      }
+    },
+    {
+      "module": "published-service-navigation",
+      "component": "PublishedServiceNavigator",
+      "owner": "/root/cycle13_customer_advanced",
+      "branch": "codex/cycle21-published-service-workflow",
+      "parent_commit": "b918231ff48996575c03d64c9045ead6831b6cd0",
+      "head_commit": "a9dd2e2844a1025adcc73ab48e16f5d0a77ba1e4",
+      "draft_pr": 144,
+      "focused_new_tests": 66,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/published-service-navigation.ts",
+          "blob": "a8dc1104c110340005b70ef3e69300931ce9fb05",
+          "sha256": "0c6fd950ee0a9362360af19b910c5401aef1d09fd09bf4678f412f7751c57dd9"
+        },
+        {
+          "path": "src/components/workflows/PublishedServiceNavigator.tsx",
+          "blob": "aa8abb9a222397397bcc381d80c728f5dd275c2f",
+          "sha256": "85a86a3443fc3d5edeb9ee3376c0cfcfa7ee056503e6c71eed320f10db87a91d"
+        },
+        {
+          "path": "src/components/workflows/published-service-navigation.css",
+          "blob": "1e8977118a58e673f3280ed6528ee850c13e1458",
+          "sha256": "421a1629e57456c36d39e610d6814bfa9e3f20b914f45df6ee3b471580374388"
+        },
+        {
+          "path": "tests/cycle21-published-service-navigation.test.ts",
+          "blob": "38a825f77bd95ec4f5ee84996c5674c5792485b6",
+          "sha256": "6ed2cf1d93b7be43a66b4885e6802ed04690f7e1e22f4e1a9d86e9e457355514"
+        },
+        {
+          "path": "docs/program/CYCLE21_PUBLISHED_SERVICE_NAVIGATION.md",
+          "blob": "80c3fcb9c81d6f8de7c27aa16881caf630ad073e",
+          "sha256": "7b40fd235960e59b9feaf30dec1427d68cf9b95b9a57e51c291c2c13970149f4"
+        }
+      ]
+    },
+    {
+      "module": "cost-correction-review",
+      "component": "CostCorrectionReview",
+      "owner": "/root/cycle21_finance_intelligence",
+      "branch": "codex/cycle21-material-review-workflow",
+      "parent_commit": "b918231ff48996575c03d64c9045ead6831b6cd0",
+      "head_commit": "d814f54eba1acd1ea7bb7102643356439edce4a6",
+      "draft_pr": 145,
+      "focused_new_tests": 36,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/cost-correction-review.ts",
+          "sha256": "ce7d4fd475357a65f894132640d54627b0c8ac74ee27ff1ad4aab7e7655281d7",
+          "blob": "5065f080b2cc30e0067f338e23c7e592a7fa4e70"
+        },
+        {
+          "path": "src/components/workflows/CostCorrectionReview.tsx",
+          "sha256": "4ad7333015a97c36eef0447bceb0ba75cc6fec886d49e0229ca2c81e334a72aa",
+          "blob": "b39758d958fe7916e61fc2cce55b1c59ad5bbfc7"
+        },
+        {
+          "path": "src/components/workflows/cost-correction-review.css",
+          "sha256": "71f13bc04577d63153989e555c819d1a4b7dac48b9741e3b2579a1ffa4b3b019",
+          "blob": "7e9912c103e7b5cb600162abdaf0b7f3f1e469e6"
+        },
+        {
+          "path": "tests/cycle21-cost-correction-review.test.ts",
+          "sha256": "7a90d6998bfbd5bd6ccfb016f7df740ac0c26a328c9e84a24438a25659fee3a4",
+          "blob": "0f6a69ecb25033ac43f78a84004c7acc0474505e"
+        },
+        {
+          "path": "docs/program/CYCLE21_COST_CORRECTION_REVIEW.md",
+          "sha256": "62a9d29a983c144236f9e1e38df8f320db3090c8a8fafecf9569e390081983ad",
+          "blob": "1c26ae54f044efc2767e2f05ddd2b417871a92ed"
+        }
+      ]
+    },
+    {
+      "module": "recorded-owner-actions",
+      "component": "RecordedOwnerActions",
+      "owner": "/root/cycle21_finance_intelligence",
+      "branch": "codex/cycle21-recorded-owner-workflow",
+      "parent_commit": "b918231ff48996575c03d64c9045ead6831b6cd0",
+      "head_commit": "161f1c59d864d60aa0f45820eb6417864519baf2",
+      "draft_pr": 146,
+      "focused_new_tests": 37,
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/recorded-owner-actions.ts",
+          "sha256": "a70e3b36da69d7490adf8d807b620d27132a64fb26831d872a0fcdc292ce36b0",
+          "blob": "832b825ef3ef4eacab6498a9079eba38c4cd5b3d"
+        },
+        {
+          "path": "src/components/workflows/RecordedOwnerActions.tsx",
+          "sha256": "96b88e59bbc06b77ea6c2625d0aaaeb374d10a1f44ccd7422edf69699aa43bce",
+          "blob": "132f64b738c152dd5044b488dad842dd2ffdf42d"
+        },
+        {
+          "path": "src/components/workflows/recorded-owner-actions.css",
+          "sha256": "04646b821eb4847e2138f2bf14b413d01f1b34095bf2c9ac68cb986e91535508",
+          "blob": "2f1b6a016e9a6253894ccc6e845c99af8f356f46"
+        },
+        {
+          "path": "tests/cycle21-recorded-owner-actions.test.ts",
+          "sha256": "f4b5225ab0f89eb62fae6d2fdcb1c5375b14bc6eb9737e6ede85ba4eb20ac792",
+          "blob": "5db0709f1c2382d9eaff7b01a03f5017740ee94d"
+        },
+        {
+          "path": "docs/program/CYCLE21_RECORDED_OWNER_ACTIONS.md",
+          "sha256": "bf72c374e7cd7aeadc47bb7bc7b02067689ba1e8b30bab78556579c6aa0863cd",
+          "blob": "1b6edd99302a664c9b131de2de725cb70959b335"
+        }
+      ]
+    }
+  ],
+  "combined_evidence": {
+    "author_cases": 210,
+    "coordinator_cases": 41,
+    "independent_cases": 0,
+    "application_cases": 251,
+    "application_suites": {
+      "tests/cycle21-canonical-corrections.test.ts": 31,
+      "tests/cycle21-preview-preparation.test.ts": 10,
+      "tests/cycle21-task-correction-review.test.ts": 35,
+      "tests/cycle21-maintenance-plan-correction.test.ts": 36,
+      "tests/cycle21-published-service-navigation.test.ts": 66,
+      "tests/cycle21-cost-correction-review.test.ts": 36,
+      "tests/cycle21-recorded-owner-actions.test.ts": 37
+    }
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

@@ -1,3 +1,4 @@
+import type { OperatingSourcePreparer } from './OperatingCenterPreview';
 import {
   OperatingCenterPreview,
   type OperatingReviewPanel,
@@ -46,10 +47,15 @@ const reviews: readonly OperatingReviewPanel[] = [
 ];
 export function OperatingCenterCycleTen({
   additionalReviewGroups = [],
-}: { additionalReviewGroups?: readonly OperatingReviewGroup[] } = {}) {
+  prepareSources,
+}: {
+  additionalReviewGroups?: readonly OperatingReviewGroup[];
+  prepareSources?: OperatingSourcePreparer;
+} = {}) {
   return (
     <OperatingCenterPreview
       additionalPanels={reviews}
+      prepareSources={prepareSources}
       additionalReviewGroups={additionalReviewGroups}
     />
   );
