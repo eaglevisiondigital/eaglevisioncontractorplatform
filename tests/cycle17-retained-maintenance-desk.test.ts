@@ -321,6 +321,29 @@ it('concurrent same-case navigation invokes exactly one original maintenance cal
     'maintenance',
   );
 });
+it('a callback that navigates then throws retains desk UNKNOWN and forbids callback or case replay', async () => {
+  const f = await fixture(),
+    view = await read(f.sources, f.input, f.gate),
+    selected = await select(view, view.rows[0].key),
+    snapshot = JSON.stringify(selected),
+    navigated: string[] = [],
+    first = vi.fn((jobId: string) => {
+      navigated.push(jobId);
+      throw Error('Lost maintenance navigation acknowledgment');
+    }),
+    second = vi.fn();
+  await expect(navigate(selected, first)).rejects.toThrow(
+    'Lost maintenance navigation acknowledgment',
+  );
+  await expect(navigate(selected, second)).rejects.toThrow();
+  expect(first).toHaveBeenCalledTimes(1);
+  expect(second).not.toHaveBeenCalled();
+  expect(navigated).toEqual([selected.row.context.job_id]);
+  expect((await reconcile(view)).status).toBe('UNKNOWN');
+  await expect(select(view, selected.row.key)).rejects.toThrow();
+  await expect(open(selected, 'controls')).rejects.toThrow();
+  expect(JSON.stringify(selected)).toBe(snapshot);
+});
 it('revoked original review remains terminal across new desk source/controls navigation', async () => {
   const f = await fixture(),
     original = await readMaintenancePlanningContinuity(

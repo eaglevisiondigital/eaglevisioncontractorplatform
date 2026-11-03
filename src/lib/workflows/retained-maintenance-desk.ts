@@ -251,6 +251,10 @@ export async function navigateRetainedMaintenanceCase(
     await openRetainedMaintenanceSection(view, 'sources');
     assertRetainedMaintenanceCaseNow(view);
     callback(view.row.context.job_id, 'maintenance');
+  } catch (error) {
+    const desk = desks.get(b.desk);
+    if (desk) desk.unknown = true;
+    throw error;
   } finally {
     b.navigationPending = false;
   }

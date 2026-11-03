@@ -33,6 +33,8 @@ before/after awaits, render and callbacks. Same-case concurrent navigation yield
 callback; UI layout-generation and per-callback token guards prevent stale/ABA callbacks
 without remounting. Original optional destination sections are preserved. Counts are
 captured/access-limited, never complete history or evidence of physical completion.
+If a navigation callback runs then throws, the entire retained desk becomes UNKNOWN;
+the same occurrence cannot be reselected from that desk to replay the callback.
 
 Focused source tests cover all three brands, exact breadcrumbs/versions, safe source
 filter counts/reset, wrong same-company property and foreign tenant, copied handles,
