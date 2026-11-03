@@ -710,12 +710,12 @@ function Guide({
                 selectedJobId={controlsJob}
                 onSelectJob={
                   onSelectJob
-                    ? (jobId) => {
+                    ? (jobId, section?: OperatingJobSection) => {
                         if (
                           live.current &&
                           currentCallback.current === onSelectJob
                         )
-                          onSelectJob(jobId);
+                          onSelectJob(jobId, section);
                       }
                     : undefined
                 }
