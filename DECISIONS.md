@@ -1,5 +1,21 @@
 # Engineering decisions
 
+## Cycle16 · source-bound daily guides, not operational state authority
+
+The owner authorized six independent local implementation packages, shared search
+and combined review on separate draft branches. One explicit default-false daily-guide
+presentation choice reuses the original six navigation slots and repository host;
+retained task paths and default continuity views remain available. New guide labels
+and review suggestions never create physical completion, availability, consent,
+financial or dispatch authority. Shared search reuses the original paginated reader,
+exact row revalidation and existing job/section callback. All receiving views still
+independently validate current staff and exact sources.
+
+Cycle15's cancelled PR Foundation timed out during browser checks. A complete push
+run at the exact same Git tree passed all297browser cases plus application/native
+checks, so no unique coverage gap or manual rerun exists. Keep the cancelled record.
+All original approval/recovery/financial/hosted/production release gates stay closed.
+
 ## Cycle15 · retain exact task context through original review controls
 
 Compose six narrow default-OFF consumers in the original continuity slots; do not

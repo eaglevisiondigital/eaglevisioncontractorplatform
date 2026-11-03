@@ -1,0 +1,161 @@
+.addon-readiness-guide {
+  min-width: 0;
+  padding: 1.4rem;
+  color: #233d32;
+  background: #fff;
+  border: 1px solid #d9e1da;
+  border-radius: 18px;
+  line-height: 1.55;
+}
+.addon-readiness-guide > header {
+  position: static;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  gap: 1rem;
+  color: inherit;
+  background: transparent;
+}
+.addon-readiness-guide > header > div {
+  display: block;
+  flex: 1 1 320px;
+  min-width: 0;
+}
+.addon-readiness-guide > header > span {
+  display: inline-block;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid #b9cbbb;
+  border-radius: 18px;
+  background: #eff4ec;
+}
+.addon-readiness-guide > header h2 {
+  margin: 0.3rem 0 0.75rem;
+  font-size: 1.5rem;
+  overflow-wrap: anywhere;
+}
+.addon-readiness-guide > p,
+.addon-readiness-guide-ui p,
+.addon-readiness-guide-ui li,
+.addon-readiness-guide-ui dd,
+.addon-readiness-guide-ui h3,
+.addon-readiness-guide-ui h4,
+.addon-readiness-guide-ui nav {
+  overflow-wrap: anywhere;
+}
+.addon-readiness-guide-ui {
+  min-width: 0;
+  margin: 1rem 0;
+}
+.addon-readiness-guide-ui h3,
+.addon-readiness-guide-ui h4 {
+  margin: 0.3rem 0 0.75rem;
+}
+.addon-readiness-guide-ui label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: 600;
+  min-width: 0;
+  margin: 0.6rem 0;
+}
+.addon-readiness-guide-ui input,
+.addon-readiness-guide-ui select {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0.65rem;
+  color: inherit;
+  background: #fff;
+  border: 1px solid #8c9f93;
+  border-radius: 8px;
+  font: inherit;
+}
+.addon-readiness-guide-ui button,
+.addon-readiness-guide-ui summary {
+  box-sizing: border-box;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 0.65rem 1rem;
+  font: inherit;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+.addon-readiness-guide-ui button {
+  display: inline-block;
+  margin: 0.3rem 0.4rem 0.3rem 0;
+  border: 1px solid var(--journey-primary, #247364);
+  border-radius: 8px;
+  color: #fff;
+  background: var(--journey-primary, #247364);
+}
+.addon-readiness-guide-ui button.secondary {
+  color: var(--journey-primary, #247364);
+  background: #fff;
+}
+.addon-readiness-guide-ui button:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+.addon-readiness-guide-filters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+.addon-readiness-guide-ui article {
+  min-width: 0;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  background: #f8f8f2;
+}
+.addon-readiness-guide-ui dt {
+  color: #3e594f;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.addon-readiness-guide-ui dd {
+  margin: 0 0 0.65rem;
+}
+.addon-readiness-guide-ui nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 1rem 0;
+}
+.addon-readiness-guide > [role='alert'] {
+  padding: 0.8rem;
+  border-left: 4px solid #9b4426;
+  color: #71341f;
+  background: #fff3e9;
+}
+.addon-readiness-guide > footer {
+  display: block;
+  padding: 1rem 0 0;
+  margin-top: 1rem;
+  border-top: 1px solid #d9e1da;
+  color: #3e594f;
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+.addon-readiness-guide-ui :focus-visible {
+  outline: 3px solid var(--journey-primary, #247364);
+  outline-offset: 3px;
+}
+@media (max-width: 760px) {
+  .addon-readiness-guide {
+    padding: 1rem;
+  }
+  .addon-readiness-guide-filters {
+    grid-template-columns: 1fr;
+  }
+  .addon-readiness-guide-ui button {
+    width: 100%;
+  }
+}

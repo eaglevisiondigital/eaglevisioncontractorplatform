@@ -325,6 +325,23 @@ export function sourceOwner(path) {
     )
   )
     return 'A8';
+  // Cycle16 exact consumer metadata, never authority or acceptance promotion.
+  if (
+    /OperatingCenterCycleSixteen|SharedRecordSearch|daily-guide-search|^tests\/program\/.*cycle16|cycle16-integration|playwright\.cycle16|check-cycle16-/.test(
+      path,
+    )
+  )
+    return 'A8';
+  if (/daily-field-guide|DailyFieldGuide/.test(path)) return 'A3';
+  if (/daily-finance-guide|DailyFinanceGuide/.test(path)) return 'A4';
+  if (/service-completion-guide|ServiceCompletionGuide/.test(path)) return 'A5';
+  if (
+    /retention-review-guide|RetentionReviewGuide|owner-briefing-guide|OwnerBriefingGuide/.test(
+      path,
+    )
+  )
+    return 'A6';
+  if (/addon-readiness-guide|AddonReadinessGuide/.test(path)) return 'A7';
   // Cycle15 exact consumer lanes, never access grants or acceptance promotion.
   if (
     /OperatingCenterCycleFifteen|task-review-paths|^tests\/program\/.*cycle15|cycle15-integration|playwright\.cycle15|check-cycle15-/.test(

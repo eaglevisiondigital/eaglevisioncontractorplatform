@@ -15,7 +15,8 @@
     "Cycle11 adds exact-source staff reviews, separate disposable transaction laboratories and a public-evidence scorecard. Synthetic participating fixture atomicity is not operational authorization or global canonical synchronization. Original capability and hosted/release states remain unchanged.",
     "Cycle12 extends exact-source proposal controls, canonical financial evidence, service-completion requirements, cancellation/suppression fixture review and source/state-checked suggestions. All original scope/design/local/hosted/release/approval/CI labels remain unchanged. Disposable laboratory results are not operational authority, physical recovery or globally atomic Auth/source evidence.",
     "Cycle13 adds exact-source work-order instruction proposals, financial casework, service/Passport continuity, follow-up requirements, local task navigation, advanced review desks and a visual approval inventory. Original25capability stage/approval/CI values and original18 IDs remain unchanged. Digest custody is not full-content durability; new Operating Center visual approval remains separately missing. Local evidence never enables dispatch, messages, finance, providers or hosted release.",
-    "Cycle15 composes six exact draft task-continuity packages over the same canonical source handles, with an explicit default-false guided presentation option. Source-bound local returns preserve original holds; no recorded request/job foreign key, physical completion, costs, consent, operational authority or capability/visual/hosted/release acceptance is inferred."
+    "Cycle15 composes six exact draft task-continuity packages over the same canonical source handles, with an explicit default-false guided presentation option. Source-bound local returns preserve original holds; no recorded request/job foreign key, physical completion, costs, consent, operational authority or capability/visual/hosted/release acceptance is inferred.",
+    "Cycle16 adds default-OFF daily guides and original-reader shared search over the same exact prepared source set. No new store, inferred completion/consent/availability, durable custody or capability/visual/hosted/release acceptance. Cycle15 PR Foundation timeout is retained separately from equivalent-tree full passing push coverage; no manual rerun."
   ],
   "features": [
     {
@@ -652,6 +653,10 @@
         {
           "path": "docs/program/CYCLE14_SCHEDULE_WORK_ORDER_CONTINUITY.md",
           "anchor": "Cycle14"
+        },
+        {
+          "path": "src/components/workflows/DailyFieldGuide.tsx",
+          "anchor": "export function DailyFieldGuide"
         }
       ],
       "tests": [
@@ -811,6 +816,10 @@
         {
           "path": "docs/program/CYCLE14_FINANCE_CASE_CONTINUITY.md",
           "anchor": "Cycle14"
+        },
+        {
+          "path": "src/components/workflows/DailyFinanceGuide.tsx",
+          "anchor": "export function DailyFinanceGuide"
         }
       ],
       "tests": [
@@ -953,6 +962,10 @@
         {
           "path": "docs/program/CYCLE14_FINANCE_CASE_CONTINUITY.md",
           "anchor": "Cycle14"
+        },
+        {
+          "path": "src/components/workflows/DailyFinanceGuide.tsx",
+          "anchor": "export function DailyFinanceGuide"
         }
       ],
       "tests": [
@@ -1199,6 +1212,10 @@
         {
           "path": "docs/program/CYCLE14_SERVICE_SOURCE_CONTINUITY.md",
           "anchor": "Cycle14"
+        },
+        {
+          "path": "src/components/workflows/ServiceCompletionGuide.tsx",
+          "anchor": "export function ServiceCompletionGuide"
         }
       ],
       "tests": [
@@ -1341,6 +1358,10 @@
         {
           "path": "docs/program/CYCLE14_MAINTENANCE_PLANNING_CONTINUITY.md",
           "anchor": "Cycle14"
+        },
+        {
+          "path": "src/components/workflows/RetentionReviewGuide.tsx",
+          "anchor": "export function RetentionReviewGuide"
         }
       ],
       "tests": [
@@ -1478,6 +1499,10 @@
         {
           "path": "docs/program/CYCLE14_MAINTENANCE_PLANNING_CONTINUITY.md",
           "anchor": "Cycle14"
+        },
+        {
+          "path": "src/components/workflows/RetentionReviewGuide.tsx",
+          "anchor": "export function RetentionReviewGuide"
         }
       ],
       "tests": [
@@ -1624,6 +1649,10 @@
         {
           "path": "docs/program/CYCLE14_VERIFIED_TASK_HANDOFF.md",
           "anchor": "Cycle14"
+        },
+        {
+          "path": "src/components/workflows/OwnerBriefingGuide.tsx",
+          "anchor": "export function OwnerBriefingGuide"
         }
       ],
       "tests": [
@@ -1763,6 +1792,10 @@
         {
           "path": "docs/program/CYCLE14_SOURCE_BOUND_ADDONS.md",
           "anchor": "Cycle14"
+        },
+        {
+          "path": "src/components/workflows/AddonReadinessGuide.tsx",
+          "anchor": "export function AddonReadinessGuide"
         }
       ],
       "tests": [
@@ -1891,6 +1924,10 @@
         {
           "path": "docs/program/CYCLE14_VISUAL_REVIEW.md",
           "anchor": "Cycle14"
+        },
+        {
+          "path": "src/components/workflows/SharedRecordSearch.tsx",
+          "anchor": "export function SharedRecordSearch"
         }
       ],
       "tests": [
