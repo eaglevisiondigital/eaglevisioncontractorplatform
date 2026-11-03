@@ -1,0 +1,105 @@
+.owner-action-desk {
+  color: #23382e;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.owner-action-desk h2,
+.owner-action-desk h3,
+.owner-action-desk h4 {
+  color: #193c2e;
+}
+.owner-action-desk-eyebrow {
+  color: var(--journey-primary, #216449);
+  font-weight: 700;
+}
+.owner-action-desk button,
+.owner-action-desk input:not([type='checkbox']),
+.owner-action-desk select {
+  min-height: 44px;
+  max-width: 100%;
+}
+.owner-action-desk button {
+  margin: 0.3rem 0.5rem 0.3rem 0;
+}
+.owner-action-desk label {
+  display: block;
+  margin: 0.7rem 0;
+}
+.owner-action-desk input[type='checkbox'] {
+  width: 1.15rem;
+  height: 1.15rem;
+  vertical-align: middle;
+}
+.owner-action-desk-filters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+.owner-action-desk-filters label {
+  display: grid;
+  gap: 0.4rem;
+}
+.owner-action-desk-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+.owner-action-desk-list > li {
+  min-width: 0;
+  border: 1px solid #d4ded7;
+  border-radius: 12px;
+  background: #fff;
+  padding: 1rem;
+}
+.owner-action-desk-badge {
+  display: inline-block;
+  background: #edf3ee;
+  color: #294a37;
+  padding: 0.35rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+.owner-action-desk-detail {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #cad9ce;
+  border-radius: 14px;
+  background: #f7faf7;
+}
+.owner-action-desk nav {
+  display: block;
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+}
+.owner-action-desk dd {
+  margin: 0 0 0.6rem;
+}
+.owner-action-desk dt {
+  font-weight: 650;
+}
+.owner-action-desk-muted {
+  color: #4b5d52;
+  font-size: 0.9rem;
+}
+.owner-action-desk [hidden] {
+  display: none !important;
+}
+.owner-action-desk :focus-visible {
+  outline: 3px solid var(--journey-primary, #216449);
+  outline-offset: 3px;
+}
+@media (max-width: 760px) {
+  .owner-action-desk-filters,
+  .owner-action-desk-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .owner-action-desk-detail {
+    padding: 0.75rem;
+  }
+  .owner-action-desk button {
+    width: 100%;
+    margin: 0.3rem 0;
+  }
+}
