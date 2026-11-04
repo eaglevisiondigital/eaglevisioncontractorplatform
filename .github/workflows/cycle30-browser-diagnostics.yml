@@ -2,6 +2,10 @@ name: Cycle 30 original browser timing diagnosis
 on:
   push:
     branches: ['codex/cycle30-browser-reliability']
+    paths:
+      - '.github/workflows/cycle30-browser-diagnostics.yml'
+      - 'scripts/cycle30-browser-timing.mjs'
+      - 'scripts/cycle30-chromium-dependencies.mjs'
 permissions:
   contents: read
 concurrency:
