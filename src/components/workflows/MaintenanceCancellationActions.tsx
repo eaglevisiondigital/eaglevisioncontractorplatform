@@ -4,6 +4,7 @@ import { journeyEnabled } from '../../lib/workflows/journey-runtime';
 import {
   maintenanceReviewPurposes,
   readPlanCancellationReview,
+  assertPlanCancellationObservationAccess,
   rereadPlanCancellationReview,
   planCancellationFacts,
   planCancellationOccurrenceFacts,
@@ -235,6 +236,12 @@ function ReviewActions({
     facts = undefined;
     occurrence = undefined;
   }
+  let observationAccess = true;
+  try {
+    if (review) assertPlanCancellationObservationAccess(review);
+  } catch {
+    observationAccess = false;
+  }
   const currentSelection = !!occurrence;
   if (!currentSelection && (verified || confirmed)) {
     setVerified(false);
@@ -254,7 +261,7 @@ function ReviewActions({
         Requested staff review purpose
         <select
           value={purpose}
-          disabled={busy || !!selected}
+          disabled={busy || !!selected || !observationAccess}
           onChange={(e) => {
             setPurpose(e.target.value as MaintenanceReviewPurpose);
             setReview(undefined);
@@ -270,7 +277,7 @@ function ReviewActions({
       </label>
       <button
         type="button"
-        disabled={busy || attempted || terminalAttempted}
+        disabled={busy || attempted || terminalAttempted || !observationAccess}
         onClick={() => void run(load)}
       >
         Read staff cancellation sources
@@ -289,7 +296,7 @@ function ReviewActions({
             Exact cancellation review occurrence
             <select
               value={key}
-              disabled={busy || !!selected}
+              disabled={busy || !!selected || !observationAccess}
               onChange={(e) => void run(() => select(e.target.value))}
             >
               <option value="">Choose exact occurrence</option>
@@ -312,7 +319,7 @@ function ReviewActions({
           </p>
         </>
       )}
-      {selected && (
+      {selected && observationAccess && (
         <>
           <p>Exact source: {selected.selection.occurrence.key}</p>
           {occurrence && (
@@ -472,7 +479,9 @@ function ReviewActions({
         </>
       )}
       <p role="status" aria-live="polite">
-        {status}
+        {observationAccess
+          ? status
+          : 'Access unavailable. Retained private maintenance details are withheld; original custody and UNKNOWN remain unchanged.'}
       </p>
     </section>
   );

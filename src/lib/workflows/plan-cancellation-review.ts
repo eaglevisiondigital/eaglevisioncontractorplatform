@@ -91,6 +91,21 @@ function assertSavedPlanIdentity(review: PlanCancellationReview) {
   )
     throw Error('Original native saved maintenance identity required');
 }
+/** Original access only for retained point-in-time presentation. Mutable source
+ * freshness is still required separately by every native action/verification. */
+export function assertPlanCancellationObservationAccess(
+  review: PlanCancellationReview,
+): void {
+  if (
+    Object.keys(
+      prototypeFields(review, ['view', 'saved', 'desk', 'purpose', 'gate']),
+    ).length !== 5
+  )
+    throw Error('Original staff review references required');
+  assertSavedRevisionAccess(review.view);
+  assertSavedRevisionAccess(review.saved);
+  assertSavedPlanIdentity(review);
+}
 export function assertPlanCancellationCurrent(review: PlanCancellationReview) {
   if (
     Object.keys(
