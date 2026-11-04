@@ -1,3 +1,5 @@
+import { execFileSync } from 'node:child_process';
+import { mkdirSync, mkdtempSync, writeFileSync, rmSync } from 'node:fs';
 import { expect, it } from 'vitest';
 type Spec = {
   module: string;
@@ -183,4 +185,63 @@ it('requires exact independently reviewed readiness without operational permissi
       read: () => Buffer.from('implementation accepted'),
     }),
   ).toThrow('reviewed readiness');
+});
+
+it('immutable Git object buffers cannot be poisoned by a caller', () => {
+  const path = 'src/lib/workflows/task-receipt-reconciliation.ts',
+    p = lib.cycle25SourcePorts;
+  const first = p.git(lib.cycle27Parent, path);
+  first.fill(0);
+  expect(p.git(lib.cycle27Parent, path)).toEqual(
+    execFileSync('git', ['show', `${lib.cycle27Parent}:${path}`]),
+  );
+});
+it('warm immutable Git facts never cache mutable files or source admission', () => {
+  const p = lib.cycle25SourcePorts,
+    s = lib.cycle27Authors[0];
+  expect(
+    lib.inspectCycle27Sources({ requireCombined: true }).complete_combined,
+  ).toBe(true);
+  expect(() =>
+    lib.inspectCycle27Sources({
+      read: (path) =>
+        path === s.modified[0]
+          ? Buffer.from('changed after warm cache')
+          : p.read(path),
+    }),
+  ).toThrow('fixed Cycle27');
+  mkdirSync('artifacts/cycle27', { recursive: true });
+  const dir = mkdtempSync('artifacts/cycle27/fresh-read-'),
+    path = dir + '/source.txt';
+  try {
+    writeFileSync(path, 'before');
+    expect(p.read(path).toString()).toBe('before');
+    writeFileSync(path, 'after');
+    expect(p.read(path).toString()).toBe('after');
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+it('raw object facts ignore replacement refs and shallow traversal in a disposable repository', () => {
+  mkdirSync('artifacts/cycle27', { recursive: true });
+  const dir = mkdtempSync('artifacts/cycle27/git-context-');
+  const script = `import {execFileSync} from 'node:child_process';import{writeFileSync}from'node:fs';import assert from'node:assert/strict';
+ const {cycle25SourcePorts:p}=await import(${JSON.stringify(new URL('../scripts/cycle25-source-lineage.mjs', import.meta.url).href)});
+ const g=(...args)=>execFileSync('git',args,{encoding:'utf8'}).trim();g('init','-q');
+ const tree=execFileSync('git',['mktree'],{input:'',encoding:'utf8'}).trim();
+ const commit=(parent,note)=>execFileSync('git',['hash-object','-w','-t','commit','--stdin'],{input:'tree '+tree+'\\n'+(parent?'parent '+parent+'\\n':'')+'author Synthetic <synthetic@example.invalid> 1 +0000\\ncommitter Synthetic <synthetic@example.invalid> 1 +0000\\n\\n'+note+'\\n',encoding:'utf8'}).trim();
+ const a=commit('', 'a'),b=commit(a,'b'),replacement=commit('','replacement');
+ assert.equal(p.parent(b),a);g('replace',b,replacement);assert.equal(p.parent(b),a);
+ const cold=commit(a,'cold');g('replace',cold,replacement);writeFileSync('.git/shallow',cold+'\\n');
+ assert.equal(p.parent(cold),a);assert.equal(p.delta(cold),'');assert.equal(p.type(cold),'commit');
+ `;
+  try {
+    execFileSync(process.execPath, ['--input-type=module', '-e', script], {
+      cwd: dir,
+      stdio: 'pipe',
+    });
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
 });

@@ -153,31 +153,55 @@ export const cycle25Authors = Object.freeze(
 );
 
 const git = (...args) =>
-  execFileSync('git', args, {
+  execFileSync('git', ['--no-replace-objects', ...args], {
     maxBuffer: 4 * 1024 * 1024,
     stdio: ['ignore', 'pipe', 'pipe'],
   });
+// Git object answers are immutable at a full object ID. Cache only successful
+// object reads; copied buffers prevent callers mutating the cache. Current file
+// reads, per-row metadata, source admission and business authority are NEVER cached.
+const immutableGitObjects = new Map();
+function objectGit(commit, ...args) {
+  if (!/^[a-f0-9]{40}$/.test(commit)) return git(...args);
+  const key = JSON.stringify([process.cwd(), commit, ...args]);
+  if (!immutableGitObjects.has(key))
+    immutableGitObjects.set(key, Buffer.from(git(...args)));
+  return Buffer.from(immutableGitObjects.get(key));
+}
 export const cycle25SourcePorts = {
-  git: (commit, path) => git('show', `${commit}:${path}`),
+  git: (commit, path) => objectGit(commit, 'show', `${commit}:${path}`),
   parent: (commit) =>
-    git('show', '--no-patch', '--format=%P', commit).toString().trim(),
-  type: (commit) => git('cat-file', '-t', commit).toString().trim(),
+    objectGit(commit, 'cat-file', 'commit', commit)
+      .toString()
+      .split('\n\n')[0]
+      .split('\n')
+      .filter((line) => line.startsWith('parent '))
+      .map((line) => line.slice(7))
+      .join(' '),
+  type: (commit) =>
+    objectGit(commit, 'cat-file', '-t', commit).toString().trim(),
   mode: (commit, path) =>
-    git('ls-tree', commit, '--', path).toString().split(/\s+/)[0],
-  delta: (commit) =>
-    git(
+    objectGit(commit, 'ls-tree', commit, '--', path).toString().split(/\s+/)[0],
+  delta: (commit) => {
+    const parent = cycle25SourcePorts.parent(commit);
+    if (!/^[a-f0-9]{40}$/.test(parent))
+      throw Error('Exact raw single parent required');
+    return objectGit(
+      commit,
       'diff-tree',
       '--no-commit-id',
       '--name-status',
       '--no-renames',
       '-r',
+      parent,
       commit,
     )
       .toString()
       .trim()
       .split('\n')
       .sort()
-      .join('\n'),
+      .join('\n');
+  },
   read: (path) => {
     if (
       typeof path !== 'string' ||
