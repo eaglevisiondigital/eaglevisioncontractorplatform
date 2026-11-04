@@ -21,7 +21,9 @@ earlier14case gaps, while5legacy validator failures/102unconcluded unit files an
 unreached recovery/build/full-browser remain separate. Current-head CI is reported
 from actual snapshots, never inferred from local proof or another SHA.
 The selected14diagnostic is FAIL with10actual PASS and four missing nested cases;
-its corrected missing-four follow-up does not rerun the successful ten.
+its corrected missing-four follow-up41897772376 PASS covers4/4without rerunning
+the successful ten. This is14distinct cases across two reports, not one run or a
+whole Foundation PASS.
 
 Independent128protected/593oldtest-config-fixture/156critical/5locks/13bindings remain
 exact. Original25capability records/18IDs/approved designs are not promoted; two newer

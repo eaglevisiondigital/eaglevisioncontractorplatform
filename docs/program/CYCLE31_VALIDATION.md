@@ -131,8 +131,11 @@ the JSON reporter's space separator rather than the pinned Vitest runner's `>`
 separator; deselected assertions also report `skipped`, not `pending`. A narrowly
 reviewed follow-up selects only the four missing cases under original maxWorkers4/
 30second test/hook budgets. It does not repeat the ten successful cases or relabel
-the first failed job. Follow-up41897772376 at diagnostic75e5a26 is QUEUED at
-this observation. Raw earlier failures, newer same-head passes and unresolved
+the first failed job. Follow-up41897772376 at diagnostic75e5a26 is PASS:4/4selected,104collected/
+100deselected, unchanged4workers/30second budgets. Raw result SHA256
+99f03bf59464b39509477288d1381e4d8851b27499b5e3ffe038010e127ad5de.
+The two actual reports have14distinct original passing cases with no overlap or
+replay; the first workflow remains FAIL. This is not one14case run. Raw earlier failures, newer same-head passes and unresolved
 causes remain distinct; neither diagnostic substitutes for complete Foundation.
 Child drafts that exclude CI229 can retain inherited Passport installation failures;
 Main composes the repair without merging any parent or calling those checks green.

@@ -134,6 +134,9 @@ Combined exact832 workflow41892296853 subsequently PASS with all591application
 cases,9native/3OFF responsive cases,63verified clean screenshots and original
 owner cases17755/17956ms under unchanged30000ms budgets. Its separately retained
 artifact is not Foundation success or later-head inheritance. Missing-four-only
-follow-up41897772376 at diagnostic75e5a26 is QUEUED at this observation; the
+follow-up41897772376 at diagnostic75e5a26 is PASS with4selected/100deselected,
+104collected. Its raw result SHA256 is 99f03bf59464b39509477288d1381e4d8851b27499b5e3ffe038010e127ad5de.
+Together with retained10,14distinct originals pass across two separate reports,
+never a relabelled original workflow or complete Foundation. The
 [review supplement](CYCLE31_FOUNDATION_SELECTION_SUPPLEMENT.md) records the exact
 filter/collector correction and sixteen pure parser checks without application replay.

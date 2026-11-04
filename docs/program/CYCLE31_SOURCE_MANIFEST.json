@@ -182,11 +182,20 @@
     "selected_14_status": "FAIL_TEN_PASS_FOUR_NOT_SELECTED_COLLECTOR_DENIED",
     "parent_later_same_head_162": "PASS_IN_CANCELLED_SECOND_FOUNDATION_NOT_WHOLE_RUN",
     "missing_four_followup": {
+      "run": 41897772376,
       "diagnostic_commit": "75e5a267b8460c41da68779fc34a41571b087fae",
-      "scope": "FOUR_MISSING_ONLY_104_COLLECTED_100_DESELECTED",
-      "previous_ten_not_repeated": true,
-      "status": "QUEUED_AT_RECORDED_OBSERVATION",
-      "run": 41897772376
+      "source": "1a677d67cb1f79246a7912ab7dc4ed3bacc81ccc",
+      "status": "PASS",
+      "selected": 4,
+      "passed": 4,
+      "failed": 0,
+      "collected": 104,
+      "deselected": 100,
+      "raw_result_sha256": "99f03bf59464b39509477288d1381e4d8851b27499b5e3ffe038010e127ad5de",
+      "original_successful_ten_replayed": false,
+      "combined_distinct_original_cases": 14,
+      "single_fourteen_case_run_claim": false,
+      "whole_foundation_success": false
     },
     "hosted_combined": {
       "run": 41892296853,

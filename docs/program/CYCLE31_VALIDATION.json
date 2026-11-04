@@ -113,13 +113,20 @@
       "raw_result_sha256": "e5530851a4b987a39ebc12049b45b87e2bc9024df7acd28ded792ec571addcbc"
     },
     "missing_four_followup": {
+      "run": 41897772376,
       "diagnostic_commit": "75e5a267b8460c41da68779fc34a41571b087fae",
-      "scope": "FOUR_MISSING_ONLY_104_COLLECTED_100_DESELECTED",
-      "status": "QUEUED_AT_RECORDED_OBSERVATION",
-      "original_ten_replayed": false,
-      "offline_parser_checks": 16,
-      "offline_parser_checks_execute_application_cases": false,
-      "run": 41897772376
+      "source": "1a677d67cb1f79246a7912ab7dc4ed3bacc81ccc",
+      "status": "PASS",
+      "selected": 4,
+      "passed": 4,
+      "failed": 0,
+      "collected": 104,
+      "deselected": 100,
+      "raw_result_sha256": "99f03bf59464b39509477288d1381e4d8851b27499b5e3ffe038010e127ad5de",
+      "original_successful_ten_replayed": false,
+      "combined_distinct_original_cases": 14,
+      "single_fourteen_case_run_claim": false,
+      "whole_foundation_success": false
     }
   },
   "operational": {
