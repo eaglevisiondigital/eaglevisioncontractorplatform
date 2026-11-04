@@ -74,6 +74,47 @@ export function checkOwnerActionRequirements(
       'Current source verification permits only its original review destination. Missing evidence stays independent; no completion, contract approval, posting, dispatch, payment or sending is authorized.',
   });
 }
+/** Literal filtering of the original current authorized rows only. It never
+ * selects, ranks, resolves an ID or extends the original action authority. */
+export function filterOwnerActionSources(
+  view: VerifiedOwnerBriefingRead,
+  input: { query: string },
+) {
+  assertVerifiedOwnerBriefingCurrent(view);
+  const p = prototypeFields(input, ['query']);
+  if (
+    Object.keys(p).length !== 1 ||
+    typeof p.query !== 'string' ||
+    p.query.length > 200
+  )
+    throw Error('Bounded literal original-priority query required');
+  const query = p.query.trim().toLowerCase();
+  const rows = view.rows.filter(
+    (row) =>
+      !query ||
+      [
+        row.key,
+        row.source.kind,
+        row.source.id,
+        row.recorded_fact,
+        row.suggested_human_review,
+        ...row.facts,
+        ...row.order_reasons,
+        ...row.missing_evidence.map((r) => `${r.code} ${r.status} ${r.detail}`),
+      ]
+        .join(' ')
+        .toLowerCase()
+        .includes(query),
+  );
+  assertVerifiedOwnerBriefingCurrent(view);
+  return freezePrototype({
+    rows,
+    matching: rows.length,
+    available: view.rows.length,
+    meaning:
+      'LITERAL_PRESENTATION_NOT_SELECTION_RANKING_OR_AUTHORIZATION' as const,
+  });
+}
 /** Compare two explicit original reads. This has no independent reader, ranking,
  * registry, custody, or restored-state authority. Retention is presentation only. */
 export function compareOwnerActionRefresh(

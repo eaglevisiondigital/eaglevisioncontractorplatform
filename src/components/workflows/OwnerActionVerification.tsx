@@ -10,6 +10,7 @@ import {
 } from '../../lib/workflows/verified-owner-briefing';
 import {
   verifyOwnerActionRequirements,
+  filterOwnerActionSources,
   compareOwnerActionRefresh,
   type OwnerActionRefresh,
   continueVerifiedOwnerAction,
@@ -58,6 +59,7 @@ function ActionForm({
   const id = useId(),
     [view, setView] = useState<VerifiedOwnerBriefingRead>(),
     [selection, setSelection] = useState<OwnerActionSelection>(),
+    [query, setQuery] = useState(''),
     [result, setResult] = useState<OwnerActionVerificationResult>(),
     [refresh, setRefresh] = useState<OwnerActionRefresh>(),
     [confirmed, setConfirmed] = useState(false),
@@ -162,6 +164,9 @@ function ActionForm({
       if (life.current.active) setBusy(false);
     }
   }
+  const filtered =
+    view && current ? filterOwnerActionSources(view, { query }) : undefined;
+  const selected = view?.rows.find((row) => row.key === selection?.key);
   return (
     <section
       className="owner-action-verification"
@@ -187,6 +192,26 @@ function ActionForm({
       </p>
       {view && current && (
         <>
+          <label htmlFor={`${id}-query`}>Search original owner sources</label>
+          <input
+            id={`${id}-query`}
+            type="search"
+            maxLength={200}
+            value={query}
+            disabled={busy}
+            onChange={(event) => setQuery(event.target.value)}
+          />
+          <p>
+            {filtered?.matching} matching of {filtered?.available} original
+            priorities. Search preserves original order and never selects a
+            source.
+          </p>
+          {selected && !filtered?.rows.includes(selected) && (
+            <p>
+              Retained exact selection outside results: {selected.source.kind} ·{' '}
+              {selected.source.id}
+            </p>
+          )}
           <label htmlFor={`${id}-source`}>
             Exact recorded owner action source
           </label>
@@ -202,7 +227,13 @@ function ActionForm({
             }}
           >
             <option value="">Choose an original priority</option>
-            {view.rows.map((row) => (
+            {selected && !filtered?.rows.includes(selected) && (
+              <option value={selected.key}>
+                {selected.rank} · {selected.source.kind} · {selected.source.id}{' '}
+                · retained exact selection
+              </option>
+            )}
+            {filtered?.rows.map((row) => (
               <option key={row.key} value={row.key}>
                 {row.rank} · {row.source.kind} · {row.source.id}
               </option>
