@@ -74,6 +74,10 @@ export function parseTaskCorrectionInput(
       corrects_id: source.source_entry_id,
     },
   ]);
+  // A descriptor-bearing Proxy must not substitute different confirmed fields
+  // at the native owner's next capture. The clone is never used as authority.
+  if (JSON.stringify(structuredClone(value)) !== JSON.stringify(f))
+    throw Error('Plain stable original task correction fields required');
   return freezePrototype({
     source_entry_id: source.source_entry_id,
     task: f.task,
