@@ -700,6 +700,11 @@ export function validateCycle27ForwardSpec(spec, ports = cycle25SourcePorts) {
 
 function admitCycle27Forward(path, current, previous, ports) {
   const owners = cycle27Authors.filter((s) => s.modified.includes(path));
+  if (
+    owners.length === 0 &&
+    cycle28Authors.some((s) => s.modified.includes(path))
+  )
+    return admitCycle28Forward(path, current, previous, ports);
   if (owners.length !== 1)
     throw Error('No finite Cycle27 owner for replacement');
   const spec = owners[0],
@@ -708,9 +713,14 @@ function admitCycle27Forward(path, current, previous, ports) {
     !Buffer.from(ports.git(cycle27Parent, path)).equals(Buffer.from(previous))
   )
     throw Error('Cycle27 exact parent must retain original reviewed source');
-  if (!Buffer.from(current).equals(Buffer.from(ports.git(spec.commit, path))))
+  const endpoint = Buffer.from(ports.git(spec.commit, path));
+  if (Buffer.from(current).equals(endpoint)) return result;
+  if (!cycle28Authors.some((s) => s.modified.includes(path)))
     throw Error('Current source differs from fixed Cycle27 author');
-  return result;
+  return {
+    ...result,
+    cycle28_forward: admitCycle28Forward(path, current, endpoint, ports),
+  };
 }
 export function inspectCycle27Sources({
   requireCombined = false,
@@ -749,6 +759,176 @@ export function inspectCycle27Sources({
           )
         )
           throw Error('Exact Cycle27 author test/document required');
+    rows.push({
+      module: spec.module,
+      commit: spec.commit,
+      state: count ? 'EXACT_SUCCESSOR_PRESENT' : 'BASELINE_UNCHANGED',
+    });
+  }
+  return {
+    packages: rows,
+    complete_combined:
+      rows.length === 6 &&
+      rows.every((r) => r.state === 'EXACT_SUCCESSOR_PRESENT'),
+    business_authority: false,
+    restore_adapter: false,
+  };
+}
+
+// Finite Cycle28 source-only successors; never runtime custody or restoration.
+export const cycle28Parent = '5f74b8ff5385560330cb94717c17338ed0c10f44';
+export const cycle28Authors = Object.freeze(
+  [
+    [
+      'task-custody',
+      '/root/cycle25_field_growth_resume',
+      '0eb504895ff6adabf4c6c1727dba360f1b61c2d9',
+      10,
+      [
+        'src/lib/workflows/task-receipt-reconciliation.ts',
+        'src/components/workflows/TaskReceiptActions.tsx',
+      ],
+    ],
+    [
+      'cost-readiness',
+      '/root/cycle25_finance_intelligence_resume',
+      '9577069c3788a7baf7202f55e496e66352ad298e',
+      15,
+      ['src/components/workflows/CostCoverageActions.tsx'],
+    ],
+    [
+      'request-provenance',
+      '/root/cycle28_customer_offline',
+      '670030d42153cc595f52b4605307f1738edb82be',
+      19,
+      ['src/components/workflows/ServiceRequestActions.tsx'],
+    ],
+    [
+      'consent-renewal',
+      '/root/cycle25_field_growth_resume',
+      '9a6822b7267eb97170883914533271c166fb7d62',
+      8,
+      ['src/components/workflows/MaintenanceCancellationActions.tsx'],
+    ],
+    [
+      'current-priorities',
+      '/root/cycle25_finance_intelligence_resume',
+      '44064cac9f4cde8c746ef080b3e613aff94ff410',
+      15,
+      ['src/components/workflows/OwnerActionVerification.tsx'],
+    ],
+    [
+      'unknown-diagnostics',
+      '/root/cycle28_customer_offline',
+      '621aa4059c289b785ae56cfb30ae61740476f812',
+      25,
+      ['src/lib/workflows/offline-source-admission.ts'],
+    ],
+  ].map(([module, owner, commit, cases, paths]) =>
+    Object.freeze({
+      module,
+      owner,
+      branch: `codex/cycle28-${module}`,
+      commit,
+      cases,
+      permitted: Object.freeze([...paths]),
+      modified: Object.freeze([...paths]),
+      added: Object.freeze([
+        `docs/program/CYCLE28_${module.toUpperCase().replaceAll('-', '_')}.md`,
+        `tests/cycle28-${module}.test.ts`,
+      ]),
+    }),
+  ),
+);
+export function validateCycle28ForwardSpec(spec, ports = cycle25SourcePorts) {
+  if (
+    !spec ||
+    !/^[a-f0-9]{40}$/.test(spec.commit ?? '') ||
+    spec.commit === '0'.repeat(40) ||
+    ports.type(spec.commit) !== 'commit' ||
+    ports.parent(spec.commit) !== cycle28Parent
+  )
+    throw Error('Exact single-parent Cycle28 source commit required');
+  if (
+    !Array.isArray(spec.modified) ||
+    !spec.modified.length ||
+    new Set(spec.modified).size !== spec.modified.length ||
+    spec.modified.some((p) => !spec.permitted.includes(p))
+  )
+    throw Error('Only explicitly owned Cycle28 native paths may change');
+  const added = [
+    `docs/program/CYCLE28_${spec.module.toUpperCase().replaceAll('-', '_')}.md`,
+    `tests/cycle28-${spec.module}.test.ts`,
+  ];
+  if (JSON.stringify([...spec.added].sort()) !== JSON.stringify(added.sort()))
+    throw Error('Only exact Cycle28 new test and document allowed');
+  const expected = [
+    ...spec.modified.map((p) => `M\t${p}`),
+    ...spec.added.map((p) => `A\t${p}`),
+  ]
+    .sort()
+    .join('\n');
+  if (ports.delta(spec.commit) !== expected)
+    throw Error('Exact bounded Cycle28 delta required');
+  for (const p of [...spec.modified, ...spec.added])
+    if (ports.mode(spec.commit, p) !== '100644')
+      throw Error('Regular non-executable Cycle28 source required');
+  return { source_commit: spec.commit, module: spec.module, owner: spec.owner };
+}
+
+function admitCycle28Forward(path, current, previous, ports) {
+  const owners = cycle28Authors.filter((s) => s.modified.includes(path));
+  if (owners.length !== 1)
+    throw Error('No finite Cycle28 owner for replacement');
+  const spec = owners[0],
+    result = validateCycle28ForwardSpec(spec, ports);
+  if (
+    !Buffer.from(ports.git(cycle28Parent, path)).equals(Buffer.from(previous))
+  )
+    throw Error('Cycle28 exact parent must retain original reviewed source');
+  if (!Buffer.from(current).equals(Buffer.from(ports.git(spec.commit, path))))
+    throw Error(
+      'Current source differs from fixed Cycle27 lineage (fixed Cycle28 author required)',
+    );
+  return result;
+}
+export function inspectCycle28Sources({
+  requireCombined = false,
+  ...supplied
+} = {}) {
+  const ports = { ...cycle25SourcePorts, ...supplied },
+    rows = [],
+    owned = new Set();
+  for (const spec of cycle28Authors) {
+    for (const path of spec.permitted) {
+      if (owned.has(path)) throw Error('Overlapping Cycle28 source ownership');
+      owned.add(path);
+    }
+    if (!spec.commit) {
+      if (requireCombined) throw Error('Unpublished Cycle28 source package');
+      continue;
+    }
+    let count = 0;
+    for (const path of spec.modified) {
+      const current = Buffer.from(ports.read(path)),
+        base = Buffer.from(ports.git(cycle28Parent, path));
+      if (!current.equals(base)) {
+        admitCycle28Forward(path, current, base, ports);
+        count++;
+      }
+    }
+    if (count && count !== spec.modified.length)
+      throw Error('Partial Cycle28 package forbidden');
+    if (requireCombined && !count)
+      throw Error('Combined Cycle28 package absent');
+    if (count)
+      for (const path of spec.added)
+        if (
+          !Buffer.from(ports.read(path)).equals(
+            Buffer.from(ports.git(spec.commit, path)),
+          )
+        )
+          throw Error('Exact Cycle28 author test/document required');
     rows.push({
       module: spec.module,
       commit: spec.commit,
