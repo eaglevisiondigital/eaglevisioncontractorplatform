@@ -5,7 +5,10 @@ import {
   readSavedSourceExercise,
   type SavedSourceExerciseView,
 } from './saved-revision-exercise';
-import { assertSavedRevisionCurrent } from './saved-revision-runtime';
+import {
+  assertSavedRevisionCurrent,
+  assertSavedRevisionAccess,
+} from './saved-revision-runtime';
 import {
   readMaintenanceSavedRevision,
   assertMaintenanceSavedRevisionCurrent,
@@ -365,4 +368,67 @@ export async function verifyPlanCancellationRequirements(
     renew: false as const,
     replay: 'FORBIDDEN' as const,
   });
+}
+
+/** Reread the same original identity and explicitly requested purpose. Returning
+ * an existing native review never replaces an occurrence or clears original
+ * attempt custody. Callers must select the retained exact key, never first/latest. */
+export async function rereadPlanCancellationReview(
+  previous: PlanCancellationReview,
+  sources: OperatingSources,
+  jobId: string,
+  gate: JourneyAdmission = { enabled: false, confirmed: false },
+) {
+  const requested = prototypeFields(gate, ['enabled', 'confirmed']);
+  if (requested.enabled !== true || requested.confirmed !== true)
+    throw Error('Explicit local current-source reread required');
+  if (
+    Object.keys(
+      prototypeFields(previous, ['view', 'saved', 'desk', 'purpose', 'gate']),
+    ).length !== 5
+  )
+    throw Error('Original maintenance review references required');
+  assertSavedRevisionAccess(previous.view);
+  assertSavedRevisionAccess(previous.saved);
+  const desk = prototypeFields(previous.desk, [
+    'mode',
+    'organization_id',
+    'window',
+    'requested_purpose',
+    'filters',
+    'jobs',
+    'rows',
+    'available_occurrences',
+    'matching_occurrences',
+    'coverage',
+    'count_is_complete',
+    'source_atomicity',
+    'purpose_is',
+    'authority',
+    'integrity',
+  ]);
+  assertSavedPlanIdentity(previous);
+  if (
+    jobId !== previous.view.identity.job_id ||
+    desk.requested_purpose !== previous.purpose
+  )
+    throw Error(
+      'Exact original maintenance job and requested purpose required',
+    );
+  const next = await readPlanCancellationReview(
+    sources,
+    jobId,
+    previous.purpose,
+    gate,
+  );
+  assertSavedRevisionAccess(previous.view);
+  assertPlanCancellationCurrent(next);
+  if (
+    JSON.stringify(previous.view.identity) !==
+    JSON.stringify(next.view.identity)
+  )
+    throw Error(
+      'Maintenance reread cannot substitute company/customer/property/version',
+    );
+  return next;
 }

@@ -10,6 +10,7 @@ import type { OperatingSources } from './operating-center-runtime';
 import { journeyEnabled, type JourneyAdmission } from './journey-runtime';
 import {
   readSavedSourceExercise,
+  inspectSavedSourceExercise,
   readSavedRequestAction,
   executeSavedRequestAction,
   reconcileSavedRequestAction,
@@ -99,6 +100,15 @@ export async function saveServiceRequestAction(
 }
 /** Original read-only observation, never replay or ambiguous-writer attribution. */
 export const reconcileServiceRequestAction = reconcileSavedRequestAction;
+
+/** Revalidate the original access owner before showing a retained observation.
+ * Current native versions may have changed after the read. This is access to
+ * historical point-in-time detail, not a current-row or mutation receipt claim. */
+export function assertServiceRequestObservationAccess(
+  view: ServiceRequestActionView,
+): void {
+  inspectSavedSourceExercise(view);
+}
 
 /** Join the original request action and original safe published-source readers.
  * The returned value is the original reader, not another snapshot or custody owner. */

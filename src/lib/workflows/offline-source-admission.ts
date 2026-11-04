@@ -137,17 +137,44 @@ export async function reconcileOfflineSourceAdmission(
     operational_ready: false as const,
     durable_receipt: false as const,
   };
+  // Diagnostics identify only which original read evidence is unavailable.
+  // They never classify an uncertain command as failed, authorize replay, or
+  // create/clear any original owner's hold.
+  let reason:
+    | 'LOCAL_REVIEW_NOT_ADMITTED'
+    | 'ORIGINAL_COMPARISON_OR_REQUIREMENTS_UNAVAILABLE'
+    | 'EXTERNAL_PROTOCOL_INVALID'
+    | 'ORIGINAL_CAPTURE_CURRENTNESS_UNVERIFIED'
+    | 'ORIGINAL_CAPTURE_SOURCE_CHANGED'
+    | 'ORIGINAL_CAPTURE_PROPOSAL_CHANGED'
+    | 'EXACT_BINDING_OR_LIVE_PROTOCOL_UNVERIFIED' = 'LOCAL_REVIEW_NOT_ADMITTED';
+  const captureUnavailable = (
+    result: Awaited<ReturnType<typeof reconcileOperationsExperiment>>,
+  ) => ({
+    ...unknown,
+    reason:
+      result.state === 'STALE' && result.reason === 'SOURCE_CHANGED'
+        ? ('ORIGINAL_CAPTURE_SOURCE_CHANGED' as const)
+        : result.state === 'STALE' && result.reason === 'HUMAN_PROPOSAL_CHANGED'
+          ? ('ORIGINAL_CAPTURE_PROPOSAL_CHANGED' as const)
+          : ('ORIGINAL_CAPTURE_CURRENTNESS_UNVERIFIED' as const),
+  });
   try {
     admit(gate); // No external getters or original handles before admission.
+    reason = 'ORIGINAL_COMPARISON_OR_REQUIREMENTS_UNAVAILABLE';
     assertSyncAdmissionCurrentNow(comparison);
     assertAdvancedRequirementsCurrentNow(requirements);
+    reason = 'EXTERNAL_PROTOCOL_INVALID';
     const parsed = parseOfflineSourceProtocol(input),
       signature = JSON.stringify(parsed);
     const check = () => {
+      reason = 'LOCAL_REVIEW_NOT_ADMITTED';
       admit(gate);
+      reason = 'ORIGINAL_COMPARISON_OR_REQUIREMENTS_UNAVAILABLE';
       // The original owners keep any prior UNKNOWN state; no claim is replaced.
       assertSyncAdmissionCurrentNow(comparison);
       assertAdvancedRequirementsCurrentNow(requirements);
+      reason = 'EXACT_BINDING_OR_LIVE_PROTOCOL_UNVERIFIED';
       const expected = syncSourceReference(requirements),
         capture = experiment.offline_capture.source;
       if (
@@ -179,19 +206,16 @@ export async function reconcileOfflineSourceAdmission(
         );
     };
     // Establish that the capture is original before reading its own data.
-    if (
-      (await reconcileOperationsExperiment(experiment)).state !==
-      'CURRENT_REVIEW_ONLY'
-    )
-      return unknown;
+    reason = 'ORIGINAL_CAPTURE_CURRENTNESS_UNVERIFIED';
+    const before = await reconcileOperationsExperiment(experiment);
+    if (before.state !== 'CURRENT_REVIEW_ONLY')
+      return captureUnavailable(before);
     check();
     // The existing operations owner performs its own native current-source read.
     // Recheck all eight plus four fields and the live protocol after this await.
-    if (
-      (await reconcileOperationsExperiment(experiment)).state !==
-      'CURRENT_REVIEW_ONLY'
-    )
-      return unknown;
+    reason = 'ORIGINAL_CAPTURE_CURRENTNESS_UNVERIFIED';
+    const after = await reconcileOperationsExperiment(experiment);
+    if (after.state !== 'CURRENT_REVIEW_ONLY') return captureUnavailable(after);
     check();
     return {
       ...unknown,
@@ -199,6 +223,6 @@ export async function reconcileOfflineSourceAdmission(
       scope: 'ORIGINAL_COMPARISON_AND_NATIVE_VISIT_PLAN_AT_THIS_READ' as const,
     };
   } catch {
-    return unknown;
+    return { ...unknown, reason };
   }
 }

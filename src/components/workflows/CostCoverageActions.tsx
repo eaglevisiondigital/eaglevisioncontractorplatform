@@ -10,6 +10,7 @@ import {
 import {
   validateCostCoverageAction,
   filterCostCoverageActionSources,
+  refreshCostCoverageActionSelection,
   continueCostCoverageAction,
   type CostCoverageActionInput,
   type CostCoverageActionValidation,
@@ -115,19 +116,25 @@ function ActionForm({
     setBusy(true);
     try {
       if (action === 'load') {
+        setResult(undefined);
+        setConfirmed(false);
         const read = await readRecordedCostRequirements(
           sources,
           selectedJobId,
           gate.current,
         );
         if (!life.current.active) return;
+        const retained = view
+          ? refreshCostCoverageActionSelection(view, read, selection)
+          : undefined;
         setView(read);
-        setSelection('');
-        setQuery('');
+        setSelection(retained?.selection_key ?? '');
         setResult(undefined);
         setConfirmed(false);
         setMessage(
-          'Original current source options loaded. Choose the exact requirement to verify.',
+          retained?.selection_key
+            ? 'UNCHANGED_SOURCE_REVERIFY_REQUIRED. Exact source and literal search retained. Verify and confirm the current source again.'
+            : 'Original current source options loaded. Choose the exact requirement to verify.',
         );
       } else if (view) {
         const next = validateCostCoverageAction(view, input());
