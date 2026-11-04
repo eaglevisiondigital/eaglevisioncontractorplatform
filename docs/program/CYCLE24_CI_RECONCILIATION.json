@@ -1,0 +1,649 @@
+{
+  "schema": "propel-cycle24-ci-reconciliation-v1",
+  "base": "7b8d8c1a6f03fa33321409aa15c46926a63e59ed",
+  "branch": "codex/cycle24-ci-artifact-review",
+  "reviewer_agent": "/root/cycle23_independent_review",
+  "observed_at": "2026-11-04T01:22:05.857353+00:00",
+  "status": "LOCAL_FIX_VERIFIED_AUTOMATIC_EXACT_HEAD_CI_PENDING",
+  "scope": "Exact CI metadata/log/artifact investigation, one bounded RED reproduction, Main-authorized two-expression host compatibility correction, one new independent behavioral regression and two sanitized review documents. No immutable prior test, checker, protected source, source hash, workflow, timeout or capability is changed.",
+  "failed_runs": [
+    {
+      "draft_pr": 150,
+      "head": "4e29d3e9113c34999929c6c5d23fdc092316e58f",
+      "run": 41747600977,
+      "run_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747600977",
+      "job": 126304410796,
+      "job_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747600977/job/126304410796",
+      "workflow": "Cycle 21 canonical correction continuity",
+      "event": "pull_request",
+      "run_attempt": 1,
+      "conclusion": "failure",
+      "checkout_merge_commit": "d929a9d422d770c70da983f37eb4752743716ae1",
+      "checkout_base_from_log": "b517d588745007a9e519506d1a4417ddd62e3757",
+      "runner": {
+        "os": "Ubuntu 24.04.5",
+        "image": "ubuntu-24.04 / 20261025.353.1",
+        "runner_version": "2.338.2",
+        "node": "24.22.1",
+        "vitest": "5.0.5",
+        "application_max_workers": 2
+      },
+      "artifact": {
+        "id": 13285171124,
+        "name": "cycle21-canonical-correction-evidence",
+        "zip_bytes": 12785,
+        "sha256": "a0bf86ba2810e97f7f028a894a2fa4e2f71a55ea67434866e8800f18e1b833b0",
+        "github_digest_matches": true,
+        "members": ["artifacts/cycle21/application-results.json"],
+        "application_sha256": "3b854d6ac50ca7d20916ac24cc90a5dcd222bcd7ba81be90ae929d6a12bd6069"
+      },
+      "application": {
+        "total": 338,
+        "unique_full_names": 338,
+        "passed": 337,
+        "failed": 1,
+        "pending": 0,
+        "failed_case": "reviewed composition retains the original host pending owner and future restart review boundary",
+        "failed_duration_ms": 16.25158999999985,
+        "failed_file": "tests/cycle21-independent-integration-review.test.ts",
+        "failed_line": 725,
+        "error_category": "ASSERTION_SOURCE_LITERAL_MISMATCH",
+        "error": "AssertionError: expected 'import { prepareCorrectionPreviewSour\u2026' to contain 'corrections ? prepareCorrectionPrevie\u2026'"
+      },
+      "steps": {
+        "npm_ci": "PASS",
+        "typecheck": "PASS",
+        "features_check": "PASS",
+        "exact_cycle21_source_check": "PASS",
+        "application": "FAIL",
+        "application_collector": "SKIPPED",
+        "build": "SKIPPED",
+        "browser_install_collection_and_execution": "SKIPPED",
+        "artifact_upload": "PASS"
+      }
+    },
+    {
+      "draft_pr": 152,
+      "head": "43152c32a2e0509992affd36f467efd9b42d29ca",
+      "run": 41747643290,
+      "run_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643290",
+      "job": 126304555142,
+      "job_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643290/job/126304555142",
+      "workflow": "Cycle 21 canonical correction continuity",
+      "event": "pull_request",
+      "run_attempt": 1,
+      "conclusion": "failure",
+      "checkout_merge_commit": "aeb06ecff148f15187b4ef5a29a49bb77eaf2251",
+      "checkout_base_from_log": "b517d588745007a9e519506d1a4417ddd62e3757",
+      "runner": {
+        "os": "Ubuntu 24.04.5",
+        "image": "ubuntu-24.04 / 20261025.353.1",
+        "runner_version": "2.338.2",
+        "node": "24.22.1",
+        "vitest": "5.0.5",
+        "application_max_workers": 2
+      },
+      "artifact": {
+        "id": 13284738360,
+        "name": "cycle21-canonical-correction-evidence",
+        "zip_bytes": 12766,
+        "sha256": "34072e05b85746180a8e4fb295521095dcd198f86bd28fa2d05034ff8b14f20a",
+        "github_digest_matches": true,
+        "members": ["artifacts/cycle21/application-results.json"],
+        "application_sha256": "a442e1777aa6a49612ba24d4e34db5b66de74f55b28525fb49578f2b0e8c9d09"
+      },
+      "application": {
+        "total": 338,
+        "unique_full_names": 338,
+        "passed": 337,
+        "failed": 1,
+        "pending": 0,
+        "failed_case": "reviewed composition retains the original host pending owner and future restart review boundary",
+        "failed_duration_ms": 16.243439000012586,
+        "failed_file": "tests/cycle21-independent-integration-review.test.ts",
+        "failed_line": 725,
+        "error_category": "ASSERTION_SOURCE_LITERAL_MISMATCH",
+        "error": "AssertionError: expected 'import { prepareCorrectionPreviewSour\u2026' to contain 'corrections ? prepareCorrectionPrevie\u2026'"
+      },
+      "steps": {
+        "npm_ci": "PASS",
+        "typecheck": "PASS",
+        "features_check": "PASS",
+        "exact_cycle21_source_check": "PASS",
+        "application": "FAIL",
+        "application_collector": "SKIPPED",
+        "build": "SKIPPED",
+        "browser_install_collection_and_execution": "SKIPPED",
+        "artifact_upload": "PASS"
+      }
+    },
+    {
+      "draft_pr": 158,
+      "head": "db43479f5e277bb6b64fd74a0ac9d846cbfe15da",
+      "run": 41747751829,
+      "run_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747751829",
+      "job": 126304917857,
+      "job_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747751829/job/126304917857",
+      "workflow": "Cycle 21 canonical correction continuity",
+      "event": "pull_request",
+      "run_attempt": 1,
+      "conclusion": "failure",
+      "checkout_merge_commit": "08736464662d1786ca0d2a924307ec865a38510f",
+      "checkout_base_from_log": "d47e8f92c024c68797ac0805ab0c8d71111d531f",
+      "artifact": {
+        "id": 13287306072,
+        "name": "cycle21-canonical-correction-evidence",
+        "zip_bytes": 12770,
+        "sha256": "4a9e4e30234901f1df0edccebeacc27d00fa464c93be1433b0403c165a0736c4",
+        "github_digest_matches": true,
+        "members": ["artifacts/cycle21/application-results.json"],
+        "application_sha256": "ecc3c97dca82e6d4f7a82fc9d3718be51145f875da52fc50371740b6f3eaca8b"
+      },
+      "application": {
+        "total": 338,
+        "unique_full_names": 338,
+        "passed": 337,
+        "failed": 1,
+        "pending": 0,
+        "failed_case": "reviewed composition retains the original host pending owner and future restart review boundary",
+        "failed_duration_ms": 14.955728000000818,
+        "failed_file": "tests/cycle21-independent-integration-review.test.ts",
+        "failed_line": 725,
+        "error_category": "ASSERTION_SOURCE_LITERAL_MISMATCH",
+        "error": "AssertionError: expected 'import { prepareCorrectionPreviewSour\u2026' to contain 'corrections ? prepareCorrectionPrevie\u2026'",
+        "same_name_status_map_as_first_two_runs": true
+      },
+      "feature_head_inherits_requirements_condition": true
+    },
+    {
+      "draft_pr": 159,
+      "head": "891eba98758ce18434a4fdbd981acdc55ae020bc",
+      "run": 41747772612,
+      "run_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747772612",
+      "job": 126304984105,
+      "job_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747772612/job/126304984105",
+      "workflow": "Cycle 21 canonical correction continuity",
+      "event": "pull_request",
+      "run_attempt": 1,
+      "conclusion": "failure",
+      "checkout_merge_commit": "402f24e70c6d61eb952651c261a013b5e552cff8",
+      "checkout_base_from_log": "d47e8f92c024c68797ac0805ab0c8d71111d531f",
+      "artifact": {
+        "id": 13287267138,
+        "name": "cycle21-canonical-correction-evidence",
+        "zip_bytes": 12781,
+        "sha256": "2272af4fd76b8335dca27bc108b7b4afe0c7a88eeb39de92d8385804b8da1493",
+        "github_digest_matches": true,
+        "members": ["artifacts/cycle21/application-results.json"],
+        "application_sha256": "c93d758b8dcade8f929d8fad1c9a1c3f55a92d2a8959a92428741239ef70d41e"
+      },
+      "application": {
+        "total": 338,
+        "unique_full_names": 338,
+        "passed": 337,
+        "failed": 1,
+        "pending": 0,
+        "failed_case": "reviewed composition retains the original host pending owner and future restart review boundary",
+        "failed_duration_ms": 12.071187999972608,
+        "failed_file": "tests/cycle21-independent-integration-review.test.ts",
+        "failed_line": 725,
+        "error_category": "ASSERTION_SOURCE_LITERAL_MISMATCH",
+        "error": "AssertionError: expected 'import { prepareCorrectionPreviewSour\u2026' to contain 'corrections ? prepareCorrectionPrevie\u2026'",
+        "same_name_status_map_as_first_two_runs": true
+      },
+      "feature_head_inherits_requirements_condition": true
+    }
+  ],
+  "unique_acceptance_coverage": {
+    "run_count": 4,
+    "same_full_name_status_map": true,
+    "unique_cases": 338,
+    "unique_passing_cases": 337,
+    "unique_failing_cases": 1,
+    "pending_in_each_full_run": 0,
+    "workflow_result": "ALL_FOUR_RUNS_REMAIN_FAILED",
+    "browser_acceptance": "NOT_EXECUTED_IN_THESE_FAILED_JOBS",
+    "combined_1352_is_not_unique_acceptance": true
+  },
+  "demonstrated_cause": {
+    "source": "tests/cycle21-independent-integration-review.test.ts:725",
+    "expected_contiguous_literal": "corrections ? prepareCorrectionPreviewSources : undefined",
+    "actual_current_binding_normalized": "requirements || corrections ? prepareCorrectionPreviewSources : undefined",
+    "reason": "The immutable C21 source-inspection expectation is specific to the older host expression and contiguous formatting. The actual GitHub PR merge checkout includes the approved C22 requirements option, which selects the same original preparer when requirements OR corrections is true. Both options remain default false. This is reproduced without any runtime or test change.",
+    "head_vs_checkout": "The first two PR150/152 feature heads contain the older literal, but actual merge checkouts include exact C22 base b517d588. Additional PR158/159 heads already inherit requirements || corrections; their original artifacts independently prove the same assertion failure in merge checkouts over exact C23 base d47e8f92. Inspect exact executed contexts rather than assuming a head-only failure cause. Run API pull association base metadata can change later; the executed checkout is bound by job logs.",
+    "executed_test_sha256": "469c4bf3ce7ba8cb04dbc35549c5828c5b9bddc93fd8d5a5ad9b1efe49b2ae55",
+    "executed_test_blob": "31db094580226f361f1b9fc836636a3f377ed532",
+    "executed_host_sha256": "aa48e22ab2bdaf2ad6759526359c6ef2beb110c8a865b0f6a319286cae16e865",
+    "executed_host_blob": "d1f35d1f4d9e31eedbda156ac23a980731e0912a",
+    "exact_checkout_sources_fetched": true,
+    "not_demonstrated": [
+      "Timeout failure",
+      "Browser/default-server failure",
+      "Midnight Date/freshness failure",
+      "Native engine, canonical cost, access or command-custody assertion failure",
+      "Missing Git history or source-integrity failure"
+    ]
+  },
+  "local_reproducer": {
+    "command": "npx vitest run tests/cycle21-independent-integration-review.test.ts -t 'reviewed composition retains the original host pending owner and future restart review boundary' --reporter=json --outputFile=/private/tmp/cycle24-ci/local-existing-assertion-reproducer.json",
+    "source_commit": "7b8d8c1a6f03fa33321409aa15c46926a63e59ed",
+    "node": "24.20.0",
+    "selected_cases": 1,
+    "failed_cases": 1,
+    "filtered_out_cases": 40,
+    "failure_name": "reviewed composition retains the original host pending owner and future restart review boundary",
+    "failure_duration_ms": 11.19641700000011,
+    "raw_report_sha256": "bbeb99bbf9c8f8c6f94e83fc9c9792b1d1a83b15af45b4df2e021ebdcb5712be",
+    "original_test_unchanged": true,
+    "other337_ci_passing_cases_rerun": false
+  },
+  "exact_source_inventory": [
+    {
+      "path": "tests/cycle21-independent-integration-review.test.ts",
+      "blob": "31db094580226f361f1b9fc836636a3f377ed532",
+      "sha256": "469c4bf3ce7ba8cb04dbc35549c5828c5b9bddc93fd8d5a5ad9b1efe49b2ae55"
+    },
+    {
+      "path": "src/components/workflows/OperatingCenterCycleFifteen.tsx",
+      "blob": "1c8908bb447a1c067ef15b5c893850004a027044",
+      "sha256": "38e931be24fdf48e0891de5febb0bf085667a6291d57112652a68988f8a8f660"
+    },
+    {
+      "path": ".github/workflows/cycle21-integration.yml",
+      "blob": "76e770d555dd1df54513ae5e5b42b3132e07949e",
+      "sha256": "7f051e750ed72b9a57e6b8ca80adedfe5994e585125fda13e95eba28cd35416f"
+    },
+    {
+      "path": "docs/program/CYCLE21_SOURCE_MANIFEST.json",
+      "blob": "5ebb6050538988f73907552c2a2e69dd7a038430",
+      "sha256": "d9b2391bbc65645b649da9670a68a37ad4d7f2dc3286b0e9302102c9461c98d4"
+    },
+    {
+      "path": "scripts/check-cycle21.mjs",
+      "blob": "0fc1c26a57bf89ca974ffbc4da4829105d966b2a",
+      "sha256": "3d5c86924a36dc1de361bacd0bad5a13fd2bc1e9c8debc7d200b6ee8cdf7208d"
+    }
+  ],
+  "source_only_proposal_evidence": {
+    "path": "/private/tmp/cycle24-ci/source-only-compatibility-proposal-evidence.json",
+    "sha256": "c462fbfaafcdc2793f80249dd36abc63badf0cef0339ef8047eab4057c42f0e7",
+    "scope": "Static source inspection across both exact feature heads, executed base and current Main only; not execution of an implemented fix."
+  },
+  "main155_exact_head_snapshot": {
+    "head": "7b8d8c1a6f03fa33321409aa15c46926a63e59ed",
+    "all_events_rest_total": 34,
+    "returned": 34,
+    "pull_request_runs": 24,
+    "push_runs": 10,
+    "queued": 34,
+    "successful": 0,
+    "failed": 0,
+    "snapshot_scope": "Complete returned all-event head_sha-filtered run collection at observation time; statuses may change after this bounded read. Earlier wrapper snapshot contained only the first PR-triggered page.",
+    "runs": [
+      {
+        "id": 41748821055,
+        "name": "Foundation checks",
+        "event": "pull_request",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748820877,
+        "name": "Cycle 18 source-bound daily workflow",
+        "event": "pull_request",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748821129,
+        "name": "Cycle 17 retained daily workspaces",
+        "event": "pull_request",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748821159,
+        "name": "Cycle 9 multi-job operating center",
+        "event": "pull_request",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748820898,
+        "name": "Cycle 16 daily workflow guides",
+        "event": "pull_request",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748821194,
+        "name": "Cycle 22 current-source operating review",
+        "event": "pull_request",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748821090,
+        "name": "Cycle 19 saved source continuity",
+        "event": "pull_request",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748821126,
+        "name": "Isolated technician day board",
+        "event": "pull_request",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748820927,
+        "name": "Cycle 15 guided task continuity",
+        "event": "pull_request",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748820793,
+        "name": "Isolated field scheduling",
+        "event": "pull_request",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748820976,
+        "name": "Proof of Work documentation preview",
+        "event": "pull_request",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748820886,
+        "name": "Passport timeline preview",
+        "event": "pull_request",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748820979,
+        "name": "Isolated maintenance schedule handoff",
+        "event": "pull_request",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748821012,
+        "name": "Cycle 11 source-bound workflow laboratories",
+        "event": "pull_request",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748821068,
+        "name": "Isolated crew-day capacity",
+        "event": "pull_request",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748821109,
+        "name": "Cycle 21 canonical correction continuity",
+        "event": "pull_request",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748820794,
+        "name": "Isolated field work orders",
+        "event": "pull_request",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748821131,
+        "name": "Synthetic rehearsal compatibility",
+        "event": "pull_request",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748821017,
+        "name": "Cycle 7 practical local usability",
+        "event": "pull_request",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748821035,
+        "name": "Cycle 12 exact workflow revision and verification",
+        "event": "pull_request",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748820959,
+        "name": "Cycle 6 local workflow integration",
+        "event": "pull_request",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748820844,
+        "name": "Cycle 23 source revision consistency review",
+        "event": "pull_request",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748820916,
+        "name": "Cycle 10 everyday operating reviews",
+        "event": "pull_request",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748821049,
+        "name": "Cycle 8 connected operating reviews",
+        "event": "pull_request",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748813456,
+        "name": "Foundation checks",
+        "event": "push",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748813545,
+        "name": "Isolated field work orders",
+        "event": "push",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748813413,
+        "name": "Isolated technician day board",
+        "event": "push",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748813484,
+        "name": "Passport timeline preview",
+        "event": "push",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748813472,
+        "name": "Isolated field scheduling",
+        "event": "push",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748813424,
+        "name": "Isolated maintenance schedule handoff",
+        "event": "push",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748813483,
+        "name": "Isolated crew-day capacity",
+        "event": "push",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748813475,
+        "name": "Proof of Work documentation preview",
+        "event": "push",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748813492,
+        "name": "Synthetic rehearsal compatibility",
+        "event": "push",
+        "status": "queued",
+        "conclusion": null
+      },
+      {
+        "id": 41748813796,
+        "name": "Cycle 23 source revision consistency review",
+        "event": "push",
+        "status": "queued",
+        "conclusion": null
+      }
+    ],
+    "green_claim": false
+  },
+  "raw_evidence": {
+    "directory": "/private/tmp/cycle24-ci",
+    "committed": false,
+    "contents": "Four original ZIPs and extracted original application JSON reports, decoded job logs, exact run/job/artifact metadata, exact initial executed source reads, local RED and final selected JSON reports, and bounded Main status snapshots. Signed download URLs and raw logs are excluded from Git.",
+    "retained_failure_results": true
+  },
+  "actions": {
+    "manual_ci_reruns": 0,
+    "ci_cancellations": 0,
+    "successful_checks_restarted": 0,
+    "source_hash_edits": 0,
+    "workflow_or_budget_edits": 0,
+    "credentials_retrieved": false,
+    "hosted_mutation": false,
+    "deployment_merge": false,
+    "release": "NOT READY / NOT AUTHORIZED",
+    "product_host_files_changed": 1,
+    "new_regression_files": 1,
+    "immutable_prior_test_edits": 0,
+    "checker_edits": 0
+  },
+  "remaining": "Main normal exact-path admission/forward publication and later automatic exact-head CI observation. All34 Main7b8 runs were queued at the recorded pre-fix snapshot. No background polling or execution is installed.",
+  "implemented_bounded_fix": {
+    "path": "src/components/workflows/OperatingCenterCycleFifteen.tsx",
+    "owner": "Main-owned host, not an author-pinned source",
+    "authorization": "Main explicitly coordinated this bounded compatibility correction after exact artifact diagnosis and the local RED reproducer. No general runtime expansion is authorized.",
+    "actual_change": [
+      "Bind the real existing correction selection: const prep = corrections ? prepareCorrectionPreviewSources : undefined;",
+      "Keep the existing requirements || corrections outer admission; its value is now prep ?? prepareCorrectionPreviewSources."
+    ],
+    "behavior": "All four Boolean combinations are unchanged: OFF/OFF passes undefined; the other three pass the exact same original preparer function. Rendering neither invokes the preparer nor creates an environment. Existing source host owns actual preparation and one-use custody.",
+    "normalized_unchanged_host": "PASS: remove only the new const line and replace the fallback with its original factory expression; every other host byte equals exact7b8d8c1.",
+    "old_assertions": "Every C21/C22/C23 test file is byte-identical to base. The original contiguous correction expression is an actual used runtime value, not a fake source comment or ignored assertion.",
+    "new_regression": "tests/cycle24-preparer-compatibility.test.ts",
+    "regression_scope": "Real C15 React server rendering with only the two flag-state values controlled and props observed at the original downstream host boundary. Tests verify native default false values, all four combinations, exact factory identity, retained default panel groups, disabled selector, zero preparer calls and zero network calls. They do not simulate downstream custody or hosted Auth.",
+    "automatic_ci": "No manual rerun or push by this reviewer. Main coordinates normal forward admission to C24 and affected current parent branches; original failed runs remain failed."
+  },
+  "verification": {
+    "new_behavioral_regressions": {
+      "selected_cases": 5,
+      "passed": 5,
+      "failed": 0,
+      "unique_executed_names": 5,
+      "filtered_not_rerun": 0,
+      "raw_report": "/private/tmp/cycle24-ci/preparer-behavior-final.json",
+      "sha256": "cfdb87a2cd53a9096d5a13fa72e539b7d84fef854226d9566e71da2ddc34877a",
+      "cases": [
+        {
+          "name": "native default state leaves the original source preparer undefined without source or network access",
+          "status": "passed",
+          "duration_ms": 7.44883300000015
+        },
+        {
+          "name": "requirements=false corrections=false passes the original factory iff either flag is true (expected false)",
+          "status": "passed",
+          "duration_ms": 0.9290419999999813
+        },
+        {
+          "name": "requirements=false corrections=true passes the original factory iff either flag is true (expected true)",
+          "status": "passed",
+          "duration_ms": 0.8039580000001934
+        },
+        {
+          "name": "requirements=true corrections=false passes the original factory iff either flag is true (expected true)",
+          "status": "passed",
+          "duration_ms": 0.7323340000000371
+        },
+        {
+          "name": "requirements=true corrections=true passes the original factory iff either flag is true (expected true)",
+          "status": "passed",
+          "duration_ms": 0.6797079999998914
+        }
+      ]
+    },
+    "unchanged_retained_source_cases": {
+      "selected_cases": 4,
+      "passed": 4,
+      "failed": 0,
+      "unique_executed_names": 4,
+      "filtered_not_rerun": 137,
+      "raw_report": "/private/tmp/cycle24-ci/retained-source-composition-final.json",
+      "sha256": "89f2ec3f9ebf6e3ae9c68372d9e430bcd62bbce2037e3b4bf958b4fa90dc0b96",
+      "cases": [
+        {
+          "name": "reviewed composition retains the original host pending owner and future restart review boundary",
+          "status": "passed",
+          "duration_ms": 8.011875000000032
+        },
+        {
+          "name": "independent source review: all admitted author bytes are exact and original controls remain the only writers",
+          "status": "passed",
+          "duration_ms": 12.625875000000065
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I21 six exact C22 destinations render five C23 panels over the same original source object and existing workbench",
+          "status": "passed",
+          "duration_ms": 3.1661249999999654
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I22 original default host leaves Requirements selected and current-source mode disabled without preparing sources",
+          "status": "passed",
+          "duration_ms": 7.085624999999936
+        }
+      ]
+    },
+    "exact_cycle22_source_checker": "PASS: node scripts/check-cycle22.mjs --require-independent",
+    "exact_cycle23_source_checker": "PASS: node scripts/check-cycle23.mjs --require-independent;498 retained files/128protected/5locks13bindings preserved",
+    "strict_types": "PASS: npx tsc --noEmit, exit0",
+    "scoped_eslint": "PASS: host and new regression, exit0",
+    "format": "PASS: all four changed files pass Prettier; git diff --check passes",
+    "original337_passing_cases": "Preserved from exact CI evidence; not rerun locally",
+    "browser_date_baselines": "Existing30+6+negative browser baselines not repeated"
+  },
+  "changed_source_inventory": [
+    {
+      "path": "src/components/workflows/OperatingCenterCycleFifteen.tsx",
+      "sha256": "63fd2a5c9a9eab8ad29a7a297a6c64f6d0c0c67647c1ba0f728fdf6505cfff3f",
+      "git_blob": "048c2ed0346a0e95e4f6a2a3bc24a2ad4e9543e1"
+    },
+    {
+      "path": "tests/cycle24-preparer-compatibility.test.ts",
+      "sha256": "289d4a2ba0844c5dec5a2e809bf54fa1554a7a71a852055d921414aa5c298276",
+      "git_blob": "8223f376f157361a94732c02e82ad79a0d142d29"
+    }
+  ]
+}
