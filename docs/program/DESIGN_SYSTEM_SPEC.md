@@ -1,5 +1,19 @@
 # Shared design-system specification · cycle two
 
+## Cycle24 compact native actions with retained job context
+
+Place small explicit action sections beside the existing C23 tab content. Reuse
+company tokens, scoped CSS, labeled44px controls, wrapped exact IDs, text statuses
+and stacked mobile forms. Preserve the original job selector, navigation, review
+panels, manual confirmation and same-tab selection; no new mode, checkbox or route.
+Cancellation labels must say staff review. Request closure must not imply physical
+completion or customer acceptance. UNKNOWN and unsupported operations remain visible.
+
+Production and all unfinished connected capabilities stay OFF. Actual three-brand
+browser/a11y evidence is required; no test grants visual approval. The approved
+portal, Property Operations, branding/artwork remain locked; Operating Center and
+advanced-panel approval remains PENDING.
+
 ## Cycle23 revision consistency without another navigation group
 
 The existing review-options fieldset gains one labeled finite Current source review

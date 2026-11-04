@@ -1,0 +1,46 @@
+.cost-coverage-actions {
+  color: #27352f;
+  overflow-wrap: anywhere;
+  border: 1px solid #dcded4;
+  border-radius: 14px;
+  padding: 1rem;
+  margin-block: 1rem;
+  background: #fffdf8;
+}
+.cost-coverage-actions :is(h3, h4) {
+  color: #203e32;
+}
+.cost-coverage-actions :is(button, select) {
+  min-height: 44px;
+  max-width: 100%;
+  white-space: normal;
+}
+.cost-coverage-actions label {
+  display: block;
+  min-height: 44px;
+  margin-block: 0.75rem;
+}
+.cost-coverage-actions select {
+  width: 100%;
+  margin-block-end: 0.75rem;
+}
+.cost-coverage-actions button:focus-visible,
+.cost-coverage-actions select:focus-visible {
+  outline: 3px solid var(--journey-accent, #b58a49);
+  outline-offset: 3px;
+}
+.cost-coverage-actions input {
+  min-width: 20px;
+  min-height: 20px;
+  margin-inline-end: 0.5rem;
+}
+.cost-action-result {
+  border-top: 1px solid #dcded4;
+  margin-block-start: 1rem;
+  padding-block-start: 0.5rem;
+}
+@media (max-width: 640px) {
+  .cost-coverage-actions button {
+    width: 100%;
+  }
+}
