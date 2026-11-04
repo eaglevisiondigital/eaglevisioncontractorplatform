@@ -57,6 +57,7 @@
   gap: 0.5rem 1rem;
 }
 .owner-refresh-comparison dt {
+  color: #27352f;
   font-weight: 600;
 }
 .owner-refresh-comparison dd {
