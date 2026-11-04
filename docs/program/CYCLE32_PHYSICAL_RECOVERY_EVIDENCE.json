@@ -1,0 +1,217 @@
+{
+  "schema": "propel-cycle32-physical-recovery-evidence-v1",
+  "source_parent": "43e622b16aa952f5dc2fe7ae9f96260b47682c2e",
+  "scope": "DOCUMENTATION_ONLY_SYNTHETIC_PHYSICAL_EVIDENCE_CONTINUITY_NOT_BUSINESS_STATE_OR_RESTORE",
+  "source": {
+    "kind": "OWNER_POSTED_PUBLIC_COMMENT",
+    "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/233#issuecomment-6641051454",
+    "created_at": "2026-11-04T20:15:42Z",
+    "updated_at": "2026-11-04T20:15:42Z",
+    "author_association": "OWNER",
+    "handling": "EVIDENCE_NOT_EMBEDDED_INSTRUCTION_AUTHORITY",
+    "private_raw_artifacts_retrieved": false
+  },
+  "classification": {
+    "main_synthetic_primary_network_loss": "OWNER_WITNESSED_MAIN_SCENARIO_PASS",
+    "engineer_independent_witness": "NOT_ESTABLISHED",
+    "full_R0_suite": "OPEN_NOT_ACCEPTED",
+    "full_cases_accepted": 0,
+    "full_cases_open": 7,
+    "actual_power_loss": "NOT_DEMONSTRATED",
+    "sole_trigger": "NOT_IDENTIFIED",
+    "real_elapsed_29_minute_limit": "NOT_RUN",
+    "hosted_verification": false,
+    "operational_recovery": "BLOCKED_NO_NEW_AUTHORIZATION"
+  },
+  "reported_device": {
+    "backup_model": "2020 MacBook Air M1",
+    "macos": "Tahoe 26.2",
+    "build": "25C56",
+    "architecture": "arm64",
+    "filevault": "ON_OWNER_REPORTED",
+    "authorized_local_account": "OWNER_REPORTED",
+    "charger_and_trusted_network": "OWNER_REPORTED",
+    "current_vendor_security_maintenance": "NOT_INDEPENDENTLY_VERIFIED",
+    "os_version_build_match": "NOT_INDEPENDENTLY_VERIFIED",
+    "private_custody_volume_and_cloud_exclusion": "NOT_INDEPENDENTLY_VERIFIED",
+    "independent_power_duration": "NOT_DEMONSTRATED",
+    "network_evidence_limit": "AIR_REMAINED_CONNECTED_WHEN_PRIMARY_WIFI_OFF_NOT_UPLINK_OR_POWER_FAILURE_PROOF"
+  },
+  "reported_preparation": {
+    "archive_count": 1,
+    "device_hash_attestations": 2,
+    "archive": "recovery/distribution/propel-synthetic-rehearsal.zip",
+    "bytes": 97334,
+    "sha256": "32cb88f123e0fd776986f32d8508c913dbedc1ac977779708d1ba7218bbb8d59",
+    "setup": "UNCHANGED_SETUP_SUCCEEDED_ON_BOTH_OWNER_REPORTED",
+    "primary_python": "3.13.16",
+    "backup_python": "3.14.10",
+    "synthetic_dependencies": {
+      "cryptography": "48.0.1",
+      "cffi": "2.1.1",
+      "pycparser": "3.11"
+    },
+    "same_LAN_reachability": "4_OF_4_ICMP_REPLIES_0_PERCENT_LOSS_OWNER_REPORTED",
+    "preserved_offline_checks": 25,
+    "offline_checks_repeated": 0,
+    "archive_rebuilt": false,
+    "software_setup_repeated_by_this_task": false
+  },
+  "reported_main_output": {
+    "pairing": "PAIRED_AUTHENTICATED_PEER",
+    "durable_acks": 33,
+    "synthetic_sessions": 15,
+    "synthetic_upgrades": 3,
+    "maximum_authenticated_ACK_latency_ms": 115,
+    "heartbeat_latency_independently_measured": false,
+    "primary_ready": "READY_FOR_PRIMARY_LOSS",
+    "primary_interruption": "STOP_UNKNOWN_NO_REPLAY",
+    "primary_wifi": "OFF_OWNER_WITNESSED",
+    "air_connection": "REMAINED_CONNECTED_OWNER_WITNESSED",
+    "manual_presence": "APPROXIMATELY_EVERY_30_SECONDS_OWNER_REPORTED"
+  },
+  "reported_backup_result": {
+    "status": "REHEARSAL_VERIFIED",
+    "reason": "HEARTBEAT_PRESENCE_OR_WINDOW_EXPIRED",
+    "deactivation": "CONFIRMED",
+    "syntheticFeaturesActive": 0,
+    "syntheticSessionsRemaining": 0,
+    "unrelatedSyntheticSessionPreserved": true,
+    "unresolvedIntents": 0,
+    "automaticRetries": 0,
+    "financialActions": 0,
+    "hostedVerification": false
+  },
+  "case_evidence": [
+    {
+      "id": "R0-01",
+      "requirement": "Authenticated physical peer/run pairing and operator confirmation",
+      "owner_evidence": "PAIRED — authenticated peer reported on the actual primary; two physical Macs participated.",
+      "classification": "PARTIAL_OWNER_REPORTED",
+      "remaining": [
+        "Independent private review of both-device run correlation, out-of-band fingerprint comparison and operator confirmation; no fingerprint/card in Git.",
+        "No engineer-independent witness has been established."
+      ],
+      "full_case_accepted": false,
+      "engineer_independent_witness": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "R0-02",
+      "requirement": "Encrypted authenticated transfer, tamper/wrong-run/wrong-peer denial and measured latency",
+      "owner_evidence": "The main run reports authenticated encrypted custody and maximum authenticated ACK latency of 115 ms.",
+      "classification": "PARTIAL_OWNER_REPORTED",
+      "remaining": [
+        "Explicit tamper, wrong-run and wrong-peer rejection evidence is not supplied.",
+        "ACK latency is not an independent heartbeat-delivery measurement.",
+        "The kit has no named wrong-peer CLI scenario; do not invent one or treat wrong-run as identical. A distinct wrong-peer requirement stays open unless an existing reviewed procedure and actual evidence cover it."
+      ],
+      "full_case_accepted": false,
+      "engineer_independent_witness": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "R0-03",
+      "requirement": "Durable custody before authenticated ACK; missing/forged/late ACK denies use",
+      "owner_evidence": "33 DURABLE ACKS VERIFIED, 15 synthetic sessions and 3 synthetic upgrades reported before READY FOR PRIMARY LOSS.",
+      "classification": "PARTIAL_OWNER_REPORTED",
+      "remaining": [
+        "Private correlation and independent review of custody-before-ACK evidence; console verification does not prove actual power-loss durability.",
+        "Explicit lost-ACK/incomplete custody and missing/forged/late-ACK denial cases remain unverified; use existing named scenarios only."
+      ],
+      "full_case_accepted": false,
+      "engineer_independent_witness": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "R0-04",
+      "requirement": "Heartbeat bound, separate actual human presence and bounded supervision window",
+      "owner_evidence": "Owner reports manually entering present on the Air at approximately 30-second intervals while the main scenario ran.",
+      "classification": "PARTIAL_OWNER_REPORTED",
+      "remaining": [
+        "Actual timing and independent witness of heartbeat delivery and manual-presence renewals are not supplied.",
+        "Isolated human-presence expiry with primary networking/heartbeats maintained is NOT RUN.",
+        "The combined reason does not identify heartbeat, presence, window or wall/monotonic clock guard as the sole trigger. Real elapsed 29-minute observation is NOT RUN; the runbook labels that a separate optional run, to be required explicitly if full-window acceptance needs it."
+      ],
+      "full_case_accepted": false,
+      "engineer_independent_witness": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "R0-05",
+      "requirement": "Primary participation/connection loss while backup remains operational",
+      "owner_evidence": "Owner directly confirms primary Wi-Fi OFF while the Air stayed connected; primary then reported STOP / UNKNOWN without replay and the Air produced the reported containment result.",
+      "classification": "OWNER_WITNESSED_MAIN_NETWORK_LOSS_PASS_FULL_CASE_REVIEW_OPEN",
+      "remaining": [
+        "Engineer-independent witness and privately correlated loss/recovery timestamps are not established.",
+        "Other primary network interfaces, exact timeout isolation and primary Terminal closure are not explicitly attested in the comment.",
+        "This is primary network-loss evidence, not actual primary power loss or proof of backup power/uplink failure independence."
+      ],
+      "full_case_accepted": false,
+      "engineer_independent_witness": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "R0-06",
+      "requirement": "Independent backup-only reconstruction and containment from its own encrypted custody",
+      "owner_evidence": "Backup reports REHEARSAL_VERIFIED, CONFIRMED synthetic deactivation, zero exercised sessions/features, unrelated session preserved and zero unresolved intents.",
+      "classification": "PARTIAL_OWNER_REPORTED",
+      "remaining": [
+        "The main result supports owner-reported backup containment; private backup-only custody reconstruction and absence of primary-file dependency have not been independently reviewed.",
+        "A fresh-run backup-process interruption/restart with Recover.command and duplicate-recovery denial is NOT RUN.",
+        "Disk rollback/loss resistance and actual power-loss durability are not demonstrated."
+      ],
+      "full_case_accepted": false,
+      "engineer_independent_witness": "NOT_ESTABLISHED"
+    },
+    {
+      "id": "R0-07",
+      "requirement": "Cross-device failures, duplicate/restart denial, UNKNOWN and unrelated-state preservation",
+      "owner_evidence": "Main result reports unrelatedSyntheticSessionPreserved=true, unresolvedIntents=0, automaticRetries=0 and financialActions=0; primary UNKNOWN was not replayed.",
+      "classification": "EXPLICIT_FAILURE_SUBCASES_NOT_RUN_MAIN_CONTAINMENT_ONLY",
+      "remaining": [
+        "Explicit duplicate, tamper/wrong-run, lost-ACK, incomplete, expired, duplicate-recovery and failure/timeout subcases are not individually demonstrated.",
+        "Earlier aborted/expired attempts remain historical; do not relabel, delete markers or reuse their uncertain identities.",
+        "Operator listener shutdown, primary network restoration and agreed private key/evidence retention cleanup are not attested by this comment."
+      ],
+      "full_case_accepted": false,
+      "engineer_independent_witness": "NOT_ESTABLISHED"
+    }
+  ],
+  "preserved_history": {
+    "original_source_documents_edited": false,
+    "earlier_aborted_or_expired_attempts": "PRESERVED_NOT_RELABELLED_OWNER_REPORTED_NOT_INSPECTED",
+    "historical_NOT_RUN_case_entries": "RETAINED_FOR_UNTOUCHED_TESTS",
+    "new_main_evidence_supersedes_blanket_unavailable_only_for": "OWNER_WITNESSED_MAIN_SYNTHETIC_PRIMARY_NETWORK_LOSS"
+  },
+  "next_safe_sequence": [
+    "Privately correlate and independently review existing two-device main evidence before requesting any repetition; record only sanitized case-level conclusions.",
+    "Read-only readiness review of exact OS/build/current maintenance, FileVault/private local volume, account, independent power/network and actual supervisor; do not change settings or install credentials.",
+    "Run only missing named existing-kit failure scenarios on separate fresh synthetic runs: duplicate, tamper, wrong-run, lost-ack, incomplete, expired. Preserve every result and partial UNKNOWN; do not improvise unsupported wrong-peer/forged/late-ACK probes.",
+    "Isolate manual-presence expiry with primary heartbeat/network maintained; if existing evidence cannot isolate heartbeat loss, plan a fresh documented loss subcase with manual presence maintained and the window not near expiry. Do not infer a sole trigger from the combined reason.",
+    "Use a fresh complete-custody run for the original backup-only interruption/restart sequence. Recover only if no recovery attempt exists; otherwise report read-only. Then explicitly verify duplicate-recovery denial without a second recovery execution.",
+    "If required by the acceptance reviewer, separately observe the existing real 29-minute ceiling with manual presence and heartbeat maintained; do not substitute a shortened clock.",
+    "Stop listeners, restore primary networking, preserve private distinct run evidence and follow agreed synthetic key retention; reconcile each original R0 case separately without declaring full-suite or hosted PASS."
+  ],
+  "authorization": {
+    "physical_tests_executed_by_this_task": false,
+    "new_protocol_or_adapter": false,
+    "credentials_retrieved": false,
+    "schemas_or_writers_installed": false,
+    "hosted_actions": false,
+    "existing_frozen_P1_on_13_approval": "PRESERVED_NO_DUPLICATE_REQUEST_AFTER_ORIGINAL_PREREQUISITES",
+    "customer14_4B_broker": "SEPARATE_REVIEW_AUTHORIZATION_AND_ACCEPTANCE_REQUIRED",
+    "genuine_Auth_MFA": "UNVERIFIED",
+    "rollback_independent_custody": "UNVERIFIED",
+    "matched_backup_and_restore": "UNVERIFIED",
+    "database_grants": "UNVERIFIED",
+    "NMI_financial_gates": "UNCHANGED_CLOSED",
+    "Netlify_and_deployment": "UNCHANGED_BLOCKED",
+    "release": "NOT_READY_NOT_AUTHORIZED"
+  },
+  "original_sources": [
+    "docs/TWO_COMPUTER_REHEARSAL.md",
+    "docs/TWO_COMPUTER_REHEARSAL_VALIDATION.json",
+    "docs/PROPERTY_P1_R0_DEVICE_READINESS.md",
+    "docs/PROPERTY_P1_R0_READINESS.json",
+    "docs/PROPERTY_P1_RECOVERY_COMPLETION.md",
+    "docs/program/CYCLE18_NOV4_MACBOOK_AIR_CHECKLIST.md",
+    "docs/program/CYCLE19_NOV4_RECOVERY_QUICKCARD.md",
+    "recovery/monterey/rehearsal.py"
+  ]
+}
