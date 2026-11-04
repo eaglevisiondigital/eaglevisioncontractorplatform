@@ -46,3 +46,10 @@ The actual probe, not those references alone, proves this observed runner shape.
 No application engine, schema, credential, hosted provider, financial, dispatch,
 communication or recovery action. Original Foundation remains unchanged. Physical
 recovery NOT RUN; Release1.0 NOT READY / NOT AUTHORIZED.
+
+The CI draft also carries the exact five-file compatibility correction authored at
+94a5da1f2cf4187acdd412cdefaec627d1dee463 (separate draft PR228), because the unchanged
+Cycle30 application legitimately contains the reviewed owner component. This is a
+source-validation dependency, not a browser assertion or budget change. The combined
+local run passes53cases (20new source-shape,11retained signature/command,22legacy
+source-compatibility) and the actual Cycle21 independent validator exits0.

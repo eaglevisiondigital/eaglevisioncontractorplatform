@@ -5,6 +5,7 @@ import { relative, resolve, sep } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { readCycle13File } from './check-cycle13-integrity.mjs';
 import { validateCycle20Manifest } from './check-cycle20-integrity.mjs';
+import { admitCycle25Source } from './cycle25-source-lineage.mjs';
 
 export const cycle21Parent = '8d607d9c30e82699f1af4634c29fa38a3756fb73';
 export const cycle21Support = 'b918231ff48996575c03d64c9045ead6831b6cd0';
@@ -78,6 +79,46 @@ const readGit = (commit, path) =>
   execFileSync('git', ['show', `${commit}:${path}`], {
     maxBuffer: 4 * 1024 * 1024,
   });
+/** Check immutable original evidence before the sole reviewed source-only forward.
+ * Retained-manifest callers must still check their own exact path/author inventory. */
+export function validateCycle21PublishedSource(
+  file,
+  commit,
+  bytes,
+  published,
+  ports = {},
+) {
+  if (
+    !/^[a-f0-9]{64}$/.test(file.sha256) ||
+    !hex40(file.blob) ||
+    sha(published) !== file.sha256 ||
+    gitBlob(published) !== file.blob
+  )
+    throw Error(`Exact published Cycle21 bytes/blob required: ${file.path}`);
+  if (bytes.equals(published)) return;
+  // The manifest always binds the original published source. Only this exact
+  // component has a separately reviewed, fixed Cycle30 successor. The shared
+  // admission checks its parent, complete delta and endpoint; no manifest hash,
+  // other path or business authority is replaced.
+  let admitted;
+  if (
+    commit === '161f1c59d864d60aa0f45820eb6417864519baf2' &&
+    file.path === 'src/components/workflows/RecordedOwnerActions.tsx'
+  ) {
+    try {
+      admitted = admitCycle25Source(file.path, bytes, published, ports);
+    } catch {
+      // Preserve the legacy failure contract for every unknown edit.
+    }
+  }
+  if (
+    admitted?.source_commit !== '9f85556e28875a53976b55567f3a14e942ba3995' ||
+    admitted?.module !== 'owner-render' ||
+    admitted?.path !== file.path ||
+    admitted?.authority !== 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE'
+  )
+    throw Error(`Exact published Cycle21 bytes/blob required: ${file.path}`);
+}
 export function validateCycle21Manifest(manifest, ports = {}) {
   const read = ports.read ?? readCycle13File,
     git = ports.git ?? readGit;
@@ -126,16 +167,10 @@ export function validateCycle21Manifest(manifest, ports = {}) {
         throw Error('Duplicate, overlapping or unknown Cycle21 source path');
       const bytes = Buffer.from(read(file.path)),
         published = Buffer.from(git(commit, file.path));
-      if (
-        !/^[a-f0-9]{64}$/.test(file.sha256) ||
-        !hex40(file.blob) ||
-        sha(bytes) !== file.sha256 ||
-        gitBlob(bytes) !== file.blob ||
-        !bytes.equals(published)
-      )
-        throw Error(
-          `Exact published Cycle21 bytes/blob required: ${file.path}`,
-        );
+      validateCycle21PublishedSource(file, commit, bytes, published, {
+        read,
+        git,
+      });
       pending.delete(file.path);
       seen.add(file.path);
     }
