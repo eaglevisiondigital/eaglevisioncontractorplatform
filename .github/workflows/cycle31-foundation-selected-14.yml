@@ -1,0 +1,46 @@
+name: Cycle 31 original-budget failed Foundation cases
+on:
+  push:
+    branches: ['codex/cycle31-ci-reliability']
+    paths:
+      - '.github/workflows/cycle31-foundation-selected-14.yml'
+      - 'scripts/cycle31-foundation-selected-14*'
+permissions:
+  contents: read
+concurrency:
+  group: cycle31-selected-foundation-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  selected-original-failures:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: diagnostics
+      - uses: actions/checkout@v4
+        with:
+          ref: 1a677d67cb1f79246a7912ab7dc4ed3bacc81ccc
+          path: application
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+          cache-dependency-path: application/package-lock.json
+      - run: npm ci
+        working-directory: application
+      - name: Original fourteen failed cases without timeout or assertion changes
+        id: original-tests
+        working-directory: application
+        run: node ../diagnostics/scripts/cycle31-foundation-selected-14.mjs run
+      - name: Retain actual fourteen outcomes and explicit deselection boundaries
+        if: always() && steps.original-tests.outcome != 'skipped'
+        working-directory: application
+        run: node ../diagnostics/scripts/cycle31-foundation-selected-14.mjs collect
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle31-original-budget-foundation-selected14
+          path: application/artifacts/cycle31/foundation-selected-14/
+          retention-days: 7

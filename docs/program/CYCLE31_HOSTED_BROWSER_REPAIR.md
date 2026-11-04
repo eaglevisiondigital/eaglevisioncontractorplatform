@@ -77,3 +77,28 @@ above are preserved and are not repeated. It retains the same two original cases
 configuration/test/lock hashes,30second budgets,two workers,zero retries andtrace-on.
 Its actual hosted outcome must be read separately; the native220read reduction
 is not a claimed historical repair or sole cause.
+
+Candidate-only run41890061538 at0534ed09bc317fe5e853e7794af00b96290b79bf
+actually passed both original cases on frozen runtime1a677d67cb1f79246a7912ab7dc4ed3bacc81ccc:
+desktop28166ms andtablet28632ms; timeout30000ms,workers2,retries0,
+no skipped/flaky cases. Original config/test/lock hashes and both traces are retained.
+Result JSON SHA2568301af1c8c86af726080f00784fc683a500d2e000428c6176dec7b425ae722c3.
+This is actual acceptance for these two cases on this run, not a sole-cause or
+universal stability claim; hardware/load differed and margin to the budget is small.
+Historical failures and pending full Foundation coverage remain unchanged.
+
+The first591-case local report passes every assertion but fails the new strict
+uniqueness collector because five new mirror-denial test labels were identical.
+Only those new labels gain a case index; inputs/assertions/budgets and collector
+remain unchanged. Focused31cases pass with distinct names. The original591
+report remains an application PASS/collection FAIL, never rewritten or merged into
+a fabricated same-run result. Current-head automatic CI provides its own evidence.
+
+Parent Foundation41879470772 exceeded45minutes during Vitest after printing14
+failed cases in the original C18/C23/C24 independent suites. The14-case diagnostic
+preserves original source/configuration/lock hashes,Node24.22.2,Ubuntu24.04,
+maxWorkers4 and30second test/hook budgets. It selects exactly those14cases from
+162collected, explicitly deselecting148; original in-file order is retained for
+dependent prepare/continue cases. Any PASS is a focused supplement, not full
+Foundation repair. No assumption about timeout versus product cause replaces
+actual failure details; JSON and failing test exit codes are retained.
