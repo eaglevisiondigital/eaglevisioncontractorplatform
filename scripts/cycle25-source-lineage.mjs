@@ -319,6 +319,15 @@ export function admitCycle25Source(path, current, original, supplied = {}) {
       path,
       authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
     };
+  if (
+    owners.length === 0 &&
+    cycle31Authors.some((s) => s.modified.includes(path))
+  )
+    return {
+      ...admitCycle31Forward(path, current, original, ports),
+      path,
+      authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+    };
   if (owners.length !== 1)
     throw Error(`Unreviewed source replacement: ${path}`);
   const spec = owners[0],
@@ -734,6 +743,11 @@ function admitCycle27Forward(path, current, previous, ports) {
       return {
         ...result,
         cycle30_forward: admitCycle30Forward(path, current, endpoint, ports),
+      };
+    if (cycle31Authors.some((s) => s.modified.includes(path)))
+      return {
+        ...result,
+        cycle31_forward: admitCycle31Forward(path, current, endpoint, ports),
       };
     throw Error('Current source differs from fixed Cycle27 author');
   }
@@ -1265,6 +1279,119 @@ export function inspectCycle30Sources({
     packages: rows,
     complete_combined:
       rows.length === 3 &&
+      rows.every((r) => r.state === 'EXACT_SUCCESSOR_PRESENT'),
+    business_authority: false,
+    restore_adapter: false,
+  };
+}
+
+export const cycle31Parent = '353923ce2c6677ae3d5026ac46cf214b2a549aa3';
+export const cycle31Authors = Object.freeze([
+  Object.freeze({
+    module: 'maintenance-proposal-input',
+    owner: '/root/cycle30_field_growth',
+    commit: '1538060250fc34654414dac6b29621bf44fabd98',
+    permitted: Object.freeze(['src/lib/workflows/plan-cancellation-review.ts']),
+    modified: Object.freeze(['src/lib/workflows/plan-cancellation-review.ts']),
+    added: Object.freeze([
+      'docs/program/CYCLE31_MAINTENANCE_PROPOSAL_INPUT.md',
+      'tests/cycle31-maintenance-proposal-input.test.ts',
+    ]),
+  }),
+  Object.freeze({
+    module: 'owner-navigation-runtime',
+    owner: '/root/cycle25_finance_intelligence_resume',
+    commit: '4dc82f93b4cc156ff3f9a4fb46aa3fefa2c93517',
+    permitted: Object.freeze(['src/lib/workflows/recorded-owner-actions.ts']),
+    modified: Object.freeze(['src/lib/workflows/recorded-owner-actions.ts']),
+    added: Object.freeze([
+      'docs/program/CYCLE31_OWNER_NAVIGATION_RUNTIME.md',
+      'tests/cycle31-owner-navigation-runtime.test.ts',
+    ]),
+  }),
+]);
+export function validateCycle31ForwardSpec(spec, ports = cycle25SourcePorts) {
+  const fixed = cycle31Authors.find((s) => s.module === spec?.module);
+  if (
+    !fixed ||
+    spec.commit !== fixed.commit ||
+    !/^[a-f0-9]{40}$/.test(spec.commit ?? '') ||
+    ports.type(spec.commit) !== 'commit' ||
+    ports.parent(spec.commit) !== cycle31Parent
+  )
+    throw Error('Exact fixed single-parent Cycle31 author required');
+  for (const field of ['permitted', 'modified', 'added'])
+    if (JSON.stringify(spec[field]) !== JSON.stringify(fixed[field]))
+      throw Error('Exact bounded Cycle31 ownership required');
+  const expected = [
+    ...spec.modified.map((p) => `M\t${p}`),
+    ...spec.added.map((p) => `A\t${p}`),
+  ]
+    .sort()
+    .join('\n');
+  if (ports.delta(spec.commit) !== expected)
+    throw Error('Exact bounded Cycle31 delta required');
+  for (const path of [...spec.modified, ...spec.added])
+    if (ports.mode(spec.commit, path) !== '100644')
+      throw Error('Regular non-executable Cycle31 source required');
+  return { source_commit: spec.commit, module: spec.module, owner: spec.owner };
+}
+function admitCycle31Forward(path, current, previous, ports) {
+  const owners = cycle31Authors.filter((s) => s.modified.includes(path));
+  if (owners.length !== 1) throw Error('No finite Cycle31 source owner');
+  const spec = owners[0],
+    result = validateCycle31ForwardSpec(spec, ports);
+  if (
+    !Buffer.from(ports.git(cycle31Parent, path)).equals(Buffer.from(previous))
+  )
+    throw Error('Exact Cycle31 parent source required');
+  const endpoint = Buffer.from(ports.git(spec.commit, path));
+  if (!endpoint.equals(Buffer.from(current)))
+    throw Error('Current source differs from fixed Cycle31 author');
+  return result;
+}
+export function inspectCycle31Sources({
+  requireCombined = false,
+  ...supplied
+} = {}) {
+  const ports = { ...cycle25SourcePorts, ...supplied },
+    rows = [],
+    owned = new Set();
+  for (const spec of cycle31Authors) {
+    validateCycle31ForwardSpec(spec, ports);
+    let count = 0;
+    for (const path of spec.modified) {
+      if (owned.has(path)) throw Error('Overlapping Cycle31 source ownership');
+      owned.add(path);
+      const current = Buffer.from(ports.read(path)),
+        base = Buffer.from(ports.git(cycle31Parent, path));
+      if (!current.equals(base)) {
+        admitCycle31Forward(path, current, base, ports);
+        count++;
+      }
+    }
+    if (count && count !== spec.modified.length)
+      throw Error('Partial Cycle31 package forbidden');
+    if (requireCombined && !count)
+      throw Error('Combined Cycle31 package absent');
+    if (count)
+      for (const path of spec.added)
+        if (
+          !Buffer.from(ports.read(path)).equals(
+            Buffer.from(ports.git(spec.commit, path)),
+          )
+        )
+          throw Error('Exact Cycle31 author test/document required');
+    rows.push({
+      module: spec.module,
+      commit: spec.commit,
+      state: count ? 'EXACT_SUCCESSOR_PRESENT' : 'BASELINE_UNCHANGED',
+    });
+  }
+  return {
+    packages: rows,
+    complete_combined:
+      rows.length === 2 &&
       rows.every((r) => r.state === 'EXACT_SUCCESSOR_PRESENT'),
     business_authority: false,
     restore_adapter: false,
