@@ -258,6 +258,12 @@ function ActionForm({
             destination {result.destination} · native source status{' '}
             {result.source.status}
           </p>
+          <h4>Exact selected source facts</h4>
+          <ul aria-label="Exact selected source facts">
+            {result.source.facts.map((fact, index) => (
+              <li key={index}>{fact}</li>
+            ))}
+          </ul>
           <p>
             Cost coverage: {result.cost_coverage} · canonical projected margin:{' '}
             {result.canonical_margin} basis points · invoice prerequisites:{' '}

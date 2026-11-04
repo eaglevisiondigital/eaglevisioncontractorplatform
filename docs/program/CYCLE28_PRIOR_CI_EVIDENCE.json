@@ -1,0 +1,190 @@
+{
+  "schema": "propel-cycle28-prior-ci-evidence-v1",
+  "observed_at": "2026-11-04T14:22:57.728256+00:00",
+  "manual_reruns": 0,
+  "cycle18": {
+    "run": 41677657862,
+    "artifact": 13253335545,
+    "original_source": "13977f8c870fb57a94ec7f8c4d73768b3083819f",
+    "application": {
+      "passed": 446,
+      "failed": 0,
+      "sha256": "9442815046bd1eab39df9eed865034368c2832d10d4c6525e74738a6b337345b"
+    },
+    "browser": {
+      "passed": 21,
+      "failed": 9,
+      "skipped": 0,
+      "flaky": 0,
+      "sha256": "1cced7ddc5e9f9dea0ec61fa754b966400d7731dcc04f6b9b9039597f1307638",
+      "cases": [
+        {
+          "file": "cycle18-daily-workbench.spec.ts",
+          "case": "one selected job through daily reviews and next job / straight-edge",
+          "project": "desktop",
+          "result": "unexpected",
+          "failures": [
+            {
+              "status": "failed",
+              "duration_ms": 121173,
+              "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.",
+              "action": "Today\u2019s priorities",
+              "source_line": 243
+            }
+          ]
+        },
+        {
+          "file": "cycle18-daily-workbench.spec.ts",
+          "case": "one selected job through daily reviews and next job / cunningham",
+          "project": "desktop",
+          "result": "unexpected",
+          "failures": [
+            {
+              "status": "failed",
+              "duration_ms": 115008,
+              "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.",
+              "action": "Today\u2019s priorities",
+              "source_line": 243
+            }
+          ]
+        },
+        {
+          "file": "cycle18-daily-workbench.spec.ts",
+          "case": "one selected job through daily reviews and next job / roofing-example",
+          "project": "desktop",
+          "result": "unexpected",
+          "failures": [
+            {
+              "status": "failed",
+              "duration_ms": 128162,
+              "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.",
+              "action": "Today\u2019s priorities",
+              "source_line": 243
+            }
+          ]
+        },
+        {
+          "file": "cycle18-daily-workbench.spec.ts",
+          "case": "one selected job through daily reviews and next job / straight-edge",
+          "project": "tablet",
+          "result": "unexpected",
+          "failures": [
+            {
+              "status": "failed",
+              "duration_ms": 115797,
+              "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.",
+              "action": "Today\u2019s priorities",
+              "source_line": 243
+            }
+          ]
+        },
+        {
+          "file": "cycle18-daily-workbench.spec.ts",
+          "case": "one selected job through daily reviews and next job / cunningham",
+          "project": "tablet",
+          "result": "unexpected",
+          "failures": [
+            {
+              "status": "failed",
+              "duration_ms": 116303,
+              "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.",
+              "action": "Today\u2019s priorities",
+              "source_line": 243
+            }
+          ]
+        },
+        {
+          "file": "cycle18-daily-workbench.spec.ts",
+          "case": "one selected job through daily reviews and next job / roofing-example",
+          "project": "tablet",
+          "result": "unexpected",
+          "failures": [
+            {
+              "status": "failed",
+              "duration_ms": 106532,
+              "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.",
+              "action": "Advanced task review",
+              "source_line": 228
+            }
+          ]
+        },
+        {
+          "file": "cycle18-daily-workbench.spec.ts",
+          "case": "one selected job through daily reviews and next job / straight-edge",
+          "project": "mobile",
+          "result": "unexpected",
+          "failures": [
+            {
+              "status": "failed",
+              "duration_ms": 114475,
+              "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.",
+              "action": "Today\u2019s priorities",
+              "source_line": 243
+            }
+          ]
+        },
+        {
+          "file": "cycle18-daily-workbench.spec.ts",
+          "case": "one selected job through daily reviews and next job / cunningham",
+          "project": "mobile",
+          "result": "unexpected",
+          "failures": [
+            {
+              "status": "failed",
+              "duration_ms": 109347,
+              "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.",
+              "action": "Today\u2019s priorities",
+              "source_line": 243
+            }
+          ]
+        },
+        {
+          "file": "cycle18-daily-workbench.spec.ts",
+          "case": "one selected job through daily reviews and next job / roofing-example",
+          "project": "mobile",
+          "result": "unexpected",
+          "failures": [
+            {
+              "status": "failed",
+              "duration_ms": 123062,
+              "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.",
+              "action": "Today\u2019s priorities",
+              "source_line": 243
+            }
+          ]
+        }
+      ]
+    },
+    "root_cause": "NOT_DETERMINED_FROM_CLICK_TIMEOUT_ALONE",
+    "historical_result": "FAILURE_PRESERVED",
+    "prior_source_repair": "Cycle22 retained-pane memoization and active-source refresh; no original result relabelled"
+  },
+  "foundation": {
+    "source_record": "CYCLE27_PRIOR_CI_RECONCILIATION.json",
+    "run": 41789311305,
+    "maximum_minutes": 45,
+    "check": "SUCCESS",
+    "build": "SUCCESS",
+    "staging_plan": "SUCCESS",
+    "browser_install": "CANCELLED",
+    "browser": "SKIPPED",
+    "conclusion": "CANCELLED_PRESERVED",
+    "original_browser_supplement": {
+      "pr": 191,
+      "passed": 397,
+      "timed_out": 2,
+      "cases": 399,
+      "original_budget_seconds": 30
+    },
+    "alternative_budget_supplement": {
+      "pr": 199,
+      "head": "7cf0eaf1ccd4a4ab9fc73f637f4bc19c2f3b4a4f",
+      "run": 41837332646,
+      "passed": 2,
+      "budget_seconds": 90,
+      "retries": 0,
+      "replaces_original_result": false
+    }
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

@@ -1,0 +1,53 @@
+name: Cycle 28 contractor journey and native corrections
+on:
+  push:
+    branches: ['codex/program-cycle-twenty-eight-integration']
+  pull_request:
+    branches: ['codex/program-cycle-twenty-seven-integration']
+    paths:
+      - 'src/lib/workflows/*.ts'
+      - 'src/components/workflows/*'
+      - 'scripts/cycle25-source-lineage.mjs'
+      - 'scripts/collect-cycle24-browser.mjs'
+      - 'tests/cycle28*'
+      - 'tests/program/*cycle28*'
+      - 'docs/program/CYCLE28*'
+      - '.github/workflows/cycle28-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle28-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  exact-sources-and-journey:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node --input-type=module -e "import { inspectCycle28Sources } from './scripts/cycle25-source-lineage.mjs'; console.log(inspectCycle28Sources({requireCombined:true}));"
+      - run: npx vitest run tests/cycle28*.test.ts tests/cycle25-combined-integration.test.ts tests/cycle25-source-lineage.test.ts tests/cycle26-source-lineage.test.ts tests/cycle27-source-lineage.test.ts --maxWorkers=1 --reporter=json --outputFile=artifacts/cycle28/application-results.json
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test -c tests/program/playwright.cycle28-customer.config.ts
+      - run: node tests/program/cycle28-field-selection-browser.mjs
+      - run: node tests/program/cycle28-growth-selection-browser.mjs green
+      - run: CYCLE28_FULL=1 CYCLE28_BROWSER_RESULT=artifacts/cycle28/finance-native-browser.json node tests/program/cycle28-finance-readiness-browser.mjs
+      - run: CYCLE28_FULL=1 CYCLE28_BROWSER_RESULT=artifacts/cycle28/owner-native-browser.json node tests/program/cycle28-owner-priorities-browser.mjs
+      - run: npx playwright test -c tests/program/playwright.cycle28.config.ts
+      - run: CYCLE28_BROWSER_MODE=off npx playwright test -c tests/program/playwright.cycle28.config.ts
+      - run: CYCLE24_ARTIFACT_DIR=artifacts/cycle28 node scripts/collect-cycle24-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle28-exact-local-journey-evidence
+          path: artifacts/cycle28/
+          retention-days: 7
