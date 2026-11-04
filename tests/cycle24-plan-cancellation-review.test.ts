@@ -575,3 +575,31 @@ it('another authorized job review cannot cancel or inspect the original job sele
     'BLOCKED_LOCAL_REVIEW',
   );
 });
+it('a current saved maintenance handle from another exact job cannot substitute into a displayed review', async () => {
+  const f = await fixture(),
+    other = await readPlanCancellationReview(
+      f.all,
+      f.all.entries[0].target.job_id!,
+      'recurring_maintenance',
+      f.gate,
+    ),
+    foreignSaved = { ...f.review, saved: other.saved },
+    mixed = { review: foreignSaved, selection: f.selected.selection };
+  expect(() => planCancellationFacts(foreignSaved)).toThrow(
+    /native saved maintenance identity/,
+  );
+  await expect(
+    preparePlanCancellationReview(mixed, f.proposal, true),
+  ).rejects.toThrow(/native saved maintenance identity/);
+  expect((await reconcilePlanCancellationReview(mixed)).status).toBe('UNKNOWN');
+  expect((await reconcilePlanCancellationReview(f.selected)).status).toBe(
+    'READY_FOR_REQUIREMENTS',
+  );
+  await preparePlanCancellationReview(f.selected, f.proposal, true);
+  await expect(
+    closePlanCancellationReview(mixed, 'CANCEL', true),
+  ).rejects.toThrow(/native saved maintenance identity/);
+  expect((await reconcilePlanCancellationReview(f.selected)).status).toBe(
+    'BLOCKED_LOCAL_REVIEW',
+  );
+});

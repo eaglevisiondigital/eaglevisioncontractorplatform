@@ -73,6 +73,21 @@ export interface PlanCancellationReview {
   readonly purpose: MaintenanceReviewPurpose;
   readonly gate: JourneyAdmission;
 }
+function assertSavedPlanIdentity(review: PlanCancellationReview) {
+  const keys = [
+    'organization_id',
+    'actor_id',
+    'customer_id',
+    'location_id',
+    'estimate_id',
+    'version_id',
+    'job_id',
+  ] as const;
+  if (
+    keys.some((key) => review.saved.identity[key] !== review.view.identity[key])
+  )
+    throw Error('Original native saved maintenance identity required');
+}
 export function assertPlanCancellationCurrent(review: PlanCancellationReview) {
   if (
     Object.keys(
@@ -80,6 +95,7 @@ export function assertPlanCancellationCurrent(review: PlanCancellationReview) {
     ).length !== 5
   )
     throw Error('Original staff review references required');
+  assertSavedPlanIdentity(review);
   assertSavedRevisionCurrent(review.view);
   assertMaintenanceSavedRevisionCurrent(review.saved);
   assertFollowUpReadinessCurrentNow(review.desk);
@@ -129,6 +145,7 @@ function assertSelectionJoin(selected: PlanCancellationSelection) {
   prototypeFields(review.saved, Object.keys(review.saved));
   prototypeFields(review.desk, Object.keys(review.desk));
   prototypeFields(selected.selection, Object.keys(selected.selection));
+  assertSavedPlanIdentity(review);
   const original = selected.selection,
     displayed = review.desk.rows.find((row) => row === original.occurrence),
     identity = review.view.identity;
