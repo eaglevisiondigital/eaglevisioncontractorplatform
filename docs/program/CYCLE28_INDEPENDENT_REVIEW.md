@@ -128,3 +128,78 @@ not repeated. All original protected migrations, customer14/4B, frozen P1/four a
 Netlify/executor, approved interfaces/artwork, Auth/MFA, NMI/settlement, database,
 financial/provider/communication/dispatch and production gates remain unchanged.
 Release1.0 remains **NOT READY / NOT AUTHORIZED**.
+
+## Follow-up · completed local evidence and narrow tooling corrections
+
+I independently inspected the completed raw Main reports. The original combined run
+has177 cases:176PASS and one failure in the retained C27 warm-cache denial diagnostic.
+The strict checker correctly rejected altered current bytes; its new C28 message did
+not include the retained `fixed Cycle27` assertion substring. The support-only commit
+`f38af86328ee36d05e006c32ea9eec754fa83e7c` changes that error text to name retained
+C27 lineage and the required fixed C28 author. Its equality check, parent/delta/mode
+admission, original assertions and cache policy are unchanged. The exact failed case
+then passes; nineteen deselections are not additional passes. No test timeout changed.
+
+The first new C28 focused command named a nonexistent `cycle26-source-lineage.test.ts`.
+It selected no C26 suite, so no coverage was claimed. Main corrected only the new
+workflow selection to the actual retained `cycle26-source-review.test.ts`; I inspected
+its separate20/20PASS JSON. The source-based unique application union is197:
+176 initial passes, one corrected diagnostic and twenty separately verified retained
+C26 cases. That is115new/82retained unique cases across distinct runs, not one clean
+same-head197-case run or GitHub CI success.
+
+I rechecked the same43 independent source-admission cases after the diagnostic-only
+change:43/43PASS, not43additional unique cases. The final helper SHA256 is
+`df3ec994121154af2dd85e5ce167be0f764cf09adaf5d929f8bc859ee6e7f5e2`.
+Original evidence at the earlier helper hash remains retained separately. The later
+support commit changes no application runtime bytes.
+
+Main browser evidence passes33 actual cases:9original native journeys,3production-OFF,
+9customer keyboard-focus/revocation cases and12promoted native seam cases. The nine
+native journeys and nine focus cases cover all three contractor brands and desktop,
+tablet and mobile; the twelve seam cases cover the three brands on desktop. I parsed
+the actual results and verified zero skips/retries/flakes in the Playwright matrices;
+seam reports retain their distinct finite assertions and zero outside requests.
+
+I independently verified the strict collector manifest and every paired capture:
+63PNG hashes and63metadata hashes match; all72capture/keyboard bindings use clean
+runtime`6d3d29a8d68a475a8ab077d5d42ae23fe927141d`. Each retains the exact76-file
+scoped inventory, matching both committed and current native bytes. All nine keyboard
+journeys retain the same starting/ending job, zero outside requests and369trusted
+key events. The original scoped Axe, touch-target and overflow assertions remain
+unchanged. I visually inspected representative desktop Finance, tablet Customer and
+mobile Maintenance captures. This is visual QA, not owner design approval, complete
+transitive runtime inventory or operational evidence.
+
+The first collector failed because six supplemental Finance/Owner screenshots shared
+the strict63capture directory. A broad file move then temporarily included nine
+canonical owner-action PNGs; the second collector correctly failed missing-file checks.
+Their original bytes were restored, supplemental files were kept separately and the
+final collector passed the unchanged strict126-file assertion. Both failed logs remain
+retained; no browser assertion was removed and no screenshot was regenerated to hide a
+failure. Only the two new seam harness output paths now use the separate directory.
+
+Independent source/spec/security review has no remaining demonstrated local blocker.
+Missing request→job foreign keys, actual assignment coverage, durable operational
+receipts, labor posting, invoice authority, purpose consent, suppression, completion,
+genuine Auth/MFA, independent custody and physical recovery remain explicit gaps.
+There is no operational adapter, new business store or new acceptance authority.
+
+## Current CI and historical gaps
+
+At the independently retrieved `2026-11-04T14:53:04Z` snapshot, exact C27 head5f74b8
+has21successful workflows and two running Foundations. Both dedicated C27 integration
+runs have passed. The two Foundation verify jobs have no final conclusion, so neither
+is reported as passed; no successful or pending run was restarted.
+
+The original f81081 browser supplement191 has an exact disjoint399-case union with
+zero missing/extra IDs,397PASS and two failed original30-second deadlines. I compared
+all four list/results/source records. Follow-up199 selects exactly those same two
+case IDs and passes at90seconds; it does not provide original-condition passes.
+Those two original-budget browser gaps and unresolved truncated push-check failure
+details remain separate from full45-minute Foundation completion. Original results
+and historical Cycle18 failures remain preserved. C28 automatic current-head CI is
+reported separately in the delivery register and never inferred from these local checks.
+
+All original release restrictions remain unchanged. Release1.0 remains
+**NOT READY / NOT AUTHORIZED**.
