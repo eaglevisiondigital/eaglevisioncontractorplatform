@@ -79,6 +79,15 @@ export function inspectTaskReceiptContinuity(review: TaskReceiptContinuity) {
   const receipt = inspectTaskReceiptReconciliation(review.receipt),
     graph = inspectTaskRevisionConsistency(review.graph);
   assertSavedRevisionCurrent(review.order);
+  const original = prototypeFields(receipt, Object.keys(receipt));
+  if (
+    (['state', 'source_id', 'result_id'] as const).some(
+      (key) => original[key] !== graph.receipt[key],
+    )
+  )
+    throw Error(
+      'Original receipt custody changed during task continuity; explicitly read only again',
+    );
   if (
     JSON.stringify(review.receipt.view.identity) !==
       JSON.stringify(review.graph.identity) ||

@@ -215,10 +215,15 @@ function ReceiptAction({
     selected: ReturnType<typeof inspectTaskReceiptTask> | undefined;
   try {
     if (continuity) tasks = inspectTaskReceiptContinuity(continuity);
-    if (continuity && selectedTask)
-      selected = inspectTaskReceiptTask(continuity, selectedTask);
   } catch {
     tasks = undefined;
+  }
+  try {
+    if (tasks && continuity && selectedTask)
+      selected = inspectTaskReceiptTask(continuity, selectedTask);
+  } catch {
+    // A valid current picker stays available; its missing exact selection never
+    // becomes another task or enables the original correction controls.
     selected = undefined;
   }
   let data: ReturnType<typeof inspectTaskReceiptReconciliation> | undefined;
@@ -345,7 +350,9 @@ function ReceiptAction({
             ? 'Access unavailable. Private task context is withheld; UNKNOWN never permits replay.'
             : continuity && !tasks
               ? 'Current task sources changed. Previous verification is withheld; explicitly reread the exact source. Original custody is unchanged.'
-              : verification}
+              : selectedTask && tasks && !selected
+                ? 'Selected exact task is unavailable. No fallback was selected; choose another displayed ID explicitly.'
+                : verification}
         </p>
         <p>
           Exact IDs remain selected. Technician availability is UNKNOWN;
