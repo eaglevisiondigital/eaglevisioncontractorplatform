@@ -1,3 +1,9 @@
+# Cycle27 · existing native authority and privacy
+
+Six bounded successors extend the original workflows only. Private retained observations must recheck original access at render; mutable freshness remains distinct from access so authorized UNKNOWN exact read-only reconciliation survives. No original hold resets. Customer expected snapshots use exact own-data fields before the seven original binding comparisons. Finance copies the canonical nine invoice gates and existing category amounts; it never recalculates or posts. Owner search filters original authorized rows literally in native order and never changes the exact selection or navigation authority. Offline UNKNOWN diagnostics contain finite mismatch field names only.
+
+Fixed A commits and permitted source paths are in CYCLE27_SOURCE_MANIFEST.json and the existing source-lineage checker. These are build evidence, never canonical business-state recovery. Smallest readiness review192 retains eight families/R01–R19 and unassigned operational owners; implementation/restoration NO-GO. Every hosted/release/financial/communication/recovery gate remains closed.
+
 # Shared contracts and integration ownership
 
 ## Cycle25 native successor ownership

@@ -1,3 +1,7 @@
+# Cycle27 · extend original workflows and preserve uncertain custody
+
+Render-time current access must protect retained private task/maintenance observations without clearing original references, holds or UNKNOWN. Canonical invoice gates/amounts remain distinct from staff review; literal source search never chooses or authorizes a row. Customer expected records are strict own-data snapshots; Offline reports finite mismatch names only. No second store, engine or workflow owner. The independently reviewed minimum readiness package grants no implementation permission. Original P1 approval stays valid against thirteen history after its recovery prerequisites; customer14/4B/Auth/NMI and every other hosted/production gate remain separate.
+
 # Engineering decisions
 
 ## Cycle26 · correct existing native controls; no new operational owner

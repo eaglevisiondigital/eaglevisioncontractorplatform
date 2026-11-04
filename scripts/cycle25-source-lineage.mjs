@@ -153,31 +153,55 @@ export const cycle25Authors = Object.freeze(
 );
 
 const git = (...args) =>
-  execFileSync('git', args, {
+  execFileSync('git', ['--no-replace-objects', ...args], {
     maxBuffer: 4 * 1024 * 1024,
     stdio: ['ignore', 'pipe', 'pipe'],
   });
+// Git object answers are immutable at a full object ID. Cache only successful
+// object reads; copied buffers prevent callers mutating the cache. Current file
+// reads, per-row metadata, source admission and business authority are NEVER cached.
+const immutableGitObjects = new Map();
+function objectGit(commit, ...args) {
+  if (!/^[a-f0-9]{40}$/.test(commit)) return git(...args);
+  const key = JSON.stringify([process.cwd(), commit, ...args]);
+  if (!immutableGitObjects.has(key))
+    immutableGitObjects.set(key, Buffer.from(git(...args)));
+  return Buffer.from(immutableGitObjects.get(key));
+}
 export const cycle25SourcePorts = {
-  git: (commit, path) => git('show', `${commit}:${path}`),
+  git: (commit, path) => objectGit(commit, 'show', `${commit}:${path}`),
   parent: (commit) =>
-    git('show', '--no-patch', '--format=%P', commit).toString().trim(),
-  type: (commit) => git('cat-file', '-t', commit).toString().trim(),
+    objectGit(commit, 'cat-file', 'commit', commit)
+      .toString()
+      .split('\n\n')[0]
+      .split('\n')
+      .filter((line) => line.startsWith('parent '))
+      .map((line) => line.slice(7))
+      .join(' '),
+  type: (commit) =>
+    objectGit(commit, 'cat-file', '-t', commit).toString().trim(),
   mode: (commit, path) =>
-    git('ls-tree', commit, '--', path).toString().split(/\s+/)[0],
-  delta: (commit) =>
-    git(
+    objectGit(commit, 'ls-tree', commit, '--', path).toString().split(/\s+/)[0],
+  delta: (commit) => {
+    const parent = cycle25SourcePorts.parent(commit);
+    if (!/^[a-f0-9]{40}$/.test(parent))
+      throw Error('Exact raw single parent required');
+    return objectGit(
+      commit,
       'diff-tree',
       '--no-commit-id',
       '--name-status',
       '--no-renames',
       '-r',
+      parent,
       commit,
     )
       .toString()
       .trim()
       .split('\n')
       .sort()
-      .join('\n'),
+      .join('\n');
+  },
   read: (path) => {
     if (
       typeof path !== 'string' ||
@@ -299,7 +323,11 @@ export function admitCycle25Source(path, current, original, supplied = {}) {
   );
   const forward = Buffer.from(current).equals(endpoint)
     ? null
-    : admitCycle26Forward(path, current, endpoint, ports);
+    : cycle26Authors.some((s) => s.modified.includes(path))
+      ? admitCycle26Forward(path, current, endpoint, ports)
+      : {
+          cycle27_forward: admitCycle27Forward(path, current, endpoint, ports),
+        };
   return {
     ...result,
     ...(forward ? { cycle26_forward: forward } : {}),
@@ -501,9 +529,12 @@ function admitCycle26Forward(path, current, originalCycle25, ports) {
     )
   )
     throw Error('Cycle26 exact parent must retain original Cycle25 source');
-  if (!Buffer.from(current).equals(Buffer.from(ports.git(spec.commit, path))))
-    throw Error('Current source differs from fixed Cycle26 author');
-  return result;
+  const endpoint = Buffer.from(ports.git(spec.commit, path));
+  if (Buffer.from(current).equals(endpoint)) return result;
+  return {
+    ...result,
+    cycle27_forward: admitCycle27Forward(path, current, endpoint, ports),
+  };
 }
 
 export function inspectCycle26Sources({
@@ -539,6 +570,185 @@ export function inspectCycle26Sources({
           )
         )
           throw Error('Exact Cycle26 author test/document required');
+    rows.push({
+      module: spec.module,
+      commit: spec.commit,
+      state: count ? 'EXACT_SUCCESSOR_PRESENT' : 'BASELINE_UNCHANGED',
+    });
+  }
+  return {
+    packages: rows,
+    complete_combined:
+      rows.length === 6 &&
+      rows.every((r) => r.state === 'EXACT_SUCCESSOR_PRESENT'),
+    business_authority: false,
+    restore_adapter: false,
+  };
+}
+
+// Reviewed finite Cycle27 native successors only. Metadata is build evidence,
+// never a business store, receipt, restoration adapter or authorization owner.
+export const cycle27Parent = 'f81081b3ce8fca63443a9f03e8bfcd5aa4daa4b6';
+export const cycle27Authors = Object.freeze(
+  [
+    [
+      'task-custody',
+      '/root/cycle25_field_growth_resume',
+      '81ca1d0d39d507734b062965e55b84003f655da6',
+      11,
+      [
+        'src/lib/workflows/task-receipt-reconciliation.ts',
+        'src/components/workflows/TaskReceiptActions.tsx',
+      ],
+    ],
+    [
+      'cost-completeness',
+      '/root/cycle25_finance_intelligence_resume',
+      '09569d2458f51f2b67d637d2ade1943071992240',
+      12,
+      [
+        'src/lib/workflows/cost-coverage-actions.ts',
+        'src/components/workflows/CostCoverageActions.tsx',
+      ],
+    ],
+    [
+      'request-authority',
+      '/root/cycle27_customer_offline',
+      'e42119427eabe0660226e425caf93d26e00da7df',
+      26,
+      ['src/lib/workflows/service-request-actions.ts'],
+    ],
+    [
+      'maintenance-consent',
+      '/root/cycle25_field_growth_resume',
+      '9db377e8bc9a9c3a541ab4bb773dc4c91dba4ff3',
+      11,
+      [
+        'src/lib/workflows/plan-cancellation-review.ts',
+        'src/components/workflows/MaintenanceCancellationActions.tsx',
+      ],
+    ],
+    [
+      'owner-navigation',
+      '/root/cycle25_finance_intelligence_resume',
+      '74b97a7ccd8082581331b5fe91695ccfbf8fb342',
+      15,
+      [
+        'src/lib/workflows/owner-action-verification.ts',
+        'src/components/workflows/OwnerActionVerification.tsx',
+        'src/components/workflows/owner-action-verification.css',
+      ],
+    ],
+    [
+      'offline-reconciliation',
+      '/root/cycle27_customer_offline',
+      'e35aca2f1f0bcae361e4e01a05b37f8305907871',
+      24,
+      ['src/lib/workflows/offline-source-admission.ts'],
+    ],
+  ].map(([module, owner, commit, cases, paths]) =>
+    Object.freeze({
+      module,
+      owner,
+      branch: `codex/cycle27-${module}`,
+      commit,
+      cases,
+      permitted: Object.freeze([...paths]),
+      modified: Object.freeze([...paths]),
+      added: Object.freeze([
+        `docs/program/CYCLE27_${module.toUpperCase().replaceAll('-', '_')}.md`,
+        `tests/cycle27-${module}.test.ts`,
+      ]),
+    }),
+  ),
+);
+export function validateCycle27ForwardSpec(spec, ports = cycle25SourcePorts) {
+  if (
+    !spec ||
+    !/^[a-f0-9]{40}$/.test(spec.commit ?? '') ||
+    spec.commit === '0'.repeat(40) ||
+    ports.type(spec.commit) !== 'commit' ||
+    ports.parent(spec.commit) !== cycle27Parent
+  )
+    throw Error('Exact single-parent Cycle27 source commit required');
+  if (
+    !Array.isArray(spec.modified) ||
+    !spec.modified.length ||
+    new Set(spec.modified).size !== spec.modified.length ||
+    spec.modified.some((p) => !spec.permitted.includes(p))
+  )
+    throw Error('Only explicitly owned Cycle27 native paths may change');
+  const added = [
+    `docs/program/CYCLE27_${spec.module.toUpperCase().replaceAll('-', '_')}.md`,
+    `tests/cycle27-${spec.module}.test.ts`,
+  ];
+  if (JSON.stringify([...spec.added].sort()) !== JSON.stringify(added.sort()))
+    throw Error('Only exact Cycle27 new test and document allowed');
+  const expected = [
+    ...spec.modified.map((p) => `M\t${p}`),
+    ...spec.added.map((p) => `A\t${p}`),
+  ]
+    .sort()
+    .join('\n');
+  if (ports.delta(spec.commit) !== expected)
+    throw Error('Exact bounded Cycle27 delta required');
+  for (const p of [...spec.modified, ...spec.added])
+    if (ports.mode(spec.commit, p) !== '100644')
+      throw Error('Regular non-executable Cycle27 source required');
+  return { source_commit: spec.commit, module: spec.module, owner: spec.owner };
+}
+
+function admitCycle27Forward(path, current, previous, ports) {
+  const owners = cycle27Authors.filter((s) => s.modified.includes(path));
+  if (owners.length !== 1)
+    throw Error('No finite Cycle27 owner for replacement');
+  const spec = owners[0],
+    result = validateCycle27ForwardSpec(spec, ports);
+  if (
+    !Buffer.from(ports.git(cycle27Parent, path)).equals(Buffer.from(previous))
+  )
+    throw Error('Cycle27 exact parent must retain original reviewed source');
+  if (!Buffer.from(current).equals(Buffer.from(ports.git(spec.commit, path))))
+    throw Error('Current source differs from fixed Cycle27 author');
+  return result;
+}
+export function inspectCycle27Sources({
+  requireCombined = false,
+  ...supplied
+} = {}) {
+  const ports = { ...cycle25SourcePorts, ...supplied },
+    rows = [],
+    owned = new Set();
+  for (const spec of cycle27Authors) {
+    for (const path of spec.permitted) {
+      if (owned.has(path)) throw Error('Overlapping Cycle27 source ownership');
+      owned.add(path);
+    }
+    if (!spec.commit) {
+      if (requireCombined) throw Error('Unpublished Cycle27 source package');
+      continue;
+    }
+    let count = 0;
+    for (const path of spec.modified) {
+      const current = Buffer.from(ports.read(path)),
+        base = Buffer.from(ports.git(cycle27Parent, path));
+      if (!current.equals(base)) {
+        admitCycle27Forward(path, current, base, ports);
+        count++;
+      }
+    }
+    if (count && count !== spec.modified.length)
+      throw Error('Partial Cycle27 package forbidden');
+    if (requireCombined && !count)
+      throw Error('Combined Cycle27 package absent');
+    if (count)
+      for (const path of spec.added)
+        if (
+          !Buffer.from(ports.read(path)).equals(
+            Buffer.from(ports.git(spec.commit, path)),
+          )
+        )
+          throw Error('Exact Cycle27 author test/document required');
     rows.push({
       module: spec.module,
       commit: spec.commit,

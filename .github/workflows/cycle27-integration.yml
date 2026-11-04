@@ -1,0 +1,50 @@
+name: Cycle 27 native authority and continuity
+on:
+  push:
+    branches: ['codex/program-cycle-twenty-seven-integration']
+  pull_request:
+    branches: ['codex/program-cycle-twenty-six-integration']
+    paths:
+      - 'src/lib/workflows/*.ts'
+      - 'src/components/workflows/*'
+      - 'scripts/*cycle27*'
+      - 'scripts/cycle25-source-lineage.mjs'
+      - 'scripts/collect-cycle24-browser.mjs'
+      - 'tests/cycle27*'
+      - 'tests/program/*cycle27*'
+      - 'docs/program/CYCLE27*'
+      - '.github/workflows/cycle27-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle27-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  source-and-local-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node scripts/check-cycle27.mjs --combined
+      - run: npx vitest run tests/cycle27*.test.ts tests/cycle25-combined-integration.test.ts tests/cycle25-source-lineage.test.ts --maxWorkers=2 --reporter=json --outputFile=artifacts/cycle27/application-results.json
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test -c tests/program/playwright.cycle27-access.config.ts
+      - run: npx playwright test -c tests/program/playwright.cycle27.config.ts
+      - run: CYCLE27_BROWSER_MODE=off npx playwright test -c tests/program/playwright.cycle27.config.ts
+      - run: CYCLE24_ARTIFACT_DIR=artifacts/cycle27 node scripts/collect-cycle24-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle27-local-correction-evidence
+          path: artifacts/cycle27/
+          retention-days: 7

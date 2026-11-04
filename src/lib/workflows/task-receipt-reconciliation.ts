@@ -32,6 +32,16 @@ export async function readTaskReceiptReconciliation(
 export type TaskReceiptReconciliation = Awaited<
   ReturnType<typeof readTaskReceiptReconciliation>
 >;
+/** Access to retained point-in-time detail is checked by its original owner.
+ * This does not require unchanged mutable evidence, release custody or authorize replay. */
+export function assertTaskReceiptObservationAccess(
+  review: TaskReceiptReconciliation,
+): void {
+  const fields = prototypeFields(review, ['view', 'receipt']);
+  if (Object.keys(fields).length !== 2)
+    throw Error('Original receipt review required');
+  assertSavedRevisionAccess(review.view);
+}
 export function inspectTaskReceiptReconciliation(
   review: TaskReceiptReconciliation,
 ) {

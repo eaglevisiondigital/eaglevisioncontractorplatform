@@ -1,0 +1,178 @@
+{
+  "schema": "propel-cycle27-validation-v1",
+  "parent": "f81081b3ce8fca63443a9f03e8bfcd5aa4daa4b6",
+  "coordination_pr": 200,
+  "native_runtime_commit": "b3be1c90ad4cf90412890bf90e90f9cf981ab787",
+  "tooling_cache_commit": "c6c4507e2e099861538e918fb9d56f53572e6e61",
+  "application": {
+    "unique_passes": 181,
+    "new_module_cases": 99,
+    "new_source_tooling_cases": 20,
+    "retained_combined_and_lineage_cases": 62,
+    "split_runs": true,
+    "initial_report_passes": 139,
+    "initial_final_source_passes": 39,
+    "final_all_six_combined_recheck": 16,
+    "cache_raw_guard_suite_passes": 66,
+    "duplicates_not_added_to_unique_count": true,
+    "precommit_native_bytes_bound_to_exact_author_commits": true,
+    "full_local_foundation_run": false
+  },
+  "browser": {
+    "native": 9,
+    "production_off": 3,
+    "source_commit": "b3be1c90ad4cf90412890bf90e90f9cf981ab787",
+    "screenshots": 63,
+    "keyboard_journeys": 9,
+    "trusted_events": 369,
+    "outside_requests": 0,
+    "errors": 0,
+    "retries": 0,
+    "skips": 0,
+    "visual_approval": "PENDING",
+    "privacy": {
+      "unique_passes": 18,
+      "initial_passes": 15,
+      "initial_fixture_identity_failures": 3,
+      "corrected_targeted_passes": 3,
+      "same_head_full18_run": false,
+      "runtime_code_changed_for_harness_fix": false
+    }
+  },
+  "preservation": {
+    "protected_hashes": 128,
+    "prior_tests_unchanged": 536,
+    "approved_design_files": 5,
+    "design_source_bindings": 13,
+    "capabilities": 25,
+    "original_ids": 18,
+    "historical_migrations": 13,
+    "customer14": "UNCHANGED_PENDING",
+    "original4B": "UNCHANGED",
+    "new_store_or_engine": false,
+    "operational_adapter": false
+  },
+  "quality": {
+    "strict_types": "PASS",
+    "lint": "PASS_WITH_ONE_RETAINED_WARNING",
+    "build": "PASS_WITH_RETAINED_CHUNK_WARNING",
+    "format": "PASS",
+    "types_migrations_property_customer4B_broker_integrity": "PASS",
+    "features": "PASS"
+  },
+  "performance": {
+    "old_collector": "INTERRUPTED_READ_ONLY_AFTER_20M20S_NO_RESULT",
+    "cached_collector_seconds": 27.2,
+    "new_business_cache": false,
+    "cache_only": "SUCCESSFUL_RAW_IMMUTABLE_GIT_OBJECT_FACTS",
+    "current_files_and_authority_cached": false
+  },
+  "readiness": {
+    "pr": 192,
+    "source": "28aaa835c63802a8ad571804028b6700e20e3924",
+    "scope": "STATIC_REVIEW_ONLY",
+    "operational_owners": "UNASSIGNED_OR_UNVERIFIED",
+    "implementation": "NO_GO",
+    "restore_adapter_authorized": false,
+    "original_families": 8,
+    "original_requirements": 19,
+    "physical_recovery": "NOT_RUN",
+    "Air": "LAST_REPORTED_UNAVAILABLE"
+  },
+  "reports": [
+    {
+      "path": "artifacts/cycle27/application-initial.json",
+      "sha256": "fe1393516c3544d6b165d5d5da3b17348f031dd2d232cefbfcf75a861f2dffd2"
+    },
+    {
+      "path": "artifacts/cycle27/application-final-sources.json",
+      "sha256": "ea2a79d378200015c80b66e058a9c8fcc299c4393ca07b309fffb737c9f8bc6e"
+    },
+    {
+      "path": "artifacts/cycle27/application-final-combined.json",
+      "sha256": "6039895001a6787d170900d446bd3965f37ee803bc9fb42079cfb0d8584b3958"
+    },
+    {
+      "path": "artifacts/cycle27/immutable-source-cache-final.json",
+      "sha256": "8f040634dbf383daa92773b6694e44124ea5e60b773f0e07f743b53b117ed9c8"
+    },
+    {
+      "path": "artifacts/cycle27/native-access-initial/results.json",
+      "sha256": "0f8229ec53e4444af20d64b10e7e0ab3f88e6e2744cb34b479c3f943ace645aa"
+    },
+    {
+      "path": "artifacts/cycle27/native-access-browser-results.json",
+      "sha256": "3c0e02d8f92d4fec98c67044932fb5be5a1726eca14152c61de7e1847b75397b"
+    },
+    {
+      "path": "artifacts/cycle27/browser-results.json",
+      "sha256": "8d7c8610e62554a71bc3b46e646b6ec11281bde617b41573041d016da594c00b"
+    },
+    {
+      "path": "artifacts/cycle27/browser-off-results.json",
+      "sha256": "267284ff4f30b33778cdc7d80376e8b692a45da1928cda2f99005c0a633d9e73"
+    },
+    {
+      "path": "artifacts/cycle27/browser-validation.json",
+      "sha256": "7d599704d3e6c8c9825ce66e12c7e6c1ceb85a821894fb819614694c23e01bb0"
+    },
+    {
+      "path": "artifacts/cycle27/source-preservation.json",
+      "sha256": "c39722fa656c91aaf0e3e0892396c446bebb6a4414407786fedbe84118f48bf3"
+    },
+    {
+      "path": "artifacts/cycle27/build.log",
+      "sha256": "20547016294ee6d1b9748ee9b3abc960e26ead28d2a15a8a1ce1ebe10c2ce66c"
+    },
+    {
+      "path": "artifacts/cycle27/format.log",
+      "sha256": "124d41379abd47686c9d290612a3ae817ee1b6fccd8b91006c75cfd83ba2ad9a"
+    },
+    {
+      "path": "artifacts/cycle27/typecheck-final.log",
+      "sha256": "333f1c4ac1f1cb812f6974fc382020ab84a6153e4856bf5134a600f3bfd170f3"
+    },
+    {
+      "path": "artifacts/cycle27/features-final.log",
+      "sha256": "5639832ec79c9376bdfbbbe9c2bf7bf855450a43f1a175884a8dbb56b77e196d"
+    },
+    {
+      "path": "artifacts/cycle27/immutable-source-cache-committed.json",
+      "sha256": "4838e09f419720fcb3124dbc852c9806e1e3126a452bd3feeeeb07c7e0d13410"
+    },
+    {
+      "path": "artifacts/cycle27/source-preservation-final.json",
+      "sha256": "c39722fa656c91aaf0e3e0892396c446bebb6a4414407786fedbe84118f48bf3"
+    },
+    {
+      "path": "artifacts/cycle27/typecheck-cache-final.log",
+      "sha256": "333f1c4ac1f1cb812f6974fc382020ab84a6153e4856bf5134a600f3bfd170f3"
+    },
+    {
+      "path": "artifacts/cycle27/collector-raw-final.log",
+      "sha256": "4e9643e06980c78d9e1bf9dbaccd49aedb565c65e8ff45afeedd2157c285cebd"
+    }
+  ],
+  "current_ci": "EXACT_HEAD_PENDING_SEPARATE_FROM_LOCAL_PASS",
+  "historical_failures": "OPEN_NOT_RELABELLED",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "independent_review": {
+    "pr": 201,
+    "commit": "d96ecb15679d4fc5fb6da9647545c4cba88bc879"
+  },
+  "prior_ci": {
+    "reconciliation": "CYCLE27_PRIOR_CI_RECONCILIATION.json",
+    "snapshot": "CYCLE27_CI_SNAPSHOT.json",
+    "original399": {
+      "passed": 397,
+      "timed_out": 2
+    },
+    "exact_two_changed_budget_workflow": "SUCCESS",
+    "historical_cancellations_or_failures_relabelled": false
+  },
+  "verification_context": {
+    "native_runtime": "b3be1c90ad4cf90412890bf90e90f9cf981ab787",
+    "final_tooling": "c6c4507e2e099861538e918fb9d56f53572e6e61",
+    "raw_final_collector": "PASS"
+  }
+}

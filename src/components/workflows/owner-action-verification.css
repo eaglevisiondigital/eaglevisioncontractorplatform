@@ -68,3 +68,12 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+.owner-action-verification input[type='search'] {
+  width: 100%;
+  min-height: 44px;
+}
+.owner-action-verification input[type='search']:focus-visible {
+  outline: 3px solid var(--journey-accent, #b58a49);
+  outline-offset: 3px;
+}
