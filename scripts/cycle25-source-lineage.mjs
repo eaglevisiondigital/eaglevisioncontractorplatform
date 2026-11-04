@@ -715,8 +715,14 @@ function admitCycle27Forward(path, current, previous, ports) {
     throw Error('Cycle27 exact parent must retain original reviewed source');
   const endpoint = Buffer.from(ports.git(spec.commit, path));
   if (Buffer.from(current).equals(endpoint)) return result;
-  if (!cycle28Authors.some((s) => s.modified.includes(path)))
+  if (!cycle28Authors.some((s) => s.modified.includes(path))) {
+    if (cycle29Authors.some((s) => s.modified.includes(path)))
+      return {
+        ...result,
+        cycle29_forward: admitCycle29Forward(path, current, endpoint, ports),
+      };
     throw Error('Current source differs from fixed Cycle27 author');
+  }
   return {
     ...result,
     cycle28_forward: admitCycle28Forward(path, current, endpoint, ports),
@@ -886,11 +892,16 @@ function admitCycle28Forward(path, current, previous, ports) {
     !Buffer.from(ports.git(cycle28Parent, path)).equals(Buffer.from(previous))
   )
     throw Error('Cycle28 exact parent must retain original reviewed source');
-  if (!Buffer.from(current).equals(Buffer.from(ports.git(spec.commit, path))))
-    throw Error(
-      'Current source differs from fixed Cycle27 lineage (fixed Cycle28 author required)',
-    );
-  return result;
+  const endpoint = Buffer.from(ports.git(spec.commit, path));
+  if (Buffer.from(current).equals(endpoint)) return result;
+  if (cycle29Authors.some((s) => s.modified.includes(path)))
+    return {
+      ...result,
+      cycle29_forward: admitCycle29Forward(path, current, endpoint, ports),
+    };
+  throw Error(
+    'Current source differs from fixed Cycle27 lineage (fixed Cycle28 author required)',
+  );
 }
 export function inspectCycle28Sources({
   requireCombined = false,
@@ -939,6 +950,167 @@ export function inspectCycle28Sources({
     packages: rows,
     complete_combined:
       rows.length === 6 &&
+      rows.every((r) => r.state === 'EXACT_SUCCESSOR_PRESENT'),
+    business_authority: false,
+    restore_adapter: false,
+  };
+}
+
+// Five exact Cycle29 native corrections; Offline is separate coverage-only evidence.
+export const cycle29Parent = '067b08b1c3f2e2e2bd259639c636eb13a2c079d4';
+export const cycle29Authors = Object.freeze(
+  [
+    {
+      module: 'task-continuity',
+      owner: '/root/cycle29_field_growth',
+      commit: '598f0fab3e453ae83c2458733140923fef081086',
+      permitted: ['src/components/workflows/TaskReceiptActions.tsx'],
+      modified: ['src/components/workflows/TaskReceiptActions.tsx'],
+      added: [
+        'docs/program/CYCLE29_FIELD_TASK_NAVIGATION.md',
+        'tests/cycle29-task-navigation.test.ts',
+        'tests/program/cycle29-task-navigation-browser.mjs',
+      ],
+    },
+    {
+      module: 'cost-continuity',
+      owner: '/root/cycle25_finance_intelligence_resume',
+      commit: '9eaca7692767590e263c53b3757e8f3a4221b408',
+      permitted: ['src/lib/workflows/cost-coverage-actions.ts'],
+      modified: ['src/lib/workflows/cost-coverage-actions.ts'],
+      added: [
+        'docs/program/CYCLE29_COST_CONTINUITY.md',
+        'tests/cycle29-cost-continuity.test.ts',
+      ],
+    },
+    {
+      module: 'service-continuity',
+      owner: '/root/cycle28_customer_offline',
+      commit: '180c4e271efe23ff0bed73a0692afdad81f1050f',
+      permitted: ['src/components/workflows/ServiceRequestActions.tsx'],
+      modified: ['src/components/workflows/ServiceRequestActions.tsx'],
+      added: [
+        'docs/program/CYCLE29_SERVICE_CONTINUITY.md',
+        'tests/cycle29-service-continuity.test.ts',
+      ],
+    },
+    {
+      module: 'maintenance-selection',
+      owner: '/root/cycle29_field_growth',
+      commit: '8bca73931aace63c4d20858944e0fada431fe303',
+      permitted: [
+        'src/components/workflows/MaintenanceCancellationActions.tsx',
+      ],
+      modified: ['src/components/workflows/MaintenanceCancellationActions.tsx'],
+      added: [
+        'docs/program/CYCLE29_MAINTENANCE_SELECTION.md',
+        'tests/program/cycle29-maintenance-clear-browser.mjs',
+      ],
+    },
+    {
+      module: 'owner-currentness',
+      owner: '/root/cycle25_finance_intelligence_resume',
+      commit: '1a226d540578810b14fdbbbc170de206745c418c',
+      permitted: ['src/lib/workflows/owner-action-verification.ts'],
+      modified: ['src/lib/workflows/owner-action-verification.ts'],
+      added: [
+        'docs/program/CYCLE29_OWNER_CURRENTNESS.md',
+        'tests/cycle29-owner-currentness.test.ts',
+      ],
+    },
+  ].map((s) =>
+    Object.freeze({
+      ...s,
+      permitted: Object.freeze(s.permitted),
+      modified: Object.freeze(s.modified),
+      added: Object.freeze(s.added),
+    }),
+  ),
+);
+
+export function validateCycle29ForwardSpec(spec, ports = cycle25SourcePorts) {
+  const fixed = cycle29Authors.find((s) => s.module === spec?.module);
+  if (
+    !fixed ||
+    spec.commit !== fixed.commit ||
+    !/^[a-f0-9]{40}$/.test(spec.commit ?? '') ||
+    ports.type(spec.commit) !== 'commit' ||
+    ports.parent(spec.commit) !== cycle29Parent
+  )
+    throw Error('Exact fixed single-parent Cycle29 author required');
+  for (const field of ['permitted', 'modified', 'added'])
+    if (JSON.stringify(spec[field]) !== JSON.stringify(fixed[field]))
+      throw Error('Exact bounded Cycle29 ownership required');
+  const expected = [
+    ...spec.modified.map((p) => `M\t${p}`),
+    ...spec.added.map((p) => `A\t${p}`),
+  ]
+    .sort()
+    .join('\n');
+  if (ports.delta(spec.commit) !== expected)
+    throw Error('Exact bounded Cycle29 delta required');
+  for (const path of [...spec.modified, ...spec.added])
+    if (ports.mode(spec.commit, path) !== '100644')
+      throw Error('Regular non-executable Cycle29 source required');
+  return { source_commit: spec.commit, module: spec.module, owner: spec.owner };
+}
+function admitCycle29Forward(path, current, previous, ports) {
+  const owners = cycle29Authors.filter((s) => s.modified.includes(path));
+  if (owners.length !== 1) throw Error('No finite Cycle29 source owner');
+  const spec = owners[0],
+    result = validateCycle29ForwardSpec(spec, ports);
+  if (
+    !Buffer.from(ports.git(cycle29Parent, path)).equals(Buffer.from(previous))
+  )
+    throw Error('Exact Cycle29 parent source required');
+  if (!Buffer.from(ports.git(spec.commit, path)).equals(Buffer.from(current)))
+    throw Error(
+      'Current source differs from fixed Cycle27 lineage (fixed Cycle28/Cycle29 author required)',
+    );
+  return result;
+}
+export function inspectCycle29Sources({
+  requireCombined = false,
+  ...supplied
+} = {}) {
+  const ports = { ...cycle25SourcePorts, ...supplied },
+    rows = [],
+    owned = new Set();
+  for (const spec of cycle29Authors) {
+    validateCycle29ForwardSpec(spec, ports);
+    let count = 0;
+    for (const path of spec.modified) {
+      if (owned.has(path)) throw Error('Overlapping Cycle29 source ownership');
+      owned.add(path);
+      const current = Buffer.from(ports.read(path)),
+        base = Buffer.from(ports.git(cycle29Parent, path));
+      if (!current.equals(base)) {
+        admitCycle29Forward(path, current, base, ports);
+        count++;
+      }
+    }
+    if (count && count !== spec.modified.length)
+      throw Error('Partial Cycle29 package forbidden');
+    if (requireCombined && !count)
+      throw Error('Combined Cycle29 package absent');
+    if (count)
+      for (const path of spec.added)
+        if (
+          !Buffer.from(ports.read(path)).equals(
+            Buffer.from(ports.git(spec.commit, path)),
+          )
+        )
+          throw Error('Exact Cycle29 author test/document required');
+    rows.push({
+      module: spec.module,
+      commit: spec.commit,
+      state: count ? 'EXACT_SUCCESSOR_PRESENT' : 'BASELINE_UNCHANGED',
+    });
+  }
+  return {
+    packages: rows,
+    complete_combined:
+      rows.length === 5 &&
       rows.every((r) => r.state === 'EXACT_SUCCESSOR_PRESENT'),
     business_authority: false,
     restore_adapter: false,
