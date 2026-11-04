@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   local-preview:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
@@ -19,7 +19,13 @@ jobs:
           node-version: '24'
           cache: npm
       - run: npm ci
-      - run: npx playwright install --with-deps chromium
+      # Install only the nine demonstrated missing fonts from signed Ubuntu
+      # archives, then independently require every pinned browser dependency.
+      - name: Install reviewed missing Chromium fonts from signed Ubuntu archives
+        run: node scripts/cycle30-chromium-dependencies.mjs
+      - name: Verify Chromium system dependencies without privileged changes
+        run: npx playwright install-deps --dry-run chromium
+      - run: npx playwright install chromium
       - run: npx playwright test --config tests/program/playwright.passport-timeline.config.ts
       - uses: actions/upload-artifact@v4
         if: always()

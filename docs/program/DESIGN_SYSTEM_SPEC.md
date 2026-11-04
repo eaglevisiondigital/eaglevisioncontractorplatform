@@ -1,3 +1,7 @@
+# Cycle30 · preserve approved designs during reliability corrections
+
+Use existing maintenance input/validity semantics and labelled explanation when an empty or invalid date prevents preparation. Keep the attempted/UNKNOWN field holds. Customer correction is nonvisual; owner render removes duplicate work without changing approved markup/navigation. Field has coverage-only changes. No CSS, artwork, branding, locked layouts or navigation system changed. Actual three-brand desktop/tablet/mobile keyboard/Axe/overflow coverage is evidence only; Operating Center/add-on visual approval remains separate and PENDING.
+
 # Cycle29 · original controls reflect original authority
 
 Keep the existing scoped design and approved artwork/layouts. Disable unsupported task continuation with an explicit text reason while retaining authorized read-only evidence controls. Clearing an unattempted maintenance source removes stale detail and confirmation without remounting the workspace. Move keyboard focus to the exact committed published report after current authorization checks. No new navigation, tokens, CSS or approved-interface redesign. Real all-brand desktop/tablet/mobile and accessibility evidence is required; Operating Center and advanced visual approval remain PENDING, never inferred from tests.

@@ -1,3 +1,11 @@
+# Cycle30 · bounded workflow reliability
+
+Three source-bound native corrections address invalid maintenance-date custody, Customer descriptor-Proxy substitution and repeated owner-render source work. Field adds unique final-boundary lost-ACK/UNKNOWN navigation coverage; Finance and Offline audited NO_CHANGE. Separate draft PRs221–225 retain bounded ownership and exact author/support heads. [Validation](program/CYCLE30_VALIDATION.md) and [source manifest](program/CYCLE30_SOURCE_MANIFEST.json) record actual agents, immutable SHAs, tests and limits.
+
+Frozen runtime91034ab passes334focused application/source cases in18suites,0skip. All32 combined browser cases pass across3brands/responsive viewports, including original30second navigation assertions. Current-head GitHub results remain separately pending until actual artifacts are read. Independent review preserves128protected hashes,583old test/config/fixture paths and5designlocks/13bindings. Historical original30second failures, cancelled Foundations, C18 failures and supplementary budget results are not relabeled. No successful check was manually restarted.
+
+The original12case operational specification stays NOT_RUN/NO_GO. [Next owner decisions](program/CYCLE30_OWNER_DECISIONS.md) name accountable roles/writer participation, durableACK/independent fence and matched recovery before any separate implementation review. Air last unavailable; physical two-Mac recovery NOT_RUN; existing sealed kit/25offline passes retained. Original P1-on13/separatecustomer14/4B, Auth/MFA/NMI, financial/communication/dispatch/Netlify and production gates unchanged. Release1.0 NOT READY / NOT AUTHORIZED.
+
 # Cycle29 · exact-source contractor workflow corrections
 
 Main composes five exact native corrections and one Offline coverage-only package from C28 exact067b08b, retaining separate draft213–218 ownership. CI evidence reconciliation is draft212; independent review and final coordination are linked in [C29 validation](program/CYCLE29_VALIDATION.md). Exact branches, author/support heads, hashes and actual agents are in [the source manifest](program/CYCLE29_SOURCE_MANIFEST.json). No parent is rewritten or merged.

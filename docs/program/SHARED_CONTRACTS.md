@@ -1,3 +1,7 @@
+# Cycle30 · original validation and authority boundaries
+
+Canonical maintenanceDate precedes an original local attempt; invalid input cannot consume custody. Customer action facade rejects descriptor-Proxy/mismatched captured primitives, while the original ordinary object and live-input/hash/CAS/UNKNOWN checks remain authoritative. Original owner-card projection performs one full current-source validation per synchronous render; comparison/action/post-await guards remain unchanged. Native Field uncertainty denies continuation and permits exact read-only reconciliation. Finance/Offline have no new runtime source. Build/test source forwards confer no authentication, business custody or recovery authority.
+
 # Cycle29 · captured selections and original one-use custody
 
 Original validated own-data cost kind/id and checked owner row govern source inspection and navigation across awaits; raw selector getters never substitute another same-job source. Existing canonical calculations and current authority checks remain. Task correction navigation follows the original native eligibility requirement; held/UNKNOWN states retain exact read-only reconciliation. Empty unattempted maintenance selection clears presentation/confirmation only, never native plan/consent or spent custody. Original published report focus waits for a committed, current authorized projection. Offline adds final-read/competing-peer tests only, no runtime store/writer/claim/replay. Missing request/job FKs and physical completion remain UNKNOWN.

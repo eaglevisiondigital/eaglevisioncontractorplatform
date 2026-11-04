@@ -13,6 +13,7 @@ import {
 import {
   admitCycle25Source,
   inspectCycle29Sources,
+  inspectCycle30Sources,
   cycle25SourcePorts,
 } from './cycle25-source-lineage.mjs';
 
@@ -249,17 +250,21 @@ const value = {
   executed_commits: [...executionCommits],
   runtime_files: 76,
   admitted_source_forwards: [...admittedSources.values()],
-  source_scope: inspectCycle29Sources().packages.some(
-    (p) => p.state === 'EXACT_SUCCESSOR_PRESENT',
+  source_scope: inspectCycle30Sources().packages.some(
+    (r) => r.state === 'EXACT_SUCCESSOR_PRESENT',
   )
-    ? 'C24_BASELINE_PLUS_EXACT_C25_C26_C27_C28_AND_C29_NATIVE_FORWARDS'
-    : cycle28Evidence
-      ? 'C24_BASELINE_PLUS_EXACT_C25_C26_C27_AND_C28_NATIVE_FORWARDS'
-      : cycle27Evidence
-        ? 'C24_BASELINE_PLUS_EXACT_C25_C26_AND_C27_NATIVE_FORWARDS'
-        : cycle26Evidence
-          ? 'C24_BASELINE_PLUS_EXACT_C25_AND_C26_NATIVE_FORWARDS'
-          : 'C24_BASELINE_PLUS_EXACT_ADMITTED_C25_NATIVE_FORWARDS',
+    ? 'C24_RUNTIME_BASELINE_PLUS_EXACT_C25_C26_C27_C28_C29_C30_FORWARDS'
+    : inspectCycle29Sources().packages.some(
+          (p) => p.state === 'EXACT_SUCCESSOR_PRESENT',
+        )
+      ? 'C24_BASELINE_PLUS_EXACT_C25_C26_C27_C28_AND_C29_NATIVE_FORWARDS'
+      : cycle28Evidence
+        ? 'C24_BASELINE_PLUS_EXACT_C25_C26_C27_AND_C28_NATIVE_FORWARDS'
+        : cycle27Evidence
+          ? 'C24_BASELINE_PLUS_EXACT_C25_C26_AND_C27_NATIVE_FORWARDS'
+          : cycle26Evidence
+            ? 'C24_BASELINE_PLUS_EXACT_C25_AND_C26_NATIVE_FORWARDS'
+            : 'C24_BASELINE_PLUS_EXACT_ADMITTED_C25_NATIVE_FORWARDS',
   critical_sources_checked_now_and_in_execution_commit: cycle24CriticalSources,
   capture_inventory_limit: '76_SCOPED_FILES_NOT_COMPLETE_TRANSITIVE_RUNTIME',
   development,

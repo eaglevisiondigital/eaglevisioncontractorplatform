@@ -4,7 +4,6 @@ import type { PriorityLiveCallback } from '../../lib/workflows/priority-actions'
 import {
   recordedOwnerActionsEnabled,
   readRecordedOwnerActions,
-  assertRecordedOwnerActionsCurrent,
   compareRecordedOwnerActions,
   recordedOwnerActionCards,
   inspectRecordedOwnerAction,
@@ -111,7 +110,6 @@ function OwnerReview({
   let changes: ReturnType<typeof compareRecordedOwnerActions> | undefined;
   try {
     if (view) {
-      assertRecordedOwnerActionsCurrent(view);
       cards = recordedOwnerActionCards(view);
       if (previous)
         changes = compareRecordedOwnerActions(previous, view, {
