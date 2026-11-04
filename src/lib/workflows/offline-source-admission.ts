@@ -155,15 +155,22 @@ export async function reconcileOfflineSourceAdmission(
   let mismatches: string[] | undefined;
   const captureUnavailable = (
     result: Awaited<ReturnType<typeof reconcileOperationsExperiment>>,
-  ) => ({
-    ...unknown,
-    reason:
-      result.state === 'STALE' && result.reason === 'SOURCE_CHANGED'
-        ? ('ORIGINAL_CAPTURE_SOURCE_CHANGED' as const)
-        : result.state === 'STALE' && result.reason === 'HUMAN_PROPOSAL_CHANGED'
-          ? ('ORIGINAL_CAPTURE_PROPOSAL_CHANGED' as const)
-          : ('ORIGINAL_CAPTURE_CURRENTNESS_UNVERIFIED' as const),
-  });
+  ) => {
+    // A withdrawn local gate takes precedence over an observation made while
+    // the original asynchronous reader was finishing. No outcome is replayed.
+    reason = 'LOCAL_REVIEW_NOT_ADMITTED';
+    admit(gate);
+    return {
+      ...unknown,
+      reason:
+        result.state === 'STALE' && result.reason === 'SOURCE_CHANGED'
+          ? ('ORIGINAL_CAPTURE_SOURCE_CHANGED' as const)
+          : result.state === 'STALE' &&
+              result.reason === 'HUMAN_PROPOSAL_CHANGED'
+            ? ('ORIGINAL_CAPTURE_PROPOSAL_CHANGED' as const)
+            : ('ORIGINAL_CAPTURE_CURRENTNESS_UNVERIFIED' as const),
+    };
+  };
   try {
     admit(gate); // No external getters or original handles before admission.
     reason = 'ORIGINAL_COMPARISON_OR_REQUIREMENTS_UNAVAILABLE';
@@ -179,6 +186,8 @@ export async function reconcileOfflineSourceAdmission(
       // The original owners keep any prior UNKNOWN state; no claim is replaced.
       assertSyncAdmissionCurrentNow(comparison);
       assertAdvancedRequirementsCurrentNow(requirements);
+      reason = 'EXTERNAL_PROTOCOL_INVALID';
+      const liveProtocol = parseOfflineSourceProtocol(input);
       reason = 'EXACT_BINDING_OR_LIVE_PROTOCOL_UNVERIFIED';
       const expected = syncSourceReference(requirements),
         capture = experiment.offline_capture.source;
@@ -204,7 +213,7 @@ export async function reconcileOfflineSourceAdmission(
         ...(comparison.external_reference !== parsed.external_reference
           ? ['external_reference']
           : []),
-        ...(JSON.stringify(parseOfflineSourceProtocol(input)) !== signature
+        ...(JSON.stringify(liveProtocol) !== signature
           ? ['live_protocol']
           : []),
         ...offlineSourceFields
