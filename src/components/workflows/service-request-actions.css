@@ -1,0 +1,57 @@
+.request-actions {
+  border: 1px solid var(--journey-primary, #236356);
+  border-radius: 0.8rem;
+  padding: 1rem;
+  margin-block: 1rem;
+  color: #203c35;
+  background: #fffdf8;
+  overflow-wrap: anywhere;
+}
+.request-actions h3,
+.request-actions h4 {
+  color: inherit;
+  margin-block: 0.3rem 0.7rem;
+}
+.request-actions dt {
+  color: inherit;
+  font-weight: 700;
+}
+.request-actions dd {
+  margin: 0.25rem 0 0.8rem;
+}
+.request-actions label {
+  display: grid;
+  gap: 0.4rem;
+  margin-block: 0.8rem;
+}
+.request-actions select,
+.request-actions button {
+  min-height: 44px;
+  max-width: 100%;
+}
+.request-actions button {
+  margin: 0.3rem 0.4rem 0.3rem 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.request-actions .request-actions-confirm {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+.request-actions-confirm input {
+  min-width: 20px;
+  min-height: 20px;
+}
+.request-actions [tabindex='-1']:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+@media (max-width: 600px) {
+  .request-actions {
+    padding: 0.8rem;
+  }
+  .request-actions button {
+    width: 100%;
+  }
+}

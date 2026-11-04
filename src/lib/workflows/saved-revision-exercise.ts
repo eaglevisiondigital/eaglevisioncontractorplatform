@@ -4,9 +4,10 @@ import {
   type InspectionPlan,
   type PublishedReport,
 } from '../../domain/property/inspections';
-import { validateTime } from '../../domain/workforce/payroll';
+import { validateTime, type TimeEntry } from '../../domain/workforce/payroll';
 import { jobFinancials } from '../../domain/jobs/financials';
 import { reportUuid } from '../../domain/property/report-page';
+import { documentHash } from '../../domain/release/preview';
 import type { OperatingSources } from './operating-center-runtime';
 import {
   journeyEnabled,
@@ -18,6 +19,7 @@ import {
   assertSavedRevisionCurrent,
   assertSavedRevisionAccess,
   type SavedRevisionSnapshot,
+  type SavedRevisionIdentity,
 } from './saved-revision-runtime';
 export const savedSourceExercises = [
   'visit-draft',
@@ -46,9 +48,29 @@ interface Attempt {
   unknown: boolean;
   done: Set<SavedSourceExercise>;
   corrections?: Partial<Record<CorrectionKind, CorrectionIntent>>;
+  service_request?: ServiceRequestIntent;
 }
 type CorrectionKind = 'time-correction' | 'plan-revision' | 'material-review';
+type TaskReceiptSource = Pick<
+  TimeEntry,
+  | 'id'
+  | 'worker_id'
+  | 'job_id'
+  | 'task'
+  | 'kind'
+  | 'started_at'
+  | 'ended_at'
+  | 'billable'
+  | 'submitted'
+  | 'corrects_id'
+>;
 interface CorrectionIntent {
+  task_binding?: {
+    identity: SavedRevisionIdentity;
+    visit_id: string;
+    plan_id: string;
+    original: TaskReceiptSource;
+  };
   source_id: string;
   result_id: string | null;
   expected: unknown;
@@ -99,13 +121,12 @@ function admit(gate: JourneyAdmission) {
       'Disposable saved-source exercise is OFF without development HTTP loopback admission',
     );
 }
-function attempt(b: Binding) {
+function attempt(b: Binding, namespace?: string) {
   let rows = attempts.get(b.sources.operations);
   if (!rows) attempts.set(b.sources.operations, (rows = new Map()));
-  const key = JSON.stringify([
-    b.entry.target.organization_id,
-    b.entry.target.job_id,
-  ]);
+  const key =
+    namespace ??
+    JSON.stringify([b.entry.target.organization_id, b.entry.target.job_id]);
   let row = rows.get(key);
   if (!row) rows.set(key, (row = { unknown: false, done: new Set() }));
   return row;
@@ -284,6 +305,27 @@ async function executeSourceExercise(
       result_id: null,
       expected: freezePrototype(structuredClone(correction.input)),
       state: 'PENDING',
+      ...(correction.kind === 'time-correction'
+        ? {
+            task_binding: freezePrototype({
+              identity: structuredClone(view.identity),
+              visit_id: view.evidence.visit_id,
+              plan_id: view.evidence.plan_id,
+              original: {
+                id: old!.id,
+                worker_id: old!.worker_id,
+                job_id: old!.job_id,
+                task: old!.task,
+                kind: old!.kind,
+                started_at: old!.started_at,
+                ended_at: old!.ended_at,
+                billable: old!.billable,
+                submitted: old!.submitted,
+                corrects_id: old!.corrects_id,
+              },
+            }),
+          }
+        : {}),
     };
     (a.corrections ??= {})[correction.kind] = intent;
   }
@@ -1230,5 +1272,548 @@ export async function reconcileSavedSourceCorrection(
     result_id: intent?.result_id ?? null,
     observed,
     replay: 'FORBIDDEN' as const,
+  });
+}
+
+/** Detailed observation of the SAME original task intent. No receipt is guessed
+ * from matching text/time or an unacknowledged successor, and no hold is changed.
+ * Missing legacy binding is unverified; historical intents are never backfilled. */
+export async function reconcileSavedTaskReceipt(view: SavedSourceExerciseView) {
+  const b = bindings.get(view);
+  if (!b) throw Error('Original exact task receipt source required');
+  check(view, b);
+  const a = attempt(b),
+    before = JSON.stringify([a.unknown, a.pending, [...a.done], a.corrections]),
+    current = await readSavedSourceExercise(
+      b.sources,
+      view.identity.job_id,
+      b.gate,
+    ),
+    fresh = correctionBinding(current),
+    intent = a.corrections?.['time-correction'],
+    binding = intent?.task_binding;
+  check(view, b);
+  if (
+    before !==
+    JSON.stringify([a.unknown, a.pending, [...a.done], a.corrections])
+  )
+    throw Error(
+      'Original task custody changed during reconciliation; read only again',
+    );
+  if (
+    binding &&
+    (!same(binding.identity, view.identity) ||
+      binding.visit_id !== view.evidence.visit_id ||
+      binding.plan_id !== view.evidence.plan_id)
+  )
+    throw Error(
+      'Exact original task receipt version, visit and plan binding required',
+    );
+  const workforce = b.sources.estimates.readSyntheticPrototypeSources(
+      b.entry.target,
+    ).workforce,
+    sourceRows = intent
+      ? workforce.entries.filter((t) => t.id === intent.source_id)
+      : [],
+    resultRows = intent?.result_id
+      ? workforce.entries.filter((t) => t.id === intent.result_id)
+      : [],
+    successors = intent
+      ? workforce.entries.filter((t) => t.corrects_id === intent.source_id)
+      : [],
+    reviews = intent?.result_id
+      ? workforce.reviews.filter((r) => r.entry_id === intent.result_id)
+      : [],
+    approved = reviews.filter((r) => r.decision === 'approved'),
+    sourceReviews = intent
+      ? workforce.reviews.filter((r) => r.entry_id === intent.source_id)
+      : [],
+    expected = intent?.expected as SavedTaskCorrection | undefined,
+    source = sourceRows.length === 1 ? sourceRows[0] : null,
+    result = resultRows.length === 1 ? resultRows[0] : null,
+    scopeMatches = (t: { job_id: string | null; worker_id: string }) =>
+      t.job_id === view.identity.job_id && t.worker_id === b.entry.worker_id,
+    expectedMatches = resultRows.filter(
+      (t) =>
+        expected &&
+        binding &&
+        scopeMatches(t) &&
+        t.corrects_id === intent!.source_id &&
+        t.task === expected.task &&
+        t.started_at === expected.started_at &&
+        t.ended_at === expected.ended_at &&
+        t.billable === expected.billable &&
+        t.kind === binding.original.kind,
+    ),
+    project = (t: TaskReceiptSource) => ({
+      id: t.id,
+      worker_id: t.worker_id,
+      job_id: t.job_id,
+      task: t.task,
+      kind: t.kind,
+      started_at: t.started_at,
+      ended_at: t.ended_at,
+      billable: t.billable,
+      submitted: t.submitted,
+      corrects_id: t.corrects_id,
+    }),
+    conflicts: string[] = [];
+  if (sourceRows.length > 1) conflicts.push('DUPLICATE_SOURCE_ID');
+  if (sourceRows.length && sourceReviews.length !== 1)
+    conflicts.push('AMBIGUOUS_SOURCE_REVIEW');
+  if (sourceReviews.length === 1 && sourceReviews[0].decision !== 'approved')
+    conflicts.push('SOURCE_REVIEW_NOT_APPROVED');
+  if (source && !scopeMatches(source))
+    conflicts.push('SOURCE_BINDING_MISMATCH');
+  if (source && binding && !same(project(source), binding.original))
+    conflicts.push('SOURCE_CONTENT_CHANGED');
+  if (resultRows.length > 1) conflicts.push('DUPLICATE_RESULT_ID');
+  if (result && !scopeMatches(result))
+    conflicts.push('RESULT_BINDING_MISMATCH');
+  if (result && binding && expectedMatches.length !== 1)
+    conflicts.push('RESULT_CONTENT_MISMATCH');
+  if (successors.length > 1) conflicts.push('COMPETING_CORRECTIONS');
+  if (reviews.length > 1) conflicts.push('AMBIGUOUS_RESULT_REVIEW');
+  if (reviews.length === 1 && approved.length !== 1)
+    conflicts.push('RESULT_REVIEW_NOT_APPROVED');
+  let nativeStage:
+    | 'NOT_OBSERVED'
+    | 'UNATTRIBUTED_SUCCESSOR'
+    | 'RECORDED_UNSUBMITTED'
+    | 'SUBMITTED_UNREVIEWED'
+    | 'APPROVED' = 'NOT_OBSERVED';
+  if (result && expectedMatches.length === 1)
+    nativeStage = !result.submitted
+      ? 'RECORDED_UNSUBMITTED'
+      : approved.length === 1 && reviews.length === 1
+        ? 'APPROVED'
+        : 'SUBMITTED_UNREVIEWED';
+  else if (!intent?.result_id && successors.length)
+    nativeStage = 'UNATTRIBUTED_SUCCESSOR';
+  const classification = !intent
+    ? 'NO_ORIGINAL_CLAIM'
+    : !binding
+      ? 'LEGACY_BINDING_UNVERIFIED'
+      : conflicts.length
+        ? 'CONFLICT_REVIEW_REQUIRED'
+        : sourceRows.length !== 1
+          ? 'ORIGINAL_SOURCE_UNAVAILABLE'
+          : !intent.result_id
+            ? successors.length
+              ? 'UNACKNOWLEDGED_SUCCESSOR'
+              : 'NO_ACKNOWLEDGED_RESULT'
+            : resultRows.length !== 1
+              ? 'ACKNOWLEDGED_RESULT_UNAVAILABLE'
+              : nativeStage === 'APPROVED'
+                ? 'EXACT_NATIVE_RESULT'
+                : 'PARTIAL_NATIVE_RESULT';
+  check(current, fresh, true);
+  check(view, b);
+  if (
+    before !==
+    JSON.stringify([a.unknown, a.pending, [...a.done], a.corrections])
+  )
+    throw Error('Original task custody changed during reconciliation');
+  return freezePrototype({
+    identity: { ...view.identity },
+    visit_id: view.evidence.visit_id,
+    plan_id: view.evidence.plan_id,
+    state: a.unknown
+      ? ('UNKNOWN' as const)
+      : a.pending
+        ? ('PENDING' as const)
+        : (intent?.state ?? ('NOT_ATTEMPTED' as const)),
+    source_id: intent?.source_id ?? null,
+    result_id: intent?.result_id ?? null,
+    binding: binding
+      ? ('EXACT_ORIGINAL_BINDING' as const)
+      : ('UNVERIFIED' as const),
+    classification,
+    native_stage: nativeStage,
+    counts: {
+      source_rows: sourceRows.length,
+      source_reviews: sourceReviews.length,
+      result_rows: resultRows.length,
+      expected_match_rows: expectedMatches.length,
+      successor_rows: successors.length,
+      result_reviews: reviews.length,
+      approved_reviews: approved.length,
+    },
+    conflicts,
+    expected:
+      binding && expected ? { ...expected, kind: binding.original.kind } : null,
+    original: binding ? { ...binding.original } : null,
+    observed_source: source && scopeMatches(source) ? project(source) : null,
+    observed_result: result && scopeMatches(result) ? project(result) : null,
+    coverage: 'EXACT_ORIGINAL_CLAIM_ONLY' as const,
+    source_atomicity: 'CAPTURED_NOT_ATOMIC' as const,
+    replay: 'FORBIDDEN' as const,
+    dispatch: false as const,
+    payroll: false as const,
+    financial: false as const,
+  });
+}
+
+export const savedRequestStatuses = [
+  'new',
+  'reviewing',
+  'qualified',
+  'closed',
+] as const;
+export interface SavedRequestActionInput {
+  request_id: string;
+  status: (typeof savedRequestStatuses)[number];
+  assigned_to: string | null;
+  expected_status: string;
+  expected_assigned_to: string | null;
+  expected_updated_at: string;
+}
+interface ServiceRequestIntent {
+  readonly metadata: Readonly<{
+    organization_id: string;
+    customer_id: string;
+    location_id: string;
+    request_id: string;
+    source_view_sha256: string;
+    source_status: string;
+    source_assigned_to: string | null;
+    source_updated_at: string;
+    requested_status: SavedRequestActionInput['status'];
+    requested_assigned_to: string | null;
+  }>;
+  fingerprint: string;
+  immutable_fingerprint: string;
+  state: 'PENDING' | 'KNOWN_SAVED' | 'UNKNOWN';
+}
+function requestAttempt(b: Binding) {
+  // Same original registry, explicitly separate from job-scoped exercise keys.
+  // The request hold spans every job/view referring to this exact request.
+  return attempt(
+    b,
+    JSON.stringify([
+      'service-request',
+      b.entry.target.organization_id,
+      b.entry.intake_request_id,
+    ]),
+  );
+}
+function requestRow(view: SavedSourceExerciseView, b: Binding) {
+  return b.sources.operations.syntheticIntakeRequest(
+    view.identity.organization_id,
+    view.identity.customer_id,
+    view.identity.location_id,
+    b.entry.intake_request_id,
+  );
+}
+function requestImmutableFields(row: ReturnType<typeof requestRow>) {
+  return Object.fromEntries(
+    Object.entries(row).filter(
+      ([key]) => !['status', 'assigned_to', 'updated_at'].includes(key),
+    ),
+  );
+}
+function requestState(a: Attempt) {
+  return a.unknown
+    ? ('UNKNOWN' as const)
+    : (a.service_request?.state ?? ('NOT_ATTEMPTED' as const));
+}
+/** Current exact native request and eligible original membership IDs only. No
+ * request history/PII copy, operational assignment grant or new request store. */
+export function readSavedRequestAction(view: SavedSourceExerciseView) {
+  const b = correctionBinding(view),
+    row = requestRow(view, b),
+    a = requestAttempt(b),
+    eligible = b.sources.operations
+      .syntheticMemberships(view.identity.organization_id)
+      .filter(
+        (m) => m.active && m.organization_id === view.identity.organization_id,
+      );
+  if (new Set(eligible.map((m) => m.user_id)).size !== eligible.length)
+    throw Error('Unambiguous current request assignees required');
+  check(view, b, true);
+  return freezePrototype({
+    request_id: row.id,
+    organization_id: row.organization_id,
+    customer_id: row.customer_id,
+    location_id: row.service_location_id,
+    status: row.status,
+    assigned_to: row.assigned_to,
+    updated_at: row.updated_at,
+    eligible_assignees: eligible.map((m) => ({
+      user_id: m.user_id,
+      role: m.role,
+      staff_type: m.staff_type,
+    })),
+    statuses: [...savedRequestStatuses],
+    state: requestState(a),
+    can_edit: !a.unknown && !a.service_request,
+    replay: 'FORBIDDEN' as const,
+    native_cas: false as const,
+    durable_receipt: false as const,
+  });
+}
+/** Explicit one-use LOCAL request review. assignIntake has a void ACK and no
+ * native CAS/receipt: this is an in-process fingerprint fence, never server or
+ * durable command authority. Missing/failed/lost ACK is permanently UNKNOWN. */
+export async function executeSavedRequestAction(
+  view: SavedSourceExerciseView,
+  input: SavedRequestActionInput,
+  confirmed: boolean,
+) {
+  if (confirmed !== true)
+    throw Error('Explicit native request review confirmation required');
+  const f = prototypeFields(input, [
+    'request_id',
+    'status',
+    'assigned_to',
+    'expected_status',
+    'expected_assigned_to',
+    'expected_updated_at',
+  ]);
+  if (
+    Object.keys(f).length !== 6 ||
+    !reportUuid(f.request_id) ||
+    !savedRequestStatuses.includes(
+      f.status as SavedRequestActionInput['status'],
+    ) ||
+    !(f.assigned_to === null || typeof f.assigned_to === 'string') ||
+    typeof f.expected_status !== 'string' ||
+    !(
+      f.expected_assigned_to === null ||
+      typeof f.expected_assigned_to === 'string'
+    ) ||
+    typeof f.expected_updated_at !== 'string'
+  )
+    throw Error('Exact bounded request review fields required');
+  const b = correctionBinding(view),
+    current = readSavedRequestAction(view),
+    row = requestRow(view, b),
+    a = requestAttempt(b);
+  if (
+    !current.can_edit ||
+    current.request_id !== f.request_id ||
+    current.status !== f.expected_status ||
+    current.assigned_to !== f.expected_assigned_to ||
+    current.updated_at !== f.expected_updated_at ||
+    (f.assigned_to !== null &&
+      !current.eligible_assignees.some((m) => m.user_id === f.assigned_to))
+  )
+    throw Error('Exact current request source and eligible assignee required');
+  const fingerprint = JSON.stringify(row);
+  check(view, b, true);
+  if (JSON.stringify(requestRow(view, b)) !== fingerprint)
+    throw Error('Native request source changed before original claim');
+  const intent: ServiceRequestIntent = {
+    metadata: freezePrototype({
+      organization_id: view.identity.organization_id,
+      customer_id: view.identity.customer_id,
+      location_id: view.identity.location_id,
+      request_id: current.request_id,
+      source_view_sha256: view.sha256,
+      source_status: current.status,
+      source_assigned_to: current.assigned_to,
+      source_updated_at: current.updated_at,
+      requested_status: f.status as SavedRequestActionInput['status'],
+      requested_assigned_to: f.assigned_to as string | null,
+    }),
+    fingerprint: '',
+    immutable_fingerprint: '',
+    state: 'PENDING',
+  };
+  a.service_request = intent; // SAME original registry, before the first native await.
+  try {
+    // Claim precedes hashing too. Retain only hashes, never a request snapshot.
+    intent.fingerprint = await documentHash(row);
+    check(view, b, true);
+    if (
+      !same(
+        prototypeFields(input, [
+          'request_id',
+          'status',
+          'assigned_to',
+          'expected_status',
+          'expected_assigned_to',
+          'expected_updated_at',
+        ]),
+        f,
+      )
+    )
+      throw Error('Confirmed request input changed during source hashing');
+    intent.immutable_fingerprint = await documentHash(
+      requestImmutableFields(row),
+    );
+    check(view, b, true);
+    if (
+      !same(
+        prototypeFields(input, [
+          'request_id',
+          'status',
+          'assigned_to',
+          'expected_status',
+          'expected_assigned_to',
+          'expected_updated_at',
+        ]),
+        f,
+      )
+    )
+      throw Error('Confirmed request input changed during source hashing');
+    // No await between this final current source/member check and invocation.
+    check(view, b, true);
+    if (
+      JSON.stringify(requestRow(view, b)) !== fingerprint ||
+      (intent.metadata.requested_assigned_to !== null &&
+        !b.sources.operations
+          .syntheticMemberships(view.identity.organization_id)
+          .some(
+            (m) =>
+              m.active && m.user_id === intent.metadata.requested_assigned_to,
+          ))
+    )
+      throw Error('Native request or assignee changed at invocation');
+    ack(
+      await b.sources.operations.assignIntake(
+        view.identity.organization_id,
+        intent.metadata.request_id,
+        intent.metadata.requested_assigned_to,
+        intent.metadata.requested_status,
+      ),
+    );
+    check(view, b);
+    if (
+      !same(
+        prototypeFields(input, [
+          'request_id',
+          'status',
+          'assigned_to',
+          'expected_status',
+          'expected_assigned_to',
+          'expected_updated_at',
+        ]),
+        f,
+      )
+    )
+      throw Error(
+        'Confirmed native request input changed during acknowledgment',
+      );
+    const after = requestRow(view, b);
+    if (
+      !Number.isFinite(Date.parse(after.updated_at)) ||
+      Date.parse(after.updated_at) < Date.parse(row.updated_at) ||
+      !same(after, {
+        ...row,
+        status: intent.metadata.requested_status,
+        assigned_to: intent.metadata.requested_assigned_to,
+        updated_at: after.updated_at,
+      })
+    )
+      throw Error(
+        'Exact native request current row unavailable after void acknowledgment',
+      );
+    if (
+      intent.metadata.requested_assigned_to !== null &&
+      !b.sources.operations
+        .syntheticMemberships(view.identity.organization_id)
+        .some(
+          (m) =>
+            m.active && m.user_id === intent.metadata.requested_assigned_to,
+        )
+    )
+      throw Error('Request assignee changed during acknowledgment');
+    check(view, b);
+    intent.state = 'KNOWN_SAVED';
+    return {
+      status: 'SYNTHETIC_SOURCE_SAVED' as const,
+      kind: 'service-request' as const,
+      request_id: intent.metadata.request_id,
+    };
+  } catch (error) {
+    a.unknown = true;
+    intent.state = 'UNKNOWN';
+    throw error;
+  }
+}
+/** Exact current-row observation only, NOT a native receipt or attribution proof.
+ * The original UNKNOWN hold is never cleared, including after an observed write. */
+export async function reconcileSavedRequestAction(
+  view: SavedSourceExerciseView,
+) {
+  const b = bindings.get(view);
+  if (!b) throw Error('Original native request source required');
+  check(view, b);
+  const a = requestAttempt(b),
+    before = JSON.stringify([a.unknown, a.service_request]),
+    current = await readSavedSourceExercise(
+      b.sources,
+      view.identity.job_id,
+      b.gate,
+    ),
+    fresh = correctionBinding(current),
+    intent = a.service_request;
+  check(view, b);
+  if (before !== JSON.stringify([a.unknown, a.service_request]))
+    throw Error('Original native request custody changed during read');
+  if (
+    intent &&
+    (intent.metadata.organization_id !== view.identity.organization_id ||
+      intent.metadata.customer_id !== view.identity.customer_id ||
+      intent.metadata.location_id !== view.identity.location_id ||
+      intent.metadata.request_id !== b.entry.intake_request_id)
+  )
+    throw Error('Exact original request/property binding required');
+  let observed:
+    | 'EXACT_CURRENT_ROW_OBSERVED'
+    | 'SOURCE_CHANGED_UNATTRIBUTED'
+    | 'UNAVAILABLE' = 'UNAVAILABLE';
+  let row: ReturnType<typeof requestRow> | null;
+  try {
+    row = requestRow(view, b);
+  } catch {
+    row = null;
+  }
+  if (row && intent) {
+    const immutableHash = await documentHash(requestImmutableFields(row));
+    check(current, fresh, true);
+    check(view, b);
+    const fullHash = await documentHash(row);
+    check(current, fresh, true);
+    check(view, b);
+    observed =
+      intent.immutable_fingerprint &&
+      immutableHash === intent.immutable_fingerprint &&
+      row.status === intent.metadata.requested_status &&
+      row.assigned_to === intent.metadata.requested_assigned_to &&
+      Number.isFinite(Date.parse(row.updated_at)) &&
+      Date.parse(row.updated_at) >=
+        Date.parse(intent.metadata.source_updated_at)
+        ? 'EXACT_CURRENT_ROW_OBSERVED'
+        : intent.fingerprint && fullHash !== intent.fingerprint
+          ? 'SOURCE_CHANGED_UNATTRIBUTED'
+          : 'UNAVAILABLE';
+  }
+  check(current, fresh, true);
+  check(view, b);
+  if (before !== JSON.stringify([a.unknown, a.service_request]))
+    throw Error('Native request custody changed during read');
+  return freezePrototype({
+    state: requestState(a),
+    request_id: b.entry.intake_request_id,
+    source_status: intent?.metadata.source_status ?? null,
+    source_assigned_to: intent?.metadata.source_assigned_to ?? null,
+    source_updated_at: intent?.metadata.source_updated_at ?? null,
+    requested_status: intent?.metadata.requested_status ?? null,
+    requested_assigned_to: intent?.metadata.requested_assigned_to ?? null,
+    observed,
+    current: row
+      ? {
+          request_id: row.id,
+          status: row.status,
+          assigned_to: row.assigned_to,
+          updated_at: row.updated_at,
+        }
+      : null,
+    replay: 'FORBIDDEN' as const,
+    native_cas: false as const,
+    durable_receipt: false as const,
+    attribution: 'CURRENT_ROW_OBSERVATION_ONLY' as const,
   });
 }

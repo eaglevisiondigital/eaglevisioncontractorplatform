@@ -1,0 +1,69 @@
+name: Cycle 24 native source actions
+on:
+  push:
+    branches: ['codex/program-cycle-twenty-four-integration']
+  pull_request:
+    paths:
+      - 'src/lib/workflows/task-receipt-reconciliation.ts'
+      - 'src/lib/workflows/cost-coverage-actions.ts'
+      - 'src/lib/workflows/service-request-actions.ts'
+      - 'src/lib/workflows/plan-cancellation-review.ts'
+      - 'src/lib/workflows/owner-action-verification.ts'
+      - 'src/lib/workflows/offline-source-*.ts'
+      - 'src/lib/workflows/saved-revision-exercise.ts'
+      - 'src/components/workflows/TaskReceiptActions.tsx'
+      - 'src/components/workflows/CostCoverageActions.tsx'
+      - 'src/components/workflows/ServiceRequestActions.tsx'
+      - 'src/components/workflows/MaintenanceCancellationActions.tsx'
+      - 'src/components/workflows/OwnerActionVerification.tsx'
+      - 'src/components/workflows/SavedRevisionWorkbench.tsx'
+      - 'src/components/workflows/OperatingCenterCycleTwentyThree.tsx'
+      - 'src/components/workflows/OperatingCenterCycleFifteen.tsx'
+      - 'src/lib/operations.ts'
+      - 'src/lib/phase3.ts'
+      - 'src/lib/property.ts'
+      - 'tests/cycle24*'
+      - 'tests/browser/cycle24*'
+      - 'tests/program/cycle24*'
+      - 'tests/program/playwright.cycle24*'
+      - 'playwright.cycle24*'
+      - 'scripts/*cycle24*'
+      - 'docs/program/CYCLE24*'
+      - '.github/workflows/cycle24-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle24-integration-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  bounded-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node scripts/check-cycle24.mjs
+      - run: npx vitest run tests/cycle24*.test.ts --maxWorkers=2 --reporter=json --outputFile=artifacts/cycle24/application-results.json
+      - run: node scripts/check-cycle24.mjs --application
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test -c tests/program/playwright.cycle24-callback.config.ts --workers=1
+      - run: npx playwright test -c playwright.cycle24.config.ts --workers=1
+      - run: npx playwright test -c playwright.cycle24-off.config.ts --workers=1
+      - run: node scripts/collect-cycle24-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle24-native-source-evidence
+          path: |
+            artifacts/cycle24/
+            test-results/
+          retention-days: 7

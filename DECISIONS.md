@@ -1,5 +1,27 @@
 # Engineering decisions
 
+## Cycle24 · native actions, exact original custody and explicit readiness gaps
+
+Extend existing native workflows and optional original workbench slots rather than
+add another presentation or business-state layer. Original correction intents alone
+own task reconciliation. Request actions use the same original attempt registry and
+exact request key; native void ACK and absent server CAS/receipt must remain explicit.
+Same-tab source fingerprints do not establish durable or cross-process authority.
+Uncertain outcomes remain UNKNOWN and exact-read-only, never replay or replacement.
+
+Keep staff-review cancellation distinct from unsupported plan/enrollment cancellation.
+Offline admission requires original native visit/plan source revisions in addition to
+job/estimate identity; no operational sync or restoration. The separately reviewed
+restart-readiness register lists missing owners/transactions/receipts/backup/approvals
+only. No adapter or schema authority follows. Physical Air unavailable; retained
+credential-free procedure ready, actual rehearsal UNVERIFIED/NOT RUN.
+
+A demonstrated immutable source-literal mismatch is corrected through equivalent
+original preparer composition. Old tests, assertions, failed artifacts and protected
+workflows remain unchanged. Successful CI is never manually rerun or relabeled.
+All original design, P1/customer14/4B/Auth/MFA/NMI/Netlify/recovery/financial/production
+restrictions remain. Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Cycle23 · exact source consistency and separately reviewed restart proposal
 
 Keep one original source host, five retained tabs, finite optional review mode and

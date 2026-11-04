@@ -1,0 +1,580 @@
+{
+  "schema": "propel-cycle24-ci-dependency-reconciliation-v1",
+  "scope": "Exactly three failed focused C21 integration runs on C22 feature dependencies plus two cancelled Foundation push runs; no reruns or baseline execution.",
+  "source_runtime": "7a90da23c0a701001c79b605d94d2894cd9cc5a6",
+  "published_independent_review": "712e07cb3be8988b092aba9fad80d32b4662435b",
+  "published_review_untouched": true,
+  "focused_failures": [
+    {
+      "pull_request": 151,
+      "head": "f31fdf6695be0371bbdc6728d745ada6b75bdc62",
+      "run": 41747627016,
+      "job": 126304497567,
+      "event": "pull_request",
+      "checkout": "b90c297f13288381d1547ea286a213c8f0ebd643",
+      "parents": [
+        "b517d588745007a9e519506d1a4417ddd62e3757",
+        "f31fdf6695be0371bbdc6728d745ada6b75bdc62"
+      ],
+      "total": 338,
+      "passed": 337,
+      "failed": 1,
+      "pending": 0,
+      "failed_cases": [
+        {
+          "name": "reviewed composition retains the original host pending owner and future restart review boundary",
+          "messages": [
+            "AssertionError: expected 'import { prepareCorrectionPreviewSour\u2026' to contain 'corrections ? prepareCorrectionPrevie\u2026'\n    at /home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/tests/cycle21-independent-integration-review.test.ts:725:18\n    at file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:1632:35\n    at file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:26\n    at file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:3338:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:3333:10)\n    at file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:3318:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:3276:10)\n    at file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:3904:64"
+          ]
+        }
+      ],
+      "artifact": {
+        "id": 13287812124,
+        "name": "cycle21-canonical-correction-evidence",
+        "zip_sha256": "80beb82282e5552f3ed72198106e553b5b41a9b5f0be9745b6e7ea2039629c9b",
+        "provider_digest": "sha256:80beb82282e5552f3ed72198106e553b5b41a9b5f0be9745b6e7ea2039629c9b",
+        "application_json_sha256": "5efa0dbc450df8ffcabb9c66fa3e7edf45dfb9cbad6619f87a5588a2aee7d137"
+      },
+      "host_sha256": "aa48e22ab2bdaf2ad6759526359c6ef2beb110c8a865b0f6a319286cae16e865",
+      "host_original_literal_present": false,
+      "host_requirement_expansion_present": true,
+      "immutable_c21_test_sha256": "469c4bf3ce7ba8cb04dbc35549c5828c5b9bddc93fd8d5a5ad9b1efe49b2ae55"
+    },
+    {
+      "pull_request": 153,
+      "head": "8e03784864b451c9a79464f788e24eef7ce28742",
+      "run": 41747666040,
+      "job": 126304636541,
+      "event": "pull_request",
+      "checkout": "1455f0bb65fe611e917d9641f66d85c4716d2037",
+      "parents": [
+        "b517d588745007a9e519506d1a4417ddd62e3757",
+        "8e03784864b451c9a79464f788e24eef7ce28742"
+      ],
+      "total": 338,
+      "passed": 337,
+      "failed": 1,
+      "pending": 0,
+      "failed_cases": [
+        {
+          "name": "reviewed composition retains the original host pending owner and future restart review boundary",
+          "messages": [
+            "AssertionError: expected 'import { prepareCorrectionPreviewSour\u2026' to contain 'corrections ? prepareCorrectionPrevie\u2026'\n    at /home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/tests/cycle21-independent-integration-review.test.ts:725:18\n    at file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:1632:35\n    at file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:26\n    at file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:3338:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:3333:10)\n    at file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:3318:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:3276:10)\n    at file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:3904:64"
+          ]
+        }
+      ],
+      "artifact": {
+        "id": 13287997086,
+        "name": "cycle21-canonical-correction-evidence",
+        "zip_sha256": "3b427d9300a9552720a2f761d319b733200f5fc3b72f353b6430eaf540b551d8",
+        "provider_digest": "sha256:3b427d9300a9552720a2f761d319b733200f5fc3b72f353b6430eaf540b551d8",
+        "application_json_sha256": "4e4966ec56d41f5e5ab5a7ec97b6b5257ee85f24548cff57879a2ca8dfd86e13"
+      },
+      "host_sha256": "aa48e22ab2bdaf2ad6759526359c6ef2beb110c8a865b0f6a319286cae16e865",
+      "host_original_literal_present": false,
+      "host_requirement_expansion_present": true,
+      "immutable_c21_test_sha256": "469c4bf3ce7ba8cb04dbc35549c5828c5b9bddc93fd8d5a5ad9b1efe49b2ae55"
+    },
+    {
+      "pull_request": 154,
+      "head": "cdd5241c63c1fb4e6fe9c851195a076777bd1e13",
+      "run": 41747690710,
+      "job": 126304718343,
+      "event": "pull_request",
+      "checkout": "3eef5c6f7e28b8cae8216eb7bc42c60cdab91662",
+      "parents": [
+        "b517d588745007a9e519506d1a4417ddd62e3757",
+        "cdd5241c63c1fb4e6fe9c851195a076777bd1e13"
+      ],
+      "total": 338,
+      "passed": 337,
+      "failed": 1,
+      "pending": 0,
+      "failed_cases": [
+        {
+          "name": "reviewed composition retains the original host pending owner and future restart review boundary",
+          "messages": [
+            "AssertionError: expected 'import { prepareCorrectionPreviewSour\u2026' to contain 'corrections ? prepareCorrectionPrevie\u2026'\n    at /home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/tests/cycle21-independent-integration-review.test.ts:725:18\n    at file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:1632:35\n    at file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:26\n    at file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:3338:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:3333:10)\n    at file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:3318:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:3276:10)\n    at file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:3904:64"
+          ]
+        }
+      ],
+      "artifact": {
+        "id": 13288057057,
+        "name": "cycle21-canonical-correction-evidence",
+        "zip_sha256": "d65bb86b17bf0e49cf787a005ab3e6549ed9050b1578d9850e2f60bfe555913c",
+        "provider_digest": "sha256:d65bb86b17bf0e49cf787a005ab3e6549ed9050b1578d9850e2f60bfe555913c",
+        "application_json_sha256": "ca549525d7efca3696aa5ee1ad19929e64cabb0d3044376b4aaa56e60b6df7c6"
+      },
+      "host_sha256": "aa48e22ab2bdaf2ad6759526359c6ef2beb110c8a865b0f6a319286cae16e865",
+      "host_original_literal_present": false,
+      "host_requirement_expansion_present": true,
+      "immutable_c21_test_sha256": "469c4bf3ce7ba8cb04dbc35549c5828c5b9bddc93fd8d5a5ad9b1efe49b2ae55"
+    }
+  ],
+  "focused_unique_coverage": {
+    "status_maps_identical": true,
+    "unique_cases": 338,
+    "unique_passed": 337,
+    "unique_failed": 1,
+    "not_1014_cases": true,
+    "cause": "The immutable C21 source-literal check fails only on old merged C22 target host. All three feature heads retain original literal; old b517 merge host has expanded requirements condition. Current normal C22 target correction a453b30 contains both original expression and required semantics."
+  },
+  "cancelled_foundation": [
+    {
+      "pull_request": 151,
+      "head": "f31fdf6695be0371bbdc6728d745ada6b75bdc62",
+      "checkout": "f31fdf6695be0371bbdc6728d745ada6b75bdc62",
+      "run": 41747620882,
+      "job": 126304706959,
+      "event": "push",
+      "conclusion": "cancelled",
+      "started_at": "2026-11-04T01:13:16Z",
+      "completed_at": "2026-11-04T01:58:34Z",
+      "annotation_messages": [
+        "The job has exceeded the maximum execution time of 45m0s",
+        "The operation was canceled."
+      ],
+      "cancellation_reason": "EXPLICIT_EXISTING_45_MINUTE_JOB_LIMIT",
+      "active_stage": "npm run check -> npm test -> vitest run",
+      "completed_pretest_stages": [
+        "npm ci",
+        "pinned Python dependencies",
+        "format:check",
+        "lint",
+        "strict types",
+        "database types",
+        "migration bundle source check",
+        "property/customer/request/broker source checks",
+        "features:check"
+      ],
+      "completed_passing_file_count": 76,
+      "completed_passing_file_case_count": 3662,
+      "completed_passing_files": {
+        "tests/database/phase3.test.ts": 44,
+        "tests/program-job-margin.test.ts": 67,
+        "tests/program-controlled-integration-contracts.test.ts": 58,
+        "tests/cycle12-schedule-proposal-revisions.test.ts": 47,
+        "tests/cycle13-integration.test.ts": 42,
+        "tests/cycle12-consent-cancellation-review.test.ts": 46,
+        "tests/cycle12-integration.test.ts": 48,
+        "tests/cycle15-integration.test.ts": 46,
+        "tests/cycle12-external-proposal-lifecycle.test.ts": 73,
+        "tests/field-work-orders.test.ts": 47,
+        "tests/customer-revised-estimate-loop.test.ts": 31,
+        "tests/program-passport-job-history.test.ts": 58,
+        "tests/cycle17-integration.test.ts": 45,
+        "tests/cycle9-integration.test.ts": 27,
+        "tests/cycle14-integration.test.ts": 47,
+        "tests/cycle21-published-service-navigation.test.ts": 66,
+        "tests/cycle21-independent-integration-review.test.ts": 41,
+        "tests/cycle13-work-order-revisions.test.ts": 40,
+        "tests/cycle8-integration.test.ts": 21,
+        "tests/cycle17-addon-task-desk.test.ts": 108,
+        "tests/field-crew-capacity.test.ts": 57,
+        "tests/cycle16-addon-readiness-guide.test.ts": 98,
+        "tests/program-renewal-planning.test.ts": 61,
+        "tests/program-property-passport.test.ts": 48,
+        "tests/cycle11-integration.test.ts": 32,
+        "tests/cycle13-service-passport-desk.test.ts": 79,
+        "tests/program/test-git-history.test.ts": 45,
+        "tests/netlify-replacement.test.ts": 92,
+        "tests/cycle12-service-lifecycle-review.test.ts": 60,
+        "tests/cycle18-cost-invoice-review.test.ts": 53,
+        "tests/cycle18-priority-actions.test.ts": 58,
+        "tests/cycle12-financial-evidence-review.test.ts": 43,
+        "tests/cycle13-addon-review-desk.test.ts": 89,
+        "tests/customer-issuance-readiness.test.ts": 26,
+        "tests/cycle11-atomic-consent-lab.test.ts": 60,
+        "tests/cycle10-integration.test.ts": 30,
+        "tests/cycle19-service-revision-review.test.ts": 47,
+        "tests/cycle13-financial-casework.test.ts": 37,
+        "tests/customer-revision-packets.test.ts": 25,
+        "tests/cycle17-service-passport-path.test.ts": 58,
+        "tests/cycle14-source-bound-addons.test.ts": 85,
+        "tests/cycle12-verified-operating-suggestions.test.ts": 38,
+        "tests/cycle8-maintenance-desk.test.ts": 51,
+        "tests/cycle13-operating-navigation.test.ts": 46,
+        "tests/program-profit-guard.test.ts": 49,
+        "tests/cycle20-recorded-cost-continuity.test.ts": 47,
+        "tests/cycle6-finance-workflow.test.ts": 36,
+        "tests/cycle19-independent-integration-review.test.ts": 36,
+        "tests/workflows/cycle6-independent-review.test.ts": 14,
+        "tests/cycle20-independent-integration-review.test.ts": 42,
+        "tests/program/cycle13-visual-evidence.test.ts": 56,
+        "tests/cycle11-crew-assignment-lab.test.ts": 35,
+        "tests/cycle16-service-completion-guide.test.ts": 60,
+        "tests/cycle13-follow-up-readiness.test.ts": 39,
+        "tests/cycle16-owner-briefing-guide.test.ts": 38,
+        "tests/cycle7-booking-scheduling.test.ts": 57,
+        "tests/cycle18-maintenance-agenda.test.ts": 52,
+        "tests/cycle6-intelligence-workflow.test.ts": 40,
+        "tests/cycle18-service-update-review.test.ts": 55,
+        "tests/cycle19-maintenance-saved-revisions.test.ts": 33,
+        "tests/database/operations.test.ts": 23,
+        "tests/cycle20-published-service-continuity.test.ts": 53,
+        "tests/cycle16-integration.test.ts": 36,
+        "tests/cycle21-canonical-corrections.test.ts": 31,
+        "tests/cycle21-cost-correction-review.test.ts": 36,
+        "tests/cycle20-recorded-priority-navigation.test.ts": 42,
+        "tests/program-proof-of-work.test.ts": 40,
+        "tests/cycle15-addon-task-continuity.test.ts": 71,
+        "tests/cycle7-job-review.test.ts": 41,
+        "tests/cycle11-service-continuity.test.ts": 43,
+        "tests/program-operations-experiments.test.ts": 52,
+        "tests/cycle19-saved-source-exercise.test.ts": 50,
+        "tests/program-passport-timeline.test.ts": 28,
+        "tests/cycle11-financial-correction-review.test.ts": 41,
+        "tests/cycle17-owner-action-desk.test.ts": 40,
+        "tests/provider-readiness.test.ts": 26
+      },
+      "completed_c18_file": {
+        "cases": 58,
+        "passed": 48,
+        "failed": 10,
+        "failure_exception_details_available": false,
+        "failures": [
+          {
+            "name": "brand 0: five-package source evidence binds one exact canonical daily environment",
+            "elapsed_ms": 30062,
+            "exception_message": "NOT_EMITTED_BEFORE_JOB_CANCELLATION",
+            "classification": "AT_OR_ABOVE_30S_CASE_LIMIT_EXCEPTION_UNVERIFIED"
+          },
+          {
+            "name": "brand 0: retained daily sources continue through every review and exact Next without reset",
+            "elapsed_ms": 5,
+            "exception_message": "NOT_EMITTED_BEFORE_JOB_CANCELLATION",
+            "classification": "IMMEDIATE_DEPENDENT_CASE_FAILURE_ASSERTION_UNVERIFIED"
+          },
+          {
+            "name": "brand 1: five-package source evidence binds one exact canonical daily environment",
+            "elapsed_ms": 30182,
+            "exception_message": "NOT_EMITTED_BEFORE_JOB_CANCELLATION",
+            "classification": "AT_OR_ABOVE_30S_CASE_LIMIT_EXCEPTION_UNVERIFIED"
+          },
+          {
+            "name": "brand 1: retained daily sources continue through every review and exact Next without reset",
+            "elapsed_ms": 1,
+            "exception_message": "NOT_EMITTED_BEFORE_JOB_CANCELLATION",
+            "classification": "IMMEDIATE_DEPENDENT_CASE_FAILURE_ASSERTION_UNVERIFIED"
+          },
+          {
+            "name": "brand 2: five-package source evidence binds one exact canonical daily environment",
+            "elapsed_ms": 33685,
+            "exception_message": "NOT_EMITTED_BEFORE_JOB_CANCELLATION",
+            "classification": "AT_OR_ABOVE_30S_CASE_LIMIT_EXCEPTION_UNVERIFIED"
+          },
+          {
+            "name": "brand 2: retained daily sources continue through every review and exact Next without reset",
+            "elapsed_ms": 1,
+            "exception_message": "NOT_EMITTED_BEFORE_JOB_CANCELLATION",
+            "classification": "IMMEDIATE_DEPENDENT_CASE_FAILURE_ASSERTION_UNVERIFIED"
+          },
+          {
+            "name": "finance: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay",
+            "elapsed_ms": 43145,
+            "exception_message": "NOT_EMITTED_BEFORE_JOB_CANCELLATION",
+            "classification": "AT_OR_ABOVE_30S_CASE_LIMIT_EXCEPTION_UNVERIFIED"
+          },
+          {
+            "name": "finance: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay",
+            "elapsed_ms": 30478,
+            "exception_message": "NOT_EMITTED_BEFORE_JOB_CANCELLATION",
+            "classification": "AT_OR_ABOVE_30S_CASE_LIMIT_EXCEPTION_UNVERIFIED"
+          },
+          {
+            "name": "finance: known callback withdrawal before invocation preserves exact source review but invokes no host",
+            "elapsed_ms": 40748,
+            "exception_message": "NOT_EMITTED_BEFORE_JOB_CANCELLATION",
+            "classification": "AT_OR_ABOVE_30S_CASE_LIMIT_EXCEPTION_UNVERIFIED"
+          },
+          {
+            "name": "finance: competing fresh views of the same canonical job dispatch at most one callback",
+            "elapsed_ms": 37388,
+            "exception_message": "NOT_EMITTED_BEFORE_JOB_CANCELLATION",
+            "classification": "AT_OR_ABOVE_30S_CASE_LIMIT_EXCEPTION_UNVERIFIED"
+          }
+        ]
+      },
+      "total_defined_application_test_files": 269,
+      "files_without_completed_log_conclusion": 192,
+      "remaining_stages_not_reached": [
+        "remaining Vitest files/final result",
+        "test:recovery",
+        "build",
+        "staging:plan",
+        "Chromium installation",
+        "test:browser"
+      ],
+      "postgres17_sibling": {
+        "job": 126304706713,
+        "conclusion": "success",
+        "started_at": "2026-11-04T01:00:32Z",
+        "completed_at": "2026-11-04T01:02:44Z"
+      },
+      "verify_artifacts": "NONE: annotation explicitly reports no files in browser screenshot/test-results paths; native preview artifact belongs to successful postgres17 sibling",
+      "log_sha256": "7c32fb591b7baba8a12a3b9bd1c6f9fc461ea70a9e03b32bc16ed81d06bb62a8",
+      "annotation_sha256": "48fac1249f183fb9835e38d41fda0d92bf2e5466ed57b63854eb586ef9cb3c19"
+    },
+    {
+      "pull_request": 154,
+      "head": "cdd5241c63c1fb4e6fe9c851195a076777bd1e13",
+      "checkout": "cdd5241c63c1fb4e6fe9c851195a076777bd1e13",
+      "run": 41747683783,
+      "job": 126304702127,
+      "event": "push",
+      "conclusion": "cancelled",
+      "started_at": "2026-11-04T01:13:07Z",
+      "completed_at": "2026-11-04T01:58:28Z",
+      "annotation_messages": [
+        "The job has exceeded the maximum execution time of 45m0s",
+        "The operation was canceled."
+      ],
+      "cancellation_reason": "EXPLICIT_EXISTING_45_MINUTE_JOB_LIMIT",
+      "active_stage": "npm run check -> npm test -> vitest run",
+      "completed_pretest_stages": [
+        "npm ci",
+        "pinned Python dependencies",
+        "format:check",
+        "lint",
+        "strict types",
+        "database types",
+        "migration bundle source check",
+        "property/customer/request/broker source checks",
+        "features:check"
+      ],
+      "completed_passing_file_count": 69,
+      "completed_passing_file_case_count": 3382,
+      "completed_passing_files": {
+        "tests/database/phase3.test.ts": 44,
+        "tests/program-job-margin.test.ts": 67,
+        "tests/program-controlled-integration-contracts.test.ts": 58,
+        "tests/cycle12-schedule-proposal-revisions.test.ts": 47,
+        "tests/cycle13-integration.test.ts": 42,
+        "tests/cycle12-consent-cancellation-review.test.ts": 46,
+        "tests/cycle12-integration.test.ts": 48,
+        "tests/cycle15-integration.test.ts": 46,
+        "tests/cycle12-external-proposal-lifecycle.test.ts": 73,
+        "tests/field-work-orders.test.ts": 47,
+        "tests/customer-revised-estimate-loop.test.ts": 31,
+        "tests/program-passport-job-history.test.ts": 58,
+        "tests/cycle17-integration.test.ts": 45,
+        "tests/cycle9-integration.test.ts": 27,
+        "tests/cycle14-integration.test.ts": 47,
+        "tests/cycle21-published-service-navigation.test.ts": 66,
+        "tests/cycle21-independent-integration-review.test.ts": 41,
+        "tests/cycle13-work-order-revisions.test.ts": 40,
+        "tests/cycle8-integration.test.ts": 21,
+        "tests/cycle17-addon-task-desk.test.ts": 108,
+        "tests/field-crew-capacity.test.ts": 57,
+        "tests/cycle16-addon-readiness-guide.test.ts": 98,
+        "tests/program-renewal-planning.test.ts": 61,
+        "tests/program-property-passport.test.ts": 48,
+        "tests/cycle11-integration.test.ts": 32,
+        "tests/cycle13-service-passport-desk.test.ts": 79,
+        "tests/program/test-git-history.test.ts": 45,
+        "tests/netlify-replacement.test.ts": 92,
+        "tests/cycle12-service-lifecycle-review.test.ts": 60,
+        "tests/cycle18-cost-invoice-review.test.ts": 53,
+        "tests/cycle18-priority-actions.test.ts": 58,
+        "tests/cycle12-financial-evidence-review.test.ts": 43,
+        "tests/cycle13-addon-review-desk.test.ts": 89,
+        "tests/customer-issuance-readiness.test.ts": 26,
+        "tests/cycle10-integration.test.ts": 30,
+        "tests/cycle11-atomic-consent-lab.test.ts": 60,
+        "tests/cycle19-service-revision-review.test.ts": 47,
+        "tests/cycle13-financial-casework.test.ts": 37,
+        "tests/customer-revision-packets.test.ts": 25,
+        "tests/cycle17-service-passport-path.test.ts": 58,
+        "tests/cycle14-source-bound-addons.test.ts": 85,
+        "tests/cycle12-verified-operating-suggestions.test.ts": 38,
+        "tests/cycle8-maintenance-desk.test.ts": 51,
+        "tests/cycle13-operating-navigation.test.ts": 46,
+        "tests/program-profit-guard.test.ts": 49,
+        "tests/cycle20-recorded-cost-continuity.test.ts": 47,
+        "tests/cycle6-finance-workflow.test.ts": 36,
+        "tests/cycle19-independent-integration-review.test.ts": 36,
+        "tests/workflows/cycle6-independent-review.test.ts": 14,
+        "tests/cycle20-independent-integration-review.test.ts": 42,
+        "tests/program/cycle13-visual-evidence.test.ts": 56,
+        "tests/cycle11-crew-assignment-lab.test.ts": 35,
+        "tests/cycle16-service-completion-guide.test.ts": 60,
+        "tests/cycle13-follow-up-readiness.test.ts": 39,
+        "tests/cycle16-owner-briefing-guide.test.ts": 38,
+        "tests/cycle7-booking-scheduling.test.ts": 57,
+        "tests/cycle18-maintenance-agenda.test.ts": 52,
+        "tests/cycle6-intelligence-workflow.test.ts": 40,
+        "tests/cycle18-service-update-review.test.ts": 55,
+        "tests/cycle19-maintenance-saved-revisions.test.ts": 33,
+        "tests/database/operations.test.ts": 23,
+        "tests/cycle20-published-service-continuity.test.ts": 53,
+        "tests/cycle16-integration.test.ts": 36,
+        "tests/cycle21-canonical-corrections.test.ts": 31,
+        "tests/cycle21-cost-correction-review.test.ts": 36,
+        "tests/cycle20-recorded-priority-navigation.test.ts": 42,
+        "tests/cycle15-addon-task-continuity.test.ts": 71,
+        "tests/program-proof-of-work.test.ts": 40,
+        "tests/cycle7-job-review.test.ts": 41
+      },
+      "completed_c18_file": {
+        "cases": 58,
+        "passed": 48,
+        "failed": 10,
+        "failure_exception_details_available": false,
+        "failures": [
+          {
+            "name": "brand 0: five-package source evidence binds one exact canonical daily environment",
+            "elapsed_ms": 30150,
+            "exception_message": "NOT_EMITTED_BEFORE_JOB_CANCELLATION",
+            "classification": "AT_OR_ABOVE_30S_CASE_LIMIT_EXCEPTION_UNVERIFIED"
+          },
+          {
+            "name": "brand 0: retained daily sources continue through every review and exact Next without reset",
+            "elapsed_ms": 5,
+            "exception_message": "NOT_EMITTED_BEFORE_JOB_CANCELLATION",
+            "classification": "IMMEDIATE_DEPENDENT_CASE_FAILURE_ASSERTION_UNVERIFIED"
+          },
+          {
+            "name": "brand 1: five-package source evidence binds one exact canonical daily environment",
+            "elapsed_ms": 30235,
+            "exception_message": "NOT_EMITTED_BEFORE_JOB_CANCELLATION",
+            "classification": "AT_OR_ABOVE_30S_CASE_LIMIT_EXCEPTION_UNVERIFIED"
+          },
+          {
+            "name": "brand 1: retained daily sources continue through every review and exact Next without reset",
+            "elapsed_ms": 1,
+            "exception_message": "NOT_EMITTED_BEFORE_JOB_CANCELLATION",
+            "classification": "IMMEDIATE_DEPENDENT_CASE_FAILURE_ASSERTION_UNVERIFIED"
+          },
+          {
+            "name": "brand 2: five-package source evidence binds one exact canonical daily environment",
+            "elapsed_ms": 30062,
+            "exception_message": "NOT_EMITTED_BEFORE_JOB_CANCELLATION",
+            "classification": "AT_OR_ABOVE_30S_CASE_LIMIT_EXCEPTION_UNVERIFIED"
+          },
+          {
+            "name": "brand 2: retained daily sources continue through every review and exact Next without reset",
+            "elapsed_ms": 1,
+            "exception_message": "NOT_EMITTED_BEFORE_JOB_CANCELLATION",
+            "classification": "IMMEDIATE_DEPENDENT_CASE_FAILURE_ASSERTION_UNVERIFIED"
+          },
+          {
+            "name": "finance: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay",
+            "elapsed_ms": 32326,
+            "exception_message": "NOT_EMITTED_BEFORE_JOB_CANCELLATION",
+            "classification": "AT_OR_ABOVE_30S_CASE_LIMIT_EXCEPTION_UNVERIFIED"
+          },
+          {
+            "name": "finance: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay",
+            "elapsed_ms": 43114,
+            "exception_message": "NOT_EMITTED_BEFORE_JOB_CANCELLATION",
+            "classification": "AT_OR_ABOVE_30S_CASE_LIMIT_EXCEPTION_UNVERIFIED"
+          },
+          {
+            "name": "finance: known callback withdrawal before invocation preserves exact source review but invokes no host",
+            "elapsed_ms": 46691,
+            "exception_message": "NOT_EMITTED_BEFORE_JOB_CANCELLATION",
+            "classification": "AT_OR_ABOVE_30S_CASE_LIMIT_EXCEPTION_UNVERIFIED"
+          },
+          {
+            "name": "finance: competing fresh views of the same canonical job dispatch at most one callback",
+            "elapsed_ms": 40023,
+            "exception_message": "NOT_EMITTED_BEFORE_JOB_CANCELLATION",
+            "classification": "AT_OR_ABOVE_30S_CASE_LIMIT_EXCEPTION_UNVERIFIED"
+          }
+        ]
+      },
+      "total_defined_application_test_files": 269,
+      "files_without_completed_log_conclusion": 199,
+      "remaining_stages_not_reached": [
+        "remaining Vitest files/final result",
+        "test:recovery",
+        "build",
+        "staging:plan",
+        "Chromium installation",
+        "test:browser"
+      ],
+      "postgres17_sibling": {
+        "job": 126304701188,
+        "conclusion": "success",
+        "started_at": "2026-11-04T01:12:29Z",
+        "completed_at": "2026-11-04T01:14:47Z"
+      },
+      "verify_artifacts": "NONE: annotation explicitly reports no files in browser screenshot/test-results paths; native preview artifact belongs to successful postgres17 sibling",
+      "log_sha256": "3f224b07bc323821dcba613d0f7d8d96e21bc576b857957ee030d4e9fbbddce9",
+      "annotation_sha256": "b7bd80ac92dd7953a7b72302718da9591c99bd43de0fd631bd719d794426eeec"
+    }
+  ],
+  "cancelled_unique_coverage": {
+    "fully_passing_files_union": 76,
+    "fully_passing_file_cases_union": 3662,
+    "one_additional_c18_file": {
+      "passed": 48,
+      "failed": 10,
+      "unique_failed_names": 10
+    },
+    "test_files_without_completed_file_conclusion_in_both": 192,
+    "source_files_total": 269,
+    "note": "PR15469 fully passed files are a subset of PR15176; counts are lower-bound completed-file evidence. In-flight individual passed output is not promoted to a completed file or suite result. Exception details were deferred until suite end and never emitted. Successful PostgreSQL jobs stay SUCCESS; neither failed/cancelled run becomes PASS.",
+    "completed_test_source_note": "The two differing C22 test blobs between canceled heads were not among either completed-file set. All completed-file test blobs match; completed source coverage is not promoted to a suite result."
+  },
+  "source_checks": [
+    {
+      "commit": "f31fdf6695be0371bbdc6728d745ada6b75bdc62",
+      "path": "tests/cycle18-independent-integration-review.test.ts",
+      "sha256": "a21b987039f312f19bf103308f0fbeac26f72cc97f8a8607937b86b57d838217"
+    },
+    {
+      "commit": "f31fdf6695be0371bbdc6728d745ada6b75bdc62",
+      "path": "vite.config.ts",
+      "sha256": "0fdc8ac3b8d922c2229a25d67d0b42ab3c895489bfc7ee514aae0c78853bf48d"
+    },
+    {
+      "commit": "f31fdf6695be0371bbdc6728d745ada6b75bdc62",
+      "path": ".github/workflows/ci.yml",
+      "sha256": "df337433bfde1768ccbe396326793559f21113aa7c24e37fbd5955c4c29f87be"
+    },
+    {
+      "commit": "cdd5241c63c1fb4e6fe9c851195a076777bd1e13",
+      "path": "tests/cycle18-independent-integration-review.test.ts",
+      "sha256": "a21b987039f312f19bf103308f0fbeac26f72cc97f8a8607937b86b57d838217"
+    },
+    {
+      "commit": "cdd5241c63c1fb4e6fe9c851195a076777bd1e13",
+      "path": "vite.config.ts",
+      "sha256": "0fdc8ac3b8d922c2229a25d67d0b42ab3c895489bfc7ee514aae0c78853bf48d"
+    },
+    {
+      "commit": "cdd5241c63c1fb4e6fe9c851195a076777bd1e13",
+      "path": ".github/workflows/ci.yml",
+      "sha256": "df337433bfde1768ccbe396326793559f21113aa7c24e37fbd5955c4c29f87be"
+    },
+    {
+      "commit": "7a90da23c0a701001c79b605d94d2894cd9cc5a6",
+      "path": "tests/cycle18-independent-integration-review.test.ts",
+      "sha256": "a21b987039f312f19bf103308f0fbeac26f72cc97f8a8607937b86b57d838217"
+    },
+    {
+      "commit": "7a90da23c0a701001c79b605d94d2894cd9cc5a6",
+      "path": "vite.config.ts",
+      "sha256": "0fdc8ac3b8d922c2229a25d67d0b42ab3c895489bfc7ee514aae0c78853bf48d"
+    },
+    {
+      "commit": "7a90da23c0a701001c79b605d94d2894cd9cc5a6",
+      "path": ".github/workflows/ci.yml",
+      "sha256": "df337433bfde1768ccbe396326793559f21113aa7c24e37fbd5955c4c29f87be"
+    }
+  ],
+  "c18_cause_limits": [
+    "Seven failed cases report elapsed time at or above unchanged30000ms case budget; exception messages are absent, so definite timeout-vs-assertion classification is not supported.",
+    "Three1\u20135ms brand continuation failures immediately follow failed setup cases. Immutable source lines339\u2013389 retain shared per-brand fixture and first continuation assertion expect(retained).toBeDefined(); setup cascade is an inference, not a captured exception.",
+    "Four slow finance failures construct original full4-entry cost/invoice review and exercise original UNKNOWN/admission/concurrency controls. No evidence here proves engine defect or permits weakening assertions or budgets.",
+    "45-minute job-limit cancellation is independently explicit in GitHub annotations. Historical C18 failures and incomplete Foundation coverage remain OPEN."
+  ],
+  "authorized_follow_up": "After this separate report commit, normal documentation-only forward for151/153/154 against already corrected C22 target a453b30. No product/test/workflow/assertion/budget change, no manual rerun, no relabeling prior successes/failures. New exact-head CI remains pending.",
+  "raw_artifacts_directory": "/private/tmp/cycle24-ci/last-five",
+  "raw_artifacts_not_committed": true,
+  "manual_reruns": 0,
+  "product_source_edits": false,
+  "assertion_or_timeout_edits": false,
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

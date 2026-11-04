@@ -1,0 +1,413 @@
+{
+  "schema": "propel-cycle24-restart-readiness-v1",
+  "source_commit": "7b8d8c1a6f03fa33321409aa15c46926a63e59ed",
+  "reviewed_proposal": "52848cdc5cbfb16bdf6b553293362d129a1b23b9",
+  "independent_proposal_review": "d0fc730dbbc99b8945f89e1254cd20c0d85983b6",
+  "status": "NO_GO_FOR_ADAPTER_IMPLEMENTATION",
+  "operational_ready": false,
+  "implementation_authorized": false,
+  "schema_change_authorized": false,
+  "physical_recovery": "UNVERIFIED_NOT_RUN",
+  "RPO": "UNMEASURED",
+  "RTO": "UNMEASURED",
+  "requirements": [
+    {
+      "id": "R01",
+      "topic": "canonical CRM ownership",
+      "canonical_contract": "Operations / CRM RPCs",
+      "source_paths": ["src/lib/operations.ts"],
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "status": "NOT_ACCEPTED",
+      "dependencies": [],
+      "missing_deliverable": "Name an operational CRM writer/reader owner; inventory all current tenant/customer/location/consent RPCs, grants and writers; no second graph.",
+      "acceptance": "NOT_RUN_OPERATIONALLY",
+      "approval": "Separate exact ownership/catalog/target review",
+      "authority_granted": false
+    },
+    {
+      "id": "R02",
+      "topic": "canonical estimate/job/cost ownership",
+      "canonical_contract": "Phase3Repository",
+      "source_paths": ["src/lib/phase3.ts"],
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "status": "NOT_ACCEPTED",
+      "dependencies": ["R01"],
+      "missing_deliverable": "Bind existing estimate/version, issued scope, job, assignments, time/reviews and expenses/events to exact original SQL owners; no duplicate posting or recalculation engine.",
+      "acceptance": "NOT_RUN_OPERATIONALLY",
+      "approval": "Separate exact ownership/catalog/target review",
+      "authority_granted": false
+    },
+    {
+      "id": "R03",
+      "topic": "canonical inspection ownership",
+      "canonical_contract": "PropertyRepository",
+      "source_paths": ["src/lib/property.ts"],
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "status": "NOT_ACCEPTED",
+      "dependencies": ["R01", "R02"],
+      "missing_deliverable": "Name plan/visit/published-report writer; preserve immutable versions and actual recorded foreign keys; missing request-to-job FK stays UNKNOWN.",
+      "acceptance": "NOT_RUN_OPERATIONALLY",
+      "approval": "Separate exact ownership/catalog/target review",
+      "authority_granted": false
+    },
+    {
+      "id": "R04",
+      "topic": "missing task/schedule durable owner",
+      "canonical_contract": "Existing workflow ports; disposable field-lab is not operational ownership",
+      "source_paths": ["src/lib/workflows/saved-revision-exercise.ts"],
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "status": "NOT_ACCEPTED",
+      "dependencies": ["R01", "R02", "R03"],
+      "missing_deliverable": "Resolve durable task/work-order/schedule ownership and every participating writer before selecting an adapter; do not persist a parallel session map.",
+      "acceptance": "NOT_RUN_OPERATIONALLY",
+      "approval": "Separate original durable-owner design and bounded prototype approval",
+      "authority_granted": false
+    },
+    {
+      "id": "R05",
+      "topic": "maintenance command authority",
+      "canonical_contract": "MaintenancePersistence / existing 2A\u20132F proposals",
+      "source_paths": ["server/property/maintenance-persistence.ts"],
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "status": "NOT_ACCEPTED",
+      "dependencies": ["R01", "R03", "R04"],
+      "missing_deliverable": "Resolve D009 installer/helper/provisioner TCB, raw/admin writers and universal admission participation; composed disposable checks do not close it.",
+      "acceptance": "NOT_RUN_OPERATIONALLY",
+      "approval": "Separate least-privilege and full-writer-participation review",
+      "authority_granted": false
+    },
+    {
+      "id": "R06",
+      "topic": "customer request authority",
+      "canonical_contract": "Unchanged pending customer14 plus original4B/broker",
+      "source_paths": ["server/customer/broker.ts"],
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "status": "NOT_ACCEPTED",
+      "dependencies": ["R01", "R03"],
+      "missing_deliverable": "Sequence original recovery and approved P1-on13, then separately customer14 and exact4B/broker installation/grants/mapping; genuine Auth acceptance remains absent.",
+      "acceptance": "NOT_RUN_OPERATIONALLY",
+      "approval": "Existing P1 approval preserved; separate14/exact4B/Auth target authorization",
+      "authority_granted": false
+    },
+    {
+      "id": "R07",
+      "topic": "genuine current authority",
+      "canonical_contract": "Original Auth/session/member/mapping guards",
+      "source_paths": ["server/customer/broker-auth.ts"],
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "status": "NOT_ACCEPTED",
+      "dependencies": ["R01", "R06"],
+      "missing_deliverable": "Verify genuine current session/MFA, tenant, customer mapping, membership and revocation before admission, after waits, during reconciliation and after restore. Old backup cannot revive authority.",
+      "acceptance": "NOT_RUN_OPERATIONALLY",
+      "approval": "Separate genuine internal Auth/MFA acceptance",
+      "authority_granted": false
+    },
+    {
+      "id": "R08",
+      "topic": "original durable one-use admission",
+      "canonical_contract": "Original issuer and command-custody owner",
+      "source_paths": ["server/customer/request-gateway.ts"],
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "status": "NOT_ACCEPTED",
+      "dependencies": ["R04", "R05", "R06", "R07"],
+      "missing_deliverable": "Name original operational issuer/registrar/executor/read owner; pre-admission commit precedes consumer transaction. No replacement IDs, reset, replay or restored browser hold.",
+      "acceptance": "NOT_RUN_OPERATIONALLY",
+      "approval": "Separate original durable-custody implementation design approval",
+      "authority_granted": false
+    },
+    {
+      "id": "R09",
+      "topic": "canonical transaction boundary",
+      "canonical_contract": "Original canonical writer; not the projection",
+      "source_paths": ["server/customer/request-gateway.ts"],
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "status": "NOT_ACCEPTED",
+      "dependencies": ["R02", "R03", "R08"],
+      "missing_deliverable": "Canonical mutation and exact immutable receipt commit atomically within one reviewed transaction, with CAS and post-wait authority checks. Separate issuer commit remains a real failure window.",
+      "acceptance": "NOT_RUN_OPERATIONALLY",
+      "approval": "Separate transaction protocol/negative-case review",
+      "authority_granted": false
+    },
+    {
+      "id": "R10",
+      "topic": "receipt identity and authenticity",
+      "canonical_contract": "Original canonical receipt owner; signer/witness unassigned",
+      "source_paths": ["server/customer/request-gateway.ts"],
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "status": "NOT_ACCEPTED",
+      "dependencies": ["R08", "R09"],
+      "missing_deliverable": "Specify versioned allowlist, tenant/command/source digest, previous/new revision, actor/event/result IDs, uniqueness, append-only enforcement and witness/key lifecycle. Hash alone is not authenticity.",
+      "acceptance": "NOT_RUN_OPERATIONALLY",
+      "approval": "Separate receipt format, custody, key/witness and compatibility review",
+      "authority_granted": false
+    },
+    {
+      "id": "R11",
+      "topic": "success acknowledgment boundary",
+      "canonical_contract": "Original transport and admission owner",
+      "source_paths": ["server/customer/broker.ts"],
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "status": "NOT_ACCEPTED",
+      "dependencies": ["R08", "R09", "R10"],
+      "missing_deliverable": "ACK only after confirmed canonical commit, exact receipt validation and required original-custody durability. Lost ACK/commit/receipt/journal remains UNKNOWN.",
+      "acceptance": "NOT_RUN_OPERATIONALLY",
+      "approval": "Separate exact ACK protocol and crash-window review",
+      "authority_granted": false
+    },
+    {
+      "id": "R12",
+      "topic": "exact reconciliation",
+      "canonical_contract": "Original read-only receipt/source reader",
+      "source_paths": ["src/lib/workflows/saved-revision-exercise.ts"],
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "status": "NOT_ACCEPTED",
+      "dependencies": ["R07", "R10", "R11"],
+      "missing_deliverable": "Inspect only exact original tenant/source/command/receipt with current authority; missing/partial/conflicting evidence stays UNKNOWN. Never replay, substitute newest, rebind or resume.",
+      "acceptance": "NOT_RUN_OPERATIONALLY",
+      "approval": "Separate operational reader/privilege acceptance",
+      "authority_granted": false
+    },
+    {
+      "id": "R13",
+      "topic": "independent anti-rollback fence",
+      "canonical_contract": "Independent external custody owner UNASSIGNED",
+      "source_paths": ["docs/CUSTOMER_BROKER_INTEGRATION.md"],
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "status": "NOT_ACCEPTED",
+      "dependencies": ["R08", "R10"],
+      "missing_deliverable": "Design independently held spent-claim epoch/watermark, outage and clock behavior, all-writer fencing and old-database restore denial. Same-owner file/hash/sequence is insufficient.",
+      "acceptance": "NOT_RUN_OPERATIONALLY",
+      "approval": "Separate fence design, custody and independent adversarial acceptance",
+      "authority_granted": false
+    },
+    {
+      "id": "R14",
+      "topic": "matched backup set",
+      "canonical_contract": "Database/object/custody/key custodians UNASSIGNED",
+      "source_paths": ["docs/program/CYCLE23_CANONICAL_RESTART_PROPOSAL.md"],
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "status": "NOT_ACCEPTED",
+      "dependencies": ["R09", "R10", "R13"],
+      "missing_deliverable": "Prove matched DB timeline/LSN and schema hashes, canonical revision/receipt watermark, custody epoch, object versions and protected key references. Reject mixed/missing/corrupt members.",
+      "acceptance": "NOT_RUN_OPERATIONALLY",
+      "approval": "Separate exact backup policy/ownership/target approval",
+      "authority_granted": false
+    },
+    {
+      "id": "R15",
+      "topic": "backup confidentiality and key recovery",
+      "canonical_contract": "Security/privacy/key custodians UNASSIGNED",
+      "source_paths": ["SECURITY_MODEL.md"],
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "status": "NOT_ACCEPTED",
+      "dependencies": ["R10", "R14"],
+      "missing_deliverable": "Set tenant-safe encryption, independent recoverable keys, access/audit, retention/deletion, redaction and authorized restore scope. DB backup does not include Storage bytes or custom-role passwords.",
+      "acceptance": "NOT_RUN_OPERATIONALLY",
+      "approval": "Separate security/privacy/key-custody decision",
+      "authority_granted": false
+    },
+    {
+      "id": "R16",
+      "topic": "quarantined recovery admission",
+      "canonical_contract": "Recovery operator and independent supervisor UNASSIGNED",
+      "source_paths": ["docs/TWO_COMPUTER_REHEARSAL.md"],
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "status": "NOT_ACCEPTED",
+      "dependencies": ["R07", "R12", "R13", "R14", "R15"],
+      "missing_deliverable": "Restore only to fenced quarantine with all writers/providers/messages/payments OFF. Verify matched set and current external revocations; reconcile UNKNOWN read-only before separate admission.",
+      "acceptance": "NOT_RUN_OPERATIONALLY",
+      "approval": "Separate exact action-specific recovery and writer-admission authorization",
+      "authority_granted": false
+    },
+    {
+      "id": "R17",
+      "topic": "measured recovery acceptance",
+      "canonical_contract": "Independent physical recovery supervisor UNVERIFIED",
+      "source_paths": ["docs/program/CYCLE18_NOV4_MACBOOK_AIR_CHECKLIST.md"],
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "status": "NOT_ACCEPTED",
+      "dependencies": ["R14", "R15", "R16"],
+      "missing_deliverable": "Measure actual RPO/RTO and corruption/old-backup/duplicate/tenant/revocation behavior. Danny device readiness/pairing/ACK/heartbeat/primary-loss/cleanup must actually be demonstrated.",
+      "acceptance": "NOT_RUN_OPERATIONALLY",
+      "approval": "Original credential-free rehearsal scope only; operational verification separately approved",
+      "authority_granted": false
+    },
+    {
+      "id": "R18",
+      "topic": "derived projection boundaries",
+      "canonical_contract": "Existing Passport/cost/maintenance/priority allowlists",
+      "source_paths": ["src/lib/workflows/verified-owner-briefing.ts"],
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "status": "NOT_ACCEPTED",
+      "dependencies": ["R01", "R02", "R03", "R07"],
+      "missing_deliverable": "Rebuild authorized derived views from actual owners; never restore canonical state, genuine approval or completion from history, packets, projections or evidence files.",
+      "acceptance": "NOT_RUN_OPERATIONALLY",
+      "approval": "No new operational authority",
+      "authority_granted": false
+    },
+    {
+      "id": "R19",
+      "topic": "bounded implementation decision",
+      "canonical_contract": "Owner and independent architecture/security reviewers",
+      "source_paths": [
+        "docs/program/CYCLE23_CANONICAL_RESTART_PROPOSAL.md",
+        "docs/program/CYCLE23_RESTART_ARCHITECTURE_REVIEW.md"
+      ],
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "status": "NOT_ACCEPTED",
+      "dependencies": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18"
+      ],
+      "missing_deliverable": "Review precise finite prototype scope only after owners/consistency/dependencies are resolved; no adapter/schema is authorized by this register or a passing test.",
+      "acceptance": "NOT_RUN_OPERATIONALLY",
+      "approval": "Separate explicit implementation authorization required; currently ABSENT",
+      "authority_granted": false
+    }
+  ],
+  "source_evidence": [
+    {
+      "path": "SECURITY_MODEL.md",
+      "sha256": "94639f15294c7d39a8d85bdeead4cc5ad42985124fc7bca1a0f73c4f1eb1a0e8",
+      "bytes": 91258,
+      "proof": "SOURCE_REFERENCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+    },
+    {
+      "path": "docs/CUSTOMER_BROKER_INTEGRATION.md",
+      "sha256": "505f1f37a57402283bc02296bdd32559991187f6c3c79cd007c568a1909928a2",
+      "bytes": 10275,
+      "proof": "SOURCE_REFERENCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+    },
+    {
+      "path": "docs/TWO_COMPUTER_REHEARSAL.md",
+      "sha256": "94e09b63e5ac1a872bc744980c730f165a63fdcd235a50320ed602194149f0b1",
+      "bytes": 16636,
+      "proof": "SOURCE_REFERENCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+    },
+    {
+      "path": "docs/program/CYCLE18_NOV4_MACBOOK_AIR_CHECKLIST.md",
+      "sha256": "0111aa65432fea02cfde8c989bc3cf3273d5a5340fe9fc7683f612572064e056",
+      "bytes": 8386,
+      "proof": "SOURCE_REFERENCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+    },
+    {
+      "path": "docs/program/CYCLE19_NOV4_RECOVERY_QUICKCARD.md",
+      "sha256": "b86107fee46aa3f764fc9f3aed2168a9fc913f55f2ef6192ed06115cea63be5b",
+      "bytes": 2417,
+      "proof": "SOURCE_REFERENCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+    },
+    {
+      "path": "docs/program/CYCLE20_NOV4_RECOVERY_PREPARATION.md",
+      "sha256": "6f5cdeaee5324da9c4ce0872c10f1dfb6f3eded59288f356f7deba1059e5b47e",
+      "bytes": 2001,
+      "proof": "SOURCE_REFERENCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+    },
+    {
+      "path": "docs/program/CYCLE23_CANONICAL_RESTART_PROPOSAL.json",
+      "sha256": "dbb38403cfcc33db9d3c45fcd575ea96ccafb3a0a625ced17cc9734d37d2f95b",
+      "bytes": 5136,
+      "proof": "SOURCE_REFERENCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+    },
+    {
+      "path": "docs/program/CYCLE23_CANONICAL_RESTART_PROPOSAL.md",
+      "sha256": "19dace290d7f065c87ac9a306cc894efdd166419075634f5cb7baf5590e6ea5a",
+      "bytes": 18523,
+      "proof": "SOURCE_REFERENCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+    },
+    {
+      "path": "docs/program/CYCLE23_RESTART_ARCHITECTURE_REVIEW.json",
+      "sha256": "9c2f5dd6c495b819d717755c043e88a9c89ffcc1caf13a255936b0b9ac02441c",
+      "bytes": 7173,
+      "proof": "SOURCE_REFERENCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+    },
+    {
+      "path": "docs/program/CYCLE23_RESTART_ARCHITECTURE_REVIEW.md",
+      "sha256": "6fae0c409410535c15a357892356e4ee30770e0d6ac8207a5bf82033cd00dff7",
+      "bytes": 8401,
+      "proof": "SOURCE_REFERENCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+    },
+    {
+      "path": "recovery/distribution/propel-synthetic-rehearsal.zip",
+      "sha256": "32cb88f123e0fd776986f32d8508c913dbedc1ac977779708d1ba7218bbb8d59",
+      "bytes": 97334,
+      "proof": "SOURCE_REFERENCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+    },
+    {
+      "path": "server/customer/broker-auth.ts",
+      "sha256": "709018249d889504b860e4cf0f4caa5cbdd1c2b04f58c53226f4499c68fd46d6",
+      "bytes": 2980,
+      "proof": "SOURCE_REFERENCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+    },
+    {
+      "path": "server/customer/broker.ts",
+      "sha256": "f983d8ceaa0bb5cd2403008301580894dd7c9023cd2c6d2026c0a2a70c6b979e",
+      "bytes": 10883,
+      "proof": "SOURCE_REFERENCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+    },
+    {
+      "path": "server/customer/request-gateway.ts",
+      "sha256": "1472d74e4d3bd94c8be8ef33785e88f2c567dfc632f6c73c5ad6d9c8782a549c",
+      "bytes": 3820,
+      "proof": "SOURCE_REFERENCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+    },
+    {
+      "path": "server/field-lab/saved-evidence-files.ts",
+      "sha256": "23aba42d3aa4eca09f4113b5a56888897cfe865af41a046f762b740ce85ead7d",
+      "bytes": 6048,
+      "proof": "SOURCE_REFERENCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+    },
+    {
+      "path": "server/property/maintenance-persistence.ts",
+      "sha256": "2f9c51f7db442224e38c5f11f88c3daba4396121fb32b8129bdf5e9652551c1d",
+      "bytes": 4736,
+      "proof": "SOURCE_REFERENCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+    },
+    {
+      "path": "src/lib/operations.ts",
+      "sha256": "512c069eaafb54f6f3d80a1725db8933842b42322df1f152e6bd49867c384ca7",
+      "bytes": 34163,
+      "proof": "SOURCE_REFERENCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+    },
+    {
+      "path": "src/lib/phase3.ts",
+      "sha256": "5696907efb1f5191e2aa033436db52998a6fdf0f3ee62cf537e25ee62d65746a",
+      "bytes": 76342,
+      "proof": "SOURCE_REFERENCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+    },
+    {
+      "path": "src/lib/property.ts",
+      "sha256": "d7e9dd024b879919f2c06dd4389c1aaa85e8a6d410cd8d40e05add7533f30c7e",
+      "bytes": 37854,
+      "proof": "SOURCE_REFERENCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+    },
+    {
+      "path": "src/lib/workflows/saved-revision-exercise.ts",
+      "sha256": "ece23763cb3e9fcc7b55e13e3930580f7129ea136d8c3b6d00b2cd8b1bbf02ca",
+      "bytes": 39989,
+      "proof": "SOURCE_REFERENCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+    },
+    {
+      "path": "src/lib/workflows/verified-owner-briefing.ts",
+      "sha256": "c62d4cf776b854bcd4fd8ccd72d46ac094381a9ccf0049f4b1302fbd9fb638f6",
+      "bytes": 5701,
+      "proof": "SOURCE_REFERENCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+    }
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

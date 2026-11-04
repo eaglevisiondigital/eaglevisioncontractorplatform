@@ -1,4 +1,10 @@
-import { useLayoutEffect, useRef, useState, type ComponentType } from 'react';
+import {
+  useCallback,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type ComponentType,
+} from 'react';
 import { journeyEnabled } from '../../lib/workflows/journey-runtime';
 import { captureOperatingSources } from '../../lib/workflows/operating-center-runtime';
 import type { SavedRevisionPanelProps } from '../../lib/workflows/saved-revision-contract';
@@ -30,6 +36,7 @@ export type SavedWorkbenchPanels = Readonly<
 >;
 interface Props extends SavedRevisionPanelProps {
   reviewPanels?: SavedWorkbenchPanels;
+  taskActions?: Partial<SavedWorkbenchPanels>;
 }
 const exerciseLabels: Record<SavedSourceExercise, string> = {
   'visit-draft': 'Save synthetic visit draft revision',
@@ -92,7 +99,12 @@ export function SavedRevisionWorkbench(props: Props) {
     </section>
   );
 }
-function Workbench({ sources, selectedJobId, reviewPanels }: Props) {
+function Workbench({
+  sources,
+  selectedJobId,
+  reviewPanels,
+  taskActions,
+}: Props) {
   const [job, setJob] = useState(selectedJobId ?? ''),
     [tab, setTab] = useState<Tab>('field'),
     [visited, setVisited] = useState<Tab[]>(['field']),
@@ -107,6 +119,51 @@ function Workbench({ sources, selectedJobId, reviewPanels }: Props) {
     maintenance: MaintenanceSavedRevisions,
     priorities: PrioritySavedRevisions,
   };
+  const onSelectJob = useCallback<NonNullable<PanelProps['onSelectJob']>>(
+    (id, section) => {
+      const selected = resolveSavedWorkbenchSelection(sources, id, section);
+      setJob(selected.job_id);
+      if (selected.tab) {
+        setTab(selected.tab);
+        setVisited((previous) => [...new Set([...previous, selected.tab!])]);
+      }
+      setMessage(
+        'Exact authorized property job retained across the original review panels.',
+      );
+    },
+    [sources],
+  );
+  const onSourcesSaved = useCallback(() => {
+    setSearchRevision((n) => n + 1);
+    setMessage(
+      'Exact canonical source saved; read updates explicitly. Original holds remain unchanged.',
+    );
+  }, []);
+  const onContinue = useCallback<NonNullable<PanelProps['onContinue']>>(
+    (id, destination) => {
+      const current = captureOperatingSources(sources, {
+        enabled: true,
+        confirmed: true,
+      });
+      current.check();
+      if (id !== job) throw Error('Exact retained job required');
+      const map = {
+        field: 'field',
+        finance: 'finance',
+        invoice: 'finance',
+        customer: 'customer',
+        maintenance: 'maintenance',
+        priorities: 'priorities',
+      } as const;
+      if (destination === 'advanced')
+        throw Error('Use existing advanced review navigation');
+      const next = map[destination];
+      setTab(next);
+      setVisited((previous) => [...new Set([...previous, next])]);
+      current.check();
+    },
+    [sources, job],
+  );
   return (
     <section
       className="saved-revision-workbench"
@@ -155,58 +212,19 @@ function Workbench({ sources, selectedJobId, reviewPanels }: Props) {
       </nav>
       {tabs.map(([id]) => {
         const Panel = panels[id];
+        const Actions = taskActions?.[id];
+        const panelProps: PanelProps = {
+          sources,
+          enabled: true,
+          selectedJobId: job || undefined,
+          onSelectJob,
+          onSourcesSaved,
+          onContinue,
+        };
         return visited.includes(id) ? (
           <div key={`${job}:${id}`} hidden={tab !== id}>
-            <Panel
-              sources={sources}
-              enabled
-              selectedJobId={job || undefined}
-              onSelectJob={(id, section) => {
-                const selected = resolveSavedWorkbenchSelection(
-                  sources,
-                  id,
-                  section,
-                );
-                setJob(selected.job_id);
-                if (selected.tab) {
-                  setTab(selected.tab);
-                  setVisited((previous) => [
-                    ...new Set([...previous, selected.tab!]),
-                  ]);
-                }
-                setMessage(
-                  'Exact authorized property job retained across the original review panels.',
-                );
-              }}
-              onSourcesSaved={() => {
-                setSearchRevision((n) => n + 1);
-                setMessage(
-                  'Exact canonical source saved; read updates explicitly. Original holds remain unchanged.',
-                );
-              }}
-              onContinue={(id, destination) => {
-                const current = captureOperatingSources(sources, {
-                  enabled: true,
-                  confirmed: true,
-                });
-                current.check();
-                if (id !== job) throw Error('Exact retained job required');
-                const map = {
-                  field: 'field',
-                  finance: 'finance',
-                  invoice: 'finance',
-                  customer: 'customer',
-                  maintenance: 'maintenance',
-                  priorities: 'priorities',
-                } as const;
-                if (destination === 'advanced')
-                  throw Error('Use existing advanced review navigation');
-                const next = map[destination];
-                setTab(next);
-                setVisited((previous) => [...new Set([...previous, next])]);
-                current.check();
-              }}
-            />
+            <Panel {...panelProps} />
+            {Actions && <Actions {...panelProps} />}
           </div>
         ) : null;
       })}

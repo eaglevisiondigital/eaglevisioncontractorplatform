@@ -1,5 +1,23 @@
 # Shared contracts and integration ownership
 
+## Cycle24 native actions in the existing source workbench
+
+Optional per-tab taskActions use the same SavedRevisionPanelProps, selected job,
+original callbacks, tab keys and existing C23 panel identities. They do not own
+navigation, reseed sources or add another review wrapper. Current-source requirements
+remain default-OFF; Requirements remains the default selector. Original direct
+source destinations and authorized source checks stay intact.
+
+Field's additive exact task reader uses only the original pre-await correction
+intent; missing legacy binding stays UNVERIFIED. Native request review has one
+finite request-keyed intent in that same original registry, never a second hold.
+Operations.assignIntake has no server CAS or receipt: the same-tab fingerprint
+fence grants neither durability nor attribution after uncertainty. UNKNOWN is
+permanent/no replay; exact observed state is not an authenticated success receipt.
+Missing request-to-job FK stays UNKNOWN. Staff-review cancellation does not cancel
+a native maintenance plan or enrollment. Offline protocol admission must bind exact
+native visit/plan revisions as well as job/estimate source; no sync/restore writer.
+
 ## Cycle23 revision consistency in the same source host
 
 The finite Current source review selector belongs to the existing requirements

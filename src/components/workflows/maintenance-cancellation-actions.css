@@ -1,0 +1,98 @@
+.maintenance-cancellation-actions {
+  padding: 1rem;
+  border: 1px solid #d8ddd5;
+  border-radius: 1rem;
+  background: #fffdf8;
+  color: #253a30;
+  overflow-wrap: anywhere;
+}
+.maintenance-cancellation-actions h3 {
+  margin: 0 0 0.65rem;
+  color: var(--journey-primary, #254c3b);
+}
+.maintenance-cancellation-actions p {
+  line-height: 1.55;
+}
+.maintenance-cancellation-actions button {
+  min-height: 44px;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--journey-primary, #254c3b);
+  border-radius: 0.6rem;
+  background: var(--journey-primary, #254c3b);
+  color: white;
+  font: inherit;
+  cursor: pointer;
+}
+.maintenance-cancellation-actions button:focus-visible {
+  outline: 3px solid var(--journey-accent, #b48b46);
+  outline-offset: 3px;
+}
+.maintenance-cancellation-actions button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+.maintenance-cancellation-actions dl {
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.55fr) minmax(0, 1fr);
+  gap: 0.6rem 1rem;
+}
+.maintenance-cancellation-actions dt {
+  color: #526159;
+  font-weight: 600;
+}
+.maintenance-cancellation-actions dd {
+  margin: 0;
+  min-width: 0;
+}
+@media (max-width: 760px) {
+  .maintenance-cancellation-actions dl {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+  .maintenance-cancellation-actions dd {
+    margin-bottom: 0.65rem;
+  }
+  .maintenance-cancellation-actions button {
+    width: 100%;
+  }
+}
+
+.maintenance-cancellation-actions label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0.8rem 0;
+  font-weight: 600;
+}
+.maintenance-cancellation-actions select,
+.maintenance-cancellation-actions input[type='date'] {
+  min-height: 44px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  padding: 0.65rem;
+  color: #253a30;
+  border: 1px solid #a8b3a8;
+  border-radius: 0.6rem;
+  background: #fff;
+}
+.maintenance-cancellation-actions input:focus-visible,
+.maintenance-cancellation-actions select:focus-visible {
+  outline: 3px solid var(--journey-accent, #b48b46);
+  outline-offset: 3px;
+}
+.maintenance-cancellation-actions .maintenance-cancellation-actions__confirm {
+  flex-direction: row;
+  align-items: center;
+  min-height: 44px;
+}
+.maintenance-cancellation-actions__confirm input {
+  min-width: 24px;
+  min-height: 24px;
+}
+.maintenance-cancellation-actions__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
