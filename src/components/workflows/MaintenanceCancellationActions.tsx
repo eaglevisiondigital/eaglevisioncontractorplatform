@@ -156,7 +156,7 @@ function ReviewActions({
     }
   }
   async function select(value: string) {
-    if (!review) return;
+    if (!review || attempted || terminalAttempted) return;
     const next = await selectPlanCancellationOccurrence(review, value);
     if (life.current.alive) {
       setSelected(next);
@@ -261,10 +261,24 @@ function ReviewActions({
         Requested staff review purpose
         <select
           value={purpose}
-          disabled={busy || !!selected || !observationAccess}
+          disabled={
+            busy || attempted || terminalAttempted || !observationAccess
+          }
           onChange={(e) => {
-            setPurpose(e.target.value as MaintenanceReviewPurpose);
+            const next = e.target.value as MaintenanceReviewPurpose;
+            if (
+              attempted ||
+              terminalAttempted ||
+              !maintenanceReviewPurposes.includes(next)
+            )
+              return;
+            setPurpose(next);
             setReview(undefined);
+            setSelected(undefined);
+            setKey('');
+            setProposedOn('');
+            setKind('follow_up');
+            setPrepared(false);
             resetInputs();
           }}
         >
@@ -296,7 +310,9 @@ function ReviewActions({
             Exact cancellation review occurrence
             <select
               value={key}
-              disabled={busy || !!selected || !observationAccess}
+              disabled={
+                busy || attempted || terminalAttempted || !observationAccess
+              }
               onChange={(e) => void run(() => select(e.target.value))}
             >
               <option value="">Choose exact occurrence</option>
