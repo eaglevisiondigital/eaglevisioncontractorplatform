@@ -27,6 +27,13 @@ const checker: {
 } = await import(new URL('../scripts/check-cycle21.mjs', import.meta.url).href);
 const lineage: {
   cycle25SourcePorts: Pick<Ports, 'git'>;
+  cycle32BusySource: unknown;
+  validateCycle32BusySpec: (spec: unknown) => Record<string, unknown>;
+  admitCycle32BusyForward: (
+    path: string,
+    current: Buffer,
+    previous: Buffer,
+  ) => Record<string, unknown>;
 } = await import(
   new URL('../scripts/cycle25-source-lineage.mjs', import.meta.url).href
 );
@@ -74,7 +81,28 @@ const retainedCheckers = await Promise.all(
 );
 
 it('the actual current source reaches the fixed reviewed endpoint without changing original evidence', () => {
-  expect(readFileSync(ownerPath)).toEqual(reviewed);
+  // Advance only this current-file expectation to the exact reviewed endpoint.
+  // Original C31 author/manifest/hash/blob and all denial cases remain unchanged.
+  const current = readFileSync(ownerPath);
+  const currentAuthor = 'ec63030de8c0faceebd1ec9a645e9ea0dcf76383';
+  expect(
+    lineage.validateCycle32BusySpec(lineage.cycle32BusySource),
+  ).toMatchObject({ source_commit: currentAuthor });
+  expect(
+    lineage.admitCycle32BusyForward(ownerPath, current, reviewed),
+  ).toMatchObject({
+    source_commit: currentAuthor,
+    authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+  });
+  expect(current).toEqual(
+    lineage.cycle25SourcePorts.git(currentAuthor, ownerPath),
+  );
+  expect(reviewed).toEqual(
+    lineage.cycle25SourcePorts.git(
+      '7b377aeffac11855a5dfdfaa86719078e70a5260',
+      ownerPath,
+    ),
+  );
   expect(original).toEqual(lineage.cycle25SourcePorts.git(parent, ownerPath));
   expect(original.equals(reviewed)).toBe(false);
   expect(ownerFile(manifest())).toMatchObject({

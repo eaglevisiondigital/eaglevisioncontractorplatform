@@ -21,6 +21,11 @@ jobs:
       - run: npm ci
       # Install only the nine demonstrated missing fonts from signed Ubuntu
       # archives, then independently require every pinned browser dependency.
+      - name: Observe this runner's source and mirror shape without changing trust
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/cycle32
+          node scripts/cycle32-runner-mirror-probe.mjs > artifacts/cycle32/passport-runner-mirror.json
       - name: Install reviewed missing Chromium fonts from signed Ubuntu archives
         run: node scripts/cycle30-chromium-dependencies.mjs
       - name: Verify Chromium system dependencies without privileged changes
@@ -32,6 +37,7 @@ jobs:
         with:
           name: passport-timeline-synthetic-previews
           path: |
+            artifacts/cycle32/passport-runner-mirror.json
             artifacts/property/passport-timeline-*.png
             test-results/
           retention-days: 7

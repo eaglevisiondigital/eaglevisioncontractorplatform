@@ -1,0 +1,39 @@
+name: Cycle 32 read-only runner mirror diagnosis
+on:
+  push:
+    branches: ['codex/cycle32-runner-mirror-diagnosis']
+    paths:
+      - '.github/workflows/cycle32-runner-mirror-diagnosis.yml'
+      - '.github/workflows/passport-timeline.yml'
+      - 'scripts/cycle32-runner-mirror-probe.mjs'
+      - 'tests/cycle32-runner-mirror-probe.test.ts'
+      - 'docs/program/CYCLE32_RUNNER_MIRROR_DIAGNOSIS.md'
+permissions:
+  contents: read
+concurrency:
+  group: cycle32-runner-mirror-diagnosis-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  mirror-probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        sample: [1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+      - name: Observe signed-source shape and redacted mirror priorities only
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/cycle32
+          node scripts/cycle32-runner-mirror-probe.mjs > artifacts/cycle32/runner-mirror.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle32-runner-mirror-${{ matrix.sample }}
+          path: artifacts/cycle32/runner-mirror.json
+          retention-days: 7
