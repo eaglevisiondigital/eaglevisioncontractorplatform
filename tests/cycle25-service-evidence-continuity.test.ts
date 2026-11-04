@@ -91,8 +91,8 @@ for (const brand of [0, 1, 2]) {
     expect(result.request_job_link).toBe(
       'UNKNOWN_ABSENT_FROM_CURRENT_SOURCE_CONTRACT',
     );
-    expect(result.physical_completion).toBe('UNVERIFIED');
-    expect(result.customer_acceptance).toBe('UNVERIFIED');
+    expect(result.physical_completion).toBe('UNKNOWN');
+    expect(result.customer_acceptance).toBe('UNKNOWN');
     expect(result.history_completeness).toBe('UNKNOWN');
     expect(f.sources.property.read(f.sources.company.id)).toEqual(before);
     expect(f.expected.can_edit).toBe(true);
