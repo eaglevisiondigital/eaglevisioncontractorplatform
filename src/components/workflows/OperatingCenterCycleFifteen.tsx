@@ -39,6 +39,7 @@ export function OperatingCenterCycleFifteen() {
     'requirements' | 'consistency'
   >('requirements');
   const [corrections, setCorrections] = useState(false);
+  const prep = corrections ? prepareCorrectionPreviewSources : undefined;
   const [savedEvidence, setSavedEvidence] = useState(false);
   const [savedRevisions, setSavedRevisions] = useState(false);
   const [dailyWorkbench, setDailyWorkbench] = useState(false);
@@ -147,7 +148,7 @@ export function OperatingCenterCycleFifteen() {
       <OperatingCenterCycleThirteen
         prepareSources={
           requirements || corrections
-            ? prepareCorrectionPreviewSources
+            ? (prep ?? prepareCorrectionPreviewSources)
             : undefined
         }
         additionalReviewGroups={
