@@ -1,3 +1,18 @@
+# Cycle32 · original input, canonical completeness and guarded filtering
+
+Original ordinary task and Voice input remain live across original source/hash/CAS
+boundaries; cloneability fences reject executable Proxy substitution before custody
+and discard their clone. No failed/UNKNOWN hold is renewed. Profit Guard compares
+already-read canonical labor completeness with its immutable review; changed coverage
+is STALE, never posting or invoice authority. Owner filtering keeps its original
+before/after currentness checks and separate comparison guard without an extra
+synchronous render check or cached permission. Source admission is build/test only.
+
+The owner-witnessed November4 main synthetic network-loss result is accepted only
+at that precise evidence level. It grants no engineering witness, complete R0 suite,
+power-loss durability, hosted recovery, privileged role assignment or new action
+permission. Existing frozen approvals and original hashes remain unchanged.
+
 # Cycle30 · validate before custody and measure before attributing failures
 
 Preflight invalid local presentation values with their existing canonical validator before consuming the original attempt; actual attempted/UNKNOWN holds remain one-use. Reject noncloneable/captured-field-inconsistent Customer facade inputs but pass the original ordinary form into existing live hash/CAS checks. Reuse the complete guarded owner-card reader once per synchronous render, without caching current authority. A measured render improvement is not proof of a sole hosted timeout cause.

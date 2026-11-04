@@ -1,3 +1,13 @@
+# Cycle32 · original input, canonical completeness and guarded filtering
+
+Original ordinary task and Voice input remain live across original source/hash/CAS
+boundaries; cloneability fences reject executable Proxy substitution before custody
+and discard their clone. No failed/UNKNOWN hold is renewed. Profit Guard compares
+already-read canonical labor completeness with its immutable review; changed coverage
+is STALE, never posting or invoice authority. Owner filtering keeps its original
+before/after currentness checks and separate comparison guard without an extra
+synchronous render check or cached permission. Source admission is build/test only.
+
 # Cycle30 · original validation and authority boundaries
 
 Canonical maintenanceDate precedes an original local attempt; invalid input cannot consume custody. Customer action facade rejects descriptor-Proxy/mismatched captured primitives, while the original ordinary object and live-input/hash/CAS/UNKNOWN checks remain authoritative. Original owner-card projection performs one full current-source validation per synchronous render; comparison/action/post-await guards remain unchanged. Native Field uncertainty denies continuation and permits exact read-only reconciliation. Finance/Offline have no new runtime source. Build/test source forwards confer no authentication, business custody or recovery authority.

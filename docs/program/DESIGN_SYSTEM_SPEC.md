@@ -1,3 +1,11 @@
+# Cycle32 · preserve existing screens while correcting native consumers
+
+No markup, CSS, navigation, artwork, approved brand asset or layout is changed.
+Keep existing exact-source controls, explicit confirmation and UNKNOWN explanations.
+Measure reduced source reads separately from actual browser performance. Responsive
+keyboard/Axe/screenshot evidence is not visual approval; Operating Center and advanced
+add-on visual scopes remain PENDING. The original three approved scopes stay locked.
+
 # Cycle30 · preserve approved designs during reliability corrections
 
 Use existing maintenance input/validity semantics and labelled explanation when an empty or invalid date prevents preparation. Keep the attempted/UNKNOWN field holds. Customer correction is nonvisual; owner render removes duplicate work without changing approved markup/navigation. Field has coverage-only changes. No CSS, artwork, branding, locked layouts or navigation system changed. Actual three-brand desktop/tablet/mobile keyboard/Axe/overflow coverage is evidence only; Operating Center/add-on visual approval remains separate and PENDING.

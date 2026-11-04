@@ -1,3 +1,26 @@
+# Cycle32 · source continuity and owner-witnessed recovery evidence
+
+Four existing-consumer corrections address exact task input, confirmed Voice
+transcripts, canonical labor completeness and repeated owner-source reads.
+[Validation](docs/program/CYCLE32_VALIDATION.md) and
+[source manifest](docs/program/CYCLE32_SOURCE_MANIFEST.json) distinguish immutable
+authors, combined execution, independent review and current-head CI.
+No new business store, engine, route or restoration adapter is added.
+
+**OWNER-WITNESSED MAIN SYNTHETIC LOSS SCENARIO PASS** records November4 primary
+Wi-Fi loss, independent Air continuation and bounded synthetic result only.
+[Recovery evidence draft235](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/235)
+preserves exact hashes and previous UNKNOWN/aborted history. Independent engineering
+witness, all seven complete physical cases, hosted recovery and production durability
+remain unaccepted. Older unavailable/NOT_RUN entries below are historical checkpoints.
+D1–D3 still require named people, current Auth/MFA, all installed writers/privileges,
+atomic receipts/durableACK, external rollback protection and matched recovery;
+11 accountable people remain UNASSIGNED and A01–A12 NOT_RUN.
+
+All original designs/branding, protected files, migrations, frozen P1/four artifacts,
+customer14/4B, Netlify, NMI, financial and production gates remain unchanged.
+Release1.0 remains **NOT READY / NOT AUTHORIZED**.
+
 # Cycle31 · exact canonical corrections and Linux acceptance
 
 Draft[233](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/233)
