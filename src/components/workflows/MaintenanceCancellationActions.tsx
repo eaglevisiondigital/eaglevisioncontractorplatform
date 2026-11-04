@@ -4,6 +4,7 @@ import { journeyEnabled } from '../../lib/workflows/journey-runtime';
 import {
   maintenanceReviewPurposes,
   readPlanCancellationReview,
+  rereadPlanCancellationReview,
   planCancellationFacts,
   planCancellationOccurrenceFacts,
   verifyPlanCancellationRequirements,
@@ -120,20 +121,36 @@ function ReviewActions({
     setConfirmed(false);
   }
   async function load() {
-    const next = await readPlanCancellationReview(
-      sources,
-      selectedJobId,
-      purpose,
-      gate.current,
-    );
+    if (attempted || terminalAttempted) return;
+    setVerified(false);
+    setConfirmed(false);
+    const next = review
+      ? await rereadPlanCancellationReview(
+          review,
+          sources,
+          selectedJobId,
+          gate.current,
+        )
+      : await readPlanCancellationReview(
+          sources,
+          selectedJobId,
+          purpose,
+          gate.current,
+        );
+    const retained =
+      key && next.desk.rows.some((row) => row.key === key)
+        ? await selectPlanCancellationOccurrence(next, key)
+        : undefined;
     if (life.current.alive) {
       setReview(next);
-      setSelected(undefined);
-      setKey('');
-      setVerified(false);
+      setSelected(retained);
       setPrepared(false);
       setStatus(
-        'Choose an exact displayed occurrence. Preparation remains blocked from sending.',
+        key
+          ? retained
+            ? 'Exact occurrence and purpose retained from current sources. Previous verification and confirmation are cleared.'
+            : 'Previously selected exact occurrence is unavailable. No fallback was selected; choose a displayed source explicitly.'
+          : 'Choose an exact displayed occurrence. Preparation remains blocked from sending.',
       );
     }
   }
@@ -218,6 +235,11 @@ function ReviewActions({
     facts = undefined;
     occurrence = undefined;
   }
+  const currentSelection = !!occurrence;
+  if (!currentSelection && (verified || confirmed)) {
+    setVerified(false);
+    setConfirmed(false);
+  }
   return (
     <section
       className="maintenance-cancellation-actions"
@@ -248,11 +270,19 @@ function ReviewActions({
       </label>
       <button
         type="button"
-        disabled={busy || !!selected}
+        disabled={busy || attempted || terminalAttempted}
         onClick={() => void run(load)}
       >
         Read staff cancellation sources
       </button>
+      {selected && !currentSelection && (
+        <p role="alert">
+          Exact maintenance source or staff access changed. Previous
+          confirmation and verification are withheld. Reread the exact source
+          before an unattempted review; attempted or UNKNOWN reviews reconcile
+          only.
+        </p>
+      )}
       {facts && (
         <>
           <label>
@@ -263,6 +293,11 @@ function ReviewActions({
               onChange={(e) => void run(() => select(e.target.value))}
             >
               <option value="">Choose exact occurrence</option>
+              {key && !facts.rows.some((row) => row.key === key) && (
+                <option value={key} disabled>
+                  Unavailable exact occurrence · {key}
+                </option>
+              )}
               {facts.rows.map((row) => (
                 <option key={row.key} value={row.key}>
                   {row.due_on} · {row.plan_reference.id} · revision{' '}
@@ -342,7 +377,7 @@ function ReviewActions({
                 Verify selected maintenance requirements
               </button>
               <p>
-                {verified
+                {verified && currentSelection
                   ? 'Current requirements checked for this selection. Original action rechecks before proceeding.'
                   : 'Current requirements not verified; prepare and terminal actions remain disabled.'}
               </p>
@@ -353,7 +388,7 @@ function ReviewActions({
             <input
               type="date"
               value={proposedOn}
-              disabled={busy || attempted}
+              disabled={busy || attempted || !currentSelection}
               onChange={(e) => {
                 setProposedOn(e.target.value);
                 resetInputs();
@@ -364,7 +399,7 @@ function ReviewActions({
             Staff review kind
             <select
               value={kind}
-              disabled={busy || attempted}
+              disabled={busy || attempted || !currentSelection}
               onChange={(e) => {
                 setKind(e.target.value as 'follow_up' | 'renewal');
                 resetInputs();
@@ -377,8 +412,8 @@ function ReviewActions({
           <label className="maintenance-cancellation-actions__confirm">
             <input
               type="checkbox"
-              checked={confirmed}
-              disabled={busy}
+              checked={confirmed && currentSelection}
+              disabled={busy || !currentSelection}
               onChange={(e) => setConfirmed(e.target.checked)}
             />
             I confirm the exact source and requested staff-review action; no
@@ -387,7 +422,13 @@ function ReviewActions({
           <div className="maintenance-cancellation-actions__buttons">
             <button
               type="button"
-              disabled={busy || !confirmed || !verified || attempted}
+              disabled={
+                busy ||
+                !currentSelection ||
+                !confirmed ||
+                !verified ||
+                attempted
+              }
               onClick={() => void run(prepare)}
             >
               Prepare blocked staff review
@@ -396,6 +437,7 @@ function ReviewActions({
               type="button"
               disabled={
                 busy ||
+                !currentSelection ||
                 !confirmed ||
                 !verified ||
                 !prepared ||
@@ -409,6 +451,7 @@ function ReviewActions({
               type="button"
               disabled={
                 busy ||
+                !currentSelection ||
                 !confirmed ||
                 !verified ||
                 !prepared ||
