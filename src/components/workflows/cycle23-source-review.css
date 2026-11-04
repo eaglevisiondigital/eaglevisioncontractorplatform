@@ -1,0 +1,8 @@
+.task-review-options .source-review-mode {
+  flex-wrap: wrap;
+}
+.source-review-mode select {
+  min-height: 44px;
+  max-width: 100%;
+  min-width: 0;
+}

@@ -1,0 +1,136 @@
+{
+  "schema": "propel-canonical-restart-proposal-v1",
+  "status": "PROPOSED_REQUIRES_SEPARATE_APPROVAL",
+  "source_commit": "3e35fb29dd4488bf655446712e5a013e06f8ed1e",
+  "implementation_authorized": false,
+  "operational_restoration_adapter": false,
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "review_status": "PENDING_INDEPENDENT_REVIEW",
+  "source_owners": [
+    {
+      "records": "customer/location/consent",
+      "source": "src/lib/operations.ts",
+      "owner": "Operations",
+      "restoration_accepted": false
+    },
+    {
+      "records": "estimates/versions/jobs/costs/time",
+      "source": "src/lib/phase3.ts",
+      "owner": "Phase3Repository",
+      "restoration_accepted": false
+    },
+    {
+      "records": "plans/visits/published reports",
+      "source": "src/lib/property.ts",
+      "owner": "PropertyRepository",
+      "restoration_accepted": false
+    },
+    {
+      "records": "maintenance commands and receipts",
+      "source": "server/property/maintenance-persistence.ts",
+      "owner": "MaintenancePersistence",
+      "scope": "UNWIRED_PROPOSAL_TEST_ONLY",
+      "restoration_accepted": false
+    },
+    {
+      "records": "customer requests and receipts",
+      "source": "server/customer/broker.ts",
+      "owner": "CustomerRequestBroker",
+      "scope": "ORIGINAL_4B_BROKER_NOT_OPERATIONALLY_ACCEPTED",
+      "restoration_accepted": false
+    },
+    {
+      "records": "work-order/schedule revision laboratory",
+      "source": "server/field-lab/work-order-revisions.ts",
+      "owner": "EXISTING_TEST_ENGINE_ONLY",
+      "scope": "NO_OPERATIONAL_DURABLE_OWNER_ACCEPTED",
+      "restoration_accepted": false
+    },
+    {
+      "records": "saved workflow references and original custody",
+      "source": "src/lib/workflows/saved-revision-exercise.ts",
+      "owner": "EXISTING_SESSION_ONLY_CUSTODY",
+      "scope": "NO_SECOND_HOLD_OR_REPLAY",
+      "restoration_accepted": false
+    },
+    {
+      "records": "historical evidence files",
+      "source": "server/field-lab/saved-evidence-files.ts",
+      "owner": "HISTORICAL_OBSERVATIONS_ONLY",
+      "canonical_business_state": false,
+      "restoration_accepted": false
+    }
+  ],
+  "required_identity": [
+    "organization",
+    "current_principal",
+    "customer",
+    "property_or_location",
+    "job_when_recorded",
+    "source_kind",
+    "source_id",
+    "source_version",
+    "expected_revision",
+    "original_command_digest",
+    "original_receipt"
+  ],
+  "consistency_requirements": {
+    "canonical_mutation_and_receipt": "SAME_AUTHORIZED_CANONICAL_TRANSACTION",
+    "original_custody": "DURABLE_ADMISSION_BEFORE_TRANSMISSION_NO_SECOND_STORE",
+    "separate_issuer_commit": "PRESERVE_ORIGINAL_CONTRACT_NOT_DISTRIBUTED_ATOMICITY",
+    "ack": "CONFIRMED_CANONICAL_COMMIT_EXACT_RECEIPT_AND_REQUIRED_CUSTODY_DURABILITY",
+    "ambiguity": "UNKNOWN_EXACT_READ_ONLY_RECONCILIATION",
+    "automatic_retry": false,
+    "replacement_command_identity": false,
+    "missing_receipt_proves_failure": false,
+    "hash_alone_proves_authenticity": false,
+    "old_backup_may_revive_claim": false
+  },
+  "unaccepted_implementation_gates": [
+    "EXACT_OPERATIONAL_OWNER_AND_COMPLETE_WRITER_PARTICIPATION",
+    "GENUINE_CURRENT_AUTH_MEMBERSHIP_MFA_AND_CUSTOMER_MAPPING",
+    "EXACT_SCHEMA_OWNERSHIP_RLS_GRANTS_COMPOSITE_TENANT_FOREIGN_KEYS",
+    "ORIGINAL_CUSTODY_COMMIT_RECEIPT_AND_ACK_FAILURE_CONSISTENCY",
+    "INDEPENDENT_ROLLBACK_RESISTANT_CUSTODY_FENCE",
+    "AUTHENTICATED_IMMUTABLE_RECEIPT_INTEGRITY_AND_HIGH_WATER_MARK",
+    "MATCHED_DATABASE_CUSTODY_OBJECT_AND_KEY_BACKUP_SET",
+    "CURRENT_REVOCATIONS_NOT_REVIVED_BY_RESTORE",
+    "REVIEWED_ENCRYPTION_KEY_CUSTODY_RETENTION_DELETION_AND_PRIVACY",
+    "POWER_PROCESS_DISK_ACK_CONCURRENCY_AND_CORRUPTION_ACCEPTANCE",
+    "ACTUAL_INDEPENDENT_RESTORE_NO_REPLAY_AND_CLEANUP",
+    "MEASURED_RPO_RTO_AND_SEPARATE_EXACT_OWNER_APPROVAL"
+  ],
+  "backup_facts": {
+    "database_backup_includes_storage_object_bytes": false,
+    "downloadable_daily_backup_includes_custom_role_passwords": false,
+    "target_backup_pitr_encryption_restore_verified": false,
+    "rpo": "UNMEASURED",
+    "rto": "UNMEASURED"
+  },
+  "nov4_synthetic_recovery": {
+    "checklist": "docs/program/CYCLE18_NOV4_MACBOOK_AIR_CHECKLIST.md",
+    "device_readiness": "UNVERIFIED",
+    "physical_pairing_recovery_cleanup": "NOT_RUN",
+    "kit_rebuild": false,
+    "repeat_completed_25_offline_checks": false,
+    "operational_credentials": false,
+    "accepts_future_business_restoration": false
+  },
+  "public_references": [
+    "https://supabase.com/docs/guides/database/postgres/row-level-security",
+    "https://supabase.com/changelog/45329-breaking-change-tables-not-exposed-to-data-and-graphql-api-automatically",
+    "https://supabase.com/docs/guides/platform/backups",
+    "https://supabase.com/docs/guides/auth/sessions",
+    "https://www.postgresql.org/docs/17/backup.html"
+  ],
+  "authority": {
+    "hosted_mutations": false,
+    "schema_installation": false,
+    "credential_retrieval": false,
+    "financial_execution": false,
+    "dispatch": false,
+    "communications": false,
+    "merge": false,
+    "deployment": false
+  }
+}

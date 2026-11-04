@@ -18,6 +18,7 @@ import { cycle18WorkflowGroups } from './OperatingCenterCycleEighteen';
 import { cycle20EvidenceGroups } from './OperatingCenterCycleTwenty';
 import { cycle19SavedGroups } from './OperatingCenterCycleNineteen';
 import './task-review-paths.css';
+import './cycle23-source-review.css';
 
 const guided = taskReviewGroups({
   'schedule-work-order-continuity': (props) => (
@@ -60,7 +61,7 @@ export function OperatingCenterCycleFifteen() {
             />
             Use current source requirements
           </label>
-          <label>
+          <label className="source-review-mode">
             Current source review
             <select
               value={sourceReview}
