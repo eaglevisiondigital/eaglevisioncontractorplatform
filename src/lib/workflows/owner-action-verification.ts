@@ -121,10 +121,12 @@ export function compareOwnerActionRefresh(
     )
       throw Error('Exact original previous selection required');
     const difference = comparison.rows.filter((item) => item.key === p.key);
+    // A global original-card hash can change after an unrelated canonical edit.
+    // Only the identical selected current row can retain presentation context;
+    // the original comparison remains unchanged and every action is reverified.
     const unchanged =
       row &&
       difference.length === 1 &&
-      difference[0].status === 'UNCHANGED' &&
       row.state !== 'UNKNOWN_SOURCE_UNAVAILABLE' &&
       JSON.stringify(old) === JSON.stringify(row);
     status = !row
