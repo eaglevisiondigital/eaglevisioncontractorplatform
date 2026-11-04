@@ -157,6 +157,18 @@ function ReviewActions({
   }
   async function select(value: string) {
     if (!review || attempted || terminalAttempted) return;
+    if (value === '') {
+      setSelected(undefined);
+      setKey('');
+      setProposedOn('');
+      setKind('follow_up');
+      setPrepared(false);
+      resetInputs();
+      setStatus(
+        'Occurrence selection cleared. Choose an exact source explicitly; no staff review was prepared or replaced.',
+      );
+      return;
+    }
     const next = await selectPlanCancellationOccurrence(review, value);
     if (life.current.alive) {
       setSelected(next);
