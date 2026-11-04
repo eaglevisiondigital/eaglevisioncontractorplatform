@@ -1,4 +1,4 @@
-name: Cycle 31 original-budget failed Foundation cases
+name: Cycle 31 original-budget missing nested Foundation cases
 on:
   push:
     branches: ['codex/cycle31-ci-reliability']
@@ -30,17 +30,17 @@ jobs:
           cache-dependency-path: application/package-lock.json
       - run: npm ci
         working-directory: application
-      - name: Original fourteen failed cases without timeout or assertion changes
+      - name: Only four previously unselected nested cases without timeout or assertion changes
         id: original-tests
         working-directory: application
-        run: node ../diagnostics/scripts/cycle31-foundation-selected-14.mjs run
-      - name: Retain actual fourteen outcomes and explicit deselection boundaries
+        run: node ../diagnostics/scripts/cycle31-foundation-selected-14.mjs run-missing-four
+      - name: Retain actual four outcomes and explicit deselection boundaries
         if: always() && steps.original-tests.outcome != 'skipped'
         working-directory: application
-        run: node ../diagnostics/scripts/cycle31-foundation-selected-14.mjs collect
+        run: node ../diagnostics/scripts/cycle31-foundation-selected-14.mjs collect-missing-four
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: cycle31-original-budget-foundation-selected14
-          path: application/artifacts/cycle31/foundation-selected-14/
+          name: cycle31-original-budget-foundation-missing4
+          path: application/artifacts/cycle31/foundation-missing-four/
           retention-days: 7
