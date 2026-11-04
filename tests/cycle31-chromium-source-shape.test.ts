@@ -49,8 +49,9 @@ it.each([
   mirrors.replace('priority:2', 'priority:1'),
   mirrors.replace('priority:3', 'priority:4'),
   mirrors.replace('priority:1', 'priority:1 trusted=yes'),
-])('denies missing, duplicate, extra or option-bearing mirror targets', (s) =>
-  expect(() => validateUbuntuMirrors(s)).toThrow(),
+])(
+  'denies missing, duplicate, extra or option-bearing mirror targets %#',
+  (s) => expect(() => validateUbuntuMirrors(s)).toThrow(),
 );
 it.each(['\nTrusted: yes', '\nAllow-Insecure: yes', '\nSigned-By: /tmp/key'])(
   'comments do not hide untrusted source fields %s',
