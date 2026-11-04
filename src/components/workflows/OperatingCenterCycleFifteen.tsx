@@ -1,5 +1,6 @@
 import { prepareCorrectionPreviewSources } from '../../lib/workflows/correction-preview-sources';
 import { cycle22RequirementGroups } from './OperatingCenterCycleTwentyTwo';
+import { cycle23ConsistencyGroups } from './OperatingCenterCycleTwentyThree';
 import { cycle21CorrectionGroups } from './OperatingCenterCycleTwentyOne';
 import { useState } from 'react';
 import { OperatingCenterCycleThirteen } from './OperatingCenterCycleThirteen';
@@ -33,6 +34,9 @@ const guided = taskReviewGroups({
 
 export function OperatingCenterCycleFifteen() {
   const [requirements, setRequirements] = useState(false);
+  const [sourceReview, setSourceReview] = useState<
+    'requirements' | 'consistency'
+  >('requirements');
   const [corrections, setCorrections] = useState(false);
   const [savedEvidence, setSavedEvidence] = useState(false);
   const [savedRevisions, setSavedRevisions] = useState(false);
@@ -55,6 +59,21 @@ export function OperatingCenterCycleFifteen() {
               onChange={(event) => setRequirements(event.target.checked)}
             />
             Use current source requirements
+          </label>
+          <label>
+            Current source review
+            <select
+              value={sourceReview}
+              disabled={!requirements}
+              onChange={(event) => {
+                const next = event.target.value;
+                if (next === 'requirements' || next === 'consistency')
+                  setSourceReview(next);
+              }}
+            >
+              <option value="requirements">Requirements</option>
+              <option value="consistency">Revision consistency</option>
+            </select>
           </label>
           <label>
             <input
@@ -132,7 +151,9 @@ export function OperatingCenterCycleFifteen() {
         }
         additionalReviewGroups={
           requirements
-            ? cycle22RequirementGroups
+            ? sourceReview === 'consistency'
+              ? cycle23ConsistencyGroups
+              : cycle22RequirementGroups
             : corrections
               ? cycle21CorrectionGroups
               : savedEvidence

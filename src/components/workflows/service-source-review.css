@@ -1,0 +1,112 @@
+.service-source-review {
+  min-width: 0;
+  padding: 1.3rem;
+  color: #233d32;
+  background: #fff;
+  border: 1px solid #d9e1da;
+  border-radius: 18px;
+  line-height: 1.55;
+}
+.service-source-review > header {
+  position: static;
+  display: block;
+  height: auto;
+  min-height: 0;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+}
+.service-source-review > header > p:first-child {
+  color: #3e594f;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.service-source-review > header h2,
+.service-source-review > header p,
+.ssr-review h3,
+.ssr-review p,
+.ssr-review dd,
+.ssr-review li {
+  overflow-wrap: anywhere;
+}
+.ssr-review button,
+.service-source-review > details > summary {
+  box-sizing: border-box;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 0.65rem 1rem;
+  font: inherit;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+.ssr-review button {
+  margin: 0.35rem 0.4rem 0.35rem 0;
+  color: #fff;
+  border: 1px solid var(--journey-primary, #247364);
+  border-radius: 8px;
+  background: var(--journey-primary, #247364);
+}
+.ssr-review button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.ssr-context,
+.ssr-edges,
+.ssr-reports {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.ssr-edges {
+  padding-left: 1.5rem;
+}
+.ssr-context > div,
+.ssr-edges > li,
+.ssr-reports > article,
+.ssr-inspection {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  background: #f8f8f2;
+}
+.ssr-review dt {
+  color: #3e594f;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.ssr-review dd {
+  margin: 0 0 0.65rem;
+}
+.service-source-review > [role='alert'] {
+  padding: 0.8rem;
+  border-left: 4px solid #9b4426;
+  color: #71341f;
+  background: #fff3e9;
+}
+.ssr-original {
+  margin-top: 1rem;
+  border-top: 1px solid #d9e1da;
+  padding-top: 0.5rem;
+}
+.ssr-review :focus-visible,
+.ssr-original > summary:focus-visible {
+  outline: 3px solid var(--journey-primary, #247364);
+  outline-offset: 3px;
+}
+@media (max-width: 760px) {
+  .service-source-review {
+    padding: 1rem;
+  }
+  .ssr-context,
+  .ssr-edges,
+  .ssr-reports {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .ssr-review button {
+    width: 100%;
+    margin-inline: 0;
+  }
+}
