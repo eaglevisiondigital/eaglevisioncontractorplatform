@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import type { SavedRevisionPanelProps } from '../../lib/workflows/saved-revision-contract';
 import { journeyEnabled } from '../../lib/workflows/journey-runtime';
+import { maintenanceDate } from '../../domain/property/maintenance';
 import {
   maintenanceReviewPurposes,
   readPlanCancellationReview,
@@ -196,6 +197,8 @@ function ReviewActions({
   }
   async function prepare() {
     if (!selected || !verified) return;
+    // Reject invalid local input before consuming the original one-use attempt.
+    maintenanceDate(proposedOn);
     await verifyPlanCancellationRequirements(selected);
     setAttempted(true);
     const actual = await preparePlanCancellationReview(
@@ -255,6 +258,12 @@ function ReviewActions({
     observationAccess = false;
   }
   const currentSelection = !!occurrence;
+  let validProposedOn = true;
+  try {
+    maintenanceDate(proposedOn);
+  } catch {
+    validProposedOn = false;
+  }
   if (!currentSelection && (verified || confirmed)) {
     setVerified(false);
     setConfirmed(false);
@@ -423,6 +432,7 @@ function ReviewActions({
             <input
               type="date"
               value={proposedOn}
+              aria-invalid={!validProposedOn}
               disabled={busy || attempted || !currentSelection}
               onChange={(e) => {
                 setProposedOn(e.target.value);
@@ -430,6 +440,12 @@ function ReviewActions({
               }}
             />
           </label>
+          {!validProposedOn && (
+            <p role="status">
+              Enter a valid staff review date before preparation. No original
+              attempt has been consumed by this invalid input.
+            </p>
+          )}
           <label>
             Staff review kind
             <select
@@ -462,6 +478,7 @@ function ReviewActions({
                 !currentSelection ||
                 !confirmed ||
                 !verified ||
+                !validProposedOn ||
                 attempted
               }
               onClick={() => void run(prepare)}
