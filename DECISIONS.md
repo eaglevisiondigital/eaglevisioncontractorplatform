@@ -1,3 +1,9 @@
+# Cycle30 · validate before custody and measure before attributing failures
+
+Preflight invalid local presentation values with their existing canonical validator before consuming the original attempt; actual attempted/UNKNOWN holds remain one-use. Reject noncloneable/captured-field-inconsistent Customer facade inputs but pass the original ordinary form into existing live hash/CAS checks. Reuse the complete guarded owner-card reader once per synchronous render, without caching current authority. A measured render improvement is not proof of a sole hosted timeout cause.
+
+Build-only exact source admission extends only three fixed sole-parent author endpoints and preserves old pins, modes, predecessor/current bytes and independent negative tests. Source evidence cannot restore business state. Keep original30second browser assertions and actual cancellations/failures; signed-Ubuntu runner prerequisites do not grant operational authority. Original twelve-case owner/recovery/P1/customer14/4B sequence and all release gates remain closed.
+
 # Cycle29 · tighten original workflow bindings without operational promotion
 
 Use captured own-data selectors and original checked owner rows across asynchronous review; never re-read untrusted selector getters to select another canonical source. Native task custody governs which continuation controls are offered. Empty unattempted maintenance selection clears presentation only; original spent/UNKNOWN holds remain. Published report focus occurs after exact current-owner-checked commit. Offline tests retain conservative original UNKNOWN rather than manufacturing a runtime change.

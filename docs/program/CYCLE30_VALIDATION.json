@@ -1,0 +1,47 @@
+{
+  "schema": "propel-cycle30-validation-v1",
+  "runtime_commit": "91034ab62f3f9b2d709a74087d12a992bc11f493",
+  "application": {
+    "passed": 334,
+    "suites": 18,
+    "skipped": 0,
+    "evidence": {
+      "path": "artifacts/cycle30/final-application-results.json",
+      "sha256": "78a066c938ee7e2c8d39c0f6d1c33857bb80dfb75ebabeca04e07057246e7d92"
+    }
+  },
+  "browser": {
+    "passed": 32,
+    "native_journeys": 9,
+    "production_off": 3,
+    "growth": 9,
+    "field": 9,
+    "original_owner_30000ms": 2,
+    "screenshots_native": 63,
+    "screenshots_focused": 18,
+    "keyboard_journeys": 9,
+    "trusted_keys": 369,
+    "scoped_runtime_files": 76,
+    "captures_clean": 3,
+    "captures_dirty_nonruntime_changes": 60,
+    "report": {
+      "path": "artifacts/cycle28/browser-validation.json",
+      "sha256": "17b8ea946fed08a9ec21fc1eb706ef7ad46d4ef4930ff27b50b7a76776f4dcc7"
+    }
+  },
+  "protected": {
+    "hashes": 128,
+    "old_test_config_fixture_files": 583,
+    "design_locks": 5,
+    "source_bindings": 13,
+    "foundation_unchanged": true
+  },
+  "historical_original_ci_repaired": false,
+  "hosted_original_timeout_attribution": "UNRESOLVED_PENDING_LINUX_TIMING_TRACE",
+  "physical_recovery": "NOT_RUN",
+  "operational_cases": {
+    "count": 12,
+    "status": "NOT_RUN"
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

@@ -31,7 +31,11 @@
           "path": "tests/program/cycle30-maintenance-date-browser.mjs",
           "sha256": "e3935eef3e86264a336000db2ca0a7c3babb2f3c01c76655fa8c2e1064ceed59"
         }
-      ]
+      ],
+      "head_commit": "80806aface6f08d7ddcd8050975a9dff8acf8c19",
+      "draft_pr": 222,
+      "support_scope": ["scripts/cycle25-source-lineage.mjs"],
+      "support_sha256": "b8601f8205f0a1d573af13e9dbcb930ddf8f3c8bd0d24f5ffb3fe74aba51293a"
     },
     {
       "module": "customer",
@@ -56,7 +60,11 @@
           "path": "tests/cycle30-customer-source-audit.test.ts",
           "sha256": "d776ec35957a026086bf13366a7fefdd58cd2f8409f5078fdfab526813315b02"
         }
-      ]
+      ],
+      "head_commit": "95dd3d28fbaf7a37a9fd1b5aa575dae9806f276f",
+      "draft_pr": 223,
+      "support_scope": ["scripts/cycle25-source-lineage.mjs"],
+      "support_sha256": "b8601f8205f0a1d573af13e9dbcb930ddf8f3c8bd0d24f5ffb3fe74aba51293a"
     },
     {
       "module": "intelligence",
@@ -81,7 +89,11 @@
           "path": "tests/cycle30-owner-source-audit.test.ts",
           "sha256": "71c24ffd41dfb6ab9216cd90c7b29623d544c055b45b641db5d55f8ca7a475d1"
         }
-      ]
+      ],
+      "head_commit": "d8bbb69a52ae5d5d8352ddcf2c4547015d2be591",
+      "draft_pr": 224,
+      "support_scope": ["scripts/cycle25-source-lineage.mjs"],
+      "support_sha256": "b8601f8205f0a1d573af13e9dbcb930ddf8f3c8bd0d24f5ffb3fe74aba51293a"
     },
     {
       "module": "field",
@@ -106,12 +118,23 @@
           "path": "tests/program/cycle30-task-custody-browser.mjs",
           "sha256": "3bfac6871ec68a4a25310b3d36e97ca12de8a78daac2eb7127d78cd3ce185bcf"
         }
-      ]
+      ],
+      "head_commit": "6deaf4022baa226c74ca31503b6816e0a9ef289a",
+      "draft_pr": 225
     }
   ],
   "audited_no_change": ["finance", "offline"],
   "source_authority": "BUILD_TEST_ONLY_NOT_BUSINESS_RESTORE",
   "operational_ready": false,
   "physical_recovery": "NOT_RUN",
-  "release": "NOT_READY_NOT_AUTHORIZED"
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "runtime_candidate": "91034ab62f3f9b2d709a74087d12a992bc11f493",
+  "independent_test_author": "/root/cycle28_independent_review",
+  "independent_test_cases": 10,
+  "independent_review": {
+    "commit": "e5c262f9b3b79c7f6ce3077435080af6b6ebd59c",
+    "pr": 226,
+    "branch": "codex/cycle30-independent-review",
+    "authority": "INDEPENDENT_LOCAL_SOURCE_REVIEW_ONLY"
+  }
 }

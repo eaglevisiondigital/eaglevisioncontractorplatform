@@ -1,0 +1,69 @@
+name: Cycle 30 bounded workflow reliability
+on:
+  push:
+    branches: ['codex/program-cycle-thirty-integration']
+  pull_request:
+    branches: ['codex/program-cycle-twenty-nine-integration']
+    paths:
+      - 'src/components/workflows/*'
+      - 'src/lib/workflows/*'
+      - 'scripts/cycle25-source-lineage.mjs'
+      - 'scripts/cycle30*'
+      - 'tests/cycle30*'
+      - 'tests/program/cycle30*'
+      - 'docs/program/CYCLE30*'
+      - '.github/workflows/cycle30-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle30-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  exact-combined-reliability:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node --input-type=module -e "import {inspectCycle30Sources} from './scripts/cycle25-source-lineage.mjs'; console.log(inspectCycle30Sources({requireCombined:true}));"
+      - run: npx vitest run tests/cycle30*.test.ts tests/cycle29-source-lineage.test.ts tests/cycle28-source-lineage.test.ts tests/cycle27-source-lineage.test.ts tests/cycle26-source-review.test.ts tests/cycle25-source-lineage.test.ts tests/cycle25-combined-integration.test.ts tests/cycle28-contractor-journey.test.ts tests/cycle21-recorded-owner-actions.test.ts tests/cycle24-service-request-actions.test.ts tests/cycle24-plan-cancellation-review.test.ts --maxWorkers=1 --reporter=json --outputFile=artifacts/cycle30/application-results.json
+      - name: Require every exact focused application case
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFileSync} from 'node:fs';import{relative}from'node:path';
+          const expected=new Map(Object.entries({'cycle21-recorded-owner-actions.test.ts':37,'cycle24-plan-cancellation-review.test.ts':43,'cycle24-service-request-actions.test.ts':58,'cycle25-combined-integration.test.ts':16,'cycle25-source-lineage.test.ts':26,'cycle26-source-review.test.ts':20,'cycle27-source-lineage.test.ts':20,'cycle28-contractor-journey.test.ts':9,'cycle28-source-lineage.test.ts':14,'cycle29-source-lineage.test.ts':15,'cycle30-browser-timing.test.ts':4,'cycle30-chromium-dependencies.test.ts':11,'cycle30-customer-source-audit.test.ts':15,'cycle30-independent-source-review.test.ts':10,'cycle30-maintenance-date.test.ts':8,'cycle30-owner-source-audit.test.ts':10,'cycle30-source-lineage.test.ts':15,'cycle30-task-custody-navigation.test.ts':3}).map(([p,n])=>['tests/'+p,n]));
+          const r=JSON.parse(readFileSync('artifacts/cycle30/application-results.json'));
+          if(!r.success||r.numTotalTests!==334||r.numPassedTests!==334||r.numFailedTests!==0||r.numPendingTests!==0||r.testResults.length!==18)throw Error('Exact334 passing cases and18 suites required');
+          for(const s of r.testResults){const p=relative(process.cwd(),s.name),n=expected.get(p),a=s.assertionResults;if(!expected.delete(p)||s.status!=='passed'||a.length!==n||new Set(a.map(c=>c.fullName)).size!==n||a.some(c=>!c.fullName||c.status!=='passed'))throw Error('Incomplete or changed suite '+p);}if(expected.size)throw Error('Missing focused suites');
+          NODE
+      - run: npm run build
+      - run: node scripts/cycle30-chromium-dependencies.mjs
+      - run: npx playwright install-deps --dry-run chromium
+      - run: npx playwright install chromium
+      - run: node tests/program/cycle30-maintenance-date-browser.mjs green
+      - run: node tests/program/cycle30-task-custody-browser.mjs green
+      - run: npx playwright test -c tests/program/playwright.cycle28.config.ts
+      - run: CYCLE28_BROWSER_MODE=off npx playwright test -c tests/program/playwright.cycle28.config.ts
+      - run: CYCLE24_ARTIFACT_DIR=artifacts/cycle28 node scripts/collect-cycle24-browser.mjs
+      - name: Require original owner navigation assertions under original budgets on current candidate
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_NAME: artifacts/cycle30/owner-original-budget-results.json
+          CYCLE30_TIMING_OUTPUT: artifacts/cycle30/owner-current-timing.json
+        run: npx playwright test tests/browser/cycle21-canonical-corrections.spec.ts --grep 'canonical task cost plan corrections and exact history navigation / roofing-example' --project=desktop --project=tablet --workers=2 --retries=0 --reporter=json,./scripts/cycle30-browser-timing.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle30-exact-combined-workflow-evidence
+          path: |
+            artifacts/cycle30/
+            artifacts/cycle28/
+            test-results/
+          retention-days: 7
