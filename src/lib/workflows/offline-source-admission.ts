@@ -14,7 +14,11 @@ import {
   assertSyncAdmissionCurrentNow,
   type SyncAdmissionReview,
 } from './sync-admission-review';
-import { parseOfflineSourceProtocol } from './offline-source-protocol';
+import {
+  parseOfflineSourceProtocol,
+  offlineSourceFields,
+  offlineVisitFields,
+} from './offline-source-protocol';
 export { parseOfflineSourceProtocol } from './offline-source-protocol';
 export type { OfflineSourceProtocol } from './offline-source-protocol';
 
@@ -148,6 +152,7 @@ export async function reconcileOfflineSourceAdmission(
     | 'ORIGINAL_CAPTURE_SOURCE_CHANGED'
     | 'ORIGINAL_CAPTURE_PROPOSAL_CHANGED'
     | 'EXACT_BINDING_OR_LIVE_PROTOCOL_UNVERIFIED' = 'LOCAL_REVIEW_NOT_ADMITTED';
+  let mismatches: string[] | undefined;
   const captureUnavailable = (
     result: Awaited<ReturnType<typeof reconcileOperationsExperiment>>,
   ) => ({
@@ -177,29 +182,50 @@ export async function reconcileOfflineSourceAdmission(
       reason = 'EXACT_BINDING_OR_LIVE_PROTOCOL_UNVERIFIED';
       const expected = syncSourceReference(requirements),
         capture = experiment.offline_capture.source;
+      // Finite field names identify a review conflict without exposing source
+      // values or interpreting it as a failed command/permission to retry.
+      const nativeVisit = {
+        visit_id: capture.visit_id,
+        visit_revision: capture.visit_revision,
+        plan_id: capture.plan_id,
+        plan_revision: capture.plan_revision,
+      };
+      mismatches = [
+        ...(requirements.kind !== 'offline' || comparison.kind !== 'offline'
+          ? ['kind']
+          : []),
+        ...(!comparison.exact_reference ||
+        comparison.reference_status !== 'EXACT_REFERENCE_REVIEW_ONLY'
+          ? ['original_reference']
+          : []),
+        ...(comparison.requirements_sha256 !== requirements.integrity.sha256
+          ? ['requirements_sha256']
+          : []),
+        ...(comparison.external_reference !== parsed.external_reference
+          ? ['external_reference']
+          : []),
+        ...(JSON.stringify(parseOfflineSourceProtocol(input)) !== signature
+          ? ['live_protocol']
+          : []),
+        ...offlineSourceFields
+          .filter(
+            (field) =>
+              parsed.source[field] !== expected[field] ||
+              comparison.source[field] !== expected[field],
+          )
+          .map((field) => `source.${field}`),
+        ...offlineVisitFields
+          .filter((field) => parsed.visit[field] !== nativeVisit[field])
+          .map((field) => `visit.${field}`),
+      ];
       if (
-        requirements.kind !== 'offline' ||
-        comparison.kind !== 'offline' ||
-        !comparison.exact_reference ||
-        comparison.reference_status !== 'EXACT_REFERENCE_REVIEW_ONLY' ||
-        comparison.requirements_sha256 !== requirements.integrity.sha256 ||
-        comparison.external_reference !== parsed.external_reference ||
-        JSON.stringify(parseOfflineSourceProtocol(input)) !== signature ||
-        Object.entries(expected).some(
-          ([key, value]) =>
-            parsed.source[key as keyof typeof expected] !== value ||
-            comparison.source[key as keyof typeof expected] !== value,
-        ) ||
+        mismatches.length !== 0 ||
         expected.organization_id !== capture.organization_id ||
         expected.customer_id !== capture.customer_id ||
         expected.location_id !== capture.property_id ||
         expected.job_id !== capture.job_id ||
         expected.estimate_id !== capture.estimate_id ||
-        expected.issued_version_id !== capture.issued_version_id ||
-        parsed.visit.visit_id !== capture.visit_id ||
-        parsed.visit.visit_revision !== capture.visit_revision ||
-        parsed.visit.plan_id !== capture.plan_id ||
-        parsed.visit.plan_revision !== capture.plan_revision
+        expected.issued_version_id !== capture.issued_version_id
       )
         throw Error(
           'Exact original offline comparison and native source required',
@@ -223,6 +249,13 @@ export async function reconcileOfflineSourceAdmission(
       scope: 'ORIGINAL_COMPARISON_AND_NATIVE_VISIT_PLAN_AT_THIS_READ' as const,
     };
   } catch {
-    return { ...unknown, reason };
+    return {
+      ...unknown,
+      reason,
+      ...(['EXACT_BINDING_OR_LIVE_PROTOCOL_UNVERIFIED'].includes(reason) &&
+      mismatches?.length
+        ? { mismatches: Object.freeze([...mismatches]) }
+        : {}),
+    };
   }
 }
