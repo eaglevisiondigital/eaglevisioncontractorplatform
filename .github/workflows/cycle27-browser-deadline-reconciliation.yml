@@ -1,0 +1,81 @@
+name: Two original C26 browser deadline checks
+on:
+  push:
+    branches: ['codex/cycle27-browser-deadline-reconciliation']
+permissions:
+  contents: read
+concurrency:
+  group: cycle27-browser-deadlines-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-failed-case:
+    name: Original failed case (${{ matrix.project }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - project: desktop
+            file: cycle21-canonical-corrections.spec.ts
+            title: canonical task cost plan corrections and exact history navigation / roofing-example
+            id: 77c237965d0f5d0b4278-c6266cc8a139111818ff
+          - project: mobile
+            file: cycle22-current-requirements.spec.ts
+            title: recorded corrections feed canonical task cost and owner evidence / straight-edge
+            id: 5af33a5a5eb192b459f9-ce12ba146bd19eff75b6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f81081b3ce8fca63443a9f03e8bfcd5aa4daa4b6
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Record exact source and changed budget
+        run: |
+          test "$(git rev-parse HEAD)" = f81081b3ce8fca63443a9f03e8bfcd5aa4daa4b6
+          git diff --exit-code
+          mkdir -p artifacts/browser-deadline
+          node --input-type=module -e 'import{writeFileSync,readFileSync}from"node:fs";import{createHash}from"node:crypto";writeFileSync("artifacts/browser-deadline/source.json",JSON.stringify({source_commit:"f81081b3ce8fca63443a9f03e8bfcd5aa4daa4b6",config_sha256:createHash("sha256").update(readFileSync("playwright.config.ts")).digest("hex"),original_timeout_ms:30000,supplement_timeout_ms:90000,scope:"TWO_EXPIRED_CASES_CHANGED_BUDGET_NOT_ORIGINAL_CONDITION_OR_FOUNDATION_PASS",release:"NOT_READY_NOT_AUTHORIZED"},null,2));'
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Collect exact single original case
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_NAME: artifacts/browser-deadline/list.json
+          TARGET_FILE: ${{ matrix.file }}
+          TARGET_TITLE: ${{ matrix.title }}
+          TARGET_PROJECT: ${{ matrix.project }}
+        run: npx playwright test "tests/browser/$TARGET_FILE" --project="$TARGET_PROJECT" --grep="$TARGET_TITLE$" --list --workers=1 --reporter=json
+      - name: Deny missing extra or substituted selection
+        env:
+          TARGET_ID: ${{ matrix.id }}
+          TARGET_PROJECT: ${{ matrix.project }}
+          TARGET_TITLE: ${{ matrix.title }}
+          TARGET_FILE: ${{ matrix.file }}
+        run: |
+          node --input-type=module -e 'import{readFileSync}from"node:fs";const r=JSON.parse(readFileSync("artifacts/browser-deadline/list.json")),rows=[];function walk(s){for(const x of s){for(const p of x.specs??[])for(const t of p.tests)rows.push({p,t});walk(x.suites??[])}}walk(r.suites);const x=rows[0];if(r.errors.length||rows.length!==1||x.p.id!==process.env.TARGET_ID||x.p.file!==process.env.TARGET_FILE||x.p.title!==process.env.TARGET_TITLE||x.t.projectName!==process.env.TARGET_PROJECT)throw Error("Exact original failed case required");'
+      - name: Verify one original case within disclosed finite budget
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_NAME: artifacts/browser-deadline/result.json
+          TARGET_FILE: ${{ matrix.file }}
+          TARGET_TITLE: ${{ matrix.title }}
+          TARGET_PROJECT: ${{ matrix.project }}
+        run: npm run test:browser -- "tests/browser/$TARGET_FILE" --project="$TARGET_PROJECT" --grep="$TARGET_TITLE$" --workers=1 --retries=0 --timeout=90000 --reporter=json --trace=on
+      - name: Validate exact single-attempt successful result
+        env:
+          TARGET_ID: ${{ matrix.id }}
+          TARGET_PROJECT: ${{ matrix.project }}
+          TARGET_TITLE: ${{ matrix.title }}
+          TARGET_FILE: ${{ matrix.file }}
+        run: |
+          node --input-type=module -e 'import{readFileSync}from"node:fs";const r=JSON.parse(readFileSync("artifacts/browser-deadline/result.json")),rows=[];function walk(s){for(const x of s){for(const p of x.specs??[])for(const t of p.tests)rows.push({p,t});walk(x.suites??[])}}walk(r.suites);const x=rows[0],t=x?.t;if(r.errors.length||r.stats.expected!==1||r.stats.unexpected||r.stats.skipped||r.stats.flaky||r.config.workers!==1||rows.length!==1||x.p.id!==process.env.TARGET_ID||x.p.file!==process.env.TARGET_FILE||x.p.title!==process.env.TARGET_TITLE||t.projectName!==process.env.TARGET_PROJECT||t.timeout!==90000||t.expectedStatus!=="passed"||t.status!=="expected"||t.results.length!==1||t.results[0].retry!==0||t.results[0].status!=="passed")throw Error("Exact single original assertion result required");'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle27-original-deadline-${{ matrix.project }}
+          path: |
+            artifacts/browser-deadline/
+            test-results/
+          retention-days: 7
