@@ -1,4 +1,10 @@
-import { useLayoutEffect, useRef, useState, type ComponentType } from 'react';
+import {
+  useCallback,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type ComponentType,
+} from 'react';
 import { journeyEnabled } from '../../lib/workflows/journey-runtime';
 import { captureOperatingSources } from '../../lib/workflows/operating-center-runtime';
 import type { SavedRevisionPanelProps } from '../../lib/workflows/saved-revision-contract';
@@ -113,6 +119,51 @@ function Workbench({
     maintenance: MaintenanceSavedRevisions,
     priorities: PrioritySavedRevisions,
   };
+  const onSelectJob = useCallback<NonNullable<PanelProps['onSelectJob']>>(
+    (id, section) => {
+      const selected = resolveSavedWorkbenchSelection(sources, id, section);
+      setJob(selected.job_id);
+      if (selected.tab) {
+        setTab(selected.tab);
+        setVisited((previous) => [...new Set([...previous, selected.tab!])]);
+      }
+      setMessage(
+        'Exact authorized property job retained across the original review panels.',
+      );
+    },
+    [sources],
+  );
+  const onSourcesSaved = useCallback(() => {
+    setSearchRevision((n) => n + 1);
+    setMessage(
+      'Exact canonical source saved; read updates explicitly. Original holds remain unchanged.',
+    );
+  }, []);
+  const onContinue = useCallback<NonNullable<PanelProps['onContinue']>>(
+    (id, destination) => {
+      const current = captureOperatingSources(sources, {
+        enabled: true,
+        confirmed: true,
+      });
+      current.check();
+      if (id !== job) throw Error('Exact retained job required');
+      const map = {
+        field: 'field',
+        finance: 'finance',
+        invoice: 'finance',
+        customer: 'customer',
+        maintenance: 'maintenance',
+        priorities: 'priorities',
+      } as const;
+      if (destination === 'advanced')
+        throw Error('Use existing advanced review navigation');
+      const next = map[destination];
+      setTab(next);
+      setVisited((previous) => [...new Set([...previous, next])]);
+      current.check();
+    },
+    [sources, job],
+  );
   return (
     <section
       className="saved-revision-workbench"
@@ -166,51 +217,9 @@ function Workbench({
           sources,
           enabled: true,
           selectedJobId: job || undefined,
-          onSelectJob: (id, section) => {
-            const selected = resolveSavedWorkbenchSelection(
-              sources,
-              id,
-              section,
-            );
-            setJob(selected.job_id);
-            if (selected.tab) {
-              setTab(selected.tab);
-              setVisited((previous) => [
-                ...new Set([...previous, selected.tab!]),
-              ]);
-            }
-            setMessage(
-              'Exact authorized property job retained across the original review panels.',
-            );
-          },
-          onSourcesSaved: () => {
-            setSearchRevision((n) => n + 1);
-            setMessage(
-              'Exact canonical source saved; read updates explicitly. Original holds remain unchanged.',
-            );
-          },
-          onContinue: (id, destination) => {
-            const current = captureOperatingSources(sources, {
-              enabled: true,
-              confirmed: true,
-            });
-            current.check();
-            if (id !== job) throw Error('Exact retained job required');
-            const map = {
-              field: 'field',
-              finance: 'finance',
-              invoice: 'finance',
-              customer: 'customer',
-              maintenance: 'maintenance',
-              priorities: 'priorities',
-            } as const;
-            if (destination === 'advanced')
-              throw Error('Use existing advanced review navigation');
-            const next = map[destination];
-            setTab(next);
-            setVisited((previous) => [...new Set([...previous, next])]);
-            current.check();
-          },
+          onSelectJob,
+          onSourcesSaved,
+          onContinue,
         };
         return visited.includes(id) ? (
           <div key={`${job}:${id}`} hidden={tab !== id}>
