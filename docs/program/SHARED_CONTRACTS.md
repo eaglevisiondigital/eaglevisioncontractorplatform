@@ -1,5 +1,20 @@
 # Shared contracts and integration ownership
 
+## Cycle25 native successor ownership
+
+Six fixed author commits extend only original C24 workflow/control paths. Current bytes
+must equal the exact recorded source commit; original manifests retain original hashes.
+Build-only source lineage is not receipt custody, restoration, staff authority or a business
+data store. Customer's direct-child new-test-only correction changes two expectations to
+original UNKNOWN; runtime/doc bytes stay original author bytes. No broad ancestry waiver.
+
+Field retains original task/worker/result roles and explicit original-control navigation.
+Finance copies canonical expense/time/review and integer totals; search never substitutes
+selection. Customer reuses original published readers; missing request→job FK stays UNKNOWN.
+Growth separates plan CAS, review terminal state and UNSUPPORTED enrollment cancellation.
+Owner refresh uses original comparison/ranking; retained selection always loses verification.
+Offline reconciliation rechecks original8+4 references without new claims or replay.
+
 ## Cycle24 native actions in the existing source workbench
 
 Optional per-tab taskActions use the same SavedRevisionPanelProps, selected job,

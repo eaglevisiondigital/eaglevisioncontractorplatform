@@ -1,5 +1,19 @@
 # Engineering decisions
 
+## Cycle25 · exact native continuity; operational dependencies remain NO-GO
+
+Extend existing source panels and engines instead of another workflow/store. Current C25
+source identity is an exact single-parent author commit plus one explicit Customer
+new-test-only corrective forward. Original source-manifest hashes stay immutable; build
+lineage validates both original and current bytes and has no runtime authority.
+
+Operational register expands the reviewed19 gaps into eight original-owner families,
+without adapter/schema/credentials. Request void writes have no native server CAS/receipt;
+review cancellation is not enrollment cancellation. Read-only history/navigation is not
+completion, acceptance, posting or sending. Original P1 approval remains valid in frozen
+scope after recovery; customer14/4B and later genuine Auth/recovery require separate gates.
+Danny's Air is unavailable; no physical recovery conclusion. No unrelated baseline rerun.
+
 ## Cycle24 · native actions, exact original custody and explicit readiness gaps
 
 Extend existing native workflows and optional original workbench slots rather than

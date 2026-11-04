@@ -8,6 +8,9 @@ import {
   saveServiceRequestAction,
   reconcileServiceRequestAction,
   savedRequestStatuses,
+  readServiceRequestEvidence,
+  inspectServiceRequestEvidence,
+  inspectServiceRequestReport,
   type ServiceRequestActionView,
 } from '../../lib/workflows/service-request-actions';
 import './service-request-actions.css';
@@ -64,6 +67,10 @@ function RequestForm({
   selectedJobId,
   onSourcesSaved,
 }: ServiceRequestActionsProps & { selectedJobId: string }) {
+  const [evidence, setEvidence] =
+      useState<Awaited<ReturnType<typeof readServiceRequestEvidence>>>(),
+    [report, setReport] =
+      useState<Awaited<ReturnType<typeof inspectServiceRequestReport>>>();
   const [view, setView] = useState<ServiceRequestActionView>(),
     [loaded, setLoaded] =
       useState<ReturnType<typeof inspectServiceRequestActions>>(),
@@ -104,16 +111,26 @@ function RequestForm({
     setBusy(true);
     setConfirmed(false);
     setObservation(undefined);
+    setEvidence(undefined);
+    setReport(undefined);
     try {
       const next = await readServiceRequestActions(
           sources,
           selectedJobId,
           gate.current,
         ),
-        request = inspectServiceRequestActions(next);
+        request = inspectServiceRequestActions(next),
+        originalEvidence = await readServiceRequestEvidence(
+          next,
+          sources,
+          selectedJobId,
+          request,
+          gate.current,
+        );
       if (!l.alive || token !== l.serial) return;
       setView(next);
       setLoaded(request);
+      setEvidence(originalEvidence);
       setStatus(request.status);
       setAssignee(request.assigned_to ?? '');
       setMessage(
@@ -162,6 +179,49 @@ function RequestForm({
     } catch {
       /* Stale or revoked evidence never enables the native command. */
     }
+  let lineage: ReturnType<typeof inspectServiceRequestEvidence> | undefined;
+  if (current && view && loaded && evidence)
+    try {
+      lineage = inspectServiceRequestEvidence(view, evidence, loaded);
+    } catch {
+      current = false;
+      valid = false;
+    }
+  async function inspectReport(
+    reference: Parameters<typeof inspectServiceRequestReport>[3],
+  ) {
+    const l = life.current;
+    if (!view || !evidence || !loaded || !current || l.pending) return;
+    l.pending = true;
+    const token = ++l.serial;
+    setBusy(true);
+    setReport(undefined);
+    try {
+      const detail = await inspectServiceRequestReport(
+        view,
+        evidence,
+        loaded,
+        reference,
+      );
+      if (!l.alive || token !== l.serial) return;
+      setReport(detail);
+      setMessage(
+        'Exact immutable published report version inspected. Documentation is not verified completion.',
+      );
+      heading.current?.focus();
+    } catch {
+      if (l.alive && token === l.serial) {
+        setEvidence(undefined);
+        setMessage(
+          'UNKNOWN — exact published evidence changed or access was denied. No substitute source was opened.',
+        );
+      }
+    } finally {
+      l.pending = false;
+      if (l.alive && token === l.serial) setBusy(false);
+    }
+  }
+  if (!lineage) valid = false;
   async function save() {
     const l = life.current;
     if (!view || !input || !confirmed || l.pending || !valid) return;
@@ -218,7 +278,7 @@ function RequestForm({
         Load exact service request
       </button>
       <p role="status">{message}</p>
-      {loaded && current && (
+      {loaded && current && lineage && (
         <div>
           <h4 ref={heading} tabIndex={-1}>
             Original intake review
@@ -255,6 +315,102 @@ function RequestForm({
             Request → selected job: UNKNOWN — no recorded foreign key. This is
             an explicitly selected staff context.
           </p>
+          <section aria-label="Original request and published evidence">
+            <h4>Reported concern</h4>
+            <p>{lineage.request.summary}</p>
+            <p>
+              {lineage.customer_label} · {lineage.property.label}
+            </p>
+            <dl>
+              <dt>Selected job → estimate → immutable issued version</dt>
+              <dd>
+                {lineage.scope.job_id} → {lineage.scope.estimate_id} →{' '}
+                {lineage.scope.issued_version_id} /{' '}
+                {lineage.scope.issued_version_number}
+              </dd>
+            </dl>
+            <h4>Exact published sources</h4>
+            {lineage.reports.length === 0 && (
+              <p>
+                No exact published report is available. History remains UNKNOWN.
+              </p>
+            )}
+            {lineage.reports.map((row) => (
+              <article
+                key={`${row.reference.report_id}/${row.reference.published_version}`}
+              >
+                <p>{row.summary}</p>
+                <p>
+                  {row.reference.report_id} · published version{' '}
+                  {row.reference.published_version}
+                </p>
+                <p>
+                  Visit {row.visit_id} → plan {row.plan_id} → job {row.job_id}
+                </p>
+                <p>
+                  Available sibling versions:{' '}
+                  {row.version.available_sibling_versions.join(', ')} ·{' '}
+                  {row.version.status}
+                </p>
+                <button
+                  type="button"
+                  disabled={busy}
+                  onClick={() => void inspectReport(row.reference)}
+                >
+                  Inspect original published evidence: version{' '}
+                  {row.reference.published_version}
+                </button>
+              </article>
+            ))}
+            <h4>Completion requirements — not satisfied by intake closure</h4>
+            <ul>
+              {lineage.required_proof.map((item) => (
+                <li key={item.kind}>
+                  <strong>
+                    {item.kind} · {item.status}
+                  </strong>
+                  <p>{item.required}</p>
+                </li>
+              ))}
+            </ul>
+            <p>
+              Physical completion {lineage.physical_completion}; customer
+              acceptance {lineage.customer_acceptance}; warranty{' '}
+              {lineage.warranty}; complete history{' '}
+              {lineage.history_completeness}.
+            </p>
+            {report && (
+              <section aria-label="Inspected original published report">
+                <h4>
+                  Published report {report.report.reference.report_id} · version{' '}
+                  {report.report.reference.published_version}
+                </h4>
+                <p>{report.report.summary}</p>
+                <p>
+                  {report.selected_job_association} · {report.completion_status}
+                </p>
+                {report.report.observations.map((finding) => (
+                  <article
+                    key={`${finding.reference.source_index}/${finding.reference.finding_id}`}
+                  >
+                    <h4>
+                      {finding.category} · {finding.location}
+                    </h4>
+                    <p>
+                      Finding {finding.reference.finding_id} · source position{' '}
+                      {finding.reference.source_index} · {finding.severity}
+                    </p>
+                    <p>{finding.observation}</p>
+                    <p>Recommendation: {finding.recommendation}</p>
+                  </article>
+                ))}
+                <p>
+                  Recorded checklist marks, findings and after-phase
+                  documentation do not establish repairs or customer approval.
+                </p>
+              </section>
+            )}
+          </section>
           <label>
             Intake review status
             <select

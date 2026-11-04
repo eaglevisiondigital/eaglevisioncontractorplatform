@@ -1,5 +1,20 @@
 # Propel Contractor Suite — feature acceptance register
 
+## Cycle25 · native continuity is local acceptance only
+
+The original25 capability IDs and prior evidence remain unchanged. C25 extends original
+Field/Finance/Customer/Growth/Intelligence/Advanced controls; no synthetic replacement
+business system or new operational capability is accepted. Task context, exact native
+cost/review lineage, published service sources, maintenance blockers and source-compared
+briefing refresh improve local staff review. Missing request→job FK, current consent,
+durable receipt/restore/physical completion/customer acceptance remain UNKNOWN or unverified.
+
+Current source/CI/browser proof: [C25 validation](program/CYCLE25_VALIDATION.md).
+Operational custody/transaction/Auth/recovery requirements remain NO-GO in the separate
+[source-specific register](program/CYCLE25_OPERATIONAL_READINESS.md). Design tests do not
+grant visual approval: Operating Center/add-on scopes still PENDING, original three locks
+unchanged. PhaseOne and full ecosystem remain separately unaccepted; Release1.0 closed.
+
 ## Cycle24 · native staff actions delivered locally
 
 Draft [#163](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/163)

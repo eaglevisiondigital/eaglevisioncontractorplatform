@@ -1,5 +1,23 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Cycle25 · native continuity implemented; combined acceptance in progress
+
+The six bounded local packages extend the original native source controls from exact
+`31e2bf5b05f6befac1c24314a31d2eabe65c5219`: task/receipt continuity, canonical cost
+evidence/search, original service/published evidence, maintenance requirements,
+source-compared owner refresh and stateless offline original-comparison reconciliation.
+No new route, store, engine, receipt owner or restoration adapter. Same-tab custody
+is not restart durability. Current exact-head CI is recorded separately from local tests.
+
+Prior unpublished temporary C25 worktrees were lost. Work resumed in persistent ignored
+`.staging/program-cycle25`; only newly observed commits/results count as current evidence.
+All C24 published evidence remains historical and unchanged. Current C24 checks remain
+queued/in progress with successful conclusions retained; no manual rerun. Historical C18
+failures/timeouts remain OPEN. Danny Air last unavailable; physical recovery NOT RUN.
+See [C25 assignments](docs/program/CYCLE25_ASSIGNMENTS.md) and the source-specific
+[operational NO-GO register](docs/program/CYCLE25_OPERATIONAL_READINESS.md).
+Release1.0 NOT READY / NOT AUTHORIZED; all original gates and approvals preserved.
+
 ## Cycle24 · native staff actions delivered locally
 
 Draft [#163](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/163)
