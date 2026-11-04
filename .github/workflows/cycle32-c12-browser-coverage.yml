@@ -1,0 +1,95 @@
+name: Cycle 32 frozen Cycle 12 missing browser coverage
+on:
+  push:
+    branches: ['codex/cycle32-c12-browser-coverage']
+    paths:
+      - '.github/workflows/cycle32-c12-browser-coverage.yml'
+      - 'scripts/cycle32-c12-browser-evidence.mjs'
+      - 'scripts/cycle32-c12-browser-evidence.json'
+      - 'tests/cycle32-c12-browser-evidence.test.ts'
+      - 'docs/program/CYCLE32_C12_BROWSER_COVERAGE.md'
+permissions:
+  contents: read
+concurrency:
+  group: cycle32-c12-browser-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-browser:
+    name: Original Cycle 12 browser / ${{ matrix.shard }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [desktop, tablet, mobile, 'off']
+    defaults:
+      run:
+        working-directory: source
+    steps:
+      - name: Checkout evidence tooling only
+        uses: actions/checkout@v4
+        with:
+          path: diagnostics
+      - name: Checkout frozen original application
+        uses: actions/checkout@v4
+        with:
+          ref: 43e622b16aa952f5dc2fe7ae9f96260b47682c2e
+          path: source
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+          cache-dependency-path: source/package-lock.json
+      - run: npm ci
+      - name: Bind original source and runtime before execution
+        run: node ../diagnostics/scripts/cycle32-c12-browser-evidence.mjs bind ${{ matrix.shard }} .
+      - name: Collect original relevant cases without running assertions
+        env:
+          SHARD: ${{ matrix.shard }}
+        run: |
+          if [ "$SHARD" = off ]; then
+            npx playwright test -c tests/program/playwright.cycle12-off.config.ts --workers=2 --retries=0 --list --reporter=json > artifacts/cycle32-c12/$SHARD/collection.json
+          else
+            npx playwright test -c tests/program/playwright.cycle12.config.ts --project="$SHARD" --workers=2 --retries=0 --list --reporter=json > artifacts/cycle32-c12/$SHARD/collection.json
+          fi
+          node ../diagnostics/scripts/cycle32-c12-browser-evidence.mjs collection "$SHARD" .
+      - name: Build original production-OFF target only
+        if: matrix.shard == 'off'
+        run: npm run build
+      - name: Install the nine reviewed fonts from signed Ubuntu sources only
+        run: node scripts/cycle30-chromium-dependencies.mjs
+      - name: Record complete pinned Chromium dependency dry run
+        run: |
+          set -o pipefail
+          npx playwright install-deps --dry-run chromium | tee artifacts/cycle32-c12/${{ matrix.shard }}/chromium-dependency-dry-run.txt
+      - name: Install pinned Chromium without broad APT sources
+        run: npx playwright install chromium
+      - name: Execute only the original missing browser assertions
+        id: browser
+        env:
+          SHARD: ${{ matrix.shard }}
+          PLAYWRIGHT_JSON_OUTPUT_NAME: ${{ github.workspace }}/source/artifacts/cycle32-c12/${{ matrix.shard }}/results.json
+        run: |
+          if [ "$SHARD" = off ]; then
+            npx playwright test -c tests/program/playwright.cycle12-off.config.ts --workers=2 --retries=0 --reporter=json
+          else
+            npx playwright test -c tests/program/playwright.cycle12.config.ts --project="$SHARD" --workers=2 --retries=0 --reporter=json
+          fi
+      - name: Verify exact collection, attempts, source and results
+        if: always() && (steps.browser.outcome == 'success' || steps.browser.outcome == 'failure')
+        run: node ../diagnostics/scripts/cycle32-c12-browser-evidence.mjs result ${{ matrix.shard }} .
+      - name: Retain original screenshots, click records and failure output
+        if: always()
+        env:
+          SHARD: ${{ matrix.shard }}
+        run: |
+          mkdir -p artifacts/cycle32-c12/$SHARD
+          if [ -d artifacts/cycle12 ]; then cp -R artifacts/cycle12 artifacts/cycle32-c12/$SHARD/original-artifacts; fi
+          if [ -d test-results ]; then cp -R test-results artifacts/cycle32-c12/$SHARD/test-results; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle32-c12-${{ matrix.shard }}
+          path: source/artifacts/cycle32-c12/${{ matrix.shard }}/
+          if-no-files-found: warn
+          retention-days: 7
