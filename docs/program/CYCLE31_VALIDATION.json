@@ -1,0 +1,217 @@
+{
+  "schema": "propel-cycle31-validation-v1",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "operational_ready": false,
+  "parent": "353923ce2c6677ae3d5026ac46cf214b2a549aa3",
+  "runtime_candidate": "1a677d67cb1f79246a7912ab7dc4ed3bacc81ccc",
+  "clean_executed_commit": "832fbb8b62c25c232d14ec10081083961d84cddc",
+  "application": {
+    "cases": 591,
+    "suites": 27,
+    "passed": 591,
+    "failed": 0,
+    "skipped": 0,
+    "unique_collection": "PASS",
+    "result_sha256": "b4e3a40e0b805455ae47a054015213faa8724df3e11448b29ce066d4de04cebd",
+    "initial_result": {
+      "assertions": "591_PASS",
+      "collection": "FAIL_FIVE_DUPLICATE_NEW_TEST_NAMES",
+      "sha256": "17e950e4012edbac85f48440180eb4484a8f3789d68d1a26ded817fdf534e27a"
+    },
+    "correction": "NEW_LABELS_ONLY_NO_ASSERTION_INPUT_OR_BUDGET_CHANGE",
+    "focused_names": {
+      "cases": 31,
+      "passed": 31,
+      "sha256": "ed896ec14ffb1e08057e541535b6f5cf28e486225f1bb56b6a867dff230d5e3e"
+    },
+    "counts_not_additive": true
+  },
+  "browser": {
+    "local_native": 9,
+    "production_off": 3,
+    "linux_original_budget": 2,
+    "local_no_retries_or_skips": true,
+    "brands": 3,
+    "viewports": ["desktop", "tablet", "mobile"],
+    "screenshots": 63,
+    "clean_capture_and_keyboard_metadata": 72,
+    "keyboard_journeys": 9,
+    "trusted_events": 369,
+    "source_scope_files": 76,
+    "complete_transitive_runtime_claim": false,
+    "collector_sha256": "8f3bc529f02753c1606906e59d341a10d4d9538880bfd2f991a348980b68a8fc",
+    "linux_run": 41890061538,
+    "linux_result_sha256": "8301af1c8c86af726080f00784fc683a500d2e000428c6176dec7b425ae722c3",
+    "linux_durations_ms": [28166, 28632],
+    "linux_timeout_ms": 30000,
+    "linux_workers": 2,
+    "linux_retries": 0,
+    "linux_attempts": 1,
+    "universal_stability_or_sole_cause_claim": false,
+    "initial_local_prestart": "SANDBOX_EPERM_PORT4428_ZERO_TESTS_THEN_APPROVED_LOOPBACK_RUN",
+    "visual_approval": "UNCHANGED_THREE_ORIGINAL_SCOPES_TWO_NEW_SCOPES_PENDING"
+  },
+  "quality": {
+    "types": "PASS",
+    "lint": "PASS_ONE_RETAINED_FAST_REFRESH_WARNING",
+    "build": "PASS_RETAINED_LARGE_CHUNK_WARNING",
+    "actual_independent_clis": [21, 22, 23, 24],
+    "cli_status": "PASS",
+    "format": "PASS",
+    "integrity": "PASS"
+  },
+  "preserved": {
+    "protected_hashes": 128,
+    "baseline_test_config_fixture_files": 593,
+    "critical_paths": 156,
+    "design_locks": 5,
+    "design_bindings": 13,
+    "foundation_sha256": "df337433bfde1768ccbe396326793559f21113aa7c24e37fbd5955c4c29f87be",
+    "capability_records": 25,
+    "original_feature_ids": 18,
+    "historical_migrations": 13,
+    "customer14": "UNCHANGED_PENDING_SEPARATE_AUTHORIZATION",
+    "original_4b": "UNCHANGED",
+    "frozen_p1_four_artifacts": "UNCHANGED_EXISTING_APPROVAL_PRESERVED",
+    "netlify_original_archive_and_executor": "UNCHANGED_NO_HOSTED_ACTION"
+  },
+  "historical_ci": {
+    "parent_foundations": [41879470772, 41879564576],
+    "parent_status": "BOTH_CANCELLED_45_MINUTES_NOT_PASSES",
+    "first_partial": {
+      "pass_suites": 62,
+      "failed_suites": 3,
+      "all_skip_suites": 5,
+      "skipped_cases": 309,
+      "failed_cases": 14,
+      "unit_files_without_concluded_line": 269
+    },
+    "second_partial": {
+      "pass_suites": 229,
+      "failed_suites": 3,
+      "all_skip_suites": 5,
+      "skipped_cases": 313,
+      "failed_cases": 5,
+      "unit_files_without_concluded_line": 102
+    },
+    "same_head_partial_union": "229_PASS_5_ALL_SKIP_3_FAILED_102_UNCONCLUDED_NOT_COMPLETE_RUN",
+    "earlier_14_cases": "LATER_SAME_353_FULL162_SUITE_CASES_PASS_NOT_WHOLE_FOUNDATION",
+    "remaining_parent_failed_cases": "FIVE_LEGACY_SOURCE_VALIDATOR_CASES_COVERED_IN_CURRENT591_PASS",
+    "recovery_build_staging_full_browser": "NOT_REACHED_IN_PARENT_FOUNDATIONS",
+    "original_c18_browser": "446_APPLICATION_PASS_21_BROWSER_PASS_9_BROWSER_FAILURES_UNCHANGED",
+    "original_c27": "9327_PASS_321_DECLARED_SKIP_AND397_BROWSER_PASS_2_FAILURES_UNCHANGED",
+    "alternative_budget_supplements": "SEPARATE_NOT_HISTORICAL_REPAIR",
+    "matched_original_c27_and_cycle30": "EACH_0_PASS_2_ORIGINAL_30S_TIMEOUTS_RETAINED",
+    "selected_14_regression": {
+      "run": 41892781409,
+      "workflow": "FAIL",
+      "passed": 10,
+      "failed": 0,
+      "deselected": 152,
+      "collector": "FAIL_INCOMPLETE_SELECTION_FOUR_NESTED_CASES_NOT_RUN",
+      "followup": "MISSING_FOUR_ONLY_ORIGINAL_BUDGET_NO_SUCCESSFUL_TEN_REPLAY",
+      "raw_result_sha256": "e5530851a4b987a39ebc12049b45b87e2bc9024df7acd28ded792ec571addcbc"
+    },
+    "missing_four_followup": {
+      "run": 41897772376,
+      "diagnostic_commit": "75e5a267b8460c41da68779fc34a41571b087fae",
+      "source": "1a677d67cb1f79246a7912ab7dc4ed3bacc81ccc",
+      "status": "PASS",
+      "selected": 4,
+      "passed": 4,
+      "failed": 0,
+      "collected": 104,
+      "deselected": 100,
+      "raw_result_sha256": "99f03bf59464b39509477288d1381e4d8851b27499b5e3ffe038010e127ad5de",
+      "original_successful_ten_replayed": false,
+      "combined_distinct_original_cases": 14,
+      "single_fourteen_case_run_claim": false,
+      "whole_foundation_success": false
+    }
+  },
+  "operational": {
+    "decision_groups": ["D1", "D2", "D3"],
+    "accountable_people": "ALL_ELEVEN_UNASSIGNED",
+    "a01_a12": "ALL_NOT_RUN",
+    "installed_writer_inventory": "UNVERIFIED",
+    "adapter_schema_implementation_authorized": false,
+    "physical_macbook_air": "LAST_REPORTED_UNAVAILABLE",
+    "physical_two_computer_recovery": "NOT_RUN",
+    "sealed_kit_and_25_offline_checks": "PRESERVED_NOT_REPEATED"
+  },
+  "agents": [
+    {
+      "id": "/root",
+      "assignment": "MAIN_CI_SHARED_CONTRACTS_INTEGRATION_REGISTERS",
+      "branch": "codex/program-cycle-thirty-one-integration",
+      "draft_pr": 233
+    },
+    {
+      "id": "/root/cycle30_field_growth",
+      "assignment": "FIELD_NO_CHANGE_GROWTH_NATIVE_INPUT_CORRECTION",
+      "branch": "codex/cycle31-maintenance-proposal-input",
+      "draft_pr": 231,
+      "author": "1538060250fc34654414dac6b29621bf44fabd98",
+      "focused_passes": 102,
+      "new_cases": 11,
+      "status": "COMPLETED"
+    },
+    {
+      "id": "/root/cycle25_finance_intelligence_resume",
+      "assignment": "FINANCE_NO_CHANGE_LEGACY_SOURCE_COMPATIBILITY_AND_OWNER_NATIVE_GUARD",
+      "branches": [
+        "codex/cycle31-owner-source-compatibility",
+        "codex/cycle31-owner-navigation-runtime"
+      ],
+      "draft_prs": [228, 232],
+      "authors": [
+        "94a5da1f2cf4187acdd412cdefaec627d1dee463",
+        "4dc82f93b4cc156ff3f9a4fb46aa3fefa2c93517"
+      ],
+      "owner_focused_passes": 62,
+      "owner_new_cases": 15,
+      "status": "COMPLETED"
+    },
+    {
+      "id": "/root/cycle31_customer_offline",
+      "assignment": "CUSTOMER_OFFLINE_NO_CHANGE_SOURCE_AUDIT",
+      "branch": "codex/cycle31-customer-audit",
+      "draft_pr": null,
+      "existing_focused_passes": 36,
+      "new_cases": 0,
+      "no_artificial_package": true,
+      "status": "COMPLETED"
+    },
+    {
+      "id": "/root/cycle28_independent_review",
+      "assignment": "INDEPENDENT_SOURCE_SECURITY_PRESERVATION_AND_ACTUAL_ARTIFACT_REVIEW",
+      "new_cases": 10,
+      "branch": "codex/cycle31-final-independent-review-unique",
+      "draft_pr": 234,
+      "status": "COMPLETED_INDEPENDENT_CLEAR",
+      "commit": "09444b24868bd9b7891367e931a9bfd630dad3ef"
+    }
+  ],
+  "prohibited_actions_performed": [],
+  "hosted_combined": {
+    "run": 41892296853,
+    "source": "832fbb8b62c25c232d14ec10081083961d84cddc",
+    "workflow": "PASS",
+    "exact_collection": "591_CASES_27_SUITES",
+    "responsive_native": 9,
+    "production_off": 3,
+    "original_owner_budget_cases": 2,
+    "foundation_success": false,
+    "final_documentation_head_inheritance": false,
+    "artifacts": {
+      "artifacts/cycle31/application-results.json": "0cf11596c1212484f9a174c4ded2d6a72f1a14c15b4bcc40424daf41234b39d4",
+      "artifacts/cycle28/browser-results.json": "bf8769418715f6dcabc21b33a457a1ae1c46e84d915a7429781099f4c5569cb3",
+      "artifacts/cycle28/browser-off-results.json": "5f39c8034285c074aa57ab4830ec6bc3b5fcefcde0920c1200aa1fda0ba173a0",
+      "artifacts/cycle31/owner-original-budget-results.json": "7bc5738e6fed2a9dfc4baf7eeaea4fd9fe9c3c85863873f5c71cb55d42c0c9a4",
+      "artifacts/cycle28/browser-validation.json": "4525df1634ef949b21e35337ea2f0528434baea52a16527a803c12a984c13def"
+    },
+    "actual_owner_durations_ms": [17755, 17956],
+    "screenshots_verified": 63,
+    "clean_capture_metadata_verified": 63
+  }
+}

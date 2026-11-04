@@ -15,7 +15,29 @@ export const fonts = Object.freeze([
   'xfonts-scalable',
   'xfonts-utils',
 ]);
-export function validateUbuntuSources(text) {
+export const ubuntuMirrors = '/etc/apt/apt-mirrors.txt';
+export function validateUbuntuMirrors(text) {
+  const expected = new Map([
+    ['1', 'http://azure.archive.ubuntu.com/ubuntu/'],
+    ['2', 'https://archive.ubuntu.com/ubuntu/'],
+    ['3', 'https://security.ubuntu.com/ubuntu/'],
+  ]);
+  const lines = text
+    .split('\n')
+    .map((l) => l.trim())
+    .filter((l) => l && !l.startsWith('#'));
+  if (lines.length !== 3)
+    throw Error('Exact three signed-Ubuntu mirror targets required');
+  for (const line of lines) {
+    const m = /^(\S+)[\t ]+priority:([123])$/.exec(line);
+    if (!m || expected.get(m[2]) !== m[1])
+      throw Error('Reviewed Ubuntu mirror and priority required');
+    expected.delete(m[2]);
+  }
+  if (expected.size) throw Error('Complete reviewed Ubuntu mirrors required');
+  return true;
+}
+export function validateUbuntuSources(text, mirrorText) {
   const paragraphs = text
     .trim()
     .split(/\n\s*\n/)
@@ -29,7 +51,8 @@ export function validateUbuntuSources(text) {
         fields[m[1]] = m[2].trim();
       }
       return fields;
-    });
+    })
+    .filter((fields) => Object.keys(fields).length > 0);
   if (!paragraphs.length || paragraphs.length > 4)
     throw Error('Bounded Ubuntu sources required');
   for (const p of paragraphs) {
@@ -51,11 +74,12 @@ export function validateUbuntuSources(text) {
       throw Error('Signed Ubuntu deb sources only');
     if (
       !p.URIs ||
-      p.URIs.split(/\s+/).some(
-        (u) =>
-          !/^https?:\/\/(?:azure\.archive|archive|security)\.ubuntu\.com\/ubuntu\/?$/.test(
-            u,
-          ),
+      p.URIs.split(/\s+/).some((u) =>
+        u === `mirror+file:${ubuntuMirrors}`
+          ? !validateUbuntuMirrors(mirrorText ?? '')
+          : !/^https?:\/\/(?:azure\.archive|archive|security)\.ubuntu\.com\/ubuntu\/?$/.test(
+              u,
+            ),
       )
     )
       throw Error('Official Ubuntu archive URI required');
@@ -120,7 +144,17 @@ if (
   ])
     if (!lstatSync(p).isFile() || lstatSync(p).isSymbolicLink())
       throw Error('Regular installed Ubuntu source/key required');
-  validateUbuntuSources(readFileSync(ubuntuSource, 'utf8'));
+  const source = readFileSync(ubuntuSource, 'utf8');
+  let mirrorText;
+  if (source.includes(`mirror+file:${ubuntuMirrors}`)) {
+    if (
+      !lstatSync(ubuntuMirrors).isFile() ||
+      lstatSync(ubuntuMirrors).isSymbolicLink()
+    )
+      throw Error('Regular installed Ubuntu mirror file required');
+    mirrorText = readFileSync(ubuntuMirrors, 'utf8');
+  }
+  validateUbuntuSources(source, mirrorText);
   for (const args of dependencyCommands())
     execFileSync('sudo', ['--', ...args], { stdio: 'inherit' });
 }

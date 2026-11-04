@@ -1834,3 +1834,26 @@ Retain original task receipt/graph custody agreement before composite review. Mi
 One source-checker diagnostic compatibility failure was fixed by preserving its original strict denial and retained assertion. Supplemental screenshot paths are isolated from the unchanged exact63capture collector; original failures/moves and final hash validation remain disclosed. New C28 CI precisely selects the actual retained C26 source-review suite; nonexistent initial selection was not counted as coverage. No original test, timeout, Foundation workflow or protection was weakened.
 
 The genuine internal customer request/receipt/staff read remains a specification only with twelve future acceptance cases. Naming roles, complete writer inventory, current genuine Auth, target grants/RLS, transaction/ACK/custody and independent recovery require separate acceptance. Neither reviewed restart architecture nor this local cycle authorizes schema/adapter implementation. Preserve the original P1 approval/13history sequence and separate customer14/4B authorization. Physical Air recovery NOT RUN; all operational and release gates remain closed.
+
+## Cycle31 · exact guard composition and honest partial CI
+
+Reject non-cloneable maintenance proposal input before original admission; preserve the
+ordinary object/live-input and UNKNOWN custody. Deduplicate only the parent navigation
+preflight immediately repeated by the original child, with no await/cache between;
+retain opaque snapshot membership, child-current, post-await, callback and one-use checks.
+Source metadata permits only fixed author/parent/path/delta successors after original
+published SHA/blob checks; it never restores business state or grants authorization.
+
+Handle only observed signed Ubuntu source/mirror forms, preserving keys/signatures and
+all three exact official targets/priorities. Original test inputs/assertions/budgets
+remain exact. Fix duplicated new test names, preserve original591 assertionPASS/collectionFAIL,
+and require a genuine complete591unique rerun before declaring that gate passed.
+Hosted exact-X2/2 original30s browser acceptance is source-specific and not a sole-cause
+or global Foundation claim. Parent partial unions, later162same-head passes, earlier14
+failures,5legacy source failures,102unconcluded files and cancellations remain distinct.
+
+D1–D3 decisions and A01–A12 are review-only; no operational roles, writers, Auth/MFA,
+transaction/custody/ACK/fence/recovery or schema/adapter authority is presumed. Original
+P1 approval/customer14/4B sequence remains; Air recovery NOT_RUN. No protected files,
+new data store/engine/route, hosted/financial/communication/dispatch/production gate change.
+Release1.0 NOT READY / NOT AUTHORIZED.

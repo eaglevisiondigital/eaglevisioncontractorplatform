@@ -1,0 +1,81 @@
+{
+  "schema": "propel-cycle31-missing-nested-foundation-cases-v1",
+  "authority": "DIAGNOSTIC_TEST_SELECTION_ONLY_NOT_BUSINESS_STATE_OR_RESTORE",
+  "source_commit": "1a677d67cb1f79246a7912ab7dc4ed3bacc81ccc",
+  "original_failure_run": 41879470772,
+  "test_configuration": {
+    "path": "vite.config.ts",
+    "sha256": "0fdc8ac3b8d922c2229a25d67d0b42ab3c895489bfc7ee514aae0c78853bf48d",
+    "max_workers": 4,
+    "test_timeout_ms": 30000,
+    "hook_timeout_ms": 30000,
+    "override_timeouts": false
+  },
+  "package_lock_sha256": "8be30ee23e9cd3ca2f54e4b5beb7da07fd20ead0b86b504d31b29b1116b8baa3",
+  "files": [
+    {
+      "path": "tests/cycle24-independent-integration-review.test.ts",
+      "sha256": "09b5042be1fee47b562ed52046c900583acaaecff6241b2aa8491674bd17f083",
+      "collected": 54,
+      "selected": 3
+    },
+    {
+      "path": "tests/cycle23-independent-integration-review.test.ts",
+      "sha256": "f9d78549be62c2540b98959db7c908b84509a233c27a5435dec15a48f047dc2f",
+      "collected": 50,
+      "selected": 1
+    }
+  ],
+  "expected_collected": 104,
+  "expected_selected": 4,
+  "expected_deselected": 100,
+  "test_name_pattern": "^(?:Cycle24 independent exact native action integration > brand 0 native correction and material review remain the original cost and priority sources|Cycle24 independent exact native action integration > brand 1 native correction and material review remain the original cost and priority sources|Cycle24 independent exact native action integration > brand 2 native correction and material review remain the original cost and priority sources|Cycle23 independent frozen-runtime cross-module review > I10 another property report and another job occurrence cannot replace the retained exact sources)$",
+  "cases": [
+    {
+      "path": "tests/cycle24-independent-integration-review.test.ts",
+      "ancestor_titles": [
+        "Cycle24 independent exact native action integration"
+      ],
+      "title": "brand 0 native correction and material review remain the original cost and priority sources",
+      "full_name": "Cycle24 independent exact native action integration brand 0 native correction and material review remain the original cost and priority sources",
+      "source_line": 800,
+      "runner_name": "Cycle24 independent exact native action integration > brand 0 native correction and material review remain the original cost and priority sources"
+    },
+    {
+      "path": "tests/cycle24-independent-integration-review.test.ts",
+      "ancestor_titles": [
+        "Cycle24 independent exact native action integration"
+      ],
+      "title": "brand 1 native correction and material review remain the original cost and priority sources",
+      "full_name": "Cycle24 independent exact native action integration brand 1 native correction and material review remain the original cost and priority sources",
+      "source_line": 800,
+      "runner_name": "Cycle24 independent exact native action integration > brand 1 native correction and material review remain the original cost and priority sources"
+    },
+    {
+      "path": "tests/cycle24-independent-integration-review.test.ts",
+      "ancestor_titles": [
+        "Cycle24 independent exact native action integration"
+      ],
+      "title": "brand 2 native correction and material review remain the original cost and priority sources",
+      "full_name": "Cycle24 independent exact native action integration brand 2 native correction and material review remain the original cost and priority sources",
+      "source_line": 800,
+      "runner_name": "Cycle24 independent exact native action integration > brand 2 native correction and material review remain the original cost and priority sources"
+    },
+    {
+      "path": "tests/cycle23-independent-integration-review.test.ts",
+      "ancestor_titles": [
+        "Cycle23 independent frozen-runtime cross-module review"
+      ],
+      "title": "I10 another property report and another job occurrence cannot replace the retained exact sources",
+      "full_name": "Cycle23 independent frozen-runtime cross-module review I10 another property report and another job occurrence cannot replace the retained exact sources",
+      "source_line": 503,
+      "runner_name": "Cycle23 independent frozen-runtime cross-module review > I10 another property report and another job occurrence cannot replace the retained exact sources"
+    }
+  ],
+  "historical_results_unchanged": true,
+  "whole_foundation_success_claim": false,
+  "previous_diagnostic_run": 41892781409,
+  "retained_previous_selected_passes": 10,
+  "retained_previous_deselected": 152,
+  "expected_vitest_version": "5.0.5"
+}

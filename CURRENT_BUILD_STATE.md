@@ -1,3 +1,38 @@
+# Cycle31 · exact canonical corrections and Linux acceptance
+
+Draft[233](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/233)
+composes bounded drafts228–232 from exact353923ce. Growth denies substituted proposal
+input; owner inspection/continuation removes one duplicate synchronous check while
+retaining original authority. Legacy source validation binds original hashes plus
+only exact reviewed successors; signed Ubuntu preparation accepts the observed fixed
+mirror source without weakening trust. Field/Finance/Customer/Offline audited NO_CHANGE.
+[Exact agents/authors/support heads](docs/program/CYCLE31_SOURCE_MANIFEST.json) and
+[validation](docs/program/CYCLE31_VALIDATION.md) distinguish all actual outcomes.
+
+Final clean832591/27 application+unique collection PASS;9native+3OFF responsive
+browsers,63captures/9keyboard journeys/369trusted events PASS. Frozen runtimeX also
+passes the two original30second Linux navigation cases (28.166/28.632s,2workers,
+0retries). That does not imply whole Foundation or universal timing stability.
+Exact832combined hosted integration41892296853 also PASS:591cases,responsive9+3,
+signed installation,collector and both original-budget owner cases. Later metadata
+heads require their own live status; this is not Foundation success.
+Original353Foundations both CANCELLED45m; later same-head162cases PASS supersede
+earlier14case gaps, while5legacy validator failures/102unconcluded unit files and
+unreached recovery/build/full-browser remain separate. Current-head CI is reported
+from actual snapshots, never inferred from local proof or another SHA.
+The selected14diagnostic is FAIL with10actual PASS and four missing nested cases;
+its corrected missing-four follow-up41897772376 PASS covers4/4without rerunning
+the successful ten. This is14distinct cases across two reports, not one run or a
+whole Foundation PASS.
+
+Independent128protected/593oldtest-config-fixture/156critical/5locks/13bindings remain
+exact. Original25capability records/18IDs/approved designs are not promoted; two newer
+visual scopes remain pending. D1–D3 require actual owners/writers/Auth/ACK/fence/matched
+recovery;11peopleUNASSIGNED, A01–A12NOT_RUN. Air last unavailable; physical recovery
+NOT_RUN, sealed kit/25offline checks retained. Existing P1-on13/separate14/4B and all
+Netlify/NMI/Auth/MFA/financial/communication/dispatch/production gates remain unchanged.
+Release1.0 NOT READY / NOT AUTHORIZED.
+
 # Cycle30 · bounded workflow reliability
 
 Three source-bound native corrections address invalid maintenance-date custody, Customer descriptor-Proxy substitution and repeated owner-render source work. Field adds unique final-boundary lost-ACK/UNKNOWN navigation coverage; Finance and Offline audited NO_CHANGE. Separate draft PRs221–225 retain bounded ownership and exact author/support heads. [Validation](docs/program/CYCLE30_VALIDATION.md) and [source manifest](docs/program/CYCLE30_SOURCE_MANIFEST.json) record actual agents, immutable SHAs, tests and limits.
