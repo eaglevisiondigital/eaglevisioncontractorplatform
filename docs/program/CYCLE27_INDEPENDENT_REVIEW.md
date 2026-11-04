@@ -1,6 +1,6 @@
 # Cycle 27 · independent source, privacy and readiness review
 
-Reviewer: `/root/cycle27_independent_review`. Exact parent:
+Reviewer: `/root/cycle27_independent_review`. Exact source baseline:
 `f81081b3ce8fca63443a9f03e8bfcd5aa4daa4b6`. Main runtime candidate inspected:
 `e5c465447598ef665f90e752e1c3621d50f7fd5c`, followed by the one-file test-harness
 correction `b3be1c90ad4cf90412890bf90e90f9cf981ab787`. Native runtime bytes are
@@ -90,9 +90,9 @@ passes 16/16. That recheck does not add sixteen unique cases to the 178 count.
 I independently inspected Main privacy JSON: fifteen original passes at e5c4654 plus
 the three targeted corrected passes at b3be1c9 cover eighteen distinct brand/viewport/
 module cases, with no skips, retries or outside requests. They are not one clean
-eighteen-case run. The first harness timeouts remain recorded. Main
-nine native journey and three production-OFF browser outcomes remain pending at this
-review snapshot; current results belong in the delivery/validation register. No
+eighteen-case run. The first harness timeouts remain recorded. At the original
+`b43ea2e` review snapshot, the nine native journey and three production-OFF browser
+outcomes were pending. The follow-up below records their completed evidence. No
 pending, failed, cancelled or local result is represented as GitHub CI success.
 
 I independently verified 128 protected hashes, five locked design hashes, thirteen
@@ -101,6 +101,52 @@ Supabase sources remain unchanged. Original Foundation SHA256 remains
 `df337433bfde1768ccbe396326793559f21113aa7c24e37fbd5955c4c29f87be`.
 Approved portal, Property Operations, original artwork and design approvals are retained.
 New panel tests or screenshots cannot confer visual approval.
+
+## Follow-up · completed combined verification
+
+I independently verified the final raw browser reports and collector manifest:
+**9/9 native journeys and 3/3 production-OFF cases pass**, without skipped, flaky,
+retried or failed cases. The sole executed runtime is clean
+`b3be1c90ad4cf90412890bf90e90f9cf981ab787`. All 63 PNG hashes and paired metadata
+match their exact 76-file scoped inventory and current/committed native bytes.
+All nine brand/viewport keyboard journeys retain the exact starting job and company,
+with 369 trusted key events and zero outside requests. The original source-bound
+Axe, overflow and touch-target assertions are unchanged and pass. I visually inspected
+representative desktop, tablet and mobile captures; this does not confer visual
+approval. The collector retains **visual PENDING**, **physical recovery NOT RUN**
+and **Release 1.0 NOT READY / NOT AUTHORIZED**. Its 76-file inventory is scoped
+capture evidence, not a claim of complete transitive runtime or operational authority.
+
+Root's initial read-only collector was stopped after roughly twenty minutes of
+repeated Git subprocess work; it was incomplete, not a failed browser assertion.
+The new build-tool correction caches only successful immutable default-port Git facts,
+keyed by repository working directory, full object ID and exact arguments. Buffers
+are copied. Symbolic refs, errors, current lstat/file reads, injected test ports,
+per-row source admission and business authority are not cached. Replacement refs
+are disabled; parents come from raw commit headers and deltas compare the explicit
+raw single parent with the commit. This avoids mutable replacement/shallow traversal
+interpretation. The collector's separate Git-digest cache predates C27 and is not new
+C27 functionality.
+
+I independently verified defensive buffer copying, denial after warm-cache current
+source replacement, all six raw parents/exact deltas and full combined admission.
+The corrected helper SHA256 is
+`4f79231224dfd2245851dc5a1f51691a8bd64e20fd995c045c1a614954b92e8f`.
+The actual 66/66 source-test report includes three new cache cases and unchanged
+C25/C26/C27 source assertions, including a disposable replacement/shallow repository.
+These three new cases increase the Main unique application total from 178 to 181;
+repeated source checks and the final sixteen-case combined recheck are not extra
+unique cases. No native writer, browser assertion, timeout or original Foundation
+budget changed. The corrected collector completes without replaying browser tests.
+
+The private exact-head CI snapshot checked at `2026-11-04T13:24:28.171167Z` shows
+PRs #191–#200 open and draft. Feature/Main Foundation verification is still queued
+or in progress; PostgreSQL sibling successes do not complete the verify jobs.
+Main #200 at b3be1c9 has queued Foundation and dedicated checks at that snapshot.
+PR #191 retains two failed original-browser shards. These results and the original
+C26 cancellations are not relabelled as passes by local evidence or a supplement.
+Later exact-head outcomes belong in the current delivery register. No successful CI
+or browser check was rerun by this independent review.
 
 ## Smallest readiness package
 
