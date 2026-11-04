@@ -194,6 +194,9 @@ for (const surface of ['/preview/contractor-design', '/preview']) {
         repairOrg,
       async ({ page }, info) => {
         test.setTimeout(120000);
+        // Keep this finite synthetic review on one date; timers remain live.
+        // A separate day-boundary test preserves stale-date rejection/reload.
+        await page.clock.setFixedTime(new Date());
         await page.goto(surface);
         await page
           .getByRole('combobox', { name: /^Company Context$/i, exact: true })
