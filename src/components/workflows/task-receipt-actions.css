@@ -56,3 +56,37 @@
     width: 100%;
   }
 }
+
+.task-receipt-actions__continuity {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #d8ddd5;
+}
+.task-receipt-actions__continuity label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0.8rem 0;
+  font-weight: 600;
+}
+.task-receipt-actions__continuity select {
+  min-height: 44px;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.65rem;
+  font: inherit;
+  color: #253a30;
+  background: white;
+  border: 1px solid #a8b3a8;
+  border-radius: 0.6rem;
+}
+.task-receipt-actions__continuity select:focus-visible {
+  outline: 3px solid var(--journey-accent, #b48b46);
+  outline-offset: 3px;
+}
+.task-receipt-actions__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
