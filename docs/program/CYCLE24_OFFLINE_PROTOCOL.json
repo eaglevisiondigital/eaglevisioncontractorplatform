@@ -1,0 +1,37 @@
+{
+  "schema": "propel-offline-source-review-contract-v1",
+  "mode": "OFFLINE_SOURCE_ADMISSION_V1",
+  "source_fields": [
+    "organization_id",
+    "customer_id",
+    "location_id",
+    "job_id",
+    "estimate_id",
+    "issued_version_id",
+    "source_sha256",
+    "saved_lock_revision"
+  ],
+  "native_visit_fields": [
+    "visit_id",
+    "visit_revision",
+    "plan_id",
+    "plan_revision"
+  ],
+  "envelope_fields": ["mode", "external_reference", "source", "visit"],
+  "non_null": true,
+  "external_content": "UNTRUSTED_PROPOSAL",
+  "required_original_handles": [
+    "offline AdvancedRequirements registered by readSyncAdmissionSource",
+    "OperationsExperimentReview registered by reviewOperationsExperiments"
+  ],
+  "result": "ORIGINAL_SYNC_ADMISSION_REVIEW_ONLY",
+  "source_hash_authentication": false,
+  "operational_admission": false,
+  "canonical_restore": false,
+  "import": false,
+  "save_note": false,
+  "sync": false,
+  "replay": false,
+  "durable_receipt": false,
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}
