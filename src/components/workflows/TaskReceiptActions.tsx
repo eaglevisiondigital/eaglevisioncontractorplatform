@@ -6,6 +6,7 @@ import {
   inspectTaskReceiptReconciliation,
   type TaskReceiptReconciliation,
   readTaskReceiptContinuity,
+  rereadTaskReceiptContinuity,
   inspectTaskReceiptContinuity,
   inspectTaskReceiptTask,
   verifyTaskReceiptCorrectionSource,
@@ -129,16 +130,33 @@ function ReceiptAction({
     try {
       if (action === 'read') {
         setContinuity(undefined);
-        setSelectedTask('');
-        const next = await readTaskReceiptContinuity(
-          sources,
-          selectedJobId,
-          gate.current,
+        setVerification(
+          'Reading current exact task sources; previous verification is cleared.',
         );
+        const next = continuity
+          ? await rereadTaskReceiptContinuity(
+              continuity,
+              sources,
+              selectedJobId,
+              gate.current,
+            )
+          : await readTaskReceiptContinuity(
+              sources,
+              selectedJobId,
+              gate.current,
+            );
         inspectTaskReceiptContinuity(next);
         if (l.alive) {
           setContinuity(next);
-          setVerification('Choose an exact task; no newest-task substitution.');
+          setVerification(
+            selectedTask
+              ? inspectTaskReceiptContinuity(next).graph.graph.nodes.some(
+                  (row) => row.id === selectedTask,
+                )
+                ? 'Exact selected task retained. Verify its current native source explicitly; original custody is unchanged.'
+                : 'Selected exact task is unavailable. No fallback or newest task was selected.'
+              : 'Choose an exact task; no newest-task substitution.',
+          );
         }
       } else if (continuity) {
         if (action === 'verify') {
@@ -251,6 +269,14 @@ function ReceiptAction({
               }}
             >
               <option value="">Choose exact task</option>
+              {selectedTask &&
+                !tasks.graph.graph.nodes.some(
+                  (row) => row.id === selectedTask,
+                ) && (
+                  <option value={selectedTask} disabled>
+                    Unavailable exact task · {selectedTask}
+                  </option>
+                )}
               {tasks.graph.graph.nodes.map((task) => (
                 <option key={task.id} value={task.id}>
                   {task.task} · {task.id}
