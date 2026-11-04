@@ -1,5 +1,19 @@
 # Shared design-system specification · cycle two
 
+## Cycle25 native controls and retained context
+
+Extend the five existing source action panels; do not add a route, tab, preview layer,
+company selector or business navigation owner. Keep original typography/spacing/brand
+tokens and locked artwork. Exact IDs and original publication links accompany concise
+requirements. Selection/search retain job/company context; refreshed sources require
+explicit verification. UNKNOWN and unsupported operations use text, not color alone.
+
+The existing C24 keyboard/axe/touch/overflow journey is extended additively using exact
+source-admission detection. New requirements are mandatory for the corresponding C25
+successor, never skipped based on UI presence. All three brands and desktop/tablet/mobile
+remain required. Original three visual approvals stand; newer Operating Center/advanced
+scope remains PENDING. Passing tests never grants visual approval or physical-device PASS.
+
 ## Cycle24 compact native actions with retained job context
 
 Place small explicit action sections beside the existing C23 tab content. Reuse

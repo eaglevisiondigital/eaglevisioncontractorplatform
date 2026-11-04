@@ -1,0 +1,51 @@
+name: Cycle 25 native workflow continuity
+on:
+  push:
+    branches: ['codex/program-cycle-twenty-five-integration']
+  pull_request:
+    branches: ['codex/program-cycle-twenty-four-integration']
+    paths:
+      - 'src/lib/workflows/*.ts'
+      - 'src/components/workflows/*'
+      - 'tests/cycle25*'
+      - 'tests/browser/cycle24-native-actions.spec.ts'
+      - 'tests/program/playwright.cycle25.config.ts'
+      - 'scripts/*cycle25*'
+      - 'docs/program/CYCLE25*'
+      - '.github/workflows/cycle25-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle25-integration-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  combined-native-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node scripts/check-cycle25.mjs
+      - run: npx vitest run tests/cycle24*.test.ts tests/cycle25*.test.ts --maxWorkers=2 --reporter=json --outputFile=artifacts/cycle25/application-results.json
+      - run: node scripts/check-cycle25.mjs --application
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test -c tests/program/playwright.cycle25.config.ts --workers=1
+      - run: CYCLE25_BROWSER_MODE=off npx playwright test -c tests/program/playwright.cycle25.config.ts --workers=1
+      - run: CYCLE24_ARTIFACT_DIR=artifacts/cycle25 node scripts/collect-cycle24-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle25-native-continuity-evidence
+          path: |
+            artifacts/cycle25/
+            test-results/
+          retention-days: 7

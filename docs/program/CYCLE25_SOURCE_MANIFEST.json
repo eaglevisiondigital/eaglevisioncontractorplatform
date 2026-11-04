@@ -1,0 +1,419 @@
+{
+  "schema": "propel-cycle25-source-manifest-v1",
+  "parent_commit": "31e2bf5b05f6befac1c24314a31d2eabe65c5219",
+  "executed_runtime_candidate": "92ec099ff15035e19db584e7b15f3ccd2dd465d5",
+  "coordination_branch": "codex/program-cycle-twenty-five-integration",
+  "packages": [
+    {
+      "module": "field-task-continuity",
+      "owner": "/root/cycle25_field_growth_resume",
+      "branch": "codex/cycle25-field-task-continuity",
+      "commit": "d003c81c602fac907bba44b26f9af5f8753f9eb0",
+      "cases": 20,
+      "permitted": [
+        "src/lib/workflows/task-receipt-reconciliation.ts",
+        "src/components/workflows/TaskReceiptActions.tsx",
+        "src/components/workflows/task-receipt-actions.css"
+      ],
+      "modified": [
+        "src/components/workflows/TaskReceiptActions.tsx",
+        "src/components/workflows/task-receipt-actions.css",
+        "src/lib/workflows/task-receipt-reconciliation.ts"
+      ],
+      "added": [
+        "docs/program/CYCLE25_FIELD_TASK_CONTINUITY.md",
+        "tests/cycle25-field-task-continuity.test.ts"
+      ],
+      "package": "field",
+      "source_endpoint": "d003c81c602fac907bba44b26f9af5f8753f9eb0",
+      "head": "a5316cd7155202a1b1fa950eb704ae529857eafd",
+      "ci_only_paths": [
+        "scripts/cycle25-source-lineage.mjs",
+        "scripts/check-cycle24.mjs",
+        "scripts/collect-cycle24-browser.mjs",
+        "tests/browser/cycle24-native-actions.spec.ts"
+      ],
+      "main_tooling_commit": "92ec099ff15035e19db584e7b15f3ccd2dd465d5",
+      "title": "Cycle 25: exact native task and receipt continuity",
+      "owned_files": [
+        {
+          "path": "src/components/workflows/TaskReceiptActions.tsx",
+          "source_commit": "d003c81c602fac907bba44b26f9af5f8753f9eb0",
+          "sha256": "fdab5836072fed47643c685460c7a5c92d21c9d2f00a3f3e8f1af211f0d55271",
+          "bytes": 12074
+        },
+        {
+          "path": "src/components/workflows/task-receipt-actions.css",
+          "source_commit": "d003c81c602fac907bba44b26f9af5f8753f9eb0",
+          "sha256": "e2111aa5f120a4c73d70e3ff2cb1448a48201bd8769c70697ad7a0d0ab86010c",
+          "bytes": 1972
+        },
+        {
+          "path": "src/lib/workflows/task-receipt-reconciliation.ts",
+          "source_commit": "d003c81c602fac907bba44b26f9af5f8753f9eb0",
+          "sha256": "eda13c9ae8031df2ba0357c524cf3fb48125b8437209bff5b0529dd5286e9910",
+          "bytes": 5830
+        },
+        {
+          "path": "docs/program/CYCLE25_FIELD_TASK_CONTINUITY.md",
+          "source_commit": "d003c81c602fac907bba44b26f9af5f8753f9eb0",
+          "sha256": "67701ffc417ed81b0e5a0a23e50daf95eed99109f64f36ef3226d89aab9b0c86",
+          "bytes": 3207
+        },
+        {
+          "path": "tests/cycle25-field-task-continuity.test.ts",
+          "source_commit": "d003c81c602fac907bba44b26f9af5f8753f9eb0",
+          "sha256": "601077bcfd63b5ab9fef6063db6ca9440482fd1a7e1b10b28d63117261bf6d99",
+          "bytes": 9753
+        }
+      ],
+      "draft_pr": 175,
+      "default_off": true,
+      "operational_ready": false,
+      "base_branch": "codex/program-cycle-twenty-five-integration"
+    },
+    {
+      "module": "native-cost-reconciliation",
+      "owner": "/root/cycle25_finance_intelligence_resume",
+      "branch": "codex/cycle25-native-cost-reconciliation",
+      "commit": "23d1dceac734419fb85221eb46d079f4b641b4cb",
+      "cases": 22,
+      "nativeCorrection": {
+        "commit": "249925491c3fdf3191329596409d7a6f31582019",
+        "path": "src/components/workflows/cost-coverage-actions.css"
+      },
+      "permitted": [
+        "src/lib/workflows/cost-coverage-actions.ts",
+        "src/components/workflows/CostCoverageActions.tsx",
+        "src/components/workflows/cost-coverage-actions.css"
+      ],
+      "modified": [
+        "src/components/workflows/CostCoverageActions.tsx",
+        "src/components/workflows/cost-coverage-actions.css",
+        "src/lib/workflows/cost-coverage-actions.ts"
+      ],
+      "added": [
+        "docs/program/CYCLE25_NATIVE_COST_RECONCILIATION.md",
+        "tests/cycle25-native-cost-reconciliation.test.ts"
+      ],
+      "package": "finance",
+      "source_endpoint": "249925491c3fdf3191329596409d7a6f31582019",
+      "head": "d0d0e0a552eae2ab487162866ee5e624e8a3e26d",
+      "ci_only_paths": [
+        "scripts/cycle25-source-lineage.mjs",
+        "scripts/check-cycle24.mjs",
+        "scripts/collect-cycle24-browser.mjs",
+        "tests/browser/cycle24-native-actions.spec.ts"
+      ],
+      "main_tooling_commit": "92ec099ff15035e19db584e7b15f3ccd2dd465d5",
+      "title": "Cycle 25: canonical cost source review and retained selection",
+      "owned_files": [
+        {
+          "path": "src/components/workflows/CostCoverageActions.tsx",
+          "source_commit": "249925491c3fdf3191329596409d7a6f31582019",
+          "sha256": "695586af0c869836e4851f46ca51a3cff2ea080b73e1c84fe29562820fba3228",
+          "bytes": 12571
+        },
+        {
+          "path": "src/components/workflows/cost-coverage-actions.css",
+          "source_commit": "249925491c3fdf3191329596409d7a6f31582019",
+          "sha256": "a068b48e0d8e4af91f9654cae8baad604428ca3ec9732ac32617f6031a1527d6",
+          "bytes": 1403
+        },
+        {
+          "path": "src/lib/workflows/cost-coverage-actions.ts",
+          "source_commit": "249925491c3fdf3191329596409d7a6f31582019",
+          "sha256": "a300c509b4d0810bd5495ccb5bbb76a44e7fb2622c23421710954775927e52e1",
+          "bytes": 9168
+        },
+        {
+          "path": "docs/program/CYCLE25_NATIVE_COST_RECONCILIATION.md",
+          "source_commit": "23d1dceac734419fb85221eb46d079f4b641b4cb",
+          "sha256": "778a5e1b746aeb8f59c22138d8f9aecf5134cee9febd54f49cedf33f81b52ece",
+          "bytes": 3951
+        },
+        {
+          "path": "tests/cycle25-native-cost-reconciliation.test.ts",
+          "source_commit": "23d1dceac734419fb85221eb46d079f4b641b4cb",
+          "sha256": "dd8a70820922f50f074289eb74f3fb2baa4b57ae7165272364fdd872d3220612",
+          "bytes": 15481
+        }
+      ],
+      "draft_pr": 176,
+      "default_off": true,
+      "operational_ready": false,
+      "base_branch": "codex/program-cycle-twenty-five-integration"
+    },
+    {
+      "module": "service-evidence-continuity",
+      "owner": "/root/cycle25_customer_advanced_resume",
+      "branch": "codex/cycle25-service-evidence-continuity",
+      "commit": "c95d44b2cae0440dc0a85fa07abd47df6c4a2d2a",
+      "cases": 31,
+      "permitted": [
+        "src/lib/workflows/service-request-actions.ts",
+        "src/components/workflows/ServiceRequestActions.tsx",
+        "src/components/workflows/service-request-actions.css"
+      ],
+      "modified": [
+        "src/components/workflows/ServiceRequestActions.tsx",
+        "src/lib/workflows/service-request-actions.ts"
+      ],
+      "added": [
+        "docs/program/CYCLE25_SERVICE_EVIDENCE_CONTINUITY.md",
+        "tests/cycle25-service-evidence-continuity.test.ts"
+      ],
+      "testCommit": "093f948d872e7a5ba2143f46c1d07263e3fe531d",
+      "package": "customer",
+      "source_endpoint": "093f948d872e7a5ba2143f46c1d07263e3fe531d",
+      "head": "bab6ee5b7625b3aaa69691161c18091c5c4d1f49",
+      "ci_only_paths": [
+        "scripts/cycle25-source-lineage.mjs",
+        "scripts/check-cycle24.mjs",
+        "scripts/collect-cycle24-browser.mjs",
+        "tests/browser/cycle24-native-actions.spec.ts"
+      ],
+      "main_tooling_commit": "92ec099ff15035e19db584e7b15f3ccd2dd465d5",
+      "title": "Cycle 25: original request and published service evidence",
+      "owned_files": [
+        {
+          "path": "src/components/workflows/ServiceRequestActions.tsx",
+          "source_commit": "c95d44b2cae0440dc0a85fa07abd47df6c4a2d2a",
+          "sha256": "39ae615c1bf70b85a09786adf95c29bcc6358025f5ceb6de307024fe1149506b",
+          "bytes": 17263
+        },
+        {
+          "path": "src/lib/workflows/service-request-actions.ts",
+          "source_commit": "c95d44b2cae0440dc0a85fa07abd47df6c4a2d2a",
+          "sha256": "87c297e32619888bde7bc41db4557168962fe598b1f47c6fc033c928b48cf69f",
+          "bytes": 6632
+        },
+        {
+          "path": "docs/program/CYCLE25_SERVICE_EVIDENCE_CONTINUITY.md",
+          "source_commit": "c95d44b2cae0440dc0a85fa07abd47df6c4a2d2a",
+          "sha256": "2bcea8488c62457133a9466b914fd14c41a2392fe2c455d6abc7194c05d3b2cc",
+          "bytes": 3309
+        },
+        {
+          "path": "tests/cycle25-service-evidence-continuity.test.ts",
+          "source_commit": "093f948d872e7a5ba2143f46c1d07263e3fe531d",
+          "sha256": "ec9c1a32e26337a15ef163c2166188345ec0d3fe322e25244524e01098c81bc6",
+          "bytes": 10825
+        }
+      ],
+      "draft_pr": 177,
+      "default_off": true,
+      "operational_ready": false,
+      "base_branch": "codex/program-cycle-twenty-five-integration"
+    },
+    {
+      "module": "maintenance-consistency",
+      "owner": "/root/cycle25_field_growth_resume",
+      "branch": "codex/cycle25-maintenance-consistency",
+      "commit": "ae5b89503fc80487e3bb026e1bbc6eea29aef147",
+      "cases": 21,
+      "permitted": [
+        "src/lib/workflows/plan-cancellation-review.ts",
+        "src/components/workflows/MaintenanceCancellationActions.tsx",
+        "src/components/workflows/maintenance-cancellation-actions.css"
+      ],
+      "modified": [
+        "src/components/workflows/MaintenanceCancellationActions.tsx",
+        "src/components/workflows/maintenance-cancellation-actions.css",
+        "src/lib/workflows/plan-cancellation-review.ts"
+      ],
+      "added": [
+        "docs/program/CYCLE25_MAINTENANCE_CONSISTENCY.md",
+        "tests/cycle25-maintenance-consistency.test.ts"
+      ],
+      "package": "growth",
+      "source_endpoint": "ae5b89503fc80487e3bb026e1bbc6eea29aef147",
+      "head": "056a7923b1574010109e0f143e0d653f2efb0a96",
+      "ci_only_paths": [
+        "scripts/cycle25-source-lineage.mjs",
+        "scripts/check-cycle24.mjs",
+        "scripts/collect-cycle24-browser.mjs",
+        "tests/browser/cycle24-native-actions.spec.ts"
+      ],
+      "main_tooling_commit": "92ec099ff15035e19db584e7b15f3ccd2dd465d5",
+      "title": "Cycle 25: selected maintenance review requirements",
+      "owned_files": [
+        {
+          "path": "src/components/workflows/MaintenanceCancellationActions.tsx",
+          "source_commit": "ae5b89503fc80487e3bb026e1bbc6eea29aef147",
+          "sha256": "781c4cda0706a972cf2251a8f97a4cb1ca52a728c7a92d5e184292e43efe19a3",
+          "bytes": 14179
+        },
+        {
+          "path": "src/components/workflows/maintenance-cancellation-actions.css",
+          "source_commit": "ae5b89503fc80487e3bb026e1bbc6eea29aef147",
+          "sha256": "2c073f30f78c8f91d471f0d8ecc70240e337f938e003debb0140dfd5c0f3649e",
+          "bytes": 2594
+        },
+        {
+          "path": "src/lib/workflows/plan-cancellation-review.ts",
+          "source_commit": "ae5b89503fc80487e3bb026e1bbc6eea29aef147",
+          "sha256": "9421d4011fc4c3270c640e2e70f6bda4a01e1612561880c4ddf2bc95fa2a0c5f",
+          "bytes": 13682
+        },
+        {
+          "path": "docs/program/CYCLE25_MAINTENANCE_CONSISTENCY.md",
+          "source_commit": "ae5b89503fc80487e3bb026e1bbc6eea29aef147",
+          "sha256": "55b64ff531b9354197ade3b60e58d55ef332203e5c0460bb8d0baa7701bc21c8",
+          "bytes": 3319
+        },
+        {
+          "path": "tests/cycle25-maintenance-consistency.test.ts",
+          "source_commit": "ae5b89503fc80487e3bb026e1bbc6eea29aef147",
+          "sha256": "e1e72e0d8906831b1d487de3048612c626ee36e8cbdca80a2c81231efd83780a",
+          "bytes": 10710
+        }
+      ],
+      "draft_pr": 178,
+      "default_off": true,
+      "operational_ready": false,
+      "base_branch": "codex/program-cycle-twenty-five-integration"
+    },
+    {
+      "module": "owner-action-continuity",
+      "owner": "/root/cycle25_finance_intelligence_resume",
+      "branch": "codex/cycle25-owner-action-continuity",
+      "commit": "1faaad5baa4ffa1f077e39bd59e4f9c4760a7291",
+      "cases": 25,
+      "nativeCorrection": {
+        "commit": "603f8d5ce8b07497e5fe3c3a1a852ee849a16408",
+        "path": "src/components/workflows/owner-action-verification.css"
+      },
+      "permitted": [
+        "src/lib/workflows/owner-action-verification.ts",
+        "src/components/workflows/OwnerActionVerification.tsx",
+        "src/components/workflows/owner-action-verification.css"
+      ],
+      "modified": [
+        "src/components/workflows/OwnerActionVerification.tsx",
+        "src/components/workflows/owner-action-verification.css",
+        "src/lib/workflows/owner-action-verification.ts"
+      ],
+      "added": [
+        "docs/program/CYCLE25_OWNER_ACTION_CONTINUITY.md",
+        "tests/cycle25-owner-action-continuity.test.ts"
+      ],
+      "package": "intelligence",
+      "source_endpoint": "603f8d5ce8b07497e5fe3c3a1a852ee849a16408",
+      "head": "e1b422014b7c1e2ef8b1e1f437f535f02f265935",
+      "ci_only_paths": [
+        "scripts/cycle25-source-lineage.mjs",
+        "scripts/check-cycle24.mjs",
+        "scripts/collect-cycle24-browser.mjs",
+        "tests/browser/cycle24-native-actions.spec.ts"
+      ],
+      "main_tooling_commit": "92ec099ff15035e19db584e7b15f3ccd2dd465d5",
+      "title": "Cycle 25: source-compared owner briefing refresh",
+      "owned_files": [
+        {
+          "path": "src/components/workflows/OwnerActionVerification.tsx",
+          "source_commit": "603f8d5ce8b07497e5fe3c3a1a852ee849a16408",
+          "sha256": "de30adecbca3368e6ea8f08052639d10f30c3a15851b7e61bebaa58774705e7e",
+          "bytes": 10624
+        },
+        {
+          "path": "src/components/workflows/owner-action-verification.css",
+          "source_commit": "603f8d5ce8b07497e5fe3c3a1a852ee849a16408",
+          "sha256": "88abba99edb317a676e6514f591ea6888d01c652dc296808d9c7fdec63428206",
+          "bytes": 1504
+        },
+        {
+          "path": "src/lib/workflows/owner-action-verification.ts",
+          "source_commit": "603f8d5ce8b07497e5fe3c3a1a852ee849a16408",
+          "sha256": "b46be9dcf924849a2a466d76e55ff7d2e320ebe287fb8bdd589f1997457cd0b1",
+          "bytes": 7294
+        },
+        {
+          "path": "docs/program/CYCLE25_OWNER_ACTION_CONTINUITY.md",
+          "source_commit": "1faaad5baa4ffa1f077e39bd59e4f9c4760a7291",
+          "sha256": "4fed7147c330751426ea764bcf5ce9159b7ad2833f02e8c95c327f7c130b9802",
+          "bytes": 3863
+        },
+        {
+          "path": "tests/cycle25-owner-action-continuity.test.ts",
+          "source_commit": "1faaad5baa4ffa1f077e39bd59e4f9c4760a7291",
+          "sha256": "1825c40c4884f9203c337dd3d9a94e4458468b1853e43905881e1e53ef78b78d",
+          "bytes": 12182
+        }
+      ],
+      "draft_pr": 179,
+      "default_off": true,
+      "operational_ready": false,
+      "base_branch": "codex/program-cycle-twenty-five-integration"
+    },
+    {
+      "module": "advanced-source-admission",
+      "owner": "/root/cycle25_customer_advanced_resume",
+      "branch": "codex/cycle25-advanced-source-admission",
+      "commit": "c47b449573070371e51c46971439adc9b6ef0e81",
+      "cases": 37,
+      "permitted": [
+        "src/lib/workflows/offline-source-admission.ts",
+        "src/lib/workflows/offline-source-protocol.ts"
+      ],
+      "modified": ["src/lib/workflows/offline-source-admission.ts"],
+      "added": [
+        "docs/program/CYCLE25_ADVANCED_SOURCE_ADMISSION.md",
+        "tests/cycle25-advanced-source-admission.test.ts"
+      ],
+      "package": "advanced",
+      "source_endpoint": "c47b449573070371e51c46971439adc9b6ef0e81",
+      "head": "3d1d88f683dc296674ff7ecb6685b045aa2ae7c5",
+      "ci_only_paths": [
+        "scripts/cycle25-source-lineage.mjs",
+        "scripts/check-cycle24.mjs",
+        "scripts/collect-cycle24-browser.mjs",
+        "tests/browser/cycle24-native-actions.spec.ts"
+      ],
+      "main_tooling_commit": "92ec099ff15035e19db584e7b15f3ccd2dd465d5",
+      "title": "Cycle 25: read-only original offline comparison reconciliation",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/offline-source-admission.ts",
+          "source_commit": "c47b449573070371e51c46971439adc9b6ef0e81",
+          "sha256": "018c5020ea94e1cf5b6ac094c75c0c35ee3c7c2b5a3de700d6f6e212d696c140",
+          "bytes": 7954
+        },
+        {
+          "path": "docs/program/CYCLE25_ADVANCED_SOURCE_ADMISSION.md",
+          "source_commit": "c47b449573070371e51c46971439adc9b6ef0e81",
+          "sha256": "d5849c16673f4e6804fe04334bae6fa0c38a87e0bd23ff9b7539c6bd8f0a8270",
+          "bytes": 3069
+        },
+        {
+          "path": "tests/cycle25-advanced-source-admission.test.ts",
+          "source_commit": "c47b449573070371e51c46971439adc9b6ef0e81",
+          "sha256": "03d9104edb0e68c075127955f294310c3c9e468fb2e63c50488129ae5aeb52c1",
+          "bytes": 13355
+        }
+      ],
+      "draft_pr": 180,
+      "default_off": true,
+      "operational_ready": false,
+      "base_branch": "codex/program-cycle-twenty-five-integration"
+    }
+  ],
+  "independent_review": {
+    "owner": "/root/cycle25_independent_review",
+    "source_commit": "f416bd1d200cb929cb025b2c1699e0954892a797",
+    "head_commit": "70c172108116e4dbb78087d75fc87a61684a42f7",
+    "branch": "codex/cycle25-independent-review",
+    "draft_pr": 181
+  },
+  "readiness": {
+    "commit": "e1fe6ef1c7d27e042be8e0cdf67a0b82acb1bcb4",
+    "branch": "codex/cycle25-operational-readiness",
+    "draft_pr": 173,
+    "status": "NO_GO_FOR_OPERATIONAL_IMPLEMENTATION"
+  },
+  "business_state_restore_authority": false,
+  "operational_ready": false,
+  "physical_recovery": "UNVERIFIED_NOT_RUN",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "coordination_draft_pr": 174
+}

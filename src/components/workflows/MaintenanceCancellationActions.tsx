@@ -5,6 +5,8 @@ import {
   maintenanceReviewPurposes,
   readPlanCancellationReview,
   planCancellationFacts,
+  planCancellationOccurrenceFacts,
+  verifyPlanCancellationRequirements,
   selectPlanCancellationOccurrence,
   preparePlanCancellationReview,
   closePlanCancellationReview,
@@ -70,6 +72,7 @@ function ReviewActions({
     [kind, setKind] = useState<'follow_up' | 'renewal'>('follow_up'),
     [confirmed, setConfirmed] = useState(false),
     [prepared, setPrepared] = useState(false),
+    [verified, setVerified] = useState(false),
     [attempted, setAttempted] = useState(false),
     [terminalAttempted, setTerminalAttempted] = useState(false),
     [busy, setBusy] = useState(false),
@@ -99,6 +102,7 @@ function ReviewActions({
     try {
       await action();
     } catch {
+      if (l.alive) setVerified(false);
       if (l.alive)
         setStatus(
           'Source unavailable or action held. Reconcile the retained review; never retry preparation after UNKNOWN.',
@@ -112,6 +116,7 @@ function ReviewActions({
     }
   }
   function resetInputs() {
+    setVerified(false);
     setConfirmed(false);
   }
   async function load() {
@@ -125,6 +130,7 @@ function ReviewActions({
       setReview(next);
       setSelected(undefined);
       setKey('');
+      setVerified(false);
       setPrepared(false);
       setStatus(
         'Choose an exact displayed occurrence. Preparation remains blocked from sending.',
@@ -136,6 +142,7 @@ function ReviewActions({
     const next = await selectPlanCancellationOccurrence(review, value);
     if (life.current.alive) {
       setSelected(next);
+      setVerified(false);
       setKey(value);
       setProposedOn(next.selection.occurrence.recorded_due_on);
       setConfirmed(false);
@@ -145,8 +152,21 @@ function ReviewActions({
       );
     }
   }
-  async function prepare() {
+  async function verify() {
     if (!selected) return;
+    setVerified(false);
+    const result = await verifyPlanCancellationRequirements(selected);
+    if (life.current.alive) {
+      setVerified(true);
+      setStatus(
+        result.status +
+          ' · All sending, enrollment and renewal authority remains blocked.',
+      );
+    }
+  }
+  async function prepare() {
+    if (!selected || !verified) return;
+    await verifyPlanCancellationRequirements(selected);
     setAttempted(true);
     const actual = await preparePlanCancellationReview(
       selected,
@@ -163,7 +183,8 @@ function ReviewActions({
     }
   }
   async function close(action: 'CANCEL' | 'REVOKE') {
-    if (!selected) return;
+    if (!selected || !verified) return;
+    await verifyPlanCancellationRequirements(selected);
     setTerminalAttempted(true);
     const result = await closePlanCancellationReview(
       selected,
@@ -180,6 +201,7 @@ function ReviewActions({
   }
   async function reconcile() {
     if (!selected) return;
+    setVerified(false);
     const result = await reconcilePlanCancellationReview(selected);
     if (life.current.alive)
       setStatus(
@@ -187,11 +209,14 @@ function ReviewActions({
           ' · exact read-only reconciliation; replay FORBIDDEN. Native plan cancellation UNSUPPORTED.',
       );
   }
-  let facts: ReturnType<typeof planCancellationFacts> | undefined;
+  let facts: ReturnType<typeof planCancellationFacts> | undefined,
+    occurrence: ReturnType<typeof planCancellationOccurrenceFacts> | undefined;
   try {
     if (review) facts = planCancellationFacts(review);
+    if (selected) occurrence = planCancellationOccurrenceFacts(selected);
   } catch {
     facts = undefined;
+    occurrence = undefined;
   }
   return (
     <section
@@ -255,6 +280,74 @@ function ReviewActions({
       {selected && (
         <>
           <p>Exact source: {selected.selection.occurrence.key}</p>
+          {occurrence && (
+            <section
+              className="maintenance-cancellation-actions__requirements"
+              aria-label="Selected maintenance requirements"
+            >
+              <h4>Selected plan and renewal evidence</h4>
+              <dl>
+                <dt>Saved plan</dt>
+                <dd>
+                  {occurrence.plan.name} · {occurrence.plan.id} · revision{' '}
+                  {occurrence.plan.revision}
+                </dd>
+                <dt>Recorded cadence</dt>
+                <dd>
+                  {occurrence.plan.cadence} · starts {occurrence.plan.starts_on}{' '}
+                  · {occurrence.plan.timezone}
+                </dd>
+                <dt>Occurrence</dt>
+                <dd>
+                  {occurrence.occurrence_kind} · {occurrence.due_on} ·{' '}
+                  {occurrence.date_basis}
+                </dd>
+                <dt>Requested purpose</dt>
+                <dd>{occurrence.requested_purpose} · review context only</dd>
+                <dt>Recorded channel</dt>
+                <dd>
+                  {occurrence.channel} · {occurrence.recorded_channel}
+                </dd>
+                <dt>Current channel authority</dt>
+                <dd>{occurrence.current_channel_authority}</dd>
+                <dt>Purpose consent</dt>
+                <dd>{occurrence.purpose_consent}</dd>
+                <dt>Suppression</dt>
+                <dd>{occurrence.suppression}</dd>
+                <dt>Enrollment</dt>
+                <dd>{occurrence.enrollment}</dd>
+                <dt>Renewal terms</dt>
+                <dd>{occurrence.renewal_terms}</dd>
+                <dt>Recorded follow-up references</dt>
+                <dd>
+                  {occurrence.followups.length
+                    ? occurrence.followups
+                        .map(
+                          (f) =>
+                            f.id +
+                            ' · revision ' +
+                            f.revision +
+                            ' · ' +
+                            (f.follow_up_on ?? 'No recorded date'),
+                        )
+                        .join('; ')
+                    : 'No recorded follow-up reference; never inferred'}
+                </dd>
+              </dl>
+              <button
+                type="button"
+                disabled={busy}
+                onClick={() => void run(verify)}
+              >
+                Verify selected maintenance requirements
+              </button>
+              <p>
+                {verified
+                  ? 'Current requirements checked for this selection. Original action rechecks before proceeding.'
+                  : 'Current requirements not verified; prepare and terminal actions remain disabled.'}
+              </p>
+            </section>
+          )}
           <label>
             Proposed staff review date
             <input
@@ -294,21 +387,33 @@ function ReviewActions({
           <div className="maintenance-cancellation-actions__buttons">
             <button
               type="button"
-              disabled={busy || !confirmed || attempted}
+              disabled={busy || !confirmed || !verified || attempted}
               onClick={() => void run(prepare)}
             >
               Prepare blocked staff review
             </button>
             <button
               type="button"
-              disabled={busy || !confirmed || !prepared || terminalAttempted}
+              disabled={
+                busy ||
+                !confirmed ||
+                !verified ||
+                !prepared ||
+                terminalAttempted
+              }
               onClick={() => void run(() => close('CANCEL'))}
             >
               Cancel this staff review
             </button>
             <button
               type="button"
-              disabled={busy || !confirmed || !prepared || terminalAttempted}
+              disabled={
+                busy ||
+                !confirmed ||
+                !verified ||
+                !prepared ||
+                terminalAttempted
+              }
               onClick={() => void run(() => close('REVOKE'))}
             >
               Revoke this staff review

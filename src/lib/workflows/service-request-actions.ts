@@ -1,3 +1,10 @@
+import type { PassportReportReference } from '../../domain/property/passport';
+import {
+  readServiceSourceReview,
+  readServiceSourceLineage,
+  inspectServiceSourceReport,
+  type ServiceSourceRead,
+} from './service-source-review';
 import { prototypeFields } from '../program/prototype-source';
 import type { OperatingSources } from './operating-center-runtime';
 import { journeyEnabled, type JourneyAdmission } from './journey-runtime';
@@ -92,3 +99,85 @@ export async function saveServiceRequestAction(
 }
 /** Original read-only observation, never replay or ambiguous-writer attribution. */
 export const reconcileServiceRequestAction = reconcileSavedRequestAction;
+
+/** Join the original request action and original safe published-source readers.
+ * The returned value is the original reader, not another snapshot or custody owner. */
+export async function readServiceRequestEvidence(
+  view: ServiceRequestActionView,
+  sources: OperatingSources,
+  jobId: string,
+  expected: ReturnType<typeof inspectServiceRequestActions>,
+  gate: JourneyAdmission = { enabled: false, confirmed: false },
+) {
+  admit(gate);
+  assertRequestEvidenceSelection(view, expected);
+  if (jobId !== view.identity.job_id)
+    throw Error('Exact original selected request job context required');
+  const evidence = await readServiceSourceReview(
+    sources,
+    { job_id: jobId, staff_context_confirmed: true },
+    gate,
+  );
+  admit(gate);
+  inspectServiceRequestEvidence(view, evidence, expected);
+  return evidence;
+}
+function assertRequestEvidenceSelection(
+  view: ServiceRequestActionView,
+  expected: ReturnType<typeof inspectServiceRequestActions>,
+) {
+  const current = inspectServiceRequestActions(view);
+  for (const key of [
+    'request_id',
+    'organization_id',
+    'customer_id',
+    'location_id',
+    'status',
+    'assigned_to',
+    'updated_at',
+  ] as const)
+    if (current[key] !== expected[key])
+      throw Error('Exact original request status and responsibility changed');
+  return current;
+}
+/** Ephemeral allowlisted source detail only. Request-to-job linkage stays UNKNOWN. */
+export function inspectServiceRequestEvidence(
+  view: ServiceRequestActionView,
+  evidence: ServiceSourceRead,
+  expected: ReturnType<typeof inspectServiceRequestActions>,
+) {
+  const current = assertRequestEvidenceSelection(view, expected),
+    lineage = readServiceSourceLineage(evidence),
+    identity = view.identity;
+  if (
+    current.request_id !== lineage.request.id ||
+    current.status !== lineage.request.status ||
+    identity.organization_id !== lineage.property.organization_id ||
+    identity.customer_id !== lineage.property.customer_id ||
+    identity.location_id !== lineage.property.location_id ||
+    identity.job_id !== lineage.scope.job_id ||
+    identity.estimate_id !== lineage.scope.estimate_id ||
+    identity.version_id !== lineage.scope.issued_version_id ||
+    current.organization_id !== lineage.property.organization_id ||
+    current.customer_id !== lineage.property.customer_id ||
+    current.location_id !== lineage.property.location_id
+  )
+    throw Error(
+      'Exact original request, property, job and issued scope required',
+    );
+  // Both original owners recheck their own current authority and source fences.
+  assertRequestEvidenceSelection(view, expected);
+  return lineage;
+}
+/** Original report/version/finding projection only; never latest-by-name substitution. */
+export async function inspectServiceRequestReport(
+  view: ServiceRequestActionView,
+  evidence: ServiceSourceRead,
+  expected: ReturnType<typeof inspectServiceRequestActions>,
+  reference: PassportReportReference,
+) {
+  inspectServiceRequestEvidence(view, evidence, expected);
+  const report = await inspectServiceSourceReport(evidence, reference);
+  inspectServiceRequestEvidence(view, evidence, expected);
+  return report;
+}

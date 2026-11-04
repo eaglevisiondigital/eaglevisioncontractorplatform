@@ -5,6 +5,12 @@ import {
   readTaskReceiptReconciliation,
   inspectTaskReceiptReconciliation,
   type TaskReceiptReconciliation,
+  readTaskReceiptContinuity,
+  inspectTaskReceiptContinuity,
+  inspectTaskReceiptTask,
+  verifyTaskReceiptCorrectionSource,
+  taskReceiptControlsDestination,
+  type TaskReceiptContinuity,
 } from '../../lib/workflows/task-receipt-reconciliation';
 import './task-receipt-actions.css';
 
@@ -50,14 +56,28 @@ export function TaskReceiptActions(props: TaskReceiptActionsProps) {
 function ReceiptAction({
   sources,
   selectedJobId,
+  onContinue,
 }: SavedRevisionPanelProps & { selectedJobId: string }) {
-  const [review, setReview] = useState<TaskReceiptReconciliation>(),
+  const [continuity, setContinuity] = useState<TaskReceiptContinuity>(),
+    [selectedTask, setSelectedTask] = useState(''),
+    [verification, setVerification] = useState(
+      'Not verified; original source must be checked.',
+    ),
+    [review, setReview] = useState<TaskReceiptReconciliation>(),
     [message, setMessage] = useState(
       'Read the original correction receipt and its exact native stages. This never retries or clears UNKNOWN.',
     ),
     [busy, setBusy] = useState(false),
     life = useRef({ alive: true, pending: false, serial: 0 }),
-    gate = useRef({ enabled: true, confirmed: true });
+    gate = useRef({ enabled: true, confirmed: true }),
+    section = useRef<HTMLElement>(null),
+    liveContinue = useRef(onContinue);
+  useLayoutEffect(() => {
+    liveContinue.current = onContinue;
+    return () => {
+      liveContinue.current = undefined;
+    };
+  }, [onContinue]);
   useLayoutEffect(() => {
     const l = life.current,
       g = gate.current;
@@ -101,6 +121,87 @@ function ReceiptAction({
       if (l.alive && l.serial === serial) setBusy(false);
     }
   }
+  async function taskAction(action: 'read' | 'verify' | 'open') {
+    const l = life.current;
+    if (l.pending) return;
+    l.pending = true;
+    setBusy(true);
+    try {
+      if (action === 'read') {
+        setContinuity(undefined);
+        setSelectedTask('');
+        const next = await readTaskReceiptContinuity(
+          sources,
+          selectedJobId,
+          gate.current,
+        );
+        inspectTaskReceiptContinuity(next);
+        if (l.alive) {
+          setContinuity(next);
+          setVerification('Choose an exact task; no newest-task substitution.');
+        }
+      } else if (continuity) {
+        if (action === 'verify') {
+          const result = await verifyTaskReceiptCorrectionSource(
+            continuity,
+            selectedTask,
+          );
+          if (l.alive)
+            setVerification(
+              result.can_edit
+                ? 'Original source eligible now; the original form must recheck before saving.'
+                : 'Original source held: ' +
+                    result.blocked_reason +
+                    '. No replay.',
+            );
+        } else {
+          const target = await taskReceiptControlsDestination(
+            continuity,
+            selectedTask,
+          );
+          if (!l.alive || !onContinue || liveContinue.current !== onContinue)
+            throw Error('Original field continuation unavailable');
+          inspectTaskReceiptTask(continuity, selectedTask);
+          await onContinue(target.job_id, target.step);
+          inspectTaskReceiptTask(continuity, selectedTask);
+          if (!l.alive || liveContinue.current !== onContinue)
+            throw Error('Original field continuation changed');
+          const original =
+            section.current?.parentElement?.querySelector<HTMLElement>(
+              '[aria-label="Task custody and correction comparison"] > details',
+            );
+          if (original instanceof HTMLDetailsElement) {
+            original.open = true;
+            original.querySelector<HTMLElement>('summary')?.focus();
+          }
+          if (l.alive)
+            setVerification(
+              'Original field controls retained for task ' +
+                target.source_entry_id +
+                '. Select this exact ID in the original form; nothing was saved.',
+            );
+        }
+      }
+    } catch {
+      if (l.alive)
+        setVerification(
+          'Source stale, unavailable, or held. No write, fallback or replay. Read current task sources explicitly.',
+        );
+    } finally {
+      l.pending = false;
+      if (l.alive) setBusy(false);
+    }
+  }
+  let tasks: ReturnType<typeof inspectTaskReceiptContinuity> | undefined,
+    selected: ReturnType<typeof inspectTaskReceiptTask> | undefined;
+  try {
+    if (continuity) tasks = inspectTaskReceiptContinuity(continuity);
+    if (continuity && selectedTask)
+      selected = inspectTaskReceiptTask(continuity, selectedTask);
+  } catch {
+    tasks = undefined;
+    selected = undefined;
+  }
   let data: ReturnType<typeof inspectTaskReceiptReconciliation> | undefined;
   try {
     if (review) data = inspectTaskReceiptReconciliation(review);
@@ -109,6 +210,7 @@ function ReceiptAction({
   }
   return (
     <section
+      ref={section}
       className="task-receipt-actions"
       aria-label="Original task receipt actions"
     >
@@ -123,6 +225,90 @@ function ReceiptAction({
       <p role="status" aria-live="polite">
         {message}
       </p>
+      <div
+        className="task-receipt-actions__continuity"
+        aria-label="Native technician task continuity"
+      >
+        <h4>Recorded technician task</h4>
+        <button
+          type="button"
+          disabled={busy}
+          onClick={() => void taskAction('read')}
+        >
+          Read current task continuity
+        </button>
+        {tasks && (
+          <label>
+            Exact recorded task
+            <select
+              value={selectedTask}
+              disabled={busy}
+              onChange={(event) => {
+                setSelectedTask(event.target.value);
+                setVerification(
+                  'Selected task changed; verify the original source explicitly.',
+                );
+              }}
+            >
+              <option value="">Choose exact task</option>
+              {tasks.graph.graph.nodes.map((task) => (
+                <option key={task.id} value={task.id}>
+                  {task.task} · {task.id}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
+        {selected && (
+          <>
+            <dl>
+              <dt>Selected native entry</dt>
+              <dd>{selected.task.id}</dd>
+              <dt>Assigned technician</dt>
+              <dd>
+                {selected.assigned_worker.label} ·{' '}
+                {selected.assigned_worker.worker_id}
+              </dd>
+              <dt>Recorded state</dt>
+              <dd>{selected.task.review_state}</dd>
+              <dt>Receipt relationship</dt>
+              <dd>{selected.receipt_role}</dd>
+              <dt>Original custody</dt>
+              <dd>{selected.custody}</dd>
+              <dt>Correction requirement</dt>
+              <dd>{selected.correction_requirement}</dd>
+              <dt>Durable receipt</dt>
+              <dd>{selected.durable_receipt}</dd>
+            </dl>
+            <div className="task-receipt-actions__buttons">
+              <button
+                type="button"
+                disabled={busy}
+                onClick={() => void taskAction('verify')}
+              >
+                Verify original task source
+              </button>
+              {onContinue && (
+                <button
+                  type="button"
+                  disabled={busy}
+                  onClick={() => void taskAction('open')}
+                >
+                  Open original task correction controls
+                </button>
+              )}
+            </div>
+          </>
+        )}
+        <p role="status" aria-live="polite">
+          {verification}
+        </p>
+        <p>
+          Exact IDs remain selected. Technician availability is UNKNOWN;
+          physical completion is UNVERIFIED. This review never records time or
+          restores state.
+        </p>
+      </div>
       {data && (
         <div aria-label="Exact task receipt result">
           <p>

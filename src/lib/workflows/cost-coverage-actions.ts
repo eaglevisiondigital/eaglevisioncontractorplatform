@@ -13,6 +13,52 @@ export interface CostCoverageActionInput {
   expected_job_revision: number;
   purpose: 'cost_review' | 'invoice_preparation';
 }
+/** Literal presentation filtering over original authorized rows. Selection remains
+ * exact kind/ID authorization in validateCostCoverageAction, never a text match. */
+export function filterCostCoverageActionSources(
+  view: RecordedCostRequirementsRead,
+  input: { query: string; kind: CostCoverageSource['kind'] | 'all' },
+) {
+  assertRecordedCostRequirementsCurrent(view);
+  const p = prototypeFields(input, ['query', 'kind']);
+  if (
+    Object.keys(p).length !== 2 ||
+    typeof p.query !== 'string' ||
+    p.query.length > 200 ||
+    ![
+      'all',
+      'time',
+      'material',
+      'material_review',
+      'invoice_requirement',
+    ].includes(p.kind as string)
+  )
+    throw Error('Bounded literal current cost-source filters required');
+  const query = p.query.trim().toLowerCase();
+  const rows = view.original.rows.filter(
+    (row) =>
+      (p.kind === 'all' || row.kind === p.kind) &&
+      (!query ||
+        [
+          row.kind,
+          row.id,
+          row.title,
+          row.status,
+          ...row.references,
+          ...row.facts,
+        ]
+          .join(' ')
+          .toLowerCase()
+          .includes(query)),
+  );
+  assertRecordedCostRequirementsCurrent(view);
+  return freezePrototype({
+    rows,
+    matching: rows.length,
+    available: view.original.rows.length,
+    meaning: 'LITERAL_PRESENTATION_ONLY_NOT_SOURCE_AUTHORIZATION' as const,
+  });
+}
 /** A preparation validator over original handles. No read constructor, command
  * custody, financial calculation or new source registry is introduced. */
 export function validateCostCoverageAction(
@@ -58,6 +104,9 @@ export function validateCostCoverageAction(
       (row) => source.kind === 'material_review' && row.id === source.id,
     ),
     expenseId = expense?.id ?? event?.submission_id,
+    linkedExpenses = evidence.expenses.filter((row) => row.id === expenseId),
+    recordedExpense =
+      linkedExpenses.length === 1 ? linkedExpenses[0] : undefined,
     reviews = evidence.reviews.filter((row) => row.submission_id === expenseId),
     material = view.original.original.material,
     labor = view.labor.find((row) => row.entry_id === time?.id),
@@ -65,7 +114,7 @@ export function validateCostCoverageAction(
       (row) => source.kind === 'invoice_requirement' && row.id === source.id,
     ),
     category = view.categories.find(
-      (row) => row.category === (time ? 'labor' : expense?.category),
+      (row) => row.category === (time ? 'labor' : recordedExpense?.category),
     );
   const action = time
     ? labor?.locked_labor_reference
@@ -83,6 +132,66 @@ export function validateCostCoverageAction(
   assertRecordedCostRequirementsCurrent(view);
   return freezePrototype({
     source,
+    recorded_source: {
+      identity: { ...view.original.original.costs.identity },
+      currency: evidence.currency,
+      expense: recordedExpense ? { ...recordedExpense } : null,
+      expense_link: expenseId
+        ? recordedExpense
+          ? 'EXACT_CURRENT_SOURCE'
+          : 'UNKNOWN_SOURCE_LINK'
+        : 'NOT_APPLICABLE',
+      review_event: event ? { ...event } : null,
+      review_events: reviews.map((row) => ({ ...row })),
+      adjustment_source: recordedExpense?.adjusts_expense_id
+        ? evidence.expenses.filter(
+            (row) => row.id === recordedExpense.adjusts_expense_id,
+          ).length === 1
+          ? {
+              ...evidence.expenses.find(
+                (row) => row.id === recordedExpense.adjusts_expense_id,
+              )!,
+            }
+          : null
+        : null,
+      adjustment_link: recordedExpense?.adjusts_expense_id
+        ? evidence.expenses.filter(
+            (row) => row.id === recordedExpense.adjusts_expense_id,
+          ).length === 1
+          ? 'EXACT_CURRENT_SOURCE'
+          : 'UNKNOWN_SOURCE_LINK'
+        : 'NONE_RECORDED',
+      adjusting_expense_ids: recordedExpense
+        ? evidence.expenses
+            .filter((row) => row.adjusts_expense_id === recordedExpense.id)
+            .map((row) => row.id)
+        : [],
+      time: time ? { ...time } : null,
+      labor_lineage: labor ? { ...labor } : null,
+      available_locked_period_ids: [...view.locked_period_ids],
+      locked_period_link:
+        'AVAILABLE_JOB_PERIODS_NOT_PER_ENTRY_ALLOCATION' as const,
+      durable_receipt: 'UNVERIFIED_NO_OPERATIONAL_CUSTODY' as const,
+      provider_settlement: 'UNVERIFIED' as const,
+    },
+    canonical_totals: {
+      currency: evidence.currency,
+      categories: view.original.original.canonical.categories.map((row) => ({
+        ...row,
+      })),
+      revised_revenue_minor:
+        view.original.original.canonical.revised_revenue_minor,
+      projected_cost_minor:
+        view.original.original.canonical.projected_cost_minor,
+      projected_profit_minor:
+        view.original.original.canonical.projected_profit_minor,
+      projected_margin_bps:
+        view.original.original.canonical.projected_margin_bps,
+      profit_erosion: view.original.original.canonical.profit_erosion,
+      complete: view.original.original.canonical.complete,
+      meaning:
+        'COPIED_CANONICAL_JOB_TOTALS_NOT_SOURCE_ALLOCATION_OR_SETTLEMENT' as const,
+    },
     action,
     destination: source.destination,
     job_revision: evidence.job_revision,

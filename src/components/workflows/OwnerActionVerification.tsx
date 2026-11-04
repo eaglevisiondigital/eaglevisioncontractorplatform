@@ -5,10 +5,13 @@ import {
   verifiedOwnerBriefingEnabled,
   readVerifiedOwnerBriefing,
   assertVerifiedOwnerBriefingCurrent,
+  assertVerifiedOwnerComparisonCurrent,
   type VerifiedOwnerBriefingRead,
 } from '../../lib/workflows/verified-owner-briefing';
 import {
   verifyOwnerActionRequirements,
+  compareOwnerActionRefresh,
+  type OwnerActionRefresh,
   continueVerifiedOwnerAction,
   type OwnerActionSelection,
   type OwnerActionVerificationResult,
@@ -56,6 +59,7 @@ function ActionForm({
     [view, setView] = useState<VerifiedOwnerBriefingRead>(),
     [selection, setSelection] = useState<OwnerActionSelection>(),
     [result, setResult] = useState<OwnerActionVerificationResult>(),
+    [refresh, setRefresh] = useState<OwnerActionRefresh>(),
     [confirmed, setConfirmed] = useState(false),
     [busy, setBusy] = useState(false),
     [message, setMessage] = useState(
@@ -91,6 +95,7 @@ function ActionForm({
   let current = true;
   try {
     if (view) assertVerifiedOwnerBriefingCurrent(view);
+    if (refresh) assertVerifiedOwnerComparisonCurrent(refresh.comparison);
   } catch {
     current = false;
   }
@@ -106,12 +111,18 @@ function ActionForm({
           gate.current,
         );
         if (!life.current.active) return;
+        const comparison = view
+          ? compareOwnerActionRefresh(view, next, selection)
+          : undefined;
         setView(next);
-        setSelection(undefined);
+        setRefresh(comparison);
+        setSelection(comparison?.selection ?? undefined);
         setResult(undefined);
         setConfirmed(false);
         setMessage(
-          'Original current priorities loaded in their original order.',
+          comparison
+            ? `${comparison.status}. Previous verification and confirmation are cleared. Original current order is preserved.`
+            : 'Original current priorities loaded in their original order.',
         );
       } else if (view && selection) {
         if (action === 'verify') {
@@ -158,6 +169,11 @@ function ActionForm({
       <button type="button" disabled={busy} onClick={() => void run('load')}>
         Load original owner action sources
       </button>
+      {view && (
+        <button type="button" disabled={busy} onClick={() => void run('load')}>
+          Refresh original owner action sources
+        </button>
+      )}
       {!current && (
         <p role="alert">
           Exact owner source or staff access changed. No replacement source or
@@ -199,10 +215,59 @@ function ActionForm({
           </button>
         </>
       )}
+      {refresh && current && (
+        <div className="owner-refresh-comparison">
+          <h4>Explicit previous and current source reads</h4>
+          <p>
+            {refresh.status.replaceAll('_', ' ')}. Refresh is not action
+            renewal, completion or durable history. Verify the current exact
+            selection again before navigation.
+          </p>
+          <ul>
+            {refresh.comparison.rows.map((row) => (
+              <li key={row.key}>
+                <strong>
+                  {row.status.replaceAll('_', ' ')} · {row.source.kind} ·{' '}
+                  {row.source.id}
+                </strong>
+                <dl>
+                  <dt>Previous recorded fact</dt>
+                  <dd>
+                    {row.before_fact ??
+                      'Not present in the earlier available read'}
+                  </dd>
+                  <dt>Current recorded fact</dt>
+                  <dd>
+                    {row.current_fact ??
+                      'Not present; completion remains UNKNOWN'}
+                  </dd>
+                  <dt>Original current / retained rank</dt>
+                  <dd>{row.original_rank}; no reprioritization performed</dd>
+                </dl>
+                <p>{row.recorded_state}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
       {result && current && (
         <div className="owner-action-result">
           <h4>{result.status.replaceAll('_', ' ')}</h4>
-          {result.row && <p>{result.row.recorded_fact}</p>}
+          {result.row && (
+            <>
+              <p>{result.row.recorded_fact}</p>
+              <p>
+                Original priority {result.row.rank} · {result.row.level} ·{' '}
+                {result.row.area}
+              </p>
+              <h4>Original ordering reasons</h4>
+              <ul>
+                {result.row.order_reasons.map((reason, i) => (
+                  <li key={i}>{reason}</li>
+                ))}
+              </ul>
+            </>
+          )}
           <ul>
             {result.facts.map((fact, i) => (
               <li key={i}>{fact}</li>

@@ -1,0 +1,142 @@
+{
+  "schema": "propel-cycle25-prior-ci-reconciliation-v1",
+  "checked_utc": "2026-11-04T03:55:12.365439+00:00",
+  "scope": "EXACT_C24_HEADS_NOT_C25_CI_ACCEPTANCE",
+  "pull_requests": [
+    {
+      "pr": 163,
+      "head": "31e2bf5b05f6befac1c24314a31d2eabe65c5219",
+      "draft": true,
+      "state": "OPEN",
+      "counts": {
+        "QUEUED": 38
+      }
+    },
+    {
+      "pr": 164,
+      "head": "e64139e479fa6971f88b56b6efb956ec6a4aec9a",
+      "draft": true,
+      "state": "OPEN",
+      "counts": {
+        "QUEUED": 35
+      }
+    },
+    {
+      "pr": 165,
+      "head": "6cc3175c9f71c944e5d5a9c7ba02dc846dbcb91e",
+      "draft": true,
+      "state": "OPEN",
+      "counts": {
+        "QUEUED": 8,
+        "IN_PROGRESS": 4,
+        "SUCCESS": 23
+      }
+    },
+    {
+      "pr": 166,
+      "head": "113ea0e65776913f49f222757bc68a318a6ecc13",
+      "draft": true,
+      "state": "OPEN",
+      "counts": {
+        "QUEUED": 23,
+        "IN_PROGRESS": 3,
+        "SUCCESS": 9
+      }
+    },
+    {
+      "pr": 167,
+      "head": "8835f8ad1e9e01f0470ef3d166f71374cda10301",
+      "draft": true,
+      "state": "OPEN",
+      "counts": {
+        "QUEUED": 18,
+        "IN_PROGRESS": 5,
+        "SUCCESS": 12
+      }
+    },
+    {
+      "pr": 168,
+      "head": "b35b10c07466aa193551eaa88b6164252024eceb",
+      "draft": true,
+      "state": "OPEN",
+      "counts": {
+        "CANCELLED": 1,
+        "QUEUED": 8,
+        "SUCCESS": 27
+      }
+    },
+    {
+      "pr": 169,
+      "head": "517527d3e864b38e88c4c9223c7638286fceb5c0",
+      "draft": true,
+      "state": "OPEN",
+      "counts": {
+        "QUEUED": 11,
+        "IN_PROGRESS": 2,
+        "SUCCESS": 23
+      }
+    },
+    {
+      "pr": 170,
+      "head": "537d9be302e9155b7fa05af4205b445a8258a65f",
+      "draft": true,
+      "state": "OPEN",
+      "counts": {
+        "QUEUED": 34,
+        "SUCCESS": 1
+      }
+    },
+    {
+      "pr": 171,
+      "head": "712e07cb3be8988b092aba9fad80d32b4662435b",
+      "draft": true,
+      "state": "OPEN",
+      "counts": {
+        "QUEUED": 20
+      }
+    },
+    {
+      "pr": 172,
+      "head": "986b54ab475160a2e69b62b65874b9ca36096c79",
+      "draft": true,
+      "state": "OPEN",
+      "counts": {
+        "QUEUED": 10
+      }
+    },
+    {
+      "pr": 173,
+      "head": "e1fe6ef1c7d27e042be8e0cdf67a0b82acb1bcb4",
+      "draft": true,
+      "state": "OPEN",
+      "counts": {
+        "QUEUED": 10
+      }
+    }
+  ],
+  "new_cancellation": {
+    "pr": 168,
+    "head": "b35b10c07466aa193551eaa88b6164252024eceb",
+    "run": 41757239389,
+    "job": 126336121407,
+    "conclusion": "CANCELLED",
+    "provider_annotation": "The job has exceeded the maximum execution time of 45m0s",
+    "failed_case_log_entries": 5,
+    "failed_suite": "tests/cycle18-independent-integration-review.test.ts",
+    "durations_ms": [31484, 2, 37786, 37502, 32825],
+    "final_exception_details": "NOT_EMITTED_BEFORE_JOB_CANCELLATION",
+    "per_case_root_cause": "UNRESOLVED_NOT_INFERRED_FROM_DURATIONS",
+    "artifacts": 0,
+    "missing_unique_coverage": [
+      "completed_full_check",
+      "staging_plan",
+      "full_browser_suite"
+    ],
+    "manual_rerun": false,
+    "workflow_budget_or_assertions_changed": false,
+    "job_log_sha256": "dfd26bbdd5be28efbd351fafd2d089897c72b119287ee2ce2d6f0baf8f3d941b",
+    "annotations_sha256": "563cbf89c9e33d3f603fbf1bb0d4d8deff74806244a39a7426fc8814e55b651c"
+  },
+  "historical_C18_failures_timeouts": "OPEN_PRESERVED",
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

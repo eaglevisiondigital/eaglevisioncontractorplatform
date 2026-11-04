@@ -12,6 +12,23 @@ import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
 import { sampleCompanies } from '../../src/domain/platform';
 
+// Exact source admission decides the required successor behavior. UI presence
+// never supplies compatibility or an optional skip of acceptance assertions.
+const successorEvidence = JSON.parse(
+  execFileSync(
+    process.execPath,
+    [
+      '--input-type=module',
+      '-e',
+      "import { inspectCycle25Sources } from './scripts/cycle25-source-lineage.mjs'; console.log(JSON.stringify(inspectCycle25Sources()));",
+    ],
+    { encoding: 'utf8' },
+  ),
+) as { packages: { module: string; commit: string; state: string }[] };
+const successor = (module: string) =>
+  successorEvidence.packages.some(
+    (row) => row.module === module && row.state === 'EXACT_SUCCESSOR_PRESENT',
+  );
 const productionTitle = 'production keeps native actions closed';
 const test = baseTest.extend({
   baseURL: async ({ baseURL }, use, info) => {
@@ -95,6 +112,7 @@ const binding = () => ({
   }).trim(),
   inventory_sha256: sha(inventoryPath),
   source_files: sources.map((path) => ({ path, sha256: sha(path) })),
+  cycle25_sources: successorEvidence.packages,
 });
 async function capture(
   region: Locator,
@@ -316,6 +334,55 @@ for (const company of sampleCompanies)
         exact: true,
       })
       .inputValue();
+    if (successor('field-task-continuity')) {
+      const receipt = root.getByRole('region', {
+        name: 'Original task receipt actions',
+        exact: true,
+      });
+      await key(
+        receipt.getByRole('button', {
+          name: 'Read current task continuity',
+          exact: true,
+        }),
+        steps,
+      );
+      const selected = receipt.getByRole('combobox', {
+        name: 'Exact recorded task',
+        exact: true,
+      });
+      await selected.selectOption(records.original_task);
+      await expect(dd(receipt, 'Selected native entry')).toHaveText(
+        records.original_task,
+      );
+      await expect(dd(receipt, 'Assigned technician')).not.toBeEmpty();
+      await expect(dd(receipt, 'Durable receipt')).toHaveText(
+        'NOT_IMPLEMENTED',
+      );
+      await key(
+        receipt.getByRole('button', {
+          name: 'Verify original task source',
+          exact: true,
+        }),
+        steps,
+      );
+      await expect(receipt).toContainText('Original source eligible now');
+      await key(
+        receipt.getByRole('button', {
+          name: 'Open original task correction controls',
+          exact: true,
+        }),
+        steps,
+      );
+      await expect(receipt).toContainText(
+        'Original field controls retained for task ' + records.original_task,
+      );
+      await expect(
+        graph
+          .getByText('Original task correction controls', { exact: true })
+          .locator('xpath=..'),
+      ).toHaveAttribute('open', '');
+      await expect(root.locator('.srw-context')).toContainText(job);
+    }
     await task
       .getByRole('textbox', { name: 'Corrected task description', exact: true })
       .fill(`C24 exact reviewed task ${company.slug}`);
@@ -359,6 +426,25 @@ for (const company of sampleCompanies)
       await expect(dd(receipt, name)).toHaveText('1');
     records.task_result = await dd(receipt, 'Acknowledged result').innerText();
     expect(records.task_result).toMatch(/^[a-f0-9-]{36}$/);
+    if (successor('field-task-continuity')) {
+      await key(
+        receipt.getByRole('button', {
+          name: 'Read current task continuity',
+          exact: true,
+        }),
+        steps,
+      );
+      await receipt
+        .getByRole('combobox', { name: 'Exact recorded task', exact: true })
+        .selectOption(records.task_result);
+      await expect(dd(receipt, 'Selected native entry')).toHaveText(
+        records.task_result,
+      );
+      await expect(dd(receipt, 'Receipt relationship')).toHaveText(
+        'EXACT_RECEIPT_RESULT',
+      );
+      await expect(dd(receipt, 'Original custody')).toHaveText('KNOWN_SAVED');
+    }
     await capture(receipt, 'task-receipt', info, company, records);
     await audit(page, root);
 
@@ -384,6 +470,20 @@ for (const company of sampleCompanies)
         .first();
     records.cost_source = (await costOption.getAttribute('value')) as string;
     await costSelect.selectOption(records.cost_source);
+    if (successor('native-cost-reconciliation')) {
+      const search = finance.getByRole('searchbox', {
+        name: 'Search original cost action sources',
+        exact: true,
+      });
+      await search.fill('literal-no-source-[+]');
+      await expect(finance).toContainText('0 matching');
+      await expect(costSelect).toHaveValue(records.cost_source);
+      await expect(finance).toContainText(
+        'Retained exact selection outside these results',
+      );
+      await search.fill('material');
+      await expect(costSelect).toHaveValue(records.cost_source);
+    }
     await key(
       finance.getByRole('button', {
         name: 'Verify selected cost action',
@@ -452,8 +552,41 @@ for (const company of sampleCompanies)
       'VERIFIED_ORIGINAL_REVIEW_DESTINATION',
     );
     await expect(owner).toContainText('Independent original requirements');
-    await capture(owner, 'owner-action', info, company, records);
     await audit(page, root);
+    if (successor('owner-action-continuity')) {
+      await key(
+        owner.getByRole('button', {
+          name: 'Refresh original owner action sources',
+          exact: true,
+        }),
+        steps,
+      );
+      await expect(ownerSelect).toHaveValue(records.owner_source);
+      await expect(owner).toContainText(
+        'Previous verification and confirmation are cleared',
+      );
+      await expect(
+        owner.getByRole('button', {
+          name: 'Open verified original owner review',
+          exact: true,
+        }),
+      ).toHaveCount(0);
+      await expect(owner.locator('.owner-refresh-comparison')).toContainText(
+        'UNCHANGED',
+      );
+      await key(
+        owner.getByRole('button', {
+          name: 'Verify selected owner action',
+          exact: true,
+        }),
+        steps,
+      );
+      await expect(owner.getByRole('status')).toHaveText(
+        'VERIFIED_ORIGINAL_REVIEW_DESTINATION',
+      );
+      await audit(page, root);
+    }
+    await capture(owner, 'owner-action', info, company, records);
     const destinationText = await owner
         .locator('.owner-action-result')
         .innerText(),
@@ -514,6 +647,51 @@ for (const company of sampleCompanies)
     await expect(request).toContainText('NOT_ATTEMPTED');
     await expect(request).toContainText('Request → selected job: UNKNOWN');
     records.request = await dd(request, 'Exact request').innerText();
+    if (successor('service-evidence-continuity')) {
+      const lineage = request.getByRole('region', {
+        name: 'Original request and published evidence',
+        exact: true,
+      });
+      await expect(
+        dd(lineage, 'Selected job → estimate → immutable issued version'),
+      ).toContainText(job);
+      await expect(lineage).toContainText(
+        'Completion requirements — not satisfied by intake closure',
+      );
+      await expect(lineage).toContainText('Physical completion UNKNOWN');
+      await expect(lineage).toContainText('customer acceptance UNKNOWN');
+      const report = lineage
+        .locator('article')
+        .filter({
+          has: page.getByRole('button', {
+            name: /^Inspect original published evidence: version /,
+          }),
+        })
+        .first();
+      records.published_report = (
+        await report.locator('p').allTextContents()
+      )[1];
+      expect(records.published_report).toMatch(
+        /^[a-f0-9-]{36} · published version \d+$/,
+      );
+      await key(
+        report.getByRole('button', {
+          name: /^Inspect original published evidence: version /,
+        }),
+        steps,
+      );
+      const inspected = lineage.getByRole('region', {
+        name: 'Inspected original published report',
+        exact: true,
+      });
+      await expect(inspected).toContainText(
+        records.published_report.split(' · published version ')[0],
+      );
+      await expect(inspected).toContainText(
+        'Recorded checklist marks, findings and after-phase documentation do not establish repairs or customer approval.',
+      );
+    }
+
     await request
       .getByRole('combobox', { name: 'Intake review status', exact: true })
       .selectOption('reviewing');
@@ -615,6 +793,27 @@ for (const company of sampleCompanies)
     await occurrences.selectOption(records.occurrence);
     await expect(maintenance).toContainText('Native plan cancellation');
     await expect(maintenance).toContainText('UNSUPPORTED');
+    if (successor('maintenance-consistency')) {
+      await expect(
+        maintenance.getByRole('region', {
+          name: 'Selected maintenance requirements',
+          exact: true,
+        }),
+      ).toContainText('Renewal terms');
+      await expect(maintenance).toContainText(
+        'Current requirements not verified',
+      );
+      await key(
+        maintenance.getByRole('button', {
+          name: 'Verify selected maintenance requirements',
+          exact: true,
+        }),
+        steps,
+      );
+      await expect(maintenance.getByRole('status')).toContainText(
+        'CURRENT_REQUIREMENTS_CAPTURED_NOT_ATOMIC',
+      );
+    }
     await key(
       maintenance.getByLabel(maintenanceConfirmation, { exact: true }),
       steps,
@@ -630,6 +829,27 @@ for (const company of sampleCompanies)
     await expect(maintenance.getByRole('status')).toContainText(
       'BLOCKED_LOCAL_REVIEW',
     );
+    if (successor('maintenance-consistency')) {
+      await expect(
+        maintenance.getByRole('region', {
+          name: 'Selected maintenance requirements',
+          exact: true,
+        }),
+      ).toContainText('Renewal terms');
+      await expect(maintenance).toContainText(
+        'Current requirements checked for this selection.',
+      );
+      await key(
+        maintenance.getByRole('button', {
+          name: 'Verify selected maintenance requirements',
+          exact: true,
+        }),
+        steps,
+      );
+      await expect(maintenance.getByRole('status')).toContainText(
+        'CURRENT_REQUIREMENTS_CAPTURED_NOT_ATOMIC',
+      );
+    }
     await key(
       maintenance.getByLabel(maintenanceConfirmation, { exact: true }),
       steps,
