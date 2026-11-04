@@ -4,6 +4,7 @@ import { journeyEnabled } from '../../lib/workflows/journey-runtime';
 import {
   readTaskReceiptReconciliation,
   inspectTaskReceiptReconciliation,
+  assertTaskReceiptObservationAccess,
   type TaskReceiptReconciliation,
   readTaskReceiptContinuity,
   rereadTaskReceiptContinuity,
@@ -226,6 +227,13 @@ function ReceiptAction({
   } catch {
     data = undefined;
   }
+  let observationAccess = true;
+  try {
+    if (continuity) assertTaskReceiptObservationAccess(continuity.receipt);
+    if (review) assertTaskReceiptObservationAccess(review);
+  } catch {
+    observationAccess = false;
+  }
   return (
     <section
       ref={section}
@@ -237,11 +245,17 @@ function ReceiptAction({
         Exact native evidence only. Approved task time is not posted labor or
         physical completion.
       </p>
-      <button type="button" disabled={busy} onClick={() => void reconcile()}>
+      <button
+        type="button"
+        disabled={busy || !observationAccess}
+        onClick={() => void reconcile()}
+      >
         Reconcile original task receipt
       </button>
       <p role="status" aria-live="polite">
-        {message}
+        {observationAccess
+          ? message
+          : 'Access unavailable. Retained private receipt detail is withheld; original custody and UNKNOWN remain unchanged.'}
       </p>
       <div
         className="task-receipt-actions__continuity"
@@ -250,7 +264,7 @@ function ReceiptAction({
         <h4>Recorded technician task</h4>
         <button
           type="button"
-          disabled={busy}
+          disabled={busy || !observationAccess}
           onClick={() => void taskAction('read')}
         >
           Read current task continuity
@@ -327,7 +341,11 @@ function ReceiptAction({
           </>
         )}
         <p role="status" aria-live="polite">
-          {verification}
+          {!observationAccess
+            ? 'Access unavailable. Private task context is withheld; UNKNOWN never permits replay.'
+            : continuity && !tasks
+              ? 'Current task sources changed. Previous verification is withheld; explicitly reread the exact source. Original custody is unchanged.'
+              : verification}
         </p>
         <p>
           Exact IDs remain selected. Technician availability is UNKNOWN;
