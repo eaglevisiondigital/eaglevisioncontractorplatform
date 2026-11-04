@@ -203,3 +203,38 @@ reported separately in the delivery register and never inferred from these local
 
 All original release restrictions remain unchanged. Release1.0 remains
 **NOT READY / NOT AUTHORIZED**.
+
+## Final CI addendum · actual Foundation cutoff and missing-stage coverage
+
+The later exact5f74b8 outcomes supersede the earlier running snapshot: both original
+Foundation runs are **CANCELLED**, with explicit45-minute maximum-time annotations.
+I independently inspected their complete private logs, job steps and annotations.
+
+PR run41841428778, verify job126613730587, completed `npm run check` successfully:
+309test files PASS/7skip,9327cases PASS/321skip,105software recovery tests PASS and
+build PASS. Its staging plan also succeeded. The cutoff occurred during Chromium
+installation; the full browser stage was SKIPPED. These software tests establish no
+physical-device recovery or operational acceptance.
+
+Push run41841416051 stopped during `npm test`:236file PASS/5skip entries,75remaining
+files without a conclusion and zero failed-file entries. It emitted no final suite
+summary. The independently completed same-head PR check supplies current unit-stage
+coverage; it never changes this push run or either Foundation to PASS. All21other
+exact-head dedicated workflows succeeded. Historical older failed/truncated evidence
+remains unchanged.
+
+I compared the new `cycle28-parent-browser-coverage.yml` with reviewed PR191 workflow
+commit10459da1d7edb460aced2b9bda1ccee9c13f5336. Only names, concurrency/branch/artifact
+labels and all exact source bindings change from f81081 to5f74b8. Four disjoint shards,
+35-minute job bound, original build/config/tests/assertions, two workers, zero retries,
+full-list capture, source/config hashes and artifact retention remain unchanged.
+It executes only the missing original full-browser stage; it does not repeat unit,
+PostgreSQL or recovery suites. It has read-only repository permissions and introduces
+no application, schema, credential or hosted capability.
+
+This CI-only supplement is independently clear to publish. It remains PENDING until
+all four artifacts prove one exact disjoint full-list/results union with no missing,
+extra, skipped, flaky or retried case. A later supplemental PASS cannot relabel either
+cancelled Foundation. The separate C28 combined197-case/33-browser acceptance and its
+normal exact-head CI remain distinct. No successful CI check was manually rerun.
+Release1.0 remains **NOT READY / NOT AUTHORIZED**.
