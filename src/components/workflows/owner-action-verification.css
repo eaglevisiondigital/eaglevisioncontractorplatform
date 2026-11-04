@@ -43,3 +43,27 @@
     width: 100%;
   }
 }
+
+.owner-refresh-comparison {
+  border-top: 1px solid #dcded4;
+  margin-block-start: 1rem;
+}
+.owner-refresh-comparison li {
+  padding-block: 0.5rem;
+}
+.owner-refresh-comparison dl {
+  display: grid;
+  grid-template-columns: minmax(8rem, 1fr) minmax(0, 3fr);
+  gap: 0.5rem 1rem;
+}
+.owner-refresh-comparison dt {
+  font-weight: 600;
+}
+.owner-refresh-comparison dd {
+  margin: 0;
+}
+@media (max-width: 640px) {
+  .owner-refresh-comparison dl {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

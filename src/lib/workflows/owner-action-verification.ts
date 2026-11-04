@@ -1,6 +1,7 @@
 import { freezePrototype, prototypeFields } from '../program/prototype-source';
 import {
   assertVerifiedOwnerBriefingCurrent,
+  compareVerifiedOwnerBriefing,
   inspectVerifiedOwnerPriority,
   continueVerifiedOwnerPriority,
   type VerifiedOwnerBriefingRead,
@@ -73,6 +74,79 @@ export function checkOwnerActionRequirements(
       'Current source verification permits only its original review destination. Missing evidence stays independent; no completion, contract approval, posting, dispatch, payment or sending is authorized.',
   });
 }
+/** Compare two explicit original reads. This has no independent reader, ranking,
+ * registry, custody, or restored-state authority. Retention is presentation only. */
+export function compareOwnerActionRefresh(
+  before: VerifiedOwnerBriefingRead,
+  current: VerifiedOwnerBriefingRead,
+  selection?: OwnerActionSelection,
+) {
+  const comparison = compareVerifiedOwnerBriefing(before, current);
+  let status:
+    | 'NO_PREVIOUS_SELECTION'
+    | 'UNCHANGED_REVERIFY_REQUIRED'
+    | 'SOURCE_CHANGED_RESELECT_REQUIRED'
+    | 'UNKNOWN_SOURCE_MISSING' = 'NO_PREVIOUS_SELECTION';
+  let retained: OwnerActionSelection | null = null;
+  if (selection !== undefined) {
+    const p = prototypeFields(selection, [
+      'key',
+      'kind',
+      'id',
+      'revision',
+      'version',
+    ]);
+    if (
+      Object.keys(p).length !== 5 ||
+      typeof p.key !== 'string' ||
+      p.key.length > 700 ||
+      typeof p.kind !== 'string' ||
+      typeof p.id !== 'string' ||
+      p.id.length > 200 ||
+      ![p.revision, p.version].every(
+        (v) => v === null || (Number.isSafeInteger(v) && (v as number) > 0),
+      )
+    )
+      throw Error('Exact previous owner action selection required');
+    const previous = before.rows.filter((row) => row.key === p.key);
+    const rows = current.rows.filter((row) => row.key === p.key);
+    const old = previous.length === 1 ? previous[0] : undefined;
+    const row = rows.length === 1 ? rows[0] : undefined;
+    if (
+      !old ||
+      old.source.kind !== p.kind ||
+      old.source.id !== p.id ||
+      old.source.revision !== p.revision ||
+      old.source.version !== p.version
+    )
+      throw Error('Exact original previous selection required');
+    const difference = comparison.rows.filter((item) => item.key === p.key);
+    const unchanged =
+      row &&
+      difference.length === 1 &&
+      difference[0].status === 'UNCHANGED' &&
+      row.state !== 'UNKNOWN_SOURCE_UNAVAILABLE' &&
+      JSON.stringify(old) === JSON.stringify(row);
+    status = !row
+      ? 'UNKNOWN_SOURCE_MISSING'
+      : unchanged
+        ? 'UNCHANGED_REVERIFY_REQUIRED'
+        : 'SOURCE_CHANGED_RESELECT_REQUIRED';
+    if (unchanged) retained = { key: row.key, ...row.source };
+  }
+  assertVerifiedOwnerBriefingCurrent(current);
+  return freezePrototype({
+    comparison,
+    selection: retained,
+    status,
+    requires_verification: true as const,
+    previous_confirmation_retained: false as const,
+    meaning:
+      'EXPLICIT_READ_COMPARISON_NOT_ACTION_RENEWAL_OR_COMPLETION' as const,
+    operational_authority: false as const,
+  });
+}
+export type OwnerActionRefresh = ReturnType<typeof compareOwnerActionRefresh>;
 export async function verifyOwnerActionRequirements(
   view: VerifiedOwnerBriefingRead,
   selection: OwnerActionSelection,
