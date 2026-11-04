@@ -336,13 +336,23 @@ function ReceiptAction({
               {onContinue && (
                 <button
                   type="button"
-                  disabled={busy}
+                  disabled={
+                    busy ||
+                    selected.correction_requirement !== 'VERIFY_ORIGINAL_SOURCE'
+                  }
                   onClick={() => void taskAction('open')}
                 >
                   Open original task correction controls
                 </button>
               )}
             </div>
+            {selected.correction_requirement !== 'VERIFY_ORIGINAL_SOURCE' && (
+              <p>
+                Original controls unavailable for this exact task:{' '}
+                {selected.correction_requirement}. Read-only verification and
+                receipt reconciliation remain available; no replay is allowed.
+              </p>
+            )}
           </>
         )}
         <p role="status" aria-live="polite">
