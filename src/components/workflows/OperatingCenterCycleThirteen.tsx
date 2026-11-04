@@ -1,3 +1,4 @@
+import type { OperatingSourcePreparer } from './OperatingCenterPreview';
 import { OperatingCenterCycleTwelve } from './OperatingCenterCycleTwelve';
 import type { OperatingReviewGroup } from './OperatingCenterPreview';
 import { WorkOrderRevisions } from './WorkOrderRevisions';
@@ -46,9 +47,14 @@ const groups: readonly OperatingReviewGroup[] = [
 ];
 export function OperatingCenterCycleThirteen({
   additionalReviewGroups = [],
-}: { additionalReviewGroups?: readonly OperatingReviewGroup[] } = {}) {
+  prepareSources,
+}: {
+  additionalReviewGroups?: readonly OperatingReviewGroup[];
+  prepareSources?: OperatingSourcePreparer;
+} = {}) {
   return (
     <OperatingCenterCycleTwelve
+      prepareSources={prepareSources}
       additionalReviewGroups={[...groups, ...additionalReviewGroups]}
     />
   );

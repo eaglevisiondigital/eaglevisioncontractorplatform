@@ -1,0 +1,109 @@
+.published-service-navigator {
+  color: #243d35;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.published-service-navigator > header {
+  display: block;
+  height: auto;
+  min-height: 0;
+  min-width: 0;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  font-size: inherit;
+}
+.published-service-navigator .psn-eyebrow {
+  color: #3e594f;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+.published-service-navigator h2,
+.published-service-navigator h3,
+.published-service-navigator h4 {
+  color: #193c2e;
+}
+.published-service-navigator nav,
+.published-service-navigator .psn-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1rem 0;
+}
+.published-service-navigator button,
+.published-service-navigator input,
+.published-service-navigator select,
+.published-service-navigator summary {
+  min-height: 44px;
+  max-width: 100%;
+}
+.published-service-navigator button {
+  white-space: normal;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--journey-primary, #247364);
+  border-radius: 0.5rem;
+  color: white;
+  background: var(--journey-primary, #247364);
+}
+.published-service-navigator button:disabled {
+  background: #edf0ed;
+  border-color: #9ab0ad;
+  color: #3e594f;
+}
+.published-service-navigator label {
+  display: block;
+  margin: 0.8rem 0;
+}
+.published-service-navigator label > input,
+.published-service-navigator label > select {
+  display: block;
+  width: 100%;
+}
+.published-service-navigator .psn-context,
+.published-service-navigator .psn-filters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+.published-service-navigator article,
+.published-service-navigator .psn-context > div,
+.published-service-navigator [aria-label='Exact completion requirements'] {
+  min-width: 0;
+  border: 1px solid #d4ded7;
+  border-radius: 0.75rem;
+  background: #f8f9f7;
+  padding: 1rem;
+  margin: 0.8rem 0;
+}
+.published-service-navigator dt {
+  color: #3e594f;
+  font-weight: 650;
+}
+.published-service-navigator dd {
+  margin: 0.4rem 0;
+}
+.published-service-navigator summary {
+  cursor: pointer;
+  font-weight: 650;
+  padding: 0.6rem 0;
+}
+.published-service-navigator :focus-visible {
+  outline: 3px solid var(--journey-primary, #247364);
+  outline-offset: 3px;
+}
+.published-service-navigator footer {
+  padding: 1rem 0;
+  color: #3e594f;
+}
+@media (max-width: 760px) {
+  .published-service-navigator .psn-context,
+  .published-service-navigator .psn-filters {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .published-service-navigator button {
+    width: 100%;
+    margin-right: 0;
+  }
+}

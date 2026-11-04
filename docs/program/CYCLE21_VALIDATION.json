@@ -1,0 +1,138 @@
+{
+  "schema": "propel-cycle21-local-validation-v1",
+  "recorded_at": "2026-11-03T21:25:19.903951+00:00",
+  "runtime_candidate": "7283d793054886338d02b2a8dbe46ba01bd5b3fa",
+  "runtime_unchanged_after_review": true,
+  "source_manifest": "docs/program/CYCLE21_SOURCE_MANIFEST.json",
+  "independent_review": "36a6ad72dbc8ae893ffcdcd67f75df4c774eea2d",
+  "independent_status": "CLEAR_LOCAL_SYNTHETIC_ONLY",
+  "independent_title_delta": "PASS_READ_ONLY_BYTE_COMPARISON",
+  "application": {
+    "passed": 338,
+    "failed": 0,
+    "pending": 0,
+    "skipped": 0,
+    "raw_path": "artifacts/cycle21/application-results.json",
+    "raw_sha256": "5948b4a613516943243005dbc24f4aa8f32eb2c8f3e284251a153600fc8ac671",
+    "suites": [
+      {
+        "path": "tests/cycle21-canonical-corrections.test.ts",
+        "passed": 31,
+        "unique_full_names": 31,
+        "max_ms": 122.909334
+      },
+      {
+        "path": "tests/cycle21-cost-correction-review.test.ts",
+        "passed": 36,
+        "unique_full_names": 36,
+        "max_ms": 2417.7295
+      },
+      {
+        "path": "tests/cycle21-independent-integration-review.test.ts",
+        "passed": 41,
+        "unique_full_names": 41,
+        "max_ms": 9138.129791
+      },
+      {
+        "path": "tests/cycle21-maintenance-plan-correction.test.ts",
+        "passed": 36,
+        "unique_full_names": 36,
+        "max_ms": 330.785833
+      },
+      {
+        "path": "tests/cycle21-preview-preparation.test.ts",
+        "passed": 10,
+        "unique_full_names": 10,
+        "max_ms": 2141.5294160000003
+      },
+      {
+        "path": "tests/cycle21-published-service-navigation.test.ts",
+        "passed": 66,
+        "unique_full_names": 66,
+        "max_ms": 346.0644999999997
+      },
+      {
+        "path": "tests/cycle21-recorded-owner-actions.test.ts",
+        "passed": 37,
+        "unique_full_names": 37,
+        "max_ms": 3167.015916999997
+      },
+      {
+        "path": "tests/cycle21-task-correction-review.test.ts",
+        "passed": 35,
+        "unique_full_names": 35,
+        "max_ms": 138.54458300000002
+      },
+      {
+        "path": "tests/cycle21-validation.test.ts",
+        "passed": 46,
+        "unique_full_names": 46,
+        "max_ms": 2028.1914580000011
+      }
+    ]
+  },
+  "retained_original_exercise": {
+    "passed": 50,
+    "suite": "tests/cycle19-saved-source-exercise.test.ts",
+    "combined_31_core_plus_50_retained_report_sha256": "36f331dba14648bc10a1e6c5272946f1d9e5030e304f6f4e987007241f3ae700",
+    "not_repeated_unnecessarily": true
+  },
+  "browser": {
+    "development": 27,
+    "production_off": 3,
+    "retries": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "development_report_sha256": "a4e66370dc41e059f2a0d662e8a7b354a5eac4dccac48a64b3a9b8ed726ea337",
+    "production_report_sha256": "f87854a8da2aa579868fabddda70b39c1ff1f751cf28ad38bdf3298b79530805",
+    "screenshots": 84,
+    "capture_manifest_sha256": "86303b2b7809b10dc7bec113707848bebaedafe2ad685ab6f84432e9234a796c",
+    "rendered_source_hashes_per_capture": 26,
+    "supplemental_capture_tuple": 1,
+    "mode": "LOCAL_CHROMIUM_EMULATION_NOT_PHYSICAL_ACCEPTANCE"
+  },
+  "checks": {
+    "strict_types": "PASS",
+    "generated_types": "PASS",
+    "lint": "PASS_ONE_RETAINED_WARNING",
+    "format": "PASS",
+    "build": "PASS_RETAINED_CHUNK_WARNING",
+    "protected_source_chain": "PASS",
+    "migration_property_customer14_4B_broker_integrity": "PASS_READ_ONLY_NO_INSTALL",
+    "complete_results_collector": "PASS"
+  },
+  "integrity": {
+    "earlier_author_files": 448,
+    "current_author_files": 25,
+    "independent_files": 2,
+    "protected_files": 128,
+    "design_locks": 5,
+    "design_bindings": 13,
+    "original_capability_states": 25,
+    "original_scope_ids": 18,
+    "approved_design_scopes": 3,
+    "closed_phase_one_gates": 8
+  },
+  "initial_evidence_rejection": "DUPLICATE_PARAMETERIZED_TEST_TITLES_PRESERVED_IN_RETAINED_RAW_REPORT",
+  "title_correction": "docs/program/CYCLE21_TEST_TITLE_CORRECTION.json",
+  "ci": "See exact observed states in CYCLE21_CI_STATUS.json; final Main automatic CI pending publication. No manual reruns.",
+  "prior_ci": "CYCLE21_PRIOR_CI_CLOSEOUT.json",
+  "november4": {
+    "procedure": "UNCHANGED_C18_CHECKLIST_C19_QUICKCARD_C20_PREPARATION",
+    "device_readiness": "UNVERIFIED",
+    "physical_rehearsal": "NOT_RUN",
+    "prior_offline_checks_preserved": 25,
+    "kit_bytes": 97334,
+    "kit_sha256": "32cb88f123e0fd776986f32d8508c913dbedc1ac977779708d1ba7218bbb8d59"
+  },
+  "limits": [
+    "No new business store, evidence-file layer or restart adapter. Historical files cannot restore canonical state.",
+    "Native state and original one-use custody are session-only; no browser refresh/process-crash durability claim.",
+    "Customer acceptance, physical repair, consent-at-send, dispatch, invoicing and financial authority are not inferred.",
+    "Original P1 approval remains valid only for its frozen scope and prerequisites; no duplicate approval.",
+    "Operating Center and advanced visual approval remains pending.",
+    "No merges, deployments, hosted writes, migrations, payments, dispatch or customer communications."
+  ],
+  "operational_ready": false,
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

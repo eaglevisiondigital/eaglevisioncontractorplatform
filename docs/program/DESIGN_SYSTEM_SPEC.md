@@ -1,5 +1,17 @@
 # Shared design-system specification · cycle two
 
+## Cycle21 scoped correction forms and retained context
+
+The optional correction mode defaults false and reuses the existing six renderer
+slots, original job search and five workbench tabs. Exact source IDs, current saved
+revisions, explicit confirmation and UNKNOWN/no-replay status remain visible. Forms
+use original company primary/accent tokens and scoped styles; additions do not alter
+approved portal, Property Operations, branding or artwork. Customer report history
+uses the original renderer. No second sidebar, evidence-file interface or duplicated
+navigation is introduced. Desktop/tab/mobile and accessibility evidence must come
+from real browsers. The three prior design approvals stay locked; Operating Center
+and advanced add-on visual approval remains PENDING, never inferred from CI.
+
 ## Cycle16 daily guides and shared record search
 
 An independent default-false daily-guide option substitutes the same six existing

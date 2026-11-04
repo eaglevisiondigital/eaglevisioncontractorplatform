@@ -1,5 +1,28 @@
 # Engineering decisions
 
+Retained source-inspection assertions must verify the actual single trusted preparer seam and its original default. Five further demonstrated literal mismatches corrected forward; no assertion removed, runtime bypass or historical failure relabel. No operational authority.
+
+## Cycle21 CI · verify the single preparer and its original default
+
+Keep the existing source-factory injection seam and native one-attempt host. Source evidence must inspect the actual awaited preparer and its default original factory, rather than a pre-refactor call name. Preserve finite navigation/no-extra-repository assertions and all original failed artifacts. This test-only correction grants no operational authority.
+
+## Cycle21 · correct native source records without a restoration layer
+
+Reuse the original Operations/company/job command-family custody and canonical
+repositories. Explicit task corrections append through native corrects_id and internal
+review, pending material reviews use existing reviewExpense, and plan edits use original
+CAS. Current staff/source/input checks fence every await; ambiguous outcomes retain
+UNKNOWN across wrappers and reconcile only by exact read-only evidence. No new business
+store, evidence archive or restart adapter is introduced. Optional correction fixtures
+run only inside the original explicit preparation hold, never on read or tab selection.
+
+Historical evidence files cannot restore canonical business state. Any future restart
+adapter first needs separate authority, consistency and recovery review. Published
+history stays immutable and customer-safe. Final evidence must validate unique actual
+case identities; a label-only forward fix is preferable to weakening the collector.
+The frozen independent review is retained, with a separately verified title-only delta.
+All original designs and release/recovery/financial/provider restrictions stay intact.
+
 ## Cycle19 · compare saved evidence without replaying original controls
 
 Keep immutable before/current evidence and synchronous terminal source fences over
@@ -1683,3 +1706,14 @@ original author and locked styles remain exact. Portable repository-relative bro
 artifacts replace macOS-only temporary paths.
 Independent source and tooling reviews preserve strict assertions and exact author
 blobs. All prior approvals, protected artifacts and release restrictions remain intact.
+
+## Cycle 21 · corrections reuse original authority
+
+Extend the same original Operations/company/job command custody for typed task and
+plan corrections and exact pending material review. Corrected time appends native
+corrects_id, retaining the original entry; explicit internal submission/review never
+posts payroll. Old and new locked periods deny movement. Material review selects only
+an existing pending materials commitment without ambiguous adjustment links, invoking
+the original event/cost validator without creating a payment, credit or expense.
+Reconciliation reads exact known result identities; lost acknowledgments stay UNKNOWN
+and unattributed changes are not owned receipts. No second evidence/store/restore layer.

@@ -1,0 +1,87 @@
+{
+  "schema": "propel-cycle21-preparer-ci-correction-v1",
+  "failed_head": "27cb44bb68521ee21a8e5c6e0b2f3116d33f367b",
+  "runs": [
+    {
+      "run_id": 41722159539,
+      "workflow": "Cycle 11 source-bound workflow laboratories",
+      "head": "27cb44bb68521ee21a8e5c6e0b2f3116d33f367b",
+      "conclusion": "FAILURE",
+      "application_passed": 412,
+      "application_failed": 1,
+      "artifact_report_sha256": "525b0baca438f7e6a8d1c1761cd2bf4a3bca570b08d36b300e76058bc6549332",
+      "failed_cases": [
+        {
+          "file": "cycle11-feature-evidence.test.ts",
+          "case": "retains one existing environment host and finite optional reviews",
+          "duration_ms": 8.923631,
+          "failure": "AssertionError: Target cannot be null or undefined; obsolete await prepareOperatingSources literal matched zero calls."
+        }
+      ]
+    },
+    {
+      "run_id": 41722159721,
+      "workflow": "Cycle 13 operating workflows and visual evidence",
+      "head": "27cb44bb68521ee21a8e5c6e0b2f3116d33f367b",
+      "conclusion": "FAILURE",
+      "application_passed": 523,
+      "application_failed": 2,
+      "artifact_report_sha256": "c62f63224ad3f3621105a697c8c67368a9692d12a1542af1f48c38f3a10c237d",
+      "failed_cases": [
+        {
+          "file": "cycle13-feature-evidence.test.ts",
+          "case": "retains one existing environment host and finite optional reviews",
+          "duration_ms": 7.137957,
+          "failure": "AssertionError: Target cannot be null or undefined; obsolete await prepareOperatingSources literal matched zero calls."
+        },
+        {
+          "file": "cycle13-feature-evidence.test.ts",
+          "case": "keeps navigation a finite presentation callback over existing job components",
+          "duration_ms": 0.7315639999999917,
+          "failure": "AssertionError: Target cannot be null or undefined; obsolete await prepareOperatingSources literal matched zero calls."
+        }
+      ]
+    },
+    {
+      "run_id": 41722159498,
+      "workflow": "Cycle 14 source continuity and focused visual review",
+      "head": "27cb44bb68521ee21a8e5c6e0b2f3116d33f367b",
+      "conclusion": "FAILURE",
+      "application_passed": 406,
+      "application_failed": 1,
+      "artifact_report_sha256": "2ee7dc4ca4cbb455867de6c92afe5ae5da6b3eac0d42a0a7beee4e34b25edde5",
+      "failed_cases": [
+        {
+          "file": "cycle14-feature-evidence.test.ts",
+          "case": "retains one actual environment and current captured job presentation hint",
+          "duration_ms": 3.1320230000000038,
+          "failure": "AssertionError: Target cannot be null or undefined; obsolete await prepareOperatingSources literal matched zero calls."
+        }
+      ]
+    }
+  ],
+  "diagnosis": "C21 intentionally introduced one trusted preparer seam defaulting to the original prepareOperatingSources function. Four retained static assertions still matched the old call name. Artifacts prove immediate assertion mismatch, not timeout or demonstrated product defect.",
+  "correction": {
+    "paths": [
+      "tests/program/cycle11-feature-evidence.test.ts",
+      "tests/program/cycle13-feature-evidence.test.ts",
+      "tests/program/cycle14-feature-evidence.test.ts"
+    ],
+    "changes": "Match the actual single awaited prepareSources call and additionally require its default binding to prepareOperatingSources. Every other original assertion is preserved.",
+    "production_source_changes": 0,
+    "workflow_changes": 0,
+    "protected_changes": 0,
+    "timeouts_changed": 0,
+    "assertions_removed": 0
+  },
+  "focused_validation": {
+    "passed": 62,
+    "failed": 0,
+    "source_evidence_cases": 52,
+    "native_original_preparation_cases": 10,
+    "raw_sha256": "3e3082b24e2b355b6c42911914bd42ca52fb1013fc158b1d13f7d640ce568baa"
+  },
+  "historical_failures": "Original failed runs remain FAILURE. Historical C18 and cancelled Foundation gaps are not relabeled or closed by this change.",
+  "reruns": "No manual reruns; normal automatic checks follow the new exact source commit.",
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

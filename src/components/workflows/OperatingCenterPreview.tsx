@@ -1,5 +1,6 @@
 import {
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
   type ReactNode,
@@ -60,10 +61,13 @@ export interface OperatingReviewGroup {
   initiallyOpen?: boolean;
   panels: readonly OperatingReviewPanel[];
 }
+export type OperatingSourcePreparer = typeof prepareOperatingSources;
 export function OperatingCenterPreview({
+  prepareSources = prepareOperatingSources,
   additionalPanels = [],
   additionalReviewGroups = [],
 }: {
+  prepareSources?: OperatingSourcePreparer;
   additionalPanels?: readonly OperatingReviewPanel[];
   additionalReviewGroups?: readonly OperatingReviewGroup[];
 } = {}) {
@@ -74,6 +78,19 @@ export function OperatingCenterPreview({
     [error, setError] = useState('');
   const attempts = useRef(new Map<string, Attempt>()),
     generation = useRef(0);
+  const preparer = useRef(prepareSources);
+  useLayoutEffect(() => {
+    if (preparer.current === prepareSources) return;
+    preparer.current = prepareSources;
+    for (const a of attempts.current.values()) {
+      if (a.state === 'PENDING') {
+        a.gate.enabled = false;
+        a.gate.confirmed = false;
+        a.state = 'UNKNOWN';
+      }
+    }
+    generation.current++;
+  }, [prepareSources]);
   const [selected, setSelected] = useState<{
     company: string;
     entry: LocalJourney;
@@ -141,7 +158,7 @@ export function OperatingCenterPreview({
     setEpoch((v) => v + 1);
     setError('');
     try {
-      const result = await prepareOperatingSources(company, a.gate);
+      const result = await prepareSources(company, a.gate);
       if (generation.current !== token || !a.gate.confirmed) {
         a.state = 'UNKNOWN';
       } else {

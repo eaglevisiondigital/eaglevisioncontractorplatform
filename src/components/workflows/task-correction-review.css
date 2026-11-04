@@ -1,0 +1,95 @@
+.task-correction-review {
+  min-width: 0;
+  color: #20352f;
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+}
+.task-correction-review .task-correction-form {
+  min-width: 0;
+  padding: 1.1rem;
+  margin-top: 1.25rem;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  background: #fff;
+}
+.task-correction-review .task-correction-form h3 {
+  margin: 0 0 0.75rem;
+}
+.task-correction-review .task-correction-form label {
+  display: block;
+  color: #526159;
+  margin: 0.8rem 0;
+}
+.task-correction-review .task-correction-form input,
+.task-correction-review .task-correction-form select,
+.task-correction-review .task-correction-form button,
+.task-correction-review .task-correction-form textarea {
+  min-height: 44px;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.task-correction-review .task-correction-form textarea,
+.task-correction-review .task-correction-form input[type='text'],
+.task-correction-review .task-correction-form select {
+  width: 100%;
+}
+.task-correction-review .task-correction-form textarea {
+  min-height: 96px;
+}
+.task-correction-review .task-correction-form button {
+  background: var(--journey-primary, #00543e);
+  color: #fff;
+  margin: 0.4rem 0.5rem 0.4rem 0;
+  white-space: normal;
+}
+.task-correction-review .task-correction-form button:disabled {
+  opacity: 0.65;
+}
+.task-correction-review .task-correction-form dt {
+  color: #526159;
+}
+.task-correction-review .task-correction-form dd {
+  margin: 0 0 0.7rem;
+}
+.task-correction-review .task-correction-check {
+  display: flex !important;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+}
+.task-correction-review .task-correction-check input {
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  min-height: 24px;
+}
+.task-correction-review .task-correction-times {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.task-correction-review .task-correction-form :focus-visible {
+  outline: 3px solid var(--journey-accent, #dfb461);
+  outline-offset: 4px;
+}
+.task-correction-review > details > summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #526159;
+}
+.task-correction-review > details > summary:focus-visible {
+  outline: 3px solid var(--journey-accent, #dfb461);
+  outline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .task-correction-review .task-correction-times {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .task-correction-review .task-correction-form button {
+    width: 100%;
+    margin: 0.4rem 0;
+  }
+}

@@ -1,0 +1,69 @@
+.cost-correction-review {
+  color: #27352f;
+  overflow-wrap: anywhere;
+}
+.cost-correction-review h2,
+.cost-correction-review h3 {
+  color: #203e32;
+}
+.cost-correction-review button,
+.cost-correction-review input:not([type='checkbox']),
+.cost-correction-review select,
+.cost-correction-review summary {
+  min-height: 44px;
+}
+.cost-correction-review button:focus-visible,
+.cost-correction-review summary:focus-visible {
+  outline: 3px solid var(--journey-accent, #b58a49);
+  outline-offset: 3px;
+}
+.cost-correction-review label {
+  display: grid;
+  gap: 0.4rem;
+  margin-block: 0.8rem;
+}
+.cost-correction-review .cost-correction-confirm {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  gap: 0.7rem;
+}
+.cost-correction-review textarea {
+  min-height: 6rem;
+  width: 100%;
+}
+.cost-correction-review details {
+  margin-block: 0.8rem;
+}
+.cost-correction-review summary {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.cost-correction-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 1rem;
+}
+.cost-correction-metrics > article,
+.cost-correction-review section {
+  background: #fffdf8;
+  border: 1px solid #dcded4;
+  border-radius: 14px;
+  padding: 1rem;
+}
+.cost-correction-review [role='alert'] {
+  background: #fff1e3;
+  border-left: 4px solid #a45129;
+  padding: 0.75rem;
+}
+@media (max-width: 640px) {
+  .cost-correction-review button {
+    max-width: 100%;
+    white-space: normal;
+  }
+  .cost-correction-review select {
+    width: 100%;
+    min-width: 0;
+  }
+}

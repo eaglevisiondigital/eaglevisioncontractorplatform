@@ -1,5 +1,48 @@
 # Propel Contractor Suite — feature acceptance register
 
+## Cycle 21 · native corrections and published-source navigation
+
+Coordination draft [#143](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/143)
+uses the exact Cycle20 parent `8d607d9c30e82699f1af4634c29fa38a3756fb73` and
+support `b918231ff48996575c03d64c9045ead6831b6cd0`. Five isolated feature drafts
+#144–#148 retain their exact author blobs; no PR is merged or parent rewritten.
+Actual agent ownership, branch/head pins and current evidence are recorded in
+[the Cycle21 source manifest](program/CYCLE21_SOURCE_MANIFEST.json).
+
+One default-false canonical-correction option reuses the original source host,
+retained job selector and five workbench tabs. Staff explicitly correct approved
+closed time, approve/reject an existing pending materials commitment and edit an
+existing plan name/cadence/interval through the original native engines. Customer
+history opens exact immutable published versions/findings and original completion
+requirements. Owner priorities explain actual recorded changes and navigate through
+original authorization checks. No customer acceptance, completed repair, financial
+execution, dispatch or message is inferred.
+
+The optional source supplement is part of the original explicit disposable fixture
+preparation, inside its pre-existing pending/UNKNOWN hold. It supplies native
+reviewed time and a pending material commitment for each original job; reading a
+panel never seeds data. Existing environments are never reseeded. No new business
+store, evidence archive or restart adapter is created. Historical evidence cannot
+restore canonical state. A separate authority/consistency/recovery review is required
+before any future restart-persistence adapter; see
+[the review boundary](program/CYCLE21_PERSISTENCE_REVIEW_SCOPE.md).
+
+Current exact-head CI and retained failure/cancellation evidence are separated in
+[C21 prior CI closeout](program/CYCLE21_PRIOR_CI_CLOSEOUT.md). Successful checks are
+preserved; historical C18 failures/timeouts remain failures. New focused application,
+responsive/accessibility and independent review evidence is finalized in
+[C21 validation](program/CYCLE21_VALIDATION.md); no baseline replay grants release acceptance.
+
+Danny's November4 MacBook Air remains a planned physical device. Use the unchanged
+C18 checklist/C19 quickcard/C20 preparation record and retained credential-free kit.
+Exact OS, FileVault, independent power/network, pairing, transfer/ACKs, supervision,
+primary loss and independent no-replay recovery remain UNVERIFIED / NOT RUN.
+All25capability states, original18IDs, eight PhaseOne gates, three approved design
+scopes, protected128files, five locks/13bindings, thirteen migrations/customer14/4B,
+frozen P1/four artifacts, Netlify/executor/2A–2F/billing/Auth/MFA/NMI/recovery and
+financial/provider/hosted/production restrictions remain unchanged. Operating Center
+and advanced-panel visual approval remains PENDING. Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Cycle 20 · saved evidence and canonical review continuity
 
 Five isolated author packages are published in draft PRs #138–#142, composed on

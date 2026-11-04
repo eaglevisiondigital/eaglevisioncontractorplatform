@@ -1,5 +1,25 @@
 # Shared contracts and integration ownership
 
+## Cycle21 native correction custody and source ownership
+
+The original saved-source exercise owns the single Operations/company/job attempt
+custody for the same finite command families. Time correction appends native
+corrects_id/submission/internal-review records with explicit staff confirmation;
+old/new locked periods and overlap deny. Material review admits only an exact
+existing pending materials commitment and appends its original review event. Plan
+correction uses original savePlan CAS. Current native acknowledgments are checked
+after each await; ambiguous results retain UNKNOWN and exact read-only reconciliation
+never clears or replays a command. Source matching by description is prohibited.
+
+All five panels receive the same original OperatingSources and authorized job hint.
+No panel owns another business store or restore layer. The trusted optional fixture
+preparer runs under the original host's pre-recorded preparation attempt; switching
+preparer during a pending attempt revokes its gate, without replacement preparation.
+Default sources remain unchanged and an already prepared environment is not reseeded.
+Published reports remain immutable; staff notes/costs/workforce never enter published
+customer projections. A separately reviewed persistence contract is required before
+any restart adapter. Historical evidence files provide no restoration authority.
+
 ## Cycle16 daily guides over the same source host
 
 Daily-guide selection is a presentation hint only. The original OperatingSources,

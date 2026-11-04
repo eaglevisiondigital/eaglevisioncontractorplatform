@@ -1,0 +1,76 @@
+name: Cycle 21 canonical correction continuity
+on:
+  push:
+    branches: ['codex/program-cycle-twenty-one']
+  pull_request:
+    paths:
+      - 'src/lib/workflows/saved-revision-exercise.ts'
+      - 'src/lib/workflows/saved-revision-runtime.ts'
+      - 'src/lib/workflows/saved-revision-contract.ts'
+      - 'src/components/workflows/SavedRevisionWorkbench.tsx'
+      - 'src/components/workflows/OperatingCenterPreview.tsx'
+      - 'src/components/workflows/OperatingCenterCycleTen.tsx'
+      - 'src/components/workflows/OperatingCenterCycleEleven.tsx'
+      - 'src/components/workflows/OperatingCenterCycleTwelve.tsx'
+      - 'src/components/workflows/OperatingCenterCycleThirteen.tsx'
+      - 'src/lib/workflows/correction-preview-sources.ts'
+      - 'src/lib/workflows/task-correction-review.ts'
+      - 'src/lib/workflows/cost-correction-review.ts'
+      - 'src/lib/workflows/published-service-navigation.ts'
+      - 'src/lib/workflows/maintenance-plan-correction.ts'
+      - 'src/lib/workflows/recorded-owner-actions.ts'
+      - 'src/components/workflows/TaskCorrectionReview.tsx'
+      - 'src/components/workflows/CostCorrectionReview.tsx'
+      - 'src/components/workflows/PublishedServiceNavigator.tsx'
+      - 'src/components/workflows/MaintenancePlanCorrection.tsx'
+      - 'src/components/workflows/RecordedOwnerActions.tsx'
+      - 'src/components/workflows/OperatingCenterCycleTwentyOne.tsx'
+      - 'src/components/workflows/OperatingCenterCycleFifteen.tsx'
+      - 'src/components/workflows/task-correction-review.css'
+      - 'src/components/workflows/cost-correction-review.css'
+      - 'src/components/workflows/published-service-navigation.css'
+      - 'src/components/workflows/maintenance-plan-correction.css'
+      - 'src/components/workflows/recorded-owner-actions.css'
+      - 'tests/cycle21*'
+      - 'tests/browser/cycle21*'
+      - 'playwright.cycle21*.ts'
+      - 'scripts/*cycle21*'
+      - 'docs/program/CYCLE21*'
+      - '.github/workflows/cycle21-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle21-integration-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  bounded-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node scripts/check-cycle21.mjs --require-independent
+      - run: npx vitest run tests/cycle21*.test.ts --maxWorkers=2 --reporter=json --outputFile=artifacts/cycle21/application-results.json
+      - run: node scripts/collect-cycle21-results.mjs --application
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: node scripts/collect-cycle21-results.mjs --collect-browser
+      - run: npx playwright test -c playwright.cycle21.config.ts --workers=2
+      - run: npx playwright test -c playwright.cycle21.off.config.ts --workers=2
+      - run: node scripts/collect-cycle21-results.mjs --complete
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle21-canonical-correction-evidence
+          path: |
+            artifacts/cycle21/
+            test-results/
+          retention-days: 7

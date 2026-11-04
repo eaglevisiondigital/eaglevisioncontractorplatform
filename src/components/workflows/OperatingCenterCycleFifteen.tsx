@@ -1,3 +1,5 @@
+import { prepareCorrectionPreviewSources } from '../../lib/workflows/correction-preview-sources';
+import { cycle21CorrectionGroups } from './OperatingCenterCycleTwentyOne';
 import { useState } from 'react';
 import { OperatingCenterCycleThirteen } from './OperatingCenterCycleThirteen';
 import { cycle14ContinuityGroups } from './OperatingCenterCycleFourteen';
@@ -29,6 +31,7 @@ const guided = taskReviewGroups({
 });
 
 export function OperatingCenterCycleFifteen() {
+  const [corrections, setCorrections] = useState(false);
   const [savedEvidence, setSavedEvidence] = useState(false);
   const [savedRevisions, setSavedRevisions] = useState(false);
   const [dailyWorkbench, setDailyWorkbench] = useState(false);
@@ -43,6 +46,20 @@ export function OperatingCenterCycleFifteen() {
       <section aria-label="Review path options">
         <fieldset className="task-review-options">
           <legend>Review options</legend>
+          <label>
+            <input
+              type="checkbox"
+              checked={corrections}
+              onChange={(event) => setCorrections(event.target.checked)}
+            />
+            Use canonical correction workflows
+          </label>
+          <p>
+            Enable before preparing sources to include original-engine reviewed
+            time and pending material commitments in the disposable fixture. No
+            payment, payroll posting or message is executed. Existing prepared
+            sources are never reseeded.
+          </p>
           <label>
             <input
               type="checkbox"
@@ -98,14 +115,19 @@ export function OperatingCenterCycleFifteen() {
         </fieldset>
       </section>
       <OperatingCenterCycleThirteen
+        prepareSources={
+          corrections ? prepareCorrectionPreviewSources : undefined
+        }
         additionalReviewGroups={
-          savedEvidence
-            ? cycle20EvidenceGroups
-            : savedRevisions
-              ? cycle19SavedGroups
-              : dailyWorkbench
-                ? cycle18WorkflowGroups
-                : retainedGroups
+          corrections
+            ? cycle21CorrectionGroups
+            : savedEvidence
+              ? cycle20EvidenceGroups
+              : savedRevisions
+                ? cycle19SavedGroups
+                : dailyWorkbench
+                  ? cycle18WorkflowGroups
+                  : retainedGroups
         }
       />
     </>
