@@ -1,0 +1,172 @@
+{
+  "schema": "propel-canonical-restart-independent-review-v1",
+  "reviewer": "/root/cycle23_finance_intelligence",
+  "proposal_commit": "52848cdc5cbfb16bdf6b553293362d129a1b23b9",
+  "source_baseline": "3e35fb29dd4488bf655446712e5a013e06f8ed1e",
+  "verdict": "CLEAR_FOR_SEPARATE_DESIGN_DECISION_ONLY",
+  "proposal_defects_blocking_design_decision": [],
+  "implementation_authorized": false,
+  "operational_restoration": "NO_GO",
+  "operational_acceptance_tests": "NOT_RUN",
+  "review_method": "READ_ONLY_SOURCE_DIFF_HASH_AND_CURRENT_OFFICIAL_DOCUMENTS",
+  "review_date": "2026-11-03",
+  "proposal_files": [
+    {
+      "path": "docs/program/CYCLE23_CANONICAL_RESTART_PROPOSAL.md",
+      "sha256": "19dace290d7f065c87ac9a306cc894efdd166419075634f5cb7baf5590e6ea5a",
+      "exact_proposal_commit_bytes": true
+    },
+    {
+      "path": "docs/program/CYCLE23_CANONICAL_RESTART_PROPOSAL.json",
+      "sha256": "dbb38403cfcc33db9d3c45fcd575ea96ccafb3a0a625ced17cc9734d37d2f95b",
+      "exact_proposal_commit_bytes": true
+    }
+  ],
+  "inspected_sources": [
+    {
+      "path": "src/lib/operations.ts",
+      "sha256": "512c069eaafb54f6f3d80a1725db8933842b42322df1f152e6bd49867c384ca7",
+      "exact_baseline_bytes": true
+    },
+    {
+      "path": "src/lib/phase3.ts",
+      "sha256": "5696907efb1f5191e2aa033436db52998a6fdf0f3ee62cf537e25ee62d65746a",
+      "exact_baseline_bytes": true
+    },
+    {
+      "path": "src/lib/property.ts",
+      "sha256": "d7e9dd024b879919f2c06dd4389c1aaa85e8a6d410cd8d40e05add7533f30c7e",
+      "exact_baseline_bytes": true
+    },
+    {
+      "path": "server/property/maintenance-persistence.ts",
+      "sha256": "2f9c51f7db442224e38c5f11f88c3daba4396121fb32b8129bdf5e9652551c1d",
+      "exact_baseline_bytes": true
+    },
+    {
+      "path": "server/customer/broker.ts",
+      "sha256": "f983d8ceaa0bb5cd2403008301580894dd7c9023cd2c6d2026c0a2a70c6b979e",
+      "exact_baseline_bytes": true
+    },
+    {
+      "path": "server/customer/broker-auth.ts",
+      "sha256": "709018249d889504b860e4cf0f4caa5cbdd1c2b04f58c53226f4499c68fd46d6",
+      "exact_baseline_bytes": true
+    },
+    {
+      "path": "server/customer/request-gateway.ts",
+      "sha256": "1472d74e4d3bd94c8be8ef33785e88f2c567dfc632f6c73c5ad6d9c8782a549c",
+      "exact_baseline_bytes": true
+    },
+    {
+      "path": "server/field-lab/work-order-revisions.ts",
+      "sha256": "319899565362a1e23c282ddd6c65029a78b045a4fac96112492a50eb871992d7",
+      "exact_baseline_bytes": true
+    },
+    {
+      "path": "server/field-lab/saved-evidence-files.ts",
+      "sha256": "23aba42d3aa4eca09f4113b5a56888897cfe865af41a046f762b740ce85ead7d",
+      "exact_baseline_bytes": true
+    },
+    {
+      "path": "src/lib/workflows/saved-revision-runtime.ts",
+      "sha256": "2594aa13d5f09c719ecff9bed0344e6316628ee1bce5356115af2cbde5f7f2ad",
+      "exact_baseline_bytes": true
+    },
+    {
+      "path": "src/lib/workflows/saved-revision-exercise.ts",
+      "sha256": "ece23763cb3e9fcc7b55e13e3930580f7129ea136d8c3b6d00b2cd8b1bbf02ca",
+      "exact_baseline_bytes": true
+    },
+    {
+      "path": "docs/CUSTOMER_REQUESTS_PERSISTENCE.md",
+      "sha256": "18a608c5d406f977f10e0b15a7ca808c57ca32e5bf2876c81687a5067db17695",
+      "exact_baseline_bytes": true
+    },
+    {
+      "path": "docs/CUSTOMER_BROKER_INTEGRATION.md",
+      "sha256": "505f1f37a57402283bc02296bdd32559991187f6c3c79cd007c568a1909928a2",
+      "exact_baseline_bytes": true
+    },
+    {
+      "path": "docs/MAINTENANCE_COMMAND_AUTHORITY.md",
+      "sha256": "67ae12c1a471817e01e7b0aa93c29368605dc2c59d53d0cc9d18f71e47460658",
+      "exact_baseline_bytes": true
+    },
+    {
+      "path": "docs/PROPERTY_P1_RECOVERY_COMPLETION.md",
+      "sha256": "4396eb25ee269641d92f2d70eb7adedf67ffc40986afbd416fbca111ae7bd1cf",
+      "exact_baseline_bytes": true
+    },
+    {
+      "path": "docs/program/CYCLE18_NOV4_MACBOOK_AIR_CHECKLIST.md",
+      "sha256": "0111aa65432fea02cfde8c989bc3cf3273d5a5340fe9fc7683f612572064e056",
+      "exact_baseline_bytes": true
+    }
+  ],
+  "review_dimensions": {
+    "canonical_ownership": "EXISTING_OWNERS_RETAINED_MISSING_OPERATIONAL_OWNERS_EXPLICIT",
+    "tenant_isolation": "REQUIRES_EXACT_CURRENT_IDENTITY_RLS_GRANTS_COMPOSITE_TENANT_FKS",
+    "custody": "ORIGINAL_OWNER_ONLY_WEAKMAP_AND_FILES_NOT_DURABLE_AUTHORITY",
+    "commit_receipt_ack": "SEPARATE_ISSUER_WINDOW_EXPLICIT_UNKNOWN_NO_REPLAY",
+    "backup_consistency": "MATCHED_DB_CUSTODY_RECEIPT_OBJECT_KEY_SET_REQUIRED_NOT_DEMONSTRATED",
+    "rollback_resistance": "INDEPENDENT_FENCE_ABSENT_NO_GO",
+    "receipt_integrity": "HASH_NOT_AUTHENTICATED_SAME_OWNER_INTEGRITY",
+    "revocation": "CURRENT_EXTERNAL_AUTHORITY_NEVER_REVIVED_FROM_BACKUP",
+    "physical_recovery": "UNVERIFIED_NOT_RUN"
+  },
+  "unresolved_implementation_gates": [
+    "EXACT_OPERATIONAL_OWNER_AND_COMPLETE_WRITER_PARTICIPATION",
+    "GENUINE_CURRENT_AUTH_MEMBERSHIP_MFA_AND_CUSTOMER_MAPPING",
+    "EXACT_SCHEMA_OWNERSHIP_RLS_GRANTS_COMPOSITE_TENANT_FOREIGN_KEYS",
+    "ORIGINAL_CUSTODY_COMMIT_RECEIPT_AND_ACK_FAILURE_CONSISTENCY",
+    "INDEPENDENT_ROLLBACK_RESISTANT_CUSTODY_FENCE",
+    "AUTHENTICATED_IMMUTABLE_RECEIPT_INTEGRITY_AND_HIGH_WATER_MARK",
+    "MATCHED_DATABASE_CUSTODY_OBJECT_AND_KEY_BACKUP_SET",
+    "CURRENT_REVOCATIONS_NOT_REVIVED_BY_RESTORE",
+    "REVIEWED_ENCRYPTION_KEY_CUSTODY_RETENTION_DELETION_AND_PRIVACY",
+    "POWER_PROCESS_DISK_ACK_CONCURRENCY_AND_CORRUPTION_ACCEPTANCE",
+    "ACTUAL_INDEPENDENT_RESTORE_NO_REPLAY_AND_CLEANUP",
+    "MEASURED_RPO_RTO_AND_SEPARATE_EXACT_OWNER_APPROVAL"
+  ],
+  "public_documentation": [
+    {
+      "url": "https://supabase.com/docs/guides/platform/backups",
+      "verified_claim": "Database backups omit Storage object bytes; downloadable daily backups omit custom-role passwords."
+    },
+    {
+      "url": "https://supabase.com/docs/guides/auth/sessions",
+      "verified_claim": "Sensitive session revocation can be checked against current session rows; expiry settings are not uniformly immediate."
+    },
+    {
+      "url": "https://supabase.com/docs/guides/database/postgres/row-level-security",
+      "verified_claim": "Object grants and row policies are separate; existing grants require review."
+    },
+    {
+      "url": "https://supabase.com/changelog/45329-breaking-change-tables-not-exposed-to-data-and-graphql-api-automatically",
+      "verified_claim": "The new-table default does not revoke existing table grants."
+    },
+    {
+      "url": "https://www.postgresql.org/docs/17/backup.html",
+      "verified_claim": "SQL dump, filesystem backup and continuous archiving have distinct assumptions."
+    }
+  ],
+  "limitations": [
+    "NO_HOSTED_BACKUP_CATALOG_AUTH_OR_CREDENTIAL_INSPECTION",
+    "NO_PHYSICAL_DEVICE_OR_RECOVERY_DEMONSTRATION",
+    "NO_SQL_SCHEMA_OR_ADAPTER_IMPLEMENTATION",
+    "NO_OPERATIONAL_OR_RELEASE_TEST_RESULT",
+    "CHANGELOG_INDEX_UNAVAILABLE_EXACT_RELEVANT_PAGE_VERIFIED"
+  ],
+  "authority": {
+    "hosted_mutations": false,
+    "schema_installation": false,
+    "credential_retrieval": false,
+    "financial_execution": false,
+    "dispatch": false,
+    "communications": false,
+    "merge": false,
+    "deployment": false
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}
