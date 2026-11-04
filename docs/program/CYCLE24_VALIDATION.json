@@ -1,0 +1,596 @@
+{
+  "schema": "propel-cycle24-validation-v1",
+  "validated_at": "2026-11-04T02:27:58.391214+00:00",
+  "status": "LOCAL_IMPLEMENTED_TESTED_DEFAULT_OFF_CURRENT_HEAD_CI_PENDING",
+  "coordination_draft_pr": 163,
+  "coordination_branch": "codex/program-cycle-twenty-four-integration",
+  "source_parent": "7b8d8c1a6f03fa33321409aa15c46926a63e59ed",
+  "tested_runtime": "7a90da23c0a701001c79b605d94d2894cd9cc5a6",
+  "runtime_files": 76,
+  "source_packages": [
+    {
+      "module": "task-receipt-reconciliation",
+      "owner": "/root/cycle11_field_growth",
+      "branch": "codex/cycle24-task-receipt-reconciliation",
+      "original_author_commit": "29e322e9b55b195f17890d7d5a4daf9f4641c7bc",
+      "head_commit": "29e322e9b55b195f17890d7d5a4daf9f4641c7bc",
+      "draft_pr": 168,
+      "cases": 54,
+      "parent_commit": "7b8d8c1a6f03fa33321409aa15c46926a63e59ed",
+      "base_branch": "codex/program-cycle-twenty-four-integration",
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE24_TASK_RECEIPT_RECONCILIATION.md",
+          "sha256": "2f9f154dbdbe70f0843bb139e3566b6c1d045d2740440cea805b2a8d025ac910",
+          "blob": "e0ac21fe353f847704071595270ec15a4f5a9e8a"
+        },
+        {
+          "path": "src/components/workflows/TaskReceiptActions.tsx",
+          "sha256": "7b338b59125e6f70a1072d48a04cdc0612f5a1e074591c6f4039efd55df98a4e",
+          "blob": "b1c2a85251cccb46e2fe3cc20bc10f4e63e5821f"
+        },
+        {
+          "path": "src/components/workflows/task-receipt-actions.css",
+          "sha256": "df1630a28260c1a06e68ea5489a65a055f3ad47c2751add5aefa439e805c4d06",
+          "blob": "f3e19e24974d38cc850da0803e2f881aa754c429"
+        },
+        {
+          "path": "src/lib/workflows/saved-revision-exercise.ts",
+          "sha256": "c41a1ffe3980a286ec72665d74a6b79523949eca475d7ec4e85618791535ad38",
+          "blob": "9e31eeee45c45bb150e7a4415b015dce7f8dea18"
+        },
+        {
+          "path": "src/lib/workflows/task-receipt-reconciliation.ts",
+          "sha256": "0ceb39703978bbc4cf18d9fcf74551463ac91057849916e184e5436cbac2d9db",
+          "blob": "84df3ebf027b0f2edb68c6b8621070ae91b06a8b"
+        },
+        {
+          "path": "tests/cycle24-task-receipt-reconciliation.test.ts",
+          "sha256": "44d675471a67d68564ac8cf4986a29eda3f0a021fa11a71fcb02fbbcc2bd9b90",
+          "blob": "75823aa8452446443ca69bb058993a351b3ba99c"
+        }
+      ]
+    },
+    {
+      "module": "cost-coverage-actions",
+      "owner": "/root/cycle24_finance_intelligence",
+      "branch": "codex/cycle24-cost-coverage-actions",
+      "original_author_commit": "660439228b66f19bd80b80cffb7ccda127bdf699",
+      "head_commit": "660439228b66f19bd80b80cffb7ccda127bdf699",
+      "draft_pr": 165,
+      "cases": 26,
+      "parent_commit": "7b8d8c1a6f03fa33321409aa15c46926a63e59ed",
+      "base_branch": "codex/program-cycle-twenty-four-integration",
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE24_COST_COVERAGE_ACTIONS.md",
+          "sha256": "a5008fd6c83ce95d2b62c96ad07ac92316973437cf69a6f8f9f4e2f53b362d30",
+          "blob": "e22ea2bb94ce57c69f937b07febf81245732835b"
+        },
+        {
+          "path": "src/components/workflows/CostCoverageActions.tsx",
+          "sha256": "9a29ffc2be63c527506829d202fef5ed6d3753a309ded5d3c10f8aa4175eeec6",
+          "blob": "d5c80c793ccfe1e73edcde7d5103965172c6f466"
+        },
+        {
+          "path": "src/components/workflows/cost-coverage-actions.css",
+          "sha256": "486c7a24f54ba43a35a8e232ae1104c08fa15fc8ffc0050f5ef0759fe0999a55",
+          "blob": "b565773764f176f65359f5165834dc853afc42ea"
+        },
+        {
+          "path": "src/lib/workflows/cost-coverage-actions.ts",
+          "sha256": "d088d2bae6f72d96bc5d07e594264e14eb6a9145bd545c4b53ef221b2e7cbdf5",
+          "blob": "1b465f0fe48b3ff6c7e0dd9991f4a862a20f505d"
+        },
+        {
+          "path": "tests/cycle24-cost-coverage-actions.test.ts",
+          "sha256": "af1cd4619104ddb5ca482e281ab663239156b95acfb258b741dcc747448008f2",
+          "blob": "1272a1646f1e167dd9762ccc69f9e3768b6a6c42"
+        }
+      ]
+    },
+    {
+      "module": "service-request-actions",
+      "owner": "/root/cycle22_customer",
+      "branch": "codex/cycle24-service-request-actions",
+      "original_author_commit": "26ab387632dcb96cc7f94b3ea8bde69a90eef3bf",
+      "head_commit": "621b8b586e6769fbb1bedc3e2d81cf8f73d4f018",
+      "draft_pr": 169,
+      "cases": 58,
+      "dependency": {
+        "commit": "29e322e9b55b195f17890d7d5a4daf9f4641c7bc",
+        "path": "src/lib/workflows/saved-revision-exercise.ts"
+      },
+      "parent_commit": "7b8d8c1a6f03fa33321409aa15c46926a63e59ed",
+      "base_branch": "codex/program-cycle-twenty-four-integration",
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE24_SERVICE_REQUEST_ACTIONS.md",
+          "sha256": "1ff71f81c32293525a52031514416e979af143ac3947d2b7a54989bc708c8eaf",
+          "blob": "079d4b17694b3cf9e43885196b5d01ff66a4c78e"
+        },
+        {
+          "path": "src/components/workflows/ServiceRequestActions.tsx",
+          "sha256": "f38d17fbe8575869d319c22cc717602b8ce4e7f7debdb181adeb8142b3a8a08f",
+          "blob": "700791de0803173bc97e65dfb3db4d12e0b3f9e4"
+        },
+        {
+          "path": "src/components/workflows/service-request-actions.css",
+          "sha256": "6b0f563bc7028d0ab48a4df7ba33834c040acccaa034fd1af633f96bc19126eb",
+          "blob": "ce6dd58e7200441e06360ac4cb0eeacdd83c95c1"
+        },
+        {
+          "path": "src/lib/workflows/service-request-actions.ts",
+          "sha256": "25a210bec44932daebd58d86e2861ecb4269fa7c387ebb4e284df69321882723",
+          "blob": "756b4a3612bd39443e34d2f79c772b721bae16bc"
+        },
+        {
+          "path": "tests/cycle24-service-request-actions.test.ts",
+          "sha256": "bea28525ec7de419e52b24d829460eca93fac47e803f74be72bcc07d5e98804a",
+          "blob": "e5260b77b301620b9395a6d76a16e51e8efef777"
+        }
+      ]
+    },
+    {
+      "module": "plan-cancellation-review",
+      "owner": "/root/cycle11_field_growth",
+      "branch": "codex/cycle24-maintenance-cancellation",
+      "original_author_commit": "d2eeeec8f2ca070a6ccf350273fa1cf7475905ca",
+      "head_commit": "8592f47858e49f1c74b30222d918c5b702307240",
+      "draft_pr": 167,
+      "cases": 43,
+      "corrections": [
+        {
+          "commit": "ae26767f81fdc775d91d46c4b98daf4484f4c319",
+          "modified": [
+            "src/lib/workflows/plan-cancellation-review.ts",
+            "tests/cycle24-plan-cancellation-review.test.ts"
+          ]
+        },
+        {
+          "commit": "8592f47858e49f1c74b30222d918c5b702307240",
+          "modified": [
+            "src/lib/workflows/plan-cancellation-review.ts",
+            "tests/cycle24-plan-cancellation-review.test.ts"
+          ]
+        }
+      ],
+      "parent_commit": "7b8d8c1a6f03fa33321409aa15c46926a63e59ed",
+      "base_branch": "codex/program-cycle-twenty-four-integration",
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE24_PLAN_CANCELLATION_REVIEW.md",
+          "sha256": "af0712766cc48ff1841db2d674f9c8f09580a925d0c3ad1b8c4f0e5c01b16d55",
+          "blob": "6f8f8cbc20c040fc41d9ba2e8f6c610a8699e5b7"
+        },
+        {
+          "path": "src/components/workflows/MaintenanceCancellationActions.tsx",
+          "sha256": "1c882a73aad9469294719f0d82b65fceb89075f4251e5f68869f6fdd2b5989be",
+          "blob": "183ffe2f6a8f2f2a8c519fe3a9b9ef2e37e2cafd"
+        },
+        {
+          "path": "src/components/workflows/maintenance-cancellation-actions.css",
+          "sha256": "137bedc6785e9a6ad3f4ecd7b9cb2f653555e5844beae83efaf7f81d7878bc21",
+          "blob": "979fbaa15271545b4ff762f3c6af9900f1e2c328"
+        },
+        {
+          "path": "src/lib/workflows/plan-cancellation-review.ts",
+          "sha256": "1ee395ca0e7fd37d675a1a2def71cf53f18eaa679bbf2c3ef337ad3bf5ab7d63",
+          "blob": "e8e2d77cd4d3519b4f4eb4fc2f2f4b41481e5ca7"
+        },
+        {
+          "path": "tests/cycle24-plan-cancellation-review.test.ts",
+          "sha256": "36ad0dda1aa8a5cbba21d347d13acc405bee5047081228fdbf56e5f73ae4d36c",
+          "blob": "fe049a8f436ddc428a1b2de54cf5e14108396231"
+        }
+      ]
+    },
+    {
+      "module": "owner-action-verification",
+      "owner": "/root/cycle24_finance_intelligence",
+      "branch": "codex/cycle24-owner-action-verification",
+      "original_author_commit": "893d629d78014e324971e2b07d8b1b85ca6429ec",
+      "head_commit": "893d629d78014e324971e2b07d8b1b85ca6429ec",
+      "draft_pr": 166,
+      "cases": 27,
+      "parent_commit": "7b8d8c1a6f03fa33321409aa15c46926a63e59ed",
+      "base_branch": "codex/program-cycle-twenty-four-integration",
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE24_OWNER_ACTION_VERIFICATION.md",
+          "sha256": "305bdd3843f600f3522b08444d13dae93eaba86c975fea7551f572c778c5b479",
+          "blob": "f6e10c44824615ee65fde88e290353e8da785f08"
+        },
+        {
+          "path": "src/components/workflows/OwnerActionVerification.tsx",
+          "sha256": "4270c1480c36c224bc461a5688115b4701857a0a41048b3affbf3f32110b2835",
+          "blob": "d0096c42238a50c90c6f602788c769ca9ae7169c"
+        },
+        {
+          "path": "src/components/workflows/owner-action-verification.css",
+          "sha256": "8aade0563784d836f6e6126b52592b3e362c7e8e63ac883782ec3a1f834bc64e",
+          "blob": "0652fc4497f712ff366b4129735d88dddad0fbfb"
+        },
+        {
+          "path": "src/lib/workflows/owner-action-verification.ts",
+          "sha256": "6302405bd1f25332ed43686cf923cbeff3e8206df548f053a22b32a472385b97",
+          "blob": "cebec96e887c494edfd8272fc2d3236dd930dbd4"
+        },
+        {
+          "path": "tests/cycle24-owner-action-verification.test.ts",
+          "sha256": "8b27a6b62958466284baa35ab48266e6b8ab6f5c75c60b770d131e64aec8e644",
+          "blob": "760a9ecec2d1754cfd9bd7611fc57291d32985b2"
+        }
+      ]
+    },
+    {
+      "module": "offline-source-admission",
+      "owner": "/root/cycle22_customer",
+      "branch": "codex/cycle24-offline-source-admission",
+      "original_author_commit": "cb6d6fc723903544cbb36c2213ca1395fcbac348",
+      "head_commit": "cb6d6fc723903544cbb36c2213ca1395fcbac348",
+      "draft_pr": 170,
+      "cases": 40,
+      "parent_commit": "7b8d8c1a6f03fa33321409aa15c46926a63e59ed",
+      "base_branch": "codex/program-cycle-twenty-four-integration",
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE24_OFFLINE_PROTOCOL.json",
+          "sha256": "b1e80f18de96495b1a988094a4f0ce3f7af825f4a6575f6de53726e85dd5bbc1",
+          "blob": "a1a2c89a5b2ce12f914746223c8484876a625660"
+        },
+        {
+          "path": "docs/program/CYCLE24_OFFLINE_SOURCE_ADMISSION.md",
+          "sha256": "3414d0506e221e0bbd260a325c073a899f4865d5afef99fe33b7bbbb9049b9d6",
+          "blob": "f075f66f2e3f2eb63b88b8f6cfd31f429f691e99"
+        },
+        {
+          "path": "src/lib/workflows/offline-source-admission.ts",
+          "sha256": "eb9341bf56365cd3fe354f3c863524ba5999d0de98b14b4596af9b5f49523359",
+          "blob": "b387a481ca8e318771e64626b66aa9ed8ae770a5"
+        },
+        {
+          "path": "src/lib/workflows/offline-source-protocol.ts",
+          "sha256": "c6b51bab7e73248f4b14cfc6dbbfc1ff961aa059e06a31b6ba8b0589aa0e9861",
+          "blob": "6f935a26cd978b4496d96d17d41064edc53cf70e"
+        },
+        {
+          "path": "tests/cycle24-offline-source-admission.test.ts",
+          "sha256": "6fa56605255e7f8adde7302949fbdaac22bfbc081d78397197528ef7fdcfdda6",
+          "blob": "e8377c01a441b2a08ff13f45f5e5e5cddb745647"
+        }
+      ]
+    }
+  ],
+  "independent_review": {
+    "agent": "/root/cycle23_independent_review",
+    "draft_pr": 171,
+    "source_commit": "712e07cb3be8988b092aba9fad80d32b4662435b",
+    "application_cases": 54,
+    "react_browser_cases": 1,
+    "status": "CLEAR_LOCAL_SYNTHETIC_ONLY"
+  },
+  "agents": [
+    {
+      "agent": "/root/cycle11_field_growth",
+      "status": "COMPLETED",
+      "assignments": [
+        "Field168",
+        "Growth167",
+        "two demonstrated source-binding fixes",
+        "bounded exact CI compatibility forwards"
+      ]
+    },
+    {
+      "agent": "/root/cycle24_finance_intelligence",
+      "status": "COMPLETED",
+      "assignments": [
+        "Finance165",
+        "Intelligence166",
+        "independent restart register review164"
+      ]
+    },
+    {
+      "agent": "/root/cycle22_customer",
+      "status": "COMPLETED",
+      "assignments": [
+        "Customer169",
+        "offline170",
+        "three-brand responsive/browser/a11y/keyboard evidence"
+      ]
+    },
+    {
+      "agent": "/root/cycle23_independent_review",
+      "status": "COMPLETED_IMPLEMENTATION_REVIEW_CI_EVIDENCE_FOLLOWUP",
+      "assignments": [
+        "independent review171",
+        "source-context and callback findings",
+        "exact failed CI artifacts"
+      ]
+    },
+    {
+      "agent": "/root",
+      "status": "FINAL_COORDINATION",
+      "assignments": [
+        "shared workbench callbacks/composition",
+        "source/result validators",
+        "restart register164",
+        "registers/quality/publication"
+      ]
+    }
+  ],
+  "application": {
+    "suites": 9,
+    "cases": 330,
+    "passed": 330,
+    "failed": 0,
+    "pending": 0,
+    "artifact": {
+      "path": "artifacts/cycle24/application-results.json",
+      "sha256": "04a827875557f0e0e2af62723fdd890ac5c4356afd6622f7d53c88398fd83dd5",
+      "bytes": 116535
+    }
+  },
+  "browser": {
+    "development_cases": 9,
+    "production_off_cases": 3,
+    "all_three_brands": true,
+    "layouts": ["desktop", "tablet", "mobile"],
+    "screenshots": 63,
+    "keyboard_journeys": 9,
+    "trusted_key_events": 288,
+    "accessibility": "AXE_PASS",
+    "touch_overflow": "PASS",
+    "physical_device_acceptance": false,
+    "validation": {
+      "path": "artifacts/cycle24/browser-validation.json",
+      "sha256": "7ed81840b0df662b5a87a3a56997bdc5e978c469dbedc9612b7da95fa4497529",
+      "bytes": 23539
+    },
+    "development": {
+      "path": "artifacts/cycle24/browser-results.json",
+      "sha256": "dc2e735b81cc35134f5949f655549675f59fc549c7ed6dd811f8a8da657bd7f5",
+      "bytes": 16513
+    },
+    "production_off": {
+      "path": "artifacts/cycle24/browser-off-results.json",
+      "sha256": "705e4f4303c0a37d58f4a58e46b3af66cf48f2b0206bafe2f9429e0032f3c3f8",
+      "bytes": 9787
+    }
+  },
+  "quality": {
+    "strict_types": "PASS",
+    "generated_types": "PASS",
+    "lint": "PASS_WITH_RETAINED_C14_REFRESH_WARNING",
+    "formatting": "PASS",
+    "build": "PASS_WITH_RETAINED_BUNDLE_SIZE_WARNING",
+    "features": "PASS_25_RECORDS_5_LOCKS_13_BINDINGS",
+    "migration_integrity": "PASS_13_HISTORY_PENDING14",
+    "retained_author_files": 523,
+    "protected_files": 128,
+    "design_approval": "THREE_LOCKED_SCOPES_PRESERVED_OPERATING_AND_ADVANCED_PENDING"
+  },
+  "architecture": {
+    "draft_pr": 164,
+    "author_commit": "3c587ac7febefdaf11945970918ced6e986d0950",
+    "review_commit": "cade9c8d0456b65c435b03257a4fe917df901092",
+    "requirements": 19,
+    "status": "NO_GO_FOR_ADAPTER_IMPLEMENTATION",
+    "implementation_authorized": false,
+    "schema_authorized": false,
+    "all_operational_requirements": "NOT_ACCEPTED_NOT_RUN"
+  },
+  "physical_recovery": {
+    "owner_update": "INDEPENDENT_DEVICE_NOT_AVAILABLE_YET",
+    "procedure": "UNCHANGED_KIT_CHECKLIST_QUICKCARD_READY",
+    "status": "UNVERIFIED_NOT_RUN",
+    "offline_baseline_not_repeated": true
+  },
+  "ci": {
+    "snapshot": "docs/program/CYCLE24_CI_STATUS.json",
+    "observed_at": "2026-11-04T02:27:58.391214+00:00",
+    "heads": {
+      "149": "a453b30dbc34c2438cdb594c683920a02a307023",
+      "150": "4dde1f9f48ebf59dfcd89706ebd8fb50b236e46d",
+      "151": "84d6ad60264324528b99be3324e0058349536999",
+      "152": "316dc76ecdbe5a8d133ea7ad7fc2d05080f13837",
+      "153": "d82c033fd7089cde60f2bbec4fe9f2e1956c5dde",
+      "154": "c0417444460b9b9cb112b4808ebdcfe95e4168ab",
+      "155": "a118fce97dc0ab5ae3fea9a737541ec43a0f03a1",
+      "156": "a38a59ecfbb3e4e3b8d795399f805e6b5382b539",
+      "157": "e8ef23246d1ed9a826c07f928bfaaba1827f63f6",
+      "158": "f1c9d3c95176f13ef1521b368e71a127a00b8742",
+      "159": "f2c6bf7976b98e04e0bd92c3f295815ccca29ea1",
+      "160": "a57fb4890478a5f4f09c3d62659b41ff2b16dbfa",
+      "161": "0e13dee08aff492262595d9e93763d295cb0d4b8",
+      "162": "15cae3e8da5ca984e466e049efd41693636dd25b",
+      "163": "7a90da23c0a701001c79b605d94d2894cd9cc5a6",
+      "164": "e64139e479fa6971f88b56b6efb956ec6a4aec9a",
+      "165": "6cc3175c9f71c944e5d5a9c7ba02dc846dbcb91e",
+      "166": "113ea0e65776913f49f222757bc68a318a6ecc13",
+      "167": "8835f8ad1e9e01f0470ef3d166f71374cda10301",
+      "168": "b35b10c07466aa193551eaa88b6164252024eceb",
+      "169": "517527d3e864b38e88c4c9223c7638286fceb5c0",
+      "170": "537d9be302e9155b7fa05af4205b445a8258a65f",
+      "171": "712e07cb3be8988b092aba9fad80d32b4662435b",
+      "172": "986b54ab475160a2e69b62b65874b9ca36096c79"
+    },
+    "manual_reruns": 0,
+    "status": "CURRENT_EXACT_HEADS_PENDING_NOT_INFERRED_FROM_LOCAL_PASS",
+    "historical_failures_and_cancellations": "RETAINED_NOT_RELABELED",
+    "legacy_foundation_coverage": {
+      "status": "OPEN_NOT_INFERRED_FROM_FOCUSED_PASS",
+      "cancelled_runs": [41747620882, 41747683783],
+      "provider_annotation": "EXISTING_45_MINUTE_JOB_LIMIT",
+      "cycle18_cases_per_cancelled_run": 58,
+      "cycle18_passed_per_cancelled_run": 48,
+      "cycle18_failed_per_cancelled_run": 10,
+      "failed_case_names_and_durations": "PRESERVED_IN_SEPARATE_DEPENDENCY_RECONCILIATION_RECORD",
+      "failure_exception_details": "NOT_EMITTED_BEFORE_CANCELLATION",
+      "cause": "UNRESOLVED_TIMING_EVIDENCE_ONLY",
+      "total_application_files": 269,
+      "remaining_application_files_without_completed_conclusion": 192,
+      "subsequent_recovery_build_staging_browser_steps": "NOT_REACHED",
+      "postgresql_sibling_jobs": "SUCCESS_PRESERVED",
+      "manual_reruns": 0,
+      "completed_passing_file_union": 76,
+      "completed_failed_file_union": 1
+    },
+    "independent_dependency_reconciliation": {
+      "draft_pr": 172,
+      "source_commit": "986b54ab475160a2e69b62b65874b9ca36096c79",
+      "files": [
+        {
+          "path": "docs/program/CYCLE24_CI_DEPENDENCY_RECONCILIATION.md",
+          "sha256": "1abd1ca2d526af7db8214c8db8de4c4ed9343875f2c7d9dcb210995e15d21c67",
+          "blob": "370e0633ac32892120cddbad272d86a2bfcb1f04"
+        },
+        {
+          "path": "docs/program/CYCLE24_CI_DEPENDENCY_RECONCILIATION.json",
+          "sha256": "36d75901f98c782a026b107fb85ae819f42452d63b4eb3dc56bfae5e7f6fac64",
+          "blob": "f84360e2b60102372a51adad0919716433446083"
+        }
+      ],
+      "status": "EVIDENCE_COMPLETE_FOUNDATION_COVERAGE_OPEN"
+    },
+    "final_dependency_context_forwards": [
+      {
+        "draft_pr": 151,
+        "before": "f31fdf6695be0371bbdc6728d745ada6b75bdc62",
+        "after": "84d6ad60264324528b99be3324e0058349536999",
+        "scope": "ONE_NEW_DEPENDENCY_CONTEXT_DOCUMENT_ONLY",
+        "path": "docs/program/CYCLE24_CI_DEPENDENCY_FORWARD_151.md",
+        "sha256": "2f3b41bac4b0585a64077baa53f4009687eb1307ad14c403d310745fc55b4472",
+        "blob": "bec40f974e15285cc0f4a917585081d1f8711657",
+        "single_parent": true,
+        "all_other_tree_entries_unchanged": true,
+        "automatic_ci": "PENDING_NOT_INFERRED",
+        "manual_reruns": 0
+      },
+      {
+        "draft_pr": 153,
+        "before": "8e03784864b451c9a79464f788e24eef7ce28742",
+        "after": "d82c033fd7089cde60f2bbec4fe9f2e1956c5dde",
+        "scope": "ONE_NEW_DEPENDENCY_CONTEXT_DOCUMENT_ONLY",
+        "path": "docs/program/CYCLE24_CI_DEPENDENCY_FORWARD_153.md",
+        "sha256": "05416217768e651d9057ad533636f5bafdda64b9a241814d8e1341743b263fd5",
+        "blob": "2bed361edb4bfee717b108631bd6784a5fae574c",
+        "single_parent": true,
+        "all_other_tree_entries_unchanged": true,
+        "automatic_ci": "PENDING_NOT_INFERRED",
+        "manual_reruns": 0
+      },
+      {
+        "draft_pr": 154,
+        "before": "cdd5241c63c1fb4e6fe9c851195a076777bd1e13",
+        "after": "c0417444460b9b9cb112b4808ebdcfe95e4168ab",
+        "scope": "ONE_NEW_DEPENDENCY_CONTEXT_DOCUMENT_ONLY",
+        "path": "docs/program/CYCLE24_CI_DEPENDENCY_FORWARD_154.md",
+        "sha256": "974bea0bb6520620f708ec53ffd1d83eb3de1e4e1fe5dc99e08e0f34958ad917",
+        "blob": "005a473a68e18d3cc6fc172aea5a04297128efb0",
+        "single_parent": true,
+        "all_other_tree_entries_unchanged": true,
+        "automatic_ci": "PENDING_NOT_INFERRED",
+        "manual_reruns": 0
+      }
+    ]
+  },
+  "authority": {
+    "operational_ready": false,
+    "restore_adapter": false,
+    "native_request_cas": false,
+    "native_request_durable_receipt": false,
+    "maintenance_plan_cancellation": "UNSUPPORTED",
+    "financial_execution": false,
+    "dispatch": false,
+    "communications": false,
+    "hosted_mutations": false,
+    "merge": false,
+    "deployment": false
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "source_binding_scope": {
+    "captured_scoped_files": 76,
+    "additional_critical_files_checked_now_and_in_execution_commit": [
+      {
+        "path": "src/lib/workflows/saved-revision-runtime.ts",
+        "sha256": "2594aa13d5f09c719ecff9bed0344e6316628ee1bce5356115af2cbde5f7f2ad",
+        "blob": "c171be4ab74886d8f7366158a89521540f429ec4"
+      },
+      {
+        "path": "src/lib/workflows/operating-center-runtime.ts",
+        "sha256": "7a5272ae344400714dea1efe727a40c19a10c96ccfdf70f7321e127488bbd239",
+        "blob": "507b391ab622a3d56c0a109a84a6ef2b97d6cba8"
+      },
+      {
+        "path": "src/lib/workflows/journey-runtime.ts",
+        "sha256": "51c43acd8cfc22611f72b08e42a1c4b6e674a2b2d87212f013ca341f0ab759b0",
+        "blob": "9df0bafc3522aecd2eaefae447524c2a989bc8b1"
+      },
+      {
+        "path": "src/App.tsx",
+        "sha256": "b4ec768f7c60eeb231ba6d021f81615f242b51e8a72812d02f7facb6ed2e025a",
+        "blob": "299c88cf14a6512d20f7a0b07aa207926d482f50"
+      },
+      {
+        "path": "src/main.tsx",
+        "sha256": "4710014383c85526d14677f76527118c0aadd2b5fc59c43f328ad13bc53c3679",
+        "blob": "ed0dc63303710c4dff6c4d65e8451eac14f0f5e1"
+      }
+    ],
+    "complete_transitive_runtime_inventory": false,
+    "historical_capture_metadata_rewritten": false
+  },
+  "tooling_review": {
+    "agent": "/root/cycle11_field_growth",
+    "status": "CLEAR_AFTER_DEMONSTRATED_TOOLING_CORRECTIONS",
+    "product_runtime_changed": false,
+    "findings": [
+      "REPORT_WIDE_DUPLICATE_OR_BLANK_ASSERTION_NAMES",
+      "GIT_TREE_ACCEPTED_AS_EXECUTION_COMMIT",
+      "SCOPED_CAPTURE_INVENTORY_NOT_TRANSITIVE_COMPLETE"
+    ],
+    "corrections": [
+      "NONBLANK_REPORT_WIDE_UNIQUE_ASSERTION_IDENTITIES",
+      "ACTUAL_GIT_COMMIT_OBJECT_REQUIRED",
+      "FIVE_ADDITIONAL_CRITICAL_PATHS_CHECKED_NOW_AND_IN_EXECUTED_COMMIT_AND_SCOPE_LIMIT_EXPLICIT"
+    ],
+    "new_regression_cases": 5,
+    "validator_cases": 23,
+    "real_merge_commit_support": "SOURCE_REVIEWED_NO_ACCESSIBLE_LOCAL_MERGE_FIXTURE",
+    "browser_journeys_repeated": false,
+    "collector_revalidated_original_evidence": "PASS",
+    "verified_files": [
+      {
+        "path": "scripts/check-cycle24.mjs",
+        "sha256": "e7029df84341dcbffa1130970222e88c48ded6043a5c9e48dfba4732a45b368d"
+      },
+      {
+        "path": "scripts/collect-cycle24-browser.mjs",
+        "sha256": "a18d19ec57c9c275e4449660d07a956e296f5e66bea086812366dfd1e23d6471"
+      },
+      {
+        "path": "tests/cycle24-validation.test.ts",
+        "sha256": "68a3bd3a4350be3db1836160c8dc5afb4fd5a064269946b520ec692408f2e14c"
+      }
+    ]
+  },
+  "previous_application_before_tooling_hardening": {
+    "suites": 9,
+    "cases": 325,
+    "passed": 325,
+    "failed": 0,
+    "pending": 0,
+    "artifact": {
+      "path": "artifacts/cycle24/application-results-before-tooling-hardening.json",
+      "sha256": "10d9be15c390d2df951951c98563221d36681e96f93d286cb746027dfac4a3d0",
+      "bytes": 115114
+    }
+  }
+}

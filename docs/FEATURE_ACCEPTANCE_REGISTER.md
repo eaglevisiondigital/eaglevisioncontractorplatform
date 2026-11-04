@@ -1,5 +1,33 @@
 # Propel Contractor Suite — feature acceptance register
 
+## Cycle24 · native staff actions delivered locally
+
+Draft [#163](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/163)
+composes six bounded feature drafts165–170; independent review171 covers exact
+runtime7a90da2. The original five-tab workbench retains one job/source context.
+Exact task reconciliation, native intake review, canonical cost requirements,
+blocked-review cancellation, verified priorities and unwired offline8+4 admission
+reuse existing owners/custody. No duplicate store, engine or navigation. Request
+updates have no server CAS/receipt; missing links and ambiguous outcomes stay UNKNOWN.
+
+Actual330 application cases,9DEV+3OFF responsive cases,63 screenshots,288 trusted
+keys and separate React1/1 regression pass. Two demonstrated source joins and the
+same-job callback lease were corrected without weakening original guards. All523
+prior author paths/128protections/5locks13bindings and original25 capabilities remain
+intact. Current exact-head CI is separately pending, never inferred green; original
+failures/timeouts/cancellations remain retained and no successful check manually rerun.
+Legacy Foundation coverage remains OPEN: two unchanged45-minute cancellations
+reported ten C18 failures each before final exception details were emitted.
+Focused/local success does not close those missing conclusions.
+See [validation](program/CYCLE24_VALIDATION.md) and the complete source/CI records.
+
+Separate restart draft164 remains NO-GO for adapter implementation:19 unaccepted
+requirements, no schema or operational writer. Independent Air unavailable; original
+credential-free procedure ready, physical rehearsal UNVERIFIED/NOT RUN. Approved
+three designs, P1/customer14/4B/Auth/MFA/NMI/Netlify/recovery/financial and production
+restrictions remain. No merge, deploy, hosted write, payment, dispatch or message.
+Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Cycle 23 · source-bound revision consistency delivered locally
 
 Coordination draft [#155](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/155)

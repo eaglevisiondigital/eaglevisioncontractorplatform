@@ -1,0 +1,461 @@
+{
+  "schema": "propel-cycle24-exact-dependency-forwards-v1",
+  "corrected_c22_target_base": "a453b30dbc34c2438cdb594c683920a02a307023",
+  "corrected_c23_target_base": "a118fce97dc0ab5ae3fea9a737541ec43a0f03a1",
+  "c24_exact_host_source": "1d2784d4f2a250219ff2c2befa67571947ade5d9",
+  "c24_host_sha256": "63fd2a5c9a9eab8ad29a7a297a6c64f6d0c0c67647c1ba0f728fdf6505cfff3f",
+  "manual_reruns": 0,
+  "merge_rebase_reset_force": false,
+  "business_source_pins_changed": false,
+  "records": [
+    {
+      "draft_pr": 150,
+      "branch": "codex/cycle22-property-service-workflow",
+      "base": "codex/program-cycle-twenty-two-integration",
+      "before": "4e29d3e9113c34999929c6c5d23fdc092316e58f",
+      "after": "4dde1f9f48ebf59dfcd89706ebd8fb50b236e46d",
+      "original_failed_run": "41747600977",
+      "state": "COMPLETE_GIT_REMOTE_VERIFIED",
+      "push_attempts": 1,
+      "allowed_paths": ["docs/program/CYCLE24_CI_DEPENDENCY_FORWARD_150.md"],
+      "tests": {
+        "selected_source_cases": 1,
+        "selected_full_names": [
+          "reviewed composition retains the original host pending owner and future restart review boundary"
+        ],
+        "all_other_collected_cases_not_run": true,
+        "raw_sha256": "42ba41e39406f966451d7535ad9a2f595bf09a98add2f965a4209494065cee2e",
+        "raw_report": "/private/tmp/cycle24-ci-source-cases-150.json",
+        "format": "PASS",
+        "types": "NOT_REPEATED_DOCUMENTATION_ONLY"
+      },
+      "original_source_preserved": true,
+      "expected_statuses": [
+        "A\tdocs/program/CYCLE24_CI_DEPENDENCY_FORWARD_150.md"
+      ],
+      "scope": "DOCUMENTATION_ONLY_CURRENT_TARGET_DEPENDENCY",
+      "worktree": "/private/tmp/propel-cycle24-ci-dependency-150",
+      "files": [
+        {
+          "path": "docs/program/CYCLE24_CI_DEPENDENCY_FORWARD_150.md",
+          "blob": "9ab85534862bab3827148bbee005c8407c4420eb",
+          "sha256": "19a705fc6836d7d023deac3e170be540c958010488c9b23516c77a41d54144d7"
+        }
+      ],
+      "protected128_unchanged": true,
+      "all_other_tree_entries_unchanged": true,
+      "push_acknowledged": true,
+      "git_remote_verified": true,
+      "pr_metadata_status": "EXACT_HEAD_CONFIRMED"
+    },
+    {
+      "draft_pr": 152,
+      "branch": "codex/cycle22-task-custody-workflow",
+      "base": "codex/program-cycle-twenty-two-integration",
+      "before": "43152c32a2e0509992affd36f467efd9b42d29ca",
+      "after": "316dc76ecdbe5a8d133ea7ad7fc2d05080f13837",
+      "original_failed_run": "41747643290",
+      "state": "COMPLETE_GIT_AND_DRAFT_METADATA_VERIFIED",
+      "push_attempts": 1,
+      "allowed_paths": ["docs/program/CYCLE24_CI_DEPENDENCY_FORWARD_152.md"],
+      "tests": {
+        "selected_source_cases": 1,
+        "selected_full_names": [
+          "reviewed composition retains the original host pending owner and future restart review boundary"
+        ],
+        "all_other_collected_cases_not_run": true,
+        "raw_sha256": "91005e396e2b1b83eeeedac5ce24c6841b52da607149f09bdff9c6a043bcbae0",
+        "raw_report": "/private/tmp/cycle24-ci-source-cases-152.json",
+        "format": "PASS",
+        "types": "NOT_REPEATED_DOCUMENTATION_ONLY"
+      },
+      "original_source_preserved": true,
+      "expected_statuses": [
+        "A\tdocs/program/CYCLE24_CI_DEPENDENCY_FORWARD_152.md"
+      ],
+      "scope": "DOCUMENTATION_ONLY_CURRENT_TARGET_DEPENDENCY",
+      "worktree": "/private/tmp/propel-cycle24-ci-dependency-152",
+      "files": [
+        {
+          "path": "docs/program/CYCLE24_CI_DEPENDENCY_FORWARD_152.md",
+          "blob": "689866ed37cb9393e8c393e75f399fc3dc5b4030",
+          "sha256": "5cab928705d77b822c1560f94d4cac5fe7960fe5fdb3bd458623d38a6790f960"
+        }
+      ],
+      "protected128_unchanged": true,
+      "all_other_tree_entries_unchanged": true,
+      "push_acknowledged": true,
+      "git_remote_verified": true,
+      "pr_metadata_status": "EXACT_HEAD_CONFIRMED"
+    },
+    {
+      "draft_pr": 158,
+      "branch": "codex/cycle23-maintenance-revision-requirements",
+      "base": "codex/program-cycle-twenty-three-integration",
+      "before": "db43479f5e277bb6b64fd74a0ac9d846cbfe15da",
+      "after": "f1c9d3c95176f13ef1521b368e71a127a00b8742",
+      "original_failed_run": "41747751829",
+      "state": "COMPLETE_GIT_AND_DRAFT_METADATA_VERIFIED",
+      "push_attempts": 1,
+      "allowed_paths": [
+        "src/components/workflows/OperatingCenterCycleFifteen.tsx",
+        "docs/program/CYCLE24_CI_DEPENDENCY_FORWARD_158.md"
+      ],
+      "tests": {
+        "selected_source_cases": 2,
+        "selected_full_names": [
+          "reviewed composition retains the original host pending owner and future restart review boundary",
+          "independent source review: all admitted author bytes are exact and original controls remain the only writers"
+        ],
+        "all_other_collected_cases_not_run": true,
+        "raw_sha256": "ca41b926c698f740da7b313df9ec17c8da1817e7585297d1e9085595e34b8d3b",
+        "raw_report": "/private/tmp/cycle24-ci-source-cases-158.json",
+        "format": "PASS",
+        "types": "PASS"
+      },
+      "original_source_preserved": true,
+      "expected_statuses": [
+        "M\tsrc/components/workflows/OperatingCenterCycleFifteen.tsx",
+        "A\tdocs/program/CYCLE24_CI_DEPENDENCY_FORWARD_158.md"
+      ],
+      "scope": "TWO_EQUIVALENT_EXISTING_HOST_EXPRESSIONS",
+      "worktree": "/private/tmp/propel-cycle24-ci-dependency-158",
+      "files": [
+        {
+          "path": "src/components/workflows/OperatingCenterCycleFifteen.tsx",
+          "blob": "98204d50463ff39313d7926bd9bc4a52af1f77a0",
+          "sha256": "6f3f01a7f4bea2311988388bd31431ebd33d8ad5c8427c5d4a3e79a2887de4de"
+        },
+        {
+          "path": "docs/program/CYCLE24_CI_DEPENDENCY_FORWARD_158.md",
+          "blob": "5cc807bd75c4306581ddcd7b51b4616a0501468a",
+          "sha256": "df07ed18a76b0abff1a8470dd2c62398becd1ed591e2697408bfc8bab96b757b"
+        }
+      ],
+      "protected128_unchanged": true,
+      "all_other_tree_entries_unchanged": true,
+      "push_acknowledged": true,
+      "git_remote_verified": true,
+      "pr_metadata_status": "EXACT_HEAD_CONFIRMED"
+    },
+    {
+      "draft_pr": 159,
+      "branch": "codex/cycle23-recorded-cost-requirements",
+      "base": "codex/program-cycle-twenty-three-integration",
+      "before": "891eba98758ce18434a4fdbd981acdc55ae020bc",
+      "after": "f2c6bf7976b98e04e0bd92c3f295815ccca29ea1",
+      "original_failed_run": "41747772612",
+      "state": "COMPLETE_GIT_REMOTE_VERIFIED",
+      "push_attempts": 1,
+      "allowed_paths": [
+        "src/components/workflows/OperatingCenterCycleFifteen.tsx",
+        "docs/program/CYCLE24_CI_DEPENDENCY_FORWARD_159.md"
+      ],
+      "tests": {
+        "selected_source_cases": 2,
+        "selected_full_names": [
+          "reviewed composition retains the original host pending owner and future restart review boundary",
+          "independent source review: all admitted author bytes are exact and original controls remain the only writers"
+        ],
+        "all_other_collected_cases_not_run": true,
+        "raw_sha256": "12ad97b37dc79de76c98c483f86e5a6b0e2072e2757c91e8b90612392c34d9a6",
+        "raw_report": "/private/tmp/cycle24-ci-source-cases-159.json",
+        "format": "PASS",
+        "types": "PASS"
+      },
+      "original_source_preserved": true,
+      "expected_statuses": [
+        "M\tsrc/components/workflows/OperatingCenterCycleFifteen.tsx",
+        "A\tdocs/program/CYCLE24_CI_DEPENDENCY_FORWARD_159.md"
+      ],
+      "scope": "TWO_EQUIVALENT_EXISTING_HOST_EXPRESSIONS",
+      "worktree": "/private/tmp/propel-cycle24-ci-dependency-159",
+      "files": [
+        {
+          "path": "src/components/workflows/OperatingCenterCycleFifteen.tsx",
+          "blob": "98204d50463ff39313d7926bd9bc4a52af1f77a0",
+          "sha256": "6f3f01a7f4bea2311988388bd31431ebd33d8ad5c8427c5d4a3e79a2887de4de"
+        },
+        {
+          "path": "docs/program/CYCLE24_CI_DEPENDENCY_FORWARD_159.md",
+          "blob": "efcf8329f31576180a1e2f7ddc2109b17c24076e",
+          "sha256": "9c10e0454d7bfe49de4bddc9f935844e9a82c21db5bdc0d9fbd894d0383332c3"
+        }
+      ],
+      "protected128_unchanged": true,
+      "all_other_tree_entries_unchanged": true,
+      "push_acknowledged": true,
+      "git_remote_verified": true,
+      "pr_metadata_status": "EXACT_HEAD_CONFIRMED"
+    },
+    {
+      "draft_pr": 168,
+      "branch": "codex/cycle24-task-receipt-reconciliation",
+      "base": "codex/program-cycle-twenty-four-integration",
+      "before": "29e322e9b55b195f17890d7d5a4daf9f4641c7bc",
+      "after": "b35b10c07466aa193551eaa88b6164252024eceb",
+      "original_failed_run": null,
+      "state": "COMPLETE_GIT_AND_DRAFT_METADATA_VERIFIED",
+      "push_attempts": 1,
+      "allowed_paths": [
+        "src/components/workflows/OperatingCenterCycleFifteen.tsx"
+      ],
+      "tests": {
+        "selected_source_cases": 2,
+        "selected_full_names": [
+          "reviewed composition retains the original host pending owner and future restart review boundary",
+          "independent source review: all admitted author bytes are exact and original controls remain the only writers"
+        ],
+        "all_other_collected_cases_not_run": true,
+        "raw_sha256": "f9f81c1ac76463bfd55a5e1c026bb9bd675a6a195f823098e1281a23d334acd1",
+        "raw_report": "/private/tmp/cycle24-ci-source-cases-168.json",
+        "format": "PASS",
+        "types": "PASS"
+      },
+      "original_source_preserved": true,
+      "expected_statuses": [
+        "M\tsrc/components/workflows/OperatingCenterCycleFifteen.tsx"
+      ],
+      "scope": "EXACT_PUBLISHED_C23_HOST_ONLY",
+      "host_source_commit": "1d2784d4f2a250219ff2c2befa67571947ade5d9",
+      "worktree": "/private/tmp/propel-cycle24-ci-dependency-168",
+      "files": [
+        {
+          "path": "src/components/workflows/OperatingCenterCycleFifteen.tsx",
+          "blob": "048c2ed0346a0e95e4f6a2a3bc24a2ad4e9543e1",
+          "sha256": "63fd2a5c9a9eab8ad29a7a297a6c64f6d0c0c67647c1ba0f728fdf6505cfff3f"
+        }
+      ],
+      "protected128_unchanged": true,
+      "all_other_tree_entries_unchanged": true,
+      "push_acknowledged": true,
+      "git_remote_verified": true,
+      "pr_metadata_status": "EXACT_HEAD_CONFIRMED"
+    },
+    {
+      "draft_pr": 165,
+      "branch": "codex/cycle24-cost-coverage-actions",
+      "base": "codex/program-cycle-twenty-four-integration",
+      "before": "660439228b66f19bd80b80cffb7ccda127bdf699",
+      "after": "6cc3175c9f71c944e5d5a9c7ba02dc846dbcb91e",
+      "original_failed_run": null,
+      "state": "COMPLETE_GIT_AND_DRAFT_METADATA_VERIFIED",
+      "push_attempts": 1,
+      "allowed_paths": [
+        "src/components/workflows/OperatingCenterCycleFifteen.tsx"
+      ],
+      "tests": {
+        "selected_source_cases": 2,
+        "selected_full_names": [
+          "reviewed composition retains the original host pending owner and future restart review boundary",
+          "independent source review: all admitted author bytes are exact and original controls remain the only writers"
+        ],
+        "all_other_collected_cases_not_run": true,
+        "raw_sha256": "6284aad3293a17bc2511d4bb7ef06c393edec918c71eda19600e38c5290439d0",
+        "raw_report": "/private/tmp/cycle24-ci-source-cases-165.json",
+        "format": "PASS",
+        "types": "PASS"
+      },
+      "original_source_preserved": true,
+      "expected_statuses": [
+        "M\tsrc/components/workflows/OperatingCenterCycleFifteen.tsx"
+      ],
+      "scope": "EXACT_PUBLISHED_C23_HOST_ONLY",
+      "host_source_commit": "1d2784d4f2a250219ff2c2befa67571947ade5d9",
+      "worktree": "/private/tmp/propel-cycle24-ci-dependency-165",
+      "files": [
+        {
+          "path": "src/components/workflows/OperatingCenterCycleFifteen.tsx",
+          "blob": "048c2ed0346a0e95e4f6a2a3bc24a2ad4e9543e1",
+          "sha256": "63fd2a5c9a9eab8ad29a7a297a6c64f6d0c0c67647c1ba0f728fdf6505cfff3f"
+        }
+      ],
+      "protected128_unchanged": true,
+      "all_other_tree_entries_unchanged": true,
+      "push_acknowledged": true,
+      "git_remote_verified": true,
+      "pr_metadata_status": "EXACT_HEAD_CONFIRMED"
+    },
+    {
+      "draft_pr": 169,
+      "branch": "codex/cycle24-service-request-actions",
+      "base": "codex/program-cycle-twenty-four-integration",
+      "before": "621b8b586e6769fbb1bedc3e2d81cf8f73d4f018",
+      "after": "517527d3e864b38e88c4c9223c7638286fceb5c0",
+      "original_failed_run": null,
+      "state": "COMPLETE_GIT_REMOTE_VERIFIED",
+      "push_attempts": 1,
+      "allowed_paths": [
+        "src/components/workflows/OperatingCenterCycleFifteen.tsx"
+      ],
+      "tests": {
+        "selected_source_cases": 2,
+        "selected_full_names": [
+          "reviewed composition retains the original host pending owner and future restart review boundary",
+          "independent source review: all admitted author bytes are exact and original controls remain the only writers"
+        ],
+        "all_other_collected_cases_not_run": true,
+        "raw_sha256": "291c5f716120135fe6d734260b833f8d349b028ccbd2a844b646465c0eba0c95",
+        "raw_report": "/private/tmp/cycle24-ci-source-cases-169.json",
+        "format": "PASS",
+        "types": "PASS"
+      },
+      "original_source_preserved": true,
+      "expected_statuses": [
+        "M\tsrc/components/workflows/OperatingCenterCycleFifteen.tsx"
+      ],
+      "scope": "EXACT_PUBLISHED_C23_HOST_ONLY",
+      "host_source_commit": "1d2784d4f2a250219ff2c2befa67571947ade5d9",
+      "worktree": "/private/tmp/propel-cycle24-ci-dependency-169",
+      "files": [
+        {
+          "path": "src/components/workflows/OperatingCenterCycleFifteen.tsx",
+          "blob": "048c2ed0346a0e95e4f6a2a3bc24a2ad4e9543e1",
+          "sha256": "63fd2a5c9a9eab8ad29a7a297a6c64f6d0c0c67647c1ba0f728fdf6505cfff3f"
+        }
+      ],
+      "protected128_unchanged": true,
+      "all_other_tree_entries_unchanged": true,
+      "push_acknowledged": true,
+      "git_remote_verified": true,
+      "pr_metadata_status": "EXACT_HEAD_CONFIRMED"
+    },
+    {
+      "draft_pr": 167,
+      "branch": "codex/cycle24-maintenance-cancellation",
+      "base": "codex/program-cycle-twenty-four-integration",
+      "before": "8592f47858e49f1c74b30222d918c5b702307240",
+      "after": "8835f8ad1e9e01f0470ef3d166f71374cda10301",
+      "original_failed_run": null,
+      "state": "COMPLETE_GIT_AND_DRAFT_METADATA_VERIFIED",
+      "push_attempts": 1,
+      "allowed_paths": [
+        "src/components/workflows/OperatingCenterCycleFifteen.tsx"
+      ],
+      "tests": {
+        "selected_source_cases": 2,
+        "selected_full_names": [
+          "reviewed composition retains the original host pending owner and future restart review boundary",
+          "independent source review: all admitted author bytes are exact and original controls remain the only writers"
+        ],
+        "all_other_collected_cases_not_run": true,
+        "raw_sha256": "a5d35e6732ae4314d4a3b932304590e1d31721a84e73bd66e001aa049504d935",
+        "raw_report": "/private/tmp/cycle24-ci-source-cases-167.json",
+        "format": "PASS",
+        "types": "PASS"
+      },
+      "original_source_preserved": true,
+      "expected_statuses": [
+        "M\tsrc/components/workflows/OperatingCenterCycleFifteen.tsx"
+      ],
+      "scope": "EXACT_PUBLISHED_C23_HOST_ONLY",
+      "host_source_commit": "1d2784d4f2a250219ff2c2befa67571947ade5d9",
+      "worktree": "/private/tmp/propel-cycle24-ci-dependency-167",
+      "files": [
+        {
+          "path": "src/components/workflows/OperatingCenterCycleFifteen.tsx",
+          "blob": "048c2ed0346a0e95e4f6a2a3bc24a2ad4e9543e1",
+          "sha256": "63fd2a5c9a9eab8ad29a7a297a6c64f6d0c0c67647c1ba0f728fdf6505cfff3f"
+        }
+      ],
+      "protected128_unchanged": true,
+      "all_other_tree_entries_unchanged": true,
+      "push_acknowledged": true,
+      "git_remote_verified": true,
+      "pr_metadata_status": "EXACT_HEAD_CONFIRMED"
+    },
+    {
+      "draft_pr": 166,
+      "branch": "codex/cycle24-owner-action-verification",
+      "base": "codex/program-cycle-twenty-four-integration",
+      "before": "893d629d78014e324971e2b07d8b1b85ca6429ec",
+      "after": "113ea0e65776913f49f222757bc68a318a6ecc13",
+      "original_failed_run": null,
+      "state": "COMPLETE_GIT_REMOTE_VERIFIED",
+      "push_attempts": 1,
+      "allowed_paths": [
+        "src/components/workflows/OperatingCenterCycleFifteen.tsx"
+      ],
+      "tests": {
+        "selected_source_cases": 2,
+        "selected_full_names": [
+          "reviewed composition retains the original host pending owner and future restart review boundary",
+          "independent source review: all admitted author bytes are exact and original controls remain the only writers"
+        ],
+        "all_other_collected_cases_not_run": true,
+        "raw_sha256": "e7db743263545022f61a7eda0cf3acc5c3f5392b83e4a939d84abc40a5bce927",
+        "raw_report": "/private/tmp/cycle24-ci-source-cases-166.json",
+        "format": "PASS",
+        "types": "PASS"
+      },
+      "original_source_preserved": true,
+      "expected_statuses": [
+        "M\tsrc/components/workflows/OperatingCenterCycleFifteen.tsx"
+      ],
+      "scope": "EXACT_PUBLISHED_C23_HOST_ONLY",
+      "host_source_commit": "1d2784d4f2a250219ff2c2befa67571947ade5d9",
+      "worktree": "/private/tmp/propel-cycle24-ci-dependency-166",
+      "files": [
+        {
+          "path": "src/components/workflows/OperatingCenterCycleFifteen.tsx",
+          "blob": "048c2ed0346a0e95e4f6a2a3bc24a2ad4e9543e1",
+          "sha256": "63fd2a5c9a9eab8ad29a7a297a6c64f6d0c0c67647c1ba0f728fdf6505cfff3f"
+        }
+      ],
+      "protected128_unchanged": true,
+      "all_other_tree_entries_unchanged": true,
+      "push_acknowledged": true,
+      "git_remote_verified": true,
+      "pr_metadata_status": "EXACT_HEAD_CONFIRMED"
+    },
+    {
+      "draft_pr": 170,
+      "branch": "codex/cycle24-offline-source-admission",
+      "base": "codex/program-cycle-twenty-four-integration",
+      "before": "cb6d6fc723903544cbb36c2213ca1395fcbac348",
+      "after": "537d9be302e9155b7fa05af4205b445a8258a65f",
+      "original_failed_run": null,
+      "state": "COMPLETE_GIT_REMOTE_VERIFIED",
+      "push_attempts": 1,
+      "allowed_paths": [
+        "src/components/workflows/OperatingCenterCycleFifteen.tsx"
+      ],
+      "tests": {
+        "selected_source_cases": 2,
+        "selected_full_names": [
+          "reviewed composition retains the original host pending owner and future restart review boundary",
+          "independent source review: all admitted author bytes are exact and original controls remain the only writers"
+        ],
+        "all_other_collected_cases_not_run": true,
+        "raw_sha256": "a2bc14b7902268b47ea2000b4bb08519cca30621e7bce77e6e9459334bb44c57",
+        "raw_report": "/private/tmp/cycle24-ci-source-cases-170.json",
+        "format": "PASS",
+        "types": "PASS"
+      },
+      "original_source_preserved": true,
+      "expected_statuses": [
+        "M\tsrc/components/workflows/OperatingCenterCycleFifteen.tsx"
+      ],
+      "scope": "EXACT_PUBLISHED_C23_HOST_ONLY",
+      "host_source_commit": "1d2784d4f2a250219ff2c2befa67571947ade5d9",
+      "worktree": "/private/tmp/propel-cycle24-ci-dependency-170",
+      "files": [
+        {
+          "path": "src/components/workflows/OperatingCenterCycleFifteen.tsx",
+          "blob": "048c2ed0346a0e95e4f6a2a3bc24a2ad4e9543e1",
+          "sha256": "63fd2a5c9a9eab8ad29a7a297a6c64f6d0c0c67647c1ba0f728fdf6505cfff3f"
+        }
+      ],
+      "protected128_unchanged": true,
+      "all_other_tree_entries_unchanged": true,
+      "push_acknowledged": true,
+      "git_remote_verified": true,
+      "pr_metadata_status": "EXACT_HEAD_CONFIRMED"
+    }
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "observed_at": "2026-11-04T01:55:45.372846+00:00",
+  "status": "TEN_NORMAL_DEPENDENCY_FORWARDS_GIT_AND_DRAFT_METADATA_VERIFIED_AUTOMATIC_CI_PENDING",
+  "automatic_ci": "PENDING_NOT_INFERRED",
+  "selected_source_test_claim": "Two existing unique source behaviors exercised separately at applicable exact candidate trees; not new application coverage."
+}

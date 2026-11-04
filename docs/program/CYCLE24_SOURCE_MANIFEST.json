@@ -1,0 +1,688 @@
+{
+  "schema": "propel-cycle24-sources-v1",
+  "parent_commit": "7b8d8c1a6f03fa33321409aa15c46926a63e59ed",
+  "coordination_branch": "codex/program-cycle-twenty-four-integration",
+  "coordination_draft_pr": 163,
+  "runtime_commit": "7a90da23c0a701001c79b605d94d2894cd9cc5a6",
+  "runtime_files": [
+    {
+      "path": "src/components/workflows/CostCorrectionReview.tsx",
+      "sha256": "4ad7333015a97c36eef0447bceb0ba75cc6fec886d49e0229ca2c81e334a72aa",
+      "blob": "b39758d958fe7916e61fc2cce55b1c59ad5bbfc7"
+    },
+    {
+      "path": "src/components/workflows/CostCoverageActions.tsx",
+      "sha256": "9a29ffc2be63c527506829d202fef5ed6d3753a309ded5d3c10f8aa4175eeec6",
+      "blob": "d5c80c793ccfe1e73edcde7d5103965172c6f466"
+    },
+    {
+      "path": "src/components/workflows/CostCoveragePath.tsx",
+      "sha256": "c4d5f2165872b7ee344964b9c8824cc812e88320dcda644b7d1c730312419547",
+      "blob": "600241e8ac9860695e527a2d1658db627493db13"
+    },
+    {
+      "path": "src/components/workflows/CurrentOwnerPriorities.tsx",
+      "sha256": "9f431495b61382cd2e9feb066560667eeb9119a892d12b3e4b7f5e6b0ece89b9",
+      "blob": "e530a46971cf112e25ee4699ba874fdb783e20c0"
+    },
+    {
+      "path": "src/components/workflows/MaintenanceCancellationActions.tsx",
+      "sha256": "1c882a73aad9469294719f0d82b65fceb89075f4251e5f68869f6fdd2b5989be",
+      "blob": "183ffe2f6a8f2f2a8c519fe3a9b9ef2e37e2cafd"
+    },
+    {
+      "path": "src/components/workflows/MaintenancePlanCorrection.tsx",
+      "sha256": "6062e5cba6e48316b7ff1345f98a97e2c2cd1d051ff69d3cc7c49d37b120ff10",
+      "blob": "9cfc6d9ddf2c0c98b179815977bc2cffd1bb62c0"
+    },
+    {
+      "path": "src/components/workflows/MaintenanceRequirementsReview.tsx",
+      "sha256": "24cc494f5b29690f1c044b30b258868ebe9f1000b1b9c6fe07d726b282d34a2c",
+      "blob": "4e4bc1b3435c6918544ecd1b34888f24dc766e7d"
+    },
+    {
+      "path": "src/components/workflows/MaintenanceRevisionRequirements.tsx",
+      "sha256": "89530a080c079c94fca6d2480d70b5e259b72d705434f086f5edb22b60ac7549",
+      "blob": "7f61a775fd344b4c0955d80ffc8921e1cd86f5a7"
+    },
+    {
+      "path": "src/components/workflows/OperatingCenterCycleEleven.tsx",
+      "sha256": "af15fb438e82c47f050f0bcefe5da207dda5e000f5611b32f3050842463508e8",
+      "blob": "0053bccbde96fc6ca0b739034f1e82ad31f4a994"
+    },
+    {
+      "path": "src/components/workflows/OperatingCenterCycleFifteen.tsx",
+      "sha256": "63fd2a5c9a9eab8ad29a7a297a6c64f6d0c0c67647c1ba0f728fdf6505cfff3f",
+      "blob": "048c2ed0346a0e95e4f6a2a3bc24a2ad4e9543e1"
+    },
+    {
+      "path": "src/components/workflows/OperatingCenterCycleTen.tsx",
+      "sha256": "984d2d756d7413fe6dc55cae390cfd0b8b7053a62a4f8750c0a58be18042fcea",
+      "blob": "1b333b378a3e44bee42c2054ccc75df1cb8165d8"
+    },
+    {
+      "path": "src/components/workflows/OperatingCenterCycleThirteen.tsx",
+      "sha256": "599afe13a1e40e629b3c5dbd8e8ad450272f165e6d6e5981610edcb8e064c1c6",
+      "blob": "0e2c311416ccd1826762ae6bbb546020832421fb"
+    },
+    {
+      "path": "src/components/workflows/OperatingCenterCycleTwelve.tsx",
+      "sha256": "38c02b4baf23d1a692671032129d688b2fe48f6658faaa0e22903efe0208e2f1",
+      "blob": "b86f8fd8d274b0da817e337a2351a93b1caef2af"
+    },
+    {
+      "path": "src/components/workflows/OperatingCenterCycleTwentyThree.tsx",
+      "sha256": "41bd65e66ae6b23bb9a391c78dfc250e4d8febd0e2b207d7b78782a788f12b01",
+      "blob": "af79b2bdad7ddfc8fe3c8751753a5e48d7835afe"
+    },
+    {
+      "path": "src/components/workflows/OperatingCenterCycleTwentyTwo.tsx",
+      "sha256": "68b06250a4b1e5d9cae0b7f6635378cecbc096238ee8de53caf8958c2ef36701",
+      "blob": "14b6736cb43e2360aff91962ee3fd724a6b08f60"
+    },
+    {
+      "path": "src/components/workflows/OperatingCenterPreview.tsx",
+      "sha256": "8b052f84fb2dd602eb323bd4925bb13bc77736c622bf2312cc602553b261d6ce",
+      "blob": "fddd193a0d753060c9ebc392880e58310e339885"
+    },
+    {
+      "path": "src/components/workflows/OwnerActionVerification.tsx",
+      "sha256": "4270c1480c36c224bc461a5688115b4701857a0a41048b3affbf3f32110b2835",
+      "blob": "d0096c42238a50c90c6f602788c769ca9ae7169c"
+    },
+    {
+      "path": "src/components/workflows/PropertyServiceContinuity.tsx",
+      "sha256": "7ab6cdabd4184eaeb2a631ed0fb7f149a5759768515750fe7214e6e9a7c39ef7",
+      "blob": "5ae445f464489c3d38173266ba1e2473be21fc6d"
+    },
+    {
+      "path": "src/components/workflows/PublishedServiceNavigator.tsx",
+      "sha256": "85a86a3443fc3d5edeb9ee3376c0cfcfa7ee056503e6c71eed320f10db87a91d",
+      "blob": "aa8abb9a222397397bcc381d80c728f5dd275c2f"
+    },
+    {
+      "path": "src/components/workflows/RecordedCostRequirements.tsx",
+      "sha256": "7374d98abfb7751913e7c502835e608666a1644776dcf5e0c06056e9dca2b967",
+      "blob": "17e5719b00546a1fdce5bc9a5157d7d1bf53a917"
+    },
+    {
+      "path": "src/components/workflows/RecordedOwnerActions.tsx",
+      "sha256": "96b88e59bbc06b77ea6c2625d0aaaeb374d10a1f44ccd7422edf69699aa43bce",
+      "blob": "132f64b738c152dd5044b488dad842dd2ffdf42d"
+    },
+    {
+      "path": "src/components/workflows/SavedRevisionWorkbench.tsx",
+      "sha256": "c8bbfd2cff1ce9da9a4d9f5d3654fa883bef8c069d7b57f4d4659c6cdb03ef3d",
+      "blob": "ce50fad6d7cf154862231928c3e3a37897fccad7"
+    },
+    {
+      "path": "src/components/workflows/ServiceRequestActions.tsx",
+      "sha256": "f38d17fbe8575869d319c22cc717602b8ce4e7f7debdb181adeb8142b3a8a08f",
+      "blob": "700791de0803173bc97e65dfb3db4d12e0b3f9e4"
+    },
+    {
+      "path": "src/components/workflows/ServiceSourceReview.tsx",
+      "sha256": "ae745b54a1f8d27e1641d48a7f5f4215833a985be02caac4d351770ee5b6eb14",
+      "blob": "474145fa0f6dfc479d7c932ee7d41048dbe523f9"
+    },
+    {
+      "path": "src/components/workflows/TaskCorrectionReview.tsx",
+      "sha256": "6b8b07ee6dc64577411678d3230bff12ef4894a881c66d3a7eb3bcc3366c8bcb",
+      "blob": "e96e57428a46936c47965c1d643e09b403366945"
+    },
+    {
+      "path": "src/components/workflows/TaskCustodyReview.tsx",
+      "sha256": "03c2e6fd9e6584d89adfad8b9ab442e6433b878d120e8556579253a2c35f47b0",
+      "blob": "92cb037f6789cd14a936c88ea8a96b2bd48671f4"
+    },
+    {
+      "path": "src/components/workflows/TaskReceiptActions.tsx",
+      "sha256": "7b338b59125e6f70a1072d48a04cdc0612f5a1e074591c6f4039efd55df98a4e",
+      "blob": "b1c2a85251cccb46e2fe3cc20bc10f4e63e5821f"
+    },
+    {
+      "path": "src/components/workflows/TaskRevisionConsistency.tsx",
+      "sha256": "d34a97fe1c9892fa3e916a9740a546c8ba42063fbb0b6754d4056d34c8501e2b",
+      "blob": "ab78b94b02cbe3af1d523165694f693e6086b387"
+    },
+    {
+      "path": "src/components/workflows/VerifiedOwnerBriefing.tsx",
+      "sha256": "01977f9b7dd67e34b80b29a08e6050b6219f287e4a5644b4104ecf4a29ebe7ed",
+      "blob": "95ff61e1f82e1fc8e87d05712f63896500a337c8"
+    },
+    {
+      "path": "src/components/workflows/cost-correction-review.css",
+      "sha256": "71f13bc04577d63153989e555c819d1a4b7dac48b9741e3b2579a1ffa4b3b019",
+      "blob": "7e9912c103e7b5cb600162abdaf0b7f3f1e469e6"
+    },
+    {
+      "path": "src/components/workflows/cost-coverage-actions.css",
+      "sha256": "486c7a24f54ba43a35a8e232ae1104c08fa15fc8ffc0050f5ef0759fe0999a55",
+      "blob": "b565773764f176f65359f5165834dc853afc42ea"
+    },
+    {
+      "path": "src/components/workflows/cost-coverage-path.css",
+      "sha256": "6a3d9f9951587d4414073f169d96f00ae72b63bf9a0053ab7bc100843e0d1e01",
+      "blob": "6660e58c3f89507c565832cf043fc997c558b45c"
+    },
+    {
+      "path": "src/components/workflows/current-owner-priorities.css",
+      "sha256": "be23bd11d2acefb931c94e480be70581867499c9fe92edadfbd2104d2f169f17",
+      "blob": "9775bb6186edba5c79003601c67e5e3f3424986d"
+    },
+    {
+      "path": "src/components/workflows/cycle23-source-review.css",
+      "sha256": "e894f53deca48682bbf76ce7621aaaf14511bd6174beca04120ed339e19e98c2",
+      "blob": "71b3df1d8f1460f172dce0f3e37176d64181c10d"
+    },
+    {
+      "path": "src/components/workflows/maintenance-cancellation-actions.css",
+      "sha256": "137bedc6785e9a6ad3f4ecd7b9cb2f653555e5844beae83efaf7f81d7878bc21",
+      "blob": "979fbaa15271545b4ff762f3c6af9900f1e2c328"
+    },
+    {
+      "path": "src/components/workflows/maintenance-plan-correction.css",
+      "sha256": "5499892c222cae7a6230abe715f53f5f9f03d5bbeb1dca82658b5e2710837a58",
+      "blob": "9c1ba868cda8b6b974ac5e7ef75c2f0ee5a0ddd7"
+    },
+    {
+      "path": "src/components/workflows/maintenance-requirements-review.css",
+      "sha256": "8370dcf1150baa297e5b176c3fb6d67a6960c5b845727420b46481f163dfaa37",
+      "blob": "5edaffb2091d17f2d2a972fa0dcff3e4ffc57259"
+    },
+    {
+      "path": "src/components/workflows/maintenance-revision-requirements.css",
+      "sha256": "75ef9ace2ec519f786f10fcf4845c557de0cbff3c8d539187475fb3989d302fb",
+      "blob": "4ce602e27ada2711462218bcdb6998865ad369f4"
+    },
+    {
+      "path": "src/components/workflows/owner-action-verification.css",
+      "sha256": "8aade0563784d836f6e6126b52592b3e362c7e8e63ac883782ec3a1f834bc64e",
+      "blob": "0652fc4497f712ff366b4129735d88dddad0fbfb"
+    },
+    {
+      "path": "src/components/workflows/property-service-continuity.css",
+      "sha256": "31a345a4f5d10b56f08b8737b00691e72bf67f4317ea777efcfcb79be7021588",
+      "blob": "cebe52097921fa87aec9578331bcd6e90e62e4a4"
+    },
+    {
+      "path": "src/components/workflows/published-service-navigation.css",
+      "sha256": "421a1629e57456c36d39e610d6814bfa9e3f20b914f45df6ee3b471580374388",
+      "blob": "1e8977118a58e673f3280ed6528ee850c13e1458"
+    },
+    {
+      "path": "src/components/workflows/recorded-cost-requirements.css",
+      "sha256": "8369a7d02611e3ebd214a160a29ed754d374becdd6e6ea561079da1bb96a6b4e",
+      "blob": "180fa88f2191625656a47f3331a54858fdc0ac28"
+    },
+    {
+      "path": "src/components/workflows/recorded-owner-actions.css",
+      "sha256": "04646b821eb4847e2138f2bf14b413d01f1b34095bf2c9ac68cb986e91535508",
+      "blob": "2f1b6a016e9a6253894ccc6e845c99af8f356f46"
+    },
+    {
+      "path": "src/components/workflows/saved-revision-workbench.css",
+      "sha256": "5488e92c5f6e487d716da7f1667b6d6d83a4b406de5c405c834bb2f176fb9730",
+      "blob": "06065ea259f5d842d6f1d9107bedda413e1f6c4b"
+    },
+    {
+      "path": "src/components/workflows/service-request-actions.css",
+      "sha256": "6b0f563bc7028d0ab48a4df7ba33834c040acccaa034fd1af633f96bc19126eb",
+      "blob": "ce6dd58e7200441e06360ac4cb0eeacdd83c95c1"
+    },
+    {
+      "path": "src/components/workflows/service-source-review.css",
+      "sha256": "771d750938360290a582d29cb4f7d2d999aefb94ad412b939577e08584b3fa92",
+      "blob": "2070e0d6e800e6599b5ec5cfa3b083c90a6c0e07"
+    },
+    {
+      "path": "src/components/workflows/task-correction-review.css",
+      "sha256": "975aaf2d7490dbbf4d36efa57b5fbaba94363402cd63fd40d555519e44b35f93",
+      "blob": "0fce1e3f8bd0c2e8d99c992efd62e1900a986632"
+    },
+    {
+      "path": "src/components/workflows/task-custody-review.css",
+      "sha256": "fc9cdec6690c4ae16dadc7dd52dad4a2df485d184a10fcd79dd40bc6726ef1a3",
+      "blob": "c1f27f99f8163f595b00db5fe7a7b903d82f0ce0"
+    },
+    {
+      "path": "src/components/workflows/task-receipt-actions.css",
+      "sha256": "df1630a28260c1a06e68ea5489a65a055f3ad47c2751add5aefa439e805c4d06",
+      "blob": "f3e19e24974d38cc850da0803e2f881aa754c429"
+    },
+    {
+      "path": "src/components/workflows/task-revision-consistency.css",
+      "sha256": "e2ef787c181c5a9a437df2d2cdfbcd44d8ed6d8f355d7d7eb5d50603b0d234aa",
+      "blob": "a421767151577411bb2f2e38af498cad49f3ff56"
+    },
+    {
+      "path": "src/components/workflows/verified-owner-briefing.css",
+      "sha256": "7045a891ace53966cc0defdc053440e4ebe7ec62edc15ae444c86aa7a6f74f86",
+      "blob": "0bfabdfbb528f0ae6fb938007c6199eb7ed90382"
+    },
+    {
+      "path": "src/lib/workflows/correction-preview-sources.ts",
+      "sha256": "19ce8634c10bfa80a4317f1186a22c2807442a2b166bbc409a63257c27005998",
+      "blob": "c675d0c91b8f4a859ef36e647134ead01b163eb7"
+    },
+    {
+      "path": "src/lib/workflows/cost-correction-review.ts",
+      "sha256": "ce7d4fd475357a65f894132640d54627b0c8ac74ee27ff1ad4aab7e7655281d7",
+      "blob": "5065f080b2cc30e0067f338e23c7e592a7fa4e70"
+    },
+    {
+      "path": "src/lib/workflows/cost-coverage-actions.ts",
+      "sha256": "d088d2bae6f72d96bc5d07e594264e14eb6a9145bd545c4b53ef221b2e7cbdf5",
+      "blob": "1b465f0fe48b3ff6c7e0dd9991f4a862a20f505d"
+    },
+    {
+      "path": "src/lib/workflows/cost-coverage-path.ts",
+      "sha256": "f1b21bff936eb790d96da1c9c110c51e925ebb5eb7f0965d94901a16280e7bdc",
+      "blob": "63313b93173d111ffbda0a05b5f20a83a6ae161a"
+    },
+    {
+      "path": "src/lib/workflows/current-owner-priorities.ts",
+      "sha256": "14e47eac3b203bd24fc8088f88a8b649fe81ea466ce1713e2a70b2b06cf36190",
+      "blob": "e82876f89992d1e2c6f721981af712ab04de4733"
+    },
+    {
+      "path": "src/lib/workflows/maintenance-plan-correction.ts",
+      "sha256": "cd5d4ce92fa61a32302e543fdd6f21ec7405af75f1e10dd78efb87c6822e577c",
+      "blob": "1cf1fcd645803e5cede7715095dec4c92ea9242b"
+    },
+    {
+      "path": "src/lib/workflows/maintenance-requirements-review.ts",
+      "sha256": "2023e10bebf98a2e9b4eee54eda424ce715a7fa188b21eb4496e3d5d92f0cb16",
+      "blob": "e0d0a10832d647a05e037d1fd898b9277958b16f"
+    },
+    {
+      "path": "src/lib/workflows/maintenance-revision-requirements.ts",
+      "sha256": "688dc6721b1ae3c4972e52956523bede11926c2426334ad25408447d562e5816",
+      "blob": "00337e975d582ed8fa9a2e1502a0ea3807e43ba6"
+    },
+    {
+      "path": "src/lib/workflows/offline-source-admission.ts",
+      "sha256": "eb9341bf56365cd3fe354f3c863524ba5999d0de98b14b4596af9b5f49523359",
+      "blob": "b387a481ca8e318771e64626b66aa9ed8ae770a5"
+    },
+    {
+      "path": "src/lib/workflows/offline-source-protocol.ts",
+      "sha256": "c6b51bab7e73248f4b14cfc6dbbfc1ff961aa059e06a31b6ba8b0589aa0e9861",
+      "blob": "6f935a26cd978b4496d96d17d41064edc53cf70e"
+    },
+    {
+      "path": "src/lib/workflows/owner-action-verification.ts",
+      "sha256": "6302405bd1f25332ed43686cf923cbeff3e8206df548f053a22b32a472385b97",
+      "blob": "cebec96e887c494edfd8272fc2d3236dd930dbd4"
+    },
+    {
+      "path": "src/lib/workflows/plan-cancellation-review.ts",
+      "sha256": "1ee395ca0e7fd37d675a1a2def71cf53f18eaa679bbf2c3ef337ad3bf5ab7d63",
+      "blob": "e8e2d77cd4d3519b4f4eb4fc2f2f4b41481e5ca7"
+    },
+    {
+      "path": "src/lib/workflows/property-service-continuity.ts",
+      "sha256": "516b17894fc390a746f1ac0455c479e79f23ce8792dc19ad9e4afe53be810e24",
+      "blob": "b875d7347a3c451dc6c4493a67b52cd38b84d877"
+    },
+    {
+      "path": "src/lib/workflows/published-service-navigation.ts",
+      "sha256": "0c6fd950ee0a9362360af19b910c5401aef1d09fd09bf4678f412f7751c57dd9",
+      "blob": "a8dc1104c110340005b70ef3e69300931ce9fb05"
+    },
+    {
+      "path": "src/lib/workflows/recorded-cost-requirements.ts",
+      "sha256": "72b6a0b2f63e2d961f39f47fd3f903c30690cb5eec6e4196a892b75285ee9c71",
+      "blob": "ad8ee0ba15ab0a17f731eb7cde34b30ec4f537dc"
+    },
+    {
+      "path": "src/lib/workflows/recorded-owner-actions.ts",
+      "sha256": "a70e3b36da69d7490adf8d807b620d27132a64fb26831d872a0fcdc292ce36b0",
+      "blob": "832b825ef3ef4eacab6498a9079eba38c4cd5b3d"
+    },
+    {
+      "path": "src/lib/workflows/saved-revision-exercise.ts",
+      "sha256": "c41a1ffe3980a286ec72665d74a6b79523949eca475d7ec4e85618791535ad38",
+      "blob": "9e31eeee45c45bb150e7a4415b015dce7f8dea18"
+    },
+    {
+      "path": "src/lib/workflows/saved-workbench-selection.ts",
+      "sha256": "dcac4960214ef1c308a0dbf7c78674b2ced40439990bbe2f707c77f6f3e0bdf8",
+      "blob": "8a0ba24403527cc176854ef28ef8d63f7f346f97"
+    },
+    {
+      "path": "src/lib/workflows/service-request-actions.ts",
+      "sha256": "25a210bec44932daebd58d86e2861ecb4269fa7c387ebb4e284df69321882723",
+      "blob": "756b4a3612bd39443e34d2f79c772b721bae16bc"
+    },
+    {
+      "path": "src/lib/workflows/service-source-review.ts",
+      "sha256": "1d4d680285ef1a7fd72eb201ece35300fae8f428811841e73d1c13e6dc7f2630",
+      "blob": "f0b1118131ee5beaf92e29406df15e5cc5c0ee69"
+    },
+    {
+      "path": "src/lib/workflows/task-correction-review.ts",
+      "sha256": "5dfcb0a9feeeb1ffa530634f997ffb4bcde90a8a18a126e8d8af3e911e5933e8",
+      "blob": "f660a595382ad4650a977f87365c95b57f3ba949"
+    },
+    {
+      "path": "src/lib/workflows/task-custody-review.ts",
+      "sha256": "25817e74272a661b9f65bd20e732d6adc4feffe78cf74e1beb103ad8ce5d690f",
+      "blob": "80052bab82892d5c420914b8aa8390a59adef13d"
+    },
+    {
+      "path": "src/lib/workflows/task-receipt-reconciliation.ts",
+      "sha256": "0ceb39703978bbc4cf18d9fcf74551463ac91057849916e184e5436cbac2d9db",
+      "blob": "84df3ebf027b0f2edb68c6b8621070ae91b06a8b"
+    },
+    {
+      "path": "src/lib/workflows/task-revision-consistency.ts",
+      "sha256": "33561a4905012cd0641b71d0b9cd7ec1e623736e815f3e5d21e87248a110837f",
+      "blob": "10fd6ca71a7edd22aa190ab4d2b2c1b62429d8fe"
+    },
+    {
+      "path": "src/lib/workflows/verified-owner-briefing.ts",
+      "sha256": "c62d4cf776b854bcd4fd8ccd72d46ac094381a9ccf0049f4b1302fbd9fb638f6",
+      "blob": "5a289a1c18d37091fc29ccb9b096e22f5cd259c1"
+    }
+  ],
+  "packages": [
+    {
+      "module": "task-receipt-reconciliation",
+      "owner": "/root/cycle11_field_growth",
+      "branch": "codex/cycle24-task-receipt-reconciliation",
+      "original_author_commit": "29e322e9b55b195f17890d7d5a4daf9f4641c7bc",
+      "head_commit": "29e322e9b55b195f17890d7d5a4daf9f4641c7bc",
+      "draft_pr": 168,
+      "cases": 54,
+      "parent_commit": "7b8d8c1a6f03fa33321409aa15c46926a63e59ed",
+      "base_branch": "codex/program-cycle-twenty-four-integration",
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE24_TASK_RECEIPT_RECONCILIATION.md",
+          "sha256": "2f9f154dbdbe70f0843bb139e3566b6c1d045d2740440cea805b2a8d025ac910",
+          "blob": "e0ac21fe353f847704071595270ec15a4f5a9e8a"
+        },
+        {
+          "path": "src/components/workflows/TaskReceiptActions.tsx",
+          "sha256": "7b338b59125e6f70a1072d48a04cdc0612f5a1e074591c6f4039efd55df98a4e",
+          "blob": "b1c2a85251cccb46e2fe3cc20bc10f4e63e5821f"
+        },
+        {
+          "path": "src/components/workflows/task-receipt-actions.css",
+          "sha256": "df1630a28260c1a06e68ea5489a65a055f3ad47c2751add5aefa439e805c4d06",
+          "blob": "f3e19e24974d38cc850da0803e2f881aa754c429"
+        },
+        {
+          "path": "src/lib/workflows/saved-revision-exercise.ts",
+          "sha256": "c41a1ffe3980a286ec72665d74a6b79523949eca475d7ec4e85618791535ad38",
+          "blob": "9e31eeee45c45bb150e7a4415b015dce7f8dea18"
+        },
+        {
+          "path": "src/lib/workflows/task-receipt-reconciliation.ts",
+          "sha256": "0ceb39703978bbc4cf18d9fcf74551463ac91057849916e184e5436cbac2d9db",
+          "blob": "84df3ebf027b0f2edb68c6b8621070ae91b06a8b"
+        },
+        {
+          "path": "tests/cycle24-task-receipt-reconciliation.test.ts",
+          "sha256": "44d675471a67d68564ac8cf4986a29eda3f0a021fa11a71fcb02fbbcc2bd9b90",
+          "blob": "75823aa8452446443ca69bb058993a351b3ba99c"
+        }
+      ]
+    },
+    {
+      "module": "cost-coverage-actions",
+      "owner": "/root/cycle24_finance_intelligence",
+      "branch": "codex/cycle24-cost-coverage-actions",
+      "original_author_commit": "660439228b66f19bd80b80cffb7ccda127bdf699",
+      "head_commit": "660439228b66f19bd80b80cffb7ccda127bdf699",
+      "draft_pr": 165,
+      "cases": 26,
+      "parent_commit": "7b8d8c1a6f03fa33321409aa15c46926a63e59ed",
+      "base_branch": "codex/program-cycle-twenty-four-integration",
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE24_COST_COVERAGE_ACTIONS.md",
+          "sha256": "a5008fd6c83ce95d2b62c96ad07ac92316973437cf69a6f8f9f4e2f53b362d30",
+          "blob": "e22ea2bb94ce57c69f937b07febf81245732835b"
+        },
+        {
+          "path": "src/components/workflows/CostCoverageActions.tsx",
+          "sha256": "9a29ffc2be63c527506829d202fef5ed6d3753a309ded5d3c10f8aa4175eeec6",
+          "blob": "d5c80c793ccfe1e73edcde7d5103965172c6f466"
+        },
+        {
+          "path": "src/components/workflows/cost-coverage-actions.css",
+          "sha256": "486c7a24f54ba43a35a8e232ae1104c08fa15fc8ffc0050f5ef0759fe0999a55",
+          "blob": "b565773764f176f65359f5165834dc853afc42ea"
+        },
+        {
+          "path": "src/lib/workflows/cost-coverage-actions.ts",
+          "sha256": "d088d2bae6f72d96bc5d07e594264e14eb6a9145bd545c4b53ef221b2e7cbdf5",
+          "blob": "1b465f0fe48b3ff6c7e0dd9991f4a862a20f505d"
+        },
+        {
+          "path": "tests/cycle24-cost-coverage-actions.test.ts",
+          "sha256": "af1cd4619104ddb5ca482e281ab663239156b95acfb258b741dcc747448008f2",
+          "blob": "1272a1646f1e167dd9762ccc69f9e3768b6a6c42"
+        }
+      ]
+    },
+    {
+      "module": "service-request-actions",
+      "owner": "/root/cycle22_customer",
+      "branch": "codex/cycle24-service-request-actions",
+      "original_author_commit": "26ab387632dcb96cc7f94b3ea8bde69a90eef3bf",
+      "head_commit": "621b8b586e6769fbb1bedc3e2d81cf8f73d4f018",
+      "draft_pr": 169,
+      "cases": 58,
+      "dependency": {
+        "commit": "29e322e9b55b195f17890d7d5a4daf9f4641c7bc",
+        "path": "src/lib/workflows/saved-revision-exercise.ts"
+      },
+      "parent_commit": "7b8d8c1a6f03fa33321409aa15c46926a63e59ed",
+      "base_branch": "codex/program-cycle-twenty-four-integration",
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE24_SERVICE_REQUEST_ACTIONS.md",
+          "sha256": "1ff71f81c32293525a52031514416e979af143ac3947d2b7a54989bc708c8eaf",
+          "blob": "079d4b17694b3cf9e43885196b5d01ff66a4c78e"
+        },
+        {
+          "path": "src/components/workflows/ServiceRequestActions.tsx",
+          "sha256": "f38d17fbe8575869d319c22cc717602b8ce4e7f7debdb181adeb8142b3a8a08f",
+          "blob": "700791de0803173bc97e65dfb3db4d12e0b3f9e4"
+        },
+        {
+          "path": "src/components/workflows/service-request-actions.css",
+          "sha256": "6b0f563bc7028d0ab48a4df7ba33834c040acccaa034fd1af633f96bc19126eb",
+          "blob": "ce6dd58e7200441e06360ac4cb0eeacdd83c95c1"
+        },
+        {
+          "path": "src/lib/workflows/service-request-actions.ts",
+          "sha256": "25a210bec44932daebd58d86e2861ecb4269fa7c387ebb4e284df69321882723",
+          "blob": "756b4a3612bd39443e34d2f79c772b721bae16bc"
+        },
+        {
+          "path": "tests/cycle24-service-request-actions.test.ts",
+          "sha256": "bea28525ec7de419e52b24d829460eca93fac47e803f74be72bcc07d5e98804a",
+          "blob": "e5260b77b301620b9395a6d76a16e51e8efef777"
+        }
+      ]
+    },
+    {
+      "module": "plan-cancellation-review",
+      "owner": "/root/cycle11_field_growth",
+      "branch": "codex/cycle24-maintenance-cancellation",
+      "original_author_commit": "d2eeeec8f2ca070a6ccf350273fa1cf7475905ca",
+      "head_commit": "8592f47858e49f1c74b30222d918c5b702307240",
+      "draft_pr": 167,
+      "cases": 43,
+      "corrections": [
+        {
+          "commit": "ae26767f81fdc775d91d46c4b98daf4484f4c319",
+          "modified": [
+            "src/lib/workflows/plan-cancellation-review.ts",
+            "tests/cycle24-plan-cancellation-review.test.ts"
+          ]
+        },
+        {
+          "commit": "8592f47858e49f1c74b30222d918c5b702307240",
+          "modified": [
+            "src/lib/workflows/plan-cancellation-review.ts",
+            "tests/cycle24-plan-cancellation-review.test.ts"
+          ]
+        }
+      ],
+      "parent_commit": "7b8d8c1a6f03fa33321409aa15c46926a63e59ed",
+      "base_branch": "codex/program-cycle-twenty-four-integration",
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE24_PLAN_CANCELLATION_REVIEW.md",
+          "sha256": "af0712766cc48ff1841db2d674f9c8f09580a925d0c3ad1b8c4f0e5c01b16d55",
+          "blob": "6f8f8cbc20c040fc41d9ba2e8f6c610a8699e5b7"
+        },
+        {
+          "path": "src/components/workflows/MaintenanceCancellationActions.tsx",
+          "sha256": "1c882a73aad9469294719f0d82b65fceb89075f4251e5f68869f6fdd2b5989be",
+          "blob": "183ffe2f6a8f2f2a8c519fe3a9b9ef2e37e2cafd"
+        },
+        {
+          "path": "src/components/workflows/maintenance-cancellation-actions.css",
+          "sha256": "137bedc6785e9a6ad3f4ecd7b9cb2f653555e5844beae83efaf7f81d7878bc21",
+          "blob": "979fbaa15271545b4ff762f3c6af9900f1e2c328"
+        },
+        {
+          "path": "src/lib/workflows/plan-cancellation-review.ts",
+          "sha256": "1ee395ca0e7fd37d675a1a2def71cf53f18eaa679bbf2c3ef337ad3bf5ab7d63",
+          "blob": "e8e2d77cd4d3519b4f4eb4fc2f2f4b41481e5ca7"
+        },
+        {
+          "path": "tests/cycle24-plan-cancellation-review.test.ts",
+          "sha256": "36ad0dda1aa8a5cbba21d347d13acc405bee5047081228fdbf56e5f73ae4d36c",
+          "blob": "fe049a8f436ddc428a1b2de54cf5e14108396231"
+        }
+      ]
+    },
+    {
+      "module": "owner-action-verification",
+      "owner": "/root/cycle24_finance_intelligence",
+      "branch": "codex/cycle24-owner-action-verification",
+      "original_author_commit": "893d629d78014e324971e2b07d8b1b85ca6429ec",
+      "head_commit": "893d629d78014e324971e2b07d8b1b85ca6429ec",
+      "draft_pr": 166,
+      "cases": 27,
+      "parent_commit": "7b8d8c1a6f03fa33321409aa15c46926a63e59ed",
+      "base_branch": "codex/program-cycle-twenty-four-integration",
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE24_OWNER_ACTION_VERIFICATION.md",
+          "sha256": "305bdd3843f600f3522b08444d13dae93eaba86c975fea7551f572c778c5b479",
+          "blob": "f6e10c44824615ee65fde88e290353e8da785f08"
+        },
+        {
+          "path": "src/components/workflows/OwnerActionVerification.tsx",
+          "sha256": "4270c1480c36c224bc461a5688115b4701857a0a41048b3affbf3f32110b2835",
+          "blob": "d0096c42238a50c90c6f602788c769ca9ae7169c"
+        },
+        {
+          "path": "src/components/workflows/owner-action-verification.css",
+          "sha256": "8aade0563784d836f6e6126b52592b3e362c7e8e63ac883782ec3a1f834bc64e",
+          "blob": "0652fc4497f712ff366b4129735d88dddad0fbfb"
+        },
+        {
+          "path": "src/lib/workflows/owner-action-verification.ts",
+          "sha256": "6302405bd1f25332ed43686cf923cbeff3e8206df548f053a22b32a472385b97",
+          "blob": "cebec96e887c494edfd8272fc2d3236dd930dbd4"
+        },
+        {
+          "path": "tests/cycle24-owner-action-verification.test.ts",
+          "sha256": "8b27a6b62958466284baa35ab48266e6b8ab6f5c75c60b770d131e64aec8e644",
+          "blob": "760a9ecec2d1754cfd9bd7611fc57291d32985b2"
+        }
+      ]
+    },
+    {
+      "module": "offline-source-admission",
+      "owner": "/root/cycle22_customer",
+      "branch": "codex/cycle24-offline-source-admission",
+      "original_author_commit": "cb6d6fc723903544cbb36c2213ca1395fcbac348",
+      "head_commit": "cb6d6fc723903544cbb36c2213ca1395fcbac348",
+      "draft_pr": 170,
+      "cases": 40,
+      "parent_commit": "7b8d8c1a6f03fa33321409aa15c46926a63e59ed",
+      "base_branch": "codex/program-cycle-twenty-four-integration",
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "owned_files": [
+        {
+          "path": "docs/program/CYCLE24_OFFLINE_PROTOCOL.json",
+          "sha256": "b1e80f18de96495b1a988094a4f0ce3f7af825f4a6575f6de53726e85dd5bbc1",
+          "blob": "a1a2c89a5b2ce12f914746223c8484876a625660"
+        },
+        {
+          "path": "docs/program/CYCLE24_OFFLINE_SOURCE_ADMISSION.md",
+          "sha256": "3414d0506e221e0bbd260a325c073a899f4865d5afef99fe33b7bbbb9049b9d6",
+          "blob": "f075f66f2e3f2eb63b88b8f6cfd31f429f691e99"
+        },
+        {
+          "path": "src/lib/workflows/offline-source-admission.ts",
+          "sha256": "eb9341bf56365cd3fe354f3c863524ba5999d0de98b14b4596af9b5f49523359",
+          "blob": "b387a481ca8e318771e64626b66aa9ed8ae770a5"
+        },
+        {
+          "path": "src/lib/workflows/offline-source-protocol.ts",
+          "sha256": "c6b51bab7e73248f4b14cfc6dbbfc1ff961aa059e06a31b6ba8b0589aa0e9861",
+          "blob": "6f935a26cd978b4496d96d17d41064edc53cf70e"
+        },
+        {
+          "path": "tests/cycle24-offline-source-admission.test.ts",
+          "sha256": "6fa56605255e7f8adde7302949fbdaac22bfbc081d78397197528ef7fdcfdda6",
+          "blob": "e8377c01a441b2a08ff13f45f5e5e5cddb745647"
+        }
+      ]
+    }
+  ],
+  "independent_status": "CLEAR_LOCAL_SYNTHETIC_ONLY",
+  "independent_review_commit": "712e07cb3be8988b092aba9fad80d32b4662435b",
+  "independent_files": [
+    {
+      "path": "docs/program/CYCLE24_INDEPENDENT_REVIEW.json",
+      "sha256": "2ac483ef8c210f798e6f50b99f12ee79739f085ca658e84dc2bf4dc76f4acd39",
+      "blob": "ffbcf7e2d0cfe538f7ddd16ad8dfe938cdd797f3"
+    },
+    {
+      "path": "docs/program/CYCLE24_INDEPENDENT_REVIEW.md",
+      "sha256": "aaf77f2664ffb36c93c827269b4a892a01a6f613978c31bb13b9f15cab50b7aa",
+      "blob": "ff912a6e4baaa3668741f3ae88267d4b3817dae9"
+    },
+    {
+      "path": "tests/cycle24-independent-integration-review.test.ts",
+      "sha256": "09b5042be1fee47b562ed52046c900583acaaecff6241b2aa8491674bd17f083",
+      "blob": "6e81328902f08010bf6c3f8c881e181ef0582a86"
+    },
+    {
+      "path": "tests/program/cycle24-callback-lease.spec.ts",
+      "sha256": "87cd79203246df8dc980a4352bc014054ca2f027d2b5054882c74c441770dd4a",
+      "blob": "4684b435e83e49e8a96cc0ea13871208800cae34"
+    },
+    {
+      "path": "tests/program/playwright.cycle24-callback.config.ts",
+      "sha256": "ee56e25443d918ebbc0e508eccded4537f813797fc69775f42fc2b52b7ce2a21",
+      "blob": "714470af773ba94df04ae67be4dd4133e48b5486"
+    }
+  ],
+  "independent_cases": 54,
+  "operational_ready": false,
+  "restore_adapter": false,
+  "architecture_implementation_authorized": false,
+  "customer_request_native_cas": false,
+  "customer_request_durable_receipt": false,
+  "maintenance_plan_cancellation": "UNSUPPORTED",
+  "physical_recovery": "UNVERIFIED_NOT_RUN",
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}
