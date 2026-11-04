@@ -1,0 +1,56 @@
+name: Cycle 28 retained C27 full browser coverage
+on:
+  push:
+    branches: ['codex/cycle28-ci-reliability']
+permissions:
+  contents: read
+concurrency:
+  group: cycle28-parent-browser-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-browser-shard:
+    name: Original browser stage (${{ matrix.shard }}/4)
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4]
+    steps:
+      # Workflow source is separate; application, config, tests and lockfile are
+      # exactly the cancelled Foundation target. This cannot make it a PASS.
+      - uses: actions/checkout@v4
+        with:
+          ref: 5f74b8ff5385560330cb94717c17338ed0c10f44
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Record exact original source
+        run: |
+          test "$(git rev-parse HEAD)" = 5f74b8ff5385560330cb94717c17338ed0c10f44
+          git diff --exit-code
+          mkdir -p artifacts/foundation-browser
+          node --input-type=module -e 'import {writeFileSync,readFileSync} from "node:fs";import {createHash} from "node:crypto";writeFileSync("artifacts/foundation-browser/source.json",JSON.stringify({source_commit:"5f74b8ff5385560330cb94717c17338ed0c10f44",config_sha256:createHash("sha256").update(readFileSync("playwright.config.ts")).digest("hex"),shard:${{ matrix.shard }},shards:4,scope:"ORIGINAL_BROWSER_ONLY_NOT_FOUNDATION_PASS",release:"NOT_READY_NOT_AUTHORIZED"},null,2));'
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Retain complete original test inventory
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_NAME: artifacts/foundation-browser/full-list.json
+        run: npx playwright test --list --workers=2 --reporter=json
+      - name: Execute one non-overlapping original shard
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_NAME: artifacts/foundation-browser/results.json
+        run: npm run test:browser -- --shard=${{ matrix.shard }}/4 --workers=2 --retries=0 --reporter=json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle28-c27-original-browser-${{ matrix.shard }}
+          path: |
+            artifacts/foundation-browser/
+            artifacts/phase3/
+            artifacts/release/
+            artifacts/property/
+            test-results/
+          retention-days: 7
