@@ -1,0 +1,58 @@
+.task-receipt-actions {
+  padding: 1rem;
+  border: 1px solid #d8ddd5;
+  border-radius: 1rem;
+  background: #fffdf8;
+  color: #253a30;
+  overflow-wrap: anywhere;
+}
+.task-receipt-actions h3 {
+  margin: 0 0 0.65rem;
+  color: var(--journey-primary, #254c3b);
+}
+.task-receipt-actions p {
+  line-height: 1.55;
+}
+.task-receipt-actions button {
+  min-height: 44px;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--journey-primary, #254c3b);
+  border-radius: 0.6rem;
+  background: var(--journey-primary, #254c3b);
+  color: white;
+  font: inherit;
+  cursor: pointer;
+}
+.task-receipt-actions button:focus-visible {
+  outline: 3px solid var(--journey-accent, #b48b46);
+  outline-offset: 3px;
+}
+.task-receipt-actions button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+.task-receipt-actions dl {
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.55fr) minmax(0, 1fr);
+  gap: 0.6rem 1rem;
+}
+.task-receipt-actions dt {
+  color: #526159;
+  font-weight: 600;
+}
+.task-receipt-actions dd {
+  margin: 0;
+  min-width: 0;
+}
+@media (max-width: 760px) {
+  .task-receipt-actions dl {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+  .task-receipt-actions dd {
+    margin-bottom: 0.65rem;
+  }
+  .task-receipt-actions button {
+    width: 100%;
+  }
+}
