@@ -12,6 +12,7 @@ import {
   syncSourceReference,
   reviewSyncAdmission,
   assertSyncAdmissionCurrentNow,
+  type SyncAdmissionReview,
 } from './sync-admission-review';
 import { parseOfflineSourceProtocol } from './offline-source-protocol';
 export { parseOfflineSourceProtocol } from './offline-source-protocol';
@@ -116,4 +117,88 @@ export async function reviewOfflineSourceAdmission(
   stable();
   assertSyncAdmissionCurrentNow(original);
   return original;
+}
+
+/** Recheck an EXISTING original comparison against the exact native visit/plan.
+ * This function is stateless: it cannot claim a reference, prepare a handoff,
+ * replace an UNKNOWN comparison or restore/import/synchronize any business state.
+ * Its answer is a point-in-time read, never a durable admission receipt. */
+export async function reconcileOfflineSourceAdmission(
+  comparison: SyncAdmissionReview,
+  requirements: AdvancedRequirements,
+  experiment: OperationsExperimentReview,
+  input: unknown,
+  gate: JourneyAdmission = { enabled: false, confirmed: false },
+) {
+  const unknown = {
+    status: 'UNKNOWN' as const,
+    replay: 'FORBIDDEN' as const,
+    replacement: null,
+    operational_ready: false as const,
+    durable_receipt: false as const,
+  };
+  try {
+    admit(gate); // No external getters or original handles before admission.
+    assertSyncAdmissionCurrentNow(comparison);
+    assertAdvancedRequirementsCurrentNow(requirements);
+    const parsed = parseOfflineSourceProtocol(input),
+      signature = JSON.stringify(parsed);
+    const check = () => {
+      admit(gate);
+      // The original owners keep any prior UNKNOWN state; no claim is replaced.
+      assertSyncAdmissionCurrentNow(comparison);
+      assertAdvancedRequirementsCurrentNow(requirements);
+      const expected = syncSourceReference(requirements),
+        capture = experiment.offline_capture.source;
+      if (
+        requirements.kind !== 'offline' ||
+        comparison.kind !== 'offline' ||
+        !comparison.exact_reference ||
+        comparison.reference_status !== 'EXACT_REFERENCE_REVIEW_ONLY' ||
+        comparison.requirements_sha256 !== requirements.integrity.sha256 ||
+        comparison.external_reference !== parsed.external_reference ||
+        JSON.stringify(parseOfflineSourceProtocol(input)) !== signature ||
+        Object.entries(expected).some(
+          ([key, value]) =>
+            parsed.source[key as keyof typeof expected] !== value ||
+            comparison.source[key as keyof typeof expected] !== value,
+        ) ||
+        expected.organization_id !== capture.organization_id ||
+        expected.customer_id !== capture.customer_id ||
+        expected.location_id !== capture.property_id ||
+        expected.job_id !== capture.job_id ||
+        expected.estimate_id !== capture.estimate_id ||
+        expected.issued_version_id !== capture.issued_version_id ||
+        parsed.visit.visit_id !== capture.visit_id ||
+        parsed.visit.visit_revision !== capture.visit_revision ||
+        parsed.visit.plan_id !== capture.plan_id ||
+        parsed.visit.plan_revision !== capture.plan_revision
+      )
+        throw Error(
+          'Exact original offline comparison and native source required',
+        );
+    };
+    // Establish that the capture is original before reading its own data.
+    if (
+      (await reconcileOperationsExperiment(experiment)).state !==
+      'CURRENT_REVIEW_ONLY'
+    )
+      return unknown;
+    check();
+    // The existing operations owner performs its own native current-source read.
+    // Recheck all eight plus four fields and the live protocol after this await.
+    if (
+      (await reconcileOperationsExperiment(experiment)).state !==
+      'CURRENT_REVIEW_ONLY'
+    )
+      return unknown;
+    check();
+    return {
+      ...unknown,
+      status: 'CURRENT_EXACT_READ_ONLY' as const,
+      scope: 'ORIGINAL_COMPARISON_AND_NATIVE_VISIT_PLAN_AT_THIS_READ' as const,
+    };
+  } catch {
+    return unknown;
+  }
 }
