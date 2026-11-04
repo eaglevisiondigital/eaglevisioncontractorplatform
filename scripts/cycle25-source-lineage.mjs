@@ -294,16 +294,15 @@ export function admitCycle25Source(path, current, original, supplied = {}) {
     !Buffer.from(original).equals(Buffer.from(ports.git(cycle25Parent, path)))
   )
     throw Error('Original immutable Cycle24 bytes must match exact parent');
-  if (
-    !Buffer.from(current).equals(
-      Buffer.from(
-        ports.git(spec.nativeCorrection?.commit ?? spec.commit, path),
-      ),
-    )
-  )
-    throw Error('Current source differs from exact published successor');
+  const endpoint = Buffer.from(
+    ports.git(spec.nativeCorrection?.commit ?? spec.commit, path),
+  );
+  const forward = Buffer.from(current).equals(endpoint)
+    ? null
+    : admitCycle26Forward(path, current, endpoint, ports);
   return {
     ...result,
+    ...(forward ? { cycle26_forward: forward } : {}),
     path,
     authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
   };
@@ -357,6 +356,193 @@ export function inspectCycle25Sources({
       module: spec.module,
       commit: spec.commit,
       state: forward ? 'EXACT_SUCCESSOR_PRESENT' : 'BASELINE_UNCHANGED',
+    });
+  }
+  return {
+    packages: rows,
+    complete_combined:
+      rows.length === 6 &&
+      rows.every((r) => r.state === 'EXACT_SUCCESSOR_PRESENT'),
+    business_authority: false,
+    restore_adapter: false,
+  };
+}
+
+// Six finite Cycle26 corrections to the existing owners. These pins identify
+// reviewed Git source only, never a restart journal or business-state authority.
+export const cycle26Parent = 'af95671f70bae6585b39e299ba00ca201f8e6512';
+export const cycle26Authors = Object.freeze(
+  [
+    [
+      'task-reconciliation',
+      '/root/cycle25_field_growth_resume',
+      'codex/cycle26-task-reconciliation',
+      'c897c51dc77fe7c29307ee74bc4cf6d729099784',
+      22,
+      [
+        'src/lib/workflows/task-receipt-reconciliation.ts',
+        'src/components/workflows/TaskReceiptActions.tsx',
+      ],
+    ],
+    [
+      'financial-coverage',
+      '/root/cycle25_finance_intelligence_resume',
+      'codex/cycle26-financial-coverage',
+      '6031e03eff0dfe31c1b8a8cfea4dc5bd92321c51',
+      14,
+      [
+        'src/lib/workflows/cost-coverage-actions.ts',
+        'src/components/workflows/CostCoverageActions.tsx',
+      ],
+    ],
+    [
+      'service-continuity',
+      '/root/cycle26_customer_offline',
+      'codex/cycle26-service-continuity',
+      'e316aca99b77084dfde36ed7253a5a20f1712874',
+      15,
+      [
+        'src/lib/workflows/service-request-actions.ts',
+        'src/components/workflows/ServiceRequestActions.tsx',
+      ],
+    ],
+    [
+      'maintenance-revalidation',
+      '/root/cycle25_field_growth_resume',
+      'codex/cycle26-maintenance-revalidation',
+      '4259fc1fb7aef9edb2c8beb0cfac5af0c185ec01',
+      27,
+      [
+        'src/lib/workflows/plan-cancellation-review.ts',
+        'src/components/workflows/MaintenanceCancellationActions.tsx',
+      ],
+    ],
+    [
+      'owner-source-navigation',
+      '/root/cycle25_finance_intelligence_resume',
+      'codex/cycle26-owner-source-navigation',
+      'd534ce82281096c58273c5cf908456f46f610ecf',
+      12,
+      [
+        'src/lib/workflows/owner-action-verification.ts',
+        'src/components/workflows/OwnerActionVerification.tsx',
+      ],
+    ],
+    [
+      'offline-ambiguity',
+      '/root/cycle26_customer_offline',
+      'codex/cycle26-offline-ambiguity',
+      'c403f16e55a7154eeeae772edf70b0cdf7a6bdef',
+      23,
+      ['src/lib/workflows/offline-source-admission.ts'],
+    ],
+  ].map(([module, owner, branch, commit, cases, paths]) =>
+    Object.freeze({
+      module,
+      owner,
+      branch,
+      commit,
+      cases,
+      permitted: Object.freeze([...paths]),
+      modified: Object.freeze([...paths]),
+      added: Object.freeze([
+        `docs/program/CYCLE26_${module.toUpperCase().replaceAll('-', '_')}.md`,
+        `tests/cycle26-${module}.test.ts`,
+      ]),
+    }),
+  ),
+);
+
+export function validateCycle26ForwardSpec(spec, ports = cycle25SourcePorts) {
+  if (
+    !spec ||
+    !/^[a-f0-9]{40}$/.test(spec.commit ?? '') ||
+    spec.commit === '0'.repeat(40) ||
+    ports.type(spec.commit) !== 'commit' ||
+    ports.parent(spec.commit) !== cycle26Parent
+  )
+    throw Error('Exact single-parent Cycle26 source commit required');
+  if (
+    !Array.isArray(spec.modified) ||
+    !spec.modified.length ||
+    new Set(spec.modified).size !== spec.modified.length ||
+    spec.modified.some((p) => !spec.permitted.includes(p))
+  )
+    throw Error('Only explicitly owned Cycle26 native paths may change');
+  const added = [
+    `docs/program/CYCLE26_${spec.module.toUpperCase().replaceAll('-', '_')}.md`,
+    `tests/cycle26-${spec.module}.test.ts`,
+  ];
+  if (JSON.stringify([...spec.added].sort()) !== JSON.stringify(added.sort()))
+    throw Error('Only exact Cycle26 new test and document allowed');
+  const expected = [
+    ...spec.modified.map((p) => `M\t${p}`),
+    ...spec.added.map((p) => `A\t${p}`),
+  ]
+    .sort()
+    .join('\n');
+  if (ports.delta(spec.commit) !== expected)
+    throw Error('Exact bounded Cycle26 delta required');
+  for (const p of [...spec.modified, ...spec.added])
+    if (ports.mode(spec.commit, p) !== '100644')
+      throw Error('Regular non-executable Cycle26 source required');
+  return { source_commit: spec.commit, module: spec.module, owner: spec.owner };
+}
+
+function admitCycle26Forward(path, current, originalCycle25, ports) {
+  const owners = cycle26Authors.filter((s) => s.modified.includes(path));
+  if (owners.length !== 1)
+    throw Error('No finite Cycle26 owner for replacement');
+  const spec = owners[0],
+    result = validateCycle26ForwardSpec(spec, ports);
+  if (
+    !Buffer.from(ports.git(cycle26Parent, path)).equals(
+      Buffer.from(originalCycle25),
+    )
+  )
+    throw Error('Cycle26 exact parent must retain original Cycle25 source');
+  if (!Buffer.from(current).equals(Buffer.from(ports.git(spec.commit, path))))
+    throw Error('Current source differs from fixed Cycle26 author');
+  return result;
+}
+
+export function inspectCycle26Sources({
+  requireCombined = false,
+  ...supplied
+} = {}) {
+  const ports = { ...cycle25SourcePorts, ...supplied },
+    rows = [],
+    owned = new Set();
+  for (const spec of cycle26Authors) {
+    for (const path of spec.permitted) {
+      if (owned.has(path)) throw Error('Overlapping Cycle26 source ownership');
+      owned.add(path);
+    }
+    let count = 0;
+    for (const path of spec.modified) {
+      const current = Buffer.from(ports.read(path)),
+        base = Buffer.from(ports.git(cycle26Parent, path));
+      if (!current.equals(base)) {
+        admitCycle26Forward(path, current, base, ports);
+        count++;
+      }
+    }
+    if (count && count !== spec.modified.length)
+      throw Error('Partial Cycle26 package forbidden');
+    if (requireCombined && !count)
+      throw Error('Combined Cycle26 package absent');
+    if (count)
+      for (const path of spec.added)
+        if (
+          !Buffer.from(ports.read(path)).equals(
+            Buffer.from(ports.git(spec.commit, path)),
+          )
+        )
+          throw Error('Exact Cycle26 author test/document required');
+    rows.push({
+      module: spec.module,
+      commit: spec.commit,
+      state: count ? 'EXACT_SUCCESSOR_PRESENT' : 'BASELINE_UNCHANGED',
     });
   }
   return {
