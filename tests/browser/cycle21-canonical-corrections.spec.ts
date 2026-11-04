@@ -1,5 +1,5 @@
 import {
-  test,
+  test as baseTest,
   expect,
   type Locator,
   type Page,
@@ -11,6 +11,32 @@ import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
 import { sampleCompanies } from '../../src/domain/platform';
+// Foundation already owns DEV4206 beside production4173. Dedicated configs
+// retain their exact existing ports; no case is skipped and no gate is opened.
+const test = baseTest.extend({
+  baseURL: async ({ baseURL }, use, info) => {
+    const production =
+      info.title === 'production keeps canonical correction workflows closed';
+    await use(
+      !production && baseURL === 'http://127.0.0.1:4173'
+        ? 'http://127.0.0.1:4206'
+        : baseURL,
+    );
+  },
+});
+function exactConfiguredOrigin(baseURL: string | undefined) {
+  if (
+    !baseURL ||
+    ![
+      'http://127.0.0.1:4173',
+      'http://127.0.0.1:4206',
+      'http://127.0.0.1:4421',
+      'http://127.0.0.1:4431',
+    ].includes(baseURL)
+  )
+    throw Error('Exact existing loopback test origin required');
+  return baseURL;
+}
 const artifacts = resolve(
   process.env.CYCLE21_ARTIFACT_DIR ?? 'artifacts/cycle21',
 );
@@ -79,11 +105,16 @@ async function selectJob(root: Locator, exactJob?: string) {
   await expect(root.locator('.srw-context')).toContainText(job);
   return job;
 }
-async function setup(page: Page, company: (typeof sampleCompanies)[number]) {
+async function setup(
+  page: Page,
+  company: (typeof sampleCompanies)[number],
+  baseURL: string | undefined,
+) {
+  const origin = exactConfiguredOrigin(baseURL);
   const outside: string[] = [];
   page.on('request', (request) => {
     if (
-      !request.url().startsWith('http://127.0.0.1:4421') &&
+      new URL(request.url()).origin !== origin &&
       !request.url().startsWith('data:') &&
       !request.url().startsWith('blob:')
     )
@@ -250,8 +281,9 @@ async function openCustomer(root: Locator) {
 for (const company of sampleCompanies) {
   test(`canonical task cost plan corrections and exact history navigation / ${company.slug}`, async ({
     page,
+    baseURL,
   }, info) => {
-    const { root, job, outside } = await setup(page, company);
+    const { root, job, outside } = await setup(page, company, baseURL);
     const task = root.getByRole('region', {
       name: 'Append exact task correction',
       exact: true,
@@ -513,8 +545,9 @@ for (const company of sampleCompanies) {
   });
   test(`saved plan staleness and explicit published version continuity / ${company.slug}`, async ({
     page,
+    baseURL,
   }, info) => {
-    const { root, job, outside } = await setup(page, company),
+    const { root, job, outside } = await setup(page, company, baseURL),
       { customer, report } = await openCustomer(root);
     const original = await customer
       .getByRole('region', {
@@ -636,8 +669,9 @@ for (const company of sampleCompanies) {
   });
   test(`withdrawn pending review cannot restore old correction controls / ${company.slug}`, async ({
     page,
+    baseURL,
   }, info) => {
-    const { root, job, outside } = await setup(page, company);
+    const { root, job, outside } = await setup(page, company, baseURL);
     await tab(root, 'Time and materials');
     const cost = root.getByRole('region', {
       name: 'Cost correction review',
@@ -779,13 +813,12 @@ for (const company of sampleCompanies) {
 }
 test('production keeps canonical correction workflows closed', async ({
   page,
+  baseURL,
 }) => {
+  const origin = exactConfiguredOrigin(baseURL);
   const outside: string[] = [];
   page.on('request', (r) => {
-    if (
-      !r.url().startsWith('http://127.0.0.1:4431') &&
-      !r.url().startsWith('data:')
-    )
+    if (new URL(r.url()).origin !== origin && !r.url().startsWith('data:'))
       outside.push(r.url());
   });
   await page.goto('/preview/operating-center');
