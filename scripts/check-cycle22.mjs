@@ -176,11 +176,13 @@ export function validateCycle22Manifest(manifest, ports = {}) {
         if (sha(bytes) === file.sha256) continue;
         if (
           path === 'docs/program/CYCLE21_SOURCE_MANIFEST.json' &&
-          p.head_commit === '161f1c59d864d60aa0f45820eb6417864519baf2' &&
-          [
-            'src/components/workflows/RecordedOwnerActions.tsx',
-            'src/lib/workflows/recorded-owner-actions.ts',
-          ].includes(file.path)
+          ((p.head_commit === '161f1c59d864d60aa0f45820eb6417864519baf2' &&
+            [
+              'src/components/workflows/RecordedOwnerActions.tsx',
+              'src/lib/workflows/recorded-owner-actions.ts',
+            ].includes(file.path)) ||
+            (p.head_commit === '4681fc9d76a31044eded27b6f3340c2cb0b2c89c' &&
+              file.path === 'src/lib/workflows/task-correction-review.ts'))
         ) {
           try {
             // Prior validation and the exact retained-manifest check above
