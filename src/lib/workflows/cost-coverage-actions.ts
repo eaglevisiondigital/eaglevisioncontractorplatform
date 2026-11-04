@@ -263,6 +263,9 @@ export function validateCostCoverageAction(
     labor: labor ?? null,
     material_review_ids: reviews.map((row) => row.id),
     invoice_requirement: invoice ?? null,
+    invoice_requirements: evidence.invoice.requirements.map(
+      ({ id, status, detail }) => ({ id, status, detail }),
+    ),
     financial_exceptions: view.requirements,
     cost_coverage: view.coverage,
     canonical_margin: view.original.original.canonical.projected_margin_bps,
