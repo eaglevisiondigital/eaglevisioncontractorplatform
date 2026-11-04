@@ -1,0 +1,171 @@
+{
+  "schema": "propel-cycle29-validation-v1",
+  "scope": "LOCAL_SYNTHETIC_DEFAULT_OFF_NOT_OPERATIONAL",
+  "runtime_commit": "babadded8373f24cfba9d80c1b27cd46b71db08e",
+  "application": {
+    "passed": 192,
+    "failed": 0,
+    "skipped": 0,
+    "suites": 13,
+    "single_combined_run": true,
+    "new_native_source_cases": 54,
+    "new_build_evidence_source_cases": 33,
+    "retained_cases": 105,
+    "full_foundation_claim": false
+  },
+  "browser": {
+    "passed": 39,
+    "failed": 0,
+    "skipped": 0,
+    "retries": 0,
+    "field": 9,
+    "growth": 9,
+    "customer": 9,
+    "native_full_journey": 9,
+    "production_off": 3,
+    "brands": 3,
+    "viewports": ["desktop", "tablet", "mobile"],
+    "axe_overflow_and_external_request_checks": "PASS_WITHIN_DECLARED_HARNESSES",
+    "native_captures": 63,
+    "native_keyboard_journeys": 9,
+    "trusted_key_events": 369,
+    "scoped_runtime_files": 76,
+    "whole_transitive_inventory": false,
+    "capture_working_tree_dirty": true,
+    "dirty_capture_limit": "Documentation/build-state/register descriptive note and misplaced non-runtime report changed; scoped76runtimefiles match frozen runtime and original features array unchanged. No clean-checkout claim.",
+    "reporter_fix": "New customer config path corrected after completed execution; original9caseJSON preserved byte-identically; no assertion/budget/rerun."
+  },
+  "integrity": {
+    "protected_hashes": 128,
+    "prior_test_config_fixture_files": 561,
+    "changed_prior_test_files": 0,
+    "design_files": 5,
+    "design_bindings": 13,
+    "canonical_engine_or_schema_changes": false,
+    "original_capability_records": 25,
+    "original_ids": 18,
+    "phase_one_gates": 8,
+    "state_promotion": false
+  },
+  "independent_review": {
+    "agent": "/root/cycle28_independent_review",
+    "positive_negative_source_checks": 43,
+    "status": "CLEAR_LOCAL_ONLY",
+    "pr": 219,
+    "commit": "d2712b1264d5a5e5c672548eddc9f002df956fda"
+  },
+  "quality": {
+    "strict_types": "PASS",
+    "lint": "PASS_ONE_PREEXISTING_FAST_REFRESH_WARNING",
+    "build": "PASS_EXISTING_CHUNK_WARNING",
+    "feature_integrity": "PASS",
+    "static_types_migrations_property_customer14_4B_broker": "PASS",
+    "full_format": "PASS",
+    "global_npm_check": "NOT_RUN_FOCUSED_SCOPE_ONLY",
+    "private_evidence_exclusion": "Exact /artifacts/cycle29/ rootignore independently reviewed; failed27generatedfileformatcheck retained, sourceformat unchanged"
+  },
+  "parent_ci": {
+    "sha": "067b08b1c3f2e2e2bd259639c636eb13a2c079d4",
+    "successful_workflows": 26,
+    "cancelled_foundations": 2,
+    "dedicated_application_passed": 197,
+    "dedicated_browser_passed": 45,
+    "global_foundation_complete": false,
+    "original_foundation_test_files_unconcluded": 75,
+    "cancellation_reason": "Push explicit45m annotation; PR cancelled check, annotation unavailable at independent snapshot",
+    "historical_c27_application": {
+      "sha": "5f74b8ff5385560330cb94717c17338ed0c10f44",
+      "passed": 9327,
+      "declared_skipped": 321,
+      "not_current_c28_global_coverage": true
+    },
+    "historical_browser_original": {
+      "passed": 397,
+      "failed": 2,
+      "coverage_closed": false
+    },
+    "targeted_two_case_github": {
+      "passed": 0,
+      "failed": 2,
+      "original_30s_limits": true
+    },
+    "targeted_two_case_local": {
+      "passed": 2,
+      "original_30s_limits": true
+    },
+    "historical_C18_and_alternate_budget_conclusions": "UNCHANGED"
+  },
+  "operational": {
+    "specification_pr": 208,
+    "cases": 12,
+    "result": "ALL_NOT_RUN",
+    "implementation": "NO_GO",
+    "physical_recovery": "NOT_RUN_LAST_DEVICE_UNAVAILABLE",
+    "existing_25_offline_checks": "NOT_REPEATED",
+    "P1_original_approval": "PRESERVED_ON13_AFTER_ORIGINAL_PREREQUISITES",
+    "customer14_4B": "SEPARATE_REVIEW_AND_AUTHORIZATION_SEQUENCE"
+  },
+  "raw_report_hashes": [
+    {
+      "path": "artifacts/cycle29/application-results.json",
+      "sha256": "b1c62ecf54ca547470bea54ba613d4795cab681531e9c750c091be90e5766bdc"
+    },
+    {
+      "path": "artifacts/cycle29/field/green.json",
+      "sha256": "5380b773a28c2bb31e80c7bbca500b846fa415814ac76108a35420dbeb551af6"
+    },
+    {
+      "path": "artifacts/cycle29/growth/green.json",
+      "sha256": "4522a6b611d0352d7cb0395ea193510320895698e4396f107e6cf73c421c7ec1"
+    },
+    {
+      "path": "artifacts/cycle29/customer-browser.json",
+      "sha256": "db08134692a315eca30cea4c080227b99277df84ec562485376a867ab1f48960"
+    },
+    {
+      "path": "artifacts/cycle28/browser-results.json",
+      "sha256": "1c410b936dce5a766d0a893c1d041bdf2b6792319a8a173637b0598cb7dd1a09"
+    },
+    {
+      "path": "artifacts/cycle28/browser-off-results.json",
+      "sha256": "6fc85a1adb21bfa47b427e30b99b253432b3fbf823b5963551fb2f1073aef36b"
+    },
+    {
+      "path": "artifacts/cycle28/browser-validation.json",
+      "sha256": "bcd34a2f292fe7569aa6f05af3cb03bac51fef3ff42d5dcd07d198a7d7a570fd"
+    },
+    {
+      "path": "artifacts/cycle29/features.log",
+      "sha256": "a171bf6e8a2a3f0f31d843b29d618f9b00251940010451203d315e40f079eb12"
+    },
+    {
+      "path": "artifacts/cycle29/types.log",
+      "sha256": "333f1c4ac1f1cb812f6974fc382020ab84a6153e4856bf5134a600f3bfd170f3"
+    },
+    {
+      "path": "artifacts/cycle29/lint.log",
+      "sha256": "73df8cb8fd5f3b7795a4e1c90e994122f66a0a83e0f8fb41e7788d344e592543"
+    },
+    {
+      "path": "artifacts/cycle29/build.log",
+      "sha256": "2fec8a44b1c0468261b24ea6722e0eddd171779016070730d263282ee2c108b5"
+    },
+    {
+      "path": "artifacts/cycle29/integrity.log",
+      "sha256": "e22eb7ea5dd31177088b94a8eba64bf17472157c2bdb7432dc555dcda1147cf6"
+    },
+    {
+      "path": "artifacts/cycle29/format-final.log",
+      "sha256": "cb2f31155d81d5a7160c55cc11a20052887ba8ac2e8f306c36da33d55d606374"
+    },
+    {
+      "path": "artifacts/cycle29/format-delivery-fixed.log",
+      "sha256": "124d41379abd47686c9d290612a3ae817ee1b6fccd8b91006c75cfd83ba2ad9a"
+    },
+    {
+      "path": "artifacts/cycle29/features-delivery.log",
+      "sha256": "a171bf6e8a2a3f0f31d843b29d618f9b00251940010451203d315e40f079eb12"
+    }
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

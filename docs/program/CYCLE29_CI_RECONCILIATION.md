@@ -43,3 +43,14 @@ both45m Foundation cancellations. Historical C18 failures, C26 original-budget
 failures and later90s supplements remain distinct and unresolved as originally
 classified. No successful workflow was manually rerun. No original test or
 protected file changed. Release1.0 remains NOT READY / NOT AUTHORIZED.
+
+## Observed targeted follow-up
+
+Draft212 exact `6268c85c7862a0f94baf7d6d2ae3e9b4e21db71c`, run41866028445,
+completed FAILURE:0PASS/2timedOut. Exact original5f74 desktop/tablet cases retain
+30s per-test limits, two workers, zero retries and original source/config/test hashes.
+Both expire at the final owner-review click after successful setup/build. The
+strict success guard is correctly skipped after the failed test command. This
+reproduces the hosted deadline discrepancy; it does not uniquely establish a product
+cause, repair either original shard or authorize a budget increase. No further
+rerun was performed. Local2PASS remains separate supplementary evidence.

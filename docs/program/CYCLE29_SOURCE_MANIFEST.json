@@ -1,0 +1,186 @@
+{
+  "schema": "propel-cycle29-source-manifest-v1",
+  "authority": "BUILD_REVIEW_ONLY_NOT_BUSINESS_RESTORE",
+  "parent": "067b08b1c3f2e2e2bd259639c636eb13a2c079d4",
+  "coordination_branch": "codex/program-cycle-twenty-nine-integration",
+  "runtime_commit": "babadded8373f24cfba9d80c1b27cd46b71db08e",
+  "native_package_count": 5,
+  "coverage_only_package_count": 1,
+  "packages": [
+    {
+      "module": "field",
+      "author": "598f0fab3e453ae83c2458733140923fef081086",
+      "head": "a04e0c7aacc097f2dcec887aacdddd3d780a15c4",
+      "branch": "codex/cycle29-task-continuity",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/213",
+      "pr": 213,
+      "files": [
+        {
+          "path": "docs/program/CYCLE29_FIELD_TASK_NAVIGATION.md",
+          "sha256": "98bcefc13678a065b619d7bde57ae345705399a64af2abf461875c942b20bd32"
+        },
+        {
+          "path": "src/components/workflows/TaskReceiptActions.tsx",
+          "sha256": "e632c5a86d08e8e3755f101b87c5c754509dff09738a23b20a86213b7b21ebb1"
+        },
+        {
+          "path": "tests/cycle29-task-navigation.test.ts",
+          "sha256": "dc5e4b806c6b7ed2e3b696184228d356eb687cd9faa0b8f7b8f264321dd5567b"
+        },
+        {
+          "path": "tests/program/cycle29-task-navigation-browser.mjs",
+          "sha256": "18bedb75c7941192f8e5508b4b50c2b7f7fd99328961464cab1fb64655a5e9e6"
+        }
+      ]
+    },
+    {
+      "module": "finance",
+      "author": "9eaca7692767590e263c53b3757e8f3a4221b408",
+      "head": "7299273ff6236137216dda171322b4f8fe3ab55e",
+      "branch": "codex/cycle29-cost-continuity",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/214",
+      "pr": 214,
+      "files": [
+        {
+          "path": "docs/program/CYCLE29_COST_CONTINUITY.md",
+          "sha256": "e690d203b2589da188a1af48b8d9fd794623899173001d42957ff356e74e70f2"
+        },
+        {
+          "path": "src/lib/workflows/cost-coverage-actions.ts",
+          "sha256": "410098bc2b64ea338eb8524420f48ffd67fb97f52d3a4ee6e48a7236266a7213"
+        },
+        {
+          "path": "tests/cycle29-cost-continuity.test.ts",
+          "sha256": "0e6cb2953aefefb08a672ec768eefc9457fcf0e25bde6c9e1f46d4e54f69aea7"
+        }
+      ]
+    },
+    {
+      "module": "customer",
+      "author": "180c4e271efe23ff0bed73a0692afdad81f1050f",
+      "head": "0bc46fb5ffaaea2b6b4843f62b337552d7df1535",
+      "branch": "codex/cycle29-service-continuity",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/215",
+      "pr": 215,
+      "files": [
+        {
+          "path": "docs/program/CYCLE29_SERVICE_CONTINUITY.md",
+          "sha256": "a4731637ccb6efc7a57c81e93df21f091d3748b6215bc610c0e0199d32910c70"
+        },
+        {
+          "path": "src/components/workflows/ServiceRequestActions.tsx",
+          "sha256": "7bc4100c8bef095fe5aee1e9e631c0f9a085c71da87779b7fecbf4dbcf7f8a90"
+        },
+        {
+          "path": "tests/cycle29-service-continuity.test.ts",
+          "sha256": "006ccad222c10d57b6864a6c294f30f0a49b6a148028699323aa8a8758934687"
+        }
+      ]
+    },
+    {
+      "module": "growth",
+      "author": "8bca73931aace63c4d20858944e0fada431fe303",
+      "head": "778c20f2fd29f1b1bbcef24abf14a8841369b726",
+      "branch": "codex/cycle29-maintenance-selection",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/216",
+      "pr": 216,
+      "files": [
+        {
+          "path": "docs/program/CYCLE29_MAINTENANCE_SELECTION.md",
+          "sha256": "ffd2618017340a23867595d695bd40524370c4f8ce487ceb1041905fd8087787"
+        },
+        {
+          "path": "src/components/workflows/MaintenanceCancellationActions.tsx",
+          "sha256": "015fcbbdeaec53a24d7036a909befe75382203e7048d180addf96f0e486e7245"
+        },
+        {
+          "path": "tests/program/cycle29-maintenance-clear-browser.mjs",
+          "sha256": "6d0c3d251b10f033c4b83cf9f5b96c13a39089be1edcbeb24c2d61ef07970990"
+        }
+      ]
+    },
+    {
+      "module": "intelligence",
+      "author": "1a226d540578810b14fdbbbc170de206745c418c",
+      "head": "8d3b254cedec5fbea792bcbc88f7329cd7850c30",
+      "branch": "codex/cycle29-owner-currentness",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/217",
+      "pr": 217,
+      "files": [
+        {
+          "path": "docs/program/CYCLE29_OWNER_CURRENTNESS.md",
+          "sha256": "32d3c68acce491927dc0a0238645bba539157a06982a17add578c8bf074c13da"
+        },
+        {
+          "path": "src/lib/workflows/owner-action-verification.ts",
+          "sha256": "3457d010c8e965afb2915271d0a83f2e0988172567aa3d92d3be44aaabf0cf77"
+        },
+        {
+          "path": "tests/cycle29-owner-currentness.test.ts",
+          "sha256": "519ddfe2b001411b2cd38b898635ff3f327e82d4ef607be38e9d92335a6fb806"
+        }
+      ]
+    },
+    {
+      "module": "offline",
+      "author": "c8bc1ce0d2d47e3274357900ce689ca232504611",
+      "head": "c8bc1ce0d2d47e3274357900ce689ca232504611",
+      "branch": "codex/cycle29-offline-currentness",
+      "scope": "COVERAGE_ONLY_ZERO_RUNTIME_DELTA",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/218",
+      "pr": 218,
+      "files": [
+        {
+          "path": "docs/program/CYCLE29_OFFLINE_CURRENTNESS.md",
+          "sha256": "5dc35b3a3f7fc51add094402802dbdffa2d841259d81a53e240dcdddc22b1eb4"
+        },
+        {
+          "path": "tests/cycle29-offline-currentness.test.ts",
+          "sha256": "232b1e6302ebd338b12a46bee72bd4f1340cd5cdb7160112ccd8de11821e3945"
+        }
+      ]
+    }
+  ],
+  "shared_checker": {
+    "path": "scripts/cycle25-source-lineage.mjs",
+    "sha256": "f039c59e6d33dd8408ed8fc4e51708096a6edfda54792262b84b26f56d379787",
+    "independent_positive_negative_checks": 43
+  },
+  "ci_reconciliation": {
+    "pr": 212,
+    "head": "6268c85c7862a0f94baf7d6d2ae3e9b4e21db71c",
+    "base_pr": 209,
+    "original_browser": {
+      "run": 41854921550,
+      "source": "5f74b8ff5385560330cb94717c17338ed0c10f44",
+      "passed": 397,
+      "failed": 2,
+      "closed": false
+    },
+    "targeted_followup": {
+      "run": 41866028445,
+      "passed": 0,
+      "failed": 2,
+      "original_budget_unchanged": true
+    },
+    "local_targeted": {
+      "passed": 2,
+      "source": "5f74b8ff5385560330cb94717c17338ed0c10f44",
+      "original_budget_unchanged": true
+    }
+  },
+  "operational_acceptance": "NO_GO_ALL12_NOT_RUN",
+  "physical_recovery": "NOT_RUN",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "independent_review": {
+    "pr": 219,
+    "commit": "d2712b1264d5a5e5c672548eddc9f002df956fda",
+    "status": "CLEAR_LOCAL_ONLY"
+  },
+  "reporter_support_correction": {
+    "path": "tests/program/playwright.cycle29-customer.config.ts",
+    "scope": "OUTPUT_PATH_ONLY_AFTER_COMPLETED_EXECUTION",
+    "completed_report_sha256": "db08134692a315eca30cea4c080227b99277df84ec562485376a867ab1f48960",
+    "assertion_or_budget_changes": false
+  }
+}

@@ -1,3 +1,9 @@
+# Cycle29 · tighten original workflow bindings without operational promotion
+
+Use captured own-data selectors and original checked owner rows across asynchronous review; never re-read untrusted selector getters to select another canonical source. Native task custody governs which continuation controls are offered. Empty unattempted maintenance selection clears presentation only; original spent/UNKNOWN holds remain. Published report focus occurs after exact current-owner-checked commit. Offline tests retain conservative original UNKNOWN rather than manufacturing a runtime change.
+
+Five exact native author commits and one two-file coverage-only commit stay separate, source-bound drafts. The existing build-only lineage helper admits only their fixed sole-parent endpoints and preserves every old pin/current-byte denial. It is not canonical state, custody or restoration. Original failed CI, local supplementary passes, current dedicated successes and incomplete global Foundation remain distinct. Operational decisions follow PR208/all12NOT_RUN and original recovery/P1on13/separatecustomer14/4B sequencing; no adapter or hosted authorization follows. Approved designs and all release gates remain unchanged.
+
 # Cycle27 · extend original workflows and preserve uncertain custody
 
 Render-time current access must protect retained private task/maintenance observations without clearing original references, holds or UNKNOWN. Canonical invoice gates/amounts remain distinct from staff review; literal source search never chooses or authorizes a row. Customer expected records are strict own-data snapshots; Offline reports finite mismatch names only. No second store, engine or workflow owner. The independently reviewed minimum readiness package grants no implementation permission. Original P1 approval stays valid against thirteen history after its recovery prerequisites; customer14/4B/Auth/NMI and every other hosted/production gate remain separate.

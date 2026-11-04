@@ -1,3 +1,7 @@
+# Cycle29 · original controls reflect original authority
+
+Keep the existing scoped design and approved artwork/layouts. Disable unsupported task continuation with an explicit text reason while retaining authorized read-only evidence controls. Clearing an unattempted maintenance source removes stale detail and confirmation without remounting the workspace. Move keyboard focus to the exact committed published report after current authorization checks. No new navigation, tokens, CSS or approved-interface redesign. Real all-brand desktop/tablet/mobile and accessibility evidence is required; Operating Center and advanced visual approval remain PENDING, never inferred from tests.
+
 # Cycle27 · native usability correction
 
 Keep the same five-tab workflow, approved three brand assets/tokens and three locked visual scopes. The existing owner source selector adds a labelled literal search with scoped 44px/focus rules; a selected authorized source can remain outside filtered results. Finance displays native invoice requirements and cost-category facts in the existing action. Revoked Field/Growth private details are withheld without another panel or store. Operating Center and advanced visual approval remain PENDING; tests and screenshots do not confer approval. Main records all-brand desktop/tablet/mobile and keyboard/a11y evidence separately.

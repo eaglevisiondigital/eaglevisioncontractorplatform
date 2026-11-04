@@ -7,7 +7,7 @@ export default defineConfig({
   timeout: 30000,
   outputDir: '../../artifacts/cycle29/customer-browser-results',
   reporter: [
-    ['json', { outputFile: 'artifacts/cycle29/customer-browser.json' }],
+    ['json', { outputFile: '../../artifacts/cycle29/customer-browser.json' }],
   ],
   projects: [
     { name: 'desktop', use: { viewport: { width: 1440, height: 1000 } } },

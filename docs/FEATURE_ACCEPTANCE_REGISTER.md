@@ -1,3 +1,9 @@
+# Cycle29 · local correction evidence; release acceptance unchanged
+
+Five existing native workflow corrections and one Offline coverage-only package are source-bound in drafts213–218. Exact192 focused application/source cases PASS; responsive/browser/current-head CI outcomes are independently recorded in [validation](program/CYCLE29_VALIDATION.md), with [exact authors/current heads](program/CYCLE29_SOURCE_MANIFEST.json). Original25capabilitystates,18IDs,eightPhaseOnegates andthreeapproveddesignscopes remain unchanged; no new operational acceptance is inferred.
+
+C28dedicated197application/45browserPASS is separate from two CANCELLED Foundations. C27's retained9327PASS/321declaredSKIP is historical exact5f74 evidence. Its original browser397PASS/2FAIL and targeted GitHub0PASS/2FAIL remain OPEN; local2PASS does not repair them. PR208 all12operational cases NOT_RUN, implementation NO_GO; Airphysical recovery NOT_RUN. No store/schema/engine/adapter/credential/hosted/financial/communication/dispatch/release activation.
+
 # Cycle28 · source-bound contractor journey corrections
 
 Six separate feature drafts [202](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/202), [203](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/203), [204](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/204), [205](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/205), [206](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/206) and [207](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/207) extend original owners, with exact source/current-head/agent bindings in [C28 validation](program/CYCLE28_VALIDATION.md) and its source manifest. The coordination branch is `codex/program-cycle-twenty-eight-integration`, against unchanged C27 #200. No drafts are merged or silently promoted.
