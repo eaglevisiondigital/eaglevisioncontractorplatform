@@ -49,6 +49,11 @@ jobs:
           NODE
       - run: npm ci
         working-directory: application
+      - name: Retain the exact source shape on this compared runner
+        working-directory: application
+        run: |
+          set -euo pipefail
+          node ../diagnostics/scripts/cycle31-ubuntu-source-probe.mjs | tee artifacts/cycle31/runner-source-shape.json
       - name: Install reviewed missing fonts from signed Ubuntu archives
         working-directory: application
         run: node ../diagnostics/scripts/cycle30-chromium-dependencies.mjs

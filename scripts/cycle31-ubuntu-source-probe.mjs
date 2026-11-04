@@ -82,6 +82,29 @@ console.log(
         mirrorText === undefined
           ? undefined
           : createHash('sha256').update(mirrorText).digest('hex'),
+      mirror_rows: mirrorText
+        ?.split('\n')
+        .filter((l) => l.trim() && !l.trim().startsWith('#'))
+        .map((l) => {
+          const tokens = l.trim().split(/\s+/);
+          const known = new Map([
+            ['http://azure.archive.ubuntu.com/ubuntu/', 'azure-http'],
+            ['https://azure.archive.ubuntu.com/ubuntu/', 'azure-https'],
+            ['http://archive.ubuntu.com/ubuntu/', 'archive-http'],
+            ['https://archive.ubuntu.com/ubuntu/', 'archive-https'],
+            ['http://security.ubuntu.com/ubuntu/', 'security-http'],
+            ['https://security.ubuntu.com/ubuntu/', 'security-https'],
+          ]);
+          return {
+            token_count: tokens.length,
+            target: known.get(tokens[0]) ?? 'UNRECOGNIZED',
+            target_sha256: createHash('sha256').update(tokens[0]).digest('hex'),
+            priority: /^priority:[1-9]$/.test(tokens[1] ?? '')
+              ? tokens[1]
+              : 'UNRECOGNIZED',
+            extra_tokens: Math.max(0, tokens.length - 2),
+          };
+        }),
       stanzas: rows,
     },
     null,
