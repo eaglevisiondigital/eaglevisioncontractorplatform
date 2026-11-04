@@ -6,6 +6,7 @@ import {
   type RecordedCostRequirementsRead,
 } from './recorded-cost-requirements';
 import type { CostCoverageSource } from './cost-coverage-path';
+import { compareCostSavedRevisions } from './cost-saved-revisions';
 
 export interface CostCoverageActionInput {
   kind: CostCoverageSource['kind'];
@@ -57,6 +58,68 @@ export function filterCostCoverageActionSources(
     matching: rows.length,
     available: view.original.rows.length,
     meaning: 'LITERAL_PRESENTATION_ONLY_NOT_SOURCE_AUTHORIZATION' as const,
+  });
+}
+/** Presentation continuity only. Original handles validate both reads and
+ * canonical comparison proves the same repository/job identity. No old approval,
+ * source revision, command hold or ambiguous outcome is renewed by a refresh. */
+export function refreshCostCoverageActionSelection(
+  before: RecordedCostRequirementsRead,
+  current: RecordedCostRequirementsRead,
+  key: string,
+) {
+  assertRecordedCostRequirementsCurrent(current);
+  if (typeof key !== 'string' || key.length > 500)
+    throw Error('Bounded exact previous cost-source key required');
+  const empty = (
+    status: 'NO_PREVIOUS_SELECTION' | 'STALE_SOURCE_RESELECT_REQUIRED',
+  ) =>
+    freezePrototype({
+      status,
+      selection_key: null,
+      input: null,
+      requires_verification: true as const,
+      previous_confirmation_retained: false as const,
+    });
+  if (!key) return empty('NO_PREVIOUS_SELECTION');
+  try {
+    assertRecordedCostRequirementsCurrent(before);
+  } catch {
+    return empty('STALE_SOURCE_RESELECT_REQUIRED');
+  }
+  compareCostSavedRevisions(
+    before.original.original.costs,
+    current.original.original.costs,
+  );
+  const previous = before.original.rows.filter((row) => row.key === key);
+  if (previous.length !== 1)
+    throw Error('Exact original selected cost source required');
+  const matches = current.original.rows.filter((row) => row.key === key);
+  if (
+    matches.length !== 1 ||
+    JSON.stringify(previous[0]) !== JSON.stringify(matches[0])
+  )
+    return empty('STALE_SOURCE_RESELECT_REQUIRED');
+  const source = matches[0],
+    input: CostCoverageActionInput = {
+      kind: source.kind,
+      id: source.id,
+      expected_job_revision:
+        current.original.original.costs.evidence.job_revision,
+      purpose:
+        source.kind === 'invoice_requirement'
+          ? 'invoice_preparation'
+          : 'cost_review',
+    };
+  validateCostCoverageAction(current, input);
+  assertRecordedCostRequirementsCurrent(before);
+  assertRecordedCostRequirementsCurrent(current);
+  return freezePrototype({
+    status: 'UNCHANGED_SOURCE_REVERIFY_REQUIRED' as const,
+    selection_key: source.key,
+    input,
+    requires_verification: true as const,
+    previous_confirmation_retained: false as const,
   });
 }
 /** A preparation validator over original handles. No read constructor, command
