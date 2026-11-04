@@ -11,7 +11,7 @@ createRoot(document.getElementById('root')).render(React.createElement(OwnerActi
 </script></body></html>`;
 let server, browser;
 const results = [];
-mkdirSync('artifacts/cycle28/screenshots', { recursive: true });
+mkdirSync('artifacts/cycle28/native-seam-screenshots', { recursive: true });
 try {
   server = await createServer({
     root: process.cwd(),
@@ -101,7 +101,7 @@ try {
             .analyze()
         ).violations;
       await root.screenshot({
-        path: `artifacts/cycle28/screenshots/owner-${brand}-${size}.png`,
+        path: `artifacts/cycle28/native-seam-screenshots/owner-${brand}-${size}.png`,
       });
       results.push({
         brand,
