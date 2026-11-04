@@ -1,0 +1,212 @@
+{
+  "schema": "propel-cycle26-source-manifest-v1",
+  "purpose": "BUILD_REVIEW_METADATA_NOT_BUSINESS_STATE",
+  "parent": "af95671f70bae6585b39e299ba00ca201f8e6512",
+  "packages": [
+    {
+      "module": "task-reconciliation",
+      "owner": "/root/cycle25_field_growth_resume",
+      "branch": "codex/cycle26-task-reconciliation",
+      "source_commit": "c897c51dc77fe7c29307ee74bc4cf6d729099784",
+      "parent": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "new_cases": 22,
+      "files": [
+        {
+          "path": "src/lib/workflows/task-receipt-reconciliation.ts",
+          "bytes": 7712,
+          "sha256": "68be31a29f4d371e6c2e0936361e423d5f6c1b839927d331e4c07611bf435192",
+          "mode": "100644"
+        },
+        {
+          "path": "src/components/workflows/TaskReceiptActions.tsx",
+          "bytes": 13141,
+          "sha256": "ce043c426a7713a0792fe924d5aa7f42f0b4d756d984205c267af43f821ff363",
+          "mode": "100644"
+        },
+        {
+          "path": "docs/program/CYCLE26_TASK_RECONCILIATION.md",
+          "bytes": 3086,
+          "sha256": "ad87e6220d5222fc58b5245dec7168c41b3937c9ee8c9fdd27a975e3dd2cf6a8",
+          "mode": "100644"
+        },
+        {
+          "path": "tests/cycle26-task-reconciliation.test.ts",
+          "bytes": 11280,
+          "sha256": "bb52c141b30c1b10bb56e5cd2d70202c4a92f79490b5521445c64669377a84f4",
+          "mode": "100644"
+        }
+      ]
+    },
+    {
+      "module": "financial-coverage",
+      "owner": "/root/cycle25_finance_intelligence_resume",
+      "branch": "codex/cycle26-financial-coverage",
+      "source_commit": "6031e03eff0dfe31c1b8a8cfea4dc5bd92321c51",
+      "parent": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "new_cases": 14,
+      "files": [
+        {
+          "path": "src/lib/workflows/cost-coverage-actions.ts",
+          "bytes": 11472,
+          "sha256": "e17a399bb79fe4c3113cb5e8777d005ebfe39cfd9ea38623026e20f77a5229fc",
+          "mode": "100644"
+        },
+        {
+          "path": "src/components/workflows/CostCoverageActions.tsx",
+          "bytes": 12973,
+          "sha256": "adbdb9d502877fdc7c476c80b07b31f3fd046e8e4f567a94b7ca9fc0c4943b95",
+          "mode": "100644"
+        },
+        {
+          "path": "docs/program/CYCLE26_FINANCIAL_COVERAGE.md",
+          "bytes": 3625,
+          "sha256": "59db7279523580f6542a8822d32c5ce6b3a2e217c462353f37e76a9c042ae1e6",
+          "mode": "100644"
+        },
+        {
+          "path": "tests/cycle26-financial-coverage.test.ts",
+          "bytes": 8958,
+          "sha256": "a424eaffaeb645dab3556fce26035e418232dbbf71a0f4a3d19ebc63ed9817c4",
+          "mode": "100644"
+        }
+      ]
+    },
+    {
+      "module": "service-continuity",
+      "owner": "/root/cycle26_customer_offline",
+      "branch": "codex/cycle26-service-continuity",
+      "source_commit": "e316aca99b77084dfde36ed7253a5a20f1712874",
+      "parent": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "new_cases": 15,
+      "files": [
+        {
+          "path": "src/lib/workflows/service-request-actions.ts",
+          "bytes": 7042,
+          "sha256": "b958c9b29191cff923ab19a9ff08438b4f7fc8e672c51bd95a8348bf24b8f444",
+          "mode": "100644"
+        },
+        {
+          "path": "src/components/workflows/ServiceRequestActions.tsx",
+          "bytes": 17952,
+          "sha256": "87f54efe6901053773a3fab177af39b892b428f706b03f6bf7f43d03e1b01c15",
+          "mode": "100644"
+        },
+        {
+          "path": "docs/program/CYCLE26_SERVICE_CONTINUITY.md",
+          "bytes": 3317,
+          "sha256": "c03922f0428bdcf56c854891c9a2aea2cfdb0e8f7b4680091640dd1ae1202d75",
+          "mode": "100644"
+        },
+        {
+          "path": "tests/cycle26-service-continuity.test.ts",
+          "bytes": 6065,
+          "sha256": "decbebfd6b5bc0f7b9fc3b159ef525cf067cf3d2453dcc6a4ff60a461b61baa9",
+          "mode": "100644"
+        }
+      ]
+    },
+    {
+      "module": "maintenance-revalidation",
+      "owner": "/root/cycle25_field_growth_resume",
+      "branch": "codex/cycle26-maintenance-revalidation",
+      "source_commit": "4259fc1fb7aef9edb2c8beb0cfac5af0c185ec01",
+      "parent": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "new_cases": 27,
+      "files": [
+        {
+          "path": "src/lib/workflows/plan-cancellation-review.ts",
+          "bytes": 15638,
+          "sha256": "2d8b55cbf1a8d291c1d2b74d930657a158d3ac1f2a81f3b57ffb3d341c2f263d",
+          "mode": "100644"
+        },
+        {
+          "path": "src/components/workflows/MaintenanceCancellationActions.tsx",
+          "bytes": 15905,
+          "sha256": "f244f63cf43a20fce6f3ec4eb0daaf2e7b9b6e21dc9762d48ef2cf5a327e9b27",
+          "mode": "100644"
+        },
+        {
+          "path": "docs/program/CYCLE26_MAINTENANCE_REVALIDATION.md",
+          "bytes": 3733,
+          "sha256": "65970af7189ed34ce5b134a8dcfe523304919c12c4b70c869cdceae2078cb656",
+          "mode": "100644"
+        },
+        {
+          "path": "tests/cycle26-maintenance-revalidation.test.ts",
+          "bytes": 12698,
+          "sha256": "ad578106c7a3804b1b36cf05c4c53bf52f577f654ccaaff782ffeec40fd89d01",
+          "mode": "100644"
+        }
+      ]
+    },
+    {
+      "module": "owner-source-navigation",
+      "owner": "/root/cycle25_finance_intelligence_resume",
+      "branch": "codex/cycle26-owner-source-navigation",
+      "source_commit": "d534ce82281096c58273c5cf908456f46f610ecf",
+      "parent": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "new_cases": 12,
+      "files": [
+        {
+          "path": "src/lib/workflows/owner-action-verification.ts",
+          "bytes": 7490,
+          "sha256": "5cb19fd020adee44b62e72991bd979e02444f0b29477e8d4bd0efcf247e7ee42",
+          "mode": "100644"
+        },
+        {
+          "path": "src/components/workflows/OwnerActionVerification.tsx",
+          "bytes": 10799,
+          "sha256": "e4a166a4179c20175d2c2b8cbdf6b74765a892370daa64f47fcee4f623ffe7b7",
+          "mode": "100644"
+        },
+        {
+          "path": "docs/program/CYCLE26_OWNER_SOURCE_NAVIGATION.md",
+          "bytes": 3569,
+          "sha256": "d89327333894bea0f98e0e73d5eedb69aa79845201103b1fc48c4721f8b52ee9",
+          "mode": "100644"
+        },
+        {
+          "path": "tests/cycle26-owner-source-navigation.test.ts",
+          "bytes": 8314,
+          "sha256": "06ab72830d19b5d72c909ddc6ec478bd3cb00bfb73ddcbf03c0c6e7f88313239",
+          "mode": "100644"
+        }
+      ]
+    },
+    {
+      "module": "offline-ambiguity",
+      "owner": "/root/cycle26_customer_offline",
+      "branch": "codex/cycle26-offline-ambiguity",
+      "source_commit": "c403f16e55a7154eeeae772edf70b0cdf7a6bdef",
+      "parent": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "new_cases": 23,
+      "files": [
+        {
+          "path": "src/lib/workflows/offline-source-admission.ts",
+          "bytes": 9424,
+          "sha256": "33e50c96835305c844c2be1448ffefd1ba68cc36335af3598b480877ebf902ee",
+          "mode": "100644"
+        },
+        {
+          "path": "docs/program/CYCLE26_OFFLINE_AMBIGUITY.md",
+          "bytes": 3327,
+          "sha256": "aa4ec7d8ff7c717bb62b0f241920c3175606dcc053b394d2d87e772d7071fe2c",
+          "mode": "100644"
+        },
+        {
+          "path": "tests/cycle26-offline-ambiguity.test.ts",
+          "bytes": 10664,
+          "sha256": "e11fe38520683ad55da685e5b3358df80ed62bb6447eb6e5984ba3f494437202",
+          "mode": "100644"
+        }
+      ]
+    }
+  ],
+  "matrix": {
+    "commit": "e4ba39fbf2e00a8992316ca73adb9e6922730d9c",
+    "draft_pr": 182
+  },
+  "operational_ready": false,
+  "restore_adapter": false,
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

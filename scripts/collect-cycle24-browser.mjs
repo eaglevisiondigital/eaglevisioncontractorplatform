@@ -19,6 +19,7 @@ const directory = resolve(
   process.env.CYCLE24_ARTIFACT_DIR ?? 'artifacts/cycle24',
 );
 const cycle25Evidence = directory === resolve('artifacts/cycle25');
+const cycle26Evidence = directory === resolve('artifacts/cycle26');
 const sha = (b) => createHash('sha256').update(b).digest('hex');
 const json = (p) => JSON.parse(readFileSync(p, 'utf8'));
 const inventoryPath = 'docs/program/CYCLE24_RUNTIME_FILES.json';
@@ -104,13 +105,17 @@ function report(mode) {
     ),
   );
   const total = pending.size,
-    port = cycle25Evidence
+    port = cycle26Evidence
       ? production
-        ? 4435
-        : 4425
-      : production
-        ? 4434
-        : 4424;
+        ? 4436
+        : 4426
+      : cycle25Evidence
+        ? production
+          ? 4435
+          : 4425
+        : production
+          ? 4434
+          : 4424;
   if (
     r.errors?.length ||
     r.stats?.expected !== total ||
@@ -233,7 +238,9 @@ const value = {
   executed_commits: [...executionCommits],
   runtime_files: 76,
   admitted_source_forwards: [...admittedSources.values()],
-  source_scope: 'C24_BASELINE_PLUS_EXACT_ADMITTED_C25_NATIVE_FORWARDS',
+  source_scope: cycle26Evidence
+    ? 'C24_BASELINE_PLUS_EXACT_C25_AND_C26_NATIVE_FORWARDS'
+    : 'C24_BASELINE_PLUS_EXACT_ADMITTED_C25_NATIVE_FORWARDS',
   critical_sources_checked_now_and_in_execution_commit: cycle24CriticalSources,
   capture_inventory_limit: '76_SCOPED_FILES_NOT_COMPLETE_TRANSITIVE_RUNTIME',
   development,

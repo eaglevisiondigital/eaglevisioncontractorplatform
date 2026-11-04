@@ -7,6 +7,7 @@ import {
   parseServiceRequestAction,
   saveServiceRequestAction,
   reconcileServiceRequestAction,
+  assertServiceRequestObservationAccess,
   savedRequestStatuses,
   readServiceRequestEvidence,
   inspectServiceRequestEvidence,
@@ -222,6 +223,16 @@ function RequestForm({
     }
   }
   if (!lineage) valid = false;
+  let observationAccess = false;
+  if (view)
+    try {
+      // Old saved/UNKNOWN attempts remain readable under the original access
+      // owner, but a later revoked render must not retain private row detail.
+      assertServiceRequestObservationAccess(view);
+      observationAccess = true;
+    } catch {
+      /* Withhold prior observations without resetting original custody. */
+    }
   async function save() {
     const l = life.current;
     if (!view || !input || !confirmed || l.pending || !valid) return;
@@ -472,12 +483,19 @@ function RequestForm({
         </p>
       )}
       {view && (
-        <button disabled={busy} onClick={() => void reconcile()}>
+        <button
+          disabled={busy || !observationAccess}
+          onClick={() => void reconcile()}
+        >
           Observe exact request read only
         </button>
       )}
-      {observation && (
+      {observation && observationAccess && (
         <section aria-label="Exact request observation">
+          <p>
+            Retained point-in-time observation. Observe the exact request again
+            for a later read. This is not proof of its current saved state.
+          </p>
           <p>
             {observation.state} · {observation.observed}
           </p>

@@ -1,5 +1,21 @@
 # Engineering decisions
 
+## Cycle26 · correct existing native controls; no new operational owner
+
+Use exact unchanged source selection only after explicit reread, reset all verification
+and confirmation, and retain original spent/UNKNOWN custody. Recheck original current
+access before rendering retained private request observations. Point-in-time observations
+never imply current row truth, durable receipts or physical completion. Stale maintenance
+controls are withheld without promoting review cancellation to plan/enrollment authority.
+Offline adds finite nonprivate UNKNOWN reasons to the original stateless comparison.
+
+Six disjoint direct-child source commits retain all original assertions and engines.
+Build-only exact source lineage admits only fixed reviewed forwards; it is not business
+state or restore authority. Independent review corrected a native desk-shape validation
+defect and bound the matrix checker to its exact separately reviewed record. The matrix
+is documentation-only, with all real operational custody unassigned/unverified and the
+original P1→separate14→original4B/broker sequence intact. No schema/adapter activation.
+
 ## Cycle25 · exact native continuity; operational dependencies remain NO-GO
 
 Extend existing source panels and engines instead of another workflow/store. Current C25

@@ -1,0 +1,50 @@
+name: Cycle 26 exact native corrections
+on:
+  push:
+    branches: ['codex/program-cycle-twenty-six-integration']
+  pull_request:
+    branches: ['codex/program-cycle-twenty-five-integration']
+    paths:
+      - 'src/lib/workflows/*.ts'
+      - 'src/components/workflows/*'
+      - 'scripts/*cycle26*'
+      - 'scripts/cycle25-source-lineage.mjs'
+      - 'scripts/collect-cycle24-browser.mjs'
+      - 'tests/cycle26*'
+      - 'tests/program/*cycle26*'
+      - 'docs/program/CYCLE26*'
+      - '.github/workflows/cycle26-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle26-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  source-and-local-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node scripts/check-cycle26.mjs --combined
+      - run: npx vitest run tests/cycle26*.test.ts tests/cycle25-combined-integration.test.ts tests/cycle25-source-lineage.test.ts --maxWorkers=2 --reporter=json --outputFile=artifacts/cycle26/application-results.json
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test -c tests/program/playwright.cycle26-request.config.ts
+      - run: npx playwright test -c tests/program/playwright.cycle26.config.ts
+      - run: CYCLE26_BROWSER_MODE=off npx playwright test -c tests/program/playwright.cycle26.config.ts
+      - run: CYCLE24_ARTIFACT_DIR=artifacts/cycle26 node scripts/collect-cycle24-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle26-local-correction-evidence
+          path: artifacts/cycle26/
+          retention-days: 7

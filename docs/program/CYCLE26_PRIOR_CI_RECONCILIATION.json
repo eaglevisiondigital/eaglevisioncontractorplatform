@@ -1,0 +1,103 @@
+{
+  "schema": "propel-cycle26-prior-ci-reconciliation-v1",
+  "checked_at": "2026-11-04T06:29:04.011027+00:00",
+  "cycle25_current_exact_heads": [
+    {
+      "pr": 173,
+      "head": "e1fe6ef1c7d27e042be8e0cdf67a0b82acb1bcb4",
+      "draft": true,
+      "state": "OPEN",
+      "outcomes": {
+        "QUEUED": 10
+      }
+    },
+    {
+      "pr": 174,
+      "head": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "draft": true,
+      "state": "OPEN",
+      "outcomes": {
+        "QUEUED": 25
+      }
+    },
+    {
+      "pr": 175,
+      "head": "a5316cd7155202a1b1fa950eb704ae529857eafd",
+      "draft": true,
+      "state": "OPEN",
+      "outcomes": {
+        "QUEUED": 28
+      }
+    },
+    {
+      "pr": 176,
+      "head": "d0d0e0a552eae2ab487162866ee5e624e8a3e26d",
+      "draft": true,
+      "state": "OPEN",
+      "outcomes": {
+        "QUEUED": 28
+      }
+    },
+    {
+      "pr": 177,
+      "head": "bab6ee5b7625b3aaa69691161c18091c5c4d1f49",
+      "draft": true,
+      "state": "OPEN",
+      "outcomes": {
+        "QUEUED": 28
+      }
+    },
+    {
+      "pr": 178,
+      "head": "056a7923b1574010109e0f143e0d653f2efb0a96",
+      "draft": true,
+      "state": "OPEN",
+      "outcomes": {
+        "QUEUED": 28
+      }
+    },
+    {
+      "pr": 179,
+      "head": "e1b422014b7c1e2ef8b1e1f437f535f02f265935",
+      "draft": true,
+      "state": "OPEN",
+      "outcomes": {
+        "QUEUED": 28
+      }
+    },
+    {
+      "pr": 180,
+      "head": "3d1d88f683dc296674ff7ecb6685b045aa2ae7c5",
+      "draft": true,
+      "state": "OPEN",
+      "outcomes": {
+        "QUEUED": 28
+      }
+    },
+    {
+      "pr": 181,
+      "head": "70c172108116e4dbb78087d75fc87a61684a42f7",
+      "draft": true,
+      "state": "OPEN",
+      "outcomes": {
+        "QUEUED": 10
+      }
+    }
+  ],
+  "current_conclusion": "ALL_QUEUED_NO_NEW_CONCLUDED_FAILURE_OR_CANCELLATION",
+  "successful_checks_restarted": false,
+  "queued_is_success": false,
+  "historical_evidence": "CYCLE25_PRIOR_CI_RECONCILIATION.json",
+  "historical_C18_and_missing_Foundation_coverage": "OPEN_UNCHANGED",
+  "prior_168_Foundation": {
+    "run": 41757239389,
+    "job": 126336121407,
+    "conclusion": "CANCELLED",
+    "annotation": "The job has exceeded the maximum execution time of 45m0s",
+    "C18_failed_entries": 5,
+    "final_exception_details": "NOT_EMITTED_UNRESOLVED",
+    "artifacts": "NO_MATCHING_ARTIFACTS_UPLOADED",
+    "staging_and_full_browser": "SKIPPED_NOT_ACCEPTED"
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

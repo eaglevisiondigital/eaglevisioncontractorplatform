@@ -11,7 +11,10 @@ import {
   reconcileSavedTaskReceipt,
   readSavedTaskCorrection,
 } from './saved-revision-exercise';
-import { assertSavedRevisionCurrent } from './saved-revision-runtime';
+import {
+  assertSavedRevisionCurrent,
+  assertSavedRevisionAccess,
+} from './saved-revision-runtime';
 import { freezePrototype, prototypeFields } from '../program/prototype-source';
 
 /** Explicit read-only action over the original correction claim. It never
@@ -102,7 +105,9 @@ export function inspectTaskReceiptTask(
     correction_requirement:
       task.review_state === 'CLOSED_SUBMITTED_APPROVED' &&
       task.successor_ids.length === 0
-        ? ('VERIFY_ORIGINAL_SOURCE' as const)
+        ? current.receipt.state === 'NOT_ATTEMPTED'
+          ? ('VERIFY_ORIGINAL_SOURCE' as const)
+          : ('ORIGINAL_CUSTODY_HELD' as const)
         : ('NATIVE_SOURCE_NOT_ELIGIBLE' as const),
     durable_receipt: 'NOT_IMPLEMENTED' as const,
     physical_completion: 'UNVERIFIED' as const,
@@ -148,4 +153,44 @@ export async function taskReceiptControlsDestination(
     source_entry_id: source.source_entry_id,
     meaning: 'OPEN_ORIGINAL_CONTROLS_ONLY' as const,
   });
+}
+
+/** Explicit reread of the same original source context. Mutable evidence may be
+ * stale, but current access and immutable identity must still match. Original
+ * attempts/UNKNOWN remain owned by the unchanged native reader. */
+export async function rereadTaskReceiptContinuity(
+  previous: TaskReceiptContinuity,
+  sources: OperatingSources,
+  jobId: string,
+  gate: JourneyAdmission = { enabled: false, confirmed: false },
+) {
+  const requested = prototypeFields(gate, ['enabled', 'confirmed']);
+  if (requested.enabled !== true || requested.confirmed !== true)
+    throw Error('Explicit local current-source reread required');
+  if (
+    Object.keys(prototypeFields(previous, ['receipt', 'graph', 'order']))
+      .length !== 3
+  )
+    throw Error('Original exact task continuity required');
+  if (
+    Object.keys(prototypeFields(previous.receipt, ['view', 'receipt']))
+      .length !== 2
+  )
+    throw Error('Original task receipt references required');
+  assertSavedRevisionAccess(previous.receipt.view);
+  assertSavedRevisionAccess(previous.graph);
+  assertSavedRevisionAccess(previous.order);
+  const identity = previous.receipt.view.identity;
+  if (
+    jobId !== identity.job_id ||
+    JSON.stringify(identity) !== JSON.stringify(previous.graph.identity) ||
+    JSON.stringify(identity) !== JSON.stringify(previous.order.identity)
+  )
+    throw Error('Exact original task context required for reread');
+  const next = await readTaskReceiptContinuity(sources, jobId, gate);
+  assertSavedRevisionAccess(previous.receipt.view);
+  inspectTaskReceiptContinuity(next);
+  if (JSON.stringify(next.receipt.view.identity) !== JSON.stringify(identity))
+    throw Error('Task reread cannot substitute a customer/property/version');
+  return next;
 }

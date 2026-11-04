@@ -1,0 +1,55 @@
+{
+  "schema": "propel-cycle26-validation-v1",
+  "stage": "SOURCE_CANDIDATE_BROWSER_PENDING",
+  "application": {
+    "unique_cases": 175,
+    "passed": 175,
+    "failed": 0,
+    "author_new_cases": 113,
+    "tooling_cases": 20,
+    "retained_combined": 16,
+    "retained_lineage": 26,
+    "reports": [
+      {
+        "path": "artifacts/cycle26/four-features-results.json",
+        "sha256": "7a292032040d722f43a4d28fb6b7228e4658c4231d72fe0e4fb1086a0e57ce47",
+        "cases": 64
+      },
+      {
+        "path": "artifacts/cycle26/combined-and-source-results.json",
+        "sha256": "b372289184cd7d33feac516fde77675e1819802deb16996a3ec08ed2dadd8660",
+        "cases": 85
+      },
+      {
+        "path": "artifacts/cycle26/retained-lineage-results.json",
+        "sha256": "bc6b639a57fa0b17e3167fe79337ef9113ec93e6b3c9394041a89bd35bda2377",
+        "cases": 26
+      }
+    ],
+    "full_Foundation_acceptance": false
+  },
+  "request_privacy_real_browser": {
+    "passed": 9,
+    "brands": 3,
+    "viewports": ["desktop", "tablet", "mobile"],
+    "baseline": "REAL_REACT_REVOCATION_RED_RETAINED",
+    "loopback_permission_attempt": "RETAINED_ENVIRONMENT_FAILURE_NOT_PRODUCT_FAILURE"
+  },
+  "native_browser": "PENDING",
+  "quality": {
+    "strict_types": "PASS",
+    "lint": "PASS_ONE_PREEXISTING_FAST_REFRESH_WARNING",
+    "format": "PASS",
+    "build": "PASS_EXISTING_CHUNK_WARNING",
+    "generated_types": "PASS",
+    "features": "PASS_25_IDS_5_LOCKS_13_BINDINGS",
+    "migration_integrity": "PASS_THIRTEEN_PLUS_PENDING_CUSTOMER14",
+    "prior_source_preservation": "PASS"
+  },
+  "ci": "SEPARATE_PENDING_NOT_INFERRED",
+  "historical_C18_Foundation": "OPEN_UNCHANGED",
+  "physical_recovery": "NOT_RUN_SECOND_DEVICE_UNAVAILABLE_LAST_REPORT",
+  "operational_ready": false,
+  "restore_adapter": false,
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

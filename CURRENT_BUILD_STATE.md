@@ -1,5 +1,18 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+## Cycle26 · bounded native corrections under review
+
+Six original workflows now retain exact task/cost/source selections, withhold revoked
+request observations and stale maintenance actions, and explain offline UNKNOWN gaps
+without adding an engine, store, writer or restore adapter. Combined175 application/source
+cases and9 real request-revocation browser cases pass locally; the frozen candidate's
+full responsive native matrix is pending. Current GitHub CI is separate, never inferred.
+See [C26 source manifest](docs/program/CYCLE26_SOURCE_MANIFEST.json) and validation.
+The reviewed eight-family/R01–R19 owner/writer matrix remains NO-GO; no operational
+owner, genuine Auth/MFA, receipt/fence/backup or physical recovery gate is accepted.
+Historical C18/Foundation gaps remain OPEN. Original approvals and restrictions persist.
+Release1.0 NOT READY / NOT AUTHORIZED.
+
 Cycle25 delivery: coordination draft[#174](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/174),
 features175–180, independent review181, readiness173. Local555 unique cases,9DEV+3OFF
 responsive journeys,63 screenshots and369 trusted keys PASS; exact current-head GitHub
