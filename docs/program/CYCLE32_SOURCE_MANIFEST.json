@@ -134,11 +134,7 @@
       ]
     }
   ],
-  "audited_no_change": [
-    "growth",
-    "customer",
-    "offline"
-  ],
+  "audited_no_change": ["growth", "customer", "offline"],
   "recovery": {
     "commit": "0fc7e23960a532f0ba2b714d5669e29d92e4b6a8",
     "draft_pr": 235,
