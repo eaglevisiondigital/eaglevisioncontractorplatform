@@ -124,7 +124,11 @@ export type VoiceEstimateReview = ReturnType<typeof result>;
 const holds = new Set<string>();
 const bindings = new WeakMap<
   VoiceEstimateReview,
-  { source: PrototypeSource; gate: PrototypeAdmission }
+  {
+    source: PrototypeSource;
+    gate: PrototypeAdmission;
+    checkInput: () => void;
+  }
 >();
 function key(source: PrototypeSource) {
   const t = source.snapshot.target;
@@ -145,31 +149,40 @@ export async function prepareVoiceEstimate(
 ): Promise<VoiceEstimateReview> {
   confirm(gate);
   const text = transcript(input);
+  // The captured literal is a proposal, not permission to ignore a changed
+  // original form while the existing source/hash readers are finishing.
+  const checkInput = () => {
+    confirm(gate);
+    if (transcript(input) !== text)
+      throw Error('Original confirmed transcript changed');
+  };
   await assertPrototypeSourceCurrent(source);
-  confirm(gate);
+  checkInput();
   const exact = key(source);
   if (holds.has(exact))
     throw Error('Existing or UNKNOWN transcript review; no replay');
   holds.add(exact);
   const body = projection(source, text);
   const sha256 = await documentHash(body);
+  checkInput();
   await assertPrototypeSourceCurrent(source);
-  confirm(gate);
+  checkInput();
   assertPrototypeSourceCurrentNow(source);
-  confirm(gate);
+  checkInput();
   const review = result(body, sha256);
-  bindings.set(review, { source, gate });
+  bindings.set(review, { source, gate, checkInput });
   return review;
 }
 export async function inspectVoiceEstimate(review: VoiceEstimateReview) {
   const binding = bindings.get(review);
   if (!binding) throw Error('Unknown transcript review');
-  confirm(binding.gate);
+  binding.checkInput();
   if ((await documentHash(review.snapshot)) !== review.sha256)
     throw Error('Transcript integrity mismatch');
+  binding.checkInput();
   await assertPrototypeSourceCurrent(binding.source);
-  confirm(binding.gate);
+  binding.checkInput();
   assertPrototypeSourceCurrentNow(binding.source);
-  confirm(binding.gate);
+  binding.checkInput();
   return freezePrototype({ status: 'CURRENT' as const, replacement: null });
 }
