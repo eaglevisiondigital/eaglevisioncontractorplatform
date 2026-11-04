@@ -1,8 +1,17 @@
 // Read-only standard GitHub-runner package-source diagnostics. No APT or writes.
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { validateUbuntuSources } from './cycle30-chromium-dependencies.mjs';
+import {
+  validateUbuntuSources,
+  validateUbuntuMirrors,
+} from './cycle30-chromium-dependencies.mjs';
 const source = readFileSync('/etc/apt/sources.list.d/ubuntu.sources', 'utf8');
+const vocabulary = {
+  types: ['deb', 'deb-src'],
+  suites: ['noble', 'noble-updates', 'noble-backports', 'noble-security'],
+  components: ['main', 'universe', 'restricted', 'multiverse'],
+  architectures: ['amd64'],
+};
 const expectedKey = '/usr/share/keyrings/ubuntu-archive-keyring.gpg';
 const rows = source
   .trim()
@@ -21,8 +30,11 @@ const rows = source
               name: m[1],
               // Only known nonsecret package vocabulary is emitted; other values are hashes.
               value:
-                /^(?:Types|Suites|Components|Architectures)$/i.test(m[1]) &&
-                /^[A-Za-z0-9 -]{1,160}$/.test(m[2])
+                vocabulary[m[1].toLowerCase()]?.includes(m[2]) ||
+                (vocabulary[m[1].toLowerCase()] &&
+                  m[2]
+                    .split(/\s+/)
+                    .every((t) => vocabulary[m[1].toLowerCase()].includes(t)))
                   ? m[2]
                   : undefined,
               value_sha256: createHash('sha256').update(m[2]).digest('hex'),
@@ -42,9 +54,21 @@ const rows = source
       ),
     };
   });
+let mirrorText;
+if (source.includes('mirror+file:/etc/apt/apt-mirrors.txt'))
+  mirrorText = readFileSync('/etc/apt/apt-mirrors.txt', 'utf8');
+let mirrorValidation = 'NOT_REFERENCED';
+if (mirrorText !== undefined) {
+  try {
+    validateUbuntuMirrors(mirrorText);
+    mirrorValidation = 'PASS';
+  } catch (e) {
+    mirrorValidation = e.message;
+  }
+}
 let validation = 'PASS';
 try {
-  validateUbuntuSources(source);
+  validateUbuntuSources(source, mirrorText);
 } catch (e) {
   validation = e.message;
 }
@@ -53,6 +77,11 @@ console.log(
     {
       source_sha256: createHash('sha256').update(source).digest('hex'),
       validation,
+      mirror_validation: mirrorValidation,
+      mirror_sha256:
+        mirrorText === undefined
+          ? undefined
+          : createHash('sha256').update(mirrorText).digest('hex'),
       stanzas: rows,
     },
     null,

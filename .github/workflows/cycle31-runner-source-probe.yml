@@ -18,6 +18,7 @@ jobs:
           node-version: '24.22.2'
       - name: Read safe package-source shape without installation or trust changes
         run: |
+          set -euo pipefail
           mkdir -p artifacts/cycle31
           node scripts/cycle31-ubuntu-source-probe.mjs | tee artifacts/cycle31/runner-source-shape.json
       - uses: actions/upload-artifact@v4

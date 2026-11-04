@@ -1,0 +1,86 @@
+name: Cycle 31 matched original-budget browser diagnosis
+on:
+  push:
+    branches: ['codex/cycle31-ci-reliability']
+    paths:
+      - '.github/workflows/cycle31-browser-diagnostics.yml'
+      - 'scripts/cycle30-browser-timing.mjs'
+      - 'scripts/cycle30-chromium-dependencies.mjs'
+permissions:
+  contents: read
+concurrency:
+  group: cycle31-matched-browser-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  matched-two-cases:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: original-c27
+            source: 5f74b8ff5385560330cb94717c17338ed0c10f44
+          - label: cycle30-candidate
+            source: 353923ce2c6677ae3d5026ac46cf214b2a549aa3
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: diagnostics
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.source }}
+          path: application
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+          cache-dependency-path: application/package-lock.json
+      - name: Bind exact compared source and original assertions
+        working-directory: application
+        run: |
+          test "$(git rev-parse HEAD)" = ${{ matrix.source }}
+          git diff --exit-code
+          mkdir -p artifacts/cycle31
+          node --input-type=module <<'NODE'
+          import {readFileSync} from 'node:fs';import{createHash}from'node:crypto';
+          for(const [p,h] of Object.entries({'playwright.config.ts':'d15e9c4d8f4984878a5cf60bb50e853a1c4fbc9b3de98f380850cd375e553078','tests/browser/cycle21-canonical-corrections.spec.ts':'8eb9efc1ac90be4ccab01f295789465501016bf0aad63daaefc8a92bd276598b','package-lock.json':'8be30ee23e9cd3ca2f54e4b5beb7da07fd20ead0b86b504d31b29b1116b8baa3'}))if(createHash('sha256').update(readFileSync(p)).digest('hex')!==h)throw Error('Original source binding changed: '+p);
+          NODE
+      - run: npm ci
+        working-directory: application
+      - name: Install reviewed missing fonts from signed Ubuntu archives
+        working-directory: application
+        run: node ../diagnostics/scripts/cycle30-chromium-dependencies.mjs
+      - name: Require complete system dependencies without refreshing unrelated feeds
+        working-directory: application
+        run: npx playwright install-deps --dry-run chromium
+      - run: npx playwright install chromium
+        working-directory: application
+      - name: Measure only original failed cases with unchanged budgets and assertions
+        id: original-tests
+        working-directory: application
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_NAME: artifacts/cycle31/results.json
+          CYCLE30_TIMING_OUTPUT: artifacts/cycle31/timing.json
+        run: npm run test:browser -- tests/browser/cycle21-canonical-corrections.spec.ts --grep 'canonical task cost plan corrections and exact history navigation / roofing-example' --project=desktop --project=tablet --workers=2 --retries=0 --trace=on --reporter=json,../diagnostics/scripts/cycle30-browser-timing.mjs
+      - name: Validate exact diagnostic collection without relabeling failures
+        if: always() && steps.original-tests.outcome != 'skipped'
+        working-directory: application
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFileSync} from 'node:fs';
+          const r=JSON.parse(readFileSync('artifacts/cycle31/results.json'));const rows=[];
+          function walk(x){for(const s of x.suites??[])walk(s);for(const s of x.specs??[])for(const t of s.tests??[])rows.push({s,t});}walk(r);
+          if(r.config.workers!==2||r.errors.length||rows.length!==2||r.stats.skipped||r.stats.flaky||r.stats.expected+r.stats.unexpected!==2)throw Error('Two complete unchanged original attempts required');
+          const seen=new Set();for(const {s,t}of rows){if(s.file!=='cycle21-canonical-corrections.spec.ts'||s.title!=='canonical task cost plan corrections and exact history navigation / roofing-example'||!['desktop','tablet'].includes(t.projectId)||seen.has(t.projectId)||t.timeout!==30000||t.expectedStatus!=='passed'||t.results.length!==1||t.results[0].retry!==0||!['passed','failed','timedOut'].includes(t.results[0].status))throw Error('Changed or incomplete diagnostic evidence');seen.add(t.projectId);}
+          console.log('Observed attempts retained with their actual PASS/FAIL outcomes; no historical CI is relabeled.');
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle31-browser-${{ matrix.label }}
+          path: |
+            application/artifacts/cycle31/
+            application/test-results/
+          retention-days: 7
