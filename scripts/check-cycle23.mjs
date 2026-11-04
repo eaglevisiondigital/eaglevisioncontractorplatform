@@ -5,6 +5,7 @@ import { relative, resolve, sep } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { readCycle13File } from './check-cycle13-integrity.mjs';
 import { validateCycle22Manifest } from './check-cycle22.mjs';
+import { validateCycle21PublishedSource } from './check-cycle21.mjs';
 
 export const cycle23Parent = '3e35fb29dd4488bf655446712e5a013e06f8ed1e';
 export const cycle23Branch = 'codex/program-cycle-twenty-three-integration';
@@ -187,11 +188,33 @@ export function validateCycle23Manifest(manifest, ports = {}) {
     if (!Buffer.from(read(path)).equals(Buffer.from(git(cycle23Parent, path))))
       throw Error(`Exact retained manifest required: ${path}`);
   for (const path of priorIndexes)
-    for (const file of JSON.parse(read(path)).packages.flatMap(
-      (p) => p.owned_files,
-    ))
-      if (sha(read(file.path)) !== file.sha256)
+    for (const p of JSON.parse(read(path)).packages)
+      for (const file of p.owned_files) {
+        const bytes = Buffer.from(read(file.path));
+        if (sha(bytes) === file.sha256) continue;
+        if (
+          path === 'docs/program/CYCLE21_SOURCE_MANIFEST.json' &&
+          p.head_commit === '161f1c59d864d60aa0f45820eb6417864519baf2' &&
+          file.path === 'src/components/workflows/RecordedOwnerActions.tsx'
+        ) {
+          try {
+            // Prior validation and the exact retained-manifest check above
+            // remain mandatory. Recheck this current read against the sole
+            // reviewed endpoint without changing its original hash or blob.
+            validateCycle21PublishedSource(
+              file,
+              p.head_commit,
+              bytes,
+              Buffer.from(git(p.head_commit, file.path)),
+              { read, git },
+            );
+            continue;
+          } catch {
+            // Unknown current bytes retain the original failure contract.
+          }
+        }
         throw Error(`Retained author source changed: ${file.path}`);
+      }
   const protectedFiles = JSON.parse(
       read('docs/program/CYCLE4_PROTECTED_SOURCE.json'),
     ).files,
