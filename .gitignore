@@ -70,3 +70,6 @@ artifacts/cycle21/
 
 # Local Cycle25 source-bound integration evidence.
 /artifacts/cycle25/
+
+# Private disposable Cycle26 application/browser evidence.
+/artifacts/cycle26/
