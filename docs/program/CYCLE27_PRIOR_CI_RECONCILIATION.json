@@ -2,11 +2,9 @@
   "schema": "propel-cycle27-prior-ci-reconciliation-v1",
   "source_commit": "f81081b3ce8fca63443a9f03e8bfcd5aa4daa4b6",
   "pr": 190,
-  "checked_at": "2026-11-04T12:45:03.463553+00:00",
   "pr_dedicated_successful": 17,
   "dedicated_cycle26_run": 41789311280,
   "dedicated_cycle26_push_run": 41789303251,
-  "manual_reruns": 0,
   "original_foundation_changed": false,
   "foundation": [
     {
@@ -64,9 +62,39 @@
     "shards": 4,
     "required": "ALL_FOUR_AND_EXACT_RESULT_UNION",
     "collected_cases": 399,
-    "status": "IN_PROGRESS_AT_SNAPSHOT",
-    "changes_historical_conclusion": false
+    "status": "COMPLETED_FAILURE",
+    "changes_historical_conclusion": false,
+    "case_union": 399,
+    "passed": 397,
+    "timed_out": 2,
+    "skipped": 0,
+    "retries": 0,
+    "pairwise_overlap": 0,
+    "missing_cases": 0,
+    "extra_cases": 0,
+    "analysis_sha256": "8b92514fde720be47b7211b54965aa3b838900221ee9d3bbb438a2fea48ea186"
   },
   "historical_cycle18_and_incomplete_foundation": "OPEN_NOT_ERASED_BY_SAME_SHA_PR_APPLICATION_PASS",
-  "release": "NOT_READY_NOT_AUTHORIZED"
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "initial_source_snapshot_checked_at": "2026-11-04T12:45:03.463553+00:00",
+  "updated_at": "2026-11-04T13:43:27.236115+00:00",
+  "historical_workflow_reruns": 0,
+  "successful_checks_restarted": 0,
+  "deadline_followup": {
+    "pr": 199,
+    "head": "7cf0eaf1ccd4a4ab9fc73f637f4bc19c2f3b4a4f",
+    "run": 41837332646,
+    "runtime_source": "f81081b3ce8fca63443a9f03e8bfcd5aa4daa4b6",
+    "case_count": 2,
+    "original_timeout_ms": 30000,
+    "supplement_timeout_ms": 90000,
+    "status": "SUCCESS",
+    "original_condition_pass": false,
+    "changes_original_failures": false,
+    "passed": 2,
+    "skipped": 0,
+    "retries": 0,
+    "desktop_duration_ms": 31698,
+    "mobile_duration_ms": 15862
+  }
 }

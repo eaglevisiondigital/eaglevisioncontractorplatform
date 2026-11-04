@@ -172,5 +172,12 @@
   "business_store": false,
   "operational_adapter": false,
   "physical_recovery": "NOT_RUN",
-  "release": "NOT_READY_NOT_AUTHORIZED"
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "coordination_pr": 200,
+  "executed_native_commit": "b3be1c90ad4cf90412890bf90e90f9cf981ab787",
+  "main_tooling_cache_commit": "c6c4507e2e099861538e918fb9d56f53572e6e61",
+  "independent_review": {
+    "pr": 201,
+    "commit": "d96ecb15679d4fc5fb6da9647545c4cba88bc879"
+  }
 }

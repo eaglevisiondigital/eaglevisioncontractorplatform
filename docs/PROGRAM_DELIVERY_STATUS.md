@@ -1,6 +1,10 @@
-# Cycle27 · native correction cycle
+# Cycle27 · completed local native corrections
 
-Six exact bounded author commits are assembled on f81081 in separate worktrees. Local178 focused cases PASS; combined committed browser and exact-head CI are pending. Manifest and prior-CI reconciliation preserve original sources and every historical gap. Readiness draft192 identifies the original request→receipt→staff-read owners/writers, with all operational assignments/current grants/custody/recovery unverified. No new store, engine, adapter, connected route or restored authority. Release1.0 NOT READY / NOT AUTHORIZED.
+Draft200 composes separately reviewed193–198; exact source/current heads and actual agents are in [C27 validation](program/CYCLE27_VALIDATION.md).181 unique focused cases,9DEV+3OFF branded responsive/a11y journeys,63 screenshots and369 trusted keyboard events PASS.18 privacy cases pass across preserved/targeted runs; no same-head18 claim. Build-only immutable raw Git caching closes a measured verification bottleneck without caching current files or authority. Independent review preserves128 protected hashes,536 old tests and5 locks/13bindings.
+
+C26 retains17 dedicated successes and two CANCELLED Foundations; original browser supplement191 has397PASS/2deadline failures across all399 cases. Exact-two-case changed-budget followup199PASS; original failures/cancellations remain. Current per-PR automatic CI contains successes/cancellations/pending checks (C27_CI_SNAPSHOT), never inferred green. HistoricalC18/Foundation gaps remain OPEN; successful checks were not manually restarted.
+
+Readiness192 is STATIC REVIEW ONLY/NO-GO; eightfamilies/R01–R19, genuine operational owners/grants/custody/matched recovery unaccepted. Air last unavailable; physical rehearsal NOT RUN, original kit/25completed checks retained. Existing25capabilities/original18IDs/eight Phase One gates,13/customer14/4B/P1/four/approvals/designs/Netlify/Auth/MFA/NMI/recovery/financial/production restrictions remain. No operational adapter or new store/engine. Release1.0 NOT READY / NOT AUTHORIZED.
 
 # Product program delivery status
 

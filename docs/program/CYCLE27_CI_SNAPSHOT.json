@@ -1,0 +1,433 @@
+{
+  "checked_at": "2026-11-04T13:45:53.427073+00:00",
+  "scope": "EXACT_OBSERVED_HEADS_FINAL_DOC_FORWARD_CI_SEPARATE",
+  "prs": [
+    {
+      "pr": 191,
+      "head": "10459da1d7edb460aced2b9bda1ccee9c13f5336",
+      "branch": "codex/cycle27-foundation-browser-coverage",
+      "base": "codex/program-cycle-twenty-six-integration",
+      "draft": true,
+      "state": "OPEN",
+      "counts": {
+        "COMPLETED:FAILURE": 2,
+        "COMPLETED:CANCELLED": 2,
+        "COMPLETED:SUCCESS": 10
+      },
+      "foundation": [
+        {
+          "name": "verify",
+          "status": "COMPLETED",
+          "conclusion": "CANCELLED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41833951049/job/126587945124"
+        },
+        {
+          "name": "verify",
+          "status": "COMPLETED",
+          "conclusion": "CANCELLED",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41833888527/job/126587725094"
+        },
+        {
+          "name": "postgres17",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41833951049/job/126587945543"
+        },
+        {
+          "name": "postgres17",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41833888527/job/126587724669"
+        }
+      ]
+    },
+    {
+      "pr": 192,
+      "head": "28aaa835c63802a8ad571804028b6700e20e3924",
+      "branch": "codex/cycle27-minimum-readiness",
+      "base": "codex/program-cycle-twenty-six-integration",
+      "draft": true,
+      "state": "OPEN",
+      "counts": {
+        "IN_PROGRESS:": 2,
+        "COMPLETED:SUCCESS": 8
+      },
+      "foundation": [
+        {
+          "name": "verify",
+          "status": "IN_PROGRESS",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41834521861/job/126589898168"
+        },
+        {
+          "name": "verify",
+          "status": "IN_PROGRESS",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41834512944/job/126589866407"
+        },
+        {
+          "name": "postgres17",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41834521861/job/126589897627"
+        },
+        {
+          "name": "postgres17",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41834512944/job/126589865934"
+        }
+      ]
+    },
+    {
+      "pr": 193,
+      "head": "e10eb5f188ce73dc64fabc40626fccdf6267ffc1",
+      "branch": "codex/cycle27-task-custody",
+      "base": "codex/program-cycle-twenty-six-integration",
+      "draft": true,
+      "state": "OPEN",
+      "counts": {
+        "QUEUED:": 7,
+        "IN_PROGRESS:": 2,
+        "COMPLETED:SUCCESS": 19
+      },
+      "foundation": [
+        {
+          "name": "verify",
+          "status": "IN_PROGRESS",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41835785570/job/126594200535"
+        },
+        {
+          "name": "verify",
+          "status": "IN_PROGRESS",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41835711596/job/126593944045"
+        },
+        {
+          "name": "postgres17",
+          "status": "QUEUED",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41835785570/job/126594200521"
+        },
+        {
+          "name": "postgres17",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41835711596/job/126593944500"
+        }
+      ]
+    },
+    {
+      "pr": 194,
+      "head": "88afe7dff557963c259891aef1b8f3d2961c3967",
+      "branch": "codex/cycle27-cost-completeness",
+      "base": "codex/program-cycle-twenty-six-integration",
+      "draft": true,
+      "state": "OPEN",
+      "counts": {
+        "QUEUED:": 7,
+        "IN_PROGRESS:": 2,
+        "COMPLETED:SUCCESS": 19
+      },
+      "foundation": [
+        {
+          "name": "verify",
+          "status": "IN_PROGRESS",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41835790973/job/126594217446"
+        },
+        {
+          "name": "verify",
+          "status": "IN_PROGRESS",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41835711753/job/126593944625"
+        },
+        {
+          "name": "postgres17",
+          "status": "QUEUED",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41835790973/job/126594218052"
+        },
+        {
+          "name": "postgres17",
+          "status": "QUEUED",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41835711753/job/126593945047"
+        }
+      ]
+    },
+    {
+      "pr": 195,
+      "head": "fb994fedd70cba7925bb9e08df527fa9a4bd8c92",
+      "branch": "codex/cycle27-request-authority",
+      "base": "codex/program-cycle-twenty-six-integration",
+      "draft": true,
+      "state": "OPEN",
+      "counts": {
+        "QUEUED:": 4,
+        "IN_PROGRESS:": 3,
+        "COMPLETED:SUCCESS": 21
+      },
+      "foundation": [
+        {
+          "name": "verify",
+          "status": "IN_PROGRESS",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41835796511/job/126594236708"
+        },
+        {
+          "name": "verify",
+          "status": "IN_PROGRESS",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41835711945/job/126593944948"
+        },
+        {
+          "name": "postgres17",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41835796511/job/126594237230"
+        },
+        {
+          "name": "postgres17",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41835711945/job/126593945442"
+        }
+      ]
+    },
+    {
+      "pr": 196,
+      "head": "bbd753642a49e53eeec4f8a6525f161e58442b31",
+      "branch": "codex/cycle27-maintenance-consent",
+      "base": "codex/program-cycle-twenty-six-integration",
+      "draft": true,
+      "state": "OPEN",
+      "counts": {
+        "QUEUED:": 6,
+        "IN_PROGRESS:": 2,
+        "COMPLETED:SUCCESS": 20
+      },
+      "foundation": [
+        {
+          "name": "verify",
+          "status": "QUEUED",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41835801777/job/126594255680"
+        },
+        {
+          "name": "verify",
+          "status": "IN_PROGRESS",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41835711337/job/126593942224"
+        },
+        {
+          "name": "postgres17",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41835801777/job/126594255591"
+        },
+        {
+          "name": "postgres17",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41835711337/job/126593942725"
+        }
+      ]
+    },
+    {
+      "pr": 197,
+      "head": "bb78519994f9889a294167110d7d0cedb9e98d4c",
+      "branch": "codex/cycle27-owner-navigation",
+      "base": "codex/program-cycle-twenty-six-integration",
+      "draft": true,
+      "state": "OPEN",
+      "counts": {
+        "QUEUED:": 12,
+        "IN_PROGRESS:": 2,
+        "COMPLETED:SUCCESS": 14
+      },
+      "foundation": [
+        {
+          "name": "verify",
+          "status": "QUEUED",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41835809839/job/126594283102"
+        },
+        {
+          "name": "verify",
+          "status": "IN_PROGRESS",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41835712151/job/126593945880"
+        },
+        {
+          "name": "postgres17",
+          "status": "QUEUED",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41835809839/job/126594283695"
+        },
+        {
+          "name": "postgres17",
+          "status": "QUEUED",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41835712151/job/126593946355"
+        }
+      ]
+    },
+    {
+      "pr": 198,
+      "head": "5e3e9c9dfd0cadace2a56158d8e4ec6112b3beea",
+      "branch": "codex/cycle27-offline-reconciliation",
+      "base": "codex/program-cycle-twenty-six-integration",
+      "draft": true,
+      "state": "OPEN",
+      "counts": {
+        "QUEUED:": 11,
+        "IN_PROGRESS:": 4,
+        "COMPLETED:SUCCESS": 13
+      },
+      "foundation": [
+        {
+          "name": "verify",
+          "status": "IN_PROGRESS",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41835816262/job/126594307104"
+        },
+        {
+          "name": "verify",
+          "status": "IN_PROGRESS",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41835712040/job/126593944726"
+        },
+        {
+          "name": "postgres17",
+          "status": "IN_PROGRESS",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41835712040/job/126593945263"
+        },
+        {
+          "name": "postgres17",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41835816262/job/126594306732"
+        }
+      ]
+    },
+    {
+      "pr": 199,
+      "head": "7cf0eaf1ccd4a4ab9fc73f637f4bc19c2f3b4a4f",
+      "branch": "codex/cycle27-browser-deadline-reconciliation",
+      "base": "codex/cycle27-foundation-browser-coverage",
+      "draft": true,
+      "state": "OPEN",
+      "counts": {
+        "QUEUED:": 5,
+        "IN_PROGRESS:": 1,
+        "COMPLETED:SUCCESS": 6
+      },
+      "foundation": [
+        {
+          "name": "verify",
+          "status": "QUEUED",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41837332612/job/126599517492"
+        },
+        {
+          "name": "verify",
+          "status": "IN_PROGRESS",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41837342769/job/126599553944"
+        },
+        {
+          "name": "postgres17",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41837342769/job/126599554352"
+        },
+        {
+          "name": "postgres17",
+          "status": "COMPLETED",
+          "conclusion": "SUCCESS",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41837332612/job/126599517101"
+        }
+      ]
+    },
+    {
+      "pr": 200,
+      "head": "b3be1c90ad4cf90412890bf90e90f9cf981ab787",
+      "branch": "codex/program-cycle-twenty-seven-integration",
+      "base": "codex/program-cycle-twenty-six-integration",
+      "draft": true,
+      "state": "OPEN",
+      "counts": {
+        "QUEUED:": 24,
+        "IN_PROGRESS:": 1,
+        "COMPLETED:SUCCESS": 5
+      },
+      "foundation": [
+        {
+          "name": "verify",
+          "status": "QUEUED",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41837354039/job/126599595122"
+        },
+        {
+          "name": "verify",
+          "status": "QUEUED",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41837344290/job/126599558610"
+        },
+        {
+          "name": "postgres17",
+          "status": "QUEUED",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41837354039/job/126599594418"
+        },
+        {
+          "name": "postgres17",
+          "status": "QUEUED",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41837344290/job/126599558905"
+        }
+      ]
+    },
+    {
+      "pr": 201,
+      "head": "d96ecb15679d4fc5fb6da9647545c4cba88bc879",
+      "branch": "codex/cycle27-independent-review",
+      "base": "codex/program-cycle-twenty-six-integration",
+      "draft": true,
+      "state": "OPEN",
+      "counts": {
+        "QUEUED:": 10
+      },
+      "foundation": [
+        {
+          "name": "verify",
+          "status": "QUEUED",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41840941321/job/126612038463"
+        },
+        {
+          "name": "verify",
+          "status": "QUEUED",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41840930614/job/126612002181"
+        },
+        {
+          "name": "postgres17",
+          "status": "QUEUED",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41840941321/job/126612038045"
+        },
+        {
+          "name": "postgres17",
+          "status": "QUEUED",
+          "conclusion": "",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41840930614/job/126612001816"
+        }
+      ]
+    }
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}
