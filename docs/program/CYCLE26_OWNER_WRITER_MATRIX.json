@@ -1,0 +1,1002 @@
+{
+  "schema": "propel-cycle26-owner-writer-responsibility-v1",
+  "scope": "STATIC_DESIGN_REVIEW_ONLY",
+  "source_commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+  "prior_register": {
+    "path": "docs/program/CYCLE25_OPERATIONAL_READINESS.json",
+    "sha256": "8683388fa7029324b94c7d75dbd4eddd238ce5bda1ec7768e2c030a8d23efaa9"
+  },
+  "status": "NO_GO_OPERATIONAL_IMPLEMENTATION",
+  "implementation_authorized": false,
+  "schema_authorized": false,
+  "restore_adapter_authorized": false,
+  "operational_ready": false,
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "responsibility_definitions": {
+    "business_owner": "Accountable tenant/domain operator for exact business record; operational assignee and acceptance remain UNASSIGNED_OR_UNVERIFIED.",
+    "authorization_owner": "Genuine Auth/session/mapping/membership/MFA owner; server-current checks before admission, after waits and after quarantine; never browser selection or metadata.",
+    "admission_owner": "Separately committed original one-use registrar/issuer; source/tenant/actor/command binding and external spent-claim fence survive consumer rollback.",
+    "transaction_owner": "Existing canonical consumer writer; mutation and exact immutable receipt share reviewed transaction/CAS; no second business store.",
+    "receipt_owner": "Append-only unique exact receipt custodian; authenticated issuer/key/witness and commit watermark; hash/count/timestamp alone insufficient.",
+    "ack_owner": "Supervised request broker; success only after canonical commit, receipt validation and required custody durability; lost ACK remains UNKNOWN.",
+    "reconciliation_owner": "Current-authorized read-only exact command/source/receipt reader; no replay/rebind/newest/replacement ID.",
+    "database_security_owner": "Reviewed installer, helper/definer owner, provisioner and grant/RLS/catalog operator; enumerate direct/raw/admin writers and finite role attributes.",
+    "backup_owner": "Matched DB timeline/LSN/schema/revisions, receipt watermark, object versions, custody epoch and protected key references; restore operator distinct from admission.",
+    "fence_owner": "Independent external antirollback/revocation authority; unavailable means NO-GO, never restore historical spent permissions.",
+    "recovery_owner": "Supervised supported independent-device/quarantine/recovery operator; measured RPO/RTO, current external revocation and cleanup.",
+    "acceptance_owner": "Owner plus independent security/integration reviewer, exact scope/hash/target and separate authorization; architecture is not implementation permission."
+  },
+  "operational_families": [
+    {
+      "id": "task_correction",
+      "kind": "MUTATION_FUTURE",
+      "existing_owner_and_methods": "saved-revision-exercise original task/time custody; Phase3Repository.recordTime/submitTime/reviewTime and assignJob",
+      "operational_accountable_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "writer_and_missing_owner_evidence": "Phase3 time/review RPCs are existing record owners. Durable operational work-order/task revision owner and original admission/receipt protocol remain missing; field-lab is not that owner.",
+      "transaction_or_read_boundary": "Exact organization/customer/property/job/worker/time/source and result revisions, native review event; source CAS/post-wait authorization and atomic consumer receipt.",
+      "source_paths": [
+        "src/lib/workflows/saved-revision-exercise.ts",
+        "src/lib/phase3.ts"
+      ],
+      "requirements": [
+        "R02",
+        "R04",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R16"
+      ],
+      "responsibilities": [
+        "business_owner",
+        "authorization_owner",
+        "admission_owner",
+        "transaction_owner",
+        "receipt_owner",
+        "ack_owner",
+        "reconciliation_owner",
+        "database_security_owner",
+        "backup_owner",
+        "fence_owner",
+        "recovery_owner",
+        "acceptance_owner"
+      ],
+      "operational_acceptance": "NOT_RUN",
+      "authority_granted": false
+    },
+    {
+      "id": "material_labor_review",
+      "kind": "MUTATION_FUTURE",
+      "existing_owner_and_methods": "Phase3Repository.reviewExpense, recordPurchasedMaterials, reviewTime; canonical jobFinancials",
+      "operational_accountable_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "writer_and_missing_owner_evidence": "Separate expense/material, labor/time and period-lock owners; approved labor may remain unposted. No new ledger or financial execution owner is created.",
+      "transaction_or_read_boundary": "Exact expense/quantity/unit/review event/time predecessor/job lock/period plus original command; integer totals are not posting, invoice issuance or settlement.",
+      "source_paths": [
+        "src/lib/phase3.ts",
+        "src/domain/jobs/financials.ts",
+        "src/lib/workflows/saved-revision-exercise.ts"
+      ],
+      "requirements": [
+        "R02",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R16"
+      ],
+      "responsibilities": [
+        "business_owner",
+        "authorization_owner",
+        "admission_owner",
+        "transaction_owner",
+        "receipt_owner",
+        "ack_owner",
+        "reconciliation_owner",
+        "database_security_owner",
+        "backup_owner",
+        "fence_owner",
+        "recovery_owner",
+        "acceptance_owner"
+      ],
+      "operational_acceptance": "NOT_RUN",
+      "authority_granted": false
+    },
+    {
+      "id": "intake_review",
+      "kind": "MUTATION_FUTURE",
+      "existing_owner_and_methods": "Operations.assignIntake; private/public assign_intake RPC",
+      "operational_accountable_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "writer_and_missing_owner_evidence": "Existing writer returns void. No authenticated writer-attributed durable receipt or server source-CAS in this contract. Operations.saveCustomer/saveLocation/recordConsent are distinct writers to inventory.",
+      "transaction_or_read_boundary": "Exact request/customer/property and source CAS must be designed by original owner; timestamp/status/assignee equality cannot resolve UNKNOWN. Missing request-to-job FK remains UNKNOWN.",
+      "source_paths": [
+        "src/lib/operations.ts",
+        "src/lib/workflows/saved-revision-exercise.ts"
+      ],
+      "requirements": [
+        "R01",
+        "R03",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R16"
+      ],
+      "responsibilities": [
+        "business_owner",
+        "authorization_owner",
+        "admission_owner",
+        "transaction_owner",
+        "receipt_owner",
+        "ack_owner",
+        "reconciliation_owner",
+        "database_security_owner",
+        "backup_owner",
+        "fence_owner",
+        "recovery_owner",
+        "acceptance_owner"
+      ],
+      "operational_acceptance": "NOT_RUN",
+      "authority_granted": false
+    },
+    {
+      "id": "published_service_history",
+      "kind": "READ_ONLY",
+      "existing_owner_and_methods": "PropertyRepository exact published report/version reader; service-source-review; issued-only customer review",
+      "operational_accountable_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "writer_and_missing_owner_evidence": "Read-only family: no mutation receipt fabricated. Publication/inspection writers remain separate reviewed owners; documentation is not physical completion or customer acceptance.",
+      "transaction_or_read_boundary": "Current tenant/customer/property access and exact immutable report/version/finding/job association; consistent published snapshot and safe allowlisted fields.",
+      "source_paths": [
+        "src/lib/property.ts",
+        "src/lib/workflows/service-source-review.ts",
+        "src/domain/customer/review.ts"
+      ],
+      "requirements": ["R01", "R02", "R03", "R07", "R12", "R14", "R16", "R18"],
+      "responsibilities": [
+        "business_owner",
+        "authorization_owner",
+        "reconciliation_owner",
+        "database_security_owner",
+        "backup_owner",
+        "fence_owner",
+        "recovery_owner",
+        "acceptance_owner"
+      ],
+      "operational_acceptance": "NOT_RUN",
+      "authority_granted": false
+    },
+    {
+      "id": "maintenance_review",
+      "kind": "MUTATION_FUTURE",
+      "existing_owner_and_methods": "PropertyRepository.savePlan original revision CAS; original plan-cancellation-review lifecycle",
+      "operational_accountable_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "writer_and_missing_owner_evidence": "Plan writer, review lifecycle and purpose-specific consent/suppression/enrollment writers are distinct. Native plan/enrollment cancellation is UNSUPPORTED; review cancellation does not send or cancel enrollment.",
+      "transaction_or_read_boundary": "Exact plan/revision/occurrence/purpose/predecessor/current consent/suppression and post-wait authority. All participating maintenance writers require reviewed admission; D009 remains blocked.",
+      "source_paths": [
+        "src/lib/property.ts",
+        "src/lib/workflows/plan-cancellation-review.ts"
+      ],
+      "requirements": [
+        "R01",
+        "R03",
+        "R05",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R16"
+      ],
+      "responsibilities": [
+        "business_owner",
+        "authorization_owner",
+        "admission_owner",
+        "transaction_owner",
+        "receipt_owner",
+        "ack_owner",
+        "reconciliation_owner",
+        "database_security_owner",
+        "backup_owner",
+        "fence_owner",
+        "recovery_owner",
+        "acceptance_owner"
+      ],
+      "operational_acceptance": "NOT_RUN",
+      "authority_granted": false
+    },
+    {
+      "id": "owner_priority_navigation",
+      "kind": "READ_ONLY",
+      "existing_owner_and_methods": "priority-actions and verified-owner-briefing original authorized source projection/navigation",
+      "operational_accountable_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "writer_and_missing_owner_evidence": "Read-only family: no autonomous action owner, receipt or AI completion. Authoritative sources and original workflow-state readers retain ownership.",
+      "transaction_or_read_boundary": "Exact source key/version/facts/rank/reasons and target authorization; UNKNOWN/stale prioritized truthfully, navigation never confers permission.",
+      "source_paths": [
+        "src/lib/workflows/priority-actions.ts",
+        "src/lib/workflows/verified-owner-briefing.ts"
+      ],
+      "requirements": ["R01", "R02", "R03", "R07", "R12", "R18"],
+      "responsibilities": [
+        "business_owner",
+        "authorization_owner",
+        "reconciliation_owner",
+        "database_security_owner",
+        "backup_owner",
+        "fence_owner",
+        "recovery_owner",
+        "acceptance_owner"
+      ],
+      "operational_acceptance": "NOT_RUN",
+      "authority_granted": false
+    },
+    {
+      "id": "offline_source_admission",
+      "kind": "READ_ONLY",
+      "existing_owner_and_methods": "offline-source-admission/protocol original stateless comparison and requirement readers",
+      "operational_accountable_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "writer_and_missing_owner_evidence": "Read-only family: no synchronization queue, writer, restore adapter, replay, renewal or durable claim. Captures/historical evidence do not restore canonical state.",
+      "transaction_or_read_boundary": "Exact original capture/protocol/source comparison and original admission requirements; ambiguity remains UNKNOWN with finite non-private explanation.",
+      "source_paths": [
+        "src/lib/workflows/offline-source-admission.ts",
+        "src/lib/workflows/offline-source-protocol.ts"
+      ],
+      "requirements": ["R01", "R02", "R03", "R07", "R12", "R18"],
+      "responsibilities": [
+        "business_owner",
+        "authorization_owner",
+        "reconciliation_owner",
+        "database_security_owner",
+        "backup_owner",
+        "fence_owner",
+        "recovery_owner",
+        "acceptance_owner"
+      ],
+      "operational_acceptance": "NOT_RUN",
+      "authority_granted": false
+    },
+    {
+      "id": "customer_decision_broker",
+      "kind": "MUTATION_FUTURE",
+      "existing_owner_and_methods": "Original customer14 / 4B SDK; CustomerRequestBroker.submit/reconcile/staffQueue; runCustomerRequestTransaction",
+      "operational_accountable_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "writer_and_missing_owner_evidence": "Only proposed disposable 4B ownership: NOLOGIN core/admission/reader owners; registrar/reader and finite issuer/executor pairs. Historical definer/helper/installer, core CREATE and pg_read_all_stats remain TCB gaps; no operational grants/activation accepted.",
+      "transaction_or_read_boundary": "Issuer commit before exact backend/full-XID consumer; native request/receipt uniqueness and original principal/session/member/mapping checks after waits. UNKNOWN read-only, no reissue/rebind/new ID.",
+      "source_paths": [
+        "src/lib/customer-requests.ts",
+        "server/customer/request-gateway.ts",
+        "server/customer/broker.ts",
+        "server/customer/broker-auth.ts"
+      ],
+      "requirements": [
+        "R01",
+        "R02",
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R16"
+      ],
+      "responsibilities": [
+        "business_owner",
+        "authorization_owner",
+        "admission_owner",
+        "transaction_owner",
+        "receipt_owner",
+        "ack_owner",
+        "reconciliation_owner",
+        "database_security_owner",
+        "backup_owner",
+        "fence_owner",
+        "recovery_owner",
+        "acceptance_owner"
+      ],
+      "operational_acceptance": "NOT_RUN",
+      "authority_granted": false
+    }
+  ],
+  "original_requirements": [
+    {
+      "id": "R01",
+      "topic": "canonical CRM ownership",
+      "dependencies": [],
+      "original_record": {
+        "id": "R01",
+        "topic": "canonical CRM ownership",
+        "canonical_contract": "Operations / CRM RPCs",
+        "source_paths": ["src/lib/operations.ts"],
+        "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+        "status": "NOT_ACCEPTED",
+        "dependencies": [],
+        "missing_deliverable": "Name an operational CRM writer/reader owner; inventory all current tenant/customer/location/consent RPCs, grants and writers; no second graph.",
+        "acceptance": "NOT_RUN_OPERATIONALLY",
+        "approval": "Separate exact ownership/catalog/target review",
+        "authority_granted": false
+      },
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "acceptance": "NOT_RUN_OPERATIONALLY"
+    },
+    {
+      "id": "R02",
+      "topic": "canonical estimate/job/cost ownership",
+      "dependencies": ["R01"],
+      "original_record": {
+        "id": "R02",
+        "topic": "canonical estimate/job/cost ownership",
+        "canonical_contract": "Phase3Repository",
+        "source_paths": ["src/lib/phase3.ts"],
+        "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+        "status": "NOT_ACCEPTED",
+        "dependencies": ["R01"],
+        "missing_deliverable": "Bind existing estimate/version, issued scope, job, assignments, time/reviews and expenses/events to exact original SQL owners; no duplicate posting or recalculation engine.",
+        "acceptance": "NOT_RUN_OPERATIONALLY",
+        "approval": "Separate exact ownership/catalog/target review",
+        "authority_granted": false
+      },
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "acceptance": "NOT_RUN_OPERATIONALLY"
+    },
+    {
+      "id": "R03",
+      "topic": "canonical inspection ownership",
+      "dependencies": ["R01", "R02"],
+      "original_record": {
+        "id": "R03",
+        "topic": "canonical inspection ownership",
+        "canonical_contract": "PropertyRepository",
+        "source_paths": ["src/lib/property.ts"],
+        "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+        "status": "NOT_ACCEPTED",
+        "dependencies": ["R01", "R02"],
+        "missing_deliverable": "Name plan/visit/published-report writer; preserve immutable versions and actual recorded foreign keys; missing request-to-job FK stays UNKNOWN.",
+        "acceptance": "NOT_RUN_OPERATIONALLY",
+        "approval": "Separate exact ownership/catalog/target review",
+        "authority_granted": false
+      },
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "acceptance": "NOT_RUN_OPERATIONALLY"
+    },
+    {
+      "id": "R04",
+      "topic": "missing task/schedule durable owner",
+      "dependencies": ["R01", "R02", "R03"],
+      "original_record": {
+        "id": "R04",
+        "topic": "missing task/schedule durable owner",
+        "canonical_contract": "Existing workflow ports; disposable field-lab is not operational ownership",
+        "source_paths": ["src/lib/workflows/saved-revision-exercise.ts"],
+        "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+        "status": "NOT_ACCEPTED",
+        "dependencies": ["R01", "R02", "R03"],
+        "missing_deliverable": "Resolve durable task/work-order/schedule ownership and every participating writer before selecting an adapter; do not persist a parallel session map.",
+        "acceptance": "NOT_RUN_OPERATIONALLY",
+        "approval": "Separate original durable-owner design and bounded prototype approval",
+        "authority_granted": false
+      },
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "acceptance": "NOT_RUN_OPERATIONALLY"
+    },
+    {
+      "id": "R05",
+      "topic": "maintenance command authority",
+      "dependencies": ["R01", "R03", "R04"],
+      "original_record": {
+        "id": "R05",
+        "topic": "maintenance command authority",
+        "canonical_contract": "MaintenancePersistence / existing 2A\u20132F proposals",
+        "source_paths": ["server/property/maintenance-persistence.ts"],
+        "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+        "status": "NOT_ACCEPTED",
+        "dependencies": ["R01", "R03", "R04"],
+        "missing_deliverable": "Resolve D009 installer/helper/provisioner TCB, raw/admin writers and universal admission participation; composed disposable checks do not close it.",
+        "acceptance": "NOT_RUN_OPERATIONALLY",
+        "approval": "Separate least-privilege and full-writer-participation review",
+        "authority_granted": false
+      },
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "acceptance": "NOT_RUN_OPERATIONALLY"
+    },
+    {
+      "id": "R06",
+      "topic": "customer request authority",
+      "dependencies": ["R01", "R03"],
+      "original_record": {
+        "id": "R06",
+        "topic": "customer request authority",
+        "canonical_contract": "Unchanged pending customer14 plus original4B/broker",
+        "source_paths": ["server/customer/broker.ts"],
+        "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+        "status": "NOT_ACCEPTED",
+        "dependencies": ["R01", "R03"],
+        "missing_deliverable": "Sequence original recovery and approved P1-on13, then separately customer14 and exact4B/broker installation/grants/mapping; genuine Auth acceptance remains absent.",
+        "acceptance": "NOT_RUN_OPERATIONALLY",
+        "approval": "Existing P1 approval preserved; separate14/exact4B/Auth target authorization",
+        "authority_granted": false
+      },
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "acceptance": "NOT_RUN_OPERATIONALLY"
+    },
+    {
+      "id": "R07",
+      "topic": "genuine current authority",
+      "dependencies": ["R01", "R06"],
+      "original_record": {
+        "id": "R07",
+        "topic": "genuine current authority",
+        "canonical_contract": "Original Auth/session/member/mapping guards",
+        "source_paths": ["server/customer/broker-auth.ts"],
+        "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+        "status": "NOT_ACCEPTED",
+        "dependencies": ["R01", "R06"],
+        "missing_deliverable": "Verify genuine current session/MFA, tenant, customer mapping, membership and revocation before admission, after waits, during reconciliation and after restore. Old backup cannot revive authority.",
+        "acceptance": "NOT_RUN_OPERATIONALLY",
+        "approval": "Separate genuine internal Auth/MFA acceptance",
+        "authority_granted": false
+      },
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "acceptance": "NOT_RUN_OPERATIONALLY"
+    },
+    {
+      "id": "R08",
+      "topic": "original durable one-use admission",
+      "dependencies": ["R04", "R05", "R06", "R07"],
+      "original_record": {
+        "id": "R08",
+        "topic": "original durable one-use admission",
+        "canonical_contract": "Original issuer and command-custody owner",
+        "source_paths": ["server/customer/request-gateway.ts"],
+        "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+        "status": "NOT_ACCEPTED",
+        "dependencies": ["R04", "R05", "R06", "R07"],
+        "missing_deliverable": "Name original operational issuer/registrar/executor/read owner; pre-admission commit precedes consumer transaction. No replacement IDs, reset, replay or restored browser hold.",
+        "acceptance": "NOT_RUN_OPERATIONALLY",
+        "approval": "Separate original durable-custody implementation design approval",
+        "authority_granted": false
+      },
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "acceptance": "NOT_RUN_OPERATIONALLY"
+    },
+    {
+      "id": "R09",
+      "topic": "canonical transaction boundary",
+      "dependencies": ["R02", "R03", "R08"],
+      "original_record": {
+        "id": "R09",
+        "topic": "canonical transaction boundary",
+        "canonical_contract": "Original canonical writer; not the projection",
+        "source_paths": ["server/customer/request-gateway.ts"],
+        "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+        "status": "NOT_ACCEPTED",
+        "dependencies": ["R02", "R03", "R08"],
+        "missing_deliverable": "Canonical mutation and exact immutable receipt commit atomically within one reviewed transaction, with CAS and post-wait authority checks. Separate issuer commit remains a real failure window.",
+        "acceptance": "NOT_RUN_OPERATIONALLY",
+        "approval": "Separate transaction protocol/negative-case review",
+        "authority_granted": false
+      },
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "acceptance": "NOT_RUN_OPERATIONALLY"
+    },
+    {
+      "id": "R10",
+      "topic": "receipt identity and authenticity",
+      "dependencies": ["R08", "R09"],
+      "original_record": {
+        "id": "R10",
+        "topic": "receipt identity and authenticity",
+        "canonical_contract": "Original canonical receipt owner; signer/witness unassigned",
+        "source_paths": ["server/customer/request-gateway.ts"],
+        "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+        "status": "NOT_ACCEPTED",
+        "dependencies": ["R08", "R09"],
+        "missing_deliverable": "Specify versioned allowlist, tenant/command/source digest, previous/new revision, actor/event/result IDs, uniqueness, append-only enforcement and witness/key lifecycle. Hash alone is not authenticity.",
+        "acceptance": "NOT_RUN_OPERATIONALLY",
+        "approval": "Separate receipt format, custody, key/witness and compatibility review",
+        "authority_granted": false
+      },
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "acceptance": "NOT_RUN_OPERATIONALLY"
+    },
+    {
+      "id": "R11",
+      "topic": "success acknowledgment boundary",
+      "dependencies": ["R08", "R09", "R10"],
+      "original_record": {
+        "id": "R11",
+        "topic": "success acknowledgment boundary",
+        "canonical_contract": "Original transport and admission owner",
+        "source_paths": ["server/customer/broker.ts"],
+        "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+        "status": "NOT_ACCEPTED",
+        "dependencies": ["R08", "R09", "R10"],
+        "missing_deliverable": "ACK only after confirmed canonical commit, exact receipt validation and required original-custody durability. Lost ACK/commit/receipt/journal remains UNKNOWN.",
+        "acceptance": "NOT_RUN_OPERATIONALLY",
+        "approval": "Separate exact ACK protocol and crash-window review",
+        "authority_granted": false
+      },
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "acceptance": "NOT_RUN_OPERATIONALLY"
+    },
+    {
+      "id": "R12",
+      "topic": "exact reconciliation",
+      "dependencies": ["R07", "R10", "R11"],
+      "original_record": {
+        "id": "R12",
+        "topic": "exact reconciliation",
+        "canonical_contract": "Original read-only receipt/source reader",
+        "source_paths": ["src/lib/workflows/saved-revision-exercise.ts"],
+        "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+        "status": "NOT_ACCEPTED",
+        "dependencies": ["R07", "R10", "R11"],
+        "missing_deliverable": "Inspect only exact original tenant/source/command/receipt with current authority; missing/partial/conflicting evidence stays UNKNOWN. Never replay, substitute newest, rebind or resume.",
+        "acceptance": "NOT_RUN_OPERATIONALLY",
+        "approval": "Separate operational reader/privilege acceptance",
+        "authority_granted": false
+      },
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "acceptance": "NOT_RUN_OPERATIONALLY"
+    },
+    {
+      "id": "R13",
+      "topic": "independent anti-rollback fence",
+      "dependencies": ["R08", "R10"],
+      "original_record": {
+        "id": "R13",
+        "topic": "independent anti-rollback fence",
+        "canonical_contract": "Independent external custody owner UNASSIGNED",
+        "source_paths": ["docs/CUSTOMER_BROKER_INTEGRATION.md"],
+        "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+        "status": "NOT_ACCEPTED",
+        "dependencies": ["R08", "R10"],
+        "missing_deliverable": "Design independently held spent-claim epoch/watermark, outage and clock behavior, all-writer fencing and old-database restore denial. Same-owner file/hash/sequence is insufficient.",
+        "acceptance": "NOT_RUN_OPERATIONALLY",
+        "approval": "Separate fence design, custody and independent adversarial acceptance",
+        "authority_granted": false
+      },
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "acceptance": "NOT_RUN_OPERATIONALLY"
+    },
+    {
+      "id": "R14",
+      "topic": "matched backup set",
+      "dependencies": ["R09", "R10", "R13"],
+      "original_record": {
+        "id": "R14",
+        "topic": "matched backup set",
+        "canonical_contract": "Database/object/custody/key custodians UNASSIGNED",
+        "source_paths": ["docs/program/CYCLE23_CANONICAL_RESTART_PROPOSAL.md"],
+        "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+        "status": "NOT_ACCEPTED",
+        "dependencies": ["R09", "R10", "R13"],
+        "missing_deliverable": "Prove matched DB timeline/LSN and schema hashes, canonical revision/receipt watermark, custody epoch, object versions and protected key references. Reject mixed/missing/corrupt members.",
+        "acceptance": "NOT_RUN_OPERATIONALLY",
+        "approval": "Separate exact backup policy/ownership/target approval",
+        "authority_granted": false
+      },
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "acceptance": "NOT_RUN_OPERATIONALLY"
+    },
+    {
+      "id": "R15",
+      "topic": "backup confidentiality and key recovery",
+      "dependencies": ["R10", "R14"],
+      "original_record": {
+        "id": "R15",
+        "topic": "backup confidentiality and key recovery",
+        "canonical_contract": "Security/privacy/key custodians UNASSIGNED",
+        "source_paths": ["SECURITY_MODEL.md"],
+        "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+        "status": "NOT_ACCEPTED",
+        "dependencies": ["R10", "R14"],
+        "missing_deliverable": "Set tenant-safe encryption, independent recoverable keys, access/audit, retention/deletion, redaction and authorized restore scope. DB backup does not include Storage bytes or custom-role passwords.",
+        "acceptance": "NOT_RUN_OPERATIONALLY",
+        "approval": "Separate security/privacy/key-custody decision",
+        "authority_granted": false
+      },
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "acceptance": "NOT_RUN_OPERATIONALLY"
+    },
+    {
+      "id": "R16",
+      "topic": "quarantined recovery admission",
+      "dependencies": ["R07", "R12", "R13", "R14", "R15"],
+      "original_record": {
+        "id": "R16",
+        "topic": "quarantined recovery admission",
+        "canonical_contract": "Recovery operator and independent supervisor UNASSIGNED",
+        "source_paths": ["docs/TWO_COMPUTER_REHEARSAL.md"],
+        "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+        "status": "NOT_ACCEPTED",
+        "dependencies": ["R07", "R12", "R13", "R14", "R15"],
+        "missing_deliverable": "Restore only to fenced quarantine with all writers/providers/messages/payments OFF. Verify matched set and current external revocations; reconcile UNKNOWN read-only before separate admission.",
+        "acceptance": "NOT_RUN_OPERATIONALLY",
+        "approval": "Separate exact action-specific recovery and writer-admission authorization",
+        "authority_granted": false
+      },
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "acceptance": "NOT_RUN_OPERATIONALLY"
+    },
+    {
+      "id": "R17",
+      "topic": "measured recovery acceptance",
+      "dependencies": ["R14", "R15", "R16"],
+      "original_record": {
+        "id": "R17",
+        "topic": "measured recovery acceptance",
+        "canonical_contract": "Independent physical recovery supervisor UNVERIFIED",
+        "source_paths": ["docs/program/CYCLE18_NOV4_MACBOOK_AIR_CHECKLIST.md"],
+        "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+        "status": "NOT_ACCEPTED",
+        "dependencies": ["R14", "R15", "R16"],
+        "missing_deliverable": "Measure actual RPO/RTO and corruption/old-backup/duplicate/tenant/revocation behavior. Danny device readiness/pairing/ACK/heartbeat/primary-loss/cleanup must actually be demonstrated.",
+        "acceptance": "NOT_RUN_OPERATIONALLY",
+        "approval": "Original credential-free rehearsal scope only; operational verification separately approved",
+        "authority_granted": false
+      },
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "acceptance": "NOT_RUN_OPERATIONALLY"
+    },
+    {
+      "id": "R18",
+      "topic": "derived projection boundaries",
+      "dependencies": ["R01", "R02", "R03", "R07"],
+      "original_record": {
+        "id": "R18",
+        "topic": "derived projection boundaries",
+        "canonical_contract": "Existing Passport/cost/maintenance/priority allowlists",
+        "source_paths": ["src/lib/workflows/verified-owner-briefing.ts"],
+        "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+        "status": "NOT_ACCEPTED",
+        "dependencies": ["R01", "R02", "R03", "R07"],
+        "missing_deliverable": "Rebuild authorized derived views from actual owners; never restore canonical state, genuine approval or completion from history, packets, projections or evidence files.",
+        "acceptance": "NOT_RUN_OPERATIONALLY",
+        "approval": "No new operational authority",
+        "authority_granted": false
+      },
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "acceptance": "NOT_RUN_OPERATIONALLY"
+    },
+    {
+      "id": "R19",
+      "topic": "bounded implementation decision",
+      "dependencies": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R16",
+        "R17",
+        "R18"
+      ],
+      "original_record": {
+        "id": "R19",
+        "topic": "bounded implementation decision",
+        "canonical_contract": "Owner and independent architecture/security reviewers",
+        "source_paths": [
+          "docs/program/CYCLE23_CANONICAL_RESTART_PROPOSAL.md",
+          "docs/program/CYCLE23_RESTART_ARCHITECTURE_REVIEW.md"
+        ],
+        "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+        "status": "NOT_ACCEPTED",
+        "dependencies": [
+          "R01",
+          "R02",
+          "R03",
+          "R04",
+          "R05",
+          "R06",
+          "R07",
+          "R08",
+          "R09",
+          "R10",
+          "R11",
+          "R12",
+          "R13",
+          "R14",
+          "R15",
+          "R16",
+          "R17",
+          "R18"
+        ],
+        "missing_deliverable": "Review precise finite prototype scope only after owners/consistency/dependencies are resolved; no adapter/schema is authorized by this register or a passing test.",
+        "acceptance": "NOT_RUN_OPERATIONALLY",
+        "approval": "Separate explicit implementation authorization required; currently ABSENT",
+        "authority_granted": false
+      },
+      "operational_owner": "UNASSIGNED_OR_UNVERIFIED",
+      "acceptance": "NOT_RUN_OPERATIONALLY"
+    }
+  ],
+  "writer_inventory": {
+    "complete": false,
+    "all_writers_participate": false,
+    "bypasses_excluded": false,
+    "target_catalog_verified": false,
+    "must_include": [
+      "canonical_RPC",
+      "direct_table_writer",
+      "historical_helper",
+      "SECURITY_DEFINER_installer",
+      "provisioner",
+      "raw_SQL",
+      "admin_or_restore_operator",
+      "background_or_provider_worker"
+    ],
+    "missing_evidence": "Exact future target catalog, role ownership/attributes/EXECUTE/table grants/RLS/composite FKs and post-wait admission tests; source review is not hosted proof."
+  },
+  "authentication": {
+    "genuine_session": "UNVERIFIED",
+    "current_authorization": "UNVERIFIED",
+    "staff_AAL2": "REQUIRED_UNVERIFIED",
+    "customer_AAL": "ORIGINAL_CONTRACT_AAL1_OR_EXACT_REQUIRED_SCOPE_NOT_BLANKET_STAFF_POLICY",
+    "revocation": "CURRENT_SERVER_SESSION_AND_MEMBER_MAPPING_BEFORE_AFTER_WAIT_AND_RESTORE",
+    "service_key_request_scope": "FORBIDDEN"
+  },
+  "backup_restore": {
+    "matched_set": "NOT_ACCEPTED",
+    "independent_fence": "UNASSIGNED_UNVERIFIED",
+    "device": "UNAVAILABLE_LAST_OWNER_REPORT_NOT_READY_VERIFIED",
+    "physical_rehearsal": "NOT_RUN",
+    "RPO": "UNMEASURED",
+    "RTO": "UNMEASURED",
+    "historical_evidence_is_canonical_restore": false,
+    "requirements": [
+      "database_timeline_LSN_schema",
+      "canonical_revision_receipt_watermark",
+      "object_versions_and_bytes",
+      "custody_epoch_external_spent_fence",
+      "protected_key_references_and_separate_key_custody",
+      "current_external_revocation",
+      "all_writers_fenced_quarantine",
+      "exact_read_only_UNKNOWN_no_replay",
+      "measured_physical_loss_recovery_cleanup"
+    ]
+  },
+  "smallest_future_slice": {
+    "id": "ORIGINAL_4B_INTERNAL_REQUEST_RECEIPT_STAFF_READ",
+    "status": "PROPOSED_NOT_AUTHORIZED",
+    "new_schema_or_restore_adapter": false,
+    "sequence": [
+      "Supported independent physical synthetic rehearsal and cleanup with existing sealed kit",
+      "Original approved P1 on unchanged thirteen migrations after original prerequisites; no duplicate authorization",
+      "Separate exact customer14 approval and installation acceptance",
+      "Separate original4B+broker target/hash/ownership/grants/mapping/genuine_Auth acceptance approval",
+      "One genuine internal request to exact receipt to staff read; no external customer communication or financial action"
+    ],
+    "acceptance": [
+      "Current genuine server session and eligible membership/MFA at admission/post-wait/read",
+      "Original issuer claim durably committed before one exact consumer",
+      "Canonical mutation plus authentic unique receipt in same reviewed consumer transaction",
+      "Lost response stays UNKNOWN; exact read-only reconciliation with no replay or replacement",
+      "Revocation/concurrency/stale/foreign-tenant denials and all writer participation",
+      "Matched fenced backup/restore, current external revocations and immutable receipt integrity"
+    ],
+    "requires_original_requirements": [
+      "R01",
+      "R02",
+      "R03",
+      "R04",
+      "R05",
+      "R06",
+      "R07",
+      "R08",
+      "R09",
+      "R10",
+      "R11",
+      "R12",
+      "R13",
+      "R14",
+      "R15",
+      "R16",
+      "R17",
+      "R18",
+      "R19"
+    ],
+    "review_and_owner_decision": "SEPARATE_EXACT_ACTION_AUTHORIZATION_REQUIRED"
+  },
+  "source_evidence": [
+    {
+      "path": "server/customer/broker-auth.ts",
+      "commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "sha256": "709018249d889504b860e4cf0f4caa5cbdd1c2b04f58c53226f4499c68fd46d6",
+      "bytes": 2980,
+      "purpose": "STATIC_SOURCE_REVIEW_NOT_OPERATIONAL_CATALOG_PROOF"
+    },
+    {
+      "path": "server/customer/broker-ownership.proposed.sql",
+      "commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "sha256": "bfa30994ad6a4758aa074bc4315b41b9d14499f96d23bad4d61b505fffedb425",
+      "bytes": 7506,
+      "purpose": "STATIC_SOURCE_REVIEW_NOT_OPERATIONAL_CATALOG_PROOF"
+    },
+    {
+      "path": "server/customer/broker.ts",
+      "commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "sha256": "f983d8ceaa0bb5cd2403008301580894dd7c9023cd2c6d2026c0a2a70c6b979e",
+      "bytes": 10883,
+      "purpose": "STATIC_SOURCE_REVIEW_NOT_OPERATIONAL_CATALOG_PROOF"
+    },
+    {
+      "path": "server/customer/request-gateway.ts",
+      "commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "sha256": "1472d74e4d3bd94c8be8ef33785e88f2c567dfc632f6c73c5ad6d9c8782a549c",
+      "bytes": 3820,
+      "purpose": "STATIC_SOURCE_REVIEW_NOT_OPERATIONAL_CATALOG_PROOF"
+    },
+    {
+      "path": "server/customer/requests.proposed.sql",
+      "commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "sha256": "6178cee11c81593e3a90d0ef75f6194835019112877f50fc6eb5e692768d44af",
+      "bytes": 33278,
+      "purpose": "STATIC_SOURCE_REVIEW_NOT_OPERATIONAL_CATALOG_PROOF"
+    },
+    {
+      "path": "src/domain/customer/review.ts",
+      "commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "sha256": "e387500a60595788050d7b93b92ea23c5254c5954507edc3397eb7fa2b9bf858",
+      "bytes": 8353,
+      "purpose": "STATIC_SOURCE_REVIEW_NOT_OPERATIONAL_CATALOG_PROOF"
+    },
+    {
+      "path": "src/domain/jobs/financials.ts",
+      "commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "sha256": "410c292199397c9ceb5f227343bde9ba1406bab54624c5a94a97c685801fe798",
+      "bytes": 9542,
+      "purpose": "STATIC_SOURCE_REVIEW_NOT_OPERATIONAL_CATALOG_PROOF"
+    },
+    {
+      "path": "src/lib/customer-requests.ts",
+      "commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "sha256": "4da5caa8e48ef723a5068338768b62fd175519a8d91a5c187ea04873673ebe9a",
+      "bytes": 11724,
+      "purpose": "STATIC_SOURCE_REVIEW_NOT_OPERATIONAL_CATALOG_PROOF"
+    },
+    {
+      "path": "src/lib/operations.ts",
+      "commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "sha256": "512c069eaafb54f6f3d80a1725db8933842b42322df1f152e6bd49867c384ca7",
+      "bytes": 34163,
+      "purpose": "STATIC_SOURCE_REVIEW_NOT_OPERATIONAL_CATALOG_PROOF"
+    },
+    {
+      "path": "src/lib/phase3.ts",
+      "commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "sha256": "5696907efb1f5191e2aa033436db52998a6fdf0f3ee62cf537e25ee62d65746a",
+      "bytes": 76342,
+      "purpose": "STATIC_SOURCE_REVIEW_NOT_OPERATIONAL_CATALOG_PROOF"
+    },
+    {
+      "path": "src/lib/property.ts",
+      "commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "sha256": "d7e9dd024b879919f2c06dd4389c1aaa85e8a6d410cd8d40e05add7533f30c7e",
+      "bytes": 37854,
+      "purpose": "STATIC_SOURCE_REVIEW_NOT_OPERATIONAL_CATALOG_PROOF"
+    },
+    {
+      "path": "src/lib/workflows/offline-source-admission.ts",
+      "commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "sha256": "018c5020ea94e1cf5b6ac094c75c0c35ee3c7c2b5a3de700d6f6e212d696c140",
+      "bytes": 7954,
+      "purpose": "STATIC_SOURCE_REVIEW_NOT_OPERATIONAL_CATALOG_PROOF"
+    },
+    {
+      "path": "src/lib/workflows/offline-source-protocol.ts",
+      "commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "sha256": "c6b51bab7e73248f4b14cfc6dbbfc1ff961aa059e06a31b6ba8b0589aa0e9861",
+      "bytes": 2583,
+      "purpose": "STATIC_SOURCE_REVIEW_NOT_OPERATIONAL_CATALOG_PROOF"
+    },
+    {
+      "path": "src/lib/workflows/plan-cancellation-review.ts",
+      "commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "sha256": "9421d4011fc4c3270c640e2e70f6bda4a01e1612561880c4ddf2bc95fa2a0c5f",
+      "bytes": 13682,
+      "purpose": "STATIC_SOURCE_REVIEW_NOT_OPERATIONAL_CATALOG_PROOF"
+    },
+    {
+      "path": "src/lib/workflows/priority-actions.ts",
+      "commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "sha256": "4ca40098b96eff053aed8fcb2d0c0db484e3b6dd8eb9838c410aa6735c2e0a7e",
+      "bytes": 10176,
+      "purpose": "STATIC_SOURCE_REVIEW_NOT_OPERATIONAL_CATALOG_PROOF"
+    },
+    {
+      "path": "src/lib/workflows/saved-revision-exercise.ts",
+      "commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "sha256": "c41a1ffe3980a286ec72665d74a6b79523949eca475d7ec4e85618791535ad38",
+      "bytes": 60226,
+      "purpose": "STATIC_SOURCE_REVIEW_NOT_OPERATIONAL_CATALOG_PROOF"
+    },
+    {
+      "path": "src/lib/workflows/service-source-review.ts",
+      "commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "sha256": "1d4d680285ef1a7fd72eb201ece35300fae8f428811841e73d1c13e6dc7f2630",
+      "bytes": 7685,
+      "purpose": "STATIC_SOURCE_REVIEW_NOT_OPERATIONAL_CATALOG_PROOF"
+    },
+    {
+      "path": "src/lib/workflows/verified-owner-briefing.ts",
+      "commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "sha256": "c62d4cf776b854bcd4fd8ccd72d46ac094381a9ccf0049f4b1302fbd9fb638f6",
+      "bytes": 5701,
+      "purpose": "STATIC_SOURCE_REVIEW_NOT_OPERATIONAL_CATALOG_PROOF"
+    },
+    {
+      "path": "supabase/migrations/20261015201048_phase_2_operations.sql",
+      "commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "sha256": "2a0e65f30e0eef0b85b53d23edc26968336f661d136303d7a1eb25b3f77e1974",
+      "bytes": 42706,
+      "purpose": "STATIC_SOURCE_REVIEW_NOT_OPERATIONAL_CATALOG_PROOF"
+    },
+    {
+      "path": "supabase/migrations/20261015210546_phase_3_job_financials.sql",
+      "commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "sha256": "f161cc16ec728b2e7373f3826b5d989a9fad4c1ec6d727fc193f18d5534d8c4c",
+      "bytes": 27949,
+      "purpose": "STATIC_SOURCE_REVIEW_NOT_OPERATIONAL_CATALOG_PROOF"
+    },
+    {
+      "path": "supabase/migrations/20261015210856_phase_3_workforce.sql",
+      "commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "sha256": "78f2af2164574ba3d6aeb2f2510206d97343c5ad67a2534159a4e2960f5e9ce0",
+      "bytes": 45051,
+      "purpose": "STATIC_SOURCE_REVIEW_NOT_OPERATIONAL_CATALOG_PROOF"
+    },
+    {
+      "path": "supabase/migrations/20261017005322_property_operations.sql",
+      "commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "sha256": "c345bdf178c9339dba7ba2707c74233bcfae9a2d2b59abf148f4b7ffff35780c",
+      "bytes": 41457,
+      "purpose": "STATIC_SOURCE_REVIEW_NOT_OPERATIONAL_CATALOG_PROOF"
+    },
+    {
+      "path": "supabase/migrations/20261017024327_property_connected_readiness.sql",
+      "commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "sha256": "6bb0b9bf22ec1079d7aa5f74c6e33e14534cc54e30e9034c33949f786cfd3ac9",
+      "bytes": 8497,
+      "purpose": "STATIC_SOURCE_REVIEW_NOT_OPERATIONAL_CATALOG_PROOF"
+    },
+    {
+      "path": "supabase/migrations/20261018144833_customer_authorization_release_readiness.sql",
+      "commit": "af95671f70bae6585b39e299ba00ca201f8e6512",
+      "sha256": "e3157e004c464fb2a4ab69e7a3a335a81d6bbbb0556d74234f3884f56d784ed1",
+      "bytes": 44832,
+      "purpose": "STATIC_SOURCE_REVIEW_NOT_OPERATIONAL_CATALOG_PROOF"
+    }
+  ],
+  "primary_guidance": [
+    "https://supabase.com/docs/guides/auth/sessions",
+    "https://supabase.com/docs/guides/database/postgres/row-level-security",
+    "https://supabase.com/docs/guides/platform/backups"
+  ]
+}
