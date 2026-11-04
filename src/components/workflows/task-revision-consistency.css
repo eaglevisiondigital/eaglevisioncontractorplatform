@@ -1,0 +1,63 @@
+.task-revision-consistency {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: #20352f;
+  line-height: 1.5;
+}
+.task-revision-consistency .task-revision-panel {
+  background: #fffdf7;
+  border: 1px solid #d9e1da;
+  border-radius: 12px;
+  padding: 1.1rem;
+  margin-bottom: 1rem;
+}
+.task-revision-consistency .task-revision-panel h3 {
+  margin: 0 0 0.7rem;
+}
+.task-revision-consistency .task-revision-panel dt {
+  color: #526159;
+}
+.task-revision-consistency .task-revision-panel dd {
+  margin: 0 0 0.7rem;
+}
+.task-revision-consistency .task-revision-panel label {
+  display: grid;
+  gap: 0.4rem;
+  margin: 1rem 0;
+}
+.task-revision-consistency .task-revision-panel select {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  color: #20352f;
+  background: #fff;
+}
+.task-revision-consistency .task-revision-panel button {
+  min-height: 44px;
+  max-width: 100%;
+  white-space: normal;
+  color: #fff;
+  background: var(--journey-primary, #00543e);
+}
+.task-revision-consistency .task-revision-panel li {
+  margin-bottom: 0.8rem;
+}
+.task-revision-consistency .task-revision-panel summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #526159;
+}
+.task-revision-consistency :focus-visible {
+  outline: 3px solid var(--journey-accent, #dfb461);
+  outline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .task-revision-consistency .task-revision-panel button {
+    width: 100%;
+  }
+  .task-revision-consistency .task-revision-panel {
+    padding: 0.85rem;
+  }
+}
