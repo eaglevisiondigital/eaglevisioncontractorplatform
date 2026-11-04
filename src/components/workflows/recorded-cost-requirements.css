@@ -43,6 +43,9 @@
   margin: 0;
   font-weight: 600;
 }
+.recorded-cost-detail dt {
+  color: inherit;
+}
 .recorded-cost-detail li {
   margin-block: 0.75rem;
 }
