@@ -10,8 +10,15 @@ import {
   cycle24RuntimeCommit,
   validateCycle24CriticalSources,
 } from './check-cycle24.mjs';
+import {
+  admitCycle25Source,
+  cycle25SourcePorts,
+} from './cycle25-source-lineage.mjs';
 
-const directory = resolve('artifacts/cycle24');
+const directory = resolve(
+  process.env.CYCLE24_ARTIFACT_DIR ?? 'artifacts/cycle24',
+);
+const cycle25Evidence = directory === resolve('artifacts/cycle25');
 const sha = (b) => createHash('sha256').update(b).digest('hex');
 const json = (p) => JSON.parse(readFileSync(p, 'utf8'));
 const inventoryPath = 'docs/program/CYCLE24_RUNTIME_FILES.json';
@@ -31,6 +38,7 @@ const states = [
   'maintenance-terminal',
 ];
 const executionCommits = new Set();
+const admittedSources = new Map();
 const verifiedCommits = new Set();
 // Git object IDs are immutable. Cache only their content digests; current files
 // and every evidence row are still checked independently below.
@@ -62,12 +70,19 @@ function binding(item) {
   executionCommits.add(item.source_commit);
   const pending = new Set(inventory.paths);
   for (const f of item.source_files) {
-    if (
-      !pending.delete(f.path) ||
-      f.sha256 !== sha(readFileSync(f.path)) ||
-      f.sha256 !== gitHash(cycle24RuntimeCommit, f.path)
-    )
+    if (!pending.has(f.path))
+      throw Error('Unrequested capture source forbidden');
+    const current = cycle25SourcePorts.read(f.path);
+    if (!pending.delete(f.path) || f.sha256 !== sha(current))
       throw Error('Capture source missing, changed or substituted');
+    if (f.sha256 !== gitHash(cycle24RuntimeCommit, f.path)) {
+      const admission = admitCycle25Source(
+        f.path,
+        current,
+        execFileSync('git', ['show', `${cycle24RuntimeCommit}:${f.path}`]),
+      );
+      admittedSources.set(f.path, admission);
+    }
     if (f.sha256 !== gitHash(item.source_commit, f.path))
       throw Error('Executed checkout differs from frozen runtime');
   }
@@ -89,7 +104,13 @@ function report(mode) {
     ),
   );
   const total = pending.size,
-    port = production ? 4434 : 4424;
+    port = cycle25Evidence
+      ? production
+        ? 4435
+        : 4425
+      : production
+        ? 4434
+        : 4424;
   if (
     r.errors?.length ||
     r.stats?.expected !== total ||
@@ -211,6 +232,8 @@ const value = {
   runtime_commit: cycle24RuntimeCommit,
   executed_commits: [...executionCommits],
   runtime_files: 76,
+  admitted_source_forwards: [...admittedSources.values()],
+  source_scope: 'C24_BASELINE_PLUS_EXACT_ADMITTED_C25_NATIVE_FORWARDS',
   critical_sources_checked_now_and_in_execution_commit: cycle24CriticalSources,
   capture_inventory_limit: '76_SCOPED_FILES_NOT_COMPLETE_TRANSITIVE_RUNTIME',
   development,
