@@ -8,8 +8,10 @@ import { monitorEventLoopDelay } from 'node:perf_hooks';
 
 export function summarizeTiming(test) {
   const steps = test.steps ?? [];
-  const final = steps.filter((s) =>
-    s.title.includes('Open exact owner priority review'),
+  const final = steps.filter(
+    (s) =>
+      s.title.includes('Open exact owner priority review') ||
+      (s.title === 'Click' && s.line === 529),
   );
   return {
     project: test.project,
@@ -64,16 +66,14 @@ export default class TimingReporter {
     });
   }
   onStepEnd(_test, result, step) {
-    this.rows
-      .get(result)
-      ?.steps.push({
-        title: step.title,
-        category: step.category,
-        start_ms: step.startTime.getTime() - result.startTime.getTime(),
-        duration_ms: step.duration,
-        line: step.location?.line,
-        error: !!step.error,
-      });
+    this.rows.get(result)?.steps.push({
+      title: step.title,
+      category: step.category,
+      start_ms: step.startTime.getTime() - result.startTime.getTime(),
+      duration_ms: step.duration,
+      line: step.location?.line,
+      error: !!step.error,
+    });
   }
   onTestEnd(_test, result) {
     Object.assign(this.rows.get(result), {

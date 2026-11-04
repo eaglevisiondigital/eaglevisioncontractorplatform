@@ -25,15 +25,18 @@ source and traces support a narrower conclusion.
 
 Separately, Passport run41870216530 failed before tests: refreshing the unrelated
 Microsoft Ubuntu APT feed returned403, then APT exited100. Its browser tests were
-SKIPPED. The bounded Passport correction verifies all pinned Chromium system
-packages using `playwright install-deps --dry-run chromium`, which exits nonzero
-when packages are missing, then downloads the pinned browser without refreshing
-APT repositories. Ubuntu24.04 is a supported Playwright Linux target. There is
-no sudo, repository deletion, signature/TLS bypass, missing-package fallback or
-change to the original Foundation workflow. A missing dependency remains a
-visible infrastructure failure, not a test pass.
+SKIPPED. The first bounded dry-run diagnostic (run41875460141) correctly failed before any
+browser case: the hosted image lacks nine pinned fonts. This remains an actual
+infrastructure failure. The correction now validates the regular installed
+Ubuntu24.04 deb822 source/key files, exact signed Ubuntu archive/security URIs,
+noble suites and allowed fields. It uses explicit per-command APT source
+arguments to update those signed Ubuntu archives and install only the nine
+observed fonts. It never edits repository/key configuration or disables
+signature/TLS verification. Then the complete original pinned dependency dry-run
+must pass before Chromium installs or browser tests start. Unknown source fields,
+missing packages or APT errors stop the job. Original Foundation remains unchanged.
 
-Three source-based observer tests pass locally. The original two-case diagnostic
+Four observer and eleven dependency-planning/negative tests pass locally. The original two-case diagnostic
 and corrected Passport GitHub outcomes remain pending until actual current-head
 artifacts are read. No successful check is manually restarted.
 

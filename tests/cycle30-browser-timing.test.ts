@@ -43,3 +43,15 @@ it('retains only measured slow steps, ordered by duration', () => {
     'second',
   ]);
 });
+
+it('recognizes pinned Playwright generic Click titles by original final-navigation location', () => {
+  const r = summarizeTiming({
+    steps: [
+      { title: 'Click', line: 529, duration_ms: 3922 },
+      { title: 'Click', line: 508, duration_ms: 2000 },
+    ],
+  });
+  expect(r.final_navigation).toEqual([
+    { title: 'Click', line: 529, duration_ms: 3922 },
+  ]);
+});

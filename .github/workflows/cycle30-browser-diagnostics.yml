@@ -33,6 +33,9 @@ jobs:
           mkdir -p artifacts/cycle30
       - run: npm ci
         working-directory: application
+      - name: Install reviewed missing fonts from signed Ubuntu archives
+        working-directory: application
+        run: node ../diagnostics/scripts/cycle30-chromium-dependencies.mjs
       - name: Require complete system dependencies without refreshing unrelated feeds
         working-directory: application
         run: npx playwright install-deps --dry-run chromium

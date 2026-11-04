@@ -19,9 +19,10 @@ jobs:
           node-version: '24'
           cache: npm
       - run: npm ci
-      # The hosted image already supplies the Linux packages. Verify every pinned
-      # dependency without refreshing unrelated third-party APT feeds. Missing
-      # packages fail this step; no signature/TLS bypass or install fallback.
+      # Install only the nine demonstrated missing fonts from signed Ubuntu
+      # archives, then independently require every pinned browser dependency.
+      - name: Install reviewed missing Chromium fonts from signed Ubuntu archives
+        run: node scripts/cycle30-chromium-dependencies.mjs
       - name: Verify Chromium system dependencies without privileged changes
         run: npx playwright install-deps --dry-run chromium
       - run: npx playwright install chromium
