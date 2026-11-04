@@ -1,0 +1,1180 @@
+{
+  "schema": "propel-cycle24-independent-review-v1",
+  "reviewed_candidate": "7a90da23c0a701001c79b605d94d2894cd9cc5a6",
+  "reviewed_parent": "7b8d8c1a6f03fa33321409aa15c46926a63e59ed",
+  "reviewer_agent": "/root/cycle23_independent_review",
+  "review_branch": "codex/cycle24-independent-verified-review",
+  "review_target": "codex/program-cycle-twenty-four-integration",
+  "status": "CLEAR_LOCAL_SYNTHETIC_ONLY",
+  "scope": "Independent source-based native integration and one separate real React callback-lease regression. Responsive/a11y matrix, hosted, operational, restart and release approval remain separate.",
+  "feature_heads": [
+    {
+      "owner": "field",
+      "original_author_commit": "29e322e9b55b195f17890d7d5a4daf9f4641c7bc",
+      "head_commit": "29e322e9b55b195f17890d7d5a4daf9f4641c7bc",
+      "author_reported_cases": 54,
+      "files": [
+        {
+          "path": "docs/program/CYCLE24_TASK_RECEIPT_RECONCILIATION.md",
+          "git_blob": "e0ac21fe353f847704071595270ec15a4f5a9e8a",
+          "sha256": "2f9f154dbdbe70f0843bb139e3566b6c1d045d2740440cea805b2a8d025ac910"
+        },
+        {
+          "path": "src/components/workflows/TaskReceiptActions.tsx",
+          "git_blob": "b1c2a85251cccb46e2fe3cc20bc10f4e63e5821f",
+          "sha256": "7b338b59125e6f70a1072d48a04cdc0612f5a1e074591c6f4039efd55df98a4e"
+        },
+        {
+          "path": "src/components/workflows/task-receipt-actions.css",
+          "git_blob": "f3e19e24974d38cc850da0803e2f881aa754c429",
+          "sha256": "df1630a28260c1a06e68ea5489a65a055f3ad47c2751add5aefa439e805c4d06"
+        },
+        {
+          "path": "src/lib/workflows/saved-revision-exercise.ts",
+          "git_blob": "9e31eeee45c45bb150e7a4415b015dce7f8dea18",
+          "sha256": "c41a1ffe3980a286ec72665d74a6b79523949eca475d7ec4e85618791535ad38"
+        },
+        {
+          "path": "src/lib/workflows/task-receipt-reconciliation.ts",
+          "git_blob": "84df3ebf027b0f2edb68c6b8621070ae91b06a8b",
+          "sha256": "0ceb39703978bbc4cf18d9fcf74551463ac91057849916e184e5436cbac2d9db"
+        },
+        {
+          "path": "tests/cycle24-task-receipt-reconciliation.test.ts",
+          "git_blob": "75823aa8452446443ca69bb058993a351b3ba99c",
+          "sha256": "44d675471a67d68564ac8cf4986a29eda3f0a021fa11a71fcb02fbbcc2bd9b90"
+        }
+      ]
+    },
+    {
+      "owner": "finance",
+      "original_author_commit": "660439228b66f19bd80b80cffb7ccda127bdf699",
+      "head_commit": "660439228b66f19bd80b80cffb7ccda127bdf699",
+      "author_reported_cases": 26,
+      "files": [
+        {
+          "path": "docs/program/CYCLE24_COST_COVERAGE_ACTIONS.md",
+          "git_blob": "e22ea2bb94ce57c69f937b07febf81245732835b",
+          "sha256": "a5008fd6c83ce95d2b62c96ad07ac92316973437cf69a6f8f9f4e2f53b362d30"
+        },
+        {
+          "path": "src/components/workflows/CostCoverageActions.tsx",
+          "git_blob": "d5c80c793ccfe1e73edcde7d5103965172c6f466",
+          "sha256": "9a29ffc2be63c527506829d202fef5ed6d3753a309ded5d3c10f8aa4175eeec6"
+        },
+        {
+          "path": "src/components/workflows/cost-coverage-actions.css",
+          "git_blob": "b565773764f176f65359f5165834dc853afc42ea",
+          "sha256": "486c7a24f54ba43a35a8e232ae1104c08fa15fc8ffc0050f5ef0759fe0999a55"
+        },
+        {
+          "path": "src/lib/workflows/cost-coverage-actions.ts",
+          "git_blob": "1b465f0fe48b3ff6c7e0dd9991f4a862a20f505d",
+          "sha256": "d088d2bae6f72d96bc5d07e594264e14eb6a9145bd545c4b53ef221b2e7cbdf5"
+        },
+        {
+          "path": "tests/cycle24-cost-coverage-actions.test.ts",
+          "git_blob": "1272a1646f1e167dd9762ccc69f9e3768b6a6c42",
+          "sha256": "af1cd4619104ddb5ca482e281ab663239156b95acfb258b741dcc747448008f2"
+        }
+      ]
+    },
+    {
+      "owner": "customer",
+      "original_author_commit": "26ab387632dcb96cc7f94b3ea8bde69a90eef3bf",
+      "head_commit": "621b8b586e6769fbb1bedc3e2d81cf8f73d4f018",
+      "author_reported_cases": 58,
+      "files": [
+        {
+          "path": "docs/program/CYCLE24_SERVICE_REQUEST_ACTIONS.md",
+          "git_blob": "079d4b17694b3cf9e43885196b5d01ff66a4c78e",
+          "sha256": "1ff71f81c32293525a52031514416e979af143ac3947d2b7a54989bc708c8eaf"
+        },
+        {
+          "path": "src/components/workflows/ServiceRequestActions.tsx",
+          "git_blob": "700791de0803173bc97e65dfb3db4d12e0b3f9e4",
+          "sha256": "f38d17fbe8575869d319c22cc717602b8ce4e7f7debdb181adeb8142b3a8a08f"
+        },
+        {
+          "path": "src/components/workflows/service-request-actions.css",
+          "git_blob": "ce6dd58e7200441e06360ac4cb0eeacdd83c95c1",
+          "sha256": "6b0f563bc7028d0ab48a4df7ba33834c040acccaa034fd1af633f96bc19126eb"
+        },
+        {
+          "path": "src/lib/workflows/service-request-actions.ts",
+          "git_blob": "756b4a3612bd39443e34d2f79c772b721bae16bc",
+          "sha256": "25a210bec44932daebd58d86e2861ecb4269fa7c387ebb4e284df69321882723"
+        },
+        {
+          "path": "tests/cycle24-service-request-actions.test.ts",
+          "git_blob": "e5260b77b301620b9395a6d76a16e51e8efef777",
+          "sha256": "bea28525ec7de419e52b24d829460eca93fac47e803f74be72bcc07d5e98804a"
+        }
+      ]
+    },
+    {
+      "owner": "growth",
+      "original_author_commit": "d2eeeec8f2ca070a6ccf350273fa1cf7475905ca",
+      "head_commit": "8592f47858e49f1c74b30222d918c5b702307240",
+      "author_reported_cases": 43,
+      "files": [
+        {
+          "path": "docs/program/CYCLE24_PLAN_CANCELLATION_REVIEW.md",
+          "git_blob": "6f8f8cbc20c040fc41d9ba2e8f6c610a8699e5b7",
+          "sha256": "af0712766cc48ff1841db2d674f9c8f09580a925d0c3ad1b8c4f0e5c01b16d55"
+        },
+        {
+          "path": "src/components/workflows/MaintenanceCancellationActions.tsx",
+          "git_blob": "183ffe2f6a8f2f2a8c519fe3a9b9ef2e37e2cafd",
+          "sha256": "1c882a73aad9469294719f0d82b65fceb89075f4251e5f68869f6fdd2b5989be"
+        },
+        {
+          "path": "src/components/workflows/maintenance-cancellation-actions.css",
+          "git_blob": "979fbaa15271545b4ff762f3c6af9900f1e2c328",
+          "sha256": "137bedc6785e9a6ad3f4ecd7b9cb2f653555e5844beae83efaf7f81d7878bc21"
+        },
+        {
+          "path": "src/lib/workflows/plan-cancellation-review.ts",
+          "git_blob": "e8e2d77cd4d3519b4f4eb4fc2f2f4b41481e5ca7",
+          "sha256": "1ee395ca0e7fd37d675a1a2def71cf53f18eaa679bbf2c3ef337ad3bf5ab7d63"
+        },
+        {
+          "path": "tests/cycle24-plan-cancellation-review.test.ts",
+          "git_blob": "fe049a8f436ddc428a1b2de54cf5e14108396231",
+          "sha256": "36ad0dda1aa8a5cbba21d347d13acc405bee5047081228fdbf56e5f73ae4d36c"
+        }
+      ]
+    },
+    {
+      "owner": "intelligence",
+      "original_author_commit": "893d629d78014e324971e2b07d8b1b85ca6429ec",
+      "head_commit": "893d629d78014e324971e2b07d8b1b85ca6429ec",
+      "author_reported_cases": 27,
+      "files": [
+        {
+          "path": "docs/program/CYCLE24_OWNER_ACTION_VERIFICATION.md",
+          "git_blob": "f6e10c44824615ee65fde88e290353e8da785f08",
+          "sha256": "305bdd3843f600f3522b08444d13dae93eaba86c975fea7551f572c778c5b479"
+        },
+        {
+          "path": "src/components/workflows/OwnerActionVerification.tsx",
+          "git_blob": "d0096c42238a50c90c6f602788c769ca9ae7169c",
+          "sha256": "4270c1480c36c224bc461a5688115b4701857a0a41048b3affbf3f32110b2835"
+        },
+        {
+          "path": "src/components/workflows/owner-action-verification.css",
+          "git_blob": "0652fc4497f712ff366b4129735d88dddad0fbfb",
+          "sha256": "8aade0563784d836f6e6126b52592b3e362c7e8e63ac883782ec3a1f834bc64e"
+        },
+        {
+          "path": "src/lib/workflows/owner-action-verification.ts",
+          "git_blob": "cebec96e887c494edfd8272fc2d3236dd930dbd4",
+          "sha256": "6302405bd1f25332ed43686cf923cbeff3e8206df548f053a22b32a472385b97"
+        },
+        {
+          "path": "tests/cycle24-owner-action-verification.test.ts",
+          "git_blob": "760a9ecec2d1754cfd9bd7611fc57291d32985b2",
+          "sha256": "8b27a6b62958466284baa35ab48266e6b8ab6f5c75c60b770d131e64aec8e644"
+        }
+      ]
+    },
+    {
+      "owner": "advanced",
+      "original_author_commit": "cb6d6fc723903544cbb36c2213ca1395fcbac348",
+      "head_commit": "cb6d6fc723903544cbb36c2213ca1395fcbac348",
+      "author_reported_cases": 40,
+      "files": [
+        {
+          "path": "docs/program/CYCLE24_OFFLINE_PROTOCOL.json",
+          "git_blob": "a1a2c89a5b2ce12f914746223c8484876a625660",
+          "sha256": "b1e80f18de96495b1a988094a4f0ce3f7af825f4a6575f6de53726e85dd5bbc1"
+        },
+        {
+          "path": "docs/program/CYCLE24_OFFLINE_SOURCE_ADMISSION.md",
+          "git_blob": "f075f66f2e3f2eb63b88b8f6cfd31f429f691e99",
+          "sha256": "3414d0506e221e0bbd260a325c073a899f4865d5afef99fe33b7bbbb9049b9d6"
+        },
+        {
+          "path": "src/lib/workflows/offline-source-admission.ts",
+          "git_blob": "b387a481ca8e318771e64626b66aa9ed8ae770a5",
+          "sha256": "eb9341bf56365cd3fe354f3c863524ba5999d0de98b14b4596af9b5f49523359"
+        },
+        {
+          "path": "src/lib/workflows/offline-source-protocol.ts",
+          "git_blob": "6f935a26cd978b4496d96d17d41064edc53cf70e",
+          "sha256": "c6b51bab7e73248f4b14cfc6dbbfc1ff961aa059e06a31b6ba8b0589aa0e9861"
+        },
+        {
+          "path": "tests/cycle24-offline-source-admission.test.ts",
+          "git_blob": "e8377c01a441b2a08ff13f45f5e5e5cddb745647",
+          "sha256": "6fa56605255e7f8adde7302949fbdaac22bfbc081d78397197528ef7fdcfdda6"
+        }
+      ]
+    }
+  ],
+  "reviewed_runtime_files": [
+    {
+      "path": "src/components/workflows/CostCorrectionReview.tsx",
+      "git_blob": "b39758d958fe7916e61fc2cce55b1c59ad5bbfc7",
+      "sha256": "4ad7333015a97c36eef0447bceb0ba75cc6fec886d49e0229ca2c81e334a72aa"
+    },
+    {
+      "path": "src/components/workflows/CostCoverageActions.tsx",
+      "git_blob": "d5c80c793ccfe1e73edcde7d5103965172c6f466",
+      "sha256": "9a29ffc2be63c527506829d202fef5ed6d3753a309ded5d3c10f8aa4175eeec6"
+    },
+    {
+      "path": "src/components/workflows/CostCoveragePath.tsx",
+      "git_blob": "600241e8ac9860695e527a2d1658db627493db13",
+      "sha256": "c4d5f2165872b7ee344964b9c8824cc812e88320dcda644b7d1c730312419547"
+    },
+    {
+      "path": "src/components/workflows/CurrentOwnerPriorities.tsx",
+      "git_blob": "e530a46971cf112e25ee4699ba874fdb783e20c0",
+      "sha256": "9f431495b61382cd2e9feb066560667eeb9119a892d12b3e4b7f5e6b0ece89b9"
+    },
+    {
+      "path": "src/components/workflows/MaintenanceCancellationActions.tsx",
+      "git_blob": "183ffe2f6a8f2f2a8c519fe3a9b9ef2e37e2cafd",
+      "sha256": "1c882a73aad9469294719f0d82b65fceb89075f4251e5f68869f6fdd2b5989be"
+    },
+    {
+      "path": "src/components/workflows/MaintenancePlanCorrection.tsx",
+      "git_blob": "9cfc6d9ddf2c0c98b179815977bc2cffd1bb62c0",
+      "sha256": "6062e5cba6e48316b7ff1345f98a97e2c2cd1d051ff69d3cc7c49d37b120ff10"
+    },
+    {
+      "path": "src/components/workflows/MaintenanceRequirementsReview.tsx",
+      "git_blob": "4e4bc1b3435c6918544ecd1b34888f24dc766e7d",
+      "sha256": "24cc494f5b29690f1c044b30b258868ebe9f1000b1b9c6fe07d726b282d34a2c"
+    },
+    {
+      "path": "src/components/workflows/MaintenanceRevisionRequirements.tsx",
+      "git_blob": "7f61a775fd344b4c0955d80ffc8921e1cd86f5a7",
+      "sha256": "89530a080c079c94fca6d2480d70b5e259b72d705434f086f5edb22b60ac7549"
+    },
+    {
+      "path": "src/components/workflows/OperatingCenterCycleEleven.tsx",
+      "git_blob": "0053bccbde96fc6ca0b739034f1e82ad31f4a994",
+      "sha256": "af15fb438e82c47f050f0bcefe5da207dda5e000f5611b32f3050842463508e8"
+    },
+    {
+      "path": "src/components/workflows/OperatingCenterCycleFifteen.tsx",
+      "git_blob": "048c2ed0346a0e95e4f6a2a3bc24a2ad4e9543e1",
+      "sha256": "63fd2a5c9a9eab8ad29a7a297a6c64f6d0c0c67647c1ba0f728fdf6505cfff3f"
+    },
+    {
+      "path": "src/components/workflows/OperatingCenterCycleTen.tsx",
+      "git_blob": "1b333b378a3e44bee42c2054ccc75df1cb8165d8",
+      "sha256": "984d2d756d7413fe6dc55cae390cfd0b8b7053a62a4f8750c0a58be18042fcea"
+    },
+    {
+      "path": "src/components/workflows/OperatingCenterCycleThirteen.tsx",
+      "git_blob": "0e2c311416ccd1826762ae6bbb546020832421fb",
+      "sha256": "599afe13a1e40e629b3c5dbd8e8ad450272f165e6d6e5981610edcb8e064c1c6"
+    },
+    {
+      "path": "src/components/workflows/OperatingCenterCycleTwelve.tsx",
+      "git_blob": "b86f8fd8d274b0da817e337a2351a93b1caef2af",
+      "sha256": "38c02b4baf23d1a692671032129d688b2fe48f6658faaa0e22903efe0208e2f1"
+    },
+    {
+      "path": "src/components/workflows/OperatingCenterCycleTwentyThree.tsx",
+      "git_blob": "af79b2bdad7ddfc8fe3c8751753a5e48d7835afe",
+      "sha256": "41bd65e66ae6b23bb9a391c78dfc250e4d8febd0e2b207d7b78782a788f12b01"
+    },
+    {
+      "path": "src/components/workflows/OperatingCenterCycleTwentyTwo.tsx",
+      "git_blob": "14b6736cb43e2360aff91962ee3fd724a6b08f60",
+      "sha256": "68b06250a4b1e5d9cae0b7f6635378cecbc096238ee8de53caf8958c2ef36701"
+    },
+    {
+      "path": "src/components/workflows/OperatingCenterPreview.tsx",
+      "git_blob": "fddd193a0d753060c9ebc392880e58310e339885",
+      "sha256": "8b052f84fb2dd602eb323bd4925bb13bc77736c622bf2312cc602553b261d6ce"
+    },
+    {
+      "path": "src/components/workflows/OwnerActionVerification.tsx",
+      "git_blob": "d0096c42238a50c90c6f602788c769ca9ae7169c",
+      "sha256": "4270c1480c36c224bc461a5688115b4701857a0a41048b3affbf3f32110b2835"
+    },
+    {
+      "path": "src/components/workflows/PropertyServiceContinuity.tsx",
+      "git_blob": "5ae445f464489c3d38173266ba1e2473be21fc6d",
+      "sha256": "7ab6cdabd4184eaeb2a631ed0fb7f149a5759768515750fe7214e6e9a7c39ef7"
+    },
+    {
+      "path": "src/components/workflows/PublishedServiceNavigator.tsx",
+      "git_blob": "aa8abb9a222397397bcc381d80c728f5dd275c2f",
+      "sha256": "85a86a3443fc3d5edeb9ee3376c0cfcfa7ee056503e6c71eed320f10db87a91d"
+    },
+    {
+      "path": "src/components/workflows/RecordedCostRequirements.tsx",
+      "git_blob": "17e5719b00546a1fdce5bc9a5157d7d1bf53a917",
+      "sha256": "7374d98abfb7751913e7c502835e608666a1644776dcf5e0c06056e9dca2b967"
+    },
+    {
+      "path": "src/components/workflows/RecordedOwnerActions.tsx",
+      "git_blob": "132f64b738c152dd5044b488dad842dd2ffdf42d",
+      "sha256": "96b88e59bbc06b77ea6c2625d0aaaeb374d10a1f44ccd7422edf69699aa43bce"
+    },
+    {
+      "path": "src/components/workflows/SavedRevisionWorkbench.tsx",
+      "git_blob": "ce50fad6d7cf154862231928c3e3a37897fccad7",
+      "sha256": "c8bbfd2cff1ce9da9a4d9f5d3654fa883bef8c069d7b57f4d4659c6cdb03ef3d"
+    },
+    {
+      "path": "src/components/workflows/ServiceRequestActions.tsx",
+      "git_blob": "700791de0803173bc97e65dfb3db4d12e0b3f9e4",
+      "sha256": "f38d17fbe8575869d319c22cc717602b8ce4e7f7debdb181adeb8142b3a8a08f"
+    },
+    {
+      "path": "src/components/workflows/ServiceSourceReview.tsx",
+      "git_blob": "474145fa0f6dfc479d7c932ee7d41048dbe523f9",
+      "sha256": "ae745b54a1f8d27e1641d48a7f5f4215833a985be02caac4d351770ee5b6eb14"
+    },
+    {
+      "path": "src/components/workflows/TaskCorrectionReview.tsx",
+      "git_blob": "e96e57428a46936c47965c1d643e09b403366945",
+      "sha256": "6b8b07ee6dc64577411678d3230bff12ef4894a881c66d3a7eb3bcc3366c8bcb"
+    },
+    {
+      "path": "src/components/workflows/TaskCustodyReview.tsx",
+      "git_blob": "92cb037f6789cd14a936c88ea8a96b2bd48671f4",
+      "sha256": "03c2e6fd9e6584d89adfad8b9ab442e6433b878d120e8556579253a2c35f47b0"
+    },
+    {
+      "path": "src/components/workflows/TaskReceiptActions.tsx",
+      "git_blob": "b1c2a85251cccb46e2fe3cc20bc10f4e63e5821f",
+      "sha256": "7b338b59125e6f70a1072d48a04cdc0612f5a1e074591c6f4039efd55df98a4e"
+    },
+    {
+      "path": "src/components/workflows/TaskRevisionConsistency.tsx",
+      "git_blob": "ab78b94b02cbe3af1d523165694f693e6086b387",
+      "sha256": "d34a97fe1c9892fa3e916a9740a546c8ba42063fbb0b6754d4056d34c8501e2b"
+    },
+    {
+      "path": "src/components/workflows/VerifiedOwnerBriefing.tsx",
+      "git_blob": "95ff61e1f82e1fc8e87d05712f63896500a337c8",
+      "sha256": "01977f9b7dd67e34b80b29a08e6050b6219f287e4a5644b4104ecf4a29ebe7ed"
+    },
+    {
+      "path": "src/components/workflows/cost-correction-review.css",
+      "git_blob": "7e9912c103e7b5cb600162abdaf0b7f3f1e469e6",
+      "sha256": "71f13bc04577d63153989e555c819d1a4b7dac48b9741e3b2579a1ffa4b3b019"
+    },
+    {
+      "path": "src/components/workflows/cost-coverage-actions.css",
+      "git_blob": "b565773764f176f65359f5165834dc853afc42ea",
+      "sha256": "486c7a24f54ba43a35a8e232ae1104c08fa15fc8ffc0050f5ef0759fe0999a55"
+    },
+    {
+      "path": "src/components/workflows/cost-coverage-path.css",
+      "git_blob": "6660e58c3f89507c565832cf043fc997c558b45c",
+      "sha256": "6a3d9f9951587d4414073f169d96f00ae72b63bf9a0053ab7bc100843e0d1e01"
+    },
+    {
+      "path": "src/components/workflows/current-owner-priorities.css",
+      "git_blob": "9775bb6186edba5c79003601c67e5e3f3424986d",
+      "sha256": "be23bd11d2acefb931c94e480be70581867499c9fe92edadfbd2104d2f169f17"
+    },
+    {
+      "path": "src/components/workflows/cycle23-source-review.css",
+      "git_blob": "71b3df1d8f1460f172dce0f3e37176d64181c10d",
+      "sha256": "e894f53deca48682bbf76ce7621aaaf14511bd6174beca04120ed339e19e98c2"
+    },
+    {
+      "path": "src/components/workflows/maintenance-cancellation-actions.css",
+      "git_blob": "979fbaa15271545b4ff762f3c6af9900f1e2c328",
+      "sha256": "137bedc6785e9a6ad3f4ecd7b9cb2f653555e5844beae83efaf7f81d7878bc21"
+    },
+    {
+      "path": "src/components/workflows/maintenance-plan-correction.css",
+      "git_blob": "9c1ba868cda8b6b974ac5e7ef75c2f0ee5a0ddd7",
+      "sha256": "5499892c222cae7a6230abe715f53f5f9f03d5bbeb1dca82658b5e2710837a58"
+    },
+    {
+      "path": "src/components/workflows/maintenance-requirements-review.css",
+      "git_blob": "5edaffb2091d17f2d2a972fa0dcff3e4ffc57259",
+      "sha256": "8370dcf1150baa297e5b176c3fb6d67a6960c5b845727420b46481f163dfaa37"
+    },
+    {
+      "path": "src/components/workflows/maintenance-revision-requirements.css",
+      "git_blob": "4ce602e27ada2711462218bcdb6998865ad369f4",
+      "sha256": "75ef9ace2ec519f786f10fcf4845c557de0cbff3c8d539187475fb3989d302fb"
+    },
+    {
+      "path": "src/components/workflows/owner-action-verification.css",
+      "git_blob": "0652fc4497f712ff366b4129735d88dddad0fbfb",
+      "sha256": "8aade0563784d836f6e6126b52592b3e362c7e8e63ac883782ec3a1f834bc64e"
+    },
+    {
+      "path": "src/components/workflows/property-service-continuity.css",
+      "git_blob": "cebe52097921fa87aec9578331bcd6e90e62e4a4",
+      "sha256": "31a345a4f5d10b56f08b8737b00691e72bf67f4317ea777efcfcb79be7021588"
+    },
+    {
+      "path": "src/components/workflows/published-service-navigation.css",
+      "git_blob": "1e8977118a58e673f3280ed6528ee850c13e1458",
+      "sha256": "421a1629e57456c36d39e610d6814bfa9e3f20b914f45df6ee3b471580374388"
+    },
+    {
+      "path": "src/components/workflows/recorded-cost-requirements.css",
+      "git_blob": "180fa88f2191625656a47f3331a54858fdc0ac28",
+      "sha256": "8369a7d02611e3ebd214a160a29ed754d374becdd6e6ea561079da1bb96a6b4e"
+    },
+    {
+      "path": "src/components/workflows/recorded-owner-actions.css",
+      "git_blob": "2f1b6a016e9a6253894ccc6e845c99af8f356f46",
+      "sha256": "04646b821eb4847e2138f2bf14b413d01f1b34095bf2c9ac68cb986e91535508"
+    },
+    {
+      "path": "src/components/workflows/saved-revision-workbench.css",
+      "git_blob": "06065ea259f5d842d6f1d9107bedda413e1f6c4b",
+      "sha256": "5488e92c5f6e487d716da7f1667b6d6d83a4b406de5c405c834bb2f176fb9730"
+    },
+    {
+      "path": "src/components/workflows/service-request-actions.css",
+      "git_blob": "ce6dd58e7200441e06360ac4cb0eeacdd83c95c1",
+      "sha256": "6b0f563bc7028d0ab48a4df7ba33834c040acccaa034fd1af633f96bc19126eb"
+    },
+    {
+      "path": "src/components/workflows/service-source-review.css",
+      "git_blob": "2070e0d6e800e6599b5ec5cfa3b083c90a6c0e07",
+      "sha256": "771d750938360290a582d29cb4f7d2d999aefb94ad412b939577e08584b3fa92"
+    },
+    {
+      "path": "src/components/workflows/task-correction-review.css",
+      "git_blob": "0fce1e3f8bd0c2e8d99c992efd62e1900a986632",
+      "sha256": "975aaf2d7490dbbf4d36efa57b5fbaba94363402cd63fd40d555519e44b35f93"
+    },
+    {
+      "path": "src/components/workflows/task-custody-review.css",
+      "git_blob": "c1f27f99f8163f595b00db5fe7a7b903d82f0ce0",
+      "sha256": "fc9cdec6690c4ae16dadc7dd52dad4a2df485d184a10fcd79dd40bc6726ef1a3"
+    },
+    {
+      "path": "src/components/workflows/task-receipt-actions.css",
+      "git_blob": "f3e19e24974d38cc850da0803e2f881aa754c429",
+      "sha256": "df1630a28260c1a06e68ea5489a65a055f3ad47c2751add5aefa439e805c4d06"
+    },
+    {
+      "path": "src/components/workflows/task-revision-consistency.css",
+      "git_blob": "a421767151577411bb2f2e38af498cad49f3ff56",
+      "sha256": "e2ef787c181c5a9a437df2d2cdfbcd44d8ed6d8f355d7d7eb5d50603b0d234aa"
+    },
+    {
+      "path": "src/components/workflows/verified-owner-briefing.css",
+      "git_blob": "0bfabdfbb528f0ae6fb938007c6199eb7ed90382",
+      "sha256": "7045a891ace53966cc0defdc053440e4ebe7ec62edc15ae444c86aa7a6f74f86"
+    },
+    {
+      "path": "src/lib/workflows/correction-preview-sources.ts",
+      "git_blob": "c675d0c91b8f4a859ef36e647134ead01b163eb7",
+      "sha256": "19ce8634c10bfa80a4317f1186a22c2807442a2b166bbc409a63257c27005998"
+    },
+    {
+      "path": "src/lib/workflows/cost-correction-review.ts",
+      "git_blob": "5065f080b2cc30e0067f338e23c7e592a7fa4e70",
+      "sha256": "ce7d4fd475357a65f894132640d54627b0c8ac74ee27ff1ad4aab7e7655281d7"
+    },
+    {
+      "path": "src/lib/workflows/cost-coverage-actions.ts",
+      "git_blob": "1b465f0fe48b3ff6c7e0dd9991f4a862a20f505d",
+      "sha256": "d088d2bae6f72d96bc5d07e594264e14eb6a9145bd545c4b53ef221b2e7cbdf5"
+    },
+    {
+      "path": "src/lib/workflows/cost-coverage-path.ts",
+      "git_blob": "63313b93173d111ffbda0a05b5f20a83a6ae161a",
+      "sha256": "f1b21bff936eb790d96da1c9c110c51e925ebb5eb7f0965d94901a16280e7bdc"
+    },
+    {
+      "path": "src/lib/workflows/current-owner-priorities.ts",
+      "git_blob": "e82876f89992d1e2c6f721981af712ab04de4733",
+      "sha256": "14e47eac3b203bd24fc8088f88a8b649fe81ea466ce1713e2a70b2b06cf36190"
+    },
+    {
+      "path": "src/lib/workflows/maintenance-plan-correction.ts",
+      "git_blob": "1cf1fcd645803e5cede7715095dec4c92ea9242b",
+      "sha256": "cd5d4ce92fa61a32302e543fdd6f21ec7405af75f1e10dd78efb87c6822e577c"
+    },
+    {
+      "path": "src/lib/workflows/maintenance-requirements-review.ts",
+      "git_blob": "e0d0a10832d647a05e037d1fd898b9277958b16f",
+      "sha256": "2023e10bebf98a2e9b4eee54eda424ce715a7fa188b21eb4496e3d5d92f0cb16"
+    },
+    {
+      "path": "src/lib/workflows/maintenance-revision-requirements.ts",
+      "git_blob": "00337e975d582ed8fa9a2e1502a0ea3807e43ba6",
+      "sha256": "688dc6721b1ae3c4972e52956523bede11926c2426334ad25408447d562e5816"
+    },
+    {
+      "path": "src/lib/workflows/offline-source-admission.ts",
+      "git_blob": "b387a481ca8e318771e64626b66aa9ed8ae770a5",
+      "sha256": "eb9341bf56365cd3fe354f3c863524ba5999d0de98b14b4596af9b5f49523359"
+    },
+    {
+      "path": "src/lib/workflows/offline-source-protocol.ts",
+      "git_blob": "6f935a26cd978b4496d96d17d41064edc53cf70e",
+      "sha256": "c6b51bab7e73248f4b14cfc6dbbfc1ff961aa059e06a31b6ba8b0589aa0e9861"
+    },
+    {
+      "path": "src/lib/workflows/owner-action-verification.ts",
+      "git_blob": "cebec96e887c494edfd8272fc2d3236dd930dbd4",
+      "sha256": "6302405bd1f25332ed43686cf923cbeff3e8206df548f053a22b32a472385b97"
+    },
+    {
+      "path": "src/lib/workflows/plan-cancellation-review.ts",
+      "git_blob": "e8e2d77cd4d3519b4f4eb4fc2f2f4b41481e5ca7",
+      "sha256": "1ee395ca0e7fd37d675a1a2def71cf53f18eaa679bbf2c3ef337ad3bf5ab7d63"
+    },
+    {
+      "path": "src/lib/workflows/property-service-continuity.ts",
+      "git_blob": "b875d7347a3c451dc6c4493a67b52cd38b84d877",
+      "sha256": "516b17894fc390a746f1ac0455c479e79f23ce8792dc19ad9e4afe53be810e24"
+    },
+    {
+      "path": "src/lib/workflows/published-service-navigation.ts",
+      "git_blob": "a8dc1104c110340005b70ef3e69300931ce9fb05",
+      "sha256": "0c6fd950ee0a9362360af19b910c5401aef1d09fd09bf4678f412f7751c57dd9"
+    },
+    {
+      "path": "src/lib/workflows/recorded-cost-requirements.ts",
+      "git_blob": "ad8ee0ba15ab0a17f731eb7cde34b30ec4f537dc",
+      "sha256": "72b6a0b2f63e2d961f39f47fd3f903c30690cb5eec6e4196a892b75285ee9c71"
+    },
+    {
+      "path": "src/lib/workflows/recorded-owner-actions.ts",
+      "git_blob": "832b825ef3ef4eacab6498a9079eba38c4cd5b3d",
+      "sha256": "a70e3b36da69d7490adf8d807b620d27132a64fb26831d872a0fcdc292ce36b0"
+    },
+    {
+      "path": "src/lib/workflows/saved-revision-exercise.ts",
+      "git_blob": "9e31eeee45c45bb150e7a4415b015dce7f8dea18",
+      "sha256": "c41a1ffe3980a286ec72665d74a6b79523949eca475d7ec4e85618791535ad38"
+    },
+    {
+      "path": "src/lib/workflows/saved-workbench-selection.ts",
+      "git_blob": "8a0ba24403527cc176854ef28ef8d63f7f346f97",
+      "sha256": "dcac4960214ef1c308a0dbf7c78674b2ced40439990bbe2f707c77f6f3e0bdf8"
+    },
+    {
+      "path": "src/lib/workflows/service-request-actions.ts",
+      "git_blob": "756b4a3612bd39443e34d2f79c772b721bae16bc",
+      "sha256": "25a210bec44932daebd58d86e2861ecb4269fa7c387ebb4e284df69321882723"
+    },
+    {
+      "path": "src/lib/workflows/service-source-review.ts",
+      "git_blob": "f0b1118131ee5beaf92e29406df15e5cc5c0ee69",
+      "sha256": "1d4d680285ef1a7fd72eb201ece35300fae8f428811841e73d1c13e6dc7f2630"
+    },
+    {
+      "path": "src/lib/workflows/task-correction-review.ts",
+      "git_blob": "f660a595382ad4650a977f87365c95b57f3ba949",
+      "sha256": "5dfcb0a9feeeb1ffa530634f997ffb4bcde90a8a18a126e8d8af3e911e5933e8"
+    },
+    {
+      "path": "src/lib/workflows/task-custody-review.ts",
+      "git_blob": "80052bab82892d5c420914b8aa8390a59adef13d",
+      "sha256": "25817e74272a661b9f65bd20e732d6adc4feffe78cf74e1beb103ad8ce5d690f"
+    },
+    {
+      "path": "src/lib/workflows/task-receipt-reconciliation.ts",
+      "git_blob": "84df3ebf027b0f2edb68c6b8621070ae91b06a8b",
+      "sha256": "0ceb39703978bbc4cf18d9fcf74551463ac91057849916e184e5436cbac2d9db"
+    },
+    {
+      "path": "src/lib/workflows/task-revision-consistency.ts",
+      "git_blob": "10fd6ca71a7edd22aa190ab4d2b2c1b62429d8fe",
+      "sha256": "33561a4905012cd0641b71d0b9cd7ec1e623736e815f3e5d21e87248a110837f"
+    },
+    {
+      "path": "src/lib/workflows/verified-owner-briefing.ts",
+      "git_blob": "5a289a1c18d37091fc29ccb9b096e22f5cd259c1",
+      "sha256": "c62d4cf776b854bcd4fd8ccd72d46ac094381a9ccf0049f4b1302fbd9fb638f6"
+    }
+  ],
+  "source_integrity": {
+    "prior_author_count": 523,
+    "prior_author_changes": [],
+    "protected_files": 128,
+    "protected_changes": [],
+    "design_locks": 5,
+    "design_bindings": 13,
+    "binding_changes": [],
+    "capabilities": 25,
+    "capability_document_sha256": "6b698401b36df7341ec617d01e61b70655cd9efd500c703589e0f5b16f862bd7",
+    "runtime_files_exact": 76,
+    "customer_dependency_exact": true
+  },
+  "source_boundaries": {
+    "new_author_paths": 30,
+    "main_changed_existing_runtime_paths": [
+      "src/components/workflows/OperatingCenterCycleFifteen.tsx",
+      "src/components/workflows/OperatingCenterCycleTwentyThree.tsx",
+      "src/components/workflows/SavedRevisionWorkbench.tsx"
+    ],
+    "field_changed_existing_runtime_path": "src/lib/workflows/saved-revision-exercise.ts",
+    "prior_author_files": 523,
+    "protected_files": 128,
+    "design_locks": 5,
+    "design_bindings": 13,
+    "capability_objects": 25,
+    "original_ids": 18,
+    "closed_phase_one_gates": 8,
+    "approved_design_scopes": 3,
+    "all_retained_values": "UNCHANGED",
+    "author_owned_paths": 31
+  },
+  "findings": [
+    {
+      "id": "C24-IR-01",
+      "severity": "SOURCE_CONTEXT_CORRECTNESS",
+      "status": "RESOLVED_IN_REVIEWED_FORWARD_COMMITS",
+      "original_commit": "d2eeeec8f2ca070a6ccf350273fa1cf7475905ca",
+      "path": "src/lib/workflows/plan-cancellation-review.ts",
+      "demonstrated": "A current marketing review combined with an original recurring_maintenance selection was accepted by preparePlanCancellationReview and consumed the original recurring_maintenance blocked review. Original assertSelection checked current review validity without joining the retained selection to that review. Underlying authority stayed BLOCKED; no native plan/message mutation occurred.",
+      "reproducer": "Original allowed prepareCorrectionPreviewSources; select entry2; read recurring_maintenance review and select its exact row; read marketing review of same native job; call preparePlanCancellationReview({review:marketingReview,selection:recurringSelection.selection},proposal,true). Independent expected-rejection case resolved instead (1 failed/9 filtered). Finding sent to Root/author before any shared runtime correction.",
+      "corrections": [
+        {
+          "commit": "ae26767f81fdc775d91d46c4b98daf4484f4c319",
+          "parent": "d2eeeec8f2ca070a6ccf350273fa1cf7475905ca",
+          "paths": [
+            "src/lib/workflows/plan-cancellation-review.ts",
+            "tests/cycle24-plan-cancellation-review.test.ts"
+          ],
+          "change": "Join exact original displayed row identity, desk source hash, requested purpose, organization/customer/property/job and native plan revision before prepare/close/reconcile. Crossed reconciliation returns context-free UNKNOWN without calling original reconciler."
+        },
+        {
+          "commit": "8592f47858e49f1c74b30222d918c5b702307240",
+          "parent": "ae26767f81fdc775d91d46c4b98daf4484f4c319",
+          "paths": [
+            "src/lib/workflows/plan-cancellation-review.ts",
+            "tests/cycle24-plan-cancellation-review.test.ts"
+          ],
+          "change": "Join all seven saved/view source identity fields, including tenant, actor and issued version; no global UUID uniqueness assumption."
+        }
+      ],
+      "verification": "Independent crossed-purpose prepare, close and reconcile tests pass on final frozen runtime. Original rightful selection remains READY_FOR_REQUIREMENTS/BLOCKED_LOCAL_REVIEW and is not consumed by a rejected pair."
+    },
+    {
+      "id": "C24-IR-02",
+      "severity": "NATIVE_NAVIGATION_INTEGRATION",
+      "status": "RESOLVED_IN_EXACT_MAIN_FORWARD",
+      "original_commit": "8f31e6fbf2d4c2e18f2b7e86e15e8c751bbfbe8e",
+      "path": "src/components/workflows/SavedRevisionWorkbench.tsx",
+      "trigger": "Actual responsive browser sequence: native task correction, exact new task receipt, material-source Finance verification/continuation, then owner load. Owner selector failed to load; initial browser case timed out.",
+      "demonstrated_cause": "Workbench allocated new callback functions on every render. Same-job tab navigation or UI source refresh rerendered the host and changed the action callback lease after dispatch. Original daily continuation correctly treated post-dispatch callback identity change as UNKNOWN, shared by later owner readers. Stable native callback control succeeded; replacement control reproduced original navigation/context UNKNOWN. Separate real React test on8f reproduced same-job tabCallbacksStable=false and refreshCallbacksStable=false while job/source and Panel/Actions equality stayed true.",
+      "correction": {
+        "commit": "7a90da23c0a701001c79b605d94d2894cd9cc5a6",
+        "parent": "8f31e6fbf2d4c2e18f2b7e86e15e8c751bbfbe8e",
+        "paths": ["src/components/workflows/SavedRevisionWorkbench.tsx"],
+        "change": "Main-only useCallback preserves onContinue for identical sources/job, onSelectJob for identical sources and onSourcesSaved for UI refresh. Exact job/source change rotates source-bound callbacks. Original callback bodies/current-source checks, host state/keys and engine UNKNOWN/lease fences are untouched."
+      },
+      "original_native_controls": {
+        "raw_report": "/private/tmp/cycle24-finance-callback-diagnosis.json",
+        "raw_sha256": "2d5b9162c45d596843c52a1c5a8ff374c16923dc8844c8614f149adefd40cb1f",
+        "passed": 2,
+        "counting": "Two controls also included in final full54; not extra coverage."
+      },
+      "original_actual_react_red": {
+        "cases": 1,
+        "failed": 1,
+        "artifacts": [
+          {
+            "path": "/private/tmp/cycle24-callback-red/.last-run.json",
+            "sha256": "372ff7b15a4840ad0210c8acbfa22e5e2d7affdc67b94e36bc02c0d017ee3817"
+          },
+          {
+            "path": "/private/tmp/cycle24-callback-red/cycle24-callback-lease-sam-9cd89-ources-rotate-exact-context/error-context.md",
+            "sha256": "6bc123e0bbe19577dd31be440462b1b151aaa1ff96653aa6e6212034ad321a1f"
+          },
+          {
+            "path": "/private/tmp/cycle24-callback-red/cycle24-callback-lease-sam-9cd89-ources-rotate-exact-context/test-failed-1.png",
+            "sha256": "ea337020e70f8dd9c4cfa2fa1e6fd9513e5e262f3f5a740c1c72c826acdd9dfd"
+          },
+          {
+            "path": "/private/tmp/cycle24-callback-red/cycle24-callback-lease-sam-9cd89-ources-rotate-exact-context/trace.zip",
+            "sha256": "d6f0bfc0f35e097fbea68e1041314dbf079bbf67c3e1d228f4c90b16be934cfb"
+          }
+        ],
+        "note": "A prior sandbox EPERM prevented loopback bind before a product case ran; the authorized unrestricted local run then produced this actual callback-identity RED. No test assertion or budget changed."
+      },
+      "current_actual_react": "1/1 PASS on exact7a, separate from application54 and Main responsive9DEV/3OFF. Same-job tab and UI refresh retain callbacks; actual changed job and source rotate exact context; original Panel/Actions receive matching callbacks."
+    }
+  ],
+  "review_notes": [
+    {
+      "topic": "Original task receipt",
+      "result": "Exact original binding is frozen in existing pre-await correction intent. New reader counts original/result/native reviews and competing successors. Known native APPROVED result after a lost ACK remains UNKNOWN; no legacy backfill, inferred receipt, replay, posting or physical completion."
+    },
+    {
+      "topic": "Native request custody",
+      "result": "Same original Operations-root attempt map has a distinct service-request/org/request namespace spanning source views. Claim precedes hashing/native await, live fingerprints/input/membership fences precede invocation, and absent/failed/lost ACK permanently holds UNKNOWN. assignIntake has no native CAS or durable receipt; current-row observation is explicitly unattributed and never clears custody."
+    },
+    {
+      "topic": "Canonical financial sources",
+      "result": "Native task/material actions feed the original workforce/expense/event readers and jobFinancials. Approved unposted time has no invented labor amount. Invoice requirements remain independent NO_GO, invoice_prepared false and financial_execution false."
+    },
+    {
+      "topic": "Customer lineage",
+      "result": "Existing native request status/assignee only. Missing request-to-job foreign key remains UNKNOWN_ABSENT_FROM_CURRENT_SOURCE_CONTRACT. Exact published report versions and bytes are retained; closing intake review or appending documentation never proves completion/customer acceptance."
+    },
+    {
+      "topic": "Maintenance consent/lifecycle",
+      "result": "Only original same-tab BLOCKED staff-review CANCEL/REVOKE is supported. Native plan/enrollment cancellation UNSUPPORTED. Purpose/suppression/enrollment and send gates remain unverified; no property/consent mutation or network action."
+    },
+    {
+      "topic": "Verified owner action",
+      "result": "Original ranking, source handles and inspect-before-navigation remain authoritative. Copied inspections, foreign/stale identities or missing source keys cannot become verified actions; priority changes do not mean completion. Ambiguous original callbacks retain original UNKNOWN without replay."
+    },
+    {
+      "topic": "Optional composition",
+      "result": "Same five C23 panels, five tabs and six destinations; additive per-tab action slots receive the exact original source, job and callback identities. Original panel renders before its action slot. SourceExercise and original pending owner stay in place; no second navigation/store/hold or automatic source preparation. Default requirements/consistency options remain OFF."
+    },
+    {
+      "topic": "Finite offline proposal",
+      "result": "Strict eight original canonical source fields plus four native visit/plan fields are compared to two original retained handles. Parser rejects executable/extra/null/missing fields. Result is only the original read-only sync-admission comparison, with every authority false; no restore/sync/import/replay/custody or source-hash authentication."
+    },
+    {
+      "topic": "Independent restart register",
+      "result": "Exact separately reviewed four-document NO_GO register is present. Nineteen unaccepted dependency requirements remain documentation only, with no implementation/schema/operational authorization. Physical Air availability was denied by owner; procedure readiness is not an actual recovery pass."
+    },
+    {
+      "topic": "Post-dispatch callback ownership",
+      "result": "Native replaced-lease control remains UNKNOWN by design. Main stabilizes only legitimate same-job source callbacks; actual context changes still rotate identity. The real React regression uses a transient loopback Vite document importing actual React/workbench/original preparer, closes server/cache, and is outside mandatory npm test so Foundation installs Chromium first."
+    }
+  ],
+  "tests": {
+    "file": "tests/cycle24-independent-integration-review.test.ts",
+    "file_sha256": "09b5042be1fee47b562ed52046c900583acaaecff6241b2aa8491674bd17f083",
+    "unique_cases": 54,
+    "passed": 54,
+    "failed": 0,
+    "pending_required_cases": 0,
+    "count_semantics": "Final exact7a single full application run:54/54. Earlier8f full51 plus targeted1 and native lease2 controls remain history and are not additional current coverage. Separate real React browser regression1/1 is counted separately from application54 and Main responsive9DEV/3OFF.",
+    "final_runs": [
+      {
+        "raw_report": "/private/tmp/cycle24-independent-verified-final.json",
+        "raw_sha256": "eadbbb7e0ded34db2fd0ca021773c76e577a72135db35cd93203a64c43316964",
+        "passed": 54,
+        "failed": 0,
+        "filtered": 0,
+        "suite_duration_ms": 113714.54907226562,
+        "command": "node_modules/.bin/vitest run tests/cycle24-independent-integration-review.test.ts --reporter=verbose --reporter=json --outputFile=/private/tmp/cycle24-independent-verified-final.json"
+      }
+    ],
+    "cases": [
+      {
+        "name": "Cycle24 independent exact native action integration Finance continuation after the exact task receipt with stable host callback preserves the original outcome fence",
+        "status": "passed",
+        "duration_ms": 3792.9419579999994
+      },
+      {
+        "name": "Cycle24 independent exact native action integration Finance continuation after the exact task receipt with replaced host callback preserves the original outcome fence",
+        "status": "passed",
+        "duration_ms": 2642.944291
+      },
+      {
+        "name": "Cycle24 independent exact native action integration strict native action forms reject executable and extra authority fields without running caller code or a writer",
+        "status": "passed",
+        "duration_ms": 3438.4212499999994
+      },
+      {
+        "name": "Cycle24 independent exact native action integration the original six destinations compose five original C23 panels and five additive native action slots over one source object",
+        "status": "passed",
+        "duration_ms": 1.3880000000008295
+      },
+      {
+        "name": "Cycle24 independent exact native action integration the existing workbench gives its original panel and additive actions the same retained job and callbacks without preparing sources",
+        "status": "passed",
+        "duration_ms": 435.33695799999987
+      },
+      {
+        "name": "Cycle24 independent exact native action integration the original host defaults to disabled Requirements mode with no new native controls or source preparation",
+        "status": "passed",
+        "duration_ms": 2.4599170000001322
+      },
+      {
+        "name": "Cycle24 independent exact native action integration lost native record acknowledgement preserves UNKNOWN even when exact task evidence is visible",
+        "status": "passed",
+        "duration_ms": 1795.062917000001
+      },
+      {
+        "name": "Cycle24 independent exact native action integration lost native review acknowledgement preserves UNKNOWN even when exact task evidence is visible",
+        "status": "passed",
+        "duration_ms": 1954.2757079999992
+      },
+      {
+        "name": "Cycle24 independent exact native action integration current inactive staff loses every native consumer and cannot update a request",
+        "status": "passed",
+        "duration_ms": 3930.0221249999995
+      },
+      {
+        "name": "Cycle24 independent exact native action integration current demoted staff loses every native consumer and cannot update a request",
+        "status": "passed",
+        "duration_ms": 4340.758375000001
+      },
+      {
+        "name": "Cycle24 independent exact native action integration appended published documentation retains the exact old report version and remains distinct from completion or a verified owner action",
+        "status": "passed",
+        "duration_ms": 4303.185833
+      },
+      {
+        "name": "Cycle24 independent exact native action integration brand 0 offline protocol returns only the original source admission handle without native mutation",
+        "status": "passed",
+        "duration_ms": 478.4526670000014
+      },
+      {
+        "name": "Cycle24 independent exact native action integration brand 1 offline protocol returns only the original source admission handle without native mutation",
+        "status": "passed",
+        "duration_ms": 478.47162500000195
+      },
+      {
+        "name": "Cycle24 independent exact native action integration brand 2 offline protocol returns only the original source admission handle without native mutation",
+        "status": "passed",
+        "duration_ms": 548.0227909999994
+      },
+      {
+        "name": "Cycle24 independent exact native action integration external offline organization_id is compared to exact original native sources and cannot acquire restore authority",
+        "status": "passed",
+        "duration_ms": 484.41320899999846
+      },
+      {
+        "name": "Cycle24 independent exact native action integration external offline customer_id is compared to exact original native sources and cannot acquire restore authority",
+        "status": "passed",
+        "duration_ms": 480.8296249999985
+      },
+      {
+        "name": "Cycle24 independent exact native action integration external offline location_id is compared to exact original native sources and cannot acquire restore authority",
+        "status": "passed",
+        "duration_ms": 482.84883400000035
+      },
+      {
+        "name": "Cycle24 independent exact native action integration external offline job_id is compared to exact original native sources and cannot acquire restore authority",
+        "status": "passed",
+        "duration_ms": 476.44445899999846
+      },
+      {
+        "name": "Cycle24 independent exact native action integration external offline estimate_id is compared to exact original native sources and cannot acquire restore authority",
+        "status": "passed",
+        "duration_ms": 479.085750000002
+      },
+      {
+        "name": "Cycle24 independent exact native action integration external offline issued_version_id is compared to exact original native sources and cannot acquire restore authority",
+        "status": "passed",
+        "duration_ms": 476.27224999999453
+      },
+      {
+        "name": "Cycle24 independent exact native action integration external offline source_sha256 is compared to exact original native sources and cannot acquire restore authority",
+        "status": "passed",
+        "duration_ms": 480.37870900000416
+      },
+      {
+        "name": "Cycle24 independent exact native action integration external offline saved_lock_revision is compared to exact original native sources and cannot acquire restore authority",
+        "status": "passed",
+        "duration_ms": 494.26062499999534
+      },
+      {
+        "name": "Cycle24 independent exact native action integration external offline visit_id is compared to exact original native sources and cannot acquire restore authority",
+        "status": "passed",
+        "duration_ms": 492.6042080000043
+      },
+      {
+        "name": "Cycle24 independent exact native action integration external offline visit_revision is compared to exact original native sources and cannot acquire restore authority",
+        "status": "passed",
+        "duration_ms": 513.9572499999995
+      },
+      {
+        "name": "Cycle24 independent exact native action integration external offline plan_id is compared to exact original native sources and cannot acquire restore authority",
+        "status": "passed",
+        "duration_ms": 484.7660410000026
+      },
+      {
+        "name": "Cycle24 independent exact native action integration external offline plan_revision is compared to exact original native sources and cannot acquire restore authority",
+        "status": "passed",
+        "duration_ms": 484.1362919999956
+      },
+      {
+        "name": "Cycle24 independent exact native action integration strict external offline parser rejects executable, extra, missing and null native fields before getter execution",
+        "status": "passed",
+        "duration_ms": 1.0210409999999683
+      },
+      {
+        "name": "Cycle24 independent exact native action integration a maintenance selection from another requested purpose cannot substitute for the displayed review",
+        "status": "passed",
+        "duration_ms": 761.6307500000039
+      },
+      {
+        "name": "Cycle24 independent exact native action integration a crossed maintenance source cannot close the original retained review",
+        "status": "passed",
+        "duration_ms": 993.3500000000058
+      },
+      {
+        "name": "Cycle24 independent exact native action integration a crossed maintenance source cannot reconcile the original retained review",
+        "status": "passed",
+        "duration_ms": 1001.5209169999944
+      },
+      {
+        "name": "Cycle24 independent exact native action integration brand 0 native correction and material review remain the original cost and priority sources",
+        "status": "passed",
+        "duration_ms": 12596.027709000002
+      },
+      {
+        "name": "Cycle24 independent exact native action integration brand 1 native correction and material review remain the original cost and priority sources",
+        "status": "passed",
+        "duration_ms": 13026.756583000002
+      },
+      {
+        "name": "Cycle24 independent exact native action integration brand 2 native correction and material review remain the original cost and priority sources",
+        "status": "passed",
+        "duration_ms": 14692.631083
+      },
+      {
+        "name": "Cycle24 independent exact native action integration foreign organization_id invalidates all native action consumers before continuation or a request write",
+        "status": "passed",
+        "duration_ms": 4004.127290999997
+      },
+      {
+        "name": "Cycle24 independent exact native action integration foreign customer_id invalidates all native action consumers before continuation or a request write",
+        "status": "passed",
+        "duration_ms": 3914.3132909999986
+      },
+      {
+        "name": "Cycle24 independent exact native action integration foreign location_id invalidates all native action consumers before continuation or a request write",
+        "status": "passed",
+        "duration_ms": 3910.966208999991
+      },
+      {
+        "name": "Cycle24 independent exact native action integration foreign version_id invalidates all native action consumers before continuation or a request write",
+        "status": "passed",
+        "duration_ms": 3918.4452909999964
+      },
+      {
+        "name": "Cycle24 independent exact native action integration foreign job_id invalidates all native action consumers before continuation or a request write",
+        "status": "passed",
+        "duration_ms": 3912.2048330000107
+      },
+      {
+        "name": "Cycle24 independent exact native action integration a report from another native property cannot substitute for current published service evidence",
+        "status": "passed",
+        "duration_ms": 2640.459167000008
+      },
+      {
+        "name": "Cycle24 independent exact native action integration native request before lost ACK stays UNKNOWN with no receipt or replay across fresh source wrappers",
+        "status": "passed",
+        "duration_ms": 507.40366700000595
+      },
+      {
+        "name": "Cycle24 independent exact native action integration native request after lost ACK stays UNKNOWN with no receipt or replay across fresh source wrappers",
+        "status": "passed",
+        "duration_ms": 506.41966699999466
+      },
+      {
+        "name": "Cycle24 independent exact native action integration simultaneous native request consumers retain one original intent and one native invocation",
+        "status": "passed",
+        "duration_ms": 532.3335840000072
+      },
+      {
+        "name": "Cycle24 independent exact native action integration native request final hash fence blocks live gate revocation before invocation",
+        "status": "passed",
+        "duration_ms": 448.80708400000003
+      },
+      {
+        "name": "Cycle24 independent exact native action integration native request final hash fence blocks live assignee revocation before invocation",
+        "status": "passed",
+        "duration_ms": 456.3000000000029
+      },
+      {
+        "name": "Cycle24 independent exact native action integration native request final hash fence blocks live property revocation before invocation",
+        "status": "passed",
+        "duration_ms": 465.6467499999999
+      },
+      {
+        "name": "Cycle24 independent exact native action integration native request final hash fence blocks live input revocation before invocation",
+        "status": "passed",
+        "duration_ms": 464.567750000002
+      },
+      {
+        "name": "Cycle24 independent exact native action integration maintenance CANCEL preserves plans, visits, consent and original NO_GO authority",
+        "status": "passed",
+        "duration_ms": 1019.6207920000015
+      },
+      {
+        "name": "Cycle24 independent exact native action integration maintenance REVOKE preserves plans, visits, consent and original NO_GO authority",
+        "status": "passed",
+        "duration_ms": 979.3797080000077
+      },
+      {
+        "name": "Cycle24 independent exact native action integration cost original navigation loss remains UNKNOWN across wrappers without replay",
+        "status": "passed",
+        "duration_ms": 2590.795459000001
+      },
+      {
+        "name": "Cycle24 independent exact native action integration owner original navigation loss remains UNKNOWN across wrappers without replay",
+        "status": "passed",
+        "duration_ms": 3403.149833000003
+      },
+      {
+        "name": "Cycle24 independent exact native action integration an inspected owner handle cannot be replaced with a copied object or a missing source key",
+        "status": "passed",
+        "duration_ms": 2992.198292000001
+      },
+      {
+        "name": "Cycle24 independent exact native action integration default admission withholds every optional action and offline proposal before source getters",
+        "status": "passed",
+        "duration_ms": 1.6217079999914858
+      },
+      {
+        "name": "Cycle24 independent exact native action integration production admission withholds every optional action and offline proposal before source getters",
+        "status": "passed",
+        "duration_ms": 0.8778339999989839
+      },
+      {
+        "name": "Cycle24 independent exact native action integration remote admission withholds every optional action and offline proposal before source getters",
+        "status": "passed",
+        "duration_ms": 0.5491670000046724
+      }
+    ],
+    "types": "PASS: strict tsc --noEmit including separate browser files",
+    "scoped_lint": "PASS: independent application/spec/config ESLint",
+    "format": "PASS: Prettier on all five owned files before commit",
+    "features_check": "PASS:25capability records/5locked files/13source bindings; execution NOT_AUTHORIZED",
+    "retained_source_checker": "PASS: node scripts/check-cycle23.mjs complete immutable source/checker chain; no historical functional baseline rerun",
+    "author_tests": "Reported per-package counts are source-author evidence only; not rerun or double counted as independent coverage.",
+    "browser": {
+      "independent_callback_regression": {
+        "cases": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "raw_report": "/private/tmp/cycle24-callback-green.json",
+        "raw_sha256": "e1199cb51569dffba7b8e1e777c2c8a4bfdcb980403db8e3d5f1a6a408f91c5d",
+        "stats": {
+          "startTime": "2026-11-04T02:02:36.516Z",
+          "duration": 2468.133,
+          "expected": 1,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "files": [
+          {
+            "path": "tests/program/cycle24-callback-lease.spec.ts",
+            "sha256": "87cd79203246df8dc980a4352bc014054ca2f027d2b5054882c74c441770dd4a"
+          },
+          {
+            "path": "tests/program/playwright.cycle24-callback.config.ts",
+            "sha256": "ee56e25443d918ebbc0e508eccded4537f813797fc69775f42fc2b52b7ce2a21"
+          }
+        ],
+        "command": "PLAYWRIGHT_JSON_OUTPUT_NAME=/private/tmp/cycle24-callback-green.json node_modules/.bin/playwright test --config=tests/program/playwright.cycle24-callback.config.ts --reporter=list,json",
+        "server": "Transient loopback127.0.0.1 in test process; actual original source modules/preparer; closed and temporary cache removed in afterAll; no persistent execution."
+      },
+      "responsive_keyboard_accessibility_matrix": "MAIN/CUSTOMER_OWNED_SEPARATE; not included in independent54 or callback1. No physical-device or owner visual approval claim."
+    }
+  },
+  "test_development": {
+    "initial_actual_source_red": "Original Growth source-pair flaw demonstrated by expected-rejection test resolving; exact original SHA and reproducer retained in C24-IR-01. No unapproved shared runtime edits by reviewer.",
+    "reviewer_expectation_errors": "Two preliminary three-brand E2E scopes used generic UNKNOWN for the original exact request-FK label and UNVERIFIED for original service lifecycle completion/acceptance UNKNOWN. Only the new independent assertions were corrected to exact existing contracts. All six initial failures remain in raw reports; no product assertion, prior test, native behavior or timeout changed.",
+    "retained_probe_reports": [
+      {
+        "raw_report": "/private/tmp/cycle24-independent-expanded-probe.json",
+        "raw_sha256": "2f685c367244fa97f58c8af343b0c0139921cc23951541d02e61c2661cbe135c",
+        "passed": 6,
+        "failed": 3,
+        "filtered": 18,
+        "failures": [
+          {
+            "name": "Cycle24 independent exact native action integration brand 0 native correction and material review remain the original cost and priority sources",
+            "cause": "REVIEW_TEST_EXPECTATION_LABEL_ERROR"
+          },
+          {
+            "name": "Cycle24 independent exact native action integration brand 1 native correction and material review remain the original cost and priority sources",
+            "cause": "REVIEW_TEST_EXPECTATION_LABEL_ERROR"
+          },
+          {
+            "name": "Cycle24 independent exact native action integration brand 2 native correction and material review remain the original cost and priority sources",
+            "cause": "REVIEW_TEST_EXPECTATION_LABEL_ERROR"
+          }
+        ]
+      },
+      {
+        "raw_report": "/private/tmp/cycle24-independent-offline-probe.json",
+        "raw_sha256": "6b057f8acafffdf772717c85af3606bb4349b8d331b2640ed3c6879ea733827f",
+        "passed": 16,
+        "failed": 3,
+        "filtered": 24,
+        "failures": [
+          {
+            "name": "Cycle24 independent exact native action integration brand 0 native correction and material review remain the original cost and priority sources",
+            "cause": "REVIEW_TEST_EXPECTATION_LABEL_ERROR"
+          },
+          {
+            "name": "Cycle24 independent exact native action integration brand 1 native correction and material review remain the original cost and priority sources",
+            "cause": "REVIEW_TEST_EXPECTATION_LABEL_ERROR"
+          },
+          {
+            "name": "Cycle24 independent exact native action integration brand 2 native correction and material review remain the original cost and priority sources",
+            "cause": "REVIEW_TEST_EXPECTATION_LABEL_ERROR"
+          }
+        ]
+      },
+      {
+        "raw_report": "/private/tmp/cycle24-growth-pair-green.json",
+        "raw_sha256": "b09b33232d99d0b9dd395e860cb89497d7d798b23751df94cbada5cbd54f2679",
+        "passed": 3,
+        "failed": 0,
+        "filtered": 24,
+        "failures": []
+      },
+      {
+        "raw_report": "/private/tmp/cycle24-independent-final-probes.json",
+        "raw_sha256": "209cf5ecf8d215c21b30950ef69db352ff69db027210eca131ce8eae486dda97",
+        "passed": 6,
+        "failed": 0,
+        "filtered": 40,
+        "failures": []
+      }
+    ],
+    "initial_worktree": "Initial7b8 review,8f final-review and current7a verified-review are separate worktrees/branches. Earlier worktrees preserved without reset/rebase/merge. Current review commit has exactly five owned added files over7a.",
+    "earlier8f_successful_native_runs": [
+      {
+        "raw_report": "/private/tmp/cycle24-independent-final.json",
+        "raw_sha256": "0786e54c7c22b03e4fb326875d9728ae9a06d2db11c9b6efa2fc165ac54802fe",
+        "passed": 51,
+        "failed": 0,
+        "filtered": 0,
+        "start_time_ms": 1793757132750,
+        "command": "node_modules/.bin/vitest run tests/cycle24-independent-integration-review.test.ts --reporter=verbose --reporter=json --outputFile=/private/tmp/cycle24-independent-final.json"
+      },
+      {
+        "raw_report": "/private/tmp/cycle24-independent-strict-final.json",
+        "raw_sha256": "56678c7e9c53e060c5a0780ae6d3908e73d2bc5db8c813bc99a61cc0a95f23d2",
+        "passed": 1,
+        "failed": 0,
+        "filtered": 51,
+        "start_time_ms": 1793757187697,
+        "command": "node_modules/.bin/vitest run tests/cycle24-independent-integration-review.test.ts -t 'strict native action forms' --reporter=verbose --reporter=json --outputFile=/private/tmp/cycle24-independent-strict-final.json"
+      }
+    ],
+    "browser_runtime_finding": "Original responsive8f journey failure and independent React RED are retained in C24-IR-02. Root made one exact Main-owned callback correction and re-froze7a; no original lease/current-source guard or author source changed. Full current application and separate callback browser regression pass."
+  },
+  "limits": [
+    "All business state is the existing same-tab local synthetic native repositories and original allowed source/correction controls; not genuine hosted Auth/MFA or operational custody.",
+    "Common cases select one exact existing entry over the same original repository roots. Cross-property tests use another exact original entry; no replacement repository, fixture preparer, new business command/store or SQL installation is introduced.",
+    "Native request fingerprint fencing is in-process only and cannot provide native CAS, durable receipts or ambiguous-writer attribution. Task/maintenance source atomicity stays CAPTURED_NOT_ATOMIC.",
+    "Application/SSR plus the one real React callback test do not establish full responsive/a11y/keyboard/device/owner visual acceptance. Main/Customer own their separate9DEV/3OFF matrix. Actual changed-context callback leases still rotate.",
+    "Original invoice/payment sources and execution gates are retained; no payment, dispatch, message, provider or financial fixture command is added.",
+    "No broad historical functional, Netlify, recovery/offline or database baseline was rerun. Source-only retained checker and capability inventory ran. No credentials, hosted mutation, manual CI rerun, merge, deploy or persistent background execution.",
+    "Original P1-on13, customer14, original4B, broker, approvals,2A-2F,billing,Netlify/executor/Auth/MFA/NMI/recovery/provider/financial gates stay closed. Actual Air pairing/recovery/no-replay/cleanup remains UNVERIFIED/NOT_RUN."
+  ],
+  "operational_ready": false,
+  "restore_adapter": false,
+  "native_plan_cancellation": "UNSUPPORTED",
+  "customer_request_native_cas": false,
+  "customer_request_durable_receipt": false,
+  "physical_recovery": "UNVERIFIED_NOT_RUN",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "result": "No remaining demonstrated native source/custody/no-replay, canonical-cost, lineage, consent, exact-context or optional-composition blocker in final exact7a full54 application cases and separate real React callback1. Both Growth source-pair and Main callback integration findings are resolved by exact normal forwards; responsive matrix and all operational/release acceptance remain separate."
+}
