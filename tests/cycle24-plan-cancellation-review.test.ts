@@ -505,3 +505,73 @@ it('executable review reference fields never run before original opaque-source a
   await expect(reconcilePlanCancellationReview(selected)).rejects.toThrow();
   expect(getter).not.toHaveBeenCalled();
 });
+it.each(['marketing', 'service_follow_up'] as const)(
+  'crossed requested purpose %s cannot consume another displayed review selection',
+  async (purpose) => {
+    const f = await fixture(),
+      displayed = await readPlanCancellationReview(
+        f.sources,
+        f.job,
+        purpose,
+        f.gate,
+      ),
+      mixed = { review: displayed, selection: f.selected.selection };
+    await expect(
+      preparePlanCancellationReview(mixed, f.proposal, true),
+    ).rejects.toThrow(/Exact displayed/);
+    expect((await reconcilePlanCancellationReview(mixed)).status).toBe(
+      'UNKNOWN',
+    );
+    expect((await reconcilePlanCancellationReview(f.selected)).status).toBe(
+      'READY_FOR_REQUIREMENTS',
+    );
+    await preparePlanCancellationReview(f.selected, f.proposal, true);
+    await expect(
+      closePlanCancellationReview(mixed, 'CANCEL', true),
+    ).rejects.toThrow(/Exact displayed/);
+    expect((await reconcilePlanCancellationReview(f.selected)).status).toBe(
+      'BLOCKED_LOCAL_REVIEW',
+    );
+  },
+);
+it('same-purpose equivalent source hashes do not substitute a different displayed original row', async () => {
+  const f = await fixture(),
+    other = await readPlanCancellationReview(
+      f.sources,
+      f.job,
+      'recurring_maintenance',
+      f.gate,
+    ),
+    mixed = { review: other, selection: f.selected.selection };
+  expect(other.desk.integrity.sha256).toBe(f.review.desk.integrity.sha256);
+  expect(other.desk.rows[0]).not.toBe(f.selected.selection.occurrence);
+  await expect(
+    preparePlanCancellationReview(mixed, f.proposal, true),
+  ).rejects.toThrow(/Exact displayed/);
+  expect((await reconcilePlanCancellationReview(mixed)).status).toBe('UNKNOWN');
+  expect((await reconcilePlanCancellationReview(f.selected)).status).toBe(
+    'READY_FOR_REQUIREMENTS',
+  );
+});
+it('another authorized job review cannot cancel or inspect the original job selection', async () => {
+  const f = await fixture(),
+    otherJob = f.all.entries[0].target.job_id!,
+    other = await readPlanCancellationReview(
+      f.all,
+      otherJob,
+      'recurring_maintenance',
+      f.gate,
+    ),
+    mixed = { review: other, selection: f.selected.selection };
+  await expect(
+    preparePlanCancellationReview(mixed, f.proposal, true),
+  ).rejects.toThrow(/Exact displayed/);
+  expect((await reconcilePlanCancellationReview(mixed)).status).toBe('UNKNOWN');
+  await preparePlanCancellationReview(f.selected, f.proposal, true);
+  await expect(
+    closePlanCancellationReview(mixed, 'REVOKE', true),
+  ).rejects.toThrow(/Exact displayed/);
+  expect((await reconcilePlanCancellationReview(f.selected)).status).toBe(
+    'BLOCKED_LOCAL_REVIEW',
+  );
+});

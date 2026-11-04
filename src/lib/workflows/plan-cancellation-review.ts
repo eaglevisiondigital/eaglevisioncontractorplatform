@@ -118,12 +118,58 @@ export async function selectPlanCancellationOccurrence(
 export type PlanCancellationSelection = Awaited<
   ReturnType<typeof selectPlanCancellationOccurrence>
 >;
-function assertSelection(selected: PlanCancellationSelection) {
+function assertSelectionJoin(selected: PlanCancellationSelection) {
   if (
     Object.keys(prototypeFields(selected, ['review', 'selection'])).length !== 2
   )
     throw Error('Exact original staff review selection required');
+  const review = selected.review;
+  prototypeFields(review, ['view', 'saved', 'desk', 'purpose', 'gate']);
+  prototypeFields(review.view, Object.keys(review.view));
+  prototypeFields(review.saved, Object.keys(review.saved));
+  prototypeFields(review.desk, Object.keys(review.desk));
+  prototypeFields(selected.selection, Object.keys(selected.selection));
+  const original = selected.selection,
+    displayed = review.desk.rows.find((row) => row === original.occurrence),
+    identity = review.view.identity;
+  if (
+    !displayed ||
+    original.organization_id !== identity.organization_id ||
+    original.organization_id !== review.desk.organization_id ||
+    original.source_sha256 !== review.desk.integrity.sha256 ||
+    original.requested_purpose !== review.purpose ||
+    original.requested_purpose !== review.desk.requested_purpose ||
+    displayed.key !== original.occurrence.key ||
+    displayed.context.organization_id !== identity.organization_id ||
+    displayed.context.job_id !== identity.job_id ||
+    displayed.context.customer_id !== identity.customer_id ||
+    displayed.context.location_id !== identity.location_id ||
+    !review.saved.evidence.plans.some(
+      (plan) =>
+        plan.id === displayed.plan_reference.id &&
+        plan.revision === displayed.plan_reference.revision,
+    )
+  )
+    throw Error(
+      'Exact displayed review, purpose, occurrence and native plan binding required',
+    );
+}
+function assertSelection(selected: PlanCancellationSelection) {
+  assertSelectionJoin(selected);
   assertPlanCancellationCurrent(selected.review);
+}
+function unknownCancellationResult() {
+  return freezePrototype({
+    status: 'UNKNOWN' as const,
+    send: false as const,
+    replay: 'FORBIDDEN' as const,
+    replacement: null,
+    native_plan_cancellation: 'UNSUPPORTED' as const,
+    enrollment_cancellation: 'UNSUPPORTED' as const,
+    plan_mutation_performed: false as const,
+    source_atomicity: 'CAPTURED_NOT_ATOMIC' as const,
+    consent_mutation: false as const,
+  });
 }
 export async function preparePlanCancellationReview(
   selected: PlanCancellationSelection,
@@ -171,6 +217,11 @@ export async function reconcilePlanCancellationReview(
   selected: PlanCancellationSelection,
 ) {
   prototypeFields(selected, ['review', 'selection']);
+  try {
+    assertSelectionJoin(selected);
+  } catch {
+    return unknownCancellationResult();
+  }
   const result = await reconcileMaintenancePlanningContinuity(
     selected.selection,
   );
