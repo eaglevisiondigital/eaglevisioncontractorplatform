@@ -1,0 +1,155 @@
+{
+  "schema": "propel-cycle31-sources-v1",
+  "parent": "353923ce2c6677ae3d5026ac46cf214b2a549aa3",
+  "coordination_branch": "codex/program-cycle-thirty-one-integration",
+  "packages": [
+    {
+      "module": "growth",
+      "author_commit": "1538060250fc34654414dac6b29621bf44fabd98",
+      "author_parent": "353923ce2c6677ae3d5026ac46cf214b2a549aa3",
+      "branch": "codex/cycle31-maintenance-proposal-input",
+      "draft_pr": null,
+      "kind": "RUNTIME_CORRECTION",
+      "new_cases": 11,
+      "files": [
+        {
+          "status": "A",
+          "path": "docs/program/CYCLE31_MAINTENANCE_PROPOSAL_INPUT.md",
+          "sha256": "d9464a37a1830968b63c5c9f066f5d675546a996b915dd3d4e53c409a4c4c060"
+        },
+        {
+          "status": "M",
+          "path": "src/lib/workflows/plan-cancellation-review.ts",
+          "sha256": "9d9b115e5dd068174e4abe604d0ae4e80eb1ebfd4106263548866130da1e8b3a"
+        },
+        {
+          "status": "A",
+          "path": "tests/cycle31-maintenance-proposal-input.test.ts",
+          "sha256": "15edfd41e18f8f67a074763c26977d1252bd839406888eab9651ad8bf189521e"
+        }
+      ]
+    },
+    {
+      "module": "legacy-source-compatibility",
+      "author_commit": "94a5da1f2cf4187acdd412cdefaec627d1dee463",
+      "author_parent": "353923ce2c6677ae3d5026ac46cf214b2a549aa3",
+      "branch": "codex/cycle31-owner-source-compatibility",
+      "draft_pr": 228,
+      "kind": "SOURCE_VALIDATOR_CORRECTION",
+      "new_cases": 22,
+      "files": [
+        {
+          "status": "A",
+          "path": "docs/program/CYCLE31_OWNER_SOURCE_COMPATIBILITY.md",
+          "sha256": "e4dd1ec13df7b34e32a983ba4eb3be52b77e4f6f6753123eb07ebe0685e89cc4"
+        },
+        {
+          "status": "M",
+          "path": "scripts/check-cycle21.mjs",
+          "sha256": "1f6e603c0de32f0c4d46afc074947d7e4066ebee406a3aaf91bc7fb4cf92302f"
+        },
+        {
+          "status": "M",
+          "path": "scripts/check-cycle22.mjs",
+          "sha256": "1f18daa2513eeae36d6632a7e49c20602647b12834abd2fe586fe2670db17a75"
+        },
+        {
+          "status": "M",
+          "path": "scripts/check-cycle23.mjs",
+          "sha256": "c3515c0415f85c62b70222a3175df874841716d26f83bf2e3162dc2505a05530"
+        },
+        {
+          "status": "A",
+          "path": "tests/cycle31-owner-source-compatibility.test.ts",
+          "sha256": "b28d403b950df393ce6646a1e7fd15514abe44dbc2d1d86bd61dedd360b5e4c7"
+        }
+      ]
+    },
+    {
+      "module": "hosted-dependencies",
+      "author_commit": "9ec375a8aadf1ef3b634fdf0e4147c781c437e84",
+      "author_parent": "fe570644c0b3597259dd534a6df942802e08f809",
+      "branch": "codex/cycle31-ci-reliability",
+      "draft_pr": 229,
+      "kind": "CI_ENVIRONMENT_CORRECTION",
+      "new_cases": 20,
+      "files": [
+        {
+          "status": "A",
+          "path": ".github/workflows/cycle31-browser-diagnostics.yml",
+          "sha256": "116c9960fbb766607e0db1bddfdb00fc05836c0a2042e55b44290fbaa2d86e63"
+        },
+        {
+          "status": "M",
+          "path": ".github/workflows/cycle31-runner-source-probe.yml",
+          "sha256": "1e58daa354e8d90dff4578eadcc0813c0a06611ea283c7744a3f55dfe28cf935"
+        },
+        {
+          "status": "A",
+          "path": "docs/program/CYCLE31_HOSTED_BROWSER_REPAIR.md",
+          "sha256": "e9adbe1f288c73ed8d1f61c10f2573c6b1a67d4525158e07f7b3b5ef14e1520e"
+        },
+        {
+          "status": "M",
+          "path": "scripts/cycle30-chromium-dependencies.mjs",
+          "sha256": "531b1f3b43e38975a456a8421fc7135991b89313e22e0f87daa5ecc673bf659f"
+        },
+        {
+          "status": "M",
+          "path": "scripts/cycle31-ubuntu-source-probe.mjs",
+          "sha256": "217b7172e5ff55c0ccfe9262eb6f9590dc2c6410c358cdd2c40b1482da7de4dc"
+        },
+        {
+          "status": "A",
+          "path": "tests/cycle31-chromium-source-shape.test.ts",
+          "sha256": "1506285d2d54cb012fa0d94743a24650239f09462f07a22a366c86b22e1ba9bd"
+        }
+      ]
+    },
+    {
+      "module": "owner-navigation-runtime",
+      "author_commit": "4dc82f93b4cc156ff3f9a4fb46aa3fefa2c93517",
+      "author_parent": "353923ce2c6677ae3d5026ac46cf214b2a549aa3",
+      "branch": "codex/cycle31-owner-navigation-runtime",
+      "draft_pr": null,
+      "kind": "RUNTIME_GUARD_COMPOSITION_CORRECTION",
+      "new_cases": 15,
+      "files": [
+        {
+          "status": "A",
+          "path": "docs/program/CYCLE31_OWNER_NAVIGATION_RUNTIME.md",
+          "sha256": "5529b461a9adb104a1e60f8d27178372cf8b26817b4dccd87261829b462b8d89"
+        },
+        {
+          "status": "M",
+          "path": "src/lib/workflows/recorded-owner-actions.ts",
+          "sha256": "dbcc6727f864b0f7c8883de97ce10d69cde54218a4bf601f0c83bdac68c59595"
+        },
+        {
+          "status": "A",
+          "path": "tests/cycle31-owner-navigation-runtime.test.ts",
+          "sha256": "43a4f709ffc4309407bd36af34439246f38b842ebf874f2dfa7957f62340f5c9"
+        }
+      ]
+    }
+  ],
+  "audited_no_change": ["field", "finance", "customer", "offline"],
+  "independent_test_author": "/root/cycle28_independent_review",
+  "independent_test_cases": 5,
+  "operational_decisions": {
+    "commit": "def22f220a8a94217b342a1a0fce32baf1c6afab",
+    "draft_pr": 230,
+    "authority": "DECISION_REGISTER_ONLY"
+  },
+  "source_authority": "BUILD_TEST_ONLY_NOT_BUSINESS_RESTORE",
+  "operational_ready": false,
+  "physical_recovery": "NOT_RUN",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "ci_diagnostics": {
+    "observed_source_runs": [41882954437, 41884758726],
+    "matched_first": 41884760108,
+    "matched_complete": 41887387379,
+    "historical_original_cases": "ORIGINAL_C27_0_PASS_2_TIMED_OUT_AND_CYCLE30_0_PASS_2_TIMED_OUT",
+    "closure": "OPEN_CURRENT_CANDIDATE_HOSTED_TEST_REQUIRED"
+  }
+}

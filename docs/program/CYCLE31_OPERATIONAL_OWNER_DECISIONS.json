@@ -1,0 +1,241 @@
+{
+  "schema": "propel-cycle31-owner-decisions-v1",
+  "authority": "DECISION_REGISTER_ONLY_NO_IMPLEMENTATION_OR_EXECUTION",
+  "source_spec": "docs/program/CYCLE28_INTERNAL_REQUEST_ACCEPTANCE.md",
+  "source_matrix": "docs/program/CYCLE26_OWNER_WRITER_MATRIX.json",
+  "decision_groups": [
+    {
+      "id": "D1",
+      "decision": "Name real people, separation of duties and complete installed writer inventory",
+      "status": "OWNER_DECISION_REQUIRED"
+    },
+    {
+      "id": "D2",
+      "decision": "Accept exact three-commit receipt/durable-ACK, current authorization and independent fence responsibilities",
+      "status": "OWNER_DECISION_REQUIRED"
+    },
+    {
+      "id": "D3",
+      "decision": "Review matched backup/key/recovery and the bounded future proposal in original P1/customer14/4B sequence",
+      "status": "OWNER_DECISION_REQUIRED"
+    }
+  ],
+  "roles": [
+    {
+      "role": "Business/source owner",
+      "accountable_person": "UNASSIGNED",
+      "existing_source": "Original customer14 publication and 4B ledger; exact CRM/customer/property/issued-version owners",
+      "required_decision_and_evidence": "Choose one exact internal target and permitted request/choice/note/source/hash; never newest-source substitution",
+      "acceptance_cases": ["A01", "A04"],
+      "operational_status": "UNVERIFIED"
+    },
+    {
+      "role": "Auth/security owner",
+      "accountable_person": "UNASSIGNED",
+      "existing_source": "server/customer/broker-auth.ts \u00b7 CustomerBrokerAuth.verify",
+      "required_decision_and_evidence": "Genuine current session/customer mapping/membership and assurance; staff AAL2; revocation before admission, after waits and before ACK/read",
+      "acceptance_cases": ["A02", "A07", "A09"],
+      "operational_status": "UNVERIFIED"
+    },
+    {
+      "role": "Admission operator",
+      "accountable_person": "UNASSIGNED",
+      "existing_source": "server/customer/broker.proposed.sql \u00b7 customer_broker_admit",
+      "required_decision_and_evidence": "Separate registrar admission COMMIT binds tenant/actor/source/command and original consumer backend/full-XID",
+      "acceptance_cases": ["A01", "A05", "A07"],
+      "operational_status": "UNVERIFIED"
+    },
+    {
+      "role": "One-use claim custodian",
+      "accountable_person": "UNASSIGNED",
+      "existing_source": "server/customer/requests.proposed.sql \u00b7 customer_request_claim",
+      "required_decision_and_evidence": "Independent issuer COMMIT; finite reviewed issuer/executor pairs; rollback/savepoints/process loss never renew the claim",
+      "acceptance_cases": ["A05", "A07", "A10"],
+      "operational_status": "UNVERIFIED"
+    },
+    {
+      "role": "Canonical transaction operator",
+      "accountable_person": "UNASSIGNED",
+      "existing_source": "server/customer/request-gateway.ts \u00b7 runCustomerRequestTransaction",
+      "required_decision_and_evidence": "Original canonical request and immutable receipt share one consumer transaction; resource locks/CAS/post-wait current authorization",
+      "acceptance_cases": ["A04", "A05", "A07"],
+      "operational_status": "UNVERIFIED"
+    },
+    {
+      "role": "Receipt/ACK operator",
+      "accountable_person": "UNASSIGNED",
+      "existing_source": "server/customer/broker.ts \u00b7 original broker receipt validation",
+      "required_decision_and_evidence": "Success only after exact canonical commit and independently durable custody; current-identity recheck; missing/contradictory ACK is UNKNOWN",
+      "acceptance_cases": ["A05", "A06", "A08"],
+      "operational_status": "UNVERIFIED"
+    },
+    {
+      "role": "Reconciliation/staff-read operator",
+      "accountable_person": "UNASSIGNED",
+      "existing_source": "server/customer/broker.ts \u00b7 reconcile/staffQueue and original dedicated reader",
+      "required_decision_and_evidence": "Exact original identifiers/current authorization, allowlisted projection, no replay/new ID/rebind/replacement or inferred failure",
+      "acceptance_cases": ["A08", "A09"],
+      "operational_status": "UNVERIFIED"
+    },
+    {
+      "role": "DBA/privilege owner",
+      "accountable_person": "UNASSIGNED",
+      "existing_source": "server/customer/broker-ownership.proposed.sql and broker-ownership.ts",
+      "required_decision_and_evidence": "Complete installed writer/catalog/grant/default-grant/RLS/composite-tenant-FK/private-API evidence; no source fixture is installed privilege proof",
+      "acceptance_cases": ["A01", "A03", "A07"],
+      "operational_status": "UNVERIFIED"
+    },
+    {
+      "role": "Independent fence custodian",
+      "accountable_person": "UNASSIGNED",
+      "existing_source": "Missing real operational owner; original rollback-resistant custody requirement",
+      "required_decision_and_evidence": "Select independent spent authority/epoch/current external revocation; fence unavailable or mismatched quarantines every writer",
+      "acceptance_cases": ["A06", "A10", "A11"],
+      "operational_status": "UNVERIFIED"
+    },
+    {
+      "role": "Backup/key custodian and recovery supervisor",
+      "accountable_person": "UNASSIGNED",
+      "existing_source": "Existing sealed credential-free kit and matched-recovery specification",
+      "required_decision_and_evidence": "Match DB timeline/LSN/schema/revisions/receipt watermark, object versions, custody epoch and key references; quarantine, independent recovery/RPO/RTO/revocation/cleanup",
+      "acceptance_cases": ["A10", "A11"],
+      "operational_status": "UNVERIFIED"
+    },
+    {
+      "role": "Independent reviewer",
+      "accountable_person": "UNASSIGNED",
+      "existing_source": "Original PR208 twelve-case specification and exact source/target evidence",
+      "required_decision_and_evidence": "Reject incomplete owner/writer/Auth/privilege/custody/recovery evidence; separately reviewed proposal is not implementation or execution permission",
+      "acceptance_cases": ["A01", "A12"],
+      "operational_status": "UNVERIFIED"
+    }
+  ],
+  "writer_inventory": [
+    {
+      "category": "Registrar",
+      "known_source_owner": "customer_broker_admit / dedicated registrar",
+      "required_participation": "Admission COMMIT before issuer; exact target/consumer binding",
+      "installed_target_inventory": "UNVERIFIED",
+      "accountable_person": "UNASSIGNED"
+    },
+    {
+      "category": "Issuer/claim and claim-sequence writer",
+      "known_source_owner": "customer_request_claim / finite dedicated issuer",
+      "required_participation": "Independent claim COMMIT; original spent custody cannot be rolled back into reuse",
+      "installed_target_inventory": "UNVERIFIED",
+      "accountable_person": "UNASSIGNED"
+    },
+    {
+      "category": "Consumer/executor",
+      "known_source_owner": "customer_record_review_request / original gateway",
+      "required_participation": "Atomic original request+immutable receipt; current source/Auth/CAS/post-wait checks",
+      "installed_target_inventory": "UNVERIFIED",
+      "accountable_person": "UNASSIGNED"
+    },
+    {
+      "category": "Original/legacy decision entrypoints",
+      "known_source_owner": "Original customer14 and customer_record_decision paths",
+      "required_participation": "Classify exact execution grants/bypass paths; legacy receipts unchanged, no retroactive custody",
+      "installed_target_inventory": "UNVERIFIED",
+      "accountable_person": "UNASSIGNED"
+    },
+    {
+      "category": "Receipt and staff readers",
+      "known_source_owner": "receipt/reconcile/staffQueue / dedicated reader",
+      "required_participation": "Read-only exact allowlisted current-authorized observations, no mutation capability",
+      "installed_target_inventory": "UNVERIFIED",
+      "accountable_person": "UNASSIGNED"
+    },
+    {
+      "category": "Source and mapping writers",
+      "known_source_owner": "CRM/customer/property/issued/publication/membership/session mapping owners",
+      "required_participation": "Record all source mutations/revocation effects and exact lock/recheck participation",
+      "installed_target_inventory": "UNVERIFIED",
+      "accountable_person": "UNASSIGNED"
+    },
+    {
+      "category": "Definer/helper/core owners",
+      "known_source_owner": "Historical SQL helpers and private definers, core CREATE/catalog/statistics dependencies",
+      "required_participation": "Enumerate every privileged bypass; no least-privilege or universal-custody claim from fixtures",
+      "installed_target_inventory": "UNVERIFIED",
+      "accountable_person": "UNASSIGNED"
+    },
+    {
+      "category": "Installer/provisioner/grant manager",
+      "known_source_owner": "Original reviewed installer, finite role-pair provisioner and grants/default grants",
+      "required_participation": "Name accountable operators and exact objects/columns/roles; independently prove no bypass",
+      "installed_target_inventory": "UNVERIFIED",
+      "accountable_person": "UNASSIGNED"
+    },
+    {
+      "category": "Direct/raw/admin and sequence writers",
+      "known_source_owner": "Every installed direct SQL/admin/raw/claim/sequence path",
+      "required_participation": "Inventory actual target; participation or inability to bypass must be proven for each",
+      "installed_target_inventory": "UNVERIFIED",
+      "accountable_person": "UNASSIGNED"
+    },
+    {
+      "category": "Fence/backup/key/restore writers",
+      "known_source_owner": "Independent custody authority plus matched recovery/quarantine operators",
+      "required_participation": "External revocation/spent authority survives matched restore; no restoration adapter is authorized",
+      "installed_target_inventory": "UNVERIFIED",
+      "accountable_person": "UNASSIGNED"
+    }
+  ],
+  "acceptance": [
+    {
+      "id": "A01",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "A02",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "A03",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "A04",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "A05",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "A06",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "A07",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "A08",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "A09",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "A10",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "A11",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "A12",
+      "status": "NOT_RUN"
+    }
+  ],
+  "physical_recovery": "NOT_RUN_AIR_LAST_REPORTED_UNAVAILABLE",
+  "operational_writer_inventory_complete": false,
+  "operational_implementation_authorized": false,
+  "hosted_acceptance_authorized": false,
+  "existing_p1_approval_preserved": true,
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

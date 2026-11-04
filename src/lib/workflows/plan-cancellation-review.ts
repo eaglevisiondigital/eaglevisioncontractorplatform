@@ -219,6 +219,10 @@ export async function preparePlanCancellationReview(
   const f = prototypeFields(proposal, ['proposed_on', 'plan_kind']);
   if (Object.keys(f).length !== 2)
     throw Error('Exact original review proposal required');
+  // Reject descriptor-bearing Proxies before original admission. Keep the
+  // ordinary original input for the native owner's later live-input fences.
+  if (JSON.stringify(structuredClone(proposal)) !== JSON.stringify(f))
+    throw Error('Plain stable original staff-review proposal required');
   await verifyMaintenanceSavedRevisionCurrent(selected.review.saved);
   assertPlanCancellationCurrent(selected.review);
   if (

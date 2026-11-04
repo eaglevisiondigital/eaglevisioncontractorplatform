@@ -52,11 +52,14 @@ export async function readRecordedOwnerActions(
 export type RecordedOwnerActionReview = Awaited<
   ReturnType<typeof readRecordedOwnerActions>
 >;
+function assertOwnerSnapshotCurrent(value: RecordedOwnerActionReview) {
+  if (!reads.has(value)) throw Error('Original owner action read required');
+  assertSavedRevisionCurrent(value.snapshot);
+}
 export function assertRecordedOwnerActionsCurrent(
   value: RecordedOwnerActionReview,
 ) {
-  if (!reads.has(value)) throw Error('Original owner action read required');
-  assertSavedRevisionCurrent(value.snapshot);
+  assertOwnerSnapshotCurrent(value);
   assertRecordedPriorityNavigationCurrent(value.navigation);
 }
 export function assertRecordedOwnerActionsAccess(
@@ -86,7 +89,9 @@ export async function inspectRecordedOwnerAction(
   value: RecordedOwnerActionReview,
   key: string,
 ) {
-  assertRecordedOwnerActionsCurrent(value);
+  // The original child synchronously checks navigation currentness before its
+  // first await. Keep the distinct snapshot check without repeating that guard.
+  assertOwnerSnapshotCurrent(value);
   const source = await inspectRecordedPrioritySource(value.navigation, key);
   assertRecordedOwnerActionsCurrent(value);
   return source;
@@ -106,7 +111,9 @@ export async function continueRecordedOwnerAction(
     : never
 ) {
   try {
-    assertRecordedOwnerActionsCurrent(value);
+    // No await separates this snapshot check from the original child's fresh
+    // navigation guard. All original post-await and one-use checks stay there.
+    assertOwnerSnapshotCurrent(value);
   } catch {
     return { status: 'UNKNOWN' as const, replay: 'FORBIDDEN' as const };
   }
