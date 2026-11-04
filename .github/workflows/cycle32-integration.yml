@@ -40,6 +40,7 @@ jobs:
       - run: npm run typecheck
       - run: npm run features:check
       - run: node --input-type=module -e "import {inspectCycle32Sources} from './scripts/cycle25-source-lineage.mjs'; console.log(inspectCycle32Sources({requireCombined:true}));"
+      - run: node --input-type=module -e "import {inspectCycle32BusySources} from './scripts/cycle25-source-lineage.mjs'; console.log(inspectCycle32BusySources({requirePresent:true}));"
       - run: npx vitest run tests/cycle31*.test.ts tests/cycle30*.test.ts tests/cycle21-validation.test.ts tests/cycle22-validation.test.ts tests/cycle23-validation.test.ts tests/cycle29-source-lineage.test.ts tests/cycle28-source-lineage.test.ts tests/cycle27-source-lineage.test.ts tests/cycle26-source-review.test.ts tests/cycle25-source-lineage.test.ts tests/cycle25-combined-integration.test.ts tests/cycle28-contractor-journey.test.ts tests/cycle21-recorded-owner-actions.test.ts tests/cycle24-service-request-actions.test.ts tests/cycle24-plan-cancellation-review.test.ts --maxWorkers=1 --reporter=json --outputFile=artifacts/cycle31/application-results.json
       - name: Require every exact focused application case
         run: |
@@ -53,12 +54,28 @@ jobs:
       - run: npx vitest run tests/cycle32*.test.ts --maxWorkers=1 --reporter=json --outputFile=artifacts/cycle32/application-results.json
       - run: node scripts/cycle32-application-evidence.mjs artifacts/cycle32/application-results.json
       - run: npm run build
+      - name: Observe same-runner reviewed Chromium dependency sources
+        run: |
+          mkdir -p artifacts/cycle32
+          node scripts/cycle32-runner-mirror-probe.mjs > artifacts/cycle32/combined-runner-mirror.json
       - run: node scripts/cycle30-chromium-dependencies.mjs
       - run: npx playwright install-deps --dry-run chromium
       - run: npx playwright install chromium
       - run: npx playwright test -c tests/program/playwright.cycle28.config.ts
       - run: CYCLE28_BROWSER_MODE=off npx playwright test -c tests/program/playwright.cycle28.config.ts
       - run: CYCLE24_ARTIFACT_DIR=artifacts/cycle28 node scripts/collect-cycle32-browser.mjs
+      - name: Verify pending owner privacy, keyboard focus and retained context
+        run: npx playwright test -c tests/program/playwright.cycle32-owner-busy.config.ts
+      - name: Require all eighteen new source-bound owner pending-state cases
+        run: |
+          node --input-type=module <<'NODE'
+          import{readFileSync}from'node:fs';
+          const r=JSON.parse(readFileSync('artifacts/cycle32/owner-busy/browser-results.json'));
+          if(r.config.workers!==1||r.stats.expected!==18||r.stats.unexpected!==0||r.stats.skipped!==0||r.stats.flaky!==0||!Array.isArray(r.errors)||r.errors.length!==0)throw Error('Exact18 passing cases without retries or skips required');
+          const expected=new Set(['desktop','tablet','mobile'].flatMap(p=>[0,1,2].flatMap(b=>['pending privacy preserves disclosure/filter context, owned focus and hidden navigation','revocation across a genuine pending native promise withholds private facts and navigation'].map(title=>p+'\0brand '+b+': '+title))));
+          function walk(suites){for(const s of suites){for(const spec of s.specs??[])for(const t of spec.tests??[]){const key=t.projectName+'\0'+spec.title;if(!expected.delete(key)||t.timeout!==30000||t.expectedStatus!=='passed'||t.status!=='expected'||t.results.length!==1||t.results[0].status!=='passed'||t.results[0].retry!==0)throw Error('Changed or incomplete pending-state case '+key);}walk(s.suites??[]);}}
+          walk(r.suites);if(expected.size)throw Error('Missing pending-state cases');
+          NODE
       - name: Require original owner navigation assertions under original budgets on current candidate
         env:
           PLAYWRIGHT_JSON_OUTPUT_NAME: artifacts/cycle32/owner-original-budget-results.json

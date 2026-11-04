@@ -1247,8 +1247,24 @@ function admitCycle30Forward(path, current, previous, ports) {
   )
     throw Error('Exact Cycle30 parent source required');
   const endpoint = Buffer.from(ports.git(spec.commit, path));
-  if (!endpoint.equals(Buffer.from(current)))
+  if (!endpoint.equals(Buffer.from(current))) {
+    if (spec.module === 'owner-render') {
+      try {
+        return {
+          ...result,
+          cycle32_busy_forward: admitCycle32BusyForward(
+            path,
+            current,
+            endpoint,
+            ports,
+          ),
+        };
+      } catch {
+        // Preserve the original denial boundary; no other descendant is admitted.
+      }
+    }
     throw Error('Current source differs from fixed Cycle30 author');
+  }
   return result;
 }
 export function inspectCycle30Sources({
@@ -1610,6 +1626,98 @@ export function inspectCycle32Sources({
     complete_combined:
       rows.length === 4 &&
       rows.every((r) => r.state === 'EXACT_SUCCESSOR_PRESENT'),
+    business_authority: false,
+    restore_adapter: false,
+  };
+}
+
+// One measured post-CI presentation correction. The original C30 author and the
+// original four C32 packages remain immutable; this admits no business authority.
+export const cycle32BusyParent = '7b377aeffac11855a5dfdfaa86719078e70a5260';
+export const cycle32BusySource = Object.freeze({
+  module: 'owner-busy-render',
+  owner: '/root/cycle28_independent_review',
+  commit: 'ec63030de8c0faceebd1ec9a645e9ea0dcf76383',
+  modified: Object.freeze([
+    'src/components/workflows/RecordedOwnerActions.tsx',
+  ]),
+  added: Object.freeze([
+    'tests/cycle32-owner-busy-state.test.ts',
+    'tests/program/cycle32-owner-busy-state.spec.ts',
+    'tests/program/playwright.cycle32-owner-busy.config.ts',
+    'docs/program/CYCLE32_OWNER_BUSY_RENDER.md',
+  ]),
+});
+export function validateCycle32BusySpec(spec, ports = cycle25SourcePorts) {
+  if (
+    JSON.stringify(spec) !== JSON.stringify(cycle32BusySource) ||
+    typeof spec.commit !== 'string' ||
+    !/^[a-f0-9]{40}$/.test(spec.commit) ||
+    ports.type(spec.commit) !== 'commit' ||
+    ports.parent(spec.commit) !== cycle32BusyParent
+  )
+    throw Error('Exact single-parent Cycle32 busy-render author required');
+  const expected = [
+    ...spec.modified.map((p) => `M\t${p}`),
+    ...spec.added.map((p) => `A\t${p}`),
+  ]
+    .sort()
+    .join('\n');
+  if (ports.delta(spec.commit) !== expected)
+    throw Error('Exact bounded Cycle32 busy-render delta required');
+  for (const path of [...spec.modified, ...spec.added])
+    if (ports.mode(spec.commit, path) !== '100644')
+      throw Error('Regular non-executable Cycle32 busy-render source required');
+  return { source_commit: spec.commit, module: spec.module, owner: spec.owner };
+}
+export function admitCycle32BusyForward(
+  path,
+  current,
+  previous,
+  supplied = {},
+) {
+  const ports = { ...cycle25SourcePorts, ...supplied },
+    spec = cycle32BusySource;
+  const result = validateCycle32BusySpec(spec, ports);
+  if (
+    path !== spec.modified[0] ||
+    !Buffer.from(previous).equals(
+      Buffer.from(ports.git(cycle32BusyParent, path)),
+    ) ||
+    !Buffer.from(previous).equals(
+      Buffer.from(ports.git('9f85556e28875a53976b55567f3a14e942ba3995', path)),
+    )
+  )
+    throw Error('Exact original C30 and Cycle32 busy-render baseline required');
+  if (!Buffer.from(current).equals(Buffer.from(ports.git(spec.commit, path))))
+    throw Error('Current source differs from fixed Cycle32 busy-render author');
+  for (const companion of spec.added)
+    if (
+      !Buffer.from(ports.read(companion)).equals(
+        Buffer.from(ports.git(spec.commit, companion)),
+      )
+    )
+      throw Error('Exact Cycle32 busy-render author companion required');
+  return { ...result, authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE' };
+}
+export function inspectCycle32BusySources({
+  requirePresent = false,
+  ...supplied
+} = {}) {
+  const ports = { ...cycle25SourcePorts, ...supplied },
+    spec = cycle32BusySource,
+    path = spec.modified[0];
+  validateCycle32BusySpec(spec, ports);
+  const current = Buffer.from(ports.read(path)),
+    base = Buffer.from(ports.git(cycle32BusyParent, path));
+  const present = !current.equals(base);
+  if (present) admitCycle32BusyForward(path, current, base, ports);
+  if (requirePresent && !present)
+    throw Error('Combined Cycle32 busy-render correction absent');
+  return {
+    module: spec.module,
+    source_commit: spec.commit,
+    present,
     business_authority: false,
     restore_adapter: false,
   };
