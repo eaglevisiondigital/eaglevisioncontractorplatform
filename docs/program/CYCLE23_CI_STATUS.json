@@ -1,0 +1,3640 @@
+{
+  "schema": "propel-cycle23-ci-snapshot-v1",
+  "observed_at": "2026-11-04T00:38:24.690796+00:00",
+  "pulls": [
+    {
+      "baseRefName": "codex/program-cycle-twenty",
+      "headRefName": "codex/program-cycle-twenty-one",
+      "headRefOid": "54597844ce0ce23d04e630ea354d137c5eb66f2d",
+      "isDraft": true,
+      "number": 143,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811369/job/126301771952",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:26:18Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 10 everyday operating reviews"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811356/job/126301772250",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:26:18Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 11 source-bound workflow laboratories"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811684/job/126301773721",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:26:19Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 12 exact workflow revision and verification"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811729/job/126301773319",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:26:19Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 13 operating workflows and visual evidence"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811724/job/126301773349",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:26:19Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 14 source continuity and focused visual review"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811335/job/126301771294",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:26:18Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 21 canonical correction continuity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811557/job/126301772500",
+          "name": "local-integration",
+          "startedAt": "2026-11-04T00:26:19Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 6 local workflow integration"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811718/job/126301773252",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:26:19Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 8 connected operating reviews"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746812219/job/126301774868",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:26:19Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 9 multi-job operating center"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811379/job/126301899409",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:26:36Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746802484/job/126301741676",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:26:14Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811682/job/126301773237",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:26:19Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated crew-day capacity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811840/job/126301773752",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:26:19Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated field work orders"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811660/job/126301772688",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:26:19Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated maintenance schedule handoff"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811651/job/126301772951",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:26:19Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated technician day board"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811784/job/126301773465",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:26:19Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746802433/job/126301742279",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:26:14Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811612/job/126301772908",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:26:19Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746802401/job/126301741121",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:26:14Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811426/job/126301771514",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:26:18Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746802472/job/126301741151",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:26:14Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811740/job/126301773307",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:35:35Z",
+          "status": "IN_PROGRESS",
+          "workflowName": "Cycle 15 guided task continuity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811661/job/126301773298",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:37:46Z",
+          "status": "IN_PROGRESS",
+          "workflowName": "Cycle 16 daily workflow guides"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811446/job/126301772274",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:09Z",
+          "status": "IN_PROGRESS",
+          "workflowName": "Cycle 17 retained daily workspaces"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811370/job/126301771548",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:48Z",
+          "status": "IN_PROGRESS",
+          "workflowName": "Cycle 18 source-bound daily workflow"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811524/job/126301772906",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:22Z",
+          "status": "IN_PROGRESS",
+          "workflowName": "Cycle 19 saved source continuity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811626/job/126301773636",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:23Z",
+          "status": "IN_PROGRESS",
+          "workflowName": "Cycle 20 exact saved evidence continuity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746802474/job/126301741413",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:35:39Z",
+          "status": "IN_PROGRESS",
+          "workflowName": "Cycle 21 canonical correction continuity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-04T00:37:42Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811711/job/126301772903",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:35Z",
+          "status": "COMPLETED",
+          "workflowName": "Cycle 7 practical local usability"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-04T00:37:05Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811744/job/126301773401",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:35:11Z",
+          "status": "COMPLETED",
+          "workflowName": "Isolated field scheduling"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746811379/job/126301899902",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:26:36Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41746802484/job/126301741303",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:26:14Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        }
+      ]
+    },
+    {
+      "baseRefName": "codex/program-cycle-twenty-one",
+      "headRefName": "codex/program-cycle-twenty-two-integration",
+      "headRefOid": "b517d588745007a9e519506d1a4417ddd62e3757",
+      "isDraft": true,
+      "number": 149,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747570729/job/126304782530",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:27Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 22 current-source operating review"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747570675/job/126304908553",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:33:46Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747570636/job/126304309885",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:32:19Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747570682/job/126304309866",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:32:19Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-04T00:38:03Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747570683/job/126304310384",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:36:12Z",
+          "status": "COMPLETED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747570675/job/126304908087",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:33:46Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        }
+      ]
+    },
+    {
+      "baseRefName": "codex/program-cycle-twenty-two-integration",
+      "headRefName": "codex/cycle22-property-service-workflow",
+      "headRefOid": "4e29d3e9113c34999929c6c5d23fdc092316e58f",
+      "isDraft": true,
+      "number": 150,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747600933/job/126304410456",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:33Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 11 source-bound workflow laboratories"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747601118/job/126304410668",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:33Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 13 operating workflows and visual evidence"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747601316/job/126304411992",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:33Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 16 daily workflow guides"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747601141/job/126304411705",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:33Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 17 retained daily workspaces"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747601468/job/126304416479",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:34Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 18 source-bound daily workflow"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747600897/job/126304410773",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:33Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 22 current-source operating review"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747601077/job/126304410875",
+          "name": "local-integration",
+          "startedAt": "2026-11-04T00:32:33Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 6 local workflow integration"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747601314/job/126304411672",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:33Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 7 practical local usability"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747601245/job/126304411528",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:33Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 8 connected operating reviews"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747601127/job/126304907394",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:33:46Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747593565/job/126304548357",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:32:54Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747601261/job/126304411929",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:32:33Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated field scheduling"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747601277/job/126304411911",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:32:33Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated field work orders"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747601142/job/126304411824",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:32:33Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated maintenance schedule handoff"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747593342/job/126304384876",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:32:30Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747601469/job/126304411876",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:32:33Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747600886/job/126304410009",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:35:00Z",
+          "status": "IN_PROGRESS",
+          "workflowName": "Cycle 10 everyday operating reviews"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747600994/job/126304410354",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:35:07Z",
+          "status": "IN_PROGRESS",
+          "workflowName": "Cycle 12 exact workflow revision and verification"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747601266/job/126304411473",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:37:48Z",
+          "status": "IN_PROGRESS",
+          "workflowName": "Cycle 15 guided task continuity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747600977/job/126304410796",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:36:49Z",
+          "status": "IN_PROGRESS",
+          "workflowName": "Cycle 21 canonical correction continuity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747600921/job/126304410480",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:35:06Z",
+          "status": "IN_PROGRESS",
+          "workflowName": "Cycle 9 multi-job operating center"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747600828/job/126304410226",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:37:07Z",
+          "status": "IN_PROGRESS",
+          "workflowName": "Isolated crew-day capacity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747601210/job/126304411738",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:37:07Z",
+          "status": "IN_PROGRESS",
+          "workflowName": "Isolated technician day board"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-04T00:35:51Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747600831/job/126304409647",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:35:00Z",
+          "status": "COMPLETED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-04T00:37:10Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747593554/job/126304385635",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:35:37Z",
+          "status": "COMPLETED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-04T00:37:45Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747601168/job/126304411486",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:36:26Z",
+          "status": "COMPLETED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-04T00:35:08Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747593472/job/126304385278",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:34:37Z",
+          "status": "COMPLETED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747601127/job/126304906842",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:33:45Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747593565/job/126304548003",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:32:54Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        }
+      ]
+    },
+    {
+      "baseRefName": "codex/program-cycle-twenty-two-integration",
+      "headRefName": "codex/cycle22-cost-coverage-workflow",
+      "headRefOid": "f31fdf6695be0371bbdc6728d745ada6b75bdc62",
+      "isDraft": true,
+      "number": 151,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747627029/job/126304498609",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:46Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 11 source-bound workflow laboratories"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747626963/job/126304497879",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:46Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 12 exact workflow revision and verification"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747626987/job/126304497140",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:46Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 13 operating workflows and visual evidence"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747626842/job/126304500706",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:46Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 15 guided task continuity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747626841/job/126304497238",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:46Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 16 daily workflow guides"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747626943/job/126305005074",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:00Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 17 retained daily workspaces"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747626861/job/126304497339",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:46Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 18 source-bound daily workflow"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747627016/job/126304497567",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:46Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 21 canonical correction continuity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747626918/job/126304497409",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:46Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 22 current-source operating review"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747626917/job/126304496914",
+          "name": "local-integration",
+          "startedAt": "2026-11-04T00:32:46Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 6 local workflow integration"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747626878/job/126304497360",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:46Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 7 practical local usability"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747626884/job/126304498597",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:46Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 8 connected operating reviews"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747626857/job/126304496703",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:46Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 9 multi-job operating center"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747626859/job/126305174605",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:34:23Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747620882/job/126304706959",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:33:16Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747626927/job/126304497633",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:32:46Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated crew-day capacity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747626907/job/126304497264",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:32:46Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated field scheduling"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747626845/job/126304496843",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:32:46Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated field work orders"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747626853/job/126304497600",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:32:46Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated maintenance schedule handoff"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747627026/job/126304498686",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:32:46Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated technician day board"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747626894/job/126304497376",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:32:46Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747620888/job/126304478854",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:32:43Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747626851/job/126304497607",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:32:46Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747620765/job/126304476637",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:32:43Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747626887/job/126304498941",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:32:46Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747620757/job/126304475901",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:32:43Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747627010/job/126304497924",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:37:14Z",
+          "status": "IN_PROGRESS",
+          "workflowName": "Cycle 10 everyday operating reviews"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747626859/job/126305174748",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:34:23Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747620882/job/126304706713",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:33:16Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        }
+      ]
+    },
+    {
+      "baseRefName": "codex/program-cycle-twenty-two-integration",
+      "headRefName": "codex/cycle22-task-custody-workflow",
+      "headRefOid": "43152c32a2e0509992affd36f467efd9b42d29ca",
+      "isDraft": true,
+      "number": 152,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643152/job/126304555118",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:55Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 10 everyday operating reviews"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643221/job/126304555170",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:55Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 11 source-bound workflow laboratories"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643195/job/126304555616",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:55Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 12 exact workflow revision and verification"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643085/job/126304554515",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:55Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 13 operating workflows and visual evidence"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643089/job/126304554480",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:55Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 15 guided task continuity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643322/job/126304555314",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:55Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 16 daily workflow guides"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643422/job/126304556239",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:55Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 17 retained daily workspaces"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643114/job/126304555242",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:55Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 18 source-bound daily workflow"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643290/job/126304555142",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:55Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 21 canonical correction continuity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643081/job/126304554634",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:55Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 22 current-source operating review"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643278/job/126304555514",
+          "name": "local-integration",
+          "startedAt": "2026-11-04T00:32:55Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 6 local workflow integration"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643258/job/126304555605",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:55Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 7 practical local usability"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643227/job/126304555515",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:55Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 8 connected operating reviews"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643192/job/126304555091",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:32:55Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 9 multi-job operating center"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643240/job/126305082577",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:34:10Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747637873/job/126304539954",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:32:53Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643444/job/126304556906",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:32:55Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated crew-day capacity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643148/job/126304554502",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:32:55Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated field scheduling"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643399/job/126304555444",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:32:55Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated field work orders"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643172/job/126304555465",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:32:55Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated maintenance schedule handoff"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643185/job/126304555991",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:32:55Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated technician day board"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643246/job/126304555197",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:32:55Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747637926/job/126304535986",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:32:52Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643156/job/126304555278",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:32:55Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747637914/job/126304536248",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:32:52Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643421/job/126304555753",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:32:55Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747637875/job/126304535527",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:32:52Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747643240/job/126305082741",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:34:10Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747637873/job/126304540020",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:32:53Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        }
+      ]
+    },
+    {
+      "baseRefName": "codex/program-cycle-twenty-two-integration",
+      "headRefName": "codex/cycle22-maintenance-requirements-workflow",
+      "headRefOid": "8e03784864b451c9a79464f788e24eef7ce28742",
+      "isDraft": true,
+      "number": 153,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747666023/job/126304636908",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:07Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 10 everyday operating reviews"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747666268/job/126304637253",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:07Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 11 source-bound workflow laboratories"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747666091/job/126304636284",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:07Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 12 exact workflow revision and verification"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747666144/job/126304637118",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:07Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 13 operating workflows and visual evidence"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747666131/job/126304636873",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:07Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 15 guided task continuity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747666142/job/126304637090",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:07Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 16 daily workflow guides"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747666326/job/126304947730",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:51Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 17 retained daily workspaces"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747666133/job/126304640496",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:07Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 18 source-bound daily workflow"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747666040/job/126304636541",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:07Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 21 canonical correction continuity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747666255/job/126304637178",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:07Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 22 current-source operating review"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747666174/job/126304637629",
+          "name": "local-integration",
+          "startedAt": "2026-11-04T00:33:07Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 6 local workflow integration"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747666214/job/126304636957",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:07Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 7 practical local usability"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747666359/job/126304637694",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:07Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 8 connected operating reviews"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747666161/job/126304637234",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:07Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 9 multi-job operating center"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747666143/job/126304994617",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:33:58Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747658196/job/126305009420",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:34:00Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747666347/job/126304637278",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:33:07Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated crew-day capacity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747666165/job/126304642734",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:33:07Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated field scheduling"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747666034/job/126304636575",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:33:07Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated field work orders"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747666049/job/126304636933",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:33:07Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated maintenance schedule handoff"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747666166/job/126304637238",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:33:07Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated technician day board"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747666186/job/126304637212",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:33:07Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747658357/job/126304610739",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:33:03Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747666220/job/126304637535",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:33:07Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747658193/job/126304609261",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:33:03Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747666147/job/126304636721",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:33:07Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747658265/job/126304609975",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:33:03Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747666143/job/126304994231",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:33:58Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747658196/job/126305009450",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:34:00Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        }
+      ]
+    },
+    {
+      "baseRefName": "codex/program-cycle-twenty-two-integration",
+      "headRefName": "codex/cycle22-current-priorities-workflow",
+      "headRefOid": "cdd5241c63c1fb4e6fe9c851195a076777bd1e13",
+      "isDraft": true,
+      "number": 154,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747690238/job/126304716816",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:18Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 10 everyday operating reviews"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747690724/job/126305154489",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:20Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 11 source-bound workflow laboratories"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747690550/job/126304717754",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:18Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 12 exact workflow revision and verification"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747690542/job/126304718370",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:18Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 13 operating workflows and visual evidence"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747690609/job/126304717867",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:18Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 15 guided task continuity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747690606/job/126304718277",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:18Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 16 daily workflow guides"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747690421/job/126304961833",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:53Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 17 retained daily workspaces"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747690947/job/126304720567",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:18Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 18 source-bound daily workflow"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747690710/job/126304718343",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:18Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 21 canonical correction continuity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747690666/job/126304717975",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:18Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 22 current-source operating review"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747690465/job/126304718122",
+          "name": "local-integration",
+          "startedAt": "2026-11-04T00:33:18Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 6 local workflow integration"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747690376/job/126304717319",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:18Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 7 practical local usability"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747690618/job/126304718081",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:18Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 8 connected operating reviews"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747690324/job/126304717511",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:18Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 9 multi-job operating center"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747690665/job/126304722444",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:33:19Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747683783/job/126304702127",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:33:16Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747690485/job/126304717316",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:33:18Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated crew-day capacity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747690439/job/126304716940",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:33:18Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated field scheduling"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747690690/job/126304718470",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:33:18Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated field work orders"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747690642/job/126304718168",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:33:18Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated maintenance schedule handoff"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747690445/job/126304716916",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:33:18Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated technician day board"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747690612/job/126304718044",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:33:18Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747683778/job/126304695981",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:33:15Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747690298/job/126304716967",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:33:18Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747683816/job/126304696779",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:33:15Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747690415/job/126304716879",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:33:18Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747683942/job/126304696287",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:33:15Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747690665/job/126304723057",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:33:19Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747683783/job/126304701188",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:33:16Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        }
+      ]
+    },
+    {
+      "baseRefName": "codex/program-cycle-twenty-two-integration",
+      "headRefName": "codex/program-cycle-twenty-three-integration",
+      "headRefOid": "d47e8f92c024c68797ac0805ab0c8d71111d531f",
+      "isDraft": true,
+      "number": 155,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41742849893/job/126288414178",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:01:51Z",
+          "status": "IN_PROGRESS",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41742843238/job/126288391913",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:29:46Z",
+          "status": "IN_PROGRESS",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-04T00:03:33Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41742849983/job/126288414988",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:02:13Z",
+          "status": "COMPLETED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-04T00:28:39Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41742843105/job/126288390803",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:27:37Z",
+          "status": "COMPLETED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-04T00:24:32Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41742849881/job/126288414690",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:23:23Z",
+          "status": "COMPLETED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-04T00:02:44Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41742843267/job/126288391252",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:00:47Z",
+          "status": "COMPLETED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-04T00:21:43Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41742849845/job/126288413787",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:20:56Z",
+          "status": "COMPLETED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-04T00:07:07Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41742843236/job/126288393690",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:06:23Z",
+          "status": "COMPLETED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-04T00:23:51Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41742849893/job/126288414610",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:21:45Z",
+          "status": "COMPLETED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-11-04T00:31:38Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41742843238/job/126288391606",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:29:07Z",
+          "status": "COMPLETED",
+          "workflowName": "Foundation checks"
+        }
+      ]
+    },
+    {
+      "baseRefName": "codex/program-cycle-twenty-three-integration",
+      "headRefName": "codex/cycle23-canonical-restart-architecture",
+      "headRefOid": "ea2d6b87f7c4fdfdd04d3991a5dba1f0c27d4f57",
+      "isDraft": true,
+      "number": 156,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747711827/job/126304789973",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:28Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 21 canonical correction continuity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747711338/job/126304792065",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:33:29Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747704595/job/126304770354",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:33:25Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747711330/job/126304791686",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:33:29Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747704549/job/126304769587",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:33:25Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747711303/job/126304791420",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:33:28Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747704579/job/126304770745",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:33:25Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747711443/job/126304787735",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:33:28Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747704540/job/126304765599",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:33:25Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747711338/job/126304792416",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:33:29Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747704595/job/126304770724",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:33:25Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        }
+      ]
+    },
+    {
+      "baseRefName": "codex/program-cycle-twenty-three-integration",
+      "headRefName": "codex/cycle23-task-revision-consistency",
+      "headRefOid": "a2b4d36e3eaabc9cf6db6e2d929cceb76a066d0c",
+      "isDraft": true,
+      "number": 157,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747732498/job/126304855885",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:38Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 10 everyday operating reviews"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747732616/job/126305375687",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:52Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 11 source-bound workflow laboratories"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747732491/job/126305245102",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:33Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 12 exact workflow revision and verification"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747732667/job/126304856188",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:38Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 21 canonical correction continuity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747732531/job/126304859372",
+          "name": "local-integration",
+          "startedAt": "2026-11-04T00:33:39Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 6 local workflow integration"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747732347/job/126304859053",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:39Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 7 practical local usability"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747732349/job/126304859202",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:39Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 8 connected operating reviews"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747732560/job/126304856072",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:38Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 9 multi-job operating center"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747732422/job/126305056835",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:34:07Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747724968/job/126304836709",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:33:35Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747732520/job/126304856077",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:33:38Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated crew-day capacity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747732479/job/126304858787",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:33:39Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated field scheduling"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747732543/job/126304859218",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:33:39Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated field work orders"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747732510/job/126304859502",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:33:39Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated maintenance schedule handoff"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747732478/job/126304858961",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:33:39Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated technician day board"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747732642/job/126304858771",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:33:39Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747724975/job/126304830851",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:33:34Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747732502/job/126304855645",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:33:38Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747724965/job/126305454083",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:35:04Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747732633/job/126304856803",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:33:38Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747724955/job/126304830839",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:33:34Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747732422/job/126305057312",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:34:07Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747724968/job/126304836453",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:33:35Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        }
+      ]
+    },
+    {
+      "baseRefName": "codex/program-cycle-twenty-three-integration",
+      "headRefName": "codex/cycle23-maintenance-revision-requirements",
+      "headRefOid": "db43479f5e277bb6b64fd74a0ac9d846cbfe15da",
+      "isDraft": true,
+      "number": 158,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747751811/job/126304921301",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:48Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 10 everyday operating reviews"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747751887/job/126304920814",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:47Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 11 source-bound workflow laboratories"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747751948/job/126304918722",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:47Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 12 exact workflow revision and verification"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747751829/job/126304917857",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:47Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 21 canonical correction continuity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747752545/job/126304920589",
+          "name": "local-integration",
+          "startedAt": "2026-11-04T00:33:47Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 6 local workflow integration"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747751882/job/126304922037",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:48Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 7 practical local usability"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747751889/job/126304922016",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:48Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 8 connected operating reviews"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747751936/job/126304923021",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:48Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 9 multi-job operating center"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747751910/job/126304923249",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:33:48Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747745671/job/126304900607",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:33:45Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747751893/job/126305128760",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:34:17Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated crew-day capacity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747751981/job/126304918954",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:33:47Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated field scheduling"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747751832/job/126304922531",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:33:48Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated field work orders"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747751968/job/126304922297",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:33:48Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated maintenance schedule handoff"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747751939/job/126304921294",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:33:48Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated technician day board"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747751959/job/126304922509",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:33:48Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747745438/job/126304896932",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:33:44Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747751982/job/126304922855",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:33:48Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747745268/job/126304899719",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:33:45Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747751919/job/126304917522",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:33:47Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747745399/job/126304896001",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:33:44Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747751910/job/126304922954",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:33:48Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747745671/job/126304901024",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:33:45Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        }
+      ]
+    },
+    {
+      "baseRefName": "codex/program-cycle-twenty-three-integration",
+      "headRefName": "codex/cycle23-recorded-cost-requirements",
+      "headRefOid": "891eba98758ce18434a4fdbd981acdc55ae020bc",
+      "isDraft": true,
+      "number": 159,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747772762/job/126304988525",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:57Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 10 everyday operating reviews"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747772604/job/126304987894",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:57Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 11 source-bound workflow laboratories"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747772591/job/126304988004",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:57Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 12 exact workflow revision and verification"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747772612/job/126304984105",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:57Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 21 canonical correction continuity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747772545/job/126304987958",
+          "name": "local-integration",
+          "startedAt": "2026-11-04T00:33:57Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 6 local workflow integration"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747772667/job/126305007547",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:00Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 7 practical local usability"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747772535/job/126304987189",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:57Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 8 connected operating reviews"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747772574/job/126304988072",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:33:57Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 9 multi-job operating center"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747772559/job/126304988601",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:33:57Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747766602/job/126304970161",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:33:55Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747772621/job/126304988327",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:33:57Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated crew-day capacity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747772659/job/126304988858",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:33:57Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated field scheduling"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747772587/job/126304988613",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:33:57Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated field work orders"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747772639/job/126304988746",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:33:57Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated maintenance schedule handoff"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747772547/job/126304987746",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:33:57Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated technician day board"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747772623/job/126305357938",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:34:50Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747766525/job/126304968534",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:33:54Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747772596/job/126304987900",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:33:57Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747766599/job/126304971207",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:33:55Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747772586/job/126304984048",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:33:57Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747766607/job/126304964967",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:33:54Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747772559/job/126304988974",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:33:57Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747766602/job/126304970025",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:33:55Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        }
+      ]
+    },
+    {
+      "baseRefName": "codex/program-cycle-twenty-three-integration",
+      "headRefName": "codex/cycle23-verified-owner-briefing",
+      "headRefOid": "1848ef0923e9bf8616d9db27ac5baee61c4a2cb8",
+      "isDraft": true,
+      "number": 160,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747792071/job/126305080391",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:10Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 10 everyday operating reviews"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747792075/job/126305052995",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:06Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 11 source-bound workflow laboratories"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747792112/job/126305053155",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:06Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 12 exact workflow revision and verification"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747792170/job/126305047855",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:06Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 21 canonical correction continuity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747792248/job/126305053076",
+          "name": "local-integration",
+          "startedAt": "2026-11-04T00:34:06Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 6 local workflow integration"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747792094/job/126305055900",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:07Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 7 practical local usability"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747792142/job/126305052757",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:06Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 8 connected operating reviews"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747792078/job/126305052306",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:06Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 9 multi-job operating center"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747792130/job/126305054074",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:34:06Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747785375/job/126305030861",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:34:03Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747792032/job/126305049967",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:34:06Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated crew-day capacity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747792035/job/126305052886",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:34:06Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated field scheduling"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747792114/job/126305051749",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:34:06Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated field work orders"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747792072/job/126305052556",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:34:06Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated maintenance schedule handoff"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747792098/job/126305052059",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:34:06Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated technician day board"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747792148/job/126305052759",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:34:06Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747785118/job/126305030028",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:34:03Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747792085/job/126305052396",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:34:06Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747785107/job/126305422872",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:34:59Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747792181/job/126305047752",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:34:05Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747785181/job/126305025948",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:34:02Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747792130/job/126305053591",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:34:06Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747785375/job/126305031161",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:34:03Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        }
+      ]
+    },
+    {
+      "baseRefName": "codex/program-cycle-twenty-three-integration",
+      "headRefName": "codex/cycle23-service-source-continuity",
+      "headRefOid": "d0318e79ae7e011de806713395b22e2e9878bb39",
+      "isDraft": true,
+      "number": 161,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747816522/job/126305131240",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:17Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 10 everyday operating reviews"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747816513/job/126305130435",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:17Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 11 source-bound workflow laboratories"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747816594/job/126305131670",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:17Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 12 exact workflow revision and verification"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747816530/job/126305127937",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:17Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 21 canonical correction continuity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747816610/job/126305130737",
+          "name": "local-integration",
+          "startedAt": "2026-11-04T00:34:17Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 6 local workflow integration"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747816550/job/126305131481",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:17Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 7 practical local usability"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747816584/job/126305679540",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:35:36Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 8 connected operating reviews"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747816549/job/126305132094",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:17Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 9 multi-job operating center"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747816630/job/126305135521",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:34:18Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747808196/job/126305105188",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:34:13Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747816524/job/126305131739",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:34:17Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated crew-day capacity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747816660/job/126305131745",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:34:17Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated field scheduling"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747816730/job/126305132234",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:34:17Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated field work orders"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747816543/job/126305567015",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:35:20Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated maintenance schedule handoff"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747816582/job/126305132210",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:34:17Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated technician day board"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747816555/job/126305130805",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:34:17Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747808356/job/126305100832",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:34:13Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747816691/job/126305127781",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:34:17Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747808084/job/126305105219",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:34:13Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747816585/job/126305126988",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:34:17Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747808182/job/126305099487",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:34:13Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747816630/job/126305135221",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:34:18Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747808196/job/126305104771",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:34:13Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        }
+      ]
+    },
+    {
+      "baseRefName": "codex/program-cycle-twenty-three-integration",
+      "headRefName": "codex/cycle23-independent-review",
+      "headRefOid": "7c0d1f1900e86c48d56566e57bbd03995aa53dc4",
+      "isDraft": true,
+      "number": 162,
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747836284/job/126305197416",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:26Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 10 everyday operating reviews"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747836197/job/126305200050",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:27Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 11 source-bound workflow laboratories"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747835954/job/126305196223",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:26Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 12 exact workflow revision and verification"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747836382/job/126305198858",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:26Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 15 guided task continuity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747836233/job/126305196818",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:26Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 16 daily workflow guides"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747836032/job/126305197676",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:26Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 17 retained daily workspaces"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747836424/job/126305198100",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:26Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 18 source-bound daily workflow"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747835916/job/126305196294",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:26Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 19 saved source continuity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747836071/job/126305197222",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:26Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 21 canonical correction continuity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747836086/job/126305198176",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:26Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 22 current-source operating review"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747836106/job/126305196561",
+          "name": "local-integration",
+          "startedAt": "2026-11-04T00:34:26Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 6 local workflow integration"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747836144/job/126305197949",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:26Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 7 practical local usability"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747836263/job/126305197460",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:26Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 8 connected operating reviews"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747836212/job/126305198309",
+          "name": "bounded-integration",
+          "startedAt": "2026-11-04T00:34:26Z",
+          "status": "QUEUED",
+          "workflowName": "Cycle 9 multi-job operating center"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747836005/job/126305198481",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:34:26Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747829158/job/126305177360",
+          "name": "verify",
+          "startedAt": "2026-11-04T00:34:23Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747836211/job/126305197928",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:34:26Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated crew-day capacity"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747835982/job/126305196797",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:34:26Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated field scheduling"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747836287/job/126305197847",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:34:26Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated field work orders"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747835945/job/126305195520",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:34:26Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated maintenance schedule handoff"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747835910/job/126305203243",
+          "name": "browser",
+          "startedAt": "2026-11-04T00:34:27Z",
+          "status": "QUEUED",
+          "workflowName": "Isolated technician day board"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747835937/job/126305196236",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:34:26Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747829094/job/126305175623",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:34:23Z",
+          "status": "QUEUED",
+          "workflowName": "Passport timeline preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747836552/job/126305198465",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:34:26Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747829282/job/126305176155",
+          "name": "local-preview",
+          "startedAt": "2026-11-04T00:34:23Z",
+          "status": "QUEUED",
+          "workflowName": "Proof of Work documentation preview"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747836004/job/126305192572",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:34:26Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747829103/job/126305169721",
+          "name": "synthetic-crypto48",
+          "startedAt": "2026-11-04T00:34:22Z",
+          "status": "QUEUED",
+          "workflowName": "Synthetic rehearsal compatibility"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747836005/job/126305198110",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:34:26Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "detailsUrl": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41747829158/job/126305177066",
+          "name": "postgres17",
+          "startedAt": "2026-11-04T00:34:23Z",
+          "status": "QUEUED",
+          "workflowName": "Foundation checks"
+        }
+      ]
+    }
+  ],
+  "manual_reruns": 0,
+  "scope": "Exact current heads observed only; pending/cancelled/failed never converted to success",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "publication_note": "Snapshot predates final coordination publication; observed Main seed head is not the final tested runtime. Final-head automatic CI must be read after publication; no pending check is green."
+}

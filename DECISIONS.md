@@ -1,5 +1,28 @@
 # Engineering decisions
 
+## Cycle23 · exact source consistency and separately reviewed restart proposal
+
+Keep one original source host, five retained tabs, finite optional review mode and
+original command custody. Diagnostic correction graphs do not choose a winner;
+canonical cost/event values are copied unchanged; missing request/job and completion
+links stay UNKNOWN; selected maintenance requirements never authorize sending; owner
+comparisons never imply resolution. New snapshots are read handles, not business
+restoration. Published/issued originals remain immutable.
+
+Independent review covers the frozen runtime plus exact source-reviewed accessibility
+forwards; actual browser evidence grants no visual approval. Prior Foundation failures
+are repaired only in test setup: exact existing DEV/production origins and stable
+scenario Date with explicit negative midnight/reload coverage. All assertions/runtime
+freshness rules and the frozen Foundation workflow remain intact. Preserve original
+failed artifacts and no manual successful-check reruns.
+
+The canonical restart proposal is independently reviewed for a separate design
+decision only. No adapter, schema, credential path or operational write admission is
+authorized. Current Auth/tenant controls, original custody, immutable receipts,
+independent anti-rollback fencing and matched backups require acceptance first.
+Actual independent device recovery remains NOT RUN. All release/financial/provider/
+communications/deployment restrictions and prior approvals remain unchanged.
+
 Retained source-inspection assertions must verify the actual single trusted preparer seam and its original default. Five further demonstrated literal mismatches corrected forward; no assertion removed, runtime bypass or historical failure relabel. No operational authority.
 
 Cycle22 source requirements are allowlisted read-only views over actual native source records and original correction controls. Same-property job navigation uses the existing workbench callback with current source/member validation. No new business/evidence store or restart restoration; historical files cannot restore state. Frozen candidate receives independent review and separate browser/CI evidence; protected design/recovery/financial/release gates remain closed.

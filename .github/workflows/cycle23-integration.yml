@@ -1,0 +1,78 @@
+name: Cycle 23 source revision consistency review
+on:
+  push:
+    branches: ['codex/program-cycle-twenty-three-integration']
+  pull_request:
+    paths:
+      - 'src/lib/workflows/task-revision-consistency.ts'
+      - 'src/lib/workflows/recorded-cost-requirements.ts'
+      - 'src/lib/workflows/service-source-review.ts'
+      - 'src/lib/workflows/maintenance-revision-requirements.ts'
+      - 'src/lib/workflows/verified-owner-briefing.ts'
+      - 'src/components/workflows/TaskRevisionConsistency.tsx'
+      - 'src/components/workflows/RecordedCostRequirements.tsx'
+      - 'src/components/workflows/ServiceSourceReview.tsx'
+      - 'src/components/workflows/MaintenanceRevisionRequirements.tsx'
+      - 'src/components/workflows/VerifiedOwnerBriefing.tsx'
+      - 'src/components/workflows/task-revision-consistency.css'
+      - 'src/components/workflows/recorded-cost-requirements.css'
+      - 'src/components/workflows/service-source-review.css'
+      - 'src/components/workflows/maintenance-revision-requirements.css'
+      - 'src/components/workflows/verified-owner-briefing.css'
+      - 'src/components/workflows/OperatingCenterCycleTwentyThree.tsx'
+      - 'src/components/workflows/OperatingCenterCycleFifteen.tsx'
+      - 'src/lib/workflows/saved-workbench-selection.ts'
+      - 'src/lib/workflows/saved-revision-runtime.ts'
+      - 'src/lib/workflows/saved-revision-exercise.ts'
+      - 'src/lib/workflows/operating-center-runtime.ts'
+      - 'src/lib/phase3.ts'
+      - 'src/lib/property.ts'
+      - 'src/lib/operations.ts'
+      - 'tests/cycle23*'
+      - 'tests/browser/cycle23*'
+      - 'playwright.cycle23*.ts'
+      - 'scripts/*cycle23*'
+      - 'docs/program/CYCLE23*'
+      - '.github/workflows/cycle23-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle23-integration-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  bounded-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node scripts/check-cycle23.mjs --require-independent
+      - run: npx vitest run tests/cycle23*.test.ts --maxWorkers=2 --reporter=json --outputFile=artifacts/cycle23/application-results.json
+      - run: node scripts/check-cycle23.mjs --require-independent --application
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test -c playwright.cycle23.config.ts --list --reporter=json > artifacts/cycle23/browser-development-collection.json
+      - run: npx playwright test -c playwright.cycle23-off.config.ts --list --reporter=json > artifacts/cycle23/browser-production-collection.json
+      - run: node scripts/collect-cycle23-browser.mjs --collect
+      - run: npx playwright test -c playwright.cycle23.config.ts --workers=1
+      - run: npx playwright test -c playwright.cycle23-off.config.ts --workers=1
+      # Separate one-case clock regression; not part of the 27 DEV / 3 OFF matrix.
+      - run: npx playwright test -c tests/program/playwright.cycle23-repair-day.config.ts --workers=1
+      - run: node scripts/collect-cycle23-browser.mjs --complete
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle23-source-consistency-evidence
+          path: |
+            artifacts/cycle23/
+            artifacts/cycle23/repair-clock/
+            test-results/
+          retention-days: 7

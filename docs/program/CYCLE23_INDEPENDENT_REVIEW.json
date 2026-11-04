@@ -1,0 +1,749 @@
+{
+  "schema": "propel-cycle23-independent-review-v1",
+  "reviewed_candidate": "126808bd0efe4a5ebd75000871ee06cabbb3f8f2",
+  "reviewed_parent": "3e35fb29dd4488bf655446712e5a013e06f8ed1e",
+  "reviewer_agent": "/root/cycle23_independent_review",
+  "review_branch": "codex/cycle23-independent-review",
+  "status": "CLEAR_LOCAL_SYNTHETIC_ONLY",
+  "scope": "Independent source-based integration review of five frozen native-reader extensions and original same-host optional composition. No operational, visual, hosted, persistence or release approval. Explicit later presentation deltas are separately pinned below.",
+  "feature_heads": [
+    {
+      "module": "task-revision-consistency",
+      "component": "TaskRevisionConsistency",
+      "head": "b2872ae0b61905e534d6f67804ad09244582b339",
+      "draft_pr": 157,
+      "author_reported_cases": 32,
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/task-revision-consistency.ts",
+          "git_blob": "10fd6ca71a7edd22aa190ab4d2b2c1b62429d8fe",
+          "sha256": "33561a4905012cd0641b71d0b9cd7ec1e623736e815f3e5d21e87248a110837f"
+        },
+        {
+          "path": "src/components/workflows/TaskRevisionConsistency.tsx",
+          "git_blob": "ab78b94b02cbe3af1d523165694f693e6086b387",
+          "sha256": "d34a97fe1c9892fa3e916a9740a546c8ba42063fbb0b6754d4056d34c8501e2b"
+        },
+        {
+          "path": "src/components/workflows/task-revision-consistency.css",
+          "git_blob": "a421767151577411bb2f2e38af498cad49f3ff56",
+          "sha256": "e2ef787c181c5a9a437df2d2cdfbcd44d8ed6d8f355d7d7eb5d50603b0d234aa"
+        },
+        {
+          "path": "tests/cycle23-task-revision-consistency.test.ts",
+          "git_blob": "0f95e2dd1811f335f54742568132614e108a9a5d",
+          "sha256": "c6233be850b832af27f24f4fe777dc5798e77dbd10bd1cd7f5d8c90ee961b93c"
+        },
+        {
+          "path": "docs/program/CYCLE23_TASK_REVISION_CONSISTENCY.md",
+          "git_blob": "520a881c9cea88b5804b5a7c04cdbb9f9c6fdfb3",
+          "sha256": "01519133a56725b65c700cd74ebfd678d47e6074aba153443d2804dfea43887c"
+        }
+      ]
+    },
+    {
+      "module": "recorded-cost-requirements",
+      "component": "RecordedCostRequirements",
+      "head": "12114a8efe5bebe9a06f951537d66a89ae2c926e",
+      "draft_pr": 159,
+      "author_reported_cases": 31,
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/recorded-cost-requirements.ts",
+          "git_blob": "ad8ee0ba15ab0a17f731eb7cde34b30ec4f537dc",
+          "sha256": "72b6a0b2f63e2d961f39f47fd3f903c30690cb5eec6e4196a892b75285ee9c71"
+        },
+        {
+          "path": "src/components/workflows/RecordedCostRequirements.tsx",
+          "git_blob": "e7207e09dd68182f1dbfbd7b9c525bfc66a65b5f",
+          "sha256": "e35b805b8eae14cdbc5b6ffd5349b31df0024e213bc1551c658d73c2263457ff"
+        },
+        {
+          "path": "src/components/workflows/recorded-cost-requirements.css",
+          "git_blob": "f0418952053b2cb678d07557a9a1a2f13fa20f1a",
+          "sha256": "76037563d7cee5662d70304287a7f4dc5aa2080b49a696e5a437644196b4baee"
+        },
+        {
+          "path": "tests/cycle23-recorded-cost-requirements.test.ts",
+          "git_blob": "4daf413d3c61ee61802ba1e3708d0cc06c0e404a",
+          "sha256": "03a00b5966584b69642117f219497ff5e6eb0a774b0d4317cab6d5e48a7839e7"
+        },
+        {
+          "path": "docs/program/CYCLE23_RECORDED_COST_REQUIREMENTS.md",
+          "git_blob": "4d4097de29a6d319324ebe3a65a210f8b7dc4315",
+          "sha256": "f59becfd5d4a5f30b59ea28a46c8f701d743ccda62eafe4ea3ceaa9d773d8d3c"
+        }
+      ]
+    },
+    {
+      "module": "service-source-review",
+      "component": "ServiceSourceReview",
+      "head": "b2081de250ace947391de62fdb0ad4fd6b8b16c4",
+      "draft_pr": 161,
+      "author_reported_cases": 56,
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/service-source-review.ts",
+          "git_blob": "f0b1118131ee5beaf92e29406df15e5cc5c0ee69",
+          "sha256": "1d4d680285ef1a7fd72eb201ece35300fae8f428811841e73d1c13e6dc7f2630"
+        },
+        {
+          "path": "src/components/workflows/ServiceSourceReview.tsx",
+          "git_blob": "474145fa0f6dfc479d7c932ee7d41048dbe523f9",
+          "sha256": "ae745b54a1f8d27e1641d48a7f5f4215833a985be02caac4d351770ee5b6eb14"
+        },
+        {
+          "path": "src/components/workflows/service-source-review.css",
+          "git_blob": "2070e0d6e800e6599b5ec5cfa3b083c90a6c0e07",
+          "sha256": "771d750938360290a582d29cb4f7d2d999aefb94ad412b939577e08584b3fa92"
+        },
+        {
+          "path": "tests/cycle23-service-source-review.test.ts",
+          "git_blob": "7563400d308305f11e02cd91c0eda2ff71656c01",
+          "sha256": "f15405b03db73a18426dabd66eb6cd563d0db919f64b084b1f030845849cc6b6"
+        },
+        {
+          "path": "docs/program/CYCLE23_SERVICE_SOURCE_REVIEW.md",
+          "git_blob": "1c9b753d253d3ff2dc03c6c94f2a5c0180b625eb",
+          "sha256": "65f991d17635372f106b88f5521bcff795cfadf4db0eee9631eb97fadbd1a89b"
+        }
+      ]
+    },
+    {
+      "module": "maintenance-revision-requirements",
+      "component": "MaintenanceRevisionRequirements",
+      "head": "13bc65e61c9a932ba4acbbec9f992ec216a91668",
+      "draft_pr": 158,
+      "author_reported_cases": 34,
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/maintenance-revision-requirements.ts",
+          "git_blob": "00337e975d582ed8fa9a2e1502a0ea3807e43ba6",
+          "sha256": "688dc6721b1ae3c4972e52956523bede11926c2426334ad25408447d562e5816"
+        },
+        {
+          "path": "src/components/workflows/MaintenanceRevisionRequirements.tsx",
+          "git_blob": "7f61a775fd344b4c0955d80ffc8921e1cd86f5a7",
+          "sha256": "89530a080c079c94fca6d2480d70b5e259b72d705434f086f5edb22b60ac7549"
+        },
+        {
+          "path": "src/components/workflows/maintenance-revision-requirements.css",
+          "git_blob": "4ce602e27ada2711462218bcdb6998865ad369f4",
+          "sha256": "75ef9ace2ec519f786f10fcf4845c557de0cbff3c8d539187475fb3989d302fb"
+        },
+        {
+          "path": "tests/cycle23-maintenance-revision-requirements.test.ts",
+          "git_blob": "e09c8f4c27c90b19b95caaa953dbd195ab3d8688",
+          "sha256": "5033c3fe415f934ebd4e06ea23fbb4cc0e5bc71a8777c38d206a2d3081315b4f"
+        },
+        {
+          "path": "docs/program/CYCLE23_MAINTENANCE_REVISION_REQUIREMENTS.md",
+          "git_blob": "a962a8540d824fe33c86e76d64405367c861441f",
+          "sha256": "7f39ba8660f610447ea3773290be812a955590618ac9973308444d710d746143"
+        }
+      ]
+    },
+    {
+      "module": "verified-owner-briefing",
+      "component": "VerifiedOwnerBriefing",
+      "head": "9bec73c579f11dedc0b21deeb715f17975452b4e",
+      "draft_pr": 160,
+      "author_reported_cases": 27,
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/verified-owner-briefing.ts",
+          "git_blob": "5a289a1c18d37091fc29ccb9b096e22f5cd259c1",
+          "sha256": "c62d4cf776b854bcd4fd8ccd72d46ac094381a9ccf0049f4b1302fbd9fb638f6"
+        },
+        {
+          "path": "src/components/workflows/VerifiedOwnerBriefing.tsx",
+          "git_blob": "ff8b35060d67175f98aa2c65343e5116f8dc0482",
+          "sha256": "b331037990012e7b78241cca03ea982df3d22a3063a1fd28b4dbe6235b4c9869"
+        },
+        {
+          "path": "src/components/workflows/verified-owner-briefing.css",
+          "git_blob": "0bfabdfbb528f0ae6fb938007c6199eb7ed90382",
+          "sha256": "7045a891ace53966cc0defdc053440e4ebe7ec62edc15ae444c86aa7a6f74f86"
+        },
+        {
+          "path": "tests/cycle23-verified-owner-briefing.test.ts",
+          "git_blob": "65ae3f0ed5527c07b9c3967d5a5362553804d952",
+          "sha256": "be55708a816d9a787aded0b864087c4ed13ed63604b20a0528a695aa85fd219f"
+        },
+        {
+          "path": "docs/program/CYCLE23_VERIFIED_OWNER_BRIEFING.md",
+          "git_blob": "1f2427f0f19e599bc7b9f05e80b08ef827cab4ce",
+          "sha256": "90dd6698174e772fac12113333ea4c563f601868184458cd09e61f910377fa81"
+        }
+      ]
+    }
+  ],
+  "reviewed_main_runtime": [
+    {
+      "path": "src/components/workflows/OperatingCenterCycleTwentyThree.tsx",
+      "git_blob": "59835ca53155f5f273c9ac2184299a4ce30af6df",
+      "sha256": "5291f0ddd495bfbd7bcdbca449457f89d6dcfaaf6e6be7f07ab32a7a3525f798"
+    },
+    {
+      "path": "src/components/workflows/OperatingCenterCycleFifteen.tsx",
+      "git_blob": "205393a2681b3f7d1d4f22b0db2c32e5789dcca3",
+      "sha256": "107efbe44b902c18de4a29d7d2cd5d22655d1821b3b2ff878c48b43230742e48"
+    },
+    {
+      "path": "src/components/workflows/SavedRevisionWorkbench.tsx",
+      "git_blob": "93420af57e47f0040ccbf63b371c782b0e0f5373",
+      "sha256": "8f7e69a34fb48d74583fa42a7484be3e051e1e5d9613c9dc8c7b2c063bb92e14"
+    }
+  ],
+  "reviewed_forward_deltas": [
+    {
+      "commit": "7f95ce02abbfb09a9db21271e35dd053d19470f7",
+      "parent": "126808bd0efe4a5ebd75000871ee06cabbb3f8f2",
+      "status": "CLEAR_SOURCE_LEVEL_PRESENTATION_ONLY",
+      "files": [
+        {
+          "path": "src/components/workflows/OperatingCenterCycleFifteen.tsx",
+          "git_blob": "1c8908bb447a1c067ef15b5c893850004a027044",
+          "sha256": "38e931be24fdf48e0891de5febb0bf085667a6291d57112652a68988f8a8f660"
+        },
+        {
+          "path": "src/components/workflows/cycle23-source-review.css",
+          "git_blob": "71b3df1d8f1460f172dce0f3e37176d64181c10d",
+          "sha256": "e894f53deca48682bbf76ce7621aaaf14511bd6174beca04120ed339e19e98c2"
+        }
+      ],
+      "review": "Exactly one CSS import and selector-label class, plus scoped wrapping, 44px selector minimum height and width bounds. All source mode defaults, admission, source preparation, callbacks and custody remain identical. Main owns actual browser geometry and accessibility evidence; the architecture documents in this commit were separately reviewed outside this runtime review."
+    },
+    {
+      "commit": "a3c8a39dd1b08ffdc68d1f7b9b29153ae50feb88",
+      "parent": "12114a8efe5bebe9a06f951537d66a89ae2c926e",
+      "status": "CLEAR_SOURCE_LEVEL_PRESENTATION_ONLY",
+      "files": [
+        {
+          "path": "src/components/workflows/RecordedCostRequirements.tsx",
+          "git_blob": "17e5719b00546a1fdce5bc9a5157d7d1bf53a917",
+          "sha256": "7374d98abfb7751913e7c502835e608666a1644776dcf5e0c06056e9dca2b967"
+        },
+        {
+          "path": "src/components/workflows/recorded-cost-requirements.css",
+          "git_blob": "180fa88f2191625656a47f3331a54858fdc0ac28",
+          "sha256": "8369a7d02611e3ebd214a160a29ed754d374becdd6e6ea561079da1bb96a6b4e"
+        }
+      ],
+      "review": "Exactly one accessible-name correction to include the visible word exact, plus scoped dt text-color inheritance. Handlers, state, readers, canonical calculations and original command/navigation custody are unchanged. Actual discovered Axe failures and browser correction proof are Main-owned separate evidence."
+    },
+    {
+      "commit": "c9e40a04061da2189231cfa89f85ffa0ed1699c0",
+      "parent": "9bec73c579f11dedc0b21deeb715f17975452b4e",
+      "status": "CLEAR_SOURCE_LEVEL_PRESENTATION_ONLY",
+      "files": [
+        {
+          "path": "src/components/workflows/VerifiedOwnerBriefing.tsx",
+          "git_blob": "95ff61e1f82e1fc8e87d05712f63896500a337c8",
+          "sha256": "01977f9b7dd67e34b80b29a08e6050b6219f287e4a5644b4104ecf4a29ebe7ed"
+        }
+      ],
+      "review": "Exactly two repeated fact-region labels gain exact original row keys and two accessible button names gain their exact visible wording. No state, handler, rank/source logic, calculation or custody change. Main owns actual Axe/browser reproduction and final verification."
+    }
+  ],
+  "findings": [],
+  "integrity": {
+    "baseline": "3e35fb29dd4488bf655446712e5a013e06f8ed1e",
+    "retained_author_files": 498,
+    "author_changes": [],
+    "protected_files": 128,
+    "design_locks": 5,
+    "design_bindings": 13,
+    "protected_failures": [],
+    "binding_failures": [],
+    "capabilities": 25,
+    "capability_document_unchanged": true
+  },
+  "case_families": [
+    {
+      "id": "I01",
+      "cases": 3,
+      "review": "All brands bind the same exact organization/customer/property/job/issued version across five readers, with no business-state or network mutation."
+    },
+    {
+      "id": "I02",
+      "cases": 3,
+      "review": "One native task correction shares exact original/result IDs in Field and Finance; no winning record, payroll posting or per-entry money is inferred."
+    },
+    {
+      "id": "I03",
+      "cases": 3,
+      "review": "Actual native material review retains exact expense-event provenance and canonical jobFinancials category amounts; invoice requirements remain NO_GO and unavailable financial evidence stays absent."
+    },
+    {
+      "id": "I04",
+      "cases": 3,
+      "review": "Actual native plan correction stales old Field/Growth evidence, preserves saved revision references and never relocates an old exact occurrence ID."
+    },
+    {
+      "id": "I05",
+      "cases": 3,
+      "review": "Actual native report publication preserves earlier bytes and exact report/visit/plan/job/issued lineage. Strict safe projections retain unverified completion/acceptance and unknown history."
+    },
+    {
+      "id": "I06",
+      "cases": 3,
+      "review": "Actual recorded channel withdrawal invalidates old evidence; purpose consent, suppression, enrollment, terms and sender remain UNKNOWN, recipient null and send blocked."
+    },
+    {
+      "id": "I07",
+      "cases": 3,
+      "review": "Actual synthetic native membership demotion invalidates all five existing views and all fresh readers; retained service reconciliation is exact read-only UNKNOWN."
+    },
+    {
+      "id": "I08",
+      "cases": 5,
+      "review": "Foreign organization/customer/location/version/job target substitutions invalidate all five retained reads and every new admission without fallback."
+    },
+    {
+      "id": "I09",
+      "cases": 1,
+      "review": "Duplicate original selected-job entry is ambiguous for every reader."
+    },
+    {
+      "id": "I10",
+      "cases": 1,
+      "review": "Full original four-job source set rejects cross-property report, occurrence, comparison and task-ID substitution."
+    },
+    {
+      "id": "I11",
+      "cases": 1,
+      "review": "Full original four-job source set rejects same-property other-job report substitution; missing request-to-job FK remains explicit UNKNOWN."
+    },
+    {
+      "id": "I12",
+      "cases": 5,
+      "review": "Each reader rejects current admission revocation at a real asynchronous SHA-256 boundary."
+    },
+    {
+      "id": "I13",
+      "cases": 1,
+      "review": "Replacing retained original entry handles with shallow wrappers invalidates all existing readers."
+    },
+    {
+      "id": "I14",
+      "cases": 3,
+      "review": "Missing task acknowledgment before native append, after append or after review retains HELD_UNKNOWN. Fresh correction wrappers cannot replay and Finance cannot infer locked labor."
+    },
+    {
+      "id": "I15",
+      "cases": 2,
+      "review": "Lost plan ACK with and without an observed native write blocks correction receipt and fresh-wrapper replay."
+    },
+    {
+      "id": "I16",
+      "cases": 1,
+      "review": "Ambiguous original cost-source callback retains UNKNOWN across a fresh source wrapper; callback cannot repeat."
+    },
+    {
+      "id": "I17",
+      "cases": 1,
+      "review": "Uninspected owner suggestion cannot navigate. An inspected callback with lost ACK retains original UNKNOWN across wrappers."
+    },
+    {
+      "id": "I18",
+      "cases": 1,
+      "review": "Original ranking remains exact after a real native visit draft revision; disappeared derived priority remains UNKNOWN, uninspectable and not complete."
+    },
+    {
+      "id": "I19",
+      "cases": 3,
+      "review": "Default, production and remote-host admission block all five readers/components before hostile source getters."
+    },
+    {
+      "id": "I20",
+      "cases": 1,
+      "review": "Executable/extra selectors and copied reader handles confer no exact source, safe projection or navigation authority."
+    },
+    {
+      "id": "I21",
+      "cases": 1,
+      "review": "Six original C22 destinations receive the same original source object; original workbench owns exactly five C23 panel slots, with one finite requirements-gated selector."
+    },
+    {
+      "id": "I22",
+      "cases": 1,
+      "review": "Actual server render of the original default host keeps Requirements selected, source-review selector disabled, all checkbox opt-ins false and no task graph."
+    },
+    {
+      "id": "I23",
+      "cases": 1,
+      "review": "Concurrent original correction calls yield one native append and one exact shared Field/Finance result; labor remains unposted."
+    }
+  ],
+  "verification": {
+    "independent_application": {
+      "status": "PASS",
+      "tests": 50,
+      "passed": 50,
+      "failed": 0,
+      "pending": 0,
+      "unique_full_names": 50,
+      "suite_ms": 305439.3386230469,
+      "max_case_ms": 18517.018624999997,
+      "timeout_budget_ms": 30000,
+      "raw_report": "/private/tmp/cycle23-independent-final.json",
+      "raw_sha256": "deb9d305c63eb1cec2d413b84fb6a99b3893209bce81644f6161bd262ffc3324",
+      "test_sha256": "f9d78549be62c2540b98959db7c908b84509a233c27a5435dec15a48f047dc2f",
+      "cases": [
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I01 brand 0 all five readers bind one original exact job without business writes",
+          "status": "passed",
+          "duration_ms": 5336.751208000001
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I01 brand 1 all five readers bind one original exact job without business writes",
+          "status": "passed",
+          "duration_ms": 5034.9277919999995
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I01 brand 2 all five readers bind one original exact job without business writes",
+          "status": "passed",
+          "duration_ms": 5457.157582999998
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I02 brand 0 one original task correction appears in Field and Finance without inventing labor cost",
+          "status": "passed",
+          "duration_ms": 8420.912417
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I02 brand 1 one original task correction appears in Field and Finance without inventing labor cost",
+          "status": "passed",
+          "duration_ms": 8433.273584000002
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I02 brand 2 one original task correction appears in Field and Finance without inventing labor cost",
+          "status": "passed",
+          "duration_ms": 16770.77725
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I03 brand 0 original material review changes canonical totals and exact event provenance but leaves invoice gates closed",
+          "status": "passed",
+          "duration_ms": 10124.924249999996
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I03 brand 1 original material review changes canonical totals and exact event provenance but leaves invoice gates closed",
+          "status": "passed",
+          "duration_ms": 12035.77925
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I03 brand 2 original material review changes canonical totals and exact event provenance but leaves invoice gates closed",
+          "status": "passed",
+          "duration_ms": 18517.018624999997
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I04 brand 0 native plan revision stales Field and Growth and does not relocate selected occurrence",
+          "status": "passed",
+          "duration_ms": 9222.23391699999
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I04 brand 1 native plan revision stales Field and Growth and does not relocate selected occurrence",
+          "status": "passed",
+          "duration_ms": 10403.12658299999
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I04 brand 2 native plan revision stales Field and Growth and does not relocate selected occurrence",
+          "status": "passed",
+          "duration_ms": 9910.929833000002
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I05 brand 0 appended published version preserves old bytes and exact customer report lineage without completion",
+          "status": "passed",
+          "duration_ms": 11535.107250000001
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I05 brand 1 appended published version preserves old bytes and exact customer report lineage without completion",
+          "status": "passed",
+          "duration_ms": 11803.49770799998
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I05 brand 2 appended published version preserves old bytes and exact customer report lineage without completion",
+          "status": "passed",
+          "duration_ms": 16949.561707999994
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I06 brand 0 actual channel withdrawal invalidates old Growth reference and never supplies suppression or sender authority",
+          "status": "passed",
+          "duration_ms": 1010.6098340000026
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I06 brand 1 actual channel withdrawal invalidates old Growth reference and never supplies suppression or sender authority",
+          "status": "passed",
+          "duration_ms": 1004.6927499999874
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I06 brand 2 actual channel withdrawal invalidates old Growth reference and never supplies suppression or sender authority",
+          "status": "passed",
+          "duration_ms": 1540.3881669999973
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I07 brand 0 actual native membership demotion invalidates every retained module and every new read",
+          "status": "passed",
+          "duration_ms": 6781.309708999994
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I07 brand 1 actual native membership demotion invalidates every retained module and every new read",
+          "status": "passed",
+          "duration_ms": 5944.610874999984
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I07 brand 2 actual native membership demotion invalidates every retained module and every new read",
+          "status": "passed",
+          "duration_ms": 9942.636499999993
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I08 foreign organization_id substitution invalidates all combined sources rather than falling back",
+          "status": "passed",
+          "duration_ms": 5827.184833000007
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I08 foreign customer_id substitution invalidates all combined sources rather than falling back",
+          "status": "passed",
+          "duration_ms": 6518.507083999983
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I08 foreign location_id substitution invalidates all combined sources rather than falling back",
+          "status": "passed",
+          "duration_ms": 5294.676957999996
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I08 foreign version_id substitution invalidates all combined sources rather than falling back",
+          "status": "passed",
+          "duration_ms": 4860.8802500000165
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I08 foreign job_id substitution invalidates all combined sources rather than falling back",
+          "status": "passed",
+          "duration_ms": 4736.7720839999965
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I09 duplicate exact entry makes all five source admissions ambiguous",
+          "status": "passed",
+          "duration_ms": 466.4830409999995
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I10 another property report and another job occurrence cannot replace the retained exact sources",
+          "status": "passed",
+          "duration_ms": 13925.043958000024
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I11 same-property report from a different exact job is rejected and missing request FK remains UNKNOWN",
+          "status": "passed",
+          "duration_ms": 14251.072749999992
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I12 field reader rejects current source revocation across an actual asynchronous hash boundary",
+          "status": "passed",
+          "duration_ms": 538.122000000003
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I12 finance reader rejects current source revocation across an actual asynchronous hash boundary",
+          "status": "passed",
+          "duration_ms": 545.3209590000042
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I12 customer reader rejects current source revocation across an actual asynchronous hash boundary",
+          "status": "passed",
+          "duration_ms": 561.2231669999892
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I12 growth reader rejects current source revocation across an actual asynchronous hash boundary",
+          "status": "passed",
+          "duration_ms": 871.6717499999795
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I12 intelligence reader rejects current source revocation across an actual asynchronous hash boundary",
+          "status": "passed",
+          "duration_ms": 880.57362499999
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I13 replacing the original repository handle with a wrapper invalidates all retained handles",
+          "status": "passed",
+          "duration_ms": 16216.255166999967
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I14 before-native missing task ACK stays UNKNOWN in graph and cannot replay through a fresh correction wrapper",
+          "status": "passed",
+          "duration_ms": 2984.0253749999683
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I14 after-native missing task ACK stays UNKNOWN in graph and cannot replay through a fresh correction wrapper",
+          "status": "passed",
+          "duration_ms": 2684.0478749999893
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I14 after-review missing task ACK stays UNKNOWN in graph and cannot replay through a fresh correction wrapper",
+          "status": "passed",
+          "duration_ms": 2823.6898330000113
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I15 plan lost ACK with native write false remains blocked even when current revision exists",
+          "status": "passed",
+          "duration_ms": 1110.447749999992
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I15 plan lost ACK with native write true remains blocked even when current revision exists",
+          "status": "passed",
+          "duration_ms": 4898.039124999952
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I16 original cost-navigation ambiguity survives a new wrapper and cannot duplicate the callback",
+          "status": "passed",
+          "duration_ms": 3503.0633329999982
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I17 original priority inspection is required and ambiguous navigation cannot be renewed",
+          "status": "passed",
+          "duration_ms": 6876.1717499999795
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I18 original rank order survives native visit revision while disappeared key remains UNKNOWN rather than complete",
+          "status": "passed",
+          "duration_ms": 8878.300625000033
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I19 default admission denies all readers and components before hostile source getters",
+          "status": "passed",
+          "duration_ms": 29.269542000023648
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I19 production admission denies all readers and components before hostile source getters",
+          "status": "passed",
+          "duration_ms": 2.2539579999865964
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I19 remote-host admission denies all readers and components before hostile source getters",
+          "status": "passed",
+          "duration_ms": 0.6028330000117421
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I20 executable or extra selectors cannot turn strict customer/cost/task projections into authority",
+          "status": "passed",
+          "duration_ms": 6491.585040999984
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I21 six exact C22 destinations render five C23 panels over the same original source object and existing workbench",
+          "status": "passed",
+          "duration_ms": 3.617792000004556
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I22 original default host leaves Requirements selected and current-source mode disabled without preparing sources",
+          "status": "passed",
+          "duration_ms": 5.902041999972425
+        },
+        {
+          "name": "Cycle23 independent frozen-runtime cross-module review I23 concurrent original task commands produce one native correction and one shared exact graph/cost result",
+          "status": "passed",
+          "duration_ms": 2461.338584000012
+        }
+      ]
+    },
+    "types": "PASS: final strict npx tsc --noEmit, exit0",
+    "scoped_lint": "PASS: final independent test-file ESLint, exit0",
+    "format": "PASS: both owned files; final post-metrics check recorded by commit verification",
+    "source_integrity": "PASS: all25 new frozen author files equal exact original feature heads;498 retained prior author paths unchanged against exact3e35fb29;128protected files/5locks/13bindings valid;25capability document byte-unchanged",
+    "browser_accessibility_responsive": "MAIN_OWNED_SEPARATE: source-only presentation delta review does not establish actual geometry, Axe PASS, device PASS or owner visual approval",
+    "ci": "MAIN_OWNED_SEPARATE: no manual CI rerun or historical outcome relabeling by reviewer",
+    "test_development": {
+      "initial_run": {
+        "tests": 49,
+        "passed": 41,
+        "failed": 8,
+        "pending": 0,
+        "raw_report": "/private/tmp/cycle23-independent-results.json",
+        "raw_sha256": "317b9e4da5740dc280f0daa8de2f8821b562a964f3c4f21e8907b2670ed8f4c5",
+        "suite_ms": 547124.5595703125,
+        "failures": [
+          {
+            "name": "Cycle23 independent frozen-runtime cross-module review I02 brand 0 one original task correction appears in Field and Finance without inventing labor cost",
+            "duration_ms": 30631.249166999994,
+            "category": "TIMEOUT_CAUSE_NOT_FULLY_ISOLATED"
+          },
+          {
+            "name": "Cycle23 independent frozen-runtime cross-module review I02 brand 1 one original task correction appears in Field and Finance without inventing labor cost",
+            "duration_ms": 30321.781665999995,
+            "category": "TIMEOUT_CAUSE_NOT_FULLY_ISOLATED"
+          },
+          {
+            "name": "Cycle23 independent frozen-runtime cross-module review I02 brand 2 one original task correction appears in Field and Finance without inventing labor cost",
+            "duration_ms": 31275.30529199999,
+            "category": "TIMEOUT_CAUSE_NOT_FULLY_ISOLATED"
+          },
+          {
+            "name": "Cycle23 independent frozen-runtime cross-module review I03 brand 0 original material review changes canonical totals and exact event provenance but leaves invoice gates closed",
+            "duration_ms": 31053.497457999998,
+            "category": "TIMEOUT_CAUSE_NOT_FULLY_ISOLATED"
+          },
+          {
+            "name": "Cycle23 independent frozen-runtime cross-module review I03 brand 1 original material review changes canonical totals and exact event provenance but leaves invoice gates closed",
+            "duration_ms": 30480.13629199998,
+            "category": "TIMEOUT_CAUSE_NOT_FULLY_ISOLATED"
+          },
+          {
+            "name": "Cycle23 independent frozen-runtime cross-module review I03 brand 2 original material review changes canonical totals and exact event provenance but leaves invoice gates closed",
+            "duration_ms": 30006.21441699998,
+            "category": "TIMEOUT_CAUSE_NOT_FULLY_ISOLATED"
+          },
+          {
+            "name": "Cycle23 independent frozen-runtime cross-module review I11 same-property report from a different exact job is rejected and missing request FK remains UNKNOWN",
+            "duration_ms": 2914.1510000000126,
+            "category": "REVIEW_TEST_EXPECTATION_ERROR"
+          },
+          {
+            "name": "Cycle23 independent frozen-runtime cross-module review I14 after-native missing task ACK stays UNKNOWN in graph and cannot replay through a fresh correction wrapper",
+            "duration_ms": 2945.8337919999612,
+            "category": "REVIEW_TEST_EXPECTATION_ERROR"
+          }
+        ]
+      },
+      "corrections": "Retain all initial failures. Six original 30s-budget combined before/after scenarios traversed all four source entries; final common cases select one exact original native entry over the same original repository instances. Explicit cross-property and same-property-other-job cases still use the full original four-entry root. No product assertion or time budget was removed or expanded; final evidence does not claim an all-portfolio performance fix. Two harness errors were corrected: choose the actual shared-property entry for a sibling test, and accept stricter pre-save rejection by original UNKNOWN custody. Type checking additionally corrected native job.events spelling and the required inert presentation callback. One extra concurrent original-custody case was added for 50 total cases. Runtime and original author files are untouched."
+    }
+  },
+  "explicit_limits": [
+    "All business state comes from the original local synthetic native repositories and original allowed correction/source-exercise controls, not genuine hosted Auth/MFA or operational custody.",
+    "Common cases narrow only the original entry handles to one exact selected native job; cross-property and same-property-other-job cases explicitly retain all four original entries. No repository, source record, engine, fixture preparer, SQL or financial command is replaced or added.",
+    "Canonical expense review events are exercised through the original native material-review control. Invoice/payment-event arrays are compared against original readers and their absence is preserved; no extra synthetic contract/invoice/payment command is invoked by this review.",
+    "Original same-tab references and one-use custody do not survive process loss and cannot restore canonical business state. Historical files are not restart authority.",
+    "Read consistency is source-bound at captured boundaries; CAPTURED_NOT_ATOMIC remains explicit. Planning, report documentation, priority changes, approved time or channel preference never prove physical completion, availability, contract/payment acceptance or send authority.",
+    "Independent browser/mobile/keyboard/axe and exact-head CI evidence remain separate Main responsibilities. Three approved design scopes stay locked; Operating Center/advanced visual approval remains PENDING.",
+    "No broad historical, Netlify, offline-recovery or database baseline was rerun. Actual Danny Air readiness, pairing, recovery, no-replay rehearsal and cleanup remain UNVERIFIED / NOT RUN."
+  ],
+  "protected_boundaries": {
+    "retained_prior_author_files": 498,
+    "protected_files": 128,
+    "design_locks": 5,
+    "design_bindings": 13,
+    "capabilities": 25,
+    "original_feature_ids": 18,
+    "closed_phase_one_gates": 8,
+    "historical_migrations": "ALL13_UNCHANGED",
+    "customer14_original4B_frozenP1_four_artifacts_approvals": "UNCHANGED",
+    "connected_routes": "CLOSED",
+    "hosted_writes": false,
+    "credentials_retrieved": false,
+    "restart_adapter": false,
+    "operational_recovery": "UNVERIFIED",
+    "payment_send_dispatch": false,
+    "merge_deployment": false,
+    "release": "NOT READY / NOT AUTHORIZED"
+  },
+  "forward_composition": {
+    "main_commit": "fb27473b20f910ec3faf0fb9e032b4fb016532f2",
+    "source_review": "Exact src delta from frozen126808b contains only the five paths covered by the three separately pinned presentation deltas. All five new reader/engine modules and original host/custody/business sources are unchanged.",
+    "changed_runtime_paths": [
+      "src/components/workflows/OperatingCenterCycleFifteen.tsx",
+      "src/components/workflows/RecordedCostRequirements.tsx",
+      "src/components/workflows/VerifiedOwnerBriefing.tsx",
+      "src/components/workflows/cycle23-source-review.css",
+      "src/components/workflows/recorded-cost-requirements.css"
+    ],
+    "actual_browser": "MAIN_OWNED_SEPARATE",
+    "normalized_original_runtime_equivalence": "PASS: removing only the explicitly listed class/import/color/accessibility-name changes yields byte-identical original components; final Main has exact reviewed delta blobs and no other src changes."
+  },
+  "result": "No demonstrated source-isolation, authority, canonical-cost, published-lineage, consent, UNKNOWN/no-replay or source-composition blocker in the 50 final independent cases. Original frozen accessible-name/color issues reported by Main are covered by separately pinned source-only forward delta reviews; actual final browser evidence is separate."
+}

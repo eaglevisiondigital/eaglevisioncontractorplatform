@@ -1,0 +1,660 @@
+{
+  "schema": "propel-cycle23-tested-browser-forward-v2",
+  "tested_patch": "a14df7e818daf68ffa53611d8acc15176bedd359",
+  "only_paths": [
+    "tests/browser/cycle21-canonical-corrections.spec.ts",
+    "tests/browser/contractor-design.spec.ts"
+  ],
+  "files": [
+    {
+      "path": "tests/browser/cycle21-canonical-corrections.spec.ts",
+      "blob": "c79ffbad41515ee60c093ca710f4659f6e681fd3",
+      "sha256": "8eb9efc1ac90be4ccab01f295789465501016bf0aad63daaefc8a92bd276598b"
+    },
+    {
+      "path": "tests/browser/contractor-design.spec.ts",
+      "blob": "4e8279797d0d9ad1cfeecf92d4ca3d93034f55f5",
+      "sha256": "d8b7d97bfd490de7b2d6a2d1ef43a8614823535c5de8094ae0d82f07cae1e151"
+    }
+  ],
+  "manual_reruns": 0,
+  "normal_forward_only": true,
+  "source_pins_unchanged": true,
+  "protected_runtime_changed": false,
+  "records": [
+    {
+      "draft_pr": 143,
+      "branch": "codex/program-cycle-twenty-one",
+      "base": "codex/program-cycle-twenty",
+      "before": "9223fa1485a4369752fd82b0751eab2bb73591d1",
+      "after": "54597844ce0ce23d04e630ea354d137c5eb66f2d",
+      "only_files": [
+        "tests/browser/cycle21-canonical-corrections.spec.ts",
+        "tests/browser/contractor-design.spec.ts"
+      ],
+      "git_remote_verified": true,
+      "draft_preserved": true,
+      "pr_metadata_status": "EXACT_HEAD_CONFIRMED",
+      "recovered_prior_success": true,
+      "push_replayed": false,
+      "protected128_unchanged": true,
+      "state": "COMPLETE",
+      "pr_metadata_final": {
+        "pr": 143,
+        "head": "54597844ce0ce23d04e630ea354d137c5eb66f2d",
+        "branch": "codex/program-cycle-twenty-one",
+        "base": "codex/program-cycle-twenty",
+        "draft": true,
+        "state": "open",
+        "title_unchanged": true,
+        "body_unchanged": true
+      }
+    },
+    {
+      "draft_pr": 149,
+      "branch": "codex/program-cycle-twenty-two-integration",
+      "base": "codex/program-cycle-twenty-one",
+      "before": "3e35fb29dd4488bf655446712e5a013e06f8ed1e",
+      "after": "b517d588745007a9e519506d1a4417ddd62e3757",
+      "only_files": [
+        "tests/browser/cycle21-canonical-corrections.spec.ts",
+        "tests/browser/contractor-design.spec.ts"
+      ],
+      "draft_preserved": true,
+      "state": "COMPLETE",
+      "push_attempts": 1,
+      "protected128_unchanged": true,
+      "pr_metadata_status": "EXACT_HEAD_CONFIRMED",
+      "author_or_independent_equality": [],
+      "push_acknowledged": true,
+      "git_remote_verified": true,
+      "pr_metadata_final": {
+        "pr": 149,
+        "head": "b517d588745007a9e519506d1a4417ddd62e3757",
+        "branch": "codex/program-cycle-twenty-two-integration",
+        "base": "codex/program-cycle-twenty-one",
+        "draft": true,
+        "state": "open",
+        "title_unchanged": true,
+        "body_unchanged": true
+      }
+    },
+    {
+      "draft_pr": 150,
+      "branch": "codex/cycle22-property-service-workflow",
+      "base": "codex/program-cycle-twenty-two-integration",
+      "before": "077e5dc0057a249e7f492e5367cdd5e7d3bc23d7",
+      "after": "4e29d3e9113c34999929c6c5d23fdc092316e58f",
+      "only_files": [
+        "tests/browser/cycle21-canonical-corrections.spec.ts",
+        "tests/browser/contractor-design.spec.ts"
+      ],
+      "draft_preserved": true,
+      "state": "COMPLETE",
+      "push_attempts": 1,
+      "protected128_unchanged": true,
+      "pr_metadata_status": "EXACT_HEAD_CONFIRMED",
+      "author_or_independent_equality": [],
+      "push_acknowledged": true,
+      "git_remote_verified": true,
+      "pr_metadata_final": {
+        "pr": 150,
+        "head": "4e29d3e9113c34999929c6c5d23fdc092316e58f",
+        "branch": "codex/cycle22-property-service-workflow",
+        "base": "codex/program-cycle-twenty-two-integration",
+        "draft": true,
+        "state": "open",
+        "title_unchanged": true,
+        "body_unchanged": true
+      }
+    },
+    {
+      "draft_pr": 151,
+      "branch": "codex/cycle22-cost-coverage-workflow",
+      "base": "codex/program-cycle-twenty-two-integration",
+      "before": "2b95ccd8749fd735b1287aad78aa33e4b8ca6537",
+      "after": "f31fdf6695be0371bbdc6728d745ada6b75bdc62",
+      "only_files": [
+        "tests/browser/cycle21-canonical-corrections.spec.ts",
+        "tests/browser/contractor-design.spec.ts"
+      ],
+      "draft_preserved": true,
+      "state": "COMPLETE",
+      "push_attempts": 1,
+      "protected128_unchanged": true,
+      "pr_metadata_status": "EXACT_HEAD_CONFIRMED",
+      "author_or_independent_equality": [],
+      "push_acknowledged": true,
+      "git_remote_verified": true,
+      "pr_metadata_final": {
+        "pr": 151,
+        "head": "f31fdf6695be0371bbdc6728d745ada6b75bdc62",
+        "branch": "codex/cycle22-cost-coverage-workflow",
+        "base": "codex/program-cycle-twenty-two-integration",
+        "draft": true,
+        "state": "open",
+        "title_unchanged": true,
+        "body_unchanged": true
+      }
+    },
+    {
+      "draft_pr": 152,
+      "branch": "codex/cycle22-task-custody-workflow",
+      "base": "codex/program-cycle-twenty-two-integration",
+      "before": "b355a8db66ed3df05112e6c987abe2de42493cbe",
+      "after": "43152c32a2e0509992affd36f467efd9b42d29ca",
+      "only_files": [
+        "tests/browser/cycle21-canonical-corrections.spec.ts",
+        "tests/browser/contractor-design.spec.ts"
+      ],
+      "draft_preserved": true,
+      "state": "COMPLETE",
+      "push_attempts": 1,
+      "protected128_unchanged": true,
+      "pr_metadata_status": "EXACT_HEAD_CONFIRMED",
+      "author_or_independent_equality": [],
+      "push_acknowledged": true,
+      "git_remote_verified": true,
+      "pr_metadata_final": {
+        "pr": 152,
+        "head": "43152c32a2e0509992affd36f467efd9b42d29ca",
+        "branch": "codex/cycle22-task-custody-workflow",
+        "base": "codex/program-cycle-twenty-two-integration",
+        "draft": true,
+        "state": "open",
+        "title_unchanged": true,
+        "body_unchanged": true
+      }
+    },
+    {
+      "draft_pr": 153,
+      "branch": "codex/cycle22-maintenance-requirements-workflow",
+      "base": "codex/program-cycle-twenty-two-integration",
+      "before": "bd9900bd0097b9a963ced5348ebd9347f0c08183",
+      "after": "8e03784864b451c9a79464f788e24eef7ce28742",
+      "only_files": [
+        "tests/browser/cycle21-canonical-corrections.spec.ts",
+        "tests/browser/contractor-design.spec.ts"
+      ],
+      "draft_preserved": true,
+      "state": "COMPLETE",
+      "push_attempts": 1,
+      "protected128_unchanged": true,
+      "pr_metadata_status": "EXACT_HEAD_CONFIRMED",
+      "author_or_independent_equality": [],
+      "push_acknowledged": true,
+      "git_remote_verified": true,
+      "pr_metadata_final": {
+        "pr": 153,
+        "head": "8e03784864b451c9a79464f788e24eef7ce28742",
+        "branch": "codex/cycle22-maintenance-requirements-workflow",
+        "base": "codex/program-cycle-twenty-two-integration",
+        "draft": true,
+        "state": "open",
+        "title_unchanged": true,
+        "body_unchanged": true
+      }
+    },
+    {
+      "draft_pr": 154,
+      "branch": "codex/cycle22-current-priorities-workflow",
+      "base": "codex/program-cycle-twenty-two-integration",
+      "before": "ae7088bbddfc914faaec01b3984c8537f81f8c8f",
+      "after": "cdd5241c63c1fb4e6fe9c851195a076777bd1e13",
+      "only_files": [
+        "tests/browser/cycle21-canonical-corrections.spec.ts",
+        "tests/browser/contractor-design.spec.ts"
+      ],
+      "draft_preserved": true,
+      "state": "COMPLETE",
+      "push_attempts": 1,
+      "protected128_unchanged": true,
+      "pr_metadata_status": "EXACT_HEAD_CONFIRMED",
+      "author_or_independent_equality": [],
+      "push_acknowledged": true,
+      "git_remote_verified": true,
+      "pr_metadata_final": {
+        "pr": 154,
+        "head": "cdd5241c63c1fb4e6fe9c851195a076777bd1e13",
+        "branch": "codex/cycle22-current-priorities-workflow",
+        "base": "codex/program-cycle-twenty-two-integration",
+        "draft": true,
+        "state": "open",
+        "title_unchanged": true,
+        "body_unchanged": true
+      }
+    },
+    {
+      "draft_pr": 156,
+      "branch": "codex/cycle23-canonical-restart-architecture",
+      "base": "codex/program-cycle-twenty-three-integration",
+      "before": "d0fc730dbbc99b8945f89e1254cd20c0d85983b6",
+      "after": "ea2d6b87f7c4fdfdd04d3991a5dba1f0c27d4f57",
+      "only_files": [
+        "tests/browser/cycle21-canonical-corrections.spec.ts",
+        "tests/browser/contractor-design.spec.ts"
+      ],
+      "draft_preserved": true,
+      "state": "COMPLETE",
+      "push_attempts": 1,
+      "protected128_unchanged": true,
+      "pr_metadata_status": "EXACT_HEAD_CONFIRMED",
+      "author_or_independent_equality": [],
+      "push_acknowledged": true,
+      "git_remote_verified": true,
+      "pr_metadata_final": {
+        "pr": 156,
+        "head": "ea2d6b87f7c4fdfdd04d3991a5dba1f0c27d4f57",
+        "branch": "codex/cycle23-canonical-restart-architecture",
+        "base": "codex/program-cycle-twenty-three-integration",
+        "draft": true,
+        "state": "open",
+        "title_unchanged": true,
+        "body_unchanged": true
+      }
+    },
+    {
+      "draft_pr": 157,
+      "branch": "codex/cycle23-task-revision-consistency",
+      "base": "codex/program-cycle-twenty-three-integration",
+      "before": "b2872ae0b61905e534d6f67804ad09244582b339",
+      "after": "a2b4d36e3eaabc9cf6db6e2d929cceb76a066d0c",
+      "only_files": [
+        "tests/browser/cycle21-canonical-corrections.spec.ts",
+        "tests/browser/contractor-design.spec.ts"
+      ],
+      "draft_preserved": true,
+      "state": "COMPLETE",
+      "push_attempts": 1,
+      "protected128_unchanged": true,
+      "pr_metadata_status": "EXACT_HEAD_CONFIRMED",
+      "author_or_independent_equality": [
+        {
+          "path": "src/lib/workflows/task-revision-consistency.ts",
+          "source_commit": "b2872ae0b61905e534d6f67804ad09244582b339",
+          "sha256": "33561a4905012cd0641b71d0b9cd7ec1e623736e815f3e5d21e87248a110837f",
+          "blob": "10fd6ca71a7edd22aa190ab4d2b2c1b62429d8fe",
+          "unchanged": true
+        },
+        {
+          "path": "src/components/workflows/TaskRevisionConsistency.tsx",
+          "source_commit": "b2872ae0b61905e534d6f67804ad09244582b339",
+          "sha256": "d34a97fe1c9892fa3e916a9740a546c8ba42063fbb0b6754d4056d34c8501e2b",
+          "blob": "ab78b94b02cbe3af1d523165694f693e6086b387",
+          "unchanged": true
+        },
+        {
+          "path": "src/components/workflows/task-revision-consistency.css",
+          "source_commit": "b2872ae0b61905e534d6f67804ad09244582b339",
+          "sha256": "e2ef787c181c5a9a437df2d2cdfbcd44d8ed6d8f355d7d7eb5d50603b0d234aa",
+          "blob": "a421767151577411bb2f2e38af498cad49f3ff56",
+          "unchanged": true
+        },
+        {
+          "path": "tests/cycle23-task-revision-consistency.test.ts",
+          "source_commit": "b2872ae0b61905e534d6f67804ad09244582b339",
+          "sha256": "c6233be850b832af27f24f4fe777dc5798e77dbd10bd1cd7f5d8c90ee961b93c",
+          "blob": "0f95e2dd1811f335f54742568132614e108a9a5d",
+          "unchanged": true
+        },
+        {
+          "path": "docs/program/CYCLE23_TASK_REVISION_CONSISTENCY.md",
+          "source_commit": "b2872ae0b61905e534d6f67804ad09244582b339",
+          "sha256": "01519133a56725b65c700cd74ebfd678d47e6074aba153443d2804dfea43887c",
+          "blob": "520a881c9cea88b5804b5a7c04cdbb9f9c6fdfb3",
+          "unchanged": true
+        }
+      ],
+      "push_acknowledged": true,
+      "git_remote_verified": true,
+      "pr_metadata_final": {
+        "pr": 157,
+        "head": "a2b4d36e3eaabc9cf6db6e2d929cceb76a066d0c",
+        "branch": "codex/cycle23-task-revision-consistency",
+        "base": "codex/program-cycle-twenty-three-integration",
+        "draft": true,
+        "state": "open",
+        "title_unchanged": true,
+        "body_unchanged": true
+      }
+    },
+    {
+      "draft_pr": 158,
+      "branch": "codex/cycle23-maintenance-revision-requirements",
+      "base": "codex/program-cycle-twenty-three-integration",
+      "before": "13bc65e61c9a932ba4acbbec9f992ec216a91668",
+      "after": "db43479f5e277bb6b64fd74a0ac9d846cbfe15da",
+      "only_files": [
+        "tests/browser/cycle21-canonical-corrections.spec.ts",
+        "tests/browser/contractor-design.spec.ts"
+      ],
+      "draft_preserved": true,
+      "state": "COMPLETE",
+      "push_attempts": 1,
+      "protected128_unchanged": true,
+      "pr_metadata_status": "EXACT_HEAD_CONFIRMED",
+      "author_or_independent_equality": [
+        {
+          "path": "src/lib/workflows/maintenance-revision-requirements.ts",
+          "source_commit": "13bc65e61c9a932ba4acbbec9f992ec216a91668",
+          "sha256": "688dc6721b1ae3c4972e52956523bede11926c2426334ad25408447d562e5816",
+          "blob": "00337e975d582ed8fa9a2e1502a0ea3807e43ba6",
+          "unchanged": true
+        },
+        {
+          "path": "src/components/workflows/MaintenanceRevisionRequirements.tsx",
+          "source_commit": "13bc65e61c9a932ba4acbbec9f992ec216a91668",
+          "sha256": "89530a080c079c94fca6d2480d70b5e259b72d705434f086f5edb22b60ac7549",
+          "blob": "7f61a775fd344b4c0955d80ffc8921e1cd86f5a7",
+          "unchanged": true
+        },
+        {
+          "path": "src/components/workflows/maintenance-revision-requirements.css",
+          "source_commit": "13bc65e61c9a932ba4acbbec9f992ec216a91668",
+          "sha256": "75ef9ace2ec519f786f10fcf4845c557de0cbff3c8d539187475fb3989d302fb",
+          "blob": "4ce602e27ada2711462218bcdb6998865ad369f4",
+          "unchanged": true
+        },
+        {
+          "path": "tests/cycle23-maintenance-revision-requirements.test.ts",
+          "source_commit": "13bc65e61c9a932ba4acbbec9f992ec216a91668",
+          "sha256": "5033c3fe415f934ebd4e06ea23fbb4cc0e5bc71a8777c38d206a2d3081315b4f",
+          "blob": "e09c8f4c27c90b19b95caaa953dbd195ab3d8688",
+          "unchanged": true
+        },
+        {
+          "path": "docs/program/CYCLE23_MAINTENANCE_REVISION_REQUIREMENTS.md",
+          "source_commit": "13bc65e61c9a932ba4acbbec9f992ec216a91668",
+          "sha256": "7f39ba8660f610447ea3773290be812a955590618ac9973308444d710d746143",
+          "blob": "a962a8540d824fe33c86e76d64405367c861441f",
+          "unchanged": true
+        }
+      ],
+      "push_acknowledged": true,
+      "git_remote_verified": true,
+      "pr_metadata_final": {
+        "pr": 158,
+        "head": "db43479f5e277bb6b64fd74a0ac9d846cbfe15da",
+        "branch": "codex/cycle23-maintenance-revision-requirements",
+        "base": "codex/program-cycle-twenty-three-integration",
+        "draft": true,
+        "state": "open",
+        "title_unchanged": true,
+        "body_unchanged": true
+      }
+    },
+    {
+      "draft_pr": 159,
+      "branch": "codex/cycle23-recorded-cost-requirements",
+      "base": "codex/program-cycle-twenty-three-integration",
+      "before": "a3c8a39dd1b08ffdc68d1f7b9b29153ae50feb88",
+      "after": "891eba98758ce18434a4fdbd981acdc55ae020bc",
+      "only_files": [
+        "tests/browser/cycle21-canonical-corrections.spec.ts",
+        "tests/browser/contractor-design.spec.ts"
+      ],
+      "draft_preserved": true,
+      "state": "COMPLETE",
+      "push_attempts": 1,
+      "protected128_unchanged": true,
+      "pr_metadata_status": "EXACT_HEAD_CONFIRMED",
+      "author_or_independent_equality": [
+        {
+          "path": "src/lib/workflows/recorded-cost-requirements.ts",
+          "source_commit": "a3c8a39dd1b08ffdc68d1f7b9b29153ae50feb88",
+          "sha256": "72b6a0b2f63e2d961f39f47fd3f903c30690cb5eec6e4196a892b75285ee9c71",
+          "blob": "ad8ee0ba15ab0a17f731eb7cde34b30ec4f537dc",
+          "unchanged": true
+        },
+        {
+          "path": "src/components/workflows/RecordedCostRequirements.tsx",
+          "source_commit": "a3c8a39dd1b08ffdc68d1f7b9b29153ae50feb88",
+          "sha256": "7374d98abfb7751913e7c502835e608666a1644776dcf5e0c06056e9dca2b967",
+          "blob": "17e5719b00546a1fdce5bc9a5157d7d1bf53a917",
+          "unchanged": true
+        },
+        {
+          "path": "src/components/workflows/recorded-cost-requirements.css",
+          "source_commit": "a3c8a39dd1b08ffdc68d1f7b9b29153ae50feb88",
+          "sha256": "8369a7d02611e3ebd214a160a29ed754d374becdd6e6ea561079da1bb96a6b4e",
+          "blob": "180fa88f2191625656a47f3331a54858fdc0ac28",
+          "unchanged": true
+        },
+        {
+          "path": "tests/cycle23-recorded-cost-requirements.test.ts",
+          "source_commit": "a3c8a39dd1b08ffdc68d1f7b9b29153ae50feb88",
+          "sha256": "03a00b5966584b69642117f219497ff5e6eb0a774b0d4317cab6d5e48a7839e7",
+          "blob": "4daf413d3c61ee61802ba1e3708d0cc06c0e404a",
+          "unchanged": true
+        },
+        {
+          "path": "docs/program/CYCLE23_RECORDED_COST_REQUIREMENTS.md",
+          "source_commit": "a3c8a39dd1b08ffdc68d1f7b9b29153ae50feb88",
+          "sha256": "f59becfd5d4a5f30b59ea28a46c8f701d743ccda62eafe4ea3ceaa9d773d8d3c",
+          "blob": "4d4097de29a6d319324ebe3a65a210f8b7dc4315",
+          "unchanged": true
+        }
+      ],
+      "push_acknowledged": true,
+      "git_remote_verified": true,
+      "pr_metadata_final": {
+        "pr": 159,
+        "head": "891eba98758ce18434a4fdbd981acdc55ae020bc",
+        "branch": "codex/cycle23-recorded-cost-requirements",
+        "base": "codex/program-cycle-twenty-three-integration",
+        "draft": true,
+        "state": "open",
+        "title_unchanged": true,
+        "body_unchanged": true
+      }
+    },
+    {
+      "draft_pr": 160,
+      "branch": "codex/cycle23-verified-owner-briefing",
+      "base": "codex/program-cycle-twenty-three-integration",
+      "before": "c9e40a04061da2189231cfa89f85ffa0ed1699c0",
+      "after": "1848ef0923e9bf8616d9db27ac5baee61c4a2cb8",
+      "only_files": [
+        "tests/browser/cycle21-canonical-corrections.spec.ts",
+        "tests/browser/contractor-design.spec.ts"
+      ],
+      "draft_preserved": true,
+      "state": "COMPLETE",
+      "push_attempts": 1,
+      "protected128_unchanged": true,
+      "pr_metadata_status": "EXACT_HEAD_CONFIRMED",
+      "author_or_independent_equality": [
+        {
+          "path": "src/lib/workflows/verified-owner-briefing.ts",
+          "source_commit": "c9e40a04061da2189231cfa89f85ffa0ed1699c0",
+          "sha256": "c62d4cf776b854bcd4fd8ccd72d46ac094381a9ccf0049f4b1302fbd9fb638f6",
+          "blob": "5a289a1c18d37091fc29ccb9b096e22f5cd259c1",
+          "unchanged": true
+        },
+        {
+          "path": "src/components/workflows/VerifiedOwnerBriefing.tsx",
+          "source_commit": "c9e40a04061da2189231cfa89f85ffa0ed1699c0",
+          "sha256": "01977f9b7dd67e34b80b29a08e6050b6219f287e4a5644b4104ecf4a29ebe7ed",
+          "blob": "95ff61e1f82e1fc8e87d05712f63896500a337c8",
+          "unchanged": true
+        },
+        {
+          "path": "src/components/workflows/verified-owner-briefing.css",
+          "source_commit": "c9e40a04061da2189231cfa89f85ffa0ed1699c0",
+          "sha256": "7045a891ace53966cc0defdc053440e4ebe7ec62edc15ae444c86aa7a6f74f86",
+          "blob": "0bfabdfbb528f0ae6fb938007c6199eb7ed90382",
+          "unchanged": true
+        },
+        {
+          "path": "tests/cycle23-verified-owner-briefing.test.ts",
+          "source_commit": "c9e40a04061da2189231cfa89f85ffa0ed1699c0",
+          "sha256": "be55708a816d9a787aded0b864087c4ed13ed63604b20a0528a695aa85fd219f",
+          "blob": "65ae3f0ed5527c07b9c3967d5a5362553804d952",
+          "unchanged": true
+        },
+        {
+          "path": "docs/program/CYCLE23_VERIFIED_OWNER_BRIEFING.md",
+          "source_commit": "c9e40a04061da2189231cfa89f85ffa0ed1699c0",
+          "sha256": "90dd6698174e772fac12113333ea4c563f601868184458cd09e61f910377fa81",
+          "blob": "1f2427f0f19e599bc7b9f05e80b08ef827cab4ce",
+          "unchanged": true
+        }
+      ],
+      "push_acknowledged": true,
+      "git_remote_verified": true,
+      "pr_metadata_final": {
+        "pr": 160,
+        "head": "1848ef0923e9bf8616d9db27ac5baee61c4a2cb8",
+        "branch": "codex/cycle23-verified-owner-briefing",
+        "base": "codex/program-cycle-twenty-three-integration",
+        "draft": true,
+        "state": "open",
+        "title_unchanged": true,
+        "body_unchanged": true
+      }
+    },
+    {
+      "draft_pr": 161,
+      "branch": "codex/cycle23-service-source-continuity",
+      "base": "codex/program-cycle-twenty-three-integration",
+      "before": "b2081de250ace947391de62fdb0ad4fd6b8b16c4",
+      "after": "d0318e79ae7e011de806713395b22e2e9878bb39",
+      "only_files": [
+        "tests/browser/cycle21-canonical-corrections.spec.ts",
+        "tests/browser/contractor-design.spec.ts"
+      ],
+      "draft_preserved": true,
+      "state": "COMPLETE",
+      "push_attempts": 1,
+      "protected128_unchanged": true,
+      "pr_metadata_status": "EXACT_HEAD_CONFIRMED",
+      "author_or_independent_equality": [
+        {
+          "path": "src/lib/workflows/service-source-review.ts",
+          "source_commit": "b2081de250ace947391de62fdb0ad4fd6b8b16c4",
+          "sha256": "1d4d680285ef1a7fd72eb201ece35300fae8f428811841e73d1c13e6dc7f2630",
+          "blob": "f0b1118131ee5beaf92e29406df15e5cc5c0ee69",
+          "unchanged": true
+        },
+        {
+          "path": "src/components/workflows/ServiceSourceReview.tsx",
+          "source_commit": "b2081de250ace947391de62fdb0ad4fd6b8b16c4",
+          "sha256": "ae745b54a1f8d27e1641d48a7f5f4215833a985be02caac4d351770ee5b6eb14",
+          "blob": "474145fa0f6dfc479d7c932ee7d41048dbe523f9",
+          "unchanged": true
+        },
+        {
+          "path": "src/components/workflows/service-source-review.css",
+          "source_commit": "b2081de250ace947391de62fdb0ad4fd6b8b16c4",
+          "sha256": "771d750938360290a582d29cb4f7d2d999aefb94ad412b939577e08584b3fa92",
+          "blob": "2070e0d6e800e6599b5ec5cfa3b083c90a6c0e07",
+          "unchanged": true
+        },
+        {
+          "path": "tests/cycle23-service-source-review.test.ts",
+          "source_commit": "b2081de250ace947391de62fdb0ad4fd6b8b16c4",
+          "sha256": "f15405b03db73a18426dabd66eb6cd563d0db919f64b084b1f030845849cc6b6",
+          "blob": "7563400d308305f11e02cd91c0eda2ff71656c01",
+          "unchanged": true
+        },
+        {
+          "path": "docs/program/CYCLE23_SERVICE_SOURCE_REVIEW.md",
+          "source_commit": "b2081de250ace947391de62fdb0ad4fd6b8b16c4",
+          "sha256": "65f991d17635372f106b88f5521bcff795cfadf4db0eee9631eb97fadbd1a89b",
+          "blob": "1c9b753d253d3ff2dc03c6c94f2a5c0180b625eb",
+          "unchanged": true
+        }
+      ],
+      "push_acknowledged": true,
+      "git_remote_verified": true,
+      "pr_metadata_final": {
+        "pr": 161,
+        "head": "d0318e79ae7e011de806713395b22e2e9878bb39",
+        "branch": "codex/cycle23-service-source-continuity",
+        "base": "codex/program-cycle-twenty-three-integration",
+        "draft": true,
+        "state": "open",
+        "title_unchanged": true,
+        "body_unchanged": true
+      }
+    },
+    {
+      "draft_pr": 162,
+      "branch": "codex/cycle23-independent-review",
+      "base": "codex/program-cycle-twenty-three-integration",
+      "before": "280611624c4a515bab1e4d8ddc7a1ad387ef1ac7",
+      "after": "7c0d1f1900e86c48d56566e57bbd03995aa53dc4",
+      "only_files": [
+        "tests/browser/cycle21-canonical-corrections.spec.ts",
+        "tests/browser/contractor-design.spec.ts"
+      ],
+      "draft_preserved": true,
+      "state": "COMPLETE",
+      "push_attempts": 1,
+      "protected128_unchanged": true,
+      "pr_metadata_status": "EXACT_HEAD_CONFIRMED",
+      "author_or_independent_equality": [
+        {
+          "path": "tests/cycle23-independent-integration-review.test.ts",
+          "source_commit": "280611624c4a515bab1e4d8ddc7a1ad387ef1ac7",
+          "sha256": "f9d78549be62c2540b98959db7c908b84509a233c27a5435dec15a48f047dc2f",
+          "blob": "07c5c7b1f70ccfa1af2e1aabbcfb44f51abf8f50",
+          "unchanged": true
+        },
+        {
+          "path": "docs/program/CYCLE23_INDEPENDENT_REVIEW.json",
+          "source_commit": "280611624c4a515bab1e4d8ddc7a1ad387ef1ac7",
+          "sha256": "7aa5012408dc139db0880f2169adca8a9103a22e3f97b7ab2c833435abc29a83",
+          "blob": "ae7b30cea4ab34e271b370f70490bbbd1cd9cd3a",
+          "unchanged": true
+        }
+      ],
+      "push_acknowledged": true,
+      "git_remote_verified": true,
+      "pr_metadata_final": {
+        "pr": 162,
+        "head": "7c0d1f1900e86c48d56566e57bbd03995aa53dc4",
+        "branch": "codex/cycle23-independent-review",
+        "base": "codex/program-cycle-twenty-three-integration",
+        "draft": true,
+        "state": "open",
+        "title_unchanged": true,
+        "body_unchanged": true
+      }
+    }
+  ],
+  "observed_at": "2026-11-04T00:35:24.483758+00:00",
+  "status": "FOURTEEN_FORWARD_HEADS_GIT_AND_PR_METADATA_VERIFIED_AUTOMATIC_CI_NOT_CLAIMED",
+  "source_pins": [
+    {
+      "draft_pr": 157,
+      "head_commit": "b2872ae0b61905e534d6f67804ad09244582b339",
+      "original_author_commit": "b2872ae0b61905e534d6f67804ad09244582b339"
+    },
+    {
+      "draft_pr": 159,
+      "head_commit": "a3c8a39dd1b08ffdc68d1f7b9b29153ae50feb88",
+      "original_author_commit": "12114a8efe5bebe9a06f951537d66a89ae2c926e"
+    },
+    {
+      "draft_pr": 161,
+      "head_commit": "b2081de250ace947391de62fdb0ad4fd6b8b16c4",
+      "original_author_commit": "b2081de250ace947391de62fdb0ad4fd6b8b16c4"
+    },
+    {
+      "draft_pr": 158,
+      "head_commit": "13bc65e61c9a932ba4acbbec9f992ec216a91668",
+      "original_author_commit": "13bc65e61c9a932ba4acbbec9f992ec216a91668"
+    },
+    {
+      "draft_pr": 160,
+      "head_commit": "c9e40a04061da2189231cfa89f85ffa0ed1699c0",
+      "original_author_commit": "9bec73c579f11dedc0b21deeb715f17975452b4e"
+    }
+  ],
+  "independent_source_pin": "280611624c4a515bab1e4d8ddc7a1ad387ef1ac7",
+  "all25_new_author_files_unchanged": true,
+  "independent2_files_unchanged": true,
+  "protected128_verified_each_branch": true,
+  "pr_metadata_mutations": 0
+}
