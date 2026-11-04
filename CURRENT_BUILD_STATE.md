@@ -14,7 +14,10 @@ pre-freeze provenance explicitly limited. All13quality commands PASS. Actual9nat
 5locks/13bindings/25capability states/18IDs remain unchanged. C12 supplemental51
 original browser cases now PASS, original cancellation preserved. Foundation
 cancellations and a new unlogged runner-mirror rejection remain honestly separate;
-current Cycle32 GitHub checks require their own actual head results.
+exact7b Cycle32 GitHub records24PASS/3CANCELLED/1FAIL. The dedicated run failed
+only the original roofing tablet30-second case; desktop passed29.383s. Historical
+local passes do not close that hosted failure. A measured busy-render correction
+and failed-case trace remain under review, without changing budgets or assertions.
 
 **OWNER-WITNESSED MAIN SYNTHETIC LOSS SCENARIO PASS** records November4 primary
 Wi-Fi loss, independent Air continuation and bounded synthetic result only.
@@ -25,6 +28,14 @@ remain unaccepted. Older unavailable/NOT_RUN entries below are historical checkp
 D1–D3 still require named people, current Auth/MFA, all installed writers/privileges,
 atomic receipts/durableACK, external rollback protection and matched recovery;
 11 accountable people remain UNASSIGNED and A01–A12 NOT_RUN.
+
+Post-CI reviewed author ec63030 adds pending-private-evidence withholding and retained
+keyboard/filter/disclosure context, without changing native guards. Its dirty-author
+71unit/18responsive cases pass; clean combined verification remains pending. A separate
+finite source pin preserves original9f provenance. One current-file C31 test expectation
+advances to that exact new author; all22 case titles/counts/denials remain unchanged.
+Original599unchanged-test proof applies to1ef; current scope has598unchanged plus this
+explicit compatibility update. Reviewed signed-source observability adds no trust.
 
 All original designs/branding, protected files, migrations, frozen P1/four artifacts,
 customer14/4B, Netlify, NMI, financial and production gates remain unchanged.

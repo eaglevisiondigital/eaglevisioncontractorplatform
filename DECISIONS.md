@@ -1,3 +1,17 @@
+## Cycle32 post-CI owner rendering and exact source continuity
+
+The original7b hosted tablet timeout remains FAIL; a one-worker traced29.326s PASS
+is supplementary. Measured pending rendering repeats228or496 source reads while
+native async actions independently validate authority. Independently reviewed sole7b
+author ec63030 withholds private pending DOM, preserves presentation context and
+skips render-only reads; native guards/one-use/UNKNOWN are unchanged. Its initial
+16PASS/2FAIL disclosure race and corrected dirty71unit/18browser results are retained.
+Clean candidate proof and new-head CI remain separate. Exact finite build-only
+admission retains original9f and all four C32 authors; one C31 current-file expectation
+advances to literal new-author bytes with stronger whole-bundle assertions, preserving
+all22 cases/denials. Signed-source diagnostics do not broaden trust. No operational,
+financial, hosted, dispatch, communication, deployment, merge or release authority.
+
 # Cycle32 · original input, canonical completeness and guarded filtering
 
 Original ordinary task and Voice input remain live across original source/hash/CAS

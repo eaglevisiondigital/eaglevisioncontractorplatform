@@ -186,5 +186,76 @@
     "helper_or_allowlist_changed": false,
     "historical_failure_relabelled": false
   },
-  "current_github_ci": "AWAIT_ACTUAL_PUBLICATION_HEAD_NO_INHERITANCE"
+  "current_github_ci": {
+    "head": "7b377aeffac11855a5dfdfaa86719078e70a5260",
+    "check_counts": {
+      "PASS": 24,
+      "CANCELLED": 3,
+      "FAIL": 1
+    },
+    "dedicated_run": 41915289330,
+    "failed_case": "ORIGINAL_ROOFING_TABLET_TOTAL_30S_TIMEOUT",
+    "desktop_pass_ms": 29383,
+    "tablet_timeout_ms": 30973,
+    "original_budget_ms": 30000,
+    "cause_limit": "CUMULATIVE_BUDGET_EXHAUSTION_NO_SOLE_CAUSE_ESTABLISHED",
+    "local_pass_is_not_hosted_pass": true
+  },
+  "post_ci_candidate": {
+    "state": "AWAIT_CLEAN_COMBINED_EXECUTION",
+    "new_expected_cases": 256,
+    "new_expected_files": 10,
+    "retained_expected_cases": 591,
+    "prior_test_expectation_updates": {
+      "path": "tests/cycle31-owner-source-compatibility.test.ts",
+      "cases": 22,
+      "scope": "ONLY_CURRENT_FILE_EXACT_ENDPOINT_ASSERTION_PLUS_STRONGER_FIXED_BUNDLE_CHECKS",
+      "original_case_titles_counts_denials_unchanged": true
+    },
+    "owner_render": {
+      "author_commit": "ec63030de8c0faceebd1ec9a645e9ea0dcf76383",
+      "parent": "7b377aeffac11855a5dfdfaa86719078e70a5260",
+      "branch": "codex/cycle32-owner-navigation-audit",
+      "reviewer": "/root/cycle25_finance_intelligence_resume",
+      "verdict": "CLEAR_LOCAL_SOURCE_NOT_HOSTED_CLOSURE",
+      "component_sha256": "31d56b3b32cb4d2ae9f2084d31661a720d2ca6eb493a0c3ce1f1a907e26dde8b",
+      "new_unit_cases": 9,
+      "new_browser_cases": 18,
+      "author_unit_pass": 71,
+      "author_browser_pass": 18,
+      "author_execution_provenance": "DIRTY_WORKTREE_NO_FORMAL_PRELAUNCH_HASH_MANIFEST",
+      "author_browser_report_sha256": "21879799a9e82bf58268a01a00e1e08863e9500af11207dc3efb7a6039e2e624",
+      "author_unit_report_sha256": "8ef1e15bf63a67aa061e22e5701e7d389fb2804c02244a48d1698fd6bb95dcd3",
+      "initial_new_browser_result": "16_PASS_2_FAIL_DISCLOSURE_RACE_PRESERVED",
+      "native_engines_changed": false,
+      "original_browser_tests_or_budgets_changed": false,
+      "files": [
+        {
+          "status": "A",
+          "path": "docs/program/CYCLE32_OWNER_BUSY_RENDER.md",
+          "sha256": "42add62a20b79119ea483e25c25764e1945766b22e98a4b83d391f685c4c21d0"
+        },
+        {
+          "status": "M",
+          "path": "src/components/workflows/RecordedOwnerActions.tsx",
+          "sha256": "31d56b3b32cb4d2ae9f2084d31661a720d2ca6eb493a0c3ce1f1a907e26dde8b"
+        },
+        {
+          "status": "A",
+          "path": "tests/cycle32-owner-busy-state.test.ts",
+          "sha256": "7e6158e758dd31501b9af78755119b4f4a87faa08ec68f5afb2e43bb4c4de42d"
+        },
+        {
+          "status": "A",
+          "path": "tests/program/cycle32-owner-busy-state.spec.ts",
+          "sha256": "18d5f6cf581dbff5ef155473eb3894e755988d13bed6249a85d2819da1304e16"
+        },
+        {
+          "status": "A",
+          "path": "tests/program/playwright.cycle32-owner-busy.config.ts",
+          "sha256": "206cfd438e5b2458e8df88035970afbf58419c12a393a6aa459a2f8637cc4118"
+        }
+      ]
+    }
+  }
 }

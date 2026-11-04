@@ -181,3 +181,65 @@ rejection without speculative trust changes; complete the remaining original phy
 scenarios with fresh approved synthetic attempts and resolve D1–D3 owners/evidence.
 Other independent local modules can continue within existing acceptance contracts.
 No blocked operational prerequisite is silently promoted by this local delivery.
+
+## Hosted7b follow-up · original tablet budget remains open
+
+Exact `7b377aeffac11855a5dfdfaa86719078e70a5260` records24PASS/3CANCELLED/1FAIL.
+[Dedicated41915289330](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41915289330)
+passed the original desktop case in29,383ms; tablet exhausted its unchanged30,000ms
+budget (reported30,973ms). Its final navigation click consumed4,775ms and the
+assertion began after teardown. The failure snapshot already shows the requested
+task-correction destination; this does not establish a sole cause or a completed
+assertion. Original test, workers2, retries0 and budgets remain unchanged.
+
+The provider artifact digest and raw report/timing hashes are retained in the CI
+ledger. A supplementary failed-tablet-only trace is being independently reviewed;
+its single-case concurrency and trace overhead cannot prove original paired-run
+stability. No successful check was manually rerun. Measured owner busy rendering
+repeats228native source reads, or496 with a comparison, despite a separately guarded
+async action. Any rendering correction requires independent privacy, focus, saved
+selection and original-source tests before acceptance. No native guard is removed.
+
+PR241 now has five actual new-runner observations (three read-only samplers and two
+Passport jobs), all passing the unchanged source validator with the reviewed mirror
+rows. Those observations do not reconstruct PR237's unlogged rejected row; its
+failure remains FAIL and no source trust or signed-package rule was broadened.
+
+The isolated [PR244 trace41932933432](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41932933432)
+passed its one original tablet case in29,326ms,674ms below the unchanged30-second
+limit. The actual worker count was1 with tracing enabled. Exact frozen7b sources
+and original files matched before/after. The final click spent4,380.300ms inside
+click processing and15.841ms waiting for scheduled navigation; locator stability
+was prompt. This is observed processing delay, not attribution to a particular
+JavaScript function or proof of paired-run stability. The original paired tablet
+FAIL remains open; provider ZIP and raw result/timing/trace hashes are in the ledger.
+
+## Reviewed post-CI rendering correction · clean verification pending
+
+Author `ec63030de8c0faceebd1ec9a645e9ea0dcf76383`, sole7b parent, changes one
+existing owner component and adds four bounded test/config/evidence companions.
+While an existing action is pending, it withholds the complete private subtree and
+skips only render-time projections (228or496 native reads→0). Idle return performs
+fresh original validation. Original native command, gate, lease, currentness, one-use
+and UNKNOWN behavior remains byte-identical. Filters, inspected source and summary
+expansion are retained; focus returns only under the documented presentation checks.
+No canonical state or authority is cached. This is not proof of hosted timeout repair.
+
+The new tests first reproduced6unit failures on7b. An initial new browser run recorded
+16PASS/2FAIL, exposing a queued disclosure-toggle race; the bounded summary interaction
+correction retains keyboard Enter/Space semantics. Final dirty-author71unit/18browser
+cases pass with independent review. There was no formal prelaunch hash manifest;
+these are not clean-commit runs. Pending-unmount/document-hidden/Escape limits remain
+source-only or unverified as the package document states. Clean combined execution
+will be recorded separately, never inferred from the dirty-author reports.
+
+A build-only exact five-file successor pin is separate from the original four C32
+authors. The original C30 endpoint9f855 and published manifests remain immutable.
+One C31 current-file expectation now compares directly with the literal new author's
+raw Git bytes and additionally validates its full fixed bundle; all22 case titles,
+counts, prior hash/blob/manifest and denial assertions remain. This is an explicit
+current-source compatibility update, not a substituted baseline reader. Twenty-four
+new source-boundary cases cover unknown edits, wrong parents/modes, companion drift,
+repeat current reads and unchanged native engines. The strict new collection becomes
+256cases/10files (original213+10reviewed runner-parser+9busy-render+24source cases).
+No old browser assertion, budget, original four-pin inventory or96-case file changes.
