@@ -96,3 +96,13 @@
   flex-wrap: wrap;
   gap: 0.6rem;
 }
+
+.maintenance-cancellation-actions__requirements {
+  margin: 1rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid #d8ddd5;
+  border-bottom: 1px solid #d8ddd5;
+}
+.maintenance-cancellation-actions__requirements h4 {
+  margin-top: 0;
+}

@@ -292,3 +292,77 @@ export function planCancellationFacts(review: PlanCancellationReview) {
     consent_mutation: false as const,
   });
 }
+
+/** The selected original row and saved plan are the only sources. No new
+ * eligibility, renewal, suppression or enrollment model is constructed. */
+export function planCancellationOccurrenceFacts(
+  selected: PlanCancellationSelection,
+) {
+  assertSelection(selected);
+  const row = selected.selection.occurrence,
+    plan = selected.review.saved.evidence.plans.filter(
+      (p) =>
+        p.id === row.plan_reference.id &&
+        p.revision === row.plan_reference.revision,
+    );
+  if (plan.length !== 1) throw Error('Exact single saved native plan required');
+  return freezePrototype({
+    identity: selected.review.view.identity,
+    occurrence_key: row.key,
+    occurrence_kind: row.selection.kind,
+    due_on: row.recorded_due_on,
+    date_basis: row.date_basis,
+    plan: plan[0],
+    requested_purpose: selected.review.purpose,
+    requested_purpose_is: 'REVIEW_CONTEXT_NOT_CONSENT' as const,
+    channel: row.channel,
+    recorded_channel: row.observed_contact_v1.observed_channel_state,
+    channel_reference: row.observed_contact_v1.reference,
+    current_channel_authority: row.current_channel_authority,
+    purpose_consent: row.purpose_consent,
+    suppression: row.suppression,
+    enrollment: row.enrollment,
+    renewal_terms: row.renewal_terms,
+    followups: selected.review.saved.evidence.followups.filter(
+      (f) => f.plan_id === plan[0].id,
+    ),
+    native_plan_cancellation: 'UNSUPPORTED' as const,
+    enrollment_cancellation: 'UNSUPPORTED' as const,
+    source_atomicity: 'CAPTURED_NOT_ATOMIC' as const,
+    send: false as const,
+    renew: false as const,
+  });
+}
+/** Explicit read-only verification before the original blocked staff-review
+ * action. This is a point-in-time observation, never a token or one-use claim. */
+export async function verifyPlanCancellationRequirements(
+  selected: PlanCancellationSelection,
+) {
+  const before = planCancellationOccurrenceFacts(selected);
+  await verifyMaintenanceSavedRevisionCurrent(selected.review.saved);
+  assertSelection(selected);
+  await openMaintenancePlanningContinuitySource(selected.selection);
+  assertSelection(selected);
+  const after = planCancellationOccurrenceFacts(selected);
+  if (JSON.stringify(before) !== JSON.stringify(after))
+    throw Error(
+      'Selected maintenance requirements changed during verification',
+    );
+  return freezePrototype({
+    status: 'CURRENT_REQUIREMENTS_CAPTURED_NOT_ATOMIC' as const,
+    facts: after,
+    blocked_requirements: [
+      'PURPOSE_SPECIFIC_CONSENT',
+      'CURRENT_SUPPRESSION',
+      'RECURRING_ENROLLMENT',
+      'RENEWAL_TERMS',
+      'ATOMIC_CONSENT_AT_SEND',
+      'CONNECTED_AUTHORITY',
+    ] as const,
+    action_scope: 'ORIGINAL_BLOCKED_STAFF_REVIEW_ONLY' as const,
+    durable_receipt: 'NOT_IMPLEMENTED' as const,
+    send: false as const,
+    renew: false as const,
+    replay: 'FORBIDDEN' as const,
+  });
+}
