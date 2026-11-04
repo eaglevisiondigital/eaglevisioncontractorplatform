@@ -6,6 +6,7 @@ import { pathToFileURL } from 'node:url';
 import { relative } from 'node:path';
 import { validateCycle23Manifest } from './check-cycle23.mjs';
 import { cycle23RuntimeSources } from './collect-cycle23-browser.mjs';
+import { admitCycle25Source } from './cycle25-source-lineage.mjs';
 
 export const cycle24Parent = '7b8d8c1a6f03fa33321409aa15c46926a63e59ed';
 export const cycle24Branch = 'codex/program-cycle-twenty-four-integration';
@@ -203,13 +204,14 @@ function verify(files, paths, head, ports, seen) {
   for (const f of files) {
     if (!f || !pending.has(f.path) || seen.has(f.path))
       throw Error('Overlapping, duplicate or unrequested source');
-    const bytes = Buffer.from(ports.read(f.path));
-    if (
-      sha(bytes) !== f.sha256 ||
-      blob(bytes) !== f.blob ||
-      !bytes.equals(Buffer.from(ports.git(head, f.path)))
-    )
+    const bytes = Buffer.from(ports.read(f.path)),
+      original = Buffer.from(ports.git(head, f.path));
+    if (sha(original) !== f.sha256 || blob(original) !== f.blob)
       throw Error(`Exact published bytes required: ${f.path}`);
+    // Original C24 hashes stay original. A fixed bounded C25 author commit must
+    // independently explain every changed current byte; never arbitrary ancestry.
+    if (!bytes.equals(original))
+      admitCycle25Source(f.path, bytes, original, ports);
     pending.delete(f.path);
     seen.add(f.path);
   }
@@ -384,6 +386,8 @@ export function validateCycle24Manifest(m, options = {}) {
     independent_status: m.independent_status,
     operational_ready: false,
     restore_adapter: false,
+    current_source_scope:
+      'IMMUTABLE_C24_BASELINE_PLUS_EXACT_BOUNDED_C25_FORWARDS',
   };
 }
 export function cycle24ApplicationSuites() {
