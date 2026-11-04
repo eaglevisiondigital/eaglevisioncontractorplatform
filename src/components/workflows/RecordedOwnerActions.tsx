@@ -72,13 +72,23 @@ function OwnerReview({
     [message, setMessage] = useState(
       'Read recorded priorities. Refresh after an explicit source save.',
     ),
-    [error, setError] = useState('');
+    [error, setError] = useState(''),
+    [expanded, setExpanded] = useState<string[]>([]);
   const gate = useRef({ enabled: true, confirmed: true }),
     life = useRef({ alive: true, pending: false, generation: 0 }),
     lease = useRef<PriorityLiveCallback>({
       current: onContinue,
       generation: 0,
     }),
+    container = useRef<HTMLDivElement>(null),
+    pendingFocus = useRef<
+      | {
+          token: string;
+          origin: Element;
+          generation: number;
+        }
+      | undefined
+    >(undefined),
     id = useId();
   useLayoutEffect(() => {
     const value = lease.current;
@@ -105,11 +115,59 @@ function OwnerReview({
       callback.generation++;
     };
   }, []);
+  useLayoutEffect(() => {
+    const owned = pendingFocus.current;
+    if (!owned) return;
+    if (busy) {
+      const cancel = () => {
+        pendingFocus.current = undefined;
+      };
+      const moved = (event: FocusEvent) => {
+        if (event.target !== document.body && event.target !== owned.origin)
+          cancel();
+      };
+      const hidden = () => {
+        if (document.hidden) cancel();
+      };
+      document.addEventListener('focusin', moved);
+      document.addEventListener('pointerdown', cancel, true);
+      document.addEventListener('visibilitychange', hidden);
+      return () => {
+        document.removeEventListener('focusin', moved);
+        document.removeEventListener('pointerdown', cancel, true);
+        document.removeEventListener('visibilitychange', hidden);
+      };
+    }
+    pendingFocus.current = undefined;
+    const root = container.current;
+    if (
+      !life.current.alive ||
+      life.current.generation !== owned.generation ||
+      document.hidden ||
+      !root?.isConnected ||
+      !root.getClientRects().length ||
+      (document.activeElement !== document.body &&
+        document.activeElement !== owned.origin)
+    )
+      return;
+    const buttons = [
+      ...root.querySelectorAll<HTMLButtonElement>('button[data-owner-focus]'),
+    ];
+    const target =
+      buttons.find(
+        (button) =>
+          button.dataset.ownerFocus === owned.token && !button.disabled,
+      ) ??
+      buttons.find(
+        (button) => button.dataset.ownerFocus === 'read' && !button.disabled,
+      );
+    target?.focus();
+  }, [busy]);
   let access = true;
   let cards: ReturnType<typeof recordedOwnerActionCards> = [];
   let changes: ReturnType<typeof compareRecordedOwnerActions> | undefined;
   try {
-    if (view) {
+    if (view && !busy) {
       cards = recordedOwnerActionCards(view);
       if (previous)
         changes = compareRecordedOwnerActions(previous, view, {
@@ -127,6 +185,13 @@ function OwnerReview({
     setBusy(true);
     setError('');
     const generation = ++life.current.generation;
+    const focused = document.activeElement;
+    pendingFocus.current =
+      focused instanceof HTMLElement &&
+      container.current?.contains(focused) &&
+      focused.dataset.ownerFocus
+        ? { token: focused.dataset.ownerFocus, origin: focused, generation }
+        : undefined;
     const live = () =>
       life.current.alive &&
       life.current.generation === generation &&
@@ -174,8 +239,13 @@ function OwnerReview({
     }
   }
   return (
-    <div className="recorded-owner-review">
-      <button type="button" onClick={() => void run('read')} disabled={busy}>
+    <div className="recorded-owner-review" ref={container}>
+      <button
+        type="button"
+        data-owner-focus="read"
+        onClick={() => void run('read')}
+        disabled={busy}
+      >
         Read current owner priorities
       </button>
       <p role="status">
@@ -187,7 +257,7 @@ function OwnerReview({
             'Recorded sources changed. Details and navigation are withheld; read current priorities again.'}
         </p>
       )}
-      {view && access && (
+      {!busy && view && access && (
         <>
           <p>
             {view.snapshot.identity.organization_id} · job{' '}
@@ -216,8 +286,35 @@ function OwnerReview({
                   <strong>Suggested human review:</strong>{' '}
                   {card.suggested_human_review}
                 </p>
-                <details>
-                  <summary>Why this priority and exact source</summary>
+                <details
+                  open={expanded.includes(card.key)}
+                  onToggle={(event) => {
+                    const open = event.currentTarget.open;
+                    setExpanded((previous) =>
+                      open
+                        ? previous.includes(card.key)
+                          ? previous
+                          : [...previous, card.key]
+                        : previous.includes(card.key)
+                          ? previous.filter((key) => key !== card.key)
+                          : previous,
+                    );
+                  }}
+                >
+                  <summary
+                    onClick={(event) => {
+                      // Capture the user's disclosure intent before a queued
+                      // native toggle can race the pending private-DOM omission.
+                      event.preventDefault();
+                      setExpanded((previous) =>
+                        previous.includes(card.key)
+                          ? previous.filter((key) => key !== card.key)
+                          : [...previous, card.key],
+                      );
+                    }}
+                  >
+                    Why this priority and exact source
+                  </summary>
                   <ul>
                     {card.order_reasons.map((reason, index) => (
                       <li key={index}>{reason}</li>
@@ -237,6 +334,7 @@ function OwnerReview({
                 <button
                   type="button"
                   disabled={busy}
+                  data-owner-focus={`inspect:${card.key}`}
                   aria-label={`Inspect owner priority source: ${card.key}`}
                   onClick={() => void run('inspect', card.key)}
                 >
@@ -262,6 +360,7 @@ function OwnerReview({
               <button
                 type="button"
                 disabled={busy || !onContinue}
+                data-owner-focus="continue"
                 onClick={() => void run('continue')}
               >
                 Open exact owner priority review
