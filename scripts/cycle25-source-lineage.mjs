@@ -887,7 +887,9 @@ function admitCycle28Forward(path, current, previous, ports) {
   )
     throw Error('Cycle28 exact parent must retain original reviewed source');
   if (!Buffer.from(current).equals(Buffer.from(ports.git(spec.commit, path))))
-    throw Error('Current source differs from fixed Cycle28 author');
+    throw Error(
+      'Current source differs from fixed Cycle27 lineage (fixed Cycle28 author required)',
+    );
   return result;
 }
 export function inspectCycle28Sources({
