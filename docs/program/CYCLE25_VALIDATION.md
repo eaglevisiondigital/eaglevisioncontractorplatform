@@ -19,8 +19,9 @@ and [operational NO-GO dependencies](CYCLE25_OPERATIONAL_READINESS.md) remain di
   production-OFF cases. All three brands run on desktop/tablet/mobile, zero retries,
   failures or skips. Independent verification confirms63 PNG/metadata bindings,76
   scoped source hashes per capture, five critical paths and369 trusted keyboard keys.
-  The full collector is still completing repeated immutable Git checks; its final
-  conclusion will be recorded separately. Dirty smoke is not accepted as committed proof.
+  The full collector independently PASSes all76 scoped runtime files,15 exact admitted
+  forwards and the63 screenshots/nine keyboard proofs. Dirty smoke is not accepted as
+  committed proof.
 
 Original feature-test assertions are unchanged. Initial new-test fixture/expectation
 failures remain private historical evidence: native UNKNOWN differs from UNVERIFIED;
@@ -50,13 +51,23 @@ runtime92ec099 and its capture metadata stay unchanged.
 
 ## GitHub and historical evidence
 
-Current C24 exact31e has38 queued checks. Child165:13SUCCESS/22QUEUED;
-166:35QUEUED;167:3SUCCESS/32QUEUED;168:19SUCCESS/3RUNNING/14QUEUED;
-169:8SUCCESS/3RUNNING/25QUEUED;170:35QUEUED;171:20QUEUED;172:10QUEUED.
-Readiness164:35QUEUED. All remain OPEN/draft. No current failed conclusion in this
-snapshot; queued/running is not PASS. No manual rerun. Historical C18 ten-case failures,
-two45-minute Foundation timeouts and missing conclusions remain OPEN in original evidence.
-Local focused success never erases those failures.
+Current C24 exact31e has38 queued checks. The latest exact-head child snapshot is
+recorded in [CI reconciliation](CYCLE25_PRIOR_CI_RECONCILIATION.json); successful checks
+are retained, with no manual rerun. A new Field168 Foundation cancellation at exact
+b35b10c07466aa193551eaa88b6164252024eceb is confirmed by provider annotation:
+“The job has exceeded the maximum execution time of45m0s.” Run41757239389 /
+job126336121407 reached npm check, then staging/full browser steps were skipped.
+No matching artifacts were uploaded. The actual log records five failures in the
+unchanged C18 independent suite, at31484/2/37786/37502/32825ms. Final exception details
+were never emitted; their per-case root cause remains unresolved rather than inferred
+from durations. This C24 source predates C25. Full legacy/staging/browser acceptance
+remains OPEN; focused C25 success cannot close it. No assertion,45-minute limit,
+protected workflow or successful CI was weakened/rerun.
+
+Historical ten-case C18 failures, earlier two45-minute cancellations and missing
+conclusions remain retained separately. C25 current-head automatic CI is queued and
+recorded independently; local555 cases and actual12 browser checks do not infer CI PASS.
+All nine C25 proposals remain OPEN/draft; no merge or promotion.
 
 ## Preservation and operational limits
 
@@ -86,3 +97,13 @@ Persistent actual screenshots and raw reports live under ignored
 `.staging/program-cycle25/main/artifacts/cycle25/`; `owner-review.html` indexes all63
 actual current captures. Original design approvals remain unchanged; these new scopes
 remain owner-review PENDING. Source manifests/registers contain sanitized hashes only.
+
+## Reviewable draft delivery
+
+Coordination [174](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/174)
+remains based on C24#163. Feature drafts175Field,176Finance,177Customer,178Growth,
+179Intelligence and180Advanced target the C25 coordination branch. Independent review181
+and operational-readiness173 remain separate draft proposals. The adjacent source manifest
+records all actual agent IDs, full original/final SHAs, exact finite corrections and
+four-file CI-only forwards. Nothing was merged, rewritten or promoted. Automated browser
+servers4425/4435 stopped after verification.

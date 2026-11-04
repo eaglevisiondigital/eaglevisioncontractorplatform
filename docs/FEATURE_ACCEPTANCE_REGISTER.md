@@ -1,5 +1,10 @@
 # Propel Contractor Suite — feature acceptance register
 
+Cycle25 delivery: coordination draft[#174](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/174),
+features175–180, independent review181, readiness173. Local555 unique cases,9DEV+3OFF
+responsive journeys,63 screenshots and369 trusted keys PASS; exact current-head GitHub
+CI is separately queued, never inferred green. See C25 source/validation records.
+
 ## Cycle25 · native continuity is local acceptance only
 
 The original25 capability IDs and prior evidence remain unchanged. C25 extends original

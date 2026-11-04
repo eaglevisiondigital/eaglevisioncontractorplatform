@@ -22,8 +22,10 @@
     "keyboard_journeys": 9,
     "trusted_keys": 369,
     "outside_requests": 0,
-    "collector_status": "PENDING_IMMUTABLE_GIT_VERIFICATION",
-    "independent_exact_source_verification": "PASS"
+    "collector_status": "PASS",
+    "independent_exact_source_verification": "PASS",
+    "admitted_exact_source_forwards": 15,
+    "collector_sha256": "5db3df3ef3cbf3ff192cd74bbc8f5711699dd6b6c0254ff4e507d4b43ec86941"
   },
   "quality": {
     "global_eslint": "PASS_WITH_ONE_PREEXISTING_FAST_REFRESH_WARNING",
@@ -58,6 +60,10 @@
     {
       "path": "artifacts/cycle25/browser-off-results.json",
       "sha256": "3c8e9b50a5f3391c00f36593a234534cb8b9709a6b153c99484af4f61546230d"
+    },
+    {
+      "path": "artifacts/cycle25/browser-validation.json",
+      "sha256": "5db3df3ef3cbf3ff192cd74bbc8f5711699dd6b6c0254ff4e507d4b43ec86941"
     }
   ],
   "independent_source_review": "70c172108116e4dbb78087d75fc87a61684a42f7",
@@ -66,5 +72,19 @@
   "physical_recovery": "UNVERIFIED_NOT_RUN",
   "operational_ready": false,
   "restore_adapter": false,
-  "release": "NOT_READY_NOT_AUTHORIZED"
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "draft_prs": {
+    "coordination": 174,
+    "field": 175,
+    "finance": 176,
+    "customer": 177,
+    "growth": 178,
+    "intelligence": 179,
+    "advanced": 180,
+    "independent_review": 181,
+    "readiness": 173
+  },
+  "servers_4425_4435": "STOPPED_NO_LISTENERS",
+  "prior_ci_reconciliation": "docs/program/CYCLE25_PRIOR_CI_RECONCILIATION.json",
+  "legacy_foundation_coverage": "OPEN_EXACT_168_45_MINUTE_TIMEOUT_FIVE_C18_FAILURES_NO_FINAL_DETAILS"
 }

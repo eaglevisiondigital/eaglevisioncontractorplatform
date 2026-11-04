@@ -67,9 +67,10 @@
           "bytes": 9753
         }
       ],
-      "draft_pr": null,
+      "draft_pr": 175,
       "default_off": true,
-      "operational_ready": false
+      "operational_ready": false,
+      "base_branch": "codex/program-cycle-twenty-five-integration"
     },
     {
       "module": "native-cost-reconciliation",
@@ -138,9 +139,10 @@
           "bytes": 15481
         }
       ],
-      "draft_pr": null,
+      "draft_pr": 176,
       "default_off": true,
-      "operational_ready": false
+      "operational_ready": false,
+      "base_branch": "codex/program-cycle-twenty-five-integration"
     },
     {
       "module": "service-evidence-continuity",
@@ -199,9 +201,10 @@
           "bytes": 10825
         }
       ],
-      "draft_pr": null,
+      "draft_pr": 177,
       "default_off": true,
-      "operational_ready": false
+      "operational_ready": false,
+      "base_branch": "codex/program-cycle-twenty-five-integration"
     },
     {
       "module": "maintenance-consistency",
@@ -266,9 +269,10 @@
           "bytes": 10710
         }
       ],
-      "draft_pr": null,
+      "draft_pr": 178,
       "default_off": true,
-      "operational_ready": false
+      "operational_ready": false,
+      "base_branch": "codex/program-cycle-twenty-five-integration"
     },
     {
       "module": "owner-action-continuity",
@@ -337,9 +341,10 @@
           "bytes": 12182
         }
       ],
-      "draft_pr": null,
+      "draft_pr": 179,
       "default_off": true,
-      "operational_ready": false
+      "operational_ready": false,
+      "base_branch": "codex/program-cycle-twenty-five-integration"
     },
     {
       "module": "advanced-source-admission",
@@ -387,9 +392,10 @@
           "bytes": 13355
         }
       ],
-      "draft_pr": null,
+      "draft_pr": 180,
       "default_off": true,
-      "operational_ready": false
+      "operational_ready": false,
+      "base_branch": "codex/program-cycle-twenty-five-integration"
     }
   ],
   "independent_review": {
@@ -397,7 +403,7 @@
     "source_commit": "f416bd1d200cb929cb025b2c1699e0954892a797",
     "head_commit": "70c172108116e4dbb78087d75fc87a61684a42f7",
     "branch": "codex/cycle25-independent-review",
-    "draft_pr": null
+    "draft_pr": 181
   },
   "readiness": {
     "commit": "e1fe6ef1c7d27e042be8e0cdf67a0b82acb1bcb4",
@@ -408,5 +414,6 @@
   "business_state_restore_authority": false,
   "operational_ready": false,
   "physical_recovery": "UNVERIFIED_NOT_RUN",
-  "release": "NOT_READY_NOT_AUTHORIZED"
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "coordination_draft_pr": 174
 }

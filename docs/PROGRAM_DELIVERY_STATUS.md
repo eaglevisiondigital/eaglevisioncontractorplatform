@@ -1,5 +1,10 @@
 # Product program delivery status
 
+Cycle25 delivery: coordination draft[#174](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/174),
+features175–180, independent review181, readiness173. Local555 unique cases,9DEV+3OFF
+responsive journeys,63 screenshots and369 trusted keys PASS; exact current-head GitHub
+CI is separately queued, never inferred green. See C25 source/validation records.
+
 ## Cycle25 · original native workflows extended
 
 Six disjoint source packages extend the original C24 controls without a new presentation
@@ -8,7 +13,8 @@ in [C25 validation](program/CYCLE25_VALIDATION.md). Exact-head CI acceptance rem
 unpublished work is not claimed as delivered; resumed sources/evidence persist locally.
 
 C24 exact31e remains OPEN/draft, current checks queued. Successful child checks are retained;
-no successful CI rerun. Original Foundation/C18 gaps remain OPEN. Operational readiness
+Field168 has a confirmed45m Foundation cancellation and five C18 failures without final
+exception details. No successful CI rerun. Original Foundation/C18 gaps remain OPEN. Operational readiness
 maps eight native families to the original19 requirements, all unaccepted. Physical Air
 readiness/recovery NOT RUN. No new store/schema/operational restore authority.
 

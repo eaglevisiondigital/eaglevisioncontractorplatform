@@ -1,5 +1,10 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
+Cycle25 delivery: coordination draft[#174](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/174),
+features175–180, independent review181, readiness173. Local555 unique cases,9DEV+3OFF
+responsive journeys,63 screenshots and369 trusted keys PASS; exact current-head GitHub
+CI is separately queued, never inferred green. See C25 source/validation records.
+
 ## Cycle25 · native continuity implemented and locally validated
 
 The six bounded local packages extend the original native source controls from exact
@@ -12,7 +17,8 @@ is not restart durability. Local555 unique application/source cases and9DEV+3OFF
 Prior unpublished temporary C25 worktrees were lost. Work resumed in persistent ignored
 `.staging/program-cycle25`; only newly observed commits/results count as current evidence.
 All C24 published evidence remains historical and unchanged. Current C24 checks remain
-queued/in progress with successful conclusions retained; no manual rerun. Historical C18
+queued/in progress with successful conclusions retained; Field168 has a confirmed45m
+Foundation cancellation with five C18 failures and missing final details; no manual rerun. Historical C18
 failures/timeouts remain OPEN. Danny Air last unavailable; physical recovery NOT RUN.
 See [C25 assignments](docs/program/CYCLE25_ASSIGNMENTS.md) and the source-specific
 [operational NO-GO register](docs/program/CYCLE25_OPERATIONAL_READINESS.md).
