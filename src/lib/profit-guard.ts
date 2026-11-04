@@ -480,7 +480,10 @@ export async function verifyProfitGuardReview(review: ProfitGuardReview) {
     }
     const currentFingerprint = JSON.stringify(currentJob(reader, scope));
     if (access(reader, scope, actor, admission) !== role) throw deny();
-    if (currentFingerprint !== fingerprint)
+    if (
+      currentFingerprint !== fingerprint ||
+      JSON.stringify(currentCompletion) !== JSON.stringify(review.completion)
+    )
       return freeze({
         status: 'STALE' as const,
         replacement: null,
