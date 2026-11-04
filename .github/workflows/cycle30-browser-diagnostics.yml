@@ -1,0 +1,54 @@
+name: Cycle 30 original browser timing diagnosis
+on:
+  push:
+    branches: ['codex/cycle30-browser-reliability']
+permissions:
+  contents: read
+concurrency:
+  group: cycle30-original-browser-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-two-cases:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: diagnostics
+      - uses: actions/checkout@v4
+        with:
+          ref: 5f74b8ff5385560330cb94717c17338ed0c10f44
+          path: application
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+          cache-dependency-path: application/package-lock.json
+      - name: Bind unchanged original source and assertions
+        working-directory: application
+        run: |
+          test "$(git rev-parse HEAD)" = 5f74b8ff5385560330cb94717c17338ed0c10f44
+          git diff --exit-code
+          mkdir -p artifacts/cycle30
+      - run: npm ci
+        working-directory: application
+      - name: Require complete system dependencies without refreshing unrelated feeds
+        working-directory: application
+        run: npx playwright install-deps --dry-run chromium
+      - run: npx playwright install chromium
+        working-directory: application
+      - name: Measure only original failed cases with unchanged budgets and assertions
+        working-directory: application
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_NAME: artifacts/cycle30/results.json
+          CYCLE30_TIMING_OUTPUT: artifacts/cycle30/timing.json
+        run: npm run test:browser -- tests/browser/cycle21-canonical-corrections.spec.ts --grep 'canonical task cost plan corrections and exact history navigation / roofing-example' --project=desktop --project=tablet --workers=2 --retries=0 --trace=retain-on-failure --reporter=json,../diagnostics/scripts/cycle30-browser-timing.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle30-original-browser-diagnostics
+          path: |
+            application/artifacts/cycle30/
+            application/test-results/
+          retention-days: 7
