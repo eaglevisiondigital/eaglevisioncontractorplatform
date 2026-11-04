@@ -137,3 +137,31 @@ Auth/MFA, NMI/settlement, Netlify/replacement executor and all financial/provide
 communication, dispatch, database, deployment, merge and production gates remain closed.
 No hosted writes, credentials, migration, payment or message was part of this review.
 Release 1.0 remains **NOT READY / NOT AUTHORIZED**.
+
+## Additional visible owner-refresh contrast finding
+
+After the initial source review, a dedicated real-browser diagnostic displayed the
+new owner-refresh comparison. Its retained `axe.json` reports 24 serious definition-term
+contrast nodes at 4.09:1 (`#708078` on `#fffdf8`; required 4.5:1), with zero outside
+requests. I inspected the actual screenshot and independently matched all three captured
+Owner source hashes to original author `1faaad5baa4ffa1f077e39bd59e4f9c4760a7291`.
+Diagnostic SHA-256 is
+`60735c57ad0c0960b48e5287a48cb6876ac82aaa8b31d367a32397df740cab4f`.
+The diagnostic honestly identifies a dirty checkout at the historical base; it is not
+exact-head acceptance or evidence of corrected CSS.
+
+I independently inspected correction
+`603f8d5ce8b07497e5fe3c3a1a852ee849a16408`: its exact sole parent is the original
+Owner author commit, and its entire delta is one added `color: #27352f` declaration
+under `.owner-refresh-comparison dt` in the existing scoped stylesheet. No native
+logic, test, document, protected file or approved artwork changes. The correction
+addresses the observed inherited foreground without weakening Axe or removing content.
+Source admission must pin this exact CSS-only successor and retain original bytes
+for all other Owner paths.
+
+Root is preserving the running diagnostic matrix's runtime bytes until that run ends,
+then applying the reviewed correction. The final committed-source browser matrix must
+explicitly audit the visible refreshed Owner comparison and capture the new Field/Owner
+facts across desktop, tablet and mobile. Earlier passing states cannot supply coverage
+for this newly demonstrated state. Final corrected-browser and GitHub CI acceptance
+remain pending; this addendum grants no visual, operational, recovery or release approval.
