@@ -1,0 +1,140 @@
+{
+  "schema": "propel-cycle29-cycle28-closeout-v1",
+  "source": "067b08b1c3f2e2e2bd259639c636eb13a2c079d4",
+  "run": 41856290282,
+  "conclusion": "SUCCESS",
+  "application": {
+    "passed": 197,
+    "failed": 0,
+    "skipped": 0,
+    "suites": 12,
+    "sha256": "52df52ed3d4bb4d8774c6281cb78f570a8796426d8636376871224f11e8d7a09"
+  },
+  "playwright_reports": [
+    {
+      "report": "browser-off-results.json",
+      "stats": {
+        "startTime": "2026-11-04T15:35:45.640Z",
+        "duration": 5379.348,
+        "expected": 3,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "sha256": "df54eb213aef9034fe7bc46f093ce6dc11b80ae922c8ad94ed522016e2ccdef2"
+    },
+    {
+      "report": "browser-results.json",
+      "stats": {
+        "startTime": "2026-11-04T15:27:04.122Z",
+        "duration": 520972.248,
+        "expected": 9,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "sha256": "0de766d1f86b190e339ad9dc543688ae8ede88e7e4b87565fe4610486fcda245"
+    },
+    {
+      "report": "results.json",
+      "stats": {
+        "startTime": "2026-11-04T15:25:10.015Z",
+        "duration": 35406.833,
+        "expected": 9,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "sha256": "d4656bb86f22f7bfa6cfc7c971867a9c7d585125aae7d2b7a68b5f86dcbf4a91"
+    }
+  ],
+  "scoped_browser_evidence": {
+    "schema": "propel-cycle24-browser-validation-v1",
+    "runtime_commit": "7a90da23c0a701001c79b605d94d2894cd9cc5a6",
+    "executed_commits": ["067b08b1c3f2e2e2bd259639c636eb13a2c079d4"],
+    "runtime_files": 76,
+    "source_scope": "C24_BASELINE_PLUS_EXACT_C25_C26_C27_AND_C28_NATIVE_FORWARDS",
+    "critical_sources_checked_now_and_in_execution_commit": [
+      "src/lib/workflows/saved-revision-runtime.ts",
+      "src/lib/workflows/operating-center-runtime.ts",
+      "src/lib/workflows/journey-runtime.ts",
+      "src/App.tsx",
+      "src/main.tsx"
+    ],
+    "capture_inventory_limit": "76_SCOPED_FILES_NOT_COMPLETE_TRANSITIVE_RUNTIME",
+    "development": {
+      "cases": 9,
+      "sha256": "0de766d1f86b190e339ad9dc543688ae8ede88e7e4b87565fe4610486fcda245"
+    },
+    "production": {
+      "cases": 3,
+      "sha256": "df54eb213aef9034fe7bc46f093ce6dc11b80ae922c8ad94ed522016e2ccdef2"
+    },
+    "keyboard": [
+      {
+        "project": "desktop",
+        "brand": "straight-edge",
+        "events": 41,
+        "sha256": "53fa381206f64121d8b8036c5b7f8c07bb3d6e8026d6bdfb45c90eee09af8c63"
+      },
+      {
+        "project": "desktop",
+        "brand": "cunningham",
+        "events": 41,
+        "sha256": "cfdf082bdc9b76d56f84203dfc3f6ab34b2080789c9dbc796b83d8c10861414c"
+      },
+      {
+        "project": "desktop",
+        "brand": "roofing-example",
+        "events": 41,
+        "sha256": "dc3f1cb64d44f6022cbd89bf8f41c6821cf62659a37fc89245c0986526e425c0"
+      },
+      {
+        "project": "tablet",
+        "brand": "straight-edge",
+        "events": 41,
+        "sha256": "c5fec0a1cdfed00562d726e00a890cfc5ed841f1e8677d095c135d2d2437e9bf"
+      },
+      {
+        "project": "tablet",
+        "brand": "cunningham",
+        "events": 41,
+        "sha256": "847b8dca626cc32b13689906621c5857251dfdd8b17dd68aa40904afb0496ccb"
+      },
+      {
+        "project": "tablet",
+        "brand": "roofing-example",
+        "events": 41,
+        "sha256": "a4109897011cc98c07163f6137b48aef3869a3227dd635885d5e7622a58f8e21"
+      },
+      {
+        "project": "mobile",
+        "brand": "straight-edge",
+        "events": 41,
+        "sha256": "3e665e5c12c5d2b094c3818757a835b7e37e86d7418697e14a2c653241b4b852"
+      },
+      {
+        "project": "mobile",
+        "brand": "cunningham",
+        "events": 41,
+        "sha256": "a14393545d1283075fb9e4853623b34a55b40ebfb1584ced6ea31c00a0eb4e6a"
+      },
+      {
+        "project": "mobile",
+        "brand": "roofing-example",
+        "events": 41,
+        "sha256": "ecbc22949a41d294c9194a62cf75178f3f1a4981ef02f36576704f4c7abcb1db"
+      }
+    ],
+    "trusted_events": 369,
+    "visual_approval": "PENDING",
+    "physical_recovery": "UNVERIFIED_NOT_RUN",
+    "release": "NOT_READY_NOT_AUTHORIZED"
+  },
+  "limitations": [
+    "Successful dedicated workflow is not full Foundation",
+    "Original C27 Foundation cancellations and9327PASS321declaredSKIP retained separately",
+    "Physical recovery NOT_RUN; operational acceptance NO_GO"
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

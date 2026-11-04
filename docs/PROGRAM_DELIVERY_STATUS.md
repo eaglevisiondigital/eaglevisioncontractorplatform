@@ -1,3 +1,11 @@
+# Cycle29 · exact-source contractor workflow corrections
+
+Main composes five exact native corrections and one Offline coverage-only package from C28 exact067b08b, retaining separate draft213–218 ownership. CI evidence reconciliation is draft212; independent review and final coordination are linked in [C29 validation](program/CYCLE29_VALIDATION.md). Exact branches, author/support heads, hashes and actual agents are in [the source manifest](program/CYCLE29_SOURCE_MANIFEST.json). No parent is rewritten or merged.
+
+One combined192-case application/source run PASS; final all-brand desktop/tablet/mobile, accessibility, clean runtime and GitHub results remain separately classified in validation. No pending/cancelled test is a pass. C28 dedicated197/45PASS does not close its incomplete global Foundation. C27 original9327/321skip and its397/2failed browser union remain historical, as do C18 and alternate-budget records. New two-case GitHub followup0/2FAIL is preserved beside local2PASS.
+
+Operational owner/writer/ACK/fence/privilege/Auth/matched-recovery decisions remain unaccepted; all12PR208 cases NOT_RUN, implementation/execution NO_GO. Original P1approval-on13 and separate14/4B sequence remain. Air latest unavailable; sealed kit ready, physical rehearsal NOT_RUN,25completedoffline checks not repeated. Original designs/migrations/frozen artifacts/Netlify/NMI/MFA/Auth/financial/production restrictions persist. Release1.0 NOT READY / NOT AUTHORIZED.
+
 # Cycle28 · source-bound contractor journey corrections
 
 Six separate feature drafts [202](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/202), [203](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/203), [204](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/204), [205](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/205), [206](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/206) and [207](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/207) extend original owners, with exact source/current-head/agent bindings in [C28 validation](program/CYCLE28_VALIDATION.md) and its source manifest. The coordination branch is `codex/program-cycle-twenty-eight-integration`, against unchanged C27 #200. No drafts are merged or silently promoted.

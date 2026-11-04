@@ -1,0 +1,62 @@
+name: Cycle 29 canonical workflow corrections
+on:
+  push:
+    branches: ['codex/program-cycle-twenty-nine-integration']
+  pull_request:
+    branches: ['codex/program-cycle-twenty-eight-integration']
+    paths:
+      - 'src/lib/workflows/*.ts'
+      - 'src/components/workflows/*'
+      - 'scripts/cycle25-source-lineage.mjs'
+      - 'scripts/reconcile-cycle29-parent-browser.mjs'
+      - 'tests/cycle29*'
+      - 'tests/program/*cycle29*'
+      - 'docs/program/CYCLE29*'
+      - '.github/workflows/cycle29-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle29-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  source-bound-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node --input-type=module -e "import {inspectCycle29Sources} from './scripts/cycle25-source-lineage.mjs'; console.log(inspectCycle29Sources({requireCombined:true}));"
+      - run: npx vitest run tests/cycle29*.test.ts tests/cycle28-contractor-journey.test.ts tests/cycle28-source-lineage.test.ts tests/cycle27-source-lineage.test.ts tests/cycle26-source-review.test.ts tests/cycle25-source-lineage.test.ts tests/cycle25-combined-integration.test.ts --maxWorkers=1 --reporter=json --outputFile=artifacts/cycle29/application-results.json
+      - name: Require complete exact focused application and source coverage
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFileSync} from 'node:fs';import{relative}from'node:path';
+          const expected=new Map(Object.entries({'cycle29-task-navigation.test.ts':12,'cycle29-cost-continuity.test.ts':10,'cycle29-service-continuity.test.ts':6,'cycle29-owner-currentness.test.ts':11,'cycle29-offline-currentness.test.ts':15,'cycle29-source-lineage.test.ts':15,'cycle29-browser-evidence.test.ts':18,'cycle28-contractor-journey.test.ts':9,'cycle28-source-lineage.test.ts':14,'cycle27-source-lineage.test.ts':20,'cycle26-source-review.test.ts':20,'cycle25-source-lineage.test.ts':26,'cycle25-combined-integration.test.ts':16}).map(([p,n])=>['tests/'+p,n]));
+          const r=JSON.parse(readFileSync('artifacts/cycle29/application-results.json','utf8'));
+          if(!r.success||r.numTotalTests!==192||r.numPassedTests!==192||r.numFailedTests!==0||r.numPendingTests!==0||r.testResults.length!==13)throw Error('Exact192 passing cases and13suites required');
+          for(const s of r.testResults){const p=relative(process.cwd(),s.name),n=expected.get(p),a=s.assertionResults;if(!expected.delete(p)||a.length!==n||new Set(a.map(c=>c.fullName)).size!==n||a.some(c=>!c.fullName||c.status!=='passed'))throw Error('Missing/extra/duplicate/nonpassing suite '+p);}if(expected.size)throw Error('Incomplete focused collection');
+          NODE
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: node tests/program/cycle29-task-navigation-browser.mjs green
+      - run: node tests/program/cycle29-maintenance-clear-browser.mjs green
+      - run: npx playwright test -c tests/program/playwright.cycle29-customer.config.ts
+      - run: npx playwright test -c tests/program/playwright.cycle28.config.ts
+      - run: CYCLE28_BROWSER_MODE=off npx playwright test -c tests/program/playwright.cycle28.config.ts
+      - run: CYCLE24_ARTIFACT_DIR=artifacts/cycle28 node scripts/collect-cycle24-browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle29-exact-canonical-workflow-evidence
+          path: |
+            artifacts/cycle29/
+            artifacts/cycle28/
+          retention-days: 7

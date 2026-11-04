@@ -1,3 +1,9 @@
+# Cycle29 · captured selections and original one-use custody
+
+Original validated own-data cost kind/id and checked owner row govern source inspection and navigation across awaits; raw selector getters never substitute another same-job source. Existing canonical calculations and current authority checks remain. Task correction navigation follows the original native eligibility requirement; held/UNKNOWN states retain exact read-only reconciliation. Empty unattempted maintenance selection clears presentation/confirmation only, never native plan/consent or spent custody. Original published report focus waits for a committed, current authorized projection. Offline adds final-read/competing-peer tests only, no runtime store/writer/claim/replay. Missing request/job FKs and physical completion remain UNKNOWN.
+
+Five fixed sole-parent runtime authors are admitted by the existing build-only lineage helper; Offline's two-file coverage commit is not a runtime forward. No new navigation or data contract, schema, engine, receipt owner or restoration adapter. All operational/release gates and approved designs remain unchanged.
+
 # Cycle27 · existing native authority and privacy
 
 Six bounded successors extend the original workflows only. Private retained observations must recheck original access at render; mutable freshness remains distinct from access so authorized UNKNOWN exact read-only reconciliation survives. No original hold resets. Customer expected snapshots use exact own-data fields before the seven original binding comparisons. Finance copies the canonical nine invoice gates and existing category amounts; it never recalculates or posts. Owner search filters original authorized rows literally in native order and never changes the exact selection or navigation authority. Offline UNKNOWN diagnostics contain finite mismatch field names only.
