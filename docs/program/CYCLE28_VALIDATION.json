@@ -1,0 +1,242 @@
+{
+  "schema": "propel-cycle28-validation-v1",
+  "observed_at": "2026-11-04T14:54:23.455568+00:00",
+  "runtime_commit": "6d3d29a8d68a475a8ab077d5d42ae23fe927141d",
+  "support_correction_commit": "f38af86328ee36d05e006c32ea9eec754fa83e7c",
+  "application": {
+    "unique_passes": 197,
+    "new_module_cases": 92,
+    "new_journey_cases": 9,
+    "new_lineage_cases": 14,
+    "retained_cases": 82,
+    "initial_combined": {
+      "passed": 176,
+      "failed": 1,
+      "failure": "retained source-denial diagnostic text contract"
+    },
+    "unchanged_failed_case_target": {
+      "passed": 1,
+      "deselected": 19
+    },
+    "actual_retained_cycle26_source_suite": {
+      "passed": 20,
+      "failed": 0
+    },
+    "split_runs": true,
+    "same_head_full197_run": false,
+    "full_foundation_run": false,
+    "initial_new_monolithic_journey_timeouts": 3,
+    "new_journey_redesign": "same canonical fixture and assertions split into three natural standard30s phases per brand; no original tests/budgets changed"
+  },
+  "browser": {
+    "native_combined": 9,
+    "production_off": 3,
+    "native_customer_focus_revocation": 9,
+    "native_seams_desktop": {
+      "field": 3,
+      "growth": 3,
+      "finance": 3,
+      "owner": 3
+    },
+    "total_main_cases": 33,
+    "all_three_brands": true,
+    "desktop_tablet_mobile": true,
+    "source_bound_screenshots": 63,
+    "scoped_runtime_files": 76,
+    "keyboard_journeys": 9,
+    "trusted_key_events": 369,
+    "outside_requests": 0,
+    "skips": 0,
+    "retries": 0,
+    "visual_approval": "PENDING",
+    "sandbox_start_failures": "EPERM before loopback servers; same commands passed with authorized socket access",
+    "collector_failures": [
+      "six supplemental PNGs collided with strict63capture directory",
+      "broad private move temporarily included nine original owner-action PNGs; original bytes restored"
+    ],
+    "collector_final": "PASS_WITH_UNCHANGED_EXACT126FILE_REQUIREMENT",
+    "supplemental_images": "separate native-seam-screenshots directory; no original screenshot bytes changed"
+  },
+  "quality": {
+    "types": "PASS",
+    "lint": "PASS_ONE_RETAINED_WARNING",
+    "format": "PASS",
+    "build": "PASS_RETAINED_CHUNK_WARNING",
+    "features": "PASS",
+    "types_migrations_property_customer4B_broker_static_integrity": "PASS"
+  },
+  "preservation": {
+    "protected_files": 128,
+    "baseline_test_config_fixture_files": 546,
+    "design_locks": 5,
+    "design_bindings": 13,
+    "original_capabilities": 25,
+    "original_ids": 18,
+    "historical_migrations": 13,
+    "customer14_4B": "UNCHANGED_PENDING_SEPARATE_ACCEPTANCE",
+    "frozen_P1_Netlify_approved_designs": "UNCHANGED",
+    "new_store_engine_operational_adapter": false
+  },
+  "readiness": {
+    "reference_pr": 192,
+    "specification_pr": 208,
+    "scope": "SPECIFICATION_ONLY",
+    "future_acceptance_cases": 12,
+    "operational_cases": "NOT_RUN",
+    "implementation": "NO_GO",
+    "original_requirements": 19,
+    "original_families": 8,
+    "owners_fence_current_auth_privileges_matched_recovery": "UNASSIGNED_OR_UNVERIFIED",
+    "physical_recovery": "NOT_RUN",
+    "Air": "LAST_REPORTED_UNAVAILABLE"
+  },
+  "reports": [
+    {
+      "path": "artifacts/cycle28/application-combined.json",
+      "sha256": "0678dc9b85c8b07f2b2507e18176a8bccd3a4deed85aace504b1271ac5e9bdab"
+    },
+    {
+      "path": "artifacts/cycle28/application-targeted-correction.json",
+      "sha256": "594e56a88dbcf33417352db433ddb3e7007b96e6e54300bdb05c023787b4cf3e"
+    },
+    {
+      "path": "artifacts/cycle28/cycle26-source-review.json",
+      "sha256": "4c45f67c6d36819d4370c797f1352760f2d0462451c996c3f0dbfd6838d0fa22"
+    },
+    {
+      "path": "artifacts/cycle28/journey-results.json",
+      "sha256": "9e3925b92dc95f4b7d43b443f7f9464178b28576b1f43746f740108b3c4c95d7"
+    },
+    {
+      "path": "artifacts/cycle28/journey-stages-results.json",
+      "sha256": "743baaf8ab81e0e7e400bc740d68c6d7e96f2f7e1cb38f4dea521ebfc85864bc"
+    },
+    {
+      "path": "artifacts/cycle28/browser-results.json",
+      "sha256": "429e444832abdff241131b8dcad106b62310690a041ea3c627b292e92f86b65f"
+    },
+    {
+      "path": "artifacts/cycle28/browser-off-results.json",
+      "sha256": "4860942702256995273778b90b551aee1f61039455df6b48fdd2e5f7ec5913f7"
+    },
+    {
+      "path": "artifacts/cycle28/browser-validation.json",
+      "sha256": "d40f521a49b3de03a0fd301bc7f28b5cab7a49244fad99e4ea0ffeebf9d6706a"
+    },
+    {
+      "path": "artifacts/cycle28/customer-focus/results.json",
+      "sha256": "2405e190d741b99ac68fd5d6a1797ba2e1bc36b34682d7defa14b40588567728"
+    },
+    {
+      "path": "artifacts/cycle28/field-browser-green.json",
+      "sha256": "a627b4cd49e0eeb7ca540d08df900f07ab2fa5b36c1c72d5b825eb7b653efeb8"
+    },
+    {
+      "path": "artifacts/cycle28/growth-browser-green.json",
+      "sha256": "281c07ff7f80b48a7e89a90e7a8834ff3c673518290059f33a1a5b3ea4a24f1f"
+    },
+    {
+      "path": "artifacts/cycle28/finance-native-browser.json",
+      "sha256": "f5ca5394701247bb4d62a56e9a498e40866650585883488669f858e5f7310028"
+    },
+    {
+      "path": "artifacts/cycle28/owner-native-browser.json",
+      "sha256": "d11404e4fb7825c5ed276ff1a2189130dba6a279d269dfc253375d679438680f"
+    },
+    {
+      "path": "artifacts/cycle28/protected-preservation.json",
+      "sha256": "8b47638b55fa403ea70e91605c08c1ef0cd4022c2ce2b03ebc404c43a8bd044b"
+    },
+    {
+      "path": "artifacts/cycle28/types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/cycle28/lint.log",
+      "sha256": "9402a20f61e81847ea01293316e76bfc1386738850a2d03fa4568dcfe31c4443"
+    },
+    {
+      "path": "artifacts/cycle28/format.log",
+      "sha256": "124d41379abd47686c9d290612a3ae817ee1b6fccd8b91006c75cfd83ba2ad9a"
+    },
+    {
+      "path": "artifacts/cycle28/build.log",
+      "sha256": "372e06291377e1114a206a0cae68af8ed06df3e1d7c0c2617e17b3c474e355ce"
+    },
+    {
+      "path": "artifacts/cycle28/features-final.log",
+      "sha256": "076d7e903f9777be09cd3ac40d0475be385442441b69d4013aa725143733b136"
+    },
+    {
+      "path": "artifacts/cycle28/browser-sandbox-start.log",
+      "sha256": "7eb0746ee8dedef1f487a5910a721238a51aa9a738b5782124b2b3af7d33b0e3"
+    },
+    {
+      "path": "artifacts/cycle28/customer-focus-sandbox-start.log",
+      "sha256": "fac07968329628e894267da1e9cd87b0cc209e35550e0c8c427525347fe97293"
+    },
+    {
+      "path": "artifacts/cycle28/browser-validation.log",
+      "sha256": "69289e9cfa3ff484a63ac09141b4bf0797b54a69f7035b1715a654bef01bb93b"
+    },
+    {
+      "path": "artifacts/cycle28/browser-validation-corrected.log",
+      "sha256": "9a3e17ddc555796b6e356d1c40ae30b7da53185a1d5daaf96cba959d4e396f95"
+    },
+    {
+      "path": "artifacts/cycle28/browser-validation-final.log",
+      "sha256": "4e9643e06980c78d9e1bf9dbaccd49aedb565c65e8ff45afeedd2157c285cebd"
+    },
+    {
+      "path": "artifacts/cycle28/format-delivery.log",
+      "sha256": "124d41379abd47686c9d290612a3ae817ee1b6fccd8b91006c75cfd83ba2ad9a"
+    },
+    {
+      "path": "artifacts/cycle28/format-publication.log",
+      "sha256": "124d41379abd47686c9d290612a3ae817ee1b6fccd8b91006c75cfd83ba2ad9a"
+    },
+    {
+      "path": "artifacts/cycle28/features-delivery.log",
+      "sha256": "076d7e903f9777be09cd3ac40d0475be385442441b69d4013aa725143733b136"
+    },
+    {
+      "path": "artifacts/cycle28/protected-delivery.json",
+      "sha256": "8b47638b55fa403ea70e91605c08c1ef0cd4022c2ce2b03ebc404c43a8bd044b"
+    },
+    {
+      "path": "artifacts/cycle28/ci-report-guard-negative.log",
+      "sha256": "2751543ac5ca9ce937a76ac8d6119a0319708950afc3a94a252a62745963d3bc"
+    }
+  ],
+  "ci": "CURRENT_HEAD_SEPARATE_PENDING_SNAPSHOT",
+  "historical_C18_Foundation_failures": "PRESERVED_NOT_RELABELLED",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "independent_review": {
+    "pr": 210,
+    "commit": "bd1ba9d0ebd88532f909b9663f3c93f2ba938993",
+    "positive_negative_source_checks": 43,
+    "protected_files": 128,
+    "baseline_test_config_fixture_files": 546,
+    "native_security_blockers": 0,
+    "operational_implementation": "NO_GO",
+    "physical_recovery": "NOT_RUN"
+  },
+  "prior_ci_closeout": {
+    "exact_head": "5f74b8ff5385560330cb94717c17338ed0c10f44",
+    "successful_dedicated_workflows": 21,
+    "foundation_workflows": "TWO_CANCELLED_45M_NOT_RELABELLED",
+    "same_head_check": "SUCCESS_9327_PASS_321_DECLARED_SKIP",
+    "software_recovery": "105_PASS_NOT_PHYSICAL_RECOVERY",
+    "build_staging": "SUCCESS",
+    "remaining_full_browser": "FOUR_SHARD_SUPPLEMENT_PENDING_PR209"
+  },
+  "ci_report_admission": {
+    "expected_cases": 197,
+    "expected_suites": 12,
+    "required_failed_or_skipped": 0,
+    "duplicate_or_missing_suite_or_case": "DENY",
+    "syntax": "PASS",
+    "actual_initial_incomplete_failed_report": "REJECTED",
+    "full197_future_report": "PENDING_CI_NOT_INVENTED"
+  }
+}

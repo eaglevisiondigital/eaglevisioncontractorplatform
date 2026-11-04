@@ -1,0 +1,173 @@
+{
+  "schema": "propel-cycle28-source-manifest-v1",
+  "authority": "BUILD_REVIEW_ONLY_NOT_BUSINESS_RESTORE",
+  "parent": "5f74b8ff5385560330cb94717c17338ed0c10f44",
+  "coordination_branch": "codex/program-cycle-twenty-eight-integration",
+  "runtime_commit": "6d3d29a8d68a475a8ab077d5d42ae23fe927141d",
+  "support_correction_commit": "f38af86328ee36d05e006c32ea9eec754fa83e7c",
+  "packages": [
+    {
+      "module": "field",
+      "branch": "codex/cycle28-task-custody",
+      "head": "d4c83a2188b42ed735b8c74c1e36965371a040fd",
+      "author": "0eb504895ff6adabf4c6c1727dba360f1b61c2d9",
+      "pr": 202,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/202",
+      "previous_head": "14066a1e9a20d6e33e74dbc6d89c3b9ded69eb7b",
+      "files": [
+        {
+          "path": "docs/program/CYCLE28_TASK_CUSTODY.md",
+          "sha256": "c2c8664badc3c581526c4a5dfc29494c333c0ab09e2ec9c426e2903b897bf7f0"
+        },
+        {
+          "path": "src/components/workflows/TaskReceiptActions.tsx",
+          "sha256": "a765f65079f6bfde5adc4ac19152cfd3b8983d833a906798be78a849b586971b"
+        },
+        {
+          "path": "src/lib/workflows/task-receipt-reconciliation.ts",
+          "sha256": "26eda96a960d7cdd2d1c00c74d01281d2c235babc4becafa00c6a24554ec6ebb"
+        },
+        {
+          "path": "tests/cycle28-task-custody.test.ts",
+          "sha256": "dda0c98778a6c75c6e7edb948521392d5d255077c26122053cbedcfc4d066526"
+        }
+      ]
+    },
+    {
+      "module": "finance",
+      "branch": "codex/cycle28-cost-readiness",
+      "head": "728f4bbb5068256364bddb42a6eff66fbdcf3ccc",
+      "author": "9577069c3788a7baf7202f55e496e66352ad298e",
+      "pr": 203,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/203",
+      "previous_head": "5ba069d551e65f8a17a78b6bb08c4439cf68b367",
+      "files": [
+        {
+          "path": "docs/program/CYCLE28_COST_READINESS.md",
+          "sha256": "1554571d0c65905e59a5a2aaad5cbaf1f8d3d3e677017835e0c745222e5f608f"
+        },
+        {
+          "path": "src/components/workflows/CostCoverageActions.tsx",
+          "sha256": "36b662b7afc21718bd73d9845ee0eaf45746d76855b4ec4a9d70ac37198fb572"
+        },
+        {
+          "path": "tests/cycle28-cost-readiness.test.ts",
+          "sha256": "da27aefd48df61223991666f90c5b97b5dffdf379904c71943f7b3d5d178ba21"
+        }
+      ]
+    },
+    {
+      "module": "customer",
+      "branch": "codex/cycle28-request-provenance",
+      "head": "1b3f6a23ff4ec17646586928974b29c112cede6e",
+      "author": "670030d42153cc595f52b4605307f1738edb82be",
+      "pr": 204,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/204",
+      "previous_head": "5182eb997f4a21971511a90c16bfd94a1b760f8d",
+      "files": [
+        {
+          "path": "docs/program/CYCLE28_REQUEST_PROVENANCE.md",
+          "sha256": "1f5568d107e2b4c609143705fa4063722bfec23026e066ead8e7be63380930bf"
+        },
+        {
+          "path": "src/components/workflows/ServiceRequestActions.tsx",
+          "sha256": "eecab232a1d4eec25e499c7cadd66d14b6b012d2afbd6222f3e57806d7e74040"
+        },
+        {
+          "path": "tests/cycle28-request-provenance.test.ts",
+          "sha256": "0f300037abd9fcbe8db4465ff3fd7ad64c2631158ceb675ba4b33ce3b44bc8ea"
+        }
+      ]
+    },
+    {
+      "module": "growth",
+      "branch": "codex/cycle28-consent-renewal",
+      "head": "0197e4b518d5dc64e4878ec38f4540d29852d3fd",
+      "author": "9a6822b7267eb97170883914533271c166fb7d62",
+      "pr": 205,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/205",
+      "previous_head": "44fc95934a28a54d05af6fee556b500ce23261a9",
+      "files": [
+        {
+          "path": "docs/program/CYCLE28_CONSENT_RENEWAL.md",
+          "sha256": "5d5c4dbd5351ea849ac94fdf5a478843dbf7a3279ef5f51f86117427e2963873"
+        },
+        {
+          "path": "src/components/workflows/MaintenanceCancellationActions.tsx",
+          "sha256": "a1a44d669b0c948491413fa6e51f1b742d7d026918215e8089592888e0e510ab"
+        },
+        {
+          "path": "tests/cycle28-consent-renewal.test.ts",
+          "sha256": "7f497466d36dc79a871dbfdeebf6ab769af86400f414db6fdccd8428446653dc"
+        }
+      ]
+    },
+    {
+      "module": "intelligence",
+      "branch": "codex/cycle28-current-priorities",
+      "head": "36e4b047efcb6f166e6c38793a8a3565bb92d94e",
+      "author": "44064cac9f4cde8c746ef080b3e613aff94ff410",
+      "pr": 206,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/206",
+      "previous_head": "ad475bb55d3b1683295ff2f24e48790c99658ab0",
+      "files": [
+        {
+          "path": "docs/program/CYCLE28_CURRENT_PRIORITIES.md",
+          "sha256": "44565ee215d5c2562b1e3880231560adc4f49580e08f387843343f126698aaed"
+        },
+        {
+          "path": "src/components/workflows/OwnerActionVerification.tsx",
+          "sha256": "03fe5af6da0175611e4fba2c94f152fd2b7bfcf06e17abc042425f47f551ae45"
+        },
+        {
+          "path": "tests/cycle28-current-priorities.test.ts",
+          "sha256": "53f90f3e16b11bef8f197f5393af8676101ad8e5ccbb1c78e299e39ddaae683d"
+        }
+      ]
+    },
+    {
+      "module": "offline",
+      "branch": "codex/cycle28-unknown-diagnostics",
+      "head": "d2688cb1f8a55340f43d0f19d3a7342c972a67a1",
+      "author": "621aa4059c289b785ae56cfb30ae61740476f812",
+      "pr": 207,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/207",
+      "previous_head": "34a22fac1ee87944f261eb75de0cd004057810e8",
+      "files": [
+        {
+          "path": "docs/program/CYCLE28_UNKNOWN_DIAGNOSTICS.md",
+          "sha256": "072c5f5edb6d8fbf86f5a26ff75b3674d823b591241fe5e25c50a037135c0c35"
+        },
+        {
+          "path": "src/lib/workflows/offline-source-admission.ts",
+          "sha256": "c8f6b035a43e6f42929b8ba2e4a737a052ff3ee86cbcc7643c9c1a3f0afaf19b"
+        },
+        {
+          "path": "tests/cycle28-unknown-diagnostics.test.ts",
+          "sha256": "f5af5890bb40af9f7985f592f6c88483dee9539c5121bbf6f6bcbe6e5723ad3d"
+        }
+      ]
+    }
+  ],
+  "acceptance": {
+    "pr": 208,
+    "commit": "ef335e376252742be19261a6d585f5f401c515fd",
+    "implementation": "NO_GO",
+    "operational_cases": "NOT_RUN"
+  },
+  "ci_reliability": {
+    "pr": 209,
+    "commit": "f700139b48a22bb189e0ee1784f83cd11334a6b7"
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "independent_review": {
+    "pr": 210,
+    "commit": "bd1ba9d0ebd88532f909b9663f3c93f2ba938993",
+    "positive_negative_source_checks": 43,
+    "protected_files": 128,
+    "baseline_test_config_fixture_files": 546,
+    "native_security_blockers": 0,
+    "operational_implementation": "NO_GO",
+    "physical_recovery": "NOT_RUN"
+  }
+}

@@ -34,7 +34,35 @@ jobs:
       - run: npm run typecheck
       - run: npm run features:check
       - run: node --input-type=module -e "import { inspectCycle28Sources } from './scripts/cycle25-source-lineage.mjs'; console.log(inspectCycle28Sources({requireCombined:true}));"
-      - run: npx vitest run tests/cycle28*.test.ts tests/cycle25-combined-integration.test.ts tests/cycle25-source-lineage.test.ts tests/cycle26-source-lineage.test.ts tests/cycle27-source-lineage.test.ts --maxWorkers=1 --reporter=json --outputFile=artifacts/cycle28/application-results.json
+      - run: npx vitest run tests/cycle28*.test.ts tests/cycle25-combined-integration.test.ts tests/cycle25-source-lineage.test.ts tests/cycle26-source-review.test.ts tests/cycle27-source-lineage.test.ts --maxWorkers=1 --reporter=json --outputFile=artifacts/cycle28/application-results.json
+      - name: Require every exact focused suite and case
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync } from 'node:fs';
+          import { relative } from 'node:path';
+          const expected = new Map(Object.entries({
+            'cycle28-task-custody.test.ts': 10,
+            'cycle28-cost-readiness.test.ts': 15,
+            'cycle28-request-provenance.test.ts': 19,
+            'cycle28-consent-renewal.test.ts': 8,
+            'cycle28-current-priorities.test.ts': 15,
+            'cycle28-unknown-diagnostics.test.ts': 25,
+            'cycle28-contractor-journey.test.ts': 9,
+            'cycle28-source-lineage.test.ts': 14,
+            'cycle25-combined-integration.test.ts': 16,
+            'cycle25-source-lineage.test.ts': 26,
+            'cycle26-source-review.test.ts': 20,
+            'cycle27-source-lineage.test.ts': 20,
+          }).map(([name, count]) => ['tests/' + name, count]));
+          const report = JSON.parse(readFileSync('artifacts/cycle28/application-results.json', 'utf8'));
+          if (!report.success || report.numTotalTests !== 197 || report.numPassedTests !== 197 || report.numFailedTests !== 0 || report.numPendingTests !== 0 || report.testResults.length !== 12) throw Error('Exact197 passing cases and12 suites required');
+          for (const suite of report.testResults) {
+            const path = relative(process.cwd(), suite.name), count = expected.get(path), cases = suite.assertionResults;
+            if (!expected.delete(path) || cases.length !== count || new Set(cases.map(c => c.fullName)).size !== count || cases.some(c => !c.fullName || c.status !== 'passed')) throw Error('Missing, duplicate, skipped or failed exact suite: ' + path);
+          }
+          if (expected.size) throw Error('Focused source coverage incomplete');
+          console.log('Exact197 cases /12 suites verified; no skipped or duplicate cases.');
+          NODE
       - run: npm run build
       - run: npx playwright install --with-deps chromium
       - run: npx playwright test -c tests/program/playwright.cycle28-customer.config.ts

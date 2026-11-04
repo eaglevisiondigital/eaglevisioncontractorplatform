@@ -41,3 +41,11 @@ No `.github/workflows/ci.yml`, original test/config, frozen artifact, migration,
 design, release or operational control changes. No hosted mutation, credential,
 adapter, deployment, merge, dispatch, financial action or communication.
 Release1.0 remains **NOT READY / NOT AUTHORIZED**.
+
+## Final C27 Foundation evidence and missing browser stage
+
+Both exact5f74 Foundations have now concluded CANCELLED at the original45m limit. Push41841416051/job126613686169 stopped inside npmtest:236passing file entries,5declared skipped files,75files without a conclusion and no failed-file entry or final summary. This partial log is not a completed suite.
+
+PR41841428778/job126613730587 provides actual same-head completion: npmruncheckPASS,309filesPASS/7declaredSKIP and9327testsPASS/321declaredSKIP;105recovery software testsPASS, buildPASS and stagingplanPASS. It then reaches its45m ceiling during Chromium installation; fullbrowserSKIPPED. This closes the push job's unit/check gap using successful exact-head evidence, without restarting it or relabelling either cancellation. Both postgres17 siblings and all21dedicated workflowsPASS.
+
+The remaining unique full-browser stage is supplied by the existing reviewed191 method, reused at exact5f74 with no application/config/test/assertion/lock or timeout changes. The separate new workflow records the full original inventory then executes four disjoint original Playwright shards, two workers, zero retries,35m per finite shard. It runs no application unit/database/recovery baseline again. All four artifacts and exact inventory/result union are needed; one pass or a queued shard cannot close coverage. Original Foundation45m and browser30s test budgets are unchanged. No final coverage claim is made before results. This is supplemental stage evidence, never an original Foundation PASS. The historical f81081 two-case90s supplement remains separate.

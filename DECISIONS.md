@@ -1814,3 +1814,11 @@ authoritative. Restart persistence is a separately reviewed architecture proposa
 only: no restoration adapter, store, schema, migration, privileged writer or
 operational Auth/credential path is authorized. Historical evidence is never
 business-state restoration. No existing release/production gate is promoted.
+
+## Cycle28 · exact native correction and evidence boundaries
+
+Retain original task receipt/graph custody agreement before composite review. Missing exact selected tasks never become another task; keep only independently validated pickers. Permit explicit maintenance occurrence/purpose correction only before original attempt admission; UNKNOWN holds remain owned by original engines. Show original selected cost facts and original owner state/review instruction only inside existing current-source gates. Move customer focus after React commit with original source/access guards. Keep precise offline invalid-protocol/withdrawn-admission UNKNOWN reasons without replay. No canonical engine, store, route or writer is added.
+
+One source-checker diagnostic compatibility failure was fixed by preserving its original strict denial and retained assertion. Supplemental screenshot paths are isolated from the unchanged exact63capture collector; original failures/moves and final hash validation remain disclosed. New C28 CI precisely selects the actual retained C26 source-review suite; nonexistent initial selection was not counted as coverage. No original test, timeout, Foundation workflow or protection was weakened.
+
+The genuine internal customer request/receipt/staff read remains a specification only with twelve future acceptance cases. Naming roles, complete writer inventory, current genuine Auth, target grants/RLS, transaction/ACK/custody and independent recovery require separate acceptance. Neither reviewed restart architecture nor this local cycle authorizes schema/adapter implementation. Preserve the original P1 approval/13history sequence and separate customer14/4B authorization. Physical Air recovery NOT RUN; all operational and release gates remain closed.
