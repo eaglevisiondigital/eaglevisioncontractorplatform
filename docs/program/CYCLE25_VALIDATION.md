@@ -14,9 +14,13 @@ and [operational NO-GO dependencies](CYCLE25_OPERATIONAL_READINESS.md) remain di
   corrected to the actual `.bundle.version`; thirteen unaffected cases were preserved.
 - Global strict types, lint, generated types, feature evidence, migration integrity and
   formatting PASS. One pre-existing Fast Refresh warning in an unchanged C14 component.
-- Main combined486 old/new application run and exact-committed browser acceptance are
-  separately pending until their actual reports are recorded. Development smoke is
-  not exact-SHA browser acceptance.
+- Main combined486 old/new application cases PASS, zero failed/pending. Exact committed
+  runtime92ec099ff15035e19db584e7b15f3ccd2dd465d5 passes9/9 DEV journeys and3/3
+  production-OFF cases. All three brands run on desktop/tablet/mobile, zero retries,
+  failures or skips. Independent verification confirms63 PNG/metadata bindings,76
+  scoped source hashes per capture, five critical paths and369 trusted keyboard keys.
+  The full collector is still completing repeated immutable Git checks; its final
+  conclusion will be recorded separately. Dirty smoke is not accepted as committed proof.
 
 Original feature-test assertions are unchanged. Initial new-test fixture/expectation
 failures remain private historical evidence: native UNKNOWN differs from UNVERIFIED;
@@ -24,7 +28,9 @@ original priority summary can stay identical while exact cost facts change; cred
 fixtures require actual native payment evidence. Only new tests were corrected.
 Customer correction093f948 is a one-file direct child of sourcec95d44b; no native/doc
 changes. Browser Axe demonstrated Finance dt contrast4.09:1; exact CSS-only forward
-2499254 changes only the scoped foreground. No accessibility suppression.
+2499254 changes only the scoped foreground. Separate actual visible owner-refresh
+audit found the same4.09:1 issue; CSS-only603f8d5 changes its scoped dt foreground.
+Both corrections pass the final visible-state Axe assertions; no suppression.
 
 ## Source and screenshot integrity
 
@@ -37,7 +43,10 @@ The final browser collector requires76 finite runtime paths plus five critical p
 in the actual executed Git commit and current checkout. It does not claim a complete
 transitive runtime inventory. Dirty smoke runs remain distinct; metadata is never rewritten
 as a committed execution. Final screenshots, trusted keyboard/a11y/touch/overflow outcomes
-and executed source SHA are recorded only after the actual final matrix.
+and executed source SHA are recorded from the completed final matrix. Independent
+review confirms six four-file CI-only forwards preserve all native bytes and original
+source endpoints. Later delivery/register commits change documentation only; executed
+runtime92ec099 and its capture metadata stay unchanged.
 
 ## GitHub and historical evidence
 
@@ -62,3 +71,18 @@ independent recovery, duplicate denial, revocation and cleanup NOT RUN. No physi
 No restore adapter/schema/credentials, hosted writes, live dispatch, money, messages,
 publication, deployment or merge. Three original design approvals preserved; Operating
 Center/advanced visual scopes PENDING. Release1.0 NOT READY / NOT AUTHORIZED.
+
+## Demonstration and evidence
+
+Use the existing local `/preview/operating-center` route with the explicit DEV
+`VITE_CONTRACTOR_JOURNEY_PREVIEW=true` gate. Enable current source requirements, select
+Revision consistency, confirm the disposable environment, then prepare it. Search an
+existing exact job in the saved source workbench. The original five sections expose
+task continuity, native time/material facts, actual service/published evidence, selected
+maintenance requirements and owner refresh. No new route/store or live operation.
+The bounded browser config uses4425 DEV /4435 OFF; automated servers stop after tests.
+
+Persistent actual screenshots and raw reports live under ignored
+`.staging/program-cycle25/main/artifacts/cycle25/`; `owner-review.html` indexes all63
+actual current captures. Original design approvals remain unchanged; these new scopes
+remain owner-review PENDING. Source manifests/registers contain sanitized hashes only.

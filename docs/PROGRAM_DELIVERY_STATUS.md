@@ -4,8 +4,7 @@
 
 Six disjoint source packages extend the original C24 controls without a new presentation
 mode or record owner. Exact source commits, current CI and combined evidence are recorded
-in [C25 validation](program/CYCLE25_VALIDATION.md). Publication/CI acceptance is pending
-until that evidence records actual draft numbers and exact final heads. Temporary lost
+in [C25 validation](program/CYCLE25_VALIDATION.md). Exact-head CI acceptance remains separate from local555-case and9DEV+3OFF acceptance. Temporary lost
 unpublished work is not claimed as delivered; resumed sources/evidence persist locally.
 
 C24 exact31e remains OPEN/draft, current checks queued. Successful child checks are retained;

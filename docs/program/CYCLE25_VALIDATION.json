@@ -1,0 +1,70 @@
+{
+  "schema": "propel-cycle25-validation-v1",
+  "executed_browser_commit": "92ec099ff15035e19db584e7b15f3ccd2dd465d5",
+  "working_tree_dirty_during_all_72_captures": false,
+  "local_application": {
+    "feature_and_retained_cases": 486,
+    "tooling_cases": 53,
+    "combined_unique_cases": 16,
+    "total_unique_cases": 555,
+    "all_passed": true,
+    "combined_case_evidence": "THREE_CORRECTED_NATIVE_VERSION_JOURNEYS_PLUS_THIRTEEN_UNAFFECTED_PRESERVED_SUCCESSES"
+  },
+  "browser": {
+    "development": 9,
+    "production_off": 3,
+    "brands": 3,
+    "viewports": ["desktop", "tablet", "mobile"],
+    "failed": 0,
+    "skipped": 0,
+    "retried": 0,
+    "screenshots": 63,
+    "keyboard_journeys": 9,
+    "trusted_keys": 369,
+    "outside_requests": 0,
+    "collector_status": "PENDING_IMMUTABLE_GIT_VERIFICATION",
+    "independent_exact_source_verification": "PASS"
+  },
+  "quality": {
+    "global_eslint": "PASS_WITH_ONE_PREEXISTING_FAST_REFRESH_WARNING",
+    "strict_types": "PASS",
+    "generated_database_types": "PASS",
+    "features": "PASS_25_IDS_5_LOCKS_13_BINDINGS",
+    "migration_integrity": "PASS_THIRTEEN_PLUS_SEPARATE_PENDING_CUSTOMER",
+    "prettier": "PASS"
+  },
+  "build": "PASS_AT_92EC099_WITH_STANDARD_EXISTING_LARGE_CHUNK_WARNING",
+  "reports": [
+    {
+      "path": "artifacts/cycle25/application-results.json",
+      "sha256": "90251d623d3dd1c8d51b6dc78a6d42630a42df71f3c92788fd197d62fcdc4a30"
+    },
+    {
+      "path": "artifacts/cycle25/tooling-final-results.json",
+      "sha256": "b308caa3bc9e5fabc9ba1cadd275c76ddd6ed0fa74aea1030ce048677a7a1842"
+    },
+    {
+      "path": "artifacts/cycle25/combined-first-version-reference-results.json",
+      "sha256": "52d4b94c2a1f8a2f3798cbc429a47450f937ead7307d3fcc9034a1b508356ed0"
+    },
+    {
+      "path": "artifacts/cycle25/combined-canonical-version-results.json",
+      "sha256": "b2117aa3e4b62689ddff78d846d3ba07f95a03b8725aa97b3f2d05945d58e3b3"
+    },
+    {
+      "path": "artifacts/cycle25/browser-results.json",
+      "sha256": "9eec7c8a6d075fdd0f8cb4382cef5900abe6580ddf13c99b769f8e929f31ab84"
+    },
+    {
+      "path": "artifacts/cycle25/browser-off-results.json",
+      "sha256": "3c8e9b50a5f3391c00f36593a234534cb8b9709a6b153c99484af4f61546230d"
+    }
+  ],
+  "independent_source_review": "70c172108116e4dbb78087d75fc87a61684a42f7",
+  "ci": "CURRENT_HEAD_OUTCOMES_SEPARATE_PENDING_NOT_INFERRED",
+  "historical_C18_failures_and_missing_foundation_conclusions": "OPEN_PRESERVED",
+  "physical_recovery": "UNVERIFIED_NOT_RUN",
+  "operational_ready": false,
+  "restore_adapter": false,
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}
