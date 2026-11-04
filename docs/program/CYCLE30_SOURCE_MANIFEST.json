@@ -1,0 +1,117 @@
+{
+  "schema": "propel-cycle30-sources-v1",
+  "parent": "b0faaa447e8e18cd78a00e5cfbfd6dc67eff3fd9",
+  "coordination_branch": "codex/program-cycle-thirty-integration",
+  "packages": [
+    {
+      "module": "growth",
+      "author_commit": "eba615b9d2260f472a09e58fcfcfeb09d0879a03",
+      "author_parent": "b0faaa447e8e18cd78a00e5cfbfd6dc67eff3fd9",
+      "branch": "codex/cycle30-maintenance-source-audit",
+      "kind": "RUNTIME_CORRECTION",
+      "new_cases": 8,
+      "files": [
+        {
+          "status": "A",
+          "path": "docs/program/CYCLE30_MAINTENANCE_DATE.md",
+          "sha256": "fb7f75b798e8739f6c9546b677e9b1bc32fb4729843e83244e10c0fa93711296"
+        },
+        {
+          "status": "M",
+          "path": "src/components/workflows/MaintenanceCancellationActions.tsx",
+          "sha256": "97b6e6761f694536055ba56f48ccf28cd7466b870406327229d984e6cf95c570"
+        },
+        {
+          "status": "A",
+          "path": "tests/cycle30-maintenance-date.test.ts",
+          "sha256": "d3a68bdeca04d8b15c0f6ab26cd8c713adf4884b3757a6fddd85d057cc297c6d"
+        },
+        {
+          "status": "A",
+          "path": "tests/program/cycle30-maintenance-date-browser.mjs",
+          "sha256": "e3935eef3e86264a336000db2ca0a7c3babb2f3c01c76655fa8c2e1064ceed59"
+        }
+      ]
+    },
+    {
+      "module": "customer",
+      "author_commit": "f00b07ed47c648c1ef77eb91a0137a55b439fac9",
+      "author_parent": "b0faaa447e8e18cd78a00e5cfbfd6dc67eff3fd9",
+      "branch": "codex/cycle30-customer-source-audit",
+      "kind": "RUNTIME_CORRECTION",
+      "new_cases": 15,
+      "files": [
+        {
+          "status": "A",
+          "path": "docs/program/CYCLE30_CUSTOMER_SOURCE_AUDIT.md",
+          "sha256": "59b72c309a0a4422d11b2931d0e8c7a40e65a4a0a6daf2b776da1498367e9506"
+        },
+        {
+          "status": "M",
+          "path": "src/lib/workflows/service-request-actions.ts",
+          "sha256": "46530ab3a95ae1e5682e80d8cd9628dc8d87e914abd805515a2e12c3a0342ea4"
+        },
+        {
+          "status": "A",
+          "path": "tests/cycle30-customer-source-audit.test.ts",
+          "sha256": "d776ec35957a026086bf13366a7fefdd58cd2f8409f5078fdfab526813315b02"
+        }
+      ]
+    },
+    {
+      "module": "intelligence",
+      "author_commit": "9f85556e28875a53976b55567f3a14e942ba3995",
+      "author_parent": "b0faaa447e8e18cd78a00e5cfbfd6dc67eff3fd9",
+      "branch": "codex/cycle30-owner-source-audit",
+      "kind": "RUNTIME_CORRECTION",
+      "new_cases": 10,
+      "files": [
+        {
+          "status": "A",
+          "path": "docs/program/CYCLE30_OWNER_SOURCE_AUDIT.md",
+          "sha256": "6e25ad3876c40f3f3d78c5f97661a761b6b61033354a425b06682c89742be703"
+        },
+        {
+          "status": "M",
+          "path": "src/components/workflows/RecordedOwnerActions.tsx",
+          "sha256": "7e9091f6a80c316c84ce8caf36d88adb0df2391676754899871bc6e87e09d600"
+        },
+        {
+          "status": "A",
+          "path": "tests/cycle30-owner-source-audit.test.ts",
+          "sha256": "71c24ffd41dfb6ab9216cd90c7b29623d544c055b45b641db5d55f8ca7a475d1"
+        }
+      ]
+    },
+    {
+      "module": "field",
+      "author_commit": "6deaf4022baa226c74ca31503b6816e0a9ef289a",
+      "author_parent": "b0faaa447e8e18cd78a00e5cfbfd6dc67eff3fd9",
+      "branch": "codex/cycle30-task-source-audit",
+      "kind": "COVERAGE_ONLY_NO_RUNTIME_DELTA",
+      "new_cases": 3,
+      "files": [
+        {
+          "status": "A",
+          "path": "docs/program/CYCLE30_TASK_SOURCE_AUDIT.md",
+          "sha256": "923151f1f03f6d5b214836c791feeaad30d2a11bb7bb9e01af79f05bb3ef2463"
+        },
+        {
+          "status": "A",
+          "path": "tests/cycle30-task-custody-navigation.test.ts",
+          "sha256": "8a1b68c442b8649add297467f6375dc0b6fdff8870b72c04d7a60e37ff32dc30"
+        },
+        {
+          "status": "A",
+          "path": "tests/program/cycle30-task-custody-browser.mjs",
+          "sha256": "3bfac6871ec68a4a25310b3d36e97ca12de8a78daac2eb7127d78cd3ce185bcf"
+        }
+      ]
+    }
+  ],
+  "audited_no_change": ["finance", "offline"],
+  "source_authority": "BUILD_TEST_ONLY_NOT_BUSINESS_RESTORE",
+  "operational_ready": false,
+  "physical_recovery": "NOT_RUN",
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

@@ -86,6 +86,11 @@ export function parseServiceRequestAction(
     throw Error(
       'Exact current request, changed review state and assignee required',
     );
+  // Keep the original ordinary form for the engine's live-input fences. A
+  // descriptor-bearing Proxy must not replace the captured confirmed fields
+  // when the original engine reads them again. No clone is used as authority.
+  if (JSON.stringify(structuredClone(input)) !== JSON.stringify(p))
+    throw Error('Plain stable original request review fields required');
   return input as ServiceRequestActionInput;
 }
 export async function saveServiceRequestAction(
