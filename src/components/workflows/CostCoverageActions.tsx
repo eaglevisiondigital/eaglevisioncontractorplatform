@@ -9,6 +9,7 @@ import {
 } from '../../lib/workflows/recorded-cost-requirements';
 import {
   validateCostCoverageAction,
+  filterCostCoverageActionSources,
   continueCostCoverageAction,
   type CostCoverageActionInput,
   type CostCoverageActionValidation,
@@ -55,6 +56,7 @@ function ActionForm({
   const id = useId(),
     [view, setView] = useState<RecordedCostRequirementsRead>(),
     [selection, setSelection] = useState(''),
+    [query, setQuery] = useState(''),
     [result, setResult] = useState<CostCoverageActionValidation>(),
     [confirmed, setConfirmed] = useState(false),
     [busy, setBusy] = useState(false),
@@ -121,6 +123,7 @@ function ActionForm({
         if (!life.current.active) return;
         setView(read);
         setSelection('');
+        setQuery('');
         setResult(undefined);
         setConfirmed(false);
         setMessage(
@@ -162,6 +165,11 @@ function ActionForm({
       if (life.current.active) setBusy(false);
     }
   }
+  const filtered =
+    view && current
+      ? filterCostCoverageActionSources(view, { query, kind: 'all' })
+      : undefined;
+  const selected = view?.original.rows.find((row) => row.key === selection);
   return (
     <section
       className="cost-coverage-actions"
@@ -180,6 +188,27 @@ function ActionForm({
       <p role="status">{busy ? 'Checking original requirements…' : message}</p>
       {view && current && (
         <>
+          <label htmlFor={`${id}-query`}>
+            Search original cost action sources
+          </label>
+          <input
+            id={`${id}-query`}
+            type="search"
+            value={query}
+            maxLength={200}
+            disabled={busy}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <p>
+            {filtered?.matching} matching of {filtered?.available} available
+            sources. Search does not change the exact selected source.
+          </p>
+          {selected && !filtered?.rows.includes(selected) && (
+            <p>
+              Retained exact selection outside these results: {selected.kind} ·{' '}
+              {selected.id}
+            </p>
+          )}
           <label htmlFor={`${id}-source`}>
             Exact recorded cost action source
           </label>
@@ -194,7 +223,12 @@ function ActionForm({
             }}
           >
             <option value="">Choose an exact recorded source</option>
-            {view.original.rows.map((row) => (
+            {selected && !filtered?.rows.includes(selected) && (
+              <option value={selected.key}>
+                {selected.kind} · {selected.id} · retained exact selection
+              </option>
+            )}
+            {filtered?.rows.map((row) => (
               <option key={row.key} value={row.key}>
                 {row.kind} · {row.id} · {row.status}
               </option>
@@ -221,6 +255,54 @@ function ActionForm({
             {result.canonical_margin} basis points · invoice prerequisites:{' '}
             {result.invoice_overall}
           </p>
+          <dl className="cost-source-facts">
+            <dt>Recorded expense</dt>
+            <dd>
+              {result.recorded_source.expense
+                ? `${result.recorded_source.expense.id} · ${result.recorded_source.expense.amount_minor} ${result.recorded_source.currency} minor units · ${result.recorded_source.expense.kind}`
+                : 'Not selected or exact link unavailable'}
+            </dd>
+            <dt>Recorded quantity and unit</dt>
+            <dd>
+              {result.recorded_source.expense
+                ? `${result.recorded_source.expense.quantity_milli ?? 'UNKNOWN'} thousandths · ${result.recorded_source.expense.unit ?? 'UNKNOWN unit'}`
+                : 'Not applicable'}
+            </dd>
+            <dt>Exact estimate line</dt>
+            <dd>
+              {result.recorded_source.expense?.estimate_line_id ??
+                'UNKNOWN / not recorded'}
+            </dd>
+            <dt>Original review events</dt>
+            <dd>
+              {result.recorded_source.review_events
+                .map((row) => `${row.id} · ${row.decision} · ${row.created_at}`)
+                .join('; ') || 'None recorded'}
+            </dd>
+            <dt>Adjustment source</dt>
+            <dd>
+              {result.recorded_source.expense?.adjusts_expense_id ??
+                'None recorded'}{' '}
+              · {result.recorded_source.adjustment_link}
+            </dd>
+            <dt>Adjusting expenses</dt>
+            <dd>
+              {result.recorded_source.adjusting_expense_ids.join(', ') ||
+                'None recorded'}
+            </dd>
+            <dt>Operational receipt</dt>
+            <dd>
+              {result.recorded_source.durable_receipt}. Provider settlement:{' '}
+              {result.recorded_source.provider_settlement}.
+            </dd>
+          </dl>
+          <p>
+            Canonical revenue {result.canonical_totals.revised_revenue_minor};
+            projected cost {result.canonical_totals.projected_cost_minor};
+            projected profit {result.canonical_totals.projected_profit_minor}{' '}
+            {result.canonical_totals.currency} minor units. Copied job totals
+            are not allocations to this source or proof of settlement.
+          </p>
           {result.category && (
             <p>
               Original {result.category.category} projected cost:{' '}
@@ -232,7 +314,13 @@ function ActionForm({
             <p>
               {result.labor.requirement} · submitted{' '}
               {String(result.labor.submitted)} · review{' '}
-              {result.labor.recorded_review ?? 'UNKNOWN'}
+              {result.labor.recorded_review ?? 'UNKNOWN'} · corrects{' '}
+              {result.labor.corrects_id ?? 'none recorded'} · correcting entries{' '}
+              {result.labor.correcting_entry_ids.join(', ') || 'none recorded'}.
+              Available job locked periods:{' '}
+              {result.recorded_source.available_locked_period_ids.join(', ') ||
+                'none recorded'}
+              ; no per-entry period allocation is inferred.
             </p>
           )}
           {result.invoice_requirement && (

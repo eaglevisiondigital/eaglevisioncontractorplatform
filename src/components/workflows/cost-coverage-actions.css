@@ -44,3 +44,24 @@
     width: 100%;
   }
 }
+
+.cost-coverage-actions input[type='search'] {
+  width: 100%;
+  min-height: 44px;
+}
+.cost-source-facts {
+  display: grid;
+  grid-template-columns: minmax(8rem, 1fr) minmax(0, 3fr);
+  gap: 0.5rem 1rem;
+}
+.cost-source-facts dt {
+  font-weight: 600;
+}
+.cost-source-facts dd {
+  margin: 0;
+}
+@media (max-width: 640px) {
+  .cost-source-facts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
