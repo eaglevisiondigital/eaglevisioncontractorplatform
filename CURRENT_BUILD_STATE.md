@@ -1,3 +1,9 @@
+# Cycle27 implementation · local verification in progress
+
+Six native corrections are assembled from exact direct-child C26 source commits (CYCLE27_SOURCE_MANIFEST.json). Focused Main178/178 cases PASS; strict types, lint (one retained warning), canonical SQL/proposal/type/design integrity pass. Combined committed-source browser acceptance and current-head GitHub CI remain separate and pending. C26 has17 successful PR dedicated workflows and two CANCELLED Foundations; PR application9208PASS/321SKIP and staging passed, original browser skipped. Draft191 supplements only that missing stage at exactf81081; four-shard outcome/union pending. Historical15 push failure labels/C18 gaps remain OPEN.
+
+Smallest readiness draft192 is source-only NO-GO; no operational owner/schema/adapter is accepted. Air last unavailable, physical rehearsal NOT RUN; original sealed kit and completed25 offline checks retained. All13/customer14/4B/P1/four/approved designs/Auth/MFA/NMI/Netlify/recovery/financial/production gates remain unchanged. Release1.0 NOT READY / NOT AUTHORIZED.
+
 # Propel Contractor Suite by Eagle Vision · current build state
 
 ## Cycle26 · six native corrections delivered locally

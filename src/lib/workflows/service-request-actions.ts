@@ -136,7 +136,27 @@ function assertRequestEvidenceSelection(
   view: ServiceRequestActionView,
   expected: ReturnType<typeof inspectServiceRequestActions>,
 ) {
-  const current = inspectServiceRequestActions(view);
+  const current = inspectServiceRequestActions(view),
+    supplied = prototypeFields(expected, [
+      'request_id',
+      'organization_id',
+      'customer_id',
+      'location_id',
+      'status',
+      'assigned_to',
+      'updated_at',
+      'eligible_assignees',
+      'statuses',
+      'state',
+      'can_edit',
+      'replay',
+      'native_cas',
+      'durable_receipt',
+    ]);
+  // A displayed snapshot is selection data, never a caller-supplied reader.
+  // Reject inherited/extra/accessor fields before reading any binding value.
+  if (Object.keys(supplied).length !== 14)
+    throw Error('Exact own original request snapshot fields required');
   for (const key of [
     'request_id',
     'organization_id',
@@ -146,7 +166,7 @@ function assertRequestEvidenceSelection(
     'assigned_to',
     'updated_at',
   ] as const)
-    if (current[key] !== expected[key])
+    if (current[key] !== supplied[key])
       throw Error('Exact original request status and responsibility changed');
   return current;
 }

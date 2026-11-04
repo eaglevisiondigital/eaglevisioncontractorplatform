@@ -1,3 +1,7 @@
+# Cycle27 · bounded local corrections, no acceptance promotion
+
+Existing25 capability records/original18 IDs and eight Phase One gates remain unchanged. Six source-bound native corrections pass178 focused cases. Main committed all-brand responsive/browser review and exact-head CI are pending independently. Locked three designs remain approved only for their original scopes; Operating Center/advanced approval PENDING. R01–R19/eight operational families remain unaccepted; physical independent recovery NOT RUN. No historical evidence file restores business state; no operational persistence/restoration adapter is authorized.
+
 # Propel Contractor Suite — feature acceptance register
 
 ## Cycle26 · six native corrections delivered locally

@@ -1,0 +1,176 @@
+{
+  "schema": "propel-cycle27-source-manifest-v1",
+  "parent": "f81081b3ce8fca63443a9f03e8bfcd5aa4daa4b6",
+  "main_agent": "/root",
+  "independent_reviewer": "/root/cycle27_independent_review",
+  "packages": [
+    {
+      "module": "task-custody",
+      "agent": "/root/cycle25_field_growth_resume",
+      "branch": "codex/cycle27-task-custody",
+      "author_commit": "81ca1d0d39d507734b062965e55b84003f655da6",
+      "sole_parent": "f81081b3ce8fca63443a9f03e8bfcd5aa4daa4b6",
+      "new_cases": 11,
+      "files": [
+        {
+          "path": "docs/program/CYCLE27_TASK_CUSTODY.md",
+          "sha256": "127d89baa70e21978d7cf905b5275fdddaf1504b6f05f1de2ba9bafc11b6cbf4"
+        },
+        {
+          "path": "src/components/workflows/TaskReceiptActions.tsx",
+          "sha256": "72da3f6fdd047583fa1ed6cace3a7f46d5f431419052d701cc7bf5e8ae7a1115"
+        },
+        {
+          "path": "src/lib/workflows/task-receipt-reconciliation.ts",
+          "sha256": "965832da18c298b056ac8eaa29c42e1b7044546b5aff1a8e775d55f6bf0510e5"
+        },
+        {
+          "path": "tests/cycle27-task-custody.test.ts",
+          "sha256": "e49bd98a68b9fa96d35db69e5e414ab58a2259c72c05c05a0b7963d7a3644816"
+        }
+      ],
+      "feature_head": "e10eb5f188ce73dc64fabc40626fccdf6267ffc1",
+      "pr": 193
+    },
+    {
+      "module": "cost-completeness",
+      "agent": "/root/cycle25_finance_intelligence_resume",
+      "branch": "codex/cycle27-cost-completeness",
+      "author_commit": "09569d2458f51f2b67d637d2ade1943071992240",
+      "sole_parent": "f81081b3ce8fca63443a9f03e8bfcd5aa4daa4b6",
+      "new_cases": 12,
+      "files": [
+        {
+          "path": "docs/program/CYCLE27_COST_COMPLETENESS.md",
+          "sha256": "e7cef1b8fc331eb3bc59dd2ceabfe3a2ecccc9fc75724e2926220617c51910c4"
+        },
+        {
+          "path": "src/components/workflows/CostCoverageActions.tsx",
+          "sha256": "7b472e5d4800cf988e34a4c2034f81582dec40932157fb15b70ad858e19efc9f"
+        },
+        {
+          "path": "src/lib/workflows/cost-coverage-actions.ts",
+          "sha256": "e7ece22dbbbc6d4b1cbe1d7e6e4d8d85e5d49080373900264f2f0e41e63d3dc5"
+        },
+        {
+          "path": "tests/cycle27-cost-completeness.test.ts",
+          "sha256": "e09606d58ef646c5fd5843e61a96e8ddbdb206cbbcfdd8c9dea009ed884b97f3"
+        }
+      ],
+      "feature_head": "88afe7dff557963c259891aef1b8f3d2961c3967",
+      "pr": 194
+    },
+    {
+      "module": "request-authority",
+      "agent": "/root/cycle27_customer_offline",
+      "branch": "codex/cycle27-request-authority",
+      "author_commit": "e42119427eabe0660226e425caf93d26e00da7df",
+      "sole_parent": "f81081b3ce8fca63443a9f03e8bfcd5aa4daa4b6",
+      "new_cases": 26,
+      "files": [
+        {
+          "path": "docs/program/CYCLE27_REQUEST_AUTHORITY.md",
+          "sha256": "8f98eadf486f0c2a3f057a2576c85f54492cb1930b20cca316108b818f36e371"
+        },
+        {
+          "path": "src/lib/workflows/service-request-actions.ts",
+          "sha256": "dc6662b4dc9d1d732fdc7133e1ea2d2a366424267ae106a93ad40820c6816d64"
+        },
+        {
+          "path": "tests/cycle27-request-authority.test.ts",
+          "sha256": "2e56e8a7c3fba23bf9968abcecbb512eda8940236dba03286f01bed9f7426d65"
+        }
+      ],
+      "feature_head": "fb994fedd70cba7925bb9e08df527fa9a4bd8c92",
+      "pr": 195
+    },
+    {
+      "module": "maintenance-consent",
+      "agent": "/root/cycle25_field_growth_resume",
+      "branch": "codex/cycle27-maintenance-consent",
+      "author_commit": "9db377e8bc9a9c3a541ab4bb773dc4c91dba4ff3",
+      "sole_parent": "f81081b3ce8fca63443a9f03e8bfcd5aa4daa4b6",
+      "new_cases": 11,
+      "files": [
+        {
+          "path": "docs/program/CYCLE27_MAINTENANCE_CONSENT.md",
+          "sha256": "f59514c68e17128e8c5e134e4d9feec6bdaad9a2970d1e3231411b583206cacd"
+        },
+        {
+          "path": "src/components/workflows/MaintenanceCancellationActions.tsx",
+          "sha256": "84004e3b610902e06b8ffdacd9c32ce951dec3dad731eda0a6d731db7158de3b"
+        },
+        {
+          "path": "src/lib/workflows/plan-cancellation-review.ts",
+          "sha256": "4eec7a5e6b355185f39d1bbff04b203489c16922b88b7de6e927776efc20ac4c"
+        },
+        {
+          "path": "tests/cycle27-maintenance-consent.test.ts",
+          "sha256": "e6f94112605f3c481612780283d957b254e8db4592d3a7a3a45a4a45938f015d"
+        }
+      ],
+      "feature_head": "bbd753642a49e53eeec4f8a6525f161e58442b31",
+      "pr": 196
+    },
+    {
+      "module": "owner-navigation",
+      "agent": "/root/cycle25_finance_intelligence_resume",
+      "branch": "codex/cycle27-owner-navigation",
+      "author_commit": "74b97a7ccd8082581331b5fe91695ccfbf8fb342",
+      "sole_parent": "f81081b3ce8fca63443a9f03e8bfcd5aa4daa4b6",
+      "new_cases": 15,
+      "files": [
+        {
+          "path": "docs/program/CYCLE27_OWNER_NAVIGATION.md",
+          "sha256": "63fc3a26e8cab22a6b20bbd5b10eff3db0a6a4d6279c04cdb9afa9022d0e3a2f"
+        },
+        {
+          "path": "src/components/workflows/OwnerActionVerification.tsx",
+          "sha256": "9844a0f700c7d72128b187cdf2924276d4eb30e7808aa16262ee34d243d2e1b8"
+        },
+        {
+          "path": "src/components/workflows/owner-action-verification.css",
+          "sha256": "09c45842b054debfe29bc1600936fbba26c2cb04e381984c060fea122b273299"
+        },
+        {
+          "path": "src/lib/workflows/owner-action-verification.ts",
+          "sha256": "1b91aab6647f210fae561dc7c3ca04196e8d2a23b8cc18e304107f7f986d9a24"
+        },
+        {
+          "path": "tests/cycle27-owner-navigation.test.ts",
+          "sha256": "1108cfa6ffaf16be7e6b2ecc6ae16b4617f3340be69be3b301320a82df986066"
+        }
+      ],
+      "feature_head": "bb78519994f9889a294167110d7d0cedb9e98d4c",
+      "pr": 197
+    },
+    {
+      "module": "offline-reconciliation",
+      "agent": "/root/cycle27_customer_offline",
+      "branch": "codex/cycle27-offline-reconciliation",
+      "author_commit": "e35aca2f1f0bcae361e4e01a05b37f8305907871",
+      "sole_parent": "f81081b3ce8fca63443a9f03e8bfcd5aa4daa4b6",
+      "new_cases": 24,
+      "files": [
+        {
+          "path": "docs/program/CYCLE27_OFFLINE_RECONCILIATION.md",
+          "sha256": "ff1baf616917896cf778ecefd2c8965ebf9b90b4387fa4f9e3d327a31df93513"
+        },
+        {
+          "path": "src/lib/workflows/offline-source-admission.ts",
+          "sha256": "f76e37d1471b94e23837486fdd8e38c535f4d766ef561ca0f53bab1e887cce1d"
+        },
+        {
+          "path": "tests/cycle27-offline-reconciliation.test.ts",
+          "sha256": "4282e8dcaaf03bd7cf03955442d7a720381dc191afeb7069c9231efd5b7b958a"
+        }
+      ],
+      "feature_head": "5e3e9c9dfd0cadace2a56158d8e4ec6112b3beea",
+      "pr": 198
+    }
+  ],
+  "business_store": false,
+  "operational_adapter": false,
+  "physical_recovery": "NOT_RUN",
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

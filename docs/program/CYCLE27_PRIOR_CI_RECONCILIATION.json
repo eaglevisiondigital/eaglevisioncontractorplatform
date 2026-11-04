@@ -1,0 +1,72 @@
+{
+  "schema": "propel-cycle27-prior-ci-reconciliation-v1",
+  "source_commit": "f81081b3ce8fca63443a9f03e8bfcd5aa4daa4b6",
+  "pr": 190,
+  "checked_at": "2026-11-04T12:45:03.463553+00:00",
+  "pr_dedicated_successful": 17,
+  "dedicated_cycle26_run": 41789311280,
+  "dedicated_cycle26_push_run": 41789303251,
+  "manual_reruns": 0,
+  "original_foundation_changed": false,
+  "foundation": [
+    {
+      "run": 41789311305,
+      "event": "pull_request",
+      "verify_job": 126438719026,
+      "conclusion": "CANCELLED",
+      "annotation": "The job has exceeded the maximum execution time of45m0s",
+      "check_step": "SUCCESS",
+      "application": {
+        "files_passed": 302,
+        "files_skipped": 7,
+        "cases_passed": 9208,
+        "cases_skipped": 321,
+        "duration_seconds": 2592.01
+      },
+      "build": "PASS",
+      "staging_plan": "SUCCESS",
+      "chromium_install": "CANCELLED",
+      "full_browser": "SKIPPED",
+      "sibling_postgres17": "SUCCESS",
+      "native_artifact": 13310559873,
+      "log_sha256": "23e6b8f47aefc2ca93bca5e8c5b6c9646ccfec2c370bb93b94c72131d54658d0"
+    },
+    {
+      "run": 41789303250,
+      "event": "push",
+      "verify_job": 126438693831,
+      "conclusion": "CANCELLED",
+      "annotation": "The job has exceeded the maximum execution time of45m0s",
+      "check_step": "CANCELLED",
+      "failed_case_entries": 15,
+      "failed_entry_cycles": {
+        "18": 10,
+        "23": 1,
+        "24": 3,
+        "25": 1
+      },
+      "final_exception_details": "NOT_EMITTED",
+      "root_cause": "UNRESOLVED",
+      "staging_plan": "SKIPPED",
+      "chromium_install": "SKIPPED",
+      "full_browser": "SKIPPED",
+      "sibling_postgres17": "SUCCESS",
+      "native_artifact": 13311031185,
+      "log_sha256": "a81f927b0ae6ff0fdec4d5aa2c3408c92fc0650424fde1675d162417517bbb85"
+    }
+  ],
+  "supplement": {
+    "draft_pr": 191,
+    "workflow_commit": "10459da1d7edb460aced2b9bda1ccee9c13f5336",
+    "runtime_source": "f81081b3ce8fca63443a9f03e8bfcd5aa4daa4b6",
+    "run": 41833888731,
+    "scope": "ORIGINAL_BROWSER_STAGE_ONLY",
+    "shards": 4,
+    "required": "ALL_FOUR_AND_EXACT_RESULT_UNION",
+    "collected_cases": 399,
+    "status": "IN_PROGRESS_AT_SNAPSHOT",
+    "changes_historical_conclusion": false
+  },
+  "historical_cycle18_and_incomplete_foundation": "OPEN_NOT_ERASED_BY_SAME_SHA_PR_APPLICATION_PASS",
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

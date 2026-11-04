@@ -255,7 +255,8 @@ function ActionForm({
           <h4>{result.action.replaceAll('_', ' ')}</h4>
           <p>
             Source {result.source.id} · job revision {result.job_revision} ·
-            destination {result.destination}
+            destination {result.destination} · native source status{' '}
+            {result.source.status}
           </p>
           <p>
             Cost coverage: {result.cost_coverage} · canonical projected margin:{' '}
@@ -311,11 +312,27 @@ function ActionForm({
             are not allocations to this source or proof of settlement.
           </p>
           {result.category && (
-            <p>
-              Original {result.category.category} projected cost:{' '}
-              {result.category.projected_minor} minor units. Category total is
-              not a source allocation.
-            </p>
+            <>
+              <h4>Original {result.category.category} cost completeness</h4>
+              <dl className="cost-source-facts">
+                <dt>Canonical category budget</dt>
+                <dd>{result.category.budget_minor}</dd>
+                <dt>Canonical recorded actual cost</dt>
+                <dd>{result.category.paid_minor}</dd>
+                <dt>Outstanding commitments</dt>
+                <dd>{result.category.committed_remaining_minor}</dd>
+                <dt>Remaining forecast</dt>
+                <dd>{result.category.remaining_minor}</dd>
+                <dt>Projected category cost</dt>
+                <dd>{result.category.projected_minor}</dd>
+              </dl>
+              <p>
+                All values are copied {result.canonical_totals.currency} minor
+                units for the entire original category, not allocations to this
+                source. Recorded costing is not settlement or proof that
+                unposted labor is zero.
+              </p>
+            </>
           )}
           {result.labor && (
             <p>
@@ -335,6 +352,40 @@ function ActionForm({
               {result.invoice_requirement.status}:{' '}
               {result.invoice_requirement.detail}
             </p>
+          )}
+          <h4>Independent original invoice requirements</h4>
+          <ul>
+            {result.invoice_requirements.map((requirement) => (
+              <li key={requirement.id}>
+                {requirement.id} · {requirement.status}: {requirement.detail}
+              </li>
+            ))}
+          </ul>
+          <p>
+            Original invoice outcome: {result.invoice_overall}. A reviewed cost
+            source or canonical cost-complete flag (
+            {String(result.canonical_totals.complete)}) does not clear these
+            independent requirements, issue an invoice or create customer debt.
+          </p>
+          <h4>Available canonical cost warnings</h4>
+          {result.canonical_warnings.length ? (
+            <ul>
+              {result.canonical_warnings.map((warning, index) => (
+                <li key={index}>{warning}</li>
+              ))}
+            </ul>
+          ) : (
+            <p>
+              No warning is listed in this available source; completeness
+              remains separate.
+            </p>
+          )}
+          {result.missing_evidence.length > 0 && (
+            <ul aria-label="Original missing cost evidence">
+              {result.missing_evidence.map((fact, index) => (
+                <li key={index}>{fact}</li>
+              ))}
+            </ul>
           )}
           <ul>
             {result.financial_exceptions.map((r) => (

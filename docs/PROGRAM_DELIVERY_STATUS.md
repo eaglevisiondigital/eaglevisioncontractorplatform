@@ -1,3 +1,7 @@
+# Cycle27 · native correction cycle
+
+Six exact bounded author commits are assembled on f81081 in separate worktrees. Local178 focused cases PASS; combined committed browser and exact-head CI are pending. Manifest and prior-CI reconciliation preserve original sources and every historical gap. Readiness draft192 identifies the original request→receipt→staff-read owners/writers, with all operational assignments/current grants/custody/recovery unverified. No new store, engine, adapter, connected route or restored authority. Release1.0 NOT READY / NOT AUTHORIZED.
+
 # Product program delivery status
 
 ## Cycle26 · six native corrections delivered locally
