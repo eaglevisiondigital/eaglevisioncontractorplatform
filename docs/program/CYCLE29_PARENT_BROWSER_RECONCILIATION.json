@@ -1,0 +1,82 @@
+{
+  "schema": "propel-cycle29-original-browser-reconciliation-v1",
+  "source_commit": "5f74b8ff5385560330cb94717c17338ed0c10f44",
+  "workflow_commit": "f700139b48a22bb189e0ee1784f83cd11334a6b7",
+  "run_id": 41854921550,
+  "config_sha256": "d15e9c4d8f4984878a5cf60bb50e853a1c4fbc9b3de98f380850cd375e553078",
+  "collected": 399,
+  "passed": 397,
+  "failed": 2,
+  "missing": 0,
+  "duplicate": 0,
+  "skipped": 0,
+  "retried": 0,
+  "all_four_passed": false,
+  "foundation_pass": false,
+  "outcome": "ORIGINAL_FAILURES_RETAINED_COVERAGE_NOT_CLOSED",
+  "shards": [
+    {
+      "shard": 1,
+      "cases": 103,
+      "passed": 102,
+      "failed": [
+        {
+          "file": "cycle21-canonical-corrections.spec.ts",
+          "title": "canonical task cost plan corrections and exact history navigation / roofing-example",
+          "project": "desktop",
+          "status": "timedOut",
+          "duration_ms": 30359,
+          "original_case_key": "ae658448f56b03812e02a148bd49f219f24a5ebc86e1e44c5631a80f16e5d725"
+        }
+      ],
+      "hashes": {
+        "source": "48ca39a2fa4cfec38d76ad651cc9f7af34ad2d917ee27e885b9be014033d7ead",
+        "list": "75c150b2a52fcb75a4bcc1540ba7578f11c4a5b4dfb0797f8aa636c03cf6865b",
+        "results": "18fc547038cbdfb8160a95dfbceb368d0f4c3761db07473bcfe4720bdfdf6f96"
+      }
+    },
+    {
+      "shard": 2,
+      "cases": 99,
+      "passed": 98,
+      "failed": [
+        {
+          "file": "cycle21-canonical-corrections.spec.ts",
+          "title": "canonical task cost plan corrections and exact history navigation / roofing-example",
+          "project": "tablet",
+          "status": "timedOut",
+          "duration_ms": 32269,
+          "original_case_key": "54408be09bd87cb3211c230f7e5497cdb04701f6fafcc0ed47b8a999b1d60b30"
+        }
+      ],
+      "hashes": {
+        "source": "6770ca2a4f3639e20b8c4fe1dbd468d524509982ab593cbaf6e59a1b7dcbd5f3",
+        "list": "990f1fd4659048c3ce2af23242f3d9a31facccfaafedc8aae3b517adfe49ac3c",
+        "results": "719e31e857f1fdf06550ff53eb6485dbb46893a599354d361db51df86a4e9fc2"
+      }
+    },
+    {
+      "shard": 3,
+      "cases": 104,
+      "passed": 104,
+      "failed": [],
+      "hashes": {
+        "source": "6090ca6d1acc7a684f95364fa8f08b0c83bc9a1e97f62607d2f235ce162ec6b0",
+        "list": "a752ea20f99a58d7b1220398820cf8491a44bd42a02b11acddcc5f987bb8914a",
+        "results": "35d4a7d6e133ec4e5ed2b1fe481ec4bb720cfacee1b30c8f702787d4258af97f"
+      }
+    },
+    {
+      "shard": 4,
+      "cases": 93,
+      "passed": 93,
+      "failed": [],
+      "hashes": {
+        "source": "70fac2975f2dc862fa83e042512ee9305c2902e41cc8d8b7c1405c89c6f6c6af",
+        "list": "47af0bba311b73183b5ed7dc8382d2443e0f2c38b671524208b26edc5da69b77",
+        "results": "5f2325b36e7c718a900031b0dca70c196e9ff7952181189c052c83c5f4c02840"
+      }
+    }
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

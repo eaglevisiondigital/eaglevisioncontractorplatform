@@ -1,0 +1,53 @@
+name: Cycle 29 exact C27 failed-case evidence
+on:
+  push:
+    branches: ['codex/cycle29-ci-reconciliation']
+permissions:
+  contents: read
+concurrency:
+  group: cycle29-c27-failed-cases-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-two-cases:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 5f74b8ff5385560330cb94717c17338ed0c10f44
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Bind original unchanged application and assertions
+        run: |
+          test "$(git rev-parse HEAD)" = 5f74b8ff5385560330cb94717c17338ed0c10f44
+          git diff --exit-code
+          mkdir -p artifacts/cycle29-parent
+          node --input-type=module -e 'import {writeFileSync,readFileSync} from "node:fs";import {createHash} from "node:crypto";writeFileSync("artifacts/cycle29-parent/source.json",JSON.stringify({source_commit:"5f74b8ff5385560330cb94717c17338ed0c10f44",config_sha256:createHash("sha256").update(readFileSync("playwright.config.ts")).digest("hex"),test_sha256:createHash("sha256").update(readFileSync("tests/browser/cycle21-canonical-corrections.spec.ts")).digest("hex"),scope:"EXACT_TWO_FAILED_CASE_SUPPLEMENT_NOT_ORIGINAL_PASS",timeout_override:false,retries:0},null,2));'
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Run only the two failed original cases without budget changes
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_NAME: artifacts/cycle29-parent/results.json
+        run: npm run test:browser -- tests/browser/cycle21-canonical-corrections.spec.ts --grep 'canonical task cost plan corrections and exact history navigation / roofing-example' --project=desktop --project=tablet --workers=2 --retries=0 --reporter=json
+      - name: Require both exact original cases
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFileSync} from 'node:fs';
+          const r=JSON.parse(readFileSync('artifacts/cycle29-parent/results.json','utf8'));
+          const rows=[]; function walk(x){for(const s of x.suites??[])walk(s);for(const s of x.specs??[])for(const t of s.tests??[])rows.push({s,t});} walk(r);
+          if(r.config.workers!==2 || r.errors.length || r.stats.expected!==2 || r.stats.unexpected!==0 || r.stats.skipped!==0 || r.stats.flaky!==0 || rows.length!==2)throw Error('Both original cases must finish');
+          const projects=new Set();for(const {s,t} of rows){if(s.file!=='cycle21-canonical-corrections.spec.ts'||s.title!=='canonical task cost plan corrections and exact history navigation / roofing-example'||!['desktop','tablet'].includes(t.projectId)||projects.has(t.projectId)||t.timeout!==30000||t.expectedStatus!=='passed'||t.status!=='expected'||t.results.length!==1||t.results[0].status!=='passed'||t.results[0].retry!==0)throw Error('Wrong original case or outcome');projects.add(t.projectId);}
+          console.log('Two same-source original-budget cases PASS; original shard failures remain unchanged.');
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle29-c27-exact-two-failed-cases
+          path: |
+            artifacts/cycle29-parent/
+            artifacts/cycle21/
+            test-results/
+          retention-days: 7
