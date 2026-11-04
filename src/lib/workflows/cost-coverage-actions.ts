@@ -147,8 +147,8 @@ export function validateCostCoverageAction(
       'Saved job revision changed; reselect the current original source',
     );
   const source = inspectRecordedCostSource(view, {
-    kind: input.kind,
-    id: input.id,
+    kind: p.kind as CostCoverageActionInput['kind'],
+    id: p.id as string,
   });
   if (
     (p.purpose === 'invoice_preparation') !==
