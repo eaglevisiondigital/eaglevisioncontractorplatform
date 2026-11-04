@@ -312,6 +312,15 @@ export function admitCycle25Source(path, current, original, supplied = {}) {
     owners = cycle25Authors.filter((s) => s.modified.includes(path));
   if (
     owners.length === 0 &&
+    cycle32Authors.some((s) => s.modified.includes(path))
+  )
+    return {
+      ...admitCycle32Forward(path, current, original, ports),
+      path,
+      authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+    };
+  if (
+    owners.length === 0 &&
     cycle30Authors.some((s) => s.modified.includes(path))
   )
     return {
@@ -927,6 +936,11 @@ function admitCycle28Forward(path, current, previous, ports) {
       ...result,
       cycle29_forward: admitCycle29Forward(path, current, endpoint, ports),
     };
+  if (cycle32Authors.some((s) => s.modified.includes(path)))
+    return {
+      ...result,
+      cycle32_forward: admitCycle32Forward(path, current, endpoint, ports),
+    };
   throw Error(
     'Current source differs from fixed Cycle27 lineage (fixed Cycle28 author required)',
   );
@@ -1392,6 +1406,209 @@ export function inspectCycle31Sources({
     packages: rows,
     complete_combined:
       rows.length === 2 &&
+      rows.every((r) => r.state === 'EXACT_SUCCESSOR_PRESENT'),
+    business_authority: false,
+    restore_adapter: false,
+  };
+}
+
+// Finite build-only admission. These pins do not restore business state or grant
+// any application, staff, financial, provider or operational authority.
+export const cycle32Parent = '43e622b16aa952f5dc2fe7ae9f96260b47682c2e';
+export const cycle32Authors = Object.freeze(
+  [
+    {
+      module: 'task-input-binding',
+      owner: '/root/cycle30_field_growth',
+      commit: '452d57049e60c5228718fc7647346faab7ac4409',
+      permitted: ['src/lib/workflows/task-correction-review.ts'],
+      modified: ['src/lib/workflows/task-correction-review.ts'],
+      added: [
+        'docs/program/CYCLE32_TASK_INPUT_BINDING.md',
+        'tests/cycle32-task-input-binding.test.ts',
+      ],
+    },
+    {
+      module: 'profit-guard-completeness',
+      owner: '/root/cycle25_finance_intelligence_resume',
+      commit: '8fec4897bb116c3234e521be2b23260b9f2e503f',
+      permitted: ['src/lib/profit-guard.ts'],
+      modified: ['src/lib/profit-guard.ts'],
+      added: [
+        'docs/program/CYCLE32_PROFIT_GUARD_COMPLETENESS.md',
+        'tests/cycle32-profit-guard-completeness.test.ts',
+      ],
+    },
+    {
+      module: 'owner-filter-navigation',
+      owner: '/root/cycle25_finance_intelligence_resume',
+      commit: '34cae8398fc135b55452e86bdb3b62a8b76d13d6',
+      permitted: ['src/components/workflows/OwnerActionVerification.tsx'],
+      modified: ['src/components/workflows/OwnerActionVerification.tsx'],
+      added: [
+        'docs/program/CYCLE32_OWNER_FILTER_NAVIGATION.md',
+        'tests/cycle32-owner-filter-navigation.test.ts',
+      ],
+    },
+    {
+      module: 'voice-input-continuity',
+      owner: '/root/cycle32_customer_advanced',
+      commit: '243a6c79ea9324552ac549c31a280608604453d6',
+      nativeCorrection: {
+        commit: '6447d881c2011ce178694bd87bbb303b862b1bb9',
+      },
+      permitted: ['src/lib/program/voice-estimate.ts'],
+      modified: ['src/lib/program/voice-estimate.ts'],
+      added: [
+        'docs/program/CYCLE32_VOICE_INPUT_CONTINUITY.md',
+        'tests/cycle32-voice-input-continuity.test.ts',
+      ],
+    },
+  ].map((s) =>
+    Object.freeze({
+      ...s,
+      ...(s.nativeCorrection
+        ? { nativeCorrection: Object.freeze(s.nativeCorrection) }
+        : {}),
+      permitted: Object.freeze(s.permitted),
+      modified: Object.freeze(s.modified),
+      added: Object.freeze(s.added),
+    }),
+  ),
+);
+
+export function validateCycle32ForwardSpec(spec, ports = cycle25SourcePorts) {
+  const fixed = cycle32Authors.find((s) => s.module === spec?.module);
+  if (
+    !fixed ||
+    spec.commit !== fixed.commit ||
+    spec.owner !== fixed.owner ||
+    !/^[a-f0-9]{40}$/.test(spec.commit ?? '') ||
+    ports.type(spec.commit) !== 'commit' ||
+    ports.parent(spec.commit) !== cycle32Parent
+  )
+    throw Error('Exact fixed single-parent Cycle32 author required');
+  for (const field of ['permitted', 'modified', 'added', 'nativeCorrection'])
+    if (JSON.stringify(spec[field]) !== JSON.stringify(fixed[field]))
+      throw Error('Exact bounded Cycle32 ownership and correction required');
+  const expected = [
+    ...fixed.modified.map((p) => `M\t${p}`),
+    ...fixed.added.map((p) => `A\t${p}`),
+  ]
+    .sort()
+    .join('\n');
+  if (ports.delta(fixed.commit) !== expected)
+    throw Error('Exact bounded Cycle32 author delta required');
+  for (const path of fixed.modified)
+    if (ports.mode(cycle32Parent, path) !== '100644')
+      throw Error('Regular non-executable Cycle32 baseline required');
+  for (const path of [...fixed.modified, ...fixed.added])
+    if (ports.mode(fixed.commit, path) !== '100644')
+      throw Error('Regular non-executable Cycle32 source required');
+  if (fixed.nativeCorrection) {
+    const correction = fixed.nativeCorrection.commit;
+    if (
+      ports.type(correction) !== 'commit' ||
+      ports.parent(correction) !== fixed.commit
+    )
+      throw Error('Exact direct-parent Cycle32 correction required');
+    const correctionDelta = [...fixed.modified, ...fixed.added]
+      .map((p) => `M\t${p}`)
+      .sort()
+      .join('\n');
+    if (ports.delta(correction) !== correctionDelta)
+      throw Error('Exact bounded Cycle32 correction delta required');
+    for (const path of [...fixed.modified, ...fixed.added])
+      if (ports.mode(correction, path) !== '100644')
+        throw Error('Regular non-executable Cycle32 correction required');
+  }
+  return {
+    source_commit: fixed.commit,
+    native_correction: fixed.nativeCorrection?.commit ?? null,
+    module: fixed.module,
+    owner: fixed.owner,
+  };
+}
+
+export function admitCycle32Forward(
+  path,
+  current,
+  previous,
+  ports = cycle25SourcePorts,
+) {
+  const owners = cycle32Authors.filter((s) => s.modified.includes(path));
+  if (owners.length !== 1) throw Error('No finite Cycle32 source owner');
+  const spec = owners[0],
+    result = validateCycle32ForwardSpec(spec, ports);
+  if (
+    !Buffer.from(ports.git(cycle32Parent, path)).equals(Buffer.from(previous))
+  )
+    throw Error('Exact Cycle32 parent source required');
+  const endpoint = Buffer.from(
+    ports.git(spec.nativeCorrection?.commit ?? spec.commit, path),
+  );
+  if (!endpoint.equals(Buffer.from(current)))
+    throw Error('Current source differs from fixed Cycle32 author');
+  for (const added of spec.added)
+    if (
+      !Buffer.from(ports.read(added)).equals(
+        Buffer.from(
+          ports.git(spec.nativeCorrection?.commit ?? spec.commit, added),
+        ),
+      )
+    )
+      throw Error('Exact Cycle32 author test/document required');
+  return result;
+}
+
+export function inspectCycle32Sources({
+  requireCombined = false,
+  ...supplied
+} = {}) {
+  const ports = { ...cycle25SourcePorts, ...supplied },
+    rows = [],
+    owned = new Set();
+  for (const spec of cycle32Authors) {
+    validateCycle32ForwardSpec(spec, ports);
+    for (const path of [...spec.modified, ...spec.added]) {
+      if (owned.has(path)) throw Error('Overlapping Cycle32 source ownership');
+      owned.add(path);
+    }
+    let count = 0;
+    for (const path of spec.modified) {
+      const current = Buffer.from(ports.read(path)),
+        base = Buffer.from(ports.git(cycle32Parent, path));
+      if (!current.equals(base)) {
+        admitCycle32Forward(path, current, base, ports);
+        count++;
+      }
+    }
+    if (count && count !== spec.modified.length)
+      throw Error('Partial Cycle32 package forbidden');
+    if (!count) {
+      for (const path of spec.added) {
+        let present = false;
+        try {
+          ports.read(path);
+          present = true;
+        } catch (error) {
+          if (error?.code !== 'ENOENT') throw error;
+        }
+        if (present) throw Error('Partial Cycle32 package forbidden');
+      }
+      if (requireCombined) throw Error('Combined Cycle32 package absent');
+    }
+    rows.push({
+      module: spec.module,
+      commit: spec.commit,
+      native_correction: spec.nativeCorrection?.commit ?? null,
+      state: count ? 'EXACT_SUCCESSOR_PRESENT' : 'BASELINE_UNCHANGED',
+    });
+  }
+  return {
+    packages: rows,
+    complete_combined:
+      rows.length === 4 &&
       rows.every((r) => r.state === 'EXACT_SUCCESSOR_PRESENT'),
     business_authority: false,
     restore_adapter: false,

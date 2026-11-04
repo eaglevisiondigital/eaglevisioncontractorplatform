@@ -96,7 +96,7 @@ export function validateCycle21PublishedSource(
   )
     throw Error(`Exact published Cycle21 bytes/blob required: ${file.path}`);
   if (bytes.equals(published)) return;
-  // Original SHA/blob evidence remains immutable. Only these two fixed,
+  // Original SHA/blob evidence remains immutable. Only these fixed,
   // independently reviewed author/path endpoints may pass source-only admission.
   const expected =
     commit === '161f1c59d864d60aa0f45820eb6417864519baf2'
@@ -108,7 +108,10 @@ export function validateCycle21PublishedSource(
               'owner-navigation-runtime',
             ]
           : undefined
-      : undefined;
+      : commit === '4681fc9d76a31044eded27b6f3340c2cb0b2c89c' &&
+          file.path === 'src/lib/workflows/task-correction-review.ts'
+        ? ['452d57049e60c5228718fc7647346faab7ac4409', 'task-input-binding']
+        : undefined;
   let admitted;
   if (expected) {
     try {
