@@ -1,0 +1,45 @@
+.owner-action-verification {
+  color: #27352f;
+  overflow-wrap: anywhere;
+  border: 1px solid #dcded4;
+  border-radius: 14px;
+  padding: 1rem;
+  margin-block: 1rem;
+  background: #fffdf8;
+}
+.owner-action-verification :is(h3, h4) {
+  color: #203e32;
+}
+.owner-action-verification :is(button, select) {
+  min-height: 44px;
+  max-width: 100%;
+  white-space: normal;
+}
+.owner-action-verification label {
+  display: block;
+  margin-block: 0.75rem;
+  min-height: 44px;
+}
+.owner-action-verification select {
+  width: 100%;
+  margin-block-end: 0.75rem;
+}
+.owner-action-verification :is(button, select):focus-visible {
+  outline: 3px solid var(--journey-accent, #b58a49);
+  outline-offset: 3px;
+}
+.owner-action-verification input {
+  min-width: 20px;
+  min-height: 20px;
+  margin-inline-end: 0.5rem;
+}
+.owner-action-result {
+  border-top: 1px solid #dcded4;
+  margin-block-start: 1rem;
+  padding-block-start: 0.5rem;
+}
+@media (max-width: 640px) {
+  .owner-action-verification button {
+    width: 100%;
+  }
+}
