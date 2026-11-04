@@ -1,4 +1,4 @@
-name: Cycle 31 matched original-budget browser diagnosis
+name: Cycle 31 original-budget frozen candidate follow-up
 on:
   push:
     branches: ['codex/cycle31-ci-reliability']
@@ -17,10 +17,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - label: original-c27
-            source: 5f74b8ff5385560330cb94717c17338ed0c10f44
-          - label: cycle30-candidate
-            source: 353923ce2c6677ae3d5026ac46cf214b2a549aa3
+          - label: cycle31-candidate
+            source: 1a677d67cb1f79246a7912ab7dc4ed3bacc81ccc
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:

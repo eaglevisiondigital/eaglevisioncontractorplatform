@@ -8,7 +8,7 @@
       "author_commit": "1538060250fc34654414dac6b29621bf44fabd98",
       "author_parent": "353923ce2c6677ae3d5026ac46cf214b2a549aa3",
       "branch": "codex/cycle31-maintenance-proposal-input",
-      "draft_pr": null,
+      "draft_pr": 231,
       "kind": "RUNTIME_CORRECTION",
       "new_cases": 11,
       "files": [
@@ -27,7 +27,17 @@
           "path": "tests/cycle31-maintenance-proposal-input.test.ts",
           "sha256": "15edfd41e18f8f67a074763c26977d1252bd839406888eab9651ad8bf189521e"
         }
-      ]
+      ],
+      "head_commit": "16e7ee02f2ff7d99f7bbeac1b8e264a5eabe6a2e",
+      "support_scope": [
+        "scripts/cycle25-source-lineage.mjs",
+        "scripts/check-cycle21.mjs",
+        "scripts/check-cycle22.mjs",
+        "scripts/check-cycle23.mjs",
+        "tests/cycle31-owner-source-compatibility.test.ts",
+        "docs/program/CYCLE31_OWNER_SOURCE_COMPATIBILITY.md"
+      ],
+      "original_author_hashes_are_historical_not_automatic_current_bytes": true
     },
     {
       "module": "legacy-source-compatibility",
@@ -63,7 +73,9 @@
           "path": "tests/cycle31-owner-source-compatibility.test.ts",
           "sha256": "b28d403b950df393ce6646a1e7fd15514abe44dbc2d1d86bd61dedd360b5e4c7"
         }
-      ]
+      ],
+      "head_commit": "94a5da1f2cf4187acdd412cdefaec627d1dee463",
+      "original_author_hashes_are_historical_not_automatic_current_bytes": true
     },
     {
       "module": "hosted-dependencies",
@@ -104,14 +116,16 @@
           "path": "tests/cycle31-chromium-source-shape.test.ts",
           "sha256": "1506285d2d54cb012fa0d94743a24650239f09462f07a22a366c86b22e1ba9bd"
         }
-      ]
+      ],
+      "head_commit": "75e5a267b8460c41da68779fc34a41571b087fae",
+      "original_author_hashes_are_historical_not_automatic_current_bytes": true
     },
     {
       "module": "owner-navigation-runtime",
       "author_commit": "4dc82f93b4cc156ff3f9a4fb46aa3fefa2c93517",
       "author_parent": "353923ce2c6677ae3d5026ac46cf214b2a549aa3",
       "branch": "codex/cycle31-owner-navigation-runtime",
-      "draft_pr": null,
+      "draft_pr": 232,
       "kind": "RUNTIME_GUARD_COMPOSITION_CORRECTION",
       "new_cases": 15,
       "files": [
@@ -130,12 +144,22 @@
           "path": "tests/cycle31-owner-navigation-runtime.test.ts",
           "sha256": "43a4f709ffc4309407bd36af34439246f38b842ebf874f2dfa7957f62340f5c9"
         }
-      ]
+      ],
+      "head_commit": "a1cdbfea9eb92fab3b129867491f2f6ac33b712c",
+      "support_scope": [
+        "scripts/cycle25-source-lineage.mjs",
+        "scripts/check-cycle21.mjs",
+        "scripts/check-cycle22.mjs",
+        "scripts/check-cycle23.mjs",
+        "tests/cycle31-owner-source-compatibility.test.ts",
+        "docs/program/CYCLE31_OWNER_SOURCE_COMPATIBILITY.md"
+      ],
+      "original_author_hashes_are_historical_not_automatic_current_bytes": true
     }
   ],
   "audited_no_change": ["field", "finance", "customer", "offline"],
   "independent_test_author": "/root/cycle28_independent_review",
-  "independent_test_cases": 5,
+  "independent_test_cases": 10,
   "operational_decisions": {
     "commit": "def22f220a8a94217b342a1a0fce32baf1c6afab",
     "draft_pr": 230,
@@ -150,6 +174,90 @@
     "matched_first": 41884760108,
     "matched_complete": 41887387379,
     "historical_original_cases": "ORIGINAL_C27_0_PASS_2_TIMED_OUT_AND_CYCLE30_0_PASS_2_TIMED_OUT",
-    "closure": "OPEN_CURRENT_CANDIDATE_HOSTED_TEST_REQUIRED"
+    "closure": "EXACT_RUNTIME_TWO_CASES_PASS_NOT_WHOLE_FOUNDATION",
+    "candidate_only_run": 41890061538,
+    "candidate_cases": "2_PASS_ORIGINAL_30_SECONDS_WORKERS_2_RETRIES_0",
+    "candidate_result_sha256": "8301af1c8c86af726080f00784fc683a500d2e000428c6176dec7b425ae722c3",
+    "selected_14_regression_run": 41892781409,
+    "selected_14_status": "FAIL_TEN_PASS_FOUR_NOT_SELECTED_COLLECTOR_DENIED",
+    "parent_later_same_head_162": "PASS_IN_CANCELLED_SECOND_FOUNDATION_NOT_WHOLE_RUN",
+    "missing_four_followup": {
+      "diagnostic_commit": "75e5a267b8460c41da68779fc34a41571b087fae",
+      "scope": "FOUR_MISSING_ONLY_104_COLLECTED_100_DESELECTED",
+      "previous_ten_not_repeated": true,
+      "status": "QUEUED_AT_RECORDED_OBSERVATION",
+      "run": 41897772376
+    },
+    "hosted_combined": {
+      "run": 41892296853,
+      "source": "832fbb8b62c25c232d14ec10081083961d84cddc",
+      "workflow": "PASS_NOT_FOUNDATION_OR_LATER_HEAD_INHERITANCE"
+    }
+  },
+  "runtime_candidate": "1a677d67cb1f79246a7912ab7dc4ed3bacc81ccc",
+  "executed_clean_commit": "832fbb8b62c25c232d14ec10081083961d84cddc",
+  "coordination_draft_pr": 233,
+  "new_cases": 106,
+  "complete_focused_cases": 591,
+  "complete_focused_suites": 27,
+  "ci_current_support_files": [
+    {
+      "path": "scripts/cycle30-chromium-dependencies.mjs",
+      "sha256": "531b1f3b43e38975a456a8421fc7135991b89313e22e0f87daa5ecc673bf659f"
+    },
+    {
+      "path": "scripts/cycle31-ubuntu-source-probe.mjs",
+      "sha256": "faee337a766c98ba22439992956f523e7b4c314ab2eb75a1e830e4c1e7320402"
+    },
+    {
+      "path": "tests/cycle31-chromium-source-shape.test.ts",
+      "sha256": "a54600812e4ce0ba7c6dd1c796a1bb353d91a733a1a8409c56365b7bebce58ee"
+    },
+    {
+      "path": ".github/workflows/cycle31-runner-source-probe.yml",
+      "sha256": "1e58daa354e8d90dff4578eadcc0813c0a06611ea283c7744a3f55dfe28cf935"
+    },
+    {
+      "path": ".github/workflows/cycle31-browser-diagnostics.yml",
+      "sha256": "d51baf66380d47ef29990de79d59406ab272a834a8d656c3bea2104a63dc83e0"
+    },
+    {
+      "path": "scripts/cycle31-foundation-selected-14.mjs",
+      "sha256": "7674d17bf381df931b3e4b2e35c363519c6056889efbd213d4d4967fd9e7fd07"
+    },
+    {
+      "path": "scripts/cycle31-foundation-selected-14.json",
+      "sha256": "359ced93ef926cb161cb30216cc8bc8cc9be2d7d941dffe299a08c5cccf1b32e"
+    },
+    {
+      "path": ".github/workflows/cycle31-foundation-selected-14.yml",
+      "sha256": "149cbc2a3092846bb394c2b0652c15d1544bf7ca9f7466acf4bfda0e64d981fd"
+    },
+    {
+      "path": "scripts/cycle31-foundation-selected-14-missing-four.json",
+      "sha256": "0a8684097728f6eb61f6125391396e94099d36a445db726a6078fdb369138fba"
+    },
+    {
+      "path": "docs/program/CYCLE31_FOUNDATION_SELECTION_SUPPLEMENT.md",
+      "sha256": "013715974cd2b4648ca2bbc4dfde85d32f8fbc870609f6f71d32844960d169e3"
+    }
+  ],
+  "shared_coordinator_support": {
+    "scripts/cycle25-source-lineage.mjs": "52afb8b09ce5a3782749068bd8f6e101be2ef86390507a4810258c374c0954e9",
+    "scripts/check-cycle21.mjs": "2faca680dd93ceae984dcb5fb349e82c4d69314bbad859dc3ab62bb669c750bc",
+    "scripts/check-cycle22.mjs": "012759886be4fe185e84f4f92a6c95ca6ff975bf2e18b69caa7406a82d858d7d",
+    "scripts/check-cycle23.mjs": "b05ab27f1172a9050ca7992f8656c5e37a9a2427b66f72f622a15506e593b6de",
+    "scripts/collect-cycle24-browser.mjs": "d24c956750164e0280157d86a86f0abcee4d757848a63590a73ec246b6dcd3ac",
+    ".github/workflows/cycle31-integration.yml": "b3ce70c0a2e277ceba476cfea550681b6fca1e501c1fa777079a40a58e1d452c",
+    "tests/cycle31-source-lineage.test.ts": "a573acbbd170aa23e0f430da8065251d73fdcfa4b0ac819292fd1df15218a9fc",
+    "tests/cycle31-independent-source-review.test.ts": "d0fc9a3c0ce95db38555d91c45c6f45ee4b75ea273da1582ee39ef690cc1999a"
+  },
+  "independent_review": {
+    "commit": "09444b24868bd9b7891367e931a9bfd630dad3ef",
+    "parent": "832fbb8b62c25c232d14ec10081083961d84cddc",
+    "branch": "codex/cycle31-final-independent-review-unique",
+    "draft_pr": 234,
+    "scope": "SOURCE_SECURITY_AND_ACTUAL_ARTIFACT_REVIEW_LOCAL_ONLY",
+    "document_sha256": "4ffbdb21f828ec07d74985012ea679cd6bda3488ea72ffbd64c4cfb37203caca"
   }
 }
