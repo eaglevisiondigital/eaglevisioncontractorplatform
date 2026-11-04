@@ -38,24 +38,17 @@ test.beforeAll(async () => {
     logLevel: 'silent',
     server: { host: '127.0.0.1', port: 0 },
   });
-  server.middlewares.use('/__cycle27_access__.html', async (req, res, next) => {
-    try {
-      const kind = new URL(req.url!, 'http://127.0.0.1').searchParams.get(
-        'kind',
-      );
-      if (kind !== 'field' && kind !== 'growth')
-        throw Error('Finite fixture required');
-      res.setHeader('Content-Type', 'text/html');
-      res.end(
-        await server.transformIndexHtml(
-          '/__cycle27_access__.html',
-          fixture(kind),
-        ),
-      );
-    } catch (e) {
-      next(e);
-    }
-  });
+  for (const kind of ['field', 'growth'] as const) {
+    const path = '/__cycle27_' + kind + '_access__.html';
+    server.middlewares.use(path, async (_request, response, next) => {
+      try {
+        response.setHeader('Content-Type', 'text/html');
+        response.end(await server.transformIndexHtml(path, fixture(kind)));
+      } catch (error) {
+        next(error);
+      }
+    });
+  }
   await server.listen();
   const address = server.httpServer?.address();
   if (!address || typeof address === 'string')
@@ -76,7 +69,7 @@ for (const kind of ['field', 'growth'] as const)
         if (new URL(r.url()).origin !== baseUrl) outside.push(r.url());
       });
       await page.goto(
-        baseUrl + '/__cycle27_access__.html?kind=' + kind + '&brand=' + brand,
+        baseUrl + '/__cycle27_' + kind + '_access__.html?brand=' + brand,
       );
       await page.waitForFunction('Boolean(window.__fixture)');
       let key: string;
