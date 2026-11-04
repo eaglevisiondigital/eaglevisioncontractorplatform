@@ -1,6 +1,6 @@
 {
   "schema": "propel-cycle26-validation-v1",
-  "stage": "SOURCE_CANDIDATE_BROWSER_PENDING",
+  "stage": "LOCAL_NATIVE_IMPLEMENTATION_COMPLETE_CI_SEPARATE",
   "application": {
     "unique_cases": 175,
     "passed": 175,
@@ -26,16 +26,35 @@
         "cases": 26
       }
     ],
-    "full_Foundation_acceptance": false
+    "full_Foundation_acceptance": false,
+    "author_retained_tests": "ADDITIONAL_ISOLATED_RETAINED_REPORTS_KEPT_SEPARATE_NOT_COUNTED_AGAIN"
   },
   "request_privacy_real_browser": {
     "passed": 9,
     "brands": 3,
     "viewports": ["desktop", "tablet", "mobile"],
     "baseline": "REAL_REACT_REVOCATION_RED_RETAINED",
-    "loopback_permission_attempt": "RETAINED_ENVIRONMENT_FAILURE_NOT_PRODUCT_FAILURE"
+    "loopback_permission_attempt": "RETAINED_ENVIRONMENT_FAILURE_NOT_PRODUCT_FAILURE",
+    "execution_scope": "EARLIER_SEPARATE_ORIGINAL_REACT_FIXTURE_RUN_NOT_RELABELLED_AS_27FA"
   },
-  "native_browser": "PENDING",
+  "native_browser": {
+    "development": 9,
+    "production_off": 3,
+    "brands": 3,
+    "viewports": ["desktop", "tablet", "mobile"],
+    "failed": 0,
+    "skipped": 0,
+    "retried": 0,
+    "screenshots": 63,
+    "keyboard_journeys": 9,
+    "trusted_events": 369,
+    "outside_requests": 0,
+    "scoped_runtime_files": 76,
+    "inventory_limit": "NOT_COMPLETE_TRANSITIVE_RUNTIME",
+    "independent_binding_review": "PASS",
+    "collector_sha256": "130ffc4dd7d47b36502009fdc33315b66c53807f4e79db98b3ec234b1be2a363",
+    "collector_status": "PASS"
+  },
   "quality": {
     "strict_types": "PASS",
     "lint": "PASS_ONE_PREEXISTING_FAST_REFRESH_WARNING",
@@ -51,5 +70,128 @@
   "physical_recovery": "NOT_RUN_SECOND_DEVICE_UNAVAILABLE_LAST_REPORT",
   "operational_ready": false,
   "restore_adapter": false,
-  "release": "NOT_READY_NOT_AUTHORIZED"
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "executed_browser_commit": "27fa839fec6adfaea72fb8810ce90d729a434f6b",
+  "working_tree_dirty_during_all_72_captures": false,
+  "local_total_browser_cases": 21,
+  "reports": [
+    {
+      "path": "artifacts/cycle26/browser-results.json",
+      "sha256": "2121bb2dd16360e26c4397e89a1d2263508418b700c0c836e121436c3188e8d0"
+    },
+    {
+      "path": "artifacts/cycle26/browser-off-results.json",
+      "sha256": "6f7f77d004eeb059e03b3b6378cc7b66fbde47f754ac45b750087f6a66e74d32"
+    },
+    {
+      "path": "artifacts/cycle26/request-browser-results.json",
+      "sha256": "78061eea03e0b6477f1c32346f146432fec83af34bc5998f15cb8efa2ac6b630"
+    },
+    {
+      "path": "artifacts/cycle26/browser-validation.json",
+      "sha256": "130ffc4dd7d47b36502009fdc33315b66c53807f4e79db98b3ec234b1be2a363"
+    }
+  ],
+  "independent_review": {
+    "source": "5a9fbd32028c637f0bb145ebc1ba8a11331438e1",
+    "draft_pr": 189,
+    "final_post_browser": "PASS_SCOPED_EXACT_27FA_BINDINGS",
+    "visual_approval": "PENDING_OPERATING_CENTER_AND_ADDONS",
+    "device_or_hosted_approval": false
+  },
+  "draft_prs": {
+    "coordination": 190,
+    "field": 183,
+    "finance": 184,
+    "customer": 185,
+    "growth": 186,
+    "intelligence": 187,
+    "offline": 188,
+    "matrix": 182,
+    "review": 189
+  },
+  "current_exact_feature_ci_snapshot": {
+    "checked_at": "2026-11-04T06:42:04.248052+00:00",
+    "results": [
+      {
+        "pr": 182,
+        "head": "e4ba39fbf2e00a8992316ca73adb9e6922730d9c",
+        "draft": true,
+        "state": "OPEN",
+        "outcomes": {
+          "QUEUED": 10
+        }
+      },
+      {
+        "pr": 183,
+        "head": "bf62081bd1cdaed0433db6c93ccce4aa801250f8",
+        "draft": true,
+        "state": "OPEN",
+        "outcomes": {
+          "QUEUED": 28
+        }
+      },
+      {
+        "pr": 184,
+        "head": "1831f1ab272ff8aa98e83aaff6e223a4a0ffc226",
+        "draft": true,
+        "state": "OPEN",
+        "outcomes": {
+          "QUEUED": 28
+        }
+      },
+      {
+        "pr": 185,
+        "head": "8af24cc1859e8550a84e33b4518c2e9a12b9df41",
+        "draft": true,
+        "state": "OPEN",
+        "outcomes": {
+          "QUEUED": 28
+        }
+      },
+      {
+        "pr": 186,
+        "head": "9889f5fd4722eeb8653cb223cc42497a4c6325ff",
+        "draft": true,
+        "state": "OPEN",
+        "outcomes": {
+          "QUEUED": 28
+        }
+      },
+      {
+        "pr": 187,
+        "head": "64fbaeecf3debea1d0ee0c65dda6ed1b2ed258c4",
+        "draft": true,
+        "state": "OPEN",
+        "outcomes": {
+          "QUEUED": 28
+        }
+      },
+      {
+        "pr": 188,
+        "head": "3097d31e802d87b2674615ee3e5c3114dcd494da",
+        "draft": true,
+        "state": "OPEN",
+        "outcomes": {
+          "QUEUED": 28
+        }
+      },
+      {
+        "pr": 189,
+        "head": "5a9fbd32028c637f0bb145ebc1ba8a11331438e1",
+        "draft": true,
+        "state": "OPEN",
+        "outcomes": {
+          "QUEUED": 10
+        }
+      }
+    ]
+  },
+  "coordination_ci": "NORMAL_AUTOMATIC_CI_ON_FINAL_DOCUMENTATION_HEAD_PENDING_SEPARATE_LIVE_VERIFICATION",
+  "no_successful_checks_restarted": true,
+  "test_servers": {
+    "4426": "CLOSED_CONNECTION_REFUSED",
+    "4436": "CLOSED_CONNECTION_REFUSED",
+    "persistent_worker": false
+  }
 }

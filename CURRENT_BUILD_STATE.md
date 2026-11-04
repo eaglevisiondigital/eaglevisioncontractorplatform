@@ -1,16 +1,21 @@
 # Propel Contractor Suite by Eagle Vision · current build state
 
-## Cycle26 · bounded native corrections under review
+## Cycle26 · six native corrections delivered locally
 
-Six original workflows now retain exact task/cost/source selections, withhold revoked
-request observations and stale maintenance actions, and explain offline UNKNOWN gaps
-without adding an engine, store, writer or restore adapter. Combined175 application/source
-cases and9 real request-revocation browser cases pass locally; the frozen candidate's
-full responsive native matrix is pending. Current GitHub CI is separate, never inferred.
-See [C26 source manifest](docs/program/CYCLE26_SOURCE_MANIFEST.json) and validation.
-The reviewed eight-family/R01–R19 owner/writer matrix remains NO-GO; no operational
-owner, genuine Auth/MFA, receipt/fence/backup or physical recovery gate is accepted.
-Historical C18/Foundation gaps remain OPEN. Original approvals and restrictions persist.
+Coordination draft[#190](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/190),
+features183–188, matrix182 and independent review189 preserve exact C25 parentaf95671.
+Actual175 unique Main application/source cases and21 browser cases pass:9native+3OFF
+at clean27fa839 and9 earlier real privacy regressions.63 source-bound screenshots and
+9 exact-context keyboard journeys pass. Exact current-head GitHub CI remains separate
+and queued at the observed snapshot, never inferred green. Historical C18/Foundation
+gaps remain OPEN; no successful check manually rerun. See [C26 validation](docs/program/CYCLE26_VALIDATION.md).
+
+Exact task/cost/source selections survive only explicit valid rereads; stale maintenance
+actions and revoked private observations are withheld. Original one-use/UNKNOWN custody,
+engines, designs and source owners remain. Eight-family/R01–R19 operational responsibility
+matrix is NO-GO; no new store, schema, writer or restore adapter. Air last unavailable;
+physical rehearsal NOT RUN, existing sealed kit/setup retained. All original P1/customer14/
+4B/Auth/MFA/NMI/Netlify/financial/recovery/production restrictions remain unchanged.
 Release1.0 NOT READY / NOT AUTHORIZED.
 
 Cycle25 delivery: coordination draft[#174](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/174),

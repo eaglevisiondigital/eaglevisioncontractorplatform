@@ -35,7 +35,10 @@
           "sha256": "bb52c141b30c1b10bb56e5cd2d70202c4a92f79490b5521445c64669377a84f4",
           "mode": "100644"
         }
-      ]
+      ],
+      "current_head": "bf62081bd1cdaed0433db6c93ccce4aa801250f8",
+      "draft_pr": 183,
+      "compatibility_forward": "ONLY_FIXED_SOURCE_LINEAGE_AND_PRIVATE_REPORT_IGNORE"
     },
     {
       "module": "financial-coverage",
@@ -69,7 +72,10 @@
           "sha256": "a424eaffaeb645dab3556fce26035e418232dbbf71a0f4a3d19ebc63ed9817c4",
           "mode": "100644"
         }
-      ]
+      ],
+      "current_head": "1831f1ab272ff8aa98e83aaff6e223a4a0ffc226",
+      "draft_pr": 184,
+      "compatibility_forward": "ONLY_FIXED_SOURCE_LINEAGE_AND_PRIVATE_REPORT_IGNORE"
     },
     {
       "module": "service-continuity",
@@ -103,7 +109,10 @@
           "sha256": "decbebfd6b5bc0f7b9fc3b159ef525cf067cf3d2453dcc6a4ff60a461b61baa9",
           "mode": "100644"
         }
-      ]
+      ],
+      "current_head": "8af24cc1859e8550a84e33b4518c2e9a12b9df41",
+      "draft_pr": 185,
+      "compatibility_forward": "ONLY_FIXED_SOURCE_LINEAGE_AND_PRIVATE_REPORT_IGNORE"
     },
     {
       "module": "maintenance-revalidation",
@@ -137,7 +146,10 @@
           "sha256": "ad578106c7a3804b1b36cf05c4c53bf52f577f654ccaaff782ffeec40fd89d01",
           "mode": "100644"
         }
-      ]
+      ],
+      "current_head": "9889f5fd4722eeb8653cb223cc42497a4c6325ff",
+      "draft_pr": 186,
+      "compatibility_forward": "ONLY_FIXED_SOURCE_LINEAGE_AND_PRIVATE_REPORT_IGNORE"
     },
     {
       "module": "owner-source-navigation",
@@ -171,7 +183,10 @@
           "sha256": "06ab72830d19b5d72c909ddc6ec478bd3cb00bfb73ddcbf03c0c6e7f88313239",
           "mode": "100644"
         }
-      ]
+      ],
+      "current_head": "64fbaeecf3debea1d0ee0c65dda6ed1b2ed258c4",
+      "draft_pr": 187,
+      "compatibility_forward": "ONLY_FIXED_SOURCE_LINEAGE_AND_PRIVATE_REPORT_IGNORE"
     },
     {
       "module": "offline-ambiguity",
@@ -199,7 +214,10 @@
           "sha256": "e11fe38520683ad55da685e5b3358df80ed62bb6447eb6e5984ba3f494437202",
           "mode": "100644"
         }
-      ]
+      ],
+      "current_head": "3097d31e802d87b2674615ee3e5c3114dcd494da",
+      "draft_pr": 188,
+      "compatibility_forward": "ONLY_FIXED_SOURCE_LINEAGE_AND_PRIVATE_REPORT_IGNORE"
     }
   ],
   "matrix": {
@@ -208,5 +226,11 @@
   },
   "operational_ready": false,
   "restore_adapter": false,
-  "release": "NOT_READY_NOT_AUTHORIZED"
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "independent_review": {
+    "commit": "5a9fbd32028c637f0bb145ebc1ba8a11331438e1",
+    "draft_pr": 189,
+    "post_browser_review": "PASS_EXACT_27FA_SOURCE_AND_63_IMAGES_FINITE_SCOPE"
+  },
+  "coordination_draft_pr": 190
 }
