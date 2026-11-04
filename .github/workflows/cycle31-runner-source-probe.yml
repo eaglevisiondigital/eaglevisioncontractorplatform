@@ -1,0 +1,28 @@
+name: Cycle 31 read-only Ubuntu source diagnosis
+on:
+  push:
+    branches: ['codex/cycle31-ci-reliability']
+    paths:
+      - '.github/workflows/cycle31-runner-source-probe.yml'
+      - 'scripts/cycle31-ubuntu-source-probe.mjs'
+permissions:
+  contents: read
+jobs:
+  source-shape:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+      - name: Read safe package-source shape without installation or trust changes
+        run: |
+          mkdir -p artifacts/cycle31
+          node scripts/cycle31-ubuntu-source-probe.mjs | tee artifacts/cycle31/runner-source-shape.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle31-runner-source-shape
+          path: artifacts/cycle31/runner-source-shape.json
+          retention-days: 7
