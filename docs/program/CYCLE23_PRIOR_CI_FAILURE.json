@@ -1,0 +1,57 @@
+{
+  "schema": "propel-cycle23-demonstrated-prior-ci-failure-v1",
+  "run": 41739067797,
+  "head": "9223fa1485a4369752fd82b0751eab2bb73591d1",
+  "failed_step": "Run npm run test:browser",
+  "passed_steps": [
+    "Set up job",
+    "Run actions/checkout@v4",
+    "Run actions/setup-node@v4",
+    "Run actions/setup-python@v5",
+    "Run npm ci",
+    "Run python -m pip install --require-hashes --only-binary=:all: -r recovery/monterey/requirements.lock",
+    "Run npm run format:check",
+    "Run npm run check",
+    "Run npm run staging:plan",
+    "Run npx playwright install --with-deps chromium",
+    "Run actions/upload-artifact@v4",
+    "Post Run actions/checkout@v4",
+    "Complete job"
+  ],
+  "browser": {
+    "passed": 296,
+    "failed": 31,
+    "cycle21_wrong_default_server_cases": 30,
+    "repair_stale_guard_case": 1
+  },
+  "causes": {
+    "cycle21": "Dedicated DEV cases used Foundation production4173 and network assertions hardcoded4421/4431. Configuration-only correction preserves all assertions.",
+    "repair": "Actual tablet roofing captures crossed UTC midnight. Controlled negative regression proves old snapshot rejects1/6 and remains0/6; explicit reload/current-date review reaches1/6. Original runtime guard unchanged."
+  },
+  "artifact": {
+    "id": 13281549834,
+    "size": 305896861,
+    "sha256": "51c93cb3cfec2ecfb1dbc5c575f87b4df06470f650c2d0a0ad7d817b3957e26e"
+  },
+  "failed_log_sha256": "d651eee2d9ad38a3a7f7a02f9e87a1d803fadd55ae6c932dc0ea1106fd1f3228",
+  "manual_reruns": 0,
+  "protected_changes": false,
+  "observed_at": "2026-11-04T00:14:37.743916+00:00",
+  "correction": {
+    "scope": "TEST_SETUP_ONLY_RUNTIME_UNCHANGED",
+    "cycle21": "Route only DEV cases from original Foundation4173 to its existing4206; dedicated4421/4431 unchanged. Outside-request assertions bind the exact actual configured origin.",
+    "repair": "Fixed Date at original scenario start; live timers remain active. Original six-section/edit-staleness assertions and timeouts unchanged.",
+    "original_cycle21_default_cases": 30,
+    "original_cycle21_failed": 0,
+    "original_cycle21_skipped": 0,
+    "original_cycle21_flaky": 0,
+    "cycle21_report": "artifacts/cycle23/retained-cycle21/default-foundation-browser.json",
+    "cycle21_report_sha256": "f5be85754025d575b9bee20ce83359bc646e5205cdce682cef5d4c6e069bdebe",
+    "original_tablet_cases": 6,
+    "negative_midnight_reload_cases": 1,
+    "negative_config": "tests/program/playwright.cycle23-repair-day.config.ts",
+    "negative_test": "tests/program/cycle23-repair-day-boundary.spec.ts",
+    "repair_source_commit": "3e5f303b454658ca291a0146a75f9112c2b8c5ba",
+    "ci_outcome": "ORIGINAL_FAILURE_PRESERVED_NEW_HEAD_AUTOMATIC_CI_PENDING"
+  }
+}
