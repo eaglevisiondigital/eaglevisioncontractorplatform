@@ -1,0 +1,114 @@
+name: Cycle 32 frozen failed-tablet owner diagnostic
+on:
+  push:
+    branches: ['codex/cycle32-owner-tablet-diagnostic']
+    paths:
+      - '.github/workflows/cycle32-owner-tablet-diagnostic.yml'
+      - 'docs/program/CYCLE32_OWNER_TABLET_DIAGNOSTIC.md'
+permissions:
+  contents: read
+concurrency:
+  group: cycle32-frozen-owner-tablet-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-failed-tablet-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout current diagnostic observer only
+        uses: actions/checkout@v4
+        with:
+          path: diagnostics
+      - name: Checkout exact original failed application
+        uses: actions/checkout@v4
+        with:
+          ref: 7b377aeffac11855a5dfdfaa86719078e70a5260
+          path: application
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+          cache-dependency-path: application/package-lock.json
+      - name: Bind frozen source, original assertions and unchanged observer
+        working-directory: application
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/cycle32-owner-tablet
+          node --input-type=module <<'NODE'
+          import {readFileSync,writeFileSync} from 'node:fs';import{createHash}from'node:crypto';import{execFileSync}from'node:child_process';
+          const git=(...args)=>execFileSync('git',args,{encoding:'utf8'}).trim();
+          if(git('rev-parse','HEAD')!=='7b377aeffac11855a5dfdfaa86719078e70a5260'||git('rev-parse','HEAD^{tree}')!=='ffd1ca81e6da9f2c3a1fcbff8f9c89c7ea4ada96'||git('status','--porcelain','--untracked-files=no'))throw Error('Frozen application changed');
+          if(process.version!=='v24.22.2'||process.platform!=='linux'||!/^VERSION_ID="24\.04"$/m.test(readFileSync('/etc/os-release','utf8')))throw Error('Reviewed runtime required');
+          const expected={'playwright.config.ts':'d15e9c4d8f4984878a5cf60bb50e853a1c4fbc9b3de98f380850cd375e553078','tests/browser/cycle21-canonical-corrections.spec.ts':'8eb9efc1ac90be4ccab01f295789465501016bf0aad63daaefc8a92bd276598b','package-lock.json':'8be30ee23e9cd3ca2f54e4b5beb7da07fd20ead0b86b504d31b29b1116b8baa3','package.json':'173cba41b87d3156b98136c15873d81fe2308ed83a067a321cc239948099a1d0','../diagnostics/scripts/cycle30-browser-timing.mjs':'12f81a8e5effae134f97e0e8297c8ffd39eb8a636610a9f533577c0c2ca5b8d6','../diagnostics/scripts/cycle30-chromium-dependencies.mjs':'531b1f3b43e38975a456a8421fc7135991b89313e22e0f87daa5ecc673bf659f','../diagnostics/scripts/cycle31-ubuntu-source-probe.mjs':'faee337a766c98ba22439992956f523e7b4c314ab2eb75a1e830e4c1e7320402'};
+          const hashes={};for(const[p,h]of Object.entries(expected)){hashes[p]=createHash('sha256').update(readFileSync(p)).digest('hex');if(hashes[p]!==h)throw Error('Original file changed: '+p);}
+          const observer=git('-C','../diagnostics','rev-parse','HEAD');if(observer!==process.env.GITHUB_SHA)throw Error('Observer source mismatch');
+          writeFileSync('artifacts/cycle32-owner-tablet/source-before.json',JSON.stringify({source:git('rev-parse','HEAD'),tree:git('rev-parse','HEAD^{tree}'),observer,node:process.version,platform:process.platform,hashes,tracked_source_clean:true},null,2));
+          NODE
+      - run: npm ci
+        working-directory: application
+      - name: Collect only the original failed tablet case without assertions
+        working-directory: application
+        run: |
+          npx playwright test tests/browser/cycle21-canonical-corrections.spec.ts --grep 'canonical task cost plan corrections and exact history navigation / roofing-example' --project=tablet --workers=2 --retries=0 --list --reporter=json > artifacts/cycle32-owner-tablet/collection.json
+          node --input-type=module <<'NODE'
+          import{readFileSync}from'node:fs';const r=JSON.parse(readFileSync('artifacts/cycle32-owner-tablet/collection.json'));const rows=[];
+          function walk(x){for(const s of x.suites??[])walk(s);for(const s of x.specs??[])for(const t of s.tests??[])rows.push({s,t});}walk(r);
+          const row=rows[0];if(rows.length!==1||r.config.workers!==2||r.errors.length||row.s.id!=='77c237965d0f5d0b4278-9002f75e57cf4314f9b8'||row.s.file!=='cycle21-canonical-corrections.spec.ts'||row.s.line!==282||row.s.title!=='canonical task cost plan corrections and exact history navigation / roofing-example'||row.t.projectId!=='tablet'||row.t.timeout!==30000||row.t.results.length!==0)throw Error('Exact original failed tablet collection required');
+          NODE
+      - name: Record this runner's original safe source shape
+        working-directory: application
+        run: |
+          set -euo pipefail
+          node ../diagnostics/scripts/cycle31-ubuntu-source-probe.mjs | tee artifacts/cycle32-owner-tablet/runner-source-shape.json
+      - name: Install only reviewed fonts with the unchanged strict helper
+        working-directory: application
+        run: node ../diagnostics/scripts/cycle30-chromium-dependencies.mjs
+      - name: Require complete pinned Chromium dependencies without unrelated APT changes
+        working-directory: application
+        run: |
+          set -euo pipefail
+          npx playwright install-deps --dry-run chromium | tee artifacts/cycle32-owner-tablet/chromium-dependencies-dry-run.txt
+      - run: npx playwright install chromium
+        working-directory: application
+      - name: Build the unchanged frozen application only
+        run: npm run build
+        working-directory: application
+      - name: Trace only the failed original tablet case under its original budget
+        id: original-test
+        working-directory: application
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_NAME: artifacts/cycle32-owner-tablet/results.json
+          CYCLE30_TIMING_OUTPUT: artifacts/cycle32-owner-tablet/timing.json
+        run: npx playwright test tests/browser/cycle21-canonical-corrections.spec.ts --grep 'canonical task cost plan corrections and exact history navigation / roofing-example' --project=tablet --workers=2 --retries=0 --trace=on --reporter=json,../diagnostics/scripts/cycle30-browser-timing.mjs
+      - name: Bind exact attempt, actual outcome and trace without promoting coverage
+        if: always() && steps.original-test.outcome != 'skipped'
+        working-directory: application
+        run: |
+          node --input-type=module <<'NODE'
+          import{readFileSync,writeFileSync,existsSync}from'node:fs';const r=JSON.parse(readFileSync('artifacts/cycle32-owner-tablet/results.json'));const rows=[];
+          function walk(x){for(const s of x.suites??[])walk(s);for(const s of x.specs??[])for(const t of s.tests??[])rows.push({s,t});}walk(r);
+          if(r.config.workers!==2||r.errors.length||rows.length!==1||r.stats.skipped||r.stats.flaky||r.stats.expected+r.stats.unexpected!==1)throw Error('One complete original attempt required');
+          const{s,t}=rows[0],result=t.results[0],project=r.config.projects.find(p=>p.id==='tablet');
+          if(s.id!=='77c237965d0f5d0b4278-9002f75e57cf4314f9b8'||s.file!=='cycle21-canonical-corrections.spec.ts'||s.line!==282||s.title!=='canonical task cost plan corrections and exact history navigation / roofing-example'||t.projectId!=='tablet'||t.timeout!==30000||t.expectedStatus!=='passed'||t.results.length!==1||result.retry!==0||!['passed','failed','timedOut'].includes(result.status)||project.retries!==0||project.repeatEach!==1||project.metadata.actualWorkers!==1)throw Error('Changed or incomplete original attempt');
+          const trace=result.attachments.find(a=>a.name==='trace'&&a.contentType==='application/zip');if(!trace||!existsSync(trace.path))throw Error('Actual browser trace missing');
+          writeFileSync('artifacts/cycle32-owner-tablet/actual-attempt.json',JSON.stringify({source:'7b377aeffac11855a5dfdfaa86719078e70a5260',case_id:s.id,project:t.projectId,original_budget_ms:t.timeout,configured_workers:r.config.workers,actual_workers:project.metadata.actualWorkers,retry:result.retry,status:result.status,duration_ms:result.duration,trace_present:true,original_paired_run_repaired:false,foundation_pass:false,authority:'SUPPLEMENTARY_SINGLE_FAILED_PROJECT_DIAGNOSTIC_ONLY'},null,2));
+          NODE
+      - name: Recheck every original tracked byte and observer binding after the attempt
+        if: always()
+        working-directory: application
+        run: |
+          node --input-type=module <<'NODE'
+          import{readFileSync,writeFileSync}from'node:fs';import{createHash}from'node:crypto';import{execFileSync}from'node:child_process';const git=(...args)=>execFileSync('git',args,{encoding:'utf8'}).trim();
+          const before=JSON.parse(readFileSync('artifacts/cycle32-owner-tablet/source-before.json'));if(git('rev-parse','HEAD')!==before.source||git('rev-parse','HEAD^{tree}')!==before.tree||git('status','--porcelain','--untracked-files=no')||git('-C','../diagnostics','rev-parse','HEAD')!==before.observer||process.version!==before.node||process.platform!==before.platform)throw Error('Frozen source or observer changed');
+          for(const[p,h]of Object.entries(before.hashes))if(createHash('sha256').update(readFileSync(p)).digest('hex')!==h)throw Error('Frozen file changed: '+p);
+          writeFileSync('artifacts/cycle32-owner-tablet/source-after.json',JSON.stringify(before,null,2));
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle32-frozen-failed-tablet-diagnostic
+          path: |
+            application/artifacts/cycle32-owner-tablet/
+            application/test-results/
+          retention-days: 7
