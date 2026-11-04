@@ -87,7 +87,8 @@ function RequestForm({
   const gate = useRef({ enabled: true, confirmed: true }),
     life = useRef({ alive: true, pending: false, serial: 0 }),
     callback = useRef(onSourcesSaved),
-    heading = useRef<HTMLHeadingElement>(null);
+    heading = useRef<HTMLHeadingElement>(null),
+    reportHeading = useRef<HTMLHeadingElement>(null);
   useLayoutEffect(() => {
     callback.current = onSourcesSaved;
   }, [onSourcesSaved]);
@@ -115,6 +116,17 @@ function RequestForm({
       /* Preserve the original stale/UNKNOWN custody without focusing detail. */
     }
   }, [view, loaded, evidence]);
+  useLayoutEffect(() => {
+    if (!report || !view || !loaded || !evidence) return;
+    try {
+      // Move to the exact inspected document only after its heading commits.
+      // Original source/access owners still decide whether detail is readable.
+      inspectServiceRequestEvidence(view, evidence, loaded);
+      reportHeading.current?.focus();
+    } catch {
+      /* Stale or revoked report detail cannot gain focus or renew custody. */
+    }
+  }, [report, view, loaded, evidence]);
   async function load() {
     const l = life.current;
     if (l.pending) return;
@@ -219,7 +231,6 @@ function RequestForm({
       setMessage(
         'Exact immutable published report version inspected. Documentation is not verified completion.',
       );
-      heading.current?.focus();
     } catch {
       if (l.alive && token === l.serial) {
         setEvidence(undefined);
@@ -402,7 +413,7 @@ function RequestForm({
             </p>
             {report && (
               <section aria-label="Inspected original published report">
-                <h4>
+                <h4 ref={reportHeading} tabIndex={-1}>
                   Published report {report.report.reference.report_id} · version{' '}
                   {report.report.reference.published_version}
                 </h4>
