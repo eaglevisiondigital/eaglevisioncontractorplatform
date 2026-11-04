@@ -55,6 +55,7 @@
   gap: 0.5rem 1rem;
 }
 .cost-source-facts dt {
+  color: #27352f;
   font-weight: 600;
 }
 .cost-source-facts dd {
