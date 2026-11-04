@@ -1,5 +1,6 @@
 import { prepareCorrectionPreviewSources } from '../../lib/workflows/correction-preview-sources';
 import { cycle22RequirementGroups } from './OperatingCenterCycleTwentyTwo';
+import { cycle23ConsistencyGroups } from './OperatingCenterCycleTwentyThree';
 import { cycle21CorrectionGroups } from './OperatingCenterCycleTwentyOne';
 import { useState } from 'react';
 import { OperatingCenterCycleThirteen } from './OperatingCenterCycleThirteen';
@@ -17,6 +18,7 @@ import { cycle18WorkflowGroups } from './OperatingCenterCycleEighteen';
 import { cycle20EvidenceGroups } from './OperatingCenterCycleTwenty';
 import { cycle19SavedGroups } from './OperatingCenterCycleNineteen';
 import './task-review-paths.css';
+import './cycle23-source-review.css';
 
 const guided = taskReviewGroups({
   'schedule-work-order-continuity': (props) => (
@@ -33,7 +35,11 @@ const guided = taskReviewGroups({
 
 export function OperatingCenterCycleFifteen() {
   const [requirements, setRequirements] = useState(false);
+  const [sourceReview, setSourceReview] = useState<
+    'requirements' | 'consistency'
+  >('requirements');
   const [corrections, setCorrections] = useState(false);
+  const prep = corrections ? prepareCorrectionPreviewSources : undefined;
   const [savedEvidence, setSavedEvidence] = useState(false);
   const [savedRevisions, setSavedRevisions] = useState(false);
   const [dailyWorkbench, setDailyWorkbench] = useState(false);
@@ -55,6 +61,21 @@ export function OperatingCenterCycleFifteen() {
               onChange={(event) => setRequirements(event.target.checked)}
             />
             Use current source requirements
+          </label>
+          <label className="source-review-mode">
+            Current source review
+            <select
+              value={sourceReview}
+              disabled={!requirements}
+              onChange={(event) => {
+                const next = event.target.value;
+                if (next === 'requirements' || next === 'consistency')
+                  setSourceReview(next);
+              }}
+            >
+              <option value="requirements">Requirements</option>
+              <option value="consistency">Revision consistency</option>
+            </select>
           </label>
           <label>
             <input
@@ -127,12 +148,14 @@ export function OperatingCenterCycleFifteen() {
       <OperatingCenterCycleThirteen
         prepareSources={
           requirements || corrections
-            ? prepareCorrectionPreviewSources
+            ? (prep ?? prepareCorrectionPreviewSources)
             : undefined
         }
         additionalReviewGroups={
           requirements
-            ? cycle22RequirementGroups
+            ? sourceReview === 'consistency'
+              ? cycle23ConsistencyGroups
+              : cycle22RequirementGroups
             : corrections
               ? cycle21CorrectionGroups
               : savedEvidence

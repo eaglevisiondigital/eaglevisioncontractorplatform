@@ -1,5 +1,29 @@
 # Shared contracts and integration ownership
 
+## Cycle23 revision consistency in the same source host
+
+The finite Current source review selector belongs to the existing requirements
+option. Requirements remains the default C22 rendering; Revision consistency selects
+C23 readers in the same six destinations and five retained workbench tabs. The
+selector is disabled while requirements are OFF. Source preparation, original
+repositories, current source/membership fences and one-use UNKNOWN custody are
+unchanged. Switching presentation cannot create a new environment or replay a claim.
+
+Correction graphs use actual exact IDs and reject conflicting branches rather than
+choosing the newest record. Canonical cost categories and financial casework retain
+original calculations/events. Service source review composes the original request
+and property-history handles; a missing request-to-job FK stays UNKNOWN. Maintenance
+requirements refer to an explicitly selected original occurrence and current consent
+evidence, without sender authority. Owner-briefing comparisons reuse original ranking
+and source checks; disappearance is not completion. No new business store, attempt
+hold, receipt archive, navigation registry or restoration adapter is introduced.
+
+The separate canonical restart architecture draft is a review proposal only. Original
+one-use custody, current tenant authority, atomic canonical receipt and independent
+rollback-resistant backup/restore consistency need acceptance before any adapter.
+Historical evidence files cannot restore canonical business state. No operational
+authorization or runtime persistence follows from document checks or design review.
+
 ## Cycle22 current-source review and retained job handoff
 
 All new views consume the original OperatingSources, C21 correction forms and native

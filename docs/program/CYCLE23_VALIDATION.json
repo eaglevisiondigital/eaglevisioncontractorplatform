@@ -1,0 +1,226 @@
+{
+  "schema": "propel-cycle23-validation-v1",
+  "validated_at": "2026-11-04T00:40:45.018620+00:00",
+  "status": "LOCAL_IMPLEMENTED_TESTED_DEFAULT_OFF_CI_FINAL_HEAD_PENDING",
+  "coordination_draft_pr": 155,
+  "coordination_branch": "codex/program-cycle-twenty-three-integration",
+  "source_parent": "3e35fb29dd4488bf655446712e5a013e06f8ed1e",
+  "tested_runtime": "fb27473b20f910ec3faf0fb9e032b4fb016532f2",
+  "agents": [
+    {
+      "agent": "/root/cycle11_field_growth",
+      "state": "COMPLETED",
+      "assignments": [
+        "Field157",
+        "Growth158",
+        "source/result checker",
+        "CI clock diagnosis and two-file forwards"
+      ]
+    },
+    {
+      "agent": "/root/cycle23_finance_intelligence",
+      "state": "COMPLETED",
+      "assignments": [
+        "Finance159",
+        "Intelligence160",
+        "independent restart architecture review156"
+      ]
+    },
+    {
+      "agent": "/root/cycle22_customer",
+      "state": "COMPLETED",
+      "assignments": ["Customer161", "actual browser/a11y/keyboard evidence"]
+    },
+    {
+      "agent": "/root/cycle23_independent_review",
+      "state": "COMPLETED",
+      "assignments": ["independent combined review162"]
+    },
+    {
+      "agent": "/root",
+      "state": "FINAL_COORDINATION",
+      "assignments": [
+        "contracts/composition",
+        "source admission",
+        "demonstrated accessibility corrections",
+        "restart proposal156",
+        "CI reconciliation",
+        "registers/publication"
+      ]
+    }
+  ],
+  "packages": [
+    {
+      "module": "task-revision-consistency",
+      "agent": "/root/cycle11_field_growth",
+      "branch": "codex/cycle23-task-revision-consistency",
+      "draft_pr": 157,
+      "original_author_commit": "b2872ae0b61905e534d6f67804ad09244582b339",
+      "source_commit": "b2872ae0b61905e534d6f67804ad09244582b339",
+      "focused_cases": 32
+    },
+    {
+      "module": "recorded-cost-requirements",
+      "agent": "/root/cycle23_finance_intelligence",
+      "branch": "codex/cycle23-recorded-cost-requirements",
+      "draft_pr": 159,
+      "original_author_commit": "12114a8efe5bebe9a06f951537d66a89ae2c926e",
+      "source_commit": "a3c8a39dd1b08ffdc68d1f7b9b29153ae50feb88",
+      "focused_cases": 31
+    },
+    {
+      "module": "service-source-review",
+      "agent": "/root/cycle22_customer",
+      "branch": "codex/cycle23-service-source-continuity",
+      "draft_pr": 161,
+      "original_author_commit": "b2081de250ace947391de62fdb0ad4fd6b8b16c4",
+      "source_commit": "b2081de250ace947391de62fdb0ad4fd6b8b16c4",
+      "focused_cases": 56
+    },
+    {
+      "module": "maintenance-revision-requirements",
+      "agent": "/root/cycle11_field_growth",
+      "branch": "codex/cycle23-maintenance-revision-requirements",
+      "draft_pr": 158,
+      "original_author_commit": "13bc65e61c9a932ba4acbbec9f992ec216a91668",
+      "source_commit": "13bc65e61c9a932ba4acbbec9f992ec216a91668",
+      "focused_cases": 34
+    },
+    {
+      "module": "verified-owner-briefing",
+      "agent": "/root/cycle23_finance_intelligence",
+      "branch": "codex/cycle23-verified-owner-briefing",
+      "draft_pr": 160,
+      "original_author_commit": "9bec73c579f11dedc0b21deeb715f17975452b4e",
+      "source_commit": "c9e40a04061da2189231cfa89f85ffa0ed1699c0",
+      "focused_cases": 27
+    }
+  ],
+  "application": {
+    "passed": 277,
+    "failed": 0,
+    "skipped": 0,
+    "unique_names": 277,
+    "suites": 7,
+    "author_cases": 180,
+    "validator_cases": 47,
+    "independent_cases": 50,
+    "report": {
+      "path": "artifacts/cycle23/application-results.json",
+      "sha256": "eeac6f4959f119a3f172dc8725e6d4a50a4e8f1a5020b02c8941edc2d49eaef6"
+    }
+  },
+  "browser": {
+    "development_cases": 27,
+    "production_off_cases": 3,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retries": 0,
+    "brands": 3,
+    "layouts": ["desktop", "tablet", "mobile"],
+    "screenshots": 81,
+    "runtime_files": 59,
+    "keyboard_journeys": 9,
+    "trusted_key_events": 180,
+    "report": {
+      "path": "artifacts/cycle23/browser-results.json",
+      "sha256": "aa900447d6023e1584c441fe7629acdc7aa9e076d9c17449a6ddd7b783bbf3e7"
+    },
+    "off_report": {
+      "path": "artifacts/cycle23/browser-off-results.json",
+      "sha256": "5d33ad3b603c84f4667ca5b515dc8586cf3b343a6d3b2d2b62cb612c23c67b5d"
+    },
+    "capture_manifest": {
+      "path": "artifacts/cycle23/browser-capture-manifest.json",
+      "sha256": "22b05ce9cd5bd7694d853424f264a03a30bb17b64ea9532a2dd9d011acf27e3a"
+    },
+    "accessibility": "WHOLE_PAGE_AXE_WITHOUT_EXCLUSIONS_KEYBOARD_OVERFLOW_HEADER_OVERLAP_TOUCH_CONTROLS_PASS",
+    "physical_devices": "NOT_TESTED_CHROMIUM_EMULATION_ONLY",
+    "visual_approval": "PENDING_OPERATING_CENTER_ADVANCED"
+  },
+  "additional_regression": {
+    "original_foundation_cycle21": {
+      "passed": 30,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "original_budgets_assertions_unchanged": true,
+      "report": {
+        "path": "artifacts/cycle23/retained-cycle21/default-foundation-browser.json",
+        "sha256": "f5be85754025d575b9bee20ce83359bc646e5205cdce682cef5d4c6e069bdebe"
+      }
+    },
+    "new_cycle23_original_config_representative": {
+      "passed": 3,
+      "source": "/private/tmp/cycle23-default-compat/browser-results.json",
+      "sha256": "ee9cce9f4debb13a1f1cc70d9a1dd50edfb1beb859a0eb18443193259254a6af",
+      "new_scenario_budget_ms": 150000,
+      "action_budget_ms": 15000,
+      "operator_performance_claim": false
+    },
+    "repair_original_tablet": {
+      "passed": 6,
+      "brands": 3,
+      "surfaces": 2,
+      "source_commit": "3e5f303b454658ca291a0146a75f9112c2b8c5ba",
+      "runtime_changed": false
+    },
+    "negative_midnight_reload": {
+      "passed": 1,
+      "stale_confirmation_rejected": true,
+      "explicit_reload_required": true,
+      "original_guard_unchanged": true
+    }
+  },
+  "checks": {
+    "strict_types": "PASS_FINAL_ALL_SOURCES",
+    "generated_types": "PASS_READ_ONLY",
+    "lint": "PASS_ONE_RETAINED_C14_WARNING",
+    "format": "PASS",
+    "build": "PASS_RETAINED_LARGE_CHUNK_WARNING",
+    "source_application_validator": "PASS_277_EXACT_CASES",
+    "features": "PASS_25_STATES_18_IDS_EIGHT_CLOSED_GATES",
+    "retained_author_files": 498,
+    "protected_files": 128,
+    "design_locks": 5,
+    "design_bindings": 13
+  },
+  "independent": {
+    "status": "CLEAR_LOCAL_SYNTHETIC_ONLY",
+    "commit": "280611624c4a515bab1e4d8ddc7a1ad387ef1ac7",
+    "draft_pr": 162,
+    "cases": 50,
+    "source": "docs/program/CYCLE23_INDEPENDENT_REVIEW.json",
+    "preliminary_failures_retained": true,
+    "portfolio_performance_claim": false
+  },
+  "restart_architecture": {
+    "draft_pr": 156,
+    "proposal_commit": "52848cdc5cbfb16bdf6b553293362d129a1b23b9",
+    "review_commit": "d0fc730dbbc99b8945f89e1254cd20c0d85983b6",
+    "status": "CLEAR_FOR_SEPARATE_DESIGN_DECISION_ONLY",
+    "operational_restore": "NO_GO",
+    "adapter_implemented": false,
+    "implementation_authorized": false
+  },
+  "ci": {
+    "snapshot": "docs/program/CYCLE23_CI_STATUS.json",
+    "forward_proof": "docs/program/CYCLE23_TESTED_BROWSER_CI_FORWARD.json",
+    "original_failed_run": 41739067797,
+    "original_failure_preserved": true,
+    "manual_reruns": 0,
+    "final_head": "AUTOMATIC_CI_UNVERIFIED_UNTIL_PUBLISHED_EXACT_HEAD_READ",
+    "source_pins_distinct_from_test_only_branch_heads": true
+  },
+  "nov4_recovery": {
+    "checklist": "docs/program/CYCLE18_NOV4_MACBOOK_AIR_CHECKLIST.md",
+    "kit_unchanged": true,
+    "completed_25_offline_checks_repeated": false,
+    "device_readiness": "UNVERIFIED",
+    "physical_pairing_recovery_cleanup": "NOT_RUN",
+    "original_p1_approval_preserved": true
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "prohibited_actions_performed": []
+}

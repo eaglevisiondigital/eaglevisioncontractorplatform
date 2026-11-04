@@ -1,5 +1,21 @@
 # Shared design-system specification · cycle two
 
+## Cycle23 revision consistency without another navigation group
+
+The existing review-options fieldset gains one labeled finite Current source review
+select, disabled until current-source requirements are enabled. Requirements retains
+the C22 default; Revision consistency reuses the original same-host panel IDs and
+five-tab workbench. Existing source preparation, job context, original forms and
+manual confirmations remain visible. There is no additional checkbox or sidebar.
+
+Source graphs, category drill-down, request/report lineage, selected-occurrence
+requirements and previous/current priority facts use existing company tokens, scoped
+cards, wrapped exact identifiers, text states and responsive stacked layouts. No
+color-only change or completion signal. Keyboard, screen-reader labels,44px controls
+and real browser evidence are required. The three approved scopes/artwork stay
+locked. Operating Center/advanced visual approval remains PENDING; tests grant no
+visual approval. No adapter, persistence, dispatch, message or financial authority.
+
 ## Cycle22 current requirements within the existing workbench
 
 The current-source requirement option defaults false. It uses the same retained job

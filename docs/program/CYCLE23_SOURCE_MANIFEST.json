@@ -1,0 +1,247 @@
+{
+  "schema": "propel-cycle23-sources-v1",
+  "coordination_branch": "codex/program-cycle-twenty-three-integration",
+  "coordination_draft_pr": 155,
+  "parent_commit": "3e35fb29dd4488bf655446712e5a013e06f8ed1e",
+  "independent_status": "CLEAR_LOCAL_SYNTHETIC_ONLY",
+  "independent_review_commit": "280611624c4a515bab1e4d8ddc7a1ad387ef1ac7",
+  "independent_files": [
+    {
+      "path": "tests/cycle23-independent-integration-review.test.ts",
+      "sha256": "f9d78549be62c2540b98959db7c908b84509a233c27a5435dec15a48f047dc2f",
+      "blob": "07c5c7b1f70ccfa1af2e1aabbcfb44f51abf8f50"
+    },
+    {
+      "path": "docs/program/CYCLE23_INDEPENDENT_REVIEW.json",
+      "sha256": "7aa5012408dc139db0880f2169adca8a9103a22e3f97b7ab2c833435abc29a83",
+      "blob": "ae7b30cea4ab34e271b370f70490bbbd1cd9cd3a"
+    }
+  ],
+  "packages": [
+    {
+      "module": "task-revision-consistency",
+      "component": "TaskRevisionConsistency",
+      "owner": "/root/cycle11_field_growth",
+      "branch": "codex/cycle23-task-revision-consistency",
+      "head_commit": "b2872ae0b61905e534d6f67804ad09244582b339",
+      "draft_pr": 157,
+      "focused_new_tests": 32,
+      "parent_commit": "3e35fb29dd4488bf655446712e5a013e06f8ed1e",
+      "base_branch": "codex/program-cycle-twenty-three-integration",
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "ci": "Immutable source pin; see CYCLE23_TESTED_BROWSER_CI_FORWARD.json for current test-only branch head and CYCLE23_CI_STATUS.json for timestamped CI. Final automatic outcomes remain separate.",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/task-revision-consistency.ts",
+          "sha256": "33561a4905012cd0641b71d0b9cd7ec1e623736e815f3e5d21e87248a110837f",
+          "blob": "10fd6ca71a7edd22aa190ab4d2b2c1b62429d8fe"
+        },
+        {
+          "path": "src/components/workflows/TaskRevisionConsistency.tsx",
+          "sha256": "d34a97fe1c9892fa3e916a9740a546c8ba42063fbb0b6754d4056d34c8501e2b",
+          "blob": "ab78b94b02cbe3af1d523165694f693e6086b387"
+        },
+        {
+          "path": "src/components/workflows/task-revision-consistency.css",
+          "sha256": "e2ef787c181c5a9a437df2d2cdfbcd44d8ed6d8f355d7d7eb5d50603b0d234aa",
+          "blob": "a421767151577411bb2f2e38af498cad49f3ff56"
+        },
+        {
+          "path": "tests/cycle23-task-revision-consistency.test.ts",
+          "sha256": "c6233be850b832af27f24f4fe777dc5798e77dbd10bd1cd7f5d8c90ee961b93c",
+          "blob": "0f95e2dd1811f335f54742568132614e108a9a5d"
+        },
+        {
+          "path": "docs/program/CYCLE23_TASK_REVISION_CONSISTENCY.md",
+          "sha256": "01519133a56725b65c700cd74ebfd678d47e6074aba153443d2804dfea43887c",
+          "blob": "520a881c9cea88b5804b5a7c04cdbb9f9c6fdfb3"
+        }
+      ],
+      "original_author_commit": "b2872ae0b61905e534d6f67804ad09244582b339"
+    },
+    {
+      "module": "recorded-cost-requirements",
+      "component": "RecordedCostRequirements",
+      "owner": "/root/cycle23_finance_intelligence",
+      "branch": "codex/cycle23-recorded-cost-requirements",
+      "head_commit": "a3c8a39dd1b08ffdc68d1f7b9b29153ae50feb88",
+      "draft_pr": 159,
+      "focused_new_tests": 31,
+      "parent_commit": "3e35fb29dd4488bf655446712e5a013e06f8ed1e",
+      "base_branch": "codex/program-cycle-twenty-three-integration",
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "ci": "Immutable source pin; see CYCLE23_TESTED_BROWSER_CI_FORWARD.json for current test-only branch head and CYCLE23_CI_STATUS.json for timestamped CI. Final automatic outcomes remain separate.",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/recorded-cost-requirements.ts",
+          "sha256": "72b6a0b2f63e2d961f39f47fd3f903c30690cb5eec6e4196a892b75285ee9c71",
+          "blob": "ad8ee0ba15ab0a17f731eb7cde34b30ec4f537dc"
+        },
+        {
+          "path": "src/components/workflows/RecordedCostRequirements.tsx",
+          "sha256": "7374d98abfb7751913e7c502835e608666a1644776dcf5e0c06056e9dca2b967",
+          "blob": "17e5719b00546a1fdce5bc9a5157d7d1bf53a917"
+        },
+        {
+          "path": "src/components/workflows/recorded-cost-requirements.css",
+          "sha256": "8369a7d02611e3ebd214a160a29ed754d374becdd6e6ea561079da1bb96a6b4e",
+          "blob": "180fa88f2191625656a47f3331a54858fdc0ac28"
+        },
+        {
+          "path": "tests/cycle23-recorded-cost-requirements.test.ts",
+          "sha256": "03a00b5966584b69642117f219497ff5e6eb0a774b0d4317cab6d5e48a7839e7",
+          "blob": "4daf413d3c61ee61802ba1e3708d0cc06c0e404a"
+        },
+        {
+          "path": "docs/program/CYCLE23_RECORDED_COST_REQUIREMENTS.md",
+          "sha256": "f59becfd5d4a5f30b59ea28a46c8f701d743ccda62eafe4ea3ceaa9d773d8d3c",
+          "blob": "4d4097de29a6d319324ebe3a65a210f8b7dc4315"
+        }
+      ],
+      "original_author_commit": "12114a8efe5bebe9a06f951537d66a89ae2c926e"
+    },
+    {
+      "module": "service-source-review",
+      "component": "ServiceSourceReview",
+      "owner": "/root/cycle22_customer",
+      "branch": "codex/cycle23-service-source-continuity",
+      "head_commit": "b2081de250ace947391de62fdb0ad4fd6b8b16c4",
+      "draft_pr": 161,
+      "focused_new_tests": 56,
+      "parent_commit": "3e35fb29dd4488bf655446712e5a013e06f8ed1e",
+      "base_branch": "codex/program-cycle-twenty-three-integration",
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "ci": "Immutable source pin; see CYCLE23_TESTED_BROWSER_CI_FORWARD.json for current test-only branch head and CYCLE23_CI_STATUS.json for timestamped CI. Final automatic outcomes remain separate.",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/service-source-review.ts",
+          "sha256": "1d4d680285ef1a7fd72eb201ece35300fae8f428811841e73d1c13e6dc7f2630",
+          "blob": "f0b1118131ee5beaf92e29406df15e5cc5c0ee69"
+        },
+        {
+          "path": "src/components/workflows/ServiceSourceReview.tsx",
+          "sha256": "ae745b54a1f8d27e1641d48a7f5f4215833a985be02caac4d351770ee5b6eb14",
+          "blob": "474145fa0f6dfc479d7c932ee7d41048dbe523f9"
+        },
+        {
+          "path": "src/components/workflows/service-source-review.css",
+          "sha256": "771d750938360290a582d29cb4f7d2d999aefb94ad412b939577e08584b3fa92",
+          "blob": "2070e0d6e800e6599b5ec5cfa3b083c90a6c0e07"
+        },
+        {
+          "path": "tests/cycle23-service-source-review.test.ts",
+          "sha256": "f15405b03db73a18426dabd66eb6cd563d0db919f64b084b1f030845849cc6b6",
+          "blob": "7563400d308305f11e02cd91c0eda2ff71656c01"
+        },
+        {
+          "path": "docs/program/CYCLE23_SERVICE_SOURCE_REVIEW.md",
+          "sha256": "65f991d17635372f106b88f5521bcff795cfadf4db0eee9631eb97fadbd1a89b",
+          "blob": "1c9b753d253d3ff2dc03c6c94f2a5c0180b625eb"
+        }
+      ],
+      "original_author_commit": "b2081de250ace947391de62fdb0ad4fd6b8b16c4"
+    },
+    {
+      "module": "maintenance-revision-requirements",
+      "component": "MaintenanceRevisionRequirements",
+      "owner": "/root/cycle11_field_growth",
+      "branch": "codex/cycle23-maintenance-revision-requirements",
+      "head_commit": "13bc65e61c9a932ba4acbbec9f992ec216a91668",
+      "draft_pr": 158,
+      "focused_new_tests": 34,
+      "parent_commit": "3e35fb29dd4488bf655446712e5a013e06f8ed1e",
+      "base_branch": "codex/program-cycle-twenty-three-integration",
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "ci": "Immutable source pin; see CYCLE23_TESTED_BROWSER_CI_FORWARD.json for current test-only branch head and CYCLE23_CI_STATUS.json for timestamped CI. Final automatic outcomes remain separate.",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/maintenance-revision-requirements.ts",
+          "sha256": "688dc6721b1ae3c4972e52956523bede11926c2426334ad25408447d562e5816",
+          "blob": "00337e975d582ed8fa9a2e1502a0ea3807e43ba6"
+        },
+        {
+          "path": "src/components/workflows/MaintenanceRevisionRequirements.tsx",
+          "sha256": "89530a080c079c94fca6d2480d70b5e259b72d705434f086f5edb22b60ac7549",
+          "blob": "7f61a775fd344b4c0955d80ffc8921e1cd86f5a7"
+        },
+        {
+          "path": "src/components/workflows/maintenance-revision-requirements.css",
+          "sha256": "75ef9ace2ec519f786f10fcf4845c557de0cbff3c8d539187475fb3989d302fb",
+          "blob": "4ce602e27ada2711462218bcdb6998865ad369f4"
+        },
+        {
+          "path": "tests/cycle23-maintenance-revision-requirements.test.ts",
+          "sha256": "5033c3fe415f934ebd4e06ea23fbb4cc0e5bc71a8777c38d206a2d3081315b4f",
+          "blob": "e09c8f4c27c90b19b95caaa953dbd195ab3d8688"
+        },
+        {
+          "path": "docs/program/CYCLE23_MAINTENANCE_REVISION_REQUIREMENTS.md",
+          "sha256": "7f39ba8660f610447ea3773290be812a955590618ac9973308444d710d746143",
+          "blob": "a962a8540d824fe33c86e76d64405367c861441f"
+        }
+      ],
+      "original_author_commit": "13bc65e61c9a932ba4acbbec9f992ec216a91668"
+    },
+    {
+      "module": "verified-owner-briefing",
+      "component": "VerifiedOwnerBriefing",
+      "owner": "/root/cycle23_finance_intelligence",
+      "branch": "codex/cycle23-verified-owner-briefing",
+      "head_commit": "c9e40a04061da2189231cfa89f85ffa0ed1699c0",
+      "draft_pr": 160,
+      "focused_new_tests": 27,
+      "parent_commit": "3e35fb29dd4488bf655446712e5a013e06f8ed1e",
+      "base_branch": "codex/program-cycle-twenty-three-integration",
+      "status": "LOCAL_TESTED_DEFAULT_OFF_NOT_OPERATIONAL",
+      "ci": "Immutable source pin; see CYCLE23_TESTED_BROWSER_CI_FORWARD.json for current test-only branch head and CYCLE23_CI_STATUS.json for timestamped CI. Final automatic outcomes remain separate.",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/verified-owner-briefing.ts",
+          "sha256": "c62d4cf776b854bcd4fd8ccd72d46ac094381a9ccf0049f4b1302fbd9fb638f6",
+          "blob": "5a289a1c18d37091fc29ccb9b096e22f5cd259c1"
+        },
+        {
+          "path": "src/components/workflows/VerifiedOwnerBriefing.tsx",
+          "sha256": "01977f9b7dd67e34b80b29a08e6050b6219f287e4a5644b4104ecf4a29ebe7ed",
+          "blob": "95ff61e1f82e1fc8e87d05712f63896500a337c8"
+        },
+        {
+          "path": "src/components/workflows/verified-owner-briefing.css",
+          "sha256": "7045a891ace53966cc0defdc053440e4ebe7ec62edc15ae444c86aa7a6f74f86",
+          "blob": "0bfabdfbb528f0ae6fb938007c6199eb7ed90382"
+        },
+        {
+          "path": "tests/cycle23-verified-owner-briefing.test.ts",
+          "sha256": "be55708a816d9a787aded0b864087c4ed13ed63604b20a0528a695aa85fd219f",
+          "blob": "65ae3f0ed5527c07b9c3967d5a5362553804d952"
+        },
+        {
+          "path": "docs/program/CYCLE23_VERIFIED_OWNER_BRIEFING.md",
+          "sha256": "90dd6698174e772fac12113333ea4c563f601868184458cd09e61f910377fa81",
+          "blob": "1f2427f0f19e599bc7b9f05e80b08ef827cab4ce"
+        }
+      ],
+      "original_author_commit": "9bec73c579f11dedc0b21deeb715f17975452b4e"
+    }
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "combined_evidence": {
+    "application_suites": {
+      "tests/cycle23-task-revision-consistency.test.ts": 32,
+      "tests/cycle23-recorded-cost-requirements.test.ts": 31,
+      "tests/cycle23-service-source-review.test.ts": 56,
+      "tests/cycle23-maintenance-revision-requirements.test.ts": 34,
+      "tests/cycle23-verified-owner-briefing.test.ts": 27,
+      "tests/cycle23-validation.test.ts": 47,
+      "tests/cycle23-independent-integration-review.test.ts": 50
+    },
+    "author_cases": 180,
+    "coordinator_cases": 47,
+    "independent_cases": 50,
+    "application_cases": 277,
+    "application": "PENDING_ACTUAL_COMBINED_RUN",
+    "browser": "PENDING_ACTUAL_BROWSER_RUN",
+    "protected": "PENDING_ACTUAL_SOURCE_CHECK"
+  },
+  "source_commit_semantics": "Each original_author_commit is immutable. head_commit pins the current exact five-file source after only checker-listed published presentation corrections; all other source and protected files remain unchanged. No operational or release authority."
+}
