@@ -195,17 +195,19 @@ export async function verifyOwnerActionRequirements(
   selection: OwnerActionSelection,
 ) {
   const checked = checkOwnerActionRequirements(view, selection);
-  if (!checked.can_open_original)
+  if (!checked.can_open_original || !checked.row)
     return freezePrototype({ ...checked, inspection: null });
-  const inspection = await inspectVerifiedOwnerPriority(view, selection.key),
+  const selected = checked.row,
+    inspection = await inspectVerifiedOwnerPriority(view, selected.key),
     current = checkOwnerActionRequirements(view, selection);
   if (
     !current.can_open_original ||
-    inspection.key !== selection.key ||
-    inspection.source.kind !== selection.kind ||
-    inspection.source.id !== selection.id ||
-    inspection.source.revision !== selection.revision ||
-    inspection.source.version !== selection.version
+    current.row !== selected ||
+    inspection.key !== selected.key ||
+    inspection.source.kind !== selected.source.kind ||
+    inspection.source.id !== selected.source.id ||
+    inspection.source.revision !== selected.source.revision ||
+    inspection.source.version !== selected.source.version
   )
     throw Error('Original owner source changed during verification');
   return freezePrototype({ ...current, inspection });
@@ -235,11 +237,12 @@ export async function continueVerifiedOwnerAction(
     const current = checkOwnerActionRequirements(view, selection);
     if (
       !current.can_open_original ||
-      inspection.key !== selection.key ||
-      inspection.source.kind !== selection.kind ||
-      inspection.source.id !== selection.id ||
-      inspection.source.revision !== selection.revision ||
-      inspection.source.version !== selection.version
+      !current.row ||
+      inspection.key !== current.row.key ||
+      inspection.source.kind !== current.row.source.kind ||
+      inspection.source.id !== current.row.source.id ||
+      inspection.source.revision !== current.row.source.revision ||
+      inspection.source.version !== current.row.source.version
     )
       return {
         status: 'WITHHELD_NO_DISPATCH' as const,
