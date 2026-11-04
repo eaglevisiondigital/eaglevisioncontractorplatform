@@ -104,6 +104,17 @@ function RequestForm({
       l.serial++;
     };
   }, []);
+  useLayoutEffect(() => {
+    if (!view || !loaded || !evidence) return;
+    try {
+      // The first heading exists only after the successful read is committed.
+      // Recheck the original owners; stale or revoked detail never gains focus.
+      inspectServiceRequestEvidence(view, evidence, loaded);
+      heading.current?.focus();
+    } catch {
+      /* Preserve the original stale/UNKNOWN custody without focusing detail. */
+    }
+  }, [view, loaded, evidence]);
   async function load() {
     const l = life.current;
     if (l.pending) return;
@@ -139,7 +150,6 @@ function RequestForm({
           ? 'Exact request loaded. Choose a change and confirm this internal review only.'
           : 'Original request attempt is held or already used. Only read-only observation is available.',
       );
-      heading.current?.focus();
     } catch {
       if (l.alive && token === l.serial) {
         setView(undefined);
