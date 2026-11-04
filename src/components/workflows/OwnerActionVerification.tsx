@@ -289,6 +289,15 @@ function ActionForm({
           {result.row && (
             <>
               <p>{result.row.recorded_fact}</p>
+              <p>Current recorded workflow state: {result.row.state}</p>
+              <h4>Original suggested human review</h4>
+              <p role="region" aria-label="Original suggested human review">
+                {result.row.suggested_human_review}
+              </p>
+              <p>
+                Recommendations are not recorded actions. Opening this review
+                neither completes the source nor grants operational authority.
+              </p>
               <p>
                 Original priority {result.row.rank} · {result.row.level} ·{' '}
                 {result.row.area}
