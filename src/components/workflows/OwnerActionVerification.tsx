@@ -105,6 +105,8 @@ function ActionForm({
     setBusy(true);
     try {
       if (action === 'load') {
+        setResult(undefined);
+        setConfirmed(false);
         const next = await readVerifiedOwnerBriefing(
           sources,
           selectedJobId,
@@ -121,7 +123,7 @@ function ActionForm({
         setConfirmed(false);
         setMessage(
           comparison
-            ? `${comparison.status}. Previous verification and confirmation are cleared. Original current order is preserved.`
+            ? `${comparison.status}. ${comparison.selection ? 'Exact unchanged source context retained; the broader source read may have changed. ' : ''}Previous verification and confirmation are cleared. Original current order is preserved.`
             : 'Original current priorities loaded in their original order.',
         );
       } else if (view && selection) {
