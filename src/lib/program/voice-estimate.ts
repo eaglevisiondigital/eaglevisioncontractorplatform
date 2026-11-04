@@ -149,6 +149,10 @@ export async function prepareVoiceEstimate(
 ): Promise<VoiceEstimateReview> {
   confirm(gate);
   const text = transcript(input);
+  // Descriptor parsing rejects accessors first. Cloneability then rejects an
+  // executable Proxy before source reads or the original one-use hold; keep
+  // checking the original ordinary form rather than using a clone as authority.
+  structuredClone(input);
   // The captured literal is a proposal, not permission to ignore a changed
   // original form while the existing source/hash readers are finishing.
   const checkInput = () => {

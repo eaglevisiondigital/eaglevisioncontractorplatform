@@ -163,3 +163,50 @@ for (const brand of [0, 1, 2]) {
     );
   });
 }
+
+for (const brand of [0, 1, 2]) {
+  for (const revoked of ['confirmation', 'membership'] as const) {
+    it(`brand ${brand}: executable descriptor input cannot revoke ${revoked} after final source checkpoint`, async () => {
+      const f = await fixture(brand);
+      let captures = 0;
+      let withdrawn = false;
+      const nativeMembers = f.ops.syntheticMemberships.bind(f.ops);
+      vi.spyOn(f.ops, 'syntheticMemberships').mockImplementation((org) =>
+        nativeMembers(org).map((member) =>
+          withdrawn &&
+          revoked === 'membership' &&
+          member.user_id === f.target.actor_id
+            ? { ...member, active: false }
+            : member,
+        ),
+      );
+      const executable = new Proxy(f.input, {
+        getOwnPropertyDescriptor(target, key) {
+          const descriptor = Reflect.getOwnPropertyDescriptor(target, key);
+          if (key === 'transcript' && ++captures === 5) {
+            withdrawn = true;
+            if (revoked === 'confirmation') f.gate.confirmed = false;
+          }
+          return descriptor;
+        },
+      });
+      const before = await f.repo.history(f.company.id, f.target.estimate_id);
+      const outcome = await Promise.allSettled([
+        prepareVoiceEstimate(f.source, executable, f.gate),
+      ]);
+      expect.soft(outcome[0].status).toBe('rejected');
+      expect
+        .soft(await f.repo.history(f.company.id, f.target.estimate_id))
+        .toEqual(before);
+      // A rejected executable form does not consume the original preparation
+      // hold or get to execute its final-boundary withdrawal.
+      expect.soft(withdrawn).toBe(false);
+      expect(captures).toBeLessThan(5);
+      await expect(
+        prepareVoiceEstimate(f.source, f.input, f.gate),
+      ).resolves.toMatchObject({
+        snapshot: { mode: 'synthetic-transcript-review-only' },
+      });
+    });
+  }
+}
