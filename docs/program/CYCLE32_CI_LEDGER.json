@@ -189,14 +189,63 @@
     "draft_pr": 236,
     "source": "43e622b16aa952f5dc2fe7ae9f96260b47682c2e",
     "diagnostics_head": "f413151235226e2620b7aa599f8183fda575c48b",
-    "shards": ["desktop", "tablet", "mobile", "off"],
+    "shards": [
+      {
+        "shard": "desktop",
+        "actual_passed": 16,
+        "test_budgets_ms": [90000],
+        "workers": 2,
+        "one_result_per_case": true,
+        "all_retry_zero": true,
+        "before_after_binding_identical": true
+      },
+      {
+        "shard": "tablet",
+        "actual_passed": 16,
+        "test_budgets_ms": [90000],
+        "workers": 2,
+        "one_result_per_case": true,
+        "all_retry_zero": true,
+        "before_after_binding_identical": true
+      },
+      {
+        "shard": "mobile",
+        "actual_passed": 16,
+        "test_budgets_ms": [90000],
+        "workers": 2,
+        "one_result_per_case": true,
+        "all_retry_zero": true,
+        "before_after_binding_identical": true
+      },
+      {
+        "shard": "off",
+        "actual_passed": 3,
+        "test_budgets_ms": [30000],
+        "workers": 2,
+        "one_result_per_case": true,
+        "all_retry_zero": true,
+        "before_after_binding_identical": true
+      }
+    ],
     "cases": [16, 16, 16, 3],
-    "status": "PENDING_ACTUAL_REPORTS",
-    "foundation_pass": false
+    "status": "51_PASS_ACTUAL_FOUR_SHARDS",
+    "foundation_pass": false,
+    "run": 41910541185,
+    "workflow_conclusion": "SUCCESS",
+    "actual_union_validation": {
+      "source": "43e622b16aa952f5dc2fe7ae9f96260b47682c2e",
+      "cases": 51,
+      "all_four_original_shards_passed": true,
+      "foundation_pass": false,
+      "authority": "SUPPLEMENTARY_BROWSER_EVIDENCE_ONLY_NOT_FOUNDATION_OR_OPERATIONAL_ACCEPTANCE"
+    },
+    "provider_artifact_digests_verified": true,
+    "original_cancelled_result_relabelled": false
   },
   "current_cycle32": {
-    "head": "PENDING_PUBLICATION",
-    "status": "NOT_YET_PUBLISHED",
+    "branch": "codex/program-cycle-thirty-two-integration",
+    "state": "AWAIT_ACTUAL_PUBLICATION_HEAD_CHECKS_SNAPSHOT_NOT_FUTURE_STATUS",
+    "runtime_local_source": "1ef47f86ec4b4e7ac4951e1fe3ba4826eeff8297",
     "inherits_prior_ci_success": false
   },
   "historical": {
@@ -207,5 +256,275 @@
     "alternative_budget_evidence": "SUPPLEMENTARY_NOT_ORIGINAL_FAILURE_RELABELLING"
   },
   "operational_ready": false,
-  "release": "NOT_READY_NOT_AUTHORIZED"
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "feature_snapshot": {
+    "checked_at": "2026-11-04T21:07:59.630343+00:00",
+    "rows": [
+      {
+        "pr": 235,
+        "head": "0fc7e23960a532f0ba2b714d5669e29d92e4b6a8",
+        "draft": true,
+        "state": "open",
+        "head_branch": "codex/cycle32-physical-recovery-continuity",
+        "base_branch": "codex/program-cycle-thirty-one-integration",
+        "check_counts": {
+          "PASS": 8,
+          "PENDING": 2
+        },
+        "workflow_counts": {
+          "PENDING": 2,
+          "PASS": 6
+        }
+      },
+      {
+        "pr": 236,
+        "head": "f413151235226e2620b7aa599f8183fda575c48b",
+        "draft": true,
+        "state": "open",
+        "head_branch": "codex/cycle32-c12-browser-coverage",
+        "base_branch": "codex/program-cycle-thirty-one-integration",
+        "check_counts": {
+          "PASS": 12,
+          "PENDING": 2
+        },
+        "workflow_counts": {
+          "PASS": 7,
+          "PENDING": 2
+        }
+      },
+      {
+        "pr": 237,
+        "head": "c900041cf999e6eda81a10d6361a6acad0d5ca88",
+        "draft": true,
+        "state": "open",
+        "head_branch": "codex/cycle32-task-input-binding",
+        "base_branch": "codex/program-cycle-thirty-one-integration",
+        "check_counts": {
+          "PENDING": 21,
+          "PASS": 8,
+          "FAIL": 1
+        },
+        "workflow_counts": {
+          "PENDING": 21,
+          "PASS": 6,
+          "FAIL": 1
+        }
+      },
+      {
+        "pr": 238,
+        "head": "4b6042eb174c605d79537c7e60de49b2ce597f41",
+        "draft": true,
+        "state": "open",
+        "head_branch": "codex/cycle32-profit-guard-completeness",
+        "base_branch": "codex/program-cycle-thirty-one-integration",
+        "check_counts": {
+          "PENDING": 15,
+          "PASS": 9
+        },
+        "workflow_counts": {
+          "PENDING": 13,
+          "PASS": 9
+        }
+      },
+      {
+        "pr": 239,
+        "head": "d0c54c7edec2faa5aed5c415558420788a212731",
+        "draft": true,
+        "state": "open",
+        "head_branch": "codex/cycle32-owner-filter-navigation",
+        "base_branch": "codex/program-cycle-thirty-one-integration",
+        "check_counts": {
+          "PENDING": 19,
+          "PASS": 12
+        },
+        "workflow_counts": {
+          "PENDING": 18,
+          "PASS": 11
+        }
+      },
+      {
+        "pr": 240,
+        "head": "7693684cacf0da5716870a5d9624ee4d09f4db08",
+        "draft": true,
+        "state": "open",
+        "head_branch": "codex/cycle32-voice-input-continuity",
+        "base_branch": "codex/program-cycle-thirty-one-integration",
+        "check_counts": {
+          "PENDING": 14,
+          "PASS": 10
+        },
+        "workflow_counts": {
+          "PENDING": 12,
+          "PASS": 10
+        }
+      }
+    ]
+  },
+  "historical_passport_failures": [
+    {
+      "pr": 228,
+      "source_sha": "94a5da1f2cf4187acdd412cdefaec627d1dee463",
+      "workflow_run": 41886748841,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41886748841",
+      "job_id": 126773145663,
+      "workflow_conclusion": "FAILURE",
+      "failed_step": "Install reviewed missing Chromium fonts from signed Ubuntu archives",
+      "observed_error": "Signed Ubuntu deb sources only",
+      "classification": "REVIEWED_SOURCE_PARSER_REJECTION_BEFORE_APT_OR_BROWSER",
+      "browser_assertions": "NOT_EXECUTED",
+      "original_dependency_verification": "SKIPPED",
+      "original_chromium_install": "SKIPPED",
+      "exact_rejected_Deb822_paragraph": "NOT_RECORDED",
+      "old_helper_sha256": "f4e6bb3332ad87c7506465449e8bdeb2185f020f3c96f6633a50b3ae53f47f4d",
+      "job_log_sha256": "d8dbbe38a06f33b4c04fe5fafd8de0bd0a8803817c3a71a2fcaaee4244b2dfd3"
+    },
+    {
+      "pr": 228,
+      "source_sha": "94a5da1f2cf4187acdd412cdefaec627d1dee463",
+      "workflow_run": 41885125970,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41885125970",
+      "job_id": 126767422528,
+      "workflow_conclusion": "FAILURE",
+      "failed_step": "Install reviewed missing Chromium fonts from signed Ubuntu archives",
+      "observed_error": "Signed Ubuntu deb sources only",
+      "classification": "REVIEWED_SOURCE_PARSER_REJECTION_BEFORE_APT_OR_BROWSER",
+      "browser_assertions": "NOT_EXECUTED",
+      "original_dependency_verification": "SKIPPED",
+      "original_chromium_install": "SKIPPED",
+      "exact_rejected_Deb822_paragraph": "NOT_RECORDED",
+      "old_helper_sha256": "f4e6bb3332ad87c7506465449e8bdeb2185f020f3c96f6633a50b3ae53f47f4d",
+      "job_log_sha256": "36c9ec8e0fe9836da41cfd78fb85a7c24349fd364fd23caf7b35ed0f9ee83e85"
+    },
+    {
+      "pr": 230,
+      "source_sha": "def22f220a8a94217b342a1a0fce32baf1c6afab",
+      "workflow_run": 41887114262,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41887114262",
+      "job_id": 126774423705,
+      "workflow_conclusion": "FAILURE",
+      "failed_step": "Install reviewed missing Chromium fonts from signed Ubuntu archives",
+      "observed_error": "Signed Ubuntu deb sources only",
+      "classification": "REVIEWED_SOURCE_PARSER_REJECTION_BEFORE_APT_OR_BROWSER",
+      "browser_assertions": "NOT_EXECUTED",
+      "original_dependency_verification": "SKIPPED",
+      "original_chromium_install": "SKIPPED",
+      "exact_rejected_Deb822_paragraph": "NOT_RECORDED",
+      "old_helper_sha256": "f4e6bb3332ad87c7506465449e8bdeb2185f020f3c96f6633a50b3ae53f47f4d",
+      "job_log_sha256": "ae61bbff99817c5248aef764adef897b87a8324491413adbee9608b3337631d1"
+    },
+    {
+      "pr": 230,
+      "source_sha": "def22f220a8a94217b342a1a0fce32baf1c6afab",
+      "workflow_run": 41886870742,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41886870742",
+      "job_id": 126773571159,
+      "workflow_conclusion": "FAILURE",
+      "failed_step": "Install reviewed missing Chromium fonts from signed Ubuntu archives",
+      "observed_error": "Signed Ubuntu deb sources only",
+      "classification": "REVIEWED_SOURCE_PARSER_REJECTION_BEFORE_APT_OR_BROWSER",
+      "browser_assertions": "NOT_EXECUTED",
+      "original_dependency_verification": "SKIPPED",
+      "original_chromium_install": "SKIPPED",
+      "exact_rejected_Deb822_paragraph": "NOT_RECORDED",
+      "old_helper_sha256": "f4e6bb3332ad87c7506465449e8bdeb2185f020f3c96f6633a50b3ae53f47f4d",
+      "job_log_sha256": "6f4f7b14fdf261712d7765563bbbfb619263f5427077ba010b0b22621a5e6e35"
+    },
+    {
+      "pr": 231,
+      "source_sha": "16e7ee02f2ff7d99f7bbeac1b8e264a5eabe6a2e",
+      "workflow_run": 41889982954,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41889982954",
+      "job_id": 126784498707,
+      "workflow_conclusion": "FAILURE",
+      "failed_step": "Install reviewed missing Chromium fonts from signed Ubuntu archives",
+      "observed_error": "Signed Ubuntu deb sources only",
+      "classification": "REVIEWED_SOURCE_PARSER_REJECTION_BEFORE_APT_OR_BROWSER",
+      "browser_assertions": "NOT_EXECUTED",
+      "original_dependency_verification": "SKIPPED",
+      "original_chromium_install": "SKIPPED",
+      "exact_rejected_Deb822_paragraph": "NOT_RECORDED",
+      "old_helper_sha256": "f4e6bb3332ad87c7506465449e8bdeb2185f020f3c96f6633a50b3ae53f47f4d",
+      "job_log_sha256": "d7669a969a08af1aa12085c39309078db711b4eea323d258934d8d95720bbb7d"
+    },
+    {
+      "pr": 231,
+      "source_sha": "16e7ee02f2ff7d99f7bbeac1b8e264a5eabe6a2e",
+      "workflow_run": 41889808607,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41889808607",
+      "job_id": 126783881427,
+      "workflow_conclusion": "FAILURE",
+      "failed_step": "Install reviewed missing Chromium fonts from signed Ubuntu archives",
+      "observed_error": "Signed Ubuntu deb sources only",
+      "classification": "REVIEWED_SOURCE_PARSER_REJECTION_BEFORE_APT_OR_BROWSER",
+      "browser_assertions": "NOT_EXECUTED",
+      "original_dependency_verification": "SKIPPED",
+      "original_chromium_install": "SKIPPED",
+      "exact_rejected_Deb822_paragraph": "NOT_RECORDED",
+      "old_helper_sha256": "f4e6bb3332ad87c7506465449e8bdeb2185f020f3c96f6633a50b3ae53f47f4d",
+      "job_log_sha256": "ed2de7a2f2384347f6cd0a28b5b124b0c0600a7b5448743dd3a89bf2a3d1cb9b"
+    },
+    {
+      "pr": 232,
+      "source_sha": "a1cdbfea9eb92fab3b129867491f2f6ac33b712c",
+      "workflow_run": 41889996921,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41889996921",
+      "job_id": 126784547588,
+      "workflow_conclusion": "FAILURE",
+      "failed_step": "Install reviewed missing Chromium fonts from signed Ubuntu archives",
+      "observed_error": "Signed Ubuntu deb sources only",
+      "classification": "REVIEWED_SOURCE_PARSER_REJECTION_BEFORE_APT_OR_BROWSER",
+      "browser_assertions": "NOT_EXECUTED",
+      "original_dependency_verification": "SKIPPED",
+      "original_chromium_install": "SKIPPED",
+      "exact_rejected_Deb822_paragraph": "NOT_RECORDED",
+      "old_helper_sha256": "f4e6bb3332ad87c7506465449e8bdeb2185f020f3c96f6633a50b3ae53f47f4d",
+      "job_log_sha256": "da39e21819a8731bef280341b47f5e5b9f620a19a47b17562b46f3b36cee304d"
+    },
+    {
+      "pr": 232,
+      "source_sha": "a1cdbfea9eb92fab3b129867491f2f6ac33b712c",
+      "workflow_run": 41889817460,
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41889817460",
+      "job_id": 126783910566,
+      "workflow_conclusion": "FAILURE",
+      "failed_step": "Install reviewed missing Chromium fonts from signed Ubuntu archives",
+      "observed_error": "Signed Ubuntu deb sources only",
+      "classification": "REVIEWED_SOURCE_PARSER_REJECTION_BEFORE_APT_OR_BROWSER",
+      "browser_assertions": "NOT_EXECUTED",
+      "original_dependency_verification": "SKIPPED",
+      "original_chromium_install": "SKIPPED",
+      "exact_rejected_Deb822_paragraph": "NOT_RECORDED",
+      "old_helper_sha256": "f4e6bb3332ad87c7506465449e8bdeb2185f020f3c96f6633a50b3ae53f47f4d",
+      "job_log_sha256": "43086fa3ebf1f1642c8789416482b9e9131d0a372588bc68ecedd7f85042706d"
+    }
+  ],
+  "new_field_passport_failure": {
+    "pr": 237,
+    "head": "c900041cf999e6eda81a10d6361a6acad0d5ca88",
+    "run": 41911416205,
+    "job": 126859652726,
+    "conclusion": "FAILURE",
+    "observed_error": "Reviewed Ubuntu mirror and priority required",
+    "stage": "BEFORE_APT_DEPENDENCIES_CHROMIUM_BROWSER",
+    "browser_assertions": "NOT_EXECUTED",
+    "exact_mirror_contents": "NOT_RECORDED_UNRECOVERABLE_FOR_THIS_FINISHED_RUN",
+    "specific_mirror_or_priority_diagnosis": "NOT_ESTABLISHED",
+    "allowlist_broadened": false,
+    "log_sha256": "2a4fb6ef605aef451cd94d3a4639b37c3653fe04a99216819101f0870343fb6c",
+    "next": "REDACTED_SAME_JOB_READ_ONLY_DIAGNOSTICS_NO_SPECULATIVE_TRUST_CHANGE"
+  },
+  "runner_observability": {
+    "draft_pr": 241,
+    "author_commit": "332c32c5439b99a90e0a2672f94bc6f6ac469e05",
+    "parent": "43e622b16aa952f5dc2fe7ae9f96260b47682c2e",
+    "branch": "codex/cycle32-runner-mirror-diagnosis",
+    "new_cases": 10,
+    "reviewer": "/root/cycle25_finance_intelligence_resume",
+    "verdict": "CLEAR_SOURCE_ONLY",
+    "composed_into_product_candidate": false,
+    "helper_or_allowlist_changed": false,
+    "historical_failure_relabelled": false,
+    "status": "PENDING_ACTUAL_NEW_OBSERVATIONS",
+    "does_not_prove_original_unlogged_failure_cause": true
+  }
 }

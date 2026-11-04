@@ -7,6 +7,15 @@ transcripts, canonical labor completeness and repeated owner-source reads.
 authors, combined execution, independent review and current-head CI.
 No new business store, engine, route or restoration adapter is added.
 
+Clean1ef verification:213new cases/7files PASS; separate retained591/27PASS with
+pre-freeze provenance explicitly limited. All13quality commands PASS. Actual9native
++3OFF+2original30second navigation cases PASS;63screenshots/9keyboard journeys/
+369trusted events.128protected/599prior tests-config-fixtures/157critical paths/
+5locks/13bindings/25capability states/18IDs remain unchanged. C12 supplemental51
+original browser cases now PASS, original cancellation preserved. Foundation
+cancellations and a new unlogged runner-mirror rejection remain honestly separate;
+current Cycle32 GitHub checks require their own actual head results.
+
 **OWNER-WITNESSED MAIN SYNTHETIC LOSS SCENARIO PASS** records November4 primary
 Wi-Fi loss, independent Air continuation and bounded synthetic result only.
 [Recovery evidence draft235](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/235)

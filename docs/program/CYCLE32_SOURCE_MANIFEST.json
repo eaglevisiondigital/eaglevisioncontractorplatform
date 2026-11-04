@@ -154,29 +154,64 @@
     {
       "id": "/root",
       "role": "Main integration, contracts, shared evidence, QA and delivery",
-      "state": "ACTIVE"
+      "state": "LOCAL_VERIFICATION_COMPLETE_PUBLICATION_IN_PROGRESS"
     },
     {
       "id": "/root/cycle30_field_growth",
       "role": "Field; Growth audit; CI supplement and evidence investigation",
-      "state": "COMPLETED_BOUNDED_IMPLEMENTATION_AND_ACTIVE_CI_REVIEW"
+      "state": "LOCAL_ASSIGNMENTS_COMPLETED"
     },
     {
       "id": "/root/cycle25_finance_intelligence_resume",
       "role": "Finance and Intelligence; finite shared source admission",
-      "state": "COMPLETED"
+      "state": "LOCAL_ASSIGNMENTS_COMPLETED"
     },
     {
       "id": "/root/cycle32_customer_advanced",
       "role": "Voice; Customer/Offline retained-source audit",
-      "state": "COMPLETED"
+      "state": "LOCAL_ASSIGNMENTS_COMPLETED"
     },
     {
       "id": "/root/cycle28_independent_review",
       "role": "Independent physical/source/security/combined evidence review",
-      "state": "ACTIVE_REVIEW"
+      "state": "LOCAL_ASSIGNMENTS_COMPLETED"
     }
   ],
   "simultaneous_child_limit": 3,
-  "distinct_child_authors_and_reviewer": 4
+  "distinct_child_authors_and_reviewer": 4,
+  "independent_review": {
+    "author_commit": "dd60db16e361f3351afef0f4338ba2450701506c",
+    "parent": "1ef47f86ec4b4e7ac4951e1fe3ba4826eeff8297",
+    "branch": "codex/cycle32-independent-integration-review",
+    "reviewer": "/root/cycle28_independent_review",
+    "document": "docs/program/CYCLE32_INDEPENDENT_REVIEW.md",
+    "document_sha256": "da3198874e25fed95963fe1973d7ba6c1e6172fa51a6a38a55dac464512045d0",
+    "verdict": "CLEAR_LOCAL_SOURCE_AND_ACTUAL_ARTIFACTS_NOT_OPERATIONAL"
+  },
+  "runner_observability": {
+    "draft_pr": 241,
+    "author_commit": "332c32c5439b99a90e0a2672f94bc6f6ac469e05",
+    "parent": "43e622b16aa952f5dc2fe7ae9f96260b47682c2e",
+    "branch": "codex/cycle32-runner-mirror-diagnosis",
+    "new_cases": 10,
+    "reviewer": "/root/cycle25_finance_intelligence_resume",
+    "verdict": "CLEAR_SOURCE_ONLY",
+    "composed_into_product_candidate": false,
+    "helper_or_allowlist_changed": false,
+    "historical_failure_relabelled": false
+  },
+  "shared_coordinator_support": {
+    "scripts/cycle25-source-lineage.mjs": "bfe151aa7a95d0638799204a06e158f8f8dbcc28dd2f5def2854227082d9d0b5",
+    "scripts/check-cycle21.mjs": "c36be2ff31575643e2e770a8bd390c1b0e45a0677b9405fa5d128254af57efe0",
+    "scripts/check-cycle22.mjs": "f1c1aba7a842cd49718c48bb9a543ea72abdaffb455b75fb7995711cceb63d4b",
+    "scripts/check-cycle23.mjs": "9750b9125e2cadaf7bdabd3d6956508d03f9d73139ad93001852ae1d73c1ab3f",
+    "scripts/collect-cycle24-browser.mjs": "91de8cb3c701b2a8b57c8a5b2b1dc9bfb038f8b2e8c582d08d937153fcb79644",
+    "scripts/collect-cycle32-browser.mjs": "d10b74bc8cc028f3daefc265bb23ee01f2e0eb21611b1a77c67da037dd762532",
+    "scripts/cycle32-application-evidence.mjs": "55a942b44c0f09978478ef842b6a2f7ab9365290a86baf59625ff33731035c1d",
+    ".github/workflows/cycle32-integration.yml": "c105aef5aaa61f45bb6888318cf447537617f97613b2c1f216abd83db56c15d9",
+    "tests/cycle32-source-lineage.test.ts": "158d0376c2e42ce44dae5424e41cd3e50764ebc705f84ebca7e407ba856a750b",
+    "tests/cycle32-independent-source-review.test.ts": "5fb6500c3b374d370e640a3b9f031602d5daae43652c05f68b51a13d17ffb5cf"
+  },
+  "executed_clean_commit": "1ef47f86ec4b4e7ac4951e1fe3ba4826eeff8297",
+  "native_runtime_commit": "c4370636794b5b2559fff7e553c63da215b0bdb8"
 }
