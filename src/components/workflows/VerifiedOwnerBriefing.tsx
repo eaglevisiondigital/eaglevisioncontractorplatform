@@ -281,14 +281,14 @@ function Briefing({
                       {row.source.version ?? 'not recorded'}
                     </p>
                     <div className="verified-owner-pair">
-                      <section aria-label="Earlier recorded fact">
+                      <section aria-label={`Earlier recorded fact: ${row.key}`}>
                         <h5>Earlier recorded fact</h5>
                         <p>
                           {row.before_fact ??
                             'Not present in the earlier available read.'}
                         </p>
                       </section>
-                      <section aria-label="Current recorded fact">
+                      <section aria-label={`Current recorded fact: ${row.key}`}>
                         <h5>Current recorded fact</h5>
                         <p>
                           {row.current_fact ??
@@ -305,7 +305,7 @@ function Briefing({
                     <button
                       type="button"
                       disabled={busy || !row.can_inspect}
-                      aria-label={`Inspect verified difference: ${row.key}`}
+                      aria-label={`Inspect exact current difference: ${row.key}`}
                       onClick={() => void run('inspect', row.key)}
                     >
                       Inspect exact current difference
@@ -336,7 +336,7 @@ function Briefing({
                     disabled={
                       busy || row.state === 'UNKNOWN_SOURCE_UNAVAILABLE'
                     }
-                    aria-label={`Inspect verified source: ${row.key}`}
+                    aria-label={`Inspect exact current briefing source: ${row.key}`}
                     onClick={() => void run('inspect', row.key)}
                   >
                     Inspect exact current briefing source

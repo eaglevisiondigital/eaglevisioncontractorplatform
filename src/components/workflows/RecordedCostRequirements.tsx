@@ -293,7 +293,7 @@ function Requirements({
                       <button
                         type="button"
                         disabled={busy}
-                        aria-label={`Inspect category source: ${r.key}`}
+                        aria-label={`Inspect exact category source: ${r.key}`}
                         onClick={() => inspect(r)}
                       >
                         Inspect exact category source
