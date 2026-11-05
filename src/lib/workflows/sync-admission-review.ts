@@ -152,8 +152,11 @@ export async function reviewSyncAdmission(
   const b = sourcesByView.get(view);
   if (!b) throw Error('Exact original source requirements required');
   current(b);
-  const proposed = pin(input),
-    expected = syncSourceReference(view),
+  const proposed = pin(input);
+  // A digest/reference is untrusted input. Reject executable descriptor forms
+  // before claiming a label; discard the clone and keep original live checks.
+  structuredClone(input);
+  const expected = syncSourceReference(view),
     signature = JSON.stringify(proposed),
     binding: ReviewBinding = {
       source: b,
