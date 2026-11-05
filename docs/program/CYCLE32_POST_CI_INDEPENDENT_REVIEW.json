@@ -1,0 +1,173 @@
+{
+  "schema": "cycle32-post-ci-independent-review-v1",
+  "verdict": "CLEAR_LOCAL_SOURCE_AND_ACTUAL_LOCAL_EVIDENCE_NOT_OPERATIONAL",
+  "reviewer": "/root/cycle25_finance_intelligence_resume",
+  "review_parent": "bdef0e14bd74478029ea4efe57e6e25a878a7f49",
+  "application_test_source": "0f2e5e0bc1dc2280764f471f2339f5add267f37b",
+  "original_failed_source": "7b377aeffac11855a5dfdfaa86719078e70a5260",
+  "author_bundle": {
+    "commit": "ec63030de8c0faceebd1ec9a645e9ea0dcf76383",
+    "sole_parent": "7b377aeffac11855a5dfdfaa86719078e70a5260",
+    "runtime_path": "src/components/workflows/RecordedOwnerActions.tsx",
+    "delta": "ONE_MODIFIED_COMPONENT_AND_FOUR_NEW_TEST_DOCUMENT_FILES",
+    "component_sha256": "31d56b3b32cb4d2ae9f2084d31661a720d2ca6eb493a0c3ce1f1a907e26dde8b",
+    "feature_draft_pr": 245
+  },
+  "review_scope": "POST_CI_OWNER_RENDERING_SOURCE_ADMISSION_COMPATIBILITY_AND_OBSERVED_LOCAL_EVIDENCE",
+  "blocking_findings": [],
+  "source_admission": {
+    "original_c30_author": "9f85556e28875a53976b55567f3a14e942ba3995",
+    "original_outer_identity_preserved": true,
+    "exact_parent_and_entire_five_file_delta": true,
+    "regular_modes_required": true,
+    "raw_original_c30_equals_post_ci_parent": true,
+    "exact_current_native_and_four_companions_reread": true,
+    "generic_descendant_waiver": false,
+    "cached_authority": false,
+    "business_authority": false,
+    "restore_adapter": false
+  },
+  "retained_compatibility": {
+    "path": "tests/cycle31-owner-source-compatibility.test.ts",
+    "expanded_cases": 22,
+    "top_level_test_clauses": 17,
+    "unchanged_case_titles": true,
+    "updated_current_endpoint_expectations": 1,
+    "other_16_clause_bodies_byte_identical": true,
+    "literal_fixed_new_author_and_whole_bundle_validation": true,
+    "baseline_read_substitution": false,
+    "historical_git_hash_blob_manifest_and_denials_preserved": true
+  },
+  "original_records_preserved": {
+    "original_review_draft_pr": 243,
+    "original_review_commit": "dd60db16e361f3351afef0f4338ba2450701506c",
+    "original_review_path": "docs/program/CYCLE32_INDEPENDENT_REVIEW.md",
+    "original_review_sha256": "da3198874e25fed95963fe1973d7ba6c1e6172fa51a6a38a55dac464512045d0",
+    "original_four_cycle32_definition_block_byte_identical": true,
+    "original_96_case_file": "tests/cycle32-source-lineage.test.ts",
+    "original_96_case_file_sha256": "158d0376c2e42ce44dae5424e41cd3e50764ebc705f84ebca7e407ba856a750b",
+    "original_96_case_file_byte_identical": true,
+    "original_c31_manifest_byte_identical": true,
+    "protected_source_hashes": 128,
+    "locked_design_hashes": 5,
+    "design_bindings": 13,
+    "native_guard_engine_paths_unchanged": [
+      "src/lib/workflows/recorded-owner-actions.ts",
+      "src/lib/workflows/recorded-priority-navigation.ts",
+      "src/lib/workflows/priority-actions.ts",
+      "src/lib/workflows/saved-revision-runtime.ts",
+      "src/lib/workflows/daily-workbench-runtime.ts"
+    ],
+    "original_browser_test_and_configuration_unchanged": true,
+    "sql_migrations_and_frozen_recovery_references_unchanged": true
+  },
+  "format_only_forward": {
+    "from": "0f2e5e0bc1dc2280764f471f2339f5add267f37b",
+    "to": "bdef0e14bd74478029ea4efe57e6e25a878a7f49",
+    "changed_path": "docs/program/CYCLE32_SOURCE_MANIFEST.json",
+    "change": "AUDITED_NO_CHANGE_ARRAY_LINE_WRAPPING_ONLY",
+    "parsed_values_equal": true,
+    "runtime_tests_and_scripts_byte_identical": true,
+    "initial_format_check": "FAIL_RETAINED",
+    "corrected_format_check": "PASS",
+    "passed_application_checks_not_repeated": true
+  },
+  "actual_local_evidence": {
+    "new_application": {
+      "source": "0f2e5e0bc1dc2280764f471f2339f5add267f37b",
+      "passed": 256,
+      "files": 10,
+      "skipped": 0,
+      "sha256": "a057481924572665efabb52d4649265ea67377b5a50fd9ff4d9a108be90f2477",
+      "strict_collection": "PASS",
+      "parser_cases": 55,
+      "parser_cases_are_not_browser_acceptance": true
+    },
+    "retained_application": {
+      "source": "0f2e5e0bc1dc2280764f471f2339f5add267f37b",
+      "passed": 591,
+      "files": 27,
+      "skipped": 0,
+      "sha256": "dd16d55995e7bdddd71b81f21308a58429fa48a50a002025d06e15264e0b292f",
+      "strict_collection": "PASS",
+      "one_current_endpoint_expectation_explicitly_updated": true
+    },
+    "quality": {
+      "source": "0f2e5e0bc1dc2280764f471f2339f5add267f37b",
+      "passed": [
+        "lint",
+        "typecheck",
+        "types-check",
+        "migrations-check",
+        "property-check",
+        "customer-check",
+        "customer-requests-check",
+        "customer-broker-check",
+        "features-check"
+      ],
+      "corrected_format_source": "bdef0e14bd74478029ea4efe57e6e25a878a7f49",
+      "corrected_format": "PASS",
+      "build_source": "bdef0e14bd74478029ea4efe57e6e25a878a7f49",
+      "build": "PASS",
+      "local_node": "v24.20.0",
+      "hosted_node_not_inferred": true
+    },
+    "new_responsive_browser": {
+      "source": "bdef0e14bd74478029ea4efe57e6e25a878a7f49",
+      "passed": 18,
+      "projects": ["desktop", "tablet", "mobile"],
+      "brands": 3,
+      "scenarios_per_brand_project": 2,
+      "budget_ms": 30000,
+      "configured_and_actual_workers": 1,
+      "attempts_per_case": 1,
+      "retries": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "sha256": "f6fbe351e15837617e307cc8b469777a61c95c30f1ed11667120e8d0adc2a4d7"
+    },
+    "original_paired_browser": {
+      "source": "bdef0e14bd74478029ea4efe57e6e25a878a7f49",
+      "passed": 2,
+      "projects": ["desktop", "tablet"],
+      "original_title": "canonical task cost plan corrections and exact history navigation / roofing-example",
+      "budget_ms": 30000,
+      "configured_and_actual_workers": 2,
+      "attempts_per_case": 1,
+      "retries": 0,
+      "desktop_duration_ms": 15051,
+      "tablet_duration_ms": 15306,
+      "sha256": "94acd1ee838ec1e0660834784ae443e5ad308ae54da6450d70c88fc94b54be0e",
+      "fresh_webservers_required_by_original_config": true
+    },
+    "clean_before_and_after": true,
+    "author_worktree_evidence": {
+      "unit_passed": 71,
+      "browser_passed": 18,
+      "execution_context": "DIRTY_ISOLATED_AUTHOR_WORKTREE_AT_ORIGINAL_7B",
+      "formal_prelaunch_hash_manifest": false,
+      "not_substituted_for_clean_candidate_evidence": true
+    }
+  },
+  "historical_evidence": {
+    "run_41915289330": "FAIL_RETAINED_AT_ORIGINAL_7B",
+    "original_tablet_timeout_ms": 30973,
+    "initial_new_disclosure_browser_run": "16_PASS_2_FAIL_RETAINED",
+    "initial_local_213_raw_sha256": "2ad1a19403ba14432e536a652659957d80cc08ceaf51649734cae01b25099502",
+    "initial_local_213_raw_currently_retained": false,
+    "initial_local_213_disposition": "SUPERSEDED_AT_REUSED_OUTPUT_PATH_HASH_LOG_AND_ORIGINAL_REVIEW_REMAIN_NO_RAW_RECONSTRUCTION_CLAIM",
+    "separate_hosted_213_archive": "RETAINED_IN_EXISTING_PROVIDER_VERIFIED_EVIDENCE_RECORDS_NOT_REEXTRACTED_BY_THIS_REVIEW",
+    "prior_ci_failures_cancellations_and_alternate_diagnostics_not_relabelled": true
+  },
+  "limits": {
+    "new_exact_head_hosted_ci": "NOT_VERIFIED_BY_THIS_LOCAL_SOURCE_REVIEW",
+    "sole_timeout_cause_proven": false,
+    "paired_hosted_stability_proven": false,
+    "pending_unmount_and_document_hidden_transitions": "SOURCE_REVIEWED_NOT_NEW_BROWSER_DEMONSTRATED",
+    "escape_cancellation": "NOT_SEPARATELY_TESTED",
+    "visual_owner_approval_inferred": false,
+    "genuine_auth_or_durable_recovery_accepted": false
+  },
+  "operational_ready": false,
+  "release": "NOT READY / NOT AUTHORIZED"
+}
