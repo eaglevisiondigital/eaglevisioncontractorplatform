@@ -111,7 +111,13 @@ export function validateCycle21PublishedSource(
       : commit === '4681fc9d76a31044eded27b6f3340c2cb0b2c89c' &&
           file.path === 'src/lib/workflows/task-correction-review.ts'
         ? ['452d57049e60c5228718fc7647346faab7ac4409', 'task-input-binding']
-        : undefined;
+        : commit === '25136cd9175f0ffe7a5c1804141b5e9532a9ca08' &&
+            file.path === 'src/lib/workflows/maintenance-plan-correction.ts'
+          ? [
+              'de81936d42c9279940f3a8466581d1321de84636',
+              'maintenance-input-continuity',
+            ]
+          : undefined;
   let admitted;
   if (expected) {
     try {

@@ -312,6 +312,12 @@ export function admitCycle25Source(path, current, original, supplied = {}) {
     owners = cycle25Authors.filter((s) => s.modified.includes(path));
   if (
     owners.length === 0 &&
+    cycle33Authors.some((s) => s.modified.includes(path)) &&
+    !cycle30Authors.some((s) => s.modified.includes(path))
+  )
+    return { ...admitCycle33Forward(path, current, original, ports), path };
+  if (
+    owners.length === 0 &&
     cycle32Authors.some((s) => s.modified.includes(path))
   )
     return {
@@ -941,6 +947,11 @@ function admitCycle28Forward(path, current, previous, ports) {
       ...result,
       cycle32_forward: admitCycle32Forward(path, current, endpoint, ports),
     };
+  if (cycle33Authors.some((s) => s.modified.includes(path)))
+    return {
+      ...result,
+      cycle33_forward: admitCycle33Forward(path, current, endpoint, ports),
+    };
   throw Error(
     'Current source differs from fixed Cycle27 lineage (fixed Cycle28 author required)',
   );
@@ -1263,6 +1274,11 @@ function admitCycle30Forward(path, current, previous, ports) {
         // Preserve the original denial boundary; no other descendant is admitted.
       }
     }
+    if (cycle33Authors.some((s) => s.modified.includes(path)))
+      return {
+        ...result,
+        cycle33_forward: admitCycle33Forward(path, current, endpoint, ports),
+      };
     throw Error('Current source differs from fixed Cycle30 author');
   }
   return result;
@@ -1689,8 +1705,10 @@ export function admitCycle32BusyForward(
     )
   )
     throw Error('Exact original C30 and Cycle32 busy-render baseline required');
-  if (!Buffer.from(current).equals(Buffer.from(ports.git(spec.commit, path))))
-    throw Error('Current source differs from fixed Cycle32 busy-render author');
+  const endpoint = Buffer.from(ports.git(spec.commit, path));
+  const forward = Buffer.from(current).equals(endpoint)
+    ? undefined
+    : admitCycle33Forward(path, current, endpoint, ports);
   for (const companion of spec.added)
     if (
       !Buffer.from(ports.read(companion)).equals(
@@ -1698,7 +1716,11 @@ export function admitCycle32BusyForward(
       )
     )
       throw Error('Exact Cycle32 busy-render author companion required');
-  return { ...result, authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE' };
+  return {
+    ...result,
+    ...(forward ? { cycle33_forward: forward } : {}),
+    authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+  };
 }
 export function inspectCycle32BusySources({
   requirePresent = false,
@@ -1718,6 +1740,214 @@ export function inspectCycle32BusySources({
     module: spec.module,
     source_commit: spec.commit,
     present,
+    business_authority: false,
+    restore_adapter: false,
+  };
+}
+
+// Five finite, reviewed C33 author packages. Source evidence only; never a
+// business-state writer, restoration adapter, operational receipt or authority.
+export const cycle33Parent = '0597bb3330f22d69f68a67098e950693e0648172';
+export const cycle33Authors = Object.freeze(
+  [
+    {
+      module: 'field-task-receipt-context',
+      commit: '9c29d34e129af32c9b586990dc582b799b57f2bc',
+      owner: '/root',
+      cases: 51,
+      nativeCorrection: { commit: '12cf06da7fb4dea1600e6ca1481f4ca8c2c98188' },
+      permitted: ['src/lib/workflows/task-receipt-reconciliation.ts'],
+      modified: ['src/lib/workflows/task-receipt-reconciliation.ts'],
+      added: [
+        'docs/program/CYCLE33_TASK_RECEIPT_CONTEXT.md',
+        'tests/cycle33-task-receipt-context.test.ts',
+      ],
+    },
+    {
+      module: 'customer-selection-privacy',
+      commit: '26c49ff8a78712ae6ad5e3afbc491ce8b608760f',
+      owner: '/root/cycle28_independent_review',
+      cases: 12,
+      permitted: ['src/lib/workflows/service-request-actions.ts'],
+      modified: ['src/lib/workflows/service-request-actions.ts'],
+      added: [
+        'docs/program/CYCLE33_CUSTOMER_SELECTION_PRIVACY.md',
+        'tests/cycle33-customer-selection-privacy.test.ts',
+      ],
+    },
+    {
+      module: 'maintenance-input-continuity',
+      commit: 'de81936d42c9279940f3a8466581d1321de84636',
+      owner: '/root/cycle28_independent_review',
+      cases: 12,
+      permitted: ['src/lib/workflows/maintenance-plan-correction.ts'],
+      modified: ['src/lib/workflows/maintenance-plan-correction.ts'],
+      added: [
+        'docs/program/CYCLE33_MAINTENANCE_INPUT_CONTINUITY.md',
+        'tests/cycle33-maintenance-input-continuity.test.ts',
+      ],
+    },
+    {
+      module: 'sync-proposal-privacy',
+      commit: '2bd1060982bc4a7d7b1c30b0329888b419ade027',
+      owner: '/root/cycle28_independent_review',
+      cases: 12,
+      permitted: ['src/lib/workflows/sync-admission-review.ts'],
+      modified: ['src/lib/workflows/sync-admission-review.ts'],
+      added: [
+        'docs/program/CYCLE33_SYNC_PROPOSAL_PRIVACY.md',
+        'tests/cycle33-sync-proposal-privacy.test.ts',
+      ],
+    },
+    {
+      module: 'owner-continuity',
+      commit: '5aa6728003c9b820e50d34505c465104440783d7',
+      owner: '/root/cycle25_finance_intelligence_resume',
+      cases: 14,
+      permitted: ['src/components/workflows/RecordedOwnerActions.tsx'],
+      modified: ['src/components/workflows/RecordedOwnerActions.tsx'],
+      added: [
+        'docs/program/CYCLE33_OWNER_CONTINUITY.md',
+        'tests/cycle33-owner-continuity.test.ts',
+        'tests/program/cycle33-owner-continuity.spec.ts',
+        'tests/program/playwright.cycle33-owner-continuity.config.ts',
+      ],
+    },
+  ].map((s) =>
+    Object.freeze({
+      ...s,
+      ...(s.nativeCorrection
+        ? { nativeCorrection: Object.freeze(s.nativeCorrection) }
+        : {}),
+      permitted: Object.freeze(s.permitted),
+      modified: Object.freeze(s.modified),
+      added: Object.freeze(s.added),
+    }),
+  ),
+);
+export function validateCycle33ForwardSpec(spec, supplied = {}) {
+  const ports = { ...cycle25SourcePorts, ...supplied };
+  const fixed = cycle33Authors.find((s) => s.module === spec?.module);
+  if (
+    !fixed ||
+    JSON.stringify(spec) !== JSON.stringify(fixed) ||
+    ports.type(fixed.commit) !== 'commit' ||
+    ports.parent(fixed.commit) !== cycle33Parent
+  )
+    throw Error('Exact fixed single-parent Cycle33 author required');
+  const expected = [
+    ...fixed.modified.map((p) => `M\t${p}`),
+    ...fixed.added.map((p) => `A\t${p}`),
+  ]
+    .sort()
+    .join('\n');
+  if (ports.delta(fixed.commit) !== expected)
+    throw Error('Exact bounded Cycle33 author delta required');
+  for (const path of fixed.modified)
+    if (ports.mode(cycle33Parent, path) !== '100644')
+      throw Error('Regular Cycle33 baseline required');
+  for (const path of [...fixed.modified, ...fixed.added])
+    if (ports.mode(fixed.commit, path) !== '100644')
+      throw Error('Regular Cycle33 source required');
+  if (fixed.nativeCorrection) {
+    const correction = fixed.nativeCorrection.commit;
+    if (
+      ports.type(correction) !== 'commit' ||
+      ports.parent(correction) !== fixed.commit ||
+      ports.delta(correction) !==
+        [...fixed.modified, ...fixed.added]
+          .map((p) => `M\t${p}`)
+          .sort()
+          .join('\n')
+    )
+      throw Error('Exact direct-child Cycle33 correction required');
+    for (const path of [...fixed.modified, ...fixed.added])
+      if (ports.mode(correction, path) !== '100644')
+        throw Error('Regular Cycle33 correction source required');
+  }
+  return {
+    source_commit: fixed.commit,
+    native_correction: fixed.nativeCorrection?.commit ?? null,
+    module: fixed.module,
+    owner: fixed.owner,
+    authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+  };
+}
+export function admitCycle33Forward(path, current, previous, supplied = {}) {
+  const ports = { ...cycle25SourcePorts, ...supplied };
+  const owners = cycle33Authors.filter((s) => s.modified.includes(path));
+  if (owners.length !== 1) throw Error('No finite Cycle33 source owner');
+  const spec = owners[0],
+    result = validateCycle33ForwardSpec(spec, ports);
+  if (
+    !Buffer.from(previous).equals(Buffer.from(ports.git(cycle33Parent, path)))
+  )
+    throw Error('Exact Cycle33 parent source required');
+  if (
+    !Buffer.from(current).equals(
+      Buffer.from(
+        ports.git(spec.nativeCorrection?.commit ?? spec.commit, path),
+      ),
+    )
+  )
+    throw Error('Current source differs from fixed Cycle33 author');
+  // Every current companion is read on every admission; immutable Git caching
+  // never substitutes a historical file for the current working tree.
+  for (const companion of spec.added)
+    if (
+      !Buffer.from(ports.read(companion)).equals(
+        Buffer.from(
+          ports.git(spec.nativeCorrection?.commit ?? spec.commit, companion),
+        ),
+      )
+    )
+      throw Error('Exact Cycle33 author companion required');
+  return result;
+}
+export function inspectCycle33Sources({
+  requireCombined = false,
+  ...supplied
+} = {}) {
+  const ports = { ...cycle25SourcePorts, ...supplied },
+    rows = [],
+    owned = new Set();
+  for (const spec of cycle33Authors) {
+    validateCycle33ForwardSpec(spec, ports);
+    for (const path of [...spec.modified, ...spec.added]) {
+      if (owned.has(path)) throw Error('Overlapping Cycle33 source ownership');
+      owned.add(path);
+    }
+    const path = spec.modified[0],
+      current = Buffer.from(ports.read(path));
+    const present = !current.equals(
+      Buffer.from(ports.git(cycle33Parent, path)),
+    );
+    if (present)
+      admitCycle33Forward(path, current, ports.git(cycle33Parent, path), ports);
+    else {
+      for (const companion of spec.added) {
+        let exists = false;
+        try {
+          ports.read(companion);
+          exists = true;
+        } catch (error) {
+          if (error?.code !== 'ENOENT') throw error;
+        }
+        if (exists) throw Error('Partial Cycle33 package forbidden');
+      }
+      if (requireCombined) throw Error('Combined Cycle33 package absent');
+    }
+    rows.push({
+      module: spec.module,
+      source_commit: spec.commit,
+      state: present ? 'EXACT_SUCCESSOR_PRESENT' : 'BASELINE_UNCHANGED',
+    });
+  }
+  return {
+    packages: rows,
+    complete_combined:
+      rows.length === 5 &&
+      rows.every((r) => r.state === 'EXACT_SUCCESSOR_PRESENT'),
     business_authority: false,
     restore_adapter: false,
   };

@@ -9,6 +9,8 @@ import {
   validateCycle21PublishedSource,
 } from './check-cycle21.mjs';
 
+import { admitCycle33Forward } from './cycle25-source-lineage.mjs';
+
 export const cycle22Parent = '2fecb89213647b567746c0413a9ba3e41ce748ae';
 export const cycle22Branch = 'codex/program-cycle-twenty-two-integration';
 export const cycle22Authors = Object.freeze(
@@ -182,7 +184,9 @@ export function validateCycle22Manifest(manifest, ports = {}) {
               'src/lib/workflows/recorded-owner-actions.ts',
             ].includes(file.path)) ||
             (p.head_commit === '4681fc9d76a31044eded27b6f3340c2cb0b2c89c' &&
-              file.path === 'src/lib/workflows/task-correction-review.ts'))
+              file.path === 'src/lib/workflows/task-correction-review.ts') ||
+            (p.head_commit === '25136cd9175f0ffe7a5c1804141b5e9532a9ca08' &&
+              file.path === 'src/lib/workflows/maintenance-plan-correction.ts'))
         ) {
           try {
             // Prior validation and the exact retained-manifest check above
@@ -198,6 +202,30 @@ export function validateCycle22Manifest(manifest, ports = {}) {
             continue;
           } catch {
             // Unknown current bytes retain the original failure contract.
+          }
+        }
+        if (
+          path === 'docs/program/CYCLE11_DELIVERY_INDEX.json' &&
+          p.head_commit === '6108876998b891108964a4a9a7a58bef6e0b31ef' &&
+          file.path === 'src/lib/workflows/sync-admission-review.ts'
+        ) {
+          try {
+            const original = Buffer.from(git(p.head_commit, file.path));
+            if (sha(original) !== file.sha256)
+              throw Error('Original C11 hash required');
+            const result = admitCycle33Forward(file.path, bytes, original, {
+              read,
+              git,
+            });
+            if (
+              result.source_commit !==
+                '2bd1060982bc4a7d7b1c30b0329888b419ade027' ||
+              result.module !== 'sync-proposal-privacy'
+            )
+              throw Error('Exact original C11 forward required');
+            continue;
+          } catch {
+            /* Unknown edits retain the original denial boundary. */
           }
         }
         throw Error(`Retained author source changed: ${file.path}`);
