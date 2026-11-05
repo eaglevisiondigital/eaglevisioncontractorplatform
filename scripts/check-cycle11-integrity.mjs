@@ -2,6 +2,10 @@ import { readFileSync, lstatSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import {
+  admitCycle33Forward,
+  cycle25SourcePorts,
+} from './cycle25-source-lineage.mjs';
 export const cycle11Packages = [
   ['crew-assignment-lab', 'CrewAssignmentLab', 'CREW_ASSIGNMENT_LAB'],
   [
@@ -56,6 +60,47 @@ export function readCycle11File(path) {
   if (!lstatSync(current).isFile()) throw Error('Regular source required');
   return readFileSync(current);
 }
+/** Preserve the original C11 hash; admit only the fixed reviewed Advanced
+ * successor through exact current source/companion checks. No runtime authority. */
+export function validateCycle11PublishedSource(
+  file,
+  bytes,
+  read = readCycle11File,
+) {
+  const error = () => {
+    throw Error(`Reviewed Cycle11 source changed: ${file.path}`);
+  };
+  const hash = (value) => createHash('sha256').update(value).digest('hex');
+  const advanced = file.path === 'src/lib/workflows/sync-admission-review.ts';
+  if (!/^[a-f0-9]{64}$/.test(file.sha256)) error();
+  if (
+    advanced &&
+    file.sha256 !==
+      '274b74bd7da08e1e0bc2ccfc3f759f4ed0cdc0a3122ebd5302fb94b18be0b067'
+  )
+    error();
+  if (hash(bytes) === file.sha256) return;
+  if (advanced) {
+    try {
+      const original = cycle25SourcePorts.git(
+        '6108876998b891108964a4a9a7a58bef6e0b31ef',
+        file.path,
+      );
+      if (hash(original) !== file.sha256) error();
+      const result = admitCycle33Forward(file.path, bytes, original, { read });
+      if (
+        result.source_commit !== '2bd1060982bc4a7d7b1c30b0329888b419ade027' ||
+        result.module !== 'sync-proposal-privacy' ||
+        result.authority !== 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE'
+      )
+        error();
+      return;
+    } catch {
+      /* Keep the original failure boundary for any unknown edit. */
+    }
+  }
+  error();
+}
 export function validateCycle11Manifest(manifest, read = readCycle11File) {
   if (
     manifest.schema !== 'propel-cycle11-delivery-v1' ||
@@ -89,12 +134,7 @@ export function validateCycle11Manifest(manifest, read = readCycle11File) {
     for (const file of files) {
       if (!remaining.has(file.path) || paths.has(file.path))
         throw Error('Overlapping or out-of-scope Cycle11 source');
-      if (
-        !/^[a-f0-9]{64}$/.test(file.sha256) ||
-        createHash('sha256').update(read(file.path)).digest('hex') !==
-          file.sha256
-      )
-        throw Error(`Reviewed Cycle11 source changed: ${file.path}`);
+      validateCycle11PublishedSource(file, Buffer.from(read(file.path)), read);
       remaining.delete(file.path);
       paths.add(file.path);
     }
