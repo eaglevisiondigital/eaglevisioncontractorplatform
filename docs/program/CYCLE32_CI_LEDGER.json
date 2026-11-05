@@ -300,7 +300,8 @@
       "trusted_events": 369,
       "collector_sha256": "a4f8177dcb51c63b5528cb927d08c1bfa4fe90873c69db3991421975dde4e63f",
       "original_tablet_not_closed": true
-    }
+    },
+    "snapshot_only": true
   },
   "historical": {
     "cycle18": "ORIGINAL_446_APPLICATION_PASS_21_BROWSER_PASS_9_BROWSER_FAIL_PRESERVED",
@@ -789,6 +790,28 @@
     "timing_sha256": "5a053ba2a5b87ee6c9cea7121158954d2b09b18bff4e3fa3eb87c5e4dc5fbcdb",
     "trace_zip_sha256": "d870f01306d472f296849b1a45efff7902db00eb79acb456fce2a124f8e1489e",
     "provider_artifact_id": 13372457924,
-    "provider_artifact_sha256": "0acccc7d6761b08d5a6863ceb9b90ecc720fd63f8cf68025b38f7cd80c20d809"
+    "provider_artifact_sha256": "0acccc7d6761b08d5a6863ceb9b90ecc720fd63f8cf68025b38f7cd80c20d809",
+    "runner_cpu_differed_from_original": true
+  },
+  "post_ci_candidate": {
+    "application_source": "0f2e5e0bc1dc2280764f471f2339f5add267f37b",
+    "format_build_browser_source": "bdef0e14bd74478029ea4efe57e6e25a878a7f49",
+    "local_new256": "PASS",
+    "local_retained591": "PASS_WITH_EXACT_REVIEWED_CURRENT_ENDPOINT_EXPECTATION",
+    "local_browser18plus2": "PASS",
+    "current_head_hosted_result": "AWAIT_ACTUAL_FINAL_HEAD_STATUS_NO_INHERITANCE"
+  },
+  "post_ci_child": {
+    "draft_pr": 245,
+    "head": "7ec122ebc8076421c7eec753ce12360252a7e61e",
+    "observed_at": "2026-11-05T00:00:58Z",
+    "check_counts": {
+      "PASS": 24,
+      "PENDING": 8
+    },
+    "run": 41936755818,
+    "original_paired_and_new_browser": "PENDING_AT_SNAPSHOT",
+    "base": "codex/program-cycle-thirty-two-integration",
+    "normal_base_correction": "C31_TO_MAIN32_NO_MANUAL_RERUNS"
   }
 }

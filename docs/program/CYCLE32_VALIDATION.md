@@ -243,3 +243,40 @@ new source-boundary cases cover unknown edits, wrong parents/modes, companion dr
 repeat current reads and unchanged native engines. The strict new collection becomes
 256cases/10files (original213+10reviewed runner-parser+9busy-render+24source cases).
 No old browser assertion, budget, original four-pin inventory or96-case file changes.
+
+## Actual clean post-CI verification
+
+Exact clean `0f2e5e0bc1dc2280764f471f2339f5add267f37b` passes256new cases/10files
+and separate591retained cases/27files, both strict collection gates, full lint, strict
+types and generated-type/migration/property/customer/request/broker/feature checks.
+The retained22 compatibility cases contain the explicit exact-current-source update
+described above; their names, historical hashes and denial assertions remain.
+One formatting check failed only the source-manifest array wrapping. Narrow
+`bdef0e14bd74478029ea4efe57e6e25a878a7f49` changes only that JSON's whitespace;
+parsed values and every runtime/test/helper byte equal0f2. Corrected full formatting
+and the previously unreached application build pass on cleanbdef. Passed tests were
+not rerun for that formatting-only correction. The original formatting failure remains
+in the evidence. Adjacent JSON records every command source/status/hash.
+
+Cleanbdef also passes all18 new cases across three brands and three viewports plus
+the original paired roofing desktop/tablet cases in15,051/15,306ms. Original30,000ms
+budgets, two workers, zero retries, selectors and assertions remain unchanged.
+These are local proofs; neither the old7b hosted failure nor future hosted stability
+is relabelled. The local213-case1ef raw report was superseded at its output path by
+the clean256 run; its original observed hash/log/original independent review remain,
+without a raw-reconstruction claim. Separate verified hosted7b213, oldlocal591/owner2
+and all historical failed/cancelled CI artifacts remain preserved. New reports are
+privately retained by digest; later browser outputs use separate post-CI paths.
+
+[Bounded draft245](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/245)
+retains immutable five-file authorec630 and direct ten-file reviewed shared-support
+child7ec122, stacked above Main32. A base correction avoids duplicating the whole
+Cycle32 review; no commit, title, draft status or CI result was rewritten. Its current
+24PASS/8PENDING snapshot does not predict its browser gates. Final coordination-head
+checks require their own observation. No successful check was manually rerun.
+
+[New post-CI independent review](CYCLE32_POST_CI_INDEPENDENT_REVIEW.md), solebdef
+author `8d2fb9c5fc62f07498bb714e0d8e5429dfb61fa2`, independently verifies these
+source boundaries and actual clean reports. Its JSON companion records exact hashes
+and separate command sources. Original reviewdd60/PR243 remains byte-identical.
+This later review grants no hosted, physical-witness, financial or release authority.

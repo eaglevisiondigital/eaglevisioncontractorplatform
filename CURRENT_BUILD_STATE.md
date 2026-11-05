@@ -31,7 +31,9 @@ atomic receipts/durableACK, external rollback protection and matched recovery;
 
 Post-CI reviewed author ec63030 adds pending-private-evidence withholding and retained
 keyboard/filter/disclosure context, without changing native guards. Its dirty-author
-71unit/18responsive cases pass; clean combined verification remains pending. A separate
+71unit/18responsive cases pass. Clean0f2 source passes256new/591retained cases;
+format-only bdef passes correctedformat/build plus18new and2original paired browser
+cases (15.051/15.306s,30s budgets,2workers,0retry). Hosted stability remains unproven. A separate
 finite source pin preserves original9f provenance. One current-file C31 test expectation
 advances to that exact new author; all22 case titles/counts/denials remain unchanged.
 Original599unchanged-test proof applies to1ef; current scope has598unchanged plus this

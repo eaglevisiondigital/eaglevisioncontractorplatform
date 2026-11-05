@@ -24,7 +24,8 @@
     "skipped": 0,
     "strict_collection": "PASS",
     "sha256": "2ad1a19403ba14432e536a652659957d80cc08ceaf51649734cae01b25099502",
-    "source": "1ef47f86ec4b4e7ac4951e1fe3ba4826eeff8297"
+    "source": "1ef47f86ec4b4e7ac4951e1fe3ba4826eeff8297",
+    "raw_availability": "OUTPUT_SUPERSEDED_HASH_COMMAND_LOG_AND_ORIGINAL_REVIEW_RETAINED_NO_RECONSTRUCTION"
   },
   "retained_application": {
     "cases": 591,
@@ -202,7 +203,7 @@
     "local_pass_is_not_hosted_pass": true
   },
   "post_ci_candidate": {
-    "state": "AWAIT_CLEAN_COMBINED_EXECUTION",
+    "state": "LOCAL_COMBINED_PASS_AFTER_DOCUMENT_FORMAT_CORRECTION_HOSTED_CHECKS_SEPARATE",
     "new_expected_cases": 256,
     "new_expected_files": 10,
     "retained_expected_cases": 591,
@@ -256,6 +257,261 @@
           "sha256": "206cfd438e5b2458e8df88035970afbf58419c12a393a6aa459a2f8637cc4118"
         }
       ]
+    },
+    "actual_clean_proof": {
+      "application_source": "0f2e5e0bc1dc2280764f471f2339f5add267f37b",
+      "format_build_browser_source": "bdef0e14bd74478029ea4efe57e6e25a878a7f49",
+      "only_source_difference": "ONE_JSON_FORMAT_ONLY_PARSED_VALUES_EQUAL_RUNTIME_TEST_HELPER_BYTES_EQUAL",
+      "new_application": {
+        "passed": 256,
+        "files": 10,
+        "skipped": 0,
+        "sha256": "a057481924572665efabb52d4649265ea67377b5a50fd9ff4d9a108be90f2477",
+        "strict_collection": "PASS"
+      },
+      "retained_application": {
+        "passed": 591,
+        "files": 27,
+        "skipped": 0,
+        "sha256": "dd16d55995e7bdddd71b81f21308a58429fa48a50a002025d06e15264e0b292f",
+        "strict_collection": "PASS",
+        "one_explicit_current_source_expectation_update": true
+      },
+      "quality": [
+        {
+          "name": "new-256",
+          "args": [
+            "npx",
+            "vitest",
+            "run",
+            "tests/cycle32-busy-source-lineage.test.ts",
+            "tests/cycle32-c12-browser-evidence.test.ts",
+            "tests/cycle32-independent-source-review.test.ts",
+            "tests/cycle32-owner-busy-state.test.ts",
+            "tests/cycle32-owner-filter-navigation.test.ts",
+            "tests/cycle32-profit-guard-completeness.test.ts",
+            "tests/cycle32-runner-mirror-probe.test.ts",
+            "tests/cycle32-source-lineage.test.ts",
+            "tests/cycle32-task-input-binding.test.ts",
+            "tests/cycle32-voice-input-continuity.test.ts",
+            "--maxWorkers=1",
+            "--reporter=json",
+            "--outputFile=artifacts/cycle32/application-results.json"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 103.923,
+          "log_sha256": "dcd6893a237230b668b7cf76718428718e718b6f92c6bef391318161c6fa4dd6",
+          "head": "0f2e5e0bc1dc2280764f471f2339f5add267f37b",
+          "clean_after": true
+        },
+        {
+          "name": "new-collection",
+          "args": [
+            "node",
+            "scripts/cycle32-application-evidence.mjs",
+            "artifacts/cycle32/application-results.json"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 0.05,
+          "log_sha256": "82c6f0bc2cf5fdc00ea4956838f4f8b823cf7c46a29e48b4ff0e5ac95a7303fc",
+          "head": "0f2e5e0bc1dc2280764f471f2339f5add267f37b",
+          "clean_after": true
+        },
+        {
+          "name": "retained-591",
+          "args": [
+            "npx",
+            "vitest",
+            "run",
+            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle31-chromium-source-shape.test.ts",
+            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle31-independent-source-review.test.ts",
+            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle31-maintenance-proposal-input.test.ts",
+            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle31-owner-navigation-runtime.test.ts",
+            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle31-owner-source-compatibility.test.ts",
+            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle31-source-lineage.test.ts",
+            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle30-browser-timing.test.ts",
+            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle30-chromium-dependencies.test.ts",
+            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle30-customer-source-audit.test.ts",
+            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle30-independent-source-review.test.ts",
+            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle30-maintenance-date.test.ts",
+            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle30-owner-source-audit.test.ts",
+            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle30-source-lineage.test.ts",
+            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle30-task-custody-navigation.test.ts",
+            "tests/cycle21-validation.test.ts",
+            "tests/cycle22-validation.test.ts",
+            "tests/cycle23-validation.test.ts",
+            "tests/cycle29-source-lineage.test.ts",
+            "tests/cycle28-source-lineage.test.ts",
+            "tests/cycle27-source-lineage.test.ts",
+            "tests/cycle26-source-review.test.ts",
+            "tests/cycle25-source-lineage.test.ts",
+            "tests/cycle25-combined-integration.test.ts",
+            "tests/cycle28-contractor-journey.test.ts",
+            "tests/cycle21-recorded-owner-actions.test.ts",
+            "tests/cycle24-service-request-actions.test.ts",
+            "tests/cycle24-plan-cancellation-review.test.ts",
+            "--maxWorkers=1",
+            "--reporter=json",
+            "--outputFile=artifacts/cycle31/application-results.json"
+          ],
+          "exit_code": 0,
+          "elapsed_seconds": 391.555,
+          "log_sha256": "9eea5cec3991014e1999903bdc4ce1d9dc571d7d5a859ac45ec2946aba1dd720",
+          "head": "0f2e5e0bc1dc2280764f471f2339f5add267f37b",
+          "clean_after": true
+        },
+        {
+          "name": "retained-collection",
+          "args": ["node", "--input-type=module"],
+          "exit_code": 0,
+          "elapsed_seconds": 0.043,
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "head": "0f2e5e0bc1dc2280764f471f2339f5add267f37b",
+          "clean_after": true
+        },
+        {
+          "name": "lint",
+          "args": ["npm", "run", "lint"],
+          "exit_code": 0,
+          "elapsed_seconds": 23.05,
+          "log_sha256": "e84becf1e34a4de725ce146d894e3cc1060fc0b892d11a66d37cff6b765eebe4",
+          "head": "0f2e5e0bc1dc2280764f471f2339f5add267f37b",
+          "clean_after": true
+        },
+        {
+          "name": "typecheck",
+          "args": ["npm", "run", "typecheck"],
+          "exit_code": 0,
+          "elapsed_seconds": 19.813,
+          "log_sha256": "333f1c4ac1f1cb812f6974fc382020ab84a6153e4856bf5134a600f3bfd170f3",
+          "head": "0f2e5e0bc1dc2280764f471f2339f5add267f37b",
+          "clean_after": true
+        },
+        {
+          "name": "types-check",
+          "args": ["npm", "run", "types:check"],
+          "exit_code": 0,
+          "elapsed_seconds": 1.729,
+          "log_sha256": "42ee89b49916dddb841ca54315b31fffd8bf23354ac06827ced7c2438c5d8867",
+          "head": "0f2e5e0bc1dc2280764f471f2339f5add267f37b",
+          "clean_after": true
+        },
+        {
+          "name": "migrations-check",
+          "args": ["npm", "run", "migrations:check"],
+          "exit_code": 0,
+          "elapsed_seconds": 0.163,
+          "log_sha256": "215913c812a8d6e65994127fb73b6afdcecd679427ef5ce3db41f47f6da8918e",
+          "head": "0f2e5e0bc1dc2280764f471f2339f5add267f37b",
+          "clean_after": true
+        },
+        {
+          "name": "property-check",
+          "args": ["npm", "run", "property:check"],
+          "exit_code": 0,
+          "elapsed_seconds": 0.149,
+          "log_sha256": "b780ecaf6eea7c589790589d4bdc64ef4b1a824a931486c9f1456dfcdf6ef44a",
+          "head": "0f2e5e0bc1dc2280764f471f2339f5add267f37b",
+          "clean_after": true
+        },
+        {
+          "name": "customer-check",
+          "args": ["npm", "run", "customer:check"],
+          "exit_code": 0,
+          "elapsed_seconds": 0.15,
+          "log_sha256": "71aec77447e2beef3481e62c487b558a8dc3400b9ad8c793046f165c113d9b91",
+          "head": "0f2e5e0bc1dc2280764f471f2339f5add267f37b",
+          "clean_after": true
+        },
+        {
+          "name": "customer-requests-check",
+          "args": ["npm", "run", "customer:requests:check"],
+          "exit_code": 0,
+          "elapsed_seconds": 0.147,
+          "log_sha256": "8f026b1a39c2c3dbe966894b401300908ec9f12715a7c5a48679aefbdd7b64f0",
+          "head": "0f2e5e0bc1dc2280764f471f2339f5add267f37b",
+          "clean_after": true
+        },
+        {
+          "name": "customer-broker-check",
+          "args": ["npm", "run", "customer:broker:check"],
+          "exit_code": 0,
+          "elapsed_seconds": 0.149,
+          "log_sha256": "e22eb7ea5dd31177088b94a8eba64bf17472157c2bdb7432dc555dcda1147cf6",
+          "head": "0f2e5e0bc1dc2280764f471f2339f5add267f37b",
+          "clean_after": true
+        },
+        {
+          "name": "features-check",
+          "args": ["npm", "run", "features:check"],
+          "exit_code": 0,
+          "elapsed_seconds": 0.377,
+          "log_sha256": "b490a9d62b9f4e86f4ea08b4b3eb21e1eab90160a69aca1d1e9c8f043c424679",
+          "head": "0f2e5e0bc1dc2280764f471f2339f5add267f37b",
+          "clean_after": true
+        },
+        {
+          "name": "format-check",
+          "args": ["npm", "run", "format:check"],
+          "exit_code": 1,
+          "elapsed_seconds": 17.391,
+          "log_sha256": "b22b01ddc3384ba2dc0617d03be7c4c26ee7e0ea7a35ab70cf8e9ac2a690b666",
+          "head": "0f2e5e0bc1dc2280764f471f2339f5add267f37b",
+          "clean_after": true
+        }
+      ],
+      "format_correction": {
+        "source": "bdef0e14bd74478029ea4efe57e6e25a878a7f49",
+        "application_source": "0f2e5e0bc1dc2280764f471f2339f5add267f37b",
+        "only_difference": "SEMANTICALLY_IDENTICAL_JSON_FORMATTING",
+        "application_checks_not_rerun": true,
+        "commands": [
+          {
+            "name": "format-corrected",
+            "exit_code": 0,
+            "elapsed_seconds": 17.917,
+            "log_sha256": "124d41379abd47686c9d290612a3ae817ee1b6fccd8b91006c75cfd83ba2ad9a",
+            "head": "bdef0e14bd74478029ea4efe57e6e25a878a7f49",
+            "clean_after": true
+          },
+          {
+            "name": "build",
+            "exit_code": 0,
+            "elapsed_seconds": 20.223,
+            "log_sha256": "95fe4c6565970382af8ec819087ea258862eefdba68c1a569aa28e04624458a1",
+            "head": "bdef0e14bd74478029ea4efe57e6e25a878a7f49",
+            "clean_after": true
+          }
+        ],
+        "complete": true
+      },
+      "browser": {
+        "new_passed": 18,
+        "original_paired_passed": 2,
+        "original_budget_ms": 30000,
+        "original_workers": 2,
+        "retries": 0,
+        "original_case_durations_ms": [15051, 15306],
+        "new_report_sha256": "f6fbe351e15837617e307cc8b469777a61c95c30f1ed11667120e8d0adc2a4d7",
+        "original_report_sha256": "94acd1ee838ec1e0660834784ae443e5ad308ae54da6450d70c88fc94b54be0e",
+        "timing_sha256": "04533aaec3962b1d55249c0d66ba0be35b5f402317b6ea3b119dd086e839c729",
+        "clean_before_after": true,
+        "hosted_stability_claim": false
+      },
+      "historical_local_213_raw": "OUTPUT_SUPERSEDED_HASH_COMMAND_LOG_AND_ORIGINAL_INDEPENDENT_REVIEW_RETAINED_NO_RECONSTRUCTION",
+      "historical_ci_artifacts_and_failures_preserved": true
     }
+  },
+  "post_ci_independent_review": {
+    "author_commit": "8d2fb9c5fc62f07498bb714e0d8e5429dfb61fa2",
+    "parent": "bdef0e14bd74478029ea4efe57e6e25a878a7f49",
+    "branch": "codex/cycle32-post-ci-independent-review",
+    "reviewer": "/root/cycle25_finance_intelligence_resume",
+    "files": {
+      "docs/program/CYCLE32_POST_CI_INDEPENDENT_REVIEW.md": "d99f90d3f2a581597e86a79da7e5b32881888dde8ebc331008a6c40db0c0a756",
+      "docs/program/CYCLE32_POST_CI_INDEPENDENT_REVIEW.json": "9128a21bc31204b8f231c691a71fb8b88521cea8b268e0a02991fcd84973920d"
+    },
+    "verdict": "CLEAR_REVIEWED_SOURCE_AND_ACTUAL_LOCAL_EVIDENCE_NOT_HOSTED_OR_OPERATIONAL",
+    "original_review_unchanged": true
   }
 }

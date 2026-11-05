@@ -271,6 +271,27 @@
         "path": "tests/program/playwright.cycle32-owner-busy.config.ts",
         "sha256": "206cfd438e5b2458e8df88035970afbf58419c12a393a6aa459a2f8637cc4118"
       }
-    ]
+    ],
+    "draft_pr": 245,
+    "support_head": "7ec122ebc8076421c7eec753ce12360252a7e61e",
+    "base": "codex/program-cycle-thirty-two-integration",
+    "source_support_matches": "0f2e5e0bc1dc2280764f471f2339f5add267f37b"
+  },
+  "post_ci_execution_sources": {
+    "application": "0f2e5e0bc1dc2280764f471f2339f5add267f37b",
+    "format_build_browser": "bdef0e14bd74478029ea4efe57e6e25a878a7f49",
+    "difference": "ONE_JSON_FORMAT_ONLY_PARSED_VALUES_EQUAL_RUNTIME_TEST_HELPER_BYTES_EQUAL"
+  },
+  "post_ci_independent_review": {
+    "author_commit": "8d2fb9c5fc62f07498bb714e0d8e5429dfb61fa2",
+    "parent": "bdef0e14bd74478029ea4efe57e6e25a878a7f49",
+    "branch": "codex/cycle32-post-ci-independent-review",
+    "reviewer": "/root/cycle25_finance_intelligence_resume",
+    "files": {
+      "docs/program/CYCLE32_POST_CI_INDEPENDENT_REVIEW.md": "d99f90d3f2a581597e86a79da7e5b32881888dde8ebc331008a6c40db0c0a756",
+      "docs/program/CYCLE32_POST_CI_INDEPENDENT_REVIEW.json": "9128a21bc31204b8f231c691a71fb8b88521cea8b268e0a02991fcd84973920d"
+    },
+    "verdict": "CLEAR_REVIEWED_SOURCE_AND_ACTUAL_LOCAL_EVIDENCE_NOT_HOSTED_OR_OPERATIONAL",
+    "original_review_unchanged": true
   }
 }

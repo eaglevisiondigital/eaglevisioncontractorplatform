@@ -1,3 +1,14 @@
+## Cycle32 clean verification and independent post-CI review
+
+Clean0f2 passes256new/591retained cases with exact collection, lint/types and all
+relevant source/tenant/design integrity checks. A single JSON wrapping failure is
+corrected by metadata-onlybdef with equal parsedvalues; corrected format/build and
+18new/2original30-second paired browsers PASS. Separate source-only review8d2fb9
+frombdef verifies actual proofs and limits; originaldd60 review remains unchanged.
+Local evidence does not close original7b hostedFAIL or predict current-head CI.
+All operational roles/cases, remaining physical recovery, release and execution
+restrictions remain unchanged. No successful check was manually rerun.
+
 ## Cycle32 post-CI owner rendering and exact source continuity
 
 The original7b hosted tablet timeout remains FAIL; a one-worker traced29.326s PASS
