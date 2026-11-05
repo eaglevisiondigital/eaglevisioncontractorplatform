@@ -22,8 +22,8 @@ of a timeout or CPU/memory causality. No historical failure is relabelled.
 
 The new supplement divides the original single cumulative355-file application queue into eight native
 Vitest shards. Three native Playwright shards cover the original399 browser cases
-across all six original projects (381 original30-second and18 original60-second
-cases). These baseline counts describe0597; new committed test files join automatic
+across all six original projects (381 collected30-second and18 collected60-second
+cases, with existing body-set runtime budgets retained separately). These baseline counts describe0597; new committed test files join automatic
 collection. Every job retains the original45-minute budget. Existing assertions,
 fixtures, test/hook budgets, dependencies, maxWorkers4, retries and configurations
 are unchanged. Native installed BaseSequencer supplies the application partition;
@@ -48,6 +48,13 @@ remains separate from PASS; dynamic unannounced skips or missing cases deny comp
 Browser reports bind exact native IDs, source files/lines, projects, original budgets,
 expected states and single no-retry outcomes against original native collection.
 The final union requires all eleven exact shards and all prerequisite successes.
+
+Original browser bodies also set finite60/90/120/150-second runtime budgets that
+`--list` cannot observe. The existing C29 originalBodyBudgets registry is reused as
+hash-checked AST data, never evaluated. Exact original file/title/finite brand and
+original test-file hash bind each override; collected and runtime budgets remain
+separate. Unknown titles, altered source bytes or different runtime values fail.
+No original timeout is increased or rewritten by this correction.
 
 Read-only runtime observations contain bounded aggregate CPU count, load, free/total
 memory, process count and aggregate resident memory; no process command line,

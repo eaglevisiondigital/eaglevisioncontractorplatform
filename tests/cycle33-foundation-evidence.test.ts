@@ -96,6 +96,7 @@ function browser() {
     title: 'original case',
     project: 'desktop',
     timeout: 30000,
+    runtime_timeout: 30000,
     expectedStatus: 'passed',
   };
   return {
@@ -149,6 +150,7 @@ function combined() {
         verdict: 'EXACT_SHARD_COMPLETE',
         binding: fixtureBinding,
         application_files: { 'tests/a.test.ts': 'd'.repeat(64) },
+        browser_files: { 'tests/browser/a.spec.ts': 'e'.repeat(64) },
         full: kind === 'application' ? files : cases,
         selected: kind === 'application' ? [files[i]] : [cases[i]],
         ids: [kind + i],
@@ -323,6 +325,95 @@ describe('Foundation exact native coverage admission', () => {
     expect(() =>
       evidence.validateApplication(f.plan, f.report, f.raw),
     ).toThrow();
+  });
+  it('accepts only the hash-bound original repair body runtime override while retaining list budget', () => {
+    const f = browser(),
+      title =
+        'all companies review exact published evidence, prepare one repair draft, edit scope and navigate both directions';
+    Object.assign(f.plan.selected[0], {
+      file: 'repair-draft.spec.ts',
+      title,
+      runtime_timeout: 90000,
+    });
+    Object.assign(f.report.suites[0].specs[0], {
+      file: 'repair-draft.spec.ts',
+      title,
+    });
+    f.report.suites[0].specs[0].tests[0].timeout = 90000;
+    expect(evidence.validateBrowser(f.plan, f.report).passed).toBe(1);
+    expect(f.plan.selected[0].timeout).toBe(30000);
+  });
+  it('rejects an increased runtime budget for an unknown original title', () => {
+    const f = browser();
+    f.report.suites[0].specs[0].tests[0].timeout = 90000;
+    expect(() => evidence.validateBrowser(f.plan, f.report)).toThrow();
+  });
+  it('refuses a fabricated larger runtime budget in plan evidence for an unknown title', () => {
+    const f = browser();
+    f.plan.selected[0].runtime_timeout = 90000;
+    f.report.suites[0].specs[0].tests[0].timeout = 90000;
+    expect(() => evidence.validateBrowser(f.plan, f.report)).toThrow();
+  });
+  it('rejects a substituted original budget registry without evaluating it', () => {
+    const bytes = readFileSync('scripts/reconcile-cycle29-parent-browser.mjs');
+    expect(() =>
+      evidence.parseOriginalBodyBudgets(
+        Buffer.concat([bytes, Buffer.from('\n// changed')]),
+      ),
+    ).toThrow();
+  });
+  it('rejects missing or changed collected browser body hashes before coverage admission', () => {
+    const path = 'tests/browser/fixture.spec.ts';
+    const hashes = { [path]: '0'.repeat(64) };
+    expect(() =>
+      evidence.requireSourceFiles(hashes, [path], () =>
+        Buffer.from('changed original body'),
+      ),
+    ).toThrow();
+    expect(() =>
+      evidence.requireSourceFiles({}, [path], () =>
+        Buffer.from('original body'),
+      ),
+    ).toThrow();
+  });
+  it('rejects a mismatched original browser source binding across complete shards', () => {
+    const f = combined();
+    f.reports[1].browser_files = { 'tests/browser/a.spec.ts': 'f'.repeat(64) };
+    expect(() => evidence.validateCombined(f.reports, f.jobs)).toThrow();
+  });
+  it('rejects changed original test bytes under an otherwise exact known override', () => {
+    const row = {
+      file: 'repair-draft.spec.ts',
+      title:
+        'all companies review exact published evidence, prepare one repair draft, edit scope and navigate both directions',
+    };
+    const read = (path: string) =>
+      path.startsWith('scripts/')
+        ? readFileSync(path)
+        : Buffer.from('substituted body');
+    expect(() => evidence.originalRuntimeTimeout(row, 30000, read)).toThrow();
+  });
+  it('admits only exact original finite brand suffixes for body overrides', () => {
+    const title =
+      'task lineage and financial requirements follow recorded canonical changes / ';
+    expect(
+      evidence.originalRuntimeTimeout(
+        {
+          file: 'cycle23-source-consistency.spec.ts',
+          title: title + 'roofing-example',
+        },
+        30000,
+      ),
+    ).toBe(150000);
+    expect(
+      evidence.originalRuntimeTimeout(
+        {
+          file: 'cycle23-source-consistency.spec.ts',
+          title: title + 'foreign-brand',
+        },
+        30000,
+      ),
+    ).toBe(30000);
   });
   it('admits original browser case identity, budget and single result', () => {
     const f = browser();

@@ -1,4 +1,5 @@
 /** CI evidence only: never a business writer, credential reader or recovery port. */
+import ts from 'typescript';
 import { createHash } from 'node:crypto';
 import { execFileSync, spawnSync } from 'node:child_process';
 import { globSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -91,6 +92,7 @@ export function binding() {
     'scripts/cycle33-foundation-evidence.mjs',
     'scripts/cycle33-foundation-reporter.mjs',
     '.github/workflows/ci.yml',
+    'scripts/reconcile-cycle29-parent-browser.mjs',
     '.github/workflows/cycle33-foundation-runtime.yml',
   ];
   return {
@@ -159,6 +161,85 @@ export function browserCases(report) {
     fail();
   return rows;
 }
+// Reuse the already reviewed finite original body-budget registry as data only.
+// The exact hash is checked before AST parsing; no source is evaluated/imported.
+const originalBudgetRegistry = 'scripts/reconcile-cycle29-parent-browser.mjs';
+const originalBudgetRegistryHash =
+  'ed9ea19e133ebb85f9e7f2a3e7ceeb4dd132f24e0ba7b73a9c7818d48b394a59';
+const originalBudgetSources = Object.freeze({
+  'repair-draft.spec.ts':
+    '96147b01ce08a5d57521b2a02a874c767d95afc28fefa5c2246cd2232487aa9e',
+  'repair-readiness.spec.ts':
+    '00bc581fe92f6f6adb7f250d4f715baa2bebf3afb45df8434528816c722e7df1',
+  'contractor-design.spec.ts':
+    'd8b7d97bfd490de7b2d6a2d1ef43a8614823535c5de8094ae0d82f07cae1e151',
+  'contractor-phase-b.spec.ts':
+    '5cf4dcabca40bc310ad7090d2cbc333974cf62f6652df23ddb670c8a90784d38',
+  'maintenance-center.spec.ts':
+    '2f0f177c7fb7447771e4d02628b17c89f232b8b32f972700f9f7107eb7561911',
+  'cycle23-source-consistency.spec.ts':
+    '589aabdcaf2b809932118c81397cf99d9ce02da23225d36c13d5c266eb162cf4',
+  'cycle24-native-actions.spec.ts':
+    '3a40b18a96df8824ecf87b9fdc2154013ac25adcc4b71fd141e85e8e6140908f',
+});
+export function parseOriginalBodyBudgets(bytes) {
+  if (sha(bytes) !== originalBudgetRegistryHash) fail();
+  const source = ts.createSourceFile(
+    'original-budget-registry.mjs',
+    bytes.toString(),
+    ts.ScriptTarget.Latest,
+    false,
+    ts.ScriptKind.JS,
+  );
+  const declarations = source.statements
+    .filter(ts.isVariableStatement)
+    .flatMap((s) => [...s.declarationList.declarations])
+    .filter(
+      (d) => ts.isIdentifier(d.name) && d.name.text === 'originalBodyBudgets',
+    );
+  if (
+    declarations.length !== 1 ||
+    !ts.isArrayLiteralExpression(declarations[0].initializer)
+  )
+    fail();
+  return declarations[0].initializer.elements.map((row) => {
+    if (
+      !ts.isArrayLiteralExpression(row) ||
+      row.elements.length !== 3 ||
+      !ts.isStringLiteral(row.elements[0]) ||
+      !ts.isStringLiteral(row.elements[1]) ||
+      !ts.isNumericLiteral(row.elements[2])
+    )
+      fail();
+    return [
+      row.elements[0].text,
+      row.elements[1].text,
+      Number(row.elements[2].text),
+    ];
+  });
+}
+export function originalRuntimeTimeout(row, declared, read = readFileSync) {
+  if (!Number.isSafeInteger(declared) || declared < 1) fail();
+  const registry = parseOriginalBodyBudgets(read(originalBudgetRegistry));
+  const matches = registry.filter(
+    ([file, title]) =>
+      file === row.file &&
+      (title.endsWith(' / ') || title.endsWith(' · ')
+        ? row.title.startsWith(title) &&
+          (title.endsWith(' · ')
+            ? ['sample-property', 'sample-construction', 'sample-roofing']
+            : ['straight-edge', 'cunningham', 'roofing-example']
+          ).includes(row.title.slice(title.length))
+        : row.title === title),
+  );
+  if (matches.length > 1) fail();
+  if (!matches.length) return declared;
+  if (
+    sha(read('tests/browser/' + row.file)) !== originalBudgetSources[row.file]
+  )
+    fail();
+  return matches[0][2];
+}
 const browserIdentity = ({
   id,
   file,
@@ -167,7 +248,16 @@ const browserIdentity = ({
   project,
   timeout,
   expectedStatus,
-}) => ({ id, file, line, title, project, timeout, expectedStatus });
+}) => ({
+  id,
+  file,
+  line,
+  title,
+  project,
+  timeout,
+  runtime_timeout: originalRuntimeTimeout({ file, title }, timeout),
+  expectedStatus,
+});
 export function validateBrowser(plan, report) {
   if (
     plan.kind !== 'browser' ||
@@ -189,7 +279,15 @@ export function validateBrowser(plan, report) {
     fail();
   const map = new Map(expected.map((c) => [c.id, c]));
   for (const c of actual) {
-    if (!same(map.get(c.id), browserIdentity(c))) fail();
+    const before = map.get(c.id);
+    if (
+      !before ||
+      before.runtime_timeout !==
+        originalRuntimeTimeout(before, before.timeout) ||
+      c.timeout !== before.runtime_timeout ||
+      !same(before, { ...browserIdentity(c), timeout: before.timeout })
+    )
+      fail();
     map.delete(c.id);
     if (c.expectedStatus === 'skipped') {
       if (
@@ -331,6 +429,22 @@ export function validateApplication(plan, report, raw) {
     fail();
   return { ids, passed, declared_skipped: skipped };
 }
+export function requireSourceFiles(hashes, paths, read = readFileSync) {
+  if (!hashes || typeof hashes !== 'object') fail();
+  requireUnion([Object.keys(hashes)], paths);
+  for (const [path, digest] of Object.entries(hashes))
+    if (!/^[a-f0-9]{64}$/.test(digest) || sha(read(path)) !== digest) fail();
+}
+function checkSourceFiles(p) {
+  requireSourceFiles(
+    p.application_files,
+    globSync('tests/**/*.test.ts').map((p) => p.replaceAll('\\', '/')),
+  );
+  requireSourceFiles(
+    p.browser_files,
+    globSync('tests/browser/**/*.spec.ts').map((p) => p.replaceAll('\\', '/')),
+  );
+}
 async function plan(kind, index, prefix) {
   if (
     !['application', 'browser'].includes(kind) ||
@@ -393,6 +507,11 @@ async function plan(kind, index, prefix) {
     binding: source,
     full,
     selected,
+    browser_files: Object.fromEntries(
+      globSync('tests/browser/**/*.spec.ts')
+        .sort()
+        .map((p) => [p, sha(readFileSync(p))]),
+    ),
     application_files: Object.fromEntries(
       globSync('tests/**/*.test.ts')
         .sort()
@@ -404,12 +523,7 @@ function validate(kind, prefix) {
   const p = json(prefix + '/plan.json');
   if (p.kind !== kind) fail();
   assertBinding(p.binding);
-  requireUnion(
-    [Object.keys(p.application_files)],
-    globSync('tests/**/*.test.ts').map((p) => p.replaceAll('\\', '/')),
-  );
-  for (const [path, digest] of Object.entries(p.application_files))
-    if (sha(readFileSync(path)) !== digest) fail();
+  checkSourceFiles(p);
   const result =
     kind === 'application'
       ? validateApplication(
@@ -448,6 +562,7 @@ export function validateCombined(reports, jobs) {
         seen.has(kind + s.index) ||
         !same(s.binding, reports[0].binding) ||
         !same(s.application_files, reports[0].application_files) ||
+        !same(s.browser_files, reports[0].browser_files) ||
         !same(s.full, shards[0].full)
       )
         fail();
@@ -492,6 +607,7 @@ if (
       const prefix = dirname(path),
         verified = json(path),
         p = json(prefix + '/plan.json');
+      checkSourceFiles(p);
       const actual =
         p.kind === 'application'
           ? validateApplication(
