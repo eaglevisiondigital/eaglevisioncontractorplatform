@@ -66,8 +66,9 @@ separately, not duplicated or silently included in this verdict.
 
 Seventy-five original browser body overrides already used60/90/120/150 seconds.
 They remain source/title/hash-bound separately from list budgets. Original30-second
-owner-navigation budgets are unchanged. No original workflow, lockfile, trust store,
-signed-package check, test assertion or timeout was edited. PR merge-carrier results
+owner-navigation budgets are unchanged. The original Foundation workflow, lockfile, trust store, signed-package check,
+test assertion and timeout remain unchanged. Later C11/C12 history preparation
+changes are separately recorded below. PR merge-carrier results
 must retain their carrier SHA/tree and demonstrate equality before attribution to
 an exact PR source head. Push results bind the direct checkout head.
 
@@ -173,3 +174,22 @@ native supplement still requires all original collection, assertions and strict 
 no failed case, declared skip, browser gap or cancellation is removed. Local browser
 retries await confirmed awake-device availability rather than repeatedly exercising
 successful cases on an interrupted host.
+
+## Legacy workflow preparation follow-up
+
+Actual new MainB/Advanced-ecccf C11/C12 jobs still fail at the strict source guard
+before tests. Their hosted checkout logs confirm depth1. Controlled local exact-ecccf
+comparison holds HEAD, package/lock and pinned dependencies fixed: depth1 gives
+C11/C12 exit1 and both reviewed original/author object lookups128; local all-ref
+unshallow alone gives both CLIs exit0/object lookups0. Comparison SHA-256
+`91e636532113fdb8041fcde8033799646e35e6ffa08927137c451196a09f8836`.
+Local Node24.20.0 does not establish complete hosted equivalence; original hosted
+inner error text remains hidden by the fail-closed guard.
+
+The two legacy workflows now request fetch-depth0 before that guard. Those four
+added YAML lines are the entire workflow correction; removing them restores both
+original complete workflow byte arrays. Existing15-minute budgets, worker settings,
+assertions, steps, permissions and dependency trust remain unchanged. No hash check,
+original author/delta/companion requirement or test is bypassed. Main and independent
+review cleared this preparation change. New-head hosted results must be observed;
+prior failures remain failures. No product correctness or release gate is inferred.

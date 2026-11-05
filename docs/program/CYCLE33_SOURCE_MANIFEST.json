@@ -142,8 +142,8 @@
         }
       ],
       "draft_pr": 251,
-      "published_head": "ecccf812991f7acca29d9ca88a2a10c095e99fca",
-      "support_scope": "FIVE_BASE_SUPPORT_PATHS_PLUS_ONE_EXACT_C11_FORWARD_CORRECTION",
+      "published_head": "77142705583774a5bfaa46ccb14aaa201421d295",
+      "support_scope": "FIVE_BASE_SUPPORT_PATHS_PLUS_C11_FORWARD_AND_TWO_HISTORY_PREPARATION_WORKFLOWS",
       "current_ci": "PENDING_NEW_HEAD",
       "historical_head": "2f7b238dbe618279e55ec60621a7439ec8af68dc",
       "historical_ci": {
@@ -153,7 +153,8 @@
         "cancelled": 2,
         "failure": "LEGACY_C11_SOURCE_GUARD_BEFORE_TESTS"
       },
-      "branch": "codex/cycle33-advanced-continuity"
+      "branch": "codex/cycle33-advanced-continuity",
+      "prior_guard_correction_head": "ecccf812991f7acca29d9ca88a2a10c095e99fca"
     },
     {
       "module": "owner-continuity",
@@ -264,5 +265,16 @@
       "skipped": 0,
       "scope": "FOCUSED_APPLICATION_ONLY_NOT_HOSTED_OR_PHYSICAL"
     }
-  ]
+  ],
+  "legacy_workflow_preparation": {
+    "advanced_head": "77142705583774a5bfaa46ccb14aaa201421d295",
+    "only_paths": [
+      ".github/workflows/cycle11-integration.yml",
+      ".github/workflows/cycle12-integration.yml"
+    ],
+    "added_lines": 4,
+    "original_budgets_and_assertions_unchanged": true,
+    "controlled_local_comparison_sha256": "91e636532113fdb8041fcde8033799646e35e6ffa08927137c451196a09f8836",
+    "hosted_new_head": "PENDING"
+  }
 }

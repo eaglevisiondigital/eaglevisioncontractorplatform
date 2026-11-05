@@ -93,3 +93,23 @@ All 16 application ZIPs were verified against provider SHA-256 digests and decla
 Original Foundation push/PR annotation report SHA-256 digests are `993a9d23955e6685a676ca1e37db6586d3f11509c282f326a9258b85d57c27c3` and `a7a6ecbdabe6900c2c81f4f1e75a74acafb03aadb4ad5a069b4c5f069e8bb0f3`. Their original verify-log digests are `f9f28eb3e32b38138c679513a5f8da465db29063804601d1a4a03ce0cd1d967c` and `7f9c86f6b2618ee8491f8535e4369b1c63780a191fa4e6d0155deabadd11773c`.
 
 The complete eleven-shard supplement remains **FAILED / NOT ACCEPTED**. No assertions, original configurations, source bytes, test budgets or historical failures were changed in this observation. No successful check was restarted. Existing recovery, P1, customer14/4B, MFA/Auth, NMI, financial, design, migration and production restrictions remain intact. No merge, deployment, hosted mutation, dispatch, payment or customer communication occurred. Release 1.0 remains **NOT READY / NOT AUTHORIZED**.
+
+## Later observed heads and preparation follow-up
+
+At11:13:27Z the exact7406 CI draft247 reports26PASS/8FAIL/2CANCELLED/0PENDING.
+All six browser jobs are SUCCESS after the reviewed source-history correction.
+Application jobs and strict full-scope aggregators still fail; the complete verify
+scope is NOT ACCEPTED. This provider job-status observation is distinct from the
+previous digest-verified10,338-case8d902 analysis. No current application case total
+or failure message is inferred from the older report.
+
+MainB-a72fc0a reports11PASS/1FAIL/45PENDING at that snapshot; Advanced-ecccf
+reports21PASS/2FAIL/2CANCELLED. The new Main C11 and Advanced C11/C12 failures
+occur before tests at the fail-closed C11 source guard. Logs confirm depth1 checkout;
+old inner error text remains unavailable. Exact-ecccf controlled local shallow/full
+comparison independently proves the missing-history preparation requirement, not
+complete hosted equivalence. Only fetch-depth0 is added to those two legacy
+workflows: four YAML lines, original15-minute budgets and all assertions/steps
+unchanged. Advanced publishes that correction at
+`77142705583774a5bfaa46ccb14aaa201421d295`; new-head outcomes are pending.
+Historical failures remain failures. Full current Main verification remains open.
