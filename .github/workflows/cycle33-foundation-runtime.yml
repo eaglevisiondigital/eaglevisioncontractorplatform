@@ -1,0 +1,160 @@
+name: Original verify scope coverage supplement
+on:
+  push:
+    branches:
+      [
+        'codex/cycle33-foundation-runtime',
+        'codex/program-cycle-thirty-three-integration',
+      ]
+  pull_request:
+    branches: ['codex/program-cycle-thirty-two-integration']
+    paths:
+      - '.github/workflows/cycle33-foundation-runtime.yml'
+      - 'scripts/cycle33-foundation-*'
+      - 'tests/cycle33-foundation-*'
+      - 'docs/program/CYCLE33_FOUNDATION_*'
+permissions:
+  contents: read
+concurrency:
+  group: foundation-scope-supplement-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.16'
+      - run: npm ci
+      - run: >-
+          python -m pip install --require-hashes --only-binary=:all:
+          -r recovery/monterey/requirements.lock
+      - run: npm run format:check
+      - name: Original check components outside application shards
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFileSync} from 'node:fs';
+          import {requireCheckScript} from './scripts/cycle33-foundation-evidence.mjs';
+          requireCheckScript(JSON.parse(readFileSync('package.json')).scripts.check);
+          NODE
+          npm run lint
+          npm run typecheck
+          npm run types:check
+          npm run migrations:check
+          npm run property:check
+          npm run customer:check
+          npm run customer:requests:check
+          npm run customer:broker:check
+          npm run features:check
+          npm run test:recovery
+          npm run build
+      - run: npm run staging:plan
+  application:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4, 5, 6, 7, 8]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.16'
+      - run: npm ci
+      - run: >-
+          python -m pip install --require-hashes --only-binary=:all:
+          -r recovery/monterey/requirements.lock
+      - run: node scripts/cycle33-foundation-evidence.mjs plan application ${{ matrix.shard }}
+      - name: Original complete application collection in native bounded shard
+        run: >-
+          npx vitest run --shard=${{ matrix.shard }}/8
+          --reporter=default --reporter=json
+          --reporter=./scripts/cycle33-foundation-reporter.mjs
+          --outputFile=artifacts/foundation/application-${{ matrix.shard }}/results.json
+      - run: node scripts/cycle33-foundation-evidence.mjs validate application ${{ matrix.shard }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: foundation-application-${{ matrix.shard }}
+          path: artifacts/foundation/application-${{ matrix.shard }}/
+          retention-days: 7
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: node scripts/cycle33-foundation-evidence.mjs plan browser ${{ matrix.shard }}
+      - name: Original complete browser collection in native bounded shard
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_NAME: artifacts/foundation/browser-${{ matrix.shard }}/results.json
+        run: npx playwright test --shard=${{ matrix.shard }}/3 --reporter=list,json
+      - run: node scripts/cycle33-foundation-evidence.mjs validate browser ${{ matrix.shard }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: foundation-browser-${{ matrix.shard }}
+          path: |
+            artifacts/foundation/browser-${{ matrix.shard }}/
+            artifacts/phase3/*.png
+            artifacts/release/*.png
+            artifacts/property/*.png
+            test-results/
+          retention-days: 7
+  # This separately named supplement never relabels the frozen original verify.
+  complete-native-coverage:
+    if: always()
+    needs: [preflight, application, browser]
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: foundation-*
+          path: artifacts/foundation
+          merge-multiple: false
+      - name: Admit only actual complete current-source job and native case union
+        env:
+          FOUNDATION_JOB_RESULTS: ${{ toJSON(needs) }}
+        run: |
+          node --input-type=module <<'NODE'
+          import {writeJson} from './scripts/cycle33-foundation-evidence.mjs';
+          const jobs=JSON.parse(process.env.FOUNDATION_JOB_RESULTS);
+          writeJson('artifacts/foundation/job-results.json',Object.fromEntries(Object.entries(jobs).map(([key,value])=>[key,value.result])));
+          NODE
+          node scripts/cycle33-foundation-evidence.mjs combine
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: foundation-complete-native-union
+          path: artifacts/foundation/combined.json
+          retention-days: 7

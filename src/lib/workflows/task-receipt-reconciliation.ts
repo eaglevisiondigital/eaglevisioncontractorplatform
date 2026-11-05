@@ -32,24 +32,77 @@ export async function readTaskReceiptReconciliation(
 export type TaskReceiptReconciliation = Awaited<
   ReturnType<typeof readTaskReceiptReconciliation>
 >;
+/** Validate original receipt data without executing its getters. This is a
+ * local input check, never a receipt issuer, custody registry or replacement. */
+function receiptOwnData(value: unknown, seen = new Set<object>()): void {
+  if (value === null || typeof value !== 'object') {
+    if (typeof value === 'function' || typeof value === 'symbol')
+      throw Error('Plain original task receipt data required');
+    return;
+  }
+  if (
+    seen.has(value) ||
+    !Object.isFrozen(value) ||
+    ![null, Object.prototype, Array.prototype].includes(
+      Object.getPrototypeOf(value),
+    )
+  )
+    throw Error('Immutable own-data task receipt required');
+  seen.add(value);
+  const descriptors = Object.getOwnPropertyDescriptors(value);
+  for (const key of Reflect.ownKeys(value)) {
+    if (typeof key !== 'string' || !Object.hasOwn(descriptors[key], 'value'))
+      throw Error('Executable task receipt fields forbidden');
+    receiptOwnData(descriptors[key].value, seen);
+  }
+  seen.delete(value);
+}
+/** Retained receipts must still refer to the exact original source context.
+ * This checks a presentation reference, not durable receipt authenticity. */
+function originalReceiptContext(review: TaskReceiptReconciliation) {
+  const fields = prototypeFields(review, ['view', 'receipt']);
+  if (Object.keys(fields).length !== 2)
+    throw Error('Original receipt review required');
+  const { view, receipt } = fields as unknown as TaskReceiptReconciliation;
+  if (!Object.isFrozen(receipt))
+    throw Error('Original immutable task receipt required');
+  receiptOwnData(receipt);
+  // A descriptor-bearing Proxy must not change receipt fields after the current
+  // access check. The discarded clone is never a source or receipt authority.
+  const snapshot = structuredClone(receipt);
+  const keys = [
+    'organization_id',
+    'actor_id',
+    'customer_id',
+    'location_id',
+    'estimate_id',
+    'version_id',
+    'job_id',
+  ] as const;
+  const identity = prototypeFields(snapshot.identity, keys);
+  if (
+    Object.keys(identity).length !== keys.length ||
+    keys.some((key) => identity[key] !== view.identity[key]) ||
+    snapshot.visit_id !== view.evidence.visit_id ||
+    snapshot.plan_id !== view.evidence.plan_id
+  )
+    throw Error('Exact original task receipt source identity required');
+  return { view, receipt };
+}
 /** Access to retained point-in-time detail is checked by its original owner.
  * This does not require unchanged mutable evidence, release custody or authorize replay. */
 export function assertTaskReceiptObservationAccess(
   review: TaskReceiptReconciliation,
 ): void {
-  const fields = prototypeFields(review, ['view', 'receipt']);
-  if (Object.keys(fields).length !== 2)
-    throw Error('Original receipt review required');
-  assertSavedRevisionAccess(review.view);
+  const { view } = originalReceiptContext(review);
+  assertSavedRevisionAccess(view);
 }
 export function inspectTaskReceiptReconciliation(
   review: TaskReceiptReconciliation,
 ) {
-  const fields = prototypeFields(review, ['view', 'receipt']);
-  if (Object.keys(fields).length !== 2)
-    throw Error('Original receipt review required');
-  assertSavedRevisionCurrent(review.view);
-  return review.receipt;
+  const { view, receipt } = originalReceiptContext(review);
+  assertSavedRevisionCurrent(view);
+  return receipt;
 }
 
 /** References to original read owners only; no copied command custody or receipt. */

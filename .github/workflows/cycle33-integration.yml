@@ -1,0 +1,93 @@
+name: Cycle 33 source-bound focused correctness
+on:
+  push:
+    branches: ['codex/program-cycle-thirty-three-integration']
+  pull_request:
+    branches: ['codex/program-cycle-thirty-two-integration']
+    paths:
+      - 'src/components/workflows/*'
+      - 'src/lib/workflows/*'
+      - 'scripts/cycle25-source-lineage.mjs'
+      - 'scripts/cycle33*'
+      - 'src/lib/profit-guard.ts'
+      - 'src/lib/program/voice-estimate.ts'
+      - 'scripts/cycle30-chromium-dependencies.mjs'
+      - 'scripts/check-cycle21.mjs'
+      - 'scripts/check-cycle22.mjs'
+      - 'scripts/check-cycle23.mjs'
+      - 'scripts/collect-cycle24-browser.mjs'
+      - 'tests/cycle33*'
+      - 'docs/program/CYCLE33*'
+      - '.github/workflows/cycle33-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: cycle33-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  source-bound-focused-correctness:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: node --input-type=module -e "import {inspectCycle32Sources} from './scripts/cycle25-source-lineage.mjs'; console.log(inspectCycle32Sources({requireCombined:true}));"
+      - run: node --input-type=module -e "import {inspectCycle32BusySources} from './scripts/cycle25-source-lineage.mjs'; console.log(inspectCycle32BusySources({requirePresent:true}));"
+      - run: node --input-type=module -e "import {inspectCycle33Sources} from './scripts/cycle25-source-lineage.mjs'; console.log(inspectCycle33Sources({requireCombined:true}));"
+      - name: Supplemental serial focused correctness with unchanged native budgets
+        run: npx vitest run tests/cycle33*.test.ts --maxWorkers=1 --reporter=json --outputFile=artifacts/cycle33/application-results.json
+      - run: node scripts/cycle33-application-evidence.mjs artifacts/cycle33/application-results.json
+      - run: npx vitest run tests/cycle31-owner-source-compatibility.test.ts tests/cycle32-source-lineage.test.ts tests/cycle32-busy-source-lineage.test.ts --reporter=json --outputFile=artifacts/cycle33/retained-lineage-results.json
+      - run: node scripts/cycle33-application-evidence.mjs artifacts/cycle33/retained-lineage-results.json retained
+      - run: npm run build
+      - name: Observe reviewed signed Chromium sources
+        run: |
+          mkdir -p artifacts/cycle33
+          node scripts/cycle32-runner-mirror-probe.mjs > artifacts/cycle33/runner-mirror.json
+      - run: node scripts/cycle30-chromium-dependencies.mjs
+      - run: npx playwright install-deps --dry-run chromium
+      - run: npx playwright install chromium
+      - run: npx playwright test -c tests/program/playwright.cycle28.config.ts
+      - run: CYCLE28_BROWSER_MODE=off npx playwright test -c tests/program/playwright.cycle28.config.ts
+      - run: CYCLE24_ARTIFACT_DIR=artifacts/cycle28 node scripts/collect-cycle32-browser.mjs
+      - name: Fresh-read failure removes prior owner inspection
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_FILE: '${{ github.workspace }}/artifacts/cycle33/owner-browser.json'
+        run: npx playwright test -c tests/program/playwright.cycle33-owner-continuity.config.ts --reporter=json
+      - name: Require all9 source-bound responsive owner cases
+        run: |
+          node --input-type=module <<'NODE'
+          import{readFileSync}from'node:fs';
+          const r=JSON.parse(readFileSync('artifacts/cycle33/owner-browser.json'));
+          if(r.config.workers!==1||r.stats.expected!==9||r.stats.unexpected!==0||r.stats.skipped!==0||r.stats.flaky!==0||r.errors?.length!==0)throw Error('Exactly9 passed owner cases required');
+          const expected=new Set(['desktop','tablet','mobile'].flatMap(p=>[0,1,2].map(b=>p+'\0brand '+b+': failed fresh read clears earlier inspection and requires explicit source inspection')));
+          function walk(ss){for(const s of ss){for(const spec of s.specs??[])for(const t of spec.tests??[]){if(!expected.delete(t.projectName+'\0'+spec.title)||t.timeout!==30000||t.expectedStatus!=='passed'||t.status!=='expected'||t.results.length!==1||t.results[0].status!=='passed'||t.results[0].retry!==0)throw Error('Changed/missing owner case');}walk(s.suites??[]);}}
+          walk(r.suites);if(expected.size)throw Error('Missing owner cases');
+          NODE
+      - name: Original owner assertions and30second budgets
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_NAME: artifacts/cycle33/original-owner.json
+          CYCLE30_TIMING_OUTPUT: artifacts/cycle33/original-owner-timing.json
+        run: npx playwright test tests/browser/cycle21-canonical-corrections.spec.ts --grep 'canonical task cost plan corrections and exact history navigation / roofing-example' --project=desktop --project=tablet --workers=2 --retries=0 --reporter=json,./scripts/cycle30-browser-timing.mjs
+      - name: Exact source carrier and original head identity
+        if: always()
+        run: |
+          mkdir -p artifacts/cycle33
+          git rev-parse HEAD HEAD^{tree} > artifacts/cycle33/checkout-source.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle33-combined-evidence
+          path: |
+            artifacts/cycle33/
+            artifacts/cycle28/
+            test-results/
+          retention-days: 7

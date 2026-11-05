@@ -1,3 +1,18 @@
+# Cycle33 · native continuity and bounded Foundation evidence
+
+Five exact existing-consumer corrections cover task receipt context, customer and
+maintenance input privacy, offline proposal privacy and owner inspection continuity.
+Finance is audited NO_CHANGE. [Validation](program/CYCLE33_VALIDATION.md),
+[source manifest](program/CYCLE33_SOURCE_MANIFEST.json) and
+[actual roster](program/CYCLE33_ASSIGNMENTS.md) distinguish author, combined,
+independent and hosted results. New full-scope CI is a supplement, not a relabel of
+legacy45-minute cancellations; original assertions and budgets remain unchanged.
+Both Macs are owner-reported available; the fresh duplicate-case result is pending.
+The accepted main-loss PASS remains owner-witnessed only. Eleven operational roles
+remain UNASSIGNED, A01–A12 NOT_RUN, no restoration adapter authorized.
+All original protected artifacts, migrations, designs and execution gates persist.
+Release1.0 remains **NOT READY / NOT AUTHORIZED**.
+
 # Cycle32 · source continuity and owner-witnessed recovery evidence
 
 Four existing-consumer corrections address exact task input, confirmed Voice
