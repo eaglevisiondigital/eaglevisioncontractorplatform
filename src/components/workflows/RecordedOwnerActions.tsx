@@ -196,6 +196,9 @@ function OwnerReview({
       life.current.alive &&
       life.current.generation === generation &&
       gate.current.enabled;
+    // A fresh read/inspection must not re-expose the earlier inspection after
+    // rejection. This clears presentation only, never original native custody.
+    if (mode === 'read' || mode === 'inspect') setSource(undefined);
     try {
       if (mode === 'read') {
         const next = await readRecordedOwnerActions(
