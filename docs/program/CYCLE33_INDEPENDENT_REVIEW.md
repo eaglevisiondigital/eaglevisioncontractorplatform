@@ -144,3 +144,36 @@ rollback-resistant custody and matched recovery are not inferred. Original P1-on
 approval and separate customer14/4B sequence remain. No merge, deployment, hosted
 mutation, credential retrieval, operational restoration, payment, message or dispatch
 is authorized. **Release1.0 remains NOT READY / NOT AUTHORIZED.**
+
+## Addendum · exact Main C source-history preparation
+
+Reviewed normal child `04f15d45438a56cd86421db2b49d0aa97c22b07e`, sole parent
+MainB `a72fc0aa6c45ac20ff03bef58e86049ca7b9726d`. **Source CLEAR; all previously
+open integration, CI, responsive, recovery and operational gates remain open.**
+This addendum preserves the original B review and its failed/partial evidence.
+
+The exact B→C delta has five paths: C11/C12 workflow preparation plus three existing
+C33 manifest/validation/CI-evidence documents. Each workflow adds only `with` and
+`fetch-depth: 0` after its sole checkout: four YAML lines total. Removing those
+lines restores the complete prior bytes. Both15-minute budgets, permissions,
+workers, original assertions, steps, helpers and dependency trust remain unchanged.
+Advanced's matching normal child is `77142705583774a5bfaa46ccb14aaa201421d295`.
+
+The exact-ecccf local file-protocol comparison retains HEAD, package and lock bytes.
+Shallow collection has missing original610887/author2bd106 objects (exit128) and
+C11/C12 source-guard exits1; full all-ref local history supplies those objects and
+both CLIs exit0. Comparison SHA256:
+`91e636532113fdb8041fcde8033799646e35e6ffa08927137c451196a09f8836`.
+No network/credential use or raw child stdout/stderr retention occurred in that
+reproducer. It proves a local source-history precondition, not the unavailable
+inner error of an old hosted run, hosted Node equivalence or a new hosted PASS.
+
+All src/tests/scripts, package/lock, Vite/Playwright configurations and original
+Foundationci are byte-identical B→C. The128 protected hashes,17 native author files,
+601of602 historical test/config preservation and explicit C31 exception therefore
+remain as reviewed above. No new application assertion or browser run is performed
+for this source-only addendum. Current C CI must be observed at its own exact head;
+new browser preparation cannot promote failed application/aggregate coverage.
+
+No merge, deployment, hosted mutation, payment, dispatch, communication or
+operational restoration. Release1.0 remains NOT READY / NOT AUTHORIZED.

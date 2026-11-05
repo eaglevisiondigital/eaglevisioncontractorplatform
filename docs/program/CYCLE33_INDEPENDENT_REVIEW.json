@@ -305,5 +305,51 @@
     "financial_authority": false,
     "communication_authority": false,
     "dispatch_authority": false
-  }
+  },
+  "addenda": [
+    {
+      "reviewed_source": "04f15d45438a56cd86421db2b49d0aa97c22b07e",
+      "sole_parent": "a72fc0aa6c45ac20ff03bef58e86049ca7b9726d",
+      "source_verdict": "CLEAR_SOURCE_ONLY_WITH_ALL_OPEN_GATES_RETAINED",
+      "preserves_original_B_review": true,
+      "changed_paths": [
+        ".github/workflows/cycle11-integration.yml",
+        ".github/workflows/cycle12-integration.yml",
+        "docs/program/CYCLE33_HOSTED_CI_EVIDENCE.md",
+        "docs/program/CYCLE33_SOURCE_MANIFEST.json",
+        "docs/program/CYCLE33_VALIDATION.md"
+      ],
+      "workflow_delta": [
+        {
+          "path": ".github/workflows/cycle11-integration.yml",
+          "baseline_sha256": "efe7612c725808858c93522bd0fa02a444364540926acbcf5cbaa5d5245827c1",
+          "reviewed_sha256": "127409a7b111d895990bedb4a4d98b953f8885de21c8eea4969774a7f6d9db07",
+          "only_change": "ADD_CHECKOUT_WITH_FETCH_DEPTH_0"
+        },
+        {
+          "path": ".github/workflows/cycle12-integration.yml",
+          "baseline_sha256": "efb45ce662eb3d9387b22148c7cd42770d616b1ea2456249951d3ffc4a1e34d3",
+          "reviewed_sha256": "2e0eaa9ebb803eb00101a808b7cea7e8d25c99324bcb525f891f6b967369728c",
+          "only_change": "ADD_CHECKOUT_WITH_FETCH_DEPTH_0"
+        }
+      ],
+      "advanced_source_head": "77142705583774a5bfaa46ccb14aaa201421d295",
+      "runtime_tests_scripts_packages_configs_original_foundation_unchanged": true,
+      "application_or_browser_reruns": 0,
+      "local_reproducer": {
+        "source": "ecccf812991f7acca29d9ca88a2a10c095e99fca",
+        "transport": "LOCAL_FILE_PROTOCOL_NO_CREDENTIAL_OR_NETWORK",
+        "shallow_cli_exits": [1, 1],
+        "shallow_original_and_author_object_exits": [128, 128],
+        "full_history_cli_exits": [0, 0],
+        "full_history_object_exits": [0, 0],
+        "source_package_lock_unchanged": true,
+        "sha256": "91e636532113fdb8041fcde8033799646e35e6ffa08927137c451196a09f8836",
+        "hosted_equivalence": false,
+        "raw_child_output_retained": false
+      },
+      "current_C_hosted_success_inferred": false,
+      "release": "NOT_READY_NOT_AUTHORIZED"
+    }
+  ]
 }
