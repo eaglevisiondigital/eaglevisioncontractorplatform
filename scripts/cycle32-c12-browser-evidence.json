@@ -1,0 +1,447 @@
+{
+  "schema": "propel-cycle32-c12-browser-evidence-v1",
+  "source": "43e622b16aa952f5dc2fe7ae9f96260b47682c2e",
+  "source_tree": "3a617a41e6eeb4db2e2e9cd114d2cb15374c339f",
+  "original_run": 41898727938,
+  "original_conclusion": "CANCELLED_15_MINUTE_DEADLINE_DURING_CHROMIUM_DEPENDENCIES",
+  "application_cases_already_passed": 481,
+  "browser_cases_previously_unexecuted": 51,
+  "node": "v24.22.2",
+  "runner": "ubuntu-24.04",
+  "workers": 2,
+  "retries": 0,
+  "job_timeout_minutes": 15,
+  "config": {
+    "native": "tests/program/playwright.cycle12.config.ts",
+    "off": "tests/program/playwright.cycle12-off.config.ts"
+  },
+  "hashes": {
+    "package-lock.json": "8be30ee23e9cd3ca2f54e4b5beb7da07fd20ead0b86b504d31b29b1116b8baa3",
+    "package.json": "173cba41b87d3156b98136c15873d81fe2308ed83a067a321cc239948099a1d0",
+    "scripts/cycle30-chromium-dependencies.mjs": "531b1f3b43e38975a456a8421fc7135991b89313e22e0f87daa5ecc673bf659f",
+    "tests/program/cycle12-advanced.spec.ts": "3ad568d87a55a0a75c5e517a6bbd89243797b67c273001736089a9439ff06bf6",
+    "tests/program/cycle12-browser-helpers.ts": "16c171eb0ddb8a6649422cb31c30b17c865d904596b392c7e6c92f5828148bbe",
+    "tests/program/cycle12-customer.spec.ts": "af9c05c9eb87acd97beb49f92ac9c0f18d5bba08c512e112a2a17b1befc64dca",
+    "tests/program/cycle12-default-off.spec.ts": "b477fa83d1bf18e1fcd4bdc6311468c6fb23905ca793622f926215a2bfc36e49",
+    "tests/program/cycle12-field-finance.spec.ts": "bda6ebad69ff7e9ead8ed19ece0a485ea3dadfba8083fe233851ed59818c803f",
+    "tests/program/cycle12-growth-intelligence.spec.ts": "2b9ef74d43d24ef17077fdd0bf3d2756b7f7caf95d06eff1b93aa46f66a568e0",
+    "tests/program/cycle12-navigation.spec.ts": "3d463651a53f19c4c9fbc9acbc096fb8354810150c518103ae54c07dcb8e8dae",
+    "tests/program/playwright.cycle12-off.config.ts": "6a99dc50a252c2762f36be0541da9e995b99aa30beeb37703833378d114a9820",
+    "tests/program/playwright.cycle12.config.ts": "a8ed17b8b3b38ef8d94077f565638f6f801929badcabd972c5e6fe6822b0af1d"
+  },
+  "inventory": {
+    "native": [
+      {
+        "file": "cycle12-advanced.spec.ts",
+        "line": 6,
+        "title": "advanced proposal source, original handoff and withdrawal / straight-edge",
+        "project": "desktop",
+        "id": "0e847580fb1e74168b44-60749989f9ef85286299",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-advanced.spec.ts",
+        "line": 6,
+        "title": "advanced proposal source, original handoff and withdrawal / cunningham",
+        "project": "desktop",
+        "id": "0e847580fb1e74168b44-7811c7336ac50a67e447",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-advanced.spec.ts",
+        "line": 6,
+        "title": "advanced proposal source, original handoff and withdrawal / roofing-example",
+        "project": "desktop",
+        "id": "0e847580fb1e74168b44-efabd60cbe099b712cb5",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-advanced.spec.ts",
+        "line": 6,
+        "title": "advanced proposal source, original handoff and withdrawal / straight-edge",
+        "project": "tablet",
+        "id": "0e847580fb1e74168b44-f09d33ca852d3908e448",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-advanced.spec.ts",
+        "line": 6,
+        "title": "advanced proposal source, original handoff and withdrawal / cunningham",
+        "project": "tablet",
+        "id": "0e847580fb1e74168b44-5d7367d2cd5a201d18da",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-advanced.spec.ts",
+        "line": 6,
+        "title": "advanced proposal source, original handoff and withdrawal / roofing-example",
+        "project": "tablet",
+        "id": "0e847580fb1e74168b44-c2c342e8e9af1c34db4e",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-advanced.spec.ts",
+        "line": 6,
+        "title": "advanced proposal source, original handoff and withdrawal / straight-edge",
+        "project": "mobile",
+        "id": "0e847580fb1e74168b44-e3dc39951a07acdd08a1",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-advanced.spec.ts",
+        "line": 6,
+        "title": "advanced proposal source, original handoff and withdrawal / cunningham",
+        "project": "mobile",
+        "id": "0e847580fb1e74168b44-e20b5c0f6fd6f5e621d3",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-advanced.spec.ts",
+        "line": 6,
+        "title": "advanced proposal source, original handoff and withdrawal / roofing-example",
+        "project": "mobile",
+        "id": "0e847580fb1e74168b44-9724db12f8eed62160b5",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-customer.spec.ts",
+        "line": 6,
+        "title": "service lifecycle and public scorecard / straight-edge",
+        "project": "desktop",
+        "id": "1880afe01ae1e007d058-e965b4c3378f35f092f9",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-customer.spec.ts",
+        "line": 6,
+        "title": "service lifecycle and public scorecard / cunningham",
+        "project": "desktop",
+        "id": "1880afe01ae1e007d058-356b6f027339bab864a0",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-customer.spec.ts",
+        "line": 6,
+        "title": "service lifecycle and public scorecard / roofing-example",
+        "project": "desktop",
+        "id": "1880afe01ae1e007d058-548f4b8f48b0db3c49dc",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-customer.spec.ts",
+        "line": 6,
+        "title": "service lifecycle and public scorecard / straight-edge",
+        "project": "tablet",
+        "id": "1880afe01ae1e007d058-8c3e5aa642c262025718",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-customer.spec.ts",
+        "line": 6,
+        "title": "service lifecycle and public scorecard / cunningham",
+        "project": "tablet",
+        "id": "1880afe01ae1e007d058-d3bae863a0a6399e7fcf",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-customer.spec.ts",
+        "line": 6,
+        "title": "service lifecycle and public scorecard / roofing-example",
+        "project": "tablet",
+        "id": "1880afe01ae1e007d058-b1fc0c8dee3312af0fd6",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-customer.spec.ts",
+        "line": 6,
+        "title": "service lifecycle and public scorecard / straight-edge",
+        "project": "mobile",
+        "id": "1880afe01ae1e007d058-84ab8fb3bb1fe8281e99",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-customer.spec.ts",
+        "line": 6,
+        "title": "service lifecycle and public scorecard / cunningham",
+        "project": "mobile",
+        "id": "1880afe01ae1e007d058-184067bd3540e7ab02c1",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-customer.spec.ts",
+        "line": 6,
+        "title": "service lifecycle and public scorecard / roofing-example",
+        "project": "mobile",
+        "id": "1880afe01ae1e007d058-0afc7bc6f07c95767d6c",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-field-finance.spec.ts",
+        "line": 6,
+        "title": "schedule revision, exact source and irrevocable withdrawal / straight-edge",
+        "project": "desktop",
+        "id": "4c8d45b6cd4baad425fa-cadf247d16f6f0c04c4f",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-field-finance.spec.ts",
+        "line": 125,
+        "title": "canonical financial evidence and unchanged ledger / straight-edge",
+        "project": "desktop",
+        "id": "4c8d45b6cd4baad425fa-30168e3e838dde063d80",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-field-finance.spec.ts",
+        "line": 6,
+        "title": "schedule revision, exact source and irrevocable withdrawal / cunningham",
+        "project": "desktop",
+        "id": "4c8d45b6cd4baad425fa-aa1b333d51c985410c6a",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-field-finance.spec.ts",
+        "line": 125,
+        "title": "canonical financial evidence and unchanged ledger / cunningham",
+        "project": "desktop",
+        "id": "4c8d45b6cd4baad425fa-2e17d5355febe7204d87",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-field-finance.spec.ts",
+        "line": 6,
+        "title": "schedule revision, exact source and irrevocable withdrawal / roofing-example",
+        "project": "desktop",
+        "id": "4c8d45b6cd4baad425fa-6a61d03a059f07443b7d",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-field-finance.spec.ts",
+        "line": 125,
+        "title": "canonical financial evidence and unchanged ledger / roofing-example",
+        "project": "desktop",
+        "id": "4c8d45b6cd4baad425fa-583e0b1b9b4965e6b18e",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-field-finance.spec.ts",
+        "line": 6,
+        "title": "schedule revision, exact source and irrevocable withdrawal / straight-edge",
+        "project": "tablet",
+        "id": "4c8d45b6cd4baad425fa-b5730c4ddbf94d573537",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-field-finance.spec.ts",
+        "line": 125,
+        "title": "canonical financial evidence and unchanged ledger / straight-edge",
+        "project": "tablet",
+        "id": "4c8d45b6cd4baad425fa-de0628159051c54e6b38",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-field-finance.spec.ts",
+        "line": 6,
+        "title": "schedule revision, exact source and irrevocable withdrawal / cunningham",
+        "project": "tablet",
+        "id": "4c8d45b6cd4baad425fa-45133033bd23be33bff2",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-field-finance.spec.ts",
+        "line": 125,
+        "title": "canonical financial evidence and unchanged ledger / cunningham",
+        "project": "tablet",
+        "id": "4c8d45b6cd4baad425fa-a3f9d2966d0acd21f6d6",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-field-finance.spec.ts",
+        "line": 6,
+        "title": "schedule revision, exact source and irrevocable withdrawal / roofing-example",
+        "project": "tablet",
+        "id": "4c8d45b6cd4baad425fa-5a9213ae5f4edfb9c415",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-field-finance.spec.ts",
+        "line": 125,
+        "title": "canonical financial evidence and unchanged ledger / roofing-example",
+        "project": "tablet",
+        "id": "4c8d45b6cd4baad425fa-c9a819281bcb2d92c667",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-field-finance.spec.ts",
+        "line": 6,
+        "title": "schedule revision, exact source and irrevocable withdrawal / straight-edge",
+        "project": "mobile",
+        "id": "4c8d45b6cd4baad425fa-32586f0e254f5e263395",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-field-finance.spec.ts",
+        "line": 125,
+        "title": "canonical financial evidence and unchanged ledger / straight-edge",
+        "project": "mobile",
+        "id": "4c8d45b6cd4baad425fa-ddb8cd315d60d5d888b6",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-field-finance.spec.ts",
+        "line": 6,
+        "title": "schedule revision, exact source and irrevocable withdrawal / cunningham",
+        "project": "mobile",
+        "id": "4c8d45b6cd4baad425fa-3eb0e3f024c5a14c54d9",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-field-finance.spec.ts",
+        "line": 125,
+        "title": "canonical financial evidence and unchanged ledger / cunningham",
+        "project": "mobile",
+        "id": "4c8d45b6cd4baad425fa-fae3bd5cb4f1d6131d3d",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-field-finance.spec.ts",
+        "line": 6,
+        "title": "schedule revision, exact source and irrevocable withdrawal / roofing-example",
+        "project": "mobile",
+        "id": "4c8d45b6cd4baad425fa-eabc85dd88b8941e5ec9",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-field-finance.spec.ts",
+        "line": 125,
+        "title": "canonical financial evidence and unchanged ledger / roofing-example",
+        "project": "mobile",
+        "id": "4c8d45b6cd4baad425fa-32937f24dc75a7b63606",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-growth-intelligence.spec.ts",
+        "line": 6,
+        "title": "verified suggestions and blocked consent cancellation / straight-edge",
+        "project": "desktop",
+        "id": "f4c69c41b6be337a8576-bd468940cdd335a8e54a",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-growth-intelligence.spec.ts",
+        "line": 6,
+        "title": "verified suggestions and blocked consent cancellation / cunningham",
+        "project": "desktop",
+        "id": "f4c69c41b6be337a8576-5f8481bf858b6e4871d5",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-growth-intelligence.spec.ts",
+        "line": 6,
+        "title": "verified suggestions and blocked consent cancellation / roofing-example",
+        "project": "desktop",
+        "id": "f4c69c41b6be337a8576-a0649d33d6271a7935d0",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-growth-intelligence.spec.ts",
+        "line": 6,
+        "title": "verified suggestions and blocked consent cancellation / straight-edge",
+        "project": "tablet",
+        "id": "f4c69c41b6be337a8576-7736c0618764da949818",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-growth-intelligence.spec.ts",
+        "line": 6,
+        "title": "verified suggestions and blocked consent cancellation / cunningham",
+        "project": "tablet",
+        "id": "f4c69c41b6be337a8576-bff67a70265051ea7a85",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-growth-intelligence.spec.ts",
+        "line": 6,
+        "title": "verified suggestions and blocked consent cancellation / roofing-example",
+        "project": "tablet",
+        "id": "f4c69c41b6be337a8576-2513454e1d68a660f9f4",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-growth-intelligence.spec.ts",
+        "line": 6,
+        "title": "verified suggestions and blocked consent cancellation / straight-edge",
+        "project": "mobile",
+        "id": "f4c69c41b6be337a8576-0f9a9710399234c9de24",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-growth-intelligence.spec.ts",
+        "line": 6,
+        "title": "verified suggestions and blocked consent cancellation / cunningham",
+        "project": "mobile",
+        "id": "f4c69c41b6be337a8576-8deb96b7e56a7fac7435",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-growth-intelligence.spec.ts",
+        "line": 6,
+        "title": "verified suggestions and blocked consent cancellation / roofing-example",
+        "project": "mobile",
+        "id": "f4c69c41b6be337a8576-29e1d6a69b75e4d97f72",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-navigation.spec.ts",
+        "line": 4,
+        "title": "company switch withdraws exact sources and preserves all navigation groups",
+        "project": "desktop",
+        "id": "fe3111e181cdccee9f6e-2c6e8f5faf7bfc65d326",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-navigation.spec.ts",
+        "line": 4,
+        "title": "company switch withdraws exact sources and preserves all navigation groups",
+        "project": "tablet",
+        "id": "fe3111e181cdccee9f6e-9bcdcca722a47a1b6d68",
+        "timeout": 90000
+      },
+      {
+        "file": "cycle12-navigation.spec.ts",
+        "line": 4,
+        "title": "company switch withdraws exact sources and preserves all navigation groups",
+        "project": "mobile",
+        "id": "fe3111e181cdccee9f6e-86308159d2ec564d54fa",
+        "timeout": 90000
+      }
+    ],
+    "off": [
+      {
+        "file": "cycle12-default-off.spec.ts",
+        "line": 2,
+        "title": "production operating center remains closed",
+        "project": "desktop",
+        "id": "2fdd946d5671eba7eaa4-abe2bcd863e9b18f5191",
+        "timeout": 30000
+      },
+      {
+        "file": "cycle12-default-off.spec.ts",
+        "line": 2,
+        "title": "production operating center remains closed",
+        "project": "tablet",
+        "id": "2fdd946d5671eba7eaa4-6f451cf7a5cf3bb656a1",
+        "timeout": 30000
+      },
+      {
+        "file": "cycle12-default-off.spec.ts",
+        "line": 2,
+        "title": "production operating center remains closed",
+        "project": "mobile",
+        "id": "2fdd946d5671eba7eaa4-f6be6f3f4f9e8223ff94",
+        "timeout": 30000
+      }
+    ]
+  },
+  "authority": "SUPPLEMENTARY_BROWSER_EVIDENCE_ONLY_NOT_FOUNDATION_OR_OPERATIONAL_ACCEPTANCE"
+}

@@ -1,0 +1,297 @@
+{
+  "schema": "propel-cycle32-sources-v1",
+  "parent": "43e622b16aa952f5dc2fe7ae9f96260b47682c2e",
+  "coordination_branch": "codex/program-cycle-thirty-two-integration",
+  "packages": [
+    {
+      "module": "field",
+      "author_commit": "452d57049e60c5228718fc7647346faab7ac4409",
+      "branch": "codex/cycle32-task-input-binding",
+      "new_cases": 11,
+      "draft_pr": 237,
+      "files": [
+        {
+          "status": "A",
+          "path": "docs/program/CYCLE32_TASK_INPUT_BINDING.md",
+          "sha256": "c2be0d391330797b8f91bb6587bfb682e61aacaac7199cecab9b976a70c59378"
+        },
+        {
+          "status": "M",
+          "path": "src/lib/workflows/task-correction-review.ts",
+          "sha256": "638cb1068fbd0ea3c8697c6ff5d19c3b7adfd8446d7cbd3fe28369577021a488"
+        },
+        {
+          "status": "A",
+          "path": "tests/cycle32-task-input-binding.test.ts",
+          "sha256": "e0ae13969e30c7760d7112fe054fb036f254d7dc84a27aeb574ee75ed453a34e"
+        }
+      ],
+      "support_head": "c900041cf999e6eda81a10d6361a6acad0d5ca88",
+      "author_parent": "43e622b16aa952f5dc2fe7ae9f96260b47682c2e",
+      "support_scope": [
+        "scripts/check-cycle21.mjs",
+        "scripts/check-cycle22.mjs",
+        "scripts/check-cycle23.mjs",
+        "scripts/cycle25-source-lineage.mjs"
+      ]
+    },
+    {
+      "module": "finance",
+      "author_commit": "8fec4897bb116c3234e521be2b23260b9f2e503f",
+      "branch": "codex/cycle32-profit-guard-completeness",
+      "new_cases": 12,
+      "draft_pr": 238,
+      "files": [
+        {
+          "status": "A",
+          "path": "docs/program/CYCLE32_PROFIT_GUARD_COMPLETENESS.md",
+          "sha256": "14a0bb763ca57553e28f5770fcecc8da6cac2ce3994a6216743faf2965bfda04"
+        },
+        {
+          "status": "M",
+          "path": "src/lib/profit-guard.ts",
+          "sha256": "b0255168a7665d0c9ced54a0aaeb5ea7ecee06253a387490573fc4044f296217"
+        },
+        {
+          "status": "A",
+          "path": "tests/cycle32-profit-guard-completeness.test.ts",
+          "sha256": "525b6bf67566109a7361c41a5ccc2ee84fe30d011cd41e57c808501d397f13b2"
+        }
+      ],
+      "support_head": "4b6042eb174c605d79537c7e60de49b2ce597f41",
+      "author_parent": "43e622b16aa952f5dc2fe7ae9f96260b47682c2e",
+      "support_scope": [
+        "scripts/check-cycle21.mjs",
+        "scripts/check-cycle22.mjs",
+        "scripts/check-cycle23.mjs",
+        "scripts/cycle25-source-lineage.mjs"
+      ]
+    },
+    {
+      "module": "intelligence",
+      "author_commit": "34cae8398fc135b55452e86bdb3b62a8b76d13d6",
+      "branch": "codex/cycle32-owner-filter-navigation",
+      "new_cases": 12,
+      "draft_pr": 239,
+      "files": [
+        {
+          "status": "A",
+          "path": "docs/program/CYCLE32_OWNER_FILTER_NAVIGATION.md",
+          "sha256": "ad8736c7049466c6272064cd13a9e1ff30635f31ae32fc4a22df2e3e69334b94"
+        },
+        {
+          "status": "M",
+          "path": "src/components/workflows/OwnerActionVerification.tsx",
+          "sha256": "644035271ef8e68f596eabefd91b96fa8d6baace25b84995f1b65cbe27053132"
+        },
+        {
+          "status": "A",
+          "path": "tests/cycle32-owner-filter-navigation.test.ts",
+          "sha256": "6c3642cab614bf1d38ef84f5a11a0f061d17c087d8180c719c76c3d19e08bb46"
+        }
+      ],
+      "support_head": "d0c54c7edec2faa5aed5c415558420788a212731",
+      "author_parent": "43e622b16aa952f5dc2fe7ae9f96260b47682c2e",
+      "support_scope": [
+        "scripts/check-cycle21.mjs",
+        "scripts/check-cycle22.mjs",
+        "scripts/check-cycle23.mjs",
+        "scripts/cycle25-source-lineage.mjs"
+      ]
+    },
+    {
+      "module": "voice",
+      "author_commit": "6447d881c2011ce178694bd87bbb303b862b1bb9",
+      "branch": "codex/cycle32-voice-input-continuity",
+      "new_cases": 27,
+      "draft_pr": 240,
+      "files": [
+        {
+          "status": "A",
+          "path": "docs/program/CYCLE32_VOICE_INPUT_CONTINUITY.md",
+          "sha256": "306a433484f2f140f49fa91c827efe53a014e54532190a18004c3a0b467cd80f"
+        },
+        {
+          "status": "M",
+          "path": "src/lib/program/voice-estimate.ts",
+          "sha256": "11b0bb3fbab3509b180adec7accc51f09613eaa86dbd58f5118cdd1efa12973d"
+        },
+        {
+          "status": "A",
+          "path": "tests/cycle32-voice-input-continuity.test.ts",
+          "sha256": "0b06dca00a5ccc999e740c1a582fd236f657c8b40b2d20d6e85e7a758b83a30d"
+        }
+      ],
+      "support_head": "7693684cacf0da5716870a5d9624ee4d09f4db08",
+      "immutable_initial_author": "243a6c79ea9324552ac549c31a280608604453d6",
+      "author_parent": "243a6c79ea9324552ac549c31a280608604453d6",
+      "initial_parent": "43e622b16aa952f5dc2fe7ae9f96260b47682c2e",
+      "support_scope": [
+        "scripts/check-cycle21.mjs",
+        "scripts/check-cycle22.mjs",
+        "scripts/check-cycle23.mjs",
+        "scripts/cycle25-source-lineage.mjs"
+      ]
+    }
+  ],
+  "audited_no_change": ["growth", "customer", "offline"],
+  "recovery": {
+    "commit": "0fc7e23960a532f0ba2b714d5669e29d92e4b6a8",
+    "draft_pr": 235,
+    "scope": "OWNER_WITNESSED_MAIN_SYNTHETIC_NETWORK_LOSS_ONLY"
+  },
+  "source_authority": "BUILD_TEST_ONLY_NOT_BUSINESS_RESTORE",
+  "operational_ready": false,
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "ci_supplement": {
+    "commit": "f413151235226e2620b7aa599f8183fda575c48b",
+    "draft_pr": 236,
+    "branch": "codex/cycle32-c12-browser-coverage",
+    "application_source": "43e622b16aa952f5dc2fe7ae9f96260b47682c2e",
+    "scope": "51_ORIGINAL_UNRUN_BROWSER_CASES_ONLY"
+  },
+  "agents": [
+    {
+      "id": "/root",
+      "role": "Main integration, contracts, shared evidence, QA and delivery",
+      "state": "LOCAL_VERIFICATION_COMPLETE_PUBLICATION_IN_PROGRESS"
+    },
+    {
+      "id": "/root/cycle30_field_growth",
+      "role": "Field; Growth audit; CI supplement and evidence investigation",
+      "state": "LOCAL_ASSIGNMENTS_COMPLETED"
+    },
+    {
+      "id": "/root/cycle25_finance_intelligence_resume",
+      "role": "Finance and Intelligence; finite shared source admission",
+      "state": "LOCAL_ASSIGNMENTS_COMPLETED"
+    },
+    {
+      "id": "/root/cycle32_customer_advanced",
+      "role": "Voice; Customer/Offline retained-source audit",
+      "state": "LOCAL_ASSIGNMENTS_COMPLETED"
+    },
+    {
+      "id": "/root/cycle28_independent_review",
+      "role": "Independent physical/source/security/combined evidence review",
+      "state": "LOCAL_ASSIGNMENTS_COMPLETED"
+    }
+  ],
+  "simultaneous_child_limit": 3,
+  "distinct_child_authors_and_reviewer": 4,
+  "independent_review": {
+    "author_commit": "dd60db16e361f3351afef0f4338ba2450701506c",
+    "parent": "1ef47f86ec4b4e7ac4951e1fe3ba4826eeff8297",
+    "branch": "codex/cycle32-independent-integration-review",
+    "reviewer": "/root/cycle28_independent_review",
+    "document": "docs/program/CYCLE32_INDEPENDENT_REVIEW.md",
+    "document_sha256": "da3198874e25fed95963fe1973d7ba6c1e6172fa51a6a38a55dac464512045d0",
+    "verdict": "CLEAR_LOCAL_SOURCE_AND_ACTUAL_ARTIFACTS_NOT_OPERATIONAL"
+  },
+  "runner_observability": {
+    "draft_pr": 241,
+    "author_commit": "332c32c5439b99a90e0a2672f94bc6f6ac469e05",
+    "parent": "43e622b16aa952f5dc2fe7ae9f96260b47682c2e",
+    "branch": "codex/cycle32-runner-mirror-diagnosis",
+    "new_cases": 10,
+    "reviewer": "/root/cycle25_finance_intelligence_resume",
+    "verdict": "CLEAR_SOURCE_ONLY",
+    "composed_into_product_candidate": true,
+    "helper_or_allowlist_changed": false,
+    "historical_failure_relabelled": false,
+    "composition_commit": "5530283e102586e636daabb0c0fe050f69b84061"
+  },
+  "shared_coordinator_support": {
+    "scripts/cycle25-source-lineage.mjs": "6e8ca3ac6d8cb11be6ba3c24513a43cbd773cfdedcddea6b22bd78c0ab2f3131",
+    "scripts/check-cycle21.mjs": "c36be2ff31575643e2e770a8bd390c1b0e45a0677b9405fa5d128254af57efe0",
+    "scripts/check-cycle22.mjs": "f1c1aba7a842cd49718c48bb9a543ea72abdaffb455b75fb7995711cceb63d4b",
+    "scripts/check-cycle23.mjs": "9750b9125e2cadaf7bdabd3d6956508d03f9d73139ad93001852ae1d73c1ab3f",
+    "scripts/collect-cycle24-browser.mjs": "91de8cb3c701b2a8b57c8a5b2b1dc9bfb038f8b2e8c582d08d937153fcb79644",
+    "scripts/collect-cycle32-browser.mjs": "d10b74bc8cc028f3daefc265bb23ee01f2e0eb21611b1a77c67da037dd762532",
+    "scripts/cycle32-application-evidence.mjs": "1016a0cf5c43860c4853b5d88284cd43b0e8f474fdc3096b917c23e43b39c258",
+    ".github/workflows/cycle32-integration.yml": "020575f38d7817630b99f85cb502107e0aa0c470f8f545476558f9fd4e7070f7",
+    "tests/cycle32-source-lineage.test.ts": "158d0376c2e42ce44dae5424e41cd3e50764ebc705f84ebca7e407ba856a750b",
+    "tests/cycle32-independent-source-review.test.ts": "5fb6500c3b374d370e640a3b9f031602d5daae43652c05f68b51a13d17ffb5cf",
+    "tests/cycle32-busy-source-lineage.test.ts": "f58409c08569b84dd7230a68164258eb2f1e8bb77f7caa46d83178fd40f0afe3",
+    "tests/cycle31-owner-source-compatibility.test.ts": "0821f77111c853395175205a8ae67cf3b14a7456def0482011c93a831a2aac0a"
+  },
+  "executed_clean_commit": "1ef47f86ec4b4e7ac4951e1fe3ba4826eeff8297",
+  "native_runtime_commit": "c4370636794b5b2559fff7e553c63da215b0bdb8",
+  "failure_only_diagnostic": {
+    "draft_pr": 244,
+    "author_commit": "bb89b1d447a70ef5a4bcc0c0c0ed0df93f91446f",
+    "parent": "43e622b16aa952f5dc2fe7ae9f96260b47682c2e",
+    "frozen_application": "7b377aeffac11855a5dfdfaa86719078e70a5260",
+    "branch": "codex/cycle32-owner-tablet-diagnostic",
+    "reviewer": "/root/cycle25_finance_intelligence_resume",
+    "scope": "ONLY_FAILED_ORIGINAL_TABLET_30S_CASE_TRACE",
+    "paired_stability_claim": false,
+    "composed_into_product_candidate": false
+  },
+  "post_ci_owner_render": {
+    "author_commit": "ec63030de8c0faceebd1ec9a645e9ea0dcf76383",
+    "parent": "7b377aeffac11855a5dfdfaa86719078e70a5260",
+    "branch": "codex/cycle32-owner-navigation-audit",
+    "reviewer": "/root/cycle25_finance_intelligence_resume",
+    "verdict": "CLEAR_LOCAL_SOURCE_NOT_HOSTED_CLOSURE",
+    "component_sha256": "31d56b3b32cb4d2ae9f2084d31661a720d2ca6eb493a0c3ce1f1a907e26dde8b",
+    "new_unit_cases": 9,
+    "new_browser_cases": 18,
+    "author_unit_pass": 71,
+    "author_browser_pass": 18,
+    "author_execution_provenance": "DIRTY_WORKTREE_NO_FORMAL_PRELAUNCH_HASH_MANIFEST",
+    "author_browser_report_sha256": "21879799a9e82bf58268a01a00e1e08863e9500af11207dc3efb7a6039e2e624",
+    "author_unit_report_sha256": "8ef1e15bf63a67aa061e22e5701e7d389fb2804c02244a48d1698fd6bb95dcd3",
+    "initial_new_browser_result": "16_PASS_2_FAIL_DISCLOSURE_RACE_PRESERVED",
+    "native_engines_changed": false,
+    "original_browser_tests_or_budgets_changed": false,
+    "files": [
+      {
+        "status": "A",
+        "path": "docs/program/CYCLE32_OWNER_BUSY_RENDER.md",
+        "sha256": "42add62a20b79119ea483e25c25764e1945766b22e98a4b83d391f685c4c21d0"
+      },
+      {
+        "status": "M",
+        "path": "src/components/workflows/RecordedOwnerActions.tsx",
+        "sha256": "31d56b3b32cb4d2ae9f2084d31661a720d2ca6eb493a0c3ce1f1a907e26dde8b"
+      },
+      {
+        "status": "A",
+        "path": "tests/cycle32-owner-busy-state.test.ts",
+        "sha256": "7e6158e758dd31501b9af78755119b4f4a87faa08ec68f5afb2e43bb4c4de42d"
+      },
+      {
+        "status": "A",
+        "path": "tests/program/cycle32-owner-busy-state.spec.ts",
+        "sha256": "18d5f6cf581dbff5ef155473eb3894e755988d13bed6249a85d2819da1304e16"
+      },
+      {
+        "status": "A",
+        "path": "tests/program/playwright.cycle32-owner-busy.config.ts",
+        "sha256": "206cfd438e5b2458e8df88035970afbf58419c12a393a6aa459a2f8637cc4118"
+      }
+    ],
+    "draft_pr": 245,
+    "support_head": "7ec122ebc8076421c7eec753ce12360252a7e61e",
+    "base": "codex/program-cycle-thirty-two-integration",
+    "source_support_matches": "0f2e5e0bc1dc2280764f471f2339f5add267f37b"
+  },
+  "post_ci_execution_sources": {
+    "application": "0f2e5e0bc1dc2280764f471f2339f5add267f37b",
+    "format_build_browser": "bdef0e14bd74478029ea4efe57e6e25a878a7f49",
+    "difference": "ONE_JSON_FORMAT_ONLY_PARSED_VALUES_EQUAL_RUNTIME_TEST_HELPER_BYTES_EQUAL"
+  },
+  "post_ci_independent_review": {
+    "author_commit": "8d2fb9c5fc62f07498bb714e0d8e5429dfb61fa2",
+    "parent": "bdef0e14bd74478029ea4efe57e6e25a878a7f49",
+    "branch": "codex/cycle32-post-ci-independent-review",
+    "reviewer": "/root/cycle25_finance_intelligence_resume",
+    "files": {
+      "docs/program/CYCLE32_POST_CI_INDEPENDENT_REVIEW.md": "d99f90d3f2a581597e86a79da7e5b32881888dde8ebc331008a6c40db0c0a756",
+      "docs/program/CYCLE32_POST_CI_INDEPENDENT_REVIEW.json": "9128a21bc31204b8f231c691a71fb8b88521cea8b268e0a02991fcd84973920d"
+    },
+    "verdict": "CLEAR_REVIEWED_SOURCE_AND_ACTUAL_LOCAL_EVIDENCE_NOT_HOSTED_OR_OPERATIONAL",
+    "original_review_unchanged": true
+  }
+}

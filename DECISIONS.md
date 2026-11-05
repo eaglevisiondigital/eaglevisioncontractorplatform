@@ -1,3 +1,43 @@
+## Cycle32 clean verification and independent post-CI review
+
+Clean0f2 passes256new/591retained cases with exact collection, lint/types and all
+relevant source/tenant/design integrity checks. A single JSON wrapping failure is
+corrected by metadata-onlybdef with equal parsedvalues; corrected format/build and
+18new/2original30-second paired browsers PASS. Separate source-only review8d2fb9
+frombdef verifies actual proofs and limits; originaldd60 review remains unchanged.
+Local evidence does not close original7b hostedFAIL or predict current-head CI.
+All operational roles/cases, remaining physical recovery, release and execution
+restrictions remain unchanged. No successful check was manually rerun.
+
+## Cycle32 post-CI owner rendering and exact source continuity
+
+The original7b hosted tablet timeout remains FAIL; a one-worker traced29.326s PASS
+is supplementary. Measured pending rendering repeats228or496 source reads while
+native async actions independently validate authority. Independently reviewed sole7b
+author ec63030 withholds private pending DOM, preserves presentation context and
+skips render-only reads; native guards/one-use/UNKNOWN are unchanged. Its initial
+16PASS/2FAIL disclosure race and corrected dirty71unit/18browser results are retained.
+Clean candidate proof and new-head CI remain separate. Exact finite build-only
+admission retains original9f and all four C32 authors; one C31 current-file expectation
+advances to literal new-author bytes with stronger whole-bundle assertions, preserving
+all22 cases/denials. Signed-source diagnostics do not broaden trust. No operational,
+financial, hosted, dispatch, communication, deployment, merge or release authority.
+
+# Cycle32 · original input, canonical completeness and guarded filtering
+
+Original ordinary task and Voice input remain live across original source/hash/CAS
+boundaries; cloneability fences reject executable Proxy substitution before custody
+and discard their clone. No failed/UNKNOWN hold is renewed. Profit Guard compares
+already-read canonical labor completeness with its immutable review; changed coverage
+is STALE, never posting or invoice authority. Owner filtering keeps its original
+before/after currentness checks and separate comparison guard without an extra
+synchronous render check or cached permission. Source admission is build/test only.
+
+The owner-witnessed November4 main synthetic network-loss result is accepted only
+at that precise evidence level. It grants no engineering witness, complete R0 suite,
+power-loss durability, hosted recovery, privileged role assignment or new action
+permission. Existing frozen approvals and original hashes remain unchanged.
+
 # Cycle30 · validate before custody and measure before attributing failures
 
 Preflight invalid local presentation values with their existing canonical validator before consuming the original attempt; actual attempted/UNKNOWN holds remain one-use. Reject noncloneable/captured-field-inconsistent Customer facade inputs but pass the original ordinary form into existing live hash/CAS checks. Reuse the complete guarded owner-card reader once per synchronous render, without caching current authority. A measured render improvement is not proof of a sole hosted timeout cause.

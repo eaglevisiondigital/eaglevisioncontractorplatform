@@ -1,3 +1,57 @@
+# Cycle32 · source continuity and owner-witnessed recovery evidence
+
+Four existing-consumer corrections address exact task input, confirmed Voice
+transcripts, canonical labor completeness and repeated owner-source reads.
+[Validation](program/CYCLE32_VALIDATION.md) and
+[source manifest](program/CYCLE32_SOURCE_MANIFEST.json) distinguish immutable
+authors, combined execution, independent review and current-head CI.
+No new business store, engine, route or restoration adapter is added.
+
+Clean1ef verification:213new cases/7files PASS; separate retained591/27PASS with
+pre-freeze provenance explicitly limited. All13quality commands PASS. Actual9native
++3OFF+2original30second navigation cases PASS;63screenshots/9keyboard journeys/
+369trusted events.128protected/599prior tests-config-fixtures/157critical paths/
+5locks/13bindings/25capability states/18IDs remain unchanged. C12 supplemental51
+original browser cases now PASS, original cancellation preserved. Foundation
+cancellations and a new unlogged runner-mirror rejection remain honestly separate;
+exact7b hosted checks record24PASS/3CANCELLED/1FAIL. The dedicated workflow passed
+213new+591retained application cases and9native+3OFF browsers, then the original
+roofing tablet exhausted its unchanged30second budget. Desktop passed29.383s.
+Historical local passes do not close this hosted failure; narrow rendering and
+failed-case diagnostics remain under review.
+
+**OWNER-WITNESSED MAIN SYNTHETIC LOSS SCENARIO PASS** records November4 primary
+Wi-Fi loss, independent Air continuation and bounded synthetic result only.
+[Recovery evidence draft235](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/235)
+preserves exact hashes and previous UNKNOWN/aborted history. Independent engineering
+witness, all seven complete physical cases, hosted recovery and production durability
+remain unaccepted. Older unavailable/NOT_RUN entries below are historical checkpoints.
+D1–D3 still require named people, current Auth/MFA, all installed writers/privileges,
+atomic receipts/durableACK, external rollback protection and matched recovery;
+11 accountable people remain UNASSIGNED and A01–A12 NOT_RUN.
+
+Post-CI reviewed author ec63030 adds pending-private-evidence withholding and retained
+keyboard/filter/disclosure context, without changing native guards. Its dirty-author
+71unit/18responsive cases pass. Clean0f2 source passes256new/591retained cases;
+format-only bdef passes correctedformat/build plus18new and2original paired browser
+cases (15.051/15.306s,30s budgets,2workers,0retry). Hosted stability remains unproven. A separate
+finite source pin preserves original9f provenance. One current-file C31 test expectation
+advances to that exact new author; all22 case titles/counts/denials remain unchanged.
+Original599unchanged-test proof applies to1ef; current scope has598unchanged plus this
+explicit compatibility update. Reviewed signed-source observability adds no trust.
+
+Actual hosted source `b7d771b2ac830c45e7f994f32fd7a032b8d43077`, dedicated
+push41945682382 SUCCESS:256new and591retained application cases;18new responsive
+cases;9native+3production-OFF; original paired desktop/tablet26.947/27.582s within
+unchanged30s budgets,2actual workers,0retries. Provider artifact digest and raw
+reports verified. This closes the matching hosted paired evidence gap for that
+source; original7bFAIL and historical cancellations remain. Universal stability is
+not claimed. The following documentation-only head needs separate exact-head CI.
+
+All original designs/branding, protected files, migrations, frozen P1/four artifacts,
+customer14/4B, Netlify, NMI, financial and production gates remain unchanged.
+Release1.0 remains **NOT READY / NOT AUTHORIZED**.
+
 # Cycle31 · exact canonical corrections and Linux acceptance
 
 Draft[233](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/233)

@@ -4,7 +4,6 @@ import type { PriorityLiveCallback } from '../../lib/workflows/priority-actions'
 import {
   verifiedOwnerBriefingEnabled,
   readVerifiedOwnerBriefing,
-  assertVerifiedOwnerBriefingCurrent,
   assertVerifiedOwnerComparisonCurrent,
   type VerifiedOwnerBriefingRead,
 } from '../../lib/workflows/verified-owner-briefing';
@@ -95,11 +94,15 @@ function ActionForm({
     };
   }, [onContinue]);
   let current = true;
+  let filtered: ReturnType<typeof filterOwnerActionSources> | undefined;
   try {
-    if (view) assertVerifiedOwnerBriefingCurrent(view);
+    // The original literal filter checks current authority before and after
+    // reading its rows. Keep that guarded read inside this denial boundary.
+    if (view) filtered = filterOwnerActionSources(view, { query });
     if (refresh) assertVerifiedOwnerComparisonCurrent(refresh.comparison);
   } catch {
     current = false;
+    filtered = undefined;
   }
   async function run(action: 'load' | 'verify' | 'open') {
     if (life.current.pending) return;
@@ -164,8 +167,6 @@ function ActionForm({
       if (life.current.active) setBusy(false);
     }
   }
-  const filtered =
-    view && current ? filterOwnerActionSources(view, { query }) : undefined;
   const selected = view?.rows.find((row) => row.key === selection?.key);
   return (
     <section
