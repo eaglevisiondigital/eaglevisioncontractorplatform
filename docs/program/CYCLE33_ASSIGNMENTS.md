@@ -22,15 +22,15 @@ Code authors, reviewers and device holders are not appointed operational custodi
 
 ## Isolated branch and immutable author inventory
 
-| Package       | Branch                                 | Exact local author chain                                                                             |
-| ------------- | -------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| Field         | `codex/cycle33-field-continuity`       | `9c29d34e129af32c9b586990dc582b799b57f2bc` → direct child `12cf06da7fb4dea1600e6ca1481f4ca8c2c98188` |
-| Customer      | `codex/cycle33-customer-continuity`    | `26c49ff8a78712ae6ad5e3afbc491ce8b608760f`                                                           |
-| Growth        | `codex/cycle33-maintenance-continuity` | `de81936d42c9279940f3a8466581d1321de84636`                                                           |
-| Advanced      | `codex/cycle33-advanced-continuity`    | `2bd1060982bc4a7d7b1c30b0329888b419ade027`                                                           |
-| Intelligence  | `codex/cycle33-owner-continuity`       | `5aa6728003c9b820e50d34505c465104440783d7`                                                           |
-| CI supplement | `codex/cycle33-foundation-runtime`     | `742a377e93658ddbb9fc40ee7eb8752758c77997` → direct child `8d902e866c79220fa3ddb0bc2794d31cdbfd60f1` |
-| Finance audit | `codex/cycle33-cost-coverage`          | Baseline0597 unchanged; no feature commit or feature PR invented                                     |
+| Package       | Branch                                 | Exact local author chain                                                                                                                                                |
+| ------------- | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Field         | `codex/cycle33-field-continuity`       | `9c29d34e129af32c9b586990dc582b799b57f2bc` → direct child `12cf06da7fb4dea1600e6ca1481f4ca8c2c98188`                                                                    |
+| Customer      | `codex/cycle33-customer-continuity`    | `26c49ff8a78712ae6ad5e3afbc491ce8b608760f`                                                                                                                              |
+| Growth        | `codex/cycle33-maintenance-continuity` | `de81936d42c9279940f3a8466581d1321de84636`                                                                                                                              |
+| Advanced      | `codex/cycle33-advanced-continuity`    | `2bd1060982bc4a7d7b1c30b0329888b419ade027`                                                                                                                              |
+| Intelligence  | `codex/cycle33-owner-continuity`       | `5aa6728003c9b820e50d34505c465104440783d7`                                                                                                                              |
+| CI supplement | `codex/cycle33-foundation-runtime`     | `742a377e93658ddbb9fc40ee7eb8752758c77997` → direct child `8d902e866c79220fa3ddb0bc2794d31cdbfd60f1` → history/capture child `7406e4444d69dc663b10f8cfdba0c7654e5b388e` |
+| Finance audit | `codex/cycle33-cost-coverage`          | Baseline0597 unchanged; no feature commit or feature PR invented                                                                                                        |
 
 Each first author has sole parent0597; corrections retain normal direct-child
 history. Publication/support commits, draft PR numbers and current-head hosted

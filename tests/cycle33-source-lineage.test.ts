@@ -191,3 +191,91 @@ it('freezes nested correction metadata and denies an invented child endpoint', (
     }),
   ).toThrow();
 });
+
+const legacyC11: {
+  validateCycle11Manifest: (
+    manifest: unknown,
+    read?: (path: string) => Buffer,
+  ) => Record<string, unknown>;
+  validateCycle11PublishedSource: (
+    file: { path: string; sha256: string },
+    bytes: Buffer,
+    read?: (path: string) => Buffer,
+  ) => void;
+} = await import(
+  new URL('../scripts/check-cycle11-integrity.mjs', import.meta.url).href
+);
+const advancedSpec = source.cycle33Authors[3],
+  advancedPath = advancedSpec.modified[0];
+const advancedEvidence = {
+  path: advancedPath,
+  sha256: '274b74bd7da08e1e0bc2ccfc3f759f4ed0cdc0a3122ebd5302fb94b18be0b067',
+};
+it('legacy C11 full validator accepts only the exact reviewed Advanced successor without rewriting its index', () => {
+  const bytes = readFileSync('docs/program/CYCLE11_DELIVERY_INDEX.json');
+  expect(
+    legacyC11.validateCycle11Manifest(JSON.parse(bytes.toString())),
+  ).toEqual({ packages: 6, author_files: 34, independent_files: 2 });
+  expect(readFileSync('docs/program/CYCLE11_DELIVERY_INDEX.json')).toEqual(
+    bytes,
+  );
+});
+it('legacy C11 continues accepting the exact immutable original Advanced source', () => {
+  expect(() =>
+    legacyC11.validateCycle11PublishedSource(
+      advancedEvidence,
+      ports.git('6108876998b891108964a4a9a7a58bef6e0b31ef', advancedPath),
+    ),
+  ).not.toThrow();
+});
+it('legacy C11 denies an unreviewed Advanced byte edit', () => {
+  expect(() =>
+    legacyC11.validateCycle11PublishedSource(
+      advancedEvidence,
+      Buffer.concat([ports.read(advancedPath), Buffer.from('\n')]),
+    ),
+  ).toThrow('Reviewed Cycle11 source changed');
+});
+it('legacy C11 denies relabeling the original Advanced hash to the current source hash', () => {
+  expect(() =>
+    legacyC11.validateCycle11PublishedSource(
+      {
+        ...advancedEvidence,
+        sha256: createHash('sha256')
+          .update(ports.read(advancedPath))
+          .digest('hex'),
+      },
+      ports.read(advancedPath),
+    ),
+  ).toThrow();
+});
+it('legacy C11 rereads exact current Advanced companions after earlier admission', () => {
+  let drift = false;
+  const read = (p: string) =>
+    p === advancedSpec.added[0] && drift
+      ? Buffer.from('changed')
+      : ports.read(p);
+  expect(() =>
+    legacyC11.validateCycle11PublishedSource(
+      advancedEvidence,
+      ports.read(advancedPath),
+      read,
+    ),
+  ).not.toThrow();
+  drift = true;
+  expect(() =>
+    legacyC11.validateCycle11PublishedSource(
+      advancedEvidence,
+      ports.read(advancedPath),
+      read,
+    ),
+  ).toThrow();
+});
+it('legacy C11 never admits an unrelated runtime path through the Advanced forward', () => {
+  expect(() =>
+    legacyC11.validateCycle11PublishedSource(
+      { ...advancedEvidence, path: 'src/App.tsx' },
+      ports.read(advancedPath),
+    ),
+  ).toThrow();
+});

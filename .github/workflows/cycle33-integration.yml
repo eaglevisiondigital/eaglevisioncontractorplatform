@@ -1,4 +1,4 @@
-name: Cycle 33 exact native continuity
+name: Cycle 33 source-bound focused correctness
 on:
   push:
     branches: ['codex/program-cycle-thirty-three-integration']
@@ -25,7 +25,7 @@ concurrency:
   group: cycle33-${{ github.ref }}
   cancel-in-progress: false
 jobs:
-  exact-combined-reliability:
+  source-bound-focused-correctness:
     runs-on: ubuntu-24.04
     timeout-minutes: 35
     steps:
@@ -42,9 +42,11 @@ jobs:
       - run: node --input-type=module -e "import {inspectCycle32Sources} from './scripts/cycle25-source-lineage.mjs'; console.log(inspectCycle32Sources({requireCombined:true}));"
       - run: node --input-type=module -e "import {inspectCycle32BusySources} from './scripts/cycle25-source-lineage.mjs'; console.log(inspectCycle32BusySources({requirePresent:true}));"
       - run: node --input-type=module -e "import {inspectCycle33Sources} from './scripts/cycle25-source-lineage.mjs'; console.log(inspectCycle33Sources({requireCombined:true}));"
-      - run: npx vitest run tests/cycle33*.test.ts --reporter=json --outputFile=artifacts/cycle33/application-results.json
+      - name: Supplemental serial focused correctness with unchanged native budgets
+        run: npx vitest run tests/cycle33*.test.ts --maxWorkers=1 --reporter=json --outputFile=artifacts/cycle33/application-results.json
       - run: node scripts/cycle33-application-evidence.mjs artifacts/cycle33/application-results.json
       - run: npx vitest run tests/cycle31-owner-source-compatibility.test.ts tests/cycle32-source-lineage.test.ts tests/cycle32-busy-source-lineage.test.ts --reporter=json --outputFile=artifacts/cycle33/retained-lineage-results.json
+      - run: node scripts/cycle33-application-evidence.mjs artifacts/cycle33/retained-lineage-results.json retained
       - run: npm run build
       - name: Observe reviewed signed Chromium sources
         run: |
@@ -58,7 +60,7 @@ jobs:
       - run: CYCLE24_ARTIFACT_DIR=artifacts/cycle28 node scripts/collect-cycle32-browser.mjs
       - name: Fresh-read failure removes prior owner inspection
         env:
-          PLAYWRIGHT_JSON_OUTPUT_NAME: artifacts/cycle33/owner-browser.json
+          PLAYWRIGHT_JSON_OUTPUT_FILE: '${{ github.workspace }}/artifacts/cycle33/owner-browser.json'
         run: npx playwright test -c tests/program/playwright.cycle33-owner-continuity.config.ts --reporter=json
       - name: Require all9 source-bound responsive owner cases
         run: |

@@ -59,7 +59,7 @@ adds a separately named supplement: original preflight/recovery/build/staging,
 eight native full application shards and three native full browser shards, all
 within45-minute jobs. It preserves original four Vitest workers,30-second test/hook
 budgets, original Playwright assertions and runtime budgets. Native list collection
-contains356 original application files and399 original browser cases. Fifty parser
+contains356 application files (355 baseline plus the new CI-tooling suite) and399 original browser cases. Fifty parser
 regressions pass. Complete exact union still requires actual terminal hosted reports;
 local collection is not assertion execution. Original PostgreSQL coverage is observed
 separately, not duplicated or silently included in this verdict.
@@ -89,3 +89,87 @@ P1-on13, separately authorized customer14, then exact4B/broker sequencing persis
 
 Release1.0 remains **NOT READY / NOT AUTHORIZED**. No merge, deployment, hosted
 mutation, financial execution, communication, dispatch or operational restoration.
+
+## Frozen clean candidate and observed CI outcomes
+
+CandidateA `00dd81cb4fed0e35386c12d8d018da2ac3d6462f` launched its focused
+application run from a clean tree:225/225 cases,7files, zero skipped/todo, PASS.
+The142 retained source cases were executed beforeA against the same relevant source
+bytes; they remain a separate pre-freeze proof, not a clean-A launch. Later changes
+harden only CI collection/validation and documentation; native source/test identity
+is checked separately. Ten deliberately corrupted application/retained report
+fixtures are rejected by the strengthened collectors; both actual reports pass.
+
+A first local owner-browser attempt failed during loopback listen EPERM before any
+assertions (three setup failures/six unrun). The authorized run reports7PASS/2TIMEOUT,
+raw SHA `4abd3d12252542ee9a8041e1294c779b6c57b044b307a7b1b57c00c807f93167`.
+Desktop brand1 duration907331ms and tablet143534ms were recorded despite unchanged
+30second budgets. A failed-only traced observation adds desktopPASS/tabletTIMEOUT;
+it is not a nine-case pass or a stability claim. Actual primary-Mac sleep/wake events
+overlap these intervals. Even a finite process-bound wake assertion did not prevent
+a subsequent native journey case reaching approximately15minutes of wall time:
+1FAIL/8NOT_RUN. Host interruption is observed; sole application causality is not
+established. Further local browser execution awaits an awake primary Mac. No test
+assertion, native budget, retry policy or operational gate was relaxed.
+
+The new owner reporter's relative output name resolved under its config directory.
+The new dedicated workflow now uses an explicit absolute JSON output file; original
+browser configs and assertions are untouched. Generated raw reports were moved to
+ignored private evidence. Screenshots/axe/current responsive completion remain
+unverified at Main; original successful author/browser records are not substituted.
+
+[Digest-verified hosted ledger](CYCLE33_HOSTED_CI_EVIDENCE.md) records exact
+PR247 head8d902:19PASS/15FAIL/2CANCELLED. Both original Foundations explicitly
+exceeded45minutes. The16 application shards collected every current356file/10,338
+case ID exactly once per event, including321 declared skips. Push has9,999PASS,
+18FAIL; the equal-tree PR carrier has10,011PASS,6FAIL. Across events21 explicit
+30second timeouts and3 dependent C18 fixture assertions are retained as failures.
+No CPU/memory/product cause is inferred from observed load or available memory.
+Six browser jobs fail in pre-assertion collection; strict aggregators correctly FAIL.
+A same-source local differential reproduces shallow-checkout missing reviewed Git
+history versus full-history successful399-case collection. The preparation correction
+requires new hosted evidence; collection success is not browser assertion success.
+
+Five native feature drafts248–252 preserve original authors and append only five
+reviewed build/test compatibility files. Each has actual22/22 source-compatibility
+PASS at its own published head. Exact heads are in the source manifest. CI outcomes
+must be observed per head, never inherited from those local proofs.
+[Individual physical-case status](CYCLE33_PHYSICAL_CASE_STATUS.md) retains all seven
+open complete cases and pending duplicate result; no engineering witness is inferred.
+
+## Later narrow corrections and remaining verification
+
+Advanced draft251's original2f7b head completes23 checks successfully, fails five
+legacy workflows and cancels two Foundations. All five failures are the same C11
+source guard before tests; no product or timeout cause is inferred. A one-file
+normal-child correction preserves the literal original C11 hash, validates the
+original610887 Git bytes and admits only fixed2bd106 plus current exact companions.
+Six new regressions PASS (74 nonselected), raw
+`494cc9f930f8b8baed1d33a838b4dc934e38e27e9ea5a56317c16fa12e8c14d2`.
+All five direct integrity CLIs11/12/21/22/23 PASS before publication as
+`ecccf812991f7acca29d9ca88a2a10c095e99fca`. New-head CI is separate and pending.
+
+CI draft247's history/capture correction is normal child
+`7406e4444d69dc663b10f8cfdba0c7654e5b388e`: only the additive browser checkout
+gets full history; failure diagnostics retain finite classified counts/hashes,
+never raw child stdout/stderr, argv or environment. All56 tooling cases PASS;
+new-head hosted assertion outcomes remain separately observed. A rejected raw
+capture approach was replaced with the reviewed finite diagnostic; no unsafe capture
+was performed. Local shallow missing-object failure/full399-case list success proves
+the preparation precondition, not success of original hosted assertions.
+
+The later combined current-source237-case run reports235PASS/2TIMEOUT/0skip,
+raw `e41a49395a3af7e5b454013dd112ddddd02c89341407238fa057bd7596acf128`.
+Both failures are explicit unchanged30-second deadlines in brand1 Customer/Owner
+cases; no assertion-defect or sole resource cause is established. This remains a
+failed run, distinct from clean-A225 and separate targeted proofs. Current focused
+collection is101native +80source +56CI tooling =237 cases/7files.
+
+The new dedicated Main workflow uses explicit one-worker focused scheduling for
+these237 cases, preserving all original assertions and budgets. This is supplemental
+focused correctness; it never relabels the original full four-worker Foundation or
+its failed/cancelled runs. Its actual hosted result is pending. The separate full
+native supplement still requires all original collection, assertions and strict union;
+no failed case, declared skip, browser gap or cancellation is removed. Local browser
+retries await confirmed awake-device availability rather than repeatedly exercising
+successful cases on an interrupted host.

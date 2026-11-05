@@ -161,6 +161,107 @@ function combined() {
   };
 }
 describe('Foundation exact native coverage admission', () => {
+  it('retains finite collection failure fields and actual output hashes without raw text', () => {
+    const stdout = JSON.stringify({
+      errors: [{ name: 'Error', message: 'fatal: invalid object name' }],
+    });
+    const d = evidence.nativeFailureEvidence({
+      status: 1,
+      stdout,
+      stderr: 'original stderr',
+    });
+    expect(d).toMatchObject({
+      child_exit: 1,
+      parsed_json: true,
+      native_error_count: 1,
+      known_error_tags: ['MISSING_GIT_OBJECT'],
+      raw_stdout_or_stderr_retained: false,
+      argv_or_environment_retained: false,
+    });
+    expect(d.stdout_sha256).toMatch(/^[a-f0-9]{64}$/);
+    expect(d.stdout_bytes).toBe(Buffer.byteLength(stdout));
+    expect(JSON.stringify(d)).not.toContain('original stderr');
+  });
+  it('hashes credential-shaped collection errors and unrecognized classes', () => {
+    const d = evidence.nativeFailureEvidence({
+      status: 1,
+      stdout: JSON.stringify({
+        errors: [
+          {
+            name: 'PrivateCredentialClass',
+            message: 'https://name:password@example.invalid/private',
+            stack: 'secret environment',
+          },
+        ],
+      }),
+      stderr: 'hidden-value',
+    });
+    expect(d.native_errors[0].class).toBe('UNKNOWN');
+    expect(JSON.stringify(d)).not.toMatch(
+      /password|example|secret|PrivateCredentialClass|hidden-value/,
+    );
+  });
+  it('bounds collection errors to32 without omitting the original count', () => {
+    const d = evidence.nativeFailureEvidence({
+      status: 1,
+      stdout: JSON.stringify({
+        errors: Array.from({ length: 40 }, () => ({
+          name: 'Error',
+          message: 'fixture',
+        })),
+      }),
+      stderr: '',
+    });
+    expect(d.native_error_count).toBe(40);
+    expect(d.native_errors).toHaveLength(32);
+    expect(d.native_errors_truncated).toBe(true);
+  });
+  it('keeps non-JSON failure output hashed and unclassified', () => {
+    const d = evidence.nativeFailureEvidence({
+      status: null,
+      signal: 'SIGTERM',
+      stdout: 'not-json',
+      stderr: 'some output',
+      error: { code: 'UNKNOWN_PRIVATE_CODE' },
+    });
+    expect(d).toMatchObject({
+      child_exit: null,
+      child_signal: 'SIGTERM',
+      child_error_code: null,
+      parsed_json: false,
+      native_error_count: 0,
+      native_errors: [],
+    });
+    expect(JSON.stringify(d)).not.toContain('UNKNOWN_PRIVATE_CODE');
+  });
+  it('distinguishes a recorded buffer-limit condition without broad raw fallback', () => {
+    const d = evidence.nativeFailureEvidence({
+      status: null,
+      stdout: 'partial',
+      stderr: '',
+      error: { code: 'ENOBUFS' },
+    });
+    expect(d.child_error_code).toBe('ENOBUFS');
+    expect(d.raw_stdout_or_stderr_retained).toBe(false);
+  });
+  it('restores full history only in the additive browser job before guarded collection', () => {
+    const workflow = readFileSync(
+      '.github/workflows/cycle33-foundation-runtime.yml',
+      'utf8',
+    );
+    const browser = workflow.slice(
+      workflow.indexOf('  browser:'),
+      workflow.indexOf('  # This separately named'),
+    );
+    expect(browser).toMatch(
+      /actions\/checkout@v4\n\s+with:\n\s+fetch-depth: 0/,
+    );
+    expect(browser.indexOf('fetch-depth: 0')).toBeLessThan(
+      browser.indexOf(' plan browser '),
+    );
+    expect(workflow.match(/fetch-depth: 0/g)).toHaveLength(1);
+  });
+
   it('records only explicit native timeout and finite assertion classifications', async () => {
     const { classifyErrors } = await import(
       new URL('../scripts/cycle33-foundation-reporter.mjs', import.meta.url)

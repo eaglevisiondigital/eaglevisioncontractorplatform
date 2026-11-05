@@ -71,12 +71,85 @@ function pathInRoot(path) {
     fail();
   return name;
 }
-function native(command, args) {
+export function nativeFailureEvidence(result) {
+  const stdout = typeof result.stdout === 'string' ? result.stdout : '';
+  const stderr = typeof result.stderr === 'string' ? result.stderr : '';
+  let parsed,
+    parsed_json = false;
+  try {
+    parsed = JSON.parse(stdout);
+    parsed_json = true;
+  } catch {
+    /* Raw output is never retained. */
+  }
+  const allErrors = Array.isArray(parsed?.errors) ? parsed.errors : [];
+  const tags = [];
+  const combined = stdout + '\n' + stderr;
+  for (const [tag, pattern] of [
+    [
+      'MISSING_GIT_OBJECT',
+      /invalid object name|bad object|unknown revision|not a valid object name|could not get object info/i,
+    ],
+    [
+      'SOURCE_GUARD',
+      /inspectCycle25Sources|Exact single-parent|Unreviewed source|Original immutable|source-lineage/i,
+    ],
+    [
+      'PUBLIC_HISTORY_PRECONDITION',
+      /Public test Git-history precondition failed/,
+    ],
+    ['MODULE_NOT_FOUND', /Cannot find module|ERR_MODULE_NOT_FOUND/],
+  ])
+    if (pattern.test(combined)) tags.push(tag);
+  return {
+    schema: 'propel-native-collection-failure-v1',
+    child_exit: Number.isInteger(result.status) ? result.status : null,
+    child_signal: ['SIGKILL', 'SIGTERM', 'SIGABRT', 'SIGSEGV'].includes(
+      result.signal,
+    )
+      ? result.signal
+      : null,
+    child_error_code: ['ENOENT', 'ENOBUFS', 'EACCES', 'ETIMEDOUT'].includes(
+      result.error?.code,
+    )
+      ? result.error.code
+      : null,
+    stdout_bytes: Buffer.byteLength(stdout),
+    stderr_bytes: Buffer.byteLength(stderr),
+    stdout_sha256: sha(stdout),
+    stderr_sha256: sha(stderr),
+    parsed_json,
+    native_error_count: allErrors.length,
+    native_errors: allErrors.slice(0, 32).map((e) => ({
+      class: ['Error', 'TypeError', 'AssertionError', 'TimeoutError'].includes(
+        e?.name,
+      )
+        ? e.name
+        : 'UNKNOWN',
+      message_sha256: sha(typeof e?.message === 'string' ? e.message : ''),
+      message_bytes:
+        typeof e?.message === 'string' ? Buffer.byteLength(e.message) : 0,
+      stack_sha256: sha(typeof e?.stack === 'string' ? e.stack : ''),
+    })),
+    native_errors_truncated: allErrors.length > 32,
+    known_error_tags: tags,
+    raw_stdout_or_stderr_retained: false,
+    argv_or_environment_retained: false,
+  };
+}
+function native(command, args, context) {
   const result = spawnSync(command, args, {
     encoding: 'utf8',
     maxBuffer: 32 * 1024 * 1024,
   });
-  if (result.status !== 0 || result.error || result.signal) fail();
+  if (result.status !== 0 || result.error || result.signal) {
+    writeJson(context.prefix + '/native-collection-failure.json', {
+      ...nativeFailureEvidence(result),
+      stage: context.stage,
+      binding: context.binding,
+    });
+    fail();
+  }
   return result.stdout;
 }
 export function binding() {
@@ -457,12 +530,11 @@ async function plan(kind, index, prefix) {
   let full, selected;
   if (kind === 'application') {
     const all = JSON.parse(
-      native(process.execPath, [
-        'node_modules/vitest/vitest.mjs',
-        'list',
-        '--filesOnly',
-        '--json',
-      ]),
+      native(
+        process.execPath,
+        ['node_modules/vitest/vitest.mjs', 'list', '--filesOnly', '--json'],
+        { prefix, stage: 'VITEST_FILE_COLLECTION', binding: source },
+      ),
     );
     full = all.map((p) => pathInRoot(p.file)).sort();
     requireUnion(
@@ -489,9 +561,19 @@ async function plan(kind, index, prefix) {
       '--list',
       '--reporter=json',
     ];
-    const all = JSON.parse(native(process.execPath, args));
+    const all = JSON.parse(
+      native(process.execPath, args, {
+        prefix,
+        stage: 'PLAYWRIGHT_FULL_COLLECTION',
+        binding: source,
+      }),
+    );
     const shard = JSON.parse(
-      native(process.execPath, [...args, `--shard=${index}/${browserShards}`]),
+      native(process.execPath, [...args, `--shard=${index}/${browserShards}`], {
+        prefix,
+        stage: 'PLAYWRIGHT_SHARD_COLLECTION',
+        binding: source,
+      }),
     );
     full = browserCases(all).map(browserIdentity);
     selected = browserCases(shard).map(browserIdentity);
