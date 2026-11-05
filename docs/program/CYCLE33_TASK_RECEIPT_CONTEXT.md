@@ -38,3 +38,22 @@ Browser effects and hosted acceptance are not inferred from unit evidence. Origi
 design/branding, migrations, P1 approval/four artifacts, customer14/4B, recovery,
 Auth/MFA, NMI/Netlify and all provider/financial/communication/dispatch/release gates
 remain unchanged. Release1.0 is **NOT READY / NOT AUTHORIZED**.
+
+Independent review demonstrated an additional defect in the first local author
+`9c29d34e129af32c9b586990dc582b799b57f2bc`: freezing an object does not
+make getters inert. Four top-level/identity cases failed, followed by two
+nested-counts cases failing separately (four nonselected). The direct-child
+correction inspects original own data descriptors recursively before the discarded
+clone. It rejects executable getters without invoking them and still returns the
+original receipt after the original current-access check. This is input validation,
+not durable receipt authenticity or a replacement custody owner.
+
+The corrected eighteen new cases passed across all three brands and both current
+and retained inspectors, with thirty-three previously verified cases nonselected.
+Raw report SHA-256:
+`dce306dec6866745c8c981df8b0c6557746ae325f8c1384a6ff747cf257b613a`.
+The independent reviewer also reran only its six demonstrated regressions: six
+passed, raw SHA-256
+`18ac03d77ab87e1dface299afbdccb349153c8542d4c393aa7d2a4be5d01434e`.
+The final new test file contains fifty-one cases; these separate runs are not
+represented as a single fifty-one-case pass. Earlier RED evidence is retained.

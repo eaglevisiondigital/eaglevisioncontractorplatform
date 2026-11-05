@@ -139,3 +139,57 @@ it.each([0, 1, 2])(
     expect(writer).not.toHaveBeenCalled();
   },
 );
+
+it.each(
+  [0, 1, 2].flatMap((brand) =>
+    (['current', 'retained'] as const).flatMap((mode) =>
+      (['top-level', 'nested-identity', 'nested-counts'] as const).map(
+        (kind) => [brand, mode, kind] as const,
+      ),
+    ),
+  ),
+)(
+  'brand %i %s rejects frozen %s accessors without invoking executable receipt fields',
+  async (brand, mode, kind) => {
+    const { review } = await fixture(brand);
+    let calls = 0;
+    const receipt = Object.freeze(
+      kind === 'top-level'
+        ? {
+            ...review.receipt,
+            get visit_id() {
+              calls++;
+              return review.receipt.visit_id;
+            },
+          }
+        : kind === 'nested-identity'
+          ? {
+              ...review.receipt,
+              identity: Object.freeze({
+                ...review.receipt.identity,
+                get customer_id() {
+                  calls++;
+                  return review.receipt.identity.customer_id;
+                },
+              }),
+            }
+          : {
+              ...review.receipt,
+              counts: Object.freeze({
+                ...review.receipt.counts,
+                get source_rows() {
+                  calls++;
+                  return review.receipt.counts.source_rows;
+                },
+              }),
+            },
+    );
+    const graft = { view: review.view, receipt };
+    expect(() =>
+      (mode === 'current'
+        ? inspectTaskReceiptReconciliation
+        : assertTaskReceiptObservationAccess)(graft),
+    ).toThrow();
+    expect(calls).toBe(0);
+  },
+);

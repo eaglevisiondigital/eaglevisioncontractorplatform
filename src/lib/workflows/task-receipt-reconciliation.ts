@@ -32,6 +32,31 @@ export async function readTaskReceiptReconciliation(
 export type TaskReceiptReconciliation = Awaited<
   ReturnType<typeof readTaskReceiptReconciliation>
 >;
+/** Validate original receipt data without executing its getters. This is a
+ * local input check, never a receipt issuer, custody registry or replacement. */
+function receiptOwnData(value: unknown, seen = new Set<object>()): void {
+  if (value === null || typeof value !== 'object') {
+    if (typeof value === 'function' || typeof value === 'symbol')
+      throw Error('Plain original task receipt data required');
+    return;
+  }
+  if (
+    seen.has(value) ||
+    !Object.isFrozen(value) ||
+    ![null, Object.prototype, Array.prototype].includes(
+      Object.getPrototypeOf(value),
+    )
+  )
+    throw Error('Immutable own-data task receipt required');
+  seen.add(value);
+  const descriptors = Object.getOwnPropertyDescriptors(value);
+  for (const key of Reflect.ownKeys(value)) {
+    if (typeof key !== 'string' || !Object.hasOwn(descriptors[key], 'value'))
+      throw Error('Executable task receipt fields forbidden');
+    receiptOwnData(descriptors[key].value, seen);
+  }
+  seen.delete(value);
+}
 /** Retained receipts must still refer to the exact original source context.
  * This checks a presentation reference, not durable receipt authenticity. */
 function originalReceiptContext(review: TaskReceiptReconciliation) {
@@ -41,6 +66,7 @@ function originalReceiptContext(review: TaskReceiptReconciliation) {
   const { view, receipt } = fields as unknown as TaskReceiptReconciliation;
   if (!Object.isFrozen(receipt))
     throw Error('Original immutable task receipt required');
+  receiptOwnData(receipt);
   // A descriptor-bearing Proxy must not change receipt fields after the current
   // access check. The discarded clone is never a source or receipt authority.
   const snapshot = structuredClone(receipt);
