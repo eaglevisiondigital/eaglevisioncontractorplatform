@@ -280,24 +280,6 @@
       "quality": [
         {
           "name": "new-256",
-          "args": [
-            "npx",
-            "vitest",
-            "run",
-            "tests/cycle32-busy-source-lineage.test.ts",
-            "tests/cycle32-c12-browser-evidence.test.ts",
-            "tests/cycle32-independent-source-review.test.ts",
-            "tests/cycle32-owner-busy-state.test.ts",
-            "tests/cycle32-owner-filter-navigation.test.ts",
-            "tests/cycle32-profit-guard-completeness.test.ts",
-            "tests/cycle32-runner-mirror-probe.test.ts",
-            "tests/cycle32-source-lineage.test.ts",
-            "tests/cycle32-task-input-binding.test.ts",
-            "tests/cycle32-voice-input-continuity.test.ts",
-            "--maxWorkers=1",
-            "--reporter=json",
-            "--outputFile=artifacts/cycle32/application-results.json"
-          ],
           "exit_code": 0,
           "elapsed_seconds": 103.923,
           "log_sha256": "dcd6893a237230b668b7cf76718428718e718b6f92c6bef391318161c6fa4dd6",
@@ -306,11 +288,6 @@
         },
         {
           "name": "new-collection",
-          "args": [
-            "node",
-            "scripts/cycle32-application-evidence.mjs",
-            "artifacts/cycle32/application-results.json"
-          ],
           "exit_code": 0,
           "elapsed_seconds": 0.05,
           "log_sha256": "82c6f0bc2cf5fdc00ea4956838f4f8b823cf7c46a29e48b4ff0e5ac95a7303fc",
@@ -319,41 +296,6 @@
         },
         {
           "name": "retained-591",
-          "args": [
-            "npx",
-            "vitest",
-            "run",
-            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle31-chromium-source-shape.test.ts",
-            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle31-independent-source-review.test.ts",
-            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle31-maintenance-proposal-input.test.ts",
-            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle31-owner-navigation-runtime.test.ts",
-            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle31-owner-source-compatibility.test.ts",
-            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle31-source-lineage.test.ts",
-            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle30-browser-timing.test.ts",
-            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle30-chromium-dependencies.test.ts",
-            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle30-customer-source-audit.test.ts",
-            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle30-independent-source-review.test.ts",
-            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle30-maintenance-date.test.ts",
-            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle30-owner-source-audit.test.ts",
-            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle30-source-lineage.test.ts",
-            "/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM/.staging/program-cycle32/main/tests/cycle30-task-custody-navigation.test.ts",
-            "tests/cycle21-validation.test.ts",
-            "tests/cycle22-validation.test.ts",
-            "tests/cycle23-validation.test.ts",
-            "tests/cycle29-source-lineage.test.ts",
-            "tests/cycle28-source-lineage.test.ts",
-            "tests/cycle27-source-lineage.test.ts",
-            "tests/cycle26-source-review.test.ts",
-            "tests/cycle25-source-lineage.test.ts",
-            "tests/cycle25-combined-integration.test.ts",
-            "tests/cycle28-contractor-journey.test.ts",
-            "tests/cycle21-recorded-owner-actions.test.ts",
-            "tests/cycle24-service-request-actions.test.ts",
-            "tests/cycle24-plan-cancellation-review.test.ts",
-            "--maxWorkers=1",
-            "--reporter=json",
-            "--outputFile=artifacts/cycle31/application-results.json"
-          ],
           "exit_code": 0,
           "elapsed_seconds": 391.555,
           "log_sha256": "9eea5cec3991014e1999903bdc4ce1d9dc571d7d5a859ac45ec2946aba1dd720",
@@ -362,7 +304,6 @@
         },
         {
           "name": "retained-collection",
-          "args": ["node", "--input-type=module"],
           "exit_code": 0,
           "elapsed_seconds": 0.043,
           "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -371,7 +312,6 @@
         },
         {
           "name": "lint",
-          "args": ["npm", "run", "lint"],
           "exit_code": 0,
           "elapsed_seconds": 23.05,
           "log_sha256": "e84becf1e34a4de725ce146d894e3cc1060fc0b892d11a66d37cff6b765eebe4",
@@ -380,7 +320,6 @@
         },
         {
           "name": "typecheck",
-          "args": ["npm", "run", "typecheck"],
           "exit_code": 0,
           "elapsed_seconds": 19.813,
           "log_sha256": "333f1c4ac1f1cb812f6974fc382020ab84a6153e4856bf5134a600f3bfd170f3",
@@ -389,7 +328,6 @@
         },
         {
           "name": "types-check",
-          "args": ["npm", "run", "types:check"],
           "exit_code": 0,
           "elapsed_seconds": 1.729,
           "log_sha256": "42ee89b49916dddb841ca54315b31fffd8bf23354ac06827ced7c2438c5d8867",
@@ -398,7 +336,6 @@
         },
         {
           "name": "migrations-check",
-          "args": ["npm", "run", "migrations:check"],
           "exit_code": 0,
           "elapsed_seconds": 0.163,
           "log_sha256": "215913c812a8d6e65994127fb73b6afdcecd679427ef5ce3db41f47f6da8918e",
@@ -407,7 +344,6 @@
         },
         {
           "name": "property-check",
-          "args": ["npm", "run", "property:check"],
           "exit_code": 0,
           "elapsed_seconds": 0.149,
           "log_sha256": "b780ecaf6eea7c589790589d4bdc64ef4b1a824a931486c9f1456dfcdf6ef44a",
@@ -416,7 +352,6 @@
         },
         {
           "name": "customer-check",
-          "args": ["npm", "run", "customer:check"],
           "exit_code": 0,
           "elapsed_seconds": 0.15,
           "log_sha256": "71aec77447e2beef3481e62c487b558a8dc3400b9ad8c793046f165c113d9b91",
@@ -425,7 +360,6 @@
         },
         {
           "name": "customer-requests-check",
-          "args": ["npm", "run", "customer:requests:check"],
           "exit_code": 0,
           "elapsed_seconds": 0.147,
           "log_sha256": "8f026b1a39c2c3dbe966894b401300908ec9f12715a7c5a48679aefbdd7b64f0",
@@ -434,7 +368,6 @@
         },
         {
           "name": "customer-broker-check",
-          "args": ["npm", "run", "customer:broker:check"],
           "exit_code": 0,
           "elapsed_seconds": 0.149,
           "log_sha256": "e22eb7ea5dd31177088b94a8eba64bf17472157c2bdb7432dc555dcda1147cf6",
@@ -443,7 +376,6 @@
         },
         {
           "name": "features-check",
-          "args": ["npm", "run", "features:check"],
           "exit_code": 0,
           "elapsed_seconds": 0.377,
           "log_sha256": "b490a9d62b9f4e86f4ea08b4b3eb21e1eab90160a69aca1d1e9c8f043c424679",
@@ -452,7 +384,6 @@
         },
         {
           "name": "format-check",
-          "args": ["npm", "run", "format:check"],
           "exit_code": 1,
           "elapsed_seconds": 17.391,
           "log_sha256": "b22b01ddc3384ba2dc0617d03be7c4c26ee7e0ea7a35ab70cf8e9ac2a690b666",
@@ -513,5 +444,60 @@
     },
     "verdict": "CLEAR_REVIEWED_SOURCE_AND_ACTUAL_LOCAL_EVIDENCE_NOT_HOSTED_OR_OPERATIONAL",
     "original_review_unchanged": true
+  },
+  "post_ci_hosted_verification": {
+    "source_sha": "b7d771b2ac830c45e7f994f32fd7a032b8d43077",
+    "workflow_run": 41945682382,
+    "event": "push",
+    "conclusion": "SUCCESS",
+    "artifact_id": 13380515527,
+    "artifact_bytes": 38536266,
+    "provider_digest_verified_before_extraction": true,
+    "zip_sha256": "3c79c57fc068d2dffda27dfc7810a2b14a479abb9ebb1dbab6ed7a7b7a5e0bde",
+    "new_application": {
+      "passed": 256,
+      "files": 10,
+      "skipped": 0,
+      "sha256": "91a446ca647efe2a4a948c3178c75e67f9731a1935a8b5e33a43b546383feea0"
+    },
+    "retained_application": {
+      "passed": 591,
+      "files": 27,
+      "skipped": 0,
+      "sha256": "90ecc1bdfbbd0a1fcf03f6d0d942780909d261e5bdbcb4e8af97ae85598c76e5"
+    },
+    "original_paired": {
+      "passed": 2,
+      "projects": ["desktop", "tablet"],
+      "case_durations_ms": [26947, 27582],
+      "original_budget_ms": 30000,
+      "configured_and_actual_workers": 2,
+      "one_attempt_per_case": true,
+      "retries": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "unexpected": 0,
+      "report_sha256": "a7441b42389c4a0b385d1c3fdb9f9f2e077389dace6ebfa205e22bac3ca664e1",
+      "timing_sha256": "fe5db75252a6c229f0870f1dbfc282da22d1ba071cc1ff31541c6310b957153e",
+      "original_test_config_and_lock_hashes_match": true
+    },
+    "new_responsive": {
+      "passed": 18,
+      "brands": 3,
+      "viewports": 3,
+      "scenarios_per_brand": 2,
+      "workers": 1,
+      "retries": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "unexpected": 0,
+      "report_sha256": "b0de03c1ce9c86845fcf9317060cd8df6020163af957db3762c2476f20cebe1d"
+    },
+    "retained_native_browser_passed": 9,
+    "production_off_passed": 3,
+    "historical_failure_relabelled": false,
+    "universal_stability_claim": false,
+    "metadata_only_successor_inherits_ci": false,
+    "following_documentation_head_ci": "REQUIRES_OWN_EXACT_HEAD_OBSERVATION_NO_INHERITANCE"
   }
 }

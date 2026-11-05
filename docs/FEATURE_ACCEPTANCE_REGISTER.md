@@ -40,6 +40,14 @@ advances to that exact new author; all22 case titles/counts/denials remain uncha
 Original599unchanged-test proof applies to1ef; current scope has598unchanged plus this
 explicit compatibility update. Reviewed signed-source observability adds no trust.
 
+Actual hosted source `b7d771b2ac830c45e7f994f32fd7a032b8d43077`, dedicated
+push41945682382 SUCCESS:256new and591retained application cases;18new responsive
+cases;9native+3production-OFF; original paired desktop/tablet26.947/27.582s within
+unchanged30s budgets,2actual workers,0retries. Provider artifact digest and raw
+reports verified. This closes the matching hosted paired evidence gap for that
+source; original7bFAIL and historical cancellations remain. Universal stability is
+not claimed. The following documentation-only head needs separate exact-head CI.
+
 All original designs/branding, protected files, migrations, frozen P1/four artifacts,
 customer14/4B, Netlify, NMI, financial and production gates remain unchanged.
 Release1.0 remains **NOT READY / NOT AUTHORIZED**.

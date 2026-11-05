@@ -799,7 +799,8 @@
     "local_new256": "PASS",
     "local_retained591": "PASS_WITH_EXACT_REVIEWED_CURRENT_ENDPOINT_EXPECTATION",
     "local_browser18plus2": "PASS",
-    "current_head_hosted_result": "AWAIT_ACTUAL_FINAL_HEAD_STATUS_NO_INHERITANCE"
+    "current_head_hosted_result": "DEDICATED_PUSH_PASS_AT_EXACT_B7D_SOURCE_FOLLOWING_DOCS_HEAD_REQUIRES_OWN_CHECKS",
+    "verified_hosted_source": "b7d771b2ac830c45e7f994f32fd7a032b8d43077"
   },
   "post_ci_child": {
     "draft_pr": 245,
@@ -813,5 +814,66 @@
     "original_paired_and_new_browser": "PENDING_AT_SNAPSHOT",
     "base": "codex/program-cycle-thirty-two-integration",
     "normal_base_correction": "C31_TO_MAIN32_NO_MANUAL_RERUNS"
+  },
+  "post_ci_hosted_verification": {
+    "source_sha": "b7d771b2ac830c45e7f994f32fd7a032b8d43077",
+    "workflow_run": 41945682382,
+    "event": "push",
+    "conclusion": "SUCCESS",
+    "artifact_id": 13380515527,
+    "artifact_bytes": 38536266,
+    "provider_digest_verified_before_extraction": true,
+    "zip_sha256": "3c79c57fc068d2dffda27dfc7810a2b14a479abb9ebb1dbab6ed7a7b7a5e0bde",
+    "new_application": {
+      "passed": 256,
+      "files": 10,
+      "skipped": 0,
+      "sha256": "91a446ca647efe2a4a948c3178c75e67f9731a1935a8b5e33a43b546383feea0"
+    },
+    "retained_application": {
+      "passed": 591,
+      "files": 27,
+      "skipped": 0,
+      "sha256": "90ecc1bdfbbd0a1fcf03f6d0d942780909d261e5bdbcb4e8af97ae85598c76e5"
+    },
+    "original_paired": {
+      "passed": 2,
+      "projects": ["desktop", "tablet"],
+      "case_durations_ms": [26947, 27582],
+      "original_budget_ms": 30000,
+      "configured_and_actual_workers": 2,
+      "one_attempt_per_case": true,
+      "retries": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "unexpected": 0,
+      "report_sha256": "a7441b42389c4a0b385d1c3fdb9f9f2e077389dace6ebfa205e22bac3ca664e1",
+      "timing_sha256": "fe5db75252a6c229f0870f1dbfc282da22d1ba071cc1ff31541c6310b957153e",
+      "original_test_config_and_lock_hashes_match": true
+    },
+    "new_responsive": {
+      "passed": 18,
+      "brands": 3,
+      "viewports": 3,
+      "scenarios_per_brand": 2,
+      "workers": 1,
+      "retries": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "unexpected": 0,
+      "report_sha256": "b0de03c1ce9c86845fcf9317060cd8df6020163af957db3762c2476f20cebe1d"
+    },
+    "retained_native_browser_passed": 9,
+    "production_off_passed": 3,
+    "historical_failure_relabelled": false,
+    "universal_stability_claim": false,
+    "metadata_only_successor_inherits_ci": false,
+    "following_documentation_head_ci": "REQUIRES_OWN_EXACT_HEAD_OBSERVATION_NO_INHERITANCE"
+  },
+  "final_documentation_boundary": {
+    "runtime_tests_helpers_workflows_packages_unchanged_from": "b7d771b2ac830c45e7f994f32fd7a032b8d43077",
+    "following_head_inherits_ci": false,
+    "successful_checks_manually_rerun": false,
+    "machine_local_command_paths_omitted": true
   }
 }

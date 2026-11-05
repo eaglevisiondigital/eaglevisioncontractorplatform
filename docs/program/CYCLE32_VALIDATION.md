@@ -214,7 +214,7 @@ was prompt. This is observed processing delay, not attribution to a particular
 JavaScript function or proof of paired-run stability. The original paired tablet
 FAIL remains open; provider ZIP and raw result/timing/trace hashes are in the ledger.
 
-## Reviewed post-CI rendering correction · clean verification pending
+## Reviewed post-CI rendering correction · subsequent clean verification below
 
 Author `ec63030de8c0faceebd1ec9a645e9ea0dcf76383`, sole7b parent, changes one
 existing owner component and adds four bounded test/config/evidence companions.
@@ -280,3 +280,26 @@ author `8d2fb9c5fc62f07498bb714e0d8e5429dfb61fa2`, independently verifies these
 source boundaries and actual clean reports. Its JSON companion records exact hashes
 and separate command sources. Original reviewdd60/PR243 remains byte-identical.
 This later review grants no hosted, physical-witness, financial or release authority.
+
+## Verified hosted paired result · exact b7d source
+
+[Dedicated push41945682382](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41945682382)
+SUCCESS at exact `b7d771b2ac830c45e7f994f32fd7a032b8d43077`. Provider artifact13380515527
+is38,536,266bytes; its provider SHA256
+`3c79c57fc068d2dffda27dfc7810a2b14a479abb9ebb1dbab6ed7a7b7a5e0bde`
+was verified before selected raw-JSON extraction. Actual256new/10files and separate
+591retained/27files PASS,0skip; native9+production-OFF3 PASS. All18 new responsive
+cases PASS across three brands and three viewports, one attempt and no skips/flaky
+results/errors. The original paired desktop/tablet cases PASS in26,947/27,582ms,
+with unchanged30,000ms budgets, original test/config/lock hashes, two actual workers
+and zero retries. Timing binds exactb7d source; local15.051/15.306s results remain
+separate. Raw report and timing digests are recorded in adjacent JSON and CI ledger.
+
+This is matching hosted paired evidence for the reviewed correction. Original7b
+FAIL, earlier failures/cancellations and supplementary single-worker trace remain
+unchanged; one matching hosted success does not establish universal timing stability.
+The subsequent documentation-only commit records this result and removes unnecessary
+machine-local command paths. It changes no runtime, test, helper, workflow or package
+bytes and does not inherit b7d's CI success. Its exact-head checks require their own
+observation; no successful check was manually restarted. Operational, physical-suite,
+visual and release gates remain unchanged.
