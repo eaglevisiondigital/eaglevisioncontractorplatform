@@ -1,3 +1,16 @@
+## Cycle33 · finite source successors and full-scope supplementary CI
+
+Native consumers retain their original engines and current-authority guards. Exact
+receipt-context checks reject executable own-data substitution without issuing or
+restoring receipts. Original source manifests stay immutable; finite author/child
+admission rereads current companions, with no business-state authority. Historical
+Foundation45-minute cancellations remain cancelled. A separately named8application/
+3browser-shard supplement must prove complete native union and original budgets;
+passing collection/local tooling is not full hosted execution. Existing PostgreSQL
+coverage remains separate. Owner-witnessed main synthetic network-loss PASS is
+preserved; remaining physical results and genuine operational D1–D3/A01–A12 still
+require exact evidence and authorization. No new execution authority is granted.
+
 ## Cycle32 clean verification and independent post-CI review
 
 Clean0f2 passes256new/591retained cases with exact collection, lint/types and all

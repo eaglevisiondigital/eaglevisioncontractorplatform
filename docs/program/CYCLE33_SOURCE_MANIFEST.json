@@ -1,0 +1,186 @@
+{
+  "schema": "propel-cycle33-source-manifest-v1",
+  "parent_commit": "0597bb3330f22d69f68a67098e950693e0648172",
+  "coordination_branch": "codex/program-cycle-thirty-three-integration",
+  "support_commit": "08a1d54246baad325587f73b0c7f0acfb2d5c384",
+  "packages": [
+    {
+      "module": "field-task-receipt-context",
+      "commit": "9c29d34e129af32c9b586990dc582b799b57f2bc",
+      "owner": "/root",
+      "cases": 51,
+      "nativeCorrection": {
+        "commit": "12cf06da7fb4dea1600e6ca1481f4ca8c2c98188"
+      },
+      "permitted": ["src/lib/workflows/task-receipt-reconciliation.ts"],
+      "modified": ["src/lib/workflows/task-receipt-reconciliation.ts"],
+      "added": [
+        "docs/program/CYCLE33_TASK_RECEIPT_CONTEXT.md",
+        "tests/cycle33-task-receipt-context.test.ts"
+      ],
+      "execution_source": "12cf06da7fb4dea1600e6ca1481f4ca8c2c98188",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/task-receipt-reconciliation.ts",
+          "sha256": "55d6eaacbb5ea31d113085b9398e8c0ca8cb2f96e4a54b13d093914fa6098e27",
+          "blob": "3bdde044966e0f62c7322aa9f51720152ec02bb4"
+        },
+        {
+          "path": "docs/program/CYCLE33_TASK_RECEIPT_CONTEXT.md",
+          "sha256": "3023f8c41178e91378eef02d6310ca219eb1d83cde19e8465a32dde0c83451d1",
+          "blob": "78851dc926eef5ef14530d92727b0e5760031759"
+        },
+        {
+          "path": "tests/cycle33-task-receipt-context.test.ts",
+          "sha256": "560f8924724908f1644f7e2dc4b2d5ea0479d2aefd2af6d7619faf42031d6491",
+          "blob": "c94e4f318c32e505c21f5eb748827b2b2be7c0bf"
+        }
+      ]
+    },
+    {
+      "module": "customer-selection-privacy",
+      "commit": "26c49ff8a78712ae6ad5e3afbc491ce8b608760f",
+      "owner": "/root/cycle28_independent_review",
+      "cases": 12,
+      "permitted": ["src/lib/workflows/service-request-actions.ts"],
+      "modified": ["src/lib/workflows/service-request-actions.ts"],
+      "added": [
+        "docs/program/CYCLE33_CUSTOMER_SELECTION_PRIVACY.md",
+        "tests/cycle33-customer-selection-privacy.test.ts"
+      ],
+      "execution_source": "26c49ff8a78712ae6ad5e3afbc491ce8b608760f",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/service-request-actions.ts",
+          "sha256": "737a70e47b3528d3a9d7022824c8027803e2d02dde0615a2c2970edf5b577e9f",
+          "blob": "f4b788329a95c59e385b9ddef576e83a7d7afdba"
+        },
+        {
+          "path": "docs/program/CYCLE33_CUSTOMER_SELECTION_PRIVACY.md",
+          "sha256": "21457184361405b4307fca191fee6d52618456ff3158dc87a1d3968ee311d3f8",
+          "blob": "a66db2fb7d4e8420685b4cc96d3c9d470f7ed7df"
+        },
+        {
+          "path": "tests/cycle33-customer-selection-privacy.test.ts",
+          "sha256": "ba073cebfad93045d8aeeb2d4bf1ac86146fffc71bd174b83dc47c6e8f97f3cf",
+          "blob": "0dd4bd445e05292db0e023be5b3ab3e9400b2061"
+        }
+      ]
+    },
+    {
+      "module": "maintenance-input-continuity",
+      "commit": "de81936d42c9279940f3a8466581d1321de84636",
+      "owner": "/root/cycle28_independent_review",
+      "cases": 12,
+      "permitted": ["src/lib/workflows/maintenance-plan-correction.ts"],
+      "modified": ["src/lib/workflows/maintenance-plan-correction.ts"],
+      "added": [
+        "docs/program/CYCLE33_MAINTENANCE_INPUT_CONTINUITY.md",
+        "tests/cycle33-maintenance-input-continuity.test.ts"
+      ],
+      "execution_source": "de81936d42c9279940f3a8466581d1321de84636",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/maintenance-plan-correction.ts",
+          "sha256": "b2918851f0ec274b063b907256d49ed07d5d5dc5856d61dde8c8a046c680c178",
+          "blob": "4164063e10dff05ab1946f9211e46f4a648d324f"
+        },
+        {
+          "path": "docs/program/CYCLE33_MAINTENANCE_INPUT_CONTINUITY.md",
+          "sha256": "330d455add1d71bda10b4a4f37f22a40652cb10370bb67910fc2fa28a3f2a6e5",
+          "blob": "16dc95b750399c6e643679f9d9e9dcf8fd1180bc"
+        },
+        {
+          "path": "tests/cycle33-maintenance-input-continuity.test.ts",
+          "sha256": "200893449fd417a7acb56f042ff20923d00c4e58e2201a558cfd3ad0535454e2",
+          "blob": "784991c8aefddf8b1ee2788242a9c7587c8306fb"
+        }
+      ]
+    },
+    {
+      "module": "sync-proposal-privacy",
+      "commit": "2bd1060982bc4a7d7b1c30b0329888b419ade027",
+      "owner": "/root/cycle28_independent_review",
+      "cases": 12,
+      "permitted": ["src/lib/workflows/sync-admission-review.ts"],
+      "modified": ["src/lib/workflows/sync-admission-review.ts"],
+      "added": [
+        "docs/program/CYCLE33_SYNC_PROPOSAL_PRIVACY.md",
+        "tests/cycle33-sync-proposal-privacy.test.ts"
+      ],
+      "execution_source": "2bd1060982bc4a7d7b1c30b0329888b419ade027",
+      "owned_files": [
+        {
+          "path": "src/lib/workflows/sync-admission-review.ts",
+          "sha256": "8517ec656228d0dd6206d025af6b8d3342d8872f52ac02daa3f2637b4a0b95d1",
+          "blob": "89f189cf8393794a744c19daff34de139c6c73be"
+        },
+        {
+          "path": "docs/program/CYCLE33_SYNC_PROPOSAL_PRIVACY.md",
+          "sha256": "adc4aaf698ac673af2cf8d632ac107fdb13766de231dbfe1ab333c2bf431dff3",
+          "blob": "50ad7580150c7fd7c0ccc18df576d30b4b63c69d"
+        },
+        {
+          "path": "tests/cycle33-sync-proposal-privacy.test.ts",
+          "sha256": "af9dc07079dfb632ce7e95a292e6c64101b982a0b13378eafc6f0d38618e99b4",
+          "blob": "e0713dc45ec55162fb6a5ffa351644b49ba0e843"
+        }
+      ]
+    },
+    {
+      "module": "owner-continuity",
+      "commit": "5aa6728003c9b820e50d34505c465104440783d7",
+      "owner": "/root/cycle25_finance_intelligence_resume",
+      "cases": 14,
+      "permitted": ["src/components/workflows/RecordedOwnerActions.tsx"],
+      "modified": ["src/components/workflows/RecordedOwnerActions.tsx"],
+      "added": [
+        "docs/program/CYCLE33_OWNER_CONTINUITY.md",
+        "tests/cycle33-owner-continuity.test.ts",
+        "tests/program/cycle33-owner-continuity.spec.ts",
+        "tests/program/playwright.cycle33-owner-continuity.config.ts"
+      ],
+      "execution_source": "5aa6728003c9b820e50d34505c465104440783d7",
+      "owned_files": [
+        {
+          "path": "src/components/workflows/RecordedOwnerActions.tsx",
+          "sha256": "dd983b308553fd6599ec328700fbfb7561175b692a9d7f5e53340dab7e30a0f5",
+          "blob": "9ede7ac225f3954cfa4b5ba78fc4b677be66ac6b"
+        },
+        {
+          "path": "docs/program/CYCLE33_OWNER_CONTINUITY.md",
+          "sha256": "09ce9d391c53c6009ba25c7fc93420778b604d37fb656c3c2543827851f87df8",
+          "blob": "4315409290d408d86ae0e90c2353fc1212a87a54"
+        },
+        {
+          "path": "tests/cycle33-owner-continuity.test.ts",
+          "sha256": "ccb141428657c1589e3a74829d765f8ccec94c7cfb9692c513cd79e00b8171a9",
+          "blob": "b1a2aaba01548af4a794840424b92c34690344ef"
+        },
+        {
+          "path": "tests/program/cycle33-owner-continuity.spec.ts",
+          "sha256": "bc49598528b7e94e6b5aae456427f562e4716e732b120b2a5be9a08fdbfff492",
+          "blob": "94e2139f5acc3858ec5a5d09cfe22000cd2d559e"
+        },
+        {
+          "path": "tests/program/playwright.cycle33-owner-continuity.config.ts",
+          "sha256": "128131c2d4b9a4aeb8d206612b38c256f476ba26f263d6570692b12bcbd9f833",
+          "blob": "7face3199f3641f2ea7b57bea0ebe5c980416057"
+        }
+      ]
+    }
+  ],
+  "ci_supplement": {
+    "pr": 247,
+    "head": "8d902e866c79220fa3ddb0bc2794d31cdbfd60f1",
+    "parent_author": "742a377e93658ddbb9fc40ee7eb8752758c77997",
+    "authority": "ORIGINAL_VERIFY_SCOPE_SUPPLEMENT_NOT_LEGACY_FOUNDATION_PASS",
+    "hosted_complete_union": "PENDING"
+  },
+  "finance": "AUDITED_NO_CHANGE",
+  "independent_status": "SOURCE_CLEAR_CLEAN_COMBINED_PENDING",
+  "business_authority": false,
+  "restore_adapter": false,
+  "physical_recovery": "OWNER_MAIN_NETWORK_LOSS_PASS_REMAINING_CASES_PENDING",
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}
