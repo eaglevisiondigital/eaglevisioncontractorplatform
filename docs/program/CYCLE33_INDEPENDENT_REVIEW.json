@@ -1,0 +1,309 @@
+{
+  "schema": "propel-cycle33-independent-review-v1",
+  "reviewer": "/root/cycle33_independent_review",
+  "base": "0597bb3330f22d69f68a67098e950693e0648172",
+  "reviewed_source": "a72fc0aa6c45ac20ff03bef58e86049ca7b9726d",
+  "reviewed_tree": "32b7dd0b5843b23992c3f66728e17b685255856c",
+  "source_verdict": "CLEAR_LOCAL_SOURCE_WITH_OPEN_ACCEPTANCE_GATES",
+  "full_integration": "NO_GO_OPEN_CI_AND_RESPONSIVE_GATES",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "native_bundles": {
+    "field": {
+      "author": "9c29d34e129af32c9b586990dc582b799b57f2bc",
+      "correction": "12cf06da7fb4dea1600e6ca1481f4ca8c2c98188",
+      "sole_base_parent": true,
+      "files": [
+        {
+          "path": "docs/program/CYCLE33_TASK_RECEIPT_CONTEXT.md",
+          "sha256": "3023f8c41178e91378eef02d6310ca219eb1d83cde19e8465a32dde0c83451d1",
+          "blob": "78851dc926eef5ef14530d92727b0e5760031759",
+          "exact_author_blob": true
+        },
+        {
+          "path": "src/lib/workflows/task-receipt-reconciliation.ts",
+          "sha256": "55d6eaacbb5ea31d113085b9398e8c0ca8cb2f96e4a54b13d093914fa6098e27",
+          "blob": "3bdde044966e0f62c7322aa9f51720152ec02bb4",
+          "exact_author_blob": true
+        },
+        {
+          "path": "tests/cycle33-task-receipt-context.test.ts",
+          "sha256": "560f8924724908f1644f7e2dc4b2d5ea0479d2aefd2af6d7619faf42031d6491",
+          "blob": "c94e4f318c32e505c21f5eb748827b2b2be7c0bf",
+          "exact_author_blob": true
+        }
+      ]
+    },
+    "customer": {
+      "author": "26c49ff8a78712ae6ad5e3afbc491ce8b608760f",
+      "correction": null,
+      "sole_base_parent": true,
+      "files": [
+        {
+          "path": "docs/program/CYCLE33_CUSTOMER_SELECTION_PRIVACY.md",
+          "sha256": "21457184361405b4307fca191fee6d52618456ff3158dc87a1d3968ee311d3f8",
+          "blob": "a66db2fb7d4e8420685b4cc96d3c9d470f7ed7df",
+          "exact_author_blob": true
+        },
+        {
+          "path": "src/lib/workflows/service-request-actions.ts",
+          "sha256": "737a70e47b3528d3a9d7022824c8027803e2d02dde0615a2c2970edf5b577e9f",
+          "blob": "f4b788329a95c59e385b9ddef576e83a7d7afdba",
+          "exact_author_blob": true
+        },
+        {
+          "path": "tests/cycle33-customer-selection-privacy.test.ts",
+          "sha256": "ba073cebfad93045d8aeeb2d4bf1ac86146fffc71bd174b83dc47c6e8f97f3cf",
+          "blob": "0dd4bd445e05292db0e023be5b3ab3e9400b2061",
+          "exact_author_blob": true
+        }
+      ]
+    },
+    "growth": {
+      "author": "de81936d42c9279940f3a8466581d1321de84636",
+      "correction": null,
+      "sole_base_parent": true,
+      "files": [
+        {
+          "path": "docs/program/CYCLE33_MAINTENANCE_INPUT_CONTINUITY.md",
+          "sha256": "330d455add1d71bda10b4a4f37f22a40652cb10370bb67910fc2fa28a3f2a6e5",
+          "blob": "16dc95b750399c6e643679f9d9e9dcf8fd1180bc",
+          "exact_author_blob": true
+        },
+        {
+          "path": "src/lib/workflows/maintenance-plan-correction.ts",
+          "sha256": "b2918851f0ec274b063b907256d49ed07d5d5dc5856d61dde8c8a046c680c178",
+          "blob": "4164063e10dff05ab1946f9211e46f4a648d324f",
+          "exact_author_blob": true
+        },
+        {
+          "path": "tests/cycle33-maintenance-input-continuity.test.ts",
+          "sha256": "200893449fd417a7acb56f042ff20923d00c4e58e2201a558cfd3ad0535454e2",
+          "blob": "784991c8aefddf8b1ee2788242a9c7587c8306fb",
+          "exact_author_blob": true
+        }
+      ]
+    },
+    "advanced": {
+      "author": "2bd1060982bc4a7d7b1c30b0329888b419ade027",
+      "correction": null,
+      "sole_base_parent": true,
+      "files": [
+        {
+          "path": "docs/program/CYCLE33_SYNC_PROPOSAL_PRIVACY.md",
+          "sha256": "adc4aaf698ac673af2cf8d632ac107fdb13766de231dbfe1ab333c2bf431dff3",
+          "blob": "50ad7580150c7fd7c0ccc18df576d30b4b63c69d",
+          "exact_author_blob": true
+        },
+        {
+          "path": "src/lib/workflows/sync-admission-review.ts",
+          "sha256": "8517ec656228d0dd6206d025af6b8d3342d8872f52ac02daa3f2637b4a0b95d1",
+          "blob": "89f189cf8393794a744c19daff34de139c6c73be",
+          "exact_author_blob": true
+        },
+        {
+          "path": "tests/cycle33-sync-proposal-privacy.test.ts",
+          "sha256": "af9dc07079dfb632ce7e95a292e6c64101b982a0b13378eafc6f0d38618e99b4",
+          "blob": "e0713dc45ec55162fb6a5ffa351644b49ba0e843",
+          "exact_author_blob": true
+        }
+      ]
+    },
+    "owner": {
+      "author": "5aa6728003c9b820e50d34505c465104440783d7",
+      "correction": null,
+      "sole_base_parent": true,
+      "files": [
+        {
+          "path": "docs/program/CYCLE33_OWNER_CONTINUITY.md",
+          "sha256": "09ce9d391c53c6009ba25c7fc93420778b604d37fb656c3c2543827851f87df8",
+          "blob": "4315409290d408d86ae0e90c2353fc1212a87a54",
+          "exact_author_blob": true
+        },
+        {
+          "path": "src/components/workflows/RecordedOwnerActions.tsx",
+          "sha256": "dd983b308553fd6599ec328700fbfb7561175b692a9d7f5e53340dab7e30a0f5",
+          "blob": "9ede7ac225f3954cfa4b5ba78fc4b677be66ac6b",
+          "exact_author_blob": true
+        },
+        {
+          "path": "tests/cycle33-owner-continuity.test.ts",
+          "sha256": "ccb141428657c1589e3a74829d765f8ccec94c7cfb9692c513cd79e00b8171a9",
+          "blob": "b1a2aaba01548af4a794840424b92c34690344ef",
+          "exact_author_blob": true
+        },
+        {
+          "path": "tests/program/cycle33-owner-continuity.spec.ts",
+          "sha256": "bc49598528b7e94e6b5aae456427f562e4716e732b120b2a5be9a08fdbfff492",
+          "blob": "94e2139f5acc3858ec5a5d09cfe22000cd2d559e",
+          "exact_author_blob": true
+        },
+        {
+          "path": "tests/program/playwright.cycle33-owner-continuity.config.ts",
+          "sha256": "128131c2d4b9a4aeb8d206612b38c256f476ba26f263d6570692b12bcbd9f833",
+          "blob": "7face3199f3641f2ea7b57bea0ebe5c980416057",
+          "exact_author_blob": true
+        }
+      ]
+    }
+  },
+  "preservation": {
+    "protected_count": 128,
+    "protected_mismatches": [],
+    "prior_test_config_count": 602,
+    "prior_test_config_unchanged": 601,
+    "prior_test_config_changed": [
+      "tests/cycle31-owner-source-compatibility.test.ts"
+    ],
+    "feature_evidence_unchanged": true,
+    "legacy_ci_unchanged": true,
+    "A_to_B_runtime_or_test_differences": [
+      "tests/cycle33-foundation-evidence.test.ts",
+      "tests/cycle33-source-lineage.test.ts"
+    ],
+    "prior_test_config_scope": "All base tests/ paths plus vite.config.ts and playwright.config.ts:602 total"
+  },
+  "ci_source": {
+    "author": "742a377e93658ddbb9fc40ee7eb8752758c77997",
+    "budget_child": "8d902e866c79220fa3ddb0bc2794d31cdbfd60f1",
+    "history_child": "7406e4444d69dc663b10f8cfdba0c7654e5b388e",
+    "all_five_current_files_exact": true,
+    "scope": "ORIGINAL_VERIFY_SCOPE_SUPPLEMENT_NOT_LEGACY_FOUNDATION_PASS",
+    "original_full_workers": 4,
+    "dedicated_focused_workers": 1,
+    "focused_hosted_outcome": "NOT_ACCEPTED_BY_THIS_REVIEW",
+    "original_ci_changed": false
+  },
+  "independent_field_finding": {
+    "first_author": "9c29d34e129af32c9b586990dc582b799b57f2bc",
+    "red_top_and_identity": {
+      "passed": 0,
+      "failed": 4,
+      "sha256": "be36eb4a23b42e3c3a0ab76c4aeb48fc41cb864ec1f3e9ffb81ae8993f35bc6f"
+    },
+    "red_nested_counts": {
+      "passed": 0,
+      "failed": 2,
+      "filtered": 4,
+      "sha256": "a890f202a1f5342bdb57d20587d54074a94f0644ab42d9e5155f1e56eb12030a"
+    },
+    "direct_child": "12cf06da7fb4dea1600e6ca1481f4ca8c2c98188",
+    "corrected_same_cases": {
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "sha256": "18ac03d77ab87e1dface299afbdccb349153c8542d4c393aa7d2a4be5d01434e"
+    },
+    "durable_receipt_authenticity": false
+  },
+  "application_evidence": [
+    {
+      "scope": "CLEAN_LAUNCHED_A_NEW_COLLECTION",
+      "source": "00dd81cb4fed0e35386c12d8d018da2ac3d6462f",
+      "passed": 225,
+      "failed": 0,
+      "skipped": 0,
+      "files": 7,
+      "sha256": "a40918ad82237009361f93863ed095d80ca4ed5ad3f5a3c3413c7ae259c9f4bc"
+    },
+    {
+      "scope": "PRE_A_DIRTY_MATCHED_SOURCE_RETAINED",
+      "passed": 142,
+      "failed": 0,
+      "skipped": 0,
+      "files": 3,
+      "sha256": "5d923aa01bd5fe553793dccf7638c55da33c54a1cd632d3030559055f1c527a5"
+    },
+    {
+      "scope": "LATER_DIRTY_MATCHED_SOURCE_FOUR_WORKER_COLLECTION",
+      "passed": 235,
+      "failed": 2,
+      "skipped": 0,
+      "files": 7,
+      "verdict": "FAILED_EXPLICIT_30_SECOND_DEADLINES",
+      "sha256": "e41a49395a3af7e5b454013dd112ddddd02c89341407238fa057bd7596acf128"
+    },
+    {
+      "scope": "CURRENT_CI_TOOLING_ONLY",
+      "passed": 56,
+      "failed": 0,
+      "skipped": 0,
+      "sha256": "9cdcc0edff9833d6ea87b294def67d6610ca4a3846cee86357715f7335baaf8f"
+    },
+    {
+      "scope": "NEW_C11_BRIDGE_ONLY",
+      "passed": 6,
+      "failed": 0,
+      "filtered": 74,
+      "sha256": "494cc9f930f8b8baed1d33a838b4dc934e38e27e9ea5a56317c16fa12e8c14d2"
+    }
+  ],
+  "current_expected_focused": {
+    "native": 101,
+    "source": 80,
+    "ci_tooling": 56,
+    "total": 237,
+    "files": 7,
+    "whole_current_run_passed": false
+  },
+  "browser_evidence": {
+    "main_original_nine": {
+      "passed": 7,
+      "failed": 2,
+      "sha256": "4abd3d12252542ee9a8041e1294c779b6c57b044b307a7b1b57c00c807f93167"
+    },
+    "failed_only_trace": {
+      "passed": 1,
+      "failed": 1,
+      "sha256": "b6f8e4919dd2704ff564924d25dd3387905dc71ed847c22bc9e8dcf3e6394412"
+    },
+    "distinct_passed_cases": 8,
+    "whole_nine_run_passed": false,
+    "native_journey": {
+      "failed": 1,
+      "not_run": 8
+    },
+    "responsive_accessibility_acceptance": "OPEN",
+    "visual_approval": false,
+    "sole_timeout_cause_proven": false
+  },
+  "historical_ci": {
+    "pr": 247,
+    "source": "8d902e866c79220fa3ddb0bc2794d31cdbfd60f1",
+    "passed_jobs": 19,
+    "failed_jobs": 15,
+    "cancelled_jobs": 2,
+    "application_ids_each_event": 10338,
+    "declared_skips_each_event": 321,
+    "push_failed_cases": 18,
+    "pr_failed_cases": 6,
+    "browser_collection_failed_jobs": 6,
+    "whole_foundation_accepted": false
+  },
+  "main_pr_observed": {
+    "number": 253,
+    "head": "a72fc0aa6c45ac20ff03bef58e86049ca7b9726d",
+    "base": "0597bb3330f22d69f68a67098e950693e0648172",
+    "draft": true,
+    "open": true,
+    "merged": false,
+    "ci_success_inferred": false
+  },
+  "physical": {
+    "accepted": "OWNER_WITNESSED_MAIN_SYNTHETIC_LOSS_SCENARIO_PASS_ONLY",
+    "new_complete_R0_passes": 0,
+    "duplicate_result": "PENDING",
+    "independent_engineering_witness": false,
+    "hosted_recovery": false,
+    "production_durability": false
+  },
+  "operational": {
+    "unassigned_people": 11,
+    "cases_not_run": 12,
+    "business_authority": false,
+    "restoration_adapter": false,
+    "hosted_authorization": false,
+    "financial_authority": false,
+    "communication_authority": false,
+    "dispatch_authority": false
+  }
+}
