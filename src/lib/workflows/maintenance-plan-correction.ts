@@ -59,6 +59,10 @@ export function parsePlanCorrectionInput(
     throw Error(
       'Exact current plan revision and bounded correction fields required',
     );
+  // Reject executable form objects before the original one-use admission.
+  // Retain the ordinary original form for the native engine's live fences.
+  if (JSON.stringify(structuredClone(value)) !== JSON.stringify(f))
+    throw Error('Plain stable original maintenance correction fields required');
   return freezePrototype({
     plan_id: source.plan_id,
     revision: source.revision,
