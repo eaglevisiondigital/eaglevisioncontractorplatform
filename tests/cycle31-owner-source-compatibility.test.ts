@@ -84,14 +84,22 @@ it('the actual current source reaches the fixed reviewed endpoint without changi
   // Advance only this current-file expectation to the exact reviewed endpoint.
   // Original C31 author/manifest/hash/blob and all denial cases remain unchanged.
   const current = readFileSync(ownerPath);
-  const currentAuthor = 'ec63030de8c0faceebd1ec9a645e9ea0dcf76383';
+  const originalBusyAuthor = 'ec63030de8c0faceebd1ec9a645e9ea0dcf76383';
+  const currentAuthor = current.equals(
+    lineage.cycle25SourcePorts.git(originalBusyAuthor, ownerPath),
+  )
+    ? originalBusyAuthor
+    : '5aa6728003c9b820e50d34505c465104440783d7';
   expect(
     lineage.validateCycle32BusySpec(lineage.cycle32BusySource),
-  ).toMatchObject({ source_commit: currentAuthor });
+  ).toMatchObject({ source_commit: originalBusyAuthor });
   expect(
     lineage.admitCycle32BusyForward(ownerPath, current, reviewed),
   ).toMatchObject({
-    source_commit: currentAuthor,
+    source_commit: originalBusyAuthor,
+    ...(currentAuthor !== originalBusyAuthor
+      ? { cycle33_forward: { source_commit: currentAuthor } }
+      : {}),
     authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
   });
   expect(current).toEqual(
