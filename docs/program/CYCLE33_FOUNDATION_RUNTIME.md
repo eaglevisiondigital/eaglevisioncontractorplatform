@@ -79,3 +79,27 @@ Foundation cancellations remain preserved separately. No hosted operation, relea
 recovery, Auth/MFA, NMI, customer14/4B or protected-file authority is granted.
 
 Release1.0 remains NOT READY / NOT AUTHORIZED.
+
+## Subsequent collection failure and demonstrated history precondition
+
+At exact8d902 the six automatic browser jobs failed in the first native
+Playwright `--list` subprocess before any assertion or budget comparison. The
+wrapper retained no child error output; their original hosted cause cannot be
+reconstructed from the generic wrapper stack alone. Those failures remain FAIL.
+
+A credential-free local shallow clone of exact8d902, using the same pinned local
+Node24.20.0 dependencies, reproduced collection exit1/one native error and original
+31e2bf5b05f6befac1c24314a31d2eabe65c5219 object lookup exit128. The full-history
+source produced exit0/zero errors and all399 cases. This is local precondition
+proof, not hosted Node24.22.2 equivalence. Original C24 collection invokes exact
+source admission at module import. In the monolith, earlier Vitest global setup
+restored history before browser collection; independent browser jobs need that
+same source precondition. Only their additive checkout now uses fetch-depth0.
+
+New failure diagnostics retain numeric exit/signal/error-code, byte counts,
+output hashes and up to32 parsed native-error class/message/stack hashes plus
+finite known error tags. No raw stdout/stderr, command line or environment value
+is stored or printed. The same job always uploads its bounded diagnostic artifact.
+The original CI workflow, all original budgets/workers/assertions and dependency
+trust remain unchanged. Application shard failures are a separate unresolved
+coverage failure; successful browser collection cannot promote them to PASS.
