@@ -1,0 +1,2171 @@
+{
+  "schema": "cycle33-isolated-deadline-cohort-v1",
+  "source": "8d902e866c79220fa3ddb0bc2794d31cdbfd60f1",
+  "tree": "8cfe051a45ee70dfe3046e5ddbb09133a9d57a46",
+  "scope": "ALTERNATIVE_ORCHESTRATION_DIAGNOSTIC_NOT_ORIGINAL4WORKER_PASS",
+  "file_count": 7,
+  "case_count": 233,
+  "original_max_workers": 4,
+  "diagnostic_max_workers": 1,
+  "testTimeout": 30000,
+  "hookTimeout": 30000,
+  "retry": 0,
+  "whole_files_only": true,
+  "case_filters": null,
+  "source_files": {
+    "package.json": "173cba41b87d3156b98136c15873d81fe2308ed83a067a321cc239948099a1d0",
+    "package-lock.json": "8be30ee23e9cd3ca2f54e4b5beb7da07fd20ead0b86b504d31b29b1116b8baa3",
+    "vite.config.ts": "0fdc8ac3b8d922c2229a25d67d0b42ab3c895489bfc7ee514aae0c78853bf48d",
+    "tests/setup/git-history.ts": "7bc80e906a8203700860c81c4cd4d2a1f0a57abfd902ebed9f1ef7fb5a3c6957",
+    "scripts/test-git-history.mjs": "2c6d9ec071cdb1982606f4553c5273cf6ead8a9ca2b2483bf83b7415e54bd487",
+    ".github/workflows/ci.yml": "df337433bfde1768ccbe396326793559f21113aa7c24e37fbd5955c4c29f87be"
+  },
+  "files": [
+    {
+      "file": "tests/cycle18-independent-integration-review.test.ts",
+      "original_file_sha256": "a21b987039f312f19bf103308f0fbeac26f72cc97f8a8607937b86b57d838217",
+      "case_count": 58,
+      "cases": [
+        {
+          "id": "-2019722847_0",
+          "fullName": "brand 0: five-package source evidence binds one exact canonical daily environment",
+          "jsonName": "brand 0: five-package source evidence binds one exact canonical daily environment",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_1",
+          "fullName": "brand 0: retained daily sources continue through every review and exact Next without reset",
+          "jsonName": "brand 0: retained daily sources continue through every review and exact Next without reset",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_2",
+          "fullName": "brand 1: five-package source evidence binds one exact canonical daily environment",
+          "jsonName": "brand 1: five-package source evidence binds one exact canonical daily environment",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_3",
+          "fullName": "brand 1: retained daily sources continue through every review and exact Next without reset",
+          "jsonName": "brand 1: retained daily sources continue through every review and exact Next without reset",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_4",
+          "fullName": "brand 2: five-package source evidence binds one exact canonical daily environment",
+          "jsonName": "brand 2: five-package source evidence binds one exact canonical daily environment",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_5",
+          "fullName": "brand 2: retained daily sources continue through every review and exact Next without reset",
+          "jsonName": "brand 2: retained daily sources continue through every review and exact Next without reset",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_6",
+          "fullName": "the priority queue leaves original finite owner-control source custody unclaimed and never renews its deadline",
+          "jsonName": "the priority queue leaves original finite owner-control source custody unclaimed and never renews its deadline",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_7",
+          "fullName": "root: observing wrong-property source mutation makes the retained view terminal even after restoration",
+          "jsonName": "root: observing wrong-property source mutation makes the retained view terminal even after restoration",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_8",
+          "fullName": "root: observed inactive staff cannot restore a retained current view",
+          "jsonName": "root: observed inactive staff cannot restore a retained current view",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_9",
+          "fullName": "field: observing wrong-property source mutation makes the retained view terminal even after restoration",
+          "jsonName": "field: observing wrong-property source mutation makes the retained view terminal even after restoration",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_10",
+          "fullName": "field: observed inactive staff cannot restore a retained current view",
+          "jsonName": "field: observed inactive staff cannot restore a retained current view",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_11",
+          "fullName": "finance: observing wrong-property source mutation makes the retained view terminal even after restoration",
+          "jsonName": "finance: observing wrong-property source mutation makes the retained view terminal even after restoration",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_12",
+          "fullName": "finance: observed inactive staff cannot restore a retained current view",
+          "jsonName": "finance: observed inactive staff cannot restore a retained current view",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_13",
+          "fullName": "customer: observing wrong-property source mutation makes the retained view terminal even after restoration",
+          "jsonName": "customer: observing wrong-property source mutation makes the retained view terminal even after restoration",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_14",
+          "fullName": "customer: observed inactive staff cannot restore a retained current view",
+          "jsonName": "customer: observed inactive staff cannot restore a retained current view",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_15",
+          "fullName": "growth: observing wrong-property source mutation makes the retained view terminal even after restoration",
+          "jsonName": "growth: observing wrong-property source mutation makes the retained view terminal even after restoration",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_16",
+          "fullName": "growth: observed inactive staff cannot restore a retained current view",
+          "jsonName": "growth: observed inactive staff cannot restore a retained current view",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_17",
+          "fullName": "priority: observing wrong-property source mutation makes the retained view terminal even after restoration",
+          "jsonName": "priority: observing wrong-property source mutation makes the retained view terminal even after restoration",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_18",
+          "fullName": "priority: observed inactive staff cannot restore a retained current view",
+          "jsonName": "priority: observed inactive staff cannot restore a retained current view",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_19",
+          "fullName": "root: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "jsonName": "root: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_20",
+          "fullName": "root: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "jsonName": "root: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_21",
+          "fullName": "root: known callback withdrawal before invocation preserves exact source review but invokes no host",
+          "jsonName": "root: known callback withdrawal before invocation preserves exact source review but invokes no host",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_22",
+          "fullName": "root: foreign company replacement never revives retained data after restoration",
+          "jsonName": "root: foreign company replacement never revives retained data after restoration",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_23",
+          "fullName": "field: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "jsonName": "field: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_24",
+          "fullName": "field: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "jsonName": "field: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_25",
+          "fullName": "field: known callback withdrawal before invocation preserves exact source review but invokes no host",
+          "jsonName": "field: known callback withdrawal before invocation preserves exact source review but invokes no host",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_26",
+          "fullName": "field: foreign company replacement never revives retained data after restoration",
+          "jsonName": "field: foreign company replacement never revives retained data after restoration",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_27",
+          "fullName": "finance: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "jsonName": "finance: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_28",
+          "fullName": "finance: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "jsonName": "finance: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_29",
+          "fullName": "finance: known callback withdrawal before invocation preserves exact source review but invokes no host",
+          "jsonName": "finance: known callback withdrawal before invocation preserves exact source review but invokes no host",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_30",
+          "fullName": "finance: foreign company replacement never revives retained data after restoration",
+          "jsonName": "finance: foreign company replacement never revives retained data after restoration",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_31",
+          "fullName": "customer: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "jsonName": "customer: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_32",
+          "fullName": "customer: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "jsonName": "customer: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_33",
+          "fullName": "customer: known callback withdrawal before invocation preserves exact source review but invokes no host",
+          "jsonName": "customer: known callback withdrawal before invocation preserves exact source review but invokes no host",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_34",
+          "fullName": "customer: foreign company replacement never revives retained data after restoration",
+          "jsonName": "customer: foreign company replacement never revives retained data after restoration",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_35",
+          "fullName": "growth: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "jsonName": "growth: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_36",
+          "fullName": "growth: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "jsonName": "growth: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_37",
+          "fullName": "growth: known callback withdrawal before invocation preserves exact source review but invokes no host",
+          "jsonName": "growth: known callback withdrawal before invocation preserves exact source review but invokes no host",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_38",
+          "fullName": "growth: foreign company replacement never revives retained data after restoration",
+          "jsonName": "growth: foreign company replacement never revives retained data after restoration",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_39",
+          "fullName": "priority: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "jsonName": "priority: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_40",
+          "fullName": "priority: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "jsonName": "priority: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_41",
+          "fullName": "priority: known callback withdrawal before invocation preserves exact source review but invokes no host",
+          "jsonName": "priority: known callback withdrawal before invocation preserves exact source review but invokes no host",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_42",
+          "fullName": "priority: foreign company replacement never revives retained data after restoration",
+          "jsonName": "priority: foreign company replacement never revives retained data after restoration",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_43",
+          "fullName": "Root presentation is OFF before untrusted source getters and never exposes a source identity",
+          "jsonName": "Root presentation is OFF before untrusted source getters and never exposes a source identity",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_44",
+          "fullName": "Field presentation is OFF before untrusted source getters and never exposes a source identity",
+          "jsonName": "Field presentation is OFF before untrusted source getters and never exposes a source identity",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_45",
+          "fullName": "Finance presentation is OFF before untrusted source getters and never exposes a source identity",
+          "jsonName": "Finance presentation is OFF before untrusted source getters and never exposes a source identity",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_46",
+          "fullName": "Customer presentation is OFF before untrusted source getters and never exposes a source identity",
+          "jsonName": "Customer presentation is OFF before untrusted source getters and never exposes a source identity",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_47",
+          "fullName": "Growth presentation is OFF before untrusted source getters and never exposes a source identity",
+          "jsonName": "Growth presentation is OFF before untrusted source getters and never exposes a source identity",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_48",
+          "fullName": "Priority presentation is OFF before untrusted source getters and never exposes a source identity",
+          "jsonName": "Priority presentation is OFF before untrusted source getters and never exposes a source identity",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_49",
+          "fullName": "root lost acknowledgment remains UNKNOWN across a fresh source wrapper, exact reconciliation and destination changes",
+          "jsonName": "root lost acknowledgment remains UNKNOWN across a fresh source wrapper, exact reconciliation and destination changes",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_50",
+          "fullName": "root known pre-invocation callback withdrawal is not an ambiguous dispatched outcome",
+          "jsonName": "root known pre-invocation callback withdrawal is not an ambiguous dispatched outcome",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_51",
+          "fullName": "root post-invocation source and live callback drift is UNKNOWN rather than a successful saved workflow",
+          "jsonName": "root post-invocation source and live callback drift is UNKNOWN rather than a successful saved workflow",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_52",
+          "fullName": "root: competing fresh views of the same canonical job dispatch at most one callback",
+          "jsonName": "root: competing fresh views of the same canonical job dispatch at most one callback",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_53",
+          "fullName": "field: competing fresh views of the same canonical job dispatch at most one callback",
+          "jsonName": "field: competing fresh views of the same canonical job dispatch at most one callback",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_54",
+          "fullName": "finance: competing fresh views of the same canonical job dispatch at most one callback",
+          "jsonName": "finance: competing fresh views of the same canonical job dispatch at most one callback",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_55",
+          "fullName": "customer: competing fresh views of the same canonical job dispatch at most one callback",
+          "jsonName": "customer: competing fresh views of the same canonical job dispatch at most one callback",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_56",
+          "fullName": "growth: competing fresh views of the same canonical job dispatch at most one callback",
+          "jsonName": "growth: competing fresh views of the same canonical job dispatch at most one callback",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-2019722847_57",
+          "fullName": "priority: competing fresh views of the same canonical job dispatch at most one callback",
+          "jsonName": "priority: competing fresh views of the same canonical job dispatch at most one callback",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        }
+      ]
+    },
+    {
+      "file": "tests/cycle23-service-source-review.test.ts",
+      "original_file_sha256": "f15405b03db73a18426dabd66eb6cd563d0db919f64b084b1f030845849cc6b6",
+      "case_count": 56,
+      "cases": [
+        {
+          "id": "2039551893_0",
+          "fullName": "brand 0 shows the actual original request and separates staff context from a missing request-job FK",
+          "jsonName": "brand 0 shows the actual original request and separates staff context from a missing request-job FK",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_1",
+          "fullName": "brand 0 report drill-down follows exact native report-visit-plan-job and issued-version foreign keys",
+          "jsonName": "brand 0 report drill-down follows exact native report-visit-plan-job and issued-version foreign keys",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_2",
+          "fullName": "brand 0 delegates original completion requirements without claiming physical completion or acceptance",
+          "jsonName": "brand 0 delegates original completion requirements without claiming physical completion or acceptance",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_3",
+          "fullName": "brand 0 retains unchanged C22 same-property handoff with authoritative joins",
+          "jsonName": "brand 0 retains unchanged C22 same-property handoff with authoritative joins",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_4",
+          "fullName": "brand 0 publication appends a version without rewriting the original report or changing its job",
+          "jsonName": "brand 0 publication appends a version without rewriting the original report or changing its job",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_5",
+          "fullName": "brand 0 actual request status change stales the source review without publishing an update",
+          "jsonName": "brand 0 actual request status change stales the source review without publishing an update",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_6",
+          "fullName": "brand 0 private task and draft changes never appear as published customer evidence",
+          "jsonName": "brand 0 private task and draft changes never appear as published customer evidence",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_7",
+          "fullName": "brand 0 read-only reviews create no contract, estimate, invoice, ledger, job or publication side effects",
+          "jsonName": "brand 0 read-only reviews create no contract, estimate, invoice, ledger, job or publication side effects",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_8",
+          "fullName": "brand 0 original UNKNOWN custody survives revoked membership restoration",
+          "jsonName": "brand 0 original UNKNOWN custody survives revoked membership restoration",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_9",
+          "fullName": "brand 0 concurrent source reviews preserve independently selected same-property jobs",
+          "jsonName": "brand 0 concurrent source reviews preserve independently selected same-property jobs",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_10",
+          "fullName": "brand 1 shows the actual original request and separates staff context from a missing request-job FK",
+          "jsonName": "brand 1 shows the actual original request and separates staff context from a missing request-job FK",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_11",
+          "fullName": "brand 1 report drill-down follows exact native report-visit-plan-job and issued-version foreign keys",
+          "jsonName": "brand 1 report drill-down follows exact native report-visit-plan-job and issued-version foreign keys",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_12",
+          "fullName": "brand 1 delegates original completion requirements without claiming physical completion or acceptance",
+          "jsonName": "brand 1 delegates original completion requirements without claiming physical completion or acceptance",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_13",
+          "fullName": "brand 1 retains unchanged C22 same-property handoff with authoritative joins",
+          "jsonName": "brand 1 retains unchanged C22 same-property handoff with authoritative joins",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_14",
+          "fullName": "brand 1 publication appends a version without rewriting the original report or changing its job",
+          "jsonName": "brand 1 publication appends a version without rewriting the original report or changing its job",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_15",
+          "fullName": "brand 1 actual request status change stales the source review without publishing an update",
+          "jsonName": "brand 1 actual request status change stales the source review without publishing an update",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_16",
+          "fullName": "brand 1 private task and draft changes never appear as published customer evidence",
+          "jsonName": "brand 1 private task and draft changes never appear as published customer evidence",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_17",
+          "fullName": "brand 1 read-only reviews create no contract, estimate, invoice, ledger, job or publication side effects",
+          "jsonName": "brand 1 read-only reviews create no contract, estimate, invoice, ledger, job or publication side effects",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_18",
+          "fullName": "brand 1 original UNKNOWN custody survives revoked membership restoration",
+          "jsonName": "brand 1 original UNKNOWN custody survives revoked membership restoration",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_19",
+          "fullName": "brand 1 concurrent source reviews preserve independently selected same-property jobs",
+          "jsonName": "brand 1 concurrent source reviews preserve independently selected same-property jobs",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_20",
+          "fullName": "brand 2 shows the actual original request and separates staff context from a missing request-job FK",
+          "jsonName": "brand 2 shows the actual original request and separates staff context from a missing request-job FK",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_21",
+          "fullName": "brand 2 report drill-down follows exact native report-visit-plan-job and issued-version foreign keys",
+          "jsonName": "brand 2 report drill-down follows exact native report-visit-plan-job and issued-version foreign keys",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_22",
+          "fullName": "brand 2 delegates original completion requirements without claiming physical completion or acceptance",
+          "jsonName": "brand 2 delegates original completion requirements without claiming physical completion or acceptance",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_23",
+          "fullName": "brand 2 retains unchanged C22 same-property handoff with authoritative joins",
+          "jsonName": "brand 2 retains unchanged C22 same-property handoff with authoritative joins",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_24",
+          "fullName": "brand 2 publication appends a version without rewriting the original report or changing its job",
+          "jsonName": "brand 2 publication appends a version without rewriting the original report or changing its job",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_25",
+          "fullName": "brand 2 actual request status change stales the source review without publishing an update",
+          "jsonName": "brand 2 actual request status change stales the source review without publishing an update",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_26",
+          "fullName": "brand 2 private task and draft changes never appear as published customer evidence",
+          "jsonName": "brand 2 private task and draft changes never appear as published customer evidence",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_27",
+          "fullName": "brand 2 read-only reviews create no contract, estimate, invoice, ledger, job or publication side effects",
+          "jsonName": "brand 2 read-only reviews create no contract, estimate, invoice, ledger, job or publication side effects",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_28",
+          "fullName": "brand 2 original UNKNOWN custody survives revoked membership restoration",
+          "jsonName": "brand 2 original UNKNOWN custody survives revoked membership restoration",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_29",
+          "fullName": "brand 2 concurrent source reviews preserve independently selected same-property jobs",
+          "jsonName": "brand 2 concurrent source reviews preserve independently selected same-property jobs",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_30",
+          "fullName": "foreign organization selector does not confer source access (case 0)",
+          "jsonName": "foreign organization selector does not confer source access (case 0)",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_31",
+          "fullName": "foreign customer selector does not confer source access (case 1)",
+          "jsonName": "foreign customer selector does not confer source access (case 1)",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_32",
+          "fullName": "foreign property selector does not confer source access (case 2)",
+          "jsonName": "foreign property selector does not confer source access (case 2)",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_33",
+          "fullName": "foreign job selector does not confer source access (case 3)",
+          "jsonName": "foreign job selector does not confer source access (case 3)",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_34",
+          "fullName": "foreign issued-version selector does not confer source access (case 4)",
+          "jsonName": "foreign issued-version selector does not confer source access (case 4)",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_35",
+          "fullName": "foreign request selector does not confer source access (case 5)",
+          "jsonName": "foreign request selector does not confer source access (case 5)",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_36",
+          "fullName": "missing or ambiguous missing-report never becomes a property/date/text association (case 0)",
+          "jsonName": "missing or ambiguous missing-report never becomes a property/date/text association (case 0)",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_37",
+          "fullName": "missing or ambiguous duplicate-report never becomes a property/date/text association (case 1)",
+          "jsonName": "missing or ambiguous duplicate-report never becomes a property/date/text association (case 1)",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_38",
+          "fullName": "missing or ambiguous missing-visit never becomes a property/date/text association (case 2)",
+          "jsonName": "missing or ambiguous missing-visit never becomes a property/date/text association (case 2)",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_39",
+          "fullName": "missing or ambiguous unlinked-plan never becomes a property/date/text association (case 3)",
+          "jsonName": "missing or ambiguous unlinked-plan never becomes a property/date/text association (case 3)",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_40",
+          "fullName": "missing or ambiguous foreign-plan-job never becomes a property/date/text association (case 4)",
+          "jsonName": "missing or ambiguous foreign-plan-job never becomes a property/date/text association (case 4)",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_41",
+          "fullName": "same-property other-job report and a cloned reference cannot replace an exact original report",
+          "jsonName": "same-property other-job report and a cloned reference cannot replace an exact original report",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_42",
+          "fullName": "different authorized customer/property handles cannot be mixed into one source review",
+          "jsonName": "different authorized customer/property handles cannot be mixed into one source review",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_43",
+          "fullName": "shuffled entry order retains request and published lineage by exact IDs",
+          "jsonName": "shuffled entry order retains request and published lineage by exact IDs",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_44",
+          "fullName": "concurrent gate change during an actual async source read denies a mixed result (case 0)",
+          "jsonName": "concurrent gate change during an actual async source read denies a mixed result (case 0)",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_45",
+          "fullName": "concurrent job-selection change during an actual async source read denies a mixed result (case 1)",
+          "jsonName": "concurrent job-selection change during an actual async source read denies a mixed result (case 1)",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_46",
+          "fullName": "concurrent native-request change during an actual async source read denies a mixed result (case 2)",
+          "jsonName": "concurrent native-request change during an actual async source read denies a mixed result (case 2)",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_47",
+          "fullName": "concurrent membership change during an actual async source read denies a mixed result (case 3)",
+          "jsonName": "concurrent membership change during an actual async source read denies a mixed result (case 3)",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_48",
+          "fullName": "withdrawal during exact report inspection preserves original UNKNOWN without reconciliation replay",
+          "jsonName": "withdrawal during exact report inspection preserves original UNKNOWN without reconciliation replay",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_49",
+          "fullName": "explicit staff context confirmation false is required before source reads (case 0)",
+          "jsonName": "explicit staff context confirmation false is required before source reads (case 0)",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_50",
+          "fullName": "explicit staff context confirmation undefined is required before source reads (case 1)",
+          "jsonName": "explicit staff context confirmation undefined is required before source reads (case 1)",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_51",
+          "fullName": "OFF admission does not execute source or input accessors",
+          "jsonName": "OFF admission does not execute source or input accessors",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_52",
+          "fullName": "component remains OFF for default-off before accessing sources (case 0)",
+          "jsonName": "component remains OFF for default-off before accessing sources (case 0)",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_53",
+          "fullName": "component remains OFF for foreign-host before accessing sources (case 1)",
+          "jsonName": "component remains OFF for foreign-host before accessing sources (case 1)",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_54",
+          "fullName": "component remains OFF for https before accessing sources (case 2)",
+          "jsonName": "component remains OFF for https before accessing sources (case 2)",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "2039551893_55",
+          "fullName": "component remains OFF for production before accessing sources (case 3)",
+          "jsonName": "component remains OFF for production before accessing sources (case 3)",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        }
+      ]
+    },
+    {
+      "file": "tests/cycle24-independent-integration-review.test.ts",
+      "original_file_sha256": "09b5042be1fee47b562ed52046c900583acaaecff6241b2aa8491674bd17f083",
+      "case_count": 54,
+      "cases": [
+        {
+          "id": "-1249630212_0_0",
+          "fullName": "Cycle24 independent exact native action integration > Finance continuation after the exact task receipt with stable host callback preserves the original outcome fence",
+          "jsonName": "Cycle24 independent exact native action integration Finance continuation after the exact task receipt with stable host callback preserves the original outcome fence",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_1",
+          "fullName": "Cycle24 independent exact native action integration > Finance continuation after the exact task receipt with replaced host callback preserves the original outcome fence",
+          "jsonName": "Cycle24 independent exact native action integration Finance continuation after the exact task receipt with replaced host callback preserves the original outcome fence",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_2",
+          "fullName": "Cycle24 independent exact native action integration > strict native action forms reject executable and extra authority fields without running caller code or a writer",
+          "jsonName": "Cycle24 independent exact native action integration strict native action forms reject executable and extra authority fields without running caller code or a writer",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_3",
+          "fullName": "Cycle24 independent exact native action integration > the original six destinations compose five original C23 panels and five additive native action slots over one source object",
+          "jsonName": "Cycle24 independent exact native action integration the original six destinations compose five original C23 panels and five additive native action slots over one source object",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_4",
+          "fullName": "Cycle24 independent exact native action integration > the existing workbench gives its original panel and additive actions the same retained job and callbacks without preparing sources",
+          "jsonName": "Cycle24 independent exact native action integration the existing workbench gives its original panel and additive actions the same retained job and callbacks without preparing sources",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_5",
+          "fullName": "Cycle24 independent exact native action integration > the original host defaults to disabled Requirements mode with no new native controls or source preparation",
+          "jsonName": "Cycle24 independent exact native action integration the original host defaults to disabled Requirements mode with no new native controls or source preparation",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_6",
+          "fullName": "Cycle24 independent exact native action integration > lost native record acknowledgement preserves UNKNOWN even when exact task evidence is visible",
+          "jsonName": "Cycle24 independent exact native action integration lost native record acknowledgement preserves UNKNOWN even when exact task evidence is visible",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_7",
+          "fullName": "Cycle24 independent exact native action integration > lost native review acknowledgement preserves UNKNOWN even when exact task evidence is visible",
+          "jsonName": "Cycle24 independent exact native action integration lost native review acknowledgement preserves UNKNOWN even when exact task evidence is visible",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_8",
+          "fullName": "Cycle24 independent exact native action integration > current inactive staff loses every native consumer and cannot update a request",
+          "jsonName": "Cycle24 independent exact native action integration current inactive staff loses every native consumer and cannot update a request",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_9",
+          "fullName": "Cycle24 independent exact native action integration > current demoted staff loses every native consumer and cannot update a request",
+          "jsonName": "Cycle24 independent exact native action integration current demoted staff loses every native consumer and cannot update a request",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_10",
+          "fullName": "Cycle24 independent exact native action integration > appended published documentation retains the exact old report version and remains distinct from completion or a verified owner action",
+          "jsonName": "Cycle24 independent exact native action integration appended published documentation retains the exact old report version and remains distinct from completion or a verified owner action",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_11",
+          "fullName": "Cycle24 independent exact native action integration > brand 0 offline protocol returns only the original source admission handle without native mutation",
+          "jsonName": "Cycle24 independent exact native action integration brand 0 offline protocol returns only the original source admission handle without native mutation",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_12",
+          "fullName": "Cycle24 independent exact native action integration > brand 1 offline protocol returns only the original source admission handle without native mutation",
+          "jsonName": "Cycle24 independent exact native action integration brand 1 offline protocol returns only the original source admission handle without native mutation",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_13",
+          "fullName": "Cycle24 independent exact native action integration > brand 2 offline protocol returns only the original source admission handle without native mutation",
+          "jsonName": "Cycle24 independent exact native action integration brand 2 offline protocol returns only the original source admission handle without native mutation",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_14",
+          "fullName": "Cycle24 independent exact native action integration > external offline organization_id is compared to exact original native sources and cannot acquire restore authority",
+          "jsonName": "Cycle24 independent exact native action integration external offline organization_id is compared to exact original native sources and cannot acquire restore authority",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_15",
+          "fullName": "Cycle24 independent exact native action integration > external offline customer_id is compared to exact original native sources and cannot acquire restore authority",
+          "jsonName": "Cycle24 independent exact native action integration external offline customer_id is compared to exact original native sources and cannot acquire restore authority",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_16",
+          "fullName": "Cycle24 independent exact native action integration > external offline location_id is compared to exact original native sources and cannot acquire restore authority",
+          "jsonName": "Cycle24 independent exact native action integration external offline location_id is compared to exact original native sources and cannot acquire restore authority",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_17",
+          "fullName": "Cycle24 independent exact native action integration > external offline job_id is compared to exact original native sources and cannot acquire restore authority",
+          "jsonName": "Cycle24 independent exact native action integration external offline job_id is compared to exact original native sources and cannot acquire restore authority",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_18",
+          "fullName": "Cycle24 independent exact native action integration > external offline estimate_id is compared to exact original native sources and cannot acquire restore authority",
+          "jsonName": "Cycle24 independent exact native action integration external offline estimate_id is compared to exact original native sources and cannot acquire restore authority",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_19",
+          "fullName": "Cycle24 independent exact native action integration > external offline issued_version_id is compared to exact original native sources and cannot acquire restore authority",
+          "jsonName": "Cycle24 independent exact native action integration external offline issued_version_id is compared to exact original native sources and cannot acquire restore authority",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_20",
+          "fullName": "Cycle24 independent exact native action integration > external offline source_sha256 is compared to exact original native sources and cannot acquire restore authority",
+          "jsonName": "Cycle24 independent exact native action integration external offline source_sha256 is compared to exact original native sources and cannot acquire restore authority",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_21",
+          "fullName": "Cycle24 independent exact native action integration > external offline saved_lock_revision is compared to exact original native sources and cannot acquire restore authority",
+          "jsonName": "Cycle24 independent exact native action integration external offline saved_lock_revision is compared to exact original native sources and cannot acquire restore authority",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_22",
+          "fullName": "Cycle24 independent exact native action integration > external offline visit_id is compared to exact original native sources and cannot acquire restore authority",
+          "jsonName": "Cycle24 independent exact native action integration external offline visit_id is compared to exact original native sources and cannot acquire restore authority",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_23",
+          "fullName": "Cycle24 independent exact native action integration > external offline visit_revision is compared to exact original native sources and cannot acquire restore authority",
+          "jsonName": "Cycle24 independent exact native action integration external offline visit_revision is compared to exact original native sources and cannot acquire restore authority",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_24",
+          "fullName": "Cycle24 independent exact native action integration > external offline plan_id is compared to exact original native sources and cannot acquire restore authority",
+          "jsonName": "Cycle24 independent exact native action integration external offline plan_id is compared to exact original native sources and cannot acquire restore authority",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_25",
+          "fullName": "Cycle24 independent exact native action integration > external offline plan_revision is compared to exact original native sources and cannot acquire restore authority",
+          "jsonName": "Cycle24 independent exact native action integration external offline plan_revision is compared to exact original native sources and cannot acquire restore authority",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_26",
+          "fullName": "Cycle24 independent exact native action integration > strict external offline parser rejects executable, extra, missing and null native fields before getter execution",
+          "jsonName": "Cycle24 independent exact native action integration strict external offline parser rejects executable, extra, missing and null native fields before getter execution",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_27",
+          "fullName": "Cycle24 independent exact native action integration > a maintenance selection from another requested purpose cannot substitute for the displayed review",
+          "jsonName": "Cycle24 independent exact native action integration a maintenance selection from another requested purpose cannot substitute for the displayed review",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_28",
+          "fullName": "Cycle24 independent exact native action integration > a crossed maintenance source cannot close the original retained review",
+          "jsonName": "Cycle24 independent exact native action integration a crossed maintenance source cannot close the original retained review",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_29",
+          "fullName": "Cycle24 independent exact native action integration > a crossed maintenance source cannot reconcile the original retained review",
+          "jsonName": "Cycle24 independent exact native action integration a crossed maintenance source cannot reconcile the original retained review",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_30",
+          "fullName": "Cycle24 independent exact native action integration > brand 0 native correction and material review remain the original cost and priority sources",
+          "jsonName": "Cycle24 independent exact native action integration brand 0 native correction and material review remain the original cost and priority sources",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_31",
+          "fullName": "Cycle24 independent exact native action integration > brand 1 native correction and material review remain the original cost and priority sources",
+          "jsonName": "Cycle24 independent exact native action integration brand 1 native correction and material review remain the original cost and priority sources",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_32",
+          "fullName": "Cycle24 independent exact native action integration > brand 2 native correction and material review remain the original cost and priority sources",
+          "jsonName": "Cycle24 independent exact native action integration brand 2 native correction and material review remain the original cost and priority sources",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_33",
+          "fullName": "Cycle24 independent exact native action integration > foreign organization_id invalidates all native action consumers before continuation or a request write",
+          "jsonName": "Cycle24 independent exact native action integration foreign organization_id invalidates all native action consumers before continuation or a request write",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_34",
+          "fullName": "Cycle24 independent exact native action integration > foreign customer_id invalidates all native action consumers before continuation or a request write",
+          "jsonName": "Cycle24 independent exact native action integration foreign customer_id invalidates all native action consumers before continuation or a request write",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_35",
+          "fullName": "Cycle24 independent exact native action integration > foreign location_id invalidates all native action consumers before continuation or a request write",
+          "jsonName": "Cycle24 independent exact native action integration foreign location_id invalidates all native action consumers before continuation or a request write",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_36",
+          "fullName": "Cycle24 independent exact native action integration > foreign version_id invalidates all native action consumers before continuation or a request write",
+          "jsonName": "Cycle24 independent exact native action integration foreign version_id invalidates all native action consumers before continuation or a request write",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_37",
+          "fullName": "Cycle24 independent exact native action integration > foreign job_id invalidates all native action consumers before continuation or a request write",
+          "jsonName": "Cycle24 independent exact native action integration foreign job_id invalidates all native action consumers before continuation or a request write",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_38",
+          "fullName": "Cycle24 independent exact native action integration > a report from another native property cannot substitute for current published service evidence",
+          "jsonName": "Cycle24 independent exact native action integration a report from another native property cannot substitute for current published service evidence",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_39",
+          "fullName": "Cycle24 independent exact native action integration > native request before lost ACK stays UNKNOWN with no receipt or replay across fresh source wrappers",
+          "jsonName": "Cycle24 independent exact native action integration native request before lost ACK stays UNKNOWN with no receipt or replay across fresh source wrappers",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_40",
+          "fullName": "Cycle24 independent exact native action integration > native request after lost ACK stays UNKNOWN with no receipt or replay across fresh source wrappers",
+          "jsonName": "Cycle24 independent exact native action integration native request after lost ACK stays UNKNOWN with no receipt or replay across fresh source wrappers",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_41",
+          "fullName": "Cycle24 independent exact native action integration > simultaneous native request consumers retain one original intent and one native invocation",
+          "jsonName": "Cycle24 independent exact native action integration simultaneous native request consumers retain one original intent and one native invocation",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_42",
+          "fullName": "Cycle24 independent exact native action integration > native request final hash fence blocks live gate revocation before invocation",
+          "jsonName": "Cycle24 independent exact native action integration native request final hash fence blocks live gate revocation before invocation",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_43",
+          "fullName": "Cycle24 independent exact native action integration > native request final hash fence blocks live assignee revocation before invocation",
+          "jsonName": "Cycle24 independent exact native action integration native request final hash fence blocks live assignee revocation before invocation",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_44",
+          "fullName": "Cycle24 independent exact native action integration > native request final hash fence blocks live property revocation before invocation",
+          "jsonName": "Cycle24 independent exact native action integration native request final hash fence blocks live property revocation before invocation",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_45",
+          "fullName": "Cycle24 independent exact native action integration > native request final hash fence blocks live input revocation before invocation",
+          "jsonName": "Cycle24 independent exact native action integration native request final hash fence blocks live input revocation before invocation",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_46",
+          "fullName": "Cycle24 independent exact native action integration > maintenance CANCEL preserves plans, visits, consent and original NO_GO authority",
+          "jsonName": "Cycle24 independent exact native action integration maintenance CANCEL preserves plans, visits, consent and original NO_GO authority",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_47",
+          "fullName": "Cycle24 independent exact native action integration > maintenance REVOKE preserves plans, visits, consent and original NO_GO authority",
+          "jsonName": "Cycle24 independent exact native action integration maintenance REVOKE preserves plans, visits, consent and original NO_GO authority",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_48",
+          "fullName": "Cycle24 independent exact native action integration > cost original navigation loss remains UNKNOWN across wrappers without replay",
+          "jsonName": "Cycle24 independent exact native action integration cost original navigation loss remains UNKNOWN across wrappers without replay",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_49",
+          "fullName": "Cycle24 independent exact native action integration > owner original navigation loss remains UNKNOWN across wrappers without replay",
+          "jsonName": "Cycle24 independent exact native action integration owner original navigation loss remains UNKNOWN across wrappers without replay",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_50",
+          "fullName": "Cycle24 independent exact native action integration > an inspected owner handle cannot be replaced with a copied object or a missing source key",
+          "jsonName": "Cycle24 independent exact native action integration an inspected owner handle cannot be replaced with a copied object or a missing source key",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_51",
+          "fullName": "Cycle24 independent exact native action integration > default admission withholds every optional action and offline proposal before source getters",
+          "jsonName": "Cycle24 independent exact native action integration default admission withholds every optional action and offline proposal before source getters",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_52",
+          "fullName": "Cycle24 independent exact native action integration > production admission withholds every optional action and offline proposal before source getters",
+          "jsonName": "Cycle24 independent exact native action integration production admission withholds every optional action and offline proposal before source getters",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "-1249630212_0_53",
+          "fullName": "Cycle24 independent exact native action integration > remote admission withholds every optional action and offline proposal before source getters",
+          "jsonName": "Cycle24 independent exact native action integration remote admission withholds every optional action and offline proposal before source getters",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        }
+      ]
+    },
+    {
+      "file": "tests/cycle25-owner-action-continuity.test.ts",
+      "original_file_sha256": "1825c40c4884f9203c337dd3d9a94e4458468b1853e43905881e1e53ef78b78d",
+      "case_count": 25,
+      "cases": [
+        {
+          "id": "1922066648_0_0",
+          "fullName": "Cycle25 original owner action refresh continuity > brand 0 exact unchanged selection survives refresh as presentation requiring fresh verification",
+          "jsonName": "Cycle25 original owner action refresh continuity brand 0 exact unchanged selection survives refresh as presentation requiring fresh verification",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1922066648_0_1",
+          "fullName": "Cycle25 original owner action refresh continuity > brand 1 exact unchanged selection survives refresh as presentation requiring fresh verification",
+          "jsonName": "Cycle25 original owner action refresh continuity brand 1 exact unchanged selection survives refresh as presentation requiring fresh verification",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1922066648_0_2",
+          "fullName": "Cycle25 original owner action refresh continuity > brand 2 exact unchanged selection survives refresh as presentation requiring fresh verification",
+          "jsonName": "Cycle25 original owner action refresh continuity brand 2 exact unchanged selection survives refresh as presentation requiring fresh verification",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1922066648_0_3",
+          "fullName": "Cycle25 original owner action refresh continuity > brand 0 actual recorded cost change clears a same-key selected action without inventing completion",
+          "jsonName": "Cycle25 original owner action refresh continuity brand 0 actual recorded cost change clears a same-key selected action without inventing completion",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1922066648_0_4",
+          "fullName": "Cycle25 original owner action refresh continuity > brand 1 actual recorded cost change clears a same-key selected action without inventing completion",
+          "jsonName": "Cycle25 original owner action refresh continuity brand 1 actual recorded cost change clears a same-key selected action without inventing completion",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1922066648_0_5",
+          "fullName": "Cycle25 original owner action refresh continuity > brand 2 actual recorded cost change clears a same-key selected action without inventing completion",
+          "jsonName": "Cycle25 original owner action refresh continuity brand 2 actual recorded cost change clears a same-key selected action without inventing completion",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1922066648_0_6",
+          "fullName": "Cycle25 original owner action refresh continuity > brand 0 revised visit never substitutes its new source key for the original selection",
+          "jsonName": "Cycle25 original owner action refresh continuity brand 0 revised visit never substitutes its new source key for the original selection",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1922066648_0_7",
+          "fullName": "Cycle25 original owner action refresh continuity > brand 1 revised visit never substitutes its new source key for the original selection",
+          "jsonName": "Cycle25 original owner action refresh continuity brand 1 revised visit never substitutes its new source key for the original selection",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1922066648_0_8",
+          "fullName": "Cycle25 original owner action refresh continuity > brand 2 revised visit never substitutes its new source key for the original selection",
+          "jsonName": "Cycle25 original owner action refresh continuity brand 2 revised visit never substitutes its new source key for the original selection",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1922066648_0_9",
+          "fullName": "Cycle25 original owner action refresh continuity > refresh without selection never selects the first or newest available priority",
+          "jsonName": "Cycle25 original owner action refresh continuity refresh without selection never selects the first or newest available priority",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1922066648_0_10",
+          "fullName": "Cycle25 original owner action refresh continuity > key selection substitution is denied without getter execution",
+          "jsonName": "Cycle25 original owner action refresh continuity key selection substitution is denied without getter execution",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1922066648_0_11",
+          "fullName": "Cycle25 original owner action refresh continuity > kind selection substitution is denied without getter execution",
+          "jsonName": "Cycle25 original owner action refresh continuity kind selection substitution is denied without getter execution",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1922066648_0_12",
+          "fullName": "Cycle25 original owner action refresh continuity > id selection substitution is denied without getter execution",
+          "jsonName": "Cycle25 original owner action refresh continuity id selection substitution is denied without getter execution",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1922066648_0_13",
+          "fullName": "Cycle25 original owner action refresh continuity > revision selection substitution is denied without getter execution",
+          "jsonName": "Cycle25 original owner action refresh continuity revision selection substitution is denied without getter execution",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1922066648_0_14",
+          "fullName": "Cycle25 original owner action refresh continuity > version selection substitution is denied without getter execution",
+          "jsonName": "Cycle25 original owner action refresh continuity version selection substitution is denied without getter execution",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1922066648_0_15",
+          "fullName": "Cycle25 original owner action refresh continuity > extra selection substitution is denied without getter execution",
+          "jsonName": "Cycle25 original owner action refresh continuity extra selection substitution is denied without getter execution",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1922066648_0_16",
+          "fullName": "Cycle25 original owner action refresh continuity > getter selection substitution is denied without getter execution",
+          "jsonName": "Cycle25 original owner action refresh continuity getter selection substitution is denied without getter execution",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1922066648_0_17",
+          "fullName": "Cycle25 original owner action refresh continuity > revoked change cannot expose or retain a comparison or action",
+          "jsonName": "Cycle25 original owner action refresh continuity revoked change cannot expose or retain a comparison or action",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1922066648_0_18",
+          "fullName": "Cycle25 original owner action refresh continuity > property change cannot expose or retain a comparison or action",
+          "jsonName": "Cycle25 original owner action refresh continuity property change cannot expose or retain a comparison or action",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1922066648_0_19",
+          "fullName": "Cycle25 original owner action refresh continuity > version change cannot expose or retain a comparison or action",
+          "jsonName": "Cycle25 original owner action refresh continuity version change cannot expose or retain a comparison or action",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1922066648_0_20",
+          "fullName": "Cycle25 original owner action refresh continuity > gate change cannot expose or retain a comparison or action",
+          "jsonName": "Cycle25 original owner action refresh continuity gate change cannot expose or retain a comparison or action",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1922066648_0_21",
+          "fullName": "Cycle25 original owner action refresh continuity > stale-current change cannot expose or retain a comparison or action",
+          "jsonName": "Cycle25 original owner action refresh continuity stale-current change cannot expose or retain a comparison or action",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1922066648_0_22",
+          "fullName": "Cycle25 original owner action refresh continuity > foreign tenant and sibling native jobs cannot be compared as continuation of the selected source",
+          "jsonName": "Cycle25 original owner action refresh continuity foreign tenant and sibling native jobs cannot be compared as continuation of the selected source",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1922066648_0_23",
+          "fullName": "Cycle25 original owner action refresh continuity > fresh verification and original live callback are required after refresh",
+          "jsonName": "Cycle25 original owner action refresh continuity fresh verification and original live callback are required after refresh",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1922066648_0_24",
+          "fullName": "Cycle25 original owner action refresh continuity > refresh cannot renew an UNKNOWN original continuation or clear its exact one-use hold",
+          "jsonName": "Cycle25 original owner action refresh continuity refresh cannot renew an UNKNOWN original continuation or clear its exact one-use hold",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        }
+      ]
+    },
+    {
+      "file": "tests/cycle28-request-provenance.test.ts",
+      "original_file_sha256": "0f300037abd9fcbe8db4465ff3fd7ad64c2631158ceb675ba4b33ce3b44bc8ea",
+      "case_count": 19,
+      "cases": [
+        {
+          "id": "1297437733_0",
+          "fullName": "brand 0: inquiry and issued job sources stay exact without inventing a request-to-job foreign key",
+          "jsonName": "brand 0: inquiry and issued job sources stay exact without inventing a request-to-job foreign key",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1297437733_1",
+          "fullName": "brand 0: another actual selected job cannot replace the original request evidence context",
+          "jsonName": "brand 0: another actual selected job cannot replace the original request evidence context",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1297437733_2",
+          "fullName": "brand 0: a real same-property sibling job report cannot substitute for the original issued-job report",
+          "jsonName": "brand 0: a real same-property sibling job report cannot substitute for the original issued-job report",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1297437733_3",
+          "fullName": "brand 0: copied or accessor-bearing report references are not retained publication authority",
+          "jsonName": "brand 0: copied or accessor-bearing report references are not retained publication authority",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1297437733_4",
+          "fullName": "brand 0: current revocation denies retained source/report detail without executing supplied hooks",
+          "jsonName": "brand 0: current revocation denies retained source/report detail without executing supplied hooks",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1297437733_5",
+          "fullName": "brand 0: a current native reported-concern change invalidates earlier report continuity",
+          "jsonName": "brand 0: a current native reported-concern change invalidates earlier report continuity",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1297437733_6",
+          "fullName": "brand 1: inquiry and issued job sources stay exact without inventing a request-to-job foreign key",
+          "jsonName": "brand 1: inquiry and issued job sources stay exact without inventing a request-to-job foreign key",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1297437733_7",
+          "fullName": "brand 1: another actual selected job cannot replace the original request evidence context",
+          "jsonName": "brand 1: another actual selected job cannot replace the original request evidence context",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1297437733_8",
+          "fullName": "brand 1: a real same-property sibling job report cannot substitute for the original issued-job report",
+          "jsonName": "brand 1: a real same-property sibling job report cannot substitute for the original issued-job report",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1297437733_9",
+          "fullName": "brand 1: copied or accessor-bearing report references are not retained publication authority",
+          "jsonName": "brand 1: copied or accessor-bearing report references are not retained publication authority",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1297437733_10",
+          "fullName": "brand 1: current revocation denies retained source/report detail without executing supplied hooks",
+          "jsonName": "brand 1: current revocation denies retained source/report detail without executing supplied hooks",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1297437733_11",
+          "fullName": "brand 1: a current native reported-concern change invalidates earlier report continuity",
+          "jsonName": "brand 1: a current native reported-concern change invalidates earlier report continuity",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1297437733_12",
+          "fullName": "brand 2: inquiry and issued job sources stay exact without inventing a request-to-job foreign key",
+          "jsonName": "brand 2: inquiry and issued job sources stay exact without inventing a request-to-job foreign key",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1297437733_13",
+          "fullName": "brand 2: another actual selected job cannot replace the original request evidence context",
+          "jsonName": "brand 2: another actual selected job cannot replace the original request evidence context",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1297437733_14",
+          "fullName": "brand 2: a real same-property sibling job report cannot substitute for the original issued-job report",
+          "jsonName": "brand 2: a real same-property sibling job report cannot substitute for the original issued-job report",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1297437733_15",
+          "fullName": "brand 2: copied or accessor-bearing report references are not retained publication authority",
+          "jsonName": "brand 2: copied or accessor-bearing report references are not retained publication authority",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1297437733_16",
+          "fullName": "brand 2: current revocation denies retained source/report detail without executing supplied hooks",
+          "jsonName": "brand 2: current revocation denies retained source/report detail without executing supplied hooks",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1297437733_17",
+          "fullName": "brand 2: a current native reported-concern change invalidates earlier report continuity",
+          "jsonName": "brand 2: a current native reported-concern change invalidates earlier report continuity",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1297437733_18",
+          "fullName": "default-OFF inquiry continuity rejects all untrusted source hooks before original readers",
+          "jsonName": "default-OFF inquiry continuity rejects all untrusted source hooks before original readers",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        }
+      ]
+    },
+    {
+      "file": "tests/cycle29-service-continuity.test.ts",
+      "original_file_sha256": "006ccad222c10d57b6864a6c294f30f0a49b6a148028699323aa8a8758934687",
+      "case_count": 6,
+      "cases": [
+        {
+          "id": "1544273501_0",
+          "fullName": "brand 0: closed intake review retains exact published history without completing work or renewing its one-use action",
+          "jsonName": "brand 0: closed intake review retains exact published history without completing work or renewing its one-use action",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1544273501_1",
+          "fullName": "brand 0: lost intake ACK permits only exact current-authorized report reads and never clears original UNKNOWN",
+          "jsonName": "brand 0: lost intake ACK permits only exact current-authorized report reads and never clears original UNKNOWN",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1544273501_2",
+          "fullName": "brand 1: closed intake review retains exact published history without completing work or renewing its one-use action",
+          "jsonName": "brand 1: closed intake review retains exact published history without completing work or renewing its one-use action",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1544273501_3",
+          "fullName": "brand 1: lost intake ACK permits only exact current-authorized report reads and never clears original UNKNOWN",
+          "jsonName": "brand 1: lost intake ACK permits only exact current-authorized report reads and never clears original UNKNOWN",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1544273501_4",
+          "fullName": "brand 2: closed intake review retains exact published history without completing work or renewing its one-use action",
+          "jsonName": "brand 2: closed intake review retains exact published history without completing work or renewing its one-use action",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "1544273501_5",
+          "fullName": "brand 2: lost intake ACK permits only exact current-authorized report reads and never clears original UNKNOWN",
+          "jsonName": "brand 2: lost intake ACK permits only exact current-authorized report reads and never clears original UNKNOWN",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        }
+      ]
+    },
+    {
+      "file": "tests/cycle31-owner-navigation-runtime.test.ts",
+      "original_file_sha256": "43a4f709ffc4309407bd36af34439246f38b842ebf874f2dfa7957f62340f5c9",
+      "case_count": 15,
+      "cases": [
+        {
+          "id": "149468387_0",
+          "fullName": "brand 0 inspection performs distinct snapshot and native navigation checks without an immediate duplicate navigation guard",
+          "jsonName": "brand 0 inspection performs distinct snapshot and native navigation checks without an immediate duplicate navigation guard",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "149468387_1",
+          "fullName": "brand 1 inspection performs distinct snapshot and native navigation checks without an immediate duplicate navigation guard",
+          "jsonName": "brand 1 inspection performs distinct snapshot and native navigation checks without an immediate duplicate navigation guard",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "149468387_2",
+          "fullName": "brand 2 inspection performs distinct snapshot and native navigation checks without an immediate duplicate navigation guard",
+          "jsonName": "brand 2 inspection performs distinct snapshot and native navigation checks without an immediate duplicate navigation guard",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "149468387_3",
+          "fullName": "brand 0 continuation retains fresh original guards and exact one-use callback without repeating its immediate child navigation check",
+          "jsonName": "brand 0 continuation retains fresh original guards and exact one-use callback without repeating its immediate child navigation check",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "149468387_4",
+          "fullName": "brand 1 continuation retains fresh original guards and exact one-use callback without repeating its immediate child navigation check",
+          "jsonName": "brand 1 continuation retains fresh original guards and exact one-use callback without repeating its immediate child navigation check",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "149468387_5",
+          "fullName": "brand 2 continuation retains fresh original guards and exact one-use callback without repeating its immediate child navigation check",
+          "jsonName": "brand 2 continuation retains fresh original guards and exact one-use callback without repeating its immediate child navigation check",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "149468387_6",
+          "fullName": "brand 0 staff revocation after inspection starts is still caught across the original await boundary",
+          "jsonName": "brand 0 staff revocation after inspection starts is still caught across the original await boundary",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "149468387_7",
+          "fullName": "brand 1 staff revocation after inspection starts is still caught across the original await boundary",
+          "jsonName": "brand 1 staff revocation after inspection starts is still caught across the original await boundary",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "149468387_8",
+          "fullName": "brand 2 staff revocation after inspection starts is still caught across the original await boundary",
+          "jsonName": "brand 2 staff revocation after inspection starts is still caught across the original await boundary",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "149468387_9",
+          "fullName": "brand 0 staff revocation after continuation starts withholds the callback and retains UNKNOWN",
+          "jsonName": "brand 0 staff revocation after continuation starts withholds the callback and retains UNKNOWN",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "149468387_10",
+          "fullName": "brand 1 staff revocation after continuation starts withholds the callback and retains UNKNOWN",
+          "jsonName": "brand 1 staff revocation after continuation starts withholds the callback and retains UNKNOWN",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "149468387_11",
+          "fullName": "brand 2 staff revocation after continuation starts withholds the callback and retains UNKNOWN",
+          "jsonName": "brand 2 staff revocation after continuation starts withholds the callback and retains UNKNOWN",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "149468387_12",
+          "fullName": "a reconstructed wrapper cannot borrow original snapshot and navigation handles",
+          "jsonName": "a reconstructed wrapper cannot borrow original snapshot and navigation handles",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "149468387_13",
+          "fullName": "the child navigation hold remains authoritative when the snapshot is otherwise current",
+          "jsonName": "the child navigation hold remains authoritative when the snapshot is otherwise current",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        },
+        {
+          "id": "149468387_14",
+          "fullName": "a foreign company inspection cannot borrow the selected company callback or navigation custody",
+          "jsonName": "a foreign company inspection cannot borrow the selected company callback or navigation custody",
+          "mode": "run",
+          "timeout": 30000,
+          "retry": 0,
+          "repeat": 0
+        }
+      ]
+    }
+  ]
+}

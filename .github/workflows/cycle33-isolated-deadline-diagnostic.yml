@@ -1,0 +1,71 @@
+name: Isolated original deadline cohort diagnostic
+on:
+  push:
+    branches: ['codex/cycle33-isolated-deadline-diagnostic']
+    paths:
+      - '.github/workflows/cycle33-isolated-deadline-diagnostic.yml'
+      - 'scripts/cycle33-foundation-deadline-*'
+      - 'tests/cycle33-foundation-deadline-diagnostic.test.ts'
+      - 'docs/program/CYCLE33_FOUNDATION_DEADLINE_DIAGNOSTIC.md'
+permissions:
+  contents: read
+concurrency:
+  group: isolated-deadline-diagnostic-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  isolated-original-cohort:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: driver
+          fetch-depth: 0
+      - name: Exact original failed subject, including transitive source history
+        uses: actions/checkout@v4
+        with:
+          path: subject
+          ref: 8d902e866c79220fa3ddb0bc2794d31cdbfd60f1
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: subject/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.16'
+      - run: npm ci
+        working-directory: subject
+      - name: Driver uses the same unchanged pinned dependency tree
+        run: ln -s ../subject/node_modules driver/node_modules
+      - run: >-
+          python -m pip install --require-hashes --only-binary=:all:
+          -r recovery/monterey/requirements.lock
+        working-directory: subject
+      - name: Exact dynamic whole-file collection and full source custody
+        run: node driver/scripts/cycle33-foundation-deadline-diagnostic.mjs plan subject
+      - name: Supplementary single-worker original233-case diagnostic, not original4-worker PASS
+        working-directory: subject
+        run: >-
+          node node_modules/vitest/vitest.mjs run
+          tests/cycle18-independent-integration-review.test.ts
+          tests/cycle23-service-source-review.test.ts
+          tests/cycle24-independent-integration-review.test.ts
+          tests/cycle25-owner-action-continuity.test.ts
+          tests/cycle28-request-provenance.test.ts
+          tests/cycle29-service-continuity.test.ts
+          tests/cycle31-owner-navigation-runtime.test.ts
+          --maxWorkers=1 --shard=1/1
+          --reporter=default --reporter=json
+          --reporter=../driver/scripts/cycle33-foundation-deadline-diagnostic.mjs
+          --outputFile=${{ github.workspace }}/driver/artifacts/cycle33-deadline-diagnostic/results.json
+      - name: Require original exact collection, terminal receipts and unchanged full subject
+        if: always()
+        run: node driver/scripts/cycle33-foundation-deadline-diagnostic.mjs validate subject
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: isolated-deadline-diagnostic-exact8d
+          path: driver/artifacts/cycle33-deadline-diagnostic/
+          retention-days: 7
