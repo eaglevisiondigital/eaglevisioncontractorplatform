@@ -1,3 +1,57 @@
+# Native continuation · current-authority privacy correction
+
+Separate native author `14734003b472c2633bf8e87526c6a4260696d914` strengthens the
+existing Owner requirements reader: recheck the original current briefing after
+strict selector capture, before returning private rows or facts. All three brands
+reproduce the prior disclosure after actual native owner revocation. The final
+existing guard closes that demonstrated gap; no store, engine, writer or UI is added.
+
+Actual focused results are parent3FAIL, corrected47PASS (20new +27unchanged original
+requirements cases). The separate new33-case source-admission scope first reports
+32PASS/1new-expectationFAIL, then the corrected expectation alone1PASS/32filtered;
+no single33PASS run is claimed. The runtime correctly denied in the failed new test;
+only its matcher was corrected to the unchanged original C29 error capitalization.
+Strict types, scoped lint/format, feature checks and the affected C24 source checker
+pass. Historical application/browser/Foundation failures remain unchanged.
+
+The build-only hook admits exactly the reviewed147 sole2b M1/A2 author, checks the
+unchanged original C29 endpoint and companions, and freshly verifies current native
+and new companion bytes. Original pins and mismatch denial remain intact. It grants
+no business, restoration, hosted or financial authority. The existing dedicated CI
+workflow retains83/142/128/25 cases, native9/OFF3 and original budgets, adding strict
+47/33 gates and this author's clean before/after source binding. Its own current-head
+CI and responsive screenshots remain pending; old265 evidence is not transferred.
+
+The exact one-case CI correction and ten-document reconciliation from draft267,
+head `d942718a0a09344d0c37d497a0218f4c237ba65d`, are reused here without altering that
+branch. Native source review is CLEAR by `/root/cycle25_finance_intelligence_resume`;
+build-only support and final combined candidate review are recorded separately.
+Other bounded canonical audits found no additional demonstrated defect; no feature
+completion is invented. All eleven D1 roles remain UNASSIGNED; D2–D3 require owner
+decisions and A01–A12 are NOT_RUN. Owner-witnessed main two-Mac synthetic network-loss
+PASS is preserved; duplicate recovery remains UNKNOWN/UNVERIFIED with both private
+folders untouched. No attempt, kit rebuild, replay or credential access occurred.
+
+No merge, deployment, hosted mutation, schema, operational restoration, payments,
+communication or dispatch. Protected designs, source, original migration approvals,
+P1/customer14/4B, Auth/MFA, NMI and all release gates remain intact.
+**Release1.0 remains NOT READY / NOT AUTHORIZED.**
+
+# Current CI reconciliation · preserved integration and one strict test correction
+
+Exact265 remains24PASS/2FAIL/7CANCELLED; exact266 remains7PASS/1FAIL/5CANCELLED.
+Verified265 combined integration/browser captures stay preserved.266's C19 correction
+has actual313application/12native/3OFF PASS; C22application300PASS. Its subsequent
+59case CI-delta scope has58PASS/1historical/current-test-hashFAIL, reproduced and
+corrected locally with original historical bytes plus mandatory exact649 admission.
+No protected pins, helper/workflow/dependency/budget or native-source changes in the
+bounded CI child. All original failures/cancellations and missing coverage remain
+separate in [the exact ledger](docs/program/CYCLE33_CI_CLOSEOUT.json). Independent
+native development stays on a separate branch, without silently promoting it.
+D1 offers proposed responsibilities only; eleven people UNASSIGNED,A01–A12 NOT_RUN.
+Main synthetic network-loss PASS preserved; duplicateUNKNOWN/private folders intact.
+Release1.0 NOT READY / NOT AUTHORIZED; all existing gates persist.
+
 # Cycle33 follow-up · CI compatibility and exact local proof
 
 Combined draft265 at exact `eec71f86a39d58d6019b4af196b040f9269ae96d` has a later

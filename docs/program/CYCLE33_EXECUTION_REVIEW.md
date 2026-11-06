@@ -1,3 +1,65 @@
+# Final native combined candidate · independent CLEAR
+
+`/root/cycle30_field_growth` independently verifies the actual17-path combined
+candidate, proof SHA256
+`2f556c5960df692dbac05077e556f6ad5342a57599a1b4b15ec0494e8765bd3c`.
+It binds exact native147, helper, workflow, tests and documentary bytes, including
+all128protected files,5design locks/13bindings and unchanged migrations/dependencies/
+recovery. Original steps, assertions, worker settings and budgets remain intact;
+the new47/33 gates and fresh source binding are additional requirements. The
+reviewer ran no test cohort. Clean committed tree verification and hosted results
+remain separate. The literal review digest/agent fields added after this proof
+record its verdict without changing reviewed source or granting any authority.
+
+Build-only admission support is independently CLEAR by
+`/root/cycle33_independent_review`, proof SHA256
+`a2d91bc9f49d1e278735d81d9dd76b9520c00e258a77339dc28d0c1d745b9467`.
+That verdict excludes the reviewer's own native author and Main's workflow/docs.
+
+# Native continuation · independent review separation
+
+Native author147 is CLEAR by Finance/Intelligence reviewer (private proof SHA256
+`0c680a078b654c6080eb166d5343e7c5d080ff95342981222ac0a113b1cbbb4b`).
+Its author `/root/cycle33_independent_review` does not independently approve that
+native source. That agent separately reviews Finance-authored build-only admission
+support; `/root/cycle30_field_growth` independently reviews Main's workflow and final
+combined tree. Those reviews and exact candidate hashes remain separate from hosted
+CI, browser, physical recovery and operational acceptance. No self-review is used.
+
+# Final bounded CI candidate review
+
+The complete one-test/ten-document CI candidate is independently **CLEAR** by
+`/root/cycle30_field_growth`, private source-review SHA256
+`493362d5f69e68f3299fc2fc79f1a28d0466985e4cd4dc26e6e623bed023465e`.
+The subsequent literal official-reference paragraph in the D1 proposal has a separate
+CLEAR review, SHA256
+`22d20c3c1d11912acf47411d6ed0fe5c74b649404f68925a832598f76fb87d79`;
+removing that paragraph reconstructs the earlier reviewed file exactly. These are
+source/document reviews, not operational approval or new-head hosted CI results.
+The code-only author is `a3441c489a1378dbfd9fdc4a555684639a0b5f90`, sole parent
+`2b8406d10b96ffa7f06a8ef5ae1835538b313d30`. The native Owner privacy correction is
+separate at author `14734003b472c2633bf8e87526c6a4260696d914`, not in that d942 CI-only tree.
+The current native continuation tree includes the reviewed147 author.
+
+# Current reconciliation · independent one-case source review
+
+`/root/cycle30_field_growth` independently reviews the one-case CI-delta patch,
+SHA256 `6648907ce27c8b5643d9fa5d90b4e36521d57aef16c2e8e765bf285946701ed4`,
+CLEAR. Review proof SHA256
+`6059a775304bac83fbcfef1b0d41f07d56bb007c3aaca7b115e8e2d2eda10055`
+confirms all13case titles/count and other case bodies retained, actual original
+b8e bytes/hash/blob and dcc7 record unchanged, and mandatory existing exact649
+current admission. The original helper's type/parent/M1/modes/published/current/
+fresh-read guards stay byte-identical. No test mock ports, arbitrary source hash
+waiver, changed original pin or runtime/restore authority is introduced.
+
+The isolated failed case is1RED/12filtered at original2b and1GREEN/12filtered at
+that source; no whole59/full-Foundation result is inferred. Original workflows,
+case/hook/job budgets, protected runtime/design/migrations/dependencies and prior
+265/266 heads remain unchanged. Full candidate documentary/source review and
+new-head CI remain separate. D1 responsibility proposals appoint no real person;
+A01–A12 remain NOT_RUN and the uncertain duplicate attempt is never replayed.
+
 Independent final CI-child source/security review is **CLEAR** by
 `/root/cycle25_finance_intelligence_resume`. Private review SHA256
 `07aac98c1e830fb965c764c944c53b3a6843356238db3db414103cc9a7468b7f`
