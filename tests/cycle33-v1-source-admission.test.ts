@@ -74,6 +74,46 @@ const originalMismatch: Record<string, string> = {
   'task-display-reference-custody':
     'Current source differs from fixed Cycle32 author',
 };
+const legacyMetadata: Record<string, Record<string, unknown>> = {
+  'recorded-time-kind-review': {
+    module: 'cost-selection-current-authority',
+    source_commit: '98e4c39f3135b0b8177e2cc50980c1814fdcb2ff',
+    path: 'src/lib/workflows/cost-coverage-path.ts',
+    authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+    business_authority: false,
+    restore_adapter: false,
+  },
+  'maintenance-review-reference-custody': {
+    source_commit: '1538060250fc34654414dac6b29621bf44fabd98',
+    module: 'maintenance-proposal-input',
+    owner: '/root/cycle30_field_growth',
+  },
+  'task-display-reference-custody': {
+    source_commit: '452d57049e60c5228718fc7647346faab7ac4409',
+    native_correction: null,
+    module: 'task-input-binding',
+    owner: '/root/cycle30_field_growth',
+    path: 'src/lib/workflows/task-correction-review.ts',
+    authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+  },
+};
+const legacyRoot: Record<string, string> = {
+  'recorded-time-kind-review': '98e4c39f3135b0b8177e2cc50980c1814fdcb2ff',
+  'maintenance-review-reference-custody':
+    'ae5b89503fc80487e3bb026e1bbc6eea29aef147',
+  'task-display-reference-custody': '452d57049e60c5228718fc7647346faab7ac4409',
+};
+function legacyResult(
+  value: Record<string, unknown>,
+  commit: unknown,
+): Record<string, unknown> | undefined {
+  if (value.source_commit === commit) return value;
+  for (const item of Object.values(value))
+    if (item && typeof item === 'object' && !Array.isArray(item)) {
+      const found = legacyResult(item as Record<string, unknown>, commit);
+      if (found) return found;
+    }
+}
 it('pins only literal reviewed V1 authors, sole8c parent and frozen finite companions', () => {
   expect(s.cycle33V1Parent).toBe('8c0286e0e70133c8e0a0e0e478e89a3a6b8ddf55');
   expect(authors.map((a) => [a.module, a.commit, a.path])).toEqual([
@@ -295,7 +335,19 @@ for (const a of authors) {
       current(a),
       p.git(s.cycle25Parent, a.path),
     );
-    expect(JSON.stringify(result)).toContain(a.commit);
+    const legacy = legacyMetadata[a.module];
+    if (legacy) {
+      expect(legacyResult(result, legacy.source_commit)).toEqual(legacy);
+      expect(result.source_commit).toBe(legacyRoot[a.module]);
+      expect(admit(a)).toEqual({
+        module: a.module,
+        source_commit: a.commit,
+        path: a.path,
+        authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+        business_authority: false,
+        restore_adapter: false,
+      });
+    } else expect(JSON.stringify(result)).toContain(a.commit);
     expect(result.authority).toBe('SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE');
     expect(() =>
       s.admitCycle25Source(

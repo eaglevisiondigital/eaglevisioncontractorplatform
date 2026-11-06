@@ -873,6 +873,113 @@
       "cases": 3,
       "result": "LOCAL_PASS_NOT_HOSTED_ACCEPTANCE",
       "sha256": "de206eea558fdbf91cf5fa5d9b6a1d574ab9f2fade03fba8646210686de3611c"
+    },
+    "ci_followup": {
+      "parent_commit": "db42d434fa9ed0b4dec02fdb59a8712e40833137",
+      "coordination_draft_pr": 274,
+      "scope": "BUILD_ONLY_HISTORY_LEGACY_METADATA_AND_EXACT_RETAINED_CONSUMER_CORRECTIONS",
+      "source_author_commits_unchanged": true,
+      "old_published_heads_preserved": "Initial packages.published_head/source_support_sha256 remain first-publication evidence; current follow-up heads below do not inherit their CI.",
+      "current_children": [
+        {
+          "draft_pr": 269,
+          "branch": "codex/cycle33-v1-field-next",
+          "head": "a8491a12e39c47b686a451eb1b199e9286464712",
+          "first_published_head": "bffcb55102888ba5030aaeeb045ce4d4d8a39a19",
+          "source_author": "15fabc063a74b3fce587f5dca8962428dc0b04ac",
+          "ci": "REQUIRES_EXACT_NEW_HEAD_OBSERVATION"
+        },
+        {
+          "draft_pr": 270,
+          "branch": "codex/cycle33-v1-finance-owner-next",
+          "head": "6759bae679512ce832d27f7f5005d6aa76b701dd",
+          "first_published_head": "2d2f662eac257fd82e4eae456efc0a348dc95928",
+          "source_author": "ad2830e5677539ea2c4922377b7a184386e4a9e1",
+          "ci": "REQUIRES_EXACT_NEW_HEAD_OBSERVATION"
+        },
+        {
+          "draft_pr": 271,
+          "branch": "codex/cycle33-v1-customer-advanced-next",
+          "head": "460549416493f50979b4ada14fcd419ab673d735",
+          "first_published_head": "aa7b800ec79816cb5d7514386373b2f2cf99b491",
+          "source_author": "b4b35f5323affacbedd433684f2085f8bf8628d2",
+          "ci": "REQUIRES_EXACT_NEW_HEAD_OBSERVATION"
+        },
+        {
+          "draft_pr": 272,
+          "branch": "codex/cycle33-v1-advanced-next",
+          "head": "841434d09524b6d6725aa2c7afc60a3a36cff24b",
+          "first_published_head": "42f2b83004edd0d5fee0d381c43e81b437576f81",
+          "source_author": "99e112a7cf669dfde03fdd69dbdbce2e74ef2fd4",
+          "ci": "REQUIRES_EXACT_NEW_HEAD_OBSERVATION"
+        },
+        {
+          "draft_pr": 273,
+          "branch": "codex/cycle33-v1-field-growth-next",
+          "head": "a798a76f8105a39474b71e1ab6343ebab9a6797a",
+          "first_published_head": "39063cbfabf42a8dd4811bc4d0980409a60a5bb5",
+          "source_author": "2edb76df29c36328f39a19277b287c8e9b16a940",
+          "ci": "REQUIRES_EXACT_NEW_HEAD_OBSERVATION"
+        }
+      ],
+      "support_files": [
+        {
+          "path": "scripts/cycle25-source-lineage.mjs",
+          "sha256": "bc8261f329ea92ee0d3e03f3e35ac3105899c17448aa397dd6a30aaa5a0f7c99"
+        },
+        {
+          "path": "scripts/check-cycle16-integrity.mjs",
+          "sha256": "4b391436bc51659252a45691e2776e915999d4c7ea1b0a9661c0e9662d860626"
+        },
+        {
+          "path": "scripts/check-cycle21.mjs",
+          "sha256": "9f13e5ceeef43f095ce0105a0a3323d8dae9e8e30216d19b08a1e90b2116c1f4"
+        },
+        {
+          "path": "scripts/check-cycle22.mjs",
+          "sha256": "4e60289e3d671261ee58b6b2fdd93654bf09c1878d9f590b40b1b8de021c12fe"
+        },
+        {
+          "path": "scripts/check-cycle23.mjs",
+          "sha256": "15e6c58a8019b1fec45ede2cb45451585a0bcce37b745e7611edcdaca615d2f8"
+        },
+        {
+          "path": ".github/workflows/cycle16-integration.yml",
+          "sha256": "64b1515bc3ad49cf87e88acfac51496c6d414f96504cbf2fd1efc51232f285a4"
+        }
+      ],
+      "author_agents": {
+        "legacy_metadata": "/root/cycle25_finance_intelligence_resume",
+        "retained_consumers_and_history_diagnosis": "/root/cycle33_independent_review",
+        "workflow_and_registers": "/root"
+      },
+      "independent_reviewer": "/root/v1_independent_combined_review",
+      "independent_review_sha256": {
+        "history": "dfb80780075050bf84c0a14abbbb2efb37e605675739fcf14285638f17ca1b92",
+        "legacy_metadata": "2cadc98c5bcbe46aecf9b58b6b76054ce533d475f2d80479f41dfb162221c921",
+        "retained_consumers": "784ddb3ad202d866ba1ca37ffde32ad6b88997ecf7f442b17ded74c0b6b82121"
+      },
+      "record": "docs/program/CYCLE33_V1_CI_FOLLOWUP.md",
+      "local_evidence": {
+        "legacy_new": "3RED_THEN_3PASS",
+        "original_failed_c22_case": "1PASS_49FILTERED_NOT_50PASS",
+        "new109_affected_cases": "3PASS_106FILTERED_NOT_109PASS",
+        "new_retained_consumer_cases": "22PASS_2NEW_FIXTURE_FAILURES_THEN_2PASS_22FILTERED_NOT_ONE24PASS",
+        "final_source_preflight": "PASS_523RETAINED_128PROTECTED_5LOCKS_13BINDINGS"
+      },
+      "new_strict_main_ci_collections": {
+        "native_and_independent_combined": 93,
+        "source_admission": 109,
+        "legacy_metadata": 3,
+        "retained_source_consumers": 24,
+        "retained_existing": 458,
+        "native_browser": 9,
+        "production_off": 3,
+        "strict_source_screenshots": 63
+      },
+      "original_budgets_assertions_pins_unchanged": true,
+      "operational_acceptance": "A01_A12_NOT_RUN",
+      "release": "NOT_READY_NOT_AUTHORIZED"
     }
   }
 }

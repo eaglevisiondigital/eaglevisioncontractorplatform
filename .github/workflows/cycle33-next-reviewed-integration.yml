@@ -76,7 +76,7 @@ jobs:
           admitted.push(admitCycle33OwnerRequirementSource(owner.path,readFileSync(owner.path),p.git(owner.parent,owner.path)));
           const f=JSON.parse(readFileSync('docs/program/CYCLE22_SOURCE_MANIFEST.json')).independent_files.find(f=>f.path==='tests/cycle22-independent-integration-review.test.ts');admitted.push(admitCycle33ExecutionCiCompatibility(f,readFileSync(f.path)));
           admitted.push(...cycle33V1Authors.map(a=>admitCycle33V1Source(a.path,readFileSync(a.path),p.git(cycle33V1Parent,a.path))));
-          const paths=[...cycle33V1Authors.flatMap(a=>[a.path,...a.added.map(f=>f.path),...a.original_companions.map(f=>f.path)]),'tests/cycle33-v1-source-admission.test.ts','tests/cycle33-v1-combined-authority.test.ts','scripts/check-cycle16-integrity.mjs','scripts/check-cycle21.mjs','docs/program/CYCLE33_V1_SCOPE_MATRIX.md','docs/program/CYCLE33_V1_COORDINATED_VALIDATION.md',owner.path,...owner.added.map(s=>s.path),'tests/cycle33-owner-requirement-source-lineage.test.ts','tests/program/cycle22-ci-delta-review.test.ts',...cycle33ExecutionAuthors.flatMap(s=>[...s.modified,...s.added]),'scripts/check-cycle19-integrity.mjs','scripts/check-cycle22.mjs','scripts/check-cycle23.mjs','scripts/check-cycle24.mjs',...cycle33NextAuthors.flatMap(s=>[...s.modified,...s.added]),'scripts/cycle25-source-lineage.mjs','vite.config.ts','playwright.config.ts','package.json','package-lock.json','.github/workflows/cycle33-next-reviewed-integration.yml','tests/cycle22-independent-integration-review.test.ts','tests/cycle33-execution-ci-compatibility.test.ts','.github/workflows/cycle19-integration.yml'];
+          const paths=[...cycle33V1Authors.flatMap(a=>[a.path,...a.added.map(f=>f.path),...a.original_companions.map(f=>f.path)]),'tests/cycle33-v1-source-admission.test.ts','tests/cycle33-v1-combined-authority.test.ts','tests/cycle33-v1-legacy-result-compatibility.test.ts','tests/cycle33-v1-retained-source-admission.test.ts','docs/program/CYCLE33_V1_CI_FOLLOWUP.md','.github/workflows/cycle16-integration.yml','scripts/check-cycle16-integrity.mjs','scripts/check-cycle21.mjs','docs/program/CYCLE33_V1_SCOPE_MATRIX.md','docs/program/CYCLE33_V1_COORDINATED_VALIDATION.md',owner.path,...owner.added.map(s=>s.path),'tests/cycle33-owner-requirement-source-lineage.test.ts','tests/program/cycle22-ci-delta-review.test.ts',...cycle33ExecutionAuthors.flatMap(s=>[...s.modified,...s.added]),'scripts/check-cycle19-integrity.mjs','scripts/check-cycle22.mjs','scripts/check-cycle23.mjs','scripts/check-cycle24.mjs',...cycle33NextAuthors.flatMap(s=>[...s.modified,...s.added]),'scripts/cycle25-source-lineage.mjs','vite.config.ts','playwright.config.ts','package.json','package-lock.json','.github/workflows/cycle33-next-reviewed-integration.yml','tests/cycle22-independent-integration-review.test.ts','tests/cycle33-execution-ci-compatibility.test.ts','.github/workflows/cycle19-integration.yml'];
           writeFileSync('artifacts/cycle33/next-execution/binding.json',JSON.stringify({source:git('rev-parse','HEAD'),tree:git('rev-parse','HEAD^{tree}'),admitted,hashes:Object.fromEntries(paths.map(path=>[path,createHash('sha256').update(readFileSync(path)).digest('hex')]))},null,2)+'\n');
           NODE
       - run: npm run typecheck
@@ -115,6 +115,31 @@ jobs:
           const r=JSON.parse(readFileSync('artifacts/cycle33/next-execution/v1-source.json')),s=r.testResults?.[0],a=s?.assertionResults;
           const n=109;
           if(r.success!==true||r.numTotalTests!==n||r.numPassedTests!==n||r.numFailedTests!==0||r.numPendingTests!==0||r.numTodoTests!==0||r.numFailedTestSuites!==0||r.numPendingTestSuites!==0||(r.numRuntimeErrorTestSuites??0)!==0||r.testResults.length!==1||relative(process.cwd(),s.name).replaceAll('\\','/')!=='tests/cycle33-v1-source-admission.test.ts'||s.status!=='passed'||a.length!==n||new Set(a.map(t=>t.fullName)).size!==n||a.some(t=>t.status!=='passed'||!t.fullName||t.failureMessages.length))throw Error('Exact finite V1 admission cases required');
+          NODE
+      - name: Exact unchanged legacy metadata contract under new V1 source admission
+        run: >-
+          npx vitest run tests/cycle33-v1-legacy-result-compatibility.test.ts
+          --maxWorkers=1 --retry=0 --reporter=json
+          --outputFile=artifacts/cycle33/next-execution/v1-legacy-results.json
+      - name: Require exact three legacy result-shape regressions
+        run: |
+          node --input-type=module <<'NODE'
+          import{readFileSync}from'node:fs';import{relative}from'node:path';
+          const r=JSON.parse(readFileSync('artifacts/cycle33/next-execution/v1-legacy-results.json')),s=r.testResults?.[0],a=s?.assertionResults;
+          if(r.success!==true||r.numTotalTests!==3||r.numPassedTests!==3||r.numFailedTests!==0||r.numPendingTests!==0||r.numTodoTests!==0||r.numFailedTestSuites!==0||r.numPendingTestSuites!==0||(r.numRuntimeErrorTestSuites??0)!==0||r.testResults.length!==1||relative(process.cwd(),s.name).replaceAll('\\','/')!=='tests/cycle33-v1-legacy-result-compatibility.test.ts'||s.status!=='passed'||a.length!==3||new Set(a.map(t=>t.fullName)).size!==3||a.some(t=>t.status!=='passed'||!t.fullName||t.failureMessages.length))throw Error('Exact3 original legacy metadata cases required');
+          NODE
+      - name: Exact immutable retained C16 and C21 successor admission
+        run: >-
+          npx vitest run tests/cycle33-v1-retained-source-admission.test.ts
+          --maxWorkers=1 --retry=0 --reporter=json
+          --outputFile=artifacts/cycle33/next-execution/v1-retained-source.json
+      - name: Require exact24 retained-source consumer cases
+        run: |
+          node --input-type=module <<'NODE'
+          import{readFileSync}from'node:fs';import{relative}from'node:path';
+          const r=JSON.parse(readFileSync('artifacts/cycle33/next-execution/v1-retained-source.json')),s=r.testResults?.[0],a=s?.assertionResults;
+          const n=24;
+          if(r.success!==true||r.numTotalTests!==n||r.numPassedTests!==n||r.numFailedTests!==0||r.numPendingTests!==0||r.numTodoTests!==0||r.numFailedTestSuites!==0||r.numPendingTestSuites!==0||(r.numRuntimeErrorTestSuites??0)!==0||r.testResults.length!==1||relative(process.cwd(),s.name).replaceAll('\\','/')!=='tests/cycle33-v1-retained-source-admission.test.ts'||s.status!=='passed'||a.length!==n||new Set(a.map(t=>t.fullName)).size!==n||a.some(t=>t.status!=='passed'||!t.fullName||t.failureMessages.length))throw Error('Exact24 immutable retained-source cases required');
           NODE
       - name: New owner requirement capture regressions and original owner requirements
         run: >-

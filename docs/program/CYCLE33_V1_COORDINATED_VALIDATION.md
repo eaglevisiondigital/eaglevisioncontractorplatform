@@ -134,7 +134,7 @@ All eight PhaseOne release gates, NMI, design/branding locks, migrations and fro
 artifacts remain independent. No release blocker is marked closed by local source
 correction, screenshots or supplemental CI.
 
-## Published draft dependencies and frozen combined review
+## First publication · draft dependencies and frozen combined review
 
 All five feature drafts target unchanged #268; they are parallel bounded children,
 not a chain of cumulative feature acceptance. Each native author remains unchanged;
@@ -174,3 +174,44 @@ scoped ESLint and repository format check exited0. Full `npm run check` and brow
 acceptance are left to normal exact-new-head CI rather than manually repeating old
 successful cohorts. Separate local `npm run build` also exited0 (retained large-chunk advisory only);
 this is a local build, not deployment, hosted Linux equivalence or recovery acceptance.
+
+## CI follow-up · current child heads and preserved failures
+
+Main274's first db42 head and first five published heads above remain historical
+source-specific evidence. Their newly completed failures are explained in
+[CYCLE33_V1_CI_FOLLOWUP.md](CYCLE33_V1_CI_FOLLOWUP.md). The first independent review
+missed the exact legacy result-shape contract and separate retained-source consumer
+paths; it never granted hosted acceptance. A normal follow-up fixes those build-only
+contracts with independent review and unchanged native source, pins and budgets.
+
+C16 receives only two checkout lines for full reviewed history. All V1 guards still
+run, but legacy functions return the original metadata shape. C22/C23 retained
+consumers admit only the original C16/fecfc/add-on and C21/a9dd/published-history
+metadata tuples through strict existing V1 publication admission. Unknowns retain
+original denial messages. No original test/assertion or manifest is changed.
+
+Independent source corrections are CLEAR: history `dfb80780075050bf84c0a14abbbb2efb37e605675739fcf14285638f17ca1b92`,
+legacy metadata `2cadc98c5bcbe46aecf9b58b6b76054ce533d475f2d80479f41dfb162221c921`,
+retained consumers `784ddb3ad202d866ba1ca37ffde32ad6b88997ecf7f442b17ded74c0b6b82121`.
+All five runtime bundles and original author/companion hashes remain exact.
+The old6eac source-helper hash applies only to db42; current follow-up helper is
+`bc8261f329ea92ee0d3e03f3e35ac3105899c17448aa397dd6a30aaa5a0f7c99`.
+
+Current child drafts remain parallel to unchanged268, with normal child commits:
+
+| Draft                                                                                | Current follow-up exact head               | Prior first publication preserved          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| [#269](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/269) | `a8491a12e39c47b686a451eb1b199e9286464712` | `bffcb55102888ba5030aaeeb045ce4d4d8a39a19` |
+| [#270](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/270) | `6759bae679512ce832d27f7f5005d6aa76b701dd` | `2d2f662eac257fd82e4eae456efc0a348dc95928` |
+| [#271](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/271) | `460549416493f50979b4ada14fcd419ab673d735` | `aa7b800ec79816cb5d7514386373b2f2cf99b491` |
+| [#272](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/272) | `841434d09524b6d6725aa2c7afc60a3a36cff24b` | `42f2b83004edd0d5fee0d381c43e81b437576f81` |
+| [#273](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/273) | `a798a76f8105a39474b71e1ab6343ebab9a6797a` | `39063cbfabf42a8dd4811bc4d0980409a60a5bb5` |
+
+Main adds strict3legacy/24retained-consumer gates to93native/109source plus unchanged
+458retained/native9/OFF3/63capture. New tests retain disclosed local split execution
+limits; full new-head GitHub results must be observed separately, never inherited.
+The final actual C24 source preflight passed523retained/128protected/5locks/13bindings.
+This is source verification, not operational or full Foundation acceptance.
+No successful old job was manually restarted. Original45minute cancellations,
+270conflict, failed first-head preflights and downstream SKIPPED coverage remain.
+All release/recovery/owner-decision restrictions remain unchanged.
