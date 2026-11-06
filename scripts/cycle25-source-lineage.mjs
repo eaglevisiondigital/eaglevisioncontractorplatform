@@ -364,6 +364,16 @@ export function admitCycle25Source(path, current, original, supplied = {}) {
       throw new Error(`Unreviewed source replacement: ${path}`, { cause });
     }
   }
+  if (
+    owners.length === 0 &&
+    path === 'src/lib/workflows/recorded-cost-requirements.ts'
+  ) {
+    try {
+      return admitCycle33V1ContinuationSource(path, current, original, ports);
+    } catch (cause) {
+      throw new Error(`Unreviewed source replacement: ${path}`, { cause });
+    }
+  }
   if (owners.length !== 1)
     throw Error(`Unreviewed source replacement: ${path}`);
   const spec = owners[0],
@@ -2653,6 +2663,229 @@ export const cycle33V1Authors = Object.freeze(
   ),
 );
 
+// Finite independently reviewed native successors of the unchanged V1/C23 records.
+// Source admission only: no business-state restoration or operational authority.
+export const cycle33V1ContinuationParent =
+  '6bf1f2be786e6d9c052d87e5f759a4312782be70';
+export const cycle33V1ContinuationAuthors = Object.freeze(
+  [
+    {
+      module: 'recorded-cost-selector-custody',
+      commit: '5986df744d688d7ab2e72a7824b18e4568d1cb92',
+      path: 'src/lib/workflows/recorded-cost-requirements.ts',
+      predecessor: 'a3c8a39dd1b08ffdc68d1f7b9b29153ae50feb88',
+      predecessor_sha256:
+        '72b6a0b2f63e2d961f39f47fd3f903c30690cb5eec6e4196a892b75285ee9c71',
+      sha256:
+        'a07bd62f868f32743d7c81ad78a53dc76d8aa6c674b8b2e6b99aab43ea7bc1a4',
+      cases: 22,
+      added: [
+        {
+          path: 'tests/cycle33-recorded-cost-selector-custody.test.ts',
+          sha256:
+            'e78790aa2eb07b1876181e7b6b329640f67b2f1ca740ceb968c78a569c9040ba',
+        },
+        {
+          path: 'docs/program/CYCLE33_RECORDED_COST_SELECTOR_CUSTODY.md',
+          sha256:
+            '76d7a8f891e47ac08b56961f8ba6434f754d0d39d87f6536d84bb822540637c6',
+        },
+      ],
+      original_companions: [
+        {
+          path: 'src/components/workflows/RecordedCostRequirements.tsx',
+          sha256:
+            '7374d98abfb7751913e7c502835e608666a1644776dcf5e0c06056e9dca2b967',
+        },
+        {
+          path: 'src/components/workflows/recorded-cost-requirements.css',
+          sha256:
+            '8369a7d02611e3ebd214a160a29ed754d374becdd6e6ea561079da1bb96a6b4e',
+        },
+        {
+          path: 'tests/cycle23-recorded-cost-requirements.test.ts',
+          sha256:
+            '03a00b5966584b69642117f219497ff5e6eb0a774b0d4317cab6d5e48a7839e7',
+        },
+        {
+          path: 'docs/program/CYCLE23_RECORDED_COST_REQUIREMENTS.md',
+          sha256:
+            'f59becfd5d4a5f30b59ea28a46c8f701d743ccda62eafe4ea3ceaa9d773d8d3c',
+        },
+      ],
+      published: {
+        commit: 'a3c8a39dd1b08ffdc68d1f7b9b29153ae50feb88',
+        sha256:
+          '72b6a0b2f63e2d961f39f47fd3f903c30690cb5eec6e4196a892b75285ee9c71',
+        blob: 'ad8ee0ba15ab0a17f731eb7cde34b30ec4f537dc',
+      },
+    },
+    {
+      module: 'published-navigation-currentness',
+      commit: '8c6334db676f214bc7abe1a4eeae70e9b547534a',
+      path: 'src/lib/workflows/published-service-navigation.ts',
+      predecessor: 'b4b35f5323affacbedd433684f2085f8bf8628d2',
+      predecessor_sha256:
+        '4ae84361f9ef34a4b64eeb11678bab2ed67f8a9f801fe9ea63d96dcf6c5d999a',
+      sha256:
+        '6cd3136bade409b4cbb91d42775c71c5c5e4f69110e55029b89711ed118a4083',
+      cases: 29,
+      added: [
+        {
+          path: 'tests/cycle33-published-navigation-currentness.test.ts',
+          sha256:
+            'cf0a24412cf5bf2d11d29761c36829e200ff0cd726e167d782b6300fff9cae0f',
+        },
+        {
+          path: 'docs/program/CYCLE33_PUBLISHED_NAVIGATION_CURRENTNESS.md',
+          sha256:
+            'a67860ddd9ecb9f99ed65a926ddf783a4bfa122b73ab03cd402a434474a6e74b',
+        },
+      ],
+      original_companions: cycle33V1Authors
+        .filter((a) => a.commit === 'b4b35f5323affacbedd433684f2085f8bf8628d2')
+        .flatMap((a) => [...a.added, ...a.original_companions]),
+      published: null,
+    },
+    {
+      module: 'task-read-currentness',
+      commit: 'bd2e50e8f5dd972c9b2c9a29186e36fcc05dee53',
+      path: 'src/lib/workflows/task-correction-review.ts',
+      predecessor: '15fabc063a74b3fce587f5dca8962428dc0b04ac',
+      predecessor_sha256:
+        '6ff2d36bfc6bfdeda8b552e2a25f961c23f3e90abbf20690d6618c0f95e087a2',
+      sha256:
+        '6efa75671e51687d81a28a94ce744670475cc524d64c61e726e7916ee330e564',
+      cases: 30,
+      added: [
+        {
+          path: 'tests/cycle33-task-read-currentness.test.ts',
+          sha256:
+            'b8c48f7298fc99ee7a25c1a2ccdebdc7bc655ab6b46d85e2fcf428b2bf085fe3',
+        },
+        {
+          path: 'docs/program/CYCLE33_TASK_READ_CURRENTNESS.md',
+          sha256:
+            'cd918cc700083058d02d9dd5a1b06faf2dfdecc4509ad004bbed45547e787be4',
+        },
+      ],
+      original_companions: cycle33V1Authors
+        .filter((a) => a.commit === '15fabc063a74b3fce587f5dca8962428dc0b04ac')
+        .flatMap((a) => [...a.added, ...a.original_companions]),
+      published: null,
+    },
+  ].map((a) =>
+    Object.freeze({
+      ...a,
+      parent: cycle33V1ContinuationParent,
+      added: Object.freeze(a.added.map(Object.freeze)),
+      original_companions: Object.freeze(
+        a.original_companions.map(Object.freeze),
+      ),
+      published: a.published && Object.freeze(a.published),
+    }),
+  ),
+);
+
+export function admitCycle33V1ContinuationSource(
+  path,
+  current,
+  previous,
+  supplied = {},
+) {
+  const ports = { ...cycle25SourcePorts, ...supplied },
+    owners = cycle33V1ContinuationAuthors.filter((a) => a.path === path),
+    hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
+  if (owners.length !== 1)
+    throw Error('No literal reviewed V1 continuation owner');
+  const a = owners[0];
+  if (
+    [a.predecessor, a.parent, a.commit].some(
+      (c) => ports.type(c) !== 'commit' || ports.mode(c, path) !== '100644',
+    ) ||
+    ports.parent(a.commit) !== cycle33V1ContinuationParent ||
+    ports.delta(a.commit) !==
+      ['M\t' + a.path, ...a.added.map((f) => 'A\t' + f.path)]
+        .sort()
+        .join('\n') ||
+    a.added.some((f) => ports.mode(a.commit, f.path) !== '100644') ||
+    a.original_companions.some(
+      (f) => ports.mode(a.predecessor, f.path) !== '100644',
+    )
+  )
+    throw Error(
+      'Exact sole-parent regular V1 continuation M1/A2 author required',
+    );
+  const old = Buffer.from(ports.git(a.predecessor, path)),
+    base = Buffer.from(ports.git(a.parent, path)),
+    reviewed = Buffer.from(ports.git(a.commit, path));
+  if (
+    hash(old) !== a.predecessor_sha256 ||
+    !base.equals(old) ||
+    !Buffer.from(previous).equals(old)
+  )
+    throw Error('Exact immutable V1 continuation predecessor required');
+  if (
+    hash(reviewed) !== a.sha256 ||
+    !Buffer.from(current).equals(reviewed) ||
+    !Buffer.from(ports.read(path)).equals(reviewed)
+  )
+    throw Error('Fresh exact reviewed V1 continuation source required');
+  for (const [commit, files] of [
+    [a.commit, a.added],
+    [a.predecessor, a.original_companions],
+  ])
+    for (const f of files) {
+      const bytes = Buffer.from(ports.git(commit, f.path));
+      if (
+        hash(bytes) !== f.sha256 ||
+        !Buffer.from(ports.read(f.path)).equals(bytes)
+      )
+        throw Error('Exact current V1 continuation companion required');
+    }
+  if (!Buffer.from(ports.read(path)).equals(reviewed))
+    throw Error('Final fresh V1 continuation source required');
+  return {
+    module: a.module,
+    source_commit: a.commit,
+    path,
+    authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+    business_authority: false,
+    restore_adapter: false,
+  };
+}
+export function admitCycle33V1ContinuationPublished(
+  file,
+  current,
+  publishedCommit,
+  supplied = {},
+) {
+  const ports = { ...cycle25SourcePorts, ...supplied },
+    a = cycle33V1ContinuationAuthors.find(
+      (a) => a.published && a.path === file?.path,
+    ),
+    hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
+  if (
+    !a ||
+    publishedCommit !== a.published.commit ||
+    file.sha256 !== a.published.sha256 ||
+    file.blob !== a.published.blob
+  )
+    throw Error('Exact immutable published V1 continuation metadata required');
+  const bytes = Buffer.from(ports.git(a.published.commit, a.path));
+  if (
+    hash(bytes) !== a.published.sha256 ||
+    createHash('sha1')
+      .update('blob ' + bytes.length + '\0')
+      .update(bytes)
+      .digest('hex') !== a.published.blob
+  )
+    throw Error(
+      'Exact immutable published V1 continuation bytes/blob required',
+    );
+  return admitCycle33V1ContinuationSource(a.path, current, bytes, ports);
+}
+
 export function admitCycle33V1Source(path, current, previous, supplied = {}) {
   const ports = { ...cycle25SourcePorts, ...supplied },
     owners = cycle33V1Authors.filter((a) => a.path === path),
@@ -2686,11 +2919,19 @@ export function admitCycle33V1Source(path, current, previous, supplied = {}) {
     !Buffer.from(previous).equals(old)
   )
     throw Error('Exact immutable original V1 predecessor required');
-  if (
-    hash(reviewed) !== a.sha256 ||
-    !Buffer.from(current).equals(reviewed) ||
-    !Buffer.from(ports.read(path)).equals(reviewed)
-  )
+  if (hash(reviewed) !== a.sha256)
+    throw Error('Fresh exact reviewed V1 source required');
+  let admitted = reviewed;
+  if (!Buffer.from(current).equals(reviewed)) {
+    const successor = cycle33V1ContinuationAuthors.find(
+      (s) => s.path === path && s.predecessor === a.commit,
+    );
+    if (!successor || hash(current) !== successor.sha256)
+      throw Error('Fresh exact reviewed V1 source required');
+    admitCycle33V1ContinuationSource(path, current, reviewed, ports);
+    admitted = Buffer.from(current);
+  }
+  if (!Buffer.from(ports.read(path)).equals(admitted))
     throw Error('Fresh exact reviewed V1 source required');
   for (const f of a.added) {
     const bytes = Buffer.from(ports.git(a.commit, f.path));
@@ -2708,7 +2949,7 @@ export function admitCycle33V1Source(path, current, previous, supplied = {}) {
     )
       throw Error('Exact immutable original V1 companion required');
   }
-  if (!Buffer.from(ports.read(path)).equals(reviewed))
+  if (!Buffer.from(ports.read(path)).equals(admitted))
     throw Error('Final fresh reviewed V1 source required');
   return {
     module: a.module,
