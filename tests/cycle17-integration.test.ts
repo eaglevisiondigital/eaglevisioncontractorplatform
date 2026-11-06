@@ -84,6 +84,15 @@ import { OwnerActionDesk } from '../src/components/workflows/OwnerActionDesk';
 import { AddonTaskDesk } from '../src/components/workflows/AddonTaskDesk';
 import { cycle17WorkspaceGroups } from '../src/components/workflows/OperatingCenterCycleSeventeen';
 import { cycle14ContinuityGroups } from '../src/components/workflows/OperatingCenterCycleFourteen';
+const sourceLineage: {
+  admitCycle33V1Published: (
+    file: { path: string; sha256: string },
+    current: Buffer,
+    publishedCommit: string,
+  ) => Record<string, unknown>;
+} = await import(
+  new URL('../scripts/cycle25-source-lineage.mjs', import.meta.url).href
+);
 
 beforeEach(() =>
   vi.stubGlobal('window', {
@@ -774,10 +783,40 @@ it('Cycle16 closeout preserves child cancellations separately from actual succes
       expect(check.cause).toContain('45-minute');
     }
     expect(feature.owned_files).toHaveLength(5);
-    for (const file of feature.owned_files)
-      expect(
-        createHash('sha256').update(readFileSync(file.path)).digest('hex'),
-      ).toBe(file.sha256);
+    for (const file of feature.owned_files) {
+      if (
+        feature.pr === 117 &&
+        file.path === 'src/lib/workflows/addon-readiness-guide.ts'
+      ) {
+        expect({
+          pr: feature.pr,
+          path: file.path,
+          sha256: file.sha256,
+        }).toEqual({
+          pr: 117,
+          path: 'src/lib/workflows/addon-readiness-guide.ts',
+          sha256:
+            'b3c6d6f20aa38d00f88a9987b30117f945c341cda5c591d16d5b8f671a5b60cf',
+        });
+        expect(
+          sourceLineage.admitCycle33V1Published(
+            file,
+            readFileSync(file.path),
+            'fecfcf104e7f3988a53c85a77353824edfa6f85b',
+          ),
+        ).toEqual({
+          module: 'addon-job-filter-currentness',
+          source_commit: '99e112a7cf669dfde03fdd69dbdbce2e74ef2fd4',
+          path: file.path,
+          authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+          business_authority: false,
+          restore_adapter: false,
+        });
+      } else
+        expect(
+          createHash('sha256').update(readFileSync(file.path)).digest('hex'),
+        ).toBe(file.sha256);
+    }
     expect(
       createHash('sha256')
         .update(readFileSync('.github/workflows/ci.yml'))
