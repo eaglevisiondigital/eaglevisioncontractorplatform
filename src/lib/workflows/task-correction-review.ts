@@ -134,10 +134,14 @@ export async function selectTaskCorrectionSource(
   review: TaskCorrectionReview,
   sourceEntryId: string,
 ): Promise<TaskCorrectionReview> {
-  await assertTaskCorrectionReviewCurrent(review);
+  const current = prototypeFields(review, [
+    'view',
+    'source',
+  ]) as unknown as TaskCorrectionReview;
+  await assertTaskCorrectionReviewCurrent(current);
   return freezePrototype({
-    view: review.view,
-    source: await readSavedTaskCorrection(review.view, sourceEntryId),
+    view: current.view,
+    source: await readSavedTaskCorrection(current.view, sourceEntryId),
   });
 }
 export async function saveTaskCorrectionReview(

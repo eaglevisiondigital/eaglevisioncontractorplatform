@@ -274,6 +274,8 @@ export async function navigateAddonReadinessJob(
     throw Error(
       'Add-on navigation callback withdrawn or replaced during inspection',
     ); // Restoration cannot revive an earlier navigation.
+  assertAddonReadinessCurrent(task);
   expected(job);
+  assertAddonReadinessCurrent(task);
   return job;
 }

@@ -1,0 +1,140 @@
+{
+  "schema": "propel-v1-essential-followup-source-v1",
+  "original_head": "038b64acad56e436a016905dfec87aef86dcfbc8",
+  "ci_only_parent": "974675f6f616e02173e571bb65984da509786f79",
+  "source_admission": "FIXED_AUTHORS_ONLY_NOT_BUSINESS_RESTORATION",
+  "authors": [
+    {
+      "module": "task-selection",
+      "commit": "37953b233c96306d7c48d7dbc8592a037482c0c5",
+      "sole_parent": "038b64acad56e436a016905dfec87aef86dcfbc8",
+      "delta": {
+        "modified": ["src/lib/workflows/task-correction-review.ts"],
+        "added": [
+          "tests/cycle33-task-selection-custody.test.ts",
+          "docs/program/CYCLE33_TASK_SELECTION_CUSTODY.md"
+        ]
+      },
+      "files": [
+        {
+          "path": "src/lib/workflows/task-correction-review.ts",
+          "sha256": "bd7b40ffe4b077ec6e8a57f100de4620c8f12dfdc79464a67c002a60a38439cc"
+        },
+        {
+          "path": "tests/cycle33-task-selection-custody.test.ts",
+          "sha256": "20dfc2af029552beb1e115875ae4d077d981b20e9e20b0755dae34bb4c63516d"
+        },
+        {
+          "path": "docs/program/CYCLE33_TASK_SELECTION_CUSTODY.md",
+          "sha256": "88feee43c87dab10b7f5432560a06492c221075271af6ad3922cd93c18713b0e"
+        }
+      ],
+      "local_cases_passed": 30,
+      "hosted_evidence": "SEPARATE_EXACT_HEAD_REQUIRED",
+      "author_proof_sha256": "97e0a468f61e07def0f0b9781e8533498d3b20f105cfd28735eca2a2f0bebc4f",
+      "independent_peer_proof_sha256": "5aa21257a7c89501749fb45af5f9060ad696a4dd26376214124414d375bb6285",
+      "delivery": {
+        "pr": 282,
+        "branch": "codex/cycle33-v1-task-selection",
+        "head": "2ae516f0ddcdc68720c153f2eb45124cc6c39d62",
+        "source_author_unchanged": true
+      }
+    },
+    {
+      "module": "addon-navigation",
+      "commit": "1d8202fb3825950b458a2a4ed330406f0a207665",
+      "sole_parent": "038b64acad56e436a016905dfec87aef86dcfbc8",
+      "delta": {
+        "modified": ["src/lib/workflows/addon-readiness-guide.ts"],
+        "added": [
+          "tests/cycle33-addon-navigation-currentness.test.ts",
+          "docs/program/CYCLE33_ADDON_NAVIGATION_CURRENTNESS.md"
+        ]
+      },
+      "files": [
+        {
+          "path": "src/lib/workflows/addon-readiness-guide.ts",
+          "sha256": "3a784566054c6b746fadf1d0b212bd763e638a64a21ec6d5d75cdf39d56784d9"
+        },
+        {
+          "path": "tests/cycle33-addon-navigation-currentness.test.ts",
+          "sha256": "17db96149c96df953a50f11c4c3f59c0845fde7a9516ac6f6722f59680ce9d80"
+        },
+        {
+          "path": "docs/program/CYCLE33_ADDON_NAVIGATION_CURRENTNESS.md",
+          "sha256": "586c08b19c9a3631d088476360557bc5916e9cae6d9356eb037c068ea6972e16"
+        }
+      ],
+      "local_cases_passed": 28,
+      "hosted_evidence": "SEPARATE_EXACT_HEAD_REQUIRED",
+      "author_proof_sha256": "613c51a473de173c7431edbda9f006c226eda62ed729fcabd6d60c50b00409f2",
+      "independent_peer_proof_sha256": "7601cb6f39a8a60a27439603b9db9172740bdf03381aa2d23463881e8cb14e81",
+      "delivery": {
+        "pr": 283,
+        "branch": "codex/cycle33-v1-addon-navigation",
+        "head": "a612f8334945ac4767c865892d7185f47efc3f41",
+        "source_author_unchanged": true
+      }
+    }
+  ],
+  "owner_proposal": {
+    "pr": 280,
+    "head": "dba3d2571ff5a1805ffae2be265ded628e97a18e",
+    "status": "PROPOSAL_NOT_APPROVED",
+    "roles_assigned": 0,
+    "roles_required": 11,
+    "operational_cases": "A01_A12_NOT_RUN"
+  },
+  "physical_recovery": {
+    "main_scenario": "OWNER_WITNESSED_MAIN_SYNTHETIC_LOSS_PASS_ONLY",
+    "duplicate": "UNKNOWN_UNVERIFIED",
+    "private_records": "NOT_MODIFIED"
+  },
+  "operational_ready": false,
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "combined_local": {
+    "cases": 3,
+    "test": "tests/cycle33-v1-essential-integrated.test.ts",
+    "test_sha256": "1b73a5da8952a34a1ba5304b6df402416f83e66c7a6240fd757b7c4566e4e314",
+    "raw_json_sha256": "f907d08c8f34b148ad1d363608713234f5dd1cb04eee02d5a44ddd59c86def4c",
+    "author_proof_sha256": "a62cf5b09827def4ad24e1e9aea44b9656a85568475b7dfc59118a4a51d09d5d",
+    "independent_review": "ROOT_READ_SOURCE_CLEAR"
+  },
+  "source_support_local": {
+    "new_finite_cases": 43,
+    "raw_json_sha256": "ee5a604cac49978c9c57d0a812bf857a700b28d1feeb36e1d9808b0f28a22926",
+    "affected_existing_cases_passed": 66,
+    "existing_cases_filtered": 116,
+    "existing_raw_json_sha256": "042cea3bd4673e88cdda287689f45e546c3ef903b9a8648f633477345717df63",
+    "full_existing_cohorts_fresh_pass": false
+  },
+  "correction_hosted": {
+    "pr": 281,
+    "head": "974675f6f616e02173e571bb65984da509786f79",
+    "push_run": 42278632848,
+    "pr_run": 42278683772,
+    "each_event": {
+      "continuation_passed": 142,
+      "source_passed": 48,
+      "failed": 0,
+      "skipped": 0
+    },
+    "original_case_identities_preserved": true,
+    "independent_audit_sha256": "d8644f1f563147b596feae741ac0da3827bb6c305a5e11e82c0cb04802b5fb1a",
+    "full_foundation_pass": false
+  },
+  "combined_declared": {
+    "application_cases": 993,
+    "reports": 14,
+    "distinct_test_files": 36,
+    "native_browser_cases": 9,
+    "production_off_cases": 3,
+    "screenshot_source_pairs": 63,
+    "test_budgets_changed": false,
+    "original_841_browser_sequence_changed": false,
+    "new_152_in_separate_bounded_job": true,
+    "acceptance": "ONLY_ACTUAL_EXACT_HEAD_ARTIFACTS"
+  },
+  "independent_root_review_sha256": "86f18f11e3b88b4f314feafd54e848258efb6e6f0f7a8878d78814df1b1c97c2",
+  "independent_support_workflow_review_sha256": "c778646d76140527dc598d7d4951ea274e5a4045a394be0720d4aeaf8f8336b2"
+}
