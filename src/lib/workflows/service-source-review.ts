@@ -58,7 +58,7 @@ function pin(input: ServiceSourceReviewInput) {
 }
 /** Original guide owns stale/UNKNOWN custody; original C22 reader owns property
  * access and published immutability. This consumer creates no competing hold. */
-export function assertServiceSourceReview(view: ServiceSourceRead) {
+function captureServiceSourceReview(view: ServiceSourceRead) {
   const p = prototypeFields(view, ['context', 'property']);
   if (Object.keys(p).length !== 2)
     throw Error('The two original service reader handles are required');
@@ -84,6 +84,10 @@ export function assertServiceSourceReview(view: ServiceSourceRead) {
     throw Error(
       'Exact original request context, property and issued job required',
     );
+  return { context, property };
+}
+export function assertServiceSourceReview(view: ServiceSourceRead) {
+  captureServiceSourceReview(view);
 }
 /** Explicitly selected staff context, not a recorded request-to-job FK. */
 export async function readServiceSourceReview(
@@ -116,8 +120,7 @@ export async function readServiceSourceReview(
 /** An ephemeral drill-down over the original allowlisted readers. No FK is
  * inferred from a shared property, date, summary, finding label or request text. */
 export function readServiceSourceLineage(view: ServiceSourceRead) {
-  assertServiceSourceReview(view);
-  const { context, property } = view,
+  const { context, property } = captureServiceSourceReview(view),
     job = inspectPropertyServiceJob(property, property.selected_job_id);
   return Object.freeze({
     request: context.request,
@@ -159,14 +162,11 @@ export async function inspectServiceSourceReport(
   view: ServiceSourceRead,
   reference: PassportReportReference,
 ) {
-  assertServiceSourceReview(view);
-  const job = inspectPropertyServiceJob(
-    view.property,
-    view.property.selected_job_id,
-  );
+  const { context, property } = captureServiceSourceReview(view);
+  const job = inspectPropertyServiceJob(property, property.selected_job_id);
   inspectPublishedServiceReport(job.history, reference);
-  const report = await openServiceCompletionReport(view.context, reference);
-  assertServiceSourceReview(view);
+  const report = await openServiceCompletionReport(context, reference);
+  assertServiceSourceReview({ context, property });
   if (
     report.selected_job_association !== 'EXACT_RECORDED_JOB_LINK' ||
     !report.completion ||
