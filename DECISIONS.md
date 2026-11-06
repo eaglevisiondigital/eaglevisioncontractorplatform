@@ -2141,3 +2141,27 @@ and both private folders. Original recovery/P1-on13/customer14/4B, Auth/MFA, NMI
 Netlify, financial and production controls remain in force. No hosted, financial,
 message, dispatch, restoration, deployment or merge action.
 **Release1.0 NOT READY / NOT AUTHORIZED.**
+
+## November6 · coordinated V1 reader and CI reconciliation
+
+Parent PR284 exact67cf660 now has independently verified841 retained plus152
+new scoped cases in both hosted events,9 responsive native/3OFF browser cases and
+63 screenshot/source pairs. Its25 successful/five cancelled workflow outcomes are
+separate from complete Foundation acceptance. Original45-minute cancellations,
+font-installation gaps and conflicting270-case history remain accurately retained
+in the [source-bound ledger](docs/program/CYCLE33_V1_NEXT_CI.json).
+
+Two reproduced native reader defects are corrected in separate draft PR286
+(maintenance occurrence custody1779eec) and PR287 (owner refresh0ec0f1a). Main's
+[combined candidate](docs/program/CYCLE33_V1_NEXT_COORDINATED.md) records actual
+source/test/review limits; a new head earns separate CI. Existing engines,
+interfaces, canonical25 feature records/original18 IDs and baseline statuses remain.
+The independently reviewed [single D1 form](docs/program/CYCLE33_V1_D1_RETURN_FORM.md)
+is draft285, with eleven UNASSIGNED roles, complete writer inventory and separation
+requirements. PR280 scope remains proposed; D2/D3 stay separate and A01–A12 NOT_RUN.
+
+Main owner-witnessed November4 synthetic loss PASS only; duplicateUNKNOWN/UNVERIFIED
+and both private folders remain intact. No operational gate is closed by these
+local corrections. Preserve original P1/customer14/4B/Auth/MFA/NMI/recovery/design,
+migration and production gates. No merge, deployment, hosted/financial/communication,
+restoration or dispatch action. **Release1.0 NOT READY / NOT AUTHORIZED.**

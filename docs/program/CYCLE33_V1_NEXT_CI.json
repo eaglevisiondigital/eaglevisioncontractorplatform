@@ -1,0 +1,117 @@
+{
+  "schema": "propel-v1-next-ci-evidence-v1",
+  "tested_head": "67cf66072e3aeeb4bbe645cda7385257bb3f9978",
+  "tested_tree": "4e5571c590a96b19887652a416b9622f461bc5e6",
+  "main_pr": 284,
+  "workflow_counts": {
+    "SUCCESS": 25,
+    "CANCELLED": 5,
+    "FAILURE": 0,
+    "PENDING": 0
+  },
+  "dedicated_events": [
+    {
+      "event": "push",
+      "run": 42281053285,
+      "retained841_artifact": 13537842040,
+      "new152_artifact": 13536685733
+    },
+    {
+      "event": "pull_request",
+      "run": 42281068404,
+      "carrier": "8219e0137dd86b32fe60d9cb2448ed3c2474df23",
+      "retained841_artifact": 13538301959,
+      "new152_artifact": 13536760093
+    }
+  ],
+  "independent_exact_scope": {
+    "retained_cases": 841,
+    "retained_files": 31,
+    "new_cases": 152,
+    "native_browser_cases": 9,
+    "production_off_cases": 3,
+    "screenshot_source_pairs": 63,
+    "keyboard_journeys": 9,
+    "trusted_events": 369,
+    "browser_budget_ms": 150000,
+    "unit_budget_ms": 30000,
+    "retry": 0,
+    "full_foundation_pass": false
+  },
+  "audit_sha256": "40e37e52330392aa997eb891177828b3fc7d7cbbfc0e456ada39f8f456b647d1",
+  "cancellations": [
+    {
+      "run": 42281068613,
+      "event": "pull_request",
+      "workflow": "Foundation",
+      "classification": "45_MINUTE_LIMIT_DURING_NPM_TEST",
+      "terminal_unit_json": false,
+      "full_coverage": false
+    },
+    {
+      "run": 42281053395,
+      "event": "push",
+      "workflow": "Foundation",
+      "classification": "45_MINUTE_LIMIT_DURING_NPM_TEST",
+      "terminal_unit_json": false,
+      "full_coverage": false
+    },
+    {
+      "run": 42281068432,
+      "event": "pull_request",
+      "workflow": "Isolated crew-day",
+      "classification": "8_MINUTE_LIMIT_DURING_SIGNED_UBUNTU_FONT_INSTALL",
+      "assertions": "SKIPPED",
+      "artifacts": 0
+    },
+    {
+      "run": 42281053141,
+      "event": "push",
+      "workflow": "Isolated crew-day",
+      "classification": "8_MINUTE_LIMIT_DURING_SIGNED_UBUNTU_FONT_INSTALL",
+      "assertions": "SKIPPED",
+      "artifacts": 0
+    },
+    {
+      "run": 42281068507,
+      "event": "pull_request",
+      "workflow": "Cycle6",
+      "classification": "10_MINUTE_LIMIT_AFTER_INSTALL",
+      "unit_pass": 346,
+      "unit_files": 11,
+      "native_browser": "CANCELLED",
+      "production_off": "SKIPPED",
+      "screenshots": 12,
+      "terminal_browser_json": false
+    }
+  ],
+  "foundation_limits": {
+    "partial_failed_labels": {
+      "push": 16,
+      "pull_request": 15
+    },
+    "terminal_failure_messages": false,
+    "shallow_checkout_observed": true,
+    "shallow_checkout_as_cause": "NOT_DEMONSTRATED",
+    "recovery_build_staging_browser_after_cutoff": "MISSING",
+    "sibling_postgres17": "SUCCESS_SEPARATE_SCOPE"
+  },
+  "history270": {
+    "push_run": 42175850111,
+    "push_pass": 270,
+    "pr_run": 42175879610,
+    "pr_pass": 249,
+    "pr_fail": 21,
+    "explicit_30s_timeouts": 18,
+    "dependent_assertion_failures": 3,
+    "source_and_config_equal": true,
+    "exclusive_cause": "UNKNOWN",
+    "coarse_resource_samples": 11,
+    "original_budgets_and_failures_preserved": true,
+    "supplementary_pass_is_not_original_repair": true
+  },
+  "cancellation_history_audit_sha256": "d2b4ee4fe91a259a9bdc42db94f0467ed01b63762a96979b730b653b0a9cf94a",
+  "new_candidate_ci": "NOT_RUN_AT_AUTHORING",
+  "manual_successful_job_reruns": 0,
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

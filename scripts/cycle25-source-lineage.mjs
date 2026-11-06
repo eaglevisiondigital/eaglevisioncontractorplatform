@@ -2441,11 +2441,19 @@ export function admitCycle33OwnerRequirementSource(
     !Buffer.from(previous).equals(predecessor)
   )
     throw Error('Exact immutable C29 owner predecessor required');
-  if (
-    hash(reviewed) !== fixed.sha256 ||
-    !Buffer.from(current).equals(reviewed) ||
-    !Buffer.from(ports.read(path)).equals(reviewed)
-  )
+  if (hash(reviewed) !== fixed.sha256)
+    throw Error('Fresh exact reviewed owner requirement source required');
+  let admitted = reviewed;
+  if (!Buffer.from(current).equals(reviewed)) {
+    const successor = cycle33V1CoordinatedAuthors.find(
+      (a) => a.path === path && a.predecessor === fixed.commit,
+    );
+    if (!successor || hash(current) !== successor.sha256)
+      throw Error('Fresh exact reviewed owner requirement source required');
+    admitCycle33V1CoordinatedSource(path, current, reviewed, ports);
+    admitted = Buffer.from(current);
+  }
+  if (!Buffer.from(ports.read(path)).equals(admitted))
     throw Error('Fresh exact reviewed owner requirement source required');
   for (const companion of fixed.added) {
     const reviewedCompanion = Buffer.from(
@@ -2464,6 +2472,11 @@ export function admitCycle33OwnerRequirementSource(
       )
     )
       throw Error('Exact original C29 owner companion required');
+  if (
+    !admitted.equals(reviewed) &&
+    !Buffer.from(ports.read(path)).equals(admitted)
+  )
+    throw Error('Final fresh owner requirement source required');
   return {
     module: 'owner-requirement-input-continuity',
     source_commit: fixed.commit,
@@ -3067,6 +3080,158 @@ export function admitCycle33V1ContinuationPublished(
   return admitCycle33V1ContinuationSource(a.path, current, bytes, ports);
 }
 
+// Two exact third-stage native reader corrections. Historical profiles and results
+// remain immutable; admission is source/test evidence, never business authority.
+export const cycle33V1CoordinatedParent =
+  '67cf66072e3aeeb4bbe645cda7385257bb3f9978';
+export const cycle33V1CoordinatedAuthors = Object.freeze(
+  [
+    {
+      module: 'maintenance-occurrence-custody',
+      commit: '1779eec05926670ff09f2699022144e8b30ee6a7',
+      predecessor: '2edb76df29c36328f39a19277b287c8e9b16a940',
+      path: 'src/lib/workflows/plan-cancellation-review.ts',
+      predecessor_sha256:
+        '9efab5226a57c15084fe726c6cc4576830dafe42db17993ceade53553f8e705d',
+      sha256:
+        '66d732bddd87b9802e124c21905e4c760df9ca67511a1ab7b74714ed0149a479',
+      cases: 28,
+      added: [
+        {
+          path: 'docs/program/CYCLE33_MAINTENANCE_OCCURRENCE_CUSTODY.md',
+          sha256:
+            '6bb17a4e7c7dbb8e538ad377e433e1c18fee8a1b934afe618bfc9e5a15b0f62c',
+        },
+        {
+          path: 'tests/cycle33-maintenance-occurrence-custody.test.ts',
+          sha256:
+            'c7dd4dec4225862982ac5d7fb2e63ba18d7ae26585b2e4f2107ed0f8f9903ee1',
+        },
+      ],
+    },
+    {
+      module: 'owner-refresh-access-continuity',
+      commit: '0ec0f1ace80c5e651833ba7e0c988339a4cbd453',
+      predecessor: '14734003b472c2633bf8e87526c6a4260696d914',
+      path: 'src/lib/workflows/owner-action-verification.ts',
+      predecessor_sha256:
+        '2f68502ebb1c6cb7944941a92b64b0d26e3c4916bfc7342ecdb4167ad861f5ad',
+      sha256:
+        'e96a107487e8597af32dbefb60870770a3d197114836877890201e0a3cb3425c',
+      cases: 25,
+      added: [
+        {
+          path: 'docs/program/CYCLE33_OWNER_REFRESH_ACCESS_CONTINUITY.md',
+          sha256:
+            'cac6388539768d8e92d28cbc6f92b77e310b14acac3d78da1b0a3bed4b88c577',
+        },
+        {
+          path: 'tests/cycle33-owner-refresh-access-continuity.test.ts',
+          sha256:
+            '4a43d0b64d5206480bf044049b2dde0aac6671bc569a4d284b069969de0cf016',
+        },
+      ],
+    },
+  ].map((a) => {
+    const old =
+      a.module === 'maintenance-occurrence-custody'
+        ? cycle33V1Authors.find((p) => p.commit === a.predecessor)
+        : cycle33OwnerRequirementAuthor;
+    const earlier =
+      a.module === 'maintenance-occurrence-custody'
+        ? old.original_companions
+        : [
+            {
+              path: 'docs/program/CYCLE29_OWNER_CURRENTNESS.md',
+              sha256:
+                '32d3c68acce491927dc0a0238645bba539157a06982a17add578c8bf074c13da',
+            },
+            {
+              path: 'tests/cycle29-owner-currentness.test.ts',
+              sha256:
+                '519ddfe2b001411b2cd38b898635ff3f327e82d4ef607be38e9d92335a6fb806',
+            },
+          ];
+    return Object.freeze({
+      ...a,
+      parent: cycle33V1CoordinatedParent,
+      added: Object.freeze(a.added.map(Object.freeze)),
+      original_companions: Object.freeze(
+        [...old.added, ...earlier].map(Object.freeze),
+      ),
+    });
+  }),
+);
+export function admitCycle33V1CoordinatedSource(
+  path,
+  current,
+  previous,
+  supplied = {},
+) {
+  const p = { ...cycle25SourcePorts, ...supplied },
+    owners = cycle33V1CoordinatedAuthors.filter((a) => a.path === path),
+    hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
+  if (owners.length !== 1)
+    throw Error('No literal reviewed V1 coordinated owner');
+  const a = owners[0];
+  if (
+    [a.predecessor, a.parent, a.commit].some(
+      (c) => p.type(c) !== 'commit' || p.mode(c, path) !== '100644',
+    ) ||
+    p.parent(a.commit) !== cycle33V1CoordinatedParent ||
+    a.added.length !== 2 ||
+    a.original_companions.length !== 4 ||
+    p.delta(a.commit) !==
+      ['M\t' + a.path, ...a.added.map((f) => 'A\t' + f.path)]
+        .sort()
+        .join('\n') ||
+    a.added.some((f) => p.mode(a.commit, f.path) !== '100644') ||
+    a.original_companions.some(
+      (f) => p.mode(a.predecessor, f.path) !== '100644',
+    )
+  )
+    throw Error(
+      'Exact sole-parent regular V1 coordinated M1/A2 author required',
+    );
+  const old = Buffer.from(p.git(a.predecessor, path)),
+    base = Buffer.from(p.git(a.parent, path)),
+    reviewed = Buffer.from(p.git(a.commit, path));
+  if (
+    hash(old) !== a.predecessor_sha256 ||
+    !base.equals(old) ||
+    !Buffer.from(previous).equals(old)
+  )
+    throw Error('Exact immutable V1 coordinated predecessor required');
+  if (
+    hash(reviewed) !== a.sha256 ||
+    !Buffer.from(current).equals(reviewed) ||
+    !Buffer.from(p.read(path)).equals(reviewed)
+  )
+    throw Error('Fresh exact reviewed V1 coordinated source required');
+  for (const [commit, files] of [
+    [a.commit, a.added],
+    [a.predecessor, a.original_companions],
+  ])
+    for (const f of files) {
+      const bytes = Buffer.from(p.git(commit, f.path));
+      if (
+        hash(bytes) !== f.sha256 ||
+        !Buffer.from(p.read(f.path)).equals(bytes)
+      )
+        throw Error('Exact current V1 coordinated companion required');
+    }
+  if (!Buffer.from(p.read(path)).equals(reviewed))
+    throw Error('Final fresh V1 coordinated source required');
+  return {
+    module: a.module,
+    source_commit: a.commit,
+    path,
+    authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+    business_authority: false,
+    restore_adapter: false,
+  };
+}
+
 export function admitCycle33V1Source(path, current, previous, supplied = {}) {
   const ports = { ...cycle25SourcePorts, ...supplied },
     owners = cycle33V1Authors.filter((a) => a.path === path),
@@ -3129,7 +3294,26 @@ export function admitCycle33V1Source(path, current, previous, supplied = {}) {
           });
         throw cause;
       }
-    } else throw Error('Fresh exact reviewed V1 source required');
+    } else {
+      const coordinated = cycle33V1CoordinatedAuthors.find(
+        (s) => s.path === path && s.predecessor === a.commit,
+      );
+      if (!coordinated || hash(current) !== coordinated.sha256)
+        throw Error('Fresh exact reviewed V1 source required');
+      try {
+        admitCycle33V1CoordinatedSource(path, current, reviewed, ports);
+      } catch (cause) {
+        if (cause?.message === 'Final fresh V1 coordinated source required')
+          throw new Error('Final fresh reviewed V1 source required', { cause });
+        if (
+          cause?.message === 'Exact current V1 coordinated companion required'
+        )
+          throw new Error('Exact current reviewed V1 companion required', {
+            cause,
+          });
+        throw cause;
+      }
+    }
     admitted = Buffer.from(current);
   }
   if (!Buffer.from(ports.read(path)).equals(admitted))
@@ -3357,6 +3541,67 @@ export function admitCycle33V1C16TestCompatibility(
     module: 'cycle16-independent-review-test-compatibility',
     source_commit: fixed.commit,
     path: fixed.path,
+    authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+    business_authority: false,
+    restore_adapter: false,
+  };
+}
+
+// One literal CI-test successor. Original C17 metadata remains immutable.
+export const cycle33V1C17Compatibility = Object.freeze({
+  ...{
+    commit: 'b947fe0e71c6d61fbe134f9311f259cdc36da49f',
+    parent: '67cf66072e3aeeb4bbe645cda7385257bb3f9978',
+    published: 'ab7a95596f89f7bceb1fc089cdaa790a55fb10d5',
+    path: 'tests/cycle17-integration.test.ts',
+    published_sha256:
+      'bafd0e74bd26de2aa57e10861839781dcc2cc356d0a4ab0f39d4fa8f0d28d826',
+    sha256: '6e68a895ce33c1bcda2ffb5a660aa27f9abf0f89a33c12439c9baf6a31a74589',
+  },
+  companion: Object.freeze({
+    path: 'docs/program/CYCLE33_C17_CLOSEOUT_SOURCE_COMPATIBILITY.md',
+    sha256: '09bda54a40beac7263ea7300f755d28d1a53e764d5c64734db73cf263b3405cb',
+  }),
+});
+export function admitCycle33V1C17Compatibility(file, current, supplied = {}) {
+  const p = { ...cycle25SourcePorts, ...supplied },
+    a = cycle33V1C17Compatibility,
+    hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
+  if (file?.path !== a.path || file.sha256 !== a.published_sha256)
+    throw Error('Exact immutable C17 compatibility metadata required');
+  if (
+    [a.published, a.parent, a.commit].some(
+      (c) => p.type(c) !== 'commit' || p.mode(c, a.path) !== '100644',
+    ) ||
+    p.parent(a.commit) !== a.parent ||
+    p.mode(a.commit, a.companion.path) !== '100644' ||
+    p.delta(a.commit) !==
+      ['M\t' + a.path, 'A\t' + a.companion.path].sort().join('\n')
+  )
+    throw Error('Exact sole-parent regular C17 M1/A1 CI author required');
+  const old = Buffer.from(p.git(a.published, a.path)),
+    base = Buffer.from(p.git(a.parent, a.path)),
+    reviewed = Buffer.from(p.git(a.commit, a.path)),
+    companion = Buffer.from(p.git(a.commit, a.companion.path));
+  if (hash(old) !== a.published_sha256 || !base.equals(old))
+    throw Error('Exact immutable original C17 test required');
+  if (
+    hash(reviewed) !== a.sha256 ||
+    !Buffer.from(current).equals(reviewed) ||
+    !Buffer.from(p.read(a.path)).equals(reviewed)
+  )
+    throw Error('Fresh exact reviewed C17 compatibility test required');
+  if (
+    hash(companion) !== a.companion.sha256 ||
+    !Buffer.from(p.read(a.companion.path)).equals(companion)
+  )
+    throw Error('Exact current C17 compatibility companion required');
+  if (!Buffer.from(p.read(a.path)).equals(reviewed))
+    throw Error('Final fresh C17 compatibility test required');
+  return {
+    module: 'c17-closeout-source-compatibility',
+    source_commit: a.commit,
+    path: a.path,
     authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
     business_authority: false,
     restore_adapter: false,

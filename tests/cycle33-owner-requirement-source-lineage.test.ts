@@ -10,6 +10,11 @@ type Ports = {
   mode: (commit: string, path: string) => string;
 };
 const source: {
+  cycle33V1CoordinatedAuthors: readonly {
+    path: string;
+    predecessor: string;
+    commit: string;
+  }[];
   cycle25Parent: string;
   cycle25SourcePorts: Ports;
   cycle29Authors: readonly {
@@ -44,7 +49,15 @@ const source: {
 const p = source.cycle25SourcePorts,
   fixed = source.cycle33OwnerRequirementAuthor,
   old = source.cycle29Authors.find((s) => s.module === 'owner-currentness')!,
-  current = () => p.git(fixed.commit, fixed.path),
+  current = () => {
+    const actual = readFileSync(fixed.path),
+      successor = source.cycle33V1CoordinatedAuthors.find(
+        (a) => a.path === fixed.path && a.predecessor === fixed.commit,
+      );
+    return successor && actual.equals(p.git(successor.commit, fixed.path))
+      ? actual
+      : p.git(fixed.commit, fixed.path);
+  },
   previous = () => p.git(fixed.predecessor, fixed.path),
   baseline = () => p.git(source.cycle25Parent, fixed.path),
   admit = (ports?: Partial<Ports>, bytes = current(), before = previous()) =>
@@ -88,7 +101,9 @@ it('admits the exact fresh native bundle as build-only source evidence', () => {
     restore_adapter: false,
   });
   for (const path of [fixed.path, ...fixed.added.map((f) => f.path)])
-    expect(readFileSync(path)).toEqual(p.git(fixed.commit, path));
+    expect(readFileSync(path)).toEqual(
+      path === fixed.path ? current() : p.git(fixed.commit, path),
+    );
 });
 it('preserves the complete original C25 through C29 chain before the finite successor', () => {
   const result = source.admitCycle25Source(fixed.path, current(), baseline());

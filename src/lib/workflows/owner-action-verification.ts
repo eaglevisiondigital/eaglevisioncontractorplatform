@@ -1,6 +1,7 @@
 import { freezePrototype, prototypeFields } from '../program/prototype-source';
 import {
   assertVerifiedOwnerBriefingCurrent,
+  assertVerifiedOwnerComparisonCurrent,
   compareVerifiedOwnerBriefing,
   inspectVerifiedOwnerPriority,
   continueVerifiedOwnerPriority,
@@ -178,7 +179,7 @@ export function compareOwnerActionRefresh(
         : 'SOURCE_CHANGED_RESELECT_REQUIRED';
     if (unchanged) retained = { key: row.key, ...row.source };
   }
-  assertVerifiedOwnerBriefingCurrent(current);
+  assertVerifiedOwnerComparisonCurrent(comparison);
   return freezePrototype({
     comparison,
     selection: retained,
