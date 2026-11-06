@@ -326,11 +326,13 @@ export async function continuePublishedServiceReview(
     check(b);
     if (callback(expected, live) !== generation)
       throw new Withdrawn('Callback changed before dispatch');
+    check(b);
     invoked = true;
     await expected(b.read!.identity.job_id, 'maintenance');
     check(b);
     if (callback(expected, live) !== generation)
       throw new Withdrawn('Callback changed after dispatch');
+    check(b);
     return {
       status: 'LOCAL_REVIEW_NAVIGATION_ONLY' as const,
       job_id: b.read!.identity.job_id,
