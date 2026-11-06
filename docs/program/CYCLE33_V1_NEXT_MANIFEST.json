@@ -1,0 +1,248 @@
+{
+  "schema": "propel-v1-coordinated-reader-source-v1",
+  "parent_pr": 284,
+  "parent_commit": "67cf66072e3aeeb4bbe645cda7385257bb3f9978",
+  "candidate_commit": "BOUND_TO_ACTUAL_CLEAN_GIT_HEAD_BY_WORKFLOW_NOT_SELF_ASSERTED",
+  "native_authors": [
+    {
+      "module": "maintenance-occurrence-custody",
+      "commit": "1779eec05926670ff09f2699022144e8b30ee6a7",
+      "predecessor": "2edb76df29c36328f39a19277b287c8e9b16a940",
+      "path": "src/lib/workflows/plan-cancellation-review.ts",
+      "predecessor_sha256": "9efab5226a57c15084fe726c6cc4576830dafe42db17993ceade53553f8e705d",
+      "sha256": "66d732bddd87b9802e124c21905e4c760df9ca67511a1ab7b74714ed0149a479",
+      "cases": 28,
+      "added": [
+        {
+          "path": "docs/program/CYCLE33_MAINTENANCE_OCCURRENCE_CUSTODY.md",
+          "sha256": "6bb17a4e7c7dbb8e538ad377e433e1c18fee8a1b934afe618bfc9e5a15b0f62c"
+        },
+        {
+          "path": "tests/cycle33-maintenance-occurrence-custody.test.ts",
+          "sha256": "c7dd4dec4225862982ac5d7fb2e63ba18d7ae26585b2e4f2107ed0f8f9903ee1"
+        }
+      ],
+      "parent": "67cf66072e3aeeb4bbe645cda7385257bb3f9978",
+      "original_companions": [
+        {
+          "path": "docs/program/CYCLE33_MAINTENANCE_REVIEW_REFERENCE_CUSTODY.md",
+          "sha256": "e5a1e64827968e6b27472e2161f7ff561009ac6cc2194b33190faf16b512041e"
+        },
+        {
+          "path": "tests/cycle33-maintenance-review-reference-custody.test.ts",
+          "sha256": "e8a5b1be434241fbabb043c37638ca48c4b53c590bda082ef7936c83ce4553f3"
+        },
+        {
+          "path": "tests/cycle31-maintenance-proposal-input.test.ts",
+          "sha256": "15edfd41e18f8f67a074763c26977d1252bd839406888eab9651ad8bf189521e"
+        },
+        {
+          "path": "docs/program/CYCLE31_MAINTENANCE_PROPOSAL_INPUT.md",
+          "sha256": "d9464a37a1830968b63c5c9f066f5d675546a996b915dd3d4e53c409a4c4c060"
+        }
+      ]
+    },
+    {
+      "module": "owner-refresh-access-continuity",
+      "commit": "0ec0f1ace80c5e651833ba7e0c988339a4cbd453",
+      "predecessor": "14734003b472c2633bf8e87526c6a4260696d914",
+      "path": "src/lib/workflows/owner-action-verification.ts",
+      "predecessor_sha256": "2f68502ebb1c6cb7944941a92b64b0d26e3c4916bfc7342ecdb4167ad861f5ad",
+      "sha256": "e96a107487e8597af32dbefb60870770a3d197114836877890201e0a3cb3425c",
+      "cases": 25,
+      "added": [
+        {
+          "path": "docs/program/CYCLE33_OWNER_REFRESH_ACCESS_CONTINUITY.md",
+          "sha256": "cac6388539768d8e92d28cbc6f92b77e310b14acac3d78da1b0a3bed4b88c577"
+        },
+        {
+          "path": "tests/cycle33-owner-refresh-access-continuity.test.ts",
+          "sha256": "4a43d0b64d5206480bf044049b2dde0aac6671bc569a4d284b069969de0cf016"
+        }
+      ],
+      "parent": "67cf66072e3aeeb4bbe645cda7385257bb3f9978",
+      "original_companions": [
+        {
+          "path": "tests/cycle33-owner-requirement-input-continuity.test.ts",
+          "sha256": "b5df7ce10d24328e34055b310909034e4fb9a8bc941ab033ef06397057e22531"
+        },
+        {
+          "path": "docs/program/CYCLE33_OWNER_REQUIREMENT_INPUT_CONTINUITY.md",
+          "sha256": "dfbb6be6a0f5ecc1a828c29d214640c800868b1fbdb3c2275d253e315c2c5ab4"
+        },
+        {
+          "path": "docs/program/CYCLE29_OWNER_CURRENTNESS.md",
+          "sha256": "32d3c68acce491927dc0a0238645bba539157a06982a17add578c8bf074c13da"
+        },
+        {
+          "path": "tests/cycle29-owner-currentness.test.ts",
+          "sha256": "519ddfe2b001411b2cd38b898635ff3f327e82d4ef607be38e9d92335a6fb806"
+        }
+      ]
+    }
+  ],
+  "ci_only_author": {
+    "commit": "b947fe0e71c6d61fbe134f9311f259cdc36da49f",
+    "parent": "67cf66072e3aeeb4bbe645cda7385257bb3f9978",
+    "published": "ab7a95596f89f7bceb1fc089cdaa790a55fb10d5",
+    "path": "tests/cycle17-integration.test.ts",
+    "published_sha256": "bafd0e74bd26de2aa57e10861839781dcc2cc356d0a4ab0f39d4fa8f0d28d826",
+    "sha256": "6e68a895ce33c1bcda2ffb5a660aa27f9abf0f89a33c12439c9baf6a31a74589",
+    "companion": {
+      "path": "docs/program/CYCLE33_C17_CLOSEOUT_SOURCE_COMPATIBILITY.md",
+      "sha256": "09bda54a40beac7263ea7300f755d28d1a53e764d5c64734db73cf263b3405cb"
+    },
+    "draft_pr": 288
+  },
+  "separate_drafts": {
+    "d1": {
+      "pr": 285,
+      "commit": "cfd8b8a9fd7378b5288b2d821ddfc5b55b3892d9"
+    },
+    "maintenance": {
+      "pr": 286,
+      "commit": "1779eec05926670ff09f2699022144e8b30ee6a7"
+    },
+    "owner": {
+      "pr": 287,
+      "commit": "0ec0f1ace80c5e651833ba7e0c988339a4cbd453"
+    }
+  },
+  "historical_metadata": {
+    "unchanged_non_function_export_count": 36,
+    "historical_pin_rewrites": 0
+  },
+  "independent_reviews": [
+    {
+      "agent": "/root/cycle25_finance_intelligence_resume",
+      "scope": "Growth native exact Git tree",
+      "proof_sha256": "007d3b251c72e855786b335dd2db02ac8c8aaedf81dda28ed48f0d2e18416d30"
+    },
+    {
+      "agent": "/root/v1_independent_combined_review",
+      "scope": "Owner native exact Git tree",
+      "proof_sha256": "a692c960172e4cac37a89d765fca42af13ce71cbb89ccbd26d9c7562fd1ea79d"
+    },
+    {
+      "agent": "/root/v1_independent_combined_review",
+      "scope": "D1 final source form",
+      "proof_sha256": "a91244b9997e1e929677e252c2550a637acefd79b0e67d84327ac5130349fcb7"
+    },
+    {
+      "agent": "/root/v1_independent_combined_review",
+      "scope": "Two coordinated source helper ranges",
+      "proof_sha256": "a471337b3951973e40807510435b99a3b3a71a1eb061902c6d902dbd0d2e4e81"
+    },
+    {
+      "agent": "/root/cycle25_finance_intelligence_resume",
+      "scope": "Actual combined sources, protected/design files and combined3",
+      "proof_sha256": "83edd73dab2e6d8b54f1a96413f4c7dd0b16ab29b6b7d9acbbd127081d9cd0ea"
+    },
+    {
+      "agent": "/root/cycle33_independent_review",
+      "scope": "Corrected C17 actual consumer and literal helper",
+      "proof_sha256": "7237ec9bfd47ad4495efb83f520252ede0f52b97921bc8a323e7f955b72b7a47"
+    }
+  ],
+  "local_evidence": {
+    "combined3": {
+      "pass": 3,
+      "fail": 0,
+      "sha256": "84a7ecfa854e96b54a4d7dce92afec4a0eac51d48b6145ce61e8df9bbaddcd26"
+    },
+    "source58": {
+      "pass": 58,
+      "fail": 0,
+      "sha256": "d9190c30b3052508cf44b5c1606880226c2b1fdcf6373adfcda17d5bcaef87aa"
+    },
+    "retained_source145": {
+      "pass": 145,
+      "fail": 0,
+      "sha256": "322d8c8ba520cfc3409b9a05e8f004493ffd6b1c806d59bb5633eed38818f892"
+    },
+    "c17_source_initial26": {
+      "pass": 26,
+      "fail": 0,
+      "limited_to_initial_helper_coverage": true,
+      "sha256": "1b7f5cca30a5ff16075119bc61fc0eb34258a9e1ade8f3c22197eafbd9710f1d"
+    },
+    "c17_actual_consumer_red": [
+      {
+        "pass": 0,
+        "fail": 1,
+        "filtered": 25,
+        "sha256": "9f9cb2a6c6a4df027f816a44945bab0e4f709068b6b75655a97d7af53014b3d6"
+      },
+      {
+        "pass": 0,
+        "fail": 1,
+        "filtered": 26,
+        "sha256": "8b47960f099a49650bf4db215aacbf83a8bdd8aeccfc8451e8270009b46010b4"
+      }
+    ],
+    "c17_failed_only_green": {
+      "pass": 2,
+      "fail": 0,
+      "filtered": 25,
+      "single27_pass_claim": false,
+      "sha256": "31fe3b273bc98225fdcd130d7a20fc498ea056f10e37773485c21577b9ac759f"
+    }
+  },
+  "new_head_ci": {
+    "status": "NOT_RUN_AT_AUTHORING",
+    "strict_declared_cases": 1134,
+    "separate_repaired_c17_pass": 1,
+    "c17_filtered": 44,
+    "source_binding": "BEFORE_AND_FINAL_CLEAN_ACTUAL_TREE",
+    "original_unit_budget_ms": 30000,
+    "original_browser_budget_ms": 150000,
+    "retry": 0
+  },
+  "operational": {
+    "role_assignees": "ALL_ELEVEN_UNASSIGNED",
+    "D1": "OWNER_DECISION_REQUIRED",
+    "D2": "OWNER_DECISION_REQUIRED_SEPARATE",
+    "D3": "OWNER_DECISION_REQUIRED_SEPARATE",
+    "A01_A12": "ALL_NOT_RUN",
+    "adapter_authorized": false,
+    "release": "NOT_READY_NOT_AUTHORIZED",
+    "main_recovery": "OWNER_WITNESSED_MAIN_SYNTHETIC_LOSS_SCENARIO_PASS_ONLY",
+    "duplicate_recovery": "UNKNOWN_UNVERIFIED",
+    "private_run_folders": "NOT_READ_MODIFIED_OR_REPLAYED"
+  },
+  "files": {
+    ".github/workflows/cycle33-v1-essential-followup.yml": "d3d3fde6f05f549eedc5271a2584a9b048afc32c02b3608cbebd8ae45676e27e",
+    "CURRENT_BUILD_STATE.md": "75c59c5766686c793a0262a8cfbeb0ddee807801ffb53899382b6554186bf709",
+    "DECISIONS.md": "fae75e15614296b0a11be9a02dac19b47bf28a3a5fbfd45549018ac7e1ef0aaf",
+    "docs/FEATURE_ACCEPTANCE_REGISTER.md": "6117036042785565c859c08538a95e401abb14f871823f052b39d8169ed49432",
+    "docs/PROGRAM_DELIVERY_STATUS.md": "8a98c217412fd97913426254108961ad322d77f550539072736c1fcc815aa945",
+    "scripts/check-cycle17-integrity.mjs": "14f133282269af7db21de9fe9ef2ba6e2f5c11a1db5b84c25713339a2020bba2",
+    "scripts/cycle25-source-lineage.mjs": "2e90372caa39e867dc37046f8b94aa56c07acc915248d318bc03adf60a24dbc3",
+    "src/lib/workflows/owner-action-verification.ts": "e96a107487e8597af32dbefb60870770a3d197114836877890201e0a3cb3425c",
+    "src/lib/workflows/plan-cancellation-review.ts": "66d732bddd87b9802e124c21905e4c760df9ca67511a1ab7b74714ed0149a479",
+    "tests/cycle17-integration.test.ts": "6e68a895ce33c1bcda2ffb5a660aa27f9abf0f89a33c12439c9baf6a31a74589",
+    "tests/cycle33-owner-requirement-source-lineage.test.ts": "d4c3564da8d00ef1b42ffd79a5119605d024fc616104916a2796c7aeb9f7265c",
+    "tests/cycle33-v1-legacy-result-compatibility.test.ts": "62dbabb619381ed372e1a4b286299ef3d874ede228b95075c5860795382e9db4",
+    "tests/cycle33-v1-source-admission.test.ts": "11c0030f131126d67ae1a6223da59a93a3998cee60b89214f669b4b2ddbe414c",
+    "docs/program/CYCLE33_C17_CLOSEOUT_SOURCE_COMPATIBILITY.md": "09bda54a40beac7263ea7300f755d28d1a53e764d5c64734db73cf263b3405cb",
+    "docs/program/CYCLE33_MAINTENANCE_OCCURRENCE_CUSTODY.md": "6bb17a4e7c7dbb8e538ad377e433e1c18fee8a1b934afe618bfc9e5a15b0f62c",
+    "docs/program/CYCLE33_OWNER_REFRESH_ACCESS_CONTINUITY.md": "cac6388539768d8e92d28cbc6f92b77e310b14acac3d78da1b0a3bed4b88c577",
+    "docs/program/CYCLE33_V1_D1_RETURN_FORM.md": "9370d9fe72baa944524616267c17e505d2e73d923c982b0f51148aa5bf4ab737",
+    "docs/program/CYCLE33_V1_NEXT_CI.json": "4ff4e64e45c5baddb371abdcf376f2d36b378a486dd3681ff8ade3ffcbd10641",
+    "docs/program/CYCLE33_V1_NEXT_COORDINATED.md": "381fdbf1e53584096a3982243d2277bf10f76eb25c9e61534834bcd11ec8a911",
+    "tests/cycle33-c17-closeout-source-admission.test.ts": "90d3c939ed157893e14e27cf820a388d5e015f7b203494e3e73a4c1fb199fb2a",
+    "tests/cycle33-maintenance-occurrence-custody.test.ts": "c7dd4dec4225862982ac5d7fb2e63ba18d7ae26585b2e4f2107ed0f8f9903ee1",
+    "tests/cycle33-owner-refresh-access-continuity.test.ts": "4a43d0b64d5206480bf044049b2dde0aac6671bc569a4d284b069969de0cf016",
+    "tests/cycle33-v1-coordinated-currentness.test.ts": "31d3ecd2673728a1abd65a03609e59e6812d5fc8a0276c688cdfd7db7b1f6f9c",
+    "tests/cycle33-v1-coordinated-source-admission.test.ts": "ab848c3516328fd751eeb2a472f2ab11d8aef22a4ad3c7fbabe628f0415f709b"
+  },
+  "local_quality": {
+    "format_check": "PASS",
+    "strict_typecheck": "PASS",
+    "eslint": "PASS_ZERO_ERRORS_ONE_EXISTING_FAST_REFRESH_WARNING",
+    "build": "PASS_LOCAL_ONLY_EXISTING_CHUNK_WARNING",
+    "feature_evidence": "PASS_25_RECORDS_5_LOCKED_FILES_13_BINDINGS",
+    "whitespace": "PASS",
+    "complete_npm_check": "NOT_RUN_FULL_FOUNDATION_SEPARATE"
+  }
+}

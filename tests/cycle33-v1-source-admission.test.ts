@@ -32,6 +32,11 @@ const s: {
   cycle33V1Parent: string;
   cycle33V1Authors: readonly Author[];
   cycle33V1ContinuationAuthors: readonly Author[];
+  cycle33V1CoordinatedAuthors: readonly {
+    path: string;
+    predecessor: string;
+    commit: string;
+  }[];
   cycle33V1EssentialAuthors: readonly Author[];
   admitCycle33V1Source: (
     path: string,
@@ -67,6 +72,11 @@ const p = s.cycle25SourcePorts,
       first = next ? p.git(next.commit, a.path) : original;
     if (actual.equals(original)) return original;
     if (actual.equals(first)) return first;
+    const coordinated = s.cycle33V1CoordinatedAuthors.find(
+      (n) => n.path === a.path && n.predecessor === a.commit,
+    );
+    if (coordinated && actual.equals(p.git(coordinated.commit, a.path)))
+      return actual;
     const last = s.cycle33V1EssentialAuthors.find(
       (n) => n.predecessor === (next?.commit ?? a.commit),
     );

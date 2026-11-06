@@ -12,6 +12,11 @@ type Ports = {
 const s: {
   cycle25Parent: string;
   cycle25SourcePorts: Ports;
+  cycle33V1CoordinatedAuthors: readonly {
+    path: string;
+    predecessor: string;
+    commit: string;
+  }[];
   cycle33V1EssentialAuthors: readonly {
     path: string;
     predecessor: string;
@@ -112,6 +117,11 @@ for (const [module, expected] of [
           first = next ? p.git(next.commit, a.path) : original;
         if (actual.equals(original)) return original;
         if (actual.equals(first)) return first;
+        const coordinated = s.cycle33V1CoordinatedAuthors.find(
+          (n) => n.path === a.path && n.predecessor === a.commit,
+        );
+        if (coordinated && actual.equals(p.git(coordinated.commit, a.path)))
+          return actual;
         const last = s.cycle33V1EssentialAuthors.find(
           (n) => n.predecessor === (next?.commit ?? a.commit),
         );

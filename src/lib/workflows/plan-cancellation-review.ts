@@ -329,22 +329,45 @@ export function planCancellationFacts(review: PlanCancellationReview) {
 export function planCancellationOccurrenceFacts(
   selected: PlanCancellationSelection,
 ) {
-  assertSelection(selected);
-  const row = selected.selection.occurrence,
-    plan = selected.review.saved.evidence.plans.filter(
+  // Read caller-owned wrappers before native authorization/source guards. The
+  // retained view, saved evidence, desk and occurrence remain the authorities.
+  const refs = prototypeFields(selected, ['review', 'selection']),
+    current = {
+      review: prototypeFields(refs.review, [
+        'view',
+        'saved',
+        'desk',
+        'purpose',
+        'gate',
+      ]),
+      selection: prototypeFields(refs.selection, [
+        'mode',
+        'organization_id',
+        'occurrence',
+        'requested_purpose',
+        'source',
+        'source_sha256',
+        'coverage',
+        'authority',
+        'integrity',
+      ]),
+    } as unknown as PlanCancellationSelection;
+  assertSelection(current);
+  const row = current.selection.occurrence,
+    plan = current.review.saved.evidence.plans.filter(
       (p) =>
         p.id === row.plan_reference.id &&
         p.revision === row.plan_reference.revision,
     );
   if (plan.length !== 1) throw Error('Exact single saved native plan required');
   return freezePrototype({
-    identity: selected.review.view.identity,
+    identity: current.review.view.identity,
     occurrence_key: row.key,
     occurrence_kind: row.selection.kind,
     due_on: row.recorded_due_on,
     date_basis: row.date_basis,
     plan: plan[0],
-    requested_purpose: selected.review.purpose,
+    requested_purpose: current.review.purpose,
     requested_purpose_is: 'REVIEW_CONTEXT_NOT_CONSENT' as const,
     channel: row.channel,
     recorded_channel: row.observed_contact_v1.observed_channel_state,
@@ -354,7 +377,7 @@ export function planCancellationOccurrenceFacts(
     suppression: row.suppression,
     enrollment: row.enrollment,
     renewal_terms: row.renewal_terms,
-    followups: selected.review.saved.evidence.followups.filter(
+    followups: current.review.saved.evidence.followups.filter(
       (f) => f.plan_id === plan[0].id,
     ),
     native_plan_cancellation: 'UNSUPPORTED' as const,
