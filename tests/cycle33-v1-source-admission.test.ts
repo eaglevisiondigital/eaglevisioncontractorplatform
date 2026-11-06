@@ -31,6 +31,7 @@ const s: {
   cycle25SourcePorts: Ports;
   cycle33V1Parent: string;
   cycle33V1Authors: readonly Author[];
+  cycle33V1ContinuationAuthors: readonly Author[];
   admitCycle33V1Source: (
     path: string,
     current: Buffer,
@@ -54,7 +55,17 @@ const s: {
 );
 const p = s.cycle25SourcePorts,
   authors = s.cycle33V1Authors,
-  current = (a: Author) => p.git(a.commit, a.path),
+  // Keep every historical profile/assertion intact while testing the exact
+  // separately admitted successor on the actual current candidate tree.
+  current = (a: Author) => {
+    const original = p.git(a.commit, a.path),
+      next = s.cycle33V1ContinuationAuthors.find(
+        (n) => n.predecessor === a.commit,
+      );
+    return readFileSync(a.path).equals(original) || !next
+      ? original
+      : p.git(next.commit, a.path);
+  },
   previous = (a: Author) => p.git(s.cycle33V1Parent, a.path),
   admit = (
     a: Author,

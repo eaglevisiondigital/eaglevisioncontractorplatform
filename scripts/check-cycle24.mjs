@@ -9,6 +9,7 @@ import { cycle23RuntimeSources } from './collect-cycle23-browser.mjs';
 import {
   admitCycle25Source,
   admitCycle33ExecutionPublished,
+  admitCycle33V1ContinuationPublished,
 } from './cycle25-source-lineage.mjs';
 
 export const cycle24Parent = '7b8d8c1a6f03fa33321409aa15c46926a63e59ed';
@@ -472,7 +473,16 @@ export function checkCycle24Preservation() {
     for (const file of pack.owned_files)
       if (sha(read(file.path)) !== file.sha256) {
         try {
-          admitCycle33ExecutionPublished(file, read(file.path));
+          if (
+            file.path === 'src/lib/workflows/recorded-cost-requirements.ts' &&
+            pack.head_commit === 'a3c8a39dd1b08ffdc68d1f7b9b29153ae50feb88'
+          )
+            admitCycle33V1ContinuationPublished(
+              file,
+              read(file.path),
+              pack.head_commit,
+            );
+          else admitCycle33ExecutionPublished(file, read(file.path));
         } catch (cause) {
           throw new Error('Cycle23 author changed', { cause });
         }
