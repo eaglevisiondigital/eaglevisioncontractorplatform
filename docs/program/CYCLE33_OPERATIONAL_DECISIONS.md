@@ -5,6 +5,32 @@ A01–A12 operational acceptance cases remain NOT_RUN.** This does not implement
 authorize the internal customer request → immutable receipt → currently authorized
 staff read slice.
 
+## Next owner decision record
+
+Complete the existing D1–D3 record with the following exact answers. No developer,
+reviewer or device holder is assigned by this table. Missing answers keep the next
+operational implementation review NO-GO; safe local engineering continues.
+
+| Decision                                 | Concrete owner answer needed                                                                                                                                 | Evidence required before acceptance                                                                                                                                                                                                                                                              |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| D1 · people and target                   | Name all eleven accountable people, separation of duties and one exact internal source scope; identify every installed writer and its responsible operator   | Current genuine customer session and mapping, staff AAL2/current membership, exact source/version/publication/hash; complete object/column/grant/default-grant/RLS/composite-tenant-reference inventory, including privileged and raw bypass paths                                               |
+| D2 · original custody and commit         | Identify the independent original admission/issuer custodians, canonical transaction and receipt/ACK operators, independent fence custodian and exact reader | Registrar COMMIT → independent issuer COMMIT → atomic canonical request plus immutable receipt COMMIT; original backend/full-XID and one-use identity, independently durable ACK, current revocation after waits and before ACK/read, exact UNKNOWN reconciliation without replay or replacement |
+| D3 · matched recovery and bounded review | Name backup/key/recovery owners and independent reviewer; select a matched set and agreed quarantine/RPO/RTO/cleanup requirements                            | Matching DB timeline/LSN/schema/revisions/receipt watermark, object bytes/versions, independently rollback-resistant spent custody/epoch and protected key references; all writers quarantine on fence failure/mismatch, external revocation survives recovery                                   |
+
+The original case-to-decision mapping is unchanged: A01–A04 scope/Auth/privileges/
+source; A05–A08 atomicity/ACK/concurrency/exact reconciliation; A09 staff-safe read;
+A10–A11 rollback/matched recovery; A12 only the bounded result. Each case remains
+NOT_RUN until its original prerequisites and separate action-specific acceptance
+authorization are satisfied. No substitute local pass, source manifest or historical
+receipt file closes a case.
+
+The only accepted physical result remains **OWNER-WITNESSED MAIN SYNTHETIC LOSS
+SCENARIO PASS** from November4. The distinct duplicate case is
+**UNKNOWN/UNVERIFIED: result not supplied**. Preserve both private run folders and
+consumed-attempt custody; do not retry, reset, infer a PASS or treat historical
+device availability as current readiness. Full R0 and genuine hosted recovery remain
+open. No physical action is performed by this decision preparation.
+
 Keep the original [C28 twelve-case specification](CYCLE28_INTERNAL_REQUEST_ACCEPTANCE.md),
 [C31 decision matrix](CYCLE31_OPERATIONAL_OWNER_DECISIONS.md) and
 [structured owner register](CYCLE31_OPERATIONAL_OWNER_DECISIONS.json) unchanged.

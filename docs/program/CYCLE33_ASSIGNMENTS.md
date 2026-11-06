@@ -1,5 +1,30 @@
 # Cycle33 · bounded assignments and source ownership
 
+## Next bounded execution · corrective stack remains draft
+
+Main253 remains `04f15d45438a56cd86421db2b49d0aa97c22b07e`; corrective256
+remains `39b5b1977f2e18c1c7d534667260ce5ed05660f3`. New isolated authors and
+the separately reviewed integration candidate start from exact39b5, preserving
+the reviewed diagnostic fix by normal ancestry. They target the corrective branch;
+neither Main nor a feature draft is merged, reset or silently advanced. The passing
+267-case reports remain retained evidence, not a reason to replay successful jobs.
+
+| Actual agent                                | This execution                                                                               | Bounded ownership                                                                                        |
+| ------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `/root`                                     | Stack dependencies, exact source admission, combined QA, operational decisions and registers | Shared tooling and acceptance only; original Main worktree untouched                                     |
+| `/root/cycle30_field_growth`                | Exact-head Foundation and original verify-scope investigation                                | Read-only hosted logs/artifacts and CI classification; no reruns                                         |
+| `/root/cycle25_finance_intelligence_resume` | Field/Finance/Offline defect reproduction and targeted native corrections                    | Original engines and new regression tests only; unrelated modules may be NO_CHANGE                       |
+| `/root/cycle33_independent_review`          | Customer/Growth/Intelligence defect reproduction and targeted native corrections             | Original engines and new regression tests only; this role is an author, not its own independent reviewer |
+
+An agent must demonstrate a concrete defect before changing a native engine.
+Another agent reviews every authored correction and Main's combined tooling.
+Private evidence is not canonical business state or restoration authority.
+The owner-witnessed November4 main synthetic network-loss PASS is retained;
+duplicate recovery remains UNKNOWN/UNVERIFIED, both private run folders intact.
+Eleven real operational roles remain UNASSIGNED, D1–D3 unresolved and A01–A12 NOT_RUN.
+All existing design, migration, P1/customer14/4B, Auth/MFA/NMI and execution gates
+remain intact. Release1.0 remains NOT READY / NOT AUTHORIZED.
+
 Baseline: `0597bb3330f22d69f68a67098e950693e0648172` (Cycle32 coordination).
 Main branch: `codex/program-cycle-thirty-three-integration`.
 Local implementation, independent review and exact-head CI are distinct gates.

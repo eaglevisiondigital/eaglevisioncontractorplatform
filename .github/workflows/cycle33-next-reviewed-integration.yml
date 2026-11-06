@@ -1,0 +1,95 @@
+name: Cycle33 next reviewed custody integration
+on:
+  push:
+    branches: ['codex/cycle33-next-reviewed-integration']
+  pull_request:
+    branches: ['codex/cycle33-source-diagnostic-compatibility']
+    paths:
+      - '.github/workflows/cycle33-next-reviewed-integration.yml'
+      - 'src/lib/workflows/maintenance-plan-correction.ts'
+      - 'src/lib/workflows/offline-source-protocol.ts'
+      - 'scripts/cycle25-source-lineage.mjs'
+      - 'tests/cycle33-next-*.test.ts'
+      - 'tests/cycle33-maintenance-review-custody.test.ts'
+permissions:
+  contents: read
+concurrency:
+  group: next-reviewed-custody-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  bounded-native-and-responsive:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - run: npm ci
+      - name: Bind actual clean candidate and exact native authors
+        run: |
+          mkdir -p artifacts/cycle33/next-execution
+          node --input-type=module <<'NODE'
+          import{execFileSync}from'node:child_process';import{writeFileSync,readFileSync}from'node:fs';import{createHash}from'node:crypto';
+          import{cycle33NextAuthors,cycle33NextParent,admitCycle33NextSource,cycle25SourcePorts as p}from'./scripts/cycle25-source-lineage.mjs';
+          const git=(...args)=>execFileSync('git',['--no-replace-objects',...args],{encoding:'utf8'}).trim();
+          if(git('status','--porcelain','--untracked-files=all'))throw Error('Clean candidate required');
+          const admitted=cycle33NextAuthors.map(s=>admitCycle33NextSource(s.modified[0],readFileSync(s.modified[0]),p.git(cycle33NextParent,s.modified[0])));
+          const paths=[...cycle33NextAuthors.flatMap(s=>[...s.modified,...s.added]),'scripts/cycle25-source-lineage.mjs','vite.config.ts','playwright.config.ts','package.json','package-lock.json','.github/workflows/cycle33-next-reviewed-integration.yml'];
+          writeFileSync('artifacts/cycle33/next-execution/binding.json',JSON.stringify({source:git('rev-parse','HEAD'),tree:git('rev-parse','HEAD^{tree}'),admitted,hashes:Object.fromEntries(paths.map(path=>[path,createHash('sha256').update(readFileSync(path)).digest('hex')]))},null,2)+'\n');
+          NODE
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: npm run format:check
+      - run: node scripts/check-cycle24.mjs
+      - name: New83 original-engine custody and source cases, explicitly single-worker
+        run: >-
+          npx vitest run
+          tests/cycle33-maintenance-review-custody.test.ts
+          tests/cycle33-next-offline-protocol-admission.test.ts
+          tests/cycle33-next-source-lineage.test.ts
+          tests/cycle33-next-combined-custody.test.ts
+          --maxWorkers=1 --retry=0 --reporter=json
+          --outputFile=artifacts/cycle33/next-execution/application.json
+      - name: Require all83 cases without skips or runtime errors
+        run: |
+          node --input-type=module <<'NODE'
+          import{readFileSync}from'node:fs';import{relative}from'node:path';
+          const r=JSON.parse(readFileSync('artifacts/cycle33/next-execution/application.json'));
+          const expected=new Map(Object.entries({'tests/cycle33-maintenance-review-custody.test.ts':30,'tests/cycle33-next-offline-protocol-admission.test.ts':26,'tests/cycle33-next-source-lineage.test.ts':24,'tests/cycle33-next-combined-custody.test.ts':3}));
+          if(r.success!==true||r.numTotalTests!==83||r.numPassedTests!==83||r.numFailedTests!==0||r.numPendingTests!==0||r.numTodoTests!==0||(r.numRuntimeErrorTestSuites??0)!==0||r.testResults.length!==4)throw Error('Exact83 passing new cases required');
+          for(const s of r.testResults){const path=relative(process.cwd(),s.name).replaceAll('\\','/'),n=expected.get(path),a=s.assertionResults;if(!expected.delete(path)||s.status!=='passed'||a.length!==n||new Set(a.map(t=>t.fullName)).size!==n||a.some(t=>t.status!=='passed'||!t.fullName||t.failureMessages.length))throw Error('Incomplete new custody suite');}if(expected.size)throw Error('Missing new suite');
+          NODE
+      - run: npm run build
+      - name: Observe the actual runner without expanding signed package trust
+        run: node scripts/cycle32-runner-mirror-probe.mjs > artifacts/cycle33/next-execution/runner-mirror.json
+      - run: node scripts/cycle30-chromium-dependencies.mjs
+      - run: npx playwright install-deps --dry-run chromium
+      - run: npx playwright install chromium
+      - name: Original native three-brand desktop/tablet/mobile journeys
+        run: npx playwright test -c tests/program/playwright.cycle28.config.ts --trace=retain-on-failure
+      - name: Original production-OFF cases
+        run: CYCLE28_BROWSER_MODE=off npx playwright test -c tests/program/playwright.cycle28.config.ts
+      - name: Original strict browser/source/accessibility evidence collector
+        run: CYCLE24_ARTIFACT_DIR=artifacts/cycle28 node scripts/collect-cycle32-browser.mjs
+      - name: Final unchanged actual source evidence
+        if: always()
+        run: |
+          node --input-type=module <<'NODE'
+          import{execFileSync}from'node:child_process';import{readFileSync,writeFileSync}from'node:fs';import{createHash}from'node:crypto';
+          const git=(...args)=>execFileSync('git',['--no-replace-objects',...args],{encoding:'utf8'}).trim();
+          const before=JSON.parse(readFileSync('artifacts/cycle33/next-execution/binding.json'));
+          const same=before.source===git('rev-parse','HEAD')&&before.tree===git('rev-parse','HEAD^{tree}')&&!git('status','--porcelain','--untracked-files=all')&&Object.entries(before.hashes).every(([p,h])=>createHash('sha256').update(readFileSync(p)).digest('hex')===h);
+          writeFileSync('artifacts/cycle33/next-execution/final-binding.json',JSON.stringify({...before,unchanged:same,full_foundation_pass:false},null,2)+'\n');if(!same)throw Error('Candidate changed during bounded integration');
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle33-next-exact-custody-integration
+          path: |
+            artifacts/cycle33/next-execution/
+            artifacts/cycle28/
+          retention-days: 7

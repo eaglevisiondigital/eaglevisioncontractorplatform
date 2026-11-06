@@ -1,3 +1,44 @@
+# Next bounded execution after corrective256
+
+Parent39b5 and unchanged Main04f remain separate from new author, combined and hosted
+results. Growthb1f3ecb fixes late executable selector access and cross-job renewal
+joins. Offline14989f2 rejects executable protocol input before existing admission.
+Original native engines, current access and original one-use/UNKNOWN custody remain.
+No additional Field/Finance/Customer/Intelligence runtime change was demonstrated.
+
+Actual local reports are separate: Growth final30PASS plus retained48PASS from an
+earlier77PASS/1new30-second-timeout report; Offline26unique new plus78retainedPASS
+across the documented split reports; new shared24 and combined-brand3 PASS in one
+27-case report. Initial new harness mistakes and the Growth timing failure remain
+recorded. There is no fabricated single83-case local run or full Foundation PASS.
+Strict types, scoped lint, build, format, features and C24 source integrity pass.
+New-head hosted83-case and responsive verification are separately required.
+Local original native9 and production-OFF3 assertions subsequently pass, including
+the original all-brand desktop/tablet/mobile Axe, overflow and touch assertions.
+However, this launch used dirty HEAD39b5 before the combined source was committed.
+The unchanged strict collector correctly FAILS: `Executed checkout differs from
+frozen runtime`. These captures are **preview only, not admissible exact-checkout
+browser acceptance**. Nothing in the report metadata is rewritten to manufacture
+a match. Native report SHA256 `b00324ef532a2953ca4552c7676642d9bd00c6d5a99e21f0598eb01651029721`;
+OFF report `aea957baf3e596fb62ed846b58f73620f9d6ade174692f35d7c1f6b57cf07251`.
+The initial sandbox attempt could not bind loopback and ran no assertions. Once
+authorized to bind, the first native attempt failed its unchanged5-second initial
+loader expectation (1FAIL/8NOT_RUN). A traced run of only the failed/unexecuted
+cases passed9/9 under original budgets. The initial loader failure and differing
+warm/trace context remain separate; no exclusive cold-start cause or performance
+repair is claimed. The clean candidate's automatic workflow retains failure traces
+and requires actual source-bound83/new-native9/OFF3/collector evidence.
+Independent native review SHA256 `2fce2a9806939992d50c3b1360a51dfe9a35a250d7952bd9b993d46b5f4611ba`
+clears both native author bundles,128protected hashes,5design locks/13bindings and
+unchanged original tests/workflows/dependencies. Main's new CI workflow is a separate
+review scope, not included in that native CLEAR.
+
+See [current CI closeout](CYCLE33_CI_CLOSEOUT.md) for final256 cancellations, original
+Main failures and actual257push270PASS/PR249PASS21FAIL; no successful267 rerun occurred.
+The safe integration path is a new independently reviewed draft on the corrective
+branch; no existing PR is merged or silently advanced. Original source/evidence and
+release gates remain intact. D1–D3/A01–A12 and duplicate recovery stay unresolved.
+
 # Cycle 33 validation and honest acceptance boundaries
 
 Base: `0597bb3330f22d69f68a67098e950693e0648172`, draft PR242.

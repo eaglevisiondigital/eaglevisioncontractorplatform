@@ -276,5 +276,96 @@
     "original_budgets_and_assertions_unchanged": true,
     "controlled_local_comparison_sha256": "91e636532113fdb8041fcde8033799646e35e6ffa08927137c451196a09f8836",
     "hosted_new_head": "PENDING"
+  },
+  "next_execution": {
+    "parent": "39b5b1977f2e18c1c7d534667260ce5ed05660f3",
+    "main253_unchanged": "04f15d45438a56cd86421db2b49d0aa97c22b07e",
+    "integration_branch": "codex/cycle33-next-reviewed-integration",
+    "pr_base": "codex/cycle33-source-diagnostic-compatibility",
+    "authors": [
+      {
+        "module": "growth",
+        "commit": "b1f3ecb49c8f8ad6cac3cd9e88a1e6aa8c1a2995",
+        "branch": "codex/cycle33-next-source-continuity",
+        "sole_parent": "39b5b1977f2e18c1c7d534667260ce5ed05660f3",
+        "owned_files": [
+          {
+            "path": "src/lib/workflows/maintenance-plan-correction.ts",
+            "sha256": "4eae6fda538e9ca714c1f193b07eeb50d112e54000edb2b238b0f7f977fd6dc6",
+            "blob": "46e19f981119cfe4a7faa4b16c5c1284b31185d8"
+          },
+          {
+            "path": "tests/cycle33-maintenance-review-custody.test.ts",
+            "sha256": "363dfc68e6b6bc60944aa668fd05429b77a0dc03bf06ebc5f50c37aea963c235",
+            "blob": "ce52241a992300527d4d563c23030c2d8bf88351"
+          },
+          {
+            "path": "docs/program/CYCLE33_MAINTENANCE_REVIEW_CUSTODY.md",
+            "sha256": "c14566785e10894d95aaa94cc5c15219e46b4a943cb23582ac495e67bb77eed2",
+            "blob": "c8e1e8119c42c02c5a7b1e70e431e00a83b3b203"
+          }
+        ],
+        "publication": "OPEN_DRAFT_UNMERGED",
+        "source_integration": "EXACT_AUTHOR_BYTES",
+        "published_head": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+        "support_scope": "EXACT_ONE_BUILD_ONLY_HELPER",
+        "support_sha256": "a12e52d643b902ef6f5384cd3c1a720cfe1573ffd6f21d22406db846a4478a1f",
+        "current_ci": "SEPARATELY_OBSERVED_NOT_INHERITED",
+        "draft_pr": 259
+      },
+      {
+        "module": "offline",
+        "commit": "14989f2080b856c1d90e55dfd6ac1dfbf4fd2515",
+        "branch": "codex/cycle33-next-native-custody",
+        "sole_parent": "39b5b1977f2e18c1c7d534667260ce5ed05660f3",
+        "owned_files": [
+          {
+            "path": "src/lib/workflows/offline-source-protocol.ts",
+            "sha256": "76be246c5ae1401733680565fc56fe7caaa8113919e5fbabc23d757c30cb9398",
+            "blob": "7c926c73bf91cd9fe81c1a6e688c8f88e1b733ab"
+          },
+          {
+            "path": "tests/cycle33-next-offline-protocol-admission.test.ts",
+            "sha256": "a602324e933e05b3ff3543544cb65358286fde2d910d70da70f80e6f9c2d0468",
+            "blob": "3065139d703e4a32490793000b6cf8edaf9560d5"
+          },
+          {
+            "path": "docs/program/CYCLE33_NEXT_OFFLINE_PROTOCOL_ADMISSION.md",
+            "sha256": "c6d72cc2fead4183c678bb3cd25982c004e07cdec6cdaf510c4bd4a8730f356a",
+            "blob": "d208caa2a49624e3c6ac0bf9d71af5780f9c15dc"
+          }
+        ],
+        "publication": "OPEN_DRAFT_UNMERGED",
+        "source_integration": "EXACT_AUTHOR_BYTES",
+        "published_head": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+        "support_scope": "EXACT_ONE_BUILD_ONLY_HELPER",
+        "support_sha256": "a12e52d643b902ef6f5384cd3c1a720cfe1573ffd6f21d22406db846a4478a1f",
+        "current_ci": "SEPARATELY_OBSERVED_NOT_INHERITED",
+        "draft_pr": 258
+      }
+    ],
+    "field": "AUDITED_NO_CHANGE",
+    "finance": "AUDITED_NO_CHANGE",
+    "customer": "AUDITED_NO_CHANGE",
+    "intelligence": "AUDITED_NO_CHANGE",
+    "business_authority": false,
+    "restore_adapter": false,
+    "physical_duplicate": "UNKNOWN_UNVERIFIED_NO_RESULT",
+    "operational_cases": "A01_A12_NOT_RUN",
+    "local_browser": {
+      "native_assertions_passed": 9,
+      "production_off_passed": 3,
+      "launch_head": "39b5b1977f2e18c1c7d534667260ce5ed05660f3",
+      "launch_dirty": true,
+      "strict_collector": "FAIL_EXECUTED_CHECKOUT_DIFFERS_FROM_FROZEN_RUNTIME",
+      "authority": "PREVIEW_ONLY_NOT_EXACT_CHECKOUT_ACCEPTANCE",
+      "initial_native_attempt": {
+        "failed": 1,
+        "not_run": 8,
+        "reason": "INITIAL_LOADER_5SECOND_EXPECTATION"
+      },
+      "exact_clean_hosted_evidence": "PENDING_NEW_HEAD",
+      "no_report_identity_rewrite": true
+    }
   }
 }
