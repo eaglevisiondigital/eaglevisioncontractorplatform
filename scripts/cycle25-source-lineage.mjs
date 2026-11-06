@@ -748,28 +748,36 @@ function admitCycle27Forward(path, current, previous, ports) {
     throw Error('Cycle27 exact parent must retain original reviewed source');
   const endpoint = Buffer.from(ports.git(spec.commit, path));
   if (Buffer.from(current).equals(endpoint)) return result;
-  if (!cycle28Authors.some((s) => s.modified.includes(path))) {
-    if (cycle29Authors.some((s) => s.modified.includes(path)))
-      return {
-        ...result,
-        cycle29_forward: admitCycle29Forward(path, current, endpoint, ports),
-      };
-    if (cycle30Authors.some((s) => s.modified.includes(path)))
-      return {
-        ...result,
-        cycle30_forward: admitCycle30Forward(path, current, endpoint, ports),
-      };
-    if (cycle31Authors.some((s) => s.modified.includes(path)))
-      return {
-        ...result,
-        cycle31_forward: admitCycle31Forward(path, current, endpoint, ports),
-      };
-    throw Error('Current source differs from fixed Cycle27 author');
+  try {
+    if (!cycle28Authors.some((s) => s.modified.includes(path))) {
+      if (cycle29Authors.some((s) => s.modified.includes(path)))
+        return {
+          ...result,
+          cycle29_forward: admitCycle29Forward(path, current, endpoint, ports),
+        };
+      if (cycle30Authors.some((s) => s.modified.includes(path)))
+        return {
+          ...result,
+          cycle30_forward: admitCycle30Forward(path, current, endpoint, ports),
+        };
+      if (cycle31Authors.some((s) => s.modified.includes(path)))
+        return {
+          ...result,
+          cycle31_forward: admitCycle31Forward(path, current, endpoint, ports),
+        };
+      throw Error('Current source differs from fixed Cycle27 author');
+    }
+    return {
+      ...result,
+      cycle28_forward: admitCycle28Forward(path, current, endpoint, ports),
+    };
+  } catch (cause) {
+    // A descendant rejection retains this original caller's denial context.
+    throw new Error(
+      `Current source differs from fixed Cycle27 lineage: ${cause instanceof Error ? cause.message : 'descendant admission rejected'}`,
+      { cause },
+    );
   }
-  return {
-    ...result,
-    cycle28_forward: admitCycle28Forward(path, current, endpoint, ports),
-  };
 }
 export function inspectCycle27Sources({
   requireCombined = false,
@@ -1274,11 +1282,19 @@ function admitCycle30Forward(path, current, previous, ports) {
         // Preserve the original denial boundary; no other descendant is admitted.
       }
     }
-    if (cycle33Authors.some((s) => s.modified.includes(path)))
-      return {
-        ...result,
-        cycle33_forward: admitCycle33Forward(path, current, endpoint, ports),
-      };
+    if (cycle33Authors.some((s) => s.modified.includes(path))) {
+      try {
+        return {
+          ...result,
+          cycle33_forward: admitCycle33Forward(path, current, endpoint, ports),
+        };
+      } catch (cause) {
+        throw new Error(
+          `Current source differs from fixed Cycle30 author: ${cause instanceof Error ? cause.message : 'descendant admission rejected'}`,
+          { cause },
+        );
+      }
+    }
     throw Error('Current source differs from fixed Cycle30 author');
   }
   return result;
