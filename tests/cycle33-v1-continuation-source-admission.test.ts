@@ -37,6 +37,7 @@ const s: {
   cycle33V1Authors: readonly Author[];
   cycle33V1ContinuationParent: string;
   cycle33V1ContinuationAuthors: readonly Author[];
+  cycle33V1EssentialAuthors: readonly Author[];
   admitCycle33V1ContinuationSource: Admission;
   admitCycle33V1Source: Admission;
   admitCycle25Source: Admission;
@@ -59,7 +60,14 @@ const c24: { checkCycle24Preservation: () => Record<string, unknown> } =
   await import(new URL('../scripts/check-cycle24.mjs', import.meta.url).href);
 const p = s.cycle25SourcePorts,
   authors = s.cycle33V1ContinuationAuthors,
-  current = (a: Author) => p.git(a.commit, a.path),
+  current = (a: Author) => {
+    const original = p.git(a.commit, a.path);
+    if (readFileSync(a.path).equals(original)) return original;
+    const next = s.cycle33V1EssentialAuthors.find(
+      (n) => n.predecessor === a.commit,
+    );
+    return next ? p.git(next.commit, a.path) : original;
+  },
   previous = (a: Author) => p.git(a.parent, a.path),
   hash = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex'),
   admit = (
@@ -148,7 +156,7 @@ for (const a of authors) {
     );
     expect(hash(p.git(a.predecessor, a.path))).toBe(a.predecessor_sha256);
     expect(previous(a)).toEqual(p.git(a.predecessor, a.path));
-    expect(hash(current(a))).toBe(a.sha256);
+    expect(hash(p.git(a.commit, a.path))).toBe(a.sha256);
     expect(p.read(a.path)).toEqual(current(a));
     for (const [commit, files] of [
       [a.commit, a.added],

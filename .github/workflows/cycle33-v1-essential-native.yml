@@ -1,0 +1,66 @@
+name: Cycle33 V1 isolated native source correction
+on:
+  push:
+    branches:
+      ['codex/cycle33-v1-task-selection', 'codex/cycle33-v1-addon-navigation']
+  pull_request:
+    branches: ['codex/cycle33-v1-source-continuation']
+    paths: ['.github/workflows/cycle33-v1-essential-native.yml']
+permissions:
+  contents: read
+concurrency:
+  group: v1-essential-native-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  isolated-native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - run: npm ci
+      - name: Bind exactly one original native source correction
+        run: |
+          mkdir -p artifacts/cycle33/essential-native
+          node --input-type=module <<'NODE'
+          import{execFileSync}from'node:child_process';import{readFileSync,writeFileSync}from'node:fs';import{createHash}from'node:crypto';
+          import{cycle33V1EssentialAuthors as authors,cycle33V1EssentialParent as parent,admitCycle33V1EssentialSource as admit,cycle33V1RevocationProbe as probe,admitCycle33V1RevocationProbe,cycle25SourcePorts as p}from'./scripts/cycle25-source-lineage.mjs';
+          const git=(...a)=>execFileSync('git',['--no-replace-objects',...a],{encoding:'utf8'}).trim(),hash=b=>createHash('sha256').update(b).digest('hex');
+          if(git('status','--porcelain','--untracked-files=all'))throw Error('Clean candidate required');
+          const matches=authors.filter(a=>hash(readFileSync(a.path))===a.sha256);if(matches.length!==1)throw Error('Exactly one fixed authored native correction required');const a=matches[0];
+          const delta=git('diff','--name-status',parent,'HEAD','--','src','server','supabase','public','package.json','package-lock.json','vite.config.ts','playwright.config.ts','docs/FEATURE_ACCEPTANCE_EVIDENCE.json');if(delta!=='M\t'+a.path)throw Error('Other native, protected, design or dependency source changed');
+          const admitted=[admit(a.path,readFileSync(a.path),p.git(parent,a.path)),admitCycle33V1RevocationProbe({path:probe.path,sha256:probe.published_sha256,blob:probe.published_blob},readFileSync(probe.path))],test=a.added.find(f=>f.path.startsWith('tests/')).path,paths=[probe.path,a.path,...a.added.map(f=>f.path),...a.original_companions.map(f=>f.path),'scripts/cycle25-source-lineage.mjs','.github/workflows/cycle33-v1-essential-native.yml','vite.config.ts','package.json','package-lock.json'];
+          writeFileSync('artifacts/cycle33/essential-native/binding.json',JSON.stringify({source:git('rev-parse','HEAD'),tree:git('rev-parse','HEAD^{tree}'),admitted,test,cases:a.cases,hashes:Object.fromEntries(paths.map(p=>[p,hash(readFileSync(p))])),scope:'ONE_NATIVE_AUTHOR_NOT_COMBINED_OR_FOUNDATION_ACCEPTANCE'},null,2)+'\n');
+          NODE
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: npm run format:check
+      - run: node scripts/check-cycle24.mjs
+      - name: Original authored native regression cases with unchanged budgets
+        run: |
+          node --input-type=module <<'NODE'
+          import{readFileSync}from'node:fs';import{execFileSync}from'node:child_process';const b=JSON.parse(readFileSync('artifacts/cycle33/essential-native/binding.json'));execFileSync('npx',['vitest','run',b.test,'--maxWorkers=1','--retry=0','--reporter=json','--outputFile=artifacts/cycle33/essential-native/native.json'],{stdio:'inherit'});
+          NODE
+      - name: Require the exact declared collection without skips
+        run: |
+          node --input-type=module <<'NODE'
+          import{readFileSync}from'node:fs';import{relative}from'node:path';const b=JSON.parse(readFileSync('artifacts/cycle33/essential-native/binding.json')),r=JSON.parse(readFileSync('artifacts/cycle33/essential-native/native.json')),s=r.testResults?.[0],a=s?.assertionResults,n=b.cases;
+          if(r.success!==true||r.numTotalTests!==n||r.numPassedTests!==n||r.numFailedTests!==0||r.numPendingTests!==0||r.numTodoTests!==0||r.numFailedTestSuites!==0||r.numPendingTestSuites!==0||(r.numRuntimeErrorTestSuites??0)!==0||r.testResults.length!==1||relative(process.cwd(),s.name).replaceAll('\\','/')!==b.test||s.status!=='passed'||a.length!==n||new Set(a.map(t=>t.fullName)).size!==n||a.some(t=>t.status!=='passed'||!t.fullName||t.failureMessages.length))throw Error('Incomplete exact isolated collection');
+          NODE
+      - name: Final unchanged source binding
+        if: always()
+        run: |
+          node --input-type=module <<'NODE'
+          import{execFileSync}from'node:child_process';import{readFileSync,writeFileSync}from'node:fs';import{createHash}from'node:crypto';const git=(...a)=>execFileSync('git',['--no-replace-objects',...a],{encoding:'utf8'}).trim(),b=JSON.parse(readFileSync('artifacts/cycle33/essential-native/binding.json')),unchanged=b.source===git('rev-parse','HEAD')&&b.tree===git('rev-parse','HEAD^{tree}')&&!git('status','--porcelain','--untracked-files=all')&&Object.entries(b.hashes).every(([p,h])=>createHash('sha256').update(readFileSync(p)).digest('hex')===h);writeFileSync('artifacts/cycle33/essential-native/final-binding.json',JSON.stringify({...b,unchanged,full_foundation_pass:false},null,2)+'\n');if(!unchanged)throw Error('Candidate changed');
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle33-v1-essential-native-exact
+          path: artifacts/cycle33/essential-native/
+          retention-days: 7

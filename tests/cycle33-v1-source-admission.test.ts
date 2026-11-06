@@ -32,6 +32,7 @@ const s: {
   cycle33V1Parent: string;
   cycle33V1Authors: readonly Author[];
   cycle33V1ContinuationAuthors: readonly Author[];
+  cycle33V1EssentialAuthors: readonly Author[];
   admitCycle33V1Source: (
     path: string,
     current: Buffer,
@@ -62,9 +63,14 @@ const p = s.cycle25SourcePorts,
       next = s.cycle33V1ContinuationAuthors.find(
         (n) => n.predecessor === a.commit,
       );
-    return readFileSync(a.path).equals(original) || !next
-      ? original
-      : p.git(next.commit, a.path);
+    const actual = readFileSync(a.path),
+      first = next ? p.git(next.commit, a.path) : original;
+    if (actual.equals(original)) return original;
+    if (actual.equals(first)) return first;
+    const last = s.cycle33V1EssentialAuthors.find(
+      (n) => n.predecessor === (next?.commit ?? a.commit),
+    );
+    return last ? p.git(last.commit, a.path) : first;
   },
   previous = (a: Author) => p.git(s.cycle33V1Parent, a.path),
   admit = (
