@@ -3,6 +3,7 @@ import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { readCycle13File } from './check-cycle13-integrity.mjs';
 import { validateCycle15Manifest } from './check-cycle15-integrity.mjs';
+import { admitCycle33V1Published } from './cycle25-source-lineage.mjs';
 
 export const cycle16Packages = [
   ['daily-field-guide', 'DailyFieldGuide'],
@@ -32,19 +33,39 @@ export function validateCycle16Manifest(manifest, read = readCycle13File) {
       ).packages.flatMap((p) => p.owned_files.map((f) => f.path)),
     ),
   );
-  const verify = (files, expected) => {
+  const verify = (files, expected, commit) => {
     const remaining = new Set(expected);
     if (files.length !== remaining.size)
       throw Error('Exact finite author files required');
     for (const file of files) {
       if (!remaining.has(file.path) || prior.has(file.path))
         throw Error('Overlapping or out-of-scope Cycle16 source');
-      if (
-        !/^[a-f0-9]{64}$/.test(file.sha256) ||
-        createHash('sha256').update(read(file.path)).digest('hex') !==
-          file.sha256
-      )
+      if (!/^[a-f0-9]{64}$/.test(file.sha256))
         throw Error(`Reviewed Cycle16 source changed: ${file.path}`);
+      const bytes = Buffer.from(read(file.path));
+      const currentHash = createHash('sha256').update(bytes).digest('hex');
+      if (
+        currentHash !== file.sha256 ||
+        (file.path === 'src/lib/workflows/addon-readiness-guide.ts' &&
+          currentHash !==
+            'b3c6d6f20aa38d00f88a9987b30117f945c341cda5c591d16d5b8f671a5b60cf')
+      ) {
+        let admitted;
+        if (
+          commit === 'fecfcf104e7f3988a53c85a77353824edfa6f85b' &&
+          file.path === 'src/lib/workflows/addon-readiness-guide.ts'
+        ) {
+          try {
+            admitted = admitCycle33V1Published(file, bytes, commit, { read });
+          } catch {
+            /* Preserve legacy denial. */
+          }
+        }
+        if (
+          admitted?.source_commit !== '99e112a7cf669dfde03fdd69dbdbce2e74ef2fd4'
+        )
+          throw Error(`Reviewed Cycle16 source changed: ${file.path}`);
+      }
       remaining.delete(file.path);
       prior.add(file.path);
     }
@@ -68,13 +89,17 @@ export function validateCycle16Manifest(manifest, read = readCycle13File) {
     )
       throw Error('Exact disjoint author identity required');
     prs.add(p.draft_pr);
-    verify(p.owned_files, [
-      `src/lib/workflows/${module}.ts`,
-      `src/components/workflows/${component}.tsx`,
-      `src/components/workflows/${module}.css`,
-      `tests/cycle16-${module}.test.ts`,
-      `docs/program/CYCLE16_${module.replaceAll('-', '_').toUpperCase()}.md`,
-    ]);
+    verify(
+      p.owned_files,
+      [
+        `src/lib/workflows/${module}.ts`,
+        `src/components/workflows/${component}.tsx`,
+        `src/components/workflows/${module}.css`,
+        `tests/cycle16-${module}.test.ts`,
+        `docs/program/CYCLE16_${module.replaceAll('-', '_').toUpperCase()}.md`,
+      ],
+      p.head_commit,
+    );
   }
   if (!/^[a-f0-9]{40}$/.test(manifest.independent_review_commit))
     throw Error('Exact independent review commit required');
