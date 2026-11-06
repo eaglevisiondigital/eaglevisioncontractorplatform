@@ -7,7 +7,10 @@ import { readCycle13File } from './check-cycle13-integrity.mjs';
 import { validateCycle22Manifest } from './check-cycle22.mjs';
 import { validateCycle21PublishedSource } from './check-cycle21.mjs';
 
-import { admitCycle33Forward } from './cycle25-source-lineage.mjs';
+import {
+  admitCycle33Forward,
+  admitCycle33ExecutionPublished,
+} from './cycle25-source-lineage.mjs';
 
 export const cycle23Parent = '3e35fb29dd4488bf655446712e5a013e06f8ed1e';
 export const cycle23Branch = 'codex/program-cycle-twenty-three-integration';
@@ -194,6 +197,12 @@ export function validateCycle23Manifest(manifest, ports = {}) {
       for (const file of p.owned_files) {
         const bytes = Buffer.from(read(file.path));
         if (sha(bytes) === file.sha256) continue;
+        try {
+          admitCycle33ExecutionPublished(file, bytes, { read, git });
+          continue;
+        } catch {
+          /* Unknown edits retain the original denial below. */
+        }
         if (
           path === 'docs/program/CYCLE21_SOURCE_MANIFEST.json' &&
           ((p.head_commit === '161f1c59d864d60aa0f45820eb6417864519baf2' &&
@@ -301,13 +310,22 @@ export function validateCycle23Manifest(manifest, ports = {}) {
       if (
         !/^[a-f0-9]{64}$/.test(file.sha256) ||
         !hex40(file.blob) ||
-        sha(bytes) !== file.sha256 ||
-        gitBlob(bytes) !== file.blob ||
-        !bytes.equals(published)
+        sha(published) !== file.sha256 ||
+        gitBlob(published) !== file.blob
       )
         throw Error(
           `Exact published Cycle23 bytes/blob required: ${file.path}`,
         );
+      if (!bytes.equals(published)) {
+        try {
+          admitCycle33ExecutionPublished(file, bytes, { read, git });
+        } catch (cause) {
+          throw new Error(
+            `Exact published Cycle23 bytes/blob required: ${file.path}`,
+            { cause },
+          );
+        }
+      }
       pending.delete(file.path);
       seen.add(file.path);
     }

@@ -180,8 +180,8 @@ export function filterPrioritySavedRevisions(
 ) {
   if (!comparisons.has(value))
     throw Error('Original saved priority comparison required');
-  assertSavedRevisionAccess(value.comparison.before);
-  assertSavedRevisionCurrent(value.comparison.current);
+  // Capture caller-controlled primitives before checking original native access.
+  // No executable selector may run after those guards and disclose private rows.
   const p = prototypeFields(input, ['query', 'area', 'changed_only']);
   if (
     Object.keys(p).length !== 3 ||
@@ -193,6 +193,8 @@ export function filterPrioritySavedRevisions(
     typeof p.changed_only !== 'boolean'
   )
     throw Error('Exact original priority area and literal query required');
+  assertSavedRevisionAccess(value.comparison.before);
+  assertSavedRevisionCurrent(value.comparison.current);
   const query = p.query.trim().toLowerCase();
   const rows = value.rows.filter((row) => {
     const card = row.current ?? row.before!;
