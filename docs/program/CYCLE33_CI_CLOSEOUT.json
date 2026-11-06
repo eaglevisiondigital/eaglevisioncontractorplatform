@@ -1,0 +1,677 @@
+{
+  "schema": "propel-cycle33-ci-closeout-v1",
+  "tested_parent": "04f15d45438a56cd86421db2b49d0aa97c22b07e",
+  "tested_parent_tree": "c693031c7904e72d2f18e788e768241036084247",
+  "correction_branch": "codex/cycle33-source-diagnostic-compatibility",
+  "correction": {
+    "scope": "BUILD_ONLY_DENIAL_DIAGNOSTIC_CONTEXT",
+    "path": "scripts/cycle25-source-lineage.mjs",
+    "sha256": "7110cd7f48fba5bc7238c4e73bb23ec9d03615dd720c34e4bcd153f390587395",
+    "admission_rules_changed": false,
+    "native_runtime_changed": false,
+    "tests_or_budgets_changed": false,
+    "local_reports": [
+      {
+        "report": "correction-parent-red.json",
+        "sha256": "ed9c5423fe2a9d7aee6f18566e76b137e080ce19991d588753e69dfc583826b7",
+        "total": 30,
+        "passed": 0,
+        "failed": 4,
+        "filtered": 26,
+        "files": 2
+      },
+      {
+        "report": "correction-targeted-green.json",
+        "sha256": "862b00b1db808806306a9b38f0c5bdebbe9d9c507af36de9b7ef365be6a4dcec",
+        "total": 30,
+        "passed": 4,
+        "failed": 0,
+        "filtered": 26,
+        "files": 2
+      },
+      {
+        "report": "correction-source-regressions.json",
+        "sha256": "e08074dff0e6ef98f515087b547d43abfe9612502eb74b7d0ae055121230c4b1",
+        "total": 267,
+        "passed": 267,
+        "failed": 0,
+        "filtered": 0,
+        "files": 7
+      }
+    ],
+    "local_checks": [
+      "strict types",
+      "scoped lint",
+      "syntax",
+      "feature/design bindings"
+    ],
+    "independent_source_review": "CLEAR",
+    "correction_head_ci": "NOT_YET_OBSERVED"
+  },
+  "parent_ci": {
+    "observed_at": "2026-11-06T03:49:34.284174+00:00",
+    "checks": {
+      "passed": 43,
+      "failed": 9,
+      "cancelled": 2,
+      "pending": 0
+    },
+    "focused_events": [
+      {
+        "run": 42018576222,
+        "event": "push",
+        "actual_capture_commit": "04f15d45438a56cd86421db2b49d0aa97c22b07e",
+        "actual_capture_tree": "c693031c7904e72d2f18e788e768241036084247",
+        "provider_zip_sha256": "sha256:e8788507685536dbaa7b03e146224d267df8687ba90b3468ce4c036a99991b8f",
+        "provider_digest_and_length_verified": true,
+        "reports": {
+          "application-results.json": {
+            "sha256": "7610d4f2a42b25ea879f0e5e8750e43664dd3e4a93ec70bc3075037d310c3918",
+            "passed": 237,
+            "failed": 0,
+            "skipped": 0,
+            "unique_case_identities": 237,
+            "files": {
+              "cycle33-customer-selection-privacy.test.ts": 12,
+              "cycle33-foundation-evidence.test.ts": 56,
+              "cycle33-maintenance-input-continuity.test.ts": 12,
+              "cycle33-owner-continuity.test.ts": 14,
+              "cycle33-source-lineage.test.ts": 80,
+              "cycle33-sync-proposal-privacy.test.ts": 12,
+              "cycle33-task-receipt-context.test.ts": 51
+            }
+          },
+          "retained-lineage-results.json": {
+            "sha256": "183e839668269bac0d2f280d609b30bc98d012dd2369eef91584e9206ddbf9d0",
+            "passed": 142,
+            "failed": 0,
+            "skipped": 0,
+            "unique_case_identities": 142,
+            "files": {
+              "cycle31-owner-source-compatibility.test.ts": 22,
+              "cycle32-busy-source-lineage.test.ts": 24,
+              "cycle32-source-lineage.test.ts": 96
+            }
+          },
+          "artifacts/cycle33/owner-browser.json": {
+            "sha256": "179c2df513675d7157f7b4f31d65e83f4207b7660b7dbb06228e3f81e8c96d20",
+            "passed": 9,
+            "failed": 0,
+            "skipped": 0,
+            "flaky": 0,
+            "actual_workers": 1,
+            "one_attempt_each": true,
+            "cases": [
+              {
+                "project": "desktop",
+                "title": "brand 0: failed fresh read clears earlier inspection and requires explicit source inspection",
+                "timeout_ms": 30000,
+                "duration_ms": 9584,
+                "retry": 0
+              },
+              {
+                "project": "desktop",
+                "title": "brand 1: failed fresh read clears earlier inspection and requires explicit source inspection",
+                "timeout_ms": 30000,
+                "duration_ms": 9057,
+                "retry": 0
+              },
+              {
+                "project": "desktop",
+                "title": "brand 2: failed fresh read clears earlier inspection and requires explicit source inspection",
+                "timeout_ms": 30000,
+                "duration_ms": 10037,
+                "retry": 0
+              },
+              {
+                "project": "tablet",
+                "title": "brand 0: failed fresh read clears earlier inspection and requires explicit source inspection",
+                "timeout_ms": 30000,
+                "duration_ms": 9621,
+                "retry": 0
+              },
+              {
+                "project": "tablet",
+                "title": "brand 1: failed fresh read clears earlier inspection and requires explicit source inspection",
+                "timeout_ms": 30000,
+                "duration_ms": 8988,
+                "retry": 0
+              },
+              {
+                "project": "tablet",
+                "title": "brand 2: failed fresh read clears earlier inspection and requires explicit source inspection",
+                "timeout_ms": 30000,
+                "duration_ms": 10022,
+                "retry": 0
+              },
+              {
+                "project": "mobile",
+                "title": "brand 0: failed fresh read clears earlier inspection and requires explicit source inspection",
+                "timeout_ms": 30000,
+                "duration_ms": 9499,
+                "retry": 0
+              },
+              {
+                "project": "mobile",
+                "title": "brand 1: failed fresh read clears earlier inspection and requires explicit source inspection",
+                "timeout_ms": 30000,
+                "duration_ms": 9186,
+                "retry": 0
+              },
+              {
+                "project": "mobile",
+                "title": "brand 2: failed fresh read clears earlier inspection and requires explicit source inspection",
+                "timeout_ms": 30000,
+                "duration_ms": 10004,
+                "retry": 0
+              }
+            ]
+          },
+          "artifacts/cycle33/original-owner.json": {
+            "sha256": "280f37286422e9483ed81f8890a7ea73820cb7a3db2c88d7b2d8fc3dfceb7c84",
+            "passed": 2,
+            "failed": 0,
+            "skipped": 0,
+            "flaky": 0,
+            "actual_workers": 2,
+            "one_attempt_each": true,
+            "cases": [
+              {
+                "project": "desktop",
+                "title": "canonical task cost plan corrections and exact history navigation / roofing-example",
+                "timeout_ms": 30000,
+                "duration_ms": 21542,
+                "retry": 0
+              },
+              {
+                "project": "tablet",
+                "title": "canonical task cost plan corrections and exact history navigation / roofing-example",
+                "timeout_ms": 30000,
+                "duration_ms": 22404,
+                "retry": 0
+              }
+            ]
+          },
+          "artifacts/cycle28/browser-results.json": {
+            "sha256": "64cf3a771397e1b118b5971d217544b26ed940d165e18d42868c394b24c5fe20",
+            "passed": 9,
+            "failed": 0,
+            "skipped": 0,
+            "flaky": 0,
+            "actual_workers": 1,
+            "one_attempt_each": true,
+            "cases": [
+              {
+                "project": "desktop",
+                "title": "native action journey preserves one exact source context / straight-edge",
+                "timeout_ms": 150000,
+                "duration_ms": 69500,
+                "retry": 0
+              },
+              {
+                "project": "desktop",
+                "title": "native action journey preserves one exact source context / cunningham",
+                "timeout_ms": 150000,
+                "duration_ms": 68651,
+                "retry": 0
+              },
+              {
+                "project": "desktop",
+                "title": "native action journey preserves one exact source context / roofing-example",
+                "timeout_ms": 150000,
+                "duration_ms": 75600,
+                "retry": 0
+              },
+              {
+                "project": "tablet",
+                "title": "native action journey preserves one exact source context / straight-edge",
+                "timeout_ms": 150000,
+                "duration_ms": 70016,
+                "retry": 0
+              },
+              {
+                "project": "tablet",
+                "title": "native action journey preserves one exact source context / cunningham",
+                "timeout_ms": 150000,
+                "duration_ms": 69685,
+                "retry": 0
+              },
+              {
+                "project": "tablet",
+                "title": "native action journey preserves one exact source context / roofing-example",
+                "timeout_ms": 150000,
+                "duration_ms": 76834,
+                "retry": 0
+              },
+              {
+                "project": "mobile",
+                "title": "native action journey preserves one exact source context / straight-edge",
+                "timeout_ms": 150000,
+                "duration_ms": 69338,
+                "retry": 0
+              },
+              {
+                "project": "mobile",
+                "title": "native action journey preserves one exact source context / cunningham",
+                "timeout_ms": 150000,
+                "duration_ms": 69421,
+                "retry": 0
+              },
+              {
+                "project": "mobile",
+                "title": "native action journey preserves one exact source context / roofing-example",
+                "timeout_ms": 150000,
+                "duration_ms": 76290,
+                "retry": 0
+              }
+            ]
+          },
+          "artifacts/cycle28/browser-off-results.json": {
+            "sha256": "87d8a6014b57740796cc91c8004ecb62f49fa058c4d7f774243272d8dc47b4e7",
+            "passed": 3,
+            "failed": 0,
+            "skipped": 0,
+            "flaky": 0,
+            "actual_workers": 1,
+            "one_attempt_each": true,
+            "cases": [
+              {
+                "project": "desktop",
+                "title": "production keeps native actions closed",
+                "timeout_ms": 150000,
+                "duration_ms": 216,
+                "retry": 0
+              },
+              {
+                "project": "tablet",
+                "title": "production keeps native actions closed",
+                "timeout_ms": 150000,
+                "duration_ms": 230,
+                "retry": 0
+              },
+              {
+                "project": "mobile",
+                "title": "production keeps native actions closed",
+                "timeout_ms": 150000,
+                "duration_ms": 201,
+                "retry": 0
+              }
+            ]
+          }
+        },
+        "capture_verification": {
+          "source_bound_screenshots": 63,
+          "png_hashes_verified": 63,
+          "source_bound_keyboard_records": 9,
+          "source_files_matching_actual_capture_tree": 76,
+          "additional_execution_bound_sources_matching_tree": 2,
+          "historical_runtime_baseline_marker": "7a90da23c0a701001c79b605d94d2894cd9cc5a6",
+          "actual_execution_commits": [
+            "04f15d45438a56cd86421db2b49d0aa97c22b07e"
+          ],
+          "visual_approval": "PENDING",
+          "physical_recovery": "BROWSER_NOT_PHYSICAL_RECOVERY_EVIDENCE"
+        }
+      },
+      {
+        "run": 42018584602,
+        "event": "pull_request",
+        "actual_capture_commit": "7b38b98d6f572aca0812fa82df87eba455c15b6a",
+        "actual_capture_tree": "c693031c7904e72d2f18e788e768241036084247",
+        "provider_zip_sha256": "sha256:9814b6cab6b839c84a9a73e6926e7aa60f178f0259ce071ca0fce9f5f1bea9d5",
+        "provider_digest_and_length_verified": true,
+        "reports": {
+          "application-results.json": {
+            "sha256": "b4a8e66bea2c6c46c7ea338b5818a880d7978c999a7f9182c2b1359f230ab4a5",
+            "passed": 237,
+            "failed": 0,
+            "skipped": 0,
+            "unique_case_identities": 237,
+            "files": {
+              "cycle33-customer-selection-privacy.test.ts": 12,
+              "cycle33-foundation-evidence.test.ts": 56,
+              "cycle33-maintenance-input-continuity.test.ts": 12,
+              "cycle33-owner-continuity.test.ts": 14,
+              "cycle33-source-lineage.test.ts": 80,
+              "cycle33-sync-proposal-privacy.test.ts": 12,
+              "cycle33-task-receipt-context.test.ts": 51
+            }
+          },
+          "retained-lineage-results.json": {
+            "sha256": "d169c8df025be859dfd0501442ca09ebd5fd79354421eebd93ed908d09749f03",
+            "passed": 142,
+            "failed": 0,
+            "skipped": 0,
+            "unique_case_identities": 142,
+            "files": {
+              "cycle31-owner-source-compatibility.test.ts": 22,
+              "cycle32-busy-source-lineage.test.ts": 24,
+              "cycle32-source-lineage.test.ts": 96
+            }
+          },
+          "artifacts/cycle33/owner-browser.json": {
+            "sha256": "0ef41b784326288bd1d4f2380a1ea898517205002a13536e963e4a8d5613d951",
+            "passed": 9,
+            "failed": 0,
+            "skipped": 0,
+            "flaky": 0,
+            "actual_workers": 1,
+            "one_attempt_each": true,
+            "cases": [
+              {
+                "project": "desktop",
+                "title": "brand 0: failed fresh read clears earlier inspection and requires explicit source inspection",
+                "timeout_ms": 30000,
+                "duration_ms": 12868,
+                "retry": 0
+              },
+              {
+                "project": "desktop",
+                "title": "brand 1: failed fresh read clears earlier inspection and requires explicit source inspection",
+                "timeout_ms": 30000,
+                "duration_ms": 12264,
+                "retry": 0
+              },
+              {
+                "project": "desktop",
+                "title": "brand 2: failed fresh read clears earlier inspection and requires explicit source inspection",
+                "timeout_ms": 30000,
+                "duration_ms": 13061,
+                "retry": 0
+              },
+              {
+                "project": "tablet",
+                "title": "brand 0: failed fresh read clears earlier inspection and requires explicit source inspection",
+                "timeout_ms": 30000,
+                "duration_ms": 12934,
+                "retry": 0
+              },
+              {
+                "project": "tablet",
+                "title": "brand 1: failed fresh read clears earlier inspection and requires explicit source inspection",
+                "timeout_ms": 30000,
+                "duration_ms": 12059,
+                "retry": 0
+              },
+              {
+                "project": "tablet",
+                "title": "brand 2: failed fresh read clears earlier inspection and requires explicit source inspection",
+                "timeout_ms": 30000,
+                "duration_ms": 13278,
+                "retry": 0
+              },
+              {
+                "project": "mobile",
+                "title": "brand 0: failed fresh read clears earlier inspection and requires explicit source inspection",
+                "timeout_ms": 30000,
+                "duration_ms": 12757,
+                "retry": 0
+              },
+              {
+                "project": "mobile",
+                "title": "brand 1: failed fresh read clears earlier inspection and requires explicit source inspection",
+                "timeout_ms": 30000,
+                "duration_ms": 11899,
+                "retry": 0
+              },
+              {
+                "project": "mobile",
+                "title": "brand 2: failed fresh read clears earlier inspection and requires explicit source inspection",
+                "timeout_ms": 30000,
+                "duration_ms": 13379,
+                "retry": 0
+              }
+            ]
+          },
+          "artifacts/cycle33/original-owner.json": {
+            "sha256": "1b9e869e5ebdbca0c9a7641b3a0c88dd0fcd41b6bcf2ef8cc4aa2d2a34b1addc",
+            "passed": 2,
+            "failed": 0,
+            "skipped": 0,
+            "flaky": 0,
+            "actual_workers": 2,
+            "one_attempt_each": true,
+            "cases": [
+              {
+                "project": "desktop",
+                "title": "canonical task cost plan corrections and exact history navigation / roofing-example",
+                "timeout_ms": 30000,
+                "duration_ms": 28397,
+                "retry": 0
+              },
+              {
+                "project": "tablet",
+                "title": "canonical task cost plan corrections and exact history navigation / roofing-example",
+                "timeout_ms": 30000,
+                "duration_ms": 29237,
+                "retry": 0
+              }
+            ]
+          },
+          "artifacts/cycle28/browser-results.json": {
+            "sha256": "fb7be219a9f41840b2fe1ae85799b41375dfc9c28bc99909305d7d79829fae85",
+            "passed": 9,
+            "failed": 0,
+            "skipped": 0,
+            "flaky": 0,
+            "actual_workers": 1,
+            "one_attempt_each": true,
+            "cases": [
+              {
+                "project": "desktop",
+                "title": "native action journey preserves one exact source context / straight-edge",
+                "timeout_ms": 150000,
+                "duration_ms": 89403,
+                "retry": 0
+              },
+              {
+                "project": "desktop",
+                "title": "native action journey preserves one exact source context / cunningham",
+                "timeout_ms": 150000,
+                "duration_ms": 89181,
+                "retry": 0
+              },
+              {
+                "project": "desktop",
+                "title": "native action journey preserves one exact source context / roofing-example",
+                "timeout_ms": 150000,
+                "duration_ms": 99837,
+                "retry": 0
+              },
+              {
+                "project": "tablet",
+                "title": "native action journey preserves one exact source context / straight-edge",
+                "timeout_ms": 150000,
+                "duration_ms": 91050,
+                "retry": 0
+              },
+              {
+                "project": "tablet",
+                "title": "native action journey preserves one exact source context / cunningham",
+                "timeout_ms": 150000,
+                "duration_ms": 90421,
+                "retry": 0
+              },
+              {
+                "project": "tablet",
+                "title": "native action journey preserves one exact source context / roofing-example",
+                "timeout_ms": 150000,
+                "duration_ms": 101646,
+                "retry": 0
+              },
+              {
+                "project": "mobile",
+                "title": "native action journey preserves one exact source context / straight-edge",
+                "timeout_ms": 150000,
+                "duration_ms": 91766,
+                "retry": 0
+              },
+              {
+                "project": "mobile",
+                "title": "native action journey preserves one exact source context / cunningham",
+                "timeout_ms": 150000,
+                "duration_ms": 91652,
+                "retry": 0
+              },
+              {
+                "project": "mobile",
+                "title": "native action journey preserves one exact source context / roofing-example",
+                "timeout_ms": 150000,
+                "duration_ms": 103143,
+                "retry": 0
+              }
+            ]
+          },
+          "artifacts/cycle28/browser-off-results.json": {
+            "sha256": "1d5e4a85b9a0042dda5e020651d86eff8e33da729d92a41f5ca564f01d122f35",
+            "passed": 3,
+            "failed": 0,
+            "skipped": 0,
+            "flaky": 0,
+            "actual_workers": 1,
+            "one_attempt_each": true,
+            "cases": [
+              {
+                "project": "desktop",
+                "title": "production keeps native actions closed",
+                "timeout_ms": 150000,
+                "duration_ms": 263,
+                "retry": 0
+              },
+              {
+                "project": "tablet",
+                "title": "production keeps native actions closed",
+                "timeout_ms": 150000,
+                "duration_ms": 254,
+                "retry": 0
+              },
+              {
+                "project": "mobile",
+                "title": "production keeps native actions closed",
+                "timeout_ms": 150000,
+                "duration_ms": 264,
+                "retry": 0
+              }
+            ]
+          }
+        },
+        "capture_verification": {
+          "source_bound_screenshots": 63,
+          "png_hashes_verified": 63,
+          "source_bound_keyboard_records": 9,
+          "source_files_matching_actual_capture_tree": 76,
+          "additional_execution_bound_sources_matching_tree": 2,
+          "historical_runtime_baseline_marker": "7a90da23c0a701001c79b605d94d2894cd9cc5a6",
+          "actual_execution_commits": [
+            "7b38b98d6f572aca0812fa82df87eba455c15b6a"
+          ],
+          "visual_approval": "PENDING",
+          "physical_recovery": "BROWSER_NOT_PHYSICAL_RECOVERY_EVIDENCE"
+        }
+      }
+    ],
+    "supplement_events": [
+      {
+        "run": 42018576547,
+        "event": "push",
+        "source": "04f15d45438a56cd86421db2b49d0aa97c22b07e",
+        "files": 362,
+        "cases": 10525,
+        "counts": {
+          "numTotalTests": 10525,
+          "numPassedTests": 10188,
+          "numFailedTests": 16,
+          "numPendingTests": 321
+        },
+        "error_classifications": {
+          "EXPLICIT_TEST_TIMEOUT": 9,
+          "ASSERTION_FAILURE": 7
+        },
+        "original_global_max_workers": 4
+      },
+      {
+        "run": 42018584559,
+        "event": "pull_request",
+        "source": "7b38b98d6f572aca0812fa82df87eba455c15b6a",
+        "files": 362,
+        "cases": 10525,
+        "counts": {
+          "numTotalTests": 10525,
+          "numPassedTests": 10184,
+          "numFailedTests": 20,
+          "numPendingTests": 321
+        },
+        "error_classifications": {
+          "EXPLICIT_TEST_TIMEOUT": 14,
+          "ASSERTION_FAILURE": 6
+        },
+        "original_global_max_workers": 4
+      }
+    ]
+  },
+  "advanced": {
+    "pr": 251,
+    "head": "77142705583774a5bfaa46ccb14aaa201421d295",
+    "checks": {
+      "passed": 23,
+      "failed": 0,
+      "cancelled": 2,
+      "pending": 0
+    },
+    "legacy_c11_c12": "PROVIDER_STEPS_SUCCESS_NOT_RAW_REPORT_REPARSE"
+  },
+  "diagnostic": {
+    "pr": 255,
+    "driver": "28f57a514f6b7bce19d587414dcfe61a630ca6ee",
+    "subject": "8d902e866c79220fa3ddb0bc2794d31cdbfd60f1",
+    "subject_tree": "8cfe051a45ee70dfe3046e5ddbb09133a9d57a46",
+    "run": 42019545004,
+    "artifact": 13412782358,
+    "provider_zip_sha256": "36bebd124cf7995087acd2e431b07dcf833abe096c5997b5184b6f247038f3e2",
+    "files": 7,
+    "passed": 233,
+    "failed": 0,
+    "skipped": 0,
+    "actual_max_workers": 1,
+    "original_max_workers": 4,
+    "test_timeout_ms": 30000,
+    "retries": 0,
+    "original_coverage_admitted": false,
+    "evidence_label": "ALTERNATIVE_ORCHESTRATION_DIAGNOSTIC_NOT_ORIGINAL4WORKER_PASS"
+  },
+  "separate_passport": {
+    "run": 42019590042,
+    "artifact": 13411510584,
+    "provider_zip_sha256": "e4ae5cd8f572bf2cfad2cc646bdf463cb578c099c7760e62c1409c32291d0777",
+    "rejection": "REJECT_REVIEWED_MIRROR_OR_PRIORITY",
+    "same_runner_probe_matches": true,
+    "first_target": "UNRECOGNIZED",
+    "target_sha256": "cbaf43a8563e6214589588bffc1d1255f42a1d6d1039999691bf05d8fdbaa683",
+    "browser_assertions": "NOT_RUN",
+    "trust_changed": false
+  },
+  "independent_evidence_sha256": {
+    "focused": "c4d76ac9f90544346dee9034b8a4a139ed0cae0056df66acf7b750188034c1ad",
+    "failed_supplement": "e3c8c3a1f1464879e7dd4419691092e5ba37b6bcde1d0850582afc0601224c2c",
+    "browser_and_identity": "e5215edee29faddef3a3c0d95198f56c80167bca93e6f7fcf66294d4fd9a5bdd",
+    "diagnostic_and_remaining": "994cae34086ca15f45b1863b92c444880d87b89724be7b458a1769aaf3056d64"
+  },
+  "physical": {
+    "main_loss": "OWNER_WITNESSED_MAIN_SYNTHETIC_LOSS_SCENARIO_PASS",
+    "complete_r0_cases": "OPEN",
+    "fresh_duplicate_result": "NOT_PROVIDED",
+    "current_device_availability": "NOT_RECONFIRMED"
+  },
+  "operational": {
+    "roles_unassigned": 11,
+    "a01_a12": "NOT_RUN",
+    "restoration_adapter_authorized": false
+  },
+  "release": "NOT READY / NOT AUTHORIZED",
+  "limits": [
+    "Parent CI and current correction source are distinct; no CI inherited across heads.",
+    "Original four-worker failures,321 declared skips and45-minute cancellations remain recorded.",
+    "Native9 includes original Axe/overflow/touch assertions; Owner9 has no separate Axe scan.",
+    "No sole timeout cause, full Foundation pass, visual approval, physical suite pass or operational authority is inferred."
+  ]
+}

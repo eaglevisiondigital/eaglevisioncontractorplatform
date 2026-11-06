@@ -1,3 +1,19 @@
+# Cycle33 closeout · exact CI and diagnostic compatibility
+
+Exact tested parent04f15d4 now has independently verified hosted237 + separate142
+application passes, native9/Owner9/OFF3/original2 browser passes in each event,
+including63 verified PNGs and original accessibility assertions. Its full ledger
+remains43PASS/9FAIL/2CANCELLED. [CI closeout](program/CYCLE33_CI_CLOSEOUT.md)
+and [exact evidence](program/CYCLE33_CI_CLOSEOUT.json) preserve all failures.
+A separate direct-parent build-only patch restores expected diagnostic
+context for four original cases; unchanged cases reproduce4RED then4GREEN, and267 relevant guard cases pass.
+No source admission or assertion weakens. New correction-head CI is separate.
+The233-case one-worker diagnostic passes without relabelling original four-worker
+failures. An unrecognized mirror remains rejected; no trust expansion occurs.
+Fresh duplicate recovery evidence is still absent;11 roles UNASSIGNED/A01–A12 NOT_RUN.
+All protected runtime, design, migration, P1/customer14/4B, financial and operational
+gates remain intact. Release1.0 remains **NOT READY / NOT AUTHORIZED**.
+
 # Cycle33 · native continuity and bounded Foundation evidence
 
 Five exact existing-consumer corrections cover task receipt context, customer and

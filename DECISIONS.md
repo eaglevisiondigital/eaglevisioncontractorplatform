@@ -1,3 +1,17 @@
+# Cycle33 CI closeout decision
+
+Restore only the original caller diagnostic labels around existing finite source
+rejections; retain the descendant message/cause and every admission guard. Four
+unchanged negative regressions reproduceRED and thenGREEN;267 complete relevant
+source-lineage cases pass. No runtime author, test, budget, trust or authority
+changes. Exact parent04f hosted focused/browser successes, full-scope failures,
+separate233 one-worker diagnostic and unknown-mirror rejection remain distinct in
+[the closeout](docs/program/CYCLE33_CI_CLOSEOUT.md). Do not transpose CI to a new
+correction head, infer a sole timeout cause or relabel cancelled Foundations.
+Physical duplicate evidence and operational D1–D3/A01–A12 remain open. Preserve
+all original approvals/recovery artifacts/designs and Release1.0 NOT READY /
+NOT AUTHORIZED. No hosted, financial, dispatch, message, deployment or merge action.
+
 ## Cycle33 · finite source successors and full-scope supplementary CI
 
 Native consumers retain their original engines and current-authority guards. Exact

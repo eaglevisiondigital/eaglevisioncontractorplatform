@@ -1,0 +1,141 @@
+name: Bounded source diagnostic compatibility
+on:
+  push:
+    branches: ['codex/cycle33-source-diagnostic-compatibility']
+  pull_request:
+    branches: ['codex/program-cycle-thirty-three-integration']
+    paths:
+      - 'scripts/cycle25-source-lineage.mjs'
+      - 'tests/cycle27-source-lineage.test.ts'
+      - 'tests/cycle30-independent-source-review.test.ts'
+      - 'tests/cycle30-source-lineage.test.ts'
+      - 'tests/cycle31-owner-source-compatibility.test.ts'
+      - 'tests/cycle32-busy-source-lineage.test.ts'
+      - 'tests/cycle32-source-lineage.test.ts'
+      - 'tests/cycle33-source-lineage.test.ts'
+      - '.github/workflows/cycle33-source-diagnostic-compatibility.yml'
+permissions:
+  contents: read
+concurrency:
+  group: source-diagnostic-compatibility-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-source-lineage-compatibility:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run features:check
+      - name: Bind exact source and unchanged original tests, configs and packages
+        id: source-proof
+        run: |
+          mkdir -p artifacts/cycle33/source-diagnostic-compatibility
+          node --input-type=module <<'NODE'
+          import{createHash}from'node:crypto';
+          import{execFileSync,spawnSync}from'node:child_process';
+          import{readFileSync,writeFileSync}from'node:fs';
+          const baseline='04f15d45438a56cd86421db2b49d0aa97c22b07e';
+          const git=(...args)=>execFileSync('git',['--no-replace-objects',...args],{encoding:'utf8',stdio:['ignore','pipe','ignore']}).trim();
+          for(const args of [['diff','--quiet','HEAD','--'],['diff','--quiet',baseline,'--','tests','vite.config.ts','playwright.config.ts','package.json','package-lock.json']])
+            if(spawnSync('git',['--no-replace-objects',...args]).status!==0)throw Error('Original immutable source changed');
+          if(git('ls-files','--others','--exclude-standard'))throw Error('Untracked source is not admitted');
+          const source=git('rev-parse','HEAD'),tree=git('rev-parse','HEAD^{tree}');
+          const tests_tree=git('rev-parse','HEAD:tests'),original_tests_tree=git('rev-parse',baseline+':tests');
+          if(tests_tree!==original_tests_tree)throw Error('Original test bytes changed');
+          const hash=p=>createHash('sha256').update(readFileSync(p)).digest('hex');
+          writeFileSync('artifacts/cycle33/source-diagnostic-compatibility/binding.json',JSON.stringify({source,tree,baseline,tracked_clean:true,tests_tree,original_tests_tree,
+            source_diagnostic_sha256:hash('scripts/cycle25-source-lineage.mjs'),workflow_sha256:hash('.github/workflows/cycle33-source-diagnostic-compatibility.yml')},null,2)+'\n');
+          NODE
+      - name: Original267 source cases with explicit single worker and original budgets
+        id: original267
+        run: >-
+          npx vitest run
+          tests/cycle27-source-lineage.test.ts
+          tests/cycle30-independent-source-review.test.ts
+          tests/cycle30-source-lineage.test.ts
+          tests/cycle31-owner-source-compatibility.test.ts
+          tests/cycle32-busy-source-lineage.test.ts
+          tests/cycle32-source-lineage.test.ts
+          tests/cycle33-source-lineage.test.ts
+          --maxWorkers=1 --retry=0 --reporter=json
+          --outputFile=${{ github.workspace }}/artifacts/cycle33/source-diagnostic-compatibility/results.json
+      - name: Require exact267 original source compatibility, not Foundation PASS
+        if: always()
+        env:
+          SOURCE_PROOF_OUTCOME: ${{ steps.source-proof.outcome }}
+          NATIVE_TEST_OUTCOME: ${{ steps.original267.outcome }}
+        run: |
+          node --input-type=module <<'NODE'
+          import{createHash}from'node:crypto';
+          import{execFileSync,spawnSync}from'node:child_process';
+          import{mkdirSync,readFileSync,writeFileSync}from'node:fs';
+          import{relative}from'node:path';
+          const directory='artifacts/cycle33/source-diagnostic-compatibility';mkdirSync(directory,{recursive:true});
+          const scope='BOUNDED_ORIGINAL_SOURCE_DIAGNOSTIC_COMPATIBILITY_NOT_FOUNDATION_PASS';
+          const fail=()=>{throw Error('Missing, changed, failed or incomplete original source267 evidence');};
+          try{
+            if(process.env.SOURCE_PROOF_OUTCOME!=='success'||process.env.NATIVE_TEST_OUTCOME!=='success')fail();
+            const binding=JSON.parse(readFileSync(directory+'/binding.json'));
+            const r=JSON.parse(readFileSync(directory+'/results.json'));
+            const expected={
+              'tests/cycle27-source-lineage.test.ts':20,
+              'tests/cycle30-independent-source-review.test.ts':10,
+              'tests/cycle30-source-lineage.test.ts':15,
+              'tests/cycle31-owner-source-compatibility.test.ts':22,
+              'tests/cycle32-busy-source-lineage.test.ts':24,
+              'tests/cycle32-source-lineage.test.ts':96,
+              'tests/cycle33-source-lineage.test.ts':80,
+            };
+            const required=new Set([
+              'tests/cycle27-source-lineage.test.ts\0warm immutable Git facts never cache mutable files or source admission',
+              'tests/cycle30-independent-source-review.test.ts\0unchanged owner baseline cannot be labelled as the reviewed correction',
+              'tests/cycle30-independent-source-review.test.ts\0direct owner admission rejects changed current bytes after warming immutable evidence',
+              'tests/cycle30-independent-source-review.test.ts\0customer-source admission cannot widen a reviewed route to unknown current bytes',
+            ]);
+            if(r.success!==true||r.numTotalTests!==267||r.numPassedTests!==267||r.numFailedTests!==0||r.numPendingTests!==0||r.numTodoTests!==0||r.numFailedTestSuites!==0||r.numPendingTestSuites!==0||(r.numRuntimeErrorTestSuites??0)!==0||!Array.isArray(r.testResults)||r.testResults.length!==7)fail();
+            const files=new Set(),identities=new Set();
+            for(const m of r.testResults){
+              const file=relative(process.cwd(),m.name).replaceAll('\\','/');
+              if(!Object.hasOwn(expected,file)||files.has(file)||m.status!=='passed'||!Array.isArray(m.assertionResults)||m.assertionResults.length!==expected[file])fail();files.add(file);
+              for(const a of m.assertionResults){
+                const key=file+'\0'+a.fullName;
+                if(typeof a.fullName!=='string'||!a.fullName||identities.has(key)||a.status!=='passed'||!Array.isArray(a.failureMessages)||a.failureMessages.length)fail();
+                identities.add(key);required.delete(key);
+              }
+            }
+            if(files.size!==7||identities.size!==267||required.size)fail();
+            const git=(...args)=>execFileSync('git',['--no-replace-objects',...args],{encoding:'utf8',stdio:['ignore','pipe','ignore']}).trim();
+            if(binding.baseline!=='04f15d45438a56cd86421db2b49d0aa97c22b07e'||binding.source!==git('rev-parse','HEAD')||binding.tree!==git('rev-parse','HEAD^{tree}')||binding.tracked_clean!==true||binding.tests_tree!==git('rev-parse','HEAD:tests')||binding.original_tests_tree!==git('rev-parse',binding.baseline+':tests')||binding.tests_tree!==binding.original_tests_tree)fail();
+            for(const args of [['diff','--quiet','HEAD','--'],['diff','--quiet',binding.baseline,'--','tests','vite.config.ts','playwright.config.ts','package.json','package-lock.json']])
+              if(spawnSync('git',['--no-replace-objects',...args]).status!==0)fail();
+            if(git('ls-files','--others','--exclude-standard'))fail();
+            const hash=p=>createHash('sha256').update(readFileSync(p)).digest('hex');
+            if(binding.source_diagnostic_sha256!==hash('scripts/cycle25-source-lineage.mjs')||binding.workflow_sha256!==hash('.github/workflows/cycle33-source-diagnostic-compatibility.yml'))fail();
+            writeFileSync(directory+'/summary.json',JSON.stringify({scope,verdict:'EXACT267_ORIGINAL_SOURCE_COMPATIBILITY_PASS',binding,files:7,passed:267,failed:0,skipped:0,todo:0,runtime_errors:0,requested_maxWorkers:1,original_testTimeout:30000,original_hookTimeout:30000,retry:0,original_foundation_pass:false},null,2)+'\n');
+          }catch{
+            writeFileSync(directory+'/summary.json',JSON.stringify({scope,verdict:'INCOMPLETE_OR_FAILED_SOURCE_DIAGNOSTIC_COMPATIBILITY',original_foundation_pass:false})+'\n');throw Error('Exact original source267 compatibility remains unverified');
+          }
+          NODE
+      - name: Record actual checkout authority even after an incomplete job
+        if: always()
+        run: |
+          mkdir -p artifacts/cycle33/source-diagnostic-compatibility
+          node --input-type=module <<'NODE'
+          import{execFileSync}from'node:child_process';import{writeFileSync}from'node:fs';
+          const git=(...args)=>execFileSync('git',['--no-replace-objects',...args],{encoding:'utf8'}).trim();
+          writeFileSync('artifacts/cycle33/source-diagnostic-compatibility/checkout-source.json',JSON.stringify({source:git('rev-parse','HEAD'),tree:git('rev-parse','HEAD^{tree}'),scope:'BOUNDED_SOURCE_DIAGNOSTIC_COMPATIBILITY_NOT_FOUNDATION_PASS'},null,2)+'\n');
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle33-exact267-source-diagnostic-compatibility
+          path: artifacts/cycle33/source-diagnostic-compatibility/
+          retention-days: 7
