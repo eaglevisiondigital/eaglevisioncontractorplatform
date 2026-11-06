@@ -3070,5 +3070,717 @@
       "current_head_ci": "PENDING_PUBLICATION_AND_EXACT_HEAD_RESULT",
       "independent_review_sha256": "07aac98c1e830fb965c764c944c53b3a6843356238db3db414103cc9a7468b7f"
     }
+  },
+  "reconciliation_266": {
+    "base_pr": 266,
+    "base_head": "2b8406d10b96ffa7f06a8ef5ae1835538b313d30",
+    "base_tree": "964b4d88dbf7cd01387e86104df5383aebecb247",
+    "branch": "codex/cycle33-ci-reconciliation-next",
+    "observed_heads": [
+      {
+        "pr": 253,
+        "head": "04f15d45438a56cd86421db2b49d0aa97c22b07e",
+        "draft": true,
+        "merged": false,
+        "counts": {
+          "PASS": 43,
+          "FAIL": 9,
+          "CANCELLED": 2,
+          "PENDING": 0
+        },
+        "count_source": "RETAINED_HISTORICAL_VERIFIED_COUNTS_HEAD_UNCHANGED_NOW"
+      },
+      {
+        "pr": 256,
+        "head": "39b5b1977f2e18c1c7d534667260ce5ed05660f3",
+        "draft": true,
+        "merged": false,
+        "counts": {
+          "PASS": 9,
+          "FAIL": 0,
+          "CANCELLED": 3,
+          "PENDING": 0
+        },
+        "count_source": "RETAINED_HISTORICAL_VERIFIED_COUNTS_HEAD_UNCHANGED_NOW"
+      },
+      {
+        "pr": 265,
+        "head": "eec71f86a39d58d6019b4af196b040f9269ae96d",
+        "draft": true,
+        "merged": false,
+        "counts": {
+          "success": 24,
+          "failure": 2,
+          "cancelled": 7
+        },
+        "count_source": "CURRENT_PAGINATED_SNAPSHOT"
+      },
+      {
+        "pr": 266,
+        "head": "2b8406d10b96ffa7f06a8ef5ae1835538b313d30",
+        "draft": true,
+        "merged": false,
+        "counts": {
+          "success": 7,
+          "cancelled": 5,
+          "failure": 1
+        },
+        "count_source": "CURRENT_PAGINATED_SNAPSHOT"
+      }
+    ],
+    "original265_C19": {
+      "run": 42189416221,
+      "job": 127797465479,
+      "read_exit": 0,
+      "bytes": 36549,
+      "sha256": "b9244dd03cd00a8d08f9979d9fbfc6131f5ce5064397a1595aa78ec753caf567",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_outer_denials": [
+        "Reviewed Cycle11 source changed: src/lib/workflows/sync-admission-review.ts"
+      ],
+      "application_browser": "NOT_RUN_SOURCE_PRECHECK_FAILURE"
+    },
+    "original265_C22": {
+      "run": 42189416308,
+      "job": 127797465974,
+      "artifact_id": 13489908733,
+      "artifact_digest_rechecked_without_download": "sha256:d91d6138d712434a2ffd2a96194f08ca28189ee4bc6d11c91a45c7dcedee84c8",
+      "report_sha256": "4a58c442d68db5bd79081c187efad181e0d9af56e0f298893b76ca01a7ebacc4",
+      "passed": 299,
+      "failed": 1,
+      "skipped": 0,
+      "classification": "KNOWN_FINANCE_HISTORICAL_SOURCE_HASH_ASSERTION",
+      "failed_test": "independent source review: all admitted author bytes are exact and original controls remain the only writers",
+      "source": "eec71f86a39d58d6019b4af196b040f9269ae96d",
+      "old_failed_result_preserved": true
+    },
+    "verified266_C19": {
+      "run": 42193190184,
+      "job": 127809931408,
+      "head": "2b8406d10b96ffa7f06a8ef5ae1835538b313d30",
+      "actual_carrier": "c4a52e6b78f9cfbf54cac6c479eab7861044728f",
+      "tree": "964b4d88dbf7cd01387e86104df5383aebecb247",
+      "artifact": {
+        "id": 13491916907,
+        "bytes": 19595462,
+        "provider_and_download_sha256": "359f533ab0dfa1bef51894a9a17197774b962ad07db738004b8f6c9dbcf9d8b5"
+      },
+      "application": {
+        "passed": 313,
+        "files": 8,
+        "failed": 0,
+        "skipped": 0,
+        "todo": 0,
+        "report_sha256": "8a8c80b91ee92c5809b31b4572c079e5ad67f113eb9bc391e201510b5e718b96"
+      },
+      "original_workflow_sha256": "607ff1cbddeb04aa636c938f3573211b2a46ec78aee87433b516f6a03df3a618",
+      "corrected_workflow_sha256": "b5b36dec46d3c450298b2a96da4d1605a513c60b5df9d7dc18d2ee8125436e87",
+      "native_src_diff_empty": true,
+      "verdict": "CORRECTED_CURRENT_HEAD_C19_ORIGINAL_SCOPE_PASS_OLD_HEAD_FAILURE_PRESERVED"
+    },
+    "verified266_C19_browsers": [
+      {
+        "mode": "development",
+        "passed": 12,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "runtime_errors": 0,
+        "workers": 2,
+        "report_sha256": "d0b092d0285f4f70be77f00c0a10e3d210ed6fa0c0d0ce16a555f3f7ab2e1d4b",
+        "budgets_ms": [150000],
+        "retries": [0]
+      },
+      {
+        "mode": "production",
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "runtime_errors": 0,
+        "workers": 2,
+        "report_sha256": "adf7a74c9a69e2dfe188d9e89b86b0f2277871ebc990737026b98296c0931c22",
+        "budgets_ms": [90000],
+        "retries": [0]
+      }
+    ],
+    "verified266_C19_limit": "Original C19 capture metadata binds clean carrier only; not a complete transitive-runtime or scoped C24 collector proof",
+    "original266_C22": {
+      "run": {
+        "id": 42193190289,
+        "event": "pull_request",
+        "attempt": 1,
+        "head": "2b8406d10b96ffa7f06a8ef5ae1835538b313d30",
+        "status": "completed",
+        "conclusion": "failure"
+      },
+      "source": {
+        "head": "2b8406d10b96ffa7f06a8ef5ae1835538b313d30",
+        "head_tree": "964b4d88dbf7cd01387e86104df5383aebecb247",
+        "actual_checkout": "c4a52e6b78f9cfbf54cac6c479eab7861044728f",
+        "checkout_tree": "964b4d88dbf7cd01387e86104df5383aebecb247",
+        "parents": [
+          "eec71f86a39d58d6019b4af196b040f9269ae96d",
+          "2b8406d10b96ffa7f06a8ef5ae1835538b313d30"
+        ],
+        "tree_equal": true,
+        "workflow_exact_head": true,
+        "file_hashes": [
+          {
+            "path": ".github/workflows/cycle22-integration.yml",
+            "sha256": "8c753084a82c6ae9e114a92a5c955919bcc562733425075cfd3d0ecec54da703"
+          },
+          {
+            "path": "vite.config.ts",
+            "sha256": "0fdc8ac3b8d922c2229a25d67d0b42ab3c895489bfc7ee514aae0c78853bf48d"
+          },
+          {
+            "path": "tests/program/cycle22-ci-delta-review.test.ts",
+            "sha256": "63659d2de04bc6aa09958c9e7109ec9a1ce2018cad817c6875bef75e7abeef77"
+          },
+          {
+            "path": "tests/program/test-git-history.test.ts",
+            "sha256": "92b9ca92254e83bf0d30b16e946022378ddac39cd28981092265eb8f66737dcb"
+          },
+          {
+            "path": "tests/program/cycle22-daily-pane-render-guards.test.ts",
+            "sha256": "11833f48e859bb52be5b8364719061b31802260ab1ef5ce9992f32ede78ae585"
+          },
+          {
+            "path": "tests/cycle22-independent-integration-review.test.ts",
+            "sha256": "d92940efc89b03c013608835e15f3babcfbaf212b8b4d3b7e8daa028cb92707b"
+          },
+          {
+            "path": "docs/program/CYCLE22_INDEPENDENT_REVIEW.json",
+            "sha256": "dcc7ee4e599ffa31bbc40005fb248780a051c67668ae10ab0fe7f22217a3d079"
+          },
+          {
+            "path": "docs/program/CYCLE22_SOURCE_MANIFEST.json",
+            "sha256": "9ef646cea02b58ac927c36a6b3b10c0a0e505587b6ef78089bc73a6c7a81a196"
+          },
+          {
+            "path": "scripts/cycle25-source-lineage.mjs",
+            "sha256": "5421e35c7cbf0d181843b7b4f7eaf014f16c5157450012f26961b68da71ed731"
+          }
+        ]
+      },
+      "artifact": {
+        "id": 13491912944,
+        "bytes": 14583,
+        "sha256": "945912b062e8dde76980fab2479cde346621fbd779a682fbd1f739380cbf46de",
+        "provider_length_and_digest_verified": true,
+        "files": [
+          {
+            "path": "extracted/artifacts/cycle22/application-results.json",
+            "sha256": "24f46fc2f6693d72789a366cec42aa6e4a9d548a04063770840854bd8253f748"
+          },
+          {
+            "path": "extracted/artifacts/cycle22/ci-delta-results.json",
+            "sha256": "1fe9f4ed653251d7229f8f4af8609601b5e8b54afa044adb4782da639a92b640"
+          }
+        ]
+      },
+      "application": {
+        "files": 8,
+        "total": 300,
+        "passed": 300,
+        "failed": 0,
+        "pending": 0,
+        "success": true,
+        "collector_step": "success"
+      },
+      "ci_delta": {
+        "files": 3,
+        "total": 59,
+        "passed": 58,
+        "failed": 1,
+        "pending": 0,
+        "success": false
+      },
+      "failures": [
+        {
+          "file": "tests/program/cycle22-ci-delta-review.test.ts",
+          "assertion_index": 11,
+          "title": "independent original fifty-case record and test remain exact rather than being overwritten by the CI delta review",
+          "full_name": "independent original fifty-case record and test remain exact rather than being overwritten by the CI delta review",
+          "ancestor_titles": [],
+          "status": "failed",
+          "duration_ms": 7.8529080000000135,
+          "classification": "direct_historical_current_test_byte_mismatch",
+          "failure_messages": [
+            "AssertionError: expected 'd92940efc89b03c013608835e15f3babcfbaf\u2026' to be '49fa5cf5d861c39518d8ffb26bf00d46f0c93\u2026' // Object.is equality\n    at /home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/tests/program/cycle22-ci-delta-review.test.ts:270:5\n    at file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:1632:35\n    at file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:2801:26\n    at file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:3338:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:3333:10)\n    at file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:3318:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:3276:10)\n    at file:///home/runner/work/eaglevisioncontractorplatform/eaglevisioncontractorplatform/node_modules/vitest/dist/chunks/run.BPv-BBRv.js:3904:64"
+          ]
+        }
+      ],
+      "configuration": {
+        "workflow_timeout_minutes": 35,
+        "cli_max_workers": 2,
+        "configured_default_workers": 4,
+        "test_timeout_ms": 30000,
+        "hook_timeout_ms": 30000,
+        "retry_override": null,
+        "retry_setting_in_vite": null,
+        "failed_case_duration_ms": 7.8529080000000135
+      },
+      "not_run_after_failure": [
+        "build",
+        "browser_install",
+        "browser_collection",
+        "native_browser",
+        "off_browser",
+        "clock_browser",
+        "keyboard_check",
+        "complete_collector"
+      ],
+      "cause": "INCONSISTENT_HISTORICAL_VERSUS_REVIEWED_CURRENT_TEST_BYTE_EXPECTATION; neither Git-history/pane failure, resource timeout nor runtime business defect"
+    },
+    "correction": {
+      "path": "tests/program/cycle22-ci-delta-review.test.ts",
+      "sha256": "6648907ce27c8b5643d9fa5d90b4e36521d57aef16c2e8e765bf285946701ed4",
+      "scope": "ONE_EXISTING_TEST_CASE; original13 titles/count and remaining case bodies retained",
+      "historical_test_sha256": "49fa5cf5d861c39518d8ffb26bf00d46f0c935a4fec6768dd15dcc323a35602b",
+      "historical_test_blob": "7c1d67d95fe772a1d17070cc2e90a281c65988ab",
+      "original_published_commit": "b8e0cade3ae7de9773ce11cc0ab2cbae5274cd69",
+      "mandatory_current_test_commit": "649c2399fa954fdc50a1c6a1eab592c0f5b0ae18",
+      "current_test_sha256": "d92940efc89b03c013608835e15f3babcfbaf212b8b4d3b7e8daa028cb92707b",
+      "existing_helper": "admitCycle33ExecutionCiCompatibility UNCHANGED",
+      "original_metadata_record_and_workflow_pins": "UNCHANGED; no silent repinning, normalization or generic waiver",
+      "red": {
+        "passed": 0,
+        "failed": 1,
+        "filtered": 12,
+        "sha256": "1fd7bf533d9e63604eea51c9e2673ca3bd30ba0d18371d39132ca40367bd078c"
+      },
+      "green": {
+        "passed": 1,
+        "failed": 0,
+        "filtered": 12,
+        "sha256": "0e2c00cb9dbeed418a589255d5b9aae6571d9d551345ce04e3e08a72f13d206f"
+      },
+      "local_proof": "PRE_COMMIT_EXACT_TEST_SOURCE_ONLY_NOT_FULL59_OR_NEW_HEAD_CI",
+      "manual_successful_cohort_reruns": 0,
+      "budgets_workers_runtime_orchestration_changes": false
+    },
+    "cancellations": [
+      {
+        "pr": 265,
+        "run": 42189416233,
+        "job": 127797465823,
+        "name": "bounded-integration",
+        "head": "eec71f86a39d58d6019b4af196b040f9269ae96d",
+        "explicit_deadlines": [
+          "The job has exceeded the maximum execution time of 15m0s"
+        ],
+        "cutoff": [
+          {
+            "number": 12,
+            "name": "Run npx playwright test -c tests/program/playwright.cycle12.config.ts --workers=2",
+            "status": "completed",
+            "conclusion": "cancelled",
+            "started_at": "2026-11-06T08:58:22Z",
+            "completed_at": "2026-11-06T08:58:59Z"
+          }
+        ],
+        "unreached_steps": [
+          "Run npx playwright test -c tests/program/playwright.cycle12-off.config.ts --workers=2",
+          "Post Run actions/setup-node@v4"
+        ]
+      },
+      {
+        "pr": 265,
+        "run": 42189416241,
+        "job": 127797465376,
+        "name": "verify",
+        "head": "eec71f86a39d58d6019b4af196b040f9269ae96d",
+        "explicit_deadlines": [
+          "The job has exceeded the maximum execution time of 45m0s"
+        ],
+        "cutoff": [
+          {
+            "number": 8,
+            "name": "Run npm run check",
+            "status": "completed",
+            "conclusion": "cancelled",
+            "started_at": "2026-11-06T08:59:16Z",
+            "completed_at": "2026-11-06T09:43:37Z"
+          }
+        ],
+        "unreached_steps": [
+          "Run npm run staging:plan",
+          "Run npx playwright install --with-deps chromium",
+          "Run npm run test:browser",
+          "Post Run actions/setup-python@v5",
+          "Post Run actions/setup-node@v4"
+        ]
+      },
+      {
+        "pr": 265,
+        "run": 42189416297,
+        "job": 127797465322,
+        "name": "browser",
+        "head": "eec71f86a39d58d6019b4af196b040f9269ae96d",
+        "explicit_deadlines": [
+          "The job has exceeded the maximum execution time of 8m0s"
+        ],
+        "cutoff": [
+          {
+            "number": 6,
+            "name": "Run npx playwright install --with-deps chromium",
+            "status": "completed",
+            "conclusion": "cancelled",
+            "started_at": "2026-11-06T09:08:59Z",
+            "completed_at": "2026-11-06T09:17:02Z"
+          }
+        ],
+        "unreached_steps": [
+          "Run npx playwright test -c tests/program/playwright.maintenance-handoff.config.ts --workers=2",
+          "Post Run actions/setup-node@v4"
+        ]
+      },
+      {
+        "pr": 265,
+        "run": 42189240349,
+        "job": 127796892264,
+        "name": "browser",
+        "head": "eec71f86a39d58d6019b4af196b040f9269ae96d",
+        "explicit_deadlines": [
+          "The job has exceeded the maximum execution time of 8m0s"
+        ],
+        "cutoff": [
+          {
+            "number": 6,
+            "name": "Run npx playwright install --with-deps chromium",
+            "status": "completed",
+            "conclusion": "cancelled",
+            "started_at": "2026-11-06T08:42:28Z",
+            "completed_at": "2026-11-06T08:50:02Z"
+          }
+        ],
+        "unreached_steps": [
+          "Run npx playwright test -c tests/program/playwright.technician-day-board.config.ts --workers=2",
+          "Post Run actions/setup-node@v4"
+        ]
+      },
+      {
+        "pr": 265,
+        "run": 42189240529,
+        "job": 127796891731,
+        "name": "local-preview",
+        "head": "eec71f86a39d58d6019b4af196b040f9269ae96d",
+        "explicit_deadlines": [
+          "The job has exceeded the maximum execution time of 10m0s"
+        ],
+        "cutoff": [
+          {
+            "number": 5,
+            "name": "Run npx playwright install --with-deps chromium",
+            "status": "completed",
+            "conclusion": "cancelled",
+            "started_at": "2026-11-06T09:03:23Z",
+            "completed_at": "2026-11-06T09:13:21Z"
+          }
+        ],
+        "unreached_steps": [
+          "Run npx playwright test --config tests/program/playwright.proof-of-work.config.ts",
+          "Post Run actions/setup-node@v4"
+        ]
+      },
+      {
+        "pr": 265,
+        "run": 42189240398,
+        "job": 127796891018,
+        "name": "browser",
+        "head": "eec71f86a39d58d6019b4af196b040f9269ae96d",
+        "explicit_deadlines": [
+          "The job has exceeded the maximum execution time of 8m0s"
+        ],
+        "cutoff": [
+          {
+            "number": 6,
+            "name": "Run npx playwright install --with-deps chromium",
+            "status": "completed",
+            "conclusion": "cancelled",
+            "started_at": "2026-11-06T09:16:49Z",
+            "completed_at": "2026-11-06T09:24:52Z"
+          }
+        ],
+        "unreached_steps": [
+          "Run npx playwright test -c tests/program/playwright.field-work-orders.config.ts --workers=2",
+          "Post Run actions/setup-node@v4"
+        ]
+      },
+      {
+        "pr": 265,
+        "run": 42189240331,
+        "job": 127796890832,
+        "name": "verify",
+        "head": "eec71f86a39d58d6019b4af196b040f9269ae96d",
+        "explicit_deadlines": [
+          "The job has exceeded the maximum execution time of 45m0s"
+        ],
+        "cutoff": [
+          {
+            "number": 8,
+            "name": "Run npm run check",
+            "status": "completed",
+            "conclusion": "cancelled",
+            "started_at": "2026-11-06T09:08:00Z",
+            "completed_at": "2026-11-06T09:52:30Z"
+          }
+        ],
+        "unreached_steps": [
+          "Run npm run staging:plan",
+          "Run npx playwright install --with-deps chromium",
+          "Run npm run test:browser",
+          "Post Run actions/setup-python@v5",
+          "Post Run actions/setup-node@v4"
+        ]
+      },
+      {
+        "pr": 266,
+        "run": 42193190290,
+        "job": 127809932463,
+        "name": "verify",
+        "head": "2b8406d10b96ffa7f06a8ef5ae1835538b313d30",
+        "explicit_deadlines": [
+          "The job has exceeded the maximum execution time of 45m0s"
+        ],
+        "cutoff": [
+          {
+            "number": 8,
+            "name": "Run npm run check",
+            "status": "completed",
+            "conclusion": "cancelled",
+            "started_at": "2026-11-06T09:29:29Z",
+            "completed_at": "2026-11-06T10:13:50Z"
+          }
+        ],
+        "unreached_steps": [
+          "Run npm run staging:plan",
+          "Run npx playwright install --with-deps chromium",
+          "Run npm run test:browser",
+          "Post Run actions/setup-python@v5",
+          "Post Run actions/setup-node@v4"
+        ]
+      },
+      {
+        "pr": 266,
+        "run": 42193121240,
+        "job": 127809700005,
+        "name": "local-preview",
+        "head": "2b8406d10b96ffa7f06a8ef5ae1835538b313d30",
+        "explicit_deadlines": [
+          "The job has exceeded the maximum execution time of 10m0s"
+        ],
+        "cutoff": [
+          {
+            "number": 6,
+            "name": "Install reviewed missing Chromium fonts from signed Ubuntu archives",
+            "status": "completed",
+            "conclusion": "cancelled",
+            "started_at": "2026-11-06T09:17:22Z",
+            "completed_at": "2026-11-06T09:26:44Z"
+          }
+        ],
+        "unreached_steps": [
+          "Verify Chromium system dependencies without privileged changes",
+          "Run npx playwright install chromium",
+          "Run npx playwright test --config tests/program/playwright.passport-timeline.config.ts",
+          "Post Run actions/setup-node@v4"
+        ]
+      },
+      {
+        "pr": 266,
+        "run": 42193121113,
+        "job": 127809699472,
+        "name": "local-preview",
+        "head": "2b8406d10b96ffa7f06a8ef5ae1835538b313d30",
+        "explicit_deadlines": [
+          "The job has exceeded the maximum execution time of 10m0s"
+        ],
+        "cutoff": [
+          {
+            "number": 5,
+            "name": "Run npx playwright install --with-deps chromium",
+            "status": "completed",
+            "conclusion": "cancelled",
+            "started_at": "2026-11-06T09:22:12Z",
+            "completed_at": "2026-11-06T09:32:06Z"
+          }
+        ],
+        "unreached_steps": [
+          "Run npx playwright test --config tests/program/playwright.proof-of-work.config.ts",
+          "Post Run actions/setup-node@v4"
+        ]
+      },
+      {
+        "pr": 266,
+        "run": 42193121105,
+        "job": 127809699464,
+        "name": "verify",
+        "head": "2b8406d10b96ffa7f06a8ef5ae1835538b313d30",
+        "explicit_deadlines": [
+          "The job has exceeded the maximum execution time of 45m0s"
+        ],
+        "cutoff": [
+          {
+            "number": 8,
+            "name": "Run npm run check",
+            "status": "completed",
+            "conclusion": "cancelled",
+            "started_at": "2026-11-06T09:20:07Z",
+            "completed_at": "2026-11-06T10:04:24Z"
+          }
+        ],
+        "unreached_steps": [
+          "Run npm run staging:plan",
+          "Run npx playwright install --with-deps chromium",
+          "Run npm run test:browser",
+          "Post Run actions/setup-python@v5",
+          "Post Run actions/setup-node@v4"
+        ]
+      },
+      {
+        "pr": 266,
+        "run": 42193121105,
+        "job": 127809699175,
+        "name": "postgres17",
+        "head": "2b8406d10b96ffa7f06a8ef5ae1835538b313d30",
+        "explicit_deadlines": [
+          "The job has exceeded the maximum execution time of 10m0s"
+        ],
+        "cutoff": [
+          {
+            "number": 8,
+            "name": "Run npx playwright install --with-deps chromium",
+            "status": "completed",
+            "conclusion": "cancelled",
+            "started_at": "2026-11-06T09:15:20Z",
+            "completed_at": "2026-11-06T09:24:33Z"
+          }
+        ],
+        "unreached_steps": [
+          "Run npx vitest run tests/database",
+          "Post Run actions/setup-node@v4"
+        ]
+      }
+    ],
+    "coverage_limits": [
+      "Corrected2b C19 success does not relabel originaleec C19 failure",
+      "Corrected2b C22 application gate passed but later ci-delta failure prevents whole C22 completion; browser/build steps skipped",
+      "Four original45m Foundation verifies cut off in npmcheck; remaining staging/browser steps unreached",
+      "Other cancelled jobs have explicit original deadlines; install completion/browser-case totals cannot be inferred from job cancellation alone",
+      "Whole Foundation, nativePG and complete runtime coverage remain separate from bounded/dedicated PASS",
+      "No original assertions, recovery kit or successful jobs rerun; no source/workflow/PR mutations in this audit"
+    ],
+    "independent_evidence_sha256": {
+      "hosted_C22_audit": "75bdc5c36ee0bf6596f49b8d25d33e81ec352d33dfd3f5a7099288fe9b037259",
+      "C19_verified": "829830c95d5f47880284c852e08ca26c1931a22f25b2ee7010ba22cd72d4427a",
+      "classification": "b4759744e939429c897529e586879073c78518bb089e21b657ae05647b8ccfde"
+    },
+    "new_head_CI": "PENDING_OWN_PUBLICATION_AND_EXACT_HEAD_OBSERVATION",
+    "original265_dedicated_successes": "PRESERVED_EXACT_EEC_PUSH_AND_PR_83_142_128_NATIVE9_OFF3_63PNG_28SOURCE_BINDINGS",
+    "original270": "PRESERVE_PUSH270PASS_PR249PASS21FAIL; exclusive cause UNKNOWN; budgets/assertions/orchestration unchanged",
+    "physical_main": "OWNER_WITNESSED_MAIN_SYNTHETIC_NETWORK_LOSS_PASS_ONLY",
+    "physical_duplicate": "UNKNOWN_UNVERIFIED_BOTH_PRIVATE_DIRECTORIES_UNTOUCHED",
+    "D1_actual_people": "ELEVEN_UNASSIGNED_PROPOSED_FUNCTIONS_ONLY",
+    "A01_A12": "NOT_RUN",
+    "release": "NOT_READY_NOT_AUTHORIZED",
+    "test_only_author_commit": "a3441c489a1378dbfd9fdc4a555684639a0b5f90",
+    "test_only_author_parent": "2b8406d10b96ffa7f06a8ef5ae1835538b313d30",
+    "independent_test_review_sha256": "6059a775304bac83fbcfef1b0d41f07d56bb007c3aaca7b115e8e2d2eda10055",
+    "independent_reviewer": "/root/cycle30_field_growth",
+    "local_quality": {
+      "strict_types": "PASS",
+      "scoped_lint": "PASS",
+      "test_format": "PASS",
+      "other_successful_cases_manually_rerun": false,
+      "full_format": "PASS",
+      "feature_inventory": "PASS_25_RECORDS_1419_SOURCES_5_LOCKS_13_BINDINGS",
+      "cycle24_source_integrity": "PASS_523_AUTHOR_FILES_128_PROTECTED_5_LOCKS_13_BINDINGS"
+    },
+    "independent_candidate_review": {
+      "complete_ci_candidate_sha256": "493362d5f69e68f3299fc2fc79f1a28d0466985e4cd4dc26e6e623bed023465e",
+      "official_reference_append_sha256": "22d20c3c1d11912acf47411d6ed0fe5c74b649404f68925a832598f76fb87d79",
+      "reviewer": "/root/cycle30_field_growth",
+      "verdict": "CLEAR_SOURCE_REVIEW_NOT_HOSTED_ACCEPTANCE"
+    }
+  },
+  "owner_requirement_continuity": {
+    "branch": "codex/cycle33-native-continuity-next",
+    "base_commit": "2b8406d10b96ffa7f06a8ef5ae1835538b313d30",
+    "native_author": "14734003b472c2633bf8e87526c6a4260696d914",
+    "native_scope": "ONE_FINAL_EXISTING_OWNER_CURRENTNESS_GUARD_NO_NEW_ENGINE_STORE_OR_UI",
+    "native_path": "src/lib/workflows/owner-action-verification.ts",
+    "native_sha256": "2f68502ebb1c6cb7944941a92b64b0d26e3c4916bfc7342ecdb4167ad861f5ad",
+    "existing_C29_author": "1a226d540578810b14fdbbbc170de206745c418c",
+    "existing_C29_native_sha256": "3457d010c8e965afb2915271d0a83f2e0988172567aa3d92d3be44aaabf0cf77",
+    "new_companions": [
+      {
+        "path": "tests/cycle33-owner-requirement-input-continuity.test.ts",
+        "sha256": "b5df7ce10d24328e34055b310909034e4fb9a8bc941ab033ef06397057e22531"
+      },
+      {
+        "path": "docs/program/CYCLE33_OWNER_REQUIREMENT_INPUT_CONTINUITY.md",
+        "sha256": "dfbb6be6a0f5ecc1a828c29d214640c800868b1fbdb3c2275d253e315c2c5ab4"
+      }
+    ],
+    "native_parent_regression": {
+      "passed": 0,
+      "failed": 3,
+      "sha256": "1becb8816048e6bc72c83a6ab79b07e36c81994349b8deac29699793e43ee2a7"
+    },
+    "native_corrected_focused": {
+      "passed": 47,
+      "failed": 0,
+      "new": 20,
+      "retained_unchanged": 27,
+      "sha256": "eafddf100d8beaeedcd0a240bc5124bf2c6b6c8197eedd1889e3873520b17ebb"
+    },
+    "source_guard_test": "tests/cycle33-owner-requirement-source-lineage.test.ts",
+    "source_guard_test_sha256": "b758d78c582877778154d386bb2e8ab761a20cd77314ba3e4815b9cde4ecc6d3",
+    "source_guard_local": "INITIAL_32_PASS_1_NEW_EXPECTATION_FAIL; CORRECTED_CASE_ONLY_1_PASS_32_FILTERED; NO_SINGLE_33_PASS_CLAIM",
+    "source_support_proof_sha256": "a47ee486ce83c86c0ce6854629d5ceac7ed78719c49dedd0c5164537d08f2184",
+    "helper_sha256": "b410910a1b792118e5eb52dda7921b6c40b4db48f378bc7fc3d2ee74cac480dc",
+    "source_authority": "FINITE_BUILD_TEST_EVIDENCE_ONLY; EXACT147_SOLE2B_M1A2; ORIGINAL_ENDPOINT_PINS_AND_C29_COMPANIONS_UNCHANGED; FRESH_READS; NO_BUSINESS_OR_RESTORE_AUTHORITY",
+    "CI_correction": "EXACT6648907C_COPY_FROM_REVIEWED_A344; PUBLISHED_SEPARATELY_IN_DRAFT267_D942718A",
+    "native_independent_review": {
+      "reviewer": "/root/cycle25_finance_intelligence_resume",
+      "verdict": "CLEAR_SOURCE_ONLY",
+      "sha256": "0c680a078b654c6080eb166d5343e7c5d080ff95342981222ac0a113b1cbbb4b"
+    },
+    "support_independent_review": {
+      "reviewer": "/root/cycle33_independent_review",
+      "verdict": "CLEAR_BUILD_ONLY_EXCLUDING_OWN_NATIVE_AND_ROOT_WORKFLOW_DOCS",
+      "sha256": "a2d91bc9f49d1e278735d81d9dd76b9520c00e258a77339dc28d0c1d745b9467"
+    },
+    "combined_independent_review": {
+      "reviewer": "/root/cycle30_field_growth",
+      "verdict": "CLEAR_PRECOMMIT_ACTUAL_COMBINED_SOURCE_WORKFLOW_AND_DOCUMENTS_NOT_HOSTED_ACCEPTANCE",
+      "sha256": "2f556c5960df692dbac05077e556f6ad5342a57599a1b4b15ec0494e8765bd3c"
+    },
+    "workflow": "EXISTING_DEDICATED_WORKFLOW_EXTENDED_WITH_STRICT47_AND33_GATES_AND_EXACT_NATIVE_BINDING; ORIGINAL83_142_128_25_NATIVE9_OFF3_ASSERTIONS_AND_BUDGETS_UNCHANGED",
+    "quality": "STRICT_TYPES_SCOPED_LINT_FORMAT_C24_523_AUTHORS_128_PROTECTED_5_LOCKS_13_BINDINGS_AND_FEATURES25_1421_PASS",
+    "hosted": "PENDING_OWN_EXACT_HEAD; NO_PARENT_RESULT_INHERITANCE",
+    "browser": "PENDING_OWN_EXACT_HEAD_3_BRANDS_DESKTOP_TABLET_MOBILE; NO_NEW_SCREENSHOT_OR_VISUAL_APPROVAL_CLAIM",
+    "other_module_audit": "FIELD_CUSTOMER_GROWTH_OFFLINE_NO_ADDITIONAL_DEMONSTRATED_DEFECT; NOT_EXHAUSTIVE_ACCEPTANCE",
+    "D1": "ELEVEN_ROLES_UNASSIGNED_PROPOSALS_ONLY",
+    "D2_D3": "SEPARATE_OWNER_REVIEW_REQUIRED",
+    "A01_A12": "NOT_RUN",
+    "recovery": "OWNER_WITNESSED_MAIN_SYNTHETIC_NETWORK_LOSS_PASS_ONLY; DUPLICATE_UNKNOWN_UNVERIFIED_BOTH_PRIVATE_FOLDERS_UNTOUCHED",
+    "release": "NOT_READY_NOT_AUTHORIZED",
+    "business_authority": false,
+    "restore_adapter": false,
+    "full_format": "PASS",
+    "workflow_parse": "PINNED_PRETTIER_YAML_PARSE_AND_7_INLINE_NODE_SYNTAX_CHECKS_PASS",
+    "workflow_sha256": "3aee135c4950bca02038947db388345933838b59cef5a5cda8f85ca31a5afd0a",
+    "actual_agents": {
+      "native_author_and_canonical_audit": "/root/cycle33_independent_review",
+      "native_independent_reviewer_and_build_support_author": "/root/cycle25_finance_intelligence_resume",
+      "build_support_independent_reviewer": "/root/cycle33_independent_review",
+      "workflow_registers_and_coordination": "/root",
+      "combined_independent_reviewer": "/root/cycle30_field_growth"
+    }
   }
 }

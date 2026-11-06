@@ -580,5 +580,120 @@
       "reviewer": "/root/cycle25_finance_intelligence_resume",
       "sha256": "07aac98c1e830fb965c764c944c53b3a6843356238db3db414103cc9a7468b7f"
     }
+  },
+  "reconciliation_266": {
+    "parent_commit": "2b8406d10b96ffa7f06a8ef5ae1835538b313d30",
+    "branch": "codex/cycle33-ci-reconciliation-next",
+    "source_scope": "ONE_EXISTING_CI_TEST_ONLY_NO_NATIVE_CHANGES",
+    "modified_path": "tests/program/cycle22-ci-delta-review.test.ts",
+    "modified_sha256": "6648907ce27c8b5643d9fa5d90b4e36521d57aef16c2e8e765bf285946701ed4",
+    "original_test_hash": "63659d2de04bc6aa09958c9e7109ec9a1ce2018cad817c6875bef75e7abeef77",
+    "historical_manifest_record_and_current649_bytes": "UNCHANGED",
+    "helpers_workflows_deps_budgets": "UNCHANGED",
+    "source_authority": "EXISTING_LITERAL649_ADMISSION_PLUS_ACTUAL_ORIGINAL_PUBLISHED_B8E_BYTES; NO_NEW_ADMISSION_OR_BUSINESS_AUTHORITY",
+    "local_failed_case_only": {
+      "passed": 1,
+      "failed": 0,
+      "filtered": 12,
+      "sha256": "0e2c00cb9dbeed418a589255d5b9aae6571d9d551345ce04e3e08a72f13d206f"
+    },
+    "current_head_ci": "NOT_INHERITED_FROM_265_OR266",
+    "business_authority": false,
+    "restore_adapter": false,
+    "test_only_author_commit": "a3441c489a1378dbfd9fdc4a555684639a0b5f90",
+    "test_only_author_parent": "2b8406d10b96ffa7f06a8ef5ae1835538b313d30",
+    "independent_test_review_sha256": "6059a775304bac83fbcfef1b0d41f07d56bb007c3aaca7b115e8e2d2eda10055",
+    "independent_reviewer": "/root/cycle30_field_growth",
+    "local_quality": {
+      "strict_types": "PASS",
+      "scoped_lint": "PASS",
+      "test_format": "PASS",
+      "other_successful_cases_manually_rerun": false,
+      "full_format": "PASS",
+      "feature_inventory": "PASS_25_RECORDS_1419_SOURCES_5_LOCKS_13_BINDINGS",
+      "cycle24_source_integrity": "PASS_523_AUTHOR_FILES_128_PROTECTED_5_LOCKS_13_BINDINGS"
+    },
+    "independent_candidate_review": {
+      "complete_ci_candidate_sha256": "493362d5f69e68f3299fc2fc79f1a28d0466985e4cd4dc26e6e623bed023465e",
+      "official_reference_append_sha256": "22d20c3c1d11912acf47411d6ed0fe5c74b649404f68925a832598f76fb87d79",
+      "reviewer": "/root/cycle30_field_growth",
+      "verdict": "CLEAR_SOURCE_REVIEW_NOT_HOSTED_ACCEPTANCE"
+    }
+  },
+  "owner_requirement_continuity": {
+    "branch": "codex/cycle33-native-continuity-next",
+    "base_commit": "2b8406d10b96ffa7f06a8ef5ae1835538b313d30",
+    "native_author": "14734003b472c2633bf8e87526c6a4260696d914",
+    "native_scope": "ONE_FINAL_EXISTING_OWNER_CURRENTNESS_GUARD_NO_NEW_ENGINE_STORE_OR_UI",
+    "native_path": "src/lib/workflows/owner-action-verification.ts",
+    "native_sha256": "2f68502ebb1c6cb7944941a92b64b0d26e3c4916bfc7342ecdb4167ad861f5ad",
+    "existing_C29_author": "1a226d540578810b14fdbbbc170de206745c418c",
+    "existing_C29_native_sha256": "3457d010c8e965afb2915271d0a83f2e0988172567aa3d92d3be44aaabf0cf77",
+    "new_companions": [
+      {
+        "path": "tests/cycle33-owner-requirement-input-continuity.test.ts",
+        "sha256": "b5df7ce10d24328e34055b310909034e4fb9a8bc941ab033ef06397057e22531"
+      },
+      {
+        "path": "docs/program/CYCLE33_OWNER_REQUIREMENT_INPUT_CONTINUITY.md",
+        "sha256": "dfbb6be6a0f5ecc1a828c29d214640c800868b1fbdb3c2275d253e315c2c5ab4"
+      }
+    ],
+    "native_parent_regression": {
+      "passed": 0,
+      "failed": 3,
+      "sha256": "1becb8816048e6bc72c83a6ab79b07e36c81994349b8deac29699793e43ee2a7"
+    },
+    "native_corrected_focused": {
+      "passed": 47,
+      "failed": 0,
+      "new": 20,
+      "retained_unchanged": 27,
+      "sha256": "eafddf100d8beaeedcd0a240bc5124bf2c6b6c8197eedd1889e3873520b17ebb"
+    },
+    "source_guard_test": "tests/cycle33-owner-requirement-source-lineage.test.ts",
+    "source_guard_test_sha256": "b758d78c582877778154d386bb2e8ab761a20cd77314ba3e4815b9cde4ecc6d3",
+    "source_guard_local": "INITIAL_32_PASS_1_NEW_EXPECTATION_FAIL; CORRECTED_CASE_ONLY_1_PASS_32_FILTERED; NO_SINGLE_33_PASS_CLAIM",
+    "source_support_proof_sha256": "a47ee486ce83c86c0ce6854629d5ceac7ed78719c49dedd0c5164537d08f2184",
+    "helper_sha256": "b410910a1b792118e5eb52dda7921b6c40b4db48f378bc7fc3d2ee74cac480dc",
+    "source_authority": "FINITE_BUILD_TEST_EVIDENCE_ONLY; EXACT147_SOLE2B_M1A2; ORIGINAL_ENDPOINT_PINS_AND_C29_COMPANIONS_UNCHANGED; FRESH_READS; NO_BUSINESS_OR_RESTORE_AUTHORITY",
+    "CI_correction": "EXACT6648907C_COPY_FROM_REVIEWED_A344; PUBLISHED_SEPARATELY_IN_DRAFT267_D942718A",
+    "native_independent_review": {
+      "reviewer": "/root/cycle25_finance_intelligence_resume",
+      "verdict": "CLEAR_SOURCE_ONLY",
+      "sha256": "0c680a078b654c6080eb166d5343e7c5d080ff95342981222ac0a113b1cbbb4b"
+    },
+    "support_independent_review": {
+      "reviewer": "/root/cycle33_independent_review",
+      "verdict": "CLEAR_BUILD_ONLY_EXCLUDING_OWN_NATIVE_AND_ROOT_WORKFLOW_DOCS",
+      "sha256": "a2d91bc9f49d1e278735d81d9dd76b9520c00e258a77339dc28d0c1d745b9467"
+    },
+    "combined_independent_review": {
+      "reviewer": "/root/cycle30_field_growth",
+      "verdict": "CLEAR_PRECOMMIT_ACTUAL_COMBINED_SOURCE_WORKFLOW_AND_DOCUMENTS_NOT_HOSTED_ACCEPTANCE",
+      "sha256": "2f556c5960df692dbac05077e556f6ad5342a57599a1b4b15ec0494e8765bd3c"
+    },
+    "workflow": "EXISTING_DEDICATED_WORKFLOW_EXTENDED_WITH_STRICT47_AND33_GATES_AND_EXACT_NATIVE_BINDING; ORIGINAL83_142_128_25_NATIVE9_OFF3_ASSERTIONS_AND_BUDGETS_UNCHANGED",
+    "quality": "STRICT_TYPES_SCOPED_LINT_FORMAT_C24_523_AUTHORS_128_PROTECTED_5_LOCKS_13_BINDINGS_AND_FEATURES25_1421_PASS",
+    "hosted": "PENDING_OWN_EXACT_HEAD; NO_PARENT_RESULT_INHERITANCE",
+    "browser": "PENDING_OWN_EXACT_HEAD_3_BRANDS_DESKTOP_TABLET_MOBILE; NO_NEW_SCREENSHOT_OR_VISUAL_APPROVAL_CLAIM",
+    "other_module_audit": "FIELD_CUSTOMER_GROWTH_OFFLINE_NO_ADDITIONAL_DEMONSTRATED_DEFECT; NOT_EXHAUSTIVE_ACCEPTANCE",
+    "D1": "ELEVEN_ROLES_UNASSIGNED_PROPOSALS_ONLY",
+    "D2_D3": "SEPARATE_OWNER_REVIEW_REQUIRED",
+    "A01_A12": "NOT_RUN",
+    "recovery": "OWNER_WITNESSED_MAIN_SYNTHETIC_NETWORK_LOSS_PASS_ONLY; DUPLICATE_UNKNOWN_UNVERIFIED_BOTH_PRIVATE_FOLDERS_UNTOUCHED",
+    "release": "NOT_READY_NOT_AUTHORIZED",
+    "business_authority": false,
+    "restore_adapter": false,
+    "full_format": "PASS",
+    "workflow_parse": "PINNED_PRETTIER_YAML_PARSE_AND_7_INLINE_NODE_SYNTAX_CHECKS_PASS",
+    "workflow_sha256": "3aee135c4950bca02038947db388345933838b59cef5a5cda8f85ca31a5afd0a",
+    "actual_agents": {
+      "native_author_and_canonical_audit": "/root/cycle33_independent_review",
+      "native_independent_reviewer_and_build_support_author": "/root/cycle25_finance_intelligence_resume",
+      "build_support_independent_reviewer": "/root/cycle33_independent_review",
+      "workflow_registers_and_coordination": "/root",
+      "combined_independent_reviewer": "/root/cycle30_field_growth"
+    }
   }
 }

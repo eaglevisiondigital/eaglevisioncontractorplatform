@@ -1,3 +1,96 @@
+# Native continuation · current-authority privacy correction
+
+Separate native author `14734003b472c2633bf8e87526c6a4260696d914` strengthens the
+existing Owner requirements reader: recheck the original current briefing after
+strict selector capture, before returning private rows or facts. All three brands
+reproduce the prior disclosure after actual native owner revocation. The final
+existing guard closes that demonstrated gap; no store, engine, writer or UI is added.
+
+Actual focused results are parent3FAIL, corrected47PASS (20new +27unchanged original
+requirements cases). The separate new33-case source-admission scope first reports
+32PASS/1new-expectationFAIL, then the corrected expectation alone1PASS/32filtered;
+no single33PASS run is claimed. The runtime correctly denied in the failed new test;
+only its matcher was corrected to the unchanged original C29 error capitalization.
+Strict types, scoped lint/format, feature checks and the affected C24 source checker
+pass. Historical application/browser/Foundation failures remain unchanged.
+
+The build-only hook admits exactly the reviewed147 sole2b M1/A2 author, checks the
+unchanged original C29 endpoint and companions, and freshly verifies current native
+and new companion bytes. Original pins and mismatch denial remain intact. It grants
+no business, restoration, hosted or financial authority. The existing dedicated CI
+workflow retains83/142/128/25 cases, native9/OFF3 and original budgets, adding strict
+47/33 gates and this author's clean before/after source binding. Its own current-head
+CI and responsive screenshots remain pending; old265 evidence is not transferred.
+
+The exact one-case CI correction and ten-document reconciliation from draft267,
+head `d942718a0a09344d0c37d497a0218f4c237ba65d`, are reused here without altering that
+branch. Native source review is CLEAR by `/root/cycle25_finance_intelligence_resume`;
+build-only support and final combined candidate review are recorded separately.
+Other bounded canonical audits found no additional demonstrated defect; no feature
+completion is invented. All eleven D1 roles remain UNASSIGNED; D2–D3 require owner
+decisions and A01–A12 are NOT_RUN. Owner-witnessed main two-Mac synthetic network-loss
+PASS is preserved; duplicate recovery remains UNKNOWN/UNVERIFIED with both private
+folders untouched. No attempt, kit rebuild, replay or credential access occurred.
+
+No merge, deployment, hosted mutation, schema, operational restoration, payments,
+communication or dispatch. Protected designs, source, original migration approvals,
+P1/customer14/4B, Auth/MFA, NMI and all release gates remain intact.
+**Release1.0 remains NOT READY / NOT AUTHORIZED.**
+
+# Hosted reconciliation · exact265/266 evidence and bounded CI correction
+
+Frozen265 remains `eec71f86a39d58d6019b4af196b040f9269ae96d` (24PASS/2FAIL/7CANCELLED).
+Frozen266 remains `2b8406d10b96ffa7f06a8ef5ae1835538b313d30` (7PASS/1FAIL/5CANCELLED).
+Both are drafts; neither ledger is whole Foundation PASS. The verified265 push/PR
+83+142+128/native9/OFF3/63PNG/28source-binding successes stay exact to eec and its
+matching PR carrier. No successful cohort is manually repeated.
+
+-265 C19run42189416221 fails before tests at the nested original source check:
+`Reviewed Cycle11 source changed: src/lib/workflows/sync-admission-review.ts`.
+There is no application/browser result artifact. The old caught inner reason is
+unlogged; source-only shallow/full comparison previously proved the Git-object
+precondition. Matching266 C19run42193190184 now actually passes313application cases,
+12native browser cases and3OFF cases at exact2b/carrierc4a52 tree964b. The original
+13test/config/checker sources are unchanged; only checkout history changed. This
+closes that precondition in the observed matching run without relabelling265's FAIL.
+-265 C22run42189416308 remains299PASS/1FAIL: historical Finance source-hash mismatch,
+not timeout.266's original300application cases all pass; that observed correction
+is distinct from the subsequent CI-delta failure.
+-266 C22run42193190289 has59CI-delta cases:58PASS/1FAIL. Git-history45/45 and the
+original pane guard1/1 pass; the CI-delta file is12PASS/1FAIL. The sole7.853ms failure
+is `independent original fifty-case record and test remain exact rather than being
+overwritten by the CI delta review`: expected49fa5cf5, actuald92940ef. The actual
+carrier c4a52 has the exact2b tree. Provider artifact13491912944 ZIP SHA256
+`945912b062e8dde76980fab2479cde346621fbd779a682fbd1f739380cbf46de`
+and native JSON hashes/individual identities are recorded in the existing JSON
+companion. Build/install/browser/keyboard/complete steps after this failure are
+NOT_RUN; this is not a browser-resource or runtime-business defect.
+
+The bounded one-case correction retains the original13case titles/count and other
+case bodies. It still requires actual original b8e test bytes to hash to49fa,
+unchanged original manifest SHA/blob metadata and the unchanged dcc7 review record.
+It additionally mandates the existing strict649 current-test admission. Exact sole
+parent/M1/modes/original/current SHA+blob/fresh-read checks remain unchanged. No
+protected pin, helper, workflow, dependency, runtime or original deadline changes.
+This is explicit compatibility with the already-reviewed test successor, not an
+arbitrary source waiver or a replacement of historical evidence.
+
+The failed case alone reproduces1RED/12filtered at2b, then1PASS/12filtered at the
+recorded new test source6648907c. Original58successful CI cases,300application,
+267source and270deadline cohorts are not manually rerun. New-head automatic CI
+and source review remain separately recorded; local isolated PASS is not a59case
+or full Foundation PASS. All12current265/266 cancellations have explicit original
+job-deadline annotations; four45minute Foundation verifies stopped in npmcheck,
+leaving later staging/full-browser coverage NOT_RUN. Historical270 causes and all
+prior failures/timeouts remain open as originally recorded.
+
+D1 now offers eleven proposed accountable functions and decision/separation fields;
+all actual people remain UNASSIGNED. D2–D3 require separate review; A01–A12 NOT_RUN.
+The owner-witnessed main synthetic network-loss PASS and duplicateUNKNOWN remain
+separate, both private folders untouched. No operational implementation or recovery
+attempt is authorized. Release1.0 NOT READY / NOT AUTHORIZED; no merge, deployment,
+hosted mutation, restoration, financial execution, communication or dispatch.
+
 # Cycle33 CI continuation · exact tested head and new compatibility findings
 
 Draft265 remains frozen at `eec71f86a39d58d6019b4af196b040f9269ae96d`, tree

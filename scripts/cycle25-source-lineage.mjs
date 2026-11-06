@@ -1144,6 +1144,27 @@ function admitCycle29Forward(path, current, previous, ports) {
       ...result,
       cycle30_forward: admitCycle30Forward(path, current, endpoint, ports),
     };
+  if (
+    !endpoint.equals(Buffer.from(current)) &&
+    path === cycle33OwnerRequirementAuthor.path
+  ) {
+    try {
+      return {
+        ...result,
+        owner_requirement_forward: admitCycle33OwnerRequirementSource(
+          path,
+          current,
+          endpoint,
+          ports,
+        ),
+      };
+    } catch (cause) {
+      throw new Error(
+        'Current source differs from fixed Cycle27 lineage (fixed Cycle28/Cycle29 author required)',
+        { cause },
+      );
+    }
+  }
   if (!endpoint.equals(Buffer.from(current)))
     throw Error(
       'Current source differs from fixed Cycle27 lineage (fixed Cycle28/Cycle29 author required)',
@@ -2273,6 +2294,102 @@ export function admitCycle33ExecutionCiCompatibility(
     module: 'cycle22-independent-review-test-compatibility',
     source_commit: fixed.commit,
     path: fixed.path,
+    authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+    business_authority: false,
+    restore_adapter: false,
+  };
+}
+
+// One separately reviewed native currentness correction. Existing C29 author
+// identity and companions stay immutable; this is build/test evidence only.
+export const cycle33OwnerRequirementAuthor = Object.freeze({
+  commit: '14734003b472c2633bf8e87526c6a4260696d914',
+  parent: '2b8406d10b96ffa7f06a8ef5ae1835538b313d30',
+  predecessor: '1a226d540578810b14fdbbbc170de206745c418c',
+  path: 'src/lib/workflows/owner-action-verification.ts',
+  predecessor_sha256:
+    '3457d010c8e965afb2915271d0a83f2e0988172567aa3d92d3be44aaabf0cf77',
+  sha256: '2f68502ebb1c6cb7944941a92b64b0d26e3c4916bfc7342ecdb4167ad861f5ad',
+  added: Object.freeze([
+    Object.freeze({
+      path: 'tests/cycle33-owner-requirement-input-continuity.test.ts',
+      sha256:
+        'b5df7ce10d24328e34055b310909034e4fb9a8bc941ab033ef06397057e22531',
+    }),
+    Object.freeze({
+      path: 'docs/program/CYCLE33_OWNER_REQUIREMENT_INPUT_CONTINUITY.md',
+      sha256:
+        'dfbb6be6a0f5ecc1a828c29d214640c800868b1fbdb3c2275d253e315c2c5ab4',
+    }),
+  ]),
+});
+export function admitCycle33OwnerRequirementSource(
+  path,
+  current,
+  previous,
+  supplied = {},
+) {
+  const ports = { ...cycle25SourcePorts, ...supplied },
+    fixed = cycle33OwnerRequirementAuthor,
+    original = cycle29Authors.find((s) => s.module === 'owner-currentness'),
+    hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
+  if (
+    path !== fixed.path ||
+    original?.commit !== fixed.predecessor ||
+    original.modified.length !== 1 ||
+    original.modified[0] !== fixed.path
+  )
+    throw Error('Exact reviewed owner requirement source path required');
+  validateCycle29ForwardSpec(original, ports);
+  if (
+    ports.type(fixed.commit) !== 'commit' ||
+    ports.parent(fixed.commit) !== fixed.parent ||
+    ports.delta(fixed.commit) !==
+      [`M\t${fixed.path}`, ...fixed.added.map((p) => `A\t${p.path}`)]
+        .sort()
+        .join('\n') ||
+    [fixed.predecessor, fixed.parent, fixed.commit].some(
+      (commit) => ports.mode(commit, path) !== '100644',
+    ) ||
+    fixed.added.some((p) => ports.mode(fixed.commit, p.path) !== '100644')
+  )
+    throw Error('Exact single-parent regular M1/A2 owner author required');
+  const predecessor = Buffer.from(ports.git(fixed.predecessor, path)),
+    parent = Buffer.from(ports.git(fixed.parent, path)),
+    reviewed = Buffer.from(ports.git(fixed.commit, path));
+  if (
+    hash(predecessor) !== fixed.predecessor_sha256 ||
+    !parent.equals(predecessor) ||
+    !Buffer.from(previous).equals(predecessor)
+  )
+    throw Error('Exact immutable C29 owner predecessor required');
+  if (
+    hash(reviewed) !== fixed.sha256 ||
+    !Buffer.from(current).equals(reviewed) ||
+    !Buffer.from(ports.read(path)).equals(reviewed)
+  )
+    throw Error('Fresh exact reviewed owner requirement source required');
+  for (const companion of fixed.added) {
+    const reviewedCompanion = Buffer.from(
+      ports.git(fixed.commit, companion.path),
+    );
+    if (
+      hash(reviewedCompanion) !== companion.sha256 ||
+      !Buffer.from(ports.read(companion.path)).equals(reviewedCompanion)
+    )
+      throw Error('Exact current owner requirement companion required');
+  }
+  for (const companion of original.added)
+    if (
+      !Buffer.from(ports.read(companion)).equals(
+        Buffer.from(ports.git(fixed.predecessor, companion)),
+      )
+    )
+      throw Error('Exact original C29 owner companion required');
+  return {
+    module: 'owner-requirement-input-continuity',
+    source_commit: fixed.commit,
+    path,
     authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
     business_authority: false,
     restore_adapter: false,

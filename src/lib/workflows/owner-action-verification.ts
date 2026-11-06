@@ -58,6 +58,7 @@ export function checkOwnerActionRequirements(
   const requirements = exact
     ? row.missing_evidence.map((item) => ({ ...item }))
     : [];
+  assertVerifiedOwnerBriefingCurrent(view);
   return freezePrototype({
     status,
     can_open_original: status === 'VERIFIED_ORIGINAL_REVIEW_DESTINATION',
