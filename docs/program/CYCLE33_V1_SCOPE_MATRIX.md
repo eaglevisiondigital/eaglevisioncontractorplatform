@@ -86,3 +86,14 @@ These corrections extend existing V1 records; no tier, feature ID, canonical sto
 | Growth, Intelligence, Advanced and Offline | Preservation audits NO_CHANGE in this package; prior bounded work remains exact to its source                                                                     | No artificial package or duplicate engine. Current consent/revocation, authorized navigation, explicit UNKNOWN and denied replay remain required. Optional add-ons remain separate from mandatory release gates. |
 
 The81 local native cases are three distinct runs, not one combined81-PASS execution. Shared source guard, independent combined tests, responsive browser evidence and CI remain separately source-bound in the validation record. All eleven operational roles remain UNASSIGNED; D1–D3 require owner decisions and A01–A12 remain NOT_RUN. Main network-loss owner PASS and duplicate UNKNOWN/UNVERIFIED are unchanged.
+
+## Decision-ready proposal and next exact-source follow-up
+
+[Owner proposal280](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/280)
+atdba3d2571ff5a1805ffae2be265ded628e97a18e separates Essential, Optional and Post-Launch
+parts of these same25 records. It preserves original Phase3 material-import acceptance
+and all mandatory release gates; it changes no baseline status or owner assignment.
+The [bounded source follow-up](CYCLE33_V1_ESSENTIAL_FOLLOWUP.md) improves existing
+FLD-002/WRK-001 exact task selection and AI-001/INT-001 authorized add-on navigation;
+30/28 local cases are source-specific, not full feature or operational acceptance.
+No feature ID, approval, canonical object or business engine is replaced.

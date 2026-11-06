@@ -2811,6 +2811,143 @@ export const cycle33V1ContinuationAuthors = Object.freeze(
   ),
 );
 
+// Exact second-stage native authors. Historical profiles remain immutable.
+export const cycle33V1EssentialParent =
+  '038b64acad56e436a016905dfec87aef86dcfbc8';
+export const cycle33V1EssentialAuthors = Object.freeze(
+  [
+    {
+      module: 'task-selection-custody',
+      commit: '37953b233c96306d7c48d7dbc8592a037482c0c5',
+      predecessor: 'bd2e50e8f5dd972c9b2c9a29186e36fcc05dee53',
+      path: 'src/lib/workflows/task-correction-review.ts',
+      predecessor_sha256:
+        '6efa75671e51687d81a28a94ce744670475cc524d64c61e726e7916ee330e564',
+      sha256:
+        'bd7b40ffe4b077ec6e8a57f100de4620c8f12dfdc79464a67c002a60a38439cc',
+      cases: 30,
+      added: [
+        {
+          path: 'docs/program/CYCLE33_TASK_SELECTION_CUSTODY.md',
+          sha256:
+            '88feee43c87dab10b7f5432560a06492c221075271af6ad3922cd93c18713b0e',
+        },
+        {
+          path: 'tests/cycle33-task-selection-custody.test.ts',
+          sha256:
+            '20dfc2af029552beb1e115875ae4d077d981b20e9e20b0755dae34bb4c63516d',
+        },
+      ],
+      original_companions: cycle33V1ContinuationAuthors
+        .filter((a) => a.commit === 'bd2e50e8f5dd972c9b2c9a29186e36fcc05dee53')
+        .flatMap((a) => [...a.added, ...a.original_companions]),
+    },
+    {
+      module: 'addon-navigation-currentness',
+      commit: '1d8202fb3825950b458a2a4ed330406f0a207665',
+      predecessor: '99e112a7cf669dfde03fdd69dbdbce2e74ef2fd4',
+      path: 'src/lib/workflows/addon-readiness-guide.ts',
+      predecessor_sha256:
+        'f6c2be0f5a14722190c4103e606ce9b2ef168b2630147f96baf5cb4fee76036a',
+      sha256:
+        '3a784566054c6b746fadf1d0b212bd763e638a64a21ec6d5d75cdf39d56784d9',
+      cases: 28,
+      added: [
+        {
+          path: 'docs/program/CYCLE33_ADDON_NAVIGATION_CURRENTNESS.md',
+          sha256:
+            '586c08b19c9a3631d088476360557bc5916e9cae6d9356eb037c068ea6972e16',
+        },
+        {
+          path: 'tests/cycle33-addon-navigation-currentness.test.ts',
+          sha256:
+            '17db96149c96df953a50f11c4c3f59c0845fde7a9516ac6f6722f59680ce9d80',
+        },
+      ],
+      original_companions: cycle33V1Authors
+        .filter((a) => a.commit === '99e112a7cf669dfde03fdd69dbdbce2e74ef2fd4')
+        .flatMap((a) => [...a.added, ...a.original_companions]),
+    },
+  ].map((a) =>
+    Object.freeze({
+      ...a,
+      parent: cycle33V1EssentialParent,
+      added: Object.freeze(a.added.map(Object.freeze)),
+      original_companions: Object.freeze(
+        a.original_companions.map(Object.freeze),
+      ),
+    }),
+  ),
+);
+export function admitCycle33V1EssentialSource(
+  path,
+  current,
+  previous,
+  supplied = {},
+) {
+  const ports = { ...cycle25SourcePorts, ...supplied },
+    owners = cycle33V1EssentialAuthors.filter((a) => a.path === path),
+    hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
+  if (owners.length !== 1)
+    throw Error('No literal reviewed V1 essential owner');
+  const a = owners[0];
+  if (
+    [a.predecessor, a.parent, a.commit].some(
+      (c) => ports.type(c) !== 'commit' || ports.mode(c, path) !== '100644',
+    ) ||
+    ports.parent(a.commit) !== cycle33V1EssentialParent ||
+    a.added.length !== 2 ||
+    a.original_companions.length !==
+      (a.module === 'task-selection-custody' ? 6 : 4) ||
+    ports.delta(a.commit) !==
+      ['M\t' + a.path, ...a.added.map((f) => 'A\t' + f.path)]
+        .sort()
+        .join('\n') ||
+    a.added.some((f) => ports.mode(a.commit, f.path) !== '100644') ||
+    a.original_companions.some(
+      (f) => ports.mode(a.predecessor, f.path) !== '100644',
+    )
+  )
+    throw Error('Exact sole-parent regular V1 essential M1/A2 author required');
+  const old = Buffer.from(ports.git(a.predecessor, path)),
+    base = Buffer.from(ports.git(a.parent, path)),
+    reviewed = Buffer.from(ports.git(a.commit, path));
+  if (
+    hash(old) !== a.predecessor_sha256 ||
+    !base.equals(old) ||
+    !Buffer.from(previous).equals(old)
+  )
+    throw Error('Exact immutable V1 essential predecessor required');
+  if (
+    hash(reviewed) !== a.sha256 ||
+    !Buffer.from(current).equals(reviewed) ||
+    !Buffer.from(ports.read(path)).equals(reviewed)
+  )
+    throw Error('Fresh exact reviewed V1 essential source required');
+  for (const [commit, files] of [
+    [a.commit, a.added],
+    [a.predecessor, a.original_companions],
+  ])
+    for (const f of files) {
+      const bytes = Buffer.from(ports.git(commit, f.path));
+      if (
+        hash(bytes) !== f.sha256 ||
+        !Buffer.from(ports.read(f.path)).equals(bytes)
+      )
+        throw Error('Exact current V1 essential companion required');
+    }
+  if (!Buffer.from(ports.read(path)).equals(reviewed))
+    throw Error('Final fresh V1 essential source required');
+  return {
+    module: a.module,
+    source_commit: a.commit,
+    path,
+    authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+    business_authority: false,
+    restore_adapter: false,
+  };
+}
+
 export function admitCycle33V1ContinuationSource(
   path,
   current,
@@ -2849,11 +2986,31 @@ export function admitCycle33V1ContinuationSource(
     !Buffer.from(previous).equals(old)
   )
     throw Error('Exact immutable V1 continuation predecessor required');
-  if (
-    hash(reviewed) !== a.sha256 ||
-    !Buffer.from(current).equals(reviewed) ||
-    !Buffer.from(ports.read(path)).equals(reviewed)
-  )
+  if (hash(reviewed) !== a.sha256)
+    throw Error('Fresh exact reviewed V1 continuation source required');
+  let admitted = reviewed;
+  if (!Buffer.from(current).equals(reviewed)) {
+    const successor = cycle33V1EssentialAuthors.find(
+      (s) => s.path === path && s.predecessor === a.commit,
+    );
+    if (!successor || hash(current) !== successor.sha256)
+      throw Error('Fresh exact reviewed V1 continuation source required');
+    try {
+      admitCycle33V1EssentialSource(path, current, reviewed, ports);
+    } catch (cause) {
+      if (cause?.message === 'Final fresh V1 essential source required')
+        throw new Error('Final fresh V1 continuation source required', {
+          cause,
+        });
+      if (cause?.message === 'Exact current V1 essential companion required')
+        throw new Error('Exact current V1 continuation companion required', {
+          cause,
+        });
+      throw cause;
+    }
+    admitted = Buffer.from(current);
+  }
+  if (!Buffer.from(ports.read(path)).equals(admitted))
     throw Error('Fresh exact reviewed V1 continuation source required');
   for (const [commit, files] of [
     [a.commit, a.added],
@@ -2867,7 +3024,7 @@ export function admitCycle33V1ContinuationSource(
       )
         throw Error('Exact current V1 continuation companion required');
     }
-  if (!Buffer.from(ports.read(path)).equals(reviewed))
+  if (!Buffer.from(ports.read(path)).equals(admitted))
     throw Error('Final fresh V1 continuation source required');
   return {
     module: a.module,
@@ -2950,9 +3107,29 @@ export function admitCycle33V1Source(path, current, previous, supplied = {}) {
     const successor = cycle33V1ContinuationAuthors.find(
       (s) => s.path === path && s.predecessor === a.commit,
     );
-    if (!successor || hash(current) !== successor.sha256)
-      throw Error('Fresh exact reviewed V1 source required');
-    admitCycle33V1ContinuationSource(path, current, reviewed, ports);
+    const essential = cycle33V1EssentialAuthors.find(
+      (s) =>
+        s.path === path && s.predecessor === (successor?.commit ?? a.commit),
+    );
+    if (
+      successor &&
+      (hash(current) === successor.sha256 ||
+        (essential && hash(current) === essential.sha256))
+    ) {
+      admitCycle33V1ContinuationSource(path, current, reviewed, ports);
+    } else if (!successor && essential && hash(current) === essential.sha256) {
+      try {
+        admitCycle33V1EssentialSource(path, current, reviewed, ports);
+      } catch (cause) {
+        if (cause?.message === 'Final fresh V1 essential source required')
+          throw new Error('Final fresh reviewed V1 source required', { cause });
+        if (cause?.message === 'Exact current V1 essential companion required')
+          throw new Error('Exact current reviewed V1 companion required', {
+            cause,
+          });
+        throw cause;
+      }
+    } else throw Error('Fresh exact reviewed V1 source required');
     admitted = Buffer.from(current);
   }
   if (!Buffer.from(ports.read(path)).equals(admitted))

@@ -2594,3 +2594,26 @@ The separate owner proposal280 preserves all25feature IDs,11unassigned roles and
 all12NOT_RUN cases. No source correction or document grants operational acceptance.
 Recovery/private records and all original release restrictions remain unchanged.
 Release1.0 NOT READY / NOT AUTHORIZED.
+
+## November6 · essential V1 source and pilot decisions
+
+Separate corrective draft281 at974675f6f616e02173e571bb65984da509786f79 preserves
+Main279038b64 and the original139PASS/3FAIL result. The corrected revocation probe
+retains original assertions and budgets; dedicated corrective push42278632848 and
+PR42278683772 each passed original142 and new48 at974675. Full Foundation and
+the new product candidate remain separately unaccepted. Separate owner proposal280 atdba3d2571ff5a1805ffae2be265ded628e97a18e
+retains all25 canonical feature IDs and baseline statuses, eleven UNASSIGNED roles,
+D2–D3 separate decisions and A01–A12 NOT_RUN. No scope approval is inferred.
+
+The [new bounded source package](docs/program/CYCLE33_V1_ESSENTIAL_FOLLOWUP.md) retains one task-selection context and checks
+current authorization around add-on navigation. Original engines/stores/UI and all
+protected design files remain unchanged. Separate native local suites30 and28PASS
+are not GitHub or combined acceptance. Exact author sources, independent reviews,
+current-head CI and any gaps belong to its manifest and validation.
+
+No release-blocking operational gate is closed by local source corrections. Preserve
+the owner-witnessed main synthetic two-Mac loss PASS only, duplicateUNKNOWN/UNVERIFIED
+and both private folders. Original recovery/P1-on13/customer14/4B, Auth/MFA, NMI,
+Netlify, financial and production controls remain in force. No hosted, financial,
+message, dispatch, restoration, deployment or merge action.
+**Release1.0 NOT READY / NOT AUTHORIZED.**
