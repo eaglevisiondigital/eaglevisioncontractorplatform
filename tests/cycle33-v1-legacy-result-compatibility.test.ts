@@ -12,6 +12,11 @@ type Ports = {
 const s: {
   cycle25Parent: string;
   cycle25SourcePorts: Ports;
+  cycle33V1EssentialAuthors: readonly {
+    path: string;
+    predecessor: string;
+    commit: string;
+  }[];
   cycle33V1ContinuationAuthors: readonly {
     path: string;
     predecessor: string;
@@ -102,10 +107,16 @@ for (const [module, expected] of [
       next = s.cycle33V1ContinuationAuthors.find(
         (n) => n.predecessor === a.commit,
       ),
-      current =
-        readFileSync(a.path).equals(original) || !next
-          ? original
-          : p.git(next.commit, a.path),
+      current = (() => {
+        const actual = readFileSync(a.path),
+          first = next ? p.git(next.commit, a.path) : original;
+        if (actual.equals(original)) return original;
+        if (actual.equals(first)) return first;
+        const last = s.cycle33V1EssentialAuthors.find(
+          (n) => n.predecessor === (next?.commit ?? a.commit),
+        );
+        return last ? p.git(last.commit, a.path) : first;
+      })(),
       baseline = p.git(s.cycle25Parent, a.path),
       result = s.admitCycle25Source(a.path, current, baseline);
     expect(originalResult(result, expected.source_commit)).toEqual(expected);
