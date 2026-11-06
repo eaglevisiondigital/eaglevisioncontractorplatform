@@ -1,0 +1,78 @@
+name: C17 preserved-report compatibility verification
+on:
+  push:
+    branches: ['codex/cycle33-v1-c17-filtered-report-compat']
+  pull_request:
+    branches: ['codex/cycle33-v1-coordinated-integration']
+    paths:
+      - '.github/workflows/cycle33-c17-filtered-report.yml'
+      - '.github/workflows/cycle33-v1-essential-followup.yml'
+      - 'docs/program/CYCLE33_C17_FILTERED_REPORT_COMPATIBILITY.md'
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: c17-preserved-report-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  verify-preserved-report:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+      - name: Download only the exact preserved Main report artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api repos/eaglevisiondigital/eaglevisioncontractorplatform/actions/artifacts/13546114381/zip > /tmp/c17-preserved-report.zip
+          echo '05a9f9da336f87bf38e2dc200709862ab0163c12bf05c84cc0e4051bae2b6ada  /tmp/c17-preserved-report.zip' | sha256sum --check
+          python3 - <<'PY'
+          from pathlib import Path
+          import zipfile
+          target=Path('artifacts/cycle33/essential-followup')
+          target.mkdir(parents=True,exist_ok=True)
+          with zipfile.ZipFile('/tmp/c17-preserved-report.zip') as z:
+              for item in z.infolist():
+                  p=Path(item.filename)
+                  if p.is_absolute() or '..' in p.parts or (item.external_attr >> 16) & 0o170000 == 0o120000:
+                      raise SystemExit('Unsafe artifact entry')
+              z.extractall(target)
+          PY
+      - name: Verify exact source lineage and corrected gates without executing application tests
+        run: |
+          node --input-type=module <<'NODE'
+          import{execFileSync,spawnSync}from'node:child_process';import{readFileSync,writeFileSync}from'node:fs';import{createHash}from'node:crypto';
+          const source='5d695378f6f8573f99628116611c71c755c60c06',tree='4614d3115425940cd50cf7e8fd32883f72884d44',workflow='.github/workflows/cycle33-v1-essential-followup.yml',doc='docs/program/CYCLE33_C17_FILTERED_REPORT_COMPATIBILITY.md',own='.github/workflows/cycle33-c17-filtered-report.yml',head=process.env.CANDIDATE_HEAD;
+          const git=(...args)=>execFileSync('git',['--no-replace-objects',...args],{encoding:'utf8'}).trim(),raw=(commit,path)=>execFileSync('git',['--no-replace-objects','show',commit+':'+path]),hash=b=>createHash('sha256').update(b).digest('hex');
+          if(!/^[a-f0-9]{40}$/.test(head)||git('cat-file','-t',head)!=='commit'||git('rev-list','--parents','-n','1',head)!==head+' '+source||git('rev-parse','HEAD^{tree}')!==git('rev-parse',head+'^{tree}')||git('status','--porcelain','--untracked-files=all'))throw Error('Exact clean sole-Main CI-only candidate required');
+          const expected=['M\t'+workflow,'A\t'+doc,'A\t'+own].sort().join('\n');
+          if(git('diff-tree','--no-commit-id','--name-status','-r',head).split('\n').sort().join('\n')!==expected||[workflow,doc,own].some(p=>git('ls-tree',head,'--',p).split(/\s+/)[0]!=='100644'))throw Error('Exact three regular CI-only files required');
+          const beforeWorkflow=raw(source,workflow).toString(),afterWorkflow=readFileSync(workflow,'utf8'),old="a.some(t=>t.fullName!==expected&&t.status!=='pending')",replacement="a.some(t=>t.fullName!==expected&&t.status!=='skipped')";
+          if(beforeWorkflow.split(old).length!==2||beforeWorkflow.replace(old,replacement)!==afterWorkflow)throw Error('Only the native filtered-status literal may change in the existing workflow');
+          const dir='artifacts/cycle33/essential-followup/',binding=readFileSync(dir+'binding.json'),finalBinding=readFileSync(dir+'final-binding.json');
+          if(git('rev-parse',source+'^{tree}')!==tree||hash(binding)!=='1cf6e0d041aa50c1025ea26eec3bd59b91113fadcf7c0ae8781adda5b53f114f'||hash(finalBinding)!=='c2e3a2bf077a4a3c11ce38f5f0830ccfd2d9d51c40e6b492e53a6b047150e63e')throw Error('Exact independently reviewed source tree and complete bindings required');
+          const before=JSON.parse(binding),final=JSON.parse(finalBinding);
+          if(before.source!==source||before.tree!==tree||final.source!==source||final.tree!==tree||final.unchanged!==true||JSON.stringify(before.hashes)!==JSON.stringify(final.hashes)||JSON.stringify(before.admitted)!==JSON.stringify(final.admitted)||before.admitted.length!==22||Object.keys(before.hashes).length!==117)throw Error('Exact original Main clean source binding required');
+          for(const[path,digest]of Object.entries(before.hashes)){if(path.startsWith('/')||path.split('/').includes('..')||!/^[a-f0-9]{64}$/.test(digest)||hash(raw(source,path))!==digest)throw Error('Original artifact source hash mismatch');}
+          function step(text,name){const lines=text.split('\n'),marker='      - name: '+name,indices=lines.flatMap((l,i)=>l===marker?[i]:[]);if(indices.length!==1)throw Error('Unique reviewed gate required');const at=indices[0],next=lines.findIndex((l,i)=>i>at&&l.startsWith('      - ')),block=lines.slice(at,next<0?undefined:next),start=block.indexOf("          node --input-type=module <<'NODE'"),end=block.indexOf('          NODE',start+1);if(start<0||end<=start)throw Error('Exact Node gate required');return block.slice(start+1,end).map(l=>{if(l&&!l.startsWith('          '))throw Error('Gate indentation changed');return l.slice(10);}).join('\n');}
+          const names=['Require every declared new case with unchanged budgets','Require complete coordinated native collection','Require exact58 and27 source guards and the original single repaired assertion'],last=names[2];
+          const oldResult=spawnSync(process.execPath,['--input-type=module'],{input:step(beforeWorkflow,last),encoding:'utf8'});
+          if(oldResult.status===0||!oldResult.stderr.includes('Exact repaired C17 assertion required; other44 remain filtered'))throw Error('Preserve and reproduce the original filtered-status gate failure');
+          for(const name of names){const result=spawnSync(process.execPath,['--input-type=module'],{input:step(afterWorkflow,name),encoding:'utf8'});if(result.status!==0)throw Error('Corrected preserved-report gate failed: '+name+'\n'+result.stderr);}
+          const proof={gate_candidate:head,gate_tree:git('rev-parse',head+'^{tree}'),actual_checkout:git('rev-parse','HEAD'),original_execution_source:source,original_execution_tree:tree,artifact_id:'13546114381',zip_sha256:'05a9f9da336f87bf38e2dc200709862ab0163c12bf05c84cc0e4051bae2b6ada',source_bindings:Object.keys(before.hashes).length,admissions:22,original_gate_failure_preserved:true,corrected_report_gates:'PASS',original_strict_cases_verified:293,separate_original_c17_pass:1,explicitly_filtered_c17:44,application_tests_reexecuted:false,new_head_application_execution_claim:false,full_foundation_pass:false,business_authority:false,restore_adapter:false,release:'NOT_READY_NOT_AUTHORIZED'};
+          if(git('status','--porcelain','--untracked-files=all'))throw Error('Candidate changed while validating reports');
+          writeFileSync('artifacts/cycle33/c17-filtered-report-proof.json',JSON.stringify(proof,null,2)+'\n');
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle33-c17-preserved-report-verification
+          path: artifacts/cycle33/c17-filtered-report-proof.json
+          retention-days: 7
