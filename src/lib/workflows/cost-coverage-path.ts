@@ -62,6 +62,7 @@ export async function readCostCoveragePath(
         ...correcting.map((t) => t.id),
       ],
       facts: [
+        `Recorded time kind: ${time.kind}`,
         `Submitted: ${time.submitted}`,
         `Recorded review: ${time.review ?? 'not present in available source'}`,
         `Started: ${time.started_at}; ended: ${time.ended_at ?? 'OPEN'}`,
