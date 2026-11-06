@@ -312,6 +312,11 @@ export function admitCycle25Source(path, current, original, supplied = {}) {
     owners = cycle25Authors.filter((s) => s.modified.includes(path));
   if (
     owners.length === 0 &&
+    path === 'src/lib/workflows/offline-source-protocol.ts'
+  )
+    return admitCycle33NextSource(path, current, original, ports);
+  if (
+    owners.length === 0 &&
     cycle33Authors.some((s) => s.modified.includes(path)) &&
     !cycle30Authors.some((s) => s.modified.includes(path))
   )
@@ -1905,8 +1910,42 @@ export function admitCycle33Forward(path, current, previous, supplied = {}) {
         ports.git(spec.nativeCorrection?.commit ?? spec.commit, path),
       ),
     )
-  )
-    throw Error('Current source differs from fixed Cycle33 author');
+  ) {
+    const endpoint = ports.git(
+      spec.nativeCorrection?.commit ?? spec.commit,
+      path,
+    );
+    if (
+      !Buffer.from(endpoint).equals(
+        Buffer.from(ports.git(cycle33NextParent, path)),
+      )
+    )
+      throw Error('Current source differs from fixed Cycle33 author');
+    let reviewed_followup;
+    try {
+      reviewed_followup = admitCycle33NextSource(
+        path,
+        current,
+        endpoint,
+        ports,
+      );
+    } catch (cause) {
+      throw new Error(
+        `Current source differs from fixed Cycle33 author: ${cause instanceof Error ? cause.message : 'Source admission rejected'}`,
+        { cause },
+      );
+    }
+    for (const companion of spec.added)
+      if (
+        !Buffer.from(ports.read(companion)).equals(
+          Buffer.from(
+            ports.git(spec.nativeCorrection?.commit ?? spec.commit, companion),
+          ),
+        )
+      )
+        throw Error('Exact Cycle33 author companion required');
+    return { ...result, reviewed_followup };
+  }
   // Every current companion is read on every admission; immutable Git caching
   // never substitutes a historical file for the current working tree.
   for (const companion of spec.added)
@@ -1919,6 +1958,82 @@ export function admitCycle33Forward(path, current, previous, supplied = {}) {
     )
       throw Error('Exact Cycle33 author companion required');
   return result;
+}
+
+// Exact separately reviewed next-execution endpoints. Build/test evidence only;
+// no business record, current authority, receipt custody or restore capability.
+export const cycle33NextParent = '39b5b1977f2e18c1c7d534667260ce5ed05660f3';
+export const cycle33NextAuthors = Object.freeze([
+  Object.freeze({
+    module: 'maintenance-review-custody',
+    owner: '/root/cycle33_independent_review',
+    commit: 'b1f3ecb49c8f8ad6cac3cd9e88a1e6aa8c1a2995',
+    modified: Object.freeze([
+      'src/lib/workflows/maintenance-plan-correction.ts',
+    ]),
+    added: Object.freeze([
+      'tests/cycle33-maintenance-review-custody.test.ts',
+      'docs/program/CYCLE33_MAINTENANCE_REVIEW_CUSTODY.md',
+    ]),
+  }),
+  Object.freeze({
+    module: 'offline-protocol-admission',
+    owner: '/root/cycle25_finance_intelligence_resume',
+    commit: '14989f2080b856c1d90e55dfd6ac1dfbf4fd2515',
+    modified: Object.freeze(['src/lib/workflows/offline-source-protocol.ts']),
+    added: Object.freeze([
+      'tests/cycle33-next-offline-protocol-admission.test.ts',
+      'docs/program/CYCLE33_NEXT_OFFLINE_PROTOCOL_ADMISSION.md',
+    ]),
+  }),
+]);
+export function admitCycle33NextSource(path, current, previous, supplied = {}) {
+  const ports = { ...cycle25SourcePorts, ...supplied },
+    owners = cycle33NextAuthors.filter((s) => s.modified.includes(path));
+  if (owners.length !== 1)
+    throw Error('No fixed reviewed Cycle33 next source owner');
+  const spec = owners[0];
+  if (
+    ports.type(spec.commit) !== 'commit' ||
+    ports.parent(spec.commit) !== cycle33NextParent ||
+    ports.delta(spec.commit) !==
+      [
+        ...spec.modified.map((p) => `M\t${p}`),
+        ...spec.added.map((p) => `A\t${p}`),
+      ]
+        .sort()
+        .join('\n')
+  )
+    throw Error('Exact single-parent bounded Cycle33 next author required');
+  if (
+    !Buffer.from(previous).equals(
+      Buffer.from(ports.git(cycle33NextParent, path)),
+    )
+  )
+    throw Error('Exact original Cycle33 next predecessor required');
+  for (const p of spec.modified)
+    if (ports.mode(cycle33NextParent, p) !== '100644')
+      throw Error('Regular original Cycle33 next source required');
+  for (const p of [...spec.modified, ...spec.added])
+    if (ports.mode(spec.commit, p) !== '100644')
+      throw Error('Regular reviewed Cycle33 next source required');
+  if (!Buffer.from(current).equals(Buffer.from(ports.git(spec.commit, path))))
+    throw Error(
+      'Current source differs from fixed reviewed Cycle33 next author',
+    );
+  for (const p of spec.added)
+    if (
+      !Buffer.from(ports.read(p)).equals(Buffer.from(ports.git(spec.commit, p)))
+    )
+      throw Error('Exact current Cycle33 next companion required');
+  return {
+    module: spec.module,
+    source_commit: spec.commit,
+    path,
+    authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+    business_authority: false,
+    restore_adapter: false,
+  };
 }
 export function inspectCycle33Sources({
   requireCombined = false,
