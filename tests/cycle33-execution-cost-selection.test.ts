@@ -64,7 +64,8 @@ for (const brand of [0, 1, 2]) {
       {
         getOwnPropertyDescriptor(target, key) {
           const descriptor = Reflect.getOwnPropertyDescriptor(target, key);
-          if (key === 'kind' && ++captures === 2) revoked = revoke(f);
+          if (key === 'kind') captures++;
+          if (key === 'id' && captures === 1 && !revoked) revoked = revoke(f);
           return descriptor;
         },
       },
@@ -74,6 +75,7 @@ for (const brand of [0, 1, 2]) {
     } catch {
       /* Current source guard must deny private data. */
     }
+    expect(captures).toBe(1);
     expect(revoked).toBeDefined();
     await revoked;
     expect(result).toBeUndefined();
