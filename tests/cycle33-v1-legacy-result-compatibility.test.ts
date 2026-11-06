@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { expect, it } from 'vitest';
 
 type Ports = {
@@ -11,6 +12,11 @@ type Ports = {
 const s: {
   cycle25Parent: string;
   cycle25SourcePorts: Ports;
+  cycle33V1ContinuationAuthors: readonly {
+    path: string;
+    predecessor: string;
+    commit: string;
+  }[];
   cycle33V1Authors: readonly {
     module: string;
     path: string;
@@ -92,7 +98,14 @@ for (const [module, expected] of [
 ] as const) {
   it(`${module}: validates the reviewed V1 successor without changing the original legacy result shape`, () => {
     const a = s.cycle33V1Authors.find((a) => a.module === module)!,
-      current = p.git(a.commit, a.path),
+      original = p.git(a.commit, a.path),
+      next = s.cycle33V1ContinuationAuthors.find(
+        (n) => n.predecessor === a.commit,
+      ),
+      current =
+        readFileSync(a.path).equals(original) || !next
+          ? original
+          : p.git(next.commit, a.path),
       baseline = p.git(s.cycle25Parent, a.path),
       result = s.admitCycle25Source(a.path, current, baseline);
     expect(originalResult(result, expected.source_commit)).toEqual(expected);
