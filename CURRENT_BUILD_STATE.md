@@ -27,7 +27,7 @@ recorded in the validation/manifest; parent acceptance is not inherited.
 All128protected hashes,5design locks/13bindings, original IDs/migrations/customer14/
 4B/P1/frozen artifacts/approvals/Netlify/Auth/MFA/NMI/security/release gates persist.
 D1–D3 remain decision-ready but unresolved,11people UNASSIGNED,A01–A12 NOT_RUN.
-Main physical loss PASS stays owner-witnessed only; duplicate case UNKNOWN,
+Main synthetic network-loss PASS stays owner-witnessed only; duplicate case UNKNOWN,
 private folders untouched. No merge, deployment, hosted mutation, restoration,
 payment, message or dispatch. Release1.0 remains NOT READY / NOT AUTHORIZED.
 
