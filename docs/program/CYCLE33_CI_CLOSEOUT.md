@@ -1,3 +1,50 @@
+# Cycle33 CI continuation · exact tested head and new compatibility findings
+
+Draft265 remains frozen at `eec71f86a39d58d6019b4af196b040f9269ae96d`, tree
+`917f476b683161ad00205c5e6b66f9ac71c01327`. After that freeze, its actual clean
+local six-file run passes **142/142**, zero skipped/todo/runtime errors. All28
+initial/final bindings match the unchanged source tree. Report SHA256
+`84cb6d947502f5eb6069fb58de1fffb059cb8ec49b43b3bc19a7bd43b0432591`;
+independent clean-run verification SHA256
+`56b84ec1096c4c3989258d852c40892ab31d7c724d1be48600b738c1000cb65a`.
+This later proof does not replace the earlier failed/split new-harness reports.
+It does not prove hosted results or transfer parent260 browser acceptance.
+
+Automatic CI exposes separate precise gaps. Cycle19 on261/262 stops before tests
+at a nested original-source validator. A controlled source-only comparison at
+identical Fielda262 bytes reproduces the hosted outer denial with depth1/missing
+pinned Git objects (0.317s), then passes with full history (0.580s). The original
+hosted inner error is unlogged; this demonstrates a missing-history precondition
+and local correction, not a fabricated hosted terminal result. The only C19 workflow
+change is fetch-depth0 before integrity. Original application/browser coverage is
+NOT_RUN. Cycle22 on264 runs299PASS/1FAIL; the sole11.52ms failure
+compares the reviewed current Finance source directly with a historical hash.
+The existing C22 integrity step passes. This is a strict source-compatibility
+assertion, not a product timeout or evidence of a financial-state mutation.
+Original runs42188341005/42188368977/42188394165 and their outcomes remain retained.
+A separate child draft is prepared for only demonstrated source-test/environment
+corrections, preserving historical hash/blob metadata and finite reviewed-source
+admission. No successful jobs,267-source or270-deadline cohort are manually rerun.
+
+The C22 source-test author is exact `649c2399fa954fdc50a1c6a1eab592c0f5b0ae18`,
+a sole-eec child modifying one regular test file. Original case title/count50 and
+all subsequent original writer/control assertions are byte-identical; the failed
+case alone now passes (1PASS/49filtered). Historical independent SHA49fa5cf5/blob7c1d67d9
+remain unchanged. The original checker separately requires this literal one-file
+successor, exact parent/delta/mode, historical bytes, current SHA/blob and fresh
+reread; its25finite-admission compatibility cases are separate from the existing142case collection.
+This explicit test-only compatibility change is not a waiver for arbitrary test
+edits. The new child dedicated workflow binds its31current paths and requires all25
+cases separately, retaining the original83/142/128/9native/3OFF/collector checks.
+
+Current exact-head success, failure, cancellation and queued/running results remain
+separate in the JSON checkpoint; no whole Foundation PASS is inferred. Original
+assertions, signed dependencies, native budgets and protected runtime/design bytes
+remain unchanged except the explicitly reviewed source-test compatibility treatment.
+All physical and operational decisions below retain their existing status. No
+merge, deployment, hosted mutation, restoration, payment, message or dispatch.
+Release1.0 remains **NOT READY / NOT AUTHORIZED**.
+
 # Cycle33 execution continuation · accepted exact762 dedicated scope
 
 Draft260 at `762e6fa590d3ef9366052db0df34bb02485973c3` now has independently

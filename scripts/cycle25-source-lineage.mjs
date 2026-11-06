@@ -2211,3 +2211,70 @@ export function admitCycle33ExecutionPublished(file, current, supplied = {}) {
     );
   return admitCycle33ExecutionSource(file.path, current, previous, ports);
 }
+
+// One reviewed test-only correction; historical independent evidence is immutable.
+export const cycle33ExecutionCiCompatibility = Object.freeze({
+  commit: '649c2399fa954fdc50a1c6a1eab592c0f5b0ae18',
+  parent: 'eec71f86a39d58d6019b4af196b040f9269ae96d',
+  published: 'b8e0cade3ae7de9773ce11cc0ab2cbae5274cd69',
+  path: 'tests/cycle22-independent-integration-review.test.ts',
+  sha256: 'd92940efc89b03c013608835e15f3babcfbaf212b8b4d3b7e8daa028cb92707b',
+  blob: 'abb7472204298bc93e0bb7df80abd44518be94a2',
+  published_sha256:
+    '49fa5cf5d861c39518d8ffb26bf00d46f0c935a4fec6768dd15dcc323a35602b',
+  published_blob: '7c1d67d95fe772a1d17070cc2e90a281c65988ab',
+});
+export function admitCycle33ExecutionCiCompatibility(
+  file,
+  current,
+  supplied = {},
+) {
+  const ports = { ...cycle25SourcePorts, ...supplied },
+    fixed = cycle33ExecutionCiCompatibility;
+  if (
+    file?.path !== fixed.path ||
+    file.sha256 !== fixed.published_sha256 ||
+    file.blob !== fixed.published_blob
+  )
+    throw Error('Exact historical Cycle22 independent test metadata required');
+  if (
+    ports.type(fixed.commit) !== 'commit' ||
+    ports.parent(fixed.commit) !== fixed.parent ||
+    ports.delta(fixed.commit) !== `M\t${fixed.path}` ||
+    [fixed.published, fixed.parent, fixed.commit].some(
+      (commit) => ports.mode(commit, fixed.path) !== '100644',
+    )
+  )
+    throw Error('Exact sole-parent regular test-only correction required');
+  const published = Buffer.from(ports.git(fixed.published, fixed.path)),
+    original = Buffer.from(ports.git(fixed.parent, fixed.path)),
+    reviewed = Buffer.from(ports.git(fixed.commit, fixed.path));
+  if (
+    createHash('sha256').update(published).digest('hex') !==
+      fixed.published_sha256 ||
+    createHash('sha1')
+      .update(`blob ${published.length}\0`)
+      .update(published)
+      .digest('hex') !== fixed.published_blob ||
+    !original.equals(published)
+  )
+    throw Error('Immutable original Cycle22 independent test bytes required');
+  if (
+    createHash('sha256').update(reviewed).digest('hex') !== fixed.sha256 ||
+    createHash('sha1')
+      .update(`blob ${reviewed.length}\0`)
+      .update(reviewed)
+      .digest('hex') !== fixed.blob ||
+    !Buffer.from(current).equals(reviewed) ||
+    !Buffer.from(ports.read(fixed.path)).equals(reviewed)
+  )
+    throw Error('Fresh exact reviewed Cycle22 test correction required');
+  return {
+    module: 'cycle22-independent-review-test-compatibility',
+    source_commit: fixed.commit,
+    path: fixed.path,
+    authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+    business_authority: false,
+    restore_adapter: false,
+  };
+}

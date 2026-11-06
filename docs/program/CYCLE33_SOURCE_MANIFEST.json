@@ -528,5 +528,57 @@
       "customer": "631a2aa962750b19f49f4010400b31eb5fac3ede0039d7611674d6a27c5233af",
       "finance": "97a58a8209c650fc04069d826ffbc5d579d733fcbbfd7e20817622e49e3b4f3a"
     }
+  },
+  "ci_compatibility_child": {
+    "base_pr": 265,
+    "base_commit": "eec71f86a39d58d6019b4af196b040f9269ae96d",
+    "base_tree": "917f476b683161ad00205c5e6b66f9ac71c01327",
+    "branch": "codex/cycle33-execution-ci-compatibility",
+    "test_only_author": "649c2399fa954fdc50a1c6a1eab592c0f5b0ae18",
+    "test_only_parent": "eec71f86a39d58d6019b4af196b040f9269ae96d",
+    "test_only_delta": "M1_ONLY_REGULAR_EXISTING_C22_TEST",
+    "path": "tests/cycle22-independent-integration-review.test.ts",
+    "current_sha256": "d92940efc89b03c013608835e15f3babcfbaf212b8b4d3b7e8daa028cb92707b",
+    "current_blob": "abb7472204298bc93e0bb7df80abd44518be94a2",
+    "original_manifest": "docs/program/CYCLE22_SOURCE_MANIFEST.json",
+    "original_sha256": "49fa5cf5d861c39518d8ffb26bf00d46f0c935a4fec6768dd15dcc323a35602b",
+    "original_blob": "7c1d67d95fe772a1d17070cc2e90a281c65988ab",
+    "original_case_title_count_and_writer_assertions_preserved": true,
+    "test_author": "/root/cycle33_independent_review",
+    "independent_peer": "/root/cycle25_finance_intelligence_resume",
+    "new_finite_admission_cases": 25,
+    "native_candidate_tree_unchanged": true,
+    "business_authority": false,
+    "restore_adapter": false,
+    "history_only_workflow_change": ".github/workflows/cycle19-integration.yml fetch-depth0 before integrity; no other original step or budget change",
+    "independent_history_review_sha256": "3b6ec2fbf07ee28b4185ac1f0601415e126f30bff655609cfc9bd54cbb152e32",
+    "current_head_ci": "PENDING_OWN_EXACT_HEAD_EVIDENCE_NOT_INHERITED",
+    "support_sha256": {
+      "scripts/cycle25-source-lineage.mjs": "5421e35c7cbf0d181843b7b4f7eaf014f16c5157450012f26961b68da71ed731",
+      "scripts/check-cycle22.mjs": "0bd11114784f800c7fcb32fb38eb8433febab46be9e54ad372d7d8fbf985fcf1",
+      "tests/cycle33-execution-ci-compatibility.test.ts": "b90c787e600a9c8dc2b0c0b33f7d7d7ccebfef36af6d186f6b3ce108ab0f702a"
+    },
+    "new25_report_sha256": "492ffa68d161040298ef1e9b6d0f36fcb26e86333eefb7291d86ab3a66145e1b",
+    "workflow_sha256": {
+      ".github/workflows/cycle19-integration.yml": "b5b36dec46d3c450298b2a96da4d1605a513c60b5df9d7dc18d2ee8125436e87",
+      ".github/workflows/cycle33-next-reviewed-integration.yml": "b056a874bd37cc35cf542e3d24a519a060fbeed4c2e391de2791f7265381d00e"
+    },
+    "local_quality": {
+      "strict_types": "PASS",
+      "scoped_lint": "PASS",
+      "full_format": "PASS",
+      "feature_source_inventory": 1419,
+      "protected": 128,
+      "design_locks": 5,
+      "design_bindings": 13,
+      "retained_author_files": 523,
+      "inline_node_blocks_syntax": 5
+    },
+    "new_gate_negative_proof_sha256": "1d37d259cd2d16d61fcfa75ac350aa5984d6540cb4737f310b0d889f2455e2fe",
+    "independent_review": {
+      "status": "CLEAR_SOURCE_SCOPE_NOT_HOSTED_ACCEPTANCE",
+      "reviewer": "/root/cycle25_finance_intelligence_resume",
+      "sha256": "07aac98c1e830fb965c764c944c53b3a6843356238db3db414103cc9a7468b7f"
+    }
   }
 }

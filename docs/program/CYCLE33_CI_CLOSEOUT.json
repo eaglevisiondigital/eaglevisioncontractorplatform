@@ -2836,6 +2836,239 @@
         "sha256": "cc82bec6f5c82dc04f6c3427aaf184a308546381de00bc732c7329635f9befdb"
       }
     ],
-    "single_local142_or182_pass_claim": false
+    "single_local142_or182_pass_claim": false,
+    "post_freeze_clean_run": {
+      "source": "eec71f86a39d58d6019b4af196b040f9269ae96d",
+      "tree": "917f476b683161ad00205c5e6b66f9ac71c01327",
+      "scope": "LOCAL_CLEAN_EXACT_SOURCE_ONLY_NOT_HOSTED_CI",
+      "passed": 142,
+      "failed": 0,
+      "skipped": 0,
+      "todo": 0,
+      "runtime_errors": 0,
+      "files": 6,
+      "report_sha256": "84cb6d947502f5eb6069fb58de1fffb059cb8ec49b43b3bc19a7bd43b0432591",
+      "initial_binding_sha256": "d5b12bb3763c824e2b34570f7065475af07bb84ced58ff8c69073ca9c104aaa9",
+      "final_binding_sha256": "b9e35a8bcdd8369396bf55e5afa81d88dd89b4f1d51963f452174602a81ecfd9",
+      "bindings_verified": 28,
+      "unchanged": true,
+      "independent_review_sha256": "56b84ec1096c4c3989258d852c40892ab31d7c724d1be48600b738c1000cb65a"
+    },
+    "single_local142_or182_pass_claim_scope": "PRE_FREEZE_SPLIT_REPORTS_ONLY; post_freeze_clean_run records later actual142, not182",
+    "new_draft_ci_snapshot": {
+      "observed_at": "2026-11-06T08:55:25.117961+00:00",
+      "scope": "EXACT_PUBLISHED_HEADS_NOT_FUTURE_CHILD_CI",
+      "heads": [
+        {
+          "pr": 261,
+          "sha": "a262e0a023dd5b9617ed5b51a4bd71eb902f982c",
+          "counts": {
+            "in_progress": 3,
+            "success": 21,
+            "queued": 4,
+            "cancelled": 2,
+            "failure": 1
+          },
+          "nonpass_terminal_checks": [
+            {
+              "id": 127793951167,
+              "name": "browser",
+              "conclusion": "cancelled",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42188341204/job/127793951167"
+            },
+            {
+              "id": 127793950609,
+              "name": "bounded-integration",
+              "conclusion": "failure",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42188341005/job/127793950609"
+            },
+            {
+              "id": 127793601719,
+              "name": "browser",
+              "conclusion": "cancelled",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42188235742/job/127793601719"
+            }
+          ]
+        },
+        {
+          "pr": 262,
+          "sha": "2f59268e93548ebdd3b66dd1df6d99b937e9dd45",
+          "counts": {
+            "queued": 8,
+            "success": 17,
+            "in_progress": 4,
+            "cancelled": 1,
+            "failure": 1
+          },
+          "nonpass_terminal_checks": [
+            {
+              "id": 127794039118,
+              "name": "bounded-integration",
+              "conclusion": "cancelled",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42188368998/job/127794039118"
+            },
+            {
+              "id": 127794038972,
+              "name": "bounded-integration",
+              "conclusion": "failure",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42188368977/job/127794038972"
+            }
+          ]
+        },
+        {
+          "pr": 263,
+          "sha": "e6fbe7e7b82322d32d6392a8fcc9e7f8c72b6486",
+          "counts": {
+            "in_progress": 5,
+            "success": 14,
+            "queued": 10,
+            "cancelled": 2
+          },
+          "nonpass_terminal_checks": [
+            {
+              "id": 127794073677,
+              "name": "local-preview",
+              "conclusion": "cancelled",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42188380430/job/127794073677"
+            },
+            {
+              "id": 127793603853,
+              "name": "local-preview",
+              "conclusion": "cancelled",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42188236143/job/127793603853"
+            }
+          ]
+        },
+        {
+          "pr": 264,
+          "sha": "0a435277d5c35a92814cadb6d1562c9b770f6e32",
+          "counts": {
+            "success": 15,
+            "queued": 10,
+            "in_progress": 4,
+            "failure": 1,
+            "cancelled": 1
+          },
+          "nonpass_terminal_checks": [
+            {
+              "id": 127794121469,
+              "name": "bounded-integration",
+              "conclusion": "failure",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42188394165/job/127794121469"
+            },
+            {
+              "id": 127793604704,
+              "name": "browser",
+              "conclusion": "cancelled",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42188236478/job/127793604704"
+            }
+          ]
+        },
+        {
+          "pr": 265,
+          "sha": "eec71f86a39d58d6019b4af196b040f9269ae96d",
+          "counts": {
+            "queued": 23,
+            "success": 5,
+            "in_progress": 4,
+            "cancelled": 1
+          },
+          "nonpass_terminal_checks": [
+            {
+              "id": 127796892264,
+              "name": "browser",
+              "conclusion": "cancelled",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42189240349/job/127796892264"
+            }
+          ]
+        }
+      ]
+    },
+    "new_demonstrated_failures": {
+      "cycle19": {
+        "prs": [261, 262],
+        "runs": [42188341005, 42188368977],
+        "phase": "SOURCE_INTEGRITY_PREFLIGHT",
+        "message": "Reviewed Cycle11 source changed: src/lib/workflows/sync-admission-review.ts",
+        "application_and_browser": "NOT_RUN",
+        "unchanged_native_bytes": true,
+        "underlying_hosted_inner_error": "NOT_LOGGED; original outer validator catches the inner denial",
+        "demonstrated_environment_precondition": "SAME_EXACT_SOURCE_C19_PREFLIGHT_FAILS_WITH_DEPTH1_MISSING_PINNED_OBJECTS_AND_PASSES_WITH_FULL_HISTORY",
+        "controlled_source": "a262e0a023dd5b9617ed5b51a4bd71eb902f982c",
+        "controlled_tree": "ab0d32eeed1354bd69310b9dfd9d0b2296b13bc4",
+        "shallow": {
+          "checker_exit": 1,
+          "seconds": 0.3171985420049168,
+          "proof_sha256": "dd33f0b95a19b30b932cff4190d6a0f630fb7110cf92448ad5b2ccaf0c9beb4d",
+          "pinned_objects_available": false,
+          "same_outer_denial_as_hosted": true
+        },
+        "full_history": {
+          "checker_exit": 0,
+          "seconds": 0.5804436250036815,
+          "proof_sha256": "9e3dd1f8ab6cbda3a9eefe2349111de0b1b2700b3d90cdfd295d8eac0cb42913",
+          "pinned_objects_available": true
+        },
+        "source_unchanged_before_after": true,
+        "application_or_browser_suites_executed": false,
+        "correction": "C19 actions/checkout@v4 fetch-depth0 only; no assertion, native source, dependency, timeout or worker change",
+        "hosted_correction_acceptance": "PENDING_OWN_EXACT_HEAD_CI"
+      },
+      "cycle22": {
+        "pr": 264,
+        "run": 42188394165,
+        "artifact": 13489310456,
+        "application_passed": 299,
+        "application_failed": 1,
+        "runtime_errors": 0,
+        "skipped": 0,
+        "file": "tests/cycle22-independent-integration-review.test.ts",
+        "case": "independent source review: all admitted author bytes are exact and original controls remain the only writers",
+        "cause": "DIRECT_HISTORICAL_HASH_ASSERTION_DOES_NOT_ADMIT_REVIEWED_CURRENT_FINANCE_SUCCESSOR",
+        "expected_sha256": "f1b21bff936eb790d96da1c9c110c51e925ebb5eb7f0965d94901a16280e7bdc",
+        "actual_sha256": "70a8d82766f4807de28410f3bafbbe4a0a649d6d208785735e039182c52dfb33",
+        "original_failure_preserved": true,
+        "test_only_compatibility": {
+          "author": "649c2399fa954fdc50a1c6a1eab592c0f5b0ae18",
+          "parent": "eec71f86a39d58d6019b4af196b040f9269ae96d",
+          "owned_paths": 1,
+          "source_sha256": "d92940efc89b03c013608835e15f3babcfbaf212b8b4d3b7e8daa028cb92707b",
+          "original_failed_case_only": {
+            "passed": 1,
+            "filtered": 49,
+            "failed": 0,
+            "report_sha256": "87b6f9a200d0c425ce2bc7eb598515ec317b0921e375528c85b208cb62d70eaf"
+          },
+          "author_proof_sha256": "0968a30720043a2a0e212f7a80bebbad08117e327cb82a3c8da34f3dc77523d0",
+          "historical_independent_metadata": "UNCHANGED_STRICT_HASH_AND_BLOB_REQUIRED",
+          "original_case_title_count_and_writer_assertion_suffix": "UNCHANGED",
+          "finite_current_test_successor": "EXACT649_PARENT_DELTA_MODE_CURRENT_HASH_BLOB_AND_FRESH_READ_REQUIRED",
+          "old_299_successes_manually_rerun": false,
+          "hosted_correction_result": "PENDING_SEPARATE_CHILD",
+          "initial_new25_pass_before_adding_current_blob_pin_sha256": "609b5c7a5e2904da51d8d98720df087a1ead05373498acdb5fd0c2f9d1e37169",
+          "new_finite_admission_cases": 25,
+          "new_finite_admission_case_result": {
+            "passed": 25,
+            "failed": 0,
+            "skipped": 0,
+            "report_sha256": "492ffa68d161040298ef1e9b6d0f36fcb26e86333eefb7291d86ab3a66145e1b"
+          }
+        }
+      },
+      "manual_successful_job_reruns": 0
+    },
+    "ci_child_source_review": {
+      "source_native_candidate": "UNCHANGED_FROM_EEC",
+      "new25": "25_PASS_0_FAIL_0_SKIP",
+      "strict_types": "PASS",
+      "scoped_lint": "PASS",
+      "format": "PASS",
+      "feature_source_inventory": 1419,
+      "C24_source_integrity": "PASS_523_RETAINED_AUTHORS_128_PROTECTED_5_LOCKS_13_BINDINGS",
+      "new_gate_proof_sha256": "1d37d259cd2d16d61fcfa75ac350aa5984d6540cb4737f310b0d889f2455e2fe",
+      "support_author_proof_sha256": "787f6043ae225a22fcdeca8db80a70ad2ccb667cb4bebfc918d556d353aeaa00",
+      "current_head_ci": "PENDING_PUBLICATION_AND_EXACT_HEAD_RESULT",
+      "independent_review_sha256": "07aac98c1e830fb965c764c944c53b3a6843356238db3db414103cc9a7468b7f"
+    }
   }
 }
