@@ -30,6 +30,7 @@ on:
       - 'src/components/workflows/addon-readiness-guide.css'
       - 'src/lib/workflows/addon-readiness-guide.ts'
       - 'tests/cycle16*'
+      - 'tests/cycle33-v1-c16-test-compatibility.test.ts'
       - 'tests/program/*cycle16*'
       - 'scripts/*cycle16*'
       - 'docs/program/CYCLE16_DELIVERY_INDEX.json'
@@ -57,6 +58,20 @@ jobs:
       - run: node scripts/check-cycle16-integrity.mjs
       - run: npx vitest run tests/cycle16*.test.ts tests/program/cycle16*.test.ts tests/program/cycle13-scorecard-evidence.test.ts tests/program-feature-evidence.test.ts --maxWorkers=2 --reporter=json --outputFile=artifacts/cycle16/application-results.json
       - run: node scripts/check-cycle16-results.mjs
+      - name: Exact finite C16 test-only successor admission
+        run: >-
+          npx vitest run tests/cycle33-v1-c16-test-compatibility.test.ts
+          --maxWorkers=2 --retry=0 --reporter=json
+          --outputFile=artifacts/cycle16/test-successor-admission.json
+      - name: Require all36 test-successor cases without skips or runtime errors
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFileSync} from 'node:fs';
+          import {relative} from 'node:path';
+          const r=JSON.parse(readFileSync('artifacts/cycle16/test-successor-admission.json')),
+            s=r.testResults?.[0], a=s?.assertionResults;
+          if(r.success!==true||r.numTotalTests!==36||r.numPassedTests!==36||r.numFailedTests!==0||r.numPendingTests!==0||r.numTodoTests!==0||r.numFailedTestSuites!==0||r.numPendingTestSuites!==0||(r.numRuntimeErrorTestSuites??0)!==0||r.testResults.length!==1||relative(process.cwd(),s.name).replaceAll('\\','/')!=='tests/cycle33-v1-c16-test-compatibility.test.ts'||s.status!=='passed'||a.length!==36||new Set(a.map(t=>t.fullName)).size!==36||a.some(t=>t.status!=='passed'||!t.fullName||t.failureMessages.length))throw Error('Exact36 C16 test-successor cases required');
+          NODE
       - run: npm run build
       - run: npx playwright install --with-deps chromium
       - run: npx playwright test -c tests/program/playwright.cycle16.config.ts --workers=2

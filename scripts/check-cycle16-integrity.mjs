@@ -3,7 +3,11 @@ import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { readCycle13File } from './check-cycle13-integrity.mjs';
 import { validateCycle15Manifest } from './check-cycle15-integrity.mjs';
-import { admitCycle33V1Published } from './cycle25-source-lineage.mjs';
+import {
+  admitCycle33V1Published,
+  admitCycle33V1C16TestCompatibility,
+  cycle33V1C16TestCompatibility,
+} from './cycle25-source-lineage.mjs';
 
 export const cycle16Packages = [
   ['daily-field-guide', 'DailyFieldGuide'],
@@ -48,7 +52,9 @@ export function validateCycle16Manifest(manifest, read = readCycle13File) {
         currentHash !== file.sha256 ||
         (file.path === 'src/lib/workflows/addon-readiness-guide.ts' &&
           currentHash !==
-            'b3c6d6f20aa38d00f88a9987b30117f945c341cda5c591d16d5b8f671a5b60cf')
+            'b3c6d6f20aa38d00f88a9987b30117f945c341cda5c591d16d5b8f671a5b60cf') ||
+        (file.path === cycle33V1C16TestCompatibility.path &&
+          currentHash !== cycle33V1C16TestCompatibility.published_sha256)
       ) {
         let admitted;
         if (
@@ -60,10 +66,27 @@ export function validateCycle16Manifest(manifest, read = readCycle13File) {
           } catch {
             /* Preserve legacy denial. */
           }
+        } else if (
+          commit === undefined &&
+          manifest.independent_review_commit ===
+            '9b73bdf733dec476a6ce7899ffd48d6a61140e8b' &&
+          file.path === cycle33V1C16TestCompatibility.path
+        ) {
+          try {
+            admitted = admitCycle33V1C16TestCompatibility(file, bytes, {
+              read,
+            });
+          } catch {
+            /* Preserve legacy denial. */
+          }
         }
-        if (
-          admitted?.source_commit !== '99e112a7cf669dfde03fdd69dbdbce2e74ef2fd4'
-        )
+        if (!(
+          (file.path === 'src/lib/workflows/addon-readiness-guide.ts' &&
+            admitted?.source_commit ===
+              '99e112a7cf669dfde03fdd69dbdbce2e74ef2fd4') ||
+          (file.path === cycle33V1C16TestCompatibility.path &&
+            admitted?.source_commit === cycle33V1C16TestCompatibility.commit)
+        ))
           throw Error(`Reviewed Cycle16 source changed: ${file.path}`);
       }
       remaining.delete(file.path);
