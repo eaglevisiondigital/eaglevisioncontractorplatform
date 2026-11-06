@@ -3782,5 +3782,61 @@
       "workflow_registers_and_coordination": "/root",
       "combined_independent_reviewer": "/root/cycle30_field_growth"
     }
+  },
+  "v1_current_source_followup": {
+    "observed_at": "2026-11-06T18:02:31Z",
+    "prior_main274": {
+      "head": "3660a7e6e3d260f0cef54200f723074278f155d7",
+      "success": 24,
+      "cancelled": 4,
+      "failed": 1,
+      "pending": 0,
+      "foundation": "BOTH45MINUTE_CANCELLATIONS_INCOMPLETE_NO_FINAL_JSON",
+      "partial_failure_labels": {
+        "push": 4,
+        "pull_request": 14
+      },
+      "per_case_causes": "UNKNOWN"
+    },
+    "c16_correction275": {
+      "head": "6bf1f2be786e6d9c052d87e5f759a4312782be70",
+      "success": 8,
+      "cancelled": 1,
+      "failed": 0,
+      "in_progress": 2,
+      "c16_run": 42259854249,
+      "c16_original_application_pass": 440,
+      "c16_separate_source_cases_pass": 36,
+      "c16_native_browser_log_pass": 81,
+      "c16_off_browser_log_pass": 3,
+      "c16_browser_identity_limit": "ORIGINAL_DOT_REPORTER_NO_NATIVE_CASE_JSON_TRACE_OR_WHOLE_RUNTIME_HASH_BINDING",
+      "foundation": "TWO_VERIFY_JOBS_IN_PROGRESS_NOT_PASS",
+      "proof_sha256": "1283cddf754684983ffece2da8fd97690bf01d153dbf07d48d0698ffc8dbba47"
+    },
+    "new_features": [
+      {
+        "pr": 276,
+        "head": "52fef7d261414214ddc5a6cc9d5ed917dc08630d",
+        "native_author": "5986df744d688d7ab2e72a7824b18e4568d1cb92",
+        "ci": "PENDING_OBSERVATION_NO_INHERITANCE"
+      },
+      {
+        "pr": 277,
+        "head": "dcff07abe683ce4aa348209cc5f8c12f31ff058a",
+        "native_author": "8c6334db676f214bc7abe1a4eeae70e9b547534a",
+        "ci": "PENDING_OBSERVATION_NO_INHERITANCE"
+      },
+      {
+        "pr": 278,
+        "head": "808e6c7181d393d88d4856ad6d87547c4e2a170f",
+        "native_author": "bd2e50e8f5dd972c9b2c9a29186e36fcc05dee53",
+        "ci": "PENDING_OBSERVATION_NO_INHERITANCE"
+      }
+    ],
+    "new_main_branch": "codex/cycle33-v1-source-continuation",
+    "new_main_ci": "PENDING_PUBLICATION_AND_EXACT_HEAD_OBSERVATION",
+    "original270_conflict_and_Foundation_gaps": "PRESERVED_UNRESOLVED",
+    "successful_checks_manually_restarted": false,
+    "release": "NOT_READY_NOT_AUTHORIZED"
   }
 }

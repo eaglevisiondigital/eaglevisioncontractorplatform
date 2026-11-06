@@ -130,9 +130,16 @@ export function inspectRecordedCostSource(
 ) {
   assertRecordedCostRequirementsCurrent(view);
   const p = prototypeFields(input, ['kind', 'id']);
-  if (Object.keys(p).length !== 2)
+  if (
+    Object.keys(p).length !== 2 ||
+    typeof p.id !== 'string' ||
+    (p.kind !== 'time' &&
+      p.kind !== 'material' &&
+      p.kind !== 'material_review' &&
+      p.kind !== 'invoice_requirement')
+  )
     throw Error('Exact original source selector required');
-  return inspectCostCoverageSource(view.original, input);
+  return inspectCostCoverageSource(view.original, { kind: p.kind, id: p.id });
 }
 export async function continueRecordedCostSource(
   view: RecordedCostRequirementsRead,
