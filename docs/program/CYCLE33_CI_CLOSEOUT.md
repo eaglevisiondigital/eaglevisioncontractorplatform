@@ -1,5 +1,59 @@
 # Exact Cycle 33 hosted closeout evidence
 
+## Next execution · final corrective-head Foundation analysis
+
+Corrective256 remains exact39b5 and Main253 remains exact04f. Corrective256's
+final check ledger is **9 PASS / 0 FAIL / 3 CANCELLED / 0 pending**. Both verify
+jobs127704741747/127704988314 explicitly hit the original45-minute ceiling inside
+`npm run check`. Native application collection has no terminal summary or JSON;
+recovery/build completion and the later staging/full-browser steps are not proven.
+Partial output contains55/56 PASS file lines and four nonpassing file lines with15
+labels per event. Their error causes are unreported; these are not fifteen proven
+timeouts or a completed test union. The separate267 compatibility passes remain
+valid and were not manually repeated.
+
+The corrective PR PostgreSQL job127704988558 explicitly hit its10-minute ceiling.
+Signed Chromium dependency installation succeeded but consumed7m58s;22 native
+database file PASS lines follow, with no terminal summary. The matching exact-head
+push PostgreSQL job127704742014 is PASS. Its success does not relabel the PR
+cancellation. No database test or installation budget was increased or repeated.
+
+Main253 stays **43 PASS / 9 FAIL / 2 CANCELLED**. Original failed full-scope reports
+and their explicit timeouts/four diagnostic assertions/dependent C18 cases below
+remain historical evidence. The four diagnostic contracts were separately fixed
+in256; Foundation and original verify-scope acceptance remain incomplete.
+
+### Separately reviewed bounded deadline draft257
+
+Driver `fedbd8641e16915356c82ba0eb82422538dc3f8d` has sole parent39b5 and frozen
+subject39b5/tree0299. It runs nine whole original files/270 cases with maxWorkers4,
+unchanged30-second test/hook budgets and zero retries, reusing the original native
+reporter. It does not rerun267, browsers or PostgreSQL. Actual event artifacts:
+
+- Push42175850111: **270 PASS / 0 FAIL / 0 skipped**.
+- PR42175879610: **249 PASS / 21 FAIL / 0 skipped**:18 explicit30-second deadlines
+  and three C18 dependent AssertionErrors. Initial/final source proofs pass; the
+  strict validator correctly rejects the native failures. No validator defect or
+  exclusive runtime/resource/application cause has been demonstrated.
+
+The driver PR carrier9f8d1f6 and directfedbd have equal treeea989; both execute the
+same frozen subject39b5/tree0299. Verified provider ZIP hashes and exact case IDs
+are in the existing JSON companion. The selected workload differs from full-shard
+scheduling: neither its push PASS nor another orchestration diagnostic repairs the
+failed PR, original full scope or historical Foundation cancellations.
+
+The later256 partial logs also expose the C23 independent I10 label in the separate
+50-case `cycle23-independent-integration-review.test.ts`; that whole file is
+**outside270**. Its unresolved coverage/error cause remains explicit. No current
+full Foundation PASS is claimed. Next investigation should capture exact remaining
+failure behavior and source-check cost under original budgets, without silently
+replaying successful cohorts or widening trust/timeouts.
+
+The safe stack is a new reviewed draft based on256, retaining its diagnostic fix
+by ancestry; bounded Growth and Offline native authors also start from39b5. No
+existing draft is merged or silently advanced. Operational D1–D3/A01–A12 and the
+duplicate physical case remain unresolved; both private folders stay intact.
+
 Observed 2026-11-06T03:40:25.787113+00:00. Main #253 exact `04f15d45438a56cd86421db2b49d0aa97c22b07e`: 43 PASS / 9 FAIL / 2 CANCELLED / 0 pending. Advanced #251 exact `77142705583774a5bfaa46ccb14aaa201421d295`: 23 PASS / 0 FAIL / 2 CANCELLED / 0 pending.
 
 Main push captured `04f15d45438a56cd86421db2b49d0aa97c22b07e`; PR captured `7b38b98d6f572aca0812fa82df87eba455c15b6a`. Both actual captured trees equal `c693031c7904e72d2f18e788e768241036084247`. Current direct-head action/check listings and carrier check listings were paginated completely; no reruns occurred.

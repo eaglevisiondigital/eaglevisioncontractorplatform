@@ -30,6 +30,43 @@ export interface MaintenancePlanCorrectionReview {
   readonly source: PlanCorrectionSource;
   readonly renewal: Awaited<ReturnType<typeof readMaintenanceRenewalEvidence>>;
 }
+const sourceFields = [
+  'plan_id',
+  'revision',
+  'name',
+  'cadence',
+  'interval_days',
+  'can_edit',
+  'blocked_reason',
+] as const;
+/** Capture caller selectors before native access checks. The original opaque
+ * handles remain authoritative; no copied handle or new review registry exists. */
+function reviewFields(review: MaintenancePlanCorrectionReview) {
+  const fields = prototypeFields(review, ['view', 'source', 'renewal']),
+    source = prototypeFields(fields.source, sourceFields);
+  if (
+    Object.keys(fields).length !== 3 ||
+    Object.keys(source).length !== sourceFields.length ||
+    typeof source.plan_id !== 'string' ||
+    typeof source.name !== 'string' ||
+    typeof source.cadence !== 'string' ||
+    typeof source.revision !== 'number' ||
+    !Number.isSafeInteger(source.revision) ||
+    typeof source.interval_days !== 'number' ||
+    !Number.isSafeInteger(source.interval_days) ||
+    typeof source.can_edit !== 'boolean' ||
+    (source.blocked_reason !== null &&
+      typeof source.blocked_reason !== 'string')
+  )
+    throw Error(
+      'Exact own maintenance review handles and primitive source required',
+    );
+  return {
+    view: fields.view as MaintenancePlanCorrectionReview['view'],
+    source: source as unknown as PlanCorrectionSource,
+    renewal: fields.renewal as MaintenancePlanCorrectionReview['renewal'],
+  };
+}
 /** Bounded form data only. Existing savePlan owns native schedule semantics and CAS. */
 export function parsePlanCorrectionInput(
   value: unknown,
@@ -95,9 +132,31 @@ export async function readMaintenancePlanCorrectionReview(
 export function assertMaintenancePlanCorrectionCurrent(
   review: MaintenancePlanCorrectionReview,
 ) {
-  const current = readSavedPlanCorrection(review.view);
-  assertMaintenanceSavedRevisionCurrent(review.renewal);
-  if (JSON.stringify(current) !== JSON.stringify(review.source))
+  const fields = reviewFields(review),
+    current = readSavedPlanCorrection(fields.view);
+  assertMaintenanceSavedRevisionCurrent(fields.renewal);
+  const renewal = projectMaintenanceRenewalEvidence(fields.renewal);
+  if (
+    (
+      [
+        'organization_id',
+        'actor_id',
+        'customer_id',
+        'location_id',
+        'estimate_id',
+        'version_id',
+        'job_id',
+      ] as const
+    ).some(
+      (key) => fields.view.identity[key] !== fields.renewal.identity[key],
+    ) ||
+    !renewal.saved.plans.some(
+      (plan) =>
+        plan.id === current.plan_id && plan.revision === current.revision,
+    )
+  )
+    throw Error('Exact original plan and same-job renewal handles required');
+  if (sourceFields.some((key) => current[key] !== fields.source[key]))
     throw Error('Plan correction review is stale or held');
   return current;
 }
@@ -129,13 +188,14 @@ export async function saveMaintenancePlanCorrectionReview(
 export function maintenancePlanRenewalReview(
   review: MaintenancePlanCorrectionReview,
 ) {
-  assertMaintenancePlanCorrectionCurrent(review);
-  const actual = projectMaintenanceRenewalEvidence(review.renewal);
+  const fields = reviewFields(review),
+    current = assertMaintenancePlanCorrectionCurrent(fields),
+    actual = projectMaintenanceRenewalEvidence(fields.renewal);
   return freezePrototype({
-    plan_id: review.source.plan_id,
-    revision: review.source.revision,
+    plan_id: current.plan_id,
+    revision: current.revision,
     occurrences: actual.renewal
-      .filter((r) => r.selection.source.plan_id === review.source.plan_id)
+      .filter((r) => r.selection.source.plan_id === current.plan_id)
       .map((r) => ({
         id: r.selection.candidate_key,
         due_on: r.selection.due_on,

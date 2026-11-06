@@ -1,3 +1,29 @@
+# Cycle33 next bounded execution · reviewed custody corrections
+
+The corrective stack starts from exact256 `39b5b1977f2e18c1c7d534667260ce5ed05660f3`.
+Main253 remains unchanged at `04f15d45438a56cd86421db2b49d0aa97c22b07e`.
+Separate exact Growthb1f3ecb and Offline14989f2 authors fix executable review input
+and mismatched original-job renewal joins in existing engines. Field, Finance,
+Customer and Intelligence are audited NO_CHANGE; no feature delivery is invented.
+The finite build-only admission retains old pins and rereads every current companion.
+Independent native/source review is CLEAR; no business state or restoration authority
+is created. The existing source manifest records exact author blobs and dependencies.
+
+Corrective256 finishes9PASS/0FAIL/3CANCELLED: both verify jobs hit45m; the PR nativePG
+job hits10m after7m58 Chromium installation while the same-head push nativePG passes.
+Main253's43/9/2 and historical full-scope failures remain. Separate draft257 runs
+original4-worker/30s270: push270PASS, PR249PASS/21FAIL (18deadlines/3dependentC18).
+The additional C23 independent50-case gap is outside270. No sole timing cause or
+whole Foundation PASS is inferred; the successful267 package was not manually rerun.
+See the current CI closeout and validation for precise reports and remaining gaps.
+
+D1–D3 remain decision-ready but unresolved:11 real people UNASSIGNED, A01–A12 NOT_RUN.
+November4 owner-witnessed main synthetic network-loss PASS is preserved exactly;
+duplicate recovery remains UNKNOWN/UNVERIFIED with both private folders intact.
+All protected designs, migrations, P1/customer14/4B, Auth/MFA/NMI, Netlify, financial,
+recovery and production gates remain unchanged. No merge, deployment, hosted mutation,
+operational restore, payment, communication or dispatch. Release1.0 NOT READY / NOT AUTHORIZED.
+
 # Cycle33 closeout · exact CI and diagnostic compatibility
 
 Exact tested parent04f15d4 now has independently verified hosted237 + separate142

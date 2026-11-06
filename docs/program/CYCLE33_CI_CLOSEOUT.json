@@ -673,5 +673,589 @@
     "Original four-worker failures,321 declared skips and45-minute cancellations remain recorded.",
     "Native9 includes original Axe/overflow/touch assertions; Owner9 has no separate Axe scan.",
     "No sole timeout cause, full Foundation pass, visual approval, physical suite pass or operational authority is inferred."
-  ]
+  ],
+  "next_execution_ci": {
+    "correction_head": "39b5b1977f2e18c1c7d534667260ce5ed05660f3",
+    "main_head_unchanged": "04f15d45438a56cd86421db2b49d0aa97c22b07e",
+    "foundation": {
+      "checked_at": "2026-11-06T07:02:36.745108+00:00",
+      "pr256": {
+        "head": "39b5b1977f2e18c1c7d534667260ce5ed05660f3",
+        "carrier": "de955984edc59fe38ea3ad764446d8d1aed5111c",
+        "tree": "0299e68550f0b86032a656ab26e4a6d40b70769e",
+        "counts": {
+          "PASS": 9,
+          "FAIL": 0,
+          "CANCELLED": 3,
+          "PENDING": 0
+        },
+        "verify": [
+          {
+            "job": 127704741747,
+            "status": "completed",
+            "conclusion": "cancelled",
+            "started_at": "2026-11-06T04:06:31Z",
+            "completed_at": "2026-11-06T04:51:52Z",
+            "timeout_annotation": [
+              "The job has exceeded the maximum execution time of 45m0s"
+            ],
+            "cutoff": [
+              {
+                "name": "Run npm run check",
+                "status": "completed",
+                "conclusion": "cancelled",
+                "number": 8,
+                "started_at": "2026-11-06T04:08:03Z",
+                "completed_at": "2026-11-06T04:51:47Z"
+              },
+              {
+                "name": "Run npm run staging:plan",
+                "status": "completed",
+                "conclusion": "skipped",
+                "number": 9,
+                "started_at": "2026-11-06T04:51:48Z",
+                "completed_at": "2026-11-06T04:51:48Z"
+              },
+              {
+                "name": "Run npx playwright install --with-deps chromium",
+                "status": "completed",
+                "conclusion": "skipped",
+                "number": 10,
+                "started_at": "2026-11-06T04:51:48Z",
+                "completed_at": "2026-11-06T04:51:48Z"
+              },
+              {
+                "name": "Run npm run test:browser",
+                "status": "completed",
+                "conclusion": "skipped",
+                "number": 11,
+                "started_at": "2026-11-06T04:51:48Z",
+                "completed_at": "2026-11-06T04:51:48Z"
+              }
+            ]
+          },
+          {
+            "job": 127704988314,
+            "status": "completed",
+            "conclusion": "cancelled",
+            "started_at": "2026-11-06T04:07:16Z",
+            "completed_at": "2026-11-06T04:52:37Z",
+            "timeout_annotation": [
+              "The job has exceeded the maximum execution time of 45m0s"
+            ],
+            "cutoff": [
+              {
+                "name": "Run npm run check",
+                "status": "completed",
+                "conclusion": "cancelled",
+                "number": 8,
+                "started_at": "2026-11-06T04:08:50Z",
+                "completed_at": "2026-11-06T04:52:33Z"
+              },
+              {
+                "name": "Run npm run staging:plan",
+                "status": "completed",
+                "conclusion": "skipped",
+                "number": 9,
+                "started_at": "2026-11-06T04:52:33Z",
+                "completed_at": "2026-11-06T04:52:33Z"
+              },
+              {
+                "name": "Run npx playwright install --with-deps chromium",
+                "status": "completed",
+                "conclusion": "skipped",
+                "number": 10,
+                "started_at": "2026-11-06T04:52:33Z",
+                "completed_at": "2026-11-06T04:52:33Z"
+              },
+              {
+                "name": "Run npm run test:browser",
+                "status": "completed",
+                "conclusion": "skipped",
+                "number": 11,
+                "started_at": "2026-11-06T04:52:33Z",
+                "completed_at": "2026-11-06T04:52:33Z"
+              }
+            ]
+          }
+        ],
+        "postgres": {
+          "pr_job": 127704988558,
+          "conclusion": "cancelled",
+          "timeout_annotation": "The job has exceeded the maximum execution time of 10m0s",
+          "installation_success_ms": 478000,
+          "partial_file_pass_lines": 22,
+          "terminal_summaries": [],
+          "log_sha256": "de8fac81832e97522b53060c7573bef956e5b9a60d35f108e9418ee7b498ba92",
+          "push_job": 127704742014,
+          "same_head_push_conclusion": "success"
+        }
+      },
+      "pr253": {
+        "head": "04f15d45438a56cd86421db2b49d0aa97c22b07e",
+        "carrier": "7b38b98d6f572aca0812fa82df87eba455c15b6a",
+        "tree": "c693031c7904e72d2f18e788e768241036084247",
+        "counts": {
+          "PASS": 43,
+          "FAIL": 9,
+          "CANCELLED": 2,
+          "PENDING": 0
+        },
+        "verify_jobs": [127215833271, 127215256618],
+        "confirmed_timeout": "Both original45m annotations retained in prior verified records",
+        "full_failed_supplement_sha256": "e3c8c3a1f1464879e7dd4419691092e5ba37b6bcde1d0850582afc0601224c2c"
+      },
+      "log_observations": [
+        {
+          "pr": 256,
+          "event": "push",
+          "run": 42160495955,
+          "job": 127704741747,
+          "head": "39b5b1977f2e18c1c7d534667260ce5ed05660f3",
+          "expected_checkout": "39b5b1977f2e18c1c7d534667260ce5ed05660f3",
+          "log_retrieval_exit": 0,
+          "log_sha256": "7ec23967d27b759aae0c6c9b0babb8cd7dad479c065214992d9d32d2b426e620",
+          "log_bytes": 312018,
+          "file_line_status_counts": {
+            "PASS_FILE_LINE": 55,
+            "NONPASS_FILE_LINE": 4
+          },
+          "observed_failed_declared_cases": 15,
+          "terminal_summaries": [],
+          "safe_error_tags": ["OPERATION_CANCELLED"],
+          "explicit_timeout_budgets_ms": []
+        },
+        {
+          "pr": 256,
+          "event": "pull_request",
+          "run": 42160571189,
+          "job": 127704988314,
+          "head": "39b5b1977f2e18c1c7d534667260ce5ed05660f3",
+          "expected_checkout": "de955984edc59fe38ea3ad764446d8d1aed5111c",
+          "log_retrieval_exit": 0,
+          "log_sha256": "8d99cc0b55d59b8aadefcc5f05e492b448b1cd4e3dfa522ed0a8fd2a3c163a7a",
+          "log_bytes": 318324,
+          "file_line_status_counts": {
+            "PASS_FILE_LINE": 56,
+            "NONPASS_FILE_LINE": 4
+          },
+          "observed_failed_declared_cases": 15,
+          "terminal_summaries": [],
+          "safe_error_tags": ["OPERATION_CANCELLED"],
+          "explicit_timeout_budgets_ms": []
+        },
+        {
+          "pr": 253,
+          "event": "push",
+          "run": 42018576490,
+          "job": 127215833271,
+          "head": "04f15d45438a56cd86421db2b49d0aa97c22b07e",
+          "expected_checkout": "04f15d45438a56cd86421db2b49d0aa97c22b07e",
+          "log_retrieval_exit": 1,
+          "log_sha256": "468a1d0ad0105bf7ea822b2a3ac4c21ac13bda864538e93e0df24415ecff141c",
+          "log_bytes": 544,
+          "file_line_status_counts": {},
+          "observed_failed_declared_cases": 0,
+          "terminal_summaries": [],
+          "safe_error_tags": [],
+          "explicit_timeout_budgets_ms": []
+        },
+        {
+          "pr": 253,
+          "event": "pull_request",
+          "run": 42018584508,
+          "job": 127215256618,
+          "head": "04f15d45438a56cd86421db2b49d0aa97c22b07e",
+          "expected_checkout": "7b38b98d6f572aca0812fa82df87eba455c15b6a",
+          "log_retrieval_exit": 1,
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "log_bytes": 0,
+          "file_line_status_counts": {},
+          "observed_failed_declared_cases": 0,
+          "terminal_summaries": [],
+          "safe_error_tags": [],
+          "explicit_timeout_budgets_ms": []
+        }
+      ],
+      "remaining_gap": {
+        "source": "39b5b1977f2e18c1c7d534667260ce5ed05660f3",
+        "file": "tests/cycle23-independent-integration-review.test.ts",
+        "native_id": "-800933573_0_27",
+        "whole_file_cases": 50,
+        "outside270": true,
+        "cause": "NOT_REPORTED_IN_PARTIAL_DEFAULT_OUTPUT"
+      },
+      "limits": [
+        "Cancelled partial default output does not prove explicit case timeouts/assertion causes",
+        "Source267success does not close fullFoundation",
+        "Bounded270does not cover all newly observed256nonpasses",
+        "No tests rerun or source changes in audit"
+      ]
+    },
+    "bounded270": {
+      "checked_at": "2026-11-06T07:03:45.350699+00:00",
+      "mode": "READ_ONLY_CLASSIFICATION_NO_RERUN",
+      "events": [
+        {
+          "event": "push",
+          "subject": "39b5b1977f2e18c1c7d534667260ce5ed05660f3",
+          "tree": "0299e68550f0b86032a656ab26e4a6d40b70769e",
+          "driver": {
+            "source": "fedbd8641e16915356c82ba0eb82422538dc3f8d",
+            "tree": "ea989331ea6bb65cc29542d19b9c15941ad5b937",
+            "tracked_clean": true,
+            "workflow_sha256": "ba10ab42948078c4b2b0d683394651220c448c7d92531ed50e107ed9f3a94464"
+          },
+          "counts": {
+            "numTotalTests": 270,
+            "numPassedTests": 270,
+            "numFailedTests": 0,
+            "numPendingTests": 0,
+            "numTodoTests": 0,
+            "success": true
+          },
+          "classes": {},
+          "failed": [],
+          "strict_summary": "EXACT270_BOUNDED_COHORT_PASS",
+          "config": {
+            "testTimeout": 30000,
+            "hookTimeout": 30000,
+            "maxWorkers": 4,
+            "retry": 0,
+            "shard": {
+              "index": 1,
+              "count": 1
+            }
+          },
+          "all_sources_unchanged": true
+        },
+        {
+          "event": "pr",
+          "subject": "39b5b1977f2e18c1c7d534667260ce5ed05660f3",
+          "tree": "0299e68550f0b86032a656ab26e4a6d40b70769e",
+          "driver": {
+            "source": "9f8d1f6708c6c3da79ef13258002e96e2aa423a0",
+            "tree": "ea989331ea6bb65cc29542d19b9c15941ad5b937",
+            "tracked_clean": true,
+            "workflow_sha256": "ba10ab42948078c4b2b0d683394651220c448c7d92531ed50e107ed9f3a94464"
+          },
+          "counts": {
+            "numTotalTests": 270,
+            "numPassedTests": 249,
+            "numFailedTests": 21,
+            "numPendingTests": 0,
+            "numTodoTests": 0,
+            "success": false
+          },
+          "classes": {
+            "EXPLICIT_TEST_TIMEOUT": 18,
+            "ASSERTION_FAILURE": 3
+          },
+          "failed": [
+            {
+              "file": "tests/cycle22-current-owner-priorities.test.ts",
+              "id": "-1551839378_0_24",
+              "duration_ms": 31400.552223000035,
+              "classes": [
+                {
+                  "class": "Error",
+                  "classification": "EXPLICIT_TEST_TIMEOUT",
+                  "timeout_ms": 30000,
+                  "message_sha256": "19040084cbe31a4758fbb11a82beae34748d066bf786284e083ceb933b6bf5bd"
+                }
+              ]
+            },
+            {
+              "file": "tests/cycle25-combined-integration.test.ts",
+              "id": "-1697547563_0_2",
+              "duration_ms": 30084.17759,
+              "classes": [
+                {
+                  "class": "Error",
+                  "classification": "EXPLICIT_TEST_TIMEOUT",
+                  "timeout_ms": 30000,
+                  "message_sha256": "19040084cbe31a4758fbb11a82beae34748d066bf786284e083ceb933b6bf5bd"
+                }
+              ]
+            },
+            {
+              "file": "tests/cycle18-independent-integration-review.test.ts",
+              "id": "-2019722847_0",
+              "duration_ms": 30046.677276000002,
+              "classes": [
+                {
+                  "class": "Error",
+                  "classification": "EXPLICIT_TEST_TIMEOUT",
+                  "timeout_ms": 30000,
+                  "message_sha256": "19040084cbe31a4758fbb11a82beae34748d066bf786284e083ceb933b6bf5bd"
+                }
+              ]
+            },
+            {
+              "file": "tests/cycle18-independent-integration-review.test.ts",
+              "id": "-2019722847_1",
+              "duration_ms": 2.6089539999957196,
+              "classes": [
+                {
+                  "class": "AssertionError",
+                  "classification": "ASSERTION_FAILURE",
+                  "timeout_ms": null,
+                  "message_sha256": "e5d1f7789c0471cfd287c3ab3524cd4311cba9cf849d20435561ef49db6a935f"
+                }
+              ]
+            },
+            {
+              "file": "tests/cycle18-independent-integration-review.test.ts",
+              "id": "-2019722847_2",
+              "duration_ms": 30040.95787,
+              "classes": [
+                {
+                  "class": "Error",
+                  "classification": "EXPLICIT_TEST_TIMEOUT",
+                  "timeout_ms": 30000,
+                  "message_sha256": "19040084cbe31a4758fbb11a82beae34748d066bf786284e083ceb933b6bf5bd"
+                }
+              ]
+            },
+            {
+              "file": "tests/cycle18-independent-integration-review.test.ts",
+              "id": "-2019722847_3",
+              "duration_ms": 0.7519979999997304,
+              "classes": [
+                {
+                  "class": "AssertionError",
+                  "classification": "ASSERTION_FAILURE",
+                  "timeout_ms": null,
+                  "message_sha256": "e5d1f7789c0471cfd287c3ab3524cd4311cba9cf849d20435561ef49db6a935f"
+                }
+              ]
+            },
+            {
+              "file": "tests/cycle18-independent-integration-review.test.ts",
+              "id": "-2019722847_4",
+              "duration_ms": 33512.15902500001,
+              "classes": [
+                {
+                  "class": "Error",
+                  "classification": "EXPLICIT_TEST_TIMEOUT",
+                  "timeout_ms": 30000,
+                  "message_sha256": "19040084cbe31a4758fbb11a82beae34748d066bf786284e083ceb933b6bf5bd"
+                }
+              ]
+            },
+            {
+              "file": "tests/cycle18-independent-integration-review.test.ts",
+              "id": "-2019722847_5",
+              "duration_ms": 0.6680679999990389,
+              "classes": [
+                {
+                  "class": "AssertionError",
+                  "classification": "ASSERTION_FAILURE",
+                  "timeout_ms": null,
+                  "message_sha256": "e5d1f7789c0471cfd287c3ab3524cd4311cba9cf849d20435561ef49db6a935f"
+                }
+              ]
+            },
+            {
+              "file": "tests/cycle18-independent-integration-review.test.ts",
+              "id": "-2019722847_27",
+              "duration_ms": 43450.122145,
+              "classes": [
+                {
+                  "class": "Error",
+                  "classification": "EXPLICIT_TEST_TIMEOUT",
+                  "timeout_ms": 30000,
+                  "message_sha256": "19040084cbe31a4758fbb11a82beae34748d066bf786284e083ceb933b6bf5bd"
+                }
+              ]
+            },
+            {
+              "file": "tests/cycle18-independent-integration-review.test.ts",
+              "id": "-2019722847_28",
+              "duration_ms": 30039.980972999998,
+              "classes": [
+                {
+                  "class": "Error",
+                  "classification": "EXPLICIT_TEST_TIMEOUT",
+                  "timeout_ms": 30000,
+                  "message_sha256": "19040084cbe31a4758fbb11a82beae34748d066bf786284e083ceb933b6bf5bd"
+                }
+              ]
+            },
+            {
+              "file": "tests/cycle18-independent-integration-review.test.ts",
+              "id": "-2019722847_29",
+              "duration_ms": 40876.960598000005,
+              "classes": [
+                {
+                  "class": "Error",
+                  "classification": "EXPLICIT_TEST_TIMEOUT",
+                  "timeout_ms": 30000,
+                  "message_sha256": "19040084cbe31a4758fbb11a82beae34748d066bf786284e083ceb933b6bf5bd"
+                }
+              ]
+            },
+            {
+              "file": "tests/cycle18-independent-integration-review.test.ts",
+              "id": "-2019722847_54",
+              "duration_ms": 37950.20441300003,
+              "classes": [
+                {
+                  "class": "Error",
+                  "classification": "EXPLICIT_TEST_TIMEOUT",
+                  "timeout_ms": 30000,
+                  "message_sha256": "19040084cbe31a4758fbb11a82beae34748d066bf786284e083ceb933b6bf5bd"
+                }
+              ]
+            },
+            {
+              "file": "tests/cycle24-independent-integration-review.test.ts",
+              "id": "-1249630212_0_30",
+              "duration_ms": 30175.409195,
+              "classes": [
+                {
+                  "class": "Error",
+                  "classification": "EXPLICIT_TEST_TIMEOUT",
+                  "timeout_ms": 30000,
+                  "message_sha256": "19040084cbe31a4758fbb11a82beae34748d066bf786284e083ceb933b6bf5bd"
+                }
+              ]
+            },
+            {
+              "file": "tests/cycle24-independent-integration-review.test.ts",
+              "id": "-1249630212_0_31",
+              "duration_ms": 31585.092913,
+              "classes": [
+                {
+                  "class": "Error",
+                  "classification": "EXPLICIT_TEST_TIMEOUT",
+                  "timeout_ms": 30000,
+                  "message_sha256": "19040084cbe31a4758fbb11a82beae34748d066bf786284e083ceb933b6bf5bd"
+                }
+              ]
+            },
+            {
+              "file": "tests/cycle24-independent-integration-review.test.ts",
+              "id": "-1249630212_0_32",
+              "duration_ms": 30502.30299800003,
+              "classes": [
+                {
+                  "class": "Error",
+                  "classification": "EXPLICIT_TEST_TIMEOUT",
+                  "timeout_ms": 30000,
+                  "message_sha256": "19040084cbe31a4758fbb11a82beae34748d066bf786284e083ceb933b6bf5bd"
+                }
+              ]
+            },
+            {
+              "file": "tests/cycle23-verified-owner-briefing.test.ts",
+              "id": "-602280192_0_11",
+              "duration_ms": 31969.153514999984,
+              "classes": [
+                {
+                  "class": "Error",
+                  "classification": "EXPLICIT_TEST_TIMEOUT",
+                  "timeout_ms": 30000,
+                  "message_sha256": "19040084cbe31a4758fbb11a82beae34748d066bf786284e083ceb933b6bf5bd"
+                }
+              ]
+            },
+            {
+              "file": "tests/cycle23-verified-owner-briefing.test.ts",
+              "id": "-602280192_0_12",
+              "duration_ms": 31820.729066,
+              "classes": [
+                {
+                  "class": "Error",
+                  "classification": "EXPLICIT_TEST_TIMEOUT",
+                  "timeout_ms": 30000,
+                  "message_sha256": "19040084cbe31a4758fbb11a82beae34748d066bf786284e083ceb933b6bf5bd"
+                }
+              ]
+            },
+            {
+              "file": "tests/cycle23-verified-owner-briefing.test.ts",
+              "id": "-602280192_0_13",
+              "duration_ms": 30948.367927999992,
+              "classes": [
+                {
+                  "class": "Error",
+                  "classification": "EXPLICIT_TEST_TIMEOUT",
+                  "timeout_ms": 30000,
+                  "message_sha256": "19040084cbe31a4758fbb11a82beae34748d066bf786284e083ceb933b6bf5bd"
+                }
+              ]
+            },
+            {
+              "file": "tests/cycle24-owner-action-verification.test.ts",
+              "id": "1346300014_0_11",
+              "duration_ms": 30408.619120999996,
+              "classes": [
+                {
+                  "class": "Error",
+                  "classification": "EXPLICIT_TEST_TIMEOUT",
+                  "timeout_ms": 30000,
+                  "message_sha256": "19040084cbe31a4758fbb11a82beae34748d066bf786284e083ceb933b6bf5bd"
+                }
+              ]
+            },
+            {
+              "file": "tests/cycle25-service-evidence-continuity.test.ts",
+              "id": "900902519_17",
+              "duration_ms": 32071.831087000028,
+              "classes": [
+                {
+                  "class": "Error",
+                  "classification": "EXPLICIT_TEST_TIMEOUT",
+                  "timeout_ms": 30000,
+                  "message_sha256": "19040084cbe31a4758fbb11a82beae34748d066bf786284e083ceb933b6bf5bd"
+                }
+              ]
+            },
+            {
+              "file": "tests/cycle31-owner-navigation-runtime.test.ts",
+              "id": "149468387_5",
+              "duration_ms": 33331.488472,
+              "classes": [
+                {
+                  "class": "Error",
+                  "classification": "EXPLICIT_TEST_TIMEOUT",
+                  "timeout_ms": 30000,
+                  "message_sha256": "19040084cbe31a4758fbb11a82beae34748d066bf786284e083ceb933b6bf5bd"
+                }
+              ]
+            }
+          ],
+          "strict_summary": "COMPLETE_BOUNDED_COHORT_RECORDED_FAILURES",
+          "config": {
+            "testTimeout": 30000,
+            "hookTimeout": 30000,
+            "maxWorkers": 4,
+            "retry": 0,
+            "shard": {
+              "index": 1,
+              "count": 1
+            }
+          },
+          "all_sources_unchanged": true
+        }
+      ],
+      "cause": "ActualPRnativeerrors; strictvalidatorcorrectlyfailsclosed. Environmentvsapplicationcausenotestablished.",
+      "limits": [
+        "PushPASS doesnotreplacePRFAIL",
+        "NotfullFoundationorcompletecurrent-sourceapplicationunion",
+        "C23independent50filegap remainsoutsidecohort"
+      ]
+    },
+    "bounded270_pr": 257,
+    "driver": "fedbd8641e16915356c82ba0eb82422538dc3f8d",
+    "push_run": 42175850111,
+    "pr_run": 42175879610,
+    "provider_zip_sha256": {
+      "push": "fce6e5a118f46def56fdb28f20b52e625ab1b46a4409f5c10bc2ffa86b024db0",
+      "pr": "f6692368bd66118ec32b1b5a9e1d0d1cbe80c3c37276c415e311f8ba49619c6e"
+    },
+    "successful_jobs_manually_repeated": false,
+    "full_foundation_pass": false
+  }
 }
