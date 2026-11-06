@@ -354,6 +354,16 @@ export function admitCycle25Source(path, current, original, supplied = {}) {
       path,
       authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
     };
+  if (
+    owners.length === 0 &&
+    cycle33V1Authors.some((a) => a.published && a.path === path)
+  ) {
+    try {
+      return admitCycle33V1Source(path, current, original, ports);
+    } catch (cause) {
+      throw new Error(`Unreviewed source replacement: ${path}`, { cause });
+    }
+  }
   if (owners.length !== 1)
     throw Error(`Unreviewed source replacement: ${path}`);
   const spec = owners[0],
@@ -1440,8 +1450,19 @@ function admitCycle31Forward(path, current, previous, ports) {
   )
     throw Error('Exact Cycle31 parent source required');
   const endpoint = Buffer.from(ports.git(spec.commit, path));
-  if (!endpoint.equals(Buffer.from(current)))
+  if (!endpoint.equals(Buffer.from(current))) {
+    if (path === 'src/lib/workflows/plan-cancellation-review.ts') {
+      try {
+        admitCycle33V1Source(path, current, endpoint, ports);
+        return result;
+      } catch (cause) {
+        throw new Error('Current source differs from fixed Cycle31 author', {
+          cause,
+        });
+      }
+    }
     throw Error('Current source differs from fixed Cycle31 author');
+  }
   return result;
 }
 export function inspectCycle31Sources({
@@ -1627,8 +1648,17 @@ export function admitCycle32Forward(
   const endpoint = Buffer.from(
     ports.git(spec.nativeCorrection?.commit ?? spec.commit, path),
   );
-  if (!endpoint.equals(Buffer.from(current)))
-    throw Error('Current source differs from fixed Cycle32 author');
+  if (!endpoint.equals(Buffer.from(current))) {
+    if (path === 'src/lib/workflows/task-correction-review.ts') {
+      try {
+        admitCycle33V1Source(path, current, endpoint, ports);
+      } catch (cause) {
+        throw new Error('Current source differs from fixed Cycle32 author', {
+          cause,
+        });
+      }
+    } else throw Error('Current source differs from fixed Cycle32 author');
+  }
   for (const added of spec.added)
     if (
       !Buffer.from(ports.read(added)).equals(
@@ -2197,8 +2227,22 @@ export function admitCycle33ExecutionSource(
   for (const p of [...spec.modified, ...spec.added])
     if (ports.mode(spec.commit, p) !== '100644')
       throw Error('Regular reviewed Cycle33 execution source required');
-  if (!Buffer.from(current).equals(Buffer.from(ports.git(spec.commit, path))))
-    throw Error('Exact current Cycle33 execution source required');
+  if (!Buffer.from(current).equals(Buffer.from(ports.git(spec.commit, path)))) {
+    if (path === 'src/lib/workflows/cost-coverage-path.ts') {
+      try {
+        admitCycle33V1Source(
+          path,
+          current,
+          ports.git(spec.commit, path),
+          ports,
+        );
+      } catch (cause) {
+        throw new Error('Exact current Cycle33 execution source required', {
+          cause,
+        });
+      }
+    } else throw Error('Exact current Cycle33 execution source required');
+  }
   for (const p of spec.added)
     if (
       !Buffer.from(ports.read(p)).equals(Buffer.from(ports.git(spec.commit, p)))
@@ -2394,4 +2438,313 @@ export function admitCycle33OwnerRequirementSource(
     business_authority: false,
     restore_adapter: false,
   };
+}
+
+// Literal reviewed V1 native successors. Build/test evidence only; never business restoration.
+export const cycle33V1Parent = '8c0286e0e70133c8e0a0e0e478e89a3a6b8ddf55';
+export const cycle33V1Authors = Object.freeze(
+  [
+    {
+      module: 'recorded-time-kind-review',
+      commit: 'ad2830e5677539ea2c4922377b7a184386e4a9e1',
+      parent: '8c0286e0e70133c8e0a0e0e478e89a3a6b8ddf55',
+      path: 'src/lib/workflows/cost-coverage-path.ts',
+      predecessor: '98e4c39f3135b0b8177e2cc50980c1814fdcb2ff',
+      predecessor_sha256:
+        '70a8d82766f4807de28410f3bafbbe4a0a649d6d208785735e039182c52dfb33',
+      sha256:
+        'aab96531cf4ed2ef731331adaa085c4c5ba21151fe626068d09cbd3c96c8243e',
+      cases: 14,
+      added: [
+        {
+          path: 'docs/program/CYCLE33_RECORDED_TIME_KIND_REVIEW.md',
+          sha256:
+            '7557ee73c0d74316aa2f3b049562625ddcf2d79bad55726e79ab8fcec8cb1284',
+        },
+        {
+          path: 'tests/cycle33-recorded-time-kind-review.test.ts',
+          sha256:
+            '0b074189feeb444a8d597962993a89bbb92dbbc764095572bf391aad26b43e0d',
+        },
+      ],
+      original_companions: [
+        {
+          path: 'tests/cycle33-execution-cost-selection.test.ts',
+          sha256:
+            '3882009f942e219c632b063edd7368082181038e23f781d5b086561c885b1b0e',
+        },
+        {
+          path: 'docs/program/CYCLE33_EXECUTION_COST_SELECTION.md',
+          sha256:
+            '5cd121198a8a0be08ebf71a1333039f945b1cf01970a938783fa8e81b41fd433',
+        },
+      ],
+      published: null,
+    },
+    {
+      module: 'published-history-filter-currentness',
+      commit: 'b4b35f5323affacbedd433684f2085f8bf8628d2',
+      parent: '8c0286e0e70133c8e0a0e0e478e89a3a6b8ddf55',
+      path: 'src/lib/workflows/published-service-navigation.ts',
+      predecessor: 'a9dd2e2844a1025adcc73ab48e16f5d0a77ba1e4',
+      predecessor_sha256:
+        '0c6fd950ee0a9362360af19b910c5401aef1d09fd09bf4678f412f7751c57dd9',
+      sha256:
+        '4ae84361f9ef34a4b64eeb11678bab2ed67f8a9f801fe9ea63d96dcf6c5d999a',
+      cases: 17,
+      added: [
+        {
+          path: 'docs/program/CYCLE33_PUBLISHED_HISTORY_FILTER_CURRENTNESS.md',
+          sha256:
+            'c97a993fb1c47b7de593ee2747ee9f39ac4bf5fdd29c7f38f7c461dc22d54b16',
+        },
+        {
+          path: 'tests/cycle33-published-history-filter-currentness.test.ts',
+          sha256:
+            '7c85d94d145c8d9b900af32e12dd48213a5e3a817c581ef67d84615ca1e805ea',
+        },
+      ],
+      original_companions: [
+        {
+          path: 'tests/cycle21-published-service-navigation.test.ts',
+          sha256:
+            '6ed2cf1d93b7be43a66b4885e6802ed04690f7e1e22f4e1a9d86e9e457355514',
+        },
+        {
+          path: 'docs/program/CYCLE21_PUBLISHED_SERVICE_NAVIGATION.md',
+          sha256:
+            '7b40fd235960e59b9feaf30dec1427d68cf9b95b9a57e51c291c2c13970149f4',
+        },
+      ],
+      published: {
+        commit: 'a9dd2e2844a1025adcc73ab48e16f5d0a77ba1e4',
+        sha256:
+          '0c6fd950ee0a9362360af19b910c5401aef1d09fd09bf4678f412f7751c57dd9',
+        blob: 'a8dc1104c110340005b70ef3e69300931ce9fb05',
+        requires_blob: true,
+      },
+    },
+    {
+      module: 'addon-job-filter-currentness',
+      commit: '99e112a7cf669dfde03fdd69dbdbce2e74ef2fd4',
+      parent: '8c0286e0e70133c8e0a0e0e478e89a3a6b8ddf55',
+      path: 'src/lib/workflows/addon-readiness-guide.ts',
+      predecessor: 'fecfcf104e7f3988a53c85a77353824edfa6f85b',
+      predecessor_sha256:
+        'b3c6d6f20aa38d00f88a9987b30117f945c341cda5c591d16d5b8f671a5b60cf',
+      sha256:
+        'f6c2be0f5a14722190c4103e606ce9b2ef168b2630147f96baf5cb4fee76036a',
+      cases: 17,
+      added: [
+        {
+          path: 'docs/program/CYCLE33_ADDON_JOB_FILTER_CURRENTNESS.md',
+          sha256:
+            '726aabac5ae058ff53ac2b0a008ed235e45b048fd6ecf6e85b1d6a93eb1bed69',
+        },
+        {
+          path: 'tests/cycle33-addon-job-filter-currentness.test.ts',
+          sha256:
+            '0df2b6dd6745617b9763b1bb62db372126120724dc9f75040764ff83c117cd22',
+        },
+      ],
+      original_companions: [
+        {
+          path: 'tests/cycle16-addon-readiness-guide.test.ts',
+          sha256:
+            '65bddd7746711e5e75d9c06f7b08a8219eb9a8acc3abf907149fb36063cd5292',
+        },
+        {
+          path: 'docs/program/CYCLE16_ADDON_READINESS_GUIDE.md',
+          sha256:
+            '16a76a96317d7dbac998a389fd9b30d34181d7d54754a45039dd5b9e91aff627',
+        },
+      ],
+      published: {
+        commit: 'fecfcf104e7f3988a53c85a77353824edfa6f85b',
+        sha256:
+          'b3c6d6f20aa38d00f88a9987b30117f945c341cda5c591d16d5b8f671a5b60cf',
+        blob: '804819c35a5429e9433bd0379eb654b0b277262f',
+        requires_blob: false,
+      },
+    },
+    {
+      module: 'maintenance-review-reference-custody',
+      commit: '2edb76df29c36328f39a19277b287c8e9b16a940',
+      parent: '8c0286e0e70133c8e0a0e0e478e89a3a6b8ddf55',
+      path: 'src/lib/workflows/plan-cancellation-review.ts',
+      predecessor: '1538060250fc34654414dac6b29621bf44fabd98',
+      predecessor_sha256:
+        '9d9b115e5dd068174e4abe604d0ae4e80eb1ebfd4106263548866130da1e8b3a',
+      sha256:
+        '9efab5226a57c15084fe726c6cc4576830dafe42db17993ceade53553f8e705d',
+      cases: 21,
+      added: [
+        {
+          path: 'docs/program/CYCLE33_MAINTENANCE_REVIEW_REFERENCE_CUSTODY.md',
+          sha256:
+            'e5a1e64827968e6b27472e2161f7ff561009ac6cc2194b33190faf16b512041e',
+        },
+        {
+          path: 'tests/cycle33-maintenance-review-reference-custody.test.ts',
+          sha256:
+            'e8a5b1be434241fbabb043c37638ca48c4b53c590bda082ef7936c83ce4553f3',
+        },
+      ],
+      original_companions: [
+        {
+          path: 'tests/cycle31-maintenance-proposal-input.test.ts',
+          sha256:
+            '15edfd41e18f8f67a074763c26977d1252bd839406888eab9651ad8bf189521e',
+        },
+        {
+          path: 'docs/program/CYCLE31_MAINTENANCE_PROPOSAL_INPUT.md',
+          sha256:
+            'd9464a37a1830968b63c5c9f066f5d675546a996b915dd3d4e53c409a4c4c060',
+        },
+      ],
+      published: null,
+    },
+    {
+      module: 'task-display-reference-custody',
+      commit: '15fabc063a74b3fce587f5dca8962428dc0b04ac',
+      parent: '8c0286e0e70133c8e0a0e0e478e89a3a6b8ddf55',
+      path: 'src/lib/workflows/task-correction-review.ts',
+      predecessor: '452d57049e60c5228718fc7647346faab7ac4409',
+      predecessor_sha256:
+        '638cb1068fbd0ea3c8697c6ff5d19c3b7adfd8446d7cbd3fe28369577021a488',
+      sha256:
+        '6ff2d36bfc6bfdeda8b552e2a25f961c23f3e90abbf20690d6618c0f95e087a2',
+      cases: 21,
+      added: [
+        {
+          path: 'docs/program/CYCLE33_TASK_DISPLAY_REFERENCE_CUSTODY.md',
+          sha256:
+            'a5ba4785b564d4b50f0495915de3ceee868b66b9aebbe5b5f7714e65b7952006',
+        },
+        {
+          path: 'tests/cycle33-task-display-reference-custody.test.ts',
+          sha256:
+            '8b0b19daa0d1005f0f3a22cc5e10eea702736a3e2470e35c980b1616a9c9de50',
+        },
+      ],
+      original_companions: [
+        {
+          path: 'docs/program/CYCLE32_TASK_INPUT_BINDING.md',
+          sha256:
+            'c2be0d391330797b8f91bb6587bfb682e61aacaac7199cecab9b976a70c59378',
+        },
+        {
+          path: 'tests/cycle32-task-input-binding.test.ts',
+          sha256:
+            'e0ae13969e30c7760d7112fe054fb036f254d7dc84a27aeb574ee75ed453a34e',
+        },
+      ],
+      published: null,
+    },
+  ].map((a) =>
+    Object.freeze({
+      ...a,
+      added: Object.freeze(a.added.map(Object.freeze)),
+      original_companions: Object.freeze(
+        a.original_companions.map(Object.freeze),
+      ),
+      published: a.published && Object.freeze(a.published),
+    }),
+  ),
+);
+
+export function admitCycle33V1Source(path, current, previous, supplied = {}) {
+  const ports = { ...cycle25SourcePorts, ...supplied },
+    owners = cycle33V1Authors.filter((a) => a.path === path),
+    hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
+  if (owners.length !== 1) throw Error('No literal reviewed V1 source owner');
+  const a = owners[0];
+  if (
+    ports.type(a.commit) !== 'commit' ||
+    ports.parent(a.commit) !== cycle33V1Parent ||
+    a.parent !== cycle33V1Parent ||
+    ports.delta(a.commit) !==
+      ['M\t' + a.path, ...a.added.map((f) => 'A\t' + f.path)]
+        .sort()
+        .join('\n') ||
+    [a.predecessor, cycle33V1Parent, a.commit].some(
+      (c) => ports.mode(c, path) !== '100644',
+    ) ||
+    ports.type(a.predecessor) !== 'commit' ||
+    a.added.some((f) => ports.mode(a.commit, f.path) !== '100644') ||
+    a.original_companions.some(
+      (f) => ports.mode(a.predecessor, f.path) !== '100644',
+    )
+  )
+    throw Error('Exact sole-parent regular V1 M1/A2 author required');
+  const old = Buffer.from(ports.git(a.predecessor, path)),
+    base = Buffer.from(ports.git(cycle33V1Parent, path)),
+    reviewed = Buffer.from(ports.git(a.commit, path));
+  if (
+    hash(old) !== a.predecessor_sha256 ||
+    !old.equals(base) ||
+    !Buffer.from(previous).equals(old)
+  )
+    throw Error('Exact immutable original V1 predecessor required');
+  if (
+    hash(reviewed) !== a.sha256 ||
+    !Buffer.from(current).equals(reviewed) ||
+    !Buffer.from(ports.read(path)).equals(reviewed)
+  )
+    throw Error('Fresh exact reviewed V1 source required');
+  for (const f of a.added) {
+    const bytes = Buffer.from(ports.git(a.commit, f.path));
+    if (
+      hash(bytes) !== f.sha256 ||
+      !Buffer.from(ports.read(f.path)).equals(bytes)
+    )
+      throw Error('Exact current reviewed V1 companion required');
+  }
+  for (const f of a.original_companions) {
+    const bytes = Buffer.from(ports.git(a.predecessor, f.path));
+    if (
+      hash(bytes) !== f.sha256 ||
+      !Buffer.from(ports.read(f.path)).equals(bytes)
+    )
+      throw Error('Exact immutable original V1 companion required');
+  }
+  if (!Buffer.from(ports.read(path)).equals(reviewed))
+    throw Error('Final fresh reviewed V1 source required');
+  return {
+    module: a.module,
+    source_commit: a.commit,
+    path,
+    authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+    business_authority: false,
+    restore_adapter: false,
+  };
+}
+export function admitCycle33V1Published(
+  file,
+  current,
+  publishedCommit,
+  supplied = {},
+) {
+  const ports = { ...cycle25SourcePorts, ...supplied },
+    a = cycle33V1Authors.find((a) => a.published && a.path === file?.path),
+    hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
+  if (
+    !a ||
+    publishedCommit !== a.published.commit ||
+    file.sha256 !== a.published.sha256 ||
+    (a.published.requires_blob
+      ? file.blob !== a.published.blob
+      : file.blob !== undefined && file.blob !== a.published.blob)
+  )
+    throw Error('Exact immutable published V1 metadata required');
+  const bytes = Buffer.from(ports.git(a.published.commit, a.path));
+  if (
+    hash(bytes) !== a.published.sha256 ||
+    createHash('sha1')
+      .update('blob ' + bytes.length + '\0')
+      .update(bytes)
+      .digest('hex') !== a.published.blob
+  )
+    throw Error('Exact immutable published V1 bytes/blob required');
+  return admitCycle33V1Source(a.path, current, bytes, ports);
 }

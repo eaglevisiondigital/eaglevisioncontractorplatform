@@ -129,23 +129,23 @@ export function filterAddonReadinessJobs(
   )
     throw Error('Exact bounded literal add-on filters required');
   const query = p.query.trim().toLocaleLowerCase('en-US');
-  return freezePrototype(
-    view.rows.filter(
-      (r) =>
-        (!p.location_id || r.location_id === p.location_id) &&
-        [
-          r.organization_id,
-          r.customer_id,
-          r.location_id,
-          r.job_id,
-          r.job_label,
-          r.customer_label,
-          r.property_label,
-          r.issued_version_id,
-          r.scope_summary,
-        ].some((value) => value.toLocaleLowerCase('en-US').includes(query)),
-    ),
+  const rows = view.rows.filter(
+    (r) =>
+      (!p.location_id || r.location_id === p.location_id) &&
+      [
+        r.organization_id,
+        r.customer_id,
+        r.location_id,
+        r.job_id,
+        r.job_label,
+        r.customer_label,
+        r.property_label,
+        r.issued_version_id,
+        r.scope_summary,
+      ].some((value) => value.toLocaleLowerCase('en-US').includes(query)),
   );
+  assertAddonReadinessJobsCurrent(view);
+  return freezePrototype(rows);
 }
 interface Binding {
   gate: JourneyAdmission;
