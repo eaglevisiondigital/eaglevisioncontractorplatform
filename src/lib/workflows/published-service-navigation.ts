@@ -164,7 +164,7 @@ export function filterPublishedServiceHistory(
   )
     throw Error('Bounded literal published-history filters required');
   const q = p.query.trim().toLocaleLowerCase('en-US');
-  return view.reports.filter((r) => {
+  const rows = view.reports.filter((r) => {
     if (p.phase && r.report.phase !== p.phase) return false;
     const reportMatch = [
       r.reference.report_id,
@@ -188,6 +188,8 @@ export function filterPublishedServiceHistory(
             ),
           );
   });
+  binding(view);
+  return rows;
 }
 export function inspectPublishedServiceReport(
   view: PublishedServiceHistory,
