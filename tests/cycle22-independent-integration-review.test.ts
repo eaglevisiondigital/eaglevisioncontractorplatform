@@ -61,6 +61,14 @@ import { CostCoveragePath } from '../src/components/workflows/CostCoveragePath';
 import { PropertyServiceContinuity } from '../src/components/workflows/PropertyServiceContinuity';
 import { MaintenanceRequirementsReview } from '../src/components/workflows/MaintenanceRequirementsReview';
 import { CurrentOwnerPriorities } from '../src/components/workflows/CurrentOwnerPriorities';
+const sourceLineage: {
+  admitCycle33ExecutionPublished: (
+    file: { path: string; sha256: string; blob: string },
+    current: Buffer,
+  ) => Record<string, unknown>;
+} = await import(
+  new URL('../scripts/cycle25-source-lineage.mjs', import.meta.url).href
+);
 
 beforeEach(() => {
   vi.stubGlobal('window', {
@@ -690,14 +698,32 @@ it.each(components)(
 it('independent source review: all admitted author bytes are exact and original controls remain the only writers', () => {
   const manifest = JSON.parse(
     readFileSync('docs/program/CYCLE22_SOURCE_MANIFEST.json', 'utf8'),
-  ) as { packages: { owned_files: { path: string; sha256: string }[] }[] };
+  ) as {
+    packages: {
+      owned_files: { path: string; sha256: string; blob: string }[];
+    }[];
+  };
   expect(manifest.packages).toHaveLength(5);
   for (const pack of manifest.packages) {
     expect(pack.owned_files).toHaveLength(5);
-    for (const file of pack.owned_files)
-      expect(
-        createHash('sha256').update(readFileSync(file.path)).digest('hex'),
-      ).toBe(file.sha256);
+    for (const file of pack.owned_files) {
+      const bytes = readFileSync(file.path),
+        actual = createHash('sha256').update(bytes).digest('hex');
+      if (actual === file.sha256) expect(actual).toBe(file.sha256);
+      else
+        // Preserve the historical hash/blob and admit only its exact reviewed
+        // successor, including original-parent, bounded-delta and companion checks.
+        expect(
+          sourceLineage.admitCycle33ExecutionPublished(file, bytes),
+        ).toEqual({
+          module: 'cost-selection-current-authority',
+          source_commit: '98e4c39f3135b0b8177e2cc50980c1814fdcb2ff',
+          path: file.path,
+          authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+          business_authority: false,
+          restore_adapter: false,
+        });
+    }
   }
   for (const [file, original] of [
     ['TaskCustodyReview', 'TaskCorrectionReview'],

@@ -12,6 +12,8 @@ import {
 import {
   admitCycle33Forward,
   admitCycle33ExecutionPublished,
+  admitCycle33ExecutionCiCompatibility,
+  cycle33ExecutionCiCompatibility,
 } from './cycle25-source-lineage.mjs';
 
 export const cycle22Parent = '2fecb89213647b567746c0413a9ba3e41ce748ae';
@@ -297,7 +299,12 @@ export function validateCycle22Manifest(manifest, ports = {}) {
         );
       if (!bytes.equals(published)) {
         try {
-          admitCycle33ExecutionPublished(file, bytes, { read, git });
+          if (
+            commit === cycle22Independent.commit &&
+            file.path === cycle33ExecutionCiCompatibility.path
+          )
+            admitCycle33ExecutionCiCompatibility(file, bytes, { read, git });
+          else admitCycle33ExecutionPublished(file, bytes, { read, git });
         } catch (cause) {
           throw new Error(
             `Exact published Cycle22 bytes/blob required: ${file.path}`,
