@@ -70,6 +70,9 @@ export function parseOfflineSourceProtocol(
   }
   if (!/^[a-f0-9]{64}$/.test(String(source.source_sha256)))
     throw Error('Exact source digest required');
+  // Discard the clone: executable proxies are not ordinary proposal data.
+  // The original references and their live native guards remain authoritative.
+  structuredClone(value);
   return {
     mode: 'OFFLINE_SOURCE_ADMISSION_V1',
     external_reference: p.external_reference,
