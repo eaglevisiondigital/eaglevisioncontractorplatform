@@ -10,6 +10,7 @@ import { validateCycle21PublishedSource } from './check-cycle21.mjs';
 import {
   admitCycle33Forward,
   admitCycle33ExecutionPublished,
+  admitCycle33V1Published,
 } from './cycle25-source-lineage.mjs';
 
 export const cycle23Parent = '3e35fb29dd4488bf655446712e5a013e06f8ed1e';
@@ -202,6 +203,52 @@ export function validateCycle23Manifest(manifest, ports = {}) {
           continue;
         } catch {
           /* Unknown edits retain the original denial below. */
+        }
+        if (
+          path === 'docs/program/CYCLE16_DELIVERY_INDEX.json' &&
+          p.head_commit === 'fecfcf104e7f3988a53c85a77353824edfa6f85b' &&
+          file.path === 'src/lib/workflows/addon-readiness-guide.ts'
+        ) {
+          try {
+            const admitted = admitCycle33V1Published(
+              file,
+              bytes,
+              p.head_commit,
+              { read, git },
+            );
+            if (
+              admitted.source_commit !==
+              '99e112a7cf669dfde03fdd69dbdbce2e74ef2fd4'
+            )
+              throw Error('Exact reviewed V1 add-on source required');
+            continue;
+          } catch {
+            /* Preserve the original retained-source denial below. */
+          }
+        }
+        if (
+          path === 'docs/program/CYCLE21_SOURCE_MANIFEST.json' &&
+          p.head_commit === 'a9dd2e2844a1025adcc73ab48e16f5d0a77ba1e4' &&
+          file.path === 'src/lib/workflows/published-service-navigation.ts'
+        ) {
+          try {
+            const admitted = admitCycle33V1Published(
+              file,
+              bytes,
+              p.head_commit,
+              { read, git },
+            );
+            if (
+              admitted.source_commit !==
+              'b4b35f5323affacbedd433684f2085f8bf8628d2'
+            )
+              throw Error(
+                'Exact reviewed V1 published service source required',
+              );
+            continue;
+          } catch {
+            /* Preserve the original retained-source denial below. */
+          }
         }
         if (
           path === 'docs/program/CYCLE21_SOURCE_MANIFEST.json' &&
