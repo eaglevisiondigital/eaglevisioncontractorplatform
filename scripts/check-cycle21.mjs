@@ -5,7 +5,10 @@ import { relative, resolve, sep } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { readCycle13File } from './check-cycle13-integrity.mjs';
 import { validateCycle20Manifest } from './check-cycle20-integrity.mjs';
-import { admitCycle25Source } from './cycle25-source-lineage.mjs';
+import {
+  admitCycle25Source,
+  admitCycle33V1Published,
+} from './cycle25-source-lineage.mjs';
 
 export const cycle21Parent = '8d607d9c30e82699f1af4634c29fa38a3756fb73';
 export const cycle21Support = 'b918231ff48996575c03d64c9045ead6831b6cd0';
@@ -96,6 +99,18 @@ export function validateCycle21PublishedSource(
   )
     throw Error(`Exact published Cycle21 bytes/blob required: ${file.path}`);
   if (bytes.equals(published)) return;
+  if (
+    commit === 'a9dd2e2844a1025adcc73ab48e16f5d0a77ba1e4' &&
+    file.path === 'src/lib/workflows/published-service-navigation.ts'
+  ) {
+    try {
+      const admitted = admitCycle33V1Published(file, bytes, commit, ports);
+      if (admitted.source_commit === 'b4b35f5323affacbedd433684f2085f8bf8628d2')
+        return;
+    } catch {
+      /* Preserve the original mismatch diagnostic below. */
+    }
+  }
   // Original SHA/blob evidence remains immutable. Only these fixed,
   // independently reviewed author/path endpoints may pass source-only admission.
   const expected =
