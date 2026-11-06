@@ -580,5 +580,44 @@
       "reviewer": "/root/cycle25_finance_intelligence_resume",
       "sha256": "07aac98c1e830fb965c764c944c53b3a6843356238db3db414103cc9a7468b7f"
     }
+  },
+  "reconciliation_266": {
+    "parent_commit": "2b8406d10b96ffa7f06a8ef5ae1835538b313d30",
+    "branch": "codex/cycle33-ci-reconciliation-next",
+    "source_scope": "ONE_EXISTING_CI_TEST_ONLY_NO_NATIVE_CHANGES",
+    "modified_path": "tests/program/cycle22-ci-delta-review.test.ts",
+    "modified_sha256": "6648907ce27c8b5643d9fa5d90b4e36521d57aef16c2e8e765bf285946701ed4",
+    "original_test_hash": "63659d2de04bc6aa09958c9e7109ec9a1ce2018cad817c6875bef75e7abeef77",
+    "historical_manifest_record_and_current649_bytes": "UNCHANGED",
+    "helpers_workflows_deps_budgets": "UNCHANGED",
+    "source_authority": "EXISTING_LITERAL649_ADMISSION_PLUS_ACTUAL_ORIGINAL_PUBLISHED_B8E_BYTES; NO_NEW_ADMISSION_OR_BUSINESS_AUTHORITY",
+    "local_failed_case_only": {
+      "passed": 1,
+      "failed": 0,
+      "filtered": 12,
+      "sha256": "0e2c00cb9dbeed418a589255d5b9aae6571d9d551345ce04e3e08a72f13d206f"
+    },
+    "current_head_ci": "NOT_INHERITED_FROM_265_OR266",
+    "business_authority": false,
+    "restore_adapter": false,
+    "test_only_author_commit": "a3441c489a1378dbfd9fdc4a555684639a0b5f90",
+    "test_only_author_parent": "2b8406d10b96ffa7f06a8ef5ae1835538b313d30",
+    "independent_test_review_sha256": "6059a775304bac83fbcfef1b0d41f07d56bb007c3aaca7b115e8e2d2eda10055",
+    "independent_reviewer": "/root/cycle30_field_growth",
+    "local_quality": {
+      "strict_types": "PASS",
+      "scoped_lint": "PASS",
+      "test_format": "PASS",
+      "other_successful_cases_manually_rerun": false,
+      "full_format": "PASS",
+      "feature_inventory": "PASS_25_RECORDS_1419_SOURCES_5_LOCKS_13_BINDINGS",
+      "cycle24_source_integrity": "PASS_523_AUTHOR_FILES_128_PROTECTED_5_LOCKS_13_BINDINGS"
+    },
+    "independent_candidate_review": {
+      "complete_ci_candidate_sha256": "493362d5f69e68f3299fc2fc79f1a28d0466985e4cd4dc26e6e623bed023465e",
+      "official_reference_append_sha256": "22d20c3c1d11912acf47411d6ed0fe5c74b649404f68925a832598f76fb87d79",
+      "reviewer": "/root/cycle30_field_growth",
+      "verdict": "CLEAR_SOURCE_REVIEW_NOT_HOSTED_ACCEPTANCE"
+    }
   }
 }

@@ -1,3 +1,18 @@
+# Current CI reconciliation · preserved integration and one strict test correction
+
+Exact265 remains24PASS/2FAIL/7CANCELLED; exact266 remains7PASS/1FAIL/5CANCELLED.
+Verified265 combined integration/browser captures stay preserved.266's C19 correction
+has actual313application/12native/3OFF PASS; C22application300PASS. Its subsequent
+59case CI-delta scope has58PASS/1historical/current-test-hashFAIL, reproduced and
+corrected locally with original historical bytes plus mandatory exact649 admission.
+No protected pins, helper/workflow/dependency/budget or native-source changes in the
+bounded CI child. All original failures/cancellations and missing coverage remain
+separate in [the exact ledger](docs/program/CYCLE33_CI_CLOSEOUT.json). Independent
+native development stays on a separate branch, without silently promoting it.
+D1 offers proposed responsibilities only; eleven people UNASSIGNED,A01–A12 NOT_RUN.
+Main synthetic network-loss PASS preserved; duplicateUNKNOWN/private folders intact.
+Release1.0 NOT READY / NOT AUTHORIZED; all existing gates persist.
+
 # Cycle33 follow-up · CI compatibility and exact local proof
 
 Combined draft265 at exact `eec71f86a39d58d6019b4af196b040f9269ae96d` has a later

@@ -46,6 +46,60 @@ The original eight operational families/R01–R19 remain the acceptance boundari
 Local source authors, device availability, synthetic receipts and passing CI do
 not assign an operational owner or satisfy a genuine acceptance case.
 
+## Proposed D1 accountability allocations · owner decision required
+
+These allocations propose accountable functions, not people, permissions or an
+operational implementation. Every actual person remains **UNASSIGNED** in the
+original structured register. The owner must accept or amend each responsibility,
+name its accountable person and delegate, and approve the separation of duties.
+A developer, reviewer, device holder or synthetic fixture is never appointed by
+this table. Private target/person/contact details belong in the private owner record.
+
+| Existing role                                | Proposed accountable function and explicit decision                                                 | Required evidence/independence before D2–D3 review                                                                                                    | Actual person |
+| -------------------------------------------- | --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| Business/source owner                        | Business operations lead selects the one permitted internal customer-request scope and safe content | Exact canonical company/customer/property/source/version/publication; no inferred request/job relationship; A01/A04                                   | UNASSIGNED    |
+| Auth/security owner                          | Security administrator owns genuine session assurance, MFA and current tenant authorization         | Current customer mapping/session and staff AAL2/membership; revocation after waits and before ACK/read; A02/A03/A09                                   | UNASSIGNED    |
+| Admission operator                           | Original admission service operator owns the registrar commit boundary                              | Complete participating-writer inventory and exact original command identity; no browser-supplied authority; A04/A05/A07                               | UNASSIGNED    |
+| One-use claim custodian                      | Independent issuer operator owns the separately committed original claim                            | Separation from ordinary consumer custody, finite one-use capability, backend/full-XID binding and no replacement after UNKNOWN; A05/A07/A08          | UNASSIGNED    |
+| Canonical transaction operator               | Canonical request writer owner owns atomic request/receipt commit                                   | Actual authoritative record owner, every consumer writer and rollback/savepoint/concurrency behavior; A05/A07                                         | UNASSIGNED    |
+| Receipt/ACK operator                         | Receipt integrity owner owns immutable receipt and independently durable acknowledgment             | ACK cannot precede durable commit/custody; current authorization at final boundary; lost ACK remains UNKNOWN; A05/A06/A08                             | UNASSIGNED    |
+| Reconciliation/staff-read operator           | Authorized internal service lead owns exact receipt reads and customer-safe staff projection        | Original IDs/receipt only, current tenant authorization, absence never permits replay/rebind/new ID; A08/A09                                          | UNASSIGNED    |
+| DBA/privilege owner                          | Reviewed database operator owns all effective and bypass writers/permissions                        | Object/column/default grants, RLS/composite tenant constraints, definer/helper/core/installer/raw/admin paths; no unclassified writer; A03/A07/A10    | UNASSIGNED    |
+| Independent fence custodian                  | Separate custody operator owns rollback-independent spent authority and revocation epoch            | Independence from the primary DB/disk restore; all writers quarantine on missing/mismatched fence; A07/A10/A11                                        | UNASSIGNED    |
+| Backup/key custodian and recovery supervisor | Named recovery owner owns one matched backup/key/custody set and supervised containment             | Matching timeline/LSN/schema/source revisions/receipt watermark/object versions/fence epoch, protected key references and current revocation; A10/A11 | UNASSIGNED    |
+| Independent reviewer                         | Reviewer independent of the proposed writers/custodians owns acceptance evidence review             | Verify the actual target/candidate and all A01–A12 evidence; source review or synthetic PASS cannot approve itself or grant release                   | UNASSIGNED    |
+
+Documentation-only prerequisite check, November6: current-session evidence remains
+necessary ([session documentation](https://supabase.com/docs/guides/auth/sessions));
+privileges and row policies require separate evidence
+([RLS/grants documentation](https://supabase.com/docs/guides/database/postgres/row-level-security)).
+Matched recovery must include separate object/key custody; database backup metadata
+alone is insufficient ([backup scope](https://supabase.com/docs/guides/platform/backups)).
+These public references support the existing requirements, not installed-target
+acceptance. No Supabase API, CLI, credential, query, schema or recovery action occurs.
+
+D1's next owner response must name all eleven people/delegates, identify permitted
+and prohibited role combinations, choose one exact private internal target and
+account for every actual installed writer. The reviewer must be independent of the
+writing/custody decisions they assess; original admission/issuer/consumer separation
+and external fence independence cannot be collapsed by a convenience assignment.
+Missing or disputed assignments keep D1 unresolved. No duplicate P1 approval is sought.
+
+D2 review then requires those named owners to sign off on the existing three commit
+boundaries (registrar, independent issuer, canonical request plus receipt), final
+current-session checks, durable ACK and exact UNKNOWN reconciliation. D3 separately
+requires the named fence/backup/key/recovery owners to select a matched recovery set,
+writer quarantine, revocation guarantees and measurable RPO/RTO/cleanup evidence.
+Only after those decisions may a smallest-slice implementation proposal be reviewed
+for its own action-specific authorization. No schema, credentials, grants, adapter,
+hosted test or operational restoration is authorized by these proposals.
+
+All **A01–A12 remain NOT_RUN**. The owner-witnessed November4 main synthetic
+network-loss PASS remains distinct from engineer witness, full seven-case R0 and
+genuine hosted recovery. The duplicate attempt remains UNKNOWN/UNVERIFIED; both
+private directories and consumed-attempt custody are untouched. No fresh result,
+readiness or durability is inferred from an older device-availability statement.
+
 ## D1 · choose people, exact scope and installed writers
 
 The owner must name real accountable people and agree separation of duties for the

@@ -41,6 +41,14 @@ const history: {
 } = await import(
   new URL('../../scripts/test-git-history.mjs', import.meta.url).href
 );
+const sourceCompatibility: {
+  admitCycle33ExecutionCiCompatibility: (
+    file: { path: string; sha256: string; blob: string },
+    current: Buffer,
+  ) => Record<string, unknown>;
+} = await import(
+  new URL('../../scripts/cycle25-source-lineage.mjs', import.meta.url).href
+);
 
 const fixtureRoots: string[] = [];
 beforeEach(() => {
@@ -265,9 +273,43 @@ it('independent memo precondition denies current membership revocation without r
 });
 
 it('independent original fifty-case record and test remain exact rather than being overwritten by the CI delta review', () => {
+  const path = 'tests/cycle22-independent-integration-review.test.ts',
+    manifest = JSON.parse(
+      readFileSync('docs/program/CYCLE22_SOURCE_MANIFEST.json', 'utf8'),
+    ) as {
+      independent_files: { path: string; sha256: string; blob: string }[];
+    },
+    file = manifest.independent_files.find((entry) => entry.path === path);
+  expect(file).toEqual({
+    path,
+    sha256: '49fa5cf5d861c39518d8ffb26bf00d46f0c935a4fec6768dd15dcc323a35602b',
+    blob: '7c1d67d95fe772a1d17070cc2e90a281c65988ab',
+  });
+  // Preserve the actual original evidence bytes and independently require the
+  // exact reviewed test successor; neither historical metadata nor current
+  // source is replaced, normalized or admitted by an arbitrary hash list.
   expect(
-    sha(readFileSync('tests/cycle22-independent-integration-review.test.ts')),
+    sha(
+      execFileSync('git', [
+        '--no-replace-objects',
+        'show',
+        `b8e0cade3ae7de9773ce11cc0ab2cbae5274cd69:${path}`,
+      ]),
+    ),
   ).toBe('49fa5cf5d861c39518d8ffb26bf00d46f0c935a4fec6768dd15dcc323a35602b');
+  expect(
+    sourceCompatibility.admitCycle33ExecutionCiCompatibility(
+      file!,
+      readFileSync(path),
+    ),
+  ).toEqual({
+    module: 'cycle22-independent-review-test-compatibility',
+    source_commit: '649c2399fa954fdc50a1c6a1eab592c0f5b0ae18',
+    path,
+    authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+    business_authority: false,
+    restore_adapter: false,
+  });
   expect(
     sha(readFileSync('docs/program/CYCLE22_INDEPENDENT_REVIEW.json')),
   ).toBe('dcc7ee4e599ffa31bbc40005fb248780a051c67668ae10ab0fe7f22217a3d079');
