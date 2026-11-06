@@ -289,12 +289,21 @@ export async function reconcilePlanCancellationReview(
   }
 }
 export function planCancellationFacts(review: PlanCancellationReview) {
-  assertPlanCancellationCurrent(review);
+  // Capture caller-owned references before the original current/consent guards.
+  // Keep the original opaque handles; no caller read follows those guards.
+  const current = prototypeFields(review, [
+    'view',
+    'saved',
+    'desk',
+    'purpose',
+    'gate',
+  ]) as unknown as PlanCancellationReview;
+  assertPlanCancellationCurrent(current);
   return freezePrototype({
-    identity: review.view.identity,
-    purpose: review.purpose,
-    plans: review.saved.evidence.plans,
-    rows: review.desk.rows.map((row) => ({
+    identity: current.view.identity,
+    purpose: current.purpose,
+    plans: current.saved.evidence.plans,
+    rows: current.desk.rows.map((row) => ({
       key: row.key,
       due_on: row.recorded_due_on,
       context: row.context,
