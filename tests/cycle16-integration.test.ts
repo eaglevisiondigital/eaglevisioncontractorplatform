@@ -63,6 +63,15 @@ import { AddonReadinessGuide } from '../src/components/workflows/AddonReadinessG
 import { SharedRecordSearch } from '../src/components/workflows/SharedRecordSearch';
 import { cycle14ContinuityGroups } from '../src/components/workflows/OperatingCenterCycleFourteen';
 import { cycle16DailyGroups } from '../src/components/workflows/OperatingCenterCycleSixteen';
+const sourceLineage: {
+  admitCycle33V1Published: (
+    file: { path: string; sha256: string },
+    current: Buffer,
+    publishedCommit: string,
+  ) => Record<string, unknown>;
+} = await import(
+  new URL('../scripts/cycle25-source-lineage.mjs', import.meta.url).href
+);
 
 // Independent consumers compose actual retained readers. Setup alone creates the
 // existing disposable fixtures; no mocked business records or parallel engines.
@@ -562,9 +571,33 @@ it('the combined candidate contains the exact thirty disjoint author blobs recor
     expect(p.owned_files).toHaveLength(5);
     for (const f of p.owned_files) {
       expect(paths.has(f.path)).toBe(false);
-      expect(
-        createHash('sha256').update(readFileSync(f.path)).digest('hex'),
-      ).toBe(f.sha256);
+      const bytes = readFileSync(f.path),
+        actual = createHash('sha256').update(bytes).digest('hex');
+      if (actual === f.sha256) expect(actual).toBe(f.sha256);
+      else {
+        // Keep the original index and source proof; only this exact reviewed
+        // successor may differ, with its original bytes and companions checked.
+        expect({
+          path: f.path,
+          publishedCommit: p.head_commit,
+          sha256: f.sha256,
+        }).toEqual({
+          path: 'src/lib/workflows/addon-readiness-guide.ts',
+          publishedCommit: 'fecfcf104e7f3988a53c85a77353824edfa6f85b',
+          sha256:
+            'b3c6d6f20aa38d00f88a9987b30117f945c341cda5c591d16d5b8f671a5b60cf',
+        });
+        expect(
+          sourceLineage.admitCycle33V1Published(f, bytes, p.head_commit),
+        ).toEqual({
+          module: 'addon-job-filter-currentness',
+          source_commit: '99e112a7cf669dfde03fdd69dbdbce2e74ef2fd4',
+          path: f.path,
+          authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+          business_authority: false,
+          restore_adapter: false,
+        });
+      }
       paths.add(f.path);
     }
   }

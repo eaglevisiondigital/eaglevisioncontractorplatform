@@ -981,5 +981,102 @@
       "operational_acceptance": "A01_A12_NOT_RUN",
       "release": "NOT_READY_NOT_AUTHORIZED"
     }
+  },
+  "c16_test_successor_correction": {
+    "base_pr": 274,
+    "base_commit": "3660a7e6e3d260f0cef54200f723074278f155d7",
+    "branch": "codex/cycle33-v1-c16-test-compat",
+    "test_only_author": "8e634b247e09ee589d3a797f5fbfb4651c7146e5",
+    "author_delta": "M1_ONLY_REGULAR_EXISTING_C16_TEST",
+    "path": "tests/cycle16-integration.test.ts",
+    "current_sha256": "4390f6bf0595f4cd7b34bba2d2364fba80748e0227a36dc28dd897f417e53fd5",
+    "current_blob": "0ce51ed8d35be7406f044896a6b89fa10d15cd39",
+    "actual_original_publisher": "d62aa76ae03d64863c12dc92ce6f030e37974518",
+    "original_sha256": "e92bf92bf96a87b7005ab715406ae424e2f2ccb4ec28da45a3cfc14412f4b247",
+    "original_blob": "f5ba8b49ff15520dc6170fac1e2984d6f80b382d",
+    "unchanged_index_sha256": "8cf7783a93dfb523b175bc793813ea28c3ab4dacbadc45453e09317d7da045be",
+    "historical_review_field": "9b73bdf733dec476a6ce7899ffd48d6a61140e8b",
+    "historical_review_field_is_not_test_publisher": true,
+    "source_proof": "ORIGINAL_30_DISJOINT_PROOFS_PLUS_ONLY_LITERAL_FECFC_ADDON_TO_99E_SUCCESSOR; NO_PIN_UPDATE",
+    "hosted_failures_preserved": [
+      {
+        "pr": 272,
+        "head": "841434d09524b6d6725aa2c7afc60a3a36cff24b",
+        "run": 42251295981,
+        "passed": 439,
+        "failed": 1
+      },
+      {
+        "pr": 274,
+        "head": "3660a7e6e3d260f0cef54200f723074278f155d7",
+        "run": 42252403420,
+        "passed": 439,
+        "failed": 1
+      }
+    ],
+    "local_case_red": {
+      "file": "parent-red.json",
+      "sha256": "7b7b84de8bbfd9fc9c1a5a857978511ff0da4ef8b40909ae53dca37679c8219c",
+      "total": 36,
+      "passed": 0,
+      "failed": 1,
+      "filtered": 35,
+      "failure_suites": 1
+    },
+    "local_case_green": {
+      "file": "corrected-green.json",
+      "sha256": "571fbff80b4b5c737fd0f4503b82e0fd8bc73df7659e5a8b042a1f6e53c8bf64",
+      "total": 36,
+      "passed": 1,
+      "failed": 0,
+      "filtered": 35,
+      "failure_suites": 0
+    },
+    "new_guard_collection": {
+      "passed": 36,
+      "failed": 0,
+      "skipped": 0,
+      "json_sha256": "7a267b7a6d0d7a41586040d490225614e7f261d7ce03774a1a22e620e8cdc1c4"
+    },
+    "support_sha256": {
+      "scripts/cycle25-source-lineage.mjs": "d73986090ac83b9e5ef271afcade503ae12b198c54ba5265cc2a1c32ada1a259",
+      "scripts/check-cycle16-integrity.mjs": "7658883cd394a1833e2a4ad17ea089ed6dbda5f88c209ce96797d79ac55fc619",
+      ".github/workflows/cycle16-integration.yml": "a04ea634e848b2c2234b5a372f08721ded1aac349176037be32b324153a97bd6",
+      "tests/cycle33-v1-c16-test-compatibility.test.ts": "ecd9dadb4e15839db9a4e4db9ee8c49938a7e5f96cfab82d91558484a357f861"
+    },
+    "actual_agents": {
+      "test_and_guard_tests": "/root/cycle25_finance_intelligence_resume",
+      "support_workflow_registers": "/root",
+      "independent_test_and_support_review": "/root/cycle33_independent_review",
+      "independent_combined_review": "/root/v1_independent_combined_review"
+    },
+    "test_review_sha256": "4c4b10ddb2f93f986deceb14a323d9c5f032b7a40096e7c7adf25162742cc4e1",
+    "support_review_sha256": "1327d35908ce44fa63677c12e542dbdbb376fef12bb95b0a2746ca105c5f07c3",
+    "current_head_ci": "PENDING_OWN_EXACT_HEAD_NO_INHERITED_PASS",
+    "runtime_changes": false,
+    "operational_acceptance": false,
+    "release": "NOT_READY_NOT_AUTHORIZED",
+    "parent_push_observation": {
+      "pr": 274,
+      "head": "3660a7e6e3d260f0cef54200f723074278f155d7",
+      "tree": "b68a68442e7932142c37a746c679c2f00736c6a2",
+      "run": 42252393748,
+      "event": "push",
+      "conclusion": "success",
+      "artifact_sha256": "20e5e6dc774d2b4cadc0304645807e7f31d0e444a63ffc748fb0be9d62a7cbfa",
+      "unique_application_cases": 687,
+      "application_files": 26,
+      "application_reports": 10,
+      "native_browser": 9,
+      "production_off": 3,
+      "png_source_pairs": 63,
+      "keyboard_trusted_events": 369,
+      "before_final_admissions": 13,
+      "before_final_file_hashes": 68,
+      "unchanged": true,
+      "full_foundation_pass": false,
+      "root_artifact_audit_sha256": "6b4cbbb8cc094b43fe6b50f5d137b826a21cda5e9891259d8d06b0c8e701c55d",
+      "inherited_by_this_draft": false
+    }
   }
 }

@@ -2748,3 +2748,80 @@ export function admitCycle33V1Published(
     throw Error('Exact immutable published V1 bytes/blob required');
   return admitCycle33V1Source(a.path, current, bytes, ports);
 }
+
+// One independently reviewed test-only successor. The historical C16 index,
+// publisher bytes and source pins remain immutable; this grants no runtime power.
+export const cycle33V1C16TestCompatibility = Object.freeze({
+  commit: '8e634b247e09ee589d3a797f5fbfb4651c7146e5',
+  parent: '3660a7e6e3d260f0cef54200f723074278f155d7',
+  published: 'd62aa76ae03d64863c12dc92ce6f030e37974518',
+  path: 'tests/cycle16-integration.test.ts',
+  sha256: '4390f6bf0595f4cd7b34bba2d2364fba80748e0227a36dc28dd897f417e53fd5',
+  blob: '0ce51ed8d35be7406f044896a6b89fa10d15cd39',
+  published_sha256:
+    'e92bf92bf96a87b7005ab715406ae424e2f2ccb4ec28da45a3cfc14412f4b247',
+  published_blob: 'f5ba8b49ff15520dc6170fac1e2984d6f80b382d',
+  index: 'docs/program/CYCLE16_DELIVERY_INDEX.json',
+  index_sha256:
+    '8cf7783a93dfb523b175bc793813ea28c3ab4dacbadc45453e09317d7da045be',
+});
+export function admitCycle33V1C16TestCompatibility(
+  file,
+  current,
+  supplied = {},
+) {
+  const ports = { ...cycle25SourcePorts, ...supplied },
+    fixed = cycle33V1C16TestCompatibility,
+    hash = (bytes) => createHash('sha256').update(bytes).digest('hex'),
+    blob = (bytes) =>
+      createHash('sha1')
+        .update(`blob ${bytes.length}\0`)
+        .update(bytes)
+        .digest('hex');
+  if (file?.path !== fixed.path || file.sha256 !== fixed.published_sha256)
+    throw Error('Exact historical Cycle16 independent test metadata required');
+  if (
+    [fixed.published, fixed.parent, fixed.commit].some(
+      (commit) => ports.type(commit) !== 'commit',
+    ) ||
+    ports.parent(fixed.commit) !== fixed.parent ||
+    ports.delta(fixed.commit) !== `M\t${fixed.path}` ||
+    [fixed.published, fixed.parent, fixed.commit].some(
+      (commit) => ports.mode(commit, fixed.path) !== '100644',
+    ) ||
+    ports.mode(fixed.parent, fixed.index) !== '100644'
+  )
+    throw Error(
+      'Exact sole-parent regular Cycle16 test-only correction required',
+    );
+  const published = Buffer.from(ports.git(fixed.published, fixed.path)),
+    original = Buffer.from(ports.git(fixed.parent, fixed.path)),
+    reviewed = Buffer.from(ports.git(fixed.commit, fixed.path)),
+    index = Buffer.from(ports.git(fixed.parent, fixed.index));
+  if (
+    hash(published) !== fixed.published_sha256 ||
+    blob(published) !== fixed.published_blob ||
+    !original.equals(published)
+  )
+    throw Error('Immutable original Cycle16 independent test bytes required');
+  if (
+    hash(index) !== fixed.index_sha256 ||
+    !Buffer.from(ports.read(fixed.index)).equals(index)
+  )
+    throw Error('Exact unchanged historical Cycle16 index required');
+  if (
+    hash(reviewed) !== fixed.sha256 ||
+    blob(reviewed) !== fixed.blob ||
+    !Buffer.from(current).equals(reviewed) ||
+    !Buffer.from(ports.read(fixed.path)).equals(reviewed)
+  )
+    throw Error('Fresh exact reviewed Cycle16 test correction required');
+  return {
+    module: 'cycle16-independent-review-test-compatibility',
+    source_commit: fixed.commit,
+    path: fixed.path,
+    authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+    business_authority: false,
+    restore_adapter: false,
+  };
+}

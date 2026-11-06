@@ -2071,3 +2071,31 @@ folders are preserved. Full R0/hosted recovery, original P1-on13/customer14/4B,
 Auth/MFA/NMI/Netlify/design/production gates remain open. No merges, deployments,
 hosted mutations, restoration, payments, communications or dispatch.
 Release1.0 remains NOT READY / NOT AUTHORIZED.
+
+## C16 exact test-successor draft · no historical pin updates
+
+Separate branch `codex/cycle33-v1-c16-test-compat` starts at unchanged Main274
+`3660a7e6e3d260f0cef54200f723074278f155d7`. Actual C16 runs on Main274 and
+Advanced272 each retain439PASS/1FAIL: the sole raw-hash assertion rejects the
+reviewed99e add-on successor. Source preflight passed; this is not a timeout.
+
+Independently reviewed M1 test author `8e634b247e09ee589d3a797f5fbfb4651c7146e5`
+preserves original36 identities/30-source checks and all historical pins. Only
+the literal original add-on tuple uses strict original/successor proof. Exact
+test-author admission binds original d62 bytes, sole3660 parent, M1 delta, new
+bytes, unchanged index and fresh reads. Local failed case1RED→1GREEN/35filtered
+and new guard36PASS remain scoped; original439 successes were not manually rerun.
+New-head C16/Foundation/browser acceptance remains separate and pending.
+
+See the [exact correction and remaining coverage](docs/program/CYCLE33_C16_TEST_SUCCESSOR_REVIEW.md).
+Main/feature drafts and original histories remain unchanged. All eleven D1 roles
+remain UNASSIGNED; D2/D3 separate and A01–A12NOT_RUN. Preserve main physical
+network-loss owner PASS only, duplicate UNKNOWN and both private folders. No hosted,
+financial, message, dispatch, restore, deployment or merge action.
+**Release1.0 NOT READY / NOT AUTHORIZED.**
+
+Exact Main274 push run `42252393748` subsequently passed687 application cases,
+9 responsive journeys,3OFF and63 screenshot/source pairs at unchanged3660 head.
+Downloaded artifact/source audit is recorded in the separate correction review;
+this does not close Foundation, the original C16 failures or two270 browser gaps,
+and is not inherited by the new correction head.
