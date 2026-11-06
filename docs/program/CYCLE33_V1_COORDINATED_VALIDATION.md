@@ -215,3 +215,142 @@ This is source verification, not operational or full Foundation acceptance.
 No successful old job was manually restarted. Original45minute cancellations,
 270conflict, failed first-head preflights and downstream SKIPPED coverage remain.
 All release/recovery/owner-decision restrictions remain unchanged.
+
+## Current-source follow-up · three sole6bf native authors
+
+This is a new bounded descendant of PR275 `6bf1f2be786e6d9c052d87e5f759a4312782be70`,
+not a rewrite of267/268/269–275. Exact M1/A2 source authors and all new path hashes
+are appended to the existing source manifest. No original pin is replaced.
+
+- Finance `/root/cycle25_finance_intelligence_resume`: `5986df744d688d7ab2e72a7824b18e4568d1cb92`,
+  captured kind/ID now reaches the unchanged inner canonical reader. Parent3FAIL,
+  corrected22PASS; actual ordinary facts/costs stay unchanged and invoice readiness
+  remains NO_GO where evidence is missing. Peer reviewer `/root/v1_independent_combined_review`.
+- Customer `/root/v1_independent_combined_review`: `8c6334db676f214bc7abe1a4eeae70e9b547534a`,
+  two existing currentness checks close input-capture revocation windows before
+  callback invocation and success. Parent6FAIL, corrected29PASS. Root and Finance
+  independently reviewed the runtime/tests; Finance also verified final precise
+  custody wording. No customer acceptance or operational navigation is inferred.
+- Field `/root/cycle33_independent_review`: `bd2e50e8f5dd972c9b2c9a29186e36fcc05dee53`,
+  original review refs/source ID/inert comparison precede native await; unchanged
+  native read and existing final currentness/hold fence follow. Parent3FAIL,
+  corrected30PASS. Root and Finance independently reviewed the exact function-only
+  delta. This fixes read-currentness, not command admission, replay or durable custody.
+- Main `/root` composes original Git bytes and owns build-only support, workflow,
+  source manifest and acceptance records. The fresh reviewer independently checks
+  the combined actual tree, except their own Customer code which Root/Finance review.
+  The combined test is independently authored and separately reviewed by Root.
+- Growth/Intelligence/Advanced/Offline source audits are NO_CHANGE. Existing canonical
+  engines, consent/revocation, current-source navigation, UNKNOWN and denied replay
+  remain intact. No forced new module, store, preview or business approval is added.
+
+The81 focused local native passes are three separate runs. They cover all three
+brands and include current authorization, stale/foreign/copied sources, default-OFF
+and UNKNOWN/no-replay boundaries; they do not imply a new responsive browser or
+full Foundation pass. Field test coverage distinguishes avoided hostile getter
+reads from genuinely executed native revocation. Private author and peer proof
+hashes remain in the corresponding source-only documents and retained private logs.
+
+The new finite source guard preserves old source profiles and legacy result shapes.
+It admits only the three exact sole6bf M1/A2 bundles with unchanged original source,
+regular Git modes, exact author delta/hash, old/new companion bytes, current reads
+and final native reread. Customer/Field include both prior author additions and
+older original companions. Literal C23/C24 Finance consumers keep original publisher
+SHA/blob metadata and unknown-source denial. This is source admission only, never
+business restoration or an operational writer. Old109/3 tests retain every case
+and assertion; only their current-source selection recognizes an exact admitted
+successor while retaining unchanged historical source metadata. New tests separately
+verify the actual new authors and original legacy results.
+
+### Separately audited prior hosted completion
+
+PR274 exact3660 dedicated push42252393748 and PR42252403393 each independently
+verified687 unique cases/26files, original9native/3OFF,63PNG/source pairs and9keyboard
+records/369trusted events. PR carrier27ba4e69398fffbcbe1ec6270215da92cd6257e2
+has the same actual treeb68a68442e7932142c37a746c679c2f00736c6a2 as3660.
+Private PR-event proof SHA256
+`5630bc6448350bcdba508368178cc85371ed88f3900767954cddbb9e230f120e`.
+This scoped success is not full Foundation, visual approval or new-head inheritance.
+
+PR275 exact6bf C16 PR run42259854249/job128036616439 completed SUCCESS. Its carrier
+`0eb165563a8335504754c2e9c666cec634440933` has the identical full tree
+`b8b42cdae034135943daaf875da737a0a9f0a6fa`. Provider ZIP SHA256
+`abe47bba6c6f8751e16517f5fce71b4e7831f587dd1a155d0ff81e73a77ded01`.
+Original440/440PASS across11files exactly match the identities/order of the preserved
+439PASS/1FAIL Main report; separate36/36 source-guard cases also PASS. Original
+35minute job, original440 command/2workers,90second browser configs, assertions,
+package/lock and native source are unchanged versus3660. The log reports81native
+and3OFF passes;63PNG/capture pairs and9search-click records remain. The original
+dot-reporter artifact has no native Playwright case JSON/trace/per-case duration or
+whole-runtime before/final hash binding; no such evidence is invented. Independent
+proof SHA256 `1283cddf754684983ffece2da8fd97690bf01d153dbf07d48d0698ffc8dbba47`.
+Original C16 failures remain historical; only this exact branch/tree has this pass.
+
+Additional original cancellations remain explicit: PR274 field job128010651974
+exceeded8minutes during signed Ubuntu font transfers, with browser assertions
+SKIPPED/artifacts0. PR275 nativePG job128036142575 exceeded10minutes during OS
+browser dependency installation; container/preparation/types passed, database test
+step SKIPPED/artifacts0. Exclusive transfer cause is UNKNOWN, with no observed
+terminal package/signature error. A separate same-head successful job is scoped
+coverage, never relabeling a cancellation. No successful job was manually rerun.
+
+D1–D3, all11 UNASSIGNED people and A01–A12NOT_RUN remain unchanged. Main owner-witnessed
+synthetic network-loss PASS, duplicate UNKNOWN/UNVERIFIED and both private run folders
+are preserved; no physical case is attempted. The smallest next operational milestone
+is an actual owner D1 return and independent D2/D3 review before a separately
+approved implementation proposal. Existing P1-on13 approval and separate customer14/
+4B/broker/Auth/grants/target/recovery/NMI gates are not waived. Release1.0 remains
+NOT READY / NOT AUTHORIZED.
+
+### Follow-up publication and independent verification
+
+Feature drafts all target unchanged PR275; they are parallel, not cumulative:
+
+| Package                                                                                     | Published branch/head                                                                   | Exact native author                        |
+| ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------ |
+| [Finance276](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/276)  | `codex/cycle33-v1-finance-selector-next` / `52fef7d261414214ddc5a6cc9d5ed917dc08630d`   | `5986df744d688d7ab2e72a7824b18e4568d1cb92` |
+| [Customer277](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/277) | `codex/cycle33-v1-service-navigation-next` / `dcff07abe683ce4aa348209cc5f8c12f31ff058a` | `8c6334db676f214bc7abe1a4eeae70e9b547534a` |
+| [Field278](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/278)    | `codex/cycle33-v1-task-read-currentness` / `808e6c7181d393d88d4856ad6d87547c4e2a170f`   | `bd2e50e8f5dd972c9b2c9a29186e36fcc05dee53` |
+
+Root independently reviewed the actual composed9author files, all128protected hashes,
+5design locks/13bindings, original README/feature JSON and unchanged Foundation and
+prior integration workflows. Root also reviewed the independently authored new3test
+and parsed each original raw22/29/30/3/70 report: proof
+`2536551aaedc09059b71b38c16b25702014dda75054619058313ec34c1ff5078`.
+New source70/70PASS raw`6cc050a930baa269f6e883a8aef624192efdd2ab31ad7cb5c040d1af630b158c`;
+new combined3/3PASS raw`1a05527ea1fa9d0f2f4eedbacaf95a7498393db5c1cd821b8b4786328f16cbb2`.
+The initial combined3FAIL was a harness assumption about WorkOrder.source keys;
+it is retained as`49363d28…`, with only the new test corrected to assert canonical
+order.customer/baseline_property/visit identity. No product correction or timeout
+is inferred from that harness failure. Final affected old109/3 collection is a
+single112PASS run, raw`6dda01e39461b64d08cd017d53d14845e0ab497522ed297a7049b86745143324`.
+The earlier intermediate112PASS remains separately retained and is not final-source proof.
+
+The new dedicated workflow preserves original687 and browser/source-collector gates,
+adding exact84native/combined and70source cases:841 declared cases/31testfiles in
+12reports, plus original9native/3OFF/63capture scope. This is a declared new-head
+collection, not a claimed841local or hosted PASS. Before/final binding includes16
+explicit source admissions and every literal application test path. The new workflow
+alone triggers combined validation; partial feature drafts never claim that evidence.
+Original45minute job and all original application/browser budgets/workers/retry0,
+signed dependencies and screenshot rejection boundaries remain unchanged.
+
+PR274 final exact3660 ledger:24SUCCESS/4CANCELLED/1FAIL. Both Foundation verify jobs
+hit45minutes during incomplete application execution: push128010618163 retains4
+partial failure labels; PR128010653383 retains14. Neither has final error sections,
+complete suite JSON or final counts; individual causes are UNKNOWN. Downstream
+staging/browser steps were not reached. The original C16 failure remains separately
+historical, despite275's scoped corrected pass. Independent terminal proof
+`8c0e64b0176cebbf78892946e39e38809145bf593d1cb24f438b022d1bbc61af`.
+PR275 at18:02UTC:8SUCCESS/1CANCELLED/2FoundationIN_PROGRESS. No pending or cancellation
+is relabeled PASS. No original45minute/270case failure is resolved by this package.
+
+Independent build/source70/workflow review after strict-zero report-gate hardening:
+`cad0fe7fc82b405ca70fdd4bf713b777e1b7a96202ce45c441f02c729c01f9ab`.
+Review verifies immutable old profiles/assertions, exact current/companion/final reads,
+original C23/C24 metadata, unchanged legacy diagnostics and the final literal70gate.
+Its Field native author is excluded from self-review; Root/Finance peer review covers
+that function. Final committed Git-tree verification remains a separate recorded step.
+Strict TypeScript, scoped ESLint, repository format, feature-evidence checks and local
+build pass; the retained large-chunk advisory is not changed. No browser or full
+Foundation pass is inferred from the local build.

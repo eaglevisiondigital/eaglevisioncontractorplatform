@@ -171,8 +171,8 @@ readiness.
 The [Cycle32 physical record](CYCLE32_PHYSICAL_RECOVERY_EVIDENCE.md) preserves the
 November4 owner-witnessed main synthetic primary **network-loss PASS**. It does not
 claim actual power loss, engineer-independent witness or full R0-01…R0-07 acceptance.
-Its seven full-case reviews remain OPEN. Both Macs are now reported available; the
-fresh duplicate-case owner result is still pending. Neither availability nor
+Its seven full-case reviews remain OPEN. Both Macs were historically reported available;
+the distinct duplicate-case result remains UNKNOWN/UNVERIFIED, not supplied. Neither availability nor
 procedure guidance adds a new physical PASS or changes A01–A12.
 
 Reuse only the existing sealed credential-free kit/quickcard. Record the authorized

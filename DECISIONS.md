@@ -2099,3 +2099,9 @@ Exact Main274 push run `42252393748` subsequently passed687 application cases,
 Downloaded artifact/source audit is recorded in the separate correction review;
 this does not close Foundation, the original C16 failures or two270 browser gaps,
 and is not inherited by the new correction head.
+
+## November6 · exact current-source follow-up from PR275
+
+Three reviewed sole6bf native authors retain the first canonical Finance selector (22 localPASS), recheck Customer authorization around navigation callbacks (29 localPASS), and close a Field read-currentness gap after native await (30 localPASS). Their separate parent regressions are3,6,3FAIL. Exact source identities, peer reviews and new-head CI belong to the existing [V1 validation](docs/program/CYCLE33_V1_COORDINATED_VALIDATION.md) and source manifest; no old CI is inherited. Growth/Intelligence/Advanced/Offline audits are NO_CHANGE.
+
+Original source pins, approved designs and all prior release controls stay intact. Eleven operational roles remain UNASSIGNED, D1–D3 unresolved and A01–A12 NOT_RUN. Preserve owner-witnessed main synthetic network-loss PASS, duplicate UNKNOWN/UNVERIFIED and both private run folders. No operational infrastructure or physical attempt is performed. Release1.0 remains NOT READY / NOT AUTHORIZED.

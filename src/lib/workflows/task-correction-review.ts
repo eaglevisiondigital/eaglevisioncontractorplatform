@@ -102,12 +102,18 @@ export async function readTaskCorrectionReview(
 export async function assertTaskCorrectionReviewCurrent(
   review: TaskCorrectionReview,
 ) {
-  const source = await readSavedTaskCorrection(
-    review.view,
-    review.source.source_entry_id,
-  );
-  if (JSON.stringify(source) !== JSON.stringify(review.source))
+  // Capture caller-owned references and comparison data before native access.
+  // Keep the original view; serialized data never becomes source authority.
+  const current = prototypeFields(review, [
+      'view',
+      'source',
+    ]) as unknown as TaskCorrectionReview,
+    sourceEntryId = current.source.source_entry_id,
+    expected = JSON.stringify(current.source);
+  const source = await readSavedTaskCorrection(current.view, sourceEntryId);
+  if (JSON.stringify(source) !== expected)
     throw Error('Original task correction review is stale or held');
+  assertTaskCorrectionDisplayCurrent(current);
   return source;
 }
 export function assertTaskCorrectionDisplayCurrent(

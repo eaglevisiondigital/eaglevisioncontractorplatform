@@ -10,6 +10,7 @@ import { validateCycle21PublishedSource } from './check-cycle21.mjs';
 import {
   admitCycle33Forward,
   admitCycle33ExecutionPublished,
+  admitCycle33V1ContinuationPublished,
   admitCycle33V1Published,
 } from './cycle25-source-lineage.mjs';
 
@@ -365,7 +366,15 @@ export function validateCycle23Manifest(manifest, ports = {}) {
         );
       if (!bytes.equals(published)) {
         try {
-          admitCycle33ExecutionPublished(file, bytes, { read, git });
+          if (
+            file.path === 'src/lib/workflows/recorded-cost-requirements.ts' &&
+            commit === 'a3c8a39dd1b08ffdc68d1f7b9b29153ae50feb88'
+          )
+            admitCycle33V1ContinuationPublished(file, bytes, commit, {
+              read,
+              git,
+            });
+          else admitCycle33ExecutionPublished(file, bytes, { read, git });
         } catch (cause) {
           throw new Error(
             `Exact published Cycle23 bytes/blob required: ${file.path}`,
