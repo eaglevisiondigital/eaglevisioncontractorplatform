@@ -2581,3 +2581,16 @@ and is not inherited by the new correction head.
 Three reviewed sole6bf native authors retain the first canonical Finance selector (22 localPASS), recheck Customer authorization around navigation callbacks (29 localPASS), and close a Field read-currentness gap after native await (30 localPASS). Their separate parent regressions are3,6,3FAIL. Exact source identities, peer reviews and new-head CI belong to the existing [V1 validation](docs/program/CYCLE33_V1_COORDINATED_VALIDATION.md) and source manifest; no old CI is inherited. Growth/Intelligence/Advanced/Offline audits are NO_CHANGE.
 
 Original source pins, approved designs and all prior release controls stay intact. Eleven operational roles remain UNASSIGNED, D1–D3 unresolved and A01–A12 NOT_RUN. Preserve owner-witnessed main synthetic network-loss PASS, duplicate UNKNOWN/UNVERIFIED and both private run folders. No operational infrastructure or physical attempt is performed. Release1.0 remains NOT READY / NOT AUTHORIZED.
+
+## November6 · exact142 revocation-probe CI correction
+
+OriginalMain279038b64 is preserved with139PASS/3FAIL in both hosted events. The three
+failures are a test's unreachable second-capture revocation prerequisite after the
+reviewed single-capture Finance correction, not timeouts. Test-only author2784c9a
+retains every original assertion/case/budget, moves actual revocation to the current
+final descriptor and adds one capture assertion; targeted3PASS/19filtered. Exact
+source admission/current-head evidence is in [CI follow-up](docs/program/CYCLE33_V1_CI_FOLLOWUP.md).
+The separate owner proposal280 preserves all25feature IDs,11unassigned roles and
+all12NOT_RUN cases. No source correction or document grants operational acceptance.
+Recovery/private records and all original release restrictions remain unchanged.
+Release1.0 NOT READY / NOT AUTHORIZED.

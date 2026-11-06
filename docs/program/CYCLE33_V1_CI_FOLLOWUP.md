@@ -153,3 +153,77 @@ and the C16 checkout are copied to partial feature children; the new109/3/24comb
 source suites remain on Main because they require the actual combined tree.
 Exact current heads and source hashes are indexed additively under `ci_followup`
 in the original source manifest; initial source heads/results remain intact.
+
+## PR279 original142 · single-capture revocation probe
+
+Exact Main279 `038b64acad56e436a016905dfec87aef86dcfbc8` remains unchanged.
+PR run42267836354/job128064291857 is FAIL:142total/139PASS/3FAIL/0skip.
+Provider artifact13529860791 is39491bytes, ZIP SHA256
+`4963133d6c751732e60c1b8b8f456495caca64ea824f3664f0bae071ac0a749b`.
+Raw continuation JSON SHA256
+`1acad4c74b56458cc38b7f29109eccd1e24faf9d5f9eca719c638273470e5a20`.
+Actual PR carrier97e3ee49e2223b60e4c075e8da509b1479f9976e has the direct head's
+identical tree39dfe7973845ceed495a3206e02c04677398e5bd; initial/final90hashes match.
+
+All three failures are the unchanged case template in
+`tests/cycle33-execution-cost-selection.test.ts`:
+`brand {0,1,2}: recorded-cost facade withholds private material facts when the final descriptor capture revokes actual access`.
+They fail at original line77, `expect(revoked).toBeDefined()`, with
+`AssertionError: expected undefined to be defined`. Durations are2456.736397,
+2311.825191 and2580.275935ms. The later privacy assertions were not reached.
+The same-head push42267758962 separately has139PASS/3FAIL, identical failure IDs
+and error, at3254.519768/3082.587602/3485.967468ms. Those original results stay FAIL.
+
+The observed runner is Ubuntu24.04 image20261101.360.1, Node24.22.2/npm11.19.1.
+The original command uses one worker/retry0; test/hook budgets stay30000ms and the
+job remains45minutes. Job failure occurs normally at the application step, not
+installation or timeout. No per-worker CPU/I/O/scheduler or memory telemetry was
+retained; no resource-pressure cause is inferred. Independent diagnosis proof
+`edc4443e02fd4ac391a47df67cf8ddda6d8a8d769d8ef49785820aee42db801c`.
+
+The reviewed Finance5986 correction intentionally captures the caller's kind/ID
+once, then passes inert captured values to the original reader. The old test only
+revoked the owner at a second caller `kind` descriptor read; that read no longer
+occurs. Access was never revoked, so the probe's own prerequisite failed. Restoring
+unsafe repeated caller reads would contradict the verified source-identity fix.
+
+The separate test-only M1 author
+`2784c9ab0d0f52f1bd653651081c005ac3da239d`, sole038 parent, moves real native owner
+revocation to the final `id` descriptor of the actual sole capture. Every original
+case, assertion and budget remains; one explicit capture-count assertion is added.
+Reversing exactly those changes reconstructs the entire original test byte-for-byte.
+The22case identities remain unchanged. Only the original failed3 were manually
+reproduced: parent0PASS/3FAIL/19filtered, then corrected3PASS/0FAIL/19filtered.
+Corrected raw JSON SHA256
+`236fbe0840ba431cfc74c36066aa169d974df10f0f7ebb105ab62737b1062a7a`.
+The19 successful cases were not manually rerun. Finance independent peer proof
+`4efe60b71b943c860a16435dfef94d8dc87ec3219584c27d6a4469e5c1f4a612`.
+
+Main's build-only admission retains original98e test SHA/blob metadata and every
+old source profile. It admits only this literal sole038 M1 author after actual Git
+parent/delta/mode, raw original/base/new SHA/blob, exact reverse-assertion invariant,
+current and final fresh reads. Only the original98e execution companion and the
+original Finance V1 companion use this exception; legacy results and unknown-source
+diagnostics remain unchanged. It grants no runtime, business or restoration authority.
+
+The focused new-head workflow requires original142 and a separately declared48
+strict source cases, with the original budgets/command/assertions and a clean
+before/final binding. It proves runtime/dependencies/design/canonical feature bytes
+remain identical to038. New source-suite local evidence is split44PASS/4new diagnostic
+expectationFAIL, corrected failed-only4PASS/44filtered, then one strengthened final-read
+case1PASS/47filtered. No single48localPASS is claimed. Hosted exact-head acceptance
+requires its own complete48 and142 results.
+
+Preserve the546 passing cases in the other nine original PR artifact reports and
+139 passing continuation cases exactly to their tested head. Original25compatibility,
+128validator cases, build/browser/source screenshots after the failed step were
+SKIPPED in that workflow; they are not inherited or silently marked PASS. Historical
+Foundation45minute cancellations, original270 outcome conflict and originalC18
+failures remain separate and unresolved. No timeout, test worker budget, protected
+pin, signed-package validation or successful job is changed/restarted.
+
+The focused correction is separate from new native product work and the
+[owner proposal draft280](https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/pull/280).
+All11people remain UNASSIGNED, D2–D3 separate and A01–A12NOT_RUN. Original main synthetic
+owner PASS, duplicateUNKNOWN/UNVERIFIED and all private recovery records are untouched.
+Release1.0 NOT READY / NOT AUTHORIZED; no operational action is authorized or performed.
