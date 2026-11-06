@@ -1453,10 +1453,8 @@ function admitCycle31Forward(path, current, previous, ports) {
   if (!endpoint.equals(Buffer.from(current))) {
     if (path === 'src/lib/workflows/plan-cancellation-review.ts') {
       try {
-        return {
-          ...result,
-          v1_forward: admitCycle33V1Source(path, current, endpoint, ports),
-        };
+        admitCycle33V1Source(path, current, endpoint, ports);
+        return result;
       } catch (cause) {
         throw new Error('Current source differs from fixed Cycle31 author', {
           cause,
@@ -1650,11 +1648,10 @@ export function admitCycle32Forward(
   const endpoint = Buffer.from(
     ports.git(spec.nativeCorrection?.commit ?? spec.commit, path),
   );
-  let v1;
   if (!endpoint.equals(Buffer.from(current))) {
     if (path === 'src/lib/workflows/task-correction-review.ts') {
       try {
-        v1 = admitCycle33V1Source(path, current, endpoint, ports);
+        admitCycle33V1Source(path, current, endpoint, ports);
       } catch (cause) {
         throw new Error('Current source differs from fixed Cycle32 author', {
           cause,
@@ -1671,7 +1668,7 @@ export function admitCycle32Forward(
       )
     )
       throw Error('Exact Cycle32 author test/document required');
-  return v1 ? { ...result, v1_forward: v1 } : result;
+  return result;
 }
 
 export function inspectCycle32Sources({
@@ -2230,11 +2227,10 @@ export function admitCycle33ExecutionSource(
   for (const p of [...spec.modified, ...spec.added])
     if (ports.mode(spec.commit, p) !== '100644')
       throw Error('Regular reviewed Cycle33 execution source required');
-  let v1;
   if (!Buffer.from(current).equals(Buffer.from(ports.git(spec.commit, path)))) {
     if (path === 'src/lib/workflows/cost-coverage-path.ts') {
       try {
-        v1 = admitCycle33V1Source(
+        admitCycle33V1Source(
           path,
           current,
           ports.git(spec.commit, path),
@@ -2259,7 +2255,6 @@ export function admitCycle33ExecutionSource(
     authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
     business_authority: false,
     restore_adapter: false,
-    ...(v1 ? { v1_forward: v1 } : {}),
   };
 }
 /** Original manifests keep their hashes/blob IDs. Validate original metadata and
