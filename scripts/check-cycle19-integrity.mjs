@@ -4,6 +4,7 @@ import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { readCycle13File } from './check-cycle13-integrity.mjs';
+import { admitCycle33ExecutionPublished } from './cycle25-source-lineage.mjs';
 
 const admittedAuthors = [
   {
@@ -264,9 +265,22 @@ export function validateCycle19Manifest(manifest, read = readCycle13File) {
       if (!bound || prior.has(file.path))
         throw Error('Overlapping or out-of-scope Cycle19 source');
       const bytes = Buffer.from(read(file.path));
+      let reviewed = false;
+      if (
+        pinHashes &&
+        createHash('sha256').update(bytes).digest('hex') !== file.sha256
+      ) {
+        try {
+          admitCycle33ExecutionPublished(file, bytes, { read });
+          reviewed = true;
+        } catch {
+          /* Unknown current edits keep original hash/blob rejection. */
+        }
+      }
       if (
         !/^[a-f0-9]{64}$/.test(file.sha256) ||
-        createHash('sha256').update(bytes).digest('hex') !== file.sha256 ||
+        (!reviewed &&
+          createHash('sha256').update(bytes).digest('hex') !== file.sha256) ||
         (pinHashes && file.sha256 !== bound.sha256)
       )
         throw Error(`Reviewed Cycle19 source changed: ${file.path}`);
@@ -274,10 +288,11 @@ export function validateCycle19Manifest(manifest, read = readCycle13File) {
         pinHashes &&
         (!/^[a-f0-9]{40}$/.test(file.blob) ||
           file.blob !== bound.blob ||
-          createHash('sha1')
-            .update(`blob ${bytes.length}\0`)
-            .update(bytes)
-            .digest('hex') !== file.blob)
+          (!reviewed &&
+            createHash('sha1')
+              .update(`blob ${bytes.length}\0`)
+              .update(bytes)
+              .digest('hex') !== file.blob))
       )
         throw Error(`Exact admitted Git blob required: ${file.path}`);
       remaining.delete(file.path);

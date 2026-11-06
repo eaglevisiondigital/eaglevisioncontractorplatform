@@ -6,7 +6,10 @@ import { pathToFileURL } from 'node:url';
 import { relative } from 'node:path';
 import { validateCycle23Manifest } from './check-cycle23.mjs';
 import { cycle23RuntimeSources } from './collect-cycle23-browser.mjs';
-import { admitCycle25Source } from './cycle25-source-lineage.mjs';
+import {
+  admitCycle25Source,
+  admitCycle33ExecutionPublished,
+} from './cycle25-source-lineage.mjs';
 
 export const cycle24Parent = '7b8d8c1a6f03fa33321409aa15c46926a63e59ed';
 export const cycle24Branch = 'codex/program-cycle-twenty-four-integration';
@@ -467,8 +470,13 @@ export function checkCycle24Preservation() {
   validateCycle23Manifest(old, { requireIndependent: true });
   for (const pack of old.packages)
     for (const file of pack.owned_files)
-      if (sha(read(file.path)) !== file.sha256)
-        throw Error('Cycle23 author changed');
+      if (sha(read(file.path)) !== file.sha256) {
+        try {
+          admitCycle33ExecutionPublished(file, read(file.path));
+        } catch (cause) {
+          throw new Error('Cycle23 author changed', { cause });
+        }
+      }
   if (
     sha(read('.github/workflows/ci.yml')) !==
     'df337433bfde1768ccbe396326793559f21113aa7c24e37fbd5955c4c29f87be'

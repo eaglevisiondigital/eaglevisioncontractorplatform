@@ -1,6 +1,7 @@
 // Build/test source lineage only. Never imported by the application or used to
 // restore business state, authorize staff, resolve receipts or replay commands.
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { lstatSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
@@ -310,6 +311,11 @@ export function validateCycle25ForwardSpec(spec, ports = cycle25SourcePorts) {
 export function admitCycle25Source(path, current, original, supplied = {}) {
   const ports = { ...cycle25SourcePorts, ...supplied },
     owners = cycle25Authors.filter((s) => s.modified.includes(path));
+  if (
+    owners.length === 0 &&
+    cycle33ExecutionAuthors.some((a) => a.modified.includes(path))
+  )
+    return admitCycle33ExecutionSource(path, current, original, ports);
   if (
     owners.length === 0 &&
     path === 'src/lib/workflows/offline-source-protocol.ts'
@@ -1923,12 +1929,11 @@ export function admitCycle33Forward(path, current, previous, supplied = {}) {
       throw Error('Current source differs from fixed Cycle33 author');
     let reviewed_followup;
     try {
-      reviewed_followup = admitCycle33NextSource(
-        path,
-        current,
-        endpoint,
-        ports,
-      );
+      reviewed_followup = cycle33ExecutionAuthors.some((a) =>
+        a.modified.includes(path),
+      )
+        ? admitCycle33ExecutionSource(path, current, endpoint, ports)
+        : admitCycle33NextSource(path, current, endpoint, ports);
     } catch (cause) {
       throw new Error(
         `Current source differs from fixed Cycle33 author: ${cause instanceof Error ? cause.message : 'Source admission rejected'}`,
@@ -2082,4 +2087,127 @@ export function inspectCycle33Sources({
     business_authority: false,
     restore_adapter: false,
   };
+}
+
+// Literal independently reviewed child authors of the accepted exact762 tree.
+// Existing author pins and companions remain immutable. This is not data custody.
+export const cycle33ExecutionParent =
+  '762e6fa590d3ef9366052db0df34bb02485973c3';
+export const cycle33ExecutionAuthors = Object.freeze([
+  Object.freeze({
+    module: 'task-continuity-input-custody',
+    owner: '/root/cycle25_finance_intelligence_resume',
+    commit: '192c07796de9562735d53fd3ea9db728ac98ce57',
+    modified: Object.freeze([
+      'src/lib/workflows/task-receipt-reconciliation.ts',
+    ]),
+    added: Object.freeze([
+      'tests/cycle33-execution-task-continuity.test.ts',
+      'docs/program/CYCLE33_EXECUTION_TASK_CONTINUITY.md',
+    ]),
+  }),
+  Object.freeze({
+    module: 'owner-comparison-input-custody',
+    owner: '/root/cycle33_independent_review',
+    commit: '65841565f72b42a485b51e4b804837b53da63cfe',
+    modified: Object.freeze(['src/lib/workflows/priority-saved-revisions.ts']),
+    added: Object.freeze([
+      'tests/cycle33-owner-comparison-input-custody.test.ts',
+      'docs/program/CYCLE33_OWNER_COMPARISON_INPUT_CUSTODY.md',
+    ]),
+  }),
+  Object.freeze({
+    module: 'service-lineage-handle-capture',
+    owner: '/root/cycle33_independent_review',
+    commit: '86416efaafc5f968bce8aa61c911371b576ddd7c',
+    modified: Object.freeze(['src/lib/workflows/service-source-review.ts']),
+    added: Object.freeze([
+      'tests/cycle33-service-lineage-handle-capture.test.ts',
+      'docs/program/CYCLE33_SERVICE_LINEAGE_HANDLE_CAPTURE.md',
+    ]),
+  }),
+  Object.freeze({
+    module: 'cost-selection-current-authority',
+    owner: '/root/cycle25_finance_intelligence_resume',
+    commit: '98e4c39f3135b0b8177e2cc50980c1814fdcb2ff',
+    modified: Object.freeze(['src/lib/workflows/cost-coverage-path.ts']),
+    added: Object.freeze([
+      'tests/cycle33-execution-cost-selection.test.ts',
+      'docs/program/CYCLE33_EXECUTION_COST_SELECTION.md',
+    ]),
+  }),
+]);
+export function admitCycle33ExecutionSource(
+  path,
+  current,
+  previous,
+  supplied = {},
+) {
+  const ports = { ...cycle25SourcePorts, ...supplied };
+  const owners = cycle33ExecutionAuthors.filter((a) =>
+    a.modified.includes(path),
+  );
+  if (owners.length !== 1)
+    throw Error('No fixed Cycle33 execution source owner');
+  const spec = owners[0];
+  if (
+    ports.type(spec.commit) !== 'commit' ||
+    ports.parent(spec.commit) !== cycle33ExecutionParent ||
+    ports.delta(spec.commit) !==
+      [
+        ...spec.modified.map((p) => 'M\t' + p),
+        ...spec.added.map((p) => 'A\t' + p),
+      ]
+        .sort()
+        .join('\n')
+  )
+    throw Error(
+      'Exact single-parent bounded Cycle33 execution author required',
+    );
+  if (
+    !Buffer.from(previous).equals(
+      Buffer.from(ports.git(cycle33ExecutionParent, path)),
+    )
+  )
+    throw Error('Exact Cycle33 execution predecessor required');
+  for (const p of spec.modified)
+    if (ports.mode(cycle33ExecutionParent, p) !== '100644')
+      throw Error('Regular original Cycle33 execution source required');
+  for (const p of [...spec.modified, ...spec.added])
+    if (ports.mode(spec.commit, p) !== '100644')
+      throw Error('Regular reviewed Cycle33 execution source required');
+  if (!Buffer.from(current).equals(Buffer.from(ports.git(spec.commit, path))))
+    throw Error('Exact current Cycle33 execution source required');
+  for (const p of spec.added)
+    if (
+      !Buffer.from(ports.read(p)).equals(Buffer.from(ports.git(spec.commit, p)))
+    )
+      throw Error('Exact current Cycle33 execution companion required');
+  return {
+    module: spec.module,
+    source_commit: spec.commit,
+    path,
+    authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+    business_authority: false,
+    restore_adapter: false,
+  };
+}
+/** Original manifests keep their hashes/blob IDs. Validate original metadata and
+ * the exact current successor separately; never substitute historical bytes. */
+export function admitCycle33ExecutionPublished(file, current, supplied = {}) {
+  const ports = { ...cycle25SourcePorts, ...supplied };
+  if (!cycle33ExecutionAuthors.some((a) => a.modified.includes(file?.path)))
+    throw Error('No fixed published Cycle33 execution predecessor');
+  const previous = Buffer.from(ports.git(cycle33ExecutionParent, file.path));
+  if (
+    createHash('sha256').update(previous).digest('hex') !== file.sha256 ||
+    createHash('sha1')
+      .update('blob ' + previous.length + '\0')
+      .update(previous)
+      .digest('hex') !== file.blob
+  )
+    throw Error(
+      'Exact original published Cycle33 execution hash/blob required',
+    );
+  return admitCycle33ExecutionSource(file.path, current, previous, ports);
 }
