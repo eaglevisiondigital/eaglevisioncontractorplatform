@@ -7,6 +7,14 @@ staff read slice.
 
 ## Next owner decision record
 
+The next practical milestone is an owner-completed D1 record, followed by the
+independent D2/D3 review. Return the eleven people and their separation of duties,
+one exact private internal target, and the responsible person for every installed
+writer. Then identify the original admission/issuer/transaction/ACK/fence operators
+and the matched backup/key/recovery set. Do not place target identifiers, keys,
+credentials or private correspondence in the public register. An incomplete group
+stays unresolved; CI or a synthetic device result cannot appoint these people.
+
 Complete the existing D1–D3 record with the following exact answers. No developer,
 reviewer or device holder is assigned by this table. Missing answers keep the next
 operational implementation review NO-GO; safe local engineering continues.
@@ -95,6 +103,16 @@ Customer14 and original4B/broker/current Auth/grants/mapping/exact-target accept
 remain separately reviewed and authorized afterward.
 
 ## Physical evidence · preserve the actual main PASS and remaining gaps
+
+Current continuation preserves the distinct duplicate-recovery case as
+**UNKNOWN/UNVERIFIED; result not supplied**. Neither private run folder is opened,
+deleted, reset or reused by this engineering package. For that uncertain attempt,
+the original `report` operation is the only prepared read-only option; missing
+output remains UNKNOWN. A new named negative scenario may use a fresh synthetic
+directory/card only where the original runbook permits it. That does not turn the
+uncertain duplicate case into a retry or a PASS. Reconfirm both devices and actual
+supervisors before any future physical run; older availability is not current
+readiness.
 
 The [Cycle32 physical record](CYCLE32_PHYSICAL_RECOVERY_EVIDENCE.md) preserves the
 November4 owner-witnessed main synthetic primary **network-loss PASS**. It does not

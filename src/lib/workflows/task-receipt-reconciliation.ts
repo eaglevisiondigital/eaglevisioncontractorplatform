@@ -123,15 +123,26 @@ export async function readTaskReceiptContinuity(
   inspectTaskReceiptContinuity(review);
   return review;
 }
+/** Capture caller-owned reference fields before the original native guards.
+ * These local references retain their original opaque owners, not cloned authority. */
+function continuityReferences(
+  review: TaskReceiptContinuity,
+  invalid = 'Original task continuity references required',
+): TaskReceiptContinuity {
+  const fields = prototypeFields(review, ['receipt', 'graph', 'order']);
+  if (Object.keys(fields).length !== 3) throw Error(invalid);
+  const receipt = prototypeFields(fields.receipt, ['view', 'receipt']);
+  return {
+    receipt: receipt as unknown as TaskReceiptReconciliation,
+    graph: fields.graph as TaskReceiptContinuity['graph'],
+    order: fields.order as TaskReceiptContinuity['order'],
+  };
+}
 export function inspectTaskReceiptContinuity(review: TaskReceiptContinuity) {
-  if (
-    Object.keys(prototypeFields(review, ['receipt', 'graph', 'order']))
-      .length !== 3
-  )
-    throw Error('Original task continuity references required');
-  const receipt = inspectTaskReceiptReconciliation(review.receipt),
-    graph = inspectTaskRevisionConsistency(review.graph);
-  assertSavedRevisionCurrent(review.order);
+  const refs = continuityReferences(review),
+    receipt = inspectTaskReceiptReconciliation(refs.receipt),
+    graph = inspectTaskRevisionConsistency(refs.graph);
+  assertSavedRevisionCurrent(refs.order);
   const original = prototypeFields(receipt, Object.keys(receipt));
   if (
     (['state', 'source_id', 'result_id'] as const).some(
@@ -142,20 +153,20 @@ export function inspectTaskReceiptContinuity(review: TaskReceiptContinuity) {
       'Original receipt custody changed during task continuity; explicitly read only again',
     );
   if (
-    JSON.stringify(review.receipt.view.identity) !==
-      JSON.stringify(review.graph.identity) ||
-    JSON.stringify(review.graph.identity) !==
-      JSON.stringify(review.order.identity)
+    JSON.stringify(refs.receipt.view.identity) !==
+      JSON.stringify(refs.graph.identity) ||
+    JSON.stringify(refs.graph.identity) !== JSON.stringify(refs.order.identity)
   )
     throw Error('Exact work-order task and receipt identity required');
-  return { receipt, graph, order: review.order.evidence };
+  return { receipt, graph, order: refs.order.evidence };
 }
 export function inspectTaskReceiptTask(
   review: TaskReceiptContinuity,
   entryId: string,
 ) {
-  const current = inspectTaskReceiptContinuity(review),
-    lineage = selectTaskRevisionLineage(review.graph, entryId),
+  const refs = continuityReferences(review),
+    current = inspectTaskReceiptContinuity(refs),
+    lineage = selectTaskRevisionLineage(refs.graph, entryId),
     task = current.graph.graph.nodes.find(
       (row) => row.id === lineage.selected_id,
     )!;
@@ -165,7 +176,7 @@ export function inspectTaskReceiptTask(
   if (assigned.length !== 1)
     throw Error('Exact current assigned task worker required');
   return freezePrototype({
-    identity: review.graph.identity,
+    identity: refs.graph.identity,
     task,
     assigned_worker: assigned[0],
     assignment_state: current.order.assignment_state,
@@ -194,12 +205,10 @@ export async function verifyTaskReceiptCorrectionSource(
   review: TaskReceiptContinuity,
   entryId: string,
 ) {
-  const selected = inspectTaskReceiptTask(review, entryId),
-    source = await readSavedTaskCorrection(
-      review.receipt.view,
-      selected.task.id,
-    );
-  inspectTaskReceiptTask(review, entryId);
+  const refs = continuityReferences(review),
+    selected = inspectTaskReceiptTask(refs, entryId),
+    source = await readSavedTaskCorrection(refs.receipt.view, selected.task.id);
+  inspectTaskReceiptTask(refs, entryId);
   if (
     source.source_entry_id !== selected.task.id ||
     source.worker_id !== selected.task.worker_id ||
@@ -215,12 +224,13 @@ export async function taskReceiptControlsDestination(
   review: TaskReceiptContinuity,
   entryId: string,
 ) {
-  const source = await verifyTaskReceiptCorrectionSource(review, entryId);
-  inspectTaskReceiptTask(review, entryId);
+  const refs = continuityReferences(review),
+    source = await verifyTaskReceiptCorrectionSource(refs, entryId);
+  inspectTaskReceiptTask(refs, entryId);
   if (!source.can_edit)
     throw Error('Original correction source held or locked; no replay');
   return freezePrototype({
-    job_id: review.graph.identity.job_id,
+    job_id: refs.graph.identity.job_id,
     step: 'field' as const,
     source_entry_id: source.source_entry_id,
     meaning: 'OPEN_ORIGINAL_CONTROLS_ONLY' as const,
@@ -239,28 +249,24 @@ export async function rereadTaskReceiptContinuity(
   const requested = prototypeFields(gate, ['enabled', 'confirmed']);
   if (requested.enabled !== true || requested.confirmed !== true)
     throw Error('Explicit local current-source reread required');
-  if (
-    Object.keys(prototypeFields(previous, ['receipt', 'graph', 'order']))
-      .length !== 3
-  )
-    throw Error('Original exact task continuity required');
-  if (
-    Object.keys(prototypeFields(previous.receipt, ['view', 'receipt']))
-      .length !== 2
-  )
+  const refs = continuityReferences(
+    previous,
+    'Original exact task continuity required',
+  );
+  if (Object.keys(refs.receipt).length !== 2)
     throw Error('Original task receipt references required');
-  assertSavedRevisionAccess(previous.receipt.view);
-  assertSavedRevisionAccess(previous.graph);
-  assertSavedRevisionAccess(previous.order);
-  const identity = previous.receipt.view.identity;
+  assertSavedRevisionAccess(refs.receipt.view);
+  assertSavedRevisionAccess(refs.graph);
+  assertSavedRevisionAccess(refs.order);
+  const identity = refs.receipt.view.identity;
   if (
     jobId !== identity.job_id ||
-    JSON.stringify(identity) !== JSON.stringify(previous.graph.identity) ||
-    JSON.stringify(identity) !== JSON.stringify(previous.order.identity)
+    JSON.stringify(identity) !== JSON.stringify(refs.graph.identity) ||
+    JSON.stringify(identity) !== JSON.stringify(refs.order.identity)
   )
     throw Error('Exact original task context required for reread');
   const next = await readTaskReceiptContinuity(sources, jobId, gate);
-  assertSavedRevisionAccess(previous.receipt.view);
+  assertSavedRevisionAccess(refs.receipt.view);
   inspectTaskReceiptContinuity(next);
   if (JSON.stringify(next.receipt.view.identity) !== JSON.stringify(identity))
     throw Error('Task reread cannot substitute a customer/property/version');

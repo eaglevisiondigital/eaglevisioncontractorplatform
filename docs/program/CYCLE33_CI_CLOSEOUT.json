@@ -1257,5 +1257,1585 @@
     },
     "successful_jobs_manually_repeated": false,
     "full_foundation_pass": false
+  },
+  "execution_continuation": {
+    "base_integration_commit": "762e6fa590d3ef9366052db0df34bb02485973c3",
+    "base_integration_tree": "36712ced7b2d997a0dbfbf467447a188d581875c",
+    "base_draft_pr": 260,
+    "dedicated_verified": {
+      "scope": "EXACT_HEAD_DEDICATED_ONLY_NOT_FULL_FOUNDATION",
+      "events": [
+        {
+          "event": "push",
+          "run": 42181118126,
+          "artifact": 13486666303,
+          "zip_sha256": "4f9cdf1422f2565dfc46fedf9d59809fc32d171d211904750e40725c6c190c40",
+          "actual_source": "762e6fa590d3ef9366052db0df34bb02485973c3",
+          "tree": "36712ced7b2d997a0dbfbf467447a188d581875c",
+          "bindings_verified": 12,
+          "application": {
+            "passed": 83,
+            "files": {
+              "cycle33-maintenance-review-custody.test.ts": 30,
+              "cycle33-next-offline-protocol-admission.test.ts": 26,
+              "cycle33-next-source-lineage.test.ts": 24,
+              "cycle33-next-combined-custody.test.ts": 3
+            },
+            "skipped": 0,
+            "runtime_errors": 0,
+            "sha256": "888a79016fe4feb8dba400de83e8dbdc2a226a5f10b200d2706b93e2b6f9aa7f"
+          },
+          "browsers": {
+            "browser-results.json": {
+              "passed": 9,
+              "projects": {
+                "desktop": 3,
+                "tablet": 3,
+                "mobile": 3
+              },
+              "timeout_ms": 150000,
+              "workers": 1,
+              "retries": 0,
+              "sha256": "53cfa0c8edabf2b095201057abe975a748f589efb31a98a88e8464c49ee9d52b"
+            },
+            "browser-off-results.json": {
+              "passed": 3,
+              "projects": {
+                "desktop": 1,
+                "tablet": 1,
+                "mobile": 1
+              },
+              "timeout_ms": 150000,
+              "workers": 1,
+              "retries": 0,
+              "sha256": "a8cef4e2606d5927eb9a7295fddb492ad3b974adefd1f127543e48e6024d1e9e"
+            }
+          },
+          "scoped_collector": {
+            "passed": true,
+            "capture_files": 76,
+            "additional_execution_bound": 2,
+            "complete_transitive_runtime": false,
+            "screenshots": 63,
+            "keyboard_journeys": 9,
+            "trusted_events": 369,
+            "capture_hashes_and_source_bytes_verified": true,
+            "visual_approval": "PENDING",
+            "physical_recovery": "NOT_BROWSER_EVIDENCE",
+            "sha256": "9409e408ac98fbf86bc9ef11c40732e6fb26ab4b6001b365c9ad223cecb0d803"
+          },
+          "unchanged": true,
+          "full_foundation_pass": false
+        },
+        {
+          "event": "pull_request",
+          "run": 42181190833,
+          "artifact": 13485559362,
+          "zip_sha256": "b6602fbd29432604c9909ae9c22cd712102f14470fae331cccd63a7028a7da15",
+          "actual_source": "b5e1c2576309e0bb35518e29039295c16a1ddec0",
+          "tree": "36712ced7b2d997a0dbfbf467447a188d581875c",
+          "bindings_verified": 12,
+          "application": {
+            "passed": 83,
+            "files": {
+              "cycle33-maintenance-review-custody.test.ts": 30,
+              "cycle33-next-offline-protocol-admission.test.ts": 26,
+              "cycle33-next-source-lineage.test.ts": 24,
+              "cycle33-next-combined-custody.test.ts": 3
+            },
+            "skipped": 0,
+            "runtime_errors": 0,
+            "sha256": "7575f0df5765b694807b42ffc1cca5d4378f6c438fa532cfc9c631de5d40c68d"
+          },
+          "browsers": {
+            "browser-results.json": {
+              "passed": 9,
+              "projects": {
+                "desktop": 3,
+                "tablet": 3,
+                "mobile": 3
+              },
+              "timeout_ms": 150000,
+              "workers": 1,
+              "retries": 0,
+              "sha256": "3957c8a3917ff877e8866e08211a495ea13297bdeccdb5c636b3018f103bca11"
+            },
+            "browser-off-results.json": {
+              "passed": 3,
+              "projects": {
+                "desktop": 1,
+                "tablet": 1,
+                "mobile": 1
+              },
+              "timeout_ms": 150000,
+              "workers": 1,
+              "retries": 0,
+              "sha256": "5c618fc2ed2e09442514effd9fc73db55aa55c225c687fa95f567b4b241d2061"
+            }
+          },
+          "scoped_collector": {
+            "passed": true,
+            "capture_files": 76,
+            "additional_execution_bound": 2,
+            "complete_transitive_runtime": false,
+            "screenshots": 63,
+            "keyboard_journeys": 9,
+            "trusted_events": 369,
+            "capture_hashes_and_source_bytes_verified": true,
+            "visual_approval": "PENDING",
+            "physical_recovery": "NOT_BROWSER_EVIDENCE",
+            "sha256": "800b582a217aca21b509d0f4fea2f10fd42badd3b65918a5cf1803c7f9983438"
+          },
+          "unchanged": true,
+          "full_foundation_pass": false
+        }
+      ]
+    },
+    "original270_stored_resource_analysis": {
+      "scope": "READ_ONLY_STORED_FROZEN39B_270_EVIDENCE_NO_ASSERTION_EXECUTION",
+      "subject": "39b5b1977f2e18c1c7d534667260ce5ed05660f3",
+      "events": {
+        "push": {
+          "run": 42175850111,
+          "observations_sha256": "781fa96c2409642b34c9ca93bc4e290dfa49ce5bff7b026545ddcd678f296efe",
+          "reported_parallelism": [4],
+          "sample_count": 11,
+          "sampling": "ON_REPORTER_INIT_EACH_MODULE_COLLECTION_AND_RUN_END_NOT_PERIODIC_OR_CASE_BOUNDARIES",
+          "wall_span_seconds": 459.131,
+          "samples": [
+            {
+              "seconds": 0.0,
+              "load1": 0.55,
+              "memory_free_bytes": 15537618944,
+              "resident_bytes_aggregate": 1238798336
+            },
+            {
+              "seconds": 0.926,
+              "load1": 0.55,
+              "memory_free_bytes": 15212376064,
+              "resident_bytes_aggregate": 1856622592
+            },
+            {
+              "seconds": 1.138,
+              "load1": 0.55,
+              "memory_free_bytes": 15126589440,
+              "resident_bytes_aggregate": 1937727488
+            },
+            {
+              "seconds": 1.822,
+              "load1": 0.82,
+              "memory_free_bytes": 14924271616,
+              "resident_bytes_aggregate": 2132172800
+            },
+            {
+              "seconds": 3.382,
+              "load1": 0.82,
+              "memory_free_bytes": 14761562112,
+              "resident_bytes_aggregate": 2310373376
+            },
+            {
+              "seconds": 120.449,
+              "load1": 4.86,
+              "memory_free_bytes": 14617612288,
+              "resident_bytes_aggregate": 2442981376
+            },
+            {
+              "seconds": 173.759,
+              "load1": 5.13,
+              "memory_free_bytes": 14659043328,
+              "resident_bytes_aggregate": 2419036160
+            },
+            {
+              "seconds": 217.951,
+              "load1": 5.34,
+              "memory_free_bytes": 14660820992,
+              "resident_bytes_aggregate": 2403569664
+            },
+            {
+              "seconds": 320.817,
+              "load1": 5.53,
+              "memory_free_bytes": 14625230848,
+              "resident_bytes_aggregate": 2445119488
+            },
+            {
+              "seconds": 398.967,
+              "load1": 5.76,
+              "memory_free_bytes": 14616735744,
+              "resident_bytes_aggregate": 2453442560
+            },
+            {
+              "seconds": 459.131,
+              "load1": 3.7,
+              "memory_free_bytes": 15176810496,
+              "resident_bytes_aggregate": 1423331328
+            }
+          ],
+          "observer_own_cpu_seconds_delta": 3.567846,
+          "observer_cpu_is_worker_cpu": false,
+          "case_duration_ms": {
+            "median": 5508.830840499999,
+            "max": 23014.996818999993
+          },
+          "files": [
+            {
+              "file": "tests/cycle22-current-owner-priorities.test.ts",
+              "collected_seconds": 0.923,
+              "ended_seconds": 217.625,
+              "elapsed_seconds": 216.702,
+              "passed": 30,
+              "failed": 0
+            },
+            {
+              "file": "tests/cycle25-combined-integration.test.ts",
+              "collected_seconds": 1.135,
+              "ended_seconds": 120.058,
+              "elapsed_seconds": 118.923,
+              "passed": 16,
+              "failed": 0
+            },
+            {
+              "file": "tests/cycle18-independent-integration-review.test.ts",
+              "collected_seconds": 1.817,
+              "ended_seconds": 320.479,
+              "elapsed_seconds": 318.662,
+              "passed": 58,
+              "failed": 0
+            },
+            {
+              "file": "tests/cycle24-independent-integration-review.test.ts",
+              "collected_seconds": 3.378,
+              "ended_seconds": 173.46,
+              "elapsed_seconds": 170.082,
+              "passed": 54,
+              "failed": 0
+            },
+            {
+              "file": "tests/cycle23-verified-owner-briefing.test.ts",
+              "collected_seconds": 120.44,
+              "ended_seconds": 398.619,
+              "elapsed_seconds": 278.179,
+              "passed": 27,
+              "failed": 0
+            },
+            {
+              "file": "tests/cycle24-owner-action-verification.test.ts",
+              "collected_seconds": 173.754,
+              "ended_seconds": 418.323,
+              "elapsed_seconds": 244.569,
+              "passed": 27,
+              "failed": 0
+            },
+            {
+              "file": "tests/cycle25-service-evidence-continuity.test.ts",
+              "collected_seconds": 217.937,
+              "ended_seconds": 436.504,
+              "elapsed_seconds": 218.567,
+              "passed": 31,
+              "failed": 0
+            },
+            {
+              "file": "tests/cycle31-owner-navigation-runtime.test.ts",
+              "collected_seconds": 320.805,
+              "ended_seconds": 440.416,
+              "elapsed_seconds": 119.611,
+              "passed": 15,
+              "failed": 0
+            },
+            {
+              "file": "tests/cycle32-owner-filter-navigation.test.ts",
+              "collected_seconds": 398.962,
+              "ended_seconds": 459.12,
+              "elapsed_seconds": 60.158,
+              "passed": 12,
+              "failed": 0
+            }
+          ]
+        },
+        "pr": {
+          "run": 42175879610,
+          "observations_sha256": "aef553822756041a3e0fe175312c1ef2db0396f24ee12542e38e25815583d2e0",
+          "reported_parallelism": [4],
+          "sample_count": 11,
+          "sampling": "ON_REPORTER_INIT_EACH_MODULE_COLLECTION_AND_RUN_END_NOT_PERIODIC_OR_CASE_BOUNDARIES",
+          "wall_span_seconds": 830.116,
+          "samples": [
+            {
+              "seconds": 0.0,
+              "load1": 0.57,
+              "memory_free_bytes": 15389138944,
+              "resident_bytes_aggregate": 1241366528
+            },
+            {
+              "seconds": 1.602,
+              "load1": 0.57,
+              "memory_free_bytes": 15090585600,
+              "resident_bytes_aggregate": 1863311360
+            },
+            {
+              "seconds": 2.035,
+              "load1": 0.57,
+              "memory_free_bytes": 15028994048,
+              "resident_bytes_aggregate": 1944694784
+            },
+            {
+              "seconds": 3.064,
+              "load1": 0.57,
+              "memory_free_bytes": 14910398464,
+              "resident_bytes_aggregate": 2094465024
+            },
+            {
+              "seconds": 5.049,
+              "load1": 1.09,
+              "memory_free_bytes": 14702927872,
+              "resident_bytes_aggregate": 2302996480
+            },
+            {
+              "seconds": 220.023,
+              "load1": 5.85,
+              "memory_free_bytes": 14614667264,
+              "resident_bytes_aggregate": 2432249856
+            },
+            {
+              "seconds": 322.946,
+              "load1": 5.62,
+              "memory_free_bytes": 14694805504,
+              "resident_bytes_aggregate": 2365341696
+            },
+            {
+              "seconds": 407.485,
+              "load1": 5,
+              "memory_free_bytes": 14669168640,
+              "resident_bytes_aggregate": 2388021248
+            },
+            {
+              "seconds": 505.04,
+              "load1": 5.72,
+              "memory_free_bytes": 14700044288,
+              "resident_bytes_aggregate": 2347458560
+            },
+            {
+              "seconds": 739.186,
+              "load1": 5.22,
+              "memory_free_bytes": 14594457600,
+              "resident_bytes_aggregate": 2443882496
+            },
+            {
+              "seconds": 830.116,
+              "load1": 2.79,
+              "memory_free_bytes": 15172009984,
+              "resident_bytes_aggregate": 1416216576
+            }
+          ],
+          "observer_own_cpu_seconds_delta": 5.829713,
+          "observer_cpu_is_worker_cpu": false,
+          "case_duration_ms": {
+            "median": 10132.109016999995,
+            "max": 43450.122145
+          },
+          "files": [
+            {
+              "file": "tests/cycle22-current-owner-priorities.test.ts",
+              "collected_seconds": 1.598,
+              "ended_seconds": 407.028,
+              "elapsed_seconds": 405.43,
+              "passed": 29,
+              "failed": 1
+            },
+            {
+              "file": "tests/cycle25-combined-integration.test.ts",
+              "collected_seconds": 2.03,
+              "ended_seconds": 219.506,
+              "elapsed_seconds": 217.476,
+              "passed": 15,
+              "failed": 1
+            },
+            {
+              "file": "tests/cycle18-independent-integration-review.test.ts",
+              "collected_seconds": 3.058,
+              "ended_seconds": 504.588,
+              "elapsed_seconds": 501.53,
+              "passed": 48,
+              "failed": 10
+            },
+            {
+              "file": "tests/cycle24-independent-integration-review.test.ts",
+              "collected_seconds": 5.044,
+              "ended_seconds": 322.434,
+              "elapsed_seconds": 317.39,
+              "passed": 51,
+              "failed": 3
+            },
+            {
+              "file": "tests/cycle23-verified-owner-briefing.test.ts",
+              "collected_seconds": 220.009,
+              "ended_seconds": 738.673,
+              "elapsed_seconds": 518.664,
+              "passed": 24,
+              "failed": 3
+            },
+            {
+              "file": "tests/cycle24-owner-action-verification.test.ts",
+              "collected_seconds": 322.94,
+              "ended_seconds": 775.525,
+              "elapsed_seconds": 452.585,
+              "passed": 26,
+              "failed": 1
+            },
+            {
+              "file": "tests/cycle25-service-evidence-continuity.test.ts",
+              "collected_seconds": 407.473,
+              "ended_seconds": 807.0,
+              "elapsed_seconds": 399.527,
+              "passed": 30,
+              "failed": 1
+            },
+            {
+              "file": "tests/cycle31-owner-navigation-runtime.test.ts",
+              "collected_seconds": 505.022,
+              "ended_seconds": 748.103,
+              "elapsed_seconds": 243.081,
+              "passed": 14,
+              "failed": 1
+            },
+            {
+              "file": "tests/cycle32-owner-filter-navigation.test.ts",
+              "collected_seconds": 739.178,
+              "ended_seconds": 830.099,
+              "elapsed_seconds": 90.921,
+              "passed": 12,
+              "failed": 0
+            }
+          ]
+        }
+      },
+      "paired_current_passes": {
+        "cases": 249,
+        "median_pr_to_push_duration_ratio": 1.8827230984985253
+      },
+      "failed_whole_file_cohort": {
+        "files": 8,
+        "cases": 258,
+        "paths": [
+          "tests/cycle22-current-owner-priorities.test.ts",
+          "tests/cycle25-combined-integration.test.ts",
+          "tests/cycle18-independent-integration-review.test.ts",
+          "tests/cycle24-independent-integration-review.test.ts",
+          "tests/cycle23-verified-owner-briefing.test.ts",
+          "tests/cycle24-owner-action-verification.test.ts",
+          "tests/cycle25-service-evidence-continuity.test.ts",
+          "tests/cycle31-owner-navigation-runtime.test.ts"
+        ]
+      },
+      "demonstrated": [
+        "Same frozen source/config/native270 IDs have push270PASS and PR249PASS21FAIL",
+        "PR18 errors explicitly declare30000ms test timeout;3 C18 AssertionErrors observe undefined retained continuation state",
+        "Retained C18 source assigns shared retained only after the preceding async preparation resolves; subsequent continuation asserts retained is defined",
+        "PR file intervals and case durations are longer; this observation is not a causal attribution"
+      ],
+      "instrumentation_gaps": [
+        "11 coarse event-boundary samples do not bracket individual failures",
+        "process.cpuUsage belongs to reporter process, not native worker processes",
+        "No worker CPU profile, function-level source-validation counts, event-loop delay, syscall/I/O wait, CPU throttle or host scheduling/steal evidence",
+        "ample memory only at observed snapshots does not prove absence of transient/cgroup pressure",
+        "No per-native-phase start/end timing within prepareDailyReviewSources"
+      ],
+      "cause": "UNKNOWN_ENVIRONMENT_VS_APPLICATION_NOT_ESTABLISHED",
+      "narrow_next_action": "If authorized, add read-only per-worker CPU/event-loop and public-source phase/stack-cost diagnostics on the8 failed whole files258 cases at frozen39b under original4-worker/30s/0retry budgets; preserve full shared-fixture files. Keep diagnostic scheduling distinct from the original270/full Foundation. Capture the separate uncovered C23independent50 case file as a separate missing-coverage obligation; do not rerun successful83/9+3/267 or change budgets/assertions."
+    },
+    "coverage_boundary": "DEDICATED83_NATIVE9_OFF3_SCOPED_COLLECTOR_NOT_WHOLE_FOUNDATION",
+    "manual_successful_check_reruns": 0,
+    "runtime_or_deadline_cohort_orchestration_change": false,
+    "full_foundation_pass": false,
+    "physical_duplicate_case": "UNKNOWN_UNVERIFIED_RESULT_NOT_SUPPLIED",
+    "operational_roles_unassigned": 11,
+    "operational_cases": "A01_A12_NOT_RUN",
+    "parent_final_check_snapshot": {
+      "observed_at": "2026-11-06T08:20:51.488735+00:00",
+      "prs": [
+        {
+          "pr": 258,
+          "head": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+          "counts": {
+            "success": 23,
+            "cancelled": 5
+          },
+          "checks": [
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179688369/job/127766150552",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127766150552,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179688370/job/127766150404",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127766150404,
+              "name": "bounded-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179688034/job/127766150381",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127766150381,
+              "name": "local-preview",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179688196/job/127766150183",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127766150183,
+              "name": "local-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179688233/job/127766150070",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127766150070,
+              "name": "bounded-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179688318/job/127766150000",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127766150000,
+              "name": "local-preview",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179688088/job/127766149600",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127766149600,
+              "name": "postgres17",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179688187/job/127766149564",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127766149564,
+              "name": "bounded-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179688209/job/127766149484",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127766149484,
+              "name": "bounded-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179688094/job/127766149406",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127766149406,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179688127/job/127766149368",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127766149368,
+              "name": "synthetic-crypto48",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179688102/job/127766149315",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127766149315,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179688053/job/127766149282",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127766149282,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "cancelled",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179688088/job/127766149099",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127766149099,
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179688048/job/127766149036",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127766149036,
+              "name": "bounded-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179688044/job/127766148955",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127766148955,
+              "name": "bounded-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179688012/job/127766148864",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127766148864,
+              "name": "bounded-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "cancelled",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179688010/job/127766148824",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127766148824,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "cancelled",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179601488/job/127765886715",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127765886715,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "cancelled",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179601591/job/127765886641",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127765886641,
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179601617/job/127765886611",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127765886611,
+              "name": "local-preview",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179601591/job/127765886377",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127765886377,
+              "name": "postgres17",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179601579/job/127765886200",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127765886200,
+              "name": "local-preview",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179601541/job/127765886030",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127765886030,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179601385/job/127765885784",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127765885784,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "cancelled",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179601321/job/127765885689",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127765885689,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179601358/job/127765885674",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127765885674,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179601391/job/127765885574",
+              "head_sha": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+              "id": 127765885574,
+              "name": "synthetic-crypto48",
+              "status": "completed"
+            }
+          ]
+        },
+        {
+          "pr": 259,
+          "head": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+          "counts": {
+            "success": 26,
+            "cancelled": 3
+          },
+          "checks": [
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179697834/job/127766179222",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127766179222,
+              "name": "bounded-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179697795/job/127766179065",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127766179065,
+              "name": "bounded-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179697773/job/127766178931",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127766178931,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "cancelled",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179697683/job/127766178863",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127766178863,
+              "name": "bounded-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179697761/job/127766178817",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127766178817,
+              "name": "local-preview",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179697816/job/127766178793",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127766178793,
+              "name": "local-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179697721/job/127766178789",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127766178789,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179697796/job/127766178642",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127766178642,
+              "name": "bounded-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179697715/job/127766178625",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127766178625,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179697613/job/127766178618",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127766178618,
+              "name": "local-preview",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179697661/job/127766178570",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127766178570,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179697610/job/127766178489",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127766178489,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179697646/job/127766178488",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127766178488,
+              "name": "bounded-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179697693/job/127766178483",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127766178483,
+              "name": "bounded-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179697671/job/127766178422",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127766178422,
+              "name": "synthetic-crypto48",
+              "status": "completed"
+            },
+            {
+              "conclusion": "cancelled",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179697590/job/127766178407",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127766178407,
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179697697/job/127766178359",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127766178359,
+              "name": "bounded-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179697605/job/127766178333",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127766178333,
+              "name": "bounded-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179697590/job/127766178185",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127766178185,
+              "name": "postgres17",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179609770/job/127765913454",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127765913454,
+              "name": "local-preview",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179609750/job/127765913344",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127765913344,
+              "name": "synthetic-crypto48",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179609759/job/127765913273",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127765913273,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179609848/job/127765913254",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127765913254,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179609712/job/127765913201",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127765913201,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179609760/job/127765913197",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127765913197,
+              "name": "local-preview",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179609749/job/127765913132",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127765913132,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179609677/job/127765913081",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127765913081,
+              "name": "postgres17",
+              "status": "completed"
+            },
+            {
+              "conclusion": "cancelled",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179609677/job/127765913043",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127765913043,
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42179609696/job/127765912946",
+              "head_sha": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+              "id": 127765912946,
+              "name": "browser",
+              "status": "completed"
+            }
+          ]
+        },
+        {
+          "pr": 260,
+          "head": "762e6fa590d3ef9366052db0df34bb02485973c3",
+          "counts": {
+            "success": 29,
+            "cancelled": 3
+          },
+          "checks": [
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181190826/job/127770965727",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770965727,
+              "name": "bounded-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181190897/job/127770965632",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770965632,
+              "name": "bounded-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181190810/job/127770965623",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770965623,
+              "name": "bounded-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181190900/job/127770965575",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770965575,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181190876/job/127770965572",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770965572,
+              "name": "bounded-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181190955/job/127770965571",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770965571,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181190852/job/127770965375",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770965375,
+              "name": "bounded-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181191108/job/127770965372",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770965372,
+              "name": "synthetic-crypto48",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181190889/job/127770965238",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770965238,
+              "name": "local-preview",
+              "status": "completed"
+            },
+            {
+              "conclusion": "cancelled",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181190733/job/127770965192",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770965192,
+              "name": "postgres17",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181190782/job/127770964950",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770964950,
+              "name": "bounded-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181190750/job/127770964939",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770964939,
+              "name": "bounded-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "cancelled",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181190733/job/127770964768",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770964768,
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181190833/job/127770964746",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770964746,
+              "name": "bounded-native-and-responsive",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181190751/job/127770964682",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770964682,
+              "name": "local-preview",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181190773/job/127770964680",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770964680,
+              "name": "bounded-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181190824/job/127770964674",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770964674,
+              "name": "bounded-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181190765/job/127770964666",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770964666,
+              "name": "local-integration",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181190662/job/127770964628",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770964628,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181190690/job/127770964421",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770964421,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181190616/job/127770964327",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770964327,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181118114/job/127770726226",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770726226,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181118126/job/127770725970",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770725970,
+              "name": "bounded-native-and-responsive",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181118017/job/127770725942",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770725942,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "cancelled",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181118018/job/127770725928",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770725928,
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181118016/job/127770725792",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770725792,
+              "name": "local-preview",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181118020/job/127770725690",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770725690,
+              "name": "local-preview",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181118018/job/127770725670",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770725670,
+              "name": "postgres17",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181118039/job/127770725626",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770725626,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181118093/job/127770725575",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770725575,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181118019/job/127770725536",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770725536,
+              "name": "browser",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "details_url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181118023/job/127770725510",
+              "head_sha": "762e6fa590d3ef9366052db0df34bb02485973c3",
+              "id": 127770725510,
+              "name": "synthetic-crypto48",
+              "status": "completed"
+            }
+          ]
+        }
+      ]
+    },
+    "parent_cancellation_findings": {
+      "schema": "cycle33-current-parent-cancellation-summary-v1",
+      "observed_utc": "2026-11-06T08:22:32.889372+00:00",
+      "no_reruns": true,
+      "exact_parent_counts": [
+        {
+          "pr": 258,
+          "head": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+          "counts": {
+            "success": 23,
+            "cancelled": 5
+          }
+        },
+        {
+          "pr": 259,
+          "head": "a4a19259c33808bd3cb527ddd35535b902ce1cd2",
+          "counts": {
+            "success": 26,
+            "cancelled": 3
+          }
+        },
+        {
+          "pr": 260,
+          "head": "762e6fa590d3ef9366052db0df34bb02485973c3",
+          "counts": {
+            "success": 29,
+            "cancelled": 3
+          }
+        }
+      ],
+      "classified_cancellations": [
+        {
+          "pr": 258,
+          "head": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+          "run": 42179688010,
+          "job": 127766148824,
+          "event": "pull_request",
+          "workflow": ".github/workflows/technician-day-board.yml",
+          "outcome": "CANCELLED",
+          "proven_reason": "EXPLICIT_ORIGINAL_JOB_DEADLINE",
+          "deadline_minutes": 8,
+          "cutoff_phase": "CHROMIUM_WITH_DEPS_INSTALL",
+          "cutoff_step": "Run npx playwright install --with-deps chromium",
+          "cutoff_step_seconds": 495.0,
+          "chromium_install": {
+            "outcome": "cancelled",
+            "seconds": 495.0
+          },
+          "unreached_steps": [
+            "Run npx playwright test -c tests/program/playwright.technician-day-board.config.ts --workers=2",
+            "Post Run actions/setup-node@v4"
+          ],
+          "native_terminal_result": "NOT_RUN",
+          "concurrency_cause_proven": false,
+          "exclusive_slow_install_or_application_cause_proven": false
+        },
+        {
+          "pr": 258,
+          "head": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+          "run": 42179601488,
+          "job": 127765886715,
+          "event": "push",
+          "workflow": ".github/workflows/field-scheduling.yml",
+          "outcome": "CANCELLED",
+          "proven_reason": "EXPLICIT_ORIGINAL_JOB_DEADLINE",
+          "deadline_minutes": 8,
+          "cutoff_phase": "CHROMIUM_WITH_DEPS_INSTALL",
+          "cutoff_step": "Run npx playwright install --with-deps chromium",
+          "cutoff_step_seconds": 450.0,
+          "chromium_install": {
+            "outcome": "cancelled",
+            "seconds": 450.0
+          },
+          "unreached_steps": [
+            "Run npx playwright test -c tests/program/playwright.config.ts --workers=2",
+            "Post Run actions/setup-node@v4"
+          ],
+          "native_terminal_result": "NOT_RUN",
+          "concurrency_cause_proven": false,
+          "exclusive_slow_install_or_application_cause_proven": false
+        },
+        {
+          "pr": 258,
+          "head": "70b42665a322cc689a5c020bf652d5dcb48033b6",
+          "run": 42179601321,
+          "job": 127765885689,
+          "event": "push",
+          "workflow": ".github/workflows/maintenance-schedule-handoff.yml",
+          "outcome": "CANCELLED",
+          "proven_reason": "EXPLICIT_ORIGINAL_JOB_DEADLINE",
+          "deadline_minutes": 8,
+          "cutoff_phase": "BROWSER_EXECUTION",
+          "cutoff_step": "Run npx playwright test -c tests/program/playwright.maintenance-handoff.config.ts --workers=2",
+          "cutoff_step_seconds": 13.0,
+          "chromium_install": {
+            "outcome": "success",
+            "seconds": 454.0
+          },
+          "unreached_steps": ["Post Run actions/setup-node@v4"],
+          "native_terminal_result": "UNKNOWN_NO_TERMINAL_SUMMARY_VERIFIED",
+          "concurrency_cause_proven": false,
+          "exclusive_slow_install_or_application_cause_proven": false
+        },
+        {
+          "pr": 260,
+          "head": "762e6fa590d3ef9366052db0df34bb02485973c3",
+          "run": 42181190733,
+          "job": 127770965192,
+          "event": "pull_request",
+          "workflow": ".github/workflows/ci.yml",
+          "outcome": "CANCELLED",
+          "proven_reason": "EXPLICIT_ORIGINAL_JOB_DEADLINE",
+          "deadline_minutes": 10,
+          "cutoff_phase": "CHROMIUM_WITH_DEPS_INSTALL",
+          "cutoff_step": "Run npx playwright install --with-deps chromium",
+          "cutoff_step_seconds": 575.0,
+          "chromium_install": {
+            "outcome": "cancelled",
+            "seconds": 575.0
+          },
+          "unreached_steps": [
+            "Run npx vitest run tests/database",
+            "Post Run actions/setup-node@v4"
+          ],
+          "native_terminal_result": "NOT_RUN",
+          "concurrency_cause_proven": false,
+          "exclusive_slow_install_or_application_cause_proven": false
+        },
+        {
+          "pr": 260,
+          "head": "762e6fa590d3ef9366052db0df34bb02485973c3",
+          "run": 42181190733,
+          "job": 127770964768,
+          "event": "pull_request",
+          "workflow": ".github/workflows/ci.yml",
+          "outcome": "CANCELLED",
+          "proven_reason": "EXPLICIT_ORIGINAL_JOB_DEADLINE",
+          "deadline_minutes": 45,
+          "cutoff_phase": "NPM_CHECK",
+          "cutoff_step": "Run npm run check",
+          "cutoff_step_seconds": 2657.0,
+          "chromium_install": {
+            "outcome": "skipped",
+            "seconds": 0.0
+          },
+          "unreached_steps": [
+            "Run npm run staging:plan",
+            "Run npx playwright install --with-deps chromium",
+            "Run npm run test:browser",
+            "Post Run actions/setup-python@v5",
+            "Post Run actions/setup-node@v4"
+          ],
+          "native_terminal_result": "UNKNOWN_NO_TERMINAL_SUMMARY_VERIFIED",
+          "concurrency_cause_proven": false,
+          "exclusive_slow_install_or_application_cause_proven": false
+        },
+        {
+          "pr": 260,
+          "head": "762e6fa590d3ef9366052db0df34bb02485973c3",
+          "run": 42181118018,
+          "job": 127770725928,
+          "event": "push",
+          "workflow": ".github/workflows/ci.yml",
+          "outcome": "CANCELLED",
+          "proven_reason": "EXPLICIT_ORIGINAL_JOB_DEADLINE",
+          "deadline_minutes": 45,
+          "cutoff_phase": "NPM_CHECK",
+          "cutoff_step": "Run npm run check",
+          "cutoff_step_seconds": 2655.0,
+          "chromium_install": {
+            "outcome": "skipped",
+            "seconds": 0.0
+          },
+          "unreached_steps": [
+            "Run npm run staging:plan",
+            "Run npx playwright install --with-deps chromium",
+            "Run npm run test:browser",
+            "Post Run actions/setup-python@v5",
+            "Post Run actions/setup-node@v4"
+          ],
+          "native_terminal_result": "UNKNOWN_NO_TERMINAL_SUMMARY_VERIFIED",
+          "concurrency_cause_proven": false,
+          "exclusive_slow_install_or_application_cause_proven": false
+        }
+      ],
+      "same_head_successful_native_pg": [
+        {
+          "pr": 260,
+          "head": "762e6fa590d3ef9366052db0df34bb02485973c3",
+          "job": 127770725670,
+          "outcome": "PASS",
+          "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42181118018/job/127770725670"
+        }
+      ],
+      "limits": [
+        "Cancellation remains cancellation; successful same-head jobs are separate evidence",
+        "Job deadline and exact cutoff proven; no concurrency/resource/feed/product sole cause inferred",
+        "No partial default log interpreted as complete application evidence",
+        "Dedicated83/native9/OFF3/scopedcollector success is distinct from fullFoundation"
+      ]
+    },
+    "new_child_drafts": [
+      {
+        "module": "Field",
+        "pr": 261,
+        "branch": "codex/cycle33-execution-field-finance-offline",
+        "published_head": "a262e0a023dd5b9617ed5b51a4bd71eb902f982c",
+        "author_commit": "192c07796de9562735d53fd3ea9db728ac98ce57",
+        "author": "/root/cycle25_finance_intelligence_resume",
+        "doc": "docs/program/CYCLE33_EXECUTION_TASK_CONTINUITY.md",
+        "owned_files": [
+          {
+            "path": "docs/program/CYCLE33_EXECUTION_TASK_CONTINUITY.md",
+            "sha256": "ef30eced19e28ffb4121125065c736772c03c5179bff7757c1f57af217fec188",
+            "blob": "62adcdb32d55a20f5399716714485e3ed1d05591"
+          },
+          {
+            "path": "src/lib/workflows/task-receipt-reconciliation.ts",
+            "sha256": "c9ee2f8b6f36781ff9b61cf9bac21d5772594d28a73d577705cdabb13733ea5f",
+            "blob": "af26abbb1277193302283ea4288132761df629cc"
+          },
+          {
+            "path": "tests/cycle33-execution-task-continuity.test.ts",
+            "sha256": "864b64e8510abfc1a692b43d0aaabb239ecd79caba8f23da21800cafcd422b96",
+            "blob": "0206d3339b4e75b3eec2461f2d1d81116fe234ae"
+          }
+        ],
+        "current_ci": "SEPARATELY_OBSERVED_NOT_INHERITED"
+      },
+      {
+        "module": "Owner",
+        "pr": 262,
+        "branch": "codex/cycle33-execution-customer-growth-owner",
+        "published_head": "2f59268e93548ebdd3b66dd1df6d99b937e9dd45",
+        "author_commit": "65841565f72b42a485b51e4b804837b53da63cfe",
+        "author": "/root/cycle33_independent_review",
+        "doc": "docs/program/CYCLE33_OWNER_COMPARISON_INPUT_CUSTODY.md",
+        "owned_files": [
+          {
+            "path": "docs/program/CYCLE33_OWNER_COMPARISON_INPUT_CUSTODY.md",
+            "sha256": "6aa420af561f6461289884c0718d5c6b3de54a9796e5e5517cc3f6de22bda2f6",
+            "blob": "6100d298fe5d4e65d2eaa7186a715f006e12de98"
+          },
+          {
+            "path": "src/lib/workflows/priority-saved-revisions.ts",
+            "sha256": "5095511d5e73bc3c6afbad7c192725d4164b2ac9ea7032d7d106625df6873c7a",
+            "blob": "95fac310b1c7509d65726fb34231bda71d247c8d"
+          },
+          {
+            "path": "tests/cycle33-owner-comparison-input-custody.test.ts",
+            "sha256": "c219b94c0081bc2fd76e635c60f1b889ce4850cc600d212be0614c4bb991f6ca",
+            "blob": "1af75ecbaeb19f87f4fc6d8a1ae32382ade52228"
+          }
+        ],
+        "current_ci": "SEPARATELY_OBSERVED_NOT_INHERITED"
+      },
+      {
+        "module": "Customer",
+        "pr": 263,
+        "branch": "codex/cycle33-execution-customer-lineage",
+        "published_head": "e6fbe7e7b82322d32d6392a8fcc9e7f8c72b6486",
+        "author_commit": "86416efaafc5f968bce8aa61c911371b576ddd7c",
+        "author": "/root/cycle33_independent_review",
+        "doc": "docs/program/CYCLE33_SERVICE_LINEAGE_HANDLE_CAPTURE.md",
+        "owned_files": [
+          {
+            "path": "docs/program/CYCLE33_SERVICE_LINEAGE_HANDLE_CAPTURE.md",
+            "sha256": "dbc91f6dab2188cd382a0b6876aaf3384cd9bce06e9d5f5ffb92bf05fc0938b5",
+            "blob": "3b709c03d9771a04c39c48938b6006b6318b66fa"
+          },
+          {
+            "path": "src/lib/workflows/service-source-review.ts",
+            "sha256": "4218e79c055aa7ea97bb99e66b62168af732e47d98e9a433cb6fd409e49345f8",
+            "blob": "c4c861c8131b721886e0b6b97fd6e548f97610e8"
+          },
+          {
+            "path": "tests/cycle33-service-lineage-handle-capture.test.ts",
+            "sha256": "2cd43b1b7c706edf0a24576afe77f1617c790de380a72b959c482374f35e8e8e",
+            "blob": "de80e755ddc13dc1e0afe4d15c70041485a2d9ef"
+          }
+        ],
+        "current_ci": "SEPARATELY_OBSERVED_NOT_INHERITED"
+      },
+      {
+        "module": "Finance",
+        "pr": 264,
+        "branch": "codex/cycle33-execution-finance-selection",
+        "published_head": "0a435277d5c35a92814cadb6d1562c9b770f6e32",
+        "author_commit": "98e4c39f3135b0b8177e2cc50980c1814fdcb2ff",
+        "author": "/root/cycle25_finance_intelligence_resume",
+        "doc": "docs/program/CYCLE33_EXECUTION_COST_SELECTION.md",
+        "owned_files": [
+          {
+            "path": "docs/program/CYCLE33_EXECUTION_COST_SELECTION.md",
+            "sha256": "5cd121198a8a0be08ebf71a1333039f945b1cf01970a938783fa8e81b41fd433",
+            "blob": "18c29b9536255926a186f78c027ca17382ec3884"
+          },
+          {
+            "path": "src/lib/workflows/cost-coverage-path.ts",
+            "sha256": "70a8d82766f4807de28410f3bafbbe4a0a649d6d208785735e039182c52dfb33",
+            "blob": "4e774a777ed07494f447e8dfa0e08aa03ee91ddf"
+          },
+          {
+            "path": "tests/cycle33-execution-cost-selection.test.ts",
+            "sha256": "3882009f942e219c632b063edd7368082181038e23f781d5b086561c885b1b0e",
+            "blob": "c0a706fbc81c2a5638c919a0af49b8e992a22a9c"
+          }
+        ],
+        "current_ci": "SEPARATELY_OBSERVED_NOT_INHERITED"
+      }
+    ],
+    "local_combined_reports": [
+      {
+        "scope": "THREE_AUTHOR_SOURCE_AND_RETAINED_VALIDATORS",
+        "passed": 168,
+        "failed": 0,
+        "sha256": "bd4d31d844fb178450a0423c6ce3ad6e8a6542e8fbefd2529b5ac75cfe48a780"
+      },
+      {
+        "scope": "FOUR_AUTHOR_SOURCE51_RETAINED128_AND_NEW_INTEGRATED3",
+        "passed": 179,
+        "failed": 3,
+        "classification": "NEW_TEST_HARNESS_WRONG_PROJECTION_FIELD",
+        "sha256": "2fd06cb7703955ad5017fff2d7e38915b1cbdad6bc5e789b05b6568132fd3624"
+      },
+      {
+        "scope": "CORRECTED_NEW_INTEGRATION_ONLY",
+        "passed": 0,
+        "failed": 3,
+        "classification": "NEW_TEST_HARNESS_EXPECTED_REVOKED_CANONICAL_READ",
+        "sha256": "b2b0a5a25b6d680725d9e62ffc7dc319f5df7381b949789e4f781149146e47f2"
+      },
+      {
+        "scope": "CORRECTED_INTEGRATED3_AND_STRENGTHENED_LITERAL_PIN1",
+        "passed": 4,
+        "failed": 0,
+        "filtered": 50,
+        "sha256": "cc82bec6f5c82dc04f6c3427aaf184a308546381de00bc732c7329635f9befdb"
+      }
+    ],
+    "single_local142_or182_pass_claim": false
   }
 }
