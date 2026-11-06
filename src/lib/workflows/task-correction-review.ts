@@ -113,11 +113,16 @@ export async function assertTaskCorrectionReviewCurrent(
 export function assertTaskCorrectionDisplayCurrent(
   review: TaskCorrectionReview,
 ) {
-  assertSavedRevisionCurrent(review.view);
-  const held = inspectSavedSourceExercise(review.view);
+  // Capture original caller-owned references before native access/hold checks.
+  const current = prototypeFields(review, [
+    'view',
+    'source',
+  ]) as unknown as TaskCorrectionReview;
+  assertSavedRevisionCurrent(current.view);
+  const held = inspectSavedSourceExercise(current.view);
   if (held.state !== 'REVIEW_ONLY' || held.done.includes('time-correction'))
     throw Error('Original task correction is held');
-  return review.source;
+  return current.source;
 }
 export async function selectTaskCorrectionSource(
   review: TaskCorrectionReview,

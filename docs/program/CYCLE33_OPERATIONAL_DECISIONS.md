@@ -8,7 +8,7 @@ staff read slice.
 ## Next owner decision record
 
 The next practical milestone is an owner-completed D1 record, followed by the
-independent D2/D3 review. Return the eleven people and their separation of duties,
+independent D2/D3 review. Return an accountable person/delegate for each of the eleven roles and their separation of duties,
 one exact private internal target, and the responsible person for every installed
 writer. Then identify the original admission/issuer/transaction/ACK/fence operators
 and the matched backup/key/recovery set. Do not place target identifiers, keys,
@@ -19,11 +19,11 @@ Complete the existing D1–D3 record with the following exact answers. No develo
 reviewer or device holder is assigned by this table. Missing answers keep the next
 operational implementation review NO-GO; safe local engineering continues.
 
-| Decision                                 | Concrete owner answer needed                                                                                                                                 | Evidence required before acceptance                                                                                                                                                                                                                                                              |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| D1 · people and target                   | Name all eleven accountable people, separation of duties and one exact internal source scope; identify every installed writer and its responsible operator   | Current genuine customer session and mapping, staff AAL2/current membership, exact source/version/publication/hash; complete object/column/grant/default-grant/RLS/composite-tenant-reference inventory, including privileged and raw bypass paths                                               |
-| D2 · original custody and commit         | Identify the independent original admission/issuer custodians, canonical transaction and receipt/ACK operators, independent fence custodian and exact reader | Registrar COMMIT → independent issuer COMMIT → atomic canonical request plus immutable receipt COMMIT; original backend/full-XID and one-use identity, independently durable ACK, current revocation after waits and before ACK/read, exact UNKNOWN reconciliation without replay or replacement |
-| D3 · matched recovery and bounded review | Name backup/key/recovery owners and independent reviewer; select a matched set and agreed quarantine/RPO/RTO/cleanup requirements                            | Matching DB timeline/LSN/schema/revisions/receipt watermark, object bytes/versions, independently rollback-resistant spent custody/epoch and protected key references; all writers quarantine on fence failure/mismatch, external revocation survives recovery                                   |
+| Decision                                 | Concrete owner answer needed                                                                                                                                                             | Evidence required before acceptance                                                                                                                                                                                                                                                              |
+| ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| D1 · people and target                   | Name an accountable person/delegate for each of the eleven roles, separation of duties and one exact internal source scope; identify every installed writer and its responsible operator | Current genuine customer session and mapping, staff AAL2/current membership, exact source/version/publication/hash; complete object/column/grant/default-grant/RLS/composite-tenant-reference inventory, including privileged and raw bypass paths                                               |
+| D2 · original custody and commit         | Identify the independent original admission/issuer custodians, canonical transaction and receipt/ACK operators, independent fence custodian and exact reader                             | Registrar COMMIT → independent issuer COMMIT → atomic canonical request plus immutable receipt COMMIT; original backend/full-XID and one-use identity, independently durable ACK, current revocation after waits and before ACK/read, exact UNKNOWN reconciliation without replay or replacement |
+| D3 · matched recovery and bounded review | Name backup/key/recovery owners and independent reviewer; select a matched set and agreed quarantine/RPO/RTO/cleanup requirements                                                        | Matching DB timeline/LSN/schema/revisions/receipt watermark, object bytes/versions, independently rollback-resistant spent custody/epoch and protected key references; all writers quarantine on fence failure/mismatch, external revocation survives recovery                                   |
 
 The original case-to-decision mapping is unchanged: A01–A04 scope/Auth/privileges/
 source; A05–A08 atomicity/ACK/concurrency/exact reconciliation; A09 staff-safe read;
@@ -78,7 +78,7 @@ alone is insufficient ([backup scope](https://supabase.com/docs/guides/platform/
 These public references support the existing requirements, not installed-target
 acceptance. No Supabase API, CLI, credential, query, schema or recovery action occurs.
 
-D1's next owner response must name all eleven people/delegates, identify permitted
+D1's next owner response must name an accountable person/delegate for each of the eleven roles, identify permitted
 and prohibited role combinations, choose one exact private internal target and
 account for every actual installed writer. The reviewer must be independent of the
 writing/custody decisions they assess; original admission/issuer/consumer separation
@@ -193,3 +193,27 @@ development does not close recovery. Auth/MFA, NMI/settlement, customer14/4B, fi
 Netlify, migration, approved-design and production gates remain independent. No merge,
 deployment, hosted mutation, payment, dispatch, message or release activation follows.
 Release1.0 remains **NOT READY / NOT AUTHORIZED**.
+
+## D1 decision return and separation-of-duties checklist
+
+Eleven roles do not by themselves require eleven distinct people. The owner must
+explicitly decide permitted combinations and named delegates; no role is assigned
+by inference. Staffing choices cannot collapse the original technical commit,
+connection, custody or independent-review boundaries.
+
+| Boundary                                        | Required owner decision and acceptance proof                                                                                                                                                                                | Current state             |
+| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
+| Registrar / issuer / canonical consumer         | Name each accountable operator and permitted staffing combination; retain three distinct commits, finite separate connections/owners, original one-use identity and no consumer-controlled issuer reset.                    | UNASSIGNED / NOT ACCEPTED |
+| Writer / independent reviewer                   | Name a reviewer independent of the writing/custody decision being assessed; no self-approval, source-author approval or CI result substitutes for acceptance.                                                               | UNASSIGNED / NOT ACCEPTED |
+| Primary transaction / external fence            | Name an independent rollback-resistant spent-authority/revocation custodian and failure domain; database/disk restore cannot renew original admission. Missing or mismatched fence quarantines every writer.                | UNASSIGNED / NOT ACCEPTED |
+| Receipt / durable ACK / exact read              | Name accountable owners for canonical atomic receipt, independent durability and current-authorized reconciliation. ACK loss stays UNKNOWN; absence never permits a replacement or replay.                                  | UNASSIGNED / NOT ACCEPTED |
+| Privilege administration / source authorization | Name DBA and security responsibilities and permitted combinations; inventory every installed direct/raw/admin/definer/helper/legacy writer and current tenant/mapping/session check.                                        | UNASSIGNED / NOT ACCEPTED |
+| Backup / keys / recovery / reviewer             | Name custodians, recovery supervisor and independent witness/reviewer; decide matched set, revocation continuity, writer quarantine, RPO/RTO and cleanup. Physical synthetic evidence does not accept this operational set. | UNASSIGNED / NOT ACCEPTED |
+
+For each of the eleven existing rows above, the private owner return needs:
+accountable person; delegate; accepted/amended function; allowed/prohibited role
+combinations; exact internal target and participating writers; evidence owner and
+missing prerequisites. Public records retain only role/status and sanitized evidence.
+No private target, person/contact detail, key, credential or run identity goes in Git.
+D1 remains unresolved until all rows and writer exceptions are reviewed. D2 and D3
+remain separate decisions, and all A01–A12 remain NOT_RUN.
