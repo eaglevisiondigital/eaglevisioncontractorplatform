@@ -1,13 +1,28 @@
 name: Cycle33 next reviewed custody integration
 on:
   push:
-    branches: ['codex/cycle33-next-reviewed-integration']
+    branches:
+      [
+        'codex/cycle33-next-reviewed-integration',
+        'codex/cycle33-execution-closeout',
+      ]
   pull_request:
-    branches: ['codex/cycle33-source-diagnostic-compatibility']
+    branches:
+      [
+        'codex/cycle33-source-diagnostic-compatibility',
+        'codex/cycle33-next-reviewed-integration',
+      ]
     paths:
       - '.github/workflows/cycle33-next-reviewed-integration.yml'
       - 'src/lib/workflows/maintenance-plan-correction.ts'
       - 'src/lib/workflows/offline-source-protocol.ts'
+      - 'src/lib/workflows/task-receipt-reconciliation.ts'
+      - 'src/lib/workflows/priority-saved-revisions.ts'
+      - 'src/lib/workflows/service-source-review.ts'
+      - 'src/lib/workflows/cost-coverage-path.ts'
+      - 'tests/cycle33-execution-*.test.ts'
+      - 'tests/cycle33-owner-comparison-input-custody.test.ts'
+      - 'tests/cycle33-service-lineage-handle-capture.test.ts'
       - 'scripts/cycle25-source-lineage.mjs'
       - 'tests/cycle33-next-*.test.ts'
       - 'tests/cycle33-maintenance-review-custody.test.ts'
@@ -34,18 +49,18 @@ jobs:
           mkdir -p artifacts/cycle33/next-execution
           node --input-type=module <<'NODE'
           import{execFileSync}from'node:child_process';import{writeFileSync,readFileSync}from'node:fs';import{createHash}from'node:crypto';
-          import{cycle33NextAuthors,cycle33NextParent,admitCycle33NextSource,cycle25SourcePorts as p}from'./scripts/cycle25-source-lineage.mjs';
+          import{cycle33NextAuthors,cycle33NextParent,admitCycle33NextSource,cycle33ExecutionAuthors,cycle33ExecutionParent,admitCycle33ExecutionSource,cycle25SourcePorts as p}from'./scripts/cycle25-source-lineage.mjs';
           const git=(...args)=>execFileSync('git',['--no-replace-objects',...args],{encoding:'utf8'}).trim();
           if(git('status','--porcelain','--untracked-files=all'))throw Error('Clean candidate required');
-          const admitted=cycle33NextAuthors.map(s=>admitCycle33NextSource(s.modified[0],readFileSync(s.modified[0]),p.git(cycle33NextParent,s.modified[0])));
-          const paths=[...cycle33NextAuthors.flatMap(s=>[...s.modified,...s.added]),'scripts/cycle25-source-lineage.mjs','vite.config.ts','playwright.config.ts','package.json','package-lock.json','.github/workflows/cycle33-next-reviewed-integration.yml'];
+          const admitted=[...cycle33NextAuthors.map(s=>admitCycle33NextSource(s.modified[0],readFileSync(s.modified[0]),p.git(cycle33NextParent,s.modified[0]))),...cycle33ExecutionAuthors.map(s=>admitCycle33ExecutionSource(s.modified[0],readFileSync(s.modified[0]),p.git(cycle33ExecutionParent,s.modified[0])))];
+          const paths=[...cycle33ExecutionAuthors.flatMap(s=>[...s.modified,...s.added]),'scripts/check-cycle19-integrity.mjs','scripts/check-cycle22.mjs','scripts/check-cycle23.mjs','scripts/check-cycle24.mjs',...cycle33NextAuthors.flatMap(s=>[...s.modified,...s.added]),'scripts/cycle25-source-lineage.mjs','vite.config.ts','playwright.config.ts','package.json','package-lock.json','.github/workflows/cycle33-next-reviewed-integration.yml'];
           writeFileSync('artifacts/cycle33/next-execution/binding.json',JSON.stringify({source:git('rev-parse','HEAD'),tree:git('rev-parse','HEAD^{tree}'),admitted,hashes:Object.fromEntries(paths.map(path=>[path,createHash('sha256').update(readFileSync(path)).digest('hex')]))},null,2)+'\n');
           NODE
       - run: npm run typecheck
       - run: npm run features:check
       - run: npm run format:check
       - run: node scripts/check-cycle24.mjs
-      - name: New83 original-engine custody and source cases, explicitly single-worker
+      - name: Retained83 original-engine custody and source regressions, explicitly single-worker
         run: >-
           npx vitest run
           tests/cycle33-maintenance-review-custody.test.ts
@@ -62,6 +77,36 @@ jobs:
           const expected=new Map(Object.entries({'tests/cycle33-maintenance-review-custody.test.ts':30,'tests/cycle33-next-offline-protocol-admission.test.ts':26,'tests/cycle33-next-source-lineage.test.ts':24,'tests/cycle33-next-combined-custody.test.ts':3}));
           if(r.success!==true||r.numTotalTests!==83||r.numPassedTests!==83||r.numFailedTests!==0||r.numPendingTests!==0||r.numTodoTests!==0||(r.numRuntimeErrorTestSuites??0)!==0||r.testResults.length!==4)throw Error('Exact83 passing new cases required');
           for(const s of r.testResults){const path=relative(process.cwd(),s.name).replaceAll('\\','/'),n=expected.get(path),a=s.assertionResults;if(!expected.delete(path)||s.status!=='passed'||a.length!==n||new Set(a.map(t=>t.fullName)).size!==n||a.some(t=>t.status!=='passed'||!t.fullName||t.failureMessages.length))throw Error('Incomplete new custody suite');}if(expected.size)throw Error('Missing new suite');
+          NODE
+      - name: New142 continuation regressions, original budgets and zero retries
+        run: >-
+          npx vitest run
+          tests/cycle33-execution-task-continuity.test.ts
+          tests/cycle33-owner-comparison-input-custody.test.ts
+          tests/cycle33-service-lineage-handle-capture.test.ts
+          tests/cycle33-execution-cost-selection.test.ts
+          tests/cycle33-execution-source-admission.test.ts
+          tests/cycle33-execution-integrated-authority.test.ts
+          --maxWorkers=1 --retry=0 --reporter=json
+          --outputFile=artifacts/cycle33/next-execution/continuation.json
+      - name: Original128 source-validator regressions for changed build-only consumers
+        run: >-
+          npx vitest run tests/cycle22-validation.test.ts
+          tests/cycle23-validation.test.ts tests/cycle24-validation.test.ts
+          --maxWorkers=1 --retry=0 --reporter=json
+          --outputFile=artifacts/cycle33/next-execution/legacy-validation.json
+      - name: Require exact continuation and retained legacy collections
+        run: |
+          node --input-type=module <<'NODE'
+          import{readFileSync}from'node:fs';import{relative}from'node:path';
+          for(const [file,counts]of Object.entries({
+            'continuation.json':{'tests/cycle33-execution-task-continuity.test.ts':28,'tests/cycle33-owner-comparison-input-custody.test.ts':19,'tests/cycle33-service-lineage-handle-capture.test.ts':19,'tests/cycle33-execution-cost-selection.test.ts':22,'tests/cycle33-execution-source-admission.test.ts':51,'tests/cycle33-execution-integrated-authority.test.ts':3},
+            'legacy-validation.json':{'tests/cycle22-validation.test.ts':58,'tests/cycle23-validation.test.ts':47,'tests/cycle24-validation.test.ts':23}
+          })){
+            const r=JSON.parse(readFileSync('artifacts/cycle33/next-execution/'+file)),expected=new Map(Object.entries(counts)),total=Object.values(counts).reduce((n,v)=>n+v,0);
+            if(r.success!==true||r.numTotalTests!==total||r.numPassedTests!==total||r.numFailedTests!==0||r.numPendingTests!==0||r.numTodoTests!==0||(r.numRuntimeErrorTestSuites??0)!==0||r.testResults.length!==expected.size)throw Error('Incomplete continuation collection');
+            for(const suite of r.testResults){const path=relative(process.cwd(),suite.name).replaceAll('\\','/'),n=expected.get(path),a=suite.assertionResults;if(!expected.delete(path)||suite.status!=='passed'||a.length!==n||new Set(a.map(t=>t.fullName)).size!==n||a.some(t=>t.status!=='passed'||!t.fullName||t.failureMessages.length))throw Error('Incomplete continuation suite');}if(expected.size)throw Error('Missing continuation suite');
+          }
           NODE
       - run: npm run build
       - name: Observe the actual runner without expanding signed package trust

@@ -173,6 +173,7 @@ export function inspectCostCoverageSource(
   );
   if (rows.length !== 1)
     throw Error('Unique exact recorded cost source required');
+  assertCostCoveragePathCurrent(view);
   return rows[0];
 }
 export async function continueCostCoverageSource(

@@ -1,3 +1,18 @@
+# Continued execution from accepted exact762 · actual roster
+
+| Agent                                       | Bounded result                                                                                                                                                           | Branch / drafts                                                                                    |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
+| `/root/cycle25_finance_intelligence_resume` | Field original-handle custody and Finance final current-authority guard; Offline audited unchanged                                                                       | `codex/cycle33-execution-field-finance-offline`261; `codex/cycle33-execution-finance-selection`264 |
+| `/root/cycle33_independent_review`          | Owner filter capture and Customer service-lineage original handles; Growth audited unchanged. Separate peer review of Main tooling excludes its own native code          | `codex/cycle33-execution-customer-growth-owner`262; `codex/cycle33-execution-customer-lineage`263  |
+| `/root/cycle30_field_growth`                | Exact762 executed-tree/native review, two hosted artifact validations,270 resource and cancellation classifications; independently reviews all four new native authors   | Read-only evidence/review; no new product author                                                   |
+| `/root`                                     | Exact shared-source successors, legacy source compatibility,142/128 combined CI collection, same-environment three-brand tests, registers and D1–D3/recovery preparation | `codex/cycle33-execution-closeout`, separate combined child draft                                  |
+
+At most three children work beside Main; completed authors are not described as
+simultaneously running. Every native author is an exact M1/A2 sole child of762.
+Publication adds only the same five reviewed build-time support paths. Main's
+source manifest retains full native/published SHAs and companion bytes. No
+operational owner is assigned and no existing draft is merged or promoted.
+
 # Cycle33 · bounded assignments and source ownership
 
 ## Next bounded execution · corrective stack remains draft

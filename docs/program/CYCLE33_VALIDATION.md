@@ -1,3 +1,57 @@
+# Continued execution · actual report boundaries
+
+Four exact native authors are independently reviewed: Field192c077, Owner6584156,
+Customer86416ef and Finance98e4c39. The source manifest records all full SHAs,
+M1/A2 deltas, unchanged parent762, publication heads/drafts and owned bytes.
+
+- Field: parent3RED; retained71 and28unique new PASS across96PASS/3new-harnessFAIL
+  then corrected3PASS/25filtered. UNKNOWN retains the original known appended ID;
+  no final review outcome or replay is inferred.
+- Owner: parent3RED; new19PASS and separate retained81PASS.
+- Customer: corrected parent3RED; initial13PASS/6new-harnessFAIL, corrected-six
+  3PASS/3FAIL, corrected final-three3PASS/16filtered cover19unique cases. Separate
+  original service-source56PASS is not the missing independent C23 fifty-case file.
+- Finance: parent3RED; actual82PASS contains22new and60retained cases,0skips.
+- Main: an initial three-author source report passes168cases. The final four-author
+  source51 plus retained C22/C23/C24 validators128 pass179cases; three new integration
+  tests fail because a new harness incorrectly assumes identity on a projected graph.
+  A correction then reaches native denial of the revoked canonical read (3new
+  harness failures). Only the new test is corrected to use original identity and
+  receipt references, explicitly require revoked-read denial and compare canonical
+  state through the independently current remaining owner. The final focused report
+  passes3combined-brand cases plus the strengthened literal-pin case,50filtered.
+  No product guard changes for these harness mistakes. No single142/182 local
+  passing report is claimed. Exact raw hashes remain in the structured closeout.
+
+Strict types, scoped lint, build, feature/source integrity and original128protected/
+5locks/13bindings pass. The existing1.49MB bundle warning remains; no performance
+repair or visual approval is inferred. The combined child must independently pass
+its own clean142new/128retained source checks, retained83 regressions and unchanged
+9native/3OFF/strict scoped collector. Actual parent762 hosted acceptance is separate.
+No browser capture is launched before the new source is committed. No original
+assertion, test body, timeout, migration, dependency or signed-package rule changes.
+
+# Cycle33 execution continuation · accepted exact762 dedicated scope
+
+Draft260 at `762e6fa590d3ef9366052db0df34bb02485973c3` now has independently
+verified push42181118126 and PR42181190833:83/83 application cases,9/9 original
+native browser cases and3/3 production-OFF cases PASS. Both execute tree
+`36712ced7b2d997a0dbfbf467447a188d581875c`; PR carrierb5e1c257 has the same
+complete tree. The original strict scoped collector verifies63PNG hashes,
+9keyboard journeys and369trusted events per event. Its76capture-source files
+plus2 additional execution-bound files are not a complete transitive-runtime
+proof, visual approval or whole Foundation acceptance. All12 initial/final source
+bindings match and unchanged=true. Original assertions/budgets/retries remain.
+
+Stored270 evidence proves slower PR execution, not a sole cause:459.131s push
+versus830.116s PR;249 common passing IDs have median1.883x duration. Both report
+4CPU, with only11 event-boundary samples; reporter CPU is not worker CPU.
+Worker/event-loop/source-phase/I/O/host scheduling evidence is absent. The18
+explicit30-second deadlines and3 dependent C18 assertions remain failures. No
+cohort runtime, assertion, timeout or orchestration changes follow; the independent
+C23 fifty-case coverage gap remains distinct. Original historical failures and
+Foundation cancellations are preserved. No successful check was manually rerun.
+
 # Next bounded execution after corrective256
 
 Parent39b5 and unchanged Main04f remain separate from new author, combined and hosted

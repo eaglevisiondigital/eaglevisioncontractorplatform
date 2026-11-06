@@ -367,5 +367,166 @@
       "exact_clean_hosted_evidence": "PENDING_NEW_HEAD",
       "no_report_identity_rewrite": true
     }
+  },
+  "execution_continuation": {
+    "parent_commit": "762e6fa590d3ef9366052db0df34bb02485973c3",
+    "parent_draft_pr": 260,
+    "parent_tree": "36712ced7b2d997a0dbfbf467447a188d581875c",
+    "executed_candidate_review_sha256": "088d01bfc0c45798bf6c14556b4e06bc2be802c3453ada069b09efb3323f456c",
+    "verified_dedicated_evidence_sha256": "f003adc8b8c0e1535d9c8aeed7f514f98b943ff9860716e4c43e27ee64611acc",
+    "original270_resource_analysis_cause": "UNKNOWN_ENVIRONMENT_VS_APPLICATION_NOT_ESTABLISHED",
+    "business_authority": false,
+    "restore_adapter": false,
+    "physical_duplicate": "UNKNOWN_UNVERIFIED",
+    "source_packages": [
+      {
+        "module": "Field",
+        "pr": 261,
+        "branch": "codex/cycle33-execution-field-finance-offline",
+        "published_head": "a262e0a023dd5b9617ed5b51a4bd71eb902f982c",
+        "author_commit": "192c07796de9562735d53fd3ea9db728ac98ce57",
+        "author": "/root/cycle25_finance_intelligence_resume",
+        "doc": "docs/program/CYCLE33_EXECUTION_TASK_CONTINUITY.md",
+        "owned_files": [
+          {
+            "path": "docs/program/CYCLE33_EXECUTION_TASK_CONTINUITY.md",
+            "sha256": "ef30eced19e28ffb4121125065c736772c03c5179bff7757c1f57af217fec188",
+            "blob": "62adcdb32d55a20f5399716714485e3ed1d05591"
+          },
+          {
+            "path": "src/lib/workflows/task-receipt-reconciliation.ts",
+            "sha256": "c9ee2f8b6f36781ff9b61cf9bac21d5772594d28a73d577705cdabb13733ea5f",
+            "blob": "af26abbb1277193302283ea4288132761df629cc"
+          },
+          {
+            "path": "tests/cycle33-execution-task-continuity.test.ts",
+            "sha256": "864b64e8510abfc1a692b43d0aaabb239ecd79caba8f23da21800cafcd422b96",
+            "blob": "0206d3339b4e75b3eec2461f2d1d81116fe234ae"
+          }
+        ],
+        "current_ci": "SEPARATELY_OBSERVED_NOT_INHERITED"
+      },
+      {
+        "module": "Owner",
+        "pr": 262,
+        "branch": "codex/cycle33-execution-customer-growth-owner",
+        "published_head": "2f59268e93548ebdd3b66dd1df6d99b937e9dd45",
+        "author_commit": "65841565f72b42a485b51e4b804837b53da63cfe",
+        "author": "/root/cycle33_independent_review",
+        "doc": "docs/program/CYCLE33_OWNER_COMPARISON_INPUT_CUSTODY.md",
+        "owned_files": [
+          {
+            "path": "docs/program/CYCLE33_OWNER_COMPARISON_INPUT_CUSTODY.md",
+            "sha256": "6aa420af561f6461289884c0718d5c6b3de54a9796e5e5517cc3f6de22bda2f6",
+            "blob": "6100d298fe5d4e65d2eaa7186a715f006e12de98"
+          },
+          {
+            "path": "src/lib/workflows/priority-saved-revisions.ts",
+            "sha256": "5095511d5e73bc3c6afbad7c192725d4164b2ac9ea7032d7d106625df6873c7a",
+            "blob": "95fac310b1c7509d65726fb34231bda71d247c8d"
+          },
+          {
+            "path": "tests/cycle33-owner-comparison-input-custody.test.ts",
+            "sha256": "c219b94c0081bc2fd76e635c60f1b889ce4850cc600d212be0614c4bb991f6ca",
+            "blob": "1af75ecbaeb19f87f4fc6d8a1ae32382ade52228"
+          }
+        ],
+        "current_ci": "SEPARATELY_OBSERVED_NOT_INHERITED"
+      },
+      {
+        "module": "Customer",
+        "pr": 263,
+        "branch": "codex/cycle33-execution-customer-lineage",
+        "published_head": "e6fbe7e7b82322d32d6392a8fcc9e7f8c72b6486",
+        "author_commit": "86416efaafc5f968bce8aa61c911371b576ddd7c",
+        "author": "/root/cycle33_independent_review",
+        "doc": "docs/program/CYCLE33_SERVICE_LINEAGE_HANDLE_CAPTURE.md",
+        "owned_files": [
+          {
+            "path": "docs/program/CYCLE33_SERVICE_LINEAGE_HANDLE_CAPTURE.md",
+            "sha256": "dbc91f6dab2188cd382a0b6876aaf3384cd9bce06e9d5f5ffb92bf05fc0938b5",
+            "blob": "3b709c03d9771a04c39c48938b6006b6318b66fa"
+          },
+          {
+            "path": "src/lib/workflows/service-source-review.ts",
+            "sha256": "4218e79c055aa7ea97bb99e66b62168af732e47d98e9a433cb6fd409e49345f8",
+            "blob": "c4c861c8131b721886e0b6b97fd6e548f97610e8"
+          },
+          {
+            "path": "tests/cycle33-service-lineage-handle-capture.test.ts",
+            "sha256": "2cd43b1b7c706edf0a24576afe77f1617c790de380a72b959c482374f35e8e8e",
+            "blob": "de80e755ddc13dc1e0afe4d15c70041485a2d9ef"
+          }
+        ],
+        "current_ci": "SEPARATELY_OBSERVED_NOT_INHERITED"
+      },
+      {
+        "module": "Finance",
+        "pr": 264,
+        "branch": "codex/cycle33-execution-finance-selection",
+        "published_head": "0a435277d5c35a92814cadb6d1562c9b770f6e32",
+        "author_commit": "98e4c39f3135b0b8177e2cc50980c1814fdcb2ff",
+        "author": "/root/cycle25_finance_intelligence_resume",
+        "doc": "docs/program/CYCLE33_EXECUTION_COST_SELECTION.md",
+        "owned_files": [
+          {
+            "path": "docs/program/CYCLE33_EXECUTION_COST_SELECTION.md",
+            "sha256": "5cd121198a8a0be08ebf71a1333039f945b1cf01970a938783fa8e81b41fd433",
+            "blob": "18c29b9536255926a186f78c027ca17382ec3884"
+          },
+          {
+            "path": "src/lib/workflows/cost-coverage-path.ts",
+            "sha256": "70a8d82766f4807de28410f3bafbbe4a0a649d6d208785735e039182c52dfb33",
+            "blob": "4e774a777ed07494f447e8dfa0e08aa03ee91ddf"
+          },
+          {
+            "path": "tests/cycle33-execution-cost-selection.test.ts",
+            "sha256": "3882009f942e219c632b063edd7368082181038e23f781d5b086561c885b1b0e",
+            "blob": "c0a706fbc81c2a5638c919a0af49b8e992a22a9c"
+          }
+        ],
+        "current_ci": "SEPARATELY_OBSERVED_NOT_INHERITED"
+      }
+    ],
+    "shared_support_paths": [
+      "scripts/cycle25-source-lineage.mjs",
+      "scripts/check-cycle19-integrity.mjs",
+      "scripts/check-cycle22.mjs",
+      "scripts/check-cycle23.mjs",
+      "scripts/check-cycle24.mjs"
+    ],
+    "shared_support_sha256": {
+      "scripts/cycle25-source-lineage.mjs": "7624b4fb0a4ebf1f524ae88ac345c767e6842de9ab3bb5cbfb9fa361552cc424",
+      "scripts/check-cycle19-integrity.mjs": "5b6fb2933c9cee09c84f05d22523a65e529fc12bd6bb071c9dcc5e956f3403a8",
+      "scripts/check-cycle22.mjs": "eab6b254786d6766d33baf56424476755d7c9d3384688272bb0f0fd384efc48d",
+      "scripts/check-cycle23.mjs": "71c68461283f7dc13cc08c7e74657e74aabaeaf7a706cc403996130841efaaf4",
+      "scripts/check-cycle24.mjs": "806cf2f10c3ae9161dda16734cdb34c609333878eab0aa675d5069ad820afcd7"
+    },
+    "preserved_security_correction_paths": [
+      "src/lib/workflows/maintenance-plan-correction.ts",
+      "src/lib/workflows/offline-source-protocol.ts"
+    ],
+    "new_application_cases": {
+      "field": 28,
+      "finance": 22,
+      "customer": 19,
+      "owner": 19,
+      "source_admission": 51,
+      "combined_brands": 3,
+      "total": 142
+    },
+    "retained_source_validator_cases": {
+      "C22": 58,
+      "C23": 47,
+      "C24": 23,
+      "total": 128
+    },
+    "new_whole_candidate_ci": "NOT_INHERITED_FROM_ACCEPTED762_PARENT",
+    "independent_native_reviews": {
+      "field": "6124f0d321885870d76d511d97bca3ad9a95db676682e4244c2fc48960518aab",
+      "owner": "168154207f026f9a7077a32dae7cac84cf706265dc0765748c57651f333fa4c1",
+      "customer": "631a2aa962750b19f49f4010400b31eb5fac3ede0039d7611674d6a27c5233af",
+      "finance": "97a58a8209c650fc04069d826ffbc5d579d733fcbbfd7e20817622e49e3b4f3a"
+    }
   }
 }

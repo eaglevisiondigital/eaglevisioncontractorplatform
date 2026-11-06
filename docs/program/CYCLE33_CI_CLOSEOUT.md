@@ -1,3 +1,24 @@
+# Cycle33 execution continuation · accepted exact762 dedicated scope
+
+Draft260 at `762e6fa590d3ef9366052db0df34bb02485973c3` now has independently
+verified push42181118126 and PR42181190833:83/83 application cases,9/9 original
+native browser cases and3/3 production-OFF cases PASS. Both execute tree
+`36712ced7b2d997a0dbfbf467447a188d581875c`; PR carrierb5e1c257 has the same
+complete tree. The original strict scoped collector verifies63PNG hashes,
+9keyboard journeys and369trusted events per event. Its76capture-source files
+plus2 additional execution-bound files are not a complete transitive-runtime
+proof, visual approval or whole Foundation acceptance. All12 initial/final source
+bindings match and unchanged=true. Original assertions/budgets/retries remain.
+
+Stored270 evidence proves slower PR execution, not a sole cause:459.131s push
+versus830.116s PR;249 common passing IDs have median1.883x duration. Both report
+4CPU, with only11 event-boundary samples; reporter CPU is not worker CPU.
+Worker/event-loop/source-phase/I/O/host scheduling evidence is absent. The18
+explicit30-second deadlines and3 dependent C18 assertions remain failures. No
+cohort runtime, assertion, timeout or orchestration changes follow; the independent
+C23 fifty-case coverage gap remains distinct. Original historical failures and
+Foundation cancellations are preserved. No successful check was manually rerun.
+
 # Exact Cycle 33 hosted closeout evidence
 
 ## Next execution · final corrective-head Foundation analysis
