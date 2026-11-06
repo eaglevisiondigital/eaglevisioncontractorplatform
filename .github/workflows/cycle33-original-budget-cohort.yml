@@ -1,0 +1,165 @@
+name: Bounded original-budget deadline cohort
+on:
+  push:
+    branches: ['codex/cycle33-original-budget-cohort']
+  pull_request:
+    branches: ['codex/cycle33-source-diagnostic-compatibility']
+    paths:
+      - '.github/workflows/cycle33-original-budget-cohort.yml'
+      - 'docs/program/CYCLE33_ORIGINAL_BUDGET_COHORT.md'
+permissions:
+  contents: read
+concurrency:
+  group: original-budget-cohort-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-budget-270-case-cohort:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: driver
+          fetch-depth: 0
+      - name: Frozen corrected subject and original test history
+        uses: actions/checkout@v4
+        with:
+          path: subject
+          ref: 39b5b1977f2e18c1c7d534667260ce5ed05660f3
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+          cache-dependency-path: subject/package-lock.json
+      - run: npm ci
+        working-directory: subject
+      - name: Bind frozen full subject, unchanged tests and actual driver
+        id: initial-source
+        run: |
+          mkdir -p driver/artifacts/cycle33/original-budget-cohort
+          node --input-type=module <<'NODE'
+          import{createHash}from'node:crypto';import{execFileSync,spawnSync}from'node:child_process';import{readFileSync,writeFileSync}from'node:fs';
+          const git=(cwd,...args)=>execFileSync('git',['--no-replace-objects',...args],{cwd,encoding:'utf8',stdio:['ignore','pipe','ignore']}).trim();
+          const subject='39b5b1977f2e18c1c7d534667260ce5ed05660f3',tree='0299e68550f0b86032a656ab26e4a6d40b70769e';
+          for(const cwd of ['driver','subject'])if(spawnSync('git',['--no-replace-objects','diff','--quiet','HEAD','--'],{cwd}).status!==0||git(cwd,'ls-files','--others','--exclude-standard'))throw Error('Unreviewed tracked or untracked source');
+          if(git('subject','rev-parse','HEAD')!==subject||git('subject','rev-parse','HEAD^{tree}')!==tree)throw Error('Wrong frozen subject');
+          const hash=p=>createHash('sha256').update(readFileSync(p)).digest('hex');
+          const binding={subject:{source:subject,tree,tracked_clean:true,tests_tree:git('subject','rev-parse','HEAD:tests'),
+            files:Object.fromEntries(['package.json','package-lock.json','vite.config.ts','scripts/cycle33-foundation-reporter.mjs','scripts/cycle33-foundation-evidence.mjs','scripts/cycle25-source-lineage.mjs'].map(p=>[p,hash('subject/'+p)]))},
+            driver:{source:git('driver','rev-parse','HEAD'),tree:git('driver','rev-parse','HEAD^{tree}'),tracked_clean:true,workflow_sha256:hash('driver/.github/workflows/cycle33-original-budget-cohort.yml')}};
+          writeFileSync('driver/artifacts/cycle33/original-budget-cohort/before.json',JSON.stringify(binding,null,2)+'\n');
+          NODE
+      - name: Original270 whole-file cases with four workers and unchanged30second budgets
+        id: native270
+        working-directory: subject
+        run: >-
+          npx vitest run
+          tests/cycle18-independent-integration-review.test.ts
+          tests/cycle22-current-owner-priorities.test.ts
+          tests/cycle23-verified-owner-briefing.test.ts
+          tests/cycle24-independent-integration-review.test.ts
+          tests/cycle24-owner-action-verification.test.ts
+          tests/cycle25-combined-integration.test.ts
+          tests/cycle31-owner-navigation-runtime.test.ts
+          tests/cycle32-owner-filter-navigation.test.ts
+          tests/cycle25-service-evidence-continuity.test.ts
+          --maxWorkers=4 --retry=0 --shard=1/1 --reporter=json
+          --reporter=./scripts/cycle33-foundation-reporter.mjs
+          --outputFile=${{ github.workspace }}/driver/artifacts/cycle33/original-budget-cohort/results.json
+      - name: Retain original native observations and verify full final source
+        if: always()
+        id: final-source
+        run: |
+          node --input-type=module <<'NODE'
+          import{createHash}from'node:crypto';import{execFileSync,spawnSync}from'node:child_process';import{copyFileSync,existsSync,mkdirSync,readFileSync,unlinkSync,writeFileSync}from'node:fs';
+          const directory='driver/artifacts/cycle33/original-budget-cohort';mkdirSync(directory,{recursive:true});
+          const observation='subject/artifacts/foundation/application-1/observations.json';
+          if(existsSync(observation)){copyFileSync(observation,directory+'/observations.json');unlinkSync(observation);}
+          const git=(cwd,...args)=>execFileSync('git',['--no-replace-objects',...args],{cwd,encoding:'utf8',stdio:['ignore','pipe','ignore']}).trim();
+          const before=JSON.parse(readFileSync(directory+'/before.json'));
+          for(const cwd of ['driver','subject'])if(spawnSync('git',['--no-replace-objects','diff','--quiet','HEAD','--'],{cwd}).status!==0||git(cwd,'ls-files','--others','--exclude-standard'))throw Error('Unreviewed final source');
+          const hash=p=>createHash('sha256').update(readFileSync(p)).digest('hex');
+          const after={subject:{source:git('subject','rev-parse','HEAD'),tree:git('subject','rev-parse','HEAD^{tree}'),tracked_clean:true,tests_tree:git('subject','rev-parse','HEAD:tests'),
+            files:Object.fromEntries(Object.keys(before.subject.files).map(p=>[p,hash('subject/'+p)]))},
+            driver:{source:git('driver','rev-parse','HEAD'),tree:git('driver','rev-parse','HEAD^{tree}'),tracked_clean:true,workflow_sha256:hash('driver/.github/workflows/cycle33-original-budget-cohort.yml')}};
+          writeFileSync(directory+'/after.json',JSON.stringify(after,null,2)+'\n');
+          if(JSON.stringify(before)!==JSON.stringify(after))throw Error('Subject or driver changed during execution');
+          NODE
+      - name: Require strict native270 terminal evidence, never full Foundation PASS
+        if: always()
+        env:
+          INITIAL_SOURCE_OUTCOME: ${{ steps.initial-source.outcome }}
+          FINAL_SOURCE_OUTCOME: ${{ steps.final-source.outcome }}
+          NATIVE_TEST_OUTCOME: ${{ steps.native270.outcome }}
+        run: |
+          node --input-type=module <<'NODE'
+          import{readFileSync,writeFileSync}from'node:fs';import{resolve,relative}from'node:path';
+          const directory='driver/artifacts/cycle33/original-budget-cohort';
+          const scope='BOUNDED_ORIGINAL_BUDGET_4WORKER_COHORT_NOT_FULL_FOUNDATION';
+          const fail=()=>{throw Error('Missing, changed, failed or incomplete original-budget cohort');};
+          let recorded;
+          try{
+            if(process.env.INITIAL_SOURCE_OUTCOME!=='success'||process.env.FINAL_SOURCE_OUTCOME!=='success')fail();
+            const json=n=>JSON.parse(readFileSync(directory+'/'+n));
+            const before=json('before.json'),after=json('after.json'),o=json('observations.json'),r=json('results.json');
+            const expected={
+              'tests/cycle18-independent-integration-review.test.ts':58,
+              'tests/cycle22-current-owner-priorities.test.ts':30,
+              'tests/cycle23-verified-owner-briefing.test.ts':27,
+              'tests/cycle24-independent-integration-review.test.ts':54,
+              'tests/cycle24-owner-action-verification.test.ts':27,
+              'tests/cycle25-combined-integration.test.ts':16,
+              'tests/cycle31-owner-navigation-runtime.test.ts':15,
+              'tests/cycle32-owner-filter-navigation.test.ts':12,
+              'tests/cycle25-service-evidence-continuity.test.ts':31,
+            };
+            const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+            if(!same(before,after)||before.subject.tracked_clean!==true||before.driver.tracked_clean!==true||before.subject.source!=='39b5b1977f2e18c1c7d534667260ce5ed05660f3'||before.subject.tree!=='0299e68550f0b86032a656ab26e4a6d40b70769e'||o.binding.source!==before.subject.source||o.binding.tree!==before.subject.tree||!['passed','failed'].includes(o.reason)||o.errors!==0||!same(o.config,{testTimeout:30000,hookTimeout:30000,maxWorkers:4,retry:0,shard:{index:1,count:1}}))fail();
+            if(before.subject.files?.['scripts/cycle25-source-lineage.mjs']!=='7110cd7f48fba5bc7238c4e73bb23ec9d03615dd720c34e4bcd153f390587395')fail();
+            for(const p of ['package.json','package-lock.json','vite.config.ts','scripts/cycle33-foundation-reporter.mjs','scripts/cycle33-foundation-evidence.mjs'])if(o.binding.files?.[p]!==before.subject.files?.[p])fail();
+            if(!Array.isArray(o.modules)||o.modules.length!==9||new Set(o.modules.map(m=>m.file)).size!==9)fail();
+            const native=[],seen=new Set();
+            for(const m of o.modules){
+              if(!Object.hasOwn(expected,m.file)||m.ended!==true||m.errors!==0||!Array.isArray(m.collected)||!Array.isArray(m.results)||m.collected.length!==expected[m.file]||m.results.length!==expected[m.file])fail();
+              const collection=new Map();
+              for(const c of m.collected){if(typeof c.id!=='string'||!c.id||collection.has(c.id)||c.mode!=='run'||c.timeout!==30000)fail();collection.set(c.id,c);}
+              for(const c of m.results){
+                const original=collection.get(c.id),key=m.file+'\0'+c.id;
+                if(!original||seen.has(key)||original.fullName!==c.fullName||original.jsonName!==c.jsonName||c.mode!=='run'||c.timeout!==30000||c.retry!==0||c.repeat!==0||!Number.isFinite(c.duration_ms)||c.duration_ms<0||!['passed','failed'].includes(c.status)||!Number.isInteger(c.errors)||c.errors<0||!Array.isArray(c.error_evidence)||c.error_evidence.length!==c.errors||(c.status==='passed'&&c.errors!==0))fail();
+                seen.add(key);collection.delete(c.id);native.push({...c,file:m.file});
+              }
+              if(collection.size)fail();
+            }
+            const required=new Set(['tests/cycle25-service-evidence-continuity.test.ts'+'\0'+'900902519_17','tests/cycle32-owner-filter-navigation.test.ts'+'\0'+'-1821104422_9']);
+            for(const c of native)required.delete(c.file+'\0'+c.id);if(native.length!==270||seen.size!==270||required.size)fail();
+            const failed=native.filter(c=>c.status==='failed');
+            if(r.success!==(failed.length===0)||r.numTotalTests!==270||r.numPassedTests!==270-failed.length||r.numFailedTests!==failed.length||r.numPendingTests!==0||r.numTodoTests!==0||r.numPendingTestSuites!==0||(r.numRuntimeErrorTestSuites??0)!==0||(failed.length===0&&r.numFailedTestSuites!==0)||!Array.isArray(r.testResults)||r.testResults.length!==9)fail();
+            const bag=new Map();for(const c of native){const key=c.file+'\0'+c.jsonName+'\0'+c.status;bag.set(key,(bag.get(key)??0)+1);}
+            const files=new Set();
+            for(const m of r.testResults){const file=relative(resolve('subject'),m.name).replaceAll('\\','/');if(!Object.hasOwn(expected,file)||files.has(file)||m.status!==(native.some(c=>c.file===file&&c.status==='failed')?'failed':'passed')||!Array.isArray(m.assertionResults)||m.assertionResults.length!==expected[file])fail();files.add(file);
+              for(const c of m.assertionResults){const key=file+'\0'+c.fullName+'\0'+c.status,n=bag.get(key)??0;if(!n||!Array.isArray(c.failureMessages)||(c.status==='passed'&&c.failureMessages.length))fail();if(n===1)bag.delete(key);else bag.set(key,n-1);}}
+            if(bag.size||files.size!==9)fail();
+            if(failed.length===0&&(o.reason!=='passed'||process.env.NATIVE_TEST_OUTCOME!=='success'))fail();
+            recorded={scope,verdict:failed.length?'COMPLETE_BOUNDED_COHORT_RECORDED_FAILURES':'EXACT270_BOUNDED_COHORT_PASS',before,after,requested_maxWorkers:4,original_testTimeout:30000,original_hookTimeout:30000,retry:0,files:9,total:270,passed:270-failed.length,failed:failed.length,skipped:0,failed_cases:failed.map(c=>({file:c.file,id:c.id,name:c.fullName,duration_ms:c.duration_ms,error_evidence:c.error_evidence})),full_foundation_pass:false};
+            if(failed.length||o.reason!=='passed'||process.env.NATIVE_TEST_OUTCOME!=='success')fail();
+            writeFileSync(directory+'/summary.json',JSON.stringify(recorded,null,2)+'\n');
+          }catch{
+            writeFileSync(directory+'/summary.json',JSON.stringify(recorded??{scope,verdict:'INCOMPLETE_OR_CHANGED_BOUNDED_COHORT',full_foundation_pass:false},null,2)+'\n');throw Error('Original-budget270 cohort remains failed or unverified');
+          }
+          NODE
+      - name: Actual driver and subject checkout authority
+        if: always()
+        run: |
+          mkdir -p driver/artifacts/cycle33/original-budget-cohort
+          node --input-type=module <<'NODE'
+          import{execFileSync}from'node:child_process';import{writeFileSync}from'node:fs';
+          const git=(cwd,...args)=>execFileSync('git',['--no-replace-objects',...args],{cwd,encoding:'utf8'}).trim();
+          writeFileSync('driver/artifacts/cycle33/original-budget-cohort/checkouts.json',JSON.stringify(Object.fromEntries(['driver','subject'].map(cwd=>[cwd,{source:git(cwd,'rev-parse','HEAD'),tree:git(cwd,'rev-parse','HEAD^{tree}')} ])),null,2)+'\n');
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle33-original-budget-270-cohort
+          path: driver/artifacts/cycle33/original-budget-cohort/
+          retention-days: 7
