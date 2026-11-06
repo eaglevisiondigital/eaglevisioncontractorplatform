@@ -1,0 +1,83 @@
+name: Cycle33 V1 exact revocation probe correction
+on:
+  push:
+    branches: ['codex/cycle33-v1-revocation-ci-reviewed']
+  pull_request:
+    branches: ['codex/cycle33-v1-source-continuation']
+    paths: ['.github/workflows/cycle33-v1-revocation-ci.yml']
+permissions:
+  contents: read
+concurrency:
+  group: v1-revocation-probe-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  exact-original-continuation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - run: npm ci
+      - name: Bind actual clean candidate and unchanged runtime
+        run: |
+          mkdir -p artifacts/cycle33/revocation-probe
+          node --input-type=module <<'NODE'
+          import{execFileSync}from'node:child_process';import{readFileSync,writeFileSync}from'node:fs';import{createHash}from'node:crypto';import os from'node:os';
+          import{cycle33V1RevocationProbe as f,admitCycle33V1RevocationProbe}from'./scripts/cycle25-source-lineage.mjs';
+          const git=(...a)=>execFileSync('git',['--no-replace-objects',...a],{encoding:'utf8'}).trim();
+          if(git('status','--porcelain','--untracked-files=all'))throw Error('Clean candidate required');
+          const frozen=['src','server','supabase','public','package.json','package-lock.json','vite.config.ts','playwright.config.ts','docs/FEATURE_ACCEPTANCE_EVIDENCE.json','docs/program/DESIGN_SYSTEM_CONTRACT.json','docs/program/CYCLE4_PROTECTED_SOURCE.json'];
+          if(git('diff','--name-only',f.parent,'HEAD','--',...frozen))throw Error('CI-only correction cannot change runtime/dependencies/design or canonical features');
+          const admitted=admitCycle33V1RevocationProbe({path:f.path,sha256:f.published_sha256,blob:f.published_blob},readFileSync(f.path));
+          const paths=[f.path,'scripts/cycle25-source-lineage.mjs','tests/cycle33-revocation-probe-source.test.ts','tests/cycle33-execution-task-continuity.test.ts','tests/cycle33-owner-comparison-input-custody.test.ts','tests/cycle33-service-lineage-handle-capture.test.ts','tests/cycle33-execution-source-admission.test.ts','tests/cycle33-execution-integrated-authority.test.ts','.github/workflows/cycle33-v1-revocation-ci.yml','vite.config.ts','package.json','package-lock.json'];
+          writeFileSync('artifacts/cycle33/revocation-probe/binding.json',JSON.stringify({source:git('rev-parse','HEAD'),tree:git('rev-parse','HEAD^{tree}'),runtime_parent:f.parent,runtime_changed:[],admitted,hashes:Object.fromEntries(paths.map(p=>[p,createHash('sha256').update(readFileSync(p)).digest('hex')])),runner:{platform:os.platform(),release:os.release(),arch:os.arch(),node:process.version,available_parallelism:os.availableParallelism(),total_memory:os.totalmem()},limits:'Coarse process/OS observation only; not per-worker or historical resource reconstruction'},null,2)+'\n');
+          NODE
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: npm run format:check
+      - run: node scripts/check-cycle24.mjs
+      - name: New strict test-only source admission cases
+        run: >-
+          npx vitest run tests/cycle33-revocation-probe-source.test.ts
+          --maxWorkers=1 --retry=0 --reporter=json
+          --outputFile=artifacts/cycle33/revocation-probe/source.json
+      - name: Original142 continuation collection, original budgets and zero retries
+        run: >-
+          npx vitest run
+          tests/cycle33-execution-task-continuity.test.ts
+          tests/cycle33-owner-comparison-input-custody.test.ts
+          tests/cycle33-service-lineage-handle-capture.test.ts
+          tests/cycle33-execution-cost-selection.test.ts
+          tests/cycle33-execution-source-admission.test.ts
+          tests/cycle33-execution-integrated-authority.test.ts
+          --maxWorkers=1 --retry=0 --reporter=json
+          --outputFile=artifacts/cycle33/revocation-probe/continuation.json
+      - name: Require complete exact collections without skips
+        run: |
+          node --input-type=module <<'NODE'
+          import{readFileSync}from'node:fs';import{relative}from'node:path';
+          for(const[file,counts]of Object.entries({'source.json':{'tests/cycle33-revocation-probe-source.test.ts':48},'continuation.json':{'tests/cycle33-execution-task-continuity.test.ts':28,'tests/cycle33-owner-comparison-input-custody.test.ts':19,'tests/cycle33-service-lineage-handle-capture.test.ts':19,'tests/cycle33-execution-cost-selection.test.ts':22,'tests/cycle33-execution-source-admission.test.ts':51,'tests/cycle33-execution-integrated-authority.test.ts':3}})){
+          const r=JSON.parse(readFileSync('artifacts/cycle33/revocation-probe/'+file)),e=new Map(Object.entries(counts)),n=Object.values(counts).reduce((a,b)=>a+b,0);
+          if(r.success!==true||r.numTotalTests!==n||r.numPassedTests!==n||r.numFailedTests!==0||r.numPendingTests!==0||r.numTodoTests!==0||r.numFailedTestSuites!==0||r.numPendingTestSuites!==0||(r.numRuntimeErrorTestSuites??0)!==0||r.testResults.length!==e.size)throw Error('Incomplete original142 or new strict source collection');
+          for(const s of r.testResults){const p=relative(process.cwd(),s.name).replaceAll('\\','/'),expected=e.get(p),a=s.assertionResults;if(!e.delete(p)||s.status!=='passed'||a.length!==expected||new Set(a.map(t=>t.fullName)).size!==expected||a.some(t=>t.status!=='passed'||!t.fullName||t.failureMessages.length))throw Error('Incomplete source-bound suite');}if(e.size)throw Error('Missing exact suite');}
+          NODE
+      - name: Final unchanged source binding
+        if: always()
+        run: |
+          node --input-type=module <<'NODE'
+          import{execFileSync}from'node:child_process';import{readFileSync,writeFileSync}from'node:fs';import{createHash}from'node:crypto';
+          const git=(...a)=>execFileSync('git',['--no-replace-objects',...a],{encoding:'utf8'}).trim(),b=JSON.parse(readFileSync('artifacts/cycle33/revocation-probe/binding.json'));
+          const unchanged=b.source===git('rev-parse','HEAD')&&b.tree===git('rev-parse','HEAD^{tree}')&&!git('status','--porcelain','--untracked-files=all')&&Object.entries(b.hashes).every(([p,h])=>createHash('sha256').update(readFileSync(p)).digest('hex')===h);
+          writeFileSync('artifacts/cycle33/revocation-probe/final-binding.json',JSON.stringify({...b,unchanged,full_foundation_pass:false},null,2)+'\n');if(!unchanged)throw Error('Candidate changed during verification');
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle33-v1-revocation-probe-exact
+          path: artifacts/cycle33/revocation-probe/
+          retention-days: 7

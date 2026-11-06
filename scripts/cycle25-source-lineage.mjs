@@ -2253,11 +2253,35 @@ export function admitCycle33ExecutionSource(
       }
     } else throw Error('Exact current Cycle33 execution source required');
   }
-  for (const p of spec.added)
-    if (
-      !Buffer.from(ports.read(p)).equals(Buffer.from(ports.git(spec.commit, p)))
-    )
-      throw Error('Exact current Cycle33 execution companion required');
+  for (const p of spec.added) {
+    const original = Buffer.from(ports.git(spec.commit, p)),
+      actual = Buffer.from(ports.read(p));
+    if (!actual.equals(original)) {
+      if (
+        p !== cycle33V1RevocationProbe.path ||
+        spec.commit !== cycle33V1RevocationProbe.published
+      )
+        throw Error('Exact current Cycle33 execution companion required');
+      try {
+        admitCycle33V1RevocationProbe(
+          {
+            path: p,
+            sha256: createHash('sha256').update(original).digest('hex'),
+            blob: createHash('sha1')
+              .update('blob ' + original.length + '\0')
+              .update(original)
+              .digest('hex'),
+          },
+          actual,
+          ports,
+        );
+      } catch (cause) {
+        throw new Error('Exact current Cycle33 execution companion required', {
+          cause,
+        });
+      }
+    }
+  }
   return {
     module: spec.module,
     source_commit: spec.commit,
@@ -2943,11 +2967,33 @@ export function admitCycle33V1Source(path, current, previous, supplied = {}) {
   }
   for (const f of a.original_companions) {
     const bytes = Buffer.from(ports.git(a.predecessor, f.path));
-    if (
-      hash(bytes) !== f.sha256 ||
-      !Buffer.from(ports.read(f.path)).equals(bytes)
-    )
+    if (hash(bytes) !== f.sha256)
       throw Error('Exact immutable original V1 companion required');
+    const actual = Buffer.from(ports.read(f.path));
+    if (!actual.equals(bytes)) {
+      if (
+        f.path !== cycle33V1RevocationProbe.path ||
+        a.predecessor !== cycle33V1RevocationProbe.published
+      )
+        throw Error('Exact immutable original V1 companion required');
+      try {
+        admitCycle33V1RevocationProbe(
+          {
+            ...f,
+            blob: createHash('sha1')
+              .update('blob ' + bytes.length + '\0')
+              .update(bytes)
+              .digest('hex'),
+          },
+          actual,
+          ports,
+        );
+      } catch (cause) {
+        throw new Error('Exact immutable original V1 companion required', {
+          cause,
+        });
+      }
+    }
   }
   if (!Buffer.from(ports.read(path)).equals(admitted))
     throw Error('Final fresh reviewed V1 source required');
@@ -2988,6 +3034,79 @@ export function admitCycle33V1Published(
   )
     throw Error('Exact immutable published V1 bytes/blob required');
   return admitCycle33V1Source(a.path, current, bytes, ports);
+}
+
+// Test-only probe successor: retain original source pins and every assertion.
+// No runtime authority, orchestration change or business-state restoration.
+export const cycle33V1RevocationProbe = Object.freeze({
+  commit: '2784c9ab0d0f52f1bd653651081c005ac3da239d',
+  parent: '038b64acad56e436a016905dfec87aef86dcfbc8',
+  published: '98e4c39f3135b0b8177e2cc50980c1814fdcb2ff',
+  path: 'tests/cycle33-execution-cost-selection.test.ts',
+  published_sha256:
+    '3882009f942e219c632b063edd7368082181038e23f781d5b086561c885b1b0e',
+  published_blob: 'c0a706fbc81c2a5638c919a0af49b8e992a22a9c',
+  sha256: '38dc796f3028f6afe7d570273e7192c5bce3a3946315dce7239ac96734362d61',
+  blob: '484a3925307294fe0257faeb738a38c1c6953ba5',
+});
+export function admitCycle33V1RevocationProbe(file, current, supplied = {}) {
+  const ports = { ...cycle25SourcePorts, ...supplied },
+    f = cycle33V1RevocationProbe,
+    hash = (bytes) => createHash('sha256').update(bytes).digest('hex'),
+    blob = (bytes) =>
+      createHash('sha1')
+        .update('blob ' + bytes.length + '\0')
+        .update(bytes)
+        .digest('hex');
+  if (
+    file?.path !== f.path ||
+    file.sha256 !== f.published_sha256 ||
+    file.blob !== f.published_blob
+  )
+    throw Error('Exact original revocation probe metadata required');
+  if (
+    [f.published, f.parent, f.commit].some(
+      (c) => ports.type(c) !== 'commit' || ports.mode(c, f.path) !== '100644',
+    ) ||
+    ports.parent(f.commit) !== f.parent ||
+    ports.delta(f.commit) !== 'M\t' + f.path
+  )
+    throw Error('Exact sole-parent regular M1 revocation test author required');
+  const published = Buffer.from(ports.git(f.published, f.path)),
+    parent = Buffer.from(ports.git(f.parent, f.path)),
+    reviewed = Buffer.from(ports.git(f.commit, f.path));
+  if (
+    hash(published) !== f.published_sha256 ||
+    blob(published) !== f.published_blob ||
+    !parent.equals(published)
+  )
+    throw Error('Immutable original revocation test bytes required');
+  const restored = reviewed
+    .toString()
+    .replace(
+      "          if (key === 'kind') captures++;\n          if (key === 'id' && captures === 1 && !revoked) revoked = revoke(f);",
+      "          if (key === 'kind' && ++captures === 2) revoked = revoke(f);",
+    )
+    .replace('    expect(captures).toBe(1);\n', '');
+  if (!Buffer.from(restored).equals(published))
+    throw Error('Every original revocation assertion and case must remain');
+  if (
+    hash(reviewed) !== f.sha256 ||
+    blob(reviewed) !== f.blob ||
+    !Buffer.from(current).equals(reviewed) ||
+    !Buffer.from(ports.read(f.path)).equals(reviewed)
+  )
+    throw Error('Fresh exact reviewed revocation probe required');
+  if (!Buffer.from(ports.read(f.path)).equals(reviewed))
+    throw Error('Final fresh revocation probe required');
+  return {
+    module: 'single-capture-revocation-test-probe',
+    source_commit: f.commit,
+    path: f.path,
+    authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+    business_authority: false,
+    restore_adapter: false,
+  };
 }
 
 // One independently reviewed test-only successor. The historical C16 index,

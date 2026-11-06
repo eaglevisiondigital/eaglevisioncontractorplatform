@@ -3838,5 +3838,32 @@
     "original270_conflict_and_Foundation_gaps": "PRESERVED_UNRESOLVED",
     "successful_checks_manually_restarted": false,
     "release": "NOT_READY_NOT_AUTHORIZED"
+  },
+  "v1_revocation_probe_correction": {
+    "base_head": "038b64acad56e436a016905dfec87aef86dcfbc8",
+    "original_pr_run": 42267836354,
+    "original_job": 128064291857,
+    "original_collection": {
+      "total": 142,
+      "pass": 139,
+      "fail": 3,
+      "skip": 0
+    },
+    "original_source_tree": "39dfe7973845ceed495a3206e02c04677398e5bd",
+    "failure": "THREE_UNREACHED_SECOND_CAPTURE_PROBE_PREREQUISITES_NOT_TIMEOUT",
+    "same_head_push": {
+      "run": 42267758962,
+      "pass": 139,
+      "fail": 3
+    },
+    "test_only_author": "2784c9ab0d0f52f1bd653651081c005ac3da239d",
+    "native_source_changed": false,
+    "original_assertions_and_budgets": "UNCHANGED_PLUS_ONE_CAPTURE_ASSERTION",
+    "targeted_local_regression": "3_PASS_19_FILTERED",
+    "new48_local": "SPLIT_EXECUTIONS_NOT_SINGLE48PASS",
+    "new_head_ci": "PENDING_PUBLICATION_AND_OBSERVATION",
+    "successful_checks_restarted": false,
+    "historical_failures": "PRESERVED_UNRESOLVED",
+    "release": "NOT_READY_NOT_AUTHORIZED"
   }
 }
