@@ -356,6 +356,7 @@ export async function openServicePassportReport(
     detailCurrent(b);
     if (referencePin(reference) !== signature)
       throw Error('Original report reference changed');
+    detailCurrent(b);
     b.parent.inspected.add(`report:${signature}`);
     return report;
   } catch (error) {
@@ -397,6 +398,7 @@ export async function openServicePassportFinding(
     detailCurrent(b);
     if (referencePin(reference, true) !== signature)
       throw Error('Original finding reference changed');
+    detailCurrent(b);
     const result = freezePrototype({
       ...body,
       integrity: { algorithm: 'SHA-256' as const, sha256 },
