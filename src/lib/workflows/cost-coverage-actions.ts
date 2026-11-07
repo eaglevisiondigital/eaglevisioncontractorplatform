@@ -1,5 +1,6 @@
 import { freezePrototype, prototypeFields } from '../program/prototype-source';
 import {
+  assertRecordedCostRequirementsAccess,
   assertRecordedCostRequirementsCurrent,
   inspectRecordedCostSource,
   continueRecordedCostSource,
@@ -83,7 +84,7 @@ export function refreshCostCoverageActionSelection(
     });
   if (!key) return empty('NO_PREVIOUS_SELECTION');
   try {
-    assertRecordedCostRequirementsCurrent(before);
+    assertRecordedCostRequirementsAccess(before);
   } catch {
     return empty('STALE_SOURCE_RESELECT_REQUIRED');
   }
@@ -112,7 +113,7 @@ export function refreshCostCoverageActionSelection(
           : 'cost_review',
     };
   validateCostCoverageAction(current, input);
-  assertRecordedCostRequirementsCurrent(before);
+  assertRecordedCostRequirementsAccess(before);
   assertRecordedCostRequirementsCurrent(current);
   return freezePrototype({
     status: 'UNCHANGED_SOURCE_REVERIFY_REQUIRED' as const,
