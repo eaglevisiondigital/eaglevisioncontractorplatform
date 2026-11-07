@@ -1,0 +1,45 @@
+name: Exact Sales source successor admission
+on:
+  push:
+    branches: ['codex/v1-sales-source-admission']
+  pull_request:
+    branches: ['codex/v1-sales-final-authority']
+    paths: ['.github/workflows/v1-sales-source-admission.yml']
+permissions:
+  contents: read
+concurrency:
+  group: v1-sales-source-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  source-admission:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+      - run: node scripts/v1-sales-source-admission.mjs bind
+      - name: Original affected C8 through C12 source consumers
+        run: |
+          node scripts/check-cycle8-integrity.mjs
+          node scripts/check-cycle9-integrity.mjs
+          node scripts/check-cycle10-integrity.mjs
+          node scripts/check-cycle11-integrity.mjs
+          node scripts/check-cycle12-integrity.mjs
+          node scripts/feature-evidence.mjs --check
+      - name: Forty-three new source and report denial controls only
+        run: node --test --test-concurrency=1 --test-timeout=30000 --test-reporter=tap tests/v1-sales-source-admission.test.mjs > artifacts/cycle33/v1-sales-source-admission/controls.tap
+      - run: node scripts/v1-sales-source-admission.mjs controls
+      - if: always()
+        run: node scripts/v1-sales-source-admission.mjs final
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sales-source-admission-${{ github.sha }}
+          path: artifacts/cycle33/v1-sales-source-admission
+          if-no-files-found: error
