@@ -1,0 +1,41 @@
+name: V1 exact hygiene composition and source controls
+on:
+  push:
+    branches: ['codex/v1-hygiene-integration']
+  pull_request:
+    branches: ['codex/v1-c17-source-admission']
+    paths: ['.github/workflows/v1-hygiene-integration.yml']
+permissions:
+  contents: read
+concurrency:
+  group: v1-hygiene-integration-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  exact-source:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+      - run: node scripts/v1-hygiene-integration.mjs bind
+      - name: Original retained integrity and feature controls unchanged
+        run: |
+          node scripts/check-cycle17-integrity.mjs
+          node scripts/feature-evidence.mjs --check
+      - name: Nineteen new composition and source-protection controls only
+        run: node --test --test-concurrency=1 --test-timeout=30000 --test-reporter=tap tests/v1-hygiene-integration.test.mjs > artifacts/cycle33/v1-hygiene-integration/controls.tap
+      - run: node scripts/v1-hygiene-integration.mjs controls
+      - if: always()
+        run: node scripts/v1-hygiene-integration.mjs final
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v1-hygiene-integration-${{ github.sha }}
+          path: artifacts/cycle33/v1-hygiene-integration
+          if-no-files-found: error

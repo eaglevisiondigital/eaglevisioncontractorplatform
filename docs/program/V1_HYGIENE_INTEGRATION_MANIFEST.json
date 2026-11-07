@@ -1,0 +1,27 @@
+{
+  "schema": "propel-v1-hygiene-integration-v1",
+  "parent": "a415bb4b35ff9e5727ce4f1a05a8f7f00def8bbc",
+  "common": "337da476aa6061dba626aff343f0e6045331ac82",
+  "author": "a481d6b5ffdcdb82a68b69a2f4424e597939bbf0",
+  "author_files": [
+    ".gitignore",
+    ".github/workflows/v1-finance-artifact-hygiene.yml",
+    "tests/v1-finance-artifact-hygiene.test.mjs",
+    "docs/program/V1_FINANCE_ARTIFACT_HYGIENE.md"
+  ],
+  "root_files": [
+    "scripts/v1-hygiene-integration.mjs",
+    "tests/v1-hygiene-integration.test.mjs",
+    ".github/workflows/v1-hygiene-integration.yml",
+    "docs/program/V1_HYGIENE_INTEGRATION_MANIFEST.json",
+    "docs/program/V1_HYGIENE_INTEGRATION_VALIDATION.md",
+    "docs/program/V1_FIRST_PILOT_WRITER_INVENTORY.md",
+    "docs/program/V1_INTEGRATION_SCORECARD.json",
+    "docs/program/V1_FOUNDATION_COVERAGE_RECONCILIATION.json",
+    "CURRENT_BUILD_STATE.md",
+    "DECISIONS.md",
+    "docs/PROGRAM_DELIVERY_STATUS.md",
+    "docs/FEATURE_ACCEPTANCE_REGISTER.md"
+  ],
+  "authority": "SOURCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+}
