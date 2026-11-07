@@ -30,9 +30,13 @@ jobs:
       - run: npm run lint
       - run: npm run format:check
       - run: npm run features:check
-      - name: Original source consumer with finite reviewed Passport successor
-        run: node scripts/check-cycle13-integrity.mjs
-      - name: New39 provenance controls and40 authority cases plus101 affected original regressions
+      - name: Actual C13 C22 C23 C24 consumers retain original pins with finite Passport successor
+        run: |
+          node scripts/check-cycle13-integrity.mjs
+          node scripts/check-cycle22.mjs
+          node scripts/check-cycle23.mjs
+          node scripts/check-cycle24.mjs
+      - name: New50 provenance controls and40 authority cases plus101 affected original regressions
         run: >-
           npx vitest run tests/v1-pilot-source-integrity.test.ts
           tests/v1-passport-final-authority.test.ts

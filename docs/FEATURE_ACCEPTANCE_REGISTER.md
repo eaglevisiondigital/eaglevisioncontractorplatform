@@ -1539,3 +1539,14 @@ status is promoted. See [validation](program/V1_PILOT_COMBINED_VALIDATION.md).
 All eleven D1 people remain UNASSIGNED, D2/D3 separate, A01–A12 NOT_RUN. Original
 main synthetic loss owner PASS / duplicate UNKNOWN and both private folders persist.
 Release1.0 NOT READY / NOT AUTHORIZED; all original release restrictions remain.
+
+### V1 retained-consumer correction · original369 evidence preserved
+
+Targeted original C22 CLI exposed a second Passport source-pin consumer absent
+from the initial C13-only preflight. The narrow C22/C23/shared-dispatch correction
+retains original index/publisher/hash checks and source-only authority. Original
+C22/C23/coordinated validation163 cases pass locally; a new C24 fixture count
+error (five versus canonical six) is preserved and corrected, with11 focused
+controls passing/39 filtered. Required corrected dedicated scope is191, with
+current-head CI separate from initial369's180 and299's573/27. All original
+feature, operational, recovery and release acceptance states remain unchanged.

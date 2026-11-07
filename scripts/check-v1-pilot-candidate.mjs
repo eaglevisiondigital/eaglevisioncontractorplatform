@@ -23,6 +23,9 @@ const main = [
   '.github/workflows/cycle13-integration.yml',
   '.github/workflows/v1-pilot-source-review.yml',
   'scripts/check-cycle13-integrity.mjs',
+  'scripts/check-cycle22.mjs',
+  'scripts/check-cycle23.mjs',
+  'scripts/cycle25-source-lineage.mjs',
   'scripts/v1-pilot-source-integrity.mjs',
   'scripts/check-v1-pilot-candidate.mjs',
   'tests/v1-pilot-source-integrity.test.ts',
@@ -42,7 +45,7 @@ const nativeFiles = {
   'tests/cycle13-service-passport-desk.test.ts': 79,
   'tests/program-trade-editions.test.ts': 22,
   'tests/v1-passport-final-authority.test.ts': 24,
-  'tests/v1-pilot-source-integrity.test.ts': 39,
+  'tests/v1-pilot-source-integrity.test.ts': 50,
   'tests/v1-trade-final-authority.test.ts': 16,
 };
 const screenshotsExpected = ['customer', 'advanced'].flatMap((mode) =>
@@ -196,7 +199,7 @@ const nativeIdentities = {
   'tests/v1-passport-final-authority.test.ts':
     '9b7aa97bc9b76f65f6ae83bcc0103ac20bd74e1825a6431dee63992f58da198c',
   'tests/v1-pilot-source-integrity.test.ts':
-    'e20999f3f5c21c20e5f26ee8ebd269b8c726c140ebdf9bf30aa3a88674b0728d',
+    '0ed2b9b61b2659e59a63cf12567aa6daba063add3400848e8f848935b21629d9',
   'tests/v1-trade-final-authority.test.ts':
     '6f917366f437d8c8a84e13c0caf7b4ca97e5b3e3e8f786bf12a92894db03c85d',
 };
@@ -208,8 +211,8 @@ export function validateNativeReport(r, root = process.cwd()) {
     fail('Runtime error count must be zero');
   if (
     r.success !== true ||
-    r.numTotalTests !== 180 ||
-    r.numPassedTests !== 180 ||
+    r.numTotalTests !== 191 ||
+    r.numPassedTests !== 191 ||
     r.numTotalTestSuites !== 5 ||
     r.numPassedTestSuites !== 5 ||
     [
@@ -257,8 +260,8 @@ export function validateNativeReport(r, root = process.cwd()) {
     )
       fail('Exact original native identities required');
   }
-  if (expected.size || ids.size !== 180) fail('Incomplete native identities');
-  return { cases: 180 };
+  if (expected.size || ids.size !== 191) fail('Incomplete native identities');
+  return { cases: 191 };
 }
 function native() {
   manifest();

@@ -121,3 +121,50 @@ Remaining original physical cases, independent witness, genuine Auth/MFA, RLS/gr
 rollback-independent custody, matched recovery, NMI and release remain open.
 No merge, deployment, hosted mutation, credential retrieval, operational restoration,
 financial execution, communication or dispatch.
+
+## Demonstrated retained-consumer follow-up after initial369 publication
+
+Preserve initial369b29ff50aaab13c569495500675ba21edcb7fa/treebe1220cb and its
+180-case scope, source/review artifacts and actual CI outcomes. A separately
+executed original `node scripts/check-cycle22.mjs` failed locally with
+`Retained author source changed: src/lib/workflows/service-passport-desk.ts`.
+The C13 preflight alone did not cover the independent C22/C23 retained-source
+loops and the later shared dispatcher. This is a demonstrated admission-coverage
+defect, not a native Passport or production behavior change.
+
+The narrow follow-up preserves literal C13 index/publisher/old hash before equality
+in both C22/C23 consumers. Each delegates only the already reviewed Passport
+successor. The shared later dispatcher requires the exact Passport path and original
+SHA, retains `.path`/source-only authority fields and its original unknown-edit
+rejection. Other routes, historical manifests/pins and all six author files remain
+unchanged. The tooling-only ESM import cycle invokes no helper at initialization;
+two module-entry-order controls pass. No module is imported by application code.
+Main now owns19 files; the combined delta is25, with2152 total tracked files.
+
+Actual local retained-consumer collection: **209PASS /1FAIL /0filtered of210**,
+raw SHA256 `53afdb680d90df0f2867c92f4ac6a9fe77179378be40a10a417b415a7f378895`.
+Original C22validation58, C23validation47 and coordinated-source58 all passed.
+The one failure was a new C24 fixture expectation of five packages; its authoritative
+unchanged manifest has six. Correcting that new expectation changed no original
+assertion. The corrected/new11 cases then passed with39 unchanged cases filtered,
+raw SHA256 `6198690cf42d3354b0452b37aa1850f6d36df30507d0bb80dad8f2f3e1ab0b54`.
+They include both actual retained-consumer metadata-shortcut denials and the exact
+shared-dispatch result. These separate runs are not a single210-PASS execution and
+are not the four-worker full Foundation scope. The original failure remains above.
+Original current-disk C24 CLI also passed with128 protected/5locks/13bindings.
+
+The corrected dedicated collection is **191 cases required**: original101 native,
+new40 authority and50 source controls. It executes actual C13/C22/C23/C24 CLIs,
+then earns its own unchanged-source/native/browser results at the corrected head.
+It does not inherit369 or299 success; its current status must come from actual
+GitHub records. Browser21/18 PNG obligations and original budgets remain unchanged.
+No old successful workflow was manually restarted.
+
+Author draft300 terminal snapshot:17SUCCESS/2CANCELLED;301:23SUCCESS/2CANCELLED.
+All four nativePG siblings passed; all four Foundation verify jobs cancelled around
+45 minutes with genuine partial assertion failures but no complete collection JSON.
+The private ledger SHA256 is
+`9a44692616e32ec065eae9a0e3e572d8ecff984bfd6d221cdb3a669bd1c7d57f`.
+Those source heads remain separate from the corrected Main candidate. Partial
+failures and exclusive runtime causes remain unclosed unless matched evidence
+proves otherwise. No operational or release acceptance changes.

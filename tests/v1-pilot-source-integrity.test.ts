@@ -210,3 +210,138 @@ it('original companion changing during author inspection is denied', () => {
     }),
   ).toThrow('Original Passport companion changed');
 });
+
+for (const entry of [
+  'scripts/v1-pilot-source-integrity.mjs',
+  'scripts/cycle25-source-lineage.mjs',
+]) {
+  it(`source-tooling ESM load order is safe from ${entry}`, async () => {
+    const { execFileSync } = await import('node:child_process');
+    expect(
+      execFileSync(
+        process.execPath,
+        [
+          '--input-type=module',
+          '-e',
+          `await import('./${entry}'); console.log('loaded')`,
+        ],
+        { encoding: 'utf8' },
+      ).trim(),
+    ).toBe('loaded');
+  });
+}
+for (const cycle of [22, 23, 24]) {
+  it(`actual C${cycle} retained-source consumer admits only the reviewed Passport endpoint`, async () => {
+    const c = await import(
+      new URL(`../scripts/check-cycle${cycle}.mjs`, import.meta.url).href
+    );
+    const result = c[`validateCycle${cycle}Manifest`](
+      JSON.parse(
+        readFileSync(`docs/program/CYCLE${cycle}_SOURCE_MANIFEST.json`, 'utf8'),
+      ),
+    );
+    expect(result.packages).toBe(cycle === 24 ? 6 : 5);
+  });
+}
+it('shared later dispatcher rejects substituted original Passport bytes', async () => {
+  const c = await import(
+    new URL('../scripts/cycle25-source-lineage.mjs', import.meta.url).href
+  );
+  expect(() =>
+    c.admitCycle25Source(
+      path,
+      ports.read(path),
+      corrupt(ports.git(source.pilotParent, path)),
+    ),
+  ).toThrow('Unreviewed source replacement');
+});
+it('shared later dispatcher rejects unreviewed current Passport bytes', async () => {
+  const c = await import(
+    new URL('../scripts/cycle25-source-lineage.mjs', import.meta.url).href
+  );
+  expect(() =>
+    c.admitCycle25Source(
+      path,
+      corrupt(ports.read(path)),
+      ports.git(source.pilotParent, path),
+    ),
+  ).toThrow('Unreviewed source replacement');
+});
+it('actual C22 consumer rejects current Passport drift through its reader', async () => {
+  const c = await import(
+    new URL('../scripts/check-cycle22.mjs', import.meta.url).href
+  );
+  expect(() =>
+    c.validateCycle22Manifest(
+      JSON.parse(
+        readFileSync('docs/program/CYCLE22_SOURCE_MANIFEST.json', 'utf8'),
+      ),
+      {
+        read: (p: string) =>
+          p === path ? corrupt(ports.read(p)) : ports.read(p),
+      },
+    ),
+  ).toThrow(/source/i);
+});
+
+for (const cycle of [22, 23]) {
+  it(`actual C${cycle} consumer rejects forged current-hash metadata before equality`, async () => {
+    const c = await import(
+      new URL(`../scripts/check-cycle${cycle}.mjs`, import.meta.url).href
+    );
+    const { createHash } = await import('node:crypto');
+    const index = 'docs/program/CYCLE13_DELIVERY_INDEX.json';
+    const forged = JSON.parse(ports.read(index).toString());
+    forged.packages[2].owned_files.find(
+      (f: { path: string }) => f.path === path,
+    ).sha256 = createHash('sha256').update(ports.read(path)).digest('hex');
+    const modified = Buffer.from(JSON.stringify(forged));
+    let ownPhase = cycle === 22;
+    let captured = false;
+    const supplied = {
+      read: (p: string) => {
+        if (ownPhase && p === path) captured = true;
+        return ownPhase && p === index ? modified : ports.read(p);
+      },
+      git: (commit: string, p: string) => {
+        // C23 validates C22 first; expose the forged fixture only once its own
+        // unchanged parent-manifest comparisons begin, not in that predecessor.
+        if (
+          cycle === 23 &&
+          commit === '3e35fb29dd4488bf655446712e5a013e06f8ed1e'
+        )
+          ownPhase = true;
+        return ownPhase && p === index ? modified : ports.git(commit, p);
+      },
+    };
+    expect(() =>
+      c[`validateCycle${cycle}Manifest`](
+        JSON.parse(
+          ports
+            .read(`docs/program/CYCLE${cycle}_SOURCE_MANIFEST.json`)
+            .toString(),
+        ),
+        supplied,
+      ),
+    ).toThrow(`Retained author source changed: ${path}`);
+    expect(captured).toBe(true);
+  });
+}
+it('shared later dispatcher retains exact path and denies business authority', async () => {
+  const c = await import(
+    new URL('../scripts/cycle25-source-lineage.mjs', import.meta.url).href
+  );
+  expect(
+    c.admitCycle25Source(
+      path,
+      ports.read(path),
+      ports.git(source.pilotParent, path),
+    ),
+  ).toEqual({
+    path,
+    source_commit: source.pilotAuthors[0].commit,
+    authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+    business_authority: false,
+    restore_adapter: false,
+  });
+});

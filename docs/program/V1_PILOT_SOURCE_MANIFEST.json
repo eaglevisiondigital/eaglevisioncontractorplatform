@@ -19,7 +19,7 @@
     "tests/cycle13-service-passport-desk.test.ts": 79,
     "tests/program-trade-editions.test.ts": 22,
     "tests/v1-passport-final-authority.test.ts": 24,
-    "tests/v1-pilot-source-integrity.test.ts": 39,
+    "tests/v1-pilot-source-integrity.test.ts": 50,
     "tests/v1-trade-final-authority.test.ts": 16
   },
   "screenshots": [
