@@ -265,7 +265,12 @@ export async function navigateFieldWorkspace(
   try {
     await verified(view);
     assertFieldWorkspaceNow(view);
-    callback(view.source.job_id, 'field');
+    const acknowledgment: unknown = callback(view.source.job_id, 'field');
+    if (acknowledgment !== undefined)
+      throw Error(
+        'Exact synchronous void field navigation acknowledgment required',
+      );
+    assertFieldWorkspaceNow(view);
   } catch (error) {
     b.unknown = true;
     b.navigationOutcomes.set(b.navigationKey, 'UNKNOWN');
