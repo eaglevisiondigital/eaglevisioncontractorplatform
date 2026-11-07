@@ -1,0 +1,20 @@
+{
+  "schema": "propel-v1-sales-source-admission-v1",
+  "parent": "76fc6f212d2391b000fc22280ad7dcb4d6582772",
+  "runtime_author": "76fc6f212d2391b000fc22280ad7dcb4d6582772",
+  "predecessor": "a415bb4b35ff9e5727ce4f1a05a8f7f00def8bbc",
+  "publisher": "5d441e50e63eeefe7407256041a8ff792ddbcf5f",
+  "publisher_parent": "5f711cb088d9e0a17966135a15b3f53849f4c3f4",
+  "logical_baseline": "a20f11855388e7cf8283294a3775e1c86a2cc66e",
+  "files": [
+    "scripts/v1-sales-source-admission.mjs",
+    "scripts/check-cycle8-integrity.mjs",
+    "tests/v1-sales-source-admission.test.mjs",
+    ".github/workflows/v1-sales-source-admission.yml",
+    ".github/workflows/cycle8-integration.yml",
+    ".github/workflows/cycle9-integration.yml",
+    "docs/program/V1_SALES_SOURCE_ADMISSION.md",
+    "docs/program/V1_SALES_SOURCE_ADMISSION_MANIFEST.json"
+  ],
+  "authority": "SOURCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+}
