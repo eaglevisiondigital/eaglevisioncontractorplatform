@@ -1,3 +1,4 @@
+import { admitNextFieldPublished } from './v1-next-native-source.mjs';
 import { admitCycle33V1C17Compatibility } from './cycle25-source-lineage.mjs';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
@@ -44,6 +45,9 @@ export function validateCycle17Manifest(
         throw Error('Overlapping or out-of-scope Cycle17 source');
       if (
         !/^[a-f0-9]{64}$/.test(f.sha256) ||
+        (f.path === 'src/lib/workflows/field-workspace.ts' &&
+          f.sha256 !==
+            '682306378cd16d8cde94ab153633b1621f44d3696d6f7b2743e57d33116f97f8') ||
         (f.path === 'tests/cycle17-integration.test.ts' &&
           (f.sha256 !==
             'bafd0e74bd26de2aa57e10861839781dcc2cc356d0a4ab0f39d4fa8f0d28d826' ||
@@ -54,7 +58,14 @@ export function validateCycle17Manifest(
       const current = read(f.path);
       if (createHash('sha256').update(current).digest('hex') !== f.sha256) {
         try {
-          admitCycle33V1C17Compatibility(f, current, { read });
+          if (f.path === 'src/lib/workflows/field-workspace.ts')
+            admitNextFieldPublished(
+              f,
+              current,
+              '23829f2995b113eb5426b0a5328e12624efd3be5',
+              { read },
+            );
+          else admitCycle33V1C17Compatibility(f, current, { read });
         } catch (cause) {
           throw new Error(`Reviewed Cycle17 source changed: ${f.path}`, {
             cause,
@@ -75,6 +86,8 @@ export function validateCycle17Manifest(
       p.parent_commit !== manifest.parent_commit ||
       !/^\/root\//.test(p.owner) ||
       !/^([a-f0-9]{40})$/.test(p.head_commit) ||
+      (i === 0 &&
+        p.head_commit !== '23829f2995b113eb5426b0a5328e12624efd3be5') ||
       !Number.isSafeInteger(p.draft_pr) ||
       p.draft_pr <= 118 ||
       seenPRs.has(p.draft_pr) ||

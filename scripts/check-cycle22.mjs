@@ -1,3 +1,4 @@
+import { admitNextFieldPublished } from './v1-next-native-source.mjs';
 import { createHash } from 'node:crypto';
 import { admitPilotPassportPublished } from './v1-pilot-source-integrity.mjs';
 import { execFileSync } from 'node:child_process';
@@ -182,6 +183,23 @@ export function validateCycle22Manifest(manifest, ports = {}) {
     for (const p of JSON.parse(read(path)).packages)
       for (const file of p.owned_files) {
         const bytes = Buffer.from(read(file.path));
+        const nextField = file.path === 'src/lib/workflows/field-workspace.ts';
+        if (
+          nextField &&
+          (path !== 'docs/program/CYCLE17_DELIVERY_INDEX.json' ||
+            p.head_commit !== '23829f2995b113eb5426b0a5328e12624efd3be5' ||
+            file.sha256 !==
+              '682306378cd16d8cde94ab153633b1621f44d3696d6f7b2743e57d33116f97f8')
+        )
+          throw Error(`Retained author source changed: ${file.path}`);
+        if (nextField && sha(bytes) !== file.sha256)
+          try {
+            admitNextFieldPublished(file, bytes, p.head_commit, { read, git });
+            continue;
+          } catch {
+            /* Preserve original denial. */
+          }
+
         const pilotPassport =
           file.path === 'src/lib/workflows/service-passport-desk.ts';
         if (

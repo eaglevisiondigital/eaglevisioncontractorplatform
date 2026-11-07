@@ -1,3 +1,7 @@
+import {
+  admitNextNative,
+  admitNextFieldPublished,
+} from './v1-next-native-source.mjs';
 // Build/test source lineage only. Never imported by the application or used to
 // restore business state, authorize staff, resolve receipts or replay commands.
 import { execFileSync } from 'node:child_process';
@@ -312,6 +316,19 @@ export function validateCycle25ForwardSpec(spec, ports = cycle25SourcePorts) {
 export function admitCycle25Source(path, current, original, supplied = {}) {
   const ports = { ...cycle25SourcePorts, ...supplied },
     owners = cycle25Authors.filter((s) => s.modified.includes(path));
+  if (path === 'src/lib/workflows/field-workspace.ts') {
+    const old =
+      '682306378cd16d8cde94ab153633b1621f44d3696d6f7b2743e57d33116f97f8';
+    if (createHash('sha256').update(original).digest('hex') !== old)
+      throw Error(`Unreviewed source replacement: ${path}`);
+    return admitNextFieldPublished(
+      { path, sha256: old },
+      current,
+      '23829f2995b113eb5426b0a5328e12624efd3be5',
+      ports,
+    );
+  }
+
   if (path === 'src/lib/workflows/service-passport-desk.ts') {
     try {
       const digest =
@@ -1204,6 +1221,14 @@ function admitCycle29Forward(path, current, previous, ports) {
       );
     }
   }
+  if (
+    !endpoint.equals(Buffer.from(current)) &&
+    path === 'src/lib/workflows/cost-coverage-actions.ts'
+  )
+    return {
+      ...result,
+      next_native: admitNextNative(path, current, endpoint, ports),
+    };
   if (!endpoint.equals(Buffer.from(current)))
     throw Error(
       'Current source differs from fixed Cycle27 lineage (fixed Cycle28/Cycle29 author required)',
@@ -3023,7 +3048,19 @@ export function admitCycle33V1ContinuationSource(
   if (hash(reviewed) !== a.sha256)
     throw Error('Fresh exact reviewed V1 continuation source required');
   let admitted = reviewed;
-  if (!Buffer.from(current).equals(reviewed)) {
+  let nextNative = null;
+  if (
+    !Buffer.from(current).equals(reviewed) &&
+    path === 'src/lib/workflows/recorded-cost-requirements.ts'
+  ) {
+    try {
+      nextNative = admitNextNative(path, current, reviewed, ports);
+      admitted = Buffer.from(current);
+    } catch {
+      /* Unknown changes retain original successor rejection. */
+    }
+  }
+  if (!Buffer.from(current).equals(reviewed) && !nextNative) {
     const successor = cycle33V1EssentialAuthors.find(
       (s) => s.path === path && s.predecessor === a.commit,
     );
@@ -3061,6 +3098,7 @@ export function admitCycle33V1ContinuationSource(
   if (!Buffer.from(ports.read(path)).equals(admitted))
     throw Error('Final fresh V1 continuation source required');
   return {
+    ...(nextNative ? { next_native: nextNative } : {}),
     module: a.module,
     source_commit: a.commit,
     path,

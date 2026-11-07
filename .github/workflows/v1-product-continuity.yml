@@ -1,0 +1,91 @@
+name: V1 Field Finance continuity and exact source review
+on:
+  push:
+    branches: ['codex/v1-pilot-decision-package']
+  pull_request:
+    branches: ['codex/v1-pilot-readiness-plan']
+    paths: ['.github/workflows/v1-product-continuity.yml']
+permissions:
+  contents: read
+concurrency:
+  group: v1-product-continuity-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - run: npm ci
+      - run: node scripts/check-v1-product-continuity.mjs bind
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run format:check
+      - run: npm run features:check
+      - name: Actual retained source consumers, original pins and finite reviewed successors
+        run: |
+          node scripts/check-cycle17-integrity.mjs
+          node scripts/check-cycle22.mjs
+          node scripts/check-cycle23.mjs
+          node scripts/check-cycle24.mjs
+      - name: Exact139 new and affected cases, original30s budgets and no retries
+        run: >-
+          npx vitest run tests/v1-next-native-source.test.ts
+          tests/v1-field-navigation-ack.test.ts
+          tests/v1-finance-retained-selection.test.ts
+          tests/foundation-command-supplement.test.ts
+          tests/v1-product-report-integrity.test.ts
+          --maxWorkers=1 --retry=0 --reporter=json
+          --outputFile=artifacts/cycle33/v1-product-continuity/native.json
+      - run: node scripts/check-v1-product-continuity.mjs native
+      - run: npm run build
+      - if: always()
+        run: node scripts/check-v1-product-continuity.mjs final
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v1-product-native-${{ github.sha }}
+          path: artifacts/cycle33/v1-product-continuity
+          if-no-files-found: error
+  responsive:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - run: npm ci
+      - run: node scripts/check-v1-product-continuity.mjs bind
+      - run: node scripts/cycle30-chromium-dependencies.mjs
+      - run: npx playwright install-deps --dry-run chromium
+      - run: npx playwright install chromium
+      - name: Ordinary Field Finance flows, all three brands and responsive viewports
+        run: npx playwright test -c tests/program/playwright.v1-field-finance-continuity.config.ts
+      - run: npm run build
+      - name: Production-OFF controls, three viewports
+        env:
+          V1_FIELD_FINANCE_BROWSER_MODE: 'off'
+        run: npx playwright test -c tests/program/playwright.v1-field-finance-continuity.config.ts
+      - run: node scripts/check-v1-product-continuity.mjs browser
+      - if: always()
+        run: node scripts/check-v1-product-continuity.mjs final
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v1-product-responsive-${{ github.sha }}
+          path: artifacts/cycle33/v1-product-continuity
+          if-no-files-found: error

@@ -1,0 +1,85 @@
+{
+  "schema": "propel-v1-product-continuity-v1",
+  "parent": "523afd4ef17d5502b6e0e39a4df86bdaa7bba23b",
+  "authority": "PUBLIC_SOURCE_PROVENANCE_ONLY_NOT_BUSINESS_STATE",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "authors": [
+    {
+      "commit": "94556e2a213bb513264432aa48e97bd3a94184d2",
+      "draft_pr": 304,
+      "modified": ["src/lib/workflows/field-workspace.ts"],
+      "added": [
+        "docs/program/V1_FIELD_NAVIGATION_ACK.md",
+        "tests/v1-field-navigation-ack.test.ts"
+      ]
+    },
+    {
+      "commit": "08ad85d896e3988be1ba223cb0c719374cdfbe7e",
+      "draft_pr": 303,
+      "modified": [
+        "src/lib/workflows/recorded-cost-requirements.ts",
+        "src/lib/workflows/cost-coverage-actions.ts"
+      ],
+      "added": [
+        "docs/program/V1_FINANCE_RETAINED_SELECTION.md",
+        "tests/v1-finance-retained-selection.test.ts"
+      ]
+    }
+  ],
+  "controller": "725829eac3261854c519652d296d054def216330",
+  "controller_files": [
+    ".github/workflows/foundation-command-supplement.yml",
+    "scripts/foundation-command-supplement.mjs",
+    "tests/foundation-command-supplement.test.ts",
+    "docs/program/V1_302_FOUNDATION_GAPS.md",
+    "docs/program/V1_302_FOUNDATION_GAPS.json",
+    "docs/program/V1_FOUNDATION_COMMAND_SUPPLEMENT.md"
+  ],
+  "native_files": {
+    "tests/v1-next-native-source.test.ts": 42,
+    "tests/v1-field-navigation-ack.test.ts": 19,
+    "tests/v1-finance-retained-selection.test.ts": 27,
+    "tests/foundation-command-supplement.test.ts": 26,
+    "tests/v1-product-report-integrity.test.ts": 25
+  },
+  "screenshots": [
+    "artifacts/cycle33/v1-product-continuity/screenshots/field-original-desktop-straight-edge.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/field-original-desktop-cunningham.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/field-original-desktop-roofing-example.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/field-original-tablet-straight-edge.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/field-original-tablet-cunningham.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/field-original-tablet-roofing-example.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/field-original-mobile-straight-edge.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/field-original-mobile-cunningham.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/field-original-mobile-roofing-example.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/field-destination-desktop-straight-edge.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/field-destination-desktop-cunningham.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/field-destination-desktop-roofing-example.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/field-destination-tablet-straight-edge.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/field-destination-tablet-cunningham.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/field-destination-tablet-roofing-example.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/field-destination-mobile-straight-edge.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/field-destination-mobile-cunningham.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/field-destination-mobile-roofing-example.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/finance-original-desktop-straight-edge.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/finance-original-desktop-cunningham.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/finance-original-desktop-roofing-example.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/finance-original-tablet-straight-edge.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/finance-original-tablet-cunningham.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/finance-original-tablet-roofing-example.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/finance-original-mobile-straight-edge.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/finance-original-mobile-cunningham.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/finance-original-mobile-roofing-example.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/finance-reverified-desktop-straight-edge.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/finance-reverified-desktop-cunningham.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/finance-reverified-desktop-roofing-example.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/finance-reverified-tablet-straight-edge.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/finance-reverified-tablet-cunningham.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/finance-reverified-tablet-roofing-example.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/finance-reverified-mobile-straight-edge.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/finance-reverified-mobile-cunningham.png",
+    "artifacts/cycle33/v1-product-continuity/screenshots/finance-reverified-mobile-roofing-example.png"
+  ],
+  "operational_acceptance": false,
+  "restore_adapter": false
+}
