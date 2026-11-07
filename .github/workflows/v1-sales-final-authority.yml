@@ -1,0 +1,149 @@
+name: Sales final authority exact-source controls
+on:
+  push:
+    branches: ['codex/v1-sales-final-authority']
+  pull_request:
+    branches: ['codex/v1-c17-source-admission']
+    paths: ['.github/workflows/v1-sales-final-authority.yml']
+permissions:
+  contents: read
+jobs:
+  sales-controls:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - run: npm ci
+      - name: Exact source, quality checks and only the new23 native cases
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { execFileSync, spawnSync } from 'node:child_process';
+          import { createHash } from 'node:crypto';
+          import { readFileSync, writeFileSync, mkdirSync, realpathSync, lstatSync } from 'node:fs';
+          import { resolve } from 'node:path';
+          const parent = 'a415bb4b35ff9e5727ce4f1a05a8f7f00def8bbc';
+          const candidate = process.env.CANDIDATE_HEAD;
+          const directory = 'artifacts/cycle33/v1-sales-final-authority';
+          const test = 'tests/v1-sales-final-authority.test.ts';
+          const doc = 'docs/program/V1_SALES_FINAL_AUTHORITY.md';
+          const workflow = '.github/workflows/v1-sales-final-authority.yml';
+          const native = 'src/lib/workflows/sales-desk.ts';
+          const identityHash = 'fcc75f0471780077878d4c8c5151dd276eef6c239b4977b97ae222ac5ea84b9b';
+          const git = (...args) => execFileSync('git', ['--no-replace-objects', ...args], { encoding: 'utf8' }).trim();
+          const hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
+          function snapshot() {
+            assert.equal(realpathSync(git('rev-parse', '--show-toplevel')), realpathSync(process.cwd()));
+            assert.match(candidate ?? '', /^[a-f0-9]{40}$/);
+            assert.equal(git('rev-list', '--parents', '-n', '1', candidate), `${candidate} ${parent}`);
+            assert.equal(git('status', '--porcelain', '--untracked-files=normal'), '');
+            const checkout = git('rev-parse', 'HEAD');
+            const tree = git('rev-parse', 'HEAD^{tree}');
+            assert.equal(git('rev-parse', `${candidate}^{tree}`), tree);
+            if (checkout !== candidate) assert.deepEqual(
+              git('rev-list', '--parents', '-n', '1', checkout).split(' ').slice(1).sort(),
+              [parent, candidate].sort(),
+            );
+            assert.equal(git('diff', '--name-status', '--no-renames', parent, candidate).split('\n').sort().join('\n'), [
+              `M\t${native}`, `A\t${test}`, `A\t${doc}`, `A\t${workflow}`,
+            ].sort().join('\n'));
+            const files = {};
+            for (const row of git('ls-tree', '-r', '--full-tree', 'HEAD').split('\n')) {
+              const [entry, path] = row.split('\t');
+              const [mode, kind, object] = entry.split(' ');
+              assert.equal(kind, 'blob');
+              let full = process.cwd();
+              for (const part of path.split('/')) {
+                full = resolve(full, part);
+                assert.equal(lstatSync(full).isSymbolicLink(), false);
+              }
+              assert.equal(lstatSync(full).isFile(), true);
+              const bytes = readFileSync(full);
+              assert.equal(createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex'), object);
+              if ([native, test, doc, workflow].includes(path)) assert.equal(mode, '100644');
+              files[path] = hash(bytes);
+            }
+            return { candidate, checkout, tree, parent, files, business_authority: false, operational_acceptance: false };
+          }
+          function verifyNative(before) {
+            const bytes = readFileSync(`${directory}/native.json`);
+            const r = JSON.parse(bytes);
+            assert.equal(r.success, true);
+            for (const [key, count] of Object.entries({
+              numTotalTests: 23, numPassedTests: 23, numFailedTests: 0,
+              numPendingTests: 0, numTodoTests: 0, numTotalTestSuites: 1,
+              numPassedTestSuites: 1, numFailedTestSuites: 0, numPendingTestSuites: 0,
+            })) assert.equal(r[key], count);
+            if (Object.hasOwn(r, 'numRuntimeErrorTestSuites')) assert.equal(r.numRuntimeErrorTestSuites, 0);
+            assert.ok(Number.isFinite(r.startTime) && r.startTime >= before.started_epoch_ms);
+            assert.ok(Array.isArray(r.testResults));
+            assert.equal(r.testResults.length, 1);
+            const file = r.testResults[0];
+            assert.equal(file.name, resolve(test));
+            assert.equal(file.status, 'passed');
+            assert.equal(file.message, '');
+            assert.ok(Array.isArray(file.assertionResults));
+            assert.equal(file.assertionResults.length, 23);
+            const ids = new Set();
+            for (const result of file.assertionResults) {
+              assert.equal(typeof result.fullName, 'string');
+              assert.ok(result.fullName.trim() && !ids.has(result.fullName));
+              ids.add(result.fullName);
+              assert.equal(result.status, 'passed');
+              assert.ok(Array.isArray(result.failureMessages));
+              assert.equal(result.failureMessages.length, 0);
+              assert.ok(Number.isFinite(result.duration) && result.duration >= 0 && result.duration <= 30000);
+            }
+            assert.equal(hash(JSON.stringify([...ids].sort())), identityHash);
+            return { cases: 23, full_name_sha256: identityHash, report_sha256: hash(bytes), source_candidate: before.candidate, source_checkout: before.checkout, source_tree: before.tree, operational_acceptance: false };
+          }
+          const before = { ...snapshot(), started_epoch_ms: Date.now() };
+          mkdirSync(directory, { recursive: true });
+          writeFileSync(`${directory}/before.json`, JSON.stringify(before, null, 2) + '\n');
+          const commands = [
+            ['typecheck', ['node_modules/typescript/bin/tsc', '--noEmit']],
+            ['types', ['scripts/generate-db-types.mjs', '--check']],
+            ['lint', ['node_modules/eslint/bin/eslint.js', native, test]],
+            ['format', ['node_modules/prettier/bin/prettier.cjs', '--check', native, test, doc, workflow]],
+            ['features', ['scripts/feature-evidence.mjs', '--check']],
+            ['native', ['node_modules/vitest/vitest.mjs', 'run', test, '--configLoader', 'runner', '--maxWorkers=1', '--retry=0', '--testTimeout=30000', '--hookTimeout=30000', '--reporter=json', `--outputFile=${directory}/native.json`]],
+          ];
+          let status = 0;
+          const results = [];
+          try {
+            for (const [name, args] of commands) {
+              const result = spawnSync(process.execPath, args, { encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
+              writeFileSync(`${directory}/${name}.stdout`, result.stdout ?? '');
+              writeFileSync(`${directory}/${name}.stderr`, result.stderr ?? '');
+              process.stdout.write(result.stdout ?? '');
+              process.stderr.write(result.stderr ?? '');
+              results.push({ name, exit_code: result.status, error: result.error?.message ?? null });
+              if (result.status !== 0) { status = result.status ?? 1; break; }
+            }
+            if (status === 0) writeFileSync(`${directory}/native-verification.json`, JSON.stringify(verifyNative(before), null, 2) + '\n');
+          } catch (error) {
+            status = 1;
+            results.push({ name: 'report-verification', exit_code: 1, error: error.message });
+            throw error;
+          } finally {
+            writeFileSync(`${directory}/commands.json`, JSON.stringify(results, null, 2) + '\n');
+            const { started_epoch_ms, ...original } = before;
+            assert.deepEqual(snapshot(), original);
+            writeFileSync(`${directory}/final.json`, JSON.stringify({ ...before, unchanged: true, commands_exit_code: status }, null, 2) + '\n');
+          }
+          process.exitCode = status;
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sales-final-authority-${{ github.sha }}
+          path: artifacts/cycle33/v1-sales-final-authority
+          if-no-files-found: error
