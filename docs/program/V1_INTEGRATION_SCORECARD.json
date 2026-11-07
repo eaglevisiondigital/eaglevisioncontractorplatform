@@ -1,0 +1,351 @@
+{
+  "schema": "propel-v1-integration-scorecard-v1",
+  "authority": "REGISTER_PROJECTION_NOT_BUSINESS_STATE",
+  "source_baseline": "a415bb4b35ff9e5727ce4f1a05a8f7f00def8bbc",
+  "genuine_A01_A12": "NOT_RUN",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "new_head_ci": "PENDING_PREPUBLICATION",
+  "features": [
+    {
+      "id": "SEC-001",
+      "capability": "Tenant isolation, RLS, MFA and role authority",
+      "local": "partial",
+      "hosted": "blocked",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      }
+    },
+    {
+      "id": "SEC-002",
+      "capability": "Independent recovery, containment and no replay",
+      "local": "partial",
+      "hosted": "blocked",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      }
+    },
+    {
+      "id": "CRM-001",
+      "capability": "Leads, intake, customer and service-location CRM",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      }
+    },
+    {
+      "id": "EST-001",
+      "capability": "Canonical estimating, immutable issued versions and revisions",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      }
+    },
+    {
+      "id": "EST-002",
+      "capability": "Customer decision, committed admission, durable receipt and eligible staff reader",
+      "local": "partial",
+      "hosted": "blocked",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      }
+    },
+    {
+      "id": "SAL-001",
+      "capability": "Contracts, e-sign sandbox and change-order foundation",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      }
+    },
+    {
+      "id": "FLD-001",
+      "capability": "Inspection plans, visits, maintenance triage and repair readiness",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      }
+    },
+    {
+      "id": "FLD-002",
+      "capability": "Schedule viewing, timekeeping, dispatch and offline field work",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      }
+    },
+    {
+      "id": "FIN-001",
+      "capability": "Invoice schedules, tokenized payment and reconciliation foundations",
+      "local": "partial",
+      "hosted": "blocked",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      }
+    },
+    {
+      "id": "FIN-002",
+      "capability": "Job profitability, purchasing and accounting scope",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      }
+    },
+    {
+      "id": "CUS-001",
+      "capability": "Branded portal, report history, attention, comparison and search",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      }
+    },
+    {
+      "id": "CUS-002",
+      "capability": "Property Passport, warranty and proof-of-work expansion",
+      "local": "none",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      }
+    },
+    {
+      "id": "GRO-001",
+      "capability": "Maintenance revenue and recurring-program expansion",
+      "local": "none",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      }
+    },
+    {
+      "id": "GRO-002",
+      "capability": "Reviews, referrals, follow-ups and booking automation",
+      "local": "none",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      }
+    },
+    {
+      "id": "AI-001",
+      "capability": "Voice-to-estimate, Copilot, answering and storm-mode scope",
+      "local": "none",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      }
+    },
+    {
+      "id": "INT-001",
+      "capability": "Supplier, accounting, calendar and telephony interfaces",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      }
+    },
+    {
+      "id": "UX-001",
+      "capability": "Shared accessible responsive design and approved branding",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      }
+    },
+    {
+      "id": "OPS-001",
+      "capability": "Release, protected Netlify replacement and operational acceptance",
+      "local": "partial",
+      "hosted": "blocked",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      }
+    },
+    {
+      "id": "PLT-001",
+      "capability": "Organization settings, roles, audit and platform administration",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      }
+    },
+    {
+      "id": "DOC-001",
+      "capability": "Private documents and quarantine controls",
+      "local": "partial",
+      "hosted": "blocked",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      }
+    },
+    {
+      "id": "MAT-001",
+      "capability": "Smart Material Import and reviewed customer-safe material lines",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      }
+    },
+    {
+      "id": "JOB-001",
+      "capability": "Immutable job baselines, costs and approved change tracking",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      }
+    },
+    {
+      "id": "WRK-001",
+      "capability": "Workforce, overtime and payroll preparation",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      }
+    },
+    {
+      "id": "COM-001",
+      "capability": "Verified sender preparation, escaped templates and internal sinks",
+      "local": "partial",
+      "hosted": "blocked",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "retained_baseline",
+        "commit": "69548b1c328d9ae557953c2ca3904576f88f0d74",
+        "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/41270357940"
+      }
+    },
+    {
+      "id": "QA-001",
+      "capability": "Feature evidence, source ownership inventory and release-label checks",
+      "local": "partial",
+      "hosted": "not_accepted",
+      "release": "not_authorized",
+      "baseline_ci": {
+        "state": "unknown"
+      }
+    }
+  ],
+  "evidence_limits": [
+    "All25 baseline IDs/statuses are preserved; this is not a scope waiver.",
+    "Retained exact-head CI does not become current combined Foundation or operational acceptance.",
+    "Owner-witnessed main synthetic loss PASS only; duplicate recovery UNKNOWN/UNVERIFIED.",
+    "Eleven D1 operational assignments remain UNASSIGNED; D2/D3 separate."
+  ],
+  "retained_ci": {
+    "classification": "EXACT_HISTORICAL_HEADS_NOT_TRANSFERRED_CURRENT_ACCEPTANCE",
+    "workflow_rollups": {
+      "306": {
+        "head": "337da476aa6061dba626aff343f0e6045331ac82",
+        "success": 28,
+        "failed": 1,
+        "cancelled": 2,
+        "skipped": 1
+      },
+      "307": {
+        "head": "a481d6b5ffdcdb82a68b69a2f4424e597939bbf0",
+        "success": 8,
+        "cancelled": 2
+      },
+      "309": {
+        "head": "a415bb4b35ff9e5727ce4f1a05a8f7f00def8bbc",
+        "success": 9,
+        "cancelled": 2
+      }
+    },
+    "foundation": "SIX_VERIFY_CANCELLED_PROVIDER_45M_LIMIT_PG_SIBLINGS_PASS",
+    "original_C17_at309": {
+      "cases": 480,
+      "passed": 480,
+      "browser": 84,
+      "off": 3,
+      "gallery": 3,
+      "whole_job_before_final_binding": false
+    },
+    "original_305": {
+      "browser_each_event_passed": 399,
+      "final_source_cleanliness": "FAIL",
+      "final_tracked_source": "UNKNOWN",
+      "exclusive_cause": "UNKNOWN"
+    }
+  }
+}

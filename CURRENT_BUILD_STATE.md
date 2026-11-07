@@ -2758,3 +2758,27 @@ PASS only, duplicate UNKNOWN/UNVERIFIED/private folders untouched. Release1.0 NO
 READY / NOT AUTHORIZED; all original P1/customer14/4B/Auth/MFA/NMI/recovery/financial/
 hosted/production restrictions remain, with no merge/deploy/mutation/restore/payment/
 invoice issuance/communication/dispatch.
+
+### Exact hygiene admission on the C17 source successor
+
+Bounded source-only composition starts at309 a415bb4b35ff9e5727ce4f1a05a8f7f00def8bbc
+and admits exact307 a481d6b5ffdcdb82a68b69a2f4424e597939bbf0 four-file hygiene,
+common parent337da476aa6061dba626aff343f0e6045331ac82, after independent ancestry/
+source review. Original profiles/pins/author branches remain unchanged. Read
+docs/program/V1_HYGIENE_INTEGRATION_VALIDATION.md and its manifest; new nineteen
+composition/source controls never confer whole Foundation or business authority.
+
+Original309 full C17 is an actual single480PASS run with84DEV/3OFF/3gallery; fulljob
+metadata and separate dedicated2178 source bindings are distinct. Retained306 C17
+FAIL, all45-minute Foundation cancellations,305399PASS commands/final-cleanliness
+FAIL and missing final tracked state remain historical evidence, not retroactive
+repairs. Runtime/UI/artwork/schema/recovery and all25 feature baselines unchanged.
+V1_INTEGRATION_SCORECARD.json projects original statuses; new-head CI is pending
+actual source-bound provider evidence.
+
+V1_FIRST_PILOT_WRITER_INVENTORY.md maps original customer/broker and broader journey
+writers/bypasses for the single D1 owner return. Eleven people UNASSIGNED; installed
+inventory UNVERIFIED; D2/D3 separate; A01–A12 NOT RUN. Main synthetic owner-witnessed
+loss PASS only, duplicate UNKNOWN/UNVERIFIED, both private folders/consumed attempts
+untouched. Release1.0 NOT READY / NOT AUTHORIZED. No merge/deploy/hosted mutation/
+operational restoration/payment/invoice issuance/communication/dispatch or gate change.
