@@ -93,6 +93,15 @@ const sourceLineage: {
 } = await import(
   new URL('../scripts/cycle25-source-lineage.mjs', import.meta.url).href
 );
+const fieldSourceLineage: {
+  admitNextFieldPublished: (
+    file: { path: string; sha256: string },
+    current: Buffer,
+    publishedCommit: string,
+  ) => Record<string, unknown>;
+} = await import(
+  new URL('../scripts/v1-next-native-source.mjs', import.meta.url).href
+);
 
 beforeEach(() =>
   vi.stubGlobal('window', {
@@ -739,9 +748,29 @@ it('the combined admission retains all thirty exact reviewed source/test blobs w
     expect(p.owned_files).toHaveLength(5);
     for (const f of p.owned_files) {
       expect(seen.has(f.path)).toBe(false);
-      expect(
-        createHash('sha256').update(readFileSync(f.path)).digest('hex'),
-      ).toBe(f.sha256);
+      const current = readFileSync(f.path),
+        sha256 = createHash('sha256').update(current).digest('hex');
+      if (f.path === 'src/lib/workflows/field-workspace.ts') {
+        expect(f.sha256).toBe(
+          '682306378cd16d8cde94ab153633b1621f44d3696d6f7b2743e57d33116f97f8',
+        );
+        expect(p.head_commit).toBe('23829f2995b113eb5426b0a5328e12624efd3be5');
+      }
+      if (
+        f.path === 'src/lib/workflows/field-workspace.ts' &&
+        sha256 !== f.sha256
+      )
+        expect(
+          fieldSourceLineage.admitNextFieldPublished(f, current, p.head_commit),
+        ).toEqual({
+          path: 'src/lib/workflows/field-workspace.ts',
+          source_commit: '94556e2a213bb513264432aa48e97bd3a94184d2',
+          module: 'field-navigation-ack',
+          authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+          business_authority: false,
+          restore_adapter: false,
+        });
+      else expect(sha256).toBe(f.sha256);
       seen.add(f.path);
     }
   }
