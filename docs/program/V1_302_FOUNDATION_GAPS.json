@@ -1,0 +1,4894 @@
+{
+  "schema": "propel-v1-next-foundation-gap-proposal-v1",
+  "scope": "PROPOSED_CI_COVERAGE_REGISTER_NOT_ACCEPTANCE",
+  "source": {
+    "head": "523afd4ef17d5502b6e0e39a4df86bdaa7bba23b",
+    "tree": "d76ed41befc7de66fe9ac2683e6b09f3efddb1bb",
+    "pr": 302,
+    "pr_carrier": "1f69556efe5e471eaaeaf81f1f5b3dd264cf3f85",
+    "carrier_tree_equal": true
+  },
+  "current_checks": {
+    "PR_state": "OPEN",
+    "draft": true,
+    "SUCCESS": 27,
+    "FAIL": 0,
+    "CANCELLED": 2,
+    "PENDING": 0
+  },
+  "Foundation_events": [
+    {
+      "event": "push",
+      "run": 42378857239,
+      "job": 128422077252,
+      "run_attempt": 1,
+      "requested_head": "523afd4ef17d5502b6e0e39a4df86bdaa7bba23b",
+      "actual_checkout": "523afd4ef17d5502b6e0e39a4df86bdaa7bba23b",
+      "source_tree": "d76ed41befc7de66fe9ac2683e6b09f3efddb1bb",
+      "status": "CANCELLED",
+      "provider_cause": "JOB_MAXIMUM_EXECUTION_TIME_45M0S",
+      "annotation_literal": "The job has exceeded the maximum execution time of 45m0s",
+      "started_at": "2026-11-07T13:52:08Z",
+      "completed_at": "2026-11-07T14:37:26Z",
+      "job_lifetime_seconds": 2718.0,
+      "unit_file_summary_counts": {
+        "SKIPPED": 5,
+        "PASS": 59,
+        "FAILED": 4
+      },
+      "no_terminal_summary_files": 341,
+      "failed_case_labels": 15,
+      "individual_case_failure_causes": "UNKNOWN_NO_FINAL_ERROR_STACKS",
+      "explicit_case_timeout_messages": 0,
+      "global_final_case_count": "UNKNOWN_NO_FINAL_COLLECTION",
+      "format_check": "PASS",
+      "check_prefix_before_npm_test": "PASS_BY_SEQUENTIAL_AND_CHAIN_REACHED_VITEST",
+      "units": "UNFINISHED_WITH_FAILED_CASE_LABELS",
+      "python_recovery": "NOT_REACHED",
+      "build_inside_check": "NOT_REACHED",
+      "staging_plan": "SKIPPED_NOT_REACHED",
+      "default_browser_install": "SKIPPED_NOT_REACHED",
+      "default_browser_suite": "SKIPPED_NOT_REACHED",
+      "verify_artifact": "UPLOAD_RAN_NO_MATCHING_FILES_NO_VERIFY_ARTIFACT",
+      "log_sha256": "a4c6e69c3db0cc8508981db8c3530fab5ac61ccafe8be6f36fa5f33d2d5fb21c",
+      "annotations_sha256": "ac306c5a7f60b1a0b7716c2dbbcafa10af30681544635a6e907384753a0c5827",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42378857239/job/128422077252"
+    },
+    {
+      "event": "pull_request",
+      "run": 42378860694,
+      "job": 128422093951,
+      "run_attempt": 1,
+      "requested_head": "523afd4ef17d5502b6e0e39a4df86bdaa7bba23b",
+      "actual_checkout": "1f69556efe5e471eaaeaf81f1f5b3dd264cf3f85",
+      "source_tree": "d76ed41befc7de66fe9ac2683e6b09f3efddb1bb",
+      "status": "CANCELLED",
+      "provider_cause": "JOB_MAXIMUM_EXECUTION_TIME_45M0S",
+      "annotation_literal": "The job has exceeded the maximum execution time of 45m0s",
+      "started_at": "2026-11-07T13:53:17Z",
+      "completed_at": "2026-11-07T14:38:34Z",
+      "job_lifetime_seconds": 2717.0,
+      "unit_file_summary_counts": {
+        "SKIPPED": 5,
+        "PASS": 79,
+        "FAILED": 2
+      },
+      "no_terminal_summary_files": 323,
+      "failed_case_labels": 8,
+      "individual_case_failure_causes": "UNKNOWN_NO_FINAL_ERROR_STACKS",
+      "explicit_case_timeout_messages": 0,
+      "global_final_case_count": "UNKNOWN_NO_FINAL_COLLECTION",
+      "format_check": "PASS",
+      "check_prefix_before_npm_test": "PASS_BY_SEQUENTIAL_AND_CHAIN_REACHED_VITEST",
+      "units": "UNFINISHED_WITH_FAILED_CASE_LABELS",
+      "python_recovery": "NOT_REACHED",
+      "build_inside_check": "NOT_REACHED",
+      "staging_plan": "SKIPPED_NOT_REACHED",
+      "default_browser_install": "SKIPPED_NOT_REACHED",
+      "default_browser_suite": "SKIPPED_NOT_REACHED",
+      "verify_artifact": "UPLOAD_RAN_NO_MATCHING_FILES_NO_VERIFY_ARTIFACT",
+      "log_sha256": "45e7236f01bff3f8eb97ef11e024eb7d87092795ec085ea2cd8221c08a905a7c",
+      "annotations_sha256": "035b3a3f4b9bf1389dc0de76cbc31c09f43cd2b9d87579b0293ec98351ede123",
+      "url": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/actions/runs/42378860694/job/128422093951"
+    }
+  ],
+  "requirements": {
+    "full_units": {
+      "command": "npm test",
+      "expanded": "vitest run",
+      "include": "tests/**/*.test.ts",
+      "Git_tracked_files": 409,
+      "test_timeout_ms": 30000,
+      "hook_timeout_ms": 30000,
+      "maxWorkers": 4,
+      "retry_config": "OMITTED_ORIGINAL_DEFAULT0",
+      "terminal_result": "NONE",
+      "global_case_count": "UNKNOWN"
+    },
+    "recovery": {
+      "command": "npm run test:recovery",
+      "expanded": "node scripts/test-recovery.mjs -> python3 -B -m unittest discover -s recovery/monterey -p test_*.py",
+      "files": [
+        {
+          "path": "recovery/monterey/test_device_facts.py",
+          "sha256": "14af7152bd081ac7681d7875a8928d962e76b77d94804d12bf6ec93c114632f0"
+        },
+        {
+          "path": "recovery/monterey/test_p1_recovery.py",
+          "sha256": "ad0c41b00f95622d58f5d108a85de0e12a70d888de6baf251c0d4e274f42ecaf"
+        },
+        {
+          "path": "recovery/monterey/test_rehearsal.py",
+          "sha256": "87e22c7ceefe3972d5f7e623c2627ea26039521bfc801850b458952fffef0bbe"
+        },
+        {
+          "path": "recovery/monterey/test_rehearsal_setup.py",
+          "sha256": "afcc1968c0da37f36283356058530323b643754e56f5bf54ae7b85de3775d537"
+        },
+        {
+          "path": "recovery/monterey/test_secure_recovery.py",
+          "sha256": "a71f2bf0d0153fd216d3fc7d885c4d2b16bb9b57e4a5060f9eac87c18631439d"
+        }
+      ],
+      "status": "NOT_REACHED",
+      "historical_success_overlap": {
+        "current_static_methods": 105,
+        "prior_recorded_synthetic_recovery_setup_PASS": 105,
+        "prior_exact_P1_file_PASS": 25,
+        "P1_file_sha256": "ad0c41b00f95622d58f5d108a85de0e12a70d888de6baf251c0d4e274f42ecaf",
+        "new_CI_gap_does_not_mean_never_tested": true,
+        "no_successful_suite_repeat_authority_inferred": true
+      }
+    },
+    "check_build": {
+      "command": "npm run build",
+      "expanded": "tsc --noEmit && vite build",
+      "status": "NOT_REACHED_IN_FOUNDATION",
+      "separate_exact523_dedicated_builds": "PASS"
+    },
+    "staging_plan": {
+      "command": "npm run staging:plan",
+      "expanded": "node scripts/staging-readiness.mts plan",
+      "status": "SKIPPED_NOT_REACHED",
+      "authority": "CI_PLAN_ONLY_NOT_HOSTED_PERMISSION"
+    },
+    "browser_install": {
+      "command": "npx playwright install --with-deps chromium",
+      "status": "SKIPPED_NOT_REACHED"
+    },
+    "default_browser": {
+      "command": "npm run test:browser",
+      "expanded": "npm run build && playwright test",
+      "testDir": "tests/browser",
+      "spec_files": 32,
+      "projects": 6,
+      "static_file_project_candidates_after_match_ignore": 96,
+      "actual_case_collection": "UNKNOWN_NOT_RUN",
+      "test_timeout_config": "OMITTED_PINNED_PLAYWRIGHT_DEFAULT30S",
+      "workers_config": "OMITTED_PINNED_PLAYWRIGHT_DEFAULT50_PERCENT",
+      "retries_config": "OMITTED_PINNED_PLAYWRIGHT_DEFAULT0",
+      "actual_runtime_workers": "UNOBSERVED_NOT_RUN",
+      "servers": [
+        "production preview127.0.0.1:4173",
+        "flagged DEVjourney127.0.0.1:4206"
+      ],
+      "status": "SKIPPED_NOT_REACHED",
+      "files": [
+        {
+          "path": "tests/browser/branding.spec.ts",
+          "sha256": "f7ae5ac122a39578d715e808c4b8a0010426a08f0ba2469bd7adff9e9309bc51"
+        },
+        {
+          "path": "tests/browser/contractor-design.spec.ts",
+          "sha256": "d8b7d97bfd490de7b2d6a2d1ef43a8614823535c5de8094ae0d82f07cae1e151"
+        },
+        {
+          "path": "tests/browser/contractor-phase-b.spec.ts",
+          "sha256": "5cf4dcabca40bc310ad7090d2cbc333974cf62f6652df23ddb670c8a90784d38"
+        },
+        {
+          "path": "tests/browser/crm-pagination.spec.ts",
+          "sha256": "191c5f0e4f03620366ae3dc2fe6f98cc3ddde31d1334b39981bd5fc57e3cdc58"
+        },
+        {
+          "path": "tests/browser/customer-change-requests.spec.ts",
+          "sha256": "0151bb1db4f4fce9312f6970e623df0c06d162ce42d61e5081c97be0ba5ed4b8"
+        },
+        {
+          "path": "tests/browser/customer-change-revisions.spec.ts",
+          "sha256": "5841854d698be7f8ea7fb34a5b6b454acee6aac6cb2e3c7003294cddf4f17b3f"
+        },
+        {
+          "path": "tests/browser/customer-issuance-readiness.spec.ts",
+          "sha256": "61051ac9a13ae54744b5b3b9a9665e6c4291caf6d4685f563cac98a25d5e193e"
+        },
+        {
+          "path": "tests/browser/customer-revised-estimate-loop.spec.ts",
+          "sha256": "2b3a291522b89a15c86b68cab4ea61e34800a109047d89df693fb63769be2a07"
+        },
+        {
+          "path": "tests/browser/customer-revision-packets.spec.ts",
+          "sha256": "c6b83465c165eba64c881cd7f7a0734a58f4b5ee84c4935dc7fc65158f784233"
+        },
+        {
+          "path": "tests/browser/customer.spec.ts",
+          "sha256": "4736d3ed970fb98b5ca81705d96a0463c59d0e0b2a26080bb2ac2ffad5ac02b6"
+        },
+        {
+          "path": "tests/browser/cycle21-canonical-corrections.spec.ts",
+          "sha256": "8eb9efc1ac90be4ccab01f295789465501016bf0aad63daaefc8a92bd276598b"
+        },
+        {
+          "path": "tests/browser/cycle22-current-requirements.spec.ts",
+          "sha256": "102509bd92e836d9e79735018856fdf2824c8d43945ddfc1c3249bcf09af89d5"
+        },
+        {
+          "path": "tests/browser/cycle23-source-consistency.spec.ts",
+          "sha256": "589aabdcaf2b809932118c81397cf99d9ce02da23225d36c13d5c266eb162cf4"
+        },
+        {
+          "path": "tests/browser/cycle24-native-actions.spec.ts",
+          "sha256": "3a40b18a96df8824ecf87b9fdc2154013ac25adcc4b71fd141e85e8e6140908f"
+        },
+        {
+          "path": "tests/browser/cycle6-default-off.spec.ts",
+          "sha256": "e6c7bd34e64e717f6e0c0ec8a671e2450b62e8f756fd318085e663fcf5c44958"
+        },
+        {
+          "path": "tests/browser/cycle6-journey.spec.ts",
+          "sha256": "a8b840a864e1f438c2ab15af5b692eab792053a47611144bf881c1880ef43e25"
+        },
+        {
+          "path": "tests/browser/inspection-comparison.spec.ts",
+          "sha256": "779b2064b863156f724aa79fd5ba9595239ac6f0dac576fa8346e8dd97e15320"
+        },
+        {
+          "path": "tests/browser/inspection-history-search.spec.ts",
+          "sha256": "a1f08521b4f1ff5709068c3c87b52d986c43b8a7ee73653af3ea6f3ee0aa6d01"
+        },
+        {
+          "path": "tests/browser/job-margin.spec.ts",
+          "sha256": "a773ef29b20de4748a5c4e2c17795d0eb85eae0b9391cd90d064ef998c0306b8"
+        },
+        {
+          "path": "tests/browser/maintenance-center.spec.ts",
+          "sha256": "2f0f177c7fb7447771e4d02628b17c89f232b8b32f972700f9f7107eb7561911"
+        },
+        {
+          "path": "tests/browser/operations.spec.ts",
+          "sha256": "f9e462e013c8d4f00b7ff4e847e9b4db3ce118a078b43d095887bb6f91dffe57"
+        },
+        {
+          "path": "tests/browser/phase3.spec.ts",
+          "sha256": "babb664b93e018f0513986a63e226f3694da7870b4e9fb2c92feb32cfd9b49f5"
+        },
+        {
+          "path": "tests/browser/property-attention.spec.ts",
+          "sha256": "12ef684fd3da6835b12e4bfcddf8e98c0b41b331cc4a574e7c29efa651662b03"
+        },
+        {
+          "path": "tests/browser/property-design.spec.ts",
+          "sha256": "e01f6090e7c2172c9891d411553bf7072f120b2218b36ccd1f0ca93b8949c664"
+        },
+        {
+          "path": "tests/browser/property-journey.spec.ts",
+          "sha256": "dbd6ba52b8b32998d61827b1eea1c3ecc780e520efcecc0dcc0cf0f0e2ccb2cb"
+        },
+        {
+          "path": "tests/browser/property.spec.ts",
+          "sha256": "6856c36100a8bb491acaf486ad82cc4fd39da568ea738af8de2394786dac8007"
+        },
+        {
+          "path": "tests/browser/release.spec.ts",
+          "sha256": "72c7d93bdc877a6cf2a80ec7452c77a091c2171d51793f3c1c990f088433bb05"
+        },
+        {
+          "path": "tests/browser/repair-draft.spec.ts",
+          "sha256": "96147b01ce08a5d57521b2a02a874c767d95afc28fefa5c2246cd2232487aa9e"
+        },
+        {
+          "path": "tests/browser/repair-readiness.spec.ts",
+          "sha256": "00bc581fe92f6f6adb7f250d4f715baa2bebf3afb45df8434528816c722e7df1"
+        },
+        {
+          "path": "tests/browser/sales-contract-preparation.spec.ts",
+          "sha256": "542f03c04c4a00a656c67421154cf7863083d1cb3ea7447f35ed96b81f76a649"
+        },
+        {
+          "path": "tests/browser/sales-handoff.spec.ts",
+          "sha256": "29f9fd9fd27e9d8341bf37aeb3a112788cd195d88c55e68fdf5a0cdb50ff05e1"
+        },
+        {
+          "path": "tests/browser/shells.spec.ts",
+          "sha256": "6e39187c31adab6233f921636e3718f8cc82c970be5d2a88f7b157cc46c4135f"
+        }
+      ]
+    }
+  },
+  "verified_scopes_separate": {
+    "current523_dedicated": {
+      "each_event": {
+        "native_cases": 191,
+        "native_files": 5,
+        "responsive_cases": 18,
+        "production_OFF_cases": 3,
+        "PNGs": 18,
+        "tracked_source_hashes": 2152
+      },
+      "all4_artifacts_independently_digest_and_source_verified": true,
+      "proof_sha256": "063e9c4ac42f7e40b1daa682968c05f1078ca8a17a3f22ac941aabf9d2921631",
+      "source_binding": "WHOLE_CLEAN_JOB_BEFORE_FINAL_NOT_CAPTURE_TIME",
+      "native_files": [
+        "tests/cycle13-service-passport-desk.test.ts",
+        "tests/program-trade-editions.test.ts",
+        "tests/v1-passport-final-authority.test.ts",
+        "tests/v1-pilot-source-integrity.test.ts",
+        "tests/v1-trade-final-authority.test.ts"
+      ],
+      "browser_files": [
+        "tests/program/cycle13-customer.spec.ts",
+        "tests/program/cycle13-advanced.spec.ts",
+        "tests/program/cycle13-default-off.spec.ts"
+      ],
+      "browser_testDir": "tests/program",
+      "browser_timeout_ms": 90000,
+      "browser_workers": 1,
+      "browser_retries": 0,
+      "DEV_port": 4261,
+      "production_OFF_port": 4271,
+      "overlap_with_default32_browser_files": 0
+    },
+    "current523_native_PG17": [
+      {
+        "event": "push",
+        "job": 128422077502,
+        "run": 42378857239,
+        "checkout": "523afd4ef17d5502b6e0e39a4df86bdaa7bba23b",
+        "mode": {
+          "EV_TEST_PG_CI": true,
+          "EV_CUSTOMER_REQUEST_BROWSER": true
+        },
+        "files_passed": 23,
+        "cases_passed": 661,
+        "artifact_id": 13576524097,
+        "artifact_sha256": "f8e6e14f3bd1934cb7ac99e4c16734c5e17e68bd2a70eb71a7d3d3103d6fbb09",
+        "artifact_contents": "18PNG_ONLY_NO_UNIT_JSON",
+        "PNGs": [
+          {
+            "path": "customer-requests-native-sample-construction-desktop.png",
+            "sha256": "7540d3b3d4e00b3cec10257eda4288879b656f7d1d7a637dd479f718540999a4"
+          },
+          {
+            "path": "customer-requests-native-sample-construction-mobile-customer.png",
+            "sha256": "a86ceb59216a3821254d18d9c4aae5dcd76d598a56e24876ca8aab414102677b"
+          },
+          {
+            "path": "customer-requests-native-sample-construction-desktop-customer.png",
+            "sha256": "d334813efc8a98ed8d160dcbeb7df694102cd0fb1521d3d234cd1668405325d3"
+          },
+          {
+            "path": "customer-requests-native-sample-construction-mobile.png",
+            "sha256": "76dc36ef6e9db8ce09613a529d69552557bd7253b2ac602fd4a3176cc52ef5eb"
+          },
+          {
+            "path": "customer-requests-native-sample-construction-tablet-customer.png",
+            "sha256": "3bc062b1988175466a0a53ea451829545a0852266184f58b7f64dea85ba626b1"
+          },
+          {
+            "path": "customer-requests-native-sample-construction-tablet.png",
+            "sha256": "92a86d150ece3b3ddd4226d51f61ab89d000f3cf46732c774e6c698f0c615291"
+          },
+          {
+            "path": "customer-requests-native-sample-property-desktop-customer.png",
+            "sha256": "7bc237464a3bb32d6809b1c7ecf10094aa603ee6db7631f3970261e1cf1f7c3f"
+          },
+          {
+            "path": "customer-requests-native-sample-property-desktop.png",
+            "sha256": "24cf4f7e439676dd8d68f53fb28d1996fe9b46b4b1d55b26f8b58939100958d2"
+          },
+          {
+            "path": "customer-requests-native-sample-property-mobile-customer.png",
+            "sha256": "219da9bd53a890c3c55afc0097d8fbf852f1a68ca574d506a88c54539276aac7"
+          },
+          {
+            "path": "customer-requests-native-sample-property-mobile.png",
+            "sha256": "88b772d5ab087d92de131262113cdd6bb530bb7743658c8c8cbd418ac02d2c38"
+          },
+          {
+            "path": "customer-requests-native-sample-property-tablet-customer.png",
+            "sha256": "fb75fad21fcabeb1f2e80e0ed2fcbf87bfa3c86b5bcf6cbfd6261ff74dd9df64"
+          },
+          {
+            "path": "customer-requests-native-sample-property-tablet.png",
+            "sha256": "aad1451c0fa1716970662f1f68de494bd95d3e2a96f9f7f1497518a9ca17d5cd"
+          },
+          {
+            "path": "customer-requests-native-sample-roofing-desktop-customer.png",
+            "sha256": "16edf661e1c819ec8285919c24902b5ab02d28220891fd81aa9f078bb9138b4e"
+          },
+          {
+            "path": "customer-requests-native-sample-roofing-desktop.png",
+            "sha256": "5f0b0bee1fc2dd51d1ece0243293af6437f302f37014fb64caa984709ee42ed6"
+          },
+          {
+            "path": "customer-requests-native-sample-roofing-mobile-customer.png",
+            "sha256": "2a0f5910958c02bed8dd8fb5fa65279cc64967268610e4d4416ab025e1dab529"
+          },
+          {
+            "path": "customer-requests-native-sample-roofing-mobile.png",
+            "sha256": "7e4b67500cc9cb6d5529c89b91807cc00184520a8d1bff76b041b028c1775806"
+          },
+          {
+            "path": "customer-requests-native-sample-roofing-tablet-customer.png",
+            "sha256": "541fdcf08da6e84eced81bfd612a3fa37b27e580370ca4ff5b4efcac29ef89d9"
+          },
+          {
+            "path": "customer-requests-native-sample-roofing-tablet.png",
+            "sha256": "c372f1d51d29a6d44a8ce6b309958c642c4955bc54e57f8dc4552c2f5b03790d"
+          }
+        ],
+        "log_sha256": "3d93f29b2cc5befabfed6d2076feb1cd3d7f970246015c5691c2b6a61019ba1f"
+      },
+      {
+        "event": "pull_request",
+        "job": 128422093649,
+        "run": 42378860694,
+        "checkout": "1f69556efe5e471eaaeaf81f1f5b3dd264cf3f85",
+        "mode": {
+          "EV_TEST_PG_CI": true,
+          "EV_CUSTOMER_REQUEST_BROWSER": true
+        },
+        "files_passed": 23,
+        "cases_passed": 661,
+        "artifact_id": 13575934924,
+        "artifact_sha256": "28bbd741be3109c9bf1debe8559cc614c8107b466a79e7dd2ee225b6b295c536",
+        "artifact_contents": "18PNG_ONLY_NO_UNIT_JSON",
+        "PNGs": [
+          {
+            "path": "customer-requests-native-sample-construction-desktop-customer.png",
+            "sha256": "d334813efc8a98ed8d160dcbeb7df694102cd0fb1521d3d234cd1668405325d3"
+          },
+          {
+            "path": "customer-requests-native-sample-construction-desktop.png",
+            "sha256": "cc4e9dba0b11ae0386b1016d39617dcc5a8ded0a517d03aa994a26417824cdfb"
+          },
+          {
+            "path": "customer-requests-native-sample-construction-mobile-customer.png",
+            "sha256": "a86ceb59216a3821254d18d9c4aae5dcd76d598a56e24876ca8aab414102677b"
+          },
+          {
+            "path": "customer-requests-native-sample-construction-mobile.png",
+            "sha256": "d6e4c83f9f753348cc80f905a44a2c59883c94a27d08cbdc48cedc05959a0060"
+          },
+          {
+            "path": "customer-requests-native-sample-construction-tablet-customer.png",
+            "sha256": "3bc062b1988175466a0a53ea451829545a0852266184f58b7f64dea85ba626b1"
+          },
+          {
+            "path": "customer-requests-native-sample-property-desktop-customer.png",
+            "sha256": "7bc237464a3bb32d6809b1c7ecf10094aa603ee6db7631f3970261e1cf1f7c3f"
+          },
+          {
+            "path": "customer-requests-native-sample-construction-tablet.png",
+            "sha256": "ed892a9f948df3f36c2cc880f1adb2e8292b3b73c13d1870cb6a01a0b47df1c5"
+          },
+          {
+            "path": "customer-requests-native-sample-property-desktop.png",
+            "sha256": "5ed8f950f149d5a4ba596b0e09f290c510ba1e48d48db775bab01cfcdb2860c6"
+          },
+          {
+            "path": "customer-requests-native-sample-property-mobile-customer.png",
+            "sha256": "219da9bd53a890c3c55afc0097d8fbf852f1a68ca574d506a88c54539276aac7"
+          },
+          {
+            "path": "customer-requests-native-sample-property-mobile.png",
+            "sha256": "ff8ffa2850654dbf7530e1ea7d408affecf4526e5644de3bde2d291bf02a025d"
+          },
+          {
+            "path": "customer-requests-native-sample-property-tablet-customer.png",
+            "sha256": "fb75fad21fcabeb1f2e80e0ed2fcbf87bfa3c86b5bcf6cbfd6261ff74dd9df64"
+          },
+          {
+            "path": "customer-requests-native-sample-property-tablet.png",
+            "sha256": "fde841d795b9b2aa1cc3e137343b76f23dbdef71f10abeb4e51e199cdc5c068b"
+          },
+          {
+            "path": "customer-requests-native-sample-roofing-desktop-customer.png",
+            "sha256": "16edf661e1c819ec8285919c24902b5ab02d28220891fd81aa9f078bb9138b4e"
+          },
+          {
+            "path": "customer-requests-native-sample-roofing-desktop.png",
+            "sha256": "eb0a2f84a15b912d08eaeacc3922637c14776a1d137f7d40da1db8e2490d991c"
+          },
+          {
+            "path": "customer-requests-native-sample-roofing-mobile-customer.png",
+            "sha256": "2a0f5910958c02bed8dd8fb5fa65279cc64967268610e4d4416ab025e1dab529"
+          },
+          {
+            "path": "customer-requests-native-sample-roofing-mobile.png",
+            "sha256": "51980e9e8e63aee9457069eeef4948a3859cf764268701bff48a1924d54f5289"
+          },
+          {
+            "path": "customer-requests-native-sample-roofing-tablet-customer.png",
+            "sha256": "541fdcf08da6e84eced81bfd612a3fa37b27e580370ca4ff5b4efcac29ef89d9"
+          },
+          {
+            "path": "customer-requests-native-sample-roofing-tablet.png",
+            "sha256": "cf3bdfb8eb69a69f026aff6f428f1fd8c4a923af360951d23de4194ec17dcb2a"
+          }
+        ],
+        "log_sha256": "dd50c94c08495be0f209fb46e914fd18ac245a36334ee793fdcc8bce1132aeb3"
+      }
+    ],
+    "unique_current_native_scoped_files": 28,
+    "files_outside_current191_plus_nativePG_modes": 381,
+    "outside_scope_does_not_mean_never_tested": true,
+    "earlier299": {
+      "source": "2d93b629d746f530ed1e3268631ca72d1651e85f",
+      "native_cases": 573,
+      "native_files": 22,
+      "browser_cases": 27,
+      "status": "PRESERVED_SEPARATE_SOURCE_NOT_RELABELED523"
+    }
+  },
+  "partial_failures": [
+    {
+      "event": "push",
+      "observed_failed_cases": [
+        {
+          "file": "tests/cycle24-independent-integration-review.test.ts",
+          "title": "brand 0 native correction and material review remain the original cost and priority sources",
+          "reported_duration_ms": 30026.0,
+          "classification": "FAILED_CASE_LABEL_ONLY_NO_ERROR_STACK_CAUSE_UNKNOWN",
+          "line": "2026-11-07T14:00:02.6540098Z      \u00d7 brand 0 native correction and material review remain the original cost and priority sources 30026ms"
+        },
+        {
+          "file": "tests/cycle24-independent-integration-review.test.ts",
+          "title": "brand 1 native correction and material review remain the original cost and priority sources",
+          "reported_duration_ms": 30670.0,
+          "classification": "FAILED_CASE_LABEL_ONLY_NO_ERROR_STACK_CAUSE_UNKNOWN",
+          "line": "2026-11-07T14:00:02.6542596Z      \u00d7 brand 1 native correction and material review remain the original cost and priority sources 30670ms"
+        },
+        {
+          "file": "tests/cycle24-independent-integration-review.test.ts",
+          "title": "brand 2 native correction and material review remain the original cost and priority sources",
+          "reported_duration_ms": 32829.0,
+          "classification": "FAILED_CASE_LABEL_ONLY_NO_ERROR_STACK_CAUSE_UNKNOWN",
+          "line": "2026-11-07T14:00:02.6544796Z      \u00d7 brand 2 native correction and material review remain the original cost and priority sources 32829ms"
+        },
+        {
+          "file": "tests/cycle23-independent-integration-review.test.ts",
+          "title": "I10 another property report and another job occurrence cannot replace the retained exact sources",
+          "reported_duration_ms": 32432.0,
+          "classification": "FAILED_CASE_LABEL_ONLY_NO_ERROR_STACK_CAUSE_UNKNOWN",
+          "line": "2026-11-07T14:04:17.2861459Z      \u00d7 I10 another property report and another job occurrence cannot replace the retained exact sources 32432ms"
+        },
+        {
+          "file": "tests/cycle25-combined-integration.test.ts",
+          "title": "brand 2 native task \u2192 cost review \u2192 service evidence \u2192 maintenance \u2192 owner \u2192 offline retains exact identities",
+          "reported_duration_ms": 30031.0,
+          "classification": "FAILED_CASE_LABEL_ONLY_NO_ERROR_STACK_CAUSE_UNKNOWN",
+          "line": "2026-11-07T14:15:04.0547413Z      \u00d7 brand 2 native task \u2192 cost review \u2192 service evidence \u2192 maintenance \u2192 owner \u2192 offline retains exact identities 30031ms"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "brand 0: five-package source evidence binds one exact canonical daily environment",
+          "reported_duration_ms": 30122.0,
+          "classification": "FAILED_CASE_LABEL_ONLY_NO_ERROR_STACK_CAUSE_UNKNOWN",
+          "line": "2026-11-07T14:28:40.1003235Z    \u00d7 brand 0: five-package source evidence binds one exact canonical daily environment 30122ms"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "brand 0: retained daily sources continue through every review and exact Next without reset",
+          "reported_duration_ms": 3.0,
+          "classification": "FAILED_CASE_LABEL_ONLY_NO_ERROR_STACK_CAUSE_UNKNOWN",
+          "line": "2026-11-07T14:28:40.1022622Z    \u00d7 brand 0: retained daily sources continue through every review and exact Next without reset 3ms"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "brand 1: five-package source evidence binds one exact canonical daily environment",
+          "reported_duration_ms": 30338.0,
+          "classification": "FAILED_CASE_LABEL_ONLY_NO_ERROR_STACK_CAUSE_UNKNOWN",
+          "line": "2026-11-07T14:28:40.1032413Z    \u00d7 brand 1: five-package source evidence binds one exact canonical daily environment 30338ms"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "brand 1: retained daily sources continue through every review and exact Next without reset",
+          "reported_duration_ms": 1.0,
+          "classification": "FAILED_CASE_LABEL_ONLY_NO_ERROR_STACK_CAUSE_UNKNOWN",
+          "line": "2026-11-07T14:28:40.1042421Z    \u00d7 brand 1: retained daily sources continue through every review and exact Next without reset 1ms"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "brand 2: five-package source evidence binds one exact canonical daily environment",
+          "reported_duration_ms": 33792.0,
+          "classification": "FAILED_CASE_LABEL_ONLY_NO_ERROR_STACK_CAUSE_UNKNOWN",
+          "line": "2026-11-07T14:28:40.1092335Z    \u00d7 brand 2: five-package source evidence binds one exact canonical daily environment 33792ms"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "brand 2: retained daily sources continue through every review and exact Next without reset",
+          "reported_duration_ms": 1.0,
+          "classification": "FAILED_CASE_LABEL_ONLY_NO_ERROR_STACK_CAUSE_UNKNOWN",
+          "line": "2026-11-07T14:28:40.1094483Z    \u00d7 brand 2: retained daily sources continue through every review and exact Next without reset 1ms"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "finance: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "reported_duration_ms": 30720.0,
+          "classification": "FAILED_CASE_LABEL_ONLY_NO_ERROR_STACK_CAUSE_UNKNOWN",
+          "line": "2026-11-07T14:28:40.1489726Z    \u00d7 finance: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay 30720ms"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "finance: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "reported_duration_ms": 40828.0,
+          "classification": "FAILED_CASE_LABEL_ONLY_NO_ERROR_STACK_CAUSE_UNKNOWN",
+          "line": "2026-11-07T14:28:40.1492594Z    \u00d7 finance: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay 40828ms"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "finance: known callback withdrawal before invocation preserves exact source review but invokes no host",
+          "reported_duration_ms": 43855.0,
+          "classification": "FAILED_CASE_LABEL_ONLY_NO_ERROR_STACK_CAUSE_UNKNOWN",
+          "line": "2026-11-07T14:28:40.1495125Z    \u00d7 finance: known callback withdrawal before invocation preserves exact source review but invokes no host 43855ms"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "finance: competing fresh views of the same canonical job dispatch at most one callback",
+          "reported_duration_ms": 37209.0,
+          "classification": "FAILED_CASE_LABEL_ONLY_NO_ERROR_STACK_CAUSE_UNKNOWN",
+          "line": "2026-11-07T14:28:40.1563905Z    \u00d7 finance: competing fresh views of the same canonical job dispatch at most one callback 37209ms"
+        }
+      ]
+    },
+    {
+      "event": "pull_request",
+      "observed_failed_cases": [
+        {
+          "file": "tests/cycle24-independent-integration-review.test.ts",
+          "title": "brand 0 native correction and material review remain the original cost and priority sources",
+          "reported_duration_ms": 30735.0,
+          "classification": "FAILED_CASE_LABEL_ONLY_NO_ERROR_STACK_CAUSE_UNKNOWN",
+          "line": "2026-11-07T13:59:44.2531362Z      \u00d7 brand 0 native correction and material review remain the original cost and priority sources 30735ms"
+        },
+        {
+          "file": "tests/cycle24-independent-integration-review.test.ts",
+          "title": "brand 1 native correction and material review remain the original cost and priority sources",
+          "reported_duration_ms": 30807.0,
+          "classification": "FAILED_CASE_LABEL_ONLY_NO_ERROR_STACK_CAUSE_UNKNOWN",
+          "line": "2026-11-07T13:59:44.2533493Z      \u00d7 brand 1 native correction and material review remain the original cost and priority sources 30807ms"
+        },
+        {
+          "file": "tests/cycle24-independent-integration-review.test.ts",
+          "title": "brand 2 native correction and material review remain the original cost and priority sources",
+          "reported_duration_ms": 30173.0,
+          "classification": "FAILED_CASE_LABEL_ONLY_NO_ERROR_STACK_CAUSE_UNKNOWN",
+          "line": "2026-11-07T13:59:44.2535141Z      \u00d7 brand 2 native correction and material review remain the original cost and priority sources 30173ms"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "brand 2: five-package source evidence binds one exact canonical daily environment",
+          "reported_duration_ms": 30011.0,
+          "classification": "FAILED_CASE_LABEL_ONLY_NO_ERROR_STACK_CAUSE_UNKNOWN",
+          "line": "2026-11-07T14:24:56.4592927Z    \u00d7 brand 2: five-package source evidence binds one exact canonical daily environment 30011ms"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "brand 2: retained daily sources continue through every review and exact Next without reset",
+          "reported_duration_ms": 1.0,
+          "classification": "FAILED_CASE_LABEL_ONLY_NO_ERROR_STACK_CAUSE_UNKNOWN",
+          "line": "2026-11-07T14:24:56.4612929Z    \u00d7 brand 2: retained daily sources continue through every review and exact Next without reset 1ms"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "finance: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "reported_duration_ms": 38656.0,
+          "classification": "FAILED_CASE_LABEL_ONLY_NO_ERROR_STACK_CAUSE_UNKNOWN",
+          "line": "2026-11-07T14:24:56.5093094Z    \u00d7 finance: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay 38656ms"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "finance: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "reported_duration_ms": 39299.0,
+          "classification": "FAILED_CASE_LABEL_ONLY_NO_ERROR_STACK_CAUSE_UNKNOWN",
+          "line": "2026-11-07T14:24:56.5099480Z    \u00d7 finance: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay 39299ms"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "finance: competing fresh views of the same canonical job dispatch at most one callback",
+          "reported_duration_ms": 31563.0,
+          "classification": "FAILED_CASE_LABEL_ONLY_NO_ERROR_STACK_CAUSE_UNKNOWN",
+          "line": "2026-11-07T14:24:56.5636831Z    \u00d7 finance: competing fresh views of the same canonical job dispatch at most one callback 31563ms"
+        }
+      ]
+    }
+  ],
+  "unit_inventory": [
+    {
+      "path": "tests/back-office-copy.test.ts",
+      "sha256": "d5c1c7f22f907aebd588fdf82a378c9bc5ea931a3ddb5fe5e0c26bae05ec78ed",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/command-authority.test.ts",
+      "sha256": "75c0bc0de0bcbbe727844d4a8f9c0998ea50400ddd87f70b84ebe756a9530250",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/command-custody.test.ts",
+      "sha256": "ef87cfde28b8555bdfff928c2036205e1b34c5e50a5769ad5681eead8c0bfd86",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/communications-preparation.test.ts",
+      "sha256": "182baafe37b0af2bdf6ec27089e16513ef284bb81c9d8217728c38937d83a08b",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/connected-preflight.test.ts",
+      "sha256": "a807cd9cc87133eaa059b64088d119f444e2b56121e06e10f1d9869653b4eb0f",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/context.test.ts",
+      "sha256": "e3c26b130c6265715a9e8aaecb2ab55452d2b64f036e5aafe0e13245612008fa",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/crm-pagination.test.ts",
+      "sha256": "1c9bfeb48f191aa79b4f30ed79e6cff50c2e483ad7e6e47f01109efcf3dbccc1",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/customer-access.test.ts",
+      "sha256": "76e529c17f549d27906a04b15963a1096f099e2c07b6abee89eced65f48a085c",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/customer-broker.test.ts",
+      "sha256": "bf83e5e5498ad85ebc730726ca9bedea7538210076b59870cbedbf3c9f404f37",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/customer-change-requests.test.ts",
+      "sha256": "a02e0d2c12b4acda20927a2fcc7cb7f24c37fc601649cf9f05791be2945cfa43",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/customer-change-revisions.test.ts",
+      "sha256": "e8b326a9caa6bfd118374e1ebd9fde10e1441ea81a2a840bcfc58eb7e426f5ce",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/customer-closed-auth.test.ts",
+      "sha256": "587a99e46712cf00229512850ad043fea3799bcc14a024406f86347998506aef",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/customer-connected.test.ts",
+      "sha256": "2c4af903ad519ae92fef28b6b014ad46f640aa2ca4954b6f3f6e0fec2b65dcc7",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/customer-decision.test.ts",
+      "sha256": "e098c5d1f4eca695f12e7399686ee119b026c226d5a7473a16fa1cbb8765c14e",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/customer-issuance-readiness.test.ts",
+      "sha256": "ec188043036c8a7e8f5f6ee50413bac9fccc0c0d82b90c0edf39ee00d3d6ce14",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/customer-preview.test.ts",
+      "sha256": "a67b18617b654bd19c4b55c7f96f21bfb3c7b5e279b3df6aed56f7508dc23e21",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/customer-reconciliation.test.ts",
+      "sha256": "2f90a996915f289cc0dd7b25a7086777717f5562787428ec3be040f56c200fc4",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/customer-request-policy.test.ts",
+      "sha256": "8f1ae171fbbd6ac9b462e2687124c61009f081e3d0e2ca6cff2a85d661c3310f",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/customer-requests.test.ts",
+      "sha256": "86cef0a26ef149f30e29e314e669afab72febb7e3bac0d6f724c42a61f70ec03",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/customer-revised-estimate-loop.test.ts",
+      "sha256": "a2ee8ee0fe67516b902b6c46b2c3dbe7a6528e8524abcbb8a5fe682cd911e010",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/customer-revision-packets.test.ts",
+      "sha256": "aab6ec7f1e3d0e2875b93e54994e9510f5118c54234db11f9b47410e738aace6",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle10-advanced-handoffs.test.ts",
+      "sha256": "7e13d8147f60684a6928dbc93396ee2651228c438fadabd15ea70f3e95548c85",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle10-crew-plan-review.test.ts",
+      "sha256": "398289b68e15d6cb45f0f1bab8f82d4106df88fba97fa3bb796db68bf4d68c4d",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle10-financial-exceptions.test.ts",
+      "sha256": "531a75280935f04794a54be2dd9724b66fea9295c35e981d2d5f235b12ed7353",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle10-follow-up-admission.test.ts",
+      "sha256": "2f95f5c4fcb91095b331d1d2ce10eddde3ccbf648b45dfc1f65a5b9cd5b95a9b",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle10-integration.test.ts",
+      "sha256": "7af150c82b39e342d8f0126eaaa143115266a2f94751df5aa353fcf41f5fb46f",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle10-priority-explanations.test.ts",
+      "sha256": "2e48342f92c5e3710af4eb9bf21ddffdec81738c764a97f30ff2570e74201452",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle10-service-desk.test.ts",
+      "sha256": "8af70176000ca0dbc5238f14dcbc2461b02e7ef51ad2799347351e75d39e3c22",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle11-atomic-consent-lab.test.ts",
+      "sha256": "c90c25098817fbffa521bfa3546aeb13efad54904a6d241814fce5d0bdeee5a6",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle11-crew-assignment-lab.test.ts",
+      "sha256": "71d13834d7aeed0efb4f36dadba1e339c404d1accab414cb6443d7402d771c3e",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle11-daily-action-center.test.ts",
+      "sha256": "e778faaa80240da0885dd2a4f93b42cf7fb625634e610f24938de8a1c847b59a",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle11-financial-correction-review.test.ts",
+      "sha256": "67121abe65f056d7e7edfb0732436c25311552688f040d2416addbf4ee6b554f",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle11-integration.test.ts",
+      "sha256": "2231b554d50f24127f8b4d96b196e01c0ee464570b7822366bc54478cf413d49",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle11-service-continuity.test.ts",
+      "sha256": "774bf5a65bbad75ec94691071ccb4c59ce0ff258bddbd0d6ac188874b88cc152",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle11-sync-admission-review.test.ts",
+      "sha256": "173f5cfde929f5bf4f3c1c561351084186af9d8b79651e1386a5237fc20ed287",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle12-consent-cancellation-review.test.ts",
+      "sha256": "e2d706b3e708853a474ed0821fade3be62a69acd9c0bfbab4426e06a937c18b1",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle12-external-proposal-lifecycle.test.ts",
+      "sha256": "39a0002a4097024288c48d907f06ed48de273f7321af4b777c880f099c8202f3",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle12-financial-evidence-review.test.ts",
+      "sha256": "f6bf543dc823c20f505fd6b1bffe3ab3e4848f2a125ec30682c3b4c3fbe9b62d",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle12-integration.test.ts",
+      "sha256": "2261de56a0490a3649cf1984da04edb1603121b9957eca51b0e28f901ce46553",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle12-schedule-proposal-revisions.test.ts",
+      "sha256": "17e2798d0942299be39fe597a597f1a70b569560488531e3d1a2f8c45e76053f",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle12-service-lifecycle-review.test.ts",
+      "sha256": "1e2dca965428c206befd26a41afb5c49b32de33f3a889b75cdff9187a284bbba",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle12-verified-operating-suggestions.test.ts",
+      "sha256": "f0a63b06e4378d835b548da1ff06cf5963211df8fd55ff16bea9a7ab2bb5a0d6",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle13-addon-review-desk.test.ts",
+      "sha256": "90042d61216296732e0f5124f790bea0c0f2cb34d0d80bf3f775a29f34e29021",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle13-financial-casework.test.ts",
+      "sha256": "ebb064f98fdd2a98720e2f749805bfaa2ad8e6c1eab546e409ab2a21f76d6937",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle13-follow-up-readiness.test.ts",
+      "sha256": "42bc826f4a49441528203c19568e3a50ef3f7f443cf5d872a6a8016bd14af0a6",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle13-integration.test.ts",
+      "sha256": "05e96e4452c239d7b0b30b16bac7dba98392b43c63ef359de352ae3f0b0df3bf",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle13-operating-navigation.test.ts",
+      "sha256": "ac50abb1fb17ceec110ab555bef34fd9660d65d208358e9b25e72ba39806c4b2",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle13-service-passport-desk.test.ts",
+      "sha256": "c49866ffabe879784c8340f86e76d31d5564a7119d9cff46076ded15f252f6af",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": true,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle13-work-order-revisions.test.ts",
+      "sha256": "7be15cb29b3c0052f74c3c00527c05da22221bb3be8812314e27bc993a2df846",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle14-finance-case-continuity.test.ts",
+      "sha256": "03c77161257ab42568fed907e18cd8a32177d1c540b13be6171d004a269b9a54",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle14-integration.test.ts",
+      "sha256": "f99eaf41ea56d69f85f669ab8b0ffd4dbde5a276a430d4507cb4a97eef2b3350",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle14-maintenance-planning-continuity.test.ts",
+      "sha256": "3ae8e3ba9b550302ae11be27ae720621efdee95c98fb2d9a48604835118d14d6",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle14-schedule-work-order-continuity.test.ts",
+      "sha256": "1dd87ea1c3445709c54c03a1d4bcc442eba1d6e1e670b9380cff7f625ea0705b",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle14-service-source-continuity.test.ts",
+      "sha256": "e67e0cc2e95aba653fe51442d1fee0909d988ce357d0fbb46003791f8c40cf2a",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle14-source-bound-addons.test.ts",
+      "sha256": "961493a64d313d78b5aa962b2c2f5923e98bea6abf89ae6b0aac289956e7861c",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle14-verified-task-handoff.test.ts",
+      "sha256": "1093e16cc1e783d1778849e4b53312ce619000ceeed1f70d5daa168424716e5b",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle15-addon-task-continuity.test.ts",
+      "sha256": "9096ccac1f1657cd53d95567fae974a28edbc8212b27a847702732620c81da61",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle15-explainable-task-links.test.ts",
+      "sha256": "2fc4319709d5f474c6ce05ca226784a8a42fd0022d000c6aef4ba7a9712ee675",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle15-field-task-continuity.test.ts",
+      "sha256": "b8a66e4e0ca3ccc14e34aaea6e98e5c5b03073b08a76f5af35ccf5adbfaccc95",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle15-finance-review-path.test.ts",
+      "sha256": "17d4e8a7f9355b53a382acfa667eabaedb79d39fbc30922d62eaf3ff66de8586",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle15-integration.test.ts",
+      "sha256": "3404c19cb16a69b0aee0c3d1a723f19acd6f590751f117d2941b0aafc3050269",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle15-maintenance-review-path.test.ts",
+      "sha256": "db04eabf79a557ad7148ba29cb8baf76be9af7a4134910a9f1ebf4f80dfed7a8",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle15-service-review-path.test.ts",
+      "sha256": "5eabe35c722f0d1ab94ac461a8ef78d721c2c529f357ff790f47a5c9459cb9d8",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle16-addon-readiness-guide.test.ts",
+      "sha256": "65bddd7746711e5e75d9c06f7b08a8219eb9a8acc3abf907149fb36063cd5292",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle16-daily-field-guide.test.ts",
+      "sha256": "6e5fe39b14417ee237ddf849b230d8cdf3affcb477b91e03fcc4bb7f5dd796f4",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle16-daily-finance-guide.test.ts",
+      "sha256": "bf21580fc3f462f1f6ac9c62351746c025068a3d4903b36af5b823f4d2efe370",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle16-integration.test.ts",
+      "sha256": "4390f6bf0595f4cd7b34bba2d2364fba80748e0227a36dc28dd897f417e53fd5",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle16-owner-briefing-guide.test.ts",
+      "sha256": "f466705fac2fd912cab8bb9edd684702623f3e6f49baae28bbca566b6a60c8d0",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle16-retention-review-guide.test.ts",
+      "sha256": "a401ddd842903bee5ecaa8cf92fa8ff6ce19f91a137fc07bf39a929bd8fbb4a8",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle16-service-completion-guide.test.ts",
+      "sha256": "0a2f9c4d199340cf5f10e03c0bd73bb6e5b1e54afa622c8f252a7d32b6602f2f",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle17-addon-task-desk.test.ts",
+      "sha256": "f99694424b40d44887be60d614fd59fc0fa08d7973ddd30516ae5f288c561dca",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle17-field-workspace.test.ts",
+      "sha256": "7a13c5fae9bb21f83c7bb4f5577cfe6a80c69b28f91d80695df76ae8c1988e6f",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle17-finance-case-desk.test.ts",
+      "sha256": "e1789a56852c2387ba5a8da34f4a45da6cb9605847b998f5b2f0084b388eb041",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle17-integration.test.ts",
+      "sha256": "6e68a895ce33c1bcda2ffb5a660aa27f9abf0f89a33c12439c9baf6a31a74589",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle17-owner-action-desk.test.ts",
+      "sha256": "6960924419a10cef2dd62eeb79f65fe11e3f5240557e26f1230d5b98abff1360",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle17-retained-maintenance-desk.test.ts",
+      "sha256": "96d85d198b4eff990623ca682ae5a604a49b473918dbafa4ef397071839028ba",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle17-service-passport-path.test.ts",
+      "sha256": "4d6213662adf4777902d94b25f3ed694d7042c1ca86a3c09a795a53638357304",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle18-cost-invoice-review.test.ts",
+      "sha256": "991d9bf0c9f328096ec4a905ba724603fb842d0331d981be227eadb3e1181c50",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle18-field-agenda.test.ts",
+      "sha256": "1948d186a1dfec125903ec0b96ca300583cc6f06d8a3ac38da8da58fcc80dc0e",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle18-independent-integration-review.test.ts",
+      "sha256": "a21b987039f312f19bf103308f0fbeac26f72cc97f8a8607937b86b57d838217",
+      "default_foundation": {
+        "push": "FAILED",
+        "pull_request": "FAILED"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle18-maintenance-agenda.test.ts",
+      "sha256": "1ae157369a7684c72f833242251916f23275379949b1a5ecb3a939a9a08864d4",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle18-priority-actions.test.ts",
+      "sha256": "20a9a48b6e72429dc70c47e54e3753f629e17a66a53a567e843ed405bb67758c",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle18-service-update-review.test.ts",
+      "sha256": "8a36491c2556f8acb372bc1bebb2dd588c7293e31cdfb79db6fa55ae0466a548",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle18-workbench-runtime.test.ts",
+      "sha256": "cdbb0ebb49262ba81353339e40e5c849792ace140dbcc6f829fb1dac0016d1cd",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle19-cost-saved-revisions.test.ts",
+      "sha256": "daa33576d6720b92cf01c147f0962e0421703a85663017de5144adf0718be6aa",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle19-field-saved-revisions.test.ts",
+      "sha256": "c7291c62118117b0abefb42a88c883113ac3f35201af4c1b59b3a9d5fd5158af",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle19-independent-integration-review.test.ts",
+      "sha256": "af2bfbed97ab7a73150a6ba9a7824e2657b282f205ec3fbd2e77c4292d3f0c36",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle19-maintenance-saved-revisions.test.ts",
+      "sha256": "06dac4319025a1844f49a7dc4f55ec2efd2e3602fd5472914243362c1aae0089",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle19-priority-saved-revisions.test.ts",
+      "sha256": "6ea35f259698d499186b7b02b9ff76a93a598be3c19c6d51f66ae73bfdd594f7",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle19-saved-revision-runtime.test.ts",
+      "sha256": "542a62b0172a7ece8f772252501d441fd18c7f155d32b955c9449177513f38c5",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle19-saved-source-exercise.test.ts",
+      "sha256": "33684d06754020bbb50f18f1520ca43f9b8ca7b7a220b99300642db6bf40457d",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle19-service-revision-review.test.ts",
+      "sha256": "3e60de904653df35b5b07742c734443a6681f1fb49194b0c9757e0834b6a8d5f",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle20-independent-integration-review.test.ts",
+      "sha256": "361e3f8c28658c724e26dda4080f8b2ce74e5d5caed50e33509ed25931e52513",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle20-maintenance-renewal-evidence.test.ts",
+      "sha256": "c1a1984e9dac62df9029a330544ef9160a31c5181281da6ad5091cf62f41a944",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle20-published-service-continuity.test.ts",
+      "sha256": "ac3714d1488674672a17f82eeda653490f2997fed1bfe77c38072b6d4023a516",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle20-recorded-cost-continuity.test.ts",
+      "sha256": "dac2709437d3a0a36d4497899105dfe78593f16a6d4f189e66eba3e9c92c830a",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle20-recorded-priority-navigation.test.ts",
+      "sha256": "ae9e4827dce31a2e92f2d79a66e358822d3a1c51d6e18805442044cf80042fc1",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle20-saved-evidence-files.test.ts",
+      "sha256": "3da8ba6d65eae03d18ffabf10de9de15605b46510dd98114a76ddca01bb0ec4c",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle20-saved-evidence-runtime.test.ts",
+      "sha256": "8796fa2e006e0a33fba1b85a235c6be748e93629bdc3fad820e7c18239113d42",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle20-work-order-evidence-continuity.test.ts",
+      "sha256": "14bea01ecb02198f24172d2807ff009191c2aee5425b07dd85c2e92379a91b8a",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle21-canonical-corrections.test.ts",
+      "sha256": "3d982ac277db42336ae0bbd40923aa808f4c9ae3aed0de6fe5f97fc8d2067dda",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle21-cost-correction-review.test.ts",
+      "sha256": "7a90d6998bfbd5bd6ccfb016f7df740ac0c26a328c9e84a24438a25659fee3a4",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle21-independent-integration-review.test.ts",
+      "sha256": "469c4bf3ce7ba8cb04dbc35549c5828c5b9bddc93fd8d5a5ad9b1efe49b2ae55",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle21-maintenance-plan-correction.test.ts",
+      "sha256": "857bf688d85650abf01d178859b33de33859905b4edc301f0dce31f621c1a77b",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle21-preview-preparation.test.ts",
+      "sha256": "d5e17bc1d359466c07db42ebcc551ec6cafd25109d629c4e8d4c6f1bbf022950",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle21-published-service-navigation.test.ts",
+      "sha256": "6ed2cf1d93b7be43a66b4885e6802ed04690f7e1e22f4e1a9d86e9e457355514",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle21-recorded-owner-actions.test.ts",
+      "sha256": "f4b5225ab0f89eb62fae6d2fdcb1c5375b14bc6eb9737e6ede85ba4eb20ac792",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle21-task-correction-review.test.ts",
+      "sha256": "36da2b08f54bd8f661ea1c83e36add3420070c8ea9cdded344d0288a82036a1d",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle21-validation.test.ts",
+      "sha256": "14646fde5473adbfe50d6f42c579a76e8b8218bd3b015642edc16628602033b4",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle22-cost-coverage-path.test.ts",
+      "sha256": "001884769090b1fbb8afaf713aff9c1763b490390e116648a4294ea52b369a65",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle22-current-owner-priorities.test.ts",
+      "sha256": "19a7c2e72d26487139a8d9f4ef614bdd41be5d3d3c2e74954de1bb343d72ef52",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle22-independent-integration-review.test.ts",
+      "sha256": "d92940efc89b03c013608835e15f3babcfbaf212b8b4d3b7e8daa028cb92707b",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle22-maintenance-requirements-review.test.ts",
+      "sha256": "cd5f924be1cc54e1b83c8596b1f305feaad2f9cd840cf834b1f474605ffd2bd6",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle22-property-service-continuity.test.ts",
+      "sha256": "e700dc2a6b466f25ac319fb1f806f50b80fda7afe4894ddf4605ce15a85ee47c",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle22-task-custody-review.test.ts",
+      "sha256": "39999afea5c2c8be7ad41c2868204c4d4b7c9b9262d8183215cbc57f585f51b5",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle22-validation.test.ts",
+      "sha256": "ba2d4cb731a450f6ba934c821dc45e43046d3ab2b44d5a00f88514966eda146a",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle22-workbench-selection.test.ts",
+      "sha256": "b09e567a42ecd76dbdaec5b4a4e83deb9b003175bf03fabd81027966ee4e231f",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle23-independent-integration-review.test.ts",
+      "sha256": "f9d78549be62c2540b98959db7c908b84509a233c27a5435dec15a48f047dc2f",
+      "default_foundation": {
+        "push": "FAILED",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle23-maintenance-revision-requirements.test.ts",
+      "sha256": "5033c3fe415f934ebd4e06ea23fbb4cc0e5bc71a8777c38d206a2d3081315b4f",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle23-recorded-cost-requirements.test.ts",
+      "sha256": "03a00b5966584b69642117f219497ff5e6eb0a774b0d4317cab6d5e48a7839e7",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle23-service-source-review.test.ts",
+      "sha256": "f15405b03db73a18426dabd66eb6cd563d0db919f64b084b1f030845849cc6b6",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle23-task-revision-consistency.test.ts",
+      "sha256": "c6233be850b832af27f24f4fe777dc5798e77dbd10bd1cd7f5d8c90ee961b93c",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle23-validation.test.ts",
+      "sha256": "1f3824bfee2bf5d8203f7d58570e436408f989b753eb7d66179b17a9a1882117",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle23-verified-owner-briefing.test.ts",
+      "sha256": "be55708a816d9a787aded0b864087c4ed13ed63604b20a0528a695aa85fd219f",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle24-cost-coverage-actions.test.ts",
+      "sha256": "af1cd4619104ddb5ca482e281ab663239156b95acfb258b741dcc747448008f2",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle24-independent-integration-review.test.ts",
+      "sha256": "09b5042be1fee47b562ed52046c900583acaaecff6241b2aa8491674bd17f083",
+      "default_foundation": {
+        "push": "FAILED",
+        "pull_request": "FAILED"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle24-offline-source-admission.test.ts",
+      "sha256": "6fa56605255e7f8adde7302949fbdaac22bfbc081d78397197528ef7fdcfdda6",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle24-owner-action-verification.test.ts",
+      "sha256": "8b27a6b62958466284baa35ab48266e6b8ab6f5c75c60b770d131e64aec8e644",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle24-plan-cancellation-review.test.ts",
+      "sha256": "36ad0dda1aa8a5cbba21d347d13acc405bee5047081228fdbf56e5f73ae4d36c",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle24-preparer-compatibility.test.ts",
+      "sha256": "289d4a2ba0844c5dec5a2e809bf54fa1554a7a71a852055d921414aa5c298276",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle24-service-request-actions.test.ts",
+      "sha256": "bea28525ec7de419e52b24d829460eca93fac47e803f74be72bcc07d5e98804a",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle24-task-receipt-reconciliation.test.ts",
+      "sha256": "44d675471a67d68564ac8cf4986a29eda3f0a021fa11a71fcb02fbbcc2bd9b90",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle24-validation.test.ts",
+      "sha256": "68a3bd3a4350be3db1836160c8dc5afb4fd5a064269946b520ec692408f2e14c",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle25-advanced-source-admission.test.ts",
+      "sha256": "03d9104edb0e68c075127955f294310c3c9e468fb2e63c50488129ae5aeb52c1",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle25-combined-integration.test.ts",
+      "sha256": "ad1090355e07a63347f33e56af317203fb5c85bfd61bf8f0d08a5f641f2666a6",
+      "default_foundation": {
+        "push": "FAILED",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle25-field-task-continuity.test.ts",
+      "sha256": "601077bcfd63b5ab9fef6063db6ca9440482fd1a7e1b10b28d63117261bf6d99",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle25-maintenance-consistency.test.ts",
+      "sha256": "e1e72e0d8906831b1d487de3048612c626ee36e8cbdca80a2c81231efd83780a",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle25-native-cost-reconciliation.test.ts",
+      "sha256": "dd8a70820922f50f074289eb74f3fb2baa4b57ae7165272364fdd872d3220612",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle25-owner-action-continuity.test.ts",
+      "sha256": "1825c40c4884f9203c337dd3d9a94e4458468b1853e43905881e1e53ef78b78d",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle25-service-evidence-continuity.test.ts",
+      "sha256": "ec9c1a32e26337a15ef163c2166188345ec0d3fe322e25244524e01098c81bc6",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle25-source-lineage.test.ts",
+      "sha256": "f97c4787228f6cffc52795253cdd04754bdf451fd3331cea83850412efc11520",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle25-validation.test.ts",
+      "sha256": "c0392ad28eed814313d540ec4fb469f375bb0d62ddf958b2a5e63522b030b893",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle26-financial-coverage.test.ts",
+      "sha256": "a424eaffaeb645dab3556fce26035e418232dbbf71a0f4a3d19ebc63ed9817c4",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle26-maintenance-revalidation.test.ts",
+      "sha256": "ad578106c7a3804b1b36cf05c4c53bf52f577f654ccaaff782ffeec40fd89d01",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle26-offline-ambiguity.test.ts",
+      "sha256": "e11fe38520683ad55da685e5b3358df80ed62bb6447eb6e5984ba3f494437202",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle26-owner-source-navigation.test.ts",
+      "sha256": "06ab72830d19b5d72c909ddc6ec478bd3cb00bfb73ddcbf03c0c6e7f88313239",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle26-service-continuity.test.ts",
+      "sha256": "decbebfd6b5bc0f7b9fc3b159ef525cf067cf3d2453dcc6a4ff60a461b61baa9",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle26-source-review.test.ts",
+      "sha256": "3e2ae8c69e56b3e24827116ddafda5a98f7e056239487c079c94256a48219c98",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle26-task-reconciliation.test.ts",
+      "sha256": "bb52c141b30c1b10bb56e5cd2d70202c4a92f79490b5521445c64669377a84f4",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle27-cost-completeness.test.ts",
+      "sha256": "e09606d58ef646c5fd5843e61a96e8ddbdb206cbbcfdd8c9dea009ed884b97f3",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle27-maintenance-consent.test.ts",
+      "sha256": "e6f94112605f3c481612780283d957b254e8db4592d3a7a3a45a4a45938f015d",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle27-offline-reconciliation.test.ts",
+      "sha256": "4282e8dcaaf03bd7cf03955442d7a720381dc191afeb7069c9231efd5b7b958a",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle27-owner-navigation.test.ts",
+      "sha256": "1108cfa6ffaf16be7e6b2ecc6ae16b4617f3340be69be3b301320a82df986066",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle27-request-authority.test.ts",
+      "sha256": "2e56e8a7c3fba23bf9968abcecbb512eda8940236dba03286f01bed9f7426d65",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle27-source-lineage.test.ts",
+      "sha256": "fa5190cda8ec498565a830022bc2c20bf79a3a1e01823d2d5453bb80d3e47fe5",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle27-task-custody.test.ts",
+      "sha256": "e49bd98a68b9fa96d35db69e5e414ab58a2259c72c05c05a0b7963d7a3644816",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle28-consent-renewal.test.ts",
+      "sha256": "7f497466d36dc79a871dbfdeebf6ab769af86400f414db6fdccd8428446653dc",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle28-contractor-journey.test.ts",
+      "sha256": "298aec0d8eb01821e3b331eac875e8ff3741b2314476abc4757f81cfbf9ed75a",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle28-cost-readiness.test.ts",
+      "sha256": "da27aefd48df61223991666f90c5b97b5dffdf379904c71943f7b3d5d178ba21",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle28-current-priorities.test.ts",
+      "sha256": "53f90f3e16b11bef8f197f5393af8676101ad8e5ccbb1c78e299e39ddaae683d",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle28-request-provenance.test.ts",
+      "sha256": "0f300037abd9fcbe8db4465ff3fd7ad64c2631158ceb675ba4b33ce3b44bc8ea",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle28-source-lineage.test.ts",
+      "sha256": "c3a418adf3e86b0826db6f1ead783d70c74bbbf6f810e88da8b07351042110c4",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle28-task-custody.test.ts",
+      "sha256": "dda0c98778a6c75c6e7edb948521392d5d255077c26122053cbedcfc4d066526",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle28-unknown-diagnostics.test.ts",
+      "sha256": "f5af5890bb40af9f7985f592f6c88483dee9539c5121bbf6f6bcbe6e5723ad3d",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle29-browser-evidence.test.ts",
+      "sha256": "32246c3822075301353db0bd8563736889db998055aa7f5032d18ee3bce1eedf",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle29-cost-continuity.test.ts",
+      "sha256": "0e6cb2953aefefb08a672ec768eefc9457fcf0e25bde6c9e1f46d4e54f69aea7",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle29-offline-currentness.test.ts",
+      "sha256": "232b1e6302ebd338b12a46bee72bd4f1340cd5cdb7160112ccd8de11821e3945",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle29-owner-currentness.test.ts",
+      "sha256": "519ddfe2b001411b2cd38b898635ff3f327e82d4ef607be38e9d92335a6fb806",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle29-service-continuity.test.ts",
+      "sha256": "006ccad222c10d57b6864a6c294f30f0a49b6a148028699323aa8a8758934687",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle29-source-lineage.test.ts",
+      "sha256": "5f50c9067ea05784ebe5b7a75f5cd5f2de76d651f3765769edf4b83ccae0944d",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle29-task-navigation.test.ts",
+      "sha256": "dc5e4b806c6b7ed2e3b696184228d356eb687cd9faa0b8f7b8f264321dd5567b",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle30-browser-timing.test.ts",
+      "sha256": "39bbd22f1f058e78bb04823b7f3a5b307342602b9366a8d4bfbc56f719da97e6",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle30-chromium-dependencies.test.ts",
+      "sha256": "b0bc7c0f82f07e1960dffe26122b85562c93a867350685242db3c69ebe7249ca",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle30-customer-source-audit.test.ts",
+      "sha256": "d776ec35957a026086bf13366a7fefdd58cd2f8409f5078fdfab526813315b02",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle30-independent-source-review.test.ts",
+      "sha256": "f431b0312fd0d991b10601ae4bf11b3b9220ade015f4fb75a67c18aa62734120",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle30-maintenance-date.test.ts",
+      "sha256": "d3a68bdeca04d8b15c0f6ab26cd8c713adf4884b3757a6fddd85d057cc297c6d",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle30-owner-source-audit.test.ts",
+      "sha256": "71c24ffd41dfb6ab9216cd90c7b29623d544c055b45b641db5d55f8ca7a475d1",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle30-source-lineage.test.ts",
+      "sha256": "8409561506623c35a4e788d9715ede22b189fdf963e91de25da9bdec554970f1",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle30-task-custody-navigation.test.ts",
+      "sha256": "8a1b68c442b8649add297467f6375dc0b6fdff8870b72c04d7a60e37ff32dc30",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle31-chromium-source-shape.test.ts",
+      "sha256": "a54600812e4ce0ba7c6dd1c796a1bb353d91a733a1a8409c56365b7bebce58ee",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle31-independent-source-review.test.ts",
+      "sha256": "d0fc9a3c0ce95db38555d91c45c6f45ee4b75ea273da1582ee39ef690cc1999a",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle31-maintenance-proposal-input.test.ts",
+      "sha256": "15edfd41e18f8f67a074763c26977d1252bd839406888eab9651ad8bf189521e",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle31-owner-navigation-runtime.test.ts",
+      "sha256": "43a4f709ffc4309407bd36af34439246f38b842ebf874f2dfa7957f62340f5c9",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle31-owner-source-compatibility.test.ts",
+      "sha256": "14ab077294d7d305eaed2cdb7b2b6ec726418dd831aefde545e57465ed369ee0",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle31-source-lineage.test.ts",
+      "sha256": "a573acbbd170aa23e0f430da8065251d73fdcfa4b0ac819292fd1df15218a9fc",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle32-busy-source-lineage.test.ts",
+      "sha256": "f58409c08569b84dd7230a68164258eb2f1e8bb77f7caa46d83178fd40f0afe3",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle32-c12-browser-evidence.test.ts",
+      "sha256": "92a58f08d56656cb63349ce215ab8b70c767f5c5dcd10f72025dbdd979c9a53b",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle32-independent-source-review.test.ts",
+      "sha256": "5fb6500c3b374d370e640a3b9f031602d5daae43652c05f68b51a13d17ffb5cf",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle32-owner-busy-state.test.ts",
+      "sha256": "7e6158e758dd31501b9af78755119b4f4a87faa08ec68f5afb2e43bb4c4de42d",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle32-owner-filter-navigation.test.ts",
+      "sha256": "6c3642cab614bf1d38ef84f5a11a0f061d17c087d8180c719c76c3d19e08bb46",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle32-profit-guard-completeness.test.ts",
+      "sha256": "525b6bf67566109a7361c41a5ccc2ee84fe30d011cd41e57c808501d397f13b2",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle32-runner-mirror-probe.test.ts",
+      "sha256": "fbd7d279b62dc3ad6bf78783ee4cd10cf10748275b332f7a74ec660dc10c8fff",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle32-source-lineage.test.ts",
+      "sha256": "158d0376c2e42ce44dae5424e41cd3e50764ebc705f84ebca7e407ba856a750b",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle32-task-input-binding.test.ts",
+      "sha256": "e0ae13969e30c7760d7112fe054fb036f254d7dc84a27aeb574ee75ed453a34e",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle32-voice-input-continuity.test.ts",
+      "sha256": "0b06dca00a5ccc999e740c1a582fd236f657c8b40b2d20d6e85e7a758b83a30d",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-addon-job-filter-currentness.test.ts",
+      "sha256": "0df2b6dd6745617b9763b1bb62db372126120724dc9f75040764ff83c117cd22",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-addon-navigation-currentness.test.ts",
+      "sha256": "17db96149c96df953a50f11c4c3f59c0845fde7a9516ac6f6722f59680ce9d80",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-advanced-confirmation-currentness.test.ts",
+      "sha256": "45b70d5b96a6a90ab017f014b22d786c498c49d21ce976dd44b8a4724e448fea",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-c17-closeout-source-admission.test.ts",
+      "sha256": "90d3c939ed157893e14e27cf820a388d5e015f7b203494e3e73a4c1fb199fb2a",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-cost-comparison-filter-currentness.test.ts",
+      "sha256": "d73abee189324c58e75848d09146a3f99115e6ea1fe046b5e630791856062c72",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-customer-selection-privacy.test.ts",
+      "sha256": "ba073cebfad93045d8aeeb2d4bf1ac86146fffc71bd174b83dc47c6e8f97f3cf",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-execution-ci-compatibility.test.ts",
+      "sha256": "b90c787e600a9c8dc2b0c0b33f7d7d7ccebfef36af6d186f6b3ce108ab0f702a",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-execution-cost-selection.test.ts",
+      "sha256": "38dc796f3028f6afe7d570273e7192c5bce3a3946315dce7239ac96734362d61",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-execution-integrated-authority.test.ts",
+      "sha256": "ad6383cdadf6d3a779e7ed530d12ff1e92e8308ddbc1bbe8c08182c38e0b3cb4",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-execution-source-admission.test.ts",
+      "sha256": "46b010df2a3e058bf04812488b7c676376bd4c7cfe94ffedc8f87028e6441973",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-execution-task-continuity.test.ts",
+      "sha256": "864b64e8510abfc1a692b43d0aaabb239ecd79caba8f23da21800cafcd422b96",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-foundation-evidence.test.ts",
+      "sha256": "c4842bdd7a34925cb7c2ab227f4ba88a00271af04f725230505021f45a3daa09",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-maintenance-input-continuity.test.ts",
+      "sha256": "200893449fd417a7acb56f042ff20923d00c4e58e2201a558cfd3ad0535454e2",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-maintenance-occurrence-custody.test.ts",
+      "sha256": "c7dd4dec4225862982ac5d7fb2e63ba18d7ae26585b2e4f2107ed0f8f9903ee1",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-maintenance-review-custody.test.ts",
+      "sha256": "363dfc68e6b6bc60944aa668fd05429b77a0dc03bf06ebc5f50c37aea963c235",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-maintenance-review-reference-custody.test.ts",
+      "sha256": "e8a5b1be434241fbabb043c37638ca48c4b53c590bda082ef7936c83ce4553f3",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-next-combined-custody.test.ts",
+      "sha256": "ac3502c5739d7bbe1af2257c06a9bc5ba5f8be8f1c1dba508a1fa18a6dd0a28d",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-next-offline-protocol-admission.test.ts",
+      "sha256": "a602324e933e05b3ff3543544cb65358286fde2d910d70da70f80e6f9c2d0468",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-next-source-lineage.test.ts",
+      "sha256": "33ed5b8c72bd85fe685440c62424dd18d8cd3b494e484d957eb7020197a030bf",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-owner-comparison-input-custody.test.ts",
+      "sha256": "c219b94c0081bc2fd76e635c60f1b889ce4850cc600d212be0614c4bb991f6ca",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-owner-continuity.test.ts",
+      "sha256": "ccb141428657c1589e3a74829d765f8ccec94c7cfb9692c513cd79e00b8171a9",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-owner-refresh-access-continuity.test.ts",
+      "sha256": "4a43d0b64d5206480bf044049b2dde0aac6671bc569a4d284b069969de0cf016",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-owner-requirement-input-continuity.test.ts",
+      "sha256": "b5df7ce10d24328e34055b310909034e4fb9a8bc941ab033ef06397057e22531",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-owner-requirement-source-lineage.test.ts",
+      "sha256": "d4c3564da8d00ef1b42ffd79a5119605d024fc616104916a2796c7aeb9f7265c",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-published-history-filter-currentness.test.ts",
+      "sha256": "7c85d94d145c8d9b900af32e12dd48213a5e3a817c581ef67d84615ca1e805ea",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-published-navigation-currentness.test.ts",
+      "sha256": "cf0a24412cf5bf2d11d29761c36829e200ff0cd726e167d782b6300fff9cae0f",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-recorded-cost-selector-custody.test.ts",
+      "sha256": "e78790aa2eb07b1876181e7b6b329640f67b2f1ca740ceb968c78a569c9040ba",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-recorded-time-kind-review.test.ts",
+      "sha256": "0b074189feeb444a8d597962993a89bbb92dbbc764095572bf391aad26b43e0d",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-revocation-probe-source.test.ts",
+      "sha256": "672e1906136a8d783c75cec3948bdb8ae0ad62a4e1f5d3e172bdf46ea1d6cca0",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-service-lineage-handle-capture.test.ts",
+      "sha256": "2cd43b1b7c706edf0a24576afe77f1617c790de380a72b959c482374f35e8e8e",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-source-lineage.test.ts",
+      "sha256": "37fb0da4f709be0e5da6377479f41da84c7f0c13e4d9531b91b76fe643a285b7",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-sync-proposal-privacy.test.ts",
+      "sha256": "af9dc07079dfb632ce7e95a292e6c64101b982a0b13378eafc6f0d38618e99b4",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-task-display-reference-custody.test.ts",
+      "sha256": "8b0b19daa0d1005f0f3a22cc5e10eea702736a3e2470e35c980b1616a9c9de50",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-task-read-currentness.test.ts",
+      "sha256": "b8c48f7298fc99ee7a25c1a2ccdebdc7bc655ab6b46d85e2fcf428b2bf085fe3",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-task-receipt-context.test.ts",
+      "sha256": "560f8924724908f1644f7e2dc4b2d5ea0479d2aefd2af6d7619faf42031d6491",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-task-selection-custody.test.ts",
+      "sha256": "20dfc2af029552beb1e115875ae4d077d981b20e9e20b0755dae34bb4c63516d",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+      "sha256": "ecd9dadb4e15839db9a4e4db9ee8c49938a7e5f96cfab82d91558484a357f861",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-v1-combined-authority.test.ts",
+      "sha256": "de206eea558fdbf91cf5fa5d9b6a1d574ab9f2fade03fba8646210686de3611c",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-v1-continuation-combined.test.ts",
+      "sha256": "9a1090eed60ced9742f1800096d4bee11253cdb171e8e3b80d96a83910341dfd",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-v1-continuation-source-admission.test.ts",
+      "sha256": "4706a5a490d1b767a9280ea76748826866d1a1b25432d195d0442186a0c748ff",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-v1-coordinated-currentness.test.ts",
+      "sha256": "31d3ecd2673728a1abd65a03609e59e6812d5fc8a0276c688cdfd7db7b1f6f9c",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+      "sha256": "ab848c3516328fd751eeb2a472f2ab11d8aef22a4ad3c7fbabe628f0415f709b",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-v1-customer-growth-integration.test.ts",
+      "sha256": "4a73a6c246c5489f6d2ef1b2d075290efdb6c9340a3c59ae46998def722e1da7",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-v1-essential-integrated.test.ts",
+      "sha256": "1b73a5da8952a34a1ba5304b6df402416f83e66c7a6240fd757b7c4566e4e314",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-v1-essential-source-admission.test.ts",
+      "sha256": "5f4f54eda8c7328c794f0bf206c5a05d72ab8304cf5203ff049a0e47aa922a85",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-v1-finance-owner-integration.test.ts",
+      "sha256": "470e92e63a6648b2242ee22f42757dbd5557b8b54c90999125c845fef88515f7",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-v1-integration-source-admission.test.ts",
+      "sha256": "ae8d5bf3a89295437cdae3d3be7b9731782d19ff64bfff42a58769c95e55a453",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-v1-legacy-result-compatibility.test.ts",
+      "sha256": "62dbabb619381ed372e1a4b286299ef3d874ede228b95075c5860795382e9db4",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-v1-retained-source-admission.test.ts",
+      "sha256": "1c3de552975b0011fd780d6d7e795a7ee86655ec135c99d589d0ed4ae44cccbe",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle33-v1-source-admission.test.ts",
+      "sha256": "11c0030f131126d67ae1a6223da59a93a3998cee60b89214f669b4b2ddbe414c",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle6-finance-workflow.test.ts",
+      "sha256": "0ce3f9cffcaa416cb3fd7b9e298284aa06297fd4018cc353f8576e03406075db",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle6-intelligence-workflow.test.ts",
+      "sha256": "ad7afaf92922c839246f108b677fcacfe3ae1fc12a7b222b9c0bcd82c2bea828",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle6-operations-independent-review.test.ts",
+      "sha256": "75e58ef35c6f9149f6c6df8f3148df2a56c8c400fb355fb954f3c2e4550223ec",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle7-baseline-review.test.ts",
+      "sha256": "fa5e603bf9baf4aa35def69c67ac7f2f697575d0e904885b0204e2e68c08edd6",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle7-booking-scheduling.test.ts",
+      "sha256": "9ce09a7198221f22ffcb8640c6ff8501ee5378cf8cd6eab0cf3ec5fdad5160ff",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle7-customer-service.test.ts",
+      "sha256": "4fbc0c87e24158a5934a75ba151b8dbcfba215c5073320f8625b3b292edbc66b",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle7-integration.test.ts",
+      "sha256": "3c3035b54bedd7d423203691a4ee2f5e52afa25c3ed0382edc875c8191c29f79",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle7-job-review.test.ts",
+      "sha256": "b08696b2e73ab7139c17265dc66e033c132644ca374cce124ac525891247b5ec",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle8-completion-review.test.ts",
+      "sha256": "ee034c869baa0aaf2b525cfc102cf0bbcf6dac7177a236e1aaedae8979db7c8c",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle8-daily-operations.test.ts",
+      "sha256": "d61a3d859bac5fca75476049b5cf11423d66488fa7c40973373a2c2fdec03eff",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle8-finance-desk.test.ts",
+      "sha256": "63eb12fe516fee01e97abdb97ec5c7184155ff546492221f85716f764472d116",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle8-integration.test.ts",
+      "sha256": "dfcaada781a70ec1628c5cc802f6254b9a28b2c5d4d0efc6963dcee04be5dc29",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle8-maintenance-desk.test.ts",
+      "sha256": "19f40fa2a5384663862d627a60bcba0c9eed638074a0436666f357fc727ca959",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle8-sales-desk.test.ts",
+      "sha256": "721f08b2d41976209d7e6b31535c10863ea35f339c0f52d6f7caef7f874216d2",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle8-weekly-crew.test.ts",
+      "sha256": "aeef0210dce4257f463af39ca4e58b149ef6549655054026061ab18d7c326fab",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle9-business-briefing.test.ts",
+      "sha256": "22ec4fc5e300da70cb1514fc48540d971f8dc716e0a0b33b06b2726bad513c89",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle9-integration.test.ts",
+      "sha256": "2ad4e749f0958b83df3d3b941d54893f17de7e60f58086a29ab2be2ce9bc6310",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle9-operating-addons.test.ts",
+      "sha256": "d95ad870a81ec0a09fdf04d1ac8cbf0dbe608259df6276e150376beb5be6962a",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle9-operating-runtime.test.ts",
+      "sha256": "149160009f3c7961f49b09e6fc36f8143d937082c79212a7f667bb334a38208a",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle9-operating-selection.test.ts",
+      "sha256": "da41c9e35b93caeaa7dbf84f95c81769344499e6f4bec985e4969cb0fb859917",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle9-portfolio-finance.test.ts",
+      "sha256": "e2673ae8b26268d9a05913e4d59588949ad5fcc729e34a71cef999fe02adf72a",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle9-portfolio-maintenance.test.ts",
+      "sha256": "3d48b04ee57ca26e39a305cc71e49b3e5f1fdd8b5bdc87d1617babd6118c9587",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle9-portfolio-scheduling.test.ts",
+      "sha256": "86250f22236d24d8bc3a9edf55e7c5f2c347eb297fc5c19a18cbce3e25cec8d0",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/cycle9-portfolio-service.test.ts",
+      "sha256": "9256bcc2ae03776ccabd86146a7672123c3e8ff29458a955c60ecfe603ab7145",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/database/catalog-security.test.ts",
+      "sha256": "59f6cc2598c5e205e97f08b4e4123a2f0cacf13620025b98abc5be9d1155ccda",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": true
+    },
+    {
+      "path": "tests/database/concurrency.test.ts",
+      "sha256": "6b0604d5af1e2b2975851ed04bc5fc1d9b6e3c20196b70bf2b450bac2de5e77d",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": true
+    },
+    {
+      "path": "tests/database/customer-broker.test.ts",
+      "sha256": "595db3f92e9e9b376e6099b1b388185c768ed2018cb137832d3ece341bceb4c7",
+      "default_foundation": {
+        "push": "SKIPPED",
+        "pull_request": "SKIPPED"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": true
+    },
+    {
+      "path": "tests/database/customer-defaults.test.ts",
+      "sha256": "acc0eb61e382a77f4ca0bdab7860f83f72865e7f293dfc20112b566f1be9b53b",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": true
+    },
+    {
+      "path": "tests/database/customer-requests.test.ts",
+      "sha256": "5ba8d8244fde1450f0711cb61d27a3b44a82dc15c297145df06e44a9c8bbd662",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": true
+    },
+    {
+      "path": "tests/database/isolation.test.ts",
+      "sha256": "1d129104771b54e21f2d027136b2295e3b9f979350827fb99a7830e7f4a71a59",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": true
+    },
+    {
+      "path": "tests/database/maintenance-authority.test.ts",
+      "sha256": "ce86d7751aedd3bef71d276b62c9377cfddfa95d0a34305a0289546a90e026e4",
+      "default_foundation": {
+        "push": "SKIPPED",
+        "pull_request": "SKIPPED"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": true
+    },
+    {
+      "path": "tests/database/maintenance-persistence.test.ts",
+      "sha256": "65dfd66ac5d5e5d3c4bae51b57f09a41ff11bf7468e33264703e56c685a15dbb",
+      "default_foundation": {
+        "push": "SKIPPED",
+        "pull_request": "SKIPPED"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": true
+    },
+    {
+      "path": "tests/database/maintenance-service.test.ts",
+      "sha256": "71cacc19f810f0ded259c281f64518530d1993a68a0de521dc4faf44b1331b90",
+      "default_foundation": {
+        "push": "SKIPPED",
+        "pull_request": "SKIPPED"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": true
+    },
+    {
+      "path": "tests/database/material-worker.test.ts",
+      "sha256": "6076c3e132a1ad35750ba0f66cb96aaed7a8e0de636211f4585b92128356cb3b",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": true
+    },
+    {
+      "path": "tests/database/operations.test.ts",
+      "sha256": "a6a895d58198c5dcf7a7d9469b0d738bfc0698aeb62a14b723695deac29499a5",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": true
+    },
+    {
+      "path": "tests/database/payment-provider-store.test.ts",
+      "sha256": "16d50dc1633c88328d69d167802bef4bd19be2490bbc5601af50feb7e3f5d258",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": true
+    },
+    {
+      "path": "tests/database/phase3.test.ts",
+      "sha256": "7bab5f51c68305f12d8979b6f77afc6197a32ad2ff6daa831fba5d0f3511d6d3",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": true
+    },
+    {
+      "path": "tests/database/platform-bootstrap.test.ts",
+      "sha256": "847b126220eab560103819f699e54d0e43260f39cb95b4ca1ab125f9d9328037",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": true
+    },
+    {
+      "path": "tests/database/property-index.test.ts",
+      "sha256": "2576cfb702d35e0fcc88116644b80809621b5579b1da1228aea40d1b825ad056",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": true
+    },
+    {
+      "path": "tests/database/property-p1.test.ts",
+      "sha256": "88b47490679c3d33216558c23ae4734635a674622aa4c18c77c452da903ce01d",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": true
+    },
+    {
+      "path": "tests/database/property-recovery.test.ts",
+      "sha256": "3cfafa622f0e730797f09d95dbf3755248c91fdca165b36aed14b28e40380993",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": true
+    },
+    {
+      "path": "tests/database/property.test.ts",
+      "sha256": "912b1d50c20a3eb5f8e58ffed4ef81ad1cf18bc7379c6a4f09e663f8e476fcaf",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": true
+    },
+    {
+      "path": "tests/database/provider-activation-probe.test.ts",
+      "sha256": "ca69200f9cd236f62cb09409e4ff0340a16c9f21a0310126baaf0e41c2f2e183",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": true
+    },
+    {
+      "path": "tests/database/provider-control.test.ts",
+      "sha256": "2af1d3b6e5e42a01e616b62422213b358eb9167042ea48789442e73f69a3899f",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": true
+    },
+    {
+      "path": "tests/database/provider-expiry.test.ts",
+      "sha256": "5ef48fa0c7fd1084d01e1a9378e43ea13c629e69c65ae16ce07a1a07d1ce9057",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": true
+    },
+    {
+      "path": "tests/database/release.test.ts",
+      "sha256": "7eae27f747998510e68f10c927005ae5dc6efe833b3e555fab2a536d1b34eaa6",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": true
+    },
+    {
+      "path": "tests/database/repair-persistence.test.ts",
+      "sha256": "f280f884c88cc140581eebc6efaa35e6fb6ae833121f7fb8bdc576fede14d95e",
+      "default_foundation": {
+        "push": "SKIPPED",
+        "pull_request": "SKIPPED"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": true
+    },
+    {
+      "path": "tests/design-system-contract.test.ts",
+      "sha256": "5fea2c85c4fdf01f5a7c7d27c90d3a8c5857e19eb1c9d46ef9a32a6b93763e99",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/domain.test.ts",
+      "sha256": "e4e70d744bd6fcb53400938c47e6e1b9f0ee8594d5e99348d67aeda0b8d320cc",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/estimating.test.ts",
+      "sha256": "39164099b59cd88f0e5d1516b376dc96bb3c10f935d451abf4a85f2a87fa5c83",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/field-crew-capacity.test.ts",
+      "sha256": "4c490397795cf8b7b2af1ba7b68dd9a9b95263f74e22331b90383deb07c8525c",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/field-day-board.test.ts",
+      "sha256": "c7e60ac8def0622f119a04472bd9f59a452cca0fe425dca8af4a20dc61ce3c1d",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/field-scheduling.test.ts",
+      "sha256": "47674d62bce8c15a6defa0e63e25aa712345b216458d184a5ec67b9827b37704",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/field-work-orders.test.ts",
+      "sha256": "08667a48fcac2f90d7a5ff56533aa598fc9e4d4816bcdd0ab9f1ba2c583f0e9e",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/inspection-comparison-preview.test.ts",
+      "sha256": "c77e755bbad202348831c7d1642e27a059e72f44301ff567215065fa0739ec34",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/inspection-comparison.test.ts",
+      "sha256": "b6faec7a55e5ab6c615b35d3590616ebce4ea1d9198be9fa3a242be77d56d5d8",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/inspection-history-search.test.ts",
+      "sha256": "79fc547798ff83efd77ec6db37f487d937acaaa590691a6c8b8d4d1d3e8882a0",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/intake-server.test.ts",
+      "sha256": "8a9644e778123c88d9c46e471284cf8b684fa6e8fadbbed6f06bb857f7fe1ce7",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/jobs-workforce.test.ts",
+      "sha256": "79916d224f18ee5da548591797a8dd03a99f80d57a28c74c7ff86fb1fca80c4f",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/maintenance-center.test.ts",
+      "sha256": "3aacccd388ee04f8ececee020e7312c66e6110981dc2a7ebf1e3744667a51651",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/maintenance-command-json.test.ts",
+      "sha256": "06fa4efea89571c71f128cfa70a0ca7e9450262e2484a92e21384b4237a3261c",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/maintenance-persistence.test.ts",
+      "sha256": "cd73f8f08baca3ebb39bfb027782da7601c4ac34775fb867274ce857e3f43120",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/maintenance-schedule-handoff.test.ts",
+      "sha256": "d5eee0a5b1c92863db0623f5611eed2e2ed0d67ce98b13536943a6a166c3cd74",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/material-content.test.ts",
+      "sha256": "34f713715363af141f86d90b3873644ea7d2c8020622735d240b9fb2a87ced3a",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/material-control-store.test.ts",
+      "sha256": "ed1baede4b83caaeda7df08d90bb308aa7ba4c3ccb9238869cf363fd264f8c3a",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/material-provider-integration.test.ts",
+      "sha256": "92ddf724236c3c5b68865cde2a4813272f5fe8c9e54de3b415f0fcc4873b6e06",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/material-worker.test.ts",
+      "sha256": "8403927ad62cd13d7d01b17ca8991d8609e5700408b2ac5ae378fb63df06da42",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/materials.test.ts",
+      "sha256": "14963fecdf63f022248eb304868a93c0adcc534ddbcd4e8befb3aa26b92c12b9",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/netlify-read-only-evidence.test.ts",
+      "sha256": "3d5968d35e4a2a5d8c9f03a76117b079070735170402d25e3e4a08122c07ae09",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/netlify-read-only-inventory.test.ts",
+      "sha256": "c09ef30e9e86f702ed266affe852b6467c8457bdf4a0f9c28b73b3e2b3192e68",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/netlify-replacement.test.ts",
+      "sha256": "fb40859f3cfc2efc4da0ef57e368edc6c76a39422c1f3487cac0ec31c123fa92",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/operations-preview.test.ts",
+      "sha256": "976ed0b51bf4967f2705f012c6c7dbf4a427b60132851b1dd7f3e4fd0ed57705",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/payment-token-reference.test.ts",
+      "sha256": "582366960fbb4f31daede119bfbf46a5d80d0abbacc4337b707c8371a2c23caf",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/payments-refunds.test.ts",
+      "sha256": "ed8376ecc76b3c2b14dd409ce150903398bca995127c1d8bddf0f73b62129a78",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/payments-sandbox.test.ts",
+      "sha256": "4c7024034d2f199f44036f084e4b186234c0e6a709a38b25b49e901a69ce08e5",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/portal-logo.test.ts",
+      "sha256": "37c4520ddb8d101b218625f26a7c43989dc32c981d352191730ed8d96de08222",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-business-copilot.test.ts",
+      "sha256": "0f0cca991df7325dbc49526d932a374020d8a4f80a3d343c060c2018c2cf6aa5",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-controlled-integration-contracts.test.ts",
+      "sha256": "b0293bcfbdb63145b8b9d0bb1e528c8f60813ce48e94930cedc44c848b1b3b3f",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-cycle5-interoperability.test.ts",
+      "sha256": "0ce61fead347f7532360c6dfb994e81f36fd7e543165bb9527acbdecbcbb3f34",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-cycle6-journey.test.ts",
+      "sha256": "5f4f8fbc5dff885ced7d6a801ce5d3dfded5b14e1741079b7ee6fa4ef14ccc86",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-feature-evidence.test.ts",
+      "sha256": "9d1f4254a1680514e2bc89426ef81a8e5351c73ad94d28a16f1da86524835b04",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-field-workflow.test.ts",
+      "sha256": "c35ea700bd02267837dd432edff43dde0eb168ec40bd600062ef4f7daf83f64c",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-finance-export.test.ts",
+      "sha256": "3827dc4e6005d9c77e45d17f3322d259cb4050cc47719941c41561202cd08ea6",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-finance-reconciliation.test.ts",
+      "sha256": "88ac49aa7dda265c0940863537afcb4985df77d950c5284c4a03e8453e67d4e5",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-growth-opportunity.test.ts",
+      "sha256": "6502d06520950ce33fb8ceedc390977dfa05443a39320ad51a499a2a96200abd",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-growth-reminders.test.ts",
+      "sha256": "11cc030eaed3fb936c8b09d1eff41dafd2ecd359591da4861c882f6de51ec47f",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-growth-workflow.test.ts",
+      "sha256": "794d4fb1725eb57e4f736a9edaffafc26f3f725008333f6e4b3ffa7ea730a730",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-job-cost-completion.test.ts",
+      "sha256": "e96c1523ca249e029bc9b89018fe7ac4ad7b7a713ea7a032b906d30f6ad30786",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-job-margin.test.ts",
+      "sha256": "9521bfb3d47ddb9d9ae1f91d86f9b472c977983e1dc44858d606988f6e696807",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-operations-experiments.test.ts",
+      "sha256": "9d25bbbe156189b1c59da63030980d8dc0cac72099146e5999f5171b9800e174",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-operations-workflow.test.ts",
+      "sha256": "2fec682208a52ae021a5f8c2ed2db11fa35183e591dae2c1ad45cbc08932ba1e",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-passport-job-history.test.ts",
+      "sha256": "54e561246ea1ffaea1eb3deeb93de1e711534b85ad32c191624324cfe81122f0",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-passport-timeline.test.ts",
+      "sha256": "754f434b4c372c521050fb9677f23a1c43272e898ec1bb52106d15d313187a08",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-procurement-review.test.ts",
+      "sha256": "843b47c193c3f8720a42cc388b880b12e14c9b08fc12863d85972ca13364b295",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-profit-guard.test.ts",
+      "sha256": "66f532eef23a5f7a5310bfd954040a22f26c9bbdeb4d84434eb84cc763fc72a0",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-proof-of-work.test.ts",
+      "sha256": "060c362a1f11f464c3871e159ba77c4e359495104eb2274e79e5eb784f7182d4",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-property-passport.test.ts",
+      "sha256": "7c0f417fe28be24f62e2a308c2f9912d0e5eb53fac63b470a92f4d5ceae8eafc",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-prototype-source.test.ts",
+      "sha256": "a07fe9f661f019873904c964ad0b8fd8a5186c93b4daecf4c550a6eecf537369",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-reminder-eligibility.test.ts",
+      "sha256": "40af011ae2ded3f47001dd2dd3b912f92d6b5e99c0b93a0d8a8603131f3af571",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-renewal-planning.test.ts",
+      "sha256": "12d493dd09558d8407ddd471c60e7a44d8999da95039dcb58a1429e95cfa502b",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-storm-network-review.test.ts",
+      "sha256": "00898ccab311dbe82447f98dc9a037de3d87a5c7def55fc16ad9513e96dbf76c",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-trade-editions.test.ts",
+      "sha256": "7ea97ca9b437d3df747de953dd62775710e8439521564c6a2a5107ab1982cce1",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": true,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program-voice-estimate.test.ts",
+      "sha256": "112a6bb933cb293d73695e692b09ae910ecc214fe9c804c5b440f32dfd8da609",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program/cycle10-feature-evidence.test.ts",
+      "sha256": "7d1f869b4dd4e3d6e2892ef4351db6d91b54d4f674ae48a39bc8cc115432c1d1",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program/cycle11-feature-evidence.test.ts",
+      "sha256": "1cb60f4b51f618f09500dd73f48f77c39bedfba8318eb8d7e0b367f33a9cadc2",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program/cycle11-pilot-scorecard.test.ts",
+      "sha256": "5865f521236294f5efc8482ac84c8482d0806546467c03683339011ad02f8003",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program/cycle12-feature-evidence.test.ts",
+      "sha256": "8e9d590f933632f9dd154464944c83dbe1ef45838a0d39dfc761d017383f8cc3",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program/cycle12-scorecard-evidence.test.ts",
+      "sha256": "f3eba1387b5c434388244a5439adc7056ed7f88fd3dfb06e3e30221649f9c5be",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program/cycle13-feature-evidence.test.ts",
+      "sha256": "0251b6566e86ccb45d809b0c5b10b66642d959696b84879a0df61fca23798ae8",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program/cycle13-scorecard-evidence.test.ts",
+      "sha256": "caaa4cf8ce8394f0973c821a56dda0731cb4da24f0271584f4aa1b25e13e8aba",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program/cycle13-visual-evidence.test.ts",
+      "sha256": "08c5ef0dd7c330b581d9600c55c7eef65b04bcfedfd8b90c6138736780177e24",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program/cycle14-feature-evidence.test.ts",
+      "sha256": "a907c5e6d4c2d3fd6323ab09fdc0a9a4bffb5e54360eb0d49c6bb9285217611b",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program/cycle14-visual-review.test.ts",
+      "sha256": "36f88bf5917ffc7308d9413bab081954033e6a7ceefba1992dbb770cb7e041a9",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program/cycle15-composition.test.ts",
+      "sha256": "1793b1e5c667661b32ea301113ad5638d805f2ed0564e82354ed61ac26d09396",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program/cycle15-feature-evidence.test.ts",
+      "sha256": "bc4acb79d737a935798a46e1de3dfa938a67793fcc684806d2b88b1770595c34",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program/cycle16-composition.test.ts",
+      "sha256": "1c38abc6cce32172e69bd8271fbf5b2488783aac84dd9b1c89aa36ddbb6ac145",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program/cycle16-feature-evidence.test.ts",
+      "sha256": "0a35d08bb14a336aea9772b4fd62977b58a0cb3312a3818392e81d35a56d5dc4",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program/cycle17-composition.test.ts",
+      "sha256": "2c5159282001affbf6b8ec5d351b0f3864dad36111a4f10892f95a5b21f9aa83",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program/cycle17-feature-evidence.test.ts",
+      "sha256": "016609f7f4b964cd4f793f82d51a7b0122734f7c8b7211024d6d963f7a028dbf",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program/cycle17-visual-review.test.ts",
+      "sha256": "7b6dc49f8454e80bc6ac3a8b3d7c32eb0014c9fcaa0ea6efeb49dfaea8474c99",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program/cycle18-composition.test.ts",
+      "sha256": "73de9f9c002beea4d4d18ded4b59be0d5a4e0d51d3c81058cea31f816204bc2e",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program/cycle22-ci-delta-review.test.ts",
+      "sha256": "6648907ce27c8b5643d9fa5d90b4e36521d57aef16c2e8e765bf285946701ed4",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program/cycle22-daily-pane-render-guards.test.ts",
+      "sha256": "11833f48e859bb52be5b8364719061b31802260ab1ef5ce9992f32ede78ae585",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program/cycle33-v1-unified-acceptance.test.ts",
+      "sha256": "7abb25b80e028a90394ce590980bb1bbd5542774bf9c0b3c8c671b10f85694e0",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program/cycle9-feature-evidence.test.ts",
+      "sha256": "64901e9cf97f6263026fe39034ed65a7540ccf25ec2f9c326906b5de7fe810a5",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/program/test-git-history.test.ts",
+      "sha256": "92b9ca92254e83bf0d30b16e946022378ddac39cd28981092265eb8f66737dcb",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/property-acceptance-journal.test.ts",
+      "sha256": "0fd1cc8962dfefc9742c8f4a65a006766659e06129f45b2954cd3448c5c072e6",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/property-acceptance-plan.test.ts",
+      "sha256": "1213c62c7e0fbc3c97788e1c8ec2f1c126088c951223da9a6c72195d347adb10",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/property-attention-preview.test.ts",
+      "sha256": "caf1b03ba3d448591a8b29d38a1b547b1cea95ba98691ba24283cfc72a16bee8",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/property-attention.test.ts",
+      "sha256": "10ccd550aa593250e82a14f5cc11a52d7d4644976d4090130dc90d3eb719b3c4",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/property-connected.test.ts",
+      "sha256": "4bc875c53092c45615bfd3012fc7dcfbadbf60fceb5c17e0b16248e8b51585ff",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/property-history-projection.test.ts",
+      "sha256": "c84603ae89cad1b0526eb0458e8f8a7bffb707f37f935ed73226b98fee8625b8",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/property-migration-record.test.ts",
+      "sha256": "6e7088b37af33d454c3b1e15b4dc04f7152b99353a5a16ec7fe615f1ace71fb6",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/property-operations.test.ts",
+      "sha256": "a3840665f1497d4dc32b5da3891c51c3f4bd4121c87d00ef2e183f11e1c8c764",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/property-p1-backup.test.ts",
+      "sha256": "ce2f2be1039b7562045bc2e882718bcf1af270357a735b5b4ea1eb0efe3daf31",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/property-p1-callers.test.ts",
+      "sha256": "679b953e0bfc9646a0bb56d0584bd5fc672134645e8df90ddf7b2afa4db0f6f5",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/property-p1-command-gate.test.ts",
+      "sha256": "1af7571a50c53a780e8e4eccd05b383d2d4cd233ce5db997ec0205079d1cbdff",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/property-p1-executor.test.ts",
+      "sha256": "832f8e0f3e917c16c9cd76415151fdeb6bef2572b18e4874c8a3696ccebcdb38",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/property-p1-mailbox.test.ts",
+      "sha256": "ca97fbb5b40294a7bbb24ccd8a485250e25ff925c76206300f9ea3cf21645f93",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/property-p1-process.test.ts",
+      "sha256": "6643e5c71d970d7cc19d557819e0ad9e1fc68c5d76b177954356a4aeb9ba92ce",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/property-p1-readiness.test.ts",
+      "sha256": "46654e3ce83623c7a60319fe844776644b47cb20285b28d00c65a8d7f45546f0",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/property-p1-reconciliation.test.ts",
+      "sha256": "1dbd794e2fc8a891b2ad4778565110d188af0264afb3f81a95fcaea053a2a3e7",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/property-p1-safety.test.ts",
+      "sha256": "8a3ff16a26b0d84ab38c4a2873b87b4fe6492a3d8bf1a54372e548b8b02c9ce7",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/property-p2-readiness.test.ts",
+      "sha256": "4eb4835b3a69dc648d672ae370d058e3f4b2669ef5cdb7ad3a7dc72a90e762ca",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/property-report-session.test.ts",
+      "sha256": "f8999f795def6d1cd367f119f0507be75995eb2b059378187b92f68f1f70970a",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/provider-activation-plan.test.ts",
+      "sha256": "77e2bb4be23464e8b8391536641ce8e6986cd8bb52dbc07741318337ff19686c",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/provider-readiness.test.ts",
+      "sha256": "151a089905f8dbe813d88a697b6a047ebb973916e1f975828b6a26040e86923b",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/provider-webhooks.test.ts",
+      "sha256": "b00a1a7d540175161ee562740c6eea91699fe808e07366beb38ec3e221ab546e",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/release-preview.test.ts",
+      "sha256": "1d4a5892c1fd824f901b049ff3cbe9d378b9fa7333c3239db720656fdbc0049f",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/repair-draft.test.ts",
+      "sha256": "a9c6504c6b0549cfd9c27fd906e4f8f092f5b832d186cbf17046907675c26f61",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/repair-persistence.test.ts",
+      "sha256": "ee513e3f637e0490631acab2891c3165aa210ea20661907d6c06a47844c0992e",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/repair-readiness.test.ts",
+      "sha256": "7b8221dec99ea01e32fc48eb64c3ce9769d592897db1fbca381c7b5de18563f2",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/sales-approval-handoff.test.ts",
+      "sha256": "2df28948fbd33ca26f2a990198d5431995d4cb53427a82b489acab1cb23c9e79",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/sales-approved-scope-reference.test.ts",
+      "sha256": "9c00f9c949cb95b0aa409dd396277cff3969f9d2ff04bc4534998325ea832e64",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/sales-contract-handoff.test.ts",
+      "sha256": "0103b8cf87c037276cf5f6539f45e74e4904528e499edd2c6ad689a624c1d518",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/sales-contract-preparation.test.ts",
+      "sha256": "26cb05e9298e6d57bc7806e18b18be9575f75c78651595748b6a53d2fe1764ec",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/signature-provider.test.ts",
+      "sha256": "53d21ccfec62812d6054b845a9c265381bcef9d49719e6bb0d2bf832eaf1c224",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/staging.test.ts",
+      "sha256": "ae72730401116cd7776489ebbf0cf67137091e48f8c684cad54c5ffc59e505ae",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/v1-passport-final-authority.test.ts",
+      "sha256": "c73dce8f1ec508406d0e425777dfc362a7a31d873677f86b5b949c8943e5d9b2",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": true,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/v1-pilot-source-integrity.test.ts",
+      "sha256": "b2e6a48ae9c1699b99bd02fae2132d2e277cb0e367b71e60ba5e6c7bfbfc16f2",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": true,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/v1-trade-final-authority.test.ts",
+      "sha256": "e01418ea63e4fb2460c1bd6d0a93515ee12ff72c25961c263bd332e0e7db3d42",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": true,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/workflows/customer-workflow.test.ts",
+      "sha256": "c873dc8815c6f62f72bab258276e7ad7318ee84efa01ccbb32564d85c52a564f",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/workflows/cycle6-independent-review.test.ts",
+      "sha256": "077fc50cb07396ba42491313d5f5cad0930be723db7d98a16f22c3c0638daff3",
+      "default_foundation": {
+        "push": "PASS",
+        "pull_request": "PASS"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    },
+    {
+      "path": "tests/workflows/sales-workflow.test.ts",
+      "sha256": "64e0addd83ad3bbe8e866db14a236f79f6cf3a585fae77a27c80f070a0806d67",
+      "default_foundation": {
+        "push": "NO_TERMINAL_SUMMARY",
+        "pull_request": "NO_TERMINAL_SUMMARY"
+      },
+      "current_dedicated_191_file": false,
+      "current_native_PG_mode_file": false
+    }
+  ],
+  "source_configuration_hashes": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "df337433bfde1768ccbe396326793559f21113aa7c24e37fbd5955c4c29f87be"
+    },
+    {
+      "path": ".github/workflows/v1-pilot-source-review.yml",
+      "sha256": "d71714e5e40ea34bcb7ec8b4a1075f54247561a1f619665c50eea0452d269e33"
+    },
+    {
+      "path": "package.json",
+      "sha256": "173cba41b87d3156b98136c15873d81fe2308ed83a067a321cc239948099a1d0"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "8be30ee23e9cd3ca2f54e4b5beb7da07fd20ead0b86b504d31b29b1116b8baa3"
+    },
+    {
+      "path": "vite.config.ts",
+      "sha256": "0fdc8ac3b8d922c2229a25d67d0b42ab3c895489bfc7ee514aae0c78853bf48d"
+    },
+    {
+      "path": "playwright.config.ts",
+      "sha256": "d15e9c4d8f4984878a5cf60bb50e853a1c4fbc9b3de98f380850cd375e553078"
+    },
+    {
+      "path": "scripts/test-recovery.mjs",
+      "sha256": "95974379bce3208a0b7fcafd1e04535ab1a1381b04ca20d98ab9c0b61c24745d"
+    },
+    {
+      "path": "tests/setup/git-history.ts",
+      "sha256": "7bc80e906a8203700860c81c4cd4d2a1f0a57abfd902ebed9f1ef7fb5a3c6957"
+    },
+    {
+      "path": "scripts/test-git-history.mjs",
+      "sha256": "2c6d9ec071cdb1982606f4553c5273cf6ead8a9ca2b2483bf83b7415e54bd487"
+    },
+    {
+      "path": "tests/program/playwright.cycle13.config.ts",
+      "sha256": "b26ddac2e29086318c0008e3c43eada2ed3d1d98f9948864e6a827bff330bb64"
+    },
+    {
+      "path": "tests/program/playwright.cycle13-off.config.ts",
+      "sha256": "a3099ddb85e301d9735eee8ad577ec95cc828cc74ffc64dda89272aa753a8487"
+    }
+  ],
+  "cause_boundaries": {
+    "job_stop": "PROVIDER_45M_DEADLINE_PROVEN",
+    "individual_failures": "UNKNOWN_NO_ERROR_STACKS",
+    "exclusive_resource_or_application_cause": "UNKNOWN",
+    "actual_runner_OS": "Ubuntu24.04.5",
+    "actual_runner_image": "ubuntu-24.04/20261101.360.1",
+    "actual_Node": "24.22.2",
+    "both_events_same_image_Node": true,
+    "node20_deprecation_and_ubuntu26_migration_warnings": "PRESENT_NOT_CAUSAL_PROOF",
+    "CPU_heap_IO_eventloop_cgroup_worker_phase_traces": "ABSENT",
+    "original_console_only_unit_reporter": "NO_CASE_JSON_CONFIGURED",
+    "missing_final_collection_is_real_gap": true
+  },
+  "historical_preservation": {
+    "old369_Foundation": "CANCELLED_CONCURRENCY_SUPERSESSION_LITERAL_ANNOTATIONS_DISTINCT_FROM523_45M",
+    "retained270": {
+      "source": "39b5b1977f2e18c1c7d534667260ce5ed05660f3",
+      "tree": "0299e68550f0b86032a656ab26e4a6d40b70769e",
+      "push": {
+        "run": 42175850111,
+        "artifact": 13483771154,
+        "cases": 270,
+        "passed": 270
+      },
+      "PR": {
+        "run": 42175879610,
+        "artifact": 13483293762,
+        "cases": 270,
+        "passed": 249,
+        "failed": 21,
+        "explicit30s_deadlines": 18,
+        "dependent_C18_assertions": 3
+      },
+      "exclusive_cause": "UNKNOWN",
+      "proof_sha256": "225526c41c7024de10b3e8b70b273244cd647eb7c7c5d048ae70c7b9dfcdaac3"
+    }
+  },
+  "permissions": {
+    "read_only_investigation": true,
+    "new_application_browser_CI_executions": 0,
+    "source_changes": 0,
+    "hosted_mutations": 0,
+    "operational_acceptance": false,
+    "recovery_duplicate": "UNKNOWN_UNVERIFIED_FOLDERS_UNTOUCHED",
+    "D1": "ALL11UNASSIGNED",
+    "D2_D3": "SEPARATE",
+    "A01_A12": "NOT_RUN",
+    "release": "NOT_READY_NOT_AUTHORIZED"
+  }
+}
