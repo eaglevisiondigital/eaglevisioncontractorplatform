@@ -14,6 +14,7 @@ import {
   openFinancialCaseworkJob,
   assertFinancialCaseworkCurrent,
 } from './financial-casework';
+import { assertCostCorrectionReviewAccess } from './cost-correction-review';
 export const recordedCostRequirementsEnabled = costCoveragePathEnabled;
 /** Read handles only. Native cost, invoice, correction and navigation owners remain unchanged. */
 const reads = new WeakSet<object>();
@@ -96,6 +97,15 @@ export async function readRecordedCostRequirements(
 export type RecordedCostRequirementsRead = Awaited<
   ReturnType<typeof readRecordedCostRequirements>
 >;
+/** Access to an original point-in-time read only. Mutable financial freshness
+ * and native navigation still require the separate current read's guards. */
+export function assertRecordedCostRequirementsAccess(
+  view: RecordedCostRequirementsRead,
+) {
+  if (!reads.has(view))
+    throw Error('Original recorded-cost requirements required');
+  assertCostCorrectionReviewAccess(view.original.original);
+}
 export function assertRecordedCostRequirementsCurrent(
   view: RecordedCostRequirementsRead,
 ) {
