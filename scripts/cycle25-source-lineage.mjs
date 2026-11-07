@@ -2294,6 +2294,8 @@ export function admitCycle33ExecutionSource(
 /** Original manifests keep their hashes/blob IDs. Validate original metadata and
  * the exact current successor separately; never substitute historical bytes. */
 export function admitCycle33ExecutionPublished(file, current, supplied = {}) {
+  if (cycle33V1IntegrationAuthors.some((a) => a.path === file?.path))
+    return admitCycle33V1IntegrationPublished(file, current, supplied);
   const ports = { ...cycle25SourcePorts, ...supplied };
   if (!cycle33ExecutionAuthors.some((a) => a.modified.includes(file?.path)))
     throw Error('No fixed published Cycle33 execution predecessor');
@@ -3601,6 +3603,205 @@ export function admitCycle33V1C17Compatibility(file, current, supplied = {}) {
   return {
     module: 'c17-closeout-source-compatibility',
     source_commit: a.commit,
+    path: a.path,
+    authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+    business_authority: false,
+    restore_adapter: false,
+  };
+}
+
+// Exact independently reviewed #292/#294 reader successors. Original C10/C19
+// rows/hashes remain immutable; source admission grants no business authority.
+export const cycle33V1IntegrationAuthors = Object.freeze(
+  [
+    {
+      module: 'advanced-confirmation-currentness',
+      commit: '58c96bad25b314bcf11faf33020fc7bb2791a429',
+      parent: '5d695378f6f8573f99628116611c71c755c60c06',
+      path: 'src/lib/workflows/advanced-handoffs.ts',
+      sha256:
+        '4a6b3e37bc4900361da72d70509063267ddcc6ea8f6252da35d47d63206b1d5b',
+      blob: '6437ac2f98b74a2e82dd5fe1304afdd9266d8b93',
+      published: '414eb9b6397ffc08e0f0d6cd8757251e2ac84b16',
+      published_parent: 'cc034258a9d9cd11599080b6d4169bc3ca7cffd7',
+      published_sha256:
+        '61c141d0fa24acb8d0eb84c194f6c19576356b875ad95865b72a08b92406db16',
+      published_blob: '7bfb31cdf285c0f0ef248b116f1b74e2f664b37b',
+      requires_blob: false,
+      added: [
+        {
+          path: 'docs/program/CYCLE33_ADVANCED_CONFIRMATION_CURRENTNESS.md',
+          sha256:
+            'd7dbc60877e7d8d80fc3f08cf8ae02211110be5fcc939f30b73141360e4c3bfb',
+        },
+        {
+          path: 'tests/cycle33-advanced-confirmation-currentness.test.ts',
+          sha256:
+            '45b70d5b96a6a90ab017f014b22d786c498c49d21ce976dd44b8a4724e448fea',
+        },
+      ],
+      original_companions: [
+        {
+          path: 'src/components/workflows/AdvancedHandoffs.tsx',
+          sha256:
+            'd3beeaf60d469363b12e402f5691d56c9ef6369e2896252a57b954819cb53f01',
+        },
+        {
+          path: 'src/components/workflows/advanced-handoffs.css',
+          sha256:
+            'b3b4cfdd0ea00d3eb0eef79aecd7b22c1f23319902d91eb7c7cb49295e632ec6',
+        },
+        {
+          path: 'tests/cycle10-advanced-handoffs.test.ts',
+          sha256:
+            '7e13d8147f60684a6928dbc93396ee2651228c438fadabd15ea70f3e95548c85',
+        },
+        {
+          path: 'docs/program/CYCLE10_ADVANCED_HANDOFFS.md',
+          sha256:
+            '90c97b7b67882cf3dbce2149f35a8963e5956183bb54b21017b6583b20d939a0',
+        },
+      ],
+    },
+    {
+      module: 'cost-comparison-filter-currentness',
+      commit: 'e733774533bb4aab0a30782855aeb367c72089d0',
+      parent: '5d695378f6f8573f99628116611c71c755c60c06',
+      path: 'src/lib/workflows/cost-saved-revisions.ts',
+      sha256:
+        '9b900879f238c9161157be40a05129a6d653854f77153559e56eed3f87e1ff0c',
+      blob: 'fd8e31d7289b0cdcc38e53092a83b33c0d1a7add',
+      published: '8243be60ac191360b6df0d999d2e144ea19686ab',
+      published_parent: '8b50c9fe1b9462b34f3755a0e32a244333797696',
+      published_sha256:
+        '38e732a03ebca2760efb3a5ea326c79e24f517c9d0c5035653bcbd2d94f543c6',
+      published_blob: '0f547f5984be5ccd8095c9f64d43f4fa70cac659',
+      requires_blob: true,
+      added: [
+        {
+          path: 'docs/program/CYCLE33_COST_COMPARISON_FILTER_CURRENTNESS.md',
+          sha256:
+            '6baaa0f0b77a53d493366d54dfdb8ddf79c2f421129258c140f16c2fc86a322e',
+        },
+        {
+          path: 'tests/cycle33-cost-comparison-filter-currentness.test.ts',
+          sha256:
+            'd73abee189324c58e75848d09146a3f99115e6ea1fe046b5e630791856062c72',
+        },
+      ],
+      original_companions: [
+        {
+          path: 'src/components/workflows/CostSavedRevisions.tsx',
+          sha256:
+            '9d0c990ad983d21e5baaaf4e7cb7172e73f242f06eaf5981380a12bb8008733f',
+        },
+        {
+          path: 'src/components/workflows/cost-saved-revisions.css',
+          sha256:
+            '5034c6f2791383f2f31edd198b06227280584cb802b110eddb40e27099c25ed2',
+        },
+        {
+          path: 'tests/cycle19-cost-saved-revisions.test.ts',
+          sha256:
+            'daa33576d6720b92cf01c147f0962e0421703a85663017de5144adf0718be6aa',
+        },
+        {
+          path: 'docs/program/CYCLE19_COST_SAVED_REVISIONS.md',
+          sha256:
+            '2d34b576029444a3e3ce6aad6be98e4ba1b85cf996fd82cababb6edbfc5b7dae',
+        },
+      ],
+    },
+  ].map((a) =>
+    Object.freeze({
+      ...a,
+      added: Object.freeze(a.added.map(Object.freeze)),
+      original_companions: Object.freeze(
+        a.original_companions.map(Object.freeze),
+      ),
+    }),
+  ),
+);
+export function admitCycle33V1IntegrationPublished(
+  file,
+  current,
+  supplied = {},
+) {
+  const p = { ...cycle25SourcePorts, ...supplied },
+    matches = cycle33V1IntegrationAuthors.filter((a) => a.path === file?.path),
+    hash = (b) => createHash('sha256').update(b).digest('hex'),
+    blob = (b) =>
+      createHash('sha1').update(`blob ${b.length}\0`).update(b).digest('hex');
+  if (matches.length !== 1) throw Error('No exact V1 integration source owner');
+  const a = matches[0];
+  if (
+    file.sha256 !== a.published_sha256 ||
+    (a.requires_blob && file.blob !== a.published_blob) ||
+    (file.blob !== undefined && file.blob !== a.published_blob)
+  )
+    throw Error('Immutable original V1 integration metadata required');
+  if (
+    [a.published, a.parent, a.commit].some(
+      (c) => p.type(c) !== 'commit' || p.mode(c, a.path) !== '100644',
+    ) ||
+    p.parent(a.published) !== a.published_parent ||
+    p.parent(a.commit) !== a.parent ||
+    a.added.length !== 2 ||
+    a.original_companions.length !== 4 ||
+    p.delta(a.commit) !==
+      ['M\t' + a.path, ...a.added.map((f) => 'A\t' + f.path)]
+        .sort()
+        .join('\n') ||
+    a.added.some((f) => p.mode(a.commit, f.path) !== '100644') ||
+    a.original_companions.some(
+      (f) =>
+        p.mode(a.published, f.path) !== '100644' ||
+        p.mode(a.parent, f.path) !== '100644',
+    )
+  )
+    throw Error('Exact sole-parent regular M1/A2 integration author required');
+  const old = Buffer.from(p.git(a.published, a.path)),
+    base = Buffer.from(p.git(a.parent, a.path)),
+    reviewed = Buffer.from(p.git(a.commit, a.path));
+  if (
+    hash(old) !== a.published_sha256 ||
+    blob(old) !== a.published_blob ||
+    !base.equals(old)
+  )
+    throw Error('Exact immutable integration predecessor required');
+  if (
+    hash(reviewed) !== a.sha256 ||
+    blob(reviewed) !== a.blob ||
+    !Buffer.from(current).equals(reviewed) ||
+    !Buffer.from(p.read(a.path)).equals(reviewed)
+  )
+    throw Error('Fresh exact reviewed integration source required');
+  const companions = [];
+  for (const [commit, files] of [
+    [a.published, a.original_companions],
+    [a.commit, a.added],
+  ]) {
+    for (const f of files) {
+      const bytes = Buffer.from(p.git(commit, f.path));
+      if (
+        hash(bytes) !== f.sha256 ||
+        !Buffer.from(p.read(f.path)).equals(bytes) ||
+        (commit === a.published &&
+          !Buffer.from(p.git(a.parent, f.path)).equals(bytes))
+      )
+        throw Error('Exact original and new integration companions required');
+      companions.push([f.path, bytes]);
+    }
+  }
+  for (const [path, bytes] of companions)
+    if (!Buffer.from(p.read(path)).equals(bytes))
+      throw Error('Final fresh integration companion required');
+  if (!Buffer.from(p.read(a.path)).equals(reviewed))
+    throw Error('Final fresh integration source required');
+  return {
+    module: a.module,
+    source_commit: a.commit,
+    published_commit: a.published,
     path: a.path,
     authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
     business_authority: false,
