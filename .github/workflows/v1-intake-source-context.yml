@@ -1,0 +1,170 @@
+name: Intake source-context exact-source controls
+on:
+  push:
+    branches: ['codex/v1-customer-cost-continuity']
+  pull_request:
+    branches: ['codex/v1-hygiene-integration']
+    paths: ['.github/workflows/v1-intake-source-context.yml']
+permissions:
+  contents: read
+jobs:
+  intake-controls:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - run: npm ci
+      - run: node node_modules/@playwright/test/cli.js install --with-deps chromium
+      - name: Bind exact source and run only the new15 browser cases
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { execFileSync, spawnSync } from 'node:child_process';
+          import { createHash } from 'node:crypto';
+          import { readFileSync, writeFileSync, mkdirSync, realpathSync, lstatSync } from 'node:fs';
+          import { resolve, relative } from 'node:path';
+          const parent = 'd8d85760f9188d83a631328d9211421470002e8a';
+          const candidate = process.env.CANDIDATE_HEAD;
+          const directory = 'artifacts/cycle33/v1-intake-source-context';
+          const component = 'src/components/IntakeQueue.tsx';
+          const test = 'tests/browser/v1-intake-source-context.spec.ts';
+          const harness = 'tests/browser/fixtures/v1-intake-source-context-harness.tsx';
+          const doc = 'docs/program/V1_INTAKE_SOURCE_CONTEXT.md';
+          const workflow = '.github/workflows/v1-intake-source-context.yml';
+          const identityHash = '9ab2eee4ff8ddbd29dafe19291e9b662b8debfd53b2a376000f6846aba58cf65';
+          const git = (...args) => execFileSync('git', ['--no-replace-objects', ...args], { encoding: 'utf8' }).trim();
+          const hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
+          function snapshot() {
+            assert.equal(realpathSync(git('rev-parse', '--show-toplevel')), realpathSync(process.cwd()));
+            assert.match(candidate ?? '', /^[a-f0-9]{40}$/);
+            assert.equal(git('show', '-s', '--format=%P', candidate), parent);
+            const expected = [`M\t${component}`, `A\t${test}`, `A\t${harness}`, `A\t${doc}`, `A\t${workflow}`].sort();
+            assert.deepEqual(git('diff-tree', '--no-commit-id', '--name-status', '-r', candidate).split('\n').sort(), expected);
+            const checkout = git('rev-parse', 'HEAD');
+            if (process.env.GITHUB_ACTIONS === 'true') assert.equal(process.env.GITHUB_SHA, checkout);
+            const tree = git('rev-parse', `${candidate}^{tree}`);
+            assert.equal(git('rev-parse', 'HEAD^{tree}'), tree);
+            if (checkout !== candidate) assert.equal(git('show', '-s', '--format=%P', checkout), `${parent} ${candidate}`);
+            assert.equal(git('status', '--porcelain', '--untracked-files=all'), '');
+            const entries = git('ls-tree', '-rz', 'HEAD').split('\0').filter(Boolean);
+            const files = {};
+            for (const entry of entries) {
+              const [metadata, path] = entry.split('\t');
+              const [mode, type, blob] = metadata.split(' ');
+              assert.ok(['100644', '100755'].includes(mode) && type === 'blob');
+              if ([component, test, harness, doc, workflow].includes(path)) assert.equal(mode, '100644');
+              let current = process.cwd();
+              for (const part of path.split('/')) {
+                current = resolve(current, part);
+                assert.equal(lstatSync(current).isSymbolicLink(), false);
+              }
+              assert.equal(lstatSync(current).isFile(), true);
+              const bytes = readFileSync(current);
+              const gitBlob = createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
+              assert.equal(gitBlob, blob);
+              files[path] = hash(bytes);
+            }
+            assert.equal(Object.keys(files).length, 2193);
+            return { candidate, checkout, parent, tree, files, business_authority: false, operational_acceptance: false };
+          }
+          function verifyBrowser(bytes, before) {
+            const report = JSON.parse(bytes.toString('utf8'));
+            assert.ok(Array.isArray(report.errors) && report.errors.length === 0);
+            assert.deepEqual([report.stats.expected, report.stats.unexpected, report.stats.skipped, report.stats.flaky], [15, 0, 0, 0]);
+            assert.ok(Date.parse(report.stats.startTime) >= before.started_epoch_ms);
+            assert.equal(report.config.workers, 1);
+            assert.equal(report.config.metadata.actualWorkers, 1);
+            assert.equal(report.config.webServer, null);
+            assert.ok(Array.isArray(report.config.projects) && report.config.projects.length === 1);
+            const project = report.config.projects[0];
+            assert.equal(project.retries, 0);
+            assert.equal(project.repeatEach, 1);
+            assert.equal(project.timeout, 30000);
+            assert.deepEqual(project.testMatch, ['v1-intake-source-context.spec.ts']);
+            assert.ok(Array.isArray(report.suites) && report.suites.length === 1);
+            const suite = report.suites[0];
+            assert.equal(suite.file, 'v1-intake-source-context.spec.ts');
+            assert.ok(!suite.suites || (Array.isArray(suite.suites) && suite.suites.length === 0));
+            assert.ok(Array.isArray(suite.specs) && suite.specs.length === 15);
+            const ids = [];
+            for (const spec of suite.specs) {
+              assert.equal(spec.file, suite.file);
+              assert.equal(typeof spec.title, 'string');
+              assert.equal(spec.ok, true);
+              assert.ok(Array.isArray(spec.tests) && spec.tests.length === 1);
+              const execution = spec.tests[0];
+              assert.equal(execution.timeout, 30000);
+              assert.equal(execution.expectedStatus, 'passed');
+              assert.equal(execution.status, 'expected');
+              assert.ok(Array.isArray(execution.annotations) && execution.annotations.length === 0);
+              assert.ok(Array.isArray(execution.results) && execution.results.length === 1);
+              const result = execution.results[0];
+              assert.equal(result.status, 'passed');
+              assert.equal(result.retry, 0);
+              assert.ok(Number.isFinite(result.duration) && result.duration >= 0 && result.duration <= 30000);
+              assert.ok(Date.parse(result.startTime) >= before.started_epoch_ms);
+              assert.ok(Array.isArray(result.errors) && result.errors.length === 0);
+              assert.ok(Array.isArray(result.attachments));
+              const witnesses = result.attachments.filter((item) => item.contentType === 'application/json' && item.name.endsWith('source-witness'));
+              assert.equal(witnesses.length, 1);
+              const traces = result.attachments.filter((item) => item.name === 'trace' && item.contentType === 'application/zip');
+              assert.equal(traces.length, 1);
+              const tracePath = resolve(traces[0].path);
+              const traceRelative = relative(resolve(directory, 'results'), tracePath);
+              assert.ok(traceRelative && !traceRelative.startsWith('..') && !traceRelative.startsWith('/'));
+              assert.ok(lstatSync(tracePath).isFile() && !lstatSync(tracePath).isSymbolicLink());
+              assert.ok(readFileSync(tracePath).length > 0);
+              ids.push(spec.title);
+            }
+            assert.equal(new Set(ids).size, 15);
+            assert.equal(hash(JSON.stringify([...ids].sort())), identityHash);
+            return { cases: 15, full_title_sha256: identityHash, report_sha256: hash(bytes), source_candidate: before.candidate, source_checkout: before.checkout, source_tree: before.tree, scope: 'ORDINARY_INTAKE_UI_SOURCE_CONTEXT_ONLY', operational_acceptance: false };
+          }
+          mkdirSync(directory, { recursive: true });
+          const before = { ...snapshot(), started_epoch_ms: Date.now() };
+          writeFileSync(`${directory}/before.json`, JSON.stringify(before));
+          const runner = 'test-results/v1-intake-source-context.config.mts';
+          mkdirSync('test-results', { recursive: true });
+          writeFileSync(runner, `import { defineConfig, devices } from '@playwright/test'; export default defineConfig({testDir: ${JSON.stringify(resolve('tests/browser'))}, testMatch: 'v1-intake-source-context.spec.ts', timeout: 30000, expect: {timeout: 5000}, workers: 1, retries: 0, outputDir: ${JSON.stringify(resolve(directory, 'results'))}, reporter: [['json', {outputFile: ${JSON.stringify(resolve(directory, 'browser.json'))}}]], use: {...devices['Desktop Chrome'], trace: 'on'}});`);
+          writeFileSync(`${directory}/executed-runner.config.mts`, readFileSync(runner));
+          const commands = [];
+          let status = 0;
+          try {
+            for (const [name, args] of [
+              ['typecheck', ['node_modules/typescript/bin/tsc', '--noEmit']],
+              ['types', ['scripts/generate-db-types.mjs', '--check']],
+              ['lint', ['node_modules/eslint/bin/eslint.js', component, test, harness]],
+              ['format', ['node_modules/prettier/bin/prettier.cjs', '--check', component, test, harness, doc, workflow]],
+              ['features', ['scripts/feature-evidence.mjs', '--check']],
+              ['build', ['node_modules/vite/bin/vite.js', 'build']],
+              ['browser', ['node_modules/@playwright/test/cli.js', 'test', `--config=${runner}`]],
+            ]) {
+              const result = spawnSync(process.execPath, args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], maxBuffer: 16 * 1024 * 1024 });
+              writeFileSync(`${directory}/${name}.stdout`, result.stdout ?? '');
+              writeFileSync(`${directory}/${name}.stderr`, result.stderr ?? '');
+              commands.push({ name, exit_code: result.status, error: result.error?.message ?? null });
+              if (result.status !== 0 || result.error) { status = 1; throw Error(`${name} failed; preserve original evidence`); }
+            }
+            writeFileSync(`${directory}/browser-verification.json`, JSON.stringify(verifyBrowser(readFileSync(`${directory}/browser.json`), before)));
+          } catch (error) { status = 1; throw error; }
+          finally {
+            writeFileSync(`${directory}/commands.json`, JSON.stringify(commands));
+            const final = { ...snapshot(), started_epoch_ms: before.started_epoch_ms };
+            assert.deepEqual(final, before);
+            writeFileSync(`${directory}/final.json`, JSON.stringify({ ...final, unchanged: true, commands_exit_code: status }));
+          }
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: intake-source-context-${{ github.sha }}
+          path: artifacts/cycle33/v1-intake-source-context/
+          if-no-files-found: error

@@ -20,13 +20,29 @@ export function IntakeQueue({
   const task = useTask();
   const requests = useResource(
     useCallback(
-      () => repo.listIntake(org, status, page),
+      async () => ({
+        repo,
+        org,
+        status,
+        page,
+        result: await repo.listIntake(org, status, page),
+      }),
       [repo, org, status, page],
     ),
   );
   const members = useResource(
     useCallback(() => repo.listMembers(org), [repo, org]),
   );
+  // Retained reload data is not the result of a newly selected filter or page.
+  const ready =
+    !requests.loading &&
+    !requests.error &&
+    requests.data?.repo === repo &&
+    requests.data.org === org &&
+    requests.data.status === status &&
+    requests.data.page === page
+      ? requests.data.result
+      : undefined;
   return (
     <article>
       <div className="section-title">
@@ -61,7 +77,7 @@ export function IntakeQueue({
       <ResourceStatus {...requests} />
       <p role="status">{task.message}</p>
       <div className="record-list">
-        {requests.data?.rows.map((r) => (
+        {ready?.rows.map((r) => (
           <section className="request-card" key={r.id}>
             <div className="section-title">
               <span className="tag">
@@ -131,14 +147,10 @@ export function IntakeQueue({
           </section>
         ))}
       </div>
-      {!requests.loading && !requests.data?.rows.length && (
-        <p>No requests in this view.</p>
+      {ready && !ready.rows.length && <p>No requests in this view.</p>}
+      {ready && (
+        <Pagination page={page} count={ready.count} onChange={setPage} />
       )}
-      <Pagination
-        page={page}
-        count={requests.data?.count ?? 0}
-        onChange={setPage}
-      />
     </article>
   );
 }
