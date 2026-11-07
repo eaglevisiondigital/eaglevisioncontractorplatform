@@ -2641,3 +2641,30 @@ and both private folders remain intact. No operational gate is closed by these
 local corrections. Preserve original P1/customer14/4B/Auth/MFA/NMI/recovery/design,
 migration and production gates. No merge, deployment, hosted/financial/communication,
 restoration or dispatch action. **Release1.0 NOT READY / NOT AUTHORIZED.**
+
+## November6 · unified V1 acceptance and native review continuation
+
+The [unified V1 scorecard](docs/program/CYCLE33_V1_UNIFIED_ACCEPTANCE.md) extends the original Pilot acceptance workspace
+without another route, business engine or store. It retains all25 baseline feature
+records and eight Phase One gates, reads the existing scope proposal, presents
+separate dated CI classifications and lists all eleven UNASSIGNED D1 roles.
+D2/D3 stay separate; A01–A12 remain NOT_RUN. Original feature statuses are unchanged.
+Actual local verification:16new source cases,13separate retained regressions,
+9responsive cases across3brands/devices and6original/new OFF cases. Local results
+are not current-head hosted or genuine operational acceptance.
+
+Original exact heads: #2895d6953 has22PASS/3FAIL/4CANCELLED workflows; #29089d518
+has8PASS/2CANCELLED; #291e75e4f has7PASS/2CANCELLED. Independently verified C17
+480cases/84native/3OFF/3gallery do not close Foundation or erase original failures.
+CI-only successor #29367237b preserves both reviewed workflow corrections with
+no application change; its evidence is separately scoped. New independently reviewed
+native final-authorization corrections are separate draft #29258c96bad
+(Advanced,24new local cases) and #294e733774 (Finance,27new local cases), each
+with its own source admission and CI. Three Advanced checks are pretest source
+admission failures; a distinct hosted C9 privacy assertion remains unresolved. Protected pins and original budgets are unchanged.
+
+Owner-witnessed main synthetic loss PASS only; duplicate UNKNOWN/UNVERIFIED, both
+private folders intact. Original P1/customer14/4B/Auth/MFA/NMI, recovery, financial,
+Netlify, design, migration and production gates remain. No hosted, restoration,
+payment, message, dispatch, deploy or merge action.
+**Release1.0 NOT READY / NOT AUTHORIZED.**
