@@ -1,0 +1,75 @@
+name: Cycle33 unified V1 acceptance dashboard
+on:
+  push:
+    branches: ['codex/cycle33-v1-unified-acceptance-dashboard']
+  pull_request:
+    branches: ['codex/cycle33-v1-coordinated-integration']
+    paths: ['.github/workflows/cycle33-v1-dashboard.yml']
+permissions:
+  contents: read
+concurrency:
+  group: v1-dashboard-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  bounded-scorecard-and-responsive:
+    runs-on: ubuntu-24.04
+    # New finite scope; original 30-second Vitest/90-second browser budgets unchanged.
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - run: npm ci
+      - name: Bind actual clean candidate and every tracked byte
+        run: |
+          mkdir -p artifacts/cycle33/v1-dashboard
+          node --input-type=module <<'NODE'
+          import{execFileSync}from'node:child_process';import{readFileSync,writeFileSync,lstatSync}from'node:fs';import{createHash}from'node:crypto';
+          const git=(...a)=>execFileSync('git',['--no-replace-objects',...a],{encoding:'utf8'}).trim(), parent='5d695378f6f8573f99628116611c71c755c60c06';
+          if(git('status','--porcelain','--untracked-files=all'))throw Error('Clean candidate required');
+          const allowed=new Set(['.github/workflows/cycle33-v1-dashboard.yml','src/lib/workflows/pilot-scorecard.ts','src/components/workflows/PilotScorecard.tsx','docs/program/CYCLE33_V1_INTEGRATION_CLOSEOUT.json','docs/program/CYCLE33_V1_UNIFIED_ACCEPTANCE.md','CURRENT_BUILD_STATE.md','DECISIONS.md','docs/PROGRAM_DELIVERY_STATUS.md','docs/FEATURE_ACCEPTANCE_REGISTER.md','tests/program/cycle33-v1-unified-acceptance.test.ts','tests/program/cycle33-v1-acceptance-dashboard.spec.ts','tests/program/cycle33-v1-dashboard-off.spec.ts','tests/program/playwright.cycle33-v1-dashboard.config.ts','tests/program/playwright.cycle33-v1-dashboard-off.config.ts']);
+          const changed=git('diff','--name-only',parent,'HEAD').split('\n');if(changed.length!==allowed.size||changed.some(p=>!allowed.delete(p))||allowed.size)throw Error('Exact reviewed dashboard delta required');
+          const rows=git('ls-files','--stage').split('\n'),hashes={};for(const row of rows){const m=/^(100(?:644|755)) ([0-9a-f]{40}) 0\t(.+)$/.exec(row);if(!m||!lstatSync(m[3]).isFile()||lstatSync(m[3]).isSymbolicLink())throw Error('Regular tracked source required');const bytes=readFileSync(m[3]),blob=execFileSync('git',['--no-replace-objects','show',`HEAD:${m[3]}`]);if(!bytes.equals(blob))throw Error('Changed tracked byte');hashes[m[3]]=createHash('sha256').update(bytes).digest('hex');}
+          writeFileSync('artifacts/cycle33/v1-dashboard/binding.json',JSON.stringify({source:git('rev-parse','HEAD'),tree:git('rev-parse','HEAD^{tree}'),parent,hashes},null,2)+'\n');
+          NODE
+      - run: npm run typecheck
+      - run: npm run features:check
+      - run: npm run format:check
+      - name: Original scorecard regressions plus new evidence and revocation cases
+        run: >-
+          npx vitest run tests/program/cycle11-pilot-scorecard.test.ts
+          tests/program/cycle12-scorecard-evidence.test.ts
+          tests/program/cycle13-scorecard-evidence.test.ts
+          tests/program/cycle33-v1-unified-acceptance.test.ts
+          --maxWorkers=1 --retry=0 --reporter=json
+          --outputFile=artifacts/cycle33/v1-dashboard/application-results.json
+      - name: Require exact 29-case collection without skips
+        run: |
+          node --input-type=module <<'NODE'
+          import{readFileSync}from'node:fs';import{relative}from'node:path';const r=JSON.parse(readFileSync('artifacts/cycle33/v1-dashboard/application-results.json')),expected=new Map(Object.entries({'tests/program/cycle11-pilot-scorecard.test.ts':5,'tests/program/cycle12-scorecard-evidence.test.ts':4,'tests/program/cycle13-scorecard-evidence.test.ts':4,'tests/program/cycle33-v1-unified-acceptance.test.ts':16}));
+          if(!r.success||r.numTotalTests!==29||r.numPassedTests!==29||r.numFailedTests||r.numPendingTests||r.numTodoTests||r.numFailedTestSuites||r.numPendingTestSuites||r.numRuntimeErrorTestSuites||r.testResults.length!==4)throw Error('Incomplete original and new scope');for(const s of r.testResults){const p=relative(process.cwd(),s.name).replaceAll('\\','/'),n=expected.get(p),a=s.assertionResults;if(!expected.delete(p)||s.status!=='passed'||a.length!==n||new Set(a.map(t=>t.fullName)).size!==n||a.some(t=>t.status!=='passed'||!t.fullName||t.failureMessages.length))throw Error('Incomplete scoped suite');}if(expected.size)throw Error('Missing suite');
+          NODE
+      - run: npm run build
+      - name: Install pinned Chromium with signed system dependencies
+        run: npx playwright install --with-deps chromium
+      - name: Three brands on desktop tablet and mobile
+        run: npx playwright test --config tests/program/playwright.cycle33-v1-dashboard.config.ts
+      - name: Original and new production-OFF cases
+        run: npx playwright test --config tests/program/playwright.cycle33-v1-dashboard-off.config.ts
+      - name: Verify browser assertions and unchanged clean source
+        run: |
+          node --input-type=module <<'NODE'
+          import{readFileSync,writeFileSync}from'node:fs';import{execFileSync}from'node:child_process';import{createHash}from'node:crypto';const root='artifacts/cycle33/v1-dashboard/',binding=JSON.parse(readFileSync(root+'binding.json'));const cases=s=>[...(s.specs??[]).flatMap(x=>x.tests),...(s.suites??[]).flatMap(cases)];
+          for(const[file,n]of[['browser-results.json',9],['off-results.json',6]]){const r=JSON.parse(readFileSync(root+file)),t=r.suites.flatMap(cases);if(t.length!==n||r.config.workers!==1||r.stats.expected!==n||r.stats.skipped||r.stats.unexpected||r.stats.flaky||r.errors.length||new Set(t.map(x=>x.projectName)).size!==3||t.some(x=>x.timeout!==90000||x.expectedStatus!=='passed'||x.status!=='expected'||x.results.length!==1||x.results[0].status!=='passed'||x.results[0].retry!==0||x.results[0].errors.length))throw Error('Incomplete original-budget responsive/OFF coverage');}
+          for(const[p,h]of Object.entries(binding.hashes))if(createHash('sha256').update(readFileSync(p)).digest('hex')!==h)throw Error('Source changed during tests');if(execFileSync('git',['--no-replace-objects','status','--porcelain','--untracked-files=all'],{encoding:'utf8'}).trim())throw Error('Candidate dirty');if(execFileSync('git',['rev-parse','HEAD^{tree}'],{encoding:'utf8'}).trim()!==binding.tree)throw Error('Candidate tree changed');writeFileSync(root+'final-source.json',JSON.stringify({source:binding.source,tree:binding.tree,hashes:binding.hashes,scope:'29 source cases / 9 responsive / 6 OFF; not Foundation or operational acceptance'},null,2)+'\n');
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle33-v1-dashboard-${{ github.sha }}
+          path: artifacts/cycle33/v1-dashboard
+          if-no-files-found: error

@@ -1,0 +1,71 @@
+{
+  "schema": "propel-v1-integration-closeout-snapshot-v1",
+  "observedAt": "2026-11-07T00:20:38.975693+00:00",
+  "authority": "PUBLIC_CI_EVIDENCE_ONLY_NOT_BUSINESS_STATE_OR_OPERATIONAL_ACCEPTANCE",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "operationalAcceptance": "NOT_ACCEPTED",
+  "freshness": "Dated exact-head snapshot, not live GitHub status and not CI for this dashboard commit.",
+  "scopes": [
+    {
+      "label": "Main289 exact bounded application and responsive evidence",
+      "head": "5d695378f6f8573f99628116611c71c755c60c06",
+      "prs": [289],
+      "runs": ["42306798709", "42306807130"],
+      "applicationCasesPerEvent": 1134,
+      "nativeBrowserCasesPerEvent": 9,
+      "productionOffCasesPerEvent": 3,
+      "screenshotSourcePairsPerEvent": 63,
+      "classification": "RAW_SCOPES_VERIFIED_WORKFLOWS_FAILED",
+      "workflowCounts": {
+        "PASS": 22,
+        "FAIL": 3,
+        "CANCELLED": 4,
+        "PENDING": 0
+      },
+      "limit": "Both293report jobs failed despite passing raw cases. Original C17 preflight failed. Both Foundations cancelled at45minutes; incomplete coverage is not PASS.",
+      "proof": "effd5eb144fdce1d81a398f87e3fedd5d609c0ff54da316a66d092164a8996b3"
+    },
+    {
+      "label": "PR290 report parser, original retained artifact only",
+      "head": "89d5185c80b67dfb710d9a4cad76bf26fe8c1827",
+      "prs": [290],
+      "runs": ["42310306936", "42310314033"],
+      "classification": "TWO_FOCUSED_VALIDATOR_PASSES_NO_APPLICATION_REEXECUTION",
+      "workflowCounts": {
+        "PASS": 8,
+        "FAIL": 0,
+        "CANCELLED": 2,
+        "PENDING": 0
+      },
+      "limit": "One filtered-row status literal changed. Original293raw cases plus1PASS/44filtered were validated without rerunning applications. Foundation cancellations remain.",
+      "proof": "32fec6a1a03cb04ee8cacc689df7b6ac061861992e48271cad40a55130cfb666"
+    },
+    {
+      "label": "PR291 C17 original hosted collection",
+      "head": "e75e4f8fa221afab7e24cd5aadae3ed353bffb96",
+      "prs": [291],
+      "runs": ["42312166945"],
+      "applicationCases": 480,
+      "applicationFiles": 12,
+      "nativeBrowserCases": 84,
+      "productionOffCases": 3,
+      "galleryCases": 3,
+      "classification": "SCOPED_WORKFLOW_AND_ARTIFACT_VERIFIED",
+      "workflowCounts": {
+        "PASS": 7,
+        "FAIL": 0,
+        "CANCELLED": 2,
+        "PENDING": 0
+      },
+      "limit": "C17 passed unchanged budgets after checkout-history correction. Independent carrier/tree/ZIP audit verified the original scope. Both Foundations cancelled at 45 minutes: incomplete coverage. These 480 overlap retained tests and are not added to Main1134.",
+      "proof": "5ab9260307397fbfb658b8151e741af2958a3a4cef4248a75ee2cf45ac672957",
+      "terminalClassificationProof": "5c227efe3231e259243b4830ee6ebf68242e0227bdb442960f4e3127a457ca30"
+    }
+  ],
+  "operationalCases": "A01-A12_NOT_RUN",
+  "historicalLimits": [
+    "Original270pushPASS versusPR249PASS21FAIL remains causeUNKNOWN.",
+    "Historical C18 failures/timeouts and Foundation cancellations are preserved.",
+    "Visual tests and screenshots never grant owner visual approval."
+  ]
+}
