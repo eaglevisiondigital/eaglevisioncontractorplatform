@@ -1927,3 +1927,25 @@ SYNTHETIC LOSS SCENARIO PASS only; duplicate UNKNOWN/UNVERIFIED and both private
 folders untouched. No consumed attempt replay. Release1.0 NOT READY / NOT AUTHORIZED;
 all P1/customer14/4B, Auth/MFA, NMI, recovery, hosted, financial and production gates
 remain. No merge/deploy/mutation/messages/dispatch/invoice issuance/operational restore.
+
+### C17 source-inventory correction after V1 continuity
+
+PR306 remains frozen337da476aa6061dba626aff343f0e6045331ac82. Its dedicated139
+native/18 responsive+3 OFF passed both hosted events with2172 source hashes and36
+decoded PNGs each; complete Foundation is separate. Original C17 at337 was479PASS/
+1 direct historical-Field-hash assertionFAIL, not a deadline. Source authorbd8f150
+changes only that inventory case and its documentation, preserving original682 pin/
+publisher23829, exact945 evolution,29 raw comparisons and all45 case identities.
+
+Read docs/program/V1_C17_SOURCE_ADMISSION.md and V1_C17_SOURCE_MANIFEST.json. The
+new finite terminal admission retains all original b947 pins/companions and admits
+only exact sole337 M1/A1 author bytes with fresh current-source checks. Dedicated
+verification is31 source/report controls plus only the original failed1 (44 unselected),
+not a synthesized480PASS. Historical failures, skipped downstream coverage,Foundation cancellations,
+45-minute limits and270 discrepancy persist. Separate hygiene307 is not
+integrated. No runtime/UI/store/schema/pin/budget/recovery changes. Eleven D1 roles
+UNASSIGNED, D2/D3 separate, A01–A12 NOT RUN; owner-witnessed main synthetic recovery
+PASS only, duplicate UNKNOWN/UNVERIFIED/private folders untouched. Release1.0 NOT
+READY / NOT AUTHORIZED; all original P1/customer14/4B/Auth/MFA/NMI/recovery/financial/
+hosted/production restrictions remain, with no merge/deploy/mutation/restore/payment/
+invoice issuance/communication/dispatch.
