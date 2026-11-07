@@ -1,0 +1,21 @@
+{
+  "schema": "propel-v1-c17-source-successor-v1",
+  "parent": "337da476aa6061dba626aff343f0e6045331ac82",
+  "author": "bd8f150c1a347fd172cf5922d67e2664af59f14b",
+  "modified": "tests/cycle17-integration.test.ts",
+  "added": "docs/program/V1_C17_FIELD_INVENTORY.md",
+  "root_files": [
+    "scripts/cycle25-source-lineage.mjs",
+    "scripts/v1-c17-inventory-source.mjs",
+    "tests/v1-c17-inventory-source.test.mjs",
+    ".github/workflows/v1-c17-inventory-review.yml",
+    "docs/program/V1_C17_SOURCE_ADMISSION.md",
+    "docs/program/V1_C17_SOURCE_MANIFEST.json",
+    "CURRENT_BUILD_STATE.md",
+    "DECISIONS.md",
+    "docs/PROGRAM_DELIVERY_STATUS.md",
+    "docs/FEATURE_ACCEPTANCE_REGISTER.md"
+  ],
+  "old_predecessor_sha256": "6e68a895ce33c1bcda2ffb5a660aa27f9abf0f89a33c12439c9baf6a31a74589",
+  "authority": "SOURCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+}

@@ -1,3 +1,4 @@
+import { admitC17InventorySuccessor } from './v1-c17-inventory-source.mjs';
 import {
   admitNextNative,
   admitNextFieldPublished,
@@ -3644,20 +3645,32 @@ export function admitCycle33V1C17Compatibility(file, current, supplied = {}) {
     companion = Buffer.from(p.git(a.commit, a.companion.path));
   if (hash(old) !== a.published_sha256 || !base.equals(old))
     throw Error('Exact immutable original C17 test required');
-  if (
-    hash(reviewed) !== a.sha256 ||
-    !Buffer.from(current).equals(reviewed) ||
-    !Buffer.from(p.read(a.path)).equals(reviewed)
-  )
-    throw Error('Fresh exact reviewed C17 compatibility test required');
+  if (hash(reviewed) !== a.sha256)
+    throw Error(
+      'Exact original reviewed C17 compatibility predecessor required',
+    );
   if (
     hash(companion) !== a.companion.sha256 ||
     !Buffer.from(p.read(a.companion.path)).equals(companion)
   )
     throw Error('Exact current C17 compatibility companion required');
-  if (!Buffer.from(p.read(a.path)).equals(reviewed))
+  let inventorySuccessor;
+  if (!Buffer.from(current).equals(reviewed)) {
+    inventorySuccessor = admitC17InventorySuccessor(
+      a.path,
+      current,
+      reviewed,
+      p,
+    );
+  } else if (!Buffer.from(p.read(a.path)).equals(reviewed)) {
+    throw Error('Fresh exact reviewed C17 compatibility test required');
+  }
+  if (!Buffer.from(p.read(a.companion.path)).equals(companion))
+    throw Error('Final fresh original C17 compatibility companion required');
+  if (!Buffer.from(p.read(a.path)).equals(Buffer.from(current)))
     throw Error('Final fresh C17 compatibility test required');
   return {
+    ...(inventorySuccessor ? { inventory_successor: inventorySuccessor } : {}),
     module: 'c17-closeout-source-compatibility',
     source_commit: a.commit,
     path: a.path,

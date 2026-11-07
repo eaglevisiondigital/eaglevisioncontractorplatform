@@ -1,0 +1,51 @@
+name: C17 exact Field inventory successor review
+on:
+  push:
+    branches: ['codex/v1-c17-source-admission']
+  pull_request:
+    branches: ['codex/v1-pilot-decision-package']
+    paths: ['.github/workflows/v1-c17-inventory-review.yml']
+permissions:
+  contents: read
+concurrency:
+  group: v1-c17-inventory-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  focused-source-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - run: npm ci
+      - run: node scripts/v1-c17-inventory-source.mjs bind
+      - run: npm run typecheck
+      - run: npm run format:check
+      - run: npx eslint scripts/v1-c17-inventory-source.mjs scripts/cycle25-source-lineage.mjs tests/v1-c17-inventory-source.test.mjs tests/cycle17-integration.test.ts
+      - run: npm run features:check
+      - run: node scripts/check-cycle17-integrity.mjs
+      - name: Thirty-one source/report and denial controls, no business execution
+        run: node --test --test-concurrency=1 --test-timeout=30000 --test-reporter=tap tests/v1-c17-inventory-source.test.mjs > artifacts/cycle33/v1-c17-inventory/controls.tap
+      - run: node scripts/v1-c17-inventory-source.mjs controls
+      - name: Only original failed case, original30s budget and2worker maximum
+        run: >-
+          npx vitest run tests/cycle17-integration.test.ts
+          --testNamePattern='^the combined admission retains all thirty exact reviewed source/test blobs without overlapping ownership$'
+          --maxWorkers=2 --retry=0 --reporter=json
+          --outputFile=artifacts/cycle33/v1-c17-inventory/focused.json
+      - run: node scripts/v1-c17-inventory-source.mjs focused
+      - if: always()
+        run: node scripts/v1-c17-inventory-source.mjs final
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: c17-inventory-${{ github.sha }}
+          path: artifacts/cycle33/v1-c17-inventory
+          if-no-files-found: error
