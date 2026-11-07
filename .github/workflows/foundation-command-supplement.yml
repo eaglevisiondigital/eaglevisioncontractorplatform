@@ -1,0 +1,101 @@
+name: Original 302 missing-command evidence supplement
+on:
+  push:
+    branches: ['codex/v1-foundation-gap-evidence']
+  pull_request:
+    branches: ['codex/v1-pilot-readiness-plan']
+    paths: ['.github/workflows/foundation-command-supplement.yml']
+permissions:
+  contents: read
+concurrency:
+  group: foundation-command-supplement-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  controller-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npx eslint scripts/foundation-command-supplement.mjs tests/foundation-command-supplement.test.ts
+      - run: npm run format:check
+      - run: npx vitest run tests/foundation-command-supplement.test.ts --maxWorkers=1 --retry=0 --reporter=json --outputFile=artifacts/cycle33/foundation-command-controller-tests.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: foundation-command-controller-tests-${{ github.sha }}
+          path: artifacts/cycle33/foundation-command-controller-tests.json
+          if-no-files-found: error
+  original-staging-plan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: controller
+      - uses: actions/checkout@v4
+        with:
+          ref: 523afd4ef17d5502b6e0e39a4df86bdaa7bba23b
+          path: subject
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+          cache-dependency-path: subject/package-lock.json
+      - run: npm ci
+        working-directory: subject
+      - run: node controller/scripts/foundation-command-supplement.mjs bind
+      - run: node controller/scripts/foundation-command-supplement.mjs staging
+      - if: always()
+        run: node controller/scripts/foundation-command-supplement.mjs final
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: original523-staging-${{ github.sha }}
+          path: subject/artifacts/cycle33/foundation-supplement
+          if-no-files-found: error
+  original-default-browsers:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: controller
+      - uses: actions/checkout@v4
+        with:
+          ref: 523afd4ef17d5502b6e0e39a4df86bdaa7bba23b
+          path: subject
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+          cache-dependency-path: subject/package-lock.json
+      - run: npm ci
+        working-directory: subject
+      - run: node controller/scripts/foundation-command-supplement.mjs bind
+      - run: npx playwright install --with-deps chromium
+        working-directory: subject
+      - run: node controller/scripts/foundation-command-supplement.mjs collect
+      - run: node controller/scripts/foundation-command-supplement.mjs browser
+      - if: always()
+        run: node controller/scripts/foundation-command-supplement.mjs final
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: original523-default-browsers-${{ github.sha }}
+          path: |
+            subject/artifacts/cycle33/foundation-supplement
+            subject/test-results
+            subject/artifacts/phase3
+            subject/artifacts/release
+            subject/artifacts/property
+          if-no-files-found: error
