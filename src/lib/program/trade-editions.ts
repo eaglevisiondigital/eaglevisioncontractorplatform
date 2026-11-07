@@ -206,6 +206,7 @@ export async function prepareTradeEdition(
   confirm(gate);
   assertPrototypeSourceCurrentNow(source);
   confirm(gate);
+  assertPrototypeSourceCurrentNow(source);
   const review = result(body, sha256);
   bindings.set(review, { source, gate });
   return review;
@@ -220,5 +221,6 @@ export async function inspectTradeEdition(review: TradeEditionReview) {
   confirm(binding.gate);
   assertPrototypeSourceCurrentNow(binding.source);
   confirm(binding.gate);
+  assertPrototypeSourceCurrentNow(binding.source);
   return freezePrototype({ status: 'CURRENT' as const, replacement: null });
 }
