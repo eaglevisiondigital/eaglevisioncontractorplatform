@@ -1,0 +1,91 @@
+name: Finance screenshot artifact hygiene controls
+on:
+  push:
+    branches: ['codex/v1-finance-artifact-hygiene']
+  pull_request:
+    branches: ['codex/v1-pilot-decision-package']
+    paths:
+      - '.gitignore'
+      - 'tests/v1-finance-artifact-hygiene.test.mjs'
+      - 'docs/program/V1_FINANCE_ARTIFACT_HYGIENE.md'
+      - '.github/workflows/v1-finance-artifact-hygiene.yml'
+permissions:
+  contents: read
+jobs:
+  ignore-controls:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+      - name: Exact source before and after isolated Git ignore controls
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { execFileSync, spawnSync } from 'node:child_process';
+          import { createHash } from 'node:crypto';
+          import { readFileSync, writeFileSync, mkdirSync, realpathSync, lstatSync } from 'node:fs';
+          const git = (...args) => execFileSync('git', ['--no-replace-objects', ...args], { encoding: 'utf8' }).trim();
+          const parent = '337da476aa6061dba626aff343f0e6045331ac82';
+          const candidate = process.env.CANDIDATE_HEAD;
+          const expected = [
+            '.gitignore',
+            '.github/workflows/v1-finance-artifact-hygiene.yml',
+            'tests/v1-finance-artifact-hygiene.test.mjs',
+            'docs/program/V1_FINANCE_ARTIFACT_HYGIENE.md',
+          ].sort();
+          function snapshot() {
+            const root = realpathSync(process.cwd());
+            assert.equal(realpathSync(git('rev-parse', '--show-toplevel')), root);
+            assert.match(candidate ?? '', /^[a-f0-9]{40}$/);
+            assert.equal(git('rev-list', '--parents', '-n', '1', candidate), `${candidate} ${parent}`);
+            assert.equal(git('status', '--porcelain', '--untracked-files=normal'), '');
+            const checkout = git('rev-parse', 'HEAD');
+            const tree = git('rev-parse', 'HEAD^{tree}');
+            assert.equal(git('rev-parse', `${candidate}^{tree}`), tree);
+            if (checkout !== candidate) {
+              const parents = git('rev-list', '--parents', '-n', '1', checkout).split(' ').slice(1).sort();
+              assert.deepEqual(parents, [parent, candidate].sort());
+            }
+            assert.deepEqual(git('diff', '--name-only', parent, candidate).split('\n').sort(), expected);
+            const files = {};
+            for (const row of git('ls-tree', '-r', '--full-tree', 'HEAD').split('\n')) {
+              const [entry, path] = row.split('\t');
+              const [mode, kind, object] = entry.split(' ');
+              assert.equal(kind, 'blob');
+              assert.ok(lstatSync(path).isFile() && !lstatSync(path).isSymbolicLink());
+              const bytes = readFileSync(path);
+              assert.equal(createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex'), object);
+              files[path] = createHash('sha256').update(bytes).digest('hex');
+              if (expected.includes(path)) assert.equal(mode, '100644');
+            }
+            return { candidate, checkout, tree, parent, files, business_authority: false, operational_acceptance: false };
+          }
+          const directory = 'test-results/v1-finance-artifact-hygiene';
+          const before = snapshot();
+          mkdirSync(directory, { recursive: true });
+          writeFileSync(`${directory}/before.json`, JSON.stringify(before, null, 2) + '\n');
+          const result = spawnSync(process.execPath, [
+            '--test', '--test-concurrency=1', '--test-timeout=30000', '--test-reporter=tap',
+            'tests/v1-finance-artifact-hygiene.test.mjs',
+          ], { encoding: 'utf8' });
+          writeFileSync(`${directory}/controls.tap`, result.stdout ?? '');
+          writeFileSync(`${directory}/controls.stderr`, result.stderr ?? '');
+          process.stdout.write(result.stdout ?? '');
+          process.stderr.write(result.stderr ?? '');
+          assert.deepEqual(snapshot(), before);
+          writeFileSync(`${directory}/final.json`, JSON.stringify({ ...before, unchanged: true, test_exit_code: result.status }, null, 2) + '\n');
+          process.exitCode = result.status ?? 1;
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: finance-artifact-hygiene-${{ github.sha }}
+          path: test-results/v1-finance-artifact-hygiene
+          if-no-files-found: error
