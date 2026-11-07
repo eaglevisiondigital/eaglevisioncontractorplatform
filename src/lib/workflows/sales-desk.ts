@@ -310,6 +310,7 @@ export async function prepareSalesDesk(
     checkNow(b);
     if (confirmation(input) !== confirmed)
       throw Error('Staff confirmation changed');
+    checkNow(b);
   };
   const preparation = await prepareSalesWorkflowContract(
     b.references.estimates,
@@ -393,6 +394,7 @@ export async function reconcileSalesDesk(packet: SalesDeskPacket) {
     checkNow(b.read);
     if (confirmation(b.confirmation) !== b.confirmationSignature)
       throw Error('Review withdrawn');
+    checkNow(b.read);
     return {
       status: 'CURRENT_REVIEW_ONLY' as const,
       replay: false,
