@@ -1,0 +1,127 @@
+name: V1 exact combined native and responsive integration
+on:
+  push:
+    branches: ['codex/cycle33-v1-integrated-candidate']
+  pull_request:
+    branches: ['codex/cycle33-v1-ci-integration-successor']
+    paths: ['.github/workflows/cycle33-v1-integrated-candidate.yml']
+permissions:
+  contents: read
+concurrency:
+  group: v1-integrated-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - run: npm ci
+      - run: node scripts/check-v1-integrated-candidate.mjs bind
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run format:check
+      - run: npm run features:check
+      - name: Actual current-disk original C10 C11 C12 C19 C22 C23 C24 source guards
+        run: |
+          node scripts/check-cycle10-integrity.mjs
+          node scripts/check-cycle11-integrity.mjs
+          node scripts/check-cycle12-integrity.mjs
+          node scripts/check-cycle19-integrity.mjs
+          node scripts/check-cycle22.mjs
+          node scripts/check-cycle23.mjs
+          node scripts/check-cycle24.mjs
+      - name: Exact220 native source authorization and scorecard cases, original30second budgets
+        run: >-
+          npx vitest run tests/cycle33-v1-integration-source-admission.test.ts
+          tests/cycle33-advanced-confirmation-currentness.test.ts
+          tests/cycle33-cost-comparison-filter-currentness.test.ts
+          tests/cycle33-v1-finance-owner-integration.test.ts
+          tests/cycle33-v1-customer-growth-integration.test.ts
+          tests/program/cycle11-pilot-scorecard.test.ts
+          tests/program/cycle12-scorecard-evidence.test.ts
+          tests/program/cycle13-scorecard-evidence.test.ts
+          tests/program/cycle33-v1-unified-acceptance.test.ts
+          --maxWorkers=1 --retry=0 --reporter=json
+          --outputFile=artifacts/cycle33/v1-integrated/native-current.json
+      - name: Exact353 retained task offline source and integration regressions
+        run: >-
+          npx vitest run tests/cycle33-maintenance-review-custody.test.ts
+          tests/cycle33-next-offline-protocol-admission.test.ts
+          tests/cycle33-next-source-lineage.test.ts
+          tests/cycle33-next-combined-custody.test.ts
+          tests/cycle33-execution-task-continuity.test.ts
+          tests/cycle33-owner-comparison-input-custody.test.ts
+          tests/cycle33-service-lineage-handle-capture.test.ts
+          tests/cycle33-execution-cost-selection.test.ts
+          tests/cycle33-execution-source-admission.test.ts
+          tests/cycle33-execution-integrated-authority.test.ts
+          tests/cycle22-validation.test.ts
+          tests/cycle23-validation.test.ts
+          tests/cycle24-validation.test.ts
+          --maxWorkers=1 --retry=0 --reporter=json
+          --outputFile=artifacts/cycle33/v1-integrated/retained.json
+      - run: node scripts/check-v1-integrated-candidate.mjs native
+      - run: npm run build
+      - name: Final unchanged exact source
+        if: always()
+        run: node scripts/check-v1-integrated-candidate.mjs final
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v1-integrated-native-${{ github.sha }}
+          path: artifacts/cycle33/v1-integrated
+          if-no-files-found: error
+  responsive:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - run: npm ci
+      - run: node scripts/check-v1-integrated-candidate.mjs bind
+      - run: npm run build
+      - name: Observe signed runner dependencies without widening trust
+        run: |
+          node scripts/cycle32-runner-mirror-probe.mjs > artifacts/cycle33/v1-integrated/runner-mirror.json
+          node scripts/cycle30-chromium-dependencies.mjs
+          npx playwright install-deps --dry-run chromium
+          npx playwright install chromium
+      - name: Original nine native three-brand desktop tablet mobile journeys
+        run: npx playwright test -c tests/program/playwright.cycle28.config.ts --trace=retain-on-failure
+      - name: Original three production-OFF cases
+        run: CYCLE28_BROWSER_MODE=off npx playwright test -c tests/program/playwright.cycle28.config.ts
+      - name: Original strict screenshots source and accessibility collector
+        run: CYCLE24_ARTIFACT_DIR=artifacts/cycle28 node scripts/collect-cycle32-browser.mjs
+      - name: Three-brand responsive V1 dashboard
+        run: npx playwright test -c tests/program/playwright.cycle33-v1-dashboard.config.ts
+      - name: Original and dashboard production-OFF cases
+        run: npx playwright test -c tests/program/playwright.cycle33-v1-dashboard-off.config.ts
+      - run: node scripts/check-v1-integrated-candidate.mjs browsers
+      - name: Final unchanged exact source
+        if: always()
+        run: node scripts/check-v1-integrated-candidate.mjs final
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v1-integrated-responsive-${{ github.sha }}
+          path: |
+            artifacts/cycle33/v1-integrated
+            artifacts/cycle33/v1-dashboard
+            artifacts/cycle28
+          if-no-files-found: error

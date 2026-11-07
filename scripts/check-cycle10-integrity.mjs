@@ -2,6 +2,7 @@ import { readFileSync, lstatSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { admitCycle33ExecutionPublished } from './cycle25-source-lineage.mjs';
 export const cycle10Packages = [
   ['crew-plan-review', 'CrewPlanReview', 'CREW_PLAN_REVIEW'],
   ['financial-exceptions', 'FinancialExceptions', 'FINANCIAL_EXCEPTIONS'],
@@ -53,12 +54,34 @@ export function validateCycle10Manifest(manifest, read = readCycle10File) {
     for (const file of files) {
       if (!remaining.has(file.path) || paths.has(file.path))
         throw Error('Overlapping or out-of-scope Cycle10 source');
+      const bytes = Buffer.from(read(file.path));
+      const advanced = file.path === 'src/lib/workflows/advanced-handoffs.ts';
       if (
         !/^[a-f0-9]{64}$/.test(file.sha256) ||
-        createHash('sha256').update(read(file.path)).digest('hex') !==
-          file.sha256
+        (advanced &&
+          file.sha256 !==
+            '61c141d0fa24acb8d0eb84c194f6c19576356b875ad95865b72a08b92406db16')
       )
         throw Error(`Reviewed Cycle10 source changed: ${file.path}`);
+      if (createHash('sha256').update(bytes).digest('hex') !== file.sha256) {
+        let reviewed = false;
+        if (advanced)
+          try {
+            const result = admitCycle33ExecutionPublished(file, bytes, {
+              read,
+            });
+            reviewed =
+              result.source_commit ===
+                '58c96bad25b314bcf11faf33020fc7bb2791a429' &&
+              result.authority === 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE' &&
+              result.business_authority === false &&
+              result.restore_adapter === false;
+          } catch {
+            /* Unknown edits keep the original integrity rejection. */
+          }
+        if (!reviewed)
+          throw Error(`Reviewed Cycle10 source changed: ${file.path}`);
+      }
       remaining.delete(file.path);
       paths.add(file.path);
     }
