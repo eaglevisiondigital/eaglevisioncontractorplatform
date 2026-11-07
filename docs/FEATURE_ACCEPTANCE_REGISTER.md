@@ -1523,3 +1523,19 @@ Foundation cancellations and incomplete coverage remain distinct. All eleven D1
 roles are UNASSIGNED; D2/D3 separate; A01–A12 NOT RUN. Main synthetic Nov4 loss
 owner-witnessed PASS only; duplicate recovery UNKNOWN/UNVERIFIED and private folders
 untouched. Release1.0 remains NOT READY / NOT AUTHORIZED; no operational activation.
+
+## November7 · bounded V1 pilot guard successor
+
+Preserved exact draft299 `2d93b629d746f530ed1e3268631ca72d1651e85f` and its separately
+verified573 native/27 browser-OFF/63 screenshot-source/2139 source-hash evidence.
+Both Foundation events remain CANCELLED, not PASS; the exact coverage ledger is
+[recorded separately](program/V1_FOUNDATION_COVERAGE_GAPS.md).
+Two independently peer-reviewed M1/A2 native authors, Passport301 `4151bbcfa3d049d0cc0a895487a0a51ff066c49d`
+and Trade300 `96163eed882501d0463b299105cede42cc7109a4`, add only final existing
+current-authority guards. Combined local180cases pass; new-head hosted verification
+is separate. Main owns literal C13 source admission, source binding and the concrete
+first-pilot/D1 clarification; no historical pin, approved design or baseline feature
+status is promoted. See [validation](program/V1_PILOT_COMBINED_VALIDATION.md).
+All eleven D1 people remain UNASSIGNED, D2/D3 separate, A01–A12 NOT_RUN. Original
+main synthetic loss owner PASS / duplicate UNKNOWN and both private folders persist.
+Release1.0 NOT READY / NOT AUTHORIZED; all original release restrictions remain.

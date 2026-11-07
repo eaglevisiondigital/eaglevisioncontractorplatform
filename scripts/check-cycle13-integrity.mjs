@@ -2,6 +2,7 @@ import { readFileSync, lstatSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { admitPilotPassportPublished } from './v1-pilot-source-integrity.mjs';
 export const cycle13Packages = [
   ['work-order-revisions', 'WorkOrderRevisions', 'WORK_ORDER_REVISIONS'],
   ['financial-casework', 'FinancialCasework', 'FINANCIAL_CASEWORK'],
@@ -78,12 +79,33 @@ export function validateCycle13Manifest(manifest, read = readCycle13File) {
     for (const file of files) {
       if (!remaining.has(file.path) || paths.has(file.path))
         throw Error('Overlapping or out-of-scope Cycle13 source');
+      const passport =
+        file.path === 'src/lib/workflows/service-passport-desk.ts';
+      const bytes = Buffer.from(read(file.path));
       if (
         !/^[a-f0-9]{64}$/.test(file.sha256) ||
-        createHash('sha256').update(read(file.path)).digest('hex') !==
-          file.sha256
+        (passport &&
+          file.sha256 !==
+            'b235dc62e3b6e3f0eceed01af3c36ce94fbf1c2d274b1e5f219abef7d9b73f53')
       )
         throw Error(`Reviewed Cycle13 source changed: ${file.path}`);
+      if (createHash('sha256').update(bytes).digest('hex') !== file.sha256) {
+        let reviewed = false;
+        if (passport)
+          try {
+            const result = admitPilotPassportPublished(file, bytes, { read });
+            reviewed =
+              result.source_commit ===
+                '4151bbcfa3d049d0cc0a895487a0a51ff066c49d' &&
+              result.authority === 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE' &&
+              result.business_authority === false &&
+              result.restore_adapter === false;
+          } catch {
+            /* Unknown edits retain the original integrity rejection. */
+          }
+        if (!reviewed)
+          throw Error(`Reviewed Cycle13 source changed: ${file.path}`);
+      }
       remaining.delete(file.path);
       paths.add(file.path);
     }
@@ -140,6 +162,6 @@ if (
     JSON.parse(readCycle13File('docs/program/CYCLE13_DELIVERY_INDEX.json')),
   );
   console.log(
-    'Cycle13: 7 exact drafts / 37 disjoint author files and two independent files PASS. All retained protected/216 C6-C12 author bytes remain exact. Local evidence only.',
+    'Cycle13: 7 original drafts / 37 disjoint author paths and two independent files PASS, with only the finite reviewed Passport native successor permitted. Original pins remain unchanged. Local source evidence only.',
   );
 }
