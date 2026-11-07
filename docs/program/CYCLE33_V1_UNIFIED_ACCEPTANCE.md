@@ -80,7 +80,15 @@ and6OFF results on a clean candidate. It binds all tracked bytes before/final,
 retains full Git history and signed Chromium system-package validation, and keeps
 all original test assertions/budgets. The new finite15minute job budget is bounded
 for npm/install/build and this small scope; it does not alter original Foundation
-or browser/application budgets. Current-head hosted evidence is PENDING until
+or browser/application budgets. The first clean committed-source binding attempt failed before tests: Node default
+child-process output limit rejected the existing approved PNG at
+`public/brand/propel-contractor-suite.png` (ENOBUFS). The collector now bounds Git
+output to the current file byte length plus1024, retaining exact Git/file byte
+equality and before/final SHA256 checks. No artwork or test budget is changed.
+The original source-bind failure is retained; this precise collector correction
+is independently reviewed before a second commit.
+
+Current-head hosted evidence is PENDING until
 this separate draft runs. No claim of a new combined native-product candidate.
 
 ## Parallel source work and remaining review dependencies
@@ -145,4 +153,4 @@ commit/tree and clean-source browser artifact remain the hosted identity.
 | `tests/program/cycle33-v1-dashboard-off.spec.ts`              | `4385aca478f52f3e41ec32c7a3decc32478f086b38980fcfec5a914271bd2182` |
 | `tests/program/playwright.cycle33-v1-dashboard.config.ts`     | `eabbd626bbc596f9f866c0a1fb547b1e6751d22b95e9847315c15448724e1345` |
 | `tests/program/playwright.cycle33-v1-dashboard-off.config.ts` | `88c08181033417933df7c48ec1190f72d69920813937672ffd2b4e87e1b468ab` |
-| `.github/workflows/cycle33-v1-dashboard.yml`                  | `50a41efbc7d4f56767cd3d67dc7a5c27cb8c9cb99e16c2b5a8bb142b34c3b6c1` |
+| `.github/workflows/cycle33-v1-dashboard.yml`                  | `bae9cf7c2e8e2f205537a8d157c98548d7a3087a6642f69460d48e10fdbb9a8c` |
