@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { admitPilotPassportPublished } from './v1-pilot-source-integrity.mjs';
 import { execFileSync } from 'node:child_process';
 import { readFileSync, lstatSync } from 'node:fs';
 import { relative, resolve, sep } from 'node:path';
@@ -181,7 +182,24 @@ export function validateCycle22Manifest(manifest, ports = {}) {
     for (const p of JSON.parse(read(path)).packages)
       for (const file of p.owned_files) {
         const bytes = Buffer.from(read(file.path));
+        const pilotPassport =
+          file.path === 'src/lib/workflows/service-passport-desk.ts';
+        if (
+          pilotPassport &&
+          (path !== 'docs/program/CYCLE13_DELIVERY_INDEX.json' ||
+            p.head_commit !== '97272beef9dbd5fd26da7861961aed8c99b68a2b' ||
+            file.sha256 !==
+              'b235dc62e3b6e3f0eceed01af3c36ce94fbf1c2d274b1e5f219abef7d9b73f53')
+        )
+          throw Error(`Retained author source changed: ${file.path}`);
         if (sha(bytes) === file.sha256) continue;
+        if (pilotPassport)
+          try {
+            admitPilotPassportPublished(file, bytes, { read, git });
+            continue;
+          } catch {
+            /* Unknown bytes retain original retained-source denial. */
+          }
         try {
           admitCycle33ExecutionPublished(file, bytes, { read, git });
           continue;

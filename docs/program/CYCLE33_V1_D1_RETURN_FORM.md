@@ -205,3 +205,15 @@ independent fence. Registrar, issuer and consumer remain separate reviewed
 identities/connections with their original commits even if an owner proposes a
 human role combination. Missing independent custody or any unidentified writer
 keeps D1 incomplete. These recommendations do not amend D2/D3 or run A01–A12.
+
+## First-pilot command family remains an owner decision
+
+Use the [first-pilot acceptance path](V1_FIRST_PILOT_ACCEPTANCE.md) when returning
+this same D1 form. Ordinary staff intake assignment currently returns no immutable
+receipt; the original customer14/4B receipt covers an exact published-estimate
+customer review command. They are not interchangeable, and staff may not impersonate
+a customer. Identify the original source owner, command family and permitted actor
+privately before implementation review. Missing inquiry/estimate/job provenance
+stays UNKNOWN. Any requested intake receipt extension needs separate D1/D2 source
+and writer review; this form supplies no new receipt contract or store. All eleven
+people remain UNASSIGNED, D2/D3 separate, A01–A12 NOT_RUN.

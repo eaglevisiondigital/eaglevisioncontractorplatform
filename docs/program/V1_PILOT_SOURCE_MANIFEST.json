@@ -1,0 +1,45 @@
+{
+  "schema": "propel-v1-pilot-source-review-v1",
+  "parent": "2d93b629d746f530ed1e3268631ca72d1651e85f",
+  "authority": "PUBLIC_SOURCE_PROVENANCE_ONLY_NOT_BUSINESS_STATE",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "authors": [
+    {
+      "path": "src/lib/workflows/service-passport-desk.ts",
+      "commit": "4151bbcfa3d049d0cc0a895487a0a51ff066c49d",
+      "draft_pr": 301
+    },
+    {
+      "path": "src/lib/program/trade-editions.ts",
+      "commit": "96163eed882501d0463b299105cede42cc7109a4",
+      "draft_pr": 300
+    }
+  ],
+  "native_files": {
+    "tests/cycle13-service-passport-desk.test.ts": 79,
+    "tests/program-trade-editions.test.ts": 22,
+    "tests/v1-passport-final-authority.test.ts": 24,
+    "tests/v1-pilot-source-integrity.test.ts": 50,
+    "tests/v1-trade-final-authority.test.ts": 16
+  },
+  "screenshots": [
+    "artifacts/cycle13/customer-desktop-straight-edge.png",
+    "artifacts/cycle13/customer-desktop-cunningham.png",
+    "artifacts/cycle13/customer-desktop-roofing-example.png",
+    "artifacts/cycle13/customer-tablet-straight-edge.png",
+    "artifacts/cycle13/customer-tablet-cunningham.png",
+    "artifacts/cycle13/customer-tablet-roofing-example.png",
+    "artifacts/cycle13/customer-mobile-straight-edge.png",
+    "artifacts/cycle13/customer-mobile-cunningham.png",
+    "artifacts/cycle13/customer-mobile-roofing-example.png",
+    "artifacts/cycle13/advanced-desktop-straight-edge.png",
+    "artifacts/cycle13/advanced-desktop-cunningham.png",
+    "artifacts/cycle13/advanced-desktop-roofing-example.png",
+    "artifacts/cycle13/advanced-tablet-straight-edge.png",
+    "artifacts/cycle13/advanced-tablet-cunningham.png",
+    "artifacts/cycle13/advanced-tablet-roofing-example.png",
+    "artifacts/cycle13/advanced-mobile-straight-edge.png",
+    "artifacts/cycle13/advanced-mobile-cunningham.png",
+    "artifacts/cycle13/advanced-mobile-roofing-example.png"
+  ]
+}

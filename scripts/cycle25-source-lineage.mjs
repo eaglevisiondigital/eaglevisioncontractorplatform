@@ -4,6 +4,7 @@ import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { lstatSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { admitPilotPassportPublished } from './v1-pilot-source-integrity.mjs';
 
 export const cycle25Parent = '31e2bf5b05f6befac1c24314a31d2eabe65c5219';
 export const cycle25Branch = 'codex/program-cycle-twenty-five-integration';
@@ -311,6 +312,24 @@ export function validateCycle25ForwardSpec(spec, ports = cycle25SourcePorts) {
 export function admitCycle25Source(path, current, original, supplied = {}) {
   const ports = { ...cycle25SourcePorts, ...supplied },
     owners = cycle25Authors.filter((s) => s.modified.includes(path));
+  if (path === 'src/lib/workflows/service-passport-desk.ts') {
+    try {
+      const digest =
+        'b235dc62e3b6e3f0eceed01af3c36ce94fbf1c2d274b1e5f219abef7d9b73f53';
+      if (createHash('sha256').update(original).digest('hex') !== digest)
+        throw Error('Original Passport bytes required');
+      return {
+        ...admitPilotPassportPublished(
+          { path, sha256: digest },
+          current,
+          ports,
+        ),
+        path,
+      };
+    } catch (cause) {
+      throw new Error(`Unreviewed source replacement: ${path}`, { cause });
+    }
+  }
   if (
     owners.length === 0 &&
     cycle33ExecutionAuthors.some((a) => a.modified.includes(path))

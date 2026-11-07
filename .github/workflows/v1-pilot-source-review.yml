@@ -1,0 +1,98 @@
+name: V1 pilot native authority and responsive source review
+on:
+  push:
+    branches: ['codex/v1-pilot-readiness-plan']
+  pull_request:
+    branches: ['codex/cycle33-v1-integrated-candidate']
+    paths: ['.github/workflows/v1-pilot-source-review.yml']
+permissions:
+  contents: read
+concurrency:
+  group: v1-pilot-source-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - run: npm ci
+      - run: node scripts/check-v1-pilot-candidate.mjs bind
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run format:check
+      - run: npm run features:check
+      - name: Actual C13 C22 C23 C24 consumers retain original pins with finite Passport successor
+        run: |
+          node scripts/check-cycle13-integrity.mjs
+          node scripts/check-cycle22.mjs
+          node scripts/check-cycle23.mjs
+          node scripts/check-cycle24.mjs
+      - name: New50 provenance controls and40 authority cases plus101 affected original regressions
+        run: >-
+          npx vitest run tests/v1-pilot-source-integrity.test.ts
+          tests/v1-passport-final-authority.test.ts
+          tests/v1-trade-final-authority.test.ts
+          tests/cycle13-service-passport-desk.test.ts
+          tests/program-trade-editions.test.ts
+          --maxWorkers=1 --retry=0 --reporter=json
+          --outputFile=artifacts/cycle33/v1-pilot/native.json
+      - run: node scripts/check-v1-pilot-candidate.mjs native
+      - run: npm run build
+      - name: Unchanged final source
+        if: always()
+        run: node scripts/check-v1-pilot-candidate.mjs final
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v1-pilot-native-${{ github.sha }}
+          path: artifacts/cycle33/v1-pilot
+          if-no-files-found: error
+  responsive:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - run: npm ci
+      - run: node scripts/check-v1-pilot-candidate.mjs bind
+      - run: node scripts/cycle30-chromium-dependencies.mjs
+      - run: npx playwright install-deps --dry-run chromium
+      - run: npx playwright install chromium
+      - name: Original affected responsive navigation and accessibility, three brands and viewports
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_FILE: artifacts/cycle33/v1-pilot/browser.json
+        run: npx playwright test -c tests/program/playwright.cycle13.config.ts cycle13-customer.spec.ts cycle13-advanced.spec.ts --workers=1 --retries=0 --reporter=json
+      - run: npm run build
+      - name: Original production OFF controls
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_FILE: artifacts/cycle33/v1-pilot/off.json
+        run: npx playwright test -c tests/program/playwright.cycle13-off.config.ts cycle13-default-off.spec.ts --workers=1 --retries=0 --reporter=json
+      - run: node scripts/check-v1-pilot-candidate.mjs browser
+      - name: Unchanged final source
+        if: always()
+        run: node scripts/check-v1-pilot-candidate.mjs final
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v1-pilot-responsive-${{ github.sha }}
+          path: |
+            artifacts/cycle33/v1-pilot
+            artifacts/cycle13
+            test-results
+          if-no-files-found: error
