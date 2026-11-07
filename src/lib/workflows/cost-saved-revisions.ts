@@ -241,6 +241,8 @@ export function filterCostSavedRevisions(
           .toLowerCase()
           .includes(query)),
   );
+  assertSavedRevisionAccess(value.comparison.before);
+  assertSavedRevisionCurrent(value.comparison.current);
   return freezePrototype({
     rows: matches,
     matching: matches.length,
