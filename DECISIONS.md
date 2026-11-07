@@ -2233,3 +2233,30 @@ error (five versus canonical six) is preserved and corrected, with11 focused
 controls passing/39 filtered. Required corrected dedicated scope is191, with
 current-head CI separate from initial369's180 and299's573/27. All original
 feature, operational, recovery and release acceptance states remain unchanged.
+
+### V1 product continuity / first-pilot decisions — November 7
+
+Bounded composition from PR302 exact523afd4ef17d5502b6e0e39a4df86bdaa7bba23b
+retains draft303 Finance08ad85d896e3988be1ba223cb0c719374cdfbe7e, draft304
+Field94556e2a213bb513264432aa48e97bd3a94184d2 and draft305 controller
+725829eac3261854c519652d296d054def216330. Existing canonical engines now retain
+an unchanged time selection after an unrelated save with fresh verification, and
+retain UNKNOWN for unsupported/revoked original Field navigation acknowledgments.
+No application UI/design/store/schema or operational authority was added.
+
+Read `docs/program/V1_PRODUCT_CONTINUITY_VALIDATION.md`, its exact manifest and
+`V1_FIRST_PILOT_OWNER_DECISIONS.md`. New finite source admissions preserve original
+pins and require complete exact author bundles/immutable companions/fresh reads.
+Original302 dedicated191/18+3 successes remain source-specific. Both302 Foundation
+jobs hit provider45-minute limits with incomplete default units and skipped downstream
+steps; partial failures and all historical270/C18/cancellation evidence persist.
+New local113 collection112PASS/1 deadlineFAIL and initialbrowser3PASS/1FAIL/14NOTRUN
+remain historical failures regardless of supplementary or future hosted results.
+New dedicated139/18+3 scope requires actual exact-head artifacts; no pending PASS.
+
+All25 feature IDs/baselines and approved branding remain unchanged. Eleven D1 roles
+UNASSIGNED, D2/D3 separate, A01–A12 NOT RUN. Preserve November4 OWNER-WITNESSED MAIN
+SYNTHETIC LOSS SCENARIO PASS only; duplicate UNKNOWN/UNVERIFIED and both private
+folders untouched. No consumed attempt replay. Release1.0 NOT READY / NOT AUTHORIZED;
+all P1/customer14/4B, Auth/MFA, NMI, recovery, hosted, financial and production gates
+remain. No merge/deploy/mutation/messages/dispatch/invoice issuance/operational restore.

@@ -12,6 +12,9 @@ concurrency:
   cancel-in-progress: false
 jobs:
   controller-tests:
+    if: >-
+      github.head_ref == 'codex/v1-foundation-gap-evidence' ||
+      github.ref == 'refs/heads/codex/v1-foundation-gap-evidence'
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
@@ -34,6 +37,9 @@ jobs:
           path: artifacts/cycle33/foundation-command-controller-tests.json
           if-no-files-found: error
   original-staging-plan:
+    if: >-
+      github.head_ref == 'codex/v1-foundation-gap-evidence' ||
+      github.ref == 'refs/heads/codex/v1-foundation-gap-evidence'
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     steps:
@@ -63,6 +69,9 @@ jobs:
           path: subject/artifacts/cycle33/foundation-supplement
           if-no-files-found: error
   original-default-browsers:
+    if: >-
+      github.head_ref == 'codex/v1-foundation-gap-evidence' ||
+      github.ref == 'refs/heads/codex/v1-foundation-gap-evidence'
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     steps:
