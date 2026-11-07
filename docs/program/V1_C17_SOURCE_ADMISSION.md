@@ -57,6 +57,13 @@ protected128, design5/13, migrations, recovery artifacts and all25 feature basel
 are unchanged. Provider results are recorded against actual heads in the draft body;
 this pre-CI source record never labels pending work a PASS.
 
+The first committed local controls run at3cc7dc2 passed all31 tests but the collector
+rejected the valid `# todo 0` TAP summary as a TODO annotation. Original raw TAP and
+complete before/final source bindings are retained privately. The correction restricts
+annotation detection to `ok` result lines; exact zero TODO/skip summary checks, unique
+31-case plan and passed rows remain mandatory. This is a demonstrated report-parser
+defect, not a failed application case. No historical result is rewritten.
+
 ## Remaining acceptance
 
 PR306's separate139 native /18 responsive +3 OFF successes in both events remain

@@ -236,7 +236,7 @@ function controls() {
     new Set(passed.map((m) => m[2])).size !== 31 ||
     [...text.matchAll(/^1\.\.31$/gm)].length !== 1 ||
     /^not ok /m.test(text) ||
-    /# (?:SKIP|TODO)\b/i.test(text)
+    /^ok[^\n]*# (?:SKIP|TODO)\b/im.test(text)
   )
     fail('Exact31 distinct successful controls required');
   before();
