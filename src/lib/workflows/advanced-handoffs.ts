@@ -431,6 +431,7 @@ export async function prepareAdvancedHandoff(
     current(b);
     if (JSON.stringify(confirm(input)) !== signature)
       throw Error('Review confirmation changed');
+    current(b);
   };
   try {
     const p = b.pinned;
@@ -498,6 +499,7 @@ export function assertAdvancedHandoffCurrentNow(view: AdvancedHandoff) {
   current(b.binding);
   if (JSON.stringify(confirm(b.confirmation)) !== b.signature)
     throw Error('Original confirmation changed');
+  current(b.binding);
 }
 /** Reconcile the retained original engine object only. UNKNOWN never clears or creates a replacement. */
 export async function reconcileAdvancedHandoff(view: AdvancedHandoff) {
