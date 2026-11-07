@@ -1859,3 +1859,17 @@ private folders intact. Original P1/customer14/4B/Auth/MFA/NMI, recovery, financ
 Netlify, design, migration and production gates remain. No hosted, restoration,
 payment, message, dispatch, deploy or merge action.
 **Release1.0 NOT READY / NOT AUTHORIZED.**
+
+## V1 combined successor preparation
+
+The bounded candidate composes exact reviewed drafts292/294/295 on CI parent293,
+with source-only correction297 and integration tests296/298. Original branches,
+protected hashes, designs,25-feature baseline and historical CI remain unchanged.
+See [the combined source manifest](program/CYCLE33_V1_COMBINED_SOURCE_MANIFEST.json)
+and [validation scope](program/CYCLE33_V1_COMBINED_VALIDATION.md). No current-head
+CI or operational PASS is inferred: declared execution is220 native plus353 retained
+cases and27 responsive/OFF cases, with strict clean-source bindings. Original
+Foundation cancellations and incomplete coverage remain distinct. All eleven D1
+roles are UNASSIGNED; D2/D3 separate; A01–A12 NOT RUN. Main synthetic Nov4 loss
+owner-witnessed PASS only; duplicate recovery UNKNOWN/UNVERIFIED and private folders
+untouched. Release1.0 remains NOT READY / NOT AUTHORIZED; no operational activation.

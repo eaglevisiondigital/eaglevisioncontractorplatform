@@ -182,3 +182,26 @@ durability remain unaccepted. Older unavailable-device entries remain historical
 No merge, deploy, hosted mutation, credentials, operational restoration, payment,
 provider activation, customer communication or dispatch. All original branding,
 design, migration, financial and production gates remain in force.
+
+## Proposed role combinations for the D1 decision
+
+These are conditional responsibility recommendations for the private owner return,
+not appointments, accepted combinations or operational authorization. Every person
+and delegate in the original eleven-role table remains UNASSIGNED. Retain all
+original identities, connection/commit boundaries and evidence obligations above.
+
+| Proposed human-duty combination                                                 | Conditions for separate owner and independent review                                                                                                                                                                                 |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Business/source owner plus admission or read-only reconciliation responsibility | Current tenant/customer authorization, exact original source and staff AAL2 remain enforced. A human combination grants no new writer privilege or self-approval of missing customer evidence.                                       |
+| Canonical transaction supervision plus receipt/ACK operations                   | Canonical request and receipt remain atomic; independently durable ACK, one-use custody and exact UNKNOWN reads are separately proved. The operator cannot acknowledge success from primary-only or uncertain evidence.              |
+| DBA/privilege accountability plus installer/provisioner responsibility          | Every definer/helper/core/raw/admin/default-grant/sequence/restore path and its effective privileges remains inventoried. This combines accountable supervision only, not least-privilege evidence or separate execution identities. |
+| Backup/key custody plus recovery supervision                                    | This is already one original role. Matched recovery sets, current revocation/fence checks, independent acceptance and key-access duties remain mandatory.                                                                            |
+
+The independent reviewer must be independent of the writer, installer or custodian
+whose evidence is being accepted. The primary database/restore operator must not
+control the sole external spent-authority fence or supply the sole independent
+recovery acceptance. Separate names on the same rolled-back authority are not an
+independent fence. Registrar, issuer and consumer remain separate reviewed
+identities/connections with their original commits even if an owner proposes a
+human role combination. Missing independent custody or any unidentified writer
+keeps D1 incomplete. These recommendations do not amend D2/D3 or run A01–A12.

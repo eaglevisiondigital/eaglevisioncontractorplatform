@@ -1,0 +1,229 @@
+{
+  "schema": "propel-v1-reviewed-combined-source-v1",
+  "authority": "PUBLIC_SOURCE_PROVENANCE_ONLY_NOT_BUSINESS_STATE",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "parent": "67237bde592ace34487a353492cf01dc4e4fa204",
+  "preserved_main": "5d695378f6f8573f99628116611c71c755c60c06",
+  "authors": [
+    {
+      "draft_pr": 292,
+      "source_commit": "58c96bad25b314bcf11faf33020fc7bb2791a429",
+      "steps": [
+        {
+          "commit": "58c96bad25b314bcf11faf33020fc7bb2791a429",
+          "parents": ["5d695378f6f8573f99628116611c71c755c60c06"],
+          "delta": [
+            "A\tdocs/program/CYCLE33_ADVANCED_CONFIRMATION_CURRENTNESS.md",
+            "A\ttests/cycle33-advanced-confirmation-currentness.test.ts",
+            "M\tsrc/lib/workflows/advanced-handoffs.ts"
+          ]
+        }
+      ],
+      "files": {
+        "docs/program/CYCLE33_ADVANCED_CONFIRMATION_CURRENTNESS.md": "d7dbc60877e7d8d80fc3f08cf8ae02211110be5fcc939f30b73141360e4c3bfb",
+        "src/lib/workflows/advanced-handoffs.ts": "4a6b3e37bc4900361da72d70509063267ddcc6ea8f6252da35d47d63206b1d5b",
+        "tests/cycle33-advanced-confirmation-currentness.test.ts": "45b70d5b96a6a90ab017f014b22d786c498c49d21ce976dd44b8a4724e448fea"
+      }
+    },
+    {
+      "draft_pr": 294,
+      "source_commit": "e733774533bb4aab0a30782855aeb367c72089d0",
+      "steps": [
+        {
+          "commit": "e733774533bb4aab0a30782855aeb367c72089d0",
+          "parents": ["5d695378f6f8573f99628116611c71c755c60c06"],
+          "delta": [
+            "A\tdocs/program/CYCLE33_COST_COMPARISON_FILTER_CURRENTNESS.md",
+            "A\ttests/cycle33-cost-comparison-filter-currentness.test.ts",
+            "M\tsrc/lib/workflows/cost-saved-revisions.ts"
+          ]
+        }
+      ],
+      "files": {
+        "docs/program/CYCLE33_COST_COMPARISON_FILTER_CURRENTNESS.md": "6baaa0f0b77a53d493366d54dfdb8ddf79c2f421129258c140f16c2fc86a322e",
+        "src/lib/workflows/cost-saved-revisions.ts": "9b900879f238c9161157be40a05129a6d653854f77153559e56eed3f87e1ff0c",
+        "tests/cycle33-cost-comparison-filter-currentness.test.ts": "d73abee189324c58e75848d09146a3f99115e6ea1fe046b5e630791856062c72"
+      }
+    },
+    {
+      "draft_pr": 295,
+      "source_commit": "56fd0b03c777638c80e9e0b3c3d8274760391dc3",
+      "steps": [
+        {
+          "commit": "ff94fdb460dd0fa50d6ca286b359de9c527f4dec",
+          "parents": ["5d695378f6f8573f99628116611c71c755c60c06"],
+          "delta": [
+            "A\t.github/workflows/cycle33-v1-dashboard.yml",
+            "A\tdocs/program/CYCLE33_V1_INTEGRATION_CLOSEOUT.json",
+            "A\tdocs/program/CYCLE33_V1_UNIFIED_ACCEPTANCE.md",
+            "A\ttests/program/cycle33-v1-acceptance-dashboard.spec.ts",
+            "A\ttests/program/cycle33-v1-dashboard-off.spec.ts",
+            "A\ttests/program/cycle33-v1-unified-acceptance.test.ts",
+            "A\ttests/program/playwright.cycle33-v1-dashboard-off.config.ts",
+            "A\ttests/program/playwright.cycle33-v1-dashboard.config.ts",
+            "M\tCURRENT_BUILD_STATE.md",
+            "M\tDECISIONS.md",
+            "M\tdocs/FEATURE_ACCEPTANCE_REGISTER.md",
+            "M\tdocs/PROGRAM_DELIVERY_STATUS.md",
+            "M\tsrc/components/workflows/PilotScorecard.tsx",
+            "M\tsrc/lib/workflows/pilot-scorecard.ts"
+          ]
+        },
+        {
+          "commit": "56fd0b03c777638c80e9e0b3c3d8274760391dc3",
+          "parents": ["ff94fdb460dd0fa50d6ca286b359de9c527f4dec"],
+          "delta": [
+            "M\t.github/workflows/cycle33-v1-dashboard.yml",
+            "M\tdocs/program/CYCLE33_V1_UNIFIED_ACCEPTANCE.md"
+          ]
+        }
+      ],
+      "files": {
+        ".github/workflows/cycle33-v1-dashboard.yml": "bae9cf7c2e8e2f205537a8d157c98548d7a3087a6642f69460d48e10fdbb9a8c",
+        "CURRENT_BUILD_STATE.md": "a586386907d9d3c79851540f85f37ce620f90eb34ac99282ebb6d2d1e68db0a5",
+        "DECISIONS.md": "e725886164de262c796658ff1fbef5d633d812118a12a7ceab4398c65eb71fad",
+        "docs/FEATURE_ACCEPTANCE_REGISTER.md": "8589f073e081b47d428cef6d4a85f8dd48970fbacdb93e18badc9eec5b59635c",
+        "docs/PROGRAM_DELIVERY_STATUS.md": "760360d3c0969bcc9c7fefd49015251af5314bd12b6baf899516a0d32bc8fb9b",
+        "docs/program/CYCLE33_V1_INTEGRATION_CLOSEOUT.json": "4b12c24b2e3ebcb79d57d0de55d6fd95775daf27f601960034b9cda03e35b72d",
+        "docs/program/CYCLE33_V1_UNIFIED_ACCEPTANCE.md": "5d297c5cfe1ecdde2f4a8265e2bfab726cd9e4c8936a7d3c4b0e6e3242fcd08c",
+        "src/components/workflows/PilotScorecard.tsx": "5bb82648c0b73a24021fb35a789d7ca7dc461dea0e0ebc13ccfdbb4f876b9223",
+        "src/lib/workflows/pilot-scorecard.ts": "a434559b1d0fadf6cd7316a692aac1aacb1ad9b3ad5010f333da20dc71c6711e",
+        "tests/program/cycle33-v1-acceptance-dashboard.spec.ts": "28b509e4e2f1e5b70cbbf4678c23ad1d1643a92f6a81d08a0c139b43d8b0c0e1",
+        "tests/program/cycle33-v1-dashboard-off.spec.ts": "4385aca478f52f3e41ec32c7a3decc32478f086b38980fcfec5a914271bd2182",
+        "tests/program/cycle33-v1-unified-acceptance.test.ts": "7abb25b80e028a90394ce590980bb1bbd5542774bf9c0b3c8c671b10f85694e0",
+        "tests/program/playwright.cycle33-v1-dashboard-off.config.ts": "88c08181033417933df7c48ec1190f72d69920813937672ffd2b4e87e1b468ab",
+        "tests/program/playwright.cycle33-v1-dashboard.config.ts": "eabbd626bbc596f9f866c0a1fb547b1e6751d22b95e9847315c15448724e1345"
+      }
+    },
+    {
+      "draft_pr": 297,
+      "source_commit": "2c0447d5d47bb6b6258f3481de494704de409b83",
+      "steps": [
+        {
+          "commit": "2c0447d5d47bb6b6258f3481de494704de409b83",
+          "parents": ["67237bde592ace34487a353492cf01dc4e4fa204"],
+          "delta": [
+            "A\tdocs/program/CYCLE33_V1_NATIVE_SOURCE_ADMISSION.md",
+            "A\ttests/cycle33-v1-integration-source-admission.test.ts",
+            "M\t.github/workflows/cycle10-integration.yml",
+            "M\tscripts/check-cycle10-integrity.mjs",
+            "M\tscripts/cycle25-source-lineage.mjs"
+          ]
+        }
+      ],
+      "files": {
+        ".github/workflows/cycle10-integration.yml": "f476e6ca2da27a20d251aa5bf691e48a7616d4d429fea412009e07089e2b32ab",
+        "docs/program/CYCLE33_V1_NATIVE_SOURCE_ADMISSION.md": "0f56ed57040a7430101ab67e8643f078d333c2cd19d664ecfee448d67add8622",
+        "scripts/check-cycle10-integrity.mjs": "28aef321d396837ac8bcc1b681cee11552563b8c8a15a66c634493f8fc4fc80e",
+        "scripts/cycle25-source-lineage.mjs": "f023bd45b54d48b7f379145c5a553001af88b04b224e966fd51185420e6cee57",
+        "tests/cycle33-v1-integration-source-admission.test.ts": "ae8d5bf3a89295437cdae3d3be7b9731782d19ff64bfff42a58769c95e55a453"
+      }
+    },
+    {
+      "draft_pr": 298,
+      "source_commit": "f387c937b0d7d60f10549acab3884fc1b98975ac",
+      "steps": [
+        {
+          "commit": "f387c937b0d7d60f10549acab3884fc1b98975ac",
+          "parents": ["e733774533bb4aab0a30782855aeb367c72089d0"],
+          "delta": [
+            "A\tdocs/program/CYCLE33_V1_FINANCE_OWNER_INTEGRATION.md",
+            "A\ttests/cycle33-v1-finance-owner-integration.test.ts"
+          ]
+        }
+      ],
+      "files": {
+        "docs/program/CYCLE33_V1_FINANCE_OWNER_INTEGRATION.md": "f30d1456fb7a7874c9d8e40b58124669d943b476ef113cbebe51c1e9a6dd9182",
+        "tests/cycle33-v1-finance-owner-integration.test.ts": "470e92e63a6648b2242ee22f42757dbd5557b8b54c90999125c845fef88515f7"
+      }
+    },
+    {
+      "draft_pr": 296,
+      "source_commit": "439a0901dcc15c76022647b59bb34eabfe6adb02",
+      "steps": [
+        {
+          "commit": "439a0901dcc15c76022647b59bb34eabfe6adb02",
+          "parents": ["58c96bad25b314bcf11faf33020fc7bb2791a429"],
+          "delta": [
+            "A\tdocs/program/CYCLE33_V1_CUSTOMER_GROWTH_INTEGRATION.md",
+            "A\ttests/cycle33-v1-customer-growth-integration.test.ts"
+          ]
+        }
+      ],
+      "files": {
+        "docs/program/CYCLE33_V1_CUSTOMER_GROWTH_INTEGRATION.md": "4f2ac4fcd537f209a2d9be71e6cf3a31fb44796129fe20e50937a1fd55c6321a",
+        "tests/cycle33-v1-customer-growth-integration.test.ts": "4a73a6c246c5489f6d2ef1b2d075290efdb6c9340a3c59ae46998def722e1da7"
+      }
+    }
+  ],
+  "main_owned": [
+    "scripts/check-v1-integrated-candidate.mjs",
+    ".github/workflows/cycle33-v1-integrated-candidate.yml",
+    "docs/program/CYCLE33_V1_COMBINED_SOURCE_MANIFEST.json",
+    "docs/program/CYCLE33_V1_COMBINED_VALIDATION.md",
+    "CURRENT_BUILD_STATE.md",
+    "DECISIONS.md",
+    "docs/PROGRAM_DELIVERY_STATUS.md",
+    "docs/FEATURE_ACCEPTANCE_REGISTER.md",
+    "docs/program/CYCLE33_V1_D1_RETURN_FORM.md"
+  ],
+  "append_only": [
+    "CURRENT_BUILD_STATE.md",
+    "DECISIONS.md",
+    "docs/PROGRAM_DELIVERY_STATUS.md",
+    "docs/FEATURE_ACCEPTANCE_REGISTER.md",
+    "docs/program/CYCLE33_V1_D1_RETURN_FORM.md"
+  ],
+  "conflict_resolution": "NONE; exact author files plus separately reviewed Main append-only registers and finite CI tooling",
+  "native_scopes": {
+    "native-current.json": {
+      "tests/cycle33-v1-integration-source-admission.test.ts": 104,
+      "tests/cycle33-advanced-confirmation-currentness.test.ts": 24,
+      "tests/cycle33-cost-comparison-filter-currentness.test.ts": 27,
+      "tests/cycle33-v1-finance-owner-integration.test.ts": 18,
+      "tests/cycle33-v1-customer-growth-integration.test.ts": 18,
+      "tests/program/cycle11-pilot-scorecard.test.ts": 5,
+      "tests/program/cycle12-scorecard-evidence.test.ts": 4,
+      "tests/program/cycle13-scorecard-evidence.test.ts": 4,
+      "tests/program/cycle33-v1-unified-acceptance.test.ts": 16
+    },
+    "retained.json": {
+      "tests/cycle33-maintenance-review-custody.test.ts": 30,
+      "tests/cycle33-next-offline-protocol-admission.test.ts": 26,
+      "tests/cycle33-next-source-lineage.test.ts": 24,
+      "tests/cycle33-next-combined-custody.test.ts": 3,
+      "tests/cycle33-execution-task-continuity.test.ts": 28,
+      "tests/cycle33-owner-comparison-input-custody.test.ts": 19,
+      "tests/cycle33-service-lineage-handle-capture.test.ts": 19,
+      "tests/cycle33-execution-cost-selection.test.ts": 22,
+      "tests/cycle33-execution-source-admission.test.ts": 51,
+      "tests/cycle33-execution-integrated-authority.test.ts": 3,
+      "tests/cycle22-validation.test.ts": 58,
+      "tests/cycle23-validation.test.ts": 47,
+      "tests/cycle24-validation.test.ts": 23
+    }
+  },
+  "browser_scopes": {
+    "artifacts/cycle28/browser-results.json": {
+      "cases": 9,
+      "budget_ms": 150000
+    },
+    "artifacts/cycle28/browser-off-results.json": {
+      "cases": 3,
+      "budget_ms": 150000
+    },
+    "artifacts/cycle33/v1-dashboard/browser-results.json": {
+      "cases": 9,
+      "budget_ms": 90000
+    },
+    "artifacts/cycle33/v1-dashboard/off-results.json": {
+      "cases": 6,
+      "budget_ms": 90000
+    }
+  },
+  "old_successes_rerun_at_old_heads": false,
+  "operational_acceptance": "A01-A12_NOT_RUN",
+  "d1_roles": "ELEVEN_UNASSIGNED",
+  "recovery": "NOV4_MAIN_OWNER_WITNESSED_SYNTHETIC_PASS_ONLY; DUPLICATE_UNKNOWN_UNVERIFIED",
+  "full_foundation_pass": false
+}
