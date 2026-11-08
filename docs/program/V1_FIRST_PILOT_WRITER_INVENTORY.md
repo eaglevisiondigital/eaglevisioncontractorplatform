@@ -186,3 +186,32 @@ combinations; return the actual installed writer/bypass inventory and its indepe
 completeness review. Staff inquiry assignment has no original immutable receipt and
 cannot silently substitute for the original customer review-request command.
 D2/D3 and A01–A12 remain separate, unresolved acceptance requirements.
+
+## New source-specific intake writer acceptance blocker
+
+Draft320/a4619725029fab4ca6f958f981cda1b020368e06 corrects only two new fixture
+plan literals and keeps all original SQL unchanged. Its independently inspected
+PR-event native21 result is15PASS/6FAIL: for each of the three fixture brands,
+caller or intake-module withdrawal commits while the original assignment waits
+on the exact inquiry row; after release the original RPC still fulfills and changes
+that inquiry. Before-call revocation and foreign/assignee controls are separate
+passing cases. These are disposable PG17/synthetic JWT observations, never genuine
+Auth/MFA or installed-target acceptance. The first319 head's21 setup errors remain
+separate historical failures.
+
+Source path: original public.assign_intake delegates to private.assign_intake in
+20261015201048_phase_2_operations.sql. The original pre-update capability/assignee
+checks and void return are not a post-wait current-authority guarantee, immutable
+receipt, source CAS or one-use custody. Frozen migration bytes remain unchanged.
+Keep this writer and its ordinary UI out of a genuine pilot until a separately
+reviewed forward security correction and exact concurrency/current-revocation
+acceptance are supplied. Do not interpret the safe313 pagination fix as repairing
+this inherited writer. Main source integration holds313.
+
+D1 still needs the actual installed writer/owner/grant/bypass inventory and eleven
+real accountable people; no fixture role ev_test or agent identity appoints an
+operational owner. Identify legacy intake and any direct/private/raw/admin route
+in that return. D2 must separately settle original command/transaction/receipt
+requirements; D3 retains independent fence, matched backup and current revocation.
+A01–A12 remain NOT_RUN; no new SQL/adapter/hosted test or production activation is
+authorized by this finding.

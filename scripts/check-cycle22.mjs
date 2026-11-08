@@ -1,4 +1,12 @@
 import { admitNextFieldPublished } from './v1-next-native-source.mjs';
+import {
+  validateFieldPublishedSource,
+  readSource as readFieldSource,
+} from './v1-field-source-admission.mjs';
+import {
+  validateSalesPublishedSource,
+  ports as salesSourcePorts,
+} from './v1-sales-source-admission.mjs';
 import { createHash } from 'node:crypto';
 import { admitPilotPassportPublished } from './v1-pilot-source-integrity.mjs';
 import { execFileSync } from 'node:child_process';
@@ -149,7 +157,14 @@ export function cycle22PackagePaths(module, component) {
   ];
 }
 export function validateCycle22Manifest(manifest, ports = {}) {
-  const read = ports.read ?? readCycle22File,
+  const read =
+      ports.read ??
+      ((sourcePath) =>
+        sourcePath === '.github/workflows/v1-daily-field-final-authority.yml'
+          ? readFieldSource(sourcePath)
+          : sourcePath === '.github/workflows/v1-sales-final-authority.yml'
+            ? salesSourcePorts.read(sourcePath)
+            : readCycle22File(sourcePath)),
     git = ports.git ?? readGit;
   if (
     !manifest ||
@@ -183,6 +198,36 @@ export function validateCycle22Manifest(manifest, ports = {}) {
     for (const p of JSON.parse(read(path)).packages)
       for (const file of p.owned_files) {
         const bytes = Buffer.from(read(file.path));
+        if (file.path === 'src/lib/workflows/daily-field-guide.ts') {
+          try {
+            if (
+              path !== 'docs/program/CYCLE16_DELIVERY_INDEX.json' ||
+              p.head_commit !== '7eee0b4527646c470d3604b6d21ac7578d073fee'
+            )
+              throw Error('Exact original C16 Field package required');
+            validateFieldPublishedSource(file, bytes, p, { read, git });
+            continue;
+          } catch (cause) {
+            throw new Error(`Retained author source changed: ${file.path}`, {
+              cause,
+            });
+          }
+        }
+        if (file.path === 'src/lib/workflows/sales-desk.ts') {
+          try {
+            if (
+              path !== 'docs/program/CYCLE8_DELIVERY_INDEX.json' ||
+              p.head_commit !== '5d441e50e63eeefe7407256041a8ff792ddbcf5f'
+            )
+              throw Error('Exact original C8 Sales package required');
+            validateSalesPublishedSource(file, bytes, p, { read, git });
+            continue;
+          } catch (cause) {
+            throw new Error(`Retained author source changed: ${file.path}`, {
+              cause,
+            });
+          }
+        }
         const nextField = file.path === 'src/lib/workflows/field-workspace.ts';
         if (
           nextField &&

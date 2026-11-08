@@ -1,4 +1,5 @@
 import { admitC17InventorySuccessor } from './v1-c17-inventory-source.mjs';
+import { admitFieldInventorySource } from './v1-c16-field-inventory-source.mjs';
 import {
   admitNextNative,
   admitNextFieldPublished,
@@ -3551,6 +3552,7 @@ export function admitCycle33V1C16TestCompatibility(
   current,
   supplied = {},
 ) {
+  const historicalCurrent = Buffer.from(current);
   const ports = { ...cycle25SourcePorts, ...supplied },
     fixed = cycle33V1C16TestCompatibility,
     hash = (bytes) => createHash('sha256').update(bytes).digest('hex'),
@@ -3593,9 +3595,25 @@ export function admitCycle33V1C16TestCompatibility(
   if (
     hash(reviewed) !== fixed.sha256 ||
     blob(reviewed) !== fixed.blob ||
-    !Buffer.from(current).equals(reviewed) ||
-    !Buffer.from(ports.read(fixed.path)).equals(reviewed)
+    !historicalCurrent.equals(reviewed) ||
+    !Buffer.from(current).equals(historicalCurrent)
   )
+    throw Error('Fresh exact reviewed Cycle16 test correction required');
+  const working = Buffer.from(ports.read(fixed.path));
+  if (!Buffer.from(current).equals(historicalCurrent))
+    throw Error('Fresh exact reviewed Cycle16 test correction required');
+  if (!working.equals(reviewed)) {
+    try {
+      // This result still identifies the historical supplied8e buffer. The
+      // actual current77ff tree has its own finite proof and source binding.
+      admitFieldInventorySource(file, working, reviewed, ports);
+    } catch (cause) {
+      throw new Error('Fresh exact reviewed Cycle16 test correction required', {
+        cause,
+      });
+    }
+  }
+  if (!Buffer.from(current).equals(historicalCurrent))
     throw Error('Fresh exact reviewed Cycle16 test correction required');
   return {
     module: 'cycle16-independent-review-test-compatibility',

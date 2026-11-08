@@ -1,7 +1,7 @@
 {
   "schema": "propel-v1-integration-scorecard-v1",
   "authority": "REGISTER_PROJECTION_NOT_BUSINESS_STATE",
-  "source_baseline": "d8d85760f9188d83a631328d9211421470002e8a",
+  "source_baseline": "676e12fd14f75f754a19bf5606a935456853a783",
   "genuine_A01_A12": "NOT_RUN",
   "release": "NOT_READY_NOT_AUTHORIZED",
   "new_head_ci": "PENDING_SOURCE_BOUND_EXECUTION",
@@ -309,7 +309,8 @@
     "All25 baseline IDs/statuses are preserved; this is not a scope waiver.",
     "Retained exact-head CI does not become current combined Foundation or operational acceptance.",
     "Owner-witnessed main synthetic loss PASS only; duplicate recovery UNKNOWN/UNVERIFIED.",
-    "Eleven D1 operational assignments remain UNASSIGNED; D2/D3 separate."
+    "Eleven D1 operational assignments remain UNASSIGNED; D2/D3 separate.",
+    "Original316 Foundation45m cancellations retain eight failed rows per event, incomplete default units and skipped recovery/staging/defaultbrowser. Source6 local failures have demonstrated Sales-consumer cause; two Finance deadline rows remain cause UNKNOWN."
   ],
   "retained_ci": {
     "classification": "EXACT_HISTORICAL_HEADS_NOT_TRANSFERRED_CURRENT_ACCEPTANCE",
@@ -330,9 +331,17 @@
         "head": "a415bb4b35ff9e5727ce4f1a05a8f7f00def8bbc",
         "success": 9,
         "cancelled": 2
+      },
+      "316": {
+        "head": "676e12fd14f75f754a19bf5606a935456853a783",
+        "success": 25,
+        "cancelled": 2,
+        "failed": 0,
+        "pending": 0,
+        "classification": "WORKFLOW_ROLLUP_NOT_JOB_OR_CASE_COUNTS"
       }
     },
-    "foundation": "SIX_VERIFY_CANCELLED_PROVIDER_45M_LIMIT_PG_SIBLINGS_PASS",
+    "foundation": "HISTORICAL306_307_309_SIX_VERIFY_CANCELLED_PLUS316_TWO_VERIFY_CANCELLED_PROVIDER_45M_LIMIT_PG_SIBLINGS_PASS",
     "original_C17_at309": {
       "cases": 480,
       "passed": 480,
@@ -346,6 +355,37 @@
       "final_source_cleanliness": "FAIL",
       "final_tracked_source": "UNKNOWN",
       "exclusive_cause": "UNKNOWN"
+    },
+    "original_C16_at312": {
+      "head": "d977c78991aefed65f28fb643c30f92e5ecc6f7c",
+      "source_gate": "FAIL_REVIEWED_DAILY_FIELD_SOURCE_CHANGED",
+      "downstream_acceptance": "SKIPPED_NOT_PASS",
+      "source_admission317": "NEW_DISTINCT_REVIEWED_DRAFT_59_CONTROL_PASS_BOTH_EVENTS_NOT_ORIGINAL_FAILURE_RECLASSIFICATION"
+    },
+    "source_admission317": {
+      "head": "9b2864feda8f766bec84f7e710fe0be5c534bf45",
+      "each_source_controls": 59,
+      "each_tracked_bindings": 2197,
+      "independent_audit_sha256": "6adc7952c13c803a5e0b0873283b45888d53933bd93e3f3bd20675e782688cd7",
+      "application_acceptance": false,
+      "operational_acceptance": false
+    },
+    "intake319": {
+      "head": "4596e0215514367dfe92ab0e7ba7863cce75546b",
+      "native": "BOTH_21_FIXTURE_SETUP_FAIL_NOT_AUTHORIZATION_RESULT",
+      "native_source_maps": "BOTH_2199_UNCHANGED",
+      "raw_audit_sha256": "42717ca084703ff11d0bdc1206425060eaf32fc3edddb510c0cf02077f3241b3",
+      "included_in_this_candidate": false
+    },
+    "intake320": {
+      "head": "a4619725029fab4ca6f958f981cda1b020368e06",
+      "pr_native": "15_PASS_6_FAIL_0_SKIP_REQUIRED_DENIALS",
+      "push_native": "15_PASS_6_FAIL_0_SKIP_REQUIRED_DENIALS",
+      "source": "ORIGINAL_SQL_SYNTHETIC_FIXTURES_NOT_GENUINE_AUTH",
+      "intake313_included": false,
+      "independent_audit_sha256": "71928bb01e083fe00969ae84d3b9a5601a3a7640f83eaee32472ef8751ebabcc",
+      "source_maps": "BOTH_2200_UNCHANGED",
+      "classification": "CONFIRMED_ORIGINAL_SQL_POST_WAIT_CURRENT_AUTHORIZATION_BLOCKER"
     }
   },
   "validation_dimensions": {
@@ -378,6 +418,18 @@
         "scope": "SAME_COMPANY_PENDING_FILTER_PAGE_AFFORDANCES_NOT_AUTH_ACCEPTANCE",
         "source_bindings_each": 2193,
         "independent_main_audit_sha256": "c837b48295b4513753d58eb0e5960f4580d43f9f43520bed3894204e9f22d9b6"
+      },
+      "current_revocation_evidence": {
+        "fixture_repair_head": "a4619725029fab4ca6f958f981cda1b020368e06",
+        "native_pr_event": "15_PASS_6_REQUIRED_DENIAL_FAIL",
+        "confirmed_scope": "DISPOSABLE_PG17_ORIGINAL_SQL_SYNTHETIC_JWT_FIXTURES_NOT_GENUINE_AUTH",
+        "failed_cases": "THREE_BRANDS_CALLER_AND_MODULE_WITHDRAWAL_DURING_CONFIRMED_ROW_LOCK_WAIT",
+        "observed": "CURRENT_WITHDRAWAL_COMMITTED_BEFORE_RELEASE_YET_ORIGINAL_RPC_FULFILLS_AND_CHANGES_REQUEST",
+        "source_origin": "INHERITED_ORIGINAL_ASSIGN_INTAKE_NOT_INTRODUCED_BY_313_UI",
+        "integration_decision": "313_HELD_EXCLUDED_FROM_MAIN",
+        "remediation": "SEPARATELY_REVIEWED_FORWARD_SECURITY_CORRECTION_REQUIRED_NO_FROZEN_MIGRATION_EDITS",
+        "genuine_auth": "NOT_ACCEPTED",
+        "operational": "NOT_RUN"
       }
     },
     "EST-001": {
