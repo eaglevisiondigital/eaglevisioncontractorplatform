@@ -1,0 +1,38 @@
+name: Default browser collection source metadata controls
+on:
+  push:
+    branches: ['codex/v1-default-collection-source-correction']
+  pull_request:
+    branches: ['codex/v1-sales-finance-candidate']
+    paths: ['.github/workflows/v1-field-intake-integration.yml']
+permissions:
+  contents: read
+concurrency:
+  group: v1-default-collection-controls-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  core:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - run: node scripts/v1-field-intake-integration.mjs bind core
+      - run: npm ci
+      - name: Exact59 current Main source and report controls only
+        run: node scripts/v1-field-intake-integration.mjs controls main-source
+      - if: always()
+        run: node scripts/v1-field-intake-integration.mjs final core
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: field-core-${{ github.sha }}
+          path: artifacts/cycle33/v1-field-intake/core/
+          if-no-files-found: error

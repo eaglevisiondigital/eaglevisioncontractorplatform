@@ -235,10 +235,11 @@ export function admitFieldSuccessor(
     if (!same(p.read(f), p.git(author, f)))
       fail('Fresh Field authored bundle required');
   originalCompanions(p, 'Fresh original Field companions required');
+  const finalEndpoint = Buffer.from(p.read(nativePath));
   if (
     !same(current, captured) ||
     !same(previous, prior) ||
-    !same(p.read(nativePath), captured)
+    !same(finalEndpoint, captured)
   )
     fail('Final fresh Field endpoint and supplied buffers required');
   return {
@@ -276,7 +277,8 @@ export function validateFieldPublishedSource(
       p,
       'Fresh original Field companions required before equality',
     );
-    if (!same(current, captured) || !same(p.read(nativePath), captured))
+    const finalEndpoint = Buffer.from(p.read(nativePath));
+    if (!same(finalEndpoint, captured) || !same(current, captured))
       fail('Final fresh original Field endpoint required');
     return;
   }

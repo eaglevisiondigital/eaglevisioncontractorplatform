@@ -1,7 +1,12 @@
 import {
   validateFieldPublishedSource,
   readSource as readFieldSource,
+  ports as fieldSourcePorts,
 } from './v1-field-source-admission.mjs';
+import {
+  admitFieldInventorySource,
+  fieldInventoryAuthor,
+} from './v1-c16-field-inventory-source.mjs';
 import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -95,11 +100,23 @@ export function validateCycle16Manifest(manifest, read = readCycle13File) {
           file.path === cycle33V1C16TestCompatibility.path
         ) {
           try {
-            admitted = admitCycle33V1C16TestCompatibility(file, bytes, {
-              read,
-            });
+            admitted = admitFieldInventorySource(
+              file,
+              bytes,
+              fieldSourcePorts.git(
+                cycle33V1C16TestCompatibility.commit,
+                file.path,
+              ),
+              { read },
+            );
           } catch {
-            /* Preserve legacy denial. */
+            try {
+              admitted = admitCycle33V1C16TestCompatibility(file, bytes, {
+                read,
+              });
+            } catch {
+              /* Preserve legacy denial. */
+            }
           }
         }
         if (!(
@@ -107,7 +124,8 @@ export function validateCycle16Manifest(manifest, read = readCycle13File) {
             admitted?.source_commit ===
               '99e112a7cf669dfde03fdd69dbdbce2e74ef2fd4') ||
           (file.path === cycle33V1C16TestCompatibility.path &&
-            admitted?.source_commit === cycle33V1C16TestCompatibility.commit)
+            (admitted?.source_commit === cycle33V1C16TestCompatibility.commit ||
+              admitted?.source_commit === fieldInventoryAuthor))
         ))
           throw Error(`Reviewed Cycle16 source changed: ${file.path}`);
       }
