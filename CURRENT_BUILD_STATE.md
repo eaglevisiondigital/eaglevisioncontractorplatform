@@ -2899,3 +2899,16 @@ the issued baseline. No approval, signature, job authorization or performed work
 inferred. No writer, route, SQL, design lock or release permission changes. Intake SQL,
 D1–D3, A01–A12 and recovery acceptance remain separately held. Release1.0 NOT READY /
 NOT AUTHORIZED.
+
+## Lean cycle 6: published source beside customer estimate review
+
+The approved local portal can inspect an issued repair estimate's exact published
+report/version/finding beside its existing review form. Opening/closing documentation
+preserves an unfinished change-request note and confirmation without recording a
+preference. Re-read the original customer model when opening documentation and reuse
+the shared customer-safe report renderer/projection; missing links,
+changed versions, foreign context or withdrawn read scope remain UNKNOWN. Source-less
+estimates never acquire a relationship from nearby property history. No new writer,
+route, store, approval flow, CSS or artwork. Phase A/overview remain unchanged.
+Intake SQL, D1–D3, A01–A12, recovery and release restrictions remain held.
+Release1.0 NOT READY / NOT AUTHORIZED.
