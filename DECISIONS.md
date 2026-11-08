@@ -2485,3 +2485,13 @@ from other plans at the same exact property. Plan/record revisions must remain c
 report completeness, service completion and purpose-specific consent are not inferred.
 Disclosure and report filtering never create an attempt, visit, enrollment or renewal.
 Original scheduling/UNKNOWN custody, approval, SQL, design and release controls are unchanged.
+
+### Lean cycle 5: reuse the issued job source inspector beside Sales
+
+Keep the existing agreement checklist mounted while inspecting the canonical job
+baseline and navigating its exact recorded plan visits. Compose the existing
+Operating Center read fence and Field work-order reader; do not change historical
+Sales consumers, source pins or business writers. A missing relationship is UNKNOWN,
+not a reason to find another job or use a newer draft. Review remains default-off,
+local and read-only; customer acceptance, agreement execution, job authorization,
+work completion and financial issuance retain their original independent boundaries.

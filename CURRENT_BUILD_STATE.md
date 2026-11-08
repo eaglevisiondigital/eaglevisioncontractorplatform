@@ -2887,3 +2887,15 @@ Proposed dates and history filters survive disclosure/date changes. Stale plan o
 maintenance revisions withhold evidence; missing service, enrollment and purpose
 consent remain UNKNOWN. No scheduling command is triggered by history review.
 Intake SQL and all operational/recovery/release gates remain held. Release1.0 NOT READY / NOT AUTHORIZED.
+
+## Lean cycle 5: issued scope and recorded job plan beside Sales review
+
+The existing Sales journey now opens the original issued job scope and recorded
+visits without clearing agreement-preparation inputs or selecting another workspace.
+Reuse the Field source inspector and original Operating Center source fence; match
+the exact issued version, job, customer, property and plan before/after asynchronous
+reads. Missing/stale/revoked sources remain UNKNOWN, and newer drafts never replace
+the issued baseline. No approval, signature, job authorization or performed work is
+inferred. No writer, route, SQL, design lock or release permission changes. Intake SQL,
+D1–D3, A01–A12 and recovery acceptance remain separately held. Release1.0 NOT READY /
+NOT AUTHORIZED.
