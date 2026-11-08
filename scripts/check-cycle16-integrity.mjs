@@ -1,3 +1,12 @@
+import {
+  validateFieldPublishedSource,
+  readSource as readFieldSource,
+  ports as fieldSourcePorts,
+} from './v1-field-source-admission.mjs';
+import {
+  admitFieldInventorySource,
+  fieldInventoryAuthor,
+} from './v1-c16-field-inventory-source.mjs';
 import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -37,7 +46,7 @@ export function validateCycle16Manifest(manifest, read = readCycle13File) {
       ).packages.flatMap((p) => p.owned_files.map((f) => f.path)),
     ),
   );
-  const verify = (files, expected, commit) => {
+  const verify = (files, expected, commit, pkg) => {
     const remaining = new Set(expected);
     if (files.length !== remaining.size)
       throw Error('Exact finite author files required');
@@ -48,6 +57,24 @@ export function validateCycle16Manifest(manifest, read = readCycle13File) {
         throw Error(`Reviewed Cycle16 source changed: ${file.path}`);
       const bytes = Buffer.from(read(file.path));
       const currentHash = createHash('sha256').update(bytes).digest('hex');
+      if (file.path === 'src/lib/workflows/daily-field-guide.ts') {
+        try {
+          validateFieldPublishedSource(file, bytes, pkg, {
+            read: (path) =>
+              read === readCycle13File &&
+              path === '.github/workflows/v1-daily-field-final-authority.yml'
+                ? readFieldSource(path)
+                : read(path),
+          });
+        } catch (cause) {
+          throw Error(`Reviewed Cycle16 source changed: ${file.path}`, {
+            cause,
+          });
+        }
+        remaining.delete(file.path);
+        prior.add(file.path);
+        continue;
+      }
       if (
         currentHash !== file.sha256 ||
         (file.path === 'src/lib/workflows/addon-readiness-guide.ts' &&
@@ -73,11 +100,23 @@ export function validateCycle16Manifest(manifest, read = readCycle13File) {
           file.path === cycle33V1C16TestCompatibility.path
         ) {
           try {
-            admitted = admitCycle33V1C16TestCompatibility(file, bytes, {
-              read,
-            });
+            admitted = admitFieldInventorySource(
+              file,
+              bytes,
+              fieldSourcePorts.git(
+                cycle33V1C16TestCompatibility.commit,
+                file.path,
+              ),
+              { read },
+            );
           } catch {
-            /* Preserve legacy denial. */
+            try {
+              admitted = admitCycle33V1C16TestCompatibility(file, bytes, {
+                read,
+              });
+            } catch {
+              /* Preserve legacy denial. */
+            }
           }
         }
         if (!(
@@ -85,7 +124,8 @@ export function validateCycle16Manifest(manifest, read = readCycle13File) {
             admitted?.source_commit ===
               '99e112a7cf669dfde03fdd69dbdbce2e74ef2fd4') ||
           (file.path === cycle33V1C16TestCompatibility.path &&
-            admitted?.source_commit === cycle33V1C16TestCompatibility.commit)
+            (admitted?.source_commit === cycle33V1C16TestCompatibility.commit ||
+              admitted?.source_commit === fieldInventoryAuthor))
         ))
           throw Error(`Reviewed Cycle16 source changed: ${file.path}`);
       }
@@ -122,6 +162,7 @@ export function validateCycle16Manifest(manifest, read = readCycle13File) {
         `docs/program/CYCLE16_${module.replaceAll('-', '_').toUpperCase()}.md`,
       ],
       p.head_commit,
+      p,
     );
   }
   if (!/^[a-f0-9]{40}$/.test(manifest.independent_review_commit))

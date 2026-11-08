@@ -68,6 +68,7 @@ function current(b: Binding) {
       job.baseline.issued_version_id !== b.field.source.issued_version_id
     )
       throw Error('Daily field evidence UNKNOWN');
+    b.capture.check();
   } catch (error) {
     b.unknown = true;
     throw error;
@@ -94,6 +95,7 @@ export async function readDailyFieldGuide(
     capture.check();
     if (JSON.stringify(selection(input)) !== signature)
       throw Error('Daily field selection changed');
+    capture.check();
   };
   const field = await readFieldWorkflow(
     sources.property,

@@ -1420,5 +1420,23 @@
       "exclusive_cause_of_setup_timeouts_or_late_async_lifetime": "UNKNOWN_NO_PHASE_TRACE",
       "code_or_orchestration_change": false
     }
+  },
+  "current_continuation_parent": {
+    "head": "676e12fd14f75f754a19bf5606a935456853a783",
+    "foundation": "BOTH_VERIFY_CANCELLED_PROVIDER_45M",
+    "postgres17_siblings": "BOTH_PROVIDER_SUCCESS_SEPARATE_SCOPE",
+    "dedicated": "BOTH_SUCCESS_110_NATIVE_43_SOURCE_8_PARSER_18_BROWSER_3_OFF_63_PNG_2205_SOURCE",
+    "gaps": "V1_FIELD_INTAKE_FOUNDATION_GAPS.json",
+    "failed_rows_each": 8,
+    "failure_details": "six_source_cases_reproduced_as_C22_Sales_pin_rejection_and_C23_inheritance;two_C18_Finance30s_rows_without_complete_final_stack",
+    "historical_results_unchanged": true
+  },
+  "next_missing_coverage_execution": {
+    "head": "PENDING_FROZEN_COMBINED_CANDIDATE",
+    "default_units": "ORIGINAL_CONFIG_4_WORKERS_30S_45M_JOB_PLUS_INCREMENTAL_OBSERVATIONS",
+    "unit_observer_limits": "CONTROLLER_SAMPLES_NOT_WORKER_TRACE_OR_PER_CASE_SOURCE_ATTESTATION",
+    "original_operational_lock_recovery": "SEPARATE_UNCHANGED_PYTHON_3_13_16_UNIT_COMMAND_NOT_PHYSICAL_OR_HOSTED_RECOVERY",
+    "staging": "ORIGINAL_OFFLINE_PLAN_ONLY_NOT_MUTATION",
+    "default_browser": "SEPARATE_ORIGINAL_CONFIG_COLLECTION_AND_EXECUTION_45M_JOB_NOT_ORIGINAL_COMBINED_FOUNDATION_PASS"
   }
 }
