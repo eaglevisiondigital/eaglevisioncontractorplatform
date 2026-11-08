@@ -375,3 +375,112 @@ for (const org of [
     await expect(page.getByLabel('From date', { exact: true })).toHaveValue('');
   });
 }
+
+for (const org of [
+  'sample-property',
+  'sample-construction',
+  'sample-roofing',
+]) {
+  test(`visit documentation and job-cost handoff retains ${org} context`, async ({
+    page,
+  }) => {
+    await page.goto('/preview/field-scheduling');
+    await page
+      .getByRole('combobox', { name: 'Company context' })
+      .selectOption(org);
+    await expect(page.locator('.field-visit')).toHaveCount(1);
+    await page
+      .getByText('Development-only examples & states', { exact: true })
+      .click();
+    await page
+      .getByRole('button', {
+        name: 'Prepare synthetic follow-up example',
+        exact: true,
+      })
+      .click();
+    await expect(page.locator('.field-visit')).toHaveCount(5);
+    await page.getByLabel('From date', { exact: true }).fill('2026-11-13');
+    await page.getByLabel('Through date', { exact: true }).fill('2026-11-13');
+    await page
+      .getByRole('button', { name: 'Inspect exact visit', exact: true })
+      .click();
+    const visit = await page.locator('.field-source dd').first().innerText();
+    await page
+      .getByRole('button', {
+        name: 'Review customer-safe documentation',
+        exact: true,
+      })
+      .click();
+    const docs = page.getByRole('region', {
+      name: 'Customer-safe service documentation',
+    });
+    await expect(docs).toBeVisible();
+    await expect(docs.locator('[data-report-id]')).toHaveCount(1);
+    await expect(docs).toContainText('2026-11-13');
+    await docs.getByText('Inspection checklist', { exact: true }).click();
+    await expect(docs).toContainText('Completed: Inspect property condition');
+    await expect(docs).toContainText('not verified physical completion');
+    await expect(docs).not.toContainText('INTERNAL');
+    await expect(docs).not.toContainText('Job cost variance');
+    expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+    await page
+      .getByRole('button', { name: 'Back to recorded visit', exact: true })
+      .click();
+    await expect(docs).toHaveCount(0);
+    await expect(page.locator('.field-source dd').first()).toHaveText(visit);
+    await page
+      .getByRole('button', {
+        name: 'Review recorded visit job costs',
+        exact: true,
+      })
+      .click();
+    const costs = page.getByRole('region', {
+      name: 'Staff-only linked job costs',
+    });
+    await expect(
+      costs.getByRole('heading', { name: 'Job cost variance', exact: true }),
+    ).toBeVisible();
+    await expect(costs).toContainText('Job baseline property UNKNOWN');
+    await expect(costs).toContainText('not attributed to this property');
+    await expect(costs).toContainText('PARTIAL');
+    expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
+    await page
+      .getByRole('button', { name: 'Back to recorded visit', exact: true })
+      .click();
+    await expect(costs).toHaveCount(0);
+    await expect(page.locator('.field-source dd').first()).toHaveText(visit);
+    await expect(page.getByLabel('From date', { exact: true })).toHaveValue(
+      '2026-11-13',
+    );
+    await expect(page.getByLabel('Through date', { exact: true })).toHaveValue(
+      '2026-11-13',
+    );
+    await expect(page.locator('.field-visit')).toHaveCount(1);
+    await page
+      .getByRole('region', { name: 'Recorded property service history' })
+      .getByRole('button', {
+        name: 'Inspect recorded visit 2026-11-20',
+        exact: true,
+      })
+      .click();
+    await expect(
+      page.getByRole('button', {
+        name: 'Review customer-safe documentation',
+        exact: true,
+      }),
+    ).toBeDisabled();
+    await page
+      .getByRole('combobox', { name: 'Company context' })
+      .selectOption(
+        org === 'sample-property' ? 'sample-construction' : 'sample-property',
+      );
+    await expect(page.locator('.field-source')).toHaveCount(0);
+    await expect(costs).toHaveCount(0);
+    await expect(docs).toHaveCount(0);
+  });
+}
