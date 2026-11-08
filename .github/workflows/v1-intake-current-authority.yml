@@ -1,0 +1,327 @@
+name: Intake current-authority native and UI controls
+on:
+  push:
+    branches: ['codex/v1-intake-current-authority']
+  pull_request:
+    branches: ['codex/v1-customer-cost-continuity']
+    paths: ['.github/workflows/v1-intake-current-authority.yml']
+permissions:
+  contents: read
+jobs:
+  intake:
+    name: Intake ${{ matrix.scope }} exact-source controls
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        scope: [native, browser]
+    services:
+      postgres:
+        image: ${{ matrix.scope == 'native' && 'postgres:17' || '' }}
+        env:
+          POSTGRES_USER: ev_test
+          POSTGRES_PASSWORD: synthetic-ci-only
+          POSTGRES_DB: postgres
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U ev_test -d postgres"
+          --health-interval 10s --health-timeout 5s --health-retries 5
+    env:
+      CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+      INTAKE_SCOPE: ${{ matrix.scope }}
+      EV_TEST_PG_CI: ${{ matrix.scope == 'native' && 'true' || 'false' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - run: npm ci
+      - if: matrix.scope == 'browser'
+        run: node node_modules/@playwright/test/cli.js install --with-deps chromium
+      - name: Bind all source and run only the new scoped cases
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { execFileSync, spawnSync } from 'node:child_process';
+          import { createHash } from 'node:crypto';
+          import { readFileSync, writeFileSync, mkdirSync, lstatSync, cpSync, readdirSync, existsSync } from 'node:fs';
+          import { resolve, relative, isAbsolute } from 'node:path';
+          import sharp from 'sharp';
+          import { trackedSnapshot } from './scripts/v1-hygiene-integration.mjs';
+          const parent = '112110e30bd7b0400b96f75e26d12bffd70bea57';
+          const native = 'tests/database/v1-intake-current-authority.spec.ts';
+          const nativeConfig = 'tests/program/vitest.v1-intake-native.config.ts';
+          const browser = 'tests/browser/v1-intake-current-authority.spec.ts';
+          const harness = 'tests/browser/fixtures/v1-intake-current-authority-harness.tsx';
+          const doc = 'docs/program/V1_INTAKE_CURRENT_AUTHORITY.md';
+          const workflow = '.github/workflows/v1-intake-current-authority.yml';
+          const owned = [native, nativeConfig, browser, harness, doc, workflow];
+          const candidate = process.env.CANDIDATE_HEAD;
+          const scope = process.env.INTAKE_SCOPE;
+          assert.ok(['native', 'browser'].includes(scope));
+          const directory = `artifacts/cycle33/v1-intake-current-authority-${scope}`;
+          const hash = (value) => createHash('sha256').update(value).digest('hex');
+          const git = (...args) => execFileSync('git', ['--no-replace-objects', ...args], { encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 }).trim();
+          const nativeTitles = [
+            'active original caller reads exact inquiry/customer/property and assigns through original RPC',
+            'actual caller revocation before table reads and assignment denies original access without mutation',
+            'an actual prior read cannot renew caller authority revoked before assignment',
+            'real assignee revocation after selection is rejected by the original writer without mutation',
+            'original assigned field read and foreign tenant remain separate from assignment authority',
+            'original assignment denied after caller withdrawal commits during its exact row-lock wait',
+            'original assignment denied after module withdrawal commits during its exact row-lock wait',
+          ];
+          const browserTitles = [
+            'pending original member result cannot assign an actually revoked assignee',
+            'actual assignee withdrawal after an exact result denies the original assignment writer',
+            'query error and explicit visibility withdrawal withhold former pagination and forms',
+            'failed original member lookup fabricates no employee choice or mutation',
+          ];
+          const nativeIds = [0, 1, 2].flatMap((brand) => nativeTitles.map((title) => `brand ${brand}: ${title}`)).sort();
+          const browserIds = ['desktop', 'tablet', 'mobile'].flatMap((project) => [0, 1, 2].flatMap((brand) => browserTitles.map((title) => `${project}::brand ${brand}: ${title}`))).sort();
+          assert.equal(hash(JSON.stringify(nativeIds)), '4336945f3eb65db9c29739c266ae71aa0b3a44e590fc92a2e09e2d3b027f4e49');
+          assert.equal(hash(JSON.stringify(browserIds)), '399a9108d7d7ca8dde7acac9894ec9137d50f2691585aa0d2a64db67b5f1f461');
+          function snapshot() {
+            assert.match(candidate ?? '', /^[a-f0-9]{40}$/);
+            assert.equal(git('show', '-s', '--format=%P', candidate), parent);
+            assert.deepEqual(git('diff-tree', '--no-commit-id', '--name-status', '-r', candidate).split('\n').sort(), owned.map((path) => `A\t${path}`).sort());
+            const checkout = git('rev-parse', 'HEAD');
+            if (process.env.GITHUB_ACTIONS === 'true') assert.equal(process.env.GITHUB_SHA, checkout);
+            const tree = git('rev-parse', `${candidate}^{tree}`);
+            assert.equal(git('rev-parse', 'HEAD^{tree}'), tree);
+            if (checkout !== candidate) assert.equal(git('show', '-s', '--format=%P', checkout), `${parent} ${candidate}`);
+            for (const path of owned) assert.equal(git('ls-tree', candidate, '--', path).split(/\s+/)[0], '100644');
+            const files = trackedSnapshot();
+            assert.equal(Object.keys(files).length, 2199);
+            return { candidate, checkout, parent, tree, files, scope, operational_acceptance: false, genuine_auth: false };
+          }
+          function artifact(path, base) {
+            const full = resolve(path), rel = relative(resolve(base), full);
+            assert.ok(rel && !rel.startsWith('..') && !isAbsolute(rel));
+            let at = resolve(base);
+            for (const part of rel.split('/')) {
+              at = resolve(at, part);
+              assert.equal(lstatSync(at).isSymbolicLink(), false);
+            }
+            assert.equal(lstatSync(full).isFile(), true);
+            const bytes = readFileSync(full);
+            assert.ok(bytes.length > 0);
+            return bytes;
+          }
+          function preserveRawNative() {
+            const root = 'test-results/v1-intake-current-authority/native';
+            const destination = `${directory}/raw-native-witnesses`;
+            const manifest = { validation: 'RAW_UNVALIDATED_NOT_ACCEPTANCE', present: existsSync(root), files: [] };
+            if (manifest.present) {
+              assert.equal(lstatSync(root).isSymbolicLink(), false);
+              assert.equal(lstatSync(root).isDirectory(), true);
+              mkdirSync(destination, { recursive: true });
+              for (const path of readdirSync(root).sort()) {
+                const bytes = artifact(resolve(root, path), root);
+                writeFileSync(`${destination}/${path}`, bytes);
+                manifest.files.push({ path, sha256: hash(bytes) });
+              }
+            }
+            return manifest;
+          }
+          function validateNative(bytes, started) {
+            const report = JSON.parse(bytes.toString('utf8'));
+            assert.equal(report.numTotalTests, 21);
+            assert.equal(report.numPendingTests, 0);
+            assert.equal(report.numTodoTests, 0);
+            assert.equal(report.numPendingTestSuites, 0);
+            assert.equal(report.numTotalTestSuites, 1);
+            assert.equal(report.numPassedTests + report.numFailedTests, 21);
+            assert.equal(report.success, report.numFailedTests === 0);
+            assert.ok(Number.isFinite(report.startTime) && report.startTime >= started);
+            assert.ok(Array.isArray(report.testResults) && report.testResults.length === 1);
+            const suite = report.testResults[0];
+            assert.equal(resolve(suite.name), resolve(native));
+            assert.ok(Array.isArray(suite.assertionResults) && suite.assertionResults.length === 21);
+            const rows = suite.assertionResults;
+            assert.deepEqual(rows.map((row) => row.fullName).sort(), nativeIds);
+            assert.equal(new Set(rows.map((row) => row.fullName)).size, 21);
+            for (const row of rows) {
+              assert.ok(['passed', 'failed'].includes(row.status));
+              assert.deepEqual(row.ancestorTitles, []);
+              assert.equal(row.title, row.fullName);
+              assert.ok(Number.isFinite(row.duration) && row.duration >= 0 && row.duration <= 30000);
+              assert.ok(Array.isArray(row.failureMessages));
+              assert.equal(row.failureMessages.length === 0, row.status === 'passed');
+            }
+            assert.equal(rows.filter((row) => row.status === 'passed').length, report.numPassedTests);
+            assert.equal(rows.filter((row) => row.status === 'failed').length, report.numFailedTests);
+            const root = 'test-results/v1-intake-current-authority/native';
+            const kinds = ['ordinary', 'revoked-before-read', 'revoked-after-read', 'revoked-assignee', 'field-foreign', 'row-wait-caller', 'row-wait-module'];
+            const paths = [0, 1, 2].flatMap((brand) => kinds.map((kind) => `${brand}-${kind}.json`)).sort();
+            assert.deepEqual(readdirSync(root).sort(), paths);
+            const witnesses = paths.map((path) => {
+              const raw = artifact(resolve(root, path), root), value = JSON.parse(raw.toString('utf8'));
+              assert.equal(value.identity, 'SYNTHETIC_SQL_FIXTURE_NOT_GENUINE_AUTH');
+              assert.equal(value.receipt, 'VOID_RPC_ACK_NOT_CAS_OR_DURABLE_CUSTODY');
+              return { path, sha256: hash(raw), value };
+            });
+            const races = witnesses.filter((item) => item.value.kind.startsWith('row-wait-'));
+            assert.equal(races.length, 6);
+            for (const { value: witness } of races) {
+              const value = witness.value;
+              assert.notEqual(value.actor_backend, value.blocker_backend);
+              assert.equal(value.wait.pid, value.actor_backend);
+              assert.equal(value.wait.wait_event_type, 'Lock');
+              assert.ok(Array.isArray(value.wait.blockers) && value.wait.blockers.includes(value.blocker_backend));
+              assert.ok(String(value.wait.query).includes('public.assign_intake'));
+              assert.deepEqual(value.withdrawn.request, value.before.request);
+              assert.equal(witness.kind === 'row-wait-caller' ? value.withdrawn.caller.active : value.withdrawn.module.enabled, false);
+              const family = witness.kind === 'row-wait-caller' ? nativeTitles[5] : nativeTitles[6];
+              const row = rows.find((row) => row.fullName === `brand ${witness.brand}: ${family}`);
+              assert.ok(row);
+              if (row.status === 'passed') {
+                assert.deepEqual(value.outcome, { status: 'rejected', code: '42501', message: value.outcome.message });
+                assert.deepEqual(value.after.request, value.before.request);
+              }
+            }
+            cpSync(root, `${directory}/native-witnesses`, { recursive: true, errorOnExist: true });
+            const failed = rows.filter((row) => row.status === 'failed').map((row) => ({ fullName: row.fullName, failureMessages: row.failureMessages }));
+            const failedDenials = races.filter(({ value: { value } }) => value.outcome.status === 'fulfilled').map(({ path, value: { value } }) => ({ path, outcome: value.outcome, request_changed: JSON.stringify(value.after.request) !== JSON.stringify(value.before.request) }));
+            return { cases_observed: 21, passed: report.numPassedTests, failed_count: report.numFailedTests, full_title_sha256: hash(JSON.stringify(nativeIds)), raw_sha256: hash(bytes), failed, observed_fulfilled_after_withdrawal: failedDenials, required_denial_security_blocker: failedDenials.length > 0, witnesses: witnesses.map(({ path, sha256 }) => ({ path, sha256 })), source_scope: 'ORIGINAL_SQL_SYNTHETIC_JWT_FIXTURES_ONLY', genuine_auth: false, operational_acceptance: false };
+          }
+          async function validateBrowser(bytes, started) {
+            const report = JSON.parse(bytes.toString('utf8'));
+            assert.deepEqual(report.errors, []);
+            assert.deepEqual([report.stats.expected, report.stats.unexpected, report.stats.skipped, report.stats.flaky], [36, 0, 0, 0]);
+            assert.ok(Date.parse(report.stats.startTime) >= started);
+            assert.equal(report.config.workers, 1);
+            assert.equal(report.config.webServer, null);
+            assert.ok(Array.isArray(report.config.projects) && report.config.projects.length === 3);
+            assert.deepEqual(report.config.projects.map((project) => project.name).sort(), ['desktop', 'mobile', 'tablet']);
+            for (const project of report.config.projects) {
+              assert.equal(project.metadata.actualWorkers, 1);
+              assert.deepEqual([project.retries, project.repeatEach, project.timeout], [0, 1, 30000]);
+              assert.deepEqual(project.testMatch, ['v1-intake-current-authority.spec.ts']);
+            }
+            assert.ok(Array.isArray(report.suites) && report.suites.length === 1);
+            const suite = report.suites[0];
+            assert.equal(suite.file, 'v1-intake-current-authority.spec.ts');
+            assert.ok(!suite.suites || (Array.isArray(suite.suites) && suite.suites.length === 0));
+            assert.ok(Array.isArray(suite.specs) && suite.specs.length === 36);
+            const ids = [], assets = [];
+            mkdirSync(`${directory}/screenshots`, { recursive: true });
+            mkdirSync(`${directory}/ui-witnesses`, { recursive: true });
+            for (const spec of suite.specs) {
+              assert.equal(spec.file, suite.file);
+              assert.equal(spec.ok, true);
+              assert.deepEqual(spec.tags, []);
+              assert.ok(Array.isArray(spec.tests) && spec.tests.length === 1);
+              const execution = spec.tests[0];
+              assert.deepEqual([execution.timeout, execution.expectedStatus, execution.status], [30000, 'passed', 'expected']);
+              assert.deepEqual(execution.annotations, []);
+              assert.ok(Array.isArray(execution.results) && execution.results.length === 1);
+              const result = execution.results[0];
+              assert.equal(result.status, 'passed');
+              assert.equal(result.retry, 0);
+              assert.deepEqual(result.errors, []);
+              assert.deepEqual(result.annotations, []);
+              assert.ok(Number.isFinite(result.duration) && result.duration >= 0 && result.duration <= 30000);
+              assert.ok(Date.parse(result.startTime) >= started);
+              assert.ok(Array.isArray(result.attachments) && result.attachments.length === 3);
+              const get = (name, type) => {
+                const matches = result.attachments.filter((item) => item.name === name && item.contentType === type);
+                assert.equal(matches.length, 1);
+                return matches[0];
+              };
+              const witnessBytes = Buffer.from(get('actual-source-witness', 'application/json').body, 'base64');
+              const witness = JSON.parse(witnessBytes.toString('utf8'));
+              assert.deepEqual(witness.activity, { external: [], errors: [] });
+              assert.deepEqual(witness.accessibility_violations, []);
+              assert.equal(witness.no_document_overflow, true);
+              assert.equal(witness.final.canonical_unchanged, true);
+              assert.equal(witness.final.caller_authority, 'NOT_MODELED_BY_SAMPLE_OPERATIONS');
+              assert.equal(witness.caller_authority, 'NATIVE_SQL_SCOPE_ONLY_NOT_SAMPLE_UI');
+              const png = Buffer.from(get('current-ui-state', 'image/png').body, 'base64');
+              assert.ok(png.subarray(0, 8).equals(Buffer.from('89504e470d0a1a0a', 'hex')));
+              assert.ok(png.subarray(-12).equals(Buffer.from('0000000049454e44ae426082', 'hex')));
+              const { data, info } = await sharp(png, { failOn: 'warning', limitInputPixels: 40_000_000 }).raw().toBuffer({ resolveWithObject: true });
+              assert.ok(info.width > 0 && info.height > 0 && data.length === info.width * info.height * info.channels);
+              const trace = artifact(get('trace', 'application/zip').path, `${directory}/results`);
+              assert.ok(trace.subarray(0, 4).equals(Buffer.from('504b0304', 'hex')));
+              const id = `${execution.projectName}::${spec.title}`;
+              ids.push(id);
+              const index = String(ids.length).padStart(2, '0');
+              writeFileSync(`${directory}/screenshots/${index}.png`, png);
+              writeFileSync(`${directory}/ui-witnesses/${index}.json`, witnessBytes);
+              assets.push({ id, png_sha256: hash(png), width: info.width, height: info.height, witness_sha256: hash(witnessBytes), trace_sha256: hash(trace) });
+            }
+            assert.deepEqual(ids.sort(), browserIds);
+            assert.equal(new Set(ids).size, 36);
+            return { cases: 36, full_identity_sha256: hash(JSON.stringify(browserIds)), raw_sha256: hash(bytes), assets, caller_authority: false, scope: 'ORDINARY_UI_SOURCE_CONTEXT_AND_SAMPLE_ASSIGNEE_GUARD_ONLY', genuine_auth: false, operational_acceptance: false };
+          }
+          mkdirSync(directory, { recursive: true });
+          const before = { ...snapshot(), started_epoch_ms: Date.now() };
+          writeFileSync(`${directory}/before.json`, JSON.stringify(before));
+          const commands = [];
+          function run(name, args, extra = {}) {
+            const result = spawnSync(process.execPath, args, { env: { ...process.env, ...extra }, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], maxBuffer: 32 * 1024 * 1024 });
+            writeFileSync(`${directory}/${name}.stdout`, result.stdout ?? '');
+            writeFileSync(`${directory}/${name}.stderr`, result.stderr ?? '');
+            commands.push({ name, args, exit_code: result.status, signal: result.signal, error: result.error?.message ?? null });
+            return result.status === 0 && !result.error;
+          }
+          try {
+            for (const [name, args] of [
+              ['typecheck', ['node_modules/typescript/bin/tsc', '--noEmit']],
+              ['types', ['scripts/generate-db-types.mjs', '--check']],
+              ['lint', ['node_modules/eslint/bin/eslint.js', native, nativeConfig, browser, harness]],
+              ['format', ['node_modules/prettier/bin/prettier.cjs', '--check', ...owned]],
+              ['features', ['scripts/feature-evidence.mjs', '--check']],
+            ]) assert.equal(run(name, args), true, `${name} failed`);
+            if (scope === 'native') {
+              assert.equal(process.env.EV_TEST_PG_CI, 'true');
+              assert.equal(process.env.CI, 'true');
+              assert.equal(run('collection', ['node_modules/vitest/vitest.mjs', 'list', '--config', nativeConfig, '--configLoader', 'runner', '--staticParse=false', '--json']), true);
+              const collected = JSON.parse(readFileSync(`${directory}/collection.stdout`, 'utf8'));
+              assert.ok(Array.isArray(collected) && collected.length === 21);
+              assert.deepEqual(collected.map((row) => row.name).sort(), nativeIds);
+              for (const row of collected) assert.equal(resolve(row.file), resolve(native));
+              const passed = run('native', ['node_modules/vitest/vitest.mjs', 'run', '--config', nativeConfig, '--configLoader', 'runner', '--maxWorkers=1', '--retry=0', '--testTimeout=30000', '--hookTimeout=30000', '--reporter=json', `--outputFile=${directory}/native.json`]);
+              const proof = validateNative(readFileSync(`${directory}/native.json`), before.started_epoch_ms);
+              writeFileSync(`${directory}/native-verification.json`, JSON.stringify(proof));
+              assert.equal(passed, true, 'Required native denial failed; preserve ordinary FAIL and raw SQL witnesses');
+              assert.equal(proof.failed.length, 0);
+            } else {
+              const runner = 'test-results/v1-intake-current-authority.config.mts';
+              mkdirSync('test-results', { recursive: true });
+              writeFileSync(runner, `import { defineConfig, devices } from '@playwright/test'; export default defineConfig({testDir:${JSON.stringify(resolve('tests/browser'))},testMatch:'v1-intake-current-authority.spec.ts',timeout:30000,expect:{timeout:5000},workers:1,retries:0,fullyParallel:false,outputDir:${JSON.stringify(resolve(directory, 'results'))},reporter:[['json',{outputFile:${JSON.stringify(resolve(directory, 'browser.json'))}}]],use:{trace:'on'},projects:[{name:'desktop',use:{...devices['Desktop Chrome']}},{name:'tablet',use:{...devices['iPad Mini'],defaultBrowserType:'chromium'}},{name:'mobile',use:{...devices['iPhone 13'],defaultBrowserType:'chromium'}}]});`);
+              writeFileSync(`${directory}/executed-runner.config.mts`, readFileSync(runner));
+              assert.equal(run('browser', ['node_modules/@playwright/test/cli.js', 'test', `--config=${runner}`]), true);
+              writeFileSync(`${directory}/browser-verification.json`, JSON.stringify(await validateBrowser(readFileSync(`${directory}/browser.json`), before.started_epoch_ms)));
+            }
+          } catch (error) {
+            process.exitCode = 1;
+            writeFileSync(`${directory}/failure.json`, JSON.stringify({ message: error.message, stack: error.stack, scope, no_retry: true }));
+            console.error(error);
+          } finally {
+            if (scope === 'native') {
+              try {
+                writeFileSync(`${directory}/raw-native-preservation.json`, JSON.stringify(preserveRawNative()));
+              } catch (error) {
+                process.exitCode = 1;
+                writeFileSync(`${directory}/raw-native-preservation-error.json`, JSON.stringify({ message: error.message, validation: 'RAW_UNVALIDATED_COPY_FAILED' }));
+              }
+            }
+            writeFileSync(`${directory}/commands.json`, JSON.stringify(commands));
+            writeFileSync(`${directory}/final-git-status.txt`, execFileSync('git', ['status', '--porcelain', '--untracked-files=all'], { encoding: 'utf8' }));
+            const final = { ...snapshot(), started_epoch_ms: before.started_epoch_ms };
+            assert.deepEqual(final, before);
+            writeFileSync(`${directory}/final.json`, JSON.stringify({ ...final, unchanged: true, execution_exit_code: process.exitCode ?? 0 }));
+          }
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: intake-current-authority-${{ matrix.scope }}-${{ github.sha }}
+          path: artifacts/cycle33/v1-intake-current-authority-${{ matrix.scope }}/
+          if-no-files-found: error
