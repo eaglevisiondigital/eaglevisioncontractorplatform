@@ -2476,3 +2476,12 @@ while inspecting scope, so its local review input survives. Match the original c
 scope and current visit list; source changes withhold the inspector until explicit
 refresh. No new financial projection, policy, business writer or approval inference.
 Intake SQL, D1–D3/A01–A12 and recovery acceptance remain separately held.
+
+### Lean cycle 4: inspect property history while reviewing an existing plan
+
+Compose the original maintenance staff read, Field visit projection and customer-safe
+published report view inside the existing handoff. Keep plan-only evidence separate
+from other plans at the same exact property. Plan/record revisions must remain current;
+report completeness, service completion and purpose-specific consent are not inferred.
+Disclosure and report filtering never create an attempt, visit, enrollment or renewal.
+Original scheduling/UNKNOWN custody, approval, SQL, design and release controls are unchanged.

@@ -9,6 +9,7 @@ import {
   type ScheduleCandidate,
   type ScheduleReview,
 } from '../../lib/maintenance-schedule-handoff';
+import { MaintenancePlanHistory } from './MaintenancePlanHistory';
 import { useResource } from '../forms-state';
 import './maintenance-schedule-handoff.css';
 
@@ -370,6 +371,22 @@ export function MaintenanceScheduleHandoffPreview({
                         Review current scheduling evidence
                       </button>
                     </>
+                  )}
+                  {selected.plans.find((p) => p.id === planId) && (
+                    <MaintenancePlanHistory
+                      key={JSON.stringify([
+                        selected.source,
+                        planId,
+                        selected.plans.find((p) => p.id === planId)!.revision,
+                      ])}
+                      repo={repo}
+                      org={company.id}
+                      actor={actor}
+                      source={selected.source}
+                      recordRevision={selected.record.revision}
+                      plan={selected.plans.find((p) => p.id === planId)!}
+                      proposedDate={date}
+                    />
                   )}
                   {review && !outcome && (
                     <section
