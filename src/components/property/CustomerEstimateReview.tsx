@@ -6,6 +6,7 @@ import type {
   PreviewReviewChoice,
 } from '../../lib/customer-preview';
 import { CustomerReviewPreference } from './CustomerReviewPreference';
+import { CustomerIssuedSourceHistory } from './CustomerIssuedSourceHistory';
 
 /** Shared safe review presentation; caller supplies the synthetic-only decision operation. */
 export function CustomerEstimateReview({
@@ -14,6 +15,7 @@ export function CustomerEstimateReview({
   onRespond,
   onViewReports,
   changeRequests = false,
+  sourceHistory,
   onReconcile,
 }: {
   data: ReturnType<CustomerPortalPreviewModel['read']>;
@@ -26,6 +28,7 @@ export function CustomerEstimateReview({
   ): Promise<unknown>;
   onViewReports(reportId: string | null): void;
   changeRequests?: boolean;
+  sourceHistory?: () => ReturnType<CustomerPortalPreviewModel['read']>;
   onReconcile?(version: string): Promise<unknown>;
 }) {
   const [consent, setConsent] = useState(false);
@@ -144,6 +147,13 @@ export function CustomerEstimateReview({
               <time dateTime={r.scope.expires_on}>{r.scope.expires_on}</time>.
               Proposed scope only; this is not an amount due.
             </p>
+            {sourceHistory && (
+              <CustomerIssuedSourceHistory
+                data={data}
+                versionId={r.version_id}
+                read={sourceHistory}
+              />
+            )}
             <dl>
               {r.scope.lines.map((l) => (
                 <div className="customer-scope-line" key={l.id}>

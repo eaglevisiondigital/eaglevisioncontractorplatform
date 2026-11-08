@@ -9,6 +9,7 @@ on:
       - 'tests/*workflow*'
       - 'tests/*cycle6*'
       - 'tests/browser/cycle6*'
+      - 'tests/browser/property-journey.spec.ts'
       - 'tests/program/playwright.cycle6*'
       - '.github/workflows/cycle6-journey.yml'
 permissions:
@@ -35,11 +36,13 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npx playwright test -c tests/program/playwright.cycle6.config.ts --workers=2
       - run: npx playwright test -c tests/program/playwright.cycle6-off.config.ts --workers=2
+      - run: npx playwright test tests/browser/property-journey.spec.ts --project=desktop --project=tablet --project=mobile --workers=2
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: cycle6-synthetic-workflow-evidence
           path: |
             artifacts/cycle6/*.png
+            artifacts/property/*issued-source*.png
             test-results/
           retention-days: 7

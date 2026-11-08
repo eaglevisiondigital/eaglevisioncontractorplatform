@@ -742,6 +742,7 @@ function ConceptExperience({
                     : data.reviews,
                 }}
                 changeRequests={historySearch}
+                sourceHistory={historySearch ? () => model.read() : undefined}
                 busy={busy}
                 onRespond={(version, choice, consent, note) =>
                   historySearch

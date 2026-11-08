@@ -6,6 +6,139 @@ import {
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { mkdir } from 'node:fs/promises';
+import { sampleCompanies } from '../../src/domain/platform';
+
+for (const company of sampleCompanies)
+  test(`issued source documentation preserves unfinished review / ${company.slug}`, async ({
+    page,
+  }, info) => {
+    await page.goto('/preview/property-portal');
+    await contractor(page, company.id);
+    await page
+      .getByRole('button', { name: 'Property reports', exact: true })
+      .click();
+    const history = page.getByRole('region', {
+      name: 'Published inspection history',
+    });
+    const report = history.locator('article').filter({
+      has: page.getByRole('button', {
+        name: 'Review related repair scope',
+        exact: true,
+      }),
+    });
+    const reportId = await report.getAttribute('data-report-id');
+    const reportVersion = await report.getAttribute('data-report-version');
+    await report
+      .getByRole('button', { name: 'Review related repair scope', exact: true })
+      .click();
+    const review = page.getByRole('region', {
+      name: 'Customer estimate review',
+      exact: true,
+    });
+    await expect(review.locator(':scope > article')).toHaveCount(1);
+    const estimate = review.locator(':scope > article');
+    const issuedId = await estimate.getAttribute('data-version-id');
+    await estimate
+      .getByRole('button', { name: 'Request changes version 2', exact: true })
+      .click();
+    const form = estimate.getByRole('form', {
+      name: 'Request changes version 2',
+      exact: true,
+    });
+    const note = form.getByRole('textbox', { name: 'Requested changes' });
+    const text =
+      'Please review the seal dimensions against the original inspection.';
+    await note.fill(text);
+    const confirmation = form.getByRole('checkbox', {
+      name: 'Confirm this is a synthetic review only',
+      exact: true,
+    });
+    await confirmation.check();
+    const disclosure = estimate.getByText(
+      'Inspect published source documentation',
+      { exact: true },
+    );
+    await disclosure.focus();
+    await page.keyboard.press('Enter');
+    const source = estimate.getByRole('region', {
+      name: 'Issued estimate published source',
+      exact: true,
+    });
+    const sourceReport = source.locator('article');
+    await expect(sourceReport).toHaveAttribute('data-report-id', reportId!);
+    await expect(sourceReport).toHaveAttribute(
+      'data-report-version',
+      reportVersion!,
+    );
+    await expect(source).toContainText(company.name);
+    await expect(source).toContainText(
+      'neither proves customer approval, completed repairs or an invoice',
+    );
+    await expect(estimate).toHaveAttribute('data-version-id', issuedId!);
+    await expect(note).toHaveValue(text);
+    await expect(confirmation).toBeChecked();
+    await expect(review).toContainText('Review status: Awaiting your review');
+    await expect(
+      review.getByText(
+        'Synthetic preference recorded for this exact issued version.',
+        { exact: true },
+      ),
+    ).toHaveCount(0);
+    await expect(source).not.toContainText(
+      /INTERNAL|unit_cost_minor|payroll|markup|internal_notes/,
+    );
+    expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
+    await mkdir('artifacts/property', { recursive: true });
+    await estimate.screenshot({
+      path: `artifacts/property/issued-source-${info.project.name}-${company.slug}.png`,
+    });
+    await disclosure.focus();
+    await page.keyboard.press('Enter');
+    await expect(source).toHaveCount(0);
+    await expect(note).toHaveValue(text);
+    await expect(confirmation).toBeChecked();
+    await form
+      .getByRole('button', { name: 'Cancel preference', exact: true })
+      .click();
+    await page
+      .getByRole('button', { name: 'Show all issued estimates', exact: true })
+      .click();
+    const original = review.locator(':scope > article').filter({
+      has: page.getByText('Issued estimate · Version 1', { exact: true }),
+    });
+    await original
+      .getByText('Inspect published source documentation', { exact: true })
+      .click();
+    const missing = original.getByRole('region', {
+      name: 'Issued estimate published source',
+      exact: true,
+    });
+    await expect(missing).toContainText('UNKNOWN');
+    await expect(missing.locator('article')).toHaveCount(0);
+    await page
+      .getByRole('combobox', { name: 'Your property', exact: true })
+      .selectOption({ label: '200 Synthetic Garden Lane' });
+    await page
+      .getByRole('button', { name: 'Estimates & repairs', exact: true })
+      .click();
+    await expect(review).toContainText(
+      'No authorized estimate is available for this property.',
+    );
+    await expect(
+      page.getByRole('region', {
+        name: 'Issued estimate published source',
+        exact: true,
+      }),
+    ).toHaveCount(0);
+    await expect(
+      page.getByRole('textbox', { name: 'Requested changes' }),
+    ).toHaveCount(0);
+  });
 
 test('property journey joins check-in history, exact repair scope and review-only preferences', async ({
   page,

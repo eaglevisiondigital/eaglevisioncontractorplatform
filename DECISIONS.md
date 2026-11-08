@@ -2495,3 +2495,14 @@ Sales consumers, source pins or business writers. A missing relationship is UNKN
 not a reason to find another job or use a newer draft. Review remains default-off,
 local and read-only; customer acceptance, agreement execution, job authorization,
 work completion and financial issuance retain their original independent boundaries.
+
+### Lean cycle 6: inspect published documentation without leaving customer review
+
+Add an opt-in disclosure only in the approved synthetic portal's existing estimate
+review. Match the authorized issued projection to its unique published report and
+finding, then reuse the original report projection and renderer. Load the disclosure
+only when opened; keep the original preference form mounted. Missing/stale bindings
+display UNKNOWN without selecting another report or changing a preference. Original
+readers, response/UNKNOWN custody, server authorization, SQL and release gates stay
+unchanged. Extend the existing integration job with the affected portal journey;
+retain every original assertion and budget, with no new validation framework.
