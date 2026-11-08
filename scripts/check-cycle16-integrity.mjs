@@ -1,3 +1,7 @@
+import {
+  validateFieldPublishedSource,
+  readSource as readFieldSource,
+} from './v1-field-source-admission.mjs';
 import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -37,7 +41,7 @@ export function validateCycle16Manifest(manifest, read = readCycle13File) {
       ).packages.flatMap((p) => p.owned_files.map((f) => f.path)),
     ),
   );
-  const verify = (files, expected, commit) => {
+  const verify = (files, expected, commit, pkg) => {
     const remaining = new Set(expected);
     if (files.length !== remaining.size)
       throw Error('Exact finite author files required');
@@ -48,6 +52,24 @@ export function validateCycle16Manifest(manifest, read = readCycle13File) {
         throw Error(`Reviewed Cycle16 source changed: ${file.path}`);
       const bytes = Buffer.from(read(file.path));
       const currentHash = createHash('sha256').update(bytes).digest('hex');
+      if (file.path === 'src/lib/workflows/daily-field-guide.ts') {
+        try {
+          validateFieldPublishedSource(file, bytes, pkg, {
+            read: (path) =>
+              read === readCycle13File &&
+              path === '.github/workflows/v1-daily-field-final-authority.yml'
+                ? readFieldSource(path)
+                : read(path),
+          });
+        } catch (cause) {
+          throw Error(`Reviewed Cycle16 source changed: ${file.path}`, {
+            cause,
+          });
+        }
+        remaining.delete(file.path);
+        prior.add(file.path);
+        continue;
+      }
       if (
         currentHash !== file.sha256 ||
         (file.path === 'src/lib/workflows/addon-readiness-guide.ts' &&
@@ -122,6 +144,7 @@ export function validateCycle16Manifest(manifest, read = readCycle13File) {
         `docs/program/CYCLE16_${module.replaceAll('-', '_').toUpperCase()}.md`,
       ],
       p.head_commit,
+      p,
     );
   }
   if (!/^[a-f0-9]{40}$/.test(manifest.independent_review_commit))
