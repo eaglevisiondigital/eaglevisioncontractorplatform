@@ -127,7 +127,7 @@ async function fixture(brand: number): Promise<Fixture> {
     company.industry,
     owner,
   ]);
-  await call(db, 'configure_company', [org, 'active', 'synthetic', {}, null]);
+  await call(db, 'configure_company', [org, 'active', 'pilot', {}, null]);
   await db.exec('reset role');
   await db.query(
     "insert into public.memberships(organization_id,user_id,role,staff_type) values($1,$2,'staff','estimator'),($1,$3,'staff','field_staff')",
@@ -494,7 +494,7 @@ for (const brand of [0, 1, 2]) {
           await call(owner, 'configure_company', [
             f.org,
             'active',
-            'synthetic',
+            'pilot',
             { intake: false },
             null,
           ]);

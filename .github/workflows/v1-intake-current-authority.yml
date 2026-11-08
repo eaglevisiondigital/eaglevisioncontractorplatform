@@ -1,9 +1,9 @@
-name: Intake current-authority native and UI controls
+name: Intake native fixture correction exact-source controls
 on:
   push:
-    branches: ['codex/v1-intake-current-authority']
+    branches: ['codex/v1-intake-native-fixture-correction']
   pull_request:
-    branches: ['codex/v1-customer-cost-continuity']
+    branches: ['codex/v1-intake-current-authority']
     paths: ['.github/workflows/v1-intake-current-authority.yml']
 permissions:
   contents: read
@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        scope: [native, browser]
+        scope: [native]
     services:
       postgres:
         image: ${{ matrix.scope == 'native' && 'postgres:17' || '' }}
@@ -52,18 +52,21 @@ jobs:
           import { resolve, relative, isAbsolute } from 'node:path';
           import sharp from 'sharp';
           import { trackedSnapshot } from './scripts/v1-hygiene-integration.mjs';
-          const parent = '112110e30bd7b0400b96f75e26d12bffd70bea57';
+          const parent = '4596e0215514367dfe92ab0e7ba7863cce75546b';
+          const originalParent = '112110e30bd7b0400b96f75e26d12bffd70bea57';
           const native = 'tests/database/v1-intake-current-authority.spec.ts';
           const nativeConfig = 'tests/program/vitest.v1-intake-native.config.ts';
           const browser = 'tests/browser/v1-intake-current-authority.spec.ts';
           const harness = 'tests/browser/fixtures/v1-intake-current-authority-harness.tsx';
           const doc = 'docs/program/V1_INTAKE_CURRENT_AUTHORITY.md';
           const workflow = '.github/workflows/v1-intake-current-authority.yml';
-          const owned = [native, nativeConfig, browser, harness, doc, workflow];
+          const originalOwned = [native, nativeConfig, browser, harness, doc, workflow];
+          const correctionNote = 'docs/program/V1_INTAKE_NATIVE_FIXTURE_CORRECTION.md';
+          const owned = [native, workflow, correctionNote];
           const candidate = process.env.CANDIDATE_HEAD;
           const scope = process.env.INTAKE_SCOPE;
-          assert.ok(['native', 'browser'].includes(scope));
-          const directory = `artifacts/cycle33/v1-intake-current-authority-${scope}`;
+          assert.equal(scope, 'native');
+          const directory = `artifacts/cycle33/v1-intake-native-fixture-correction-${scope}`;
           const hash = (value) => createHash('sha256').update(value).digest('hex');
           const git = (...args) => execFileSync('git', ['--no-replace-objects', ...args], { encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 }).trim();
           const nativeTitles = [
@@ -88,7 +91,14 @@ jobs:
           function snapshot() {
             assert.match(candidate ?? '', /^[a-f0-9]{40}$/);
             assert.equal(git('show', '-s', '--format=%P', candidate), parent);
-            assert.deepEqual(git('diff-tree', '--no-commit-id', '--name-status', '-r', candidate).split('\n').sort(), owned.map((path) => `A\t${path}`).sort());
+            assert.equal(git('show', '-s', '--format=%P', parent), originalParent);
+            assert.deepEqual(git('diff-tree', '--no-commit-id', '--name-status', '-r', parent).split('\n').sort(), originalOwned.map((path) => `A\t${path}`).sort());
+            assert.deepEqual(git('diff-tree', '--no-commit-id', '--name-status', '-r', candidate).split('\n').sort(), [`M\t${native}`, `M\t${workflow}`, `A\t${correctionNote}`].sort());
+            const originalNative = execFileSync('git', ['--no-replace-objects', 'show', `${parent}:${native}`]);
+            assert.equal(originalNative.toString('utf8').split("'synthetic'").length - 1, 2);
+            const correctedNative = Buffer.from(originalNative.toString('utf8').replaceAll("'synthetic'", "'pilot'"));
+            assert.ok(readFileSync(native).equals(correctedNative));
+            for (const path of [browser, harness, doc, nativeConfig]) assert.ok(readFileSync(path).equals(execFileSync('git', ['--no-replace-objects', 'show', `${parent}:${path}`])));
             const checkout = git('rev-parse', 'HEAD');
             if (process.env.GITHUB_ACTIONS === 'true') assert.equal(process.env.GITHUB_SHA, checkout);
             const tree = git('rev-parse', `${candidate}^{tree}`);
@@ -96,8 +106,8 @@ jobs:
             if (checkout !== candidate) assert.equal(git('show', '-s', '--format=%P', checkout), `${parent} ${candidate}`);
             for (const path of owned) assert.equal(git('ls-tree', candidate, '--', path).split(/\s+/)[0], '100644');
             const files = trackedSnapshot();
-            assert.equal(Object.keys(files).length, 2199);
-            return { candidate, checkout, parent, tree, files, scope, operational_acceptance: false, genuine_auth: false };
+            assert.equal(Object.keys(files).length, 2200);
+            return { candidate, checkout, parent, original_parent: originalParent, tree, files, scope, operational_acceptance: false, genuine_auth: false };
           }
           function artifact(path, base) {
             const full = resolve(path), rel = relative(resolve(base), full);
@@ -322,6 +332,6 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: intake-current-authority-${{ matrix.scope }}-${{ github.sha }}
-          path: artifacts/cycle33/v1-intake-current-authority-${{ matrix.scope }}/
+          name: intake-native-fixture-correction-${{ matrix.scope }}-${{ github.sha }}
+          path: artifacts/cycle33/v1-intake-native-fixture-correction-${{ matrix.scope }}/
           if-no-files-found: error
