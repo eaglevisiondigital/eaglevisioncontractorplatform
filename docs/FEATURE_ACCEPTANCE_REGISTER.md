@@ -1648,3 +1648,33 @@ private folders/consumed attempts untouched. No physical replay or new case. No
 merge/deploy/hosted mutation/adapter/restoration/payment/invoice/message/dispatch.
 Release1.0 NOT READY / NOT AUTHORIZED; all original P1/customer14/4B/Auth/MFA/NMI/
 recovery/financial/security/design/production gates remain.
+
+## Field-only V1 continuation; intake security prerequisite held
+
+The bounded successor composes exact PR312, source admission317 and inventory318
+on frozen PR316 `676e12fd14f75f754a19bf5606a935456853a783`; original author
+branches remain unchanged. Main admits only the finite reviewed Field/test-source
+successors and routes original C22/C23 Sales consumers through existing exact source
+validators. No protected historical pin or application assertion is replaced.
+See `docs/program/V1_FIELD_INTAKE_VALIDATION.md` and its exact source manifest.
+
+PR319 UI36 passed separately. Corrected PR320 `a4619725029fab4ca6f958f981cda1b020368e06`
+shows 15 PASS / 6 FAIL in each native hosted event: after committed caller/module
+withdrawal during an exact row-lock wait, the original SQL assignment still writes.
+Synthetic PG17/JWT evidence is not genuine hosted Auth or a PR313 UI defect. PR313
+is HELD and excluded; no SQL fix, historical migration edit or waiver is made.
+Independent raw/source audit SHA256:
+`71928bb01e083fe00969ae84d3b9a5601a3a7640f83eaee32472ef8751ebabcc`.
+
+PR316 retains25 successful workflows and2 provider45-minute Foundation cancellations,
+with incomplete default units and skipped recovery/staging/default browser acceptance.
+New independent missing-coverage jobs and incremental observations do not relabel
+those cancellations or historical305/270 evidence. New exact-head execution remains
+PENDING until recorded; collection and local tests are not hosted acceptance.
+
+All25 feature baseline identities/statuses remain. D1's11 personnel assignments and
+actual installed writer/bypass inventory remain UNASSIGNED/UNVERIFIED; D2/D3 separate,
+A01–A12 NOT_RUN. Preserve owner-witnessed main synthetic loss PASS only and duplicate
+UNKNOWN/UNVERIFIED with both private folders untouched. No hosted mutation, merge,
+deployment, operational adapter/restoration, payment, invoice, message or dispatch.
+Release1.0 remains NOT READY / NOT AUTHORIZED.
