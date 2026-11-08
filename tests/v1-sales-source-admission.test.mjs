@@ -4,6 +4,7 @@ import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
+import { tmpdir } from 'node:os';
 import {
   admitSalesSuccessor,
   validateSalesPublishedSource,
@@ -254,7 +255,7 @@ test(titles[37], () =>
   ),
 );
 function fixture(run) {
-  const root = mkdtempSync('/private/tmp/propel-sales-source-fixture-'),
+  const root = mkdtempSync(join(tmpdir(), 'propel-sales-source-fixture-')),
     env = {
       ...process.env,
       GIT_CONFIG_GLOBAL: '/dev/null',
