@@ -2837,3 +2837,13 @@ A01–A12 NOT_RUN. Preserve owner-witnessed main synthetic loss PASS only and du
 UNKNOWN/UNVERIFIED with both private folders untouched. No hosted mutation, merge,
 deployment, operational adapter/restoration, payment, invoice, message or dispatch.
 Release1.0 remains NOT READY / NOT AUTHORIZED.
+
+## Lean cycle 1: recorded inspection-week navigation
+
+The existing Field inspection schedule now offers recorded Monday–Sunday week
+filters and previous/next week navigation, retaining property/responsibility/status
+filters and clearing old detail. Canonical records, source-opening checks, default-OFF
+gates and approved styles are unchanged. See the focused Field tests and PR evidence.
+Intake313 remains excluded: assign_intake checks authority before its row-lock wait.
+A forward SQL correction needs separate review/authorization; no SQL was executed.
+D1 eleven roles unassigned; D2/D3 separate; A01–A12 NOT RUN. Release1.0 NOT READY / NOT AUTHORIZED.
