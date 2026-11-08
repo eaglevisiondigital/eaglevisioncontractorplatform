@@ -280,3 +280,98 @@ for (const org of [
     await expect(page.locator('.field-source')).toHaveCount(0);
   });
 }
+
+for (const org of [
+  'sample-property',
+  'sample-construction',
+  'sample-roofing',
+]) {
+  test(`property service history preserves ${org} schedule context`, async ({
+    page,
+  }) => {
+    await page.goto('/preview/field-scheduling');
+    await page
+      .getByRole('combobox', { name: 'Company context' })
+      .selectOption(org);
+    await expect(page.locator('.field-visit')).toHaveCount(1);
+    await page
+      .getByText('Development-only examples & states', { exact: true })
+      .click();
+    await page
+      .getByRole('button', {
+        name: 'Prepare synthetic follow-up example',
+        exact: true,
+      })
+      .click();
+    await expect(page.locator('.field-visit')).toHaveCount(5);
+    await page.getByLabel('From date', { exact: true }).fill('2026-11-20');
+    await page.getByLabel('Through date', { exact: true }).fill('2026-11-20');
+    await expect(page.locator('.field-visit')).toHaveCount(1);
+    await page
+      .getByRole('button', { name: 'Inspect exact visit', exact: true })
+      .click();
+    const original = await page.locator('.field-source dd').first().innerText();
+    const history = page.getByRole('region', {
+      name: 'Recorded property service history',
+    });
+    const visit = history.getByRole('button', {
+      name: 'Inspect recorded visit 2026-11-13',
+      exact: true,
+    });
+    await expect(visit).toBeEnabled();
+    await expect(
+      history.getByRole('button', { name: /2026-11-07/ }),
+    ).toHaveCount(0);
+    await visit.focus();
+    await page.keyboard.press('Enter');
+    await expect(page.locator('.field-source')).toBeFocused();
+    await expect(page.locator('.field-source dd').first()).not.toHaveText(
+      original,
+    );
+    await expect(page.locator('.field-visit')).toHaveCount(1);
+    await expect(page.getByLabel('From date', { exact: true })).toHaveValue(
+      '2026-11-20',
+    );
+    await expect(page.getByLabel('Through date', { exact: true })).toHaveValue(
+      '2026-11-20',
+    );
+    const report = history.getByRole('button', {
+      name: 'Open 2026-11-13 report v1',
+      exact: true,
+    });
+    await report.click();
+    await expect(
+      page.getByRole('heading', {
+        name: 'Exact published source',
+        exact: true,
+      }),
+    ).toBeVisible();
+    await expect(page.locator('.field-source')).toContainText('2026-11-13');
+    await expect(page.locator('.field-source')).not.toContainText('PRIVATE');
+    await expect(report).toBeDisabled();
+    expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
+    await history
+      .getByRole('button', {
+        name: 'Inspect recorded visit 2026-11-20',
+        exact: true,
+      })
+      .click();
+    await expect(page.locator('.field-source dd').first()).toHaveText(original);
+    await page
+      .getByRole('button', { name: 'Close source detail', exact: true })
+      .click();
+    await expect(page.locator('.field-visit')).toHaveCount(1);
+    await page
+      .getByRole('combobox', { name: 'Company context' })
+      .selectOption(
+        org === 'sample-property' ? 'sample-construction' : 'sample-property',
+      );
+    await expect(history).toHaveCount(0);
+    await expect(page.getByLabel('From date', { exact: true })).toHaveValue('');
+  });
+}

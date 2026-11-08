@@ -2374,3 +2374,85 @@ security review and separate forward-SQL authorization; do not edit historical
 migrations or assume this candidate alone closes the race. Existing PR320 evidence
 remains15 PASS/6 FAIL per event; no SQL or new acceptance case executed here.
 All original recovery, P1/customer14/4B, MFA/Auth/NMI and release restrictions persist.
+
+### Lean intake correction: exact forward proposal, not authorized or executed
+
+PR320 at a461972 preserves 15 PASS / 6 FAIL in both native events. Do not
+repeat that diagnosis or edit the frozen Phase2 migration. Proposed scope is only
+the existing private.assign_intake body, signature, owner, public invoker wrapper,
+ACLs and private.can policy unchanged. No migration or SQL adapter is added here.
+The following is a review candidate, not executable project setup or acceptance:
+
+```sql
+create or replace function private.assign_intake(
+  p_org uuid, p_id uuid, p_assignee uuid, p_status text
+) returns void language plpgsql volatile security definer set search_path='' as $$
+ declare v_actor uuid := auth.uid(); v_locked integer; v_expected integer;
+ begin
+  if current_setting('transaction_isolation') <> 'read committed' then
+   raise exception 'Read committed required' using errcode='0A000';
+  end if;
+  if not private.can(p_org,'intake') then
+   raise exception 'Access denied' using errcode='42501';
+  end if;
+  perform 1 from public.intake_requests
+   where organization_id=p_org and id=p_id for update;
+  if not found then raise exception 'Request unavailable'; end if;
+  perform 1 from public.organizations where id=p_org for share;
+  if not found then raise exception 'Access denied' using errcode='42501'; end if;
+  perform 1 from public.memberships
+   where organization_id=p_org and (user_id=v_actor or user_id=p_assignee)
+   order by user_id for share;
+  get diagnostics v_locked = row_count;
+  v_expected := case when p_assignee is null or p_assignee=v_actor then 1 else 2 end;
+  if v_locked <> v_expected then
+   raise exception 'Authority unavailable' using errcode='42501';
+  end if;
+  perform 1 from public.company_modules
+   where organization_id=p_org and module='intake' for share;
+  if not found or auth.uid() is distinct from v_actor then
+   raise exception 'Access denied' using errcode='42501';
+  end if;
+  if not private.can(p_org,'intake') then
+   raise exception 'Access denied' using errcode='42501';
+  end if;
+  if p_assignee is not null and not exists(
+   select 1 from public.memberships
+    where organization_id=p_org and user_id=p_assignee and active
+  ) then raise exception 'Assignee unavailable'; end if;
+  update public.intake_requests
+   set assigned_to=p_assignee,status=p_status,updated_at=now()
+   where organization_id=p_org and id=p_id;
+  if not found then raise exception 'Request unavailable'; end if;
+ end
+$$;
+```
+
+Proposed serialization: request lock first, then organization, ordered caller/assignee
+membership rows and intake-module SHARE locks, then fresh authorization statements.
+Every required authority row must actually be locked (missing row/count denies);
+authenticated actor is pinned. Authority rows stay locked until transaction end. A withdrawal committed during the
+request wait must be seen and denied; a later conflicting withdrawal must wait until
+assignment commits or aborts. SHARE (not KEY SHARE) covers non-key active/role/module
+updates. This follows PostgreSQL17 [explicit locking](https://www.postgresql.org/docs/17/explicit-locking.html)
+and [application consistency](https://www.postgresql.org/docs/17/applevel-consistency.html).
+The READ COMMITTED precondition prevents using a retained older transaction snapshot.
+
+Before approving a forward replacement, independently verify this order against
+private.manage_member (organization then membership), private.configure_company
+(organization then modules/membership), all actual writers/bypasses and multi-command
+transactions. In particular, a transaction holding organization authority before
+request assignment can deadlock against request-first acquisition. Pre-held reverse
+locks/multi-command use are not accepted until that inventory and ordering are proven;
+the proposed function alone does not establish this prerequisite. Native tests must
+cover both orderings with original budgets, no hang and no unauthorized commit.
+Deadlock/serialization/connection-loss outcomes must not auto-retry;
+UNKNOWN remains exact read-only reconciliation. Preserve original PR320 21 identities,
+including six ordinary required-denial failures and all 15 successes; add post-lock
+revocation, assignee withdrawal, organization suspension, isolation rejection, opposite
+lock order, tenant denial and retained UNKNOWN cases using the same native harness.
+Those corrected SQL cases are NOT RUN here: no protected SQL change, installation or
+execution is authorized. This does not supply genuine session/Auth/MFA acceptance,
+global writer custody, operational receipt or durable recovery guarantees. Intake313
+remains held. Actual owner approval and independent review of the final forward SQL,
+its exact hash and disposable-only execution scope are required before implementation.

@@ -26,7 +26,7 @@ import { useResource } from '../forms-state';
 import { PlatformBrand } from '../PlatformBrand';
 import { maintenanceScheduleHandoffEnabled } from '../../lib/maintenance-schedule-handoff';
 import { fieldWorkOrdersEnabled } from '../../lib/field-work-orders';
-import { scheduleWeek } from './schedule-week';
+import { propertyVisitHistory, scheduleWeek } from './schedule-week';
 const FieldWorkOrdersPreview = lazy(() =>
   import('./FieldWorkOrdersPreview').then((m) => ({
     default: m.FieldWorkOrdersPreview,
@@ -183,6 +183,10 @@ function Schedule({
       ? scheduleWeek(weekAnchor, offset as -1 | 0 | 1)
       : null,
   );
+  const history =
+    selected && available
+      ? propertyVisitHistory(resource.data!.rows, selected.row.source)
+      : [];
   const showWeek = (range: ReturnType<typeof scheduleWeek>) => {
     if (!range) return;
     setFilters((current) => ({ ...current, ...range }));
@@ -605,6 +609,66 @@ function Schedule({
                   {selected.row.source.location_id}
                 </dd>
               </dl>
+              <section aria-label="Recorded property service history">
+                <h3>Recorded visits at this property</h3>
+                <p>
+                  Browse available visits and published reports for this exact
+                  customer and property. Schedule filters stay selected. These
+                  records do not verify physical completion or complete history.
+                </p>
+                <ul>
+                  {history.map((row) => (
+                    <li key={row.source.visit_id}>
+                      <time dateTime={row.date}>{row.date}</time> · {row.status}
+                      <div className="field-card-actions">
+                        <button
+                          className="secondary"
+                          disabled={
+                            row.source.visit_id ===
+                              selected.row.source.visit_id &&
+                            !selected.published
+                          }
+                          onClick={() =>
+                            open(() =>
+                              openFieldSource(
+                                repo,
+                                company.id,
+                                actor,
+                                row.source,
+                              ),
+                            )
+                          }
+                        >
+                          Inspect recorded visit {row.date}
+                        </button>
+                        {row.reports.map((report) => (
+                          <button
+                            className="secondary"
+                            key={report.id}
+                            disabled={
+                              selected.published?.id === report.id &&
+                              selected.published.version === report.version
+                            }
+                            onClick={() =>
+                              open(() =>
+                                openFieldSource(
+                                  repo,
+                                  company.id,
+                                  actor,
+                                  row.source,
+                                  report,
+                                ),
+                              )
+                            }
+                          >
+                            Open {row.date} report v{report.version}
+                          </button>
+                        ))}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </section>
               {selected.published ? (
                 <>
                   <dl>

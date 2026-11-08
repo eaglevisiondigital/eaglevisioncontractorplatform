@@ -1,6 +1,10 @@
 import { Temporal } from '@js-temporal/polyfill';
 import { maintenanceDate } from '../../domain/property/maintenance';
-import type { FieldFilters } from '../../lib/field-scheduling';
+import type {
+  FieldFilters,
+  FieldVisitReference,
+  FieldVisitRow,
+} from '../../lib/field-scheduling';
 
 /** Presentation filters over recorded property dates, never a planned shift. */
 export function scheduleWeek(
@@ -23,4 +27,21 @@ export function scheduleWeek(
   } catch {
     return null;
   }
+}
+
+/** Exact-property browsing over existing rows; never infer missing service history. */
+export function propertyVisitHistory(
+  rows: FieldVisitRow[],
+  selected: FieldVisitReference,
+): FieldVisitRow[] {
+  if (
+    !rows.some((row) => JSON.stringify(row.source) === JSON.stringify(selected))
+  )
+    return [];
+  return rows.filter(
+    (row) =>
+      row.source.organization_id === selected.organization_id &&
+      row.source.customer_id === selected.customer_id &&
+      row.source.location_id === selected.location_id,
+  );
 }

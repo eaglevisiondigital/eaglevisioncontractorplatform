@@ -2847,3 +2847,13 @@ gates and approved styles are unchanged. See the focused Field tests and PR evid
 Intake313 remains excluded: assign_intake checks authority before its row-lock wait.
 A forward SQL correction needs separate review/authorization; no SQL was executed.
 D1 eleven roles unassigned; D2/D3 separate; A01–A12 NOT RUN. Release1.0 NOT READY / NOT AUTHORIZED.
+
+## Lean cycle 1 continuation: Field property history
+
+Existing Field source detail now opens other recorded visits/published reports for
+the exact company/customer/property without resetting schedule dates or filters.
+Every open reuses the current canonical source checks; no history store, route,
+authorization change or completion inference. Approved CSS/artwork remain untouched.
+DECISIONS contains the precise unexecuted intake SQL candidate for separate review
+and authorization; PR320 six failures remain open, not repaired by this UI work.
+D1 unassigned; D2/D3 separate; A01–A12 NOT RUN. Release1.0 NOT READY / NOT AUTHORIZED.
