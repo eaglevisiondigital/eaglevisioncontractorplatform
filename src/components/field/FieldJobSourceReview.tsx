@@ -14,12 +14,13 @@ type Props = {
   actor: string;
   reference: FieldVisitReference;
   scope: MarginScope;
+  initiallyOpen?: boolean;
   onVisit(reference: FieldVisitReference): void;
 };
 
 /** A source inspector inside the existing cost review, never another workspace. */
 export function FieldJobSourceReview(props: Props) {
-  const [shown, setShown] = useState(false);
+  const [shown, setShown] = useState(props.initiallyOpen === true);
   return (
     <>
       <button

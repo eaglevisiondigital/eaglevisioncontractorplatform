@@ -3,6 +3,100 @@ import AxeBuilder from '@axe-core/playwright';
 import { sampleCompanies } from '../../src/domain/platform';
 
 for (const company of sampleCompanies)
+  test(`Sales issued scope and job plan retain agreement context / ${company.slug}`, async ({
+    page,
+  }, info) => {
+    await page.goto('/preview/contractor-journey');
+    await page
+      .getByRole('combobox', { name: 'Contractor', exact: true })
+      .selectOption(company.id);
+    const confirmation = page.getByLabel(
+      'I confirm this disposable local simulation; no contract, dispatch, invoice or message is authorized.',
+    );
+    await confirmation.check();
+    await page
+      .getByRole('button', { name: 'Prepare local synthetic journey' })
+      .click();
+    const context = page.getByRole('region', {
+      name: 'Exact shared journey context',
+    });
+    await expect(context).toBeVisible();
+    const originalContext = await context.innerText();
+    const originalJob = await context
+      .locator('dt')
+      .filter({ hasText: /^Job$/ })
+      .locator('+ dd')
+      .innerText();
+    await page
+      .getByRole('button', { name: 'Review exact lead and issued estimate' })
+      .click();
+    const sales = page.getByRole('region', {
+      name: 'Lead to contract preparation',
+      exact: true,
+    });
+    const retainedCheck = sales.getByRole('checkbox').first();
+    await retainedCheck.check();
+    const planning = page.getByRole('region', {
+      name: 'Sales issued scope and job planning',
+      exact: true,
+    });
+    await planning
+      .getByRole('button', {
+        name: 'Review issued estimate & job plan',
+        exact: true,
+      })
+      .click();
+    const source = planning.getByRole('region', {
+      name: 'Issued estimate and job source review',
+    });
+    await expect(
+      source.getByRole('heading', { name: 'Original issued job scope' }),
+    ).toBeVisible();
+    await expect(source.getByText(originalJob, { exact: false })).toBeVisible();
+    const version = await source
+      .locator('dt')
+      .filter({ hasText: 'Issued version ID / number' })
+      .locator('+ dd')
+      .innerText();
+    expect(originalContext).toContain(version.split(' / ')[0]);
+    const originalSelection = await planning.getByRole('status').innerText();
+    await source
+      .locator('button:not(:disabled)')
+      .filter({ hasText: /^Inspect job visit / })
+      .first()
+      .click();
+    await expect(planning.getByRole('status')).not.toHaveText(
+      originalSelection,
+    );
+    await expect(
+      source.getByRole('heading', { name: 'Original issued job scope' }),
+    ).toBeVisible();
+    await expect(retainedCheck).toBeChecked();
+    expect(await context.innerText()).toBe(originalContext);
+    await expect(
+      sales.getByRole('region', {
+        name: 'Linked staff contract review snapshot',
+        exact: true,
+      }),
+    ).toHaveCount(0);
+    expect(
+      (await new AxeBuilder({ page }).include('#journey-sales').analyze())
+        .violations,
+    ).toEqual([]);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= window.innerWidth + 1,
+      ),
+    ).toBe(true);
+    await planning.screenshot({
+      path: `artifacts/cycle6/sales-job-plan-${info.project.name}-${company.slug}.png`,
+    });
+    await confirmation.uncheck();
+    await expect(planning).toHaveCount(0);
+    await expect(context).toHaveCount(0);
+  });
+
+for (const company of sampleCompanies)
   test(`existing-engine journey / ${company.slug}`, async ({ page }, info) => {
     const external: string[] = [];
     page.on('request', (r) => {

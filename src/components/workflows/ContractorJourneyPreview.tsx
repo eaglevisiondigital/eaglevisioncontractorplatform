@@ -7,6 +7,7 @@ import {
   type LocalJourney,
 } from '../../lib/workflows/journey-runtime';
 import { SalesWorkflow } from './SalesWorkflow';
+import { SalesJobPlanningReview } from './SalesJobPlanningReview';
 import { FieldWorkflow } from './FieldWorkflow';
 import { FinanceWorkflow } from './FinanceWorkflow';
 import { CustomerWorkflow } from './CustomerWorkflow';
@@ -446,6 +447,11 @@ export function ContractorJourneyPreview() {
               enabled
             />
             <SalesDesk sources={journey} enabled />
+            <SalesJobPlanningReview
+              key={'job-planning-' + journey.intake_request_id}
+              sources={journey}
+              enabled
+            />
           </section>
           <section id="journey-field" className="journey-card">
             <h2>2 · Work order, crew & field documentation</h2>
