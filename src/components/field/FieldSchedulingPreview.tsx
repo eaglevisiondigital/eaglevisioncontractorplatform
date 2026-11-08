@@ -32,6 +32,7 @@ import {
   fieldVisitCostScope,
   fieldVisitMarginReader,
 } from './field-service-review';
+import { FieldJobSourceReview } from './FieldJobSourceReview';
 import { PropertyReportHistory } from '../property/PropertyReportHistory';
 import { propertyVisitHistory, scheduleWeek } from './schedule-week';
 const JobMarginAnalysis = lazy(() =>
@@ -803,6 +804,18 @@ function Schedule({
                       this property.
                     </p>
                   )}
+                  <FieldJobSourceReview
+                    repo={repo}
+                    org={company.id}
+                    actor={actor}
+                    reference={selected.row.source}
+                    scope={costScope}
+                    onVisit={(reference) =>
+                      open(() =>
+                        openFieldSource(repo, company.id, actor, reference),
+                      )
+                    }
+                  />
                   <Suspense
                     fallback={
                       <p role="status">Loading existing job cost review…</p>

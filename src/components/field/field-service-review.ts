@@ -2,11 +2,14 @@ import type { PropertyRepository } from '../../lib/property';
 import {
   openFieldOrigin,
   openFieldSource,
+  readFieldSchedule,
   type FieldVisitReference,
 } from '../../lib/field-scheduling';
 import {
   readFieldWorkOrders,
   openFieldWorkOrder,
+  fieldWorkOrderBinding,
+  type WorkOrder,
 } from '../../lib/field-work-orders';
 import { projectPublishedHistory } from '../../domain/property/report-page';
 import { LocalJobMarginReader } from '../../lib/job-margin-analysis';
@@ -52,12 +55,12 @@ export function fieldServiceDocumentation(
 }
 
 /** Navigation only. The existing margin reader retains financial authorization. */
-export async function fieldVisitCostScope(
+async function fieldVisitJobSource(
   repo: PropertyRepository,
   org: string,
   actor: string,
   ref: FieldVisitReference,
-): Promise<MarginScope | null> {
+): Promise<{ scope: MarginScope; order: WorkOrder } | null> {
   openFieldSource(repo, org, actor, ref);
   const jobId = repo.read(org).plans.find((p) => p.id === ref.plan_id)?.job_id;
   if (!jobId) return null;
@@ -92,15 +95,129 @@ export async function fieldVisitCostScope(
   )
     throw Error('Exact job source changed');
   return {
+    order: current,
+    scope: {
+      organizationId: org,
+      jobId,
+      jobRevision: current.source.job_revision,
+      estimateId: current.source.estimate_id,
+      issuedVersionId: current.source.issued_version_id,
+      customerId: ref.customer_id,
+      propertyId: current.baseline_property?.id ?? null,
+      currency: job.baseline.currency,
+    },
+  };
+}
+
+/** Existing cost-navigation contract remains unchanged. */
+export async function fieldVisitCostScope(
+  repo: PropertyRepository,
+  org: string,
+  actor: string,
+  ref: FieldVisitReference,
+): Promise<MarginScope | null> {
+  return (await fieldVisitJobSource(repo, org, actor, ref))?.scope ?? null;
+}
+
+/** Inspect only the issued producer source matching the cost review already open. */
+export async function fieldVisitIssuedJobSource(
+  repo: PropertyRepository,
+  org: string,
+  actor: string,
+  ref: FieldVisitReference,
+  scope: MarginScope,
+) {
+  const source = await fieldVisitJobSource(repo, org, actor, ref);
+  if (!source) throw Error('Issued job source UNKNOWN');
+  assertFieldIssuedJobSource(repo, org, actor, ref, scope, source.order);
+  return source.order;
+}
+
+/** Synchronous render/navigation fence over original canonical objects, no authority renewal. */
+export function assertFieldIssuedJobSource(
+  repo: PropertyRepository,
+  org: string,
+  actor: string,
+  ref: FieldVisitReference,
+  scope: MarginScope,
+  order: WorkOrder,
+) {
+  fieldWorkOrderBinding(repo, org, actor, order);
+  openFieldSource(repo, org, actor, ref);
+  const job = repo.estimates.syntheticJob(org, order.source.job_id);
+  const state = repo.read(org);
+  const plan = state.plans.find((p) => p.id === ref.plan_id);
+  if (
+    !job ||
+    plan?.job_id !== job.id ||
+    job.lock_revision !== order.source.job_revision ||
+    job.baseline.issued_version_id !== order.source.issued_version_id
+  )
+    throw Error('Issued job source changed. Refresh the original review.');
+  const expected: MarginScope = {
     organizationId: org,
-    jobId,
-    jobRevision: current.source.job_revision,
-    estimateId: current.source.estimate_id,
-    issuedVersionId: current.source.issued_version_id,
+    jobId: order.source.job_id,
+    jobRevision: order.source.job_revision,
+    estimateId: order.source.estimate_id,
+    issuedVersionId: order.source.issued_version_id,
     customerId: ref.customer_id,
-    propertyId: current.baseline_property?.id ?? null,
+    propertyId: order.baseline_property?.id ?? null,
     currency: job.baseline.currency,
   };
+  const keys = Object.keys(expected) as (keyof MarginScope)[];
+  const descriptors = Object.getOwnPropertyDescriptors(scope);
+  if (
+    Object.getPrototypeOf(scope) !== Object.prototype ||
+    Reflect.ownKeys(scope).length !== keys.length ||
+    keys.some(
+      (key) =>
+        !descriptors[key] ||
+        !('value' in descriptors[key]) ||
+        descriptors[key].value !== expected[key],
+    ) ||
+    order.customer.id !== ref.customer_id ||
+    order.source.organization_id !== ref.organization_id ||
+    (order.baseline_property !== null &&
+      order.baseline_property.id !== ref.location_id) ||
+    JSON.stringify(order.scope) !==
+      JSON.stringify(
+        job.baseline.lines.map((line) => ({
+          id: line.id,
+          description: line.description,
+          quantity_milli: line.quantity_milli,
+          unit: line.unit,
+        })),
+      )
+  )
+    throw Error('Exact issued source/cost identity required');
+  const rows = readFieldSchedule(repo, org, actor).rows.filter(
+    (row) =>
+      row.source.customer_id === ref.customer_id &&
+      row.source.location_id === ref.location_id &&
+      state.plans.some(
+        (p) => p.id === row.source.plan_id && p.job_id === job.id,
+      ),
+  );
+  const visits = order.visits.filter(
+    (v) =>
+      v.customer_id === ref.customer_id && v.location_id === ref.location_id,
+  );
+  if (
+    rows.length !== visits.length ||
+    visits.some(
+      (v) =>
+        !rows.some(
+          (row) =>
+            row.source.visit_id === v.id &&
+            row.source.visit_revision === v.revision &&
+            row.source.plan_id === v.plan_id &&
+            row.source.plan_revision === v.plan_revision &&
+            row.date === v.date &&
+            row.status === v.status,
+        ),
+    )
+  )
+    throw Error('Recorded job visits changed. Refresh the original review.');
 }
 
 /** Keep the original visit relationship current across the existing financial read. */
