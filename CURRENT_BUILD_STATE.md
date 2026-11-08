@@ -2912,3 +2912,15 @@ estimates never acquire a relationship from nearby property history. No new writ
 route, store, approval flow, CSS or artwork. Phase A/overview remain unchanged.
 Intake SQL, D1–D3, A01–A12, recovery and release restrictions remain held.
 Release1.0 NOT READY / NOT AUTHORIZED.
+
+## Lean cycle 7: Owner cost evidence and exact Finance continuation
+
+The existing Business Copilot/daily-review workspace can open the original job-cost
+inspector beside its priorities and continue to that exact job's Finance review.
+Daily filters, transcript input and optional margin-review input remain mounted.
+Reuse original job/visit admission and financial readers, with current-source checks
+around every read and before navigation. Missing labor coverage stays UNKNOWN with
+totals withheld; review never posts costs, issues invoices or consumes a Copilot
+attempt. No ranking engine, store, writer, route, protected pin or design change.
+Intake SQL, D1–D3, A01–A12, recovery and all release restrictions remain unchanged.
+Release1.0 NOT READY / NOT AUTHORIZED.
