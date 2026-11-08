@@ -1,5 +1,8 @@
 import { expect, it } from 'vitest';
-import { scheduleWeek } from '../src/components/field/schedule-week';
+import {
+  propertyVisitHistory,
+  scheduleWeek,
+} from '../src/components/field/schedule-week';
 import { sampleCompanies } from '../src/domain/platform';
 import { Operations } from '../src/lib/operations';
 import { PropertyRepository } from '../src/lib/property';
@@ -84,5 +87,44 @@ it.each(sampleCompanies.map((c) => c.id))(
     ).toBe(true);
     expect(visible[0].source).toBe(original.source);
     expect(JSON.stringify(repo.read(id))).toBe(before);
+  },
+);
+
+it.each(sampleCompanies.map((c) => c.id))(
+  'retains exact authorized property-history references for %s',
+  async (id) => {
+    const company = sampleCompanies.find((c) => c.id === id)!;
+    const repo = new PropertyRepository(new Operations(true));
+    await repo.initialize(company);
+    await repo.refreshContexts(id);
+    const model = readFieldSchedule(repo, id, id + '-owner');
+    const selected = model.rows[0];
+    const other = structuredClone(selected);
+    other.source.location_id += '-other';
+    const foreign = structuredClone(selected);
+    foreign.source.organization_id += '-other';
+    const customer = structuredClone(selected);
+    customer.source.customer_id += '-other';
+    const rows = [...model.rows, other, foreign, customer];
+    const before = JSON.stringify(rows);
+    const history = propertyVisitHistory(rows, selected.source);
+    expect(history).toContain(selected);
+    expect(history).not.toContain(other);
+    expect(history).not.toContain(foreign);
+    expect(history).not.toContain(customer);
+    expect(history[0]).toBe(selected);
+    expect(
+      propertyVisitHistory(rows, {
+        ...selected.source,
+        visit_revision: selected.source.visit_revision + 1,
+      }),
+    ).toEqual([]);
+    expect(
+      propertyVisitHistory(rows, {
+        ...selected.source,
+        plan_revision: selected.source.plan_revision + 1,
+      }),
+    ).toEqual([]);
+    expect(JSON.stringify(rows)).toBe(before);
   },
 );
