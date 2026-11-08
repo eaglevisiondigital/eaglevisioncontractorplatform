@@ -1,10 +1,10 @@
 {
   "schema": "propel-v1-integration-scorecard-v1",
   "authority": "REGISTER_PROJECTION_NOT_BUSINESS_STATE",
-  "source_baseline": "a415bb4b35ff9e5727ce4f1a05a8f7f00def8bbc",
+  "source_baseline": "d8d85760f9188d83a631328d9211421470002e8a",
   "genuine_A01_A12": "NOT_RUN",
   "release": "NOT_READY_NOT_AUTHORIZED",
-  "new_head_ci": "PENDING_PREPUBLICATION",
+  "new_head_ci": "PENDING_SOURCE_BOUND_EXECUTION",
   "features": [
     {
       "id": "SEC-001",
@@ -346,6 +346,214 @@
       "final_source_cleanliness": "FAIL",
       "final_tracked_source": "UNKNOWN",
       "exclusive_cause": "UNKNOWN"
+    }
+  },
+  "validation_dimensions": {
+    "SEC-001": {
+      "local_baseline": "partial",
+      "hosted_baseline": "blocked",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED"
+    },
+    "SEC-002": {
+      "local_baseline": "partial",
+      "hosted_baseline": "blocked",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED"
+    },
+    "CRM-001": {
+      "local_baseline": "partial",
+      "hosted_baseline": "not_accepted",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED",
+      "parallel_draft_evidence": {
+        "pr": 313,
+        "head": "112110e30bd7b0400b96f75e26d12bffd70bea57",
+        "local": "15_PASS_AFTER_SCOPED_SIX_FAILURE_REPRODUCTION",
+        "hosted": "DEDICATED_15_PASS_EACH_EVENT_INDEPENDENTLY_AUDITED",
+        "included_in_this_candidate": false,
+        "scope": "SAME_COMPANY_PENDING_FILTER_PAGE_AFFORDANCES_NOT_AUTH_ACCEPTANCE",
+        "source_bindings_each": 2193,
+        "independent_main_audit_sha256": "c837b48295b4513753d58eb0e5960f4580d43f9f43520bed3894204e9f22d9b6"
+      }
+    },
+    "EST-001": {
+      "local_baseline": "partial",
+      "hosted_baseline": "not_accepted",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED"
+    },
+    "EST-002": {
+      "local_baseline": "partial",
+      "hosted_baseline": "blocked",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED"
+    },
+    "SAL-001": {
+      "local_baseline": "partial",
+      "hosted_baseline": "not_accepted",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED",
+      "retained_scoped_author_evidence": {
+        "head": "76fc6f212d2391b000fc22280ad7dcb4d6582772",
+        "local": "23_PASS_AFTER_11_PASS_12_FAIL_ORIGINAL_SOURCE_RED",
+        "hosted": "DEDICATED_23_PASS_EACH_EVENT",
+        "integration": "C8_SOURCE_ADMISSION_FAILURES_PRESERVED_SEPARATELY",
+        "genuine_customer_agreement": "UNVERIFIED"
+      }
+    },
+    "FLD-001": {
+      "local_baseline": "partial",
+      "hosted_baseline": "not_accepted",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED"
+    },
+    "FLD-002": {
+      "local_baseline": "partial",
+      "hosted_baseline": "not_accepted",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED",
+      "parallel_draft_evidence": {
+        "pr": 312,
+        "head": "d977c78991aefed65f28fb643c30f92e5ecc6f7c",
+        "local": "21_PASS_AFTER_9_PASS_12_FAIL_PARENT_SOURCE",
+        "hosted": "DEDICATED_21_PASS_EACH_EVENT",
+        "included_in_this_candidate": false,
+        "legacy_C16_source_admission": "CLOSED"
+      }
+    },
+    "FIN-001": {
+      "local_baseline": "partial",
+      "hosted_baseline": "blocked",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED"
+    },
+    "FIN-002": {
+      "local_baseline": "partial",
+      "hosted_baseline": "not_accepted",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED"
+    },
+    "CUS-001": {
+      "local_baseline": "partial",
+      "hosted_baseline": "not_accepted",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED"
+    },
+    "CUS-002": {
+      "local_baseline": "none",
+      "hosted_baseline": "not_accepted",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED"
+    },
+    "GRO-001": {
+      "local_baseline": "none",
+      "hosted_baseline": "not_accepted",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED"
+    },
+    "GRO-002": {
+      "local_baseline": "none",
+      "hosted_baseline": "not_accepted",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED"
+    },
+    "AI-001": {
+      "local_baseline": "none",
+      "hosted_baseline": "not_accepted",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED"
+    },
+    "INT-001": {
+      "local_baseline": "partial",
+      "hosted_baseline": "not_accepted",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED"
+    },
+    "UX-001": {
+      "local_baseline": "partial",
+      "hosted_baseline": "not_accepted",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED"
+    },
+    "OPS-001": {
+      "local_baseline": "partial",
+      "hosted_baseline": "blocked",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED"
+    },
+    "PLT-001": {
+      "local_baseline": "partial",
+      "hosted_baseline": "not_accepted",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED"
+    },
+    "DOC-001": {
+      "local_baseline": "partial",
+      "hosted_baseline": "blocked",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED"
+    },
+    "MAT-001": {
+      "local_baseline": "partial",
+      "hosted_baseline": "not_accepted",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED"
+    },
+    "JOB-001": {
+      "local_baseline": "partial",
+      "hosted_baseline": "not_accepted",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED"
+    },
+    "WRK-001": {
+      "local_baseline": "partial",
+      "hosted_baseline": "not_accepted",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED"
+    },
+    "COM-001": {
+      "local_baseline": "partial",
+      "hosted_baseline": "blocked",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED"
+    },
+    "QA-001": {
+      "local_baseline": "partial",
+      "hosted_baseline": "not_accepted",
+      "operational": "NOT_RUN",
+      "current_combined_head": "PENDING_SOURCE_BOUND_EXECUTION",
+      "scope": "ORIGINAL_BASELINE_NO_GLOBAL_COMPLETENESS_INFERRED",
+      "retained_scoped_hygiene_evidence": {
+        "head": "d8d85760f9188d83a631328d9211421470002e8a",
+        "local": "19_PASS_2189_SOURCE_BINDINGS",
+        "hosted": "DEDICATED_19_PASS_EACH_EVENT",
+        "scope": "EXACT_HYGIENE_COMPOSITION_NOT_FOUNDATION"
+      }
     }
   }
 }

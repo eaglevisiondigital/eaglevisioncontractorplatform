@@ -120,3 +120,69 @@ and consumed attempts untouched. Prepare remaining original physical cases only 
 the existing kit's prerequisites; no retry, reset, credential retrieval or new run.
 Release1.0 remains **NOT READY / NOT AUTHORIZED**. No merges, deployments, hosted
 mutations, operational restoration, payment, invoice issuance, sending or dispatch.
+
+## Declared first-slice SQL inventory for the next D1 return
+
+This is an exhaustive list of the **26 function declarations in the two existing
+forward proposal files below**, not a claim about a live catalog or all transitive
+writers. Both files and the ownership proposal remain unchanged. The target-side
+inventory cannot be completed from source or synthetic fixtures. It requires its
+actual owner, independently reviewed target evidence and separate action authority;
+this package retrieves no credentials and performs no hosted inspection.
+
+| Unchanged source                                | SHA256                                                             | Declarations                  |
+| ----------------------------------------------- | ------------------------------------------------------------------ | ----------------------------- |
+| `server/customer/requests.proposed.sql`         | `6178cee11c81593e3a90d0ef75f6194835019112877f50fc6eb5e692768d44af` | 17                            |
+| `server/customer/broker.proposed.sql`           | `c32d2fa0df717780f6ca8c9a3b88376c6cac408e6c51576175cb929b9ef9f4cb` | 9                             |
+| `server/customer/broker-ownership.proposed.sql` | `bfa30994ad6a4758aa074bc4315b41b9d14499f96d23bad4d61b505fffedb425` | 0; ownership/grant dependency |
+
+Within `private`, the request proposal declares: `customer_request_body`,
+`customer_request_roles_ok`, `customer_request_principal_integrity`,
+`customer_request_principal`, `customer_request_reference`, `customer_request_claim`,
+`customer_request_exact`, `customer_decision_integrity`, `customer_request_receipt_row`,
+`customer_record_review_request`, `customer_record_decision`,
+`customer_review_request_receipt`, `customer_change_request_queue` and
+`customer_review_request_status`. The remaining three are the original `public`
+invoker wrappers `customer_review_request_status`, `customer_review_request_receipt`
+and `customer_change_request_queue`; no API execution grant follows from their names.
+
+The broker proposal declares nine `private` functions: `customer_broker_endpoint`,
+`customer_broker_identity`, `customer_broker_runtime_role`,
+`customer_broker_role_review`, `customer_broker_transaction`,
+`customer_broker_admit`, `customer_broker_claim_integrity`, `customer_broker_receipt`
+and `customer_broker_staff_read`.
+
+The direct insert owners are finite: registrar `customer_broker_admit` inserts
+`customer_request_principals` and `customer_broker_admissions`; independent issuer
+`customer_request_claim` inserts `customer_request_intents` and creates/restricts the
+original claim-sequence authority; canonical `customer_record_review_request`
+spends `nextval(c.burn_sequence)` before mutation and inserts
+`customer_review_decisions` and `customer_request_outcomes` together. The
+legacy `customer_record_decision` delegates to that canonical writer. Principal
+revocation, direct DML, sequence manipulation, disabled/replaced triggers and owner
+or admin privileges remain explicit bypass inventory obligations. Reader volatility
+or a lock is not itself proof of a new business mutation or operational authority.
+
+The source declares six relevant private tables across this composition:
+`customer_request_principals`, `customer_broker_admissions`,
+`customer_request_intents`, `customer_request_outcomes`,
+`customer_review_decisions` and original `customer_estimate_access`. Audit and
+immutability hooks, principal-integrity/revocation audit, decision-integrity and
+broker-claim triggers must be matched to installed definitions and owners, including
+dynamically declared triggers. No source scanner certifies those installed objects.
+
+Ten directly referenced external private helpers require transitive ownership and
+writer/bypass review: `audit_change`, `can`, `customer_estimate_review`,
+`customer_issued_review`, `customer_portal_guard`, `customer_runtime_guard`,
+`est_object`, `property_connected_session`, `property_guard` and `release_immutable`.
+The DBA must also enumerate their transitive SQL/Auth/session/membership/source and
+publication writers, installers, effective/default privileges and owner/trigger
+bypasses. The real independent fence, backup, key, restoration and quarantine writers
+are still **NOT IDENTIFIED**. All eleven D1 appointments remain **UNASSIGNED**.
+
+The smallest owner return remains the existing single D1 form: choose the genuine
+command family and actor; assign all eleven accountable people/delegates and allowed
+combinations; return the actual installed writer/bypass inventory and its independent
+completeness review. Staff inquiry assignment has no original immutable receipt and
+cannot silently substitute for the original customer review-request command.
+D2/D3 and A01–A12 remain separate, unresolved acceptance requirements.

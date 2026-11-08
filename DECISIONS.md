@@ -2306,3 +2306,28 @@ inventory UNVERIFIED; D2/D3 separate; A01–A12 NOT RUN. Main synthetic owner-wi
 loss PASS only, duplicate UNKNOWN/UNVERIFIED, both private folders/consumed attempts
 untouched. Release1.0 NOT READY / NOT AUTHORIZED. No merge/deploy/hosted mutation/
 operational restoration/payment/invoice issuance/communication/dispatch or gate change.
+
+### Exact Sales and Finance source successor
+
+Frozen311 d8d85760f9188d83a631328d9211421470002e8a remains unchanged. This bounded
+local successor composes reviewed Sales310 76fc6f212d2391b000fc22280ad7dcb4d6582772
+with separately reviewed finite C8 admission, preserving original pins and exact
+Finance307 hygiene. Read docs/program/V1_SALES_FINANCE_VALIDATION.md and manifest.
+Current-head verification requires110 canonical cases, original9 operating/9Finance/
+3OFF browser cases,63 decoded PNG/source pairs and complete clean before/final maps;
+parent successes do not substitute. Original budgets/assertions stay unchanged.
+
+Foundation and historical305 dirty-path evidence remain explicitly incomplete.
+Original270 push270PASS/PR249PASS21FAIL, eighteen deadlines/three assertions,
+coarse-trace limitations and exclusive-cause UNKNOWN persist. New final status
+paths are captured before strict rejection; they cannot recreate original305.
+The25 baseline feature records remain separate from scoped local/hosted proof
+and genuine operational acceptance. D1 source inventory enumerates26 declarations,
+direct writers/wrappers and external helper dependencies; actual installed catalog
+UNVERIFIED, all eleven people UNASSIGNED, D2/D3 separate, A01–A12 NOT RUN.
+
+Owner-witnessed main synthetic loss PASS only; duplicate UNKNOWN/UNVERIFIED, both
+private folders/consumed attempts untouched. No physical replay or new case. No
+merge/deploy/hosted mutation/adapter/restoration/payment/invoice/message/dispatch.
+Release1.0 NOT READY / NOT AUTHORIZED; all original P1/customer14/4B/Auth/MFA/NMI/
+recovery/financial/security/design/production gates remain.
