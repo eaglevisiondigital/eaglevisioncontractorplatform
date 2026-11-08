@@ -206,3 +206,130 @@ test('independent handoff flag remains OFF on an otherwise enabled field preview
     page.getByRole('button', { name: 'Confirm & prepare inspection draft' }),
   ).toHaveCount(0);
 });
+
+for (const org of [
+  'sample-property',
+  'sample-construction',
+  'sample-roofing',
+]) {
+  test(`selected maintenance plan history preserves ${org} date and filters`, async ({
+    page,
+  }) => {
+    await page.goto('/preview/field-scheduling');
+    await page
+      .getByRole('combobox', { name: 'Company context' })
+      .selectOption(org);
+    const panel = page.getByRole('region', {
+      name: 'Maintenance → inspection draft',
+      exact: true,
+    });
+    await expect(
+      panel.getByRole('heading', { name: 'No published findings available' }),
+    ).toBeVisible();
+    await panel
+      .getByText('Development-only handoff examples', { exact: true })
+      .click();
+    await panel
+      .getByRole('button', {
+        name: 'Prepare synthetic source reports',
+        exact: true,
+      })
+      .click();
+    await expect(panel.locator('.handoff-sources li')).toHaveCount(3);
+    await panel
+      .getByRole('button', { name: 'Review exact finding', exact: true })
+      .first()
+      .click();
+    const plan = panel.getByRole('combobox', {
+        name: 'Same-property inspection plan',
+        exact: true,
+      }),
+      date = panel.getByLabel('Proposed inspection date', { exact: true });
+    const recurring = await plan.inputValue();
+    await date.fill('2026-11-29');
+    await panel
+      .getByText('Review selected plan history', { exact: true })
+      .click();
+    const history = panel.getByRole('region', {
+      name: 'Selected maintenance plan history',
+      exact: true,
+    });
+    await expect(history).toBeVisible();
+    await expect(history).toContainText('monthly');
+    await expect(history).toContainText(
+      '1 selected-plan visit(s); 0 selected-plan report version(s)',
+    );
+    await expect(history).toContainText(
+      'Enrollment and purpose-specific consent: UNKNOWN',
+    );
+    await expect(history).toContainText('completion remain UNKNOWN');
+    await expect(history.locator('[data-report-id]')).toHaveCount(2);
+    await expect(history).not.toContainText('2026-11-07');
+    await expect(history).not.toContainText('INTERNAL');
+    const scope = history.getByRole('combobox', {
+        name: 'Maintenance history scope',
+        exact: true,
+      }),
+      month = history.getByRole('combobox', {
+        name: 'Service month',
+        exact: true,
+      });
+    await month.selectOption('2026-11');
+    await scope.selectOption('plan');
+    await expect(history.locator('[data-report-id]')).toHaveCount(0);
+    await expect(history).toContainText('Published evidence UNKNOWN');
+    await scope.selectOption('property');
+    await expect(history.locator('[data-report-id]')).toHaveCount(2);
+    await expect(month).toHaveValue('2026-11');
+    await panel
+      .getByText('Review selected plan history', { exact: true })
+      .click();
+    await expect(history).not.toBeVisible();
+    await panel
+      .getByText('Review selected plan history', { exact: true })
+      .focus();
+    await page.keyboard.press('Enter');
+    await expect(history).toBeVisible();
+    await expect(month).toHaveValue('2026-11');
+    await date.fill('2026-11-30');
+    await expect(month).toHaveValue('2026-11');
+    await expect(scope).toHaveValue('property');
+    await expect(plan).toHaveValue(recurring);
+    const publishedPlan = (await plan
+      .getByRole('option', { name: /^Synthetic maintenance evidence/ })
+      .getAttribute('value'))!;
+    await plan.selectOption(publishedPlan);
+    await panel
+      .getByText('Review selected plan history', { exact: true })
+      .click();
+    await history
+      .getByRole('combobox', { name: 'Maintenance history scope', exact: true })
+      .selectOption('plan');
+    await expect(history.locator('[data-report-id]')).toHaveCount(2);
+    await expect(history).toContainText(publishedPlan);
+    await expect(date).toHaveValue('2026-11-30');
+    expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
+    await expect(panel.locator('.handoff-review')).toHaveCount(0);
+    await expect(panel.locator('.handoff-result')).toHaveCount(0);
+    await plan.selectOption(recurring);
+    await panel
+      .getByText('Review selected plan history', { exact: true })
+      .click();
+    await history
+      .getByRole('combobox', { name: 'Maintenance history scope', exact: true })
+      .selectOption('plan');
+    await expect(history.locator('[data-report-id]')).toHaveCount(0);
+    await expect(date).toHaveValue('2026-11-30');
+    await page
+      .getByRole('combobox', { name: 'Company context' })
+      .selectOption(
+        org === 'sample-property' ? 'sample-construction' : 'sample-property',
+      );
+    await expect(history).toHaveCount(0);
+  });
+}

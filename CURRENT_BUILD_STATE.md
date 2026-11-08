@@ -2877,3 +2877,13 @@ source fences reject changed/copy/foreign sources; newer drafts never substitute
 for the job's issued baseline. Approval, performed work and invoice readiness stay
 separate. No writer, authority, SQL, design or release-gate change.
 Release1.0 remains NOT READY / NOT AUTHORIZED.
+
+## Lean cycle 4: maintenance plan and property service history
+
+The existing maintenance scheduling review now displays selected-plan evidence and
+same-property published history through the shared report component. Source plan IDs
+stay explicit; other-plan reports do not prove service under the selected plan.
+Proposed dates and history filters survive disclosure/date changes. Stale plan or
+maintenance revisions withhold evidence; missing service, enrollment and purpose
+consent remain UNKNOWN. No scheduling command is triggered by history review.
+Intake SQL and all operational/recovery/release gates remain held. Release1.0 NOT READY / NOT AUTHORIZED.
