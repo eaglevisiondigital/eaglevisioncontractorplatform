@@ -1,0 +1,18 @@
+{
+  "schema": "propel-v1-field-source-admission-v1",
+  "parent": "d977c78991aefed65f28fb643c30f92e5ecc6f7c",
+  "runtime_author": "d977c78991aefed65f28fb643c30f92e5ecc6f7c",
+  "predecessor": "d8d85760f9188d83a631328d9211421470002e8a",
+  "publisher": "7eee0b4527646c470d3604b6d21ac7578d073fee",
+  "publisher_parent": "124a5d15e3ea755eb8a5e15f404e27b5dad3db25",
+  "logical_baseline": "b4014771050b28d1ec1dffd0fa42cb3617a5fae9",
+  "files": [
+    "scripts/v1-field-source-admission.mjs",
+    "scripts/check-cycle16-integrity.mjs",
+    "tests/v1-field-source-admission.test.mjs",
+    ".github/workflows/v1-field-source-admission.yml",
+    "docs/program/V1_FIELD_SOURCE_ADMISSION.md",
+    "docs/program/V1_FIELD_SOURCE_ADMISSION_MANIFEST.json"
+  ],
+  "authority": "SOURCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE"
+}
