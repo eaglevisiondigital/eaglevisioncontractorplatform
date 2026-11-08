@@ -2857,3 +2857,13 @@ authorization change or completion inference. Approved CSS/artwork remain untouc
 DECISIONS contains the precise unexecuted intake SQL candidate for separate review
 and authorization; PR320 six failures remain open, not repaired by this UI work.
 D1 unassigned; D2/D3 separate; A01–A12 NOT RUN. Release1.0 NOT READY / NOT AUTHORIZED.
+
+## Lean cycle 2: visit documentation and exact job-cost handoff
+
+The existing Field detail opens its exact published Passport report projection,
+including recorded checklist evidence, and returns without losing schedule filters.
+A canonical plan job link opens the existing staff-only cost review; a missing job
+stays UNKNOWN. Null baseline property stays null: job-wide costs are not attributed
+to the visit property. Existing source/financial readers and default-OFF gates apply.
+Intake SQL remains held; no SQL, writer, design or operational acceptance change.
+D1–D3/A01–A12 and recovery gates persist. Release1.0 NOT READY / NOT AUTHORIZED.

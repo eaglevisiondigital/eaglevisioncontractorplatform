@@ -2456,3 +2456,14 @@ execution is authorized. This does not supply genuine session/Auth/MFA acceptanc
 global writer custody, operational receipt or durable recovery guarantees. Intake313
 remains held. Actual owner approval and independent review of the final forward SQL,
 its exact hash and disposable-only execution scope are required before implementation.
+
+### Lean cycle 2: reuse published projections and staff-only financial review
+
+Field documentation uses the existing projectPublishedHistory/PropertyReportHistory,
+not a customer login or a new Passport. Exact origin-report identity remains distinct
+from a later follow-up visit. Existing plan.job_id and current work-order validation
+supply cost navigation; original financial source/property nulls and coverage survive.
+A narrow navigation adapter rechecks the original visit/plan binding across the
+existing financial read. No calculation, policy, canonical writer or source pin is
+changed. Financial values stay outside the customer-safe report projection. Intake
+correction and all operational/release decisions remain separately held.

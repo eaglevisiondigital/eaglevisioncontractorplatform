@@ -4,6 +4,7 @@ import {
   useCallback,
   useEffect,
   useRef,
+  useMemo,
   useState,
   type CSSProperties,
 } from 'react';
@@ -26,7 +27,18 @@ import { useResource } from '../forms-state';
 import { PlatformBrand } from '../PlatformBrand';
 import { maintenanceScheduleHandoffEnabled } from '../../lib/maintenance-schedule-handoff';
 import { fieldWorkOrdersEnabled } from '../../lib/field-work-orders';
+import {
+  fieldServiceDocumentation,
+  fieldVisitCostScope,
+  fieldVisitMarginReader,
+} from './field-service-review';
+import { PropertyReportHistory } from '../property/PropertyReportHistory';
 import { propertyVisitHistory, scheduleWeek } from './schedule-week';
+const JobMarginAnalysis = lazy(() =>
+  import('../finance/JobMarginAnalysis').then((m) => ({
+    default: m.JobMarginAnalysis,
+  })),
+);
 const FieldWorkOrdersPreview = lazy(() =>
   import('./FieldWorkOrdersPreview').then((m) => ({
     default: m.FieldWorkOrdersPreview,
@@ -157,6 +169,38 @@ function Schedule({
     (ReturnType<typeof openFieldSource> & { finding_id?: string }) | null
   >(null);
   const [message, setMessage] = useState('');
+  const [mode, setMode] = useState<'visit' | 'documentation' | 'costs'>(
+    'visit',
+  );
+  const [costScope, setCostScope] =
+    useState<Awaited<ReturnType<typeof fieldVisitCostScope>>>(null);
+  const [costBusy, setCostBusy] = useState(false);
+  const navigation = useRef(0);
+  const marginReader = useMemo(
+    () =>
+      costScope && selected
+        ? fieldVisitMarginReader(
+            repo,
+            company.id,
+            actor,
+            selected.row.source,
+            costScope,
+          )
+        : null,
+    [repo, company.id, actor, selected, costScope],
+  );
+  useEffect(
+    () => () => {
+      navigation.current++;
+    },
+    [],
+  );
+  const clearReview = () => {
+    navigation.current++;
+    setMode('visit');
+    setCostScope(null);
+    setCostBusy(false);
+  };
   const [simulatedError, setSimulatedError] = useState(false);
   const [preparing, setPreparing] = useState(false);
   const [prepared, setPrepared] = useState(false);
@@ -165,7 +209,7 @@ function Schedule({
   const detail = useRef<HTMLElement>(null);
   useEffect(() => {
     if (selected) detail.current?.focus();
-  }, [selected]);
+  }, [selected, mode]);
   let rows: FieldVisitRow[] = [],
     filterError = '';
   try {
@@ -187,37 +231,107 @@ function Schedule({
     selected && available
       ? propertyVisitHistory(resource.data!.rows, selected.row.source)
       : [];
+  let documentation: ReturnType<typeof fieldServiceDocumentation> = null;
+  if (mode === 'documentation' && selected && available) {
+    try {
+      documentation = fieldServiceDocumentation(
+        repo,
+        company.id,
+        actor,
+        selected,
+      );
+    } catch {
+      /* A changed source never retains a previous safe projection. */
+    }
+  }
   const showWeek = (range: ReturnType<typeof scheduleWeek>) => {
     if (!range) return;
     setFilters((current) => ({ ...current, ...range }));
+    clearReview();
     setSelected(null);
     setMessage('');
   };
   const update = (key: keyof typeof filters, value: string) => {
     setFilters((f) => ({ ...f, [key]: value }));
+    clearReview();
     setSelected(null);
     setMessage('');
   };
   const reload = () => {
     setSimulatedError(false);
+    clearReview();
     setSelected(null);
     setMessage('');
     resource.reload();
   };
   const open = (run: () => NonNullable<typeof selected>) => {
+    clearReview();
     try {
       setSelected(run());
       setMessage('');
     } catch (e) {
+      clearReview();
       setSelected(null);
       setMessage(e instanceof Error ? e.message : 'Source unavailable.');
     }
   };
+  function documentationReview() {
+    if (!selected) return;
+    clearReview();
+    try {
+      const reports = fieldServiceDocumentation(
+        repo,
+        company.id,
+        actor,
+        selected,
+      );
+      if (!reports) throw Error('Published documentation UNKNOWN');
+      setMode('documentation');
+      setMessage('');
+    } catch (error) {
+      setSelected(null);
+      setMessage(
+        error instanceof Error ? error.message : 'Documentation UNKNOWN',
+      );
+    }
+  }
+  async function costReview() {
+    if (!selected || costBusy) return;
+    clearReview();
+    const token = navigation.current;
+    setCostBusy(true);
+    setMessage('');
+    try {
+      const scope = await fieldVisitCostScope(
+        repo,
+        company.id,
+        actor,
+        selected.row.source,
+      );
+      if (token !== navigation.current) return;
+      if (!scope)
+        throw Error(
+          'Job-cost relationship UNKNOWN — no exact canonical job/property link.',
+        );
+      setCostScope(scope);
+      setMode('costs');
+    } catch (error) {
+      if (token !== navigation.current) return;
+      setMessage(
+        error instanceof Error
+          ? error.message
+          : 'Job-cost relationship UNKNOWN',
+      );
+    } finally {
+      if (token === navigation.current) setCostBusy(false);
+    }
+  }
   async function examples() {
     if (exampleAttempted.current) return;
     exampleAttempted.current = true;
     setAttempted(true);
     setPreparing(true);
+    clearReview();
     setSelected(null);
     setMessage('');
     try {
@@ -375,6 +489,7 @@ function Schedule({
               className="secondary"
               onClick={() => {
                 setFilters({ ...blankFieldFilters });
+                clearReview();
                 setSelected(null);
               }}
             >
@@ -585,7 +700,13 @@ function Schedule({
                     ? 'Exact published source'
                     : 'Exact inspection visit'}
                 </h2>
-                <button className="secondary" onClick={() => setSelected(null)}>
+                <button
+                  className="secondary"
+                  onClick={() => {
+                    clearReview();
+                    setSelected(null);
+                  }}
+                >
                   Close source detail
                 </button>
               </div>
@@ -609,6 +730,92 @@ function Schedule({
                   {selected.row.source.location_id}
                 </dd>
               </dl>
+              <div className="field-card-actions">
+                <button
+                  className="secondary"
+                  disabled={
+                    (!selected.published &&
+                      selected.row.reports.length !== 1) ||
+                    mode === 'documentation'
+                  }
+                  onClick={documentationReview}
+                >
+                  Review customer-safe documentation
+                </button>
+                <button
+                  className="secondary"
+                  disabled={costBusy || mode === 'costs'}
+                  onClick={() => void costReview()}
+                >
+                  {costBusy
+                    ? 'Checking exact job…'
+                    : 'Review recorded visit job costs'}
+                </button>
+                {mode !== 'visit' && (
+                  <button
+                    className="secondary"
+                    onClick={() =>
+                      open(() =>
+                        openFieldSource(
+                          repo,
+                          company.id,
+                          actor,
+                          selected.row.source,
+                        ),
+                      )
+                    }
+                  >
+                    Back to recorded visit
+                  </button>
+                )}
+              </div>
+              {!selected.published && selected.row.reports.length !== 1 && (
+                <p>
+                  Published documentation UNKNOWN — this selection has no
+                  published report.
+                </p>
+              )}
+              {mode === 'documentation' && documentation && (
+                <section aria-label="Customer-safe service documentation">
+                  <p>
+                    Existing Property Passport report projection. Recorded
+                    checklist marks are documentation, not verified physical
+                    completion, customer acceptance or payment. No customer
+                    access or publication is enabled.
+                  </p>
+                  <PropertyReportHistory
+                    reports={documentation}
+                    focusedReportId={documentation[0]?.id}
+                  />
+                </section>
+              )}
+              {mode === 'costs' && costScope && marginReader && (
+                <section aria-label="Staff-only linked job costs">
+                  <p>
+                    Staff-only review for job {costScope.jobId}. Costs do not
+                    enter customer-safe documentation. Incomplete cost coverage
+                    and invoice authority remain UNKNOWN.
+                  </p>
+                  {costScope.propertyId === null && (
+                    <p>
+                      Job baseline property UNKNOWN. The plan links this visit
+                      to the job, but these job-wide costs are not attributed to
+                      this property.
+                    </p>
+                  )}
+                  <Suspense
+                    fallback={
+                      <p role="status">Loading existing job cost review…</p>
+                    }
+                  >
+                    <JobMarginAnalysis
+                      reader={marginReader}
+                      scope={costScope}
+                      actor={actor}
+                    />
+                  </Suspense>
+                </section>
+              )}
               <section aria-label="Recorded property service history">
                 <h3>Recorded visits at this property</h3>
                 <p>
@@ -747,6 +954,7 @@ function Schedule({
             className="secondary"
             onClick={() => {
               setSimulatedError(true);
+              clearReview();
               setSelected(null);
             }}
             disabled={!available || preparing}
