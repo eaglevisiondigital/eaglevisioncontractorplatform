@@ -2506,3 +2506,13 @@ display UNKNOWN without selecting another report or changing a preference. Origi
 readers, response/UNKNOWN custody, server authorization, SQL and release gates stay
 unchanged. Extend the existing integration job with the affected portal journey;
 retain every original assertion and budget, with no new validation framework.
+
+### Lean cycle 7: reuse cost evidence inside the existing Owner review
+
+Compose the original issued-job/visit admission and canonical margin reader beside
+daily priorities. Keep the original priority order and all workspaces mounted; do
+not create recommendations or copy financial records. Guard retained reads before
+and after waits, then use the existing Finance reader and exact job context for
+explicit navigation. UNKNOWN coverage is distinct from zero cost or invoice
+readiness. Original engines, Copilot attempt custody and operational gates remain
+unchanged; no new writer, SQL or execution authority.

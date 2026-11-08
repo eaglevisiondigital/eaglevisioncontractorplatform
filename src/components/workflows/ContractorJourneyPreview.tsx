@@ -22,6 +22,7 @@ import { SalesDesk } from './SalesDesk';
 import { CompletionReview } from './CompletionReview';
 import { MaintenanceDesk } from './MaintenanceDesk';
 import { DailyOperations } from './DailyOperations';
+import { OwnerCostEvidence } from './OwnerCostEvidence';
 import {
   prepareIntelligenceWorkflow,
   inspectIntelligenceWorkflow,
@@ -162,7 +163,7 @@ export function ContractorJourneyPreview() {
     }
   }
   async function reviewFinance() {
-    if (!journey || financeBusy) return;
+    if (!journey || financeBusy) return false;
     const token = generation.current,
       j = journey;
     setFinanceBusy(true);
@@ -182,7 +183,10 @@ export function ContractorJourneyPreview() {
         },
         j.gate,
       );
-      if (generation.current === token && j.gate.confirmed) setFinance(review);
+      if (generation.current === token && j.gate.confirmed) {
+        setFinance(review);
+        return true;
+      }
     } catch {
       if (generation.current === token)
         setError(
@@ -191,6 +195,7 @@ export function ContractorJourneyPreview() {
     } finally {
       if (generation.current === token) setFinanceBusy(false);
     }
+    return false;
   }
   function invalidateIntelligence() {
     if (intelligenceGate.current) intelligenceGate.current.confirmed = false;
@@ -476,7 +481,7 @@ export function ContractorJourneyPreview() {
               enabled
             />
           </section>
-          <section id="journey-finance" className="journey-card">
+          <section id="journey-finance" className="journey-card" tabIndex={-1}>
             <h2>3 · Cost review & invoice preparation</h2>
             <button disabled={financeBusy} onClick={() => void reviewFinance()}>
               Review costs and invoice preparation
@@ -641,6 +646,16 @@ export function ContractorJourneyPreview() {
               <p role="status">Retained review: {intelligenceStatus}</p>
             )}
             <DailyOperations sources={journey} enabled />
+            <OwnerCostEvidence
+              key={'owner-cost-' + journey.intake_request_id}
+              sources={journey}
+              enabled
+              onFinance={async () => {
+                const opened = await reviewFinance();
+                if (opened) document.getElementById('journey-finance')?.focus();
+                return opened;
+              }}
+            />
           </section>
         </>
       )}

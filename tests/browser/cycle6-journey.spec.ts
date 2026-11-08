@@ -3,6 +3,139 @@ import AxeBuilder from '@axe-core/playwright';
 import { sampleCompanies } from '../../src/domain/platform';
 
 for (const company of sampleCompanies)
+  test(`owner cost evidence retains priorities and opens the exact financial review / ${company.slug}`, async ({
+    page,
+  }, info) => {
+    await page.goto('/preview/contractor-journey');
+    await page
+      .getByRole('combobox', { name: 'Contractor', exact: true })
+      .selectOption(company.id);
+    const confirmation = page.getByLabel(
+      'I confirm this disposable local simulation; no contract, dispatch, invoice or message is authorized.',
+    );
+    await confirmation.check();
+    await page
+      .getByRole('button', { name: 'Prepare local synthetic journey' })
+      .click();
+    const context = page.getByRole('region', {
+      name: 'Exact shared journey context',
+      exact: true,
+    });
+    await expect(context).toBeVisible();
+    const job = await context
+      .locator('dt')
+      .filter({ hasText: /^Job$/ })
+      .locator('+ dd')
+      .innerText();
+    const originalContext = await context.innerText();
+    const daily = page.getByRole('region', {
+      name: 'Daily operating priorities',
+      exact: true,
+    });
+    await daily
+      .getByLabel(
+        'I confirm this exact local job and day context for read-only staff review.',
+      )
+      .check();
+    await daily
+      .getByRole('button', { name: 'Review daily priorities', exact: true })
+      .click();
+    const area = daily.getByRole('combobox', {
+      name: 'Review area',
+      exact: true,
+    });
+    await expect(area).toBeVisible();
+    await area.selectOption('finance');
+    const query = daily.getByLabel('Search available cards', { exact: true });
+    await query.fill('coverage');
+    const originalPriorities = await daily
+      .locator('.daily-operations-cards')
+      .innerText();
+    await page
+      .getByLabel('Include literal voice-transcript and trade review')
+      .check();
+    const transcript = page.getByRole('textbox', {
+      name: 'Literal synthetic transcript',
+      exact: true,
+    });
+    const retainedText =
+      'Review the recorded labor coverage before planning more work.';
+    await transcript.fill(retainedText);
+    const owner = page.getByRole('region', {
+      name: 'Owner job cost evidence',
+      exact: true,
+    });
+    await owner
+      .getByRole('button', {
+        name: "Inspect this job's cost coverage",
+        exact: true,
+      })
+      .click();
+    await expect(
+      owner.getByRole('heading', { name: 'Job cost variance', exact: true }),
+    ).toBeVisible();
+    await expect(owner).toContainText(job);
+    await expect(owner).toContainText('UNKNOWN — totals withheld');
+    await expect(owner).toContainText(
+      'Missing exact issued, job or labor coverage evidence',
+    );
+    const floor = owner.getByRole('textbox', {
+      name: 'Minimum projected margin (%)',
+      exact: true,
+    });
+    await floor.fill('25.5');
+    await owner
+      .getByRole('button', { name: 'Hide owner cost details', exact: true })
+      .click();
+    await expect(floor).not.toBeVisible();
+    await owner
+      .getByRole('button', { name: 'Show owner cost details', exact: true })
+      .click();
+    await expect(floor).toHaveValue('25.5');
+    expect(
+      (
+        await new AxeBuilder({ page })
+          .include('#journey-intelligence')
+          .analyze()
+      ).violations,
+    ).toEqual([]);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth + 1,
+      ),
+    ).toBe(true);
+    await owner.screenshot({
+      path: `artifacts/cycle6/owner-cost-${info.project.name}-${company.slug}.png`,
+    });
+    await owner
+      .getByRole('button', {
+        name: "Open this job's financial review",
+        exact: true,
+      })
+      .click();
+    await expect(page.locator('#journey-finance')).toBeFocused();
+    await expect(
+      page.locator('#journey-finance').getByRole('heading', {
+        name: 'Costs, margin & invoice preparation',
+        exact: true,
+      }),
+    ).toBeVisible();
+    await expect(page.locator('#journey-finance')).toContainText('NO_GO');
+    await expect(page.locator('#journey-finance')).toContainText(job);
+    await expect(area).toHaveValue('finance');
+    await expect(query).toHaveValue('coverage');
+    expect(await daily.locator('.daily-operations-cards').innerText()).toBe(
+      originalPriorities,
+    );
+    await expect(transcript).toHaveValue(retainedText);
+    await expect(floor).toHaveValue('25.5');
+    expect(await context.innerText()).toBe(originalContext);
+    await confirmation.uncheck();
+    await expect(owner).toHaveCount(0);
+    await expect(daily).toHaveCount(0);
+  });
+
+for (const company of sampleCompanies)
   test(`Sales issued scope and job plan retain agreement context / ${company.slug}`, async ({
     page,
   }, info) => {
