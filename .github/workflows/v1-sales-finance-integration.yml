@@ -1,0 +1,70 @@
+name: V1 Sales and Finance exact-source integration
+on:
+  push:
+    branches: ['codex/v1-sales-finance-candidate']
+  pull_request:
+    branches: ['codex/v1-hygiene-integration']
+    paths: ['.github/workflows/v1-sales-finance-integration.yml']
+permissions:
+  contents: read
+concurrency:
+  group: v1-sales-finance-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  combined:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - run: npm ci
+      - run: node scripts/v1-sales-finance-integration.mjs bind
+      - name: Original source controls and unchanged quality checks
+        run: |
+          npm run typecheck
+          npm run types:check
+          npm run format:check
+          npm run features:check
+          node scripts/check-cycle17-integrity.mjs
+      - name: Current combined source admission and report controls
+        run: |
+          node --test --test-concurrency=1 --test-timeout=30000 --test-reporter=tap tests/v1-sales-source-admission.test.mjs > artifacts/cycle33/v1-sales-finance/admission.tap
+          node --test --test-concurrency=1 --test-timeout=30000 --test-reporter=tap tests/v1-sales-finance-evidence.test.mjs > artifacts/cycle33/v1-sales-finance/evidence.tap
+          node scripts/v1-sales-finance-integration.mjs controls
+      - name: Original affected canonical workflows plus reviewed Sales negatives
+        run: |
+          npx vitest run tests/cycle8-sales-desk.test.ts tests/cycle8-integration.test.ts tests/workflows/sales-workflow.test.ts tests/v1-sales-final-authority.test.ts --configLoader runner --maxWorkers=1 --retry=0 --testTimeout=30000 --hookTimeout=30000 --reporter=json --outputFile=artifacts/cycle33/v1-sales-finance/native.json
+          node scripts/v1-sales-finance-integration.mjs native
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - name: Original operating journey across brands and responsive projects
+        run: |
+          V1_SALES_FINANCE_BROWSER_MODE=operating npx playwright test -c tests/program/playwright.v1-sales-finance.config.ts
+          node scripts/v1-sales-finance-integration.mjs operating
+      - name: Original Finance PNG producers with exact hygiene
+        run: |
+          V1_SALES_FINANCE_BROWSER_MODE=finance npx playwright test -c tests/program/playwright.v1-sales-finance.config.ts
+          node scripts/v1-sales-finance-integration.mjs finance
+      - name: Original production OFF cases
+        run: |
+          V1_SALES_FINANCE_BROWSER_MODE=off npx playwright test -c tests/program/playwright.v1-sales-finance.config.ts
+          node scripts/v1-sales-finance-integration.mjs off
+          node scripts/v1-sales-finance-integration.mjs pictures
+      - if: always()
+        run: node scripts/v1-sales-finance-integration.mjs final
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v1-sales-finance-${{ github.sha }}
+          path: |
+            artifacts/cycle33/v1-sales-finance
+            artifacts/cycle8/*.png
+            artifacts/finance/*.png
+          if-no-files-found: error

@@ -1,0 +1,128 @@
+name: Exact Sales source fixture portability correction
+on:
+  push:
+    branches: ['codex/v1-sales-source-portability']
+  pull_request:
+    branches: ['codex/v1-sales-source-admission']
+    paths: ['.github/workflows/v1-sales-source-portability.yml']
+permissions:
+  contents: read
+concurrency:
+  group: sales-source-portability-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  source-portability:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+      - name: Exact M1/A2 correction, original source verifiers and same43 controls
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { execFileSync, spawnSync } from 'node:child_process';
+          import { createHash } from 'node:crypto';
+          import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+          import {
+            admitSalesSuccessor, validateTap, trackedSnapshot, paths as originalAdmissionFiles,
+            nativePath, predecessor, author, salesControlCount, salesControlIdentitySha256,
+          } from './scripts/v1-sales-source-admission.mjs';
+          const parent = 'c33886f5a6d2b234b500cf99895891baff2322c5';
+          const test = 'tests/v1-sales-source-admission.test.mjs';
+          const workflow = '.github/workflows/v1-sales-source-portability.yml';
+          const doc = 'docs/program/V1_SALES_SOURCE_PORTABILITY.md';
+          const directory = 'artifacts/cycle33/v1-sales-source-portability';
+          const git = (...args) => execFileSync('git', ['--no-replace-objects', ...args], { encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 }).trim();
+          const candidate = process.env.CANDIDATE_HEAD || git('rev-parse', 'HEAD');
+          const blob = (commit, path) => execFileSync('git', ['--no-replace-objects', 'show', commit + ':' + path]);
+          const hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
+          function snapshot() {
+            assert.match(candidate ?? '', /^[a-f0-9]{40}$/);
+            assert.equal(git('rev-list', '--parents', '-n', '1', candidate), candidate + ' ' + parent);
+            assert.equal(git('rev-list', '--parents', '-n', '1', parent), parent + ' ' + author);
+            const checkout = git('rev-parse', 'HEAD');
+            const tree = git('rev-parse', 'HEAD^{tree}');
+            assert.equal(git('rev-parse', candidate + '^{tree}'), tree);
+            if (process.env.GITHUB_ACTIONS === 'true') assert.equal(process.env.GITHUB_SHA, checkout);
+            if (checkout !== candidate) assert.deepEqual(
+              git('rev-list', '--parents', '-n', '1', checkout).split(' ').slice(1).sort(),
+              [parent, candidate].sort(),
+            );
+            assert.equal(git('diff', '--name-status', '--no-renames', parent, candidate).split('\n').sort().join('\n'), [
+              'M\t' + test, 'A\t' + workflow, 'A\t' + doc,
+            ].sort().join('\n'));
+            for (const path of [test, workflow, doc]) assert.equal(git('ls-tree', 'HEAD', '--', path).split(/\s+/)[0], '100644');
+            const original = blob(parent, test).toString();
+            const importNeedle = "import { join } from 'node:path';\n";
+            const fixtureNeedle = "mkdtempSync('/private/tmp/propel-sales-source-fixture-')";
+            assert.equal(original.split(importNeedle).length, 2);
+            assert.equal(original.split(fixtureNeedle).length, 2);
+            const expected = original.replace(importNeedle, importNeedle + "import { tmpdir } from 'node:os';\n")
+              .replace(fixtureNeedle, "mkdtempSync(join(tmpdir(), 'propel-sales-source-fixture-'))");
+            assert.equal(readFileSync(test, 'utf8'), expected);
+            for (const path of originalAdmissionFiles.filter((path) => path !== test))
+              assert.deepEqual(readFileSync(path), blob(parent, path));
+            assert.equal(salesControlCount, 43);
+            assert.equal(salesControlIdentitySha256, '0a5f147f1cf79087c34523a53fa34d28c31452bb7059f0228302574fb84066e7');
+            const pkg = JSON.parse(readFileSync('docs/program/CYCLE8_DELIVERY_INDEX.json')).packages[2];
+            const admission = admitSalesSuccessor(nativePath, readFileSync(nativePath), blob(predecessor, nativePath), pkg);
+            assert.equal(admission.business_authority, false);
+            assert.equal(admission.restore_adapter, false);
+            const files = trackedSnapshot();
+            assert.equal(Object.keys(files).length, 2188);
+            return {
+              candidate, checkout, tree, parent, runtime_author: author,
+              original_admission: parent, mechanical_test_override: 'TMPDIR_IMPORT_AND_JOIN_ONLY',
+              original_test_sha256: hash(blob(parent, test)), current_test_sha256: hash(readFileSync(test)),
+              files, business_authority: false, operational_acceptance: false, restore_adapter: false,
+            };
+          }
+          const before = { ...snapshot(), started_epoch_ms: Date.now() };
+          mkdirSync(directory, { recursive: true });
+          writeFileSync(directory + '/before.json', JSON.stringify(before, null, 2) + '\n');
+          const commands = [8, 9, 10, 11, 12].map((n) => ['C' + n, ['scripts/check-cycle' + n + '-integrity.mjs']]);
+          commands.push(['features', ['scripts/feature-evidence.mjs', '--check']]);
+          commands.push(['controls', ['--test', '--test-concurrency=1', '--test-timeout=30000', '--test-reporter=tap', test]]);
+          const results = [];
+          let status = 0;
+          try {
+            for (const [name, args] of commands) {
+              const result = spawnSync(process.execPath, args, { encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
+              const output = result.stdout ?? '';
+              writeFileSync(directory + '/' + (name === 'controls' ? 'controls.tap' : name + '.stdout'), output);
+              writeFileSync(directory + '/' + name + '.stderr', result.stderr ?? '');
+              process.stdout.write(output);
+              process.stderr.write(result.stderr ?? '');
+              results.push({ name, exit_code: result.status, error: result.error?.message ?? null });
+              if (result.status !== 0) { status = result.status ?? 1; break; }
+            }
+            if (status === 0) {
+              const bytes = readFileSync(directory + '/controls.tap');
+              const report = validateTap(bytes.toString());
+              writeFileSync(directory + '/verification.json', JSON.stringify({ ...report, sha256: hash(bytes), source: before }, null, 2) + '\n');
+            }
+          } catch (error) {
+            status = 1;
+            results.push({ name: 'verification', exit_code: 1, error: error.message });
+            throw error;
+          } finally {
+            writeFileSync(directory + '/commands.json', JSON.stringify(results, null, 2) + '\n');
+            const { started_epoch_ms, ...initial } = before;
+            assert.deepEqual(snapshot(), initial);
+            writeFileSync(directory + '/final.json', JSON.stringify({ ...before, unchanged: true, commands_exit_code: status }, null, 2) + '\n');
+          }
+          process.exitCode = status;
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sales-source-portability-${{ github.sha }}
+          path: artifacts/cycle33/v1-sales-source-portability
+          if-no-files-found: error

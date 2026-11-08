@@ -1,3 +1,8 @@
+import {
+  validateSalesPackage,
+  validateSalesPublishedSource,
+  ports as salesSourcePorts,
+} from './v1-sales-source-admission.mjs';
 import './check-cycle7-integrity.mjs';
 import { readFileSync, lstatSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -58,6 +63,7 @@ for (const [index, pkg] of manifest.packages.entries()) {
   )
     throw Error('Exact distinct draft source identity required');
   prs.add(pkg.draft_pr);
+  if (index === 2) validateSalesPackage(pkg);
   const owned = new Set([
     `src/lib/workflows/${module}.ts`,
     `src/components/workflows/${component}.tsx`,
@@ -68,10 +74,17 @@ for (const [index, pkg] of manifest.packages.entries()) {
   for (const file of pkg.owned_files) {
     if (!owned.has(file.path) || paths.has(file.path))
       throw Error('Overlapping/out-of-scope author path');
-    if (
-      !/^[a-f0-9]{64}$/.test(file.sha256) ||
-      createHash('sha256').update(read(file.path)).digest('hex') !== file.sha256
-    )
+    const bytes = read(file.path);
+    if (!/^[a-f0-9]{64}$/.test(file.sha256))
+      throw Error(`Reviewed Cycle8 source changed: ${file.path}`);
+    if (index === 2 && file.path === 'src/lib/workflows/sales-desk.ts') {
+      validateSalesPublishedSource(file, bytes, pkg, {
+        read: (path) =>
+          path === '.github/workflows/v1-sales-final-authority.yml'
+            ? salesSourcePorts.read(path)
+            : read(path),
+      });
+    } else if (createHash('sha256').update(bytes).digest('hex') !== file.sha256)
       throw Error(`Reviewed Cycle8 source changed: ${file.path}`);
     paths.add(file.path);
     owned.delete(file.path);
