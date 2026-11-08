@@ -26,6 +26,7 @@ import { useResource } from '../forms-state';
 import { PlatformBrand } from '../PlatformBrand';
 import { maintenanceScheduleHandoffEnabled } from '../../lib/maintenance-schedule-handoff';
 import { fieldWorkOrdersEnabled } from '../../lib/field-work-orders';
+import { scheduleWeek } from './schedule-week';
 const FieldWorkOrdersPreview = lazy(() =>
   import('./FieldWorkOrdersPreview').then((m) => ({
     default: m.FieldWorkOrdersPreview,
@@ -176,6 +177,18 @@ function Schedule({
   }
   const available =
     !resource.loading && !resource.error && !simulatedError && !!resource.data;
+  const weekAnchor = filters.from || rows[0]?.date || '';
+  const weeks = [-1, 0, 1].map((offset) =>
+    available && !filterError
+      ? scheduleWeek(weekAnchor, offset as -1 | 0 | 1)
+      : null,
+  );
+  const showWeek = (range: ReturnType<typeof scheduleWeek>) => {
+    if (!range) return;
+    setFilters((current) => ({ ...current, ...range }));
+    setSelected(null);
+    setMessage('');
+  };
   const update = (key: keyof typeof filters, value: string) => {
     setFilters((f) => ({ ...f, [key]: value }));
     setSelected(null);
@@ -364,6 +377,38 @@ function Schedule({
               Reset filters
             </button>
           </section>
+          <div
+            className="field-active"
+            role="group"
+            aria-label="Schedule week navigation"
+          >
+            <button
+              className="secondary"
+              disabled={!weeks[0]}
+              onClick={() => showWeek(weeks[0])}
+            >
+              Previous week
+            </button>
+            <button
+              className="secondary"
+              disabled={!weeks[1]}
+              onClick={() => showWeek(weeks[1])}
+            >
+              Show recorded week
+            </button>
+            <button
+              className="secondary"
+              disabled={!weeks[2]}
+              onClick={() => showWeek(weeks[2])}
+            >
+              Next week
+            </button>
+          </div>
+          <p className="field-filter-note">
+            Week controls show Monday–Sunday property dates, using the start
+            date or first matching recorded visit. Other filters stay selected;
+            no availability or work assignment is inferred.
+          </p>
           <p className="field-filter-note">
             Responsibility reflects an exact maintenance follow-up record, not
             crew assignment or a workforce access grant.

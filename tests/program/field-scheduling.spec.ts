@@ -159,3 +159,124 @@ test('production build cannot enable the isolated prototype and existing preview
     page.getByRole('heading', { name: 'Inspection schedule', exact: true }),
   ).toHaveCount(0);
 });
+
+for (const org of [
+  'sample-property',
+  'sample-construction',
+  'sample-roofing',
+]) {
+  test(`weekly navigation retains exact ${org} visit filters and source`, async ({
+    page,
+  }) => {
+    await page.goto('/preview/field-scheduling');
+    await page
+      .getByRole('combobox', { name: 'Company context' })
+      .selectOption(org);
+    await expect(page.locator('.field-visit')).toHaveCount(1);
+    await page
+      .getByText('Development-only examples & states', { exact: true })
+      .click();
+    await page
+      .getByRole('button', {
+        name: 'Prepare synthetic follow-up example',
+        exact: true,
+      })
+      .click();
+    await expect(page.locator('.field-visit')).toHaveCount(5);
+    const responsibility = page.getByRole('combobox', {
+      name: 'Follow-up responsibility',
+      exact: true,
+    });
+    const property = page.getByRole('combobox', {
+      name: 'Property',
+      exact: true,
+    });
+    const status = page.getByRole('combobox', {
+      name: 'Recorded visit status',
+    });
+    await responsibility.selectOption(org + '-field');
+    await status.selectOption('draft');
+    await expect(page.locator('.field-visit')).toHaveCount(1);
+    const text = await page.locator('.field-visit').innerText();
+    const choices = await property.locator('option').evaluateAll((options) =>
+      options.map((option) => ({
+        value: (option as HTMLOptionElement).value,
+        label: option.textContent!,
+      })),
+    );
+    const selectedProperty = choices.find(
+      (option) => option.value && text.includes(option.label),
+    )!;
+    expect(selectedProperty).toBeDefined();
+    await property.selectOption(selectedProperty.value);
+    await page
+      .getByRole('button', { name: /Open originating finding/ })
+      .click();
+    const source = await page.locator('.field-source').innerText();
+    await page
+      .getByRole('button', { name: 'Show recorded week', exact: true })
+      .click();
+    await expect(page.getByLabel('From date', { exact: true })).toHaveValue(
+      '2026-11-16',
+    );
+    await expect(page.getByLabel('Through date', { exact: true })).toHaveValue(
+      '2026-11-22',
+    );
+    await expect(page.locator('.field-source')).toHaveCount(0);
+    await expect(property).toHaveValue(selectedProperty.value);
+    await expect(responsibility).toHaveValue(org + '-field');
+    await expect(status).toHaveValue('draft');
+    await expect(page.locator('.field-visit')).toHaveCount(1);
+    const next = page.getByRole('button', { name: 'Next week', exact: true });
+    await next.focus();
+    await page.keyboard.press('Enter');
+    await expect(page.getByLabel('From date', { exact: true })).toHaveValue(
+      '2026-11-23',
+    );
+    await expect(page.getByLabel('Through date', { exact: true })).toHaveValue(
+      '2026-11-29',
+    );
+    await expect(page.locator('.field-visit')).toHaveCount(0);
+    await expect(property).toHaveValue(selectedProperty.value);
+    await expect(responsibility).toHaveValue(org + '-field');
+    await page
+      .getByRole('button', { name: 'Previous week', exact: true })
+      .click();
+    await expect(page.locator('.field-visit')).toHaveCount(1);
+    await page
+      .getByRole('button', { name: /Open originating finding/ })
+      .click();
+    expect(await page.locator('.field-source').innerText()).toBe(source);
+    await page.getByLabel('From date', { exact: true }).fill('2026-12-30');
+    await expect(page.getByRole('alert')).toHaveText(
+      'Start date must be on or before end date.',
+    );
+    await expect(
+      page.getByRole('button', { name: 'Show recorded week', exact: true }),
+    ).toBeDisabled();
+    await expect(
+      page.getByRole('button', { name: 'Next week', exact: true }),
+    ).toBeDisabled();
+    await page
+      .getByRole('button', { name: 'Reset filters', exact: true })
+      .click();
+    expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
+    await page
+      .getByRole('combobox', { name: 'Company context' })
+      .selectOption(
+        org === 'sample-property' ? 'sample-construction' : 'sample-property',
+      );
+    await expect(page.getByLabel('From date', { exact: true })).toHaveValue('');
+    await expect(page.getByLabel('Through date', { exact: true })).toHaveValue(
+      '',
+    );
+    await expect(property).toHaveValue('');
+    await expect(responsibility).toHaveValue('');
+    await expect(page.locator('.field-source')).toHaveCount(0);
+  });
+}

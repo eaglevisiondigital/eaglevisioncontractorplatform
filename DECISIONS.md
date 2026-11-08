@@ -2361,3 +2361,16 @@ A01–A12 NOT_RUN. Preserve owner-witnessed main synthetic loss PASS only and du
 UNKNOWN/UNVERIFIED with both private folders untouched. No hosted mutation, merge,
 deployment, operational adapter/restoration, payment, invoice, message or dispatch.
 Release1.0 remains NOT READY / NOT AUTHORIZED.
+
+### Lean cycle 1: reuse recorded date filters; hold intake SQL
+
+Week navigation extends the existing inspection schedule/filter function, with no
+new store, engine, permission or dispatch action. Source-only intake review confirms
+private.assign_intake checks caller/module and assignee before the UPDATE can wait.
+The smallest correction candidate explicitly locks the exact organization/request
+row first, then revalidates current caller/module and assignee before writing.
+Revocation-writer lock ordering, current-session visibility and atomicity still need
+security review and separate forward-SQL authorization; do not edit historical
+migrations or assume this candidate alone closes the race. Existing PR320 evidence
+remains15 PASS/6 FAIL per event; no SQL or new acceptance case executed here.
+All original recovery, P1/customer14/4B, MFA/Auth/NMI and release restrictions persist.
