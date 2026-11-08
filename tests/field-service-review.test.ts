@@ -9,6 +9,8 @@ import {
 } from '../src/lib/field-scheduling';
 import {
   fieldServiceDocumentation,
+  fieldVisitIssuedJobSource,
+  assertFieldIssuedJobSource,
   fieldVisitCostScope,
   fieldVisitMarginReader,
 } from '../src/components/field/field-service-review';
@@ -291,4 +293,172 @@ it('originating published documentation keeps its original visit instead of subs
       finding_id: 'missing',
     }),
   ).toThrow(/UNKNOWN/);
+});
+
+for (const brand of [0, 1, 2]) {
+  it(`brand ${brand}: issued job review reuses exact existing source and leaves financial/property records unchanged`, async () => {
+    const f = await fixture(brand),
+      ref = f.original.source;
+    const scope = (await fieldVisitCostScope(f.repo, f.org, f.actor, ref))!;
+    const before = JSON.stringify(f.repo.read(f.org)),
+      jobs = await f.repo.estimates.jobs(f.org);
+    const order = await fieldVisitIssuedJobSource(
+      f.repo,
+      f.org,
+      f.actor,
+      ref,
+      scope,
+    );
+    expect(order.source.job_id).toBe(scope.jobId);
+    expect(order.source.estimate_id).toBe(scope.estimateId);
+    expect(order.source.issued_version_id).toBe(scope.issuedVersionId);
+    expect(order.customer.id).toBe(ref.customer_id);
+    expect(order.baseline_property).toBeNull();
+    expect(order.scope).toEqual(
+      jobs
+        .find((j) => j.id === scope.jobId)!
+        .baseline.lines.map((l) => ({
+          id: l.id,
+          description: l.description,
+          quantity_milli: l.quantity_milli,
+          unit: l.unit,
+        })),
+    );
+    expect(() =>
+      assertFieldIssuedJobSource(f.repo, f.org, f.actor, ref, scope, order),
+    ).not.toThrow();
+    expect(JSON.stringify(order.scope)).not.toMatch(
+      /minor|internal_note|payroll|margin/,
+    );
+    expect(JSON.stringify(f.repo.read(f.org))).toBe(before);
+    expect(await f.repo.estimates.jobs(f.org)).toEqual(jobs);
+  });
+  it(`brand ${brand}: newer draft does not replace the issued estimate linked to this job`, async () => {
+    const f = await fixture(brand),
+      ref = f.original.source;
+    const scope = (await fieldVisitCostScope(f.repo, f.org, f.actor, ref))!;
+    const original = await f.repo.estimates.get(f.org, scope.estimateId);
+    const draft = original;
+    expect(draft.version.status).toBe('draft');
+    expect(draft.version.id).not.toBe(scope.issuedVersionId);
+    const source = await fieldVisitIssuedJobSource(
+      f.repo,
+      f.org,
+      f.actor,
+      ref,
+      scope,
+    );
+    expect(source.source.issued_version_id).toBe(scope.issuedVersionId);
+    const issued = (
+      await f.repo.estimates.history(f.org, scope.estimateId)
+    ).find((version) => version.id === scope.issuedVersionId)!;
+    expect(source.source.issued_version_number).toBe(issued.version_number);
+    expect(() =>
+      assertFieldIssuedJobSource(f.repo, f.org, f.actor, ref, scope, source),
+    ).not.toThrow();
+  });
+}
+it('rejects changed cost identity and copied or edited producer data without evaluating accessors', async () => {
+  const f = await fixture(),
+    ref = f.original.source;
+  const scope = (await fieldVisitCostScope(f.repo, f.org, f.actor, ref))!;
+  await expect(
+    fieldVisitIssuedJobSource(f.repo, f.org, f.actor, ref, {
+      ...scope,
+      issuedVersionId: crypto.randomUUID(),
+    }),
+  ).rejects.toThrow(/identity/);
+  const order = await fieldVisitIssuedJobSource(
+    f.repo,
+    f.org,
+    f.actor,
+    ref,
+    scope,
+  );
+  expect(() =>
+    assertFieldIssuedJobSource(
+      f.repo,
+      f.org,
+      f.actor,
+      ref,
+      scope,
+      structuredClone(order),
+    ),
+  ).toThrow(/retained/);
+  let read = false;
+  Object.defineProperty(order, 'scope', {
+    get() {
+      read = true;
+      return [];
+    },
+  });
+  expect(() =>
+    assertFieldIssuedJobSource(f.repo, f.org, f.actor, ref, scope, order),
+  ).toThrow(/fields/);
+  expect(read).toBe(false);
+});
+it('withholds a stale visit list until explicitly refreshed', async () => {
+  const f = await fixture(),
+    ref = f.original.source,
+    scope = (await fieldVisitCostScope(f.repo, f.org, f.actor, ref))!;
+  const source = await fieldVisitIssuedJobSource(
+    f.repo,
+    f.org,
+    f.actor,
+    ref,
+    scope,
+  );
+  f.repo.addVisit(f.org, ref.plan_id, '2026-11-25');
+  expect(() =>
+    assertFieldIssuedJobSource(f.repo, f.org, f.actor, ref, scope, source),
+  ).toThrow(/visits changed/);
+  const refreshed = await fieldVisitIssuedJobSource(
+    f.repo,
+    f.org,
+    f.actor,
+    ref,
+    scope,
+  );
+  expect(refreshed.visits.length).toBe(source.visits.length + 1);
+});
+it('denies foreign actors and revocation during issued-source reads', async () => {
+  const f = await fixture(),
+    ref = f.original.source,
+    scope = (await fieldVisitCostScope(f.repo, f.org, f.actor, ref))!;
+  await expect(
+    fieldVisitIssuedJobSource(
+      f.repo,
+      'sample-construction',
+      f.actor,
+      ref,
+      scope,
+    ),
+  ).rejects.toThrow();
+  const actor = f.org + '-estimator';
+  await f.operations.manageMember(
+    f.org,
+    actor,
+    true,
+    'admin',
+    'office_manager',
+  );
+  const jobs = f.repo.estimates.jobs.bind(f.repo.estimates);
+  let changed = false;
+  vi.spyOn(f.repo.estimates, 'jobs').mockImplementation(async (...args) => {
+    const value = await jobs(...args);
+    if (!changed) {
+      changed = true;
+      await f.operations.manageMember(
+        f.org,
+        actor,
+        false,
+        'admin',
+        'office_manager',
+      );
+    }
+    return value;
+  });
+  await expect(
+    fieldVisitIssuedJobSource(f.repo, f.org, actor, ref, scope),
+  ).rejects.toThrow();
 });

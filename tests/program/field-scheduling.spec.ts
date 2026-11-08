@@ -484,3 +484,135 @@ for (const org of [
     await expect(docs).toHaveCount(0);
   });
 }
+
+for (const org of [
+  'sample-property',
+  'sample-construction',
+  'sample-roofing',
+]) {
+  test(`issued job source retains ${org} financial review inputs and schedule`, async ({
+    page,
+  }) => {
+    await page.goto('/preview/field-scheduling');
+    await page
+      .getByRole('combobox', { name: 'Company context' })
+      .selectOption(org);
+    await expect(page.locator('.field-visit')).toHaveCount(1);
+    await page
+      .getByText('Development-only examples & states', { exact: true })
+      .click();
+    await page
+      .getByRole('button', {
+        name: 'Prepare synthetic follow-up example',
+        exact: true,
+      })
+      .click();
+    await expect(page.locator('.field-visit')).toHaveCount(5);
+    await page.getByLabel('From date', { exact: true }).fill('2026-11-13');
+    await page.getByLabel('Through date', { exact: true }).fill('2026-11-13');
+    await page
+      .getByRole('button', { name: 'Inspect exact visit', exact: true })
+      .click();
+    await page
+      .getByRole('button', {
+        name: 'Review recorded visit job costs',
+        exact: true,
+      })
+      .click();
+    const costs = page.getByRole('region', {
+      name: 'Staff-only linked job costs',
+    });
+    await expect(
+      costs.getByRole('heading', { name: 'Job cost variance', exact: true }),
+    ).toBeVisible();
+    const input = costs.getByLabel('Minimum projected margin (%)', {
+      exact: true,
+    });
+    await input.fill('12.34');
+    await costs
+      .getByRole('button', {
+        name: 'Review issued scope & job visits',
+        exact: true,
+      })
+      .focus();
+    await page.keyboard.press('Enter');
+    const source = page.getByRole('region', {
+      name: 'Issued estimate and job source review',
+    });
+    await expect(
+      source.getByRole('heading', {
+        name: 'Original issued job scope',
+        exact: true,
+      }),
+    ).toBeVisible();
+    await expect(source).toContainText('not the latest draft');
+    await expect(source).toContainText('does not establish customer approval');
+    await expect(source).toContainText('invoice readiness remain separate');
+    const version = await costs
+      .locator('dt')
+      .filter({ hasText: /^Issued source version$/ })
+      .locator('xpath=following-sibling::dd[1]')
+      .innerText();
+    await expect(source).toContainText(version);
+    await expect(
+      source.getByRole('button', {
+        name: 'Inspect job visit 2026-11-13',
+        exact: true,
+      }),
+    ).toBeDisabled();
+    await expect(
+      source.getByRole('button', {
+        name: 'Inspect job visit 2026-11-07',
+        exact: true,
+      }),
+    ).toHaveCount(0);
+    await expect(input).toHaveValue('12.34');
+    await costs
+      .getByRole('button', { name: 'Close issued scope review', exact: true })
+      .click();
+    await expect(source).toHaveCount(0);
+    await expect(input).toHaveValue('12.34');
+    await costs
+      .getByRole('button', {
+        name: 'Review issued scope & job visits',
+        exact: true,
+      })
+      .click();
+    await expect(
+      source.getByRole('heading', {
+        name: 'Original issued job scope',
+        exact: true,
+      }),
+    ).toBeVisible();
+    expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
+    await source
+      .getByRole('button', {
+        name: 'Inspect job visit 2026-11-20',
+        exact: true,
+      })
+      .click();
+    await expect(costs).toHaveCount(0);
+    await expect(page.locator('.field-source')).toContainText(
+      'Current recorded status: draft',
+    );
+    await expect(page.getByLabel('From date', { exact: true })).toHaveValue(
+      '2026-11-13',
+    );
+    await expect(page.getByLabel('Through date', { exact: true })).toHaveValue(
+      '2026-11-13',
+    );
+    await expect(page.locator('.field-visit')).toHaveCount(1);
+    await page
+      .getByRole('combobox', { name: 'Company context' })
+      .selectOption(
+        org === 'sample-property' ? 'sample-construction' : 'sample-property',
+      );
+    await expect(page.locator('.field-source')).toHaveCount(0);
+    await expect(source).toHaveCount(0);
+  });
+}

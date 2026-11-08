@@ -2867,3 +2867,13 @@ stays UNKNOWN. Null baseline property stays null: job-wide costs are not attribu
 to the visit property. Existing source/financial readers and default-OFF gates apply.
 Intake SQL remains held; no SQL, writer, design or operational acceptance change.
 D1–D3/A01–A12 and recovery gates persist. Release1.0 NOT READY / NOT AUTHORIZED.
+
+## Lean cycle 3: issued estimate/job source inside financial review
+
+The existing Field cost review can inspect its exact issued estimate scope and
+canonical job visits without clearing financial review inputs. Opening a recorded
+job visit retains schedule filters. The existing work-order producer and current
+source fences reject changed/copy/foreign sources; newer drafts never substitute
+for the job's issued baseline. Approval, performed work and invoice readiness stay
+separate. No writer, authority, SQL, design or release-gate change.
+Release1.0 remains NOT READY / NOT AUTHORIZED.

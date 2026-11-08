@@ -2467,3 +2467,12 @@ A narrow navigation adapter rechecks the original visit/plan binding across the
 existing financial read. No calculation, policy, canonical writer or source pin is
 changed. Financial values stay outside the customer-safe report projection. Intake
 correction and all operational/release decisions remain separately held.
+
+### Lean cycle 3: inspect the issued source without leaving cost review
+
+Reuse the original work-order projection and retained producer admission for the
+estimate/job/visit source inspector. Keep the existing financial component mounted
+while inspecting scope, so its local review input survives. Match the original cost
+scope and current visit list; source changes withhold the inspector until explicit
+refresh. No new financial projection, policy, business writer or approval inference.
+Intake SQL, D1–D3/A01–A12 and recovery acceptance remain separately held.
