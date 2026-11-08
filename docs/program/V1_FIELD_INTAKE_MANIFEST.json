@@ -1,0 +1,1627 @@
+{
+  "schema": "propel-v1-field-intake-integration-v1",
+  "base": "676e12fd14f75f754a19bf5606a935456853a783",
+  "composition_parent": "be62e1b2e26d7799ec6f9984b8b4a6db44955b21",
+  "main_files": [
+    "scripts/check-cycle16-integrity.mjs",
+    "scripts/check-cycle22.mjs",
+    "scripts/check-cycle23.mjs",
+    "scripts/cycle25-source-lineage.mjs",
+    "scripts/v1-field-source-admission.mjs",
+    "scripts/v1-c16-field-inventory-source.mjs",
+    "scripts/v1-default-unit-reporter.mjs",
+    "tests/v1-field-intake-source.test.mjs",
+    "tests/v1-default-unit-reporter.test.mjs",
+    "docs/program/V1_FIELD_INTAKE_FOUNDATION_GAPS.json",
+    "CURRENT_BUILD_STATE.md",
+    "DECISIONS.md",
+    "docs/PROGRAM_DELIVERY_STATUS.md",
+    "docs/FEATURE_ACCEPTANCE_REGISTER.md",
+    "docs/program/V1_INTEGRATION_SCORECARD.json",
+    "docs/program/V1_FOUNDATION_COVERAGE_RECONCILIATION.json",
+    "scripts/v1-field-intake-integration.mjs",
+    "docs/program/V1_FIELD_INTAKE_MANIFEST.json",
+    "tests/program/playwright.v1-field-intake.config.ts",
+    ".github/workflows/v1-field-intake-integration.yml",
+    "docs/program/V1_FIELD_INTAKE_VALIDATION.md",
+    "docs/program/V1_FIRST_PILOT_WRITER_INVENTORY.md"
+  ],
+  "append_only": [
+    "CURRENT_BUILD_STATE.md",
+    "DECISIONS.md",
+    "docs/PROGRAM_DELIVERY_STATUS.md",
+    "docs/FEATURE_ACCEPTANCE_REGISTER.md",
+    "docs/program/V1_FIRST_PILOT_WRITER_INVENTORY.md"
+  ],
+  "author_bundles": [
+    {
+      "label": "Field312",
+      "author": "d977c78991aefed65f28fb643c30f92e5ecc6f7c",
+      "author_parent": "d8d85760f9188d83a631328d9211421470002e8a",
+      "composition": "12ae7eebcb790c4b17c7c2991e24bcf40fd14bcd",
+      "files": [
+        {
+          "path": ".github/workflows/v1-daily-field-final-authority.yml",
+          "delta": "A",
+          "sha256": "c2e57e2459138019810f915e833876fa594555a3f2b5201a22bf2a3ee5ae18bd",
+          "git_mode": "100644"
+        },
+        {
+          "path": "docs/program/V1_DAILY_FIELD_FINAL_AUTHORITY.md",
+          "delta": "A",
+          "sha256": "b73a48ba9de3564f20df147115ac4112856d33af18172502f7af068355930aa1",
+          "git_mode": "100644"
+        },
+        {
+          "path": "src/lib/workflows/daily-field-guide.ts",
+          "delta": "M",
+          "sha256": "4c6252aec56fa35bd530d46a2c663635ed8f1cb366a2502f7fec5632ac5a39bd",
+          "git_mode": "100644"
+        },
+        {
+          "path": "tests/v1-daily-field-final-authority.test.ts",
+          "delta": "A",
+          "sha256": "eb4958c0a1a1477e09fe24a6638bc99f3e30b598b09dd47c7a2889e4ee4ff77e",
+          "git_mode": "100644"
+        }
+      ]
+    },
+    {
+      "label": "Source317",
+      "author": "9b2864feda8f766bec84f7e710fe0be5c534bf45",
+      "author_parent": "d977c78991aefed65f28fb643c30f92e5ecc6f7c",
+      "composition": "f8c784bb6b4546989c1abea0ea26f716117f5da8",
+      "files": [
+        {
+          "path": ".github/workflows/v1-field-source-admission.yml",
+          "delta": "A",
+          "sha256": "30e01a1cd8751fcfe9c0f233822d1b1c7f824f7f701937f554a06f4aabaa32bc",
+          "git_mode": "100644"
+        },
+        {
+          "path": "docs/program/V1_FIELD_SOURCE_ADMISSION.md",
+          "delta": "A",
+          "sha256": "20fdee1f629f4d35dc119c8229c6114b1f680a26335468a1cf11bd5477d16fa7",
+          "git_mode": "100644"
+        },
+        {
+          "path": "docs/program/V1_FIELD_SOURCE_ADMISSION_MANIFEST.json",
+          "delta": "A",
+          "sha256": "67a5b9b7af4958adc2367af7d964856eb90f5362cf10c2f29d4eb53a5e21dcfe",
+          "git_mode": "100644"
+        },
+        {
+          "path": "scripts/check-cycle16-integrity.mjs",
+          "delta": "M",
+          "sha256": "4daad1fb4311911f50cf699288625a39cef83e55c2e713232bc9791d68fb11d4",
+          "git_mode": "100644"
+        },
+        {
+          "path": "scripts/v1-field-source-admission.mjs",
+          "delta": "A",
+          "sha256": "9ec281850e154042ad110d8a6c619a20d9e4c36e0db3fa2f1d1c61da5e5e40dd",
+          "git_mode": "100644"
+        },
+        {
+          "path": "tests/v1-field-source-admission.test.mjs",
+          "delta": "A",
+          "sha256": "f6d97f8e3a74f71d3a7f0e5cc754c91db3a88cf54d6facc0a9d31c3e932fcbbd",
+          "git_mode": "100644"
+        }
+      ]
+    },
+    {
+      "label": "Inventory318",
+      "author": "77ff8d00c4659ab8d5054805f7c59e7752c11419",
+      "author_parent": "9b2864feda8f766bec84f7e710fe0be5c534bf45",
+      "composition": "be62e1b2e26d7799ec6f9984b8b4a6db44955b21",
+      "files": [
+        {
+          "path": "docs/program/V1_C16_FIELD_INVENTORY.md",
+          "delta": "A",
+          "sha256": "5bac77899fef636a605f729cf7ddb57eacd8f268840d0f0821a89850970fd923",
+          "git_mode": "100644"
+        },
+        {
+          "path": "tests/cycle16-integration.test.ts",
+          "delta": "M",
+          "sha256": "bce39cd515190a1c93c7841ec3aea25f0acc7f140dc711eb31b7624d455abdba",
+          "git_mode": "100644"
+        }
+      ]
+    }
+  ],
+  "allowed_source_overlaps": [
+    "scripts/check-cycle16-integrity.mjs",
+    "scripts/v1-field-source-admission.mjs"
+  ],
+  "intake": {
+    "included": false,
+    "decision": "EXCLUDED_BY_ROOT",
+    "composition": null,
+    "files": []
+  },
+  "native": {
+    "collection": "VITEST_RUNTIME_NO_STATIC_PARSE_NOT_CASE_EXECUTION",
+    "collection_raw_sha256": "54c7f3c2ac4da64d8b50eaacdbe3039a95a8bc40ef1625541b4c2cdc1b59c5fc",
+    "files": {
+      "tests/cycle16-daily-field-guide.test.ts": "6e5fe39b14417ee237ddf849b230d8cdf3affcb477b91e03fcc4bb7f5dd796f4",
+      "tests/cycle16-integration.test.ts": "bce39cd515190a1c93c7841ec3aea25f0acc7f140dc711eb31b7624d455abdba",
+      "tests/cycle22-validation.test.ts": "ba2d4cb731a450f6ba934c821dc45e43046d3ab2b44d5a00f88514966eda146a",
+      "tests/cycle23-validation.test.ts": "1f3824bfee2bf5d8203f7d58570e436408f989b753eb7d66179b17a9a1882117",
+      "tests/cycle33-v1-c16-test-compatibility.test.ts": "ecd9dadb4e15839db9a4e4db9ee8c49938a7e5f96cfab82d91558484a357f861",
+      "tests/cycle33-v1-coordinated-source-admission.test.ts": "ab848c3516328fd751eeb2a472f2ab11d8aef22a4ad3c7fbabe628f0415f709b",
+      "tests/program/cycle16-feature-evidence.test.ts": "0a35d08bb14a336aea9772b4fd62977b58a0cb3312a3818392e81d35a56d5dc4",
+      "tests/v1-daily-field-final-authority.test.ts": "eb4958c0a1a1477e09fe24a6638bc99f3e30b598b09dd47c7a2889e4ee4ff77e"
+    },
+    "cases": [
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "OFF precedes source and input getters"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "brand 0 reads exact daily scope/crew/visits/report versions without business writes"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "brand 0 uses the exact host hint and accessible read-only controls"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "brand 1 reads exact daily scope/crew/visits/report versions without business writes"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "brand 1 uses the exact host hint and accessible read-only controls"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "brand 2 reads exact daily scope/crew/visits/report versions without business writes"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "brand 2 uses the exact host hint and accessible read-only controls"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "company 1 cannot read another company job"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "company 2 cannot read another company job"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "copied guide does not confer retained source or navigation authority"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "displayed five-field report rows enter the exact original reader through the narrow UI reference mapper"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "exact current navigation maps to the existing field section only"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "exact technician selection retains only that current recorded relationship"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "final gate withdrawal after the guide hash withholds its result"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "final input withdrawal after the guide hash withholds its result"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "final member withdrawal after the guide hash withholds its result"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "foreign host hint remains unselected with no prepared controls"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "foreign technician is rejected without changing assignment"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "inactive or downgraded current reviewer cannot read the guide"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "inspects only the selected crew evidence step"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "inspects only the selected reports evidence step"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "inspects only the selected scope evidence step"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "inspects only the selected visits evidence step"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "invalid job  never substitutes a visible record"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "invalid job foreign-job never substitutes a visible record"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "invalid job xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx never substitutes a visible record"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "opens only the exact original published report/version"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "protocol data: leaves the guide off without source reads"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "protocol file: leaves the guide off without source reads"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "protocol https: leaves the guide off without source reads"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "rejects accessor inputs without invoking them"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "repeated original-control entry retains exact job and creates no review or successor"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "retained gate drift blocks details, controls and navigation permanently"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "retained input drift blocks details, controls and navigation permanently"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "retained job drift blocks details, controls and navigation permanently"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "retained member drift blocks details, controls and navigation permanently"
+      },
+      {
+        "file": "tests/cycle16-daily-field-guide.test.ts",
+        "api_name": "retained root drift blocks details, controls and navigation permanently"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "advanced production-OFF and nonloopback presentation never invokes source getters"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "advanced rejects a same-company property substitution and cannot revive by restoring its presentation target"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "advanced retained source cannot resume after current staff is revoked then restored"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "advanced retained source rejects a foreign approved company even when the original company is restored"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "all six daily panels retain original navigation identity and independently default OFF over unread sources"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "brand 0 Field and Customer independently converge on the same immutable job/report/version without completion or business effects"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "brand 0 Finance and owner briefing retain exact portfolio job/issued source and original financial navigation without financial effects"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "brand 0 Retention and Advanced return the same exact property/job while retaining consent/provider UNKNOWN and original source evidence"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "brand 1 Field and Customer independently converge on the same immutable job/report/version without completion or business effects"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "brand 1 Finance and owner briefing retain exact portfolio job/issued source and original financial navigation without financial effects"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "brand 1 Retention and Advanced return the same exact property/job while retaining consent/provider UNKNOWN and original source evidence"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "brand 2 Field and Customer independently converge on the same immutable job/report/version without completion or business effects"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "brand 2 Finance and owner briefing retain exact portfolio job/issued source and original financial navigation without financial effects"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "brand 2 Retention and Advanced return the same exact property/job while retaining consent/provider UNKNOWN and original source evidence"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "customer production-OFF and nonloopback presentation never invokes source getters"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "customer rejects a same-company property substitution and cannot revive by restoring its presentation target"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "customer retained source cannot resume after current staff is revoked then restored"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "customer retained source rejects a foreign approved company even when the original company is restored"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "field production-OFF and nonloopback presentation never invokes source getters"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "field rejects a same-company property substitution and cannot revive by restoring its presentation target"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "field retained source cannot resume after current staff is revoked then restored"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "field retained source rejects a foreign approved company even when the original company is restored"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "finance production-OFF and nonloopback presentation never invokes source getters"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "finance rejects a same-company property substitution and cannot revive by restoring its presentation target"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "finance retained source cannot resume after current staff is revoked then restored"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "finance retained source rejects a foreign approved company even when the original company is restored"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "growth production-OFF and nonloopback presentation never invokes source getters"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "growth rejects a same-company property substitution and cannot revive by restoring its presentation target"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "growth retained source cannot resume after current staff is revoked then restored"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "growth retained source rejects a foreign approved company even when the original company is restored"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "intelligence production-OFF and nonloopback presentation never invokes source getters"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "intelligence rejects a same-company property substitution and cannot revive by restoring its presentation target"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "intelligence retained source cannot resume after current staff is revoked then restored"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "intelligence retained source rejects a foreign approved company even when the original company is restored"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "search production-OFF and nonloopback presentation never invokes source getters"
+      },
+      {
+        "file": "tests/cycle16-integration.test.ts",
+        "api_name": "the combined candidate contains the exact thirty disjoint author blobs recorded at their final review heads"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > PENDING cannot supply an accepted aggregate application result"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > a reduced positive suite count cannot redefine source-required coverage: tests/cycle22-independent-integration-review.test.ts"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > a reduced positive suite count cannot redefine source-required coverage: tests/cycle22-task-custody-review.test.ts"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > a reduced positive suite count cannot redefine source-required coverage: tests/cycle22-validation.test.ts"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > accepts every explicit synthetic assertion without promoting fixture evidence to source acceptance"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > actual browser report validation requires exact27DEV and3OFF matrix entries"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > an empty or foreign generic inventory cannot validate assertions"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > browser collection cannot pass as actual execution"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > cannot manufacture independent acceptance: other-commit"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > cannot manufacture independent acceptance: partial-files"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > cannot manufacture independent acceptance: pending-files"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > cannot manufacture independent acceptance: zero-commit"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > complete application acceptance is pinned to the actual published independent inventory"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > duplicate full names across different suite files cannot pass a matching rollup"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > independent review bytes cannot be replaced with recomputed self-declared hashes"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > pending review cannot pass CLI-grade source acceptance"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > published independent evidence is required before complete source acceptance"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects exact source binding mutation author-pr"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects exact source binding mutation blob"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects exact source binding mutation branch"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects exact source binding mutation count"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects exact source binding mutation duplicate"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects exact source binding mutation hash"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects exact source binding mutation head"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects exact source binding mutation main-pr"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects exact source binding mutation owner"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects exact source binding mutation parent"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects exact source binding mutation path"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects exact source binding mutation stack"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects incomplete browser matrix duplicate"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects incomplete browser matrix expected-failure"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects incomplete browser matrix flaky"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects incomplete browser matrix missing-attempt"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects incomplete browser matrix missing-brand"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects incomplete browser matrix remote"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects incomplete browser matrix retry"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects incomplete browser matrix reuse"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects incomplete browser matrix skip"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects incomplete browser matrix wrong-file"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects misleading actual assertion evidence assertion-count"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects misleading actual assertion evidence blank-name"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects misleading actual assertion evidence duplicate-name"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects misleading actual assertion evidence extra"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects misleading actual assertion evidence failed"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects misleading actual assertion evidence failure-message"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects misleading actual assertion evidence missing"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects misleading actual assertion evidence nan-duration"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects misleading actual assertion evidence negative-duration"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects misleading actual assertion evidence pending"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects misleading actual assertion evidence suite-failed"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects misleading actual assertion evidence suite-pending"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects misleading actual assertion evidence summary"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects misleading actual assertion evidence todo"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > rejects misleading actual assertion evidence wrong-file"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > retained protected source drift is rejected by the unchanged earlier chain"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > validates all25 published author files and473 retained paths while review is honestly pending"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > workflow checks full-history exact sources and local bounded tests without protected baselines or execution"
+      },
+      {
+        "file": "tests/cycle22-validation.test.ts",
+        "api_name": "Cycle22 exact published source and actual result validation > working bytes cannot replace published author bytes even with recomputed declared hash and blob"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > PENDING cannot supply an accepted aggregate application result"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > a reduced positive suite count cannot redefine source-required coverage: tests/cycle23-independent-integration-review.test.ts"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > a reduced positive suite count cannot redefine source-required coverage: tests/cycle23-task-revision-consistency.test.ts"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > a reduced positive suite count cannot redefine source-required coverage: tests/cycle23-validation.test.ts"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > accepts every explicit synthetic assertion without promoting fixture evidence to source acceptance"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > an empty or foreign generic inventory cannot validate assertions"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > cannot manufacture independent acceptance: other-commit"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > cannot manufacture independent acceptance: partial-files"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > cannot manufacture independent acceptance: pending-files"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > cannot manufacture independent acceptance: zero-commit"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > complete application acceptance is pinned to the actual published independent inventory"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > duplicate full names across different suite files cannot pass a matching rollup"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > exact native parent and only the published presentation-only forward correction are required"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > independent review bytes cannot be replaced with recomputed self-declared hashes"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > pending review cannot pass CLI-grade source acceptance"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > published independent evidence is required before complete source acceptance"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects exact source binding mutation author-pr"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects exact source binding mutation blob"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects exact source binding mutation branch"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects exact source binding mutation count"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects exact source binding mutation duplicate"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects exact source binding mutation hash"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects exact source binding mutation head"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects exact source binding mutation main-pr"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects exact source binding mutation owner"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects exact source binding mutation parent"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects exact source binding mutation path"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects exact source binding mutation stack"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects misleading actual assertion evidence assertion-count"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects misleading actual assertion evidence blank-name"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects misleading actual assertion evidence duplicate-name"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects misleading actual assertion evidence extra"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects misleading actual assertion evidence failed"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects misleading actual assertion evidence failure-message"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects misleading actual assertion evidence missing"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects misleading actual assertion evidence nan-duration"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects misleading actual assertion evidence negative-duration"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects misleading actual assertion evidence pending"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects misleading actual assertion evidence suite-failed"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects misleading actual assertion evidence suite-pending"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects misleading actual assertion evidence summary"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects misleading actual assertion evidence todo"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > rejects misleading actual assertion evidence wrong-file"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > retained protected source drift is rejected by the unchanged earlier chain"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > validates all25 published author files and498 retained paths while review is honestly pending"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > workflow checks full-history exact sources and local bounded tests without protected baselines or execution"
+      },
+      {
+        "file": "tests/cycle23-validation.test.ts",
+        "api_name": "Cycle23 exact published source and actual result validation > working bytes cannot replace published author bytes even with recomputed declared hash and blob"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > admits actual reviewed bytes with only source-lineage authority"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > cannot reconstruct a missing current index from its original Git bytes"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > cannot reconstruct a missing current test from reviewed Git bytes"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > pins the real original publisher, unchanged index and sole M1 author"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rejects a different author delta: "
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rejects a different author delta: A\ttests/cycle16-integration.test.ts"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rejects a different author delta: M\ttests/cycle16-integration.test.ts\nM\tsrc/App.tsx"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rejects a non-commit original publisher"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rejects a non-commit reviewed object: blob"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rejects a non-commit reviewed object: tree"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rejects a non-regular historical index"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rejects altered historical index Git bytes even if current index matches them"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rejects another path rather than extending test admission: ../private"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rejects another path rather than extending test admission: docs/program/CYCLE16_INTEGRATION_REVIEW.md"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rejects another path rather than extending test admission: src/lib/workflows/addon-readiness-guide.ts"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rejects any other parent rather than accepting ancestry"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rejects changed current index bytes with historical Git evidence intact"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rejects changed immutable parent test bytes"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rejects changed immutable published test bytes"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rejects executable or symlink commit test mode"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rejects executable or symlink parent test mode"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rejects executable or symlink published test mode"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rejects replaced historical metadata, including the current hash: 0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rejects replaced historical metadata, including the current hash: 4390f6bf0595f4cd7b34bba2d2364fba80748e0227a36dc28dd897f417e53fd5"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rejects replaced historical metadata, including the current hash: not-a-hash"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rejects supplied modified bytes instead of the actual reviewed correction"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rejects supplied original bytes instead of the actual reviewed correction"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rejects wrong author raw bytes even when supplied current bytes match them"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > rereads the actual current test after an earlier successful admission"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > the C16 consumer denies a different valid historical review pointer"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > the C16 consumer denies a missing current test"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > the C16 consumer denies changed current index bytes"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > the C16 consumer denies current test drift instead of reading the original test"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > the C16 consumer denies replacement independent hash metadata: 0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > the C16 consumer denies replacement independent hash metadata: 4390f6bf0595f4cd7b34bba2d2364fba80748e0227a36dc28dd897f417e53fd5"
+      },
+      {
+        "file": "tests/cycle33-v1-c16-test-compatibility.test.ts",
+        "api_name": "finite C16 test-only successor preserves immutable original evidence > the actual C16 consumer preserves original metadata and admits the fixed M1 test"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "actual C16 consumer retains its immutable scope and metadata without claiming newer native authors"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "actual C21 consumer retains original manifests, exact legacy results and protected scope"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "actual C22 consumer retains original manifests, exact legacy results and protected scope"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "actual C23 consumer retains original manifests, exact legacy results and protected scope"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "actual C24 consumer admits the exact Growth successor through the original canonical source route"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "actual C24 consumer refuses replacing immutable original hash metadata with the new Growth hash"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "actual C24 consumer rejects a missing new Growth companion rather than reconstructing it from Git"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "actual C24 consumer rejects unknown Growth bytes through its original published-source denial"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "all historical consumer manifests and original protected metadata remain byte-exact to sole67"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "maintenance-occurrence-custody: final native reread after companions rejects late source drift"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "maintenance-occurrence-custody: immutable author hashes reject forged raw Git even when supplied and disk bytes agree"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "maintenance-occurrence-custody: legacy admission preserves exact original metadata and does not claim the new author"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "maintenance-occurrence-custody: legacy final freshness guard rejects changes after its original companion reads"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "maintenance-occurrence-custody: legacy routes also validate every new companion"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "maintenance-occurrence-custody: original legacy diagnostics still reject arbitrary unreviewed bytes"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "maintenance-occurrence-custody: rechecks current native bytes after success and refuses a missing file"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "maintenance-occurrence-custody: rejects additional, missing and modified-not-added companion deltas"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "maintenance-occurrence-custody: rejects altered raw parent native evidence"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "maintenance-occurrence-custody: rejects altered raw predecessor native evidence"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "maintenance-occurrence-custody: rejects every changed raw Git companion instead of trusting current files"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "maintenance-occurrence-custody: rejects incorrect and multiple parents instead of relying on ancestry"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "maintenance-occurrence-custody: rejects noncommit commit evidence"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "maintenance-occurrence-custody: rejects noncommit parent evidence"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "maintenance-occurrence-custody: rejects noncommit predecessor evidence"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "maintenance-occurrence-custody: rejects nonregular commit native source modes"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "maintenance-occurrence-custody: rejects nonregular modes for every old and new companion"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "maintenance-occurrence-custody: rejects nonregular parent native source modes"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "maintenance-occurrence-custody: rejects nonregular predecessor native source modes"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "maintenance-occurrence-custody: rejects substituted caller predecessor bytes"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "maintenance-occurrence-custody: rejects unknown or historical current source bytes"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "maintenance-occurrence-custody: rejects unrelated, private and companion paths as native owners"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "maintenance-occurrence-custody: requires all six current companions without restoration or cached admission"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "maintenance-occurrence-custody: verifies actual bounded Git history, current bytes and build-only metadata"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "owner-refresh-access-continuity: final native reread after companions rejects late source drift"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "owner-refresh-access-continuity: immutable author hashes reject forged raw Git even when supplied and disk bytes agree"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "owner-refresh-access-continuity: legacy admission preserves exact original metadata and does not claim the new author"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "owner-refresh-access-continuity: legacy final freshness guard rejects changes after its original companion reads"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "owner-refresh-access-continuity: legacy routes also validate every new companion"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "owner-refresh-access-continuity: original legacy diagnostics still reject arbitrary unreviewed bytes"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "owner-refresh-access-continuity: rechecks current native bytes after success and refuses a missing file"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "owner-refresh-access-continuity: rejects additional, missing and modified-not-added companion deltas"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "owner-refresh-access-continuity: rejects altered raw parent native evidence"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "owner-refresh-access-continuity: rejects altered raw predecessor native evidence"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "owner-refresh-access-continuity: rejects every changed raw Git companion instead of trusting current files"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "owner-refresh-access-continuity: rejects incorrect and multiple parents instead of relying on ancestry"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "owner-refresh-access-continuity: rejects noncommit commit evidence"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "owner-refresh-access-continuity: rejects noncommit parent evidence"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "owner-refresh-access-continuity: rejects noncommit predecessor evidence"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "owner-refresh-access-continuity: rejects nonregular commit native source modes"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "owner-refresh-access-continuity: rejects nonregular modes for every old and new companion"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "owner-refresh-access-continuity: rejects nonregular parent native source modes"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "owner-refresh-access-continuity: rejects nonregular predecessor native source modes"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "owner-refresh-access-continuity: rejects substituted caller predecessor bytes"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "owner-refresh-access-continuity: rejects unknown or historical current source bytes"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "owner-refresh-access-continuity: rejects unrelated, private and companion paths as native owners"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "owner-refresh-access-continuity: requires all six current companions without restoration or cached admission"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "owner-refresh-access-continuity: verifies actual bounded Git history, current bytes and build-only metadata"
+      },
+      {
+        "file": "tests/cycle33-v1-coordinated-source-admission.test.ts",
+        "api_name": "pins only the two literal sole67 coordinated M1/A2 authors and six immutable companions each"
+      },
+      {
+        "file": "tests/program/cycle16-feature-evidence.test.ts",
+        "api_name": "binds all six exact authored packages and independent review"
+      },
+      {
+        "file": "tests/program/cycle16-feature-evidence.test.ts",
+        "api_name": "exact metadata ownership:addon-readiness-guide"
+      },
+      {
+        "file": "tests/program/cycle16-feature-evidence.test.ts",
+        "api_name": "exact metadata ownership:daily-field-guide"
+      },
+      {
+        "file": "tests/program/cycle16-feature-evidence.test.ts",
+        "api_name": "exact metadata ownership:daily-finance-guide"
+      },
+      {
+        "file": "tests/program/cycle16-feature-evidence.test.ts",
+        "api_name": "exact metadata ownership:owner-briefing-guide"
+      },
+      {
+        "file": "tests/program/cycle16-feature-evidence.test.ts",
+        "api_name": "exact metadata ownership:retention-review-guide"
+      },
+      {
+        "file": "tests/program/cycle16-feature-evidence.test.ts",
+        "api_name": "exact metadata ownership:service-completion-guide"
+      },
+      {
+        "file": "tests/program/cycle16-feature-evidence.test.ts",
+        "api_name": "preserves default-false opt-in and the single original repository host"
+      },
+      {
+        "file": "tests/program/cycle16-feature-evidence.test.ts",
+        "api_name": "preserves the successful Foundation validation workflow byte for byte"
+      },
+      {
+        "file": "tests/program/cycle16-feature-evidence.test.ts",
+        "api_name": "rejects changed author bytes"
+      },
+      {
+        "file": "tests/program/cycle16-feature-evidence.test.ts",
+        "api_name": "rejects foreign author branches, duplicate PR and invalid review identity"
+      },
+      {
+        "file": "tests/program/cycle16-feature-evidence.test.ts",
+        "api_name": "rejects overlap, omitted and extra source files"
+      },
+      {
+        "file": "tests/program/cycle16-feature-evidence.test.ts",
+        "api_name": "rejects wrong source/plan/release identities"
+      },
+      {
+        "file": "tests/v1-daily-field-final-authority.test.ts",
+        "api_name": "OFF denies before any input or source inspection"
+      },
+      {
+        "file": "tests/v1-daily-field-final-authority.test.ts",
+        "api_name": "a real foreign repository cannot replace the retained daily source owner"
+      },
+      {
+        "file": "tests/v1-daily-field-final-authority.test.ts",
+        "api_name": "accessor selection is denied without executing the getter"
+      },
+      {
+        "file": "tests/v1-daily-field-final-authority.test.ts",
+        "api_name": "actual canonical visit revision change withholds retained daily scope"
+      },
+      {
+        "file": "tests/v1-daily-field-final-authority.test.ts",
+        "api_name": "brand 0: final daily guide input read rejects gate_withdrawal before returning scope"
+      },
+      {
+        "file": "tests/v1-daily-field-final-authority.test.ts",
+        "api_name": "brand 0: final daily guide input read rejects native_revocation before returning scope"
+      },
+      {
+        "file": "tests/v1-daily-field-final-authority.test.ts",
+        "api_name": "brand 0: final daily step input read rejects gate_withdrawal before returning scope"
+      },
+      {
+        "file": "tests/v1-daily-field-final-authority.test.ts",
+        "api_name": "brand 0: final daily step input read rejects native_revocation before returning scope"
+      },
+      {
+        "file": "tests/v1-daily-field-final-authority.test.ts",
+        "api_name": "brand 0: ordinary exact daily review and synchronous navigation remain current without writers"
+      },
+      {
+        "file": "tests/v1-daily-field-final-authority.test.ts",
+        "api_name": "brand 1: final daily guide input read rejects gate_withdrawal before returning scope"
+      },
+      {
+        "file": "tests/v1-daily-field-final-authority.test.ts",
+        "api_name": "brand 1: final daily guide input read rejects native_revocation before returning scope"
+      },
+      {
+        "file": "tests/v1-daily-field-final-authority.test.ts",
+        "api_name": "brand 1: final daily step input read rejects gate_withdrawal before returning scope"
+      },
+      {
+        "file": "tests/v1-daily-field-final-authority.test.ts",
+        "api_name": "brand 1: final daily step input read rejects native_revocation before returning scope"
+      },
+      {
+        "file": "tests/v1-daily-field-final-authority.test.ts",
+        "api_name": "brand 1: ordinary exact daily review and synchronous navigation remain current without writers"
+      },
+      {
+        "file": "tests/v1-daily-field-final-authority.test.ts",
+        "api_name": "brand 2: final daily guide input read rejects gate_withdrawal before returning scope"
+      },
+      {
+        "file": "tests/v1-daily-field-final-authority.test.ts",
+        "api_name": "brand 2: final daily guide input read rejects native_revocation before returning scope"
+      },
+      {
+        "file": "tests/v1-daily-field-final-authority.test.ts",
+        "api_name": "brand 2: final daily step input read rejects gate_withdrawal before returning scope"
+      },
+      {
+        "file": "tests/v1-daily-field-final-authority.test.ts",
+        "api_name": "brand 2: final daily step input read rejects native_revocation before returning scope"
+      },
+      {
+        "file": "tests/v1-daily-field-final-authority.test.ts",
+        "api_name": "brand 2: ordinary exact daily review and synchronous navigation remain current without writers"
+      },
+      {
+        "file": "tests/v1-daily-field-final-authority.test.ts",
+        "api_name": "copied guide data grants no current evidence or navigation identity"
+      },
+      {
+        "file": "tests/v1-daily-field-final-authority.test.ts",
+        "api_name": "retained input drift permanently withholds the original guide after restoration"
+      }
+    ],
+    "count": 306,
+    "test_timeout_ms": 30000,
+    "hook_timeout_ms": 30000,
+    "max_workers": 2,
+    "retry": 0,
+    "identities_sha256": "759c73fdf8f2e3d9771abd9729e9acc59be6bb77cc0e4e14b28c5db2ff56d6d5"
+  },
+  "control_gates": [
+    {
+      "key": "field-source",
+      "file": "tests/v1-field-source-admission.test.mjs",
+      "titles": [
+        "exact complete daily Field successor returns source-only false-authority receipt",
+        "literal historical Field native remains valid with all original companions",
+        "rejects wrong-path while preserving original Field pins",
+        "rejects wrong-publisher while preserving original Field pins",
+        "rejects forged-native-pin while preserving original Field pins",
+        "rejects forged-companion-pin while preserving original Field pins",
+        "rejects missing-publisher while preserving original Field pins",
+        "rejects wrong-publisher-parent while preserving original Field pins",
+        "rejects wrong-publisher-delta while preserving original Field pins",
+        "rejects old-native-mode while preserving original Field pins",
+        "rejects old-companion-mode while preserving original Field pins",
+        "rejects old-published-blob while preserving original Field pins",
+        "rejects same-length-old-blob while preserving original Field pins",
+        "rejects missing-author while preserving original Field pins",
+        "rejects wrong-author-parent while preserving original Field pins",
+        "rejects merge-author-parent while preserving original Field pins",
+        "rejects extra-author-delta while preserving original Field pins",
+        "rejects missing-author-companion while preserving original Field pins",
+        "rejects new-native-mode while preserving original Field pins",
+        "rejects new-companion-mode while preserving original Field pins",
+        "rejects wrong-predecessor while preserving original Field pins",
+        "rejects predecessor-mode while preserving original Field pins",
+        "rejects predecessor-companion-drift while preserving original Field pins",
+        "rejects unknown-native while preserving original Field pins",
+        "rejects same-length-unknown-native while preserving original Field pins",
+        "rejects original-companion-drift while preserving original Field pins",
+        "rejects new-test-drift while preserving original Field pins",
+        "rejects new-doc-drift while preserving original Field pins",
+        "rejects new-workflow-drift while preserving original Field pins",
+        "rejects late-authored-workflow while preserving original Field pins",
+        "rejects late-original-companion while preserving original Field pins",
+        "rejects late-native-through-old-doc while preserving original Field pins",
+        "rejects late-native-through-new-doc while preserving original Field pins",
+        "rejects wrong-logical-baseline while preserving original Field pins",
+        "rejects initial-native-drift while preserving original Field pins",
+        "rejects mutated-current-buffer while preserving original Field pins",
+        "rejects mutated-previous-buffer while preserving original Field pins",
+        "every original package field and extra key is denied before Git or equality",
+        "forged endpoint metadata cannot exploit the legacy equality branch",
+        "equal historical Field native cannot bypass any current original companion",
+        "legacy final old-doc read cannot conceal a changed native buffer",
+        "exact source-only candidate and same-tree carrier facts are accepted",
+        "unknown313 and316 parentage cannot enter the standalone source profile",
+        "extra modified files cannot enter the six-path standalone profile",
+        "wrong carrier parents or source tree cannot enter standalone evidence",
+        "candidate identifiers must be complete actual-shaped source identities",
+        "exact control titles and explicit zero counters are accepted",
+        "renamed or duplicate control title cannot be masked by matching counts",
+        "SKIP or TODO annotations are denied with zero summary counters",
+        "missing or duplicate zero counters deny the report",
+        "missing row or not-ok result cannot be replaced by a passing summary",
+        "assume-unchanged cannot hide same-length tracked source mutation",
+        "untracked source additions cannot enter clean source evidence",
+        "working tree symlinks and executable-mode changes cannot hide behind index flags",
+        "actual original C16 consumer admits only the complete reviewed bundle",
+        "actual original C16 consumer rejects forged current-hash metadata before equality",
+        "actual original C16 consumer preserves an injected workflow denial",
+        "published Field successor cannot conceal initially changed buffers during companion reads",
+        "initial input capture precedes every supplied package callback"
+      ],
+      "source": "RETAINED59_NEW_CURRENT_SOURCE_EXECUTION_REQUIRED"
+    },
+    {
+      "key": "main-source",
+      "file": "tests/v1-field-intake-source.test.mjs",
+      "titles": [
+        "inventory final endpoint callback cannot substitute either captured input",
+        "historical C16 argument remains exact through current-forward validation",
+        "direct Field final endpoint callback cannot substitute captured input",
+        "legacy Field final endpoint callback cannot substitute captured input",
+        "new inventory and historical input retain distinct exact source receipts",
+        "inventory denies wrong path without replacing the historical pin",
+        "inventory denies zero pin without replacing the historical pin",
+        "inventory denies new pin without replacing the historical pin",
+        "inventory denies extra metadata without replacing the historical pin",
+        "inventory rejects nonregular test source at 77ff8d00c4659ab8d5054805f7c59e7752c11419",
+        "inventory rejects nonregular test source at 9b2864feda8f766bec84f7e710fe0be5c534bf45",
+        "inventory rejects nonregular test source at 8e634b247e09ee589d3a797f5fbfb4651c7146e5",
+        "inventory rejects nonregular test source at 3660a7e6e3d260f0cef54200f723074278f155d7",
+        "inventory rejects nonregular test source at d62aa76ae03d64863c12dc92ce6f030e37974518",
+        "inventory rejects additional parent or author paths at 77ff8d00c4659ab8d5054805f7c59e7752c11419",
+        "inventory rejects additional parent or author paths at 8e634b247e09ee589d3a797f5fbfb4651c7146e5",
+        "inventory rejects arbitrary changed current source",
+        "inventory rejects changed current companion docs/program/V1_C16_FIELD_INVENTORY.md",
+        "inventory rejects changed current companion docs/program/CYCLE16_DELIVERY_INDEX.json",
+        "inventory captures both supplied buffers before the first history callback",
+        "historical compatibility cannot hide a changed current forward note",
+        "constructed TAP positive requires exact literal identities and zero counters",
+        "constructed TAP rejects failure counter",
+        "constructed TAP rejects duplicate identity",
+        "constructed TAP rejects skipped annotation",
+        "constructed TAP rejects missing plan",
+        "constructed native report preserves API and producer full names separately",
+        "constructed native report rejects missing literal identity",
+        "constructed native report rejects incorrect full name",
+        "constructed native report rejects pending case",
+        "constructed native report rejects runtime failure",
+        "constructed native report rejects exceeded original budget",
+        "constructed capture metadata cannot substitute source or infer visual approval",
+        "synthetic PNG decoder requires complete bytes and actual pixels",
+        "constructed default report preserves completed passing evidence",
+        "constructed default report preserves completed genuine failure",
+        "constructed default report rejects observer final failed state against successful JSON",
+        "constructed default report rejects observer incremental failed state against successful JSON",
+        "constructed default report rejects observer failed terminal reason against successful JSON",
+        "constructed default report rejects observer passing case errors against successful JSON",
+        "constructed source profile preserves the complete literal control inventories",
+        "constructed source profile rejects field-source missing literal identity",
+        "constructed source profile rejects field-source renamed literal identity",
+        "constructed source profile rejects field-source extra literal identity",
+        "constructed source profile rejects main-source missing literal identity",
+        "constructed source profile rejects main-source renamed literal identity",
+        "constructed source profile rejects main-source extra literal identity",
+        "constructed source profile rejects reporter missing literal identity",
+        "constructed source profile rejects reporter renamed literal identity",
+        "constructed source profile rejects reporter extra literal identity",
+        "constructed default completeness preserves exact source file collection",
+        "constructed default completeness rejects a consistent subset of source files",
+        "constructed default completeness rejects a missing collection event"
+      ],
+      "source": "FINAL_ROOT53_LITERAL_INVENTORY_PRIOR50_PLUS_NEW_COMPLETENESS3_FULL_FROZEN_EXECUTION_PENDING"
+    },
+    {
+      "key": "reporter",
+      "file": "tests/v1-default-unit-reporter.test.mjs",
+      "titles": [
+        "failed case retains original identity, budget and stack immediately",
+        "records passed without promoting or normalizing its result",
+        "records failed without promoting or normalizing its result",
+        "records pending without promoting or normalizing its result",
+        "records skipped without promoting or normalizing its result",
+        "ready event is retained when execution never supplies an outcome",
+        "event ordering and observer-only resource samples remain explicit",
+        "module collection retains literal pending and skipped cases",
+        "collection errors are preserved before any case execution",
+        "interrupted final reason and unhandled failures stay separate",
+        "duplicate final observation is denied without replacing the first",
+        "error serialization handles non-Error values without discarding them",
+        "new evidence file cannot overwrite a previous partial run",
+        "artifact directory symlink cannot redirect reporter writes",
+        "omitted configured retry records the pinned effective default separately"
+      ],
+      "source": "FINAL_ROOT15_LITERAL_REPORTER_INVENTORY_PRIOR14_PLUS_NEW_RETRY_METADATA_CASE_FULL_FROZEN_EXECUTION_PENDING"
+    }
+  ],
+  "browser": {
+    "config": "tests/program/playwright.v1-field-intake.config.ts",
+    "field": {
+      "file": "cycle16-field.spec.ts",
+      "count": 9,
+      "timeout_ms": 90000,
+      "workers": 2,
+      "projects": ["desktop", "tablet", "mobile"],
+      "cases": [
+        "[\"desktop\",\"cycle16-field.spec.ts\",5,3,\"daily field guide / cunningham\"]",
+        "[\"desktop\",\"cycle16-field.spec.ts\",5,3,\"daily field guide / roofing-example\"]",
+        "[\"desktop\",\"cycle16-field.spec.ts\",5,3,\"daily field guide / straight-edge\"]",
+        "[\"mobile\",\"cycle16-field.spec.ts\",5,3,\"daily field guide / cunningham\"]",
+        "[\"mobile\",\"cycle16-field.spec.ts\",5,3,\"daily field guide / roofing-example\"]",
+        "[\"mobile\",\"cycle16-field.spec.ts\",5,3,\"daily field guide / straight-edge\"]",
+        "[\"tablet\",\"cycle16-field.spec.ts\",5,3,\"daily field guide / cunningham\"]",
+        "[\"tablet\",\"cycle16-field.spec.ts\",5,3,\"daily field guide / roofing-example\"]",
+        "[\"tablet\",\"cycle16-field.spec.ts\",5,3,\"daily field guide / straight-edge\"]"
+      ],
+      "collection_sha256": "91edf57e586255ac9c28e7b315c18d932c2586f8d64bf110f69417be0e988d95"
+    },
+    "off": {
+      "file": "cycle16-default-off.spec.ts",
+      "count": 3,
+      "timeout_ms": 90000,
+      "workers": 2,
+      "projects": ["desktop", "tablet", "mobile"],
+      "cases": [
+        "[\"desktop\",\"cycle16-default-off.spec.ts\",2,1,\"production keeps the operating center and guided paths closed\"]",
+        "[\"mobile\",\"cycle16-default-off.spec.ts\",2,1,\"production keeps the operating center and guided paths closed\"]",
+        "[\"tablet\",\"cycle16-default-off.spec.ts\",2,1,\"production keeps the operating center and guided paths closed\"]"
+      ],
+      "collection_sha256": "b751f035696b0fa3bce089c1605b1907b2650cf577a62a0038a9e720f6085f0a"
+    }
+  },
+  "original_policies": {
+    "files": {
+      "vite.config.ts": "0fdc8ac3b8d922c2229a25d67d0b42ab3c895489bfc7ee514aae0c78853bf48d",
+      "playwright.config.ts": "d15e9c4d8f4984878a5cf60bb50e853a1c4fbc9b3de98f380850cd375e553078",
+      "tests/program/playwright.cycle16.config.ts": "dca2c89dda08bc3640e06927f600e90ec3c9b498287ee1a606c710e1f847637a",
+      "tests/program/playwright.cycle16-off.config.ts": "206fa851e7fa069a1a5beb06ec43901603a5ffec8f89e89bccd29621e8723cec",
+      "tests/program/cycle16-field.spec.ts": "a724ac71aadce78115944648678120532fa159fafab7f86643aaf50a99c45f1f",
+      "tests/program/cycle16-default-off.spec.ts": "ab4b571d08efc90d248ff813c1a3872159d76b8f4b3e4c5fc3dbf062184e22d4",
+      "tests/program/cycle16-browser-helpers.ts": "e9d521f24ac2bd315830a62fd4154969abdd69d8555150d418a383ee4893472e",
+      "recovery/monterey/requirements.lock": "548b714984acb70b317815fe97b22132aafd866661874bc09d19e220c2f85d8f",
+      "scripts/test-recovery.mjs": "95974379bce3208a0b7fcafd1e04535ab1a1381b04ca20d98ab9c0b61c24745d",
+      "scripts/foundation-command-supplement.mjs": "2bcde60ae62cad73a53a0ece1b83d1abd98b4c722ef87dbff85d31b8ed5ba065"
+    },
+    "default_browser_body_budgets": {
+      "contractor-design.spec.ts:68:1": 120000,
+      "contractor-design.spec.ts:191:5": 120000,
+      "contractor-design.spec.ts:577:1": 90000,
+      "contractor-phase-b.spec.ts:89:1": 120000,
+      "contractor-phase-b.spec.ts:155:1": 90000,
+      "cycle23-source-consistency.spec.ts:425:3": 150000,
+      "cycle23-source-consistency.spec.ts:609:3": 150000,
+      "cycle23-source-consistency.spec.ts:870:3": 150000,
+      "cycle24-native-actions.spec.ts:299:3": 150000,
+      "maintenance-center.spec.ts:39:1": 60000,
+      "repair-draft.spec.ts:6:1": 90000,
+      "repair-readiness.spec.ts:59:1": 120000
+    },
+    "default_browser_projects": [
+      "desktop",
+      "tablet",
+      "mobile",
+      "desktop-journey",
+      "tablet-journey",
+      "mobile-journey"
+    ],
+    "default_browser_job_minutes": 45,
+    "default_unit_job_minutes": 45,
+    "default_unit_max_workers": 4,
+    "recovery_staging_job_minutes": 15,
+    "python": "3.13.16",
+    "node": "24.22.2"
+  },
+  "protected": {
+    "hashes": 128,
+    "design_files": 5,
+    "design_bindings": 13,
+    "features": 25
+  },
+  "authority": "SOURCE_AND_TEST_EVIDENCE_ONLY_NOT_OPERATIONAL_ACCEPTANCE",
+  "full_foundation_pass": false,
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "expected_tracked_files": 2224
+}

@@ -1,0 +1,153 @@
+name: Field integration and original missing coverage evidence
+on:
+  push:
+    branches: ['codex/v1-field-only-candidate']
+  pull_request:
+    branches: ['codex/v1-sales-finance-candidate']
+    paths: ['.github/workflows/v1-field-intake-integration.yml']
+permissions:
+  contents: read
+concurrency:
+  group: v1-field-intake-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  core:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - run: node scripts/v1-field-intake-integration.mjs bind core
+      - run: npm ci
+      - name: Exact current source and report controls
+        run: node scripts/v1-field-intake-integration.mjs controls
+      - name: Original retained source consumers and protected features
+        run: |
+          node scripts/check-cycle21.mjs
+          node scripts/check-cycle22.mjs
+          node scripts/check-cycle23.mjs
+          node scripts/check-cycle24.mjs
+          npm run features:check
+      - name: Runtime collection without executing native cases
+        run: node scripts/v1-field-intake-integration.mjs collect-native
+      - name: Exact selected306 native cases, original30 seconds and two workers
+        run: node scripts/v1-field-intake-integration.mjs native
+      - run: npm run build
+      - run: npx --no-install playwright install --with-deps chromium
+      - run: node scripts/v1-field-intake-integration.mjs collect-browser field
+      - run: node scripts/v1-field-intake-integration.mjs browser field
+      - run: node scripts/v1-field-intake-integration.mjs collect-browser off
+      - run: node scripts/v1-field-intake-integration.mjs browser off
+      - name: Decode all9 original Field PNGs and bind capture metadata
+        run: node scripts/v1-field-intake-integration.mjs screenshots
+      - if: always()
+        run: node scripts/v1-field-intake-integration.mjs final core
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: field-core-${{ github.sha }}
+          path: |
+            artifacts/cycle33/v1-field-intake/core/
+            artifacts/cycle16/field-daily-evidence-*.png
+            artifacts/cycle16/field-daily-evidence-*.json
+          if-no-files-found: error
+  default-unit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - run: node scripts/v1-field-intake-integration.mjs bind default-unit
+      - run: npm ci
+      - name: Original default npm test with incremental failure and resource evidence
+        run: node scripts/v1-field-intake-integration.mjs default-unit
+      - if: always()
+        name: Preserve complete or partial outcomes without inferring completion
+        run: node scripts/v1-field-intake-integration.mjs inspect-default-unit
+      - if: always()
+        run: node scripts/v1-field-intake-integration.mjs final default-unit
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: field-default-unit-${{ github.sha }}
+          path: artifacts/cycle33/v1-field-intake/default-unit/
+          if-no-files-found: error
+  recovery-staging:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.16'
+      - run: node scripts/v1-field-intake-integration.mjs bind recovery-staging
+      - run: npm ci
+      - name: Original operational recovery dependency lock
+        run: >-
+          python -m pip install --require-hashes --only-binary=:all:
+          -r recovery/monterey/requirements.lock
+      - name: Original temporary-fixture unittest command and offline staging plan
+        run: node scripts/v1-field-intake-integration.mjs recovery-staging
+      - if: always()
+        run: node scripts/v1-field-intake-integration.mjs final recovery-staging
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: field-recovery-staging-${{ github.sha }}
+          path: artifacts/cycle33/v1-field-intake/recovery-staging/
+          if-no-files-found: error
+  default-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - run: node scripts/v1-field-intake-integration.mjs bind default-browser
+      - run: npm ci
+      - run: npx --no-install playwright install --with-deps chromium
+      - name: Actual original default six-project collection
+        run: node scripts/v1-field-intake-integration.mjs collect-default-browser
+      - name: Original npm run test:browser with unchanged defaults
+        run: node scripts/v1-field-intake-integration.mjs default-browser
+      - if: always()
+        name: Decode current-job PNGs and preserve whole-job source qualification
+        run: node scripts/v1-field-intake-integration.mjs current-images default-browser
+      - if: always()
+        run: node scripts/v1-field-intake-integration.mjs final default-browser
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: field-default-browser-${{ github.sha }}
+          path: |
+            artifacts/
+            test-results/
+          if-no-files-found: error

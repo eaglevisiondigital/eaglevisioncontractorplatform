@@ -1,0 +1,42 @@
+name: Exact daily Field source successor admission
+on:
+  push:
+    branches: ['codex/v1-field-source-admission']
+  pull_request:
+    branches: ['codex/v1-field-maintenance-continuity']
+    paths: ['.github/workflows/v1-field-source-admission.yml']
+permissions:
+  contents: read
+concurrency:
+  group: v1-field-source-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  source-admission:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      CANDIDATE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+      - run: node scripts/v1-field-source-admission.mjs bind
+      - name: Original C16 and inherited C17 source consumers only
+        run: |
+          node scripts/check-cycle16-integrity.mjs
+          node scripts/check-cycle17-integrity.mjs
+          node scripts/feature-evidence.mjs --check
+      - name: Fifty-nine source and report controls only
+        run: node --test --test-concurrency=1 --test-timeout=30000 --test-reporter=tap tests/v1-field-source-admission.test.mjs > artifacts/cycle33/v1-field-source-admission/controls.tap
+      - run: node scripts/v1-field-source-admission.mjs controls
+      - if: always()
+        run: node scripts/v1-field-source-admission.mjs final
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: field-source-admission-${{ github.sha }}
+          path: artifacts/cycle33/v1-field-source-admission
+          if-no-files-found: error
