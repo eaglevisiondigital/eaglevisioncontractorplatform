@@ -1,0 +1,147 @@
+{
+  "schema": "propel-v1-field-intake-foundation-gaps-v1",
+  "authority": "SOURCE_EVIDENCE_NOT_OPERATIONAL_ACCEPTANCE",
+  "frozen_parent": "676e12fd14f75f754a19bf5606a935456853a783",
+  "retained_parent_dedicated": {
+    "push_run": 42432044323,
+    "pr_run": 42432051483,
+    "each_native": 110,
+    "each_source_controls": 43,
+    "each_constructed_report_controls": 8,
+    "each_browser": 18,
+    "each_off": 3,
+    "each_png_source_pairs": 63,
+    "each_tracked_bindings": 2205,
+    "independent_review_sha256": "5a1ae1cd89b2971e775f0e74c85558839f36af2410158ffb66dfb7e158e38160",
+    "not_transferred_to_new_head": true
+  },
+  "foundation_events": [
+    {
+      "run": 42432044244,
+      "verify_job": 128582862077,
+      "head": "676e12fd14f75f754a19bf5606a935456853a783",
+      "workflow_classification": "CANCELLED",
+      "provider_cause": "The job has exceeded the maximum execution time of 45m0s",
+      "log_sha256": "dbf78d59d96ba6a260bb5b84f7e7a27461c8e4a7e3cf7731eb86e07c47789704",
+      "observed_failed_rows": [
+        {
+          "line": 1531,
+          "text": "   \u00d7 finance: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay 30710ms"
+        },
+        {
+          "line": 1532,
+          "text": "   \u00d7 finance: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay 30859ms"
+        },
+        {
+          "line": 2490,
+          "text": "   \u00d7 actual C22 consumer retains original manifests, exact legacy results and protected scope 183ms"
+        },
+        {
+          "line": 2491,
+          "text": "   \u00d7 actual C23 consumer retains original manifests, exact legacy results and protected scope 28ms"
+        },
+        {
+          "line": 2732,
+          "text": "     \u00d7 validates all25 published author files and473 retained paths while review is honestly pending 1208ms"
+        },
+        {
+          "line": 2748,
+          "text": "     \u00d7 published independent evidence is required before complete source acceptance 22ms"
+        },
+        {
+          "line": 2817,
+          "text": "     \u00d7 validates all25 published author files and498 retained paths while review is honestly pending 1324ms"
+        },
+        {
+          "line": 2834,
+          "text": "     \u00d7 published independent evidence is required before complete source acceptance 35ms"
+        }
+      ],
+      "complete_final_json": "NOT_PRODUCED",
+      "default_unit_collection": "INCOMPLETE",
+      "operational_lock_package_install": "PASS_NOT_RECOVERY_COMMAND",
+      "recovery_command": "NOT_REACHED",
+      "staging_plan": "SKIPPED",
+      "default_browser": "SKIPPED",
+      "postgres17_sibling": "PROVIDER_JOB_SUCCESS_SEPARATE_SCOPE"
+    },
+    {
+      "run": 42432051638,
+      "verify_job": 128582883931,
+      "head": "676e12fd14f75f754a19bf5606a935456853a783",
+      "workflow_classification": "CANCELLED",
+      "provider_cause": "The job has exceeded the maximum execution time of 45m0s",
+      "log_sha256": "7278f73a2d73c30b6fcdcf2a7fe1859ec73bbc9ed53ba61a6ab846f64aef903e",
+      "observed_failed_rows": [
+        {
+          "line": 1551,
+          "text": "   \u00d7 finance: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay 30248ms"
+        },
+        {
+          "line": 1552,
+          "text": "   \u00d7 finance: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay 31028ms"
+        },
+        {
+          "line": 2507,
+          "text": "   \u00d7 actual C22 consumer retains original manifests, exact legacy results and protected scope 176ms"
+        },
+        {
+          "line": 2508,
+          "text": "   \u00d7 actual C23 consumer retains original manifests, exact legacy results and protected scope 29ms"
+        },
+        {
+          "line": 2753,
+          "text": "     \u00d7 validates all25 published author files and473 retained paths while review is honestly pending 1283ms"
+        },
+        {
+          "line": 2769,
+          "text": "     \u00d7 published independent evidence is required before complete source acceptance 25ms"
+        },
+        {
+          "line": 2838,
+          "text": "     \u00d7 validates all25 published author files and498 retained paths while review is honestly pending 1375ms"
+        },
+        {
+          "line": 2855,
+          "text": "     \u00d7 published independent evidence is required before complete source acceptance 28ms"
+        }
+      ],
+      "complete_final_json": "NOT_PRODUCED",
+      "default_unit_collection": "INCOMPLETE",
+      "operational_lock_package_install": "PASS_NOT_RECOVERY_COMMAND",
+      "recovery_command": "NOT_REACHED",
+      "staging_plan": "SKIPPED",
+      "default_browser": "SKIPPED",
+      "postgres17_sibling": "PROVIDER_JOB_SUCCESS_SEPARATE_SCOPE"
+    }
+  ],
+  "six_source_cases": {
+    "original_at316": "6_FAIL_LOCAL_REPRODUCTION_MATCHING_HOSTED_FAILED_IDENTITIES",
+    "demonstrated_cause": "Retained C22 Sales source equality rejects reviewed76fc; C23 inherits and repeats this check",
+    "source_runtime_unchanged": true,
+    "original_assertions_and_budgets_unchanged": true,
+    "new_head_execution": "PENDING_EXACT_FROZEN_HEAD"
+  },
+  "two_C18_finance_rows": {
+    "classification": "ORIGINAL_30S_FAILED_ROWS_NO_COMPLETE_HOSTED_STACK",
+    "cause": "UNKNOWN",
+    "not_reclassified_as_provider_cancellation_only": true
+  },
+  "historical_270": {
+    "push": "270_PASS",
+    "pr": "249_PASS_21_FAIL",
+    "deadlines": 18,
+    "assertions": 3,
+    "exclusive_cause": "UNKNOWN",
+    "no_budget_or_orchestration_change": true
+  },
+  "historical_305": {
+    "each_browser_command": "399_PASS",
+    "final_cleanliness": "FAIL",
+    "final_dirty_path_inventory": "NOT_PRODUCED_OR_RETAINED",
+    "final_tracked_bytes": "UNKNOWN",
+    "finance_screenshots_exclusive_cause": "NOT_ESTABLISHED"
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "A01_A12": "NOT_RUN"
+}
