@@ -73,6 +73,16 @@ const sourceLineage: {
   new URL('../scripts/cycle25-source-lineage.mjs', import.meta.url).href
 );
 
+const fieldSource: {
+  validateFieldPublishedSource: (
+    file: { path: string; sha256: string },
+    current: Buffer,
+    originalPackage: unknown,
+  ) => Record<string, unknown> | void;
+} = await import(
+  new URL('../scripts/v1-field-source-admission.mjs', import.meta.url).href
+);
+
 // Independent consumers compose actual retained readers. Setup alone creates the
 // existing disposable fixtures; no mocked business records or parallel engines.
 beforeEach(() =>
@@ -574,7 +584,26 @@ it('the combined candidate contains the exact thirty disjoint author blobs recor
       const bytes = readFileSync(f.path),
         actual = createHash('sha256').update(bytes).digest('hex');
       if (actual === f.sha256) expect(actual).toBe(f.sha256);
-      else {
+      else if (f.path === 'src/lib/workflows/daily-field-guide.ts') {
+        expect({
+          path: f.path,
+          publishedCommit: p.head_commit,
+          sha256: f.sha256,
+        }).toEqual({
+          path: 'src/lib/workflows/daily-field-guide.ts',
+          publishedCommit: '7eee0b4527646c470d3604b6d21ac7578d073fee',
+          sha256:
+            '6fcaea74f19b422424e0b562d91fb94e1d9654b0598b20c6551d3ba405c5410d',
+        });
+        expect(fieldSource.validateFieldPublishedSource(f, bytes, p)).toEqual({
+          path: f.path,
+          source_commit: 'd977c78991aefed65f28fb643c30f92e5ecc6f7c',
+          original_publisher: '7eee0b4527646c470d3604b6d21ac7578d073fee',
+          authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+          business_authority: false,
+          restore_adapter: false,
+        });
+      } else {
         // Keep the original index and source proof; only this exact reviewed
         // successor may differ, with its original bytes and companions checked.
         expect({
