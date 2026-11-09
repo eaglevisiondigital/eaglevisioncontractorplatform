@@ -1,3 +1,14 @@
+import {
+  acquireForecastSave,
+  exactForecastSource,
+  forecastChanged,
+  forecastConflicts,
+  forecastValue,
+  reconcileForecast,
+  forecastHeld,
+  holdForecast,
+  type ForecastChoices,
+} from './job-forecast-conflicts';
 import { ExpenseManagementReview } from './ExpenseManagementReview';
 import {
   materialExpenseEvidence,
@@ -6,7 +17,7 @@ import {
 import { BackOfficeText } from '../property/back-office-copy';
 import type { Operations } from '../../lib/operations';
 import { PropertyJobReview } from '../property/PropertyJobReview';
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useLayoutEffect } from 'react';
 import type { Phase3Repository } from '../../lib/phase3';
 import type { CompanyProfile } from '../../domain/platform';
 import {
@@ -52,9 +63,11 @@ export function Jobs({
       [repo, company.id, canManage],
     ),
   );
-  const job = jobId
+  const selectedJob = jobId
     ? data.data?.jobs.find((j) => j.id === jobId)
     : data.data?.jobs[0];
+  const job =
+    selectedJob?.organization_id === company.id ? selectedJob : undefined;
   return (
     <article className="p3-workspace">
       <div className="section-title">
@@ -127,11 +140,11 @@ export function Jobs({
   );
 }
 function JobDetail({
-  job,
+  job: loadedJob,
   repo,
   company,
   admin,
-  refresh,
+  refresh: refreshParent,
 }: {
   job: Job;
   repo: Phase3Repository;
@@ -140,9 +153,154 @@ function JobDetail({
   refresh: () => void;
 }) {
   const task = useTask();
+  const [recovered, setRecovered] = useState<{ loaded: Job; current: Job }>();
+  const job = recovered?.loaded === loadedJob ? recovered.current : loadedJob;
+  const refresh = () => {
+    setRecovered(undefined);
+    refreshParent();
+  };
+  const [forecastBase, setForecastBase] = useState(loadedJob);
   const [projection, setProjection] = useState(() =>
-    structuredClone(job.projection),
+    structuredClone(loadedJob.projection),
   );
+  const [forecastBusy, setForecastBusy] = useState(false);
+  const [forecastMessage, setForecastMessage] = useState('');
+  const [conflictRecord, setConflict] = useState<{
+    repo: Phase3Repository;
+    loaded: Job;
+    base: Job;
+    entered: typeof projection;
+    latest: Job;
+  }>();
+  const conflict =
+    conflictRecord?.repo === repo &&
+    conflictRecord.loaded === loadedJob &&
+    conflictRecord.base.organization_id === company.id
+      ? conflictRecord
+      : undefined;
+  const [choices, setChoices] = useState<ForecastChoices>({});
+  const [mergeConfirmed, setMergeConfirmed] = useState(false);
+  const [inputRevision, setInputRevision] = useState(0);
+  const forecastRunning = useRef(false);
+  const mounted = useRef(false);
+  const contextGeneration = useRef(0);
+  useLayoutEffect(() => {
+    contextGeneration.current++;
+    mounted.current = true;
+    return () => {
+      mounted.current = false;
+    };
+  }, [repo, company.id, loadedJob]);
+  const held = forecastHeld(repo, company.id, job.id);
+  const forecastLabels = {
+    materials: 'remaining materials',
+    labor: 'remaining labor',
+    subcontractors: 'remaining subcontractors',
+    equipment: 'remaining equipment',
+    other: 'remaining other costs',
+    overrun_bps: 'cost overrun threshold',
+    erosion_bps: 'margin erosion threshold',
+    costs_complete: 'cost completion confirmation',
+  };
+  const displayForecastValue = (
+    p: typeof projection,
+    field: keyof typeof forecastLabels,
+  ) => {
+    const value = forecastValue(p, field);
+    return typeof value === 'boolean'
+      ? value
+        ? 'Confirmed'
+        : 'Unconfirmed'
+      : field === 'overrun_bps' || field === 'erosion_bps'
+        ? `${value / 100}${field === 'erosion_bps' ? ' percentage points' : '%'}`
+        : formatMinor(value, job.baseline.currency);
+  };
+  async function saveForecast() {
+    if (forecastRunning.current || held) return;
+    forecastRunning.current = true;
+    setForecastBusy(true);
+    setForecastMessage('');
+    const entered = structuredClone(projection);
+    let invoked = false;
+    let release: (() => void) | undefined;
+    const generation = contextGeneration.current;
+    try {
+      release = acquireForecastSave(repo, company.id, forecastBase.id);
+      jobFinancials({ ...forecastBase, projection: entered });
+      const latest = (await repo.jobs(company.id)).find(
+        (j) => j.id === forecastBase.id,
+      );
+      if (!mounted.current || generation !== contextGeneration.current) return;
+      if (forecastHeld(repo, company.id, forecastBase.id))
+        throw Error('Forecast outcome UNKNOWN; exact read only');
+      exactForecastSource(company.id, forecastBase, latest);
+      if (forecastChanged(forecastBase, latest)) {
+        setConflict({
+          repo,
+          loaded: loadedJob,
+          base: forecastBase,
+          entered,
+          latest,
+        });
+        setChoices({});
+        setMergeConfirmed(false);
+        setForecastMessage(
+          'Job changed. Resolve the saved and entered forecast before a new Save. No write was attempted.',
+        );
+        return;
+      }
+      if (
+        !mounted.current ||
+        generation !== contextGeneration.current ||
+        forecastHeld(repo, company.id, forecastBase.id)
+      )
+        return;
+      invoked = true;
+      await repo.projection(company.id, forecastBase, entered);
+      if (mounted.current && generation === contextGeneration.current) {
+        setForecastMessage('Forecast saved');
+        refresh();
+      }
+    } catch (error) {
+      if (invoked) holdForecast(repo, company.id, forecastBase.id);
+      if (mounted.current && generation === contextGeneration.current)
+        setForecastMessage(
+          invoked
+            ? 'Forecast outcome UNKNOWN. Read the exact saved job; no retry is enabled.'
+            : error instanceof Error
+              ? error.message
+              : 'Forecast unavailable',
+        );
+    } finally {
+      release?.();
+      forecastRunning.current = false;
+      if (mounted.current) setForecastBusy(false);
+    }
+  }
+  async function readHeldForecast() {
+    if (forecastRunning.current) return;
+    forecastRunning.current = true;
+    setForecastBusy(true);
+    const generation = contextGeneration.current;
+    try {
+      const latest = (await repo.jobs(company.id)).find(
+        (j) => j.id === forecastBase.id,
+      );
+      if (!mounted.current || generation !== contextGeneration.current) return;
+      exactForecastSource(company.id, forecastBase, latest);
+      setForecastMessage(
+        `Exact saved job revision ${latest.lock_revision}; remaining costs: ${costCategories.map((c) => `${c} ${formatMinor(latest.projection.remaining[c], latest.baseline.currency)}`).join(', ')}. UNKNOWN attempt remains held; a matching value is not a command receipt.`,
+      );
+    } catch {
+      if (mounted.current && generation === contextGeneration.current)
+        setForecastMessage(
+          'Exact saved forecast unavailable. UNKNOWN remains held.',
+        );
+    } finally {
+      forecastRunning.current = false;
+      if (mounted.current) setForecastBusy(false);
+    }
+  }
   const [importBundle, setImportBundle] = useState<EstimateBundle>();
   const [authorizations, setAuthorizations] = useState<Record<string, string>>(
     {},
@@ -268,7 +426,8 @@ function JobDetail({
         <div className="form-grid">
           {costCategories.map((category) => (
             <Money
-              key={category}
+              key={`${category}-${inputRevision}`}
+              disabled={forecastBusy || held || !!conflict}
               label={`Remaining ${category}`}
               currency={job.baseline.currency}
               value={projection.remaining[category]}
@@ -281,11 +440,15 @@ function JobDetail({
             />
           ))}
           <Percent
+            key={`overrun-${inputRevision}`}
+            disabled={forecastBusy || held || !!conflict}
             label="Cost overrun threshold %"
             value={projection.overrun_bps}
             onChange={(n) => setProjection({ ...projection, overrun_bps: n })}
           />
           <Percent
+            key={`erosion-${inputRevision}`}
+            disabled={forecastBusy || held || !!conflict}
             label="Margin erosion threshold · percentage points"
             value={projection.erosion_bps}
             onChange={(n) => setProjection({ ...projection, erosion_bps: n })}
@@ -294,6 +457,7 @@ function JobDetail({
         <label className="checkbox-label">
           <input
             type="checkbox"
+            disabled={forecastBusy || held || !!conflict}
             checked={projection.costs_complete}
             onChange={(e) =>
               setProjection({ ...projection, costs_complete: e.target.checked })
@@ -303,17 +467,107 @@ function JobDetail({
           commitments and reviews must also be cleared.
         </label>
         <button
-          disabled={task.busy || !!projectionError}
-          onClick={() =>
-            void task.run(async () => {
-              await repo.projection(company.id, job, projection);
-              refresh();
-            }, 'Forecast saved')
-          }
+          disabled={forecastBusy || held || !!conflict || !!projectionError}
+          onClick={() => void saveForecast()}
         >
           <BackOfficeText text="Save job forecast" />
         </button>
       </details>
+      {conflict &&
+        conflict.repo === repo &&
+        conflict.loaded === loadedJob &&
+        conflict.base.organization_id === company.id && (
+          <div
+            className="operational-form"
+            role="group"
+            aria-label="Resolve job forecast changes"
+          >
+            <p>
+              Saved revision {conflict.latest.lock_revision}. Independent
+              changes can be retained together; conflicting values require your
+              choice. No forecast is saved until you apply these choices and
+              explicitly Save again. Cost completion must be confirmed again
+              after source changes.
+            </p>
+            {forecastConflicts(
+              company.id,
+              conflict.base,
+              conflict.entered,
+              conflict.latest,
+            ).map((field) => (
+              <Field key={field} label={`Resolve ${forecastLabels[field]}`}>
+                <select
+                  value={choices[field] ?? ''}
+                  onChange={(e) => {
+                    setChoices({
+                      ...choices,
+                      [field]: e.target.value as 'entered' | 'saved',
+                    });
+                    setMergeConfirmed(false);
+                  }}
+                >
+                  <option value="">Choose a value</option>
+                  <option value="saved">
+                    Saved:{' '}
+                    {displayForecastValue(conflict.latest.projection, field)}
+                  </option>
+                  <option value="entered">
+                    Entered: {displayForecastValue(conflict.entered, field)}
+                  </option>
+                </select>
+              </Field>
+            ))}
+            <label>
+              <input
+                type="checkbox"
+                checked={mergeConfirmed}
+                onChange={(e) => setMergeConfirmed(e.target.checked)}
+              />{' '}
+              I reviewed these saved changes and my entered forecast.
+            </label>
+            <button
+              disabled={!mergeConfirmed}
+              onClick={() => {
+                try {
+                  const next = reconcileForecast(
+                    company.id,
+                    conflict.base,
+                    conflict.entered,
+                    conflict.latest,
+                    choices,
+                  );
+                  setProjection(next);
+                  setForecastBase(conflict.latest);
+                  setRecovered({ loaded: loadedJob, current: conflict.latest });
+                  setInputRevision((n) => n + 1);
+                  setConflict(undefined);
+                  setMergeConfirmed(false);
+                  setForecastMessage(
+                    'Reviewed changes applied to working forecast. Cost completion is unconfirmed. Save explicitly to record this forecast.',
+                  );
+                } catch (error) {
+                  setForecastMessage(
+                    error instanceof Error
+                      ? error.message
+                      : 'Resolve every conflict',
+                  );
+                }
+              }}
+            >
+              Apply reviewed forecast changes
+            </button>
+          </div>
+        )}
+      {held && (
+        <button
+          className="secondary"
+          disabled={forecastBusy}
+          onClick={() => void readHeldForecast()}
+        >
+          Read exact saved forecast
+        </button>
+      )}
+      {forecastMessage && <p role="status">{forecastMessage}</p>}
       {projectionError && <p role="alert">{projectionError}</p>}
       <h3>
         <BackOfficeText text="Labor cost & hours" />

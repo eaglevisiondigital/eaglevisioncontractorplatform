@@ -1791,3 +1791,225 @@ for (const company of sampleCompanies)
       ),
     ).toBe(true);
   });
+
+for (const [brand, company] of sampleCompanies.entries()) {
+  test(`job forecast resolves real form conflicts before original Save and reopen / ${company.slug}`, async ({
+    page,
+  }) => {
+    await page.goto(`/preview-job-forecast-test.html?brand=${brand}`);
+    await page
+      .getByText('Update remaining costs & warning thresholds', { exact: true })
+      .click();
+    await page
+      .getByLabel('Remaining materials', { exact: true })
+      .fill('111.11');
+    await page
+      .getByRole('button', {
+        name: 'Simulate independent forecast save',
+        exact: true,
+      })
+      .click();
+    await expect(
+      page.getByRole('status').filter({ hasText: 'Other actor saved' }),
+    ).toBeVisible();
+    await page
+      .getByRole('button', { name: 'Save job forecast', exact: true })
+      .click();
+    const conflict = page.getByRole('group', {
+      name: 'Resolve job forecast changes',
+      exact: true,
+    });
+    await expect(conflict).toBeVisible();
+    await page
+      .getByRole('button', { name: 'Read writer call count', exact: true })
+      .click();
+    await expect(
+      page.getByRole('status').filter({ hasText: 'Writer calls: 0' }),
+    ).toBeVisible();
+    await conflict.getByRole('checkbox').check();
+    await conflict
+      .getByRole('button', {
+        name: 'Apply reviewed forecast changes',
+        exact: true,
+      })
+      .click();
+    await expect(
+      page
+        .getByRole('status')
+        .filter({ hasText: 'Choose the saved or entered value' }),
+    ).toBeVisible();
+    await conflict
+      .getByRole('combobox', {
+        name: 'Resolve remaining materials',
+        exact: true,
+      })
+      .selectOption('entered');
+    await expect(conflict.getByRole('checkbox')).not.toBeChecked();
+    await conflict.getByRole('checkbox').check();
+    expect(
+      (await new AxeBuilder({ page }).include('.operational-form').analyze())
+        .violations,
+    ).toEqual([]);
+    await conflict
+      .getByRole('button', {
+        name: 'Apply reviewed forecast changes',
+        exact: true,
+      })
+      .click();
+    await expect(conflict).toHaveCount(0);
+    await expect(
+      page.getByLabel('Remaining materials', { exact: true }),
+    ).toHaveValue('111.11');
+    await expect(
+      page.getByLabel('Remaining equipment', { exact: true }),
+    ).toHaveValue('3.33');
+    await expect(
+      page.getByRole('checkbox', { name: /Management confirms all job costs/ }),
+    ).not.toBeChecked();
+    await page
+      .getByRole('button', { name: 'Save job forecast', exact: true })
+      .evaluate((node: HTMLButtonElement) => {
+        node.click();
+        node.click();
+      });
+    await page
+      .getByRole('button', { name: 'Read writer call count', exact: true })
+      .click();
+    await expect(
+      page.getByRole('status').filter({ hasText: 'Writer calls: 1' }),
+    ).toBeVisible();
+    await page
+      .getByRole('button', { name: 'Toggle job workspace', exact: true })
+      .click();
+    await page
+      .getByRole('button', { name: 'Toggle job workspace', exact: true })
+      .click();
+    await page
+      .getByText('Update remaining costs & warning thresholds', { exact: true })
+      .click();
+    await expect(
+      page.getByLabel('Remaining materials', { exact: true }),
+    ).toHaveValue('111.11');
+    await expect(
+      page.getByLabel('Remaining equipment', { exact: true }),
+    ).toHaveValue('3.33');
+    await expect(
+      page.getByText('Projected contribution · incomplete costs', {
+        exact: true,
+      }),
+    ).toBeVisible();
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth + 1,
+      ),
+    ).toBe(true);
+  });
+  test(`job forecast UNKNOWN remains read-only after reopening / ${company.slug}`, async ({
+    page,
+  }) => {
+    await page.goto(`/preview-job-forecast-test.html?brand=${brand}`);
+    await page
+      .getByText('Update remaining costs & warning thresholds', { exact: true })
+      .click();
+    await page
+      .getByLabel('Remaining materials', { exact: true })
+      .fill('123.45');
+    await page
+      .getByRole('button', {
+        name: 'Simulate lost forecast acknowledgment',
+        exact: true,
+      })
+      .click();
+    await page
+      .getByRole('button', { name: 'Save job forecast', exact: true })
+      .click();
+    await expect(
+      page.getByRole('status').filter({ hasText: 'Forecast outcome UNKNOWN' }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole('button', { name: 'Save job forecast', exact: true }),
+    ).toBeDisabled();
+    await page
+      .getByRole('button', { name: 'Toggle job workspace', exact: true })
+      .click();
+    await page
+      .getByRole('button', { name: 'Toggle job workspace', exact: true })
+      .click();
+    await page
+      .getByText('Update remaining costs & warning thresholds', { exact: true })
+      .click();
+    await expect(
+      page.getByRole('button', { name: 'Save job forecast', exact: true }),
+    ).toBeDisabled();
+    await page
+      .getByRole('button', { name: 'Read exact saved forecast', exact: true })
+      .click();
+    await expect(
+      page.getByRole('status').filter({ hasText: 'Exact saved job revision' }),
+    ).toContainText('materials $123.45');
+    await page
+      .getByRole('button', { name: 'Read writer call count', exact: true })
+      .click();
+    await expect(
+      page.getByRole('status').filter({ hasText: 'Writer calls: 1' }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole('button', { name: 'Save job forecast', exact: true }),
+    ).toBeDisabled();
+  });
+}
+
+test('job forecast cancels delayed writes after navigation or a peer UNKNOWN hold', async ({
+  page,
+}) => {
+  for (const mode of ['navigation', 'unknown']) {
+    await page.goto('/preview-job-forecast-test.html');
+    await page
+      .getByText('Update remaining costs & warning thresholds', { exact: true })
+      .click();
+    await page.getByLabel('Remaining materials', { exact: true }).fill('99.99');
+    await page
+      .getByRole('button', { name: 'Pause next forecast read', exact: true })
+      .click();
+    await page
+      .getByRole('button', { name: 'Save job forecast', exact: true })
+      .click();
+    await expect(
+      page.getByRole('button', { name: 'Save job forecast', exact: true }),
+    ).toBeDisabled();
+    if (mode === 'navigation')
+      await page
+        .getByRole('button', { name: 'Toggle job workspace', exact: true })
+        .click();
+    else
+      await page
+        .getByRole('button', { name: 'Simulate peer UNKNOWN', exact: true })
+        .click();
+    await page
+      .getByRole('button', { name: 'Release forecast read', exact: true })
+      .click();
+    if (mode === 'navigation') {
+      await page
+        .getByRole('button', { name: 'Toggle job workspace', exact: true })
+        .click();
+      await expect(
+        page.getByRole('heading', {
+          name: 'Job financial dashboard',
+          exact: true,
+        }),
+      ).toBeVisible();
+    } else {
+      await expect(
+        page
+          .getByRole('status')
+          .filter({ hasText: 'Forecast outcome UNKNOWN' }),
+      ).toBeVisible();
+    }
+    await page
+      .getByRole('button', { name: 'Read writer call count', exact: true })
+      .click();
+    await expect(
+      page.getByRole('status').filter({ hasText: 'Writer calls: 0' }),
+    ).toBeVisible();
+  }
+});
