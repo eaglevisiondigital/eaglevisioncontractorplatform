@@ -4,6 +4,113 @@ import { sampleCompanies } from '../../src/domain/platform';
 import { industryEstimate } from '../../src/domain/estimating/fixtures';
 
 for (const company of sampleCompanies)
+  test(`trade checklist retains exact job scope and unfinished review / ${company.slug}`, async ({
+    page,
+  }) => {
+    await page.goto('/preview/contractor-journey');
+    await page
+      .getByRole('combobox', { name: 'Contractor', exact: true })
+      .selectOption(company.id);
+    const confirm = page.getByLabel(
+      'I confirm this disposable local simulation; no contract, dispatch, invoice or message is authorized.',
+    );
+    await confirm.check();
+    await page
+      .getByRole('button', {
+        name: 'Prepare local synthetic journey',
+        exact: true,
+      })
+      .click();
+    await page
+      .getByLabel('Include literal voice-transcript and trade review')
+      .check();
+    await page
+      .getByRole('textbox', {
+        name: 'Literal synthetic transcript',
+        exact: true,
+      })
+      .fill('Review measurements manually.');
+    await page
+      .getByRole('combobox', {
+        name: 'Human-selected trade edition',
+        exact: true,
+      })
+      .selectOption('roofing');
+    await page
+      .getByLabel(
+        'I confirm review-only suggestions for this exact saved source.',
+      )
+      .check();
+    await page
+      .getByRole('button', {
+        name: 'Prepare source-linked Copilot review',
+        exact: true,
+      })
+      .click();
+    const r = page.getByRole('region', {
+      name: 'Trade checklist and exact job scope',
+      exact: true,
+    });
+    const note = r.getByRole('textbox', {
+      name: 'Unfinished trade review notes',
+      exact: true,
+    });
+    await note.fill('Keep pending site measurements.');
+    const filter = r.getByRole('textbox', {
+      name: 'Filter recorded trade scope',
+      exact: true,
+    });
+    await filter.fill('');
+    await r
+      .getByRole('button', {
+        name: 'Open retained trade checklist beside job scope',
+        exact: true,
+      })
+      .click();
+    await expect(r).toContainText('Documented issued requirements');
+    await expect(r).toContainText('NOT_REVIEWED');
+    await expect(r).toContainText('roofing');
+    await filter.fill('retain my filter');
+    await r
+      .getByRole('button', {
+        name: 'Open exact estimating and job-planning review',
+        exact: true,
+      })
+      .click();
+    await expect(page.locator('#journey-sales')).toBeFocused();
+    await r
+      .getByRole('button', {
+        name: 'Open exact trade job in Field',
+        exact: true,
+      })
+      .click();
+    await expect(page.locator('#journey-field')).toBeFocused();
+    await expect(note).toHaveValue('Keep pending site measurements.');
+    await expect(filter).toHaveValue('retain my filter');
+    expect(
+      (
+        await new AxeBuilder({ page })
+          .include('#journey-intelligence')
+          .analyze()
+      ).violations,
+    ).toEqual([]);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth + 1,
+      ),
+    ).toBe(true);
+    await expect(
+      r.getByRole('button', {
+        name: 'Open retained trade checklist beside job scope',
+        exact: true,
+      }),
+    ).toBeDisabled();
+    await expect(note).toHaveValue('Keep pending site measurements.');
+    await confirm.uncheck();
+    await expect(r).toHaveCount(0);
+  });
+
+for (const company of sampleCompanies)
   test(`network review retains job trade filters and notes / ${company.slug}`, async ({
     page,
   }) => {

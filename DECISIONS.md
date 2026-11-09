@@ -2569,3 +2569,12 @@ recorded active status is not availability. Keep missing partner identities and
 qualification evidence UNKNOWN; no new partner store or matching/writer is authorized.
 Retain source-bound filters/notes through explicit exact-job navigation and hold
 UNKNOWN results. All protected source, design, recovery and release gates persist.
+
+### Lean cycle 14: inspect the original trade review rather than prepare another
+
+Compose native retained trade inspection with original issued-job/Field admission.
+Keep documented scope separate from suggested trade checks and missing measurements.
+Guard current Copilot admission and exact source before/after waits and navigation;
+UNKNOWN never creates a new preparation or replaces the original review. Retain
+local notes/filter through navigation and confirmation withdrawal. No operational,
+compliance or physical-completion authority is added.
