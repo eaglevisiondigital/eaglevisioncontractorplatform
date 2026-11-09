@@ -2924,3 +2924,17 @@ totals withheld; review never posts costs, issues invoices or consumes a Copilot
 attempt. No ranking engine, store, writer, route, protected pin or design change.
 Intake SQL, D1–D3, A01–A12, recovery and all release restrictions remain unchanged.
 Release1.0 NOT READY / NOT AUTHORIZED.
+
+## Lean cycle 8: captured Voice scope into the original estimate draft
+
+The existing local journey opens the exact estimate's original draft/revision
+controls beside the retained literal transcript. Staff review exact catalog matches,
+select explicit quantities and confirm before appending unsaved scope lines; the
+original Save remains separate. Missing quantities require manual review and catalog
+pricing remains UNVERIFIED. Current source, actor, customer/property, draft version,
+catalog and working-form checks fence review/application; changes or ambiguous
+outcomes deny replay. Existing issued snapshots/job baselines remain unchanged.
+Unfinished scope/notes survive ordinary editor tabs and Voice option changes; company
+or authorization withdrawal clears private context. No new writer, store, route,
+SQL, design lock or operational authority. Intake SQL, D1–D3, A01–A12, recovery and
+release restrictions remain held. Release1.0 NOT READY / NOT AUTHORIZED.

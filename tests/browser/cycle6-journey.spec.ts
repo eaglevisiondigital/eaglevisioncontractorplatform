@@ -1,6 +1,197 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { sampleCompanies } from '../../src/domain/platform';
+import { industryEstimate } from '../../src/domain/estimating/fixtures';
+
+for (const company of sampleCompanies)
+  test(`captured voice scope reaches the original estimate draft controls / ${company.slug}`, async ({
+    page,
+  }, info) => {
+    await page.goto('/preview/contractor-journey');
+    await page
+      .getByRole('combobox', { name: 'Contractor', exact: true })
+      .selectOption(company.id);
+    await page
+      .getByLabel(
+        'I confirm this disposable local simulation; no contract, dispatch, invoice or message is authorized.',
+      )
+      .check();
+    await page
+      .getByRole('button', {
+        name: 'Prepare local synthetic journey',
+        exact: true,
+      })
+      .click();
+    const context = page.getByRole('region', {
+      name: 'Exact shared journey context',
+      exact: true,
+    });
+    await expect(context).toBeVisible();
+    const originalContext = await context.innerText();
+    const item = industryEstimate(company, 'synthetic-test-only').lines[0];
+    const originalText = `  2.125 ${item.unit} ${item.description}; missing quantities need review\n`;
+    const advanced = page.getByLabel(
+      'Include literal voice-transcript and trade review',
+    );
+    await advanced.check();
+    const transcript = page.getByRole('textbox', {
+      name: 'Literal synthetic transcript',
+      exact: true,
+    });
+    await transcript.fill(originalText);
+    await page
+      .getByRole('button', {
+        name: 'Open exact estimate draft controls',
+        exact: true,
+      })
+      .click();
+    const workspace = page.getByRole('region', {
+      name: 'Captured job estimate preparation',
+      exact: true,
+    });
+    await expect(workspace).toContainText('Immutable snapshot');
+    await workspace
+      .getByRole('button', { name: 'Create draft revision', exact: true })
+      .click();
+    const editor = workspace.locator('.estimate-editor');
+    const voice = workspace.getByRole('region', {
+      name: 'Voice scope to working draft',
+      exact: true,
+    });
+    await expect(voice).toContainText('Draft version 2');
+    const scope = editor.getByRole('textbox', {
+      name: 'Scope description',
+      exact: true,
+    });
+    const notes = editor.getByRole('textbox', {
+      name: 'Private estimate notes',
+      exact: true,
+    });
+    await scope.fill('Retain my unfinished job details.');
+    await notes.fill('Private working note retained through voice review.');
+    const before = await editor
+      .getByRole('textbox', { name: /^Scope item \d+$/ })
+      .count();
+    await expect(
+      editor.getByRole('button', { name: 'All estimates', exact: true }),
+    ).toBeDisabled();
+    await voice
+      .getByRole('checkbox', {
+        name: 'I confirm this original transcript and exact draft for local scope review.',
+        exact: true,
+      })
+      .check();
+    await transcript.fill(originalText + ' ');
+    await expect(
+      voice.getByRole('button', {
+        name: 'Review captured draft scope',
+        exact: true,
+      }),
+    ).toBeDisabled();
+    await transcript.fill(originalText);
+    await voice
+      .getByRole('checkbox', {
+        name: 'I confirm this original transcript and exact draft for local scope review.',
+        exact: true,
+      })
+      .check();
+    await voice
+      .getByRole('button', { name: 'Review captured draft scope', exact: true })
+      .click();
+    const choices = voice.locator('ul input[type=checkbox]');
+    await expect(choices).toHaveCount(1);
+    await expect(voice).toContainText('Manual review required');
+    await expect(voice).toContainText('UNVERIFIED');
+    await expect(voice.locator('pre')).toHaveText(originalText);
+    await choices.check();
+    await voice
+      .getByRole('checkbox', {
+        name: 'I reviewed selected quantities and current catalog values for this working draft; pricing still requires verification.',
+        exact: true,
+      })
+      .check();
+    await voice
+      .getByRole('button', {
+        name: 'Use selected scope in working draft',
+        exact: true,
+      })
+      .click();
+    await expect(voice).toContainText(
+      'Selected scope added to the unsaved working draft',
+    );
+    await expect(
+      editor.getByRole('textbox', { name: /^Scope item \d+$/ }),
+    ).toHaveCount(before + 1);
+    await expect(
+      editor.getByRole('textbox', {
+        name: `Scope item ${before + 1}`,
+        exact: true,
+      }),
+    ).toHaveValue(item.description);
+    await expect(
+      editor.getByLabel(`Quantity ${before + 1}`, { exact: true }),
+    ).toHaveValue('2.125');
+    await expect(
+      voice.getByRole('button', {
+        name: 'Use selected scope in working draft',
+        exact: true,
+      }),
+    ).toHaveCount(0);
+    await expect(scope).toHaveValue('Retain my unfinished job details.');
+    await expect(notes).toHaveValue(
+      'Private working note retained through voice review.',
+    );
+    await editor
+      .locator('.p3-tabs')
+      .getByRole('button', { name: 'Customer preview', exact: true })
+      .click();
+    await expect(voice).toContainText('Selected scope added');
+    await editor
+      .locator('.p3-tabs')
+      .getByRole('button', { name: 'Estimate builder', exact: true })
+      .click();
+    await expect(notes).toHaveValue(
+      'Private working note retained through voice review.',
+    );
+    await advanced.uncheck();
+    await expect(editor).toBeVisible();
+    await advanced.check();
+    await expect(transcript).toHaveValue(originalText);
+    expect(await context.innerText()).toBe(originalContext);
+    expect(
+      (
+        await new AxeBuilder({ page })
+          .include('#journey-intelligence')
+          .analyze()
+      ).violations,
+    ).toEqual([]);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth + 1,
+      ),
+    ).toBe(true);
+    await workspace.screenshot({
+      path: `artifacts/cycle6/voice-draft-${info.project.name}-${company.slug}.png`,
+    });
+    await editor
+      .getByRole('button', { name: 'Save estimate draft', exact: true })
+      .click();
+    await expect(editor).toContainText('Saved revision 2');
+    await expect(
+      editor.getByRole('textbox', { name: /^Scope item \d+$/ }),
+    ).toHaveCount(before + 1);
+    await expect(notes).toHaveValue(
+      'Private working note retained through voice review.',
+    );
+    await expect(
+      editor.getByRole('button', {
+        name: /Issue internal snapshot|Approve job baseline/,
+      }),
+    ).toHaveCount(0);
+    await expect(
+      page.getByRole('button', { name: /Send estimate|Pay now|Dispatch now/i }),
+    ).toHaveCount(0);
+  });
 
 for (const company of sampleCompanies)
   test(`owner cost evidence retains priorities and opens the exact financial review / ${company.slug}`, async ({

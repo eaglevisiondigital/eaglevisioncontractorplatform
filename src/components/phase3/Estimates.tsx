@@ -29,18 +29,22 @@ import { ResourceStatus } from '../forms';
 import { CompanyLogo } from '../CompanyLogo';
 import { Field, Money, Quantity, Percent } from './fields';
 import { MaterialImport } from './MaterialImport';
+import { VoiceDraftReview } from './VoiceDraftReview';
+import type { VoiceDraftContext } from './voice-draft-review';
 export function Estimates({
   repo,
   company,
   canIssue,
   initialBundle,
   draftOnly = false,
+  voiceDraft,
 }: {
   repo: Phase3Repository;
   company: CompanyProfile;
   canIssue: boolean;
   initialBundle?: EstimateBundle;
   draftOnly?: boolean;
+  voiceDraft?: VoiceDraftContext;
 }) {
   const [query, setQuery] = useState(''),
     [status, setStatus] = useState('all'),
@@ -123,6 +127,7 @@ export function Estimates({
         catalog={data.data?.catalog ?? []}
         taxes={data.data?.taxes ?? []}
         defaults={data.data?.defaults}
+        voiceDraft={voiceDraft}
         onChange={(b) => {
           if (current() && b.version.organization_id === company.id) {
             setSelected(b);
@@ -138,6 +143,7 @@ export function Estimates({
   const rows =
     data.data?.list.filter(
       (e) =>
+        (!voiceDraft || e.id === voiceDraft.target.estimate_id) &&
         (status === 'all' || e.status === status) &&
         `${e.estimate_number} ${e.project_name}`
           .toLowerCase()
@@ -154,12 +160,14 @@ export function Estimates({
             <BackOfficeText text="Estimates built around your work" />
           </h2>
         </div>
-        <button
-          disabled={task.busy || !data.data}
-          onClick={() => void create()}
-        >
-          <BackOfficeText text="New estimate" />
-        </button>
+        {!voiceDraft && (
+          <button
+            disabled={task.busy || !data.data}
+            onClick={() => void create()}
+          >
+            <BackOfficeText text="New estimate" />
+          </button>
+        )}
       </div>
       <p>Build clear scope. Protect your costs. Keep every issued version.</p>
       <ResourceStatus {...data} />
@@ -216,16 +224,18 @@ export function Estimates({
             ))}
           </select>
         </Field>
-        <Field label="Create from company template">
-          <select value="" onChange={(e) => void create(e.target.value)}>
-            <option value="">Choose a template…</option>
-            {data.data?.templates.map((t) => (
-              <option key={t.id} value={t.id}>
-                {t.name}
-              </option>
-            ))}
-          </select>
-        </Field>
+        {!voiceDraft && (
+          <Field label="Create from company template">
+            <select value="" onChange={(e) => void create(e.target.value)}>
+              <option value="">Choose a template…</option>
+              {data.data?.templates.map((t) => (
+                <option key={t.id} value={t.id}>
+                  {t.name}
+                </option>
+              ))}
+            </select>
+          </Field>
+        )}
       </div>
       <div className="estimate-list">
         {rows.slice(page * 10, page * 10 + 10).map((e) => (
@@ -297,6 +307,7 @@ function EstimateEditor({
   defaults,
   onChange,
   onClose,
+  voiceDraft,
 }: {
   initial: EstimateBundle;
   draftOnly: boolean;
@@ -308,8 +319,10 @@ function EstimateEditor({
   defaults?: EstimateDefaults;
   onChange: (b: EstimateBundle) => void;
   onClose: () => void;
+  voiceDraft?: VoiceDraftContext;
 }) {
   const [p, setP] = useState(() => structuredClone(initial.version.payload));
+  const liveDraft = useRef(p);
   const [tab, setTab] = useState<'build' | 'preview' | 'history' | 'revision'>(
     'build',
   );
@@ -341,8 +354,10 @@ function EstimateEditor({
   );
   const repairOnly = draftOnly || !!resources.data?.repair;
   const changeOnly = !!resources.data?.change;
-  const update = (patch: Partial<EstimateInput>) =>
-    setP((prev) => ({ ...prev, ...patch }));
+  const update = (patch: Partial<EstimateInput>) => {
+    liveDraft.current = { ...liveDraft.current, ...patch };
+    setP(liveDraft.current);
+  };
   const line = (id: string, patch: Partial<EstimateLine>) =>
     update({
       lines: p.lines.map((l) => (l.id === id ? { ...l, ...patch } : l)),
@@ -389,11 +404,22 @@ function EstimateEditor({
           </p>
         </div>
         {!draftOnly && (
-          <button className="secondary" onClick={onClose}>
+          <button
+            className="secondary"
+            disabled={!!voiceDraft && dirty}
+            onClick={onClose}
+          >
             <BackOfficeText text="All estimates" />
           </button>
         )}
       </div>
+      {voiceDraft && dirty && (
+        <p>
+          Save this working draft before returning to the estimate list.
+          Changing company or withdrawing the simulation discards unsaved local
+          inputs.
+        </p>
+      )}
       {resources.data?.change && (
         <section
           className="p3-notice customer-change-review"
@@ -444,6 +470,20 @@ function EstimateEditor({
             repair completion.
           </p>
         </details>
+      )}
+      {voiceDraft && !readonly && repo.sample && (
+        <VoiceDraftReview
+          repo={repo}
+          context={voiceDraft}
+          bundle={initial}
+          liveDraft={() => liveDraft.current}
+          onAppend={(lines, expected, check) => {
+            check();
+            if (readonly || JSON.stringify(liveDraft.current) !== expected)
+              throw Error('Working draft changed; no scope applied');
+            update({ lines: [...liveDraft.current.lines, ...lines] });
+          }}
+        />
       )}
       <div className="p3-tabs">
         {changeOnly &&
@@ -580,6 +620,7 @@ function EstimateEditor({
                   disabled={
                     readonly ||
                     task.busy ||
+                    !!voiceDraft ||
                     repairOnly ||
                     changeOnly ||
                     resources.loading ||
@@ -641,7 +682,7 @@ function EstimateEditor({
               <h3>
                 <BackOfficeText text="Scope & pricing" />
               </h3>
-              {!readonly && (
+              {!readonly && !voiceDraft && (
                 <button disabled={dirty} onClick={() => setImporting(true)}>
                   <BackOfficeText text="Smart material import" />
                 </button>
@@ -1288,21 +1329,23 @@ function EstimateEditor({
                 <BackOfficeText text="Issue internal snapshot" />
               </button>
             )}
-            <button
-              className="secondary"
-              disabled={task.busy || !!error || dirty}
-              onClick={() =>
-                void task.run(async () => {
-                  await repo.saveTemplate(
-                    company.id,
-                    `${p.project.type} template`,
-                    p,
-                  );
-                }, 'Company template saved')
-              }
-            >
-              <BackOfficeText text="Save as company template" />
-            </button>
+            {!voiceDraft && (
+              <button
+                className="secondary"
+                disabled={task.busy || !!error || dirty}
+                onClick={() =>
+                  void task.run(async () => {
+                    await repo.saveTemplate(
+                      company.id,
+                      `${p.project.type} template`,
+                      p,
+                    );
+                  }, 'Company template saved')
+                }
+              >
+                <BackOfficeText text="Save as company template" />
+              </button>
+            )}
           </>
         ) : (
           initial.version.status === 'issued' && (
@@ -1334,18 +1377,20 @@ function EstimateEditor({
             </>
           )
         )}
-        <button
-          className="secondary"
-          disabled={repairOnly || changeOnly || task.busy || dirty}
-          onClick={() =>
-            void task.run(
-              async () => onChange(await repo.duplicate(company, initial)),
-              'Estimate duplicated',
-            )
-          }
-        >
-          <BackOfficeText text="Duplicate estimate" />
-        </button>
+        {!voiceDraft && (
+          <button
+            className="secondary"
+            disabled={repairOnly || changeOnly || task.busy || dirty}
+            onClick={() =>
+              void task.run(
+                async () => onChange(await repo.duplicate(company, initial)),
+                'Estimate duplicated',
+              )
+            }
+          >
+            <BackOfficeText text="Duplicate estimate" />
+          </button>
+        )}
         {canIssue && (
           <button
             className="secondary"

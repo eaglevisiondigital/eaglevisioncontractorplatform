@@ -23,6 +23,8 @@ import { CompletionReview } from './CompletionReview';
 import { MaintenanceDesk } from './MaintenanceDesk';
 import { DailyOperations } from './DailyOperations';
 import { OwnerCostEvidence } from './OwnerCostEvidence';
+import { Estimates } from '../phase3/Estimates';
+import type { EstimateBundle } from '../../domain/estimating/types';
 import {
   prepareIntelligenceWorkflow,
   inspectIntelligenceWorkflow,
@@ -66,9 +68,16 @@ export function ContractorJourneyPreview() {
     [intelligenceError, setIntelligenceError] = useState(''),
     [intelligenceStatus, setIntelligenceStatus] = useState('');
   const [advanced, setAdvanced] = useState(false),
-    [transcript, setTranscript] = useState(''),
     [edition, setEdition] = useState<TradeEdition | ' '>(' '),
     [intelligenceConfirmed, setIntelligenceConfirmed] = useState(false);
+  const [voiceInput, setVoiceInput] = useState({ transcript: '' });
+  const transcript = voiceInput.transcript;
+  const [estimateEditor, setEstimateEditor] = useState<{
+    company: string;
+    estimate: string;
+    bundle: EstimateBundle;
+  }>();
+  const [voiceEditorBusy, setVoiceEditorBusy] = useState(false);
   const [error, setError] = useState(''),
     [finance, setFinance] = useState<FinanceWorkflowReview | null>(null),
     [financeBusy, setFinanceBusy] = useState(false);
@@ -197,6 +206,42 @@ export function ContractorJourneyPreview() {
     }
     return false;
   }
+  async function openVoiceEditor() {
+    if (!journey || voiceEditorBusy) return;
+    const j = journey,
+      token = generation.current;
+    setVoiceEditorBusy(true);
+    try {
+      if (!j.gate.enabled || !j.gate.confirmed) throw Error();
+      j.estimates.readSyntheticPrototypeSources(j.target);
+      const bundle = await j.estimates.get(companyId, j.target.estimate_id);
+      const current = j.estimates.readSyntheticPrototypeSources({
+        ...j.target,
+        version_id: bundle.version.id,
+        job_id: null,
+      });
+      if (
+        !j.gate.confirmed ||
+        current.bundle.estimate.current_version_id !== bundle.version.id ||
+        JSON.stringify(current.bundle.version) !==
+          JSON.stringify(bundle.version)
+      )
+        throw Error();
+      if (generation.current === token)
+        setEstimateEditor({
+          company: companyId,
+          estimate: j.target.estimate_id,
+          bundle,
+        });
+    } catch {
+      if (generation.current === token)
+        setError(
+          'Exact estimate draft context is UNKNOWN. No replacement or revision was created.',
+        );
+    } finally {
+      if (generation.current === token) setVoiceEditorBusy(false);
+    }
+  }
   function invalidateIntelligence() {
     if (intelligenceGate.current) intelligenceGate.current.confirmed = false;
     setIntelligenceConfirmed(false);
@@ -307,6 +352,8 @@ export function ContractorJourneyPreview() {
                 }
                 generation.current++;
                 const nextCompany = e.target.value;
+                setEstimateEditor(undefined);
+                setVoiceEditorBusy(false);
                 const retained = attempts.current.get(nextCompany);
                 setCompanyId(nextCompany);
                 setVisibleAttempt(
@@ -340,6 +387,10 @@ export function ContractorJourneyPreview() {
               onChange={(e) => {
                 generation.current++;
                 setConfirmed(e.target.checked);
+                if (!e.target.checked) {
+                  setEstimateEditor(undefined);
+                  setVoiceEditorBusy(false);
+                }
                 if (!e.target.checked) invalidateIntelligence();
                 const a = attempts.current.get(companyId);
                 if (a) {
@@ -580,7 +631,7 @@ export function ContractorJourneyPreview() {
                       maxLength={2000}
                       onChange={(e) => {
                         invalidateIntelligence();
-                        setTranscript(e.target.value);
+                        setVoiceInput({ transcript: e.target.value });
                       }}
                     />
                   </label>
@@ -624,6 +675,43 @@ export function ContractorJourneyPreview() {
                 Prepare source-linked Copilot review
               </button>
             </fieldset>
+            <>
+              {advanced && transcript.trim() && (
+                <button
+                  disabled={
+                    voiceEditorBusy ||
+                    (estimateEditor?.company === companyId &&
+                      estimateEditor.estimate === journey.target.estimate_id)
+                  }
+                  onClick={() => void openVoiceEditor()}
+                >
+                  Open exact estimate draft controls
+                </button>
+              )}
+              {estimateEditor?.company === companyId &&
+                estimateEditor.estimate === journey.target.estimate_id && (
+                  <section aria-label="Captured job estimate preparation">
+                    <p>
+                      The original issued version remains immutable. Use Create
+                      draft revision, review captured scope, then Save estimate
+                      draft explicitly. This does not replace the job baseline
+                      or authorize issuance.
+                    </p>
+                    <Estimates
+                      key={'voice-editor-' + journey.intake_request_id}
+                      repo={journey.estimates}
+                      company={company}
+                      canIssue={false}
+                      initialBundle={estimateEditor.bundle}
+                      voiceDraft={{
+                        target: journey.target,
+                        input: voiceInput,
+                        gate: journey.gate,
+                      }}
+                    />
+                  </section>
+                )}
+            </>
             {intelligenceAttempts[journey.target.estimate_id] && (
               <p>
                 One session attempt retained. No replay or new-version bypass.

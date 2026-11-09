@@ -2516,3 +2516,14 @@ and after waits, then use the existing Finance reader and exact job context for
 explicit navigation. UNKNOWN coverage is distinct from zero cost or invoice
 readiness. Original engines, Copilot attempt custody and operational gates remain
 unchanged; no new writer, SQL or execution authority.
+
+### Lean cycle 8: explicit Voice selection into an existing working estimate
+
+Reuse the native literal Voice review and canonical catalog in the original estimate
+editor, restricted to the selected estimate/customer/property. A draft revision and
+Save use their original explicit controls; Voice only appends reviewed unsaved lines.
+Bind the original review handle to current authorization, transcript, exact version,
+catalog and working form before/after waits and immediately before application.
+Missing quantities, changed sources and UNKNOWN outcomes cannot be replayed. Preserve
+issued baselines, manual inputs and all separate operational/release gates; no inferred
+prices, customer approval, contract, work authorization or issuance.
