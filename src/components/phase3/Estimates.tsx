@@ -1,3 +1,4 @@
+import { CatalogDraftBatch } from './CatalogDraftBatch';
 import { EstimateCrmSelection } from './EstimateCrmSelection';
 import { SyntheticRevisionIssuance } from './SyntheticRevisionIssuance';
 import { RevisionReviewPacket } from './RevisionReviewPacket';
@@ -696,6 +697,23 @@ function EstimateEditor({
               <legend className="sr-only">
                 <BackOfficeText text="Estimate line items" />
               </legend>
+              {repo.sample &&
+                resources.data &&
+                !resources.loading &&
+                !resources.error &&
+                !readonly &&
+                !repairOnly &&
+                !changeOnly &&
+                !voiceDraft && (
+                  <CatalogDraftBatch
+                    repo={repo}
+                    org={company.id}
+                    bundle={initial}
+                    catalog={catalog}
+                    liveDraft={() => liveDraft.current}
+                    onApply={(payload) => update(payload)}
+                  />
+                )}
               <Field label="Add catalog item">
                 <select
                   value=""

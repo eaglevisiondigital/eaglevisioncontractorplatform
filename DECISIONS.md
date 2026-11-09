@@ -2599,3 +2599,13 @@ unknown paths and edits deny. Preserve the failed hosted artifact and its unknow
 matching leaf; do not claim an unobserved runtime privacy repair. Admit only the
 reviewed test successor against the original historical pin, never replace that
 pin. No new operational authority is granted; original pilot/recovery gates remain.
+
+### Functional completion: batch catalog scope uses ordinary draft ownership
+
+Copy staff-selected catalog quantities into the existing working estimate only
+when exact catalog and ordinary saved-draft sources remain current. Validate the
+whole resulting payload through the original estimate calculation; append atomically
+in the editor and save only through the original writer/CAS. Keep special repair,
+customer-revision and voice preparations in their existing flows. The new control
+is sample-only and grants no hosted or operational authority. Do not describe
+same-session readback as durable business persistence or genuine Auth acceptance.

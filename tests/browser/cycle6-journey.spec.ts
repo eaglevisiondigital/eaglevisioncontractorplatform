@@ -1276,3 +1276,117 @@ test('rapid confirmation withdrawal cannot resurrect a pending preparation', asy
     page.getByRole('button', { name: 'Prepare local synthetic journey' }),
   ).toBeDisabled();
 });
+
+for (const company of sampleCompanies)
+  test(`catalog batch prepares and saves actual draft scope without duplicate entry / ${company.slug}`, async ({
+    page,
+  }) => {
+    await page.goto('/preview');
+    await page
+      .getByRole('combobox', { name: 'Company context' })
+      .selectOption(company.id);
+    await page.getByRole('button', { name: 'Estimates', exact: true }).click();
+    const project = industryEstimate(company, 'unused').project.name;
+    await page.getByRole('button').filter({ hasText: project }).click();
+    const before = await page
+      .getByRole('textbox', { name: /^Scope item \d+$/ })
+      .count();
+    const original = await page
+      .getByLabel('Scope item 1', { exact: true })
+      .inputValue();
+    await page
+      .getByRole('textbox', { name: 'Private estimate notes', exact: true })
+      .fill('Keep private catalog batch notes');
+    await page.getByText('Add several catalog items', { exact: true }).click();
+    const batch = page.locator('details').filter({
+      has: page.getByText('Add several catalog items', { exact: true }),
+    });
+    const choices = batch.getByRole('checkbox', {
+      name: /^Select .* for draft$/,
+    });
+    await choices.nth(0).check();
+    await choices.nth(1).check();
+    const quantities = batch.getByRole('textbox', {
+      name: /^Draft quantity for /,
+    });
+    await expect(quantities.nth(0)).toHaveValue('');
+    await quantities.nth(0).fill('2.125');
+    await quantities.nth(1).fill('3');
+    await batch
+      .getByLabel('Find catalog items for draft')
+      .fill('no matching catalog record');
+    await expect(batch).toContainText('2 selected');
+    await batch.getByLabel('Find catalog items for draft').fill('');
+    await expect(quantities.nth(0)).toHaveValue('2.125');
+    await batch
+      .getByRole('checkbox', {
+        name: 'I confirm the selected catalog items and quantities for this draft.',
+      })
+      .check();
+    await batch
+      .getByRole('button', { name: 'Add selected catalog items to draft' })
+      .evaluate((button: HTMLButtonElement) => {
+        button.click();
+        button.click();
+      });
+    await expect(
+      page.getByRole('textbox', { name: /^Scope item \d+$/ }),
+    ).toHaveCount(before + 2);
+    await expect(page.getByLabel('Scope item 1', { exact: true })).toHaveValue(
+      original,
+    );
+    await expect(
+      page.getByLabel(`Quantity ${before + 1}`, { exact: true }),
+    ).toHaveValue('2.125');
+    await expect(batch.getByRole('status')).toContainText(
+      '2 catalog items added',
+    );
+    await expect(
+      batch.getByRole('button', {
+        name: 'Add selected catalog items to draft',
+      }),
+    ).toBeDisabled();
+    await page
+      .getByRole('button', { name: 'Save estimate draft', exact: true })
+      .click();
+    await expect(page.getByText(/Saved revision 2/)).toBeVisible();
+    await expect(
+      page.getByRole('textbox', { name: /^Scope item \d+$/ }),
+    ).toHaveCount(before + 2);
+    await expect(
+      page.getByRole('textbox', {
+        name: 'Private estimate notes',
+        exact: true,
+      }),
+    ).toHaveValue('Keep private catalog batch notes');
+    await page
+      .getByRole('button', { name: 'Customer preview', exact: true })
+      .click();
+    const preview = page.getByRole('region', {
+      name: 'Customer-facing estimate preview',
+    });
+    await expect(preview).not.toContainText('Keep private catalog batch notes');
+    await expect(preview).not.toContainText('Internal unit cost');
+    await page
+      .getByRole('button', { name: 'All estimates', exact: true })
+      .click();
+    await page.getByRole('button').filter({ hasText: project }).click();
+    await expect(
+      page.getByRole('textbox', { name: /^Scope item \d+$/ }),
+    ).toHaveCount(before + 2);
+    await expect(
+      page.getByLabel(`Quantity ${before + 1}`, { exact: true }),
+    ).toHaveValue('2.125');
+    await expect(
+      page.getByRole('textbox', {
+        name: 'Private estimate notes',
+        exact: true,
+      }),
+    ).toHaveValue('Keep private catalog batch notes');
+    expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth + 1,
+      ),
+    ).toBe(true);
+  });
