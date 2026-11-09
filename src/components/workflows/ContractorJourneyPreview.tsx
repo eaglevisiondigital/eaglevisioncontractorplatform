@@ -17,6 +17,7 @@ import { GrowthWorkflow } from './GrowthWorkflow';
 import { IntelligenceWorkflow } from './IntelligenceWorkflow';
 import { BookingScheduling } from './BookingScheduling';
 import { JobReview } from './JobReview';
+import { StormPropertyHistory } from './StormPropertyHistory';
 import { CustomerService } from './CustomerService';
 import { WeeklyCrew } from './WeeklyCrew';
 import { FinanceDesk } from './FinanceDesk';
@@ -556,6 +557,16 @@ export function ContractorJourneyPreview() {
               {journey.published_version}. Documentation does not verify
               physical completion.
             </p>
+            <StormPropertyHistory
+              sources={journey}
+              onPassport={(report_id, published_version) =>
+                setSelectedReport({
+                  company: companyId,
+                  report_id,
+                  published_version,
+                })
+              }
+            />
             <CustomerService
               model={journey.customerModel}
               target={journey.target}
