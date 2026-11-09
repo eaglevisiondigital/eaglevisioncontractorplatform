@@ -2,8 +2,9 @@
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { readFileSync, lstatSync } from 'node:fs';
-export const historical = '0825e3c00379a59bea79453a1825a64679cb3847';
 export const parent = '6ab439b41dfc9c9a574548e4009ffa684490555f';
+// Published retained original bytes; the logical C9 review object is incomplete on GitHub.
+export const historical = parent;
 export const author = '3c24596c6180af44cb096d03f7ec09f680c68104';
 export const typeCorrection = 'de97c31c999d7c8eac1bd0c8be7beceeacab0f51';
 export const correctionParent = '67969f331663a8468f162a3790295956b57778c8';

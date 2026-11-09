@@ -3041,3 +3041,7 @@ Initial correction candidate67969f3 hosted typecheck failed because its new coll
 fixture returned a widened TypeScript string template. Separate de97c31 changes
 only the UUID return construction, with an exact type-only source admission; the
 failed attempt and original author remain retained. Final local typecheck passes.
+Candidate1f6ac06 hosted typecheck passed, then its lineage read found the logical
+C9 review object lacks the test path on GitHub. The exact published PR339 parent
+retains the original test with the unchanged C9 hash; use that immutable retained
+object for byte verification instead. No historical manifest/pin is replaced.
