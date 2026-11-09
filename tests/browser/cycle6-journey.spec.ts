@@ -4,6 +4,81 @@ import { sampleCompanies } from '../../src/domain/platform';
 import { industryEstimate } from '../../src/domain/estimating/fixtures';
 
 for (const company of sampleCompanies)
+  test(`network review retains job trade filters and notes / ${company.slug}`, async ({
+    page,
+  }) => {
+    await page.goto('/preview/contractor-journey');
+    await page
+      .getByRole('combobox', { name: 'Contractor', exact: true })
+      .selectOption(company.id);
+    const confirm = page.getByLabel(
+      'I confirm this disposable local simulation; no contract, dispatch, invoice or message is authorized.',
+    );
+    await confirm.check();
+    await page
+      .getByRole('button', {
+        name: 'Prepare local synthetic journey',
+        exact: true,
+      })
+      .click();
+    const r = page.getByRole('region', {
+      name: 'Network and exact subcontractor requirements',
+      exact: true,
+    });
+    const note = r.getByRole('textbox', {
+      name: 'Unfinished partner review notes',
+      exact: true,
+    });
+    await note.fill('Need independent insurance and license evidence.');
+    const trade = r.getByRole('combobox', {
+      name: 'Partner review trade context',
+      exact: true,
+    });
+    await trade.selectOption('roofing');
+    const filter = r.getByRole('textbox', {
+      name: 'Filter existing contractor references',
+      exact: true,
+    });
+    await filter.fill('Retain this filter');
+    await r
+      .getByRole('button', {
+        name: 'Review exact job and contractor references',
+        exact: true,
+      })
+      .click();
+    await expect(r).toContainText('No recorded contractor profiles');
+    await expect(r).toContainText('Documented labor/service requirements');
+    await r
+      .getByRole('button', {
+        name: 'Open exact job and crew review',
+        exact: true,
+      })
+      .click();
+    await expect(page.locator('#journey-field')).toBeFocused();
+    await expect(note).toHaveValue(
+      'Need independent insurance and license evidence.',
+    );
+    await expect(trade).toHaveValue('roofing');
+    await expect(filter).toHaveValue('Retain this filter');
+    await expect(
+      r.getByRole('button', {
+        name: /Invite|Assign|Contract|Dispatch|Send|Pay/,
+      }),
+    ).toHaveCount(0);
+    expect(
+      (await new AxeBuilder({ page }).include('#journey-field').analyze())
+        .violations,
+    ).toEqual([]);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth + 1,
+      ),
+    ).toBe(true);
+    await confirm.uncheck();
+    await expect(r).toHaveCount(0);
+  });
+
+for (const company of sampleCompanies)
   test(`storm property review retains notes filters and published selection / ${company.slug}`, async ({
     page,
   }) => {
