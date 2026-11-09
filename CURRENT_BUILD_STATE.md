@@ -3096,3 +3096,22 @@ affected lint/format and protected/design checks PASS; targeted independent revi
 CLEAR. No core/SQL, schema, route, store, financial execution or hosted capability
 added. Same-session sample retention is not durable ACK/Auth acceptance. Intake SQL
 HELD; D1–D3/A01–A12, recovery and all release restrictions remain unchanged.
+
+### Functional completion 4: source-bound expense management decisions
+
+Local financial managers can record a specific approval or rejection reason against
+an exact submitted expense, explicitly confirm it, and reopen the append-only
+review through the original repository. Approval feeds the unchanged job-cost
+calculation; rejection preserves submission evidence without adding costs. A final
+synchronous sample-source/revision fence rejects stale review. Repository-bound
+in-memory UI holds prevent repeated attempts across navigation, including UNKNOWN
+acknowledgments; exact saved reads never enable replay. Retention is sample-session
+only, not genuine Auth, durable ACK or financial execution. Connected review, core
+writers and SQL remain unchanged. Intake SQL HELD; D1–D3/A01–A12, recovery and release
+gates remain unchanged. Release 1.0 NOT READY / NOT AUTHORIZED.
+Verification: 567 affected native cases,9 new responsive management journeys,
+3 original expense/billing/projection journeys, scoped accessibility, build/typecheck,
+affected lint, formatting and original protected/design checks PASS. Independent
+security reviewer /root/lean15_readiness_review: CLEAR. Initial new browser locator
+timeouts and local sandbox build-cache failure were corrected without budget or
+assertion changes; these are not hosted acceptance evidence.

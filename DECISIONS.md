@@ -2626,3 +2626,13 @@ manual budget match to the original job's material line and unit; never fuzzy-ma
 convert quantities, infer prices or auto-approve a submission. Existing financial
 readers and management review remain authoritative; field/connected gates and all
 operational acceptance requirements persist. No additional evidence store or writer.
+
+### Functional completion 4: explain and preserve expense management decisions
+
+Replace generic local review reasons with explicitly confirmed staff explanations,
+using original reviewExpense/jobs and jobFinancials. Check the current exact sample
+submission, original baseline and job revision immediately before the synchronous
+original sample append. Do not expose connected authority, replace original expense
+records or treat approval as payment/delivery/cost completeness. UNKNOWN attempts
+retain a repository-bound UI hold; navigation is no permission to replay. Holds are
+not restart custody or a canonical business store. Operational gates remain closed.

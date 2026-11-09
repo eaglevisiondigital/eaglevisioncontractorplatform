@@ -1,3 +1,4 @@
+import { ExpenseManagementReview } from './ExpenseManagementReview';
 import {
   materialExpenseEvidence,
   type ExpenseJobContext,
@@ -414,7 +415,22 @@ function JobDetail({
                 . Reported evidence is not delivery or payment verification.
               </p>
             )}
-            {admin && !review && (
+            {review && repo.sample && (
+              <p>
+                Management review: {review.reason} · {review.created_at}
+              </p>
+            )}
+            {admin && !review && repo.sample && (
+              <ExpenseManagementReview
+                repo={repo}
+                org={company.id}
+                job={job}
+                expenseId={e.id}
+                admin={admin}
+                refresh={refresh}
+              />
+            )}
+            {admin && !review && !repo.sample && (
               <div className="button-row">
                 <button
                   onClick={() =>
