@@ -1,3 +1,4 @@
+import { DraftLineEdits } from './DraftLineEdits';
 import { CatalogDraftBatch } from './CatalogDraftBatch';
 import { EstimateCrmSelection } from './EstimateCrmSelection';
 import { SyntheticRevisionIssuance } from './SyntheticRevisionIssuance';
@@ -328,6 +329,15 @@ function EstimateEditor({
     'build',
   );
   const [importing, setImporting] = useState(false);
+  const [scopeSelection, setScopeSelection] = useState<string[]>([]);
+  const [editEpoch, bumpEditEpoch] = useState(0);
+  const [quantityInputVersions, refreshQuantityInputs] = useState<
+    Record<string, number>
+  >({});
+  const selectScope = (ids: string[] | ((before: string[]) => string[])) => {
+    setScopeSelection(ids);
+    bumpEditEpoch((n) => n + 1);
+  };
   const task = useTask();
   const readonly =
     initial.version.status === 'issued' ||
@@ -355,9 +365,39 @@ function EstimateEditor({
   );
   const repairOnly = draftOnly || !!resources.data?.repair;
   const changeOnly = !!resources.data?.change;
+  const bulkEditable =
+    repo.sample &&
+    !!resources.data &&
+    !resources.loading &&
+    !resources.error &&
+    !readonly &&
+    !repairOnly &&
+    !changeOnly &&
+    !voiceDraft;
+
   const update = (patch: Partial<EstimateInput>) => {
+    bumpEditEpoch((n) => n + 1);
+    if (patch.lines)
+      selectScope((ids) =>
+        ids.filter((id) => patch.lines!.some((line) => line.id === id)),
+      );
     liveDraft.current = { ...liveDraft.current, ...patch };
     setP(liveDraft.current);
+  };
+  const applyLineEdits = (payload: EstimateInput) => {
+    const changed = payload.lines
+      .filter(
+        (line) =>
+          liveDraft.current.lines.find((before) => before.id === line.id)
+            ?.quantity_milli !== line.quantity_milli,
+      )
+      .map((line) => line.id);
+    refreshQuantityInputs((before) => {
+      const next = { ...before };
+      for (const id of changed) next[id] = (next[id] ?? 0) + 1;
+      return next;
+    });
+    update(payload);
   };
   const line = (id: string, patch: Partial<EstimateLine>) =>
     update({
@@ -714,6 +754,19 @@ function EstimateEditor({
                     onApply={(payload) => update(payload)}
                   />
                 )}
+              {bulkEditable && (
+                <DraftLineEdits
+                  repo={repo}
+                  org={company.id}
+                  bundle={initial}
+                  draft={p}
+                  revision={editEpoch}
+                  selected={scopeSelection}
+                  onSelect={selectScope}
+                  liveDraft={() => liveDraft.current}
+                  onApply={applyLineEdits}
+                />
+              )}
               <Field label="Add catalog item">
                 <select
                   value=""
@@ -764,6 +817,27 @@ function EstimateEditor({
                         )}
                     </span>
                   </div>
+                  {bulkEditable && (
+                    <label className="checkbox-label">
+                      <input
+                        type="checkbox"
+                        aria-label={`Select scope item ${i + 1} for bulk edit`}
+                        disabled={
+                          !!l.import_approval_id ||
+                          !!l.material_import_line_ids.length
+                        }
+                        checked={scopeSelection.includes(l.id)}
+                        onChange={(e) =>
+                          selectScope(
+                            e.target.checked
+                              ? [...scopeSelection, l.id]
+                              : scopeSelection.filter((id) => id !== l.id),
+                          )
+                        }
+                      />
+                      Select item {i + 1}
+                    </label>
+                  )}
                   <Field label={`Scope item ${i + 1}`}>
                     <input
                       value={l.description}
@@ -798,6 +872,7 @@ function EstimateEditor({
                       </select>
                     </Field>
                     <Quantity
+                      key={`${l.id}-${quantityInputVersions[l.id] ?? 0}`}
                       disabled={!!l.import_approval_id}
                       label={`Quantity ${i + 1}`}
                       value={l.quantity_milli}
