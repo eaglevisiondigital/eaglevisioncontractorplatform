@@ -2972,3 +2972,15 @@ local notes never become server records or ACKs. Detected stale/revoked evidence
 latches UNKNOWN. No replay, dispatch, synchronization, writer or storage is added.
 Intake SQL, D1–D3, A01–A12, original recovery and release restrictions persist.
 Release1.0 NOT READY / NOT AUTHORIZED.
+
+## Lean cycle 12: Storm observations beside exact published property history
+
+Existing Field/Storm source readers and inspection search now compose a staff
+comparison in the property workspace. Unsaved reported-condition notes, search and
+exact report/version selection survive property/Field navigation. Published findings
+and suggested follow-up stay distinct from reported damage; storm attribution,
+complete assessment and verified repair remain UNKNOWN/UNVERIFIED. No incident,
+repair authorization, insurance action, writer, route or store is created. Intake SQL,
+D1–D3, A01–A12, original recovery and release restrictions remain unchanged.
+Release1.0 NOT READY / NOT AUTHORIZED. Next bounded functional candidate: Contractor
+Network or trade-edition continuity, subject to original source/authority boundaries.

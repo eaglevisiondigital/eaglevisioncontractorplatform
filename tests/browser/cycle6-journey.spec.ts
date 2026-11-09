@@ -4,6 +4,87 @@ import { sampleCompanies } from '../../src/domain/platform';
 import { industryEstimate } from '../../src/domain/estimating/fixtures';
 
 for (const company of sampleCompanies)
+  test(`storm property review retains notes filters and published selection / ${company.slug}`, async ({
+    page,
+  }) => {
+    await page.goto('/preview/contractor-journey');
+    await page
+      .getByRole('combobox', { name: 'Contractor', exact: true })
+      .selectOption(company.id);
+    const confirm = page.getByLabel(
+      'I confirm this disposable local simulation; no contract, dispatch, invoice or message is authorized.',
+    );
+    await confirm.check();
+    await page
+      .getByRole('button', {
+        name: 'Prepare local synthetic journey',
+        exact: true,
+      })
+      .click();
+    const r = page.getByRole('region', {
+      name: 'Storm observations and property history',
+      exact: true,
+    });
+    const note = r.getByRole('textbox', {
+      name: 'Unfinished storm review notes',
+      exact: true,
+    });
+    await note.fill('Reported water entry; cause not verified.');
+    await r
+      .getByRole('button', {
+        name: 'Review exact storm property history',
+        exact: true,
+      })
+      .click();
+    const select = r.getByRole('combobox', {
+      name: 'Published inspection version',
+      exact: true,
+    });
+    await select.selectOption({ index: 1 });
+    const original = await select.inputValue();
+    await expect(r).toContainText('Storm attribution UNKNOWN');
+    const query = r.getByRole('textbox', {
+      name: 'Search available inspection evidence',
+      exact: true,
+    });
+    await query.fill('no matching evidence');
+    await expect(r).toContainText('Matching published evidence UNKNOWN');
+    await query.fill('');
+    await expect(select).toHaveValue(original);
+    await r
+      .getByRole('button', {
+        name: 'Open exact property Passport review',
+        exact: true,
+      })
+      .click();
+    await expect(page.locator('#journey-customer')).toBeFocused();
+    await r
+      .getByRole('button', {
+        name: 'Open exact job and Field review',
+        exact: true,
+      })
+      .click();
+    await expect(page.locator('#journey-field')).toBeFocused();
+    await expect(note).toHaveValue('Reported water entry; cause not verified.');
+    expect(
+      (await new AxeBuilder({ page }).include('#journey-customer').analyze())
+        .violations,
+    ).toEqual([]);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth + 1,
+      ),
+    ).toBe(true);
+    await expect(
+      r.getByRole('button', {
+        name: /Dispatch|Authorize repair|Submit insurance|Create job|Send/,
+      }),
+    ).toHaveCount(0);
+    await confirm.uncheck();
+    await expect(r).toHaveCount(0);
+  });
+
+for (const company of sampleCompanies)
   test(`offline crew review retains observations and exact work order / ${company.slug}`, async ({
     page,
   }) => {

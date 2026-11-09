@@ -2552,3 +2552,11 @@ scope. Keep notes as explicitly unsaved inputs, distinct from recorded visits an
 UNKNOWN server outcomes. Latch stale/current-authorization failures and check again
 before returning to the existing Field workspace. No command admission or replay,
 new persistence, source pin changes or operational recovery authority.
+
+### Lean cycle 12: source-bound Storm/property comparison
+
+Reuse original Storm requirements, Field admission and published inspection search.
+Caller/staff notes do not establish a storm incident, date, causal link or physical
+completion. Pin exact property/report versions and latch changed source/authorization
+as UNKNOWN. Navigation retains local inputs and passes the selected report to the
+existing Passport review; no operational action or approval is inferred.
