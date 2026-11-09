@@ -8,6 +8,7 @@ import {
 } from '../../lib/workflows/journey-runtime';
 import { SalesWorkflow } from './SalesWorkflow';
 import { SalesJobPlanningReview } from './SalesJobPlanningReview';
+import { OfflineCrewContext } from './OfflineCrewContext';
 import { FieldWorkflow } from './FieldWorkflow';
 import { FinanceWorkflow } from './FinanceWorkflow';
 import { CustomerWorkflow } from './CustomerWorkflow';
@@ -511,7 +512,7 @@ export function ContractorJourneyPreview() {
               enabled
             />
           </section>
-          <section id="journey-field" className="journey-card">
+          <section id="journey-field" className="journey-card" tabIndex={-1}>
             <h2>2 · Work order, crew & field documentation</h2>
             <FieldWorkflow
               repo={journey.property}
@@ -522,6 +523,7 @@ export function ContractorJourneyPreview() {
               onProofOfWork={proofHandoff}
             />
             <WeeklyCrew sources={journey} enabled />
+            <OfflineCrewContext sources={journey} />
           </section>
           <section id="journey-booking" className="journey-card">
             <h2>Booking &amp; scheduling review</h2>

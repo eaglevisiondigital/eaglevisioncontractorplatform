@@ -4,6 +4,80 @@ import { sampleCompanies } from '../../src/domain/platform';
 import { industryEstimate } from '../../src/domain/estimating/fixtures';
 
 for (const company of sampleCompanies)
+  test(`offline crew review retains observations and exact work order / ${company.slug}`, async ({
+    page,
+  }) => {
+    await page.goto('/preview/contractor-journey');
+    await page
+      .getByRole('combobox', { name: 'Contractor', exact: true })
+      .selectOption(company.id);
+    const confirm = page.getByLabel(
+      'I confirm this disposable local simulation; no contract, dispatch, invoice or message is authorized.',
+    );
+    await confirm.check();
+    await page
+      .getByRole('button', {
+        name: 'Prepare local synthetic journey',
+        exact: true,
+      })
+      .click();
+    const r = page.getByRole('region', {
+      name: 'Offline crew work-order context',
+      exact: true,
+    });
+    const note = r.getByRole('textbox', {
+      name: 'Unsaved offline observations',
+      exact: true,
+    });
+    await note.fill('Unsent crew observation; keep task context.');
+    await r
+      .getByRole('button', {
+        name: 'Review exact offline work-order context',
+        exact: true,
+      })
+      .click();
+    await expect(r).toContainText(
+      'Server acknowledgment and synchronization outcome UNKNOWN',
+    );
+    await expect(r).toContainText('Visit');
+    await expect(r).toContainText('crew context');
+    await r
+      .getByRole('button', { name: 'Hide recorded work order', exact: true })
+      .click();
+    await r
+      .getByRole('button', {
+        name: 'Return to exact recorded work order',
+        exact: true,
+      })
+      .click();
+    await expect(note).toHaveValue(
+      'Unsent crew observation; keep task context.',
+    );
+    await expect(
+      r.getByRole('button', {
+        name: 'Review exact offline work-order context',
+        exact: true,
+      }),
+    ).toBeDisabled();
+    expect(
+      (await new AxeBuilder({ page }).include('#journey-field').analyze())
+        .violations,
+    ).toEqual([]);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth + 1,
+      ),
+    ).toBe(true);
+    await expect(
+      r.getByRole('button', {
+        name: /Replay|Synchronize|Dispatch|Complete work/,
+      }),
+    ).toHaveCount(0);
+    await confirm.uncheck();
+    await expect(r).toHaveCount(0);
+  });
+
+for (const company of sampleCompanies)
   test(`procurement materials retain notes and exact Finance context / ${company.slug}`, async ({
     page,
   }) => {
