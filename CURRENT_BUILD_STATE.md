@@ -3152,3 +3152,29 @@ Verification:592 affected native cases,12 new responsive CRM cases,3 original CR
 journeys, scoped accessibility, build/typecheck, lint/format and original protected
 checks PASS. Independent actual-source security QA /root/custody_transport_review
 CLEAR. Initial reproduction/fix-iteration failures remain local evidence, not CI passes.
+
+### Payroll current-source privacy correction
+
+On exact346, confirmed payroll-role loss with unchanged workforce row counts left
+a previously selected private preparation and CSV export visible. The existing
+Workforce view now withholds private subtrees during refresh/error or revoked
+access. Existing private actions and CSV export read the current original workforce
+source; tenant/context/source changes deny continuation. Late preview success or
+failure clears cached private results and refreshes access without mutation retry.
+No payroll math, canonical writer, SQL, permissions or protected source pins change.
+Baseline browser reproduction FAIL; corrected13 focused source tests plus27 original
+workforce cases PASS,12 new responsive cases and3 original workforce journeys PASS.
+Build/typecheck, scoped lint, design/source checks and formatting are verified
+separately; exact-head hosted results belong to the new draft, not inherited346.
+Independent actual-source security QA /root/custody_transport_review CLEAR after
+late-result and rejected-preview regressions were corrected. Source fences do not
+establish durable posting idempotency or genuine operational acceptance.
+
+Read-only inspection of the original customer writer confirms tenant-scoped RLS and
+atomic row insertion, but duplicate search is advisory; inserts lack a command key,
+immutable command receipt and exact uncertain-ACK reconciliation. Updates lack CAS.
+A source-specific transaction/SQL contract and separately approved D2/D3 custody
+are required for durable concurrency/ACK guarantees; unique email is no substitute.
+The346 UI correction remains unchanged. Intake SQL HELD; no hosted action performed.
+D1/D2/D3, A01–A12 NOT_RUN and original recovery evidence remain unchanged.
+Release1.0 remains NOT READY / NOT AUTHORIZED.

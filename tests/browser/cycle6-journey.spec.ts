@@ -2157,3 +2157,125 @@ test('CRM pending and UNKNOWN creation survives close/reopen and fences old-comp
     }
   }
 });
+
+for (const [brand, company] of sampleCompanies.entries())
+  test(`payroll revocation removes retained preparation and export despite unchanged row counts / ${company.slug}`, async ({
+    page,
+  }) => {
+    await page.goto(`/preview-workforce-authority-test.html?brand=${brand}`);
+    await page
+      .getByRole('button', { name: 'Payroll preparation', exact: true })
+      .click();
+    await page
+      .getByRole('button', { name: 'Prepare earnings preview', exact: true })
+      .click();
+    await expect(
+      page.getByRole('button', { name: 'Export preparation CSV', exact: true }),
+    ).toBeVisible();
+    await page
+      .getByRole('button', {
+        name: 'Revoke fixture payroll access',
+        exact: true,
+      })
+      .click();
+    await page
+      .getByRole('button', { name: 'Refresh timesheets', exact: true })
+      .click();
+    await expect(
+      page.getByRole('button', { name: 'Payroll preparation', exact: true }),
+    ).toHaveCount(0);
+    await expect(
+      page.getByRole('button', { name: 'Export preparation CSV', exact: true }),
+    ).toHaveCount(0);
+    await expect(
+      page.getByRole('button', {
+        name: 'Lock payroll preparation period',
+        exact: true,
+      }),
+    ).toHaveCount(0);
+    await expect(
+      page.getByText('Payroll preparation · execution disabled', {
+        exact: true,
+      }),
+    ).toHaveCount(0);
+  });
+
+test('payroll CSV requires fresh authority and delayed previews cannot revive revoked private results', async ({
+  page,
+}) => {
+  await page.goto('/preview-workforce-authority-test.html');
+  await page
+    .getByRole('button', { name: 'Payroll preparation', exact: true })
+    .click();
+  await page
+    .getByRole('button', { name: 'Prepare earnings preview', exact: true })
+    .click();
+  const exportButton = page.getByRole('button', {
+    name: 'Export preparation CSV',
+    exact: true,
+  });
+  await expect(exportButton).toBeVisible();
+  const positive = page.waitForEvent('download');
+  await exportButton.click();
+  expect((await positive).suggestedFilename()).toBe('payroll-preparation.csv');
+  const deniedDownloads: unknown[] = [];
+  page.on('download', (d) => deniedDownloads.push(d));
+  await page
+    .getByRole('button', { name: 'Revoke fixture payroll access', exact: true })
+    .click();
+  await exportButton.click();
+  await expect(exportButton).toHaveCount(0);
+  await expect(
+    page.getByRole('button', { name: 'Payroll preparation', exact: true }),
+  ).toHaveCount(0);
+  expect(deniedDownloads).toHaveLength(0);
+  for (const outcome of ['return', 'reject']) {
+    await page.goto('/preview-workforce-authority-test.html');
+    await page
+      .getByRole('button', { name: 'Payroll preparation', exact: true })
+      .click();
+    await page
+      .getByRole('button', { name: 'Prepare earnings preview', exact: true })
+      .click();
+    await expect(
+      page.getByRole('button', { name: 'Export preparation CSV', exact: true }),
+    ).toBeVisible();
+    await page
+      .getByRole('button', {
+        name: 'Pause next payroll preview result',
+        exact: true,
+      })
+      .click();
+    await page
+      .getByRole('button', { name: 'Prepare earnings preview', exact: true })
+      .click();
+    await expect(
+      page.getByRole('button', {
+        name: 'Prepare earnings preview',
+        exact: true,
+      }),
+    ).toBeDisabled();
+    await page
+      .getByRole('button', {
+        name: 'Revoke fixture payroll access',
+        exact: true,
+      })
+      .click();
+    await page
+      .getByRole('button', {
+        name:
+          outcome === 'return'
+            ? 'Release payroll preview result'
+            : 'Reject paused payroll result',
+        exact: true,
+      })
+      .click();
+    await expect(
+      page.getByRole('button', { name: 'Payroll preparation', exact: true }),
+    ).toHaveCount(0);
+    await expect(
+      page.getByRole('button', { name: 'Export preparation CSV', exact: true }),
+    ).toHaveCount(0);
+    expect(deniedDownloads).toHaveLength(0);
+  }
+});
