@@ -10,7 +10,8 @@ it('reproduces the original serialization failure with valid admitted UUID colli
   const randomUUID = crypto.randomUUID.bind(crypto);
   vi.spyOn(crypto, 'randomUUID').mockImplementation(() => {
     const id = randomUUID();
-    return `555010${id.slice(6)}`;
+    const [prefix, part2, part3, part4, part5] = id.split('-');
+    return `555010${prefix.slice(6)}-${part2}-${part3}-${part4}-${part5}`;
   });
   const gate = { enabled: true, confirmed: true };
   const sources = await prepareOperatingSources(sampleCompanies[0], gate);
