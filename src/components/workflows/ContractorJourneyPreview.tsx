@@ -15,6 +15,7 @@ import { FinanceWorkflow } from './FinanceWorkflow';
 import { CustomerWorkflow } from './CustomerWorkflow';
 import { ReceptionistSalesReview } from './ReceptionistSalesReview';
 import { GrowthWorkflow } from './GrowthWorkflow';
+import { TradeJobContinuity } from './TradeJobContinuity';
 import { IntelligenceWorkflow } from './IntelligenceWorkflow';
 import { BookingScheduling } from './BookingScheduling';
 import { JobReview } from './JobReview';
@@ -488,7 +489,7 @@ export function ContractorJourneyPreview() {
               </a>
             ))}
           </nav>
-          <section id="journey-sales" className="journey-card">
+          <section id="journey-sales" className="journey-card" tabIndex={-1}>
             <h2>1 · Lead, scope & contract preparation</h2>
             <SalesWorkflow
               key={journey.intake_request_id}
@@ -752,6 +753,21 @@ export function ContractorJourneyPreview() {
                 Inspect exact retained Copilot review
               </button>
             )}
+            <TradeJobContinuity
+              sources={journey}
+              trade={
+                intelligence?.company === companyId
+                  ? (intelligence.review.advanced?.trade ?? null)
+                  : null
+              }
+              admitted={() =>
+                Boolean(
+                  intelligenceGate.current?.enabled &&
+                  intelligenceGate.current?.confirmed &&
+                  journey.gate.confirmed,
+                )
+              }
+            />
             {intelligenceStatus && (
               <p role="status">Retained review: {intelligenceStatus}</p>
             )}

@@ -2996,3 +2996,15 @@ assignment is created. Original source fences latch changed evidence and hold an
 initial UNKNOWN disclosure attempt. Rates/user IDs stay outside this projection.
 Intake SQL, D1–D3, A01–A12, recovery and all release restrictions remain unchanged.
 Release1.0 NOT READY / NOT AUTHORIZED.
+
+## Lean cycle 14: retained trade checklist beside issued job scope
+
+The existing Copilot trade review now opens its original checklist beside the exact
+issued job scope and returns to shared estimating/job planning or Field review.
+Notes and filters remain mounted when confirmation/review is withdrawn; stale source
+or admission latches UNKNOWN. No trade review is prepared or replayed by this bridge.
+Recorded scope quantities remain distinct from verified measurements; human-selected
+edition/checklist prompts do not establish job classification, licensing, permits,
+code compliance, inspections or completion. Original engines/stores/routes/pins and
+all gates remain unchanged. Intake SQL HELD; partner capabilities unavailable;
+D1–D3, A01–A12 and recovery restrictions persist. NOT READY / NOT AUTHORIZED.
