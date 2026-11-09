@@ -23,6 +23,7 @@ import { SalesDesk } from './SalesDesk';
 import { CompletionReview } from './CompletionReview';
 import { MaintenanceDesk } from './MaintenanceDesk';
 import { DailyOperations } from './DailyOperations';
+import { ProcurementJobEvidence } from './ProcurementJobEvidence';
 import { OwnerCostEvidence } from './OwnerCostEvidence';
 import { Estimates } from '../phase3/Estimates';
 import type { EstimateBundle } from '../../domain/estimating/types';
@@ -541,6 +542,10 @@ export function ContractorJourneyPreview() {
             <FinanceWorkflow review={finance} enabled loading={financeBusy} />
             <JobReview sources={journey} enabled showFinanceDetails={false} />
             <FinanceDesk sources={journey} enabled />
+            <ProcurementJobEvidence
+              sources={journey}
+              onFinance={reviewFinance}
+            />
           </section>
           <section id="journey-customer" tabIndex={-1} className="journey-card">
             <h2>4 · Property history & completion documentation</h2>

@@ -4,6 +4,89 @@ import { sampleCompanies } from '../../src/domain/platform';
 import { industryEstimate } from '../../src/domain/estimating/fixtures';
 
 for (const company of sampleCompanies)
+  test(`procurement materials retain notes and exact Finance context / ${company.slug}`, async ({
+    page,
+  }) => {
+    await page.goto('/preview/contractor-journey');
+    await page
+      .getByRole('combobox', { name: 'Contractor', exact: true })
+      .selectOption(company.id);
+    await page
+      .getByLabel(
+        'I confirm this disposable local simulation; no contract, dispatch, invoice or message is authorized.',
+      )
+      .check();
+    await page
+      .getByRole('button', {
+        name: 'Prepare local synthetic journey',
+        exact: true,
+      })
+      .click();
+    const shared = page.getByRole('region', {
+      name: 'Exact shared journey context',
+      exact: true,
+    });
+    const original = await shared.innerText();
+    const r = page.getByRole('region', {
+      name: 'Procurement and exact job materials',
+      exact: true,
+    });
+    const notes = r.getByRole('textbox', {
+      name: 'Unfinished procurement notes',
+      exact: true,
+    });
+    const filter = r.getByRole('textbox', {
+      name: 'Filter recorded materials',
+      exact: true,
+    });
+    await notes.fill('Await exact supplier quote; retain my questions.');
+    await r
+      .getByRole('button', {
+        name: 'Review job materials and procurement requirements',
+        exact: true,
+      })
+      .click();
+    await expect(r).toContainText('Recorded estimate quantity:');
+    await expect(r).toContainText('supplier quote / price evidence UNKNOWN');
+    await expect(r).toContainText('Procurement approval: BLOCKED');
+    await filter.fill('no matching materials');
+    await r
+      .getByRole('button', {
+        name: 'Open exact materials job in Finance',
+        exact: true,
+      })
+      .click();
+    await expect(page.locator('#journey-finance')).toBeFocused();
+    await expect(notes).toHaveValue(
+      'Await exact supplier quote; retain my questions.',
+    );
+    await expect(filter).toHaveValue('no matching materials');
+    await filter.fill('');
+    await expect(r).toContainText('Scope line');
+    expect(await shared.innerText()).toBe(original);
+    expect(
+      (await new AxeBuilder({ page }).include('#journey-finance').analyze())
+        .violations,
+    ).toEqual([]);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth + 1,
+      ),
+    ).toBe(true);
+    await expect(
+      r.getByRole('button', {
+        name: /Order|Pay|Post costs|Receive materials|Send/,
+      }),
+    ).toHaveCount(0);
+    await page
+      .getByLabel(
+        'I confirm this disposable local simulation; no contract, dispatch, invoice or message is authorized.',
+      )
+      .uncheck();
+    await expect(r).toHaveCount(0);
+  });
+
+for (const company of sampleCompanies)
   test(`receptionist retains caller text and exact CRM review / ${company.slug}`, async ({
     page,
   }) => {
