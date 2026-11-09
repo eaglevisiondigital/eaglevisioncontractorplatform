@@ -2636,3 +2636,12 @@ original sample append. Do not expose connected authority, replace original expe
 records or treat approval as payment/delivery/cost completeness. UNKNOWN attempts
 retain a repository-bound UI hold; navigation is no permission to replay. Holds are
 not restart custody or a canonical business store. Operational gates remain closed.
+
+### Functional completion: preserve forecast edits through concurrent changes
+
+Extend the existing forecast operation in both modes, using original jobs/projection
+readers and CAS writer. Reconcile only the same tenant/job/immutable baseline; never
+merge another business identity. Changed values require staff review before a separate
+Save, and source changes invalidate cost completion. Server authorization remains
+sole operational authority. UNKNOWN permits exact reads only; UI holds are not durable
+receipts, recovery custody or canonical state. Invoice issuance remains prohibited.

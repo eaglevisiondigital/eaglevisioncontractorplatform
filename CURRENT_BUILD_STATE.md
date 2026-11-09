@@ -3115,3 +3115,19 @@ affected lint, formatting and original protected/design checks PASS. Independent
 security reviewer /root/lean15_readiness_review: CLEAR. Initial new browser locator
 timeouts and local sandbox build-cache failure were corrected without budget or
 assertion changes; these are not hosted acceptance evidence.
+
+### Functional completion: reconcile and save stale job forecasts
+
+The existing financial forecast Save now reads the exact current job before using
+the unchanged projection/CAS writer, in both sample and connected modes. Staff can
+retain independent edits, explicitly resolve conflicting values, apply reviewed
+changes and Save again without retyping. Changed cost evidence requires renewed
+cost-completion confirmation. Shared in-flight guards, current-context fences and
+UNKNOWN exact-read-only holds protect concurrent/navigation outcomes. Original
+expense reviews, issued baseline and revenue remain unchanged; no invoice is issued.
+Local578 affected cases include canonical CAS/reopen and unchanged connected-RPC
+contract tests;21 responsive conflict/UNKNOWN/cancellation journeys and scoped Axe
+PASS. Connected persistence is not demonstrated by sample retention or RPC mocks.
+Independent security review found and verified repairs for peer-UNKNOWN and stale
+context races. No core/SQL/grant/schema/route/provider activation changes. Intake SQL
+HELD; D1–D3/A01–A12, recovery and Release1.0 NOT READY / NOT AUTHORIZED remain.
