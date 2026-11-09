@@ -3131,3 +3131,24 @@ PASS. Connected persistence is not demonstrated by sample retention or RPC mocks
 Independent security review found and verified repairs for peer-UNKNOWN and stale
 context races. No core/SQL/grant/schema/route/provider activation changes. Intake SQL
 HELD; D1–D3/A01–A12, recovery and Release1.0 NOT READY / NOT AUTHORIZED remain.
+
+### CRM customer-create duplicate-write correction
+
+On exact345, two same-turn submissions of one existing Create customer form produced
+two distinct canonical customer rows; the retained browser reproduction expected1
+and observed2. The existing Customer form now admits one create attempt, verifies
+the returned row's tenant/entered fields and consumes that form. Shared per-repository
+company pending/UNKNOWN guards survive close/reopen; subscriptions avoid stale pending
+controls. Lost/malformed ACK stays UNKNOWN with no replacement; directory matches or
+absence never prove command outcome. Current-context fences prevent old completions
+closing another company's form. Original Operations writer/SQL/auth remain unchanged
+in both sample and connected paths. Guards are application-session only, not durable,
+cross-tab or server idempotency. No hosted processing or release gate is accepted.
+Owner-led automation-first and original Broker.submit review-only command are selected
+for D1 planning; Owner is Business/Source Owner. Remaining operator decisions, original
+restricted identities/three commits, independent custody, current Auth/tenant controls,
+D2/D3 and A01–A12 remain gated. Intake SQL HELD; recovery evidence remains unchanged.
+Verification:592 affected native cases,12 new responsive CRM cases,3 original CRM
+journeys, scoped accessibility, build/typecheck, lint/format and original protected
+checks PASS. Independent actual-source security QA /root/custody_transport_review
+CLEAR. Initial reproduction/fix-iteration failures remain local evidence, not CI passes.
