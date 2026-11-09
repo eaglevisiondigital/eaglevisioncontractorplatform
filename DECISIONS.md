@@ -2560,3 +2560,12 @@ Caller/staff notes do not establish a storm incident, date, causal link or physi
 completion. Pin exact property/report versions and latch changed source/authorization
 as UNKNOWN. Navigation retains local inputs and passes the selected report to the
 existing Passport review; no operational action or approval is inferred.
+
+### Lean cycle 13: do not manufacture Network partner records
+
+Use only canonical internal contractor worker references beside issued labor/service
+requirements. Worker classification is not a capability or Network membership, and
+recorded active status is not availability. Keep missing partner identities and
+qualification evidence UNKNOWN; no new partner store or matching/writer is authorized.
+Retain source-bound filters/notes through explicit exact-job navigation and hold
+UNKNOWN results. All protected source, design, recovery and release gates persist.

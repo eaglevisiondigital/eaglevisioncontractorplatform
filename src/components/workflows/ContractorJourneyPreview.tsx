@@ -8,6 +8,7 @@ import {
 } from '../../lib/workflows/journey-runtime';
 import { SalesWorkflow } from './SalesWorkflow';
 import { SalesJobPlanningReview } from './SalesJobPlanningReview';
+import { NetworkJobReview } from './NetworkJobReview';
 import { OfflineCrewContext } from './OfflineCrewContext';
 import { FieldWorkflow } from './FieldWorkflow';
 import { FinanceWorkflow } from './FinanceWorkflow';
@@ -525,6 +526,7 @@ export function ContractorJourneyPreview() {
             />
             <WeeklyCrew sources={journey} enabled />
             <OfflineCrewContext sources={journey} />
+            <NetworkJobReview sources={journey} />
           </section>
           <section id="journey-booking" className="journey-card">
             <h2>Booking &amp; scheduling review</h2>

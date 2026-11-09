@@ -2984,3 +2984,15 @@ repair authorization, insurance action, writer, route or store is created. Intak
 D1–D3, A01–A12, original recovery and release restrictions remain unchanged.
 Release1.0 NOT READY / NOT AUTHORIZED. Next bounded functional candidate: Contractor
 Network or trade-edition continuity, subject to original source/authority boundaries.
+
+## Lean cycle 13: Network requirements beside canonical contractor references
+
+Existing issued labor/service scope can now be reviewed beside allowlisted internal
+contractor profiles, retaining trade context, filters, selection and notes through
+exact Field return. These profiles are not Network partners. No partner directory or
+capability source exists in the current contracts; capability, licensing, insurance,
+availability and suitability remain UNKNOWN. No profile, match, invitation or
+assignment is created. Original source fences latch changed evidence and hold an
+initial UNKNOWN disclosure attempt. Rates/user IDs stay outside this projection.
+Intake SQL, D1–D3, A01–A12, recovery and all release restrictions remain unchanged.
+Release1.0 NOT READY / NOT AUTHORIZED.
