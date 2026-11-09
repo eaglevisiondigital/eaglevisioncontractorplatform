@@ -1390,3 +1390,156 @@ for (const company of sampleCompanies)
       ),
     ).toBe(true);
   });
+
+for (const company of sampleCompanies)
+  test(`selected draft quantities and removal save reopen and preserve remaining scope / ${company.slug}`, async ({
+    page,
+  }) => {
+    await page.goto('/preview');
+    await page
+      .getByRole('combobox', { name: 'Company context' })
+      .selectOption(company.id);
+    await page.getByRole('button', { name: 'Estimates', exact: true }).click();
+    const project = industryEstimate(company, 'unused').project.name;
+    await page.getByRole('button').filter({ hasText: project }).click();
+    const items = page.getByRole('textbox', { name: /^Scope item \d+$/ });
+    const descriptions = await items.evaluateAll((nodes) =>
+      nodes.map((node) => (node as HTMLInputElement).value),
+    );
+    const form = page.getByRole('region', {
+      name: 'Edit multiple draft items',
+    });
+    const note = page.getByRole('textbox', {
+      name: 'Private estimate notes',
+      exact: true,
+    });
+    await note.fill('Keep these private working notes');
+    await page.getByLabel('Quantity 3', { exact: true }).fill('9.');
+    await page
+      .getByLabel('Select scope item 1 for bulk edit', { exact: true })
+      .check();
+    await page
+      .getByLabel('Select scope item 2 for bulk edit', { exact: true })
+      .check();
+    await form.getByLabel('Quantity for selected scope items').fill('2.125');
+    const confirmation = form.getByLabel(
+      'I confirm this edit to the selected working-draft items.',
+    );
+    await confirmation.check();
+    await note.fill('Keep these newer private working notes');
+    await note.fill('Keep these private working notes');
+    await expect(confirmation).not.toBeChecked();
+    await note.fill('Keep these newer private working notes');
+    await expect(confirmation).not.toBeChecked();
+    await expect(
+      form.getByRole('button', {
+        name: 'Update selected quantities',
+        exact: true,
+      }),
+    ).toBeDisabled();
+    await confirmation.check();
+    await form
+      .getByRole('button', { name: 'Update selected quantities', exact: true })
+      .evaluate((button: HTMLButtonElement) => {
+        button.click();
+        button.click();
+      });
+    await expect(page.getByLabel('Quantity 1', { exact: true })).toHaveValue(
+      '2.125',
+    );
+    await expect(page.getByLabel('Quantity 2', { exact: true })).toHaveValue(
+      '2.125',
+    );
+    await expect(page.getByLabel('Quantity 3', { exact: true })).toHaveValue(
+      '9.',
+    );
+    await expect(items).toHaveCount(descriptions.length);
+    await page
+      .getByRole('button', { name: 'Save estimate draft', exact: true })
+      .click();
+    await expect(page.getByText(/Saved revision 2/)).toBeVisible();
+    await page
+      .getByRole('button', { name: 'All estimates', exact: true })
+      .click();
+    await page.getByRole('button').filter({ hasText: project }).click();
+    await expect(page.getByLabel('Quantity 1', { exact: true })).toHaveValue(
+      '2.125',
+    );
+    await expect(page.getByLabel('Quantity 2', { exact: true })).toHaveValue(
+      '2.125',
+    );
+    await page
+      .getByLabel('Select scope item 1 for bulk edit', { exact: true })
+      .check();
+    await page
+      .getByLabel('Select scope item 2 for bulk edit', { exact: true })
+      .check();
+    await form.getByLabel('Selected scope action').selectOption('remove');
+    if (company.id === 'sample-roofing') {
+      await confirmation.check();
+      await form
+        .getByRole('button', {
+          name: 'Remove selected scope items',
+          exact: true,
+        })
+        .click();
+      await expect(form.getByRole('status')).toContainText(
+        'Each option needs at least one scope item',
+      );
+      await expect(items).toHaveCount(descriptions.length);
+      await page
+        .getByLabel('Select scope item 2 for bulk edit', { exact: true })
+        .uncheck();
+    }
+    const removedCount = company.id === 'sample-roofing' ? 1 : 2;
+    await confirmation.check();
+    await form
+      .getByRole('button', { name: 'Remove selected scope items', exact: true })
+      .evaluate((button: HTMLButtonElement) => {
+        button.click();
+        button.click();
+      });
+    await expect(items).toHaveCount(descriptions.length - removedCount);
+    expect(
+      await items.evaluateAll((nodes) =>
+        nodes.map((node) => (node as HTMLInputElement).value),
+      ),
+    ).toEqual(descriptions.slice(removedCount));
+    await page
+      .getByRole('button', { name: 'Save estimate draft', exact: true })
+      .click();
+    await expect(page.getByText(/Saved revision 3/)).toBeVisible();
+    await page
+      .getByRole('button', { name: 'All estimates', exact: true })
+      .click();
+    await page.getByRole('button').filter({ hasText: project }).click();
+    await expect(items).toHaveCount(descriptions.length - removedCount);
+    expect(
+      await items.evaluateAll((nodes) =>
+        nodes.map((node) => (node as HTMLInputElement).value),
+      ),
+    ).toEqual(descriptions.slice(removedCount));
+    await expect(note).toHaveValue('Keep these newer private working notes');
+    await form
+      .getByRole('button', {
+        name: 'Select all editable scope items',
+        exact: true,
+      })
+      .click();
+    await form.getByLabel('Selected scope action').selectOption('remove');
+    await confirmation.check();
+    await form
+      .getByRole('button', { name: 'Remove selected scope items', exact: true })
+      .click();
+    await expect(form.getByRole('status')).toContainText(
+      'Keep at least one scope item',
+    );
+    await expect(items).toHaveCount(descriptions.length - removedCount);
+    await expect(page.getByText(/Saved revision 3/)).toBeVisible();
+    expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth + 1,
+      ),
+    ).toBe(true);
+  });

@@ -13,16 +13,11 @@ export interface CatalogQuantity {
   id: string;
   quantity: string;
 }
-/** Synchronous editor action, using the original single-item selector's loaded snapshot.
- * No read, writer or permission is created. The existing Save owns canonical CAS.
- */
-export function catalogDraftBatch(
+/** Existing ordinary local draft admission; no new authorization or writer. */
+export function assertOrdinaryDraftContext(
   repo: Phase3Repository,
   org: string,
   bundle: EstimateBundle,
-  catalog: readonly CatalogItem[],
-  rows: readonly CatalogQuantity[],
-  liveDraft: () => EstimateInput,
 ) {
   if (
     !repo.sample ||
@@ -38,6 +33,19 @@ export function catalogDraftBatch(
     repo.repairOrigin(org, bundle.estimate.id, bundle.version.id)
   )
     throw Error('Special revision preparation must use its original workflow');
+}
+/** Synchronous editor action, using the original single-item selector's loaded snapshot.
+ * No read, writer or permission is created. The existing Save owns canonical CAS.
+ */
+export function catalogDraftBatch(
+  repo: Phase3Repository,
+  org: string,
+  bundle: EstimateBundle,
+  catalog: readonly CatalogItem[],
+  rows: readonly CatalogQuantity[],
+  liveDraft: () => EstimateInput,
+) {
+  assertOrdinaryDraftContext(repo, org, bundle);
   if (!rows.length || new Set(rows.map((r) => r.id)).size !== rows.length)
     throw Error('Choose distinct catalog items and explicit quantities');
   const draft = liveDraft();

@@ -2608,3 +2608,12 @@ payload with the native calculator; exclude original special revision/voice flow
 Keep original Save/CAS as the only canonical writer. Do not extend protected core
 readiness sources or reinterpret loaded prices as current quotes. Sample retention
 is not durable operational acceptance; all original gates remain unchanged.
+
+### Functional completion 2: multi-line edits preserve original quote ownership
+
+Batch only existing editable line IDs; never change approved import rows or silently
+remove required alternative scope. Use native calculation and original Save/CAS,
+not another writer. Explicit confirmation binds a monotonic local edit revision so
+edit/revert cannot renew it. Refresh affected quantity controls without replacing
+canonical line identity or unrelated unfinished fields. No durable/hosted or genuine
+Auth acceptance is implied; special revision flows retain their original controls.

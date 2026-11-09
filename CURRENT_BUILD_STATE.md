@@ -3065,3 +3065,18 @@ Final narrowed-source validation:522 combined native/source cases,9 responsive
 save/reopen journeys, build/typecheck and affected lint/format PASS. Original C24
 preservation checker PASS with protected core bytes restored; final independent
 review CLEAR. Initial failed head remains historical evidence, not accepted CI.
+
+### Functional completion 2: selected draft quantity edits and removal
+
+Ordinary local estimate drafts now select multiple existing editable scope items
+and explicitly confirm either a shared quantity or removal. Native calculation
+validates the complete result before one synchronous working-copy update; original
+Save/get/CAS remains the only writer. Line/customer/property/version identities,
+unselected fields, alternatives and imported provenance remain protected. Changes
+to any draft input or selection invalidate confirmation across edit/revert; only
+quantity-changed inputs refresh their displayed value, retaining unfinished inputs
+elsewhere. No protected core, schema, route, storage or operational capability added.
+Local537 combined cases,9 responsive Save/reopen journeys, build/typecheck,
+affected lint/format and protected/design checks PASS. Independent security review
+CLEAR. Retention remains sample-session only. Intake SQL HELD; D1–D3/A01–A12,
+recovery, financial/provider/production and release restrictions unchanged.
