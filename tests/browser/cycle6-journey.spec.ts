@@ -1656,3 +1656,138 @@ for (const company of sampleCompanies)
       ),
     ).toBe(true);
   });
+
+for (const company of sampleCompanies)
+  test(`expense management records reason and decision with cost propagation and reopen / ${company.slug}`, async ({
+    page,
+  }) => {
+    await page.goto('/preview');
+    await page
+      .getByRole('combobox', { name: 'Company context' })
+      .selectOption(company.id);
+    await page.getByRole('button', { name: 'Jobs', exact: true }).click();
+    const picker = page.getByRole('combobox', {
+      name: 'Financial job',
+      exact: true,
+    });
+    const jobId = await picker.inputValue();
+    const materialRow = page
+      .getByRole('region', {
+        name: 'Scrollable financial comparison',
+        exact: true,
+      })
+      .getByRole('row')
+      .filter({
+        has: page.getByRole('rowheader', { name: 'materials', exact: true }),
+      });
+    const commitment = () => materialRow.getByRole('cell').nth(3);
+    const initial = Number(
+      (await commitment().innerText()).replace(/[^0-9.-]/g, ''),
+    );
+    async function submit(suffix: string) {
+      await page
+        .getByText('Record expense, commitment or credit', { exact: true })
+        .click();
+      const form = page.locator('form').filter({
+        has: page.getByRole('button', {
+          name: 'Submit for expense review',
+          exact: true,
+        }),
+      });
+      for (const [label, value] of Object.entries({
+        'Purchase link key': `REVIEW-${suffix}`,
+        'Supplier / payee': 'Synthetic management supplier',
+        'Unique supplier document reference': `REVIEW-${suffix}`,
+        'Expense description': `Management materials ${suffix}`,
+        'Expense amount (USD minor units)': '12345',
+      }))
+        await form.getByLabel(label, { exact: true }).fill(value);
+      await form
+        .getByRole('combobox', { name: 'Expense record type', exact: true })
+        .selectOption('commitment');
+      await form
+        .getByRole('button', { name: 'Submit for expense review', exact: true })
+        .click();
+      return page
+        .locator('.expense-record')
+        .filter({ hasText: `Management materials ${suffix}` });
+    }
+    const approved = await submit('approve');
+    const button = approved.getByRole('button', {
+      name: 'Record expense review',
+      exact: true,
+    });
+    await button.click();
+    await expect(approved.getByRole('status')).toContainText(
+      'Confirm this exact submission',
+    );
+    await approved
+      .getByRole('textbox', { name: 'Expense review reason', exact: true })
+      .fill('Original supplier evidence reviewed for materials');
+    const confirm = approved.getByRole('checkbox');
+    await confirm.check();
+    await approved
+      .getByRole('textbox', { name: 'Expense review reason', exact: true })
+      .fill('Original supplier evidence reviewed for materials and quantity');
+    await expect(confirm).not.toBeChecked();
+    await confirm.check();
+    expect(
+      (await new AxeBuilder({ page }).include('.expense-record').analyze())
+        .violations,
+    ).toEqual([]);
+    await button.evaluate((node: HTMLButtonElement) => {
+      node.click();
+      node.click();
+    });
+    await expect(approved).toContainText(
+      'Management review: Original supplier evidence reviewed for materials and quantity',
+    );
+    await expect(
+      approved.getByRole('button', {
+        name: 'Record expense review',
+        exact: true,
+      }),
+    ).toHaveCount(0);
+    const expected = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }).format(initial + 123.45);
+    await expect(commitment()).toHaveText(expected);
+    const rejected = await submit('reject');
+    await rejected
+      .getByRole('combobox', { name: 'Expense review decision', exact: true })
+      .selectOption('rejected');
+    await rejected
+      .getByRole('textbox', { name: 'Expense review reason', exact: true })
+      .fill('Supplier evidence incomplete; correction required');
+    await rejected.getByRole('checkbox').check();
+    await rejected
+      .getByRole('button', { name: 'Record expense review', exact: true })
+      .click();
+    await expect(rejected).toContainText('rejected');
+    await expect(rejected).toContainText(
+      'Management review: Supplier evidence incomplete; correction required',
+    );
+    await expect(commitment()).toHaveText(expected);
+    await page.getByRole('button', { name: 'Estimates', exact: true }).click();
+    await page.getByRole('button', { name: 'Jobs', exact: true }).click();
+    await picker.selectOption(jobId);
+    await expect(approved).toHaveCount(1);
+    await expect(approved).toContainText(
+      'Management review: Original supplier evidence reviewed for materials and quantity',
+    );
+    await expect(rejected).toContainText(
+      'Management review: Supplier evidence incomplete; correction required',
+    );
+    await expect(commitment()).toHaveText(expected);
+    await expect(
+      page.getByText('Projected contribution · incomplete costs', {
+        exact: true,
+      }),
+    ).toBeVisible();
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth + 1,
+      ),
+    ).toBe(true);
+  });

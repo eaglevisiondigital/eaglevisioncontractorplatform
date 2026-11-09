@@ -153,8 +153,15 @@ test('job dashboard reviews expenses, protects billing and updates projections',
   await expect(
     page.getByText('Unplanned exterior hardware', { exact: true }),
   ).toBeVisible();
-  await page
-    .getByRole('button', { name: 'Approve expense', exact: true })
+  const expenseReview = page
+    .locator('.expense-record')
+    .filter({ hasText: 'Unplanned exterior hardware' });
+  await expenseReview
+    .getByLabel('Expense review reason', { exact: true })
+    .fill('Supplier document reviewed against original submission');
+  await expenseReview.getByRole('checkbox').check();
+  await expenseReview
+    .getByRole('button', { name: 'Record expense review', exact: true })
     .click();
   await expect(
     page.getByText('0 expenses await review.', { exact: false }),
