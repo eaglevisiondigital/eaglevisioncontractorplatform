@@ -1,7 +1,11 @@
+import {
+  materialExpenseEvidence,
+  type ExpenseJobContext,
+} from './material-expense-evidence';
 import { BackOfficeText } from '../property/back-office-copy';
 import type { Operations } from '../../lib/operations';
 import { PropertyJobReview } from '../property/PropertyJobReview';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import type { Phase3Repository } from '../../lib/phase3';
 import type { CompanyProfile } from '../../domain/platform';
 import {
@@ -14,7 +18,10 @@ import {
 } from '../../domain/jobs/financials';
 import { formatMinor } from '../../domain/estimating/calculation';
 import { MaterialImport } from './MaterialImport';
-import type { EstimateBundle } from '../../domain/estimating/types';
+import {
+  estimateUnits,
+  type EstimateBundle,
+} from '../../domain/estimating/types';
 import { useResource, useTask } from '../forms-state';
 import { FieldsForm, ResourceStatus } from '../forms';
 import { Field, Money, Percent } from './fields';
@@ -394,6 +401,19 @@ function JobDetail({
                   : 'Unplanned purchase or substitution'}{' '}
               · {e.document_ids.length} clean attachments
             </p>
+            {repo.sample && e.category === 'materials' && (
+              <p>
+                Reported material quantity:{' '}
+                {e.quantity_milli === null
+                  ? 'UNKNOWN'
+                  : e.quantity_milli / 1000}{' '}
+                · unit: {e.unit ?? 'UNKNOWN'} · unit cost:{' '}
+                {e.unit_cost_minor === null
+                  ? 'UNKNOWN'
+                  : money(e.unit_cost_minor)}
+                . Reported evidence is not delivery or payment verification.
+              </p>
+            )}
             {admin && !review && (
               <div className="button-row">
                 <button
@@ -629,10 +649,15 @@ function ExpenseForm({
 }: {
   repo: Phase3Repository;
   org: string;
-  job: Pick<Job, 'id' | 'baseline'>;
+  job: ExpenseJobContext;
   onSaved: () => void;
 }) {
   const task = useTask();
+  const submitting = useRef(false);
+  const evidenceEnabled =
+    repo.sample &&
+    job.organization_id === org &&
+    !!job.baseline.issued_version_id;
   const docs = useResource(
     useCallback(() => repo.cleanDocuments(org), [repo, org]),
   );
@@ -707,6 +732,31 @@ function ExpenseForm({
               })),
             ],
           },
+          ...(evidenceEnabled
+            ? [
+                {
+                  name: 'reported_quantity',
+                  label: 'Reported material quantity',
+                  maxLength: 20,
+                  hint: 'Optional; up to three decimal places. Blank means UNKNOWN.',
+                },
+                {
+                  name: 'reported_unit',
+                  label: 'Reported material unit',
+                  type: 'select' as const,
+                  options: [
+                    { value: '', label: 'UNKNOWN / not recorded' },
+                    ...estimateUnits.map((value) => ({ value, label: value })),
+                  ],
+                },
+                {
+                  name: 'reported_unit_cost',
+                  label: `Reported material unit cost (${job.baseline.currency} minor units)`,
+                  maxLength: 16,
+                  hint: 'Optional whole minor units from the document; not estimated pricing. Blank means UNKNOWN.',
+                },
+              ]
+            : []),
           {
             name: 'document_id',
             label: 'Existing clean invoice or receipt',
@@ -729,31 +779,45 @@ function ExpenseForm({
             label: 'Original approved expense ID (required for credits)',
           },
         ]}
+        busy={task.busy}
         submitLabel="Submit for expense review"
-        onSubmit={(v) =>
-          task
-            .run(async () => {
-              await repo.submitExpense(org, job.id, {
-                purchase_key: String(v.purchase_key),
-                supplier: String(v.supplier),
-                reference: String(v.reference),
-                description: String(v.description),
-                category: v.category as Expense['category'],
-                kind: v.kind as Expense['kind'],
-                amount_minor: Number(v.amount_minor),
-                estimate_line_id: String(v.estimate_line_id) || null,
-                quantity_milli: null,
-                unit: null,
-                unit_cost_minor: null,
-                document_ids: v.document_id ? [String(v.document_id)] : [],
-                material_approval_id: null,
-                adjusts_expense_id: String(v.adjusts_expense_id) || null,
-                labor_worker_id: String(v.labor_worker_id) || null,
-              });
-              onSaved();
-            }, 'Expense submitted; management approval pending')
-            .then(() => {})
-        }
+        onSubmit={async (v) => {
+          if (submitting.current) return;
+          submitting.current = true;
+          try {
+            await task
+              .run(async () => {
+                const evidence = evidenceEnabled
+                  ? materialExpenseEvidence(org, job, {
+                      category: String(v.category),
+                      line: String(v.estimate_line_id || ''),
+                      quantity: String(v.reported_quantity || ''),
+                      unit: String(v.reported_unit || ''),
+                      unitCost: String(v.reported_unit_cost || ''),
+                    })
+                  : { quantity_milli: null, unit: null, unit_cost_minor: null };
+                await repo.submitExpense(org, job.id, {
+                  purchase_key: String(v.purchase_key),
+                  supplier: String(v.supplier),
+                  reference: String(v.reference),
+                  description: String(v.description),
+                  category: v.category as Expense['category'],
+                  kind: v.kind as Expense['kind'],
+                  amount_minor: Number(v.amount_minor),
+                  estimate_line_id: String(v.estimate_line_id) || null,
+                  ...evidence,
+                  document_ids: v.document_id ? [String(v.document_id)] : [],
+                  material_approval_id: null,
+                  adjusts_expense_id: String(v.adjusts_expense_id) || null,
+                  labor_worker_id: String(v.labor_worker_id) || null,
+                });
+                onSaved();
+              }, 'Expense submitted; management approval pending')
+              .then(() => {});
+          } finally {
+            submitting.current = false;
+          }
+        }}
       />
       {task.message && <p role="status">{task.message}</p>}
     </>

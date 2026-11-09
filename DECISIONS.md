@@ -2617,3 +2617,12 @@ not another writer. Explicit confirmation binds a monotonic local edit revision 
 edit/revert cannot renew it. Refresh affected quantity controls without replacing
 canonical line identity or unrelated unfinished fields. No durable/hosted or genuine
 Auth acceptance is implied; special revision flows retain their original controls.
+
+### Functional completion: preserve explicit reported material values
+
+Use existing nullable expense quantity/unit/unit-cost fields instead of discarding
+staff-entered evidence. Keep blank UNKNOWN distinct from known zero cost. Bind any
+manual budget match to the original job's material line and unit; never fuzzy-match,
+convert quantities, infer prices or auto-approve a submission. Existing financial
+readers and management review remain authoritative; field/connected gates and all
+operational acceptance requirements persist. No additional evidence store or writer.
