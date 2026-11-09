@@ -4,6 +4,102 @@ import { sampleCompanies } from '../../src/domain/platform';
 import { industryEstimate } from '../../src/domain/estimating/fixtures';
 
 for (const company of sampleCompanies)
+  test(`crew readiness evaluates hours scope materials and retains proposal / ${company.slug}`, async ({
+    page,
+  }) => {
+    await page.goto('/preview/contractor-journey');
+    await page
+      .getByRole('combobox', { name: 'Contractor', exact: true })
+      .selectOption(company.id);
+    const global = page.getByLabel(
+      'I confirm this disposable local simulation; no contract, dispatch, invoice or message is authorized.',
+    );
+    await global.check();
+    await page
+      .getByRole('button', {
+        name: 'Prepare local synthetic journey',
+        exact: true,
+      })
+      .click();
+    const r = page.getByRole('region', {
+      name: 'Crew day and job readiness review',
+      exact: true,
+    });
+    await r
+      .getByLabel('Readiness proposed start', { exact: true })
+      .fill('09:00');
+    await r.getByLabel('Readiness proposed end', { exact: true }).fill('12:00');
+    await r
+      .getByLabel('Readiness proposed working hours start', { exact: true })
+      .fill('10:00');
+    await r
+      .getByLabel('Readiness proposed working hours end', { exact: true })
+      .fill('11:00');
+    const note = r.getByRole('textbox', {
+      name: 'Unfinished readiness notes',
+      exact: true,
+    });
+    await note.fill('Need customer confirmation and exact material receipt.');
+    const confirm = r.getByLabel(
+      'I confirm this proposed workday for read-only readiness evaluation.',
+    );
+    await confirm.check();
+    await r
+      .getByRole('button', {
+        name: 'Evaluate exact job readiness',
+        exact: true,
+      })
+      .click();
+    await expect(r).toContainText('OUTSIDE PROPOSED HOURS');
+    await expect(r).toContainText('120 minutes');
+    await expect(r).toContainText(
+      'Supplier quote and material receipt UNKNOWN',
+    );
+    await expect(r).toContainText('operational readiness UNKNOWN');
+    await r
+      .getByRole('button', {
+        name: 'Recheck exact retained crew readiness',
+        exact: true,
+      })
+      .click();
+    await expect(r).toContainText('Captured source rechecked');
+    await r.getByLabel('Readiness proposed end', { exact: true }).fill('13:00');
+    await expect(confirm).not.toBeChecked();
+    await expect(
+      r.getByRole('button', {
+        name: 'Evaluate exact job readiness',
+        exact: true,
+      }),
+    ).toBeDisabled();
+    await expect(r).toContainText('inputs changed');
+    await confirm.check();
+    await r
+      .getByRole('button', {
+        name: 'Evaluate exact job readiness',
+        exact: true,
+      })
+      .click();
+    await expect(r).toContainText('180 minutes');
+    await expect(note).toHaveValue(
+      'Need customer confirmation and exact material receipt.',
+    );
+    expect(
+      (await new AxeBuilder({ page }).include('#journey-field').analyze())
+        .violations,
+    ).toEqual([]);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth + 1,
+      ),
+    ).toBe(true);
+    await expect(
+      r.getByRole('button', { name: /Assign|Book|Dispatch|Send|Pay/ }),
+    ).toHaveCount(0);
+    await global.uncheck();
+    await expect(r).toHaveCount(0);
+  });
+
+for (const company of sampleCompanies)
   test(`trade checklist retains exact job scope and unfinished review / ${company.slug}`, async ({
     page,
   }) => {
