@@ -3045,3 +3045,23 @@ Candidate1f6ac06 hosted typecheck passed, then its lineage read found the logica
 C9 review object lacks the test path on GitHub. The exact published PR339 parent
 retains the original test with the unchanged C9 hash; use that immutable retained
 object for byte verification instead. No historical manifest/pin is replaced.
+
+### Functional completion: multi-item catalog draft preparation
+
+Ordinary local estimate drafts now accept several loaded catalog items with
+explicit quantities in one synchronous editor action, then use original Save/
+readback/CAS. Existing scope, notes, customer/property/version and options remain
+intact; filtering retains selection and duplicate clicks append only once.
+The exact source contract is the existing single-item selector's loaded pricing
+snapshot, not a fresh supplier quote. No extra read, writer, route or store exists.
+Original special revision/voice flows are excluded. Same-session sample retention
+is not hosted durability/Auth acceptance. D1–D3/A01–A12, intake SQL HELD and all
+recovery/release restrictions persist. Initial draft5902d5b's broader C24 check
+correctly rejected a protected-core extension. That extension is removed, restoring
+Phase3 bytes exactly; the historical pin and failed attempt remain preserved.
+Broader preview audit observed4.16:1 subtotal-label contrast in unchanged styles;
+no full preview accessibility PASS or design repair is claimed.
+Final narrowed-source validation:522 combined native/source cases,9 responsive
+save/reopen journeys, build/typecheck and affected lint/format PASS. Original C24
+preservation checker PASS with protected core bytes restored; final independent
+review CLEAR. Initial failed head remains historical evidence, not accepted CI.

@@ -2599,3 +2599,12 @@ unknown paths and edits deny. Preserve the failed hosted artifact and its unknow
 matching leaf; do not claim an unobserved runtime privacy repair. Admit only the
 reviewed test successor against the original historical pin, never replace that
 pin. No new operational authority is granted; original pilot/recovery gates remain.
+
+### Functional completion: batch catalog scope uses ordinary draft ownership
+
+Use the original single-item selector's loaded catalog pricing contract for a
+synchronous multi-item editor action. Validate explicit quantities and the complete
+payload with the native calculator; exclude original special revision/voice flows.
+Keep original Save/CAS as the only canonical writer. Do not extend protected core
+readiness sources or reinterpret loaded prices as current quotes. Sample retention
+is not durable operational acceptance; all original gates remain unchanged.
