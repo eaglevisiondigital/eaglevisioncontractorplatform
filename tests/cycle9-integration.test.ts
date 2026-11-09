@@ -1,3 +1,4 @@
+import { privacySerialization } from './support/privacy-serialization';
 import { afterEach, expect, it, vi } from 'vitest';
 import { sampleCompanies } from '../src/domain/platform';
 import {
@@ -278,7 +279,7 @@ it.each([0, 1, 2])(
         ),
       ).size,
     ).toBe(4);
-    expect(JSON.stringify(r.service)).not.toMatch(
+    expect(privacySerialization(r.service)).not.toMatch(
       /PRIVATE|internal_notes|unit_cost_minor|supplier|margin|payroll|actor_id|worker_id|staff_type|@example.invalid|555010/,
     );
     for (const e of s.entries) {

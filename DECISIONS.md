@@ -2589,3 +2589,13 @@ Whole-model freshness comes from original async reconciliation; scheduling resul
 are labelled captured/non-atomic until rechecked, never continuous availability.
 Mismatch holds retain exact evidence without automatic replacement. No operational
 command or authority is introduced; original stores/engines and release gates persist.
+
+### Functional completion: opaque identifiers are not customer phone text
+
+Preserve the original privacy exclusions on all keys and customer-visible text.
+A valid UUID/hash containing a phone-prefix sentinel is not evidence of contact
+leakage. Test-only exemptions require exact structural paths plus format checks;
+unknown paths and edits deny. Preserve the failed hosted artifact and its unknown
+matching leaf; do not claim an unobserved runtime privacy repair. Admit only the
+reviewed test successor against the original historical pin, never replace that
+pin. No new operational authority is granted; original pilot/recovery gates remain.

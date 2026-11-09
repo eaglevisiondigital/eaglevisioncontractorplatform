@@ -3021,3 +3021,27 @@ conflict resolution occurs. Missing materials, customer authorization, site acce
 permits and receipts remain UNKNOWN/UNVERIFIED; operational readiness never becomes
 GO. No planner/store/writer/route, assignment, booking or dispatch is added. Intake
 SQL, D1–D3, A01–A12, Network and recovery restrictions persist. NOT READY / NOT AUTHORIZED.
+
+### Functional completion: service privacy exclusion correction
+
+The original Cycle10 job129185326010 reported364/365 PASS and a C9 serialization
+privacy assertion FAIL. Its truncated JSON does not reveal the matching leaf.
+Actual source inspection found no private/contact projection. A deterministic
+original-engine reproduction shows valid admitted UUIDs containing555010 trigger
+the same exclusion; this proves a test defect, not the exact historical collision.
+The original regex remains unchanged. Only validated UUID/SHA256 values at exact
+public identity/digest paths receive opaque-digit treatment; all keys, customer
+text, phone values, malformed/unexpected paths and dotted aliases remain excluded.
+Historical C9 pins remain unchanged; an independently reviewed finite three-file
+test successor is admitted explicitly. No application/SQL/design/operational source
+changes or genuine acceptance are claimed. D1 owner assignments, D2/D3 and A01–A12
+remain open; the first-pilot owner front sheet remains authoritative. Intake SQL
+HELD and all existing recovery/release restrictions persist.
+Initial correction candidate67969f3 hosted typecheck failed because its new collision
+fixture returned a widened TypeScript string template. Separate de97c31 changes
+only the UUID return construction, with an exact type-only source admission; the
+failed attempt and original author remain retained. Final local typecheck passes.
+Candidate1f6ac06 hosted typecheck passed, then its lineage read found the logical
+C9 review object lacks the test path on GitHub. The exact published PR339 parent
+retains the original test with the unchanged C9 hash; use that immutable retained
+object for byte verification instead. No historical manifest/pin is replaced.
