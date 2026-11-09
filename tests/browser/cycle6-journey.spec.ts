@@ -4,6 +4,91 @@ import { sampleCompanies } from '../../src/domain/platform';
 import { industryEstimate } from '../../src/domain/estimating/fixtures';
 
 for (const company of sampleCompanies)
+  test(`receptionist retains caller text and exact CRM review / ${company.slug}`, async ({
+    page,
+  }) => {
+    await page.goto('/preview/contractor-journey');
+    await page
+      .getByRole('combobox', { name: 'Contractor', exact: true })
+      .selectOption(company.id);
+    await page
+      .getByLabel(
+        'I confirm this disposable local simulation; no contract, dispatch, invoice or message is authorized.',
+      )
+      .check();
+    await page
+      .getByRole('button', {
+        name: 'Prepare local synthetic journey',
+        exact: true,
+      })
+      .click();
+    const growth = page.locator('#journey-growth');
+    await growth
+      .getByLabel('I confirm this local maintenance planning review.')
+      .check();
+    await growth
+      .getByRole('button', {
+        name: 'Load maintenance opportunities',
+        exact: true,
+      })
+      .click();
+    await growth
+      .getByText('Optional local opportunity review', { exact: true })
+      .click();
+    await growth
+      .getByRole('combobox', { name: 'Review purpose', exact: true })
+      .selectOption('receptionist');
+    const transcript = growth.getByRole('textbox', {
+      name: 'Synthetic review note',
+      exact: true,
+    });
+    await transcript.fill(
+      'Original caller: urgent estimate; no contact permission.',
+    );
+    const review = growth.getByRole('region', {
+      name: 'Receptionist to existing Sales review',
+      exact: true,
+    });
+    await review
+      .getByRole('button', { name: 'Open exact existing intake', exact: true })
+      .click();
+    await expect(review).toContainText('Verified CRM record');
+    await expect(review).toContainText('Caller-to-lead relationship UNKNOWN');
+    const note = review.getByLabel('Unfinished receptionist staff notes');
+    await note.fill('Unfinished staff question');
+    await review
+      .getByRole('button', { name: 'Hide exact intake review', exact: true })
+      .click();
+    await review
+      .getByRole('button', { name: 'Open exact existing intake', exact: true })
+      .click();
+    await expect(note).toHaveValue('Unfinished staff question');
+    await expect(transcript).toHaveValue(
+      'Original caller: urgent estimate; no contact permission.',
+    );
+    await expect(
+      review.getByRole('button', {
+        name: /Save assignment|Send|Book|Create lead/,
+      }),
+    ).toHaveCount(0);
+    expect(
+      (await new AxeBuilder({ page }).include('#journey-growth').analyze())
+        .violations,
+    ).toEqual([]);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth + 1,
+      ),
+    ).toBe(true);
+    await page
+      .getByLabel(
+        'I confirm this disposable local simulation; no contract, dispatch, invoice or message is authorized.',
+      )
+      .uncheck();
+    await expect(review).toHaveCount(0);
+  });
+
+for (const company of sampleCompanies)
   test(`captured voice scope reaches the original estimate draft controls / ${company.slug}`, async ({
     page,
   }, info) => {

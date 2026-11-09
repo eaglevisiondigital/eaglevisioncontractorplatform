@@ -2527,3 +2527,11 @@ catalog and working form before/after waits and immediately before application.
 Missing quantities, changed sources and UNKNOWN outcomes cannot be replayed. Preserve
 issued baselines, manual inputs and all separate operational/release gates; no inferred
 prices, customer approval, contract, work authorization or issuance.
+
+### Lean cycle 9: exact intake comparison without caller identity inference
+
+Compose the original Sales reader beside the existing receptionist input. Use only
+its exact selected intake/customer/property and allowlisted lead projection. Preserve
+caller statements, manual notes and existing filters; withhold changed or revoked
+sources before/after waits. No matching by words, new lead/assignment, contact,
+booking or approval. All original engines, source pins and release gates persist.

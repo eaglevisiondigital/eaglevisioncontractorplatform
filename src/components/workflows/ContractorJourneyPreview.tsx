@@ -11,6 +11,7 @@ import { SalesJobPlanningReview } from './SalesJobPlanningReview';
 import { FieldWorkflow } from './FieldWorkflow';
 import { FinanceWorkflow } from './FinanceWorkflow';
 import { CustomerWorkflow } from './CustomerWorkflow';
+import { ReceptionistSalesReview } from './ReceptionistSalesReview';
 import { GrowthWorkflow } from './GrowthWorkflow';
 import { IntelligenceWorkflow } from './IntelligenceWorkflow';
 import { BookingScheduling } from './BookingScheduling';
@@ -592,6 +593,7 @@ export function ContractorJourneyPreview() {
               }}
               enabled
             />
+            <ReceptionistSalesReview sources={journey} />
             <MaintenanceDesk sources={journey} enabled />
           </section>
           <section id="journey-intelligence" className="journey-card">
