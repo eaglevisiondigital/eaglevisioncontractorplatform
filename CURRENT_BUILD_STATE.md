@@ -2962,3 +2962,13 @@ navigation. No preparation attempt is consumed, no purchase/order/receipt/postin
 created, and no store, route, engine, source pin or approved design is replaced.
 Intake SQL, D1–D3, A01–A12 and recovery restrictions persist.
 Release1.0 NOT READY / NOT AUTHORIZED.
+
+## Lean cycle 11: offline crew source review
+
+The existing Field workspace now retains unsaved observations beside the exact
+assigned visit, crew, job and issued scope through offline review hide/return.
+Original sync-admission requirements and Field readers supply source identities;
+local notes never become server records or ACKs. Detected stale/revoked evidence
+latches UNKNOWN. No replay, dispatch, synchronization, writer or storage is added.
+Intake SQL, D1–D3, A01–A12, original recovery and release restrictions persist.
+Release1.0 NOT READY / NOT AUTHORIZED.

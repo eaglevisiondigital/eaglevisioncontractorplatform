@@ -2544,3 +2544,11 @@ remain mounted during exact Finance continuation. Catalog vendor labels never pr
 supplier identity or quotes; estimate scope never proves ordering, receipt or posted
 cost. No purchase preparation hold is reopened or consumed by this read-only view.
 All original authorization, source, financial and release controls remain unchanged.
+
+### Lean cycle 11: retained observations beside original offline/Field source
+
+Compose original read-only sync requirements, Field work-order admission and issued
+scope. Keep notes as explicitly unsaved inputs, distinct from recorded visits and
+UNKNOWN server outcomes. Latch stale/current-authorization failures and check again
+before returning to the existing Field workspace. No command admission or replay,
+new persistence, source pin changes or operational recovery authority.
