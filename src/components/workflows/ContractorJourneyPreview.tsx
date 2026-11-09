@@ -21,6 +21,7 @@ import { BookingScheduling } from './BookingScheduling';
 import { JobReview } from './JobReview';
 import { StormPropertyHistory } from './StormPropertyHistory';
 import { CustomerService } from './CustomerService';
+import { CrewJobReadiness } from './CrewJobReadiness';
 import { WeeklyCrew } from './WeeklyCrew';
 import { FinanceDesk } from './FinanceDesk';
 import { SalesDesk } from './SalesDesk';
@@ -526,6 +527,7 @@ export function ContractorJourneyPreview() {
               onProofOfWork={proofHandoff}
             />
             <WeeklyCrew sources={journey} enabled />
+            <CrewJobReadiness sources={journey} />
             <OfflineCrewContext sources={journey} />
             <NetworkJobReview sources={journey} />
           </section>

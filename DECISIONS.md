@@ -2578,3 +2578,14 @@ Guard current Copilot admission and exact source before/after waits and navigati
 UNKNOWN never creates a new preparation or replaces the original review. Retain
 local notes/filter through navigation and confirmation withdrawal. No operational,
 compliance or physical-completion authority is added.
+
+### Lean cycle 15: readiness is an evidence review, not dispatch permission
+
+Compose original weekly crew proposals/reconciliation, material requirements and
+job-cost evidence. Preserve incomplete day-only timing as UNKNOWN and show native
+conflicts/outside-proposed-hours without calculating another readiness score.
+Proposal identity is pinned before awaits; input changes require fresh confirmation.
+Whole-model freshness comes from original async reconciliation; scheduling results
+are labelled captured/non-atomic until rechecked, never continuous availability.
+Mismatch holds retain exact evidence without automatic replacement. No operational
+command or authority is introduced; original stores/engines and release gates persist.

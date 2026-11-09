@@ -3008,3 +3008,16 @@ edition/checklist prompts do not establish job classification, licensing, permit
 code compliance, inspections or completion. Original engines/stores/routes/pins and
 all gates remain unchanged. Intake SQL HELD; partner capabilities unavailable;
 D1–D3, A01–A12 and recovery restrictions persist. NOT READY / NOT AUTHORIZED.
+
+## Lean cycle 15: proposed crew-day readiness evaluation
+
+The existing Field workspace evaluates explicit proposed workday/windows/hours with
+original weekly crew capacity/conflict engines beside issued scope, procurement gaps
+and canonical cost coverage. Edits require renewed confirmation; notes remain local.
+Scheduling evidence is explicitly CAPTURED NOT ATOMIC, not actual availability.
+Exact retained reconciliation rechecks the original whole crew model and holds
+mismatches UNKNOWN, including cross-job time changes. No replacement or silent
+conflict resolution occurs. Missing materials, customer authorization, site access,
+permits and receipts remain UNKNOWN/UNVERIFIED; operational readiness never becomes
+GO. No planner/store/writer/route, assignment, booking or dispatch is added. Intake
+SQL, D1–D3, A01–A12, Network and recovery restrictions persist. NOT READY / NOT AUTHORIZED.
