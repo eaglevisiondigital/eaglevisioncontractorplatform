@@ -2654,3 +2654,15 @@ and preserve UNKNOWN after invoked write failures. Do not infer failure from dup
 search, clear uncertainty by closing a form, or create a replacement identity. UI
 holds do not survive reload or replace missing server transaction receipts/custody.
 No permission, SQL, intake assignment or operational authority changes are included.
+
+### Payroll cached private results require current original source
+
+Keep the original Workforce repository and payroll writers authoritative. Unmount
+private preparation during unverified refresh/error, deny revoked access even when
+row counts do not change, and re-read the original tenant-bound source before CSV
+export or private actions. Source/context/edit changes and failed private tasks
+clear retained preparation; late results cannot revive it. No automatic retry,
+posting-idempotency claim, permission/SQL change or operational approval follows.
+Customer command-level deduplication, immutable receipts, uncertain-ACK reconciliation
+and update CAS require separate transaction/SQL review and custody authorization;
+existing advisory duplicate search and session-only UI holds are insufficient.

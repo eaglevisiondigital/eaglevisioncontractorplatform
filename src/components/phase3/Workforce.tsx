@@ -1,4 +1,5 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef, useLayoutEffect } from 'react';
+import { requireCurrentPayrollSource } from './payroll-current-source';
 import type { Phase3Repository, WorkforceData } from '../../lib/phase3';
 import type {
   Worker,
@@ -17,7 +18,16 @@ export function Workforce({
   repo: Phase3Repository;
   org: string;
 }) {
-  const data = useResource(useCallback(() => repo.workforce(org), [repo, org]));
+  const data = useResource(
+    useCallback(
+      async () => ({ repo, org, workforce: await repo.workforce(org) }),
+      [repo, org],
+    ),
+  );
+  const source =
+    data.data?.repo === repo && data.data.org === org
+      ? data.data.workforce
+      : undefined;
   return (
     <article className="p3-workspace">
       <div className="section-title">
@@ -30,15 +40,16 @@ export function Workforce({
         </button>
       </div>
       <ResourceStatus {...data} />
-      {data.data && (
+      {source && (
         <WorkforceView
-          key={`${data.data.entries.length}-${data.data.reviews.length}-${data.data.periods.length}-${data.data.workers.length}-${data.data.entries
+          key={`${org}-${source.payroll_admin}-${source.entries.length}-${source.reviews.length}-${source.periods.length}-${source.workers.length}-${source.entries
             .filter((e) => !e.ended_at)
             .map((e) => e.id)
             .join()}`}
           repo={repo}
           org={org}
-          data={data.data}
+          data={source}
+          privateReady={!data.loading && !data.error}
           refresh={data.reload}
         />
       )}
@@ -50,7 +61,9 @@ function WorkforceView({
   org,
   data,
   refresh,
+  privateReady,
 }: {
+  privateReady: boolean;
   repo: Phase3Repository;
   org: string;
   data: WorkforceData;
@@ -105,7 +118,9 @@ function WorkforceView({
           [
             'clock',
             'timesheets',
-            ...(data.payroll_admin ? ['workers', 'payroll'] : []),
+            ...(data.payroll_admin && privateReady
+              ? ['workers', 'payroll']
+              : []),
           ] as ('clock' | 'timesheets' | 'workers' | 'payroll')[]
         ).map((t) => (
           <button
@@ -527,6 +542,10 @@ function WorkforceView({
             />
           </details>
         </>
+      ) : !data.payroll_admin || !privateReady ? (
+        <p role="status">
+          Payroll administration is unavailable or being rechecked.
+        </p>
       ) : tab === 'workers' ? (
         <WorkerSettings repo={repo} org={org} data={data} refresh={refresh} />
       ) : (
@@ -872,6 +891,47 @@ function PayrollPreparation({
   refresh: () => void;
 }) {
   const task = useTask();
+  const active = useRef(false),
+    generation = useRef(0),
+    edits = useRef(0),
+    running = useRef(false);
+  useLayoutEffect(() => {
+    generation.current++;
+    active.current = true;
+    return () => {
+      active.current = false;
+    };
+  }, [repo, org, data]);
+  async function authorized(
+    work: (current: () => boolean) => Promise<void>,
+    success: string,
+  ) {
+    if (running.current || data.payroll_admin !== true) return;
+    running.current = true;
+    const epoch = generation.current,
+      revision = edits.current;
+    const current = () =>
+      active.current &&
+      generation.current === epoch &&
+      edits.current === revision;
+    try {
+      const ok = await task.run(async () => {
+        await checkSource(current);
+        if (current()) await work(current);
+      }, success);
+      if (!ok && current()) {
+        setSnapshot(undefined);
+        setDeductions({});
+        setConfirm(false);
+        refresh();
+      }
+    } finally {
+      running.current = false;
+    }
+  }
+  async function checkSource(current: () => boolean) {
+    return requireCurrentPayrollSource(repo, org, data, current);
+  }
   const [start, setStart] = useState('2026-10-04'),
     [end, setEnd] = useState('2026-10-11');
   const [deductions, setDeductions] = useState<Record<string, number>>({});
@@ -884,19 +944,22 @@ function PayrollPreparation({
   const summary = snapshot?.rows;
   const sum = (key: keyof PayrollRow) =>
     summary?.reduce((s, r) => s + Number(r[key]), 0) ?? 0;
-  function download(rows: PayrollRow[], values: Record<string, number>) {
-    const blob = new Blob(
-      [payrollCsv(rows, values, data.policy?.currency ?? 'USD')],
-      {
-        type: 'text/csv;charset=utf-8',
-      },
-    );
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'payroll-preparation.csv';
-    a.click();
-    URL.revokeObjectURL(url);
+  async function download(rows: PayrollRow[], values: Record<string, number>) {
+    await authorized(async (current) => {
+      if (!current()) return;
+      const blob = new Blob(
+        [payrollCsv(rows, values, data.policy?.currency ?? 'USD')],
+        {
+          type: 'text/csv;charset=utf-8',
+        },
+      );
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'payroll-preparation.csv';
+      a.click();
+      URL.revokeObjectURL(url);
+    }, 'Payroll CSV prepared from current authorized source');
   }
   return (
     <>
@@ -913,9 +976,11 @@ function PayrollPreparation({
       <div className="form-grid">
         <Field label="Pay period start · employer local date">
           <input
+            disabled={task.busy}
             type="date"
             value={start}
             onChange={(e) => {
+              edits.current++;
               setStart(e.target.value);
               setSnapshot(undefined);
               setConfirm(false);
@@ -924,9 +989,11 @@ function PayrollPreparation({
         </Field>
         <Field label="Pay period end exclusive · employer local date">
           <input
+            disabled={task.busy}
             type="date"
             value={end}
             onChange={(e) => {
+              edits.current++;
               setEnd(e.target.value);
               setSnapshot(undefined);
               setConfirm(false);
@@ -943,11 +1010,13 @@ function PayrollPreparation({
             key={w.id}
           >
             <input
+              disabled={task.busy}
               type="number"
               min={0}
               step={1}
               value={deductions[w.id] ?? 0}
               onChange={(e) => {
+                edits.current++;
                 setDeductions({
                   ...deductions,
                   [w.id]: Number(e.target.value),
@@ -962,19 +1031,17 @@ function PayrollPreparation({
       <button
         disabled={task.busy}
         onClick={() =>
-          void task.run(
-            async () =>
-              setSnapshot(
-                await repo.payroll(
-                  org,
-                  employerBoundary(start, zone),
-                  employerBoundary(end, zone),
-                  deductions,
-                  false,
-                ),
-              ),
-            'Preparation preview calculated',
-          )
+          void authorized(async (current) => {
+            const result = await repo.payroll(
+              org,
+              employerBoundary(start, zone),
+              employerBoundary(end, zone),
+              deductions,
+              false,
+            );
+            await checkSource(current);
+            if (current()) setSnapshot(result);
+          }, 'Preparation preview calculated')
         }
       >
         Prepare earnings preview
@@ -1044,13 +1111,15 @@ function PayrollPreparation({
           </div>
           <button
             className="secondary"
-            onClick={() => download(summary, snapshot!.deductions)}
+            disabled={task.busy}
+            onClick={() => void download(summary, snapshot!.deductions)}
           >
             Export preparation CSV
           </button>
           <label className="checkbox-label">
             <input
               type="checkbox"
+              disabled={task.busy}
               checked={confirm}
               onChange={(e) => setConfirm(e.target.checked)}
             />
@@ -1060,7 +1129,7 @@ function PayrollPreparation({
           <button
             disabled={!confirm || task.busy}
             onClick={() =>
-              void task.run(async () => {
+              void authorized(async (current) => {
                 await repo.payroll(
                   org,
                   employerBoundary(start, zone),
@@ -1068,7 +1137,7 @@ function PayrollPreparation({
                   deductions,
                   true,
                 );
-                refresh();
+                if (current()) refresh();
               }, 'Period locked; labor costs posted to jobs once')
             }
           >
@@ -1085,7 +1154,10 @@ function PayrollPreparation({
           {p.snapshot && (
             <button
               className="secondary"
-              onClick={() => download(p.snapshot!.rows, p.snapshot!.deductions)}
+              disabled={task.busy}
+              onClick={() =>
+                void download(p.snapshot!.rows, p.snapshot!.deductions)
+              }
             >
               Export locked period CSV
             </button>
@@ -1136,22 +1208,21 @@ function PayrollPreparation({
               maxLength: 1000,
             },
           ]}
+          busy={task.busy}
           submitLabel="Append payroll adjustment"
           onSubmit={(v) =>
-            task
-              .run(async () => {
-                await repo.adjustPayroll(org, {
-                  source_period_id: String(v.source_period_id),
-                  entry_id: String(v.entry_id),
-                  effective_at: String(v.effective_at),
-                  cash_minor: Number(v.cash_minor),
-                  burden_minor: Number(v.burden_minor),
-                  imputed_minor: Number(v.imputed_minor),
-                  reason: String(v.reason),
-                });
-                refresh();
-              }, 'Immutable payroll adjustment appended')
-              .then(() => {})
+            authorized(async (current) => {
+              await repo.adjustPayroll(org, {
+                source_period_id: String(v.source_period_id),
+                entry_id: String(v.entry_id),
+                effective_at: String(v.effective_at),
+                cash_minor: Number(v.cash_minor),
+                burden_minor: Number(v.burden_minor),
+                imputed_minor: Number(v.imputed_minor),
+                reason: String(v.reason),
+              });
+              if (current()) refresh();
+            }, 'Immutable payroll adjustment appended').then(() => {})
           }
         />
       </details>
