@@ -2535,3 +2535,12 @@ its exact selected intake/customer/property and allowlisted lead projection. Pre
 caller statements, manual notes and existing filters; withhold changed or revoked
 sources before/after waits. No matching by words, new lead/assignment, contact,
 booking or approval. All original engines, source pins and release gates persist.
+
+### Lean cycle 10: compare material scope with existing procurement and costing
+
+Reuse the issued source projection, original advanced procurement requirements and
+existing job-cost reader. Material filters/notes are local presentation inputs and
+remain mounted during exact Finance continuation. Catalog vendor labels never prove
+supplier identity or quotes; estimate scope never proves ordering, receipt or posted
+cost. No purchase preparation hold is reopened or consumed by this read-only view.
+All original authorization, source, financial and release controls remain unchanged.

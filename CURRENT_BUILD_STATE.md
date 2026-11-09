@@ -2949,3 +2949,16 @@ become approval. Current source/auth fences surround reads and disclosure; stale
 missing intake is withheld. No assignment writer, new store, route, protected source
 or operational authority. Intake SQL, D1–D3, A01–A12 and recovery gates unchanged.
 Release1.0 NOT READY / NOT AUTHORIZED.
+
+## Lean cycle 10: procurement requirements beside issued materials and job costs
+
+The existing contractor journey now compares the exact issued material/product scope
+with original procurement requirements and canonical job-cost coverage. Recorded
+estimate quantities remain distinct from proposed/received quantities; missing catalog
+links, verified supplier identities, quotes and purchase matching stay UNKNOWN.
+Finance continuation retains material filters and unfinished procurement notes.
+Original readers recheck current authorization and source identity around waits and
+navigation. No preparation attempt is consumed, no purchase/order/receipt/posting is
+created, and no store, route, engine, source pin or approved design is replaced.
+Intake SQL, D1–D3, A01–A12 and recovery restrictions persist.
+Release1.0 NOT READY / NOT AUTHORIZED.
