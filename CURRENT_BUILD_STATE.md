@@ -2938,3 +2938,14 @@ Unfinished scope/notes survive ordinary editor tabs and Voice option changes; co
 or authorization withdrawal clears private context. No new writer, store, route,
 SQL, design lock or operational authority. Intake SQL, D1–D3, A01–A12, recovery and
 release restrictions remain held. Release1.0 NOT READY / NOT AUTHORIZED.
+
+## Lean cycle 9: receptionist review beside exact Sales intake
+
+The local journey's existing optional receptionist form now has an adjacent exact
+Sales intake reader. Literal caller text and unfinished staff notes stay mounted
+while the intake disclosure opens/closes. Reuse the canonical Sales source reader;
+caller-to-record relationship remains UNKNOWN, and blocked scope requirements never
+become approval. Current source/auth fences surround reads and disclosure; stale or
+missing intake is withheld. No assignment writer, new store, route, protected source
+or operational authority. Intake SQL, D1–D3, A01–A12 and recovery gates unchanged.
+Release1.0 NOT READY / NOT AUTHORIZED.
