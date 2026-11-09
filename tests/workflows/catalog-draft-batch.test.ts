@@ -12,34 +12,39 @@ async function fixture(index = 0) {
   const rows = catalog
     .slice(0, 2)
     .map((item, i) => ({ id: item.id, quantity: i ? '3' : '2.125' }));
-  return { ...f, catalog, form, rows };
+  return {
+    ...f,
+    catalog,
+    form,
+    rows,
+    prepare: () =>
+      catalogDraftBatch(
+        f.repo,
+        f.company.id,
+        f.bundle,
+        catalog,
+        rows,
+        () => form,
+      ),
+  };
 }
 it.each([0, 1, 2])(
   'brand %i: prepares and saves multiple catalog quantities through the original draft writer',
   async (index) => {
     const f = await fixture(index);
     const before = structuredClone(f.form);
-    const result = await catalogDraftBatch(
-      f.repo,
-      f.company.id,
-      f.bundle,
-      f.catalog,
-      f.rows,
-      () => f.form,
-    );
+    const payload = f.prepare();
     expect(f.form).toEqual(before);
     expect(
       (await f.repo.get(f.company.id, f.bundle.estimate.id)).version,
     ).toEqual(f.bundle.version);
-    expect(result.payload.lines.slice(0, before.lines.length)).toEqual(
-      before.lines,
+    expect(payload.lines.slice(0, before.lines.length)).toEqual(before.lines);
+    expect(new Set(payload.lines.map((l) => l.id)).size).toBe(
+      payload.lines.length,
     );
-    const added = result.payload.lines.slice(before.lines.length);
-    expect(new Set(result.payload.lines.map((l) => l.id)).size).toBe(
-      result.payload.lines.length,
-    );
+    const added = payload.lines.slice(before.lines.length);
     expect(added.map((l) => l.quantity_milli)).toEqual([2125, 3000]);
-    added.forEach((line, i) => {
+    added.forEach((line, i) =>
       expect(line).toMatchObject({
         catalog_item_id: f.catalog[i].id,
         unit: f.catalog[i].unit,
@@ -47,11 +52,11 @@ it.each([0, 1, 2])(
         unit_price_minor: f.catalog[i].unit_price_minor,
         markup_bps: f.catalog[i].markup_bps,
         import_approval_id: null,
-      });
-    });
-    const saved = await f.repo.save(f.company.id, f.bundle, result.payload);
+      }),
+    );
+    const saved = await f.repo.save(f.company.id, f.bundle, payload);
     const reopened = await f.repo.get(f.company.id, saved.estimate.id);
-    expect(reopened.version.payload).toEqual(result.payload);
+    expect(reopened.version.payload).toEqual(payload);
     expect(reopened.version.id).toBe(f.bundle.version.id);
     expect(reopened.version.lock_revision).toBe(
       f.bundle.version.lock_revision + 1,
@@ -62,156 +67,50 @@ it.each([0, 1, 2])(
     expect(JSON.stringify(customerPreview(reopened.version))).not.toMatch(
       /internal_notes|unit_cost_minor|Retain unfinished private notes/,
     );
-    await expect(
-      f.repo.save(f.company.id, f.bundle, result.payload),
-    ).rejects.toThrow(/changed|immutable/);
+    await expect(f.repo.save(f.company.id, f.bundle, payload)).rejects.toThrow(
+      /changed|immutable/,
+    );
     expect(
       (await f.repo.get(f.company.id, saved.estimate.id)).version.payload.lines,
     ).toHaveLength(before.lines.length + 2);
   },
 );
 it.each(['', '0', '-1', 'NaN', '1.0001'])(
-  'denies invalid explicit quantity %s atomically',
+  'denies invalid explicit quantity %s without partial mutation',
   async (quantity) => {
     const f = await fixture();
     const before = structuredClone(f.form);
     f.rows[1].quantity = quantity;
-    await expect(
-      catalogDraftBatch(
-        f.repo,
-        f.company.id,
-        f.bundle,
-        f.catalog,
-        f.rows,
-        () => f.form,
-      ),
-    ).rejects.toThrow();
+    expect(f.prepare).toThrow();
     expect(f.form).toEqual(before);
     expect(
       (await f.repo.get(f.company.id, f.bundle.estimate.id)).version,
     ).toEqual(f.bundle.version);
   },
 );
-it('rejects duplicate selections and cross-tenant catalog references', async () => {
+it('rejects duplicate selections, foreign tenant sources and missing or ambiguous loaded catalog rows', async () => {
   const f = await fixture();
-  await expect(
-    catalogDraftBatch(
-      f.repo,
-      f.company.id,
-      f.bundle,
-      f.catalog,
-      [f.rows[0], f.rows[0]],
-      () => f.form,
+  const run =
+    (catalog = f.catalog, rows = f.rows, org = f.company.id) =>
+    () =>
+      catalogDraftBatch(f.repo, org, f.bundle, catalog, rows, () => f.form);
+  expect(run(f.catalog, [f.rows[0], f.rows[0]])).toThrow(/distinct/);
+  expect(
+    run(
+      f.catalog.map((c) => ({ ...c, organization_id: sampleCompanies[1].id })),
     ),
-  ).rejects.toThrow(/distinct/);
-  const foreign = f.catalog.map((c) => ({
-    ...c,
-    organization_id: sampleCompanies[1].id,
-  }));
-  await expect(
-    catalogDraftBatch(
-      f.repo,
-      f.company.id,
-      f.bundle,
-      foreign,
-      f.rows,
-      () => f.form,
-    ),
-  ).rejects.toThrow(/Catalog/);
-  await expect(
-    catalogDraftBatch(
-      f.repo,
-      sampleCompanies[1].id,
-      f.bundle,
-      f.catalog,
-      f.rows,
-      () => f.form,
-    ),
-  ).rejects.toThrow(/editable/);
-});
-it('rejects changed and inactive catalog evidence without changing the working draft', async () => {
-  const f = await fixture();
-  const { id, organization_id: _org, ...item } = f.catalog[0];
-  void _org;
-  await f.repo.saveCatalog(
-    f.company.id,
-    { ...item, unit_cost_minor: item.unit_cost_minor + 1 },
-    id,
+  ).toThrow(/unavailable/);
+  expect(run(f.catalog, f.rows, sampleCompanies[1].id)).toThrow(/editable/);
+  expect(run([])).toThrow(/unavailable/);
+  expect(run([...f.catalog, f.catalog[0]])).toThrow(/unavailable/);
+  expect(run(f.catalog.map((c) => ({ ...c, active: false })))).toThrow(
+    /unavailable/,
   );
-  await expect(
-    catalogDraftBatch(
-      f.repo,
-      f.company.id,
-      f.bundle,
-      f.catalog,
-      f.rows,
-      () => f.form,
-    ),
-  ).rejects.toThrow(/Catalog source changed/);
-  await f.repo.saveCatalog(f.company.id, { ...item, active: false }, id);
-  await expect(
-    catalogDraftBatch(
-      f.repo,
-      f.company.id,
-      f.bundle,
-      f.catalog,
-      f.rows,
-      () => f.form,
-    ),
-  ).rejects.toThrow(/Catalog source changed/);
 });
-it('withholds results if the working draft changes during the awaited read', async () => {
+it('denies issued and archived views and connected repositories', async () => {
   const f = await fixture();
-  const read = f.repo.catalog.bind(f.repo);
-  vi.spyOn(f.repo, 'catalog').mockImplementation(async (org) => {
-    const r = await read(org);
-    f.form.project.description = 'Retain newer edits';
-    return r;
-  });
-  await expect(
-    catalogDraftBatch(
-      f.repo,
-      f.company.id,
-      f.bundle,
-      f.catalog,
-      f.rows,
-      () => f.form,
-    ),
-  ).rejects.toThrow(/draft changed/);
-  expect(f.form.project.description).toBe('Retain newer edits');
-});
-it('denies revoked estimating access after the catalog read', async () => {
-  const f = await fixture();
-  const access = await f.ops.companyAccess(f.company.id);
-  vi.spyOn(f.ops, 'companyAccess')
-    .mockResolvedValueOnce(access)
-    .mockResolvedValue({ ...access, estimates: false });
-  await expect(
-    catalogDraftBatch(
-      f.repo,
-      f.company.id,
-      f.bundle,
-      f.catalog,
-      f.rows,
-      () => f.form,
-    ),
-  ).rejects.toThrow(/access changed/);
-});
-it('denies stale saved versions, issued drafts and connected repositories', async () => {
-  const f = await fixture();
-  const saved = await f.repo.save(f.company.id, f.bundle, f.form);
-  await expect(
-    catalogDraftBatch(
-      f.repo,
-      f.company.id,
-      f.bundle,
-      f.catalog,
-      f.rows,
-      () => f.form,
-    ),
-  ).rejects.toThrow(/draft changed/);
-  const issued = await f.repo.issue(f.company.id, saved);
-  await expect(
+  const issued = await f.repo.issue(f.company.id, f.bundle);
+  expect(() =>
     catalogDraftBatch(
       f.repo,
       f.company.id,
@@ -220,75 +119,65 @@ it('denies stale saved versions, issued drafts and connected repositories', asyn
       f.rows,
       () => f.form,
     ),
-  ).rejects.toThrow(/editable/);
+  ).toThrow(/editable/);
+  const archived = {
+    ...f.bundle,
+    estimate: { ...f.bundle.estimate, status: 'archived' as const },
+  };
+  expect(() =>
+    catalogDraftBatch(
+      f.repo,
+      f.company.id,
+      archived,
+      f.catalog,
+      f.rows,
+      () => f.form,
+    ),
+  ).toThrow(/editable/);
   Object.defineProperty(f.repo, 'sample', { value: false });
-  await expect(
-    catalogDraftBatch(
-      f.repo,
-      f.company.id,
-      saved,
-      f.catalog,
-      f.rows,
-      () => f.form,
-    ),
-  ).rejects.toThrow(/editable/);
+  expect(f.prepare).toThrow(/editable/);
 });
-it.each(['catalog', 'saved'])(
-  'denies %s changes during the final awaited permission read',
-  async (kind) => {
-    const f = await fixture();
-    const access = await f.ops.companyAccess(f.company.id);
-    let calls = 0;
-    vi.spyOn(f.ops, 'companyAccess').mockImplementation(async () => {
-      if (++calls === 2) {
-        if (kind === 'catalog') {
-          const { id, organization_id: _org, ...item } = f.catalog[0];
-          void _org;
-          await f.repo.saveCatalog(
-            f.company.id,
-            { ...item, active: false },
-            id,
-          );
-        } else await f.repo.save(f.company.id, f.bundle, f.form);
-      }
-      return access;
-    });
-    await expect(
-      catalogDraftBatch(
-        f.repo,
-        f.company.id,
-        f.bundle,
-        f.catalog,
-        f.rows,
-        () => f.form,
-      ),
-    ).rejects.toThrow(/changed|immutable|unavailable/);
-  },
-);
-it('retains a final fence until the immediate editor application', async () => {
+it('leaves stale-save and duplicate prevention to the original canonical writer', async () => {
   const f = await fixture();
-  const result = await catalogDraftBatch(
-    f.repo,
-    f.company.id,
-    f.bundle,
-    f.catalog,
-    f.rows,
-    () => f.form,
+  const payload = f.prepare();
+  const competitor = await f.repo.save(f.company.id, f.bundle, {
+    ...f.form,
+    internal_notes: 'Newer saved work',
+  });
+  await expect(f.repo.save(f.company.id, f.bundle, payload)).rejects.toThrow(
+    /changed|immutable/,
   );
-  await f.repo.save(f.company.id, f.bundle, f.form);
-  expect(() => result.check()).toThrow(/changed|immutable/);
+  expect(await f.repo.get(f.company.id, f.bundle.estimate.id)).toEqual(
+    competitor,
+  );
 });
-it('denies special revision bindings even before metadata has loaded in the UI', async () => {
+it('copies the explicitly loaded pricing snapshot, never claims a fresh quote or reads and writes in preparation', async () => {
   const f = await fixture();
-  vi.spyOn(f.repo, 'customerRevisionOrigin').mockReturnValue({} as never);
-  await expect(
-    catalogDraftBatch(
-      f.repo,
-      f.company.id,
-      f.bundle,
-      f.catalog,
-      f.rows,
-      () => f.form,
-    ),
-  ).rejects.toThrow(/Special revision/);
+  const { id, organization_id: _org, ...item } = f.catalog[0];
+  void _org;
+  await f.repo.saveCatalog(
+    f.company.id,
+    { ...item, unit_cost_minor: item.unit_cost_minor + 100 },
+    id,
+  );
+  const read = vi.spyOn(f.repo, 'catalog'),
+    get = vi.spyOn(f.repo, 'get'),
+    save = vi.spyOn(f.repo, 'save');
+  const payload = f.prepare();
+  expect(payload.lines.at(-2)?.unit_cost_minor).toBe(
+    f.catalog[0].unit_cost_minor,
+  );
+  expect(read).not.toHaveBeenCalled();
+  expect(get).not.toHaveBeenCalled();
+  expect(save).not.toHaveBeenCalled();
+});
+it('denies original special-flow bindings synchronously before preparation', async () => {
+  const f = await fixture();
+  const change = vi
+    .spyOn(f.repo, 'customerRevisionOrigin')
+    .mockReturnValue({} as never);
+  expect(f.prepare).toThrow(/Special revision/);
+  change.mockRestore();
+  vi.spyOn(f.repo, 'repairOrigin').mockReturnValue({} as never);
+  expect(f.prepare).toThrow(/Special revision/);
 });

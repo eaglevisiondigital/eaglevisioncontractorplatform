@@ -3048,18 +3048,20 @@ object for byte verification instead. No historical manifest/pin is replaced.
 
 ### Functional completion: multi-item catalog draft preparation
 
-Existing ordinary local estimate drafts now accept several exact active catalog
-items with explicit quantities in one operation, then use the original Save and
-readback/CAS path. Existing lines, notes, customer/property/version and options
-remain intact. One batch append survives rapid duplicate clicks; selected inputs
-survive filtering and failed preparation. Final synchronous checks in the existing
-sample repository deny catalog/version/archive changes after awaited reads and
-immediately before editor application. Original repair/change/voice workflows are
-excluded. No new writer, store, route or connected capability is added.
-This is same-session sample draft retention, not durable hosted acceptance.
-D1–D3/A01–A12, intake SQL HELD, original recovery statuses and release gates persist.
-Local validation:526 combined native/source cases,9 responsive operation journeys,
-build/typecheck, affected lint/format and protected/design checks PASS. Targeted
-independent source/security review CLEAR after closing final-read races and special-
-flow admission. Broader customer-preview audit observed4.16:1 subtotal-label contrast
-in unchanged styles; no full preview accessibility PASS or design repair is claimed.
+Ordinary local estimate drafts now accept several loaded catalog items with
+explicit quantities in one synchronous editor action, then use original Save/
+readback/CAS. Existing scope, notes, customer/property/version and options remain
+intact; filtering retains selection and duplicate clicks append only once.
+The exact source contract is the existing single-item selector's loaded pricing
+snapshot, not a fresh supplier quote. No extra read, writer, route or store exists.
+Original special revision/voice flows are excluded. Same-session sample retention
+is not hosted durability/Auth acceptance. D1–D3/A01–A12, intake SQL HELD and all
+recovery/release restrictions persist. Initial draft5902d5b's broader C24 check
+correctly rejected a protected-core extension. That extension is removed, restoring
+Phase3 bytes exactly; the historical pin and failed attempt remain preserved.
+Broader preview audit observed4.16:1 subtotal-label contrast in unchanged styles;
+no full preview accessibility PASS or design repair is claimed.
+Final narrowed-source validation:522 combined native/source cases,9 responsive
+save/reopen journeys, build/typecheck and affected lint/format PASS. Original C24
+preservation checker PASS with protected core bytes restored; final independent
+review CLEAR. Initial failed head remains historical evidence, not accepted CI.

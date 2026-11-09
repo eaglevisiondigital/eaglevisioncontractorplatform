@@ -1341,47 +1341,6 @@ export class Phase3Repository {
         .order('version_number', { ascending: false }),
     ) as unknown as EstimateVersion[];
   }
-  /** Final synchronous sample-source fence for ordinary working-draft catalog preparation.
-   * This grants no connected access and performs no write. Save remains the CAS owner.
-   */
-  assertSyntheticDraftCatalogCurrent(
-    org: string,
-    bundle: EstimateBundle,
-    items: readonly CatalogItem[],
-  ) {
-    if (!this.sample) throw Error('Local draft preparation only');
-    const state = this.state(org);
-    const current = state.estimates.filter(
-      (b) => b.estimate.id === bundle.estimate.id,
-    );
-    if (
-      current.length !== 1 ||
-      current[0].estimate.organization_id !== org ||
-      current[0].estimate.status === 'archived' ||
-      current[0].version.status !== 'draft' ||
-      current[0].estimate.current_version_id !== bundle.version.id ||
-      JSON.stringify(current[0]) !== JSON.stringify(bundle)
-    )
-      throw Error('Saved draft changed or immutable');
-    if (
-      this.customerRevisionOrigin(org, bundle.estimate.id) ||
-      this.repairOrigin(org, bundle.estimate.id, bundle.version.id)
-    )
-      throw Error(
-        'Special revision preparation must use its original workflow',
-      );
-    for (const item of items) {
-      const found = state.catalog.filter((c) => c.id === item.id);
-      if (
-        found.length !== 1 ||
-        !found[0].active ||
-        item.organization_id !== org ||
-        found[0].organization_id !== org ||
-        JSON.stringify(found[0]) !== JSON.stringify(item)
-      )
-        throw Error('Catalog source changed or unavailable');
-    }
-  }
   async catalog(org: string): Promise<CatalogItem[]> {
     if (this.sample) return clone(this.state(org).catalog);
     return checked(

@@ -13,8 +13,10 @@ export interface CatalogQuantity {
   id: string;
   quantity: string;
 }
-/** Editor preparation only. The existing Save owns canonical writes and CAS. */
-export async function catalogDraftBatch(
+/** Synchronous editor action, using the original single-item selector's loaded snapshot.
+ * No read, writer or permission is created. The existing Save owns canonical CAS.
+ */
+export function catalogDraftBatch(
   repo: Phase3Repository,
   org: string,
   bundle: EstimateBundle,
@@ -31,43 +33,26 @@ export async function catalogDraftBatch(
     bundle.estimate.current_version_id !== bundle.version.id
   )
     throw Error('Current local editable estimate required');
-  repo.assertSyntheticDraftCatalogCurrent(org, bundle, []);
-  const expected = JSON.stringify(liveDraft());
-  const selected = structuredClone(rows);
-  const original = structuredClone(catalog);
   if (
-    !selected.length ||
-    new Set(selected.map((r) => r.id)).size !== selected.length
+    repo.customerRevisionOrigin(org, bundle.estimate.id) ||
+    repo.repairOrigin(org, bundle.estimate.id, bundle.version.id)
   )
+    throw Error('Special revision preparation must use its original workflow');
+  if (!rows.length || new Set(rows.map((r) => r.id)).size !== rows.length)
     throw Error('Choose distinct catalog items and explicit quantities');
-  if (!(await repo.operations.companyAccess(org)).estimates)
-    throw Error('Current estimating access required');
-  const current = await repo.catalog(org);
-  const saved = await repo.get(org, bundle.estimate.id);
-  if (!(await repo.operations.companyAccess(org)).estimates)
-    throw Error('Estimating access changed');
-  if (
-    JSON.stringify(saved.version) !== JSON.stringify(bundle.version) ||
-    saved.estimate.current_version_id !== bundle.version.id ||
-    JSON.stringify(liveDraft()) !== expected
-  )
-    throw Error('Working or saved draft changed; no items added');
-  const lines = selected.map((row) => {
-    const source = original.filter((item) => item.id === row.id);
-    const fresh = current.filter((item) => item.id === row.id);
+  const draft = liveDraft();
+  const lines = rows.map((row) => {
+    const found = catalog.filter((item) => item.id === row.id);
     if (
-      source.length !== 1 ||
-      fresh.length !== 1 ||
-      !fresh[0].active ||
-      fresh[0].organization_id !== org ||
-      source[0].organization_id !== org ||
-      JSON.stringify(source[0]) !== JSON.stringify(fresh[0])
+      found.length !== 1 ||
+      !found[0].active ||
+      found[0].organization_id !== org
     )
-      throw Error('Catalog source changed or unavailable; no items added');
+      throw Error('Loaded catalog item unavailable; no items added');
     const quantity = decimalToScaled(row.quantity, 3);
     if (!Number.isSafeInteger(quantity) || quantity <= 0)
       throw Error('Enter a positive quantity for every selected item');
-    const item = fresh[0];
+    const item = found[0];
     return {
       ...blankLine(item.kind),
       description: item.description || item.name,
@@ -79,16 +64,7 @@ export async function catalogDraftBatch(
       catalog_item_id: item.id,
     };
   });
-  const payload = { ...liveDraft(), lines: [...liveDraft().lines, ...lines] };
+  const payload = { ...draft, lines: [...draft.lines, ...lines] };
   calculateEstimate(payload, bundle.version.tax_policy_snapshot?.rate_bps ?? 0);
-  const items = selected.map((row) =>
-    original.find((item) => item.id === row.id)!,
-  );
-  const check = () => {
-    repo.assertSyntheticDraftCatalogCurrent(org, bundle, items);
-    if (JSON.stringify(liveDraft()) !== expected)
-      throw Error('Working draft changed; no items added');
-  };
-  check();
-  return { expected, payload, check };
+  return payload;
 }

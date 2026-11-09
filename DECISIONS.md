@@ -2602,10 +2602,9 @@ pin. No new operational authority is granted; original pilot/recovery gates rema
 
 ### Functional completion: batch catalog scope uses ordinary draft ownership
 
-Copy staff-selected catalog quantities into the existing working estimate only
-when exact catalog and ordinary saved-draft sources remain current. Validate the
-whole resulting payload through the original estimate calculation; append atomically
-in the editor and save only through the original writer/CAS. Keep special repair,
-customer-revision and voice preparations in their existing flows. The new control
-is sample-only and grants no hosted or operational authority. Do not describe
-same-session readback as durable business persistence or genuine Auth acceptance.
+Use the original single-item selector's loaded catalog pricing contract for a
+synchronous multi-item editor action. Validate explicit quantities and the complete
+payload with the native calculator; exclude original special revision/voice flows.
+Keep original Save/CAS as the only canonical writer. Do not extend protected core
+readiness sources or reinterpret loaded prices as current quotes. Sample retention
+is not durable operational acceptance; all original gates remain unchanged.

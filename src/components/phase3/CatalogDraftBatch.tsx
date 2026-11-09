@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import type { Phase3Repository } from '../../lib/phase3';
 import type {
   CatalogItem,
@@ -28,15 +28,7 @@ export function CatalogDraftBatch({
   const [message, say] = useState('');
   const [query, search] = useState('');
   const pending = useRef(false),
-    consumed = useRef(false),
-    generation = useRef({ epoch: 0 });
-  useLayoutEffect(() => {
-    const lifetime = generation.current;
-    lifetime.epoch++;
-    return () => {
-      lifetime.epoch++;
-    };
-  }, [repo, org, bundle.version.id, bundle.version.lock_revision]);
+    consumed = useRef(false);
   function change(next: CatalogQuantity[]) {
     if (pending.current) return;
     consumed.current = false;
@@ -44,15 +36,14 @@ export function CatalogDraftBatch({
     confirm(false);
     say('');
   }
-  async function apply() {
+  function apply() {
     if (pending.current || consumed.current || !confirmed || !rows.length)
       return;
     pending.current = true;
     setBusy(true);
     say('');
-    const epoch = generation.current.epoch;
     try {
-      const result = await catalogDraftBatch(
+      const payload = catalogDraftBatch(
         repo,
         org,
         bundle,
@@ -60,38 +51,31 @@ export function CatalogDraftBatch({
         rows,
         liveDraft,
       );
-      if (epoch !== generation.current.epoch) return;
-      if (JSON.stringify(liveDraft()) !== result.expected)
-        throw Error('Working draft changed; no items added');
-      result.check();
       consumed.current = true;
-      onApply(result.payload);
+      onApply(payload);
       setRows([]);
       confirm(false);
       say(
         `${rows.length} catalog items added to the working draft. Save estimate draft to retain them in this session.`,
       );
     } catch (error) {
-      if (epoch === generation.current.epoch)
-        say(
-          error instanceof Error
-            ? error.message
-            : 'Items could not be prepared; no items added',
-        );
+      say(
+        error instanceof Error
+          ? error.message
+          : 'Items could not be prepared; no items added',
+      );
     } finally {
-      if (epoch === generation.current.epoch) {
-        pending.current = false;
-        setBusy(false);
-      }
+      pending.current = false;
+      setBusy(false);
     }
   }
   return (
     <details>
       <summary>Add several catalog items</summary>
       <p>
-        Select existing catalog items and enter quantities. Current catalog
-        pricing is copied into this private draft; nothing is purchased or
-        issued.
+        Select existing catalog items and enter quantities. Loaded catalog
+        pricing is copied into this private draft; these are not fresh supplier
+        quotes. Nothing is purchased or issued.
       </p>
       <fieldset disabled={busy}>
         <legend className="sr-only">Catalog batch preparation</legend>
