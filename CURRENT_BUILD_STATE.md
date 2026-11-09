@@ -3037,3 +3037,7 @@ test successor is admitted explicitly. No application/SQL/design/operational sou
 changes or genuine acceptance are claimed. D1 owner assignments, D2/D3 and A01–A12
 remain open; the first-pilot owner front sheet remains authoritative. Intake SQL
 HELD and all existing recovery/release restrictions persist.
+Initial correction candidate67969f3 hosted typecheck failed because its new collision
+fixture returned a widened TypeScript string template. Separate de97c31 changes
+only the UUID return construction, with an exact type-only source admission; the
+failed attempt and original author remain retained. Final local typecheck passes.

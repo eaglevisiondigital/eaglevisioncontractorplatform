@@ -6,6 +6,7 @@ import {
   testPath,
   originalHash,
   author,
+  typeCorrection,
 } from '../scripts/service-privacy-source-admission.mjs';
 const current = privacySourcePorts.read(testPath);
 test('admits only the exact reviewed test successor and all three authored files', () => {
@@ -66,6 +67,29 @@ test('rejects incorrect author ancestry', () => {
       git: (...args) =>
         args[0] === 'rev-parse' && args[1] === `${author}^`
           ? Buffer.from('0'.repeat(40))
+          : privacySourcePorts.git(...args),
+    }),
+  );
+});
+
+test('rejects a type correction containing any other file', () => {
+  assert.throws(() =>
+    admitServicePrivacyTest(testPath, current, originalHash, {
+      ...privacySourcePorts,
+      git: (...args) =>
+        args[0] === 'diff-tree' && args.at(-1) === typeCorrection
+          ? Buffer.from('extra.ts\n')
+          : privacySourcePorts.git(...args),
+    }),
+  );
+});
+test('rejects a type correction which changes original expectations', () => {
+  assert.throws(() =>
+    admitServicePrivacyTest(testPath, current, originalHash, {
+      ...privacySourcePorts,
+      git: (...args) =>
+        args[0] === 'show' && args[1].startsWith(typeCorrection + ':')
+          ? Buffer.from('unknown test')
           : privacySourcePorts.git(...args),
     }),
   );
