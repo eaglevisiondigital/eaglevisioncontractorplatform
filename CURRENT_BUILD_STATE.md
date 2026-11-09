@@ -3080,3 +3080,19 @@ Local537 combined cases,9 responsive Save/reopen journeys, build/typecheck,
 affected lint/format and protected/design checks PASS. Independent security review
 CLEAR. Retention remains sample-session only. Intake SQL HELD; D1–D3/A01–A12,
 recovery, financial/provider/production and release restrictions unchanged.
+
+### Functional completion: reported material evidence to expense review
+
+The existing local financial expense form now retains explicitly reported material
+quantity/unit and optional integer unit cost through original submitExpense/jobs
+readback. These fields previously always submitted NULL. Blank evidence remains
+UNKNOWN; exact original material-line/unit conflicts deny without inferred matching
+or conversion. Evidence stays pending management review, not a purchase, delivery,
+payment or cost-completeness verification. Field-worker placeholders and connected
+flows retain the original NULL behavior. The existing writer owns duplicate supplier
+documents; a synchronous submission guard prevents repeated in-flight UI actions.
+Local555 combined cases,9 responsive submission/reopen journeys, build/typecheck,
+affected lint/format and protected/design checks PASS; targeted independent review
+CLEAR. No core/SQL, schema, route, store, financial execution or hosted capability
+added. Same-session sample retention is not durable ACK/Auth acceptance. Intake SQL
+HELD; D1–D3/A01–A12, recovery and all release restrictions remain unchanged.

@@ -1543,3 +1543,116 @@ for (const company of sampleCompanies)
       ),
     ).toBe(true);
   });
+
+for (const company of sampleCompanies)
+  test(`reported material evidence submits once and reopens pending review / ${company.slug}`, async ({
+    page,
+  }) => {
+    await page.goto('/preview');
+    await page
+      .getByRole('combobox', { name: 'Company context' })
+      .selectOption(company.id);
+    await page.getByRole('button', { name: 'Jobs', exact: true }).click();
+    const jobPicker = page.getByRole('combobox', {
+      name: 'Financial job',
+      exact: true,
+    });
+    const jobId = await jobPicker.inputValue();
+    const source = industryEstimate(company, 'unused');
+    const line = source.lines.find(
+      (l) =>
+        ['material', 'product', 'allowance'].includes(l.kind) &&
+        (!l.option_id ||
+          source.options.find((o) => o.id === l.option_id)?.selected),
+    )!;
+    await page
+      .getByText('Record expense, commitment or credit', { exact: true })
+      .click();
+    const form = page.locator('form').filter({
+      has: page.getByRole('button', {
+        name: 'Submit for expense review',
+        exact: true,
+      }),
+    });
+    const description = `Reported material evidence ${company.slug}`;
+    for (const [label, value] of Object.entries({
+      'Purchase link key': `SYNTHETIC-PO-${company.slug}`,
+      'Supplier / payee': 'Synthetic material supplier',
+      'Unique supplier document reference': `SYNTHETIC-DOC-${company.slug}`,
+      'Expense description': description,
+      'Expense amount (USD minor units)': '12345',
+      'Reported material quantity': '1.0001',
+      'Reported material unit cost (USD minor units)': '0',
+    }))
+      await form
+        .getByLabel(label, { exact: !label.startsWith('Reported material') })
+        .fill(value);
+    await form
+      .getByRole('combobox', { name: 'Expense record type', exact: true })
+      .selectOption('commitment');
+    const match = form.getByRole('combobox', {
+      name: 'Manual original budget match',
+      exact: true,
+    });
+    const lineId = await match
+      .getByRole('option', {
+        name: `${line.description} · ${line.unit}`,
+        exact: true,
+      })
+      .getAttribute('value');
+    await match.selectOption(lineId!);
+    await form
+      .getByRole('combobox', { name: 'Reported material unit', exact: true })
+      .selectOption(line.unit);
+    await form
+      .getByRole('button', { name: 'Submit for expense review', exact: true })
+      .click();
+    await expect(
+      page
+        .getByRole('status')
+        .filter({ hasText: 'Use at most 3 decimal places' }),
+    ).toBeVisible();
+    await expect(
+      page.locator('.expense-record').filter({ hasText: description }),
+    ).toHaveCount(0);
+    await expect(
+      form.getByLabel('Unique supplier document reference', { exact: true }),
+    ).toHaveValue(`SYNTHETIC-DOC-${company.slug}`);
+    await form
+      .getByLabel('Reported material quantity', { exact: false })
+      .fill('2.125');
+    await form
+      .getByRole('button', { name: 'Submit for expense review', exact: true })
+      .evaluate((button: HTMLButtonElement) => {
+        button.click();
+        button.click();
+      });
+    const record = page
+      .locator('.expense-record')
+      .filter({ hasText: description });
+    await expect(record).toHaveCount(1);
+    await expect(record).toContainText('Reported material quantity: 2.125');
+    await expect(record).toContainText(`unit: ${line.unit}`);
+    await expect(record).toContainText('unit cost: $0.00');
+    await expect(record).toContainText('Awaiting management review');
+    await expect(record).toContainText('Manually matched to original budget');
+    await page.getByRole('button', { name: 'Estimates', exact: true }).click();
+    await page.getByRole('button', { name: 'Jobs', exact: true }).click();
+    await jobPicker.selectOption(jobId);
+    await expect(record).toHaveCount(1);
+    await expect(record).toContainText('Reported material quantity: 2.125');
+    await expect(record).toContainText('unit cost: $0.00');
+    await expect(record).toContainText('Awaiting management review');
+    await page
+      .getByText('Record expense, commitment or credit', { exact: true })
+      .click();
+    expect(
+      (await new AxeBuilder({ page }).include('.operational-form').analyze())
+        .violations,
+    ).toEqual([]);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth + 1,
+      ),
+    ).toBe(true);
+  });
