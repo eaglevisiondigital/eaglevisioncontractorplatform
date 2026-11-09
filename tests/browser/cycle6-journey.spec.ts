@@ -2013,3 +2013,147 @@ test('job forecast cancels delayed writes after navigation or a peer UNKNOWN hol
     ).toBeVisible();
   }
 });
+
+for (const company of sampleCompanies)
+  test(`CRM customer creation admits one rapid submission and reopens exact record / ${company.slug}`, async ({
+    page,
+  }) => {
+    await page.goto('/preview');
+    await page
+      .getByRole('combobox', { name: 'Company context', exact: true })
+      .selectOption(company.id);
+    await page.getByRole('button', { name: 'Customers', exact: true }).click();
+    await page
+      .getByRole('button', { name: 'New customer', exact: true })
+      .click();
+    const form = page.locator('form').filter({
+      has: page.getByRole('button', { name: 'Create customer', exact: true }),
+    });
+    const name = `Fictional single submission ${company.slug}`;
+    await form.getByLabel('Customer name', { exact: true }).fill(name);
+    await form
+      .getByLabel('Email', { exact: true })
+      .fill(`single-${company.slug}@example.invalid`);
+    const button = form.getByRole('button', {
+      name: 'Create customer',
+      exact: true,
+    });
+    await button.evaluate((node: HTMLButtonElement) => {
+      node.form!.requestSubmit(node);
+      node.form!.requestSubmit(node);
+    });
+    await page
+      .getByRole('searchbox', { name: 'Search customers', exact: true })
+      .fill(name);
+    const row = page.locator('.record-button').filter({ hasText: name });
+    await expect(row).toHaveCount(1);
+    await row.click();
+    const reopened = page.locator('form').filter({
+      has: page.getByRole('button', { name: 'Update customer', exact: true }),
+    });
+    await expect(
+      reopened.getByLabel('Customer name', { exact: true }),
+    ).toHaveValue(name);
+    await expect(reopened.getByLabel('Email', { exact: true })).toHaveValue(
+      `single-${company.slug}@example.invalid`,
+    );
+    expect(
+      (
+        await new AxeBuilder({ page })
+          .include('.detail-panel fieldset')
+          .analyze()
+      ).violations,
+    ).toEqual([]);
+  });
+
+test('CRM pending and UNKNOWN creation survives close/reopen and fences old-company callbacks', async ({
+  page,
+}) => {
+  for (const mode of ['pause', 'before', 'after', 'company']) {
+    await page.goto(
+      `/preview-crm-create-test.html?mode=${mode === 'company' ? 'pause' : mode}`,
+    );
+    await page
+      .getByRole('button', { name: 'New customer', exact: true })
+      .click();
+    const form = page.locator('form').filter({
+      has: page.getByRole('button', {
+        name: /Create customer|Working…/,
+        exact: true,
+      }),
+    });
+    await form
+      .getByLabel('Customer name', { exact: true })
+      .fill(`Fictional ${mode} creation`);
+    await form
+      .getByRole('button', { name: 'Create customer', exact: true })
+      .click();
+    if (mode === 'before' || mode === 'after')
+      await expect(
+        page
+          .getByRole('status')
+          .filter({ hasText: 'Customer creation outcome UNKNOWN.' }),
+      ).toBeVisible();
+    if (mode === 'company')
+      await page
+        .getByRole('button', {
+          name: 'Select other fixture company',
+          exact: true,
+        })
+        .click();
+    else {
+      await page
+        .getByRole('button', { name: 'Close details', exact: true })
+        .click();
+      await page
+        .getByRole('button', { name: 'New customer', exact: true })
+        .click();
+    }
+    if (mode === 'pause' || mode === 'company') {
+      if (mode === 'pause')
+        await expect(
+          form.getByRole('button', { name: 'Create customer', exact: true }),
+        ).toBeDisabled();
+      await page
+        .getByRole('button', {
+          name: 'Release pending customer acknowledgment',
+          exact: true,
+        })
+        .click();
+      await expect(
+        form.getByRole('button', { name: 'Create customer', exact: true }),
+      ).toBeEnabled();
+      await expect(
+        form.getByLabel('Customer name', { exact: true }),
+      ).toHaveValue('');
+    } else
+      await expect(
+        form.getByRole('button', { name: 'Create customer', exact: true }),
+      ).toBeDisabled();
+    await page
+      .getByRole('button', { name: 'Read fixture writer count', exact: true })
+      .click();
+    await expect(
+      page.getByRole('status').filter({ hasText: 'Writer calls: 1' }),
+    ).toBeVisible();
+    if (mode === 'after' || mode === 'before') {
+      await page
+        .getByRole('button', { name: 'Close details', exact: true })
+        .click();
+      await page
+        .getByRole('searchbox', { name: 'Search customers', exact: true })
+        .fill(`Fictional ${mode} creation`);
+      await expect(
+        page
+          .locator('.record-button')
+          .filter({ hasText: `Fictional ${mode} creation` }),
+      ).toHaveCount(mode === 'after' ? 1 : 0);
+      await page
+        .getByRole('button', { name: 'New customer', exact: true })
+        .click();
+      await expect(
+        form.getByRole('button', { name: 'Create customer', exact: true }),
+      ).toBeDisabled();
+    }
+  }
+});

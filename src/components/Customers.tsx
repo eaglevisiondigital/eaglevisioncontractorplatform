@@ -1,4 +1,15 @@
-import { useCallback, useState } from 'react';
+import {
+  useCallback,
+  useState,
+  useRef,
+  useLayoutEffect,
+  useSyncExternalStore,
+} from 'react';
+import {
+  createCustomerOnce,
+  customerCreateState,
+  subscribeCustomerCreate,
+} from './crm/customer-create-once';
 import type {
   Operations,
   Customer,
@@ -97,6 +108,25 @@ function CustomerDetail({
   onSaved: () => void;
 }) {
   const task = useTask();
+  const createForm = useRef({});
+  const saving = useRef(false);
+  const current = useRef(false);
+  const generation = useRef(0);
+  useLayoutEffect(() => {
+    generation.current++;
+    current.current = true;
+    return () => {
+      current.current = false;
+    };
+  }, [repo, org, customer?.id]);
+  const createState = useSyncExternalStore(
+    useCallback(
+      (listener) => subscribeCustomerCreate(repo, org, listener),
+      [repo, org],
+    ),
+    useCallback(() => customerCreateState(repo, org), [repo, org]),
+  );
+  const createHeld = !customer && !!createState;
   const [duplicates, setDuplicates] = useState<Customer[]>([]);
   const [editingLocation, setEditingLocation] =
     useState<Row<'service_locations'>>();
@@ -117,26 +147,31 @@ function CustomerDetail({
     ),
   );
   async function save(v: Values, intent: string) {
+    if (saving.current) return;
+    const context = generation.current;
     const draft = v as unknown as CustomerDraft;
     if (intent === 'secondary') {
       await task.run(async () => {
-        setDuplicates(
-          await repo.duplicates(
-            org,
-            String(draft.email ?? ''),
-            String(draft.phone ?? ''),
-            customer?.id,
-          ),
+        const matches = await repo.duplicates(
+          org,
+          String(draft.email ?? ''),
+          String(draft.phone ?? ''),
+          customer?.id,
         );
+        if (current.current && context === generation.current)
+          setDuplicates(matches);
       }, 'Duplicate check complete. Matches are limited to this company.');
       return;
     }
-    if (
-      await task.run(async () => {
-        await repo.saveCustomer(org, draft, customer?.id);
-      })
-    ) {
-      onSaved();
+    saving.current = true;
+    try {
+      const saved = await task.run(async () => {
+        if (customer) await repo.saveCustomer(org, draft, customer.id);
+        else await createCustomerOnce(repo, org, draft, createForm.current);
+      });
+      if (saved && current.current && context === generation.current) onSaved();
+    } finally {
+      saving.current = false;
     }
   }
   return (
@@ -147,14 +182,27 @@ function CustomerDetail({
           Close details
         </button>
       </div>
-      <FieldsForm
-        fields={customerFields}
-        initial={customer ?? {}}
-        submitLabel={customer ? 'Update customer' : 'Create customer'}
-        secondaryLabel="Check duplicates"
-        busy={task.busy}
-        onSubmit={save}
-      />
+      <fieldset
+        disabled={createHeld}
+        style={{ border: 0, padding: 0, margin: 0, minWidth: 0 }}
+      >
+        <FieldsForm
+          fields={customerFields}
+          initial={customer ?? {}}
+          submitLabel={customer ? 'Update customer' : 'Create customer'}
+          secondaryLabel="Check duplicates"
+          busy={task.busy}
+          onSubmit={save}
+        />
+      </fieldset>
+      {createHeld && (
+        <p role="status">
+          Customer creation is pending or UNKNOWN for this company. No
+          replacement submission is enabled. Review the existing customer
+          directory; a matching row is not a transaction receipt.
+        </p>
+      )}
+
       <p role="status">{task.message}</p>
       {duplicates.length > 0 && (
         <div className="notice">
@@ -380,19 +428,20 @@ export function Customers({ repo, org }: { repo: Operations; org: string }) {
           onChange={setPage}
         />
       </article>
-      {selected !== undefined && (
-        <CustomerDetail
-          key={selected?.id ?? 'new'}
-          repo={repo}
-          org={org}
-          customer={selected}
-          onClose={() => setSelected(undefined)}
-          onSaved={() => {
-            resource.reload();
-            setSelected(undefined);
-          }}
-        />
-      )}
+      {selected !== undefined &&
+        (selected === null || selected.organization_id === org) && (
+          <CustomerDetail
+            key={`${org}/${selected?.id ?? 'new'}`}
+            repo={repo}
+            org={org}
+            customer={selected}
+            onClose={() => setSelected(undefined)}
+            onSaved={() => {
+              resource.reload();
+              setSelected(undefined);
+            }}
+          />
+        )}
     </>
   );
 }

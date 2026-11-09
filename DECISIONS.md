@@ -2645,3 +2645,12 @@ merge another business identity. Changed values require staff review before a se
 Save, and source changes invalidate cost completion. Server authorization remains
 sole operational authority. UNKNOWN permits exact reads only; UI holds are not durable
 receipts, recovery custody or canonical state. Invoice issuance remains prohibited.
+
+### CRM create uses one UI attempt without claiming durable idempotency
+
+Keep saveCustomer as sole canonical writer; stop two form events from producing two
+records. Admit synchronously before await, require exact returned-row acknowledgment,
+and preserve UNKNOWN after invoked write failures. Do not infer failure from duplicate
+search, clear uncertainty by closing a form, or create a replacement identity. UI
+holds do not survive reload or replace missing server transaction receipts/custody.
+No permission, SQL, intake assignment or operational authority changes are included.
