@@ -3198,3 +3198,22 @@ Consumer rollback is a separate SQLite scratch transaction; reopening proves loc
 connection retention, not killed-process, real PG17, AWS or physical recovery.
 Before any marker commits, UNKNOWN holds are instance-only; the fresh-instance
 characterization proves durable pre-dispatch custody/global quarantine remains OPEN.
+
+### Durable offline pre-dispatch custody correction
+
+After unchanged348, durable absent-only request/source holds now commit before the
+claim transport. The original interpreter and exact broker identities remain; fresh
+objects/processes cannot replay UNKNOWN or bypass through replacement IDs/epochs.
+Exact holds are required for claims, ACKs and read-only receipt reconciliation.
+The provisioned fixture descriptor rejects missing/replaced file, schema or identity;
+no automatic recreation/reset/recovery occurs. Current-authority/stop checks apply
+at final async boundaries. All observations remain writes_allowed:false.
+58 protocol cases PASS, including actual SIGKILL/restart at four boundaries, competing
+processes, missing/incomplete custody, rollback, ambiguous hold/claim/receipt ACKs and
+revocation. Independent actual-source security QA /root/custody_transport_review CLEAR.
+Initial four process tests timed out because the child exited normally; explicit live
+pause and live/kill/signal assertions correct the harness without changing budgets.
+Trusted fixture/raw owner, coherent storage rewind, AWS durability/independence,
+genuine Auth/PG17 integration, power loss and global operational quarantine remain
+unverified. D1–D3/A01–A12, intake SQL HELD and all original recovery/release gates persist.
+No protected SQL, AWS/Supabase action, operational adapter or recovery attempt.

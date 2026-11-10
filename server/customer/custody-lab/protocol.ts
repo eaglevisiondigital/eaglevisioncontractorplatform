@@ -162,6 +162,23 @@ function claimItems(input: CustodyBinding) {
     source: { pk: s(keys.source), digest },
   };
 }
+function holds(input: CustodyBinding) {
+  const b = custodyBinding(input),
+    items = claimItems(b);
+  return {
+    request: { ...items.claim, pk: s(`hold#${custodyKeys(b).claim}`) },
+    source: { ...items.source, pk: s(`hold#${custodyKeys(b).source}`) },
+  };
+}
+/** A committed hold is permanently uncertain by default, including process death.
+ * Existing holds are observations ONLY, never resumable execution permits. */
+export function holdPlan(input: CustodyBinding): WritePlan {
+  const b = custodyBinding(input),
+    h = holds(b);
+  return {
+    TransactItems: [check(expectedFence(b)), put(h.request), put(h.source)],
+  };
+}
 /** Single-region conditional marker transaction, no TTL or ClientRequestToken retry window. */
 export function spendPlan(input: CustodyBinding): WritePlan {
   const b = custodyBinding(input),
@@ -171,6 +188,8 @@ export function spendPlan(input: CustodyBinding): WritePlan {
       check(expectedFence(b)),
       put(items.claim),
       put(items.source),
+      check(holds(b).request),
+      check(holds(b).source),
     ],
   };
 }
@@ -197,36 +216,47 @@ export function ackPlan(input: CustodyBinding, value: unknown): WritePlan {
         digest: s(hash(b)),
         receipt: s(receiptDigest(b, value)),
       }),
+      check(holds(b).request),
+      check(holds(b).source),
     ],
   };
 }
 export function readPlan(input: CustodyBinding): ReadPlan {
   return {
-    TransactItems: Object.values(custodyKeys(input)).map((pk) => ({
+    TransactItems: [
+      ...Object.values(custodyKeys(input)),
+      ...Object.values(holds(input)).map(
+        (item) => (item.pk as { S: string }).S,
+      ),
+    ].map((pk) => ({
       Get: { TableName: table, Key: { pk: s(pk) } },
     })),
   };
 }
 function observations(b: CustodyBinding, rows: unknown[]) {
-  if (!Array.isArray(rows) || rows.length !== 4)
+  if (!Array.isArray(rows) || rows.length !== 6)
     throw Error('Atomic custody snapshot required');
   const items = claimItems(b);
   if (
     canonical(rows[0]) !== canonical(expectedFence(b)) ||
     canonical(rows[1]) !== canonical(items.claim) ||
-    canonical(rows[2]) !== canonical(items.source)
+    canonical(rows[2]) !== canonical(items.source) ||
+    canonical(rows[4]) !== canonical(holds(b).request) ||
+    canonical(rows[5]) !== canonical(holds(b).source)
   )
     throw Error('Missing, stale or conflicting custody; quarantine writers');
   return rows[3];
 }
 export interface OfflineCustodyPort {
+  /** Must durably commit the absent-only hold BEFORE the claim transport is invoked. */
+  hold(plan: WritePlan): Promise<void>;
   write(plan: WritePlan): Promise<void>;
   read(plan: ReadPlan): Promise<unknown[]>;
 }
 /** No canonical writer callback. Every observation explicitly denies execution authority.
  * The supplied current() is a disposable fixture, NOT genuine Auth/session validation.
- * Before an external marker commits, UNKNOWN hold is INSTANCE ONLY. No durable
- * pre-dispatch hold/global quarantine is implemented; never bind this lab to a writer. */
+ * The disposable adapter now commits pre-dispatch holds. This is NOT independent
+ * external durability or global operational quarantine; never bind it to a writer. */
 export class OfflineCustodyAttempt {
   private attempted = false;
   private claimed = false;
@@ -258,6 +288,11 @@ export class OfflineCustodyAttempt {
     this.attempted = true; // Synchronous one-use admission before ANY await.
     try {
       await this.guard();
+      await this.port.hold(holdPlan(this.binding));
+      // No external claim call after an ambiguous hold ACK or competing local stop.
+      if (this.stopped) return this.unknown();
+      await this.guard();
+      if (this.stopped) return this.unknown();
       await this.port.write(spendPlan(this.binding));
       if (
         observations(
@@ -284,6 +319,7 @@ export class OfflineCustodyAttempt {
     try {
       const plan = ackPlan(this.binding, value);
       await this.guard();
+      if (this.stopped) return this.unknown();
       await this.port.write(plan);
       const rows = await this.port.read(readPlan(this.binding));
       const ack = observations(this.binding, rows);

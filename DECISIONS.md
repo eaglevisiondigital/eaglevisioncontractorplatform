@@ -2675,3 +2675,13 @@ epoch or consumer rollback; ambiguous ACKs allow exact reads only, never continu
 No lab result is an execution permit, AWS service proof or independent administrative
 custody. Future SQL/transport/global writer quarantine and D1–D3 acceptance require
 separate specific authorization. Existing canonical transaction engines stay unchanged.
+
+### Durable lab holds are permanent admission barriers, never resume tokens
+
+Commit exact request/source uncertainty holds before any claim transport. Existing
+holds deny fresh-object/process admission, new IDs/publications and epoch bypass;
+only exact current-authorized read reconciliation is permitted after UNKNOWN.
+Reuse the existing conditional interpreter and canonical identities, with no second
+business writer/engine. Missing custody cannot be recreated by reopen. Disposable
+process-loss evidence does not approve coherent storage rewind, AWS independence,
+Auth, global writer participation or any D1–D3/A01–A12 operational action.
