@@ -11,7 +11,7 @@ then the same fence and exact claim/source conditions plus an immutable receipt
 fingerprint. The source key follows original org/user/issued-version admission
 uniqueness and excludes request ID, publication, epoch and revision, so changing
 these cannot renew spent authority. No customer note or business record is stored.
-Atomic reads compare the exact fence, claim, source and ACK in one snapshot.
+Atomic reads compare the exact fence, claim, source, ACK and both holds in one snapshot.
 
 The SQLite interpreter is exclusively in tests/fixtures. It serializes the SAME
 plans with native transactions, append-only spent markers and separate mutable
@@ -44,12 +44,34 @@ This is neither DynamoDB Local nor evidence of AWS durability or owner-proof cus
    All real database/raw/admin/restore writers must independently enforce target-wide
    quarantine; this lab does NOT install or prove that global mechanism.
 
-The pre-commit ambiguity limit is reproduced explicitly: when a write throws BEFORE
-any external marker commits, only the original attempt object retains UNKNOWN.
-A fresh object can record the otherwise absent marker (still writes_allowed:false).
-This is NOT durable pre-dispatch uncertainty custody or permission to retry. Original
-registrar custody, restart/restore fencing and target-wide quarantine must prevent
-fresh-instance continuation before any future canonical writer can be bound here.
+## Durable pre-dispatch correction after PR348
+
+The original PR348 instance-local limitation is now corrected within this laboratory.
+Before the claim transport is invoked, the same conditional interpreter commits
+append-only request and original org/user/issued-version holds in a separate SQLite
+transaction (`synchronous=FULL`, WAL). Holds bind the complete original identity;
+claim, ACK and snapshot validation require both exact holds. They never expire,
+reset, resume or become execution permits. A new object/process must fail admission
+when either original hold exists, even if the external claim committed no marker.
+Missing/lost hold ACK stops before claim dispatch; no claim is called unless its
+hold commit was observed. Incomplete, stale or contradictory holds deny reads/writes.
+Exact read-only receipt matching never clears a hold or authorizes another attempt.
+
+Tests now SIGKILL live disposable children after hold commit, before claim dispatch,
+after claim commit and after ACK commit. Separate competing/restarted processes
+make zero claim calls for held sources. Only a matching original canonical receipt
+AND retained external ACK can yield RECEIPT_MATCHED, always writes_allowed:false.
+The child pause has an explicit live timer; tests assert live PID, successful SIGKILL
+and signal, so ordinary process exit cannot masquerade as process-loss evidence.
+
+Fixture reopen requires the original descriptor, private file/inode, manifest and
+schema/triggers; it never creates/reseeds missing custody. The same interpreter owns
+all new metadata transactions; there is no second business or claim engine. The
+normal fixture port rejects legacy claim plans lacking hold checks. Raw interpreter
+and database-owner access remain trusted fixture capabilities, NOT least-privilege
+operational endpoints. A coherent in-place storage rewind preserving identity is
+not detected. No power-loss, independent-administrator or true rollback protection
+is claimed. Real registrar custody and target-wide writer quarantine remain gated.
 
 ## AWS and administrative acceptance still missing
 

@@ -1,6 +1,8 @@
 import { afterEach, expect, it, vi } from 'vitest';
-import { readFileSync } from 'node:fs';
+import { readFileSync, renameSync, existsSync } from 'node:fs';
 import { Worker } from 'node:worker_threads';
+import { fork, type ChildProcess } from 'node:child_process';
+import { once } from 'node:events';
 import { DatabaseSync } from 'node:sqlite';
 import ts from 'typescript';
 import {
@@ -9,15 +11,27 @@ import {
   custodyBinding,
   custodyKeys,
   expectedFence,
+  holdPlan,
   readPlan,
   spendPlan,
   type CustodyBinding,
   type OfflineCustodyPort,
 } from '../../server/customer/custody-lab/protocol';
 import { createCustodyFixture } from '../fixtures/customer-custody/sqlite';
+import { openCustodyFixturePort } from '../fixtures/customer-custody/sqlite';
 
 const fixtures: ReturnType<typeof createCustodyFixture>[] = [];
-afterEach(() => {
+const children = new Set<ChildProcess>();
+afterEach(async () => {
+  await Promise.all(
+    [...children].map(async (child) => {
+      if (child.exitCode === null && child.signalCode === null) {
+        const exited = once(child, 'exit');
+        child.kill('SIGKILL');
+        await exited;
+      }
+    }),
+  );
   for (const f of fixtures.splice(0)) f.close();
 });
 const id = (n: number) =>
@@ -115,7 +129,7 @@ it('records one exact claim and immutable receipt fingerprint, with no execution
 it('emits only atomic DynamoDB conditions and absent-key puts on distinct items', () => {
   const f = setup(),
     plan = spendPlan(f.binding);
-  expect(plan.TransactItems.map((v) => Object.keys(v)[0])).toEqual([
+  expect(plan.TransactItems.slice(0, 3).map((v) => Object.keys(v)[0])).toEqual([
     'ConditionCheck',
     'Put',
     'Put',
@@ -126,8 +140,12 @@ it('emits only atomic DynamoDB conditions and absent-key puts on distinct items'
       ExpressionAttributeValues: { ':v0': { BOOL: true } },
     },
   });
-  expect(ackPlan(f.binding, f.status).TransactItems).toHaveLength(4);
-  expect(readPlan(f.binding).TransactItems).toHaveLength(4);
+  expect(plan.TransactItems.slice(3).map((v) => Object.keys(v)[0])).toEqual([
+    'ConditionCheck',
+    'ConditionCheck',
+  ]);
+  expect(ackPlan(f.binding, f.status).TransactItems).toHaveLength(6);
+  expect(readPlan(f.binding).TransactItems).toHaveLength(6);
 });
 it('same-turn duplicate invocation permanently holds both continuations, no second mutation', async () => {
   const f = setup(),
@@ -137,7 +155,7 @@ it('same-turn duplicate invocation permanently holds both continuations, no seco
     f.attempt.spend(),
   ]);
   expect(results.every((v) => v.status === 'rejected')).toBe(true);
-  expect(write).toHaveBeenCalledTimes(1);
+  expect(write).not.toHaveBeenCalled();
   expect(f.attempt.quarantined).toBe(true);
   await expect(f.attempt.acknowledge(f.status)).rejects.toThrow(/UNKNOWN/);
 });
@@ -156,6 +174,7 @@ it('real worker-thread contention executes the same atomic fixture transaction o
       new URL('../fixtures/customer-custody/sqlite.ts', import.meta.url),
       'utf8',
     );
+  await f.fixture.port.hold(holdPlan(f.binding));
   const compiled = ts.transpileModule(source, {
     compilerOptions: {
       module: ts.ModuleKind.CommonJS,
@@ -527,7 +546,7 @@ it('post-commit read unavailability preserves the external spend and permits no 
     new OfflineCustodyAttempt(f.fixture.reopen(), f.binding, f.current).spend(),
   ).rejects.toThrow(/UNKNOWN/);
 });
-it('characterizes the OPEN pre-dispatch durability gap after object loss: no execution authority follows', async () => {
+it('closes the original pre-dispatch UNKNOWN gap after object loss without execution authority', async () => {
   const f = setup();
   const port: OfflineCustodyPort = {
     ...f.fixture.port,
@@ -538,17 +557,14 @@ it('characterizes the OPEN pre-dispatch durability gap after object loss: no exe
   const old = new OfflineCustodyAttempt(port, f.binding, f.current);
   await expect(old.spend()).rejects.toThrow(/UNKNOWN/);
   expect(old.quarantined).toBe(true);
-  // The lab does NOT implement durable pre-dispatch admission/global restart quarantine.
-  // This characterization is an operational blocker, never a business retry flow.
+  // The original #348 characterization permitted a fresh-instance claim here.
+  // Durable source holds now deny it before the claim transport is called.
   const afterObjectLoss = new OfflineCustodyAttempt(
     f.fixture.reopen(),
     f.binding,
     f.current,
   );
-  expect(await afterObjectLoss.spend()).toEqual({
-    outcome: 'CLAIM_RECORDED',
-    writes_allowed: false,
-  });
+  await expect(afterObjectLoss.spend()).rejects.toThrow(/UNKNOWN/);
   await expect(afterObjectLoss.reconcile(async () => f.status)).rejects.toThrow(
     /UNKNOWN/,
   );
@@ -571,3 +587,270 @@ it('revocation after read but before observation return denies private reconcili
     ),
   ).rejects.toThrow(/UNKNOWN/);
 });
+
+type ProcessMessage = {
+  phase: string;
+  error?: string;
+  writes?: number;
+  holds?: number;
+  result?: { outcome: string; writes_allowed: false };
+};
+function processAttempt(
+  f: ReturnType<typeof setup>,
+  mode: string,
+  barrier = false,
+) {
+  const child = fork(
+    new URL('../fixtures/customer-custody/process.mjs', import.meta.url),
+    [],
+    { env: {}, stdio: ['ignore', 'ignore', 'pipe', 'ipc'] },
+  );
+  children.add(child);
+  const seen = new Map<string, ProcessMessage>(),
+    waiting = new Map<
+      string,
+      { resolve: (v: ProcessMessage) => void; reject: (e: Error) => void }
+    >();
+  let failure: Error | undefined,
+    stderr = '';
+  child.stderr?.on('data', (data) => {
+    stderr = (stderr + String(data)).slice(-3000);
+  });
+  child.on('message', (message: ProcessMessage) => {
+    seen.set(message.phase, message);
+    waiting.get(message.phase)?.resolve(message);
+    waiting.delete(message.phase);
+  });
+  child.on('error', (error) => {
+    failure = error;
+    for (const pending of waiting.values()) pending.reject(error);
+  });
+  child.on('exit', () => {
+    children.delete(child);
+    failure ??= Error(`Disposable process exited: ${stderr}`);
+    for (const pending of waiting.values()) pending.reject(failure);
+  });
+  child.send({
+    descriptor: f.fixture.descriptor,
+    binding: f.binding,
+    status: f.status,
+    mode,
+    barrier,
+  });
+  return {
+    child,
+    wait(phase: string) {
+      const existing = seen.get(phase);
+      if (existing) return Promise.resolve(existing);
+      if (failure) return Promise.reject(failure);
+      return new Promise<ProcessMessage>((resolve, reject) =>
+        waiting.set(phase, { resolve, reject }),
+      );
+    },
+  };
+}
+it.each(['after-hold', 'before-claim', 'after-claim', 'after-ack'] as const)(
+  'SIGKILL at %s retains original quarantine across a genuine process restart',
+  async (mode) => {
+    const f = setup(),
+      original = processAttempt(f, mode);
+    await original.wait(mode);
+    expect(f.fixture.db.prepare('select count(*) n from holds').get()?.n).toBe(
+      2,
+    );
+    // A live competitor is denied even before the original process is killed.
+    const competitor = processAttempt(f, 'spend');
+    const denied = await competitor.wait('result');
+    expect(denied.error).toMatch(/UNKNOWN/);
+    expect(denied.writes).toBe(0);
+    expect(original.child.exitCode).toBeNull();
+    expect(original.child.signalCode).toBeNull();
+    const exited = once(original.child, 'exit');
+    expect(original.child.kill('SIGKILL')).toBe(true);
+    expect((await exited)[1]).toBe('SIGKILL');
+    const restarted = processAttempt(f, 'spend'),
+      result = await restarted.wait('result');
+    expect(result.error).toMatch(/UNKNOWN/);
+    expect(result.writes).toBe(0);
+    const read = processAttempt(f, 'reconcile'),
+      observed = await read.wait('result');
+    expect(observed.writes).toBe(0);
+    expect(observed.holds).toBe(0);
+    if (mode === 'after-ack')
+      expect(observed.result).toEqual({
+        outcome: 'RECEIPT_MATCHED',
+        writes_allowed: false,
+      });
+    else expect(observed.error).toMatch(/UNKNOWN/);
+  },
+);
+it('two genuine worker processes compete for one durable pre-dispatch hold', async () => {
+  const f = setup(),
+    a = processAttempt(f, 'spend', true),
+    b = processAttempt(f, 'spend', true);
+  await Promise.all([a.wait('ready'), b.wait('ready')]);
+  a.child.send('go');
+  b.child.send('go');
+  const results = await Promise.all([a.wait('result'), b.wait('result')]);
+  expect(
+    results.filter((r) => r.result?.outcome === 'CLAIM_RECORDED'),
+  ).toHaveLength(1);
+  expect(results.filter((r) => /UNKNOWN/.test(r.error ?? ''))).toHaveLength(1);
+  expect(results.reduce((n, r) => n + (r.writes ?? 0), 0)).toBe(1);
+  expect(f.fixture.db.prepare('select count(*) n from holds').get()?.n).toBe(2);
+});
+it.each(['before', 'after'] as const)(
+  'uncertain hold acknowledgment %s commit never calls the claim transport',
+  async (when) => {
+    const f = setup(),
+      write = vi.spyOn(f.fixture.port, 'write');
+    const port: OfflineCustodyPort = {
+      ...f.fixture.port,
+      async hold(plan) {
+        if (when === 'after') await f.fixture.port.hold(plan);
+        throw Error('Hold ACK lost');
+      },
+    };
+    const original = new OfflineCustodyAttempt(port, f.binding, f.current);
+    await expect(original.spend()).rejects.toThrow(/UNKNOWN/);
+    expect(write).not.toHaveBeenCalled();
+    if (when === 'after')
+      await expect(
+        new OfflineCustodyAttempt(
+          f.fixture.reopen(),
+          f.binding,
+          f.current,
+        ).spend(),
+      ).rejects.toThrow(/UNKNOWN/);
+    // If the hold did not commit, no claim dispatch happened at all. No external outcome exists to replay.
+  },
+);
+it('missing durable store is denied, never silently recreated', async () => {
+  const f = setup(),
+    moved = f.fixture.path + '.missing';
+  renameSync(f.fixture.path, moved);
+  expect(() => openCustodyFixturePort(f.fixture.descriptor)).toThrow();
+  await expect(f.attempt.spend()).rejects.toThrow(/UNKNOWN/);
+  expect(existsSync(f.fixture.path)).toBe(false);
+  renameSync(moved, f.fixture.path);
+});
+it('the disposable claim port denies a legacy plan missing durable hold conditions', async () => {
+  const f = setup(),
+    plan = spendPlan(f.binding);
+  plan.TransactItems = plan.TransactItems.slice(0, 3);
+  await expect(f.fixture.port.write(plan)).rejects.toThrow(/hold/);
+  expect(f.fixture.db.prepare('select count(*) n from markers').get()?.n).toBe(
+    0,
+  );
+});
+it.each(['identity', 'schema'] as const)(
+  'missing %s evidence denies a reopened custody handle',
+  async (field) => {
+    const f = setup();
+    if (field === 'identity') f.fixture.db.exec('delete from fixture_identity');
+    else f.fixture.db.exec('drop trigger holds_no_update');
+    expect(() => openCustodyFixturePort(f.fixture.descriptor)).toThrow(
+      /custody/,
+    );
+    await expect(f.attempt.spend()).rejects.toThrow(/UNKNOWN/);
+    expect(
+      f.fixture.db.prepare('select count(*) n from markers').get()?.n,
+    ).toBe(0);
+  },
+);
+it.each(['request', 'source'] as const)(
+  'incomplete %s hold never permits restart or exact receipt acceptance',
+  async (which) => {
+    const f = setup();
+    await f.attempt.spend();
+    await f.attempt.acknowledge(f.status);
+    const trigger = String(
+      f.fixture.db
+        .prepare("select sql from sqlite_schema where name='holds_no_delete'")
+        .get()?.sql,
+    );
+    f.fixture.db.exec('drop trigger holds_no_delete');
+    const key =
+      which === 'request'
+        ? `hold#${custodyKeys(f.binding).claim}`
+        : `hold#${custodyKeys(f.binding).source}`;
+    f.fixture.db.prepare('delete from holds where id=?').run(key);
+    f.fixture.db.exec(trigger);
+    const fresh = new OfflineCustodyAttempt(
+      f.fixture.reopen(),
+      f.binding,
+      f.current,
+    );
+    await expect(fresh.spend()).rejects.toThrow(/UNKNOWN/);
+    await expect(fresh.reconcile(async () => f.status)).rejects.toThrow(
+      /UNKNOWN/,
+    );
+  },
+);
+it('lost claim ACK before marker commit denies replacement request/publication/epoch after restart', async () => {
+  const f = setup(),
+    port: OfflineCustodyPort = {
+      ...f.fixture.port,
+      async write() {
+        throw Error('Claim not observed');
+      },
+    };
+  await expect(
+    new OfflineCustodyAttempt(port, f.binding, f.current).spend(),
+  ).rejects.toThrow(/UNKNOWN/);
+  const updated = { ...f.binding, epoch: 2, revision: 2 };
+  f.fixture.fence(expectedFence(updated));
+  for (const binding of [
+    f.binding,
+    updated,
+    {
+      ...updated,
+      reference: {
+        ...updated.reference,
+        request_id: id(90),
+        publication_id: id(91),
+      },
+    },
+  ]) {
+    const freshPort = f.fixture.reopen(),
+      write = vi.spyOn(freshPort, 'write');
+    await expect(
+      new OfflineCustodyAttempt(freshPort, binding, f.current).spend(),
+    ).rejects.toThrow(/UNKNOWN/);
+    expect(write).not.toHaveBeenCalled();
+  }
+});
+it.each(['claim', 'ack'] as const)(
+  'a local stop during the final %s authority await forbids dispatch',
+  async (action) => {
+    const f = setup();
+    let calls = 0,
+      release!: () => void;
+    const blocked = new Promise<void>((resolve) => {
+      release = resolve;
+    });
+    let arm = false;
+    const current = async () => {
+      if (arm && ++calls === (action === 'claim' ? 2 : 1)) await blocked;
+      return true;
+    };
+    const attempt = new OfflineCustodyAttempt(
+      f.fixture.port,
+      f.binding,
+      current,
+    );
+    if (action === 'ack') await attempt.spend();
+    arm = true;
+    calls = 0;
+    const write = vi.spyOn(f.fixture.port, 'write');
+    const pending =
+      action === 'claim' ? attempt.spend() : attempt.acknowledge(f.status);
+    await vi.waitFor(() => expect(calls).toBe(action === 'claim' ? 2 : 1));
+    await expect(
+      action === 'claim' ? attempt.spend() : attempt.acknowledge(f.status),
+    ).rejects.toThrow(/UNKNOWN/);
+    release();
+    await expect(pending).rejects.toThrow(/UNKNOWN/);
+    expect(write).not.toHaveBeenCalled();
+  },
+);
