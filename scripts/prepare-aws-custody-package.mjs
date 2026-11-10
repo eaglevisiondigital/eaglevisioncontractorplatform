@@ -22,6 +22,8 @@ export const SOURCE_FILES = [
     'runner.ts',
     'validation.ts',
     'provider.ts',
+    'sdk-guard.ts',
+    'sdk-transport.ts',
     'index.ts',
   ].map((f) => prefix + f),
   'server/customer/custody-lab/protocol.ts',
@@ -54,7 +56,11 @@ export async function prepare(output, privateBindings) {
       external: (id) => id.startsWith('node:'),
     });
     try {
-      await bundle.write({ format: 'esm', file: join(build, 'package.mjs') });
+      await bundle.write({
+        format: 'esm',
+        file: join(build, 'package.mjs'),
+        codeSplitting: false,
+      });
     } finally {
       await bundle.close();
     }

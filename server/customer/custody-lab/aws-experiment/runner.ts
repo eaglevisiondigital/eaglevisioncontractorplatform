@@ -1,4 +1,4 @@
-import { createHash } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { canonical } from '../../../property/command-custody';
 import {
   OfflineCustodyAttempt,
@@ -24,8 +24,9 @@ export interface Request {
   role: 'admin' | 'runner' | 'reviewer';
   maxAttempts: 1;
   maxResponseBytes: number;
+  budgetId?: number;
 }
-/** Injected disposable-test transport ONLY. No SDK, default credentials, URL or network implementation. */
+/** Disposable synthetic transport only; never an application-facing adapter. */
 export interface ExperimentTransport {
   invoke(request: Request): Promise<Record<string, unknown>>;
 }
@@ -99,12 +100,19 @@ export class SyntheticExperiment {
     this.package = freeze(rebuilt);
   }
   private readonly pins: Pins;
-  private async checked<T>(work: () => Promise<T>, phase = 'runner') {
+  private async checked<T>(
+    work: () => Promise<T>,
+    phase = 'runner',
+    worker: string = randomUUID(),
+  ) {
+    const release = this.limits.worker(worker);
     try {
       return await work();
     } catch {
       this.limits.quarantine(phase);
       throw Error('Experiment UNKNOWN; durable quarantine; exact reads only');
+    } finally {
+      release();
     }
   }
   private async call(
@@ -195,23 +203,25 @@ export class SyntheticExperiment {
           !input.Key.startsWith(this.package.prefix)))
     )
       throw Error('Exact owned evidence bucket required');
-    const bytes = Buffer.byteLength(canonical(input)) + responseBytes;
+    const request = {
+      service,
+      operation,
+      input: freeze(structuredClone(input)),
+      role,
+      maxAttempts: 1 as const,
+      maxResponseBytes: responseBytes,
+    };
+    const bytes = Buffer.byteLength(canonical(input)) + responseBytes + 512;
     const id = this.limits.reserve(
       service,
       bytes,
       mutate.has(operation),
       role === 'admin' ? 'cleanup' : role,
+      digest(request),
     );
     try {
       const result = record(
-        await this.transport.invoke({
-          service,
-          operation,
-          input: freeze(structuredClone(input)),
-          role,
-          maxAttempts: 1,
-          maxResponseBytes: responseBytes,
-        }),
+        await this.transport.invoke({ ...request, budgetId: id }),
       );
       if (Buffer.byteLength(canonical(result)) > responseBytes)
         throw Error('Provider response limit');
@@ -341,28 +351,23 @@ export class SyntheticExperiment {
   }
   /** The caller selects a preallocated case; this does NOT simulate customer authorization. */
   run(index: number, worker: string) {
-    return this.checked(() => this.runCore(index, worker));
+    return this.checked(() => this.runCore(index), 'runner', worker);
   }
-  private async runCore(index: number, worker: string) {
+  private async runCore(index: number) {
     if (!Number.isSafeInteger(index) || index < 0 || index >= LIMITS.cases)
       throw Error('Preallocated synthetic case required');
-    const release = this.limits.worker(worker);
-    try {
-      await this.preflightCore();
-      const c = structuredClone(this.package.manifest.cases[index]);
-      const attempt = new OfflineCustodyAttempt(
-        this.port(),
-        c.binding,
-        async () =>
-          this.now() >= Date.parse(this.package.bindings.start) &&
-          this.now() < Date.parse(this.package.bindings.end),
-      );
-      await attempt.spend();
-      await attempt.acknowledge(c.status);
-      return await attempt.reconcile(async () => c.status);
-    } finally {
-      release();
-    }
+    await this.preflightCore();
+    const c = structuredClone(this.package.manifest.cases[index]);
+    const attempt = new OfflineCustodyAttempt(
+      this.port(),
+      c.binding,
+      async () =>
+        this.now() >= Date.parse(this.package.bindings.start) &&
+        this.now() < Date.parse(this.package.bindings.end),
+    );
+    await attempt.spend();
+    await attempt.acknowledge(c.status);
+    return await attempt.reconcile(async () => c.status);
   }
   review(index: number) {
     return this.checked(() => this.reviewCore(index));
