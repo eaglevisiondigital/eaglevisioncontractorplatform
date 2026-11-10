@@ -48,11 +48,54 @@ export class ExperimentLimits {
     if (create) {
       this.db
         .exec(`create table limits(spec text primary key,start integer,end integer,wall integer,blocked integer,cleanupblocked integer,dynamodb integer,s3 integer,dbytes integer,sbytes integer);
-        create table calls(id integer primary key,phase text,mutation integer,state text);
-        create table workers(id text primary key,active integer);`);
+        create table calls(id integer primary key,phase text,mutation integer,state text,request_hash text,service text,bytes integer,intent_hash text,dispatched integer default 0,settled integer default 0);
+        create table workers(id text primary key,active integer);
+        create unique index no_mutation_replay on calls(intent_hash) where mutation=1 and dispatched=1;`);
       this.db
         .prepare('insert into limits values(?,?,?,?,0,0,0,0,0,0)')
         .run(spec, start, end, start);
+    }
+    const columns = this.db
+      .prepare('pragma table_info(calls)')
+      .all()
+      .map((c) => String(c.name))
+      .sort()
+      .join();
+    if (
+      columns !==
+      'bytes,dispatched,id,intent_hash,mutation,phase,request_hash,service,settled,state'
+    ) {
+      this.db.close();
+      throw Error(
+        'Exact SDK journal schema required; never migrate or recreate',
+      );
+    }
+    if (
+      !this.db
+        .prepare('pragma index_list(calls)')
+        .all()
+        .some(
+          (i) =>
+            i.name === 'no_mutation_replay' &&
+            i.unique === 1 &&
+            i.partial === 1,
+        )
+    ) {
+      this.db.close();
+      throw Error('Original mutation marker index required');
+    }
+    const marker = this.db
+      .prepare(
+        "select sql from sqlite_master where type='index' and name='no_mutation_replay'",
+      )
+      .get();
+    if (
+      !/^create unique index no_mutation_replay on calls\(intent_hash\) where mutation=1 and dispatched=1$/i.test(
+        String(marker?.sql),
+      )
+    ) {
+      this.db.close();
+      throw Error('Exact permanent mutation marker required');
     }
     const row = this.state();
     if (row.spec !== spec || row.start !== start || row.end !== end) {
@@ -120,8 +163,11 @@ export class ExperimentLimits {
     bytes: number,
     mutation: boolean,
     phase: 'runner' | 'reviewer' | 'cleanup',
+    requestHash = '',
   ) {
     if (
+      !['dynamodb', 's3'].includes(service) ||
+      !['runner', 'reviewer', 'cleanup'].includes(phase) ||
       !Number.isSafeInteger(bytes) ||
       bytes < 0 ||
       bytes > LIMITS.responseBytes
@@ -159,9 +205,9 @@ export class ExperimentLimits {
         .run(time, bytes);
       const result = this.db
         .prepare(
-          "insert into calls(phase,mutation,state) values(?,?,'pending')",
+          "insert into calls(phase,mutation,state,request_hash,service,bytes) values(?,?,'pending',?,?,?)",
         )
-        .run(phase, mutation ? 1 : 0);
+        .run(phase, mutation ? 1 : 0, requestHash, service, bytes);
       this.db.exec('commit');
       return Number(result.lastInsertRowid);
     } catch (e) {
@@ -169,9 +215,118 @@ export class ExperimentLimits {
       throw e;
     }
   }
-  finish(id: number, known: boolean) {
+  /** One wire attempt per previously reserved exact request. Shared by every SDK role. */
+  dispatch(
+    id: number,
+    requestHash: string,
+    expected: {
+      phase: string;
+      mutation: boolean;
+      service: string;
+      bytes: number;
+      intentHash?: string;
+    },
+  ) {
     this.db.exec('begin immediate');
     try {
+      const call = this.db.prepare('select * from calls where id=?').get(id);
+      const row = this.state(),
+        time = this.now();
+      if (
+        !call ||
+        call.state !== 'pending' ||
+        call.dispatched !== 0 ||
+        !/^[a-f0-9]{64}$/.test(requestHash) ||
+        call.request_hash !== requestHash ||
+        call.phase !== expected.phase ||
+        call.mutation !== (expected.mutation ? 1 : 0) ||
+        call.service !== expected.service ||
+        call.bytes !== expected.bytes ||
+        (expected.mutation &&
+          !/^[a-f0-9]{64}$/.test(expected.intentHash || '')) ||
+        time < Number(row.wall) ||
+        time < this.start ||
+        time >=
+          (call.phase === 'runner'
+            ? this.end
+            : this.start + 48 * 60 * 60 * 1000) ||
+        (call.mutation === 1 &&
+          (call.phase === 'cleanup' ? row.cleanupblocked : row.blocked) !==
+            0) ||
+        Number(
+          this.db
+            .prepare(
+              'select count(*) n from calls where dispatched=1 and settled=0',
+            )
+            .get()?.n,
+        ) >= LIMITS.workers
+      )
+        throw Error('Original live request ticket required');
+      this.db
+        .prepare('update calls set dispatched=1,intent_hash=? where id=?')
+        .run(expected.mutation ? expected.intentHash! : null, id);
+      this.db.exec('commit');
+      return {
+        phase: String(call.phase),
+        deadline:
+          call.phase === 'runner' ? this.end : this.start + 48 * 60 * 60 * 1000,
+      };
+    } catch (e) {
+      this.db.exec('rollback');
+      throw e;
+    }
+  }
+  assertDispatchedLive(id: number, requestHash: string) {
+    const call = this.db.prepare('select * from calls where id=?').get(id),
+      row = this.state(),
+      time = this.now();
+    if (
+      !call ||
+      call.state !== 'pending' ||
+      call.dispatched !== 1 ||
+      call.settled !== 0 ||
+      call.request_hash !== requestHash ||
+      time < Number(row.wall) ||
+      time < this.start ||
+      time >=
+        (call.phase === 'runner'
+          ? this.end
+          : this.start + 48 * 60 * 60 * 1000) ||
+      (call.mutation === 1 &&
+        (call.phase === 'cleanup' ? row.cleanupblocked : row.blocked) !== 0)
+    )
+      throw Error('Current original wire ticket required');
+  }
+  settleTransport(id: number) {
+    if (
+      this.db
+        .prepare(
+          'update calls set settled=1 where id=? and dispatched=1 and settled=0',
+        )
+        .run(id).changes !== 1
+    )
+      throw Error('Original wire settlement required');
+  }
+  finish(id: number, known: boolean) {
+    let late: boolean;
+    this.db.exec('begin immediate');
+    try {
+      const call = this.db.prepare('select * from calls where id=?').get(id),
+        row = this.state(),
+        time = this.now();
+      late =
+        known &&
+        (!call ||
+          time < Number(row.wall) ||
+          time < this.start ||
+          time >=
+            (call.phase === 'runner'
+              ? this.end
+              : this.start + 48 * 60 * 60 * 1000) ||
+          (call.mutation === 1 &&
+            (call.phase === 'cleanup' ? row.cleanupblocked : row.blocked) !==
+              0));
+      known = known && !late;
       const changed = this.db
         .prepare("update calls set state=? where id=? and state='pending'")
         .run(known ? 'observed' : 'UNKNOWN', id);
@@ -185,6 +340,7 @@ export class ExperimentLimits {
       this.db.exec('rollback');
       throw e;
     }
+    if (late) throw Error('Late acknowledgment UNKNOWN');
   }
   close() {
     this.db.close();

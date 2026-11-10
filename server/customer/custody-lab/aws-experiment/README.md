@@ -1,8 +1,8 @@
 # Disposable AWS mechanics package — offline only
 
 Baseline: PR349 `6d80235110f87a2e24b7f988bdf0d238b36c8f58`.
-No cloud transport, credentials, provisioning command or operational adapter is
-included. D1–D3 unchanged; A01–A12 NOT RUN. Release1.0 NOT READY / NOT AUTHORIZED.
+An isolated AWS SDK v3 transport is included but unwired. No credentials,
+provisioning command, operational adapter or automatic execution is included. D1–D3 unchanged; A01–A12 NOT RUN. Release1.0 NOT READY / NOT AUTHORIZED.
 
 ## Reproduce and review
 
@@ -21,9 +21,10 @@ Existing output cannot be overwritten. Private binding, bootstrap, credential
 handoff, source review and execution need separate exact-scope authorization.
 No account identifier has been obtained for this package.
 
-`HASHES.json` binds a selected 13-file source inventory, the complete executable
+`HASHES.json` binds a selected 15-file source inventory, the complete executable
 bundle, policies and synthetic manifest. Verify both inventory and bundle hashes.
-`TEMPLATE_HASHES.json` records the proposed unbound package. Recompile and compare
+`TEMPLATE_HASHES.json` preserves PR350 historical hashes unchanged.
+`SDK_TEMPLATE_HASHES.json` records the current unbound SDK package. Recompile and compare
 all hashes before review. Bound policies require a new private hash approval.
 
 The administrator configures only the exact new table/bucket; it cannot create
@@ -73,20 +74,48 @@ independent person. SSO/federated trust requires separate review.
 ## Limits and future transport gate
 
 Private SQLite counters reserve before RPC: 10,000 DynamoDB requests, 2,000 S3
-requests, 10MiB per service, 64KiB object bodies, bounded response envelopes and a
-two-hour mutation admission window. Two durable **case-worker** leases protect
-`run`; evidence/reviewer/cleanup orchestration must be serialized by the future
-transport harness. Lost pending calls quarantine on restart; no reset/replay.
-These cooperating-client limits are not AWS-wide spending, concurrency or wall-clock
-termination guarantees. A stalled injected RPC can outlive its admission window;
-IAM expiry does not cancel an admitted call. No live bounded-runtime claim is made.
+requests, 10MiB per service, 64KiB evidence bodies and bounded response envelopes.
+The payload/envelope charge is canonical input bytes + maximum response body +512;
+it is not complete HTTP/TLS wire-byte accounting or a hard AWS spending cap.
+All orchestration entrypoints share two durable operation leases. SDK attempts
+also share two SQLite wire slots across instances/processes, bound to the original
+request hash, service, phase, mutation flag and exact charge. Tickets dispatch once. A permanent unique marker on the same calls table also
+forbids an identical mutation plan under any replacement ticket, response budget
+or reopened SDK instance. This survives acknowledged success as well as UNKNOWN;
+AWS idempotent acknowledgments can never authorize resuming the held protocol.
+Current ticket/quarantine/authority is rechecked immediately before wire and after
+response; a late journal acknowledgment is UNKNOWN. Lost pending calls quarantine
+on restart; unknown in-flight slots stay occupied until their actual transport
+settles. No reset, implicit migration, automatic retry or replacement identity.
 
-Before cloud authorization, a reviewed, pinned SDK shim must enforce one attempt,
-no redirects/retries/credential fallback, bounded streaming/checksum decoding,
-Date normalization, exact named errors, cancellation/deadlines, global concurrency
-and exclusive original journal use. `provider.ts` supplies bounded UTF8 and explicit
-absence normalization, without making calls. It must preserve UNKNOWN on timeout;
-no later callback may trigger a second mutation. No automatic runtime is bundled.
+The active runner and DynamoDB data authority expire within the original two-hour
+window. The original read/retention cleanup permissions retain their distinct
+24-hour table /48-hour S3 deadlines: cleanup cannot renew active claim authority.
+Requests, bytes and slots stay cumulative across those phases. Each SDK call has
+a 30-second deadline capped by its phase and explicit credential expiry, plus abort
+and HTTPS handler destruction. Timeout/cancellation is never evidence of noncommit;
+late success cannot clear quarantine or record a known acknowledgment.
+
+`SdkExperimentTransport` requires explicit temporary credential values for each
+role, current-authority callbacks and an explicit reviewed wire factory. It never
+loads credentials, reads profiles or invokes STS. Supplied test wiring cannot fall
+back to real HTTPS. `createAwsHttpsHandler` constructs the fixed-host HTTPS handler
+but does not call it; it must not be wired for cloud execution before approval.
+Credentials and options are snapshotted; fresh mutable SDK-only credential copies
+avoid SDK internal annotation changing the retained snapshot. All tests use clearly
+fictional keys and in-memory HTTP handlers, with HTTP/HTTPS/fetch tripwires.
+
+Pinned SDK v3 clients serialize/sign the original finite plans. TransactWrite uses
+a deterministic token from the exact plan hash, preventing SDK-generated replacement
+identity; permanent local mutation markers forbid using idempotent success as replay
+authority (AWS documents a ten-minute transaction-token window); the exact transaction body is rechecked before wire. Automatic attempts
+are1; a second wire attempt and every redirect are independently rejected. Endpoints
+are fixed us-east-1 HTTPS with certificate validation/TLS1.2 minimum, no S3 region
+redirects, ARN/accelerate/FIPS/dualstack or default credential fallback. No account,
+role, provisioning, upload-copy or retention-bypass commands exist in the shim.
+S3 normalization checks raw/decoded bounds, SHA256, exact version, encryption,
+Date values and explicit named provider absence. SDK package/lock and complete
+bundle hashes are part of the new offline package; verify both source and bundle.
 
 The provisioned table is 30 RCU/10 WCU, no indexes/TTL/replication/PITR, default
 AWS-owned encryption; bucket uses SSE-S3, versioning, Object Lock Governance1day,
@@ -111,3 +140,5 @@ exact source and bound-policy hashes, provisioning/role bootstrap, reviewed live
 transport, synthetic cases, maximum costs, monitoring/stop owner, actual retention
 and cleanup/teardown responsibility. No Supabase, operational writer, protected SQL,
 customer data or recovery action is covered by this proposed experiment.
+
+AWS token semantics reference: https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_TransactWriteItems.html . No provider behavior was exercised here.
