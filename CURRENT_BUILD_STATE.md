@@ -3178,3 +3178,23 @@ are required for durable concurrency/ACK guarantees; unique email is no substitu
 The346 UI correction remains unchanged. Intake SQL HELD; no hosted action performed.
 D1/D2/D3, A01–A12 NOT_RUN and original recovery evidence remain unchanged.
 Release1.0 remains NOT READY / NOT AUTHORIZED.
+
+### Offline external one-use custody protocol
+
+The source-only customer custody laboratory compiles conditional spent-claim and
+receipt-fingerprint transactions against the original request/reference/status and
+consumer contracts; disposable SQLite tests exercise concurrent claims, restart,
+consumer rollback, revocation, stale fences, lost ACKs and exact read-only outcomes.
+No operational writer/transport/SQL changes; all results deny execution authority.
+See server/customer/custody-lab/README.md for exact future three-commit interaction
+points and unimplemented cross-service revocation/global quarantine requirements.
+AWS behavior and administrative independence remain untested/unestablished.
+D1–D3/A01–A12, intake SQL HELD, protected/recovery and release gates unchanged.
+Final focused validation:42 new protocol cases plus92 original broker/request/custody
+cases PASS. Independent QA found named-property arrays bypassing object validation;
+strict plain-object/string guards and negative regressions correct that new-lab flaw
+without changing the shared canonical hasher or original protected source contracts.
+Consumer rollback is a separate SQLite scratch transaction; reopening proves local
+connection retention, not killed-process, real PG17, AWS or physical recovery.
+Before any marker commits, UNKNOWN holds are instance-only; the fresh-instance
+characterization proves durable pre-dispatch custody/global quarantine remains OPEN.

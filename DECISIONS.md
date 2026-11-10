@@ -2666,3 +2666,12 @@ posting-idempotency claim, permission/SQL change or operational approval follows
 Customer command-level deduplication, immutable receipts, uncertain-ACK reconciliation
 and update CAS require separate transaction/SQL review and custody authorization;
 existing advisory duplicate search and session-only UI holds are insufficient.
+
+### Independent custody remains external spent metadata, not a new business engine
+
+Reuse original broker org/user/issued-version admission and exact receipt contracts.
+Offline marker plans never renew spent authority through a new request, publication,
+epoch or consumer rollback; ambiguous ACKs allow exact reads only, never continuation.
+No lab result is an execution permit, AWS service proof or independent administrative
+custody. Future SQL/transport/global writer quarantine and D1–D3 acceptance require
+separate specific authorization. Existing canonical transaction engines stay unchanged.
