@@ -3217,3 +3217,7 @@ Trusted fixture/raw owner, coherent storage rewind, AWS durability/independence,
 genuine Auth/PG17 integration, power loss and global operational quarantine remain
 unverified. D1–D3/A01–A12, intake SQL HELD and all original recovery/release gates persist.
 No protected SQL, AWS/Supabase action, operational adapter or recovery attempt.
+
+### Offline AWS experiment package (after unchanged349)
+
+Added parameterized three-role policies/trusts, exact resource definitions, original-protocol synthetic runner, private durable request/byte counters, version/checksum/retention evidence verification and retention-aware cleanup. Offline compiler produces exclusive private files with selected-source/bundle/policy/manifest hashes; no cloud transport or credentials. 43 focused tests PASS, independently reproduced by /root/custody_transport_review; scope CLEAR offline only. IAM expression/finite-manifest enforcement, case-worker versus global concurrency, stalled transport deadlines, AWS semantics and administrative independence remain explicit gates. All four owner-review concerns map to package README. D1–D3 unchanged; A01–A12 NOT RUN; intake SQL HELD. No hosted action, protected SQL, recovery, merge or deployment. Release1.0 NOT READY / NOT AUTHORIZED.
