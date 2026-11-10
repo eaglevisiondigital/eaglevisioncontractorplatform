@@ -1,0 +1,76 @@
+{
+  "schema": "propel-offline-package-hashes-v1",
+  "binding": "UNBOUND_TEMPLATE_NOT_ATTACHABLE",
+  "source": "e78c09562ff553cc3862fed316872f5cfba0f2cc6aa2dd42a742ea6ba5e35351",
+  "bundle": "6bf4aa5ae6c6b337475ccbcb45c14e4035b0c65a2be38465066761411cc4047c",
+  "sourceFiles": [
+    {
+      "path": "server/customer/custody-lab/aws-experiment/package.ts",
+      "sha256": "6057cebaf6a9a64cb7e02082b4fb58115a22d9fe06ff269b3bed428d6027ddfa"
+    },
+    {
+      "path": "server/customer/custody-lab/aws-experiment/limits.ts",
+      "sha256": "d712d98e0cbbc16fcb119c27bdd0e8c26a2f150fd6c9dd37f5843ddf438a347a"
+    },
+    {
+      "path": "server/customer/custody-lab/aws-experiment/runner.ts",
+      "sha256": "c0a2868cc18e2d61be4a1a9a652ccd12f8b57a05c6edfe60ed40c0f8500e7a80"
+    },
+    {
+      "path": "server/customer/custody-lab/aws-experiment/validation.ts",
+      "sha256": "238d7c5d9b72b0d076959d07b673cd5d5c1488762ca92dc955672bea51220772"
+    },
+    {
+      "path": "server/customer/custody-lab/aws-experiment/provider.ts",
+      "sha256": "2b1e9e7bab8bc67c554abb22f259f246db633838603bb92597d71aea4c1f0cd4"
+    },
+    {
+      "path": "server/customer/custody-lab/aws-experiment/index.ts",
+      "sha256": "afc255dafd9540638cbd6f3072b1f6d9aad1278675f54a0878f2ce8166d82947"
+    },
+    {
+      "path": "server/customer/custody-lab/protocol.ts",
+      "sha256": "3c14fe6b98d67f2aaaccb3e0c93eb4a15232cdf952b6cc8178faef2117e7d864"
+    },
+    {
+      "path": "server/property/command-custody.ts",
+      "sha256": "c4af64655c50844ed4c5fd7aec44b07a8a47e5ff8b039404dc948435243ffd71"
+    },
+    {
+      "path": "src/lib/customer-requests.ts",
+      "sha256": "4da5caa8e48ef723a5068338768b62fd175519a8d91a5c187ea04873673ebe9a"
+    },
+    {
+      "path": "server/customer/request-gateway.ts",
+      "sha256": "1472d74e4d3bd94c8be8ef33785e88f2c567dfc632f6c73c5ad6d9c8782a549c"
+    },
+    {
+      "path": "scripts/prepare-aws-custody-package.mjs",
+      "sha256": "1be16286c624d5f48bf993623060983e196e52f3f6850f30a83f8e2d5eb9d32f"
+    },
+    {
+      "path": "package.json",
+      "sha256": "173cba41b87d3156b98136c15873d81fe2308ed83a067a321cc239948099a1d0"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "8be30ee23e9cd3ca2f54e4b5beb7da07fd20ead0b86b504d31b29b1116b8baa3"
+    }
+  ],
+  "files": {
+    "permission-admin.json": "a7668dc1fb3f67d8a9533d7a8d65ba51f3f17aff6d8751bbd78e5eb89c7bab70",
+    "trust-admin.json": "7a8058be7e86e10337c0c66ef17159901f971376b75b63a12f566abe6c11ad44",
+    "permission-runner.json": "6930409b402ff32a641a389c8f6f932e4cf568dceef4bd49a100c3b002a12e71",
+    "trust-runner.json": "546fe23219c61b0a02f8156776eced1c6cc630f4e79f7cb22bd133f9846bf33a",
+    "permission-reviewer.json": "740095289b128e64e06948d3d23b9bebf38bce94c4a2ee4e035d50a425440053",
+    "trust-reviewer.json": "59cdab434d1c44656b0794cd10ad7728ac032c5bb7289c26bf061ab1cdb94dd9",
+    "resources.json": "37d4107f45d34abbeb35d9bc9412326d4c5bf10da1716013cdbced21ed1d500b",
+    "roles.json": "80c02d8100a28c7dc3451f52dc7fcf6dfbfad613b4812104fe1d40fef3effb65",
+    "synthetic-manifest.json": "3ad2b502e9b811a8d10410c5c0c1336736b7de049f1993cfabe396d15eb8a030",
+    "acceptance-limitations.json": "ac89f3799e1f4b8c2313e5bf0ff6cdf5d073ac48d096df6e48b5f74772700cb1"
+  },
+  "permissions": "941f1ff4caf2b89a81c4fd125de95f6c3b8aec22e5cea760926801dd0c87e318",
+  "syntheticManifest": "3ad2b502e9b811a8d10410c5c0c1336736b7de049f1993cfabe396d15eb8a030",
+  "cloudCalls": 0,
+  "executionAuthorized": false
+}

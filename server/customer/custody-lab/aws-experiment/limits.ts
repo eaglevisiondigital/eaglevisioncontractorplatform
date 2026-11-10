@@ -1,0 +1,192 @@
+import { DatabaseSync } from 'node:sqlite';
+import { existsSync, lstatSync, chmodSync, realpathSync } from 'node:fs';
+import { join } from 'node:path';
+import { LIMITS } from './package';
+
+/** Private disposable accounting metadata only. Not independent custody or an AWS spending cap. */
+export class ExperimentLimits {
+  private readonly db: DatabaseSync;
+  readonly path: string;
+  constructor(
+    directory: string,
+    spec: string,
+    private readonly start: number,
+    private readonly end: number,
+    private readonly now: () => number,
+    create = false,
+  ) {
+    const dir = lstatSync(directory);
+    if (
+      realpathSync(directory) !== directory ||
+      !dir.isDirectory() ||
+      dir.uid !== process.getuid?.() ||
+      (dir.mode & 0o777) !== 0o700 ||
+      !/^[a-f0-9]{64}$/.test(spec) ||
+      end <= start ||
+      end - start > LIMITS.windowMs
+    )
+      throw Error('Original private experiment journal required');
+    this.path = join(directory, 'aws-experiment-counters.sqlite');
+    if (create === existsSync(this.path))
+      throw Error('No journal recreation or overwrite');
+    if (!create) {
+      const f = lstatSync(this.path);
+      if (
+        !f.isFile() ||
+        f.isSymbolicLink() ||
+        f.nlink !== 1 ||
+        f.uid !== process.getuid?.() ||
+        (f.mode & 0o777) !== 0o600
+      )
+        throw Error('Private journal required');
+    }
+    this.db = new DatabaseSync(this.path);
+    chmodSync(this.path, 0o600);
+    this.db.exec(
+      'pragma journal_mode=WAL;pragma synchronous=FULL;pragma busy_timeout=5000',
+    );
+    if (create) {
+      this.db
+        .exec(`create table limits(spec text primary key,start integer,end integer,wall integer,blocked integer,cleanupblocked integer,dynamodb integer,s3 integer,dbytes integer,sbytes integer);
+        create table calls(id integer primary key,phase text,mutation integer,state text);
+        create table workers(id text primary key,active integer);`);
+      this.db
+        .prepare('insert into limits values(?,?,?,?,0,0,0,0,0,0)')
+        .run(spec, start, end, start);
+    }
+    const row = this.state();
+    if (row.spec !== spec || row.start !== start || row.end !== end) {
+      this.db.close();
+      throw Error('Journal binding mismatch');
+    }
+    if (
+      this.db
+        .prepare("select count(*) n from calls where state='pending'")
+        .get()?.n
+    )
+      this.db.exec(
+        "update limits set blocked=1,cleanupblocked=case when exists(select 1 from calls where state='pending' and phase='cleanup') then 1 else cleanupblocked end",
+      );
+  }
+  state() {
+    const row = this.db.prepare('select * from limits').all();
+    if (row.length !== 1) throw Error('Journal unavailable');
+    return row[0];
+  }
+  quarantine(phase = 'runner') {
+    this.db
+      .prepare(
+        "update limits set blocked=1,cleanupblocked=case when ?='cleanup' then 1 else cleanupblocked end",
+      )
+      .run(phase);
+  }
+  worker(id: string) {
+    if (!/^[a-z0-9-]{1,50}$/.test(id)) throw Error('Exact worker required');
+    this.db.exec('begin immediate');
+    try {
+      if (
+        Number(
+          this.db.prepare('select count(*) n from workers where active=1').get()
+            ?.n,
+        ) >= LIMITS.workers
+      )
+        throw Error('Worker limit');
+      const prior = this.db
+        .prepare('select active from workers where id=?')
+        .get(id);
+      if (prior?.active === 1) throw Error('Worker already active');
+      if (prior)
+        this.db.prepare('update workers set active=1 where id=?').run(id);
+      else this.db.prepare('insert into workers values(?,1)').run(id);
+      this.db.exec('commit');
+    } catch (e) {
+      this.db.exec('rollback');
+      throw e;
+    }
+    let released = false;
+    return () => {
+      if (released) throw Error('Worker lease already released');
+      released = true;
+      if (
+        this.db
+          .prepare('update workers set active=0 where id=? and active=1')
+          .run(id).changes !== 1
+      )
+        throw Error('Original worker lease required');
+    };
+  }
+  reserve(
+    service: 'dynamodb' | 's3',
+    bytes: number,
+    mutation: boolean,
+    phase: 'runner' | 'reviewer' | 'cleanup',
+  ) {
+    if (
+      !Number.isSafeInteger(bytes) ||
+      bytes < 0 ||
+      bytes > LIMITS.responseBytes
+    )
+      throw Error('Byte limit');
+    this.db.exec('begin immediate');
+    try {
+      const row = this.state(),
+        time = this.now(),
+        deadline =
+          phase === 'runner' ? this.end : this.start + 48 * 60 * 60 * 1000;
+      const budget = Number(row[service]),
+        total = Number(row[service === 's3' ? 'sbytes' : 'dbytes']);
+      if (
+        !Number.isSafeInteger(time) ||
+        time < Number(row.wall) ||
+        time < this.start ||
+        time >= deadline ||
+        (phase === 'cleanup' && time < this.end) ||
+        budget >= LIMITS[service] ||
+        total + bytes > LIMITS.bytes ||
+        (mutation && phase === 'runner' && row.blocked !== 0) ||
+        (mutation && phase === 'cleanup' && row.cleanupblocked !== 0)
+      ) {
+        this.db.exec('update limits set blocked=1');
+        this.db.exec('commit');
+        throw Error('Experiment limit or quarantine');
+      }
+      this.db
+        .prepare(
+          service === 's3'
+            ? 'update limits set wall=?,s3=s3+1,sbytes=sbytes+?'
+            : 'update limits set wall=?,dynamodb=dynamodb+1,dbytes=dbytes+?',
+        )
+        .run(time, bytes);
+      const result = this.db
+        .prepare(
+          "insert into calls(phase,mutation,state) values(?,?,'pending')",
+        )
+        .run(phase, mutation ? 1 : 0);
+      this.db.exec('commit');
+      return Number(result.lastInsertRowid);
+    } catch (e) {
+      if (this.db.isTransaction) this.db.exec('rollback');
+      throw e;
+    }
+  }
+  finish(id: number, known: boolean) {
+    this.db.exec('begin immediate');
+    try {
+      const changed = this.db
+        .prepare("update calls set state=? where id=? and state='pending'")
+        .run(known ? 'observed' : 'UNKNOWN', id);
+      if (changed.changes !== 1) throw Error('Original call required');
+      if (!known)
+        this.db.exec(
+          "update limits set blocked=1,cleanupblocked=case when exists(select 1 from calls where state='UNKNOWN' and phase='cleanup') then 1 else cleanupblocked end",
+        );
+      this.db.exec('commit');
+    } catch (e) {
+      this.db.exec('rollback');
+      throw e;
+    }
+  }
+  close() {
+    this.db.close();
+  }
+}

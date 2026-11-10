@@ -2685,3 +2685,7 @@ Reuse the existing conditional interpreter and canonical identities, with no sec
 business writer/engine. Missing custody cannot be recreated by reopen. Disposable
 process-loss evidence does not approve coherent storage rewind, AWS independence,
 Auth, global writer participation or any D1–D3/A01–A12 operational action.
+
+### Disposable AWS package is preparation, never operational authority
+
+Reuse original custody plans and fixture identities. Require LeadingKeys/EnclosingOperation and client-exact conditional plans; S3 is evidence only. Cleanup uses actual per-version expiry and explicit resource absence, never retention bypass or deletion acknowledgments as completion. Owner-controlled roles/Governance retention are AWS-mechanics fixtures, not independent custody. Live SDK transport, private bindings, IAM bootstrap, cost/window/cleanup responsibility and cloud execution need separate exact-scope approval. See server/customer/custody-lab/aws-experiment/README.md; D1–D3/A01–A12 and all original release/recovery gates remain unchanged.
