@@ -207,6 +207,11 @@ export class SdkExperimentTransport implements ExperimentTransport {
         mutation: mutationOperations.has(r.operation),
         service: r.service,
         bytes: Buffer.byteLength(canonical(r.input)) + r.maxResponseBytes + 512,
+        intentHash: digest({
+          service: r.service,
+          operation: r.operation,
+          input: r.input,
+        }),
       });
       dispatched = true;
       const deadline = Math.min(

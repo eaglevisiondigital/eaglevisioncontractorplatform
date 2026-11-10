@@ -1036,3 +1036,69 @@ it('independent OS processes share the two-wire cap and a lost process leaves du
     );
   }
 });
+it('fresh tickets cannot replay an acknowledged mutation even if AWS would idempotently acknowledge it', async () => {
+  const f = setup();
+  await f.send(f.req());
+  const peerLimits = new ExperimentLimits(
+    f.dir,
+    digest(f.p),
+    Date.parse(bindings.start),
+    Date.parse(bindings.end),
+    f.getTime,
+  );
+  journals.push(peerLimits);
+  const peer = new SdkExperimentTransport(f.p, peerLimits, f.options);
+  const original = f.req();
+  original.maxResponseBytes = 8192;
+  await expect(peer.invoke(f.ticket(original))).rejects.toThrow('UNKNOWN');
+  expect(f.calls).toHaveLength(1);
+  expect(f.limits.state().blocked).toBe(1);
+  const read = f.ticket(
+    f.req(
+      'TransactGetItems',
+      readPlan(f.p.manifest.cases[0].binding),
+      'reviewer',
+    ),
+  );
+  expect(await peer.invoke(read)).toEqual({});
+  expect(f.calls).toHaveLength(2);
+});
+it('conditional evidence upload cannot be repeated with a replacement ticket or response budget', async () => {
+  const f = setup(),
+    i = evidence(f);
+  f.setReply(async () =>
+    response('', 200, {
+      'x-amz-version-id': 'v',
+      'x-amz-checksum-sha256': i.ChecksumSHA256,
+      'x-amz-server-side-encryption': 'AES256',
+    }),
+  );
+  await f.send(f.req('PutObject', i, 'runner', 's3'));
+  const next = f.req('PutObject', i, 'runner', 's3');
+  next.maxResponseBytes = 8192;
+  await expect(f.transport.invoke(f.ticket(next))).rejects.toThrow('UNKNOWN');
+  expect(f.calls).toHaveLength(1);
+});
+it('an altered mutation-marker index is denied rather than repaired or treated as one-use custody', async () => {
+  const f = setup();
+  const { DatabaseSync } = await import('node:sqlite');
+  const db = new DatabaseSync(join(f.dir, 'aws-experiment-counters.sqlite'));
+  try {
+    db.exec(
+      'drop index no_mutation_replay;create unique index no_mutation_replay on calls(intent_hash) where mutation=1 and dispatched=0',
+    );
+  } finally {
+    db.close();
+  }
+  expect(
+    () =>
+      new ExperimentLimits(
+        f.dir,
+        digest(f.p),
+        Date.parse(bindings.start),
+        Date.parse(bindings.end),
+        f.getTime,
+      ),
+  ).toThrow('Exact permanent mutation marker required');
+  expect(f.calls).toHaveLength(0);
+});

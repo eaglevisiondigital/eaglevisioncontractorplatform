@@ -79,7 +79,10 @@ The payload/envelope charge is canonical input bytes + maximum response body +51
 it is not complete HTTP/TLS wire-byte accounting or a hard AWS spending cap.
 All orchestration entrypoints share two durable operation leases. SDK attempts
 also share two SQLite wire slots across instances/processes, bound to the original
-request hash, service, phase, mutation flag and exact charge. Tickets dispatch once.
+request hash, service, phase, mutation flag and exact charge. Tickets dispatch once. A permanent unique marker on the same calls table also
+forbids an identical mutation plan under any replacement ticket, response budget
+or reopened SDK instance. This survives acknowledged success as well as UNKNOWN;
+AWS idempotent acknowledgments can never authorize resuming the held protocol.
 Current ticket/quarantine/authority is rechecked immediately before wire and after
 response; a late journal acknowledgment is UNKNOWN. Lost pending calls quarantine
 on restart; unknown in-flight slots stay occupied until their actual transport
@@ -104,7 +107,8 @@ fictional keys and in-memory HTTP handlers, with HTTP/HTTPS/fetch tripwires.
 
 Pinned SDK v3 clients serialize/sign the original finite plans. TransactWrite uses
 a deterministic token from the exact plan hash, preventing SDK-generated replacement
-identity; the exact transaction body is rechecked before wire. Automatic attempts
+identity; permanent local mutation markers forbid using idempotent success as replay
+authority (AWS documents a ten-minute transaction-token window); the exact transaction body is rechecked before wire. Automatic attempts
 are1; a second wire attempt and every redirect are independently rejected. Endpoints
 are fixed us-east-1 HTTPS with certificate validation/TLS1.2 minimum, no S3 region
 redirects, ARN/accelerate/FIPS/dualstack or default credential fallback. No account,
@@ -136,3 +140,5 @@ exact source and bound-policy hashes, provisioning/role bootstrap, reviewed live
 transport, synthetic cases, maximum costs, monitoring/stop owner, actual retention
 and cleanup/teardown responsibility. No Supabase, operational writer, protected SQL,
 customer data or recovery action is covered by this proposed experiment.
+
+AWS token semantics reference: https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_TransactWriteItems.html . No provider behavior was exercised here.

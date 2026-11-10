@@ -1,8 +1,8 @@
 {
   "schema": "propel-offline-package-hashes-v1",
   "binding": "UNBOUND_TEMPLATE_NOT_ATTACHABLE",
-  "source": "a95085e6f20a347b45813bfd039b00e8f1a0c6dd2c55432b3f1fcb1db45be021",
-  "bundle": "6bb8ba311c19fe25548af302269a8a9cd0c2b63d7a52ed54a8e98f064bf384da",
+  "source": "2d2526eb8eeea81f053238f770faebb4b57baa4f6cada0c4976d1c6f883a328e",
+  "bundle": "a98d750bd47bdd4e54417defe661edcc2b5b00a352143bf82d9cbcc37c7b8305",
   "sourceFiles": [
     {
       "path": "server/customer/custody-lab/aws-experiment/package.ts",
@@ -10,7 +10,7 @@
     },
     {
       "path": "server/customer/custody-lab/aws-experiment/limits.ts",
-      "sha256": "a314c5cf40072fd0e12c2437d154bf7ee888c265438e18d09b3b1180d5574d1e"
+      "sha256": "10de6c003ca6115bb1571ee140ed8425d280668311d0c18c01ed3c6505a2803c"
     },
     {
       "path": "server/customer/custody-lab/aws-experiment/runner.ts",
@@ -30,7 +30,7 @@
     },
     {
       "path": "server/customer/custody-lab/aws-experiment/sdk-transport.ts",
-      "sha256": "daf14c770a2b8ffdd353a417fd18c040faad8de5a376d6e4c06e0d349ed0352b"
+      "sha256": "6f8fd1fcbc1364d695d2971c4a59b7453898312e47948268bd38ec2b01e18103"
     },
     {
       "path": "server/customer/custody-lab/aws-experiment/index.ts",
