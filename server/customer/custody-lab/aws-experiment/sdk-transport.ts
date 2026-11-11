@@ -50,7 +50,7 @@ export interface TemporaryCredentials {
   expiration: Date;
 }
 export interface TransportOptions {
-  credentials: Record<Request['role'], TemporaryCredentials>;
+  credentials: Partial<Record<Request['role'], TemporaryCredentials>>;
   now: () => number;
   authorized: (role: Request['role']) => boolean;
   /** Offline tests supply an in-memory Smithy HTTP handler. No SDK.send stubs. */
@@ -77,7 +77,7 @@ const commands = {
   DeleteBucket: DeleteBucketCommand,
 };
 const RPC_MS = 30_000;
-function credentials(v: TemporaryCredentials, now: number) {
+function credentials(v: TemporaryCredentials | undefined, now: number) {
   if (
     !v ||
     Object.keys(v).sort().join() !==
@@ -182,12 +182,26 @@ export class SdkExperimentTransport implements ExperimentTransport {
       limits.state().end !== Date.parse(pkg.bindings.end)
     )
       throw Error('Exact package/journal required');
+    if (
+      !options.credentials ||
+      Object.getPrototypeOf(options.credentials) !== Object.prototype
+    )
+      throw Error('Exact phase credential roles required');
+    const roles = Object.keys(options.credentials);
+    if (
+      !roles.length ||
+      roles.some((role) => !['runner', 'reviewer', 'admin'].includes(role))
+    )
+      throw Error('Exact phase credential roles required');
     this.creds = Object.fromEntries(
-      (['runner', 'reviewer', 'admin'] as const).map((role) => [
+      roles.map((role) => [
         role,
-        credentials(options.credentials[role], options.now()),
+        credentials(
+          options.credentials[role as Request['role']],
+          options.now(),
+        ),
       ]),
-    ) as TransportOptions['credentials'];
+    );
   }
   async invoke(
     original: Request,

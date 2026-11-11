@@ -1,0 +1,84 @@
+{
+  "schema": "propel-offline-package-hashes-v1",
+  "binding": "UNBOUND_TEMPLATE_NOT_ATTACHABLE",
+  "source": "e60aa83313f363c06366b361842c54baf8f711b67c3d4bc95209cb90e4a2b263",
+  "bundle": "44aac2b5210df44d55ae97b8a69ed03b6a8644748c558c636f26f7cd2aa90ac4",
+  "sourceFiles": [
+    {
+      "path": "server/customer/custody-lab/aws-experiment/package.ts",
+      "sha256": "c7d9226e52e8eb9400de273fa6fe5c4a6ec921728eeeb9fc590055307204c480"
+    },
+    {
+      "path": "server/customer/custody-lab/aws-experiment/limits.ts",
+      "sha256": "10de6c003ca6115bb1571ee140ed8425d280668311d0c18c01ed3c6505a2803c"
+    },
+    {
+      "path": "server/customer/custody-lab/aws-experiment/runner.ts",
+      "sha256": "67cd10faf39a2e4421c18dc94bffca9f918a5b08a8fb74686c460e012939da2b"
+    },
+    {
+      "path": "server/customer/custody-lab/aws-experiment/validation.ts",
+      "sha256": "238d7c5d9b72b0d076959d07b673cd5d5c1488762ca92dc955672bea51220772"
+    },
+    {
+      "path": "server/customer/custody-lab/aws-experiment/provider.ts",
+      "sha256": "2b1e9e7bab8bc67c554abb22f259f246db633838603bb92597d71aea4c1f0cd4"
+    },
+    {
+      "path": "server/customer/custody-lab/aws-experiment/sdk-guard.ts",
+      "sha256": "f3a9a43b52e4204ac70e87085cb02529d8ea03a20e86b9d3630888aeeffc5997"
+    },
+    {
+      "path": "server/customer/custody-lab/aws-experiment/sdk-transport.ts",
+      "sha256": "c57ddc3d7ecd88094b6ed8889df8bf19aeee4684b07319715401ed62151cbde8"
+    },
+    {
+      "path": "server/customer/custody-lab/aws-experiment/index.ts",
+      "sha256": "321fada7e66049c53e88f86e2e0a75685266cb5dba4d2b8f9717ca7e03465516"
+    },
+    {
+      "path": "server/customer/custody-lab/protocol.ts",
+      "sha256": "3c14fe6b98d67f2aaaccb3e0c93eb4a15232cdf952b6cc8178faef2117e7d864"
+    },
+    {
+      "path": "server/property/command-custody.ts",
+      "sha256": "c4af64655c50844ed4c5fd7aec44b07a8a47e5ff8b039404dc948435243ffd71"
+    },
+    {
+      "path": "src/lib/customer-requests.ts",
+      "sha256": "4da5caa8e48ef723a5068338768b62fd175519a8d91a5c187ea04873673ebe9a"
+    },
+    {
+      "path": "server/customer/request-gateway.ts",
+      "sha256": "1472d74e4d3bd94c8be8ef33785e88f2c567dfc632f6c73c5ad6d9c8782a549c"
+    },
+    {
+      "path": "scripts/prepare-aws-custody-package.mjs",
+      "sha256": "574fa182f2741319e9f7f6c0b79c5c46883a40c51831b4608dd91fa9ea5681a3"
+    },
+    {
+      "path": "package.json",
+      "sha256": "147c300e2aa125ee697f8b70a6a0e3aaeb1a2c027b5606979ac1e07744d362f9"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "038f80c378263f8c961930661d03801e55d882ad54c5929095234aea3306ce6d"
+    }
+  ],
+  "files": {
+    "permission-admin.json": "41dd8fb8f7444a994f29083819ff73c88fc144c92199d617efcaa2f941156af4",
+    "trust-admin.json": "7a8058be7e86e10337c0c66ef17159901f971376b75b63a12f566abe6c11ad44",
+    "permission-runner.json": "eb5c30acc1e15a0f2ca854229c9ebc4cf75e394d76caccb23fa3977d158690eb",
+    "trust-runner.json": "546fe23219c61b0a02f8156776eced1c6cc630f4e79f7cb22bd133f9846bf33a",
+    "permission-reviewer.json": "314fe6c7c790a273af8769ef04d8876663fa7d190e6e34e1f43ec3340f84b15c",
+    "trust-reviewer.json": "59cdab434d1c44656b0794cd10ad7728ac032c5bb7289c26bf061ab1cdb94dd9",
+    "resources.json": "adec2c4544abe1380d6a66a7c066694ff83b3bfda0c52d647286af41942f1947",
+    "roles.json": "80c02d8100a28c7dc3451f52dc7fcf6dfbfad613b4812104fe1d40fef3effb65",
+    "synthetic-manifest.json": "3ad2b502e9b811a8d10410c5c0c1336736b7de049f1993cfabe396d15eb8a030",
+    "acceptance-limitations.json": "ac89f3799e1f4b8c2313e5bf0ff6cdf5d073ac48d096df6e48b5f74772700cb1"
+  },
+  "permissions": "3d182f10a0c931852adec05f68970faedc93211a0eec58d6fedd3bc11be2f95f",
+  "syntheticManifest": "3ad2b502e9b811a8d10410c5c0c1336736b7de049f1993cfabe396d15eb8a030",
+  "cloudCalls": 0,
+  "executionAuthorized": false
+}
