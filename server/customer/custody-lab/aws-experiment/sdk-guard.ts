@@ -58,6 +58,7 @@ export function guardRequest(p: ExperimentPackage, r: Request, now: number) {
     resource: string,
     context: Record<string, string | boolean | string[] | undefined> = {
       'aws:CurrentTime': new Date(now).toISOString(),
+      'aws:RequestedRegion': p.region,
       'aws:SecureTransport': 'true',
       'aws:ResourceTag/Experiment': p.bindings.experiment,
     };

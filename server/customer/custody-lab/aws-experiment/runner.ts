@@ -298,8 +298,7 @@ export class SyntheticExperiment {
         JSON.parse(String(policy.Policy)),
         this.package.resources.bucketPolicy,
       ) ||
-      (location.LocationConstraint !== undefined &&
-        location.LocationConstraint !== null)
+      location.LocationConstraint !== this.package.region
     )
       throw Error('Independent bucket preflight mismatch');
     return {

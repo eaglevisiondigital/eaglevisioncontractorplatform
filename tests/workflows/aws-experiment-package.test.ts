@@ -90,12 +90,14 @@ function setup() {
     }
   >();
   const calls: Request[] = [];
+  let bucketRegion: string | null | undefined = p.region;
   let wrongPin = false,
     tableExists = true,
     bucketExists = true;
   const tableId = '11111111-1111-4111-8111-111111111111';
   function authorized(request: Request) {
     const v = {
+      'aws:RequestedRegion': 'us-east-2',
       'aws:CurrentTime': new Date(time).toISOString(),
       'aws:SecureTransport': true,
       'aws:ResourceTag/Experiment': E,
@@ -214,7 +216,7 @@ function setup() {
       if (request.operation === 'GetBucketPolicy')
         return { Policy: JSON.stringify(p.resources.bucketPolicy) };
       if (request.operation === 'GetBucketLocation')
-        return { LocationConstraint: null };
+        return { LocationConstraint: bucketRegion };
       const key = String(request.input.Key ?? ''),
         id = String(request.input.VersionId ?? '');
       if (request.operation === 'PutObject') {
@@ -303,6 +305,9 @@ function setup() {
       time = t;
     },
     now: () => time,
+    setBucketRegion: (v: string | null | undefined) => {
+      bucketRegion = v;
+    },
     setWrongPin: (v: boolean) => {
       wrongPin = v;
     },
@@ -355,6 +360,7 @@ it.each([
     action,
     resource: p.tableArn,
     values: {
+      'aws:RequestedRegion': 'us-east-2',
       'aws:CurrentTime': '2026-11-11T00:01:00Z',
       'aws:ResourceTag/Experiment': E,
       'dynamodb:LeadingKeys': key,
@@ -390,7 +396,10 @@ it.each([
     permitted([p.permissions.runner], {
       action,
       resource: action.startsWith('s3:') ? `${p.bucketArn}/${E}/x` : p.tableArn,
-      values: { 'aws:CurrentTime': '2026-11-11T00:01:00Z' },
+      values: {
+        'aws:RequestedRegion': 'us-east-2',
+        'aws:CurrentTime': '2026-11-11T00:01:00Z',
+      },
     }),
   ).toBe(false);
 });
@@ -401,6 +410,7 @@ it('trust rejects missing MFA, wrong principal/external ID, expired window and s
       resource: 'unused',
       principal: bindings.principals.runner,
       values: {
+        'aws:RequestedRegion': 'us-east-2',
         'aws:CurrentTime': '2026-11-11T00:01:00Z',
         'aws:MultiFactorAuthPresent': true,
         'sts:ExternalId': E,
@@ -416,7 +426,11 @@ it('trust rejects missing MFA, wrong principal/external ID, expired window and s
   for (const values of [
     { ...ctx.values, 'aws:MultiFactorAuthPresent': false },
     { ...ctx.values, 'sts:ExternalId': 'other' },
-    { ...ctx.values, 'aws:CurrentTime': bindings.end },
+    {
+      ...ctx.values,
+      'aws:RequestedRegion': 'us-east-2',
+      'aws:CurrentTime': bindings.end,
+    },
   ])
     expect(permitted([p.trust.runner], { ...ctx, values })).toBe(false);
   expect(() =>
@@ -566,6 +580,7 @@ it('S3 policy separately denies absent conditional header, missing encryption an
       action: 's3:PutObject',
       resource: `${p.bucketArn}/${E}/x`,
       values: {
+        'aws:RequestedRegion': 'us-east-2',
         'aws:CurrentTime': '2026-11-11T00:01:00Z',
         'aws:SecureTransport': true,
         'aws:ResourceTag/Experiment': E,
@@ -860,3 +875,57 @@ it('offline compiler emits reproducible unbound templates/hashes and never overw
     ),
   ).toThrow();
 });
+it('Ohio-only resources and every identity permission require the approved region', () => {
+  const p = bindPackage(bindings);
+  expect(p.region).toBe('us-east-2');
+  expect(p.tableArn).toContain(':dynamodb:us-east-2:');
+  expect(p.resources.bucket.CreateBucketConfiguration).toEqual({
+    LocationConstraint: 'us-east-2',
+  });
+  for (const role of ['admin', 'runner', 'reviewer'] as const)
+    for (const statement of p.permissions[role].Statement)
+      expect(statement.Condition?.StringEquals?.['aws:RequestedRegion']).toBe(
+        'us-east-2',
+      );
+  expect(p.manifest.cases).toHaveLength(24);
+  expect(LIMITS).toMatchObject({
+    workers: 2,
+    windowMs: 7200000,
+    dynamodb: 10000,
+    s3: 2000,
+  });
+});
+it('Ohio bucket creation requires BOTH the regional endpoint context and exact LocationConstraint', () => {
+  const p = bindPackage(bindings),
+    c = {
+      action: 's3:CreateBucket',
+      resource: p.bucketArn,
+      values: {
+        'aws:CurrentTime': bindings.start,
+        'aws:RequestedRegion': 'us-east-2',
+        's3:LocationConstraint': 'us-east-2',
+      },
+    };
+  expect(permitted([p.permissions.admin], c)).toBe(true);
+  for (const values of [
+    { ...c.values, 'aws:RequestedRegion': 'us-east-1' },
+    { ...c.values, 'aws:RequestedRegion': undefined },
+    { ...c.values, 's3:LocationConstraint': 'us-east-1' },
+    { ...c.values, 's3:LocationConstraint': undefined },
+  ])
+    expect(permitted([p.permissions.admin], { ...c, values })).toBe(false);
+});
+it.each([null, undefined, 'us-east-1', 'us-west-2'])(
+  'bucket preflight rejects legacy or foreign location %s',
+  async (region) => {
+    const f = setup();
+    f.setBucketRegion(region);
+    await expect(f.runner.preflight()).rejects.toThrow('UNKNOWN');
+    expect(
+      f.calls.some(
+        (c) =>
+          c.operation === 'PutObject' || c.operation === 'TransactWriteItems',
+      ),
+    ).toBe(false);
+  },
+);

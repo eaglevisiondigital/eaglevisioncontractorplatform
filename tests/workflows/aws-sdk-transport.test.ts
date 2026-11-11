@@ -208,8 +208,9 @@ it('real SDK serializes and signs the exact original conditional transaction wit
     digest(holdPlan(f.p.manifest.cases[0].binding)).slice(0, 36),
   );
   expect(r.headers.authorization).toMatch(/^AWS4-HMAC-SHA256 /);
-  expect(r.hostname).toBe('dynamodb.us-east-1.amazonaws.com');
+  expect(r.hostname).toBe('dynamodb.us-east-2.amazonaws.com');
   expect(r.protocol).toBe('https:');
+  expect(r.headers.authorization).toContain('/us-east-2/dynamodb/aws4_request');
   expect(https.request).not.toHaveBeenCalled();
   expect(http.request).not.toHaveBeenCalled();
   expect(fetch).not.toHaveBeenCalled();
@@ -243,7 +244,10 @@ it('supports S3 conditional upload with exact checksum, version and encryption',
   const v = await f.send(f.req('PutObject', i, 'runner', 's3'));
   expect(v.VersionId).toBe('version-1');
   expect(f.calls[0].headers['if-none-match']).toBe('*');
-  expect(f.calls[0].hostname).toBe('s3.us-east-1.amazonaws.com');
+  expect(f.calls[0].hostname).toBe('s3.us-east-2.amazonaws.com');
+  expect(f.calls[0].headers.authorization).toContain(
+    '/us-east-2/s3/aws4_request',
+  );
   expect(f.calls[0].path).toContain('/' + f.p.bucket + '/');
 });
 it('normalizes downloaded Date and validates streaming SHA256/version before returning text', async () => {
@@ -745,7 +749,7 @@ it.each([
   ['GetBucketPolicy', '{"Version":"2012-10-17","Statement":[]}', 'Policy'],
   [
     'GetBucketLocation',
-    '<LocationConstraint xmlns="http://s3.amazonaws.com/doc/2006-03-01/"></LocationConstraint>',
+    '<LocationConstraint xmlns="http://s3.amazonaws.com/doc/2006-03-01/">us-east-2</LocationConstraint>',
     'LocationConstraint',
   ],
   [
@@ -774,8 +778,9 @@ it.each([
           }
         : { Bucket: i.Bucket, ExpectedBucketOwner: i.ExpectedBucketOwner };
   const v = await f.send(f.req(op, input, 'reviewer', 's3'));
-  if (op === 'GetBucketLocation') expect(v.LocationConstraint).toBeUndefined();
-  else expect(Object.hasOwn(v, key)).toBe(true);
+  expect(Object.hasOwn(v, key)).toBe(true);
+  if (op === 'GetBucketLocation')
+    expect(v.LocationConstraint).toBe('us-east-2');
   expect(f.calls).toHaveLength(1);
 });
 it.each(['DeleteObject', 'DeleteBucket', 'DeleteTable'])(
@@ -901,7 +906,7 @@ it('independent OS processes share the two-wire cap and a lost process leaves du
   expect(JSON.parse(readFileSync(join(out, 'HASHES.json'), 'utf8'))).toEqual(
     JSON.parse(
       readFileSync(
-        'server/customer/custody-lab/aws-experiment/SDK_TEMPLATE_HASHES.json',
+        'server/customer/custody-lab/aws-experiment/OHIO_TEMPLATE_HASHES.json',
         'utf8',
       ),
     ),
@@ -1100,5 +1105,19 @@ it('an altered mutation-marker index is denied rather than repaired or treated a
         f.getTime,
       ),
   ).toThrow('Exact permanent mutation marker required');
+  expect(f.calls).toHaveLength(0);
+});
+
+it('an old-region or tampered region package cannot construct an SDK transport', () => {
+  const f = setup();
+  for (const region of ['us-east-1', 'us-west-2'])
+    expect(
+      () =>
+        new SdkExperimentTransport(
+          { ...f.p, region } as never,
+          f.limits,
+          f.options,
+        ),
+    ).toThrow('Exact package/journal required');
   expect(f.calls).toHaveLength(0);
 });
