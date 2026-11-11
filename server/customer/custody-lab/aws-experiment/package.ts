@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import { canonical } from '../../../property/command-custody';
 import { custodyKeys, type CustodyBinding } from '../protocol';
 
+export const EXPERIMENT_REGION = 'us-east-2' as const;
 export const BASELINE = '6d80235110f87a2e24b7f988bdf0d238b36c8f58';
 export const EVIDENCE_LABELS = Object.freeze({
   'acceptance-class': 'aws-mechanics-only',
@@ -165,7 +166,7 @@ export function bindPackage(input: Bindings) {
     );
   const manifest = syntheticManifest(b.experiment),
     table = 'propel_disposable_custody',
-    region = 'us-east-1';
+    region = EXPERIMENT_REGION;
   const bucket = `propel-custody-${b.account}-${b.experiment.replaceAll('-', '')}`;
   const tableArn = `arn:aws:dynamodb:${region}:${b.account}:table/${table}`,
     bucketArn = `arn:aws:s3:::${bucket}`,
@@ -207,7 +208,19 @@ export function bindPackage(input: Bindings) {
     Action: string[],
     Resource: string[],
     Condition: Statement['Condition'] = window,
-  ): Statement => ({ Sid, Effect: 'Allow', Action, Resource, Condition });
+  ): Statement => ({
+    Sid,
+    Effect: 'Allow',
+    Action,
+    Resource,
+    Condition: {
+      ...Condition,
+      StringEquals: {
+        ...Condition?.StringEquals,
+        'aws:RequestedRegion': region,
+      },
+    },
+  });
   const data = (op: string, leading: string[]) => ({
     ...window,
     StringEquals: { 'aws:ResourceTag/Experiment': b.experiment },
@@ -261,10 +274,13 @@ export function bindPackage(input: Bindings) {
         },
       },
     ),
+    allow('CreateExactOhioBucket', ['s3:CreateBucket'], [bucketArn], {
+      ...window,
+      StringEquals: { 's3:LocationConstraint': region },
+    }),
     allow(
       'CreateConfigureExactBucket',
       [
-        's3:CreateBucket',
         's3:PutBucketTagging',
         's3:PutBucketVersioning',
         's3:PutBucketObjectLockConfiguration',
@@ -415,7 +431,11 @@ export function bindPackage(input: Bindings) {
       Tags: [{ Key: 'Experiment', Value: b.experiment }],
       DeletionProtectionEnabled: false,
     },
-    bucket: { Bucket: bucket, ObjectLockEnabledForBucket: true },
+    bucket: {
+      Bucket: bucket,
+      ObjectLockEnabledForBucket: true,
+      CreateBucketConfiguration: { LocationConstraint: region },
+    },
     expectedOwner: b.account,
     ownership: {
       OwnershipControls: {

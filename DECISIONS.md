@@ -2693,3 +2693,7 @@ Reuse original custody plans and fixture identities. Require LeadingKeys/Enclosi
 ### SDK mechanics require explicit wire admission, never implicit credential or retry authority
 
 Keep the synthetic SDK isolated and unwired. Match every request ticket to exact plan/hash/rolephase/mutation/service/charge; recheck current quarantine at the final wire and response boundaries. All workflows share the original journal; an unresolved wire slot cannot be recycled on timeout or restart. Use deterministic original-plan idempotency tokens, never automatic replacement. Phase deadlines preserve original2h admission and distinct retention-driven cleanup. Existing PR350 counters are not automatically migrated/recreated. Offline wire tests are not AWS IAM/service acceptance, independent custody or execution authority. No cloud wiring until separately approved account/roles/window/source+bundle hashes, costs, current authority and cleanup responsibility.
+
+### Bind the synthetic AWS experiment exclusively to Ohio
+
+Use fixed us-east-2 with explicit S3 creation location and exact bucket-region readback; no fallback or cross-region signing. Require RequestedRegion on identity policies while preserving original transactional key/condition custody. Owner preflight does not authorize resources or prove Free-plan Object Lock eligibility. Existing regional templates remain historical; privately bind and separately approve the new Ohio manifest and costs before any operational call. No original protocol, runtime budgets, custody independence or release gate is changed.

@@ -24,7 +24,8 @@ No account identifier has been obtained for this package.
 `HASHES.json` binds a selected 15-file source inventory, the complete executable
 bundle, policies and synthetic manifest. Verify both inventory and bundle hashes.
 `TEMPLATE_HASHES.json` preserves PR350 historical hashes unchanged.
-`SDK_TEMPLATE_HASHES.json` records the current unbound SDK package. Recompile and compare
+`SDK_TEMPLATE_HASHES.json` preserves PR351 hashes unchanged.
+`OHIO_TEMPLATE_HASHES.json` records this Ohio-only unbound package. Recompile and compare
 all hashes before review. Bound policies require a new private hash approval.
 
 The administrator configures only the exact new table/bucket; it cannot create
@@ -110,7 +111,7 @@ a deterministic token from the exact plan hash, preventing SDK-generated replace
 identity; permanent local mutation markers forbid using idempotent success as replay
 authority (AWS documents a ten-minute transaction-token window); the exact transaction body is rechecked before wire. Automatic attempts
 are1; a second wire attempt and every redirect are independently rejected. Endpoints
-are fixed us-east-1 HTTPS with certificate validation/TLS1.2 minimum, no S3 region
+are fixed us-east-2 HTTPS with certificate validation/TLS1.2 minimum, no S3 region
 redirects, ARN/accelerate/FIPS/dualstack or default credential fallback. No account,
 role, provisioning, upload-copy or retention-bypass commands exist in the shim.
 S3 normalization checks raw/decoded bounds, SHA256, exact version, encryption,
@@ -142,3 +143,46 @@ and cleanup/teardown responsibility. No Supabase, operational writer, protected 
 customer data or recovery action is covered by this proposed experiment.
 
 AWS token semantics reference: https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_TransactWriteItems.html . No provider behavior was exercised here.
+
+## Ohio-only revision — November 11, 2026
+
+Owner preflight reports the existing Free-plan project restricted to Ohio and zero
+DynamoDB tables. This is retained Owner evidence, not an account/API inspection.
+`EXPERIMENT_REGION` fixes us-east-2 for DynamoDB ARNs, SDK endpoints and SigV4.
+Every identity Allow also requires `aws:RequestedRegion=us-east-2`; existing leading
+keys, enclosing-operation, expiry, original conditions and one-use markers stay.
+S3 bucket creation separately requires `s3:LocationConstraint=us-east-2` and an
+explicit CreateBucketConfiguration. That condition is not applied to unrelated
+bucket-configuration operations. Preflight requires exact Ohio location; empty/null
+Virginia and foreign locations deny. This does not enable cross-region operation.
+
+[DynamoDB endpoints](https://docs.aws.amazon.com/general/latest/gr/ddb.html) and
+[S3 endpoints/SigV4](https://docs.aws.amazon.com/general/latest/gr/s3.html) include
+Ohio. Regional availability does not prove this account's Free-plan eligibility,
+IAM authority or service acceptance. [Transaction IAM](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/transaction-apis-iam.html)
+still uses underlying item permissions plus LeadingKeys/EnclosingOperation.
+[S3 creation](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html)
+requires the Ohio location and Object-Lock/versioning permissions. Object Lock is
+[available across AWS regions](https://aws.amazon.com/about-aws/whats-new/2018/11/s3-object-lock/)
+and [requires versioning](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html).
+Keep Governance1day, per-version retention, conditional/checksum uploads and no
+bypass. Free-plan compatibility with these exact settings remains unverified;
+no plan upgrade, paid activation or feature relaxation is authorized.
+
+Public Ohio price-list documents checked without credentials or resource APIs:
+[DynamoDB](https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonDynamoDB/current/us-east-2/index.json)
+(published2026-11-05T16:40:16Z), [S3](https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonS3/current/us-east-2/index.json)
+(published2026-11-09T15:43:10Z). Their public host is not an experiment endpoint.
+USD paid-tier rates before credits/tax: RCU-hour0.00013, WCU-hour0.00065;
+DynamoDB Standard storage0.25/GB-month; S3 Standard first50TiB0.023/GB-month,
+Tier1requests0.005/1000 and Tier2requests0.0004/1000. No account credit/free allowance
+is presumed. Existing30RCU/10WCU costs0.0104/hour:0.0208 for2h,0.2496 if retained24h.
+Charging all2000S3 calls atTier1 adds0.01. Conservative1GB in each store through its
+24h/48h cleanup bound adds about0.0099 using30-day months: about0.27 total before
+transfer, tax and separately approved bootstrap activity. Actual payloads are capped
+far below1GB. This is a bounded-use estimate, NOT a maximum bill or execution permit;
+missed cleanup continues capacity/storage charges. Reconfirm pricing, Free-plan
+constraints, private account/principals/window, exact Ohio package hashes, cost
+ceiling and cleanup owner before separate provisioning/credential/test approval.
+Two-hour active window,24bindings,two workers,cumulative request/payload limits,
+independent custody gaps,D1–D3/A01–A12 and every original STOP remain unchanged.

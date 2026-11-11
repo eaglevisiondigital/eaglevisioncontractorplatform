@@ -237,8 +237,8 @@ export class SdkExperimentTransport implements ExperimentTransport {
       };
       const host =
         r.service === 'dynamodb'
-          ? 'dynamodb.us-east-1.amazonaws.com'
-          : 's3.us-east-1.amazonaws.com';
+          ? `dynamodb.${this.pkg.region}.amazonaws.com`
+          : `s3.${this.pkg.region}.amazonaws.com`;
       let sent = false;
       const gate: WireHandler = {
         handle: async (req) => {
@@ -317,7 +317,7 @@ export class SdkExperimentTransport implements ExperimentTransport {
         destroy: () => wire?.destroy?.(),
       };
       const cfg = {
-        region: 'us-east-1',
+        region: this.pkg.region,
         endpoint: 'https://' + host,
         credentials: {
           ...credential,
