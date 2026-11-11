@@ -2697,3 +2697,13 @@ Keep the synthetic SDK isolated and unwired. Match every request ticket to exact
 ### Bind the synthetic AWS experiment exclusively to Ohio
 
 Use fixed us-east-2 with explicit S3 creation location and exact bucket-region readback; no fallback or cross-region signing. Require RequestedRegion on identity policies while preserving original transactional key/condition custody. Owner preflight does not authorize resources or prove Free-plan Object Lock eligibility. Existing regional templates remain historical; privately bind and separately approve the new Ohio manifest and costs before any operational call. No original protocol, runtime budgets, custody independence or release gate is changed.
+
+### Require a separate identity bootstrap decision for Builder ID projects
+
+Do not substitute a Builder ID/project session for the exact IAM-user principals.
+A temporary-use IAM key remains a non-expiring key and needs a bounded explicit
+exception; preparation authority is insufficient. Keep current MFA/ExternalId trusts.
+Allow only explicit current-phase SDK credential maps; absent roles fail closed,
+without renewed runner authority for cleanup. STS request duration is not claimed as
+an IAM-enforced maximum; deleting source keys does not revoke existing sessions.
+Owner-controlled role separation does not prove independent custody or acceptance.

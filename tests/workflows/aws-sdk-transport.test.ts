@@ -906,7 +906,7 @@ it('independent OS processes share the two-wire cap and a lost process leaves du
   expect(JSON.parse(readFileSync(join(out, 'HASHES.json'), 'utf8'))).toEqual(
     JSON.parse(
       readFileSync(
-        'server/customer/custody-lab/aws-experiment/OHIO_TEMPLATE_HASHES.json',
+        'server/customer/custody-lab/aws-experiment/IDENTITY_TEMPLATE_HASHES.json',
         'utf8',
       ),
     ),
@@ -1120,4 +1120,50 @@ it('an old-region or tampered region package cannot construct an SDK transport',
         ),
     ).toThrow('Exact package/journal required');
   expect(f.calls).toHaveLength(0);
+});
+
+it('cleanup accepts only fresh admin/reviewer credentials without renewing the expired runner role', async () => {
+  const f = setup();
+  f.setTime(Date.parse(bindings.start) + 25 * 3600000);
+  const sdk = new SdkExperimentTransport(f.p, f.limits, {
+    ...f.options,
+    credentials: {
+      admin: { ...f.creds.admin, expiration: new Date(f.getTime() + 900000) },
+      reviewer: {
+        ...f.creds.reviewer,
+        expiration: new Date(f.getTime() + 900000),
+      },
+    },
+  });
+  f.setReply(async () => response('', 204));
+  const r = f.ticket(
+    f.req(
+      'DeleteBucket',
+      { Bucket: f.p.bucket, ExpectedBucketOwner: bindings.account },
+      'admin',
+      's3',
+    ),
+  );
+  expect(await sdk.invoke(r)).toEqual({});
+  expect(f.calls).toHaveLength(1);
+});
+it('missing phase credentials deny before wire and never substitute another role', async () => {
+  const f = setup();
+  const sdk = new SdkExperimentTransport(f.p, f.limits, {
+    ...f.options,
+    credentials: { reviewer: f.creds.reviewer },
+  });
+  await expect(sdk.invoke(f.ticket(f.req()))).rejects.toThrow('UNKNOWN');
+  expect(f.calls).toHaveLength(0);
+});
+it('empty or unknown phase credential roles are rejected at construction', () => {
+  const f = setup();
+  for (const credentials of [{}, { administrator: f.creds.admin }])
+    expect(
+      () =>
+        new SdkExperimentTransport(f.p, f.limits, {
+          ...f.options,
+          credentials: credentials as never,
+        }),
+    ).toThrow('Exact phase credential roles required');
 });

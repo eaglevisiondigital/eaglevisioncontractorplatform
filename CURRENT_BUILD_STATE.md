@@ -3231,3 +3231,23 @@ SDK pre-closeout correction: deterministic DynamoDB idempotency can acknowledge 
 ### Ohio-only disposable experiment adaptation after unchanged351
 
 Owner reports Free-plan Ohio restriction and zero DynamoDB tables; no account probe performed. Fixed us-east-2 now drives ARNs, endpoints and signing. Identity policies require RequestedRegion; S3 CreateBucket alone requires Ohio LocationConstraint and bucket preflight requires Ohio rather than Virginia empty location. Protocol, permanent no-replay markers, limits, original hashes and approvals unchanged; new OHIO_TEMPLATE_HASHES is separate. Affected117/117 tests PASS, independently reproduced; source/bundle regeneration, TypeScript, build, lint, formatting and protected checks PASS. Targeted security review CLEAR offline/unwired only. Public documentation and Ohio pricing reviewed only; actual account feature/Free-plan eligibility and hosted acceptance remain unverified. No credentials, provisioning, IAM, service API, protected SQL, deployment or recovery. D1–D3/A01–A12 and Release1.0 NOT READY / NOT AUTHORIZED remain.
+
+### Ohio identity handoff compatibility after unchanged352
+
+Owner confirms Projects/AWS Settings/Builder ID. Current exact IAM-user trusts have
+no verified keyless bootstrap in that model; programmatic-key exception or separately
+reviewed alternative identity is still required. The conditional
+[identity runbook](server/customer/custody-lab/aws-experiment/IDENTITY_RUNBOOK.md)
+does not authorize identity creation, credential issuance or cloud calls. The SDK
+now accepts explicit phase-only credential maps, avoiding impossible renewal of an
+expired runner during later cleanup; every supplied role remains validated and a
+missing requested role denies before wire. Original trusts, policies, dependencies,
+phase deadlines and no-replay journals are unchanged. New template hashes preserve
+historical manifests. No AWS, IAM, credentials, Supabase, SQL, deployment or recovery
+action. D1–D3 unchanged, A01–A12 NOT RUN; Release1.0 NOT READY / NOT AUTHORIZED.
+
+Identity handoff affected evidence: SDK71 and package49 tests PASS (120 total);
+TypeScript, build, scoped lint/format, features and Cycle6 protected128 hashes PASS.
+These are offline fake-wire checks, not AWS or genuine identity acceptance.
+Targeted independent security review CLEAR for offline preparation; independently
+reproduced120/120. Actual identity provisioning and Free-plan eligibility unverified.
