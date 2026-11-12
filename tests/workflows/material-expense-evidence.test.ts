@@ -211,3 +211,47 @@ it('a lost submission acknowledgment is resolved by exact readback without autom
   );
   expect(call).toHaveBeenCalledTimes(1);
 });
+
+it.each(['foreign', 'ambiguous', 'labor'] as const)(
+  'blank reported measurements never admit a %s material source line',
+  async (mode) => {
+    const f = await fixture();
+    Object.assign(f.input, { quantity: '', unit: '', unitCost: '' });
+    if (mode === 'foreign') f.input.line = crypto.randomUUID();
+    if (mode === 'ambiguous') f.job.baseline.lines.push({ ...f.line });
+    if (mode === 'labor')
+      f.input.line = f.job.baseline.lines.find(
+        (line) => line.kind === 'labor',
+      )!.id;
+    const writer = vi.spyOn(f.repo, 'submitExpense');
+    expect(f.payload).toThrow(/original material budget line/);
+    expect(writer).not.toHaveBeenCalled();
+    expect(
+      (await f.repo.jobs(f.company.id)).find((job) => job.id === f.job.id)!
+        .expenses,
+    ).toEqual(f.job.expenses);
+  },
+);
+
+it.each([0, 1, 2])(
+  'brand %i saves and reopens an exact original material line with UNKNOWN measurements',
+  async (index) => {
+    const f = await fixture(index);
+    Object.assign(f.input, { quantity: '', unit: '', unitCost: '' });
+    const id = await f.repo.submitExpense(f.company.id, f.job.id, f.payload());
+    const reopened = (await f.repo.jobs(f.company.id)).find(
+      (job) => job.id === f.job.id,
+    )!;
+    expect(
+      reopened.expenses.find((expense) => expense.id === id),
+    ).toMatchObject({
+      job_id: f.job.id,
+      estimate_line_id: f.line.id,
+      quantity_milli: null,
+      unit: null,
+      unit_cost_minor: null,
+    });
+    expect(reopened.baseline).toEqual(f.job.baseline);
+    expect(reopened.events).toEqual(f.job.events);
+  },
+);
