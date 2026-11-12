@@ -1,3 +1,4 @@
+import { jobChangeApprovalPreflight } from './job-change-approval';
 import {
   acquireForecastSave,
   exactForecastSource,
@@ -817,6 +818,14 @@ function JobDetail({
                   disabled={!confirmed[c.id] || !authorizations[c.id]?.trim()}
                   onClick={() =>
                     void task.run(async () => {
+                      if (repo.sample)
+                        jobChangeApprovalPreflight(
+                          company.id,
+                          job,
+                          repo.syntheticJob(company.id, job.id),
+                          c.id,
+                          authorizations[c.id],
+                        );
                       await repo.approveChange(
                         company.id,
                         job.id,
