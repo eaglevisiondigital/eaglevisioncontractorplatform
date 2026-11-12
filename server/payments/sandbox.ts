@@ -59,6 +59,42 @@ export function minorDecimal(n: number) {
   const value = BigInt(n);
   return `${value / 100n}.${String(value % 100n).padStart(2, '0')}`;
 }
+/** Existing capture preflight, shared before any potentially one-use token resolution. */
+export function validateSandboxIntent(
+  m: SandboxMerchant,
+  intent: SandboxIntent,
+) {
+  if (
+    Object.keys(intent).some(
+      (k) =>
+        ![
+          'organizationId',
+          'merchantConfigId',
+          'invoiceId',
+          'authorizationId',
+          'idempotencyKey',
+          'amountMinor',
+          'currency',
+          'expiresAt',
+        ].includes(k),
+    )
+  )
+    throw new Error('Unexpected payment fields');
+  const decimal = minorDecimal(intent.amountMinor);
+  if (
+    intent.organizationId !== m.organizationId ||
+    intent.merchantConfigId !== m.merchantConfigId ||
+    intent.currency !== 'USD' ||
+    !uuid.test(intent.invoiceId) ||
+    !uuid.test(intent.authorizationId) ||
+    !uuid.test(intent.idempotencyKey) ||
+    !Number.isFinite(Date.parse(intent.expiresAt)) ||
+    Date.parse(intent.expiresAt) <= Date.now() ||
+    Date.parse(m.approvedUntil) <= Date.now()
+  )
+    throw new Error('Sandbox authorization mismatch or expiry');
+  return decimal;
+}
 async function boundedJson(r: Response) {
   if (!r.ok || !r.body) throw new Error('Gateway outcome unknown');
   const reader = r.body.getReader(),
@@ -125,36 +161,9 @@ export class SandboxGateway {
     // validated, hashed and ultimately sent, regardless of later caller changes.
     const intent = Object.freeze({ ...input });
     const token = Object.freeze({ ...inputToken });
-    if (
-      Object.keys(intent).some(
-        (k) =>
-          ![
-            'organizationId',
-            'merchantConfigId',
-            'invoiceId',
-            'authorizationId',
-            'idempotencyKey',
-            'amountMinor',
-            'currency',
-            'expiresAt',
-          ].includes(k),
-      )
-    )
-      throw new Error('Unexpected payment fields');
     const m = this.merchant,
-      decimal = minorDecimal(intent.amountMinor);
-    if (
-      intent.organizationId !== m.organizationId ||
-      intent.merchantConfigId !== m.merchantConfigId ||
-      intent.currency !== 'USD' ||
-      token.provider !== m.provider ||
-      !uuid.test(intent.invoiceId) ||
-      !uuid.test(intent.authorizationId) ||
-      !uuid.test(intent.idempotencyKey) ||
-      !Number.isFinite(Date.parse(intent.expiresAt)) ||
-      Date.parse(intent.expiresAt) <= Date.now() ||
-      Date.parse(m.approvedUntil) <= Date.now()
-    )
+      decimal = validateSandboxIntent(m, intent);
+    if (token.provider !== m.provider)
       throw new Error('Sandbox authorization mismatch or expiry');
     if (
       !token.value ||

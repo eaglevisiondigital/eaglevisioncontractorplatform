@@ -1,3 +1,4 @@
+import { validateSandboxIntent } from './sandbox';
 import type {
   GatewayToken,
   SandboxIntent,
@@ -51,6 +52,7 @@ export async function captureReferencedToken(
     !(Date.parse(i.expiresAt) > Date.now())
   )
     throw new Error('Invalid sandbox token scope');
+  validateSandboxIntent(m, i);
   const scope = Object.freeze({
     id: referenceId,
     organizationId: m.organizationId,
