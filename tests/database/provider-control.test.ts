@@ -86,16 +86,20 @@ const result = {
   amountMinor: 10000,
   transactionId: 'synthetic_capture',
 };
-async function domain() {
+let domainFixtureTime = 0;
+async function domain(overrides: { id?: string; checkedAt?: string } = {}) {
+  // Explicit strictly ordered observation evidence; native calls can share one millisecond.
+  domainFixtureTime = Math.max(Date.now() - 1000, domainFixtureTime + 1);
   const d = {
     id: crypto.randomUUID(),
     version: 1,
     profileDigest: digest,
     accountId: 'synthetic-account',
     domainId: senderDomainId,
-    checkedAt: new Date().toISOString(),
+    checkedAt: new Date(domainFixtureTime).toISOString(),
     expiresAt: new Date(Date.now() + 600000).toISOString(),
     digest,
+    ...overrides,
   };
   await email().command('domain', d);
   return d;
@@ -135,6 +139,7 @@ beforeAll(async () => {
   );
 });
 beforeEach(async () => {
+  domainFixtureTime = 0;
   await logout();
   await db.exec(
     'truncate private.provider_workloads,private.sandbox_gateway_authorizations,private.sandbox_gateway_attempts,private.sandbox_gateway_settlements,private.sandbox_gateway_inbox,private.provider_email_sender_bindings,private.provider_email_domains cascade',
@@ -803,4 +808,45 @@ it('provider audit binds the database capability and cannot forge a human throug
     ),
   ).toBe(true);
   expect(JSON.stringify(events)).not.toContain(fakeHuman);
+});
+
+it.each([true, false])(
+  'characterizes equal-time domain ordering by UUID, first wins=%s',
+  async (firstWins) => {
+    await login();
+    const checkedAt = new Date().toISOString();
+    const low = '10000000-0000-4000-8000-000000000001';
+    const high = 'f0000000-0000-4000-8000-000000000001';
+    const first = await domain({ id: firstWins ? high : low, checkedAt });
+    const second = await domain({ id: firstWins ? low : high, checkedAt });
+    if (firstWins) expect((await outbox(first)).r.status).toBe('recorded');
+    else await expect(outbox(first)).rejects.toThrow(/Current domain/);
+    await logout();
+    const rows = (
+      await db.query(
+        'select id,checked_at from private.provider_email_domains order by checked_at desc,id desc',
+      )
+    ).rows;
+    expect(rows).toHaveLength(2);
+    expect(rows[0].id).toBe(high);
+    expect(new Date(String(rows[0].checked_at)).getTime()).toBe(
+      new Date(String(rows[1].checked_at)).getTime(),
+    );
+    expect(second.id).not.toBe(first.id);
+  },
+);
+
+it('rejects a late-arriving older observation even when its UUID sorts higher', async () => {
+  await login();
+  const time = Date.now() - 1000;
+  const current = await domain({
+    id: '10000000-0000-4000-8000-000000000001',
+    checkedAt: new Date(time).toISOString(),
+  });
+  const stale = await domain({
+    id: 'f0000000-0000-4000-8000-000000000001',
+    checkedAt: new Date(time - 1000).toISOString(),
+  });
+  await expect(outbox(stale)).rejects.toThrow(/Current domain/);
+  expect((await outbox(current)).r.status).toBe('recorded');
 });

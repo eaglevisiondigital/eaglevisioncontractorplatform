@@ -140,8 +140,14 @@ export function invoiceBalance(
   events: readonly PaymentEvent[],
 ) {
   let balance = BigInt(invoice.total_minor);
+  const eventIds = new Set<string>(),
+    commandKeys = new Set<string>();
   for (const event of events.filter((e) => e.invoice_id === invoice.id)) {
     if (
+      eventIds.has(event.id) ||
+      commandKeys.has(event.idempotency_key) ||
+      event.provider !== 'synthetic' ||
+      !['synthetic_capture', 'synthetic_refund'].includes(event.kind) ||
       event.organization_id !== invoice.organization_id ||
       event.customer_id !== invoice.customer_id ||
       event.currency !== invoice.currency ||
@@ -149,6 +155,8 @@ export function invoiceBalance(
       event.amount_minor <= 0
     )
       throw new Error('Invalid invoice event');
+    eventIds.add(event.id);
+    commandKeys.add(event.idempotency_key);
     balance +=
       BigInt(event.amount_minor) *
       (event.kind === 'synthetic_capture' ? -1n : 1n);

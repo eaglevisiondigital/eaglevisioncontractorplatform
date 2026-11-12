@@ -2716,3 +2716,13 @@ Prioritize one tenant's USD/card invoice journey; defer optional integrations an
 advanced modules. Preserve original authority/recovery sequencing and require exact
 source-bound sandbox then separate production acceptance. Invalid zero transaction
 identity stays UNKNOWN, consistent with original stored/refund/reconciliation rules.
+
+### Treat domain observation order as explicit evidence, not clock-speed inference
+
+Preserve protected SQL's existing checked_at DESC,id DESC selection. Synthetic
+freshness tests must explicitly supply strictly newer observations; equal-time rows
+need separate characterization. UUID arbitration does not prove insertion chronology.
+An operational requirement for tied-evidence rejection or arrival-order succession
+requires separate protected SQL review/approval. Invoice balance readers must reject
+duplicate source events/command keys and unrecognized kind/provider before arithmetic;
+this is defensive source validation, not financial transaction authority.
