@@ -2734,3 +2734,13 @@ request syntax/amount/currency must not consume a token before downstream reject
 This does not authorize token resolution or replace real invoice/customer authority,
 current revocation, durable vault consumption or UNKNOWN reconciliation. Genuine
 commercial invoice writer/schema activation requires separate exact approval.
+
+### Keep invoice source coherence separate from authority and persistence acceptance
+
+Validate the existing internal RPC response against its selected organization,
+per-table200row bound, row uniqueness and invoice snapshot identities/amount/currency.
+A nonnull email profile is staff-only and must name the same organization. These are
+defensive response contracts, not genuine Auth or a full payload-schema guarantee.
+Do not promote internal test invoices, edit immutable issued rows or infer a
+commercial CAS/receipt writer from these reads. The next commercial source/SQL/grant
+scope requires separate exact approval; no installation diff is executed here.
