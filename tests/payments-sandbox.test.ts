@@ -1,3 +1,4 @@
+import { fictionalLaunchMerchants } from './fixtures/first-launch-merchants';
 import { expect, it, vi } from 'vitest';
 import {
   SandboxGateway,
@@ -424,4 +425,77 @@ it('Authorize.Net redirect responses remain UNKNOWN without a second request', a
   expect(s.transport).toHaveBeenCalledOnce();
   expect(s.transport.mock.calls[0][1]?.redirect).toBe('error');
   expect(s.store.finish.mock.calls[0][2].status).toBe('unknown');
+});
+
+it('quarantines an NMI approval with zero transaction identity without replay', async () => {
+  const s = setup('nmi');
+  s.transport.mockResolvedValue(
+    Response.json({
+      response: '1',
+      id: '0',
+      amount: '123.45',
+      currency: 'USD',
+    }),
+  );
+  const gateway = new SandboxGateway(
+    s.merchant,
+    s.credentials,
+    s.store,
+    s.transport,
+  );
+  const result = await gateway.capture(s.intent, s.token);
+  expect(result).toMatchObject({ status: 'unknown', transactionId: null });
+  expect(s.store.finish).toHaveBeenCalledWith(s.merchant, s.intent, result);
+  s.store.reserve.mockResolvedValue({ status: 'unknown' });
+  await expect(gateway.capture(s.intent, s.token)).rejects.toThrow(
+    /reconciliation/,
+  );
+  expect(s.transport).toHaveBeenCalledTimes(1);
+});
+
+it('isolates two fictional capture scopes and rejects wrong-provider stored outcomes', async () => {
+  const fixtures = fictionalLaunchMerchants(
+    new Date(Date.now() + 60000).toISOString(),
+  );
+  const a = setup('nmi'),
+    b = setup('nmi');
+  const cases = [a, b].map((s, index) => {
+    const f = fixtures[index];
+    expect(f).toMatchObject({ fictional: true, executionAuthorized: false });
+    const merchant = f.merchant;
+    const intent = {
+      ...s.intent,
+      organizationId: merchant.organizationId,
+      merchantConfigId: merchant.merchantConfigId,
+    };
+    return {
+      ...s,
+      merchant,
+      intent,
+      gateway: new SandboxGateway(
+        merchant,
+        s.credentials,
+        s.store,
+        s.transport,
+      ),
+    };
+  });
+  for (const [index, own] of cases.entries()) {
+    const foreign = cases[1 - index];
+    await expect(
+      own.gateway.capture(foreign.intent, foreign.token),
+    ).rejects.toThrow();
+    expect(own.store.reserve).not.toHaveBeenCalled();
+    expect(own.transport).not.toHaveBeenCalled();
+    const result = await own.gateway.capture(own.intent, own.token);
+    expect(result.status).toBe('succeeded');
+    own.store.reserve.mockResolvedValue({
+      status: 'existing',
+      result: { ...result, provider: 'authorize_net' },
+    });
+    await expect(own.gateway.capture(own.intent, own.token)).rejects.toThrow(
+      /scope mismatch/,
+    );
+    expect(own.transport).toHaveBeenCalledTimes(1);
+  }
 });

@@ -2707,3 +2707,12 @@ Allow only explicit current-phase SDK credential maps; absent roles fail closed,
 without renewed runner authority for cleanup. STS request duration is not claimed as
 an IAM-enforced maximum; deleting source keys does not revoke existing sessions.
 Owner-controlled role separation does not prove independent custody or acceptance.
+
+### Keep first-contractor launch acceptance distinct from merchant approval
+
+Owner-reported merchant underwriting/boarding direction does not approve operational
+invoice authority, tokenization, gateway execution, receipts, settlement or production.
+Prioritize one tenant's USD/card invoice journey; defer optional integrations and
+advanced modules. Preserve original authority/recovery sequencing and require exact
+source-bound sandbox then separate production acceptance. Invalid zero transaction
+identity stays UNKNOWN, consistent with original stored/refund/reconciliation rules.
