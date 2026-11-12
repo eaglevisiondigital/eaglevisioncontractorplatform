@@ -1,8 +1,19 @@
 import { readFileSync, readdirSync } from 'node:fs';
-import { beforeAll, beforeEach, afterEach, afterAll, expect, it } from 'vitest';
+import {
+  beforeAll,
+  beforeEach,
+  afterEach,
+  afterAll,
+  expect,
+  it,
+  vi,
+} from 'vitest';
 import { createTestDatabase } from './engine';
 import { blankEstimate } from '../../src/domain/estimating/calculation';
 import type { EstimateBundle } from '../../src/domain/estimating/types';
+const { workspaceRpc } = vi.hoisted(() => ({ workspaceRpc: vi.fn() }));
+vi.mock('../../src/lib/supabase', () => ({ supabase: { rpc: workspaceRpc } }));
+import { ReleaseRepository } from '../../src/lib/release';
 const db = createTestDatabase();
 const companies = Array.from({ length: 3 }, (_, i) => ({
   org: crypto.randomUUID(),
@@ -729,3 +740,85 @@ it('audits sender configuration and trusted verification changes without copying
   ).toBe(true);
   expect(JSON.stringify(events)).not.toContain('private@example.test');
 });
+
+it.each(['save_invoice_draft', 'update_invoice', 'revise_invoice'])(
+  'has no authorized commercial %s writer and preserves the original invoice',
+  async (action) => {
+    const i = await invoice();
+    const read = async () =>
+      (
+        await db.query(
+          'select to_jsonb(i) value from public.release_invoices i where id=$1',
+          [i.id],
+        )
+      ).rows[0].value;
+    const before = await read();
+    await deniedCommand(action, {
+      invoice_id: i.id,
+      revision: 1,
+      total_minor: 1,
+    });
+    expect(await read()).toEqual(before);
+  },
+);
+it('an existing internal invoice cannot confer access after its test grant is removed', async () => {
+  const i = await invoice();
+  await db.exec('reset role');
+  await db.query(
+    'delete from private.release_test_users where organization_id=$1',
+    [c.org],
+  );
+  await asUser(c.owner);
+  expect(
+    (
+      await db.query('select * from public.release_invoices where id=$1', [
+        i.id,
+      ])
+    ).rows,
+  ).toEqual([]);
+  await denied('select public.release_workspace($1)', [c.org]);
+  await deniedCommand('create_invoice', { contract_id: i.contract.id });
+});
+
+it.skipIf(!db.fork)(
+  'reopens a committed internal invoice through original SQL and the checked reader on another connection',
+  async () => {
+    const i = await invoice();
+    await db.exec('commit');
+    const peer = await db.fork!();
+    try {
+      await peer.query("select set_config('request.jwt.claims',$1,false)", [
+        JSON.stringify({ sub: c.owner, aal: 'aal2' }),
+      ]);
+      await peer.exec('set role authenticated');
+      workspaceRpc.mockImplementation(
+        async (name: string, args: { p_org: string }) => {
+          expect(name).toBe('release_workspace');
+          return {
+            error: null,
+            data: (
+              await peer.query('select public.release_workspace($1) value', [
+                args.p_org,
+              ])
+            ).rows[0].value,
+          };
+        },
+      );
+      const repo = new ReleaseRepository(false);
+      const first = await repo.read(c.org, 'staff');
+      const reopened = await repo.read(c.org, 'staff');
+      expect(first.internal_test).toBe(true);
+      expect(first.release_invoices.find((row) => row.id === i.id)).toEqual(
+        reopened.release_invoices.find((row) => row.id === i.id),
+      );
+      expect(
+        reopened.release_invoices.find((row) => row.id === i.id)?.contract_id,
+      ).toBe(i.contract.id);
+      expect(workspaceRpc).toHaveBeenCalledTimes(2);
+    } finally {
+      workspaceRpc.mockReset();
+      await peer.close();
+      await db.exec('begin');
+    }
+  },
+);

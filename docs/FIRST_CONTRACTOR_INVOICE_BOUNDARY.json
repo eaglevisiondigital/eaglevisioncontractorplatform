@@ -1,0 +1,71 @@
+{
+  "schema": "first-contractor-invoice-authority-evidence-v1",
+  "baseline": "7b3a5e9eb39b08c99e353a9dfde2b60bffc54b62",
+  "classification": "SOURCE_EVIDENCE_NOT_AUTHORIZATION",
+  "genuineCommercialWriter": null,
+  "commercialOperationalAcceptance": "NOT_RUN",
+  "sources": [
+    {
+      "path": "src/lib/release.ts",
+      "sha256": "99990a5714ec6b3ebedb166ef16d5256dcf5ad896b4650d30ceb8bcd472b4e58"
+    },
+    {
+      "path": "src/domain/release/types.ts",
+      "sha256": "5bde6c0b1c394e89a9694014dc993c35a429f6b3d02771bcae5d02161e51abe7"
+    },
+    {
+      "path": "src/domain/release/preview.ts",
+      "sha256": "d34ff65bb624df6e6f6c372860cb63fc88fad47ab648242ab3576fb69b72b0ea"
+    },
+    {
+      "path": "src/components/release/ReleaseApp.tsx",
+      "sha256": "1abf080027cfc5ced28c172deec884be2d286756fe95bd2f1c5983bb4ea3eac2"
+    },
+    {
+      "path": "supabase/migrations/20261015221730_phase_3a_release_controls.sql",
+      "sha256": "6dbfc3ed7a0b9905f5d824cb73698c441e8c7ee8aa5d5b0fb8f4883baacb4890"
+    },
+    {
+      "path": "supabase/migrations/20261016024502_release_1_internal_workflow.sql",
+      "sha256": "48522fd3b829a5bc9e482ce33c41ee7b8272edf68dbc7e6c7a699fa178b8714b"
+    },
+    {
+      "path": "supabase/migrations/20261016185108_provider_sandbox_persistence.sql",
+      "sha256": "5dd07b079a591b433fa7ab432fd841026de91a1cd3f1d3a722bef500aa9fd32d"
+    },
+    {
+      "path": "server/payments/control-store.ts",
+      "sha256": "9ff71ee0a1c0ada974ed209e1b1ef9227578eb9a5b9d78c2c43baccb92fbbbf6"
+    },
+    {
+      "path": "server/payments/token-reference.ts",
+      "sha256": "5c369dd88ecdc4158ad5ffd3118e3a7b8cde3277324be17dd3c22eeb7041acf1"
+    }
+  ],
+  "currentCommands": {
+    "public.release_command": "INTERNAL_TEST_ONLY",
+    "public.release_workspace": "INTERNAL_TEST_ONLY",
+    "private.sandbox_gateway_control": "SANDBOX_ONLY"
+  },
+  "currentGrants": {
+    "release_invoices": "authenticated SELECT subject to current internal-test RLS; no client INSERT/UPDATE/DELETE",
+    "test_grants": "private operator-controlled; not ordinary business-owner authority",
+    "execution_modules": "contracts/invoices/payments constrained disabled"
+  },
+  "installationDiff": {
+    "protectedSqlChanges": [],
+    "grantsToInstall": [],
+    "operationalFactoryOrRoute": null,
+    "status": "BLOCKED_NO_APPROVED_COMMERCIAL_WRITER",
+    "requiresSeparateExactApproval": [
+      "D1 installed writer and accountable-role inventory",
+      "D2 independent one-use transaction/immutable receipt/ACK custody",
+      "D3 independent matched recovery and rollback protection",
+      "original review-only broker acceptance prerequisites",
+      "source-reviewed tenant/customer/invoice/version-bound commercial draft create/update/read with CAS/idempotency/immutable receipt",
+      "exact forward migration and dedicated least-privilege grants with negative tests",
+      "separate hosted acceptance; invoice issuance/NMI execution not implied"
+    ]
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

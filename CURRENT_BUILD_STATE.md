@@ -3321,3 +3321,26 @@ custody, D3 independent matched recovery and A01–A12 remain operational gates.
 Exact launch successor checks: native78PASS/0skips, responsive internal-release6PASS,
 build/type/scopedlint/format/features/protected128PASS. Accepted source review CLEAR
 from independent security and QA agents. No hosted acceptance inherited from parents.
+
+### Issue357 invoice authority-boundary increment after unchanged362
+
+No genuine commercial invoice writer/grant contract exists in the admitted source:
+ReleaseRepository/release_command remain internal-test and invoice/payment modules
+remain constrained disabled. docs/FIRST_CONTRACTOR_INVOICE_BOUNDARY.json records9
+exact source hashes, current grants/commands and empty installation diff. No new
+writer, schema, invoice ledger, commercial receipt or permission is manufactured.
+
+Existing RPC reader now withholds mixed-tenant/duplicate/malformed collections,
+invoice customer/currency/total snapshot mismatches, more than200rows and foreign/
+customer-visible/malformed staff email profiles. Parent7FAIL plus adjacent4FAIL
+reproduced; final reader14+originalpreview13=27PASS. Independent reader14PASS and
+scopedQA CLEAR. Native original78+5newboundary cases83PASS, including committed
+internal invoice re-read on another connection through actual SQL and this reader.
+This is actual disposablePG internal persistence, not commercial/hosted acceptance.
+Original tests/SQL/pins remain unchanged; three unsupported edit commands and grant
+withdrawal are explicit denials. Initial newtestfixture property typo was corrected
+before final native83PASS and strict TypeScript success; no production source effect.
+Final invoice boundary checks:27affectedappPASS, native83PASS/0skips, responsive
+browser6PASS, strict types/build/scopedlint/format/features/protected128PASS. Native
+reopen uses a test-only RPC bridge into actual public.release_workspace on another
+committed localPG connection; it is not a real Supabase/Auth/hosted network session.
