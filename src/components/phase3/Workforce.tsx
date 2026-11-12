@@ -1,12 +1,13 @@
 import { useState, useCallback, useRef, useLayoutEffect } from 'react';
 import { requireCurrentPayrollSource } from './payroll-current-source';
+import { payrollPreparationInputs } from './payroll-preparation-inputs';
 import type { Phase3Repository, WorkforceData } from '../../lib/phase3';
 import type {
   Worker,
   TimeEntry,
   PayrollRow,
 } from '../../domain/workforce/payroll';
-import { payrollCsv, employerBoundary } from '../../domain/workforce/payroll';
+import { payrollCsv } from '../../domain/workforce/payroll';
 import { formatMinor } from '../../domain/estimating/calculation';
 import { useResource, useTask } from '../forms-state';
 import { FieldsForm, ResourceStatus } from '../forms';
@@ -940,10 +941,45 @@ function PayrollPreparation({
     deductions: Record<string, number>;
   }>();
   const [confirm, setConfirm] = useState(false);
+  const [inputError, setInputError] = useState('');
   const zone = data.policy?.timezone ?? 'UTC';
   const summary = snapshot?.rows;
   const sum = (key: keyof PayrollRow) =>
     summary?.reduce((s, r) => s + Number(r[key]), 0) ?? 0;
+  function prepare(lock: boolean) {
+    let period: { start: string; end: string };
+    try {
+      period = payrollPreparationInputs(data, start, end, deductions);
+      setInputError('');
+    } catch (error) {
+      setInputError(
+        error instanceof Error
+          ? error.message
+          : 'Invalid payroll preparation inputs',
+      );
+      return;
+    }
+    void authorized(
+      async (current) => {
+        const result = await repo.payroll(
+          org,
+          period.start,
+          period.end,
+          deductions,
+          lock,
+        );
+        if (lock) {
+          if (current()) refresh();
+        } else {
+          await checkSource(current);
+          if (current()) setSnapshot(result);
+        }
+      },
+      lock
+        ? 'Period locked; labor costs posted to jobs once'
+        : 'Preparation preview calculated',
+    );
+  }
   async function download(rows: PayrollRow[], values: Record<string, number>) {
     await authorized(async (current) => {
       if (!current()) return;
@@ -1028,24 +1064,10 @@ function PayrollPreparation({
           </Field>
         ))}
       </details>
-      <button
-        disabled={task.busy}
-        onClick={() =>
-          void authorized(async (current) => {
-            const result = await repo.payroll(
-              org,
-              employerBoundary(start, zone),
-              employerBoundary(end, zone),
-              deductions,
-              false,
-            );
-            await checkSource(current);
-            if (current()) setSnapshot(result);
-          }, 'Preparation preview calculated')
-        }
-      >
+      <button disabled={task.busy} onClick={() => prepare(false)}>
         Prepare earnings preview
       </button>
+      {inputError && <p role="status">{inputError}</p>}
       {summary && (
         <>
           <div className="job-metrics">
@@ -1128,18 +1150,7 @@ function PayrollPreparation({
           </label>
           <button
             disabled={!confirm || task.busy}
-            onClick={() =>
-              void authorized(async (current) => {
-                await repo.payroll(
-                  org,
-                  employerBoundary(start, zone),
-                  employerBoundary(end, zone),
-                  deductions,
-                  true,
-                );
-                if (current()) refresh();
-              }, 'Period locked; labor costs posted to jobs once')
-            }
+            onClick={() => prepare(true)}
           >
             Lock payroll preparation period
           </button>

@@ -200,6 +200,50 @@ test('job dashboard reviews expenses, protects billing and updates projections',
     ),
   ).toBeVisible();
 });
+test('payroll preparation rejects invalid dates and deductions before exposing lock controls', async ({
+  page,
+}) => {
+  await page.goto('/preview');
+  await page.getByRole('button', { name: 'Workforce', exact: true }).click();
+  await page
+    .getByRole('button', { name: 'Payroll preparation', exact: true })
+    .click();
+  await page
+    .getByLabel('Pay period end exclusive · employer local date')
+    .fill('2026-10-01');
+  await page.getByRole('button', { name: 'Prepare earnings preview' }).click();
+  await expect(
+    page
+      .getByRole('status')
+      .filter({ hasText: 'Pay period end must follow its start' }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole('button', { name: 'Lock payroll preparation period' }),
+  ).toHaveCount(0);
+  await page
+    .getByLabel('Pay period end exclusive · employer local date')
+    .fill('2026-10-11');
+  await page.getByText('Manual deduction inputs', { exact: true }).click();
+  await page.getByLabel('Manual deduction minor units ·').first().fill('-1');
+  await page.getByRole('button', { name: 'Prepare earnings preview' }).click();
+  await expect(
+    page.getByRole('status').filter({ hasText: 'Invalid deduction' }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole('button', { name: 'Lock payroll preparation period' }),
+  ).toHaveCount(0);
+  const accessibility = await new AxeBuilder({ page }).analyze();
+  expect(
+    accessibility.violations.filter((issue) =>
+      ['serious', 'critical'].includes(issue.impact ?? ''),
+    ),
+  ).toEqual([]);
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBe(true);
+});
 test('workforce clock, timesheets and locked payroll preparation integrate job labor once', async ({
   page,
 }, info) => {
