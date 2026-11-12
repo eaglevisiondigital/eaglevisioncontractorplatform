@@ -98,7 +98,7 @@ export class RestrictedSandboxStore
       result.currency !== 'USD'
     )
       throw new Error('Outcome scope denied');
-    await this.control.command('finish', {
+    const acknowledgment = await this.control.command('finish', {
       provider: m.provider,
       key: i.idempotencyKey,
       authorizationId: i.authorizationId,
@@ -106,6 +106,11 @@ export class RestrictedSandboxStore
       kind,
       result,
     });
+    if (
+      acknowledgment.status !== 'recorded' &&
+      acknowledgment.status !== 'duplicate'
+    )
+      throw new Error('Payment completion acknowledgment unavailable');
   }
   finish(m: SandboxMerchant, i: SandboxIntent, r: SandboxResult) {
     return this.finishKind(m, i, r, 'capture');

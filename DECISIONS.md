@@ -1,3 +1,19 @@
+## November 12 · admit only the exact reviewed payment acknowledgment patch
+
+Owner-authorized patch `09ff6790130e52436522c6b5e6b210f82bc785d19bbecc2d768a51af3eb60eae`
+is admitted only on this isolated development successor. Restricted finish requires
+recorded/duplicate; capture/refund completion failures are sanitized UNKNOWN with
+no retry. All original proposal and historical protected hashes remain unchanged.
+The [finite admission inventory](docs/PAYMENT_OUTCOME_ACK_ADMISSION.json) records
+exact parent/successor hashes and the unchanged historical-source assertions.
+Current-source verification uses `node scripts/check-payment-ack-admission.mjs`;
+the original proposal verifier retains its original parent-only scope and failures.
+Independent affected206, native133, responsive6 and admission16 cases PASS.
+No SQL or grants changed; no credential retrieval, provider execution or operational
+activation occurred.
+D1-D3, A01-A12, customer intake SQL HELD, independent custody/recovery and all release
+gates remain. Release 1.0 NOT READY / NOT AUTHORIZED.
+
 # Native continuation · current-authority privacy correction
 
 Separate native author `14734003b472c2633bf8e87526c6a4260696d914` strengthens the

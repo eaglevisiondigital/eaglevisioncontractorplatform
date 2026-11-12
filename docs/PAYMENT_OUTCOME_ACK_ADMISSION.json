@@ -1,0 +1,83 @@
+{
+  "schema": "payment-outcome-ack-source-admission-v1",
+  "classification": "OWNER_AUTHORIZED_DEVELOPMENT_SOURCE_ONLY",
+  "parentCommit": "5aa7927932323be0f67a908923a9c7ffa92d5d2e",
+  "historicalSourceCommit": "4a54d390bd37024a10469b9f6cdcab6d38724a49",
+  "authorizedPatchSha256": "09ff6790130e52436522c6b5e6b210f82bc785d19bbecc2d768a51af3eb60eae",
+  "scope": "Only exact recorded/duplicate finish acknowledgments complete capture/refund; sanitize uncertain completion errors as UNKNOWN; no mutation retry.",
+  "sources": [
+    {
+      "path": "server/payments/control-store.ts",
+      "sha256": "9ff71ee0a1c0ada974ed209e1b1ef9227578eb9a5b9d78c2c43baccb92fbbbf6",
+      "proposedSha256": "2dc82d0ff2548051de6df1461ddf783355e602da914a099bf14f0eba29f3ac7c"
+    },
+    {
+      "path": "server/payments/sandbox.ts",
+      "sha256": "0d56a7f3622e0d59ddf3ebdadded06d022cb381e1cce8434cd7f723aa228de22",
+      "proposedSha256": "89dc2b03f273ee00c73e8342fcf9e8db6d78d5f898bde96ccff94e69fc0276cc"
+    },
+    {
+      "path": "server/payments/refunds.ts",
+      "sha256": "f04015515e16ed480880971e0086a0367b131d6b6cce76eadf3e64387479905b",
+      "proposedSha256": "78f74ab633f3ba192d447ffb1b77f8d027c38df49ea0fd6f06b9fb65df2490a5"
+    },
+    {
+      "path": "server/payments/postgres-store.ts",
+      "sha256": "9b2b9148db4ca5389aa8e9ef4bd5d5c6ccd700a2ed85a7b5dc0f58f8d94d0eef"
+    },
+    {
+      "path": "server/providers/control.ts",
+      "sha256": "5f979931b85b67cb7b05b9b6ebf529c68538e52674f6eeeb6b7811acc5822293"
+    },
+    {
+      "path": "server/providers/safety.ts",
+      "sha256": "a8865035638e0cd19d5c1ea4b43dc9ed04012dd34cce9cc5084d7f35e9414c4d"
+    },
+    {
+      "path": "tests/fixtures/first-launch-merchants.ts",
+      "sha256": "a105d44b4ba33437d46c0abe3203dc49247fe7874397ef933d0b81a960d2c34c"
+    },
+    {
+      "path": "server/payments/reconciliation.ts",
+      "sha256": "94f339aa679c0b7fa0880fef035b921608b0717614c3705620f06eed07f9c0b0"
+    }
+  ],
+  "historicalEvidence": "Original proposal manifest, patch, test, verifier, README and historical protected-source records remain byte-exact; original parent failure evidence is not rewritten.",
+  "admissionChecker": "scripts/check-payment-ack-admission.mjs",
+  "validation": {
+    "independentAffectedUnitSecurityIntegration": {
+      "files": 11,
+      "passed": 206
+    },
+    "nativePostgreSQLIntegration": {
+      "files": 5,
+      "passed": 133,
+      "skipped": 0
+    },
+    "responsiveInternalRelease": {
+      "passed": 6,
+      "viewports": ["desktop", "tablet", "mobile"]
+    },
+    "finiteSourceAdmission": {
+      "passed": 16,
+      "rejects": "unknown current edits, substituted history and changed assertions/pins"
+    },
+    "historicalNegativeFirst": {
+      "parentPassed": 4,
+      "parentFailed": 14,
+      "proposedPassed": 18
+    },
+    "independentSourceReview": "CLEAR_EXACT_PATCH",
+    "hostedCI": "PENDING_NEW_HEAD",
+    "providerAcceptance": "NOT_RUN"
+  },
+  "protectedSqlChanges": [],
+  "grantsOrOperationalAdapterChanges": [],
+  "limits": [
+    "No NMI provider or hosted calls; tests use synthetic fixtures.",
+    "Native PostgreSQL is disposable and Auth claims are fixtures, not genuine hosted Auth.",
+    "D1-D3, A01-A12, independent custody/recovery and customer intake SQL HELD remain unchanged.",
+    "No invoice issuance, tenant onboarding, real merchant binding, production activation or financial execution."
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}
