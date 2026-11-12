@@ -306,3 +306,57 @@ test('draft saves, internal issue, revision history and job baselines remain sep
     'Synthetic garage project',
   );
 });
+
+test('invalid change approval preserves the proposed scope and usable job after reopening', async ({
+  page,
+}) => {
+  await page.goto('/preview');
+  await page.getByRole('button', { name: 'Jobs', exact: true }).click();
+  await page
+    .getByText('Add internal scope or propose a billable addition', {
+      exact: true,
+    })
+    .click();
+  await page
+    .getByLabel('Change description')
+    .fill('Synthetic bounded-cost proposal');
+  await page.getByLabel('Change status').selectOption('proposed');
+  await page
+    .getByLabel(
+      'Proposed selling amount (USD minor units; internal must be zero)',
+    )
+    .fill('2000');
+  await page
+    .getByLabel('Expected change cost (USD minor units)')
+    .fill('9000000000000');
+  await page.getByRole('button', { name: 'Save change proposal' }).click();
+  const proposal = page
+    .locator('.expense-record')
+    .filter({ hasText: 'Synthetic bounded-cost proposal' });
+  await proposal
+    .getByLabel('Authorization reference for Synthetic bounded-cost proposal')
+    .fill('Synthetic local review only');
+  await proposal.getByRole('checkbox').check();
+  await proposal
+    .getByRole('button', { name: 'Approve authorized change order' })
+    .click();
+  await expect(page.getByRole('status')).toContainText(
+    'Job financial amount exceeds limits',
+  );
+  await expect(proposal).toContainText('proposed · proposed revenue');
+  await expect(proposal).not.toContainText(
+    'Authorization reference: Synthetic local review only',
+  );
+  await page.getByRole('button', { name: 'Estimates', exact: true }).click();
+  await page.getByRole('button', { name: 'Jobs', exact: true }).click();
+  await expect(
+    page.getByText('Projected contribution · incomplete costs'),
+  ).toBeVisible();
+  const reopened = page
+    .locator('.expense-record')
+    .filter({ hasText: 'Synthetic bounded-cost proposal' });
+  await expect(reopened).toContainText('proposed · proposed revenue');
+  await expect(
+    reopened.getByRole('button', { name: 'Approve authorized change order' }),
+  ).toBeDisabled();
+});
