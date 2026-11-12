@@ -1,3 +1,21 @@
+## November 12 · commercial invoice draft source proposal only
+
+Use the newly authorized private draft owner rather than extending internal-test
+ReleaseRepository financial authority. One canonical draft binds an exact existing
+organization/customer/property/issued version; amount, currency and tax provenance
+remain source-derived. Explicit title/memo revisions append atomically with their
+original command receipts and CAS head. UNKNOWN permits exact original read only.
+The [source/schema/grant inventory](docs/COMMERCIAL_INVOICE_DRAFT_CANDIDATE.json)
+retains the protected parent hashes and states the trusted installer/definer/claim
+connection boundary. New private tables, roles, policies and grants are proposals
+only, outside migration installation. No operational Auth, D2/D3 independence,
+NMI acceptance, invoice issuance, customer delivery or activation is established.
+Separate exact approval is required for any installation or protected-source change.
+Local validation:27 native draft cases,5 independent native security cases and
+28 client cases PASS. Build/typecheck and source-integrity checks PASS. Independent
+review is limited to the unapplied trusted-SQL proposal; hosted CI remains separate.
+Release 1.0 remains NOT READY / NOT AUTHORIZED.
+
 # Native continuation · current-authority privacy correction
 
 Separate native author `14734003b472c2633bf8e87526c6a4260696d914` strengthens the

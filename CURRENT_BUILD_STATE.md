@@ -1,3 +1,20 @@
+## Limited commercial invoice draft development · November 12, 2026
+
+The owner authorized isolated commercial draft source and forward schema/grant
+proposals. The [candidate inventory](docs/COMMERCIAL_INVOICE_DRAFT_CANDIDATE.json)
+records new private draft create/save/reopen operations, source-bound USD totals,
+CAS revisions and immutable command receipts. Title/memo edits do not change the
+original issued financial scope. No existing internal-test invoice is promoted.
+All historical/protected source bytes remain unchanged. The new SQL is outside
+migrations and UNAPPLIED; there is no application route, connection factory or
+customer publication. Disposable PostgreSQL proof is not hosted durability,
+genuine Auth, independent custody, invoice issuance or payment acceptance.
+D1–D3, A01–A12, customer intake SQL HELD, recovery and all release gates remain.
+Local validation:27 native draft cases,5 independent native security cases and
+28 client cases PASS. Build/typecheck and source-integrity checks PASS. Independent
+review is limited to the unapplied trusted-SQL proposal; hosted CI remains separate.
+Release 1.0 remains NOT READY / NOT AUTHORIZED.
+
 # Native continuation · current-authority privacy correction
 
 ## November6 · coordinated V1 review continuation
