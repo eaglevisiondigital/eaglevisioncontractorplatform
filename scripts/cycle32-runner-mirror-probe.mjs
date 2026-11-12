@@ -17,6 +17,20 @@ const knownTargets = new Map([
   ['http://security.ubuntu.com/ubuntu/', 'security-http'],
   ['https://security.ubuntu.com/ubuntu/', 'security-https'],
 ]);
+// Diagnostic disclosure only, never an APT allowlist. This one public candidate
+// hashes to PR355's rejected target; only a new runner can observe its literal URI.
+const observableTargets = new Set([
+  ...knownTargets.keys(),
+  'http://us-east-2.ec2.archive.ubuntu.com/ubuntu/',
+]);
+
+export function observableMirrorUri(value) {
+  // Exact literals avoid URL normalization hiding credentials, ports, query data,
+  // fragments, escaped characters, additional paths or private hostnames.
+  return typeof value === 'string' && observableTargets.has(value)
+    ? value
+    : undefined;
+}
 const reviewed = Object.freeze({
   source_probe:
     'faee337a766c98ba22439992956f523e7b4c314ab2eb75a1e830e4c1e7320402',
@@ -95,6 +109,7 @@ export function classifyMirrorText(text) {
         row_sha256: digest(line),
         token_count: tokens.length,
         target: knownTargets.get(tokens[0]) ?? 'UNRECOGNIZED',
+        observed_uri: observableMirrorUri(tokens[0]),
         target_sha256: digest(tokens[0]),
         priority: priority ? Number(tokens[1].slice('priority:'.length)) : null,
         priority_token_sha256:

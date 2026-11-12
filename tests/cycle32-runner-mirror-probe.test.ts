@@ -2,10 +2,14 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { expect, it } from 'vitest';
 
-const { classifyMirrorText, observeMirrorValidation, redactSourceShape } =
-  await import(
-    new URL('../scripts/cycle32-runner-mirror-probe.mjs', import.meta.url).href
-  );
+const {
+  classifyMirrorText,
+  observeMirrorValidation,
+  redactSourceShape,
+  observableMirrorUri,
+} = await import(
+  new URL('../scripts/cycle32-runner-mirror-probe.mjs', import.meta.url).href
+);
 const { validateUbuntuMirrors } = await import(
   new URL('../scripts/cycle30-chromium-dependencies.mjs', import.meta.url).href
 );
@@ -142,6 +146,48 @@ it('retains the exact reviewed helper acceptance and unknown-URI denial', () => 
   expect(observeMirrorValidation(changed)).toBe(
     'REJECT_REVIEWED_MIRROR_OR_PRIORITY',
   );
+});
+
+it('observes the exact public PR355 candidate without granting package-source trust', () => {
+  const uri = 'http://us-east-2.ec2.archive.ubuntu.com/ubuntu/';
+  const changed = mirrors.replace(
+    'http://azure.archive.ubuntu.com/ubuntu/',
+    uri,
+  );
+  const view = classifyMirrorText(changed);
+  expect(view.rows[0].observed_uri).toBe(uri);
+  expect(view.rows[0].target).toBe('UNRECOGNIZED');
+  expect(view.rows[0].target_sha256).toBe(
+    'cbaf43a8563e6214589588bffc1d1255f42a1d6d1039999691bf05d8fdbaa683',
+  );
+  expect(observeMirrorValidation(changed)).toBe(
+    'REJECT_REVIEWED_MIRROR_OR_PRIORITY',
+  );
+  expect(() => validateUbuntuMirrors(changed)).toThrow();
+});
+
+it.each([
+  'http://person:private-value@us-east-2.ec2.archive.ubuntu.com/ubuntu/',
+  'http://us-east-2.ec2.archive.ubuntu.com/ubuntu/?private-value',
+  'http://us-east-2.ec2.archive.ubuntu.com/ubuntu/#private-value',
+  'http://us-east-2.ec2.archive.ubuntu.com/private-value/',
+  'http://us-east-2.ec2.archive.ubuntu.com/ubuntu/private-value',
+  'http://us-east-2.ec2.archive.ubuntu.com:80/ubuntu/',
+  'http://us-east-2.ec2.archive.ubuntu.com.evil.example/ubuntu/',
+  'http://us-east-2.ec2.archive.ubuntu.com./ubuntu/',
+  'http://us-east-2.ec2.archive.ubuntu.com/ub%75ntu/',
+  'http://US-EAST-2.ec2.archive.ubuntu.com/ubuntu/',
+  'http://private-value.internal/ubuntu/',
+  'https://unreviewed.example/ubuntu/',
+  'file:///private-value',
+  'http://us-east-2.ec2.archive.ubuntu.com\\@private-value/ubuntu/',
+])('keeps an altered or sensitive URI hash-only: %s', (uri) => {
+  expect(observableMirrorUri(uri)).toBeUndefined();
+  const view = classifyMirrorText(`${uri} priority:1`);
+  expect(view.rows[0].observed_uri).toBeUndefined();
+  expect(view.rows[0].target_sha256).toBe(digest(uri));
+  expect(JSON.stringify(view)).not.toContain(uri);
+  expect(JSON.stringify(view)).not.toContain('private-value');
 });
 
 it('keeps the original Passport workflow byte-exact except observation and report', () => {
