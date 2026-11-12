@@ -3274,3 +3274,28 @@ remains OPEN. Browser6PASS, build/typecheck/scopedlint/format/features/protected
 Independent payment security77PASS plus added fixture1PASS (overlap, not a total).
 Source-level zero-ID defect closed only; no genuine financial release blocker or
 hosted acceptance gate is claimed closed. Independent review CLEAR bounded change.
+
+### First-launch successor: deterministic domain observation and safe invoice balance
+
+Controlled equal-time native fixtures reproduce checked_at DESC,id DESC ordering;
+original failing fixture assumed successive wall-clock calls were strictly newer.
+Only synthetic observation sequencing changes; original rejection assertion, SQL,
+time budgets and historical354failure remain. Native original75+3cases78PASS with
+no skips. Equal-time UUID arbitration remains an explicit operational limitation,
+not a runtime repair or proof of arrival chronology. Strictly older late evidence
+is denied. Any different protected SQL tie policy requires separate authorization.
+
+Existing invoiceBalance reproduced4FAIL on malformed duplicate/event evidence;
+new original-contract guards reject duplicate IDs/command keys and wrong kind/
+provider before calculation. Additional tenant/customer/currency negatives preserve
+customer-safe balance presentation. No invoice writer/ledger is added; persistent
+commercial invoice revision/reopen remains separately gated, never sample acceptance.
+Saul2Paul first/Cunningham second fictional fixtures remain disabled. Security and
+recovery restrictions, AWS custody, D1–D3/A01–A12 and release NO-GO remain unchanged.
+Parallel Field/Customer and Finance/Growth candidates remain independent branches;
+none is implicitly admitted to the launch source or made its release dependency.
+Successor local evidence: parent invoice4FAIL; corrected relatedapp66PASS, then final
+release/provider-control PGlite44PASS/1native-onlyskip after3additional tenant/customer/
+currency negatives. Native78PASS/0skips; browser6PASS desktop/tablet/mobile. Strict
+TypeScript/build/scopedlint/format/features/protected128PASS. Independent reviewer
+release-preview10PASS and CLEAR, with timestamp-tie limitation explicitly retained.

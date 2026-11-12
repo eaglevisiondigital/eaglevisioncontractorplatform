@@ -136,3 +136,55 @@ accessibility and hidden live controls. Initial browser launch was blocked by lo
 sandbox EPERM; approved loopback-only rerun used unchanged tests/budgets and passed.
 Typecheck/build/scoped lint/format/features/Cycle6 protected128 hashes PASS.
 No real provider/hosted/payment/production durability evidence was produced.
+
+## Superseding native diagnosis and invoice evidence correction
+
+The historical354 native74PASS/1FAIL remains recorded above. Controlled equal-time
+observations with fixedUUIDs now reproduce both ordering outcomes: the SQL contract
+is checked_at DESC,id DESC, NOT insertion order. Original helper used Date.now twice
+without guaranteeing a later second observation. Its unchanged freshness rejection
+assertion now receives strictly increasing, explicit synthetic observation times.
+No SQL or freshness threshold/budget/assertion is changed. Added equal-time tests
+characterize UUID arbitration, and late-arriving older checkedAt is rejected even
+with the higherUUID. Native original75 plus3new cases =78PASS, zero skipped.
+This closes the nondeterministic test precondition. It does NOT repair runtime ties
+or prove that equal timestamps imply chronology. If operational policy requires
+latest-arrival or rejecting ambiguous tied evidence, the protected SQL design needs
+separate exact review/authorization; no such change is made here.
+
+The existing invoiceBalance calculator reproduced4failures accepting duplicate
+invoice event IDs, duplicate command keys, unknown kind and wrong provider. It now
+rejects them before arithmetic, reusing the existing invoice/event contracts. Direct
+negative tenant/customer/currency regressions cover the presentation calculation.
+Original synthetic capture/refund/ledger behavior remains. This fixes false local
+balance presentation; it neither creates a financial writer nor proves commercial
+invoice revision/durability. Existing internal test invoices derive immutably from
+signed test contracts; genuine invoice preparation persistence/revision/reopening
+requires a separately authorized canonical operational writer/schema scope. Do not
+add a sample-only draft store or edit issued commercial scope as a substitute.
+
+After D1–D3 return and original prerequisites, the first proposed operational slice
+remains the selected CustomerRequestBroker.submit review-only request -> immutable
+receipt/ACK -> currently authorized staff read. Exact authorization must bind original
+source SHA/target/tenant/actor, dedicated registrar/issuer/consumer identities and
+commits, genuine Auth/AAL2/current revocation, reviewed grants/writer-bypass inventory,
+independent fence/custody, UNKNOWN no replay and matched recovery acceptance. This
+slice does not authorize invoice issuance/payment; their provenance, balance,
+customer tokenization, receipt and settlement acceptance follow separately.
+
+Security/recovery workstream remains preparation-only: November4owner-witnessed main
+synthetic network-loss PASS preserved; duplicate recovery UNKNOWN/UNVERIFIED, both
+private folders/consumed attempts untouched. No independent recovery/AWS custody or
+A01–A12 acceptance inferred. Saul2Paul remains first; Cunningham reuses the same
+strictly separate merchant and tenant contracts only after its own acceptance.
+Broader Field/Customer and Finance/Growth work is on separate branches, never a
+prerequisite silently added to this launch candidate.
+
+Successor verification: controlled tie diagnosis scope77PASS before monotonic fixture
+repair; final native78PASS after repair, all original75assertions retained. Invoice
+balance parent4FAIL; corrected related app66PASS before3additional tenant/customer/
+currency tests; final release/provider-control PGlite44PASS/1native-only skip.
+Independent release-preview10PASS before those3additional negatives. Original
+responsive release journeys6PASS at the changed source; TypeScript/build/scoped
+lint/format/features/protected128PASS. These are overlapping scopes, not a summed
+acceptance count. No real invoice Save/reopen or genuine hosted acceptance claimed.

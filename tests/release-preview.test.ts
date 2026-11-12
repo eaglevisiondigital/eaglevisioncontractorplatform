@@ -145,3 +145,60 @@ it('keeps messages internal and sender unverified; rejects raw card or fabricate
     }),
   ).rejects.toThrow();
 });
+
+it.each([
+  'duplicate-id',
+  'duplicate-command',
+  'unknown-kind',
+  'wrong-provider',
+  'foreign-tenant',
+  'foreign-customer',
+  'wrong-currency',
+] as const)('refuses malformed invoice balance evidence: %s', async (mode) => {
+  const r = await flow();
+  const invoice = r.read('staff').release_invoices[0];
+  const event = {
+    id: crypto.randomUUID(),
+    organization_id: invoice.organization_id,
+    customer_id: invoice.customer_id,
+    created_at: new Date().toISOString(),
+    invoice_id: invoice.id,
+    authorization_id: crypto.randomUUID(),
+    amount_minor: 1,
+    currency: invoice.currency,
+    kind: 'synthetic_capture' as const,
+    adjusts_event_id: null,
+    idempotency_key: crypto.randomUUID(),
+    provider: 'synthetic' as const,
+  };
+  const events =
+    mode === 'duplicate-id'
+      ? [event, { ...event, idempotency_key: crypto.randomUUID() }]
+      : mode === 'duplicate-command'
+        ? [event, { ...event, id: crypto.randomUUID() }]
+        : mode === 'unknown-kind'
+          ? [
+              event,
+              {
+                ...event,
+                id: crypto.randomUUID(),
+                idempotency_key: crypto.randomUUID(),
+                kind: 'unexpected' as never,
+              },
+            ]
+          : [
+              {
+                ...event,
+                ...(mode === 'wrong-provider'
+                  ? { provider: 'nmi' as never }
+                  : mode === 'foreign-tenant'
+                    ? { organization_id: crypto.randomUUID() }
+                    : mode === 'foreign-customer'
+                      ? { customer_id: crypto.randomUUID() }
+                      : { currency: 'EUR' }),
+              },
+            ];
+  expect(() => invoiceBalance(invoice, events)).toThrow(
+    /Invalid invoice event/,
+  );
+});
