@@ -1,7 +1,9 @@
 name: Cycle 32 read-only runner mirror diagnosis
 on:
   push:
-    branches: ['codex/cycle32-runner-mirror-diagnosis']
+    branches:
+      - 'codex/cycle32-runner-mirror-diagnosis'
+      - 'codex/issue-360-runner-mirror'
     paths:
       - '.github/workflows/cycle32-runner-mirror-diagnosis.yml'
       - '.github/workflows/passport-timeline.yml'
@@ -26,7 +28,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24.22.2'
-      - name: Observe signed-source shape and redacted mirror priorities only
+      - name: Observe signed-source shape and finite public mirror literals only
         run: |
           set -euo pipefail
           mkdir -p artifacts/cycle32
