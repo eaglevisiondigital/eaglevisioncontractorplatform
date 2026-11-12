@@ -89,7 +89,11 @@ create trigger immutable_revision before update or delete on private.commercial_
 create trigger immutable_receipt before update or delete on private.commercial_invoice_draft_receipts for each row execute function private.commercial_draft_immutable();
 
 create function private.commercial_draft_actor(p_org uuid) returns uuid language plpgsql security definer set search_path='' as $$
-declare actor uuid:=auth.uid();session_id uuid;claims jsonb:=auth.jwt();begin
+declare actor uuid:=auth.uid();claimed_actor uuid;session_id uuid;claims jsonb:=auth.jwt();begin
+ -- Supabase auth.uid() can prefer legacy per-claim settings over aggregate JWT
+ -- claims. Reject contradictory or missing subjects before any row/receipt access.
+ begin claimed_actor:=(claims->>'sub')::uuid;exception when invalid_text_representation then raise exception 'Consistent invoice draft identity required' using errcode='42501';end;
+ if jsonb_typeof(claims->'sub') is distinct from 'string' or claimed_actor is null or actor is distinct from claimed_actor then raise exception 'Consistent invoice draft identity required' using errcode='42501';end if;
  if actor is null or claims->>'aal' is distinct from 'aal2' or jsonb_typeof(claims->'exp') is distinct from 'number' then raise exception 'Current AAL2 invoice draft actor required' using errcode='42501';end if;
  begin session_id:=(claims->>'session_id')::uuid;exception when others then raise exception 'Current invoice draft session required' using errcode='42501';end;
  perform 1 from public.organizations where id=p_org and status='active' for share;if not found then raise exception 'Draft organization denied' using errcode='42501';end if;

@@ -1,0 +1,52 @@
+{
+  "schema": "commercial-invoice-draft-auth-compatibility-candidate-v1",
+  "parentCommit": "e007bb28c528839e747a59a1e5407f278430fc01",
+  "historicalProposalSha256": "29fdaff99e8b325c8821bc57d431edbcc933f41e844bb6139c472462e40fde36",
+  "historicalManifest": "docs/COMMERCIAL_INVOICE_DRAFT_CANDIDATE.json",
+  "historicalManifestUnchanged": true,
+  "classification": "UNAPPLIED_SOURCE_PROPOSAL_NOT_HOSTED_AUTH_ACCEPTANCE",
+  "officialCompatibilitySource": "https://github.com/supabase/auth/blob/master/migrations/20220224000811_update_auth_functions.up.sql",
+  "correction": "Reject missing or contradictory aggregate JWT subject and auth.uid() before create, read, or original receipt reconciliation.",
+  "sources": [
+    {
+      "path": "server/invoices/commercial-drafts.proposed.sql",
+      "sha256": "a788e65adcf15774d0585e99b98f771387dbe9b1be42a1b86bcffbcbbabedd91"
+    },
+    {
+      "path": "tests/database/commercial-invoice-draft-auth-compatibility.test.ts",
+      "sha256": "0d3873085212afd22e7c511db65afb0c8514d7b03182bbb9cf8f0ad944a52950"
+    }
+  ],
+  "evidence": {
+    "negativeFirstNative": {
+      "failed": 4,
+      "passed": 3
+    },
+    "correctedNative": {
+      "passed": 9,
+      "skipped": 0
+    },
+    "additionalCoverage": [
+      "aggregate-only and matching legacy UID positive compatibility",
+      "runtime role assumption and private function grants",
+      "NOLOGIN owner and restricted Auth/source grants",
+      "source archival committed during blocked parent row lock denies draft and receipt"
+    ],
+    "pglite": {
+      "passed": 8,
+      "nativeOnlySkipped": 1
+    },
+    "checks": [
+      "TypeScript strict noEmit PASS",
+      "Scoped ESLint PASS",
+      "Scoped Prettier PASS",
+      "features:check PASS"
+    ]
+  },
+  "limits": [
+    "Trusted disposable claim-setting fixture only; no token signature verification or hosted Auth call.",
+    "Historical proposal manifest remains an exact parent record, not a hash assertion for this successor.",
+    "No installation, runtime factory, route, operational acceptance, financial issuance, or release authorization.",
+    "D1-D3 and A01-A12 remain unchanged; independently rollback-resistant custody is unverified."
+  ]
+}
