@@ -1,0 +1,33 @@
+--- a/server/payments/control-store.ts
++++ b/server/payments/control-store.ts
+@@ -101 +101 @@
+-    await this.control.command('finish', {
++    const acknowledgment = await this.control.command('finish', {
+@@ -108,0 +109,5 @@
++    if (
++      acknowledgment.status !== 'recorded' &&
++      acknowledgment.status !== 'duplicate'
++    )
++      throw new Error('Payment completion acknowledgment unavailable');
+--- a/server/payments/sandbox.ts
++++ b/server/payments/sandbox.ts
+@@ -333 +333,7 @@
+-    await this.store.finish(m, intent, result);
++    try {
++      await this.store.finish(m, intent, result);
++    } catch {
++      throw new Error(
++        'Payment acknowledgment UNKNOWN; reconcile original intent',
++      );
++    }
+--- a/server/payments/refunds.ts
++++ b/server/payments/refunds.ts
+@@ -234 +234,7 @@
+-    await this.store.finishRefund(m, i, result);
++    try {
++      await this.store.finishRefund(m, i, result);
++    } catch {
++      throw new Error(
++        'Refund acknowledgment UNKNOWN; reconcile original intent',
++      );
++    }
