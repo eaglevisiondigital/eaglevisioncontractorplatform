@@ -2726,3 +2726,11 @@ An operational requirement for tied-evidence rejection or arrival-order successi
 requires separate protected SQL review/approval. Invoice balance readers must reject
 duplicate source events/command keys and unrecognized kind/provider before arithmetic;
 this is defensive source validation, not financial transaction authority.
+
+### Validate the original capture intent before potentially one-use vault lookup
+
+Reuse the existing gateway validator at the token-reference boundary. Invalid
+request syntax/amount/currency must not consume a token before downstream rejection.
+This does not authorize token resolution or replace real invoice/customer authority,
+current revocation, durable vault consumption or UNKNOWN reconciliation. Genuine
+commercial invoice writer/schema activation requires separate exact approval.

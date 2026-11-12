@@ -3299,3 +3299,25 @@ release/provider-control PGlite44PASS/1native-onlyskip after3additional tenant/c
 currency negatives. Native78PASS/0skips; browser6PASS desktop/tablet/mobile. Strict
 TypeScript/build/scopedlint/format/features/protected128PASS. Independent reviewer
 release-preview10PASS and CLEAR, with timestamp-tie limitation explicitly retained.
+
+### Issue357: reject invalid capture before one-use token resolution
+
+Seven parent regressions showed malformed invoice/authorization IDs, zero/fractional/
+over-limit amounts, wrong currency or extra fields reaching the token vault. Extract
+existing SandboxGateway intent preflight once and reuse it before vault.resolve;
+original decimal/digest/reservation, token/provider and post-await expiry/binding
+checks remain. No vault, store, SQL, new transaction engine or operational route.
+Fake payment/token/refund73PASS, independently73PASS; actual gateway negative proves
+zero vault/reservation/transport for invalid currency. Strict types/build/scopedlint/
+format/features/protected128PASS; bundled acceptance runner plan remains NOT RUN with
+zero credential reads/calls. This protects pre-consumption validation, not genuine
+invoice ownership, independently durable token custody or provider acceptance.
+
+Commercial invoice editing/reopening remains blocked by the existing protected
+financial execution/schema boundary; test release invoices cannot be promoted.
+Issue358 exact receipt/staff readers already covered and protected: no duplicate
+reader added. D1 remaining assignments/writer inventory, D2 immutable ACK/one-use
+custody, D3 independent matched recovery and A01–A12 remain operational gates.
+Exact launch successor checks: native78PASS/0skips, responsive internal-release6PASS,
+build/type/scopedlint/format/features/protected128PASS. Accepted source review CLEAR
+from independent security and QA agents. No hosted acceptance inherited from parents.

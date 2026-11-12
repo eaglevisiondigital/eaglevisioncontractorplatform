@@ -1,3 +1,4 @@
+import { SandboxGateway } from '../server/payments/sandbox';
 import { expect, it, vi } from 'vitest';
 import {
   captureReferencedToken,
@@ -145,4 +146,68 @@ it('does not mutate the reviewed capture while waiting for vault resolution', as
     s.gateway,
   );
   expect(s.gateway.capture.mock.calls[0]?.[0].amountMinor).toBe(1000);
+});
+
+it.each([
+  'invoice',
+  'authorization',
+  'zero',
+  'fractional',
+  'over-limit',
+  'currency',
+  'extra-field',
+])(
+  'denies invalid %s before a potentially one-use vault resolution',
+  async (mode) => {
+    const s = setup();
+    if (mode === 'invoice') s.intent.invoiceId = 'invalid';
+    if (mode === 'authorization') s.intent.authorizationId = 'invalid';
+    if (mode === 'zero') s.intent.amountMinor = 0;
+    if (mode === 'fractional') s.intent.amountMinor = 1.5;
+    if (mode === 'over-limit') s.intent.amountMinor = 9_000_000_000_001;
+    if (mode === 'currency') s.intent.currency = 'EUR' as never;
+    if (mode === 'extra-field')
+      Object.assign(s.intent, { note: 'unreviewed field' });
+    await expect(
+      captureReferencedToken(
+        s.merchant,
+        s.intent,
+        s.customerId,
+        s.referenceId,
+        s.vault,
+        s.gateway,
+      ),
+    ).rejects.toThrow();
+    expect(s.vault.resolve).not.toHaveBeenCalled();
+    expect(s.gateway.capture).not.toHaveBeenCalled();
+  },
+);
+
+it('rejects malformed capture before vault consumption with the actual sandbox gateway', async () => {
+  const s = setup();
+  const store = {
+    reserve: vi.fn(async () => ({ status: 'reserved' as const })),
+    finish: vi.fn(async () => {}),
+  };
+  const transport = vi.fn<typeof fetch>();
+  const gateway = new SandboxGateway(
+    s.merchant,
+    { apiKey: 'synthetic-only' },
+    store,
+    transport,
+  );
+  s.intent.currency = 'EUR' as never;
+  await expect(
+    captureReferencedToken(
+      s.merchant,
+      s.intent,
+      s.customerId,
+      s.referenceId,
+      s.vault,
+      gateway,
+    ),
+  ).rejects.toThrow();
+  expect(s.vault.resolve).not.toHaveBeenCalled();
+  expect(store.reserve).not.toHaveBeenCalled();
+  expect(transport).not.toHaveBeenCalled();
 });

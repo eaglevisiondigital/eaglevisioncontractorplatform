@@ -188,3 +188,19 @@ Independent release-preview10PASS before those3additional negatives. Original
 responsive release journeys6PASS at the changed source; TypeScript/build/scoped
 lint/format/features/protected128PASS. These are overlapping scopes, not a summed
 acceptance count. No real invoice Save/reopen or genuine hosted acceptance claimed.
+
+Issue357 successor: existing capture validation is shared before token-reference
+lookup. Seven malformed-intent parent regressions fail; corrected payment/token/
+refund73PASS independently73PASS. Actual gateway invalid-currency case makes zero
+vault/reservation/transport calls. This is a source-level pre-consumption fix, not
+provider acceptance or proof of valid invoice ownership. Genuine operational invoice
+creation/revision/reopening remains held: protected financial execution constraints
+and commercial authority are not changed or bypassed by this implementation.
+
+Next owner authorization checkpoints remain ordered: complete actual D1/D2/D3 and
+original receipt/recovery prerequisites; approve the exact bound review-only broker
+acceptance; then approve a separate source/hash/target-bound commercial invoice
+writer/draft-CAS/reopen/customer-read implementation and required forward schema/
+grants. Its scope excludes issuance, NMI credentials/activation, sends and payments
+unless separately named and independently accepted. Two private VAR/gateway bindings
+are external dependencies; Cunningham never inherits Saul2Paul's merchant authority.
