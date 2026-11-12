@@ -48,5 +48,14 @@ export async function receiveSandboxPaymentWebhook(
     throw new Error('Webhook subscription/event mismatch');
   // Return success to HTTP only AFTER this durable insert. No financial side effect;
   // a separately approved reconciler must fetch actual provider transaction facts.
-  return inbox.recordWebhook(m, eventId, digest);
+  try {
+    const acknowledgment = await inbox.recordWebhook(m, eventId, digest);
+    if (acknowledgment !== 'recorded' && acknowledgment !== 'duplicate')
+      throw new Error('Unconfirmed inbox acknowledgment');
+    return acknowledgment;
+  } catch {
+    // An insert may have committed before acknowledgment loss. Do not retry or
+    // leak database internals; reconcile this same authenticated event identity.
+    throw new Error('Webhook acknowledgment UNKNOWN; reconcile original event');
+  }
 }
