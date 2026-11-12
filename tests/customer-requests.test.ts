@@ -346,3 +346,91 @@ it('explicit confirmation and source identity are required even for controlled l
   prepared.close();
   f.close();
 });
+
+it.each(
+  (['receipt', 'status', 'queue'] as const).flatMap((read) =>
+    (['principal', 'session', 'custody', 'closed'] as const).map((change) => ({
+      read,
+      change,
+    })),
+  ),
+)(
+  'withholds $read evidence when $change changes after the read resolves',
+  async ({ read, change }) => {
+    const f = fixture();
+    const receipt = f.reads.receipt,
+      status = f.reads.status,
+      queue = f.reads.queue;
+    async function afterRead<T>(operation: () => Promise<T>) {
+      const result = await operation();
+      if (change === 'principal') f.state.user = crypto.randomUUID();
+      if (change === 'session') f.state.active = false;
+      if (change === 'custody') f.custody.clearIf(f.custody.read()!);
+      if (change === 'closed') f.reader.close();
+      return result;
+    }
+    f.reads.receipt = (...args) => afterRead(() => receipt(...args));
+    f.reads.status = (...args) => afterRead(() => status(...args));
+    f.reads.queue = (...args) => afterRead(() => queue(...args));
+    try {
+      const operation =
+        read === 'receipt'
+          ? f.reader.reconcile(f.ref)
+          : read === 'status'
+            ? f.reader.status(f.body)
+            : f.reader.queue(f.body.organization_id);
+      await expect(operation).rejects.toThrow();
+      expect(f.calls).toContain(
+        read === 'receipt'
+          ? 'customer_review_request_receipt'
+          : read === 'status'
+            ? 'customer_review_request_status'
+            : 'customer_change_request_queue',
+      );
+      expect(
+        f.calls.some((name) =>
+          /record|claim|publish|logout|refresh/.test(name),
+        ),
+      ).toBe(false);
+    } finally {
+      f.close();
+    }
+  },
+);
+
+it.each([
+  'foreign-receipt',
+  'duplicate-receipt',
+  'private-row',
+  'private-receipt',
+] as const)('withholds malformed staff-read evidence: %s', async (change) => {
+  const f = fixture();
+  const row = {
+    receipt: structuredClone(f.receipt),
+    customer_name: 'Synthetic customer',
+    property_label: 'Synthetic property',
+    project_name: 'Synthetic scope',
+  };
+  if (change === 'foreign-receipt')
+    Object.assign(row.receipt, { organization_id: crypto.randomUUID() });
+  if (change === 'private-row')
+    Object.assign(row, { internal_note: 'PRIVATE staff content' });
+  if (change === 'private-receipt')
+    Object.assign(row.receipt, { payroll: 'PRIVATE staff content' });
+  f.state.queue = {
+    organization_id: f.body.organization_id,
+    requests:
+      change === 'duplicate-receipt' ? [row, structuredClone(row)] : [row],
+    limited: true,
+    financial_execution: false,
+  };
+  try {
+    await expect(f.reader.queue(f.body.organization_id)).rejects.toThrow();
+    expect(f.calls).toContain('customer_change_request_queue');
+    expect(
+      f.calls.some((name) => /record|claim|publish|logout|refresh/.test(name)),
+    ).toBe(false);
+  } finally {
+    f.close();
+  }
+});
