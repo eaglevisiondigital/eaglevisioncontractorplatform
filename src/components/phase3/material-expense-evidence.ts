@@ -20,6 +20,18 @@ export function materialExpenseEvidence(
   const quantity = input.quantity.trim(),
     unit = input.unit.trim(),
     cost = input.unitCost.trim();
+  // UNKNOWN measurements do not establish a relationship to a selected budget line.
+  // Validate that source independently before the blank-evidence return.
+  const lines = input.line
+    ? job.baseline.lines.filter((line) => line.id === input.line)
+    : [];
+  if (
+    input.category === 'materials' &&
+    input.line &&
+    (lines.length !== 1 ||
+      !['material', 'product', 'allowance'].includes(lines[0].kind))
+  )
+    throw Error('Exact original material budget line required');
   if (!quantity && !unit && !cost)
     return { quantity_milli: null, unit: null, unit_cost_minor: null };
   if (input.category !== 'materials')
@@ -35,12 +47,6 @@ export function materialExpenseEvidence(
   if (!Number.isSafeInteger(amount) || amount <= 0 || amount > 1_000_000_000)
     throw Error('Enter a positive material quantity within supported limits');
   if (input.line) {
-    const lines = job.baseline.lines.filter((l) => l.id === input.line);
-    if (
-      lines.length !== 1 ||
-      !['material', 'product', 'allowance'].includes(lines[0].kind)
-    )
-      throw Error('Exact original material budget line required');
     if (lines[0].unit !== unit)
       throw Error(
         'Reported unit differs from the original budget; review the match without unit conversion',
