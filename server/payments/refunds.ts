@@ -231,7 +231,13 @@ export class SandboxRefundGateway {
       /* An uncertain refund holds capacity until independent reconciliation. */
     }
     Object.freeze(result);
-    await this.store.finishRefund(m, i, result);
+    try {
+      await this.store.finishRefund(m, i, result);
+    } catch {
+      throw new Error(
+        'Refund acknowledgment UNKNOWN; reconcile original intent',
+      );
+    }
     return result;
   }
 }

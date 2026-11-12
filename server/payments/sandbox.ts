@@ -330,7 +330,13 @@ export class SandboxGateway {
       /* Transport failure can occur after a charge; persist UNKNOWN, never fake decline/success. */
     }
     Object.freeze(result);
-    await this.store.finish(m, intent, result);
+    try {
+      await this.store.finish(m, intent, result);
+    } catch {
+      throw new Error(
+        'Payment acknowledgment UNKNOWN; reconcile original intent',
+      );
+    }
     return result;
   }
 }
