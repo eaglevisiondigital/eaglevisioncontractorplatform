@@ -308,6 +308,7 @@ export class SandboxGateway {
         if (
           data.response === '1' &&
           typeof data.id === 'string' &&
+          data.id !== '0' &&
           /^[a-zA-Z0-9_-]{1,100}$/.test(data.id) &&
           data.currency === 'USD' &&
           data.amount === decimal

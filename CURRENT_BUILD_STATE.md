@@ -3251,3 +3251,26 @@ TypeScript, build, scoped lint/format, features and Cycle6 protected128 hashes P
 These are offline fake-wire checks, not AWS or genuine identity acceptance.
 Targeted independent security review CLEAR for offline preparation; independently
 reproduced120/120. Actual identity provisioning and Free-plan eligibility unverified.
+
+### First-contractor invoice/payment launch review
+
+Owner prioritizes the first contractor's invoice -> payment -> receipt -> settlement
+journey. Existing source is sandbox/internal-test only; development provider schema
+was applied/verified historically, with provider execution still disabled. Exact
+GO/NO-GO and bounded acceptance are in docs/FIRST_CONTRACTOR_LAUNCH_ACCEPTANCE.md.
+A new regression reproduces NMI capture id"0" incorrectly mapping to success; the
+narrow successor rejects that identity into the original UNKNOWN finish/hold path.
+No SQL, authority, endpoint, ledger, dependency or production activation changes.
+Hosted tokenization/invoice provenance/receipt/settlement and genuine Auth/custody/
+recovery remain unaccepted; no merchant/account/credential/provider action occurred.
+D1–D3/A01–A12, intake SQL HELD and Release1.0 NOT READY / NOT AUTHORIZED persist.
+
+Two-launch continuation: contractor1 remains first; contractor2 Cunningham has only
+fictional disabled test configuration, with no real account/merchant mapping. Final
+payment-sandbox36PASS; earlier seven application suites123PASS before that additional
+case. PGlite71PASS/4skips; native PG17 same75case scope74PASS/1FAIL, all4concurrency
+cases executed. Original email-domain freshness assertion at provider-control:363
+remains OPEN. Browser6PASS, build/typecheck/scopedlint/format/features/protected128PASS.
+Independent payment security77PASS plus added fixture1PASS (overlap, not a total).
+Source-level zero-ID defect closed only; no genuine financial release blocker or
+hosted acceptance gate is claimed closed. Independent review CLEAR bounded change.
