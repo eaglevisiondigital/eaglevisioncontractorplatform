@@ -1,0 +1,697 @@
+{
+  "classification": "BOUNDED_LOCAL_DIAGNOSTIC_NOT_HOSTED_CAUSE_OR_ACCEPTANCE",
+  "source": "394d7fc1bbc6d6a27440e881bc3e9bf3d76befa6",
+  "hostedEvidence": {
+    "run": 43485601646,
+    "application4Job": 132093085845,
+    "c25Brand2Ms": 32432,
+    "c28Brand0Ms": 30358,
+    "c28Brand1Ms": 30971,
+    "budgetMs": 30000,
+    "conclusion": "FAILURE_RETAINED"
+  },
+  "originalUninstrumented": {
+    "scenario": "c25-concurrent",
+    "brand": 2,
+    "exactTitle": "brand 2: concurrent read-only report actions share original state and never consume request attempt",
+    "passed": 1,
+    "failed": 0,
+    "filtered": 30,
+    "durationMs": 12289.125042,
+    "budgetMs": 30000,
+    "maxWorkers": 1
+  },
+  "traces": [
+    {
+      "classification": "LOCAL_INSTRUMENTED_EXACT_SOURCE_TRACE",
+      "source": "394d7fc1bbc6d6a27440e881bc3e9bf3d76befa6",
+      "scenario": "c25-concurrent",
+      "fixtureSha256": "251c19e778a216d2098753ee2d5cd398dfdb51062a436a06bbfa096bbb38d99d",
+      "sourceHashes": {
+        "src/lib/workflows/operating-center-runtime.ts": "7a5272ae344400714dea1efe727a40c19a10c96ccfdf70f7321e127488bbd239",
+        "src/lib/workflows/service-request-actions.ts": "737a70e47b3528d3a9d7022824c8027803e2d02dde0615a2c2970edf5b577e9f",
+        "src/lib/workflows/service-source-review.ts": "4218e79c055aa7ea97bb99e66b62168af732e47d98e9a433cb6fd409e49345f8",
+        "src/lib/workflows/saved-revision-exercise.ts": "c41a1ffe3980a286ec72665d74a6b79523949eca475d7ec4e85618791535ad38",
+        "src/lib/phase3.ts": "5696907efb1f5191e2aa033436db52998a6fdf0f3ee62cf537e25ee62d65746a",
+        "src/lib/property.ts": "d7e9dd024b879919f2c06dd4389c1aaa85e8a6d410cd8d40e05add7533f30c7e",
+        "src/lib/operations.ts": "512c069eaafb54f6f3d80a1725db8933842b42322df1f152e6bd49867c384ca7",
+        "tests/cycle25-service-evidence-continuity.test.ts": "ec9c1a32e26337a15ef163c2166188345ec0d3fe322e25244524e01098c81bc6",
+        "tests/cycle28-request-provenance.test.ts": "0f300037abd9fcbe8db4465ff3fd7ad64c2631158ceb675ba4b33ce3b44bc8ea",
+        "vite.config.ts": "0fdc8ac3b8d922c2229a25d67d0b42ab3c895489bfc7ee514aae0c78853bf48d",
+        "package.json": "147c300e2aa125ee697f8b70a6a0e3aaeb1a2c027b5606979ac1e07744d362f9",
+        "package-lock.json": "038f80c378263f8c961930661d03801e55d882ad54c5929095234aea3306ce6d"
+      },
+      "node": "v24.20.0",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "budgetMs": 30000,
+      "maxWorkers": 1,
+      "phases": [
+        {
+          "name": "prepareOperatingSources",
+          "wallMs": 35.19666600000005,
+          "externalCaptures": 0,
+          "externalChecks": 0
+        },
+        {
+          "name": "readServiceRequestActions",
+          "wallMs": 59.76670899999999,
+          "externalCaptures": 1,
+          "externalChecks": 11
+        },
+        {
+          "name": "inspectServiceRequestActions",
+          "wallMs": 17.234375,
+          "externalCaptures": 0,
+          "externalChecks": 4
+        },
+        {
+          "name": "readServiceRequestEvidence",
+          "wallMs": 4089.4319579999997,
+          "externalCaptures": 150,
+          "externalChecks": 707
+        },
+        {
+          "name": "inspectServiceRequestEvidence",
+          "wallMs": 798.7395420000003,
+          "externalCaptures": 69,
+          "externalChecks": 115
+        },
+        {
+          "name": "twoConcurrentReportReads",
+          "wallMs": 7644.185082999999,
+          "externalCaptures": 414,
+          "externalChecks": 1350
+        },
+        {
+          "name": "finalRequestInspection",
+          "wallMs": 17.05645800000093,
+          "externalCaptures": 0,
+          "externalChecks": 4
+        }
+      ],
+      "counters": {
+        "externalCaptures": 634,
+        "externalChecks": 2191
+      },
+      "profile": {
+        "samples": 8575,
+        "sampledTimeMs": 12688.29,
+        "topSelf": [
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::data",
+            "selfMs": 6423.06,
+            "inclusiveMs": 6789.02
+          },
+          {
+            "name": "node:internal/worker/js_transferable::structuredClone",
+            "selfMs": 3171.13,
+            "inclusiveMs": 3225.46
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::dataSignature",
+            "selfMs": 1633.23,
+            "inclusiveMs": 8413.29
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::(anonymous)",
+            "selfMs": 435.5,
+            "inclusiveMs": 9812.25
+          },
+          {
+            "name": "src/lib/program/prototype-source.ts::prototypeFields",
+            "selfMs": 226.87,
+            "inclusiveMs": 231
+          },
+          {
+            "name": "(tool-or-builtin)::(garbage collector)",
+            "selfMs": 91.17,
+            "inclusiveMs": 91.17
+          },
+          {
+            "name": "(tool-or-builtin)::(program)",
+            "selfMs": 61.5,
+            "inclusiveMs": 61.5
+          },
+          {
+            "name": "src/lib/customer-preview.ts::context",
+            "selfMs": 59.92,
+            "inclusiveMs": 344.08
+          },
+          {
+            "name": "src/lib/workflows/saved-revision-runtime.ts::copy",
+            "selfMs": 57.29,
+            "inclusiveMs": 61.83
+          },
+          {
+            "name": "src/lib/phase3.ts::readSyntheticPrototypeSources",
+            "selfMs": 56.33,
+            "inclusiveMs": 935.34
+          },
+          {
+            "name": "(tool-or-builtin)::structuredClone",
+            "selfMs": 51.29,
+            "inclusiveMs": 51.29
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::snapshot",
+            "selfMs": 35.54,
+            "inclusiveMs": 11338.82
+          },
+          {
+            "name": "node:inspector::post",
+            "selfMs": 25.5,
+            "inclusiveMs": 25.5
+          },
+          {
+            "name": "(tool-or-builtin)::Mt",
+            "selfMs": 14.92,
+            "inclusiveMs": 19.21
+          },
+          {
+            "name": "src/lib/program/prototype-source.ts::(anonymous)",
+            "selfMs": 11.71,
+            "inclusiveMs": 11.71
+          },
+          {
+            "name": "(tool-or-builtin)::get",
+            "selfMs": 10.63,
+            "inclusiveMs": 12.08
+          },
+          {
+            "name": "src/domain/customer/review.ts::projectIssuedReview",
+            "selfMs": 10.46,
+            "inclusiveMs": 43.5
+          },
+          {
+            "name": "src/lib/customer-preview.ts::read",
+            "selfMs": 9.58,
+            "inclusiveMs": 794.93
+          },
+          {
+            "name": "(tool-or-builtin)::<computed>.v.<computed>",
+            "selfMs": 9.04,
+            "inclusiveMs": 9.04
+          },
+          {
+            "name": "src/domain/customer/review.ts::parseCustomerReview",
+            "selfMs": 9,
+            "inclusiveMs": 28.42
+          }
+        ],
+        "operating": [
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::snapshot",
+            "selfMs": 35.54,
+            "inclusiveMs": 11338.82
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::(anonymous)",
+            "selfMs": 435.5,
+            "inclusiveMs": 9812.25
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::check",
+            "selfMs": 3.42,
+            "inclusiveMs": 8816.62
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::dataSignature",
+            "selfMs": 1633.23,
+            "inclusiveMs": 8413.29
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::data",
+            "selfMs": 6423.06,
+            "inclusiveMs": 6789.02
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::captureOperatingSources",
+            "selfMs": 7.58,
+            "inclusiveMs": 2558.24
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::approvedCompany",
+            "selfMs": 3.08,
+            "inclusiveMs": 65.54
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::prepareEntry",
+            "selfMs": 0,
+            "inclusiveMs": 16.21
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::prepareOperatingSources",
+            "selfMs": 0,
+            "inclusiveMs": 14.25
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::admit",
+            "selfMs": 1.5,
+            "inclusiveMs": 11.92
+          }
+        ]
+      },
+      "limits": [
+        "Instrumentation wraps only exported capture/check calls; intra-module calls are not counted.",
+        "CPU profile inclusive sampled times overlap and cannot be added.",
+        "One selected local worker is not hosted shard concurrency or proof of Ubuntu timeout cause.",
+        "No #387/#389/#391 optimization or admission is applied; all protected bytes remain original.",
+        "No source/authority cache, DB, provider, credential or release activity."
+      ]
+    },
+    {
+      "classification": "LOCAL_INSTRUMENTED_EXACT_SOURCE_TRACE",
+      "source": "394d7fc1bbc6d6a27440e881bc3e9bf3d76befa6",
+      "scenario": "c28-sibling",
+      "fixtureSha256": "251c19e778a216d2098753ee2d5cd398dfdb51062a436a06bbfa096bbb38d99d",
+      "sourceHashes": {
+        "src/lib/workflows/operating-center-runtime.ts": "7a5272ae344400714dea1efe727a40c19a10c96ccfdf70f7321e127488bbd239",
+        "src/lib/workflows/service-request-actions.ts": "737a70e47b3528d3a9d7022824c8027803e2d02dde0615a2c2970edf5b577e9f",
+        "src/lib/workflows/service-source-review.ts": "4218e79c055aa7ea97bb99e66b62168af732e47d98e9a433cb6fd409e49345f8",
+        "src/lib/workflows/saved-revision-exercise.ts": "c41a1ffe3980a286ec72665d74a6b79523949eca475d7ec4e85618791535ad38",
+        "src/lib/phase3.ts": "5696907efb1f5191e2aa033436db52998a6fdf0f3ee62cf537e25ee62d65746a",
+        "src/lib/property.ts": "d7e9dd024b879919f2c06dd4389c1aaa85e8a6d410cd8d40e05add7533f30c7e",
+        "src/lib/operations.ts": "512c069eaafb54f6f3d80a1725db8933842b42322df1f152e6bd49867c384ca7",
+        "tests/cycle25-service-evidence-continuity.test.ts": "ec9c1a32e26337a15ef163c2166188345ec0d3fe322e25244524e01098c81bc6",
+        "tests/cycle28-request-provenance.test.ts": "0f300037abd9fcbe8db4465ff3fd7ad64c2631158ceb675ba4b33ce3b44bc8ea",
+        "vite.config.ts": "0fdc8ac3b8d922c2229a25d67d0b42ab3c895489bfc7ee514aae0c78853bf48d",
+        "package.json": "147c300e2aa125ee697f8b70a6a0e3aaeb1a2c027b5606979ac1e07744d362f9",
+        "package-lock.json": "038f80c378263f8c961930661d03801e55d882ad54c5929095234aea3306ce6d"
+      },
+      "node": "v24.20.0",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "budgetMs": 30000,
+      "maxWorkers": 1,
+      "phases": [
+        {
+          "name": "prepareOperatingSources",
+          "wallMs": 35.488083000000074,
+          "externalCaptures": 0,
+          "externalChecks": 0
+        },
+        {
+          "name": "readServiceRequestActions",
+          "wallMs": 52.50491699999998,
+          "externalCaptures": 1,
+          "externalChecks": 11
+        },
+        {
+          "name": "inspectServiceRequestActions",
+          "wallMs": 15.156499999999937,
+          "externalCaptures": 0,
+          "externalChecks": 4
+        },
+        {
+          "name": "readServiceRequestEvidence",
+          "wallMs": 3525.1908750000002,
+          "externalCaptures": 150,
+          "externalChecks": 707
+        },
+        {
+          "name": "siblingReadServiceRequestActions",
+          "wallMs": 60.32887500000015,
+          "externalCaptures": 1,
+          "externalChecks": 11
+        },
+        {
+          "name": "siblingInspectServiceRequestActions",
+          "wallMs": 20.36491599999954,
+          "externalCaptures": 0,
+          "externalChecks": 4
+        },
+        {
+          "name": "siblingReadServiceRequestEvidence",
+          "wallMs": 3723.440125,
+          "externalCaptures": 150,
+          "externalChecks": 707
+        },
+        {
+          "name": "siblingInspectServiceRequestEvidence",
+          "wallMs": 681.7082919999993,
+          "externalCaptures": 69,
+          "externalChecks": 115
+        },
+        {
+          "name": "denySiblingReportSubstitution",
+          "wallMs": 1151.0608329999995,
+          "externalCaptures": 112,
+          "externalChecks": 196
+        },
+        {
+          "name": "inspectOriginalReportReference",
+          "wallMs": 708.2731669999994,
+          "externalCaptures": 69,
+          "externalChecks": 115
+        },
+        {
+          "name": "inspectOriginalReport",
+          "wallMs": 3341.663957999999,
+          "externalCaptures": 207,
+          "externalChecks": 675
+        }
+      ],
+      "counters": {
+        "externalCaptures": 759,
+        "externalChecks": 2545
+      },
+      "profile": {
+        "samples": 10453,
+        "sampledTimeMs": 13346.25,
+        "topSelf": [
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::data",
+            "selfMs": 6256.87,
+            "inclusiveMs": 6593.29
+          },
+          {
+            "name": "node:internal/worker/js_transferable::structuredClone",
+            "selfMs": 3761.28,
+            "inclusiveMs": 3834.95
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::dataSignature",
+            "selfMs": 1665.35,
+            "inclusiveMs": 8249.81
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::(anonymous)",
+            "selfMs": 424.58,
+            "inclusiveMs": 10062.79
+          },
+          {
+            "name": "src/lib/program/prototype-source.ts::prototypeFields",
+            "selfMs": 284.33,
+            "inclusiveMs": 290.67
+          },
+          {
+            "name": "(tool-or-builtin)::(garbage collector)",
+            "selfMs": 112.55,
+            "inclusiveMs": 112.55
+          },
+          {
+            "name": "src/lib/phase3.ts::readSyntheticPrototypeSources",
+            "selfMs": 72.79,
+            "inclusiveMs": 1144.63
+          },
+          {
+            "name": "(tool-or-builtin)::structuredClone",
+            "selfMs": 67.42,
+            "inclusiveMs": 67.42
+          },
+          {
+            "name": "src/lib/customer-preview.ts::context",
+            "selfMs": 61.95,
+            "inclusiveMs": 390.5
+          },
+          {
+            "name": "src/lib/workflows/saved-revision-runtime.ts::copy",
+            "selfMs": 53.54,
+            "inclusiveMs": 57.29
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::snapshot",
+            "selfMs": 51.12,
+            "inclusiveMs": 11773.13
+          },
+          {
+            "name": "(tool-or-builtin)::(program)",
+            "selfMs": 36.92,
+            "inclusiveMs": 36.92
+          },
+          {
+            "name": "node:inspector::post",
+            "selfMs": 30,
+            "inclusiveMs": 30
+          },
+          {
+            "name": "src/lib/phase3.ts::(anonymous)",
+            "selfMs": 24.84,
+            "inclusiveMs": 24.84
+          },
+          {
+            "name": "src/lib/operations.ts::(anonymous)",
+            "selfMs": 15.83,
+            "inclusiveMs": 15.83
+          },
+          {
+            "name": "(tool-or-builtin)::Mt",
+            "selfMs": 13.75,
+            "inclusiveMs": 15.04
+          },
+          {
+            "name": "(tool-or-builtin)::yr",
+            "selfMs": 13.54,
+            "inclusiveMs": 13.54
+          },
+          {
+            "name": "src/domain/property/report-page.ts::(anonymous)",
+            "selfMs": 11.37,
+            "inclusiveMs": 87.96
+          },
+          {
+            "name": "src/domain/property/passport.ts::freeze",
+            "selfMs": 11.29,
+            "inclusiveMs": 11.29
+          },
+          {
+            "name": "src/lib/operations.ts::syntheticEstimateCrm",
+            "selfMs": 11.08,
+            "inclusiveMs": 86.71
+          }
+        ],
+        "topInclusive": [
+          {
+            "name": "(tool-or-builtin)::(root)",
+            "selfMs": 0,
+            "inclusiveMs": 13346.25
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::snapshot",
+            "selfMs": 51.12,
+            "inclusiveMs": 11773.13
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::(anonymous)",
+            "selfMs": 424.58,
+            "inclusiveMs": 10062.79
+          },
+          {
+            "name": "(tool-or-builtin)::check",
+            "selfMs": 7.67,
+            "inclusiveMs": 9143.62
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::check",
+            "selfMs": 7.54,
+            "inclusiveMs": 9140.82
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::dataSignature",
+            "selfMs": 1665.35,
+            "inclusiveMs": 8249.81
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::data",
+            "selfMs": 6256.87,
+            "inclusiveMs": 6593.29
+          },
+          {
+            "name": "(tool-or-builtin)::(anonymous)",
+            "selfMs": 4.88,
+            "inclusiveMs": 5643.59
+          },
+          {
+            "name": "src/lib/workflows/service-revision-review.ts::assertServiceRevisionAccess",
+            "selfMs": 5.13,
+            "inclusiveMs": 4898.08
+          },
+          {
+            "name": "src/lib/workflows/service-request-actions.ts::inspectServiceRequestEvidence",
+            "selfMs": 0,
+            "inclusiveMs": 4793.54
+          },
+          {
+            "name": "src/lib/workflows/property-service-continuity.ts::binding",
+            "selfMs": 1.29,
+            "inclusiveMs": 4746.67
+          },
+          {
+            "name": "src/lib/workflows/saved-revision-runtime.ts::assertSavedRevisionAccess",
+            "selfMs": 8.87,
+            "inclusiveMs": 4689.04
+          },
+          {
+            "name": "src/lib/workflows/published-service-navigation.ts::check",
+            "selfMs": 0,
+            "inclusiveMs": 4666.5
+          },
+          {
+            "name": "src/lib/workflows/published-service-navigation.ts::binding",
+            "selfMs": 0,
+            "inclusiveMs": 4593.79
+          },
+          {
+            "name": "src/lib/workflows/service-source-review.ts::readServiceSourceLineage",
+            "selfMs": 0,
+            "inclusiveMs": 4588.21
+          },
+          {
+            "name": "src/lib/workflows/service-continuity.ts::current",
+            "selfMs": 2.5,
+            "inclusiveMs": 4338.07
+          },
+          {
+            "name": "(tool-or-builtin)::phase",
+            "selfMs": 0,
+            "inclusiveMs": 4252.16
+          },
+          {
+            "name": "src/lib/workflows/service-source-review.ts::captureServiceSourceReview",
+            "selfMs": 0,
+            "inclusiveMs": 4027.96
+          },
+          {
+            "name": "src/lib/workflows/service-lifecycle-review.ts::current",
+            "selfMs": 0,
+            "inclusiveMs": 4004.2
+          },
+          {
+            "name": "node:internal/worker/js_transferable::structuredClone",
+            "selfMs": 3761.28,
+            "inclusiveMs": 3834.95
+          },
+          {
+            "name": "src/lib/workflows/service-request-actions.ts::inspectServiceRequestReport",
+            "selfMs": 0,
+            "inclusiveMs": 3425.29
+          },
+          {
+            "name": "src/lib/workflows/service-passport-desk.ts::current",
+            "selfMs": 0,
+            "inclusiveMs": 3300.49
+          },
+          {
+            "name": "src/lib/workflows/service-continuity.ts::assertServiceContinuityCurrentNow",
+            "selfMs": 0,
+            "inclusiveMs": 3273.45
+          },
+          {
+            "name": "src/lib/workflows/published-service-navigation.ts::assertPublishedServiceHistory",
+            "selfMs": 0,
+            "inclusiveMs": 2939.75
+          },
+          {
+            "name": "src/lib/workflows/service-review-path.ts::pathCurrent",
+            "selfMs": 0,
+            "inclusiveMs": 2824.67
+          }
+        ],
+        "operating": [
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::snapshot",
+            "selfMs": 51.12,
+            "inclusiveMs": 11773.13
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::(anonymous)",
+            "selfMs": 424.58,
+            "inclusiveMs": 10062.79
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::check",
+            "selfMs": 7.54,
+            "inclusiveMs": 9140.82
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::dataSignature",
+            "selfMs": 1665.35,
+            "inclusiveMs": 8249.81
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::data",
+            "selfMs": 6256.87,
+            "inclusiveMs": 6593.29
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::captureOperatingSources",
+            "selfMs": 7.5,
+            "inclusiveMs": 2690.93
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::approvedCompany",
+            "selfMs": 3.67,
+            "inclusiveMs": 52.84
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::admit",
+            "selfMs": 2.46,
+            "inclusiveMs": 32.42
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::prepareEntry",
+            "selfMs": 1.21,
+            "inclusiveMs": 16.42
+          },
+          {
+            "name": "src/lib/workflows/operating-center-runtime.ts::prepareOperatingSources",
+            "selfMs": 1.29,
+            "inclusiveMs": 11.21
+          }
+        ]
+      },
+      "limits": [
+        "Instrumentation wraps only exported capture/check calls; intra-module calls are not counted.",
+        "CPU profile inclusive sampled times overlap and cannot be added.",
+        "One selected local worker is not hosted shard concurrency or proof of Ubuntu timeout cause.",
+        "No #387/#389/#391 optimization or admission is applied; all protected bytes remain original.",
+        "No source/authority cache, DB, provider, credential or release activity."
+      ]
+    }
+  ],
+  "earlierProfilerAttempt": {
+    "caseAssertions": "PASS",
+    "summary": "REJECTED_INVALID_OR_UNKNOWN_SAMPLE",
+    "rawProfile": "DISCARDED_BY_TEMPORARY_CLEANUP",
+    "exactBadValue": "UNAVAILABLE",
+    "automaticRetry": false,
+    "limit": "Later valid profiles do not relabel this rejected diagnostic attempt."
+  },
+  "unchangedHeldWork": {
+    "proposal387": "89d2d8f8ad9848110d60bba5e73916a8bbdfabcd",
+    "author389": "c50ce4521fbc264276734a9f8909b525c9a7c2f8",
+    "admissionProposal391": "608ce8b7071a555440bf1f7dccfddec9473c661a",
+    "applied": false
+  },
+  "limits": [
+    "All observations are synthetic local measurements. Hosted timing cause is unresolved.",
+    "External captures plus checks count at least that many fresh native snapshots; private intra-module calls are not counted.",
+    "Inclusive sampled times overlap; do not add them or treat sampling as exact CPU accounting.",
+    "No assertions, budgets, source pins, guarded runtime, provider, Auth, SQL or integration change.",
+    "Source admission, operational acceptance and Release1.0 remain HELD/NOT_AUTHORIZED."
+  ],
+  "finalToolContainment": {
+    "outerWallLimitMs": 45000,
+    "unchangedTestBudgetMs": 30000,
+    "scope": "instrumented Vitest subprocess only",
+    "killSignal": "SIGKILL",
+    "recordedProfilesPredateWrapperOnlyContainment": true,
+    "sourceOrScenarioChange": false
+  },
+  "foundationFinal": {
+    "run": 43485601741,
+    "verifyJob": 132093086192,
+    "head": "394d7fc1bbc6d6a27440e881bc3e9bf3d76befa6",
+    "conclusion": "CANCELLED",
+    "updatedUtc": "2026-11-13T19:31:29Z",
+    "cancelledLogUtc": "2026-11-13T19:31:25.2491431Z",
+    "completedPassSuiteLines": 158,
+    "terminalSummary": false,
+    "failedMarkersObserved": 0,
+    "downstreamVerifyBuildStagingBrowser": "NOT_REACHED",
+    "native": "740_PASS_1_ORIGINAL_SKIP"
+  }
+}

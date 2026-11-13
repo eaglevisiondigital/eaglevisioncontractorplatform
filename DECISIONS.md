@@ -2910,3 +2910,14 @@ historical read of exactbd8 only. Fresh five-file and lineage-mode checks preced
 those reads. Current closeout acceptance uses separate unwrapped real APIs; unknown
 source never falls back to historical success. The strict27 workflow and all source
 checks/historical pins remain unchanged. This fixture fix grants no operational authority.
+
+## Trace exact property-report fan-out without removing freshness fences
+
+Use an explicitly invoked two-scenario profiler over archived417 source; keep its
+new fixture outside default application collection and emit only aggregate timings,
+counts and public source hashes. Profile intervals are sampled/nonadditive, and
+rejected diagnostic attempts stay rejected. Keep original hosted failures and local
+success distinct. The next existing review dependency is the separate391 helper,
+Cycle9 and Cycle24 admission decisions for389; no new optimization or automatic
+integration is authorized. Reducing nested checks requires an independent current-
+authority/post-await/UNKNOWN contract, not a timing-based exception. Release stays NO-GO.

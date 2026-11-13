@@ -3565,3 +3565,19 @@ admitted five-file closeout and unchanged checker TCB; the actual consumer remai
 unwrapped. Six separate live cases prove current76ee source, immutable metadata and
 historical/unknown denial. Parent1FAIL/26PASS; corrected33PASS. No checker, manifest,
 protected-source, runtime, SQL or workflow changed. Release1.0 NOT READY / NOT AUTHORIZED.
+
+## Exact417 report-path performance diagnostic
+
+A new explicit local profiler archives394d7fc without source changes. The original
+C25 brand2 timeout case passes locally in12.289s; measured C25/C28 report paths make
+at least2825/3304 fresh full snapshots through observed exported calls. Preparation
+is about35ms; nested evidence/report readers dominate. These are local instrumented
+measurements, not Ubuntu timeout closure. Eleven pure diagnostic controls, strict
+fixture types, lint/format and design integrity PASS. No unprotected runtime repair
+was established. Existing387/389/391 optimization/admissions remain HELD; no source
+cache, guard removal, assertion/budget/pin change, provider or hosted action occurs.
+Release1.0 remains NOT READY / NOT AUTHORIZED.
+
+Exact417 Foundation subsequently completed CANCELLED at19:31:29UTC inside
+application Vitest;158 completed PASS suite lines are partial, without a terminal
+summary. Native740PASS/one original skip and failed supplement remain separate.
