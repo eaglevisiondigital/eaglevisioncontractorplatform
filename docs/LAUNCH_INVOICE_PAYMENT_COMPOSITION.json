@@ -1,0 +1,199 @@
+{
+  "schema": "launch-invoice-payment-composition-v1",
+  "baselineCommit": "abbe34522672d6b69dc9b7e566fcf80241c68b23",
+  "invoiceProposalCommit": "835702cc85e41fde689f54bb56810276e6ba9fda",
+  "classification": "UNAPPLIED_UNWIRED_DEVELOPMENT_COMPOSITION",
+  "sources": [
+    {
+      "path": "docs/FIRST_CONTRACTOR_INVOICE_BOUNDARY.json",
+      "originCommit": "44955c2b6e4475bf82fc1bc535591a8e387b635e",
+      "originSha256": "b7180dae12f2ce16b3e2f687f1ed335c1266d6783dd0a5cce2a9f1c63d7e9ac8",
+      "currentSha256": "b7180dae12f2ce16b3e2f687f1ed335c1266d6783dd0a5cce2a9f1c63d7e9ac8"
+    },
+    {
+      "path": "docs/FIRST_CONTRACTOR_LAUNCH_ACCEPTANCE.md",
+      "originCommit": "44955c2b6e4475bf82fc1bc535591a8e387b635e",
+      "originSha256": "c2436eb34bbd248d5b95919eea26e409691b4625559bcfec45922b794364d5f1",
+      "currentSha256": "c2436eb34bbd248d5b95919eea26e409691b4625559bcfec45922b794364d5f1"
+    },
+    {
+      "path": "src/lib/release.ts",
+      "originCommit": "44955c2b6e4475bf82fc1bc535591a8e387b635e",
+      "originSha256": "99990a5714ec6b3ebedb166ef16d5256dcf5ad896b4650d30ceb8bcd472b4e58",
+      "currentSha256": "99990a5714ec6b3ebedb166ef16d5256dcf5ad896b4650d30ceb8bcd472b4e58"
+    },
+    {
+      "path": "tests/database/release.test.ts",
+      "originCommit": "44955c2b6e4475bf82fc1bc535591a8e387b635e",
+      "originSha256": "ce4d30e4b46343f11e3b3e6ee548efb503fa03f64b09f745148f28c65bbe7ce5",
+      "currentSha256": "ce4d30e4b46343f11e3b3e6ee548efb503fa03f64b09f745148f28c65bbe7ce5"
+    },
+    {
+      "path": "tests/workflows/invoice-read-boundary.test.ts",
+      "originCommit": "44955c2b6e4475bf82fc1bc535591a8e387b635e",
+      "originSha256": "ec9f47f13420857bab7761bfff6c0a665d205523901f30629ef3ddc5c88b6e3a",
+      "currentSha256": "9036e62557904b12c12b7e352878fb9a52c6eee282f4490b044d5f54e0491b41",
+      "rootTestDelta": "FINITE_HISTORICAL_CONTROL_STORE_ADMISSION"
+    },
+    {
+      "path": "docs/COMMERCIAL_INVOICE_DRAFT_CANDIDATE.json",
+      "originCommit": "e007bb28c528839e747a59a1e5407f278430fc01",
+      "originSha256": "dfdecf7675fcbf332585c8bd7017ad45608ed230402ed21d997573739e2d9598",
+      "currentSha256": "dfdecf7675fcbf332585c8bd7017ad45608ed230402ed21d997573739e2d9598"
+    },
+    {
+      "path": "server/invoices/commercial-draft-client.ts",
+      "originCommit": "e007bb28c528839e747a59a1e5407f278430fc01",
+      "originSha256": "12c1eb303f10f8cb9e6c5f765839419f55e4b6cfd16c6c6ef9f8812ccbb76194",
+      "currentSha256": "12c1eb303f10f8cb9e6c5f765839419f55e4b6cfd16c6c6ef9f8812ccbb76194"
+    },
+    {
+      "path": "tests/database/commercial-invoice-drafts.test.ts",
+      "originCommit": "e007bb28c528839e747a59a1e5407f278430fc01",
+      "originSha256": "a5732649d4393d8b7a12509b2561483be15640db0ad8b25e9de279bae4b14469",
+      "currentSha256": "ff024c5080801f824e92de29672cfc0c2fdd738bd05d46211bc6cb994c211432",
+      "rootTestDelta": "TWO_TENANT_DRAFT_RECEIPT_PAYMENT_DENIAL"
+    },
+    {
+      "path": "tests/database/commercial-invoice-draft-adversarial.test.ts",
+      "originCommit": "e007bb28c528839e747a59a1e5407f278430fc01",
+      "originSha256": "ece3260e2921f5666947a6a045dc10268984bdb1f15d08a9e4782751ba0fd974",
+      "currentSha256": "ece3260e2921f5666947a6a045dc10268984bdb1f15d08a9e4782751ba0fd974"
+    },
+    {
+      "path": "tests/commercial-invoice-client.test.ts",
+      "originCommit": "e007bb28c528839e747a59a1e5407f278430fc01",
+      "originSha256": "ec0829098cd7fc967fad82d33b5db003dcab67ca9b2f135ae55a2dd74349e34a",
+      "currentSha256": "ec0829098cd7fc967fad82d33b5db003dcab67ca9b2f135ae55a2dd74349e34a"
+    },
+    {
+      "path": "tests/commercial-invoice-client-adversarial.test.ts",
+      "originCommit": "e007bb28c528839e747a59a1e5407f278430fc01",
+      "originSha256": "25f1e6169365e76558348df63792c131e4f26414d4c8d50b407657ce0f282c12",
+      "currentSha256": "25f1e6169365e76558348df63792c131e4f26414d4c8d50b407657ce0f282c12"
+    },
+    {
+      "path": "tests/commercial-invoice-client-reconciliation.test.ts",
+      "originCommit": "e007bb28c528839e747a59a1e5407f278430fc01",
+      "originSha256": "8be24bc86172b7997ef4268a4df7375acc8cfcb131a8b7f3442c0f6d11aa7e40",
+      "currentSha256": "8be24bc86172b7997ef4268a4df7375acc8cfcb131a8b7f3442c0f6d11aa7e40"
+    },
+    {
+      "path": "docs/COMMERCIAL_INVOICE_DRAFT_AUTH_COMPATIBILITY.json",
+      "originCommit": "c8d39abe40780a89acefb93634734e960c252490",
+      "originSha256": "5f56cc5aefcbee3d98019923604634bb4b515078038bfdbfa26c99287edf1c60",
+      "currentSha256": "5f56cc5aefcbee3d98019923604634bb4b515078038bfdbfa26c99287edf1c60"
+    },
+    {
+      "path": "tests/database/commercial-invoice-draft-auth-compatibility.test.ts",
+      "originCommit": "c8d39abe40780a89acefb93634734e960c252490",
+      "originSha256": "0d3873085212afd22e7c511db65afb0c8514d7b03182bbb9cf8f0ad944a52950",
+      "currentSha256": "0d3873085212afd22e7c511db65afb0c8514d7b03182bbb9cf8f0ad944a52950"
+    },
+    {
+      "path": "server/invoices/commercial-drafts.proposed.sql",
+      "originCommit": "835702cc85e41fde689f54bb56810276e6ba9fda",
+      "originSha256": "da35d098727eff68ae7905c3709d6982cf89560cae538923f5d7e570dab0306e",
+      "currentSha256": "da35d098727eff68ae7905c3709d6982cf89560cae538923f5d7e570dab0306e"
+    },
+    {
+      "path": "docs/COMMERCIAL_INVOICE_DRAFT_FINAL_DEADLINE.json",
+      "originCommit": "835702cc85e41fde689f54bb56810276e6ba9fda",
+      "originSha256": "fd276c4f3fca5b25719d0bba3595cf90d4f446df168c41eaa866aa92a9214545",
+      "currentSha256": "fd276c4f3fca5b25719d0bba3595cf90d4f446df168c41eaa866aa92a9214545"
+    },
+    {
+      "path": "tests/database/commercial-invoice-draft-final-deadline.test.ts",
+      "originCommit": "835702cc85e41fde689f54bb56810276e6ba9fda",
+      "originSha256": "84cd88c38419bce39957f0f91665ffcea3cbf287153df954a13a169fb87ea2cd",
+      "currentSha256": "84cd88c38419bce39957f0f91665ffcea3cbf287153df954a13a169fb87ea2cd"
+    },
+    {
+      "path": "tests/nmi-two-merchant-token-boundary.test.ts",
+      "originCommit": "1199a062ab846989f01fc60fec4d2b51da64835d",
+      "originSha256": "e61ccf5a059bdf5116387176d1afcbf1b0d596f47c7091e72ea42c800def4fff",
+      "currentSha256": "e61ccf5a059bdf5116387176d1afcbf1b0d596f47c7091e72ea42c800def4fff"
+    },
+    {
+      "path": "server/payments/control-store.ts",
+      "originCommit": "abbe34522672d6b69dc9b7e566fcf80241c68b23",
+      "originSha256": "2dc82d0ff2548051de6df1461ddf783355e602da914a099bf14f0eba29f3ac7c",
+      "currentSha256": "2dc82d0ff2548051de6df1461ddf783355e602da914a099bf14f0eba29f3ac7c"
+    },
+    {
+      "path": "server/payments/sandbox.ts",
+      "originCommit": "abbe34522672d6b69dc9b7e566fcf80241c68b23",
+      "originSha256": "89dc2b03f273ee00c73e8342fcf9e8db6d78d5f898bde96ccff94e69fc0276cc",
+      "currentSha256": "89dc2b03f273ee00c73e8342fcf9e8db6d78d5f898bde96ccff94e69fc0276cc"
+    },
+    {
+      "path": "server/payments/refunds.ts",
+      "originCommit": "abbe34522672d6b69dc9b7e566fcf80241c68b23",
+      "originSha256": "78f74ab633f3ba192d447ffb1b77f8d027c38df49ea0fd6f06b9fb65df2490a5",
+      "currentSha256": "78f74ab633f3ba192d447ffb1b77f8d027c38df49ea0fd6f06b9fb65df2490a5"
+    },
+    {
+      "path": "server/payments/postgres-store.ts",
+      "originCommit": "abbe34522672d6b69dc9b7e566fcf80241c68b23",
+      "originSha256": "9b2b9148db4ca5389aa8e9ef4bd5d5c6ccd700a2ed85a7b5dc0f58f8d94d0eef",
+      "currentSha256": "9b2b9148db4ca5389aa8e9ef4bd5d5c6ccd700a2ed85a7b5dc0f58f8d94d0eef"
+    },
+    {
+      "path": "server/providers/control.ts",
+      "originCommit": "abbe34522672d6b69dc9b7e566fcf80241c68b23",
+      "originSha256": "5f979931b85b67cb7b05b9b6ebf529c68538e52674f6eeeb6b7811acc5822293",
+      "currentSha256": "5f979931b85b67cb7b05b9b6ebf529c68538e52674f6eeeb6b7811acc5822293"
+    },
+    {
+      "path": "server/providers/safety.ts",
+      "originCommit": "abbe34522672d6b69dc9b7e566fcf80241c68b23",
+      "originSha256": "a8865035638e0cd19d5c1ea4b43dc9ed04012dd34cce9cc5084d7f35e9414c4d",
+      "currentSha256": "a8865035638e0cd19d5c1ea4b43dc9ed04012dd34cce9cc5084d7f35e9414c4d"
+    },
+    {
+      "path": "tests/fixtures/first-launch-merchants.ts",
+      "originCommit": "abbe34522672d6b69dc9b7e566fcf80241c68b23",
+      "originSha256": "a105d44b4ba33437d46c0abe3203dc49247fe7874397ef933d0b81a960d2c34c",
+      "currentSha256": "a105d44b4ba33437d46c0abe3203dc49247fe7874397ef933d0b81a960d2c34c"
+    },
+    {
+      "path": "server/payments/reconciliation.ts",
+      "originCommit": "abbe34522672d6b69dc9b7e566fcf80241c68b23",
+      "originSha256": "94f339aa679c0b7fa0880fef035b921608b0717614c3705620f06eed07f9c0b0",
+      "currentSha256": "94f339aa679c0b7fa0880fef035b921608b0717614c3705620f06eed07f9c0b0"
+    }
+  ],
+  "historicalPinConflict": {
+    "observed": "13 PASS / 1 FAIL original invoice-reader cases; only admitted control-store successor differs",
+    "original": "9ff71ee0a1c0ada974ed209e1b1ef9227578eb9a5b9d78c2c43baccb92fbbbf6",
+    "admitted": "2dc82d0ff2548051de6df1461ddf783355e602da914a099bf14f0eba29f3ac7c",
+    "resolution": "Named one-entry current admission plus original Git-object assertion; all other original assertions/pins preserved."
+  },
+  "validation": {
+    "affectedUnitCases": 275,
+    "nativeCases": 186,
+    "nativeFiles": 9,
+    "independentNewNativeBoundaryCases": 2,
+    "responsiveCases": 6,
+    "hostedCI": "PENDING_NEW_HEAD",
+    "sourceReview": "CLEAR_FOR_UNAPPLIED_TRUSTED_SQL_DEVELOPMENT_COMPOSITION",
+    "sourceCompositionCases": 6
+  },
+  "ownerDecisionRegister": "https://github.com/eaglevisiondigital/eaglevisioncontractorplatform/issues/358#issuecomment-6839463130",
+  "operationalAcceptance": {
+    "D1": "OWNER_DECISION_REQUIRED",
+    "D2": "OWNER_DECISION_REQUIRED",
+    "D3": "OWNER_DECISION_REQUIRED",
+    "A01_A12": "NOT_RUN",
+    "installedWriterInventory": "UNVERIFIED",
+    "NMI": "NOT_RUN"
+  },
+  "restrictions": [
+    "All commercial SQL/roles/grants remain UNAPPLIED; no application route or operational connection factory.",
+    "Disposable Auth/GUC/SQL fixtures are not genuine hosted authentication or independent custody.",
+    "Final actor checks prove function/autocommit result boundary, not arbitrary trusted delayed COMMIT.",
+    "No invoice issuance, debt, real tenant/merchant binding, communication, provider execution or recovery operation.",
+    "Optional platform candidate remains separate; source composition is not a merge or deployment."
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}
