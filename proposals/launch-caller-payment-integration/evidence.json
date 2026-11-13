@@ -1,0 +1,102 @@
+{
+  "schema": "launch-caller-payment-integration-preparation-v1",
+  "parent": "461a9017b526dae9bc3a88577fd5ad5b1c71963e",
+  "historicalLaunchBase": "af36a27e34b77bfef3700d7cd87fdb39c4dc50d5",
+  "authors": {
+    "8f498f2c657608c64d40a3527be13b47a189b7b7": "0e49670e6cc05473d3fd4e033b2c0f42b5fc10e0",
+    "6063aea60588975bbe88c8ccf8b1d864721b7082": "8f498f2c657608c64d40a3527be13b47a189b7b7",
+    "82c3ffd11499f9addbb92d6d5d7d1deb7e34d64c": "177fa209f81f03e6d1d1e2cba2dab8c4a90e18b7",
+    "ec74da65382841eb20749873fc3873623be56eb2": "82c3ffd11499f9addbb92d6d5d7d1deb7e34d64c",
+    "461a9017b526dae9bc3a88577fd5ad5b1c71963e": "ec74da65382841eb20749873fc3873623be56eb2",
+    "912639a07146b6f7f55d2c983f78334f3dfd63aa": "2d39359299a091456cf47196cef6f3257dddec9d"
+  },
+  "classification": "ISOLATED_PROPOSED_INTEGRATION_NOT_PROMOTED",
+  "authorization": {
+    "sourceAuthor": "EXACT_PATCHES_APPROVED",
+    "integrationPreparation": "OWNER_DIRECTED",
+    "protectedPromotion": "HELD_SEPARATE_APPROVAL",
+    "SQLInstallation": "NOT_AUTHORIZED",
+    "operationalRoutes": "UNWIRED",
+    "release": "NO_GO"
+  },
+  "protectedDiff": {
+    "path": "proposals/launch-caller-payment-integration/protected-sources.patch",
+    "sha256": "01ba7ffe88d5504fd014bfcc2b70deecb971bef03266676c1ec14835a6a0b42d",
+    "scope": "ONLY_FIVE_PROTECTED_AUTHOR_FILES_NOT_A_STANDALONE_INSTALLER"
+  },
+  "sources": [
+    {
+      "path": "server/invoices/commercial-draft-client.ts",
+      "beforeSha256": "12c1eb303f10f8cb9e6c5f765839419f55e4b6cfd16c6c6ef9f8812ccbb76194",
+      "authoredSha256": "94aa164e60c780cb53f8658b16c57bc9c17da5d9469c73f9d73cab627dcea694",
+      "authorCommit": "461a9017b526dae9bc3a88577fd5ad5b1c71963e"
+    },
+    {
+      "path": "server/invoices/commercial-caller-connection.ts",
+      "beforeSha256": null,
+      "authoredSha256": "3d892a8ae7757a6f480fde4638f17f4b642436ba728446dfd84811590be0aeed",
+      "authorCommit": "461a9017b526dae9bc3a88577fd5ad5b1c71963e"
+    },
+    {
+      "path": "scripts/invoice-caller-source-admission.mjs",
+      "beforeSha256": null,
+      "authoredSha256": "2a6ffb692443a7830df021e9a8cce048ac4388947e03a27af4286b4e26ee9a25",
+      "authorCommit": "461a9017b526dae9bc3a88577fd5ad5b1c71963e"
+    },
+    {
+      "path": "tests/launch-invoice-payment-source.test.ts",
+      "beforeSha256": "2167d4705c9de49c8d8bbecff0e3dc639ceacbc62c508181c42a1e1ac6a22370",
+      "authoredSha256": "9ed3efe744bdb9003d3d8459e62dd5fe9479475768df6cb58dc4d8257ef37b00",
+      "authorCommit": "461a9017b526dae9bc3a88577fd5ad5b1c71963e"
+    },
+    {
+      "path": "tests/invoice-caller-migration-source.test.ts",
+      "beforeSha256": null,
+      "authoredSha256": "4879c0b0f3da8bc2e5d981faae43fe443c317ffcd400b654fc550f0605149a08",
+      "authorCommit": "461a9017b526dae9bc3a88577fd5ad5b1c71963e"
+    },
+    {
+      "path": "tests/database/nmi-refund-unknown-composition.test.ts",
+      "beforeSha256": null,
+      "authoredSha256": "89a12418c41b09f6962542e18b54efa5dd21825363cb3bdaa3f1452aa296b7e7",
+      "authorCommit": "912639a07146b6f7f55d2c983f78334f3dfd63aa"
+    }
+  ],
+  "immutableRecords": [
+    "docs/LAUNCH_INVOICE_PAYMENT_COMPOSITION.json",
+    "docs/COMMERCIAL_INVOICE_DRAFT_CANDIDATE.json",
+    "docs/INVOICE_CALLER_FIXTURE_SUCCESSOR.json",
+    "server/invoices/commercial-drafts.proposed.sql",
+    "server/customer/broker-auth.ts"
+  ],
+  "optionalExcluded": ["84bdc4a369190a9e304fabea1ce38cc8f18ccfab"],
+  "acceptance": {
+    "native": "LOCAL_DISPOSABLE_66_PASS_NO_SKIPS",
+    "browser": "6_EXISTING_RESPONSIVE_SYNTHETIC_CASES_PASS",
+    "hostedAuth": "NOT_RUN",
+    "provider": "NOT_RUN",
+    "D1_D2_D3": "OPEN",
+    "A01_A12": "NOT_RUN",
+    "affectedUnit": "239_PASS_BEFORE_TRIGGER_COMPOSITION",
+    "trigger": "68_PASS_INDEPENDENTLY_SAME_JOB_BUDGETS",
+    "finalSourceChecks": "82_PASS_WITH_EXACT_CI_TRIGGER",
+    "build": "PASS_EXISTING_CHUNK_WARNING_ONLY",
+    "hostedCI": "PENDING_NEW_COMPOSED_HEAD"
+  },
+  "launchOrder": [
+    "Saul 2 Paul Builders LLC DBA Saul 2 Paul Builders & Gutters",
+    "Cunningham Construction"
+  ],
+  "ordinaryCI": [
+    {
+      "path": ".github/workflows/cycle33-foundation-runtime.yml",
+      "authorCommit": "5108f01369fc9d81e7cba3e8cb9100070e654aa6",
+      "sha256": "68f8f873a852f61c1ea95273bcd0567a3c8c157fac3ab1d59813ec2bf72854c2"
+    },
+    {
+      "path": "tests/launch-foundation-trigger.test.ts",
+      "authorCommit": "5108f01369fc9d81e7cba3e8cb9100070e654aa6",
+      "sha256": "92868fb69631d8dfa5f79280efc61ce1a5a9a1f687ad61c316c1ae719fc7e47f"
+    }
+  ]
+}

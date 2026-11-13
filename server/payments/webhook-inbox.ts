@@ -1,6 +1,7 @@
 import type { SandboxMerchant } from './sandbox';
 import { authorizeNetWebhook, nmiPaymentWebhook } from '../providers/webhooks';
-import { providerJson, referencePattern } from '../providers/safety';
+import { referencePattern } from '../providers/safety';
+import { decodePaymentResponse } from './response-json';
 export interface GatewayEventInbox {
   recordWebhook(
     merchant: SandboxMerchant,
@@ -36,7 +37,10 @@ export async function receiveSandboxPaymentWebhook(
       ? authorizeNetWebhook(raw, signature, key.value)
       : nmiPaymentWebhook(raw, signature, key.value).bodyDigest;
   // Parse only after authenticating exact bytes. Never accept a tenant from payload.
-  const event = providerJson(raw.toString('utf8'));
+  // Webhooks previously rejected a leading BOM; retain that stricter contract.
+  if (raw[0] === 0xef && raw[1] === 0xbb && raw[2] === 0xbf)
+    throw new Error('Invalid webhook JSON');
+  const event = decodePaymentResponse(raw);
   const eventId =
     m.provider === 'authorize_net' ? event.notificationId : event.event_id;
   if (
