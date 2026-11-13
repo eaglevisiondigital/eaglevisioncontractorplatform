@@ -2910,3 +2910,15 @@ historical read of exactbd8 only. Fresh five-file and lineage-mode checks preced
 those reads. Current closeout acceptance uses separate unwrapped real APIs; unknown
 source never falls back to historical success. The strict27 workflow and all source
 checks/historical pins remain unchanged. This fixture fix grants no operational authority.
+
+## Reuse reviewed optimization bytes without inventing a new source admission
+
+Bind current-context qualification to exact424, existing389 sole-path author and
+unchanged391 artifacts. Accept only complete exact BEFORE/AFTER data frames;
+reject mixed/unknown state and recheck the observed frame, cleaning temporary
+sources even after late denial. Seal measurement setup before import. Keep two
+controlled paired measurements separate from ten original natural-input regressions
+and reused3045 differential evidence. No new cache or guard removal is authorized.
+Helper, Cycle9 and Cycle24 need separate exact decisions and reviewed author parents;
+later callback-successor promotion needs its own binding. Source checks grant no
+Auth, recovery, provider, financial, deployment or Release1.0 acceptance.

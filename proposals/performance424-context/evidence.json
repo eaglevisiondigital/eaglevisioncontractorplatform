@@ -1,0 +1,19 @@
+{
+  "classification": "UNAPPLIED_CURRENT_CONTEXT_QUALIFICATION",
+  "context": "27300dbaff877d18ecb219a2c9000c96e7c3e8c8",
+  "optimizationAuthor": "c50ce4521fbc264276734a9f8909b525c9a7c2f8",
+  "optimizationParent": "af36a27e34b77bfef3700d7cd87fdb39c4dc50d5",
+  "optimizationPath": "src/lib/workflows/operating-center-runtime.ts",
+  "originalSha256": "7a5272ae344400714dea1efe727a40c19a10c96ccfdf70f7321e127488bbd239",
+  "authoredSha256": "a789309d7f8710f2e3150f4cbc8f8acc5aee9c99633c7611e503db089bcd2544",
+  "proposal391": "608ce8b7071a555440bf1f7dccfddec9473c661a",
+  "separateApprovalPatches": {
+    "helper": "97852ab007d3d7600db597e53d420658a75f4e51c932cd25ce3a509d62396982",
+    "cycle9": "274c02512df50c1a751fec124db3e8e8c22474c2286a0e70e734c76f91a8c5be",
+    "cycle24": "60f719216eb985839602bbb97e1a3d5420b80579771583677622e7c5715ab447"
+  },
+  "canonicalChanges": false,
+  "admissionAuthorized": false,
+  "integrationAuthorized": false,
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

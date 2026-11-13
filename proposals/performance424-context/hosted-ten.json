@@ -1,0 +1,67 @@
+{
+  "source": "27300dbaff877d18ecb219a2c9000c96e7c3e8c8",
+  "run": 43498092270,
+  "originalTimeoutMs": 30000,
+  "failures": [
+    {
+      "job": 132136381710,
+      "file": "tests/cycle18-independent-integration-review.test.ts",
+      "describe": "",
+      "title": "finance: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay"
+    },
+    {
+      "job": 132136381710,
+      "file": "tests/cycle18-independent-integration-review.test.ts",
+      "describe": "",
+      "title": "finance: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay"
+    },
+    {
+      "job": 132136382374,
+      "file": "tests/cycle24-independent-integration-review.test.ts",
+      "describe": "Cycle24 independent exact native action integration",
+      "title": "brand 0 native correction and material review remain the original cost and priority sources"
+    },
+    {
+      "job": 132136382374,
+      "file": "tests/cycle24-independent-integration-review.test.ts",
+      "describe": "Cycle24 independent exact native action integration",
+      "title": "brand 1 native correction and material review remain the original cost and priority sources"
+    },
+    {
+      "job": 132136382374,
+      "file": "tests/cycle24-independent-integration-review.test.ts",
+      "describe": "Cycle24 independent exact native action integration",
+      "title": "brand 2 native correction and material review remain the original cost and priority sources"
+    },
+    {
+      "job": 132136382320,
+      "file": "tests/cycle23-service-source-review.test.ts",
+      "describe": "",
+      "title": "brand 2 publication appends a version without rewriting the original report or changing its job"
+    },
+    {
+      "job": 132136382320,
+      "file": "tests/cycle25-owner-action-continuity.test.ts",
+      "describe": "Cycle25 original owner action refresh continuity",
+      "title": "brand 1 exact unchanged selection survives refresh as presentation requiring fresh verification"
+    },
+    {
+      "job": 132136382320,
+      "file": "tests/cycle25-owner-action-continuity.test.ts",
+      "describe": "Cycle25 original owner action refresh continuity",
+      "title": "brand 2 exact unchanged selection survives refresh as presentation requiring fresh verification"
+    },
+    {
+      "job": 132136382320,
+      "file": "tests/cycle25-owner-action-continuity.test.ts",
+      "describe": "Cycle25 original owner action refresh continuity",
+      "title": "brand 2 actual recorded cost change clears a same-key selected action without inventing completion"
+    },
+    {
+      "job": 132136382328,
+      "file": "tests/cycle23-independent-integration-review.test.ts",
+      "describe": "Cycle23 independent frozen-runtime cross-module review",
+      "title": "I10 another property report and another job occurrence cannot replace the retained exact sources"
+    }
+  ]
+}
