@@ -3434,3 +3434,16 @@ conflicts remain separate across both fictional merchants. PGlite and native PG1
 each pass the three selected cases; prior three refund cases were filtered, not
 rerun. Controlled observations/signatures are not genuine provider facts, hosted
 Auth or financial authority. Runtime/SQL/pins remain unchanged; Release1.0 NO-GO.
+
+## Native concurrent signed inbox delivery
+
+Four new native-only cases extend the existing NMI composition tests without
+changing the original six cases. Two independent backends process identical or
+conflicting signed event identities for each fictional merchant. An actual lock
+wait on the first backend is required; the controlled test port withholds its ACK
+until COMMIT, and only one immutable inbox row remains. Duplicate delivery returns
+duplicate; conflicting valid signatures return UNKNOWN. Attempt snapshots and
+settlement/reconciliation counts remain unchanged. The four selected PG17 cases
+pass; prior six are filtered, not rerun. PGlite cannot prove this concurrency.
+This is trusted fixture transaction custody, not an operational adapter or real
+provider/HTTP/Auth acceptance. All runtime/SQL/pins and release gates remain closed.

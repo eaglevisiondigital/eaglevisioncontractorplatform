@@ -2833,3 +2833,11 @@ explicit reconciliation/observation commands. Authenticate exact callback bytes
 without trusting payload tenant identity or interpreting settlement wording as
 authority. Preserve UNKNOWN and immutable inbox/attempt evidence after ACK loss.
 This acceptance increment adds no callback-to-money bridge or runtime/SQL change.
+
+## Exercise concurrent authenticated inbox claims on actual native backends
+
+Add only native acceptance cases to the existing payment test file. Require a
+real blocker/blocked backend witness and observe both promise outcomes immediately.
+Keep callback ACK behind explicit test COMMIT and prove immutable event/digest plus
+unchanged financial state for duplicate and conflicting deliveries. Do not infer
+operational ACK custody, provider settlement or authority from this fixture.
