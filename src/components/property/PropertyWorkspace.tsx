@@ -1,3 +1,4 @@
+import { inspectionDateProposal } from './inspection-date-proposal';
 import { inspectionChecklistLabels } from './inspection-plan-fields';
 import { BackOfficeText } from './back-office-copy';
 import {
@@ -21,7 +22,6 @@ import {
 import {
   type Visit,
   type VisitContent,
-  occurrence,
 } from '../../domain/property/inspections';
 import {
   compareSuppliers,
@@ -125,10 +125,20 @@ function Inspections({
     ),
     [visitId, setVisitId] = useState(state.visits[0].id),
     [plan, setPlan] = useState(structuredClone(state.plans[0])),
-    [date, setDate] = useState(
-      occurrence(state.plans[0], state.visits.length) ??
-        state.plans[0].starts_on,
-    );
+    [enteredDate, setDate] = useState(''),
+    [dateEntered, setDateEntered] = useState(false);
+  const savedPlan = state.plans.find(
+    (p) => p.id === plan.id && p.organization_id === org,
+  );
+  let proposedDate = '',
+    proposalError = '';
+  try {
+    if (!savedPlan) throw Error();
+    proposedDate = inspectionDateProposal(org, savedPlan, state.visits) ?? '';
+  } catch {
+    proposalError = 'Saved-plan date proposal unavailable · UNKNOWN';
+  }
+  const date = dateEntered ? enteredDate : proposedDate;
   const task = useTask(),
     v =
       state.visits.find((v) => v.id === visitId && v.plan_id === plan.id) ??
@@ -469,9 +479,31 @@ function Inspections({
                     type="date"
                     required
                     value={date}
-                    onChange={(e) => setDate(e.target.value)}
+                    onChange={(e) => {
+                      setDateEntered(true);
+                      setDate(e.target.value);
+                    }}
                   />
                 </Field>
+                <p role={proposalError ? 'status' : undefined}>
+                  {proposalError ||
+                    (dateEntered
+                      ? 'Staff-entered date retained; review it for the selected plan.'
+                      : proposedDate
+                        ? 'Saved-plan date proposal only. An earlier gap is not overdue work, future availability or a booking. Save plan edits to update this proposal.'
+                        : 'No unoccupied date in the saved one-time plan. An explicit inspection date still requires staff review.')}
+                </p>
+                <button
+                  type="button"
+                  className="secondary"
+                  disabled={task.busy || !!proposalError || !proposedDate}
+                  onClick={() => {
+                    setDateEntered(false);
+                    setDate(proposedDate);
+                  }}
+                >
+                  Use saved plan date proposal
+                </button>
                 <button className="secondary" disabled={task.busy}>
                   <BackOfficeText text="Schedule visit" />
                 </button>

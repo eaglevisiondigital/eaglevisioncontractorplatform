@@ -2799,3 +2799,12 @@ Preserve the existing indexed item identity and required flag when serializing
 labels, defaulting only new positions to required. Keep the original explicit
 positional contract and canonical Save/CAS; do not infer reordered identities from
 text or treat template changes as completed work. No operational authority changes.
+
+### Exact saved-plan date proposals — November 13
+
+An inspection date suggestion must not count another plan's visits. Reuse original
+anchored occurrence calculations and exact selected-plan occupied dates, preserving
+UNKNOWN on contradictory evidence. Earlier unscheduled gaps are proposals requiring
+review, not overdue/completed/available work. Keep manual dates intact until explicit
+reset and leave scheduling behind the original deliberate action. This does not
+change recurrence policy, canonical writers, operational authority or custody gates.
