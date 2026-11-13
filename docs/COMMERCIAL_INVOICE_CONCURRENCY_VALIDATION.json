@@ -1,0 +1,47 @@
+{
+  "schema": "commercial-invoice-native-concurrency-evidence-v1",
+  "baseline": "429981149ddeaa2af1b0ce086b81e63a192ba451",
+  "classification": "TEST_ONLY_UNAPPLIED_PROTOCOL_EVIDENCE",
+  "test": "tests/database/commercial-invoice-concurrency-boundaries.test.ts",
+  "unchangedProtocol": {
+    "server/invoices/commercial-drafts.proposed.sql": "da35d098727eff68ae7905c3709d6982cf89560cae538923f5d7e570dab0306e",
+    "server/invoices/commercial-draft-client.ts": "12c1eb303f10f8cb9e6c5f765839419f55e4b6cfd16c6c6ef9f8812ccbb76194"
+  },
+  "cases": [
+    "Distinct invoice and command IDs for one issued source wait on the original transaction; only the committed winner has a draft, revision and receipt. The losing client retains UNKNOWN and rejects a replacement dispatch.",
+    "A competing same-command request with a substituted invoice and payload waits on the original advisory lock, then receives identity conflict. Reading the winner's exact receipt cannot clear the losing invoice's hold.",
+    "One command UUID works independently for two authorized tenants while the first transaction remains open; the foreign receipt stays unavailable."
+  ],
+  "method": "Real independent PostgreSQL connections and pg_blocking_pids/pg_stat_activity lock witnesses; unchanged 1500ms SQL lock timeout. Only the two cluster-global fixture role names are remapped.",
+  "validation": {
+    "nativePostgreSQL17": { "passed": 3, "skipped": 0 },
+    "pglite": { "passed": 0, "nativeOnlySkipped": 3 },
+    "strictTypecheck": "PASS",
+    "scopedLint": "PASS",
+    "featuresAndLockedDesign": "PASS",
+    "hostedCI": "PENDING_NEW_HEAD"
+  },
+  "limits": [
+    "The claim-setting identities and privileged lock monitor are trusted disposable fixtures, not genuine Auth, installed-role or deprivileged-admin proof.",
+    "The first transaction is deliberately held open to stage contention; no success or durability is inferred before its COMMIT and subsequent exact read.",
+    "Ordinary DB uniqueness and instance-local UNKNOWN holds do not establish independent rollback-resistant custody, process-restart protection or D2/D3 acceptance.",
+    "No runtime defect is claimed or patched. No migration, client, schema proposal, operational route, provider or credential source changed."
+  ],
+  "nonproductionRehearsal": {
+    "performed": false,
+    "existingRecordsOnly": [
+      "docs/program/CYCLE33_V1_D1_RETURN_FORM.md",
+      "docs/FIRST_CONTRACTOR_LAUNCH_ACCEPTANCE.md",
+      "docs/COMMERCIAL_INVOICE_DRAFT_CANDIDATE.json",
+      "docs/COMMERCIAL_INVOICE_DRAFT_AUTH_COMPATIBILITY.json",
+      "docs/COMMERCIAL_INVOICE_DRAFT_FINAL_DEADLINE.json"
+    ],
+    "minimumSeparateAuthorization": [
+      "Return the existing private D1 form with exact target/source/command, real accountable duties, independent fence/reviewer and an independently reviewed installed writer/bypass inventory; no new form or appointments are supplied here.",
+      "Resolve original D2/D3 and original recovery/P1-on13/separate customer14/4B-broker acceptance sequence without repeating accepted setup or requesting duplicate P1 approval.",
+      "Any later nonproduction commercial-draft installation needs exact target and the full reviewed SQL/role/policy/grant diff bound to the unchanged proposal hash above, current verified bearer/session custody, finite actor/source scope, stop/quarantine and cleanup authority. Approval of this evidence does not install anything.",
+      "Authorize an exact bounded draft-only rehearsal separately; issuance, customer publication, NMI/payment/refund execution and production remain excluded."
+    ]
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

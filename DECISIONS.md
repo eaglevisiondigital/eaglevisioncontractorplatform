@@ -1,3 +1,14 @@
+## November 13 · prove invoice command/source concurrency without a new writer
+
+Add only native tests for distinct invoice IDs competing over one issued source,
+concurrent command-identity substitution, and the same command UUID across tenants.
+Use actual lock witnesses, exact canonical row/receipt counts and the unchanged
+client's UNKNOWN hold. Keep the proposed SQL, client, original evidence and all
+718 accepted native cases intact. Trusted fixture administration and ordinary DB
+uniqueness are not genuine Auth or independently rollback-resistant custody.
+Installation/rehearsal authority remains separately bound to the existing D1-D3,
+recovery/P1/customer14/4B and commercial proposal records. Release remains NO-GO.
+
 ## Current-session launch integration successor
 
 This child of verified376 retains exact374 runtime/invoice/payment source and376's
