@@ -1,0 +1,152 @@
+{
+  "schema": "foundation-remaining-marker-observation-v1",
+  "runId": 43329736524,
+  "jobId": 131571147407,
+  "head": "e007bb28c528839e747a59a1e5407f278430fc01",
+  "logSha256": "b76252cb7b10c9fe4b32a81f88ab4213500384b6d78cab6c94530e898d29a41d",
+  "runOutcome": "CANCELLED_WITH_OBSERVED_FAILURES_NOT_A_PASS",
+  "existingBudget": {
+    "file": "vite.config.ts",
+    "testTimeoutMs": 30000,
+    "hookTimeoutMs": 30000,
+    "changed": false
+  },
+  "counts": {
+    "remainingFailureMarkers": 15,
+    "durationAtOrAboveBudget": 12,
+    "fastDependentFollowups": 3
+  },
+  "sourceFacts": [
+    "Cycle18 keeps retained undefined, then assigns retained = await prepareDailyReviewSources(brand) in the first test.",
+    "Its following retained-daily-sources test immediately requires expect(retained).toBeDefined().",
+    "The three 1-3ms followup failures are consistent with unavailable retained setup, but no emitted assertion diagnostic proves this cause."
+  ],
+  "markers": [
+    {
+      "file": "tests/cycle24-independent-integration-review.test.ts",
+      "test": "brand 0 native correction and material review remain the original cost and priority sources",
+      "durationMs": 30051,
+      "logLine": 359,
+      "classification": "DURATION_AT_OR_ABOVE_30S_BUDGET_CAUSE_UNCONFIRMED",
+      "rootCause": "NOT_DIAGNOSED_NO_FINAL_ASSERTION_OR_STACK_EMITTED"
+    },
+    {
+      "file": "tests/cycle24-independent-integration-review.test.ts",
+      "test": "brand 1 native correction and material review remain the original cost and priority sources",
+      "durationMs": 30637,
+      "logLine": 360,
+      "classification": "DURATION_AT_OR_ABOVE_30S_BUDGET_CAUSE_UNCONFIRMED",
+      "rootCause": "NOT_DIAGNOSED_NO_FINAL_ASSERTION_OR_STACK_EMITTED"
+    },
+    {
+      "file": "tests/cycle24-independent-integration-review.test.ts",
+      "test": "brand 2 native correction and material review remain the original cost and priority sources",
+      "durationMs": 32715,
+      "logLine": 361,
+      "classification": "DURATION_AT_OR_ABOVE_30S_BUDGET_CAUSE_UNCONFIRMED",
+      "rootCause": "NOT_DIAGNOSED_NO_FINAL_ASSERTION_OR_STACK_EMITTED"
+    },
+    {
+      "file": "tests/cycle23-independent-integration-review.test.ts",
+      "test": "I10 another property report and another job occurrence cannot replace the retained exact sources",
+      "durationMs": 33842,
+      "logLine": 548,
+      "classification": "DURATION_AT_OR_ABOVE_30S_BUDGET_CAUSE_UNCONFIRMED",
+      "rootCause": "NOT_DIAGNOSED_NO_FINAL_ASSERTION_OR_STACK_EMITTED"
+    },
+    {
+      "file": "tests/cycle25-combined-integration.test.ts",
+      "test": "brand 2 native task \u2192 cost review \u2192 service evidence \u2192 maintenance \u2192 owner \u2192 offline retains exact identities",
+      "durationMs": 30188,
+      "logLine": 877,
+      "classification": "DURATION_AT_OR_ABOVE_30S_BUDGET_CAUSE_UNCONFIRMED",
+      "rootCause": "NOT_DIAGNOSED_NO_FINAL_ASSERTION_OR_STACK_EMITTED"
+    },
+    {
+      "file": "tests/cycle18-independent-integration-review.test.ts",
+      "test": "brand 0: five-package source evidence binds one exact canonical daily environment",
+      "durationMs": 30037,
+      "logLine": 1526,
+      "classification": "DURATION_AT_OR_ABOVE_30S_BUDGET_CAUSE_UNCONFIRMED",
+      "rootCause": "NOT_DIAGNOSED_NO_FINAL_ASSERTION_OR_STACK_EMITTED"
+    },
+    {
+      "file": "tests/cycle18-independent-integration-review.test.ts",
+      "test": "brand 0: retained daily sources continue through every review and exact Next without reset",
+      "durationMs": 3,
+      "logLine": 1527,
+      "classification": "FAST_RETAINED_FIXTURE_DEPENDENCY_CANDIDATE",
+      "rootCause": "NOT_DIAGNOSED_NO_FINAL_ASSERTION_OR_STACK_EMITTED"
+    },
+    {
+      "file": "tests/cycle18-independent-integration-review.test.ts",
+      "test": "brand 1: five-package source evidence binds one exact canonical daily environment",
+      "durationMs": 30875,
+      "logLine": 1528,
+      "classification": "DURATION_AT_OR_ABOVE_30S_BUDGET_CAUSE_UNCONFIRMED",
+      "rootCause": "NOT_DIAGNOSED_NO_FINAL_ASSERTION_OR_STACK_EMITTED"
+    },
+    {
+      "file": "tests/cycle18-independent-integration-review.test.ts",
+      "test": "brand 1: retained daily sources continue through every review and exact Next without reset",
+      "durationMs": 1,
+      "logLine": 1529,
+      "classification": "FAST_RETAINED_FIXTURE_DEPENDENCY_CANDIDATE",
+      "rootCause": "NOT_DIAGNOSED_NO_FINAL_ASSERTION_OR_STACK_EMITTED"
+    },
+    {
+      "file": "tests/cycle18-independent-integration-review.test.ts",
+      "test": "brand 2: five-package source evidence binds one exact canonical daily environment",
+      "durationMs": 30003,
+      "logLine": 1530,
+      "classification": "DURATION_AT_OR_ABOVE_30S_BUDGET_CAUSE_UNCONFIRMED",
+      "rootCause": "NOT_DIAGNOSED_NO_FINAL_ASSERTION_OR_STACK_EMITTED"
+    },
+    {
+      "file": "tests/cycle18-independent-integration-review.test.ts",
+      "test": "brand 2: retained daily sources continue through every review and exact Next without reset",
+      "durationMs": 1,
+      "logLine": 1531,
+      "classification": "FAST_RETAINED_FIXTURE_DEPENDENCY_CANDIDATE",
+      "rootCause": "NOT_DIAGNOSED_NO_FINAL_ASSERTION_OR_STACK_EMITTED"
+    },
+    {
+      "file": "tests/cycle18-independent-integration-review.test.ts",
+      "test": "finance: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay",
+      "durationMs": 31580,
+      "logLine": 1553,
+      "classification": "DURATION_AT_OR_ABOVE_30S_BUDGET_CAUSE_UNCONFIRMED",
+      "rootCause": "NOT_DIAGNOSED_NO_FINAL_ASSERTION_OR_STACK_EMITTED"
+    },
+    {
+      "file": "tests/cycle18-independent-integration-review.test.ts",
+      "test": "finance: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay",
+      "durationMs": 41580,
+      "logLine": 1554,
+      "classification": "DURATION_AT_OR_ABOVE_30S_BUDGET_CAUSE_UNCONFIRMED",
+      "rootCause": "NOT_DIAGNOSED_NO_FINAL_ASSERTION_OR_STACK_EMITTED"
+    },
+    {
+      "file": "tests/cycle18-independent-integration-review.test.ts",
+      "test": "finance: known callback withdrawal before invocation preserves exact source review but invokes no host",
+      "durationMs": 45437,
+      "logLine": 1555,
+      "classification": "DURATION_AT_OR_ABOVE_30S_BUDGET_CAUSE_UNCONFIRMED",
+      "rootCause": "NOT_DIAGNOSED_NO_FINAL_ASSERTION_OR_STACK_EMITTED"
+    },
+    {
+      "file": "tests/cycle18-independent-integration-review.test.ts",
+      "test": "finance: competing fresh views of the same canonical job dispatch at most one callback",
+      "durationMs": 38600,
+      "logLine": 1580,
+      "classification": "DURATION_AT_OR_ABOVE_30S_BUDGET_CAUSE_UNCONFIRMED",
+      "rootCause": "NOT_DIAGNOSED_NO_FINAL_ASSERTION_OR_STACK_EMITTED"
+    }
+  ],
+  "limits": [
+    "Durations alone do not establish timeout causes, infrastructure failure or application defects.",
+    "The cancelled log has no final assertion summary or expected/actual stacks for these markers.",
+    "No tests rerun and no timeout, assertion, source protection or failure history changed.",
+    "C17 has separate reproduced source-hash evidence; it is not used to classify these other markers."
+  ]
+}
