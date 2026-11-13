@@ -2733,3 +2733,11 @@ CRM/planning context before invoking the original writer. Missing property evide
 stays UNKNOWN; a property-only survey requires an explicit existing no-job context.
 Keep the pinned context reader/writer unchanged and its bypass limitation visible.
 This control does not establish atomic hosted enforcement, genuine Auth or dispatch.
+
+### Submit only the exact saved inspection draft
+
+Visible unsaved inspection edits, including customer visibility, require an explicit
+Save before submission. Reject stale saved-source identity or revision instead of
+silently submitting older content or automatically saving and submitting together.
+Retain original checklist customization, canonical writer and immutable publication
+rules; this local control grants no hosted, physical-completion or dispatch authority.

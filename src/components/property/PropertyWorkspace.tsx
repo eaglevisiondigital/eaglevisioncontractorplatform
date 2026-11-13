@@ -8,6 +8,7 @@ import {
   useLayoutEffect,
 } from 'react';
 import { requireInspectionPlanSource } from './inspection-plan-source';
+import { submitSavedInspection } from './inspection-submit-source';
 import { BackOfficeConcept } from './back-office-presentation';
 import type { Operations } from '../../lib/operations';
 import type { CompanyProfile } from '../../domain/platform';
@@ -769,7 +770,7 @@ function VisitEditor({
         {v.status === 'draft' ? (
           <button
             disabled={task.busy}
-            onClick={() => run(() => repo.submit(org, v))}
+            onClick={() => run(() => submitSavedInspection(repo, org, v, c))}
           >
             <BackOfficeText text="Submit inspection for review" />
           </button>
