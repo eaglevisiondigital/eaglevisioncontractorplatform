@@ -1,3 +1,13 @@
+## Unapplied finite invoice caller source admission
+
+Separate proposal bytes now bind exact approved8f source and6063 fixture authors
+through the original eight-case launch guard, preserving historical pins and
+manifests. Canonical guard/helper installation is not authorized. Twenty-four
+proposal cases passed independently, including all eight actual guard cases in a
+disposable tree and helper/coordinated-record tamper rejection. Existing395 native
+728PASS/1skip evidence remains separate; no whole-Foundation or hosted acceptance
+is claimed. D1–D3/A01–A12/Auth/custody/NMI/recovery and release gates remain closed.
+
 ## Exact invoice caller source author and legacy fixture migration
 
 Owner approved only the exact392 two-file source author; independent Git review
