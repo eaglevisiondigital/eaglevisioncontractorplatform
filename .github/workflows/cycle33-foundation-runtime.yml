@@ -11,6 +11,7 @@ on:
       [
         'codex/program-cycle-thirty-two-integration',
         'codex/launch-current-session-integration',
+        'codex/invoice-checker-transition-author',
       ]
     paths:
       - '.github/workflows/cycle33-foundation-runtime.yml'
