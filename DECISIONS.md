@@ -1,3 +1,14 @@
+## Prepare the caller/payment integration without promoting protected sources
+
+Compose only exact reviewed402 author bytes,398 NMI test lineage and403's ordinary
+trigger correction on an isolated child. Preserve all historical manifests and
+checker/fixture/source authors; the five-file protected promotion diff is evidence,
+not an executable installer or permission grant. Keep optional CRM/workforce changes
+separate. Existing native/UI contracts are reused; synthetic fixtures do not prove
+genuine Auth, merchant facts or external durable custody. Separate admission,
+SQL/grants, D1–D3/A01–A12, NMI/recovery and activation approvals remain mandatory.
+Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Preserve exact checker approval while qualifying its fixture transition
 
 Author only the exact separately approved two-file #397 patch. Correct the

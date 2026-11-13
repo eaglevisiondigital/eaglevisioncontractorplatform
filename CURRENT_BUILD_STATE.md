@@ -1,3 +1,21 @@
+## Bounded caller/payment launch-integration preparation
+
+Exact402 caller/checker author `461a9017b526dae9bc3a88577fd5ad5b1c71963e`
+now composes exact398's six native NMI boundary cases and exact403's ordinary
+one-base CI trigger correction. All runtime/Auth/SQL/grants and original source
+manifests remain byte-exact402. Optional400 and its successors remain outside.
+Source authoring, protected admission and integration promotion are separate:
+preparation is owner-directed; promotion and all operational acceptance stay HELD.
+
+Six native suites66PASS/0skip/0errors, affected17-file unit selection239PASS,
+existing synthetic release browser6PASS and final source/trigger82PASS are separate
+runs. Final trigger composition changes no business source. Build/types/scoped
+lint/features25/design locks PASS. Current-head hosted results remain separate.
+See [exact source origins and unapplied five-file promotion diff](proposals/launch-caller-payment-integration/evidence.json).
+No invoice SQL installation, route, tenant, merchant, provider execution or release
+activation. D1–D3/A01–A12/Auth/custody/recovery/NMI/VAR requirements stay open.
+Saul 2 Paul first; Cunningham second with independent bindings. Release1.0 NO-GO.
+
 ## Approved checker author and unapplied transition amendment
 
 Owner approved only the exact two-file #397 checker-author patch. Source
