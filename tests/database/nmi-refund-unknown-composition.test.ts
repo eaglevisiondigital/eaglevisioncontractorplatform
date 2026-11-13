@@ -812,3 +812,201 @@ it
     }
   },
 );
+
+it.each([0, 1])(
+  'settlement gate and explicit refund decline merchant %i retain original evidence and bounded capacity',
+  async (index) => {
+    const m = launches[index].merchant;
+    const i: SandboxIntent = {
+      organizationId: m.organizationId,
+      merchantConfigId: m.merchantConfigId,
+      invoiceId: crypto.randomUUID(),
+      authorizationId: crypto.randomUUID(),
+      idempotencyKey: crypto.randomUUID(),
+      amountMinor: 10000,
+      currency: 'USD',
+      expiresAt: until,
+    };
+    const token = {
+      provider: 'nmi' as const,
+      value: 'fictional-settlement-token',
+    };
+    const digest = sha256(
+      JSON.stringify({
+        ...i,
+        provider: token.provider,
+        tokenDigest: sha256(token.value),
+      }),
+    );
+    const transactionId = `fictional_unsettled_capture_${index}`;
+    let refundSubmissions = 0;
+    const transport = vi.fn<typeof fetch>(async (url, options) => {
+      expect(options?.redirect).toBe('error');
+      if (url === 'https://sandbox.nmi.com/api/v5/payments/sale')
+        return Response.json({
+          response: '1',
+          id: transactionId,
+          amount: '100.00',
+          currency: 'USD',
+        });
+      expect(url).toBe(
+        `https://sandbox.nmi.com/api/v5/payments/${transactionId}/refund`,
+      );
+      refundSubmissions++;
+      const amount = refundSubmissions === 1 ? '60.00' : '100.00';
+      expect(JSON.parse(String(options?.body))).toEqual({
+        amount: Number(amount),
+        payment: 'creditcard',
+      });
+      return Response.json(
+        refundSubmissions === 1
+          ? {
+              response: '2',
+              amount,
+              currency: 'USD',
+              private: 'FICTIONAL private decline details',
+            }
+          : {
+              response: '1',
+              id: `fictional_full_refund_${index}`,
+              amount,
+              currency: 'USD',
+            },
+      );
+    });
+    await authorize(index, i, 'capture', digest);
+    const captured = await new SandboxGateway(
+      m,
+      { apiKey: 'fictional-only' },
+      store(index),
+      transport,
+    ).capture(i, token);
+    expect(captured).toMatchObject({
+      status: 'succeeded',
+      transactionId,
+      amountMinor: 10000,
+    });
+    const originalCapture = await nativeRead(index, i.idempotencyKey);
+    const prepare = (amountMinor: number): SandboxRefund => ({
+      ...refund(index, amountMinor),
+      invoiceId: i.invoiceId,
+      captureKey: i.idempotencyKey,
+      providerTransactionId: transactionId,
+    });
+
+    // A successful sale response is not settlement or a substitute void workflow.
+    const beforeSettlement = prepare(6000);
+    await authorize(
+      index,
+      beforeSettlement,
+      'refund',
+      refundDigest(beforeSettlement),
+    );
+    await expect(
+      gateway(index, transport).refund(beforeSettlement),
+    ).rejects.toThrow(/Settled matching/);
+    expect(transport).toHaveBeenCalledTimes(1);
+    expect(await nativeRead(index, beforeSettlement.idempotencyKey)).toEqual(
+      [],
+    );
+
+    const eventId = 'fictional_settlement_notice_' + i.idempotencyKey;
+    const key = signedCallback(index, eventId).key;
+    const raw = Buffer.from(
+      JSON.stringify({
+        event_id: eventId,
+        event_body: {
+          state: 'settled',
+          transaction_id: transactionId,
+          amount: '100.00',
+          currency: 'USD',
+        },
+      }),
+    );
+    const signature =
+      't=fictional_native_nonce,s=' +
+      createHmac('sha256', key.value)
+        .update('fictional_native_nonce.')
+        .update(raw)
+        .digest('hex');
+    await login(index);
+    expect(
+      await receiveSandboxPaymentWebhook(raw, signature, m, key, store(index)),
+    ).toBe('recorded');
+    const callbackOnly = prepare(6000);
+    await authorize(index, callbackOnly, 'refund', refundDigest(callbackOnly));
+    await expect(
+      gateway(index, transport).refund(callbackOnly),
+    ).rejects.toThrow(/Settled matching/);
+    expect(transport).toHaveBeenCalledTimes(1);
+    expect(await nativeRead(index, callbackOnly.idempotencyKey)).toEqual([]);
+
+    // Separately submitted, trusted SYNTHETIC provider observation. Authentication
+    // of a notification alone never submits or proves this financial evidence.
+    await login(index);
+    expect(
+      (
+        await store(index).recordObservation(m, {
+          observationId: crypto.randomUUID(),
+          key: i.idempotencyKey,
+          transactionId,
+          kind: 'capture',
+          amountMinor: 10000,
+          currency: 'USD',
+          state: 'settled',
+          digest: sha256('FICTIONAL independent settled evidence'),
+          observedAt: new Date().toISOString(),
+        })
+      ).status,
+    ).toBe('recorded');
+    const declined = prepare(6000);
+    await authorize(index, declined, 'refund', refundDigest(declined));
+    expect(await gateway(index, transport).refund(declined)).toEqual({
+      status: 'declined',
+      provider: 'nmi',
+      mode: 'sandbox',
+      transactionId: null,
+      amountMinor: 6000,
+      currency: 'USD',
+    });
+    const declinedEvidence = await nativeRead(index, declined.idempotencyKey);
+    expect(declinedEvidence).toMatchObject([
+      {
+        authorization_id: declined.authorizationId,
+        capture_key: i.idempotencyKey,
+        status: 'declined',
+        request_digest: refundDigest(declined),
+        result: { status: 'declined', transactionId: null },
+      },
+    ]);
+    expect(JSON.stringify(declinedEvidence)).not.toContain('private decline');
+    const full = prepare(10000);
+    await authorize(index, full, 'refund', refundDigest(full));
+    expect((await gateway(index, transport).refund(full)).status).toBe(
+      'succeeded',
+    );
+    expect(refundSubmissions).toBe(2);
+    expect(transport).toHaveBeenCalledTimes(3);
+    expect(await nativeRead(index, declined.idempotencyKey)).toEqual(
+      declinedEvidence,
+    );
+    expect(await nativeRead(index, i.idempotencyKey)).toEqual(originalCapture);
+    expect(await nativeRead(index, full.idempotencyKey)).toMatchObject([
+      {
+        capture_key: i.idempotencyKey,
+        status: 'succeeded',
+        amount_minor: '10000',
+      },
+    ]);
+    await logout();
+    await expect(
+      db.query(
+        "update private.sandbox_gateway_attempts set status='succeeded' where organization_id=$1 and idempotency_key=$2",
+        [m.organizationId, declined.idempotencyKey],
+      ),
+    ).rejects.toThrow(/Immutable/);
+    expect(transport.mock.calls.map(([url]) => String(url))).not.toContain(
+      `https://sandbox.nmi.com/api/v5/payments/${transactionId}/void`,
+    );
+  },
+);

@@ -3447,3 +3447,16 @@ settlement/reconciliation counts remain unchanged. The four selected PG17 cases
 pass; prior six are filtered, not rerun. PGlite cannot prove this concurrency.
 This is trusted fixture transaction custody, not an operational adapter or real
 provider/HTTP/Auth acceptance. All runtime/SQL/pins and release gates remain closed.
+
+## NMI capture settlement and explicit decline composition
+
+Two new selected cases pass in PGlite and native PG17. Actual capture/refund
+adapters and existing restricted SQL reject refund after capture success or a
+signed settled notice alone; separately submitted synthetic settled evidence is
+required. Explicit refund decline remains immutable and releases capacity for a
+separately authorized full refund. No void or UNKNOWN-to-decline inference exists.
+Original ten tests are byte-exact and filtered, not rerun. Existing sandbox readiness
+now has the private VAR/NMI checkpoint and current runner's token-reference/identity
+custody limitation. Pinned first-contractor acceptance remains unchanged. No
+runtime/SQL/grants or operational actions.
+Publication is held for consolidated independent review. Release1.0 NO-GO.

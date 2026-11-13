@@ -2841,3 +2841,11 @@ real blocker/blocked backend witness and observe both promise outcomes immediate
 Keep callback ACK behind explicit test COMMIT and prove immutable event/digest plus
 unchanged financial state for duplicate and conflicting deliveries. Do not infer
 operational ACK custody, provider settlement or authority from this fixture.
+
+## Verify settlement and decline at the existing gateway-to-SQL boundary
+
+Reuse adapters, original capture/refund authority and immutable SQL outcomes in
+two-company synthetic acceptance. Do not substitute signed notification for
+settlement or treat missing void support as permission to refund unsettled funds.
+Extend the existing onboarding checklist, keeping per-merchant private evidence,
+actual token-reference custody and operational readiness gates explicit.
