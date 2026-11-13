@@ -7,7 +7,11 @@ on:
         'codex/program-cycle-thirty-three-integration',
       ]
   pull_request:
-    branches: ['codex/program-cycle-thirty-two-integration']
+    branches:
+      [
+        'codex/program-cycle-thirty-two-integration',
+        'codex/launch-current-session-integration',
+      ]
     paths:
       - '.github/workflows/cycle33-foundation-runtime.yml'
       - 'scripts/cycle33-foundation-*'

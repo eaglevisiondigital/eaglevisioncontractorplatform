@@ -1,3 +1,13 @@
+## Launch Foundation supplement trigger
+
+The existing original-scope coverage supplement did not match the #380 successor
+PR base. Its trigger now also names `codex/launch-current-session-integration`;
+original branches, path filters, permissions and every job byte remain unchanged.
+The frozen Foundation workflow is untouched. Five finite delta cases and the
+existing56 evidence cases pass; parent coverage regression first failed as expected.
+Actual current-head recovery/staging/application/browser evidence remains separate
+and pending. This is CI collection scope, never operational or release authority.
+
 ## Current-session launch integration successor
 
 This child of verified376 retains exact374 runtime/invoice/payment source and376's
