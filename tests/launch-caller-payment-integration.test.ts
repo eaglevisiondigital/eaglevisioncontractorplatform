@@ -1,7 +1,29 @@
 import { expect, it } from 'vitest';
-import { readFileSync, lstatSync } from 'node:fs';
+import { readFileSync as actualReadFileSync, lstatSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
+// Retained406 fixture only; current payment frame is checked before historical reads.
+const fixtureUrl = new URL(
+  '../proposals/payment-launch-integration/legacy-invoice-fixture.mjs',
+  import.meta.url,
+);
+const fixtureInfo = lstatSync(fixtureUrl);
+if (
+  !fixtureInfo.isFile() ||
+  fixtureInfo.isSymbolicLink() ||
+  (fixtureInfo.mode & 0o777) !== 0o644
+)
+  throw Error('Exact retained launch fixture required');
+const fixtureBytes = actualReadFileSync(fixtureUrl);
+if (
+  createHash('sha256').update(fixtureBytes).digest('hex') !==
+  '6512550560268a036c2c6482078cd8516292423e464335eddb94c005ff55667b'
+)
+  throw Error('Exact retained launch fixture required before import');
+const { historicalInvoiceRead } = await import(
+  'data:text/javascript;base64,' + fixtureBytes.toString('base64')
+);
+const readFileSync = historicalInvoiceRead as typeof actualReadFileSync;
 const directory = 'proposals/launch-caller-payment-integration';
 const invoice = '461a9017b526dae9bc3a88577fd5ad5b1c71963e';
 const payments = '912639a07146b6f7f55d2c983f78334f3dfd63aa';
