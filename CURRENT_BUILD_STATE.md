@@ -3409,3 +3409,16 @@ custody, D3 independent matched recovery and A01–A12 remain operational gates.
 Exact launch successor checks: native78PASS/0skips, responsive internal-release6PASS,
 build/type/scopedlint/format/features/protected128PASS. Accepted source review CLEAR
 from independent security and QA agents. No hosted acceptance inherited from parents.
+
+## NMI refund adapter-to-SQL UNKNOWN acceptance
+
+Three additional local tests compose the unchanged refund gateway, restricted
+provider control and actual SQL for both disabled fictional launch merchants.
+Transport-loss UNKNOWN persists its original identity and holds refund capacity;
+a fresh adapter cannot dispatch the same key or over-reserve the remaining amount.
+Identical UUIDs remain tenant-scoped, and another merchant's transaction reference
+cannot supply the original capture. PGlite3 and native PG17 three cases pass;
+native reads use an independent connection after commit. These are controlled
+provider responses and synthetic SQL provisioning, not actual NMI, hosted Auth,
+process-loss custody or financial acceptance. No runtime/schema/pin changes.
+D1-D3, VAR, separate merchant bindings and recovery remain open; Release1.0 NO-GO.

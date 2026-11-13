@@ -2817,3 +2817,11 @@ request syntax/amount/currency must not consume a token before downstream reject
 This does not authorize token resolution or replace real invoice/customer authority,
 current revocation, durable vault consumption or UNKNOWN reconciliation. Genuine
 commercial invoice writer/schema activation requires separate exact approval.
+
+## Verify refund UNKNOWN across the existing adapter and SQL boundary
+
+Extend acceptance tests only: combine the existing refund adapter and restricted
+SQL workload rather than infer their integration from separate fake-store tests.
+Assert committed original identity, held capacity and zero replacement dispatch,
+with two fictional merchant scopes. Do not change protected payment/SQL source,
+invent refund or void authority, or claim real provider/operational acceptance.
