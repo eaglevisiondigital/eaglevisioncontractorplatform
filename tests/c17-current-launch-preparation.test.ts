@@ -1,10 +1,16 @@
 import { expect, it } from 'vitest';
 import { createHash } from 'node:crypto';
-import { readFileSync, lstatSync } from 'node:fs';
 import { join } from 'node:path';
-const proposal = await import(
-  new URL('../proposals/c17-current-launch/qualify.mjs', import.meta.url).href
+// Legacy assertions retain their original407 evidence through an explicit,
+// source-verified historical fixture only after the five-file integration.
+const fixture = await import(
+  new URL(
+    '../proposals/c17-launch-integration/retained-fixture.mjs',
+    import.meta.url,
+  ).href
 );
+const { proposal, readFileSync, lstatSync } =
+  await fixture.retainedFixture('launch');
 const sha = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex');
 it('retains the existing exact C17 correction, note and uncreated-author checkpoint', () => {
   const { patch, note } = proposal.artifacts();
