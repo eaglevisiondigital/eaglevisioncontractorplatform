@@ -1,8 +1,38 @@
 // Qualification fixture only. This cannot approve or promote a source admission.
 import assert from 'node:assert/strict';
-import { readFileSync, lstatSync } from 'node:fs';
+import { readFileSync, lstatSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
+const paymentFrameGuard =
+  'bf366bff56157c0b94c174c91d8a9fbc76cb95e836d9387a2d61104e44fc873a';
+const paymentAdapterPath =
+  'proposals/payment-response-admission/fixture-adapter.mjs';
+let paymentFixture;
+if (existsSync(paymentAdapterPath)) {
+  let prefix = '';
+  for (const segment of paymentAdapterPath.split('/')) {
+    prefix = prefix ? prefix + '/' + segment : segment;
+    assert(
+      !lstatSync(prefix).isSymbolicLink(),
+      'Reviewed payment fixture required',
+    );
+  }
+  const info = lstatSync(paymentAdapterPath);
+  assert(
+    info.isFile() && !info.isSymbolicLink() && (info.mode & 0o777) === 0o644,
+    'Reviewed payment fixture required',
+  );
+  const bytes = readFileSync(paymentAdapterPath);
+  assert.equal(
+    createHash('sha256').update(bytes).digest('hex'),
+    '4ccab151297b44da76057199cb3cabfcd2c73c3e20ed6761c27737db16468203',
+    'Reviewed payment fixture required',
+  );
+  paymentFixture = await import(
+    'data:text/javascript;base64,' + bytes.toString('base64')
+  );
+}
+
 const guard = 'tests/launch-invoice-payment-source.test.ts';
 const helper = 'scripts/invoice-caller-source-admission.mjs';
 const fixture = 'tests/invoice-caller-migration-source.test.ts';
@@ -92,6 +122,16 @@ export function qualificationBaseline({
       info.isFile() && !info.isSymbolicLink(),
       'Regular active checker required',
     );
+  }
+  if (hash(current) === paymentFrameGuard) {
+    assert(paymentFixture, 'Reviewed payment fixture required');
+    paymentFixture.verifyPaymentFrame({ read, stat, git });
+    return {
+      current,
+      original,
+      frame: 'UNAPPLIED_AMENDMENT_TEST_BYTES',
+      checkerAuthor,
+    };
   }
   const active =
     hash(current) === authored[guard] &&
