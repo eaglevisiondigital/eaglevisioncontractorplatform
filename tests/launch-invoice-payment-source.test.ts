@@ -56,7 +56,23 @@ function verify(readCurrent = current, readOriginal = original) {
       expect(hash(readOriginal(fix.baseline, source.path))).toBe(
         source.currentSha256,
       );
-      expect(hash(readCurrent(source.path))).toBe(fix.successorSha256);
+      const next = JSON.parse(
+        readCurrent('docs/LAUNCH_CURRENT_SESSION_SUCCESSOR.json').toString(
+          'utf8',
+        ),
+      );
+      expect(next.baseline).toBe('bcaf72deeb45417a7a9c01dd1b0a9380be291666');
+      expect(next.classification).toBe(
+        'NATIVE_SESSION_AUTHORITY_COVERAGE_ONLY',
+      );
+      expect(next.parentTestSha256).toBe(fix.successorSha256);
+      expect(hash(readOriginal(next.baseline, source.path))).toBe(
+        fix.successorSha256,
+      );
+      expect(next.currentTestSha256).toBe(
+        '94d06410bdd267726f57aa1b1a90c3357af3ed51cadf69f2a39e610a09416b47',
+      );
+      expect(hash(readCurrent(source.path))).toBe(next.currentTestSha256);
     } else expect(hash(readCurrent(source.path))).toBe(source.currentSha256);
     if (source.rootTestDelta) {
       expect(deltas[source.path]).toBe(source.rootTestDelta);
@@ -103,6 +119,26 @@ it('rejects substituted original author evidence', () => {
       path === 'server/invoices/commercial-drafts.proposed.sql'
         ? Buffer.from('substituted history')
         : original(commit, path),
+    ),
+  ).toThrow();
+});
+
+it('rejects a source edit even when the mutable successor record is rebound to it', () => {
+  const target = 'tests/database/commercial-invoice-drafts.test.ts';
+  const changed = Buffer.concat([
+    current(target),
+    Buffer.from('\nUNKNOWN EDIT'),
+  ]);
+  const recordPath = 'docs/LAUNCH_CURRENT_SESSION_SUCCESSOR.json';
+  const record = JSON.parse(current(recordPath).toString('utf8'));
+  record.currentTestSha256 = hash(changed);
+  expect(() =>
+    verify((path) =>
+      path === target
+        ? changed
+        : path === recordPath
+          ? Buffer.from(JSON.stringify(record))
+          : current(path),
     ),
   ).toThrow();
 });

@@ -1,3 +1,15 @@
+## Current-session launch integration successor
+
+This child of verified376 retains exact374 runtime/invoice/payment source and376's
+immediate rejection observers. Two new native cases withdraw current session or
+reviewed draft authority while its SQL guard waits, then require42501 and zero
+exact draft/receipt rows after commit. All commercial SQL remains unapplied/unwired.
+[Named source evidence](docs/LAUNCH_CURRENT_SESSION_SUCCESSOR.json) preserves the
+original composition and376 hashes.377's older-branch unhandled errors use374's
+late observers; neither UUID proposal nor C17 preparation is admitted here.
+D1-D3/A01-A12/Auth/custody/recovery/NMI and release restrictions remain unchanged.
+Release1.0 NO-GO. Current-head hosted acceptance is separate.
+
 ## Invoice revocation native-test rejection observation
 
 Hosted374 native job131591712364 failed despite716 passing tests because its

@@ -849,3 +849,70 @@ it.each([0, 1])(
     }
   },
 );
+
+it.skipIf(!db.fork).each(['session', 'reviewed-authority'] as const)(
+  '%s withdrawn before its blocked read resumes denies draft and receipt without an unhandled rejection',
+  async (mode) => {
+    const locker = await db.fork!(),
+      c = companies[0],
+      p = command();
+    try {
+      await locker.exec('begin');
+      if (mode === 'session')
+        await locker.query(
+          "update auth.sessions set not_after=clock_timestamp()-interval '1 second' where id=$1",
+          [c.session],
+        );
+      else
+        await locker.query(
+          'update private.commercial_draft_authorities set revoked_at=clock_timestamp() where organization_id=$1 and actor_id=$2',
+          [c.org, c.actor],
+        );
+      let settled = false;
+      let signal!: () => void;
+      const completed = new Promise<void>((resolve) => {
+        signal = resolve;
+      });
+      const pending = observed(create(p)).finally(() => {
+        settled = true;
+        signal();
+      });
+      await new Promise((resolve) => setTimeout(resolve, 50));
+      expect(settled).toBe(false);
+      await locker.exec('commit');
+      await completed;
+      await new Promise<void>((resolve) => setImmediate(resolve));
+      expect(await pending).toMatchObject({
+        ok: false,
+        error: {
+          code: '42501',
+          message: expect.stringMatching(
+            mode === 'session'
+              ? /session denied/
+              : /Reviewed invoice draft authority required/,
+          ),
+        },
+      });
+      await reset();
+      expect(
+        (
+          await db.query(
+            'select count(*)::int n from private.commercial_invoice_drafts where organization_id=$1 and id=$2',
+            [c.org, p.invoice],
+          )
+        ).rows[0].n,
+      ).toBe(0);
+      expect(
+        (
+          await db.query(
+            'select count(*)::int n from private.commercial_invoice_draft_receipts where organization_id=$1 and command_id=$2',
+            [c.org, p.command],
+          )
+        ).rows[0].n,
+      ).toBe(0);
+    } finally {
+      await locker.exec('rollback');
+      await locker.close();
+    }
+  },
+);

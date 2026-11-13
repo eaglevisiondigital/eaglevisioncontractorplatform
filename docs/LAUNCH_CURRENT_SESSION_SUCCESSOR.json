@@ -1,0 +1,21 @@
+{
+  "baseline": "bcaf72deeb45417a7a9c01dd1b0a9380be291666",
+  "path": "tests/database/commercial-invoice-drafts.test.ts",
+  "classification": "NATIVE_SESSION_AUTHORITY_COVERAGE_ONLY",
+  "parentTestSha256": "f0d9e33588bc2f41668591b9a7208468e77b75924df2e7ac15666fd136cd95c8",
+  "currentTestSha256": "94d06410bdd267726f57aa1b1a90c3357af3ed51cadf69f2a39e610a09416b47",
+  "runtimeChanges": [],
+  "SQLChanges": [],
+  "budgetsChanged": false,
+  "hostedAcceptance": "PENDING",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "validation": {
+    "affectedNative": 188,
+    "affectedUnit": 275,
+    "sourceCases": 8,
+    "responsive": 6,
+    "independentNewNative": 2,
+    "review": "CLEAR_SOURCE_AND_TEST_SCOPE",
+    "hosted": "PENDING_NEW_HEAD"
+  }
+}
