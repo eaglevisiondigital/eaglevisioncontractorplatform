@@ -3445,3 +3445,30 @@ Evidence is same-tab synthetic, not hosted Auth/durability or physical completio
 Optional branch stays outside the first-contractor launch; D1–D3/A01–A12 and all
 existing recovery/provider/financial restrictions persist. Release1.0 NOT READY /
 NOT AUTHORIZED.
+
+### Optional exact-plan inspection date preparation — November 13
+
+The inspection editor's date default incorrectly counted every company plan's
+visits. Date proposals now use the selected saved plan and original occurrence
+engine, finding the first unoccupied anchored date within its existing bound.
+Other plans cannot advance it; gaps are not overdue work, future availability or
+bookings. Once-only exhaustion yields no invented recurrence; contradictory
+exact-plan history stays UNKNOWN. Saved-plan changes update untouched suggestions;
+explicit staff dates remain until deliberate reset and unsaved cadence edits do
+not masquerade as saved policy. The existing explicit Schedule visit writer is
+unchanged and no action runs automatically.
+
+Original cross-plan default1FAIL retained. Fourteen focused recurrence/exact-source/
+tenant/dedup/stale-CAS/Save-reopen cases PASS. Final new six responsive scheduling
+/manual-date cases PASS and three additional UNKNOWN cases PASS at unchanged
+runtime, including axe/overflow. Three original CRM-bound plan/visit cases PASS
+at the earlier equivalent effect-stage; not an inferred final whole-suite result.
+Initial new manual-date3FAIL were select-label locators; only locator semantics
+changed, assertions/default budgets preserved. Initial lint rejected synchronous
+state-in-effect; final default is pure derived state with no suppression. Build,
+types, scoped lint/format, original128 protected hashes/five locks13bindings and
+feature25 checks PASS. Canonical Property/domain/CSS/SQL/pins unchanged. Evidence
+is same-tab synthetic only, not atomic plan-version admission or genuine Auth/
+durability/booking. Optional source remains outside launch; D1–D3/A01–A12,
+customer512CAS UNFIXED, original recovery and release restrictions persist.
+Release1.0 NOT READY / NOT AUTHORIZED.
