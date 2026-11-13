@@ -3565,3 +3565,18 @@ admitted five-file closeout and unchanged checker TCB; the actual consumer remai
 unwrapped. Six separate live cases prove current76ee source, immutable metadata and
 historical/unknown denial. Parent1FAIL/26PASS; corrected33PASS. No checker, manifest,
 protected-source, runtime, SQL or workflow changed. Release1.0 NOT READY / NOT AUTHORIZED.
+
+## Existing optimization qualified against exact424 — still UNAPPLIED
+
+New current-context preparation reuses exact389 a789 runtime and the three391
+helper/Cycle9/Cycle24 patches unchanged; canonical runtime stays7a. Controlled
+original C25/C28 pairs show11.945→9.601s and12.640→10.045s with identical UUID/count,
+clock and output-identity proofs. They are not operational expiry or hosted-cause
+acceptance. Separately, exact ten424 hosted timeout cases pass on proposed source
+with natural inputs/default4 workers/original30s budgets;233 cases remain unselected.
+Current C9/C24 guards and full6-package/523-retained/128-protected preservation
+pass in disposable424;16 packet controls pass in both complete BEFORE/AFTER frames.
+The first45s metadata containment and incomplete3-case selector attempts remain
+unaccepted. Three separate admission approvals and later exact promotion remain
+held; no callback-successor qualification or hosted timeout closure is inferred.
+All canonical guards/history/SQL/UI/recovery boundaries stay intact. Release1.0 NO-GO.

@@ -1,0 +1,309 @@
+{
+  "classification": "LOCAL_CONTROLLED_CURRENT_CONTEXT_QUALIFICATION_NO_ADMISSION",
+  "context": "27300dbaff877d18ecb219a2c9000c96e7c3e8c8",
+  "comparisons": [
+    {
+      "classification": "CONTROLLED_SYNTHETIC_COMPARISON_NOT_OPERATIONAL_CLOCK_OR_HOST_CAUSE",
+      "context": "27300dbaff877d18ecb219a2c9000c96e7c3e8c8",
+      "scenario": "c25-concurrent",
+      "casePath": "tests/cycle25-service-evidence-continuity.test.ts",
+      "title": "brand 2: concurrent read-only report actions share original state and never consume request attempt",
+      "caseSha256": "ec9c1a32e26337a15ef163c2166188345ec0d3fe322e25244524e01098c81bc6",
+      "setupSha256": "aa0ffd16effa462d57db44179589cc5ec59d7ea0e6d6675124b930dbc338d599",
+      "configSha256": "77eb2d8ecdcfedae20ca59a0c5d2689f3bc843e6394612c49c2dbaef4cbcccff",
+      "originalCaseBudgetMs": 30000,
+      "subprocessOuterWallMs": 45000,
+      "maxWorkers": 1,
+      "reports": [
+        {
+          "variant": "before",
+          "passed": 1,
+          "failed": 0,
+          "filtered": 30,
+          "durationMs": 11945.007042000001,
+          "runtimeSha256": "7a5272ae344400714dea1efe727a40c19a10c96ccfdf70f7321e127488bbd239",
+          "input": {
+            "seed": "performance424-controlled-input-v1",
+            "clock": "2026-11-13T12:00:00.000Z",
+            "uuidCount": 178,
+            "uuidStreamSha256": "59e41e4078ee35c1502c8071100418d7069f09857883cc0dd705c76c43e3713d",
+            "outputCaptures": 1,
+            "outputIdsSha256": "885710be068e4f5cd399891370e282aa1244672969e612378dd723e28cbd7840",
+            "inputSignature": "1b5c4f5520e23a6b4de1dc977bb0134c6da805fcf93271156b66e445c81d780f"
+          }
+        },
+        {
+          "variant": "after",
+          "passed": 1,
+          "failed": 0,
+          "filtered": 30,
+          "durationMs": 9600.949041,
+          "runtimeSha256": "a789309d7f8710f2e3150f4cbc8f8acc5aee9c99633c7611e503db089bcd2544",
+          "input": {
+            "seed": "performance424-controlled-input-v1",
+            "clock": "2026-11-13T12:00:00.000Z",
+            "uuidCount": 178,
+            "uuidStreamSha256": "59e41e4078ee35c1502c8071100418d7069f09857883cc0dd705c76c43e3713d",
+            "outputCaptures": 1,
+            "outputIdsSha256": "885710be068e4f5cd399891370e282aa1244672969e612378dd723e28cbd7840",
+            "inputSignature": "1b5c4f5520e23a6b4de1dc977bb0134c6da805fcf93271156b66e445c81d780f"
+          }
+        }
+      ],
+      "canonicalChanges": false,
+      "limits": [
+        "One local before/after pair per title is not a portable or statistical performance guarantee.",
+        "Only Date is fixed; performance and test timeout timers remain real.",
+        "Original case bodies and assertions are unchanged; controlled clock is not expiry or hosted Auth acceptance.",
+        "The previously accepted3045 differential/security cases are reused, not rerun."
+      ]
+    },
+    {
+      "classification": "CONTROLLED_SYNTHETIC_COMPARISON_NOT_OPERATIONAL_CLOCK_OR_HOST_CAUSE",
+      "context": "27300dbaff877d18ecb219a2c9000c96e7c3e8c8",
+      "scenario": "c28-sibling",
+      "casePath": "tests/cycle28-request-provenance.test.ts",
+      "title": "brand 0: a real same-property sibling job report cannot substitute for the original issued-job report",
+      "caseSha256": "0f300037abd9fcbe8db4465ff3fd7ad64c2631158ceb675ba4b33ce3b44bc8ea",
+      "setupSha256": "aa0ffd16effa462d57db44179589cc5ec59d7ea0e6d6675124b930dbc338d599",
+      "configSha256": "77eb2d8ecdcfedae20ca59a0c5d2689f3bc843e6394612c49c2dbaef4cbcccff",
+      "originalCaseBudgetMs": 30000,
+      "subprocessOuterWallMs": 45000,
+      "maxWorkers": 1,
+      "reports": [
+        {
+          "variant": "before",
+          "passed": 1,
+          "failed": 0,
+          "filtered": 18,
+          "durationMs": 12639.995125,
+          "runtimeSha256": "7a5272ae344400714dea1efe727a40c19a10c96ccfdf70f7321e127488bbd239",
+          "input": {
+            "seed": "performance424-controlled-input-v1",
+            "clock": "2026-11-13T12:00:00.000Z",
+            "uuidCount": 157,
+            "uuidStreamSha256": "bf502e3232c2cda1d618282d81190f42729eb04f8adbd944b8cff9f08b4744cb",
+            "outputCaptures": 1,
+            "outputIdsSha256": "7e9aed4336f6165dac1c1a1bf0a3f78ec8612650b10a5a7c24a97f6f8fc62e9d",
+            "inputSignature": "efb18f93ccf3cf9604ab0890166e96c3fdd7b41550841013d444e90996b94526"
+          }
+        },
+        {
+          "variant": "after",
+          "passed": 1,
+          "failed": 0,
+          "filtered": 18,
+          "durationMs": 10044.942667000001,
+          "runtimeSha256": "a789309d7f8710f2e3150f4cbc8f8acc5aee9c99633c7611e503db089bcd2544",
+          "input": {
+            "seed": "performance424-controlled-input-v1",
+            "clock": "2026-11-13T12:00:00.000Z",
+            "uuidCount": 157,
+            "uuidStreamSha256": "bf502e3232c2cda1d618282d81190f42729eb04f8adbd944b8cff9f08b4744cb",
+            "outputCaptures": 1,
+            "outputIdsSha256": "7e9aed4336f6165dac1c1a1bf0a3f78ec8612650b10a5a7c24a97f6f8fc62e9d",
+            "inputSignature": "efb18f93ccf3cf9604ab0890166e96c3fdd7b41550841013d444e90996b94526"
+          }
+        }
+      ],
+      "canonicalChanges": false,
+      "limits": [
+        "One local before/after pair per title is not a portable or statistical performance guarantee.",
+        "Only Date is fixed; performance and test timeout timers remain real.",
+        "Original case bodies and assertions are unchanged; controlled clock is not expiry or hosted Auth acceptance.",
+        "The previously accepted3045 differential/security cases are reused, not rerun."
+      ]
+    }
+  ],
+  "reused421": {
+    "commit": "e28958d654ce85a6fba663108487dfa242c8fd2d",
+    "observationsSha256": "408ebaf50815db0f786d5367716f3059ac019b15ad5d6d3e015b7a4e8615e92e",
+    "all12MeasuredSourceHashesMatch424": true,
+    "cpuProfilesRerun": false,
+    "role": "Existing diagnostic reference only; not an after-optimization counter measurement."
+  },
+  "reused387389391": {
+    "author": "c50ce4521fbc264276734a9f8909b525c9a7c2f8",
+    "runtimeSha256": "a789309d7f8710f2e3150f4cbc8f8acc5aee9c99633c7611e503db089bcd2544",
+    "differential3045Rerun": false,
+    "existingAdmissionAlgorithmsChanged": false
+  },
+  "qualification": {
+    "context": "27300dbaff877d18ecb219a2c9000c96e7c3e8c8",
+    "sourceAuthor": "c50ce4521fbc264276734a9f8909b525c9a7c2f8",
+    "cycle9": "PASS",
+    "cycle24Critical": 5,
+    "unknownRuntime": "DENIED",
+    "unrelatedRuntime": "DENIED",
+    "helperMutantsDenied": 4,
+    "canonicalChanges": false,
+    "admissionAuthorized": false,
+    "integrationAuthorized": false,
+    "fullCycle24": [
+      {
+        "packages": 6,
+        "admitted_files": 36,
+        "retained_author_files": 523,
+        "protected_files": 128,
+        "independent_status": "CLEAR_LOCAL_SYNTHETIC_ONLY",
+        "operational_ready": false,
+        "restore_adapter": false,
+        "current_source_scope": "IMMUTABLE_C24_BASELINE_PLUS_EXACT_BOUNDED_C25_FORWARDS"
+      },
+      {
+        "prior_author_files": 523,
+        "protected_files": 128,
+        "locks": 5,
+        "bindings": 13,
+        "readiness_requirements": 19,
+        "critical_sources": 5,
+        "adapter_authorized": false
+      }
+    ]
+  },
+  "currentContextControls": {
+    "before": {
+      "passed": 16,
+      "failed": 0,
+      "pending": 0
+    },
+    "after": {
+      "context": "27300dbaff877d18ecb219a2c9000c96e7c3e8c8",
+      "frame": "EXACT_AFTER",
+      "packetCases": 16,
+      "failed": 0,
+      "canonicalChanges": false,
+      "admissionAuthorized": false,
+      "integrationAuthorized": false
+    }
+  },
+  "priorMetadataAttempt": {
+    "status": "FAILED_METADATA_CONTAINMENT",
+    "newOuterWallMs": 45000,
+    "scope": "Read-only full Cycle24 CLI, not an application test",
+    "partialManifest": {
+      "packages": 6,
+      "admitted_files": 36,
+      "retained_author_files": 523,
+      "protected_files": 128
+    },
+    "preservation": "NO_TERMINAL_RESULT",
+    "productFailure": false
+  },
+  "successfulFullTraversal": {
+    "metadataOuterWallMs": 120000,
+    "originalApplicationBudgetMs": 30000,
+    "applicationMeasurementOuterWallMs": 45000,
+    "testBudgetChanged": false
+  },
+  "limits": [
+    "Each title has only one controlled local before/after sample; no statistical or portable speed guarantee.",
+    "Fixed sample Date and UUIDs are comparison inputs, not operational expiry/Auth acceptance.",
+    "All original source freshness/post-await/tenant/UNKNOWN behavior is reused from exact reviewed author and accepted proofs.",
+    "No hosted failure cause/closure or callback-successor source binding is inferred.",
+    "Canonical runtime/checkers/source pins/history are unchanged; all3 admissions and later integration remain separately HELD."
+  ],
+  "naturalOriginalTen": {
+    "context": "27300dbaff877d18ecb219a2c9000c96e7c3e8c8",
+    "sourceAuthor": "c50ce4521fbc264276734a9f8909b525c9a7c2f8",
+    "hostedRun": 43498092270,
+    "targetSha256": "eb1e789835253c3369eb89ee27ed776d3a9611f863c0f81a3d377fe1ef961e8b",
+    "sourceHashes": {
+      "tests/cycle18-independent-integration-review.test.ts": "a21b987039f312f19bf103308f0fbeac26f72cc97f8a8607937b86b57d838217",
+      "tests/cycle24-independent-integration-review.test.ts": "09b5042be1fee47b562ed52046c900583acaaecff6241b2aa8491674bd17f083",
+      "tests/cycle23-service-source-review.test.ts": "f15405b03db73a18426dabd66eb6cd563d0db919f64b084b1f030845849cc6b6",
+      "tests/cycle25-owner-action-continuity.test.ts": "1825c40c4884f9203c337dd3d9a94e4458468b1853e43905881e1e53ef78b78d",
+      "tests/cycle23-independent-integration-review.test.ts": "f9d78549be62c2540b98959db7c908b84509a233c27a5435dec15a48f047dc2f"
+    },
+    "configHash": "0fdc8ac3b8d922c2229a25d67d0b42ab3c895489bfc7ee514aae0c78853bf48d",
+    "noAddedClockOrUUIDControl": true,
+    "maxWorkers": "ORIGINAL_CONFIG_4",
+    "originalTestAndHookBudgetMs": 30000,
+    "subprocessGroupWallMs": 180000,
+    "passed": 10,
+    "failed": 0,
+    "filteredOrDeclaredSkipped": 233,
+    "cases": [
+      {
+        "name": "finance: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay",
+        "status": "passed",
+        "durationMs": 13255.818208
+      },
+      {
+        "name": "finance: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay",
+        "status": "passed",
+        "durationMs": 12882.505667000001
+      },
+      {
+        "name": "Cycle23 independent frozen-runtime cross-module review I10 another property report and another job occurrence cannot replace the retained exact sources",
+        "status": "passed",
+        "durationMs": 10826.981958
+      },
+      {
+        "name": "brand 2 publication appends a version without rewriting the original report or changing its job",
+        "status": "passed",
+        "durationMs": 9751.008042000001
+      },
+      {
+        "name": "Cycle24 independent exact native action integration brand 0 native correction and material review remain the original cost and priority sources",
+        "status": "passed",
+        "durationMs": 11477.3785
+      },
+      {
+        "name": "Cycle24 independent exact native action integration brand 1 native correction and material review remain the original cost and priority sources",
+        "status": "passed",
+        "durationMs": 11038.802625000002
+      },
+      {
+        "name": "Cycle24 independent exact native action integration brand 2 native correction and material review remain the original cost and priority sources",
+        "status": "passed",
+        "durationMs": 12221.176709000003
+      },
+      {
+        "name": "Cycle25 original owner action refresh continuity brand 1 exact unchanged selection survives refresh as presentation requiring fresh verification",
+        "status": "passed",
+        "durationMs": 9024.345959
+      },
+      {
+        "name": "Cycle25 original owner action refresh continuity brand 2 exact unchanged selection survives refresh as presentation requiring fresh verification",
+        "status": "passed",
+        "durationMs": 9908.423
+      },
+      {
+        "name": "Cycle25 original owner action refresh continuity brand 2 actual recorded cost change clears a same-key selected action without inventing completion",
+        "status": "passed",
+        "durationMs": 9298.417916999999
+      }
+    ],
+    "canonicalChanges": false,
+    "hostedCauseOrClosure": false
+  },
+  "incompleteSelectorAttempt": {
+    "classification": "INCOMPLETE_SELECTION_REJECTED",
+    "topLevelPassed": 3,
+    "describedCasesUnselected": 7,
+    "completeRegressionAccepted": false,
+    "correction": "Native selectors use describe > title; JSON report names use describe title."
+  },
+  "wrapperReviewCorrections": [
+    "Complete exact BEFORE/AFTER frame recognition; mixed/unknown frames deny.",
+    "Captured source frame rechecked at completion; cleanup unconditional even if terminal checks fail.",
+    "Measurement setup literal hash/mode/ancestor seal before import.",
+    "Strict CLI selectors; actual native and JSON identities bound separately.",
+    "Known AFTER positive mini-tree is derived from immutable391 patches in the fast frame control."
+  ],
+  "callbackSuccessorQualified": false,
+  "foundation424": "CANCELLED_NO_TERMINAL_SUMMARY",
+  "independentReview": {
+    "rootFullControls": {
+      "passed": 16,
+      "durationSeconds": 13.75
+    },
+    "fieldFastDeltaControls": {
+      "passed": 4,
+      "durationSeconds": 7.18
+    },
+    "staticScope": "CLEAR_UNAPPLIED_424_ONLY",
+    "runtimeDifferentialOrBenchmarkOrNaturalTenRepeated": false
+  }
+}
