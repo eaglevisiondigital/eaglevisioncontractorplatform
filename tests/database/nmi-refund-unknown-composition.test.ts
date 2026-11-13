@@ -1,4 +1,5 @@
 import { readFileSync, readdirSync } from 'node:fs';
+import { createHmac } from 'node:crypto';
 import { afterAll, beforeAll, beforeEach, expect, it, vi } from 'vitest';
 import { createTestDatabase, type TestDatabase } from './engine';
 import { fictionalLaunchMerchants } from '../fixtures/first-launch-merchants';
@@ -9,7 +10,12 @@ import {
   SandboxRefundGateway,
   type SandboxRefund,
 } from '../../server/payments/refunds';
-import type { SandboxIntent } from '../../server/payments/sandbox';
+import {
+  SandboxGateway,
+  type SandboxIntent,
+} from '../../server/payments/sandbox';
+import { receiveSandboxPaymentWebhook } from '../../server/payments/webhook-inbox';
+import type { GatewaySql } from '../../server/payments/postgres-store';
 
 // Existing SQL and adapters only. These fictional approvals are trusted test
 // provisioning, never real merchant boarding, customer consent or provider facts.
@@ -310,4 +316,310 @@ it('identical refund command UUIDs across the two fictional merchants remain sep
   );
   expect(transport).toHaveBeenCalledTimes(2);
   expect(await nativeRead(1, foreign.idempotencyKey)).toEqual([]);
+});
+
+function signedCallback(index: number, eventId: string, state = 'settled') {
+  const merchant = launches[index].merchant;
+  const key = {
+    organizationId: merchant.organizationId,
+    merchantConfigId: merchant.merchantConfigId,
+    provider: 'nmi' as const,
+    value: `fictional-private-signing-key-${index}-not-live`,
+  };
+  const raw = Buffer.from(
+    JSON.stringify({
+      event_id: eventId,
+      organizationId: launches[1 - index].merchant.organizationId,
+      merchantConfigId: launches[1 - index].merchant.merchantConfigId,
+      event_body: {
+        state,
+        amount: '50.00',
+        currency: 'USD',
+        transaction_id: `fictional_unknown_transaction_${index}`,
+        private: 'FICTIONAL do not persist raw callback data',
+      },
+    }),
+  );
+  const signature =
+    't=fictional_native_nonce,s=' +
+    createHmac('sha256', key.value)
+      .update('fictional_native_nonce.')
+      .update(raw)
+      .digest('hex');
+  return { merchant, key, raw, signature };
+}
+async function inboxRead(index: number, eventId: string) {
+  const observer = db.fork ? await db.fork() : db;
+  try {
+    await logout(observer);
+    return (
+      await observer.query(
+        'select organization_id,merchant_id,event_id,body_digest from private.sandbox_gateway_inbox where organization_id=$1 and merchant_id=$2 and event_id=$3',
+        [
+          launches[index].merchant.organizationId,
+          launches[index].merchant.merchantConfigId,
+          eventId,
+        ],
+      )
+    ).rows;
+  } finally {
+    if (observer !== db) await observer.close();
+  }
+}
+
+it.each([0, 1])(
+  'signed settled callback for fictional merchant %i cannot resolve UNKNOWN or create refund capacity through actual SQL',
+  async (index) => {
+    const m = launches[index].merchant;
+    const i: SandboxIntent = {
+      organizationId: m.organizationId,
+      merchantConfigId: m.merchantConfigId,
+      invoiceId: crypto.randomUUID(),
+      authorizationId: crypto.randomUUID(),
+      idempotencyKey: crypto.randomUUID(),
+      amountMinor: 5000,
+      currency: 'USD',
+      expiresAt: until,
+    };
+    const token = {
+      provider: 'nmi' as const,
+      value: 'fictional-one-use-token-not-live',
+    };
+    const digest = sha256(
+      JSON.stringify({
+        ...i,
+        provider: token.provider,
+        tokenDigest: sha256(token.value),
+      }),
+    );
+    await authorize(index, i, 'capture', digest);
+    const transport = vi.fn<typeof fetch>(async () => {
+      throw Error('FICTIONAL capture transport loss after request submission');
+    });
+    const capture = new SandboxGateway(
+      m,
+      { apiKey: 'fictional-only' },
+      store(index),
+      transport,
+    );
+    expect((await capture.capture(i, token)).status).toBe('unknown');
+    const original = await nativeRead(index, i.idempotencyKey);
+    expect(original).toHaveLength(1);
+    expect(original[0]).toMatchObject({
+      status: 'unknown',
+      request_digest: digest,
+    });
+
+    const eventId = 'fictional_settled_for_unknown';
+    const callback = signedCallback(index, eventId);
+    const commands: unknown[][] = [];
+    const callbackPort: GatewaySql = {
+      async query<T extends Record<string, unknown>>(
+        sql: string,
+        params: unknown[] = [],
+      ) {
+        commands.push(params);
+        return db.query<T>(sql, params);
+      },
+    };
+    const inbox = new RestrictedSandboxStore(
+      new ProviderControl(callbackPort, {
+        organizationId: m.organizationId,
+        scopeId: m.merchantConfigId,
+        service: 'payment',
+      }),
+    );
+    await login(index);
+    for (const changed of [
+      {
+        raw: Buffer.concat([callback.raw, Buffer.from(' ')]),
+        key: callback.key,
+      },
+      {
+        raw: callback.raw,
+        key: {
+          ...callback.key,
+          value: signedCallback(1 - index, eventId).key.value,
+        },
+      },
+    ]) {
+      await expect(
+        receiveSandboxPaymentWebhook(
+          changed.raw,
+          callback.signature,
+          m,
+          changed.key,
+          inbox,
+        ),
+      ).rejects.toThrow(/signature/);
+      expect(commands).toEqual([]);
+    }
+    expect(await inboxRead(index, eventId)).toEqual([]);
+    await login(index);
+    expect(
+      await receiveSandboxPaymentWebhook(
+        callback.raw,
+        callback.signature,
+        m,
+        callback.key,
+        inbox,
+      ),
+    ).toBe('recorded');
+    expect(commands.map((p) => p[2])).toEqual(['webhook']);
+    expect(await inboxRead(index, eventId)).toEqual([
+      {
+        organization_id: m.organizationId,
+        merchant_id: m.merchantConfigId,
+        event_id: eventId,
+        body_digest: sha256(callback.raw),
+      },
+    ]);
+    expect(JSON.stringify(commands)).not.toContain('do not persist');
+    expect(await nativeRead(index, i.idempotencyKey)).toEqual(original);
+
+    // Explicit separate read/reconciliation, never a callback-driven money transition.
+    await login(index);
+    const current = await store(index).transactions(m);
+    const report = await store(index).reconcile(m, {
+      reportId: crypto.randomUUID(),
+      digest: sha256('FICTIONAL provider statement'),
+      snapshot: String(current.snapshot),
+      rows: [
+        {
+          organizationId: m.organizationId,
+          merchantConfigId: m.merchantConfigId,
+          provider: 'nmi',
+          mode: 'sandbox',
+          currency: 'USD',
+          kind: 'capture',
+          transactionId: launches[index].transactionId,
+          amountMinor: 10000,
+        },
+        {
+          organizationId: m.organizationId,
+          merchantConfigId: m.merchantConfigId,
+          provider: 'nmi',
+          mode: 'sandbox',
+          currency: 'USD',
+          kind: 'capture',
+          transactionId: `fictional_unknown_transaction_${index}`,
+          amountMinor: 5000,
+        },
+      ],
+    });
+    expect(report.report).toMatchObject({
+      balanced: false,
+      unresolved: 1,
+      missing: 0,
+      unexpected: 1,
+      conflicts: 0,
+      expectedNetMinor: '10000',
+      reportedNetMinor: '15000',
+    });
+    // Even a separately submitted synthetic observation cannot rewrite UNKNOWN or
+    // manufacture a settled successful capture. It is not genuine provider proof.
+    await store(index).recordObservation(m, {
+      observationId: crypto.randomUUID(),
+      key: i.idempotencyKey,
+      transactionId: `fictional_unknown_transaction_${index}`,
+      kind: 'capture',
+      amountMinor: 5000,
+      currency: 'USD',
+      state: 'settled',
+      digest: sha256('FICTIONAL observation'),
+      observedAt: new Date().toISOString(),
+    });
+    const requestedRefund = {
+      ...refund(index, 1000),
+      invoiceId: i.invoiceId,
+      captureKey: i.idempotencyKey,
+      providerTransactionId: `fictional_unknown_transaction_${index}`,
+    };
+    await authorize(
+      index,
+      requestedRefund,
+      'refund',
+      refundDigest(requestedRefund),
+    );
+    await expect(
+      gateway(index, transport).refund(requestedRefund),
+    ).rejects.toThrow(/Settled matching/);
+    expect(transport).toHaveBeenCalledTimes(1);
+    expect(await nativeRead(index, requestedRefund.idempotencyKey)).toEqual([]);
+    expect(await nativeRead(index, i.idempotencyKey)).toEqual(original);
+    await logout();
+    expect(
+      (
+        await db.query(
+          'select count(*)::int n from private.sandbox_gateway_settlements where organization_id=$1 and capture_key=$2',
+          [m.organizationId, i.idempotencyKey],
+        )
+      ).rows[0].n,
+    ).toBe(0);
+  },
+);
+
+it('signed inbox ACK loss commits only exact event identity and preserves conflicting replay denial independently per merchant', async () => {
+  const eventId = 'fictional_same_event_two_merchants';
+  for (const index of [0, 1]) {
+    const callback = signedCallback(index, eventId);
+    const actions: unknown[] = [];
+    let lose = true;
+    const port: GatewaySql = {
+      async query<T extends Record<string, unknown>>(
+        sql: string,
+        params: unknown[] = [],
+      ) {
+        actions.push(params[2]);
+        const response = await db.query<T>(sql, params);
+        if (lose) {
+          lose = false;
+          throw Error('FICTIONAL ACK loss after actual inbox COMMIT');
+        }
+        return response;
+      },
+    };
+    const inbox = new RestrictedSandboxStore(
+      new ProviderControl(port, {
+        organizationId: callback.merchant.organizationId,
+        scopeId: callback.merchant.merchantConfigId,
+        service: 'payment',
+      }),
+    );
+    const receive = (event = callback) =>
+      receiveSandboxPaymentWebhook(
+        event.raw,
+        event.signature,
+        event.merchant,
+        event.key,
+        inbox,
+      );
+    await login(index);
+    await expect(receive()).rejects.toThrow(
+      'Webhook acknowledgment UNKNOWN; reconcile original event',
+    );
+    expect(actions).toEqual(['webhook']);
+    const persisted = await inboxRead(index, eventId);
+    expect(persisted).toEqual([
+      {
+        organization_id: callback.merchant.organizationId,
+        merchant_id: callback.merchant.merchantConfigId,
+        event_id: eventId,
+        body_digest: sha256(callback.raw),
+      },
+    ]);
+    // Simulate explicit provider duplicate delivery with identical authenticated
+    // identity. This is not an automatic mutator retry after UNKNOWN.
+    await login(index);
+    expect(await receive()).toBe('duplicate');
+    await expect(
+      receive(signedCallback(index, eventId, 'declined')),
+    ).rejects.toThrow(/UNKNOWN/);
+    expect(actions).toEqual(['webhook', 'webhook', 'webhook']);
+    expect(await inboxRead(index, eventId)).toEqual(persisted);
+    await login(index);
+    expect(
+      (await store(index).transactions(callback.merchant)).transactions,
+    ).toHaveLength(1);
+  }
 });

@@ -3422,3 +3422,15 @@ native reads use an independent connection after commit. These are controlled
 provider responses and synthetic SQL provisioning, not actual NMI, hosted Auth,
 process-loss custody or financial acceptance. No runtime/schema/pin changes.
 D1-D3, VAR, separate merchant bindings and recovery remain open; Release1.0 NO-GO.
+
+## Signed NMI inbox-to-financial-state boundaries
+
+Three additional local composition cases connect the existing signature verifier,
+inbox and restricted SQL. Wrong body/key denies before SQL; valid signed settled
+notifications cannot resolve a capture UNKNOWN, create settlement/refund capacity
+or make its explicit reconciliation balanced. Actual inbox commit/ACK loss retains
+only exact configured merchant/event/hash; duplicate delivery and changed-digest
+conflicts remain separate across both fictional merchants. PGlite and native PG17
+each pass the three selected cases; prior three refund cases were filtered, not
+rerun. Controlled observations/signatures are not genuine provider facts, hosted
+Auth or financial authority. Runtime/SQL/pins remain unchanged; Release1.0 NO-GO.

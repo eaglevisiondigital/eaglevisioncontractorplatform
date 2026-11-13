@@ -2825,3 +2825,11 @@ SQL workload rather than infer their integration from separate fake-store tests.
 Assert committed original identity, held capacity and zero replacement dispatch,
 with two fictional merchant scopes. Do not change protected payment/SQL source,
 invent refund or void authority, or claim real provider/operational acceptance.
+
+## Keep authenticated payment notifications separate from financial outcomes
+
+Extend the existing native composition tests through the real signed inbox and
+explicit reconciliation/observation commands. Authenticate exact callback bytes
+without trusting payload tenant identity or interpreting settlement wording as
+authority. Preserve UNKNOWN and immutable inbox/attempt evidence after ACK loss.
+This acceptance increment adds no callback-to-money bridge or runtime/SQL change.
