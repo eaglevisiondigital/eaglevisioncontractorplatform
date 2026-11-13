@@ -1,3 +1,15 @@
+## Caller-bound invoice reconciliation · unapplied candidate
+
+Issue388 now has an independently reviewed two-file source proposal, not installed
+client/SQL changes.36 focused cases and10 native PG17 cases pass; exact actor,
+session, connection and original request hash prevent another actor's receipt
+from clearing UNKNOWN. Native observed backends/controlled Auth fixtures are not
+hosted authentication or durable custody. Original canonical28 client cases pass;
+new API fixture migration/full proposed-source legacy acceptance remain OPEN.
+See [exact hashes and source-author checkpoint](proposals/invoice-caller-reconciliation/README.md).
+Protected admission, D1–D3/A01–A12, SQL/Auth/custody/recovery/NMI and release gates
+remain unchanged. Saul 2 Paul first; Cunningham second. Release1.0 NO-GO.
+
 ## Historical source-test fixture corrections
 
 Twelve Foundation source-test failures were traced to C31/C32/C33 fixtures mixing
