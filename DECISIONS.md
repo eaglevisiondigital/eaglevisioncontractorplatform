@@ -2910,3 +2910,15 @@ historical read of exactbd8 only. Fresh five-file and lineage-mode checks preced
 those reads. Current closeout acceptance uses separate unwrapped real APIs; unknown
 source never falls back to historical success. The strict27 workflow and all source
 checks/historical pins remain unchanged. This fixture fix grants no operational authority.
+
+### Qualify exact-head performance without promoting source — November13
+
+Keep reviewed optimization and source admission separate from launch integration.
+Reuse immutable hash-bound harnesses with explicit finite context/selector adapters
+only in disposable archives; preserve original case/config bytes and30s budgets.
+Controlled clock/UUID comparisons establish matched synthetic inputs, not real expiry
+or Auth acceptance. Natural-input regression and local speed samples never rewrite
+failed hosted results or identify their cause. Require original separate C9/C24
+author approvals and a later exact source-bound integration review/authorization.
+No timing improvement, CI result or helper addition grants hosted/financial/recovery
+authority. Preserve all operational acceptance and Release1.0 NO-GO gates.

@@ -1,0 +1,232 @@
+diff --git a/src/lib/workflows/operating-center-runtime.ts b/src/lib/workflows/operating-center-runtime.ts
+index 507b391ab622a3d56c0a109a84a6ef2b97d6cba8..48b97ca6abb05226d46e2338e48fec84f75bcd4f 100644
+--- a/src/lib/workflows/operating-center-runtime.ts
++++ b/src/lib/workflows/operating-center-runtime.ts
+@@ -52,30 +52,41 @@ function dataSignature(value: unknown) {
+     )
+       throw Error('Plain source evidence required');
+     active.add(v);
+-    const descriptors = Object.getOwnPropertyDescriptors(v),
+-      keys = Reflect.ownKeys(v);
+-    if (
+-      keys.some(
+-        (k) => typeof k !== 'string' || !Object.hasOwn(descriptors[k], 'value'),
+-      )
+-    )
+-      throw Error('Own-data source evidence required');
++    // Capture each descriptor once in the same ownKeys/descriptor/ownKeys order.
++    // Ordinary objects retain the indexed fast path; reordered Proxy keys use
++    // the captured map. No original values, descriptors or checks are cached.
++    const capturedKeys = Reflect.ownKeys(v);
++    const captured = capturedKeys.map((key) =>
++      Object.getOwnPropertyDescriptor(v, key),
++    );
++    const keys = Reflect.ownKeys(v);
++    let reordered: Map<PropertyKey, PropertyDescriptor | undefined> | undefined;
++    const descriptor = (key: PropertyKey, index: number) => {
++      if (capturedKeys[index] === key) return captured[index];
++      reordered ??= new Map(capturedKeys.map((k, i) => [k, captured[i]]));
++      return reordered.get(key);
++    };
++    for (let i = 0; i < keys.length; i++) {
++      const d = descriptor(keys[i], i);
++      if (typeof keys[i] !== 'string' || !d || !Object.hasOwn(d, 'value'))
++        throw Error('Own-data source evidence required');
++    }
+     let result: unknown;
+     if (Array.isArray(v)) {
+       if (
+         keys.length !== v.length + 1 ||
+-        Array.from({ length: v.length }, (_, i) => descriptors[String(i)]).some(
+-          (d) => !d,
+-        )
++        Array.from({ length: v.length }, (_, i) =>
++          descriptor(String(i), i),
++        ).some((d) => !d)
+       )
+         throw Error('Dense source data required');
+       result = Array.from({ length: v.length }, (_, i) =>
+-        data(descriptors[String(i)].value),
++        data(descriptor(String(i), i)!.value),
+       );
+     } else {
+       const plain = Object.create(null) as Record<string, unknown>;
+-      for (const key of keys as string[])
+-        plain[key] = data(descriptors[key].value);
++      for (let i = 0; i < keys.length; i++)
++        plain[keys[i] as string] = data(descriptor(keys[i], i)!.value);
+       result = plain;
+     }
+     active.delete(v);
+--- /dev/null
++++ b/scripts/operating-source-signature-admission.mjs
+@@ -0,0 +1,63 @@
++// Proposed build/test source admission ONLY. No application authority.
++import { execFileSync } from 'node:child_process';
++import { createHash } from 'node:crypto';
++export const signatureSource = Object.freeze({
++  path: 'src/lib/workflows/operating-center-runtime.ts',
++  parent: 'af36a27e34b77bfef3700d7cd87fdb39c4dc50d5',
++  author: 'c50ce4521fbc264276734a9f8909b525c9a7c2f8',
++  originalHash:
++    '7a5272ae344400714dea1efe727a40c19a10c96ccfdf70f7321e127488bbd239',
++  authorHash:
++    'a789309d7f8710f2e3150f4cbc8f8acc5aee9c99633c7611e503db089bcd2544',
++});
++const sha = (b) => createHash('sha256').update(b).digest('hex');
++export const signatureGit = (...args) =>
++  execFileSync('git', ['--no-replace-objects', ...args]);
++export function admitOperatingSignatureSource(
++  path,
++  current,
++  historicalHash,
++  git = signatureGit,
++) {
++  if (path !== signatureSource.path) return false;
++  const fail = () => {
++    throw Error('Exact reviewed operating-signature author required');
++  };
++  if (historicalHash !== signatureSource.originalHash) fail();
++  const old = git('show', `${signatureSource.parent}:${path}`);
++  const authored = git('show', `${signatureSource.author}:${path}`);
++  if (
++    sha(old) !== signatureSource.originalHash ||
++    sha(authored) !== signatureSource.authorHash ||
++    !Buffer.from(current).equals(authored)
++  )
++    fail();
++  if (
++    git('show', '--no-patch', '--format=%P', signatureSource.author)
++      .toString()
++      .trim() !== signatureSource.parent
++  )
++    fail();
++  if (
++    git(
++      'diff-tree',
++      '--no-commit-id',
++      '--name-status',
++      '--no-renames',
++      '-r',
++      signatureSource.author,
++    )
++      .toString()
++      .trim() !== `M\t${path}`
++  )
++    fail();
++  for (const commit of [signatureSource.parent, signatureSource.author]) {
++    const tree = git('ls-tree', commit, '--', path).toString().trim();
++    if (
++      !/^100644 blob [a-f0-9]{40}\t/.test(tree) ||
++      tree.split('\t')[1] !== path
++    )
++      fail();
++  }
++  return true;
++}
+--- a/scripts/check-cycle9-integrity.mjs
++++ b/scripts/check-cycle9-integrity.mjs
+@@ -3,6 +3,26 @@
+ import { readFileSync, lstatSync } from 'node:fs';
+ import { createHash } from 'node:crypto';
+ import { resolve } from 'node:path';
++
++// Verify the new companion before executing its captured bytes.
++const signatureHelperUrl = new URL(
++  './operating-source-signature-admission.mjs',
++  import.meta.url,
++);
++if (
++  !lstatSync(signatureHelperUrl).isFile() ||
++  lstatSync(signatureHelperUrl).isSymbolicLink()
++)
++  throw Error('Reviewed operating-signature helper required');
++const signatureHelperBytes = readFileSync(signatureHelperUrl);
++if (
++  createHash('sha256').update(signatureHelperBytes).digest('hex') !==
++  '38fd3d784b10dd634f6b03a5995a4ce4392eb2924865349d1414328701113978'
++)
++  throw Error('Reviewed operating-signature helper required');
++const { admitOperatingSignatureSource } = await import(
++  'data:text/javascript;base64,' + signatureHelperBytes.toString('base64')
++);
+ 
+ const read = (path) => {
+   if (
+@@ -73,11 +93,12 @@
+   for (const file of files) {
+     if (!remaining.has(file.path) || paths.has(file.path))
+       throw Error('Overlapping/out-of-scope Cycle9 source');
++    const current = read(file.path);
+     if (
+       !/^[a-f0-9]{64}$/.test(file.sha256) ||
+-      (createHash('sha256').update(read(file.path)).digest('hex') !==
+-        file.sha256 &&
+-        !admitServicePrivacyTest(file.path, read(file.path), file.sha256))
++      (createHash('sha256').update(current).digest('hex') !== file.sha256 &&
++        !admitServicePrivacyTest(file.path, current, file.sha256) &&
++        !admitOperatingSignatureSource(file.path, current, file.sha256))
+     )
+       throw Error(`Reviewed Cycle9 source changed: ${file.path}`);
+     paths.add(file.path);
+--- a/scripts/check-cycle24.mjs
++++ b/scripts/check-cycle24.mjs
+@@ -11,6 +11,26 @@
+   admitCycle33ExecutionPublished,
+   admitCycle33V1ContinuationPublished,
+ } from './cycle25-source-lineage.mjs';
++
++// Verify the new companion before executing its captured bytes.
++const signatureHelperUrl = new URL(
++  './operating-source-signature-admission.mjs',
++  import.meta.url,
++);
++if (
++  !lstatSync(signatureHelperUrl).isFile() ||
++  lstatSync(signatureHelperUrl).isSymbolicLink()
++)
++  throw Error('Reviewed operating-signature helper required');
++const signatureHelperBytes = readFileSync(signatureHelperUrl);
++if (
++  createHash('sha256').update(signatureHelperBytes).digest('hex') !==
++  '38fd3d784b10dd634f6b03a5995a4ce4392eb2924865349d1414328701113978'
++)
++  throw Error('Reviewed operating-signature helper required');
++const { admitOperatingSignatureSource } = await import(
++  'data:text/javascript;base64,' + signatureHelperBytes.toString('base64')
++);
+ 
+ export const cycle24Parent = '7b8d8c1a6f03fa33321409aa15c46926a63e59ed';
+ export const cycle24Branch = 'codex/program-cycle-twenty-four-integration';
+@@ -214,7 +234,10 @@
+       throw Error(`Exact published bytes required: ${f.path}`);
+     // Original C24 hashes stay original. A fixed bounded C25 author commit must
+     // independently explain every changed current byte; never arbitrary ancestry.
+-    if (!bytes.equals(original))
++    if (
++      !bytes.equals(original) &&
++      !admitOperatingSignatureSource(f.path, bytes, sha(original))
++    )
+       admitCycle25Source(f.path, bytes, original, ports);
+     pending.delete(f.path);
+     seen.add(f.path);
+@@ -456,13 +479,15 @@
+   };
+ }
+ export function validateCycle24CriticalSources(ports = { read, git }) {
+-  for (const path of cycle24CriticalSources)
++  for (const path of cycle24CriticalSources) {
++    const current = Buffer.from(ports.read(path)),
++      original = Buffer.from(ports.git(cycle24RuntimeCommit, path));
+     if (
+-      !Buffer.from(ports.read(path)).equals(
+-        Buffer.from(ports.git(cycle24RuntimeCommit, path)),
+-      )
++      !current.equals(original) &&
++      !admitOperatingSignatureSource(path, current, sha(original))
+     )
+       throw Error(`Critical frozen source changed: ${path}`);
++  }
+   return { critical_sources: cycle24CriticalSources.length };
+ }
+ export function checkCycle24Preservation() {
