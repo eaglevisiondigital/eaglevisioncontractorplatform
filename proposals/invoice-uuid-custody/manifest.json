@@ -1,0 +1,39 @@
+{
+  "classification": "UNAPPLIED_SOURCE_PROPOSAL_NOT_AUTHORIZATION",
+  "parent": "78cf1d3eb0ce37862a7f34d727e45e7ccb6417ad",
+  "sources": [
+    {
+      "path": "server/invoices/commercial-draft-client.ts",
+      "sha256": "12c1eb303f10f8cb9e6c5f765839419f55e4b6cfd16c6c6ef9f8812ccbb76194",
+      "proposedSha256": "d2e9e57a25f62413dd169e41ea56996db070772814da8a04c43e264d07f2a89a"
+    },
+    {
+      "path": "server/payments/postgres-store.ts",
+      "sha256": "9b2b9148db4ca5389aa8e9ef4bd5d5c6ccd700a2ed85a7b5dc0f58f8d94d0eef"
+    },
+    {
+      "path": "server/payments/sandbox.ts",
+      "sha256": "89dc2b03f273ee00c73e8342fcf9e8db6d78d5f898bde96ccff94e69fc0276cc"
+    },
+    {
+      "path": "server/payments/refunds.ts",
+      "sha256": "78f74ab633f3ba192d447ffb1b77f8d027c38df49ea0fd6f06b9fb65df2490a5"
+    },
+    {
+      "path": "server/providers/safety.ts",
+      "sha256": "a8865035638e0cd19d5c1ea4b43dc9ed04012dd34cce9cc5084d7f35e9414c4d"
+    }
+  ],
+  "patchSha256": "8fabab162bc6754277583994809f509ca4f2644a61c2a58baf9f1367ee6bdfb8",
+  "expectedParent": {
+    "passed": 2,
+    "failed": 8
+  },
+  "expectedProposed": {
+    "passed": 10,
+    "failed": 0
+  },
+  "acceptanceTestSha256": "02ec935f768031f764eaa7b8eca9e24f6c1e76a492aa4d34bbc1cedc3f247fa3",
+  "hostedAcceptance": "NOT_RUN",
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

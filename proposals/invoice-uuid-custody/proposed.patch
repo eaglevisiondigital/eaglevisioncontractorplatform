@@ -1,0 +1,5 @@
+--- a/server/invoices/commercial-draft-client.ts
++++ b/server/invoices/commercial-draft-client.ts
+@@ -39 +39 @@
+-const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
++const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
