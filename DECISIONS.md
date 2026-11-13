@@ -2741,3 +2741,12 @@ Save before submission. Reject stale saved-source identity or revision instead o
 silently submitting older content or automatically saving and submitting together.
 Retain original checklist customization, canonical writer and immutable publication
 rules; this local control grants no hosted, physical-completion or dispatch authority.
+
+### Bind material review to its displayed cost snapshot
+
+A newly approved credit or changed review revision requires explicit evidence refresh
+before the existing material decision writer runs. Retain unfinished inputs and exact
+expense selection; missing source is UNKNOWN, never another purchase by fallback.
+Bound this local control to the original immediate-snapshot reader, rejecting delayed
+or replaced readers rather than claiming an unimplemented atomic server guarantee.
+No new custody, customer approval, invoice issuance or operational authority follows.

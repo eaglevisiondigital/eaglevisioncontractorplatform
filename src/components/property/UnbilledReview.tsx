@@ -1,5 +1,6 @@
 import { BackOfficeText } from './back-office-copy';
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useRef, useLayoutEffect } from 'react';
+import { reviewCurrentMaterial } from './material-review-source';
 import type { PropertyRepository } from '../../lib/property';
 import { useResource, useTask } from '../forms-state';
 import { ResourceStatus } from '../forms';
@@ -14,17 +15,17 @@ export function UnbilledReview({
   repo: PropertyRepository;
   org: string;
 }) {
+  const [expenseId, setExpenseId] = useState('');
   const data = useResource(
-    useCallback(
-      async () => ({
-        jobs: await repo.estimates.jobs(org),
-        decisions: repo.read(org).decisions,
-      }),
-      [repo, org],
-    ),
+    useCallback(async () => {
+      const jobs = await repo.estimates.jobs(org);
+      const first =
+        jobs.flatMap((job) => unbilledRows(job))[0]?.expense.id ?? '';
+      setExpenseId((selected) => selected || first);
+      return { repo, org, jobs, decisions: repo.read(org).decisions };
+    }, [repo, org]),
   );
   const task = useTask(),
-    [expenseId, setExpenseId] = useState(''),
     [disposition, setDisposition] = useState<Disposition>('deferred'),
     [reason, setReason] = useState(''),
     [description, setDescription] = useState(
@@ -38,11 +39,45 @@ export function UnbilledReview({
     [presentation, setPresentation] = useState<'itemized' | 'package'>(
       'itemized',
     );
-  if (!data.data || data.loading || data.error)
-    return <ResourceStatus {...data} />;
+  const generation = useRef(0);
+  useLayoutEffect(() => {
+    const frame = generation.current + 1;
+    generation.current = frame;
+    return () => {
+      generation.current = frame + 1;
+    };
+  }, [
+    repo,
+    org,
+    data.data,
+    data.loading,
+    data.error,
+    expenseId,
+    disposition,
+    reason,
+    description,
+    pricing,
+    scope,
+    presentation,
+  ]);
+  if (
+    !data.data ||
+    data.data.repo !== repo ||
+    data.data.org !== org ||
+    data.loading ||
+    data.error
+  )
+    return (
+      <ResourceStatus
+        {...data}
+        loading={
+          data.loading || data.data?.repo !== repo || data.data?.org !== org
+        }
+      />
+    );
   const jobs = data.data.jobs,
     rows = jobs.flatMap((job) => unbilledRows(job).map((r) => ({ ...r, job }))),
-    row = rows.find((x) => x.expense.id === expenseId) ?? rows[0];
+    row = rows.find((x) => x.expense.id === expenseId);
   const history = data.data.decisions.filter(
     (d) => d.expense_id === row?.expense.id,
   );
@@ -63,20 +98,28 @@ export function UnbilledReview({
         and approved changes. Reviews append to history. Proposals do not change
         customer balances or post material cost again.
       </p>
+      <button className="secondary" disabled={task.busy} onClick={data.reload}>
+        Refresh purchase evidence
+      </button>
+      <Field label="Purchased material to review">
+        <select
+          value={expenseId}
+          onChange={(e) => setExpenseId(e.target.value)}
+        >
+          {!row && (
+            <option value={expenseId} disabled>
+              Selected purchase unavailable · UNKNOWN
+            </option>
+          )}
+          {rows.map((r) => (
+            <option key={r.expense.id} value={r.expense.id}>
+              {r.job.name} · {r.expense.description} · {r.expense.reference}
+            </option>
+          ))}
+        </select>
+      </Field>
       {row ? (
         <>
-          <Field label="Purchased material to review">
-            <select
-              value={row.expense.id}
-              onChange={(e) => setExpenseId(e.target.value)}
-            >
-              {rows.map((r) => (
-                <option key={r.expense.id} value={r.expense.id}>
-                  {r.job.name} · {r.expense.description} · {r.expense.reference}
-                </option>
-              ))}
-            </select>
-          </Field>
           <div className="job-metrics">
             <div>
               <span>
@@ -123,11 +166,13 @@ export function UnbilledReview({
             onSubmit={(e) => {
               e.preventDefault();
               void task.run(async () => {
-                await repo.decide(
+                const frame = generation.current;
+                await reviewCurrentMaterial(
+                  repo,
                   org,
-                  row.job.id,
+                  row.job,
                   row.expense.id,
-                  history.length,
+                  history,
                   {
                     disposition,
                     reason,
@@ -136,6 +181,7 @@ export function UnbilledReview({
                     presentation,
                     description,
                   },
+                  () => frame === generation.current,
                 );
                 data.reload();
               }, 'Append-only material review saved; any billing remains a proposal');
@@ -291,8 +337,9 @@ export function UnbilledReview({
         </>
       ) : (
         <p>
-          No approved material purchases to review. Submit and approve a
-          material expense in Jobs first.
+          Selected purchase unavailable · UNKNOWN. Refresh its original evidence
+          or explicitly select another purchase; retained inputs are not
+          automatically rebound.
         </p>
       )}
       {task.message && <p role="status">{task.message}</p>}

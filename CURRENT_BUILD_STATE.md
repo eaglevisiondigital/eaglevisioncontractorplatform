@@ -3314,3 +3314,20 @@ Build/typecheck, scoped lint/format, feature checks and protected128/design5/13 
 Original same-tab synthetic persistence only; no hosted/Auth/atomic-custody acceptance,
 new D1/D3 decision, recovery action or launch dependency. Release1.0 remains NOT READY /
 NOT AUTHORIZED; all original operational and intake SQL HELD gates remain unchanged.
+
+Optional material-review control: parent evidence reproduced a displayed125000-minor
+purchase proposal silently repriced124000 after a newly approved1000-minor credit.
+The existing review action now binds the full displayed job/cost/expense and decision
+history, current local planning permission, input snapshot and UI generation. Only
+its existing canonical local jobs reader is admitted before/after permission await;
+that reader captures an immutable snapshot synchronously before returning its promise.
+Refresh retains rationale and exact expense identity; an unavailable expense remains
+UNKNOWN without falling back to another purchase. New12 unit cases PASS, including
+delayed-reader denial, concurrency and refreshed proposal/reopen math. Final9 responsive
+cases PASS (new6 source/permission/identity/retained-note/accessibility journeys plus
+unchanged original3 unbilled journeys); earlier selector-only failures are retained.
+Build/typecheck, scoped lint/format, feature checks and protected128/design5/13 PASS.
+No raw-writer or pricing-engine changes. Post-dispatch UNKNOWN and server-atomic CAS remain open;
+this is original same-tab synthetic evidence, not hosted financial acceptance.
+D1–D3/A01–A12, intake SQL HELD and recovery restrictions remain unchanged. Optional
+work is outside launch; Release1.0 remains NOT READY / NOT AUTHORIZED.
