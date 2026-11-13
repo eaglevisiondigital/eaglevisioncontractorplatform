@@ -1,3 +1,4 @@
+import { inspectionChecklistLabels } from './inspection-plan-fields';
 import { BackOfficeText } from './back-office-copy';
 import {
   useState,
@@ -410,15 +411,10 @@ function Inspections({
                     onChange={(e) =>
                       setPlan({
                         ...plan,
-                        checklist: e.target.value
-                          .split('\n')
-                          .filter(Boolean)
-                          .map((label, i) => ({
-                            id: plan.checklist[i]?.id ?? crypto.randomUUID(),
-                            label,
-                            required: true,
-                            completed: false,
-                          })),
+                        checklist: inspectionChecklistLabels(
+                          plan.checklist,
+                          e.target.value,
+                        ),
                       })
                     }
                   />

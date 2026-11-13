@@ -3424,3 +3424,24 @@ and five locks/13 bindings, and feature25 checks PASS. Optional source remains
 outside the first-contractor launch candidate. D1–D3/A01–A12, intake SQL HELD and
 original recovery/provider/financial/production restrictions persist; Release1.0
 NOT READY / NOT AUTHORIZED.
+
+### Optional inspection-template required choices — November 13
+
+Editing any checklist label previously reset every retained item's explicit optional
+choice to required. The existing editor now retains each indexed item's ID and
+required flag; appended positions keep the existing required-by-default behavior.
+The original explicit positional insert/remove contract remains: no label matching
+or reorder inference is added. Original plan Save/CAS and new-visit preparation
+remain authoritative; issued reports/old visits and tenant/property/job identity
+are unchanged.
+
+Seven actual-engine Save/reopen/new-draft/tenant/stale/published-history cases PASS.
+Three new responsive Save/reopen cases with axe/overflow plus three unchanged
+CRM-bound plan/visit journeys PASS (six total). Initial wrong-tab probe failure and
+correctly reproduced original required-flag reset failure remain retained. Build,
+types, scoped lint/format, original128 protected hashes/five locks/13 bindings and
+feature25 checks PASS. No canonical writer/domain/schema/CSS/artwork/pin changed.
+Evidence is same-tab synthetic, not hosted Auth/durability or physical completion.
+Optional branch stays outside the first-contractor launch; D1–D3/A01–A12 and all
+existing recovery/provider/financial restrictions persist. Release1.0 NOT READY /
+NOT AUTHORIZED.
