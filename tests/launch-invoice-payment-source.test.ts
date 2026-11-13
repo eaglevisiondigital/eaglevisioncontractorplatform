@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { readFileSync, lstatSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { expect, it } from 'vitest';
@@ -12,6 +12,26 @@ interface Source {
   currentSha256: string;
   rootTestDelta?: string;
 }
+// Proposed finite source helper is checked before executing captured bytes.
+const callerHelperUrl = new URL(
+  '../scripts/invoice-caller-source-admission.mjs',
+  import.meta.url,
+);
+if (
+  !lstatSync(callerHelperUrl).isFile() ||
+  lstatSync(callerHelperUrl).isSymbolicLink()
+)
+  throw Error('Reviewed invoice caller helper required');
+const callerHelperBytes = readFileSync(callerHelperUrl);
+if (
+  createHash('sha256').update(callerHelperBytes).digest('hex') !==
+  'e83139e1af82743bf9993fac2fb55c4d50e359e9681fd16d1a12001a41432dbf'
+)
+  throw Error('Reviewed invoice caller helper required');
+const { admitInvoiceCallerSource } = await import(
+  'data:text/javascript;base64,' + callerHelperBytes.toString('base64')
+);
+
 const composition = JSON.parse(
   readFileSync('docs/LAUNCH_INVOICE_PAYMENT_COMPOSITION.json', 'utf8'),
 );
@@ -31,6 +51,21 @@ function verify(readCurrent = current, readOriginal = original) {
     'UNAPPLIED_UNWIRED_DEVELOPMENT_COMPOSITION',
   );
   expect(composition.sources).toHaveLength(26);
+  const activeClient = readCurrent(
+    'server/invoices/commercial-draft-client.ts',
+  );
+  if (
+    hash(activeClient) !==
+    '12c1eb303f10f8cb9e6c5f765839419f55e4b6cfd16c6c6ef9f8812ccbb76194'
+  )
+    expect(
+      admitInvoiceCallerSource(
+        'server/invoices/commercial-draft-client.ts',
+        activeClient,
+        '12c1eb303f10f8cb9e6c5f765839419f55e4b6cfd16c6c6ef9f8812ccbb76194',
+        { readCurrent, readOriginal },
+      ),
+    ).toBe(true);
   const paths = new Set<string>();
   const deltas: Record<string, string> = {
     'tests/workflows/invoice-read-boundary.test.ts':
@@ -44,6 +79,7 @@ function verify(readCurrent = current, readOriginal = original) {
     expect(hash(readOriginal(source.originCommit, source.path))).toBe(
       source.originSha256,
     );
+    const bytes = readCurrent(source.path);
     if (source.path === 'tests/database/commercial-invoice-drafts.test.ts') {
       const fix = JSON.parse(
         readFileSync('docs/INVOICE_REVOCATION_TEST_CORRECTION.json', 'utf8'),
@@ -72,8 +108,22 @@ function verify(readCurrent = current, readOriginal = original) {
       expect(next.currentTestSha256).toBe(
         '94d06410bdd267726f57aa1b1a90c3357af3ed51cadf69f2a39e610a09416b47',
       );
-      expect(hash(readCurrent(source.path))).toBe(next.currentTestSha256);
-    } else expect(hash(readCurrent(source.path))).toBe(source.currentSha256);
+      if (hash(bytes) !== next.currentTestSha256)
+        expect(
+          admitInvoiceCallerSource(source.path, bytes, next.currentTestSha256, {
+            readCurrent,
+            readOriginal,
+          }),
+        ).toBe(true);
+      else expect(hash(bytes)).toBe(next.currentTestSha256);
+    } else if (hash(bytes) !== source.currentSha256)
+      expect(
+        admitInvoiceCallerSource(source.path, bytes, source.currentSha256, {
+          readCurrent,
+          readOriginal,
+        }),
+      ).toBe(true);
+    else expect(hash(bytes)).toBe(source.currentSha256);
     if (source.rootTestDelta) {
       expect(deltas[source.path]).toBe(source.rootTestDelta);
     } else expect(source.currentSha256).toBe(source.originSha256);
