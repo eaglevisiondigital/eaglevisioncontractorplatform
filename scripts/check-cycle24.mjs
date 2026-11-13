@@ -12,6 +12,26 @@ import {
   admitCycle33V1ContinuationPublished,
 } from './cycle25-source-lineage.mjs';
 
+// Verify the new companion before executing its captured bytes.
+const signatureHelperUrl = new URL(
+  './operating-source-signature-admission.mjs',
+  import.meta.url,
+);
+if (
+  !lstatSync(signatureHelperUrl).isFile() ||
+  lstatSync(signatureHelperUrl).isSymbolicLink()
+)
+  throw Error('Reviewed operating-signature helper required');
+const signatureHelperBytes = readFileSync(signatureHelperUrl);
+if (
+  createHash('sha256').update(signatureHelperBytes).digest('hex') !==
+  '38fd3d784b10dd634f6b03a5995a4ce4392eb2924865349d1414328701113978'
+)
+  throw Error('Reviewed operating-signature helper required');
+const { admitOperatingSignatureSource } = await import(
+  'data:text/javascript;base64,' + signatureHelperBytes.toString('base64')
+);
+
 export const cycle24Parent = '7b8d8c1a6f03fa33321409aa15c46926a63e59ed';
 export const cycle24Branch = 'codex/program-cycle-twenty-four-integration';
 export const cycle24RuntimeCommit = '7a90da23c0a701001c79b605d94d2894cd9cc5a6';
@@ -214,7 +234,10 @@ function verify(files, paths, head, ports, seen) {
       throw Error(`Exact published bytes required: ${f.path}`);
     // Original C24 hashes stay original. A fixed bounded C25 author commit must
     // independently explain every changed current byte; never arbitrary ancestry.
-    if (!bytes.equals(original))
+    if (
+      !bytes.equals(original) &&
+      !admitOperatingSignatureSource(f.path, bytes, sha(original))
+    )
       admitCycle25Source(f.path, bytes, original, ports);
     pending.delete(f.path);
     seen.add(f.path);
@@ -456,13 +479,15 @@ export function validateCycle24ApplicationReport(report, cwd = process.cwd()) {
   };
 }
 export function validateCycle24CriticalSources(ports = { read, git }) {
-  for (const path of cycle24CriticalSources)
+  for (const path of cycle24CriticalSources) {
+    const current = Buffer.from(ports.read(path)),
+      original = Buffer.from(ports.git(cycle24RuntimeCommit, path));
     if (
-      !Buffer.from(ports.read(path)).equals(
-        Buffer.from(ports.git(cycle24RuntimeCommit, path)),
-      )
+      !current.equals(original) &&
+      !admitOperatingSignatureSource(path, current, sha(original))
     )
       throw Error(`Critical frozen source changed: ${path}`);
+  }
   return { critical_sources: cycle24CriticalSources.length };
 }
 export function checkCycle24Preservation() {
