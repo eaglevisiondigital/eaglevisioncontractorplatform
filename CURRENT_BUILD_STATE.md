@@ -3399,3 +3399,28 @@ suite. No D1–D3 appointment/decision, A01–A12 result or recovery execution f
 Optional branch remains outside first-contractor launch; intake SQL HELD and original
 financial/provider/production/recovery restrictions persist. Release1.0 NOT READY /
 NOT AUTHORIZED.
+
+### Optional maintenance Save review + Prepare inspection — November 13
+
+Staff can explicitly confirm both existing operations together: save the entered
+internal triage/note, then prepare one exact-plan inspection draft using the returned
+new triage revision. Existing Save-only and Prepare-only semantics remain. Current
+authority/source/CAS checks remain in both original methods; no canonical writer,
+schema, route, CSS/artwork, source pin or historical evidence changed.
+
+These are two same-tab synthetic operations, not one atomic or hosted transaction.
+Context/revocation after Save can leave a saved review without preparation; an
+ambiguous Save/Prepare acknowledgment remains UNKNOWN. The source-scoped session
+attempt blocks replay and ordinary-control replacement while partial/UNKNOWN,
+retaining entered inputs on failure. Reload does not clear the hold. Raw bypass,
+restart durability, operational Auth and independent custody remain unaccepted.
+
+Negative original UI: one FAIL for missing explicit combined operation. Current
+26 focused units PASS; nine new desktop/tablet/mobile cases plus three original
+all-company Save-only/Prepare-only cases PASS (12 total), including exact reopening,
+private notes/published immutability, partial/UNKNOWN handling, accessibility and
+overflow. Build/typecheck, scoped lint/format, original Cycle6 128 protected hashes
+and five locks/13 bindings, and feature25 checks PASS. Optional source remains
+outside the first-contractor launch candidate. D1–D3/A01–A12, intake SQL HELD and
+original recovery/provider/financial/production restrictions persist; Release1.0
+NOT READY / NOT AUTHORIZED.

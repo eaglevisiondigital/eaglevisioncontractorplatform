@@ -2781,3 +2781,13 @@ Refresh keeps unfinished address inputs while invalidating review; context chang
 use monotonic invalidation and ambiguous dispatch remains UNKNOWN, not retryable.
 Local attempt guards do not replace protected server CAS, genuine authorization or
 durable custody; raw bypasses remain open. No new operational authority is granted.
+
+### Explicit maintenance review Save + draft preparation — November 13
+
+Reuse canonical Save and Schedule as two deliberately confirmed session operations;
+pass the returned Save revision to Schedule, preserving exact published source and
+plan. Never imply atomicity or continue after uncertain acknowledgment. Preserve
+known saved-only outcomes and staged inputs, and hold both combined and ordinary
+replacement actions after partial/UNKNOWN. Existing standalone operations retain
+their normal semantics. This adds no writer, ledger, genuine Auth or operational
+inspection/dispatch authority; durable custody and raw bypass remain separate gates.

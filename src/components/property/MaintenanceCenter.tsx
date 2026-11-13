@@ -1,8 +1,19 @@
+import {
+  maintenanceSavePreparation,
+  maintenanceSavePreparationHeld,
+  saveReviewAndPrepareMaintenance,
+} from './maintenance-save-prepare';
 import { BackOfficeText, BackOfficeStaffLabel } from './back-office-copy';
 import { useContext } from 'react';
 import { BackOfficeConcept } from './back-office-presentation';
 import { RepairDraftPanel } from './RepairDraftPanel';
-import { useCallback, useState, useEffect, useRef } from 'react';
+import {
+  useCallback,
+  useState,
+  useEffect,
+  useRef,
+  useLayoutEffect,
+} from 'react';
 import type { CompanyProfile } from '../../domain/platform';
 import type { PropertyRepository } from '../../lib/property';
 import { prepareMaintenanceExamples } from '../../lib/maintenance-examples';
@@ -543,8 +554,32 @@ export function MaintenanceCenter({
                 members={data.members}
                 plans={data.plans}
                 busy={task.busy}
+                combined={maintenanceSavePreparation(repo, selectedItem.source)}
+                onCombined={(input, plan, date, confirmed, current) =>
+                  void task.run(async () => {
+                    await saveReviewAndPrepareMaintenance(
+                      repo,
+                      org,
+                      data.actor,
+                      selectedItem.source,
+                      selectedItem.record,
+                      input,
+                      plan,
+                      date,
+                      confirmed,
+                      current,
+                    );
+                    resource.reload();
+                  }, 'Internal review saved and one inspection draft prepared. No dispatch or repair authorized.')
+                }
                 onSave={(input) =>
                   void task.run(async () => {
+                    if (
+                      maintenanceSavePreparationHeld(repo, selectedItem.source)
+                    )
+                      throw Error(
+                        'Combined preparation held; read the exact source before another action.',
+                      );
                     await repo.saveMaintenance(
                       org,
                       data.actor,
@@ -557,6 +592,12 @@ export function MaintenanceCenter({
                 }
                 onSchedule={(plan, date) =>
                   void task.run(async () => {
+                    if (
+                      maintenanceSavePreparationHeld(repo, selectedItem.source)
+                    )
+                      throw Error(
+                        'Combined preparation held; read the exact source before another action.',
+                      );
                     await repo.scheduleMaintenance(
                       org,
                       data.actor,
@@ -644,6 +685,8 @@ function MaintenanceEditor({
   busy,
   onSave,
   onSchedule,
+  combined,
+  onCombined,
   onVisit,
   onWork,
 }: {
@@ -651,6 +694,14 @@ function MaintenanceEditor({
   members: Queue['members'];
   plans: ReturnType<PropertyRepository['read']>['plans'];
   busy: boolean;
+  combined: ReturnType<typeof maintenanceSavePreparation>;
+  onCombined(
+    input: Parameters<PropertyRepository['saveMaintenance']>[4],
+    plan: { id: string; revision: number },
+    date: string,
+    confirmed: boolean,
+    current: () => boolean,
+  ): void;
   onSave(input: Parameters<PropertyRepository['saveMaintenance']>[4]): void;
   onSchedule(plan: { id: string; revision: number }, date: string): void;
   onVisit(id: string): void;
@@ -661,6 +712,17 @@ function MaintenanceEditor({
   useEffect(() => {
     panel.current?.focus();
   }, []);
+  const life = useRef({ alive: true, serial: 0 });
+  useLayoutEffect(() => {
+    const current = life.current;
+    current.alive = true;
+    return () => {
+      current.alive = false;
+      current.serial++;
+    };
+  }, []);
+  const [confirmedCombined, setConfirmedCombined] = useState(false);
+  const held = Boolean(combined && combined.status !== 'prepared');
   const [edit, setEdit] = useState({
     priority: item.record.priority,
     assignee_id: item.record.assignee_id,
@@ -682,6 +744,15 @@ function MaintenanceEditor({
       tabIndex={-1}
       className="maintenance-editor"
       aria-label="Maintenance review"
+      onChange={(event) => {
+        if (
+          (event.target as HTMLInputElement).name !==
+          'confirm-combined-preparation'
+        ) {
+          life.current.serial++;
+          setConfirmedCombined(false);
+        }
+      }}
     >
       <h3>Review · {item.finding.location}</h3>
       <p>
@@ -694,7 +765,7 @@ function MaintenanceEditor({
           onSave(edit);
         }}
       >
-        <fieldset disabled={busy}>
+        <fieldset disabled={busy || held}>
           <legend>
             <BackOfficeText text="Internal coordination only" />
           </legend>
@@ -827,6 +898,7 @@ function MaintenanceEditor({
         <fieldset
           disabled={
             busy ||
+            held ||
             !!item.record.scheduled_visit_id ||
             item.record.review === 'reviewed'
           }
@@ -863,6 +935,56 @@ function MaintenanceEditor({
           </button>
         </fieldset>
       </form>
+      <label className="checkbox-label">
+        <input
+          name="confirm-combined-preparation"
+          type="checkbox"
+          checked={confirmedCombined}
+          disabled={
+            busy ||
+            held ||
+            !!item.record.scheduled_visit_id ||
+            edit.review !== 'pending'
+          }
+          onChange={(event) => setConfirmedCombined(event.target.checked)}
+        />
+        I confirm saving this review and preparing one inspection draft.
+      </label>
+      <button
+        disabled={
+          busy ||
+          held ||
+          !confirmedCombined ||
+          !plan ||
+          !!item.record.scheduled_visit_id ||
+          edit.review !== 'pending'
+        }
+        onClick={() => {
+          if (!plan) return;
+          const serial = life.current.serial;
+          onCombined(
+            edit,
+            { id: plan.id, revision: plan.revision },
+            date,
+            confirmedCombined,
+            () => life.current.alive && life.current.serial === serial,
+          );
+        }}
+      >
+        Save review and prepare inspection draft
+      </button>
+      <p>
+        Combined preparation saves the entered review first, then prepares one
+        inspection draft. These are separate session-only operations; a failure
+        may leave a saved review without a verified draft. No dispatch.
+      </p>
+      {held && (
+        <p role="status">
+          Combined preparation is {combined?.status.toUpperCase()}; read the
+          exact saved source. Neither step may be replayed. Unfinished inputs
+          remain here.
+        </p>
+      )}
       {item.record.scheduled_visit_id && (
         <button
           className="secondary"
