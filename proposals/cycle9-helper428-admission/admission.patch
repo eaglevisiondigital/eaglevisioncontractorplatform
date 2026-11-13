@@ -1,0 +1,45 @@
+--- a/scripts/check-cycle9-integrity.mjs
++++ b/scripts/check-cycle9-integrity.mjs
+@@ -3,6 +3,26 @@
+ import { readFileSync, lstatSync } from 'node:fs';
+ import { createHash } from 'node:crypto';
+ import { resolve } from 'node:path';
++
++// Verify the new companion before executing its captured bytes.
++const signatureHelperUrl = new URL(
++  './operating-source-signature-admission.mjs',
++  import.meta.url,
++);
++if (
++  !lstatSync(signatureHelperUrl).isFile() ||
++  lstatSync(signatureHelperUrl).isSymbolicLink()
++)
++  throw Error('Reviewed operating-signature helper required');
++const signatureHelperBytes = readFileSync(signatureHelperUrl);
++if (
++  createHash('sha256').update(signatureHelperBytes).digest('hex') !==
++  '38fd3d784b10dd634f6b03a5995a4ce4392eb2924865349d1414328701113978'
++)
++  throw Error('Reviewed operating-signature helper required');
++const { admitOperatingSignatureSource } = await import(
++  'data:text/javascript;base64,' + signatureHelperBytes.toString('base64')
++);
+ 
+ const read = (path) => {
+   if (
+@@ -73,11 +93,12 @@
+   for (const file of files) {
+     if (!remaining.has(file.path) || paths.has(file.path))
+       throw Error('Overlapping/out-of-scope Cycle9 source');
++    const current = read(file.path);
+     if (
+       !/^[a-f0-9]{64}$/.test(file.sha256) ||
+-      (createHash('sha256').update(read(file.path)).digest('hex') !==
+-        file.sha256 &&
+-        !admitServicePrivacyTest(file.path, read(file.path), file.sha256))
++      (createHash('sha256').update(current).digest('hex') !== file.sha256 &&
++        !admitServicePrivacyTest(file.path, current, file.sha256) &&
++        !admitOperatingSignatureSource(file.path, current, file.sha256))
+     )
+       throw Error(`Reviewed Cycle9 source changed: ${file.path}`);
+     paths.add(file.path);
