@@ -3331,3 +3331,23 @@ No raw-writer or pricing-engine changes. Post-dispatch UNKNOWN and server-atomic
 this is original same-tab synthetic evidence, not hosted financial acceptance.
 D1–D3/A01–A12, intake SQL HELD and recovery restrictions remain unchanged. Optional
 work is outside launch; Release1.0 remains NOT READY / NOT AUTHORIZED.
+
+Optional manual-time correction control: parent2FAIL reproduced cross-worker target
+admission and subsequent omission of the other worker's approved payroll source.
+The existing form now binds current visible workforce/worker scope and exact approved,
+closed, unlocked same-worker correction source; pending replacements and UNKNOWN lock
+evidence deny. No payroll-admin requirement was added. Existing new-time preparation
+and explicitly reviewed same-worker correction/save/reopen remain supported. A local
+in-flight guard excludes concurrent replacements and retains post-dispatch UNKNOWN
+across source refresh/component remount. Exact ancestry prevents bypass through a
+newly approved descendant ID; missing/cyclic/foreign ancestry and nonpositive original
+duration remain UNKNOWN. Initial15 cases passed independently; added ancestor/duration
+negatives first2FAIL, then final22 targeted units PASS. Prior-source responsive first12
+produced9PASS/3FAIL solely from a button-name locator changing to Working; corrected
+failed3 PASS with assertions/budgets unchanged. After lineage correction only the new
+current-source descendant3 ran and PASS; prior12 is not a final whole-suite claim.
+All original failures are retained. Shared original time validation precedes dispatch;
+protected Phase3/payroll writers remain unchanged. This is same-tab synthetic evidence,
+not durable custody, restart proof, global CAS or genuine payroll authorization. No
+new D1–D3/A01–A12 decision or recovery action. Release1.0 NOT READY / NOT AUTHORIZED,
+intake SQL HELD and every original release restriction persist.

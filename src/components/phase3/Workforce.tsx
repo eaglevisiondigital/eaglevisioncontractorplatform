@@ -2,6 +2,7 @@ import { useState, useCallback, useRef, useLayoutEffect } from 'react';
 import { requireCurrentPayrollSource } from './payroll-current-source';
 import { payrollPreparationInputs } from './payroll-preparation-inputs';
 import { correctCurrentClock } from './clock-correction-source';
+import { saveCurrentTimeDraft } from './time-correction-source';
 import type { Phase3Repository, WorkforceData } from '../../lib/phase3';
 import type {
   Worker,
@@ -459,7 +460,11 @@ function WorkforceView({
                 );
               })}
           </div>
-          <details>
+          <details
+            onChangeCapture={() => {
+              reviewGeneration.current++;
+            }}
+          >
             <summary>Add manual time or audited correction</summary>
             <p>
               Enter ISO timestamps with an explicit offset, for example
@@ -467,6 +472,7 @@ function WorkforceView({
               new record; locked periods require a payroll adjustment.
             </p>
             <FieldsForm
+              busy={task.busy}
               initial={{ worker_id: workerId, kind: 'work', billable: false }}
               fields={[
                 {
@@ -537,18 +543,26 @@ function WorkforceView({
                 task
                   .run(async () => {
                     const t = String(v.target);
-                    await repo.recordTime(org, String(v.worker_id), {
-                      job_id: t.startsWith('overhead:') ? null : t,
-                      overhead_center: t.startsWith('overhead:')
-                        ? t.slice(9)
-                        : null,
-                      task: String(v.task),
-                      kind: v.kind as TimeEntry['kind'],
-                      started_at: String(v.started_at),
-                      ended_at: String(v.ended_at),
-                      billable: !!v.billable,
-                      corrects_id: String(v.corrects_id) || null,
-                    });
+                    const generation = reviewGeneration.current;
+                    await saveCurrentTimeDraft(
+                      repo,
+                      org,
+                      data,
+                      String(v.worker_id),
+                      {
+                        job_id: t.startsWith('overhead:') ? null : t,
+                        overhead_center: t.startsWith('overhead:')
+                          ? t.slice(9)
+                          : null,
+                        task: String(v.task),
+                        kind: v.kind as TimeEntry['kind'],
+                        started_at: String(v.started_at),
+                        ended_at: String(v.ended_at),
+                        billable: !!v.billable,
+                        corrects_id: String(v.corrects_id) || null,
+                      },
+                      () => generation === reviewGeneration.current,
+                    );
                     refresh();
                   }, 'Time draft saved')
                   .then(() => {})
