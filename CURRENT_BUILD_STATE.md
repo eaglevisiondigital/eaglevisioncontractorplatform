@@ -1,3 +1,24 @@
+## Approved checker author and unapplied transition amendment
+
+Owner approved only the exact two-file #397 checker-author patch. Source
+`82c3ffd11499f9addbb92d6d5d7d1deb7e34d64c` preserves that delta and passes all
+original eight launch guard cases. Independent byte/mode/delta review is clear.
+The original 45-case boundary run had 41 passes and four transition failures:
+three historical proposal loaders expected an absent checker; the retained
+13-case fixture still compared the old guard bytes.
+
+The ordinary proposal loader now verifies exact authored bytes before qualifying
+its immutable historical proposal. Its direct helper tests use a named historical
+13-case read port after exact live-frame verification, preventing a new fixture
+from invalidating or masking historical positive and negative cases. A separate unapplied three-file amendment
+retains historical assertions and adds exact live transition proof; it is tested
+only in disposable archives. See [exact amendment and owner checkpoint](proposals/invoice-caller-transition/README.md).
+The combined disposable composition passed64/64; independent amendment8 and
+historical24 cases passed, with exact-source security review clear. Canonical
+checker/helper/fixture remain unchanged in this successor. This is not
+launch integration or admission authority. SQL/Auth/custody/NMI, D1–D3/A01–A12,
+recovery and all operational gates remain open. Release1.0 NO-GO.
+
 ## Unapplied finite invoice caller source admission
 
 Separate proposal bytes now bind exact approved8f source and6063 fixture authors

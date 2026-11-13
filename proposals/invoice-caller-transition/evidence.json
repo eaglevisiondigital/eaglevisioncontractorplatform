@@ -1,0 +1,26 @@
+{
+  "classification": "UNAPPLIED_FINITE_CHECKER_TRANSITION_AMENDMENT",
+  "parent": "82c3ffd11499f9addbb92d6d5d7d1deb7e34d64c",
+  "patchSha256": "eb38c3fb88478d7773c590f86bae04ce5f3a87dfefc894e9e33051d66a35978a",
+  "files": [
+    {
+      "path": "tests/invoice-caller-migration-source.test.ts",
+      "beforeSha256": "b1131c5c7d80dc2fb3d28a3e7d20540c60d420f3d8ba76a7b61eb091fee24678",
+      "proposedSha256": "4879c0b0f3da8bc2e5d981faae43fe443c317ffcd400b654fc550f0605149a08"
+    },
+    {
+      "path": "scripts/invoice-caller-source-admission.mjs",
+      "beforeSha256": "e83139e1af82743bf9993fac2fb55c4d50e359e9681fd16d1a12001a41432dbf",
+      "proposedSha256": "2a6ffb692443a7830df021e9a8cce048ac4388947e03a27af4286b4e26ee9a25"
+    },
+    {
+      "path": "tests/launch-invoice-payment-source.test.ts",
+      "beforeSha256": "52f0e7e62b74c0fff9b295cd855eac4419340097eee37237330a9fcf17ddb3b8",
+      "proposedSha256": "9ed3efe744bdb9003d3d8459e62dd5fe9479475768df6cb58dc4d8257ef37b00"
+    }
+  ],
+  "canonicalSourceChanged": false,
+  "admissionAuthorized": false,
+  "hashOrder": "F13 -> Hhelper -> Gguard; F contains no proposed H/G literals",
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

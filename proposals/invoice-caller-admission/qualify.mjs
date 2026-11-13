@@ -1,3 +1,4 @@
+import { qualificationBaseline } from '../invoice-checker-qualification/baseline.mjs';
 // Applies the proposed source guard only in a disposable archive. No admission.
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
@@ -5,7 +6,6 @@ import { execFileSync } from 'node:child_process';
 import {
   readFileSync,
   writeFileSync,
-  lstatSync,
   mkdtempSync,
   symlinkSync,
   realpathSync,
@@ -62,18 +62,12 @@ export function qualify({
   );
   const guard = expected.files[0].path,
     helper = expected.files[1].path;
-  const before = readFileSync(guard);
-  assert.equal(
-    hash(before),
-    expected.files[0].beforeSha256,
-    'Canonical guard must remain unchanged',
-  );
+  // Retain the historical UNAPPLIED record. Current authored bytes are verified
+  // independently and never mistaken for source/launch admission approval.
+  const baseline = qualificationBaseline();
+  const before = baseline.original;
+  assert.equal(hash(before), expected.files[0].beforeSha256);
   assert.deepEqual(before, git('show', `${expected.parent}:${guard}`));
-  assert.throws(
-    () => lstatSync(helper),
-    (e) => e.code === 'ENOENT',
-    'Canonical helper must remain absent',
-  );
   assert.equal(
     hash(readFileSync(join(directory, 'helper.mjs'))),
     expected.files[1].proposedSha256,
@@ -174,7 +168,7 @@ export function qualify({
         'Unknown helper must not execute',
       );
     }
-    assert.deepEqual(readFileSync(guard), before);
+    assert.deepEqual(readFileSync(guard), baseline.current);
     return {
       mode,
       status: mode === 'positive' ? 'PASS' : 'DENIED',

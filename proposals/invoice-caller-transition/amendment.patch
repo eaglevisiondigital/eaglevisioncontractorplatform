@@ -1,0 +1,121 @@
+--- a/tests/invoice-caller-migration-source.test.ts
++++ b/tests/invoice-caller-migration-source.test.ts
+@@ -1,5 +1,6 @@
+ import { readFileSync, lstatSync } from 'node:fs';
+ import { execFileSync } from 'node:child_process';
++import { createHash } from 'node:crypto';
+ import ts from 'typescript';
+ import { expect, it } from 'vitest';
+ const helper = await import(
+@@ -12,6 +13,61 @@
+ const caller = 'server/invoices/commercial-caller-connection.ts';
+ const git = (...args: string[]) =>
+   execFileSync('git', ['--no-replace-objects', ...args]);
++const guardPath = 'tests/launch-invoice-payment-source.test.ts';
++const admissionHelperPath = 'scripts/invoice-caller-source-admission.mjs';
++const migrationPath = 'tests/invoice-caller-migration-source.test.ts';
++const checkerAuthor = '82c3ffd11499f9addbb92d6d5d7d1deb7e34d64c';
++const oldMigrationHash =
++  'b1131c5c7d80dc2fb3d28a3e7d20540c60d420f3d8ba76a7b61eb091fee24678';
++const sha = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex');
++// Historical assertion remains about its original source. Current checker and
++// helper are verified independently below; this read port never grants admission.
++const retainedOriginal = (path: string) =>
++  path === guardPath
++    ? git('show', `8f498f2c657608c64d40a3527be13b47a189b7b7:${path}`)
++    : readFileSync(path);
++function verifyCheckerTransition() {
++  const originalGuard = git('show', `${checkerAuthor}:${guardPath}`);
++  const originalHelper = git('show', `${checkerAuthor}:${admissionHelperPath}`);
++  expect(sha(originalGuard)).toBe(
++    '52f0e7e62b74c0fff9b295cd855eac4419340097eee37237330a9fcf17ddb3b8',
++  );
++  expect(sha(originalHelper)).toBe(
++    'e83139e1af82743bf9993fac2fb55c4d50e359e9681fd16d1a12001a41432dbf',
++  );
++  const digest = (text: string) => {
++    const matches = [
++      ...text.matchAll(
++        /createHash\('sha256'\)\.update\(callerHelperBytes\)\.digest\('hex'\) !==\s*'([a-f0-9]{64})'/g,
++      ),
++    ];
++    expect(matches).toHaveLength(1);
++    expect(text.split(matches[0][1])).toHaveLength(2);
++    return matches[0][1];
++  };
++  const normalize = (text: string) =>
++    text.replace(digest(text), '<EXACT_HELPER_DIGEST>');
++  const currentGuard = readFileSync(guardPath, 'utf8');
++  expect(normalize(currentGuard)).toBe(normalize(originalGuard.toString()));
++  const currentMigrationHash = sha(readFileSync(migrationPath));
++  const expectedHelper = originalHelper
++    .toString()
++    .replace(
++      `    sha256: '${oldMigrationHash}',`,
++      `    sha256: '${currentMigrationHash}',\n    publishedSha256:\n      '${oldMigrationHash}',`,
++    )
++    .replace(
++      '    if (\n      hash(published)',
++      "    const exactPublishedHash =\n      companion.path === 'tests/invoice-caller-migration-source.test.ts'\n        ? companion.publishedSha256\n        : companion.sha256;\n    if (\n      hash(published)",
++    )
++    .replace(
++      'hash(published) !== companion.sha256',
++      'hash(published) !== exactPublishedHash',
++    );
++  const currentHelper = readFileSync(admissionHelperPath);
++  expect(currentHelper).toEqual(Buffer.from(expectedHelper));
++  expect(sha(currentHelper)).toBe(digest(currentGuard));
++}
+ it('loads historical proposal bytes only beside the exact approved source author, without granting launch admission', () => {
+   const r = helper.proposalBaseline();
+   expect(r.activeSourceAuthor).toBe('8f498f2c657608c64d40a3527be13b47a189b7b7');
+@@ -28,9 +84,10 @@
+     'server/invoices/commercial-drafts.proposed.sql',
+     'server/customer/broker-auth.ts',
+   ])
+-    expect(readFileSync(path)).toEqual(
++    expect(retainedOriginal(path)).toEqual(
+       git('show', `8f498f2c657608c64d40a3527be13b47a189b7b7:${path}`),
+     );
++  verifyCheckerTransition();
+ });
+ it.each([
+   'client',
+--- a/scripts/invoice-caller-source-admission.mjs
++++ b/scripts/invoice-caller-source-admission.mjs
+@@ -107,7 +107,9 @@
+   {
+     path: 'tests/invoice-caller-migration-source.test.ts',
+     commit: '6063aea60588975bbe88c8ccf8b1d864721b7082',
+-    sha256: 'b1131c5c7d80dc2fb3d28a3e7d20540c60d420f3d8ba76a7b61eb091fee24678',
++    sha256: '4879c0b0f3da8bc2e5d981faae43fe443c317ffcd400b654fc550f0605149a08',
++    publishedSha256:
++      'b1131c5c7d80dc2fb3d28a3e7d20540c60d420f3d8ba76a7b61eb091fee24678',
+   },
+   {
+     path: 'docs/INVOICE_CALLER_FIXTURE_SUCCESSOR.json',
+@@ -205,8 +207,12 @@
+     if (!stat(companion.path).isFile()) fail();
+     const published = readOriginal(companion.commit, companion.path),
+       fresh = readCurrent(companion.path);
++    const exactPublishedHash =
++      companion.path === 'tests/invoice-caller-migration-source.test.ts'
++        ? companion.publishedSha256
++        : companion.sha256;
+     if (
+-      hash(published) !== companion.sha256 ||
++      hash(published) !== exactPublishedHash ||
+       hash(fresh) !== companion.sha256
+     )
+       fail();
+--- a/tests/launch-invoice-payment-source.test.ts
++++ b/tests/launch-invoice-payment-source.test.ts
+@@ -25,7 +25,7 @@
+ const callerHelperBytes = readFileSync(callerHelperUrl);
+ if (
+   createHash('sha256').update(callerHelperBytes).digest('hex') !==
+-  'e83139e1af82743bf9993fac2fb55c4d50e359e9681fd16d1a12001a41432dbf'
++  '2a6ffb692443a7830df021e9a8cce048ac4388947e03a27af4286b4e26ee9a25'
+ )
+   throw Error('Reviewed invoice caller helper required');
+ const { admitInvoiceCallerSource } = await import(
