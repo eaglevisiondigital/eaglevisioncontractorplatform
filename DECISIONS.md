@@ -1,3 +1,12 @@
+## Reuse the existing Foundation coverage supplement for the launch successor
+
+Extend only its exact PR-base trigger; preserve the original workflow, existing
+8/3 native partitions, strict union, assertions, worker allocation and budgets.
+No broad branch wildcard or manual rerun of accepted PostgreSQL is introduced.
+The supplement cannot relabel historical Foundation cancellations or failures;
+D1-D3/A01-A12 and operational SQL/Auth/custody/NMI/recovery gates remain unchanged.
+Release1.0 remains NOT READY / NOT AUTHORIZED.
+
 ## Current-session launch integration successor
 
 This child of verified376 retains exact374 runtime/invoice/payment source and376's
