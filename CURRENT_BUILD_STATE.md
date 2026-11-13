@@ -3553,3 +3553,17 @@ new cases and19 retained callback/ACK cases. Typecheck, scoped lint/format and
 feature/design checks PASS. This separate source component is not integrated into
 launch414 and does not admit payment411's still-held protected source chain.
 Release1.0 remains NOT READY / NOT AUTHORIZED.
+
+## Native signed callback and refund-hold acceptance
+
+A separate child of415 adds six native-only acceptance cases, reusing the existing
+NMI gateway, restricted provider store, SQL and two fictional merchant bindings.
+Duplicate/escaped-key/invalidUTF8 signed callbacks never reach the inbox. A later
+valid decline-looking callback and its duplicate acknowledgment record only the
+exact raw digest; fresh SQL reads retain the original UNKNOWN refund identity and
+result. Replacement4001 against the held6000 of10000 remains blocked, with one
+provider submission. Historical96b reader6FAIL;415 reader6PASS in disposable
+PostgreSQL17, zero native skips. Ordinary non-native collection explicitly skips
+these six cases. Original12/13 acceptance sources are unchanged; no accepted suite
+was rerun. No genuine Auth, merchant facts, provider settlement or customer receipt
+is accepted. Release1.0 remains NOT READY / NOT AUTHORIZED.

@@ -2903,3 +2903,14 @@ webhook's existing BOM rejection, size bound, event/subscription checks, raw dig
 and UNKNOWN inbox-ACK behavior. This repairs an ordinary unprotected callback
 reader on a separate child of96b654e; it neither changes the protected payment
 admission chain nor activates a provider, SQL writer, merchant or launch candidate.
+
+## Qualify signed callbacks beside durable UNKNOWN refund custody
+
+Keep callback ingestion separate from financial reconciliation. Exercise the existing
+restricted writer and immutable attempt projection with malformed authenticated
+bytes, then a valid decline-looking notification; neither callback repairs UNKNOWN,
+creates settlement evidence nor releases reserved refund capacity. Reuse the two
+fictional launch bindings with distinct synthetic keys and fresh native SQL reads.
+This is test-only acceptance of the existing415 correction, with no business writer,
+SQL, provider route or launch promotion. Actual tokenization, void/report semantics,
+customer receipts, genuine Auth and independent custody/recovery remain separate gates.
