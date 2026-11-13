@@ -129,7 +129,7 @@ alter function private.commercial_draft_projection(uuid,uuid,uuid) owner to prop
 revoke all on function private.commercial_draft_projection(uuid,uuid,uuid) from public,anon,authenticated,service_role,propel_commercial_draft_runtime;
 
 create function private.commercial_invoice_draft_write(p_org uuid,p_invoice uuid,p_command uuid,p_expected_revision integer,p_customer uuid,p_location uuid,p_version uuid,p_title text,p_memo text) returns jsonb language plpgsql security definer set search_path='' set lock_timeout='1500ms' as $$
-declare actor uuid;v public.estimate_versions;h private.commercial_invoice_drafts;c private.commercial_invoice_draft_receipts;hash text;source_hash text;next_revision integer;begin
+declare actor uuid;v public.estimate_versions;h private.commercial_invoice_drafts;c private.commercial_invoice_draft_receipts;hash text;source_hash text;next_revision integer;result jsonb;begin
  actor:=private.commercial_draft_actor(p_org);
  if p_invoice is null or p_command is null or p_version is null or p_expected_revision is null or p_expected_revision<0 or p_customer is null or p_title is null or length(p_title)>200 or octet_length(p_title)>800 or length(trim(p_title)) not between 1 and 200 or p_memo is null or length(p_memo)>2000 then raise exception 'Invalid invoice draft command';end if;
  -- Serialize the original command even before invoice creation; this is ordinary
@@ -141,7 +141,10 @@ declare actor uuid;v public.estimate_versions;h private.commercial_invoice_draft
  select * into c from private.commercial_invoice_draft_receipts where organization_id=p_org and command_id=p_command;
  if found then
  if c.invoice_id<>p_invoice or c.actor_id<>actor or c.request_hash<>hash then raise exception 'Invoice draft command identity conflict' using errcode='40001';end if;
- return private.commercial_draft_projection(p_org,p_invoice,p_command);
+ -- Receipt insertion and projection can themselves wait after earlier checks.
+ result:=private.commercial_draft_projection(p_org,p_invoice,p_command);
+ perform private.commercial_draft_actor(p_org);
+ return result;
  end if;
  select * into v from public.estimate_versions where organization_id=p_org and id=p_version;
  if not found then raise exception 'Exact issued source unavailable' using errcode='42501';end if;
@@ -167,7 +170,10 @@ declare actor uuid;v public.estimate_versions;h private.commercial_invoice_draft
  insert into private.commercial_invoice_draft_revisions(organization_id,invoice_id,revision,title,memo,actor_id) values(p_org,p_invoice,next_revision,p_title,p_memo,actor);
  insert into private.commercial_invoice_draft_receipts(organization_id,command_id,invoice_id,revision,actor_id,request_hash) values(p_org,p_command,p_invoice,next_revision,actor,hash);
  if p_expected_revision>0 then update private.commercial_invoice_drafts set current_revision=next_revision where organization_id=p_org and id=p_invoice;end if;
- return private.commercial_draft_projection(p_org,p_invoice,p_command);
+ -- Receipt insertion and projection can themselves wait after earlier checks.
+ result:=private.commercial_draft_projection(p_org,p_invoice,p_command);
+ perform private.commercial_draft_actor(p_org);
+ return result;
 end$$;
 alter function private.commercial_invoice_draft_write(uuid,uuid,uuid,integer,uuid,uuid,uuid,text,text) owner to propel_commercial_draft_owner;
 revoke all on function private.commercial_invoice_draft_write(uuid,uuid,uuid,integer,uuid,uuid,uuid,text,text) from public,anon,authenticated,service_role,propel_commercial_draft_runtime;
@@ -176,9 +182,12 @@ create function private.commercial_invoice_draft_save(p_org uuid,p_invoice uuid,
  if p_expected_revision is null or p_expected_revision<1 then raise exception 'Saved revision required';end if;
  return private.commercial_invoice_draft_write(p_org,p_invoice,p_command,p_expected_revision,p_customer,p_location,p_version,p_title,p_memo);
 end$$;
-create function private.commercial_invoice_draft_read(p_org uuid,p_invoice uuid,p_command uuid default null) returns jsonb language plpgsql security definer set search_path='' set lock_timeout='1500ms' as $$begin
+create function private.commercial_invoice_draft_read(p_org uuid,p_invoice uuid,p_command uuid default null) returns jsonb language plpgsql security definer set search_path='' set lock_timeout='1500ms' as $$declare result jsonb;begin
  perform private.commercial_draft_actor(p_org);
- return private.commercial_draft_projection(p_org,p_invoice,p_command);
+ -- Receipt insertion and projection can themselves wait after earlier checks.
+ result:=private.commercial_draft_projection(p_org,p_invoice,p_command);
+ perform private.commercial_draft_actor(p_org);
+ return result;
 end$$;
 alter function private.commercial_invoice_draft_create(uuid,uuid,uuid,uuid,uuid,uuid,text,text) owner to propel_commercial_draft_owner;
 alter function private.commercial_invoice_draft_save(uuid,uuid,uuid,integer,uuid,uuid,uuid,text,text) owner to propel_commercial_draft_owner;
