@@ -204,3 +204,21 @@ writer/draft-CAS/reopen/customer-read implementation and required forward schema
 grants. Its scope excludes issuance, NMI credentials/activation, sends and payments
 unless separately named and independently accepted. Two private VAR/gateway bindings
 are external dependencies; Cunningham never inherits Saul2Paul's merchant authority.
+
+Issue357 next boundary increment: see [exact source/permission inventory](FIRST_CONTRACTOR_INVOICE_BOUNDARY.json).
+The admitted financial writer remains INTERNAL_TEST_ONLY; commercial draft editing,
+CAS, issuance, immutable commercial receipt and customer payment authority are NOT
+implemented by promoting it. Installation/grant changes in this increment are empty.
+Reader coherence now refuses mixed tenant, duplicate/malformed rows, inconsistent
+invoice/customer/currency/total snapshots, collections beyond the original200limit
+and foreign/customer-visible staff profiles. Native83PASS includes5new original-
+boundary cases and actual committed internal invoice reread on another connection.
+Reader14PASS independently; originalpreview13PASS. Local proof does not accept
+hosted financial durability, genuine authentication or commercial invoice authority.
+
+Next specific owner decision is whether to authorize a separately reviewed, unapplied
+commercial invoice draft/CAS/immutable-receipt source/schema/grant proposal, explicitly
+outside internal-test authority and without installation, issuance or payment power.
+No existing protected SQL or approval is changed now. Actual installation, genuine
+Auth/custody/recovery acceptance and each merchant's hosted/sandbox/production steps
+remain separately bound approvals after original D1–D3 and broker prerequisites.

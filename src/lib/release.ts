@@ -106,6 +106,62 @@ export class ReleaseRepository {
     const w = r.data as unknown as ReleaseWorkspace;
     if (w.internal_test !== true || !['staff', 'customer'].includes(w.actor))
       throw new Error('Invalid workspace response');
+    // The RPC remains the authority. Withhold incoherent or mixed-tenant source
+    // responses rather than rendering an invoice under the selected company.
+    const tables = [
+      'release_offers',
+      'release_decisions',
+      'release_contracts',
+      'release_signatures',
+      'release_invoices',
+      'release_authorizations',
+      'release_payment_events',
+      'release_ledger_entries',
+      'release_messages',
+    ] as const;
+    for (const table of tables) {
+      const rows = w[table];
+      if (!Array.isArray(rows) || rows.length > 200)
+        throw new Error('Invalid workspace collection');
+      const ids = new Set<string>();
+      for (const row of rows) {
+        if (
+          !row ||
+          typeof row !== 'object' ||
+          Array.isArray(row) ||
+          row.organization_id !== org ||
+          typeof row.id !== 'string' ||
+          !row.id ||
+          typeof row.customer_id !== 'string' ||
+          !row.customer_id ||
+          ids.has(row.id)
+        )
+          throw new Error('Invalid workspace source identity');
+        ids.add(row.id);
+      }
+    }
+    const profile = w.email_profile;
+    if (
+      profile != null &&
+      (w.actor !== 'staff' ||
+        typeof profile !== 'object' ||
+        Array.isArray(profile) ||
+        !('organization_id' in profile) ||
+        profile.organization_id !== org)
+    )
+      throw new Error('Invalid workspace email profile');
+    for (const invoice of w.release_invoices) {
+      if (
+        invoice.snapshot?.customer?.id !== invoice.customer_id ||
+        invoice.snapshot?.currency !== invoice.currency ||
+        !/^[A-Z]{3}$/.test(invoice.currency) ||
+        !Number.isSafeInteger(invoice.total_minor) ||
+        invoice.total_minor < 1 ||
+        invoice.total_minor > 9_000_000_000_000 ||
+        invoice.snapshot?.total_minor !== invoice.total_minor
+      )
+        throw new Error('Invalid workspace invoice snapshot');
+    }
     return w;
   }
   async command(

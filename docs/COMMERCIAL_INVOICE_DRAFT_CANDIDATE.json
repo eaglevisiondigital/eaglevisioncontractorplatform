@@ -1,0 +1,157 @@
+{
+  "schema": "commercial-invoice-draft-development-candidate-v1",
+  "baseline": "44955c2b6e4475bf82fc1bc535591a8e387b635e",
+  "classification": "UNAPPLIED_SOURCE_PROPOSAL_NOT_OPERATIONAL_AUTHORITY",
+  "scope": [
+    "one canonical draft per organization and issued estimate version",
+    "source-derived USD amount, currency, customer, property, tax snapshot and content hash",
+    "create, title/memo revision, CAS, reopen and exact original command receipt"
+  ],
+  "sources": [
+    {
+      "path": "server/invoices/commercial-drafts.proposed.sql",
+      "sha256": "29fdaff99e8b325c8821bc57d431edbcc933f41e844bb6139c472462e40fde36"
+    },
+    {
+      "path": "server/invoices/commercial-draft-client.ts",
+      "sha256": "12c1eb303f10f8cb9e6c5f765839419f55e4b6cfd16c6c6ef9f8812ccbb76194"
+    },
+    {
+      "path": "tests/database/commercial-invoice-drafts.test.ts",
+      "sha256": "a5732649d4393d8b7a12509b2561483be15640db0ad8b25e9de279bae4b14469"
+    },
+    {
+      "path": "tests/commercial-invoice-client.test.ts",
+      "sha256": "ec0829098cd7fc967fad82d33b5db003dcab67ca9b2f135ae55a2dd74349e34a"
+    },
+    {
+      "path": "tests/commercial-invoice-client-adversarial.test.ts",
+      "sha256": "25f1e6169365e76558348df63792c131e4f26414d4c8d50b407657ce0f282c12"
+    },
+    {
+      "path": "tests/commercial-invoice-client-reconciliation.test.ts",
+      "sha256": "8be24bc86172b7997ef4268a4df7375acc8cfcb131a8b7f3442c0f6d11aa7e40"
+    },
+    {
+      "path": "tests/database/commercial-invoice-draft-adversarial.test.ts",
+      "sha256": "ece3260e2921f5666947a6a045dc10268984bdb1f15d08a9e4782751ba0fd974"
+    }
+  ],
+  "protectedBaselineSources": [
+    {
+      "path": "src/lib/release.ts",
+      "sha256": "99990a5714ec6b3ebedb166ef16d5256dcf5ad896b4650d30ceb8bcd472b4e58"
+    },
+    {
+      "path": "src/domain/release/types.ts",
+      "sha256": "5bde6c0b1c394e89a9694014dc993c35a429f6b3d02771bcae5d02161e51abe7"
+    },
+    {
+      "path": "src/domain/release/preview.ts",
+      "sha256": "d34ff65bb624df6e6f6c372860cb63fc88fad47ab648242ab3576fb69b72b0ea"
+    },
+    {
+      "path": "src/components/release/ReleaseApp.tsx",
+      "sha256": "1abf080027cfc5ced28c172deec884be2d286756fe95bd2f1c5983bb4ea3eac2"
+    },
+    {
+      "path": "supabase/migrations/20261015221730_phase_3a_release_controls.sql",
+      "sha256": "6dbfc3ed7a0b9905f5d824cb73698c441e8c7ee8aa5d5b0fb8f4883baacb4890"
+    },
+    {
+      "path": "supabase/migrations/20261016024502_release_1_internal_workflow.sql",
+      "sha256": "48522fd3b829a5bc9e482ce33c41ee7b8272edf68dbc7e6c7a699fa178b8714b"
+    },
+    {
+      "path": "supabase/migrations/20261016185108_provider_sandbox_persistence.sql",
+      "sha256": "5dd07b079a591b433fa7ab432fd841026de91a1cd3f1d3a722bef500aa9fd32d"
+    },
+    {
+      "path": "server/payments/control-store.ts",
+      "sha256": "9ff71ee0a1c0ada974ed209e1b1ef9227578eb9a5b9d78c2c43baccb92fbbbf6"
+    },
+    {
+      "path": "server/payments/token-reference.ts",
+      "sha256": "5c369dd88ecdc4158ad5ffd3118e3a7b8cde3277324be17dd3c22eeb7041acf1"
+    }
+  ],
+  "schemaAndGrantDiff": {
+    "path": "server/invoices/commercial-drafts.proposed.sql",
+    "historicalSqlEdits": [],
+    "migrationInstallEntries": [],
+    "proposedNewPrivateTables": [
+      "commercial_draft_authorities",
+      "commercial_invoice_drafts",
+      "commercial_invoice_draft_revisions",
+      "commercial_invoice_draft_receipts"
+    ],
+    "proposedNoLoginRoles": [
+      "propel_commercial_draft_owner",
+      "propel_commercial_draft_runtime"
+    ],
+    "runtimePermissions": "private schema USAGE and exact draft create/save/read EXECUTE only; no table CRUD, source grants or authority provisioning",
+    "ownerPermissions": "finite source SELECT/row-lock column grants; source RLS SELECT and lock-qualification UPDATE WITH CHECK(false); temporary schema CREATE revoked at end",
+    "trustedBypasses": [
+      "installer/DBA",
+      "NOLOGIN definer owner/table owner",
+      "operator-provisioned authority rows",
+      "verified-caller SQL connection and request.jwt.claims"
+    ],
+    "installed": false
+  },
+  "uncertainty": {
+    "clientHolds": "instance-local only; reserve before await; original command/identity exact read only; no mutation retry",
+    "database": "ordinary transaction atomicity, unique source, CAS and immutable receipts; not independent rollback-resistant custody",
+    "processLossCustody": "UNVERIFIED",
+    "genuineBearerAuth": "NOT_ACCEPTED"
+  },
+  "operationalAcceptance": {
+    "hosted": "NOT_RUN",
+    "D1": "INCOMPLETE",
+    "D2": "SEPARATE_DECISION_REQUIRED",
+    "D3": "SEPARATE_DECISION_REQUIRED",
+    "A01_A12": "NOT_RUN",
+    "NMI": "NOT_RUN"
+  },
+  "excluded": [
+    "issuance",
+    "debt",
+    "agreement approval",
+    "payment",
+    "ledger posting",
+    "customer publication",
+    "operational factory or route",
+    "hosted installation",
+    "real tenant creation"
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "validation": {
+    "nativePrimary": {
+      "passed": 27,
+      "skipped": 0,
+      "scope": "disposable PostgreSQL 17; injected trusted identities; primary source exactly as proposed"
+    },
+    "nativeIndependentSecurity": {
+      "passed": 5,
+      "skipped": 0,
+      "scope": "disposable PostgreSQL 17; only the two cluster-global role literals remapped to QA-specific names"
+    },
+    "client": {
+      "passed": 28,
+      "scope": "injected SQL port; includes independently reproduced negative cases"
+    },
+    "build": "PASS",
+    "typecheck": "PASS",
+    "targetedLint": "PASS",
+    "historicalMigrations": "UNCHANGED",
+    "browser": "NOT_RERUN_SERVER_ONLY_UNWIRED_DELTA",
+    "hostedCI": "PENDING_NEW_HEAD",
+    "review": "CLEAR_FOR_UNAPPLIED_TRUSTED_SQL_PROPOSAL_ONLY",
+    "retainedFindings": [
+      "initial proposal row-lock RLS qualification failed before correction",
+      "five independently reproduced client currency/reconciliation failures corrected",
+      "two independently reproduced receipt-ID substitution failures corrected"
+    ],
+    "lockWait": "function-local 1500ms; UNKNOWN/no replacement dispatch; SQLSTATE assertion in native test"
+  }
+}

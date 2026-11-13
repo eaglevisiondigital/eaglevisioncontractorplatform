@@ -1,3 +1,28 @@
+## Bounded invoice/payment launch composition · November 12, 2026
+
+The [exact composition](docs/LAUNCH_INVOICE_PAYMENT_COMPOSITION.json) combines
+reviewed366 invoice-read boundaries,368 commercial draft source,369 Auth claim
+agreement,373 final-deadline checks and371's exact admitted ACK correction.372's
+two-fictional-merchant token-boundary tests are retained. Optional370 remains separate.
+No historical author branch is merged or rewritten. Original invoice manifests
+and hashes stay historical; the named control-store inventory entry additionally
+requires371's exact current successor and the original366 Git-object assertion.
+All other copied source bytes are exact; only two documented test adaptations exist.
+
+Actual combined validation:275 affected unit cases,186 native PostgreSQL cases,
+six responsive internal-release cases and six source-composition cases PASS.
+Independent two-tenant native boundary tests reject draft receipts as payment
+consent before dispatch, preserving the exact original receipts. The new deadline
+correction checks the function/autocommit result boundary; it does not qualify a
+trusted caller's delayed explicit COMMIT, genuine Auth or independent custody.
+
+All commercial SQL/roles/grants remain UNAPPLIED, outside migrations and unwired.
+D1-D3 decisions use the existing private return form and Issue358 owner register;
+no role appointment, hosted inventory, A01-A12 result or recovery acceptance is made.
+VAR/NMI readiness remains private/pending; no real tenant, merchant, financial action,
+communication, recovery operation, deployment or merge is authorized by these tests.
+Release 1.0 remains NOT READY / NOT AUTHORIZED.
+
 ## Controlled payment acknowledgment source admission · November 12, 2026
 
 Owner-authorized patch `09ff6790130e52436522c6b5e6b210f82bc785d19bbecc2d768a51af3eb60eae`
