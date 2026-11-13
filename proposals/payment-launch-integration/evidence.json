@@ -1,0 +1,99 @@
+{
+  "classification": "UNAPPLIED_PAYMENT_LAUNCH_INTEGRATION",
+  "baseline": "394d7fc1bbc6d6a27440e881bc3e9bf3d76befa6",
+  "sourceAuthor": "96b654ee16c229653cb1c046c579af77573b045a",
+  "admissionAuthor": "323c7b6b1b5f7d5c1eb83421adedcbef291bb770",
+  "patchSha256": "35dca7d772e9db104a5e2ee4b6de6d7a3438d519eabe1e113f44c55dcb755bbc",
+  "files": [
+    {
+      "path": "proposals/invoice-caller-transition/qualify.mjs",
+      "before": "f3d39097db9eeef99b177149e0bbcdfb56d3646f90edd85f26f1890ed456c410",
+      "after": "1c102cb6982ab1042e93a5d6454e765fb9a37cf5b930d1226465ccf2a5756a1d",
+      "mode": "100644"
+    },
+    {
+      "path": "proposals/invoice-checker-qualification/baseline.mjs",
+      "before": "0d0c05afad3a034c2760203b3615c8a675e3ba38cb7536802e1f6ae3acfef47d",
+      "after": "c27591939af63a33312e6293ebd90469eac202b0a0237275338fb0be08e012ad",
+      "mode": "100644"
+    },
+    {
+      "path": "proposals/payment-response-admission/fixture-adapter.mjs",
+      "before": null,
+      "after": "4ccab151297b44da76057199cb3cabfcd2c73c3e20ed6761c27737db16468203",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/check-payment-ack-admission.mjs",
+      "before": "56ef1c979baeb9645ffbf256cc10d7a8cf2904fdaedbe66f9707979b985480a0",
+      "after": "b936bbd53def10eb7604b840ebe56262073001f30f0191247307eb54940a67ad",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/invoice-caller-source-admission.mjs",
+      "before": "2a6ffb692443a7830df021e9a8cce048ac4388947e03a27af4286b4e26ee9a25",
+      "after": "af67c7836222779cd8322c08b3d5a72816760abc345a9d45cab97f85beacd133",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/payment-response-source-admission.mjs",
+      "before": null,
+      "after": "aa8871b0fa334bfd2ffdb36c314650e51e56ceea41a983e13c0b42a60084dfcd",
+      "mode": "100644"
+    },
+    {
+      "path": "server/payments/refunds.ts",
+      "before": "78f74ab633f3ba192d447ffb1b77f8d027c38df49ea0fd6f06b9fb65df2490a5",
+      "after": "267912113acc418387beb86826b06c2689bac9f9a00589a0cd5fc6df1aa4158e",
+      "mode": "100644"
+    },
+    {
+      "path": "server/payments/response-json.ts",
+      "before": null,
+      "after": "3d361bd32f9cc2ff82b9d4c1ad29ca0218199c11bc903a59ec5a644dd139c970",
+      "mode": "100644"
+    },
+    {
+      "path": "server/payments/sandbox.ts",
+      "before": "89dc2b03f273ee00c73e8342fcf9e8db6d78d5f898bde96ccff94e69fc0276cc",
+      "after": "828b355608e2fee5433dc2c29c3094e40c92c444409331e1b67183ed09e19feb",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/invoice-caller-migration-source.test.ts",
+      "before": "4879c0b0f3da8bc2e5d981faae43fe443c317ffcd400b654fc550f0605149a08",
+      "after": "6b803d33d5c8b9ca02abcbce59b8796f9691b44a82c97290974ea9a4a2892d69",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/launch-invoice-payment-source.test.ts",
+      "before": "9ed3efe744bdb9003d3d8459e62dd5fe9479475768df6cb58dc4d8257ef37b00",
+      "after": "bf366bff56157c0b94c174c91d8a9fbc76cb95e836d9387a2d61104e44fc873a",
+      "mode": "100644"
+    }
+  ],
+  "protectedPromotionAuthorized": false,
+  "operationalReady": false,
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "sourcePatchSha256": "148b8ec3fac6919ebe9cc237cdf1dac971cff4e54d5c9762262934a3d9335d9d",
+  "admissionPatchSha256": "2b6a428e1d93fcebf4f3277581ee48652fcaa7860db0a2d6cf397f2d3cf358b6",
+  "canonicalSourceChanged": false,
+  "excludedCandidates": [
+    "9ea522a0152ca77cdcd2bae7b601c0d0521174e3",
+    "f14d895a88994c1188a979be828f8e936e941596"
+  ],
+  "companions": [
+    {
+      "path": "tests/launch-caller-payment-integration.test.ts",
+      "before": "03ad4b8842002b9354bef7dbdf0e79de4ac2fa1541892cd37eea971d590ed28f",
+      "after": "1f7c0c1135bdc49c91ae7dd95aacc4f203ef3f487080c1e578cc27e236927193",
+      "mode": "100644"
+    },
+    {
+      "path": "proposals/payment-launch-integration/legacy-invoice-fixture.mjs",
+      "before": null,
+      "after": "6512550560268a036c2c6482078cd8516292423e464335eddb94c005ff55667b",
+      "mode": "100644"
+    }
+  ]
+}

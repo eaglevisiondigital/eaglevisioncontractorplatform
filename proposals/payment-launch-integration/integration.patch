@@ -1,0 +1,799 @@
+diff --git a/proposals/invoice-caller-transition/qualify.mjs b/proposals/invoice-caller-transition/qualify.mjs
+index 87e231a9bbb88d9ba91607a77d2b2ed64d2120e2..5436d2a3807856a6fdaef6b7ff3d0eb6e6de8ab2 100644
+--- a/proposals/invoice-caller-transition/qualify.mjs
++++ b/proposals/invoice-caller-transition/qualify.mjs
+@@ -4,6 +4,8 @@ import { createHash } from 'node:crypto';
+ import { execFileSync } from 'node:child_process';
+ import {
+   readFileSync,
++  lstatSync,
++  existsSync,
+   writeFileSync,
+   mkdtempSync,
+   symlinkSync,
+@@ -13,6 +15,36 @@ import {
+ } from 'node:fs';
+ import { tmpdir, devNull } from 'node:os';
+ import { join, dirname } from 'node:path';
++const paymentFrameGuard =
++  'bf366bff56157c0b94c174c91d8a9fbc76cb95e836d9387a2d61104e44fc873a';
++const paymentAdapterPath =
++  'proposals/payment-response-admission/fixture-adapter.mjs';
++let paymentFixture;
++if (existsSync(paymentAdapterPath)) {
++  let prefix = '';
++  for (const segment of paymentAdapterPath.split('/')) {
++    prefix = prefix ? prefix + '/' + segment : segment;
++    assert(
++      !lstatSync(prefix).isSymbolicLink(),
++      'Reviewed payment fixture required',
++    );
++  }
++  const info = lstatSync(paymentAdapterPath);
++  assert(
++    info.isFile() && !info.isSymbolicLink() && (info.mode & 0o777) === 0o644,
++    'Reviewed payment fixture required',
++  );
++  const bytes = readFileSync(paymentAdapterPath);
++  assert.equal(
++    createHash('sha256').update(bytes).digest('hex'),
++    '4ccab151297b44da76057199cb3cabfcd2c73c3e20ed6761c27737db16468203',
++    'Reviewed payment fixture required',
++  );
++  paymentFixture = await import(
++    'data:text/javascript;base64,' + bytes.toString('base64')
++  );
++}
++
+ const directory = 'proposals/invoice-caller-transition';
+ const expected = {
+   classification: 'UNAPPLIED_FINITE_CHECKER_TRANSITION_AMENDMENT',
+@@ -110,7 +142,10 @@ export function qualify({
+     (bytes, i) => hash(bytes) === expected.files[i].proposedSha256,
+   );
+   assert(
+-    approvedFrame || proposedTestFrame,
++    approvedFrame ||
++      proposedTestFrame ||
++      (hash(snapshots[2]) === paymentFrameGuard &&
++        paymentFixture?.verifyPaymentFrame() === true),
+     'Exact approved or proposed qualification frame required',
+   );
+   const before = new Map();
+@@ -152,7 +187,19 @@ export function qualify({
+     );
+     if (includeQualification) {
+       for (const [path, pin] of qualificationFiles) {
+-        const bytes = readFileSync(path);
++        let bytes = readFileSync(path);
++        if (
++          path === 'proposals/invoice-checker-qualification/baseline.mjs' &&
++          hash(bytes) ===
++            'c27591939af63a33312e6293ebd90469eac202b0a0237275338fb0be08e012ad'
++        ) {
++          assert(paymentFixture, 'Reviewed payment fixture required');
++          paymentFixture.verifyPaymentFrame();
++          bytes = git(
++            'show',
++            '276fbe4357a5ccc3593374e4cd359a10e8ae1bf6:' + path,
++          );
++        }
+         assert.equal(
+           hash(bytes),
+           pin,
+diff --git a/proposals/invoice-checker-qualification/baseline.mjs b/proposals/invoice-checker-qualification/baseline.mjs
+index c128f60d268beab55a67db2e9a2036ca7abba179..ef128942d44bf25a5bccf45704f6c5d030730d7e 100644
+--- a/proposals/invoice-checker-qualification/baseline.mjs
++++ b/proposals/invoice-checker-qualification/baseline.mjs
+@@ -1,8 +1,38 @@
+ // Qualification fixture only. This cannot approve or promote a source admission.
+ import assert from 'node:assert/strict';
+-import { readFileSync, lstatSync } from 'node:fs';
++import { readFileSync, lstatSync, existsSync } from 'node:fs';
+ import { execFileSync } from 'node:child_process';
+ import { createHash } from 'node:crypto';
++const paymentFrameGuard =
++  'bf366bff56157c0b94c174c91d8a9fbc76cb95e836d9387a2d61104e44fc873a';
++const paymentAdapterPath =
++  'proposals/payment-response-admission/fixture-adapter.mjs';
++let paymentFixture;
++if (existsSync(paymentAdapterPath)) {
++  let prefix = '';
++  for (const segment of paymentAdapterPath.split('/')) {
++    prefix = prefix ? prefix + '/' + segment : segment;
++    assert(
++      !lstatSync(prefix).isSymbolicLink(),
++      'Reviewed payment fixture required',
++    );
++  }
++  const info = lstatSync(paymentAdapterPath);
++  assert(
++    info.isFile() && !info.isSymbolicLink() && (info.mode & 0o777) === 0o644,
++    'Reviewed payment fixture required',
++  );
++  const bytes = readFileSync(paymentAdapterPath);
++  assert.equal(
++    createHash('sha256').update(bytes).digest('hex'),
++    '4ccab151297b44da76057199cb3cabfcd2c73c3e20ed6761c27737db16468203',
++    'Reviewed payment fixture required',
++  );
++  paymentFixture = await import(
++    'data:text/javascript;base64,' + bytes.toString('base64')
++  );
++}
++
+ const guard = 'tests/launch-invoice-payment-source.test.ts';
+ const helper = 'scripts/invoice-caller-source-admission.mjs';
+ const fixture = 'tests/invoice-caller-migration-source.test.ts';
+@@ -93,6 +123,16 @@ export function qualificationBaseline({
+       'Regular active checker required',
+     );
+   }
++  if (hash(current) === paymentFrameGuard) {
++    assert(paymentFixture, 'Reviewed payment fixture required');
++    paymentFixture.verifyPaymentFrame({ read, stat, git });
++    return {
++      current,
++      original,
++      frame: 'UNAPPLIED_AMENDMENT_TEST_BYTES',
++      checkerAuthor,
++    };
++  }
+   const active =
+     hash(current) === authored[guard] &&
+     hash(read(helper)) === authored[helper];
+diff --git a/proposals/payment-response-admission/fixture-adapter.mjs b/proposals/payment-response-admission/fixture-adapter.mjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..8059da92a06ec506df1d38a667f0f9a1dbf98fbb
+--- /dev/null
++++ b/proposals/payment-response-admission/fixture-adapter.mjs
+@@ -0,0 +1,103 @@
++// Test-fixture compatibility only; immutable historical checks do not admit live sources.
++import assert from 'node:assert/strict';
++import { readFileSync, lstatSync } from 'node:fs';
++import { execFileSync } from 'node:child_process';
++import { createHash } from 'node:crypto';
++const frame = {
++  'scripts/check-payment-ack-admission.mjs':
++    'b936bbd53def10eb7604b840ebe56262073001f30f0191247307eb54940a67ad',
++  'scripts/invoice-caller-source-admission.mjs':
++    'af67c7836222779cd8322c08b3d5a72816760abc345a9d45cab97f85beacd133',
++  'scripts/payment-response-source-admission.mjs':
++    'aa8871b0fa334bfd2ffdb36c314650e51e56ceea41a983e13c0b42a60084dfcd',
++  'tests/invoice-caller-migration-source.test.ts':
++    '6b803d33d5c8b9ca02abcbce59b8796f9691b44a82c97290974ea9a4a2892d69',
++  'tests/launch-invoice-payment-source.test.ts':
++    'bf366bff56157c0b94c174c91d8a9fbc76cb95e836d9387a2d61104e44fc873a',
++  'server/payments/refunds.ts':
++    '267912113acc418387beb86826b06c2689bac9f9a00589a0cd5fc6df1aa4158e',
++  'server/payments/sandbox.ts':
++    '828b355608e2fee5433dc2c29c3094e40c92c444409331e1b67183ed09e19feb',
++  'server/payments/response-json.ts':
++    '3d361bd32f9cc2ff82b9d4c1ad29ca0218199c11bc903a59ec5a644dd139c970',
++};
++const author = '96b654ee16c229653cb1c046c579af77573b045a';
++const parent = '892bf5127af2268e6066a20d259a808b5b893cec';
++const hash = (b) => createHash('sha256').update(b).digest('hex');
++const runGit = (...args) =>
++  execFileSync('git', ['--no-replace-objects', ...args], {
++    stdio: ['ignore', 'pipe', 'pipe'],
++  });
++export function verifyPaymentFrame({
++  read = readFileSync,
++  stat = lstatSync,
++  git = runGit,
++} = {}) {
++  const checkFrame = () => {
++    for (const [path, digest] of Object.entries(frame)) {
++      let prefix = '';
++      for (const segment of path.split('/')) {
++        prefix = prefix ? prefix + '/' + segment : segment;
++        assert(
++          !stat(prefix).isSymbolicLink(),
++          'Exact live payment frame required',
++        );
++      }
++      const info = stat(path);
++      assert(
++        info.isFile() && (info.mode & 0o777) === 0o644,
++        'Exact live payment mode required',
++      );
++      assert.equal(
++        hash(read(path)),
++        digest,
++        'Exact live payment frame required',
++      );
++    }
++  };
++  checkFrame();
++  assert.equal(
++    git('show', '--no-patch', '--format=%P', author).toString().trim(),
++    parent,
++  );
++  assert.equal(
++    git(
++      'diff-tree',
++      '--no-commit-id',
++      '--name-status',
++      '--no-renames',
++      '-r',
++      author,
++    )
++      .toString()
++      .trim(),
++    'M\tserver/payments/refunds.ts\nA\tserver/payments/response-json.ts\nM\tserver/payments/sandbox.ts',
++  );
++  for (const path of [
++    'server/payments/refunds.ts',
++    'server/payments/response-json.ts',
++    'server/payments/sandbox.ts',
++  ]) {
++    const tree = git('ls-tree', author, '--', path).toString().trim();
++    assert.match(tree, /^100644 blob [a-f0-9]{40}\t/);
++    assert.equal(tree.split('\t')[1], path);
++    assert.equal(hash(git('show', author + ':' + path)), frame[path]);
++  }
++  assert.equal(
++    git('ls-tree', parent, '--', 'server/payments/response-json.ts')
++      .toString()
++      .trim(),
++    '',
++  );
++  assert.equal(
++    hash(git('show', parent + ':server/payments/refunds.ts')),
++    '78f74ab633f3ba192d447ffb1b77f8d027c38df49ea0fd6f06b9fb65df2490a5',
++  );
++  assert.equal(
++    hash(git('show', parent + ':server/payments/sandbox.ts')),
++    '89dc2b03f273ee00c73e8342fcf9e8db6d78d5f898bde96ccff94e69fc0276cc',
++  );
++  // Metadata callbacks must not leave a stale pre-metadata live frame.
++  checkFrame();
++  return true;
++}
+diff --git a/scripts/check-payment-ack-admission.mjs b/scripts/check-payment-ack-admission.mjs
+index 3d4589ec42a158dec08f2c7523a36fbcfee91692..24bc697d73e6491fa26f221dfa5588c9176ca64d 100644
+--- a/scripts/check-payment-ack-admission.mjs
++++ b/scripts/check-payment-ack-admission.mjs
+@@ -5,6 +5,26 @@ import { createHash } from 'node:crypto';
+ import { resolve } from 'node:path';
+ import { pathToFileURL } from 'node:url';
+ 
++// Exact source helper is validated before its captured bytes are imported.
++const responseHelperPath = new URL(
++  './payment-response-source-admission.mjs',
++  import.meta.url,
++);
++if (
++  !lstatSync(responseHelperPath).isFile() ||
++  lstatSync(responseHelperPath).isSymbolicLink()
++)
++  throw Error('Reviewed payment response helper required');
++const responseHelperBytes = readFileSync(responseHelperPath);
++if (
++  createHash('sha256').update(responseHelperBytes).digest('hex') !==
++  'aa8871b0fa334bfd2ffdb36c314650e51e56ceea41a983e13c0b42a60084dfcd'
++)
++  throw Error('Reviewed payment response helper required');
++const { admitPaymentResponseSource } = await import(
++  'data:text/javascript;base64,' + responseHelperBytes.toString('base64')
++);
++
+ const proposalCommit = '5aa7927932323be0f67a908923a9c7ffa92d5d2e';
+ const parent = '4a54d390bd37024a10469b9f6cdcab6d38724a49';
+ export const approvedPatch =
+@@ -51,7 +71,13 @@ export function verifyPaymentAckAdmission({ current, historical }) {
+       if (hash(historical(commit, source.path)) !== source.sha256)
+         throw Error('Original parent source mismatch: ' + source.path);
+     const expected = source.proposedSha256 ?? source.sha256;
+-    if (hash(current(source.path)) !== expected)
++    if (
++      hash(current(source.path)) !== expected &&
++      !admitPaymentResponseSource(source.path, current(source.path), expected, {
++        readCurrent: current,
++        readOriginal: historical,
++      })
++    )
+       throw Error('Unreviewed current source: ' + source.path);
+     if (source.proposedSha256) admitted.push(source.path);
+   }
+diff --git a/scripts/invoice-caller-source-admission.mjs b/scripts/invoice-caller-source-admission.mjs
+index 353b92a884afbc3b329d7225743664907a474e98..ac43c20238c28f1342c935cd92670e5b9d965c80 100644
+--- a/scripts/invoice-caller-source-admission.mjs
++++ b/scripts/invoice-caller-source-admission.mjs
+@@ -107,7 +107,7 @@ const companions = [
+   {
+     path: 'tests/invoice-caller-migration-source.test.ts',
+     commit: '6063aea60588975bbe88c8ccf8b1d864721b7082',
+-    sha256: '4879c0b0f3da8bc2e5d981faae43fe443c317ffcd400b654fc550f0605149a08',
++    sha256: '6b803d33d5c8b9ca02abcbce59b8796f9691b44a82c97290974ea9a4a2892d69',
+     publishedSha256:
+       'b1131c5c7d80dc2fb3d28a3e7d20540c60d420f3d8ba76a7b61eb091fee24678',
+   },
+diff --git a/scripts/payment-response-source-admission.mjs b/scripts/payment-response-source-admission.mjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..84c5b501a6cf9259773cf4e3214202d3ac9580c2
+--- /dev/null
++++ b/scripts/payment-response-source-admission.mjs
+@@ -0,0 +1,96 @@
++// Finite development source proof only. No runtime/provider/launch authority.
++import { createHash } from 'node:crypto';
++import { execFileSync } from 'node:child_process';
++import { readFileSync, lstatSync } from 'node:fs';
++const author = '96b654ee16c229653cb1c046c579af77573b045a';
++const parent = '892bf5127af2268e6066a20d259a808b5b893cec';
++const files = {
++  'server/payments/refunds.ts': [
++    '78f74ab633f3ba192d447ffb1b77f8d027c38df49ea0fd6f06b9fb65df2490a5',
++    '267912113acc418387beb86826b06c2689bac9f9a00589a0cd5fc6df1aa4158e',
++  ],
++  'server/payments/response-json.ts': [
++    null,
++    '3d361bd32f9cc2ff82b9d4c1ad29ca0218199c11bc903a59ec5a644dd139c970',
++  ],
++  'server/payments/sandbox.ts': [
++    '89dc2b03f273ee00c73e8342fcf9e8db6d78d5f898bde96ccff94e69fc0276cc',
++    '828b355608e2fee5433dc2c29c3094e40c92c444409331e1b67183ed09e19feb',
++  ],
++};
++const delta =
++  'M\tserver/payments/refunds.ts\nA\tserver/payments/response-json.ts\nM\tserver/payments/sandbox.ts';
++const hash = (b) => createHash('sha256').update(b).digest('hex');
++const git = (...args) =>
++  execFileSync('git', ['--no-replace-objects', ...args], {
++    stdio: ['ignore', 'pipe', 'pipe'],
++  });
++export function admitPaymentResponseSource(
++  path,
++  current,
++  expected,
++  {
++    readCurrent = readFileSync,
++    readOriginal = (commit, p) => git('show', `${commit}:${p}`),
++    metadata = git,
++    stat = lstatSync,
++  } = {},
++) {
++  if (!Object.hasOwn(files, path) || files[path][0] === null) return false;
++  const fail = () => {
++    throw Error('Exact finite payment response source required');
++  };
++  const checkCurrent = (p, after) => {
++    let prefix = '';
++    for (const part of p.split('/')) {
++      prefix = prefix ? prefix + '/' + part : part;
++      if (stat(prefix).isSymbolicLink()) fail();
++    }
++    const info = stat(p);
++    if (!info.isFile() || (info.mode & 0o777) !== 0o644) fail();
++    const fresh = readCurrent(p);
++    if (
++      hash(fresh) !== after ||
++      (p === path && !Buffer.from(current).equals(fresh))
++    )
++      fail();
++  };
++  if (expected !== files[path][0]) fail();
++  if (
++    metadata('show', '--no-patch', '--format=%P', author).toString().trim() !==
++    parent
++  )
++    fail();
++  if (
++    metadata(
++      'diff-tree',
++      '--no-commit-id',
++      '--name-status',
++      '--no-renames',
++      '-r',
++      author,
++    )
++      .toString()
++      .trim() !== delta
++  )
++    fail();
++  for (const [p, [before, after]] of Object.entries(files)) {
++    const tree = metadata('ls-tree', author, '--', p).toString().trim();
++    if (!/^100644 blob [a-f0-9]{40}\t/.test(tree) || tree.split('\t')[1] !== p)
++      fail();
++    const oldTree = metadata('ls-tree', parent, '--', p).toString().trim();
++    if (before === null) {
++      if (oldTree !== '') fail();
++    } else if (
++      !/^100644 blob [a-f0-9]{40}\t/.test(oldTree) ||
++      oldTree.split('\t')[1] !== p ||
++      hash(readOriginal(parent, p)) !== before
++    )
++      fail();
++    if (hash(readOriginal(author, p)) !== after) fail();
++    checkCurrent(p, after);
++  }
++  // A later lineage/read check may withdraw an earlier source; check the full bundle again.
++  for (const [p, [, after]] of Object.entries(files)) checkCurrent(p, after);
++  return true;
++}
+diff --git a/server/payments/refunds.ts b/server/payments/refunds.ts
+index ab9dd65e8187f183164c2e278ca7ac3707daee06..18e51763188830aba48fb780e65e615b27fa1aed 100644
+--- a/server/payments/refunds.ts
++++ b/server/payments/refunds.ts
+@@ -12,6 +12,7 @@ import {
+   sha256,
+   uuid,
+ } from '../providers/safety';
++import { decodePaymentResponse } from './response-json';
+ 
+ export interface SandboxRefund extends SandboxIntent {
+   captureKey: string;
+@@ -208,12 +209,10 @@ export class SandboxRefundGateway {
+           body,
+         },
+       );
+-      const data = JSON.parse(
+-        (await boundedBytes(response, 65536))
+-          .toString('utf8')
+-          .replace(/^\uFEFF/, ''),
+-      );
+-      const transaction = authorize ? data.transactionResponse : data;
++      const data = decodePaymentResponse(await boundedBytes(response, 65536));
++      const transaction = authorize
++        ? (data.transactionResponse as Record<string, unknown> | undefined)
++        : data;
+       const code = authorize ? transaction?.responseCode : data.response;
+       const id = authorize ? transaction?.transId : data.id;
+       if (
+@@ -222,7 +221,8 @@ export class SandboxRefundGateway {
+         referencePattern.test(id) &&
+         id !== '0' &&
+         (authorize
+-          ? data.messages?.resultCode === 'Ok'
++          ? (data.messages as Record<string, unknown> | undefined)
++              ?.resultCode === 'Ok'
+           : data.currency === 'USD' && data.amount === amount)
+       )
+         result = { ...result, status: 'succeeded', transactionId: id };
+diff --git a/server/payments/response-json.ts b/server/payments/response-json.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..198f378c29faad7543882508ddfdbdb89a7bbffe
+--- /dev/null
++++ b/server/payments/response-json.ts
+@@ -0,0 +1,82 @@
++/** Strict wire decoding, adapted from the existing test-only command decoder.
++ * No response normalization or provider-state authority is added here. */
++export function decodePaymentResponse(
++  bytes: Uint8Array,
++): Record<string, unknown> {
++  if (
++    !(bytes instanceof Uint8Array) ||
++    !bytes.byteLength ||
++    bytes.byteLength > 65536
++  )
++    throw Error('Bounded payment response required');
++  // The decoder also preserves the existing single leading UTF8 BOM tolerance.
++  const text = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
++  let at = 0;
++  const space = () => {
++    while (/[\x20\t\r\n]/.test(text[at] ?? '') && at < text.length) at++;
++  };
++  const string = () => {
++    const begin = at++;
++    while (at < text.length) {
++      if (text[at] === '\\') {
++        at += 2;
++        continue;
++      }
++      if (text[at++] === '"')
++        return JSON.parse(text.slice(begin, at)) as string;
++    }
++    throw Error('Truncated payment response string');
++  };
++  const value = (depth: number): void => {
++    if (depth > 64) throw Error('Bounded payment response nesting required');
++    space();
++    const token = text[at];
++    if (token === '"') {
++      string();
++      return;
++    }
++    if (token === '{' || token === '[') {
++      at++;
++      space();
++      const end = token === '{' ? '}' : ']';
++      const keys = new Set<string>();
++      if (text[at] === end) {
++        at++;
++        return;
++      }
++      for (;;) {
++        space();
++        if (token === '{') {
++          if (text[at] !== '"') throw Error('Payment response key required');
++          const key = string();
++          if (keys.has(key)) throw Error('Duplicate payment response member');
++          keys.add(key);
++          space();
++          if (text[at++] !== ':')
++            throw Error('Payment response separator required');
++        }
++        value(depth + 1);
++        space();
++        if (text[at] === end) {
++          at++;
++          return;
++        }
++        if (text[at++] !== ',')
++          throw Error('Payment response separator required');
++      }
++    }
++    const literal =
++      /^(?:true|false|null|-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?)/.exec(
++        text.slice(at),
++      );
++    if (!literal) throw Error('Payment response JSON required');
++    at += literal[0].length;
++  };
++  value(0);
++  space();
++  if (at !== text.length) throw Error('Trailing payment response evidence');
++  const decoded: unknown = JSON.parse(text);
++  if (!decoded || typeof decoded !== 'object' || Array.isArray(decoded))
++    throw Error('Payment response object required');
++  return decoded as Record<string, unknown>;
++}
+diff --git a/server/payments/sandbox.ts b/server/payments/sandbox.ts
+index 052756b2cc2d06b6e046b77b8a689d9009f095df..9c720c1e4a8a82817c2629433584747022090841 100644
+--- a/server/payments/sandbox.ts
++++ b/server/payments/sandbox.ts
+@@ -1,4 +1,5 @@
+ import { createHash } from 'node:crypto';
++import { decodePaymentResponse } from './response-json';
+ export type SandboxProvider = 'authorize_net' | 'nmi';
+ export interface SandboxMerchant {
+   organizationId: string;
+@@ -114,11 +115,7 @@ async function boundedJson(r: Response) {
+   } finally {
+     reader.releaseLock();
+   }
+-  return JSON.parse(
+-    Buffer.concat(chunks)
+-      .toString('utf8')
+-      .replace(/^\uFEFF/, ''),
+-  ) as Record<string, unknown>;
++  return decodePaymentResponse(Buffer.concat(chunks));
+ }
+ export type SandboxCredentials =
+   { apiLoginId: string; transactionKey: string } | { apiKey: string };
+diff --git a/tests/invoice-caller-migration-source.test.ts b/tests/invoice-caller-migration-source.test.ts
+index e5018497ce5a476e0e1f3741053172cc8502d4e5..3bdf14d32292f4a92640a3dd9d606233e3ca7d70 100644
+--- a/tests/invoice-caller-migration-source.test.ts
++++ b/tests/invoice-caller-migration-source.test.ts
+@@ -26,6 +26,9 @@ const retainedOriginal = (path: string) =>
+   path === guardPath
+     ? git('show', `8f498f2c657608c64d40a3527be13b47a189b7b7:${path}`)
+     : readFileSync(path);
++// Preserve the original402 transition assertions against their exact source stage.
++const transitionStage = (path: string) =>
++  git('show', `461a9017b526dae9bc3a88577fd5ad5b1c71963e:${path}`);
+ function verifyCheckerTransition() {
+   const originalGuard = git('show', `${checkerAuthor}:${guardPath}`);
+   const originalHelper = git('show', `${checkerAuthor}:${admissionHelperPath}`);
+@@ -47,9 +50,9 @@ function verifyCheckerTransition() {
+   };
+   const normalize = (text: string) =>
+     text.replace(digest(text), '<EXACT_HELPER_DIGEST>');
+-  const currentGuard = readFileSync(guardPath, 'utf8');
++  const currentGuard = transitionStage(guardPath).toString('utf8');
+   expect(normalize(currentGuard)).toBe(normalize(originalGuard.toString()));
+-  const currentMigrationHash = sha(readFileSync(migrationPath));
++  const currentMigrationHash = sha(transitionStage(migrationPath));
+   const expectedHelper = originalHelper
+     .toString()
+     .replace(
+@@ -64,10 +67,55 @@ function verifyCheckerTransition() {
+       'hash(published) !== companion.sha256',
+       'hash(published) !== exactPublishedHash',
+     );
+-  const currentHelper = readFileSync(admissionHelperPath);
++  const currentHelper = transitionStage(admissionHelperPath);
+   expect(currentHelper).toEqual(Buffer.from(expectedHelper));
+   expect(sha(currentHelper)).toBe(digest(currentGuard));
+ }
++function verifyPaymentResponseTransition() {
++  expect(
++    sha(readFileSync('scripts/payment-response-source-admission.mjs')),
++  ).toBe('aa8871b0fa334bfd2ffdb36c314650e51e56ceea41a983e13c0b42a60084dfcd');
++  expect(sha(readFileSync('scripts/check-payment-ack-admission.mjs'))).toBe(
++    'b936bbd53def10eb7604b840ebe56262073001f30f0191247307eb54940a67ad',
++  );
++  const guard = readFileSync(guardPath, 'utf8');
++  const digests = [
++    ...guard.matchAll(
++      /createHash\('sha256'\)\.update\(callerHelperBytes\)\.digest\('hex'\) !==\s*'([a-f0-9]{64})'/g,
++    ),
++  ];
++  expect(digests).toHaveLength(1);
++  expect(guard.split(digests[0][1])).toHaveLength(2);
++  expect(guard.replace(digests[0][1], '<INVOICE_HELPER>')).toBe(
++    transitionStage(guardPath)
++      .toString()
++      .replace(
++        'const { admitInvoiceCallerSource }',
++        'const { admitInvoiceCallerSource: admitInvoiceCallerOnly }',
++      )
++      .replace(
++        'const composition =',
++        "// Exact source helper is validated before its captured bytes are imported.\nconst responseHelperPath = new URL(\n  '../scripts/payment-response-source-admission.mjs',\n  import.meta.url,\n);\nif (\n  !lstatSync(responseHelperPath).isFile() ||\n  lstatSync(responseHelperPath).isSymbolicLink()\n)\n  throw Error('Reviewed payment response helper required');\nconst responseHelperBytes = readFileSync(responseHelperPath);\nif (\n  createHash('sha256').update(responseHelperBytes).digest('hex') !==\n  'aa8871b0fa334bfd2ffdb36c314650e51e56ceea41a983e13c0b42a60084dfcd'\n)\n  throw Error('Reviewed payment response helper required');\nconst { admitPaymentResponseSource } = await import(\n  'data:text/javascript;base64,' + responseHelperBytes.toString('base64')\n);\n\nconst admitInvoiceCallerSource = (\n  ...args: Parameters<typeof admitInvoiceCallerOnly>\n) => admitPaymentResponseSource(...args) || admitInvoiceCallerOnly(...args);\n\n" +
++          'const composition =',
++      )
++      .replace(
++        '2a6ffb692443a7830df021e9a8cce048ac4388947e03a27af4286b4e26ee9a25',
++        '<INVOICE_HELPER>',
++      ),
++  );
++  const before = transitionStage(admissionHelperPath).toString();
++  const originalF = sha(transitionStage(migrationPath));
++  expect(originalF).toBe(
++    '4879c0b0f3da8bc2e5d981faae43fe443c317ffcd400b654fc550f0605149a08',
++  );
++  expect(before.split(`sha256: '${originalF}'`)).toHaveLength(2);
++  const exact = before.replace(
++    `sha256: '${originalF}'`,
++    `sha256: '${sha(readFileSync(migrationPath))}'`,
++  );
++  expect(readFileSync(admissionHelperPath)).toEqual(Buffer.from(exact));
++  expect(sha(Buffer.from(exact))).toBe(digests[0][1]);
++}
+ it('loads historical proposal bytes only beside the exact approved source author, without granting launch admission', () => {
+   const r = helper.proposalBaseline();
+   expect(r.activeSourceAuthor).toBe('8f498f2c657608c64d40a3527be13b47a189b7b7');
+@@ -88,6 +136,7 @@ it('loads historical proposal bytes only beside the exact approved source author
+       git('show', `8f498f2c657608c64d40a3527be13b47a189b7b7:${path}`),
+     );
+   verifyCheckerTransition();
++  verifyPaymentResponseTransition();
+ });
+ it.each([
+   'client',
+diff --git a/tests/launch-invoice-payment-source.test.ts b/tests/launch-invoice-payment-source.test.ts
+index 85a4614a6f83ff5b3f631c70604d0a9a172f4bb8..c4bf40c708965d39469d4efae71751514bbee003 100644
+--- a/tests/launch-invoice-payment-source.test.ts
++++ b/tests/launch-invoice-payment-source.test.ts
+@@ -25,13 +25,37 @@ if (
+ const callerHelperBytes = readFileSync(callerHelperUrl);
+ if (
+   createHash('sha256').update(callerHelperBytes).digest('hex') !==
+-  '2a6ffb692443a7830df021e9a8cce048ac4388947e03a27af4286b4e26ee9a25'
++  'af67c7836222779cd8322c08b3d5a72816760abc345a9d45cab97f85beacd133'
+ )
+   throw Error('Reviewed invoice caller helper required');
+-const { admitInvoiceCallerSource } = await import(
++const { admitInvoiceCallerSource: admitInvoiceCallerOnly } = await import(
+   'data:text/javascript;base64,' + callerHelperBytes.toString('base64')
+ );
+ 
++// Exact source helper is validated before its captured bytes are imported.
++const responseHelperPath = new URL(
++  '../scripts/payment-response-source-admission.mjs',
++  import.meta.url,
++);
++if (
++  !lstatSync(responseHelperPath).isFile() ||
++  lstatSync(responseHelperPath).isSymbolicLink()
++)
++  throw Error('Reviewed payment response helper required');
++const responseHelperBytes = readFileSync(responseHelperPath);
++if (
++  createHash('sha256').update(responseHelperBytes).digest('hex') !==
++  'aa8871b0fa334bfd2ffdb36c314650e51e56ceea41a983e13c0b42a60084dfcd'
++)
++  throw Error('Reviewed payment response helper required');
++const { admitPaymentResponseSource } = await import(
++  'data:text/javascript;base64,' + responseHelperBytes.toString('base64')
++);
++
++const admitInvoiceCallerSource = (
++  ...args: Parameters<typeof admitInvoiceCallerOnly>
++) => admitPaymentResponseSource(...args) || admitInvoiceCallerOnly(...args);
++
+ const composition = JSON.parse(
+   readFileSync('docs/LAUNCH_INVOICE_PAYMENT_COMPOSITION.json', 'utf8'),
+ );
+diff --git a/tests/launch-caller-payment-integration.test.ts b/tests/launch-caller-payment-integration.test.ts
+index fcef7f2336b2cd5e1836b27633e2b99a6d791946..6ae6472991a28f7aa993504bef06b23767ceaa01 100644
+--- a/tests/launch-caller-payment-integration.test.ts
++++ b/tests/launch-caller-payment-integration.test.ts
+@@ -1,7 +1,29 @@
+ import { expect, it } from 'vitest';
+-import { readFileSync, lstatSync } from 'node:fs';
++import { readFileSync as actualReadFileSync, lstatSync } from 'node:fs';
+ import { execFileSync } from 'node:child_process';
+ import { createHash } from 'node:crypto';
++// Retained406 fixture only; current payment frame is checked before historical reads.
++const fixtureUrl = new URL(
++  '../proposals/payment-launch-integration/legacy-invoice-fixture.mjs',
++  import.meta.url,
++);
++const fixtureInfo = lstatSync(fixtureUrl);
++if (
++  !fixtureInfo.isFile() ||
++  fixtureInfo.isSymbolicLink() ||
++  (fixtureInfo.mode & 0o777) !== 0o644
++)
++  throw Error('Exact retained launch fixture required');
++const fixtureBytes = actualReadFileSync(fixtureUrl);
++if (
++  createHash('sha256').update(fixtureBytes).digest('hex') !==
++  '6512550560268a036c2c6482078cd8516292423e464335eddb94c005ff55667b'
++)
++  throw Error('Exact retained launch fixture required before import');
++const { historicalInvoiceRead } = await import(
++  'data:text/javascript;base64,' + fixtureBytes.toString('base64')
++);
++const readFileSync = historicalInvoiceRead as typeof actualReadFileSync;
+ const directory = 'proposals/launch-caller-payment-integration';
+ const invoice = '461a9017b526dae9bc3a88577fd5ad5b1c71963e';
+ const payments = '912639a07146b6f7f55d2c983f78334f3dfd63aa';
+diff --git a/proposals/payment-launch-integration/legacy-invoice-fixture.mjs b/proposals/payment-launch-integration/legacy-invoice-fixture.mjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..e0a3da1e73fa9932698aa08c5e5f96d2094fc745
+--- /dev/null
++++ b/proposals/payment-launch-integration/legacy-invoice-fixture.mjs
+@@ -0,0 +1,59 @@
++// Historical test read port only. Exact live payment source is verified separately.
++import assert from 'node:assert/strict';
++import { readFileSync, lstatSync } from 'node:fs';
++import { createHash } from 'node:crypto';
++import { execFileSync } from 'node:child_process';
++const adapter = 'proposals/payment-response-admission/fixture-adapter.mjs';
++const adapterHash =
++  '4ccab151297b44da76057199cb3cabfcd2c73c3e20ed6761c27737db16468203';
++const baseline = '394d7fc1bbc6d6a27440e881bc3e9bf3d76befa6';
++const originals = {
++  'scripts/invoice-caller-source-admission.mjs':
++    '2a6ffb692443a7830df021e9a8cce048ac4388947e03a27af4286b4e26ee9a25',
++  'tests/invoice-caller-migration-source.test.ts':
++    '4879c0b0f3da8bc2e5d981faae43fe443c317ffcd400b654fc550f0605149a08',
++  'tests/launch-invoice-payment-source.test.ts':
++    '9ed3efe744bdb9003d3d8459e62dd5fe9479475768df6cb58dc4d8257ef37b00',
++};
++const sha = (b) => createHash('sha256').update(b).digest('hex');
++function verifiedAdapter() {
++  let prefix = '';
++  for (const part of adapter.split('/')) {
++    prefix = prefix ? prefix + '/' + part : part;
++    assert(!lstatSync(prefix).isSymbolicLink());
++  }
++  const info = lstatSync(adapter);
++  assert(
++    info.isFile() && (info.mode & 0o777) === 0o644,
++    'Exact historical read adapter mode required',
++  );
++  const bytes = readFileSync(adapter);
++  assert.equal(
++    sha(bytes),
++    adapterHash,
++    'Exact historical read adapter required before import',
++  );
++  return bytes;
++}
++const { verifyPaymentFrame } = await import(
++  'data:text/javascript;base64,' + verifiedAdapter().toString('base64')
++);
++verifyPaymentFrame();
++export function historicalInvoiceRead(path, ...args) {
++  if (!Object.hasOwn(originals, path)) return readFileSync(path, ...args);
++  verifiedAdapter();
++  verifyPaymentFrame();
++  const bytes = execFileSync(
++    'git',
++    ['--no-replace-objects', 'show', baseline + ':' + path],
++    { stdio: ['ignore', 'pipe', 'pipe'] },
++  );
++  assert.equal(
++    sha(bytes),
++    originals[path],
++    'Exact original invoice fixture required',
++  );
++  verifyPaymentFrame();
++  const encoding = typeof args[0] === 'string' ? args[0] : args[0]?.encoding;
++  return encoding ? bytes.toString(encoding) : Buffer.from(bytes);
++}

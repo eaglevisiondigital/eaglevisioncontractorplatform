@@ -2910,3 +2910,18 @@ historical read of exactbd8 only. Fresh five-file and lineage-mode checks preced
 those reads. Current closeout acceptance uses separate unwrapped real APIs; unknown
 source never falls back to historical success. The strict27 workflow and all source
 checks/historical pins remain unchanged. This fixture fix grants no operational authority.
+
+## November 13 · preserve historical invoice fixtures during finite payment composition
+
+Prepare eleven exact #419 endpoints against reviewed #417, without admitting them.
+The retained launch test compares historical F/H/G; qualify two explicit fixture
+companions that verify the exact live payment frame before historical reads. Keep
+all original verifier/assertion bytes and manifests, and independently run the live
+ACK/C17/payment/native controls. Unknown sources, mode drift, late withdrawal and
+coordinated record rebinding deny before candidate execution. The thirteen-file
+patch remains unapplied pending its separate exact approval. No SQL/Auth/provider
+activation or independently durable custody/operational acceptance is introduced.
+
+Independent review additionally caught before-only self-qualification. Accept only
+the complete exact before or integrated13 tuple, deny mixed bundles, and test the
+full after source with its unchanged package present before requesting promotion.
