@@ -1,3 +1,71 @@
+## C17 exact source author approved; separate checker proposal remains unapplied
+
+Owner approved only original0e309 test correction plusd059 note at exact406.
+Separate source-author commit76ee5226c52a850d5f692c8aac965d0487e0f544 is
+published in draft408: exact M1/A1/regular modes independently verified; all45
+original C17 cases PASS93.06s, type/format/features PASS. It is not promoted into
+this consolidated candidate, whose protected C17/checker remain f9d/e0ff.
+Earlier null-author preparation records below remain historical and unchanged.
+
+New `proposals/c17-current-checker/` binds the real76ee/406 tuple. Minimal UNAPPLIED
+three-file patch9688a87aa6d0f3bc8b3cbcf5b034d925a8389aae2dc0e3935c1f2a62bd144aa2
+retains all old constants/negative cases and original CLI bytes, including strict31
+controls; it adds17 current-author controls in a separate test. Disposable original31
+and new17 PASS separately; canonical files stay unchanged. This is not dedicated
+admission-workflow or full-Foundation acceptance. The earlier formatting-expanded
+148046 proposal was withdrawn before publication/admission.
+
+Source-author approval does not authorize this checker author or promotion. Exact
+checker approval, full integration/CI, invoice promotion01ba and D1–D3/Auth/SQL/
+custody/recovery/VAR/NMI/A01–A12 remain distinct. Release1.0 NO-GO.
+
+## Current406 admission qualification and unified NMI boundary successor
+
+One isolated descendant retains406 invoice/caller/checker/SQL/Auth bytes and its
+original records. New offline qualification enforces the complete immutable406
+context and rejects standalone use of the exact five-file01ba promotion diff;
+unknown source/helper/fixture/manifest rebinding or invented authority is denied.
+Existing C17 artifacts0e309/d059 are reused against406: named original1FAIL becomes
+1PASS only in a disposable clone (44 filtered each); current16TCB companions/import
+closure are verified before checker import, and downstream admission stays denied.
+Canonical C17 remains f9d; future author is null and exact author approval is open.
+
+Reviewed NMI author ae4b092 now contributes12native cases in this same candidate,
+including independent callback contention, settlement-only refund readiness and
+explicit declined-refund capacity. Original six/ten case prefixes remain exact.
+A named historical read port retains406's six-case record while separate live
+Git/hash/mode proofs bind all12current cases. The pinned first-contractor plan
+stays exact; its private VAR/NMI checkpoint extends only unprotected sandbox
+readiness. No customer credentials/bindings/accounts or provider calls occur.
+
+Actual successor unit/source79PASS, native72PASS/0skip/0errors and existing responsive
+release6PASS, with build/types/scoped lint/features25/design locks PASS. Counts are
+separate; all browser/transport fixtures remain synthetic. Prior406 full coverage
+is NO-GO: app5 held C17 assertion; app2 two explicit30s timeouts; app8 six explicit30s
+timeouts. Successful shards are retained; no budget or assertion is weakened.
+See [current decision evidence](proposals/launch-caller-payment-integration/successor.json).
+Protected promotion01ba, C17 author/checker, SQL/grants/routes, D1–D3/A01–A12,
+genuine Auth/custody/recovery and VAR/NMI acceptance remain separate and unaccepted.
+Saul2Paul first; Cunningham second with separate bindings. Release1.0 NO-GO.
+
+## Bounded caller/payment launch-integration preparation
+
+Exact402 caller/checker author `461a9017b526dae9bc3a88577fd5ad5b1c71963e`
+now composes exact398's six native NMI boundary cases and exact403's ordinary
+one-base CI trigger correction. All runtime/Auth/SQL/grants and original source
+manifests remain byte-exact402. Optional400 and its successors remain outside.
+Source authoring, protected admission and integration promotion are separate:
+preparation is owner-directed; promotion and all operational acceptance stay HELD.
+
+Six native suites66PASS/0skip/0errors, affected17-file unit selection239PASS,
+existing synthetic release browser6PASS and final source/trigger82PASS are separate
+runs. Final trigger composition changes no business source. Build/types/scoped
+lint/features25/design locks PASS. Current-head hosted results remain separate.
+See [exact source origins and unapplied five-file promotion diff](proposals/launch-caller-payment-integration/evidence.json).
+No invoice SQL installation, route, tenant, merchant, provider execution or release
+activation. D1–D3/A01–A12/Auth/custody/recovery/NMI/VAR requirements stay open.
+Saul 2 Paul first; Cunningham second with independent bindings. Release1.0 NO-GO.
+
 ## Approved checker author and unapplied transition amendment
 
 Owner approved only the exact two-file #397 checker-author patch. Source
