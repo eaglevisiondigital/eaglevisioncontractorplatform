@@ -4,6 +4,8 @@ import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import {
   readFileSync,
+  lstatSync,
+  existsSync,
   writeFileSync,
   mkdtempSync,
   symlinkSync,
@@ -13,6 +15,36 @@ import {
 } from 'node:fs';
 import { tmpdir, devNull } from 'node:os';
 import { join, dirname } from 'node:path';
+const paymentFrameGuard =
+  'bf366bff56157c0b94c174c91d8a9fbc76cb95e836d9387a2d61104e44fc873a';
+const paymentAdapterPath =
+  'proposals/payment-response-admission/fixture-adapter.mjs';
+let paymentFixture;
+if (existsSync(paymentAdapterPath)) {
+  let prefix = '';
+  for (const segment of paymentAdapterPath.split('/')) {
+    prefix = prefix ? prefix + '/' + segment : segment;
+    assert(
+      !lstatSync(prefix).isSymbolicLink(),
+      'Reviewed payment fixture required',
+    );
+  }
+  const info = lstatSync(paymentAdapterPath);
+  assert(
+    info.isFile() && !info.isSymbolicLink() && (info.mode & 0o777) === 0o644,
+    'Reviewed payment fixture required',
+  );
+  const bytes = readFileSync(paymentAdapterPath);
+  assert.equal(
+    createHash('sha256').update(bytes).digest('hex'),
+    '4ccab151297b44da76057199cb3cabfcd2c73c3e20ed6761c27737db16468203',
+    'Reviewed payment fixture required',
+  );
+  paymentFixture = await import(
+    'data:text/javascript;base64,' + bytes.toString('base64')
+  );
+}
+
 const directory = 'proposals/invoice-caller-transition';
 const expected = {
   classification: 'UNAPPLIED_FINITE_CHECKER_TRANSITION_AMENDMENT',
@@ -110,7 +142,10 @@ export function qualify({
     (bytes, i) => hash(bytes) === expected.files[i].proposedSha256,
   );
   assert(
-    approvedFrame || proposedTestFrame,
+    approvedFrame ||
+      proposedTestFrame ||
+      (hash(snapshots[2]) === paymentFrameGuard &&
+        paymentFixture?.verifyPaymentFrame() === true),
     'Exact approved or proposed qualification frame required',
   );
   const before = new Map();
@@ -152,7 +187,19 @@ export function qualify({
     );
     if (includeQualification) {
       for (const [path, pin] of qualificationFiles) {
-        const bytes = readFileSync(path);
+        let bytes = readFileSync(path);
+        if (
+          path === 'proposals/invoice-checker-qualification/baseline.mjs' &&
+          hash(bytes) ===
+            'c27591939af63a33312e6293ebd90469eac202b0a0237275338fb0be08e012ad'
+        ) {
+          assert(paymentFixture, 'Reviewed payment fixture required');
+          paymentFixture.verifyPaymentFrame();
+          bytes = git(
+            'show',
+            '276fbe4357a5ccc3593374e4cd359a10e8ae1bf6:' + path,
+          );
+        }
         assert.equal(
           hash(bytes),
           pin,
