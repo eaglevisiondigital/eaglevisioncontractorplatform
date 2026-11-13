@@ -1,3 +1,4 @@
+import { ContactConsentEditor } from './crm/ContactConsentEditor';
 import {
   useCallback,
   useState,
@@ -260,40 +261,20 @@ function CustomerDetail({
             Record explicit customer permission. External messaging remains
             disabled.
           </p>
-          <FieldsForm
-            fields={[
-              {
-                name: 'email_allowed',
-                label: 'Customer permits email contact',
-                type: 'checkbox',
-              },
-              {
-                name: 'sms_allowed',
-                label: 'Customer permits SMS contact',
-                type: 'checkbox',
-              },
-            ]}
-            initial={{
-              email_allowed: history.data?.consents[0]?.email_allowed ?? false,
-              sms_allowed: history.data?.consents[0]?.sms_allowed ?? false,
-            }}
-            key={history.data?.consents[0]?.id ?? 'consent'}
-            submitLabel="Record consent"
-            busy={task.busy}
-            onSubmit={async (v) => {
-              if (
-                await task.run(() =>
-                  repo.recordConsent(
-                    org,
-                    customer.id,
-                    Boolean(v.email_allowed),
-                    Boolean(v.sms_allowed),
-                  ),
-                )
-              )
-                history.reload();
-            }}
-          />
+          {history.data ? (
+            <ContactConsentEditor
+              repo={repo}
+              org={org}
+              customer={customer}
+              history={history.data}
+              ready={!history.loading && !history.error}
+              onRefresh={history.reload}
+            />
+          ) : (
+            <p role="status">
+              Current customer consent source unavailable · UNKNOWN
+            </p>
+          )}
           <h3>Notes and activity</h3>
           <FieldsForm
             fields={[
