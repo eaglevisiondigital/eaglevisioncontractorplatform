@@ -3286,3 +3286,18 @@ scoped lint/format and feature/design checks PASS. Correction/reopening is prove
 in the original same-tab synthetic repository, not hosted durability or genuine Auth.
 This optional candidate is outside the launch critical path. D1–D3/A01–A12, recovery,
 intake SQL HELD and Release1.0 NOT READY / NOT AUTHORIZED remain unchanged.
+
+Optional inspection-plan source control: a two-property parent negative reproduced
+raw contexts/createPlan associating a property-B plan with a job issued for property A.
+Those pinned readers/writers remain unchanged. The existing creation control now
+requires exact current local CRM/customer/property/job/issued-version evidence,
+planning permissions and unchanged selection; missing location remains UNKNOWN.
+New13 targeted unit cases PASS independently; new6 responsive source/revocation/
+accessibility cases PASS. Directly affected original3 first failed on their missing-
+location historical job fixture; explicit CRM-only customer/property setup then
+passed all original assertions/title/60s budget unchanged. Original failures and
+intermediate selector/initialization failures are retained. Build/typecheck, scoped
+lint/format and feature/design checks PASS. Creation/reopening evidence is only the
+original same-tab synthetic repository, not server atomicity or genuine hosted Auth.
+No launch dependency, source-pin admission or operational gate is closed; D1–D3,
+A01–A12, intake SQL HELD, recovery restrictions and Release1.0 NOT READY / NOT AUTHORIZED persist.

@@ -158,11 +158,59 @@ test('CRM-bound inspection plans and scheduled visits remain editable after savi
   page,
 }) => {
   await page.goto('/preview');
+  // Initialize the original historical sample before adding the no-job CRM target.
+  await openModule(page, 'Property operations');
+  await page.getByRole('button', { name: 'Inspections', exact: true }).click();
+  await expect(
+    page.getByRole('combobox', {
+      name: /Active inspection plan/i,
+      exact: true,
+    }),
+  ).toBeVisible();
+  // Explicit CRM-only fixture: historical seed jobs have no issued property ID.
+  // Preserve every original plan/save/schedule assertion without inventing a job link.
+  await openModule(page, 'Customers');
+  await page.getByRole('button', { name: 'New customer', exact: true }).click();
+  await page
+    .getByLabel('Customer name', { exact: true })
+    .fill('Inspection Fixture Synthetic');
+  await page
+    .getByRole('button', { name: 'Create customer', exact: true })
+    .click();
+  await page
+    .getByLabel('Search customers')
+    .fill('Inspection Fixture Synthetic');
+  await page
+    .getByRole('button')
+    .filter({ hasText: 'Inspection Fixture Synthetic' })
+    .click();
+  await page.getByText('Add service location', { exact: true }).click();
+  for (const [label, value] of Object.entries({
+    'Street address': '300 Inspection Fixture Lane',
+    City: 'Example City',
+    'State / region': 'IL',
+    'Postal code': '00000',
+  }))
+    await page.getByLabel(label, { exact: true }).fill(value);
+  await page.getByRole('button', { name: 'Add location', exact: true }).click();
+  await expect(
+    page.getByText('300 Inspection Fixture Lane', { exact: true }),
+  ).toBeVisible();
   await openModule(page, 'Property operations');
   await page.getByRole('button', { name: 'Inspections', exact: true }).click();
   await page
     .getByText(/^Create property inspection plan$/i, { exact: true })
     .click();
+  const contexts = page.getByRole('combobox', {
+    name: /CRM customer \/ property \/ job/i,
+    exact: true,
+  });
+  const propertyOnly = contexts.locator('option').filter({
+    hasText: 'Inspection Fixture Synthetic · 300 Inspection Fixture Lane',
+  });
+  await expect(propertyOnly).toHaveCount(1);
+  await expect(propertyOnly).toHaveText(/Property visit without job/i);
+  await contexts.selectOption((await propertyOnly.getAttribute('value'))!);
   await page.getByLabel(/New survey name/i).fill('Synthetic weekly inspection');
   await page
     .getByRole('button', { name: /^Create inspection plan$/i, exact: true })
