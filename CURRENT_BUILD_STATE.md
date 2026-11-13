@@ -3539,3 +3539,18 @@ custody, D3 independent matched recovery and A01–A12 remain operational gates.
 Exact launch successor checks: native78PASS/0skips, responsive internal-release6PASS,
 build/type/scopedlint/format/features/protected128PASS. Accepted source review CLEAR
 from independent security and QA agents. No hosted acceptance inherited from parents.
+
+### C17 launch integration proposal — November 13
+
+A finite UNAPPLIED five-file patch composes exact source author76ee and checker
+author72a onto launch892. Actual disposable integrated source passes all45 original
+C17 cases, original31 plus17 controls, seven explicitly retained historical assertions
+and eight historical timeout cases under their original budgets. Hosted timeout
+causation/complete Foundation coverage remain unresolved. New qualification captures
+verified helper/companion bytes before execution; unknown/coordinated rebinding denies.
+Canonical protected launch bytes and original assertion bodies remain unchanged;
+separate exact promotion approval is required. Release1.0 NOT READY / NOT AUTHORIZED.
+The new qualification initially imposed one outer30s limit on both historical
+suites; the reproduced aggregate timeout is corrected by separate five/two-case
+groups with every original assertion and per-case budget unchanged. Independent
+14 new qualification cases PASS; no hosted performance closure is inferred.

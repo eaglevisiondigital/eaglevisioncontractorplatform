@@ -1,9 +1,15 @@
 import { expect, it } from 'vitest';
-import { readFileSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-const proposal = await import(
-  new URL('../proposals/c17-current-checker/qualify.mjs', import.meta.url).href
+// Preserve pre-author assertions against exact407 history. Current integrated
+// admission is tested separately through the real filesystem and checker.
+const fixture = await import(
+  new URL(
+    '../proposals/c17-launch-integration/retained-fixture.mjs',
+    import.meta.url,
+  ).href
 );
+const { proposal, readFileSync, existsSync } =
+  await fixture.retainedFixture('checker');
 const sha = (p: string) =>
   createHash('sha256').update(readFileSync(p)).digest('hex');
 it('binds the real approved C17 source author and retains a separately unapproved checker proposal', () => {

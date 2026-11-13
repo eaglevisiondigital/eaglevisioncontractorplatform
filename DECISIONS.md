@@ -2893,3 +2893,12 @@ request syntax/amount/currency must not consume a token before downstream reject
 This does not authorize token resolution or replace real invoice/customer authority,
 current revocation, durable vault consumption or UNKNOWN reconciliation. Genuine
 commercial invoice writer/schema activation requires separate exact approval.
+
+### Finite C17 integration and historical preparation fixtures — November 13
+
+Keep the original seven pre-author assertions byte-exact through explicit407
+historical fixture ports only after verifying the complete current legacy or exact
+five-file integrated bundle and unchanged transitive checker source. Actual integrated
+C17/31/17 acceptance uses the real proposed filesystem. Captured verified bytes drive
+imports/staging; metadata cannot authorize promotion. Canonical source promotion,
+SQL, hosted acceptance and release remain separately gated.

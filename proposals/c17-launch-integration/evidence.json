@@ -1,0 +1,65 @@
+{
+  "schema": "c17-launch-integration-proposal-v1",
+  "baseline": "892bf5127af2268e6066a20d259a808b5b893cec",
+  "sourceAuthor": "76ee5226c52a850d5f692c8aac965d0487e0f544",
+  "sourceParent": "2c63cfd8175fe23d6c7f80a7879af9c73b27dceb",
+  "checkerAuthor": "72a5228b029a0fc52c06d9635f4e89ca096a76eb",
+  "checkerParent": "76ee5226c52a850d5f692c8aac965d0487e0f544",
+  "sourcePatch": "0e309234f1186dcaeac6a6a2234fe825526666b9efb1016df405efeb382a297a",
+  "checkerPatch": "9688a87aa6d0f3bc8b3cbcf5b034d925a8389aae2dc0e3935c1f2a62bd144aa2",
+  "promotionPatch": "5b45c4eb5c499779ba45270ed62550c81fe182b0a48b5c30f41b3e7db98c39f9",
+  "files": [
+    {
+      "path": "tests/cycle17-integration.test.ts",
+      "before": "f9d7a16d29cebb66070aabbd85ccdc10c09bce2eadeb2e70c525e0749a0a0089",
+      "after": "46747ffb4188b925fa2a64250be069a32e126fc72befac8918028f7594840d9a",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/program/V1_C17_FIELD_CLOSEOUT_SOURCE.md",
+      "before": null,
+      "after": "d059a93942fe871a4af17d2f6ba207ee520c22a25d252b00300b68cd9b8537d4",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/v1-c17-inventory-source.mjs",
+      "before": "e0ffeb3ba80b74474c0864ada76d531dcbb0e8c4d3f1ca299c0d59c5e3648f9e",
+      "after": "076b4d234531d7c26524f1ef4e648f4c08145aabb691662643437f81b3863386",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/v1-c17-inventory-source.test.mjs",
+      "before": "6e4ea84eaf1511a09c863a139adb06f947a2a9ee7539730cf2047e2c8c8b841c",
+      "after": "31045c49e82efe2fbcd86d56ba5d16ed98259dbf8a9b6619b4e1b77b02a0b448",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/v1-c17-field-closeout-source.test.mjs",
+      "before": null,
+      "after": "df616e9e4f192393e7fe30faed5a4b4394c12ddcb2ac4b0e94d65f9a00399cc2",
+      "mode": "100644"
+    }
+  ],
+  "protectedPromotionAuthorized": false,
+  "operationalReady": false,
+  "SQL": "UNAPPLIED",
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "companions": [
+    {
+      "path": "proposals/c17-launch-integration/retained-fixture.mjs",
+      "sha256": "feb110b5270646dfcb2247335340e0b49d59ef6117dd3345d2400eea1b1c5be2",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/c17-current-launch-preparation.test.ts",
+      "sha256": "900ea969ffd9b6dc2028e09670dc564ddfaa96c9452c76cc25f09fff40c65ec9",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/c17-current-checker-proposal.test.ts",
+      "sha256": "a04e43234c15cdd5fea8cbd3130b74dbf26d7e2f03a59683bd8bbc812af2616b",
+      "mode": "100644"
+    }
+  ],
+  "historicalFixture": "All seven original test bodies/assertions remain byte-identical. Only explicit fixture imports change. Integrated source is verified separately before historical407 reads; actual integrated checker controls and45 original C17 cases use the real proposed filesystem."
+}
