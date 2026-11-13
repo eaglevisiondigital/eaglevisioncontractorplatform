@@ -20,6 +20,25 @@ if (
       repo = new Phase3Repository(ops);
     await repo.initialize(company);
     const read = repo.workforce.bind(repo);
+    await repo.initialize(sampleCompanies[1]);
+    const originalTime = (await read(company.id)).entries.find(
+      (e) => e.submitted,
+    )!;
+    const rawRecordTime = repo.recordTime.bind(repo);
+    let manualWrites = 0,
+      loseTimeAck = false,
+      pauseSource = false,
+      sourcePaused = false;
+    let releaseSource: (() => void) | undefined;
+    repo.recordTime = async (...args) => {
+      manualWrites++;
+      const id = await rawRecordTime(...args);
+      if (loseTimeAck) {
+        loseTimeAck = false;
+        throw Error('Fictional lost time acknowledgment');
+      }
+      return id;
+    };
     let revoked = false;
     let rejectPaused = false;
     let pause = false,
@@ -38,6 +57,14 @@ if (
     };
     repo.workforce = async (...args) => {
       const data = await read(...args);
+      if (pauseSource) {
+        pauseSource = false;
+        sourcePaused = true;
+        await new Promise<void>((resolve) => {
+          releaseSource = resolve;
+        });
+        sourcePaused = false;
+      }
       return revoked
         ? {
             ...data,
@@ -55,6 +82,7 @@ if (
     };
     function Harness() {
       const [message, setMessage] = useState('');
+      const [org, setOrg] = useState(company.id);
       return (
         <main>
           <h1>Workforce authorization regression fixture</h1>
@@ -153,7 +181,54 @@ if (
           >
             Inspect fixture correction evidence
           </button>
-          <Workforce repo={repo} org={company.id} />
+          <output data-testid="time-original-id">{originalTime.id}</output>
+          <output data-testid="time-worker-id">{originalTime.worker_id}</output>
+          <output data-testid="time-target">
+            {originalTime.job_id ?? `overhead:${originalTime.overhead_center}`}
+          </output>
+          <output data-testid="time-start">{originalTime.started_at}</output>
+          <button
+            onClick={() => {
+              pauseSource = true;
+            }}
+          >
+            Pause next fixture workforce source read
+          </button>
+          <button
+            onClick={() =>
+              setMessage(
+                sourcePaused
+                  ? 'Fixture workforce source paused'
+                  : 'Fixture workforce source running',
+              )
+            }
+          >
+            Inspect fixture source pause
+          </button>
+          <button
+            onClick={() => {
+              releaseSource?.();
+              releaseSource = undefined;
+            }}
+          >
+            Release fixture workforce source read
+          </button>
+          <button
+            onClick={() => {
+              loseTimeAck = true;
+            }}
+          >
+            Lose next fixture manual-time acknowledgment
+          </button>
+          <button
+            onClick={() => setMessage(`Manual time writes: ${manualWrites}`)}
+          >
+            Inspect fixture manual-time writes
+          </button>
+          <button onClick={() => setOrg(sampleCompanies[1].id)}>
+            Switch fixture company
+          </button>
+          <Workforce repo={repo} org={org} />
         </main>
       );
     }

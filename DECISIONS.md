@@ -2750,3 +2750,14 @@ expense selection; missing source is UNKNOWN, never another purchase by fallback
 Bound this local control to the original immediate-snapshot reader, rejecting delayed
 or replaced readers rather than claiming an unimplemented atomic server guarantee.
 No new custody, customer approval, invoice issuance or operational authority follows.
+
+### Keep audited time corrections bound to the original worker
+
+The existing manual-time control must not let a correction supersede another worker's
+approved payroll source. Check current visible scope and the exact same-worker,
+approved/unlocked original, retaining original writer permissions and ordinary new
+time behavior. Prevent overlapping replacement attempts and keep ambiguous dispatched
+corrections and their exact descendants UNKNOWN rather than resetting them through
+refresh or a new target ID. Missing or contradictory lineage never proves authority.
+Local guards do not
+replace durable custody, original server enforcement or genuine payroll authorization.
