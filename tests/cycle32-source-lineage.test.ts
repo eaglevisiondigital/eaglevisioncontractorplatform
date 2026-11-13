@@ -253,7 +253,11 @@ describe.each(source.cycle32Authors)(
         expect(() =>
           source.inspectCycle32Sources({
             read: (p) =>
-              p === evidence ? Buffer.from('changed') : ports.read(p),
+              p === evidence
+                ? Buffer.from('changed')
+                : spec.modified.includes(p)
+                  ? ports.git(spec.nativeCorrection?.commit ?? spec.commit, p)
+                  : ports.read(p),
           }),
         ).toThrow('test/document');
       },

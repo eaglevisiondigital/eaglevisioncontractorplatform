@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { expect, it } from 'vitest';
 
 type Ports = {
@@ -37,11 +38,18 @@ const c17: {
   new URL('../scripts/check-cycle17-integrity.mjs', import.meta.url).href
 );
 const a = s.cycle33V1C17Compatibility,
-  p = s.cycle25SourcePorts,
+  live = s.cycle25SourcePorts,
+  // Original compatibility assertions retain their own historical current-read
+  // fixture. The live inventory successor has a separate strict proof below.
+  p: Ports = {
+    ...live,
+    read: (path) =>
+      path === a.path ? live.git(a.commit, path) : live.read(path),
+  },
   file = { path: a.path, sha256: a.published_sha256 },
   current = () => p.git(a.commit, a.path),
   admit = (ports?: Partial<Ports>, bytes = current()) =>
-    s.admitCycle33V1C17Compatibility(file, bytes, ports),
+    s.admitCycle33V1C17Compatibility(file, bytes, { ...p, ...ports }),
   manifest = () =>
     JSON.parse(
       readFileSync('docs/program/CYCLE17_DELIVERY_INDEX.json', 'utf8'),
@@ -75,6 +83,33 @@ it('admits exact fresh bytes as build-only evidence with no restoration authorit
     business_authority: false,
     restore_adapter: false,
   });
+  const next = 'bd8f150c1a347fd172cf5922d67e2664af59f14b',
+    bytes = live.read(a.path);
+  expect(bytes).toEqual(live.git(next, a.path));
+  expect(createHash('sha256').update(bytes).digest('hex')).toBe(
+    'f9d7a16d29cebb66070aabbd85ccdc10c09bce2eadeb2e70c525e0749a0a0089',
+  );
+  expect(s.admitCycle33V1C17Compatibility(file, bytes)).toEqual({
+    inventory_successor: {
+      module: 'c17-field-inventory-compatibility',
+      source_commit: next,
+      path: a.path,
+      authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+      business_authority: false,
+      restore_adapter: false,
+    },
+    module: 'c17-closeout-source-compatibility',
+    source_commit: a.commit,
+    path: a.path,
+    authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+    business_authority: false,
+    restore_adapter: false,
+  });
+  // The current inventory branch also rejects a historical argument; it does
+  // not substitute a different error for the original freshness fixture below.
+  expect(() =>
+    s.admitCycle33V1C17Compatibility(file, live.git(a.published, a.path)),
+  ).toThrow('Complete exact current C17 test/doc bundle required');
 });
 it.each(['src/App.tsx', a.companion.path, '../private'])(
   'rejects unrelated compatibility path %s',
@@ -136,9 +171,12 @@ it.each([a.path, a.companion.path])(
   },
 );
 it('denies historical bytes supplied as the current corrected test', () => {
-  expect(() => admit(undefined, p.git(a.published, a.path))).toThrow(
-    'Fresh exact',
-  );
+  expect(() =>
+    admit({
+      read: (path) =>
+        path === a.path ? p.git(a.published, a.path) : p.read(path),
+    }),
+  ).toThrow('Fresh exact');
 });
 it('denies a test changed after companion validation at the final fresh read', () => {
   let reads = 0;

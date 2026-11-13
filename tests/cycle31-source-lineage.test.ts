@@ -127,7 +127,9 @@ describe.each(lib.cycle31Authors)('$module exact author boundary', (spec) => {
         read: (p) =>
           p === path
             ? Buffer.from('unreviewed')
-            : lib.cycle25SourcePorts.read(p),
+            : spec.modified.includes(p)
+              ? lib.cycle25SourcePorts.git(spec.commit, p)
+              : lib.cycle25SourcePorts.read(p),
       }),
     ).toThrow('test/document');
   });

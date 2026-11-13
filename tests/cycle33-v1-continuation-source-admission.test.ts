@@ -58,7 +58,18 @@ const c23: {
 } = await import(new URL('../scripts/check-cycle23.mjs', import.meta.url).href);
 const c24: { checkCycle24Preservation: () => Record<string, unknown> } =
   await import(new URL('../scripts/check-cycle24.mjs', import.meta.url).href);
-const p = s.cycle25SourcePorts,
+const live = s.cycle25SourcePorts,
+  // These original assertions exercise the historical continuation boundary,
+  // including its exact companion diagnostics and two-read late-mutation fence.
+  // Keep that fixture explicit; the reviewed live successor is proved separately
+  // in the existing Finance author case below, through the unchanged real ports.
+  p: Ports = {
+    ...live,
+    read: (path) =>
+      path === 'src/lib/workflows/recorded-cost-requirements.ts'
+        ? live.git('5986df744d688d7ab2e72a7824b18e4568d1cb92', path)
+        : live.read(path),
+  },
   authors = s.cycle33V1ContinuationAuthors,
   current = (a: Author) => {
     const original = p.git(a.commit, a.path);
@@ -75,7 +86,8 @@ const p = s.cycle25SourcePorts,
     ports?: Partial<Ports>,
     bytes = current(a),
     old = previous(a),
-  ) => s.admitCycle33V1ContinuationSource(a.path, bytes, old, ports),
+  ) =>
+    s.admitCycle33V1ContinuationSource(a.path, bytes, old, { ...p, ...ports }),
   result = (a: Author) => ({
     module: a.module,
     source_commit: a.commit,
@@ -168,6 +180,37 @@ for (const a of authors) {
         expect(p.read(f.path)).toEqual(p.git(commit, f.path));
       }
     expect(admit(a)).toEqual(result(a));
+    if (
+      a.commit === '5986df744d688d7ab2e72a7824b18e4568d1cb92' &&
+      a.path === 'src/lib/workflows/recorded-cost-requirements.ts'
+    ) {
+      const next = '08ad85d896e3988be1ba223cb0c719374cdfbe7e',
+        bytes = live.read(a.path);
+      expect(bytes).toEqual(live.git(next, a.path));
+      expect(hash(bytes)).toBe(
+        '5ddc9e52d40cb5166c9f8f10710d343e02315d68cdf6f2c8bc18569640f115e8',
+      );
+      expect(
+        s.admitCycle33V1ContinuationSource(a.path, bytes, previous(a)),
+      ).toEqual({
+        ...result(a),
+        next_native: {
+          module: 'finance-retained-selection',
+          source_commit: next,
+          path: a.path,
+          authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+          business_authority: false,
+          restore_adapter: false,
+        },
+      });
+      expect(() =>
+        s.admitCycle33V1ContinuationSource(
+          a.path,
+          Buffer.concat([bytes, Buffer.from('\n// unknown successor')]),
+          previous(a),
+        ),
+      ).toThrow('Fresh exact reviewed V1 continuation source required');
+    }
   });
 
   it(`${a.module}: denies unknown and companion paths as native owners`, () => {
@@ -353,10 +396,20 @@ for (const a of authors.filter((a) => a.published !== null)) {
       blob: 'ad8ee0ba15ab0a17f731eb7cde34b30ec4f537dc',
     });
     expect(
-      s.admitCycle33V1ContinuationPublished(file, current(a), published.commit),
+      s.admitCycle33V1ContinuationPublished(
+        file,
+        current(a),
+        published.commit,
+        p,
+      ),
     ).toEqual(result(a));
     expect(
-      s.admitCycle25Source(a.path, current(a), p.git(s.cycle25Parent, a.path)),
+      s.admitCycle25Source(
+        a.path,
+        current(a),
+        p.git(s.cycle25Parent, a.path),
+        p,
+      ),
     ).toEqual(result(a));
   });
 
