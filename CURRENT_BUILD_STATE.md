@@ -3375,3 +3375,27 @@ original log remains retained, scope-only locator correction and final nine PASS
 Typecheck/build, scoped ESLint/formatting, original Cycle6 128 protected hashes and
 five locks/13 bindings, and the 25-record feature check PASS. This optional control
 is not a first-contractor launch dependency or operational acceptance.
+
+### Optional CRM location save source guard — November 13
+
+The existing service-location editor now compares the exact current saved address
+and customer/company scope before its original writer. Staff review the complete
+current address, retain unfinished fields through explicit refresh, and reconfirm
+before an update; hidden identity-field injection and changed context deny. Original
+Add location fields/labels/writer remain; no new capability or route. The raw stale
+address overwrite probe FAILS (retained), while 19 focused guarded-control cases
+PASS. This is pre-dispatch same-tab sample state, not atomic server CAS, genuine
+Auth, verified physical location, hosted durability or global duplicate prevention.
+The protected Operations writer and source pins remain unchanged; raw writers can
+still bypass the guard or race between read and append. UNKNOWN dispatched saves
+remain held in the same repository session even after refresh/editor reopening.
+
+Responsive evidence: original three CRM journeys PASS without further changes; six
+new stale-source/save/reopen/accessibility/UNKNOWN cases PASS at the initial source.
+Three new source-wait/unmount cases initially FAIL because cleanup reused an earlier
+generation, then PASS after monotonic invalidation; original failure evidence remains.
+Only the affected three were rerun after that correction, not an inferred final whole
+suite. No D1–D3 appointment/decision, A01–A12 result or recovery execution follows.
+Optional branch remains outside first-contractor launch; intake SQL HELD and original
+financial/provider/production/recovery restrictions persist. Release1.0 NOT READY /
+NOT AUTHORIZED.

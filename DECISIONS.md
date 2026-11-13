@@ -2771,3 +2771,13 @@ dispatched recording UNKNOWN without replacement attempts. This control does not
 replace protected atomic server consent validation, genuine permission evidence or
 operational communications acceptance. The demonstrated raw read/append race remains
 open; no protected source or source pin is changed.
+
+### Optional service address source-bound save — November 13
+
+A cached address form must not silently replace a newer saved location. Reuse the
+original CRM customer/location readers and Save writer, compare the full exact
+source before dispatch, and require explicit current-address review for updates.
+Refresh keeps unfinished address inputs while invalidating review; context changes
+use monotonic invalidation and ambiguous dispatch remains UNKNOWN, not retryable.
+Local attempt guards do not replace protected server CAS, genuine authorization or
+durable custody; raw bypasses remain open. No new operational authority is granted.

@@ -1,3 +1,4 @@
+import { LocationEditor } from './crm/LocationEditor';
 import { ContactConsentEditor } from './crm/ContactConsentEditor';
 import {
   useCallback,
@@ -15,7 +16,6 @@ import type {
   Operations,
   Customer,
   CustomerDraft,
-  LocationDraft,
   Row,
 } from '../lib/operations';
 import {
@@ -48,53 +48,6 @@ const customerFields: Field[] = [
     options: options(['email', 'phone', 'sms']),
   },
 ];
-const locationFields: Field[] = [
-  { name: 'address_line1', label: 'Street address', required: true },
-  { name: 'address_line2', label: 'Address line 2' },
-  { name: 'city', label: 'City', required: true },
-  { name: 'region', label: 'State / region', required: true },
-  { name: 'postal_code', label: 'Postal code', required: true },
-  { name: 'country_code', label: 'Country code', required: true, maxLength: 2 },
-];
-function LocationEditor({
-  repo,
-  org,
-  customer,
-  onSaved,
-  location,
-}: {
-  repo: Operations;
-  org: string;
-  customer: string;
-  onSaved: () => void;
-  location?: Row<'service_locations'>;
-}) {
-  const task = useTask();
-  return (
-    <>
-      <FieldsForm
-        fields={locationFields}
-        initial={location ?? { country_code: 'US' }}
-        submitLabel={location ? 'Update location' : 'Add location'}
-        busy={task.busy}
-        onSubmit={async (v) => {
-          if (
-            await task.run(() =>
-              repo.saveLocation(
-                org,
-                customer,
-                v as unknown as LocationDraft,
-                location?.id,
-              ),
-            )
-          )
-            onSaved();
-        }}
-      />
-      <p role="status">{task.message}</p>
-    </>
-  );
-}
 function CustomerDetail({
   repo,
   org,
