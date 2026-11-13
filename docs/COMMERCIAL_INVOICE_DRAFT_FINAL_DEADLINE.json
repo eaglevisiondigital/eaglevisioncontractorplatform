@@ -1,0 +1,53 @@
+{
+  "schema": "commercial-invoice-draft-final-deadline-candidate-v1",
+  "parentCommit": "c8d39abe40780a89acefb93634734e960c252490",
+  "historicalProposalSha256": "a788e65adcf15774d0585e99b98f771387dbe9b1be42a1b86bcffbcbbabedd91",
+  "historicalEvidenceUnchanged": [
+    "docs/COMMERCIAL_INVOICE_DRAFT_CANDIDATE.json",
+    "docs/COMMERCIAL_INVOICE_DRAFT_AUTH_COMPATIBILITY.json"
+  ],
+  "classification": "UNAPPLIED_SOURCE_PROPOSAL_NOT_OPERATIONAL_ACCEPTANCE",
+  "correction": "Recheck current actor after final projection on create/save, original-command reconciliation and read; late expiry rejects the result and rolls back writes.",
+  "sources": [
+    {
+      "path": "server/invoices/commercial-drafts.proposed.sql",
+      "sha256": "da35d098727eff68ae7905c3709d6982cf89560cae538923f5d7e570dab0306e"
+    },
+    {
+      "path": "tests/database/commercial-invoice-draft-final-deadline.test.ts",
+      "sha256": "84cd88c38419bce39957f0f91665ffcea3cbf287153df954a13a169fb87ea2cd"
+    }
+  ],
+  "evidence": {
+    "parentNative": {
+      "failed": 4,
+      "passed": 1
+    },
+    "correctedNative": {
+      "passed": 5,
+      "skipped": 0
+    },
+    "pglite": {
+      "passed": 1,
+      "nativeOnlySkipped": 4
+    },
+    "checks": [
+      "TypeScript noEmit PASS",
+      "Scoped ESLint PASS",
+      "features:check PASS"
+    ]
+  },
+  "unchanged": [
+    "function signatures",
+    "1500ms lock timeout",
+    "private roles and grants",
+    "historical protected SQL/source",
+    "client UNKNOWN and no-replay behavior"
+  ],
+  "limitations": [
+    "Native fixtures use trusted synthetic JWT claims, not genuine hosted authentication.",
+    "Checks cover the function result/receipt boundary in autocommit calls, not an arbitrary caller delayed explicit COMMIT.",
+    "No operational connection factory, route, installation, hosted operation, invoice issuance, payment or release authority.",
+    "Independent custody, recovery, D1-D3 and A01-A12 remain unaccepted."
+  ]
+}
