@@ -1,3 +1,27 @@
+## Newly reproduced receipt-caller reconciliation blocker
+
+On385, authorized actorB reusing actorA's command is correctly rejected by SQL40001
+and held UNKNOWN by the client. B's legitimate staff read of A's receipt then
+incorrectly clears B's held attempt; a fresh B save commits revision2. Primary and
+independent native probes reproduce this (one intended failure), without SQL/Auth
+bypass or duplicate original commit. Protected client12c1eb30 remains unchanged.
+The client(sql,org) lacks a trusted original-caller/attempt evidence contract. Do
+not fix it with a caller-supplied actor ID or treat40001 as proof of noncommit.
+A reviewed trusted reconciliation contract and exact protected-source approval
+are required separately from the existing UUID patch; no failing default test
+or disconnected custody wrapper was added. Release1.0 remains NO-GO.
+
+## Unapplied descriptor-capture qualification
+
+Original385 hosted application shards2/3 fail at17 explicit30-second timeouts and
+three retained-source assertions after timed-out setup; shard5 retains the held
+C17 hash assertion. Local CPU profiling identifies repeated fresh operating-source
+snapshots/descriptor serialization as dominant work. Exact unapplied patch and
+qualification are in proposals/operating-source-signature; canonical runtime stays
+7a5272ae and both Cycle9/Cycle24 barriers still reject the proposal. No budget,
+source check, current authority or original assertion is removed. Disposable-copy
+original20 selected cases PASS; this is not hosted or clean candidate acceptance.
+
 ## Historical source-test fixture corrections
 
 Twelve Foundation source-test failures were traced to C31/C32/C33 fixtures mixing
