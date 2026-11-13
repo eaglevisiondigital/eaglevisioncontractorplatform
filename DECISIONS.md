@@ -2791,3 +2791,11 @@ known saved-only outcomes and staged inputs, and hold both combined and ordinary
 replacement actions after partial/UNKNOWN. Existing standalone operations retain
 their normal semantics. This adds no writer, ledger, genuine Auth or operational
 inspection/dispatch authority; durable custody and raw bypass remain separate gates.
+
+### Preserve explicit inspection-template requirements — November 13
+
+A label-only edit must not turn optional inspection tasks into required scope.
+Preserve the existing indexed item identity and required flag when serializing
+labels, defaulting only new positions to required. Keep the original explicit
+positional contract and canonical Save/CAS; do not infer reordered identities from
+text or treat template changes as completed work. No operational authority changes.
