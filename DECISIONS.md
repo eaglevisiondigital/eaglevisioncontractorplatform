@@ -1,3 +1,13 @@
+## Isolate historical test fixtures from current successor proof
+
+Correct only four ordinary source-test fixtures; historical snapshot entries are
+not current test-byte admission pins. Keep their snapshots immutable, every
+original assertion/identity/budget, and all canonical checkers/native bytes. Exact
+live Finance/C17 successor proofs remain separate from historical denial fixtures.
+This closes demonstrated test-fixture defects only. Timeout evidence, protected
+UUID/C17 approvals and D1-D3/A01-A12/Auth/custody/NMI/recovery gates remain open.
+Release1.0 remains NOT READY / NOT AUTHORIZED.
+
 ## Reuse the existing Foundation coverage supplement for the launch successor
 
 Extend only its exact PR-base trigger; preserve the original workflow, existing

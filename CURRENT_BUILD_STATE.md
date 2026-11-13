@@ -1,3 +1,17 @@
+## Historical source-test fixture corrections
+
+Twelve Foundation source-test failures were traced to C31/C32/C33 fixtures mixing
+historical author expectations with separately reviewed current successors. Four
+test files now isolate their historical read ports; existing Finance/C17 cases
+also prove exact live08ad/bd8 hashes, strict build-only results and unknown denial.
+Original assertions, case IDs, budgets, manifests and checkers remain unchanged.
+Root full runs: continuation68PASS/2consumer timeouts; C31/C32 123PASS/1consumer
+timeout; C17 fixture27PASS. Independent continuation69PASS/1consumer timeout,
+including all25Finance cases PASS. Independent C31/C32/C17 fixture run150PASS/1
+consumer timeout, including all27C17 cases PASS. The exact parent C23/C24 consumer also times out
+at its unchanged30-second budget. No whole-suite PASS or operational acceptance
+is claimed. Core C17 and commercial client bytes remain unchanged and protected.
+
 ## Launch Foundation supplement trigger
 
 The existing original-scope coverage supplement did not match the #380 successor
