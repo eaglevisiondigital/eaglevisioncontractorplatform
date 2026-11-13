@@ -10,10 +10,35 @@ const proposal = await import(
   new URL('../proposals/invoice-caller-admission/qualify.mjs', import.meta.url)
     .href
 );
+const qualification = await import(
+  new URL(
+    '../proposals/invoice-checker-qualification/baseline.mjs',
+    import.meta.url,
+  ).href
+);
 const path = 'server/invoices/commercial-draft-client.ts';
 const old = '12c1eb303f10f8cb9e6c5f765839419f55e4b6cfd16c6c6ef9f8812ccbb76194';
 const original = (commit: string, p: string) =>
   execFileSync('git', ['--no-replace-objects', 'show', `${commit}:${p}`]);
+// These cases exercise the immutable #397 helper, not current checker admission.
+// Verify the exact live frame separately, then retain only its original companion.
+const readHistoricalCompanion = (p: string) =>
+  p === 'tests/invoice-caller-migration-source.test.ts'
+    ? original('6063aea60588975bbe88c8ccf8b1d864721b7082', p)
+    : readFileSync(p);
+function historicalAdmission(
+  p: string,
+  bytes: Buffer,
+  oldHash: string,
+  ports: Record<string, unknown> = {},
+) {
+  qualification.qualificationBaseline();
+  return helper.admitInvoiceCallerSource(p, bytes, oldHash, {
+    readCurrent: readHistoricalCompanion,
+    ...ports,
+  });
+}
+
 it('passes all eight actual guard cases only in a disposable proposed tree', () => {
   expect(proposal.qualify()).toEqual({
     mode: 'positive',
@@ -30,18 +55,16 @@ it.each(['helper-mutation', 'record-rebind'])(
   },
 );
 it('admits only the exact source and fixture authors, not an unrelated path or rebound old pin', () => {
-  expect(helper.admitInvoiceCallerSource(path, readFileSync(path), old)).toBe(
-    true,
-  );
+  expect(historicalAdmission(path, readFileSync(path), old)).toBe(true);
   expect(
-    helper.admitInvoiceCallerSource(
+    historicalAdmission(
       'server/payments/control-store.ts',
       Buffer.from('unknown'),
       old,
     ),
   ).toBe(false);
   expect(() =>
-    helper.admitInvoiceCallerSource(path, readFileSync(path), '0'.repeat(64)),
+    historicalAdmission(path, readFileSync(path), '0'.repeat(64)),
   ).toThrow('Exact finite');
 });
 it.each([
@@ -58,10 +81,10 @@ it.each([
 ])('rejects an unknown read-port companion edit in %s', (target) => {
   const readCurrent = (p: string) =>
     p === target
-      ? Buffer.concat([readFileSync(p), Buffer.from('\n// UNKNOWN')])
-      : readFileSync(p);
+      ? Buffer.concat([readHistoricalCompanion(p), Buffer.from('\n// UNKNOWN')])
+      : readHistoricalCompanion(p);
   expect(() =>
-    helper.admitInvoiceCallerSource(path, readFileSync(path), old, {
+    historicalAdmission(path, readFileSync(path), old, {
       readCurrent,
     }),
   ).toThrow('Exact finite');
@@ -93,20 +116,20 @@ it.each([
     return execFileSync('git', ['--no-replace-objects', ...args]);
   };
   expect(() =>
-    helper.admitInvoiceCallerSource(path, readFileSync(path), old, {
+    historicalAdmission(path, readFileSync(path), old, {
       metadata,
     }),
   ).toThrow('Exact finite');
 });
 it('rejects substituted published bytes and a symlink ancestor', () => {
   expect(() =>
-    helper.admitInvoiceCallerSource(path, readFileSync(path), old, {
+    historicalAdmission(path, readFileSync(path), old, {
       readOriginal: (c: string, p: string) =>
         p === path ? Buffer.from('unknown') : original(c, p),
     }),
   ).toThrow('Exact finite');
   expect(() =>
-    helper.admitInvoiceCallerSource(path, readFileSync(path), old, {
+    historicalAdmission(path, readFileSync(path), old, {
       stat: (p: string) =>
         p === 'tests' ? { isSymbolicLink: () => true } : lstatSync(p),
     }),

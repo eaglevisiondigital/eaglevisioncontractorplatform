@@ -1,3 +1,13 @@
+## Preserve exact checker approval while qualifying its fixture transition
+
+Author only the exact separately approved two-file #397 patch. Correct the
+ordinary historical proposal loader without changing immutable proposal records.
+Prepare the demonstrated retained-fixture/checksum conflict as a separate finite
+unapplied amendment; qualify actual current guards and unknown-edit rejection in
+disposable archives. No protected amendment or integration is approved implicitly
+by the earlier source-author decision. Preserve SQL/grants/Auth/custody/payment,
+D1–D3/A01–A12/recovery and release gates. Release1.0 NO-GO.
+
 ## Keep invoice source admission a separately approved checker author
 
 Prepare only an unapplied finite alternative for the approved source and fixture
