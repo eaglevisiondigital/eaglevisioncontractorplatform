@@ -1,3 +1,4 @@
+import { unitCommercialCaller } from './fixtures/commercial-caller-unit';
 import { expect, it, vi } from 'vitest';
 import {
   CommercialDraftClient,
@@ -21,10 +22,17 @@ it.each(['customerId', 'locationId', 'sourceVersionId'] as const)(
       title: 'Original fictional scope',
       memo: 'Original unfinished draft input',
     };
-    const query = vi.fn();
-    const client = new CommercialDraftClient(
+    const query = vi.fn(),
+      actor = crypto.randomUUID();
+    const bound = unitCommercialCaller(
       { query } as GatewaySql,
+      actor,
+      'a'.repeat(64),
+    );
+    const client = new CommercialDraftClient(
+      bound.sql,
       organizationId,
+      bound.caller,
     );
     query.mockRejectedValueOnce(Error('Lost acknowledgment'));
     await expect(client.create(original)).rejects.toBeInstanceOf(
@@ -56,7 +64,7 @@ it.each(['customerId', 'locationId', 'sourceVersionId'] as const)(
         commandId: original.commandId,
         revision: 1,
         requestHash: 'a'.repeat(64),
-        actorId: crypto.randomUUID(),
+        actorId: actor,
       },
     };
     query.mockResolvedValueOnce({ rows: [{ result: response }] });

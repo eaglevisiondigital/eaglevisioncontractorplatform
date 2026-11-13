@@ -1,3 +1,4 @@
+import { unitCommercialCaller } from './fixtures/commercial-caller-unit';
 import { describe, expect, it, vi } from 'vitest';
 import {
   CommercialDraftClient,
@@ -7,7 +8,8 @@ import {
 } from '../server/invoices/commercial-draft-client';
 import type { GatewaySql } from '../server/payments/postgres-store';
 
-const org = crypto.randomUUID();
+const org = crypto.randomUUID(),
+  actor = crypto.randomUUID();
 const input = (): DraftWrite => ({
   invoiceId: crypto.randomUUID(),
   customerId: crypto.randomUUID(),
@@ -42,15 +44,20 @@ function result(v: DraftWrite): CommercialDraft {
       commandId: v.commandId,
       revision: v.expectedRevision + 1,
       requestHash: 'a'.repeat(64),
-      actorId: crypto.randomUUID(),
+      actorId: actor,
     },
   };
 }
 function setup() {
   const query = vi.fn();
+  const bound = unitCommercialCaller(
+    { query } as GatewaySql,
+    actor,
+    'a'.repeat(64),
+  );
   return {
     query,
-    client: new CommercialDraftClient({ query } as GatewaySql, org),
+    client: new CommercialDraftClient(bound.sql, org, bound.caller),
   };
 }
 describe('unwired commercial draft client', () => {
@@ -103,6 +110,7 @@ describe('unwired commercial draft client', () => {
     await expect(
       client.create({ ...v, commandId: crypto.randomUUID() }),
     ).rejects.toBeInstanceOf(CommercialDraftUnknownError);
+    await vi.waitFor(() => expect(complete).toBeTypeOf('function'));
     complete({ rows: [{ result: result(v) }] });
     await pending;
     expect(query).toHaveBeenCalledTimes(1);
@@ -124,6 +132,7 @@ describe('unwired commercial draft client', () => {
     const pending = client.create(v);
     v.title = 'Changed after dispatch';
     v.sourceVersionId = crypto.randomUUID();
+    await vi.waitFor(() => expect(complete).toBeTypeOf('function'));
     complete({ rows: [{ result: result(original) }] });
     expect((await pending).title).toBe(original.title);
     expect(query.mock.calls[0][1][5]).toBe(original.sourceVersionId);

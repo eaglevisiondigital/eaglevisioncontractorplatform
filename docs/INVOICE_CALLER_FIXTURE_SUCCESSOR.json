@@ -1,0 +1,82 @@
+{
+  "schema": "invoice-caller-fixture-successor-v1",
+  "classification": "SOURCE_FIXTURE_MIGRATION_NOT_PROTECTED_ADMISSION",
+  "sourceAuthor": "8f498f2c657608c64d40a3527be13b47a189b7b7",
+  "approvedSourcePatchSha256": "bcf2dbf4e967007cab60d81b0c7599372ca55cf69b1c52ecaed320b0062aa034",
+  "sources": [
+    {
+      "path": "tests/commercial-invoice-client.test.ts",
+      "parentSha256": "ec0829098cd7fc967fad82d33b5db003dcab67ca9b2f135ae55a2dd74349e34a",
+      "sha256": "5d5e2f9eb9aca01fe29231a4111be4dc0f3220e4cfd4bb5234ef9d32b008c6e7"
+    },
+    {
+      "path": "tests/commercial-invoice-client-adversarial.test.ts",
+      "parentSha256": "25f1e6169365e76558348df63792c131e4f26414d4c8d50b407657ce0f282c12",
+      "sha256": "af7b59add457c268231b3cd9dbfc5d051af8429852721eab1e776b9b6fa61313"
+    },
+    {
+      "path": "tests/commercial-invoice-client-reconciliation.test.ts",
+      "parentSha256": "8be24bc86172b7997ef4268a4df7375acc8cfcb131a8b7f3442c0f6d11aa7e40",
+      "sha256": "c3770111b7ad3404470beb3917bd47b9cfca71adecdaec133770f396624c09a6"
+    },
+    {
+      "path": "tests/database/commercial-invoice-drafts.test.ts",
+      "parentSha256": "94d06410bdd267726f57aa1b1a90c3357af3ed51cadf69f2a39e610a09416b47",
+      "sha256": "4f263d411f9fb02497335df739e810571810272ccfe0afb790ba4bba95465502"
+    },
+    {
+      "path": "tests/fixtures/commercial-caller-unit.ts",
+      "parentSha256": null,
+      "sha256": "e77ea3357154b9d3959ac00c85aa948a634e605db43069cde34500bc2089291c"
+    },
+    {
+      "path": "tests/fixtures/commercial-caller-native.ts",
+      "parentSha256": null,
+      "sha256": "ffa6eebb84fc52e96e3a070eab915e9ea7e0c9f7aea913144bbe5da38b699df1"
+    },
+    {
+      "path": "proposals/invoice-caller-fixture-migration/source-author-baseline.mjs",
+      "parentSha256": null,
+      "sha256": "cb1a4069463d02d7b11d683bc38297ae110375a683809e15ec87159aa2ca1886"
+    },
+    {
+      "path": "proposals/invoice-caller-reconciliation/qualify.mjs",
+      "parentSha256": "d6dc6df3384578a9e00309de97496f3da3a5caebda953cfbcd6cf54d45b18bb5",
+      "sha256": "8d3866149532e9986f8eca8d31d95cf3899d59e7ad74eb3e7281007d13c1e13e"
+    },
+    {
+      "path": "proposals/invoice-caller-reconciliation/qualify.d.mts",
+      "parentSha256": "0e81324be99a2a81e76497a740485c27203fd64c1ad50388aa1fbe1f126d9f9d",
+      "sha256": "30fd7efaf053fa0f3100c9ccdb9ad2ca0a250e75a8733a25fb59d0d8d0475b3a"
+    },
+    {
+      "path": "tests/invoice-caller-migration-source.test.ts",
+      "parentSha256": null,
+      "sha256": "b1131c5c7d80dc2fb3d28a3e7d20540c60d420f3d8ba76a7b61eb091fee24678"
+    }
+  ],
+  "unchanged": [
+    "server/invoices/commercial-draft-client.ts",
+    "server/invoices/commercial-caller-connection.ts",
+    "server/invoices/commercial-drafts.proposed.sql",
+    "server/customer/broker-auth.ts",
+    "tests/launch-invoice-payment-source.test.ts",
+    "docs/LAUNCH_INVOICE_PAYMENT_COMPOSITION.json",
+    "docs/COMMERCIAL_INVOICE_DRAFT_CANDIDATE.json"
+  ],
+  "validation": {
+    "originalClientUnit": 28,
+    "historicalProposalUnit": 36,
+    "migrationGuards": 13,
+    "nativeFiles": 5,
+    "nativePassed": 60,
+    "nativeSkipped": 0,
+    "nativeErrors": 0,
+    "independentUnitAndGuards": 41,
+    "independentNative": 60,
+    "pgliteOriginalClientPositive": 1,
+    "genuineHostedAuth": "NOT_ACCEPTED",
+    "sourceAdmission": "HELD"
+  },
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

@@ -1,3 +1,15 @@
+## Migrate invoice fixtures without admitting protected sources
+
+Apply only the exact separately approved392 source-author patch on its isolated
+branch. Then retain original client/native assertions while supplying explicitly
+controlled Auth, connection identity and original request-hash fixtures; mutation
+counters and lost-ACK faults remain attached only to business mutation queries.
+Preserve historical392 proposal evidence with a test-baseline adapter that accepts
+only approved8f source identity. It grants no launch/source admission. Unit/PGlite
+simulation remains distinct from real native backend observations and genuine Auth.
+Keep source guards, SQL/grants, routes and all operational gates unchanged; prepare
+finite protected-source admission separately. Release1.0 NO-GO.
+
 ## Preserve caller ownership at invoice UNKNOWN reconciliation
 
 Prepare only a hash-bound unapplied client/caller proposal for Issue388. Reuse
