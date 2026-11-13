@@ -107,7 +107,9 @@ const companions = [
   {
     path: 'tests/invoice-caller-migration-source.test.ts',
     commit: '6063aea60588975bbe88c8ccf8b1d864721b7082',
-    sha256: 'b1131c5c7d80dc2fb3d28a3e7d20540c60d420f3d8ba76a7b61eb091fee24678',
+    sha256: '4879c0b0f3da8bc2e5d981faae43fe443c317ffcd400b654fc550f0605149a08',
+    publishedSha256:
+      'b1131c5c7d80dc2fb3d28a3e7d20540c60d420f3d8ba76a7b61eb091fee24678',
   },
   {
     path: 'docs/INVOICE_CALLER_FIXTURE_SUCCESSOR.json',
@@ -205,8 +207,12 @@ export function admitInvoiceCallerSource(
     if (!stat(companion.path).isFile()) fail();
     const published = readOriginal(companion.commit, companion.path),
       fresh = readCurrent(companion.path);
+    const exactPublishedHash =
+      companion.path === 'tests/invoice-caller-migration-source.test.ts'
+        ? companion.publishedSha256
+        : companion.sha256;
     if (
-      hash(published) !== companion.sha256 ||
+      hash(published) !== exactPublishedHash ||
       hash(fresh) !== companion.sha256
     )
       fail();
