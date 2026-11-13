@@ -26,6 +26,34 @@ const authors = {
     '2d39359299a091456cf47196cef6f3257dddec9d',
 };
 const nmi = 'tests/database/nmi-refund-unknown-composition.test.ts';
+const liveNmiAuthor = 'ae4b09265ccf3dfcac06f01eae6ff1d0f12bf48e';
+const liveNmiParent = 'c95ebab09c6a58959e131c543a1c0bc58dec245b';
+function verifyCurrentNmi(read = readFileSync) {
+  const bytes = git('show', `${liveNmiAuthor}:${nmi}`);
+  expect(hash(bytes)).toBe(
+    'd4087fd21bb1c446e5a22f43506a64a7b213918df714d69c831de1e9f37f971e',
+  );
+  expect(
+    git('show', '--no-patch', '--format=%P', liveNmiAuthor).toString().trim(),
+  ).toBe(liveNmiParent);
+  expect(git('ls-tree', liveNmiAuthor, '--', nmi).toString()).toMatch(
+    /^100644 blob [a-f0-9]{40}\t/,
+  );
+  expect(bytes.subarray(0, git('show', `${payments}:${nmi}`).length)).toEqual(
+    git('show', `${payments}:${nmi}`),
+  );
+  expect(
+    bytes.subarray(0, git('show', `${liveNmiParent}:${nmi}`).length),
+  ).toEqual(git('show', `${liveNmiParent}:${nmi}`));
+  expect(read(nmi)).toEqual(bytes);
+}
+// The immutable406 record still describes its original six cases. Retain that
+// read only after separately verifying the complete live12-case successor.
+const historicalCompositionRead = ((p: string) =>
+  p === nmi
+    ? git('show', `${payments}:${p}`)
+    : readFileSync(p)) as typeof readFileSync;
+
 const protectedPaths = [
   'server/invoices/commercial-draft-client.ts',
   'server/invoices/commercial-caller-connection.ts',
@@ -55,7 +83,8 @@ function evidence() {
   return JSON.parse(readFileSync(`${directory}/evidence.json`, 'utf8'));
 }
 // This is a source-composition check, never an admission switch or business port.
-function verify(record = evidence(), read = readFileSync) {
+function verify(record = evidence(), read = historicalCompositionRead) {
+  verifyCurrentNmi();
   expect(record.parent).toBe(invoice);
   expect(record.historicalLaunchBase).toBe(base);
   expect(record.classification).toBe(
@@ -134,8 +163,11 @@ it.each([...protectedPaths, nmi, ...ciPaths])(
     expect(() =>
       verify(evidence(), ((path: string) =>
         path === p
-          ? Buffer.concat([readFileSync(path), Buffer.from('\n// UNKNOWN')])
-          : readFileSync(path)) as typeof readFileSync),
+          ? Buffer.concat([
+              historicalCompositionRead(path),
+              Buffer.from('\n// UNKNOWN'),
+            ])
+          : historicalCompositionRead(path)) as typeof readFileSync),
     ).toThrow();
   },
 );
@@ -147,7 +179,7 @@ it('cannot rebind a source hash to qualify an unknown current client', () => {
     verify(record, ((p: string) =>
       p === protectedPaths[0]
         ? bytes
-        : readFileSync(p)) as typeof readFileSync),
+        : historicalCompositionRead(p)) as typeof readFileSync),
   ).toThrow();
 });
 it.each(['protectedPromotion', 'SQLInstallation'])(
@@ -163,7 +195,7 @@ it('rejects a changed promotion proposal without executing it', () => {
     verify(evidence(), ((p: string) =>
       p.endsWith('protected-sources.patch')
         ? Buffer.from('UNKNOWN PATCH')
-        : readFileSync(p)) as typeof readFileSync),
+        : historicalCompositionRead(p)) as typeof readFileSync),
   ).toThrow();
 });
 it('preserves the original financial/source records instead of rewriting their hashes', () => {
@@ -171,6 +203,19 @@ it('preserves the original financial/source records instead of rewriting their h
     verify(evidence(), ((p: string) =>
       p === immutable[0]
         ? Buffer.from('{}')
-        : readFileSync(p)) as typeof readFileSync),
+        : historicalCompositionRead(p)) as typeof readFileSync),
+  ).toThrow();
+});
+
+it('verifies the exact live NMI successor without replacing the original six-case source record', () => {
+  verifyCurrentNmi();
+});
+it('denies an unknown live NMI edit even when the historical fixture remains exact', () => {
+  expect(() =>
+    verifyCurrentNmi(((p: string) =>
+      Buffer.concat([
+        readFileSync(p),
+        Buffer.from('\n// UNKNOWN LIVE NMI'),
+      ])) as typeof readFileSync),
   ).toThrow();
 });

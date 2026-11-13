@@ -43,3 +43,37 @@ revocation, lost ACK/process loss/UNKNOWN and authorized read. No App route is w
 VAR/sandbox merchant bindings and actual NMI token/callback/settlement evidence require
 their own bounded approval, Saul2Paul first then Cunningham. None is granted here.
 Release1.0 NOT READY / NOT AUTHORIZED.
+
+## Current406 admission successor
+
+`qualify.mjs` reuses the actual reviewed H2a6 invoice source helper in disposable
+archives. Complete406 context qualifies for review only; applying just the five-file
+01ba diff to historical385 is denied because qualified legacy fixtures/records are
+missing. Unknown client/caller/fixture/helper/manifest rebinding, invented approval
+and changed patch are denied; unreviewed helper bytes never execute. Run:
+
+```sh
+npx vitest run tests/invoice-promotion-context.test.ts tests/c17-current-launch-preparation.test.ts
+```
+
+The current C17 overlay in `../c17-current-launch/` extracts immutable0e309 patch
+and d059 note from the existing reviewed375/378/379 lineage. It reproduces only the
+named original failure/proposed pass and preserves all canonical/history assertions.
+No future author is invented. First authorize the exact two-file C17 source author
+at an explicit reviewed parent; then independently review a checker proposal bound
+to that actual author SHA. No checker mutation is authorized by source authoring.
+
+The NMI12-case successor is exact ae4b092 (parent c95ebab); all original six/ten
+cases remain unchanged. Only a historical read port in the ordinary composition
+fixture retains old six-case assertions; current byte/hash/parent/mode proofs and
+live-edit rejection are separate. Sandbox readiness records the private per-company
+VAR/account/callback/statement requirements and the existing runner's missing
+customer token-reference/Auth/custody composition. Neither checklist nor approved
+merchant underwriting makes a single capture executable. No void adapter exists.
+
+Successor79unit/source,72native and6responsive cases pass in separate runs.
+C17 and full Foundation remain NO-GO. Customer-profile durable CAS also remains
+blocked in the protected canonical writer, not hidden by another local guard.
+D1 remaining names/separation, installed writer/bypass facts, independent D2/D3 and
+original A01–A12 are still required before exact target-bound genuine Auth/catalog
+preflight, SQL/grant acceptance or any request/receipt/staff-read operation.

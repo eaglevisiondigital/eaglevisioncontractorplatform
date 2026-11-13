@@ -1,3 +1,16 @@
+## Qualify protected proposals without turning preparation into admission
+
+Reuse exact406 and original C17 packages; prove full-context readiness, standalone
+promotion denial and unknown-source nonexecution offline. Import C17 checker only
+from its verified detached406 clone. No canonical protected author/checker change
+or historical record rewrite follows from a passing qualification. C17 M1/A1 author
+and its later SHA-bound checker decision remain distinct. Consolidate exact reviewed
+NMI cases in one successor; retain old source contracts through explicit historical
+read ports plus strong current proofs. Keep pinned launch documentation unchanged.
+Do not add another optional preflight-only profile editor for the protected raw
+customer-writer CAS defect. D1–D3, Auth, installed bypass inventory, custody/recovery,
+SQL and provider activation remain separate exact decisions. Release1.0 NO-GO.
+
 ## Prepare the caller/payment integration without promoting protected sources
 
 Compose only exact reviewed402 author bytes,398 NMI test lineage and403's ordinary

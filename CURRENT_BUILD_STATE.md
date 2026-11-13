@@ -1,3 +1,32 @@
+## Current406 admission qualification and unified NMI boundary successor
+
+One isolated descendant retains406 invoice/caller/checker/SQL/Auth bytes and its
+original records. New offline qualification enforces the complete immutable406
+context and rejects standalone use of the exact five-file01ba promotion diff;
+unknown source/helper/fixture/manifest rebinding or invented authority is denied.
+Existing C17 artifacts0e309/d059 are reused against406: named original1FAIL becomes
+1PASS only in a disposable clone (44 filtered each); current16TCB companions/import
+closure are verified before checker import, and downstream admission stays denied.
+Canonical C17 remains f9d; future author is null and exact author approval is open.
+
+Reviewed NMI author ae4b092 now contributes12native cases in this same candidate,
+including independent callback contention, settlement-only refund readiness and
+explicit declined-refund capacity. Original six/ten case prefixes remain exact.
+A named historical read port retains406's six-case record while separate live
+Git/hash/mode proofs bind all12current cases. The pinned first-contractor plan
+stays exact; its private VAR/NMI checkpoint extends only unprotected sandbox
+readiness. No customer credentials/bindings/accounts or provider calls occur.
+
+Actual successor unit/source79PASS, native72PASS/0skip/0errors and existing responsive
+release6PASS, with build/types/scoped lint/features25/design locks PASS. Counts are
+separate; all browser/transport fixtures remain synthetic. Prior406 full coverage
+is NO-GO: app5 held C17 assertion; app2 two explicit30s timeouts; app8 six explicit30s
+timeouts. Successful shards are retained; no budget or assertion is weakened.
+See [current decision evidence](proposals/launch-caller-payment-integration/successor.json).
+Protected promotion01ba, C17 author/checker, SQL/grants/routes, D1–D3/A01–A12,
+genuine Auth/custody/recovery and VAR/NMI acceptance remain separate and unaccepted.
+Saul2Paul first; Cunningham second with separate bindings. Release1.0 NO-GO.
+
 ## Bounded caller/payment launch-integration preparation
 
 Exact402 caller/checker author `461a9017b526dae9bc3a88577fd5ad5b1c71963e`
