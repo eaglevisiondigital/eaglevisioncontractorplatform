@@ -1,3 +1,4 @@
+import { proposalBaseline } from '../invoice-caller-fixture-migration/source-author-baseline.mjs';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
@@ -9,7 +10,6 @@ import {
   writeFileSync,
   rmSync,
   symlinkSync,
-  lstatSync,
 } from 'node:fs';
 import { resolve, join, dirname } from 'node:path';
 import { tmpdir, devNull } from 'node:os';
@@ -49,25 +49,14 @@ export function qualify({
     expected.patchSha256,
     'Exact reviewed patch required',
   );
-  try {
-    lstatSync(expected.callerPath);
-    throw Error('New canonical caller port must remain absent');
-  } catch (error) {
-    if (error.code !== 'ENOENT') throw error;
-  }
-  const before = readFileSync(expected.clientPath);
+  // Preserve the historical unapplied manifest. A separately verified source
+  // author may be active, but this fixture loader grants NO launch admission.
+  const baseline = proposalBaseline();
+  const before = baseline.original;
   assert.equal(
     hash(before),
     expected.beforeSha256,
-    'Canonical client remains original',
-  );
-  assert.deepEqual(
-    before,
-    execFileSync('git', [
-      '--no-replace-objects',
-      'show',
-      `${expected.parent}:${expected.clientPath}`,
-    ]),
+    'Original proposal source required',
   );
   assert.equal(
     hash(readFileSync('server/invoices/commercial-drafts.proposed.sql')),
@@ -188,9 +177,10 @@ export function qualify({
     candidate.CustomerBrokerAuth = load(
       join(scratch, 'server/customer/broker-auth.ts'),
     ).CustomerBrokerAuth;
-    assert.deepEqual(readFileSync(expected.clientPath), before);
+    assert.deepEqual(readFileSync(expected.clientPath), baseline.current);
     return {
       candidate,
+      activeSourceAuthor: baseline.activeSourceAuthor,
       client: client.toString(),
       caller: caller.toString(),
     };

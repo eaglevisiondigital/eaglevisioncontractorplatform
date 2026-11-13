@@ -1,6 +1,14 @@
 import { Client } from 'pg';
 import { readFileSync, readdirSync } from 'node:fs';
-import { beforeAll, beforeEach, afterAll, expect, it, vi } from 'vitest';
+import {
+  beforeAll,
+  beforeEach,
+  afterEach,
+  afterAll,
+  expect,
+  it,
+  vi,
+} from 'vitest';
 import { SandboxGateway } from '../../server/payments/sandbox';
 import { RestrictedSandboxStore } from '../../server/payments/control-store';
 import { ProviderControl } from '../../server/providers/control';
@@ -11,6 +19,11 @@ import {
   CommercialDraftClient,
   type CommercialDraft,
 } from '../../server/invoices/commercial-draft-client';
+import {
+  commercialCallerNativeFixture,
+  closeCommercialCallerNativeFixtures,
+  isCommercialDraftMutation,
+} from '../fixtures/commercial-caller-native';
 const db = createTestDatabase();
 // Observe both outcomes before any lock-release await. A late .rejects assertion
 // leaves the derived promise unhandled even when the database correctly denies.
@@ -233,6 +246,9 @@ beforeEach(async () => {
   }
   await login();
 });
+afterEach(async () => {
+  await closeCommercialCallerNativeFixtures(db);
+});
 afterAll(async () => {
   await reset();
   for (const table of [
@@ -431,20 +447,21 @@ it('actual TypeScript client creates/saves/reopens and reconciles lost ACK throu
   const c = companies[0],
     p = command();
   let lose = false;
+  const fixture = await commercialCallerNativeFixture(db, c);
   const port = {
     query: async <T extends Record<string, unknown>>(
       sql: string,
       params?: unknown[],
     ) => {
-      const r = await db.query<T>(sql, params);
-      if (lose) {
+      const r = await fixture.connection.query<T>(sql, params);
+      if (lose && isCommercialDraftMutation(sql)) {
         lose = false;
         throw Error('Synthetic ACK loss after real SQL commit');
       }
       return r;
     },
   };
-  const client = new CommercialDraftClient(port, c.org),
+  const client = new CommercialDraftClient(port, c.org, fixture.caller(port)),
     identity = {
       invoiceId: p.invoice,
       customerId: c.customer,
@@ -700,26 +717,26 @@ it.skipIf(!db.fork)(
       p = command();
     let dispatches = 0;
     let failureCode: unknown;
-    const client = new CommercialDraftClient(
-      {
-        query: async <T extends Record<string, unknown>>(
-          sql: string,
-          params?: unknown[],
-        ) => {
-          dispatches++;
-          try {
-            return await db.query<T>(sql, params);
-          } catch (error) {
+    const fixture = await commercialCallerNativeFixture(db, c);
+    const port = {
+      query: async <T extends Record<string, unknown>>(
+        sql: string,
+        params?: unknown[],
+      ) => {
+        if (isCommercialDraftMutation(sql)) dispatches++;
+        try {
+          return await fixture.connection.query<T>(sql, params);
+        } catch (error) {
+          if (isCommercialDraftMutation(sql))
             failureCode =
               error && typeof error === 'object' && 'code' in error
                 ? error.code
                 : null;
-            throw error;
-          }
-        },
+          throw error;
+        }
       },
-      c.org,
-    );
+    };
+    const client = new CommercialDraftClient(port, c.org, fixture.caller(port));
     const input = {
       invoiceId: p.invoice,
       customerId: c.customer,

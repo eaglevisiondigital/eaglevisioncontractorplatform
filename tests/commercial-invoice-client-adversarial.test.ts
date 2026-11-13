@@ -1,3 +1,4 @@
+import { unitCommercialCaller } from './fixtures/commercial-caller-unit';
 import { expect, it, vi } from 'vitest';
 import {
   CommercialDraftClient,
@@ -45,9 +46,15 @@ function fixture() {
     },
   };
   const query = vi.fn(async () => ({ rows: [{ result: value }] }));
-  const client = new CommercialDraftClient(
+  const bound = unitCommercialCaller(
     { query } as GatewaySql,
+    value.receipt.actorId,
+    'b'.repeat(64),
+  );
+  const client = new CommercialDraftClient(
+    bound.sql,
     organizationId,
+    bound.caller,
   );
   return { client, write, value, query };
 }

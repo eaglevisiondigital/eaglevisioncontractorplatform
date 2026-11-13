@@ -1,3 +1,22 @@
+## Exact invoice caller source author and legacy fixture migration
+
+Owner approved only the exact392 two-file source author; independent Git review
+confirmed8f498f2 matches the original bcf2 patch and94aa/3d89 resulting sources.
+This successor migrates the original28 client cases and two existing native-client
+callsites to the trusted caller contract, preserving every original assertion,
+case and skip/budget boundary. Five affected native suites60PASS and independent
+60PASS; original28+13migration guards independently41PASS. The historical36-case
+proposal still loads only its original baseline beside exact approved8f; its
+manifest/patch stay immutable and active-author status is explicit.
+
+Unit/PGlite inspections are marked simulations; native tests use real restricted
+LOGIN/backend identity and a separate current Auth-row fixture observer. Genuine
+hosted Auth/MFA, independent durability/recovery and operations remain unverified.
+Original launch source guards/manifests remain unchanged and reject this author
+until a separate exact finite admission is approved. SQL is unapplied/unwired.
+See [fixture source evidence](docs/INVOICE_CALLER_FIXTURE_SUCCESSOR.json).
+Saul 2 Paul first; Cunningham second. D1–D3/A01–A12/NMI remain open. Release1.0 NO-GO.
+
 ## Caller-bound invoice reconciliation · unapplied candidate
 
 Issue388 now has an independently reviewed two-file source proposal, not installed
