@@ -1,4 +1,9 @@
 import type { GatewaySql } from '../payments/postgres-store';
+import {
+  CommercialCallerConnection,
+  runWithCommercialCaller,
+  type OriginalDraftAttempt,
+} from './commercial-caller-connection';
 
 // Unwired source proposal. The supplied connection must independently enforce the
 // reviewed SQL authority; these caller expectations never authenticate an actor.
@@ -67,10 +72,14 @@ export class CommercialDraftUnknownError extends Error {
  */
 export class CommercialDraftClient {
   private readonly attempted = new Set<string>();
-  private readonly uncertain = new Map<string, DraftWrite>();
+  private readonly uncertain = new Map<
+    string,
+    { write: DraftWrite; attempt?: OriginalDraftAttempt }
+  >();
   constructor(
     private readonly sql: GatewaySql,
     private readonly organizationId: string,
+    private readonly caller?: CommercialCallerConnection,
   ) {
     if (!isId(organizationId)) throw Error('Exact organization required');
   }
@@ -162,56 +171,72 @@ export class CommercialDraftClient {
     )
       throw Error('Valid draft command required');
     if (
-      this.attempted.has(v.commandId) ||
-      this.uncertain.has(v.invoiceId) ||
+      this.attempted.has(v.commandId.toLowerCase()) ||
+      this.uncertain.has(v.invoiceId.toLowerCase()) ||
       [...this.uncertain.values()].some(
-        (held) => held.sourceVersionId === v.sourceVersionId,
+        (held) =>
+          held.write.sourceVersionId.toLowerCase() ===
+          v.sourceVersionId.toLowerCase(),
       )
     )
       throw new CommercialDraftUnknownError();
     // Reserve before any await. Even a thrown query may have committed remotely.
-    this.attempted.add(v.commandId);
-    this.uncertain.set(v.invoiceId, v);
+    this.attempted.add(v.commandId.toLowerCase());
+    const held: { write: DraftWrite; attempt?: OriginalDraftAttempt } = {
+      write: v,
+    };
+    this.uncertain.set(v.invoiceId.toLowerCase(), held);
     try {
-      const r = await this.sql.query<{ result: unknown }>(
-        action === 'create'
-          ? 'select private.commercial_invoice_draft_create($1::uuid,$2::uuid,$3::uuid,$4::uuid,$5::uuid,$6::uuid,$7::text,$8::text) result'
-          : 'select private.commercial_invoice_draft_save($1::uuid,$2::uuid,$3::uuid,$4::integer,$5::uuid,$6::uuid,$7::uuid,$8::text,$9::text) result',
-        action === 'create'
-          ? [
-              this.organizationId,
-              v.invoiceId,
-              v.commandId,
-              v.customerId,
-              v.locationId,
-              v.sourceVersionId,
-              v.title,
-              v.memo,
-            ]
-          : [
-              this.organizationId,
-              v.invoiceId,
-              v.commandId,
-              v.expectedRevision,
-              v.customerId,
-              v.locationId,
-              v.sourceVersionId,
-              v.title,
-              v.memo,
-            ],
-      );
-      if (r.rows.length !== 1) throw new CommercialDraftUnknownError();
-      const draft = this.decode(r.rows[0].result, v);
-      if (
-        !draft.sourceCurrent ||
-        draft.receipt.commandId !== v.commandId ||
-        draft.revision !== v.expectedRevision + 1 ||
-        draft.title !== v.title ||
-        draft.memo !== v.memo
-      )
-        throw new CommercialDraftUnknownError();
-      this.uncertain.delete(v.invoiceId);
-      return draft;
+      if (!this.caller) throw new CommercialDraftUnknownError();
+      return await runWithCommercialCaller(
+        this.caller,
+        this.sql,
+        async (context) => {
+          held.attempt = await context.bind(this.organizationId, v);
+          const r = await context.query<{ result: unknown }>(
+            action === 'create'
+              ? 'select private.commercial_invoice_draft_create($1::uuid,$2::uuid,$3::uuid,$4::uuid,$5::uuid,$6::uuid,$7::text,$8::text) result'
+              : 'select private.commercial_invoice_draft_save($1::uuid,$2::uuid,$3::uuid,$4::integer,$5::uuid,$6::uuid,$7::uuid,$8::text,$9::text) result',
+            action === 'create'
+              ? [
+                  this.organizationId,
+                  v.invoiceId,
+                  v.commandId,
+                  v.customerId,
+                  v.locationId,
+                  v.sourceVersionId,
+                  v.title,
+                  v.memo,
+                ]
+              : [
+                  this.organizationId,
+                  v.invoiceId,
+                  v.commandId,
+                  v.expectedRevision,
+                  v.customerId,
+                  v.locationId,
+                  v.sourceVersionId,
+                  v.title,
+                  v.memo,
+                ],
+          );
+          if (r.rows.length !== 1) throw new CommercialDraftUnknownError();
+          const draft = this.decode(r.rows[0].result, v);
+          if (
+            !context.matches(draft, held.attempt) ||
+            !draft.sourceCurrent ||
+            draft.receipt.commandId !== v.commandId ||
+            draft.revision !== v.expectedRevision + 1 ||
+            draft.title !== v.title ||
+            draft.memo !== v.memo
+          )
+            throw new CommercialDraftUnknownError();
+          return draft;
+        },
+      ).then((draft) => {
+        this.uncertain.delete(v.invoiceId.toLowerCase());
+        return draft;
+      });
     } catch {
       throw new CommercialDraftUnknownError();
     }
@@ -227,7 +252,7 @@ export class CommercialDraftClient {
     identity(v);
     if (commandId !== null && !isId(commandId))
       throw Error('Exact command required');
-    const original = this.uncertain.get(v.invoiceId);
+    const original = this.uncertain.get(v.invoiceId.toLowerCase())?.write;
     if (
       original &&
       (original.customerId !== v.customerId ||
@@ -236,24 +261,42 @@ export class CommercialDraftClient {
     )
       throw new CommercialDraftUnknownError();
     try {
-      const r = await this.sql.query<{ result: unknown }>(
-        'select private.commercial_invoice_draft_read($1::uuid,$2::uuid,$3::uuid) result',
-        [this.organizationId, v.invoiceId, commandId],
-      );
-      if (r.rows.length !== 1) throw new CommercialDraftUnknownError();
-      const draft = this.decode(r.rows[0].result, v);
-      if (commandId !== null && draft.receipt.commandId !== commandId)
-        throw new CommercialDraftUnknownError();
-      const held = this.uncertain.get(v.invoiceId);
-      if (
-        held &&
-        commandId === held.commandId &&
-        draft.revision === held.expectedRevision + 1 &&
-        draft.title === held.title &&
-        draft.memo === held.memo
-      )
-        this.uncertain.delete(v.invoiceId);
-      return draft;
+      if (!this.caller) throw new CommercialDraftUnknownError();
+      const held = this.uncertain.get(v.invoiceId.toLowerCase());
+      return await runWithCommercialCaller(
+        this.caller,
+        this.sql,
+        async (context) => {
+          if (held && (!held.attempt || !context.sameCaller(held.attempt)))
+            throw new CommercialDraftUnknownError();
+          const r = await context.query<{ result: unknown }>(
+            'select private.commercial_invoice_draft_read($1::uuid,$2::uuid,$3::uuid) result',
+            [this.organizationId, v.invoiceId, commandId],
+          );
+          if (r.rows.length !== 1) throw new CommercialDraftUnknownError();
+          const draft = this.decode(r.rows[0].result, v);
+          if (
+            !context.owns(draft) ||
+            (commandId !== null && draft.receipt.commandId !== commandId)
+          )
+            throw new CommercialDraftUnknownError();
+          // This client returns only the authenticated actor's receipt.
+          // Direct SQL staff-read permissions remain unchanged.
+          const reconciled =
+            !!held &&
+            commandId === held.write.commandId &&
+            context.matches(draft, held.attempt!) &&
+            draft.revision === held.write.expectedRevision + 1 &&
+            draft.title === held.write.title &&
+            draft.memo === held.write.memo;
+          if (held && commandId === held.write.commandId && !reconciled)
+            throw new CommercialDraftUnknownError();
+          return { draft, reconciled };
+        },
+      ).then(({ draft, reconciled }) => {
+        if (reconciled) this.uncertain.delete(v.invoiceId.toLowerCase());
+        return draft;
+      });
     } catch {
       throw new CommercialDraftUnknownError();
     }
