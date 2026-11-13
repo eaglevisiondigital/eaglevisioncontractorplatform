@@ -56,7 +56,18 @@ function verify(readCurrent = current, readOriginal = original) {
       expect(hash(readOriginal(fix.baseline, source.path))).toBe(
         source.currentSha256,
       );
-      expect(hash(readCurrent(source.path))).toBe(fix.successorSha256);
+      const next = JSON.parse(
+        readFileSync('docs/LAUNCH_CURRENT_SESSION_SUCCESSOR.json', 'utf8'),
+      );
+      expect(next.baseline).toBe('bcaf72deeb45417a7a9c01dd1b0a9380be291666');
+      expect(next.classification).toBe(
+        'NATIVE_SESSION_AUTHORITY_COVERAGE_ONLY',
+      );
+      expect(next.parentTestSha256).toBe(fix.successorSha256);
+      expect(hash(readOriginal(next.baseline, source.path))).toBe(
+        fix.successorSha256,
+      );
+      expect(hash(readCurrent(source.path))).toBe(next.currentTestSha256);
     } else expect(hash(readCurrent(source.path))).toBe(source.currentSha256);
     if (source.rootTestDelta) {
       expect(deltas[source.path]).toBe(source.rootTestDelta);
