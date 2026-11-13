@@ -1,3 +1,14 @@
+## Preserve caller ownership at invoice UNKNOWN reconciliation
+
+Prepare only a hash-bound unapplied client/caller proposal for Issue388. Reuse
+existing SDK opaque Auth proof and unchanged native SQL, capture original caller,
+connection and complete request hash, then require exact current caller/receipt
+before releasing any hold. No browser actor assertion or SQLSTATE implies success.
+Independent36-unit/10-native proof does not grant protected source admission,
+legacy fixture migration, genuine Auth, external custody or hosted execution.
+The exact source-author decision is separate from subsequent checker/test
+admission and D1–D3/A01–A12/recovery/NMI acceptance. Release1.0 NO-GO.
+
 ## Isolate historical test fixtures from current successor proof
 
 Correct only four ordinary source-test fixtures; historical snapshot entries are

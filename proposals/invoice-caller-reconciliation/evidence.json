@@ -1,0 +1,16 @@
+{
+  "classification": "UNAPPLIED_OFFLINE_SOURCE_PROPOSAL",
+  "parent": "af36a27e34b77bfef3700d7cd87fdb39c4dc50d5",
+  "clientPath": "server/invoices/commercial-draft-client.ts",
+  "beforeSha256": "12c1eb303f10f8cb9e6c5f765839419f55e4b6cfd16c6c6ef9f8812ccbb76194",
+  "proposedSha256": "94aa164e60c780cb53f8658b16c57bc9c17da5d9469c73f9d73cab627dcea694",
+  "callerPath": "server/invoices/commercial-caller-connection.ts",
+  "callerSha256": "3d892a8ae7757a6f480fde4638f17f4b642436ba728446dfd84811590be0aeed",
+  "patchSha256": "bcf2dbf4e967007cab60d81b0c7599372ca55cf69b1c52ecaed320b0062aa034",
+  "sqlSha256": "da35d098727eff68ae7905c3709d6982cf89560cae538923f5d7e570dab0306e",
+  "authSha256": "709018249d889504b860e4cf0f4caa5cbdd1c2b04f58c53226f4499c68fd46d6",
+  "canonicalSourceChanged": false,
+  "admissionAuthorized": false,
+  "hostedAcceptance": "NOT_RUN",
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}
