@@ -1,0 +1,34 @@
+{
+  "classification": "UNAPPLIED_CYCLE9_HELPER428_ADMISSION",
+  "parent": "a1b701a42ff838d3364c611794000b6dc533e27f",
+  "runtimeAuthor": "c50ce4521fbc264276734a9f8909b525c9a7c2f8",
+  "historicalProposal": "608ce8b7071a555440bf1f7dccfddec9473c661a",
+  "patchSha256": "274c02512df50c1a751fec124db3e8e8c22474c2286a0e70e734c76f91a8c5be",
+  "checker": {
+    "path": "scripts/check-cycle9-integrity.mjs",
+    "beforeSha256": "1faf35bbe36cfa5ca543e568970dafd7d90b2a72c578126d572baa73829606c2",
+    "proposedSha256": "484a6cf6b7282324f86e90e90d4ce947ba4eb722afa6ef33a6a2e8a03e5fff68"
+  },
+  "unchanged": [
+    {
+      "path": "scripts/operating-source-signature-admission.mjs",
+      "sha256": "38fd3d784b10dd634f6b03a5995a4ce4392eb2924865349d1414328701113978"
+    },
+    {
+      "path": "src/lib/workflows/operating-center-runtime.ts",
+      "sha256": "a789309d7f8710f2e3150f4cbc8f8acc5aee9c99633c7611e503db089bcd2544"
+    },
+    {
+      "path": "docs/program/CYCLE9_DELIVERY_INDEX.json",
+      "sha256": "c5418e0732eb4115ff613776919a22f2321ec80bdf84d59836f27b92bb6766eb"
+    },
+    {
+      "path": "scripts/check-cycle24.mjs",
+      "sha256": "4ed8baec4e1b7abc3f3ff86cc88c590b3497c3bfb7ff2ac12fcc1c7e2f71562f"
+    }
+  ],
+  "historicalRuntimeSha256": "7a5272ae344400714dea1efe727a40c19a10c96ccfdf70f7321e127488bbd239",
+  "canonicalChanged": false,
+  "admissionAuthorized": false,
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}
