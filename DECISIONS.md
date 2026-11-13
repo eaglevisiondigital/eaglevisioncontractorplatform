@@ -2910,3 +2910,12 @@ historical read of exactbd8 only. Fresh five-file and lineage-mode checks preced
 those reads. Current closeout acceptance uses separate unwrapped real APIs; unknown
 source never falls back to historical success. The strict27 workflow and all source
 checks/historical pins remain unchanged. This fixture fix grants no operational authority.
+
+## Keep signed-callback launch composition finite and separately authorized
+
+Propose only the byte-exact415 reader/unit controls and420 native acceptance file
+against424, excluding both authors' notes and unrelated work. Verify actual composed
+ACK/C17/invoice consumers instead of changing a source guard preemptively. Preserve
+raw HMAC/merchant-before-decode checks, original wire bounds, UNKNOWN/no-replay and
+inbox-only effects. Qualify the package in both known source contexts; no test or
+metadata can confer integration, hosted, financial or release authority.

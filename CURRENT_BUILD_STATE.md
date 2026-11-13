@@ -3565,3 +3565,14 @@ admitted five-file closeout and unchanged checker TCB; the actual consumer remai
 unwrapped. Six separate live cases prove current76ee source, immutable metadata and
 historical/unknown denial. Parent1FAIL/26PASS; corrected33PASS. No checker, manifest,
 protected-source, runtime, SQL or workflow changed. Release1.0 NOT READY / NOT AUTHORIZED.
+
+## Unapplied signed-callback launch composition
+
+A finite three-file proposal composes only415's strict signed-callback reader and
+unit fixture plus420's six native custody cases into exact424. Disposable composed
+source passes actual ACK/C17 consumers and all eight invoice guards without source
+pin changes. Historical malformed-wire regressions reproduce6FAIL; proposed47 unit
+and6 native cases PASS. Seven proposal controls are separately exercised in before
+and full proposed source/package contexts. Canonical three targets remain unchanged.
+No guard, SQL, Auth, provider, merchant or launch activation is authorized by this
+preparation. Exact owner integration approval remains required; Release1.0 NO-GO.
