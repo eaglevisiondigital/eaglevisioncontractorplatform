@@ -1,0 +1,38 @@
+{
+  "baseline": "78cf1d3eb0ce37862a7f34d727e45e7ccb6417ad",
+  "scope": "UNAPPLIED_PROTECTED_TEST_CORRECTION",
+  "test": "Cycle16 closeout preserves child cancellations separately from actual successful combined-source coverage",
+  "baselineResult": {
+    "failed": 1,
+    "filtered": 44
+  },
+  "proposedResult": {
+    "passed": 1,
+    "filtered": 44
+  },
+  "oldFieldHash": "6fcaea74f19b422424e0b562d91fb94e1d9654b0598b20c6551d3ba405c5410d",
+  "reviewedCurrentFieldHash": "4c6252aec56fa35bd530d46a2c663635ed8f1cb366a2502f7fec5632ac5a39bd",
+  "protectedTestSha256": "f9d7a16d29cebb66070aabbd85ccdc10c09bce2eadeb2e70c525e0749a0a0089",
+  "reviewedTestAuthor": "bd8f150c1a347fd172cf5922d67e2664af59f14b",
+  "proposedTestSha256": "46747ffb4188b925fa2a64250be069a32e126fc72befac8918028f7594840d9a",
+  "patchSha256": "0e309234f1186dcaeac6a6a2234fe825526666b9efb1016df405efeb382a297a",
+  "barrier": "scripts/v1-c17-inventory-source.mjs admitC17InventorySuccessor requires exact current test bytes from bd8f150c1a347fd172cf5922d67e2664af59f14b; rejects proposal with Complete exact current C17 test/doc bundle required. Called by scripts/cycle25-source-lineage.mjs through original C17 compatibility.",
+  "checks": ["Scoped ESLint PASS", "TypeScript noEmit PASS", "Prettier PASS"],
+  "requirements": [
+    "Separate exact finite successor source-admission approval; retain original b947/bd8f metadata, reviewed Field d977 full bundle and unknown-edit rejection.",
+    "No blanket hash allowance, runtime change, timeout change, historical failure deletion or Foundation success claim."
+  ],
+  "patch": "proposals/c17-field-closeout/correction.patch",
+  "existingValidator": "scripts/v1-field-source-admission.mjs#validateFieldPublishedSource",
+  "originalPackage": "docs/program/CYCLE16_DELIVERY_INDEX.json packages[draft_pr=112]",
+  "negativeEvidence": [
+    "Named proposed test rejects appended unknown Field bytes through unchanged validator.",
+    "Unchanged downstream admitC17InventorySuccessor rejects proposed C17 test bytes: Complete exact current C17 test/doc bundle required."
+  ],
+  "installedProtectedChanges": [],
+  "runtimeChanges": [],
+  "budgetChanges": [],
+  "otherFoundationFailureMarkers": "UNCLASSIFIED_NOT_RERUN",
+  "admission": "BLOCKED_REQUIRES_EXACT_FINITE_SUCCESSOR_AUTHORIZATION",
+  "foundationAcceptance": "NOT_ESTABLISHED"
+}
