@@ -1,0 +1,368 @@
+{
+  "classification": "UNAPPLIED_EXACT426_LOCAL_QUALIFICATION_NOT_HOSTED_ACCEPTANCE",
+  "source": "e6b437e1e4b8f72a057207b29923deb8eacd1d18",
+  "proposalPatch": {
+    "source": "e6b437e1e4b8f72a057207b29923deb8eacd1d18",
+    "patchSha256": "1756936f00d360d47789e467bb1c12272fb7439d2034ed8c230f50dcf0196376",
+    "exactAfter": {
+      "src/lib/workflows/operating-center-runtime.ts": "a789309d7f8710f2e3150f4cbc8f8acc5aee9c99633c7611e503db089bcd2544",
+      "scripts/operating-source-signature-admission.mjs": "38fd3d784b10dd634f6b03a5995a4ce4392eb2924865349d1414328701113978",
+      "scripts/check-cycle9-integrity.mjs": "484a6cf6b7282324f86e90e90d4ce947ba4eb722afa6ef33a6a2e8a03e5fff68",
+      "scripts/check-cycle24.mjs": "4f95b11e4e1d45186c5607f1b0773cc379e1901d99f7944ce907bfdef5a9a68d"
+    },
+    "canonicalChanges": false,
+    "sourcePromotionAuthorized": false,
+    "release": "NO_GO"
+  },
+  "comparisons": [
+    {
+      "classification": "CONTROLLED_SYNTHETIC_COMPARISON_NOT_OPERATIONAL_CLOCK_OR_HOST_CAUSE",
+      "context": "e6b437e1e4b8f72a057207b29923deb8eacd1d18",
+      "scenario": "c33-material",
+      "casePath": "tests/cycle33-v1-finance-owner-integration.test.ts",
+      "title": "brand 2: exact recorded material and approved unposted time refresh Finance and Owner without inventing invoice or labor coverage",
+      "caseSha256": "470e92e63a6648b2242ee22f42757dbd5557b8b54c90999125c845fef88515f7",
+      "setupSha256": "aa0ffd16effa462d57db44179589cc5ec59d7ea0e6d6675124b930dbc338d599",
+      "configSha256": "77eb2d8ecdcfedae20ca59a0c5d2689f3bc843e6394612c49c2dbaef4cbcccff",
+      "originalCaseBudgetMs": 30000,
+      "subprocessOuterWallMs": 45000,
+      "maxWorkers": 1,
+      "reports": [
+        {
+          "variant": "before",
+          "passed": 1,
+          "failed": 0,
+          "filtered": 17,
+          "durationMs": 14642.89125,
+          "runtimeSha256": "7a5272ae344400714dea1efe727a40c19a10c96ccfdf70f7321e127488bbd239",
+          "input": {
+            "seed": "performance424-controlled-input-v1",
+            "clock": "2026-11-13T12:00:00.000Z",
+            "uuidCount": 192,
+            "uuidStreamSha256": "3ea364b844898c942d623e80db6ec2dff650c42e28fa28368b41d5c1186217c6",
+            "outputCaptures": 1,
+            "outputIdsSha256": "885710be068e4f5cd399891370e282aa1244672969e612378dd723e28cbd7840",
+            "inputSignature": "4fce5f3aeaf696a12a7ef2e45b128c80da79636f60addca1dede2571da220602"
+          }
+        },
+        {
+          "variant": "after",
+          "passed": 1,
+          "failed": 0,
+          "filtered": 17,
+          "durationMs": 13080.9635,
+          "runtimeSha256": "a789309d7f8710f2e3150f4cbc8f8acc5aee9c99633c7611e503db089bcd2544",
+          "input": {
+            "seed": "performance424-controlled-input-v1",
+            "clock": "2026-11-13T12:00:00.000Z",
+            "uuidCount": 192,
+            "uuidStreamSha256": "3ea364b844898c942d623e80db6ec2dff650c42e28fa28368b41d5c1186217c6",
+            "outputCaptures": 1,
+            "outputIdsSha256": "885710be068e4f5cd399891370e282aa1244672969e612378dd723e28cbd7840",
+            "inputSignature": "4fce5f3aeaf696a12a7ef2e45b128c80da79636f60addca1dede2571da220602"
+          }
+        }
+      ],
+      "canonicalChanges": false,
+      "limits": [
+        "One local before/after pair per title is not a portable or statistical performance guarantee.",
+        "Only Date is fixed; performance and test timeout timers remain real.",
+        "Original case bodies and assertions are unchanged; controlled clock is not expiry or hosted Auth acceptance.",
+        "The previously accepted3045 differential/security cases are reused, not rerun."
+      ],
+      "reusedHarness": "b95d2871c3ba768db288350f5bd6311953014e2e",
+      "adaptedPayloadHashes": {
+        "evidence.json": "a3fa1f8790419a59e0553f2ea44f2208efccb0dadfbe977ceda64cd1e2d25426",
+        "qualify.mjs": "7ab381b9cff919e4eeb854ba69c9346625525f74b3f76dd3a578e0eef607fef0",
+        "measure.mjs": "04249f3ada667a26b5f4a142e5a99a24362c41c0bbce68e4a00bde08663acfff",
+        "inputs.fixture.ts": "aa0ffd16effa462d57db44179589cc5ec59d7ea0e6d6675124b930dbc338d599",
+        "regress.mjs": "8ced5bdf0d38b199a3d6bdc169a40ef47f2d6daedae890a676a796b6d5e94e6e",
+        "hosted-ten.json": "aecf660dfed4bdea0b3bf7ebff6e887129795130e0db46230daca83f978c5d55"
+      },
+      "sourcePromotionAuthorized": false
+    },
+    {
+      "classification": "CONTROLLED_SYNTHETIC_COMPARISON_NOT_OPERATIONAL_CLOCK_OR_HOST_CAUSE",
+      "context": "e6b437e1e4b8f72a057207b29923deb8eacd1d18",
+      "scenario": "c29-closed",
+      "casePath": "tests/cycle29-service-continuity.test.ts",
+      "title": "brand 0: closed intake review retains exact published history without completing work or renewing its one-use action",
+      "caseSha256": "006ccad222c10d57b6864a6c294f30f0a49b6a148028699323aa8a8758934687",
+      "setupSha256": "aa0ffd16effa462d57db44179589cc5ec59d7ea0e6d6675124b930dbc338d599",
+      "configSha256": "77eb2d8ecdcfedae20ca59a0c5d2689f3bc843e6394612c49c2dbaef4cbcccff",
+      "originalCaseBudgetMs": 30000,
+      "subprocessOuterWallMs": 45000,
+      "maxWorkers": 1,
+      "reports": [
+        {
+          "variant": "before",
+          "passed": 1,
+          "failed": 0,
+          "filtered": 5,
+          "durationMs": 10713.607082999999,
+          "runtimeSha256": "7a5272ae344400714dea1efe727a40c19a10c96ccfdf70f7321e127488bbd239",
+          "input": {
+            "seed": "performance424-controlled-input-v1",
+            "clock": "2026-11-13T12:00:00.000Z",
+            "uuidCount": 157,
+            "uuidStreamSha256": "bf502e3232c2cda1d618282d81190f42729eb04f8adbd944b8cff9f08b4744cb",
+            "outputCaptures": 1,
+            "outputIdsSha256": "7e9aed4336f6165dac1c1a1bf0a3f78ec8612650b10a5a7c24a97f6f8fc62e9d",
+            "inputSignature": "efb18f93ccf3cf9604ab0890166e96c3fdd7b41550841013d444e90996b94526"
+          }
+        },
+        {
+          "variant": "after",
+          "passed": 1,
+          "failed": 0,
+          "filtered": 5,
+          "durationMs": 8714.264084,
+          "runtimeSha256": "a789309d7f8710f2e3150f4cbc8f8acc5aee9c99633c7611e503db089bcd2544",
+          "input": {
+            "seed": "performance424-controlled-input-v1",
+            "clock": "2026-11-13T12:00:00.000Z",
+            "uuidCount": 157,
+            "uuidStreamSha256": "bf502e3232c2cda1d618282d81190f42729eb04f8adbd944b8cff9f08b4744cb",
+            "outputCaptures": 1,
+            "outputIdsSha256": "7e9aed4336f6165dac1c1a1bf0a3f78ec8612650b10a5a7c24a97f6f8fc62e9d",
+            "inputSignature": "efb18f93ccf3cf9604ab0890166e96c3fdd7b41550841013d444e90996b94526"
+          }
+        }
+      ],
+      "canonicalChanges": false,
+      "limits": [
+        "One local before/after pair per title is not a portable or statistical performance guarantee.",
+        "Only Date is fixed; performance and test timeout timers remain real.",
+        "Original case bodies and assertions are unchanged; controlled clock is not expiry or hosted Auth acceptance.",
+        "The previously accepted3045 differential/security cases are reused, not rerun."
+      ],
+      "reusedHarness": "b95d2871c3ba768db288350f5bd6311953014e2e",
+      "adaptedPayloadHashes": {
+        "evidence.json": "a3fa1f8790419a59e0553f2ea44f2208efccb0dadfbe977ceda64cd1e2d25426",
+        "qualify.mjs": "7ab381b9cff919e4eeb854ba69c9346625525f74b3f76dd3a578e0eef607fef0",
+        "measure.mjs": "04249f3ada667a26b5f4a142e5a99a24362c41c0bbce68e4a00bde08663acfff",
+        "inputs.fixture.ts": "aa0ffd16effa462d57db44179589cc5ec59d7ea0e6d6675124b930dbc338d599",
+        "regress.mjs": "8ced5bdf0d38b199a3d6bdc169a40ef47f2d6daedae890a676a796b6d5e94e6e",
+        "hosted-ten.json": "aecf660dfed4bdea0b3bf7ebff6e887129795130e0db46230daca83f978c5d55"
+      },
+      "sourcePromotionAuthorized": false
+    }
+  ],
+  "naturalOriginalEighteen": {
+    "context": "e6b437e1e4b8f72a057207b29923deb8eacd1d18",
+    "sourceAuthor": "c50ce4521fbc264276734a9f8909b525c9a7c2f8",
+    "hostedRun": 43503518052,
+    "targetSha256": "aecf660dfed4bdea0b3bf7ebff6e887129795130e0db46230daca83f978c5d55",
+    "sourceHashes": {
+      "tests/cycle29-service-continuity.test.ts": "006ccad222c10d57b6864a6c294f30f0a49b6a148028699323aa8a8758934687",
+      "tests/cycle31-owner-navigation-runtime.test.ts": "43a4f709ffc4309407bd36af34439246f38b842ebf874f2dfa7957f62340f5c9",
+      "tests/cycle18-independent-integration-review.test.ts": "a21b987039f312f19bf103308f0fbeac26f72cc97f8a8607937b86b57d838217",
+      "tests/cycle23-service-source-review.test.ts": "f15405b03db73a18426dabd66eb6cd563d0db919f64b084b1f030845849cc6b6",
+      "tests/cycle25-owner-action-continuity.test.ts": "1825c40c4884f9203c337dd3d9a94e4458468b1853e43905881e1e53ef78b78d",
+      "tests/cycle33-owner-refresh-access-continuity.test.ts": "4a43d0b64d5206480bf044049b2dde0aac6671bc569a4d284b069969de0cf016",
+      "tests/cycle33-v1-finance-owner-integration.test.ts": "470e92e63a6648b2242ee22f42757dbd5557b8b54c90999125c845fef88515f7"
+    },
+    "configHash": "0fdc8ac3b8d922c2229a25d67d0b42ab3c895489bfc7ee514aae0c78853bf48d",
+    "noAddedClockOrUUIDControl": true,
+    "maxWorkers": "ORIGINAL_CONFIG_4",
+    "originalTestAndHookBudgetMs": 30000,
+    "subprocessGroupWallMs": 180000,
+    "passed": 18,
+    "failed": 0,
+    "filteredOrDeclaredSkipped": 185,
+    "cases": [
+      {
+        "name": "finance: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay",
+        "status": "passed",
+        "durationMs": 13397.494792
+      },
+      {
+        "name": "finance: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay",
+        "status": "passed",
+        "durationMs": 13199.823625
+      },
+      {
+        "name": "brand 2 publication appends a version without rewriting the original report or changing its job",
+        "status": "passed",
+        "durationMs": 9933.265540999999
+      },
+      {
+        "name": "Cycle25 original owner action refresh continuity brand 2 exact unchanged selection survives refresh as presentation requiring fresh verification",
+        "status": "passed",
+        "durationMs": 10245.193334
+      },
+      {
+        "name": "Cycle25 original owner action refresh continuity brand 2 actual recorded cost change clears a same-key selected action without inventing completion",
+        "status": "passed",
+        "durationMs": 10010.995541999999
+      },
+      {
+        "name": "brand 0: closed intake review retains exact published history without completing work or renewing its one-use action",
+        "status": "passed",
+        "durationMs": 9110.069292
+      },
+      {
+        "name": "brand 2 continuation retains fresh original guards and exact one-use callback without repeating its immediate child navigation check",
+        "status": "passed",
+        "durationMs": 11005.0335
+      },
+      {
+        "name": "brand 0: copied handles, another job and another company never substitute for the earlier authorized context",
+        "status": "passed",
+        "durationMs": 12609.435207999999
+      },
+      {
+        "name": "brand 0: revised native visit disappearance stays UNKNOWN without source replacement or completion",
+        "status": "passed",
+        "durationMs": 9079.936624999998
+      },
+      {
+        "name": "brand 0: exact recorded material and approved unposted time refresh Finance and Owner without inventing invoice or labor coverage",
+        "status": "passed",
+        "durationMs": 9968.788125000001
+      },
+      {
+        "name": "brand 0: same-property other jobs, copied handles and another company cannot substitute Finance or Owner sources",
+        "status": "passed",
+        "durationMs": 13066.746625000002
+      },
+      {
+        "name": "brand 0: later canonical forecast withholds stale Finance rows and inspected Owner navigation without resetting UNKNOWN",
+        "status": "passed",
+        "durationMs": 6246.130333999998
+      },
+      {
+        "name": "brand 1: exact recorded material and approved unposted time refresh Finance and Owner without inventing invoice or labor coverage",
+        "status": "passed",
+        "durationMs": 9689.857666
+      },
+      {
+        "name": "brand 1: same-property other jobs, copied handles and another company cannot substitute Finance or Owner sources",
+        "status": "passed",
+        "durationMs": 13177.195457999995
+      },
+      {
+        "name": "brand 1: later canonical forecast withholds stale Finance rows and inspected Owner navigation without resetting UNKNOWN",
+        "status": "passed",
+        "durationMs": 6236.733083000006
+      },
+      {
+        "name": "brand 2: exact recorded material and approved unposted time refresh Finance and Owner without inventing invoice or labor coverage",
+        "status": "passed",
+        "durationMs": 10531.692667000003
+      },
+      {
+        "name": "brand 2: same-property other jobs, copied handles and another company cannot substitute Finance or Owner sources",
+        "status": "passed",
+        "durationMs": 16653.572709
+      },
+      {
+        "name": "brand 2: later canonical forecast withholds stale Finance rows and inspected Owner navigation without resetting UNKNOWN",
+        "status": "passed",
+        "durationMs": 6989.016374999992
+      }
+    ],
+    "canonicalChanges": false,
+    "hostedCauseOrClosure": false,
+    "reusedHarness": "b95d2871c3ba768db288350f5bd6311953014e2e",
+    "adaptedPayloadHashes": {
+      "evidence.json": "a3fa1f8790419a59e0553f2ea44f2208efccb0dadfbe977ceda64cd1e2d25426",
+      "qualify.mjs": "7ab381b9cff919e4eeb854ba69c9346625525f74b3f76dd3a578e0eef607fef0",
+      "measure.mjs": "04249f3ada667a26b5f4a142e5a99a24362c41c0bbce68e4a00bde08663acfff",
+      "inputs.fixture.ts": "aa0ffd16effa462d57db44179589cc5ec59d7ea0e6d6675124b930dbc338d599",
+      "regress.mjs": "8ced5bdf0d38b199a3d6bdc169a40ef47f2d6daedae890a676a796b6d5e94e6e",
+      "hosted-ten.json": "aecf660dfed4bdea0b3bf7ebff6e887129795130e0db46230daca83f978c5d55"
+    },
+    "sourcePromotionAuthorized": false
+  },
+  "hosted426": {
+    "foundation": {
+      "run": 43503518308,
+      "conclusion": "CANCELLED",
+      "nativeJob": 132155128612,
+      "nativePassed": 746,
+      "nativeSkipped": 1,
+      "verifyJob": 132155129017,
+      "verify": "CANCELLED_DURING_NPM_CHECK_NO_TERMINAL_APPLICATION_SUMMARY",
+      "subsequentStagingBrowserSteps": "SKIPPED"
+    },
+    "coverage": {
+      "run": 43503518052,
+      "passed": 12539,
+      "failed": 18,
+      "existingSkipped": 354,
+      "failedShards": [1, 2, 6, 8],
+      "allFailedCases": "ORIGINAL_30000MS_TIMEOUT",
+      "browserPassed": 579,
+      "collector": "FAILED_REQUIRE_JOBS"
+    },
+    "c17": {
+      "run": 43503518079,
+      "conclusion": "SUCCESS"
+    },
+    "passport": {
+      "run": 43503518013,
+      "conclusion": "SUCCESS"
+    },
+    "proof": {
+      "run": 43503517982,
+      "conclusion": "SUCCESS"
+    },
+    "compatibility": {
+      "run": 43503518300,
+      "conclusion": "SUCCESS"
+    },
+    "hostedFailureCauseOrClosureProven": false
+  },
+  "independentReview": {
+    "status": "CLEAR_LOCAL_QUALIFICATION_ONLY",
+    "fastControlsPassed": 17,
+    "intentionallyFilteredCritical": 1,
+    "benchmarksRepeated": false,
+    "nativeOrBroad3045Repeated": false
+  },
+  "reusedEvidence": {
+    "harness427": "b95d2871c3ba768db288350f5bd6311953014e2e",
+    "profile421": "e28958d654ce85a6fba663108487dfa242c8fd2d",
+    "allTwelveProfiledSourceHashesMatch426": true,
+    "newCpuProfiles": false,
+    "differential3045Repeated": false
+  },
+  "initialWrapperFailure": {
+    "passed": 16,
+    "failed": 1,
+    "cause": "Disposable archive lacked the explicit private Git metadata pointer required by the retained harness, which deliberately strips ambient Git variables.",
+    "productFailure": false,
+    "correction": "Add0600 metadata pointer only inside temporary archive, matching existing427packet pattern.",
+    "correctedFocusedControlsPassed": 17
+  },
+  "limits": [
+    "Single controlled sample per title, not a statistical or portable improvement guarantee.",
+    "Fixed synthetic Date/UUID comparisons are not expiry/Auth acceptance; natural eighteen uses neither added control.",
+    "Original case bodies/assertions,30s test/hook budgets and natural4-worker configuration unchanged.",
+    "Original426 hosted failures/cancellation remain retained; no full-Foundation or operational PASS claimed.",
+    "C9 and C24 author approvals remain separate; this four-file patch is unapplied and not currently authorized.",
+    "No production/provider/SQL/grant/recovery/tenant/merchant action."
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED",
+  "newPackageHashes": {
+    "qualify.mjs": "3a6ab064d31aa0c6a0dd5699d52094e5bc403da13ada596e39fa2623f0585091",
+    "promotion.mjs": "17c703e9e4cdaf9bf852f9ce4d7c8d161ad14117f6508662646e080fa263edbf",
+    "hosted-eighteen.json": "aecf660dfed4bdea0b3bf7ebff6e887129795130e0db46230daca83f978c5d55",
+    "integration.patch": "1756936f00d360d47789e467bb1c12272fb7439d2034ed8c230f50dcf0196376"
+  },
+  "finalFocusedControls": {
+    "passed": 18,
+    "failed": 0,
+    "durationSeconds": 15.45
+  },
+  "validation": {
+    "typecheck": "PASS",
+    "build": "PASS",
+    "scopedEslint": "PASS",
+    "scopedPrettier": "PASS",
+    "features": "PASS_25_RECORDS_5_LOCKS_13_BINDINGS",
+    "acceptedBroadSuitesRepeated": false,
+    "applicationBrowserNativeChanges": false
+  }
+}

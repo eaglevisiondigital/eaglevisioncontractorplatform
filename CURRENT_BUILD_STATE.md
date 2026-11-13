@@ -3565,3 +3565,25 @@ admitted five-file closeout and unchanged checker TCB; the actual consumer remai
 unwrapped. Six separate live cases prove current76ee source, immutable metadata and
 historical/unknown denial. Parent1FAIL/26PASS; corrected33PASS. No checker, manifest,
 protected-source, runtime, SQL or workflow changed. Release1.0 NOT READY / NOT AUTHORIZED.
+
+### Exact426 performance qualification — November13, UNAPPLIED
+
+The callback launch candidate e6b437e retains its original runtime/checkers. New
+disposable qualification reuses sealed427 harness code, original391 patch artifacts
+and all twelve unchanged421 measured sources. The finite four-file integration
+patch1756936f is staged only in temporary archives; separate C9/C24 author approvals
+and later exact launch promotion remain required. Eighteen new controls PASS;
+independent17 fast controls PASS with one critical traversal intentionally filtered.
+Controlled C33/C29 single pairs14.643→13.081s and10.714→8.714s preserve original
+case bytes,30s budgets and identical synthetic input/output proofs. All18 exact426
+hosted timeout cases PASS locally with natural inputs and original four workers.
+No hosted cause or closure is inferred. The initial missing temporary Git pointer
+failure is retained and corrected without product changes.
+
+Actual426 CI: native746PASS/1existing skip, C17PASS, coverage browsers579PASS;
+application coverage12539PASS/18timeouts/354existing skips. Foundation CANCELLED
+during npm check, no terminal application result; later staging/browser steps skipped.
+Passport/Proof/compatibility PASS. No mirror trust change or successful-suite replay.
+Canonical SQL/Auth/payment/admission bytes and original case assertions are unchanged.
+VARs, separate merchant acceptance, genuine Auth/MFA, held invoice SQL/grants, D1–D3,
+independent custody/recovery and A01–A12 remain open. Release1.0 NOT READY / NOT AUTHORIZED.

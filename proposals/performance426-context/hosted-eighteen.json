@@ -1,0 +1,115 @@
+{
+  "source": "e6b437e1e4b8f72a057207b29923deb8eacd1d18",
+  "run": 43503518052,
+  "originalTimeoutMs": 30000,
+  "failures": [
+    {
+      "job": 132155128627,
+      "file": "tests/cycle29-service-continuity.test.ts",
+      "describe": "",
+      "title": "brand 0: closed intake review retains exact published history without completing work or renewing its one-use action"
+    },
+    {
+      "job": 132155128627,
+      "file": "tests/cycle31-owner-navigation-runtime.test.ts",
+      "describe": "",
+      "title": "brand 2 continuation retains fresh original guards and exact one-use callback without repeating its immediate child navigation check"
+    },
+    {
+      "job": 132155128876,
+      "file": "tests/cycle18-independent-integration-review.test.ts",
+      "describe": "",
+      "title": "finance: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay"
+    },
+    {
+      "job": 132155128876,
+      "file": "tests/cycle18-independent-integration-review.test.ts",
+      "describe": "",
+      "title": "finance: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay"
+    },
+    {
+      "job": 132155128732,
+      "file": "tests/cycle23-service-source-review.test.ts",
+      "describe": "",
+      "title": "brand 2 publication appends a version without rewriting the original report or changing its job"
+    },
+    {
+      "job": 132155128732,
+      "file": "tests/cycle25-owner-action-continuity.test.ts",
+      "describe": "Cycle25 original owner action refresh continuity",
+      "title": "brand 2 exact unchanged selection survives refresh as presentation requiring fresh verification"
+    },
+    {
+      "job": 132155128732,
+      "file": "tests/cycle25-owner-action-continuity.test.ts",
+      "describe": "Cycle25 original owner action refresh continuity",
+      "title": "brand 2 actual recorded cost change clears a same-key selected action without inventing completion"
+    },
+    {
+      "job": 132155128744,
+      "file": "tests/cycle33-owner-refresh-access-continuity.test.ts",
+      "describe": "",
+      "title": "brand 0: copied handles, another job and another company never substitute for the earlier authorized context"
+    },
+    {
+      "job": 132155128744,
+      "file": "tests/cycle33-owner-refresh-access-continuity.test.ts",
+      "describe": "",
+      "title": "brand 0: revised native visit disappearance stays UNKNOWN without source replacement or completion"
+    },
+    {
+      "job": 132155128744,
+      "file": "tests/cycle33-v1-finance-owner-integration.test.ts",
+      "describe": "",
+      "title": "brand 0: exact recorded material and approved unposted time refresh Finance and Owner without inventing invoice or labor coverage"
+    },
+    {
+      "job": 132155128744,
+      "file": "tests/cycle33-v1-finance-owner-integration.test.ts",
+      "describe": "",
+      "title": "brand 1: exact recorded material and approved unposted time refresh Finance and Owner without inventing invoice or labor coverage"
+    },
+    {
+      "job": 132155128744,
+      "file": "tests/cycle33-v1-finance-owner-integration.test.ts",
+      "describe": "",
+      "title": "brand 2: exact recorded material and approved unposted time refresh Finance and Owner without inventing invoice or labor coverage"
+    },
+    {
+      "job": 132155128744,
+      "file": "tests/cycle33-v1-finance-owner-integration.test.ts",
+      "describe": "",
+      "title": "brand 0: same-property other jobs, copied handles and another company cannot substitute Finance or Owner sources"
+    },
+    {
+      "job": 132155128744,
+      "file": "tests/cycle33-v1-finance-owner-integration.test.ts",
+      "describe": "",
+      "title": "brand 1: same-property other jobs, copied handles and another company cannot substitute Finance or Owner sources"
+    },
+    {
+      "job": 132155128744,
+      "file": "tests/cycle33-v1-finance-owner-integration.test.ts",
+      "describe": "",
+      "title": "brand 2: same-property other jobs, copied handles and another company cannot substitute Finance or Owner sources"
+    },
+    {
+      "job": 132155128744,
+      "file": "tests/cycle33-v1-finance-owner-integration.test.ts",
+      "describe": "",
+      "title": "brand 0: later canonical forecast withholds stale Finance rows and inspected Owner navigation without resetting UNKNOWN"
+    },
+    {
+      "job": 132155128744,
+      "file": "tests/cycle33-v1-finance-owner-integration.test.ts",
+      "describe": "",
+      "title": "brand 1: later canonical forecast withholds stale Finance rows and inspected Owner navigation without resetting UNKNOWN"
+    },
+    {
+      "job": 132155128744,
+      "file": "tests/cycle33-v1-finance-owner-integration.test.ts",
+      "describe": "",
+      "title": "brand 2: later canonical forecast withholds stale Finance rows and inspected Owner navigation without resetting UNKNOWN"
+    }
+  ]
+}
