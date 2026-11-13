@@ -12,6 +12,14 @@ import {
   type CommercialDraft,
 } from '../../server/invoices/commercial-draft-client';
 const db = createTestDatabase();
+// Observe both outcomes before any lock-release await. A late .rejects assertion
+// leaves the derived promise unhandled even when the database correctly denies.
+function observed<T>(promise: Promise<T>) {
+  return promise.then(
+    (value) => ({ ok: true as const, value }),
+    (error: unknown) => ({ ok: false as const, error }),
+  );
+}
 let admin = 'postgres';
 const companies = Array.from({ length: 2 }, () => ({
   org: crypto.randomUUID(),
@@ -505,13 +513,25 @@ it.skipIf(!db.fork)(
         [c.org, c.actor],
       );
       let settled = false;
-      const pending = create(p).finally(() => {
+      let markSettled!: () => void;
+      const settledSignal = new Promise<void>((resolve) => {
+        markSettled = resolve;
+      });
+      const pending = observed(create(p)).finally(() => {
         settled = true;
+        markSettled();
       });
       await new Promise((resolve) => setTimeout(resolve, 50));
       expect(settled).toBe(false);
       await locker.exec('commit');
-      await expect(pending).rejects.toThrow(/membership/);
+      // Allow a complete event-loop turn before the eventual denial assertion.
+      await settledSignal;
+      expect(settled).toBe(true);
+      await new Promise<void>((resolve) => setImmediate(resolve));
+      expect(await pending).toMatchObject({
+        ok: false,
+        error: { code: '42501', message: expect.stringMatching(/membership/) },
+      });
       await reset();
       expect(
         (
@@ -594,10 +614,13 @@ it.skipIf(!db.fork)(
         p.org + '/' + p.command,
       ]);
       await login(companies[0], { exp: Date.now() / 1000 + 0.15 });
-      const pending = create(p);
+      const pending = observed(create(p));
       await new Promise((r) => setTimeout(r, 200));
       await peer.exec('commit');
-      await expect(pending).rejects.toThrow(/expired/);
+      expect(await pending).toMatchObject({
+        ok: false,
+        error: { code: '42501', message: expect.stringMatching(/expired/) },
+      });
       await reset();
       expect(
         (

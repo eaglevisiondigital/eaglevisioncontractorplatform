@@ -44,7 +44,20 @@ function verify(readCurrent = current, readOriginal = original) {
     expect(hash(readOriginal(source.originCommit, source.path))).toBe(
       source.originSha256,
     );
-    expect(hash(readCurrent(source.path))).toBe(source.currentSha256);
+    if (source.path === 'tests/database/commercial-invoice-drafts.test.ts') {
+      const fix = JSON.parse(
+        readFileSync('docs/INVOICE_REVOCATION_TEST_CORRECTION.json', 'utf8'),
+      );
+      expect(fix.baseline).toBe('78cf1d3eb0ce37862a7f34d727e45e7ccb6417ad');
+      expect(fix.classification).toBe(
+        'TEST_HARNESS_ONLY_NO_RUNTIME_SQL_CHANGE',
+      );
+      expect(fix.originalSha256).toBe(source.currentSha256);
+      expect(hash(readOriginal(fix.baseline, source.path))).toBe(
+        source.currentSha256,
+      );
+      expect(hash(readCurrent(source.path))).toBe(fix.successorSha256);
+    } else expect(hash(readCurrent(source.path))).toBe(source.currentSha256);
     if (source.rootTestDelta) {
       expect(deltas[source.path]).toBe(source.rootTestDelta);
     } else expect(source.currentSha256).toBe(source.originSha256);
@@ -72,6 +85,7 @@ it('binds the combined sources to exact author objects and retains finite paymen
 it.each([
   'server/invoices/commercial-drafts.proposed.sql',
   'server/invoices/commercial-draft-client.ts',
+  'tests/database/commercial-invoice-drafts.test.ts',
   'server/payments/control-store.ts',
   'src/lib/release.ts',
 ])('rejects an unknown combined source edit in %s', (target) => {

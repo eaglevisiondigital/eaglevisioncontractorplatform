@@ -1,3 +1,14 @@
+## Invoice revocation native-test rejection observation
+
+Hosted374 native job131591712364 failed despite716 passing tests because its
+expected42501 denial was observed too late and surfaced as an unhandled rejection.
+The [test-only correction](docs/INVOICE_REVOCATION_TEST_CORRECTION.json) attaches
+an immediately settled observer before lock release in revocation and expiry tests.
+Strict42501/message/zero-receipt assertions and a deterministic event-loop delay
+remain; SQL, grants, authorization and budgets are unchanged. Original composition
+hashes remain historical; only this exact native-test successor is additionally
+bound. Hosted successor acceptance is pending; release remains NO-GO.
+
 ## Bounded invoice/payment launch composition · November 12, 2026
 
 The [exact composition](docs/LAUNCH_INVOICE_PAYMENT_COMPOSITION.json) combines
