@@ -2817,3 +2817,16 @@ request syntax/amount/currency must not consume a token before downstream reject
 This does not authorize token resolution or replace real invoice/customer authority,
 current revocation, durable vault consumption or UNKNOWN reconciliation. Genuine
 commercial invoice writer/schema activation requires separate exact approval.
+
+## Keep C24 admission separate from the C9 proposal
+
+Reuse the immutable391 C24 patch rather than editing protected canonical bytes.
+Qualify it only in a detached428 clone with literal source/patch/evidence hashes,
+finite modes, sanitized subprocess environment, exact candidate deltas, repeated
+source reads and unconditional cleanup. Test the original critical failure,
+reviewed-source positive, unknown metadata/helper/source denial and future exact
+source frames. Optional disposable C9 sequence compatibility grants no C9
+approval. The smallest C24 decision remains its one-file exact patch on428 or an
+explicitly identified, separately approved C9-only successor. All original
+manifests/locks and D1–D3/A01–A12/operational gates remain intact.
+Release1.0 remains NOT READY / NOT AUTHORIZED.

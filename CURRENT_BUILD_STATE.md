@@ -3409,3 +3409,20 @@ custody, D3 independent matched recovery and A01–A12 remain operational gates.
 Exact launch successor checks: native78PASS/0skips, responsive internal-release6PASS,
 build/type/scopedlint/format/features/protected128PASS. Accepted source review CLEAR
 from independent security and QA agents. No hosted acceptance inherited from parents.
+
+## C24 helper428 admission proposal (UNAPPLIED)
+
+A separate finite proposal reuses exact391 C24 patch60f719 against exact428
+`a1b701a42ff838d3364c611794000b6dc533e27f`. Original C24 rejects the already-authored
+runtime; the disposable proposed checker accepts all5 critical sources while
+unknown runtime, unrelated source, helper, manifest and readiness changes deny.
+Ten new controls passed; root independently passed the original10 (16.74s), with
+explicit manifest/readiness rejection added afterward as a focused delta. Actual
+C24 metadata CLI passed:6 packages/36 admitted/523 retained/128 protected,
+5 locks/13 bindings/19 requirements; operational/restore/adapter remain false.
+Canonical C24, C9, helper, runtime and all original packages remain unchanged.
+Disposable exact proposed C9+C24 compatibility is not either checker's admission.
+Standalone C24 needs its own exact-source authorization on428; a future C9-only
+parent requires separate approval and actual successor identity. No native,
+browser, historical3045, hosted or recovery acceptance was repeated or claimed.
+Release1.0 remains NOT READY / NOT AUTHORIZED.

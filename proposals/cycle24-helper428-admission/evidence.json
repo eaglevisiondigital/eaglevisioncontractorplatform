@@ -1,0 +1,19 @@
+{
+  "schema": "cycle24-helper428-unapplied-v1",
+  "parent": "a1b701a42ff838d3364c611794000b6dc533e27f",
+  "helperParent": "c50ce4521fbc264276734a9f8909b525c9a7c2f8",
+  "helperSha256": "38fd3d784b10dd634f6b03a5995a4ce4392eb2924865349d1414328701113978",
+  "runtimeSha256": "a789309d7f8710f2e3150f4cbc8f8acc5aee9c99633c7611e503db089bcd2544",
+  "proposal391": "608ce8b7071a555440bf1f7dccfddec9473c661a",
+  "path": "scripts/check-cycle24.mjs",
+  "before": "4ed8baec4e1b7abc3f3ff86cc88c590b3497c3bfb7ff2ac12fcc1c7e2f71562f",
+  "after": "4f95b11e4e1d45186c5607f1b0773cc379e1901d99f7944ce907bfdef5a9a68d",
+  "patchSha256": "60f719216eb985839602bbb97e1a3d5420b80579771583677622e7c5715ab447",
+  "delta": "M1_CYCLE24_ONLY_MODE100644",
+  "cycle9CompatibilityPatchSha256": "274c02512df50c1a751fec124db3e8e8c22474c2286a0e70e734c76f91a8c5be",
+  "cycle24Approval": "REQUIRED_SEPARATELY",
+  "cycle9ApprovalGranted": false,
+  "protectedPromotionAuthorized": false,
+  "operationalReady": false,
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}
