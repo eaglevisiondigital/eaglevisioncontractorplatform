@@ -77,3 +77,19 @@ blocked in the protected canonical writer, not hidden by another local guard.
 D1 remaining names/separation, installed writer/bypass facts, independent D2/D3 and
 original A01–A12 are still required before exact target-bound genuine Auth/catalog
 preflight, SQL/grant acceptance or any request/receipt/staff-read operation.
+
+### Approved C17 source author and next checker checkpoint
+
+The owner separately approved source-only M1/A1 at exact406; actual author76ee5226
+now exists in draft408, with all45 original cases passing. The consolidated candidate
+still retains originalf9d/e0ff and does not promote that author. Pre-author null fields
+in older preparation artifacts remain historical; they are not silently rewritten.
+
+`../c17-current-checker/` binds the real76ee/406/test46747/note d059 tuple. Its exact
+three-file patch9688a87aa6d0f3bc8b3cbcf5b034d925a8389aae2dc0e3935c1f2a62bd144aa2
+is UNAPPLIED and needs separate owner approval. Original31 controls remain in their
+original file behind an explicit historical read port, while actual retained consumer
+uses current files. New17 cases are separate. All original CLI bytes/strict31 controls
+remain unchanged; standalone dedicated CLI/whole-Foundation success is not claimed.
+Qualification runs both31 and17 with zero failures/skips in a disposable author clone.
+Source authoring, checker authoring, source promotion and operations are separate.

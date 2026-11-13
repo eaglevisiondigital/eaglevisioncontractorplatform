@@ -1,3 +1,24 @@
+## C17 exact source author approved; separate checker proposal remains unapplied
+
+Owner approved only original0e309 test correction plusd059 note at exact406.
+Separate source-author commit76ee5226c52a850d5f692c8aac965d0487e0f544 is
+published in draft408: exact M1/A1/regular modes independently verified; all45
+original C17 cases PASS93.06s, type/format/features PASS. It is not promoted into
+this consolidated candidate, whose protected C17/checker remain f9d/e0ff.
+Earlier null-author preparation records below remain historical and unchanged.
+
+New `proposals/c17-current-checker/` binds the real76ee/406 tuple. Minimal UNAPPLIED
+three-file patch9688a87aa6d0f3bc8b3cbcf5b034d925a8389aae2dc0e3935c1f2a62bd144aa2
+retains all old constants/negative cases and original CLI bytes, including strict31
+controls; it adds17 current-author controls in a separate test. Disposable original31
+and new17 PASS separately; canonical files stay unchanged. This is not dedicated
+admission-workflow or full-Foundation acceptance. The earlier formatting-expanded
+148046 proposal was withdrawn before publication/admission.
+
+Source-author approval does not authorize this checker author or promotion. Exact
+checker approval, full integration/CI, invoice promotion01ba and D1–D3/Auth/SQL/
+custody/recovery/VAR/NMI/A01–A12 remain distinct. Release1.0 NO-GO.
+
 ## Current406 admission qualification and unified NMI boundary successor
 
 One isolated descendant retains406 invoice/caller/checker/SQL/Auth bytes and its

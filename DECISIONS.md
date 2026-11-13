@@ -1,3 +1,13 @@
+## Bind C17 checker preparation to the actual approved source author
+
+Preserve approved76ee's exact406 parent, M1/A1 patch/note and original source pins.
+Prepare a minimal separate checker alternative, with historical31 controls retained
+and new17 controls separate so the existing strict31 CLI is unchanged. Do not format
+unrelated protected bytes or imply dedicated CLI/integration acceptance. Existing
+pre-author evidence remains historical; new proposal names real76ee rather than
+inventing a commit. No checker mutation or promotion follows from source authoring.
+All operational and Release1.0 gates stay closed.
+
 ## Qualify protected proposals without turning preparation into admission
 
 Reuse exact406 and original C17 packages; prove full-context readiness, standalone
