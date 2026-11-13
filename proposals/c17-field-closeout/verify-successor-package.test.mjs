@@ -20,6 +20,24 @@ import {
 } from '../../scripts/v1-c17-inventory-source.mjs';
 const directory = 'proposals/c17-field-closeout';
 const manifest = JSON.parse(readFileSync(`${directory}/finite-successor.json`));
+// This is the reviewed preparation tuple, NOT authority to create/admit an author.
+// Self-consistent replacement hashes or claimed approvals in local JSON are insufficient.
+const reviewedManifest = JSON.parse(
+  execFileSync('git', [
+    '--no-replace-objects',
+    'show',
+    `4b9e1a72d7937e5badcf5aa0ac640ae0403bb35c:${directory}/finite-successor.json`,
+  ]),
+);
+function assertReviewedManifest(candidate) {
+  assert.deepEqual(
+    candidate,
+    reviewedManifest,
+    'Exact reviewed finite preparation manifest required',
+  );
+}
+// Validate before following any manifest-selected path or evaluating its hash claims.
+assertReviewedManifest(manifest);
 const hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const current = readFileSync(inventoryPath);
 const previous = execFileSync('git', [
@@ -111,3 +129,100 @@ test('log-only classification preserves all fifteen unresolved markers and does 
     ),
   );
 });
+
+const mutations = [
+  [
+    'executable modified-file mode',
+    (m) => {
+      m.futureAuthor.exactDelta[0].mode = '100755';
+    },
+  ],
+  [
+    'symlink added-file mode',
+    (m) => {
+      m.futureAuthor.exactDelta[1].mode = '120000';
+    },
+  ],
+  [
+    'changed sole parent',
+    (m) => {
+      m.futureAuthor.soleParent = '0'.repeat(40);
+    },
+  ],
+  [
+    'unreviewed future author',
+    (m) => {
+      m.futureAuthor.commit = '0'.repeat(40);
+    },
+  ],
+  [
+    'claimed author approval',
+    (m) => {
+      m.futureAuthor.status = 'APPROVED';
+    },
+  ],
+  [
+    'claimed admission readiness',
+    (m) => {
+      m.admissionReady = true;
+    },
+  ],
+  [
+    'claimed checker admission',
+    (m) => {
+      m.futureAdmission.status = 'ADMITTED';
+    },
+  ],
+  [
+    'removed approval exclusions',
+    (m) => {
+      m.futureAdmission.notAuthorizedNow = [];
+    },
+  ],
+  [
+    'recomputed proposed-test binding',
+    (m) => {
+      m.futureAuthor.exactDelta[0].afterSha256 = '0'.repeat(64);
+    },
+  ],
+  [
+    'recomputed companion binding',
+    (m) => {
+      m.futureAuthor.exactDelta[1].sha256 = '0'.repeat(64);
+    },
+  ],
+  [
+    'redirected companion path',
+    (m) => {
+      m.futureAuthor.exactDelta[1].sourceArtifact = 'unreviewed.invalid';
+    },
+  ],
+  [
+    'recomputed patch binding',
+    (m) => {
+      m.patch.sha256 = '0'.repeat(64);
+    },
+  ],
+  [
+    'replaced source-protection binding',
+    (m) => {
+      m.unchangedProtectedConsumers[0].sha256 = '0'.repeat(64);
+    },
+  ],
+  [
+    'extra alleged authority',
+    (m) => {
+      m.executionApproved = true;
+    },
+  ],
+];
+for (const [name, mutate] of mutations) {
+  test(`reviewed package denies ${name} before artifact or authority use`, () => {
+    const changed = structuredClone(manifest);
+    mutate(changed);
+    assert.throws(
+      () => assertReviewedManifest(changed),
+      /Exact reviewed finite preparation manifest required/,
+    );
+  });
+}
