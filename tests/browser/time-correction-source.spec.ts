@@ -306,11 +306,9 @@ test('approving a recorded uncertain correction cannot bypass its UNKNOWN ancest
   await page
     .getByText('Add manual time or audited correction', { exact: true })
     .click();
-  const form = page
-    .locator('form')
-    .filter({
-      has: page.getByRole('textbox', { name: 'Time task', exact: true }),
-    });
+  const form = page.locator('form').filter({
+    has: page.getByRole('textbox', { name: 'Time task', exact: true }),
+  });
   await form
     .getByRole('combobox', { name: 'Timesheet worker', exact: true })
     .selectOption(s.worker);
