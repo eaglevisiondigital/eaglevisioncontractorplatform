@@ -1,3 +1,12 @@
+## Prepare separately approved finite runtime admissions
+
+Keep the exact reviewed PR389 runtime author and both original source pins.
+Prepare separate unapplied Cycle9/Cycle24 patches with an exact shared helper
+prerequisite. Checkers must verify helper bytes before executing them; metadata,
+arbitrary ancestry or a modified helper cannot approve unknown source. Qualification
+applies only inside disposable directories and grants no installation, CI closure
+or operational authority. Release1.0 remains NOT READY / NOT AUTHORIZED.
+
 ## Isolate historical test fixtures from current successor proof
 
 Correct only four ordinary source-test fixtures; historical snapshot entries are
