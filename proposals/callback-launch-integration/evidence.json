@@ -1,0 +1,35 @@
+{
+  "schema": "callback-launch-integration-v1",
+  "baseline": "27300dbaff877d18ecb219a2c9000c96e7c3e8c8",
+  "sourceAuthor": "9ea522a0152ca77cdcd2bae7b601c0d0521174e3",
+  "sourceParent": "96b654ee16c229653cb1c046c579af77573b045a",
+  "nativeAuthor": "56d419ac533c2b0de7e2bcfe736aad9b94d7cf9b",
+  "nativeParent": "9ea522a0152ca77cdcd2bae7b601c0d0521174e3",
+  "patchSha256": "be71e3b300cd1e62d207391d65ae810018e9f2ae342fa884d624dc5097abdbe9",
+  "files": [
+    {
+      "path": "server/payments/webhook-inbox.ts",
+      "author": "9ea522a0152ca77cdcd2bae7b601c0d0521174e3",
+      "before": "892c459a955534fbc264df2f2534758f0f69a3a9c091e1d7b9ee3e2fdf3191d9",
+      "after": "baba0a4a560be8af01bc0f5bf3bbebd8103f4875c34a5f43394b584bcfb146d0",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/payments-webhook-wire-integrity.test.ts",
+      "author": "9ea522a0152ca77cdcd2bae7b601c0d0521174e3",
+      "before": null,
+      "after": "024eeae51c3691319cde8376f5a4a26c25f3be946750944aef71e352372447ec",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/database/nmi-signed-wire-custody.test.ts",
+      "author": "56d419ac533c2b0de7e2bcfe736aad9b94d7cf9b",
+      "before": null,
+      "after": "7711ed99aec191c7df7f5d160fe59bb84777b2f8151f8dcd61fdd512f7c015ee",
+      "mode": "100644"
+    }
+  ],
+  "protectedPromotionAuthorized": false,
+  "operationalReady": false,
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}
