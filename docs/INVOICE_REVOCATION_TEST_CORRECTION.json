@@ -1,0 +1,16 @@
+{
+  "baseline": "78cf1d3eb0ce37862a7f34d727e45e7ccb6417ad",
+  "path": "tests/database/commercial-invoice-drafts.test.ts",
+  "originalSha256": "ff024c5080801f824e92de29672cfc0c2fdd738bd05d46211bc6cb994c211432",
+  "successorSha256": "f0d9e33588bc2f41668591b9a7208468e77b75924df2e7ac15666fd136cd95c8",
+  "classification": "TEST_HARNESS_ONLY_NO_RUNTIME_SQL_CHANGE",
+  "originalHostedRun": 43335856209,
+  "originalHostedJob": 131591712364,
+  "originalHosted": "716 passing tests plus unhandled42501; FAIL",
+  "deterministicParent": "1 passing case plus unhandled42501; exit1",
+  "correction": "Attach immediately settled outcome observer before await; retain deterministic late assertion, SQLSTATE/message/zero receipt and same expiry checks.",
+  "budgetsChanged": false,
+  "SQLChanged": false,
+  "hostedSuccessor": "PENDING",
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}
