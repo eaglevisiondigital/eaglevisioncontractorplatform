@@ -3554,3 +3554,14 @@ The new qualification initially imposed one outer30s limit on both historical
 suites; the reproduced aggregate timeout is corrected by separate five/two-case
 groups with every original assertion and per-case budget unchanged. Independent
 14 new qualification cases PASS; no hosted performance closure is inferred.
+
+### Retained C17 inventory fixture after approved closeout — November 13
+
+Exact414 hosted shard6 exposed one obsolete test-fixture expectation: the retained
+bd8 positive read the new approved46747 closeout as though it were f9d inventory.
+The original27 case bodies/count/expected hashes and budgets remain byte-exact.
+An explicit historical inventory port is available only after verifying the complete
+admitted five-file closeout and unchanged checker TCB; the actual consumer remains
+unwrapped. Six separate live cases prove current76ee source, immutable metadata and
+historical/unknown denial. Parent1FAIL/26PASS; corrected33PASS. No checker, manifest,
+protected-source, runtime, SQL or workflow changed. Release1.0 NOT READY / NOT AUTHORIZED.

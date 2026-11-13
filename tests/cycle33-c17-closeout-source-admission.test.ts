@@ -10,7 +10,13 @@ type Ports = {
   delta: (commit: string) => string;
   mode: (commit: string, path: string) => string;
 };
-const s: {
+// Preserve the original27 controls, including the historical bd8 positive.
+// Current closeout behavior uses the unwrapped real consumer below and a separate live suite.
+const fixture = await import(
+  new URL('./helpers/c17-retained-inventory.mjs', import.meta.url).href
+);
+const { wrap } = await fixture.makeRetainedInventory();
+const actual: {
   cycle25SourcePorts: Ports;
   cycle33V1C17Compatibility: {
     commit: string;
@@ -29,6 +35,7 @@ const s: {
 } = await import(
   new URL('../scripts/cycle25-source-lineage.mjs', import.meta.url).href
 );
+const s: typeof actual = wrap(actual);
 const c17: {
   validateCycle17Manifest: (
     manifest: unknown,
