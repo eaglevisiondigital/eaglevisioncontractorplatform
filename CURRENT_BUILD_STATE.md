@@ -3565,3 +3565,20 @@ admitted five-file closeout and unchanged checker TCB; the actual consumer remai
 unwrapped. Six separate live cases prove current76ee source, immutable metadata and
 historical/unknown denial. Parent1FAIL/26PASS; corrected33PASS. No checker, manifest,
 protected-source, runtime, SQL or workflow changed. Release1.0 NOT READY / NOT AUTHORIZED.
+
+## November 13 · unapplied payment/launch qualification
+
+A separate child of exact #417394d prepares the exact thirteen-file integration
+patch35dca7d7…: eleven unchanged #419323c endpoints plus two explicit historical
+launch-test companions. Only proposal files/tests/notes are committed; protected
+canonical files remain unchanged. One obsolete historical positive failed on the
+eleven-file composition; the proposed verified live-frame read port preserves the
+original verifier and all sixteen assertions. Combined-source payment139, source80,
+C17fixture/live33, package11 in both before/full-after frames (retaining25 negative
+controls), ACK/C17 guards and
+nativePG17 originalNMI12 PASS. Source, native, hosted and operational acceptance
+remain distinct; no whole CI success or genuine Auth is inferred. See the exact
+proposal README/evidence and PR for independent review and current-head checks.
+#415 callback and #416 optional sources remain excluded. Protected promotion, SQL,
+grants, Auth/NMI execution, recovery and release require their separate approvals.
+Release1.0 NOT READY / NOT AUTHORIZED.
