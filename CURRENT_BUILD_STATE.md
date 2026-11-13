@@ -3301,3 +3301,16 @@ lint/format and feature/design checks PASS. Creation/reopening evidence is only 
 original same-tab synthetic repository, not server atomicity or genuine hosted Auth.
 No launch dependency, source-pin admission or operational gate is closed; D1–D3,
 A01–A12, intake SQL HELD, recovery restrictions and Release1.0 NOT READY / NOT AUTHORIZED persist.
+
+Optional inspection submission correction: parent browser negative1FAIL reproduced
+Submit silently discarding visible unsaved content and locking the older saved draft.
+The existing Submit control now requires explicit Save, exact current saved revision
+and tenant/source identity before invoking the unchanged writer. New10 unit cases
+PASS; new6 responsive saved-content/privacy/accessibility cases plus unchanged
+original3 three-company publication journeys PASS in one9-case run. The parent failure
+and earlier stopped label-only probe are retained. Explicit save/reopen preserves
+customizable checklist scope; no new checklist requirements or implicit Save/Submit.
+Build/typecheck, scoped lint/format, feature checks and protected128/design5/13 PASS.
+Original same-tab synthetic persistence only; no hosted/Auth/atomic-custody acceptance,
+new D1/D3 decision, recovery action or launch dependency. Release1.0 remains NOT READY /
+NOT AUTHORIZED; all original operational and intake SQL HELD gates remain unchanged.
