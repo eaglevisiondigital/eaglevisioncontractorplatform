@@ -2724,3 +2724,12 @@ writer, and invalidate pending UI review when its source or navigation context c
 A stale review must not select a replacement clock merely because its worker matches.
 Keep the pinned writer unchanged: this application defense does not establish atomic
 server target CAS, durable custody, genuine authentication or hosted acceptance.
+
+### Require original issued property evidence before creating a job-linked inspection plan
+
+A customer match alone cannot establish a property's job association. The existing
+local creation control independently verifies its exact issued source and current
+CRM/planning context before invoking the original writer. Missing property evidence
+stays UNKNOWN; a property-only survey requires an explicit existing no-job context.
+Keep the pinned context reader/writer unchanged and its bypass limitation visible.
+This control does not establish atomic hosted enforcement, genuine Auth or dispatch.

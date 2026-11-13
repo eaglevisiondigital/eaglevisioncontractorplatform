@@ -1,5 +1,13 @@
 import { BackOfficeText } from './back-office-copy';
-import { useState, useCallback, useEffect, useContext } from 'react';
+import {
+  useState,
+  useCallback,
+  useEffect,
+  useContext,
+  useRef,
+  useLayoutEffect,
+} from 'react';
+import { requireInspectionPlanSource } from './inspection-plan-source';
 import { BackOfficeConcept } from './back-office-presentation';
 import type { Operations } from '../../lib/operations';
 import type { CompanyProfile } from '../../domain/platform';
@@ -133,6 +141,15 @@ function Inspections({
   const [visitPhase, setVisitPhase] = useState<Visit['phase']>('during');
   const [contextIndex, setContextIndex] = useState(0),
     [newName, setNewName] = useState('Initial property survey');
+  const createGeneration = useRef(0),
+    creating = useRef(false);
+  useLayoutEffect(() => {
+    const generation = createGeneration.current + 1;
+    createGeneration.current = generation;
+    return () => {
+      createGeneration.current = generation + 1;
+    };
+  }, [repo, org, state, tab, contextIndex, newName]);
   const run = (f: () => Promise<void> | void, message = 'Local record saved') =>
     void task.run(async () => {
       await f();
@@ -244,13 +261,28 @@ function Inspections({
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
-                    run(() => {
-                      const p = repo.createPlan(
-                        org,
-                        state.contexts[contextIndex],
-                        newName,
-                      );
-                      setPlan(p);
+                    if (creating.current) return;
+                    creating.current = true;
+                    const generation = createGeneration.current;
+                    const current = () =>
+                      generation === createGeneration.current;
+                    run(async () => {
+                      try {
+                        const context = await requireInspectionPlanSource(
+                          repo,
+                          org,
+                          state.contexts[contextIndex],
+                          current,
+                        );
+                        if (!current())
+                          throw Error(
+                            'Inspection-plan context changed; no creation',
+                          );
+                        const p = repo.createPlan(org, context, newName);
+                        if (current()) setPlan(p);
+                      } finally {
+                        creating.current = false;
+                      }
                     });
                   }}
                 >
@@ -280,7 +312,7 @@ function Inspections({
                       onChange={(e) => setNewName(e.target.value)}
                     />
                   </Field>
-                  <button>
+                  <button disabled={task.busy}>
                     <BackOfficeText text="Create inspection plan" />
                   </button>
                 </form>
