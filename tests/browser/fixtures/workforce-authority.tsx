@@ -47,6 +47,12 @@ if (
           }
         : data;
     };
+    const correct = repo.resolveClock.bind(repo);
+    let correctionCalls = 0;
+    repo.resolveClock = async (...args) => {
+      correctionCalls++;
+      return correct(...args);
+    };
     function Harness() {
       const [message, setMessage] = useState('');
       return (
@@ -87,6 +93,65 @@ if (
             }}
           >
             Reject paused payroll result
+          </button>
+          <button
+            onClick={() =>
+              void (async () => {
+                const data = await read(company.id);
+                await repo.recordTime(company.id, data.workers[0].id, {
+                  job_id: null,
+                  overhead_center: 'Administration',
+                  task: 'Fixture original missed clock',
+                  kind: 'work',
+                  started_at: new Date(Date.now() - 60000).toISOString(),
+                  ended_at: null,
+                  corrects_id: null,
+                  billable: false,
+                });
+                setMessage('Fixture original clock prepared');
+              })()
+            }
+          >
+            Prepare fixture missed clock
+          </button>
+          <button
+            onClick={() =>
+              void (async () => {
+                const data = await read(company.id),
+                  worker = data.workers[0];
+                await correct(
+                  company.id,
+                  worker.id,
+                  new Date(Date.now() - 40000).toISOString(),
+                  'Fixture exact original clock closure',
+                );
+                await repo.recordTime(company.id, worker.id, {
+                  job_id: null,
+                  overhead_center: 'Administration',
+                  task: 'Fixture replacement clock',
+                  kind: 'work',
+                  started_at: new Date(Date.now() - 30000).toISOString(),
+                  ended_at: null,
+                  corrects_id: null,
+                  billable: false,
+                });
+                setMessage('Fixture clock replaced without refreshing review');
+              })()
+            }
+          >
+            Replace fixture open clock
+          </button>
+          <button
+            onClick={() =>
+              void (async () => {
+                const data = await read(company.id);
+                setMessage(
+                  `Correction calls: ${correctionCalls}; open clocks: ${data.entries.filter((entry) => !entry.ended_at).length}`,
+                );
+              })()
+            }
+          >
+            Inspect fixture correction evidence
           </button>
           <Workforce repo={repo} org={company.id} />
         </main>

@@ -1,6 +1,7 @@
 import { useState, useCallback, useRef, useLayoutEffect } from 'react';
 import { requireCurrentPayrollSource } from './payroll-current-source';
 import { payrollPreparationInputs } from './payroll-preparation-inputs';
+import { correctCurrentClock } from './clock-correction-source';
 import type { Phase3Repository, WorkforceData } from '../../lib/phase3';
 import type {
   Worker,
@@ -82,6 +83,14 @@ function WorkforceView({
   const [activity, setActivity] = useState('Project work');
   const [billable, setBillable] = useState(true);
   const [filterWorker, setFilterWorker] = useState('all');
+  const reviewGeneration = useRef(0);
+  useLayoutEffect(() => {
+    const generation = reviewGeneration.current + 1;
+    reviewGeneration.current = generation;
+    return () => {
+      reviewGeneration.current = generation + 1;
+    };
+  }, [repo, org, data, tab, filterWorker]);
   const open = data.entries.find(
     (e) => e.worker_id === workerId && !e.ended_at,
   );
@@ -428,11 +437,15 @@ function WorkforceView({
                           onSubmit={(v) =>
                             task
                               .run(async () => {
-                                await repo.resolveClock(
+                                const generation = reviewGeneration.current;
+                                await correctCurrentClock(
+                                  repo,
                                   org,
-                                  e.worker_id,
+                                  data,
+                                  e.id,
                                   String(v.ended_at),
                                   String(v.reason),
+                                  () => generation === reviewGeneration.current,
                                 );
                                 refresh();
                               }, 'Clock correction recorded and approved')
