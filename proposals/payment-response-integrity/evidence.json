@@ -1,0 +1,53 @@
+{
+  "classification": "UNAPPLIED_STRICT_PAYMENT_RESPONSE_DECODING",
+  "parent": "892bf5127af2268e6066a20d259a808b5b893cec",
+  "patchSha256": "148b8ec3fac6919ebe9cc237cdf1dac971cff4e54d5c9762262934a3d9335d9d",
+  "files": [
+    {
+      "path": "server/payments/response-json.ts",
+      "beforeSha256": null,
+      "proposedSha256": "3d361bd32f9cc2ff82b9d4c1ad29ca0218199c11bc903a59ec5a644dd139c970",
+      "mode": "100644"
+    },
+    {
+      "path": "server/payments/sandbox.ts",
+      "beforeSha256": "89dc2b03f273ee00c73e8342fcf9e8db6d78d5f898bde96ccff94e69fc0276cc",
+      "proposedSha256": "828b355608e2fee5433dc2c29c3094e40c92c444409331e1b67183ed09e19feb",
+      "mode": "100644"
+    },
+    {
+      "path": "server/payments/refunds.ts",
+      "beforeSha256": "78f74ab633f3ba192d447ffb1b77f8d027c38df49ea0fd6f06b9fb65df2490a5",
+      "proposedSha256": "267912113acc418387beb86826b06c2689bac9f9a00589a0cd5fc6df1aa4158e",
+      "mode": "100644"
+    }
+  ],
+  "wireFixtureSha256": "c285486b55df90fa33faa8097afe8183d6ceb210b7d70f0334d505740f4727a2",
+  "nativeFixtureSha256": "bce71affbf8d5e04135d0de1cf12d0372112205f631f6121eb944a91f3b88f7d",
+  "originalNmiCasesSha256": "d4087fd21bb1c446e5a22f43506a64a7b213918df714d69c831de1e9f37f971e",
+  "originalNativeHarnessSha256": "fe1b5ad702033676d33b689b74d4d5a2ba925aaadaa177bb0f21b11e53a6efbd",
+  "algorithmReference": {
+    "path": "tests/helpers/strict-command-json.ts",
+    "sha256": "669e26c6cef2dda0bbfccfba31e7307c3c8f21911481ecebbf961f205f4e1fae"
+  },
+  "bounds": {
+    "responseBytes": 65536,
+    "valueDepth": 64
+  },
+  "scope": "Fatal UTF8 and duplicate-member rejection before existing normalization; single BOM/current success/decline/content-type/HTTP/stream/idempotency rules retained.",
+  "validation": {
+    "copiedGatewayUnitPassed": 70,
+    "nativeParentFailed": 1,
+    "nativeProposedPassed": 1,
+    "nativeOriginalCasesFiltered": 12,
+    "independentUnitPassed": 70,
+    "independentNativeProposedPassed": 1,
+    "negativeLogSha256": "aa588c8689518cf2e86f65045c671e606d1f9c15095e98b2a12a4aa6118c8496",
+    "positiveLogSha256": "5b56015585d8c35f6031abf4d13f3668f335c957821af6f149949ee22ce3cdbd"
+  },
+  "canonicalSourceChanged": false,
+  "admissionAuthorized": false,
+  "SQLChanges": false,
+  "providerAcceptance": "NOT_RUN",
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}
