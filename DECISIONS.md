@@ -2902,3 +2902,14 @@ five-file integrated bundle and unchanged transitive checker source. Actual inte
 C17/31/17 acceptance uses the real proposed filesystem. Captured verified bytes drive
 imports/staging; metadata cannot authorize promotion. Canonical source promotion,
 SQL, hosted acceptance and release remain separately gated.
+
+## Keep payment checker authoring separate from source and launch integration
+
+Prepare only exact eight-file patch2b6a428e after independent qualification; leave
+canonical checkers and all old records untouched. Recheck complete current bundles
+after lineage/metadata reads, retain late-withdrawal failure evidence and bound
+historical fixture delegation to the verified live frame. These sequential build
+checks are not atomic filesystem or owner-rollback protection. Proposed authoring
+starts from approved96b, not the proposal wrapper branch or launch417. It requires
+separate exact owner approval; integration/promotion and all operational gates stay
+held. Do not invent a combined eleven-file authorization. Release1.0 remains NO-GO.

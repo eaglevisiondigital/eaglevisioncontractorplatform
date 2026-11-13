@@ -1,0 +1,53 @@
+{
+  "classification": "UNAPPLIED_FINITE_PAYMENT_RESPONSE_ADMISSION",
+  "parent": "276fbe4357a5ccc3593374e4cd359a10e8ae1bf6",
+  "sourceAuthor": "96b654ee16c229653cb1c046c579af77573b045a",
+  "sourceParent": "892bf5127af2268e6066a20d259a808b5b893cec",
+  "sourcePatchSha256": "148b8ec3fac6919ebe9cc237cdf1dac971cff4e54d5c9762262934a3d9335d9d",
+  "patchSha256": "2b6a428e1d93fcebf4f3277581ee48652fcaa7860db0a2d6cf397f2d3cf358b6",
+  "files": [
+    {
+      "path": "proposals/invoice-caller-transition/qualify.mjs",
+      "beforeSha256": "f3d39097db9eeef99b177149e0bbcdfb56d3646f90edd85f26f1890ed456c410",
+      "proposedSha256": "1c102cb6982ab1042e93a5d6454e765fb9a37cf5b930d1226465ccf2a5756a1d"
+    },
+    {
+      "path": "proposals/invoice-checker-qualification/baseline.mjs",
+      "beforeSha256": "0d0c05afad3a034c2760203b3615c8a675e3ba38cb7536802e1f6ae3acfef47d",
+      "proposedSha256": "c27591939af63a33312e6293ebd90469eac202b0a0237275338fb0be08e012ad"
+    },
+    {
+      "path": "proposals/payment-response-admission/fixture-adapter.mjs",
+      "beforeSha256": null,
+      "proposedSha256": "4ccab151297b44da76057199cb3cabfcd2c73c3e20ed6761c27737db16468203"
+    },
+    {
+      "path": "scripts/check-payment-ack-admission.mjs",
+      "beforeSha256": "56ef1c979baeb9645ffbf256cc10d7a8cf2904fdaedbe66f9707979b985480a0",
+      "proposedSha256": "b936bbd53def10eb7604b840ebe56262073001f30f0191247307eb54940a67ad"
+    },
+    {
+      "path": "scripts/invoice-caller-source-admission.mjs",
+      "beforeSha256": "2a6ffb692443a7830df021e9a8cce048ac4388947e03a27af4286b4e26ee9a25",
+      "proposedSha256": "af67c7836222779cd8322c08b3d5a72816760abc345a9d45cab97f85beacd133"
+    },
+    {
+      "path": "scripts/payment-response-source-admission.mjs",
+      "beforeSha256": null,
+      "proposedSha256": "aa8871b0fa334bfd2ffdb36c314650e51e56ceea41a983e13c0b42a60084dfcd"
+    },
+    {
+      "path": "tests/invoice-caller-migration-source.test.ts",
+      "beforeSha256": "4879c0b0f3da8bc2e5d981faae43fe443c317ffcd400b654fc550f0605149a08",
+      "proposedSha256": "6b803d33d5c8b9ca02abcbce59b8796f9691b44a82c97290974ea9a4a2892d69"
+    },
+    {
+      "path": "tests/launch-invoice-payment-source.test.ts",
+      "beforeSha256": "9ed3efe744bdb9003d3d8459e62dd5fe9479475768df6cb58dc4d8257ef37b00",
+      "proposedSha256": "bf366bff56157c0b94c174c91d8a9fbc76cb95e836d9387a2d61104e44fc873a"
+    }
+  ],
+  "canonicalSourceChanged": false,
+  "admissionAuthorized": false,
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

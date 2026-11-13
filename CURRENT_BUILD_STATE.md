@@ -3554,3 +3554,14 @@ The new qualification initially imposed one outer30s limit on both historical
 suites; the reproduced aggregate timeout is corrected by separate five/two-case
 groups with every original assertion and per-case budget unchanged. Independent
 14 new qualification cases PASS; no hosted performance closure is inferred.
+
+## Payment response admission preparation — unapplied
+
+A separate eight-file proposal binds approved source author96b on exact414 without
+changing canonical checkers. Retained80+ACK CLI,25 finite negatives and6 package
+controls PASS; original budgets/assertions/history remain intact. Independent review
+caught late source/frame withdrawal in the first proposal; final bundle rechecks
+and six reproduced negatives corrected it. Final patch2b6a428e remains UNAPPLIED.
+The next owner checkpoint is eight-file AUTHOR ONLY on exact96b, whose six before
+blobs/modes and two absences match414; later #417 integration/promotion is separate.
+No runtime, SQL, Auth, provider or release acceptance is granted. Release1.0 NO-GO.
