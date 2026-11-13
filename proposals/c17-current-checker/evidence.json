@@ -1,0 +1,62 @@
+{
+  "schema": "c17-current-checker-preparation-v1",
+  "status": "UNAPPLIED_REQUIRES_SEPARATE_EXACT_CHECKER_AUTHORIZATION",
+  "sourceAuthor": "76ee5226c52a850d5f692c8aac965d0487e0f544",
+  "sourceParent": "2c63cfd8175fe23d6c7f80a7879af9c73b27dceb",
+  "sourceAuthorReview": "Exact M1/A1,100644 modes,patch0e309,endpoint46747,note d059 independently verified",
+  "patchSha256": "9688a87aa6d0f3bc8b3cbcf5b034d925a8389aae2dc0e3935c1f2a62bd144aa2",
+  "qualifierSha256": "6e2eca21221079f220936a0c42b7b078e0568d6c2da5044a8ac741d156a607df",
+  "proposedDelta": [
+    {
+      "path": "scripts/v1-c17-inventory-source.mjs",
+      "before": "e0ffeb3ba80b74474c0864ada76d531dcbb0e8c4d3f1ca299c0d59c5e3648f9e",
+      "after": "076b4d234531d7c26524f1ef4e648f4c08145aabb691662643437f81b3863386"
+    },
+    {
+      "path": "tests/v1-c17-inventory-source.test.mjs",
+      "before": "6e4ea84eaf1511a09c863a139adb06f947a2a9ee7539730cf2047e2c8c8b841c",
+      "after": "31045c49e82efe2fbcd86d56ba5d16ed98259dbf8a9b6619b4e1b77b02a0b448"
+    },
+    {
+      "path": "tests/v1-c17-field-closeout-source.test.mjs",
+      "status": "A",
+      "mode": "100644",
+      "after": "df616e9e4f192393e7fe30faed5a4b4394c12ddcb2ac4b0e94d65f9a00399cc2"
+    }
+  ],
+  "qualification": {
+    "unamendedOriginal31": {
+      "passed": 28,
+      "failed": 3,
+      "cause": "Current approved source76ee differs from historicalbd8 endpoint; actualconsumer denied until separate admission"
+    },
+    "disposablePatched": {
+      "originalFilePassed": 31,
+      "newFilePassed": 17,
+      "failed": 0,
+      "skipped": 0
+    },
+    "actualOriginalC17Consumer": "PASS in disposable patched source",
+    "negativeBoundaries": [
+      "unknown endpoint",
+      "missing/wrong/merge author",
+      "extra/missing delta",
+      "all source Git modes",
+      "predecessor and author/note byte substitution",
+      "initial and final note/current read drift",
+      "nested Field drift"
+    ],
+    "historicalFixture": "Original31 case IDs/assertions/budgets retained; originalbd8 positive/negative reads explicitly historical. Actualconsumer remains realfilesystem.",
+    "originalCliSuffixAndStrict31Control": "byte-exact retained; dedicated CLI GO not claimed"
+  },
+  "remainingApproval": "Owner must separately authorize exact three-file checker patch by SHA after independent review; source-author approval does not cover this patch or integration promotion.",
+  "exclusions": [
+    "Canonical checker/test files remain original hashes",
+    "Original337/bd8/b947 pins and historical manifests unchanged",
+    "No admission installation,source promotion,operational execution or hosted acceptance",
+    "No complete Foundation or dedicated admission-workflow CLI success claimed",
+    "No runtime,SQL,Auth,grants,budget or production changes"
+  ],
+  "withdrawnDraftPatch": "14804690035c63f80efd6a497cecdfa4f3c843432ab29b4f9b7824efaf7063bf",
+  "withdrawalReason": "Unrelated quote reformat and strict31 CLI count conflict; never approved or installed"
+}

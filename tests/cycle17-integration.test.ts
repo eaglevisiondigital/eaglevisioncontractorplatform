@@ -103,6 +103,16 @@ const fieldSourceLineage: {
   new URL('../scripts/v1-next-native-source.mjs', import.meta.url).href
 );
 
+const fieldPublishedLineage: {
+  validateFieldPublishedSource: (
+    file: { path: string; sha256: string },
+    current: Buffer,
+    pkg: Record<string, unknown>,
+  ) => unknown;
+} = await import(
+  new URL('../scripts/v1-field-source-admission.mjs', import.meta.url).href
+);
+
 beforeEach(() =>
   vi.stubGlobal('window', {
     location: { hostname: '127.0.0.1', protocol: 'http:' },
@@ -814,6 +824,37 @@ it('Cycle16 closeout preserves child cancellations separately from actual succes
     expect(feature.owned_files).toHaveLength(5);
     for (const file of feature.owned_files) {
       if (
+        feature.pr === 112 &&
+        file.path === 'src/lib/workflows/daily-field-guide.ts'
+      ) {
+        const reference = { path: file.path, sha256: file.sha256 };
+        expect(reference).toEqual({
+          path: 'src/lib/workflows/daily-field-guide.ts',
+          sha256:
+            '6fcaea74f19b422424e0b562d91fb94e1d9654b0598b20c6551d3ba405c5410d',
+        });
+        const originalPackage = (
+          JSON.parse(
+            readFileSync('docs/program/CYCLE16_DELIVERY_INDEX.json', 'utf8'),
+          ) as { packages: Record<string, unknown>[] }
+        ).packages.find((pkg) => pkg.draft_pr === 112);
+        expect(originalPackage).toBeDefined();
+        const current = readFileSync(file.path);
+        expect(() =>
+          fieldPublishedLineage.validateFieldPublishedSource(
+            reference,
+            current,
+            originalPackage!,
+          ),
+        ).not.toThrow();
+        expect(() =>
+          fieldPublishedLineage.validateFieldPublishedSource(
+            reference,
+            Buffer.concat([current, Buffer.from('\n// unknown edit\n')]),
+            originalPackage!,
+          ),
+        ).toThrow();
+      } else if (
         feature.pr === 117 &&
         file.path === 'src/lib/workflows/addon-readiness-guide.ts'
       ) {
