@@ -2761,3 +2761,13 @@ corrections and their exact descendants UNKNOWN rather than resetting them throu
 refresh or a new target ID. Missing or contradictory lineage never proves authority.
 Local guards do not
 replace durable custody, original server enforcement or genuine payroll authorization.
+
+### Optional contact consent control — November 13
+
+Do not silently restore cached permission while recording another contact choice.
+Use the existing CRM readers and writer, require current exact customer/history and
+explicit review, retain unfinished choices through refresh, and keep ambiguous
+dispatched recording UNKNOWN without replacement attempts. This control does not
+replace protected atomic server consent validation, genuine permission evidence or
+operational communications acceptance. The demonstrated raw read/append race remains
+open; no protected source or source pin is changed.

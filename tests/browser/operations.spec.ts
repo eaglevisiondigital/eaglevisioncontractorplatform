@@ -95,6 +95,11 @@ test('CRM creates and filters customers, identifies duplicates and records locat
     .getByLabel('Customer permits email contact', { exact: true })
     .check();
   await page
+    .getByLabel(
+      'I reviewed the current stored consent and these explicit customer choices',
+    )
+    .check();
+  await page
     .getByRole('button', { name: 'Record consent', exact: true })
     .click();
   await expect(

@@ -3351,3 +3351,27 @@ protected Phase3/payroll writers remain unchanged. This is same-tab synthetic ev
 not durable custody, restart proof, global CAS or genuine payroll authorization. No
 new D1–D3/A01–A12 decision or recovery action. Release1.0 NOT READY / NOT AUTHORIZED,
 intake SQL HELD and every original release restriction persist.
+
+### Optional CRM consent recording source guard — November 13
+
+The existing customer consent recording control now requires explicit review of
+current stored choices and exact CRM customer/history identity before dispatch.
+Refresh retains unfinished email/SMS inputs but invalidates prior confirmation;
+foreign/malformed/unavailable history remains UNKNOWN. Session duplicate and
+uncertain-acknowledgment holds survive editor reopening. This is same-tab sample
+persistence, not genuine consent, sending authority, hosted durability or server CAS.
+The protected raw Operations writer remains unchanged: original stale-form and
+foreign-customer probes failed, and a separately retained late raw opt-out probe
+still FAILS after a captured read. No global race/isolation closure is claimed.
+D1–D3/A01–A12, customer intake SQL HELD, original recovery evidence and every
+financial/provider/production restriction remain unchanged. Release1.0 NOT READY /
+NOT AUTHORIZED.
+
+Validation: 17 focused units PASS; final-source nine desktop/tablet/mobile consent
+journeys PASS including accessibility/overflow and save/reopen. The three original
+CRM journeys PASS with ADD-only explicit review setup and unchanged assertions and
+budgets. Initial nine new browser failures were an ambiguous status locator; the
+original log remains retained, scope-only locator correction and final nine PASS.
+Typecheck/build, scoped ESLint/formatting, original Cycle6 128 protected hashes and
+five locks/13 bindings, and the 25-record feature check PASS. This optional control
+is not a first-contractor launch dependency or operational acceptance.
