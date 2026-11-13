@@ -1,0 +1,21 @@
+{
+  "classification": "UNAPPLIED_FINITE_INVOICE_CALLER_ADMISSION",
+  "parent": "6063aea60588975bbe88c8ccf8b1d864721b7082",
+  "sourceAuthor": "8f498f2c657608c64d40a3527be13b47a189b7b7",
+  "patchSha256": "8b1b5198edc5700a53a802fa943a764584916cbc0a1802c6bb446c627f35c187",
+  "files": [
+    {
+      "path": "tests/launch-invoice-payment-source.test.ts",
+      "beforeSha256": "2167d4705c9de49c8d8bbecff0e3dc639ceacbc62c508181c42a1e1ac6a22370",
+      "proposedSha256": "52f0e7e62b74c0fff9b295cd855eac4419340097eee37237330a9fcf17ddb3b8"
+    },
+    {
+      "path": "scripts/invoice-caller-source-admission.mjs",
+      "beforeSha256": null,
+      "proposedSha256": "e83139e1af82743bf9993fac2fb55c4d50e359e9681fd16d1a12001a41432dbf"
+    }
+  ],
+  "canonicalGuardChanged": false,
+  "admissionAuthorized": false,
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

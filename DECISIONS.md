@@ -1,3 +1,12 @@
+## Keep invoice source admission a separately approved checker author
+
+Prepare only an unapplied finite alternative for the approved source and fixture
+authors. Retain all original origin checks, hash literals and eight guard cases;
+require exact companion bytes and checker-owned helper integrity before execution.
+Neither source-author approval nor passing fixtures authorizes checker installation
+or operational use. The exact proposed patch needs its own owner approval and
+independent review. Release1.0 remains NOT READY / NOT AUTHORIZED.
+
 ## Migrate invoice fixtures without admitting protected sources
 
 Apply only the exact separately approved392 source-author patch on its isolated
