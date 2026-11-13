@@ -9,6 +9,73 @@ binding, workload, tokenization or transaction is activated by this preference.
 Continue local property/procurement work without waiting for either provider. See
 PROPERTY_OPERATIONS_VALIDATION.md for the new local scope and outstanding gates.
 
+## Private VAR-to-NMI readiness checkpoint · November13 continuation
+
+Reuse [first-contractor acceptance](FIRST_CONTRACTOR_LAUNCH_ACCEPTANCE.md) and
+the original D1–D3 return form; do not create another customer/merchant database
+or public credential form. All rows
+below are required private evidence, currently **NOT ACCEPTED**. Owner-reported
+merchant approval does not establish gateway boarding or test capability.
+
+| Order and isolated binding                                       | Private evidence required before proposing one sandbox capture                                                                                                                                                                               |
+| ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1 · Saul 2 Paul Builders LLC, DBA Saul 2 Paul Builders & Gutters | Provider/processor VAR and boarding evidence matching the legal entity/DBA; exact assigned gateway account and approved sandbox/test merchant; separate internal tenant/merchant configuration reference. No values belong in Git.           |
+| 2 · Cunningham Construction                                      | Its own VAR/boarding/account/test capability and tenant/merchant binding. No copied account, keys, payment token, callback signing identity or settlement destination from contractor1. It does not delay contractor1's separate acceptance. |
+
+For each company, the existing owner/security/financial reviewers must privately
+verify, without treating an unchecked box as an appointment or waiver:
+
+1. Provider-confirmed environment, account/merchant ownership and v5 sale/refund,
+   tokenization, callback and statement capabilities. Obtain actual sandbox
+   approved/declined/UNKNOWN response vectors and settlement evidence contracts;
+   current synthetic fixtures do not establish those facts.
+2. Provider-hosted Payment Component/public-key scope versus server-only private
+   API key, associated user permissions, least privilege and approved custody.
+   API-key and webhook-signing custody are separately identified. This checklist
+   neither creates nor retrieves a key. Keep PAN/CVV and raw tokens out of Git,
+   SQL evidence, logs and owner approval messages.
+3. Exact HTTPS callback receiver, subscribed event types, merchant/signing-key
+   association and raw-body HMAC contract; registering a receiver starts delivery
+   and therefore requires separate approval. Do not create it during preparation.
+   Confirm durable exact event/digest acknowledgment, conflict rejection and no
+   callback-driven money transition before any later subscription.
+4. D1–D3, current genuine Auth/MFA, canonical invoice/customer authority, dedicated
+   SQL/runtime grants and original recovery/broker prerequisites accepted on the
+   exact selected non-production target. Current source/CI proof is insufficient.
+
+After those predecessors, the smallest proposed authorization is **one separately
+approved sandbox capture for contractor1**, using the existing private acceptance
+manifest contract. Bind its SHA256, source/bundle/target, provider-approved test
+account, tenant/merchant/customer/invoice, original authorization and one-use token
+reference, single original command/digest, exact positive USD minor amount,
+UTC expiry (at most the runner's existing30-minute bound), responsible custodians,
+one provider submission and STOP/UNKNOWN exact-read-only handling. Keep private
+custody references in the existing private manifest, not this document. Do not
+add fields to the runner or turn its execute switch on from this checkpoint.
+
+Runner limitation: its current manifest names invoice/authorization and its private
+Keychain payload supplies a gateway token. It does not itself resolve the existing
+customer-bound token-reference vault or prove current customer Auth/consent and
+one-use custody. Bind that evidence in the private owner review linked to the
+manifest hash; do not invent unsupported manifest fields or treat a raw token as
+that proof. Exact operational composition remains a pre-execution gate, with a
+separately reviewed source scope if any adapter change is needed.
+
+Exact provider transaction/amount/currency and independently obtained settlement
+evidence must be read and matched before a separately authorized refund test.
+NMI distinguishes [settled refunds](https://docs.nmi.com/reference/refund-payment-v5)
+from [unsettled voids](https://docs.nmi.com/reference/void-payment-v5); this suite has
+no void adapter, so an unsettled capture cannot be sent through refund as a void.
+An explicit decline and an UNKNOWN remain distinct: only the former releases the
+existing synthetic refundable reservation; UNKNOWN never authorizes another call.
+
+Public provider documentation checked for preparation only:
+[Payment Component](https://docs.nmi.com/docs/payment-component),
+[API-key permissions](https://docs.nmi.com/reference/authentication),
+[callback setup and signature](https://docs.nmi.com/reference/overview).
+No portal/account/provider API was queried; all actual onboarding and sandbox
+execution remain NOT RUN and require their separately exact authorization.
+
 October 16, 2026 · implementation base `97e861f`. **REVIEW ONLY. No activation
 is authorized or performed. Release 1.0 NOT READY / NOT AUTHORIZED.** Draft PR #1
 stays open. The ten historical migrations, approved logo and frozen blocked Netlify
