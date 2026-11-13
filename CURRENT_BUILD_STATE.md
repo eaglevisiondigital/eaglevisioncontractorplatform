@@ -3539,3 +3539,17 @@ custody, D3 independent matched recovery and A01–A12 remain operational gates.
 Exact launch successor checks: native78PASS/0skips, responsive internal-release6PASS,
 build/type/scopedlint/format/features/protected128PASS. Accepted source review CLEAR
 from independent security and QA agents. No hosted acceptance inherited from parents.
+
+## Signed sandbox callback wire integrity
+
+An isolated successor of payment source author `96b654e` now rejects duplicate
+JSON members (including escaped aliases), malformed UTF8 and non-object signed
+callback bodies before the existing inbox call. It reuses the reviewed strict
+payment decoder after the unchanged raw-byte HMAC and merchant checks; exact raw
+body digests, original BOM rejection and the shared65536-byte bound remain intact.
+No route, financial transition, SQL, merchant or provider execution is introduced.
+Six focused parent negatives failed; corrected callback scope47PASS includes28
+new cases and19 retained callback/ACK cases. Typecheck, scoped lint/format and
+feature/design checks PASS. This separate source component is not integrated into
+launch414 and does not admit payment411's still-held protected source chain.
+Release1.0 remains NOT READY / NOT AUTHORIZED.

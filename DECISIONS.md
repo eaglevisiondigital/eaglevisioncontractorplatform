@@ -2893,3 +2893,13 @@ request syntax/amount/currency must not consume a token before downstream reject
 This does not authorize token resolution or replace real invoice/customer authority,
 current revocation, durable vault consumption or UNKNOWN reconciliation. Genuine
 commercial invoice writer/schema activation requires separate exact approval.
+
+## Reject ambiguous signed callback JSON before the inbox
+
+Treat HMAC verification as authentication of exact bytes, not permission to discard
+contradictory members or replace invalid UTF8. Reuse the existing strict payment
+wire decoder only after raw signature and merchant binding checks; preserve the
+webhook's existing BOM rejection, size bound, event/subscription checks, raw digest
+and UNKNOWN inbox-ACK behavior. This repairs an ordinary unprotected callback
+reader on a separate child of96b654e; it neither changes the protected payment
+admission chain nor activates a provider, SQL writer, merchant or launch candidate.
