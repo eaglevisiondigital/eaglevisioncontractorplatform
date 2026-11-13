@@ -1,3 +1,13 @@
+## Separate unapplied operating-signature checker proposals
+
+PR389's exact reviewed M1 author remains the source baseline. New proposal artifacts
+separately bind Cycle9, Cycle24 and their shared helper; canonical checkers,
+historical pins and manifests remain unchanged. Nineteen targeted cases passed,
+including actual disposable Cycle9/critical-Cycle24 checks and rejection of four
+helper mutations before execution. Exact checker approval is still required;
+current-head CI failures are not relabeled. D1–D3/A01–A12/Auth/custody/NMI/recovery
+and release gates remain NOT READY / NOT AUTHORIZED.
+
 ## Historical source-test fixture corrections
 
 Twelve Foundation source-test failures were traced to C31/C32/C33 fixtures mixing

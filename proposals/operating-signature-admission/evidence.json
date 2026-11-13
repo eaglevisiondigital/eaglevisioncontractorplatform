@@ -1,0 +1,30 @@
+{
+  "classification": "UNAPPLIED_CHECKER_ADMISSION_PROPOSAL",
+  "parent": "c50ce4521fbc264276734a9f8909b525c9a7c2f8",
+  "patchSha256": "216da91d6c7f9e1323f8fab75436861a9e3d4620122771f0225e6494caee2596",
+  "separatePatches": {
+    "cycle9": "274c02512df50c1a751fec124db3e8e8c22474c2286a0e70e734c76f91a8c5be",
+    "cycle24": "60f719216eb985839602bbb97e1a3d5420b80579771583677622e7c5715ab447",
+    "helper": "97852ab007d3d7600db597e53d420658a75f4e51c932cd25ce3a509d62396982"
+  },
+  "files": [
+    {
+      "path": "scripts/check-cycle9-integrity.mjs",
+      "beforeSha256": "1faf35bbe36cfa5ca543e568970dafd7d90b2a72c578126d572baa73829606c2",
+      "proposedSha256": "484a6cf6b7282324f86e90e90d4ce947ba4eb722afa6ef33a6a2e8a03e5fff68"
+    },
+    {
+      "path": "scripts/check-cycle24.mjs",
+      "beforeSha256": "4ed8baec4e1b7abc3f3ff86cc88c590b3497c3bfb7ff2ac12fcc1c7e2f71562f",
+      "proposedSha256": "4f95b11e4e1d45186c5607f1b0773cc379e1901d99f7944ce907bfdef5a9a68d"
+    },
+    {
+      "path": "scripts/operating-source-signature-admission.mjs",
+      "beforeSha256": null,
+      "proposedSha256": "38fd3d784b10dd634f6b03a5995a4ce4392eb2924865349d1414328701113978"
+    }
+  ],
+  "canonicalCheckersChanged": false,
+  "admissionAuthorized": false,
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}
