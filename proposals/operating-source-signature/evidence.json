@@ -1,0 +1,19 @@
+{
+  "classification": "UNAPPLIED_OFFLINE_SOURCE_PROPOSAL",
+  "parent": "af36a27e34b77bfef3700d7cd87fdb39c4dc50d5",
+  "path": "src/lib/workflows/operating-center-runtime.ts",
+  "beforeSha256": "7a5272ae344400714dea1efe727a40c19a10c96ccfdf70f7321e127488bbd239",
+  "proposedSha256": "a789309d7f8710f2e3150f4cbc8f8acc5aee9c99633c7611e503db089bcd2544",
+  "patchSha256": "da9db5c5e953c859ab24dc127c48b1d78e0cd1d6e2b7bbe9edf4b444a40ae4a0",
+  "canonicalSourceChanged": false,
+  "authorCreated": false,
+  "admissionAuthorized": false,
+  "requiredBoundaries": [
+    "Cycle9 exact runtime hash",
+    "Cycle24 exact critical Git endpoint"
+  ],
+  "sourceAndAuthorityCaching": false,
+  "assertionsOrBudgetsChanged": false,
+  "hostedAcceptance": "NOT_RUN",
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}

@@ -1,3 +1,12 @@
+## Qualify performance without installing protected source
+
+Use descriptor capture with an indexed fast path and lazy reordered-key lookup;
+never cache source signatures, current authority or business facts. Publish only
+the exact unapplied patch/differential proof. Actual canonical author creation and
+both finite admission boundaries require separate exact owner approvals. Local
+performance observations do not close Ubuntu CI failures. D1-D3/A01-A12 and all
+operational/SQL/provider/recovery/release gates remain; Release1.0 NO-GO.
+
 ## Isolate historical test fixtures from current successor proof
 
 Correct only four ordinary source-test fixtures; historical snapshot entries are
