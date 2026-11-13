@@ -1,3 +1,13 @@
+## Native invoice concurrency boundaries
+
+Three new disposable PostgreSQL cases exercise the existing source uniqueness,
+command identity and tenant namespace under actual concurrent connections and lock
+witnesses. Losing clients retain UNKNOWN, exact winner receipts remain unchanged,
+and a foreign receipt stays unavailable. SQL/client source is unchanged and remains
+unapplied/unwired. [Focused evidence](docs/COMMERCIAL_INVOICE_CONCURRENCY_VALIDATION.json)
+retains native-only limits and the existing private D1/rehearsal authorization path.
+No Auth, custody, provider, installation or release acceptance is implied.
+
 ## Current-session launch integration successor
 
 This child of verified376 retains exact374 runtime/invoice/payment source and376's
