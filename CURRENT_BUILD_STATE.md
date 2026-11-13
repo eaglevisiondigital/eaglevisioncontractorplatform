@@ -3274,3 +3274,15 @@ remains OPEN. Browser6PASS, build/typecheck/scopedlint/format/features/protected
 Independent payment security77PASS plus added fixture1PASS (overlap, not a total).
 Source-level zero-ID defect closed only; no genuine financial release blocker or
 hosted acceptance gate is claimed closed. Independent review CLEAR bounded change.
+
+Optional missed-clock correction successor to PR370: reviewed source efac214aa1a79cb5723c49792cb04307059bc89f
+reuses the existing current-payroll-source fence before correcting the exact displayed
+open entry. Parent negative reproduced a stale review correcting a replacement clock;
+the pinned Phase3 writer remains unchanged and still lacks atomic target CAS. New8
+unit cases PASS independently. Responsive positive3 PASS; negative3 first failed at
+an exact-text locator for the existing combined worker/task label, then those3 PASS
+after correcting only the locator; original failure evidence retained. Build/typecheck,
+scoped lint/format and feature/design checks PASS. Correction/reopening is proven only
+in the original same-tab synthetic repository, not hosted durability or genuine Auth.
+This optional candidate is outside the launch critical path. D1–D3/A01–A12, recovery,
+intake SQL HELD and Release1.0 NOT READY / NOT AUTHORIZED remain unchanged.

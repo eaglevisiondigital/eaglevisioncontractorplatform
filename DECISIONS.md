@@ -2716,3 +2716,11 @@ Prioritize one tenant's USD/card invoice journey; defer optional integrations an
 advanced modules. Preserve original authority/recovery sequencing and require exact
 source-bound sandbox then separate production acceptance. Invalid zero transaction
 identity stays UNKNOWN, consistent with original stored/refund/reconciliation rules.
+
+### Fence missed-clock corrections to the displayed current source
+
+Reuse the existing payroll management/source reader before the original correction
+writer, and invalidate pending UI review when its source or navigation context changes.
+A stale review must not select a replacement clock merely because its worker matches.
+Keep the pinned writer unchanged: this application defense does not establish atomic
+server target CAS, durable custody, genuine authentication or hosted acceptance.
