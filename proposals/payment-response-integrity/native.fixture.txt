@@ -1,0 +1,23 @@
+
+
+it('PRIVATE response integrity probe keeps contradictory refund bytes UNKNOWN and capacity held', async () => {
+  const index = 0;
+  const i = refund(index, 6000);
+  await authorize(index, i, 'refund', refundDigest(i));
+  let submissions = 0;
+  const transport = vi.fn<typeof fetch>(async () => {
+    submissions++;
+    return submissions === 1
+      ? new Response('{"response":"1","response":"2","id":"fictional_ambiguous","amount":"60.00","currency":"USD"}')
+      : Response.json({ response: '1', id: 'fictional_replacement', amount: '100.00', currency: 'USD' });
+  });
+  const first = await gateway(index, transport).refund(i);
+  const saved = await nativeRead(index, i.idempotencyKey);
+  const replacement = refund(index, 10000);
+  await authorize(index, replacement, 'refund', refundDigest(replacement));
+  const next = await gateway(index, transport).refund(replacement).then((r) => r.status, () => 'blocked');
+  const observed = { first: first.status, persisted: saved[0].status, next, submissions };
+  expect(observed, 'WIRE_PROOF:' + JSON.stringify(observed)).toEqual({
+    first: 'unknown', persisted: 'unknown', next: 'blocked', submissions: 1,
+  });
+});

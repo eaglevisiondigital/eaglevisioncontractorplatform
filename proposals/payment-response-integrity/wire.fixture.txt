@@ -1,0 +1,221 @@
+import { expect, it, vi } from 'vitest';
+import {
+  SandboxGateway,
+  type SandboxIntent,
+  type SandboxIntentStore,
+  type SandboxMerchant,
+  type SandboxResult,
+} from '../server/payments/sandbox';
+import {
+  SandboxRefundGateway,
+  type SandboxRefundStore,
+} from '../server/payments/refunds';
+import { decodePaymentResponse } from '../server/payments/response-json';
+const modes = [
+  'success',
+  'bom-success',
+  'double-bom',
+  'decline',
+  'null-root',
+  'array-root',
+  'primitive-root',
+  'missing',
+  'malformed',
+  'duplicate',
+  'escaped-duplicate',
+  'nested-duplicate',
+  'utf8',
+  'oversize',
+  'deep',
+  'trailing',
+  'http-error',
+] as const;
+type Mode = (typeof modes)[number];
+function reply(provider: SandboxMerchant['provider'], mode: Mode) {
+  const success =
+    provider === 'nmi'
+      ? '{"response":"1","id":"fictional_transaction","amount":"10.01","currency":"USD"}'
+      : '{"transactionResponse":{"responseCode":"1","transId":"fictional_transaction"},"messages":{"resultCode":"Ok"}}';
+  let raw = Buffer.from(success);
+  if (mode === 'bom-success')
+    raw = Buffer.concat([Buffer.from([0xef, 0xbb, 0xbf]), raw]);
+  if (mode === 'double-bom')
+    raw = Buffer.concat([
+      Buffer.from([0xef, 0xbb, 0xbf, 0xef, 0xbb, 0xbf]),
+      raw,
+    ]);
+  if (mode === 'null-root') raw = Buffer.from('null');
+  if (mode === 'array-root') raw = Buffer.from('[' + success + ']');
+  if (mode === 'primitive-root') raw = Buffer.from('true');
+  if (mode === 'decline')
+    raw = Buffer.from(
+      provider === 'nmi'
+        ? '{"response":"2"}'
+        : '{"transactionResponse":{"responseCode":"2"}}',
+    );
+  if (mode === 'missing') raw = Buffer.from('{}');
+  if (mode === 'malformed') raw = Buffer.from('{');
+  if (mode === 'duplicate')
+    raw = Buffer.from(
+      provider === 'nmi'
+        ? '{"response":"1","response":"2","id":"fictional_transaction","amount":"10.01","currency":"USD"}'
+        : '{"transactionResponse":{"responseCode":"1","transId":"fictional_transaction"},"transactionResponse":{"responseCode":"2"},"messages":{"resultCode":"Ok"}}',
+    );
+  if (mode === 'escaped-duplicate')
+    raw = Buffer.from(
+      provider === 'nmi'
+        ? '{"response":"1","respon\\u0073e":"2","id":"fictional_transaction","amount":"10.01","currency":"USD"}'
+        : '{"transactionResponse":{"responseCode":"1","respon\\u0073eCode":"2","transId":"fictional_transaction"},"messages":{"resultCode":"Ok"}}',
+    );
+  if (mode === 'nested-duplicate')
+    raw = Buffer.from(
+      success.slice(0, -1) + ',"metadata":{"nested":1,"nested":2}}',
+    );
+  if (mode === 'utf8')
+    raw = Buffer.concat([
+      Buffer.from(success.slice(0, -1) + ',"metadata":"'),
+      Buffer.from([0xc3, 0x28]),
+      Buffer.from('"}'),
+    ]);
+  if (mode === 'oversize')
+    raw = Buffer.from(
+      success.slice(0, -1) + ',"metadata":"' + 'x'.repeat(65536) + '"}',
+    );
+  if (mode === 'deep')
+    raw = Buffer.from(
+      success.slice(0, -1) +
+        ',"metadata":' +
+        '['.repeat(66) +
+        '0' +
+        ']'.repeat(66) +
+        '}',
+    );
+  if (mode === 'trailing') raw = Buffer.concat([raw, Buffer.from('{}')]);
+  return new Response(raw, { status: mode === 'http-error' ? 500 : 200 });
+}
+for (const provider of ['nmi', 'authorize_net'] as const) {
+  for (const operation of ['capture', 'refund'] as const) {
+    it.each(modes)(
+      `${provider} ${operation} preserves wire %s as an exact result or UNKNOWN without replay`,
+      async (mode) => {
+        const merchant: SandboxMerchant = {
+          organizationId: crypto.randomUUID(),
+          merchantConfigId: crypto.randomUUID(),
+          provider,
+          mode: 'sandbox',
+          approvalReference: 'FICTIONAL TEST ONLY',
+          approvedUntil: new Date(Date.now() + 60_000).toISOString(),
+        };
+        const intent: SandboxIntent = {
+          organizationId: merchant.organizationId,
+          merchantConfigId: merchant.merchantConfigId,
+          invoiceId: crypto.randomUUID(),
+          authorizationId: crypto.randomUUID(),
+          idempotencyKey: crypto.randomUUID(),
+          amountMinor: 1001,
+          currency: 'USD',
+          expiresAt: merchant.approvedUntil,
+        };
+        let held = false;
+        let saved: SandboxResult | undefined;
+        const reserve: SandboxIntentStore['reserve'] = async () => {
+          if (held)
+            return saved && saved.status !== 'unknown'
+              ? { status: 'existing', result: saved }
+              : { status: 'unknown' };
+          held = true;
+          return { status: 'reserved' };
+        };
+        const finish = vi.fn<SandboxIntentStore['finish']>(
+          async (_m, _i, result) => {
+            saved = result;
+          },
+        );
+        const store: SandboxIntentStore & SandboxRefundStore = {
+          reserve,
+          finish,
+          reserveRefund: reserve,
+          finishRefund: finish,
+        };
+        const transport = vi.fn<typeof fetch>(async () =>
+          reply(provider, mode),
+        );
+        const credentials =
+          provider === 'nmi'
+            ? { apiKey: 'fictional-only' }
+            : {
+                apiLoginId: 'fictional-only',
+                transactionKey: 'fictional-only',
+              };
+        const refundIntent = {
+          ...intent,
+          captureKey: crypto.randomUUID(),
+          providerTransactionId: 'fictional_original',
+          ...(provider === 'authorize_net'
+            ? { customerProfileId: '123', paymentProfileId: '456' }
+            : {}),
+        };
+        const run = () =>
+          operation === 'capture'
+            ? new SandboxGateway(
+                merchant,
+                credentials,
+                store,
+                transport,
+              ).capture(
+                intent,
+                provider === 'nmi'
+                  ? { provider, value: 'fictional_token' }
+                  : {
+                      provider,
+                      descriptor: 'COMMON.ACCEPT.INAPP.PAYMENT',
+                      value: 'fictional_token',
+                    },
+              )
+            : new SandboxRefundGateway(
+                merchant,
+                credentials,
+                store,
+                transport,
+              ).refund(refundIntent);
+        const expected =
+          mode === 'success' || mode === 'bom-success'
+            ? 'succeeded'
+            : mode === 'decline'
+              ? 'declined'
+              : 'unknown';
+        const result = await run();
+        expect(result).toEqual({
+          status: expected,
+          provider,
+          mode: 'sandbox',
+          transactionId:
+            expected === 'succeeded' ? 'fictional_transaction' : null,
+          amountMinor: 1001,
+          currency: 'USD',
+        });
+        expect(saved).toEqual(result);
+        expect(finish).toHaveBeenCalledOnce();
+        expect(transport).toHaveBeenCalledOnce();
+        expect(transport.mock.calls[0][1]?.redirect).toBe('error');
+        if (expected === 'unknown')
+          await expect(run()).rejects.toThrow(/reconciliation/);
+        expect(transport).toHaveBeenCalledOnce();
+      },
+    );
+  }
+}
+it('enforces the exact65536-byte bound independently of transport streaming', () => {
+  expect(decodePaymentResponse(Buffer.from('{}' + ' '.repeat(65534)))).toEqual(
+    {},
+  );
+  expect(() =>
+    decodePaymentResponse(Buffer.from('{}' + ' '.repeat(65535))),
+  ).toThrow(/Bounded/);
+});
+it('accepts64 value levels and rejects65 without changing valid nested response content', () => {
+  const bytes = (n: number) =>
+    Buffer.from('{"metadata":' + '['.repeat(n) + '0' + ']'.repeat(n) + '}');
+  expect(decodePaymentResponse(bytes(63))).toHaveProperty('metadata');
+  expect(() => decodePaymentResponse(bytes(64))).toThrow(/nesting/);
+});
