@@ -52,30 +52,41 @@ function dataSignature(value: unknown) {
     )
       throw Error('Plain source evidence required');
     active.add(v);
-    const descriptors = Object.getOwnPropertyDescriptors(v),
-      keys = Reflect.ownKeys(v);
-    if (
-      keys.some(
-        (k) => typeof k !== 'string' || !Object.hasOwn(descriptors[k], 'value'),
-      )
-    )
-      throw Error('Own-data source evidence required');
+    // Capture each descriptor once in the same ownKeys/descriptor/ownKeys order.
+    // Ordinary objects retain the indexed fast path; reordered Proxy keys use
+    // the captured map. No original values, descriptors or checks are cached.
+    const capturedKeys = Reflect.ownKeys(v);
+    const captured = capturedKeys.map((key) =>
+      Object.getOwnPropertyDescriptor(v, key),
+    );
+    const keys = Reflect.ownKeys(v);
+    let reordered: Map<PropertyKey, PropertyDescriptor | undefined> | undefined;
+    const descriptor = (key: PropertyKey, index: number) => {
+      if (capturedKeys[index] === key) return captured[index];
+      reordered ??= new Map(capturedKeys.map((k, i) => [k, captured[i]]));
+      return reordered.get(key);
+    };
+    for (let i = 0; i < keys.length; i++) {
+      const d = descriptor(keys[i], i);
+      if (typeof keys[i] !== 'string' || !d || !Object.hasOwn(d, 'value'))
+        throw Error('Own-data source evidence required');
+    }
     let result: unknown;
     if (Array.isArray(v)) {
       if (
         keys.length !== v.length + 1 ||
-        Array.from({ length: v.length }, (_, i) => descriptors[String(i)]).some(
-          (d) => !d,
-        )
+        Array.from({ length: v.length }, (_, i) =>
+          descriptor(String(i), i),
+        ).some((d) => !d)
       )
         throw Error('Dense source data required');
       result = Array.from({ length: v.length }, (_, i) =>
-        data(descriptors[String(i)].value),
+        data(descriptor(String(i), i)!.value),
       );
     } else {
       const plain = Object.create(null) as Record<string, unknown>;
-      for (const key of keys as string[])
-        plain[key] = data(descriptors[key].value);
+      for (let i = 0; i < keys.length; i++)
+        plain[keys[i] as string] = data(descriptor(keys[i], i)!.value);
       result = plain;
     }
     active.delete(v);
