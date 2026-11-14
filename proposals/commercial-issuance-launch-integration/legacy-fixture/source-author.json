@@ -1,0 +1,28 @@
+{
+  "classification": "UNAPPLIED_THREE_FILE_RETAINED_LAUNCH_COMPATIBILITY",
+  "base": "e22fe5ebc5a942bbf5bbc5348e16e9bde21d2db5",
+  "futureSourceAuthor": null,
+  "sourceAuthorApproval": "HELD_EXACT_THREE_FILE_CHECKPOINT",
+  "integrationApproval": "HELD_SEPARATE_CHECKPOINT",
+  "patchSha256": "d809634e7847fc7870de94fa16437fe7f9413bf62794024dd2229b3fb6f49885",
+  "files": [
+    {
+      "path": "proposals/payment-launch-integration/legacy-invoice-fixture.mjs",
+      "mode": "100644",
+      "beforeSha256": "2e1cb96bb8c124d4ec11a053582bbcc27a259311ef7d1d09ef486448c53d51c2",
+      "afterSha256": "9520858626dde02883b5755e3681d1a3ba35f00f9a57eb55fe1f613a8befbe06"
+    },
+    {
+      "path": "tests/launch-caller-payment-integration.test.ts",
+      "mode": "100644",
+      "beforeSha256": "e9efe20d12c69c4c9c17b4027e88b34f72589e834e5975169e4062a20912379c",
+      "afterSha256": "f9289b166c0170072446aa35e261f2108fa3f62602dd6f4e34ccf952195949ab"
+    },
+    {
+      "path": "proposals/invoice-guard-admission/qualify.mjs",
+      "mode": "100644",
+      "beforeSha256": "6db579339398f66f56d303bb79281f11874c326af88d5dbf010cbdef2326b22b",
+      "afterSha256": "16cf2e24c6e8925ef8ec401f913a0277c0debde1ced48c35a19b47aeda9c0c39"
+    }
+  ]
+}
