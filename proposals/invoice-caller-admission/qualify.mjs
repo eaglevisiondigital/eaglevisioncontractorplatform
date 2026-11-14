@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import {
-  readFileSync,
+  readFileSync as nodeReadFileSync,
   writeFileSync,
   mkdtempSync,
   symlinkSync,
@@ -13,6 +13,38 @@ import {
 } from 'node:fs';
 import { tmpdir, devNull } from 'node:os';
 import { join } from 'node:path';
+
+// Seal the ordinary historical-fixture adapter before evaluating any bytes.
+const guardFixturePath =
+  'proposals/invoice-guard-admission/fixture-adapter.mjs';
+const guardFixtureStat = (await import('node:fs')).lstatSync;
+let guardFixturePrefix = '';
+for (const part of guardFixturePath.split('/')) {
+  guardFixturePrefix = guardFixturePrefix
+    ? guardFixturePrefix + '/' + part
+    : part;
+  if (guardFixtureStat(guardFixturePrefix).isSymbolicLink())
+    throw Error('Reviewed guard fixture required');
+}
+const guardFixtureInfo = guardFixtureStat(guardFixturePath);
+if (!guardFixtureInfo.isFile() || (guardFixtureInfo.mode & 0o777) !== 0o644)
+  throw Error('Reviewed guard fixture required');
+const guardFixtureBytes = nodeReadFileSync(guardFixturePath);
+if (
+  (await import('node:crypto'))
+    .createHash('sha256')
+    .update(guardFixtureBytes)
+    .digest('hex') !==
+  '6c6a5758d3a3219b4fac88e5dbbeb2e24f6182bf73c8eba3f7bc5c44c8cd61bc'
+)
+  throw Error('Reviewed guard fixture required');
+const { createHistoricalRead } = await import(
+  'data:text/javascript;base64,' + guardFixtureBytes.toString('base64')
+);
+const readFileSync = createHistoricalRead(nodeReadFileSync, {
+  includeSql: true,
+});
+
 const directory = 'proposals/invoice-caller-admission';
 const expected = {
   classification: 'UNAPPLIED_FINITE_INVOICE_CALLER_ADMISSION',

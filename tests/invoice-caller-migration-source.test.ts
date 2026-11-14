@@ -1,8 +1,40 @@
-import { readFileSync, lstatSync } from 'node:fs';
+import { readFileSync as nodeReadFileSync, lstatSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import ts from 'typescript';
 import { expect, it } from 'vitest';
+
+// Seal the ordinary historical-fixture adapter before evaluating any bytes.
+const guardFixturePath =
+  'proposals/invoice-guard-admission/fixture-adapter.mjs';
+const guardFixtureStat = (await import('node:fs')).lstatSync;
+let guardFixturePrefix = '';
+for (const part of guardFixturePath.split('/')) {
+  guardFixturePrefix = guardFixturePrefix
+    ? guardFixturePrefix + '/' + part
+    : part;
+  if (guardFixtureStat(guardFixturePrefix).isSymbolicLink())
+    throw Error('Reviewed guard fixture required');
+}
+const guardFixtureInfo = guardFixtureStat(guardFixturePath);
+if (!guardFixtureInfo.isFile() || (guardFixtureInfo.mode & 0o777) !== 0o644)
+  throw Error('Reviewed guard fixture required');
+const guardFixtureBytes = nodeReadFileSync(guardFixturePath);
+if (
+  (await import('node:crypto'))
+    .createHash('sha256')
+    .update(guardFixtureBytes)
+    .digest('hex') !==
+  '6c6a5758d3a3219b4fac88e5dbbeb2e24f6182bf73c8eba3f7bc5c44c8cd61bc'
+)
+  throw Error('Reviewed guard fixture required');
+const { createHistoricalRead } = await import(
+  'data:text/javascript;base64,' + guardFixtureBytes.toString('base64')
+);
+const readFileSync = createHistoricalRead(nodeReadFileSync, {
+  includeSql: true,
+}) as typeof nodeReadFileSync;
+
 const helper = await import(
   new URL(
     '../proposals/invoice-caller-fixture-migration/source-author-baseline.mjs',

@@ -1,0 +1,58 @@
+{
+  "schema": "issuance-guard-source-author-checkpoint-v1",
+  "parent": "844ae8adf12b789d37c9f49189df631ac1d2209b",
+  "classification": "UNAPPLIED_AUTHOR_PREPARATION_NOT_ADMISSION",
+  "protectedSource": {
+    "path": "server/invoices/commercial-drafts.proposed.sql",
+    "mode": "100644",
+    "before": "da35d098727eff68ae7905c3709d6982cf89560cae538923f5d7e570dab0306e",
+    "after": "e1c504f9a7077caa92c375c378fb370155478be9cf077e66bf58932ae0895a3c",
+    "patch": "45d2eeafaca661d586e707aa6974b3f3216a44988de8a4b3e8d39f55bd3b6f45",
+    "state": "UNAPPLIED_HELD_EXACT_APPROVAL"
+  },
+  "files": [
+    {
+      "path": "proposals/commercial-invoice-issuance/author-fixture.ts",
+      "sha256": "97ec70f65772ca7ee33377e4b305fa07589c8338e1f3f10954c6d78fc0f75d97",
+      "mode": "100644"
+    },
+    {
+      "path": "proposals/commercial-invoice-issuance/AUTHOR_CHECKPOINT.md",
+      "sha256": "7df79b9b0730aaabf0cacfe89ff9ca9e226ed7d340ff4cac59e76520aa6fe06c",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/commercial-invoice-author-checkpoint.test.ts",
+      "sha256": "8210051217c35647ad3560acec625380f48fcef370682614040f18a9cd98a827",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/database/commercial-invoice-issuance-proposal.test.ts",
+      "sha256": "1b2a8fcf3cda56e3e337fdef8e5f345a0d154cd85e0df97f06170eeaf65974a0",
+      "mode": "100644"
+    }
+  ],
+  "verification": {
+    "controls": 26,
+    "native": 34,
+    "failed": 0,
+    "nativeSkipped": 0,
+    "nativeReportSha256": "62c5f0e8473d09cc3218f582d66a396803b15a370548b7ad6a73e4f6af4b015e",
+    "canonicalAuthorEndpointAdmission": "DENIED_BY_UNCHANGED_ORIGINAL_CHECKER",
+    "sqlInstall": "NOT_RUN",
+    "genuineAuth": "NOT_ACCEPTED",
+    "D1_D2_D3": "UNCHANGED",
+    "A01_A12": "NOT_RUN",
+    "release": "NO_GO",
+    "baselineControlsReportSha256": "f2afa4db47c625a121936372c6650aa802046b234489e0bba81046f71d020f25",
+    "authoredPhaseInMemory": {
+      "controls": 26,
+      "failed": 0,
+      "skipped": 0,
+      "reportSha256": "92782e25fd1eac14a3249e51b3ff0a69281a809d7f073a0492f10075e9edb31a",
+      "canonicalWrite": false
+    },
+    "independentReview": "CLEAR_AUTHOR_PREPARATION_ONLY",
+    "resolvedFinding": "New controls now qualify both fixture phases without deriving a duplicate guard or accepting live source admission"
+  }
+}

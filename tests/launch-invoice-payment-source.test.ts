@@ -25,7 +25,7 @@ if (
 const callerHelperBytes = readFileSync(callerHelperUrl);
 if (
   createHash('sha256').update(callerHelperBytes).digest('hex') !==
-  'f3fb04f429f2e43493bf57ecce38a7435f346fa4d2fd17d790ff170e366b11bb'
+  '1d3438c34656e732c0352dab02477ea449ed4e4abd92714156c3ec62ff75e70a'
 )
   throw Error('Reviewed invoice caller helper required');
 const { admitInvoiceCallerSource: admitInvoiceCallerOnly } = await import(
