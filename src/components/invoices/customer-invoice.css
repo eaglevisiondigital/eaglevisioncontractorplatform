@@ -1,0 +1,141 @@
+.customer-invoice {
+  max-width: 960px;
+  margin: 1rem auto;
+  padding: clamp(1rem, 4vw, 2.5rem);
+  color: #203530;
+  background: #f5f6f2;
+  border: 1px solid #d9e1da;
+  border-radius: 14px;
+  overflow-wrap: anywhere;
+}
+.customer-invoice * {
+  box-sizing: border-box;
+}
+.customer-invoice-header {
+  position: static;
+  display: block;
+  padding: 0 0 1rem;
+  background: transparent;
+  color: inherit;
+  height: auto;
+  min-height: 0;
+  border-bottom: 2px solid var(--invoice-color, #00543e);
+}
+.customer-invoice-header .platform-brand {
+  display: inline-flex;
+  max-width: 240px;
+  background: transparent;
+}
+.customer-invoice-header .platform-brand img {
+  width: 100%;
+  height: auto;
+}
+.customer-invoice-lab {
+  font-weight: 700;
+  color: #364e44;
+}
+.customer-invoice-number {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.customer-invoice-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.customer-invoice-table {
+  overflow-x: auto;
+  max-width: 100%;
+}
+.customer-invoice table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.customer-invoice th,
+.customer-invoice td {
+  text-align: left;
+  padding: 0.75rem 0.4rem;
+  border-bottom: 1px solid #c9d5cc;
+}
+.customer-invoice th:first-child {
+  width: 45%;
+}
+.customer-invoice th:nth-child(2),
+.customer-invoice td:nth-child(2) {
+  width: 25%;
+  white-space: nowrap;
+}
+.customer-invoice th:last-child,
+.customer-invoice td:last-child {
+  width: 30%;
+  white-space: nowrap;
+}
+.customer-invoice-totals {
+  display: block;
+  max-width: 360px;
+  margin-left: auto;
+}
+.customer-invoice-totals div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+.customer-invoice-totals dt,
+.customer-invoice dd {
+  color: #203530;
+}
+.customer-invoice-totals div:last-child {
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-top: 2px solid #43594e;
+}
+.customer-invoice-totals dd {
+  white-space: nowrap;
+}
+.customer-invoice-payment {
+  background: white;
+  border: 1px solid #ccd8cf;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+.customer-invoice button,
+.customer-invoice summary {
+  min-height: 44px;
+  margin: 0.25rem 0.5rem 0.25rem 0;
+}
+.customer-invoice button:disabled {
+  color: #4f5f57;
+  background: #e2e7e0;
+  opacity: 1;
+}
+.customer-invoice details {
+  margin: 1rem 0;
+}
+.customer-invoice summary {
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-weight: 700;
+}
+.customer-invoice-action {
+  border-top: 1px solid #d9e1da;
+  padding: 0.5rem 0;
+}
+.customer-invoice :focus-visible {
+  outline: 3px solid #00543e;
+  outline-offset: 3px;
+}
+@media (max-width: 600px) {
+  .customer-invoice-summary {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+  .customer-invoice {
+    margin: 0.5rem;
+  }
+  .customer-invoice-totals {
+    max-width: none;
+  }
+}
