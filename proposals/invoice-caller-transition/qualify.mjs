@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import {
-  readFileSync,
+  readFileSync as nodeReadFileSync,
   lstatSync,
   existsSync,
   writeFileSync,
@@ -15,6 +15,38 @@ import {
 } from 'node:fs';
 import { tmpdir, devNull } from 'node:os';
 import { join, dirname } from 'node:path';
+
+// Seal the ordinary historical-fixture adapter before evaluating any bytes.
+const guardFixturePath =
+  'proposals/invoice-guard-admission/fixture-adapter.mjs';
+const guardFixtureStat = (await import('node:fs')).lstatSync;
+let guardFixturePrefix = '';
+for (const part of guardFixturePath.split('/')) {
+  guardFixturePrefix = guardFixturePrefix
+    ? guardFixturePrefix + '/' + part
+    : part;
+  if (guardFixtureStat(guardFixturePrefix).isSymbolicLink())
+    throw Error('Reviewed guard fixture required');
+}
+const guardFixtureInfo = guardFixtureStat(guardFixturePath);
+if (!guardFixtureInfo.isFile() || (guardFixtureInfo.mode & 0o777) !== 0o644)
+  throw Error('Reviewed guard fixture required');
+const guardFixtureBytes = nodeReadFileSync(guardFixturePath);
+if (
+  (await import('node:crypto'))
+    .createHash('sha256')
+    .update(guardFixtureBytes)
+    .digest('hex') !==
+  '6c6a5758d3a3219b4fac88e5dbbeb2e24f6182bf73c8eba3f7bc5c44c8cd61bc'
+)
+  throw Error('Reviewed guard fixture required');
+const { createHistoricalRead } = await import(
+  'data:text/javascript;base64,' + guardFixtureBytes.toString('base64')
+);
+const readFileSync = createHistoricalRead(nodeReadFileSync, {
+  includeSql: true,
+});
+
 const paymentFrameGuard =
   'bf366bff56157c0b94c174c91d8a9fbc76cb95e836d9387a2d61104e44fc873a';
 const paymentAdapterPath =
@@ -148,7 +180,7 @@ export function qualify({
         paymentFrameGuard,
         '6f97dc729aeebbc00450f862ca2c9e5edaadbb27e2e8c5b1e286514b9a741f4e',
       ].includes(hash(snapshots[2])) &&
-        paymentFixture?.verifyPaymentFrame() === true),
+        paymentFixture?.verifyPaymentFrame({ read: readFileSync }) === true),
     'Exact approved or proposed qualification frame required',
   );
   const before = new Map();
@@ -199,7 +231,7 @@ export function qualify({
           ].includes(hash(bytes))
         ) {
           assert(paymentFixture, 'Reviewed payment fixture required');
-          paymentFixture.verifyPaymentFrame();
+          paymentFixture.verifyPaymentFrame({ read: readFileSync });
           bytes = git(
             'show',
             '276fbe4357a5ccc3593374e4cd359a10e8ae1bf6:' + path,
