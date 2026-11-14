@@ -6,6 +6,7 @@ import { blankEstimate } from '../../src/domain/estimating/calculation';
 import type { EstimateBundle } from '../../src/domain/estimating/types';
 import type { CommercialDraft } from '../../server/invoices/commercial-draft-client';
 import { presentIssuedInvoice } from '../../proposals/commercial-invoice-issuance/presentation';
+import { captureIssuanceAuthorFixture } from '../../proposals/commercial-invoice-issuance/author-fixture';
 
 const db = createTestDatabase();
 let fixtureAdmin = 'postgres';
@@ -138,10 +139,7 @@ beforeAll(async () => {
   await db.exec(readFileSync('tests/database/bootstrap.sql', 'utf8'));
   for (const f of readdirSync('supabase/migrations').sort())
     await db.exec(readFileSync('supabase/migrations/' + f, 'utf8'));
-  const original = readFileSync(
-    'server/invoices/commercial-drafts.proposed.sql',
-    'utf8',
-  );
+  const original = captureIssuanceAuthorFixture().original;
   expect(createHash('sha256').update(original).digest('hex')).toBe(
     'da35d098727eff68ae7905c3709d6982cf89560cae538923f5d7e570dab0306e',
   );
