@@ -16,6 +16,17 @@ const patchHash =
 const helperPath = 'scripts/invoice-caller-source-admission.mjs';
 const helperHash =
   '1d3438c34656e732c0352dab02477ea449ed4e4abd92714156c3ec62ff75e70a';
+// Finite retained-launch compatibility. Original histories and proposal seals stay unchanged.
+const retainedLaunch = Object.freeze({
+  'proposals/payment-launch-integration/legacy-invoice-fixture.mjs': {
+    before: '2e1cb96bb8c124d4ec11a053582bbcc27a259311ef7d1d09ef486448c53d51c2',
+    after: '9520858626dde02883b5755e3681d1a3ba35f00f9a57eb55fe1f613a8befbe06',
+  },
+  'tests/launch-caller-payment-integration.test.ts': {
+    before: 'e9efe20d12c69c4c9c17b4027e88b34f72589e834e5975169e4062a20912379c',
+    after: 'f9289b166c0170072446aa35e261f2108fa3f62602dd6f4e34ccf952195949ab',
+  },
+});
 const digest = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const fail = () => {
   throw Error('Exact sealed invoice guard proposal required');
@@ -117,6 +128,7 @@ function inspect({ read, stat }) {
     checked(row.path, row.sha256, read, stat);
   const targets = new Map(evidence.files.map((row) => [row.path, row]));
   const phases = new Set();
+  const retainedPhases = new Set();
   for (const row of baseline()) {
     regular(row.path, row.mode === '100644' ? 0o644 : 0o755, stat);
     const bytes = Buffer.from(read(row.path));
@@ -125,6 +137,12 @@ function inspect({ read, stat }) {
       const hash = digest(bytes);
       if (hash === target.before) phases.add('before');
       else if (hash === target.after) phases.add('after');
+      else fail();
+    } else if (Object.hasOwn(retainedLaunch, row.path)) {
+      const pin = retainedLaunch[row.path],
+        hash = digest(bytes);
+      if (hash === pin.before) retainedPhases.add('original');
+      else if (hash === pin.after) retainedPhases.add('proposed');
       else fail();
     } else {
       const oid = createHash('sha1')
@@ -135,8 +153,17 @@ function inspect({ read, stat }) {
     }
     regular(row.path, row.mode === '100644' ? 0o644 : 0o755, stat);
   }
-  if (phases.size !== 1) fail();
-  return { payloads, phase: [...phases][0] };
+  if (
+    phases.size !== 1 ||
+    retainedPhases.size !== 1 ||
+    (retainedPhases.has('proposed') && phases.has('before'))
+  )
+    fail();
+  return {
+    payloads,
+    phase: [...phases][0],
+    retainedPhase: [...retainedPhases][0],
+  };
 }
 const key = (path) =>
   relative(
@@ -155,7 +182,11 @@ export async function qualifyInvoiceGuardProposal({
   );
   const inspectCaptured = () => {
     const current = inspect({ read, stat });
-    if (current.phase !== captured.phase) fail();
+    if (
+      current.phase !== captured.phase ||
+      current.retainedPhase !== captured.retainedPhase
+    )
+      fail();
     return current;
   };
   // Import is an await boundary. Source and packet reads stay fresh.
