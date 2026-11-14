@@ -5,7 +5,7 @@ import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 const adapter = 'proposals/payment-response-admission/fixture-adapter.mjs';
 const adapterHash =
-  '4ccab151297b44da76057199cb3cabfcd2c73c3e20ed6761c27737db16468203';
+  '78c5bfe95bfe6e546267c52216fbad52aff57933826f24fbbf59f70f1a60a222';
 const baseline = '394d7fc1bbc6d6a27440e881bc3e9bf3d76befa6';
 const originals = {
   'scripts/invoice-caller-source-admission.mjs':
