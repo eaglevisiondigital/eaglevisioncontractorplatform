@@ -57,8 +57,8 @@ No operational provisioner, LOGIN, authority seed or role assumption is supplied
 
 Genuine acceptance remains blocked by the held Auth/session RPC and original
 recovery → P1-on13 → customer14/broker prerequisites where used; a separately
-reviewed caller role/connection contract (the original caller admits draft runtime
-only); exact target/history, SQL/owner/runtime/LOGIN/grant and authority provisioning
+reviewed caller role/connection contract (issuance-role/workload acceptance has
+not been qualified); exact target/history, SQL/owner/runtime/LOGIN/grant and authority provisioning
 approval; fresh installed-writer/bypass inventory; D1–D3; and original A01–A12.
 Receipt durability here is local PostgreSQL, not independent custody or hosted Auth.
 Customer publication, consent/delivery/resend/audit, a real payment-link lifecycle,
