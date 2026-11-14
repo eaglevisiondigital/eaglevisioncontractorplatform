@@ -20,6 +20,7 @@ import {
 } from './check-cycle21.mjs';
 
 import {
+  cycle25SourcePorts,
   admitCycle33Forward,
   admitCycle33ExecutionPublished,
   admitCycle33ExecutionCiCompatibility,
@@ -95,10 +96,9 @@ const hex40 = (value) =>
   typeof value === 'string' &&
   /^[a-f0-9]{40}$/.test(value) &&
   value !== '0'.repeat(40);
-const readGit = (commit, path) =>
-  execFileSync('git', ['show', `${commit}:${path}`], {
-    maxBuffer: 4 * 1024 * 1024,
-  });
+// Capture the immutable-object reader once. Current source reads and injected
+// test ports retain their original fresh validation path.
+const readGit = cycle25SourcePorts.git;
 const retainedIndexPaths = [
   ...[6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19].map(
     (c) => `docs/program/CYCLE${c}_DELIVERY_INDEX.json`,
