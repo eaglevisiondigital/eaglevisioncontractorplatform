@@ -16,9 +16,9 @@ import { pathToFileURL } from 'node:url';
 export const parent = '95b0bb301610e589090e5611427809a29a23790a';
 const base = 'proposals/nmi-order-reference-admission/';
 const patchHash =
-  '4043acd54d25ef46dd3447e5f80d5423a24e10c0dd4d944a354685475f01e220';
+  '828c548efa09aafa34ba283d41d33e6d2dd021c9e58f988e735a866b07804650';
 const recordHash =
-  '0e3bb6206473263458cc256f2a0fd4158b1a1495dc6d41f35f8b63fbfdb3bddd';
+  'bcf6b12d89c2082bd21314be76a11dfd37c57bc90cd243a6e0df4c76b0b976f6';
 const helper = 'scripts/payment-response-source-admission.mjs';
 const env = {
   PATH: process.env.PATH,

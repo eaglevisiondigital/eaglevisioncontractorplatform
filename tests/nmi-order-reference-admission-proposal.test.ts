@@ -7,8 +7,13 @@ import {
   renameSync,
   symlinkSync,
   unlinkSync,
+  existsSync,
+  mkdtempSync,
+  realpathSync,
 } from 'node:fs';
 import { join } from 'node:path';
+import { devNull, tmpdir } from 'node:os';
+import { execFileSync, spawnSync } from 'node:child_process';
 import {
   prepareArchive,
   checkArchive,
@@ -250,3 +255,102 @@ it.each([gateway, fixture])(
     }
   },
 );
+
+// These controls invoke the actual default helper in a separate process under
+// poisoned environment/config; no injected metadata/read port masks the boundary.
+it.each([
+  'environment-external-diff',
+  'local-external-diff',
+  'local-textconv',
+  'inherited-config-injection',
+])('keeps actual default Git reads non-executable under %s', (mode) => {
+  checkArchive(archive);
+  const probe = mkdtempSync(
+    join(realpathSync(tmpdir()), 'propel-nmi-git-helper-'),
+  );
+  const hook = join(probe, 'hook.mjs'),
+    marker = join(probe, 'executed');
+  const config = join(archive, '.git', 'config'),
+    priorConfig = readFileSync(config);
+  const attributes = join(archive, '.gitattributes');
+  const priorAttributes = existsSync(attributes)
+    ? readFileSync(attributes)
+    : undefined;
+  const environment: Record<string, string | undefined> = {
+    PATH: process.env.PATH,
+    LC_ALL: 'C',
+    GIT_CONFIG_NOSYSTEM: '1',
+    GIT_CONFIG_SYSTEM: devNull,
+    GIT_CONFIG_GLOBAL: devNull,
+    GIT_CONFIG_COUNT: '0',
+    GIT_ALLOW_PROTOCOL: 'file',
+  };
+  writeFileSync(
+    hook,
+    '#!/usr/bin/env node\nimport { writeFileSync } from "node:fs";\nwriteFileSync(' +
+      JSON.stringify(marker) +
+      ', "EXECUTED");\nprocess.exit(1);\n',
+    { mode: 0o755 },
+  );
+  const configure = (key: string, value: string) =>
+    execFileSync(
+      'git',
+      [
+        '-C',
+        archive,
+        '-c',
+        'core.hooksPath=' + devNull,
+        'config',
+        '--local',
+        key,
+        value,
+      ],
+      { env: environment, stdio: 'pipe' },
+    );
+  try {
+    if (mode === 'environment-external-diff')
+      environment.GIT_EXTERNAL_DIFF = hook;
+    if (mode === 'local-external-diff') configure('diff.external', hook);
+    if (mode === 'local-textconv') {
+      configure('diff.propelNmi.textconv', hook);
+      writeFileSync(attributes, '*.ts diff=propelNmi\n');
+    }
+    if (mode === 'inherited-config-injection') {
+      const poisoned = join(probe, 'poisoned.gitconfig');
+      writeFileSync(poisoned, '[diff]\n external = ' + hook + '\n');
+      Object.assign(environment, {
+        GIT_CONFIG_COUNT: '1',
+        GIT_CONFIG_KEY_0: 'diff.external',
+        GIT_CONFIG_VALUE_0: hook,
+        GIT_CONFIG_GLOBAL: poisoned,
+      });
+    }
+    const result = spawnSync(
+      process.execPath,
+      [
+        '--input-type=module',
+        '-e',
+        "import { verifyNmiOrderReferenceFrame } from './scripts/payment-response-source-admission.mjs'; import { verifyPaymentFrame } from './proposals/payment-response-admission/fixture-adapter.mjs'; import { qualificationBaseline } from './proposals/invoice-checker-qualification/baseline.mjs'; import { checkPaymentAckAdmission } from './scripts/check-payment-ack-admission.mjs'; if (verifyNmiOrderReferenceFrame() !== true || verifyPaymentFrame() !== true || qualificationBaseline().frame !== 'UNAPPLIED_AMENDMENT_TEST_BYTES' || checkPaymentAckAdmission().classification !== 'DEVELOPMENT_SOURCE_ONLY') throw Error('Exact composed frame denied'); console.log('EXACT_FRAME_PASS');",
+      ],
+      {
+        cwd: archive,
+        env: environment,
+        encoding: 'utf8',
+        maxBuffer: 1024 * 1024,
+      },
+    );
+    expect(result.error).toBeUndefined();
+    expect(result.status, result.stderr).toBe(0);
+    expect(result.stdout.trim()).toBe('EXACT_FRAME_PASS');
+    expect(
+      existsSync(marker),
+      'An ambient Git helper executed before proof',
+    ).toBe(false);
+  } finally {
+    writeFileSync(config, priorConfig);
+    if (priorAttributes) writeFileSync(attributes, priorAttributes);
+    else if (existsSync(attributes)) unlinkSync(attributes);
+    rmSync(probe, { recursive: true, force: true });
+    checkArchive(archive);
+  }
+});
