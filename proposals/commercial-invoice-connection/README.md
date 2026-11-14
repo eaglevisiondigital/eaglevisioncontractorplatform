@@ -84,7 +84,9 @@ production privilege completeness or D1–D3/A01–A12.
 
 The existing draft SQL hash `e1c504f9a7077caa92c375c378fb370155478be9cf077e66bf58932ae0895a3c`
 and issuance SQL hash `961c2dc380695ed2d910108d09303fff9b9018fe8d159beb9b958ddb2725d022`
-remain unapplied. The existing NOLOGIN issue runtime receives only the two EXECUTE
+remain **NOT INSTALLED on an operational target**; their development-source
+integration is already approved and applied in #467. The existing NOLOGIN issue
+runtime receives only the two EXECUTE
 signatures recorded in source.json; no customer/service grant or operational LOGIN
 is proposed here. Required owner bindings are the exact nonproduction target,
 installed-history/object/owner/grant hashes, installer and runtime principals,
