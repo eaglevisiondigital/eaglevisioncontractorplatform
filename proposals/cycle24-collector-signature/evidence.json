@@ -1,0 +1,12 @@
+{
+  "schema": "propel-cycle24-collector-m1-proposal-v1",
+  "baseline": "78c57bc8e5919026b0df4d273d7cb1c7059fdbb7",
+  "path": "scripts/collect-cycle24-browser.mjs",
+  "before": "91de8cb3c701b2a8b57c8a5b2b1dc9bfb038f8b2e8c582d08d937153fcb79644",
+  "after": "f1113308f7517ce654827503f0341fd0bf2951a286fd23e3b783387728fa5c7a",
+  "patchSha256": "b3b9eab444c1902e8faba5aac123694c140d345937d3b8bd8864216e08d868c4",
+  "helper": "38fd3d784b10dd634f6b03a5995a4ce4392eb2924865349d1414328701113978",
+  "author": "c50ce4521fbc264276734a9f8909b525c9a7c2f8",
+  "operationalAuthority": false,
+  "applicationAuthorized": false
+}
