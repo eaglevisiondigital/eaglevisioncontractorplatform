@@ -1,0 +1,66 @@
+{
+  "schema": "commercial-invoice-issuance-proposal-v1",
+  "baseline": "7f464e6c7be280c4134eee4a031a737ed79d2b5a",
+  "status": "UNAPPLIED_UNWIRED_NOT_OPERATIONAL",
+  "protectedSource": {
+    "path": "server/invoices/commercial-drafts.proposed.sql",
+    "before": "da35d098727eff68ae7905c3709d6982cf89560cae538923f5d7e570dab0306e",
+    "proposedAfter": "e1c504f9a7077caa92c375c378fb370155478be9cf077e66bf58932ae0895a3c",
+    "approval": "HELD_EXACT_SOURCE_AUTHOR_ONLY_CHECKPOINT_REQUIRED"
+  },
+  "files": [
+    {
+      "path": "proposals/commercial-invoice-issuance/issuance.proposed.sql",
+      "mode": "100644",
+      "sha256": "961c2dc380695ed2d910108d09303fff9b9018fe8d159beb9b958ddb2725d022"
+    },
+    {
+      "path": "proposals/commercial-invoice-issuance/draft-projection-guard.patch",
+      "mode": "100644",
+      "sha256": "45d2eeafaca661d586e707aa6974b3f3216a44988de8a4b3e8d39f55bd3b6f45"
+    },
+    {
+      "path": "proposals/commercial-invoice-issuance/presentation.ts",
+      "mode": "100644",
+      "sha256": "a181a67faf3f8b3264b5cd00478b38c5a3c9d67c2b7f2463d6d81c01bf477981"
+    },
+    {
+      "path": "tests/database/commercial-invoice-issuance-proposal.test.ts",
+      "mode": "100644",
+      "sha256": "404588c634cba77277c8393ccda3818ad9a09727695253eea2865c2c7b7be7d9"
+    },
+    {
+      "path": "tests/commercial-invoice-issuance-presentation.test.ts",
+      "mode": "100644",
+      "sha256": "2a9c146e9a9dace356f5527c168408e27d31f3c509fe1c7995283c81e4b29282"
+    }
+  ],
+  "gates": {
+    "hostedSQL": "NOT_INSTALLED",
+    "genuineAuth": "NOT_ACCEPTED",
+    "customerAccess": "NOT_CONNECTED",
+    "delivery": "NOT_IMPLEMENTED",
+    "paymentLink": "NOT_IMPLEMENTED",
+    "ledgerPosting": "NOT_IMPLEMENTED",
+    "D1_D2_D3": "UNCHANGED",
+    "A01_A12": "NOT_RUN",
+    "release": "NO_GO"
+  },
+  "verification": {
+    "independentNative": {
+      "passed": 34,
+      "failed": 0,
+      "skipped": 0,
+      "reportSha256": "124840630015c2cf5c7db561e76714ea6ebf77494028289e92b22174f9d96e03"
+    },
+    "presentation": {
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0
+    },
+    "reproducedTimezoneFailure": 1,
+    "correctedTimezoneCase": "PASS",
+    "persistence": "DISPOSABLE_NATIVE_POSTGRESQL17_NOT_HOSTED_OR_INDEPENDENT_CUSTODY",
+    "independentReview": "CLEAR_UNAPPLIED_PROPOSAL_ONLY"
+  }
+}
