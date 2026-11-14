@@ -1,0 +1,96 @@
+{
+  "schema": "propel-nmi-launch-integration-v1",
+  "status": "UNAPPLIED_EXACT_OWNER_INTEGRATION_APPROVAL_REQUIRED",
+  "launchParent": "af318f9e939ca83a315784eb252bf192f246cfd5",
+  "sourceAuthor": "df98d83c9a071c773f5f09b02c9bc66d223af734",
+  "sourceParent": "95b0bb301610e589090e5611427809a29a23790a",
+  "gatewayAuthor": "38bc1bce05075fc0e858554947e195d8dded3c4a",
+  "gatewayParent": "53a4705b72b584228b33988d1eae586ef10b44eb",
+  "fixtureAuthor": "95b0bb301610e589090e5611427809a29a23790a",
+  "reviewedAdmissionProposal": "ffafcf48a0ee23c5af7b2d87397ae811049915c3",
+  "admissionPatchSha256": "828c548efa09aafa34ba283d41d33e6d2dd021c9e58f988e735a866b07804650",
+  "integrationPatchSha256": "1d4aaf0f25a299613632274953523535f462af057b0850d0353afc92291e1388",
+  "files": [
+    {
+      "path": "proposals/invoice-caller-transition/qualify.mjs",
+      "mode": "100644",
+      "beforeSha256": "1c102cb6982ab1042e93a5d6454e765fb9a37cf5b930d1226465ccf2a5756a1d",
+      "afterSha256": "ec33767243ec25c53beb3743c543d4377e2d0c3a2b4f0ce361dc570184995ef9"
+    },
+    {
+      "path": "proposals/invoice-checker-qualification/baseline.mjs",
+      "mode": "100644",
+      "beforeSha256": "c27591939af63a33312e6293ebd90469eac202b0a0237275338fb0be08e012ad",
+      "afterSha256": "c45098cb7175b28f54e4343c615cce89c168e3db16bdf72c94c41651133d1667"
+    },
+    {
+      "path": "proposals/payment-launch-integration/legacy-invoice-fixture.mjs",
+      "mode": "100644",
+      "beforeSha256": "6512550560268a036c2c6482078cd8516292423e464335eddb94c005ff55667b",
+      "afterSha256": "2e1cb96bb8c124d4ec11a053582bbcc27a259311ef7d1d09ef486448c53d51c2"
+    },
+    {
+      "path": "proposals/payment-response-admission/fixture-adapter.mjs",
+      "mode": "100644",
+      "beforeSha256": "4ccab151297b44da76057199cb3cabfcd2c73c3e20ed6761c27737db16468203",
+      "afterSha256": "78c5bfe95bfe6e546267c52216fbad52aff57933826f24fbbf59f70f1a60a222"
+    },
+    {
+      "path": "scripts/check-payment-ack-admission.mjs",
+      "mode": "100644",
+      "beforeSha256": "b936bbd53def10eb7604b840ebe56262073001f30f0191247307eb54940a67ad",
+      "afterSha256": "b1f297fc3d62cfe77a9ed9912a1a6f896a14a70cf796da2e1f24d5e5c0441ed9"
+    },
+    {
+      "path": "scripts/invoice-caller-source-admission.mjs",
+      "mode": "100644",
+      "beforeSha256": "af67c7836222779cd8322c08b3d5a72816760abc345a9d45cab97f85beacd133",
+      "afterSha256": "f3fb04f429f2e43493bf57ecce38a7435f346fa4d2fd17d790ff170e366b11bb"
+    },
+    {
+      "path": "scripts/payment-response-source-admission.mjs",
+      "mode": "100644",
+      "beforeSha256": "aa8871b0fa334bfd2ffdb36c314650e51e56ceea41a983e13c0b42a60084dfcd",
+      "afterSha256": "74c672d6725876285c8bd2ee844aec88c183b56b12181a0373c874e02cf26510"
+    },
+    {
+      "path": "server/payments/sandbox.ts",
+      "mode": "100644",
+      "beforeSha256": "828b355608e2fee5433dc2c29c3094e40c92c444409331e1b67183ed09e19feb",
+      "afterSha256": "0c6bc1aa8e78ed7f6d86128e79055630cb41ec5281ed32a0bf7bbdc616a8ccc6"
+    },
+    {
+      "path": "tests/invoice-caller-migration-source.test.ts",
+      "mode": "100644",
+      "beforeSha256": "6b803d33d5c8b9ca02abcbce59b8796f9691b44a82c97290974ea9a4a2892d69",
+      "afterSha256": "b2ea02e8ba9a06e1bea67255261cc1784f24d05c2f0104c7f2650690782f4689"
+    },
+    {
+      "path": "tests/launch-caller-payment-integration.test.ts",
+      "mode": "100644",
+      "beforeSha256": "1f7c0c1135bdc49c91ae7dd95aacc4f203ef3f487080c1e578cc27e236927193",
+      "afterSha256": "e9efe20d12c69c4c9c17b4027e88b34f72589e834e5975169e4062a20912379c"
+    },
+    {
+      "path": "tests/launch-invoice-payment-source.test.ts",
+      "mode": "100644",
+      "beforeSha256": "bf366bff56157c0b94c174c91d8a9fbc76cb95e836d9387a2d61104e44fc873a",
+      "afterSha256": "6f97dc729aeebbc00450f862ca2c9e5edaadbb27e2e8c5b1e286514b9a741f4e"
+    },
+    {
+      "path": "tests/nmi-two-merchant-token-boundary.test.ts",
+      "mode": "100644",
+      "beforeSha256": "e61ccf5a059bdf5116387176d1afcbf1b0d596f47c7091e72ea42c800def4fff",
+      "afterSha256": "784666767e8938875300e0c37759f4cc745861218033a9c4e01bdeda86abea47"
+    }
+  ],
+  "preservedC22": {
+    "path": "scripts/check-cycle22.mjs",
+    "sha256": "8abb9bffe4147bec71f94a7bdb6d761f50660b8b61d50526efef7ecc00a32226"
+  },
+  "trackedPaths": 2410,
+  "unchangedLaunchPaths": 2398,
+  "integrationAuthorized": false,
+  "operationalReady": false,
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}
