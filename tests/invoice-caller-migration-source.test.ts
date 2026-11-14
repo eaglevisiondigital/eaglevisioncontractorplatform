@@ -71,14 +71,19 @@ function verifyCheckerTransition() {
   expect(currentHelper).toEqual(Buffer.from(expectedHelper));
   expect(sha(currentHelper)).toBe(digest(currentGuard));
 }
+// Retain the exact original payment transition assertions against their immutable stage.
+const paymentResponseStage = ((path: string, encoding?: string) => {
+  const bytes = git('show', `53a4705b72b584228b33988d1eae586ef10b44eb:${path}`);
+  return encoding ? bytes.toString('utf8') : bytes;
+}) as typeof readFileSync;
 function verifyPaymentResponseTransition() {
   expect(
-    sha(readFileSync('scripts/payment-response-source-admission.mjs')),
+    sha(paymentResponseStage('scripts/payment-response-source-admission.mjs')),
   ).toBe('aa8871b0fa334bfd2ffdb36c314650e51e56ceea41a983e13c0b42a60084dfcd');
-  expect(sha(readFileSync('scripts/check-payment-ack-admission.mjs'))).toBe(
-    'b936bbd53def10eb7604b840ebe56262073001f30f0191247307eb54940a67ad',
-  );
-  const guard = readFileSync(guardPath, 'utf8');
+  expect(
+    sha(paymentResponseStage('scripts/check-payment-ack-admission.mjs')),
+  ).toBe('b936bbd53def10eb7604b840ebe56262073001f30f0191247307eb54940a67ad');
+  const guard = paymentResponseStage(guardPath, 'utf8');
   const digests = [
     ...guard.matchAll(
       /createHash\('sha256'\)\.update\(callerHelperBytes\)\.digest\('hex'\) !==\s*'([a-f0-9]{64})'/g,
@@ -111,12 +116,60 @@ function verifyPaymentResponseTransition() {
   expect(before.split(`sha256: '${originalF}'`)).toHaveLength(2);
   const exact = before.replace(
     `sha256: '${originalF}'`,
-    `sha256: '${sha(readFileSync(migrationPath))}'`,
+    `sha256: '${sha(paymentResponseStage(migrationPath))}'`,
   );
-  expect(readFileSync(admissionHelperPath)).toEqual(Buffer.from(exact));
+  expect(paymentResponseStage(admissionHelperPath)).toEqual(Buffer.from(exact));
   expect(sha(Buffer.from(exact))).toBe(digests[0][1]);
 }
-it('loads historical proposal bytes only beside the exact approved source author, without granting launch admission', () => {
+async function verifyNmiOrderReferenceTransition() {
+  const paymentPath = 'scripts/payment-response-source-admission.mjs';
+  const paymentBytes = readFileSync(paymentPath);
+  expect(sha(paymentBytes)).toBe(
+    '74c672d6725876285c8bd2ee844aec88c183b56b12181a0373c874e02cf26510',
+  );
+  for (const path of [
+    paymentPath,
+    'scripts/check-payment-ack-admission.mjs',
+    guardPath,
+    admissionHelperPath,
+    migrationPath,
+  ]) {
+    let prefix = '';
+    for (const part of path.split('/')) {
+      prefix = prefix ? prefix + '/' + part : part;
+      expect(lstatSync(prefix).isSymbolicLink()).toBe(false);
+    }
+    const info = lstatSync(path);
+    expect(info.isFile() && (info.mode & 0o777) === 0o644).toBe(true);
+  }
+  const { verifyNmiOrderReferenceFrame } = await import(
+    'data:text/javascript;base64,' + paymentBytes.toString('base64')
+  );
+  expect(verifyNmiOrderReferenceFrame()).toBe(true);
+  const oldPaymentHash =
+    'aa8871b0fa334bfd2ffdb36c314650e51e56ceea41a983e13c0b42a60084dfcd';
+  expect(readFileSync('scripts/check-payment-ack-admission.mjs', 'utf8')).toBe(
+    paymentResponseStage(
+      'scripts/check-payment-ack-admission.mjs',
+      'utf8',
+    ).replace(oldPaymentHash, sha(paymentBytes)),
+  );
+  const invoice = paymentResponseStage(admissionHelperPath, 'utf8').replace(
+    '6b803d33d5c8b9ca02abcbce59b8796f9691b44a82c97290974ea9a4a2892d69',
+    sha(readFileSync(migrationPath)),
+  );
+  expect(readFileSync(admissionHelperPath, 'utf8')).toBe(invoice);
+  expect(readFileSync(guardPath, 'utf8')).toBe(
+    paymentResponseStage(guardPath, 'utf8')
+      .replace(oldPaymentHash, sha(paymentBytes))
+      .replace(
+        'af67c7836222779cd8322c08b3d5a72816760abc345a9d45cab97f85beacd133',
+        sha(Buffer.from(invoice)),
+      ),
+  );
+  expect(verifyNmiOrderReferenceFrame()).toBe(true);
+}
+it('loads historical proposal bytes only beside the exact approved source author, without granting launch admission', async () => {
   const r = helper.proposalBaseline();
   expect(r.activeSourceAuthor).toBe('8f498f2c657608c64d40a3527be13b47a189b7b7');
   expect(r.current).toEqual(readFileSync(client));
@@ -137,6 +190,7 @@ it('loads historical proposal bytes only beside the exact approved source author
     );
   verifyCheckerTransition();
   verifyPaymentResponseTransition();
+  await verifyNmiOrderReferenceTransition();
 });
 it.each([
   'client',

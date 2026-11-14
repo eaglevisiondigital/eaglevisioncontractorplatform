@@ -18,7 +18,7 @@ if (
 const responseHelperBytes = readFileSync(responseHelperPath);
 if (
   createHash('sha256').update(responseHelperBytes).digest('hex') !==
-  'aa8871b0fa334bfd2ffdb36c314650e51e56ceea41a983e13c0b42a60084dfcd'
+  '74c672d6725876285c8bd2ee844aec88c183b56b12181a0373c874e02cf26510'
 )
   throw Error('Reviewed payment response helper required');
 const { admitPaymentResponseSource } = await import(

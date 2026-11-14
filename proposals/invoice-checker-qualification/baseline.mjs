@@ -25,7 +25,7 @@ if (existsSync(paymentAdapterPath)) {
   const bytes = readFileSync(paymentAdapterPath);
   assert.equal(
     createHash('sha256').update(bytes).digest('hex'),
-    '4ccab151297b44da76057199cb3cabfcd2c73c3e20ed6761c27737db16468203',
+    '78c5bfe95bfe6e546267c52216fbad52aff57933826f24fbbf59f70f1a60a222',
     'Reviewed payment fixture required',
   );
   paymentFixture = await import(
@@ -123,7 +123,12 @@ export function qualificationBaseline({
       'Regular active checker required',
     );
   }
-  if (hash(current) === paymentFrameGuard) {
+  if (
+    [
+      paymentFrameGuard,
+      '6f97dc729aeebbc00450f862ca2c9e5edaadbb27e2e8c5b1e286514b9a741f4e',
+    ].includes(hash(current))
+  ) {
     assert(paymentFixture, 'Reviewed payment fixture required');
     paymentFixture.verifyPaymentFrame({ read, stat, git });
     return {
