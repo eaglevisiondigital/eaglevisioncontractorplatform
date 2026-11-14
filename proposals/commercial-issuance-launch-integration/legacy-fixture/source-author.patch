@@ -1,0 +1,189 @@
+--- a/proposals/payment-launch-integration/legacy-invoice-fixture.mjs
++++ b/proposals/payment-launch-integration/legacy-invoice-fixture.mjs
+@@ -1,8 +1,39 @@
+ // Historical test read port only. Exact live payment source is verified separately.
+ import assert from 'node:assert/strict';
+-import { readFileSync, lstatSync } from 'node:fs';
++import { readFileSync as nodeReadFileSync, lstatSync } from 'node:fs';
+ import { createHash } from 'node:crypto';
+ import { execFileSync } from 'node:child_process';
++import { devNull } from 'node:os';
++// Authenticate the approved guard fixture before evaluating its captured bytes.
++const guardFixturePath =
++  'proposals/invoice-guard-admission/fixture-adapter.mjs';
++let guardFixturePrefix = '';
++for (const part of guardFixturePath.split('/')) {
++  guardFixturePrefix = guardFixturePrefix
++    ? guardFixturePrefix + '/' + part
++    : part;
++  const info = lstatSync(guardFixturePrefix);
++  if (
++    info.isSymbolicLink() ||
++    (guardFixturePrefix !== guardFixturePath && !info.isDirectory())
++  )
++    throw Error('Reviewed invoice guard fixture required');
++}
++const guardFixtureInfo = lstatSync(guardFixturePath);
++if (!guardFixtureInfo.isFile() || (guardFixtureInfo.mode & 0o777) !== 0o644)
++  throw Error('Reviewed invoice guard fixture required');
++const guardFixtureBytes = nodeReadFileSync(guardFixturePath);
++if (
++  createHash('sha256').update(guardFixtureBytes).digest('hex') !==
++  '6c6a5758d3a3219b4fac88e5dbbeb2e24f6182bf73c8eba3f7bc5c44c8cd61bc'
++)
++  throw Error('Reviewed invoice guard fixture required before import');
++const { createHistoricalRead } = await import(
++  'data:text/javascript;base64,' + guardFixtureBytes.toString('base64')
++);
++// This historical read requires the actual approved guard frame on every read.
++const readFileSync = createHistoricalRead(nodeReadFileSync);
++
+ const adapter = 'proposals/payment-response-admission/fixture-adapter.mjs';
+ const adapterHash =
+   '78c5bfe95bfe6e546267c52216fbad52aff57933826f24fbbf59f70f1a60a222';
+@@ -38,22 +69,55 @@
+ const { verifyPaymentFrame } = await import(
+   'data:text/javascript;base64,' + verifiedAdapter().toString('base64')
+ );
+-verifyPaymentFrame();
++verifyPaymentFrame({ read: readFileSync });
+ export function historicalInvoiceRead(path, ...args) {
+   if (!Object.hasOwn(originals, path)) return readFileSync(path, ...args);
+   verifiedAdapter();
+-  verifyPaymentFrame();
++  verifyPaymentFrame({ read: readFileSync });
+   const bytes = execFileSync(
+     'git',
+-    ['--no-replace-objects', 'show', baseline + ':' + path],
+-    { stdio: ['ignore', 'pipe', 'pipe'] },
++    [
++      '--no-replace-objects',
++      '--no-pager',
++      '-c',
++      'core.hooksPath=' + devNull,
++      '-c',
++      'core.fsmonitor=false',
++      '-c',
++      'core.attributesFile=' + devNull,
++      '-c',
++      'credential.helper=',
++      '-c',
++      'diff.external=',
++      'show',
++      '--no-ext-diff',
++      '--no-textconv',
++      '--no-color',
++      baseline + ':' + path,
++    ],
++    {
++      stdio: ['ignore', 'pipe', 'pipe'],
++      env: {
++        PATH: process.env.PATH,
++        LC_ALL: 'C',
++        GIT_CONFIG_NOSYSTEM: '1',
++        GIT_CONFIG_SYSTEM: devNull,
++        GIT_CONFIG_GLOBAL: devNull,
++        GIT_CONFIG_COUNT: '0',
++        GIT_ATTR_NOSYSTEM: '1',
++        GIT_ALLOW_PROTOCOL: '',
++        GIT_NO_LAZY_FETCH: '1',
++        GIT_TERMINAL_PROMPT: '0',
++        GIT_OPTIONAL_LOCKS: '0',
++      },
++    },
+   );
+   assert.equal(
+     sha(bytes),
+     originals[path],
+     'Exact original invoice fixture required',
+   );
+-  verifyPaymentFrame();
++  verifyPaymentFrame({ read: readFileSync });
+   const encoding = typeof args[0] === 'string' ? args[0] : args[0]?.encoding;
+   return encoding ? bytes.toString(encoding) : Buffer.from(bytes);
+ }
+--- a/tests/launch-caller-payment-integration.test.ts
++++ b/tests/launch-caller-payment-integration.test.ts
+@@ -17,7 +17,7 @@
+ const fixtureBytes = actualReadFileSync(fixtureUrl);
+ if (
+   createHash('sha256').update(fixtureBytes).digest('hex') !==
+-  '2e1cb96bb8c124d4ec11a053582bbcc27a259311ef7d1d09ef486448c53d51c2'
++  '9520858626dde02883b5755e3681d1a3ba35f00f9a57eb55fe1f613a8befbe06'
+ )
+   throw Error('Exact retained launch fixture required before import');
+ const { historicalInvoiceRead } = await import(
+--- a/proposals/invoice-guard-admission/qualify.mjs
++++ b/proposals/invoice-guard-admission/qualify.mjs
+@@ -16,6 +16,17 @@
+ const helperPath = 'scripts/invoice-caller-source-admission.mjs';
+ const helperHash =
+   '1d3438c34656e732c0352dab02477ea449ed4e4abd92714156c3ec62ff75e70a';
++// Finite retained-launch compatibility. Original histories and proposal seals stay unchanged.
++const retainedLaunch = Object.freeze({
++  'proposals/payment-launch-integration/legacy-invoice-fixture.mjs': {
++    before: '2e1cb96bb8c124d4ec11a053582bbcc27a259311ef7d1d09ef486448c53d51c2',
++    after: '9520858626dde02883b5755e3681d1a3ba35f00f9a57eb55fe1f613a8befbe06',
++  },
++  'tests/launch-caller-payment-integration.test.ts': {
++    before: 'e9efe20d12c69c4c9c17b4027e88b34f72589e834e5975169e4062a20912379c',
++    after: 'f9289b166c0170072446aa35e261f2108fa3f62602dd6f4e34ccf952195949ab',
++  },
++});
+ const digest = (bytes) => createHash('sha256').update(bytes).digest('hex');
+ const fail = () => {
+   throw Error('Exact sealed invoice guard proposal required');
+@@ -117,6 +128,7 @@
+     checked(row.path, row.sha256, read, stat);
+   const targets = new Map(evidence.files.map((row) => [row.path, row]));
+   const phases = new Set();
++  const retainedPhases = new Set();
+   for (const row of baseline()) {
+     regular(row.path, row.mode === '100644' ? 0o644 : 0o755, stat);
+     const bytes = Buffer.from(read(row.path));
+@@ -126,6 +138,12 @@
+       if (hash === target.before) phases.add('before');
+       else if (hash === target.after) phases.add('after');
+       else fail();
++    } else if (Object.hasOwn(retainedLaunch, row.path)) {
++      const pin = retainedLaunch[row.path],
++        hash = digest(bytes);
++      if (hash === pin.before) retainedPhases.add('original');
++      else if (hash === pin.after) retainedPhases.add('proposed');
++      else fail();
+     } else {
+       const oid = createHash('sha1')
+         .update(Buffer.from('blob ' + bytes.length + '\0'))
+@@ -135,8 +153,17 @@
+     }
+     regular(row.path, row.mode === '100644' ? 0o644 : 0o755, stat);
+   }
+-  if (phases.size !== 1) fail();
+-  return { payloads, phase: [...phases][0] };
++  if (
++    phases.size !== 1 ||
++    retainedPhases.size !== 1 ||
++    (retainedPhases.has('proposed') && phases.has('before'))
++  )
++    fail();
++  return {
++    payloads,
++    phase: [...phases][0],
++    retainedPhase: [...retainedPhases][0],
++  };
+ }
+ const key = (path) =>
+   relative(
+@@ -155,7 +182,11 @@
+   );
+   const inspectCaptured = () => {
+     const current = inspect({ read, stat });
+-    if (current.phase !== captured.phase) fail();
++    if (
++      current.phase !== captured.phase ||
++      current.retainedPhase !== captured.retainedPhase
++    )
++      fail();
+     return current;
+   };
+   // Import is an await boundary. Source and packet reads stay fresh.
