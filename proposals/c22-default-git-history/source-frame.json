@@ -1,0 +1,25 @@
+{
+  "schema": "propel-c22-default-history-proposal-v1",
+  "status": "UNAPPLIED_REQUIRES_EXACT_CHECKER_APPROVAL",
+  "baseline": "53a4705b72b584228b33988d1eae586ef10b44eb",
+  "patch_sha256": "aadd9222300005c399a133bb6a9536687a8ce97ee40af68c330982779ae6cca6",
+  "checker": {
+    "path": "scripts/check-cycle22.mjs",
+    "before": "7a53aaa66a7c2924cddf8020c5189f02d3b2822b6f4f69b02d7a217a8a62d9ea",
+    "proposed": "8abb9bffe4147bec71f94a7bdb6d761f50660b8b61d50526efef7ecc00a32226"
+  },
+  "unchanged": {
+    "scripts/cycle25-source-lineage.mjs": "d528688f93e18b10126b4575bf6dd2269df0889faa979da2ae528c68cabc43de",
+    "tests/cycle22-validation.test.ts": "ba2d4cb731a450f6ba934c821dc45e43046d3ab2b44d5a00f88514966eda146a",
+    "vite.config.ts": "0fdc8ac3b8d922c2229a25d67d0b42ab3c895489bfc7ee514aae0c78853bf48d"
+  },
+  "controls": [
+    "natural-retained-source",
+    "captured-default-reader",
+    "unknown-current-source",
+    "mixed-current-source",
+    "injected-proxy-denial",
+    "copied-history-buffer"
+  ],
+  "authority": "LOCAL_SOURCE_PERFORMANCE_PROPOSAL_ONLY"
+}

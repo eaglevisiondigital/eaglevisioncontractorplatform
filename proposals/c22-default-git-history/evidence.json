@@ -1,0 +1,102 @@
+{
+  "schema": "propel-c22-default-history-measured-proposal-v1",
+  "status": "UNAPPLIED_INDEPENDENT_ROOT_ON_DISK_58_AND_FINAL_12_PASS",
+  "baseline": "53a4705b72b584228b33988d1eae586ef10b44eb",
+  "hashes": {
+    "proposals/c22-default-git-history/correction.patch": "aadd9222300005c399a133bb6a9536687a8ce97ee40af68c330982779ae6cca6",
+    "proposals/c22-default-git-history/source-frame.json": "eb7e41a4457c2e65ab10778ca2ba0941321a86824dd0d755d7bab89690373ef1",
+    "proposals/c22-default-git-history/qualify.mjs": "7af46a13df14dae184e80501f770e51b4179644c8870d13035a55cdea0cb0be7",
+    "tests/workflows/c22-default-git-proposal.test.ts": "fcff7f2ccde75ca540fa5fdb18254f769a5a99163fad543ccf8cf33e3fb07700",
+    "tests/workflows/c22-default-git-proposal-integrity.test.ts": "179109836fb70ab31c4c0de45e387c379779a936905b7eb9bf5a4c09cddb399d"
+  },
+  "measured_cold_default_validation": {
+    "before": {
+      "git_subprocesses": 703,
+      "distinct_commands": 500,
+      "duplicate_calls": 203,
+      "total_milliseconds": 13634.494875,
+      "git_milliseconds": 13363.034960000005
+    },
+    "proposed": {
+      "git_subprocesses": 518,
+      "distinct_commands": 500,
+      "duplicate_calls": 18,
+      "total_milliseconds": 10464.026667,
+      "git_milliseconds": 10177.292875000001
+    },
+    "redundant_subprocesses_removed": 185,
+    "elapsed_limit": "Local natural calls run separately; not CI equivalence.",
+    "mechanism": "Original direct default module compared with temporary proposed module using absolute equivalent imports and unchanged current filesystem; development profiles only, separate from exact on-disk qualification."
+  },
+  "original_isolated_case": {
+    "passed": 1,
+    "failed": 0,
+    "skipped": 57,
+    "milliseconds": 20606.725667,
+    "timeout": 30000,
+    "maxWorkers": 4
+  },
+  "earlier_development_only": {
+    "mechanism": "In-memory Vite checker transform; original on-disk checker remained old. This is NOT final on-disk qualification.",
+    "passed": 58,
+    "failed": 0,
+    "skipped": 0,
+    "positive_milliseconds": 15627.33525
+  },
+  "final_actual_disk_original58": {
+    "qualification": "INDEPENDENT_ROOT_ON_DISK_PASS",
+    "passed": 58,
+    "failed": 0,
+    "skipped": 0,
+    "positive_milliseconds": 20918.467583,
+    "checker_sha256": "8abb9bffe4147bec71f94a7bdb6d761f50660b8b61d50526efef7ecc00a32226",
+    "report_local_filename": "on-disk-c22-suite.json",
+    "report_sha256": "c25d63569225aab2399a389bc22570f4a757c3e3350cb6862c8ca839b8792fa2",
+    "limits": "Only the proposed checker changed on disk; original tests/config/lineage unchanged. No full-case wall-time improvement is demonstrated."
+  },
+  "unchanged": [
+    "Canonical protected checker, historical pins and source checks",
+    "Current filesystem freshness and explicit injected ports",
+    "Original C22 assertions, count, test file and four-worker/30-second config",
+    "All Auth/provider/financial/hosted/production/deploy/merge gates"
+  ],
+  "limits": [
+    "Original isolated case passed; previous shard-context timeout not reproduced.",
+    "Actual-disk positive case20,918.47ms vs isolated baseline20,606.73ms: no full-case wall-time improvement or CI closure claimed.",
+    "Measured historical Git redundancy only; CI cancellation source cause UNKNOWN.",
+    "No full shard, transitive source admission or whole-CI success claimed.",
+    "Protected application requires exact separate checker authorization."
+  ],
+  "qualifier_integrity": {
+    "literal_baseline": "53a4705b72b584228b33988d1eae586ef10b44eb",
+    "literal_patch_sha256": "aadd9222300005c399a133bb6a9536687a8ce97ee40af68c330982779ae6cca6",
+    "literal_frame_sha256": "eb7e41a4457c2e65ab10778ca2ba0941321a86824dd0d755d7bab89690373ef1",
+    "tracked_files": 2410,
+    "allowed_substitution": "scripts/check-cycle22.mjs to exact proposedSHA256 only",
+    "current_reads": "Fresh full bytes/Git modes and symlink-ancestor checks before imports/controls and final cleanup; only immutable full-SHA Git tree metadata cached",
+    "additional_integrity_cases": 6,
+    "result": "INDEPENDENT_ROOT_PASS_6_INTEGRITY_CASES_WITH_6_BEHAVIOR_CONTROLS",
+    "offline_environment": "Explicit PATH/LC_ALL and fixed safe Git settings only; owner auth/NODE_OPTIONS/arbitrary GIT_* omitted; global/system config disabled; hooks/credentials disabled; local-file-only Git protocol"
+  },
+  "earlier_packet_controls": {
+    "qualification": "EARLIER_PACKET_ROOT_PASS_BEFORE_ENVIRONMENT_BOUNDARY_CORRECTION",
+    "passed": 11,
+    "behavior_cases": 6,
+    "integrity_cases": 5,
+    "failed": 0,
+    "skipped": 0,
+    "report_local_filename": "root-packet-controls.json",
+    "report_sha256": "0fd6c0c20bbc71ee219312df3467608888a1f203385d5171df8941e480c9174a",
+    "qualifier_sha256": "bfe980cbabc8a04432b31642f1e19951699a45cac6a73202ce47ead620cf2870"
+  },
+  "final_packet_controls": {
+    "qualification": "INDEPENDENT_ROOT_FINAL_CLEAN_ENVIRONMENT_PACKET_PASS",
+    "passed": 12,
+    "behavior_cases": 6,
+    "integrity_cases": 6,
+    "failed": 0,
+    "skipped": 0,
+    "report_local_filename": "root-final-packet-controls.json",
+    "report_sha256": "a4c65245ff7e87ba89640cebf89ac74588c1d87cea2033f4b6b810060dfb5e01"
+  }
+}
