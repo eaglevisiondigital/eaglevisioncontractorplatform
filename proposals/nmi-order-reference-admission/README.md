@@ -1,80 +1,88 @@
-# Unapplied finite NMI order-reference admission
+# Amended unapplied NMI source admission · Git execution boundary
 
-The actual gateway author #439 is `38bc1bce05075fc0e858554947e195d8dded3c4a`;
-the actual fixture author #441 is `95b0bb301610e589090e5611427809a29a23790a`.
-This isolated child of #441 contains ordinary proposal/test files only. Every
-existing parent file, including the ACK checker, launch guard, F/H/G helpers and
-historical records, remains unchanged.
+This ordinary proposal is a child of #445
+`8544f46c30e8d067096bab6c276c9962aa3b6eb2`. It changes only the five existing
+proposal/test files. The cumulative protected patch still starts at actual #441
+`95b0bb301610e589090e5611427809a29a23790a` and binds actual gateway author #439
+`38bc1bce05075fc0e858554947e195d8dded3c4a`. No future author is invented.
 
-The exact ten-file UNAPPLIED patch is
-`4043acd54d25ef46dd3447e5f80d5423a24e10c0dd4d944a354685475f01e220`.
-`evidence.json` lists every original/proposed hash and regular `100644` mode.
-There is no null/future-author binding or broad ancestry waiver.
+The cumulative ten-path UNAPPLIED patch is
+`828c548efa09aafa34ba283d41d33e6d2dd021c9e58f988e735a866b07804650`.
+`evidence.json` records every original/proposed hash and regular `100644` mode.
+All 2,410 existing #441 baseline files remain byte/mode exact in this proposal;
+only the five ordinary proposal/test files inherited from #445 are modified.
 
-The existing payment-response helper retains its original `96b654ee` author,
-parent, three-file delta and every original hash/mode check. A finite additional
-proof requires the exact #439/#441 parents, one-file deltas, hashes, modes and
-approved patch serializations (`73d4d530…` and `d67d40d9…`). Both current sources
-must agree before and after metadata reads. Prior/mixed/unknown source pairs,
-stale captured input, wrong modes, symlinks and substituted history deny. The
-same existing intent key, tenant/merchant identity, token and UNKNOWN behavior are
-unchanged; these checks grant build-source evidence only.
+The owner approved the earlier exact #445 patch `4043acd5…`, but independent
+review of its uncommitted actual-author candidate demonstrated that default Git
+metadata could execute ambient external-diff/textconv helpers before failing the
+source proof. Benign marker probes established execution through environment
+`GIT_EXTERNAL_DIFF`, repo-local `diff.external`, attributes/textconv and inherited
+Git configuration. They established no source substitution, provider execution or
+financial action. That exact uncommitted candidate stays HELD; #445, its original
+approval and evidence remain immutable historical records. This amendment needs
+new exact approval before any protected authoring.
 
-The patch has a finite hash dependency closure:
+The correction is in the actual payment helper's default Git subprocess boundary,
+not only the qualifier environment. It permits only its existing finite metadata
+commands, selects PATH/locale and fixed safe Git variables, disables system/global
+configuration and inherited config injection, and disables external diff,
+textconv, color, pager, hooks, fsmonitor, credential helpers, lazy fetch and
+protocol fallback. No owner credential loader or network fallback is added.
 
-- Payment-response helper and its two captured-import hash consumers: the ACK
-  checker and launch-source guard.
-- F retains the original payment-transition assertions against the exact immutable
-  #437 stage through a named historical read port, then separately verifies the
-  complete live NMI transition. H pins the resulting F bytes; G pins H. No test
-  identities, original assertions, timeout or worker settings are removed.
-- The existing payment historical adapter binds the exact current helper/F/H/G,
-  verifies the real NMI pair and preserves the original response-author proof.
-  Its existing historical qualification/launch consumers receive only the exact
-  corresponding adapter/hash transition. Their old source stages stay explicit.
+Every new `metadata('diff', …)` call also explicitly carries `--no-ext-diff`,
+`--no-textconv` and `--no-color`. This is necessary because the historical adapter
+and qualification baseline legitimately forward their own default raw Git ports.
+Default-only hardening would leave that composition exposed. Callsite flags
+protect those composed defaults and existing injected test ports without a
+conditional identity workaround or duplicate Git engine. Current file reads and
+explicit test-port validation remain fresh.
 
-These ten paths are required to keep the existing endpoints usable beside the
-new exact helper. Historical manifests, original source inventories and all other
-parent paths remain byte/mode exact; no invoice business, C17, field/M1, runtime, SQL, grant,
-Auth or provider source is changed. A later launch integration is separate and is
-not implemented here.
+The remaining changes are the same finite ten-path hash closure as #445: payment
+helper, ACK/launch import pins, F's explicit immutable #437 read port and separate
+live transition proof, H's exact F pin, G's exact H pin, and the existing historical
+adapter/qualification/launch hash consumers. Original F/H/G assertions, case
+identities, counts, workers and timeout budgets remain. Historical manifests and
+all source inventories stay byte exact. No business runtime, invoice SQL, C17,
+field/M1, Auth, tenant/merchant or provider source changes are proposed.
 
-The qualifier verifies the complete canonical #441 tree before creating a
-removed, local shared-object clone. It applies only the pinned patch, verifies
-all 2,410 parent files with only the ten recorded substitutions, and checks them
-again before imports and cleanup. Captured helper bytes are imported only after
-this exact-frame check. Child processes receive a selected environment with
-`GIT_CONFIG_COUNT=0`, system/global config disabled, hooks disabled and local-file
-Git transport only. No network/provider fallback or credential reader exists.
+The qualifier verifies every current #441 parent file, creates a removed local
+clone, applies only the exact recorded ten substitutions, and checks all 2,410
+parent files again before imports and cleanup. The original ACK checker still
+DENIES on the unchanged canonical frame. Only the disposable proposed clone may
+return `DEVELOPMENT_SOURCE_ONLY` with `operationalAcceptance: NOT_RUN`.
 
-The accepted #441 eight-file **149 PASS / 0 FAIL / 0 skipped** regression report
-is reused, not rerun. Its SHA-256 is
+The original 26 proposal control bodies are retained. Four additional controls
+start actual Node subprocesses with poisoned Git environment/config and invoke
+all actual defaults: direct NMI helper, historical payment adapter, qualification
+baseline and ACK checker. Each requires successful exact-frame qualification and
+absence of the executable hook marker; no injected port or clean qualifier child
+environment masks the poisoned boundary. Temporary config/attributes are restored.
+The six existing endpoint files retain the exact 72-pass/six-named-suite check.
+
+Actual exact-packet qualification: **30 PASS, 0 FAIL, 0 skipped** (the original
+26 plus four composed-default poison cases), and **72 PASS, 0 FAIL, 0 skipped**
+across the six exact original endpoint files. The exact 72 assertions and six named
+passed suites are required by the qualifier. TypeScript, scoped lint and proposal
+formatting pass. Root independently passed the final 30 controls; security's own
+fresh clone passed **16/16 actual-default combinations**, each positive frame and
+marker absent (four entrypoints × four poison variants), and verified the ten-path
+closure, 2,400 unchanged other files and original 26 case retention. This clears
+only the demonstrated Git-driver boundary for this UNAPPLIED proposal. No native,
+provider, browser, whole-CI or hosted acceptance is claimed.
+
+The accepted #441 eight-file **149 PASS / 0 FAIL / 0 skipped** report remains
+reused, not rerun: SHA-256
 `791dedc9bcbcc1f97c40fff02f232b413a4709624505854bdf3fd9287ca46d76`.
-Every test/runtime byte remains exact #441; none of these ten proposed build-source
-paths changes the approved gateway, fixture, token, receipt, refund or webhook
-runtime behavior. This is retained evidence, not a new test result.
-
-Actual final local qualification: **26 finite controls PASS**, and the six
-existing ACK/launch/F/H/G/historical endpoint files **72 PASS, 0 FAIL, 0 skipped**.
-Endpoint result qualification requires all 72 passes and assertions, the exact six
-named endpoint files and passed suites; an incomplete clean report cannot qualify.
-The canonical ACK checker DENIES; the proposed clone ACK CLI passes with the
-original closed classification. TypeScript and scoped lint/format pass. An earlier
-71/72 run exposed a historical read-port transform changing a string literal;
-that transform was corrected, and the final exact patch passed all 72. No original
-assertion was weakened. No native, provider, browser, full-CI or hosted acceptance
-is claimed.
+Actual gateway, fixture, token, receipt, refund and webhook runtime/test bytes are
+unchanged; this is retained evidence, not a new business-regression result.
 
 ```sh
 node node_modules/vitest/vitest.mjs run tests/nmi-order-reference-admission-proposal.test.ts --maxWorkers=1
 node proposals/nmi-order-reference-admission/qualify.mjs --endpoints
 ```
 
-The canonical ACK checker must still DENY before approval. Only the removed
-proposed clone may return `DEVELOPMENT_SOURCE_ONLY` with `operationalAcceptance:
-NOT_RUN`. Exact protected checker/source authoring requires separate owner
-approval after independent review. No actual admission, integration promotion,
-SQL/grants, tenant/merchant binding, genuine Auth, provider or financial execution,
-recovery, deployment or merge follows from qualification. Independent operational
-custody remains unverified. Commercial D1–D3/Auth/VAR/NMI and all original gates
-remain open. Release 1.0 remains **NOT READY / NOT AUTHORIZED**.
+No actual admission, leading-candidate integration, SQL/grants, tenant/merchant
+binding, genuine Auth, provider/financial execution, recovery, deployment or merge
+is authorized. Independent operational custody remains unverified. Commercial
+D1–D3/Auth/VAR/NMI and all original gates remain open. Release 1.0 remains
+**NOT READY / NOT AUTHORIZED**.

@@ -1,76 +1,79 @@
 {
   "schema": "nmi-order-reference-finite-admission-proposal-v1",
-  "classification": "UNAPPLIED_FINITE_SOURCE_ADMISSION",
+  "classification": "AMENDED_UNAPPLIED_FINITE_SOURCE_ADMISSION",
   "parent": "95b0bb301610e589090e5611427809a29a23790a",
   "sourceAuthor": "38bc1bce05075fc0e858554947e195d8dded3c4a",
   "fixtureAuthor": "95b0bb301610e589090e5611427809a29a23790a",
-  "patchSha256": "4043acd54d25ef46dd3447e5f80d5423a24e10c0dd4d944a354685475f01e220",
+  "patchSha256": "828c548efa09aafa34ba283d41d33e6d2dd021c9e58f988e735a866b07804650",
   "files": [
     {
       "path": "proposals/invoice-caller-transition/qualify.mjs",
       "mode": "100644",
       "beforeSha256": "1c102cb6982ab1042e93a5d6454e765fb9a37cf5b930d1226465ccf2a5756a1d",
-      "proposedSha256": "2d04907304040c0760e5e697ee50117f6589691c02c7c31163bbf1c7115d9572"
+      "proposedSha256": "ec33767243ec25c53beb3743c543d4377e2d0c3a2b4f0ce361dc570184995ef9"
     },
     {
       "path": "proposals/invoice-checker-qualification/baseline.mjs",
       "mode": "100644",
       "beforeSha256": "c27591939af63a33312e6293ebd90469eac202b0a0237275338fb0be08e012ad",
-      "proposedSha256": "b634adb4633d12b60c60a718ea5f02eb3230d1d71b93ae96e559d84dbbb7b1cb"
+      "proposedSha256": "c45098cb7175b28f54e4343c615cce89c168e3db16bdf72c94c41651133d1667"
     },
     {
       "path": "proposals/payment-launch-integration/legacy-invoice-fixture.mjs",
       "mode": "100644",
       "beforeSha256": "6512550560268a036c2c6482078cd8516292423e464335eddb94c005ff55667b",
-      "proposedSha256": "5eff03f59d0250d11452d3d32d0ed1ec41b5ceb8c5e3b4739f6a6d7924ec075e"
+      "proposedSha256": "2e1cb96bb8c124d4ec11a053582bbcc27a259311ef7d1d09ef486448c53d51c2"
     },
     {
       "path": "proposals/payment-response-admission/fixture-adapter.mjs",
       "mode": "100644",
       "beforeSha256": "4ccab151297b44da76057199cb3cabfcd2c73c3e20ed6761c27737db16468203",
-      "proposedSha256": "44b1869c9a8d3940d4fb90b7ca76237534509383921da993ab20fbb950257113"
+      "proposedSha256": "78c5bfe95bfe6e546267c52216fbad52aff57933826f24fbbf59f70f1a60a222"
     },
     {
       "path": "scripts/check-payment-ack-admission.mjs",
       "mode": "100644",
       "beforeSha256": "b936bbd53def10eb7604b840ebe56262073001f30f0191247307eb54940a67ad",
-      "proposedSha256": "aa20f5a5efae40c1a191509468a68adf3f9e8d61d55d80f30305497cd51ba32b"
+      "proposedSha256": "b1f297fc3d62cfe77a9ed9912a1a6f896a14a70cf796da2e1f24d5e5c0441ed9"
     },
     {
       "path": "scripts/invoice-caller-source-admission.mjs",
       "mode": "100644",
       "beforeSha256": "af67c7836222779cd8322c08b3d5a72816760abc345a9d45cab97f85beacd133",
-      "proposedSha256": "b664282ebcebbafdbe113208bf1d8aa5da12dbd30c928e1ec649f7d69c708863"
+      "proposedSha256": "f3fb04f429f2e43493bf57ecce38a7435f346fa4d2fd17d790ff170e366b11bb"
     },
     {
       "path": "scripts/payment-response-source-admission.mjs",
       "mode": "100644",
       "beforeSha256": "aa8871b0fa334bfd2ffdb36c314650e51e56ceea41a983e13c0b42a60084dfcd",
-      "proposedSha256": "a46d968c5992e1d9446250118d72a1166abefd9771ccfebc63a2fef5dd4b633f"
+      "proposedSha256": "74c672d6725876285c8bd2ee844aec88c183b56b12181a0373c874e02cf26510"
     },
     {
       "path": "tests/invoice-caller-migration-source.test.ts",
       "mode": "100644",
       "beforeSha256": "6b803d33d5c8b9ca02abcbce59b8796f9691b44a82c97290974ea9a4a2892d69",
-      "proposedSha256": "c3009a246550da7c7835b9a05788731f12482dc8589cc0245f3e5df561c2a260"
+      "proposedSha256": "b2ea02e8ba9a06e1bea67255261cc1784f24d05c2f0104c7f2650690782f4689"
     },
     {
       "path": "tests/launch-caller-payment-integration.test.ts",
       "mode": "100644",
       "beforeSha256": "1f7c0c1135bdc49c91ae7dd95aacc4f203ef3f487080c1e578cc27e236927193",
-      "proposedSha256": "a90ff006b330f0d3901bdc7774e439df0f6b9cf8bf1e8afda70840a73435b5f9"
+      "proposedSha256": "e9efe20d12c69c4c9c17b4027e88b34f72589e834e5975169e4062a20912379c"
     },
     {
       "path": "tests/launch-invoice-payment-source.test.ts",
       "mode": "100644",
       "beforeSha256": "bf366bff56157c0b94c174c91d8a9fbc76cb95e836d9387a2d61104e44fc873a",
-      "proposedSha256": "f0fdd2544a693c529cba873849bf75ffa90a293ff3adf014e295649da12ca94f"
+      "proposedSha256": "6f97dc729aeebbc00450f862ca2c9e5edaadbb27e2e8c5b1e286514b9a741f4e"
     }
   ],
   "applicationAuthorized": false,
   "integrationAuthorized": false,
   "operationalAcceptance": "NOT_RUN",
   "release": "NOT_READY_NOT_AUTHORIZED",
+  "amendsProposal": "8544f46c30e8d067096bab6c276c9962aa3b6eb2",
+  "supersededUnappliedPatchSha256": "4043acd54d25ef46dd3447e5f80d5423a24e10c0dd4d944a354685475f01e220",
+  "priorApprovalStatus": "4043_AUTHOR_HELD_UNCOMMITTED_FOR_EXECUTABLE_GIT_HELPER_FINDING",
   "acceptedRegressionEvidence": {
     "author": "95b0bb301610e589090e5611427809a29a23790a",
     "files": [
@@ -88,5 +91,6 @@
     "skipped": 0,
     "reportSha256": "791dedc9bcbcc1f97c40fff02f232b413a4709624505854bdf3fd9287ca46d76",
     "qualification": "REUSED_EXACT_AUTHORED_SOURCE_REPORT_NOT_RERUN"
-  }
+  },
+  "gitBoundaryCorrection": "Actual default Git uses selected environment/config0/devnull and non-executable flags; every new diff proof passes no-ext-diff/no-textconv/no-color at the metadata callsite so composed default and legitimate injected raw runners cannot execute those helpers. Explicit test ports remain fresh; no provider/operational authority."
 }

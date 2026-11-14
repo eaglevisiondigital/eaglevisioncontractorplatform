@@ -1,5 +1,5 @@
 diff --git a/proposals/invoice-caller-transition/qualify.mjs b/proposals/invoice-caller-transition/qualify.mjs
-index 5436d2a..24f13d6 100644
+index 5436d2a..b50fcd2 100644
 --- a/proposals/invoice-caller-transition/qualify.mjs
 +++ b/proposals/invoice-caller-transition/qualify.mjs
 @@ -37,7 +37,7 @@ if (existsSync(paymentAdapterPath)) {
@@ -7,7 +7,7 @@ index 5436d2a..24f13d6 100644
    assert.equal(
      createHash('sha256').update(bytes).digest('hex'),
 -    '4ccab151297b44da76057199cb3cabfcd2c73c3e20ed6761c27737db16468203',
-+    '44b1869c9a8d3940d4fb90b7ca76237534509383921da993ab20fbb950257113',
++    '78c5bfe95bfe6e546267c52216fbad52aff57933826f24fbbf59f70f1a60a222',
      'Reviewed payment fixture required',
    );
    paymentFixture = await import(
@@ -18,7 +18,7 @@ index 5436d2a..24f13d6 100644
 -      (hash(snapshots[2]) === paymentFrameGuard &&
 +      ([
 +        paymentFrameGuard,
-+        'f0fdd2544a693c529cba873849bf75ffa90a293ff3adf014e295649da12ca94f',
++        '6f97dc729aeebbc00450f862ca2c9e5edaadbb27e2e8c5b1e286514b9a741f4e',
 +      ].includes(hash(snapshots[2])) &&
          paymentFixture?.verifyPaymentFrame() === true),
      'Exact approved or proposed qualification frame required',
@@ -31,13 +31,13 @@ index 5436d2a..24f13d6 100644
 -            'c27591939af63a33312e6293ebd90469eac202b0a0237275338fb0be08e012ad'
 +          [
 +            'c27591939af63a33312e6293ebd90469eac202b0a0237275338fb0be08e012ad',
-+            'b634adb4633d12b60c60a718ea5f02eb3230d1d71b93ae96e559d84dbbb7b1cb',
++            'c45098cb7175b28f54e4343c615cce89c168e3db16bdf72c94c41651133d1667',
 +          ].includes(hash(bytes))
          ) {
            assert(paymentFixture, 'Reviewed payment fixture required');
            paymentFixture.verifyPaymentFrame();
 diff --git a/proposals/invoice-checker-qualification/baseline.mjs b/proposals/invoice-checker-qualification/baseline.mjs
-index ef12894..cf17c6c 100644
+index ef12894..7f342ed 100644
 --- a/proposals/invoice-checker-qualification/baseline.mjs
 +++ b/proposals/invoice-checker-qualification/baseline.mjs
 @@ -25,7 +25,7 @@ if (existsSync(paymentAdapterPath)) {
@@ -45,7 +45,7 @@ index ef12894..cf17c6c 100644
    assert.equal(
      createHash('sha256').update(bytes).digest('hex'),
 -    '4ccab151297b44da76057199cb3cabfcd2c73c3e20ed6761c27737db16468203',
-+    '44b1869c9a8d3940d4fb90b7ca76237534509383921da993ab20fbb950257113',
++    '78c5bfe95bfe6e546267c52216fbad52aff57933826f24fbbf59f70f1a60a222',
      'Reviewed payment fixture required',
    );
    paymentFixture = await import(
@@ -57,14 +57,14 @@ index ef12894..cf17c6c 100644
 +  if (
 +    [
 +      paymentFrameGuard,
-+      'f0fdd2544a693c529cba873849bf75ffa90a293ff3adf014e295649da12ca94f',
++      '6f97dc729aeebbc00450f862ca2c9e5edaadbb27e2e8c5b1e286514b9a741f4e',
 +    ].includes(hash(current))
 +  ) {
      assert(paymentFixture, 'Reviewed payment fixture required');
      paymentFixture.verifyPaymentFrame({ read, stat, git });
      return {
 diff --git a/proposals/payment-launch-integration/legacy-invoice-fixture.mjs b/proposals/payment-launch-integration/legacy-invoice-fixture.mjs
-index e0a3da1..29c0353 100644
+index e0a3da1..5d141f6 100644
 --- a/proposals/payment-launch-integration/legacy-invoice-fixture.mjs
 +++ b/proposals/payment-launch-integration/legacy-invoice-fixture.mjs
 @@ -5,7 +5,7 @@ import { createHash } from 'node:crypto';
@@ -72,12 +72,12 @@ index e0a3da1..29c0353 100644
  const adapter = 'proposals/payment-response-admission/fixture-adapter.mjs';
  const adapterHash =
 -  '4ccab151297b44da76057199cb3cabfcd2c73c3e20ed6761c27737db16468203';
-+  '44b1869c9a8d3940d4fb90b7ca76237534509383921da993ab20fbb950257113';
++  '78c5bfe95bfe6e546267c52216fbad52aff57933826f24fbbf59f70f1a60a222';
  const baseline = '394d7fc1bbc6d6a27440e881bc3e9bf3d76befa6';
  const originals = {
    'scripts/invoice-caller-source-admission.mjs':
 diff --git a/proposals/payment-response-admission/fixture-adapter.mjs b/proposals/payment-response-admission/fixture-adapter.mjs
-index 8059da9..27549d3 100644
+index 8059da9..394abfe 100644
 --- a/proposals/payment-response-admission/fixture-adapter.mjs
 +++ b/proposals/payment-response-admission/fixture-adapter.mjs
 @@ -28,13 +28,54 @@ const runGit = (...args) =>
@@ -100,15 +100,15 @@ index 8059da9..27549d3 100644
 +const currentFrame = {
 +  ...frame,
 +  'scripts/payment-response-source-admission.mjs':
-+    'a46d968c5992e1d9446250118d72a1166abefd9771ccfebc63a2fef5dd4b633f',
++    '74c672d6725876285c8bd2ee844aec88c183b56b12181a0373c874e02cf26510',
 +  'scripts/check-payment-ack-admission.mjs':
-+    'aa20f5a5efae40c1a191509468a68adf3f9e8d61d55d80f30305497cd51ba32b',
++    'b1f297fc3d62cfe77a9ed9912a1a6f896a14a70cf796da2e1f24d5e5c0441ed9',
 +  'tests/invoice-caller-migration-source.test.ts':
-+    'c3009a246550da7c7835b9a05788731f12482dc8589cc0245f3e5df561c2a260',
++    'b2ea02e8ba9a06e1bea67255261cc1784f24d05c2f0104c7f2650690782f4689',
 +  'scripts/invoice-caller-source-admission.mjs':
-+    'b664282ebcebbafdbe113208bf1d8aa5da12dbd30c928e1ec649f7d69c708863',
++    'f3fb04f429f2e43493bf57ecce38a7435f346fa4d2fd17d790ff170e366b11bb',
 +  'tests/launch-invoice-payment-source.test.ts':
-+    'f0fdd2544a693c529cba873849bf75ffa90a293ff3adf014e295649da12ca94f',
++    '6f97dc729aeebbc00450f862ca2c9e5edaadbb27e2e8c5b1e286514b9a741f4e',
 +  'server/payments/sandbox.ts':
 +    '0c6bc1aa8e78ed7f6d86128e79055630cb41ec5281ed32a0bf7bbdc616a8ccc6',
 +  'tests/nmi-two-merchant-token-boundary.test.ts':
@@ -119,7 +119,7 @@ index 8059da9..27549d3 100644
 +);
 +assert.equal(
 +  createHash('sha256').update(paymentBytes).digest('hex'),
-+  'a46d968c5992e1d9446250118d72a1166abefd9771ccfebc63a2fef5dd4b633f',
++  '74c672d6725876285c8bd2ee844aec88c183b56b12181a0373c874e02cf26510',
 +  'Reviewed NMI payment helper required before import',
 +);
 +const { verifyNmiOrderReferenceFrame } = await import(
@@ -163,7 +163,7 @@ index 8059da9..27549d3 100644
    checkFrame();
    return true;
 diff --git a/scripts/check-payment-ack-admission.mjs b/scripts/check-payment-ack-admission.mjs
-index 24bc697..bf799f0 100644
+index 24bc697..1dde976 100644
 --- a/scripts/check-payment-ack-admission.mjs
 +++ b/scripts/check-payment-ack-admission.mjs
 @@ -18,7 +18,7 @@ if (
@@ -171,12 +171,12 @@ index 24bc697..bf799f0 100644
  if (
    createHash('sha256').update(responseHelperBytes).digest('hex') !==
 -  'aa8871b0fa334bfd2ffdb36c314650e51e56ceea41a983e13c0b42a60084dfcd'
-+  'a46d968c5992e1d9446250118d72a1166abefd9771ccfebc63a2fef5dd4b633f'
++  '74c672d6725876285c8bd2ee844aec88c183b56b12181a0373c874e02cf26510'
  )
    throw Error('Reviewed payment response helper required');
  const { admitPaymentResponseSource } = await import(
 diff --git a/scripts/invoice-caller-source-admission.mjs b/scripts/invoice-caller-source-admission.mjs
-index ac43c20..f62bf65 100644
+index ac43c20..8f7ceba 100644
 --- a/scripts/invoice-caller-source-admission.mjs
 +++ b/scripts/invoice-caller-source-admission.mjs
 @@ -107,7 +107,7 @@ const companions = [
@@ -184,18 +184,75 @@ index ac43c20..f62bf65 100644
      path: 'tests/invoice-caller-migration-source.test.ts',
      commit: '6063aea60588975bbe88c8ccf8b1d864721b7082',
 -    sha256: '6b803d33d5c8b9ca02abcbce59b8796f9691b44a82c97290974ea9a4a2892d69',
-+    sha256: 'c3009a246550da7c7835b9a05788731f12482dc8589cc0245f3e5df561c2a260',
++    sha256: 'b2ea02e8ba9a06e1bea67255261cc1784f24d05c2f0104c7f2650690782f4689',
      publishedSha256:
        'b1131c5c7d80dc2fb3d28a3e7d20540c60d420f3d8ba76a7b61eb091fee24678',
    },
 diff --git a/scripts/payment-response-source-admission.mjs b/scripts/payment-response-source-admission.mjs
-index 84c5b50..0197504 100644
+index 84c5b50..5afba02 100644
 --- a/scripts/payment-response-source-admission.mjs
 +++ b/scripts/payment-response-source-admission.mjs
-@@ -25,6 +25,106 @@ const git = (...args) =>
-   execFileSync('git', ['--no-replace-objects', ...args], {
-     stdio: ['ignore', 'pipe', 'pipe'],
-   });
+@@ -1,5 +1,6 @@
+ // Finite development source proof only. No runtime/provider/launch authority.
+ import { createHash } from 'node:crypto';
++import { devNull } from 'node:os';
+ import { execFileSync } from 'node:child_process';
+ import { readFileSync, lstatSync } from 'node:fs';
+ const author = '96b654ee16c229653cb1c046c579af77573b045a';
+@@ -21,10 +22,166 @@ const files = {
+ const delta =
+   'M\tserver/payments/refunds.ts\nA\tserver/payments/response-json.ts\nM\tserver/payments/sandbox.ts';
+ const hash = (b) => createHash('sha256').update(b).digest('hex');
+-const git = (...args) =>
+-  execFileSync('git', ['--no-replace-objects', ...args], {
+-    stdio: ['ignore', 'pipe', 'pipe'],
+-  });
++// Default metadata reads never inherit executable Git/config helpers or credentials.
++const gitEnvironment = Object.freeze({
++  PATH: process.env.PATH,
++  LC_ALL: 'C',
++  GIT_CONFIG_NOSYSTEM: '1',
++  GIT_CONFIG_SYSTEM: devNull,
++  GIT_CONFIG_GLOBAL: devNull,
++  GIT_CONFIG_COUNT: '0',
++  GIT_ATTR_NOSYSTEM: '1',
++  GIT_ALLOW_PROTOCOL: '',
++  GIT_NO_LAZY_FETCH: '1',
++  GIT_TERMINAL_PROMPT: '0',
++  GIT_OPTIONAL_LOCKS: '0',
++});
++const git = (command, ...args) => {
++  if (!['show', 'diff', 'diff-tree', 'ls-tree'].includes(command))
++    throw Error('Exact finite Git metadata command required');
++  const format =
++    command === 'ls-tree'
++      ? []
++      : ['--no-ext-diff', '--no-textconv', '--no-color'];
++  return execFileSync(
++    'git',
++    [
++      '--no-replace-objects',
++      '--no-pager',
++      '-c',
++      'core.hooksPath=' + devNull,
++      '-c',
++      'core.fsmonitor=false',
++      '-c',
++      'core.attributesFile=' + devNull,
++      '-c',
++      'credential.helper=',
++      '-c',
++      'diff.external=',
++      command,
++      ...format,
++      ...args,
++    ],
++    {
++      env: gitEnvironment,
++      stdio: ['ignore', 'pipe', 'pipe'],
++    },
++  );
++};
 +const nmiSource = 'server/payments/sandbox.ts';
 +const nmiFixture = 'tests/nmi-two-merchant-token-boundary.test.ts';
 +const nmiBefore =
@@ -286,7 +343,21 @@ index 84c5b50..0197504 100644
 +      )
 +        fail();
 +    }
-+    if (hash(metadata('diff', parent, commit, '--', p)) !== patch) fail();
++    if (
++      hash(
++        metadata(
++          'diff',
++          '--no-ext-diff',
++          '--no-textconv',
++          '--no-color',
++          parent,
++          commit,
++          '--',
++          p,
++        ),
++      ) !== patch
++    )
++      fail();
 +  }
 +  if (
 +    hash(readOriginal(nmiAuthors[1][0], nmiSource)) !== nmiAfter ||
@@ -299,7 +370,7 @@ index 84c5b50..0197504 100644
  export function admitPaymentResponseSource(
    path,
    current,
-@@ -36,7 +136,11 @@ export function admitPaymentResponseSource(
+@@ -36,7 +193,11 @@ export function admitPaymentResponseSource(
      stat = lstatSync,
    } = {},
  ) {
@@ -312,7 +383,7 @@ index 84c5b50..0197504 100644
    const fail = () => {
      throw Error('Exact finite payment response source required');
    };
-@@ -50,12 +154,16 @@ export function admitPaymentResponseSource(
+@@ -50,12 +211,16 @@ export function admitPaymentResponseSource(
      if (!info.isFile() || (info.mode & 0o777) !== 0o644) fail();
      const fresh = readCurrent(p);
      if (
@@ -331,7 +402,7 @@ index 84c5b50..0197504 100644
    if (
      metadata('show', '--no-patch', '--format=%P', author).toString().trim() !==
      parent
-@@ -90,6 +198,7 @@ export function admitPaymentResponseSource(
+@@ -90,6 +255,7 @@ export function admitPaymentResponseSource(
      if (hash(readOriginal(author, p)) !== after) fail();
      checkCurrent(p, after);
    }
@@ -340,7 +411,7 @@ index 84c5b50..0197504 100644
    for (const [p, [, after]] of Object.entries(files)) checkCurrent(p, after);
    return true;
 diff --git a/tests/invoice-caller-migration-source.test.ts b/tests/invoice-caller-migration-source.test.ts
-index 3bdf14d..fbbb889 100644
+index 3bdf14d..65a0497 100644
 --- a/tests/invoice-caller-migration-source.test.ts
 +++ b/tests/invoice-caller-migration-source.test.ts
 @@ -71,14 +71,19 @@ function verifyCheckerTransition() {
@@ -384,7 +455,7 @@ index 3bdf14d..fbbb889 100644
 +  const paymentPath = 'scripts/payment-response-source-admission.mjs';
 +  const paymentBytes = readFileSync(paymentPath);
 +  expect(sha(paymentBytes)).toBe(
-+    'a46d968c5992e1d9446250118d72a1166abefd9771ccfebc63a2fef5dd4b633f',
++    '74c672d6725876285c8bd2ee844aec88c183b56b12181a0373c874e02cf26510',
 +  );
 +  for (const path of [
 +    paymentPath,
@@ -441,7 +512,7 @@ index 3bdf14d..fbbb889 100644
  it.each([
    'client',
 diff --git a/tests/launch-caller-payment-integration.test.ts b/tests/launch-caller-payment-integration.test.ts
-index 6ae6472..459834b 100644
+index 6ae6472..08997f1 100644
 --- a/tests/launch-caller-payment-integration.test.ts
 +++ b/tests/launch-caller-payment-integration.test.ts
 @@ -17,7 +17,7 @@ if (
@@ -449,12 +520,12 @@ index 6ae6472..459834b 100644
  if (
    createHash('sha256').update(fixtureBytes).digest('hex') !==
 -  '6512550560268a036c2c6482078cd8516292423e464335eddb94c005ff55667b'
-+  '5eff03f59d0250d11452d3d32d0ed1ec41b5ceb8c5e3b4739f6a6d7924ec075e'
++  '2e1cb96bb8c124d4ec11a053582bbcc27a259311ef7d1d09ef486448c53d51c2'
  )
    throw Error('Exact retained launch fixture required before import');
  const { historicalInvoiceRead } = await import(
 diff --git a/tests/launch-invoice-payment-source.test.ts b/tests/launch-invoice-payment-source.test.ts
-index c4bf40c..c016329 100644
+index c4bf40c..0776ffd 100644
 --- a/tests/launch-invoice-payment-source.test.ts
 +++ b/tests/launch-invoice-payment-source.test.ts
 @@ -25,7 +25,7 @@ if (
@@ -462,7 +533,7 @@ index c4bf40c..c016329 100644
  if (
    createHash('sha256').update(callerHelperBytes).digest('hex') !==
 -  'af67c7836222779cd8322c08b3d5a72816760abc345a9d45cab97f85beacd133'
-+  'b664282ebcebbafdbe113208bf1d8aa5da12dbd30c928e1ec649f7d69c708863'
++  'f3fb04f429f2e43493bf57ecce38a7435f346fa4d2fd17d790ff170e366b11bb'
  )
    throw Error('Reviewed invoice caller helper required');
  const { admitInvoiceCallerSource: admitInvoiceCallerOnly } = await import(
@@ -471,7 +542,7 @@ index c4bf40c..c016329 100644
  if (
    createHash('sha256').update(responseHelperBytes).digest('hex') !==
 -  'aa8871b0fa334bfd2ffdb36c314650e51e56ceea41a983e13c0b42a60084dfcd'
-+  'a46d968c5992e1d9446250118d72a1166abefd9771ccfebc63a2fef5dd4b633f'
++  '74c672d6725876285c8bd2ee844aec88c183b56b12181a0373c874e02cf26510'
  )
    throw Error('Reviewed payment response helper required');
  const { admitPaymentResponseSource } = await import(
