@@ -8,6 +8,23 @@ import type { CommercialDraft } from '../../server/invoices/commercial-draft-cli
 import { presentIssuedInvoice } from '../../proposals/commercial-invoice-issuance/presentation';
 
 const db = createTestDatabase();
+let fixtureAdmin = 'postgres';
+function fixtureRoles(sql: string) {
+  return sql
+    .replaceAll(
+      'propel_commercial_draft_owner',
+      'propel_commercial_issuance_test_owner',
+    )
+    .replaceAll(
+      'propel_commercial_draft_runtime',
+      'propel_commercial_issuance_test_runtime',
+    )
+    .replaceAll(
+      'propel_commercial_issue_runtime',
+      'propel_commercial_issuance_test_issuer',
+    );
+}
+
 const companies = Array.from({ length: 2 }, () => ({
   org: randomUUID(),
   actor: randomUUID(),
@@ -30,7 +47,7 @@ async function login(c = companies[0], connection = db, aal = 'aal2') {
       exp: Math.floor(Date.now() / 1000) + 3600,
     }),
   ]);
-  await connection.exec('set role propel_commercial_issue_runtime');
+  await connection.exec('set role propel_commercial_issuance_test_issuer');
 }
 async function issue(
   connection = db,
@@ -87,7 +104,7 @@ async function admin(sql: string, params: unknown[] = []) {
   return result;
 }
 async function save(connection = db) {
-  await connection.exec('set role propel_commercial_draft_runtime');
+  await connection.exec('set role propel_commercial_issuance_test_runtime');
   return connection.query(
     'select private.commercial_invoice_draft_save($1,$2,$3,$4,$5,$6,$7,$8,$9)',
     [
@@ -116,6 +133,8 @@ async function waitForAdvisory(connection: TestDatabase, pid: number) {
   throw Error('Required native advisory wait was not observed');
 }
 beforeAll(async () => {
+  fixtureAdmin = String((await db.query('select current_user u')).rows[0].u);
+  if (!/^[a-z_]+$/.test(fixtureAdmin)) throw Error('Unsafe fixture admin');
   await db.exec(readFileSync('tests/database/bootstrap.sql', 'utf8'));
   for (const f of readdirSync('supabase/migrations').sort())
     await db.exec(readFileSync('supabase/migrations/' + f, 'utf8'));
@@ -139,11 +158,13 @@ beforeAll(async () => {
   expect(createHash('sha256').update(guarded).digest('hex')).toBe(
     'e1c504f9a7077caa92c375c378fb370155478be9cf077e66bf58932ae0895a3c',
   );
-  await db.exec(guarded);
+  await db.exec(fixtureRoles(guarded));
   await db.exec(
-    readFileSync(
-      'proposals/commercial-invoice-issuance/issuance.proposed.sql',
-      'utf8',
+    fixtureRoles(
+      readFileSync(
+        'proposals/commercial-invoice-issuance/issuance.proposed.sql',
+        'utf8',
+      ),
     ),
   );
   for (const c of companies) {
@@ -240,7 +261,7 @@ beforeEach(async () => {
     [c.version, c.estimate],
   );
   await login();
-  await db.exec('set role propel_commercial_draft_runtime');
+  await db.exec('set role propel_commercial_issuance_test_runtime');
   draft = (
     await db.query<{ result: CommercialDraft }>(
       'select private.commercial_invoice_draft_create($1,$2,$3,$4,$5,$6,$7,$8) result',
@@ -264,6 +285,23 @@ beforeEach(async () => {
 });
 afterAll(async () => {
   await db.exec('rollback; reset role');
+  const roles = await db.query<{ rolname: string }>(
+    "select rolname from pg_roles where rolname in ('propel_commercial_issuance_test_owner','propel_commercial_issuance_test_runtime','propel_commercial_issuance_test_issuer')",
+  );
+  for (const { rolname } of roles.rows) {
+    // Finite fixture-owned names only; do not adopt/drop the original suite roles.
+    if (
+      ![
+        'propel_commercial_issuance_test_owner',
+        'propel_commercial_issuance_test_runtime',
+        'propel_commercial_issuance_test_issuer',
+      ].includes(rolname)
+    )
+      throw Error('Unknown fixture role');
+    await db.exec(
+      `reassign owned by ${rolname} to ${fixtureAdmin};drop owned by ${rolname};drop role ${rolname}`,
+    );
+  }
   await db.close();
 });
 
@@ -279,7 +317,7 @@ it.each([
   'anon',
   'authenticated',
   'service_role',
-  'propel_commercial_draft_runtime',
+  'propel_commercial_issuance_test_runtime',
 ])('denies issuance to %s', async (role) => {
   await db.exec('reset role; set role ' + role);
   await expect(issue()).rejects.toThrow(/permission denied/);
@@ -380,7 +418,7 @@ it('keeps issuance evidence and presentation stable across non-UTC session reope
 });
 it('blocks legacy draft projection, duplicate old writes and edits after issuance', async () => {
   await issue();
-  await db.exec('set role propel_commercial_draft_runtime');
+  await db.exec('set role propel_commercial_issuance_test_runtime');
   await expect(
     db.query('select private.commercial_invoice_draft_read($1,$2,$3)', [
       draft.organizationId,
@@ -433,7 +471,7 @@ it('saves and reopens a revised draft, then issues only that exact approved revi
 });
 it('keeps issued header, receipt and original revisions immutable even for the trusted owner', async () => {
   await issue();
-  await db.exec('set role propel_commercial_draft_owner');
+  await db.exec('set role propel_commercial_issuance_test_owner');
   await expect(
     db.query(
       'update private.commercial_invoice_drafts set issued_revision=null,invoice_number=null,issue_command_id=null,issued_actor_id=null,issued_at=null,issue_request_hash=null',
@@ -470,7 +508,9 @@ it('rollback consumes no issuance identity and leaves draft evidence intact', as
   await expect(read()).rejects.toThrow();
   expect((await issue()).state).toBe('issued');
 });
-const native = Boolean(process.env.EV_TEST_PG_SOCKET);
+// The canonical engine also supplies native peers in hosted CI (TCP to its
+// disposable service). PGlite has no fork; do not skip native CI coverage.
+const native = typeof db.fork === 'function';
 it.each(['invoice_number', 'issue_request_hash'])(
   'rejects a partially populated issued header with NULL %s',
   async (column) => {
@@ -508,7 +548,7 @@ it.each(['missing', 'expired', 'revoked'])(
 );
 it('rejects the reverse reuse of an issue command as a draft command', async () => {
   await issue();
-  await db.exec('set role propel_commercial_draft_owner');
+  await db.exec('set role propel_commercial_issuance_test_owner');
   await expect(
     db.query(
       'insert into private.commercial_invoice_draft_receipts(organization_id,command_id,invoice_id,revision,actor_id,request_hash) values($1,$2,$3,$4,$5,$6)',
@@ -532,7 +572,7 @@ it('retains forced RLS, client/table denial and finite function grants', async (
     relforcerowsecurity: true,
   });
   const flags = await admin(
-    "select has_table_privilege('propel_commercial_issue_runtime','private.commercial_invoice_drafts','UPDATE') dml,has_table_privilege('propel_commercial_issue_runtime','private.commercial_issue_authorities','INSERT') provision,has_schema_privilege('propel_commercial_draft_owner','private','CREATE') create_schema",
+    "select has_table_privilege('propel_commercial_issuance_test_issuer','private.commercial_invoice_drafts','UPDATE') dml,has_table_privilege('propel_commercial_issuance_test_issuer','private.commercial_issue_authorities','INSERT') provision,has_schema_privilege('propel_commercial_issuance_test_owner','private','CREATE') create_schema",
   );
   expect(flags.rows[0]).toEqual({
     dml: false,

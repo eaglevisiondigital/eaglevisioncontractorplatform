@@ -18,6 +18,14 @@ Both command-rebinding directions are denied. Post-issue edits roll back, retain
 the original draft revisions/receipts. UTC timestamp encoding makes reopening stable
 across session time zones. Original money/source/tax calculations are reused.
 
+The first hosted PR native job exposed a fixture-only collision with the original
+draft suite's cluster-wide role names (42710 before initialization; original746
+passed/original1 skip, new34 not run). The new fixture now uses three distinct
+disposable role aliases and removes its roles. Both suites then pass together in
+one native cluster with four workers: new34 + unchanged original31 = **65 PASS**,
+zero failures/skips. The proposed SQL, original tests and time budgets are unchanged.
+Fresh hosted verification of this fixture correction remains separate.
+
 `presentation.ts` projects only exact issued evidence into immutable customer-safe
 content. Staff memo, costs, actor and request hash are excluded. Draft/paid claims,
 wrong identities, extra fields and malformed evidence deny. Titles are untrusted
