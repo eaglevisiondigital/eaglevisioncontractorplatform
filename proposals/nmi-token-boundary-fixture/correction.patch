@@ -1,0 +1,19 @@
+diff --git a/tests/nmi-two-merchant-token-boundary.test.ts b/tests/nmi-two-merchant-token-boundary.test.ts
+index b7691ee..5f81a13 100644
+--- a/tests/nmi-two-merchant-token-boundary.test.ts
++++ b/tests/nmi-two-merchant-token-boundary.test.ts
+@@ -172,10 +172,12 @@ it.each([0, 1])(
+     const [url, options] = s.transport.mock.calls[0];
+     expect(url).toBe('https://sandbox.nmi.com/api/v5/payments/sale');
+     expect(options?.redirect).toBe('error');
+-    expect(JSON.parse(String(options?.body))).toMatchObject({
++    const body = JSON.parse(String(options?.body));
++    expect(body).toMatchObject({
+       payment_details: { payment_token: s.token.value },
+-      order_id: s.intent.idempotencyKey,
++      order_details: { order_id: s.intent.idempotencyKey },
+     });
++    expect(body).not.toHaveProperty('order_id');
+   },
+ );
+ 

@@ -1,0 +1,21 @@
+{
+  "schema": "nmi-token-boundary-fixture-source-proposal-v1",
+  "classification": "UNAPPLIED_ONE_FILE_FIXTURE_SOURCE_AUTHOR_PROPOSAL",
+  "parent": "38bc1bce05075fc0e858554947e195d8dded3c4a",
+  "sourceParent": "53a4705b72b584228b33988d1eae586ef10b44eb",
+  "sourcePatchSha256": "73d4d530e4a560838477641e2c4298edee03fd4368645437ca9f113ab32ac294",
+  "sourcePath": "server/payments/sandbox.ts",
+  "sourceSha256": "0c6bc1aa8e78ed7f6d86128e79055630cb41ec5281ed32a0bf7bbdc616a8ccc6",
+  "target": "tests/nmi-two-merchant-token-boundary.test.ts",
+  "mode": "100644",
+  "beforeSha256": "e61ccf5a059bdf5116387176d1afcbf1b0d596f47c7091e72ea42c800def4fff",
+  "proposedSha256": "784666767e8938875300e0c37759f4cc745861218033a9c4e01bdeda86abea47",
+  "patchSha256": "d67d40d9ba916bf776c3415ab0ecf2ff8de709f84cc356861c719e6144d13db0",
+  "historicalFixtureOrigin": "1199a062ab846989f01fc60fec4d2b51da64835d",
+  "protectedBy": "docs/LAUNCH_INVOICE_PAYMENT_COMPOSITION.json",
+  "fixtureSourceAuthor": null,
+  "applicationAuthorized": false,
+  "sourceAdmissionAuthorized": false,
+  "providerBehaviorVerified": false,
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}
