@@ -28,13 +28,54 @@ const runGit = (...args) =>
   execFileSync('git', ['--no-replace-objects', ...args], {
     stdio: ['ignore', 'pipe', 'pipe'],
   });
+let paymentPrefix = '';
+for (const part of 'scripts/payment-response-source-admission.mjs'.split('/')) {
+  paymentPrefix = paymentPrefix ? paymentPrefix + '/' + part : part;
+  assert(
+    !lstatSync(paymentPrefix).isSymbolicLink(),
+    'Exact NMI helper path required before import',
+  );
+}
+const paymentInfo = lstatSync('scripts/payment-response-source-admission.mjs');
+assert(
+  paymentInfo.isFile() && (paymentInfo.mode & 0o777) === 0o644,
+  'Exact NMI helper mode required before import',
+);
+const currentFrame = {
+  ...frame,
+  'scripts/payment-response-source-admission.mjs':
+    '74c672d6725876285c8bd2ee844aec88c183b56b12181a0373c874e02cf26510',
+  'scripts/check-payment-ack-admission.mjs':
+    'b1f297fc3d62cfe77a9ed9912a1a6f896a14a70cf796da2e1f24d5e5c0441ed9',
+  'tests/invoice-caller-migration-source.test.ts':
+    'b2ea02e8ba9a06e1bea67255261cc1784f24d05c2f0104c7f2650690782f4689',
+  'scripts/invoice-caller-source-admission.mjs':
+    'f3fb04f429f2e43493bf57ecce38a7435f346fa4d2fd17d790ff170e366b11bb',
+  'tests/launch-invoice-payment-source.test.ts':
+    '6f97dc729aeebbc00450f862ca2c9e5edaadbb27e2e8c5b1e286514b9a741f4e',
+  'server/payments/sandbox.ts':
+    '0c6bc1aa8e78ed7f6d86128e79055630cb41ec5281ed32a0bf7bbdc616a8ccc6',
+  'tests/nmi-two-merchant-token-boundary.test.ts':
+    '784666767e8938875300e0c37759f4cc745861218033a9c4e01bdeda86abea47',
+};
+const paymentBytes = readFileSync(
+  'scripts/payment-response-source-admission.mjs',
+);
+assert.equal(
+  createHash('sha256').update(paymentBytes).digest('hex'),
+  '74c672d6725876285c8bd2ee844aec88c183b56b12181a0373c874e02cf26510',
+  'Reviewed NMI payment helper required before import',
+);
+const { verifyNmiOrderReferenceFrame } = await import(
+  'data:text/javascript;base64,' + paymentBytes.toString('base64')
+);
 export function verifyPaymentFrame({
   read = readFileSync,
   stat = lstatSync,
   git = runGit,
 } = {}) {
   const checkFrame = () => {
-    for (const [path, digest] of Object.entries(frame)) {
+    for (const [path, digest] of Object.entries(currentFrame)) {
       let prefix = '';
       for (const segment of path.split('/')) {
         prefix = prefix ? prefix + '/' + segment : segment;
@@ -56,6 +97,12 @@ export function verifyPaymentFrame({
     }
   };
   checkFrame();
+  verifyNmiOrderReferenceFrame({
+    readCurrent: read,
+    readOriginal: (c, p) => git('show', `${c}:${p}`),
+    metadata: git,
+    stat,
+  });
   assert.equal(
     git('show', '--no-patch', '--format=%P', author).toString().trim(),
     parent,
@@ -97,6 +144,12 @@ export function verifyPaymentFrame({
     hash(git('show', parent + ':server/payments/sandbox.ts')),
     '89dc2b03f273ee00c73e8342fcf9e8db6d78d5f898bde96ccff94e69fc0276cc',
   );
+  verifyNmiOrderReferenceFrame({
+    readCurrent: read,
+    readOriginal: (c, p) => git('show', `${c}:${p}`),
+    metadata: git,
+    stat,
+  });
   // Metadata callbacks must not leave a stale pre-metadata live frame.
   checkFrame();
   return true;

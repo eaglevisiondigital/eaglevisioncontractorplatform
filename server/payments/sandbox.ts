@@ -285,7 +285,7 @@ export class SandboxGateway {
           amount: 0,
           currency: 'USD',
           payment_details: { payment_token: token.value },
-          order_id: intent.idempotencyKey,
+          order_details: { order_id: intent.idempotencyKey },
         }).replace('"amount":0', `"amount":${decimal}`);
       }
       const r = await this.transport(url, {

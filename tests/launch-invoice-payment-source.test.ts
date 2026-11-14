@@ -25,7 +25,7 @@ if (
 const callerHelperBytes = readFileSync(callerHelperUrl);
 if (
   createHash('sha256').update(callerHelperBytes).digest('hex') !==
-  'af67c7836222779cd8322c08b3d5a72816760abc345a9d45cab97f85beacd133'
+  'f3fb04f429f2e43493bf57ecce38a7435f346fa4d2fd17d790ff170e366b11bb'
 )
   throw Error('Reviewed invoice caller helper required');
 const { admitInvoiceCallerSource: admitInvoiceCallerOnly } = await import(
@@ -45,7 +45,7 @@ if (
 const responseHelperBytes = readFileSync(responseHelperPath);
 if (
   createHash('sha256').update(responseHelperBytes).digest('hex') !==
-  'aa8871b0fa334bfd2ffdb36c314650e51e56ceea41a983e13c0b42a60084dfcd'
+  '74c672d6725876285c8bd2ee844aec88c183b56b12181a0373c874e02cf26510'
 )
   throw Error('Reviewed payment response helper required');
 const { admitPaymentResponseSource } = await import(
