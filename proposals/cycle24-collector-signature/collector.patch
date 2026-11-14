@@ -1,0 +1,93 @@
+diff --git a/scripts/collect-cycle24-browser.mjs b/scripts/collect-cycle24-browser.mjs
+index 7498958..63b9d7f 100644
+--- a/scripts/collect-cycle24-browser.mjs
++++ b/scripts/collect-cycle24-browser.mjs
+@@ -1,6 +1,6 @@
+ import { createHash } from 'node:crypto';
+ import { execFileSync } from 'node:child_process';
+-import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
++import { lstatSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+ import { resolve } from 'node:path';
+ import { devices } from '@playwright/test';
+ import { sampleCompanies } from '../src/domain/platform.ts';
+@@ -19,6 +19,27 @@ import {
+   cycle25SourcePorts,
+ } from './cycle25-source-lineage.mjs';
+ 
++// Verify the new companion before executing its captured bytes.
++const signatureHelperUrl = new URL(
++  './operating-source-signature-admission.mjs',
++  import.meta.url,
++);
++if (
++  !lstatSync(signatureHelperUrl).isFile() ||
++  lstatSync(signatureHelperUrl).isSymbolicLink() ||
++  (lstatSync(signatureHelperUrl).mode & 0o777) !== 0o644
++)
++  throw Error('Reviewed operating-signature helper required');
++const signatureHelperBytes = readFileSync(signatureHelperUrl);
++if (
++  createHash('sha256').update(signatureHelperBytes).digest('hex') !==
++  '38fd3d784b10dd634f6b03a5995a4ce4392eb2924865349d1414328701113978'
++)
++  throw Error('Reviewed operating-signature helper required');
++const { admitOperatingSignatureSource } = await import(
++  'data:text/javascript;base64,' + signatureHelperBytes.toString('base64')
++);
++
+ const directory = resolve(
+   process.env.CYCLE24_ARTIFACT_DIR ?? 'artifacts/cycle24',
+ );
+@@ -53,7 +74,10 @@ const gitHashes = new Map();
+ function gitHash(commit, path) {
+   const key = `${commit}:${path}`;
+   if (!gitHashes.has(key))
+-    gitHashes.set(key, sha(execFileSync('git', ['show', key])));
++    gitHashes.set(
++      key,
++      sha(execFileSync('git', ['--no-replace-objects', 'show', key])),
++    );
+   return gitHashes.get(key);
+ }
+ function binding(item) {
+@@ -66,14 +90,34 @@ function binding(item) {
+     throw Error('Exact frozen runtime binding required');
+   if (!verifiedCommits.has(item.source_commit)) {
+     assertCycle24ExecutionCommit(item.source_commit);
+-    for (const path of cycle24CriticalSources)
+-      if (
+-        gitHash(item.source_commit, path) !==
+-        gitHash(cycle24RuntimeCommit, path)
+-      )
+-        throw Error('Executed commit changes critical frozen source');
++    for (const path of cycle24CriticalSources) {
++      const historicalHash = gitHash(cycle24RuntimeCommit, path);
++      if (gitHash(item.source_commit, path) !== historicalHash) {
++        const executed = execFileSync('git', [
++          '--no-replace-objects',
++          'show',
++          `${item.source_commit}:${path}`,
++        ]);
++        if (!admitOperatingSignatureSource(path, executed, historicalHash))
++          throw Error('Executed commit changes critical frozen source');
++        admittedSources.set(path, {
++          path,
++          state: 'EXACT_OPERATING_SIGNATURE_M1',
++          author: 'c50ce4521fbc264276734a9f8909b525c9a7c2f8',
++          sha256: sha(executed),
++          operational_authority: false,
++        });
++      }
++    }
+     verifiedCommits.add(item.source_commit);
+   }
++  // Critical runtime is outside the 76-file capture inventory. Recheck current
++  // bytes on every binding, including after the immutable Git-cache fast path.
++  for (const path of cycle24CriticalSources)
++    if (
++      sha(cycle25SourcePorts.read(path)) !== gitHash(item.source_commit, path)
++    )
++      throw Error('Current critical source differs from executed checkout');
+   executionCommits.add(item.source_commit);
+   const pending = new Set(inventory.paths);
+   for (const f of item.source_files) {
