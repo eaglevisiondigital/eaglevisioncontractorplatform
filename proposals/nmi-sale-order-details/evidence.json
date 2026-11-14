@@ -1,0 +1,19 @@
+{
+  "schema": "nmi-sale-order-details-offline-proposal-v1",
+  "baseline": "53a4705b72b584228b33988d1eae586ef10b44eb",
+  "officialDocumentation": "https://docs.nmi.com/reference/create-sale-v5",
+  "officialSchemaPath": "components.schemas.PaymentSaleBase.properties.order_details -> OrderDetailsRest.properties.order_id",
+  "officialSchemaSha256Sorted": "9025ca0db7db7c83b7d9aea73d4c2b4ecbd3d83a0d317af761706100981e8703",
+  "path": "server/payments/sandbox.ts",
+  "before": "828b355608e2fee5433dc2c29c3094e40c92c444409331e1b67183ed09e19feb",
+  "after": "0c6bc1aa8e78ed7f6d86128e79055630cb41ec5281ed32a0bf7bbdc616a8ccc6",
+  "patchSha256": "73d4d530e4a560838477641e2c4298edee03fd4368645437ca9f113ab32ac294",
+  "providerBehaviorVerified": false,
+  "applicationAuthorized": false,
+  "officialSchemaHashPreimage": {
+    "scope": "complete parsed official Sale page SSR document.api.schema object",
+    "encoding": "UTF-8, no trailing newline",
+    "serialization": "Python json.dumps(schema, sort_keys=True, ensure_ascii=True, separators=(\", \", \": \"))",
+    "bytes": 114312
+  }
+}
