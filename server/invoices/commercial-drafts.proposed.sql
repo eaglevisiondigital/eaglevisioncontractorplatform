@@ -111,6 +111,7 @@ create function private.commercial_draft_projection(p_org uuid,p_invoice uuid,p_
 declare h private.commercial_invoice_drafts;r private.commercial_invoice_draft_revisions;c private.commercial_invoice_draft_receipts;begin
  select * into h from private.commercial_invoice_drafts where organization_id=p_org and id=p_invoice;
  if not found then raise exception 'Exact invoice draft unavailable' using errcode='42501';end if;
+ if to_jsonb(h)->>'issued_revision' is not null then raise exception 'Invoice already issued; use issued reader' using errcode='42501';end if;
  if p_command is null then
  select * into r from private.commercial_invoice_draft_revisions where organization_id=p_org and invoice_id=p_invoice and revision=h.current_revision;
  select * into c from private.commercial_invoice_draft_receipts where organization_id=p_org and invoice_id=p_invoice and revision=h.current_revision;
