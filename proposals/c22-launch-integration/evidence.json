@@ -1,0 +1,19 @@
+{
+  "schema": "propel-c22-launch-integration-v1",
+  "status": "UNAPPLIED_REQUIRES_EXACT_INTEGRATION_APPROVAL",
+  "launch_parent": "53a4705b72b584228b33988d1eae586ef10b44eb",
+  "source_author": "d0e05afb6ade0e3d78190379335000b988de6c94",
+  "reviewed_proposal": "81a8645fd2700b56274c85fda695c3b9a3e1fd45",
+  "patch_path": "proposals/c22-default-git-history/correction.patch",
+  "patch_sha256": "aadd9222300005c399a133bb6a9536687a8ce97ee40af68c330982779ae6cca6",
+  "file": {
+    "path": "scripts/check-cycle22.mjs",
+    "mode": "100644",
+    "before": "7a53aaa66a7c2924cddf8020c5189f02d3b2822b6f4f69b02d7a217a8a62d9ea",
+    "after": "8abb9bffe4147bec71f94a7bdb6d761f50660b8b61d50526efef7ecc00a32226"
+  },
+  "tracked_paths": 2410,
+  "other_paths_unchanged": 2409,
+  "operationalReady": false,
+  "launchIntegrationAuthorized": false
+}
