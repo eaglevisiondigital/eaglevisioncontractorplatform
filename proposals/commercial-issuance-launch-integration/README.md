@@ -1,41 +1,36 @@
-# Commercial issuance launch composition · unapplied
+# Commercial issuance launch composition · bound, unapplied
 
-This package proposes exact launch450 `7f464e6c7be280c4134eee4a031a737ed79d2b5a`
-plus reviewed451→455→456→459→460 source. The original 38-path composition
-reproduces author460 tree `66261e5ce8bca0542bd5a2053fb2f3033d461f0e`.
-No protected launch files are changed in this proposal branch.
+This successor binds the completed compatibility source author #464
+`88d065a01d86027e82753d0a43b2218925ee6b58`, sole parent #460
+`e22fe5ebc5a942bbf5bbc5348e16e9bde21d2db5`. The exact approved three-file patch
+`d809634e7847fc7870de94fa16437fe7f9413bf62794024dd2229b3fb6f49885`
+and every original before/after identity are still sealed in
+`legacy-fixture/source-author.json`. That historical file retains its original
+NULL future-author field; current `evidence.json` separately names the actual
+completed author and independent review SHA256
+`24ba3b165f541692a25ffa2df4995f82ebe440fba5522c91e6bc1b3c33d8f815`.
+Source authorship is complete. Launch integration is **not authorized**.
 
-## Demonstrated compatibility failure and separate checkpoint
+## Exact integration checkpoint
 
-Exact460's retained `legacy-invoice-fixture.mjs` imports the old payment frame,
-which requires helper `f3fb04f4…` while the approved author now has `1d3438c3…`.
-The actual PR Foundation trace reports the containing sixteen-case file with zero
-registered tests. A direct sealed-module read reproduces that exact import denial.
-This is distinct from the unresolved forty-five-minute Foundation cancellations.
+The original 40-path patch remains **byte-identical**:
+`56b27b8c3dc7510ddab41e47a4e7ad8ba1ad37d785052957bdde33186eeffa1f`.
+Against exact launch #450 `7f464e6c7be280c4134eee4a031a737ed79d2b5a`, it has
+28 additions and 12 modifications, all 100644, with 2,398 existing entries unchanged.
+Its proposed tree `f255ae9f0665d55fee94387340d84032f1fa25b8` is now the
+actual #464 author tree, not a hypothetical overlay. All 40 full before/after
+SHA256 identities and modes remain in `evidence.json`; the file list and every
+source endpoint are unchanged from #463.
 
-`legacy-fixture/source-author.patch` proposes **three** exact `M100644` changes
-against460: authenticate the existing guard fixture before historical reads,
-update only the retained test's fixture digest, and teach the ordinary guard
-qualifier only the complete original/proposed legacy pair. Historical assertions,
-e23/2fc records, H/F/G and C17/C22/C24 bytes remain intact. Mixed/unknown tuples,
-proposed legacy bytes beside pre-author H, and phase withdrawal remain denied.
-The third change is necessary because the original whole-frame guard qualifier
-correctly rejects unknown changes to those two previously frozen companions.
-
-First approval is only this three-file source-author amendment:
-`d809634e7847fc7870de94fa16437fe7f9413bf62794024dd2229b3fb6f49885`.
-Its future author is **NULL**. Do not treat this proposal as source admission.
-After separate authorship/review, bind its actual commit before requesting launch
-integration. No previous guard/checker approval is repeated or expanded.
-
-The combined **40-path** integration proposal has 28 additions and 12 modifications,
-with 2,398 original450 entries unchanged. Its patch SHA256 is
-`56b27b8c3dc7510ddab41e47a4e7ad8ba1ad37d785052957bdde33186eeffa1f`;
-its proposed source tree is `f255ae9f0665d55fee94387340d84032f1fa25b8`.
-The proposed SQL remains outside migrations, uninstalled and unwired. Existing
-trusted draft caller code is retained; issuance-specific production connection,
-role/grant provisioning, genuine Auth/MFA and customer readers remain separate
-unaccepted dependencies. An issuance receipt is never payment or settlement.
+Only the proposal's evidence, qualifier, tests and this explanation change. The
+manifest now binds #464 and its parent/review; its new seal is
+`d6331af8f5d4a6956df60525d6ae03e43444e079dca4136d339a2055b66fd0a6`.
+The qualifier authenticates both original #460 and actual #464 trees, proves the
+three-file artifact connects them, and compares the reconstructed full tree to
+all actual #464 entries. Four added controls bind that actual author and reject
+NULL, stale-author and unknown-author metadata before consulting history. All 37
+original controls and their budgets remain unchanged. No protected launch file
+changes in this proposal branch; the complete #450 launch frame stays exact.
 
 ## Executable offline qualification
 
@@ -43,53 +38,42 @@ unaccepted dependencies. An issuance receipt is never payment or settlement.
 node node_modules/vitest/vitest.mjs run tests/commercial-issuance-launch-integration.test.ts
 ```
 
-The qualifier seals manifest, patches and all three correction payloads before
-use; authenticates the complete immutable450 and460 Git trees, lineage, blob hashes
-and modes; and rechecks current450 source after final compatibility reads. It
-composes only an exclusive private disposable tree. It proves the three-file
-artifact against the original460 tree and verifies the complete proposed tree
-before and after a test callback. It does not install SQL or offer an operational
-connection factory, provider port, role appointment or commit operation.
+The existing qualifier seals the manifest, patch and correction payloads before
+use; checks exact ancestry, complete Git trees, blob hashes and modes; reconstructs
+only an exclusive private disposable source directory; and verifies source before
+and after the callback. Unknown edits, coordinated manifest rebinding, substituted
+or withdrawn frames, changed Git controls, ignored extra inputs and replaced private
+ancestors deny. Captured 0600 files inside a 0700 root and bounded Git/tar commands
+remain unchanged. No staged Git executes after the test callback. A changed root
+reports unresolved cleanup rather than deleting an unknown replacement.
 
-Review closed inherited tar-option execution, ignored extra files, Git clean-filter
-execution, replaced private ancestors, and final-source withdrawal. Captured patches
-use exclusive0600 files inside a700 root, stdin is ignored and Git/tar commands are
-bounded. No staged Git executes after the callback; metadata/source/current package
-are rechecked instead. Normal success/failure removes the known original private
-root. Replaced-root identity reports unresolved cleanup rather than deleting an
-unknown replacement. These controls do not establish independent operational custody.
+Original affected tests exercise draft create/Save/reopen, exact revisions and CAS,
+revocation, caller-bound lost-ACK reconciliation, tenant/customer/source identity,
+immutable issued snapshots, deterministic invoice numbers and issuance receipts.
+The number policy still needs owner acceptance; receipts prove issuance only.
+No payment, settlement, bank deposit, delivery or independent custody is inferred.
+The native runs use disposable PostgreSQL and synthetic identities, not genuine
+hosted Auth or operational acceptance. Final current-source results and independent
+review are recorded in the PR after qualification; prior #463 results stay historical.
 
-Matching proposed-source evidence includes original draft/caller/issuance native
-**75 PASS / 0 FAIL / 0 SKIP**, and original retained-launch16 + guard39 + presentation21
-**76 PASS / 0 FAIL / 0 SKIP**. These are disposable PostgreSQL/controlled fixtures,
-not hosted Auth or operational acceptance. New-control final results and independent
-source qualification are recorded in the PR after review. An earlier new-laboratory
-run stalled in a stdin-based Git apply and was interrupted, not marked PASS; its
-internal cause is unproved. File-based bounded transport corrected that laboratory
-path, without changing original test assertions or budgets.
+## Owner decision and remaining gates
 
-Exact460 hosted native suites pass780 with the original skip in both events;
-Passport, documentation and rehearsal checks pass. Both Foundation verify jobs
-cancelled at their original45-minute limits. The earlier local88PASS/twoTIMEOUT and
-bounded two-case rerun stay separate. No global timeout cause or Foundation PASS is
-claimed. The sixteen-case import failure is reproduced and corrected only in the
-proposed frame; other incomplete coverage remains unverified.
+The next requested decision is only the exact 40-path isolated development
+integration on a child of #450, after independent review of this actual-author
+binding. It excludes SQL/grants, runtime wiring, hosted/provider operations, real
+tenants/merchants, payments, messages, recovery, merge, deployment and release.
+The SQL remains outside migrations, uninstalled and unwired. Genuine current
+Auth/MFA, issuer connection/role/grant provisioning and installed writer/bypass
+inventory remain unaccepted. Independent D2 custody/ACK/fencing and D3 recovery,
+D1 duty assignments and original A01–A12 also remain open.
 
-Saul 2 Paul stays first; Cunningham needs independent tenant/customer/Auth/merchant
-and settlement bindings. VAR/NMI capability confirmation, genuine current Auth/MFA,
-installed writer/bypass inventory, D1 accountability, D2 independent custody/ACK,
-D3 recovery and original A01–A12 remain unaccepted. Source authoring and launch
-integration are separate from SQL/grants, provider tests, tenants, messages,
-financial execution, recovery, merge, deployment and release activation.
-Release 1.0 remains **NO-GO**.
+Both #460 Foundation jobs cancelled at their original 45-minute cap. Their earlier
+local 88 passes/two timeouts and bounded two-case rerun remain separate evidence;
+no global timeout cause is inferred from this import correction. Exact #464 CI
+must be reported by actual job outcome, never substituted by this offline tree.
+No full Foundation or mirror-trust closure is claimed by this proposal.
 
-Final independent qualification of the frozen packet passed **37/37** new controls
-and **75/75** actual proposed-source native cases, with zero failures or skips.
-Independent reports have SHA256
-`75dc8f3086e2e9b5810276b53ecb0570402f4fa18db6e6b55b5208f340a8127a`
-and `5017d7acf648575be5c37e627b67373b66cd823bba5b1e1c9d869041de88ed1e`.
-The final related76-case run has SHA256
-`49714b2d88483bbac8f266746cb7232bf416ea133a2a565452e800d34c09fa1d`.
-Type/build, scoped lint/format and feature checks passed; all2,410 parent450 entries
-remain unchanged in this proposal. None of these results supplies the missing
-source-author or integration authorization.
+Saul 2 Paul remains first. Cunningham requires separately accepted tenant, customer,
+Auth, merchant/key and settlement bindings; neither company's merchant underwriting
+approval replaces VAR/NMI or launch acceptance. Optional platform work stays outside
+this candidate. Release 1.0 remains **NO-GO**.
