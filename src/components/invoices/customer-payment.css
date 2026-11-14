@@ -1,0 +1,68 @@
+.customer-payment {
+  max-width: 48rem;
+  margin: 1rem auto;
+  padding: clamp(1rem, 3vw, 2rem);
+  border: 1px solid #cbd5e1;
+  border-radius: 1rem;
+  background: #fff;
+  color: #172b3a;
+  overflow-wrap: anywhere;
+}
+.customer-payment h2 {
+  color: #163e59;
+}
+.customer-payment-totals {
+  display: block;
+  max-width: 30rem;
+}
+.customer-payment-totals > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.4rem 0;
+}
+.customer-payment-totals dd {
+  margin: 0;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.customer-payment details {
+  padding: 1rem 0;
+  border-top: 1px solid #cbd5e1;
+}
+.customer-payment summary {
+  cursor: pointer;
+  min-height: 2.75rem;
+  padding: 0.5rem;
+}
+.customer-payment summary:focus-visible {
+  outline: 3px solid #163e59;
+  outline-offset: 2px;
+}
+.customer-payment-receipt {
+  padding: 1rem;
+  margin-block: 0.5rem;
+  background: #eef4f8;
+  border-radius: 0.5rem;
+}
+.customer-payment-receipt dl {
+  display: block;
+}
+.customer-payment-receipt dd {
+  margin-inline-start: 0;
+}
+.customer-payment button {
+  min-height: 2.75rem;
+}
+@media (max-width: 400px) {
+  .customer-payment {
+    margin: 0.5rem 0;
+  }
+  .customer-payment-totals > div {
+    gap: 0.5rem;
+  }
+}
+
+.customer-payment dt {
+  color: #405766;
+}
