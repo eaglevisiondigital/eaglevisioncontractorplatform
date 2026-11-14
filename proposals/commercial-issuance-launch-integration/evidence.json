@@ -4,10 +4,14 @@
   "base": "7f464e6c7be280c4134eee4a031a737ed79d2b5a",
   "baseTree": "edd0f3ff75eb7b584dab80ddd64dc3e54fc7b630",
   "baseEntries": 2410,
-  "author": "e22fe5ebc5a942bbf5bbc5348e16e9bde21d2db5",
-  "authorTree": "66261e5ce8bca0542bd5a2053fb2f3033d461f0e",
+  "author": "88d065a01d86027e82753d0a43b2218925ee6b58",
+  "authorTree": "f255ae9f0665d55fee94387340d84032f1fa25b8",
   "authorEntries": 2438,
   "lineage": [
+    {
+      "commit": "88d065a01d86027e82753d0a43b2218925ee6b58",
+      "parent": "e22fe5ebc5a942bbf5bbc5348e16e9bde21d2db5"
+    },
     {
       "commit": "e22fe5ebc5a942bbf5bbc5348e16e9bde21d2db5",
       "parent": "5cab6aec68ae49df2a60bd867532b7dc6bd2ac45"
@@ -371,6 +375,12 @@
     "path": "proposals/commercial-issuance-launch-integration/legacy-fixture/source-author.json",
     "sha256": "4716d3c6c4b5593743ec830e91f9a554d0e9f671e393a75a6cb12fe782712071",
     "patchSha256": "d809634e7847fc7870de94fa16437fe7f9413bf62794024dd2229b3fb6f49885",
-    "futureSourceAuthor": null
-  }
+    "futureSourceAuthor": null,
+    "actualSourceAuthor": "88d065a01d86027e82753d0a43b2218925ee6b58",
+    "actualSourceAuthorParent": "e22fe5ebc5a942bbf5bbc5348e16e9bde21d2db5",
+    "sourceAuthorReviewSha256": "24ba3b165f541692a25ffa2df4995f82ebe440fba5522c91e6bc1b3c33d8f815",
+    "historicalFutureAuthorRecord": "UNCHANGED_HISTORICAL_NULL"
+  },
+  "sourceAuthorApproval": "OWNER_APPROVED_EXACT_THREE_FILE_ONLY",
+  "integrationApproval": "HELD_SEPARATE_EXACT_FORTY_PATH_CHECKPOINT"
 }

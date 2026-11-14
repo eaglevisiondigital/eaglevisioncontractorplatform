@@ -17,16 +17,18 @@ import { devNull } from 'node:os';
 
 const directory = 'proposals/commercial-issuance-launch-integration';
 const base = '7f464e6c7be280c4134eee4a031a737ed79d2b5a';
-const author = 'e22fe5ebc5a942bbf5bbc5348e16e9bde21d2db5';
+const author = '88d065a01d86027e82753d0a43b2218925ee6b58';
+const compatibilityParent = 'e22fe5ebc5a942bbf5bbc5348e16e9bde21d2db5';
 const baseTree = 'edd0f3ff75eb7b584dab80ddd64dc3e54fc7b630';
-const authorTree = '66261e5ce8bca0542bd5a2053fb2f3033d461f0e';
+const authorTree = 'f255ae9f0665d55fee94387340d84032f1fa25b8';
+const compatibilityParentTree = '66261e5ce8bca0542bd5a2053fb2f3033d461f0e';
 const candidateTree = 'f255ae9f0665d55fee94387340d84032f1fa25b8';
 const compatibilityHash =
   '4716d3c6c4b5593743ec830e91f9a554d0e9f671e393a75a6cb12fe782712071';
 const compatibilityPatch =
   'd809634e7847fc7870de94fa16437fe7f9413bf62794024dd2229b3fb6f49885';
 const evidenceHash =
-  '0e44b79b16d1c0d125ecd5bf2ad36cbd7cfa9368d378caf75ddc5ce5980a495d';
+  'd6331af8f5d4a6956df60525d6ae03e43444e079dca4136d339a2055b66fd0a6';
 const patchHash =
   '56b27b8c3dc7510ddab41e47a4e7ad8ba1ad37d785052957bdde33186eeffa1f';
 const digest = (bytes) => createHash('sha256').update(bytes).digest('hex');
@@ -226,13 +228,23 @@ export function inspectIssuanceIntegration({
   if (
     evidence.base !== base ||
     evidence.author !== author ||
+    evidence.authorTree !== authorTree ||
+    evidence.compatibility.actualSourceAuthor !== author ||
+    evidence.compatibility.actualSourceAuthorParent !== compatibilityParent ||
+    evidence.compatibility.sourceAuthorReviewSha256 !==
+      '24ba3b165f541692a25ffa2df4995f82ebe440fba5522c91e6bc1b3c33d8f815' ||
     evidence.patchSha256 !== patchHash ||
     evidence.protectedIntegrationAuthorized !== false ||
     evidence.files.length !== 40
   )
     deny();
   const before = gitTree(base, baseTree, metadata),
-    reviewedAfter = gitTree(author, authorTree, metadata);
+    reviewedAfter = gitTree(author, authorTree, metadata),
+    reviewedBefore = gitTree(
+      compatibilityParent,
+      compatibilityParentTree,
+      metadata,
+    );
   if (
     before.length !== 2410 ||
     reviewedAfter.length !== 2438 ||
@@ -254,7 +266,7 @@ export function inspectIssuanceIntegration({
     ),
   );
   if (
-    compatibility.base !== author ||
+    compatibility.base !== compatibilityParent ||
     compatibility.futureSourceAuthor !== null ||
     compatibility.files.length !== 3 ||
     compatibility.patchSha256 !== compatibilityPatch
@@ -283,10 +295,10 @@ export function inspectIssuanceIntegration({
   };
   checkCompatibility();
   const old = new Map(before.map((x) => [x.path, x])),
-    next = new Map(reviewedAfter.map((x) => [x.path, x])),
+    next = new Map(reviewedBefore.map((x) => [x.path, x])),
     overlays = new Map();
   for (const row of compatibility.files) {
-    const original = metadata('show', author + ':' + row.path);
+    const original = metadata('show', compatibilityParent + ':' + row.path);
     if (
       row.mode !== '100644' ||
       next.get(row.path)?.mode !== '100644' ||
@@ -308,7 +320,14 @@ export function inspectIssuanceIntegration({
     overlays.set(row.path, bytes);
   }
   const after = [...next.values()];
-  if (treeDigest(after) !== candidateTree) deny();
+  if (
+    treeDigest(after) !== candidateTree ||
+    treeDigest(reviewedAfter) !== candidateTree
+  )
+    deny();
+  const authored = new Map(reviewedAfter.map((row) => [row.path, row]));
+  for (const row of after)
+    if (JSON.stringify(authored.get(row.path)) !== JSON.stringify(row)) deny();
   let previous = author;
   for (const row of evidence.lineage) {
     if (
@@ -375,7 +394,9 @@ export function inspectIssuanceIntegration({
     authorTree,
     candidateTree,
     compatibilityPatch,
-    futureCompatibilityAuthor: null,
+    compatibilityAuthor: author,
+    compatibilityParent,
+    sourceAuthorReviewSha256: evidence.compatibility.sourceAuthorReviewSha256,
     patchSha256: patchHash,
     files: evidence.files.length,
     added: 28,
@@ -387,6 +408,7 @@ export function inspectIssuanceIntegration({
     before,
     after,
     reviewedAfter,
+    reviewedBefore,
     compatibilityBytes,
     patch,
   });
@@ -573,9 +595,10 @@ export async function withDisposableIssuanceIntegration(action, ports = {}) {
       },
     );
     checkTree(captured.after, read, stat);
+    checkTree(captured.reviewedAfter, read, stat);
     if (stagedGit(source, ['write-tree']).toString().trim() !== candidateTree)
       deny();
-    // Prove the separate source-author artifact applies exactly to reviewed460.
+    // Prove the approved three-file artifact connects exact460 to actual464.
     // All edits below occur only in this disposable source checkout, never SQL.
     for (const args of [
       [
@@ -594,8 +617,11 @@ export async function withDisposableIssuanceIntegration(action, ports = {}) {
         stdio: ['ignore', 'ignore', 'pipe'],
         timeout: 5000,
       });
-    checkTree(captured.reviewedAfter, read, stat);
-    if (stagedGit(source, ['write-tree']).toString().trim() !== authorTree)
+    checkTree(captured.reviewedBefore, read, stat);
+    if (
+      stagedGit(source, ['write-tree']).toString().trim() !==
+      compatibilityParentTree
+    )
       deny();
     execFileSync(
       'git',
@@ -614,6 +640,7 @@ export async function withDisposableIssuanceIntegration(action, ports = {}) {
       },
     );
     checkTree(captured.after, read, stat);
+    checkTree(captured.reviewedAfter, read, stat);
     if (stagedGit(source, ['write-tree']).toString().trim() !== candidateTree)
       deny();
     metadataPin = snapshotMetadata();

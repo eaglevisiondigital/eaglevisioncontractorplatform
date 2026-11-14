@@ -428,3 +428,40 @@ it('does not turn a thrown undefined test outcome into acceptance', async () => 
   ).rejects.toBeUndefined();
   expect(calls).toBe(1);
 });
+
+it('binds the completed exact compatibility author and review instead of a hypothetical author', () => {
+  expect(q.inspectIssuanceIntegration()).toMatchObject({
+    author: '88d065a01d86027e82753d0a43b2218925ee6b58',
+    authorTree: 'f255ae9f0665d55fee94387340d84032f1fa25b8',
+    compatibilityAuthor: '88d065a01d86027e82753d0a43b2218925ee6b58',
+    compatibilityParent: 'e22fe5ebc5a942bbf5bbc5348e16e9bde21d2db5',
+    sourceAuthorReviewSha256:
+      '24ba3b165f541692a25ffa2df4995f82ebe440fba5522c91e6bc1b3c33d8f815',
+    protectedIntegrationAuthorized: false,
+  });
+  const history = JSON.parse(
+    readFileSync(dir + 'legacy-fixture/source-author.json', 'utf8'),
+  ) as { futureSourceAuthor: unknown };
+  expect(history.futureSourceAuthor).toBeNull();
+});
+it.each([null, 'e22fe5ebc5a942bbf5bbc5348e16e9bde21d2db5', '0'.repeat(40)])(
+  'rejects coordinated author rebinding to %s before any metadata use',
+  (author) => {
+    const replacement = Buffer.from(JSON.stringify({ ...evidence, author }));
+    let calls = 0;
+    const read = ((path: Parameters<typeof readFileSync>[0]) =>
+      String(path) === dir + 'evidence.json'
+        ? replacement
+        : readFileSync(path)) as typeof readFileSync;
+    expect(() =>
+      q.inspectIssuanceIntegration({
+        read,
+        metadata: () => {
+          calls++;
+          throw Error('unreviewed author must not reach history');
+        },
+      }),
+    ).toThrow();
+    expect(calls).toBe(0);
+  },
+);
