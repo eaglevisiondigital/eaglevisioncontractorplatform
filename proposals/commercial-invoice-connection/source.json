@@ -1,0 +1,31 @@
+{
+  "baseline": "7e25b50537fe66c19f5041e64bd2e59effc544c4",
+  "classification": "DISPOSABLE_CONNECTION_PREPARATION_NOT_OPERATIONAL",
+  "source": {
+    "server/invoices/commercial-caller-connection.ts": "3d892a8ae7757a6f480fde4638f17f4b642436ba728446dfd84811590be0aeed",
+    "server/invoices/commercial-draft-client.ts": "94aa164e60c780cb53f8658b16c57bc9c17da5d9469c73f9d73cab627dcea694",
+    "server/invoices/commercial-drafts.proposed.sql": "e1c504f9a7077caa92c375c378fb370155478be9cf077e66bf58932ae0895a3c",
+    "proposals/commercial-invoice-issuance/issuance.proposed.sql": "961c2dc380695ed2d910108d09303fff9b9018fe8d159beb9b958ddb2725d022",
+    "proposals/commercial-invoice-issuance/presentation.ts": "a181a67faf3f8b3264b5cd00478b38c5a3c9d67c2b7f2463d6d81c01bf477981",
+    "server/customer/broker-auth.ts": "709018249d889504b860e4cf0f4caa5cbdd1c2b04f58c53226f4499c68fd46d6",
+    "src/lib/customer-connected.ts": "7f7edf3efc5f053d6f644d6baae2ec8db2eecd9d3076251071cdd9053e575474"
+  },
+  "SQLInstallation": "NOT_RUN",
+  "Auth": "CONTROLLED_TESTS_ONLY",
+  "numberingPolicy": "NOT_ACCEPTED",
+  "operationalReady": false,
+  "installation": {
+    "status": "NOT_AUTHORIZED_NOT_INSTALLED",
+    "owner": "propel_commercial_draft_owner",
+    "runtime": "propel_commercial_issue_runtime (NOLOGIN)",
+    "executeOnly": [
+      "private.commercial_invoice_issue(uuid,uuid,uuid,integer,uuid,uuid,uuid,text)",
+      "private.commercial_invoice_issued_read(uuid,uuid,uuid)"
+    ],
+    "runtimeLOGIN": "NOT_PROVIDED",
+    "customerOrServiceGrants": "NONE",
+    "numberingPolicy": "OWNER_DECISION_REQUIRED",
+    "targetPrincipalsAndWindow": "PRIVATE_OWNER_ENTRY_REQUIRED",
+    "rollback": "NO_DROP_REPLAY_RECEIPT_REWRITE_OR_RECOVERY_AUTHORITY"
+  }
+}
