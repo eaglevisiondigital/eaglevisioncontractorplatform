@@ -1,0 +1,10 @@
+.commercial-customer-receipt {
+  background: #fff;
+  color: #172b3a;
+}
+.commercial-customer-receipt dt {
+  color: #405766;
+}
+.commercial-customer-receipt dd {
+  overflow-wrap: anywhere;
+}
