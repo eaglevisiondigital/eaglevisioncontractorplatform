@@ -1,0 +1,85 @@
+{
+  "schema": "invoice-guard-admission-proposal-v1",
+  "parent": "5f0f17dc9766411b260d5b53fd2db5a925adc80f",
+  "guardParent": "f9335e5834fb06789585c4e59edd640447441bb7",
+  "classification": "UNAPPLIED_PROTECTED_CHECKER_PROPOSAL",
+  "guardPatchSha256": "45d2eeafaca661d586e707aa6974b3f3216a44988de8a4b3e8d39f55bd3b6f45",
+  "patchSha256": "2fc927fa37cb8da1ba4eccc8a4ea225ed847e07eadea496130ad61e6c09596cf",
+  "files": [
+    {
+      "path": "scripts/invoice-caller-source-admission.mjs",
+      "mode": "100644",
+      "before": "f3fb04f429f2e43493bf57ecce38a7435f346fa4d2fd17d790ff170e366b11bb",
+      "after": "1d3438c34656e732c0352dab02477ea449ed4e4abd92714156c3ec62ff75e70a"
+    },
+    {
+      "path": "tests/launch-invoice-payment-source.test.ts",
+      "mode": "100644",
+      "before": "6f97dc729aeebbc00450f862ca2c9e5edaadbb27e2e8c5b1e286514b9a741f4e",
+      "after": "ada16b37c940f58473b5449bf53317ca1bff81abfb3e3125dece0447b2814862"
+    },
+    {
+      "path": "tests/invoice-caller-migration-source.test.ts",
+      "mode": "100644",
+      "before": "b2ea02e8ba9a06e1bea67255261cc1784f24d05c2f0104c7f2650690782f4689",
+      "after": "866339cc0e394971886ff6c8d9007ac485642d089bf07e28b812cc884d2b0c8a"
+    },
+    {
+      "path": "proposals/invoice-caller-reconciliation/qualify.mjs",
+      "mode": "100644",
+      "before": "8d3866149532e9986f8eca8d31d95cf3899d59e7ad74eb3e7281007d13c1e13e",
+      "after": "96ed1c379bc2ad3c6f03f1f54b1a66933d486b3793c688913bc9ea26074d27a7"
+    },
+    {
+      "path": "proposals/invoice-checker-qualification/baseline.mjs",
+      "mode": "100644",
+      "before": "c45098cb7175b28f54e4343c615cce89c168e3db16bdf72c94c41651133d1667",
+      "after": "949edd4dce7557f8c9829494579ae9e0babd572441e710fb3940479d41a04a25"
+    },
+    {
+      "path": "proposals/invoice-caller-transition/qualify.mjs",
+      "mode": "100644",
+      "before": "ec33767243ec25c53beb3743c543d4377e2d0c3a2b4f0ce361dc570184995ef9",
+      "after": "361b24b71ca03b54e86d521bde76f5e95be53125c84ffcfb881548b732ab2645"
+    },
+    {
+      "path": "tests/commercial-invoice-author-checkpoint.test.ts",
+      "mode": "100644",
+      "before": "8210051217c35647ad3560acec625380f48fcef370682614040f18a9cd98a827",
+      "after": "9519540efd5c531c3d79fc101d48e139c26de8240121a16ce9a13e66f04473ab"
+    },
+    {
+      "path": "proposals/invoice-caller-admission/qualify.mjs",
+      "mode": "100644",
+      "before": "96a933b122c4b698300e18d1f0b7c6970b0a21a368c3d3bfd58a5b2b49e5bd9b",
+      "after": "8137978d6b2d2f8e91a864db2d6b61ae0a0391faeea38f25c63db19abb8c4629"
+    },
+    {
+      "path": "tests/invoice-caller-admission-proposal.test.ts",
+      "mode": "100644",
+      "before": "5e5297339ece57d2f25371e2963463a202f336266a583092fe2ca1f3089743a7",
+      "after": "1cbcc2051c20a2287d93e6f148f41f62c8f3c60ec13557f6d0be8cd895f2a11a"
+    },
+    {
+      "path": "tests/invoice-checker-qualification-baseline.test.ts",
+      "mode": "100644",
+      "before": "b77ca2c3b7c3c74ab67820eaa9f5b37b67492ff7ca1d85b61837ff79bd2084ce",
+      "after": "9b2ef5e2dfcd99c218a249bc6cdbc7f30dfb24521ad23478ed7c72f15f2d7341"
+    }
+  ],
+  "fixtureFiles": [
+    {
+      "path": "proposals/invoice-guard-admission/fixture-adapter.mjs",
+      "sha256": "6c6a5758d3a3219b4fac88e5dbbeb2e24f6182bf73c8eba3f7bc5c44c8cd61bc",
+      "mode": "100644"
+    },
+    {
+      "path": "proposals/invoice-guard-admission/fixture-adapter.d.mts",
+      "sha256": "e3fecb714fc00da4d93695435c12ff0eccb289211a2e2740297043c8c9c23b04",
+      "mode": "100644"
+    }
+  ],
+  "admissionAuthorized": false,
+  "sqlInstallation": "NOT_RUN",
+  "release": "NO_GO"
+}
