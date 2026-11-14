@@ -1,0 +1,477 @@
+diff --git a/proposals/invoice-caller-transition/qualify.mjs b/proposals/invoice-caller-transition/qualify.mjs
+index 5436d2a..24f13d6 100644
+--- a/proposals/invoice-caller-transition/qualify.mjs
++++ b/proposals/invoice-caller-transition/qualify.mjs
+@@ -37,7 +37,7 @@ if (existsSync(paymentAdapterPath)) {
+   const bytes = readFileSync(paymentAdapterPath);
+   assert.equal(
+     createHash('sha256').update(bytes).digest('hex'),
+-    '4ccab151297b44da76057199cb3cabfcd2c73c3e20ed6761c27737db16468203',
++    '44b1869c9a8d3940d4fb90b7ca76237534509383921da993ab20fbb950257113',
+     'Reviewed payment fixture required',
+   );
+   paymentFixture = await import(
+@@ -144,7 +144,10 @@ export function qualify({
+   assert(
+     approvedFrame ||
+       proposedTestFrame ||
+-      (hash(snapshots[2]) === paymentFrameGuard &&
++      ([
++        paymentFrameGuard,
++        'f0fdd2544a693c529cba873849bf75ffa90a293ff3adf014e295649da12ca94f',
++      ].includes(hash(snapshots[2])) &&
+         paymentFixture?.verifyPaymentFrame() === true),
+     'Exact approved or proposed qualification frame required',
+   );
+@@ -190,8 +193,10 @@ export function qualify({
+         let bytes = readFileSync(path);
+         if (
+           path === 'proposals/invoice-checker-qualification/baseline.mjs' &&
+-          hash(bytes) ===
+-            'c27591939af63a33312e6293ebd90469eac202b0a0237275338fb0be08e012ad'
++          [
++            'c27591939af63a33312e6293ebd90469eac202b0a0237275338fb0be08e012ad',
++            'b634adb4633d12b60c60a718ea5f02eb3230d1d71b93ae96e559d84dbbb7b1cb',
++          ].includes(hash(bytes))
+         ) {
+           assert(paymentFixture, 'Reviewed payment fixture required');
+           paymentFixture.verifyPaymentFrame();
+diff --git a/proposals/invoice-checker-qualification/baseline.mjs b/proposals/invoice-checker-qualification/baseline.mjs
+index ef12894..cf17c6c 100644
+--- a/proposals/invoice-checker-qualification/baseline.mjs
++++ b/proposals/invoice-checker-qualification/baseline.mjs
+@@ -25,7 +25,7 @@ if (existsSync(paymentAdapterPath)) {
+   const bytes = readFileSync(paymentAdapterPath);
+   assert.equal(
+     createHash('sha256').update(bytes).digest('hex'),
+-    '4ccab151297b44da76057199cb3cabfcd2c73c3e20ed6761c27737db16468203',
++    '44b1869c9a8d3940d4fb90b7ca76237534509383921da993ab20fbb950257113',
+     'Reviewed payment fixture required',
+   );
+   paymentFixture = await import(
+@@ -123,7 +123,12 @@ export function qualificationBaseline({
+       'Regular active checker required',
+     );
+   }
+-  if (hash(current) === paymentFrameGuard) {
++  if (
++    [
++      paymentFrameGuard,
++      'f0fdd2544a693c529cba873849bf75ffa90a293ff3adf014e295649da12ca94f',
++    ].includes(hash(current))
++  ) {
+     assert(paymentFixture, 'Reviewed payment fixture required');
+     paymentFixture.verifyPaymentFrame({ read, stat, git });
+     return {
+diff --git a/proposals/payment-launch-integration/legacy-invoice-fixture.mjs b/proposals/payment-launch-integration/legacy-invoice-fixture.mjs
+index e0a3da1..29c0353 100644
+--- a/proposals/payment-launch-integration/legacy-invoice-fixture.mjs
++++ b/proposals/payment-launch-integration/legacy-invoice-fixture.mjs
+@@ -5,7 +5,7 @@ import { createHash } from 'node:crypto';
+ import { execFileSync } from 'node:child_process';
+ const adapter = 'proposals/payment-response-admission/fixture-adapter.mjs';
+ const adapterHash =
+-  '4ccab151297b44da76057199cb3cabfcd2c73c3e20ed6761c27737db16468203';
++  '44b1869c9a8d3940d4fb90b7ca76237534509383921da993ab20fbb950257113';
+ const baseline = '394d7fc1bbc6d6a27440e881bc3e9bf3d76befa6';
+ const originals = {
+   'scripts/invoice-caller-source-admission.mjs':
+diff --git a/proposals/payment-response-admission/fixture-adapter.mjs b/proposals/payment-response-admission/fixture-adapter.mjs
+index 8059da9..27549d3 100644
+--- a/proposals/payment-response-admission/fixture-adapter.mjs
++++ b/proposals/payment-response-admission/fixture-adapter.mjs
+@@ -28,13 +28,54 @@ const runGit = (...args) =>
+   execFileSync('git', ['--no-replace-objects', ...args], {
+     stdio: ['ignore', 'pipe', 'pipe'],
+   });
++let paymentPrefix = '';
++for (const part of 'scripts/payment-response-source-admission.mjs'.split('/')) {
++  paymentPrefix = paymentPrefix ? paymentPrefix + '/' + part : part;
++  assert(
++    !lstatSync(paymentPrefix).isSymbolicLink(),
++    'Exact NMI helper path required before import',
++  );
++}
++const paymentInfo = lstatSync('scripts/payment-response-source-admission.mjs');
++assert(
++  paymentInfo.isFile() && (paymentInfo.mode & 0o777) === 0o644,
++  'Exact NMI helper mode required before import',
++);
++const currentFrame = {
++  ...frame,
++  'scripts/payment-response-source-admission.mjs':
++    'a46d968c5992e1d9446250118d72a1166abefd9771ccfebc63a2fef5dd4b633f',
++  'scripts/check-payment-ack-admission.mjs':
++    'aa20f5a5efae40c1a191509468a68adf3f9e8d61d55d80f30305497cd51ba32b',
++  'tests/invoice-caller-migration-source.test.ts':
++    'c3009a246550da7c7835b9a05788731f12482dc8589cc0245f3e5df561c2a260',
++  'scripts/invoice-caller-source-admission.mjs':
++    'b664282ebcebbafdbe113208bf1d8aa5da12dbd30c928e1ec649f7d69c708863',
++  'tests/launch-invoice-payment-source.test.ts':
++    'f0fdd2544a693c529cba873849bf75ffa90a293ff3adf014e295649da12ca94f',
++  'server/payments/sandbox.ts':
++    '0c6bc1aa8e78ed7f6d86128e79055630cb41ec5281ed32a0bf7bbdc616a8ccc6',
++  'tests/nmi-two-merchant-token-boundary.test.ts':
++    '784666767e8938875300e0c37759f4cc745861218033a9c4e01bdeda86abea47',
++};
++const paymentBytes = readFileSync(
++  'scripts/payment-response-source-admission.mjs',
++);
++assert.equal(
++  createHash('sha256').update(paymentBytes).digest('hex'),
++  'a46d968c5992e1d9446250118d72a1166abefd9771ccfebc63a2fef5dd4b633f',
++  'Reviewed NMI payment helper required before import',
++);
++const { verifyNmiOrderReferenceFrame } = await import(
++  'data:text/javascript;base64,' + paymentBytes.toString('base64')
++);
+ export function verifyPaymentFrame({
+   read = readFileSync,
+   stat = lstatSync,
+   git = runGit,
+ } = {}) {
+   const checkFrame = () => {
+-    for (const [path, digest] of Object.entries(frame)) {
++    for (const [path, digest] of Object.entries(currentFrame)) {
+       let prefix = '';
+       for (const segment of path.split('/')) {
+         prefix = prefix ? prefix + '/' + segment : segment;
+@@ -56,6 +97,12 @@ export function verifyPaymentFrame({
+     }
+   };
+   checkFrame();
++  verifyNmiOrderReferenceFrame({
++    readCurrent: read,
++    readOriginal: (c, p) => git('show', `${c}:${p}`),
++    metadata: git,
++    stat,
++  });
+   assert.equal(
+     git('show', '--no-patch', '--format=%P', author).toString().trim(),
+     parent,
+@@ -97,6 +144,12 @@ export function verifyPaymentFrame({
+     hash(git('show', parent + ':server/payments/sandbox.ts')),
+     '89dc2b03f273ee00c73e8342fcf9e8db6d78d5f898bde96ccff94e69fc0276cc',
+   );
++  verifyNmiOrderReferenceFrame({
++    readCurrent: read,
++    readOriginal: (c, p) => git('show', `${c}:${p}`),
++    metadata: git,
++    stat,
++  });
+   // Metadata callbacks must not leave a stale pre-metadata live frame.
+   checkFrame();
+   return true;
+diff --git a/scripts/check-payment-ack-admission.mjs b/scripts/check-payment-ack-admission.mjs
+index 24bc697..bf799f0 100644
+--- a/scripts/check-payment-ack-admission.mjs
++++ b/scripts/check-payment-ack-admission.mjs
+@@ -18,7 +18,7 @@ if (
+ const responseHelperBytes = readFileSync(responseHelperPath);
+ if (
+   createHash('sha256').update(responseHelperBytes).digest('hex') !==
+-  'aa8871b0fa334bfd2ffdb36c314650e51e56ceea41a983e13c0b42a60084dfcd'
++  'a46d968c5992e1d9446250118d72a1166abefd9771ccfebc63a2fef5dd4b633f'
+ )
+   throw Error('Reviewed payment response helper required');
+ const { admitPaymentResponseSource } = await import(
+diff --git a/scripts/invoice-caller-source-admission.mjs b/scripts/invoice-caller-source-admission.mjs
+index ac43c20..f62bf65 100644
+--- a/scripts/invoice-caller-source-admission.mjs
++++ b/scripts/invoice-caller-source-admission.mjs
+@@ -107,7 +107,7 @@ const companions = [
+   {
+     path: 'tests/invoice-caller-migration-source.test.ts',
+     commit: '6063aea60588975bbe88c8ccf8b1d864721b7082',
+-    sha256: '6b803d33d5c8b9ca02abcbce59b8796f9691b44a82c97290974ea9a4a2892d69',
++    sha256: 'c3009a246550da7c7835b9a05788731f12482dc8589cc0245f3e5df561c2a260',
+     publishedSha256:
+       'b1131c5c7d80dc2fb3d28a3e7d20540c60d420f3d8ba76a7b61eb091fee24678',
+   },
+diff --git a/scripts/payment-response-source-admission.mjs b/scripts/payment-response-source-admission.mjs
+index 84c5b50..0197504 100644
+--- a/scripts/payment-response-source-admission.mjs
++++ b/scripts/payment-response-source-admission.mjs
+@@ -25,6 +25,106 @@ const git = (...args) =>
+   execFileSync('git', ['--no-replace-objects', ...args], {
+     stdio: ['ignore', 'pipe', 'pipe'],
+   });
++const nmiSource = 'server/payments/sandbox.ts';
++const nmiFixture = 'tests/nmi-two-merchant-token-boundary.test.ts';
++const nmiBefore =
++  '828b355608e2fee5433dc2c29c3094e40c92c444409331e1b67183ed09e19feb';
++const nmiAfter =
++  '0c6bc1aa8e78ed7f6d86128e79055630cb41ec5281ed32a0bf7bbdc616a8ccc6';
++const fixtureBefore =
++  'e61ccf5a059bdf5116387176d1afcbf1b0d596f47c7091e72ea42c800def4fff';
++const fixtureAfter =
++  '784666767e8938875300e0c37759f4cc745861218033a9c4e01bdeda86abea47';
++const nmiAuthors = [
++  [
++    '38bc1bce05075fc0e858554947e195d8dded3c4a',
++    '53a4705b72b584228b33988d1eae586ef10b44eb',
++    nmiSource,
++    nmiBefore,
++    nmiAfter,
++    '73d4d530e4a560838477641e2c4298edee03fd4368645437ca9f113ab32ac294',
++  ],
++  [
++    '95b0bb301610e589090e5611427809a29a23790a',
++    '38bc1bce05075fc0e858554947e195d8dded3c4a',
++    nmiFixture,
++    fixtureBefore,
++    fixtureAfter,
++    'd67d40d9ba916bf776c3415ab0ecf2ff8de709f84cc356861c719e6144d13db0',
++  ],
++];
++// Build-only exact source proof. No merchant, provider or execution authority.
++export function verifyNmiOrderReferenceFrame({
++  readCurrent = readFileSync,
++  readOriginal = (commit, p) => git('show', `${commit}:${p}`),
++  metadata = git,
++  stat = lstatSync,
++} = {}) {
++  const fail = () => {
++    throw Error('Exact authored NMI source and fixture pair required');
++  };
++  const check = () => {
++    for (const [p, digest] of [
++      [nmiSource, nmiAfter],
++      [nmiFixture, fixtureAfter],
++    ]) {
++      let prefix = '';
++      for (const part of p.split('/')) {
++        prefix = prefix ? prefix + '/' + part : part;
++        if (stat(prefix).isSymbolicLink()) fail();
++      }
++      const info = stat(p);
++      if (
++        !info.isFile() ||
++        (info.mode & 0o777) !== 0o644 ||
++        hash(readCurrent(p)) !== digest
++      )
++        fail();
++    }
++  };
++  check();
++  for (const [commit, parent, p, before, after, patch] of nmiAuthors) {
++    if (
++      metadata('show', '--no-patch', '--format=%P', commit)
++        .toString()
++        .trim() !== parent
++    )
++      fail();
++    if (
++      metadata(
++        'diff-tree',
++        '--no-commit-id',
++        '--name-status',
++        '--no-renames',
++        '-r',
++        commit,
++      )
++        .toString()
++        .trim() !== `M\t${p}`
++    )
++      fail();
++    for (const [c, digest] of [
++      [parent, before],
++      [commit, after],
++    ]) {
++      const tree = metadata('ls-tree', c, '--', p).toString().trim();
++      if (
++        !/^100644 blob [a-f0-9]{40}\t/.test(tree) ||
++        tree.split('\t')[1] !== p ||
++        hash(readOriginal(c, p)) !== digest
++      )
++        fail();
++    }
++    if (hash(metadata('diff', parent, commit, '--', p)) !== patch) fail();
++  }
++  if (
++    hash(readOriginal(nmiAuthors[1][0], nmiSource)) !== nmiAfter ||
++    hash(readOriginal(nmiAuthors[0][0], nmiFixture)) !== fixtureBefore
++  )
++    fail();
++  check();
++  return true;
++}
+ export function admitPaymentResponseSource(
+   path,
+   current,
+@@ -36,7 +136,11 @@ export function admitPaymentResponseSource(
+     stat = lstatSync,
+   } = {},
+ ) {
+-  if (!Object.hasOwn(files, path) || files[path][0] === null) return false;
++  if (
++    path !== nmiFixture &&
++    (!Object.hasOwn(files, path) || files[path][0] === null)
++  )
++    return false;
+   const fail = () => {
+     throw Error('Exact finite payment response source required');
+   };
+@@ -50,12 +154,16 @@ export function admitPaymentResponseSource(
+     if (!info.isFile() || (info.mode & 0o777) !== 0o644) fail();
+     const fresh = readCurrent(p);
+     if (
+-      hash(fresh) !== after ||
++      hash(fresh) !== (p === nmiSource ? nmiAfter : after) ||
+       (p === path && !Buffer.from(current).equals(fresh))
+     )
+       fail();
+   };
+-  if (expected !== files[path][0]) fail();
++  if (expected !== (path === nmiFixture ? fixtureBefore : files[path][0]))
++    fail();
++  verifyNmiOrderReferenceFrame({ readCurrent, readOriginal, metadata, stat });
++  if (path === nmiFixture && !Buffer.from(current).equals(readCurrent(path)))
++    fail();
+   if (
+     metadata('show', '--no-patch', '--format=%P', author).toString().trim() !==
+     parent
+@@ -90,6 +198,7 @@ export function admitPaymentResponseSource(
+     if (hash(readOriginal(author, p)) !== after) fail();
+     checkCurrent(p, after);
+   }
++  verifyNmiOrderReferenceFrame({ readCurrent, readOriginal, metadata, stat });
+   // A later lineage/read check may withdraw an earlier source; check the full bundle again.
+   for (const [p, [, after]] of Object.entries(files)) checkCurrent(p, after);
+   return true;
+diff --git a/tests/invoice-caller-migration-source.test.ts b/tests/invoice-caller-migration-source.test.ts
+index 3bdf14d..fbbb889 100644
+--- a/tests/invoice-caller-migration-source.test.ts
++++ b/tests/invoice-caller-migration-source.test.ts
+@@ -71,14 +71,19 @@ function verifyCheckerTransition() {
+   expect(currentHelper).toEqual(Buffer.from(expectedHelper));
+   expect(sha(currentHelper)).toBe(digest(currentGuard));
+ }
++// Retain the exact original payment transition assertions against their immutable stage.
++const paymentResponseStage = ((path: string, encoding?: string) => {
++  const bytes = git('show', `53a4705b72b584228b33988d1eae586ef10b44eb:${path}`);
++  return encoding ? bytes.toString('utf8') : bytes;
++}) as typeof readFileSync;
+ function verifyPaymentResponseTransition() {
+   expect(
+-    sha(readFileSync('scripts/payment-response-source-admission.mjs')),
++    sha(paymentResponseStage('scripts/payment-response-source-admission.mjs')),
+   ).toBe('aa8871b0fa334bfd2ffdb36c314650e51e56ceea41a983e13c0b42a60084dfcd');
+-  expect(sha(readFileSync('scripts/check-payment-ack-admission.mjs'))).toBe(
+-    'b936bbd53def10eb7604b840ebe56262073001f30f0191247307eb54940a67ad',
+-  );
+-  const guard = readFileSync(guardPath, 'utf8');
++  expect(
++    sha(paymentResponseStage('scripts/check-payment-ack-admission.mjs')),
++  ).toBe('b936bbd53def10eb7604b840ebe56262073001f30f0191247307eb54940a67ad');
++  const guard = paymentResponseStage(guardPath, 'utf8');
+   const digests = [
+     ...guard.matchAll(
+       /createHash\('sha256'\)\.update\(callerHelperBytes\)\.digest\('hex'\) !==\s*'([a-f0-9]{64})'/g,
+@@ -111,12 +116,60 @@ function verifyPaymentResponseTransition() {
+   expect(before.split(`sha256: '${originalF}'`)).toHaveLength(2);
+   const exact = before.replace(
+     `sha256: '${originalF}'`,
+-    `sha256: '${sha(readFileSync(migrationPath))}'`,
++    `sha256: '${sha(paymentResponseStage(migrationPath))}'`,
+   );
+-  expect(readFileSync(admissionHelperPath)).toEqual(Buffer.from(exact));
++  expect(paymentResponseStage(admissionHelperPath)).toEqual(Buffer.from(exact));
+   expect(sha(Buffer.from(exact))).toBe(digests[0][1]);
+ }
+-it('loads historical proposal bytes only beside the exact approved source author, without granting launch admission', () => {
++async function verifyNmiOrderReferenceTransition() {
++  const paymentPath = 'scripts/payment-response-source-admission.mjs';
++  const paymentBytes = readFileSync(paymentPath);
++  expect(sha(paymentBytes)).toBe(
++    'a46d968c5992e1d9446250118d72a1166abefd9771ccfebc63a2fef5dd4b633f',
++  );
++  for (const path of [
++    paymentPath,
++    'scripts/check-payment-ack-admission.mjs',
++    guardPath,
++    admissionHelperPath,
++    migrationPath,
++  ]) {
++    let prefix = '';
++    for (const part of path.split('/')) {
++      prefix = prefix ? prefix + '/' + part : part;
++      expect(lstatSync(prefix).isSymbolicLink()).toBe(false);
++    }
++    const info = lstatSync(path);
++    expect(info.isFile() && (info.mode & 0o777) === 0o644).toBe(true);
++  }
++  const { verifyNmiOrderReferenceFrame } = await import(
++    'data:text/javascript;base64,' + paymentBytes.toString('base64')
++  );
++  expect(verifyNmiOrderReferenceFrame()).toBe(true);
++  const oldPaymentHash =
++    'aa8871b0fa334bfd2ffdb36c314650e51e56ceea41a983e13c0b42a60084dfcd';
++  expect(readFileSync('scripts/check-payment-ack-admission.mjs', 'utf8')).toBe(
++    paymentResponseStage(
++      'scripts/check-payment-ack-admission.mjs',
++      'utf8',
++    ).replace(oldPaymentHash, sha(paymentBytes)),
++  );
++  const invoice = paymentResponseStage(admissionHelperPath, 'utf8').replace(
++    '6b803d33d5c8b9ca02abcbce59b8796f9691b44a82c97290974ea9a4a2892d69',
++    sha(readFileSync(migrationPath)),
++  );
++  expect(readFileSync(admissionHelperPath, 'utf8')).toBe(invoice);
++  expect(readFileSync(guardPath, 'utf8')).toBe(
++    paymentResponseStage(guardPath, 'utf8')
++      .replace(oldPaymentHash, sha(paymentBytes))
++      .replace(
++        'af67c7836222779cd8322c08b3d5a72816760abc345a9d45cab97f85beacd133',
++        sha(Buffer.from(invoice)),
++      ),
++  );
++  expect(verifyNmiOrderReferenceFrame()).toBe(true);
++}
++it('loads historical proposal bytes only beside the exact approved source author, without granting launch admission', async () => {
+   const r = helper.proposalBaseline();
+   expect(r.activeSourceAuthor).toBe('8f498f2c657608c64d40a3527be13b47a189b7b7');
+   expect(r.current).toEqual(readFileSync(client));
+@@ -137,6 +190,7 @@ it('loads historical proposal bytes only beside the exact approved source author
+     );
+   verifyCheckerTransition();
+   verifyPaymentResponseTransition();
++  await verifyNmiOrderReferenceTransition();
+ });
+ it.each([
+   'client',
+diff --git a/tests/launch-caller-payment-integration.test.ts b/tests/launch-caller-payment-integration.test.ts
+index 6ae6472..459834b 100644
+--- a/tests/launch-caller-payment-integration.test.ts
++++ b/tests/launch-caller-payment-integration.test.ts
+@@ -17,7 +17,7 @@ if (
+ const fixtureBytes = actualReadFileSync(fixtureUrl);
+ if (
+   createHash('sha256').update(fixtureBytes).digest('hex') !==
+-  '6512550560268a036c2c6482078cd8516292423e464335eddb94c005ff55667b'
++  '5eff03f59d0250d11452d3d32d0ed1ec41b5ceb8c5e3b4739f6a6d7924ec075e'
+ )
+   throw Error('Exact retained launch fixture required before import');
+ const { historicalInvoiceRead } = await import(
+diff --git a/tests/launch-invoice-payment-source.test.ts b/tests/launch-invoice-payment-source.test.ts
+index c4bf40c..c016329 100644
+--- a/tests/launch-invoice-payment-source.test.ts
++++ b/tests/launch-invoice-payment-source.test.ts
+@@ -25,7 +25,7 @@ if (
+ const callerHelperBytes = readFileSync(callerHelperUrl);
+ if (
+   createHash('sha256').update(callerHelperBytes).digest('hex') !==
+-  'af67c7836222779cd8322c08b3d5a72816760abc345a9d45cab97f85beacd133'
++  'b664282ebcebbafdbe113208bf1d8aa5da12dbd30c928e1ec649f7d69c708863'
+ )
+   throw Error('Reviewed invoice caller helper required');
+ const { admitInvoiceCallerSource: admitInvoiceCallerOnly } = await import(
+@@ -45,7 +45,7 @@ if (
+ const responseHelperBytes = readFileSync(responseHelperPath);
+ if (
+   createHash('sha256').update(responseHelperBytes).digest('hex') !==
+-  'aa8871b0fa334bfd2ffdb36c314650e51e56ceea41a983e13c0b42a60084dfcd'
++  'a46d968c5992e1d9446250118d72a1166abefd9771ccfebc63a2fef5dd4b633f'
+ )
+   throw Error('Reviewed payment response helper required');
+ const { admitPaymentResponseSource } = await import(
