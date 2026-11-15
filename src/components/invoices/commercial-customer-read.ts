@@ -5,14 +5,20 @@ import type {
 
 /** Public content-selection target only; private source hashes are server-owned. */
 export type CommercialCustomerTarget = Omit<InvoiceViewer, 'invoice'> & {
-  invoice: Omit<InvoiceIdentity, 'sourceHash'>;
+  invoice: Omit<
+    InvoiceIdentity,
+    'sourceHash' | 'issuedNumber' | 'issuanceReceiptId'
+  >;
 };
 
 export interface CommercialCustomerResponse {
   schema: 'commercial-customer-issued-read-v1';
   mode: 'fictional-local';
   sourceCategory: 'commercial-issued-proposal';
-  invoice: Omit<InvoiceIdentity, 'sourceHash'> & {
+  invoice: Omit<
+    InvoiceIdentity,
+    'sourceHash' | 'issuedNumber' | 'issuanceReceiptId'
+  > & {
     number: string;
     title: string;
     currency: 'USD';
@@ -111,6 +117,20 @@ export function commercialCustomerTarget(
   Object.freeze(invoice);
   return Object.freeze(target) as unknown as CommercialCustomerTarget;
 }
+// Public content validation only; trusted current commercial authorization and
+// immutable header/receipt checks belong to the server producer, never this string.
+function issuedDisplay(value: unknown, invoiceId: string) {
+  if (typeof value !== 'string') return false;
+  if (value === 'INV-' + invoiceId.replaceAll('-', '')) return true;
+  const number = /^INV-(\d{4})-(\d{6})$/.exec(value);
+  return (
+    !!number &&
+    Number(number[1]) >= 1 &&
+    Number(number[1]) <= 9999 &&
+    Number(number[2]) >= 1 &&
+    Number(number[2]) <= 999999
+  );
+}
 /** Content validation, never Auth. Only the proposed trusted server reader may
  * supply this allowlist after current access/private-source checks. */
 export function commercialCustomerResponse(
@@ -168,8 +188,7 @@ export function commercialCustomerResponse(
     invoice.revision !== expected.invoice.revision ||
     !Number.isSafeInteger(invoice.revision) ||
     Number(invoice.revision) < 1 ||
-    invoice.number !==
-      'INV-' + expected.invoice.invoiceId.replaceAll('-', '') ||
+    !issuedDisplay(invoice.number, expected.invoice.invoiceId) ||
     typeof invoice.title !== 'string' ||
     !invoice.title.trim() ||
     invoice.title.length > 200 ||
