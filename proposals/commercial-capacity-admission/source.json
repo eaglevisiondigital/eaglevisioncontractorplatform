@@ -1,0 +1,28 @@
+{
+  "classification": "UNAPPLIED_TWO_ADDITION_SOURCE_AUTHOR_ONLY",
+  "launch": {
+    "commit": "7e25b50537fe66c19f5041e64bd2e59effc544c4",
+    "tree": "f255ae9f0665d55fee94387340d84032f1fa25b8"
+  },
+  "source": {
+    "commit": "1940dc3bf82142a50ba8d2ccd3b39890f36d0dd1",
+    "parent": "300eb070ecfa88fab7d22152893c90a8ec399b9f",
+    "tree": "80bf990d7319887ed63a51bfbe93fcacce950439"
+  },
+  "patchSha256": "0322ff6a47e7ba0c6a3823f902a2d7dddcc51bb053c739098cd363c815c00dc6",
+  "endpoints": [
+    {
+      "path": "server/payments/commercial-capacity.proposed.sql",
+      "mode": "100644",
+      "sha256": "a9fc788d6ea486a21207868088c56ca1d45a1b9b15ef29feb4f6d62b018a8aa4"
+    },
+    {
+      "path": "scripts/check-commercial-capacity.mjs",
+      "mode": "100644",
+      "sha256": "bf4afa37cbe1fcf35c54a735c2ffb270934bc1c4ddee9f1228a58ea7393324bc"
+    }
+  ],
+  "installationAuthorized": false,
+  "launchPromotionAuthorized": false,
+  "financialExecutionAuthorized": false
+}

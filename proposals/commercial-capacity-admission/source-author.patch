@@ -1,0 +1,185 @@
+diff --git a/scripts/check-commercial-capacity.mjs b/scripts/check-commercial-capacity.mjs
+new file mode 100644
+index 0000000..64a49f5
+--- /dev/null
++++ b/scripts/check-commercial-capacity.mjs
+@@ -0,0 +1,99 @@
++// UNAPPLIED build-only source guard. No installation or operational authority.
++import { createHash } from 'node:crypto';
++import { lstatSync, readFileSync } from 'node:fs';
++import { dirname, resolve, relative } from 'node:path';
++import { fileURLToPath } from 'node:url';
++const pins = Object.freeze({
++  'server/payments/sandbox.ts':
++    '0c6bc1aa8e78ed7f6d86128e79055630cb41ec5281ed32a0bf7bbdc616a8ccc6',
++  'server/payments/control-store.ts':
++    '2dc82d0ff2548051de6df1461ddf783355e602da914a099bf14f0eba29f3ac7c',
++  'server/payments/response-json.ts':
++    '3d361bd32f9cc2ff82b9d4c1ad29ca0218199c11bc903a59ec5a644dd139c970',
++  'supabase/migrations/20261015183039_phase_1_foundation.sql':
++    '62ef02be55f5cf86916de4bf9891d4920f75a35ae421815c2d353bf4cedb73cc',
++  'supabase/migrations/20261015201048_phase_2_operations.sql':
++    '2a0e65f30e0eef0b85b53d23edc26968336f661d136303d7a1eb25b3f77e1974',
++  'supabase/migrations/20261015204729_phase_3_estimating.sql':
++    'ef999a3e7d8ee69f1563b3cffaf732f0a29c292161e4ce1729b6a26848bd4415',
++  'supabase/migrations/20261015210230_phase_3_material_import.sql':
++    '82f7594c18dfdf955ed1d2c83f6c903d8b4aebe7730c2f1a5770d501bd2d84a3',
++  'supabase/migrations/20261015210546_phase_3_job_financials.sql':
++    'f161cc16ec728b2e7373f3826b5d989a9fad4c1ec6d727fc193f18d5534d8c4c',
++  'supabase/migrations/20261015210856_phase_3_workforce.sql':
++    '78f2af2164574ba3d6aeb2f2510206d97343c5ad67a2534159a4e2960f5e9ce0',
++  'supabase/migrations/20261015221730_phase_3a_release_controls.sql':
++    '6dbfc3ed7a0b9905f5d824cb73698c441e8c7ee8aa5d5b0fb8f4883baacb4890',
++  'supabase/migrations/20261016024502_release_1_internal_workflow.sql':
++    '48522fd3b829a5bc9e482ce33c41ee7b8272edf68dbc7e6c7a699fa178b8714b',
++  'supabase/migrations/20261016030324_material_worker_control_store.sql':
++    '8359e7ceb4028460b7609bbd235d9941fc69b89b514463e011fec9b44a84d282',
++  'supabase/migrations/20261016185108_provider_sandbox_persistence.sql':
++    '5dd07b079a591b433fa7ab432fd841026de91a1cd3f1d3a722bef500aa9fd32d',
++  'supabase/migrations/20261017005322_property_operations.sql':
++    'c345bdf178c9339dba7ba2707c74233bcfae9a2d2b59abf148f4b7ffff35780c',
++  'supabase/migrations/20261017024327_property_connected_readiness.sql':
++    '6bb0b9bf22ec1079d7aa5f74c6e33e14534cc54e30e9034c33949f786cfd3ac9',
++  'supabase/migrations/20261017024328_property_duplicate_index_cleanup.sql':
++    '3603fe0482f46b9733a0321cd9009cb1f291993fcbede7132e1bdf721776fdfc',
++  'supabase/migrations/20261018144833_customer_authorization_release_readiness.sql':
++    'e3157e004c464fb2a4ab69e7a3a335a81d6bbbb0556d74234f3884f56d784ed1',
++  'server/invoices/commercial-drafts.proposed.sql':
++    'e1c504f9a7077caa92c375c378fb370155478be9cf077e66bf58932ae0895a3c',
++  'proposals/commercial-invoice-issuance/issuance.proposed.sql':
++    '961c2dc380695ed2d910108d09303fff9b9018fe8d159beb9b958ddb2725d022',
++  'server/invoices/commercial-draft-client.ts':
++    '94aa164e60c780cb53f8658b16c57bc9c17da5d9469c73f9d73cab627dcea694',
++  'server/invoices/commercial-caller-connection.ts':
++    '3d892a8ae7757a6f480fde4638f17f4b642436ba728446dfd84811590be0aeed',
++  'server/customer/broker-auth.ts':
++    '709018249d889504b860e4cf0f4caa5cbdd1c2b04f58c53226f4499c68fd46d6',
++  'scripts/invoice-caller-source-admission.mjs':
++    '1d3438c34656e732c0352dab02477ea449ed4e4abd92714156c3ec62ff75e70a',
++  'scripts/payment-response-source-admission.mjs':
++    '74c672d6725876285c8bd2ee844aec88c183b56b12181a0373c874e02cf26510',
++  'scripts/check-payment-ack-admission.mjs':
++    'b1f297fc3d62cfe77a9ed9912a1a6f896a14a70cf796da2e1f24d5e5c0441ed9',
++  'server/payments/commercial-capacity.proposed.sql':
++    'a9fc788d6ea486a21207868088c56ca1d45a1b9b15ef29feb4f6d62b018a8aa4',
++});
++export function checkCommercialCapacity(
++  root = resolve(dirname(fileURLToPath(import.meta.url)), '..'),
++) {
++  const capture = (path, expected) => {
++    const parts = resolve(root, path).split('/').filter(Boolean);
++    let current = '/';
++    for (let i = 0; i < parts.length; i++) {
++      current = resolve(current, parts[i]);
++      const s = lstatSync(current);
++      if (
++        s.isSymbolicLink() ||
++        (i < parts.length - 1
++          ? !s.isDirectory()
++          : !s.isFile() || (s.mode & 0o777) !== 0o644)
++      )
++        throw Error('Exact commercial capacity source required');
++    }
++    const bytes = readFileSync(resolve(root, path));
++    if (createHash('sha256').update(bytes).digest('hex') !== expected)
++      throw Error('Exact commercial capacity source required');
++    return bytes;
++  };
++  for (let pass = 0; pass < 2; pass++)
++    for (const [path, expected] of Object.entries(pins))
++      capture(path, expected);
++  return Object.freeze({
++    classification: 'SOURCE_ONLY_NOT_INSTALLED',
++    installationAuthorized: false,
++    financialExecutionAuthorized: false,
++  });
++}
++if (
++  process.argv[1] &&
++  relative(resolve(process.argv[1]), fileURLToPath(import.meta.url)) === ''
++) {
++  checkCommercialCapacity();
++  process.stdout.write(
++    'Exact commercial capacity source: PASS; operational authority: NONE\n',
++  );
++}
+diff --git a/server/payments/commercial-capacity.proposed.sql b/server/payments/commercial-capacity.proposed.sql
+new file mode 100644
+index 0000000..28f5bfd
+--- /dev/null
++++ b/server/payments/commercial-capacity.proposed.sql
+@@ -0,0 +1,74 @@
++-- UNAPPLIED FORWARD PROPOSAL. Disposable native PostgreSQL only.
++-- Requires exact reviewed #467 invoice draft/issuance SQL and original provider
++-- schema. No runtime grants, provisioner, route, invoice/payment or installation
++-- authority. Existing business records, attempts and receipts remain authoritative.
++begin;
++create role propel_commercial_payment_guard_owner nologin nosuperuser nocreatedb nocreaterole noreplication nobypassrls;
++grant usage,create on schema private to propel_commercial_payment_guard_owner;
++
++-- Legacy authorizations stay immutable and untouched. New capture admission
++-- requires all four typed identities; human evidence notes are never parsed.
++alter table private.sandbox_gateway_authorizations
++ add column invoice_source_version_id uuid,
++ add column invoice_source_hash text,
++ add column invoice_revision integer,
++ add column invoice_issue_command_id uuid,
++ add constraint commercial_payment_source_complete check(
++  (invoice_source_version_id is null and invoice_source_hash is null and invoice_revision is null and invoice_issue_command_id is null)
++  or (invoice_source_version_id is not null and invoice_source_hash is not null and invoice_source_hash~'^[a-f0-9]{64}$' and invoice_revision is not null and invoice_revision>0 and invoice_issue_command_id is not null)),
++ add constraint commercial_payment_revision foreign key(organization_id,invoice_id,invoice_revision)
++ references private.commercial_invoice_draft_revisions(organization_id,invoice_id,revision);
++create index commercial_payment_authority_invoice on private.sandbox_gateway_authorizations(organization_id,invoice_id,invoice_revision);
++
++grant select(organization_id,id,customer_id,source_version_id,source_hash,currency,amount_minor,current_revision,issued_revision,issue_command_id)
++ on private.commercial_invoice_drafts to propel_commercial_payment_guard_owner;
++grant update(id) on private.commercial_invoice_drafts to propel_commercial_payment_guard_owner;
++create policy commercial_payment_read on private.commercial_invoice_drafts for select to propel_commercial_payment_guard_owner using(true);
++create policy commercial_payment_lock on private.commercial_invoice_drafts for update to propel_commercial_payment_guard_owner using(true) with check(false);
++grant select(organization_id,id,merchant_id,customer_id,invoice_id,provider,kind,amount_minor,currency,request_digest,expires_at,revoked_at,invoice_source_version_id,invoice_source_hash,invoice_revision,invoice_issue_command_id)
++ on private.sandbox_gateway_authorizations to propel_commercial_payment_guard_owner;
++grant update(id) on private.sandbox_gateway_authorizations to propel_commercial_payment_guard_owner;
++create policy commercial_payment_read on private.sandbox_gateway_authorizations for select to propel_commercial_payment_guard_owner using(true);
++create policy commercial_payment_lock on private.sandbox_gateway_authorizations for update to propel_commercial_payment_guard_owner using(true) with check(false);
++grant select(organization_id,invoice_id,kind,status,amount_minor) on private.sandbox_gateway_attempts to propel_commercial_payment_guard_owner;
++create policy commercial_payment_read on private.sandbox_gateway_attempts for select to propel_commercial_payment_guard_owner using(true);
++create index commercial_payment_invoice_capacity on private.sandbox_gateway_attempts(organization_id,invoice_id) where kind='capture' and status<>'declined';
++create index commercial_payment_invoice_uncertain on private.sandbox_gateway_attempts(organization_id,invoice_id) where status in ('pending','unknown');
++
++create function private.commercial_payment_capture_guard() returns trigger
++ language plpgsql security definer set search_path='' set lock_timeout='1500ms' as $$
++declare a record;h record;used numeric;
++begin
++ if new.kind<>'capture' then return new;end if;
++ -- Lock-only serialization does not refresh a repeatable-read snapshot. Deny
++ -- such sessions rather than silently relying on a stale aggregate.
++ if current_setting('transaction_isolation')<>'read committed' then raise exception 'Commercial capture requires read committed isolation' using errcode='42501';end if;
++ select organization_id,id,merchant_id,customer_id,invoice_id,provider,kind,amount_minor,currency,request_digest,expires_at,revoked_at,invoice_source_version_id,invoice_source_hash,invoice_revision,invoice_issue_command_id
++  into a from private.sandbox_gateway_authorizations where organization_id=new.organization_id and id=new.authorization_id for share;
++ if not found or a.kind<>'capture' or a.merchant_id<>new.merchant_id or a.invoice_id<>new.invoice_id or a.amount_minor<>new.amount_minor or a.request_digest<>new.request_digest or a.currency<>'USD'
++  or a.invoice_source_version_id is null or a.invoice_source_hash is null or a.invoice_revision is null or a.invoice_issue_command_id is null or a.revoked_at is not null or a.expires_at<=clock_timestamp()
++  then raise exception 'Exact issued invoice payment authority required' using errcode='42501';end if;
++ -- One invoice lock serializes reservations across different merchant configs.
++ -- The original immutable issued header, not a new estimate, is the payment scope.
++ select organization_id,id,customer_id,source_version_id,source_hash,currency,amount_minor,current_revision,issued_revision,issue_command_id
++  into h from private.commercial_invoice_drafts where organization_id=new.organization_id and id=new.invoice_id for update;
++ if not found or h.issued_revision is null or h.issued_revision<>h.current_revision or h.issued_revision<>a.invoice_revision
++  or h.customer_id<>a.customer_id or h.source_version_id<>a.invoice_source_version_id or h.source_hash<>a.invoice_source_hash
++  or h.issue_command_id<>a.invoice_issue_command_id or h.currency<>'USD' or h.amount_minor<=0
++  then raise exception 'Exact original issued invoice required' using errcode='42501';end if;
++ -- A new identity must not act as a replacement for an ambiguous original
++ -- payment, even when nominal amount remains below the invoice ceiling.
++ if exists(select 1 from private.sandbox_gateway_attempts where organization_id=new.organization_id and invoice_id=new.invoice_id and status in ('pending','unknown'))
++  then raise exception 'Unresolved original invoice payment; exact reconciliation only' using errcode='42501';end if;
++ select coalesce(sum(amount_minor),0) into used from private.sandbox_gateway_attempts
++  where organization_id=new.organization_id and invoice_id=new.invoice_id and kind='capture' and status<>'declined';
++ if used+new.amount_minor>h.amount_minor then raise exception 'Commercial invoice capture capacity exceeded' using errcode='42501';end if;
++ -- A row wait must not extend the separate provider authorization lease.
++ if a.revoked_at is not null or a.expires_at<=clock_timestamp() then raise exception 'Commercial payment authority expired after wait' using errcode='42501';end if;
++ return new;
++end$$;
++alter function private.commercial_payment_capture_guard() owner to propel_commercial_payment_guard_owner;
++revoke all on function private.commercial_payment_capture_guard() from public,anon,authenticated,service_role;
++create trigger commercial_payment_capture_guard before insert on private.sandbox_gateway_attempts for each row execute function private.commercial_payment_capture_guard();
++revoke create on schema private from propel_commercial_payment_guard_owner;
++commit;
