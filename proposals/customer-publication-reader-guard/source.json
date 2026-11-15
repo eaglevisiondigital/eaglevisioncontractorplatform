@@ -1,0 +1,33 @@
+{
+  "classification": "UNAPPLIED_RESTRICTED_READER_AFTER_SOURCE_GUARD_QUALIFICATION",
+  "base": "ada783cbb256f871d2a508b05f3411c587038aba",
+  "baseParent": "da1e42d5d9c00cc51c60e7e35016bfc1067ce1b7",
+  "baseTree": "9b61ba99f636a06faa9325b3e28227d438582125",
+  "baseEntries": 2477,
+  "guardTarget": "proposals/customer-publication-admission/source.ts",
+  "guardBeforeSHA256": "7c034c17b0c8f381a4fa23e8d0e9a867f8401f0032132fb13126498e05f92c1b",
+  "guardAfterSHA256": "77f8fc84bcbb1d877a54d69ecd356a5381eb54b6f7c34e0f8f561145c44f9508",
+  "guardPatchSHA256": "997565f12abfe9f57b829eb8fc5e3d0b2dfc9fab2527d47c6f363d3bf34178e0",
+  "a2SourceAuthorPatch": "f9d63696a6c6731bea3c6384dfc66780650e89ca066e61f222f5139df44cc9ae",
+  "a2SourceAuthorParent": "da1e42d5d9c00cc51c60e7e35016bfc1067ce1b7",
+  "canonicalSql": {
+    "server/invoices/commercial-payment-receipt.proposed.sql": {
+      "source": "proposals/invoice-payment-receipt/receipt.proposed.sql",
+      "sha256": "1c1ec82ca52560de86ec19ff9a865babfc3967ff466b425692e733fd240fdef5",
+      "mode": "100644"
+    },
+    "server/invoices/customer-payment-publication.proposed.sql": {
+      "source": "proposals/customer-payment-publication/publication.proposed.sql",
+      "sha256": "bff7f5f16fa620b4f7e684228d1ff41af696492027a782ea4698fe49d1fbb71d",
+      "mode": "100644"
+    }
+  },
+  "a2SourceAuthor": null,
+  "guardAuthor": null,
+  "guardAuthorParent": null,
+  "guardAuthorHeldUntilActualA2AndParentRebinding": true,
+  "installationAuthorized": false,
+  "sourceAdmissionAuthorized": false,
+  "operationalReady": false,
+  "modelPath": "tests/customer-publication-after-source.test.ts"
+}
