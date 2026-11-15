@@ -1,0 +1,7 @@
+-- UNAPPLIED exact-target template only. Owner binds the already-reviewed dedicated LOGIN privately.
+-- No identity creation, role membership, credentials, capability activation or SQL installation.
+-- Login must be non-superuser/no-bypass/no-create/no-replication and have no memberships,
+-- raw business table/column access, schema CREATE or other reachable definer EXECUTE.
+-- Source/code approval does not approve this permission operation.
+grant usage on schema private to __REVIEWED_READER_LOGIN__;
+grant execute on function private.customer_payment_receipt(uuid,uuid,uuid,uuid,uuid) to __REVIEWED_READER_LOGIN__;
