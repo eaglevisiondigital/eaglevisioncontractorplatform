@@ -1,0 +1,50 @@
+{
+  "classification": "UNAPPLIED_APPROVED_DISPLAY_TECHNICAL_FIXTURE_POLICY_ONLY",
+  "parent": "62edc056bfd2ee64a0ddf5df15aa4bd99acb519f",
+  "approvedBusinessDisplay": "INV-YYYY-NNNNNN per contractor",
+  "technicalQualificationChoices": {
+    "yearBasis": "server UTC calendar after waits",
+    "reset": "000001 per tenant/year",
+    "maximum": 999999,
+    "regression": "STOP"
+  },
+  "technicalOperationalAcceptance": "HELD",
+  "parentEntries": 2450,
+  "parentBytesModesAncestorsUnchanged": true,
+  "files": {
+    "proposals/commercial-invoice-year-numbering/numbering.proposed.sql": "89cf71e709d94cb9d0c14bd7822f2dec613315dcbac24b05299b3b0ae15ae9f7",
+    "proposals/commercial-invoice-year-numbering/README.md": "37cda894f693975377b69350a3c086abdb7afe322b67edaa0f1838ba218250e2",
+    "tests/commercial-invoice-year-numbering-source.test.ts": "f3b2ff96bc2d109e64797d5a8b3ea9e775c1db65bbc04614e0ae4d16af356364",
+    "tests/database/commercial-invoice-year-numbering-proposal.test.ts": "31f982f491d22c18356fac2c3c6131fbbd572efd13dba49dcef2297efc3d2c1e"
+  },
+  "reports": {
+    "native": {
+      "sha256": "a553d1c9a6f05ec5a63b733b4e83d4e8861b2679034d34c736938eedab83f485",
+      "passed": 20,
+      "failed": 0,
+      "skipped": 0
+    },
+    "pglite": {
+      "sha256": "c7b3b52c6ca49c107d7e79651d405b4656a8094c8a27ba83706c909dd176cc85",
+      "passed": 18,
+      "failed": 0,
+      "skipped": 2
+    },
+    "source": {
+      "sha256": "fbd2eeda69243806ff4acb280fea0dcf685eed8afae982a2def1d06695e08b87",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "reusedEvidence": {
+    "parentNumberingNative": 27,
+    "parentNumberingSource": 5,
+    "rerun": false,
+    "basis": "Unchanged exact #471 source plus explicit issuer-allocation delta and new complete-source qualification",
+    "capacity31": "Separate unchanged accepted evidence; capacity SQL is not composed or requalified here"
+  },
+  "operationalReady": false,
+  "legacyHistory": "UUID and eight-digit headers/receipts retained unchanged",
+  "rollback": "Only uncommitted unpublished candidates may be reclaimed; no cross-restore or external-custody claim"
+}
