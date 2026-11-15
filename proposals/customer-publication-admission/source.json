@@ -1,0 +1,32 @@
+{
+  "status": "UNAPPLIED_SOURCE_AND_DEFAULT_OFF_READ_PROPOSAL",
+  "parent": "da1e42d5d9c00cc51c60e7e35016bfc1067ce1b7",
+  "operationalReady": false,
+  "sqlInstalled": false,
+  "sourceAuthorPatchApplied": false,
+  "sourceAuthorPatchSha256": "f9d63696a6c6731bea3c6384dfc66780650e89ca066e61f222f5139df44cc9ae",
+  "files": {
+    "proposals/customer-publication-admission/README.md": "de2acff0e6c31282e2dae623a3e945d219f754c5541a29c9f041988a72ded60b",
+    "proposals/customer-publication-admission/read-only.ts": "a21a74448d791894a54974db4228c7f5f87d69b8114b0f367e1ddef7e760b59f",
+    "proposals/customer-publication-admission/reader-grants.sql.in": "712570b6b7401d3e8dab0a1df9c26f40be3125acea294dd40d8c2155ebcc3987",
+    "proposals/customer-publication-admission/source-author.patch": "f9d63696a6c6731bea3c6384dfc66780650e89ca066e61f222f5139df44cc9ae",
+    "proposals/customer-publication-admission/source.ts": "7c034c17b0c8f381a4fa23e8d0e9a867f8401f0032132fb13126498e05f92c1b",
+    "tests/customer-publication-admission-package.test.ts": "dbe662bd3b4f3800823cdba8c7bbe99cb18ac2e4e87b8cc8fe5700b06d2d768b",
+    "tests/customer-publication-admission.test.ts": "5c8af8e038f95daf3625986d98a160d1ccd3ff03e6672db94a4a96ea083ed601",
+    "tests/database/customer-publication-admission.test.ts": "db3988fa8a59cd65d03d3d04000fb4726e508f6d56658f2f155940e2e45d2e6d"
+  },
+  "authorQualification": {
+    "customer-publication-admission-controls-final.json": {
+      "sha256": "583cf46ef103e6a7ebc1cf7201a5e48dba1fddc1ec54cb477a59605127458027",
+      "passed": 35,
+      "failed": 0,
+      "skipped": 0
+    },
+    "customer-publication-admission-native.json": {
+      "sha256": "da95e352409ce510bae2eb5ae5342f6aa9346683f2ad4011f5a69d82a695b994",
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0
+    }
+  }
+}
