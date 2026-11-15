@@ -1,0 +1,123 @@
+diff --git a/proposals/commercial-customer-bridge/reader.ts b/proposals/commercial-customer-bridge/reader.ts
+--- a/proposals/commercial-customer-bridge/reader.ts
++++ b/proposals/commercial-customer-bridge/reader.ts
+@@ -16,7 +16,10 @@
+ 
+ /** UNWIRED TEST PORT ONLY. No implementation, SQL/grant or connection factory.
+  * authorize must independently verify CURRENT server mapping/access for this exact
+- * actor and target; readIssued must read the original issued record and its exact
++ * actor and target. Optional yearly anchors must resolve the ORIGINAL issued
++ * header and issuance command in the same current trusted commercial mapping;
++ * never copy them from the packet under validation or public input. Legacy
++ * mappings without both anchors remain UUID-only. readIssued must read the original issued record and its exact
+  * private-hash-verified customer-safe scope. Existing staff SQL alone cannot do so.
+  */
+ export interface CommercialCustomerReaderPort {
+@@ -65,13 +68,13 @@
+     throw unavailable();
+   return Object.values(output);
+ }
+-function record(value: unknown, keys: string[]) {
++function record(value: unknown, keys: string[], optional: string[] = []) {
+   const row = data(value) as Record<string, unknown>;
+   if (
+     !row ||
+     typeof row !== 'object' ||
+     Array.isArray(row) ||
+-    Object.keys(row).length !== keys.length ||
++    Object.keys(row).some((k) => !keys.includes(k) && !optional.includes(k)) ||
+     !keys.every((k) => Object.hasOwn(row, k))
+   )
+     throw unavailable();
+@@ -140,6 +143,8 @@
+         originalMapping: string | undefined;
+       let until = Infinity;
+       let verifiedSourceHash: string | undefined;
++      let verifiedNumber: string | undefined,
++        verifiedReceipt: string | undefined;
+       const current = async () => {
+         check();
+         const proof = await authenticate.call(auth, bearer);
+@@ -158,21 +163,36 @@
+           local.signal,
+         );
+         check();
+-        const mapping = record(raw, [
+-          'mode',
+-          'active',
+-          'userId',
+-          'sessionId',
+-          'organizationId',
+-          'customerId',
+-          'locationId',
+-          'invoiceId',
+-          'sourceVersionId',
+-          'sourceHash',
+-          'revision',
+-          'mappingRevision',
+-          'expiresAt',
+-        ]);
++        const mapping = record(
++          raw,
++          [
++            'mode',
++            'active',
++            'userId',
++            'sessionId',
++            'organizationId',
++            'customerId',
++            'locationId',
++            'invoiceId',
++            'sourceVersionId',
++            'sourceHash',
++            'revision',
++            'mappingRevision',
++            'expiresAt',
++          ],
++          ['issuedNumber', 'issuanceReceiptId'],
++        );
++        const anchored = Object.hasOwn(mapping, 'issuedNumber');
++        if (
++          anchored !== Object.hasOwn(mapping, 'issuanceReceiptId') ||
++          (anchored &&
++            (typeof mapping.issuedNumber !== 'string' ||
++              typeof mapping.issuanceReceiptId !== 'string' ||
++              !/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(
++                mapping.issuanceReceiptId,
++              )))
++        )
++          throw unavailable();
+         if (
+           mapping.mode !== 'fictional-local' ||
+           mapping.active !== true ||
+@@ -192,6 +212,12 @@
+           throw unavailable();
+         originalMapping = identity;
+         verifiedSourceHash = mapping.sourceHash as string;
++        verifiedNumber = anchored
++          ? (mapping.issuedNumber as string)
++          : undefined;
++        verifiedReceipt = anchored
++          ? (mapping.issuanceReceiptId as string)
++          : undefined;
+         // Mapping is an awaited boundary too. A last mapping call must not hide
+         // a session revoked while that trusted read was in progress.
+         const afterProof = await authenticate.call(auth, bearer);
+@@ -209,7 +235,16 @@
+       // Only the trusted server mapping supplies this private digest, after Auth.
+       const privateViewer: InvoiceViewer = {
+         ...viewer,
+-        invoice: { ...viewer.invoice, sourceHash: verifiedSourceHash! },
++        invoice: {
++          ...viewer.invoice,
++          sourceHash: verifiedSourceHash!,
++          ...(verifiedNumber === undefined
++            ? {}
++            : {
++                issuedNumber: verifiedNumber,
++                issuanceReceiptId: verifiedReceipt!,
++              }),
++        },
+       };
+       const first = data(
+         await readIssued(

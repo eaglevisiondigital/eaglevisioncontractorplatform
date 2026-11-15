@@ -1,0 +1,114 @@
+import { it, expect } from 'vitest';
+import { randomUUID } from 'node:crypto';
+import { commercialCustomerBridgeFixture } from './fixtures/commercial-customer-bridge';
+import { commercialCustomerResponse } from '../src/components/invoices/commercial-customer-read';
+function yearly() {
+  const f = commercialCustomerBridgeFixture();
+  const number = 'INV-2026-000001',
+    command = f.value.invoice.receipt.commandId;
+  Object.assign(f.mapping, {
+    issuedNumber: number,
+    issuanceReceiptId: command,
+  });
+  const value = structuredClone(f.value);
+  value.invoice.number = number;
+  f.setValue(value);
+  return { ...f, value, number, command };
+}
+it('legacy current mapping remains UUID-only without anchors', async () => {
+  const f = commercialCustomerBridgeFixture();
+  expect(
+    (await f.load(f.viewer, new AbortController().signal)).invoice.number,
+  ).toMatch(/^INV-[a-f0-9]{32}$/);
+});
+it('original yearly mapping reaches the exact public decoder without private anchors or payment authority', async () => {
+  const f = yearly();
+  const r = await f.load(f.viewer, new AbortController().signal);
+  expect(r.invoice.number).toBe(f.number);
+  expect(r.invoice.issuanceReceiptId).toBe(f.command);
+  expect(commercialCustomerResponse(r, f.viewer).invoice.number).toBe(f.number);
+  expect(JSON.stringify(r)).not.toMatch(
+    /issuedNumber|sourceHash|requestHash|sessionId/,
+  );
+  expect(r.payment.status).toBe('UNKNOWN');
+  expect(r.link.href).toBeNull();
+});
+it.each(['issuedNumber', 'issuanceReceiptId'])(
+  'incomplete private %s anchor denies',
+  async (key) => {
+    const f = yearly();
+    delete (f.mapping as Record<string, unknown>)[key];
+    await expect(
+      f.load(f.viewer, new AbortController().signal),
+    ).rejects.toThrow('UNKNOWN');
+  },
+);
+it.each(['number', 'command'])(
+  'public packet cannot choose its own %s anchor',
+  async (key) => {
+    const f = yearly();
+    const v = structuredClone(f.value);
+    if (key === 'number') v.invoice.number = 'INV-2027-000001';
+    else v.invoice.receipt.commandId = randomUUID();
+    f.setValue(v);
+    await expect(
+      f.load(f.viewer, new AbortController().signal),
+    ).rejects.toThrow('UNKNOWN');
+  },
+);
+it.each(['organizationId', 'customerId', 'invoiceId', 'sourceVersionId'])(
+  'yearly display never grants foreign %s access',
+  async (key) => {
+    const f = yearly();
+    (f.mapping as Record<string, unknown>)[key] = randomUUID();
+    await expect(
+      f.load(f.viewer, new AbortController().signal),
+    ).rejects.toThrow('UNKNOWN');
+  },
+);
+it('public target rejects private server anchor injection', async () => {
+  const f = yearly();
+  Object.assign(f.viewer.invoice, {
+    issuedNumber: f.number,
+    issuanceReceiptId: f.command,
+  });
+  await expect(f.load(f.viewer, new AbortController().signal)).rejects.toThrow(
+    'Exact customer invoice response unavailable',
+  );
+});
+it('mapping anchor drift across an awaited read denies the late response', async () => {
+  const f = yearly(),
+    read = f.port.readIssued;
+  f.port.readIssued = async (...args) => {
+    const r = await read(...args);
+    Object.assign(f.mapping, { issuedNumber: 'INV-2027-000001' });
+    return r;
+  };
+  await expect(f.load(f.viewer, new AbortController().signal)).rejects.toThrow(
+    'UNKNOWN',
+  );
+});
+it('session revoked during original source read remains UNKNOWN', async () => {
+  const f = yearly(),
+    read = f.port.readIssued;
+  f.port.readIssued = async (...args) => {
+    const r = await read(...args);
+    f.setAuth(false);
+    return r;
+  };
+  await expect(f.load(f.viewer, new AbortController().signal)).rejects.toThrow(
+    'UNKNOWN',
+  );
+});
+it('concurrent immutable reads retain original command and never write or replay', async () => {
+  const f = yearly();
+  const results = await Promise.all([
+    f.load(f.viewer, new AbortController().signal),
+    f.load(f.viewer, new AbortController().signal),
+  ]);
+  expect(results.map((r) => r.invoice.issuanceReceiptId)).toEqual([
+    f.command,
+    f.command,
+  ]);
+  expect(f.calls.source).toBe(4);
+});
