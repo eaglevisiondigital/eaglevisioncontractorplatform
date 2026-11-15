@@ -1,0 +1,84 @@
+{
+  "classification": "UNAPPLIED_CUSTOMER_ONLY_YEAR_COMPOSITION",
+  "base": "f4edc81c8e3f8012e6a7349382dde83befc91c86",
+  "baseParent": "9889c2dae63338610973b1e000c4d0413d08cea3",
+  "baseTree": "802dd44302a400b9dcc4f1719fe83e64cca595fe",
+  "baseEntries": 2452,
+  "external": "28d489a7cc41fff573efdf6ab4fd58de234340ad",
+  "externalParent": "e9782d5f9e2422609a993dfe8f836053793620cf",
+  "externalTree": "e326ed9d98cff9be25871869520abc958aa51d19",
+  "externalEntries": 2455,
+  "authors": [
+    {
+      "commit": "28d489a7cc41fff573efdf6ab4fd58de234340ad",
+      "parent": "e9782d5f9e2422609a993dfe8f836053793620cf",
+      "tree": "e326ed9d98cff9be25871869520abc958aa51d19",
+      "entries": 2455,
+      "parentTree": "16349f6d1a1af41079de248b44496c9519844a30",
+      "path": "proposals/commercial-invoice-issuance/presentation.ts",
+      "mode": "100644",
+      "before": "a181a67faf3f8b3264b5cd00478b38c5a3c9d67c2b7f2463d6d81c01bf477981",
+      "after": "a63a605af3b1e03a0169828340f4938a50031a6f131404054da60e2db610ea6b"
+    },
+    {
+      "commit": "9889c2dae63338610973b1e000c4d0413d08cea3",
+      "parent": "56b10d2d9c8b86815054d4d5f931f33990ed88eb",
+      "tree": "7796d9a5c41249eec681885940381e65a7672d74",
+      "entries": 2452,
+      "parentTree": "ccfbe5eba58e001e4ab6666c7d1d8b440ffd2760",
+      "path": "src/components/invoices/commercial-customer-read.ts",
+      "mode": "100644",
+      "before": "a378fc6746e8fcf0aca4245742ed2fc27a580697cffbd4ce87c280293b9b9844",
+      "after": "e546c945bf3f4993a5a5e4a62703e8e8f6b0b7473cc31a237be2050c863ee8ef"
+    },
+    {
+      "commit": "f4edc81c8e3f8012e6a7349382dde83befc91c86",
+      "parent": "9889c2dae63338610973b1e000c4d0413d08cea3",
+      "tree": "802dd44302a400b9dcc4f1719fe83e64cca595fe",
+      "entries": 2452,
+      "parentTree": "7796d9a5c41249eec681885940381e65a7672d74",
+      "path": "proposals/commercial-customer-bridge/reader.ts",
+      "mode": "100644",
+      "before": "7def3dcade00708593190a2278c8b7100cafdd8c6a795ed4ebd9614c68942336",
+      "after": "98e502cb1e4beaa8cd6a950539a1ba1973677da9ee4e46c097b0193d6c138ea2"
+    }
+  ],
+  "externalFiles": {
+    "proposals/commercial-invoice-issuance/presentation.ts": "a63a605af3b1e03a0169828340f4938a50031a6f131404054da60e2db610ea6b",
+    "server/invoices/commercial-drafts.proposed.sql": "e1c504f9a7077caa92c375c378fb370155478be9cf077e66bf58932ae0895a3c",
+    "proposals/commercial-invoice-numbering/numbering.proposed.sql": "49fbbde015b9cf7a92f2bbdb74f7f5c347a63246d63cc7c9a47724858b11922e",
+    "proposals/commercial-invoice-year-numbering/numbering.proposed.sql": "89cf71e709d94cb9d0c14bd7822f2dec613315dcbac24b05299b3b0ae15ae9f7"
+  },
+  "fixtureImports": {
+    "server/invoices/commercial-drafts.proposed.sql": "tests/fixtures/customer-year-composition/draft.sql",
+    "proposals/commercial-invoice-numbering/numbering.proposed.sql": "tests/fixtures/customer-year-composition/numbering.sql",
+    "proposals/commercial-invoice-year-numbering/numbering.proposed.sql": "tests/fixtures/customer-year-composition/year.sql"
+  },
+  "overlays": {
+    "proposals/commercial-invoice-issuance/presentation.ts": "presenter.proposed.txt"
+  },
+  "after": {
+    "proposals/commercial-invoice-issuance/presentation.ts": "a63a605af3b1e03a0169828340f4938a50031a6f131404054da60e2db610ea6b"
+  },
+  "patches": {
+    "composition.patch": {
+      "parent": "f4edc81c8e3f8012e6a7349382dde83befc91c86",
+      "paths": ["proposals/commercial-invoice-issuance/presentation.ts"],
+      "modes": ["100644"],
+      "sha256": "45d9682bacd7b3d07edb8e881072460393dd2efd708c5ca238b2c98a45b967ab",
+      "stage": "UNAPPLIED_CUSTOMER_COMPOSITION_ONLY_NOT_LAUNCH_SOURCE_ADMISSION"
+    }
+  },
+  "testPayloads": {
+    "customer-tests.proposed.txt": "tests/customer-year-composition.test.ts",
+    "native-tests.proposed.txt": "tests/database/customer-year-composition.test.ts",
+    "browser-tests.proposed.txt": "tests/browser/customer-year-composition.spec.ts",
+    "browser-config.proposed.txt": "tests/customer-year-composition.playwright.config.ts"
+  },
+  "sourceAdmissionAuthorized": false,
+  "launchIntegrationAuthorized": false,
+  "installationAuthorized": false,
+  "operationalReady": false,
+  "commercialAuthorizationPort": "CONTROLLED_FIXTURES_ONLY_NO_OPERATIONAL_IMPLEMENTATION",
+  "nativeFixture": "PRIVILEGED_DISPOSABLE_OBSERVER_NOT_CUSTOMER_SQL_OR_GENUINE_AUTH"
+}
