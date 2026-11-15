@@ -1,0 +1,35 @@
+{
+  "status": "UNAPPLIED_OWNER_POLICY_HELD",
+  "parent": "afb028058b479d1ab17a9e516d1460cb1c4de4f3",
+  "canonicalParentEntries": 2445,
+  "parentBytesAndModesUnchanged": true,
+  "newFiles": {
+    "proposals/commercial-invoice-numbering/numbering.proposed.sql": "49fbbde015b9cf7a92f2bbdb74f7f5c347a63246d63cc7c9a47724858b11922e",
+    "tests/database/commercial-invoice-numbering-proposal.test.ts": "2047ec94b436a722fb1601a169dcfcb1b6dede54e672a939b6e2b5196ecac669",
+    "tests/commercial-invoice-numbering-source.test.ts": "697be03b5069c98631a840649bbeb68b2eb454ff568d2f9a82bbf6d2468a3b1a",
+    "proposals/commercial-invoice-numbering/README.md": "4d8a78a6d41babb6eb36ca54b2de14d40a82439e375e66d5c9e53112efa0b6d3"
+  },
+  "reports": {
+    "invoice-numbering-source": {
+      "sha256": "adcb1c1384ffca49fb271c0985fc1a7f7920c208d4626b6818695b0f9a8feb02",
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0
+    },
+    "commercial-invoice-numbering-native": {
+      "sha256": "f82dd4ac115cb9d8889621e6ecdb0416f1828b6e6ffb9302811ff2f755116cd7",
+      "passed": 27,
+      "failed": 0,
+      "skipped": 0
+    },
+    "commercial-invoice-numbering-pglite": {
+      "sha256": "c9021dbcbd2b70af5c34a26c74c06a115c66ab37e329f9a5e42f62d540984c54",
+      "passed": 23,
+      "failed": 0,
+      "skippedNativeOnly": 4
+    }
+  },
+  "operationalReady": false,
+  "compatibility": "Existing UUID-only presenter/connection unchanged; sequential output rejected until separately approved compatibility amendment",
+  "rollback": "Uncommitted candidate may be reused; committed issued headers retained"
+}
