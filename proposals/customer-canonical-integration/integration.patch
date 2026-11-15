@@ -1,0 +1,2017 @@
+diff --git a/proposals/commercial-customer-bridge/reader.ts b/proposals/commercial-customer-bridge/reader.ts
+new file mode 100644
+--- /dev/null
++++ b/proposals/commercial-customer-bridge/reader.ts
+@@ -0,0 +1,323 @@
++import { types } from 'node:util';
++import {
++  CustomerBrokerAuth,
++  brokerActor,
++  type BrokerActor,
++} from '../../server/customer/broker-auth';
++import {
++  customerInvoiceSnapshot,
++  type InvoiceViewer,
++} from '../../src/components/invoices/customer-invoice-contract';
++import {
++  commercialCustomerTarget,
++  type CommercialCustomerTarget,
++  type CommercialCustomerResponse,
++} from '../../src/components/invoices/commercial-customer-read';
++
++/** UNWIRED TEST PORT ONLY. No implementation, SQL/grant or connection factory.
++ * authorize must independently verify CURRENT server mapping/access for this exact
++ * actor and target. Optional yearly anchors must resolve the ORIGINAL issued
++ * header and issuance command in the same current trusted commercial mapping;
++ * never copy them from the packet under validation or public input. Legacy
++ * mappings without both anchors remain UUID-only. readIssued must read the original issued record and its exact
++ * private-hash-verified customer-safe scope. Existing staff SQL alone cannot do so.
++ */
++export interface CommercialCustomerReaderPort {
++  kind: 'unwired-test-port';
++  authorize(
++    actor: Readonly<BrokerActor>,
++    target: CommercialCustomerTarget['invoice'],
++    signal: AbortSignal,
++  ): Promise<unknown>;
++  readIssued(
++    actor: Readonly<BrokerActor>,
++    target: CommercialCustomerTarget['invoice'],
++    signal: AbortSignal,
++  ): Promise<unknown>;
++}
++const unavailable = () =>
++  Error('Current commercial customer read unavailable · UNKNOWN');
++const authenticate = CustomerBrokerAuth.prototype.verify;
++function data(value: unknown, depth = 0): unknown {
++  if (value === null || ['string', 'number', 'boolean'].includes(typeof value))
++    return value;
++  if (!value || typeof value !== 'object' || depth > 20 || types.isProxy(value))
++    throw unavailable();
++  if (
++    !Array.isArray(value) &&
++    ![Object.prototype, null].includes(Object.getPrototypeOf(value))
++  )
++    throw unavailable();
++  const descriptors = Object.getOwnPropertyDescriptors(value);
++  const output: Record<string, unknown> = {};
++  for (const key of Reflect.ownKeys(descriptors)) {
++    if (Array.isArray(value) && key === 'length') continue;
++    if (typeof key !== 'string' || !('value' in descriptors[key]))
++      throw unavailable();
++    Object.defineProperty(output, key, {
++      value: data(descriptors[key].value, depth + 1),
++      enumerable: true,
++    });
++  }
++  if (!Array.isArray(value)) return output;
++  if (
++    value.length > 500 ||
++    Object.keys(output).length !== value.length ||
++    !Object.keys(output).every((k, i) => k === String(i))
++  )
++    throw unavailable();
++  return Object.values(output);
++}
++function record(value: unknown, keys: string[], optional: string[] = []) {
++  const row = data(value) as Record<string, unknown>;
++  if (
++    !row ||
++    typeof row !== 'object' ||
++    Array.isArray(row) ||
++    Object.keys(row).some((k) => !keys.includes(k) && !optional.includes(k)) ||
++    !keys.every((k) => Object.hasOwn(row, k))
++  )
++    throw unavailable();
++  return row;
++}
++/** Reuses actual opaque Auth verification with a controlled test transport. AAL2
++ * is retained conservatively; no login/refresh, network default or real API exists.
++ */
++export function commercialCustomerReadProposal(
++  auth: CustomerBrokerAuth,
++  bearer: string,
++  port: CommercialCustomerReaderPort,
++  options: { enabled: boolean; mode: 'fictional-local' } = {
++    enabled: false,
++    mode: 'fictional-local',
++  },
++) {
++  return async (
++    input: CommercialCustomerTarget,
++    signal: AbortSignal,
++  ): Promise<CommercialCustomerResponse> => {
++    if (options.enabled !== true || options.mode !== 'fictional-local')
++      throw unavailable();
++    if (!(auth instanceof CustomerBrokerAuth) || types.isProxy(port))
++      throw unavailable();
++    const descriptors = Object.getOwnPropertyDescriptors(port);
++    if (
++      Reflect.ownKeys(descriptors).length !== 3 ||
++      ['kind', 'authorize', 'readIssued'].some(
++        (k) => !descriptors[k] || !('value' in descriptors[k]),
++      ) ||
++      descriptors.kind.value !== 'unwired-test-port' ||
++      typeof descriptors.authorize.value !== 'function' ||
++      typeof descriptors.readIssued.value !== 'function'
++    )
++      throw unavailable();
++    const authorize = descriptors.authorize.value.bind(
++      port,
++    ) as CommercialCustomerReaderPort['authorize'];
++    const readIssued = descriptors.readIssued.value.bind(
++      port,
++    ) as CommercialCustomerReaderPort['readIssued'];
++    const viewer = commercialCustomerTarget(data(input));
++    const viewerIdentity = JSON.stringify(viewer);
++    const local = new AbortController();
++    let timer: ReturnType<typeof setTimeout> | undefined;
++    const start = Date.now(),
++      deadline = start + 5000;
++    let lastTime = start;
++    const abort = () => local.abort();
++    signal.addEventListener('abort', abort, { once: true });
++    const check = () => {
++      const now = Date.now();
++      if (
++        signal.aborted ||
++        local.signal.aborted ||
++        now < lastTime ||
++        now >= deadline ||
++        JSON.stringify(data(input)) !== viewerIdentity
++      )
++        throw unavailable();
++      lastTime = now;
++    };
++    const work = async () => {
++      let originalActor: BrokerActor | undefined,
++        originalMapping: string | undefined;
++      let until = Infinity;
++      let verifiedSourceHash: string | undefined;
++      let verifiedNumber: string | undefined,
++        verifiedReceipt: string | undefined;
++      const current = async () => {
++        check();
++        const proof = await authenticate.call(auth, bearer);
++        check();
++        const actor = Object.freeze(brokerActor(proof));
++        if (
++          actor.aal !== 'aal2' ||
++          (originalActor &&
++            JSON.stringify(actor) !== JSON.stringify(originalActor))
++        )
++          throw unavailable();
++        originalActor = actor;
++        const raw = await authorize(
++          actor,
++          Object.freeze({ ...viewer.invoice }),
++          local.signal,
++        );
++        check();
++        const mapping = record(
++          raw,
++          [
++            'mode',
++            'active',
++            'userId',
++            'sessionId',
++            'organizationId',
++            'customerId',
++            'locationId',
++            'invoiceId',
++            'sourceVersionId',
++            'sourceHash',
++            'revision',
++            'mappingRevision',
++            'expiresAt',
++          ],
++          ['issuedNumber', 'issuanceReceiptId'],
++        );
++        const anchored = Object.hasOwn(mapping, 'issuedNumber');
++        if (
++          anchored !== Object.hasOwn(mapping, 'issuanceReceiptId') ||
++          (anchored &&
++            (typeof mapping.issuedNumber !== 'string' ||
++              typeof mapping.issuanceReceiptId !== 'string' ||
++              !/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(
++                mapping.issuanceReceiptId,
++              )))
++        )
++          throw unavailable();
++        if (
++          mapping.mode !== 'fictional-local' ||
++          mapping.active !== true ||
++          mapping.userId !== actor.user_id ||
++          mapping.sessionId !== actor.session_id ||
++          typeof mapping.sourceHash !== 'string' ||
++          !/^[a-f0-9]{64}$/.test(mapping.sourceHash) ||
++          Object.entries(viewer.invoice).some(([k, v]) => mapping[k] !== v) ||
++          typeof mapping.mappingRevision !== 'string' ||
++          !mapping.mappingRevision.trim() ||
++          !Number.isSafeInteger(mapping.expiresAt) ||
++          Number(mapping.expiresAt) <= Date.now()
++        )
++          throw unavailable();
++        const identity = JSON.stringify(mapping);
++        if (originalMapping && identity !== originalMapping)
++          throw unavailable();
++        originalMapping = identity;
++        verifiedSourceHash = mapping.sourceHash as string;
++        verifiedNumber = anchored
++          ? (mapping.issuedNumber as string)
++          : undefined;
++        verifiedReceipt = anchored
++          ? (mapping.issuanceReceiptId as string)
++          : undefined;
++        // Mapping is an awaited boundary too. A last mapping call must not hide
++        // a session revoked while that trusted read was in progress.
++        const afterProof = await authenticate.call(auth, bearer);
++        check();
++        if (JSON.stringify(brokerActor(afterProof)) !== JSON.stringify(actor))
++          throw unavailable();
++        until = Math.min(
++          Number(mapping.expiresAt),
++          actor.expires_at * 1000,
++          start + 30_000,
++        );
++        return actor;
++      };
++      const actor = await current();
++      // Only the trusted server mapping supplies this private digest, after Auth.
++      const privateViewer: InvoiceViewer = {
++        ...viewer,
++        invoice: {
++          ...viewer.invoice,
++          sourceHash: verifiedSourceHash!,
++          ...(verifiedNumber === undefined
++            ? {}
++            : {
++                issuedNumber: verifiedNumber,
++                issuanceReceiptId: verifiedReceipt!,
++              }),
++        },
++      };
++      const first = data(
++        await readIssued(
++          actor,
++          Object.freeze({ ...viewer.invoice }),
++          local.signal,
++        ),
++      );
++      check();
++      const snapshot = customerInvoiceSnapshot(first, privateViewer);
++      if (!snapshot.scope) throw unavailable();
++      await current();
++      const second = data(
++        await readIssued(
++          actor,
++          Object.freeze({ ...viewer.invoice }),
++          local.signal,
++        ),
++      );
++      check();
++      if (JSON.stringify(first) !== JSON.stringify(second)) throw unavailable();
++      customerInvoiceSnapshot(second, privateViewer);
++      await current();
++      check();
++      if (until <= Date.now()) throw unavailable();
++      return Object.freeze({
++        schema: 'commercial-customer-issued-read-v1' as const,
++        mode: 'fictional-local' as const,
++        sourceCategory: 'commercial-issued-proposal' as const,
++        invoice: Object.freeze({
++          invoiceId: snapshot.invoiceId,
++          organizationId: snapshot.organizationId,
++          customerId: snapshot.customerId,
++          locationId: snapshot.locationId,
++          sourceVersionId: snapshot.sourceVersionId,
++          revision: snapshot.revision,
++          number: snapshot.number,
++          title: snapshot.title,
++          currency: snapshot.currency,
++          amountMinor: snapshot.amountMinor,
++          issuedAt: snapshot.issuedAt,
++          issuanceReceiptId: snapshot.issuanceReceiptId,
++        }),
++        observedAt: Date.now(),
++        expiresAt: until,
++        payment: Object.freeze({
++          status: 'UNKNOWN' as const,
++          balanceMinor: null,
++          receipt: null,
++        }),
++        link: Object.freeze({
++          status: 'DISABLED' as const,
++          href: null,
++          expiresAt: until,
++        }),
++        delivery: 'DISABLED' as const,
++        resend: 'DISABLED' as const,
++      });
++    };
++    try {
++      const timeout = new Promise<never>((_, reject) => {
++        timer = setTimeout(() => {
++          local.abort();
++          reject(unavailable());
++        }, 5000);
++      });
++      return await Promise.race([work(), timeout]);
++    } catch {
++      throw unavailable();
++    } finally {
++      if (timer) clearTimeout(timer);
++      signal.removeEventListener('abort', abort);
++      local.abort();
++    }
++  };
++}
+diff --git a/src/components/invoices/customer-invoice-contract.ts b/src/components/invoices/customer-invoice-contract.ts
+new file mode 100644
+--- /dev/null
++++ b/src/components/invoices/customer-invoice-contract.ts
+@@ -0,0 +1,190 @@
++import { presentIssuedInvoice } from '../../../proposals/commercial-invoice-issuance/presentation';
++import {
++  parseCustomerReview,
++  type CustomerContext,
++} from '../../domain/customer/review';
++
++export type InvoiceIdentity = Parameters<typeof presentIssuedInvoice>[1];
++export interface InvoiceViewer {
++  invoice: InvoiceIdentity;
++  companyName: string;
++  customerName: string;
++  propertyLabel: string;
++  primaryColor: string;
++}
++/** Future server reader contract, NOT an implemented API or Auth capability.
++ * The server must authenticate current customer access, read the exact original
++ * issued receipt, and project the SAME hash-bound immutable estimate source with
++ * customerPreview/projectIssuedReview before returning this allowlist. A matching
++ * caller-supplied hash or viewer does not prove any of those obligations.
++ */
++export interface CustomerInvoiceReader {
++  read(viewer: InvoiceViewer, signal: AbortSignal): Promise<unknown>;
++}
++export type InvoiceReadState =
++  | { status: 'ready'; value: unknown }
++  | { status: 'loading' | 'unknown' | 'denied' };
++
++// Accept JSON own-data only, without invoking getters/toJSON or retaining private
++// caller objects. This is validation, not a second invoice or calculation engine.
++function jsonCopy(
++  value: unknown,
++  active = new Set<object>(),
++  depth = 0,
++): unknown {
++  if (value === null || ['string', 'boolean', 'number'].includes(typeof value))
++    return value;
++  if (!value || typeof value !== 'object' || depth > 20 || active.has(value))
++    throw Error('Invoice data unavailable');
++  if (
++    !Array.isArray(value) &&
++    ![null, Object.prototype].includes(Object.getPrototypeOf(value))
++  )
++    throw Error('Invoice data unavailable');
++  const descriptors = Object.getOwnPropertyDescriptors(value);
++  active.add(value);
++  const output: Record<string, unknown> = {};
++  for (const key of Reflect.ownKeys(descriptors)) {
++    if (Array.isArray(value) && key === 'length') continue;
++    if (typeof key !== 'string' || !('value' in descriptors[key]))
++      throw Error('Invoice data unavailable');
++    Object.defineProperty(output, key, {
++      value: jsonCopy(descriptors[key].value, active, depth + 1),
++      enumerable: true,
++    });
++  }
++  active.delete(value);
++  if (Array.isArray(value)) {
++    if (
++      value.length > 500 ||
++      Object.keys(output).length !== value.length ||
++      !Object.keys(output).every((k, i) => k === String(i))
++    )
++      throw Error('Invoice data unavailable');
++    return Object.values(output);
++  }
++  return output;
++}
++function fields(value: unknown, names: string[]) {
++  if (
++    !value ||
++    typeof value !== 'object' ||
++    Array.isArray(value) ||
++    Object.keys(value).length !== names.length ||
++    !names.every((n) => Object.hasOwn(value, n))
++  )
++    throw Error('Invoice data unavailable');
++  return value as Record<string, unknown>;
++}
++function text(value: unknown) {
++  if (typeof value !== 'string' || !value.trim() || value.length > 250)
++    throw Error('Invoice data unavailable');
++  return value;
++}
++/** Pure detached source-bound content. Only fictional-local mode is currently
++ * admitted. No customer route, mapping, SQL reader, financial receipt or link.
++ */
++export function customerInvoiceSnapshot(value: unknown, viewer: InvoiceViewer) {
++  const expected = jsonCopy(viewer) as InvoiceViewer;
++  const input = fields(jsonCopy(value), [
++    'mode',
++    'invoice',
++    'companyName',
++    'customerName',
++    'propertyLabel',
++    'primaryColor',
++    'source',
++  ]);
++  if (
++    input.mode !== 'fictional-local' ||
++    input.companyName !== text(expected.companyName) ||
++    input.customerName !== text(expected.customerName) ||
++    input.propertyLabel !== text(expected.propertyLabel) ||
++    input.primaryColor !== expected.primaryColor ||
++    !/^#[a-f0-9]{6}$/i.test(expected.primaryColor)
++  )
++    throw Error('Exact invoice viewer unavailable');
++  const invoice = presentIssuedInvoice(input.invoice, expected.invoice);
++  let scope = null;
++  if (input.source !== null) {
++    const source = fields(input.source, ['sourceHash', 'review']);
++    if (
++      source.sourceHash !== expected.invoice.sourceHash ||
++      !expected.invoice.locationId
++    )
++      throw Error('Exact issued line source unavailable');
++    const context: CustomerContext = {
++      organization_id: invoice.organizationId,
++      customer_id: invoice.customerId,
++      location_id: expected.invoice.locationId,
++      company_name: expected.companyName,
++      primary_color: expected.primaryColor,
++      property_label: expected.propertyLabel,
++      reports: false,
++      version_ids: [invoice.sourceVersionId],
++    };
++    const review = parseCustomerReview(
++      source.review,
++      context,
++      invoice.sourceVersionId,
++    );
++    if (
++      review.scope.currency !== invoice.currency ||
++      review.scope.total_minor !== invoice.amountMinor
++    )
++      throw Error('Invoice and issued line totals conflict');
++    // Reconstruct only the canonical selling fields needed here. Notes/terms and
++    // the source receipt never become a customer payment/delivery confirmation.
++    scope = Object.freeze({
++      lines: Object.freeze(
++        review.scope.lines.map((l) => Object.freeze({ ...l })),
++      ),
++      subtotalMinor: review.scope.subtotal_minor,
++      discountMinor: review.scope.discount_minor,
++      taxMinor: review.scope.tax_minor,
++      totalMinor: review.scope.total_minor,
++    });
++  }
++  return Object.freeze({
++    ...invoice,
++    companyName: expected.companyName,
++    customerName: expected.customerName,
++    propertyLabel: expected.propertyLabel,
++    primaryColor: expected.primaryColor,
++    scope,
++    mode: 'fictional-local' as const,
++  });
++}
++export type CustomerInvoiceSnapshot = ReturnType<
++  typeof customerInvoiceSnapshot
++>;
++
++/** Requirements for future operations; these are not commands or callbacks. */
++export const invoiceActionBoundaries = Object.freeze(
++  [
++    {
++      id: 'delivery',
++      label: 'Send invoice',
++      reason:
++        'A customer access grant, consent, sender and delivery receipt are required.',
++    },
++    {
++      id: 'resend',
++      label: 'Resend invoice',
++      reason:
++        'The original delivery receipt and a separately authorized resend are required.',
++    },
++    {
++      id: 'cancel',
++      label: 'Cancel invoice',
++      reason:
++        'Cancellation requires a reviewed writer; the issued snapshot must be retained.',
++    },
++    {
++      id: 'correction',
++      label: 'Correct invoice',
++      reason:
++        'Correction requires a new authorized immutable version; this invoice cannot be edited.',
++    },
++  ].map((row) => Object.freeze({ ...row, execution: 'disabled' as const })),
++);
+diff --git a/src/components/invoices/commercial-customer-read.ts b/src/components/invoices/commercial-customer-read.ts
+new file mode 100644
+--- /dev/null
++++ b/src/components/invoices/commercial-customer-read.ts
+@@ -0,0 +1,348 @@
++import type {
++  InvoiceViewer,
++  InvoiceIdentity,
++} from './customer-invoice-contract';
++
++/** Public content-selection target only; private source hashes are server-owned. */
++export type CommercialCustomerTarget = Omit<InvoiceViewer, 'invoice'> & {
++  invoice: Omit<
++    InvoiceIdentity,
++    'sourceHash' | 'issuedNumber' | 'issuanceReceiptId'
++  >;
++};
++
++export interface CommercialCustomerResponse {
++  schema: 'commercial-customer-issued-read-v1';
++  mode: 'fictional-local';
++  sourceCategory: 'commercial-issued-proposal';
++  invoice: Omit<
++    InvoiceIdentity,
++    'sourceHash' | 'issuedNumber' | 'issuanceReceiptId'
++  > & {
++    number: string;
++    title: string;
++    currency: 'USD';
++    amountMinor: number;
++    issuedAt: string;
++    issuanceReceiptId: string;
++  };
++  observedAt: number;
++  expiresAt: number;
++  payment: { status: 'UNKNOWN'; balanceMinor: null; receipt: null };
++  link: { status: 'DISABLED'; href: null; expiresAt: number };
++  delivery: 'DISABLED';
++  resend: 'DISABLED';
++}
++const unavailable = () => Error('Exact customer invoice response unavailable');
++// JSON own data only; no toJSON/getter execution or retained caller references.
++function copy(value: unknown, depth = 0): unknown {
++  if (value === null || ['string', 'number', 'boolean'].includes(typeof value))
++    return value;
++  if (
++    !value ||
++    typeof value !== 'object' ||
++    depth > 10 ||
++    Array.isArray(value) ||
++    ![Object.prototype, null].includes(Object.getPrototypeOf(value))
++  )
++    throw unavailable();
++  const result: Record<string, unknown> = {};
++  for (const [key, descriptor] of Object.entries(
++    Object.getOwnPropertyDescriptors(value),
++  )) {
++    if (!('value' in descriptor)) throw unavailable();
++    Object.defineProperty(result, key, {
++      value: copy(descriptor.value, depth + 1),
++      enumerable: true,
++    });
++  }
++  if (Reflect.ownKeys(value).length !== Object.keys(result).length)
++    throw unavailable();
++  return result;
++}
++function fields(value: unknown, keys: string[]) {
++  if (
++    !value ||
++    typeof value !== 'object' ||
++    Object.keys(value).length !== keys.length ||
++    !keys.every((k) => Object.hasOwn(value, k))
++  )
++    throw unavailable();
++  return value as Record<string, unknown>;
++}
++/** Reject private hashes and expanded browser request fields, even at runtime. */
++export function commercialCustomerTarget(
++  value: unknown,
++): CommercialCustomerTarget {
++  const target = fields(copy(value), [
++    'invoice',
++    'companyName',
++    'customerName',
++    'propertyLabel',
++    'primaryColor',
++  ]);
++  const invoice = fields(target.invoice, [
++    'organizationId',
++    'customerId',
++    'locationId',
++    'sourceVersionId',
++    'invoiceId',
++    'revision',
++  ]);
++  const uuid = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/;
++  for (const key of [
++    'organizationId',
++    'customerId',
++    'sourceVersionId',
++    'invoiceId',
++  ])
++    if (typeof invoice[key] !== 'string' || !uuid.test(invoice[key]))
++      throw unavailable();
++  if (
++    (invoice.locationId !== null &&
++      (typeof invoice.locationId !== 'string' ||
++        !uuid.test(invoice.locationId))) ||
++    !Number.isSafeInteger(invoice.revision) ||
++    Number(invoice.revision) < 1 ||
++    ['companyName', 'customerName', 'propertyLabel'].some(
++      (key) =>
++        typeof target[key] !== 'string' ||
++        !(target[key] as string).trim() ||
++        (target[key] as string).length > 250,
++    ) ||
++    typeof target.primaryColor !== 'string' ||
++    !/^#[a-f0-9]{6}$/i.test(target.primaryColor)
++  )
++    throw unavailable();
++  Object.freeze(invoice);
++  return Object.freeze(target) as unknown as CommercialCustomerTarget;
++}
++// Public content validation only; trusted current commercial authorization and
++// immutable header/receipt checks belong to the server producer, never this string.
++function issuedDisplay(value: unknown, invoiceId: string) {
++  if (typeof value !== 'string') return false;
++  if (value === 'INV-' + invoiceId.replaceAll('-', '')) return true;
++  const number = /^INV-(\d{4})-(\d{6})$/.exec(value);
++  return (
++    !!number &&
++    Number(number[1]) >= 1 &&
++    Number(number[1]) <= 9999 &&
++    Number(number[2]) >= 1 &&
++    Number(number[2]) <= 999999
++  );
++}
++/** Content validation, never Auth. Only the proposed trusted server reader may
++ * supply this allowlist after current access/private-source checks. */
++export function commercialCustomerResponse(
++  value: unknown,
++  expected: CommercialCustomerTarget,
++  now = Date.now(),
++): CommercialCustomerResponse {
++  expected = commercialCustomerTarget(expected);
++  const row = fields(copy(value), [
++    'schema',
++    'mode',
++    'sourceCategory',
++    'invoice',
++    'observedAt',
++    'expiresAt',
++    'payment',
++    'link',
++    'delivery',
++    'resend',
++  ]);
++  const invoice = fields(row.invoice, [
++    'invoiceId',
++    'organizationId',
++    'customerId',
++    'locationId',
++    'sourceVersionId',
++    'revision',
++    'number',
++    'title',
++    'currency',
++    'amountMinor',
++    'issuedAt',
++    'issuanceReceiptId',
++  ]);
++  const uuid = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/;
++  for (const k of [
++    'invoiceId',
++    'organizationId',
++    'customerId',
++    'sourceVersionId',
++  ] as const)
++    if (
++      invoice[k] !== expected.invoice[k] ||
++      typeof invoice[k] !== 'string' ||
++      !uuid.test(invoice[k])
++    )
++      throw unavailable();
++  const payment = fields(row.payment, ['status', 'balanceMinor', 'receipt']),
++    link = fields(row.link, ['status', 'href', 'expiresAt']);
++  if (
++    invoice.locationId !== expected.invoice.locationId ||
++    (invoice.locationId !== null &&
++      (typeof invoice.locationId !== 'string' ||
++        !uuid.test(invoice.locationId))) ||
++    invoice.revision !== expected.invoice.revision ||
++    !Number.isSafeInteger(invoice.revision) ||
++    Number(invoice.revision) < 1 ||
++    !issuedDisplay(invoice.number, expected.invoice.invoiceId) ||
++    typeof invoice.title !== 'string' ||
++    !invoice.title.trim() ||
++    invoice.title.length > 200 ||
++    invoice.currency !== 'USD' ||
++    !Number.isSafeInteger(invoice.amountMinor) ||
++    Number(invoice.amountMinor) < 1 ||
++    Number(invoice.amountMinor) > 9e12 ||
++    typeof invoice.issuedAt !== 'string' ||
++    !/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d{1,6})?(?:Z|\+00:00)$/.test(
++      invoice.issuedAt,
++    ) ||
++    !Number.isFinite(Date.parse(invoice.issuedAt)) ||
++    typeof invoice.issuanceReceiptId !== 'string' ||
++    !uuid.test(invoice.issuanceReceiptId) ||
++    row.schema !== 'commercial-customer-issued-read-v1' ||
++    row.mode !== 'fictional-local' ||
++    row.sourceCategory !== 'commercial-issued-proposal' ||
++    !Number.isSafeInteger(now) ||
++    !Number.isSafeInteger(row.observedAt) ||
++    Number(row.observedAt) > now ||
++    now - Number(row.observedAt) > 30_000 ||
++    !Number.isSafeInteger(row.expiresAt) ||
++    Number(row.expiresAt) <= now ||
++    Number(row.expiresAt) > Number(row.observedAt) + 30_000 ||
++    payment.status !== 'UNKNOWN' ||
++    payment.balanceMinor !== null ||
++    payment.receipt !== null ||
++    link.status !== 'DISABLED' ||
++    link.href !== null ||
++    link.expiresAt !== row.expiresAt ||
++    row.delivery !== 'DISABLED' ||
++    row.resend !== 'DISABLED'
++  )
++    throw unavailable();
++  Object.freeze(invoice);
++  Object.freeze(payment);
++  Object.freeze(link);
++  return Object.freeze(row) as unknown as CommercialCustomerResponse;
++}
++export type CommercialCustomerState =
++  | { status: 'ready'; value: CommercialCustomerResponse }
++  | { status: 'loading' | 'unknown' | 'disabled' };
++const UNKNOWN: CommercialCustomerState = Object.freeze({ status: 'unknown' });
++const DISABLED: CommercialCustomerState = Object.freeze({ status: 'disabled' });
++/** Ephemeral read presentation only; no business store, command or retry owner.
++ * Remount/reopen reads exact retained target; it never issues/sends/pays anything. */
++export class CommercialCustomerReadController {
++  #state: CommercialCustomerState = DISABLED;
++  #listeners = new Set<() => void>();
++  #generation = 0;
++  #abort?: AbortController;
++  #closed = false;
++  #hidden = false;
++  #target?: CommercialCustomerTarget;
++  #identity?: string;
++  constructor(
++    private readonly current: () => CommercialCustomerTarget,
++    private readonly load: (
++      input: CommercialCustomerTarget,
++      signal: AbortSignal,
++    ) => Promise<unknown>,
++    private readonly enabled = false,
++  ) {
++    if (enabled) {
++      this.#target = commercialCustomerTarget(current());
++      this.#identity = JSON.stringify(this.#target);
++      this.#state = UNKNOWN;
++    }
++  }
++  subscribe = (notify: () => void) => {
++    this.#listeners.add(notify);
++    return () => {
++      this.#listeners.delete(notify);
++    };
++  };
++  #set(value: CommercialCustomerState) {
++    this.#state = value;
++    for (const notify of this.#listeners) notify();
++  }
++  #current() {
++    try {
++      return (
++        !this.#closed &&
++        this.enabled &&
++        JSON.stringify(commercialCustomerTarget(this.current())) ===
++          this.#identity
++      );
++    } catch {
++      return false;
++    }
++  }
++  getSnapshot = (): CommercialCustomerState => {
++    if (!this.enabled) return this.#state;
++    if (
++      !this.#current() ||
++      (this.#state.status === 'ready' &&
++        Date.now() >= this.#state.value.expiresAt)
++    ) {
++      this.#hidden = true;
++      // Observed drift consumes the pending generation synchronously. Do not
++      // notify during React's getSnapshot; returning one stable UNKNOWN suffices.
++      if (this.#state.status === 'loading') {
++        this.#generation++;
++        this.#abort?.abort();
++        this.#state = UNKNOWN;
++      }
++      return UNKNOWN;
++    }
++    // Restoring a context cannot resurrect retained content. Only an explicit
++    // successful new server read can clear this local visibility fence.
++    return this.#hidden && this.#state.status === 'ready'
++      ? UNKNOWN
++      : this.#state;
++  };
++  invalidate = () => {
++    this.#generation++;
++    this.#abort?.abort();
++    this.#set(this.enabled ? UNKNOWN : DISABLED);
++  };
++  async open() {
++    if (!this.enabled) return;
++    if (!this.#current() || !this.#target) {
++      this.invalidate();
++      return;
++    }
++    const generation = ++this.#generation;
++    this.#abort?.abort();
++    const abort = new AbortController();
++    this.#abort = abort;
++    this.#set(Object.freeze({ status: 'loading' }));
++    try {
++      const value = await this.load(
++        commercialCustomerTarget(this.#target),
++        abort.signal,
++      );
++      if (generation !== this.#generation || abort.signal.aborted) return;
++      if (!this.#current()) {
++        this.invalidate();
++        return;
++      }
++      const response = commercialCustomerResponse(value, this.#target);
++      if (generation !== this.#generation) return;
++      if (!this.#current()) {
++        this.invalidate();
++        return;
++      }
++      this.#hidden = false;
++      this.#set(Object.freeze({ status: 'ready', value: response }));
++    } catch {
++      if (generation === this.#generation) this.#set(UNKNOWN);
++    }
++  }
++  close = () => {
++    this.#closed = true;
++    this.invalidate();
++  };
++}
+diff --git a/src/components/invoices/CommercialCustomerReceipt.tsx b/src/components/invoices/CommercialCustomerReceipt.tsx
+new file mode 100644
+--- /dev/null
++++ b/src/components/invoices/CommercialCustomerReceipt.tsx
+@@ -0,0 +1,86 @@
++import { useEffect, useSyncExternalStore } from 'react';
++import { CommercialCustomerReadController } from './commercial-customer-read';
++import './customer-invoice.css';
++import './commercial-customer-receipt.css';
++
++/** Complementary issued-read/receipt view. Original invoice/lines/download are
++ * unchanged. No staff receipt fields are synthesized for renderer compatibility. */
++export function CommercialCustomerReceipt({
++  controller,
++}: {
++  controller: CommercialCustomerReadController;
++}) {
++  const state = useSyncExternalStore(
++    controller.subscribe,
++    controller.getSnapshot,
++    controller.getSnapshot,
++  );
++  const expires = state.status === 'ready' ? state.value.expiresAt : undefined;
++  useEffect(() => {
++    if (!expires) return;
++    const timer = setTimeout(
++      controller.invalidate,
++      Math.max(0, expires - Date.now()),
++    );
++    return () => clearTimeout(timer);
++  }, [expires, controller]);
++  return (
++    <section
++      className="customer-invoice commercial-customer-receipt"
++      aria-label="Commercial issued receipt"
++    >
++      <h2>Commercial invoice read · fictional test only</h2>
++      <button
++        onClick={() => void controller.open()}
++        disabled={state.status === 'disabled' || state.status === 'loading'}
++      >
++        Reopen exact issued invoice
++      </button>
++      {state.status !== 'ready' ? (
++        <p role="status">
++          {state.status === 'loading'
++            ? 'Reading the exact issued record…'
++            : state.status === 'disabled'
++              ? 'Customer reader is disabled.'
++              : 'UNKNOWN · Current customer access or original invoice evidence is unavailable. No prior receipt is displayed.'}
++        </p>
++      ) : (
++        <>
++          <p role="status">Issued invoice · payment UNKNOWN</p>
++          <p>{state.value.invoice.number}</p>
++          <p>{state.value.invoice.title}</p>
++          <details>
++            <summary>Original issuance receipt</summary>
++            <dl>
++              <dt>Issuance receipt · not payment receipt</dt>
++              <dd>{state.value.invoice.issuanceReceiptId}</dd>
++              <dt>Exact issued version</dt>
++              <dd>{state.value.invoice.sourceVersionId}</dd>
++              <dt>Immutable revision</dt>
++              <dd>{state.value.invoice.revision}</dd>
++            </dl>
++            <p>
++              Read as of{' '}
++              <time dateTime={new Date(state.value.observedAt).toISOString()}>
++                {new Date(state.value.observedAt).toISOString()}
++              </time>
++              . Expires {new Date(state.value.expiresAt).toISOString()}.
++            </p>
++          </details>
++          <p>
++            No commercial payment, balance, refund, cancellation or dispute fact
++            is verified. Absence of a payment record never means unpaid.
++          </p>
++          <button disabled>Create payment link · unavailable</button>
++          <button disabled>Send invoice · unavailable</button>
++          <button disabled>Resend invoice · unavailable</button>
++          <p>
++            Link creation, expiry/revocation and delivery/resend require
++            separately authorized customer, merchant, provider and consent
++            bindings. No URL or token is created.
++          </p>
++        </>
++      )}
++    </section>
++  );
++}
+diff --git a/src/components/invoices/customer-invoice.css b/src/components/invoices/customer-invoice.css
+new file mode 100644
+--- /dev/null
++++ b/src/components/invoices/customer-invoice.css
+@@ -0,0 +1,141 @@
++.customer-invoice {
++  max-width: 960px;
++  margin: 1rem auto;
++  padding: clamp(1rem, 4vw, 2.5rem);
++  color: #203530;
++  background: #f5f6f2;
++  border: 1px solid #d9e1da;
++  border-radius: 14px;
++  overflow-wrap: anywhere;
++}
++.customer-invoice * {
++  box-sizing: border-box;
++}
++.customer-invoice-header {
++  position: static;
++  display: block;
++  padding: 0 0 1rem;
++  background: transparent;
++  color: inherit;
++  height: auto;
++  min-height: 0;
++  border-bottom: 2px solid var(--invoice-color, #00543e);
++}
++.customer-invoice-header .platform-brand {
++  display: inline-flex;
++  max-width: 240px;
++  background: transparent;
++}
++.customer-invoice-header .platform-brand img {
++  width: 100%;
++  height: auto;
++}
++.customer-invoice-lab {
++  font-weight: 700;
++  color: #364e44;
++}
++.customer-invoice-number {
++  font-weight: 700;
++  font-size: 1.1rem;
++}
++.customer-invoice-summary {
++  display: grid;
++  grid-template-columns: 1fr 1fr;
++  gap: 1.5rem;
++}
++.customer-invoice-table {
++  overflow-x: auto;
++  max-width: 100%;
++}
++.customer-invoice table {
++  width: 100%;
++  border-collapse: collapse;
++  table-layout: fixed;
++}
++.customer-invoice th,
++.customer-invoice td {
++  text-align: left;
++  padding: 0.75rem 0.4rem;
++  border-bottom: 1px solid #c9d5cc;
++}
++.customer-invoice th:first-child {
++  width: 45%;
++}
++.customer-invoice th:nth-child(2),
++.customer-invoice td:nth-child(2) {
++  width: 25%;
++  white-space: nowrap;
++}
++.customer-invoice th:last-child,
++.customer-invoice td:last-child {
++  width: 30%;
++  white-space: nowrap;
++}
++.customer-invoice-totals {
++  display: block;
++  max-width: 360px;
++  margin-left: auto;
++}
++.customer-invoice-totals div {
++  display: flex;
++  justify-content: space-between;
++  gap: 1rem;
++  padding: 0.5rem 0;
++}
++.customer-invoice-totals dt,
++.customer-invoice dd {
++  color: #203530;
++}
++.customer-invoice-totals div:last-child {
++  font-size: 1.2rem;
++  font-weight: 700;
++  border-top: 2px solid #43594e;
++}
++.customer-invoice-totals dd {
++  white-space: nowrap;
++}
++.customer-invoice-payment {
++  background: white;
++  border: 1px solid #ccd8cf;
++  border-radius: 10px;
++  padding: 1rem;
++  margin: 1rem 0;
++}
++.customer-invoice button,
++.customer-invoice summary {
++  min-height: 44px;
++  margin: 0.25rem 0.5rem 0.25rem 0;
++}
++.customer-invoice button:disabled {
++  color: #4f5f57;
++  background: #e2e7e0;
++  opacity: 1;
++}
++.customer-invoice details {
++  margin: 1rem 0;
++}
++.customer-invoice summary {
++  cursor: pointer;
++  padding: 0.5rem 0;
++  font-weight: 700;
++}
++.customer-invoice-action {
++  border-top: 1px solid #d9e1da;
++  padding: 0.5rem 0;
++}
++.customer-invoice :focus-visible {
++  outline: 3px solid #00543e;
++  outline-offset: 3px;
++}
++@media (max-width: 600px) {
++  .customer-invoice-summary {
++    grid-template-columns: 1fr;
++    gap: 0.25rem;
++  }
++  .customer-invoice {
++    margin: 0.5rem;
++  }
++  .customer-invoice-totals {
++    max-width: none;
++  }
++}
+diff --git a/src/components/invoices/commercial-customer-receipt.css b/src/components/invoices/commercial-customer-receipt.css
+new file mode 100644
+--- /dev/null
++++ b/src/components/invoices/commercial-customer-receipt.css
+@@ -0,0 +1,10 @@
++.commercial-customer-receipt {
++  background: #fff;
++  color: #172b3a;
++}
++.commercial-customer-receipt dt {
++  color: #405766;
++}
++.commercial-customer-receipt dd {
++  overflow-wrap: anywhere;
++}
+diff --git a/tests/commercial-customer-bridge.test.ts b/tests/commercial-customer-bridge.test.ts
+new file mode 100644
+--- /dev/null
++++ b/tests/commercial-customer-bridge.test.ts
+@@ -0,0 +1,506 @@
++import { afterEach, expect, it, vi } from 'vitest';
++import { commercialCustomerReadProposal } from '../proposals/commercial-customer-bridge/reader';
++import {
++  CommercialCustomerReadController,
++  commercialCustomerResponse,
++  commercialCustomerTarget,
++} from '../src/components/invoices/commercial-customer-read';
++import { commercialCustomerBridgeFixture } from './fixtures/commercial-customer-bridge';
++const signal = () => new AbortController().signal;
++afterEach(() => vi.useRealTimers());
++
++it('defaults off before inspecting port/input and makes no Auth or source reads', async () => {
++  const f = commercialCustomerBridgeFixture();
++  let touched = false;
++  const input = new Proxy(f.viewer, {
++    get() {
++      touched = true;
++      throw Error('must not read');
++    },
++  });
++  const load = commercialCustomerReadProposal(f.auth, f.bearer, f.port);
++  await expect(load(input, signal())).rejects.toThrow(/UNKNOWN/);
++  expect(touched).toBe(false);
++  expect(f.calls).toEqual({ auth: 0, session: 0, mapping: 0, source: 0 });
++});
++it('loads and reopens original safe issuance receipt only after repeated same-session/mapping/source reads', async () => {
++  const f = commercialCustomerBridgeFixture(),
++    result = await f.load(f.viewer, signal());
++  expect(result.invoice.issuanceReceiptId).toBe(
++    f.value.invoice.receipt.commandId,
++  );
++  expect(result.invoice.number).toBe(f.value.invoice.number);
++  expect(result.payment).toEqual({
++    status: 'UNKNOWN',
++    balanceMinor: null,
++    receipt: null,
++  });
++  expect(result.link).toMatchObject({ href: null, status: 'DISABLED' });
++  expect(f.calls).toEqual({ auth: 6, session: 6, mapping: 3, source: 2 });
++  const reopened = await f.load(f.viewer, signal());
++  expect(reopened.invoice).toEqual(result.invoice);
++  expect(JSON.stringify(result)).not.toMatch(
++    /actorId|requestHash|sourceHash|PRIVATE|unit_cost|sessionId|bearer|paymentState/,
++  );
++  expect(Object.isFrozen(result.invoice)).toBe(true);
++  expect(commercialCustomerResponse(result, f.viewer)).toEqual(result);
++});
++it.each([
++  'unpaid',
++  'partially_paid',
++  'paid',
++  'refunded',
++  'cancelled',
++  'disputed',
++])(
++  'rejects unsupported commercial %s claims instead of importing release/provider state',
++  async (status) => {
++    const f = commercialCustomerBridgeFixture();
++    f.setValue({
++      ...f.value,
++      invoice: { ...f.value.invoice, paymentState: status },
++    });
++    await expect(f.load(f.viewer, signal())).rejects.toThrow(/UNKNOWN/);
++  },
++);
++it('rejects synthetic release-ledger and arbitrary financial facts even beside a valid issued record', async () => {
++  const f = commercialCustomerBridgeFixture();
++  f.setValue({
++    ...f.value,
++    financial: { provider: 'synthetic', status: 'paid', balanceMinor: 0 },
++  });
++  await expect(f.load(f.viewer, signal())).rejects.toThrow(/UNKNOWN/);
++});
++it.each([
++  'organizationId',
++  'customerId',
++  'locationId',
++  'sourceVersionId',
++  'invoiceId',
++  'sourceHash',
++  'revision',
++  'userId',
++  'sessionId',
++])(
++  'denies mismatched trusted mapping %s before any issued read',
++  async (field) => {
++    const f = commercialCustomerBridgeFixture();
++    Object.assign(f.mapping, {
++      [field]: field === 'revision' ? 99 : crypto.randomUUID(),
++    });
++    await expect(f.load(f.viewer, signal())).rejects.toThrow(/UNKNOWN/);
++    expect(f.calls.source).toBe(0);
++  },
++);
++it('expired/revoked mapping and unavailable Auth never fall back to staff read', async () => {
++  const f = commercialCustomerBridgeFixture();
++  f.mapping.active = false;
++  await expect(f.load(f.viewer, signal())).rejects.toThrow();
++  expect(f.calls.source).toBe(0);
++  f.mapping.active = true;
++  f.mapping.expiresAt = Date.now();
++  await expect(f.load(f.viewer, signal())).rejects.toThrow();
++  expect(f.calls.source).toBe(0);
++  f.mapping.expiresAt = Date.now() + 120_000;
++  f.setAuth(false);
++  await expect(f.load(f.viewer, signal())).rejects.toThrow();
++  expect(f.calls.source).toBe(0);
++});
++it('revocation after an issued read denies before returning content', async () => {
++  const f = commercialCustomerBridgeFixture(),
++    original = f.port.readIssued;
++  f.port.readIssued = async (...args) => {
++    const value = await original(...args);
++    f.setAuth(false);
++    return value;
++  };
++  const load = commercialCustomerReadProposal(f.auth, f.bearer, f.port, {
++    enabled: true,
++    mode: 'fictional-local',
++  });
++  await expect(load(f.viewer, signal())).rejects.toThrow(/UNKNOWN/);
++  expect(f.calls.source).toBe(1);
++});
++it('post-await mapping revision changes deny the original result', async () => {
++  const f = commercialCustomerBridgeFixture(),
++    original = f.port.readIssued;
++  f.port.readIssued = async (...args) => {
++    const value = await original(...args);
++    f.mapping.mappingRevision = 'changed';
++    return value;
++  };
++  const load = commercialCustomerReadProposal(f.auth, f.bearer, f.port, {
++    enabled: true,
++    mode: 'fictional-local',
++  });
++  await expect(load(f.viewer, signal())).rejects.toThrow(/UNKNOWN/);
++});
++it('two issued reads must retain exact original header and full canonical source', async () => {
++  const f = commercialCustomerBridgeFixture(),
++    original = f.port.readIssued;
++  f.port.readIssued = async (...args) => {
++    const value = await original(...args);
++    if (f.calls.source === 2)
++      return {
++        ...f.value,
++        invoice: { ...f.value.invoice, title: 'substituted original' },
++      };
++    return value;
++  };
++  const load = commercialCustomerReadProposal(f.auth, f.bearer, f.port, {
++    enabled: true,
++    mode: 'fictional-local',
++  });
++  await expect(load(f.viewer, signal())).rejects.toThrow(/UNKNOWN/);
++});
++it('missing exact line source stays unavailable; issuance title is never scope evidence', async () => {
++  const f = commercialCustomerBridgeFixture();
++  f.setValue({ ...f.value, source: null });
++  await expect(f.load(f.viewer, signal())).rejects.toThrow(/UNKNOWN/);
++});
++it('rejects getters and proxies without invoking supplied accessors/traps', async () => {
++  const f = commercialCustomerBridgeFixture();
++  let touched = false;
++  const input = { ...f.viewer };
++  Object.defineProperty(input, 'invoice', {
++    get() {
++      touched = true;
++      throw Error('unsafe');
++    },
++    enumerable: true,
++  });
++  await expect(f.load(input, signal())).rejects.toThrow();
++  expect(touched).toBe(false);
++  const proxy = new Proxy(f.viewer, {
++    ownKeys() {
++      touched = true;
++      throw Error('unsafe');
++    },
++  });
++  await expect(f.load(proxy, signal())).rejects.toThrow();
++  expect(touched).toBe(false);
++});
++it('context edits while the reader waits deny rather than rebinding a later customer', async () => {
++  const f = commercialCustomerBridgeFixture();
++  let release!: (v: unknown) => void;
++  f.port.readIssued = () =>
++    new Promise((resolve) => {
++      release = resolve;
++    });
++  const load = commercialCustomerReadProposal(f.auth, f.bearer, f.port, {
++    enabled: true,
++    mode: 'fictional-local',
++  });
++  const pending = load(f.viewer, signal());
++  await vi.waitFor(() => expect(release).toBeTypeOf('function'));
++  f.viewer.customerName = 'Other customer';
++  release(f.value);
++  await expect(pending).rejects.toThrow(/UNKNOWN/);
++});
++it('bounded stalled reads abort and late resolution cannot return success', async () => {
++  vi.useFakeTimers();
++  const f = commercialCustomerBridgeFixture();
++  let release!: (v: unknown) => void;
++  f.port.readIssued = () =>
++    new Promise((resolve) => {
++      release = resolve;
++    });
++  const load = commercialCustomerReadProposal(f.auth, f.bearer, f.port, {
++    enabled: true,
++    mode: 'fictional-local',
++  });
++  const pending = load(f.viewer, signal());
++  const denied = expect(pending).rejects.toThrow(/UNKNOWN/);
++  await vi.advanceTimersByTimeAsync(5000);
++  await denied;
++  if (release) release(f.value);
++  await vi.advanceTimersByTimeAsync(1);
++});
++it('client denies asserted financial states, receipt links and stale/cross-tenant content', async () => {
++  const f = commercialCustomerBridgeFixture(),
++    result = await f.load(f.viewer, signal());
++  for (const status of [
++    'UNPAID',
++    'PARTIALLY_PAID',
++    'PAID',
++    'REFUNDED',
++    'CANCELLED',
++    'DISPUTED',
++  ])
++    expect(() =>
++      commercialCustomerResponse(
++        { ...result, payment: { ...result.payment, status } },
++        f.viewer,
++      ),
++    ).toThrow();
++  expect(() =>
++    commercialCustomerResponse(
++      {
++        ...result,
++        link: { ...result.link, href: 'https://example.invalid/pay' },
++      },
++      f.viewer,
++    ),
++  ).toThrow();
++  expect(() =>
++    commercialCustomerResponse(
++      {
++        ...result,
++        invoice: { ...result.invoice, customerId: crypto.randomUUID() },
++      },
++      f.viewer,
++    ),
++  ).toThrow();
++  expect(() =>
++    commercialCustomerResponse(result, f.viewer, result.expiresAt),
++  ).toThrow();
++});
++it('client pending/UNKNOWN clears old receipt and ignores aborted out-of-order results', async () => {
++  const f = commercialCustomerBridgeFixture(),
++    result = await f.load(f.viewer, signal());
++  const resolvers: ((v: unknown) => void)[] = [];
++  const c = new CommercialCustomerReadController(
++    () => f.viewer,
++    () => new Promise((resolve) => resolvers.push(resolve)),
++    true,
++  );
++  const first = c.open();
++  expect(c.getSnapshot().status).toBe('loading');
++  const second = c.open();
++  resolvers[1](result);
++  await second;
++  expect(c.getSnapshot().status).toBe('ready');
++  resolvers[0]({ ...result, payment: { status: 'PAID' } });
++  await first;
++  expect(c.getSnapshot().status).toBe('ready');
++  c.invalidate();
++  expect(c.getSnapshot().status).toBe('unknown');
++  const third = c.open();
++  expect(c.getSnapshot().status).toBe('loading');
++  resolvers[2](null);
++  await third;
++  expect(c.getSnapshot().status).toBe('unknown');
++  c.close();
++  await c.open();
++  expect(c.getSnapshot().status).toBe('unknown');
++});
++it('client changed context hides old receipt even before another read', async () => {
++  const f = commercialCustomerBridgeFixture(),
++    result = await f.load(f.viewer, signal());
++  const c = new CommercialCustomerReadController(
++    () => f.viewer,
++    async () => result,
++    true,
++  );
++  await c.open();
++  expect(c.getSnapshot().status).toBe('ready');
++  f.viewer.invoice.customerId = crypto.randomUUID();
++  expect(c.getSnapshot().status).toBe('unknown');
++  await c.open();
++  expect(c.getSnapshot().status).toBe('unknown');
++  c.close();
++});
++
++it('Auth revocation during the final mapping await denies the already-read receipt', async () => {
++  const f = commercialCustomerBridgeFixture(),
++    original = f.port.authorize;
++  f.port.authorize = async (...args) => {
++    const mapping = await original(...args);
++    if (f.calls.mapping === 3) f.setAuth(false);
++    return mapping;
++  };
++  const load = commercialCustomerReadProposal(f.auth, f.bearer, f.port, {
++    enabled: true,
++    mode: 'fictional-local',
++  });
++  await expect(load(f.viewer, signal())).rejects.toThrow(/UNKNOWN/);
++  expect(f.calls.source).toBe(2);
++});
++
++it('disabled client retains disabled controls and never inspects context or calls a reader', async () => {
++  let touched = false;
++  const c = new CommercialCustomerReadController(
++    () => {
++      touched = true;
++      throw Error('disabled');
++    },
++    async () => {
++      touched = true;
++      throw Error('disabled');
++    },
++  );
++  await c.open();
++  expect(c.getSnapshot().status).toBe('disabled');
++  c.close();
++  expect(c.getSnapshot().status).toBe('disabled');
++  expect(touched).toBe(false);
++});
++it('restored original context cannot resurrect an old receipt without an explicit new read', async () => {
++  const f = commercialCustomerBridgeFixture();
++  let reads = 0;
++  const c = new CommercialCustomerReadController(
++    () => f.viewer,
++    async (input, abort) => {
++      reads++;
++      return f.load(input, abort);
++    },
++    true,
++  );
++  await c.open();
++  expect(c.getSnapshot().status).toBe('ready');
++  const original = f.viewer.invoice.customerId;
++  f.viewer.invoice.customerId = crypto.randomUUID();
++  expect(c.getSnapshot().status).toBe('unknown');
++  f.viewer.invoice.customerId = original;
++  expect(c.getSnapshot().status).toBe('unknown');
++  expect(reads).toBe(1);
++  await c.open();
++  expect(c.getSnapshot().status).toBe('ready');
++  expect(reads).toBe(2);
++  c.close();
++});
++it('client context drift during a pending response clears loading instead of trapping the restored target', async () => {
++  const f = commercialCustomerBridgeFixture(),
++    result = await f.load(f.viewer, signal());
++  let resolve!: (v: unknown) => void;
++  const c = new CommercialCustomerReadController(
++    () => f.viewer,
++    () =>
++      new Promise((done) => {
++        resolve = done;
++      }),
++    true,
++  );
++  const pending = c.open();
++  const original = f.viewer.invoice.customerId;
++  f.viewer.invoice.customerId = crypto.randomUUID();
++  resolve(result);
++  await pending;
++  f.viewer.invoice.customerId = original;
++  expect(c.getSnapshot().status).toBe('unknown');
++  c.close();
++});
++it('observed pending context drift cannot revive its old result after context restoration before resolution', async () => {
++  const f = commercialCustomerBridgeFixture(),
++    result = await f.load(f.viewer, signal());
++  let resolve!: (v: unknown) => void;
++  let pendingSignal: AbortSignal | undefined;
++  const c = new CommercialCustomerReadController(
++    () => f.viewer,
++    (_input, abort) => {
++      pendingSignal = abort;
++      return new Promise((done) => {
++        resolve = done;
++      });
++    },
++    true,
++  );
++  let notifications = 0;
++  const unsubscribe = c.subscribe(() => {
++    notifications++;
++  });
++  const pending = c.open();
++  const original = f.viewer.invoice.customerId;
++  f.viewer.invoice.customerId = crypto.randomUUID();
++  expect(c.getSnapshot().status).toBe('unknown');
++  f.viewer.invoice.customerId = original;
++  resolve(result);
++  await pending;
++  expect(c.getSnapshot().status).toBe('unknown');
++  expect(pendingSignal?.aborted).toBe(true);
++  expect(notifications).toBe(1); // no render-time notification or late-ready notification
++  unsubscribe();
++  c.close();
++});
++
++it('public customer target and port arguments contain no source hash; only the authenticated server mapping binds it', async () => {
++  const f = commercialCustomerBridgeFixture(),
++    originalAuthorize = f.port.authorize,
++    originalRead = f.port.readIssued;
++  const targets: unknown[] = [];
++  f.port.authorize = async (...args) => {
++    targets.push(args[1]);
++    return originalAuthorize(...args);
++  };
++  f.port.readIssued = async (...args) => {
++    targets.push(args[1]);
++    return originalRead(...args);
++  };
++  const load = commercialCustomerReadProposal(f.auth, f.bearer, f.port, {
++    enabled: true,
++    mode: 'fictional-local',
++  });
++  const result = await load(f.viewer, signal());
++  expect(commercialCustomerTarget(f.viewer)).toEqual(f.viewer);
++  expect(JSON.stringify([f.viewer, targets, result])).not.toContain(
++    'sourceHash',
++  );
++  expect(JSON.stringify([f.viewer, targets, result])).not.toContain(
++    f.mapping.sourceHash,
++  );
++});
++it('rejects a client-supplied private hash in target or response without granting source authority', async () => {
++  const f = commercialCustomerBridgeFixture();
++  const expanded = {
++    ...f.viewer,
++    invoice: { ...f.viewer.invoice, sourceHash: f.mapping.sourceHash },
++  };
++  expect(() => commercialCustomerTarget(expanded)).toThrow();
++  expect(
++    () =>
++      new CommercialCustomerReadController(
++        () => expanded,
++        async () => null,
++        true,
++      ),
++  ).toThrow();
++  await expect(f.load(expanded, signal())).rejects.toThrow();
++  expect(f.calls.auth).toBe(0);
++  const result = await f.load(f.viewer, signal());
++  expect(() =>
++    commercialCustomerResponse(
++      { ...result, sourceHash: f.mapping.sourceHash },
++      f.viewer,
++    ),
++  ).toThrow();
++  expect(() =>
++    commercialCustomerResponse(
++      {
++        ...result,
++        invoice: { ...result.invoice, sourceHash: f.mapping.sourceHash },
++      },
++      f.viewer,
++    ),
++  ).toThrow();
++});
++it.each(['', 'not-a-digest', 'A'.repeat(64)])(
++  'rejects malformed private digest from the trusted mapping: %s',
++  async (digest) => {
++    const f = commercialCustomerBridgeFixture();
++    f.mapping.sourceHash = digest;
++    await expect(f.load(f.viewer, signal())).rejects.toThrow();
++    expect(f.calls.auth).toBe(1);
++    expect(f.calls.source).toBe(0);
++  },
++);
++it('a valid but substituted server mapping digest cannot validate another issued source', async () => {
++  const f = commercialCustomerBridgeFixture();
++  f.mapping.sourceHash = 'c'.repeat(64);
++  await expect(f.load(f.viewer, signal())).rejects.toThrow(/UNKNOWN/);
++});
++it('private source hash withdrawal after the first read denies rather than rebinding the retained record', async () => {
++  const f = commercialCustomerBridgeFixture(),
++    original = f.port.authorize;
++  f.port.authorize = async (...args) => {
++    const mapping = await original(...args);
++    return f.calls.mapping === 3
++      ? { ...(mapping as typeof f.mapping), sourceHash: 'c'.repeat(64) }
++      : mapping;
++  };
++  const load = commercialCustomerReadProposal(f.auth, f.bearer, f.port, {
++    enabled: true,
++    mode: 'fictional-local',
++  });
++  await expect(load(f.viewer, signal())).rejects.toThrow(/UNKNOWN/);
++  expect(f.calls.source).toBe(2);
++});
+diff --git a/tests/fixtures/commercial-customer-bridge.ts b/tests/fixtures/commercial-customer-bridge.ts
+new file mode 100644
+--- /dev/null
++++ b/tests/fixtures/commercial-customer-bridge.ts
+@@ -0,0 +1,98 @@
++import { CustomerBrokerAuth } from '../../server/customer/broker-auth';
++import {
++  commercialCustomerReadProposal,
++  type CommercialCustomerReaderPort,
++} from '../../proposals/commercial-customer-bridge/reader';
++import { fictionalCustomerInvoice } from './customer-issued-invoice';
++
++/** Controlled Auth transport/mapping/source DTOs, NOT hosted Auth or SQL reads. */
++export function commercialCustomerBridgeFixture() {
++  const fixture = fictionalCustomerInvoice();
++  // Keep the private fixture digest only in the trusted mapping/source, never in
++  // the browser target or a customer request.
++  const { sourceHash: privateSourceHash, ...publicInvoice } =
++    fixture.viewer.invoice;
++  const viewer = { ...fixture.viewer, invoice: publicInvoice };
++  const config = {
++    url: 'https://abcdefghijklmnopqrst.supabase.co',
++    publishableKey: 'sb_publishable_synthetic_only',
++  };
++  const claims = {
++    sub: crypto.randomUUID(),
++    session_id: crypto.randomUUID(),
++    aal: 'aal2',
++    exp: Math.floor(Date.now() / 1000) + 300,
++    iat: Math.floor(Date.now() / 1000),
++    iss: config.url + '/auth/v1',
++    aud: 'authenticated',
++    role: 'authenticated',
++  };
++  const bearer =
++    Buffer.from('{"alg":"RS256"}').toString('base64url') +
++    '.' +
++    Buffer.from(JSON.stringify(claims)).toString('base64url') +
++    '.controlled_test_signature';
++  let active = true;
++  const calls = { auth: 0, session: 0, mapping: 0, source: 0 };
++  const auth = new CustomerBrokerAuth(config, async (input, init) => {
++    if (new Headers(init?.headers).get('authorization') !== 'Bearer ' + bearer)
++      throw Error('Wrong fixture bearer');
++    const path = new URL(String(input)).pathname;
++    if (path === '/auth/v1/user') {
++      calls.auth++;
++      return active
++        ? Response.json({ id: claims.sub })
++        : Response.json({ error: 'revoked' }, { status: 401 });
++    }
++    if (path === '/rest/v1/rpc/customer_session_status') {
++      calls.session++;
++      return Response.json({
++        user_id: claims.sub,
++        session_id: claims.session_id,
++        active,
++      });
++    }
++    throw Error('No external fixture path permitted');
++  });
++  const mapping = {
++    mode: 'fictional-local',
++    active: true,
++    userId: claims.sub,
++    sessionId: claims.session_id,
++    ...publicInvoice,
++    sourceHash: privateSourceHash,
++    mappingRevision: 'fictional-map-r1',
++    expiresAt: Date.now() + 120_000,
++  };
++  let value: unknown = fixture.value;
++  const port: CommercialCustomerReaderPort = {
++    kind: 'unwired-test-port',
++    async authorize() {
++      calls.mapping++;
++      return structuredClone(mapping);
++    },
++    async readIssued() {
++      calls.source++;
++      return structuredClone(value);
++    },
++  };
++  return {
++    ...fixture,
++    viewer,
++    auth,
++    bearer,
++    port,
++    mapping,
++    calls,
++    setAuth: (v: boolean) => {
++      active = v;
++    },
++    setValue: (v: unknown) => {
++      value = v;
++    },
++    load: commercialCustomerReadProposal(auth, bearer, port, {
++      enabled: true,
++      mode: 'fictional-local',
++    }),
++  };
++}
+diff --git a/tests/fixtures/customer-issued-invoice.ts b/tests/fixtures/customer-issued-invoice.ts
+new file mode 100644
+--- /dev/null
++++ b/tests/fixtures/customer-issued-invoice.ts
+@@ -0,0 +1,151 @@
++import {
++  blankEstimate,
++  blankLine,
++  calculateEstimate,
++} from '../../src/domain/estimating/calculation';
++import type { EstimateVersion } from '../../src/domain/estimating/types';
++import {
++  projectIssuedReview,
++  type CustomerContext,
++} from '../../src/domain/customer/review';
++import { customerPreview } from '../../src/domain/estimating/customer-preview';
++import { sampleCompanies } from '../../src/domain/platform';
++import type { InvoiceViewer } from '../../src/components/invoices/customer-invoice-contract';
++
++/** Fictional local evidence only. The digest is a fixture token, not a SQL/Auth
++ * attestation. Selling lines/totals come from the actual canonical engines. */
++export function fictionalCustomerInvoice(index = 0) {
++  const company = sampleCompanies[index];
++  const id = (n: number) =>
++    `10000000-0000-4000-8000-${String(index * 100 + n).padStart(12, '0')}`;
++  const payload = blankEstimate(id(2));
++  payload.location_id = id(3);
++  payload.tax_policy_id = id(9);
++  payload.expires_on = '2099-12-31';
++  payload.project.name = 'Fictional property repair';
++  payload.internal_notes = 'PRIVATE SOURCE NOTE';
++  payload.lines = [
++    {
++      ...blankLine('service'),
++      description: 'Fictional repair work',
++      quantity_milli: 2000,
++      unit: 'each',
++      unit_price_minor: 12500,
++      unit_cost_minor: 8000,
++      taxable: true,
++    },
++    {
++      ...blankLine('service'),
++      description: 'Fictional cleanup',
++      quantity_milli: 1000,
++      unit: 'each',
++      unit_price_minor: 5000,
++      unit_cost_minor: 1000,
++      taxable: true,
++    },
++  ];
++  payload.discount = { kind: 'fixed', value: 1000 };
++  const version: EstimateVersion = {
++    id: id(4),
++    organization_id: id(1),
++    estimate_id: id(5),
++    version_number: 2,
++    lock_revision: 3,
++    status: 'issued',
++    payload,
++    calculation: calculateEstimate(payload, 1000),
++    company_snapshot: {
++      name: company.name,
++      primary_color: company.primary_color,
++      accent_color: company.accent_color,
++      business_address: 'Fictional office',
++      contact_email: 'fixture@example.test',
++      contact_phone: '',
++      website: '',
++      logo_document_id: null,
++    },
++    customer_snapshot: {
++      id: id(2),
++      display_name: 'Fictional property owner',
++      email: null,
++      phone: null,
++    },
++    location_snapshot: {
++      id: id(3),
++      address_line1: '10 Fictional Lane',
++      city: 'Fixture',
++      region: 'ZZ',
++      postal_code: '00000',
++      country_code: 'US',
++    },
++    tax_policy_snapshot: {
++      id: id(9),
++      organization_id: id(1),
++      name: 'Fictional tax fixture',
++      reference: 'TEST ONLY',
++      jurisdiction: 'Fictional',
++      contract_type: 'Fixture',
++      rate_bps: 1000,
++      status: 'reviewed',
++      active: true,
++      policy_version: 1,
++    },
++    attachment_snapshots: [],
++    supersedes_version_id: null,
++    created_at: '2026-11-14T12:00:00Z',
++    issued_at: '2026-11-14T12:00:00Z',
++  };
++  const preview = customerPreview(version);
++  const context: CustomerContext = {
++    organization_id: id(1),
++    customer_id: id(2),
++    location_id: id(3),
++    company_name: preview.company.name,
++    primary_color: preview.company.primary_color,
++    property_label: '10 Fictional Lane · Fixture, ZZ',
++    reports: false,
++    version_ids: [id(4)],
++  };
++  const viewer: InvoiceViewer = {
++    invoice: {
++      organizationId: id(1),
++      invoiceId: id(6),
++      customerId: id(2),
++      locationId: id(3),
++      sourceVersionId: id(4),
++      sourceHash: 'a'.repeat(64),
++      revision: 2,
++    },
++    companyName: context.company_name,
++    customerName: preview.customer.display_name,
++    propertyLabel: context.property_label,
++    primaryColor: context.primary_color,
++  };
++  const invoice = {
++    ...viewer.invoice,
++    state: 'issued',
++    paymentState: 'unverified',
++    number: 'INV-' + id(6).replaceAll('-', ''),
++    title: 'Fictional repair invoice',
++    currency: 'USD',
++    amountMinor: version.calculation.total_minor,
++    issuedAt: '2026-11-14T12:00:00.000000Z',
++    receipt: { commandId: id(7), actorId: id(8), requestHash: 'b'.repeat(64) },
++  };
++  return {
++    viewer,
++    version,
++    value: {
++      mode: 'fictional-local',
++      invoice,
++      companyName: viewer.companyName,
++      customerName: viewer.customerName,
++      propertyLabel: viewer.propertyLabel,
++      primaryColor: viewer.primaryColor,
++      source: {
++        sourceHash: viewer.invoice.sourceHash,
++        review: projectIssuedReview(version, context),
++      },
++    },
++  };
++}
+diff --git a/tests/browser/fixtures/commercial-customer-bridge.tsx b/tests/browser/fixtures/commercial-customer-bridge.tsx
+new file mode 100644
+--- /dev/null
++++ b/tests/browser/fixtures/commercial-customer-bridge.tsx
+@@ -0,0 +1,114 @@
++import { createRoot } from 'react-dom/client';
++import { useReducer } from 'react';
++import { CommercialCustomerReceipt } from '../../../src/components/invoices/CommercialCustomerReceipt';
++import {
++  CommercialCustomerReadController,
++  type CommercialCustomerResponse,
++} from '../../../src/components/invoices/commercial-customer-read';
++import type { CommercialCustomerTarget } from '../../../src/components/invoices/commercial-customer-read';
++import '../../../src/styles.css';
++declare const __COMMERCIAL_RESULT__: CommercialCustomerResponse;
++declare const __COMMERCIAL_VIEWER__: CommercialCustomerTarget;
++// Both constants are injected by the Node test's actual proposed bridge, using
++// controlled Auth/source ports. No raw staff receipt or bearer enters this page.
++const result = __COMMERCIAL_RESULT__,
++  viewer = __COMMERCIAL_VIEWER__;
++const originalCustomerId = viewer.invoice.customerId;
++let resolvePending: ((value: unknown) => void) | undefined;
++let mode: 'ready' | 'denied' | 'pending' | 'mixed' = 'ready';
++const controller = new CommercialCustomerReadController(
++  () => viewer,
++  async () => {
++    if (mode === 'denied') throw Error('Fixture current access/source denied');
++    if (mode === 'pending')
++      return new Promise((resolve) => {
++        resolvePending = resolve;
++      });
++    if (mode === 'mixed')
++      return {
++        ...result,
++        invoice: { ...result.invoice, invoiceId: crypto.randomUUID() },
++      };
++    return result;
++  },
++  true,
++);
++function Fixture() {
++  const [, refresh] = useReducer((n) => n + 1, 0);
++  return (
++    <main>
++      <h1>Fictional commercial customer read fixture</h1>
++      <nav aria-label="Local read controls">
++        <button
++          onClick={() => {
++            mode = 'denied';
++            void controller.open();
++          }}
++        >
++          Withdraw source
++        </button>
++        <button
++          onClick={() => {
++            mode = 'ready';
++            void controller.open();
++          }}
++        >
++          Read original source
++        </button>
++        <button
++          onClick={() => {
++            mode = 'pending';
++            void controller.open();
++          }}
++        >
++          Pending source read
++        </button>
++        <button
++          onClick={() => {
++            mode = 'ready';
++            controller.invalidate();
++          }}
++        >
++          Cancel local read
++        </button>
++        <button onClick={() => resolvePending?.(result)}>
++          Resolve pending original response
++        </button>
++        <button
++          onClick={() => {
++            mode = 'denied';
++            controller.invalidate();
++          }}
++        >
++          Revoke local session
++        </button>
++        <button
++          onClick={() => {
++            mode = 'mixed';
++            void controller.open();
++          }}
++        >
++          Return mixed invoice
++        </button>
++        <button
++          onClick={() => {
++            viewer.invoice.customerId = crypto.randomUUID();
++            refresh();
++          }}
++        >
++          Change customer context
++        </button>
++        <button
++          onClick={() => {
++            viewer.invoice.customerId = originalCustomerId;
++            refresh();
++          }}
++        >
++          Restore original customer context
++        </button>
++      </nav>
++      <CommercialCustomerReceipt controller={controller} />
++    </main>
++  );
++}
++createRoot(document.getElementById('root')!).render(<Fixture />);
