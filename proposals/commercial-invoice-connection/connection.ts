@@ -421,7 +421,7 @@ export async function prepareDisposableInvoiceConnection(
       if (closed) throw unavailable();
       checkSource();
     };
-    const run = async <T,>(action: () => Promise<T>) => {
+    const run = async <T>(action: () => Promise<T>) => {
       check();
       if (busy) throw unavailable();
       busy = true;
