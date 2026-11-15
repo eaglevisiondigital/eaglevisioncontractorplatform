@@ -24,7 +24,7 @@ if (
     .createHash('sha256')
     .update(guardFixtureBytes)
     .digest('hex') !==
-  '6c6a5758d3a3219b4fac88e5dbbeb2e24f6182bf73c8eba3f7bc5c44c8cd61bc'
+  'f12618162eb8bb0e7d74e4f41e1b9b1c7375788834cb98991d7fbca77741ece9'
 )
   throw Error('Reviewed guard fixture required');
 const { createHistoricalRead } = await import(
