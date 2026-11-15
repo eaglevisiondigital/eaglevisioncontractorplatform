@@ -14,7 +14,7 @@ if (!info.isFile() || info.isSymbolicLink() || (info.mode & 0o777) !== 0o644)
 const bytes = readFileSync(path);
 if (
   createHash('sha256').update(bytes).digest('hex') !==
-  '1d3438c34656e732c0352dab02477ea449ed4e4abd92714156c3ec62ff75e70a'
+  'cf28a441f146c5e4d398eb0ea0b78a999dd0f744e19424c46f3e95de74229438'
 )
   throw Error('Reviewed guard fixture helper required');
 const { createGuardHistoricalRead } = await import(

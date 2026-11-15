@@ -145,19 +145,19 @@ const frames: readonly Readonly<Record<string, string>>[] = Object.freeze<
     'proposals/commercial-invoice-year-numbering/numbering.proposed.sql':
       '89cf71e709d94cb9d0c14bd7822f2dec613315dcbac24b05299b3b0ae15ae9f7',
     'proposals/invoice-caller-admission/qualify.mjs':
-      '8137978d6b2d2f8e91a864db2d6b61ae0a0391faeea38f25c63db19abb8c4629',
+      '5d8521ae472a2983fb2b450c3ca138811b2f04d7e4c61e4e32772d68c069457d',
     'proposals/invoice-caller-fixture-migration/source-author-baseline.mjs':
       'cb1a4069463d02d7b11d683bc38297ae110375a683809e15ec87159aa2ca1886',
     'proposals/invoice-caller-reconciliation/qualify.d.mts':
       '30fd7efaf053fa0f3100c9ccdb9ad2ca0a250e75a8733a25fb59d0d8d0475b3a',
     'proposals/invoice-caller-reconciliation/qualify.mjs':
-      '96ed1c379bc2ad3c6f03f1f54b1a66933d486b3793c688913bc9ea26074d27a7',
+      'fd1f640afb20c5b933d0a5ec6b5607a1732b830211b1b1b7de4eb0719ef03b9c',
     'proposals/invoice-caller-transition/qualify.mjs':
-      '361b24b71ca03b54e86d521bde76f5e95be53125c84ffcfb881548b732ab2645',
+      'fa38a34b7ac3d70a8ec0a3fce9af703fea6d3cb0bf68c589e88dcdb532b2ac57',
     'proposals/invoice-checker-qualification/baseline.mjs':
-      '949edd4dce7557f8c9829494579ae9e0babd572441e710fb3940479d41a04a25',
+      '3057cd8b268f24a29dd3a1ec83006254774e26393da1c551845d02ecf4c099b5',
     'proposals/invoice-guard-admission/fixture-adapter.mjs':
-      '6c6a5758d3a3219b4fac88e5dbbeb2e24f6182bf73c8eba3f7bc5c44c8cd61bc',
+      'f12618162eb8bb0e7d74e4f41e1b9b1c7375788834cb98991d7fbca77741ece9',
     'proposals/payment-response-admission/fixture-adapter.mjs':
       '78c5bfe95bfe6e546267c52216fbad52aff57933826f24fbbf59f70f1a60a222',
     'scripts/check-cycle17-integrity.mjs':
@@ -169,7 +169,7 @@ const frames: readonly Readonly<Record<string, string>>[] = Object.freeze<
     'scripts/check-payment-ack-admission.mjs':
       'b1f297fc3d62cfe77a9ed9912a1a6f896a14a70cf796da2e1f24d5e5c0441ed9',
     'scripts/invoice-caller-source-admission.mjs':
-      '1d3438c34656e732c0352dab02477ea449ed4e4abd92714156c3ec62ff75e70a',
+      'cf28a441f146c5e4d398eb0ea0b78a999dd0f744e19424c46f3e95de74229438',
     'scripts/payment-response-source-admission.mjs':
       '74c672d6725876285c8bd2ee844aec88c183b56b12181a0373c874e02cf26510',
     'server/customer/broker-auth.ts':
@@ -191,7 +191,7 @@ const frames: readonly Readonly<Record<string, string>>[] = Object.freeze<
     'src/lib/customer-connected.ts':
       '7f7edf3efc5f053d6f644d6baae2ec8db2eecd9d3076251071cdd9053e575474',
     'tests/commercial-invoice-author-checkpoint.test.ts':
-      '9519540efd5c531c3d79fc101d48e139c26de8240121a16ce9a13e66f04473ab',
+      '56bc23def7acf53501b3af4cdc599f98de601a5d6e95dda47d583bd0e8400c73',
     'tests/commercial-invoice-client-adversarial.test.ts':
       'af7b59add457c268231b3cd9dbfc5d051af8429852721eab1e776b9b6fa61313',
     'tests/commercial-invoice-client-reconciliation.test.ts':
@@ -205,20 +205,22 @@ const frames: readonly Readonly<Record<string, string>>[] = Object.freeze<
     'tests/fixtures/commercial-caller-unit.ts':
       'e77ea3357154b9d3959ac00c85aa948a634e605db43069cde34500bc2089291c',
     'tests/invoice-caller-admission-proposal.test.ts':
-      '1cbcc2051c20a2287d93e6f148f41f62c8f3c60ec13557f6d0be8cd895f2a11a',
+      '1dd283a94bd4a374d058db2cf0225d691be6e5b3180e033b5ef6c47feb3e57a2',
     'tests/invoice-caller-migration-source.test.ts':
-      '866339cc0e394971886ff6c8d9007ac485642d089bf07e28b812cc884d2b0c8a',
+      'e476ba2e126b8a56dfed5eeca839d081d3193df7feced08cf1540d5916b05fa8',
     'tests/invoice-checker-qualification-baseline.test.ts':
-      '9b2ef5e2dfcd99c218a249bc6cdbc7f30dfb24521ad23478ed7c72f15f2d7341',
+      '620713f79f664b3af0ed0dcb93473e3d939e034e202fcfcb50bb31221b1424b7',
     'tests/launch-invoice-payment-source.test.ts':
-      'ada16b37c940f58473b5449bf53317ca1bff81abfb3e3125dece0447b2814862',
+      '98af655cb91e0bf68a926730bdc192ef9d6cef0c5379498bbd83ef0c06d10aa4',
     'tests/nmi-two-merchant-token-boundary.test.ts':
       '784666767e8938875300e0c37759f4cc745861218033a9c4e01bdeda86abea47',
+    'proposals/invoice-guard-admission/qualify.mjs':
+      'c6e62953cbb1e58c8ea1c636ef8f1929cdb46cbf2655fbc2e6015c29f09b5f94',
   },
 ]);
 const manifestDigests = Object.freeze([
   'f50ec528254010660a31676d542d425e22731154a362d7ade6d6b7774efc9126',
-  '28bc080f9a034ec1dd13c81a0806a288af14c7dd809169c730db1565b9710a44',
+  '93f1d88a9f614504e5647a8d12b0f49f6a5f0e86218b267f8659ecbbabf469dc',
 ]);
 const denied = () => Error('Exact reviewed invoice source required');
 const hash = (b: Uint8Array) => createHash('sha256').update(b).digest('hex');

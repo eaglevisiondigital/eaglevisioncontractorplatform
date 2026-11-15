@@ -508,11 +508,169 @@ const historicalFixturePaths = new Set([
 function guardFail() {
   throw Error('Exact approved invoice guard frame required');
 }
-function guardCurrent(read, stat) {
-  for (const [p, digest] of Object.entries({
-    ...guardFrame,
+
+// Exact #489 source-only admission. Immutable recipes avoid an H/G hash cycle.
+const yearlyAuthor = '3b52b8706bf83eefc0712ec83fca8dda57e76a37';
+const yearlyParent = 'b7387ade02d842eeb4eb8d7d1b3ab2f615963f02';
+const yearlyGuard = 'proposals/commercial-invoice-connection/source.ts';
+const yearlyManifest = 'proposals/commercial-invoice-connection/source.json';
+let yearlyFrame;
+function exactlyOnce(text, before, after) {
+  if (text.split(before).length !== 2) guardFail();
+  return text.replace(before, after);
+}
+const retainedTemplate =
+  "// Offline qualification only. Canonical files remain untouched.\nimport { readFileSync, lstatSync } from 'node:fs';\nimport { createHash } from 'node:crypto';\nimport { execFileSync } from 'node:child_process';\nimport { resolve, relative } from 'node:path';\nimport { fileURLToPath } from 'node:url';\nimport { devNull } from 'node:os';\n\nconst directory = 'proposals/invoice-guard-admission';\nconst parent = '5f0f17dc9766411b260d5b53fd2db5a925adc80f';\nconst tree = '868059f16ec4431ee8c8381ddf63fb5ffb1ed9bd';\nconst evidenceHash =\n  'e23de825623031192e5aff45a66c01860211e48f26e5c703cd0cc96375f5d8e5';\nconst patchHash =\n  '2fc927fa37cb8da1ba4eccc8a4ea225ed847e07eadea496130ad61e6c09596cf';\nconst helperPath = 'scripts/invoice-caller-source-admission.mjs';\nconst helperHash =\n  '1d3438c34656e732c0352dab02477ea449ed4e4abd92714156c3ec62ff75e70a';\n// Finite retained-launch compatibility. Original histories and proposal seals stay unchanged.\nconst retainedLaunch = Object.freeze({\n  'proposals/payment-launch-integration/legacy-invoice-fixture.mjs': {\n    before: '2e1cb96bb8c124d4ec11a053582bbcc27a259311ef7d1d09ef486448c53d51c2',\n    after: '9520858626dde02883b5755e3681d1a3ba35f00f9a57eb55fe1f613a8befbe06',\n  },\n  'tests/launch-caller-payment-integration.test.ts': {\n    before: 'e9efe20d12c69c4c9c17b4027e88b34f72589e834e5975169e4062a20912379c',\n    after: 'f9289b166c0170072446aa35e261f2108fa3f62602dd6f4e34ccf952195949ab',\n  },\n});\nconst digest = (bytes) => createHash('sha256').update(bytes).digest('hex');\nconst fail = () => {\n  throw Error('Exact sealed invoice guard proposal required');\n};\nconst gitEnvironment = Object.freeze({\n  PATH: process.env.PATH,\n  LC_ALL: 'C',\n  GIT_CONFIG_NOSYSTEM: '1',\n  GIT_CONFIG_SYSTEM: devNull,\n  GIT_CONFIG_GLOBAL: devNull,\n  GIT_CONFIG_COUNT: '0',\n  GIT_ATTR_NOSYSTEM: '1',\n  GIT_ALLOW_PROTOCOL: '',\n  GIT_NO_LAZY_FETCH: '1',\n  GIT_TERMINAL_PROMPT: '0',\n  GIT_OPTIONAL_LOCKS: '0',\n});\nfunction git(...args) {\n  return execFileSync(\n    'git',\n    [\n      '--no-replace-objects',\n      '--no-pager',\n      '-c',\n      'core.hooksPath=' + devNull,\n      '-c',\n      'core.fsmonitor=false',\n      '-c',\n      'credential.helper=',\n      ...args,\n    ],\n    { env: gitEnvironment, stdio: ['ignore', 'pipe', 'pipe'] },\n  );\n}\nlet immutableFrame;\nfunction baseline() {\n  if (!immutableFrame) {\n    if (\n      git('rev-parse', parent + '^{tree}')\n        .toString()\n        .trim() !== tree\n    )\n      fail();\n    immutableFrame = git('ls-tree', '-rz', parent)\n      .toString()\n      .split('\\0')\n      .filter(Boolean)\n      .map((row) => {\n        const [meta, path] = row.split('\\t');\n        const [mode, type, oid] = meta.split(' ');\n        if (!['100644', '100755'].includes(mode) || type !== 'blob') fail();\n        return Object.freeze({ mode, oid, path });\n      });\n    if (immutableFrame.length !== 2421) fail();\n    Object.freeze(immutableFrame);\n  }\n  return immutableFrame;\n}\nfunction regular(path, mode, stat) {\n  let prefix = '';\n  for (const part of path.split('/')) {\n    prefix = prefix ? prefix + '/' + part : part;\n    const info = stat(prefix);\n    if (info.isSymbolicLink()) fail();\n    if (prefix !== path && !info.isDirectory()) fail();\n  }\n  const info = stat(path);\n  if (!info.isFile() || (info.mode & 0o777) !== mode) fail();\n}\nfunction checked(path, hash, read, stat) {\n  regular(path, 0o644, stat);\n  const bytes = Buffer.from(read(path));\n  if (digest(bytes) !== hash) fail();\n  regular(path, 0o644, stat);\n  return bytes;\n}\nfunction inspect({ read, stat }) {\n  const evidence = JSON.parse(\n    checked(directory + '/evidence.json', evidenceHash, read, stat),\n  );\n  checked(directory + '/admission.patch', patchHash, read, stat);\n  if (\n    evidence.parent !== parent ||\n    evidence.patchSha256 !== patchHash ||\n    evidence.files.length !== 10 ||\n    evidence.admissionAuthorized !== false\n  )\n    fail();\n  const payloads = new Map();\n  for (const row of evidence.files) {\n    if (row.mode !== '100644' || payloads.has(row.path)) fail();\n    payloads.set(\n      row.path,\n      checked(directory + '/payload/' + row.path, row.after, read, stat),\n    );\n  }\n  if (digest(payloads.get(helperPath)) !== helperHash) fail();\n  for (const row of evidence.fixtureFiles)\n    checked(row.path, row.sha256, read, stat);\n  const targets = new Map(evidence.files.map((row) => [row.path, row]));\n  const phases = new Set();\n  const retainedPhases = new Set();\n  for (const row of baseline()) {\n    regular(row.path, row.mode === '100644' ? 0o644 : 0o755, stat);\n    const bytes = Buffer.from(read(row.path));\n    const target = targets.get(row.path);\n    if (target) {\n      const hash = digest(bytes);\n      if (hash === target.before) phases.add('before');\n      else if (hash === target.after) phases.add('after');\n      else fail();\n    } else if (Object.hasOwn(retainedLaunch, row.path)) {\n      const pin = retainedLaunch[row.path],\n        hash = digest(bytes);\n      if (hash === pin.before) retainedPhases.add('original');\n      else if (hash === pin.after) retainedPhases.add('proposed');\n      else fail();\n    } else {\n      const oid = createHash('sha1')\n        .update(Buffer.from('blob ' + bytes.length + '\\0'))\n        .update(bytes)\n        .digest('hex');\n      if (oid !== row.oid) fail();\n    }\n    regular(row.path, row.mode === '100644' ? 0o644 : 0o755, stat);\n  }\n  if (\n    phases.size !== 1 ||\n    retainedPhases.size !== 1 ||\n    (retainedPhases.has('proposed') && phases.has('before'))\n  )\n    fail();\n  return {\n    payloads,\n    phase: [...phases][0],\n    retainedPhase: [...retainedPhases][0],\n  };\n}\nconst key = (path) =>\n  relative(\n    process.cwd(),\n    path instanceof URL ? fileURLToPath(path) : resolve(String(path)),\n  );\n\nasync function qualifyLegacyInvoiceGuardProposal({\n  read = readFileSync,\n  stat = lstatSync,\n} = {}) {\n  const captured = inspect({ read, stat });\n  const bytes = Buffer.from(captured.payloads.get(helperPath));\n  const helper = await import(\n    'data:text/javascript;base64,' + bytes.toString('base64')\n  );\n  const inspectCaptured = () => {\n    const current = inspect({ read, stat });\n    if (\n      current.phase !== captured.phase ||\n      current.retainedPhase !== captured.retainedPhase\n    )\n      fail();\n    return current;\n  };\n  // Import is an await boundary. Source and packet reads stay fresh.\n  inspectCaptured();\n  const readCurrent = (path, encoding) => {\n    const bytes = captured.payloads.get(key(path));\n    if (!bytes) return read(path, encoding);\n    return encoding\n      ? bytes.toString(\n          typeof encoding === 'string' ? encoding : encoding.encoding,\n        )\n      : Buffer.from(bytes);\n  };\n  const check = () => {\n    inspectCaptured();\n    const result = helper.verifyInvoiceGuardFrame({ readCurrent, stat });\n    // The helper performs further current/history reads. Recheck the full frame.\n    inspectCaptured();\n    return result;\n  };\n  check();\n  return Object.freeze({\n    classification: 'UNAPPLIED_OFFLINE_QUALIFICATION_ONLY',\n    parent,\n    canonicalPhase: captured.phase,\n    helper,\n    readCurrent,\n    stat,\n    check,\n    admissionAuthorized: false,\n    sqlInstallation: 'NOT_RUN',\n  });\n}\n\n// Existing historical proposal remains a historical view, never current admission.\nconst successorPins = Object.freeze({\n  'scripts/invoice-caller-source-admission.mjs': {\n    commit: '3b52b8706bf83eefc0712ec83fca8dda57e76a37',\n    before: '1d3438c34656e732c0352dab02477ea449ed4e4abd92714156c3ec62ff75e70a',\n    after: '0000000100000000000000000000000000000000000000000000000000000000',\n  },\n  'proposals/invoice-guard-admission/fixture-adapter.mjs': {\n    commit: '3b52b8706bf83eefc0712ec83fca8dda57e76a37',\n    before: '6c6a5758d3a3219b4fac88e5dbbeb2e24f6182bf73c8eba3f7bc5c44c8cd61bc',\n    after: '0000000200000000000000000000000000000000000000000000000000000000',\n  },\n  'tests/invoice-caller-migration-source.test.ts': {\n    commit: '3b52b8706bf83eefc0712ec83fca8dda57e76a37',\n    before: '866339cc0e394971886ff6c8d9007ac485642d089bf07e28b812cc884d2b0c8a',\n    after: '0000000300000000000000000000000000000000000000000000000000000000',\n  },\n  'proposals/invoice-caller-reconciliation/qualify.mjs': {\n    commit: '3b52b8706bf83eefc0712ec83fca8dda57e76a37',\n    before: '96ed1c379bc2ad3c6f03f1f54b1a66933d486b3793c688913bc9ea26074d27a7',\n    after: '0000000400000000000000000000000000000000000000000000000000000000',\n  },\n  'proposals/invoice-checker-qualification/baseline.mjs': {\n    commit: '3b52b8706bf83eefc0712ec83fca8dda57e76a37',\n    before: '949edd4dce7557f8c9829494579ae9e0babd572441e710fb3940479d41a04a25',\n    after: '0000000500000000000000000000000000000000000000000000000000000000',\n  },\n  'proposals/invoice-caller-transition/qualify.mjs': {\n    commit: '3b52b8706bf83eefc0712ec83fca8dda57e76a37',\n    before: '361b24b71ca03b54e86d521bde76f5e95be53125c84ffcfb881548b732ab2645',\n    after: '0000000600000000000000000000000000000000000000000000000000000000',\n  },\n  'tests/commercial-invoice-author-checkpoint.test.ts': {\n    commit: '3b52b8706bf83eefc0712ec83fca8dda57e76a37',\n    before: '9519540efd5c531c3d79fc101d48e139c26de8240121a16ce9a13e66f04473ab',\n    after: '0000000700000000000000000000000000000000000000000000000000000000',\n  },\n  'proposals/invoice-caller-admission/qualify.mjs': {\n    commit: '3b52b8706bf83eefc0712ec83fca8dda57e76a37',\n    before: '8137978d6b2d2f8e91a864db2d6b61ae0a0391faeea38f25c63db19abb8c4629',\n    after: '0000000800000000000000000000000000000000000000000000000000000000',\n  },\n  'tests/invoice-caller-admission-proposal.test.ts': {\n    commit: '3b52b8706bf83eefc0712ec83fca8dda57e76a37',\n    before: '1cbcc2051c20a2287d93e6f148f41f62c8f3c60ec13557f6d0be8cd895f2a11a',\n    after: '0000000900000000000000000000000000000000000000000000000000000000',\n  },\n  'tests/invoice-checker-qualification-baseline.test.ts': {\n    commit: '3b52b8706bf83eefc0712ec83fca8dda57e76a37',\n    before: '9b2ef5e2dfcd99c218a249bc6cdbc7f30dfb24521ad23478ed7c72f15f2d7341',\n    after: '0000000a00000000000000000000000000000000000000000000000000000000',\n  },\n  'tests/launch-invoice-payment-source.test.ts': {\n    commit: '3b52b8706bf83eefc0712ec83fca8dda57e76a37',\n    before: 'ada16b37c940f58473b5449bf53317ca1bff81abfb3e3125dece0447b2814862',\n    after: '0000000b00000000000000000000000000000000000000000000000000000000',\n  },\n  'proposals/commercial-invoice-issuance/presentation.ts': {\n    commit: 'afb028058b479d1ab17a9e516d1460cb1c4de4f3',\n    before: 'a181a67faf3f8b3264b5cd00478b38c5a3c9d67c2b7f2463d6d81c01bf477981',\n    after: 'a63a605af3b1e03a0169828340f4938a50031a6f131404054da60e2db610ea6b',\n  },\n});\n\nlet successorProjection;\nexport async function qualifyInvoiceGuardProposal({\n  read = readFileSync,\n  stat = lstatSync,\n} = {}) {\n  const currentHelper = 'scripts/invoice-caller-source-admission.mjs';\n  const bytes = checked(\n    currentHelper,\n    '0000000100000000000000000000000000000000000000000000000000000000',\n    read,\n    stat,\n  );\n  const current = await import(\n    'data:text/javascript;base64,' + bytes.toString('base64')\n  );\n  const checkCurrent = (legacyError = false) => {\n    try {\n      checked(\n        currentHelper,\n        '0000000100000000000000000000000000000000000000000000000000000000',\n        read,\n        stat,\n      );\n      current.verifyInvoiceGuardFrame({ readCurrent: read, stat });\n    } catch (error) {\n      if (legacyError) fail();\n      throw error;\n    }\n  };\n  checkCurrent(true);\n  if (!successorProjection) {\n    const map = new Map();\n    for (const [path, pin] of Object.entries(successorPins)) {\n      const original = git('show', pin.commit + ':' + path);\n      if (digest(original) !== pin.before) fail();\n      map.set(path, original);\n    }\n    successorProjection = map;\n  }\n  const historicalRead = (path, encoding) => {\n    const actual = read(path, encoding),\n      p = key(path),\n      historical = successorProjection.get(p);\n    if (!historical) return actual;\n    if (digest(Buffer.from(actual)) !== successorPins[p].after) fail();\n    return encoding\n      ? historical.toString(\n          typeof encoding === 'string' ? encoding : encoding.encoding,\n        )\n      : Buffer.from(historical);\n  };\n  const legacy = await qualifyLegacyInvoiceGuardProposal({\n    read: historicalRead,\n    stat,\n  });\n  checkCurrent(true);\n  const checkedCall = (fn, args) => {\n    checkCurrent();\n    const result = fn(...args);\n    checkCurrent();\n    return result;\n  };\n  const helper = Object.freeze({\n    verifyInvoiceGuardFrame: (...args) =>\n      checkedCall(legacy.helper.verifyInvoiceGuardFrame, args),\n    admitInvoiceCallerSource: (...args) =>\n      checkedCall(legacy.helper.admitInvoiceCallerSource, args),\n    createGuardHistoricalRead: (...args) => {\n      const historical = checkedCall(\n        legacy.helper.createGuardHistoricalRead,\n        args,\n      );\n      return (...readArgs) => checkedCall(historical, readArgs);\n    },\n  });\n  return Object.freeze({\n    ...legacy,\n    helper,\n    check: () => checkedCall(legacy.check, []),\n  });\n}\n";
+const retainedTokens = {
+  'scripts/invoice-caller-source-admission.mjs':
+    '0000000100000000000000000000000000000000000000000000000000000000',
+  'proposals/invoice-guard-admission/fixture-adapter.mjs':
+    '0000000200000000000000000000000000000000000000000000000000000000',
+  'tests/invoice-caller-migration-source.test.ts':
+    '0000000300000000000000000000000000000000000000000000000000000000',
+  'proposals/invoice-caller-reconciliation/qualify.mjs':
+    '0000000400000000000000000000000000000000000000000000000000000000',
+  'proposals/invoice-checker-qualification/baseline.mjs':
+    '0000000500000000000000000000000000000000000000000000000000000000',
+  'proposals/invoice-caller-transition/qualify.mjs':
+    '0000000600000000000000000000000000000000000000000000000000000000',
+  'tests/commercial-invoice-author-checkpoint.test.ts':
+    '0000000700000000000000000000000000000000000000000000000000000000',
+  'proposals/invoice-caller-admission/qualify.mjs':
+    '0000000800000000000000000000000000000000000000000000000000000000',
+  'tests/invoice-caller-admission-proposal.test.ts':
+    '0000000900000000000000000000000000000000000000000000000000000000',
+  'tests/invoice-checker-qualification-baseline.test.ts':
+    '0000000a00000000000000000000000000000000000000000000000000000000',
+  'tests/launch-invoice-payment-source.test.ts':
+    '0000000b00000000000000000000000000000000000000000000000000000000',
+};
+function deriveYearlyFrame() {
+  if (yearlyFrame) return yearlyFrame;
+  if (
+    git('show', '--no-patch', '--format=%P', yearlyAuthor).toString().trim() !==
+      yearlyParent ||
+    git(
+      'diff-tree',
+      '--no-commit-id',
+      '--name-status',
+      '--no-renames',
+      '-r',
+      yearlyAuthor,
+    )
+      .toString()
+      .trim() !==
+      'M\tproposals/commercial-invoice-connection/source.json\nM\tproposals/commercial-invoice-connection/source.ts\nM\ttests/commercial-invoice-connection-source.test.ts'
+  )
+    guardFail();
+  const immutable = (path, digest) => {
+    const entry = git('ls-tree', yearlyAuthor, '--', path).toString().trim();
+    if (
+      !/^100644 blob [a-f0-9]{40}\t/.test(entry) ||
+      entry.split('\t')[1] !== path
+    )
+      guardFail();
+    const bytes = original(yearlyAuthor, path);
+    if (hash(bytes) !== digest) guardFail();
+    return bytes;
+  };
+  immutable(
+    helperPath,
+    '1d3438c34656e732c0352dab02477ea449ed4e4abd92714156c3ec62ff75e70a',
+  );
+  const g = immutable(
+    yearlyGuard,
+    '7ea759100c2b2fa406dfe7202d1da8367a92d48feb7166a04fa41bdb5f15d06f',
+  ).toString();
+  let manifest = immutable(
+    yearlyManifest,
+    '28bc080f9a034ec1dd13c81a0806a288af14c7dd809169c730db1565b9710a44',
+  ).toString();
+  immutable(
+    'tests/commercial-invoice-connection-source.test.ts',
+    'ddf9b5cb015f74732b1a19b50ccf6464ea53aa23c4e81a644a164f8e933b67d1',
+  );
+  const m = JSON.parse(manifest),
+    frame = { ...m.source };
+  if (Object.keys(frame).length !== 52 || m.operationalReady !== false)
+    guardFail();
+  for (const [path, digest] of Object.entries(guardFrame)) {
+    if (
+      frame[path] !==
+      (path === 'proposals/commercial-invoice-issuance/presentation.ts'
+        ? 'a63a605af3b1e03a0169828340f4938a50031a6f131404054da60e2db610ea6b'
+        : digest)
+    )
+      guardFail();
+  }
+  const launch = original(guardParent, launchPath).toString();
+  const updates = {
     ...deriveGuardFrame(),
-  })) {
+    [helperPath]: hash(executingHelper),
+    [launchPath]: hash(
+      Buffer.from(exactlyOnce(launch, oldHelperHash, hash(executingHelper))),
+    ),
+  };
+  immutable(
+    'proposals/invoice-guard-admission/qualify.mjs',
+    '16cf2e24c6e8925ef8ec401f913a0277c0debde1ced48c35a19b47aeda9c0c39',
+  );
+  let retained = retainedTemplate;
+  for (const [path, token] of Object.entries(retainedTokens)) {
+    if (!retained.includes(token)) guardFail();
+    retained = retained.replaceAll(token, updates[path]);
+  }
+  updates['proposals/invoice-guard-admission/qualify.mjs'] = hash(
+    Buffer.from(retained),
+  );
+  const marker = '\n  {\n',
+    start = g.indexOf(marker, g.indexOf(marker) + 1),
+    stop = g.indexOf('\n  },\n]);', start);
+  if (start < 0 || stop < start) guardFail();
+  let slot = g.slice(start, stop);
+  const manifestStart = manifest.indexOf('  "source": {'),
+    manifestStop = manifest.indexOf('\n  },', manifestStart);
+  if (manifestStart < 0 || manifestStop < manifestStart) guardFail();
+  let manifestSlot = manifest.slice(manifestStart, manifestStop);
+  for (const [path, digest] of Object.entries(updates)) {
+    if (path === 'proposals/invoice-guard-admission/qualify.mjs') {
+      slot +=
+        '\n    ' +
+        JSON.stringify(path).replaceAll('"', "'") +
+        ':\n      ' +
+        JSON.stringify(digest).replaceAll('"', "'") +
+        ',';
+      manifestSlot +=
+        ',\n    ' + JSON.stringify(path) + ': ' + JSON.stringify(digest);
+      frame[path] = digest;
+      continue;
+    }
+    const before = frame[path];
+    if (typeof before !== 'string' || !/^[a-f0-9]{64}$/.test(digest))
+      guardFail();
+    slot = exactlyOnce(slot, before, digest);
+    manifestSlot = exactlyOnce(manifestSlot, before, digest);
+    frame[path] = digest;
+  }
+  manifest =
+    manifest.slice(0, manifestStart) +
+    manifestSlot +
+    manifest.slice(manifestStop);
+  const guard = exactlyOnce(
+    g.slice(0, start) + slot + g.slice(stop),
+    '28bc080f9a034ec1dd13c81a0806a288af14c7dd809169c730db1565b9710a44',
+    hash(Buffer.from(manifest)),
+  );
+  frame[yearlyManifest] = hash(Buffer.from(manifest));
+  frame[yearlyGuard] = hash(Buffer.from(guard));
+  frame['tests/commercial-invoice-connection-source.test.ts'] =
+    'ddf9b5cb015f74732b1a19b50ccf6464ea53aa23c4e81a644a164f8e933b67d1';
+  yearlyFrame = Object.freeze(frame);
+  return yearlyFrame;
+}
+
+function guardCurrent(read, stat) {
+  for (const [p, digest] of Object.entries(deriveYearlyFrame())) {
     let prefix = '';
     for (const part of p.split('/')) {
       prefix = prefix ? prefix + '/' + part : part;
