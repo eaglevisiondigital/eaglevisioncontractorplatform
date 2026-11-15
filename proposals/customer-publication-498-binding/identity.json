@@ -1,0 +1,129 @@
+{
+  "classification": "ACTUAL_498_SQL_AUTHOR_BOUND_TO_UNAPPLIED_495_GUARD",
+  "actualSqlAuthor": "4bcd77aab2c16d57e126f9a10b9135437c231ca8",
+  "actualSqlParent": "da1e42d5d9c00cc51c60e7e35016bfc1067ce1b7",
+  "actualSqlTree": "867431a4d25317ea48b4d3d98a92031729395ed6",
+  "current495": "360fd4f0caf923a9a3f0569e8f29938b3d3a9849",
+  "guardPreparedBase": "ada783cbb256f871d2a508b05f3411c587038aba",
+  "guardAuthor": null,
+  "guardAuthorParent": null,
+  "laterCompositionParent": null,
+  "compositionAuthorized": false,
+  "installationAuthorized": false,
+  "operationalReady": false,
+  "commits": {
+    "da1e42d5d9c00cc51c60e7e35016bfc1067ce1b7": "dHJlZSAzOTRiMDYzZjU2MzcyODViNGE5ZTk1ZTcyZDg0NzVmZjg2MzQyNTA4CnBhcmVudCAyOGY5OGU2ZjU4ZjNhYzAyNTE4ZWZlZDMzYTg5NDZlYjk1MzdmMDA1CmF1dGhvciBlYWdsZXZpc2lvbmRpZ2l0YWwgPGRmb3dsZXI0MjMyQGdtYWlsLmNvbT4gMTc5NDcxOTM2OCAtMDYwMApjb21taXR0ZXIgZWFnbGV2aXNpb25kaWdpdGFsIDxkZm93bGVyNDIzMkBnbWFpbC5jb20+IDE3OTQ3MTkzNjggLTA2MDAKClByb3Bvc2Ugc291cmNlLWJvdW5kIGN1c3RvbWVyIHBheW1lbnQgcmVjZWlwdCBwdWJsaWNhdGlvbiBbc2tpcCBuZXRsaWZ5XQo=",
+    "360fd4f0caf923a9a3f0569e8f29938b3d3a9849": "dHJlZSBlYzJmYzQ4MGEyZjVlN2I0NTU4Mzc4ODMwYWUxZjAxMTk4YzMwZjkyCnBhcmVudCBhZGE3ODNjYmIyNTZmODcxZDJhNTA4YjA1ZjM0MTFjNTg3MDM4YWJhCmF1dGhvciBlYWdsZXZpc2lvbmRpZ2l0YWwgPGRmb3dsZXI0MjMyQGdtYWlsLmNvbT4gMTc5NDc2ODcyNSAtMDYwMApjb21taXR0ZXIgZWFnbGV2aXNpb25kaWdpdGFsIDxkZm93bGVyNDIzMkBnbWFpbC5jb20+IDE3OTQ3Njg3MjUgLTA2MDAKClF1YWxpZnkgcmVzdHJpY3RlZCByZWNlaXB0IHJlYWRlciBhZnRlci1zb3VyY2UgZ3VhcmQgW3NraXAgbmV0bGlmeV0K",
+    "4bcd77aab2c16d57e126f9a10b9135437c231ca8": "dHJlZSA4Njc0MzFhNGQyNTMxN2VhNDhiNGQzZDk4YTkyMDMxNzI5Mzk1ZWQ2CnBhcmVudCBkYTFlNDJkNWQ5YzAwY2M1MWM2MGU3ZTM1MDE2YmZjMTA2N2NlMWI3CmF1dGhvciBlYWdsZXZpc2lvbmRpZ2l0YWwgPGRmb3dsZXI0MjMyQGdtYWlsLmNvbT4gMTc5NDc3NTY5MSAtMDYwMApjb21taXR0ZXIgZWFnbGV2aXNpb25kaWdpdGFsIDxkZm93bGVyNDIzMkBnbWFpbC5jb20+IDE3OTQ3NzU2OTEgLTA2MDAKCkF1dGhvciBhcHByb3ZlZCBjdXN0b21lciBwYXltZW50IHJlY2VpcHQgU1FMIHNvdXJjZXMgW3NraXAgbmV0bGlmeV0K"
+  },
+  "readerAdditions": [
+    {
+      "path": "proposals/customer-publication-admission/README.md",
+      "mode": "100644",
+      "oid": "d95539918f42825b57e813665c7b08af749f36f0"
+    },
+    {
+      "path": "proposals/customer-publication-admission/read-only.ts",
+      "mode": "100644",
+      "oid": "41f79c9245ad1ccde674ef1be5ac323081da1037"
+    },
+    {
+      "path": "proposals/customer-publication-admission/reader-grants.sql.in",
+      "mode": "100644",
+      "oid": "ed4857b1d78424fb59accd853d7cfc3f246c6981"
+    },
+    {
+      "path": "proposals/customer-publication-admission/source-author.patch",
+      "mode": "100644",
+      "oid": "9c748b61f6be7f8427f27e242c4eac078d890b83"
+    },
+    {
+      "path": "proposals/customer-publication-admission/source.json",
+      "mode": "100644",
+      "oid": "96f4033924c33445641afa504e72ab1b2dc141c7"
+    },
+    {
+      "path": "proposals/customer-publication-admission/source.ts",
+      "mode": "100644",
+      "oid": "203d14e1465d7cc7f6160e911aeadbaaaf5e0d16"
+    },
+    {
+      "path": "tests/customer-publication-admission-package.test.ts",
+      "mode": "100644",
+      "oid": "fdf4cb2c9327b3b312c97a0efcb6bfee1e6e2e0f"
+    },
+    {
+      "path": "tests/customer-publication-admission.test.ts",
+      "mode": "100644",
+      "oid": "6d09da143e9cf87d4f388069040c2aad7887de89"
+    },
+    {
+      "path": "tests/database/customer-publication-admission.test.ts",
+      "mode": "100644",
+      "oid": "a718b7c24e26e95739bf868f793ff0341c4cdfd9"
+    }
+  ],
+  "packetAdditions": [
+    {
+      "path": "proposals/customer-publication-reader-guard/README.md",
+      "mode": "100644",
+      "oid": "c7c90c5e8a64c8938687e66a3d1b46d41356fb70"
+    },
+    {
+      "path": "proposals/customer-publication-reader-guard/git-source-proof.json",
+      "mode": "100644",
+      "oid": "b91445630fffaabcc2c48eee8e9132da1e778dae"
+    },
+    {
+      "path": "proposals/customer-publication-reader-guard/guard-author.patch",
+      "mode": "100644",
+      "oid": "1a1834c73ed9e7a6fd8dc99417e98fd1a9dd50a2"
+    },
+    {
+      "path": "proposals/customer-publication-reader-guard/guard.proposed.txt",
+      "mode": "100644",
+      "oid": "b1e0d9a802b2453740bc050bc0b8c4991c4e50cd"
+    },
+    {
+      "path": "proposals/customer-publication-reader-guard/model.proposed.txt",
+      "mode": "100644",
+      "oid": "c9ce54203e994c9d87e885f1e26d638ae0785ced"
+    },
+    {
+      "path": "proposals/customer-publication-reader-guard/qualify.d.mts",
+      "mode": "100644",
+      "oid": "5b9b813bab70123f9f3c4afd18eeda39200d57f3"
+    },
+    {
+      "path": "proposals/customer-publication-reader-guard/qualify.mjs",
+      "mode": "100644",
+      "oid": "b4fed7ba3d01fc4cef8c6d14aaa16eb975c20ab5"
+    },
+    {
+      "path": "proposals/customer-publication-reader-guard/source.json",
+      "mode": "100644",
+      "oid": "cfbce32f08bf77c35b8d9095c44de5dcdb3ef418"
+    },
+    {
+      "path": "tests/customer-publication-reader-guard.test.ts",
+      "mode": "100644",
+      "oid": "c0ff1d4e02a4f5abd4d51962dd6123729708fbc2"
+    }
+  ],
+  "sqlAdditions": [
+    {
+      "path": "server/invoices/commercial-payment-receipt.proposed.sql",
+      "mode": "100644",
+      "oid": "b05f63a93ea0b4dc72a97ad1f411995fdcaaa345"
+    },
+    {
+      "path": "server/invoices/customer-payment-publication.proposed.sql",
+      "mode": "100644",
+      "oid": "993b74ca8238dee309d5703dca51df3ea71be0f3"
+    }
+  ],
+  "preparedGuardPatch": "997565f12abfe9f57b829eb8fc5e3d0b2dfc9fab2527d47c6f363d3bf34178e0",
+  "guardTarget": "proposals/customer-publication-admission/source.ts",
+  "guardBefore": "7c034c17b0c8f381a4fa23e8d0e9a867f8401f0032132fb13126498e05f92c1b",
+  "guardAfter": "77f8fc84bcbb1d877a54d69ecd356a5381eb54b6f7c34e0f8f561145c44f9508"
+}
