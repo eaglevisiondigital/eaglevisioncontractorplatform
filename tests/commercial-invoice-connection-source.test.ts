@@ -10,18 +10,21 @@ import {
   rmSync,
 } from 'node:fs';
 import { execFileSync } from 'node:child_process';
-import { join, dirname, resolve } from 'node:path';
+import { join, dirname } from 'node:path';
 import { tmpdir } from 'node:os';
-import { pathToFileURL } from 'node:url';
 import { expect, it } from 'vitest';
 const manifest = JSON.parse(
   readFileSync('proposals/commercial-invoice-connection/source.json', 'utf8'),
 ) as { source: Record<string, string> };
-const script = `import {assertConnectionSources} from ${JSON.stringify(pathToFileURL(resolve('proposals/commercial-invoice-connection/source.ts')).href)};assertConnectionSources();`;
+const script = `import {resolve} from 'node:path';import {pathToFileURL} from 'node:url';const {assertConnectionSources}=await import(pathToFileURL(resolve('proposals/commercial-invoice-connection/source.ts')).href);assertConnectionSources();`;
 function withCopy(action: (root: string, check: () => void) => void) {
   const root = mkdtempSync(join(tmpdir(), 'propel-connection-source-'));
   try {
-    for (const path of Object.keys(manifest.source)) {
+    for (const path of [
+      ...Object.keys(manifest.source),
+      'proposals/commercial-invoice-connection/source.ts',
+      'proposals/commercial-invoice-connection/source.json',
+    ]) {
       mkdirSync(dirname(join(root, path)), { recursive: true });
       copyFileSync(path, join(root, path));
       chmodSync(join(root, path), 0o644);
