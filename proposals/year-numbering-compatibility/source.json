@@ -1,0 +1,64 @@
+{
+  "classification": "UNAPPLIED_DISPOSABLE_COMPATIBILITY_AND_FINITE_SOURCE_QUALIFICATION",
+  "base": "28d489a7cc41fff573efdf6ab4fd58de234340ad",
+  "baseParent": "e9782d5f9e2422609a993dfe8f836053793620cf",
+  "baseTree": "e326ed9d98cff9be25871869520abc958aa51d19",
+  "baseEntries": 2455,
+  "external": "9889c2dae63338610973b1e000c4d0413d08cea3",
+  "externalParent": "56b10d2d9c8b86815054d4d5f931f33990ed88eb",
+  "externalTree": "7796d9a5c41249eec681885940381e65a7672d74",
+  "externalEntries": 2452,
+  "externalFiles": {
+    "proposals/commercial-customer-bridge/reader.ts": "7def3dcade00708593190a2278c8b7100cafdd8c6a795ed4ebd9614c68942336",
+    "src/components/invoices/commercial-customer-read.ts": "e546c945bf3f4993a5a5e4a62703e8e8f6b0b7473cc31a237be2050c863ee8ef",
+    "src/components/invoices/customer-invoice-contract.ts": "e343734dd7889fdf485e08cb74d89cbf0900c9a34cd90c50698b734549b4c0b2",
+    "src/components/invoices/CommercialCustomerReceipt.tsx": "008b1f9d9100dff6902862de9df70b1c3fe400f3c8dee582fd1178133470acb0",
+    "src/components/invoices/customer-invoice.css": "476a6d6ebb8299afb2c20c95000c6488e9bdc55b36c825d4bd6baddb4fe94cb4",
+    "src/components/invoices/commercial-customer-receipt.css": "0090a5687e11d937db5cbf30d088dde96f4b5111ba4882f110d731e9f75a0648",
+    "tests/fixtures/customer-issued-invoice.ts": "956522cffb9ab88ea4b47e0c4904a8cafc56d4d0ac5e00188e0e988ad57ad665",
+    "tests/fixtures/commercial-customer-bridge.ts": "ec220aa8cbf1742e351b5013714a74d1cf2aa37ac327f6baf428ab9ee8ef750a",
+    "tests/browser/fixtures/commercial-customer-bridge.tsx": "a66859bbd2145a0ff3da21720195490d0e94a65df51d2461199e372a59b54a09"
+  },
+  "overlays": {
+    "proposals/commercial-invoice-connection/connection.ts": "connection.proposed.txt",
+    "proposals/commercial-invoice-connection/source.ts": "source.proposed.txt",
+    "proposals/commercial-customer-bridge/reader.ts": "reader.proposed.txt"
+  },
+  "patches": {
+    "connection-author.patch": {
+      "parent": "28d489a7cc41fff573efdf6ab4fd58de234340ad",
+      "paths": ["proposals/commercial-invoice-connection/connection.ts"],
+      "sha256": "b93a1c555f460284575fb1a8bc0f78f8310f5c4cc54e8b1ebfa3846175e8766a",
+      "stage": "SOURCE_AUTHOR_ONLY"
+    },
+    "reader-author.patch": {
+      "parent": "9889c2dae63338610973b1e000c4d0413d08cea3",
+      "paths": ["proposals/commercial-customer-bridge/reader.ts"],
+      "sha256": "2215929e76d03c9155a769b60c80b76e59ff55f64192a9d3df74ec498cf0dd1a"
+    },
+    "connection-guard-author.patch": {
+      "parent": "28d489a7cc41fff573efdf6ab4fd58de234340ad",
+      "paths": ["proposals/commercial-invoice-connection/source.ts"],
+      "sha256": "2185e4a02bffa102c4742f19b055df443fda4b5427ced8ed6cf25cd3741776ea",
+      "stage": "HELD_CHECKER_AUTHOR_REQUIRES_ACTUAL_COMPATIBILITY_AUTHOR_PARENT_AND_SEPARATE_APPROVAL"
+    }
+  },
+  "after": {
+    "proposals/commercial-invoice-connection/connection.ts": "69a9b8a94104291e96b9e6d0681a3905ebe2c7a4e0ec71e5d1eae24ecfd8c433",
+    "proposals/commercial-invoice-connection/source.ts": "c3091ce39aff93d4c7901802f1e7fd0afb0cfa5e4fc9044e0fa4b50cf6d1a3c7",
+    "proposals/commercial-customer-bridge/reader.ts": "98e502cb1e4beaa8cd6a950539a1ba1973677da9ee4e46c097b0193d6c138ea2"
+  },
+  "authoredCompatibilityCommits": null,
+  "canonicalFHGAdmission": "HELD_ORIGINAL_GUARD_MUST_DENY_UNADMITTED_SOURCE",
+  "sourceAdmissionAuthorized": false,
+  "launchIntegrationAuthorized": false,
+  "installationAuthorized": false,
+  "operationalReady": false,
+  "testPayloads": {
+    "connection-tests.proposed.txt": "tests/year-numbering-connection-composition.test.ts",
+    "bridge-tests.proposed.txt": "tests/year-numbering-customer-composition.test.ts",
+    "native-tests.proposed.txt": "tests/database/year-numbering-connection-composition.test.ts",
+    "browser-tests.proposed.txt": "tests/browser/year-numbering-composition.spec.ts",
+    "browser-config.proposed.txt": "tests/year-numbering-composition.playwright.config.ts"
+  }
+}

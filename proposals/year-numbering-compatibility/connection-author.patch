@@ -1,0 +1,182 @@
+diff --git a/proposals/commercial-invoice-connection/connection.ts b/proposals/commercial-invoice-connection/connection.ts
+--- a/proposals/commercial-invoice-connection/connection.ts
++++ b/proposals/commercial-invoice-connection/connection.ts
+@@ -1,3 +1,4 @@
++import { types } from 'node:util';
+ import {
+   CustomerBrokerAuth,
+   brokerActor,
+@@ -121,7 +122,10 @@
+   organizationId: string;
+   workload: 'draft' | 'issue';
+   target?: IssuanceTarget;
+-  numbering: 'NOT_ACCEPTED' | 'FICTIONAL_FULL_UUID_ONLY';
++  numbering:
++    | 'NOT_ACCEPTED'
++    | 'FICTIONAL_FULL_UUID_ONLY'
++    | 'FICTIONAL_APPROVED_YEAR_ONLY';
+ }
+ /** No credentials, pg connector, role switch, grants, operational target or route.
+  * Only explicit disposable ev_test databases and dedicated fixture LOGINs qualify.
+@@ -161,7 +165,11 @@
+       ]) as unknown as IssuanceTarget)
+     : undefined;
+   if (
+-    !['NOT_ACCEPTED', 'FICTIONAL_FULL_UUID_ONLY'].includes(numbering) ||
++    ![
++      'NOT_ACCEPTED',
++      'FICTIONAL_FULL_UUID_ONLY',
++      'FICTIONAL_APPROVED_YEAR_ONLY',
++    ].includes(numbering) ||
+     (workload === 'draft' && target !== undefined)
+   )
+     throw unavailable();
+@@ -413,7 +421,7 @@
+       if (closed) throw unavailable();
+       checkSource();
+     };
+-    const run = async <T>(action: () => Promise<T>) => {
++    const run = async <T,>(action: () => Promise<T>) => {
+       check();
+       if (busy) throw unavailable();
+       busy = true;
+@@ -548,19 +556,82 @@
+       target!.sourceVersionId,
+       target!.sourceHash,
+     ];
+-    const decode = (value: unknown, command: string, hash: string) => {
+-      const safe = presentIssuedInvoice(value, target!);
+-      const receipt = (
+-        value as {
+-          receipt: { commandId: string; actorId: string; requestHash: string };
+-        }
+-      ).receipt;
++    // Test-only read-back over the ORIGINAL command. The packet being decoded
++    // and any public display string cannot supply their own expected anchors.
++    const issuedRecord = (
++      value: unknown,
++    ): Readonly<
++      Record<string, unknown> & { receipt: Readonly<Record<string, unknown>> }
++    > => {
++      if (types.isProxy(value)) throw unknown();
++      const packet = snapshot(value, [
++        'state',
++        'paymentState',
++        'invoiceId',
++        'organizationId',
++        'customerId',
++        'locationId',
++        'sourceVersionId',
++        'sourceHash',
++        'revision',
++        'number',
++        'title',
++        'currency',
++        'amountMinor',
++        'issuedAt',
++        'receipt',
++      ]);
++      if (types.isProxy(packet.receipt)) throw unknown();
++      return Object.freeze({
++        ...packet,
++        receipt: snapshot(packet.receipt, [
++          'commandId',
++          'actorId',
++          'requestHash',
++        ]),
++      });
++    };
++    const resolveOriginal = async (
++      context: { query: GatewaySql['query'] },
++      value: unknown,
++      command: string,
++      hash: string,
++      newlyIssued = false,
++    ) => {
++      const packet = issuedRecord(value);
++      const result = await context.query<{ result: unknown }>(
++        'select private.commercial_invoice_issued_read($1::uuid,$2::uuid,$3::uuid) result',
++        [organizationId, target!.invoiceId, command],
++      );
++      check();
++      if (result.rows.length !== 1) throw unknown();
++      const original = issuedRecord(result.rows[0].result);
++      for (const evidence of [packet, original]) {
++        if (
++          evidence.receipt.commandId !== command ||
++          evidence.receipt.actorId !== actor.user_id ||
++          evidence.receipt.requestHash !== hash
++        )
++          throw unknown();
++      }
++      const number = original.number;
++      const legacy = 'INV-' + target!.invoiceId.replaceAll('-', '');
++      if (numbering === 'FICTIONAL_FULL_UUID_ONLY' && number !== legacy)
++        throw unknown();
+       if (
+-        receipt.commandId !== command ||
+-        receipt.actorId !== actor.user_id ||
+-        receipt.requestHash !== hash
++        newlyIssued &&
++        numbering === 'FICTIONAL_APPROVED_YEAR_ONLY' &&
++        (typeof number !== 'string' || !/^INV-\d{4}-\d{6}$/.test(number))
+       )
+         throw unknown();
++      const expected = {
++        ...target!,
++        issuedNumber: number as string,
++        issuanceReceiptId: command,
++      };
++      const first = presentIssuedInvoice(original, expected);
++      const safe = presentIssuedInvoice(packet, expected);
++      if (JSON.stringify(first) !== JSON.stringify(safe)) throw unknown();
+       return safe;
+     };
+     const issuer =
+@@ -569,7 +640,10 @@
+             async issue(command: string) {
+               check();
+               if (
+-                numbering !== 'FICTIONAL_FULL_UUID_ONLY' ||
++                ![
++                  'FICTIONAL_FULL_UUID_ONLY',
++                  'FICTIONAL_APPROVED_YEAR_ONLY',
++                ].includes(numbering) ||
+                 typeof command !== 'string' ||
+                 !id.test(command) ||
+                 holds.has(key) ||
+@@ -607,7 +681,13 @@
+                         parameters(command),
+                       );
+                       if (result.rows.length !== 1) throw unknown();
+-                      return decode(result.rows[0].result, command, held.hash);
++                      return resolveOriginal(
++                        context,
++                        result.rows[0].result,
++                        command,
++                        held.hash,
++                        true,
++                      );
+                     },
+                   );
+                 } catch {
+@@ -640,7 +720,8 @@
+                         [organizationId, target!.invoiceId, command],
+                       );
+                       if (result.rows.length !== 1) throw unknown();
+-                      return decode(
++                      return resolveOriginal(
++                        context,
+                         result.rows[0].result,
+                         command,
+                         hash.rows[0].request_hash,
+@@ -672,7 +753,8 @@
+                         [organizationId, target!.invoiceId, held.command],
+                       );
+                       if (result.rows.length !== 1) throw unknown();
+-                      return decode(
++                      return resolveOriginal(
++                        context,
+                         result.rows[0].result,
+                         held.command,
+                         held.hash!,

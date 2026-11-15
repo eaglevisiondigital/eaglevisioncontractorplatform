@@ -1,0 +1,54 @@
+import { createHash } from 'node:crypto';
+import { readFileSync, lstatSync } from 'node:fs';
+const pins = Object.freeze({
+  'server/invoices/commercial-caller-connection.ts':
+    '3d892a8ae7757a6f480fde4638f17f4b642436ba728446dfd84811590be0aeed',
+  'server/invoices/commercial-draft-client.ts':
+    '94aa164e60c780cb53f8658b16c57bc9c17da5d9469c73f9d73cab627dcea694',
+  'server/invoices/commercial-drafts.proposed.sql':
+    'e1c504f9a7077caa92c375c378fb370155478be9cf077e66bf58932ae0895a3c',
+  'proposals/commercial-invoice-issuance/issuance.proposed.sql':
+    '961c2dc380695ed2d910108d09303fff9b9018fe8d159beb9b958ddb2725d022',
+  'proposals/commercial-invoice-issuance/presentation.ts':
+    'a63a605af3b1e03a0169828340f4938a50031a6f131404054da60e2db610ea6b',
+  'server/customer/broker-auth.ts':
+    '709018249d889504b860e4cf0f4caa5cbdd1c2b04f58c53226f4499c68fd46d6',
+  'src/lib/customer-connected.ts':
+    '7f7edf3efc5f053d6f644d6baae2ec8db2eecd9d3076251071cdd9053e575474',
+  'proposals/commercial-invoice-connection/connection.ts':
+    '69a9b8a94104291e96b9e6d0681a3905ebe2c7a4e0ec71e5d1eae24ecfd8c433',
+  'proposals/commercial-customer-bridge/reader.ts':
+    '98e502cb1e4beaa8cd6a950539a1ba1973677da9ee4e46c097b0193d6c138ea2',
+  'src/components/invoices/commercial-customer-read.ts':
+    'e546c945bf3f4993a5a5e4a62703e8e8f6b0b7473cc31a237be2050c863ee8ef',
+  'src/components/invoices/customer-invoice-contract.ts':
+    'e343734dd7889fdf485e08cb74d89cbf0900c9a34cd90c50698b734549b4c0b2',
+  'src/components/invoices/CommercialCustomerReceipt.tsx':
+    '008b1f9d9100dff6902862de9df70b1c3fe400f3c8dee582fd1178133470acb0',
+  'src/components/invoices/customer-invoice.css':
+    '476a6d6ebb8299afb2c20c95000c6488e9bdc55b36c825d4bd6baddb4fe94cb4',
+  'src/components/invoices/commercial-customer-receipt.css':
+    '0090a5687e11d937db5cbf30d088dde96f4b5111ba4882f110d731e9f75a0648',
+  'proposals/commercial-invoice-numbering/numbering.proposed.sql':
+    '49fbbde015b9cf7a92f2bbdb74f7f5c347a63246d63cc7c9a47724858b11922e',
+  'proposals/commercial-invoice-year-numbering/numbering.proposed.sql':
+    '89cf71e709d94cb9d0c14bd7822f2dec613315dcbac24b05299b3b0ae15ae9f7',
+});
+export function assertConnectionSources() {
+  for (const [path, hash] of Object.entries(pins)) {
+    let prefix = '';
+    for (const part of path.split('/')) {
+      prefix = prefix ? prefix + '/' + part : part;
+      const info = lstatSync(prefix);
+      if (info.isSymbolicLink() || (prefix !== path && !info.isDirectory()))
+        throw Error('Exact reviewed invoice source required');
+    }
+    const info = lstatSync(path);
+    if (
+      !info.isFile() ||
+      (info.mode & 0o777) !== 0o644 ||
+      createHash('sha256').update(readFileSync(path)).digest('hex') !== hash
+    )
+      throw Error('Exact reviewed invoice source required');
+  }
+}
