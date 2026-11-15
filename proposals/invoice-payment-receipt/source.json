@@ -1,0 +1,40 @@
+{
+  "classification": "UNAPPLIED_EXACT_ORIGINAL_INVOICE_PAYMENT_LINK",
+  "parent": "18803134e504d52315f495e40766c74bb7e7df5a",
+  "files": {
+    "proposals/invoice-payment-receipt/receipt.proposed.sql": "1c1ec82ca52560de86ec19ff9a865babfc3967ff466b425692e733fd240fdef5",
+    "proposals/invoice-payment-receipt/reader.ts": "eb8e9c1e057db7edee593941bd3112f6c4fe6206824db850963e5bbaf09a082a",
+    "proposals/invoice-payment-receipt/qualification.ts": "a95433d8dcad4f1f067b7b46a257c7763ff0de35b793d206ae8f999b69a69562",
+    "proposals/invoice-payment-receipt/README.md": "18a9a495fd940d6100c2b56ac4b2dd1e654444cf0869136924dd6de565f2f14c",
+    "tests/invoice-payment-receipt-reader.test.ts": "708a85f137f7957ec765a6733574ea6ffa7978f4e9170d1df88a2bf864ba3305",
+    "tests/invoice-payment-receipt-source.test.ts": "8c2f651197ec82f84d88c7149fe40b85e00e716dfe6724de48ba90a839dce5c2",
+    "tests/database/invoice-payment-receipt-proposal.test.ts": "6f0f3b42677de4e764d2bc1bf26acd6cd57351f97ea0dd499465d9ec0e52b443"
+  },
+  "reports": {
+    "native": {
+      "sha256": "757d810f610f73dae2a8ead89b7c468d18873981b4d0aa38e1d9e3d9e76a28ed",
+      "passed": 27,
+      "failed": 0,
+      "skipped": 0
+    },
+    "unitSource": {
+      "sha256": "749b59cef1f8e0524863d6c75df48d94c5221b016eff72ba09efaece88762bf3",
+      "passed": 50,
+      "failed": 0,
+      "skipped": 0
+    },
+    "pglite": {
+      "sha256": "fc73df9626265d1bb02a3561068dc7638a311612d993ffb4aea8201b506d3131",
+      "passed": 26,
+      "failed": 0,
+      "skipped": 1
+    }
+  },
+  "installationAuthorized": false,
+  "financialExecutionAuthorized": false,
+  "holdRelease": false,
+  "balance": "NOT_ESTABLISHED",
+  "settlement": "UNVERIFIED",
+  "customerDelivery": "BLOCKED",
+  "genuineCustomerAuth": "NOT_VERIFIED"
+}
