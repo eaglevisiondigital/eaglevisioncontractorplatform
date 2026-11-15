@@ -1,0 +1,60 @@
+{
+  "classification": "UNAPPLIED_CUSTOMER_PAYMENT_PERMISSION_MAPPING_ONLY",
+  "parent": "28f98e6f58f3ac02518efed33a8946eb9537f005",
+  "files": {
+    "playwright.customer-payment-publication.config.ts": "23ca89ade838b2c3543ced5c7ccaabc2fddc4709eee328cd57cce81c33b465eb",
+    "proposals/customer-payment-publication/CustomerPaymentReceipt.tsx": "ebe7023f06156e663501fb6ef212b6727c8326b49f17e6e62764520d3537807d",
+    "proposals/customer-payment-publication/README.md": "8b804c86f6c918782acf3c463be2c3c6db09d6cc5c64522ae7dc1bfb7c2ce8bb",
+    "proposals/customer-payment-publication/contract.ts": "1ca2b3f0c49e36e3e161fb37ca3978675a23f7b26236eed1a5b07ce1de713f34",
+    "proposals/customer-payment-publication/publication.proposed.sql": "bff7f5f16fa620b4f7e684228d1ff41af696492027a782ea4698fe49d1fbb71d",
+    "proposals/customer-payment-publication/qualification.ts": "34b79320e84cee936584db0721485fe75ff16e11bbce7621787d7f1400e75030",
+    "proposals/customer-payment-publication/reader.ts": "7bc1cafcab20b5d0cf8a0bec1b3e2d0367b8265c6ba77e43c76736a7db691796",
+    "tests/browser/customer-payment-publication.spec.ts": "2f21f9ae382db3c3b5dfb577fe0c5f9ab2cfc61c35119b07dc4a321805cc2c6f",
+    "tests/browser/fixtures/customer-payment-publication.tsx": "96218906136c39e41cf7a5288670d0fa96671fc513f21153f7af7431ae37be5a",
+    "tests/customer-payment-publication-source.test.ts": "d6affb93cceaa31ae6c7f87ccd415b9994ab28e95a8a4f63438c39e7167a1d13",
+    "tests/customer-payment-publication.test.ts": "2573489746fc485aa6749755fb467c702d5feff47ef2a06b9796cc04e07c680f",
+    "tests/database/customer-payment-publication-proposal.test.ts": "d2a0eba327e6f33372f6539dd705fbed6bc40775c2c904ea1aaaeae105870f4a",
+    "tests/fixtures/customer-payment-publication.ts": "986f0cb158fef0fa94642fc84b1f15171e01018490f5cf3e16d6b76cb6700ae3"
+  },
+  "reports": {
+    "native": {
+      "sha256": "607c4845325cbabadcf73c47da573e5a00f02c537e199da0241905d5a59f3712",
+      "passed": 30,
+      "failed": 0,
+      "skipped": 0
+    },
+    "pglite": {
+      "sha256": "68387b20cc0cd257bc84e9188b313a7ea133ca986b7c300f7d76051acef9f1de",
+      "passed": 27,
+      "failed": 0,
+      "skipped": 3
+    },
+    "unitSource": {
+      "sha256": "a5f86e20d1c8a6b72aca102140ce8663ba03b361e6c36d428cd3d688a61ee327",
+      "passed": 45,
+      "failed": 0,
+      "skipped": 0
+    },
+    "browser": {
+      "sha256": "72b993e7ac95272881d6c943d2ff221070d3ffcdad025a7e21fedb99efb002f2",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "installationAuthorized": false,
+  "runtimeGrantsInstalled": false,
+  "genuineCustomerAuth": "NOT_VERIFIED",
+  "financialExecutionAuthorized": false,
+  "delivery": "DISABLED",
+  "balance": "NOT_ESTABLISHED",
+  "settlement": "UNVERIFIED",
+  "holdRelease": false,
+  "operationalReady": false,
+  "fixtureQualification": "Controlled Auth/JWT/roles and explicitly enabled disposable capability fixtures only; source defaults remain false",
+  "historicalFailures": [
+    "Issued-draft guard correctly rejected first new source reader; only new bool currentness helper corrected",
+    "Observed native publish/revoke lock inversion40P01 corrected in new functions; no assertion/budget relaxed",
+    "Initial Chromium sandbox Mach-port launch blocked; later explicit local browser execution passed"
+  ]
+}
