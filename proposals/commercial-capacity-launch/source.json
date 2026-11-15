@@ -1,0 +1,36 @@
+{
+  "classification": "UNAPPLIED_FINITE_CAPACITY_LAUNCH_COMPOSITION",
+  "launch": {
+    "commit": "7e25b50537fe66c19f5041e64bd2e59effc544c4",
+    "tree": "f255ae9f0665d55fee94387340d84032f1fa25b8"
+  },
+  "sourceAuthor": {
+    "commit": "565819daffa58d8df25d67be05430b009007d958",
+    "parent": "7e25b50537fe66c19f5041e64bd2e59effc544c4",
+    "tree": "749e1e1d02fc2480e5dc39c5c55a39ed52ac5ca8",
+    "patchSha256": "0322ff6a47e7ba0c6a3823f902a2d7dddcc51bb053c739098cd363c815c00dc6",
+    "status": "OWNER_APPROVED_AND_AUTHORED_NOT_REOPENED"
+  },
+  "patchSha256": "fd2e9fa7ec268d3e3c622fb878f9e2e8d2757e8f169ee5ed2cdc0d1ace76f6e3",
+  "files": [
+    {
+      "path": "scripts/check-commercial-capacity.mjs",
+      "sha256": "bf4afa37cbe1fcf35c54a735c2ffb270934bc1c4ddee9f1228a58ea7393324bc",
+      "mode": "100644"
+    },
+    {
+      "path": "server/payments/commercial-capacity.proposed.sql",
+      "sha256": "a9fc788d6ea486a21207868088c56ca1d45a1b9b15ef29feb4f6d62b018a8aa4",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/commercial-capacity-launch.test.ts",
+      "sha256": "1313056843759220f9d728844e6d14d4514c524f46dd47fb500763849baec157",
+      "mode": "100644"
+    }
+  ],
+  "existingChanges": [],
+  "installationAuthorized": false,
+  "launchPromotionAuthorized": false,
+  "financialExecutionAuthorized": false
+}
