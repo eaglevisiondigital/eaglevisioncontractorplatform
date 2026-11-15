@@ -1,0 +1,5 @@
+-- INACTIVE: only after exact target/principal/body/source and independent review.
+-- Does not create a LOGIN, publication or authority record. Source-bound function
+-- scope and dedicated EXECUTE together are the finite customer-invoice grant.
+grant usage on schema private to __LOGIN__;
+grant execute on function private.commercial_customer_invoice_authorize(),private.commercial_customer_invoice_read_issued() to __LOGIN__;
