@@ -89,7 +89,7 @@ const entries = git('ls-tree', '-rz', base)
       throw Error('Exact base tree required');
     return { path, mode: mode!, blob };
   });
-function frame() {
+function legacyFrame() {
   if (entries.length !== 2438) throw Error('Exact base tree required');
   const files = new Map<string, { bytes: Buffer; mode: string }>();
   for (const { path, mode, blob } of entries) {
@@ -110,6 +110,136 @@ function frame() {
   }
   return files;
 }
+
+// Retain the original 12 cases as historical tests, after separately proving the
+// current reviewed union. Never project an unknown source into a valid history.
+let immutableCapacityFrame:
+  Map<string, { bytes: Buffer; mode: string }> | undefined;
+function historicalCapacityFrame() {
+  if (immutableCapacityFrame) return immutableCapacityFrame;
+  const extra = [guard, sql].map((path) => {
+    const text = git('ls-tree', author, '--', path).toString().trim();
+    const [meta, name] = text.split('\t');
+    const [mode, kind, blob] = meta!.split(' ');
+    if (
+      name !== path ||
+      mode !== '100644' ||
+      kind !== 'blob' ||
+      !blob ||
+      !/^[a-f0-9]{40}$/.test(blob)
+    )
+      throw Error('Exact capacity history required');
+    return { path, mode, blob };
+  });
+  const wanted = [...entries, ...extra];
+  if (
+    wanted.some(
+      (row) => typeof row.blob !== 'string' || !/^[a-f0-9]{40}$/.test(row.blob),
+    )
+  )
+    throw Error('Exact capacity history required');
+  const output = execFileSync(
+    '/usr/bin/git',
+    [
+      '--no-replace-objects',
+      '-c',
+      'core.fsmonitor=false',
+      '-c',
+      'core.hooksPath=/dev/null',
+      '-c',
+      'core.attributesFile=/dev/null',
+      '-c',
+      'credential.helper=',
+      'cat-file',
+      '--batch',
+    ],
+    {
+      env,
+      input: wanted.map((r) => r.blob).join('\n') + '\n',
+      timeout: 5000,
+      maxBuffer: 64 * 1024 * 1024,
+    },
+  );
+  const result = new Map<string, { bytes: Buffer; mode: string }>();
+  let at = 0;
+  for (const row of wanted) {
+    const nl = output.indexOf(10, at);
+    if (nl < at) throw Error('Exact capacity history required');
+    const header = output.subarray(at, nl).toString();
+    const match = /^([a-f0-9]{40}) blob (0|[1-9][0-9]*)$/.exec(header);
+    if (!match || match[1] !== row.blob)
+      throw Error('Exact capacity history required');
+    const size = Number(match[2]);
+    if (!Number.isSafeInteger(size) || size > 64 * 1024 * 1024)
+      throw Error('Exact capacity history required');
+    const end = nl + 1 + size;
+    if (end >= output.length || output[end] !== 10)
+      throw Error('Exact capacity history required');
+    const bytes = Buffer.from(output.subarray(nl + 1, end));
+    if (
+      createHash('sha1')
+        .update('blob ' + size + '\0')
+        .update(bytes)
+        .digest('hex') !== row.blob
+    )
+      throw Error('Exact capacity history required');
+    result.set(row.path!, { bytes, mode: row.mode });
+    at = end + 1;
+  }
+  if (at !== output.length || result.size !== 2440)
+    throw Error('Exact capacity history required');
+  for (const [path, hash] of Object.entries(pins))
+    if (sha(result.get(path)!.bytes) !== hash)
+      throw Error('Exact capacity history required');
+  immutableCapacityFrame = result;
+  return result;
+}
+function frame() {
+  const captured = capture(guard),
+    digest = sha(captured);
+  if (digest === pins[guard]) return legacyFrame();
+  if (
+    digest !==
+    'b5f986d6ad3a1e5c528abd72cc3e398c05bcb05cc7d805c44604447ee22606db'
+  )
+    throw Error('Exact current capacity successor required');
+  const verify = () => {
+    if (!capture(guard).equals(captured))
+      throw Error('Exact current capacity successor required');
+    const script =
+      'const m=await import(' +
+      JSON.stringify(
+        'data:text/javascript;base64,' + captured.toString('base64'),
+      ) +
+      ');console.log(JSON.stringify(m.checkCommercialCapacity(' +
+      JSON.stringify(process.cwd()) +
+      ')));';
+    const result = JSON.parse(
+      execFileSync(process.execPath, ['--input-type=module', '-e', script], {
+        env,
+        timeout: 5000,
+        stdio: ['ignore', 'pipe', 'pipe'],
+      }).toString(),
+    );
+    if (
+      result.sourcePhase !== '492' ||
+      result.installationAuthorized !== false ||
+      result.financialExecutionAuthorized !== false ||
+      !capture(guard).equals(captured)
+    )
+      throw Error('Exact current capacity successor required');
+  };
+  verify();
+  const historical = historicalCapacityFrame();
+  verify();
+  return new Map(
+    [...historical].map(([path, row]) => [
+      path,
+      { bytes: Buffer.from(row.bytes), mode: row.mode },
+    ]),
+  );
+}
+
 let privateRoot = '';
 let original: ReturnType<typeof frame>;
 const run = () =>
