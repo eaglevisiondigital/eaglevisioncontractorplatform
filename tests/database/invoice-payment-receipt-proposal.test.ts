@@ -46,10 +46,10 @@ const roles = merchants.map(
   () => 'capacity_pay_' + randomUUID().replaceAll('-', ''),
 );
 const fixtureRoleNames = [
-  'propel_capacity_test_owner',
-  'propel_capacity_test_draft',
-  'propel_capacity_test_issuer',
-  'propel_capacity_test_guard',
+  'propel_invoice_payment_fixture_owner',
+  'propel_invoice_payment_fixture_draft',
+  'propel_invoice_payment_fixture_issuer',
+  'propel_invoice_payment_fixture_guard',
   'propel_invoice_payment_test_owner',
 ];
 function fixtureRoles(sql: string) {

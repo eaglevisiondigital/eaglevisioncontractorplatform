@@ -1,3 +1,4 @@
+import { rowsOnlyGateway as rows } from '../fixtures/rows-only-gateway';
 import { randomUUID } from 'node:crypto';
 import { afterAll, beforeAll, beforeEach, expect, it } from 'vitest';
 import { createTestDatabase, type TestDatabase } from './engine';
@@ -57,7 +58,7 @@ async function reader(
   role = cases[index].reader,
 ) {
   await c.exec('set session authorization ' + role);
-  return new ProposedReconciliationReceiptReader(c, merchant(index), {
+  return new ProposedReconciliationReceiptReader(rows(c), merchant(index), {
     testOnly: true,
   });
 }
@@ -335,7 +336,7 @@ it.each(['anon', 'authenticated', 'service_role'])(
 );
 it('a configured writer without the separately granted read function cannot use the new reader', async () => {
   await writer();
-  const read = new ProposedReconciliationReceiptReader(db, merchant(), {
+  const read = new ProposedReconciliationReceiptReader(rows(db), merchant(), {
     testOnly: true,
   });
   expect((await read.read(original)).outcome).toBe('UNKNOWN');
@@ -343,7 +344,7 @@ it('a configured writer without the separately granted read function cannot use 
 it('another tenant reader cannot recover a foreign receipt even with all original identifiers', async () => {
   const read = await reader(1);
   expect((await read.read(original)).outcome).toBe('UNKNOWN');
-  const forged = new ProposedReconciliationReceiptReader(db, merchant(), {
+  const forged = new ProposedReconciliationReceiptReader(rows(db), merchant(), {
     testOnly: true,
   });
   expect((await forged.read(original)).outcome).toBe('UNKNOWN');
@@ -370,7 +371,7 @@ it('a revoked current workload cannot use an old receipt or JWT identity substit
   await db.query("select set_config('request.jwt.claims',$1,false)", [
     JSON.stringify({ sub: randomUUID(), role: 'service_role', aal: 'aal2' }),
   ]);
-  const read = new ProposedReconciliationReceiptReader(db, merchant(), {
+  const read = new ProposedReconciliationReceiptReader(rows(db), merchant(), {
     testOnly: true,
   });
   expect((await read.read(original)).outcome).toBe('UNKNOWN');
