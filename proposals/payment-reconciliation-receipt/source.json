@@ -1,0 +1,28 @@
+{
+  "classification": "UNAPPLIED_EXACT_RECONCILIATION_RECEIPT",
+  "parent": "1940dc3bf82142a50ba8d2ccd3b39890f36d0dd1",
+  "files": [
+    {
+      "path": "proposals/commercial-payment-capacity/qualification.ts",
+      "sha256": "ff691a52f531327da290e66cb85180c480fff95d5027c2e6e66a163bf08ecd5c",
+      "mode": "100644"
+    },
+    {
+      "path": "proposals/payment-reconciliation-receipt/receipt.proposed.sql",
+      "sha256": "07311997e4759b26e048ef55ee397acfc8e9fa19410133c4b627c348ea4e0ebe",
+      "mode": "100644"
+    },
+    {
+      "path": "proposals/payment-reconciliation-receipt/reader.ts",
+      "sha256": "78a451dee2e9b47d7e2fc171c9d369c89a2e4bd51dbecaf611089c2c3d5b0854",
+      "mode": "100644"
+    }
+  ],
+  "canonicalChanges": [],
+  "reportTable": "private.sandbox_gateway_reconciliations",
+  "installationAuthorized": false,
+  "financialExecutionAuthorized": false,
+  "currentLedgerMatch": "NOT_ASSERTED",
+  "holdRelease": false,
+  "settlement": "UNVERIFIED"
+}
