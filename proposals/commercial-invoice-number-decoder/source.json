@@ -1,0 +1,30 @@
+{
+  "classification": "UNAPPLIED_ONE_FILE_NUMBER_DECODER_SOURCE_AUTHOR",
+  "parent": "e9782d5f9e2422609a993dfe8f836053793620cf",
+  "parentTree": "16349f6d1a1af41079de248b44496c9519844a30",
+  "parentEntries": 2455,
+  "approvedBusinessFormat": "INV-YYYY-NNNNNN per contractor",
+  "target": "proposals/commercial-invoice-issuance/presentation.ts",
+  "mode": "100644",
+  "beforeSha256": "a181a67faf3f8b3264b5cd00478b38c5a3c9d67c2b7f2463d6d81c01bf477981",
+  "afterSha256": "a63a605af3b1e03a0169828340f4938a50031a6f131404054da60e2db610ea6b",
+  "patchSha256": "41327ce1d4f8fed550a9ecc7f2a9cbd211be89f482b8d61c0f2a2b64ff133b8a",
+  "anchorFields": ["issuedNumber", "issuanceReceiptId"],
+  "anchorAuthority": "Trusted current original-header/issuance-receipt resolution only; never Auth or public display lookup",
+  "sourceAuthorCommit": null,
+  "connectionSourceAdmission": "HELD_ORIGINAL_PIN_MUST_DENY_PROPOSAL_UNTIL_SEPARATELY_APPROVED_AUTHOR_AND_ADMISSION",
+  "launchIntegrationAuthorized": false,
+  "installationAuthorized": false,
+  "operationalNumberingAuthorized": false,
+  "customerCompatibility": {
+    "parent": "56b10d2d9c8b86815054d4d5f931f33990ed88eb",
+    "tree": "ccfbe5eba58e001e4ab6666c7d1d8b440ffd2760",
+    "target": "src/components/invoices/commercial-customer-read.ts",
+    "mode": "100644",
+    "beforeSha256": "a378fc6746e8fcf0aca4245742ed2fc27a580697cffbd4ce87c280293b9b9844",
+    "afterSha256": "e546c945bf3f4993a5a5e4a62703e8e8f6b0b7473cc31a237be2050c863ee8ef",
+    "patchSha256": "b2a78a766d58e8991a6dce4b8a44149f975ae63f6ca0622c10bb7fe4cd6a136a",
+    "sourceAuthor": null,
+    "authority": "Content-only decoder; server commercial grants/source/receipt authorization remains HELD"
+  }
+}
