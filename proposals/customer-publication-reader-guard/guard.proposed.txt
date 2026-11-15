@@ -1,0 +1,168 @@
+import { createHash } from 'node:crypto';
+import { lstatSync, readFileSync, realpathSync } from 'node:fs';
+import { resolve, dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+// PROPOSED after-source image only: both exact A2 SQL sources are mandatory.
+// Their presence proves source fidelity, never installed functions or grants.
+const pins = Object.freeze({
+  'server/invoices/commercial-payment-receipt.proposed.sql':
+    '1c1ec82ca52560de86ec19ff9a865babfc3967ff466b425692e733fd240fdef5',
+  'server/invoices/customer-payment-publication.proposed.sql':
+    'bff7f5f16fa620b4f7e684228d1ff41af696492027a782ea4698fe49d1fbb71d',
+  'proposals/invoice-payment-receipt/receipt.proposed.sql':
+    '1c1ec82ca52560de86ec19ff9a865babfc3967ff466b425692e733fd240fdef5',
+  'proposals/customer-publication-admission/reader-grants.sql.in':
+    '712570b6b7401d3e8dab0a1df9c26f40be3125acea294dd40d8c2155ebcc3987',
+  'proposals/customer-publication-admission/source.json':
+    '986fbdea1aac4b97c223c4440aec4ff2489387a27c9fbbe0170b0e03b7b1f167',
+
+  'package-lock.json':
+    '038f80c378263f8c961930661d03801e55d882ad54c5929095234aea3306ce6d',
+  'package.json':
+    '147c300e2aa125ee697f8b70a6a0e3aaeb1a2c027b5606979ac1e07744d362f9',
+  'playwright.customer-payment-publication.config.ts':
+    '23ca89ade838b2c3543ced5c7ccaabc2fddc4709eee328cd57cce81c33b465eb',
+  'proposals/customer-payment-publication/CustomerPaymentReceipt.tsx':
+    'ebe7023f06156e663501fb6ef212b6727c8326b49f17e6e62764520d3537807d',
+  'proposals/customer-payment-publication/README.md':
+    '8b804c86f6c918782acf3c463be2c3c6db09d6cc5c64522ae7dc1bfb7c2ce8bb',
+  'proposals/customer-payment-publication/contract.ts':
+    '1ca2b3f0c49e36e3e161fb37ca3978675a23f7b26236eed1a5b07ce1de713f34',
+  'proposals/customer-payment-publication/publication.proposed.sql':
+    'bff7f5f16fa620b4f7e684228d1ff41af696492027a782ea4698fe49d1fbb71d',
+  'proposals/customer-payment-publication/qualification.ts':
+    '34b79320e84cee936584db0721485fe75ff16e11bbce7621787d7f1400e75030',
+  'proposals/customer-payment-publication/reader.ts':
+    '7bc1cafcab20b5d0cf8a0bec1b3e2d0367b8265c6ba77e43c76736a7db691796',
+  'proposals/customer-payment-publication/source.json':
+    '1a3e40dd79c17b897c416a60cdfccf225fd2116a5f52a294dc1d74c557300966',
+  'proposals/customer-publication-admission/read-only.ts':
+    'a21a74448d791894a54974db4228c7f5f87d69b8114b0f367e1ddef7e760b59f',
+  'server/customer/broker-auth.ts':
+    '709018249d889504b860e4cf0f4caa5cbdd1c2b04f58c53226f4499c68fd46d6',
+  'server/invoices/commercial-caller-connection.ts':
+    '3d892a8ae7757a6f480fde4638f17f4b642436ba728446dfd84811590be0aeed',
+  'server/invoices/commercial-draft-client.ts':
+    '94aa164e60c780cb53f8658b16c57bc9c17da5d9469c73f9d73cab627dcea694',
+  'server/payments/control-store.ts':
+    '2dc82d0ff2548051de6df1461ddf783355e602da914a099bf14f0eba29f3ac7c',
+  'server/payments/postgres-store.ts':
+    '9b2b9148db4ca5389aa8e9ef4bd5d5c6ccd700a2ed85a7b5dc0f58f8d94d0eef',
+  'server/payments/reconciliation.ts':
+    '94f339aa679c0b7fa0880fef035b921608b0717614c3705620f06eed07f9c0b0',
+  'server/payments/refunds.ts':
+    '267912113acc418387beb86826b06c2689bac9f9a00589a0cd5fc6df1aa4158e',
+  'server/payments/response-json.ts':
+    '3d361bd32f9cc2ff82b9d4c1ad29ca0218199c11bc903a59ec5a644dd139c970',
+  'server/payments/sandbox.ts':
+    '0c6bc1aa8e78ed7f6d86128e79055630cb41ec5281ed32a0bf7bbdc616a8ccc6',
+  'server/providers/control.ts':
+    '5f979931b85b67cb7b05b9b6ebf529c68538e52674f6eeeb6b7811acc5822293',
+  'server/providers/safety.ts':
+    'a8865035638e0cd19d5c1ea4b43dc9ed04012dd34cce9cc5084d7f35e9414c4d',
+  'src/domain/customer/review.ts':
+    'e387500a60595788050d7b93b92ea23c5254c5954507edc3397eb7fa2b9bf858',
+  'src/domain/estimating/calculation.ts':
+    '30480694126b1cc1cd17dc448a91fb944ef227f9d49160ca12d15777d1bf6a70',
+  'src/domain/estimating/customer-preview.ts':
+    '367628fcc9a45fc0303503215357403942637b902d36a9f1a84066228a93d411',
+  'src/domain/estimating/types.ts':
+    '5e878de9c0a9cbf5f68055054b336db9f68ba4a466ec66ea9b8c66b2952d14d5',
+  'src/domain/intake.ts':
+    '8911284f4a8618094476f72e6a829863ae8d50bd268643ad068d0574fc41ef1d',
+  'src/domain/property/inspections.ts':
+    '7691ced4cc6b78604e782369cfedc5e5e29170109c12485000894d4ffbe8c11f',
+  'src/domain/property/report-page.ts':
+    '622d68ba1c6a3010641fc1b97ee3b49b6cf9bbc587a94809e2c0f298163d3771',
+  'src/lib/customer-access.ts':
+    '7a98b75cd806db76d9489b1abecc0a6d7cc89e70ad29d3ac00ae7f3125b95fb5',
+  'src/lib/customer-connected.ts':
+    '7f7edf3efc5f053d6f644d6baae2ec8db2eecd9d3076251071cdd9053e575474',
+  'src/lib/customer-decision.ts':
+    'a0fed920cfcfddcb4b6a32df6ef76dcce7cfc6c40cf1e702b422358e3053446e',
+  'src/lib/customer-requests.ts':
+    '4da5caa8e48ef723a5068338768b62fd175519a8d91a5c187ea04873673ebe9a',
+  'src/lib/database.types.ts':
+    '430fe4085663ee1d83d8431fa6c84253ab6f6d1d2ee643efe4a4fa1e8b519a5d',
+  'tests/browser/customer-payment-publication.spec.ts':
+    '2f21f9ae382db3c3b5dfb577fe0c5f9ab2cfc61c35119b07dc4a321805cc2c6f',
+  'tests/browser/fixtures/customer-payment-publication.tsx':
+    '96218906136c39e41cf7a5288670d0fa96671fc513f21153f7af7431ae37be5a',
+  'tests/customer-payment-publication-source.test.ts':
+    'd6affb93cceaa31ae6c7f87ccd415b9994ab28e95a8a4f63438c39e7167a1d13',
+  'tests/customer-payment-publication.test.ts':
+    '2573489746fc485aa6749755fb467c702d5feff47ef2a06b9796cc04e07c680f',
+  'tests/database/customer-payment-publication-proposal.test.ts':
+    'd2a0eba327e6f33372f6539dd705fbed6bc40775c2c904ea1aaaeae105870f4a',
+  'tests/database/engine.ts':
+    '50806fe72a97a401d636f497ee854fb3c2246bcec498257b00c6229ca374d6c2',
+  'tests/fixtures/customer-payment-publication.ts':
+    '986f0cb158fef0fa94642fc84b1f15171e01018490f5cf3e16d6b76cb6700ae3',
+});
+// Source loading and installed dependencies remain an independent host gate.
+const sourceRoot = realpathSync(process.cwd());
+const sourceModule = fileURLToPath(import.meta.url);
+if (
+  sourceModule !==
+  join(sourceRoot, 'proposals/customer-publication-admission/source.ts')
+)
+  throw Error('Exact publication admission source required');
+const executingBytes = readFileSync(sourceModule);
+const rootIdentity = lstatSync(sourceRoot);
+function currentModule() {
+  const info = lstatSync(sourceRoot);
+  if (
+    resolve(process.cwd()) !== sourceRoot ||
+    realpathSync(sourceRoot) !== sourceRoot ||
+    !info.isDirectory() ||
+    info.isSymbolicLink() ||
+    info.dev !== rootIdentity.dev ||
+    info.ino !== rootIdentity.ino
+  )
+    throw Error('Exact publication admission source required');
+  let ancestor = sourceModule;
+  while (true) {
+    if (lstatSync(ancestor).isSymbolicLink())
+      throw Error('Exact publication admission source required');
+    const parent = dirname(ancestor);
+    if (parent === ancestor) break;
+    ancestor = parent;
+  }
+  const own = lstatSync(sourceModule);
+  if (
+    !own.isFile() ||
+    (own.mode & 0o777) !== 0o644 ||
+    !executingBytes.equals(readFileSync(sourceModule))
+  )
+    throw Error('Exact publication admission source required');
+}
+export function assertPublicationSources({
+  read = readFileSync,
+  stat = lstatSync,
+}: { read?: typeof readFileSync; stat?: typeof lstatSync } = {}) {
+  const checked = () => {
+    currentModule();
+    for (const [path, hash] of Object.entries(pins)) {
+      const parts = path.split('/');
+      for (let i = 1; i <= parts.length; i++) {
+        const s = stat(parts.slice(0, i).join('/'));
+        if (
+          s.isSymbolicLink() ||
+          (i < parts.length
+            ? !s.isDirectory()
+            : !s.isFile() || (s.mode & 0o777) !== 0o644)
+        )
+          throw Error('Exact publication admission source required');
+      }
+      if (
+        createHash('sha256')
+          .update(Buffer.from(read(path)))
+          .digest('hex') !== hash
+      )
+        throw Error('Exact publication admission source required');
+    }
+  };
+  checked();
+  checked();
+  currentModule();
+}

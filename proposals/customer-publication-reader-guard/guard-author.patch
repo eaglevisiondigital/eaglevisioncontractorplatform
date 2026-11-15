@@ -1,0 +1,82 @@
+diff --git a/proposals/customer-publication-admission/source.ts b/proposals/customer-publication-admission/source.ts
+--- a/proposals/customer-publication-admission/source.ts
++++ b/proposals/customer-publication-admission/source.ts
+@@ -1,6 +1,21 @@
+ import { createHash } from 'node:crypto';
+-import { lstatSync, readFileSync } from 'node:fs';
++import { lstatSync, readFileSync, realpathSync } from 'node:fs';
++import { resolve, dirname, join } from 'node:path';
++import { fileURLToPath } from 'node:url';
++// PROPOSED after-source image only: both exact A2 SQL sources are mandatory.
++// Their presence proves source fidelity, never installed functions or grants.
+ const pins = Object.freeze({
++  'server/invoices/commercial-payment-receipt.proposed.sql':
++    '1c1ec82ca52560de86ec19ff9a865babfc3967ff466b425692e733fd240fdef5',
++  'server/invoices/customer-payment-publication.proposed.sql':
++    'bff7f5f16fa620b4f7e684228d1ff41af696492027a782ea4698fe49d1fbb71d',
++  'proposals/invoice-payment-receipt/receipt.proposed.sql':
++    '1c1ec82ca52560de86ec19ff9a865babfc3967ff466b425692e733fd240fdef5',
++  'proposals/customer-publication-admission/reader-grants.sql.in':
++    '712570b6b7401d3e8dab0a1df9c26f40be3125acea294dd40d8c2155ebcc3987',
++  'proposals/customer-publication-admission/source.json':
++    '986fbdea1aac4b97c223c4440aec4ff2489387a27c9fbbe0170b0e03b7b1f167',
++
+   'package-lock.json':
+     '038f80c378263f8c961930661d03801e55d882ad54c5929095234aea3306ce6d',
+   'package.json':
+@@ -84,11 +99,49 @@
+   'tests/fixtures/customer-payment-publication.ts':
+     '986f0cb158fef0fa94642fc84b1f15171e01018490f5cf3e16d6b76cb6700ae3',
+ });
++// Source loading and installed dependencies remain an independent host gate.
++const sourceRoot = realpathSync(process.cwd());
++const sourceModule = fileURLToPath(import.meta.url);
++if (
++  sourceModule !==
++  join(sourceRoot, 'proposals/customer-publication-admission/source.ts')
++)
++  throw Error('Exact publication admission source required');
++const executingBytes = readFileSync(sourceModule);
++const rootIdentity = lstatSync(sourceRoot);
++function currentModule() {
++  const info = lstatSync(sourceRoot);
++  if (
++    resolve(process.cwd()) !== sourceRoot ||
++    realpathSync(sourceRoot) !== sourceRoot ||
++    !info.isDirectory() ||
++    info.isSymbolicLink() ||
++    info.dev !== rootIdentity.dev ||
++    info.ino !== rootIdentity.ino
++  )
++    throw Error('Exact publication admission source required');
++  let ancestor = sourceModule;
++  while (true) {
++    if (lstatSync(ancestor).isSymbolicLink())
++      throw Error('Exact publication admission source required');
++    const parent = dirname(ancestor);
++    if (parent === ancestor) break;
++    ancestor = parent;
++  }
++  const own = lstatSync(sourceModule);
++  if (
++    !own.isFile() ||
++    (own.mode & 0o777) !== 0o644 ||
++    !executingBytes.equals(readFileSync(sourceModule))
++  )
++    throw Error('Exact publication admission source required');
++}
+ export function assertPublicationSources({
+   read = readFileSync,
+   stat = lstatSync,
+ }: { read?: typeof readFileSync; stat?: typeof lstatSync } = {}) {
+   const checked = () => {
++    currentModule();
+     for (const [path, hash] of Object.entries(pins)) {
+       const parts = path.split('/');
+       for (let i = 1; i <= parts.length; i++) {
+@@ -111,4 +164,5 @@
+   };
+   checked();
+   checked();
++  currentModule();
+ }
