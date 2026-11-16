@@ -1,3 +1,4 @@
+import { WorkspaceNavigationIcon } from './WorkspaceNavigationIcon';
 import { modules } from '../domain/platform';
 import { BackOfficeText } from './property/back-office-copy';
 
@@ -5,7 +6,7 @@ import { BackOfficeText } from './property/back-office-copy';
 export function WorkspaceNavigation({
   platform,
   sample,
-  section,
+  section: selectedSection,
   onSection,
 }: {
   platform: boolean;
@@ -13,6 +14,10 @@ export function WorkspaceNavigation({
   section: string;
   onSection(name: string): void;
 }) {
+  const section =
+    platform && selectedSection === 'Overview'
+      ? 'Organizations'
+      : selectedSection;
   return (
     <nav aria-label="Workspace">
       {(platform
@@ -35,9 +40,7 @@ export function WorkspaceNavigation({
           }
           onClick={() => onSection(name)}
         >
-          <span aria-hidden="true">
-            {['◈', '▦', '↗', '≡', '▤', '▧', '○', '▣', '⚙'][i]}
-          </span>
+          <WorkspaceNavigationIcon name={name} />
           <BackOfficeText text={name} />
           {!platform &&
             (modules.find((m) => m.name === name)?.phase ?? 1) > 1 && (

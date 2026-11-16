@@ -1,3 +1,25 @@
+## Isolated navigation parity correction — development only
+
+Exact launch #500 remains the reference parent. A separate optional UI candidate
+replaces the nine-entry positional icon list with reusable icons keyed to existing
+destinations, so later visible modules retain an icon. The control plane's initial
+Organizations page now exposes the same current-page state to screen readers as its
+existing visual highlight. Labels, order, visibility, callbacks, App routes, all five
+locked CSS/artwork files and thirteen design bindings remain unchanged.
+
+Local strict types, scoped lint, build and all56 original Cycle13 design-evidence
+cases PASS. Independent six-case desktop/tablet/mobile navigation checks PASS with
+nav-scoped accessibility, keyboard/current-page semantics and no external requests.
+Two static-render unknown-name fallback controls PASS. These checks cover existing
+navigation, not all63 reference states or genuine Auth/hosted acceptance.
+
+The 63 candidate owner-reference images and missing accompanying specification are
+being traced privately; this small correction does not claim complete visual parity.
+No new page, record, chart figure, Auth grant, connected capability or payment action
+is enabled. Saul 2 Paul remains first; Cunningham requires separate accepted bindings.
+All Foundation, D1–D3, A01–A12, Auth/custody/recovery/SQL/NMI and operational approvals
+remain independent. Release 1.0 NO-GO.
+
 ## C17 exact source author approved; separate checker proposal remains unapplied
 
 Owner approved only original0e309 test correction plusd059 note at exact406.
