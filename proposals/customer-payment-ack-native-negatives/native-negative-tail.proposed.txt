@@ -1,0 +1,103 @@
+// Additive native coverage only: append after exact505's unchanged eight cases.
+// The original test hooks, SQL, role ownership and timeout budgets are retained.
+test.each(['pending', 'unknown', 'declined'] as const)(
+  'additional capture %s original ACK stays private, UNKNOWN and read-only',
+  async (status) => {
+    // A fresh original attempt is created once by the existing fixture. Never
+    // rewrite a succeeded row or replay a previously attempted command.
+    if (status === 'pending') await reserve();
+    else await finish(status);
+    const f = await payment();
+    const original: OriginalInvoicePayment = {
+      organizationId: f.c.org,
+      merchantConfigId: merchantId,
+      provider: 'nmi',
+      mode: 'sandbox',
+      invoiceId: draft.invoiceId,
+      customerId: f.c.customer,
+      sourceVersionId: f.c.version,
+      sourceHash: draft.sourceHash,
+      revision: draft.revision,
+      issueCommandId: command,
+      attemptKey: key,
+      authorizationId,
+      requestDigest: digest,
+      kind: 'capture',
+      captureKey: null,
+    };
+    const receiptQueries: string[] = [];
+    const receiptConnection = {
+      async query<T extends Record<string, unknown>>(
+        sql: string,
+        args?: unknown[],
+      ) {
+        receiptQueries.push(sql);
+        return { rows: (await receiptDb.query<T>(sql, args)).rows };
+      },
+    };
+    const run = () =>
+      originalCustomerPaymentAck(
+        f.auth,
+        f.bearer,
+        f.port,
+        f.connection,
+        receiptConnection,
+        f.input,
+        original,
+        { enabled: true, mode: 'disposable-proposal' },
+      )(f.viewer, new AbortController().signal);
+    const before = await unchangedState();
+    const first = await run();
+    expect(first.outcome).toBe('ORIGINAL_ACK_OBSERVED');
+    expect(first.receipt).toMatchObject({
+      invoiceId: draft.invoiceId,
+      issuanceReceiptId: command,
+      kind: 'capture',
+      attemptKey: key,
+      captureKey: null,
+      status,
+      amountMinor: amount,
+      currency: 'USD',
+    });
+    expect(Object.keys(first.receipt!).sort()).toEqual(
+      [
+        'invoiceId',
+        'issuanceReceiptId',
+        'kind',
+        'attemptKey',
+        'captureKey',
+        'status',
+        'amountMinor',
+        'currency',
+        'attemptedAt',
+      ].sort(),
+    );
+    expect(first).toMatchObject({
+      financialEffect: false,
+      holdRelease: false,
+      customerPublication: 'BLOCKED',
+      delivery: 'DISABLED',
+      link: 'DISABLED',
+      payment: 'UNKNOWN',
+      balanceMinor: null,
+      settlement: 'UNVERIFIED',
+      invoiceQuarantine: 'NOT_CLEARED',
+    });
+    expect(JSON.stringify(first)).not.toContain(digest);
+    expect(JSON.stringify(first)).not.toContain(draft.sourceHash);
+    expect(JSON.stringify(first)).not.toContain(authorizationId);
+    expect(JSON.stringify(first)).not.toContain(merchantId);
+    expect(await unchangedState()).toEqual(before);
+    // Re-observation returns the same original row; it is not another command.
+    expect(await run()).toEqual(first);
+    expect(receiptQueries).toHaveLength(4);
+    for (const sql of receiptQueries)
+      expect(sql).toBe(
+        'select private.commercial_invoice_payment_receipt($1::uuid,$2::uuid,$3::text,$4::uuid,$5::uuid,$6::uuid,$7::text,$8::integer,$9::uuid,$10::uuid,$11::uuid,$12::text,$13::text,$14::uuid) receipt',
+      );
+    expect(await unchangedState()).toEqual(before);
+    await expect(
+      receiptDb.query('select * from private.sandbox_gateway_attempts'),
+    ).rejects.toThrow('permission denied');
+  },
+);
