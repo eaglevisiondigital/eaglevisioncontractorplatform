@@ -1,0 +1,25 @@
+// Append only inside a disposable copy of the original property.test.ts fixture.
+// This is an additional negative control, excluded from the two-file source patch.
+it('native quote fixture proposal: expired quote still denies without side effects', async () => {
+  const current = (
+    await db.query<{ now: string }>('select clock_timestamp()::text as now')
+  ).rows[0].now;
+  const now = Date.parse(current);
+  const payload = quotes();
+  payload.quotes[0].quoted_at = new Date(now - 60000).toISOString();
+  payload.quotes[0].expires_at = new Date(now - 1000).toISOString();
+  await db.exec('savepoint expired_quote_control');
+  try {
+    await expect(
+      command('quote_snapshot', versions[0].version.id, null, payload),
+    ).rejects.toThrow('Quote expiry/currency');
+  } finally {
+    await db.exec(
+      'rollback to savepoint expired_quote_control;release savepoint expired_quote_control',
+    );
+  }
+  await db.exec('reset role');
+  expect(
+    (await db.query('select * from private.supplier_comparisons')).rows,
+  ).toHaveLength(0);
+});

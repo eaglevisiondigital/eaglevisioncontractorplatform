@@ -1,0 +1,62 @@
+{
+  "classification": "FINITE_LOCAL_FIXTURE_AFTERIMAGE_NOT_SOURCE_APPROVAL",
+  "base": "223e235be26c37271cb67e3c1f1803feb54599a6",
+  "patchSHA256": "c9affb3f6dae85e1209811ca36cb482c5e55fb72f8cfef0fee99de1e934c3dae",
+  "originalFailureEvidence": [
+    {
+      "artifact": "parity-cycle5-independent-qa/original511-two-native-diagnosis.json",
+      "sha256": "7c330ae3079e3395a2c43e6baeb7d4f22d64d718b06fae442e44688849ba658e"
+    },
+    {
+      "artifact": "parity-cycle5-independent-qa/original511-two-native.json",
+      "sha256": "043917c2ae3593c0f2391e6f549ac5dca9393df791c574f84d70a50148f05f93"
+    },
+    {
+      "artifact": "parity-cycle5-independent-qa/original511-two-native.log",
+      "sha256": "c8e1ef59d0d560e2e4f866437d5012cac60b84e060ff330155ce52c54e3ae9bd"
+    },
+    {
+      "artifact": "parity-cycle5-independent-qa/original511-two-native-cleanup.json",
+      "sha256": "8827106fe6866cc5074b17acc3380f975d8c6119348c7b0d7fa027cc5a3b4ec3"
+    }
+  ],
+  "originalResult": "2FAIL/111filtered; assertions and budgets unchanged",
+  "afterimageEvidence": [
+    {
+      "artifact": "native-quote-afterimage-inputs.json",
+      "sha256": "6e6da3d8a1f64c658024d99d53944e97cf8830f41ecf43ea6a4483b0282cf991"
+    },
+    {
+      "artifact": "native-quote-afterimage.json",
+      "sha256": "f31ba4552aa11141a1a1e5862dd01d179037a6d95a14ec07a4097712cac0dd0f"
+    },
+    {
+      "artifact": "native-quote-afterimage.log",
+      "sha256": "68327dc954ff2d1010afa8f4fd5fa54499d0fdb41c6fef5d91810ba840ef23bc"
+    },
+    {
+      "artifact": "native-quote-afterimage-cleanup.json",
+      "sha256": "1c6f5053c4835ed9feffc2a1a515a02fb8a11583c7e8dec66695987ab57e1f27"
+    },
+    {
+      "artifact": "native-quote-proposal-unit.json",
+      "sha256": "99c974d60a6de903ee3f48e455379e8de9ea663167c243cb1aafc557ee012e7c"
+    }
+  ],
+  "afterimageResult": "2originalPASS + 1newExpiredDENY_PASS /111filtered",
+  "unitCases": 7,
+  "protectedHistoricalTestsCanonical": "UNCHANGED",
+  "productionSqlCanonical": "UNCHANGED",
+  "p1HistoricalJavaScriptClock": "UNCHANGED",
+  "sourceAuthorApproval": "REQUIRED_NOT_GRANTED",
+  "fullNativeOrFoundation": "NOT_RUN",
+  "genuineAuthRecoverySqlAcceptance": "NOT_GRANTED",
+  "clusterCleanup": {
+    "status": 0,
+    "ownedClusterStopped": true,
+    "ownedDirectoryRemoved": true,
+    "tcpDisabled": true,
+    "operationalExecution": false
+  },
+  "release": "NO_GO"
+}
