@@ -1,7 +1,8 @@
-import { beforeAll, expect, it } from 'vitest';
+import { afterAll, beforeAll, expect, it } from 'vitest';
 import {
   readFileSync,
   realpathSync,
+  lstatSync,
   writeFileSync,
   mkdtempSync,
   mkdirSync,
@@ -13,17 +14,86 @@ import {
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { join, dirname } from 'node:path';
-import { tmpdir } from 'node:os';
+import { devNull, tmpdir } from 'node:os';
 import {
   qualifyOperatingAdmission,
   type SourceQualification,
 } from '../proposals/operating-reader-admission/qualify.mjs';
-const sourceRoot = process.cwd(),
+const checkoutRoot = process.cwd(),
   folder = 'proposals/operating-reader-admission/',
   target = 'proposals/commercial-customer-operating-reader/source.ts';
 let original: SourceQualification;
+let sourceRoot: string;
 beforeAll(async () => {
-  original = await qualifyOperatingAdmission(sourceRoot);
+  // Fixture path discovery only. No Git output confers source acceptance: the
+  // unchanged qualifier reconstructs and requires the literal full #503 tree.
+  const records = execFileSync(
+    'git',
+    [
+      '--no-replace-objects',
+      '-c',
+      'core.fsmonitor=false',
+      'ls-tree',
+      '-rz',
+      '--full-tree',
+      '5030bb834423fc572eb770d077739300477fd1e3',
+    ],
+    {
+      cwd: checkoutRoot,
+      stdio: 'pipe',
+      timeout: 5000,
+      env: {
+        PATH: process.env.PATH,
+        GIT_CONFIG_NOSYSTEM: '1',
+        GIT_CONFIG_SYSTEM: devNull,
+        GIT_CONFIG_GLOBAL: devNull,
+        GIT_CONFIG_COUNT: '0',
+        GIT_NO_LAZY_FETCH: '1',
+        GIT_NO_REPLACE_OBJECTS: '1',
+        GIT_ALLOW_PROTOCOL: '',
+        GIT_TERMINAL_PROMPT: '0',
+        GIT_OPTIONAL_LOCKS: '0',
+      },
+    },
+  )
+    .toString()
+    .split('\0')
+    .filter(Boolean);
+  sourceRoot = realpathSync(
+    mkdtempSync(join(tmpdir(), 'propel503-clean-fixture-')),
+  );
+  try {
+    for (const row of records) {
+      const match = /^(100644|100755) blob [a-f0-9]{40}\t(.+)$/.exec(row);
+      if (!match) throw Error('Exact fixture paths required');
+      const path = match[2];
+      if (
+        path.includes('\\') ||
+        path.split('/').some((s) => !s || s === '.' || s === '..')
+      )
+        throw Error('Exact fixture paths required');
+      let actual = checkoutRoot;
+      for (const part of path.split('/')) {
+        actual = join(actual, part);
+        if (lstatSync(actual).isSymbolicLink())
+          throw Error('No fixture symlink');
+      }
+      const stat = lstatSync(actual);
+      if (!stat.isFile() || ![0o644, 0o755].includes(stat.mode & 0o777))
+        throw Error('Exact fixture mode required');
+      mkdirSync(dirname(join(sourceRoot, path)), { recursive: true });
+      writeFileSync(join(sourceRoot, path), readFileSync(actual), {
+        mode: stat.mode & 0o777,
+      });
+    }
+    original = await qualifyOperatingAdmission(sourceRoot);
+  } catch (error) {
+    rmSync(sourceRoot, { recursive: true, force: true });
+    throw error;
+  }
+});
+afterAll(() => {
+  if (sourceRoot) rmSync(sourceRoot, { recursive: true, force: true });
 });
 async function image(
   action: (root: string) => void | Promise<void>,
@@ -221,3 +291,10 @@ it('fixture-buffer edits cannot rebind a later qualification', async () => {
   ).toBe(true);
   expect(fresh.proposedGuard.equals(original.proposedGuard)).toBe(true);
 });
+
+it('qualifier still denies unrelated generated output inside the admitted image', () =>
+  image((root) => {
+    mkdirSync(join(root, 'artifacts'));
+    writeFileSync(join(root, 'artifacts', 'other-suite.txt'), 'SYNTHETIC');
+    return expect(qualifyOperatingAdmission(root)).rejects.toThrow();
+  }));

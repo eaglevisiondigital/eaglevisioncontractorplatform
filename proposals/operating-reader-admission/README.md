@@ -77,6 +77,30 @@ all controls were then rerun. That initial negative-only result is not counted a
 acceptance. The current-head full Foundation/browser gates remain independently
 unaccepted; no full CI or hosted Auth claim follows from this focused qualification.
 
+## Test-isolation successor
+
+A subsequent bounded reproduction placed unrelated synthetic suite output in the
+shared checkout. The qualifier correctly denied that dirty whole-source image,
+but the new test setup incorrectly relied on that shared directory being clean.
+The correction changes only this new test fixture and this note. It seeds a private
+clean image from fixed #503 path names, copies **current** bytes, modes and
+nonsymlink ancestors, then requires the unchanged qualifier's exact full tree.
+Git output discovers fixture paths only and never grants source acceptance. The
+single bounded `ls-tree` call disables replacements, filesystem monitors, inherited
+Git/config injections, lazy fetching, protocols and prompts. There is no historical
+blob fallback. The real qualifier continues to deny unrelated output inside the
+image it qualifies; it has no generated-file exception.
+
+The corrected suite has **32 controls**, including that explicit denial, and runs
+with deliberate unrelated output in its host checkout. The held guard patch,
+proposed afterimage, SQL, runtime and all earlier 65/23 afterimage evidence are
+unchanged; those suites are not replayed for a test-only correction. Primary and independent final runs both passed **32/32**, zero failures or
+skips, with unrelated checkout output present throughout. Independent report
+SHA256 `f3e19cca53b3d9b481be7b497941bde098e1206d5a79027542c02f29dc29505d`.
+The original 31 case bodies remain byte-identical; only fixture setup/cleanup and
+the new explicit generated-output denial case changed. Persistent owner-local
+reports retain the diagnostic failure and final results. No prior commit or historical failure is rewritten.
+
 ## Genuine nonproduction acceptance remains a separate checkpoint
 
 Reuse the original D1 return and Issue #358; do not create a second form. Before
