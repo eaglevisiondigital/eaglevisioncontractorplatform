@@ -1,0 +1,86 @@
+{
+  "classification": "UNAPPLIED_SOURCE_ONLY_506_INTO_500_INTEGRATION",
+  "base": "fbab4220a5e8fb043c10baa1328bbe6f7001e588",
+  "baseTree": "1adab30c7261d7e03a051ef5827114a86c7bd0f7",
+  "baseFiles": 2468,
+  "author": "ff41ed204ddc3d19d356c3af6dfc1e56db77a457",
+  "authorParent": "5030bb834423fc572eb770d077739300477fd1e3",
+  "authorTree": "d784d50cb0042fbeb6fe23d8b89051d7a026851d",
+  "authorFiles": 2479,
+  "commits": {
+    "fbab4220a5e8fb043c10baa1328bbe6f7001e588": "tree 1adab30c7261d7e03a051ef5827114a86c7bd0f7\nparent d162372c321039f49c1d168bbde8c041b872c182\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794776924 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794776924 -0600\n\nApply approved customer read launch integration [skip netlify]\n",
+    "5030bb834423fc572eb770d077739300477fd1e3": "tree 4ffa570bcbe5e0c38794f8dc7802990580a3a4fd\nparent fbab4220a5e8fb043c10baa1328bbe6f7001e588\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794786105 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794786105 -0600\n\nPrepare restricted customer invoice authorize/read adapter [skip netlify]\n",
+    "ff41ed204ddc3d19d356c3af6dfc1e56db77a457": "tree d784d50cb0042fbeb6fe23d8b89051d7a026851d\nparent 5030bb834423fc572eb770d077739300477fd1e3\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794805421 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794805421 -0600\n\nApply approved reader guard source-author patch [skip netlify]\n"
+  },
+  "patchSHA256": "91e5c286ab610814655497e86cd68b70a3fac7902e90ee028eb1d47c1025f013",
+  "additions": {
+    "proposals/commercial-customer-operating-reader/README.md": {
+      "mode": "100644",
+      "blob": "7985eb83de547fb33e2863c9bc9a7e56ca9d0d26",
+      "sha256": "a3b338f64d0d8ad8b6e5c05fe07a383aa94f25a568d01986e47a6cc795cb6b1a"
+    },
+    "proposals/commercial-customer-operating-reader/binding.ts": {
+      "mode": "100644",
+      "blob": "429ed2a68966e071f14942c2d75e130a6bff3a2e",
+      "sha256": "6a157cccf4569decedc6f8bdeb1fdcd9a501f328234f726b49b14dbdbb137138"
+    },
+    "proposals/commercial-customer-operating-reader/catalog.ts": {
+      "mode": "100644",
+      "blob": "eb10055323f6a561e0f13887991b6a9f7f41af36",
+      "sha256": "036dd76edb1ce22f6b7f5becbd299b2528019d09837dba94a3a1207a10bca657"
+    },
+    "proposals/commercial-customer-operating-reader/read.proposed.sql.in": {
+      "mode": "100644",
+      "blob": "827be3f470a7f95db805263540cc31e91b5be7c9",
+      "sha256": "303741983f5f72ee0fefabbf71d7dd57b0e5bf1b0f265ab389d5fbeb318afe93"
+    },
+    "proposals/commercial-customer-operating-reader/reader.ts": {
+      "mode": "100644",
+      "blob": "06eb0a8462401fc2f9f84b2a41888a8bd042c7aa",
+      "sha256": "fb74f91f603654fa2034592212f8ad9ad87ef7bb288b609f6adb325c1ca8417e"
+    },
+    "proposals/commercial-customer-operating-reader/runtime-grants.sql.in": {
+      "mode": "100644",
+      "blob": "c8cd9ffb437ca91d5ff07e83d02a33eaf0a084ea",
+      "sha256": "abbca46667c9d9b44839395428f15d9d336e244fe0bd7a5c42217cf8aeb850c5"
+    },
+    "proposals/commercial-customer-operating-reader/source.json": {
+      "mode": "100644",
+      "blob": "6168b19e9ddef52fca144b03b1198d5de9dfea3f",
+      "sha256": "6371374d6068f52d83771c054fb378e707a02dc63415b8da0985a19e1903bea1"
+    },
+    "proposals/commercial-customer-operating-reader/source.ts": {
+      "mode": "100644",
+      "blob": "b6576c38c7f8b334791d696d04ef8d37d854dafe",
+      "sha256": "dd44ddb140d1f38cafdf033e3dca4f290191dcb52468525e3f599f88b3d7f071"
+    },
+    "tests/commercial-customer-operating-reader.test.ts": {
+      "mode": "100644",
+      "blob": "cdf98fc3daea6a2eb95b2fb84590bf3161297318",
+      "sha256": "1dba84815e20dc2cd3f818bceb17ac5d70d1887dd469bd5b3221aa303985acc8"
+    },
+    "tests/database/commercial-customer-operating-reader.test.ts": {
+      "mode": "100644",
+      "blob": "31dd8f83c39e117b4b106f00284d628e16837318",
+      "sha256": "814e6c658e666501d3c223ef2dc1f9b909810f10187eaa2824b975ca04116afa"
+    },
+    "tests/fixtures/operating-customer-reader.ts": {
+      "mode": "100644",
+      "blob": "9853fcf1561ac119fa0617e8903f2b4de3724c68",
+      "sha256": "cb4f5dcb5a270278dd303f34a717652fa6875213537f627fe34c35e7d7f7ae5a"
+    }
+  },
+  "operationalReady": false,
+  "installationAuthorized": false,
+  "launchIntegrationAuthorized": false,
+  "preservedRuntimePins": 44,
+  "qualificationOnlyConnectionCharacterization": {
+    "originalNativePrefixSHA256": "814e6c658e666501d3c223ef2dc1f9b909810f10187eaa2824b975ca04116afa",
+    "tailSHA256": "e495efc7be8ebb59a2bc0d834bcc6fae57e5ab7304c37f537b8dd7261c17efc5",
+    "extendedNativeSHA256": "0f41d82c81835c34b032821d5c68d4425ff6544d58befba739af982360f17c4e",
+    "selection": "connection characterization:",
+    "original23CasesNotReplayed": true,
+    "physicalAliasFenceAccepted": false,
+    "physicalCancelDiscardAccepted": false
+  }
+}
