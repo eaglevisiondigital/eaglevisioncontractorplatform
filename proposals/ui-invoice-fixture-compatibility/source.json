@@ -1,0 +1,217 @@
+{
+  "classification": "UNAPPLIED_FINITE_UI_HISTORICAL_INVOICE_TEST_FIXTURE_ONLY",
+  "base": "8f9cab9a6b42c057a12f1923bf35a514abc068b1",
+  "baseTree": "de51fe0a44609d1384b3d5462664fff45f668db0",
+  "baseFiles": 2470,
+  "target": "tests/invoice-guard-admission-proposal.test.ts",
+  "mode": "100644",
+  "beforeSha256": "026e5c72d279dc85a57e51c18618bcf8bcb8b812db1482cca251536e793d0568",
+  "afterSha256": "86f22fdc1ad03dc1a2d4ea11657e85dd57a676d8e8c57463acd4bf1fb8395c3d",
+  "patch": "fixture.patch",
+  "patchSha256": "d6fb6b3288a731d8c41719de614cd218a7a36e538cd713b5340f2ac85c8a6b78",
+  "wrapperSha256": "20235a79e0199383ba931733d7897fd769a4734e1dedd518fedd0510db7fd92c",
+  "manifestSha256": "7e13f4a3229854ae940bb5c1f153fed109e2f3cff2a14ffbc24dd70222faae6c",
+  "originalTestBodyTailSha256": "51ad3788d5b7a8e622b654997122f96c10554b6375d26b6c5ef9245a6442247a",
+  "originalCaseCount": 39,
+  "caseTimeoutMs": 30000,
+  "hookTimeoutMs": 30000,
+  "canonicalQualifierSha256": "c6e62953cbb1e58c8ea1c636ef8f1929cdb46cbf2655fbc2e6015c29f09b5f94",
+  "canonicalQualifierUnchanged": true,
+  "canonicalHistoricalParent": "5f0f17dc9766411b260d5b53fd2db5a925adc80f",
+  "canonicalHistoricalTree": "868059f16ec4431ee8c8381ddf63fb5ffb1ed9bd",
+  "canonicalHistoricalEntries": 2421,
+  "diagnosis": {
+    "originalExact510": "one failed setup suite;39 skipped;4.98s;unchanged assertions and budgets",
+    "failure": "inspect line152 rejects ordinary UI/docs source identities",
+    "firstPath": "CURRENT_BUILD_STATE.md",
+    "expectedBlob": "883d70970636d2128270949992ea31c21b4a6ba5",
+    "actual510Blob": "99c448d688bc6c911d24f4a72788a99abe941a69",
+    "baseline500UnexpectedRows": 0,
+    "protectedSourceChange": false,
+    "retainedDiagnosticSha256": "b2a4962c22e2ea8494bdf4eb193ff0a5d6f70bf0dd76a46297e6d13ccbe09bde"
+  },
+  "finiteContexts": {
+    "510": {
+      "commit": "8f9cab9a6b42c057a12f1923bf35a514abc068b1",
+      "tree": "de51fe0a44609d1384b3d5462664fff45f668db0",
+      "files": 2470,
+      "changedPaths": []
+    },
+    "511": {
+      "commit": "223e235be26c37271cb67e3c1f1803feb54599a6",
+      "tree": "3ca82b10af4bcfc51071dc5e08170abca39e306b",
+      "files": 2471,
+      "changedPaths": [
+        "CURRENT_BUILD_STATE.md",
+        "DECISIONS.md",
+        "src/components/WorkspaceNavigationIcon.tsx",
+        "tests/browser/workspace-navigation-metrics.spec.ts"
+      ]
+    },
+    "512": {
+      "commit": "d178e4c07b426dd2de4dff6f81a1172b512f4358",
+      "tree": "6f39f9bc49535e78909759b3ac8a845f11a4af70",
+      "files": 2474,
+      "changedPaths": [
+        "playwright.forms-accessibility.config.ts",
+        "preview-form-accessibility-test.html",
+        "src/components/forms.tsx",
+        "tests/browser/fixtures/form-accessibility.tsx",
+        "tests/browser/forms-accessibility.pw.ts"
+      ]
+    },
+    "513": {
+      "commit": "c1684b80fc68e44e8f63398f0d32f1cde219ce27",
+      "tree": "c2dbd77c9aad805842eeab8d81fffe80549fff40",
+      "files": 2475,
+      "changedPaths": [
+        "docs/PROPEL_DASHBOARD_PARITY_INCREMENT.md",
+        "src/components/CompanyOperations.tsx",
+        "tests/browser/fixtures/propel-dashboard-parity-harness.tsx",
+        "tests/browser/propel-dashboard-parity.config.ts",
+        "tests/browser/propel-dashboard-parity.spec.ts",
+        "tests/propel-dashboard-parity-source.test.ts"
+      ]
+    },
+    "composition": {
+      "commit": null,
+      "tree": "54362e358d135a3a6772119e7e22593db4f0f586",
+      "patchSha256": "856cd97d2537d82c59fdfcba758745a479dc44c0ea8d5d13a7b5d13d49f1c485",
+      "files": 2480,
+      "changedPaths": [
+        "CURRENT_BUILD_STATE.md",
+        "DECISIONS.md",
+        "src/components/WorkspaceNavigationIcon.tsx",
+        "tests/browser/workspace-navigation-metrics.spec.ts",
+        "playwright.forms-accessibility.config.ts",
+        "preview-form-accessibility-test.html",
+        "src/components/forms.tsx",
+        "tests/browser/fixtures/form-accessibility.tsx",
+        "tests/browser/forms-accessibility.pw.ts",
+        "docs/PROPEL_DASHBOARD_PARITY_INCREMENT.md",
+        "src/components/CompanyOperations.tsx",
+        "tests/browser/fixtures/propel-dashboard-parity-harness.tsx",
+        "tests/browser/propel-dashboard-parity.config.ts",
+        "tests/browser/propel-dashboard-parity.spec.ts",
+        "tests/propel-dashboard-parity-source.test.ts"
+      ]
+    }
+  },
+  "historicalFixtureBodies": {
+    "CURRENT_BUILD_STATE.md": {
+      "sha256": "03d96d76df184f40435a98dbd3879d0b7ea46e120f7de3153c958d8e0f83cd2e",
+      "oid": "883d70970636d2128270949992ea31c21b4a6ba5"
+    },
+    "DECISIONS.md": {
+      "sha256": "792a2de07afb4de8b18da75ce4384dc18f09c5388734d60e950de9d059f7890e",
+      "oid": "31ee7d23354df118479909145241e15fb98e200b"
+    },
+    "src/components/CompanyOperations.tsx": {
+      "sha256": "11e7d48eb8eff642c80c5caddb33201d4d051bb8edc8572e24663f7c7c127152",
+      "oid": "3bd47d857159dffc8a6352a93ced9c2665332e0a"
+    },
+    "src/components/WorkspaceNavigation.tsx": {
+      "sha256": "0480877522415873bbc3802fbb2361e12090d3c229df02c927b16e7f3cad970e",
+      "oid": "442f63f117d74b6a9011d2d46824424029524416"
+    },
+    "src/components/forms.tsx": {
+      "sha256": "f081edbdc36dad14c18bf75f25ac6267d1cb03d98124fece0618642193366e6a",
+      "oid": "c7a6b238867919d99359869a4d7d80c072ad90d5"
+    }
+  },
+  "historicalFallbackForUnknownSource": false,
+  "arbitraryUiAllowlist": false,
+  "imports": "Authenticated byte imports; complete current physical frame before/after awaits and helper/check outputs",
+  "primary": {
+    "originalCasesByEndpoint": {
+      "510": {
+        "originalCases": 39,
+        "passed": 39,
+        "failed": 0,
+        "skipped": 0,
+        "reportSha256": "feb51ba3b62b8684b535665668477c1d83c290397fafc9376910f49e66b8657b"
+      },
+      "511": {
+        "originalCases": 39,
+        "passed": 39,
+        "failed": 0,
+        "skipped": 0,
+        "reportSha256": "27e3cf228f31e1bd81f67ea1f739e48cf5d9f4e48454e8ce907f1516482774d2"
+      },
+      "512": {
+        "originalCases": 39,
+        "passed": 39,
+        "failed": 0,
+        "skipped": 0,
+        "reportSha256": "5b72e7131f2c04b57a9d9dbde8657ff3042d6a9fccf462fce7785c9fa0493089"
+      },
+      "513": {
+        "originalCases": 39,
+        "passed": 39,
+        "failed": 0,
+        "skipped": 0,
+        "reportSha256": "ae4695f10dc55e49950e6d05986ab07397e3194a53e707a2b76b9ca146d9f7f5"
+      },
+      "composition": {
+        "originalCases": 39,
+        "passed": 39,
+        "failed": 0,
+        "skipped": 0,
+        "reportSha256": "0ffac5e756c5f2201ac653eeb2cdda6bc851b7083d8d54ba01268c54dccf833a"
+      }
+    },
+    "newControls": {
+      "passed": 25,
+      "failed": 0,
+      "skipped": 0,
+      "sourceSha256": "0709264a2eed9743375a7a8cdd7760234d34e3c907d6a9f7b27ee8e07fc8ef34",
+      "reportSha256": "4d8b9a45d7284dacda6884d16df28c9c5ed958a52a3c7dde214feb027a8f3ba8"
+    }
+  },
+  "independent": {
+    "originalCompositionCases": {
+      "passed": 39,
+      "failed": 0,
+      "skipped": 0,
+      "reportSha256": "982697c769e483f5f13057a4d501eb1b56587ab5bc3b277a993eac6ba5deed4d"
+    },
+    "newControls": {
+      "passed": 25,
+      "failed": 0,
+      "skipped": 0,
+      "reportSha256": "def6c4a2df001ee35b1c045c4b7058d3e67e6c3b1f076eef3b0dea0d99db178a"
+    },
+    "sourceReviewSha256": "952348db7706031e56b303085f5e70384990012ff1a92007ce4d37e36f902aee"
+  },
+  "checks": {
+    "typescript": "PASS",
+    "scopedLint": "PASS",
+    "namespaceAndProposedHeaderFormatting": "PASS",
+    "features": "25 records;5 exact locks;13 bindings PASS",
+    "protectedPins": 128,
+    "wholeFoundation": "NOT_ACCEPTED"
+  },
+  "currentHostedEvidence": {
+    "511Passport": "SUCCESS43898355095",
+    "512Passport": "FAILURE43898342249:Ubuntu mirror/priority prerequisite;browserSKIPPED",
+    "513Passport": "FAILURE43898614668:Ubuntu mirror/priority prerequisite;browserSKIPPED",
+    "native511To513": "842PASS/2FAIL/1skip each;Property/P1 fixture failures separate",
+    "verify": "IN_PROGRESS at read-only observation",
+    "noReruns": true,
+    "noMirrorOrTrustChange": true
+  },
+  "sourceAuthorApproval": "HELD_SEPARATE_EXACT_ONE_TEST_HEADER_AUTHORIZATION",
+  "existing508Patch": "ccc09cc6c03cedc02bc03569571b44d6ca19fe6a779593a72953e0ca070a73e9",
+  "existing509Patch": "91e5c286ab610814655497e86cd68b70a3fac7902e90ee028eb1d47c1025f013",
+  "508And509RemainIndependent": true,
+  "protectedTestActual": "UNCHANGED",
+  "financialSourceAdmission": false,
+  "sqlInstallation": "NOT_RUN",
+  "authAcceptance": "NOT_RUN",
+  "providerExecution": "NOT_RUN",
+  "recoveryAcceptance": "NOT_RUN",
+  "mergeAuthorized": false,
+  "deployAuthorized": false,
+  "operationalReady": false,
+  "release": "NO_GO_NOT_READY_NOT_AUTHORIZED"
+}
