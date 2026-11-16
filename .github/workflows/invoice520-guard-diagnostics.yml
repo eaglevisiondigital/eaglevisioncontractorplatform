@@ -1,0 +1,406 @@
+name: Fixed 520 invoice source diagnostics
+
+# Workflow code belongs to its own commit. Runtime source is immutable approved
+# 520 only; this is not diagnostic-branch or whole-Foundation acceptance.
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - .github/workflows/invoice520-guard-diagnostics.yml
+
+permissions:
+  contents: read
+
+jobs:
+  fixed-source-diagnostics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      EV520_WORKFLOW_SOURCE_SHA: ${{ github.workflow_sha }}
+      EV520_WORKFLOW_REF: ${{ github.workflow_ref }}
+    steps:
+      - name: Checkout immutable approved 520 source
+        uses: actions/checkout@v4
+        with:
+          ref: d5b2c1be0399c9f18e30c89c4e410ecb1543e799
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Read-only source, permission and historical-object snapshot
+        id: source_snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/invoice520-source-diagnostics"
+          cat > "$RUNNER_TEMP/invoice520-source-diagnostics/probe.mjs" <<'NODE'
+          import { createHash } from "node:crypto";
+          import { execFileSync } from "node:child_process";
+          import {
+            lstatSync,
+            mkdirSync,
+            readFileSync,
+            readdirSync,
+            realpathSync,
+            writeFileSync,
+          } from "node:fs";
+          import { dirname, join, resolve } from "node:path";
+          import { devNull } from "node:os";
+          const target = "d5b2c1be0399c9f18e30c89c4e410ecb1543e799";
+          const targetTree = "656a079b5edaa1a2a889be605120fb6e4f161a0f";
+          const modulePath =
+            "proposals/ui-invoice-native-fixture-compatibility/current-fixture.mjs";
+          const moduleSha =
+            "085a856891cdb963d9283ba9caa84cf9e40ae000bcd0bf5acd9637a97c705fad";
+          const headerSha =
+            "d93d3b015ad1a92e367881a816cc4b14c7f0776630569c067547aec4ba808408";
+          const stage = process.argv[2];
+          if (!/^[a-z0-9-]{1,48}$/.test(stage ?? ""))
+            throw Error("Fixed diagnostic stage required");
+          const root = process.cwd();
+          const reportRoot = resolve(
+            realpathSync(process.env.RUNNER_TEMP),
+            "invoice520-source-diagnostics",
+          );
+          if (reportRoot === root || reportRoot.startsWith(root + "/"))
+            throw Error("Diagnostic output must stay outside source");
+          mkdirSync(reportRoot, { recursive: true });
+          const output = join(reportRoot, stage + ".json");
+          const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
+          const oid = (bytes) =>
+            createHash("sha1")
+              .update("blob " + bytes.length + "\0")
+              .update(bytes)
+              .digest("hex");
+          const mode = (info) => (info.mode & 0o777).toString(8).padStart(4, "0");
+          const type = (info) =>
+            info.isSymbolicLink()
+              ? "symlink"
+              : info.isDirectory()
+                ? "directory"
+                : info.isFile()
+                  ? "regular"
+                  : "other";
+          const gitEnvironment = {
+            PATH: process.env.PATH,
+            LC_ALL: "C",
+            GIT_CONFIG_NOSYSTEM: "1",
+            GIT_CONFIG_SYSTEM: devNull,
+            GIT_CONFIG_GLOBAL: devNull,
+            GIT_CONFIG_COUNT: "0",
+            GIT_ATTR_NOSYSTEM: "1",
+            GIT_ALLOW_PROTOCOL: "",
+            GIT_NO_LAZY_FETCH: "1",
+            GIT_TERMINAL_PROMPT: "0",
+            GIT_OPTIONAL_LOCKS: "0",
+          };
+          const git = (...args) =>
+            execFileSync(
+              "git",
+              [
+                "--no-replace-objects",
+                "--no-pager",
+                "-c",
+                "core.hooksPath=" + devNull,
+                "-c",
+                "core.fsmonitor=false",
+                "-c",
+                "credential.helper=",
+                ...args,
+              ],
+              {
+                cwd: root,
+                env: gitEnvironment,
+                stdio: ["ignore", "pipe", "pipe"],
+                maxBuffer: 32 * 1024 * 1024,
+                timeout: 15000,
+              },
+            );
+          const report = {
+            classification: "READ_ONLY_FIXED520_DIAGNOSTIC_NOT_ACCEPTANCE",
+            stage,
+            workflowSourceSha:
+              process.env.EV520_WORKFLOW_SOURCE_SHA ?? "LOCAL_NOT_HOSTED",
+            workflowRef: process.env.EV520_WORKFLOW_REF ?? "LOCAL_NOT_HOSTED",
+            eventSha: process.env.GITHUB_SHA ?? "LOCAL_NOT_HOSTED",
+            subject: { expectedHead: target, expectedTree: targetTree },
+            umaskObservedOnly: process.umask().toString(8).padStart(4, "0"),
+            rootRealpathMatches: realpathSync(root) === root,
+            modeMismatches: [],
+            typeMismatches: [],
+            bodyMismatchPathNames: [],
+            missingPathNames: [],
+            unknownSourceEntries: [],
+            alreadyExcludedRootEntriesByUnchangedGuard: [],
+            modeCounts: {},
+            requiredHistoricalObjects: [],
+            sourceLiteralObjectPresence: [],
+            qualification: { admissionAuthorized: false, status: "NOT_RUN" },
+            sourceMutatedByDiagnostic: false,
+            operationalAcceptance: false,
+          };
+          try {
+            report.subject.head = git("rev-parse", "HEAD").toString().trim();
+            report.subject.tree = git("rev-parse", "HEAD^{tree}").toString().trim();
+            report.subject.shallow = git("rev-parse", "--is-shallow-repository")
+              .toString()
+              .trim();
+            if (report.subject.head !== target || report.subject.tree !== targetTree)
+              throw Error("Immutable520 target binding mismatch");
+            const rows = new Map(
+              git("ls-tree", "-rz", target)
+                .toString()
+                .split("\0")
+                .filter(Boolean)
+                .map((row) => {
+                  const [meta, path] = row.split("\t");
+                  const [fileMode, objectType, objectId] = meta.split(" ");
+                  if (!["100644", "100755"].includes(fileMode) || objectType !== "blob")
+                    throw Error("Unexpected fixed520 source tree type");
+                  return [
+                    path,
+                    { mode: fileMode === "100644" ? "0644" : "0755", oid: objectId },
+                  ];
+                }),
+            );
+            report.subject.expectedFiles = rows.size;
+            if (rows.size !== 2501) throw Error("Fixed520 source count mismatch");
+            const dirs = new Set();
+            for (const path of rows.keys())
+              for (let d = dirname(path); d !== "."; d = dirname(d)) dirs.add(d);
+            for (const [path, expected] of rows) {
+              let info;
+              try {
+                let prefix = "";
+                let ancestorBad = false;
+                for (const part of path.split("/").slice(0, -1)) {
+                  prefix = prefix ? prefix + "/" + part : part;
+                  const parent = lstatSync(prefix);
+                  if (parent.isSymbolicLink() || !parent.isDirectory()) {
+                    report.typeMismatches.push({
+                      path: prefix,
+                      expected: "directory",
+                      actual: type(parent),
+                    });
+                    ancestorBad = true;
+                    break;
+                  }
+                }
+                if (ancestorBad) continue;
+                info = lstatSync(path);
+              } catch {
+                report.missingPathNames.push(path);
+                continue;
+              }
+              if (!info.isFile() || info.isSymbolicLink()) {
+                report.typeMismatches.push({
+                  path,
+                  expected: "regular",
+                  actual: type(info),
+                });
+                continue;
+              }
+              const actualMode = mode(info);
+              report.modeCounts[actualMode] = (report.modeCounts[actualMode] ?? 0) + 1;
+              if (actualMode !== expected.mode)
+                report.modeMismatches.push({
+                  path,
+                  expected: expected.mode,
+                  actual: actualMode,
+                });
+              if (oid(readFileSync(path)) !== expected.oid)
+                report.bodyMismatchPathNames.push(path);
+            }
+            const excluded = new Set([
+              ".git",
+              "node_modules",
+              "dist",
+              "coverage",
+              "test-results",
+              "playwright-report",
+            ]);
+            const walk = (prefix = "") => {
+              for (const name of readdirSync(prefix || ".")) {
+                const path = prefix ? prefix + "/" + name : name;
+                const info = lstatSync(path);
+                if (!prefix && excluded.has(name)) {
+                  report.alreadyExcludedRootEntriesByUnchangedGuard.push({
+                    path,
+                    type: type(info),
+                    mode: mode(info),
+                  });
+                  continue;
+                }
+                if (!rows.has(path) && !dirs.has(path))
+                  report.unknownSourceEntries.push({
+                    path,
+                    type: type(info),
+                    mode: mode(info),
+                  });
+                if (info.isDirectory() && !info.isSymbolicLink()) walk(path);
+              }
+            };
+            walk();
+            const required = new Map([
+              ["5f0f17dc9766411b260d5b53fd2db5a925adc80f", "commit"],
+              ["868059f16ec4431ee8c8381ddf63fb5ffb1ed9bd", "tree"],
+              ["3b52b8706bf83eefc0712ec83fca8dda57e76a37", "commit"],
+              ["afb028058b479d1ab17a9e516d1460cb1c4de4f3", "commit"],
+              ["b7387ade02d842eeb4eb8d7d1b3ab2f615963f02", "commit"],
+              ["f9335e5834fb06789585c4e59edd640447441bb7", "commit"],
+              ["dc8aa3c1f9979b5e37ee1aaa99d249a3969429f7", "commit"],
+              ["223e235be26c37271cb67e3c1f1803feb54599a6", "commit"],
+              ["a06c530b5dbde09c81acc69415be7a08ad091ec5", "tree"],
+              ["8f498f2c657608c64d40a3527be13b47a189b7b7", "commit"],
+              ["0e49670e6cc05473d3fd4e033b2c0f42b5fc10e0", "commit"],
+              ["6063aea60588975bbe88c8ccf8b1d864721b7082", "commit"],
+            ]);
+            const literalIds = new Set();
+            for (const path of [
+              "proposals/invoice-guard-admission/qualify.mjs",
+              "scripts/invoice-caller-source-admission.mjs",
+              "proposals/invoice-guard-admission/payload/scripts/invoice-caller-source-admission.mjs",
+            ]) {
+              if (
+                !report.bodyMismatchPathNames.includes(path) &&
+                !report.missingPathNames.includes(path)
+              )
+                for (const match of readFileSync(path, "utf8").matchAll(
+                  /(?<![a-f0-9])[a-f0-9]{40}(?![a-f0-9])/g,
+                ))
+                  literalIds.add(match[0]);
+            }
+            const allIds = [...new Set([...required.keys(), ...literalIds])];
+            const facts = execFileSync(
+              "git",
+              [
+                "--no-replace-objects",
+                "-c",
+                "core.hooksPath=" + devNull,
+                "cat-file",
+                "--batch-check=%(objectname) %(objecttype)",
+              ],
+              {
+                cwd: root,
+                env: gitEnvironment,
+                input: allIds.join("\n") + "\n",
+                encoding: "utf8",
+                stdio: ["pipe", "pipe", "pipe"],
+                timeout: 15000,
+              },
+            )
+              .trim()
+              .split("\n")
+              .map((line) => line.split(" "));
+            const objectFacts = new Map(facts);
+            report.requiredHistoricalObjects = [...required].map(
+              ([object, expectedType]) => ({
+                object,
+                expectedType,
+                actualType: objectFacts.get(object),
+                present: objectFacts.get(object) === expectedType,
+              }),
+            );
+            report.sourceLiteralObjectPresence = [...literalIds]
+              .sort()
+              .map((object) => ({
+                object,
+                actualType: objectFacts.get(object),
+                present: objectFacts.get(object) !== "missing",
+              }));
+            if (
+              !report.rootRealpathMatches ||
+              report.typeMismatches.length ||
+              report.bodyMismatchPathNames.length ||
+              report.missingPathNames.length
+            )
+              throw Error(
+                "Fixed520 tracked source identity is unsafe for executing test code",
+              );
+            const bytes = readFileSync(modulePath);
+            report.qualification.modulePinMatched = sha(bytes) === moduleSha;
+            report.qualification.approved520HeaderPinMatched =
+              sha(readFileSync("tests/invoice-guard-admission-proposal.test.ts")) ===
+              headerSha;
+            if (
+              !report.qualification.modulePinMatched ||
+              !report.qualification.approved520HeaderPinMatched
+            )
+              throw Error("Pinned520 source bytes required");
+            const pinned = await import(
+              "data:text/javascript;base64," + bytes.toString("base64")
+            );
+            try {
+              report.qualification.physicalFrame = pinned.verifyCurrentPhysicalFrame();
+            } catch (error) {
+              report.qualification.physicalFrame = {
+                status: "DENIED",
+                message: String(error.message).slice(0, 500),
+              };
+            }
+            try {
+              const qualified = await pinned.qualifyInvoiceGuardProposal();
+              const check = qualified.check();
+              report.qualification.status = "PASS";
+              report.qualification.parent = qualified.parent;
+              report.qualification.sourceAuthor = check.sourceAuthor;
+              report.qualification.admissionAuthorized = qualified.admissionAuthorized;
+            } catch (error) {
+              report.qualification.status = "DENIED";
+              report.qualification.message = String(error.message).slice(0, 500);
+            }
+          } catch (error) {
+            report.fatalDiagnosticError = String(error.message).slice(0, 500);
+            process.exitCode = 1;
+          } finally {
+            writeFileSync(output, JSON.stringify(report, null, 2) + "\n");
+            console.log(
+              JSON.stringify({
+                stage,
+                target: report.subject.head,
+                tree: report.subject.tree,
+                modeMismatchCount: report.modeMismatches.length,
+                typeMismatchCount: report.typeMismatches.length,
+                bodyMismatchCount: report.bodyMismatchPathNames.length,
+                unknownSourcePathNames: report.unknownSourceEntries.map(
+                  (row) => row.path,
+                ),
+                missingRequiredGitObjects: report.requiredHistoricalObjects
+                  .filter((row) => !row.present)
+                  .map((row) => row.object),
+                qualification: report.qualification.status,
+                diagnosticFatal: report.fatalDiagnosticError ?? null,
+              }),
+            );
+          }
+          NODE
+          node "$RUNNER_TEMP/invoice520-source-diagnostics/probe.mjs" after-checkout
+      - name: Install only pinned source dependencies
+        id: pinned_dependencies
+        run: npm ci
+      - name: Run only the two unchanged C27 artifact-producing cases
+        run: >-
+          node node_modules/vitest/vitest.mjs run tests/cycle27-source-lineage.test.ts
+          -t '^(warm immutable Git facts never cache mutable files or source admission|raw object facts ignore replacement refs and shallow traversal in a disposable repository)$'
+      - name: Read-only snapshot after the two original C27 cases
+        id: after_c27
+        if: ${{ always() && steps.source_snapshot.outcome == 'success' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          node "$RUNNER_TEMP/invoice520-source-diagnostics/probe.mjs" after-two-original-c27
+      - name: Run unchanged 39-case invoice fixture gate
+        if: ${{ !cancelled() && steps.pinned_dependencies.outcome == 'success' && steps.after_c27.outcome == 'success' }}
+        # No cleanup, mode repair, ignore, continue-on-error or test/budget change.
+        # The original failing gate keeps its nonzero exit and fails this job.
+        run: node node_modules/vitest/vitest.mjs run tests/invoice-guard-admission-proposal.test.ts
+      - name: Always retain diagnostic metadata outside the tested source
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: invoice520-source-diagnostics-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/invoice520-source-diagnostics
+          if-no-files-found: error
+          retention-days: 7
