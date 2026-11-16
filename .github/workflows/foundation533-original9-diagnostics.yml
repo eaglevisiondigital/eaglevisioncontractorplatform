@@ -1,0 +1,232 @@
+name: Fixed533 original9 CPU diagnostic
+on:
+  pull_request:
+    paths: ['.github/workflows/foundation533-original9-diagnostics.yml']
+permissions:
+  contents: read
+jobs:
+  original9:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      DIAGNOSTIC_DIR: ${{ runner.temp }}/foundation533-diagnostics
+      DIAGNOSTIC_WORKFLOW_SHA: ${{ github.workflow_sha }}
+      DIAGNOSTIC_EVENT_SHA: ${{ github.sha }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: a24c0c75852d740da41d0abd2cf283c4230b9349
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - name: Prepare read-only diagnostics outside fixed source
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$DIAGNOSTIC_DIR"
+          cat > "$DIAGNOSTIC_DIR/frame.mjs" <<'PROBE'
+          import { execFileSync } from 'node:child_process';
+          import { createHash } from 'node:crypto';
+          import { lstatSync, readFileSync, readdirSync, writeFileSync, realpathSync } from 'node:fs';
+          import { resolve } from 'node:path';
+          const target = 'a24c0c75852d740da41d0abd2cf283c4230b9349';
+          const tree = 'a4782cf331e4ebcc799fd2307436dbe5f7370876';
+          const phase = process.argv[2];
+          if (!['before', 'after'].includes(phase)) throw Error('Exact probe phase required');
+          const output = process.env.DIAGNOSTIC_DIR;
+          if (!output || !process.env.RUNNER_TEMP || !realpathSync(output).startsWith(realpathSync(process.env.RUNNER_TEMP) + '/') || realpathSync(output) === realpathSync(process.cwd()) || realpathSync(output).startsWith(realpathSync(process.cwd()) + '/')) throw Error('Outside-checkout runner temporary output required');
+          const sha = (b) => createHash('sha256').update(b).digest('hex');
+          const git = (...args) => execFileSync('/usr/bin/git', ['--no-replace-objects', '-c', 'core.hooksPath=/dev/null', '-c', 'core.fsmonitor=false', ...args], {
+            maxBuffer: 128 * 1024 * 1024,
+            env: { PATH: process.env.PATH, LANG: 'C', LC_ALL: 'C', GIT_CONFIG_NOSYSTEM: '1', GIT_CONFIG_GLOBAL: '/dev/null', GIT_TERMINAL_PROMPT: '0', GIT_OPTIONAL_LOCKS: '0' },
+            stdio: ['pipe', 'pipe', 'pipe'],
+          });
+          const observedHead = git('rev-parse', 'HEAD').toString().trim();
+          const observedTree = git('rev-parse', 'HEAD^{tree}').toString().trim();
+          if (observedHead !== target || observedTree !== tree) throw Error('Exact fixed533 checkout required');
+          const raw = git('ls-tree', '-rz', '--full-tree', tree);
+          const rows = raw.toString().split('\0').filter(Boolean).map((line) => {
+            const m = /^(100644|100755) blob ([a-f0-9]{40})\t(.+)$/.exec(line);
+            if (!m || m[3].split('/').some((p) => !p || p === '.' || p === '..')) throw Error('Exact regular target inventory required');
+            return { mode: m[1], blob: m[2], path: m[3] };
+          });
+          if (rows.length !== 2539) throw Error('Exact2539 target inventory required');
+          const batch = execFileSync('/usr/bin/git', ['--no-replace-objects', '-c', 'core.hooksPath=/dev/null', '-c', 'core.fsmonitor=false', 'cat-file', '--batch'], {
+            input: rows.map((row) => row.blob).join('\n') + '\n', maxBuffer: 128 * 1024 * 1024,
+            env: { PATH: process.env.PATH, LANG: 'C', LC_ALL: 'C', GIT_CONFIG_NOSYSTEM: '1', GIT_CONFIG_GLOBAL: '/dev/null', GIT_TERMINAL_PROMPT: '0', GIT_OPTIONAL_LOCKS: '0' },
+            stdio: ['pipe', 'pipe', 'pipe'],
+          });
+          let offset = 0;
+          const mismatches = [], known = new Set(rows.map((row) => row.path)), directories = new Set();
+          for (const row of rows) {
+            const end = batch.indexOf(10, offset), header = batch.subarray(offset, end).toString();
+            const parts = header.split(' ');
+            if (end < 0 || parts[0] !== row.blob || parts[1] !== 'blob' || !/^\d+$/.test(parts[2])) throw Error('Exact object batch required');
+            const size = Number(parts[2]), body = batch.subarray(end + 1, end + 1 + size);
+            if (body.length !== size || batch[end + 1 + size] !== 10) throw Error('Complete object body required');
+            offset = end + 2 + size;
+            const segments = row.path.split('/');
+            for (let i = 1; i < segments.length; i++) directories.add(segments.slice(0, i).join('/'));
+            try {
+              const stat = lstatSync(row.path);
+              if (!stat.isFile() || stat.isSymbolicLink()) mismatches.push({ path: row.path, reason: 'type' });
+              else {
+                const mode = stat.mode & 0o7777, expectedMode = row.mode === '100755' ? 0o755 : 0o644;
+                if (mode !== expectedMode) mismatches.push({ path: row.path, reason: 'mode', actual: mode.toString(8), expected: expectedMode.toString(8) });
+                const actual = sha(readFileSync(row.path)), expected = sha(body);
+                if (actual !== expected) mismatches.push({ path: row.path, reason: 'body', actual, expected });
+              }
+            } catch { mismatches.push({ path: row.path, reason: 'missing-or-unreadable' }); }
+          }
+          if (offset !== batch.length) throw Error('No trailing object data permitted');
+          const extraPaths = [];
+          // Same five root output/dependency exclusions as the existing strict frame.
+          // This is unsigned telemetry, not source admission or an expansion of its policy.
+          const excluded = new Set(['.git', 'node_modules', 'dist', 'coverage', 'test-results']);
+          function walk(directory = '') {
+            for (const name of readdirSync(directory || '.').sort()) {
+              if (!directory && excluded.has(name)) continue;
+              const path = directory ? directory + '/' + name : name;
+              const stat = lstatSync(path);
+              if (stat.isDirectory()) { if (!directories.has(path)) extraPaths.push(path); walk(path); }
+              else if (!known.has(path)) extraPaths.push(path);
+            }
+          }
+          walk();
+          const report = { classification: 'UNSIGNED_FIXED533_DIAGNOSTIC_NOT_ADMISSION', phase, target, targetTree: tree, workflowSourceSHA: process.env.DIAGNOSTIC_WORKFLOW_SHA, eventSHA: process.env.DIAGNOSTIC_EVENT_SHA, observedHead, observedTree, rows: rows.length, inventorySHA256: sha(raw), umask: process.umask().toString(8), mismatches, extraPaths, pass: !mismatches.length && !extraPaths.length };
+          writeFileSync(resolve(output, 'source-' + phase + '.json'), JSON.stringify(report, null, 2));
+          console.log(JSON.stringify({ phase, rows: rows.length, mismatches: mismatches.length, extraPaths: extraPaths.length, pass: report.pass }));
+          if (!report.pass) process.exitCode = 1;
+          PROBE
+          cat > "$DIAGNOSTIC_DIR/observe.mjs" <<'PROBE'
+          import cp from 'node:child_process';
+          import { createHash } from 'node:crypto';
+          import { writeFileSync, readFileSync, realpathSync } from 'node:fs';
+          import { syncBuiltinESMExports } from 'node:module';
+          import { resolve, relative } from 'node:path';
+          import { fileURLToPath } from 'node:url';
+          import { threadId } from 'node:worker_threads';
+          import inspector from 'node:inspector';
+          const output = process.env.DIAGNOSTIC_DIR;
+          if (!output || !process.env.RUNNER_TEMP || !realpathSync(output).startsWith(realpathSync(process.env.RUNNER_TEMP) + '/') || realpathSync(output) === realpathSync(process.cwd()) || realpathSync(output).startsWith(realpathSync(process.cwd()) + '/')) throw Error('Outside-checkout runner temporary output required');
+          const root = process.cwd(), began = process.hrtime.bigint(), cpu = process.cpuUsage(), calls = new Map(), samples = new Map();
+          const commands = new Set(['show', 'cat-file', 'ls-tree', 'diff-tree', 'rev-parse', 'status', 'fetch', 'log', 'config', 'for-each-ref']);
+          function category(file, args) {
+            const binary = typeof file === 'string' ? file.split('/').pop() : '';
+            const program = binary === 'git' ? 'git' : binary === 'node' ? 'node' : 'other';
+            const operation = program === 'git' && Array.isArray(args) ? args.find((a) => commands.has(a)) ?? 'other' : 'other';
+            return program + ':' + operation;
+          }
+          function count(method, key, elapsed) {
+            const row = calls.get(method + ':' + key) ?? { count: 0, wallMs: 0 };
+            row.count++; row.wallMs += elapsed; calls.set(method + ':' + key, row);
+          }
+          for (const method of ['execFileSync', 'spawnSync']) {
+            const original = cp[method];
+            cp[method] = function (...args) { const start = process.hrtime.bigint(); try { return Reflect.apply(original, this, args); } finally { count(method, category(args[0], args[1]), Number(process.hrtime.bigint() - start) / 1e6); } };
+          }
+          for (const method of ['execFile', 'spawn']) {
+            const original = cp[method];
+            cp[method] = function (...args) { const start = process.hrtime.bigint(); const child = Reflect.apply(original, this, args); child.once('exit', () => count(method, category(args[0], args[1]), Number(process.hrtime.bigint() - start) / 1e6)); return child; };
+          }
+          syncBuiltinESMExports();
+          const session = new inspector.Session(); session.connect(); session.post('Profiler.enable'); session.post('Profiler.start');
+          let sampling = false, windows = 0;
+          const observerErrors = [];
+          function safeURL(url) {
+            if (url.startsWith('node:')) return url;
+            if (!url.startsWith('file:')) return 'external';
+            try {
+              const file = fileURLToPath(url), rel = relative(root, file);
+              if (!rel.startsWith('../') && rel !== '..' && !rel.startsWith('/')) return 'source:' + rel;
+              const marker = '/node_modules/', index = file.lastIndexOf(marker);
+              return index >= 0 ? 'dependency:' + file.slice(index + marker.length) : 'external';
+            } catch { return 'external'; }
+          }
+          function snapshot() {
+            const topSelfCPU = [...samples.values()].sort((a, b) => b.selfMicroseconds - a.selfMicroseconds).slice(0, 40);
+            const report = { classification: 'INSTRUMENTED_DIAGNOSTIC_NOT_ACCEPTANCE', pid: process.pid, threadId, observerSHA256: createHash('sha256').update(readFileSync(fileURLToPath(import.meta.url))).digest('hex'), wallMs: Number(process.hrtime.bigint() - began) / 1e6, cpuMicroseconds: process.cpuUsage(cpu), windows, observerErrors, calls: Object.fromEntries(calls), topSelfCPU };
+            writeFileSync(resolve(output, 'worker-' + process.pid + '-' + threadId + '.json'), JSON.stringify(report, null, 2));
+          }
+          function sample(restart = true) {
+            if (sampling) return; sampling = true;
+            session.post('Profiler.stop', (error, result) => {
+              if (error) observerErrors.push('CPU_PROFILER_STOP_FAILED');
+              if (result) {
+                windows++; const profile = result.profile, nodes = new Map(profile.nodes.map((n) => [n.id, n]));
+                for (let i = 0; i < (profile.samples ?? []).length; i++) {
+                  const frame = nodes.get(profile.samples[i])?.callFrame;
+                  if (!frame) continue;
+                  const url = safeURL(frame.url), functionName = frame.functionName.slice(0, 256), line = frame.lineNumber + 1;
+                  const key = JSON.stringify([url, functionName, line]), row = samples.get(key) ?? { url, functionName, line, selfMicroseconds: 0, samples: 0 };
+                  row.selfMicroseconds += profile.timeDeltas?.[i] ?? 0; row.samples++; samples.set(key, row);
+                }
+              }
+              if (restart) session.post('Profiler.start'); sampling = false; snapshot();
+            });
+          }
+          snapshot();
+          setInterval(sample, 3000).unref();
+          process.once('beforeExit', () => sample(false));
+          process.once('exit', snapshot);
+          PROBE
+          cat > "$DIAGNOSTIC_DIR/results.mjs" <<'PROBE'
+          import { readFileSync, writeFileSync, realpathSync, readdirSync } from 'node:fs';
+          import { resolve } from 'node:path';
+          const output = process.env.DIAGNOSTIC_DIR;
+          if (!output || !process.env.RUNNER_TEMP || !realpathSync(output).startsWith(realpathSync(process.env.RUNNER_TEMP) + '/') || realpathSync(output) === realpathSync(process.cwd()) || realpathSync(output).startsWith(realpathSync(process.cwd()) + '/')) throw Error('Outside-checkout runner temporary output required');
+          const expected = [
+            ...[0, 1, 2].map((brand) => `brand ${brand} native correction and material review remain the original cost and priority sources`),
+            'brand 2: five-package source evidence binds one exact canonical daily environment',
+            'brand 2: retained daily sources continue through every review and exact Next without reset',
+            'finance: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay',
+            'finance: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay',
+            'finance: competing fresh views of the same canonical job dispatch at most one callback',
+            'I10 another property report and another job occurrence cannot replace the retained exact sources',
+          ].sort();
+          const result = JSON.parse(readFileSync(resolve(output, 'original9.json')));
+          const executed = result.testResults.flatMap((file) => file.assertionResults.filter((test) => !['skipped', 'pending', 'todo'].includes(test.status)).map((test) => ({ title: test.title, status: test.status, durationMs: test.duration })));
+          const names = executed.map((test) => test.title).sort();
+          const exactSelection = JSON.stringify(names) === JSON.stringify(expected);
+          const workerReports = readdirSync(output).filter((name) => /^worker-\d+-\d+\.json$/.test(name)).map((name) => JSON.parse(readFileSync(resolve(output, name))));
+          const measuredWorkers = workerReports.filter((row) => row.windows > 0 && row.topSelfCPU.some((sample) => sample.url.startsWith('source:src/')));
+          const telemetryPresent = measuredWorkers.length > 0 && workerReports.every((row) => row.observerErrors.length === 0);
+          const report = { classification: 'FOCUSED_ORIGINAL9_NOT_FOUNDATION_ACCEPTANCE', workflowSourceSHA: process.env.DIAGNOSTIC_WORKFLOW_SHA, eventSHA: process.env.DIAGNOSTIC_EVENT_SHA, target: 'a24c0c75852d740da41d0abd2cf283c4230b9349', exactSelection, telemetryPresent, measuredWorkerCount: measuredWorkers.length, executed, passed: result.numPassedTests, failed: result.numFailedTests, budgetsAndWorkers: 'Original vite.config.ts unchanged: test/hook30000ms/maxWorkers4', instrumentationOverhead: 'CPU sampling/child observers may increase measured times' };
+          writeFileSync(resolve(output, 'selection.json'), JSON.stringify(report, null, 2));
+          if (!exactSelection || !telemetryPresent || result.numFailedTests || result.numPassedTests !== 9) process.exitCode = 1;
+          PROBE
+          node --check "$DIAGNOSTIC_DIR/frame.mjs"
+          node --check "$DIAGNOSTIC_DIR/observe.mjs"
+          node --check "$DIAGNOSTIC_DIR/results.mjs"
+      - name: Require exact fixed533 source bodies types and modes before tests
+        run: node "$DIAGNOSTIC_DIR/frame.mjs" before
+      - name: Run only original nine implicated cases at original budgets and workers
+        shell: bash
+        run: |
+          set -euo pipefail
+          unset NODE_PATH
+          export NODE_OPTIONS="--import=$DIAGNOSTIC_DIR/observe.mjs"
+          node node_modules/vitest/vitest.mjs run \
+            tests/cycle18-independent-integration-review.test.ts \
+            tests/cycle23-independent-integration-review.test.ts \
+            tests/cycle24-independent-integration-review.test.ts \
+            --testNamePattern='(?:brand [012] native correction and material review remain the original cost and priority sources|brand 2: five-package source evidence binds one exact canonical daily environment|brand 2: retained daily sources continue through every review and exact Next without reset|finance: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay|finance: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay|finance: competing fresh views of the same canonical job dispatch at most one callback|I10 another property report and another job occurrence cannot replace the retained exact sources)$' \
+            --execArgv="--import=$DIAGNOSTIC_DIR/observe.mjs" \
+            --reporter=default --reporter=json --outputFile.json="$DIAGNOSTIC_DIR/original9.json"
+      - name: Require unchanged fixed533 source after original tests
+        if: always()
+        run: node "$DIAGNOSTIC_DIR/frame.mjs" after
+      - name: Require exact nine-case selection and preserve original failures
+        if: always()
+        run: node "$DIAGNOSTIC_DIR/results.mjs"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: fixed533-original9-unsigned-diagnostics
+          path: ${{ runner.temp }}/foundation533-diagnostics/
+          if-no-files-found: error
+          retention-days: 7
