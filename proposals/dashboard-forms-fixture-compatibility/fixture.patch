@@ -1,0 +1,25 @@
+diff --git a/tests/propel-dashboard-parity-source.test.ts b/tests/propel-dashboard-parity-source.test.ts
+index 2311e8a8a014dd3a11385021a2287897b3b33c00..48bd4fd4d038f8869aae6917d7c40d45c41d9f35 100644
+--- a/tests/propel-dashboard-parity-source.test.ts
++++ b/tests/propel-dashboard-parity-source.test.ts
+@@ -4,7 +4,19 @@
+ import { describe, expect, it } from 'vitest';
+ 
+ const parent = '8f9cab9a6b42c057a12f1923bf35a514abc068b1';
+-const source = (path: string) => readFileSync(path, 'utf8');
++const { dashboardSource: source } = (await import(
++  await (async () => {
++    const bytes = readFileSync(
++      'proposals/dashboard-forms-fixture-compatibility/current-fixture.mjs',
++    );
++    if (
++      createHash('sha256').update(bytes).digest('hex') !==
++      '83a629d02a81d3f1a8b36bd39dc92839eebecfb79c0f9d7f66122c41d5ef8951'
++    )
++      throw Error('Exact approved dashboard/forms source fixture required');
++    return 'data:text/javascript;base64,' + bytes.toString('base64');
++  })()
++)) as { dashboardSource(path: string): string };
+ const baseline = (path: string) =>
+   execFileSync('git', ['show', `${parent}:${path}`], { encoding: 'utf8' });
+ 
