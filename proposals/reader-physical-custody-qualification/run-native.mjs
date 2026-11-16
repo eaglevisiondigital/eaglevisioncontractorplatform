@@ -1,0 +1,262 @@
+// Finite local qualification only. No hosted/operating adapter or credential loader.
+import {
+  mkdtempSync,
+  mkdirSync,
+  readFileSync,
+  readdirSync,
+  realpathSync,
+  writeFileSync,
+  chmodSync,
+  symlinkSync,
+  rmSync,
+} from 'node:fs';
+import { join, resolve, dirname, sep } from 'node:path';
+import { createHash } from 'node:crypto';
+import { createRequire } from 'node:module';
+import { spawnSync } from 'node:child_process';
+const args = process.argv.slice(2);
+if (
+  args.length !== 4 ||
+  args[0] !== '--pg-bin' ||
+  args[2] !== '--evidence-dir' ||
+  !process.versions.node.startsWith('24.')
+)
+  throw Error(
+    'Explicit PG17 bin/evidence directory and pinned Node24 required',
+  );
+const root = realpathSync(process.cwd());
+const pg = realpathSync(resolve(args[1]));
+const evidence = resolve(args[3]);
+if (evidence === root || evidence.startsWith(root + sep))
+  throw Error('Use private evidence outside the source checkout');
+mkdirSync(evidence, { recursive: true });
+if (readdirSync(evidence).length)
+  throw Error('Fresh evidence directory required; prior results are immutable');
+const folder = 'proposals/reader-physical-custody-qualification/';
+const hash = (b) => createHash('sha256').update(b).digest('hex');
+const manifestBytes = readFileSync(folder + 'source.json');
+if (
+  hash(manifestBytes) !==
+  '6c3bf1b82b0221cb34a576d1c7a1fbb194ca7d0061453b576033026f32fa17e1'
+)
+  throw Error('Exact fixture qualification manifest required');
+const manifest = JSON.parse(manifestBytes);
+const captured = new Map();
+for (const [path, expected] of Object.entries(manifest.newSource)) {
+  const bytes = readFileSync(path);
+  if (hash(bytes) !== expected) throw Error('Exact new fixture bytes required');
+  captured.set(path, bytes);
+}
+if (hash(readFileSync('package-lock.json')) !== manifest.packageLockSHA256)
+  throw Error('Pinned dependency lock required');
+const require = createRequire(join(root, 'package.json'));
+const driver = dirname(require.resolve('pg/package.json'));
+if (
+  JSON.parse(readFileSync(join(driver, 'package.json'))).version !==
+  manifest.driver.version
+)
+  throw Error('Pinned pg driver required');
+for (const [path, expected] of Object.entries(manifest.driver.files))
+  if (hash(readFileSync(join(driver, path))) !== expected)
+    throw Error('Pinned pg implementation required');
+const gitEnv = {
+  ...process.env,
+  GIT_NO_LAZY_FETCH: '1',
+  GIT_TERMINAL_PROMPT: '0',
+  GIT_CONFIG_NOSYSTEM: '1',
+  GIT_CONFIG_SYSTEM: '/dev/null',
+  GIT_CONFIG_GLOBAL: '/dev/null',
+  GIT_CONFIG_COUNT: '0',
+};
+function command(file, args, options = {}) {
+  const r = spawnSync(file, args, {
+    cwd: root,
+    env: gitEnv,
+    encoding: 'utf8',
+    timeout: 300000,
+    ...options,
+  });
+  if (r.error || r.status !== 0)
+    throw r.error ?? Error('Disposable qualification command failed: ' + file);
+  return r;
+}
+const git = (...args) =>
+  command('/usr/bin/git', [
+    '--no-replace-objects',
+    '-c',
+    'core.hooksPath=/dev/null',
+    '-c',
+    'core.fsmonitor=false',
+    '-c',
+    'init.templateDir=/dev/null',
+    ...args,
+  ]);
+if (
+  git('rev-parse', manifest.base + '^{tree}').stdout.trim() !==
+  manifest.baseTree
+)
+  throw Error('Exact506 source parent required');
+if (
+  !/^postgres \(PostgreSQL\) 17\./.test(
+    command(join(pg, 'postgres'), ['--version']).stdout,
+  )
+)
+  throw Error('Native PG17 required');
+const tempRoot = realpathSync('/tmp');
+const source = mkdtempSync(join(tempRoot, 'propel-reader-custody-source-'));
+const cluster = mkdtempSync(join(tempRoot, 'propel-reader-custody-db-'));
+let started = false,
+  success = false;
+try {
+  git('clone', '--shared', '--no-hardlinks', root, source);
+  git('-C', source, 'switch', '--detach', manifest.base);
+  symlinkSync(
+    realpathSync(join(root, 'node_modules')),
+    join(source, 'node_modules'),
+  );
+  const prefix = readFileSync(join(source, manifest.originalNativePath));
+  if (hash(prefix) !== manifest.originalNativeSHA256)
+    throw Error('Original native prefix changed');
+  const tailPath = folder + 'native-custody-cases.proposed.txt';
+  const tail = captured.get(tailPath);
+  writeFileSync(
+    join(source, manifest.originalNativePath),
+    Buffer.concat([prefix, Buffer.from('\n'), tail]),
+  );
+  const helperPath = 'tests/fixtures/disposable-reader-owner.ts';
+  writeFileSync(join(source, helperPath), captured.get(helperPath));
+  chmodSync(join(source, helperPath), 0o644);
+  const bindings = {
+    classification: manifest.classification,
+    base: manifest.base,
+    prefixSHA256: hash(prefix),
+    tailSHA256: hash(tail),
+    stagedNativeSHA256: hash(
+      readFileSync(join(source, manifest.originalNativePath)),
+    ),
+    helperSHA256: hash(captured.get(helperPath)),
+    originalReaderAndBudgetsChanged: false,
+    databaseMode: 'OWNED_PG17_UNIX_SOCKET_TCP_DISABLED',
+    operationalAcceptance: false,
+  };
+  writeFileSync(
+    join(evidence, 'input-bindings.json'),
+    JSON.stringify(bindings, null, 2) + '\n',
+  );
+  const types = spawnSync(
+    process.execPath,
+    [join(source, 'node_modules/typescript/bin/tsc'), '--noEmit'],
+    { cwd: source, env: gitEnv, encoding: 'utf8', timeout: 120000 },
+  );
+  writeFileSync(
+    join(evidence, 'strict-types.log'),
+    (types.stdout ?? '') + (types.stderr ?? ''),
+  );
+  if (types.error || types.status !== 0)
+    throw types.error ?? Error('Actual staged strict types failed');
+  command(join(pg, 'initdb'), [
+    '-D',
+    join(cluster, 'data'),
+    '-U',
+    'ev_test',
+    '--auth=trust',
+    '--no-locale',
+    '--encoding=UTF8',
+  ]);
+  started = true;
+  command(join(pg, 'pg_ctl'), [
+    '-D',
+    join(cluster, 'data'),
+    '-l',
+    join(cluster, 'server.log'),
+    '-o',
+    `-k ${cluster} -h '' -p 55477`,
+    '-w',
+    'start',
+  ]);
+  command(join(pg, 'psql'), [
+    '-h',
+    cluster,
+    '-p',
+    '55477',
+    '-U',
+    'ev_test',
+    '-d',
+    'postgres',
+    '-v',
+    'ON_ERROR_STOP=1',
+    '-c',
+    'create role anon nologin; create role authenticated nologin; create role service_role nologin bypassrls;',
+  ]);
+  const run = spawnSync(
+    process.execPath,
+    [
+      join(source, 'node_modules/vitest/vitest.mjs'),
+      'run',
+      manifest.originalNativePath,
+      '-t',
+      'physical custody qualification:',
+      '--maxWorkers=1',
+      '--reporter=json',
+      '--outputFile=' + join(evidence, 'native-results.json'),
+    ],
+    {
+      cwd: source,
+      env: { ...gitEnv, EV_TEST_PG_SOCKET: cluster, EV_TEST_PG_CI: '' },
+      encoding: 'utf8',
+      timeout: 300000,
+    },
+  );
+  writeFileSync(
+    join(evidence, 'native.log'),
+    (run.stdout ?? '') + (run.stderr ?? ''),
+  );
+  if (run.error || run.status !== 0)
+    throw run.error ?? Error('New physical custody qualification failed');
+  const report = JSON.parse(
+    readFileSync(join(evidence, 'native-results.json')),
+  );
+  if (
+    report.numPassedTests !== 10 ||
+    report.numFailedTests !== 0 ||
+    report.numPendingTests !== 23
+  )
+    throw Error('Exact ten new cases and23filtered originals required');
+  success = true;
+  console.log(
+    'Ten disposable physical custody cases PASS; original23 filtered. No operational acceptance.',
+  );
+} finally {
+  let stopped = !started;
+  try {
+    if (started) {
+      command(join(pg, 'pg_ctl'), [
+        '-D',
+        join(cluster, 'data'),
+        '-m',
+        'fast',
+        '-w',
+        'stop',
+      ]);
+      stopped = true;
+    }
+  } finally {
+    if (stopped) rmSync(cluster, { recursive: true, force: true });
+    rmSync(source, { recursive: true, force: true });
+    writeFileSync(
+      join(evidence, 'cleanup.json'),
+      JSON.stringify(
+        {
+          success,
+          ownedClusterStopped: stopped,
+          ownedClusterRemoved: stopped,
+          ownedSourceImageRemoved: true,
+          tcpDisabled: true,
+          operationalAcceptance: false,
+        },
+        null,
+        2,
+      ) + '\n',
+    );
+  }
+}

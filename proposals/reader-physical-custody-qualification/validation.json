@@ -1,0 +1,41 @@
+{
+  "classification": "DISPOSABLE_MECHANICS_AND_TRUSTED_RELEASE_WITNESS_QUALIFICATION_NOT_OPERATIONAL_ACCEPTANCE",
+  "base": "ff41ed204ddc3d19d356c3af6dfc1e56db77a457",
+  "parentUnchanged": true,
+  "primary": {
+    "cases": 10,
+    "passed": 10,
+    "failed": 0,
+    "originalFiltered": 23,
+    "reportSHA256": "76919e63a88b8cecd13d8f32507b5a69ead2f130a9f2ad9f1b84b3aba3dec7cb",
+    "inputsSHA256": "34ae27b698277c0141425c7b6a2581852bbb5eded7b8555ee470fad915738ac0",
+    "cleanupSHA256": "b960df15c40fca0652d5eeca60b0e1b89af4f9a375696e47fb55065dfc365a9e",
+    "strictTypesSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "earlierEvidence": {
+    "initialDeepImage": "6PASS1FAIL23filtered; normalread UNKNOWN",
+    "deepSuccessDiagnostic": "0PASS1FAIL29filtered; original5sbridge UNKNOWN",
+    "shortSuccessDiagnostic": "1PASS29filtered; identicalreader1.475s",
+    "preReviewSevenCaseRun": "7PASS23filtered but post-cleanupauthority gap found; NOT_ACCEPTED_RELEASE_FRESHNESS_PROOF"
+  },
+  "reviewFindingAndCorrection": "Mandatorypost-cleanupcurrent-authoritycallback; originalsafecontentdecoder/currenttarget/signal/absolute4sdeadline/sourcepinrecheck; cleanup-heldsessionrevocationandtargetmutationnegatives; missingreleaseevidenceUNKNOWN; no genericraw-portbuilder",
+  "processLocalNotIndependentCustody": true,
+  "trustedWitnessNotGenuineAuthAcceptance": true,
+  "original509Characterizations": "UNCHANGED_UNACCEPTED_OUTSIDE_PARTICIPATING_FIXTURE",
+  "operatingFactoryOrConnectedRoute": false,
+  "SQLOrGrantsChanged": false,
+  "providerOrFinancialExecution": false,
+  "independentReview": {
+    "status": "ROOT_TECHNICAL_REVIEW_CLEAR",
+    "cases": 10,
+    "passed": 10,
+    "failed": 0,
+    "originalFiltered": 23,
+    "reportSHA256": "ebaa15124337765c9506d05a4bb0b23f21fbe11176ce7888a6326af8b3fc7826",
+    "inputsSHA256": "34ae27b698277c0141425c7b6a2581852bbb5eded7b8555ee470fad915738ac0",
+    "cleanupSHA256": "b960df15c40fca0652d5eeca60b0e1b89af4f9a375696e47fb55065dfc365a9e",
+    "strictTypesSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "operationalAcceptance": false
+  },
+  "release": "NO_GO"
+}

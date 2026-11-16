@@ -1,0 +1,41 @@
+{
+  "classification": "DISPOSABLE_ONLY_ACTUAL_READER_PHYSICAL_CUSTODY_QUALIFICATION_NOT_OPERATIONAL_FACTORY",
+  "base": "ff41ed204ddc3d19d356c3af6dfc1e56db77a457",
+  "baseTree": "d784d50cb0042fbeb6fe23d8b89051d7a026851d",
+  "originalNativePath": "tests/database/commercial-customer-operating-reader.test.ts",
+  "originalNativeSHA256": "814e6c658e666501d3c223ef2dc1f9b909810f10187eaa2824b975ca04116afa",
+  "newSource": {
+    "tests/fixtures/disposable-reader-owner.ts": "365820290bfa199dcb27f5be62c0575d2e09bcef8c703257640d9b2d8c9091aa",
+    "proposals/reader-physical-custody-qualification/native-custody-cases.proposed.txt": "5d3583605c1526c608305d7a184e0fa85477332b9f06cbd998745641891afc1f"
+  },
+  "packageLockSHA256": "038f80c378263f8c961930661d03801e55d882ad54c5929095234aea3306ce6d",
+  "driver": {
+    "version": "8.23.1",
+    "files": {
+      "package.json": "b1e53333a3d0c2c47c49a5cb919d221135dc03145df740925b899bc2baacc435",
+      "lib/client.js": "ad6aa93c26b0bf26db1f2ebe74216212790a04c41af5585c63760f9fa8322a32",
+      "lib/connection.js": "f93e914bf408657f2301393489da561a5a464e9c30f4f51b681b18a21a5f1c84",
+      "lib/query.js": "ecf885185f0ad8b82c680a184d65bc08462fd2adee047218268c35dade9f8913"
+    }
+  },
+  "unchanged509Characterization": {
+    "commit": "4321e517c5341297c9546cacf2d1801583254546",
+    "path": "proposals/operating-reader-launch-integration/native-connection-characterization.proposed.txt",
+    "sha256": "e495efc7be8ebb59a2bc0d834bcc6fae57e5ab7304c37f537b8dd7261c17efc5",
+    "meaning": "Original alias retirement and output-only cancellation gaps remain unaccepted outside the new participating fixture owner"
+  },
+  "scope": "Ten new native cases only; original23 cases filtered. Original prefix/30second budgets/reader/SQL/grants/defaultOFF/509 integration remain unchanged.",
+  "fixtureOwnerDeadlineMs": 4000,
+  "originalReaderDeadlineMs": 4500,
+  "originalBridgeDeadlineMs": 5000,
+  "physicalKeys": "Original observed database/PID/backend-start tuple plus actual driver identity, process-local permanent markers only",
+  "operatingConnectionFactory": false,
+  "sqlOrGrantsInstalledOnOperationalTarget": false,
+  "genuineAuthAccepted": false,
+  "independentDurableCustodyOrD2Accepted": false,
+  "crossProcessPoolFencingAccepted": false,
+  "release": "NO_GO",
+  "releaseAuthority": "MANDATORY_TRUSTED_FIXTURE_CALLBACK_AFTER_CLEANUP_USING_SEPARATE_UNCHANGED_READER; missing/revoked/stale evidence UNKNOWN; not an operational authority implementation",
+  "freshness": "Absolute4s wrapper deadline, original target, AbortSignal, canonical safe response expiry and original44-source verifier checked after awaited cleanup and release callback",
+  "releaseWitnessLifetime": "Separately owned existing fixture reader stays under original afterEach cleanup; no awaited witness cleanup after its final authority observation. Operational witness custody/least privilege remains unaccepted."
+}
