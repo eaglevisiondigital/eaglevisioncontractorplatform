@@ -2717,7 +2717,7 @@ it('executes the offline compiled three-company fixture proposals locally throug
       net_approved_cost_minor: 10001,
       currency: 'USD',
       quoted_at: '2026-10-16T12:00:00Z',
-      quote_expires_at: '2026-11-16T12:00:00Z',
+      quote_expires_at: new Date(Date.now() + 60 * 60 * 1000).toISOString(),
       baseline_fingerprints: { original: 'a'.repeat(32) },
     })),
     'local-p0-compiled',
