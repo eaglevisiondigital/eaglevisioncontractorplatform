@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useId } from 'react';
 import type { Phase3Repository } from '../../lib/phase3';
 import { estimateUnits, type CatalogItem } from '../../domain/estimating/types';
 import { formatMinor } from '../../domain/estimating/calculation';
@@ -27,6 +27,23 @@ export function Catalog({
     ),
   );
   const currency = data.data?.defaults.currency ?? 'USD';
+  const filtersId = useId();
+  const [search, setSearch] = useState('');
+  const [kind, setKind] = useState('all');
+  const [status, setStatus] = useState('all');
+  const loadedItems = (data.data?.items ?? []).filter(
+    (item) => item.organization_id === org,
+  );
+  const query = search.trim().toLowerCase();
+  const ready = !data.loading && !data.error && data.data;
+  const visibleItems = (ready ? loadedItems : []).filter(
+    (item) =>
+      (kind === 'all' || item.kind === kind) &&
+      (status === 'all' || item.active === (status === 'active')) &&
+      [item.name, item.description, item.category, item.vendor].some((value) =>
+        value.toLowerCase().includes(query),
+      ),
+  );
   return (
     <article className="p3-workspace">
       <div className="section-title">
@@ -41,6 +58,76 @@ export function Catalog({
         estimate lines keep their saved prices when this catalog changes.
       </p>
       <ResourceStatus {...data} />
+      <fieldset>
+        <legend>Find catalog items</legend>
+        <div className="filters">
+          <label>
+            Search loaded catalog items
+            <input
+              type="search"
+              maxLength={254}
+              value={search}
+              aria-describedby={`${filtersId}-hint`}
+              onChange={(event) => setSearch(event.target.value)}
+            />
+          </label>
+          <label>
+            Filter catalog type
+            <select
+              value={kind}
+              onChange={(event) => setKind(event.target.value)}
+            >
+              <option value="all">All catalog types</option>
+              {['material', 'product', 'labor', 'service', 'allowance'].map(
+                (value) => (
+                  <option key={value} value={value}>
+                    {value}
+                  </option>
+                ),
+              )}
+            </select>
+          </label>
+          <label>
+            Filter catalog status
+            <select
+              value={status}
+              onChange={(event) => setStatus(event.target.value)}
+            >
+              <option value="all">All catalog statuses</option>
+              <option value="active">Active</option>
+              <option value="archived">Archived</option>
+            </select>
+          </label>
+          <button
+            type="button"
+            className="secondary"
+            disabled={search === '' && kind === 'all' && status === 'all'}
+            onClick={() => {
+              setSearch('');
+              setKind('all');
+              setStatus('all');
+            }}
+          >
+            Clear catalog filters
+          </button>
+        </div>
+        <p id={`${filtersId}-hint`}>
+          Search loaded names, descriptions, categories and vendors. Filters
+          change this list only; unsaved catalog edits remain open.
+        </p>
+      </fieldset>
+      {ready && (
+        <p role="status">
+          {visibleItems.length} of {loadedItems.length} loaded catalog items
+          shown.
+        </p>
+      )}
+      {ready && loadedItems.length === 0 && (
+        <p>No catalog items available in this view.</p>
+      )}
+      {ready && loadedItems.length > 0 && visibleItems.length === 0 && (
+        <p>No loaded catalog items match these filters.</p>
+      )}
       {editing !== undefined && (
         <FieldsForm
           key={editing?.id ?? 'new'}
@@ -140,8 +227,18 @@ export function Catalog({
           }
         />
       )}
+      {editing !== undefined && (
+        <button
+          type="button"
+          className="secondary"
+          disabled={task.busy}
+          onClick={() => setEditing(undefined)}
+        >
+          Cancel catalog edit
+        </button>
+      )}
       <div className="record-list">
-        {data.data?.items.map((c) => (
+        {visibleItems.map((c) => (
           <button
             className="catalog-row"
             key={c.id}
