@@ -1,3 +1,40 @@
+## Approved-reference continuation · original mobile metrics restored
+
+The Owner confirmed all63 November15 demo screenshots. The accompanying
+Demo-to-Production specification is now supplied/read; its SHA256 is
+88b08e8b93dc885b80ff6d8ae4cec01ad7bd58140239b9e3f94327175a76cfe6.
+Both are design references, not additional source/operational authority.
+
+This isolated child of exact510 restores the original24px navigation line box.
+The preceding22px SVG produced a measured54px mobile row and2px downstream shift;
+the corrected row is56px. Negative-first mobile regression failed before the
+change; nine affected browser cases pass afterward (six unchanged navigation
+cases plus three new metrics cases). Independent six-pair pixel checks show zero
+changed pixels outside actual navigation rectangles at desktop/tablet/mobile sizes,
+without registration/tolerance. No App, locked CSS/artwork, labels, visibility,
+callbacks, API, SQL, permission or source-checker bytes change.
+
+Separate ordinary UI author candidates address source-bound new-intake pagination
+and programmatic form hints/native required selections. Their source and test scopes
+remain separate; this navigation child does not compose or admit them. Full63-state
+visual/functionality parity remains unaccepted. Dashboard KPIs, modal/workflow and
+connected-data requirements are not inferred from these component corrections.
+
+Exact510's hosted Foundation verification cancelled at its45-minute limit; its
+native844PASS/1originalSKIP and field/Cycle6 successes remain retained. A bounded
+unchanged-test diagnostic also reproduces the strict historical invoice guard
+proposal suite DENY (39cases skipped before execution): it rejects510's changed
+build-state/decision/navigation files. This source-compatibility checkpoint remains
+held; no checker, fixture, timeout or mirror trust relaxation is applied here.
+The separate508fixture and509reader integration patches remain UNAPPLIED.
+
+D1–D3, current installed writer/grant/bypass inventory, genuine Auth/MFA, exclusive
+physical connection custody/cancel/discard, independent ACK/spent fences, recovery,
+A01–A12 and distinct VAR/NMI acceptance remain open. Saul2Paul first; Cunningham
+requires separately accepted tenant/customer/Auth/merchant/settlement bindings.
+No operational SQL/grants, tenants, providers/payments/messages, recovery, merge or
+deployment. Release1.0 remains NOT READY / NOT AUTHORIZED.
+
 ## Isolated navigation parity correction — development only
 
 Exact launch #500 remains the reference parent. A separate optional UI candidate

@@ -1,3 +1,18 @@
+## Preserve measured navigation geometry and distinguish design authority
+
+Use the original24px navigation line box for keyed icons, preserving the accepted
+mobile56px row and downstream layout. Keep the original six navigation assertions;
+add a bounded geometry regression and compare only genuinely observed navigation
+rectangles, with no expanded mask or image-registration acceptance shortcut.
+
+Owner-confirmed63 references and supplied specification guide parity requirements.
+They do not approve locked App/checker/CSS/artwork changes, source admission, genuine
+Auth or operational activation. Preserve the strict historical invoice proposal
+source-frame denial until a separately reviewed exact compatibility change is
+approved. Do not characterize component/browser passes as full Foundation or hosted
+business acceptance. Separate forms/intake source candidates retain their own exact
+parent and test evidence. All existing financial and release gates remain closed.
+
 ## Correct existing navigation without opening held destinations
 
 Use keyed decorative SVGs for the existing module/control-plane inventory; an
