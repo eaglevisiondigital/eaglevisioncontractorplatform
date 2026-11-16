@@ -1,11 +1,11 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import type { Operations } from '../lib/operations';
 import type { CompanyProfile } from '../domain/platform';
 import { Customers } from './Customers';
 import { CompanySettings } from './CompanySettings';
 import { Team } from './Team';
 import { IntakeQueue } from './IntakeQueue';
-import { ResourceStatus } from './forms';
+import { Pagination, ResourceStatus } from './forms';
 import { useResource } from './forms-state';
 export function CompanyOperations({
   repo,
@@ -94,30 +94,100 @@ export function NewLeadDashboard({
   org: string;
   onOpen: () => void;
 }) {
+  const [selection, setSelection] = useState({ repo, org, page: 0 });
+  const sameContext = selection.repo === repo && selection.org === org;
+  const page = sameContext ? selection.page : 0;
+  if (!sameContext) setSelection({ repo, org, page: 0 });
   const leads = useResource(
-    useCallback(() => repo.listIntake(org, 'new'), [repo, org]),
+    useCallback(async () => {
+      const identity = { repo, org, page };
+      try {
+        const available = async () => {
+          const [access, modules] = await Promise.all([
+            repo.companyAccess(org),
+            repo.listModules(org),
+          ]);
+          if (!access.intake_read) return 'restricted' as const;
+          if (!modules.some((m) => m.module === 'intake' && m.enabled))
+            return 'unavailable' as const;
+          return 'allowed' as const;
+        };
+        const access = await available();
+        if (access !== 'allowed') return { ...identity, state: access };
+        const result = await repo.listIntake(org, 'new', page);
+        const currentAccess = await available();
+        if (currentAccess !== 'allowed')
+          return { ...identity, state: currentAccess };
+        return { ...identity, state: 'ready' as const, result };
+      } catch (error) {
+        return {
+          ...identity,
+          state: 'error' as const,
+          message: error instanceof Error ? error.message : 'Unable to load',
+        };
+      }
+    }, [repo, org, page]),
   );
+  const current =
+    !leads.loading &&
+    leads.data?.repo === repo &&
+    leads.data.org === org &&
+    leads.data.page === page
+      ? leads.data
+      : undefined;
   return (
-    <article className="lead-dashboard">
+    <article className="lead-dashboard" aria-label="New lead inbox">
       <div className="section-title">
         <div>
           <span className="eyebrow">NEW LEADS</span>
           <h2>Your request review queue</h2>
         </div>
-        <button onClick={onOpen}>Review intake</button>
+        {current?.state === 'ready' && (
+          <button onClick={onOpen}>Review intake</button>
+        )}
       </div>
-      <ResourceStatus {...leads} />
-      {leads.data && (
+      <ResourceStatus
+        loading={!current && !leads.error}
+        error={current?.state === 'error' ? current.message : leads.error}
+      />
+      {current?.state === 'restricted' && (
+        <p>Your company role does not grant access to intake.</p>
+      )}
+      {current?.state === 'unavailable' && (
+        <p>Intake is disabled for the selected organization.</p>
+      )}
+      {current?.state === 'ready' && (
         <>
-          <p>{leads.data.count} new requests await review.</p>
+          <p role="status">{current.result.count} new requests await review.</p>
+          <p className="muted">
+            New intake requests only. This count does not represent all leads,
+            customers, jobs or revenue.
+          </p>
           <div className="record-list">
-            {leads.data.rows.slice(0, 3).map((r) => (
-              <div key={r.id}>
-                <strong>{r.service_category}</strong>
+            {current.result.rows.map((r) => (
+              <section className="request-card" key={r.id}>
+                <div className="section-title">
+                  <span className="tag">
+                    {r.status} · {r.source}
+                  </span>
+                  <small>
+                    Submitted{' '}
+                    <time dateTime={r.created_at}>
+                      {new Date(r.created_at).toLocaleDateString()}
+                    </time>
+                  </small>
+                </div>
+                <h3>{r.service_category}</h3>
                 <p>{r.summary}</p>
-              </div>
+              </section>
             ))}
           </div>
+          {!current.result.rows.length && <p>No new requests in this view.</p>}
+          <Pagination
+            page={page}
+            count={current.result.count}
+            onChange={(next) => setSelection({ repo, org, page: next })}
+          />
         </>
       )}
       <p className="muted">
