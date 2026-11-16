@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useId, useRef, useState, type RefObject } from 'react';
 import type { Operations, Row } from '../lib/operations';
 import type { CompanyProfile } from '../domain/platform';
 import { FieldsForm, ResourceStatus, type Field } from './forms';
@@ -121,6 +121,108 @@ const settingsFields: Field[] = [
     hint: 'One service category per line.',
   },
 ];
+function SettingsNavigation({
+  root,
+  disabled,
+}: {
+  root: RefObject<HTMLElement | null>;
+  disabled: boolean;
+}) {
+  const [query, setQuery] = useState('');
+  const resultsId = useId();
+  const term = query.trim().toLocaleLowerCase();
+  const matches = term
+    ? [
+        ...settingsFields,
+        { name: 'logo_document_id', label: 'Approved company logo' },
+      ].filter((field) => field.label.toLocaleLowerCase().includes(term))
+    : [];
+  function focusField(name: string) {
+    const form = root.current?.querySelector<HTMLFormElement>(
+      'form.operational-form',
+    );
+    const field = form?.elements.namedItem(name);
+    if (
+      field instanceof HTMLInputElement ||
+      field instanceof HTMLSelectElement ||
+      field instanceof HTMLTextAreaElement
+    ) {
+      if (field.disabled) return;
+      field.focus();
+      field.scrollIntoView({ block: 'center', behavior: 'instant' });
+    }
+  }
+  return (
+    <fieldset disabled={disabled}>
+      <legend>Find a company setting</legend>
+      <div
+        role="group"
+        aria-label="Company settings sections"
+        className="actions"
+      >
+        {[
+          ['Business profile', 'name'],
+          ['Branding', 'primary_color'],
+          ['Estimate defaults', 'estimate_prefix'],
+          ['Intake settings', 'intake_enabled'],
+        ].map(([label, name]) => (
+          <button
+            type="button"
+            className="secondary"
+            key={name}
+            onClick={() => focusField(name)}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+      <div className="filters">
+        <label>
+          Search setting names
+          <input
+            type="search"
+            maxLength={200}
+            value={query}
+            aria-controls={resultsId}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="For example, email or estimate"
+          />
+        </label>
+        {query && (
+          <button
+            type="button"
+            className="secondary"
+            onClick={() => setQuery('')}
+          >
+            Clear setting search
+          </button>
+        )}
+      </div>
+      <div id={resultsId}>
+        <p role="status">
+          {term
+            ? `${matches.length} matching setting${matches.length === 1 ? '' : 's'}.`
+            : 'Choose a section or search by setting name. Unsaved values stay in the form.'}
+        </p>
+        {term && matches.length === 0 && (
+          <p>No setting names match this search.</p>
+        )}
+        <div className="actions">
+          {matches.map((field) => (
+            <button
+              type="button"
+              className="secondary"
+              key={field.name}
+              onClick={() => focusField(field.name)}
+            >
+              Go to {field.label}
+            </button>
+          ))}
+        </div>
+      </div>
+    </fieldset>
+  );
+}
 export function CompanySettings({
   repo,
   company,
@@ -131,6 +233,7 @@ export function CompanySettings({
   onSaved: () => void;
 }) {
   const org = company.id;
+  const root = useRef<HTMLElement>(null);
   const settings = useResource(
     useCallback(() => repo.getSettings(org), [repo, org]),
   );
@@ -139,69 +242,80 @@ export function CompanySettings({
   );
   const task = useTask();
   return (
-    <article>
+    <article ref={root}>
       <h2>Company profile and operating defaults</h2>
       <p>
         Brand, business information and estimating defaults belong to this
         company.
       </p>
       <ResourceStatus {...settings} />
+      {!settings.loading && !settings.data && (
+        <div>
+          {!settings.error && <p>No company settings are available.</p>}
+          <button type="button" className="secondary" onClick={settings.reload}>
+            Reload company settings
+          </button>
+        </div>
+      )}
       {settings.data && !settings.loading && (
-        <FieldsForm
-          key={settings.data.updated_at}
-          fields={[
-            ...settingsFields,
-            {
-              name: 'logo_document_id',
-              label: 'Approved company logo',
-              type: 'select',
-              options: [
-                { value: '', label: 'Use company initials' },
-                ...(images.data ?? []).map((d) => ({
-                  value: d.id,
-                  label: d.display_name,
-                })),
-              ],
-              hint: 'Only scanned company images can be selected. Uploads remain disabled.',
-            },
-          ]}
-          initial={{
-            ...settings.data,
-            ...company,
-            service_categories: settings.data.service_categories.join('\n'),
-            logo_document_id: company.logo_document_id ?? '',
-          }}
-          submitLabel="Save company settings"
-          busy={task.busy}
-          onSubmit={async (values) => {
-            const {
-              name,
-              industry,
-              primary_color,
-              accent_color,
-              logo_document_id,
-              ...rest
-            } = values;
-            const profile = {
-              name: String(name),
-              industry: String(industry) as CompanyProfile['industry'],
-              primary_color: String(primary_color),
-              accent_color: String(accent_color),
-              logo_document_id: String(logo_document_id) || null,
-            };
-            const next = {
-              ...rest,
-              service_categories: String(rest.service_categories)
-                .split('\n')
-                .map((s) => s.trim())
-                .filter(Boolean),
-            } as Partial<Row<'company_settings'>>;
-            if (await task.run(() => repo.saveSettings(org, profile, next))) {
-              settings.reload();
-              onSaved();
-            }
-          }}
-        />
+        <>
+          <SettingsNavigation key={org} root={root} disabled={task.busy} />
+          <FieldsForm
+            key={settings.data.updated_at}
+            fields={[
+              ...settingsFields,
+              {
+                name: 'logo_document_id',
+                label: 'Approved company logo',
+                type: 'select',
+                options: [
+                  { value: '', label: 'Use company initials' },
+                  ...(images.data ?? []).map((d) => ({
+                    value: d.id,
+                    label: d.display_name,
+                  })),
+                ],
+                hint: 'Only scanned company images can be selected. Uploads remain disabled.',
+              },
+            ]}
+            initial={{
+              ...settings.data,
+              ...company,
+              service_categories: settings.data.service_categories.join('\n'),
+              logo_document_id: company.logo_document_id ?? '',
+            }}
+            submitLabel="Save company settings"
+            busy={task.busy}
+            onSubmit={async (values) => {
+              const {
+                name,
+                industry,
+                primary_color,
+                accent_color,
+                logo_document_id,
+                ...rest
+              } = values;
+              const profile = {
+                name: String(name),
+                industry: String(industry) as CompanyProfile['industry'],
+                primary_color: String(primary_color),
+                accent_color: String(accent_color),
+                logo_document_id: String(logo_document_id) || null,
+              };
+              const next = {
+                ...rest,
+                service_categories: String(rest.service_categories)
+                  .split('\n')
+                  .map((s) => s.trim())
+                  .filter(Boolean),
+              } as Partial<Row<'company_settings'>>;
+              if (await task.run(() => repo.saveSettings(org, profile, next))) {
+                settings.reload();
+                onSaved();
+              }
+            }}
+          />
+        </>
       )}
       <p role="status">{task.message}</p>
       <div className="notice">
