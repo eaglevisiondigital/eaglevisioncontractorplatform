@@ -1,0 +1,99 @@
+// New characterization ONLY. A passing observation does not accept the observed
+// physical custody/cancellation gap or create any operational capability.
+test('connection characterization: object retirement does not fence another wrapper over the same actual backend', async () => {
+  const f = await setup();
+  const before = (
+    await db.query(
+      'select md5(row_to_json(h)::text) h from private.commercial_invoice_drafts h where id=$1',
+      [draft.invoiceId],
+    )
+  ).rows;
+  f.hooks.afterRead = async () => {
+    throw Error('CONTROLLED LOST READ ACK');
+  };
+  await expect(f.load(f.viewer, sig())).rejects.toThrow('UNKNOWN');
+  f.hooks.afterRead = async () => {};
+  const calls = f.calls.length;
+  await expect(f.make()(f.viewer, sig())).rejects.toThrow('UNKNOWN');
+  expect(f.calls).toHaveLength(calls);
+  const claims = (
+    await f.raw.query("select current_setting('request.jwt.claims') claims")
+  ).rows[0].claims;
+  const bearer =
+    Buffer.from('{}').toString('base64url') +
+    '.' +
+    Buffer.from(claims).toString('base64url') +
+    '.controlled_native_fixture';
+  const alias: GatewaySql = { query: f.sql.query.bind(f.sql) };
+  const aliased = operatingCustomerInvoiceRead(
+    f.auth,
+    bearer,
+    alias,
+    f.backend,
+    binding,
+    { enabled: true, mode: 'disposable-proposal' },
+  );
+  const r = await aliased(f.viewer, sig());
+  expect(r.invoice.issuanceReceiptId).toBe(command);
+  expect(r.payment.status).toBe('UNKNOWN');
+  expect(r.link.href).toBeNull();
+  expect((await f.raw.query('select pg_backend_pid() pid')).rows[0].pid).toBe(
+    f.backend.pid,
+  );
+  expect(
+    (
+      await db.query(
+        'select md5(row_to_json(h)::text) h from private.commercial_invoice_drafts h where id=$1',
+        [draft.invoiceId],
+      )
+    ).rows,
+  ).toEqual(before);
+  // OBSERVED LIMITATION: different GatewaySql objects can share a live physical
+  // connection. Independent exclusive connection ownership remains UNACCEPTED.
+});
+test('connection characterization: abort suppresses output but does not cancel a blocked PostgreSQL statement or discard its backend', async () => {
+  const f = await setup(),
+    blocker = await db.fork!(),
+    controller = new AbortController();
+  let pending: Promise<string> | undefined;
+  try {
+    await blocker.exec(
+      'begin;lock table private.commercial_invoice_drafts in access exclusive mode',
+    );
+    pending = f.load(f.viewer, controller.signal).then(
+      () => 'UNEXPECTED_DATA',
+      () => 'UNKNOWN',
+    );
+    let observed = false;
+    for (let i = 0; i < 200; i++) {
+      const r = await authDb.query<{ w: string }>(
+        'select wait_event_type w from pg_stat_activity where pid=$1',
+        [f.backend.pid],
+      );
+      if (r.rows[0]?.w === 'Lock') {
+        observed = true;
+        break;
+      }
+      await new Promise((r) => setTimeout(r, 5));
+    }
+    expect(observed).toBe(true);
+    controller.abort();
+    expect(await pending).toBe('UNKNOWN');
+    const activity = await authDb.query<{ w: string }>(
+      'select wait_event_type w from pg_stat_activity where pid=$1',
+      [f.backend.pid],
+    );
+    expect(activity.rows[0]?.w).toBe('Lock');
+    await blocker.exec('rollback');
+    expect((await f.raw.query('select pg_backend_pid() pid')).rows[0].pid).toBe(
+      f.backend.pid,
+    );
+    await expect(f.make()(f.viewer, sig())).rejects.toThrow('UNKNOWN');
+    // OBSERVED LIMITATION: output cancellation is not physical cancellation or
+    // socket discard. This test does not mark either operating gate accepted.
+  } finally {
+    await blocker.exec('rollback');
+    await pending;
+    await blocker.close();
+  }
+});
