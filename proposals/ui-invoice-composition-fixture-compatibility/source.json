@@ -1,0 +1,122 @@
+{
+  "classification": "UNAPPLIED_FINITE_DUAL_CONTEXT_520_AND_EXACT_UI_TEST_FIXTURE",
+  "preparationAndPublicationBase": "d5b2c1be0399c9f18e30c89c4e410ecb1543e799",
+  "baseTree": "656a079b5edaa1a2a889be605120fb6e4f161a0f",
+  "baseFiles": 2501,
+  "old520ProposalFilesUnchanged": 30,
+  "target": "tests/invoice-guard-admission-proposal.test.ts",
+  "mode": "100644",
+  "beforeSha256": "d93d3b015ad1a92e367881a816cc4b14c7f0776630569c067547aec4ba808408",
+  "afterSha256": "682627ce0a9eabdf466b661f3d0177d83262c49ec00625c951be82d84762cf3f",
+  "patch": "fixture.patch",
+  "patchSha256": "d1151eb828356e526f2e1449c87264afab9d69f9a86f4e3a9412cc1f25bda3e7",
+  "wrapperSha256": "f6fba0d22b3c32a090607329659343cae1f7d53c1c124b565d736ce3e65d0973",
+  "manifestSha256": "ccfd9a4a7addd81837c92e17fe2ba5dad8e2702ba18e21c081e25490bd4b24be",
+  "controlsSha256": "e83194a6a67325ee4706362f5ea8cdb279455e5863322630208c6c462f964655",
+  "original39TailSha256": "51ad3788d5b7a8e622b654997122f96c10554b6375d26b6c5ef9245a6442247a",
+  "caseAndHookTimeoutMs": 30000,
+  "actual520Header": "UNCHANGED_IN_PREPARATION",
+  "canonicalQualifier": "UNCHANGED",
+  "nativeAuthor": {
+    "commit": "dc8aa3c1f9979b5e37ee1aaa99d249a3969429f7",
+    "parent": "223e235be26c37271cb67e3c1f1803feb54599a6",
+    "tree": "a06c530b5dbde09c81acc69415be7a08ad091ec5",
+    "paths": {
+      "tests/database/property.test.ts": {
+        "beforeSha256": "912b1d50c20a3eb5f8e58ffed4ef81ad1cf18bc7379c6a4f09e663f8e476fcaf",
+        "afterSha256": "c429cee25729539b83281f7e337e1bbec3f44daf8ed0101af48a9f8fcc307da7",
+        "afterOid": "0e597a05ac7d4d6feaa99bca66099638acf517d4",
+        "mode": "100644"
+      },
+      "tests/helpers/property-p1-fixture.ts": {
+        "beforeSha256": "b1ddad5bb1cdb105db29eb5b992f04512cea4af6a2c688faab024ab86f4b43b6",
+        "afterSha256": "df95bf0fc63496e3b5ddb695d9c9c4b8d55fe8fecc36c8af61c7de5b9e5857dc",
+        "afterOid": "7b4e761838817771dbc9376347268e1459ba9f01",
+        "mode": "100644"
+      }
+    },
+    "delta": "M\ttests/database/property.test.ts\nM\ttests/helpers/property-p1-fixture.ts"
+  },
+  "completeSourceContexts": {
+    "approved520": {
+      "normalizedTree": "656a079b5edaa1a2a889be605120fb6e4f161a0f",
+      "sourceFiles": 2501
+    },
+    "ui-composition": {
+      "normalizedTree": "736b21fe40fbfd246e0682e99b42c40f27948820",
+      "sourceFiles": 2510,
+      "sourceChanges": "2M9A_EXACT11",
+      "uiPatchSha256": "0d2189262d296c653ac3bae71ce8f884d62ad0a2c180ca6f5383a1f53c39b42b"
+    }
+  },
+  "exactProposedHeaderNormalization": "Only exact approved520 header or this exact proposed header; all other original39/body/budget/pin bytes unchanged",
+  "normalizedTreesAreNotFutureGitCommitTrees": true,
+  "capturedContextTransitions": "BASE_TO_UI_AND_UI_TO_BASE_DENIED",
+  "unknownMixAndNativeFullRevert": "DENIED_IN_BOTH_CONTEXTS",
+  "existingHistoricalPorts": {
+    "count": 7,
+    "paths": [
+      "CURRENT_BUILD_STATE.md",
+      "DECISIONS.md",
+      "src/components/CompanyOperations.tsx",
+      "src/components/WorkspaceNavigation.tsx",
+      "src/components/forms.tsx",
+      "tests/database/property.test.ts",
+      "tests/helpers/property-p1-fixture.ts"
+    ],
+    "newReadPorts": 0,
+    "fixtureBodies": "REUSED_FROM_UNCHANGED_APPROVED520_PACKAGE",
+    "unknownMissingCurrentBodyFallback": false
+  },
+  "ownNamespace": {
+    "files": 21,
+    "scope": "CLOSED_TEST_FIXTURE_TCB_NOT_BUSINESS_SOURCE_AUTHORITY",
+    "otherNewProposalNamespaceDependency": false
+  },
+  "uiPacket": {
+    "commit": "6201282d9428cb868936c562e06ae7aa028896f0",
+    "identitySha256": "41ff6623a443b52777b720dcb71b358a7935393df72398dc04577bb573835407",
+    "patchSha256": "0d2189262d296c653ac3bae71ce8f884d62ad0a2c180ca6f5383a1f53c39b42b",
+    "afterPayloads": 11,
+    "immutableOriginDataOnly": true,
+    "strict620QualificationOnFutureHeaderChild": "NOT_CLAIMED_REQUIRES_NEW_ACTUAL_PARENT_BEFORE_AFTER_BINDING",
+    "integrationApproval": "HELD_SEPARATE"
+  },
+  "primary": {
+    "newFocusedControls": {
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0,
+      "reportSha256": "416df129ed42680d801037a952ac53f3c0c3ff2202dcc150e5616ea3e8ff538b"
+    },
+    "original39ChangedUiFrameOnly": {
+      "passed": 39,
+      "failed": 0,
+      "skipped": 0,
+      "reportSha256": "ce4444bde95707e2fcd3ce1c9a182b80942724c9912ffe65f3642f3b15fa2e58"
+    },
+    "unchanged52039And32Suites": "RETAINED_NOT_RERUN"
+  },
+  "checks": {
+    "strictTypes": "PASS",
+    "namespaceAndProposedHeaderLint": "PASS",
+    "namespaceAndProposedHeaderFormatting": "PASS",
+    "features": "25records/5locks/13bindings PASS",
+    "originalProtectedPins": 128
+  },
+  "independentReviewRequired": true,
+  "futureHeaderAuthorParent": null,
+  "futureHeaderParentBinding": "EXTERNAL_EXACT_REAL_PUBLISHED_ORDINARY_PROPOSAL_COMMIT_REQUIRED_NO_SELF_HASH",
+  "nextProtectedDecision": "ONE_HEADER_PATCH_ON_REAL_520_PROPOSAL_CHILD",
+  "laterUiDecision": "SEPARATE_EXACT11_UI_PROMOTION_ON_REAL_HEADER_AUTHOR_CHILD_WITH_NEW_SOURCE_BINDING",
+  "headerApproval": "NOT_GRANTED",
+  "uiPromotion": "NOT_GRANTED",
+  "508AckCheckpoint": "SEPARATE_HELD",
+  "sourceAdmissionWholeFoundationOrHostedAcceptance": false,
+  "runtimeSqlAuthFinancialExecution": false,
+  "schemaOrMigrationChanged": false,
+  "mergeAuthorized": false,
+  "deployAuthorized": false,
+  "operationalReady": false,
+  "release": "NO_GO_NOT_READY_NOT_AUTHORIZED"
+}
