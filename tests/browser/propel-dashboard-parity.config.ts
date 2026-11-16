@@ -1,0 +1,18 @@
+import { defineConfig, devices } from '@playwright/test';
+export default defineConfig({
+  testDir: '.',
+  testMatch: 'propel-dashboard-parity.spec.ts',
+  fullyParallel: true,
+  workers: 2,
+  projects: [
+    { name: 'desktop', use: { ...devices['Desktop Chrome'] } },
+    {
+      name: 'tablet',
+      use: { ...devices['iPad Mini'], defaultBrowserType: 'chromium' },
+    },
+    {
+      name: 'mobile',
+      use: { ...devices['iPhone 13'], defaultBrowserType: 'chromium' },
+    },
+  ],
+});
