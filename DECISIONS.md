@@ -1,3 +1,15 @@
+## Correct existing navigation without opening held destinations
+
+Use keyed decorative SVGs for the existing module/control-plane inventory; an
+unknown name receives a safe own-property fallback. Keep accessible button labels,
+selection callbacks, phase/preview filtering and original design anchors. Resolve
+initial control-plane Overview to its already-highlighted Organizations destination
+for matching aria-current semantics. Do not add seventeen inert demo destinations
+or alter protected App/locked styles to imply accepted module functionality.
+The private 63-reference comparison remains evidence of gaps, not operational
+acceptance or a replacement for its missing Demo-to-Production specification.
+All financial, tenant, Auth and independent release gates remain unchanged.
+
 ## Bind C17 checker preparation to the actual approved source author
 
 Preserve approved76ee's exact406 parent, M1/A1 patch/note and original source pins.
