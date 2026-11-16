@@ -1,0 +1,368 @@
+// New disposable-only tail. Original #506 prefix and #509 gap evidence stay exact.
+import { disposableReaderOwner } from '../fixtures/disposable-reader-owner';
+import type {
+  CommercialCustomerTarget,
+  CommercialCustomerResponse,
+} from '../../src/components/invoices/commercial-customer-read';
+
+async function ownedReaderFixture(
+  f: Awaited<ReturnType<typeof setup>>,
+  options: {
+    deadlineMs?: number;
+    cancelTransport?: 'pinned-driver' | 'unavailable-fixture';
+    missingProbe?: boolean;
+    missingRelease?: boolean;
+    holdCleanup?: () => Promise<void>;
+  } = {},
+) {
+  const present = async () => {
+    await options.holdCleanup?.();
+    if (options.missingProbe)
+      throw Error('CONTROLLED MISSING BACKEND OBSERVATION');
+    const r = await authDb.query<{ present: boolean }>(
+      'select exists(select 1 from pg_stat_activity where datname=$1 and pid=$2 and backend_start::text=$3) present',
+      [f.backend.database, f.backend.pid, f.backend.backend_start],
+    );
+    return r.rows[0].present;
+  };
+  const owner = disposableReaderOwner(f.raw, f.backend, present, {
+    enabled: true,
+    mode: 'owned-pg17-unix-socket-fixture',
+    deadlineMs: options.deadlineMs,
+    cancelTransport: options.cancelTransport,
+  });
+  const claims = (
+    await f.raw.query("select current_setting('request.jwt.claims') claims")
+  ).rows[0].claims;
+  const bearer =
+    Buffer.from('{}').toString('base64url') +
+    '.' +
+    Buffer.from(claims).toString('base64url') +
+    '.controlled_native_fixture';
+  // Separate original fixture reader is the trusted release-authority witness.
+  // Its connection remains fixture-owned until the original afterEach closes it;
+  // no awaited witness cleanup is inserted after the final authority observation.
+  const witness = await setup();
+  let releaseChecks = 0;
+  const releaseCurrent = async (
+    target: CommercialCustomerTarget,
+    expected: CommercialCustomerResponse,
+    signal: AbortSignal,
+  ) => {
+    releaseChecks++;
+    if (options.missingRelease)
+      throw Error('CONTROLLED MISSING RELEASE AUTHORITY');
+    const fresh = await witness.load(target, signal);
+    expect(fresh.invoice).toEqual(expected.invoice);
+    expect(fresh.payment).toEqual(expected.payment);
+    expect(fresh.link.status).toBe('DISABLED');
+  };
+  return {
+    owner,
+    first: owner.reader(f.auth, bearer, binding, releaseCurrent),
+    alias: owner.reader(f.auth, bearer, binding, releaseCurrent),
+    releaseChecks: () => releaseChecks,
+  };
+}
+async function blockedOn(f: Awaited<ReturnType<typeof setup>>) {
+  for (let i = 0; i < 200; i++) {
+    const r = await authDb.query<{ w: string }>(
+      'select wait_event_type w from pg_stat_activity where pid=$1',
+      [f.backend.pid],
+    );
+    if (r.rows[0]?.w === 'Lock') return;
+    await new Promise((resolve) => setTimeout(resolve, 5));
+  }
+  throw Error('Original reader SQL did not enter the observed lock wait');
+}
+async function invoiceFingerprint() {
+  return (
+    await authDb.query(
+      'select md5(row_to_json(h)::text) h from private.commercial_invoice_drafts h where id=$1',
+      [draft.invoiceId],
+    )
+  ).rows;
+}
+async function ownsAbsent(f: Awaited<ReturnType<typeof setup>>) {
+  return (
+    (
+      await authDb.query(
+        'select pid from pg_stat_activity where datname=$1 and pid=$2 and backend_start::text=$3',
+        [f.backend.database, f.backend.pid, f.backend.backend_start],
+      )
+    ).rows.length === 0
+  );
+}
+
+test('physical custody qualification: success preserves safe receipt and discards its exclusive backend before return', async () => {
+  const f = await setup(),
+    before = await invoiceFingerprint(),
+    p = await ownedReaderFixture(f);
+  const r = await p.first(f.viewer, sig()).catch((error) => {
+    throw new Error(
+      'FICTIONAL CUSTODY SNAPSHOT ' + JSON.stringify(p.owner.snapshot()),
+      { cause: error },
+    );
+  });
+  expect(r.invoice.issuanceReceiptId).toBe(command);
+  expect(r.payment.status).toBe('UNKNOWN');
+  expect(r.link.href).toBeNull();
+  expect(p.owner.snapshot()).toMatchObject({
+    phase: 'closed',
+    completedRead: true,
+    releaseVerified: true,
+    socketEnded: true,
+    backendAbsent: true,
+    cleanupUncertain: false,
+    operationalAcceptance: false,
+  });
+  expect(await ownsAbsent(f)).toBe(true);
+  const calls = p.owner.snapshot().queries;
+  await expect(p.alias(f.viewer, sig())).rejects.toThrow('UNKNOWN');
+  expect(p.owner.snapshot().queries).toBe(calls);
+  expect(await invoiceFingerprint()).toEqual(before);
+});
+test('physical custody qualification: observed abort cancels actual SQL57014 and discards the exact backend while the blocker remains', async () => {
+  const f = await setup(),
+    before = await invoiceFingerprint(),
+    p = await ownedReaderFixture(f),
+    blocker = await db.fork!(),
+    controller = new AbortController();
+  expect(
+    (await f.raw.query('show statement_timeout')).rows[0].statement_timeout,
+  ).toBe('0');
+  expect((await f.raw.query('show lock_timeout')).rows[0].lock_timeout).toBe(
+    '0',
+  );
+  let pending: Promise<string> | undefined;
+  try {
+    await blocker.exec(
+      'begin;lock table private.commercial_invoice_drafts in access exclusive mode',
+    );
+    pending = p.first(f.viewer, controller.signal).then(
+      () => 'UNEXPECTED_DATA',
+      () => 'UNKNOWN',
+    );
+    await blockedOn(f);
+    controller.abort();
+    expect(await pending).toBe('UNKNOWN');
+    expect(p.owner.snapshot()).toMatchObject({
+      cancelRequested: true,
+      sqlCancellation: true,
+      socketEnded: true,
+      backendAbsent: true,
+      cleanupUncertain: false,
+    });
+    expect(p.owner.snapshot().sqlStates).toContain('57014');
+    expect(await ownsAbsent(f)).toBe(true);
+    await expect(f.raw.query('select 1')).rejects.toThrow();
+    expect((await blocker.query('select 1 v')).rows[0].v).toBe(1);
+  } finally {
+    await blocker.exec('rollback');
+    await pending;
+    await blocker.close();
+  }
+  expect(await invoiceFingerprint()).toEqual(before);
+});
+test('physical custody qualification: distinct reader facades share one reservation and cannot renew a concurrent lease', async () => {
+  const f = await setup(),
+    p = await ownedReaderFixture(f),
+    blocker = await db.fork!();
+  let pending: Promise<string> | undefined;
+  try {
+    expect(() =>
+      disposableReaderOwner(f.raw, f.backend, async () => true, {
+        enabled: true,
+        mode: 'owned-pg17-unix-socket-fixture',
+      }),
+    ).toThrow('UNKNOWN');
+    await blocker.exec(
+      'begin;lock table private.commercial_invoice_drafts in access exclusive mode',
+    );
+    pending = p.first(f.viewer, sig()).then(
+      () => 'UNEXPECTED_DATA',
+      () => 'UNKNOWN',
+    );
+    await blockedOn(f);
+    const dispatched = p.owner.snapshot().queries;
+    await expect(p.alias(f.viewer, sig())).rejects.toThrow('UNKNOWN');
+    expect(await pending).toBe('UNKNOWN');
+    expect(p.owner.snapshot().queries).toBe(dispatched);
+    expect(p.owner.snapshot()).toMatchObject({
+      sqlCancellation: true,
+      backendAbsent: true,
+    });
+  } finally {
+    await blocker.exec('rollback');
+    await pending;
+    await blocker.close();
+  }
+});
+test('physical custody qualification: owner deadline performs actual cancellation and never permits read replay', async () => {
+  const f = await setup(),
+    p = await ownedReaderFixture(f, { deadlineMs: 300 }),
+    blocker = await db.fork!();
+  let pending: Promise<string> | undefined;
+  try {
+    await blocker.exec(
+      'begin;lock table private.commercial_invoice_drafts in access exclusive mode',
+    );
+    pending = p.first(f.viewer, sig()).then(
+      () => 'UNEXPECTED_DATA',
+      () => 'UNKNOWN',
+    );
+    await blockedOn(f);
+    expect(await pending).toBe('UNKNOWN');
+    expect(p.owner.snapshot()).toMatchObject({
+      cancelRequested: true,
+      sqlCancellation: true,
+      socketEnded: true,
+      backendAbsent: true,
+    });
+    await expect(p.first(f.viewer, sig())).rejects.toThrow('UNKNOWN');
+  } finally {
+    await blocker.exec('rollback');
+    await pending;
+    await blocker.close();
+  }
+});
+test('physical custody qualification: preaborted read sends no reader SQL and discards the unused lease', async () => {
+  const f = await setup(),
+    p = await ownedReaderFixture(f),
+    controller = new AbortController();
+  controller.abort();
+  await expect(p.first(f.viewer, controller.signal)).rejects.toThrow('UNKNOWN');
+  expect(p.owner.snapshot()).toMatchObject({
+    queries: 0,
+    cancelRequested: false,
+    socketEnded: true,
+    backendAbsent: true,
+  });
+  await expect(p.alias(f.viewer, sig())).rejects.toThrow('UNKNOWN');
+});
+test('physical custody qualification: unavailable cancellation remains quarantined even when the socket reports ended', async () => {
+  const f = await setup(),
+    p = await ownedReaderFixture(f, { cancelTransport: 'unavailable-fixture' }),
+    blocker = await db.fork!(),
+    controller = new AbortController();
+  let pending: Promise<string> | undefined;
+  try {
+    await blocker.exec(
+      'begin;lock table private.commercial_invoice_drafts in access exclusive mode',
+    );
+    pending = p.first(f.viewer, controller.signal).then(
+      () => 'UNEXPECTED_DATA',
+      () => 'UNKNOWN',
+    );
+    await blockedOn(f);
+    controller.abort();
+    expect(await pending).toBe('UNKNOWN');
+    expect(p.owner.snapshot()).toMatchObject({
+      phase: 'quarantined',
+      cancelRequested: true,
+      sqlCancellation: false,
+      cleanupUncertain: true,
+    });
+    await expect(p.alias(f.viewer, sig())).rejects.toThrow('UNKNOWN');
+  } finally {
+    await blocker.exec('rollback');
+    await pending;
+    await blocker.close();
+  }
+});
+test('physical custody qualification: missing terminal backend evidence withholds a correct customer projection', async () => {
+  const f = await setup(),
+    p = await ownedReaderFixture(f, { missingProbe: true });
+  await expect(p.first(f.viewer, sig())).rejects.toThrow('UNKNOWN');
+  expect(p.owner.snapshot()).toMatchObject({
+    phase: 'quarantined',
+    completedRead: true,
+    socketEnded: true,
+    backendAbsent: false,
+    cleanupUncertain: true,
+  });
+  expect(await ownsAbsent(f)).toBe(true);
+  await expect(p.alias(f.viewer, sig())).rejects.toThrow('UNKNOWN');
+});
+
+function cleanupBarrier() {
+  let entered!: () => void, resume!: () => void;
+  const began = new Promise<void>((resolve) => {
+    entered = resolve;
+  });
+  const released = new Promise<void>((resolve) => {
+    resume = resolve;
+  });
+  return {
+    began,
+    resume,
+    hold: async () => {
+      entered();
+      await released;
+    },
+  };
+}
+test('physical custody qualification: customer session revoked during awaited cleanup withholds a completed projection', async () => {
+  const f = await setup(),
+    barrier = cleanupBarrier(),
+    p = await ownedReaderFixture(f, { holdCleanup: barrier.hold });
+  const pending = p.first(f.viewer, sig()).then(
+    () => 'UNEXPECTED_DATA',
+    () => 'UNKNOWN',
+  );
+  try {
+    await barrier.began;
+    expect(p.owner.snapshot().completedRead).toBe(true);
+    await authDb.query(
+      "update auth.sessions set not_after=clock_timestamp()-interval '1 second' where id=$1",
+      [f.c.customerSession],
+    );
+  } finally {
+    barrier.resume();
+  }
+  expect(await pending).toBe('UNKNOWN');
+  expect(p.releaseChecks()).toBe(1);
+  expect(p.owner.snapshot()).toMatchObject({
+    socketEnded: true,
+    backendAbsent: true,
+    releaseVerified: false,
+    withheld: true,
+  });
+});
+test('physical custody qualification: target changes during awaited cleanup cannot release the prior projection', async () => {
+  const f = await setup(),
+    barrier = cleanupBarrier(),
+    p = await ownedReaderFixture(f, { holdCleanup: barrier.hold });
+  const pending = p.first(f.viewer, sig()).then(
+    () => 'UNEXPECTED_DATA',
+    () => 'UNKNOWN',
+  );
+  try {
+    await barrier.began;
+    expect(p.owner.snapshot().completedRead).toBe(true);
+    f.viewer.propertyLabel = 'Changed fictional target during cleanup';
+  } finally {
+    barrier.resume();
+  }
+  expect(await pending).toBe('UNKNOWN');
+  expect(p.releaseChecks()).toBe(0);
+  expect(p.owner.snapshot()).toMatchObject({
+    socketEnded: true,
+    backendAbsent: true,
+    releaseVerified: false,
+    withheld: true,
+  });
+});
+test('physical custody qualification: missing post-cleanup authority never publishes a completed safe invoice', async () => {
+  const f = await setup(),
+    p = await ownedReaderFixture(f, { missingRelease: true });
+  await expect(p.first(f.viewer, sig())).rejects.toThrow('UNKNOWN');
+  expect(p.owner.snapshot()).toMatchObject({
+    completedRead: true,
+    socketEnded: true,
+    backendAbsent: true,
+    releaseVerified: false,
+    withheld: true,
+  });
+  expect(p.releaseChecks()).toBe(1);
+});
