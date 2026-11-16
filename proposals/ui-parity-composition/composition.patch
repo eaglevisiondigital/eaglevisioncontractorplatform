@@ -1,0 +1,1162 @@
+diff --git a/CURRENT_BUILD_STATE.md b/CURRENT_BUILD_STATE.md
+index 99c448d688bc6c911d24f4a72788a99abe941a69..3e8962360a9948175a0a8b3b0a2503921defc4d7 100644
+--- a/CURRENT_BUILD_STATE.md
++++ b/CURRENT_BUILD_STATE.md
+@@ -1,3 +1,40 @@
++## Approved-reference continuation · original mobile metrics restored
++
++The Owner confirmed all63 November15 demo screenshots. The accompanying
++Demo-to-Production specification is now supplied/read; its SHA256 is
++88b08e8b93dc885b80ff6d8ae4cec01ad7bd58140239b9e3f94327175a76cfe6.
++Both are design references, not additional source/operational authority.
++
++This isolated child of exact510 restores the original24px navigation line box.
++The preceding22px SVG produced a measured54px mobile row and2px downstream shift;
++the corrected row is56px. Negative-first mobile regression failed before the
++change; nine affected browser cases pass afterward (six unchanged navigation
++cases plus three new metrics cases). Independent six-pair pixel checks show zero
++changed pixels outside actual navigation rectangles at desktop/tablet/mobile sizes,
++without registration/tolerance. No App, locked CSS/artwork, labels, visibility,
++callbacks, API, SQL, permission or source-checker bytes change.
++
++Separate ordinary UI author candidates address source-bound new-intake pagination
++and programmatic form hints/native required selections. Their source and test scopes
++remain separate; this navigation child does not compose or admit them. Full63-state
++visual/functionality parity remains unaccepted. Dashboard KPIs, modal/workflow and
++connected-data requirements are not inferred from these component corrections.
++
++Exact510's hosted Foundation verification cancelled at its45-minute limit; its
++native844PASS/1originalSKIP and field/Cycle6 successes remain retained. A bounded
++unchanged-test diagnostic also reproduces the strict historical invoice guard
++proposal suite DENY (39cases skipped before execution): it rejects510's changed
++build-state/decision/navigation files. This source-compatibility checkpoint remains
++held; no checker, fixture, timeout or mirror trust relaxation is applied here.
++The separate508fixture and509reader integration patches remain UNAPPLIED.
++
++D1–D3, current installed writer/grant/bypass inventory, genuine Auth/MFA, exclusive
++physical connection custody/cancel/discard, independent ACK/spent fences, recovery,
++A01–A12 and distinct VAR/NMI acceptance remain open. Saul2Paul first; Cunningham
++requires separately accepted tenant/customer/Auth/merchant/settlement bindings.
++No operational SQL/grants, tenants, providers/payments/messages, recovery, merge or
++deployment. Release1.0 remains NOT READY / NOT AUTHORIZED.
++
+ ## Isolated navigation parity correction — development only
+ 
+ Exact launch #500 remains the reference parent. A separate optional UI candidate
+diff --git a/DECISIONS.md b/DECISIONS.md
+index 69c0d00d8ca189b955de3bf6d42b12464068e928..c2cf0af13c2e73bc6767bfe0a5b0805be4fa3d32 100644
+--- a/DECISIONS.md
++++ b/DECISIONS.md
+@@ -1,3 +1,18 @@
++## Preserve measured navigation geometry and distinguish design authority
++
++Use the original24px navigation line box for keyed icons, preserving the accepted
++mobile56px row and downstream layout. Keep the original six navigation assertions;
++add a bounded geometry regression and compare only genuinely observed navigation
++rectangles, with no expanded mask or image-registration acceptance shortcut.
++
++Owner-confirmed63 references and supplied specification guide parity requirements.
++They do not approve locked App/checker/CSS/artwork changes, source admission, genuine
++Auth or operational activation. Preserve the strict historical invoice proposal
++source-frame denial until a separately reviewed exact compatibility change is
++approved. Do not characterize component/browser passes as full Foundation or hosted
++business acceptance. Separate forms/intake source candidates retain their own exact
++parent and test evidence. All existing financial and release gates remain closed.
++
+ ## Correct existing navigation without opening held destinations
+ 
+ Use keyed decorative SVGs for the existing module/control-plane inventory; an
+diff --git a/src/components/WorkspaceNavigationIcon.tsx b/src/components/WorkspaceNavigationIcon.tsx
+index f9209a8d04ea7dfb7d5e54a407d1730900707861..86189ed25c60509f902130d18174c1f41d484ca2 100644
+--- a/src/components/WorkspaceNavigationIcon.tsx
++++ b/src/components/WorkspaceNavigationIcon.tsx
+@@ -68,7 +68,7 @@ export function WorkspaceNavigationIcon({ name }: { name: string }) {
+       aria-hidden="true"
+       focusable="false"
+       width="22"
+-      height="22"
++      height="24"
+       viewBox="0 0 24 24"
+       fill="none"
+       stroke="currentColor"
+diff --git a/tests/browser/workspace-navigation-metrics.spec.ts b/tests/browser/workspace-navigation-metrics.spec.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..0d6630f86d3a2d3f4cfe8a04559150104fd1de21
+--- /dev/null
++++ b/tests/browser/workspace-navigation-metrics.spec.ts
+@@ -0,0 +1,45 @@
++import { test, expect } from '@playwright/test';
++
++test('retains the original mobile navigation line box and readable existing controls', async ({
++  page,
++  baseURL,
++}, info) => {
++  if (!baseURL) throw Error('Explicit loopback preview required');
++  const origin = new URL(baseURL);
++  expect(['127.0.0.1', 'localhost']).toContain(origin.hostname);
++  await page.route('**/*', (route) =>
++    new URL(route.request().url()).origin === origin.origin
++      ? route.continue()
++      : route.abort(),
++  );
++  for (const [label, path] of [
++    ['workspace', '/preview'],
++    ['platform', '/preview/super-admin'],
++  ]) {
++    await page.goto(path);
++    const nav = page.getByRole('navigation', {
++      name: 'Workspace',
++      exact: true,
++    });
++    await expect(nav).toBeVisible();
++    const box = await nav.boundingBox();
++    expect(box).not.toBeNull();
++    if ((page.viewportSize()?.width ?? 0) <= 760) {
++      // Original #500/#510-before evidence: 56px row. The 22px SVG introduced
++      // a 54px row and moved every following mobile pixel up by two pixels.
++      expect(box!.height).toBe(56);
++    }
++    for (const button of await nav.getByRole('button').all()) {
++      expect((await button.boundingBox())!.height).toBeGreaterThanOrEqual(44);
++    }
++    expect(
++      await page.evaluate(
++        () => document.documentElement.scrollWidth <= innerWidth + 1,
++      ),
++    ).toBe(true);
++    await page.screenshot({
++      path: info.outputPath(label + '-metrics.png'),
++      fullPage: true,
++    });
++  }
++});
+diff --git a/playwright.forms-accessibility.config.ts b/playwright.forms-accessibility.config.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..a225f26084c7bd03879e485c1fec26a86bfc4bbf
+--- /dev/null
++++ b/playwright.forms-accessibility.config.ts
+@@ -0,0 +1,22 @@
++import { defineConfig, devices } from '@playwright/test';
++
++export default defineConfig({
++  testDir: './tests/browser',
++  testMatch: 'forms-accessibility.pw.ts',
++  workers: 1,
++  retries: 0,
++  use: { baseURL: 'http://127.0.0.1:4325' },
++  webServer: {
++    command:
++      'VITE_CONTRACTOR_JOURNEY_PREVIEW=true npm run dev -- --host 127.0.0.1 --port 4325 --strictPort',
++    url: 'http://127.0.0.1:4325',
++    reuseExistingServer: false,
++  },
++  projects: [
++    { name: 'desktop', use: { ...devices['Desktop Chrome'] } },
++    {
++      name: 'mobile',
++      use: { ...devices['iPhone 13'], defaultBrowserType: 'chromium' },
++    },
++  ],
++});
+diff --git a/preview-form-accessibility-test.html b/preview-form-accessibility-test.html
+new file mode 100644
+index 0000000000000000000000000000000000000000..0d3160d7ee00547a1a33623a90c1f58147875ae8
+--- /dev/null
++++ b/preview-form-accessibility-test.html
+@@ -0,0 +1,15 @@
++<!doctype html>
++<html lang="en">
++  <head>
++    <meta charset="UTF-8" />
++    <meta name="viewport" content="width=device-width,initial-scale=1" />
++    <title>Form accessibility regression fixture</title>
++  </head>
++  <body>
++    <div id="root"></div>
++    <script
++      type="module"
++      src="/tests/browser/fixtures/form-accessibility.tsx"
++    ></script>
++  </body>
++</html>
+diff --git a/src/components/forms.tsx b/src/components/forms.tsx
+index c7a6b238867919d99359869a4d7d80c072ad90d5..23d62ab73b52961cc73052ebd684524cedc65e5d 100644
+--- a/src/components/forms.tsx
++++ b/src/components/forms.tsx
+@@ -1,4 +1,4 @@
+-import { type FormEvent } from 'react';
++import { type FormEvent, useId } from 'react';
+ export interface Field {
+   name: string;
+   label: string;
+@@ -37,6 +37,7 @@ export function FieldsForm({
+   busy?: boolean;
+   honeypot?: boolean;
+ }) {
++  const formId = useId();
+   function submit(event: FormEvent<HTMLFormElement>) {
+     event.preventDefault();
+     const data = new FormData(event.currentTarget);
+@@ -69,7 +70,7 @@ export function FieldsForm({
+         </label>
+       )}
+       <div className="form-grid">
+-        {fields.map((f) => (
++        {fields.map((f, index) => (
+           <label
+             key={f.name}
+             className={
+@@ -84,6 +85,9 @@ export function FieldsForm({
+             {f.type === 'textarea' ? (
+               <textarea
+                 name={f.name}
++                aria-describedby={
++                  f.hint ? `${formId}-hint-${index}` : undefined
++                }
+                 defaultValue={String(initial[f.name] ?? '')}
+                 required={f.required}
+                 maxLength={f.maxLength ?? 5000}
+@@ -92,6 +96,10 @@ export function FieldsForm({
+             ) : f.type === 'select' ? (
+               <select
+                 name={f.name}
++                aria-describedby={
++                  f.hint ? `${formId}-hint-${index}` : undefined
++                }
++                required={f.required}
+                 defaultValue={String(
+                   initial[f.name] ?? f.options?.[0]?.value ?? '',
+                 )}
+@@ -106,11 +114,17 @@ export function FieldsForm({
+               <input
+                 type="checkbox"
+                 name={f.name}
++                aria-describedby={
++                  f.hint ? `${formId}-hint-${index}` : undefined
++                }
+                 defaultChecked={initial[f.name] === true}
+               />
+             ) : (
+               <input
+                 name={f.name}
++                aria-describedby={
++                  f.hint ? `${formId}-hint-${index}` : undefined
++                }
+                 type={f.type ?? 'text'}
+                 defaultValue={String(initial[f.name] ?? '')}
+                 required={f.required}
+@@ -120,7 +134,7 @@ export function FieldsForm({
+                 step={f.type === 'number' ? 1 : undefined}
+               />
+             )}{' '}
+-            {f.hint && <small>{f.hint}</small>}
++            {f.hint && <small id={`${formId}-hint-${index}`}>{f.hint}</small>}
+           </label>
+         ))}
+       </div>
+diff --git a/tests/browser/fixtures/form-accessibility.tsx b/tests/browser/fixtures/form-accessibility.tsx
+new file mode 100644
+index 0000000000000000000000000000000000000000..50b3f3591ca9c80223a2519e750c990f09d20e2f
+--- /dev/null
++++ b/tests/browser/fixtures/form-accessibility.tsx
+@@ -0,0 +1,68 @@
++import { createRoot } from 'react-dom/client';
++import { useState } from 'react';
++import { FieldsForm, type Field } from '../../../src/components/forms';
++import '../../../src/styles.css';
++
++// Loopback-only presentation fixture; there is no Operations repository or writer.
++if (
++  import.meta.env.DEV &&
++  import.meta.env.VITE_CONTRACTOR_JOURNEY_PREVIEW === 'true' &&
++  location.hostname === '127.0.0.1'
++) {
++  const fields: Field[] = [
++    { name: 'name', label: 'Name', hint: 'Use fictional text only.' },
++    {
++      name: 'notes',
++      label: 'Notes',
++      type: 'textarea',
++      hint: 'These notes are not saved.',
++    },
++    {
++      name: 'choice',
++      label: 'Required choice',
++      type: 'select',
++      required: true,
++      hint: 'Choose a fictional option.',
++      options: [
++        { value: '', label: 'Choose an option' },
++        { value: 'review', label: 'Review' },
++      ],
++    },
++    {
++      name: 'optional',
++      label: 'Optional choice',
++      type: 'select',
++      options: [{ value: '', label: 'None' }],
++    },
++    {
++      name: 'confirmed',
++      label: 'Fictional confirmation',
++      type: 'checkbox',
++      hint: 'This is not customer consent.',
++    },
++  ];
++  function Fixture() {
++    const [result, setResult] = useState('No callback invoked.');
++    return (
++      <main>
++        <h1>Form accessibility regression fixture</h1>
++        <p>Fictional presentation only; no business changes are saved.</p>
++        {['First form', 'Second form'].map((label) => (
++          <section key={label} aria-label={label}>
++            <h2>{label}</h2>
++            <FieldsForm
++              fields={fields}
++              submitLabel="Inspect fictional values"
++              secondaryLabel="Inspect secondary intent"
++              onSubmit={(values, intent) => {
++                setResult(JSON.stringify({ values, intent }));
++              }}
++            />
++          </section>
++        ))}
++        <output aria-label="Fixture callback">{result}</output>
++      </main>
++    );
++  }
++  createRoot(document.getElementById('root')!).render(<Fixture />);
++}
+diff --git a/tests/browser/forms-accessibility.pw.ts b/tests/browser/forms-accessibility.pw.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..fbb4b68036d1d71bb50006ec851263e8a5ec6c07
+--- /dev/null
++++ b/tests/browser/forms-accessibility.pw.ts
+@@ -0,0 +1,113 @@
++import { test, expect } from '@playwright/test';
++import AxeBuilder from '@axe-core/playwright';
++
++test.beforeEach(async ({ page }) => {
++  await page.route('**/*', (route) =>
++    new URL(route.request().url()).hostname === '127.0.0.1'
++      ? route.continue()
++      : route.abort(),
++  );
++});
++
++test('hint descriptions bind each original control to its own form', async ({
++  page,
++}) => {
++  await page.goto('/preview-form-accessibility-test.html');
++  for (const name of ['First form', 'Second form']) {
++    const form = page.getByRole('region', { name, exact: true });
++    for (const [label, description] of [
++      ['Name', 'Use fictional text only.'],
++      ['Notes', 'These notes are not saved.'],
++      ['Required choice', 'Choose a fictional option.'],
++      ['Fictional confirmation', 'This is not customer consent.'],
++    ]) {
++      const control = form.getByLabel(label, { exact: false });
++      await expect(control).toHaveAccessibleDescription(description);
++      const hint = await control.getAttribute('aria-describedby');
++      expect(hint).toBeTruthy();
++      expect(
++        await control.evaluate((element, id) => {
++          const description = document.getElementById(id!);
++          return description?.closest('form') === element.closest('form');
++        }, hint),
++      ).toBe(true);
++    }
++    await expect(form.getByLabel('Optional choice')).not.toHaveAttribute(
++      'required',
++    );
++    await expect(form.getByLabel('Optional choice')).not.toHaveAttribute(
++      'aria-describedby',
++    );
++  }
++  const ids = await page
++    .locator('[id]')
++    .evaluateAll((elements) => elements.map((element) => element.id));
++  expect(new Set(ids).size).toBe(ids.length);
++  expect(
++    (
++      await new AxeBuilder({ page })
++        .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
++        .analyze()
++    ).violations,
++  ).toEqual([]);
++});
++
++test('required select blocks callbacks while optional select and payloads stay unchanged', async ({
++  page,
++}) => {
++  await page.goto('/preview-form-accessibility-test.html');
++  const form = page.getByRole('region', { name: 'First form', exact: true });
++  const required = form.getByLabel('Required choice');
++  await expect(required).toHaveAttribute('required');
++  await form.getByRole('button', { name: 'Inspect fictional values' }).click();
++  await expect(page.getByLabel('Fixture callback')).toHaveText(
++    'No callback invoked.',
++  );
++  await expect(required).toBeFocused();
++  await form.getByLabel('Name', { exact: false }).fill('Fictional person');
++  await form.getByLabel('Notes', { exact: false }).fill('Unsaved review');
++  await required.selectOption('review');
++  await form.getByLabel('Fictional confirmation').check();
++  for (const [button, intent] of [
++    ['Inspect fictional values', 'save'],
++    ['Inspect secondary intent', 'secondary'],
++  ]) {
++    await form.getByRole('button', { name: button, exact: true }).click();
++    await expect(page.getByLabel('Fixture callback')).toHaveText(
++      JSON.stringify({
++        values: {
++          name: 'Fictional person',
++          notes: 'Unsaved review',
++          choice: 'review',
++          optional: '',
++          confirmed: true,
++        },
++        intent,
++      }),
++    );
++  }
++});
++
++test('existing company settings expose safe hints without saving', async ({
++  page,
++}) => {
++  await page.goto('/preview');
++  await page
++    .getByRole('button', { name: 'Company settings', exact: true })
++    .click();
++  await expect(
++    page.getByLabel('License information', { exact: false }),
++  ).toHaveAccessibleDescription(
++    'Non-secret license number, jurisdiction and expiration.',
++  );
++  await expect(
++    page.getByLabel('Publish branded intake profile', { exact: false }),
++  ).toHaveAccessibleDescription(
++    'Submission also requires server CAPTCHA and gateway configuration.',
++  );
++  expect(
++    await page.evaluate(
++      () => document.documentElement.scrollWidth <= innerWidth,
++    ),
++  ).toBe(true);
++});
+diff --git a/docs/PROPEL_DASHBOARD_PARITY_INCREMENT.md b/docs/PROPEL_DASHBOARD_PARITY_INCREMENT.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..96043425fd69cca9e8c02161117bf368e6c0c8eb
+--- /dev/null
++++ b/docs/PROPEL_DASHBOARD_PARITY_INCREMENT.md
+@@ -0,0 +1,81 @@
++# Scoped new-lead inbox increment
++
++Exact parent: draft510 `8f9cab9a6b42c057a12f1923bf35a514abc068b1`.
++Isolated branch: `codex/propel-dashboard-parity-increment`.
++Runtime ownership: `src/components/CompanyOperations.tsx` only.
++
++The approved November15 reference has a connected lead inbox and owner dashboard.
++This increment improves the existing Overview intake queue: its three-row truncation
++now uses the canonical repository's ten-row pages, with previous/next navigation,
++recorded source/status/submission date, an explicit empty state and a count labeled
++as new intake requests. It adds no owner financial KPI, pipeline value or chart.
++Reference states3–5 remain broader parity gaps, not newly accepted parity.
++
++The supplied Approved Demo-to-Production Reference requires truthful scoped data and
++loading/error/stale/revoked states. Existing `companyAccess`, `listModules` and
++`listIntake(org, 'new', page)` APIs are reused. Intake access and module availability
++are checked before and after the intake read. Results are presentation-fenced by
++repository instance, organization and page; changing repository/organization resets
++the page without requiring an App key. Pending, failed, denied and disabled views
++hide prior rows and the intake navigation control. Role/module changes while no
++new read occurs are not continuously polled. Backend authorization remains unchanged.
++
++No original module routing, App route, canonical repository/API, global or locked
++style/artwork, schema/store/ledger/adapter, dependency or protected source changed.
++The file is an A2 inventory citation, not one of the128 exact protected source files
++or five design locks. No shared inventory/checker was edited. Child-specific test
++fixtures create disposable synthetic records through existing sample repository
++APIs and cannot run in the product. The actual product receives no fixture labels,
++synthetic timestamps or fabricated record counts from this increment.
++
++Local validation at this source:
++
++- TypeScript strict typecheck and production build PASS; existing large-chunk
++  warning remains.
++- Scoped ESLint, Prettier and `git diff --check` PASS.
++- `features:check` PASS:25 records,1668 inventoried sources, five exact design files
++  and13 source bindings. No checker/manifest rewrite.
++- Two source-boundary tests PASS: original module router and canonical repository,
++  App, IntakeQueue and forms stay exact; all128 protected hashes stay exact.
++- Twelve browser cases PASS: four cases each at desktop, iPad Mini and iPhone13
++  emulation. They exercise actual sample repository pagination and `new` filtering,
++  readonly navigation, delayed tenant/model replacement without a parent key,
++  access/module denial before source reads, access revocation after source read,
++  empty/error states and removal of old rows/totals. The primary flow at each size
++  has zero Axe violations and no horizontal page overflow.
++
++Browser launch required the standard local sandbox escalation for Chromium's macOS
++Mach-port registration. An initial fixture used an insecure HTTP test origin and
++could not construct the sample repository's UUIDs; the test-only origin is now an
++intercepted HTTPS URL. No external server, credential or connected call is involved.
++
++Run only the scoped checks:
++
++```sh
++npx vitest run tests/propel-dashboard-parity-source.test.ts
++npx playwright test --config tests/browser/propel-dashboard-parity.config.ts
++```
++
++This is bounded local source/interaction evidence, not genuine Auth, hosted data,
++complete accessibility, accepted owner KPI/dashboard parity or production acceptance.
++Saul2Paul remains the first real tenant target and Cunningham separate; no real tenant
++or merchant operation occurred. No persistent execution, push, PR, merge or deployment
++is authorized by this child. Release1.0 remains NOT READY / NOT AUTHORIZED.
++
++## Successor: withdrawn last page
++
++Independent QA reproduced a count-shrink edge on the frozen `b5f61fa` candidate:
++a page-two read returning zero current requests rendered “Page2of1.” The narrow
++successor preserves that commit and changes only this consumer's presentation.
++When the returned canonical count no longer includes the selected page, the exact
++count remains visible while rows and invalid pagination are withheld. A notice and
++explicit “Return to first page” control replace them. Returning starts a fresh
++existing read with original access/module checks; nothing automatically retries.
++Shared Pagination, repository and all protected source stay byte-identical.
++
++The added `@shrink` browser regression first FAILed against unchanged `b5f61fa`.
++After the correction it PASSed at desktop/tablet/mobile (3cases). It also denies
++access before an explicit return and verifies no further intake query occurs.
++Only these affected new browser cases were run for the successor; the original
++12case evidence remains attached to its frozen parent. Source-boundary2cases,
++strict types/build, scoped lint/format and feature/design checks also PASS.
+diff --git a/src/components/CompanyOperations.tsx b/src/components/CompanyOperations.tsx
+index 3bd47d857159dffc8a6352a93ced9c2665332e0a..b8340476169359ecfa935fb23f6ea9f7041044fc 100644
+--- a/src/components/CompanyOperations.tsx
++++ b/src/components/CompanyOperations.tsx
+@@ -1,11 +1,11 @@
+-import { useCallback } from 'react';
++import { useCallback, useState } from 'react';
+ import type { Operations } from '../lib/operations';
+ import type { CompanyProfile } from '../domain/platform';
+ import { Customers } from './Customers';
+ import { CompanySettings } from './CompanySettings';
+ import { Team } from './Team';
+ import { IntakeQueue } from './IntakeQueue';
+-import { ResourceStatus } from './forms';
++import { Pagination, ResourceStatus } from './forms';
+ import { useResource } from './forms-state';
+ export function CompanyOperations({
+   repo,
+@@ -94,30 +94,116 @@ export function NewLeadDashboard({
+   org: string;
+   onOpen: () => void;
+ }) {
++  const [selection, setSelection] = useState({ repo, org, page: 0 });
++  const sameContext = selection.repo === repo && selection.org === org;
++  const page = sameContext ? selection.page : 0;
++  if (!sameContext) setSelection({ repo, org, page: 0 });
+   const leads = useResource(
+-    useCallback(() => repo.listIntake(org, 'new'), [repo, org]),
++    useCallback(async () => {
++      const identity = { repo, org, page };
++      try {
++        const available = async () => {
++          const [access, modules] = await Promise.all([
++            repo.companyAccess(org),
++            repo.listModules(org),
++          ]);
++          if (!access.intake_read) return 'restricted' as const;
++          if (!modules.some((m) => m.module === 'intake' && m.enabled))
++            return 'unavailable' as const;
++          return 'allowed' as const;
++        };
++        const access = await available();
++        if (access !== 'allowed') return { ...identity, state: access };
++        const result = await repo.listIntake(org, 'new', page);
++        const currentAccess = await available();
++        if (currentAccess !== 'allowed')
++          return { ...identity, state: currentAccess };
++        return { ...identity, state: 'ready' as const, result };
++      } catch (error) {
++        return {
++          ...identity,
++          state: 'error' as const,
++          message: error instanceof Error ? error.message : 'Unable to load',
++        };
++      }
++    }, [repo, org, page]),
+   );
++  const current =
++    !leads.loading &&
++    leads.data?.repo === repo &&
++    leads.data.org === org &&
++    leads.data.page === page
++      ? leads.data
++      : undefined;
+   return (
+-    <article className="lead-dashboard">
++    <article className="lead-dashboard" aria-label="New lead inbox">
+       <div className="section-title">
+         <div>
+           <span className="eyebrow">NEW LEADS</span>
+           <h2>Your request review queue</h2>
+         </div>
+-        <button onClick={onOpen}>Review intake</button>
++        {current?.state === 'ready' && (
++          <button onClick={onOpen}>Review intake</button>
++        )}
+       </div>
+-      <ResourceStatus {...leads} />
+-      {leads.data && (
++      <ResourceStatus
++        loading={!current && !leads.error}
++        error={current?.state === 'error' ? current.message : leads.error}
++      />
++      {current?.state === 'restricted' && (
++        <p>Your company role does not grant access to intake.</p>
++      )}
++      {current?.state === 'unavailable' && (
++        <p>Intake is disabled for the selected organization.</p>
++      )}
++      {current?.state === 'ready' && (
+         <>
+-          <p>{leads.data.count} new requests await review.</p>
+-          <div className="record-list">
+-            {leads.data.rows.slice(0, 3).map((r) => (
+-              <div key={r.id}>
+-                <strong>{r.service_category}</strong>
+-                <p>{r.summary}</p>
++          <p role="status">{current.result.count} new requests await review.</p>
++          <p className="muted">
++            New intake requests only. This count does not represent all leads,
++            customers, jobs or revenue.
++          </p>
++          {page > 0 && page * 10 >= current.result.count ? (
++            <>
++              <p>
++                This page is no longer available. Return to the first page to
++                review current requests.
++              </p>
++              <button onClick={() => setSelection({ repo, org, page: 0 })}>
++                Return to first page
++              </button>
++            </>
++          ) : (
++            <>
++              <div className="record-list">
++                {current.result.rows.map((r) => (
++                  <section className="request-card" key={r.id}>
++                    <div className="section-title">
++                      <span className="tag">
++                        {r.status} · {r.source}
++                      </span>
++                      <small>
++                        Submitted{' '}
++                        <time dateTime={r.created_at}>
++                          {new Date(r.created_at).toLocaleDateString()}
++                        </time>
++                      </small>
++                    </div>
++                    <h3>{r.service_category}</h3>
++                    <p>{r.summary}</p>
++                  </section>
++                ))}
+               </div>
+-            ))}
+-          </div>
++              {!current.result.rows.length && (
++                <p>No new requests in this view.</p>
++              )}
++              <Pagination
++                page={page}
++                count={current.result.count}
++                onChange={(next) => setSelection({ repo, org, page: next })}
++              />
++            </>
++          )}
+         </>
+       )}
+       <p className="muted">
+diff --git a/tests/browser/fixtures/propel-dashboard-parity-harness.tsx b/tests/browser/fixtures/propel-dashboard-parity-harness.tsx
+new file mode 100644
+index 0000000000000000000000000000000000000000..90f4fc752000cd9e7268b5b2c57dd6598ade7dda
+--- /dev/null
++++ b/tests/browser/fixtures/propel-dashboard-parity-harness.tsx
+@@ -0,0 +1,136 @@
++// Disposable browser fixture; no App route, persistence or connected client.
++import { createRoot } from 'react-dom/client';
++import { NewLeadDashboard } from '../../../src/components/CompanyOperations';
++import { Operations } from '../../../src/lib/operations';
++import { sampleCompanies } from '../../../src/domain/platform';
++import '../../../src/styles.css';
++
++declare global {
++  interface Window {
++    dashboardParity: {
++      select: (org: string) => void;
++      replace: () => Promise<void>;
++      hold: () => void;
++      release: () => void;
++      deny: () => void;
++      disable: () => void;
++      fail: () => void;
++      empty: () => void;
++      calls: () => { org: string; status: string; page: number }[];
++      opened: () => number;
++    };
++  }
++}
++void (async () => {
++  const root = createRoot(document.getElementById('root')!);
++  let org = sampleCompanies[0].id;
++  let generation = 0;
++  let opened = 0;
++  const calls: { org: string; status: string; page: number }[] = [];
++  const state = {
++    denied: false,
++    disabled: false,
++    failed: false,
++    empty: false,
++    hold: false,
++    release: () => {},
++  };
++  async function repository() {
++    const repo = new Operations(true);
++    const model = ++generation;
++    for (const company of sampleCompanies) {
++      for (let index = 0; index < 12; index++)
++        await repo.sampleSubmit(company.slug, {
++          name: 'Synthetic dashboard fixture',
++          email: 'dashboard@example.test',
++          phone: '555-0100',
++          address: '1 Example Lane',
++          city: 'Example',
++          region: 'IL',
++          postal_code: '00000',
++          country_code: 'US',
++          property_type: 'residential',
++          service_category: `Fixture request ${index}`,
++          description: `${company.id} model ${model} lead ${index}`,
++          preferred_appointment: '',
++          contact_preference: 'email',
++          email_consent: true,
++          sms_consent: false,
++          consent_version: 'contact-v1',
++        });
++      const last = (await repo.listIntake(company.id, 'new', 1)).rows.at(-1)!;
++      await repo.assignIntake(company.id, last.id, null, 'closed');
++    }
++    const access = repo.companyAccess.bind(repo);
++    repo.companyAccess = async (company) => ({
++      ...(await access(company)),
++      intake_read: !state.denied,
++    });
++    const modules = repo.listModules.bind(repo);
++    repo.listModules = async (company) =>
++      (await modules(company)).map((module) => ({
++        ...module,
++        enabled: module.module === 'intake' ? !state.disabled : module.enabled,
++      }));
++    const intake = repo.listIntake.bind(repo);
++    repo.listIntake = async (company, status = '', page = 0) => {
++      calls.push({ org: company, status, page });
++      const result = await intake(company, status, page);
++      if (state.hold) {
++        state.hold = false;
++        await new Promise<void>((resolve) => {
++          state.release = resolve;
++        });
++      }
++      if (state.failed) throw Error('Synthetic dashboard reader unavailable');
++      return state.empty ? { rows: [], count: 0 } : result;
++    };
++    return repo;
++  }
++  let repo = await repository();
++  function render() {
++    root.render(
++      <main>
++        <h1>Readonly dashboard fixture</h1>
++        <NewLeadDashboard
++          repo={repo}
++          org={org}
++          onOpen={() => {
++            opened++;
++          }}
++        />
++      </main>,
++    );
++  }
++  window.dashboardParity = {
++    select: (company) => {
++      org = company;
++      render();
++    },
++    replace: async () => {
++      repo = await repository();
++      render();
++    },
++    hold: () => {
++      state.hold = true;
++    },
++    release: () => {
++      state.release();
++    },
++    deny: () => {
++      state.denied = true;
++    },
++    disable: () => {
++      state.disabled = true;
++    },
++    fail: () => {
++      state.failed = true;
++    },
++    empty: () => {
++      state.empty = true;
++    },
++    calls: () => calls,
++    opened: () => opened,
++  };
++  render();
++})();
+diff --git a/tests/browser/propel-dashboard-parity.config.ts b/tests/browser/propel-dashboard-parity.config.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..c8d08f13e37c9284918bc3541287edef6540fdb5
+--- /dev/null
++++ b/tests/browser/propel-dashboard-parity.config.ts
+@@ -0,0 +1,18 @@
++import { defineConfig, devices } from '@playwright/test';
++export default defineConfig({
++  testDir: '.',
++  testMatch: 'propel-dashboard-parity.spec.ts',
++  fullyParallel: true,
++  workers: 2,
++  projects: [
++    { name: 'desktop', use: { ...devices['Desktop Chrome'] } },
++    {
++      name: 'tablet',
++      use: { ...devices['iPad Mini'], defaultBrowserType: 'chromium' },
++    },
++    {
++      name: 'mobile',
++      use: { ...devices['iPhone 13'], defaultBrowserType: 'chromium' },
++    },
++  ],
++});
+diff --git a/tests/browser/propel-dashboard-parity.spec.ts b/tests/browser/propel-dashboard-parity.spec.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..2a88e56dc39250ba6fcf05b71c3f267f8c12a39d
+--- /dev/null
++++ b/tests/browser/propel-dashboard-parity.spec.ts
+@@ -0,0 +1,251 @@
++import { test, expect, type Page } from '@playwright/test';
++import AxeBuilder from '@axe-core/playwright';
++import { build } from 'vite';
++import react from '@vitejs/plugin-react';
++import { fileURLToPath } from 'node:url';
++let script = '',
++  css = '';
++test.beforeAll(async () => {
++  const bundled = await build({
++    configFile: false,
++    logLevel: 'silent',
++    plugins: [react()],
++    define: { 'import.meta.env': '{}', 'process.env.NODE_ENV': '"production"' },
++    build: {
++      write: false,
++      lib: {
++        entry: fileURLToPath(
++          new URL(
++            './fixtures/propel-dashboard-parity-harness.tsx',
++            import.meta.url,
++          ),
++        ),
++        formats: ['iife'],
++        name: 'DashboardParityTest',
++      },
++    },
++  });
++  const output = Array.isArray(bundled) ? bundled[0] : bundled;
++  if (!('output' in output)) throw Error('Dashboard test bundle unavailable');
++  script = output.output
++    .filter((x) => x.type === 'chunk')
++    .map((x) => x.code)
++    .join('\n');
++  css = output.output
++    .filter((x) => x.type === 'asset' && x.fileName.endsWith('.css'))
++    .map((x) => (x.type === 'asset' ? String(x.source) : ''))
++    .join('\n');
++});
++async function open(page: Page) {
++  await page.route('https://dashboard.test/**', (route) =>
++    route.fulfill({
++      contentType: 'text/html',
++      body: '<!DOCTYPE html><html lang="en"><head><title>Dashboard test</title><meta name="viewport" content="width=device-width,initial-scale=1" /></head><body><div id="root"></div></body></html>',
++    }),
++  );
++  await page.goto('https://dashboard.test/fixture');
++  await page.addStyleTag({ content: css });
++  await page.addScriptTag({ content: script });
++  await expect(page.getByText('12 new requests await review.')).toBeVisible();
++}
++test('reads all new-request pages, labels source scope and preserves readonly navigation', async ({
++  page,
++}) => {
++  await open(page);
++  const inbox = page.getByRole('article', { name: 'New lead inbox' });
++  await expect(inbox.locator('.request-card')).toHaveCount(10);
++  await expect(inbox.getByText('12 records · Page 1 of 2')).toBeVisible();
++  await expect(
++    inbox.getByText('New intake requests only.', { exact: false }),
++  ).toBeVisible();
++  await inbox.getByRole('button', { name: 'Next', exact: true }).click();
++  await expect(inbox.getByText('12 records · Page 2 of 2')).toBeVisible();
++  await expect(inbox.locator('.request-card')).toHaveCount(2);
++  await expect(
++    inbox.getByRole('button', { name: 'Next', exact: true }),
++  ).toBeDisabled();
++  await expect
++    .poll(() => page.evaluate(() => window.dashboardParity.calls()))
++    .toEqual([
++      { org: 'sample-property', status: 'new', page: 0 },
++      { org: 'sample-property', status: 'new', page: 1 },
++    ]);
++  await inbox.getByRole('button', { name: 'Review intake' }).click();
++  expect(await page.evaluate(() => window.dashboardParity.opened())).toBe(1);
++  await inbox.getByRole('button', { name: 'Previous', exact: true }).click();
++  await expect(inbox.locator('.request-card')).toHaveCount(10);
++  expect((await new AxeBuilder({ page }).analyze()).violations).toEqual([]);
++  expect(
++    await page.evaluate(
++      () => document.documentElement.scrollWidth <= innerWidth,
++    ),
++  ).toBe(true);
++});
++test('tenant and model switches reset paging and withhold late old source without a parent key', async ({
++  page,
++}) => {
++  await open(page);
++  await page.evaluate(() => window.dashboardParity.hold());
++  await page.getByRole('button', { name: 'Next', exact: true }).click();
++  await expect(page.getByRole('status')).toHaveText(
++    'Loading workspace records…',
++  );
++  await expect(page.locator('.request-card')).toHaveCount(0);
++  await page.evaluate(() =>
++    window.dashboardParity.select('sample-construction'),
++  );
++  await expect(
++    page.getByText('sample-construction model 1 lead 11', { exact: true }),
++  ).toBeVisible();
++  await expect(page.getByText('12 records · Page 1 of 2')).toBeVisible();
++  await page.evaluate(() => window.dashboardParity.release());
++  await expect(
++    page.getByText('sample-property model 1 lead 0', { exact: true }),
++  ).toHaveCount(0);
++  await page.evaluate(() => window.dashboardParity.hold());
++  await page.getByRole('button', { name: 'Next', exact: true }).click();
++  await expect(page.locator('.request-card')).toHaveCount(0);
++  await page.evaluate(() => window.dashboardParity.replace());
++  await expect(
++    page.getByText('sample-construction model 2 lead 11', { exact: true }),
++  ).toBeVisible();
++  await expect(page.getByText('12 records · Page 1 of 2')).toBeVisible();
++  await page.evaluate(() => window.dashboardParity.release());
++  await expect(
++    page.getByText('sample-construction model 1 lead 0', { exact: true }),
++  ).toHaveCount(0);
++  await page.evaluate(() => window.dashboardParity.select('sample-property'));
++  await expect(
++    page.getByText('sample-property model 2 lead 11', { exact: true }),
++  ).toBeVisible();
++  await expect(page.getByText('12 records · Page 1 of 2')).toBeVisible();
++});
++test('access and module denial stop intake reads and hide navigation', async ({
++  page,
++}) => {
++  await open(page);
++  const initial = await page.evaluate(
++    () => window.dashboardParity.calls().length,
++  );
++  await page.evaluate(() => {
++    window.dashboardParity.deny();
++    window.dashboardParity.select('sample-construction');
++  });
++  await expect(
++    page.getByText('Your company role does not grant access to intake.'),
++  ).toBeVisible();
++  expect(await page.evaluate(() => window.dashboardParity.calls().length)).toBe(
++    initial,
++  );
++  await expect(page.getByRole('button', { name: 'Review intake' })).toHaveCount(
++    0,
++  );
++  await expect(page.locator('.request-card')).toHaveCount(0);
++  await open(page);
++  const before = await page.evaluate(
++    () => window.dashboardParity.calls().length,
++  );
++  await page.evaluate(() => {
++    window.dashboardParity.disable();
++    window.dashboardParity.select('sample-construction');
++  });
++  await expect(
++    page.getByText('Intake is disabled for the selected organization.'),
++  ).toBeVisible();
++  expect(await page.evaluate(() => window.dashboardParity.calls().length)).toBe(
++    before,
++  );
++});
++test('post-read revocation, error and empty results never retain old rows or invented totals', async ({
++  page,
++}) => {
++  await open(page);
++  await page.evaluate(() => window.dashboardParity.hold());
++  await page.getByRole('button', { name: 'Next', exact: true }).click();
++  await expect(page.locator('.request-card')).toHaveCount(0);
++  await page.evaluate(() => {
++    window.dashboardParity.deny();
++    window.dashboardParity.release();
++  });
++  await expect(
++    page.getByText('Your company role does not grant access to intake.'),
++  ).toBeVisible();
++  await expect(page.locator('.request-card')).toHaveCount(0);
++  await open(page);
++  await page.evaluate(() => {
++    window.dashboardParity.fail();
++    window.dashboardParity.select('sample-construction');
++  });
++  await expect(page.getByRole('alert')).toHaveText(
++    'Synthetic dashboard reader unavailable',
++  );
++  await expect(page.locator('.request-card')).toHaveCount(0);
++  await expect(page.getByRole('button', { name: 'Review intake' })).toHaveCount(
++    0,
++  );
++  await open(page);
++  await page.evaluate(() => {
++    window.dashboardParity.empty();
++    window.dashboardParity.select('sample-construction');
++  });
++  await expect(page.getByText('No new requests in this view.')).toBeVisible();
++  await expect(page.getByText('0 new requests await review.')).toBeVisible();
++  await expect(
++    page.getByRole('button', { name: 'Next', exact: true }),
++  ).toBeDisabled();
++});
++test('@shrink withdrawn last page requires explicit fresh first-page review', async ({
++  page,
++}) => {
++  async function shrink() {
++    await open(page);
++    await page.evaluate(() => window.dashboardParity.hold());
++    await page.getByRole('button', { name: 'Next', exact: true }).click();
++    await expect
++      .poll(() => page.evaluate(() => window.dashboardParity.calls().length))
++      .toBe(2);
++    await page.evaluate(() => {
++      window.dashboardParity.empty();
++      window.dashboardParity.release();
++    });
++    await expect(page.getByText('0 new requests await review.')).toBeVisible();
++    await expect(
++      page.getByText(
++        'This page is no longer available. Return to the first page to review current requests.',
++      ),
++    ).toBeVisible();
++    await expect(page.locator('.request-card')).toHaveCount(0);
++    await expect(page.getByText('0 records · Page 2 of 1')).toHaveCount(0);
++    await expect(
++      page.getByRole('button', { name: 'Previous', exact: true }),
++    ).toHaveCount(0);
++    expect(
++      await page.evaluate(() => window.dashboardParity.calls().length),
++    ).toBe(2);
++  }
++  await shrink();
++  await page
++    .getByRole('button', { name: 'Return to first page', exact: true })
++    .click();
++  await expect(page.getByText('0 records · Page 1 of 1')).toBeVisible();
++  expect(
++    await page.evaluate(() => window.dashboardParity.calls().at(-1)),
++  ).toEqual({ org: 'sample-property', status: 'new', page: 0 });
++  await expect(
++    page.getByRole('button', { name: 'Previous', exact: true }),
++  ).toBeDisabled();
++  await shrink();
++  await page.evaluate(() => window.dashboardParity.deny());
++  await page
++    .getByRole('button', { name: 'Return to first page', exact: true })
++    .click();
++  await expect(
++    page.getByText('Your company role does not grant access to intake.'),
++  ).toBeVisible();
++  expect(await page.evaluate(() => window.dashboardParity.calls().length)).toBe(
++    2,
++  );
++  await expect(
++    page.getByRole('button', { name: 'Review intake', exact: true }),
++  ).toHaveCount(0);
++});
+diff --git a/tests/propel-dashboard-parity-source.test.ts b/tests/propel-dashboard-parity-source.test.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..2311e8a8a014dd3a11385021a2287897b3b33c00
+--- /dev/null
++++ b/tests/propel-dashboard-parity-source.test.ts
+@@ -0,0 +1,49 @@
++import { readFileSync } from 'node:fs';
++import { createHash } from 'node:crypto';
++import { execFileSync } from 'node:child_process';
++import { describe, expect, it } from 'vitest';
++
++const parent = '8f9cab9a6b42c057a12f1923bf35a514abc068b1';
++const source = (path: string) => readFileSync(path, 'utf8');
++const baseline = (path: string) =>
++  execFileSync('git', ['show', `${parent}:${path}`], { encoding: 'utf8' });
++
++describe('readonly dashboard parity source boundary', () => {
++  it('keeps the original tenant module router and canonical repository exact', () => {
++    const router = (text: string) =>
++      text.slice(
++        text.indexOf('export function CompanyOperations'),
++        text.indexOf('export function NewLeadDashboard'),
++      );
++    expect(router(source('src/components/CompanyOperations.tsx'))).toBe(
++      router(baseline('src/components/CompanyOperations.tsx')),
++    );
++    for (const path of [
++      'src/lib/operations.ts',
++      'src/App.tsx',
++      'src/components/IntakeQueue.tsx',
++      'src/components/forms-state.ts',
++      'src/components/forms.tsx',
++    ])
++      expect(source(path), path).toBe(baseline(path));
++  });
++
++  it('preserves every independently pinned protected source byte', () => {
++    const manifest: {
++      count: number;
++      files: { path: string; sha256: string }[];
++    } = JSON.parse(source('docs/program/CYCLE4_PROTECTED_SOURCE.json'));
++    expect(manifest.count).toBe(128);
++    expect(manifest.files).toHaveLength(128);
++    expect(
++      manifest.files.some(
++        (entry) => entry.path === 'src/components/CompanyOperations.tsx',
++      ),
++    ).toBe(false);
++    for (const entry of manifest.files)
++      expect(
++        createHash('sha256').update(readFileSync(entry.path)).digest('hex'),
++        entry.path,
++      ).toBe(entry.sha256);
++  });
++});

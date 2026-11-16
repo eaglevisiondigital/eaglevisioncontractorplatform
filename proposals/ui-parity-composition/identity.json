@@ -1,0 +1,229 @@
+{
+  "classification": "UNAPPLIED_EXACT_THREE_UI_SOURCE_COMPOSITION_NOT_ADMISSION",
+  "base": "8f9cab9a6b42c057a12f1923bf35a514abc068b1",
+  "baseRawCommit": "tree de51fe0a44609d1384b3d5462664fff45f668db0\nparent fbab4220a5e8fb043c10baa1328bbe6f7001e588\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794810398 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794810398 -0600\n\n[skip netlify] Correct existing navigation icons and active page semantics\n",
+  "beforeTree": "de51fe0a44609d1384b3d5462664fff45f668db0",
+  "beforeCount": 2470,
+  "afterTree": "54362e358d135a3a6772119e7e22593db4f0f586",
+  "afterCount": 2480,
+  "patchSHA256": "856cd97d2537d82c59fdfcba758745a479dc44c0ea8d5d13a7b5d13d49f1c485",
+  "paths": {
+    "CURRENT_BUILD_STATE.md": {
+      "before": {
+        "mode": "100644",
+        "blob": "99c448d688bc6c911d24f4a72788a99abe941a69",
+        "sha256": "ca22f1ce1a1a08f3c16be93bbce6fb0932df5075153984fdf68968f9c484ad2e"
+      },
+      "after": {
+        "mode": "100644",
+        "blob": "3e8962360a9948175a0a8b3b0a2503921defc4d7",
+        "sha256": "c096c3861b1922db21d009e6f20b38c432bf32a4bb7a365b69c25a914d251252"
+      },
+      "originCommit": "223e235be26c37271cb67e3c1f1803feb54599a6"
+    },
+    "DECISIONS.md": {
+      "before": {
+        "mode": "100644",
+        "blob": "69c0d00d8ca189b955de3bf6d42b12464068e928",
+        "sha256": "94d9c4c051940b292f059de5dfc6acb66ac642711b70229e7066b62eebaff11c"
+      },
+      "after": {
+        "mode": "100644",
+        "blob": "c2cf0af13c2e73bc6767bfe0a5b0805be4fa3d32",
+        "sha256": "f81424fc4cd268acfc40c5dc5e43063cc5c0c7ce202e92ad3b7a64ca06779cab"
+      },
+      "originCommit": "223e235be26c37271cb67e3c1f1803feb54599a6"
+    },
+    "src/components/WorkspaceNavigationIcon.tsx": {
+      "before": {
+        "mode": "100644",
+        "blob": "f9209a8d04ea7dfb7d5e54a407d1730900707861",
+        "sha256": "de2b1b988f204e87b095794c48eaca17fe8cbea47f3a8791440270009ac55701"
+      },
+      "after": {
+        "mode": "100644",
+        "blob": "86189ed25c60509f902130d18174c1f41d484ca2",
+        "sha256": "06399b81d539b0b9c381c9c5f696d4c4e9a390e0db2d24cf62b371e762c2ba1b"
+      },
+      "originCommit": "223e235be26c37271cb67e3c1f1803feb54599a6"
+    },
+    "tests/browser/workspace-navigation-metrics.spec.ts": {
+      "before": null,
+      "after": {
+        "mode": "100644",
+        "blob": "0d6630f86d3a2d3f4cfe8a04559150104fd1de21",
+        "sha256": "164c174ef31c3dca534f4257d4ab2170fbaba790db2ac0d4166b6f869f32c475"
+      },
+      "originCommit": "223e235be26c37271cb67e3c1f1803feb54599a6"
+    },
+    "playwright.forms-accessibility.config.ts": {
+      "before": null,
+      "after": {
+        "mode": "100644",
+        "blob": "a225f26084c7bd03879e485c1fec26a86bfc4bbf",
+        "sha256": "3e03dd0bc7199e142b7dd9f2988725c1480a4f2094ffa04d35f4ad80f5a6b38e"
+      },
+      "originCommit": "d178e4c07b426dd2de4dff6f81a1172b512f4358"
+    },
+    "preview-form-accessibility-test.html": {
+      "before": null,
+      "after": {
+        "mode": "100644",
+        "blob": "0d3160d7ee00547a1a33623a90c1f58147875ae8",
+        "sha256": "57e85133165d857a7ca0b8bc070329332e0ad06f3f29439313a631ec9f896b41"
+      },
+      "originCommit": "d178e4c07b426dd2de4dff6f81a1172b512f4358"
+    },
+    "src/components/forms.tsx": {
+      "before": {
+        "mode": "100644",
+        "blob": "c7a6b238867919d99359869a4d7d80c072ad90d5",
+        "sha256": "f081edbdc36dad14c18bf75f25ac6267d1cb03d98124fece0618642193366e6a"
+      },
+      "after": {
+        "mode": "100644",
+        "blob": "23d62ab73b52961cc73052ebd684524cedc65e5d",
+        "sha256": "28dbd7d7e265a808779ed693e0c8c5de999e7465f3fbcf8d896df8acacb09f7d"
+      },
+      "originCommit": "d178e4c07b426dd2de4dff6f81a1172b512f4358"
+    },
+    "tests/browser/fixtures/form-accessibility.tsx": {
+      "before": null,
+      "after": {
+        "mode": "100644",
+        "blob": "50b3f3591ca9c80223a2519e750c990f09d20e2f",
+        "sha256": "1cdb22e28cf633f2396fc3770f1fa824ff6a878cf7d5d06776cc21ae370d0620"
+      },
+      "originCommit": "d178e4c07b426dd2de4dff6f81a1172b512f4358"
+    },
+    "tests/browser/forms-accessibility.pw.ts": {
+      "before": null,
+      "after": {
+        "mode": "100644",
+        "blob": "fbb4b68036d1d71bb50006ec851263e8a5ec6c07",
+        "sha256": "46e00a274612ae4a16ce403a8ade8ed568bd8b9d52311d04deb8e1925123572e"
+      },
+      "originCommit": "d178e4c07b426dd2de4dff6f81a1172b512f4358"
+    },
+    "docs/PROPEL_DASHBOARD_PARITY_INCREMENT.md": {
+      "before": null,
+      "after": {
+        "mode": "100644",
+        "blob": "96043425fd69cca9e8c02161117bf368e6c0c8eb",
+        "sha256": "e812160f9dc816cc97729cef5304d51b849d58b95f7953cb29aa9ec25f86b3b9"
+      },
+      "originCommit": "c1684b80fc68e44e8f63398f0d32f1cde219ce27"
+    },
+    "src/components/CompanyOperations.tsx": {
+      "before": {
+        "mode": "100644",
+        "blob": "3bd47d857159dffc8a6352a93ced9c2665332e0a",
+        "sha256": "11e7d48eb8eff642c80c5caddb33201d4d051bb8edc8572e24663f7c7c127152"
+      },
+      "after": {
+        "mode": "100644",
+        "blob": "b8340476169359ecfa935fb23f6ea9f7041044fc",
+        "sha256": "a2f35fa57ac519b0fefbd6985a59e44a4cd550fa96fc0c8ca6c27002d0df6d45"
+      },
+      "originCommit": "c1684b80fc68e44e8f63398f0d32f1cde219ce27"
+    },
+    "tests/browser/fixtures/propel-dashboard-parity-harness.tsx": {
+      "before": null,
+      "after": {
+        "mode": "100644",
+        "blob": "90f4fc752000cd9e7268b5b2c57dd6598ade7dda",
+        "sha256": "04776ebf9bde0385f5525eb598563a020750ef52799e368cd4c161176b12189e"
+      },
+      "originCommit": "c1684b80fc68e44e8f63398f0d32f1cde219ce27"
+    },
+    "tests/browser/propel-dashboard-parity.config.ts": {
+      "before": null,
+      "after": {
+        "mode": "100644",
+        "blob": "c8d08f13e37c9284918bc3541287edef6540fdb5",
+        "sha256": "217246350b173e6edb87ccc60ae4c47f70a23b0651b3946994564336b55cb936"
+      },
+      "originCommit": "c1684b80fc68e44e8f63398f0d32f1cde219ce27"
+    },
+    "tests/browser/propel-dashboard-parity.spec.ts": {
+      "before": null,
+      "after": {
+        "mode": "100644",
+        "blob": "2a88e56dc39250ba6fcf05b71c3f267f8c12a39d",
+        "sha256": "2f2f1207b819d55420684571784a05105fdd8111159ae4a73f40a241287208bf"
+      },
+      "originCommit": "c1684b80fc68e44e8f63398f0d32f1cde219ce27"
+    },
+    "tests/propel-dashboard-parity-source.test.ts": {
+      "before": null,
+      "after": {
+        "mode": "100644",
+        "blob": "2311e8a8a014dd3a11385021a2287897b3b33c00",
+        "sha256": "ac32681b07b17838a6445820d30f21abe8ea13fce14f027215fc635253fd6f24"
+      },
+      "originCommit": "c1684b80fc68e44e8f63398f0d32f1cde219ce27"
+    }
+  },
+  "origins": [
+    {
+      "head": "223e235be26c37271cb67e3c1f1803feb54599a6",
+      "chain": [
+        {
+          "sha": "223e235be26c37271cb67e3c1f1803feb54599a6",
+          "rawCommit": "tree 3ca82b10af4bcfc51071dc5e08170abca39e306b\nparent 8f9cab9a6b42c057a12f1923bf35a514abc068b1\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794843176 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794843176 -0600\n\n[skip netlify] Restore original mobile navigation metrics\n"
+        }
+      ],
+      "changedPaths": [
+        "CURRENT_BUILD_STATE.md",
+        "DECISIONS.md",
+        "src/components/WorkspaceNavigationIcon.tsx",
+        "tests/browser/workspace-navigation-metrics.spec.ts"
+      ]
+    },
+    {
+      "head": "d178e4c07b426dd2de4dff6f81a1172b512f4358",
+      "chain": [
+        {
+          "sha": "d178e4c07b426dd2de4dff6f81a1172b512f4358",
+          "rawCommit": "tree 6f39f9bc49535e78909759b3ac8a845f11a4af70\nparent ad350c309e83b5a5466fc88c018b58cc213f5d56\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794843100 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794843100 -0600\n\ntest: isolate development form browser collection [skip netlify]\n"
+        },
+        {
+          "sha": "ad350c309e83b5a5466fc88c018b58cc213f5d56",
+          "rawCommit": "tree fcb2119bee7e7415dbff5bdc0877e7a6adec206f\nparent 8f9cab9a6b42c057a12f1923bf35a514abc068b1\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794842307 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794842307 -0600\n\nfix: connect form hints and required selections [skip netlify]\n"
+        }
+      ],
+      "changedPaths": [
+        "playwright.forms-accessibility.config.ts",
+        "preview-form-accessibility-test.html",
+        "src/components/forms.tsx",
+        "tests/browser/fixtures/form-accessibility.tsx",
+        "tests/browser/forms-accessibility.pw.ts"
+      ]
+    },
+    {
+      "head": "c1684b80fc68e44e8f63398f0d32f1cde219ce27",
+      "chain": [
+        {
+          "sha": "c1684b80fc68e44e8f63398f0d32f1cde219ce27",
+          "rawCommit": "tree c2dbd77c9aad805842eeab8d81fffe80549fff40\nparent b5f61fa7dc2bc8839d1ff59a525d6d5abb4b2895\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794842834 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794842834 -0600\n\n[skip netlify] Withhold withdrawn intake pages until explicit reread\n"
+        },
+        {
+          "sha": "b5f61fa7dc2bc8839d1ff59a525d6d5abb4b2895",
+          "rawCommit": "tree e0f08e01840188a4c805d7c4342ce7960e7ce0b4\nparent 8f9cab9a6b42c057a12f1923bf35a514abc068b1\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794842526 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794842526 -0600\n\n[skip netlify] Show scoped paginated new-lead inbox safely\n"
+        }
+      ],
+      "changedPaths": [
+        "docs/PROPEL_DASHBOARD_PARITY_INCREMENT.md",
+        "src/components/CompanyOperations.tsx",
+        "tests/browser/fixtures/propel-dashboard-parity-harness.tsx",
+        "tests/browser/propel-dashboard-parity.config.ts",
+        "tests/browser/propel-dashboard-parity.spec.ts",
+        "tests/propel-dashboard-parity-source.test.ts"
+      ]
+    }
+  ],
+  "protectedSourceMutationAuthorized": false,
+  "launchPromotionAuthorized": false,
+  "sqlOrOperationalExecutionAuthorized": false,
+  "fullFoundationAccepted": false
+}
