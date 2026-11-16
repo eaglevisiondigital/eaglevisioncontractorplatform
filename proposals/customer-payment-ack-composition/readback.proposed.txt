@@ -1,0 +1,332 @@
+import { types } from 'node:util';
+import type { GatewaySql } from '../../server/payments/postgres-store';
+import { uuid, digestPattern } from '../../server/providers/safety';
+import type { CustomerBrokerAuth } from '../../server/customer/broker-auth';
+import type { CommercialCustomerReaderPort } from '../commercial-customer-bridge/reader';
+import type { CommercialCustomerTarget } from '../../src/components/invoices/commercial-customer-read';
+import {
+  customerCaptureLinkLifecycle,
+  type CustomerCaptureLinkScope,
+} from '../customer-payment-link-lifecycle/read';
+import {
+  readOriginalInvoicePayment,
+  type OriginalInvoicePayment,
+} from '../invoice-payment-receipt/reader';
+const signalAborted = Object.getOwnPropertyDescriptor(
+  AbortSignal.prototype,
+  'aborted',
+)!.get!;
+const eventAdd = EventTarget.prototype.addEventListener,
+  eventRemove = EventTarget.prototype.removeEventListener;
+const boundaries = Object.freeze({
+  financialEffect: false as const,
+  holdRelease: false as const,
+  customerPublication: 'BLOCKED' as const,
+  delivery: 'DISABLED' as const,
+  link: 'DISABLED' as const,
+  payment: 'UNKNOWN' as const,
+  balanceMinor: null,
+  settlement: 'UNVERIFIED' as const,
+  invoiceQuarantine: 'NOT_CLEARED' as const,
+});
+const UNKNOWN = Object.freeze({
+  outcome: 'UNKNOWN' as const,
+  receipt: null,
+  ...boundaries,
+});
+function flat(input: unknown, keys: readonly string[]) {
+  if (
+    !input ||
+    typeof input !== 'object' ||
+    types.isProxy(input) ||
+    ![null, Object.prototype].includes(Object.getPrototypeOf(input))
+  )
+    throw Error('Exact original ACK unavailable');
+  const d = Object.getOwnPropertyDescriptors(input);
+  if (
+    Reflect.ownKeys(d).length !== keys.length ||
+    keys.some((k) => !d[k] || !('value' in d[k]))
+  )
+    throw Error('Exact original ACK unavailable');
+  return Object.freeze(
+    Object.fromEntries(
+      keys.map((k) => {
+        const v = d[k].value;
+        if (
+          v !== null &&
+          typeof v !== 'string' &&
+          !(typeof v === 'number' && Number.isFinite(v))
+        )
+          throw Error('Exact original ACK unavailable');
+        return [k, v];
+      }),
+    ),
+  ) as Record<string, string | number | null>;
+}
+const originalKeys = [
+  'organizationId',
+  'merchantConfigId',
+  'provider',
+  'mode',
+  'invoiceId',
+  'customerId',
+  'sourceVersionId',
+  'sourceHash',
+  'revision',
+  'issueCommandId',
+  'attemptKey',
+  'authorizationId',
+  'requestDigest',
+  'kind',
+  'captureKey',
+] as const;
+const equal = (a: unknown, b: unknown) =>
+  typeof a === 'string' &&
+  typeof b === 'string' &&
+  uuid.test(a) &&
+  uuid.test(b) &&
+  a.toLowerCase() === b.toLowerCase();
+/** UNAPPLIED private read composition only. Current customer access is not
+ * payment/publication authority. Reuse the existing capture observer and exact
+ * original capture/refund receipt decoder, never call a command or repair. */
+export type PrivatePaymentAck =
+  | typeof UNKNOWN
+  | Readonly<
+      {
+        outcome: 'ORIGINAL_ACK_OBSERVED';
+        receipt: Readonly<{
+          invoiceId: string;
+          issuanceReceiptId: string;
+          kind: 'capture' | 'refund';
+          attemptKey: string;
+          captureKey: string | null;
+          status: 'pending' | 'unknown' | 'succeeded' | 'declined';
+          amountMinor: number;
+          currency: 'USD';
+          attemptedAt: string;
+        }>;
+      } & typeof boundaries
+    >;
+export function originalCustomerPaymentAck(
+  auth: CustomerBrokerAuth,
+  bearer: string,
+  customerPort: CommercialCustomerReaderPort,
+  captureConnection: GatewaySql,
+  receiptConnection: GatewaySql,
+  rawScope: CustomerCaptureLinkScope,
+  rawOriginal: OriginalInvoicePayment,
+  options?: { enabled: boolean; mode: 'disposable-proposal' },
+): (
+  target: CommercialCustomerTarget,
+  signal: AbortSignal,
+) => Promise<PrivatePaymentAck> {
+  const settings = () => {
+    if (
+      !options ||
+      typeof options !== 'object' ||
+      types.isProxy(options) ||
+      ![null, Object.prototype].includes(Object.getPrototypeOf(options))
+    )
+      return false;
+    const d = Object.getOwnPropertyDescriptors(options);
+    return (
+      Reflect.ownKeys(d).length === 2 &&
+      !!d.enabled &&
+      'value' in d.enabled &&
+      d.enabled.value === true &&
+      !!d.mode &&
+      'value' in d.mode &&
+      d.mode.value === 'disposable-proposal'
+    );
+  };
+  if (!settings()) return async () => UNKNOWN;
+  let scope: CustomerCaptureLinkScope, original: OriginalInvoicePayment;
+  try {
+    if (types.isProxy(rawScope)) return async () => UNKNOWN;
+    const d = Object.getOwnPropertyDescriptors(rawScope);
+    if (
+      Reflect.ownKeys(d).length !== 3 ||
+      ['merchant', 'intent', 'requestDigest'].some(
+        (k) => !d[k] || !('value' in d[k]),
+      )
+    )
+      return async () => UNKNOWN;
+    const merchant = flat(d.merchant.value, [
+      'organizationId',
+      'merchantConfigId',
+      'provider',
+      'mode',
+      'approvalReference',
+      'approvedUntil',
+    ]);
+    const intent = flat(d.intent.value, [
+      'organizationId',
+      'merchantConfigId',
+      'invoiceId',
+      'authorizationId',
+      'idempotencyKey',
+      'amountMinor',
+      'currency',
+      'expiresAt',
+    ]);
+    const requestDigest = d.requestDigest.value;
+    if (typeof requestDigest !== 'string' || !digestPattern.test(requestDigest))
+      return async () => UNKNOWN;
+    scope = Object.freeze({
+      merchant,
+      intent,
+      requestDigest,
+    }) as unknown as CustomerCaptureLinkScope;
+    original = flat(
+      rawOriginal,
+      originalKeys,
+    ) as unknown as OriginalInvoicePayment;
+    if (
+      !['organizationId', 'merchantConfigId', 'invoiceId'].every((k) =>
+        equal(original[k as keyof OriginalInvoicePayment], intent[k]),
+      ) ||
+      original.provider !== merchant.provider ||
+      original.mode !== 'sandbox' ||
+      (original.kind === 'capture'
+        ? !equal(original.attemptKey, intent.idempotencyKey) ||
+          !equal(original.authorizationId, intent.authorizationId) ||
+          original.requestDigest !== requestDigest ||
+          original.captureKey !== null
+        : original.kind !== 'refund' ||
+          !equal(original.captureKey, intent.idempotencyKey))
+    )
+      return async () => UNKNOWN;
+  } catch {
+    return async () => UNKNOWN;
+  }
+  const capturedConnection = (connection: GatewaySql): GatewaySql => {
+    if (
+      !connection ||
+      typeof connection !== 'object' ||
+      types.isProxy(connection)
+    )
+      throw Error('Exact original ACK unavailable');
+    const d = Object.getOwnPropertyDescriptor(connection, 'query');
+    if (
+      !d ||
+      !('value' in d) ||
+      typeof d.value !== 'function' ||
+      types.isProxy(d.value)
+    )
+      throw Error('Exact original ACK unavailable');
+    return Object.freeze({
+      query: Function.prototype.bind.call(
+        d.value,
+        connection,
+      ) as GatewaySql['query'],
+    });
+  };
+  let observe: ReturnType<typeof customerCaptureLinkLifecycle>;
+  try {
+    captureConnection = capturedConnection(captureConnection);
+    receiptConnection = capturedConnection(receiptConnection);
+    observe = customerCaptureLinkLifecycle(
+      auth,
+      bearer,
+      customerPort,
+      captureConnection,
+      scope,
+      { enabled: true, mode: 'disposable-proposal' },
+    );
+  } catch {
+    return async () => UNKNOWN;
+  }
+  return async (target: CommercialCustomerTarget, signal: AbortSignal) => {
+    try {
+      if (!settings() || types.isProxy(signal) || signalAborted.call(signal))
+        return UNKNOWN;
+    } catch {
+      return UNKNOWN;
+    }
+    const local = new AbortController(),
+      abort = () => local.abort();
+    eventAdd.call(signal, 'abort', abort);
+    if (signalAborted.call(signal)) local.abort();
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const current = () => {
+      if (
+        !settings() ||
+        signalAborted.call(signal) ||
+        signalAborted.call(local.signal)
+      )
+        throw Error('Exact original ACK unavailable');
+    };
+    const work = async (): Promise<PrivatePaymentAck> => {
+      current();
+      const before = await observe(target, local.signal);
+      current();
+      if (
+        !equal(before.invoiceId, original.invoiceId) ||
+        !equal(before.issuanceReceiptId, original.issueCommandId) ||
+        before.reason === 'NO_ATTEMPT'
+      )
+        return UNKNOWN;
+      const first = await readOriginalInvoicePayment(
+        receiptConnection,
+        scope.merchant,
+        original,
+        { testOnly: true, signal: local.signal },
+      );
+      current();
+      if (first.outcome !== 'LINKED') return UNKNOWN;
+      const middle = await observe(target, local.signal);
+      current();
+      const second = await readOriginalInvoicePayment(
+        receiptConnection,
+        scope.merchant,
+        original,
+        { testOnly: true, signal: local.signal },
+      );
+      current();
+      const after = await observe(target, local.signal);
+      current();
+      if (
+        second.outcome !== 'LINKED' ||
+        JSON.stringify(first) !== JSON.stringify(second) ||
+        before.reason !== middle.reason ||
+        middle.reason !== after.reason ||
+        !equal(after.invoiceId, original.invoiceId) ||
+        !equal(after.issuanceReceiptId, original.issueCommandId) ||
+        first.receipt.amountMinor > scope.intent.amountMinor ||
+        (original.kind === 'capture' &&
+          first.receipt.amountMinor !== scope.intent.amountMinor)
+      )
+        return UNKNOWN;
+      return Object.freeze({
+        outcome: 'ORIGINAL_ACK_OBSERVED' as const,
+        receipt: Object.freeze({
+          invoiceId: before.invoiceId,
+          issuanceReceiptId: before.issuanceReceiptId,
+          kind: first.receipt.kind,
+          attemptKey: first.receipt.attemptKey,
+          captureKey: first.receipt.captureKey,
+          status: first.receipt.status,
+          amountMinor: first.receipt.amountMinor,
+          currency: 'USD' as const,
+          attemptedAt: first.receipt.attemptedAt,
+        }),
+        ...boundaries,
+      });
+    };
+    try {
+      const timeout = new Promise<PrivatePaymentAck>((resolve) => {
+        timer = setTimeout(() => {
+          local.abort();
+          resolve(UNKNOWN);
+        }, 5000);
+      });
+      return await Promise.race([work(), timeout]);
+    } catch {
+      return UNKNOWN;
+    } finally {
+      if (timer) clearTimeout(timer);
+      eventRemove.call(signal, 'abort', abort);
+      local.abort();
+    }
+  };
+}

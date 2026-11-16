@@ -1,0 +1,57 @@
+{
+  "classification": "UNAPPLIED_EXISTING_ORIGINAL_ACK_READ_COMPOSITION",
+  "base": "14521c14ceb27056d96b265d55ce69266733f7c3",
+  "baseParent": "fbab4220a5e8fb043c10baa1328bbe6f7001e588",
+  "baseTree": "0870b117f5f3363c6ec27af532b3d655586f8c80",
+  "baseEntries": 2477,
+  "external": "4bcd77aab2c16d57e126f9a10b9135437c231ca8",
+  "externalParent": "da1e42d5d9c00cc51c60e7e35016bfc1067ce1b7",
+  "externalTree": "867431a4d25317ea48b4d3d98a92031729395ed6",
+  "externalEntries": 2470,
+  "authors": [],
+  "externalFiles": {
+    "proposals/invoice-payment-receipt/reader.ts": "eb8e9c1e057db7edee593941bd3112f6c4fe6206824db850963e5bbaf09a082a",
+    "server/invoices/commercial-payment-receipt.proposed.sql": "1c1ec82ca52560de86ec19ff9a865babfc3967ff466b425692e733fd240fdef5"
+  },
+  "sourceClosure": [
+    "proposals/invoice-payment-receipt/reader.ts",
+    "server/invoices/commercial-payment-receipt.proposed.sql"
+  ],
+  "overlays": {
+    "proposals/invoice-payment-receipt/reader.ts": "original-reader.proposed.txt",
+    "server/invoices/commercial-payment-receipt.proposed.sql": "receipt-sql.proposed.txt",
+    "proposals/customer-payment-ack-composition/reader.ts": "readback.proposed.txt"
+  },
+  "newSourcePaths": ["proposals/customer-payment-ack-composition/reader.ts"],
+  "after": {
+    "proposals/invoice-payment-receipt/reader.ts": "eb8e9c1e057db7edee593941bd3112f6c4fe6206824db850963e5bbaf09a082a",
+    "server/invoices/commercial-payment-receipt.proposed.sql": "1c1ec82ca52560de86ec19ff9a865babfc3967ff466b425692e733fd240fdef5",
+    "proposals/customer-payment-ack-composition/reader.ts": "2e3913749b28d15ee9976572ce0d328af1d246d039ba930a04db1a76e6a268de"
+  },
+  "fixtureImports": {},
+  "testPayloads": {
+    "unit-tests.proposed.txt": "tests/customer-payment-ack-composition.test.ts",
+    "native-tests.proposed.txt": "tests/database/customer-payment-ack-composition.test.ts"
+  },
+  "patches": {
+    "composition.patch": {
+      "parent": "14521c14ceb27056d96b265d55ce69266733f7c3",
+      "paths": [
+        "proposals/invoice-payment-receipt/reader.ts",
+        "server/invoices/commercial-payment-receipt.proposed.sql",
+        "proposals/customer-payment-ack-composition/reader.ts"
+      ],
+      "modes": ["100644", "100644", "100644"],
+      "sha256": "07f345abc31b248d5ff23ada8efb82349dc23d44f2cc61b49e63cd8a1cffccbe",
+      "stage": "UNAPPLIED_DEPENDENCY_AND_NEW_WRAPPER_COMPOSITION"
+    }
+  },
+  "sourceAdmissionAuthorized": false,
+  "launchIntegrationAuthorized": false,
+  "installationAuthorized": false,
+  "operationalReady": false,
+  "customerPublication": "BLOCKED",
+  "financialExecutionAuthorized": false,
+  "holdRelease": false,
+  "A2GuardAdmission": "EXCLUDED_SEPARATE_APPROVAL"
+}
