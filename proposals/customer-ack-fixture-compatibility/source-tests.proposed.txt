@@ -1,0 +1,400 @@
+import { afterAll, beforeAll, expect, it } from 'vitest';
+import {
+  cpSync,
+  mkdtempSync,
+  readFileSync,
+  writeFileSync,
+  rmSync,
+  realpathSync,
+  chmodSync,
+  unlinkSync,
+  readdirSync,
+  lstatSync,
+  mkdirSync,
+} from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join, dirname, resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
+import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
+// BEGIN CURRENT_SOURCE_FIXTURE_ONLY
+async function prepareCurrentAckFixture(source: string, qualifierUrl: string) {
+  const deny: () => never = () => {
+    throw Error('Exact current ACK fixture source required');
+  };
+  const sha = (bytes: Buffer) =>
+    createHash('sha256').update(bytes).digest('hex');
+  const folder = 'proposals/customer-payment-ack-composition/';
+  const extra = 'proposals/customer-payment-ack-native-negatives';
+  const outsideAuthority = {
+    'README.md':
+      '4bed18fe56941991f40e2e48ca12d6b807b029a3084b95da1f812420ad158943',
+    'native-negative-tail.proposed.txt':
+      '4b32bd053b5acaf9e2f32ef987e608f5e72e7231983ac53b67b9d2bd118fb698',
+    'source.json':
+      'd98c6bc9cf13d7eff1aef003959cfa7e53ffa0e1383bf3571ec33737660bf168',
+  };
+  source = resolve(source);
+  const exactRoot = (root: string) => {
+    if (realpathSync(root) !== root) deny();
+    for (let path = root; ; path = dirname(path)) {
+      const info = lstatSync(path);
+      if (info.isSymbolicLink() || !info.isDirectory()) deny();
+      if (dirname(path) === path) break;
+    }
+  };
+  exactRoot(source);
+  const sourceIdentity = lstatSync(source);
+  const sameRoot = (root: string, identity: { dev: number; ino: number }) => {
+    exactRoot(root);
+    const now = lstatSync(root);
+    if (now.dev !== identity.dev || now.ino !== identity.ino) deny();
+  };
+  const physical = (root: string, path: string) => {
+    let target = root;
+    for (const part of path.split('/')) {
+      target = join(target, part);
+      const info = lstatSync(target);
+      if (
+        info.isSymbolicLink() ||
+        (target !== join(root, path) && !info.isDirectory())
+      )
+        deny();
+    }
+    const info = lstatSync(target);
+    if (!info.isFile() || (info.mode & 0o777) !== 0o644) deny();
+    return readFileSync(target);
+  };
+  const checkOutside = () => {
+    let directory = source;
+    for (const part of extra.split('/')) {
+      directory = join(directory, part);
+      const info = lstatSync(directory);
+      if (info.isSymbolicLink() || !info.isDirectory()) deny();
+    }
+    const names = readdirSync(directory).sort();
+    if (
+      JSON.stringify(names) !==
+      JSON.stringify(Object.keys(outsideAuthority).sort())
+    )
+      deny();
+    for (const [name, expected] of Object.entries(outsideAuthority))
+      if (sha(physical(source, extra + '/' + name)) !== expected) deny();
+  };
+  checkOutside();
+  if (
+    qualifierUrl !== pathToFileURL(join(source, folder + 'qualify.mjs')).href ||
+    sha(physical(source, folder + 'qualify.mjs')) !==
+      'dcc881f38cb256ff42ed198448a2596103ad01457a9b76ad68f8538ea0d12ec5'
+  )
+    deny();
+  const own = physical(
+    source,
+    'tests/customer-payment-ack-composition-source.test.ts',
+  );
+  const start = own.toString().lastIndexOf("\nit('qualifies only declared") + 1;
+  if (
+    sha(own.subarray(start)) !==
+    'ad79624cdf16a4bf5ede4bc08660ddc243340b05a74a58b12758742b0b309524'
+  )
+    deny();
+  // Sealed public objects supply advisory names/modes only, never file bodies.
+  const manifestBytes = physical(source, folder + 'source.json');
+  const proofBytes = physical(source, folder + 'git-source-proof.json');
+  if (
+    sha(manifestBytes) !==
+      '678ef73e5287116ebedde26f8d625e6c0dbaa4706a3debb174d17a9342fc9229' ||
+    sha(proofBytes) !==
+      '61e4f998a11779b4ea8d59bc6feb2e47bd630c8e204e392e377f5c0c4b61201f'
+  )
+    deny();
+  const manifest = JSON.parse(manifestBytes.toString());
+  const proof = JSON.parse(proofBytes.toString());
+  const declared = new Map<string, number>();
+  const visitTree = (oid: string, prefix = '', active = new Set<string>()) => {
+    if (active.has(oid) || active.size > 100 || !/^[a-f0-9]{40}$/.test(oid))
+      deny();
+    const entry = proof.objects[oid];
+    if (!entry || entry.type !== 'tree') deny();
+    const bytes = Buffer.from(entry.data, 'base64');
+    const next = new Set(active).add(oid);
+    for (let at = 0; at < bytes.length;) {
+      const space = bytes.indexOf(32, at),
+        zero = bytes.indexOf(0, space + 1);
+      if (space < at || zero < space || zero + 21 > bytes.length) deny();
+      const mode = bytes.subarray(at, space).toString();
+      const name = bytes.subarray(space + 1, zero).toString();
+      if (
+        !name ||
+        name === '.' ||
+        name === '..' ||
+        name.includes('/') ||
+        name.includes('\\') ||
+        Array.from(name).some((c) => c.charCodeAt(0) < 32)
+      )
+        deny();
+      const path = prefix + name,
+        child = bytes.subarray(zero + 1, zero + 21).toString('hex');
+      if (mode === '40000') visitTree(child, path + '/', next);
+      else {
+        if (!['100644', '100755'].includes(mode) || declared.has(path)) deny();
+        declared.set(path, Number.parseInt(mode.slice(-3), 8));
+      }
+      at = zero + 21;
+    }
+  };
+  visitTree(manifest.baseTree);
+  if (declared.size !== 2477) deny();
+  for (const name of [
+    'composition.patch',
+    'git-source-proof.json',
+    'native-tests.proposed.txt',
+    'original-reader.proposed.txt',
+    'readback.proposed.txt',
+    'receipt-sql.proposed.txt',
+    'source.json',
+    'unit-tests.proposed.txt',
+    'qualify.mjs',
+    'qualify.d.mts',
+    'README.md',
+  ])
+    declared.set(folder + name, 0o644);
+  declared.set('tests/customer-payment-ack-composition-source.test.ts', 0o644);
+  if (declared.size !== (2489 as number)) deny();
+  const tree = (root: string) => {
+    const rows = new Map<string, { bytes: Buffer | null; mode: number }>();
+    for (const [path, expectedMode] of declared) {
+      let target = root,
+        relative = '';
+      for (const part of path.split('/')) {
+        relative = relative ? relative + '/' + part : part;
+        target = join(target, part);
+        const info = lstatSync(target);
+        if (info.isSymbolicLink()) deny();
+        if (relative !== path) {
+          if (!info.isDirectory()) deny();
+          rows.set(relative, { bytes: null, mode: info.mode & 0o777 });
+        } else {
+          if (!info.isFile() || (info.mode & 0o777) !== expectedMode) deny();
+          rows.set(path, { bytes: readFileSync(target), mode: expectedMode });
+        }
+      }
+    }
+    return rows;
+  };
+  const snapshot = tree(source);
+  const clean = mkdtempSync(
+    join(realpathSync(tmpdir()), 'ack-current-fixture-'),
+  );
+  try {
+    for (const [path, row] of snapshot) {
+      if (row.bytes === null) {
+        mkdirSync(join(clean, path), { recursive: true });
+        chmodSync(join(clean, path), row.mode);
+      } else writeFileSync(join(clean, path), row.bytes, { mode: row.mode });
+    }
+    const cleanIdentity = lstatSync(clean);
+    const compare = (rows: typeof snapshot) => {
+      if (rows.size !== snapshot.size) deny();
+      for (const [path, expected] of snapshot) {
+        const row = rows.get(path);
+        if (
+          !row ||
+          row.mode !== expected.mode ||
+          (expected.bytes === null
+            ? row.bytes !== null
+            : !row.bytes || !row.bytes.equals(expected.bytes))
+        )
+          deny();
+      }
+    };
+    const cleanInventory = (prefix = '') => {
+      for (const name of readdirSync(join(clean, prefix))) {
+        const path = prefix ? prefix + '/' + name : name;
+        const row = snapshot.get(path),
+          info = lstatSync(join(clean, path));
+        if (!row || info.isSymbolicLink()) deny();
+        if (info.isDirectory()) {
+          if (row.bytes !== null) deny();
+          cleanInventory(path);
+        } else if (!info.isFile() || row.bytes === null) deny();
+      }
+    };
+    const current = () => {
+      for (let pass = 0; pass < 2; pass++) {
+        sameRoot(source, sourceIdentity);
+        sameRoot(clean, cleanIdentity);
+        checkOutside();
+        compare(tree(source));
+        cleanInventory();
+        compare(tree(clean));
+      }
+      sameRoot(source, sourceIdentity);
+      sameRoot(clean, cleanIdentity);
+    };
+    current();
+    const original = await import(qualifierUrl);
+    current();
+    const checked = <T,>(operation: () => T): T => {
+      current();
+      try {
+        return operation();
+      } finally {
+        current();
+      }
+    };
+    const initial = checked(() => original.capture(clean));
+    return {
+      root: clean,
+      initial,
+      capture: (target = clean) => checked(() => original.capture(target)),
+      materialize: (target = clean) =>
+        checked(() => original.materialize(target)),
+      verifyMaterialized: (image: string, target = clean) =>
+        checked(() => original.verifyMaterialized(image, target)),
+    };
+  } catch (error) {
+    rmSync(clean, { recursive: true, force: true });
+    throw error;
+  }
+}
+// END CURRENT_SOURCE_FIXTURE_ONLY
+const fixture = await prepareCurrentAckFixture(
+  process.cwd(),
+  new URL(
+    '../proposals/customer-payment-ack-composition/qualify.mjs',
+    import.meta.url,
+  ).href,
+);
+const root = fixture.root,
+  folder = 'proposals/customer-payment-ack-composition/',
+  q = fixture.initial,
+  capture = fixture.capture,
+  materialize = fixture.materialize,
+  verifyMaterialized = fixture.verifyMaterialized;
+let image: string, negative: string;
+beforeAll(() => {
+  image = materialize().directory;
+  negative = mkdtempSync(
+    join(realpathSync(tmpdir()), 'ack-composition-negative-'),
+  );
+  cpSync(root, negative, {
+    recursive: true,
+    filter: (p) =>
+      !['.git', 'node_modules'].some(
+        (n) => p === join(root, n) || p.startsWith(join(root, n) + '/'),
+      ),
+  });
+});
+afterAll(() => {
+  for (const p of [image, negative, root])
+    if (p) rmSync(p, { recursive: true, force: true });
+});
+it('qualifies only declared actual502/498 source union, with all operating authorities held', () => {
+  expect(q.m.base).toBe('14521c14ceb27056d96b265d55ce69266733f7c3');
+  expect(q.m.external).toBe('4bcd77aab2c16d57e126f9a10b9135437c231ca8');
+  expect(q.base).toHaveLength(2477);
+  expect(verifyMaterialized(image).files).toBe(2482);
+  expect(q.m.installationAuthorized).toBe(false);
+  expect(q.operationalReady).toBe(false);
+  expect(q.m.A2GuardAdmission).toContain('EXCLUDED');
+});
+it.each([
+  'original-reader.proposed.txt',
+  'receipt-sql.proposed.txt',
+  'readback.proposed.txt',
+  'unit-tests.proposed.txt',
+  'native-tests.proposed.txt',
+])('withdrawn or substituted %s cannot qualify', (file) => {
+  const p = join(negative, folder + file),
+    b = readFileSync(p);
+  try {
+    writeFileSync(p, '// withdrawn');
+    expect(() => capture(negative)).toThrow();
+  } finally {
+    writeFileSync(p, b);
+  }
+});
+it('coordinated wrapper and mutable metadata rebinding remains denied', () => {
+  const p = join(negative, folder + 'readback.proposed.txt'),
+    m = join(negative, folder + 'source.json'),
+    a = readFileSync(p),
+    b = readFileSync(m);
+  try {
+    writeFileSync(p, '// new unknown authority');
+    const data = JSON.parse(b.toString());
+    data.after['proposals/customer-payment-ack-composition/reader.ts'] =
+      createHash('sha256').update(readFileSync(p)).digest('hex');
+    writeFileSync(m, JSON.stringify(data));
+    expect(() => capture(negative)).toThrow();
+  } finally {
+    writeFileSync(p, a);
+    writeFileSync(m, b);
+  }
+});
+it('changed parent capture observer cannot be projected into trusted history', () => {
+  const p = join(negative, 'proposals/customer-payment-link-lifecycle/read.ts'),
+    b = readFileSync(p);
+  try {
+    writeFileSync(p, '// foreign');
+    expect(() => capture(negative)).toThrow();
+  } finally {
+    writeFileSync(p, b);
+  }
+});
+it('unreviewed extra image source is not hidden by exact known payloads', () => {
+  const p = join(image, 'src/unreviewed-ack.ts');
+  try {
+    writeFileSync(p, '// unknown');
+    expect(() => verifyMaterialized(image)).toThrow();
+  } finally {
+    unlinkSync(p);
+  }
+});
+it('source mode substitution cannot qualify', () => {
+  const p = join(image, 'proposals/invoice-payment-receipt/reader.ts');
+  try {
+    chmodSync(p, 0o755);
+    expect(() => verifyMaterialized(image)).toThrow();
+  } finally {
+    chmodSync(p, 0o644);
+  }
+});
+it('late wrapper withdrawal cannot return a qualified source image', () => {
+  const p = join(negative, folder + 'readback.proposed.txt'),
+    b = readFileSync(p);
+  try {
+    const code = `import fs from'node:fs';import{syncBuiltinESMExports}from'node:module';const raw=fs.readFileSync;let done=false;fs.readFileSync=(...a)=>{const b=raw(...a);if(String(a[0])===${JSON.stringify(p)}&&!done){done=true;fs.writeFileSync(${JSON.stringify(p)},'// WITHDRAWN');}return b;};syncBuiltinESMExports();const{materialize}=await import(${JSON.stringify(new URL('../proposals/customer-payment-ack-composition/qualify.mjs', import.meta.url).href)});materialize(${JSON.stringify(negative)});`;
+    expect(() =>
+      execFileSync(process.execPath, ['--input-type=module', '-e', code], {
+        cwd: root,
+        timeout: 10000,
+        stdio: 'pipe',
+      }),
+    ).toThrow();
+    expect(readFileSync(p, 'utf8')).toBe('// WITHDRAWN');
+  } finally {
+    writeFileSync(p, b);
+  }
+});
+it('image withdrawal during final source capture is rejected by a final complete after audit', () => {
+  const p = join(root, folder + 'readback.proposed.txt'),
+    target = join(
+      image,
+      'proposals/customer-payment-ack-composition/reader.ts',
+    ),
+    b = readFileSync(target);
+  try {
+    const code = `import fs from'node:fs';import{syncBuiltinESMExports}from'node:module';const raw=fs.readFileSync;let hits=0;fs.readFileSync=(...a)=>{const b=raw(...a);if(String(a[0])===${JSON.stringify(p)}&&++hits===3)fs.writeFileSync(${JSON.stringify(target)},'// WITHDRAWN AFTER AUDITS');return b;};syncBuiltinESMExports();const{verifyMaterialized}=await import(${JSON.stringify(new URL('../proposals/customer-payment-ack-composition/qualify.mjs', import.meta.url).href)});verifyMaterialized(${JSON.stringify(image)},${JSON.stringify(root)});`;
+    expect(() =>
+      execFileSync(process.execPath, ['--input-type=module', '-e', code], {
+        cwd: root,
+        timeout: 10000,
+        stdio: 'pipe',
+      }),
+    ).toThrow();
+    expect(readFileSync(target, 'utf8')).toBe('// WITHDRAWN AFTER AUDITS');
+  } finally {
+    writeFileSync(target, b);
+  }
+});
