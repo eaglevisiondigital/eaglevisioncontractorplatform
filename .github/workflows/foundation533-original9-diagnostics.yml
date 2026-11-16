@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      DIAGNOSTIC_DIR: ${{ runner.temp }}/foundation533-diagnostics
       DIAGNOSTIC_WORKFLOW_SHA: ${{ github.workflow_sha }}
       DIAGNOSTIC_EVENT_SHA: ${{ github.sha }}
     steps:
@@ -24,6 +23,8 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Prepare read-only diagnostics outside fixed source
+        env:
+          DIAGNOSTIC_DIR: ${{ runner.temp }}/foundation533-diagnostics
         shell: bash
         run: |
           set -euo pipefail
@@ -203,8 +204,12 @@ jobs:
           node --check "$DIAGNOSTIC_DIR/observe.mjs"
           node --check "$DIAGNOSTIC_DIR/results.mjs"
       - name: Require exact fixed533 source bodies types and modes before tests
+        env:
+          DIAGNOSTIC_DIR: ${{ runner.temp }}/foundation533-diagnostics
         run: node "$DIAGNOSTIC_DIR/frame.mjs" before
       - name: Run only original nine implicated cases at original budgets and workers
+        env:
+          DIAGNOSTIC_DIR: ${{ runner.temp }}/foundation533-diagnostics
         shell: bash
         run: |
           set -euo pipefail
@@ -218,9 +223,13 @@ jobs:
             --execArgv="--import=$DIAGNOSTIC_DIR/observe.mjs" \
             --reporter=default --reporter=json --outputFile.json="$DIAGNOSTIC_DIR/original9.json"
       - name: Require unchanged fixed533 source after original tests
+        env:
+          DIAGNOSTIC_DIR: ${{ runner.temp }}/foundation533-diagnostics
         if: always()
         run: node "$DIAGNOSTIC_DIR/frame.mjs" after
       - name: Require exact nine-case selection and preserve original failures
+        env:
+          DIAGNOSTIC_DIR: ${{ runner.temp }}/foundation533-diagnostics
         if: always()
         run: node "$DIAGNOSTIC_DIR/results.mjs"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
