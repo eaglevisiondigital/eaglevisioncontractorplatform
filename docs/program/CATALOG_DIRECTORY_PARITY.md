@@ -15,8 +15,8 @@ UNKNOWN reconciliation or permission to repeat an uncertain command.
 Actual synthetic App browser qualification passes fifteen cases across desktop,
 tablet and mobile: literal search/empty/clear, type/status intersection, retained
 unsaved input/cancel, the existing save/reopen workflow, company-context remount,
-keyboard, accessibility and overflow. Independent source review and nine separately
-written responsive edit/filter/save checks pass. The negative-first parent lacks
+keyboard, accessibility and overflow. Independent source review and nine responsive
+edit/filter/save checks run independently on an owned copy pass. The negative-first parent lacks
 the search control; the first candidate test run exposed incorrect exact-label
 select locators. Those failures remain recorded. The final role-based combobox
 locators preserve the original assertions and thirty-second test budget.
