@@ -1,0 +1,17 @@
+{
+  "classification": "UNAPPLIED_503_GUARD_ADMISSION_ONLY",
+  "author": "5030bb834423fc572eb770d077739300477fd1e3",
+  "parent": "fbab4220a5e8fb043c10baa1328bbe6f7001e588",
+  "tree": "4ffa570bcbe5e0c38794f8dc7802990580a3a4fd",
+  "commits": {
+    "fbab4220a5e8fb043c10baa1328bbe6f7001e588": "tree 1adab30c7261d7e03a051ef5827114a86c7bd0f7\nparent d162372c321039f49c1d168bbde8c041b872c182\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794776924 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794776924 -0600\n\nApply approved customer read launch integration [skip netlify]\n",
+    "5030bb834423fc572eb770d077739300477fd1e3": "tree 4ffa570bcbe5e0c38794f8dc7802990580a3a4fd\nparent fbab4220a5e8fb043c10baa1328bbe6f7001e588\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794786105 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794786105 -0600\n\nPrepare restricted customer invoice authorize/read adapter [skip netlify]\n"
+  },
+  "target": "proposals/commercial-customer-operating-reader/source.ts",
+  "mode": "100644",
+  "before": "984fefa405e00933e62e3c865ceb721302ba29b05f3aabb2f4be37c1b7455b9d",
+  "after": "dd44ddb140d1f38cafdf033e3dca4f290191dcb52468525e3f599f88b3d7f071",
+  "patch": "7955b6f528069465755614ce7d7644593fc2df3b9aa56ee4fdf66081285d147e",
+  "canonicalFHGChanged": false,
+  "operationalReady": false
+}
