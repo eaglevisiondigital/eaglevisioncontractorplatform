@@ -1,0 +1,411 @@
+import { afterEach, expect, it, vi } from 'vitest';
+import { randomUUID } from 'node:crypto';
+import { commercialCustomerBridgeFixture } from './fixtures/commercial-customer-bridge';
+import { customerCaptureLinkLifecycle } from '../proposals/customer-payment-link-lifecycle/read';
+import { CUSTOMER_CAPTURE_LIFECYCLE_QUERY } from '../proposals/customer-payment-link-lifecycle/query';
+import type { GatewaySql } from '../server/payments/postgres-store';
+const signal = () => new AbortController().signal;
+afterEach(() => vi.useRealTimers());
+function fixture() {
+  const f = commercialCustomerBridgeFixture(),
+    h = f.value.invoice,
+    amount = Math.min(500, h.amountMinor),
+    digest = 'd'.repeat(64);
+  const merchant = {
+    organizationId: h.organizationId,
+    merchantConfigId: randomUUID(),
+    provider: 'nmi' as const,
+    mode: 'sandbox' as const,
+    approvalReference: 'FICTIONAL ONLY',
+    approvedUntil: new Date(Date.now() + 3600000).toISOString(),
+  };
+  const intent = {
+    organizationId: h.organizationId,
+    merchantConfigId: merchant.merchantConfigId,
+    invoiceId: h.invoiceId,
+    authorizationId: randomUUID(),
+    idempotencyKey: randomUUID(),
+    amountMinor: amount,
+    currency: 'USD' as const,
+    expiresAt: new Date(Date.now() + 120000).toISOString(),
+  };
+  const row: Record<string, unknown> = {
+    organizationId: h.organizationId,
+    invoiceId: h.invoiceId,
+    customerId: h.customerId,
+    sourceVersionId: h.sourceVersionId,
+    sourceHash: h.sourceHash,
+    revision: h.revision,
+    issuanceReceiptId: h.receipt.commandId,
+    invoiceAmountMinor: String(h.amountMinor),
+    authorizationId: intent.authorizationId,
+    merchantConfigId: merchant.merchantConfigId,
+    provider: 'nmi',
+    authorityKind: 'capture',
+    amountMinor: String(amount),
+    currency: 'USD',
+    requestDigest: digest,
+    authorityRevoked: false,
+    authorityExpired: false,
+    merchantApproved: true,
+    uncertainInvoice: false,
+    attempt: null,
+  };
+  let calls = 0,
+    hook = async () => {};
+  const connection = {
+    async query(sql: string, args?: unknown[]) {
+      calls++;
+      expect(sql).toBe(CUSTOMER_CAPTURE_LIFECYCLE_QUERY);
+      expect(args).toEqual([
+        intent.organizationId,
+        intent.invoiceId,
+        intent.authorizationId,
+        intent.merchantConfigId,
+        h.customerId,
+        h.sourceVersionId,
+        h.revision,
+        h.receipt.commandId,
+        digest,
+        amount,
+      ]);
+      await hook();
+      return { rows: [{ result: structuredClone(row) }] };
+    },
+  } as GatewaySql;
+  const input = { merchant, intent, requestDigest: digest };
+  const load = () =>
+    customerCaptureLinkLifecycle(f.auth, f.bearer, f.port, connection, input, {
+      enabled: true,
+      mode: 'disposable-proposal',
+    })(f.viewer, signal());
+  function attempt(status: string) {
+    row.attempt = {
+      key: intent.idempotencyKey,
+      authorizationId: intent.authorizationId,
+      merchantConfigId: merchant.merchantConfigId,
+      invoiceId: h.invoiceId,
+      kind: 'capture',
+      amountMinor: String(amount),
+      requestDigest: digest,
+      status,
+      result:
+        status === 'pending'
+          ? null
+          : {
+              status,
+              provider: 'nmi',
+              mode: 'sandbox',
+              transactionId:
+                status === 'succeeded' ? 'FICTIONAL_TRANSACTION' : null,
+              amountMinor: amount,
+              currency: 'USD',
+            },
+    };
+    row.uncertainInvoice = ['pending', 'unknown'].includes(status);
+  }
+  return {
+    f,
+    h,
+    merchant,
+    intent,
+    row,
+    input,
+    connection,
+    load,
+    attempt,
+    calls: () => calls,
+    hook: (fn: () => Promise<void>) => {
+      hook = fn;
+    },
+  };
+}
+
+import { originalCustomerPaymentAck } from '../proposals/customer-payment-ack-composition/reader';
+import type { OriginalInvoicePayment } from '../proposals/invoice-payment-receipt/reader';
+function ack(kind: 'capture' | 'refund' = 'capture') {
+  const f = fixture();
+  f.attempt('succeeded');
+  const original: OriginalInvoicePayment = {
+    organizationId: f.intent.organizationId,
+    merchantConfigId: f.merchant.merchantConfigId,
+    provider: 'nmi',
+    mode: 'sandbox',
+    invoiceId: f.intent.invoiceId,
+    customerId: f.h.customerId,
+    sourceVersionId: f.h.sourceVersionId,
+    sourceHash: f.h.sourceHash,
+    revision: f.h.revision,
+    issueCommandId: f.h.receipt.commandId,
+    attemptKey: kind === 'capture' ? f.intent.idempotencyKey : randomUUID(),
+    authorizationId:
+      kind === 'capture' ? f.intent.authorizationId : randomUUID(),
+    requestDigest: kind === 'capture' ? f.input.requestDigest : 'e'.repeat(64),
+    kind,
+    captureKey: kind === 'capture' ? null : f.intent.idempotencyKey,
+  };
+  const raw: Record<string, unknown> = {
+    outcome: 'LINKED',
+    ...structuredClone(original),
+    status: 'succeeded',
+    amountMinor: kind === 'capture' ? f.intent.amountMinor : 100,
+    currency: 'USD',
+    attemptedAt: new Date(Date.now() - 1000).toISOString(),
+  };
+  let reads = 0;
+  let hook = async () => {};
+  const receipt = {
+    async query(sql: string) {
+      expect(sql).toContain(
+        'select private.commercial_invoice_payment_receipt(',
+      );
+      reads++;
+      await hook();
+      return { rows: [{ receipt: structuredClone(raw) }] };
+    },
+  } as GatewaySql;
+  const make = () =>
+    originalCustomerPaymentAck(
+      f.f.auth,
+      f.f.bearer,
+      f.f.port,
+      f.connection,
+      receipt,
+      f.input,
+      original,
+      { enabled: true, mode: 'disposable-proposal' },
+    );
+  return {
+    ...f,
+    original,
+    receipt,
+    make,
+    run: () => make()(f.f.viewer, signal()),
+    reads: () => reads,
+    hook: (fn: () => Promise<void>) => {
+      hook = fn;
+    },
+    set: (fn: (r: Record<string, unknown>) => void) => fn(raw),
+  };
+}
+it('defaults OFF without touching private inputs, Auth or connections', async () => {
+  let touched = false;
+  const proxy = new Proxy(
+    {},
+    {
+      get() {
+        touched = true;
+        throw Error('PRIVATE');
+      },
+    },
+  );
+  const load = originalCustomerPaymentAck(
+    proxy as never,
+    '',
+    proxy as never,
+    proxy as never,
+    proxy as never,
+    proxy as never,
+    proxy as never,
+  );
+  expect((await load(proxy as never, signal())).outcome).toBe('UNKNOWN');
+  expect(touched).toBe(false);
+});
+it.each(['capture', 'refund'] as const)(
+  'reopens only original %s ACK with publication/links/holds/balance/settlement closed',
+  async (kind) => {
+    const f = ack(kind),
+      r = await f.run();
+    expect(r.outcome).toBe('ORIGINAL_ACK_OBSERVED');
+    expect(r).toMatchObject({
+      financialEffect: false,
+      holdRelease: false,
+      customerPublication: 'BLOCKED',
+      delivery: 'DISABLED',
+      link: 'DISABLED',
+      payment: 'UNKNOWN',
+      balanceMinor: null,
+      settlement: 'UNVERIFIED',
+      invoiceQuarantine: 'NOT_CLEARED',
+    });
+    expect(r.receipt).toMatchObject({
+      kind,
+      attemptKey: f.original.attemptKey,
+      captureKey: f.original.captureKey,
+    });
+    expect(f.reads()).toBe(2);
+    for (const secret of [
+      f.original.sourceHash,
+      f.original.requestDigest,
+      f.merchant.merchantConfigId,
+      f.f.bearer,
+    ])
+      expect(JSON.stringify(r)).not.toContain(secret);
+  },
+);
+it.each(['pending', 'unknown', 'declined'])(
+  'original %s receipt can be observed without treating it as a payment or hold resolution',
+  async (status) => {
+    const f = ack('refund');
+    f.set((r) => {
+      r.status = status;
+    });
+    const r = await f.run();
+    expect(r.receipt?.status).toBe(status);
+    expect(r.payment).toBe('UNKNOWN');
+    expect(r.holdRelease).toBe(false);
+  },
+);
+it('foreign refund captureKey is denied before a financial read', async () => {
+  const f = ack('refund');
+  f.original.captureKey = randomUUID();
+  expect((await f.run()).outcome).toBe('UNKNOWN');
+  expect(f.reads()).toBe(0);
+});
+it.each([
+  'organizationId',
+  'merchantConfigId',
+  'invoiceId',
+  'authorizationId',
+  'attemptKey',
+])('foreign capture %s is rejected', async (field) => {
+  const f = ack();
+  (f.original as unknown as Record<string, unknown>)[field] = randomUUID();
+  expect((await f.run()).outcome).toBe('UNKNOWN');
+});
+it('a changed original source descriptor cannot read a different ACK', async () => {
+  const f = ack('refund');
+  f.original.sourceHash = 'f'.repeat(64);
+  expect((await f.run()).outcome).toBe('UNKNOWN');
+});
+it('ambiguous missing original receipt stays UNKNOWN', async () => {
+  const f = ack();
+  f.set((r) => {
+    for (const k of Object.keys(r)) delete r[k];
+    r.outcome = 'UNKNOWN';
+  });
+  expect((await f.run()).outcome).toBe('UNKNOWN');
+});
+it('customer revocation during the original ACK await suppresses a previously readable receipt', async () => {
+  const f = ack();
+  f.hook(async () => {
+    f.f.setAuth(false);
+  });
+  expect((await f.run()).outcome).toBe('UNKNOWN');
+  expect(f.reads()).toBe(1);
+});
+it('withdrawn workload or driver error cannot reveal raw SQL detail', async () => {
+  const f = ack();
+  f.hook(async () => {
+    throw Error('PRIVATE_WORKLOAD_OR_DRIVER_DETAIL');
+  });
+  const r = await f.run();
+  expect(r.outcome).toBe('UNKNOWN');
+  expect(JSON.stringify(r)).not.toContain('PRIVATE');
+});
+it('two different immutable observations are never merged into an ACK', async () => {
+  const f = ack('refund');
+  f.hook(async () => {
+    if (f.reads() === 2)
+      f.set((r) => {
+        r.status = 'declined';
+      });
+  });
+  expect((await f.run()).outcome).toBe('UNKNOWN');
+});
+it('capture state withdrawal during ACK recovery is denied without replay', async () => {
+  const f = ack();
+  f.hook(async () => {
+    f.row.authorityRevoked = true;
+  });
+  expect((await f.run()).outcome).toBe('UNKNOWN');
+});
+it('a refund over the linked original partial capture is rejected', async () => {
+  const f = ack('refund');
+  f.set((r) => {
+    r.amountMinor = f.intent.amountMinor + 1;
+  });
+  expect((await f.run()).outcome).toBe('UNKNOWN');
+});
+it('an own getter cannot provide a private original key or execute a hook', async () => {
+  const f = ack();
+  let touched = false;
+  Object.defineProperty(f.original, 'attemptKey', {
+    get() {
+      touched = true;
+      return f.intent.idempotencyKey;
+    },
+  });
+  expect((await f.run()).outcome).toBe('UNKNOWN');
+  expect(touched).toBe(false);
+});
+it('proxy signal denial does not invoke a trap', async () => {
+  const f = ack();
+  let touched = false;
+  const p = new Proxy(signal(), {
+    getPrototypeOf() {
+      touched = true;
+      throw Error('PRIVATE');
+    },
+    get() {
+      touched = true;
+      throw Error('PRIVATE');
+    },
+  });
+  expect((await f.make()(f.f.viewer, p)).outcome).toBe('UNKNOWN');
+  expect(touched).toBe(false);
+});
+it('cancellation while reading suppresses late original ACK output', async () => {
+  const f = ack(),
+    c = new AbortController();
+  f.hook(async () => {
+    c.abort();
+  });
+  expect((await f.make()(f.f.viewer, c.signal)).outcome).toBe('UNKNOWN');
+});
+it('a stalled original read has one five-second whole-composition deadline', async () => {
+  vi.useFakeTimers();
+  const f = ack();
+  f.hook(() => new Promise(() => {}));
+  const p = f.run();
+  await vi.advanceTimersByTimeAsync(5001);
+  expect((await p).outcome).toBe('UNKNOWN');
+});
+it('configuration getters cannot enable a wrapper or execute a hook', async () => {
+  const f = ack();
+  let touched = false;
+  const options = {
+    mode: 'disposable-proposal' as const,
+    get enabled() {
+      touched = true;
+      return true;
+    },
+  };
+  const load = originalCustomerPaymentAck(
+    f.f.auth,
+    f.f.bearer,
+    f.f.port,
+    f.connection,
+    f.receipt,
+    f.input,
+    f.original,
+    options,
+  );
+  expect((await load(f.f.viewer, signal())).outcome).toBe('UNKNOWN');
+  expect(touched).toBe(false);
+  expect(f.reads()).toBe(0);
+});
+it('ordinary branded signal accessor and method overrides are never invoked', async () => {
+  const f = ack();
+  let touched = false;
+  const s = signal();
+  for (const name of ['aborted', 'addEventListener', 'removeEventListener'])
+    Object.defineProperty(s, name, {
+      get() {
+        touched = true;
+        throw Error('PRIVATE_SIGNAL_OVERRIDE');
+      },
+    });
+  expect((await f.make()(f.f.viewer, s)).outcome).toBe('ORIGINAL_ACK_OBSERVED');
+  expect(touched).toBe(false);
+});
