@@ -1,4 +1,4 @@
-import { type FormEvent } from 'react';
+import { type FormEvent, useId } from 'react';
 export interface Field {
   name: string;
   label: string;
@@ -37,6 +37,7 @@ export function FieldsForm({
   busy?: boolean;
   honeypot?: boolean;
 }) {
+  const formId = useId();
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -69,7 +70,7 @@ export function FieldsForm({
         </label>
       )}
       <div className="form-grid">
-        {fields.map((f) => (
+        {fields.map((f, index) => (
           <label
             key={f.name}
             className={
@@ -84,6 +85,9 @@ export function FieldsForm({
             {f.type === 'textarea' ? (
               <textarea
                 name={f.name}
+                aria-describedby={
+                  f.hint ? `${formId}-hint-${index}` : undefined
+                }
                 defaultValue={String(initial[f.name] ?? '')}
                 required={f.required}
                 maxLength={f.maxLength ?? 5000}
@@ -92,6 +96,10 @@ export function FieldsForm({
             ) : f.type === 'select' ? (
               <select
                 name={f.name}
+                aria-describedby={
+                  f.hint ? `${formId}-hint-${index}` : undefined
+                }
+                required={f.required}
                 defaultValue={String(
                   initial[f.name] ?? f.options?.[0]?.value ?? '',
                 )}
@@ -106,11 +114,17 @@ export function FieldsForm({
               <input
                 type="checkbox"
                 name={f.name}
+                aria-describedby={
+                  f.hint ? `${formId}-hint-${index}` : undefined
+                }
                 defaultChecked={initial[f.name] === true}
               />
             ) : (
               <input
                 name={f.name}
+                aria-describedby={
+                  f.hint ? `${formId}-hint-${index}` : undefined
+                }
                 type={f.type ?? 'text'}
                 defaultValue={String(initial[f.name] ?? '')}
                 required={f.required}
@@ -120,7 +134,7 @@ export function FieldsForm({
                 step={f.type === 'number' ? 1 : undefined}
               />
             )}{' '}
-            {f.hint && <small>{f.hint}</small>}
+            {f.hint && <small id={`${formId}-hint-${index}`}>{f.hint}</small>}
           </label>
         ))}
       </div>
