@@ -61,3 +61,21 @@ complete accessibility, accepted owner KPI/dashboard parity or production accept
 Saul2Paul remains the first real tenant target and Cunningham separate; no real tenant
 or merchant operation occurred. No persistent execution, push, PR, merge or deployment
 is authorized by this child. Release1.0 remains NOT READY / NOT AUTHORIZED.
+
+## Successor: withdrawn last page
+
+Independent QA reproduced a count-shrink edge on the frozen `b5f61fa` candidate:
+a page-two read returning zero current requests rendered “Page2of1.” The narrow
+successor preserves that commit and changes only this consumer's presentation.
+When the returned canonical count no longer includes the selected page, the exact
+count remains visible while rows and invalid pagination are withheld. A notice and
+explicit “Return to first page” control replace them. Returning starts a fresh
+existing read with original access/module checks; nothing automatically retries.
+Shared Pagination, repository and all protected source stay byte-identical.
+
+The added `@shrink` browser regression first FAILed against unchanged `b5f61fa`.
+After the correction it PASSed at desktop/tablet/mobile (3cases). It also denies
+access before an explicit return and verifies no further intake query occurs.
+Only these affected new browser cases were run for the successor; the original
+12case evidence remains attached to its frozen parent. Source-boundary2cases,
+strict types/build, scoped lint/format and feature/design checks also PASS.

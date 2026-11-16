@@ -163,31 +163,47 @@ export function NewLeadDashboard({
             New intake requests only. This count does not represent all leads,
             customers, jobs or revenue.
           </p>
-          <div className="record-list">
-            {current.result.rows.map((r) => (
-              <section className="request-card" key={r.id}>
-                <div className="section-title">
-                  <span className="tag">
-                    {r.status} · {r.source}
-                  </span>
-                  <small>
-                    Submitted{' '}
-                    <time dateTime={r.created_at}>
-                      {new Date(r.created_at).toLocaleDateString()}
-                    </time>
-                  </small>
-                </div>
-                <h3>{r.service_category}</h3>
-                <p>{r.summary}</p>
-              </section>
-            ))}
-          </div>
-          {!current.result.rows.length && <p>No new requests in this view.</p>}
-          <Pagination
-            page={page}
-            count={current.result.count}
-            onChange={(next) => setSelection({ repo, org, page: next })}
-          />
+          {page > 0 && page * 10 >= current.result.count ? (
+            <>
+              <p>
+                This page is no longer available. Return to the first page to
+                review current requests.
+              </p>
+              <button onClick={() => setSelection({ repo, org, page: 0 })}>
+                Return to first page
+              </button>
+            </>
+          ) : (
+            <>
+              <div className="record-list">
+                {current.result.rows.map((r) => (
+                  <section className="request-card" key={r.id}>
+                    <div className="section-title">
+                      <span className="tag">
+                        {r.status} · {r.source}
+                      </span>
+                      <small>
+                        Submitted{' '}
+                        <time dateTime={r.created_at}>
+                          {new Date(r.created_at).toLocaleDateString()}
+                        </time>
+                      </small>
+                    </div>
+                    <h3>{r.service_category}</h3>
+                    <p>{r.summary}</p>
+                  </section>
+                ))}
+              </div>
+              {!current.result.rows.length && (
+                <p>No new requests in this view.</p>
+              )}
+              <Pagination
+                page={page}
+                count={current.result.count}
+                onChange={(next) => setSelection({ repo, org, page: next })}
+              />
+            </>
+          )}
         </>
       )}
       <p className="muted">

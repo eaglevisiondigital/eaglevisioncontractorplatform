@@ -194,3 +194,58 @@ test('post-read revocation, error and empty results never retain old rows or inv
     page.getByRole('button', { name: 'Next', exact: true }),
   ).toBeDisabled();
 });
+test('@shrink withdrawn last page requires explicit fresh first-page review', async ({
+  page,
+}) => {
+  async function shrink() {
+    await open(page);
+    await page.evaluate(() => window.dashboardParity.hold());
+    await page.getByRole('button', { name: 'Next', exact: true }).click();
+    await expect
+      .poll(() => page.evaluate(() => window.dashboardParity.calls().length))
+      .toBe(2);
+    await page.evaluate(() => {
+      window.dashboardParity.empty();
+      window.dashboardParity.release();
+    });
+    await expect(page.getByText('0 new requests await review.')).toBeVisible();
+    await expect(
+      page.getByText(
+        'This page is no longer available. Return to the first page to review current requests.',
+      ),
+    ).toBeVisible();
+    await expect(page.locator('.request-card')).toHaveCount(0);
+    await expect(page.getByText('0 records · Page 2 of 1')).toHaveCount(0);
+    await expect(
+      page.getByRole('button', { name: 'Previous', exact: true }),
+    ).toHaveCount(0);
+    expect(
+      await page.evaluate(() => window.dashboardParity.calls().length),
+    ).toBe(2);
+  }
+  await shrink();
+  await page
+    .getByRole('button', { name: 'Return to first page', exact: true })
+    .click();
+  await expect(page.getByText('0 records · Page 1 of 1')).toBeVisible();
+  expect(
+    await page.evaluate(() => window.dashboardParity.calls().at(-1)),
+  ).toEqual({ org: 'sample-property', status: 'new', page: 0 });
+  await expect(
+    page.getByRole('button', { name: 'Previous', exact: true }),
+  ).toBeDisabled();
+  await shrink();
+  await page.evaluate(() => window.dashboardParity.deny());
+  await page
+    .getByRole('button', { name: 'Return to first page', exact: true })
+    .click();
+  await expect(
+    page.getByText('Your company role does not grant access to intake.'),
+  ).toBeVisible();
+  expect(await page.evaluate(() => window.dashboardParity.calls().length)).toBe(
+    2,
+  );
+  await expect(
+    page.getByRole('button', { name: 'Review intake', exact: true }),
+  ).toHaveCount(0);
+});
