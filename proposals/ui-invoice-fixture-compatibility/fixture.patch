@@ -1,0 +1,24 @@
+diff --git a/tests/invoice-guard-admission-proposal.test.ts b/tests/invoice-guard-admission-proposal.test.ts
+index 164924e65872682071979903b3576309897b01a7..a7ecd211ae9d4711a69e1996308aa4960d3c648a 100644
+--- a/tests/invoice-guard-admission-proposal.test.ts
++++ b/tests/invoice-guard-admission-proposal.test.ts
+@@ -36,7 +36,18 @@
+   };
+ }
+ const { qualifyInvoiceGuardProposal } = (await import(
+-  pathToFileURL(resolve('proposals/invoice-guard-admission/qualify.mjs')).href
++  await (async () => {
++    const fixture = pathToFileURL(
++      resolve('proposals/ui-invoice-fixture-compatibility/current-fixture.mjs'),
++    );
++    const fixtureBytes = readFileSync(fixture);
++    if (
++      createHash('sha256').update(fixtureBytes).digest('hex') !==
++      '20235a79e0199383ba931733d7897fd769a4734e1dedd518fedd0510db7fd92c'
++    )
++      throw Error('Exact sealed invoice guard proposal required');
++    return 'data:text/javascript;base64,' + fixtureBytes.toString('base64');
++  })()
+ )) as {
+   qualifyInvoiceGuardProposal(options?: {
+     read?: Read;

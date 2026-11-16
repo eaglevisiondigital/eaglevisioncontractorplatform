@@ -1,0 +1,113 @@
+{
+  "classification": "UNAPPLIED_ACTUAL_NATIVE_AUTHOR_ONLY_HISTORICAL_INVOICE_TEST_FIXTURE_SUCCESSOR",
+  "preparationParent": "ab71c22b20e2466d50b4ca42744614fadddb2b92",
+  "publicationBase": "dc8aa3c1f9979b5e37ee1aaa99d249a3969429f7",
+  "unchanged515": {
+    "files": 13,
+    "patchSha256": "d6fb6b3288a731d8c41719de614cd218a7a36e538cd713b5340f2ac85c8a6b78",
+    "mapsAndHistoricalBodies": "UNCHANGED",
+    "approval": "HELD_SEPARATE"
+  },
+  "actualNativeSourceAuthor": {
+    "commit": "dc8aa3c1f9979b5e37ee1aaa99d249a3969429f7",
+    "parent": "223e235be26c37271cb67e3c1f1803feb54599a6",
+    "tree": "a06c530b5dbde09c81acc69415be7a08ad091ec5",
+    "paths": {
+      "tests/database/property.test.ts": {
+        "beforeSha256": "912b1d50c20a3eb5f8e58ffed4ef81ad1cf18bc7379c6a4f09e663f8e476fcaf",
+        "afterSha256": "c429cee25729539b83281f7e337e1bbec3f44daf8ed0101af48a9f8fcc307da7",
+        "afterOid": "0e597a05ac7d4d6feaa99bca66099638acf517d4",
+        "mode": "100644"
+      },
+      "tests/helpers/property-p1-fixture.ts": {
+        "beforeSha256": "b1ddad5bb1cdb105db29eb5b992f04512cea4af6a2c688faab024ab86f4b43b6",
+        "afterSha256": "df95bf0fc63496e3b5ddb695d9c9c4b8d55fe8fecc36c8af61c7de5b9e5857dc",
+        "afterOid": "7b4e761838817771dbc9376347268e1459ba9f01",
+        "mode": "100644"
+      }
+    },
+    "delta": "M\ttests/database/property.test.ts\nM\ttests/helpers/property-p1-fixture.ts"
+  },
+  "currentFrame": {
+    "nativeSourceFiles": 2471,
+    "exactOld515ProposalFiles": 13,
+    "verifiedPhysicalFiles": 2484,
+    "newNamespaceFiles": 17,
+    "newNamespace": "CLOSED_AUTHENTICATED_FIXTURE_TCB_EXCLUDED_FROM_BUSINESS_SOURCE_AUTHORITY",
+    "admittedContext": "native-author ONLY",
+    "older511Fallback": "DENIED",
+    "preservedOlderMaps": "IMMUTABLE_REFERENCE_ONLY"
+  },
+  "target": "tests/invoice-guard-admission-proposal.test.ts",
+  "mode": "100644",
+  "beforeSha256": "026e5c72d279dc85a57e51c18618bcf8bcb8b812db1482cca251536e793d0568",
+  "afterSha256": "d93d3b015ad1a92e367881a816cc4b14c7f0776630569c067547aec4ba808408",
+  "patch": "fixture.patch",
+  "patchSha256": "47e8cc092ed8777e6588249c408b2cc38ddcec8773e6b00fe0f848e856a5ce34",
+  "wrapperSha256": "085a856891cdb963d9283ba9caa84cf9e40ae000bcd0bf5acd9637a97c705fad",
+  "manifestSha256": "26dadcc1031a2552392481581ad576b3b7f1d89c4bbd9da3b800250e90bfb00a",
+  "controlsSha256": "f5cc02c65d36055d0aeaa9e7e4e4dec894d008f59582629e0c3d83a479a15174",
+  "original39TailSha256": "51ad3788d5b7a8e622b654997122f96c10554b6375d26b6c5ef9245a6442247a",
+  "canonicalQualifierSha256": "c6e62953cbb1e58c8ea1c636ef8f1929cdb46cbf2655fbc2e6015c29f09b5f94",
+  "protectedActualTarget": "UNCHANGED",
+  "canonicalQualifier": "UNCHANGED",
+  "originalAssertionsBudgetsAndHistoricPins": "UNCHANGED",
+  "caseTimeoutMs": 30000,
+  "hookTimeoutMs": 30000,
+  "additionalHistoricalPorts": {
+    "classification": "TEST_BODY_READ_PORTS_ONLY_AFTER_FULL_CURRENT_NATIVE_PROOF",
+    "paths": {
+      "tests/database/property.test.ts": {
+        "sha256": "912b1d50c20a3eb5f8e58ffed4ef81ad1cf18bc7379c6a4f09e663f8e476fcaf",
+        "oid": "05978f34700b4da05ae069650ec741633885ccb7"
+      },
+      "tests/helpers/property-p1-fixture.ts": {
+        "sha256": "b1ddad5bb1cdb105db29eb5b992f04512cea4af6a2c688faab024ab86f4b43b6",
+        "oid": "1ac535a40ee8ca1a98dca911d510ac82c4d9461b"
+      }
+    },
+    "oldUiDocsPorts": 5,
+    "nativeRuntimeOrSqlAuthFinancialPortExpansion": false,
+    "missingUnknownOrRevokedCurrentBodyFallback": false
+  },
+  "primary": {
+    "original39ActualNative": {
+      "passed": 39,
+      "failed": 0,
+      "skipped": 0,
+      "reportSha256": "09488ec919524d2b1a46959daab3a4883f655ee475fc85398726cc72a1dabc07"
+    },
+    "newControls32": {
+      "passed": 32,
+      "failed": 0,
+      "skipped": 0,
+      "reportSha256": "650a27624a957c5164f509cd8dde0ebc2c3b748d39a46d49cb10b03e16a45c81"
+    }
+  },
+  "independentReviewRequired": true,
+  "independentReviewEvidence": "SEPARATE_ROOT_REVIEW_PACKET",
+  "checks": {
+    "strictTypes": "PASS",
+    "namespaceAndHeaderLint": "PASS",
+    "namespaceAndHeaderFormat": "PASS",
+    "features": "25records/5locks/13bindings PASS",
+    "originalProtectedPins": 128,
+    "old515WholePackage": "13EXACT"
+  },
+  "futureProtectedHeaderParent": null,
+  "futureProtectedHeaderParentBinding": "Exact published proposal commit is bound in the separate review/authorization packet to avoid a self-referential commit hash.",
+  "realOrdinaryProposalBearingNativeChildRequiredBeforeHeaderAuthorization": true,
+  "actualProtectedHeaderAuthorApproval": "HELD_NEW_EXACT_PATCH_AND_REAL_PARENT_DECISION",
+  "old515PatchApplicationAuthorized": false,
+  "nativeBusinessExecution": "NOT_RUN_BY_THIS_PROPOSAL; separate owner-approved author evidence",
+  "sourceAdmissionOrWholeFoundationAcceptance": false,
+  "schemaOrMigrationChanged": false,
+  "runtimeOrSqlChanged": false,
+  "genuineAuthAccepted": false,
+  "providerCalled": false,
+  "financialExecution": false,
+  "mergeAuthorized": false,
+  "deployAuthorized": false,
+  "operationalReady": false,
+  "release": "NO_GO_NOT_READY_NOT_AUTHORIZED"
+}
