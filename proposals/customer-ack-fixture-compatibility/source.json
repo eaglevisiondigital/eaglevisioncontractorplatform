@@ -1,0 +1,84 @@
+{
+  "classification": "UNAPPLIED_CURRENT_SOURCE_TEST_FIXTURE_COMPATIBILITY_ONLY",
+  "base": "4c1feb8f228257988bb31f67b9aba52d7626a220",
+  "baseTree": "63da01695f7a7bfa18c1c90b5f3d3601f96015f9",
+  "baseFiles": 2492,
+  "target": "tests/customer-payment-ack-composition-source.test.ts",
+  "mode": "100644",
+  "beforeSha256": "8d1c7769257ce09ee70dacde0c47748f2fcd1245f863d57351ed5229665c1dfd",
+  "afterSha256": "818bce8fe1de3a1fe0ea2a40b60ee0350db031088b57885202a48d37667e7111",
+  "patch": "fixture.patch",
+  "patchSha256": "ccc09cc6c03cedc02bc03569571b44d6ca19fe6a779593a72953e0ca070a73e9",
+  "originalTestBodyTailSha256": "ad79624cdf16a4bf5ede4bc08660ddc243340b05a74a58b12758742b0b309524",
+  "payload": "source-tests.proposed.txt",
+  "newControls": "tests/customer-ack-fixture-compatibility.test.ts",
+  "newControlsSha256": "992920bd0b9cc6f686a688006c9b99f2574e32149786065faaf68c48355966f3",
+  "advisoryPathsOnly": {
+    "proofSha256": "61e4f998a11779b4ea8d59bc6feb2e47bd630c8e204e392e377f5c0c4b61201f",
+    "admittedFiles": 2489,
+    "currentBodiesOnly": true,
+    "historicalBlobBodyFallback": false,
+    "unknownHostOutputs": "UNADMITTED_AND_UNUSED",
+    "unknownCleanCompanions": "DENIED",
+    "outsideAuthorityDataFiles": 3
+  },
+  "unchangedQualifierSha256": "dcc881f38cb256ff42ed198448a2596103ad01457a9b76ad68f8538ea0d12ec5",
+  "unchangedCompositionPatchSha256": "07f345abc31b248d5ff23ada8efb82349dc23d44f2cc61b49e63cd8a1cffccbe",
+  "primary": {
+    "original507Collection": {
+      "sha256": "bd4e1ad456b591ed8f14c88db54cc26a34df9dacd80f6f0443d608404772e481",
+      "tests": 0,
+      "passed": 0,
+      "failed": 0,
+      "failedSuites": 1,
+      "pending": 0
+    },
+    "affectedOriginal12": {
+      "sha256": "49556bcc2962ced48022971176057b700166d7120b4692492977da96e93fc1f7",
+      "tests": 12,
+      "passed": 12,
+      "failed": 0,
+      "failedSuites": 0,
+      "pending": 0
+    },
+    "newControls25": {
+      "sha256": "c3f2864724086f9ee3014f027424c7af4ace2bff68bada25eec9fe42e6fb0610",
+      "tests": 25,
+      "passed": 25,
+      "failed": 0,
+      "failedSuites": 0,
+      "pending": 0
+    }
+  },
+  "matchingBusinessEvidenceNotReplayed": {
+    "unitCases": 25,
+    "originalNativeCases": 8,
+    "additionalNativeCases": 3
+  },
+  "sourceAuthorApproval": "HELD_SEPARATE_EXACT_ONE_FILE_AUTHORIZATION",
+  "actualProtectedTest": "UNCHANGED",
+  "runtimeChanged": false,
+  "wholeFoundationAccepted": false,
+  "installationAuthorized": false,
+  "operationalReady": false,
+  "financialEffect": false,
+  "holdRelease": false,
+  "customerPublication": "BLOCKED",
+  "balanceMinor": null,
+  "settlement": "UNVERIFIED",
+  "independent": {
+    "affectedOriginal12": {
+      "passed": 12,
+      "failed": 0,
+      "pending": 0,
+      "rawReportSha256": "c44cf2591fc501bef19a504c480812c6467477260032456e775d1cea527e1c98"
+    },
+    "newControls25": {
+      "passed": 25,
+      "failed": 0,
+      "pending": 0,
+      "rawReportSha256": "a9cf3cf7cd616de85e0e9a2d146a42a99ae2b6e08d6bcd85bb5363c51ae3f2bf"
+    },
+    "reviewSha256": "3441e028e099cebd7cadef231612cb0ff55539c4101c2d287df71fe04a577400"
+  }
+}
