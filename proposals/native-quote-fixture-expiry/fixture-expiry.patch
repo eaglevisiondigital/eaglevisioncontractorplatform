@@ -1,0 +1,22 @@
+--- a/tests/database/property.test.ts
++++ b/tests/database/property.test.ts
+@@ -2717,7 +2717,7 @@
+       net_approved_cost_minor: 10001,
+       currency: 'USD',
+       quoted_at: '2026-10-16T12:00:00Z',
+-      quote_expires_at: '2026-11-16T12:00:00Z',
++      quote_expires_at: new Date(Date.now() + 60 * 60 * 1000).toISOString(),
+       baseline_fingerprints: { original: 'a'.repeat(32) },
+     })),
+     'local-p0-compiled',
+--- a/tests/helpers/property-p1-fixture.ts
++++ b/tests/helpers/property-p1-fixture.ts
+@@ -22,7 +22,7 @@
+     net_approved_cost_minor: 10001,
+     currency: 'USD',
+     quoted_at: '2026-10-16T12:00:00Z',
+-    quote_expires_at: '2026-11-16T12:00:00Z',
++    quote_expires_at: new Date(Date.now() + 60 * 60 * 1000).toISOString(),
+     baseline_fingerprints: { original: 'a'.repeat(32) },
+   }));
+   return {

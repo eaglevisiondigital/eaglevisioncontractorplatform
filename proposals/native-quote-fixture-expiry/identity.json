@@ -1,0 +1,28 @@
+{
+  "classification": "UNAPPLIED_TWO_VALID_SYNTHETIC_QUOTE_EXPIRIES_NOT_SOURCE_APPROVAL",
+  "base": "223e235be26c37271cb67e3c1f1803feb54599a6",
+  "baseRawCommit": "tree 3ca82b10af4bcfc51071dc5e08170abca39e306b\nparent 8f9cab9a6b42c057a12f1923bf35a514abc068b1\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794843176 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794843176 -0600\n\n[skip netlify] Restore original mobile navigation metrics\n",
+  "files": {
+    "tests/database/property.test.ts": {
+      "mode": "100644",
+      "beforeSHA256": "912b1d50c20a3eb5f8e58ffed4ef81ad1cf18bc7379c6a4f09e663f8e476fcaf",
+      "afterSHA256": "c429cee25729539b83281f7e337e1bbec3f44daf8ed0101af48a9f8fcc307da7"
+    },
+    "tests/helpers/property-p1-fixture.ts": {
+      "mode": "100644",
+      "beforeSHA256": "b1ddad5bb1cdb105db29eb5b992f04512cea4af6a2c688faab024ab86f4b43b6",
+      "afterSHA256": "df95bf0fc63496e3b5ddb695d9c9c4b8d55fe8fecc36c8af61c7de5b9e5857dc"
+    }
+  },
+  "patchSHA256": "c9affb3f6dae85e1209811ca36cb482c5e55fb72f8cfef0fee99de1e934c3dae",
+  "unchangedSql": {
+    "path": "supabase/migrations/20261017005322_property_operations.sql",
+    "sha256": "c345bdf178c9339dba7ba2707c74233bcfae9a2d2b59abf148f4b7ffff35780c"
+  },
+  "validFixtureWindowMilliseconds": 3600000,
+  "clockAuthority": "UNMODIFIED_SQL_CLOCK_TIMESTAMP; CURRENT_TEST_CLOCK_FOR_SYNTHETIC_INPUT_ONLY",
+  "originalAssertionsAndBudgets": "BYTE_IDENTICAL_EXCEPT_EXACT_TWO_INPUT_EXPRESSIONS",
+  "sourceAuthorApproval": "REQUIRED_NOT_GRANTED",
+  "sqlOrOperationalExecution": false,
+  "release": "NO_GO"
+}
