@@ -1,0 +1,20 @@
+{
+  "classification": "UNAPPLIED_EXACT_DASHBOARD_SOURCE_TEST_HISTORICAL_FORMS_FIXTURE_NOT_RUNTIME_OR_FINANCIAL_ADMISSION",
+  "parent": "5bf90478a853e34cfdb18cc6ed3a2b1c7ace25d5",
+  "parentRawCommit": "tree 7a86790dfb4164503348eefe0fdc5dd6f4f683a6\nparent 999d3017a7f3b37d5f8adc361296a289d2ed366a\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794856042 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794856042 -0600\n\n[skip netlify] Integrate approved UI11 development endpoints\n",
+  "tree": "7a86790dfb4164503348eefe0fdc5dd6f4f683a6",
+  "files": 2531,
+  "target": "tests/propel-dashboard-parity-source.test.ts",
+  "originalTestSHA256": "ac32681b07b17838a6445820d30f21abe8ea13fce14f027215fc635253fd6f24",
+  "currentFormsSHA256": "28dbd7d7e265a808779ed693e0c8c5de999e7465f3fbcf8d896df8acacb09f7d",
+  "historicalFormsSHA256": "f081edbdc36dad14c18bf75f25ac6267d1cb03d98124fece0618642193366e6a",
+  "historicalFormsParent": "8f9cab9a6b42c057a12f1923bf35a514abc068b1",
+  "packetFiles": {
+    "README.md": "b51d92d561e7bd0c8436e76ae8c9089956f75eb0714a50b33239f7e020c2d8be",
+    "controls.test.mjs": "629bfc83b0ca2715bc1d1fe6ccfe3b9384c40f10045735a17d0f64b955dfc627"
+  },
+  "sourceAdmissionAuthorized": false,
+  "runtimeFilesChanged": false,
+  "financialFixtureAdmission": "SEPARATE_HELD",
+  "release": "NO_GO"
+}
