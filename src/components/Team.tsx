@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useId, useState } from 'react';
 import type { Operations } from '../lib/operations';
 import type { StaffRole } from '../domain/platform';
 import { FieldsForm, ResourceStatus } from './forms';
@@ -13,6 +13,30 @@ export function Team({ repo, org }: { repo: Operations; org: string }) {
   const task = useTask();
   const [link, setLink] = useState('');
   const [viewTime] = useState(() => Date.now());
+  const filtersId = useId();
+  const [search, setSearch] = useState('');
+  const [accessRole, setAccessRole] = useState('all');
+  const [membershipStatus, setMembershipStatus] = useState('all');
+  const loadedMembers = (members.data ?? []).filter(
+    (member) => member.organization_id === org,
+  );
+  const query = search.trim().toLowerCase();
+  const visibleMembers = (
+    members.loading || members.error ? [] : loadedMembers
+  ).filter(
+    (member) =>
+      (accessRole === 'all' || member.role === accessRole) &&
+      (membershipStatus === 'all' ||
+        member.active === (membershipStatus === 'active')) &&
+      [
+        member.user_id,
+        member.role,
+        member.staff_type.replaceAll('_', ' '),
+      ].some((value) => value.toLowerCase().includes(query)),
+  );
+  const peopleReady = !members.loading && !members.error && members.data;
+  const hasFilters =
+    search !== '' || accessRole !== 'all' || membershipStatus !== 'all';
   return (
     <>
       <article>
@@ -23,8 +47,73 @@ export function Team({ repo, org }: { repo: Operations; org: string }) {
         </p>
         <ResourceStatus {...members} />
         <p role="status">{task.message}</p>
+        <fieldset>
+          <legend>Find people</legend>
+          <div className="filters">
+            <label>
+              Search people
+              <input
+                type="search"
+                maxLength={254}
+                value={search}
+                aria-describedby={`${filtersId}-hint`}
+                onChange={(event) => setSearch(event.target.value)}
+              />
+            </label>
+            <label>
+              Filter access role
+              <select
+                value={accessRole}
+                onChange={(event) => setAccessRole(event.target.value)}
+              >
+                <option value="all">All access roles</option>
+                <option value="owner">Owner</option>
+                <option value="admin">Administrator</option>
+                <option value="staff">Staff</option>
+              </select>
+            </label>
+            <label>
+              Filter membership status
+              <select
+                value={membershipStatus}
+                onChange={(event) => setMembershipStatus(event.target.value)}
+              >
+                <option value="all">All membership statuses</option>
+                <option value="active">Active</option>
+                <option value="revoked">Revoked</option>
+              </select>
+            </label>
+            <button
+              type="button"
+              className="secondary"
+              disabled={!hasFilters}
+              onClick={() => {
+                setSearch('');
+                setAccessRole('all');
+                setMembershipStatus('all');
+              }}
+            >
+              Clear people filters
+            </button>
+          </div>
+          <p id={`${filtersId}-hint`}>
+            Search loaded account IDs and recorded access or job roles.
+          </p>
+        </fieldset>
+        {peopleReady && (
+          <p role="status">
+            {visibleMembers.length} of {loadedMembers.length} loaded people
+            shown.
+          </p>
+        )}
+        {peopleReady && loadedMembers.length === 0 && (
+          <p>No people available in this view.</p>
+        )}
+        {peopleReady &&
+          loadedMembers.length > 0 &&
+          visibleMembers.length === 0 && <p>No people match these filters.</p>}
         <div className="record-list">
-          {members.data?.map((m) => (
+          {visibleMembers.map((m) => (
             <section key={m.user_id}>
               <strong>
                 {m.role === 'staff'
