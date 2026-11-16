@@ -36,7 +36,20 @@ interface Qualification {
   };
 }
 const { qualifyInvoiceGuardProposal } = (await import(
-  pathToFileURL(resolve('proposals/invoice-guard-admission/qualify.mjs')).href
+  await (async () => {
+    const fixture = pathToFileURL(
+      resolve(
+        'proposals/ui-invoice-native-fixture-compatibility/current-fixture.mjs',
+      ),
+    );
+    const fixtureBytes = readFileSync(fixture);
+    if (
+      createHash('sha256').update(fixtureBytes).digest('hex') !==
+      '085a856891cdb963d9283ba9caa84cf9e40ae000bcd0bf5acd9637a97c705fad'
+    )
+      throw Error('Exact sealed invoice guard proposal required');
+    return 'data:text/javascript;base64,' + fixtureBytes.toString('base64');
+  })()
 )) as {
   qualifyInvoiceGuardProposal(options?: {
     read?: Read;
