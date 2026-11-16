@@ -1,7 +1,7 @@
 // Source snapshot only; static imports and this verifier remain trusted TCB.
 import { readFileSync, lstatSync, realpathSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { resolve, join } from 'node:path';
+import { resolve, join, dirname } from 'node:path';
 const self = new URL(import.meta.url);
 const initial = createHash('sha256').update(readFileSync(self)).digest('hex');
 const pins = {
@@ -94,27 +94,46 @@ const pins = {
   'supabase/migrations/20261018144833_customer_authorization_release_readiness.sql':
     'e3157e004c464fb2a4ab69e7a3a335a81d6bbbb0556d74234f3884f56d784ed1',
 };
+const manifestDigest =
+  '6371374d6068f52d83771c054fb378e707a02dc63415b8da0985a19e1903bea1';
+const rootPath = resolve(process.cwd());
+const rootIdentity = lstatSync(rootPath);
+function exactFile(path: string) {
+  let current = path;
+  while (true) {
+    if (lstatSync(current).isSymbolicLink())
+      throw Error('Exact operating reader source required');
+    const parent = dirname(current);
+    if (parent === current) break;
+    current = parent;
+  }
+  const st = lstatSync(path);
+  if (!st.isFile() || (st.mode & 0o777) !== 0o644)
+    throw Error('Exact operating reader source required');
+  return readFileSync(path);
+}
 export function assertOperatingSources() {
-  const root = process.cwd(),
-    own = 'proposals/commercial-customer-operating-reader/source.ts';
+  const own = 'proposals/commercial-customer-operating-reader/source.ts';
+  const now = lstatSync(rootPath);
   if (
-    realpathSync(root) !== resolve(root) ||
-    realpathSync(self) !== join(root, own)
+    resolve(process.cwd()) !== rootPath ||
+    realpathSync(rootPath) !== rootPath ||
+    now.dev !== rootIdentity.dev ||
+    now.ino !== rootIdentity.ino ||
+    !now.isDirectory() ||
+    realpathSync(self) !== join(rootPath, own)
   )
     throw Error('Exact operating reader source required');
-  for (const path of [...Object.keys(pins), own]) {
-    let p = root;
-    for (const part of path.split('/')) {
-      p = join(p, part);
-      const s = lstatSync(p);
-      if (s.isSymbolicLink())
+  for (let pass = 0; pass < 2; pass++) {
+    for (const [path, digest] of Object.entries({
+      ...pins,
+      'proposals/commercial-customer-operating-reader/source.json':
+        manifestDigest,
+      [own]: initial,
+    })) {
+      const bytes = exactFile(join(rootPath, path));
+      if (createHash('sha256').update(bytes).digest('hex') !== digest)
         throw Error('Exact operating reader source required');
     }
-    const st = lstatSync(p);
-    if (!st.isFile() || (st.mode & 0o777) !== 0o644)
-      throw Error('Exact operating reader source required');
-    const h = createHash('sha256').update(readFileSync(p)).digest('hex');
-    if (h !== (path === own ? initial : pins[path as keyof typeof pins]))
-      throw Error('Exact operating reader source required');
   }
 }
