@@ -68,7 +68,7 @@ export function WorkspaceNavigationIcon({ name }: { name: string }) {
       aria-hidden="true"
       focusable="false"
       width="22"
-      height="22"
+      height="24"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
