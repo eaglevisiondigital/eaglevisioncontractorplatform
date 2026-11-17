@@ -1,0 +1,293 @@
+{
+  "classification": "UNAPPLIED_FINITE13M_ON_EXACT_S_LOCAL_AND_INDEPENDENT_QUALIFICATION_PASS",
+  "parent": "62a9642abf3e4d3becd5b1fc6a4aa8618943480b",
+  "parentTree": "e1af2e9601091ee68d92eddbdabe7b017baa80bb",
+  "tree": "d512a593573f82bf324a26e55d09a88283350b2a",
+  "files": 2556,
+  "paths": [
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/README.md",
+      "mode": "100644",
+      "beforeSHA256": "30a1eb852c40b15d57734c6018e387edb2fb10cf4fcaf7115723cd00ec319b7d",
+      "afterSHA256": "8cbcf00c88798fa0bab8da0f3af00a7bac707ca03a77067b387dd273e20f419c"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/controls.test.mjs",
+      "mode": "100644",
+      "beforeSHA256": "723b763d8954c00f6a856929f87a677e065c9ff846d341342cd184779971defa",
+      "afterSHA256": "0ae02568068a3699490cf81212bfb9666962962a7b74ab2d70e0e479adf66bb1"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/current-fixture.mjs",
+      "mode": "100644",
+      "beforeSHA256": "03aefb7d4b3d62d0985754f993eea400c6d0db90dfde8aa022d518719ce5fe5a",
+      "afterSHA256": "6c5bbe0cac6f519dccd5dcfae6b3200a3a1ec1e821bad48ada495861aa8af9a1"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/dashboard.patch",
+      "mode": "100644",
+      "beforeSHA256": "970f1582abfe75acc29c3d029bcf3e9c0f7064dcdc5253ea20b9e9da8c551999",
+      "afterSHA256": "39495ac13b413488ce4aef64660dabfd0cda56b9471049abe56630eadc2b313e"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/dashboard.proposed.txt",
+      "mode": "100644",
+      "beforeSHA256": "c56a53f995889e076f39e492c53ca67035caeb2b7b7cdd8a96008bd462a4a1bb",
+      "afterSHA256": "2d203802e784e32c5b5d0913d8f19a78f31560c9b853a20154f3b4b0abe25635"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/invoice-held.patch",
+      "mode": "100644",
+      "beforeSHA256": "fc85c51b8f564ba99be1688be16a48c06f1ef6bb02222a56b18591a527513a5c",
+      "afterSHA256": "1cb17bd1fc8345a34dda32716afebab7aea71a82ced8b4fc00232ed4e9843b9d"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/invoice.proposed.txt",
+      "mode": "100644",
+      "beforeSHA256": "4daa889a78ba4c77412e2fa7c2651a060759cd8ae9995f85810b82dd67c9ea12",
+      "afterSHA256": "5bd57a2770b00a1d09f2ad358579acdc6c47bee34014f808d4a88d903caf6e58"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/manifest.json",
+      "mode": "100644",
+      "beforeSHA256": "1284a197cd0c27eb061d2251e19c0f4c70b7898e978efd6b08f978e74785a320",
+      "afterSHA256": "ea0e7eae62ad6a3fbce5a9634b363c77e2228399021a2bfec22f6772053fef6e"
+    },
+    {
+      "path": "proposals/payment-launch-integration/legacy-invoice-fixture.mjs",
+      "mode": "100644",
+      "beforeSHA256": "9520858626dde02883b5755e3681d1a3ba35f00f9a57eb55fe1f613a8befbe06",
+      "afterSHA256": "43e24d6af6af2118d7e10453ae2a48356552218c4d74ddbed3dd5c6318833880"
+    },
+    {
+      "path": "tests/cycle27-source-lineage.test.ts",
+      "mode": "100644",
+      "beforeSHA256": "fa5190cda8ec498565a830022bc2c20bf79a3a1e01823d2d5453bb80d3e47fe5",
+      "afterSHA256": "1df4852d4c78ea2d62beaabd49ee4771842ef1d586dfb0b0977c8d7319a90913"
+    },
+    {
+      "path": "tests/invoice-guard-admission-proposal.test.ts",
+      "mode": "100644",
+      "beforeSHA256": "4daa889a78ba4c77412e2fa7c2651a060759cd8ae9995f85810b82dd67c9ea12",
+      "afterSHA256": "5bd57a2770b00a1d09f2ad358579acdc6c47bee34014f808d4a88d903caf6e58"
+    },
+    {
+      "path": "tests/launch-caller-payment-integration.test.ts",
+      "mode": "100644",
+      "beforeSHA256": "f9289b166c0170072446aa35e261f2108fa3f62602dd6f4e34ccf952195949ab",
+      "afterSHA256": "291af07fb7f70064bb44335f8d97c0f925665966458f5b39c5fe602fded641b0"
+    },
+    {
+      "path": "tests/propel-dashboard-parity-source.test.ts",
+      "mode": "100644",
+      "beforeSHA256": "c56a53f995889e076f39e492c53ca67035caeb2b7b7cdd8a96008bd462a4a1bb",
+      "afterSHA256": "2d203802e784e32c5b5d0913d8f19a78f31560c9b853a20154f3b4b0abe25635"
+    }
+  ],
+  "patchSHA256": "6c4776439a34c624498e382097ac1f06efd6748fd5afc9f16eb2b6bd2abf1480",
+  "metadataForwards": [
+    {
+      "path": "proposals/payment-launch-integration/legacy-invoice-fixture.mjs",
+      "mode": 420,
+      "phased": true,
+      "beforeSHA256": "9520858626dde02883b5755e3681d1a3ba35f00f9a57eb55fe1f613a8befbe06",
+      "afterSHA256": "43e24d6af6af2118d7e10453ae2a48356552218c4d74ddbed3dd5c6318833880",
+      "beforeOid": "d51e98d58d9cbcf0f567803aac2447588386e3a7",
+      "afterOid": "b0229b95e1423f7547e6f90ce3e6e4d23af728a4",
+      "historicalRef": "c60c09c1fe9edab55220840499e2525a6751a558",
+      "historicalSHA256": "9520858626dde02883b5755e3681d1a3ba35f00f9a57eb55fe1f613a8befbe06",
+      "historicalOid": "d51e98d58d9cbcf0f567803aac2447588386e3a7"
+    },
+    {
+      "path": "tests/launch-caller-payment-integration.test.ts",
+      "mode": 420,
+      "phased": true,
+      "beforeSHA256": "f9289b166c0170072446aa35e261f2108fa3f62602dd6f4e34ccf952195949ab",
+      "afterSHA256": "291af07fb7f70064bb44335f8d97c0f925665966458f5b39c5fe602fded641b0",
+      "beforeOid": "016ebfe066d741ece271ef69f4f98b079e00a65e",
+      "afterOid": "a13416def47d38ff4ebaccdca460f4caa19e73bf",
+      "historicalRef": "c60c09c1fe9edab55220840499e2525a6751a558",
+      "historicalSHA256": "f9289b166c0170072446aa35e261f2108fa3f62602dd6f4e34ccf952195949ab",
+      "historicalOid": "016ebfe066d741ece271ef69f4f98b079e00a65e"
+    },
+    {
+      "path": "tests/cycle27-source-lineage.test.ts",
+      "mode": 420,
+      "phased": true,
+      "beforeSHA256": "fa5190cda8ec498565a830022bc2c20bf79a3a1e01823d2d5453bb80d3e47fe5",
+      "afterSHA256": "1df4852d4c78ea2d62beaabd49ee4771842ef1d586dfb0b0977c8d7319a90913",
+      "beforeOid": "87301caa756c53d607c0fd0f5a6c6e1b9d88ca38",
+      "afterOid": "f1761ecdfc0de091dd3603f4545f654ef387e5e1",
+      "historicalRef": "c60c09c1fe9edab55220840499e2525a6751a558",
+      "historicalSHA256": "fa5190cda8ec498565a830022bc2c20bf79a3a1e01823d2d5453bb80d3e47fe5",
+      "historicalOid": "87301caa756c53d607c0fd0f5a6c6e1b9d88ca38"
+    },
+    {
+      "path": "tests/provider-readiness.test.ts",
+      "mode": 420,
+      "phased": false,
+      "beforeSHA256": "095c91b17e671976700a4a6e29c782cdbbfed6e45e836cea077c960b595385d5",
+      "afterSHA256": "095c91b17e671976700a4a6e29c782cdbbfed6e45e836cea077c960b595385d5",
+      "beforeOid": "7644d8347a1e9c4362afc640227fed13fa5b77b7",
+      "afterOid": "7644d8347a1e9c4362afc640227fed13fa5b77b7",
+      "historicalRef": "c60c09c1fe9edab55220840499e2525a6751a558",
+      "historicalSHA256": "151a089905f8dbe813d88a697b6a047ebb973916e1f975828b6a26040e86923b",
+      "historicalOid": "12806c31b04a0b902d63fc2029c235cc004f89d8"
+    },
+    {
+      "path": "tests/program/cycle14-visual-review.test.ts",
+      "mode": 420,
+      "phased": false,
+      "beforeSHA256": "effce2fd33b4b108d70db9afd07539c527f2c51421b286ba3ed3d83dc8530dea",
+      "afterSHA256": "effce2fd33b4b108d70db9afd07539c527f2c51421b286ba3ed3d83dc8530dea",
+      "beforeOid": "8c4dcd6123fbef48db58a770c297ff917f7b350f",
+      "afterOid": "8c4dcd6123fbef48db58a770c297ff917f7b350f",
+      "historicalRef": "c60c09c1fe9edab55220840499e2525a6751a558",
+      "historicalSHA256": "36f88bf5917ffc7308d9413bab081954033e6a7ceefba1992dbb770cb7e041a9",
+      "historicalOid": "ec06912a6b457d92f6b50d5b1e379d7555705123"
+    }
+  ],
+  "phaseEndpoints": [
+    "tests/propel-dashboard-parity-source.test.ts",
+    "tests/invoice-guard-admission-proposal.test.ts",
+    "proposals/payment-launch-integration/legacy-invoice-fixture.mjs",
+    "tests/launch-caller-payment-integration.test.ts",
+    "tests/cycle27-source-lineage.test.ts"
+  ],
+  "newWrapperOrNamespace": false,
+  "canonicalApplication": false,
+  "ownerApproval": false,
+  "original16Prototype": {
+    "stage": "UNAPPLIED_RENDERER_PROTOTYPE_NOT_FULL_SOURCE_CLOSURE",
+    "exit": 0,
+    "passed": 16,
+    "failed": 0,
+    "skipped": 0,
+    "total": 16,
+    "failedSuites": 0,
+    "wallTimeMs": 70981.19733299999,
+    "maxCaseDurationMs": 12028.148541999995,
+    "reportSHA256": "d776d836add41b51101b86e5bfb1c6f7ffcab0fe45d6520831f3db41606f1627",
+    "errors": []
+  },
+  "controlsPrePin": {
+    "passed": 43,
+    "failed": 1,
+    "reason": "Missing-history correctly denied but raw Git exception did not match original expected error. New lookup now translates to exact guard failure; no negative assertion weakened."
+  },
+  "release": "NO_GO",
+  "sourceAudit": {
+    "parent": "62a9642abf3e4d3becd5b1fc6a4aa8618943480b",
+    "proposedTree": "d512a593573f82bf324a26e55d09a88283350b2a",
+    "trackedFiles": 2556,
+    "changed": 13,
+    "outsideBodiesTypesFullModesExact": 2543,
+    "allChangedModes": "100644",
+    "protectedHashes": 128,
+    "designLocks": 5,
+    "designBindings": 13,
+    "unknownTrackedPaths": [],
+    "postRunSourceUnchanged": true,
+    "sourceParentClean": true,
+    "patchSHA256": "6c4776439a34c624498e382097ac1f06efd6748fd5afc9f16eb2b6bd2abf1480"
+  },
+  "readTable": {
+    "existingSevenFinancialPorts": "UNCHANGED",
+    "existingP1TestPort": "UNCHANGED: fresh full physical proof on every P1 projection; actual disk/test execution stays f282",
+    "fiveNewMetadataForwards": [
+      {
+        "path": "proposals/payment-launch-integration/legacy-invoice-fixture.mjs",
+        "mode": 420,
+        "phased": true,
+        "beforeSHA256": "9520858626dde02883b5755e3681d1a3ba35f00f9a57eb55fe1f613a8befbe06",
+        "afterSHA256": "43e24d6af6af2118d7e10453ae2a48356552218c4d74ddbed3dd5c6318833880",
+        "beforeOid": "d51e98d58d9cbcf0f567803aac2447588386e3a7",
+        "afterOid": "b0229b95e1423f7547e6f90ce3e6e4d23af728a4",
+        "historicalRef": "c60c09c1fe9edab55220840499e2525a6751a558",
+        "historicalSHA256": "9520858626dde02883b5755e3681d1a3ba35f00f9a57eb55fe1f613a8befbe06",
+        "historicalOid": "d51e98d58d9cbcf0f567803aac2447588386e3a7"
+      },
+      {
+        "path": "tests/launch-caller-payment-integration.test.ts",
+        "mode": 420,
+        "phased": true,
+        "beforeSHA256": "f9289b166c0170072446aa35e261f2108fa3f62602dd6f4e34ccf952195949ab",
+        "afterSHA256": "291af07fb7f70064bb44335f8d97c0f925665966458f5b39c5fe602fded641b0",
+        "beforeOid": "016ebfe066d741ece271ef69f4f98b079e00a65e",
+        "afterOid": "a13416def47d38ff4ebaccdca460f4caa19e73bf",
+        "historicalRef": "c60c09c1fe9edab55220840499e2525a6751a558",
+        "historicalSHA256": "f9289b166c0170072446aa35e261f2108fa3f62602dd6f4e34ccf952195949ab",
+        "historicalOid": "016ebfe066d741ece271ef69f4f98b079e00a65e"
+      },
+      {
+        "path": "tests/cycle27-source-lineage.test.ts",
+        "mode": 420,
+        "phased": true,
+        "beforeSHA256": "fa5190cda8ec498565a830022bc2c20bf79a3a1e01823d2d5453bb80d3e47fe5",
+        "afterSHA256": "1df4852d4c78ea2d62beaabd49ee4771842ef1d586dfb0b0977c8d7319a90913",
+        "beforeOid": "87301caa756c53d607c0fd0f5a6c6e1b9d88ca38",
+        "afterOid": "f1761ecdfc0de091dd3603f4545f654ef387e5e1",
+        "historicalRef": "c60c09c1fe9edab55220840499e2525a6751a558",
+        "historicalSHA256": "fa5190cda8ec498565a830022bc2c20bf79a3a1e01823d2d5453bb80d3e47fe5",
+        "historicalOid": "87301caa756c53d607c0fd0f5a6c6e1b9d88ca38"
+      },
+      {
+        "path": "tests/provider-readiness.test.ts",
+        "mode": 420,
+        "phased": false,
+        "beforeSHA256": "095c91b17e671976700a4a6e29c782cdbbfed6e45e836cea077c960b595385d5",
+        "afterSHA256": "095c91b17e671976700a4a6e29c782cdbbfed6e45e836cea077c960b595385d5",
+        "beforeOid": "7644d8347a1e9c4362afc640227fed13fa5b77b7",
+        "afterOid": "7644d8347a1e9c4362afc640227fed13fa5b77b7",
+        "historicalRef": "c60c09c1fe9edab55220840499e2525a6751a558",
+        "historicalSHA256": "151a089905f8dbe813d88a697b6a047ebb973916e1f975828b6a26040e86923b",
+        "historicalOid": "12806c31b04a0b902d63fc2029c235cc004f89d8"
+      },
+      {
+        "path": "tests/program/cycle14-visual-review.test.ts",
+        "mode": 420,
+        "phased": false,
+        "beforeSHA256": "effce2fd33b4b108d70db9afd07539c527f2c51421b286ba3ed3d83dc8530dea",
+        "afterSHA256": "effce2fd33b4b108d70db9afd07539c527f2c51421b286ba3ed3d83dc8530dea",
+        "beforeOid": "8c4dcd6123fbef48db58a770c297ff917f7b350f",
+        "afterOid": "8c4dcd6123fbef48db58a770c297ff917f7b350f",
+        "historicalRef": "c60c09c1fe9edab55220840499e2525a6751a558",
+        "historicalSHA256": "36f88bf5917ffc7308d9413bab081954033e6a7ceefba1992dbb770cb7e041a9",
+        "historicalOid": "ec06912a6b457d92f6b50d5b1e379d7555705123"
+      }
+    ],
+    "freshness": "For five new metadata forwards, complete physical/sole-parent/source proof before and after every public qualification/exported helper call; fresh current disk/callback bytes/full mode and immutable historical bytes on each projection. No cache across public calls. This does not claim full-tree proof on every internal read.",
+    "phaseEndpoints": [
+      "tests/propel-dashboard-parity-source.test.ts",
+      "tests/invoice-guard-admission-proposal.test.ts",
+      "proposals/payment-launch-integration/legacy-invoice-fixture.mjs",
+      "tests/launch-caller-payment-integration.test.ts",
+      "tests/cycle27-source-lineage.test.ts"
+    ],
+    "phaseRule": "All five endpoints must be complete before or complete after. Captured phase cannot change. Provider and C14 bodies must always equal exact S after bytes.",
+    "directReads": "Only five new metadata paths use direct readCurrent through checked full pre/post; unknown/outside tracked paths deny.",
+    "gitRenderer": [
+      {
+        "parent": "53a4705b72b584228b33988d1eae586ef10b44eb",
+        "author": "38bc1bce05075fc0e858554947e195d8dded3c4a",
+        "path": "server/payments/sandbox.ts",
+        "defaultSHA256": "1d2af358ea04695e2640b193e2e07d175a3ff4fe1f4739435bd0b17d3edcc02b",
+        "fixed7SHA256": "73d4d530e4a560838477641e2c4298edee03fd4368645437ca9f113ab32ac294",
+        "expectedOriginalSHA256": "73d4d530e4a560838477641e2c4298edee03fd4368645437ca9f113ab32ac294",
+        "onlyIndexAbbreviationDiff": "index 9c720c1e..00a671f7 100644 -> index 9c720c1..00a671f 100644"
+      },
+      {
+        "parent": "38bc1bce05075fc0e858554947e195d8dded3c4a",
+        "author": "95b0bb301610e589090e5611427809a29a23790a",
+        "path": "tests/nmi-two-merchant-token-boundary.test.ts",
+        "defaultSHA256": "cb9e23feb5343472fe1c195a58f2fd5862aed0c1b8e672658e5791b7ca9d2982",
+        "fixed7SHA256": "d67d40d9ba916bf776c3415ab0ecf2ff8de709f84cc356861c719e6144d13db0",
+        "expectedOriginalSHA256": "d67d40d9ba916bf776c3415ab0ecf2ff8de709f84cc356861c719e6144d13db0",
+        "onlyIndexAbbreviationDiff": "index b7691ee3..5f81a13e 100644 -> index b7691ee..5f81a13 100644"
+      }
+    ],
+    "rendererRule": "Only two exact immutable diff argv tuples receive --abbrev=7. No generic renderer. Both fixture exec sites use /usr/bin/git and isolated read-only flags/environment; unknown argv/ref/path/flags deny."
+  },
+  "protectedApplicationAuthorized": false,
+  "sourceAuthorParentExcludesArtifacts": true
+}
