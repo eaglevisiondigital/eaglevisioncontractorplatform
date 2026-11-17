@@ -49,6 +49,7 @@ export function Workforce({
           repo={repo}
           org={org}
           data={source}
+          generation={data.data}
           privateReady={!data.loading && !data.error}
           refresh={data.reload}
         />
@@ -62,8 +63,10 @@ function WorkforceView({
   data,
   refresh,
   privateReady,
+  generation,
 }: {
   privateReady: boolean;
+  generation: object | undefined;
   repo: Phase3Repository;
   org: string;
   data: WorkforceData;
@@ -80,7 +83,49 @@ function WorkforceView({
   );
   const [activity, setActivity] = useState('Project work');
   const [billable, setBillable] = useState(true);
-  const [filterWorker, setFilterWorker] = useState('all');
+  const [timesheetFilters, setTimesheetFilters] = useState({
+    repo,
+    org,
+    generation,
+    worker: 'all',
+    job: 'all',
+    review: 'all',
+  });
+  const filters =
+    privateReady &&
+    timesheetFilters.repo === repo &&
+    timesheetFilters.org === org &&
+    timesheetFilters.generation === generation
+      ? timesheetFilters
+      : { worker: 'all', job: 'all', review: 'all' };
+  const setFilters = (
+    patch: Partial<Pick<typeof filters, 'worker' | 'job' | 'review'>>,
+  ) => setTimesheetFilters({ ...filters, repo, org, generation, ...patch });
+  const visibleTimeEntries = privateReady
+    ? data.entries.filter((entry) => {
+        const review = data.reviews.find((r) => r.entry_id === entry.id);
+        const locked = data.periods.some(
+          (p) =>
+            p.status === 'locked' &&
+            p.starts_at < (entry.ended_at ?? '9999') &&
+            p.ends_at > entry.started_at,
+        );
+        const state = locked
+          ? 'locked'
+          : (review?.decision ?? (entry.submitted ? 'submitted' : 'draft'));
+        return (
+          (filters.worker === 'all' || entry.worker_id === filters.worker) &&
+          (filters.job === 'all' ||
+            (filters.job === 'overhead' && entry.job_id === null) ||
+            (filters.job === 'unmapped' &&
+              entry.job_id !== null &&
+              !data.jobs.some((j) => j.id === entry.job_id)) ||
+            filters.job === `job:${entry.job_id}`) &&
+          (filters.review === 'all' || filters.review === state)
+        );
+      })
+    : [];
+  const visibleTimeEntrySet = new Set(visibleTimeEntries);
   const open = data.entries.find(
     (e) => e.worker_id === workerId && !e.ended_at,
   );
@@ -283,26 +328,115 @@ function WorkforceView({
         </section>
       ) : tab === 'timesheets' ? (
         <>
-          <div className="section-title">
+          <div>
             <h3>Employee timesheets</h3>
+          </div>
+          <div
+            className="filters"
+            role="group"
+            aria-label="Timesheet review filters"
+          >
             <Field label="Filter timesheet worker">
               <select
-                value={filterWorker}
-                onChange={(e) => setFilterWorker(e.target.value)}
+                value={filters.worker}
+                disabled={!privateReady}
+                onChange={(e) =>
+                  setFilters({
+                    worker: e.target.value,
+                    job: 'all',
+                    review: 'all',
+                  })
+                }
               >
                 <option value="all">All authorized workers</option>
-                {data.workers.map((w) => (
+                {(privateReady ? data.workers : []).map((w) => (
                   <option key={w.id} value={w.id}>
                     {w.display_name}
                   </option>
                 ))}
               </select>
             </Field>
+            <Field label="Filter timesheet job">
+              <select
+                value={filters.job}
+                disabled={!privateReady}
+                onChange={(e) => setFilters({ job: e.target.value })}
+              >
+                <option value="all">All jobs and overhead</option>
+                <option value="overhead">Overhead only</option>
+                <option value="unmapped">Unmapped job only</option>
+                {(privateReady ? data.jobs : []).map((j) => (
+                  <option key={j.id} value={`job:${j.id}`}>
+                    {j.name}
+                  </option>
+                ))}
+              </select>
+            </Field>
+            <Field label="Filter timesheet review state">
+              <select
+                value={filters.review}
+                disabled={!privateReady}
+                onChange={(e) => setFilters({ review: e.target.value })}
+              >
+                <option value="all">All review states</option>
+                <option value="draft">Draft time</option>
+                <option value="submitted">Awaiting review</option>
+                <option value="approved">Approved</option>
+                <option value="rejected">Rejected</option>
+                <option value="locked">Locked payroll</option>
+              </select>
+            </Field>
+            <button
+              type="button"
+              className="secondary"
+              disabled={
+                !privateReady ||
+                (filters.worker === 'all' &&
+                  filters.job === 'all' &&
+                  filters.review === 'all')
+              }
+              onClick={() =>
+                setFilters({ worker: 'all', job: 'all', review: 'all' })
+              }
+            >
+              Clear timesheet filters
+            </button>
           </div>
+          {privateReady ? (
+            <>
+              <p role="status">
+                Showing {visibleTimeEntries.length} of {data.entries.length}{' '}
+                loaded time entries.
+              </p>
+              <p className="muted">
+                Filters only change this list. Payroll preparation and exports
+                still use their original complete authorized source.
+              </p>
+              {data.entries.some(
+                (e) =>
+                  e.job_id !== null &&
+                  !data.jobs.some((j) => j.id === e.job_id),
+              ) && (
+                <p className="muted">
+                  Some loaded entries have no current job label. Unmapped job
+                  entries remain available without substituting another job.
+                </p>
+              )}
+              {visibleTimeEntries.length === 0 && (
+                <p>No loaded time entries match these filters.</p>
+              )}
+            </>
+          ) : (
+            <p role="status">
+              Timesheet review is unavailable while its source is loading or
+              unavailable.
+            </p>
+          )}
           <div className="timesheet-list">
-            {data.entries
+            {(privateReady ? data.entries : [])
               .filter(
-                (e) => filterWorker === 'all' || e.worker_id === filterWorker,
+                (e) =>
+                  filters.worker === 'all' || e.worker_id === filters.worker,
               )
               .slice()
               .reverse()
@@ -315,7 +449,11 @@ function WorkforceView({
                     p.ends_at > e.started_at,
                 );
                 return (
-                  <div className="time-record" key={e.id}>
+                  <div
+                    className="time-record"
+                    key={e.id}
+                    hidden={!visibleTimeEntrySet.has(e)}
+                  >
                     <div className="section-title">
                       <strong>
                         {
