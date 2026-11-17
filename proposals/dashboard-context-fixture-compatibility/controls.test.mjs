@@ -116,12 +116,14 @@ const mutate = (image, path) =>
   );
 const deny = (module) =>
   assert.throws(() => module.verifyCurrentPhysicalFrame(), /Exact joint/);
-test(
-  'exact537 before and complete joint after preserve both original bodies and budgets',
-  options,
-  async () => {
-    for (const after of [false, true])
-      await withImage(
+for (const after of [false, true])
+  test(
+    'exact543 ' +
+      (after ? 'proposed' : 'original') +
+      ' pair preserves original bodies and budgets',
+    options,
+    () =>
+      withImage(
         async (image, module) => {
           const frame = module.verifyCurrentPhysicalFrame();
           assert.equal(frame.phase, after ? 'after' : 'before');
@@ -164,9 +166,8 @@ test(
           );
         },
         { after },
-      );
-  },
-);
+      ),
+  );
 for (const id of ['dashboard', 'invoice'])
   test('rejects one-sided ' + id + ' header substitution', options, () =>
     withImage(async (image, module) => {
@@ -268,8 +269,11 @@ test(
     withImage(
       async (image, module) => {
         module.verifyCurrentPhysicalFrame();
-        for (const [id, pin] of Object.entries(manifest.targets))
-          writeFileSync(pin.path, readFileSync(folder + id + '.original.txt'));
+        for (const pin of Object.values(manifest.targets))
+          writeFileSync(
+            pin.path,
+            git(image, 'show', manifest.base + ':' + pin.path),
+          );
         deny(module);
       },
       { after: true },
@@ -370,3 +374,75 @@ for (const id of ['dashboard', 'invoice'])
       }
     },
   );
+
+test(
+  'rejects a complete stale historical537 header pair on the P1 author',
+  options,
+  () =>
+    withImage(async (image, module) => {
+      for (const [id, pin] of Object.entries(manifest.targets))
+        writeFileSync(pin.path, readFileSync(folder + id + '.original.txt'));
+      deny(module);
+    }),
+);
+test(
+  'rejects withdrawing the exact approved P1 source to its original clock inputs',
+  options,
+  () =>
+    withImage(async (image, module) => {
+      writeFileSync(
+        'tests/property-p1-executor.test.ts',
+        git(
+          image,
+          'show',
+          '9f9fe19994fb2a224730d3f8212ca8e4dcde44c3:tests/property-p1-executor.test.ts',
+        ),
+      );
+      deny(module);
+    }),
+);
+
+test(
+  'scope amendment projects only the P1 TEST check while actual disk stays approved',
+  options,
+  () =>
+    withImage(async (image, module) => {
+      const path = manifest.p1TestHistoricalScopeAmendment.path;
+      const q = await module.qualifyInvoiceGuardProposal();
+      assert.equal(
+        hash(readFileSync(path)),
+        manifest.p1TestHistoricalScopeAmendment.currentSHA256,
+      );
+      assert.equal(
+        hash(q.readCurrent(path)),
+        manifest.p1TestHistoricalScopeAmendment.historicalSHA256,
+      );
+      assert.throws(() => module.dashboardSource(path), /Exact joint/);
+      mutate(image, 'src/App.tsx');
+      assert.throws(() => q.readCurrent(path), /Exact joint/);
+    }),
+);
+test(
+  'scope amendment denies a caller-injected old P1 body despite exact physical source',
+  options,
+  () =>
+    withImage(async (image, module) => {
+      const path = manifest.p1TestHistoricalScopeAmendment.path;
+      const historical = git(
+        image,
+        'show',
+        manifest.p1TestHistoricalScopeAmendment.historicalParent + ':' + path,
+      );
+      await assert.rejects(
+        module.qualifyInvoiceGuardProposal({
+          read: (p, enc) =>
+            String(p).endsWith(path)
+              ? enc
+                ? historical.toString(enc)
+                : historical
+              : readFileSync(p, enc),
+        }),
+        /Exact (?:joint dashboard\/invoice context|sealed invoice guard proposal) required/,
+      );
+    }),
+);

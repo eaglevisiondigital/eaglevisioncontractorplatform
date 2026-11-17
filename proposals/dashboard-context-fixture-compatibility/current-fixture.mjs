@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { devNull } from 'node:os';
 const folder = 'proposals/dashboard-context-fixture-compatibility/';
 const manifestSeal =
-  'af01b9b0845cec9787539d3ed2940d23c2e2525c5d08725e187b223f15643969';
+  '1284a197cd0c27eb061d2251e19c0f4c70b7898e978efd6b08f978e74785a320';
 const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const oid = (kind, bytes) =>
   createHash('sha1')
@@ -102,8 +102,17 @@ export function proposedTestBytes(name) {
       .replace(pin.oldHelper, selfSeal),
   );
 }
+function currentTestBytes(name) {
+  const bytes = Buffer.from(
+    proposedTestBytes(name)
+      .toString()
+      .replace(selfSeal, manifest.currentHelperSHA256),
+  );
+  if (sha(bytes) !== manifest.targets[name].currentSHA256) fail();
+  return bytes;
+}
 export function proposedPatchBytes(name) {
-  const before = originals[name]?.toString().split('\n'),
+  const before = currentTestBytes(name).toString().split('\n'),
     after = proposedTestBytes(name).toString().split('\n');
   if (
     !before ||
@@ -113,9 +122,9 @@ export function proposedPatchBytes(name) {
   )
     fail();
   const changes = before.flatMap((x, i) => (x === after[i] ? [] : [i]));
-  if (changes.length !== 2) fail();
+  if (changes.length !== 1) fail();
   const first = changes[0] - 3,
-    last = changes[1] + 4;
+    last = changes[0] + 4;
   if (first < 0 || last > before.length) fail();
   const lines = [];
   for (let i = first; i < last; i++) {
@@ -124,7 +133,7 @@ export function proposedPatchBytes(name) {
   }
   const target = manifest.targets[name].path;
   return Buffer.from(
-    `diff --git a/${target} b/${target}\nindex ${oid('blob', originals[name])}..${oid('blob', proposedTestBytes(name))} 100644\n--- a/${target}\n+++ b/${target}\n@@ -${first + 1},${last - first} +${first + 1},${last - first} @@\n${lines.join('\n')}\n`,
+    `diff --git a/${target} b/${target}\nindex ${oid('blob', currentTestBytes(name))}..${oid('blob', proposedTestBytes(name))} 100644\n--- a/${target}\n+++ b/${target}\n@@ -${first + 1},${last - first} +${first + 1},${last - first} @@\n${lines.join('\n')}\n`,
   );
 }
 const ownFiles = new Set([
@@ -176,7 +185,7 @@ const gitEnvironment = Object.freeze({
   GIT_TERMINAL_PROMPT: '0',
   GIT_OPTIONAL_LOCKS: '0',
 });
-function git(...args) {
+function gitBytes(...args) {
   return execFileSync(
     'git',
     [
@@ -191,7 +200,10 @@ function git(...args) {
       ...args,
     ],
     { cwd: source, env: gitEnvironment, stdio: ['ignore', 'pipe', 'pipe'] },
-  )
+  );
+}
+function git(...args) {
+  return gitBytes(...args)
     .toString()
     .trim();
 }
@@ -281,7 +293,7 @@ export function verifyCurrentPhysicalFrame() {
         if (!unchanged(info, lstatSync(current))) fail();
         for (const [id, pin] of Object.entries(manifest.targets))
           if (key === pin.path) {
-            if (bytes.equals(originals[id])) phases.push('before');
+            if (bytes.equals(currentTestBytes(id))) phases.push('before');
             else if (bytes.equals(proposedTestBytes(id))) phases.push('after');
             else fail();
             bytes = originals[id];
@@ -376,6 +388,40 @@ export async function qualifyInvoiceGuardProposal({
         source,
         path instanceof URL ? fileURLToPath(path) : resolve(String(path)),
       );
+    // SEPARATE, UNAPPROVED SCOPE AMENDMENT: one TEST source body only.
+    // Actual execution still reads f282 from disk. No runtime/SQL/expiry port.
+    const p1 = manifest.p1TestHistoricalScopeAmendment;
+    if (key === p1.path) {
+      verifyCurrentPhysicalFrame();
+      if (
+        sha(Buffer.from(bytes)) !== p1.currentSHA256 ||
+        oid('blob', Buffer.from(bytes)) !== p1.currentOid
+      )
+        fail();
+      const actual = regular(p1.path, p1.mode);
+      if (
+        sha(actual) !== p1.currentSHA256 ||
+        !actual.equals(Buffer.from(bytes))
+      )
+        fail();
+      if (
+        git('ls-tree', p1.historicalParent, '--', p1.path) !==
+        `100644 blob ${p1.historicalOid}\t${p1.path}`
+      )
+        fail();
+      const historical = gitBytes('show', p1.historicalParent + ':' + p1.path);
+      if (
+        sha(historical) !== p1.historicalSHA256 ||
+        oid('blob', historical) !== p1.historicalOid
+      )
+        fail();
+      if (!regular(p1.path, p1.mode).equals(actual)) fail();
+      return encoding
+        ? historical.toString(
+            typeof encoding === 'string' ? encoding : encoding.encoding,
+          )
+        : Buffer.from(historical);
+    }
     if (!Object.hasOwn(manifest.overlays, key)) return bytes;
     if (oid('blob', Buffer.from(bytes)) !== manifest.currentOverlayOids[key])
       fail();
