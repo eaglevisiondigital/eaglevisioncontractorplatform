@@ -39,13 +39,13 @@ const { qualifyInvoiceGuardProposal } = (await import(
   await (async () => {
     const fixture = pathToFileURL(
       resolve(
-        'proposals/approved-source-fixture-admission/current-fixture.mjs',
+        'proposals/dashboard-context-fixture-compatibility/current-fixture.mjs',
       ),
     );
     const fixtureBytes = readFileSync(fixture);
     if (
       createHash('sha256').update(fixtureBytes).digest('hex') !==
-      '6c2ce2a04e1989d88ed818e375869e1ed209f34dd2b4acb58d27991ea67d476f'
+      '98d41f85eacd16ff156165a3a5567477171c4def2092cb8c1d764d33929e9ef6'
     )
       throw Error('Exact sealed invoice guard proposal required');
     return 'data:text/javascript;base64,' + fixtureBytes.toString('base64');
