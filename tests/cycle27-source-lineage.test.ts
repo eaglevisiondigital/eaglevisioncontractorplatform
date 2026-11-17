@@ -1,6 +1,14 @@
 import { execFileSync } from 'node:child_process';
-import { mkdirSync, mkdtempSync, writeFileSync, rmSync } from 'node:fs';
+import {
+  mkdirSync,
+  mkdtempSync,
+  writeFileSync,
+  rmSync,
+  realpathSync,
+} from 'node:fs';
 import { expect, it } from 'vitest';
+import { tmpdir } from 'node:os';
+import { join, sep } from 'node:path';
 type Spec = {
   module: string;
   commit: string | null;
@@ -210,8 +218,8 @@ it('warm immutable Git facts never cache mutable files or source admission', () 
           : p.read(path),
     }),
   ).toThrow('fixed Cycle27');
-  mkdirSync('artifacts/cycle27', { recursive: true });
-  const dir = mkdtempSync('artifacts/cycle27/fresh-read-'),
+  mkdirSync('test-results/cycle27', { recursive: true });
+  const dir = mkdtempSync('test-results/cycle27/fresh-read-'),
     path = dir + '/source.txt';
   try {
     writeFileSync(path, 'before');
@@ -224,8 +232,16 @@ it('warm immutable Git facts never cache mutable files or source admission', () 
 });
 
 it('raw object facts ignore replacement refs and shallow traversal in a disposable repository', () => {
-  mkdirSync('artifacts/cycle27', { recursive: true });
-  const dir = mkdtempSync('artifacts/cycle27/git-context-');
+  const temporaryRoot = realpathSync(tmpdir());
+  const checkoutRoot = realpathSync(process.cwd());
+  if (
+    temporaryRoot === checkoutRoot ||
+    temporaryRoot.startsWith(checkoutRoot + sep)
+  )
+    throw Error(
+      'Disposable Git facts require outside-checkout temporary storage',
+    );
+  const dir = mkdtempSync(join(temporaryRoot, 'cycle27-git-context-'));
   const script = `import {execFileSync} from 'node:child_process';import{writeFileSync}from'node:fs';import assert from'node:assert/strict';
  const {cycle25SourcePorts:p}=await import(${JSON.stringify(new URL('../scripts/cycle25-source-lineage.mjs', import.meta.url).href)});
  const g=(...args)=>execFileSync('git',args,{encoding:'utf8'}).trim();g('init','-q');

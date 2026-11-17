@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { devNull } from 'node:os';
 const folder = 'proposals/dashboard-context-fixture-compatibility/';
 const manifestSeal =
-  '1284a197cd0c27eb061d2251e19c0f4c70b7898e978efd6b08f978e74785a320';
+  'ea0e7eae62ad6a3fbce5a9634b363c77e2228399021a2bfec22f6772053fef6e';
 const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const oid = (kind, bytes) =>
   createHash('sha1')
@@ -186,21 +186,25 @@ const gitEnvironment = Object.freeze({
   GIT_OPTIONAL_LOCKS: '0',
 });
 function gitBytes(...args) {
-  return execFileSync(
-    'git',
-    [
-      '--no-replace-objects',
-      '--no-pager',
-      '-c',
-      'core.hooksPath=' + devNull,
-      '-c',
-      'core.fsmonitor=false',
-      '-c',
-      'credential.helper=',
-      ...args,
-    ],
-    { cwd: source, env: gitEnvironment, stdio: ['ignore', 'pipe', 'pipe'] },
-  );
+  try {
+    return execFileSync(
+      'git',
+      [
+        '--no-replace-objects',
+        '--no-pager',
+        '-c',
+        'core.hooksPath=' + devNull,
+        '-c',
+        'core.fsmonitor=false',
+        '-c',
+        'credential.helper=',
+        ...args,
+      ],
+      { cwd: source, env: gitEnvironment, stdio: ['ignore', 'pipe', 'pipe'] },
+    );
+  } catch {
+    fail();
+  }
 }
 function git(...args) {
   return gitBytes(...args)
@@ -298,6 +302,21 @@ export function verifyCurrentPhysicalFrame() {
             else fail();
             bytes = originals[id];
           }
+        const forward = manifest.fixtureMetadataForwards.find(
+          (row) => row.path === key && row.phased,
+        );
+        if (forward) {
+          const digest = sha(bytes);
+          if (digest === forward.beforeSHA256) phases.push('before');
+          else if (digest === forward.afterSHA256) phases.push('after');
+          else fail();
+          bytes = gitBytes('show', manifest.base + ':' + key);
+          if (
+            sha(bytes) !== forward.beforeSHA256 ||
+            oid('blob', bytes) !== forward.beforeOid
+          )
+            fail();
+        }
         rows.push({
           name,
           directory: false,
@@ -337,8 +356,8 @@ export function verifyCurrentPhysicalFrame() {
   if (
     tree !== manifest.tree ||
     files !== manifest.files ||
-    phases.length !== 2 ||
-    phases[0] !== phases[1] ||
+    phases.length !== 5 ||
+    phases.some((phase) => phase !== phases[0]) ||
     (capturedPhase && capturedPhase !== phases[0])
   )
     fail();
@@ -422,6 +441,40 @@ export async function qualifyInvoiceGuardProposal({
           )
         : Buffer.from(historical);
     }
+    const metadataForward = manifest.fixtureMetadataForwards.find(
+      (row) => row.path === key,
+    );
+    if (metadataForward) {
+      // Internal immutable-qualifier reads are bounded by the public pre/post
+      // full source proof. Each projected body/mode is independently fresh.
+      const expected =
+        metadataForward.phased && capturedPhase === 'before'
+          ? metadataForward.beforeSHA256
+          : metadataForward.afterSHA256;
+      const actual = regular(key, metadataForward.mode);
+      if (sha(actual) !== expected || !actual.equals(Buffer.from(bytes)))
+        fail();
+      if (
+        git('ls-tree', metadataForward.historicalRef, '--', key) !==
+        `100644 blob ${metadataForward.historicalOid}\t${key}`
+      )
+        fail();
+      const historical = gitBytes(
+        'show',
+        metadataForward.historicalRef + ':' + key,
+      );
+      if (
+        sha(historical) !== metadataForward.historicalSHA256 ||
+        oid('blob', historical) !== metadataForward.historicalOid ||
+        !regular(key, metadataForward.mode).equals(actual)
+      )
+        fail();
+      return encoding
+        ? historical.toString(
+            typeof encoding === 'string' ? encoding : encoding.encoding,
+          )
+        : Buffer.from(historical);
+    }
     if (!Object.hasOwn(manifest.overlays, key)) return bytes;
     if (oid('blob', Buffer.from(bytes)) !== manifest.currentOverlayOids[key])
       fail();
@@ -460,5 +513,27 @@ export async function qualifyInvoiceGuardProposal({
       return (...reads) => checked(reader, reads);
     },
   });
-  return Object.freeze({ ...q, helper, check: () => checked(q.check, []) });
+  const knownReadPaths = new Set(
+    gitBytes('ls-tree', '-rz', manifest.base)
+      .toString()
+      .split('\0')
+      .filter(Boolean)
+      .map((row) => row.slice(row.indexOf('\t') + 1)),
+  );
+  const readCurrent = (path, ...args) => {
+    const key = relative(
+      source,
+      path instanceof URL ? fileURLToPath(path) : resolve(String(path)),
+    );
+    if (!knownReadPaths.has(key)) fail();
+    return manifest.fixtureMetadataForwards.some((row) => row.path === key)
+      ? checked(q.readCurrent, [path, ...args])
+      : q.readCurrent(path, ...args);
+  };
+  return Object.freeze({
+    ...q,
+    readCurrent,
+    helper,
+    check: () => checked(q.check, []),
+  });
 }

@@ -17,7 +17,7 @@ if (
 const fixtureBytes = actualReadFileSync(fixtureUrl);
 if (
   createHash('sha256').update(fixtureBytes).digest('hex') !==
-  '9520858626dde02883b5755e3681d1a3ba35f00f9a57eb55fe1f613a8befbe06'
+  '43e24d6af6af2118d7e10453ae2a48356552218c4d74ddbed3dd5c6318833880'
 )
   throw Error('Exact retained launch fixture required before import');
 const { historicalInvoiceRead } = await import(

@@ -1,13 +1,13 @@
 diff --git a/tests/invoice-guard-admission-proposal.test.ts b/tests/invoice-guard-admission-proposal.test.ts
-index 51af0019f5e9db7290a80f847202caddefdc1940..5ae2bde7830dfa2d9124063afb78a1f187546c7b 100644
+index 5ae2bde7830dfa2d9124063afb78a1f187546c7b..b33ad6a25d8cc5731b1e46ba0546a92fbcab1854 100644
 --- a/tests/invoice-guard-admission-proposal.test.ts
 +++ b/tests/invoice-guard-admission-proposal.test.ts
 @@ -45,7 +45,7 @@
      const fixtureBytes = readFileSync(fixture);
      if (
        createHash('sha256').update(fixtureBytes).digest('hex') !==
--      '98d41f85eacd16ff156165a3a5567477171c4def2092cb8c1d764d33929e9ef6'
-+      '03aefb7d4b3d62d0985754f993eea400c6d0db90dfde8aa022d518719ce5fe5a'
+-      '03aefb7d4b3d62d0985754f993eea400c6d0db90dfde8aa022d518719ce5fe5a'
++      '6c5bbe0cac6f519dccd5dcfae6b3200a3a1ec1e821bad48ada495861aa8af9a1'
      )
        throw Error('Exact sealed invoice guard proposal required');
      return 'data:text/javascript;base64,' + fixtureBytes.toString('base64');
