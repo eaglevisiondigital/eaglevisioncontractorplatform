@@ -1,51 +1,57 @@
-# Exact #537 joint dashboard / invoice test context — UNAPPLIED
+# Separate scope amendment: one P1 TEST-only historical port — UNAPPLIED
 
-Preparation parent: `30ec9e823bc64420fb62508b6dabb5a76f171ea2` (#537),
-with its exact source tree, file modes, raw author/parent commits and finite ancestry
-in `manifest.json`. This ordinary packet proposes two separately held test-header
-diffs. No canonical test, historical helper, manifest, application or financial
-source is modified. The original two dashboard and 39 invoice assertions, parent
-constants and 30-second case/hook budgets remain unchanged.
+Preparation parent: `59535839535385e37e03823372dd2dc16591ddb3` (#543),
+sole child of approved #542. Its one P1 test-input change and all other bodies,
+modes, source ancestry, approved runtime/fixture bytes and source tree are bound.
+This extends the existing joint fixture only. No new wrapper, namespace, engine,
+runtime capability is introduced. This alternative explicitly adds ONE historical
+P1 TEST-body read port; the prior no-port package remains BLOCKED, not amended.
 
-Frozen #531's dashboard helper verifies its closed #528 tree. It therefore denies
-#537's later invoice namespace/header. A dashboard-only addition also makes #537's
-strict financial fixture deny. Passing two dashboard cases alone would not produce
-a coherent candidate. Retain both original denials as evidence.
+The original #543 guarded headers still bind the old closed context and deny the
+new P1 source. Retain that original denial. This proposal recognizes exactly the
+complete current #543 header pair or complete newly sealed pair; a one-sided pair,
+stale historical #537 pair, unknown/missing/tampered body, changed P1 input source,
+symlink, mode substitution or late withdrawal is denied. Captured phase cannot
+switch even to the other complete known pair.
 
-The smallest proposed closure binds both guarded test imports to one new helper:
-`dashboard.patch` changes only the dashboard import path/hash;
-`invoice-held.patch` changes only the invoice import path/hash and requires its own
-protected-source approval. The new helper verifies the complete current #537 tree
-before and after every projected read or original qualification/helper call.
-Only the complete original pair or complete proposed pair is recognized. A mixed
-pair, replacement, unknown companion or late phase withdrawal is denied. The new
-namespace is excluded from the base tree only while every one of its ten files,
-modes, generated payloads and sealed companion bodies qualifies independently.
+Both historical original test snapshots stay byte-exact. Generated dashboard and
+invoice headers retain every original2+39 assertion, parent constant, test identity
+and30-second case/hook budget. On actual #543 each canonical target changes only
+its helper-hash literal. Both hashes must reseal jointly. The eight necessary
+existing namespace files and these two canonical headers form one ten-path held
+diff; original snapshot files and all outside source stay exact.
 
-All historical helper bytes remain unchanged. The dashboard reader retains only
-#531's exact existing forms comparison projection, after proving the actual current
-forms endpoint. The invoice side reuses the unmodified canonical qualification and
-original 39-case chain with the same seven historical reads from the existing
-native compatibility packet. No new historical SQL/runtime read port is introduced.
-The approved #533 C27 author is verified as a separate immutable endpoint and
-historical test-body ancestry; its output patch/namespace is **not** composed here.
-Changing #537's C27 body to #533's exact endpoint is still a denied substitution.
+The physical tree is normalized only for the two exact guarded headers. Actual
+P1 after-source remains required for the physical tree and actual execution. The
+financial source-checking read alone may project the exact approved P1 TEST path
+from current543/f282 to immutable542/832f after fresh full physical/sole-parent/mode
+proof and exact current/historical byte checks. It never projects runtime, SQL,
+expiry validation or actual P1 test execution. This is a separately exposed scope
+amendment requiring owner review, not granted admission. The existing dashboard
+forms-only comparison and the existing seven financial historical reads remain exact;
+frozen historical helpers/manifests are unchanged. #533 remains separate author
+proof; its endpoint, optional UI, CI or operational work cannot be substituted.
 
-The manifest seals this README and the controls; the helper seals the manifest;
-both generated headers bind that one helper. Current generated hashes and results
-belong in the review record/private inventory to avoid self-referential seals.
-Neither source qualification nor the two-header closure authorizes branch
-integration, financial execution, SQL/grants, genuine Auth, tenant/provider/message
-operations, recovery, merge, deployment or launch. Team/Catalog/Settings/#534 and
-all other optional UI successors remain outside the exact closure. Release NO-GO.
+The manifest seals this README and controls; the helper seals the manifest; both
+generated headers seal the helper. Current generated hashes and qualification
+results belong outside these companions to avoid a hash cycle. Run only the
+relevant namespace controls and original2+39 cases in disposable exact #543 images,
+with reports outside. Retain the six accepted P1 clock vectors and actual15 cases
+by their unchanged source identities; do not rerun them for this admission change.
+Check128 protected hashes, five design locks and13 bindings independently.
 
-Independent review: run `node --test proposals/dashboard-context-fixture-compatibility/controls.test.mjs`.
-In an owned disposable exact #537 image, copy only this namespace and apply BOTH
-sealed patches there; run only `tests/propel-dashboard-parity-source.test.ts` and
-`tests/invoice-guard-admission-proposal.test.ts` with original budgets. Store reports
-outside the image and remove it afterward. Separately retain the original dashboard
-denial and namespace-only original39 denial. Check all128 protected hashes, five
-locked design files and 13 bindings; do not infer broad Foundation or CI acceptance.
-The frozen packets and historical gates remain intact. The real future proposal
-commit must be recorded as the exact protected-source decision parent outside this
-sealed README, together with each target's before/after and patch identities.
+Source admission, protected source authoring and branch integration remain separate
+owner decisions. This packet is unapplied; it does not grant SQL/grants, genuine
+Auth, operational P1, providers, invoices/payments/messages, custody, recovery,
+merge, deployment or release. Release remains NO-GO / NOT READY / NOT AUTHORIZED.
+
+Explicit new read table (proposed only):
+
+| Consumer                            | Current exact source                                   | Historical exact source                 | Limit                                                               |
+| ----------------------------------- | ------------------------------------------------------ | --------------------------------------- | ------------------------------------------------------------------- |
+| Existing financial source qualifier | `tests/property-p1-executor.test.ts`, actual #543 f282 | same TEST path from immutable #542,832f | one TEST body after fresh physical proof; no other path or consumer |
+
+The immutable source files remain on disk as approved #543. The full before/after
+hashes, raw author/parent proofs and mode are sealed in the manifest. The original
+no-port25-control and41-case failures remain separate frozen evidence. Any further
+port or source gap stops qualification; this amendment is not an expansion permit.

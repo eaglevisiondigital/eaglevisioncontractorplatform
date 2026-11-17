@@ -1,7 +1,7 @@
 {
-  "classification": "UNAPPLIED_EXACT537_JOINT_DASHBOARD_AND_HELD_INVOICE_HEADER_CLOSURE",
-  "base": "30ec9e823bc64420fb62508b6dabb5a76f171ea2",
-  "tree": "cda428fb976f470280e1e518d9c24a04dc00c4c0",
+  "classification": "UNAPPLIED_SCOPE_AMENDMENT_EXACT543_ONE_P1_TEST_HISTORICAL_PORT",
+  "base": "59535839535385e37e03823372dd2dc16591ddb3",
+  "tree": "5dafd4896af45b8d740d3af42866554a97ef2741",
   "files": 2546,
   "targets": {
     "dashboard": {
@@ -9,14 +9,16 @@
       "oldFolder": "proposals/dashboard-forms-fixture-compatibility/",
       "oldHelper": "83a629d02a81d3f1a8b36bd39dc92839eebecfb79c0f9d7f66122c41d5ef8951",
       "sha256": "7b624c8bf853493f36cbc5ae65921471ce7cae1f41c75375c431c00cf462637b",
-      "oid": "48bd4fd4d038f8869aae6917d7c40d45c41d9f35"
+      "oid": "48bd4fd4d038f8869aae6917d7c40d45c41d9f35",
+      "currentSHA256": "19731d80d13e59226106f449e214836a4e8a2988800a46d3a9717ce13b5cd322"
     },
     "invoice": {
       "path": "tests/invoice-guard-admission-proposal.test.ts",
       "oldFolder": "proposals/approved-source-fixture-admission/",
       "oldHelper": "6c2ce2a04e1989d88ed818e375869e1ed209f34dd2b4acb58d27991ea67d476f",
       "sha256": "ee18681c44f7e9b1a15c6dbe37762c096f7a01dc4ad6fd63a038d14bd96a8516",
-      "oid": "273a0d3fc3469a75e9c3914970423217d002677e"
+      "oid": "273a0d3fc3469a75e9c3914970423217d002677e",
+      "currentSHA256": "33c91ef3f0e2713cc88e4ee00334c6fe9343453e0bb48a2ea1c1cccf0f80fbe6"
     }
   },
   "authors": [
@@ -47,6 +49,13 @@
       "parent": "7e165b657c7330c4ddd1dc8e521bf2b6c0d20df9",
       "tree": "a4782cf331e4ebcc799fd2307436dbe5f7370876",
       "delta": "M\ttests/cycle27-source-lineage.test.ts"
+    },
+    {
+      "commit": "59535839535385e37e03823372dd2dc16591ddb3",
+      "raw": "tree c9ebbdb3ad10803cecb903fdf49868a0a90b5999\nparent 9f9fe19994fb2a224730d3f8212ca8e4dcde44c3\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794888997 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794888997 -0600\n\n[skip netlify] Bind approved P1 expiry-case clocks to captured quotes\n",
+      "parent": "9f9fe19994fb2a224730d3f8212ca8e4dcde44c3",
+      "tree": "c9ebbdb3ad10803cecb903fdf49868a0a90b5999",
+      "delta": "M\ttests/property-p1-executor.test.ts"
     }
   ],
   "nativeAuthor": {
@@ -124,14 +133,28 @@
   "ownCompanions": {
     "README.md": {
       "mode": 420,
-      "sha256": "0fe43eb65ba3f599cfeb39f5dfd3a5047c30b9f6b9837350b413a9a374ce49a3"
+      "sha256": "30a1eb852c40b15d57734c6018e387edb2fb10cf4fcaf7115723cd00ec319b7d"
     },
     "controls.test.mjs": {
       "mode": 420,
-      "sha256": "e712dcc6b91322391e5014f1e39b136ec1bfeff36c47b0b65962579300d818a0"
+      "sha256": "723b763d8954c00f6a856929f87a677e065c9ff846d341342cd184779971defa"
     }
   },
   "admissionAuthorized": false,
   "integrationAuthorized": false,
-  "release": "NO_GO"
+  "release": "NO_GO",
+  "currentHelperSHA256": "98d41f85eacd16ff156165a3a5567477171c4def2092cb8c1d764d33929e9ef6",
+  "p1TestHistoricalScopeAmendment": {
+    "classification": "SEPARATE_UNAPPROVED_TEST_ONLY_SCOPE_AMENDMENT",
+    "path": "tests/property-p1-executor.test.ts",
+    "mode": 420,
+    "currentAuthor": "59535839535385e37e03823372dd2dc16591ddb3",
+    "currentSHA256": "f2821ed625c5979e0ebf712efd8fb711c27ea80819e838903b7cbd55c52a0e01",
+    "currentOid": "66ee0e039dd8a60a767ab52f01a06a829ffd02de",
+    "historicalParent": "9f9fe19994fb2a224730d3f8212ca8e4dcde44c3",
+    "historicalSHA256": "832f8e0f3e917c16c9cd76415151fdeb6bef2572b18e4874c8a3696ccebcdb38",
+    "historicalOid": "7e153b7425d10f3bee45762e0c8d57b662986e2f",
+    "admissionAuthorized": false,
+    "actualP1ExecutionProjection": false
+  }
 }
