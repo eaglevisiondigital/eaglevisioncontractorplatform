@@ -45,7 +45,7 @@ const { qualifyInvoiceGuardProposal } = (await import(
     const fixtureBytes = readFileSync(fixture);
     if (
       createHash('sha256').update(fixtureBytes).digest('hex') !==
-      '03aefb7d4b3d62d0985754f993eea400c6d0db90dfde8aa022d518719ce5fe5a'
+      '6c5bbe0cac6f519dccd5dcfae6b3200a3a1ec1e821bad48ada495861aa8af9a1'
     )
       throw Error('Exact sealed invoice guard proposal required');
     return 'data:text/javascript;base64,' + fixtureBytes.toString('base64');

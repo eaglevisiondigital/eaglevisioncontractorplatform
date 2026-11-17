@@ -96,6 +96,14 @@ async function withImage(callback, { after = false } = {}) {
           join(image, pin.path),
           readFileSync(join(image, folder + id + '.proposed.txt')),
         );
+    if (after)
+      for (const row of manifest.fixtureMetadataForwards.filter(
+        (row) => row.phased,
+      )) {
+        const bytes = readFileSync(join(producer, row.path));
+        assert.equal(hash(bytes), row.afterSHA256);
+        writeFileSync(join(image, row.path), bytes);
+      }
     process.chdir(image);
     const module = await import(
       pathToFileURL(join(image, folder + 'current-fixture.mjs')).href
@@ -118,7 +126,7 @@ const deny = (module) =>
   assert.throws(() => module.verifyCurrentPhysicalFrame(), /Exact joint/);
 for (const after of [false, true])
   test(
-    'exact543 ' +
+    'exactS ' +
       (after ? 'proposed' : 'original') +
       ' pair preserves original bodies and budgets',
     options,
@@ -273,6 +281,13 @@ test(
           writeFileSync(
             pin.path,
             git(image, 'show', manifest.base + ':' + pin.path),
+          );
+        for (const row of manifest.fixtureMetadataForwards.filter(
+          (row) => row.phased,
+        ))
+          writeFileSync(
+            row.path,
+            git(image, 'show', manifest.base + ':' + row.path),
           );
         deny(module);
       },
@@ -445,4 +460,79 @@ test(
         /Exact (?:joint dashboard\/invoice context|sealed invoice guard proposal) required/,
       );
     }),
+);
+
+for (const row of manifest.fixtureMetadataForwards.filter((row) => row.phased))
+  test('rejects partial phased metadata endpoint ' + row.path, options, () =>
+    withImage(async (image, module) => {
+      writeFileSync(row.path, readFileSync(join(producer, row.path)));
+      deny(module);
+    }),
+  );
+for (const row of manifest.fixtureMetadataForwards.filter((row) => !row.phased))
+  test('rejects reverting fixed S output source ' + row.path, options, () =>
+    withImage(async (image, module) => {
+      writeFileSync(
+        row.path,
+        git(image, 'show', row.historicalRef + ':' + row.path),
+      );
+      deny(module);
+    }),
+  );
+for (const row of manifest.fixtureMetadataForwards)
+  test('rejects old injected callback body ' + row.path, options, () =>
+    withImage(
+      async (image, module) => {
+        const old = git(image, 'show', row.historicalRef + ':' + row.path);
+        await assert.rejects(
+          module.qualifyInvoiceGuardProposal({
+            read: (p, enc) =>
+              String(p).endsWith(row.path)
+                ? enc
+                  ? old.toString(enc)
+                  : old
+                : readFileSync(p, enc),
+          }),
+          /Exact (?:joint dashboard\/invoice context|sealed invoice guard proposal) required/,
+        );
+      },
+      { after: true },
+    ),
+  );
+for (const drift of ['helper', 'manifest', 'current', 'mode', 'unknown-output'])
+  test('cached five metadata readers reject ' + drift + ' drift', options, () =>
+    withImage(
+      async (image, module) => {
+        const q = await module.qualifyInvoiceGuardProposal();
+        for (const row of manifest.fixtureMetadataForwards)
+          assert.equal(hash(q.readCurrent(row.path)), row.historicalSHA256);
+        if (drift === 'helper') mutate(image, folder + 'current-fixture.mjs');
+        if (drift === 'manifest') mutate(image, folder + 'manifest.json');
+        if (drift === 'current')
+          mutate(image, manifest.fixtureMetadataForwards[0].path);
+        if (drift === 'mode')
+          chmodSync(manifest.fixtureMetadataForwards[0].path, 0o1644);
+        if (drift === 'unknown-output')
+          writeFileSync('unreviewed-output.txt', 'unknown');
+        for (const row of manifest.fixtureMetadataForwards)
+          assert.throws(() => q.readCurrent(row.path), /Exact joint/);
+      },
+      { after: true },
+    ),
+  );
+test('direct source reader rejects unknown and outside paths', options, () =>
+  withImage(
+    async (image, module) => {
+      const q = await module.qualifyInvoiceGuardProposal();
+      assert.throws(
+        () => q.readCurrent('not-a-known-source.txt'),
+        /Exact joint/,
+      );
+      assert.throws(
+        () => q.readCurrent('../outside-source.txt'),
+        /Exact joint/,
+      );
+    },
+    { after: true },
+  ),
 );
