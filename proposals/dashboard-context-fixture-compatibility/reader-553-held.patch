@@ -1,0 +1,2990 @@
+diff --git a/proposals/commercial-customer-operating-reader/README.md b/proposals/commercial-customer-operating-reader/README.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..7985eb83de547fb33e2863c9bc9a7e56ca9d0d26
+--- /dev/null
++++ b/proposals/commercial-customer-operating-reader/README.md
+@@ -0,0 +1,135 @@
++# Default-OFF finite customer invoice reader
++
++This source candidate fills the missing server-only `authorize`/`readIssued`
++implementation behind #500's existing customer invoice bridge. It reuses the
++original opaque SDK Auth/current-caller wrapper, immutable issuance projection,
++customer preview and safe public decoder. Existing source, schema, grants,
++application routes, stores, invoice/payment engines and approved UI are unchanged.
++
++Only controlled fixture principals and an owned disposable native PostgreSQL 17
++cluster are exercised. `enabled` defaults to false; the only permitted mode is
++`disposable-proposal`. The existing internal bridge still says `fictional-local`
++and `unwired-test-port`. Neither label is genuine operational Auth acceptance.
++There is no connection/credential factory, installer, route or customer delivery.
++
++## Private authority and proposed SQL/grant difference
++
++`binding.ts` accepts a strict, own-data private scope: restricted runtime LOGIN,
++trusted existing NOLOGIN owner, user/session, organization/customer/location,
++invoice/source version/hash/revision, original issuance command, review UUID and
++UTC expiry in milliseconds. Values must be entered only in approved private
++owner-local storage; never commit or log an actual binding. The renderer accepts
++only the sealed templates and returns SQL **data**. It does not execute or write
++it. SQL function body hashes are derived internally from those exact templates
++and scope; a caller cannot substitute its own expected function hash.
++
++The compiled scope plus a separately approved dedicated EXECUTE grant is the new
++finite commercial invoice-read authority. A portal identity is an additional
++current identity check; neither a caller-supplied scope, a portal preference nor
++an estimate/staff permission creates this authority. A staff member in any
++organization or a platform administrator is denied as a customer-only identity.
++The single-invoice scope is for bounded nonproduction acceptance, not an accepted
++production authorization-store design.
++
++`read.proposed.sql.in` is **UNAPPLIED and not a migration**. Relative to #500 it
++proposes only:
++
++- EXECUTE for the existing trusted invoice NOLOGIN owner on the original
++  `private.is_platform_admin()` helper.
++- SELECT on exactly the four existing `portal_identities` columns
++  `organization_id`, `customer_id`, `user_id`, `active`, for that owner.
++- One owner-only SELECT policy on that existing RLS table. No new business table.
++- Two zero-argument, VOLATILE, SECURITY DEFINER functions, empty `search_path`,
++  owned by that owner; public/anon/authenticated/service-role EXECUTE revoked.
++
++`runtime-grants.sql.in` separately proposes only private-schema USAGE and EXECUTE
++on those two functions to the one dedicated restricted LOGIN. It creates no role,
++role membership, raw table/column access, grant option or unrelated helper access.
++The four-column ACL, owner-only policy and helper EXECUTE intentionally expand the
++trusted existing owner TCB; they require exact-target independent privilege review
++and separate SQL/grant installation authorization. Source preparation does not
++admit this expansion operationally. No existing protected SQL file is edited.
++
++## Read and denial behavior
++
++The adapter checks exact current database/backend/start/LOGIN, original opaque
++Auth user/session/AAL2, source snapshot, role/catalog profile and fixed scope before
++and after awaited reads. The raw wire accepts only the original caller inspection,
++fixed catalog read and two zero-argument SELECTs. A gate at actual dispatch prevents
++a cancellation or deadline arriving during an awaited Auth check from dispatching
++another query. Concurrent reads quarantine the same connection object.
++
++SQL validates current session/user, active organization and customer identity,
++customer-only status, issued source/header/revision/total/hash and original issue
++command. After the earlier header/source wait, one terminal READ COMMITTED SELECT
++rechecks these together, including late staff/platform activation. There are no new
++row locks or UPDATE grants. `readIssued` brackets the original immutable issuance
++projection and version read with that authorization. Repeated server checks reject
++changed mappings, original number/receipt, installed bodies, grants or source.
++Only the original customer-safe projection leaves the exported surface; raw source
++hashes, full estimate versions and staff receipt internals stay server-local.
++
++Errors are redacted as UNKNOWN. Missing/malformed/late acknowledgments, revocation,
++withdrawal, timeout or cancellation suppress the result and retire the observed
++connection object after dispatch. There is no replay/resume/financial command.
++Actual driver cancellation, socket discard, connection aliases and cross-process
++pool fencing remain unqualified and must be handled by a separately reviewed real
++connection owner. This source does not claim durable custody from a WeakSet.
++
++## Verification and honest limits
++
++New final-source primary tests: **65 unit controls and 23 native PG17 cases passed,
++zero failures/skips**. Native cases execute the actual original migrations and
++invoice SQL plus this new proposal in an owned TCP-disabled cluster, using explicit
++synthetic fixture roles and controlled SDK Auth. Cleanup stopped and removed the
++cluster. They include actual permission denials, original receipt/yearly numbers,
++revocation, changed body/role/RLS/ACL, public-helper collision, READ COMMITTED,
++stale original source, and observed PostgreSQL header-lock waits followed by
++organization/source/staff/platform withdrawal. No original assertion or budget was
++changed. Primary development failures and review findings were corrected before
++final qualification; this is not a claim that initial attempts all passed.
++
++An independent copy passed the same **65 unit and 23 native cases**, zero failures
++or skips; the exact frozen runtime/templates/tests and all 2,468 parent files were
++verified. Independent unit report SHA256
++`3a857cff0ea88ea003f92184fab10f1081c4ac99fbef790ca4879af349201f92`,
++native report SHA256
++`32ca9c7e61a448eaad31638f561d9d63d30e8d347e347af89c2d00919b807370`.
++Reports are retained in persistent owner-local evidence and overlap the same cases;
++they are not added to the totals. Existing browser/UI evidence is
++retained only for unchanged #500 source; no new browser or hosted acceptance is
++claimed. `source.json` pins the dependency/source closure and original SQL/history.
++The source verifier, static imports, Node/SDK/driver and installed original helper
++bodies remain trusted TCB; this is not an independently sealed module loader or
++proof against coherent privileged source/catalog/manifest replacement.
++
++Native tests deliberately characterize that the raw dedicated LOGIN plus an exact
++unsigned SQL claims GUC can read its fixed scope. The opaque SDK Auth and current
++backend wrapper are therefore essential server trust boundaries. No GUC alone is
++signed Auth, and the SQL roles/installer remain privileged fixtures. Current hosted
++helper bodies, grants/default ACLs, writer/bypass inventory, real AAL2/session
++revocation and pool custody are still UNKNOWN. A terminal snapshot cannot fence a
++privileged administrator changing state afterward or restore an earlier database.
++
++## Smallest genuine-Auth checkpoint
++
++Reuse the original D1 return in Issue #358. Privately bind the exact nonproduction
++target/history, source and rendered SQL/grant hashes, installer, trusted NOLOGIN
++owner, dedicated LOGIN, customer/user/session/invoice and original command, UTC
++window, independent reviewer, STOP conditions and cleanup/revocation owner. Review
++all transitive helper permissions and actual writer/bypass paths. Preserve D2
++independent one-use/ACK/spent fencing and D3 independent recovery/quarantine plus
++the original recovery/P1-on-thirteen/customer14/4B ordering. Do not replay consumed
++attempts or treat synthetic native evidence as satisfying those gates.
++
++Only after those decisions can the owner separately authorize exact catalog/Auth
++preflight and, at a distinct approved checkpoint, this rendered SQL/grant
++installation and one read-only nonproduction invoice acceptance. No such action is
++authorized here. Routes, real tenant onboarding, receipt publication, NMI sandbox
++and real customer access remain separate. Saul 2 Paul stays first; Cunningham needs
++its own tenant/customer/Auth/merchant/key/settlement acceptance. Original A01–A12
++operational cases remain NOT RUN; Release 1.0 remains NO-GO / NOT AUTHORIZED.
++
++Reference contract: [Supabase database functions](https://supabase.com/docs/guides/database/functions)
++and [session lifecycle](https://supabase.com/docs/guides/auth/sessions). These are
++public documentation references, not project calls or installed-target evidence.
+diff --git a/proposals/commercial-customer-operating-reader/binding.ts b/proposals/commercial-customer-operating-reader/binding.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..429ed2a68966e071f14942c2d75e130a6bff3a2e
+--- /dev/null
++++ b/proposals/commercial-customer-operating-reader/binding.ts
+@@ -0,0 +1,150 @@
++import { createHash } from 'node:crypto';
++import { isProxy } from 'node:util/types';
++export interface ReaderScope {
++  login: string;
++  owner: string;
++  userId: string;
++  sessionId: string;
++  organizationId: string;
++  customerId: string;
++  locationId: string;
++  invoiceId: string;
++  sourceVersionId: string;
++  sourceHash: string;
++  revision: number;
++  issuanceReceiptId: string;
++  reviewId: string;
++  expiresAt: number;
++}
++const uuid = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/;
++export function readerScope(value: ReaderScope): Readonly<ReaderScope> {
++  if (
++    !value ||
++    isProxy(value) ||
++    ![Object.prototype, null].includes(Object.getPrototypeOf(value))
++  )
++    throw Error('Exact private scope required');
++  const keys = [
++    'login',
++    'owner',
++    'userId',
++    'sessionId',
++    'organizationId',
++    'customerId',
++    'locationId',
++    'invoiceId',
++    'sourceVersionId',
++    'sourceHash',
++    'revision',
++    'issuanceReceiptId',
++    'reviewId',
++    'expiresAt',
++  ];
++  const d = Object.getOwnPropertyDescriptors(value);
++  if (
++    Reflect.ownKeys(d).length !== keys.length ||
++    keys.some((k) => !d[k] || !('value' in d[k]))
++  )
++    throw Error('Exact private scope required');
++  const b = Object.fromEntries(
++    keys.map((k) => [k, d[k].value]),
++  ) as unknown as ReaderScope;
++  for (const k of [
++    'userId',
++    'sessionId',
++    'organizationId',
++    'customerId',
++    'locationId',
++    'invoiceId',
++    'sourceVersionId',
++    'issuanceReceiptId',
++    'reviewId',
++  ] as const)
++    if (
++      typeof b[k] !== 'string' ||
++      !uuid.test(b[k]) ||
++      b[k] === '00000000-0000-0000-0000-000000000000'
++    )
++      throw Error('Exact private scope required');
++  for (const k of ['login', 'owner'] as const)
++    if (
++      typeof b[k] !== 'string' ||
++      !/^[a-z][a-z0-9_]{0,62}$/.test(b[k]) ||
++      b[k].startsWith('pg_') ||
++      [
++        'public',
++        'postgres',
++        'ev_test',
++        'anon',
++        'authenticated',
++        'service_role',
++        'authenticator',
++        'supabase_admin',
++      ].includes(b[k])
++    )
++      throw Error('Restricted principal required');
++  if (
++    b.login === b.owner ||
++    !Number.isSafeInteger(b.revision) ||
++    b.revision < 1 ||
++    !Number.isSafeInteger(b.expiresAt) ||
++    b.expiresAt <= 0 ||
++    typeof b.sourceHash !== 'string' ||
++    !/^[a-f0-9]{64}$/.test(b.sourceHash)
++  )
++    throw Error('Exact private scope required');
++  return Object.freeze(b);
++}
++/** Renderer returns SQL DATA only; no connection, file output or installer. */
++export function renderReaderSQL(
++  template: string,
++  grants: string,
++  input: ReaderScope,
++) {
++  if (
++    createHash('sha256').update(template).digest('hex') !==
++      '303741983f5f72ee0fefabbf71d7dd57b0e5bf1b0f265ab389d5fbeb318afe93' ||
++    createHash('sha256').update(grants).digest('hex') !==
++      'abbca46667c9d9b44839395428f15d9d336e244fe0bd7a5c42217cf8aeb850c5'
++  )
++    throw Error('Exact reviewed SQL templates required');
++  const b = readerScope(input);
++  const values: Record<string, string> = {
++    LOGIN: b.login,
++    OWNER: b.owner,
++    USER: b.userId,
++    SESSION: b.sessionId,
++    ORG: b.organizationId,
++    CUSTOMER: b.customerId,
++    LOCATION: b.locationId,
++    INVOICE: b.invoiceId,
++    VERSION: b.sourceVersionId,
++    HASH: b.sourceHash,
++    REVISION: String(b.revision),
++    ISSUE: b.issuanceReceiptId,
++    REVIEW: b.reviewId,
++    UNTIL: String(b.expiresAt),
++  };
++  const replace = (s: string) =>
++    s.replace(/__([A-Z]+)__/g, (_, k: string) => {
++      if (!Object.hasOwn(values, k)) throw Error('Unknown binding');
++      return values[k];
++    });
++  const sql = replace(template),
++    runtimeGrants = replace(grants);
++  if (/__[A-Z]+__/.test(sql + runtimeGrants)) throw Error('Incomplete binding');
++  const hash = (s: string) => createHash('sha256').update(s).digest('hex');
++  const body = (tag: string) => {
++    const p = sql.split('$' + tag + '$');
++    if (p.length !== 3) throw Error('Exact template required');
++    return hash(p[1]);
++  };
++  return Object.freeze({
++    sql,
++    runtimeGrants,
++    bodyHashes: Object.freeze({
++      commercial_customer_invoice_authorize: body('authorize'),
++      commercial_customer_invoice_read_issued: body('issued'),
++    }),
++  });
++}
+diff --git a/proposals/commercial-customer-operating-reader/catalog.ts b/proposals/commercial-customer-operating-reader/catalog.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..eb10055323f6a561e0f13887991b6a9f7f41af36
+--- /dev/null
++++ b/proposals/commercial-customer-operating-reader/catalog.ts
+@@ -0,0 +1,17 @@
++// Read-only application-schema catalog snapshot, not a SQL sandbox or installer.
++export const operatingReaderCatalog = `select jsonb_build_object(
++ 'login',session_user::text,'currentRole',current_user::text,
++ 'canLogin',r.rolcanlogin,'superuser',r.rolsuper,'bypassRls',r.rolbypassrls,
++ 'createDb',r.rolcreatedb,'createRole',r.rolcreaterole,'replication',r.rolreplication,
++ 'memberships',(select count(*)::int from pg_auth_members m where m.member=r.oid),
++ 'isolation',current_setting('transaction_isolation'),
++ 'schemaUsage',exists(select 1 from pg_namespace n,aclexplode(coalesce(n.nspacl,acldefault('n',n.nspowner))) a where n.nspname='private' and n.nspowner<>r.oid and a.grantee=r.oid and a.privilege_type='USAGE' and not a.is_grantable),
++ 'schemaFallback',exists(select 1 from pg_namespace n,aclexplode(coalesce(n.nspacl,acldefault('n',n.nspowner))) a where n.nspname='private' and (a.grantee=0 or(a.grantee=r.oid and a.is_grantable)) and a.privilege_type='USAGE'),
++ 'schemaCreate',exists(select 1 from pg_namespace n where n.nspname in('private','public','auth','storage') and has_schema_privilege(session_user,n.oid,'CREATE')),
++ 'rawAccess',exists(select 1 from pg_class c join pg_namespace n on n.oid=c.relnamespace where n.nspname in('private','public','auth','storage') and c.relkind in('r','p','v','m','f') and(has_table_privilege(session_user,c.oid,'SELECT,INSERT,UPDATE,DELETE,TRUNCATE,REFERENCES,TRIGGER') or has_any_column_privilege(session_user,c.oid,'SELECT,INSERT,UPDATE,REFERENCES'))),
++ 'otherDefiner',exists(select 1 from pg_proc p join pg_namespace n on n.oid=p.pronamespace where n.nspname in('private','public','auth','storage') and p.prosecdef and p.oid<>coalesce(to_regprocedure('private.commercial_customer_invoice_authorize()')::oid,0::oid) and p.oid<>coalesce(to_regprocedure('private.commercial_customer_invoice_read_issued()')::oid,0::oid) and has_schema_privilege(session_user,n.oid,'USAGE') and has_function_privilege(session_user,p.oid,'EXECUTE')),
++ 'portalOwnerACL',(select count(*)=4 and bool_and(a.attname=any(array['organization_id','customer_id','user_id','active']) and x.privilege_type='SELECT' and not x.is_grantable) from pg_attribute a cross join lateral aclexplode(a.attacl) x where a.attrelid='public.portal_identities'::regclass and a.attnum>0 and not a.attisdropped and x.grantee=(select proowner from pg_proc where oid=to_regprocedure('private.commercial_customer_invoice_authorize()'))) and not exists(select 1 from pg_class c cross join lateral aclexplode(c.relacl) x where c.oid='public.portal_identities'::regclass and x.grantee=(select proowner from pg_proc where oid=to_regprocedure('private.commercial_customer_invoice_authorize()'))),
++ 'portalPolicy',exists(select 1 from pg_policy p where p.polrelid='public.portal_identities'::regclass and p.polname='commercial_customer_identity_read' and p.polcmd='r' and p.polpermissive and p.polroles=array[(select proowner from pg_proc where oid=to_regprocedure('private.commercial_customer_invoice_authorize()'))] and pg_get_expr(p.polqual,p.polrelid)='true' and p.polwithcheck is null),
++ 'portalRls',(select relrowsecurity from pg_class where oid='public.portal_identities'::regclass),
++ 'functions',(select jsonb_agg(jsonb_build_object('name',p.proname,'owner',o.rolname,'ownerLogin',o.rolcanlogin,'ownerSuper',o.rolsuper,'ownerBypass',o.rolbypassrls,'definer',p.prosecdef,'volatility',p.provolatile::text,'language',l.lanname,'config',p.proconfig,'args',p.pronargs,'result',format_type(p.prorettype,null),'bodyHash',encode(sha256(convert_to(p.prosrc,'UTF8')),'hex'),'directExecute',exists(select 1 from aclexplode(coalesce(p.proacl,acldefault('f',p.proowner))) a where a.grantee=r.oid and a.privilege_type='EXECUTE' and not a.is_grantable),'publicExecute',exists(select 1 from aclexplode(coalesce(p.proacl,acldefault('f',p.proowner))) a where a.grantee=0 and a.privilege_type='EXECUTE'),'grantOption',exists(select 1 from aclexplode(coalesce(p.proacl,acldefault('f',p.proowner))) a where a.grantee=r.oid and a.is_grantable)) order by p.proname) from pg_proc p join pg_namespace n on n.oid=p.pronamespace join pg_roles o on o.oid=p.proowner join pg_language l on l.oid=p.prolang where n.nspname='private' and p.proname in('commercial_customer_invoice_authorize','commercial_customer_invoice_read_issued'))
++ ) profile from pg_roles r where r.rolname=session_user`;
+diff --git a/proposals/commercial-customer-operating-reader/read.proposed.sql.in b/proposals/commercial-customer-operating-reader/read.proposed.sql.in
+new file mode 100644
+index 0000000000000000000000000000000000000000..827be3f470a7f95db805263540cc31e91b5be7c9
+--- /dev/null
++++ b/proposals/commercial-customer-operating-reader/read.proposed.sql.in
+@@ -0,0 +1,59 @@
++-- UNAPPLIED finite nonproduction scope, no route/store/writer. NOT a migration.
++-- Separate exact SQL/grant approval required. The four-column owner ACL and
++-- owner-only SELECT policy intentionally expand the existing trusted owner TCB.
++begin;
++grant execute on function private.is_platform_admin() to __OWNER__;
++grant select(organization_id,customer_id,user_id,active) on public.portal_identities to __OWNER__;
++create policy commercial_customer_identity_read on public.portal_identities for select to __OWNER__ using(true);
++create function private.commercial_customer_invoice_authorize() returns jsonb
++language plpgsql volatile security definer set search_path='' as $authorize$
++declare c jsonb:=auth.jwt(); h private.commercial_invoice_drafts; expiry bigint;terminal record;
++begin
++ if current_setting('transaction_isolation')<>'read committed' or session_user<>'__LOGIN__' then raise exception 'Customer read unavailable' using errcode='42501';end if;
++ if auth.uid() is distinct from '__USER__'::uuid or c->>'sub' is distinct from '__USER__' or c->>'session_id' is distinct from '__SESSION__' or c->>'aal' is distinct from 'aal2' or jsonb_typeof(c->'exp') is distinct from 'number' then raise exception 'Customer read unavailable' using errcode='42501';end if;
++ if (c->>'exp')::numeric<>trunc((c->>'exp')::numeric) then raise exception 'Customer read unavailable' using errcode='42501';end if;
++ expiry:=least(__UNTIL__::bigint,((c->>'exp')::numeric*1000)::bigint);
++ -- Plain reads: no new row lock order or UPDATE privilege is introduced.
++ if expiry<=floor(extract(epoch from clock_timestamp())*1000) or not exists(select 1 from auth.users u join auth.sessions s on s.user_id=u.id where u.id='__USER__'::uuid and s.id='__SESSION__'::uuid and u.email_confirmed_at is not null and u.deleted_at is null and not u.is_anonymous and(u.banned_until is null or u.banned_until<=clock_timestamp()) and(s.not_after is null or s.not_after>clock_timestamp())) then raise exception 'Customer read unavailable' using errcode='42501';end if;
++ if not exists(select 1 from public.organizations where id='__ORG__'::uuid and status='active') or not exists(select 1 from public.portal_identities where organization_id='__ORG__'::uuid and customer_id='__CUSTOMER__'::uuid and user_id='__USER__'::uuid and active) then raise exception 'Customer read unavailable' using errcode='42501';end if;
++ if exists(select 1 from public.memberships where user_id='__USER__'::uuid and active) or private.is_platform_admin() then raise exception 'Customer-only identity required' using errcode='42501';end if;
++ select * into h from private.commercial_invoice_drafts where organization_id='__ORG__'::uuid and id='__INVOICE__'::uuid and customer_id='__CUSTOMER__'::uuid and location_id='__LOCATION__'::uuid and source_version_id='__VERSION__'::uuid and issued_revision=__REVISION__ and current_revision=__REVISION__ and source_hash='__HASH__' and issue_command_id='__ISSUE__'::uuid;
++ if not found or h.invoice_number is null or h.issued_at is null then raise exception 'Customer read unavailable' using errcode='42501';end if;
++ if not exists(select 1 from public.estimate_versions v join public.estimates p on p.organization_id=v.organization_id and p.id=v.estimate_id where v.organization_id=h.organization_id and v.id=h.source_version_id and v.status='issued' and p.status='issued' and p.current_version_id=v.id and v.customer_id=h.customer_id and v.location_id is not distinct from h.location_id and v.payload->>'currency'=h.currency and(v.calculation->>'total_minor')::numeric=h.amount_minor and encode(sha256(convert_to(jsonb_build_object('version',v.id,'customer',v.customer_id,'location',v.location_id,'payload',v.payload,'calculation',v.calculation,'tax_policy',v.tax_policy_snapshot)::text,'UTF8')),'hex')=h.source_hash and not exists(select 1 from public.estimate_versions n where n.organization_id=v.organization_id and n.estimate_id=v.estimate_id and n.status='issued' and n.version_number>v.version_number)) then raise exception 'Customer read unavailable' using errcode='42501';end if;
++ -- One fresh terminal statement after the earlier source/row wait. This is
++ -- the READ COMMITTED database currentness point, not an administrative fence.
++ select h2 as original,least(__UNTIL__::bigint,((c->>'exp')::numeric*1000)::bigint,coalesce(floor(extract(epoch from se.not_after)*1000)::bigint,__UNTIL__::bigint)) as expiry into terminal
++ from private.commercial_invoice_drafts h2
++ join public.estimate_versions v on v.organization_id=h2.organization_id and v.id=h2.source_version_id
++ join public.estimates p on p.organization_id=v.organization_id and p.id=v.estimate_id
++ join public.organizations o on o.id=h2.organization_id and o.status='active'
++ join public.portal_identities i on i.organization_id=h2.organization_id and i.customer_id=h2.customer_id and i.user_id='__USER__'::uuid and i.active
++ join auth.users u on u.id=i.user_id and u.email_confirmed_at is not null and u.deleted_at is null and not u.is_anonymous and(u.banned_until is null or u.banned_until<=clock_timestamp())
++ join auth.sessions se on se.user_id=u.id and se.id='__SESSION__'::uuid and(se.not_after is null or se.not_after>clock_timestamp())
++ where h2.organization_id='__ORG__'::uuid and h2.id='__INVOICE__'::uuid and h2.customer_id='__CUSTOMER__'::uuid and h2.location_id='__LOCATION__'::uuid and h2.source_version_id='__VERSION__'::uuid and h2.issued_revision=__REVISION__ and h2.current_revision=__REVISION__ and h2.source_hash='__HASH__' and h2.issue_command_id='__ISSUE__'::uuid
++ and v.status='issued' and p.status='issued' and p.current_version_id=v.id and v.customer_id=h2.customer_id and v.location_id is not distinct from h2.location_id and v.payload->>'currency'=h2.currency and(v.calculation->>'total_minor')::numeric=h2.amount_minor
++ and encode(sha256(convert_to(jsonb_build_object('version',v.id,'customer',v.customer_id,'location',v.location_id,'payload',v.payload,'calculation',v.calculation,'tax_policy',v.tax_policy_snapshot)::text,'UTF8')),'hex')=h2.source_hash
++ and not exists(select 1 from public.estimate_versions n where n.organization_id=v.organization_id and n.estimate_id=v.estimate_id and n.status='issued' and n.version_number>v.version_number)
++ and not exists(select 1 from public.memberships where user_id='__USER__'::uuid and active) and not private.is_platform_admin();
++ if not found then raise exception 'Current customer scope/source unavailable' using errcode='42501';end if;
++ h:=terminal.original;expiry:=terminal.expiry;
++ if expiry<=floor(extract(epoch from clock_timestamp())*1000) then raise exception 'Customer read expired' using errcode='42501';end if;
++ return jsonb_build_object('mode','fictional-local','active',true,'userId','__USER__','sessionId','__SESSION__','organizationId',h.organization_id,'customerId',h.customer_id,'locationId',h.location_id,'invoiceId',h.id,'sourceVersionId',h.source_version_id,'sourceHash',h.source_hash,'revision',h.issued_revision,'mappingRevision','__REVIEW__','expiresAt',expiry,'issuedNumber',h.invoice_number,'issuanceReceiptId',h.issue_command_id);
++end$authorize$;
++alter function private.commercial_customer_invoice_authorize() owner to __OWNER__;
++revoke all on function private.commercial_customer_invoice_authorize() from public,anon,authenticated,service_role;
++create function private.commercial_customer_invoice_read_issued() returns jsonb
++language plpgsql volatile security definer set search_path='' as $issued$
++declare a jsonb;b jsonb;v public.estimate_versions;packet jsonb;
++begin
++ a:=private.commercial_customer_invoice_authorize();
++ select * into v from public.estimate_versions where organization_id='__ORG__'::uuid and id='__VERSION__'::uuid;
++ if not found then raise exception 'Customer read unavailable' using errcode='42501';end if;
++ packet:=jsonb_build_object('mapping',a,'invoice',private.commercial_issue_projection('__ORG__'::uuid,'__INVOICE__'::uuid),'version',to_jsonb(v));
++ b:=private.commercial_customer_invoice_authorize();
++ if a is distinct from b then raise exception 'Customer read changed' using errcode='42501';end if;
++ return packet;
++end$issued$;
++alter function private.commercial_customer_invoice_read_issued() owner to __OWNER__;
++revoke all on function private.commercial_customer_invoice_read_issued() from public,anon,authenticated,service_role;
++commit;
+diff --git a/proposals/commercial-customer-operating-reader/reader.ts b/proposals/commercial-customer-operating-reader/reader.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..06eb0a8462401fc2f9f84b2a41888a8bd042c7aa
+--- /dev/null
++++ b/proposals/commercial-customer-operating-reader/reader.ts
+@@ -0,0 +1,452 @@
++import { readFileSync } from 'node:fs';
++import { isProxy } from 'node:util/types';
++import {
++  CustomerBrokerAuth,
++  type BrokerActor,
++} from '../../server/customer/broker-auth';
++import {
++  runWithCommercialCaller,
++  CommercialCallerConnection,
++  type InvoiceConnectionScope,
++} from '../../server/invoices/commercial-caller-connection';
++import type { GatewaySql } from '../../server/payments/postgres-store';
++import {
++  commercialCustomerReadProposal,
++  type CommercialCustomerReaderPort,
++} from '../commercial-customer-bridge/reader';
++import { customerPreview } from '../../src/domain/estimating/customer-preview';
++import { projectIssuedReview } from '../../src/domain/customer/review';
++import type { EstimateVersion } from '../../src/domain/estimating/types';
++import type { CommercialCustomerTarget } from '../../src/components/invoices/commercial-customer-read';
++import { readerScope, renderReaderSQL, type ReaderScope } from './binding';
++import { operatingReaderCatalog } from './catalog';
++import { assertOperatingSources } from './source';
++const retired = new WeakSet<GatewaySql>();
++const activeRead = new WeakSet<GatewaySql>();
++const signalAborted = Object.getOwnPropertyDescriptor(
++  AbortSignal.prototype,
++  'aborted',
++)!.get!;
++const eventAdd = EventTarget.prototype.addEventListener;
++const eventRemove = EventTarget.prototype.removeEventListener;
++const inspectSQL = `select current_database() database,pg_backend_pid() pid,
++ backend_start::text,session_user::text login,current_user::text current_role,
++ current_setting('request.jwt.claims',true) claims
++ from pg_stat_activity where pid=pg_backend_pid()`;
++
++const deny = () =>
++  Error('Commercial customer operating read unavailable · UNKNOWN');
++function copy(
++  v: unknown,
++  seen = new Set<object>(),
++  depth = 0,
++  budget = { nodes: 0, bytes: 0 },
++): unknown {
++  if (++budget.nodes > 20000) throw deny();
++  if (typeof v === 'string') {
++    budget.bytes += v.length;
++    if (budget.bytes > 1048576) throw deny();
++  }
++
++  if (
++    v === null ||
++    typeof v === 'string' ||
++    typeof v === 'boolean' ||
++    (typeof v === 'number' && Number.isFinite(v))
++  )
++    return v;
++  if (!v || typeof v !== 'object' || isProxy(v) || depth > 20 || seen.has(v))
++    throw deny();
++  if (
++    !Array.isArray(v) &&
++    ![Object.prototype, null].includes(Object.getPrototypeOf(v))
++  )
++    throw deny();
++  seen.add(v);
++  const out: Record<string, unknown> = {};
++  for (const k of Reflect.ownKeys(v)) {
++    if (Array.isArray(v) && k === 'length') continue;
++    if (typeof k !== 'string') throw deny();
++    const d = Object.getOwnPropertyDescriptor(v, k)!;
++    if (!('value' in d)) throw deny();
++    Object.defineProperty(out, k, {
++      enumerable: true,
++      value: copy(d.value, seen, depth + 1, budget),
++    });
++  }
++  seen.delete(v);
++  if (!Array.isArray(v)) return out;
++  if (
++    v.length > 500 ||
++    Object.keys(out).length !== v.length ||
++    Object.keys(out).some((k, i) => k !== String(i))
++  )
++    throw deny();
++  return Object.values(out);
++}
++const record = (v: unknown) => {
++  const c = copy(v);
++  if (!c || typeof c !== 'object' || Array.isArray(c)) throw deny();
++  return c as Record<string, unknown>;
++};
++function one(v: unknown, key: string) {
++  const r = record(v);
++  if (
++    Object.keys(r).join() !== 'rows' ||
++    !Array.isArray(r.rows) ||
++    r.rows.length !== 1
++  )
++    throw deny();
++  const row = record(r.rows[0]);
++  if (Object.keys(row).join() !== key) throw deny();
++  return copy(row[key]);
++}
++const names = [
++  'commercial_customer_invoice_authorize',
++  'commercial_customer_invoice_read_issued',
++] as const;
++function profile(
++  v: unknown,
++  b: Readonly<ReaderScope>,
++  hashes: Record<string, string>,
++) {
++  const p = record(v);
++  if (
++    p.login !== b.login ||
++    p.currentRole !== b.login ||
++    p.canLogin !== true ||
++    p.memberships !== 0 ||
++    p.isolation !== 'read committed' ||
++    p.schemaUsage !== true ||
++    p.portalOwnerACL !== true ||
++    p.portalPolicy !== true ||
++    p.portalRls !== true ||
++    [
++      'superuser',
++      'bypassRls',
++      'createDb',
++      'createRole',
++      'replication',
++      'schemaFallback',
++      'schemaCreate',
++      'rawAccess',
++      'otherDefiner',
++    ].some((k) => p[k] !== false) ||
++    !Array.isArray(p.functions) ||
++    p.functions.length !== 2
++  )
++    throw deny();
++  p.functions.forEach((x, i) => {
++    const f = record(x);
++    if (
++      f.name !== names[i] ||
++      f.owner !== b.owner ||
++      f.ownerLogin !== false ||
++      f.ownerSuper !== false ||
++      f.ownerBypass !== false ||
++      f.definer !== true ||
++      f.volatility !== 'v' ||
++      f.language !== 'plpgsql' ||
++      f.args !== 0 ||
++      f.result !== 'jsonb' ||
++      JSON.stringify(f.config) !== JSON.stringify(['search_path=""']) ||
++      f.bodyHash !== hashes[names[i]] ||
++      f.directExecute !== true ||
++      f.publicExecute !== false ||
++      f.grantOption !== false
++    )
++      throw deny();
++  });
++  return JSON.stringify(p);
++}
++function mapping(
++  v: unknown,
++  b: Readonly<ReaderScope>,
++  a: Readonly<BrokerActor>,
++) {
++  const m = record(v);
++  const values = {
++    userId: b.userId,
++    sessionId: b.sessionId,
++    organizationId: b.organizationId,
++    customerId: b.customerId,
++    locationId: b.locationId,
++    invoiceId: b.invoiceId,
++    sourceVersionId: b.sourceVersionId,
++    sourceHash: b.sourceHash,
++    revision: b.revision,
++    mappingRevision: b.reviewId,
++    issuanceReceiptId: b.issuanceReceiptId,
++  };
++  if (
++    Object.keys(m).length !== Object.keys(values).length + 4 ||
++    m.mode !== 'fictional-local' ||
++    m.active !== true ||
++    Object.entries(values).some(([k, x]) => m[k] !== x) ||
++    a.user_id !== b.userId ||
++    a.session_id !== b.sessionId ||
++    a.aal !== 'aal2' ||
++    !Number.isSafeInteger(m.expiresAt) ||
++    Number(m.expiresAt) <= Date.now() ||
++    Number(m.expiresAt) > b.expiresAt ||
++    Number(m.expiresAt) > a.expires_at * 1000 ||
++    typeof m.issuedNumber !== 'string'
++  )
++    throw deny();
++  return m;
++}
++/** Server-only source candidate. No connection/Auth/role/route factory. The fixed
++ * SQL scope + dedicated EXECUTE is authority; caller config is expected data only.
++ * Existing bridge remains fictional-local/default-OFF pending separate admission.
++ */
++export function operatingCustomerInvoiceRead(
++  auth: CustomerBrokerAuth,
++  bearer: string,
++  connection: GatewaySql,
++  backend: InvoiceConnectionScope,
++  input: ReaderScope,
++  options: { enabled: boolean; mode: 'disposable-proposal' } = {
++    enabled: false,
++    mode: 'disposable-proposal',
++  },
++) {
++  const b = readerScope(input);
++  const folder = 'proposals/commercial-customer-operating-reader/';
++  assertOperatingSources();
++  const hashes = renderReaderSQL(
++    readFileSync(folder + 'read.proposed.sql.in', 'utf8'),
++    readFileSync(folder + 'runtime-grants.sql.in', 'utf8'),
++    b,
++  ).bodyHashes;
++  if (isProxy(connection)) throw deny();
++  const qd = Object.getOwnPropertyDescriptor(connection, 'query');
++  if (
++    !qd ||
++    !('value' in qd) ||
++    typeof qd.value !== 'function' ||
++    isProxy(qd.value)
++  )
++    throw deny();
++  const rawQuery = qd.value.bind(connection) as GatewaySql['query'];
++  let wireGate: (() => void) | undefined;
++  let dispatched = false;
++  const allowed = new Set([
++    inspectSQL,
++    operatingReaderCatalog,
++    'select private.commercial_customer_invoice_authorize() result',
++    'select private.commercial_customer_invoice_read_issued() result',
++  ]);
++  const guarded: GatewaySql = {
++    async query<T extends Record<string, unknown>>(
++      text: string,
++      params?: unknown[],
++    ) {
++      if (!wireGate || !allowed.has(text) || (params && params.length))
++        throw deny();
++      wireGate();
++      if (retired.has(connection)) throw deny();
++      dispatched = true;
++      const value = await rawQuery<T>(text, params);
++      wireGate();
++      if (retired.has(connection)) throw deny();
++      return value;
++    },
++  };
++  const caller = new CommercialCallerConnection(guarded, auth, bearer, backend);
++  const configured = record(options);
++  const enabled =
++    configured.enabled === true &&
++    configured.mode === 'disposable-proposal' &&
++    Object.keys(configured).length === 2;
++  const port: CommercialCustomerReaderPort = {
++    kind: 'unwired-test-port',
++    authorize: (a, t, s) => run(a, t, s, false),
++    readIssued: (a, t, s) => run(a, t, s, true),
++  };
++  async function run(
++    actor: Readonly<BrokerActor>,
++    target: CommercialCustomerTarget['invoice'],
++    signal: AbortSignal,
++    issued: boolean,
++  ) {
++    const a = record(actor) as unknown as BrokerActor,
++      t = record(target),
++      start = Date.now(),
++      deadline = Math.min(start + 4500, b.expiresAt, a.expires_at * 1000);
++    let last = start,
++      began = false,
++      timer: ReturnType<typeof setTimeout> | undefined,
++      onAbort: (() => void) | undefined;
++    const gate = () => {
++      if (
++        !enabled ||
++        retired.has(connection) ||
++        isProxy(connection) ||
++        signal.aborted ||
++        Date.now() < last ||
++        Date.now() >= deadline ||
++        JSON.stringify(record(target)) !== JSON.stringify(t)
++      )
++        throw deny();
++      last = Date.now();
++      assertOperatingSources();
++    };
++    try {
++      gate();
++      if (
++        Object.entries({
++          organizationId: b.organizationId,
++          customerId: b.customerId,
++          locationId: b.locationId,
++          invoiceId: b.invoiceId,
++          sourceVersionId: b.sourceVersionId,
++          revision: b.revision,
++        }).some(([k, v]) => t[k] !== v) ||
++        Object.keys(t).length !== 6
++      )
++        throw deny();
++      began = true;
++      wireGate = gate;
++      const work = runWithCommercialCaller(caller, guarded, async (c) => {
++        const query = async (text: string) => {
++          gate();
++          const out = await c.query(text);
++          gate();
++          return out;
++        };
++        const inspect = async () =>
++          profile(
++            one(await query(operatingReaderCatalog), 'profile'),
++            b,
++            hashes,
++          );
++        const authorize = async () =>
++          mapping(
++            one(
++              await query(
++                'select private.commercial_customer_invoice_authorize() result',
++              ),
++              'result',
++            ),
++            b,
++            a,
++          );
++        const before = await inspect(),
++          first = await authorize();
++        let packet: Record<string, unknown> | undefined;
++        if (issued) {
++          packet = record(
++            one(
++              await query(
++                'select private.commercial_customer_invoice_read_issued() result',
++              ),
++              'result',
++            ),
++          );
++          if (
++            Object.keys(packet).sort().join() !== 'invoice,mapping,version' ||
++            JSON.stringify(mapping(packet.mapping, b, a)) !==
++              JSON.stringify(first)
++          )
++            throw deny();
++        }
++        if (
++          JSON.stringify(await authorize()) !== JSON.stringify(first) ||
++          (await inspect()) !== before ||
++          JSON.stringify(await authorize()) !== JSON.stringify(first)
++        )
++          throw deny();
++        gate();
++        if (!issued) return first;
++        const version = packet!.version as EstimateVersion,
++          preview = customerPreview(version);
++        const property = preview.location;
++        if (!property) throw deny();
++        const label = [
++          property.address_line1,
++          property.city,
++          property.region + ' ' + property.postal_code,
++        ].join(', ');
++        return {
++          mode: 'fictional-local',
++          invoice: packet!.invoice,
++          companyName: preview.company.name,
++          customerName: preview.customer.display_name,
++          primaryColor: preview.company.primary_color,
++          propertyLabel: label,
++          source: {
++            sourceHash: first.sourceHash,
++            review: projectIssuedReview(version, {
++              organization_id: b.organizationId,
++              customer_id: b.customerId,
++              location_id: b.locationId,
++              company_name: preview.company.name,
++              primary_color: preview.company.primary_color,
++              property_label: label,
++              reports: false,
++              version_ids: [b.sourceVersionId],
++            }),
++          },
++        };
++      });
++      const value = await new Promise<unknown>((resolve, reject) => {
++        onAbort = () => reject(deny());
++        timer = setTimeout(onAbort, Math.max(1, deadline - Date.now()));
++        signal.addEventListener('abort', onAbort, { once: true });
++        if (signal.aborted) {
++          onAbort();
++          return;
++        }
++        work.then(resolve, () => reject(deny()));
++      });
++      gate();
++      return value;
++    } catch {
++      if (began) retired.add(connection);
++      throw deny();
++    } finally {
++      wireGate = undefined;
++      if (timer) clearTimeout(timer);
++      if (onAbort) signal.removeEventListener('abort', onAbort);
++    }
++  }
++  // This is the sole exported read surface. Raw version/hash/staff receipt remain
++  // inside the trusted server and existing canonical customer projection only.
++  const read = commercialCustomerReadProposal(auth, bearer, port, {
++    enabled,
++    mode: 'fictional-local',
++  });
++  return async (target: CommercialCustomerTarget, signal: AbortSignal) => {
++    if (isProxy(signal)) throw deny();
++    let cancel: (() => void) | undefined;
++    let reserved = false;
++    const local = new AbortController();
++    try {
++      if (
++        signalAborted.call(signal) ||
++        activeRead.has(connection) ||
++        retired.has(connection)
++      ) {
++        if (activeRead.has(connection)) retired.add(connection);
++        throw deny();
++      }
++      activeRead.add(connection);
++      reserved = true;
++      dispatched = false;
++      cancel = () => local.abort();
++      Reflect.apply(eventAdd, signal, ['abort', cancel, { once: true }]);
++      if (signalAborted.call(signal)) local.abort();
++      const result = await read(target, local.signal);
++      if (signalAborted.call(signal) || retired.has(connection)) throw deny();
++      assertOperatingSources();
++      return result;
++    } catch {
++      if (dispatched) retired.add(connection);
++      throw deny();
++    } finally {
++      local.abort();
++      if (cancel) Reflect.apply(eventRemove, signal, ['abort', cancel]);
++      if (reserved) activeRead.delete(connection);
++    }
++  };
++}
+diff --git a/proposals/commercial-customer-operating-reader/runtime-grants.sql.in b/proposals/commercial-customer-operating-reader/runtime-grants.sql.in
+new file mode 100644
+index 0000000000000000000000000000000000000000..c8cd9ffb437ca91d5ff07e83d02a33eaf0a084ea
+--- /dev/null
++++ b/proposals/commercial-customer-operating-reader/runtime-grants.sql.in
+@@ -0,0 +1,5 @@
++-- INACTIVE: only after exact target/principal/body/source and independent review.
++-- Does not create a LOGIN, publication or authority record. Source-bound function
++-- scope and dedicated EXECUTE together are the finite customer-invoice grant.
++grant usage on schema private to __LOGIN__;
++grant execute on function private.commercial_customer_invoice_authorize(),private.commercial_customer_invoice_read_issued() to __LOGIN__;
+diff --git a/proposals/commercial-customer-operating-reader/source.json b/proposals/commercial-customer-operating-reader/source.json
+new file mode 100644
+index 0000000000000000000000000000000000000000..6168b19e9ddef52fca144b03b1198d5de9dfea3f
+--- /dev/null
++++ b/proposals/commercial-customer-operating-reader/source.json
+@@ -0,0 +1,53 @@
++{
++  "classification": "UNAPPLIED_OPERATING_READER_SOURCE_ONLY",
++  "base": "fbab4220a5e8fb043c10baa1328bbe6f7001e588",
++  "pins": {
++    "package-lock.json": "038f80c378263f8c961930661d03801e55d882ad54c5929095234aea3306ce6d",
++    "proposals/commercial-customer-bridge/reader.ts": "98e502cb1e4beaa8cd6a950539a1ba1973677da9ee4e46c097b0193d6c138ea2",
++    "proposals/commercial-customer-operating-reader/binding.ts": "6a157cccf4569decedc6f8bdeb1fdcd9a501f328234f726b49b14dbdbb137138",
++    "proposals/commercial-customer-operating-reader/catalog.ts": "036dd76edb1ce22f6b7f5becbd299b2528019d09837dba94a3a1207a10bca657",
++    "proposals/commercial-customer-operating-reader/read.proposed.sql.in": "303741983f5f72ee0fefabbf71d7dd57b0e5bf1b0f265ab389d5fbeb318afe93",
++    "proposals/commercial-customer-operating-reader/reader.ts": "fb74f91f603654fa2034592212f8ad9ad87ef7bb288b609f6adb325c1ca8417e",
++    "proposals/commercial-customer-operating-reader/runtime-grants.sql.in": "abbca46667c9d9b44839395428f15d9d336e244fe0bd7a5c42217cf8aeb850c5",
++    "proposals/commercial-invoice-issuance/issuance.proposed.sql": "961c2dc380695ed2d910108d09303fff9b9018fe8d159beb9b958ddb2725d022",
++    "proposals/commercial-invoice-issuance/presentation.ts": "a63a605af3b1e03a0169828340f4938a50031a6f131404054da60e2db610ea6b",
++    "server/customer/broker-auth.ts": "709018249d889504b860e4cf0f4caa5cbdd1c2b04f58c53226f4499c68fd46d6",
++    "server/invoices/commercial-caller-connection.ts": "3d892a8ae7757a6f480fde4638f17f4b642436ba728446dfd84811590be0aeed",
++    "server/invoices/commercial-draft-client.ts": "94aa164e60c780cb53f8658b16c57bc9c17da5d9469c73f9d73cab627dcea694",
++    "server/invoices/commercial-drafts.proposed.sql": "e1c504f9a7077caa92c375c378fb370155478be9cf077e66bf58932ae0895a3c",
++    "server/payments/postgres-store.ts": "9b2b9148db4ca5389aa8e9ef4bd5d5c6ccd700a2ed85a7b5dc0f58f8d94d0eef",
++    "server/payments/refunds.ts": "267912113acc418387beb86826b06c2689bac9f9a00589a0cd5fc6df1aa4158e",
++    "server/payments/response-json.ts": "3d361bd32f9cc2ff82b9d4c1ad29ca0218199c11bc903a59ec5a644dd139c970",
++    "server/payments/sandbox.ts": "0c6bc1aa8e78ed7f6d86128e79055630cb41ec5281ed32a0bf7bbdc616a8ccc6",
++    "server/providers/safety.ts": "a8865035638e0cd19d5c1ea4b43dc9ed04012dd34cce9cc5084d7f35e9414c4d",
++    "src/components/invoices/commercial-customer-read.ts": "e546c945bf3f4993a5a5e4a62703e8e8f6b0b7473cc31a237be2050c863ee8ef",
++    "src/components/invoices/customer-invoice-contract.ts": "e343734dd7889fdf485e08cb74d89cbf0900c9a34cd90c50698b734549b4c0b2",
++    "src/domain/customer/review.ts": "e387500a60595788050d7b93b92ea23c5254c5954507edc3397eb7fa2b9bf858",
++    "src/domain/estimating/customer-preview.ts": "367628fcc9a45fc0303503215357403942637b902d36a9f1a84066228a93d411",
++    "src/domain/estimating/types.ts": "5e878de9c0a9cbf5f68055054b336db9f68ba4a466ec66ea9b8c66b2952d14d5",
++    "src/domain/property/inspections.ts": "7691ced4cc6b78604e782369cfedc5e5e29170109c12485000894d4ffbe8c11f",
++    "src/domain/property/report-page.ts": "622d68ba1c6a3010641fc1b97ee3b49b6cf9bbc587a94809e2c0f298163d3771",
++    "src/lib/customer-access.ts": "7a98b75cd806db76d9489b1abecc0a6d7cc89e70ad29d3ac00ae7f3125b95fb5",
++    "src/lib/customer-connected.ts": "7f7edf3efc5f053d6f644d6baae2ec8db2eecd9d3076251071cdd9053e575474",
++    "src/lib/customer-decision.ts": "a0fed920cfcfddcb4b6a32df6ef76dcce7cfc6c40cf1e702b422358e3053446e",
++    "src/lib/customer-requests.ts": "4da5caa8e48ef723a5068338768b62fd175519a8d91a5c187ea04873673ebe9a",
++    "src/lib/database.types.ts": "430fe4085663ee1d83d8431fa6c84253ab6f6d1d2ee643efe4a4fa1e8b519a5d",
++    "supabase/migrations/20261015183039_phase_1_foundation.sql": "62ef02be55f5cf86916de4bf9891d4920f75a35ae421815c2d353bf4cedb73cc",
++    "supabase/migrations/20261015201048_phase_2_operations.sql": "2a0e65f30e0eef0b85b53d23edc26968336f661d136303d7a1eb25b3f77e1974",
++    "supabase/migrations/20261015204729_phase_3_estimating.sql": "ef999a3e7d8ee69f1563b3cffaf732f0a29c292161e4ce1729b6a26848bd4415",
++    "supabase/migrations/20261015210230_phase_3_material_import.sql": "82f7594c18dfdf955ed1d2c83f6c903d8b4aebe7730c2f1a5770d501bd2d84a3",
++    "supabase/migrations/20261015210546_phase_3_job_financials.sql": "f161cc16ec728b2e7373f3826b5d989a9fad4c1ec6d727fc193f18d5534d8c4c",
++    "supabase/migrations/20261015210856_phase_3_workforce.sql": "78f2af2164574ba3d6aeb2f2510206d97343c5ad67a2534159a4e2960f5e9ce0",
++    "supabase/migrations/20261015221730_phase_3a_release_controls.sql": "6dbfc3ed7a0b9905f5d824cb73698c441e8c7ee8aa5d5b0fb8f4883baacb4890",
++    "supabase/migrations/20261016024502_release_1_internal_workflow.sql": "48522fd3b829a5bc9e482ce33c41ee7b8272edf68dbc7e6c7a699fa178b8714b",
++    "supabase/migrations/20261016030324_material_worker_control_store.sql": "8359e7ceb4028460b7609bbd235d9941fc69b89b514463e011fec9b44a84d282",
++    "supabase/migrations/20261016185108_provider_sandbox_persistence.sql": "5dd07b079a591b433fa7ab432fd841026de91a1cd3f1d3a722bef500aa9fd32d",
++    "supabase/migrations/20261017005322_property_operations.sql": "c345bdf178c9339dba7ba2707c74233bcfae9a2d2b59abf148f4b7ffff35780c",
++    "supabase/migrations/20261017024327_property_connected_readiness.sql": "6bb0b9bf22ec1079d7aa5f74c6e33e14534cc54e30e9034c33949f786cfd3ac9",
++    "supabase/migrations/20261017024328_property_duplicate_index_cleanup.sql": "3603fe0482f46b9733a0321cd9009cb1f291993fcbede7132e1bdf721776fdfc",
++    "supabase/migrations/20261018144833_customer_authorization_release_readiness.sql": "e3157e004c464fb2a4ab69e7a3a335a81d6bbbb0556d74234f3884f56d784ed1"
++  },
++  "operationalReady": false,
++  "installationAuthorized": false,
++  "sourceLoaderQualified": false
++}
+diff --git a/proposals/commercial-customer-operating-reader/source.ts b/proposals/commercial-customer-operating-reader/source.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..b6576c38c7f8b334791d696d04ef8d37d854dafe
+--- /dev/null
++++ b/proposals/commercial-customer-operating-reader/source.ts
+@@ -0,0 +1,139 @@
++// Source snapshot only; static imports and this verifier remain trusted TCB.
++import { readFileSync, lstatSync, realpathSync } from 'node:fs';
++import { createHash } from 'node:crypto';
++import { resolve, join, dirname } from 'node:path';
++const self = new URL(import.meta.url);
++const initial = createHash('sha256').update(readFileSync(self)).digest('hex');
++const pins = {
++  'package-lock.json':
++    '038f80c378263f8c961930661d03801e55d882ad54c5929095234aea3306ce6d',
++  'proposals/commercial-customer-bridge/reader.ts':
++    '98e502cb1e4beaa8cd6a950539a1ba1973677da9ee4e46c097b0193d6c138ea2',
++  'proposals/commercial-customer-operating-reader/binding.ts':
++    '6a157cccf4569decedc6f8bdeb1fdcd9a501f328234f726b49b14dbdbb137138',
++  'proposals/commercial-customer-operating-reader/catalog.ts':
++    '036dd76edb1ce22f6b7f5becbd299b2528019d09837dba94a3a1207a10bca657',
++  'proposals/commercial-customer-operating-reader/read.proposed.sql.in':
++    '303741983f5f72ee0fefabbf71d7dd57b0e5bf1b0f265ab389d5fbeb318afe93',
++  'proposals/commercial-customer-operating-reader/reader.ts':
++    'fb74f91f603654fa2034592212f8ad9ad87ef7bb288b609f6adb325c1ca8417e',
++  'proposals/commercial-customer-operating-reader/runtime-grants.sql.in':
++    'abbca46667c9d9b44839395428f15d9d336e244fe0bd7a5c42217cf8aeb850c5',
++  'proposals/commercial-invoice-issuance/issuance.proposed.sql':
++    '961c2dc380695ed2d910108d09303fff9b9018fe8d159beb9b958ddb2725d022',
++  'proposals/commercial-invoice-issuance/presentation.ts':
++    'a63a605af3b1e03a0169828340f4938a50031a6f131404054da60e2db610ea6b',
++  'server/customer/broker-auth.ts':
++    '709018249d889504b860e4cf0f4caa5cbdd1c2b04f58c53226f4499c68fd46d6',
++  'server/invoices/commercial-caller-connection.ts':
++    '3d892a8ae7757a6f480fde4638f17f4b642436ba728446dfd84811590be0aeed',
++  'server/invoices/commercial-draft-client.ts':
++    '94aa164e60c780cb53f8658b16c57bc9c17da5d9469c73f9d73cab627dcea694',
++  'server/invoices/commercial-drafts.proposed.sql':
++    'e1c504f9a7077caa92c375c378fb370155478be9cf077e66bf58932ae0895a3c',
++  'server/payments/postgres-store.ts':
++    '9b2b9148db4ca5389aa8e9ef4bd5d5c6ccd700a2ed85a7b5dc0f58f8d94d0eef',
++  'server/payments/refunds.ts':
++    '267912113acc418387beb86826b06c2689bac9f9a00589a0cd5fc6df1aa4158e',
++  'server/payments/response-json.ts':
++    '3d361bd32f9cc2ff82b9d4c1ad29ca0218199c11bc903a59ec5a644dd139c970',
++  'server/payments/sandbox.ts':
++    '0c6bc1aa8e78ed7f6d86128e79055630cb41ec5281ed32a0bf7bbdc616a8ccc6',
++  'server/providers/safety.ts':
++    'a8865035638e0cd19d5c1ea4b43dc9ed04012dd34cce9cc5084d7f35e9414c4d',
++  'src/components/invoices/commercial-customer-read.ts':
++    'e546c945bf3f4993a5a5e4a62703e8e8f6b0b7473cc31a237be2050c863ee8ef',
++  'src/components/invoices/customer-invoice-contract.ts':
++    'e343734dd7889fdf485e08cb74d89cbf0900c9a34cd90c50698b734549b4c0b2',
++  'src/domain/customer/review.ts':
++    'e387500a60595788050d7b93b92ea23c5254c5954507edc3397eb7fa2b9bf858',
++  'src/domain/estimating/customer-preview.ts':
++    '367628fcc9a45fc0303503215357403942637b902d36a9f1a84066228a93d411',
++  'src/domain/estimating/types.ts':
++    '5e878de9c0a9cbf5f68055054b336db9f68ba4a466ec66ea9b8c66b2952d14d5',
++  'src/domain/property/inspections.ts':
++    '7691ced4cc6b78604e782369cfedc5e5e29170109c12485000894d4ffbe8c11f',
++  'src/domain/property/report-page.ts':
++    '622d68ba1c6a3010641fc1b97ee3b49b6cf9bbc587a94809e2c0f298163d3771',
++  'src/lib/customer-access.ts':
++    '7a98b75cd806db76d9489b1abecc0a6d7cc89e70ad29d3ac00ae7f3125b95fb5',
++  'src/lib/customer-connected.ts':
++    '7f7edf3efc5f053d6f644d6baae2ec8db2eecd9d3076251071cdd9053e575474',
++  'src/lib/customer-decision.ts':
++    'a0fed920cfcfddcb4b6a32df6ef76dcce7cfc6c40cf1e702b422358e3053446e',
++  'src/lib/customer-requests.ts':
++    '4da5caa8e48ef723a5068338768b62fd175519a8d91a5c187ea04873673ebe9a',
++  'src/lib/database.types.ts':
++    '430fe4085663ee1d83d8431fa6c84253ab6f6d1d2ee643efe4a4fa1e8b519a5d',
++  'supabase/migrations/20261015183039_phase_1_foundation.sql':
++    '62ef02be55f5cf86916de4bf9891d4920f75a35ae421815c2d353bf4cedb73cc',
++  'supabase/migrations/20261015201048_phase_2_operations.sql':
++    '2a0e65f30e0eef0b85b53d23edc26968336f661d136303d7a1eb25b3f77e1974',
++  'supabase/migrations/20261015204729_phase_3_estimating.sql':
++    'ef999a3e7d8ee69f1563b3cffaf732f0a29c292161e4ce1729b6a26848bd4415',
++  'supabase/migrations/20261015210230_phase_3_material_import.sql':
++    '82f7594c18dfdf955ed1d2c83f6c903d8b4aebe7730c2f1a5770d501bd2d84a3',
++  'supabase/migrations/20261015210546_phase_3_job_financials.sql':
++    'f161cc16ec728b2e7373f3826b5d989a9fad4c1ec6d727fc193f18d5534d8c4c',
++  'supabase/migrations/20261015210856_phase_3_workforce.sql':
++    '78f2af2164574ba3d6aeb2f2510206d97343c5ad67a2534159a4e2960f5e9ce0',
++  'supabase/migrations/20261015221730_phase_3a_release_controls.sql':
++    '6dbfc3ed7a0b9905f5d824cb73698c441e8c7ee8aa5d5b0fb8f4883baacb4890',
++  'supabase/migrations/20261016024502_release_1_internal_workflow.sql':
++    '48522fd3b829a5bc9e482ce33c41ee7b8272edf68dbc7e6c7a699fa178b8714b',
++  'supabase/migrations/20261016030324_material_worker_control_store.sql':
++    '8359e7ceb4028460b7609bbd235d9941fc69b89b514463e011fec9b44a84d282',
++  'supabase/migrations/20261016185108_provider_sandbox_persistence.sql':
++    '5dd07b079a591b433fa7ab432fd841026de91a1cd3f1d3a722bef500aa9fd32d',
++  'supabase/migrations/20261017005322_property_operations.sql':
++    'c345bdf178c9339dba7ba2707c74233bcfae9a2d2b59abf148f4b7ffff35780c',
++  'supabase/migrations/20261017024327_property_connected_readiness.sql':
++    '6bb0b9bf22ec1079d7aa5f74c6e33e14534cc54e30e9034c33949f786cfd3ac9',
++  'supabase/migrations/20261017024328_property_duplicate_index_cleanup.sql':
++    '3603fe0482f46b9733a0321cd9009cb1f291993fcbede7132e1bdf721776fdfc',
++  'supabase/migrations/20261018144833_customer_authorization_release_readiness.sql':
++    'e3157e004c464fb2a4ab69e7a3a335a81d6bbbb0556d74234f3884f56d784ed1',
++};
++const manifestDigest =
++  '6371374d6068f52d83771c054fb378e707a02dc63415b8da0985a19e1903bea1';
++const rootPath = resolve(process.cwd());
++const rootIdentity = lstatSync(rootPath);
++function exactFile(path: string) {
++  let current = path;
++  while (true) {
++    if (lstatSync(current).isSymbolicLink())
++      throw Error('Exact operating reader source required');
++    const parent = dirname(current);
++    if (parent === current) break;
++    current = parent;
++  }
++  const st = lstatSync(path);
++  if (!st.isFile() || (st.mode & 0o777) !== 0o644)
++    throw Error('Exact operating reader source required');
++  return readFileSync(path);
++}
++export function assertOperatingSources() {
++  const own = 'proposals/commercial-customer-operating-reader/source.ts';
++  const now = lstatSync(rootPath);
++  if (
++    resolve(process.cwd()) !== rootPath ||
++    realpathSync(rootPath) !== rootPath ||
++    now.dev !== rootIdentity.dev ||
++    now.ino !== rootIdentity.ino ||
++    !now.isDirectory() ||
++    realpathSync(self) !== join(rootPath, own)
++  )
++    throw Error('Exact operating reader source required');
++  for (let pass = 0; pass < 2; pass++) {
++    for (const [path, digest] of Object.entries({
++      ...pins,
++      'proposals/commercial-customer-operating-reader/source.json':
++        manifestDigest,
++      [own]: initial,
++    })) {
++      const bytes = exactFile(join(rootPath, path));
++      if (createHash('sha256').update(bytes).digest('hex') !== digest)
++        throw Error('Exact operating reader source required');
++    }
++  }
++}
+diff --git a/proposals/dashboard-context-fixture-compatibility/README.md b/proposals/dashboard-context-fixture-compatibility/README.md
+index b49965284d733fb3407b8f5b7c928c3978622b8e..41c1a275500bb8dd45a0b95efb24c6eabf6b480c 100644
+--- a/proposals/dashboard-context-fixture-compatibility/README.md
++++ b/proposals/dashboard-context-fixture-compatibility/README.md
+@@ -1,50 +1,49 @@
+-# Finite retained-launch source provenance closure — UNAPPLIED
++# Exact553 plus reviewed operating-reader source closure — UNAPPLIED
+ 
+-Preparation source is exact ordinary S, the two-test output-isolation child of
+-approved #548. This one coordinated thirteen-file proposal repairs the retained
+-launch loader's obsolete adapter binding while preserving the reviewed actual
+-adapter, invoice FHG helper, canonical qualifier, runtime and SQL bytes.
++This finite successor reuses the unchanged eleven additions of reviewed #506 and
++held #509 integration patch91e5c286. Before is actual #5530e3bb4ab (2556files);
++after is that same source plus exactly eleven approved-author bytes (2567files),
++and the narrowly necessary existing joint fixture reseal. No new wrapper, namespace,
++financial metadata read port, runtime engine, schema or ledger is introduced.
+ 
+-The producer proves the exact reviewed d162/89d adapter forward: immutable old6c6
+-adapter with exactly one helper digest1d replaced by reviewedcf28 must equal the
+-actual authored f126 adapter. Both actual producer files/modes/root are checked
+-fresh before evaluation and before/after reads. The original FHG/current-payment
+-checks, historical three-path map, original406 record and live NMI successor
+-checks remain. Its existing metadata port accepts exact readonly argv only; only
+-two reviewed immutable NMI diff tuples get --abbrev=7. Both owned fixture Git
+-exec sites pin /usr/bin/git; inherited Git config/trace/helper variables are
+-excluded from their explicit environment. Old canonical helper bytes stay exact. This preserves original
+-73d4/d67d patch hashes without changing immutable blobs, OIDs, modes or helper pins.
++The two freshly resealed canonical headers are the only phase endpoints. The
++already approved #553 legacy fixture, retained consumer and Cycle27 endpoints are
++fixed to their exact after-bodies. All five existing historical metadata forwards,
++seven older financial reads and the P1 TEST-only projection remain exact. P1 retains
++fresh full physical proof on every projection; the other five retain complete fresh
++proof before/after each public operation and fresh body/callback/mode/historical
++checks on every projected read. No mutable proof cache is introduced.
+ 
+-The original retained consumer changes only its producer-hash literal. All its
+-assertions and authority records stay exact. The exact reviewed #533 C27 patch is
+-reused without additional modification. No operational adapter/helper is repinned.
++Before and after have separate exact normalized tree/counts selected by the two
++coherent header phases. Before has no reader files; after requires all eleven
++reviewed bodies/modes. Partial additions, one-sided headers, unknown/mixed source,
++missing original authors, stale frames, mode/symlink changes and late withdrawal
++deny. Captured phase cannot switch. Raw actual553 and503/506 ancestry is pinned.
++Historical original two/39 snapshots, original assertions and30-second budgets stay
++byte-exact; canonical headers change only their helper-hash literal. Current
++source helpers, adapter/FHG/canonical qualifier, SQL/runtime/Auth/UI are unchanged.
+ 
+-Five NEW explicit fixture/TEST metadata forwards are proposed: retained producer,
+-retained consumer, provider output test, C14 output test and C27 output test. They
+-map only exact current bytes to immutable c60 source-check bytes. Both fixed S
+-output files always remain actual S source. The other five phase endpoints (two
+-joint header hashes, retained producer, retained consumer and C27 source) must be
+-all original or all proposed; partial, stale and mixed states deny.
++The old44 source-control record remains historical. Proposed controls bind the
++actual553 before and eleven-addition after fixture. Its old S-specific C27 negative
++now rejects c60/fa519 predecessor bytes: exact533/1df is already approved553 source
++and cannot truthfully be labeled a forbidden substitution here.
+ 
+-These five internal metadata reads use the existing seven ports' bounded-call
+-model: a fresh complete physical tree/sole-parent/author proof before and after
+-every public qualification/exported-helper operation; fresh actual disk/callback
+-body, mode and immutable historical bytes on EACH projection. No source-success
+-cache crosses calls. Direct readCurrent for only these five runs checked full
+-pre/post proofs; unknown/outside read paths deny. The approved P1 TEST port remains
+-unchanged and independently runs a fresh full physical proof on EVERY P1 read.
+-Actual test execution always reads the corrected files on disk, never this view.
++The default-OFF reader still uses disposable-proposal mode and the existing
++fictional-local/unwired bridge. Source qualification does not supply a real route,
++exclusive physical connection owner, socket cancellation/discard or independent
++cross-process custody. #509 alias/output-only abort observations remain open.
++#508 is a test fixture, not an operational connection factory or accepted owner.
++The approved reader source verifier masks0o777, so alone it does not reject special
++permission bits; this joint whole-source guard independently uses0o7777 and rejects
++them. No approved reader byte is changed or new runtime guarantee claimed.
+ 
+-All old seven historical ports, P1 port, original two historical snapshots and
+-original2+39 assertion bodies/budgets remain exact. Both joint header hashes reseal
+-together. No new wrapper, namespace, engine, general source fallback or runtime
+-capability is added. The manifest seals README/controls, the helper seals the
+-manifest, and generated source headers seal the helper. Store current final hashes
+-and qualification reports outside these companions to avoid self-reference.
++No SQL/grants are installed; current genuine Auth/MFA, D1-D3, installed writer/bypass
++inventory, independent ACK/spent/recovery fences and A01-A12 remain unaccepted.
++Payment stays UNKNOWN and links DISABLED. Receipt-publication/ACK proposals, NMI
++boarding/report/bank settlement, provider calls, messages, merge and deployment
++remain separate and closed. Saul2Paul first; Cunningham needs separate accepted
++bindings. Release1.0 NO-GO / NOT READY / NOT AUTHORIZED.
+ 
+-Qualification is private and disposable only. Source authoring requires separate
+-exact owner approval of the whole13M/readtable on actual S. No automatic promotion,
+-hosted diagnostic trigger, SQL/grants, provider/payment/invoice execution, genuine
+-Auth, recovery, merge, deploy or operational acceptance is authorized. Release
+-remains NO-GO. Performance/product patches are not included.
++The manifest seals this README/controls; the helper seals the manifest; both
++canonical headers and generated snapshots seal the helper. Dynamic final seals and
++qualification results belong in external proposal artifacts, avoiding hash cycles.
+diff --git a/proposals/dashboard-context-fixture-compatibility/controls.test.mjs b/proposals/dashboard-context-fixture-compatibility/controls.test.mjs
+index 02a53583ee8f11160039a1507369db07825e053f..ec354ab4372007d9a27ed8ae97377af15c8ba38b 100644
+--- a/proposals/dashboard-context-fixture-compatibility/controls.test.mjs
++++ b/proposals/dashboard-context-fixture-compatibility/controls.test.mjs
+@@ -9,6 +9,7 @@ import {
+   chmodSync,
+   symlinkSync,
+   realpathSync,
++  lstatSync,
+ } from 'node:fs';
+ import { execFileSync } from 'node:child_process';
+ import { join } from 'node:path';
+@@ -104,6 +105,17 @@ async function withImage(callback, { after = false } = {}) {
+         assert.equal(hash(bytes), row.afterSHA256);
+         writeFileSync(join(image, row.path), bytes);
+       }
++    if (after)
++      for (const [path, pin] of Object.entries(
++        manifest.readerIntegration.additions,
++      )) {
++        const bytes = readFileSync(join(producer, path));
++        assert.equal(hash(bytes), pin.sha256);
++        mkdirSync(join(image, path.substring(0, path.lastIndexOf('/'))), {
++          recursive: true,
++        });
++        writeFileSync(join(image, path), bytes, { mode: 0o644 });
++      }
+     process.chdir(image);
+     const module = await import(
+       pathToFileURL(join(image, folder + 'current-fixture.mjs')).href
+@@ -126,7 +138,7 @@ const deny = (module) =>
+   assert.throws(() => module.verifyCurrentPhysicalFrame(), /Exact joint/);
+ for (const after of [false, true])
+   test(
+-    'exactS ' +
++    'exact553 ' +
+       (after ? 'proposed' : 'original') +
+       ' pair preserves original bodies and budgets',
+     options,
+@@ -136,7 +148,7 @@ for (const after of [false, true])
+           const frame = module.verifyCurrentPhysicalFrame();
+           assert.equal(frame.phase, after ? 'after' : 'before');
+           assert.equal(frame.admissionAuthorized, false);
+-          assert.equal(frame.files, 2546);
++          assert.equal(frame.files, after ? 2557 : 2546);
+           assert.equal(
+             module.dashboardSource('src/components/forms.tsx'),
+             readFileSync(manifest.historicalFormsPath, 'utf8'),
+@@ -199,7 +211,7 @@ for (const path of [
+     }),
+   );
+ test(
+-  'rejects exact533 C27 replacement rather than composing a second branch',
++  'rejects historical C27 before-source instead of approved553 source',
+   options,
+   () =>
+     withImage(async (image, module) => {
+@@ -208,7 +220,7 @@ test(
+         git(
+           image,
+           'show',
+-          'a24c0c75852d740da41d0abd2cf283c4230b9349:tests/cycle27-source-lineage.test.ts',
++          'c60c09c1fe9edab55220840499e2525a6751a558:tests/cycle27-source-lineage.test.ts',
+         ),
+       );
+       deny(module);
+@@ -289,6 +301,12 @@ test(
+             row.path,
+             git(image, 'show', manifest.base + ':' + row.path),
+           );
++        for (const path of Object.keys(manifest.readerIntegration.additions))
++          rmSync(path);
++        rmSync('proposals/commercial-customer-operating-reader', {
++          recursive: true,
++          force: true,
++        });
+         deny(module);
+       },
+       { after: true },
+@@ -536,3 +554,84 @@ test('direct source reader rejects unknown and outside paths', options, () =>
+     { after: true },
+   ),
+ );
++
++for (const [path] of Object.entries(manifest.readerIntegration.additions))
++  test('rejects changed reviewed reader payload ' + path, options, () =>
++    withImage(
++      async (image, module) => {
++        mutate(image, path);
++        deny(module);
++      },
++      { after: true },
++    ),
++  );
++test(
++  'reader addition modes reject effective sticky executable and symlink',
++  options,
++  () =>
++    withImage(
++      async (image, module) => {
++        const path = 'proposals/commercial-customer-operating-reader/source.ts';
++        const bytes = readFileSync(path);
++        for (const mode of [0o1644, 0o755]) {
++          chmodSync(path, mode);
++          assert.equal(lstatSync(path).mode & 0o7777, mode);
++          deny(module);
++          chmodSync(path, 0o644);
++        }
++        rmSync(path);
++        symlinkSync(join(image, 'src/App.tsx'), path);
++        deny(module);
++        rmSync(path);
++        writeFileSync(path, bytes);
++      },
++      { after: true },
++    ),
++);
++test('partial reader additions cannot masquerade as original553', options, () =>
++  withImage(async (image, module) => {
++    const path = Object.keys(manifest.readerIntegration.additions)[0];
++    mkdirSync(path.substring(0, path.lastIndexOf('/')), { recursive: true });
++    writeFileSync(path, readFileSync(join(producer, path)));
++    deny(module);
++  }),
++);
++test('complete additions without resealed headers deny', options, () =>
++  withImage(async (image, module) => {
++    for (const [path] of Object.entries(manifest.readerIntegration.additions)) {
++      mkdirSync(path.substring(0, path.lastIndexOf('/')), { recursive: true });
++      writeFileSync(path, readFileSync(join(producer, path)));
++    }
++    deny(module);
++  }),
++);
++test('resealed headers without complete additions deny', options, () =>
++  withImage(async (image, module) => {
++    for (const [id, pin] of Object.entries(manifest.targets))
++      writeFileSync(pin.path, readFileSync(folder + id + '.proposed.txt'));
++    deny(module);
++  }),
++);
++test('cached qualification rejects late reader withdrawal', options, () =>
++  withImage(
++    async (image, module) => {
++      const q = await module.qualifyInvoiceGuardProposal();
++      rmSync(Object.keys(manifest.readerIntegration.additions)[0]);
++      assert.throws(() => q.check(), /Exact joint/);
++    },
++    { after: true },
++  ),
++);
++test(
++  'reader additions cannot become new financial source-read ports',
++  options,
++  () =>
++    withImage(
++      async (image, module) => {
++        const q = await module.qualifyInvoiceGuardProposal();
++        for (const path of Object.keys(manifest.readerIntegration.additions))
++          assert.throws(() => q.readCurrent(path), /Exact joint/);
++      },
++      { after: true },
++    ),
++);
+diff --git a/proposals/dashboard-context-fixture-compatibility/current-fixture.mjs b/proposals/dashboard-context-fixture-compatibility/current-fixture.mjs
+index 35c34d26b9d5b013437f1cce0d9114cd253ccb38..be7762403199a12edd41edde40fc0b7d7bc67c9b 100644
+--- a/proposals/dashboard-context-fixture-compatibility/current-fixture.mjs
++++ b/proposals/dashboard-context-fixture-compatibility/current-fixture.mjs
+@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
+ import { devNull } from 'node:os';
+ const folder = 'proposals/dashboard-context-fixture-compatibility/';
+ const manifestSeal =
+-  'ea0e7eae62ad6a3fbce5a9634b363c77e2228399021a2bfec22f6772053fef6e';
++  '03e87310b5f984d90abf34bbae4d9964e40f8404f6535b639ef0dc4692cae735';
+ const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
+ const oid = (kind, bytes) =>
+   createHash('sha1')
+@@ -354,9 +354,9 @@ export function verifyCurrentPhysicalFrame() {
+   }
+   const tree = walk(source);
+   if (
+-    tree !== manifest.tree ||
+-    files !== manifest.files ||
+-    phases.length !== 5 ||
++    tree !== manifest.frames[phases[0]]?.tree ||
++    files !== manifest.frames[phases[0]]?.files ||
++    phases.length !== 2 ||
+     phases.some((phase) => phase !== phases[0]) ||
+     (capturedPhase && capturedPhase !== phases[0])
+   )
+diff --git a/proposals/dashboard-context-fixture-compatibility/dashboard.patch b/proposals/dashboard-context-fixture-compatibility/dashboard.patch
+index c7063e9fb60796383e774f1a76e94e1a0858b4cd..56a232f9533f3b2642361cba74104ef8e55023d5 100644
+--- a/proposals/dashboard-context-fixture-compatibility/dashboard.patch
++++ b/proposals/dashboard-context-fixture-compatibility/dashboard.patch
+@@ -1,13 +1,13 @@
+ diff --git a/tests/propel-dashboard-parity-source.test.ts b/tests/propel-dashboard-parity-source.test.ts
+-index d258bb9de408792905a4ec758b0f485a6d81d375..54cb719dac5270996e7693ab56df437321ff5a1b 100644
++index 54cb719dac5270996e7693ab56df437321ff5a1b..25ab1dcb12608c150a0882b5bd94ad72cbcbbc94 100644
+ --- a/tests/propel-dashboard-parity-source.test.ts
+ +++ b/tests/propel-dashboard-parity-source.test.ts
+ @@ -11,7 +11,7 @@
+      );
+      if (
+        createHash('sha256').update(bytes).digest('hex') !==
+--      '03aefb7d4b3d62d0985754f993eea400c6d0db90dfde8aa022d518719ce5fe5a'
+-+      '6c5bbe0cac6f519dccd5dcfae6b3200a3a1ec1e821bad48ada495861aa8af9a1'
++-      '6c5bbe0cac6f519dccd5dcfae6b3200a3a1ec1e821bad48ada495861aa8af9a1'
+++      '2272e8b6b0cdef04ad41e33f7936dd40d1b93d870e01b1ce403a759b010a0a64'
+      )
+        throw Error('Exact approved dashboard/forms source fixture required');
+      return 'data:text/javascript;base64,' + bytes.toString('base64');
+diff --git a/proposals/dashboard-context-fixture-compatibility/dashboard.proposed.txt b/proposals/dashboard-context-fixture-compatibility/dashboard.proposed.txt
+index 54cb719dac5270996e7693ab56df437321ff5a1b..25ab1dcb12608c150a0882b5bd94ad72cbcbbc94 100644
+--- a/proposals/dashboard-context-fixture-compatibility/dashboard.proposed.txt
++++ b/proposals/dashboard-context-fixture-compatibility/dashboard.proposed.txt
+@@ -11,7 +11,7 @@ const { dashboardSource: source } = (await import(
+     );
+     if (
+       createHash('sha256').update(bytes).digest('hex') !==
+-      '6c5bbe0cac6f519dccd5dcfae6b3200a3a1ec1e821bad48ada495861aa8af9a1'
++      '2272e8b6b0cdef04ad41e33f7936dd40d1b93d870e01b1ce403a759b010a0a64'
+     )
+       throw Error('Exact approved dashboard/forms source fixture required');
+     return 'data:text/javascript;base64,' + bytes.toString('base64');
+diff --git a/proposals/dashboard-context-fixture-compatibility/invoice-held.patch b/proposals/dashboard-context-fixture-compatibility/invoice-held.patch
+index bd29254809fc6558ec1b6b75565b9fcfb9aa5fea..7914ff2eb182e22509c633ba768b293213117218 100644
+--- a/proposals/dashboard-context-fixture-compatibility/invoice-held.patch
++++ b/proposals/dashboard-context-fixture-compatibility/invoice-held.patch
+@@ -1,13 +1,13 @@
+ diff --git a/tests/invoice-guard-admission-proposal.test.ts b/tests/invoice-guard-admission-proposal.test.ts
+-index 5ae2bde7830dfa2d9124063afb78a1f187546c7b..b33ad6a25d8cc5731b1e46ba0546a92fbcab1854 100644
++index b33ad6a25d8cc5731b1e46ba0546a92fbcab1854..25ee03c86abfb6bf5311a749f01cb96f414ecde9 100644
+ --- a/tests/invoice-guard-admission-proposal.test.ts
+ +++ b/tests/invoice-guard-admission-proposal.test.ts
+ @@ -45,7 +45,7 @@
+      const fixtureBytes = readFileSync(fixture);
+      if (
+        createHash('sha256').update(fixtureBytes).digest('hex') !==
+--      '03aefb7d4b3d62d0985754f993eea400c6d0db90dfde8aa022d518719ce5fe5a'
+-+      '6c5bbe0cac6f519dccd5dcfae6b3200a3a1ec1e821bad48ada495861aa8af9a1'
++-      '6c5bbe0cac6f519dccd5dcfae6b3200a3a1ec1e821bad48ada495861aa8af9a1'
+++      '2272e8b6b0cdef04ad41e33f7936dd40d1b93d870e01b1ce403a759b010a0a64'
+      )
+        throw Error('Exact sealed invoice guard proposal required');
+      return 'data:text/javascript;base64,' + fixtureBytes.toString('base64');
+diff --git a/proposals/dashboard-context-fixture-compatibility/invoice.proposed.txt b/proposals/dashboard-context-fixture-compatibility/invoice.proposed.txt
+index b33ad6a25d8cc5731b1e46ba0546a92fbcab1854..25ee03c86abfb6bf5311a749f01cb96f414ecde9 100644
+--- a/proposals/dashboard-context-fixture-compatibility/invoice.proposed.txt
++++ b/proposals/dashboard-context-fixture-compatibility/invoice.proposed.txt
+@@ -45,7 +45,7 @@ const { qualifyInvoiceGuardProposal } = (await import(
+     const fixtureBytes = readFileSync(fixture);
+     if (
+       createHash('sha256').update(fixtureBytes).digest('hex') !==
+-      '6c5bbe0cac6f519dccd5dcfae6b3200a3a1ec1e821bad48ada495861aa8af9a1'
++      '2272e8b6b0cdef04ad41e33f7936dd40d1b93d870e01b1ce403a759b010a0a64'
+     )
+       throw Error('Exact sealed invoice guard proposal required');
+     return 'data:text/javascript;base64,' + fixtureBytes.toString('base64');
+diff --git a/proposals/dashboard-context-fixture-compatibility/manifest.json b/proposals/dashboard-context-fixture-compatibility/manifest.json
+index 99f3cddfb0cf0bc9d9d460a19127668496ab45c7..62a0452ad282e0fd1f80489172838e8238308481 100644
+--- a/proposals/dashboard-context-fixture-compatibility/manifest.json
++++ b/proposals/dashboard-context-fixture-compatibility/manifest.json
+@@ -1,7 +1,7 @@
+ {
+-  "classification": "UNAPPLIED_EXACT_S_RETAINED_LAUNCH_PROVENANCE_AND_TEST_METADATA_CLOSURE",
+-  "base": "62a9642abf3e4d3becd5b1fc6a4aa8618943480b",
+-  "tree": "30472ebcc369d0cdecd77107f530aacc387b15af",
++  "classification": "UNAPPLIED_EXACT553_PLUS_UNCHANGED509_READER_SOURCE_CLOSURE",
++  "base": "0e3bb4ab64666e7d78c01b8092b5ea36c1212b9c",
++  "tree": "d9608f4300342f7e7e08cc394463601bb87f1aed",
+   "files": 2546,
+   "targets": {
+     "dashboard": {
+@@ -10,7 +10,7 @@
+       "oldHelper": "83a629d02a81d3f1a8b36bd39dc92839eebecfb79c0f9d7f66122c41d5ef8951",
+       "sha256": "7b624c8bf853493f36cbc5ae65921471ce7cae1f41c75375c431c00cf462637b",
+       "oid": "48bd4fd4d038f8869aae6917d7c40d45c41d9f35",
+-      "currentSHA256": "c56a53f995889e076f39e492c53ca67035caeb2b7b7cdd8a96008bd462a4a1bb"
++      "currentSHA256": "2d203802e784e32c5b5d0913d8f19a78f31560c9b853a20154f3b4b0abe25635"
+     },
+     "invoice": {
+       "path": "tests/invoice-guard-admission-proposal.test.ts",
+@@ -18,7 +18,7 @@
+       "oldHelper": "6c2ce2a04e1989d88ed818e375869e1ed209f34dd2b4acb58d27991ea67d476f",
+       "sha256": "ee18681c44f7e9b1a15c6dbe37762c096f7a01dc4ad6fd63a038d14bd96a8516",
+       "oid": "273a0d3fc3469a75e9c3914970423217d002677e",
+-      "currentSHA256": "4daa889a78ba4c77412e2fa7c2651a060759cd8ae9995f85810b82dd67c9ea12"
++      "currentSHA256": "5bd57a2770b00a1d09f2ad358579acdc6c47bee34014f808d4a88d903caf6e58"
+     }
+   },
+   "authors": [
+@@ -63,6 +63,27 @@
+       "parent": "c60c09c1fe9edab55220840499e2525a6751a558",
+       "tree": "e1af2e9601091ee68d92eddbdabe7b017baa80bb",
+       "delta": "M\ttests/program/cycle14-visual-review.test.ts\nM\ttests/provider-readiness.test.ts"
++    },
++    {
++      "commit": "0e3bb4ab64666e7d78c01b8092b5ea36c1212b9c",
++      "raw": "tree d512a593573f82bf324a26e55d09a88283350b2a\nparent 62a9642abf3e4d3becd5b1fc6a4aa8618943480b\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794935893 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794935893 -0600\n\n[skip netlify] Author approved exact 13-file launch fixture compatibility patch",
++      "parent": "62a9642abf3e4d3becd5b1fc6a4aa8618943480b",
++      "tree": "d512a593573f82bf324a26e55d09a88283350b2a",
++      "delta": "M\tproposals/dashboard-context-fixture-compatibility/README.md\nM\tproposals/dashboard-context-fixture-compatibility/controls.test.mjs\nM\tproposals/dashboard-context-fixture-compatibility/current-fixture.mjs\nM\tproposals/dashboard-context-fixture-compatibility/dashboard.patch\nM\tproposals/dashboard-context-fixture-compatibility/dashboard.proposed.txt\nM\tproposals/dashboard-context-fixture-compatibility/invoice-held.patch\nM\tproposals/dashboard-context-fixture-compatibility/invoice.proposed.txt\nM\tproposals/dashboard-context-fixture-compatibility/manifest.json\nM\tproposals/payment-launch-integration/legacy-invoice-fixture.mjs\nM\ttests/cycle27-source-lineage.test.ts\nM\ttests/invoice-guard-admission-proposal.test.ts\nM\ttests/launch-caller-payment-integration.test.ts\nM\ttests/propel-dashboard-parity-source.test.ts"
++    },
++    {
++      "commit": "5030bb834423fc572eb770d077739300477fd1e3",
++      "raw": "tree 4ffa570bcbe5e0c38794f8dc7802990580a3a4fd\nparent fbab4220a5e8fb043c10baa1328bbe6f7001e588\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794786105 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794786105 -0600\n\nPrepare restricted customer invoice authorize/read adapter [skip netlify]\n",
++      "parent": "fbab4220a5e8fb043c10baa1328bbe6f7001e588",
++      "tree": "4ffa570bcbe5e0c38794f8dc7802990580a3a4fd",
++      "delta": "A\tproposals/commercial-customer-operating-reader/README.md\nA\tproposals/commercial-customer-operating-reader/binding.ts\nA\tproposals/commercial-customer-operating-reader/catalog.ts\nA\tproposals/commercial-customer-operating-reader/read.proposed.sql.in\nA\tproposals/commercial-customer-operating-reader/reader.ts\nA\tproposals/commercial-customer-operating-reader/runtime-grants.sql.in\nA\tproposals/commercial-customer-operating-reader/source.json\nA\tproposals/commercial-customer-operating-reader/source.ts\nA\ttests/commercial-customer-operating-reader.test.ts\nA\ttests/database/commercial-customer-operating-reader.test.ts\nA\ttests/fixtures/operating-customer-reader.ts"
++    },
++    {
++      "commit": "ff41ed204ddc3d19d356c3af6dfc1e56db77a457",
++      "raw": "tree d784d50cb0042fbeb6fe23d8b89051d7a026851d\nparent 5030bb834423fc572eb770d077739300477fd1e3\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794805421 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794805421 -0600\n\nApply approved reader guard source-author patch [skip netlify]\n",
++      "parent": "5030bb834423fc572eb770d077739300477fd1e3",
++      "tree": "d784d50cb0042fbeb6fe23d8b89051d7a026851d",
++      "delta": "M\tproposals/commercial-customer-operating-reader/source.ts"
+     }
+   ],
+   "nativeAuthor": {
+@@ -140,17 +161,17 @@
+   "ownCompanions": {
+     "README.md": {
+       "mode": 420,
+-      "sha256": "8cbcf00c88798fa0bab8da0f3af00a7bac707ca03a77067b387dd273e20f419c"
++      "sha256": "8da20ac957765827e445684ad2938c4f35535c687c95aff872128d0fbd72c4d6"
+     },
+     "controls.test.mjs": {
+       "mode": 420,
+-      "sha256": "0ae02568068a3699490cf81212bfb9666962962a7b74ab2d70e0e479adf66bb1"
++      "sha256": "8b215ee6ed2cf95d72571d03c21557c9d994f92bea1f2532467cb5dbfa8b73fe"
+     }
+   },
+   "admissionAuthorized": false,
+   "integrationAuthorized": false,
+   "release": "NO_GO",
+-  "currentHelperSHA256": "03aefb7d4b3d62d0985754f993eea400c6d0db90dfde8aa022d518719ce5fe5a",
++  "currentHelperSHA256": "6c5bbe0cac6f519dccd5dcfae6b3200a3a1ec1e821bad48ada495861aa8af9a1",
+   "p1TestHistoricalScopeAmendment": {
+     "classification": "SEPARATE_UNAPPROVED_TEST_ONLY_SCOPE_AMENDMENT",
+     "path": "tests/property-p1-executor.test.ts",
+@@ -168,10 +189,10 @@
+     {
+       "path": "proposals/payment-launch-integration/legacy-invoice-fixture.mjs",
+       "mode": 420,
+-      "phased": true,
+-      "beforeSHA256": "9520858626dde02883b5755e3681d1a3ba35f00f9a57eb55fe1f613a8befbe06",
++      "phased": false,
++      "beforeSHA256": "43e24d6af6af2118d7e10453ae2a48356552218c4d74ddbed3dd5c6318833880",
+       "afterSHA256": "43e24d6af6af2118d7e10453ae2a48356552218c4d74ddbed3dd5c6318833880",
+-      "beforeOid": "d51e98d58d9cbcf0f567803aac2447588386e3a7",
++      "beforeOid": "b0229b95e1423f7547e6f90ce3e6e4d23af728a4",
+       "afterOid": "b0229b95e1423f7547e6f90ce3e6e4d23af728a4",
+       "historicalRef": "c60c09c1fe9edab55220840499e2525a6751a558",
+       "historicalSHA256": "9520858626dde02883b5755e3681d1a3ba35f00f9a57eb55fe1f613a8befbe06",
+@@ -180,10 +201,10 @@
+     {
+       "path": "tests/launch-caller-payment-integration.test.ts",
+       "mode": 420,
+-      "phased": true,
+-      "beforeSHA256": "f9289b166c0170072446aa35e261f2108fa3f62602dd6f4e34ccf952195949ab",
++      "phased": false,
++      "beforeSHA256": "291af07fb7f70064bb44335f8d97c0f925665966458f5b39c5fe602fded641b0",
+       "afterSHA256": "291af07fb7f70064bb44335f8d97c0f925665966458f5b39c5fe602fded641b0",
+-      "beforeOid": "016ebfe066d741ece271ef69f4f98b079e00a65e",
++      "beforeOid": "a13416def47d38ff4ebaccdca460f4caa19e73bf",
+       "afterOid": "a13416def47d38ff4ebaccdca460f4caa19e73bf",
+       "historicalRef": "c60c09c1fe9edab55220840499e2525a6751a558",
+       "historicalSHA256": "f9289b166c0170072446aa35e261f2108fa3f62602dd6f4e34ccf952195949ab",
+@@ -192,10 +213,10 @@
+     {
+       "path": "tests/cycle27-source-lineage.test.ts",
+       "mode": 420,
+-      "phased": true,
+-      "beforeSHA256": "fa5190cda8ec498565a830022bc2c20bf79a3a1e01823d2d5453bb80d3e47fe5",
++      "phased": false,
++      "beforeSHA256": "1df4852d4c78ea2d62beaabd49ee4771842ef1d586dfb0b0977c8d7319a90913",
+       "afterSHA256": "1df4852d4c78ea2d62beaabd49ee4771842ef1d586dfb0b0977c8d7319a90913",
+-      "beforeOid": "87301caa756c53d607c0fd0f5a6c6e1b9d88ca38",
++      "beforeOid": "f1761ecdfc0de091dd3603f4545f654ef387e5e1",
+       "afterOid": "f1761ecdfc0de091dd3603f4545f654ef387e5e1",
+       "historicalRef": "c60c09c1fe9edab55220840499e2525a6751a558",
+       "historicalSHA256": "fa5190cda8ec498565a830022bc2c20bf79a3a1e01823d2d5453bb80d3e47fe5",
+@@ -225,5 +246,81 @@
+       "historicalSHA256": "36f88bf5917ffc7308d9413bab081954033e6a7ceefba1992dbb770cb7e041a9",
+       "historicalOid": "ec06912a6b457d92f6b50d5b1e379d7555705123"
+     }
+-  ]
++  ],
++  "readerIntegration": {
++    "componentPatchSHA256": "91e5c286ab610814655497e86cd68b70a3fac7902e90ee028eb1d47c1025f013",
++    "componentAuthor": "ff41ed204ddc3d19d356c3af6dfc1e56db77a457",
++    "authorParent": "5030bb834423fc572eb770d077739300477fd1e3",
++    "historicalBase": "fbab4220a5e8fb043c10baa1328bbe6f7001e588",
++    "additions": {
++      "proposals/commercial-customer-operating-reader/README.md": {
++        "mode": "100644",
++        "blob": "7985eb83de547fb33e2863c9bc9a7e56ca9d0d26",
++        "sha256": "a3b338f64d0d8ad8b6e5c05fe07a383aa94f25a568d01986e47a6cc795cb6b1a"
++      },
++      "proposals/commercial-customer-operating-reader/binding.ts": {
++        "mode": "100644",
++        "blob": "429ed2a68966e071f14942c2d75e130a6bff3a2e",
++        "sha256": "6a157cccf4569decedc6f8bdeb1fdcd9a501f328234f726b49b14dbdbb137138"
++      },
++      "proposals/commercial-customer-operating-reader/catalog.ts": {
++        "mode": "100644",
++        "blob": "eb10055323f6a561e0f13887991b6a9f7f41af36",
++        "sha256": "036dd76edb1ce22f6b7f5becbd299b2528019d09837dba94a3a1207a10bca657"
++      },
++      "proposals/commercial-customer-operating-reader/read.proposed.sql.in": {
++        "mode": "100644",
++        "blob": "827be3f470a7f95db805263540cc31e91b5be7c9",
++        "sha256": "303741983f5f72ee0fefabbf71d7dd57b0e5bf1b0f265ab389d5fbeb318afe93"
++      },
++      "proposals/commercial-customer-operating-reader/reader.ts": {
++        "mode": "100644",
++        "blob": "06eb0a8462401fc2f9f84b2a41888a8bd042c7aa",
++        "sha256": "fb74f91f603654fa2034592212f8ad9ad87ef7bb288b609f6adb325c1ca8417e"
++      },
++      "proposals/commercial-customer-operating-reader/runtime-grants.sql.in": {
++        "mode": "100644",
++        "blob": "c8cd9ffb437ca91d5ff07e83d02a33eaf0a084ea",
++        "sha256": "abbca46667c9d9b44839395428f15d9d336e244fe0bd7a5c42217cf8aeb850c5"
++      },
++      "proposals/commercial-customer-operating-reader/source.json": {
++        "mode": "100644",
++        "blob": "6168b19e9ddef52fca144b03b1198d5de9dfea3f",
++        "sha256": "6371374d6068f52d83771c054fb378e707a02dc63415b8da0985a19e1903bea1"
++      },
++      "proposals/commercial-customer-operating-reader/source.ts": {
++        "mode": "100644",
++        "blob": "b6576c38c7f8b334791d696d04ef8d37d854dafe",
++        "sha256": "dd44ddb140d1f38cafdf033e3dca4f290191dcb52468525e3f599f88b3d7f071"
++      },
++      "tests/commercial-customer-operating-reader.test.ts": {
++        "mode": "100644",
++        "blob": "cdf98fc3daea6a2eb95b2fb84590bf3161297318",
++        "sha256": "1dba84815e20dc2cd3f818bceb17ac5d70d1887dd469bd5b3221aa303985acc8"
++      },
++      "tests/database/commercial-customer-operating-reader.test.ts": {
++        "mode": "100644",
++        "blob": "31dd8f83c39e117b4b106f00284d628e16837318",
++        "sha256": "814e6c658e666501d3c223ef2dc1f9b909810f10187eaa2824b975ca04116afa"
++      },
++      "tests/fixtures/operating-customer-reader.ts": {
++        "mode": "100644",
++        "blob": "9853fcf1561ac119fa0617e8903f2b4de3724c68",
++        "sha256": "cb4f5dcb5a270278dd303f34a717652fa6875213537f627fe34c35e7d7f7ae5a"
++      }
++    },
++    "newFinancialMetadataPorts": 0,
++    "actualRuntimeRoute": false,
++    "operationalReady": false
++  },
++  "frames": {
++    "before": {
++      "tree": "d9608f4300342f7e7e08cc394463601bb87f1aed",
++      "files": 2546
++    },
++    "after": {
++      "tree": "0168a6fba05fa3fa6b86d8fe18e40eb87afb4604",
++      "files": 2557
++    }
++  }
+ }
+diff --git a/tests/commercial-customer-operating-reader.test.ts b/tests/commercial-customer-operating-reader.test.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..cdf98fc3daea6a2eb95b2fb84590bf3161297318
+--- /dev/null
++++ b/tests/commercial-customer-operating-reader.test.ts
+@@ -0,0 +1,302 @@
++import { expect, it, vi } from 'vitest';
++import { readFileSync, writeFileSync } from 'node:fs';
++import { randomUUID } from 'node:crypto';
++import { operatingReaderModel } from './fixtures/operating-customer-reader';
++import { operatingCustomerInvoiceRead } from '../proposals/commercial-customer-operating-reader/reader';
++import {
++  renderReaderSQL,
++  readerScope,
++} from '../proposals/commercial-customer-operating-reader/binding';
++const signal = () => new AbortController().signal;
++it('default OFF invokes no SDK/SQL/reader', async () => {
++  const f = operatingReaderModel();
++  const read = operatingCustomerInvoiceRead(
++    f.auth,
++    f.bearer,
++    f.connection,
++    f.inspect,
++    f.scope,
++  );
++  await expect(read(f.view, signal())).rejects.toThrow('UNKNOWN');
++  expect(f.calls).toHaveLength(0);
++});
++it('actual original classes project original receipt without private source or payment authority', async () => {
++  const f = operatingReaderModel();
++  const r = await f.make()(f.view, signal());
++  expect(r.invoice.number).toBe(f.value.invoice.number);
++  expect(r.invoice.issuanceReceiptId).toBe(f.scope.issuanceReceiptId);
++  expect(r.payment.status).toBe('UNKNOWN');
++  expect(r.link.href).toBeNull();
++  expect(JSON.stringify(r)).not.toMatch(
++    /sourceHash|requestHash|actorId|sessionId|unit_cost|PRIVATE/,
++  );
++  expect(f.calls.every((s) => s.startsWith('select '))).toBe(true);
++});
++it('yearly number retains original issue-command pair', async () => {
++  const f = operatingReaderModel();
++  f.value.invoice.number = 'INV-2026-000001';
++  f.hooks.mapping = (m) => ({
++    ...(m as object),
++    issuedNumber: 'INV-2026-000001',
++  });
++  f.hooks.packet = (p) => {
++    const q = p as {
++      invoice: { number: string };
++      mapping: { issuedNumber: string };
++    };
++    q.invoice.number = 'INV-2026-000001';
++    q.mapping.issuedNumber = 'INV-2026-000001';
++    return q;
++  };
++  expect((await f.make()(f.view, signal())).invoice.number).toBe(
++    'INV-2026-000001',
++  );
++});
++it.each([
++  'organizationId',
++  'customerId',
++  'locationId',
++  'invoiceId',
++  'sourceVersionId',
++])('foreign public target %s denies before SQL', (k) => {
++  const f = operatingReaderModel();
++  const v = structuredClone(f.view);
++  Object.assign(v.invoice, { [k]: randomUUID() });
++  return expect(f.make()(v, signal())).rejects.toThrow('UNKNOWN');
++});
++it.each([
++  'superuser',
++  'bypassRls',
++  'createDb',
++  'createRole',
++  'replication',
++  'schemaFallback',
++  'schemaCreate',
++  'rawAccess',
++  'otherDefiner',
++])('unsafe catalog %s retires injected connection', async (k) => {
++  const f = operatingReaderModel();
++  Object.assign(f.profile, { [k]: true });
++  await expect(f.make()(f.view, signal())).rejects.toThrow('UNKNOWN');
++  Object.assign(f.profile, { [k]: false });
++  const n = f.calls.length;
++  await expect(f.make()(f.view, signal())).rejects.toThrow('UNKNOWN');
++  expect(f.calls).toHaveLength(n);
++});
++it.each([
++  { memberships: 1 },
++  { currentRole: 'wrong' },
++  { login: 'wrong' },
++  { schemaUsage: false },
++  { canLogin: false },
++  { isolation: 'repeatable read' },
++])('incomplete/current-role profile %j denies', async (change) => {
++  const f = operatingReaderModel();
++  Object.assign(f.profile, change);
++  await expect(f.make()(f.view, signal())).rejects.toThrow('UNKNOWN');
++});
++it.each([
++  { bodyHash: '0'.repeat(64) },
++  { owner: 'wrong' },
++  { ownerLogin: true },
++  { ownerSuper: true },
++  { ownerBypass: true },
++  { definer: false },
++  { volatility: 's' },
++  { args: 1 },
++  { result: 'text' },
++  { config: ['search_path=public'] },
++  { directExecute: false },
++  { publicExecute: true },
++  { grantOption: true },
++])('wrong installed body/owner/ACL %j denies', async (change) => {
++  const f = operatingReaderModel();
++  Object.assign(f.profile.functions[0], change);
++  await expect(f.make()(f.view, signal())).rejects.toThrow('UNKNOWN');
++  expect(
++    f.calls.some(
++      (s) =>
++        s === 'select private.commercial_customer_invoice_read_issued() result',
++    ),
++  ).toBe(false);
++});
++it('revoked Auth denies without SQL', async () => {
++  const f = operatingReaderModel();
++  f.setAuth(false);
++  await expect(f.make()(f.view, signal())).rejects.toThrow('UNKNOWN');
++  expect(f.calls).toHaveLength(0);
++});
++it('session revocation during issued SQL suppresses late data', async () => {
++  const f = operatingReaderModel();
++  f.hooks.afterRead = async () => f.setAuth(false);
++  await expect(f.make()(f.view, signal())).rejects.toThrow('UNKNOWN');
++});
++it('customer access withdrawal after data read suppresses response and cannot reopen object', async () => {
++  const f = operatingReaderModel();
++  f.hooks.afterRead = async () => f.revoke();
++  await expect(f.make()(f.view, signal())).rejects.toThrow('UNKNOWN');
++  f.restore();
++  f.hooks.afterRead = async () => {};
++  const n = f.calls.length;
++  await expect(f.make()(f.view, signal())).rejects.toThrow('UNKNOWN');
++  expect(f.calls.length).toBe(n);
++});
++it.each([
++  { issuanceReceiptId: randomUUID() },
++  { sourceHash: 'b'.repeat(64) },
++  { userId: randomUUID() },
++  { sessionId: randomUUID() },
++  { expiresAt: 1 },
++  { revision: 999 },
++  { mappingRevision: randomUUID() },
++])('contradictory original mapping %j denies', async (change) => {
++  const f = operatingReaderModel();
++  f.hooks.mapping = (m) => ({ ...(m as object), ...change });
++  await expect(f.make()(f.view, signal())).rejects.toThrow('UNKNOWN');
++});
++it('catalog revocation after returned row still denies', async () => {
++  const f = operatingReaderModel();
++  f.hooks.afterRead = async () => {
++    f.profile.functions[0].directExecute = false;
++  };
++  await expect(f.make()(f.view, signal())).rejects.toThrow('UNKNOWN');
++});
++it('malformed or ambiguous SQL acknowledgment never becomes evidence', async () => {
++  const f = operatingReaderModel();
++  f.hooks.packet = () => ({});
++  await expect(f.make()(f.view, signal())).rejects.toThrow('UNKNOWN');
++});
++it('getter/private mutable response is denied without invoking accessor', async () => {
++  const f = operatingReaderModel();
++  let calls = 0;
++  f.hooks.packet = () =>
++    Object.defineProperty({}, 'invoice', {
++      get() {
++        calls++;
++        throw Error('SECRET');
++      },
++      enumerable: true,
++    });
++  await expect(f.make()(f.view, signal())).rejects.toThrow('UNKNOWN');
++  expect(calls).toBe(0);
++});
++it('cancellation suppresses data and preserves object quarantine', async () => {
++  const f = operatingReaderModel(),
++    a = new AbortController();
++  f.hooks.afterRead = async () => a.abort();
++  await expect(f.make()(f.view, a.signal)).rejects.toThrow('UNKNOWN');
++  const n = f.calls.length;
++  await expect(f.make()(f.view, signal())).rejects.toThrow('UNKNOWN');
++  expect(f.calls.length).toBe(n);
++});
++it('deadline suppresses uncertain read without retry', async () => {
++  vi.useFakeTimers();
++  try {
++    const f = operatingReaderModel();
++    f.hooks.hang = true;
++    const p = f
++      .make()(f.view, signal())
++      .then(
++        () => false,
++        () => true,
++      );
++    await vi.advanceTimersByTimeAsync(5100);
++    expect(await p).toBe(true);
++    expect(
++      f.calls.filter(
++        (s) =>
++          s ===
++          'select private.commercial_customer_invoice_read_issued() result',
++      ),
++    ).toHaveLength(1);
++  } finally {
++    vi.useRealTimers();
++  }
++});
++it('source withdrawal after awaited read denies', async () => {
++  const p = 'proposals/commercial-customer-operating-reader/catalog.ts',
++    b = readFileSync(p);
++  try {
++    const f = operatingReaderModel();
++    f.hooks.afterRead = async () =>
++      writeFileSync(p, Buffer.concat([b, Buffer.from('\n// WITHDRAWN')]));
++    await expect(f.make()(f.view, signal())).rejects.toThrow('UNKNOWN');
++  } finally {
++    writeFileSync(p, b);
++  }
++});
++it.each(['public', 'postgres', 'pg_read_all_data'])(
++  'private renderer rejects reserved principal %s',
++  (r) => {
++    const f = operatingReaderModel();
++    expect(() => readerScope({ ...f.scope, login: r })).toThrow();
++  },
++);
++it('renderer cannot accept altered authority SQL', () => {
++  const f = operatingReaderModel();
++  expect(() =>
++    renderReaderSQL(
++      readFileSync(
++        'proposals/commercial-customer-operating-reader/read.proposed.sql.in',
++        'utf8',
++      ) + '--unknown',
++      '',
++      f.scope,
++    ),
++  ).toThrow();
++});
++
++it.each(['userId', 'login', 'owner', 'sourceHash'])(
++  'binding primitive %s rejects coercion with zero hooks',
++  (key) => {
++    const f = operatingReaderModel();
++    let calls = 0;
++    const v = {
++      toString() {
++        calls++;
++        return key === 'userId' ? f.scope.userId : "x'; SELECT 'BENIGN'; --";
++      },
++    };
++    expect(() => readerScope({ ...f.scope, [key]: v } as never)).toThrow();
++    expect(calls).toBe(0);
++  },
++);
++it.each(['portalOwnerACL', 'portalPolicy', 'portalRls'])(
++  'owner portal privilege/policy %s is independently required',
++  async (k) => {
++    const f = operatingReaderModel();
++    Object.assign(f.profile, { [k]: false });
++    await expect(f.make()(f.view, signal())).rejects.toThrow('UNKNOWN');
++  },
++);
++it('proxy AbortSignal is rejected before any trap', async () => {
++  const f = operatingReaderModel();
++  let calls = 0;
++  const p = new Proxy(signal(), {
++    get() {
++      calls++;
++      throw Error('hook');
++    },
++    getPrototypeOf() {
++      calls++;
++      throw Error('hook');
++    },
++  });
++  await expect(f.make()(f.view, p)).rejects.toThrow('UNKNOWN');
++  expect(calls).toBe(0);
++  expect(f.calls).toHaveLength(0);
++});
++it('concurrent reads quarantine both observers, never dispatch replacement', async () => {
++  const f = operatingReaderModel();
++  const read = f.make();
++  const p = read(f.view, signal()).then(
++      () => false,
++      () => true,
++    ),
++    q = read(f.view, signal()).then(
++      () => false,
++      () => true,
++    );
++  expect(await p).toBe(true);
++  expect(await q).toBe(true);
++});
+diff --git a/tests/database/commercial-customer-operating-reader.test.ts b/tests/database/commercial-customer-operating-reader.test.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..31dd8f83c39e117b4b106f00284d628e16837318
+--- /dev/null
++++ b/tests/database/commercial-customer-operating-reader.test.ts
+@@ -0,0 +1,846 @@
++import { readFileSync, readdirSync } from 'node:fs';
++import { createHash, randomUUID } from 'node:crypto';
++import { beforeAll, beforeEach, afterAll, expect, it } from 'vitest';
++import { createTestDatabase, type TestDatabase } from './engine';
++import { blankEstimate } from '../../src/domain/estimating/calculation';
++import type { EstimateVersion } from '../../src/domain/estimating/types';
++import { customerPreview } from '../../src/domain/estimating/customer-preview';
++import type { EstimateBundle } from '../../src/domain/estimating/types';
++import type { CommercialDraft } from '../../server/invoices/commercial-draft-client';
++import { CustomerBrokerAuth } from '../../server/customer/broker-auth';
++const native =
++  !!process.env.EV_TEST_PG_SOCKET ||
++  (process.env.CI === 'true' && process.env.EV_TEST_PG_CI === 'true');
++const db = createTestDatabase();
++let authDb: TestDatabase;
++let fixtureAdmin = 'postgres';
++const roleTag = randomUUID().replaceAll('-', '').slice(0, 12);
++const ownerRole = `ccyear_${roleTag}_owner`,
++  draftRole = `ccyear_${roleTag}_draft`,
++  issueRole = `ccyear_${roleTag}_issue`;
++const companies = Array.from({ length: 2 }, () => ({
++  org: randomUUID(),
++  actor: randomUUID(),
++  session: randomUUID(),
++  customer: randomUUID(),
++  location: randomUUID(),
++  tax: randomUUID(),
++  user: randomUUID(),
++  customerSession: randomUUID(),
++  version: '',
++  estimate: '',
++}));
++let draft: CommercialDraft, command: string;
++function fixtureRoles(sql: string) {
++  return sql
++    .replaceAll('propel_commercial_draft_owner', ownerRole)
++    .replaceAll('propel_commercial_draft_runtime', draftRole)
++    .replaceAll('propel_commercial_issue_runtime', issueRole);
++}
++async function login(c = companies[0]) {
++  await db.exec('reset role');
++  await db.query("select set_config('request.jwt.claims',$1,false)", [
++    JSON.stringify({
++      sub: c.actor,
++      session_id: c.session,
++      aal: 'aal2',
++      exp: Math.floor(Date.now() / 1000) + 3600,
++    }),
++  ]);
++  await db.exec('set role ' + issueRole);
++}
++async function admin(sql: string, p: unknown[] = []) {
++  await db.exec('reset role');
++  const r = await db.query(sql, p);
++  await login();
++  return r;
++}
++beforeAll(async () => {
++  if (!native) return;
++  fixtureAdmin = String((await db.query('select current_user u')).rows[0].u);
++  if (!/^[a-z_]+$/.test(fixtureAdmin)) throw Error('Unsafe fixture admin');
++  await db.exec(readFileSync('tests/database/bootstrap.sql', 'utf8'));
++  for (const f of readdirSync('supabase/migrations').sort())
++    await db.exec(readFileSync('supabase/migrations/' + f, 'utf8'));
++  const guarded = readFileSync(
++    'server/invoices/commercial-drafts.proposed.sql',
++    'utf8',
++  );
++  expect(createHash('sha256').update(guarded).digest('hex')).toBe(
++    'e1c504f9a7077caa92c375c378fb370155478be9cf077e66bf58932ae0895a3c',
++  );
++  await db.exec(fixtureRoles(guarded));
++  await db.exec(
++    fixtureRoles(
++      readFileSync(
++        'proposals/commercial-invoice-issuance/issuance.proposed.sql',
++        'utf8',
++      ),
++    ),
++  );
++  await db.exec(
++    fixtureRoles(
++      readFileSync(
++        'proposals/commercial-invoice-numbering/numbering.proposed.sql',
++        'utf8',
++      ),
++    ),
++  );
++  await db.exec(
++    fixtureRoles(
++      readFileSync(
++        'proposals/commercial-invoice-year-numbering/numbering.proposed.sql',
++        'utf8',
++      ),
++    ),
++  );
++  for (const c of companies) {
++    await db.query(
++      'insert into auth.users(id,email,email_confirmed_at) values($1,$2,clock_timestamp())',
++      [c.user, c.user + '@example.test'],
++    );
++    await db.query(
++      "insert into auth.sessions(id,user_id,not_after) values($1,$2,clock_timestamp()+interval '1 hour')",
++      [c.customerSession, c.user],
++    );
++    await db.query(
++      'insert into auth.users(id,email,email_confirmed_at) values($1,$2,clock_timestamp())',
++      [c.actor, c.actor + '@example.test'],
++    );
++    await db.query(
++      "insert into auth.sessions(id,user_id,not_after) values($1,$2,clock_timestamp()+interval '1 hour')",
++      [c.session, c.actor],
++    );
++    await db.query(
++      "insert into public.organizations(id,name,slug,industry,status) values($1,'FICTIONAL ISSUANCE LAB',$2,'construction','active')",
++      [c.org, 'issue-' + c.org],
++    );
++    await db.query(
++      "insert into public.memberships(organization_id,user_id,role) values($1,$2,'owner')",
++      [c.org, c.actor],
++    );
++    await db.query(
++      "update public.company_modules set enabled=true where organization_id=$1 and module='estimates'",
++      [c.org],
++    );
++    await db.query(
++      "insert into public.customers(id,organization_id,display_name) values($1,$2,'FICTIONAL CUSTOMER')",
++      [c.customer, c.org],
++    );
++    await db.query(
++      "insert into public.service_locations(id,organization_id,customer_id,address_line1,city,region,postal_code,country_code) values($1,$2,$3,'Fictional','Fixture','ZZ','00000','US')",
++      [c.location, c.org, c.customer],
++    );
++    await db.query(
++      'insert into public.portal_identities(organization_id,customer_id,user_id) values($1,$2,$3)',
++      [c.org, c.customer, c.user],
++    );
++    await db.query(
++      "insert into public.estimate_tax_policies(id,organization_id,name,reference,jurisdiction,contract_type,rate_bps,status) values($1,$2,'Fixture','TEST','Fixture','Fixture',1000,'reviewed')",
++      [c.tax, c.org],
++    );
++    await db.query(
++      "insert into private.commercial_draft_authorities values($1,$2,clock_timestamp()+interval '1 hour',null,'DISPOSABLE ONLY')",
++      [c.org, c.actor],
++    );
++    await db.query("select set_config('request.jwt.claims',$1,false)", [
++      JSON.stringify({ sub: c.actor, aal: 'aal2' }),
++    ]);
++    await db.exec('set role authenticated');
++    const payload = blankEstimate(c.customer);
++    payload.location_id = c.location;
++    payload.tax_policy_id = c.tax;
++    payload.expires_on = '2099-12-31';
++    payload.internal_notes = 'PRIVATE SOURCE SECRET';
++    payload.lines[0] = {
++      ...payload.lines[0],
++      description: 'Fictional scope',
++      quantity_milli: 1000,
++      unit_price_minor: 1000,
++      unit_cost_minor: 500,
++      taxable: true,
++    };
++    const b = (
++      await db.query<{ v: EstimateBundle }>(
++        'select public.create_estimate($1,$2,$3) v',
++        [c.org, payload, randomUUID()],
++      )
++    ).rows[0].v;
++    const issued = (
++      await db.query<{ v: EstimateBundle }>(
++        'select public.issue_estimate($1,$2,$3,$4) v',
++        [c.org, b.estimate.id, b.version.id, b.version.lock_revision],
++      )
++    ).rows[0].v;
++    c.version = issued.version.id;
++    c.estimate = issued.estimate.id;
++    await db.exec('reset role');
++  }
++  authDb = await db.fork!();
++});
++beforeEach(async () => {
++  if (!native) return;
++  await db.exec('rollback; reset role');
++  await db.exec(
++    'truncate private.commercial_issue_authorities,private.commercial_invoice_draft_receipts,private.commercial_invoice_draft_revisions,private.commercial_invoice_drafts cascade',
++  );
++  const c = companies[0];
++  // Each test receives an independent immutable issued source. Permanent source
++  // fences MUST NOT be reset to make unrelated test cases appear reusable.
++  await db.query("select set_config('request.jwt.claims',$1,false)", [
++    JSON.stringify({ sub: c.actor, aal: 'aal2' }),
++  ]);
++  await db.exec('set role authenticated');
++  const payload = blankEstimate(c.customer);
++  payload.location_id = c.location;
++  payload.tax_policy_id = c.tax;
++  payload.expires_on = '2099-12-31';
++  payload.lines[0] = {
++    ...payload.lines[0],
++    description: 'Independent fictional source',
++    quantity_milli: 1000,
++    unit_price_minor: 1000,
++    unit_cost_minor: 500,
++    taxable: true,
++  };
++  const created = (
++    await db.query<{ v: EstimateBundle }>(
++      'select public.create_estimate($1,$2,$3) v',
++      [c.org, payload, randomUUID()],
++    )
++  ).rows[0].v;
++  const issued = (
++    await db.query<{ v: EstimateBundle }>(
++      'select public.issue_estimate($1,$2,$3,$4) v',
++      [
++        c.org,
++        created.estimate.id,
++        created.version.id,
++        created.version.lock_revision,
++      ],
++    )
++  ).rows[0].v;
++  c.version = issued.version.id;
++  c.estimate = issued.estimate.id;
++  await db.exec('reset role');
++
++  await db.query(
++    "update auth.sessions set not_after=clock_timestamp()+interval '1 hour' where id=$1",
++    [c.session],
++  );
++  await db.query(
++    'update public.memberships set active=true where organization_id=$1 and user_id=$2',
++    [c.org, c.actor],
++  );
++  await db.query(
++    'update private.commercial_draft_authorities set revoked_at=null where organization_id=$1 and actor_id=$2',
++    [c.org, c.actor],
++  );
++  await db.query(
++    "update public.estimates set status='issued',current_version_id=$1 where id=$2",
++    [c.version, c.estimate],
++  );
++  await db.query(
++    "update auth.sessions set not_after=clock_timestamp()+interval '1 hour' where id=$1",
++    [c.customerSession],
++  );
++  await db.query(
++    'update public.portal_identities set active=true where user_id=$1',
++    [c.user],
++  );
++  await login();
++  await db.exec('set role ' + draftRole);
++  draft = (
++    await db.query<{ result: CommercialDraft }>(
++      'select private.commercial_invoice_draft_create($1,$2,$3,$4,$5,$6,$7,$8) result',
++      [
++        c.org,
++        randomUUID(),
++        randomUUID(),
++        c.customer,
++        c.location,
++        c.version,
++        'Fictional invoice <safe>',
++        'PRIVATE STAFF MEMO',
++      ],
++    )
++  ).rows[0].result;
++  command = randomUUID();
++  await admin(
++    "insert into private.commercial_issue_authorities values($1,$2,$3,$4,$5,clock_timestamp()+interval '1 hour',null,'DISPOSABLE ISSUANCE REVIEW','FICTA')",
++    [c.org, draft.invoiceId, c.actor, draft.revision, draft.sourceHash],
++  );
++  await db.query(
++    'select private.commercial_invoice_issue($1,$2,$3,$4,$5,$6,$7,$8)',
++    [
++      c.org,
++      draft.invoiceId,
++      command,
++      draft.revision,
++      c.customer,
++      c.location,
++      c.version,
++      draft.sourceHash,
++    ],
++  );
++});
++
++import { Client } from 'pg';
++import { afterEach } from 'vitest';
++import { operatingCustomerInvoiceRead } from '../../proposals/commercial-customer-operating-reader/reader';
++import {
++  renderReaderSQL,
++  type ReaderScope,
++} from '../../proposals/commercial-customer-operating-reader/binding';
++import type { InvoiceConnectionScope } from '../../server/invoices/commercial-caller-connection';
++import type { GatewaySql } from '../../server/payments/postgres-store';
++const folder = 'proposals/commercial-customer-operating-reader/';
++const readerRole = 'operating_read_' + roleTag;
++const sockets: Client[] = [];
++let binding: ReaderScope;
++let initialOwnerDenied = false;
++let originalPolicyFlags: unknown;
++const test = it.skipIf(!native);
++beforeAll(async () => {
++  if (!native) return;
++  await db.exec('reset role');
++  originalPolicyFlags = (
++    await db.query(
++      "select relrowsecurity,relforcerowsecurity from pg_class where oid='public.portal_identities'::regclass",
++    )
++  ).rows;
++  try {
++    await db.exec('set role ' + ownerRole);
++    await db.query('select active from public.portal_identities');
++  } catch (e) {
++    initialOwnerDenied = (e as { code?: string }).code === '42501';
++  } finally {
++    await db.exec('reset role');
++  }
++  await db.exec(
++    `create role ${readerRole} login nosuperuser nocreatedb nocreaterole noreplication nobypassrls password 'synthetic-ci-only'`,
++  );
++});
++beforeEach(async () => {
++  if (!native) return;
++  await db.exec('reset role');
++  await db.query(
++    "update public.organizations set status='active' where id=$1",
++    [companies[0].org],
++  );
++  await db.query(
++    'update auth.users set deleted_at=null,banned_until=null,is_anonymous=false where id=$1',
++    [companies[0].user],
++  );
++  await db.query(
++    "update auth.sessions set not_after=clock_timestamp()+interval '1 hour' where id=$1",
++    [companies[0].customerSession],
++  );
++  await db.exec(
++    `revoke ${ownerRole} from ${readerRole};revoke all on schema private from public;drop function if exists public.commercial_customer_invoice_authorize(uuid);drop function if exists private.commercial_customer_invoice_read_issued();drop function if exists private.commercial_customer_invoice_authorize();drop policy if exists commercial_customer_identity_read on public.portal_identities;`,
++  );
++  const c = companies[0];
++  binding = {
++    login: readerRole,
++    owner: ownerRole,
++    userId: c.user,
++    sessionId: c.customerSession,
++    organizationId: c.org,
++    customerId: c.customer,
++    locationId: c.location,
++    invoiceId: draft.invoiceId,
++    sourceVersionId: c.version,
++    sourceHash: draft.sourceHash,
++    revision: draft.revision,
++    issuanceReceiptId: command,
++    reviewId: randomUUID(),
++    expiresAt: Date.now() + 120000,
++  };
++  const rendered = renderReaderSQL(
++    readFileSync(folder + 'read.proposed.sql.in', 'utf8'),
++    readFileSync(folder + 'runtime-grants.sql.in', 'utf8'),
++    binding,
++  );
++  await db.exec(rendered.sql);
++  await db.exec(rendered.runtimeGrants);
++});
++afterEach(async () => {
++  while (sockets.length) await sockets.pop()!.end();
++  if (native) {
++    await db.exec('reset role');
++    await db.query('delete from public.memberships where user_id=$1', [
++      companies[0].user,
++    ]);
++    await db.query('delete from private.platform_admins where user_id=$1', [
++      companies[0].user,
++    ]);
++    await db.query(
++      "update public.organizations set status='active' where id=$1",
++      [companies[0].org],
++    );
++  }
++});
++afterAll(async () => {
++  if (native) {
++    await authDb.close();
++    await db.exec('reset role');
++    await db.exec(`drop owned by ${readerRole};drop role ${readerRole}`);
++    for (const role of [ownerRole, draftRole, issueRole])
++      await db.exec(
++        `reassign owned by ${role} to ${fixtureAdmin};drop owned by ${role};drop role ${role}`,
++      );
++  }
++  await db.close();
++});
++async function client() {
++  const socket = process.env.EV_TEST_PG_SOCKET;
++  const database = String(
++    (await db.query('select current_database() d')).rows[0].d,
++  );
++  if (!/^ev_test_[a-f0-9]{32}$/.test(database)) throw Error('Disposable only');
++  const c = new Client({
++    host: socket ?? '127.0.0.1',
++    port: socket ? 55477 : 5432,
++    user: readerRole,
++    password: socket ? undefined : 'synthetic-ci-only',
++    database,
++  });
++  await c.connect();
++  sockets.push(c);
++  return c;
++}
++async function setup() {
++  const c = companies[0],
++    raw = await client();
++  const now = Math.floor(Date.now() / 1000);
++  const claims = {
++    sub: c.user,
++    session_id: c.customerSession,
++    aal: 'aal2',
++    exp: now + 3600,
++    iat: now,
++    iss: 'https://abcdefghijklmnopqrst.supabase.co/auth/v1',
++    aud: 'authenticated',
++    role: 'authenticated',
++  };
++  await raw.query("select set_config('request.jwt.claims',$1,false)", [
++    JSON.stringify(claims),
++  ]);
++  const bearer =
++    Buffer.from('{}').toString('base64url') +
++    '.' +
++    Buffer.from(JSON.stringify(claims)).toString('base64url') +
++    '.controlled_native_fixture';
++  const auth = new CustomerBrokerAuth(
++    {
++      url: 'https://abcdefghijklmnopqrst.supabase.co',
++      publishableKey: 'sb_publishable_controlled_only',
++    },
++    async (input, init) => {
++      if (
++        new Headers(init?.headers).get('authorization') !==
++        'Bearer ' + bearer
++      )
++        throw Error('Exact fixture bearer');
++      const active = Boolean(
++        (
++          await authDb.query<{ a: boolean }>(
++            'select exists(select 1 from auth.users u join auth.sessions s on s.user_id=u.id where u.id=$1 and s.id=$2 and u.email_confirmed_at is not null and u.deleted_at is null and not u.is_anonymous and(u.banned_until is null or u.banned_until<=clock_timestamp()) and(s.not_after is null or s.not_after>clock_timestamp())) a',
++            [c.user, c.customerSession],
++          )
++        ).rows[0].a,
++      );
++      const p = new URL(String(input)).pathname;
++      if (p === '/auth/v1/user')
++        return active
++          ? Response.json({ id: c.user })
++          : Response.json({ error: 'revoked' }, { status: 401 });
++      if (p === '/rest/v1/rpc/customer_session_status')
++        return Response.json({
++          user_id: c.user,
++          session_id: c.customerSession,
++          active,
++        });
++      throw Error('No real Auth path');
++    },
++  );
++  const backend = (
++    await raw.query<InvoiceConnectionScope>(
++      'select current_database() database,pg_backend_pid() pid,backend_start::text,session_user::text login,current_user::text current_role from pg_stat_activity where pid=pg_backend_pid()',
++    )
++  ).rows[0];
++  const hooks = { afterRead: async () => {} };
++  const calls: string[] = [];
++  const sql: GatewaySql = {
++    async query<T extends Record<string, unknown>>(
++      text: string,
++      params?: unknown[],
++    ) {
++      calls.push(text);
++      const v = await raw.query<T>(text, params);
++      if (
++        text ===
++        'select private.commercial_customer_invoice_read_issued() result'
++      )
++        await hooks.afterRead();
++      return { rows: v.rows };
++    },
++  };
++  const v = (
++    await db.query<{ v: EstimateVersion }>(
++      'select to_jsonb(v) v from public.estimate_versions v where id=$1',
++      [c.version],
++    )
++  ).rows[0].v;
++  const pv = customerPreview(v),
++    l = pv.location!;
++  const viewer = {
++    invoice: {
++      organizationId: c.org,
++      customerId: c.customer,
++      locationId: c.location,
++      invoiceId: draft.invoiceId,
++      sourceVersionId: c.version,
++      revision: draft.revision,
++    },
++    companyName: pv.company.name,
++    customerName: pv.customer.display_name,
++    primaryColor: pv.company.primary_color,
++    propertyLabel: [
++      l.address_line1,
++      l.city,
++      l.region + ' ' + l.postal_code,
++    ].join(', '),
++  };
++  const make = () =>
++    operatingCustomerInvoiceRead(auth, bearer, sql, backend, binding, {
++      enabled: true,
++      mode: 'disposable-proposal',
++    });
++  return {
++    c,
++    raw,
++    auth,
++    sql,
++    backend,
++    hooks,
++    calls,
++    viewer,
++    make,
++    load: make(),
++  };
++}
++const sig = () => new AbortController().signal;
++test('owner portal read was42501 before the explicit proposed owner ACL/policy', () => {
++  expect(initialOwnerDenied).toBe(true);
++});
++test('restricted actual LOGIN returns original yearly receipt and canonical safe display, no write/PII leaks', async () => {
++  const f = await setup();
++  const r = await f.load(f.viewer, sig());
++  expect(r.invoice.number).toMatch(/^INV-\d{4}-\d{6}$/);
++  expect(r.invoice.issuanceReceiptId).toBe(command);
++  expect(r.invoice.amountMinor).toBe(1100);
++  expect(r.payment.status).toBe('UNKNOWN');
++  expect(r.link.href).toBeNull();
++  expect(JSON.stringify(r)).not.toMatch(
++    /PRIVATE|sourceHash|requestHash|actorId|sessionId|unit_cost|memo/,
++  );
++  expect(f.calls.every((s) => s.startsWith('select '))).toBe(true);
++});
++test('owner-only policy and exactfour columnACLs preserve original RLS flags', async () => {
++  expect(
++    (
++      await db.query(
++        "select relrowsecurity,relforcerowsecurity from pg_class where oid='public.portal_identities'::regclass",
++      )
++    ).rows,
++  ).toEqual(originalPolicyFlags);
++  const a = await db.query<{ attname: string }>(
++    "select a.attname from pg_attribute a cross join lateral aclexplode(a.attacl) x where a.attrelid='public.portal_identities'::regclass and x.grantee=$1::regrole and x.privilege_type='SELECT' and not x.is_grantable order by a.attname",
++    [ownerRole],
++  );
++  expect(a.rows.map((x) => x.attname)).toEqual([
++    'active',
++    'customer_id',
++    'organization_id',
++    'user_id',
++  ]);
++});
++test('runtime has no raw invoice/customer/auth/table read or DML, no issue/grant execution', async () => {
++  const f = await setup();
++  for (const q of [
++    'select * from private.commercial_invoice_drafts',
++    'select * from public.portal_identities',
++    'select * from auth.users',
++    "update private.commercial_invoice_drafts set currency='EUR'",
++    'set role ' + ownerRole,
++  ])
++    await expect(f.raw.query(q)).rejects.toMatchObject({ code: '42501' });
++  expect(
++    (
++      await db.query(
++        "select has_function_privilege($1,'private.commercial_invoice_issue(uuid,uuid,uuid,integer,uuid,uuid,uuid,text)','EXECUTE') a",
++        [readerRole],
++      )
++    ).rows[0].a,
++  ).toBe(false);
++});
++test('foreign customer/tenant publictarget and private expected scope cannot select another authority', async () => {
++  const f = await setup();
++  await expect(
++    f.load(
++      {
++        ...f.viewer,
++        invoice: { ...f.viewer.invoice, customerId: companies[1].customer },
++      },
++      sig(),
++    ),
++  ).rejects.toThrow('UNKNOWN');
++  const bad = operatingCustomerInvoiceRead(
++    f.auth,
++    'bad',
++    f.sql,
++    f.backend,
++    { ...binding, customerId: companies[1].customer },
++    { enabled: true, mode: 'disposable-proposal' },
++  );
++  await expect(bad(f.viewer, sig())).rejects.toThrow('UNKNOWN');
++});
++test('current session revocation after SQL result suppresses response', async () => {
++  const f = await setup();
++  f.hooks.afterRead = async () => {
++    await authDb.query(
++      'update auth.sessions set not_after=clock_timestamp() where id=$1',
++      [f.c.customerSession],
++    );
++  };
++  await expect(f.load(f.viewer, sig())).rejects.toThrow('UNKNOWN');
++});
++test('portal revocation after result suppresses response and same connection cannot reopen', async () => {
++  const f = await setup();
++  f.hooks.afterRead = async () => {
++    await authDb.query(
++      'update public.portal_identities set active=false where user_id=$1',
++      [f.c.user],
++    );
++  };
++  await expect(f.load(f.viewer, sig())).rejects.toThrow('UNKNOWN');
++  await authDb.query(
++    'update public.portal_identities set active=true where user_id=$1',
++    [f.c.user],
++  );
++  f.hooks.afterRead = async () => {};
++  const n = f.calls.length;
++  await expect(f.make()(f.viewer, sig())).rejects.toThrow('UNKNOWN');
++  expect(f.calls.length).toBe(n);
++});
++test('post-read privilege revocation suppresses output', async () => {
++  const f = await setup();
++  f.hooks.afterRead = async () => {
++    await authDb.exec(
++      `revoke execute on function private.commercial_customer_invoice_read_issued() from ${readerRole}`,
++    );
++  };
++  await expect(f.load(f.viewer, sig())).rejects.toThrow('UNKNOWN');
++});
++test('PUBLIC fallback is denied even when SQL function remains callable', async () => {
++  const f = await setup();
++  await db.exec(
++    `revoke execute on function private.commercial_customer_invoice_read_issued() from ${readerRole};grant execute on function private.commercial_customer_invoice_read_issued() to public`,
++  );
++  await expect(f.load(f.viewer, sig())).rejects.toThrow('UNKNOWN');
++});
++test('other reachable definer with colliding name is not mistaken for permitted privatezeroarg function', async () => {
++  const f = await setup();
++  await db.exec(
++    `create function public.commercial_customer_invoice_authorize(uuid) returns integer language sql security definer as 'select 1';grant execute on function public.commercial_customer_invoice_authorize(uuid) to ${readerRole}`,
++  );
++  await expect(f.load(f.viewer, sig())).rejects.toThrow('UNKNOWN');
++});
++test('role membership/SETROLE path denies before private data', async () => {
++  const f = await setup();
++  await db.exec(`grant ${ownerRole} to ${readerRole}`);
++  await expect(f.load(f.viewer, sig())).rejects.toThrow('UNKNOWN');
++});
++test('changed installed function body cannot be admitted by caller hashes', async () => {
++  const f = await setup();
++  await db.exec(
++    "create or replace function private.commercial_customer_invoice_read_issued() returns jsonb language plpgsql volatile security definer set search_path='' as $$begin return '{}'::jsonb;end$$",
++  );
++  await expect(f.load(f.viewer, sig())).rejects.toThrow('UNKNOWN');
++  expect(
++    f.calls.includes(
++      'select private.commercial_customer_invoice_read_issued() result',
++    ),
++  ).toBe(false);
++});
++test('repeatable-read retained snapshot is denied', async () => {
++  const f = await setup();
++  await f.raw.query('begin isolation level repeatable read');
++  try {
++    await expect(f.load(f.viewer, sig())).rejects.toThrow('UNKNOWN');
++  } finally {
++    await f.raw.query('rollback');
++  }
++});
++test('read/cancel/lostack paths preserve original header and immutable receipt counts', async () => {
++  const f = await setup();
++  const snapshot = async () =>
++    (
++      await db.query(
++        'select md5(row_to_json(h)::text) h,(select count(*)::int from private.commercial_invoice_draft_receipts r where r.invoice_id=h.id) n from private.commercial_invoice_drafts h where h.id=$1',
++        [draft.invoiceId],
++      )
++    ).rows;
++  const before = await snapshot();
++  const a = new AbortController();
++  f.hooks.afterRead = async () => a.abort();
++  await expect(f.load(f.viewer, a.signal)).rejects.toThrow('UNKNOWN');
++  expect(await snapshot()).toEqual(before);
++});
++test('raw dedicated LOGIN/GUC is a trusted SQL capability, not signed customerAuth proof', async () => {
++  const f = await setup();
++  const row = await f.raw.query(
++    'select private.commercial_customer_invoice_authorize() result',
++  );
++  expect(row.rows[0].result.userId).toBe(
++    f.c.user,
++  ); /* Intentionallycharacterizes trustedserverLOGIN/GUC boundary. SDKproof stillmandatory inadapter. */
++});
++
++test('table-level owner SELECT is not the reviewed four-column ACL', async () => {
++  const f = await setup();
++  await db.exec(`grant select on public.portal_identities to ${ownerRole}`);
++  try {
++    await expect(f.load(f.viewer, sig())).rejects.toThrow('UNKNOWN');
++  } finally {
++    await db.exec(
++      `revoke select on public.portal_identities from ${ownerRole}`,
++    );
++  }
++});
++test('an original source withdrawn after data cannot be shown from a stale receipt', async () => {
++  const f = await setup();
++  f.hooks.afterRead = async () => {
++    await authDb.query(
++      "update public.estimates set status='draft' where id=$1",
++      [f.c.estimate],
++    );
++  };
++  await expect(f.load(f.viewer, sig())).rejects.toThrow('UNKNOWN');
++});
++
++test.each(['organization', 'source'])(
++  'actual observed header wait rechecks withdrawn %s before mapping',
++  async (kind) => {
++    const f = await setup(),
++      blocker = await db.fork!();
++    let pending: Promise<{ ok: boolean; code?: string }> | undefined;
++    try {
++      await blocker.exec(
++        'begin;lock table private.commercial_invoice_drafts in access exclusive mode',
++      );
++      pending = f.raw
++        .query('select private.commercial_customer_invoice_authorize() result')
++        .then(
++          () => ({ ok: true }),
++          (e: unknown) => ({ ok: false, code: (e as { code?: string }).code }),
++        );
++      let observed = false;
++      for (let i = 0; i < 200; i++) {
++        const r = await authDb.query<{ w: string }>(
++          'select wait_event_type w from pg_stat_activity where pid=$1',
++          [f.backend.pid],
++        );
++        if (r.rows[0]?.w === 'Lock') {
++          observed = true;
++          break;
++        }
++        await new Promise((r) => setTimeout(r, 5));
++      }
++      expect(observed).toBe(true);
++      if (kind === 'organization')
++        await authDb.query(
++          "update public.organizations set status='suspended' where id=$1",
++          [f.c.org],
++        );
++      else
++        await authDb.query(
++          "update public.estimates set status='draft' where id=$1",
++          [f.c.estimate],
++        );
++      await blocker.exec('rollback');
++      expect(await pending).toEqual({ ok: false, code: '42501' });
++    } finally {
++      await blocker.exec('rollback');
++      await pending;
++      await blocker.close();
++    }
++  },
++);
++
++test.each(['staff', 'platform'])(
++  'fixed invoice grant does not override initial %s identity exclusion',
++  async (kind) => {
++    const f = await setup();
++    if (kind === 'staff')
++      await authDb.query(
++        "insert into public.memberships(organization_id,user_id,role) values($1,$2,'owner')",
++        [companies[1].org, f.c.user],
++      );
++    else
++      await authDb.query(
++        'insert into private.platform_admins(user_id) values($1)',
++        [f.c.user],
++      );
++    await expect(f.load(f.viewer, sig())).rejects.toThrow('UNKNOWN');
++  },
++);
++test.each(['staff', 'platform'])(
++  'observed source wait rechecks late %s activation',
++  async (kind) => {
++    const f = await setup(),
++      blocker = await db.fork!();
++    let pending: Promise<{ ok: boolean; code?: string }> | undefined;
++    try {
++      await blocker.exec(
++        'begin;lock table private.commercial_invoice_drafts in access exclusive mode',
++      );
++      pending = f.raw
++        .query('select private.commercial_customer_invoice_authorize() result')
++        .then(
++          () => ({ ok: true }),
++          (e: unknown) => ({ ok: false, code: (e as { code?: string }).code }),
++        );
++      let observed = false;
++      for (let i = 0; i < 200; i++) {
++        const r = await authDb.query<{ w: string }>(
++          'select wait_event_type w from pg_stat_activity where pid=$1',
++          [f.backend.pid],
++        );
++        if (r.rows[0]?.w === 'Lock') {
++          observed = true;
++          break;
++        }
++        await new Promise((r) => setTimeout(r, 5));
++      }
++      expect(observed).toBe(true);
++      if (kind === 'staff')
++        await authDb.query(
++          "insert into public.memberships(organization_id,user_id,role) values($1,$2,'owner')",
++          [companies[1].org, f.c.user],
++        );
++      else
++        await authDb.query(
++          'insert into private.platform_admins(user_id) values($1)',
++          [f.c.user],
++        );
++      await blocker.exec('rollback');
++      expect(await pending).toEqual({ ok: false, code: '42501' });
++    } finally {
++      await blocker.exec('rollback');
++      await pending;
++      await blocker.close();
++    }
++  },
++);
+diff --git a/tests/fixtures/operating-customer-reader.ts b/tests/fixtures/operating-customer-reader.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..9853fcf1561ac119fa0617e8903f2b4de3724c68
+--- /dev/null
++++ b/tests/fixtures/operating-customer-reader.ts
+@@ -0,0 +1,178 @@
++// Controlled SQL/SDK MODEL ONLY. No actual database principal or hosted Auth.
++import { randomUUID } from 'node:crypto';
++import { readFileSync } from 'node:fs';
++import { commercialCustomerBridgeFixture } from './commercial-customer-bridge';
++import { CommercialCallerConnection } from '../../server/invoices/commercial-caller-connection';
++import type { GatewaySql } from '../../server/payments/postgres-store';
++import { operatingReaderCatalog } from '../../proposals/commercial-customer-operating-reader/catalog';
++import {
++  renderReaderSQL,
++  type ReaderScope,
++} from '../../proposals/commercial-customer-operating-reader/binding';
++import { operatingCustomerInvoiceRead } from '../../proposals/commercial-customer-operating-reader/reader';
++const folder = 'proposals/commercial-customer-operating-reader/';
++export function operatingReaderModel() {
++  const f = commercialCustomerBridgeFixture(),
++    claims = JSON.parse(
++      Buffer.from(f.bearer.split('.')[1], 'base64url').toString(),
++    );
++  const scope: ReaderScope = {
++    login: 'fixture_invoice_reader',
++    owner: 'fixture_invoice_owner',
++    userId: claims.sub,
++    sessionId: claims.session_id,
++    organizationId: f.viewer.invoice.organizationId,
++    customerId: f.viewer.invoice.customerId,
++    locationId: f.viewer.invoice.locationId!,
++    invoiceId: f.viewer.invoice.invoiceId,
++    sourceVersionId: f.viewer.invoice.sourceVersionId,
++    sourceHash: f.mapping.sourceHash,
++    revision: f.viewer.invoice.revision,
++    issuanceReceiptId: f.value.invoice.receipt.commandId,
++    reviewId: randomUUID(),
++    expiresAt: Date.now() + 120000,
++  };
++  const rendered = renderReaderSQL(
++    readFileSync(folder + 'read.proposed.sql.in', 'utf8'),
++    readFileSync(folder + 'runtime-grants.sql.in', 'utf8'),
++    scope,
++  );
++  const view = structuredClone(f.viewer),
++    loc = f.version.location_snapshot!;
++  view.propertyLabel = [
++    loc.address_line1,
++    loc.city,
++    loc.region + ' ' + loc.postal_code,
++  ].join(', ');
++  const mapping = {
++    ...f.mapping,
++    mappingRevision: scope.reviewId,
++    expiresAt: scope.expiresAt,
++    issuedNumber: f.value.invoice.number,
++    issuanceReceiptId: scope.issuanceReceiptId,
++  };
++  const profile = {
++    login: scope.login,
++    currentRole: scope.login,
++    canLogin: true,
++    superuser: false,
++    bypassRls: false,
++    createDb: false,
++    createRole: false,
++    replication: false,
++    memberships: 0,
++    isolation: 'read committed',
++    schemaUsage: true,
++    portalOwnerACL: true,
++    portalPolicy: true,
++    portalRls: true,
++    schemaFallback: false,
++    schemaCreate: false,
++    rawAccess: false,
++    otherDefiner: false,
++    functions: Object.entries(rendered.bodyHashes).map(([name, bodyHash]) => ({
++      name,
++      bodyHash,
++      owner: scope.owner,
++      ownerLogin: false,
++      ownerSuper: false,
++      ownerBypass: false,
++      definer: true,
++      volatility: 'v',
++      language: 'plpgsql',
++      args: 0,
++      result: 'jsonb',
++      config: ['search_path=""'],
++      directExecute: true,
++      publicExecute: false,
++      grantOption: false,
++    })),
++  };
++  const inspect = {
++    database: 'ev_test_model_only',
++    pid: 1234,
++    backend_start: 'model-only',
++    login: scope.login,
++    current_role: scope.login,
++  };
++  const calls: string[] = [];
++  let active = true;
++  const hooks = {
++    afterRead: async () => {},
++    afterCatalog: async () => {},
++    mapping: (m: unknown) => m,
++    packet: (p: unknown) => p,
++    hang: false,
++  };
++  const connection: GatewaySql = {
++    async query<T extends Record<string, unknown>>(text: string) {
++      calls.push(text);
++      let rows: unknown[];
++      if (text.includes('from pg_stat_activity where pid=pg_backend_pid()'))
++        rows = [{ ...inspect, claims: JSON.stringify(claims) }];
++      else if (text === operatingReaderCatalog) {
++        rows = [{ profile: structuredClone(profile) }];
++        await hooks.afterCatalog();
++      } else if (
++        text === 'select private.commercial_customer_invoice_authorize() result'
++      ) {
++        if (!active) throw Error('revoked');
++        rows = [{ result: hooks.mapping(structuredClone(mapping)) }];
++      } else if (
++        text ===
++        'select private.commercial_customer_invoice_read_issued() result'
++      ) {
++        if (hooks.hang) return new Promise(() => {});
++        if (!active) throw Error('revoked');
++        rows = [
++          {
++            result: hooks.packet({
++              mapping: structuredClone(mapping),
++              invoice: structuredClone(f.value.invoice),
++              version: structuredClone(f.version),
++            }),
++          },
++        ];
++        await hooks.afterRead();
++      } else throw Error('Unexpected SQL operation');
++      return { rows: rows as T[] };
++    },
++  };
++  const caller = new CommercialCallerConnection(
++    connection,
++    f.auth,
++    f.bearer,
++    inspect,
++  );
++  const make = (
++    options = { enabled: true, mode: 'disposable-proposal' as const },
++  ) =>
++    operatingCustomerInvoiceRead(
++      f.auth,
++      f.bearer,
++      connection,
++      inspect,
++      scope,
++      options,
++    );
++  return {
++    ...f,
++    view,
++    scope,
++    rendered,
++    profile,
++    claims,
++    inspect,
++    connection,
++    caller,
++    calls,
++    hooks,
++    make,
++    revoke: () => {
++      active = false;
++    },
++    restore: () => {
++      active = true;
++    },
++  };
++}
+diff --git a/tests/invoice-guard-admission-proposal.test.ts b/tests/invoice-guard-admission-proposal.test.ts
+index b33ad6a25d8cc5731b1e46ba0546a92fbcab1854..25ee03c86abfb6bf5311a749f01cb96f414ecde9 100644
+--- a/tests/invoice-guard-admission-proposal.test.ts
++++ b/tests/invoice-guard-admission-proposal.test.ts
+@@ -45,7 +45,7 @@ const { qualifyInvoiceGuardProposal } = (await import(
+     const fixtureBytes = readFileSync(fixture);
+     if (
+       createHash('sha256').update(fixtureBytes).digest('hex') !==
+-      '6c5bbe0cac6f519dccd5dcfae6b3200a3a1ec1e821bad48ada495861aa8af9a1'
++      '2272e8b6b0cdef04ad41e33f7936dd40d1b93d870e01b1ce403a759b010a0a64'
+     )
+       throw Error('Exact sealed invoice guard proposal required');
+     return 'data:text/javascript;base64,' + fixtureBytes.toString('base64');
+diff --git a/tests/propel-dashboard-parity-source.test.ts b/tests/propel-dashboard-parity-source.test.ts
+index 54cb719dac5270996e7693ab56df437321ff5a1b..25ab1dcb12608c150a0882b5bd94ad72cbcbbc94 100644
+--- a/tests/propel-dashboard-parity-source.test.ts
++++ b/tests/propel-dashboard-parity-source.test.ts
+@@ -11,7 +11,7 @@ const { dashboardSource: source } = (await import(
+     );
+     if (
+       createHash('sha256').update(bytes).digest('hex') !==
+-      '6c5bbe0cac6f519dccd5dcfae6b3200a3a1ec1e821bad48ada495861aa8af9a1'
++      '2272e8b6b0cdef04ad41e33f7936dd40d1b93d870e01b1ce403a759b010a0a64'
+     )
+       throw Error('Exact approved dashboard/forms source fixture required');
+     return 'data:text/javascript;base64,' + bytes.toString('base64');
