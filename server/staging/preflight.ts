@@ -6,6 +6,19 @@ export interface ReadPreflightTarget {
   expiresAt: string;
 }
 export function validateReadTarget(t: ReadPreflightTarget, now = Date.now()) {
+  if (
+    !t ||
+    typeof t !== 'object' ||
+    (
+      [
+        'supabaseUrl',
+        'publishableKey',
+        'approvalReference',
+        'expiresAt',
+      ] as const
+    ).some((key) => typeof t[key] !== 'string')
+  )
+    throw new Error('Read-only preflight target rejected');
   const u = new URL(t.supabaseUrl);
   if (
     u.protocol !== 'https:' ||
@@ -32,20 +45,35 @@ export async function readConnectedPreflight(
   target: ReadPreflightTarget,
   transport: typeof fetch = fetch,
 ) {
-  const t = Object.freeze({ ...validateReadTarget(target) });
+  const t = Object.freeze({ ...target });
+  let checkedAt = Date.now();
+  validateReadTarget(t, checkedAt);
+  const expiresAt = Date.parse(t.expiresAt);
+  const currentWindow = () => {
+    const now = Date.now();
+    if (!Number.isFinite(now) || now < checkedAt || now >= expiresAt)
+      throw new Error(
+        'Read-only preflight approval window unavailable or expired',
+      );
+    checkedAt = now;
+    return expiresAt - now;
+  };
   const checks: { name: string; status: number; passed: boolean }[] = [];
   const read = async (path: string, schema?: string) => {
+    const remaining = currentWindow();
     const r = await transport(`${t.supabaseUrl.replace(/\/$/, '')}${path}`, {
       method: 'GET',
       redirect: 'error',
-      signal: AbortSignal.timeout(15000),
+      signal: AbortSignal.timeout(Math.min(15000, remaining)),
       headers: {
         apikey: t.publishableKey,
         ...(schema ? { 'Accept-Profile': schema } : {}),
       },
     });
+    currentWindow();
     // Treat non-JSON and transport failures as failures, never as permission denial.
     const body = (await r.json()) as Record<string, unknown>;
+    currentWindow();
     return { status: r.status, body };
   };
   const auth = await read('/auth/v1/settings');
@@ -94,6 +122,7 @@ export async function readConnectedPreflight(
     status: rpc.status,
     passed: [401, 403].includes(rpc.status) && rpc.body.code === '42501',
   });
+  currentWindow();
   return {
     scope: 'read-only anonymous boundary preflight; not tenant acceptance',
     passed: checks.filter((c) => c.passed).length,
