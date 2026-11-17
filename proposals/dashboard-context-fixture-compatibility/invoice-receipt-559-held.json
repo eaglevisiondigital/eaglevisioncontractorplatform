@@ -1,0 +1,344 @@
+{
+  "classification": "BLOCKED_INDEPENDENT_POSITIVE_RECEIPT_JOINS_UNKNOWN_UNAPPLIED_SOURCE_DATA",
+  "parent": "27e5b5fd1ac6566d1f56db33e139ca8d7a12121e",
+  "parentTree": "d73301c44873645e045ca53435023c3daeb67f61",
+  "parentFiles": 2567,
+  "proposedTree": "481ad20a1c825b1f715e3a117f937d9c856faf43",
+  "proposedFiles": 2595,
+  "patchSHA256": "7fb9056b4f3d565b85478574af43696f3dbaefcc8557863156cf47a729bd2755",
+  "helperSHA256": "920baddeea855bfb9dcd8fab21fcf88e8eb43445a722418f85bc75080eb58959",
+  "manifestSHA256": "6cc1f1bd5365833c20a75a10b5cd3615b1e75ab3f69d62053d5402df72d760af",
+  "bridgeSHA256": "ef9ba7bf9adc7d28cccc2069850afb5c3a554985482626d3aaeaa01bf9298a9a",
+  "newModelTestSHA256": "443cb6867d47261203694e13843de5302bcb12e34c52ad96b0158712846e929c",
+  "paths": [
+    {
+      "path": "playwright.customer-payment-publication.config.ts",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "23ca89ade838b2c3543ced5c7ccaabc2fddc4709eee328cd57cce81c33b465eb"
+    },
+    {
+      "path": "proposals/customer-payment-publication/CustomerPaymentReceipt.tsx",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "ebe7023f06156e663501fb6ef212b6727c8326b49f17e6e62764520d3537807d"
+    },
+    {
+      "path": "proposals/customer-payment-publication/README.md",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "8b804c86f6c918782acf3c463be2c3c6db09d6cc5c64522ae7dc1bfb7c2ce8bb"
+    },
+    {
+      "path": "proposals/customer-payment-publication/contract.ts",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "1ca2b3f0c49e36e3e161fb37ca3978675a23f7b26236eed1a5b07ce1de713f34"
+    },
+    {
+      "path": "proposals/customer-payment-publication/publication.proposed.sql",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "bff7f5f16fa620b4f7e684228d1ff41af696492027a782ea4698fe49d1fbb71d"
+    },
+    {
+      "path": "proposals/customer-payment-publication/qualification.ts",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "34b79320e84cee936584db0721485fe75ff16e11bbce7621787d7f1400e75030"
+    },
+    {
+      "path": "proposals/customer-payment-publication/reader.ts",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "7bc1cafcab20b5d0cf8a0bec1b3e2d0367b8265c6ba77e43c76736a7db691796"
+    },
+    {
+      "path": "proposals/customer-payment-publication/source.json",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "1a3e40dd79c17b897c416a60cdfccf225fd2116a5f52a294dc1d74c557300966"
+    },
+    {
+      "path": "proposals/customer-publication-admission/README.md",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "de2acff0e6c31282e2dae623a3e945d219f754c5541a29c9f041988a72ded60b"
+    },
+    {
+      "path": "proposals/customer-publication-admission/invoice-read.ts",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "ef9ba7bf9adc7d28cccc2069850afb5c3a554985482626d3aaeaa01bf9298a9a"
+    },
+    {
+      "path": "proposals/customer-publication-admission/read-only.ts",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "a21a74448d791894a54974db4228c7f5f87d69b8114b0f367e1ddef7e760b59f"
+    },
+    {
+      "path": "proposals/customer-publication-admission/reader-grants.sql.in",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "712570b6b7401d3e8dab0a1df9c26f40be3125acea294dd40d8c2155ebcc3987"
+    },
+    {
+      "path": "proposals/customer-publication-admission/source-author.patch",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "f9d63696a6c6731bea3c6384dfc66780650e89ca066e61f222f5139df44cc9ae"
+    },
+    {
+      "path": "proposals/customer-publication-admission/source.json",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "986fbdea1aac4b97c223c4440aec4ff2489387a27c9fbbe0170b0e03b7b1f167"
+    },
+    {
+      "path": "proposals/customer-publication-admission/source.ts",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "77f8fc84bcbb1d877a54d69ecd356a5381eb54b6f7c34e0f8f561145c44f9508"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/README.md",
+      "change": "M",
+      "mode": "100644",
+      "beforeSHA256": "1ad966849c033e6a4e51fde38b5821cfd8da50d477c3a1ef9f4becc81a5f1a49",
+      "afterSHA256": "487d46ab442f25c3f58bf402f8fe1357c2222c30889b4a0a733373776935f1fc"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/controls.test.mjs",
+      "change": "M",
+      "mode": "100644",
+      "beforeSHA256": "503b59166446caa94a6f2fd941634b0b7de6272712ee928ced026c602ff4891a",
+      "afterSHA256": "d67f9914e39e0ccc2ef34776a407073860a60eb1c545d1658dde375275d6878f"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/current-fixture.mjs",
+      "change": "M",
+      "mode": "100644",
+      "beforeSHA256": "a08883e5999a463612999ce9c8e86ef475bf9abc41e59f32a7c5c7f5f9549244",
+      "afterSHA256": "920baddeea855bfb9dcd8fab21fcf88e8eb43445a722418f85bc75080eb58959"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/dashboard.patch",
+      "change": "M",
+      "mode": "100644",
+      "beforeSHA256": "422f8e305655f0287c4108c076c03d37ed1f239e8edb721d3d8b1a622aad632f",
+      "afterSHA256": "7650742cbc53aa67b61d160d9233f31e9da4fc5fee0eb52c92197eb134a673c5"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/dashboard.proposed.txt",
+      "change": "M",
+      "mode": "100644",
+      "beforeSHA256": "b52c680288bbb7badd00127a40aef08acf16f96090c4b794742fa784061a061a",
+      "afterSHA256": "cf7cc29aee384c06b67eb5c70b8f05e9b5a8d687c477e1c3565c51015064bdda"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/invoice-held.patch",
+      "change": "M",
+      "mode": "100644",
+      "beforeSHA256": "7dff28934d0c0063643e23075069774b3d2188ab7c8a18c111f72cbc4940bbc9",
+      "afterSHA256": "32dd2924622eb02b88c6dc791e2de27d63913be23297bc71b1601d14fead6253"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/invoice.proposed.txt",
+      "change": "M",
+      "mode": "100644",
+      "beforeSHA256": "e9de778cbb1bcf85d05460e54d93fb2e7bac7b99b8f007dc7fd5741c4ffeecb6",
+      "afterSHA256": "0eabe83dcfe9132744724f2587f14b811dc7226b4a26dd5c9979ce4fc073fe4a"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/manifest.json",
+      "change": "M",
+      "mode": "100644",
+      "beforeSHA256": "ff7cc51eefbacf096555febeb4f4d6239cf10af62f1eafbdde36e116af227e5a",
+      "afterSHA256": "6cc1f1bd5365833c20a75a10b5cd3615b1e75ab3f69d62053d5402df72d760af"
+    },
+    {
+      "path": "proposals/invoice-payment-receipt/receipt.proposed.sql",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "1c1ec82ca52560de86ec19ff9a865babfc3967ff466b425692e733fd240fdef5"
+    },
+    {
+      "path": "server/invoices/commercial-payment-receipt.proposed.sql",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "1c1ec82ca52560de86ec19ff9a865babfc3967ff466b425692e733fd240fdef5"
+    },
+    {
+      "path": "server/invoices/customer-payment-publication.proposed.sql",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "bff7f5f16fa620b4f7e684228d1ff41af696492027a782ea4698fe49d1fbb71d"
+    },
+    {
+      "path": "tests/browser/customer-payment-publication.spec.ts",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "2f21f9ae382db3c3b5dfb577fe0c5f9ab2cfc61c35119b07dc4a321805cc2c6f"
+    },
+    {
+      "path": "tests/browser/fixtures/customer-payment-publication.tsx",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "96218906136c39e41cf7a5288670d0fa96671fc513f21153f7af7431ae37be5a"
+    },
+    {
+      "path": "tests/customer-invoice-payment-read.test.ts",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "443cb6867d47261203694e13843de5302bcb12e34c52ad96b0158712846e929c"
+    },
+    {
+      "path": "tests/customer-payment-publication-source.test.ts",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "d6affb93cceaa31ae6c7f87ccd415b9994ab28e95a8a4f63438c39e7167a1d13"
+    },
+    {
+      "path": "tests/customer-payment-publication.test.ts",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "2573489746fc485aa6749755fb467c702d5feff47ef2a06b9796cc04e07c680f"
+    },
+    {
+      "path": "tests/customer-publication-admission-package.test.ts",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "dbe662bd3b4f3800823cdba8c7bbe99cb18ac2e4e87b8cc8fe5700b06d2d768b"
+    },
+    {
+      "path": "tests/customer-publication-admission.test.ts",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "5c8af8e038f95daf3625986d98a160d1ccd3ff03e6672db94a4a96ea083ed601"
+    },
+    {
+      "path": "tests/database/customer-payment-publication-proposal.test.ts",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "d2a0eba327e6f33372f6539dd705fbed6bc40775c2c904ea1aaaeae105870f4a"
+    },
+    {
+      "path": "tests/database/customer-publication-admission.test.ts",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "db3988fa8a59cd65d03d3d04000fb4726e508f6d56658f2f155940e2e45d2e6d"
+    },
+    {
+      "path": "tests/fixtures/customer-payment-publication.ts",
+      "change": "A",
+      "mode": "100644",
+      "beforeSHA256": null,
+      "afterSHA256": "986f0cb158fef0fa94642fc84b1f15171e01018490f5cf3e16d6b76cb6700ae3"
+    },
+    {
+      "path": "tests/invoice-guard-admission-proposal.test.ts",
+      "change": "M",
+      "mode": "100644",
+      "beforeSHA256": "e9de778cbb1bcf85d05460e54d93fb2e7bac7b99b8f007dc7fd5741c4ffeecb6",
+      "afterSHA256": "0eabe83dcfe9132744724f2587f14b811dc7226b4a26dd5c9979ce4fc073fe4a"
+    },
+    {
+      "path": "tests/propel-dashboard-parity-source.test.ts",
+      "change": "M",
+      "mode": "100644",
+      "beforeSHA256": "b52c680288bbb7badd00127a40aef08acf16f96090c4b794742fa784061a061a",
+      "afterSHA256": "cf7cc29aee384c06b67eb5c70b8f05e9b5a8d687c477e1c3565c51015064bdda"
+    }
+  ],
+  "normalizedFrames": {
+    "before": {
+      "tree": "0168a6fba05fa3fa6b86d8fe18e40eb87afb4604",
+      "files": 2557
+    },
+    "after": {
+      "tree": "abf308a44039db09cadbac67f027c094c64a5895",
+      "files": 2585
+    }
+  },
+  "knownReadBase": "0e3bb4ab64666e7d78c01b8092b5ea36c1212b9c",
+  "newReadCurrentOrFinancialMetadataPorts": 0,
+  "canonicalProtectedSourceApplied": false,
+  "sourceApprovalRequested": false,
+  "validation": {
+    "unique38": true,
+    "modified10": true,
+    "added28": true,
+    "fullPhysicalProofFunctionByteExact": true,
+    "P1FullFreshPerReadBranchByteExact": true,
+    "original41BodiesAssertionsBudgetsByteExactExceptHeaderSeal": true,
+    "qualifyFunctionOnlyKnownReadBaseChanged": true,
+    "old75SourceHistoryRetained": "27e5b5fd1ac6566d1f56db33e139ca8d7a12121e",
+    "old75SetupMetadataUpdates": {
+      "afterPayloadFiles": 28,
+      "sourceLabels": "exact559 receipt context",
+      "physicalCountExpectedBeforeAfter": [2557, 2585],
+      "oldReaderInputVectors": 3
+    },
+    "newNodeControls": 6,
+    "totalNodeControls": 81,
+    "freshGitProcessesPerProof": 16,
+    "proofCache": false
+  },
+  "sourceQuality": {
+    "receipt-strict-types-final.log": {
+      "exitCode": 0,
+      "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "receipt-scoped-lint.log": {
+      "exitCode": 0,
+      "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "receipt-scoped-format.log": {
+      "exitCode": 0,
+      "rawSHA256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+    },
+    "receipt-features.log": {
+      "exitCode": 0,
+      "rawSHA256": "ad7b716617c7d2178fc1d2a760da5765c31e01d06b843325d57844ea49518a62"
+    }
+  },
+  "qualification": "BLOCKED_24PASS_2FAIL_INDEPENDENT_COMPONENT",
+  "reusedBoundaries": "old65/native23 reader source; original480/484 evidence only unchangedsource, no newwholeframe/native/operationalacceptance",
+  "genuineAuthInstalledSQLPrincipalCustodySettlement": "UNACCEPTED",
+  "release": "NO_GO",
+  "sourceAuthor": null,
+  "operationalReady": false,
+  "artifactFiles": 4,
+  "sourceAuthorParentExcludesArtifacts": true,
+  "independentFailureReviewSHA256": "845690ee33172be039383feff438d6c61fbdfc170f154708297816b6c80dc9e9",
+  "newNode81": "NOT_RUN_AFTER_POSITIVE_FAILURE",
+  "original41OnNewFrame": "NOT_RUN_AFTER_POSITIVE_FAILURE"
+}
