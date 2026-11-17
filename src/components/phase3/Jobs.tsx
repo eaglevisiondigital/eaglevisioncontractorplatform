@@ -1,4 +1,5 @@
 import { JobOriginalScope } from './JobOriginalScope';
+import { JobFinder } from './JobFinder';
 import {
   acquireForecastSave,
   exactForecastSource,
@@ -96,6 +97,14 @@ export function Jobs({
         <>
           {data.data?.jobs.length ? (
             <>
+              <JobFinder
+                repo={repo}
+                operations={operations}
+                org={company.id}
+                jobs={data.data.jobs}
+                selectedJobId={job?.id ?? ''}
+                onSelect={setJobId}
+              />
               <Field label="Financial job">
                 <select
                   value={job?.id ?? ''}
