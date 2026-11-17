@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useLayoutEffect, useRef, useState } from 'react';
 import type { Operations } from '../lib/operations';
 import type { CompanyProfile } from '../domain/platform';
 import { Customers } from './Customers';
@@ -85,30 +85,146 @@ export function CompanyOperations({
     <CompanySettings repo={repo} company={company} onSaved={onSaved} />
   );
 }
-export function NewLeadDashboard({
+const intakeStages = ['new', 'reviewing', 'qualified', 'closed'] as const;
+type IntakeStage = (typeof intakeStages)[number];
+type IntakeViewProps = { repo: Operations; org: string; onOpen: () => void };
+export function NewLeadDashboard({ repo, org, onOpen }: IntakeViewProps) {
+  const [display, setDisplay] = useState({
+    repo,
+    org,
+    board: false,
+    version: 0,
+  });
+  const latest = useRef(display);
+  useLayoutEffect(() => {
+    latest.current = display;
+  }, [display]);
+  const [blocked, setBlocked] = useState<{
+    display: typeof display;
+    reason: 'restricted' | 'unavailable';
+  }>();
+  const onBlocked = useCallback(
+    (reason: 'restricted' | 'unavailable') => {
+      if (latest.current === display) setBlocked({ display, reason });
+    },
+    [display],
+  );
+  const current = display.repo === repo && display.org === org;
+  const board = current && display.board;
+  if (!current) setDisplay({ repo, org, board: false, version: 0 });
+  return (
+    <>
+      <div className="filters" role="group" aria-label="Intake display">
+        <button
+          type="button"
+          className="secondary"
+          aria-pressed={!board}
+          onClick={() => setDisplay({ repo, org, board: false, version: 0 })}
+        >
+          Request queue
+        </button>
+        <button
+          type="button"
+          className="secondary"
+          aria-pressed={board}
+          onClick={() => setDisplay({ repo, org, board: true, version: 0 })}
+        >
+          Pipeline board
+        </button>
+      </div>
+      {board ? (
+        <section aria-label="Intake pipeline board">
+          <h2>Intake pipeline</h2>
+          <p>
+            Review requests by their current intake stage. Each stage has its
+            own page and count. Use Review intake to manage requests.
+          </p>
+          <button
+            type="button"
+            className="secondary"
+            onClick={() =>
+              setDisplay({
+                repo,
+                org,
+                board: true,
+                version: display.version + 1,
+              })
+            }
+          >
+            Refresh pipeline board
+          </button>
+          {blocked?.display === display ? (
+            <p>
+              {blocked.reason === 'restricted'
+                ? 'Your company role does not grant access to intake.'
+                : 'Intake is disabled for the selected organization.'}
+            </p>
+          ) : (
+            <div
+              key={display.version}
+              style={{
+                display: 'grid',
+                gridTemplateColumns:
+                  'repeat(auto-fit, minmax(min(100%, 13rem), 1fr))',
+                gap: '1rem',
+                alignItems: 'start',
+              }}
+            >
+              {intakeStages.map((stage) => (
+                <IntakeStageView
+                  key={stage}
+                  repo={repo}
+                  org={org}
+                  onOpen={onOpen}
+                  fixedStage={stage}
+                  onBlocked={onBlocked}
+                />
+              ))}
+            </div>
+          )}
+        </section>
+      ) : (
+        <IntakeStageView repo={repo} org={org} onOpen={onOpen} />
+      )}
+    </>
+  );
+}
+function IntakeStageView({
   repo,
   org,
   onOpen,
-}: {
-  repo: Operations;
-  org: string;
-  onOpen: () => void;
+  fixedStage,
+  onBlocked,
+}: IntakeViewProps & {
+  fixedStage?: IntakeStage;
+  onBlocked?: (reason: 'restricted' | 'unavailable') => void;
 }) {
-  const stages = ['new', 'reviewing', 'qualified', 'closed'] as const;
-  type Stage = (typeof stages)[number];
+  const stages = intakeStages;
+  type Stage = IntakeStage;
   const [selection, setSelection] = useState({
     repo,
     org,
     page: 0,
-    stage: 'new' as Stage,
+    stage: (fixedStage ?? 'new') as Stage,
+    fixedStage,
     version: 0,
   });
-  const sameContext = selection.repo === repo && selection.org === org;
+  const sameContext =
+    selection.repo === repo &&
+    selection.org === org &&
+    selection.fixedStage === fixedStage;
   const page = sameContext ? selection.page : 0;
-  const stage = sameContext ? selection.stage : 'new';
+  const stage = fixedStage ?? (sameContext ? selection.stage : 'new');
   const version = sameContext ? selection.version : 0;
   if (!sameContext)
-    setSelection({ repo, org, page: 0, stage: 'new', version: 0 });
+    setSelection({
+      repo,
+      org,
+      page: 0,
+      stage: fixedStage ?? 'new',
+      fixedStage,
+      version: 0,
+    });
   const leads = useResource(
     useCallback(async () => {
       const identity = { repo, org, page, stage, version };
@@ -118,9 +234,14 @@ export function NewLeadDashboard({
             repo.companyAccess(org),
             repo.listModules(org),
           ]);
-          if (!access.intake_read) return 'restricted' as const;
-          if (!modules.some((m) => m.module === 'intake' && m.enabled))
+          if (!access.intake_read) {
+            onBlocked?.('restricted');
+            return 'restricted' as const;
+          }
+          if (!modules.some((m) => m.module === 'intake' && m.enabled)) {
+            onBlocked?.('unavailable');
             return 'unavailable' as const;
+          }
           return 'allowed' as const;
         };
         const access = await available();
@@ -152,7 +273,7 @@ export function NewLeadDashboard({
           message: error instanceof Error ? error.message : 'Unable to load',
         };
       }
-    }, [repo, org, page, stage, version]),
+    }, [repo, org, page, stage, version, onBlocked]),
   );
   const current =
     !leads.loading &&
@@ -166,47 +287,89 @@ export function NewLeadDashboard({
   return (
     <article
       className="lead-dashboard"
-      aria-label={stage === 'new' ? 'New lead inbox' : 'Intake pipeline inbox'}
+      style={
+        fixedStage
+          ? {
+              padding: '1rem',
+              marginBottom: 0,
+              minWidth: 0,
+              overflowWrap: 'anywhere',
+              background: '#f1f8f5',
+            }
+          : undefined
+      }
+      aria-label={
+        fixedStage
+          ? `${fixedStage} intake stage`
+          : stage === 'new'
+            ? 'New lead inbox'
+            : 'Intake pipeline inbox'
+      }
     >
-      <div className="section-title">
+      <div
+        className="section-title"
+        style={
+          fixedStage
+            ? {
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                gap: '.5rem',
+              }
+            : undefined
+        }
+      >
         <div>
           <span className="eyebrow">INTAKE PIPELINE</span>
-          <h2>Your request review queue</h2>
+          {fixedStage ? (
+            <h3>{stage[0].toUpperCase() + stage.slice(1)}</h3>
+          ) : (
+            <h2>Your request review queue</h2>
+          )}
         </div>
         {current?.state === 'ready' && (
           <button onClick={onOpen}>Review intake</button>
         )}
       </div>
       <div className="filters">
-        <label>
-          Intake stage
-          <select
-            value={stage}
-            onChange={(event) => {
-              const next = event.target.value;
-              if (stages.some((item) => item === next))
-                setSelection({
-                  repo,
-                  org,
-                  page: 0,
-                  stage: next as Stage,
-                  version: 0,
-                });
-            }}
-          >
-            {stages.map((value) => (
-              <option key={value} value={value}>
-                {value[0].toUpperCase() + value.slice(1)}
-              </option>
-            ))}
-          </select>
-        </label>
+        {!fixedStage && (
+          <label>
+            Intake stage
+            <select
+              value={stage}
+              onChange={(event) => {
+                const next = event.target.value;
+                if (stages.some((item) => item === next))
+                  setSelection({
+                    repo,
+                    org,
+                    page: 0,
+                    stage: next as Stage,
+                    fixedStage,
+                    version: 0,
+                  });
+              }}
+            >
+              {stages.map((value) => (
+                <option key={value} value={value}>
+                  {value[0].toUpperCase() + value.slice(1)}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
         <button
           type="button"
           className="secondary"
           disabled={!current}
           onClick={() =>
-            setSelection({ repo, org, page, stage, version: version + 1 })
+            setSelection({
+              repo,
+              org,
+              page,
+              stage,
+              fixedStage,
+              version: version + 1,
+            })
           }
         >
           Refresh intake view
@@ -232,14 +395,17 @@ export function NewLeadDashboard({
           <dl
             className="metrics"
             style={{
-              gridTemplateColumns: 'repeat(auto-fit, minmax(9rem, 1fr))',
+              gridTemplateColumns: fixedStage
+                ? 'repeat(2, minmax(0, 1fr))'
+                : 'repeat(auto-fit, minmax(9rem, 1fr))',
+              ...(fixedStage ? { gap: '.6rem', margin: '.75rem 0' } : {}),
             }}
           >
-            <div className="notice">
+            <div className={fixedStage ? undefined : 'notice'}>
               <dt style={{ color: '#304c40' }}>Requests in selected stage</dt>
               <dd>{current.result.count}</dd>
             </div>
-            <div className="notice">
+            <div className={fixedStage ? undefined : 'notice'}>
               <dt style={{ color: '#304c40' }}>Requests on this page</dt>
               <dd>{current.result.rows.length}</dd>
             </div>
@@ -260,7 +426,14 @@ export function NewLeadDashboard({
               </p>
               <button
                 onClick={() =>
-                  setSelection({ repo, org, page: 0, stage, version: 0 })
+                  setSelection({
+                    repo,
+                    org,
+                    page: 0,
+                    stage,
+                    fixedStage,
+                    version: 0,
+                  })
                 }
               >
                 Return to first page
@@ -298,7 +471,14 @@ export function NewLeadDashboard({
                 page={page}
                 count={current.result.count}
                 onChange={(next) =>
-                  setSelection({ repo, org, page: next, stage, version: 0 })
+                  setSelection({
+                    repo,
+                    org,
+                    page: next,
+                    stage,
+                    fixedStage,
+                    version: 0,
+                  })
                 }
               />
             </>
