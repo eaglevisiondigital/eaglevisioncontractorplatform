@@ -21,6 +21,9 @@ import { ProviderControl } from '../server/providers/control';
 import { sha256 } from '../server/providers/safety';
 import type { AgreementBinding } from '../server/contracts/signing';
 import { execFileSync } from 'node:child_process';
+import { mkdtempSync, rmSync, symlinkSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join, resolve } from 'node:path';
 const org = crypto.randomUUID(),
   source = crypto.randomUUID(),
   bytes = Buffer.from('synthetic-file-bytes');
@@ -466,19 +469,31 @@ it('agreement store detects binding mutation and checks authority around create-
   expect(objects.stage).toHaveBeenCalledTimes(2);
 });
 it('sandbox acceptance CLI default plan performs no credential lookup or API calls', () => {
-  execFileSync(process.execPath, ['scripts/build-provider-acceptance.mjs'], {
-    stdio: 'pipe',
-  });
-  const plan = JSON.parse(
+  const root = mkdtempSync(join(tmpdir(), 'propel-provider-plan-'));
+  try {
+    for (const path of ['scripts', 'node_modules', 'public'])
+      symlinkSync(resolve(path), join(root, path), 'dir');
     execFileSync(
       process.execPath,
-      ['.staging/provider-readiness/runner.mjs', 'plan'],
-      { encoding: 'utf8' },
-    ),
-  );
-  expect(plan.status).toBe('NOT RUN');
-  expect(plan.networkCalls).toBe(0);
-  expect(plan.credentialsRead).toBe(0);
+      [resolve('scripts/build-provider-acceptance.mjs')],
+      {
+        cwd: root,
+        stdio: 'pipe',
+      },
+    );
+    const plan = JSON.parse(
+      execFileSync(
+        process.execPath,
+        [join(root, '.staging/provider-readiness/runner.mjs'), 'plan'],
+        { cwd: root, encoding: 'utf8' },
+      ),
+    );
+    expect(plan.status).toBe('NOT RUN');
+    expect(plan.networkCalls).toBe(0);
+    expect(plan.credentialsRead).toBe(0);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });
 it('workload verifier validates a real RSA signature and rejects algorithm/issuer/tenant/expiry substitution', async () => {
   const { generateKeyPairSync, sign } = await import('node:crypto');
