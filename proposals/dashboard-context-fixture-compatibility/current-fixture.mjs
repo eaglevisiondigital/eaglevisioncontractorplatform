@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { devNull } from 'node:os';
 const folder = 'proposals/dashboard-context-fixture-compatibility/';
 const manifestSeal =
-  'ea0e7eae62ad6a3fbce5a9634b363c77e2228399021a2bfec22f6772053fef6e';
+  'ff7cc51eefbacf096555febeb4f4d6239cf10af62f1eafbdde36e116af227e5a';
 const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const oid = (kind, bytes) =>
   createHash('sha1')
@@ -186,6 +186,9 @@ const gitEnvironment = Object.freeze({
   GIT_OPTIONAL_LOCKS: '0',
 });
 function gitBytes(...args) {
+  return gitInputBytes(undefined, ...args);
+}
+function gitInputBytes(input, ...args) {
   try {
     return execFileSync(
       'git',
@@ -200,7 +203,12 @@ function gitBytes(...args) {
         'credential.helper=',
         ...args,
       ],
-      { cwd: source, env: gitEnvironment, stdio: ['ignore', 'pipe', 'pipe'] },
+      {
+        cwd: source,
+        env: gitEnvironment,
+        input,
+        stdio: [input === undefined ? 'ignore' : 'pipe', 'pipe', 'pipe'],
+      },
     );
   } catch {
     fail();
@@ -211,14 +219,80 @@ function git(...args) {
     .toString()
     .trim();
 }
+// One fresh fixed-object batch per COMPLETE physical proof. No result survives
+// this call. The same immutable raw/parent/tree/delta/mode facts remain required.
+function readCommitObjects(refs) {
+  if (
+    !refs.length ||
+    new Set(refs).size !== refs.length ||
+    refs.some((ref) => !/^[a-f0-9]{40}$/.test(ref))
+  )
+    fail();
+  const bytes = gitInputBytes(
+    Buffer.from(refs.join('\n') + '\n'),
+    'cat-file',
+    '--batch',
+  );
+  const result = new Map();
+  let cursor = 0;
+  for (const ref of refs) {
+    const newline = bytes.indexOf(10, cursor);
+    if (newline < 0) fail();
+    const header = bytes.subarray(cursor, newline).toString('utf8');
+    const match = /^([a-f0-9]{40}) commit ([1-9][0-9]{0,5})$/.exec(header);
+    if (!match || match[1] !== ref) fail();
+    const size = Number(match[2]);
+    if (size > 131072 || !Number.isSafeInteger(size)) fail();
+    const start = newline + 1,
+      end = start + size;
+    if (end >= bytes.length || bytes[end] !== 10) fail();
+    const body = Buffer.from(bytes.subarray(start, end));
+    if (body.length !== size || oid('commit', body) !== ref) fail();
+    result.set(ref, body);
+    cursor = end + 1;
+  }
+  if (cursor !== bytes.length || result.size !== refs.length) fail();
+  return result;
+}
+function commitMetadata(bytes) {
+  const separator = bytes.indexOf('\n\n');
+  if (separator < 0) fail();
+  const headers = bytes.subarray(0, separator).toString('utf8').split('\n');
+  const trees = headers.filter((line) => /^tree /.test(line));
+  const parents = headers.filter((line) => /^parent /.test(line));
+  if (
+    trees.length !== 1 ||
+    parents.length !== 1 ||
+    !/^tree [a-f0-9]{40}$/.test(trees[0]) ||
+    !/^parent [a-f0-9]{40}$/.test(parents[0])
+  )
+    fail();
+  return { tree: trees[0].slice(5), parent: parents[0].slice(7) };
+}
 function authors() {
   try {
+    const native = manifest.nativeAuthor;
+    const authors = [...manifest.authors, native];
+    const refs = authors.map((author) => author.commit);
+    const objects = readCommitObjects(refs);
+    // Native Git parent visibility is separate from immutable raw commit bytes:
+    // local graft/shallow metadata must not substitute or withdraw a parent.
+    if (
+      git('show', '--no-patch', '--format=%H%x00%P%x00%T', ...refs) !==
+      authors
+        .map(
+          (author) => author.commit + '\0' + author.parent + '\0' + author.tree,
+        )
+        .join('\n')
+    )
+      fail();
     for (const author of manifest.authors) {
+      const bytes = objects.get(author.commit);
+      const metadata = commitMetadata(bytes);
       if (
-        git('cat-file', 'commit', author.commit) !== author.raw.trim() ||
-        git('show', '--no-patch', '--format=%P', author.commit) !==
-          author.parent ||
-        git('rev-parse', author.commit + '^{tree}') !== author.tree ||
+        bytes.toString().trim() !== author.raw.trim() ||
+        metadata.parent !== author.parent ||
+        metadata.tree !== author.tree ||
         git(
           'diff-tree',
           '--no-commit-id',
@@ -229,11 +303,10 @@ function authors() {
       )
         fail();
     }
-    const native = manifest.nativeAuthor;
+    const nativeMetadata = commitMetadata(objects.get(native.commit));
     if (
-      git('show', '--no-patch', '--format=%P', native.commit) !==
-        native.parent ||
-      git('rev-parse', native.commit + '^{tree}') !== native.tree ||
+      nativeMetadata.parent !== native.parent ||
+      nativeMetadata.tree !== native.tree ||
       git(
         'diff-tree',
         '--no-commit-id',
@@ -354,9 +427,9 @@ export function verifyCurrentPhysicalFrame() {
   }
   const tree = walk(source);
   if (
-    tree !== manifest.tree ||
-    files !== manifest.files ||
-    phases.length !== 5 ||
+    tree !== manifest.frames[phases[0]]?.tree ||
+    files !== manifest.frames[phases[0]]?.files ||
+    phases.length !== 2 ||
     phases.some((phase) => phase !== phases[0]) ||
     (capturedPhase && capturedPhase !== phases[0])
   )

@@ -9,6 +9,7 @@ import {
   chmodSync,
   symlinkSync,
   realpathSync,
+  lstatSync,
 } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { join } from 'node:path';
@@ -104,6 +105,17 @@ async function withImage(callback, { after = false } = {}) {
         assert.equal(hash(bytes), row.afterSHA256);
         writeFileSync(join(image, row.path), bytes);
       }
+    if (after)
+      for (const [path, pin] of Object.entries(
+        manifest.readerIntegration.additions,
+      )) {
+        const bytes = readFileSync(join(producer, path));
+        assert.equal(hash(bytes), pin.sha256);
+        mkdirSync(join(image, path.substring(0, path.lastIndexOf('/'))), {
+          recursive: true,
+        });
+        writeFileSync(join(image, path), bytes, { mode: 0o644 });
+      }
     process.chdir(image);
     const module = await import(
       pathToFileURL(join(image, folder + 'current-fixture.mjs')).href
@@ -126,7 +138,7 @@ const deny = (module) =>
   assert.throws(() => module.verifyCurrentPhysicalFrame(), /Exact joint/);
 for (const after of [false, true])
   test(
-    'exactS ' +
+    'exact553 ' +
       (after ? 'proposed' : 'original') +
       ' pair preserves original bodies and budgets',
     options,
@@ -136,7 +148,7 @@ for (const after of [false, true])
           const frame = module.verifyCurrentPhysicalFrame();
           assert.equal(frame.phase, after ? 'after' : 'before');
           assert.equal(frame.admissionAuthorized, false);
-          assert.equal(frame.files, 2546);
+          assert.equal(frame.files, after ? 2557 : 2546);
           assert.equal(
             module.dashboardSource('src/components/forms.tsx'),
             readFileSync(manifest.historicalFormsPath, 'utf8'),
@@ -199,7 +211,7 @@ for (const path of [
     }),
   );
 test(
-  'rejects exact533 C27 replacement rather than composing a second branch',
+  'rejects historical C27 before-source instead of approved553 source',
   options,
   () =>
     withImage(async (image, module) => {
@@ -208,7 +220,7 @@ test(
         git(
           image,
           'show',
-          'a24c0c75852d740da41d0abd2cf283c4230b9349:tests/cycle27-source-lineage.test.ts',
+          'c60c09c1fe9edab55220840499e2525a6751a558:tests/cycle27-source-lineage.test.ts',
         ),
       );
       deny(module);
@@ -289,6 +301,12 @@ test(
             row.path,
             git(image, 'show', manifest.base + ':' + row.path),
           );
+        for (const path of Object.keys(manifest.readerIntegration.additions))
+          rmSync(path);
+        rmSync('proposals/commercial-customer-operating-reader', {
+          recursive: true,
+          force: true,
+        });
         deny(module);
       },
       { after: true },
@@ -535,4 +553,281 @@ test('direct source reader rejects unknown and outside paths', options, () =>
     },
     { after: true },
   ),
+);
+
+for (const [path] of Object.entries(manifest.readerIntegration.additions))
+  test('rejects changed reviewed reader payload ' + path, options, () =>
+    withImage(
+      async (image, module) => {
+        mutate(image, path);
+        deny(module);
+      },
+      { after: true },
+    ),
+  );
+test(
+  'reader addition modes reject effective sticky executable and symlink',
+  options,
+  () =>
+    withImage(
+      async (image, module) => {
+        const path = 'proposals/commercial-customer-operating-reader/source.ts';
+        const bytes = readFileSync(path);
+        for (const mode of [0o1644, 0o755]) {
+          chmodSync(path, mode);
+          assert.equal(lstatSync(path).mode & 0o7777, mode);
+          deny(module);
+          chmodSync(path, 0o644);
+        }
+        rmSync(path);
+        symlinkSync(join(image, 'src/App.tsx'), path);
+        deny(module);
+        rmSync(path);
+        writeFileSync(path, bytes);
+      },
+      { after: true },
+    ),
+);
+test('partial reader additions cannot masquerade as original553', options, () =>
+  withImage(async (image, module) => {
+    const path = Object.keys(manifest.readerIntegration.additions)[0];
+    mkdirSync(path.substring(0, path.lastIndexOf('/')), { recursive: true });
+    writeFileSync(path, readFileSync(join(producer, path)));
+    deny(module);
+  }),
+);
+test('complete additions without resealed headers deny', options, () =>
+  withImage(async (image, module) => {
+    for (const [path] of Object.entries(manifest.readerIntegration.additions)) {
+      mkdirSync(path.substring(0, path.lastIndexOf('/')), { recursive: true });
+      writeFileSync(path, readFileSync(join(producer, path)));
+    }
+    deny(module);
+  }),
+);
+test('resealed headers without complete additions deny', options, () =>
+  withImage(async (image, module) => {
+    for (const [id, pin] of Object.entries(manifest.targets))
+      writeFileSync(pin.path, readFileSync(folder + id + '.proposed.txt'));
+    deny(module);
+  }),
+);
+test('cached qualification rejects late reader withdrawal', options, () =>
+  withImage(
+    async (image, module) => {
+      const q = await module.qualifyInvoiceGuardProposal();
+      rmSync(Object.keys(manifest.readerIntegration.additions)[0]);
+      assert.throws(() => q.check(), /Exact joint/);
+    },
+    { after: true },
+  ),
+);
+test(
+  'reader additions cannot become new financial source-read ports',
+  options,
+  () =>
+    withImage(
+      async (image, module) => {
+        const q = await module.qualifyInvoiceGuardProposal();
+        for (const path of Object.keys(manifest.readerIntegration.additions))
+          assert.throws(() => q.readCurrent(path), /Exact joint/);
+      },
+      { after: true },
+    ),
+);
+
+async function withBatchReply(mode, callback) {
+  const owned = mkdtempSync(
+    join(realpathSync(tmpdir()), 'reader-batch-reply-'),
+  );
+  const beforePath = process.env.PATH;
+  const modeFile = join(owned, 'mode.json');
+  const traceFile = join(owned, 'batches.jsonl');
+  writeFileSync(modeFile, JSON.stringify(mode));
+  const refs = [
+    ...manifest.authors.map((author) => author.commit),
+    manifest.nativeAuthor.commit,
+  ];
+  const program = String.raw`
+const fs = require('node:fs');
+const {spawnSync}=require('node:child_process');
+const args=process.argv.slice(2);
+const isBatch=args.at(-2)==='cat-file'&&args.at(-1)==='--batch';
+if(!isBatch){const r=spawnSync('/usr/bin/git',args,{stdio:'inherit',env:process.env});process.exit(r.status??73);}
+const input=fs.readFileSync(0);
+if(input.toString()!==__REFS__.join('\n')+'\n')process.exit(74);
+const r=spawnSync('/usr/bin/git',args,{input,env:process.env});
+if(r.status!==0){process.stderr.write(r.stderr);process.exit(r.status??75);}
+let out=Buffer.from(r.stdout);const mode=JSON.parse(fs.readFileSync(__MODE_FILE__,'utf8'));
+fs.appendFileSync(__TRACE_FILE__,JSON.stringify({mode,input:input.toString()})+'\n');
+const newline=out.indexOf(10);const fields=out.subarray(0,newline).toString().split(' ');const end=newline+1+Number(fields[2])+1;
+if(mode==='missing')out=Buffer.from(fields[0]+' missing\n');
+else if(mode==='wrong-type')out=Buffer.concat([Buffer.from(fields[0]+' blob '+fields[2]+'\n'),out.subarray(newline+1)]);
+else if(mode==='wrong-oid')out=Buffer.concat([Buffer.from('0'.repeat(40)+' commit '+fields[2]+'\n'),out.subarray(newline+1)]);
+else if(mode==='wrong-size')out=Buffer.concat([Buffer.from(fields[0]+' commit '+(Number(fields[2])+1)+'\n'),out.subarray(newline+1)]);
+else if(mode==='oversized')out=Buffer.concat([Buffer.from(fields[0]+' commit 999999\n'),out.subarray(newline+1)]);
+else if(mode==='corrupt-body')out[newline+1]^=1;
+else if(mode==='duplicate-record')out=Buffer.concat([out.subarray(0,end),out]);
+else if(mode==='reordered-records'){const n2=out.indexOf(10,end);const f2=out.subarray(end,n2).toString().split(' ');const e2=n2+1+Number(f2[2])+1;out=Buffer.concat([out.subarray(end,e2),out.subarray(0,end),out.subarray(e2)]);}
+else if(mode==='extra-trailing')out=Buffer.concat([out,Buffer.from('\n')]);
+else if(mode==='truncated')out=out.subarray(0,out.length-1);
+else if(mode!=='valid')process.exit(76);
+process.stdout.write(out);process.stderr.write(r.stderr);
+`;
+  writeFileSync(
+    join(owned, 'git'),
+    '#!' +
+      process.execPath +
+      '\n' +
+      program
+        .replace('__REFS__', JSON.stringify(refs))
+        .replaceAll('__MODE_FILE__', JSON.stringify(modeFile))
+        .replaceAll('__TRACE_FILE__', JSON.stringify(traceFile)),
+    { mode: 0o755 },
+  );
+  try {
+    process.env.PATH = owned + ':' + beforePath;
+    await callback({ modeFile, traceFile });
+  } finally {
+    if (beforePath === undefined) delete process.env.PATH;
+    else process.env.PATH = beforePath;
+    rmSync(owned, { recursive: true, force: true });
+  }
+}
+for (const mode of [
+  'missing',
+  'wrong-type',
+  'wrong-oid',
+  'wrong-size',
+  'oversized',
+  'corrupt-body',
+  'duplicate-record',
+  'reordered-records',
+  'extra-trailing',
+  'truncated',
+])
+  test('fresh commit batch rejects ' + mode, options, () =>
+    withBatchReply(mode, () =>
+      withImage(
+        async (image, module) => {
+          deny(module);
+        },
+        { after: true },
+      ),
+    ),
+  );
+test(
+  'every complete physical proof performs a new fixed commit batch',
+  options,
+  () =>
+    withBatchReply('valid', ({ traceFile }) =>
+      withImage(
+        async (image, module) => {
+          module.verifyCurrentPhysicalFrame();
+          module.verifyCurrentPhysicalFrame();
+          const rows = readFileSync(traceFile, 'utf8')
+            .trim()
+            .split('\n')
+            .map((row) => JSON.parse(row));
+          assert.equal(rows.length, 2);
+          assert.equal(rows[0].input, rows[1].input);
+        },
+        { after: true },
+      ),
+    ),
+);
+test('cached module rejects fresh commit metadata withdrawal', options, () =>
+  withBatchReply('valid', ({ modeFile, traceFile }) =>
+    withImage(
+      async (image, module) => {
+        module.verifyCurrentPhysicalFrame();
+        writeFileSync(modeFile, JSON.stringify('corrupt-body'));
+        deny(module);
+        const rows = readFileSync(traceFile, 'utf8')
+          .trim()
+          .split('\n')
+          .map((row) => JSON.parse(row));
+        assert.equal(rows.length, 2);
+      },
+      { after: true },
+    ),
+  ),
+);
+
+test(
+  'fresh native parent view rejects same-tree graft substitution',
+  options,
+  () =>
+    withImage(
+      async (image, module) => {
+        module.verifyCurrentPhysicalFrame();
+        const author = manifest.authors[0];
+        const tree = git(image, 'show', '-s', '--format=%T', author.parent)
+          .toString()
+          .trim();
+        const body =
+          'tree ' +
+          tree +
+          '\nauthor Test <test@example.invalid> 1 +0000\ncommitter Test <test@example.invalid> 1 +0000\n\nsame tree graft control\n';
+        const replacement = execFileSync(
+          '/usr/bin/git',
+          ['hash-object', '-w', '-t', 'commit', '--stdin'],
+          { cwd: image, env: gitEnv, input: body },
+        )
+          .toString()
+          .trim();
+        const delta = git(
+          image,
+          'diff-tree',
+          '--no-commit-id',
+          '--name-status',
+          '-r',
+          author.commit,
+        );
+        mkdirSync(join(image, '.git/info'), { recursive: true });
+        writeFileSync(
+          join(image, '.git/info/grafts'),
+          author.commit + ' ' + replacement + '\n',
+        );
+        assert.equal(
+          git(image, 'show', '-s', '--format=%P', author.commit)
+            .toString()
+            .trim(),
+          replacement,
+        );
+        assert.deepEqual(
+          git(
+            image,
+            'diff-tree',
+            '--no-commit-id',
+            '--name-status',
+            '-r',
+            author.commit,
+          ),
+          delta,
+        );
+        deny(module);
+      },
+      { after: true },
+    ),
+);
+test(
+  'fresh native parent view rejects shallow parent withdrawal',
+  options,
+  () =>
+    withImage(
+      async (image, module) => {
+        module.verifyCurrentPhysicalFrame();
+        const author = manifest.authors[0];
+        writeFileSync(join(image, '.git/shallow'), author.commit + '\n');
+        assert.equal(
+          git(image, 'show', '-s', '--format=%P', author.commit)
+            .toString()
+            .trim(),
+          '',
+        );
+        deny(module);
+      },
+      { after: true },
+    ),
 );

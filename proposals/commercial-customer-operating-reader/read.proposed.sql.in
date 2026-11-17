@@ -1,0 +1,59 @@
+-- UNAPPLIED finite nonproduction scope, no route/store/writer. NOT a migration.
+-- Separate exact SQL/grant approval required. The four-column owner ACL and
+-- owner-only SELECT policy intentionally expand the existing trusted owner TCB.
+begin;
+grant execute on function private.is_platform_admin() to __OWNER__;
+grant select(organization_id,customer_id,user_id,active) on public.portal_identities to __OWNER__;
+create policy commercial_customer_identity_read on public.portal_identities for select to __OWNER__ using(true);
+create function private.commercial_customer_invoice_authorize() returns jsonb
+language plpgsql volatile security definer set search_path='' as $authorize$
+declare c jsonb:=auth.jwt(); h private.commercial_invoice_drafts; expiry bigint;terminal record;
+begin
+ if current_setting('transaction_isolation')<>'read committed' or session_user<>'__LOGIN__' then raise exception 'Customer read unavailable' using errcode='42501';end if;
+ if auth.uid() is distinct from '__USER__'::uuid or c->>'sub' is distinct from '__USER__' or c->>'session_id' is distinct from '__SESSION__' or c->>'aal' is distinct from 'aal2' or jsonb_typeof(c->'exp') is distinct from 'number' then raise exception 'Customer read unavailable' using errcode='42501';end if;
+ if (c->>'exp')::numeric<>trunc((c->>'exp')::numeric) then raise exception 'Customer read unavailable' using errcode='42501';end if;
+ expiry:=least(__UNTIL__::bigint,((c->>'exp')::numeric*1000)::bigint);
+ -- Plain reads: no new row lock order or UPDATE privilege is introduced.
+ if expiry<=floor(extract(epoch from clock_timestamp())*1000) or not exists(select 1 from auth.users u join auth.sessions s on s.user_id=u.id where u.id='__USER__'::uuid and s.id='__SESSION__'::uuid and u.email_confirmed_at is not null and u.deleted_at is null and not u.is_anonymous and(u.banned_until is null or u.banned_until<=clock_timestamp()) and(s.not_after is null or s.not_after>clock_timestamp())) then raise exception 'Customer read unavailable' using errcode='42501';end if;
+ if not exists(select 1 from public.organizations where id='__ORG__'::uuid and status='active') or not exists(select 1 from public.portal_identities where organization_id='__ORG__'::uuid and customer_id='__CUSTOMER__'::uuid and user_id='__USER__'::uuid and active) then raise exception 'Customer read unavailable' using errcode='42501';end if;
+ if exists(select 1 from public.memberships where user_id='__USER__'::uuid and active) or private.is_platform_admin() then raise exception 'Customer-only identity required' using errcode='42501';end if;
+ select * into h from private.commercial_invoice_drafts where organization_id='__ORG__'::uuid and id='__INVOICE__'::uuid and customer_id='__CUSTOMER__'::uuid and location_id='__LOCATION__'::uuid and source_version_id='__VERSION__'::uuid and issued_revision=__REVISION__ and current_revision=__REVISION__ and source_hash='__HASH__' and issue_command_id='__ISSUE__'::uuid;
+ if not found or h.invoice_number is null or h.issued_at is null then raise exception 'Customer read unavailable' using errcode='42501';end if;
+ if not exists(select 1 from public.estimate_versions v join public.estimates p on p.organization_id=v.organization_id and p.id=v.estimate_id where v.organization_id=h.organization_id and v.id=h.source_version_id and v.status='issued' and p.status='issued' and p.current_version_id=v.id and v.customer_id=h.customer_id and v.location_id is not distinct from h.location_id and v.payload->>'currency'=h.currency and(v.calculation->>'total_minor')::numeric=h.amount_minor and encode(sha256(convert_to(jsonb_build_object('version',v.id,'customer',v.customer_id,'location',v.location_id,'payload',v.payload,'calculation',v.calculation,'tax_policy',v.tax_policy_snapshot)::text,'UTF8')),'hex')=h.source_hash and not exists(select 1 from public.estimate_versions n where n.organization_id=v.organization_id and n.estimate_id=v.estimate_id and n.status='issued' and n.version_number>v.version_number)) then raise exception 'Customer read unavailable' using errcode='42501';end if;
+ -- One fresh terminal statement after the earlier source/row wait. This is
+ -- the READ COMMITTED database currentness point, not an administrative fence.
+ select h2 as original,least(__UNTIL__::bigint,((c->>'exp')::numeric*1000)::bigint,coalesce(floor(extract(epoch from se.not_after)*1000)::bigint,__UNTIL__::bigint)) as expiry into terminal
+ from private.commercial_invoice_drafts h2
+ join public.estimate_versions v on v.organization_id=h2.organization_id and v.id=h2.source_version_id
+ join public.estimates p on p.organization_id=v.organization_id and p.id=v.estimate_id
+ join public.organizations o on o.id=h2.organization_id and o.status='active'
+ join public.portal_identities i on i.organization_id=h2.organization_id and i.customer_id=h2.customer_id and i.user_id='__USER__'::uuid and i.active
+ join auth.users u on u.id=i.user_id and u.email_confirmed_at is not null and u.deleted_at is null and not u.is_anonymous and(u.banned_until is null or u.banned_until<=clock_timestamp())
+ join auth.sessions se on se.user_id=u.id and se.id='__SESSION__'::uuid and(se.not_after is null or se.not_after>clock_timestamp())
+ where h2.organization_id='__ORG__'::uuid and h2.id='__INVOICE__'::uuid and h2.customer_id='__CUSTOMER__'::uuid and h2.location_id='__LOCATION__'::uuid and h2.source_version_id='__VERSION__'::uuid and h2.issued_revision=__REVISION__ and h2.current_revision=__REVISION__ and h2.source_hash='__HASH__' and h2.issue_command_id='__ISSUE__'::uuid
+ and v.status='issued' and p.status='issued' and p.current_version_id=v.id and v.customer_id=h2.customer_id and v.location_id is not distinct from h2.location_id and v.payload->>'currency'=h2.currency and(v.calculation->>'total_minor')::numeric=h2.amount_minor
+ and encode(sha256(convert_to(jsonb_build_object('version',v.id,'customer',v.customer_id,'location',v.location_id,'payload',v.payload,'calculation',v.calculation,'tax_policy',v.tax_policy_snapshot)::text,'UTF8')),'hex')=h2.source_hash
+ and not exists(select 1 from public.estimate_versions n where n.organization_id=v.organization_id and n.estimate_id=v.estimate_id and n.status='issued' and n.version_number>v.version_number)
+ and not exists(select 1 from public.memberships where user_id='__USER__'::uuid and active) and not private.is_platform_admin();
+ if not found then raise exception 'Current customer scope/source unavailable' using errcode='42501';end if;
+ h:=terminal.original;expiry:=terminal.expiry;
+ if expiry<=floor(extract(epoch from clock_timestamp())*1000) then raise exception 'Customer read expired' using errcode='42501';end if;
+ return jsonb_build_object('mode','fictional-local','active',true,'userId','__USER__','sessionId','__SESSION__','organizationId',h.organization_id,'customerId',h.customer_id,'locationId',h.location_id,'invoiceId',h.id,'sourceVersionId',h.source_version_id,'sourceHash',h.source_hash,'revision',h.issued_revision,'mappingRevision','__REVIEW__','expiresAt',expiry,'issuedNumber',h.invoice_number,'issuanceReceiptId',h.issue_command_id);
+end$authorize$;
+alter function private.commercial_customer_invoice_authorize() owner to __OWNER__;
+revoke all on function private.commercial_customer_invoice_authorize() from public,anon,authenticated,service_role;
+create function private.commercial_customer_invoice_read_issued() returns jsonb
+language plpgsql volatile security definer set search_path='' as $issued$
+declare a jsonb;b jsonb;v public.estimate_versions;packet jsonb;
+begin
+ a:=private.commercial_customer_invoice_authorize();
+ select * into v from public.estimate_versions where organization_id='__ORG__'::uuid and id='__VERSION__'::uuid;
+ if not found then raise exception 'Customer read unavailable' using errcode='42501';end if;
+ packet:=jsonb_build_object('mapping',a,'invoice',private.commercial_issue_projection('__ORG__'::uuid,'__INVOICE__'::uuid),'version',to_jsonb(v));
+ b:=private.commercial_customer_invoice_authorize();
+ if a is distinct from b then raise exception 'Customer read changed' using errcode='42501';end if;
+ return packet;
+end$issued$;
+alter function private.commercial_customer_invoice_read_issued() owner to __OWNER__;
+revoke all on function private.commercial_customer_invoice_read_issued() from public,anon,authenticated,service_role;
+commit;
