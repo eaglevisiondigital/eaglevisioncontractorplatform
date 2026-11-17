@@ -7,7 +7,14 @@ import { CustomerChangeRequests } from './CustomerChangeRequests';
 import { customerChangeWorkspace } from '../../lib/customer-change-workspace';
 import { BackOfficeText } from '../property/back-office-copy';
 import { RepairScopeReadiness } from '../property/RepairScopeReadiness';
-import { useState, useCallback, useRef, useLayoutEffect } from 'react';
+import {
+  useState,
+  useCallback,
+  useRef,
+  useLayoutEffect,
+  useMemo,
+  type RefObject,
+} from 'react';
 import type { Phase3Repository } from '../../lib/phase3';
 import type { CompanyProfile } from '../../domain/platform';
 import {
@@ -33,6 +40,55 @@ import { Field, Money, Quantity, Percent } from './fields';
 import { MaterialImport } from './MaterialImport';
 import { VoiceDraftReview } from './VoiceDraftReview';
 import type { VoiceDraftContext } from './voice-draft-review';
+const unavailableEstimate =
+  'This estimate is unavailable or has changed. Refresh estimates before opening it.';
+type EstimateRow = Awaited<ReturnType<Phase3Repository['list']>>[number];
+const estimateIdentity = (row: EstimateRow) =>
+  JSON.stringify([
+    row.id,
+    row.organization_id,
+    row.estimate_number,
+    row.project_name,
+    row.customer_id,
+    row.current_version_id,
+    row.status,
+    row.total_minor,
+    row.currency,
+    row.created_at,
+    row.updated_at,
+  ]);
+const ownedEstimates = (rows: readonly EstimateRow[], org: string) =>
+  Array.isArray(rows) &&
+  new Set(rows.map((row) => row.id)).size === rows.length &&
+  rows.every(
+    (row) =>
+      row.organization_id === org &&
+      [
+        row.id,
+        row.estimate_number,
+        row.project_name,
+        row.customer_id,
+        row.created_at,
+        row.updated_at,
+      ].every((value) => typeof value === 'string' && !!value) &&
+      (row.current_version_id === null ||
+        typeof row.current_version_id === 'string') &&
+      ['draft', 'issued', 'archived'].includes(row.status) &&
+      /^[A-Z]{3}$/.test(row.currency) &&
+      Number.isSafeInteger(row.total_minor) &&
+      row.total_minor >= 0,
+  );
+async function requireEstimateRead(repo: Phase3Repository, org: string) {
+  const [access, modules] = await Promise.all([
+    repo.operations.companyAccess(org),
+    repo.operations.listModules(org),
+  ]);
+  if (
+    !access.estimates ||
+    !modules.some((m) => m.module === 'estimates' && m.enabled)
+  )
+    throw Error(unavailableEstimate);
+}
 export function Estimates({
   repo,
   company,
@@ -55,6 +111,27 @@ export function Estimates({
       initialBundle,
     );
   const task = useTask();
+  const selectionContext = useMemo(
+    () => ({ repo, org: company.id }),
+    [repo, company.id],
+  );
+  const [selectionOrigin, setSelectionOrigin] = useState(selectionContext);
+  const editorHeading = useRef<HTMLHeadingElement>(null);
+  const searchInput = useRef<HTMLInputElement>(null);
+  const rowButtons = useRef(new Map<string, HTMLButtonElement>());
+  const focusEditor = useRef(false);
+  const returnFocus = useRef<
+    | {
+        repo: Phase3Repository;
+        org: string;
+        id: string;
+        source: unknown;
+        query: string;
+        status: string;
+        page: number;
+      }
+    | undefined
+  >(undefined);
   const active = useRef<{ repo: Phase3Repository | null; org: string }>({
     repo,
     org: company.id,
@@ -67,20 +144,178 @@ export function Estimates({
   }, [repo, company.id]);
   const current = () =>
     active.current.repo === repo && active.current.org === company.id;
-  const data = useResource(
-    useCallback(
-      async () => ({
-        list: await repo.list(company.id),
-        customers: (await repo.operations.listCustomers(company.id, '', '', 0))
-          .rows,
-        templates: await repo.templates(company.id),
-        defaults: await repo.defaults(company.id),
-        catalog: await repo.catalog(company.id),
-        taxes: await repo.taxes(company.id),
-      }),
-      [repo, company.id],
-    ),
+  const resource = useResource(
+    useCallback(async () => {
+      try {
+        await requireEstimateRead(repo, company.id);
+        const list: EstimateRow[] = await repo.list(company.id);
+        const loaded = {
+          list,
+          customers: (
+            await repo.operations.listCustomers(company.id, '', '', 0)
+          ).rows,
+          templates: await repo.templates(company.id),
+          defaults: await repo.defaults(company.id),
+          catalog: await repo.catalog(company.id),
+          taxes: await repo.taxes(company.id),
+          sourceRepo: repo,
+          sourceOrg: company.id,
+        };
+        if (!ownedEstimates(loaded.list, company.id))
+          throw Error(unavailableEstimate);
+        await requireEstimateRead(repo, company.id);
+        return loaded;
+      } catch {
+        throw Error(unavailableEstimate);
+      }
+    }, [repo, company.id]),
   );
+  const [denied, setDenied] = useState<{
+    repo: Phase3Repository;
+    org: string;
+    source: typeof resource.data;
+  }>();
+  const deniedHere =
+    denied?.repo === repo &&
+    denied.org === company.id &&
+    denied.source === resource.data;
+  const data = {
+    ...resource,
+    data:
+      !deniedHere &&
+      resource.data?.sourceRepo === repo &&
+      resource.data.sourceOrg === company.id
+        ? resource.data
+        : undefined,
+    error: deniedHere ? unavailableEstimate : resource.error,
+  };
+  const context = useMemo(
+    () => ({
+      repo,
+      org: company.id,
+      source: data.data,
+      loading: resource.loading,
+      query,
+      status,
+      page,
+      voiceDraft,
+    }),
+    [
+      repo,
+      company.id,
+      data.data,
+      resource.loading,
+      query,
+      status,
+      page,
+      voiceDraft,
+    ],
+  );
+  const liveNavigation = useRef<typeof context | undefined>(undefined);
+  const opening = useRef<typeof context | undefined>(undefined);
+  const [activity, setActivity] = useState<typeof context>();
+  useLayoutEffect(() => {
+    liveNavigation.current = context;
+    return () => {
+      if (liveNavigation.current === context)
+        liveNavigation.current = undefined;
+    };
+  }, [context]);
+  const choose = (bundle: EstimateBundle) => {
+    setSelectionOrigin(selectionContext);
+    setSelected(bundle);
+  };
+  const selectedHere = !!selected && selectionOrigin === selectionContext;
+  useLayoutEffect(() => {
+    if (selectedHere && focusEditor.current) {
+      focusEditor.current = false;
+      editorHeading.current?.focus();
+    }
+    const target = returnFocus.current;
+    if (
+      !target ||
+      selectedHere ||
+      resource.loading ||
+      target.source === resource.data
+    )
+      return;
+    returnFocus.current = undefined;
+    if (
+      target.repo !== repo ||
+      target.org !== company.id ||
+      target.query !== query ||
+      target.status !== status ||
+      target.page !== page
+    )
+      return;
+    (rowButtons.current.get(target.id) ?? searchInput.current)?.focus();
+  }, [
+    selectedHere,
+    selected,
+    resource.loading,
+    resource.data,
+    repo,
+    company.id,
+    query,
+    status,
+    page,
+  ]);
+  async function open(row: EstimateRow) {
+    if (opening.current === context) return;
+    opening.current = context;
+    setActivity(context);
+    const active = () => liveNavigation.current === context;
+    try {
+      const source = data.data;
+      if (
+        !source ||
+        resource.loading ||
+        !ownedEstimates(source.list, company.id) ||
+        !source.list.includes(row)
+      )
+        throw Error(unavailableEstimate);
+      const expected = structuredClone(row),
+        identity = estimateIdentity(expected);
+      if (!expected.current_version_id) throw Error(unavailableEstimate);
+      const same = (value: EstimateRow | undefined) =>
+        !!value && estimateIdentity(value) === identity;
+      await requireEstimateRead(repo, company.id);
+      if (!active()) return;
+      const bundle = structuredClone(
+        await repo.get(company.id, expected.id, expected.current_version_id),
+      );
+      const exact = () =>
+        same(bundle.estimate) &&
+        bundle.version.id === expected.current_version_id &&
+        bundle.version.estimate_id === expected.id &&
+        bundle.version.organization_id === company.id &&
+        bundle.version.payload.customer_id === expected.customer_id &&
+        bundle.version.payload.project.name === expected.project_name &&
+        bundle.version.customer_snapshot.id === expected.customer_id &&
+        bundle.version.payload.currency === expected.currency &&
+        bundle.version.calculation.total_minor === expected.total_minor &&
+        (expected.status === 'archived' ||
+          bundle.version.status === expected.status) &&
+        (!voiceDraft || voiceDraft.target.estimate_id === expected.id);
+      if (!active() || !exact()) throw Error(unavailableEstimate);
+      await requireEstimateRead(repo, company.id);
+      if (!active()) return;
+      if (
+        !ownedEstimates(source.list, company.id) ||
+        !same(source.list.find((e) => e.id === expected.id)) ||
+        !exact()
+      )
+        throw Error(unavailableEstimate);
+      returnFocus.current = undefined;
+      focusEditor.current = true;
+      choose(bundle);
+    } catch {
+      if (active()) setDenied({ repo, org: company.id, source: resource.data });
+    } finally {
+      if (opening.current === context) opening.current = undefined;
+      if (active()) setActivity(undefined);
+    }
+  }
   async function create(templateId?: string) {
     await task.run(async () => {
       if (!data.data?.customers.length)
@@ -108,12 +343,13 @@ export function Estimates({
       }
       const created = await repo.create(company, p);
       if (current()) {
-        setSelected(created);
+        choose(created);
         data.reload();
       }
     }, 'Draft created');
   }
   if (
+    selectedHere &&
     selected &&
     selected.version.organization_id === company.id &&
     selected.estimate.organization_id === company.id
@@ -130,13 +366,23 @@ export function Estimates({
         taxes={data.data?.taxes ?? []}
         defaults={data.data?.defaults}
         voiceDraft={voiceDraft}
+        headingRef={editorHeading}
         onChange={(b) => {
           if (current() && b.version.organization_id === company.id) {
-            setSelected(b);
+            choose(b);
             data.reload();
           }
         }}
         onClose={() => {
+          returnFocus.current = {
+            repo,
+            org: company.id,
+            id: selected.estimate.id,
+            source: resource.data,
+            query,
+            status,
+            page,
+          };
           setSelected(undefined);
           data.reload();
         }}
@@ -151,6 +397,9 @@ export function Estimates({
           .toLowerCase()
           .includes(query.toLowerCase()),
     ) ?? [];
+  const lastPage = Math.max(0, Math.ceil(rows.length / 10) - 1);
+  const visiblePage = Math.min(page, lastPage);
+  const busy = activity === context;
   return (
     <article className="p3-workspace">
       <div className="section-title">
@@ -162,14 +411,29 @@ export function Estimates({
             <BackOfficeText text="Estimates built around your work" />
           </h2>
         </div>
-        {!voiceDraft && (
+        <div
+          className="button-row"
+          style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}
+        >
           <button
-            disabled={task.busy || !data.data}
-            onClick={() => void create()}
+            className="secondary"
+            disabled={resource.loading}
+            onClick={() => {
+              liveNavigation.current = undefined;
+              data.reload();
+            }}
           >
-            <BackOfficeText text="New estimate" />
+            Refresh estimates
           </button>
-        )}
+          {!voiceDraft && (
+            <button
+              disabled={task.busy || busy || !data.data}
+              onClick={() => void create()}
+            >
+              <BackOfficeText text="New estimate" />
+            </button>
+          )}
+        </div>
       </div>
       <p>Build clear scope. Protect your costs. Keep every issued version.</p>
       <ResourceStatus {...data} />
@@ -177,7 +441,7 @@ export function Estimates({
         <CustomerChangeRequests
           company={company}
           onOpen={(bundle) => {
-            setSelected(bundle);
+            choose(bundle);
             data.reload();
           }}
         />
@@ -186,13 +450,17 @@ export function Estimates({
         <span>
           Drafts{' '}
           <strong>
-            {data.data?.list.filter((e) => e.status === 'draft').length ?? 0}
+            {data.data
+              ? data.data.list.filter((e) => e.status === 'draft').length
+              : '—'}
           </strong>
         </span>
         <span>
           <BackOfficeText text="Internally issued" />{' '}
           <strong>
-            {data.data?.list.filter((e) => e.status === 'issued').length ?? 0}
+            {data.data
+              ? data.data.list.filter((e) => e.status === 'issued').length
+              : '—'}
           </strong>
         </span>
         <span>
@@ -203,6 +471,7 @@ export function Estimates({
       <div className="form-grid">
         <Field label="Search estimates">
           <input
+            ref={searchInput}
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);
@@ -240,16 +509,16 @@ export function Estimates({
         )}
       </div>
       <div className="estimate-list">
-        {rows.slice(page * 10, page * 10 + 10).map((e) => (
+        {rows.slice(visiblePage * 10, visiblePage * 10 + 10).map((e) => (
           <button
             className="estimate-list-row"
             key={e.id}
-            onClick={() =>
-              void task.run(
-                async () => setSelected(await repo.get(company.id, e.id)),
-                'Estimate opened',
-              )
-            }
+            ref={(node) => {
+              if (node) rowButtons.current.set(e.id, node);
+              else rowButtons.current.delete(e.id);
+            }}
+            disabled={busy || task.busy || resource.loading}
+            onClick={() => void open(e)}
           >
             <span>
               <small>
@@ -268,28 +537,30 @@ export function Estimates({
           </button>
         ))}
       </div>
-      {!rows.length && (
-        <p>
-          No estimates match. Create a customer and your first draft to begin.
-        </p>
+      {!rows.length && data.data && (
+        <p>No loaded estimates match these filters.</p>
       )}
-      <div className="button-row">
+      {busy && <p role="status">Opening estimate…</p>}
+      <p role="status">
+        {data.data
+          ? `${rows.length} matching loaded estimates · page ${visiblePage + 1} of ${lastPage + 1}`
+          : 'Estimate list unavailable'}
+      </p>
+      <div
+        className="button-row"
+        style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}
+      >
         <button
           className="secondary"
-          disabled={!page}
-          onClick={() => setPage((p) => p - 1)}
+          disabled={!visiblePage}
+          onClick={() => setPage(visiblePage - 1)}
         >
           Previous
         </button>
-        <span>
-          {rows.length}
-          <BackOfficeText text=" estimates · page " />
-          {page + 1}
-        </span>
         <button
           className="secondary"
-          disabled={(page + 1) * 10 >= rows.length}
-          onClick={() => setPage((p) => p + 1)}
+          disabled={visiblePage >= lastPage}
+          onClick={() => setPage(visiblePage + 1)}
         >
           Next
         </button>
@@ -309,6 +580,7 @@ function EstimateEditor({
   defaults,
   onChange,
   onClose,
+  headingRef,
   voiceDraft,
 }: {
   initial: EstimateBundle;
@@ -321,6 +593,7 @@ function EstimateEditor({
   defaults?: EstimateDefaults;
   onChange: (b: EstimateBundle) => void;
   onClose: () => void;
+  headingRef?: RefObject<HTMLHeadingElement | null>;
   voiceDraft?: VoiceDraftContext;
 }) {
   const [p, setP] = useState(() => structuredClone(initial.version.payload));
@@ -428,7 +701,9 @@ function EstimateEditor({
             <BackOfficeText text=" / VERSION" />{' '}
             {initial.version.version_number}
           </span>
-          <h2>{p.project.name}</h2>
+          <h2 ref={headingRef} tabIndex={-1}>
+            {p.project.name}
+          </h2>
           <p>
             <BackOfficeText
               text={readonly ? 'Immutable snapshot' : 'Private working draft'}
