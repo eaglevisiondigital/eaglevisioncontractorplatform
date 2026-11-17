@@ -1,0 +1,53 @@
+{
+  "classification": "UNAPPLIED_COMMAND_DATA_QUALIFICATION_ONLY_NOT_SOURCE_ADMISSION",
+  "sourceParent": "27e5b5fd1ac6566d1f56db33e139ca8d7a12121e",
+  "protectedTarget": "scripts/cycle30-chromium-dependencies.mjs",
+  "beforeSHA256": "531b1f3b43e38975a456a8421fc7135991b89313e22e0f87daa5ecc673bf659f",
+  "afterSHA256": "e2b034cfbdf1e7b3b44e8f2eb3b51ffabec5341097ed9cb1d2307a65f36ba762",
+  "patchSHA256": "5399256c239142a5b84ec2ef601ef18414e6a2c8dc51038b520ebafae00d27a3",
+  "originalCases": {
+    "file": "tests/cycle30-chromium-dependencies.test.ts",
+    "bodySHA256": "b0bc7c0f82f07e1960dffe26122b85562c93a867350685242db3c69ebe7249ca",
+    "config": "vite.config.ts",
+    "assertionsAndBudgetsUnchanged": true,
+    "pass": 11,
+    "fail": 0,
+    "skip": 0,
+    "rawReportSHA256": "6c8b143cfbb600e91efd8458d2aada3d165b12c2460c3b60fcd6bc7f2d05d6aa",
+    "scope": "Owned exact559+onlyhelperafterimage; pureunitexports, noAPT/sudo/install"
+  },
+  "newControls": {
+    "pass": 13,
+    "fail": 0,
+    "skip": 0,
+    "bodyPurpose": "Exactfourliterals+wholebyte reversal+unchangedcommand/source/mirrortrustnegatives",
+    "independentPass": 13,
+    "independentReviewSHA256": "bf53e56c96d0a1589f9cd564ed56aaba5d25832fec843a51bb646e41872a81db"
+  },
+  "originalTestTitleLimit": "Title nine-only exceeds assertions: originaltest checks9fonts/2commands/final9args; new13controlspinentire13packageargumentlist; no originalassertionreplaced",
+  "actual559Evidence": {
+    "run": 44177837691,
+    "job": 134373853049,
+    "sourceFonts": "PASS",
+    "APTInstActions": [
+      "libgbm1",
+      "libgl1-mesa-dri",
+      "libglx-mesa0",
+      "mesa-libgallium"
+    ],
+    "absenceVsUpgrade": "UNVERIFIED"
+  },
+  "AWSMirror": "UnchangedDENY; separatepush44177656361 failedbeforefontinstall",
+  "sourceGuardianAfterHelperChange": "DENY_EXPECTED; no acceptedfullsourceframefornewhelperhash",
+  "remainingApprovalBoundary": [
+    "Exactprotectedhelper1M4literalpatchapprovalbeforeanysourceauthor",
+    "Thenfreshwholephysicalafterframeandcanonicalread-set qualificationofexactsourceauthor; no source-maprepin, historicalreadportorheaderapprovalincluded",
+    "SignedAPTinstallationandunchangedbrowserdependencyverificationremainunexecutedforproposedhelper",
+    "AWSmirrorpolicyremainsunchangedDENY; no genericOSlabelguaranteesAzure"
+  ],
+  "protectedSourceApplied": false,
+  "originalPinLockBindingChanges": false,
+  "hostedExecution": false,
+  "operationalAcceptance": false,
+  "release": "NO_GO"
+}
