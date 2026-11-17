@@ -1,4 +1,4 @@
-name: Fixed537 complete isolated unit supplement
+name: Fixed548 complete isolated unit supplement
 # Explicit execution request only. Opening/updating this proposal does not run487files.
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ permissions:
   contents: read
 jobs:
   application:
-    if: github.event_name == 'workflow_dispatch' || github.event.label.name == 'run-fixed537-unit-supplement'
+    if: github.event_name == 'workflow_dispatch' || github.event.label.name == 'run-fixed548-unit-supplement'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     strategy:
@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 30ec9e823bc64420fb62508b6dabb5a76f171ea2
+          ref: c60c09c1fe9edab55220840499e2525a6751a558
           fetch-depth: 0
           persist-credentials: false
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
@@ -38,7 +38,7 @@ jobs:
           -r recovery/monterey/requirements.lock
       - name: Prepare output-only adapters outside the fixed checkout
         env:
-          DIAGNOSTIC_DIR: ${{ runner.temp }}/fixed537-unit-${{ matrix.shard }}
+          DIAGNOSTIC_DIR: ${{ runner.temp }}/fixed548-unit-${{ matrix.shard }}
         shell: bash
         run: |
           set -euo pipefail
@@ -48,8 +48,8 @@ jobs:
           import { createHash } from 'node:crypto';
           import { lstatSync, readFileSync, readdirSync, writeFileSync, realpathSync } from 'node:fs';
           import { resolve } from 'node:path';
-          const target = '30ec9e823bc64420fb62508b6dabb5a76f171ea2';
-          const tree = 'cda428fb976f470280e1e518d9c24a04dc00c4c0';
+          const target = 'c60c09c1fe9edab55220840499e2525a6751a558';
+          const tree = '2435fda0061abbf0ca54df26bb454d7f4518c1a1';
           const phase = process.argv[2];
           if (!['before', 'after'].includes(phase)) throw Error('Exact probe phase required');
           const output = process.env.DIAGNOSTIC_DIR;
@@ -62,14 +62,14 @@ jobs:
           });
           const observedHead = git('rev-parse', 'HEAD').toString().trim();
           const observedTree = git('rev-parse', 'HEAD^{tree}').toString().trim();
-          if (observedHead !== target || observedTree !== tree) throw Error('Exact fixed537 checkout required');
+          if (observedHead !== target || observedTree !== tree) throw Error('Exact fixed548 checkout required');
           const raw = git('ls-tree', '-rz', '--full-tree', tree);
           const rows = raw.toString().split('\0').filter(Boolean).map((line) => {
             const m = /^(100644|100755) blob ([a-f0-9]{40})\t(.+)$/.exec(line);
             if (!m || m[3].split('/').some((p) => !p || p === '.' || p === '..')) throw Error('Exact regular target inventory required');
             return { mode: m[1], blob: m[2], path: m[3] };
           });
-          if (rows.length !== 2546) throw Error('Exact2546 target inventory required');
+          if (rows.length !== 2556) throw Error('Exact2556 target inventory required');
           const batch = execFileSync('/usr/bin/git', ['--no-replace-objects', '-c', 'core.hooksPath=/dev/null', '-c', 'core.fsmonitor=false', '-c', 'credential.helper=', 'cat-file', '--batch'], {
             input: rows.map((row) => row.blob).join('\n') + '\n', maxBuffer: 128 * 1024 * 1024,
             env: { PATH: process.env.PATH, LANG: 'C', LC_ALL: 'C', GIT_CONFIG_NOSYSTEM: '1', GIT_CONFIG_SYSTEM: '/dev/null', GIT_CONFIG_GLOBAL: '/dev/null', GIT_NO_LAZY_FETCH: '1', GIT_ALLOW_PROTOCOL: '', GIT_ATTR_NOSYSTEM: '1', GIT_TERMINAL_PROMPT: '0', GIT_OPTIONAL_LOCKS: '0' },
@@ -113,7 +113,7 @@ jobs:
           }
           walk();
           const knownEmptyFixtureDirectories = phase === 'after' && process.env.UNIT_SHARD === '1' && extraPaths.length === 2 && extraPaths.every((path) => ['artifacts', 'artifacts/cycle27'].includes(path) && lstatSync(path).isDirectory()) && (!extraPaths.length || readdirSync('artifacts/cycle27').length === 0);
-          const report = { classification: 'UNSIGNED_FIXED537_DIAGNOSTIC_NOT_ADMISSION', phase, target, targetTree: tree, workflowSourceSHA: process.env.DIAGNOSTIC_WORKFLOW_SHA, eventSHA: process.env.DIAGNOSTIC_EVENT_SHA, observedHead, observedTree, rows: rows.length, inventorySHA256: sha(raw), umask: process.umask().toString(8), mismatches, extraPaths, canonicalPhysicalAdmission: false, knownEmptyFixtureDirectories, pass: !mismatches.length && (!extraPaths.length || knownEmptyFixtureDirectories) };
+          const report = { classification: 'UNSIGNED_FIXED548_DIAGNOSTIC_NOT_ADMISSION', phase, target, targetTree: tree, workflowSourceSHA: process.env.DIAGNOSTIC_WORKFLOW_SHA, eventSHA: process.env.DIAGNOSTIC_EVENT_SHA, observedHead, observedTree, rows: rows.length, inventorySHA256: sha(raw), umask: process.umask().toString(8), mismatches, extraPaths, canonicalPhysicalAdmission: false, knownEmptyFixtureDirectories, pass: !mismatches.length && (!extraPaths.length || knownEmptyFixtureDirectories) };
           writeFileSync(resolve(output, 'source-' + phase + '.json'), JSON.stringify(report, null, 2));
           console.log(JSON.stringify({ phase, rows: rows.length, mismatches: mismatches.length, extraPaths: extraPaths.length, pass: report.pass }));
           if (!report.pass) process.exitCode = 1;
@@ -129,7 +129,7 @@ jobs:
           const {applicationShards,binding,requireUnion}=await import(pathToFileURL(resolve('scripts/cycle33-foundation-evidence.mjs')).href);
           if(applicationShards!==8)throw Error('Original eight-shard planner required');
           const source=binding();
-          if(source.source!=='30ec9e823bc64420fb62508b6dabb5a76f171ea2'||source.tree!=='cda428fb976f470280e1e518d9c24a04dc00c4c0')throw Error('Fixed537 source required');
+          if(source.source!=='c60c09c1fe9edab55220840499e2525a6751a558'||source.tree!=='2435fda0061abbf0ca54df26bb454d7f4518c1a1')throw Error('Fixed548 source required');
           const raw=execFileSync(process.execPath,['node_modules/vitest/vitest.mjs','list','--filesOnly','--json'],{maxBuffer:32*1024*1024});
           const full=JSON.parse(raw).map(p=>relative(root,p.file).replaceAll('\\','/')).sort();
           requireUnion([full],globSync('tests/**/*.test.ts').sort());
@@ -165,28 +165,28 @@ jobs:
            const result=validateApplication(plan,observed,raw);
            writeFileSync(resolve(out,'verified.json'),JSON.stringify({...plan,...result,verdict:'EXACT_SHARD_COMPLETE',classification:'UNIT_SHARD_ONLY_NOT_FOUNDATION_OR_SOURCE_ADMISSION'},null,2));
           }else if(process.argv[2]==='combine'){
-           const paths=readdirSync(resolve(out,'downloaded')).sort(),expected=Array.from({length:8},(_,i)=>'fixed537-unit-shard-'+(i+1));
+           const paths=readdirSync(resolve(out,'downloaded')).sort(),expected=Array.from({length:8},(_,i)=>'fixed548-unit-shard-'+(i+1));
            requireUnion([paths],expected);
            const reports=expected.map((p,i)=>{const directory=resolve(out,'downloaded',p),report=json(resolve(directory,'verified.json'));const plan=json(resolve(directory,'plan.json'));const actual=validateApplication(plan,json(resolve(directory,'observations.json')),json(resolve(directory,'results.json')));if(JSON.stringify(report)!==JSON.stringify({...plan,...actual,verdict:'EXACT_SHARD_COMPLETE',classification:'UNIT_SHARD_ONLY_NOT_FOUNDATION_OR_SOURCE_ADMISSION'}))throw Error('Revalidated native evidence required');if(report.index!==i+1||report.count!==8||report.verdict!=='EXACT_SHARD_COMPLETE'||JSON.stringify(report.binding)!==JSON.stringify(binding()))throw Error('Exact native shard binding required');return report;});
            for(const report of reports)if(JSON.stringify(report.full)!==JSON.stringify(reports[0].full))throw Error('Same complete original collection required');
            requireUnion(reports.map(r=>r.selected),reports[0].full);
            requireUnion(reports.map(r=>r.ids),reports.flatMap(r=>r.ids));
            if(process.env.UNIT_JOB_RESULT!=='success')throw Error('Every native shard job must succeed');
-           writeFileSync(resolve(out,'combined.json'),JSON.stringify({classification:'COMPLETE_FIXED537_UNIT_SUPPLEMENT_NOT_FOUNDATION_ACCEPTANCE',target:binding(),files:reports[0].full.length,shards:8,passed:reports.reduce((n,r)=>n+r.passed,0),declaredSkipped:reports.reduce((n,r)=>n+r.declared_skipped,0),wholeFoundationPass:false,sourceAdmission:false},null,2));
+           writeFileSync(resolve(out,'combined.json'),JSON.stringify({classification:'COMPLETE_FIXED548_UNIT_SUPPLEMENT_NOT_FOUNDATION_ACCEPTANCE',target:binding(),files:reports[0].full.length,shards:8,passed:reports.reduce((n,r)=>n+r.passed,0),declaredSkipped:reports.reduce((n,r)=>n+r.declared_skipped,0),wholeFoundationPass:false,sourceAdmission:false},null,2));
           }else throw Error('Exact validation stage required');
           PROBE
           node --check "$DIAGNOSTIC_DIR/validate.mjs"
       - name: Require unchanged fixed source before collection
         env:
-          DIAGNOSTIC_DIR: ${{ runner.temp }}/fixed537-unit-${{ matrix.shard }}
+          DIAGNOSTIC_DIR: ${{ runner.temp }}/fixed548-unit-${{ matrix.shard }}
         run: node "$DIAGNOSTIC_DIR/source.mjs" before
       - name: Reuse original native eight-shard planner and complete file union
         env:
-          DIAGNOSTIC_DIR: ${{ runner.temp }}/fixed537-unit-${{ matrix.shard }}
+          DIAGNOSTIC_DIR: ${{ runner.temp }}/fixed548-unit-${{ matrix.shard }}
         run: node "$DIAGNOSTIC_DIR/plan.mjs"
       - name: Run original complete native unit shard without budget or worker overrides
         env:
-          DIAGNOSTIC_DIR: ${{ runner.temp }}/fixed537-unit-${{ matrix.shard }}
+          DIAGNOSTIC_DIR: ${{ runner.temp }}/fixed548-unit-${{ matrix.shard }}
         run: >-
           node node_modules/vitest/vitest.mjs run --shard=${{ matrix.shard }}/8
           --reporter=default --reporter=json --reporter="$DIAGNOSTIC_DIR/reporter.mjs"
@@ -194,29 +194,29 @@ jobs:
       - name: Verify source bodies and modes after tests without deleting fixture outputs
         if: always()
         env:
-          DIAGNOSTIC_DIR: ${{ runner.temp }}/fixed537-unit-${{ matrix.shard }}
+          DIAGNOSTIC_DIR: ${{ runner.temp }}/fixed548-unit-${{ matrix.shard }}
         run: node "$DIAGNOSTIC_DIR/source.mjs" after
       - name: Reuse unchanged native collection case status and budget validation
         if: always()
         env:
-          DIAGNOSTIC_DIR: ${{ runner.temp }}/fixed537-unit-${{ matrix.shard }}
+          DIAGNOSTIC_DIR: ${{ runner.temp }}/fixed548-unit-${{ matrix.shard }}
         run: node "$DIAGNOSTIC_DIR/validate.mjs" shard
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: fixed537-unit-shard-${{ matrix.shard }}
-          path: ${{ runner.temp }}/fixed537-unit-${{ matrix.shard }}/
+          name: fixed548-unit-shard-${{ matrix.shard }}
+          path: ${{ runner.temp }}/fixed548-unit-${{ matrix.shard }}/
           if-no-files-found: error
           retention-days: 7
   complete-unit-union:
-    if: always() && (github.event_name == 'workflow_dispatch' || github.event.label.name == 'run-fixed537-unit-supplement')
+    if: always() && (github.event_name == 'workflow_dispatch' || github.event.label.name == 'run-fixed548-unit-supplement')
     needs: application
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 30ec9e823bc64420fb62508b6dabb5a76f171ea2
+          ref: c60c09c1fe9edab55220840499e2525a6751a558
           fetch-depth: 0
           persist-credentials: false
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
@@ -226,12 +226,12 @@ jobs:
       - run: npm ci
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
-          pattern: fixed537-unit-shard-*
-          path: ${{ runner.temp }}/fixed537-unit-union/downloaded
+          pattern: fixed548-unit-shard-*
+          path: ${{ runner.temp }}/fixed548-unit-union/downloaded
           merge-multiple: false
       - name: Revalidate every original shard and exact complete unit union
         env:
-          DIAGNOSTIC_DIR: ${{ runner.temp }}/fixed537-unit-union
+          DIAGNOSTIC_DIR: ${{ runner.temp }}/fixed548-unit-union
           UNIT_JOB_RESULT: ${{ needs.application.result }}
         shell: bash
         run: |
@@ -249,21 +249,21 @@ jobs:
            const result=validateApplication(plan,observed,raw);
            writeFileSync(resolve(out,'verified.json'),JSON.stringify({...plan,...result,verdict:'EXACT_SHARD_COMPLETE',classification:'UNIT_SHARD_ONLY_NOT_FOUNDATION_OR_SOURCE_ADMISSION'},null,2));
           }else if(process.argv[2]==='combine'){
-           const paths=readdirSync(resolve(out,'downloaded')).sort(),expected=Array.from({length:8},(_,i)=>'fixed537-unit-shard-'+(i+1));
+           const paths=readdirSync(resolve(out,'downloaded')).sort(),expected=Array.from({length:8},(_,i)=>'fixed548-unit-shard-'+(i+1));
            requireUnion([paths],expected);
            const reports=expected.map((p,i)=>{const directory=resolve(out,'downloaded',p),report=json(resolve(directory,'verified.json'));const plan=json(resolve(directory,'plan.json'));const actual=validateApplication(plan,json(resolve(directory,'observations.json')),json(resolve(directory,'results.json')));if(JSON.stringify(report)!==JSON.stringify({...plan,...actual,verdict:'EXACT_SHARD_COMPLETE',classification:'UNIT_SHARD_ONLY_NOT_FOUNDATION_OR_SOURCE_ADMISSION'}))throw Error('Revalidated native evidence required');if(report.index!==i+1||report.count!==8||report.verdict!=='EXACT_SHARD_COMPLETE'||JSON.stringify(report.binding)!==JSON.stringify(binding()))throw Error('Exact native shard binding required');return report;});
            for(const report of reports)if(JSON.stringify(report.full)!==JSON.stringify(reports[0].full))throw Error('Same complete original collection required');
            requireUnion(reports.map(r=>r.selected),reports[0].full);
            requireUnion(reports.map(r=>r.ids),reports.flatMap(r=>r.ids));
            if(process.env.UNIT_JOB_RESULT!=='success')throw Error('Every native shard job must succeed');
-           writeFileSync(resolve(out,'combined.json'),JSON.stringify({classification:'COMPLETE_FIXED537_UNIT_SUPPLEMENT_NOT_FOUNDATION_ACCEPTANCE',target:binding(),files:reports[0].full.length,shards:8,passed:reports.reduce((n,r)=>n+r.passed,0),declaredSkipped:reports.reduce((n,r)=>n+r.declared_skipped,0),wholeFoundationPass:false,sourceAdmission:false},null,2));
+           writeFileSync(resolve(out,'combined.json'),JSON.stringify({classification:'COMPLETE_FIXED548_UNIT_SUPPLEMENT_NOT_FOUNDATION_ACCEPTANCE',target:binding(),files:reports[0].full.length,shards:8,passed:reports.reduce((n,r)=>n+r.passed,0),declaredSkipped:reports.reduce((n,r)=>n+r.declared_skipped,0),wholeFoundationPass:false,sourceAdmission:false},null,2));
           }else throw Error('Exact validation stage required');
           PROBE
           node "$DIAGNOSTIC_DIR/validate.mjs" combine
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: fixed537-complete-unit-union
-          path: ${{ runner.temp }}/fixed537-unit-union/
+          name: fixed548-complete-unit-union
+          path: ${{ runner.temp }}/fixed548-unit-union/
           if-no-files-found: error
           retention-days: 7
