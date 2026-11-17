@@ -1,0 +1,552 @@
+diff --git a/proposals/dashboard-context-fixture-compatibility/README.md b/proposals/dashboard-context-fixture-compatibility/README.md
+index 3ef6465863bec0771fed8bc3a68daa999cd525d6..d4b58388b1ea8dc36ab7f782ca7ee18593afd4d7 100644
+--- a/proposals/dashboard-context-fixture-compatibility/README.md
++++ b/proposals/dashboard-context-fixture-compatibility/README.md
+@@ -1,51 +1,57 @@
+-# Exact #537 joint dashboard / invoice test context — UNAPPLIED
+-
+-Preparation parent: `30ec9e823bc64420fb62508b6dabb5a76f171ea2` (#537),
+-with its exact source tree, file modes, raw author/parent commits and finite ancestry
+-in `manifest.json`. This ordinary packet proposes two separately held test-header
+-diffs. No canonical test, historical helper, manifest, application or financial
+-source is modified. The original two dashboard and 39 invoice assertions, parent
+-constants and 30-second case/hook budgets remain unchanged.
+-
+-Frozen #531's dashboard helper verifies its closed #528 tree. It therefore denies
+-#537's later invoice namespace/header. A dashboard-only addition also makes #537's
+-strict financial fixture deny. Passing two dashboard cases alone would not produce
+-a coherent candidate. Retain both original denials as evidence.
+-
+-The smallest proposed closure binds both guarded test imports to one new helper:
+-`dashboard.patch` changes only the dashboard import path/hash;
+-`invoice-held.patch` changes only the invoice import path/hash and requires its own
+-protected-source approval. The new helper verifies the complete current #537 tree
+-before and after every projected read or original qualification/helper call.
+-Only the complete original pair or complete proposed pair is recognized. A mixed
+-pair, replacement, unknown companion or late phase withdrawal is denied. The new
+-namespace is excluded from the base tree only while every one of its ten files,
+-modes, generated payloads and sealed companion bodies qualifies independently.
+-
+-All historical helper bytes remain unchanged. The dashboard reader retains only
+-#531's exact existing forms comparison projection, after proving the actual current
+-forms endpoint. The invoice side reuses the unmodified canonical qualification and
+-original 39-case chain with the same seven historical reads from the existing
+-native compatibility packet. No new historical SQL/runtime read port is introduced.
+-The approved #533 C27 author is verified as a separate immutable endpoint and
+-historical test-body ancestry; its output patch/namespace is **not** composed here.
+-Changing #537's C27 body to #533's exact endpoint is still a denied substitution.
+-
+-The manifest seals this README and the controls; the helper seals the manifest;
+-both generated headers bind that one helper. Current generated hashes and results
+-belong in the review record/private inventory to avoid self-referential seals.
+-Neither source qualification nor the two-header closure authorizes branch
+-integration, financial execution, SQL/grants, genuine Auth, tenant/provider/message
+-operations, recovery, merge, deployment or launch. Team/Catalog/Settings/#534 and
+-all other optional UI successors remain outside the exact closure. Release NO-GO.
+-
+-Independent review: run `node --test proposals/dashboard-context-fixture-compatibility/controls.test.mjs`.
+-In an owned disposable exact #537 image, copy only this namespace and apply BOTH
+-sealed patches there; run only `tests/propel-dashboard-parity-source.test.ts` and
+-`tests/invoice-guard-admission-proposal.test.ts` with original budgets. Store reports
+-outside the image and remove it afterward. Separately retain the original dashboard
+-denial and namespace-only original39 denial. Check all128 protected hashes, five
+-locked design files and 13 bindings; do not infer broad Foundation or CI acceptance.
+-The frozen packets and historical gates remain intact. The real future proposal
+-commit must be recorded as the exact protected-source decision parent outside this
+-sealed README, together with each target's before/after and patch identities.
++# Separate scope amendment: one P1 TEST-only historical port — UNAPPLIED
++
++Preparation parent: `59535839535385e37e03823372dd2dc16591ddb3` (#543),
++sole child of approved #542. Its one P1 test-input change and all other bodies,
++modes, source ancestry, approved runtime/fixture bytes and source tree are bound.
++This extends the existing joint fixture only. No new wrapper, namespace, engine,
++runtime capability is introduced. This alternative explicitly adds ONE historical
++P1 TEST-body read port; the prior no-port package remains BLOCKED, not amended.
++
++The original #543 guarded headers still bind the old closed context and deny the
++new P1 source. Retain that original denial. This proposal recognizes exactly the
++complete current #543 header pair or complete newly sealed pair; a one-sided pair,
++stale historical #537 pair, unknown/missing/tampered body, changed P1 input source,
++symlink, mode substitution or late withdrawal is denied. Captured phase cannot
++switch even to the other complete known pair.
++
++Both historical original test snapshots stay byte-exact. Generated dashboard and
++invoice headers retain every original2+39 assertion, parent constant, test identity
++and30-second case/hook budget. On actual #543 each canonical target changes only
++its helper-hash literal. Both hashes must reseal jointly. The eight necessary
++existing namespace files and these two canonical headers form one ten-path held
++diff; original snapshot files and all outside source stay exact.
++
++The physical tree is normalized only for the two exact guarded headers. Actual
++P1 after-source remains required for the physical tree and actual execution. The
++financial source-checking read alone may project the exact approved P1 TEST path
++from current543/f282 to immutable542/832f after fresh full physical/sole-parent/mode
++proof and exact current/historical byte checks. It never projects runtime, SQL,
++expiry validation or actual P1 test execution. This is a separately exposed scope
++amendment requiring owner review, not granted admission. The existing dashboard
++forms-only comparison and the existing seven financial historical reads remain exact;
++frozen historical helpers/manifests are unchanged. #533 remains separate author
++proof; its endpoint, optional UI, CI or operational work cannot be substituted.
++
++The manifest seals this README and controls; the helper seals the manifest; both
++generated headers seal the helper. Current generated hashes and qualification
++results belong outside these companions to avoid a hash cycle. Run only the
++relevant namespace controls and original2+39 cases in disposable exact #543 images,
++with reports outside. Retain the six accepted P1 clock vectors and actual15 cases
++by their unchanged source identities; do not rerun them for this admission change.
++Check128 protected hashes, five design locks and13 bindings independently.
++
++Source admission, protected source authoring and branch integration remain separate
++owner decisions. This packet is unapplied; it does not grant SQL/grants, genuine
++Auth, operational P1, providers, invoices/payments/messages, custody, recovery,
++merge, deployment or release. Release remains NO-GO / NOT READY / NOT AUTHORIZED.
++
++Explicit new read table (proposed only):
++
++| Consumer                            | Current exact source                                   | Historical exact source                 | Limit                                                               |
++| ----------------------------------- | ------------------------------------------------------ | --------------------------------------- | ------------------------------------------------------------------- |
++| Existing financial source qualifier | `tests/property-p1-executor.test.ts`, actual #543 f282 | same TEST path from immutable #542,832f | one TEST body after fresh physical proof; no other path or consumer |
++
++The immutable source files remain on disk as approved #543. The full before/after
++hashes, raw author/parent proofs and mode are sealed in the manifest. The original
++no-port25-control and41-case failures remain separate frozen evidence. Any further
++port or source gap stops qualification; this amendment is not an expansion permit.
+diff --git a/proposals/dashboard-context-fixture-compatibility/controls.test.mjs b/proposals/dashboard-context-fixture-compatibility/controls.test.mjs
+index 7d113885a8120297887e3f7e26357376bb144af1..4ce0f5f346ba1cf6490fe9566638941222eb3ca1 100644
+--- a/proposals/dashboard-context-fixture-compatibility/controls.test.mjs
++++ b/proposals/dashboard-context-fixture-compatibility/controls.test.mjs
+@@ -116,12 +116,14 @@ const mutate = (image, path) =>
+   );
+ const deny = (module) =>
+   assert.throws(() => module.verifyCurrentPhysicalFrame(), /Exact joint/);
+-test(
+-  'exact537 before and complete joint after preserve both original bodies and budgets',
+-  options,
+-  async () => {
+-    for (const after of [false, true])
+-      await withImage(
++for (const after of [false, true])
++  test(
++    'exact543 ' +
++      (after ? 'proposed' : 'original') +
++      ' pair preserves original bodies and budgets',
++    options,
++    () =>
++      withImage(
+         async (image, module) => {
+           const frame = module.verifyCurrentPhysicalFrame();
+           assert.equal(frame.phase, after ? 'after' : 'before');
+@@ -164,9 +166,8 @@ test(
+           );
+         },
+         { after },
+-      );
+-  },
+-);
++      ),
++  );
+ for (const id of ['dashboard', 'invoice'])
+   test('rejects one-sided ' + id + ' header substitution', options, () =>
+     withImage(async (image, module) => {
+@@ -268,8 +269,11 @@ test(
+     withImage(
+       async (image, module) => {
+         module.verifyCurrentPhysicalFrame();
+-        for (const [id, pin] of Object.entries(manifest.targets))
+-          writeFileSync(pin.path, readFileSync(folder + id + '.original.txt'));
++        for (const pin of Object.values(manifest.targets))
++          writeFileSync(
++            pin.path,
++            git(image, 'show', manifest.base + ':' + pin.path),
++          );
+         deny(module);
+       },
+       { after: true },
+@@ -370,3 +374,75 @@ for (const id of ['dashboard', 'invoice'])
+       }
+     },
+   );
++
++test(
++  'rejects a complete stale historical537 header pair on the P1 author',
++  options,
++  () =>
++    withImage(async (image, module) => {
++      for (const [id, pin] of Object.entries(manifest.targets))
++        writeFileSync(pin.path, readFileSync(folder + id + '.original.txt'));
++      deny(module);
++    }),
++);
++test(
++  'rejects withdrawing the exact approved P1 source to its original clock inputs',
++  options,
++  () =>
++    withImage(async (image, module) => {
++      writeFileSync(
++        'tests/property-p1-executor.test.ts',
++        git(
++          image,
++          'show',
++          '9f9fe19994fb2a224730d3f8212ca8e4dcde44c3:tests/property-p1-executor.test.ts',
++        ),
++      );
++      deny(module);
++    }),
++);
++
++test(
++  'scope amendment projects only the P1 TEST check while actual disk stays approved',
++  options,
++  () =>
++    withImage(async (image, module) => {
++      const path = manifest.p1TestHistoricalScopeAmendment.path;
++      const q = await module.qualifyInvoiceGuardProposal();
++      assert.equal(
++        hash(readFileSync(path)),
++        manifest.p1TestHistoricalScopeAmendment.currentSHA256,
++      );
++      assert.equal(
++        hash(q.readCurrent(path)),
++        manifest.p1TestHistoricalScopeAmendment.historicalSHA256,
++      );
++      assert.throws(() => module.dashboardSource(path), /Exact joint/);
++      mutate(image, 'src/App.tsx');
++      assert.throws(() => q.readCurrent(path), /Exact joint/);
++    }),
++);
++test(
++  'scope amendment denies a caller-injected old P1 body despite exact physical source',
++  options,
++  () =>
++    withImage(async (image, module) => {
++      const path = manifest.p1TestHistoricalScopeAmendment.path;
++      const historical = git(
++        image,
++        'show',
++        manifest.p1TestHistoricalScopeAmendment.historicalParent + ':' + path,
++      );
++      await assert.rejects(
++        module.qualifyInvoiceGuardProposal({
++          read: (p, enc) =>
++            String(p).endsWith(path)
++              ? enc
++                ? historical.toString(enc)
++                : historical
++              : readFileSync(p, enc),
++        }),
++        /Exact (?:joint dashboard\/invoice context|sealed invoice guard proposal) required/,
++      );
++    }),
++);
+diff --git a/proposals/dashboard-context-fixture-compatibility/current-fixture.mjs b/proposals/dashboard-context-fixture-compatibility/current-fixture.mjs
+index f41af4435e0650bcb35451264d3aaef03a0ecb8f..eb4a8b3bd52c265cd504dc0bc8659f6b6fad6d04 100644
+--- a/proposals/dashboard-context-fixture-compatibility/current-fixture.mjs
++++ b/proposals/dashboard-context-fixture-compatibility/current-fixture.mjs
+@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
+ import { devNull } from 'node:os';
+ const folder = 'proposals/dashboard-context-fixture-compatibility/';
+ const manifestSeal =
+-  'af01b9b0845cec9787539d3ed2940d23c2e2525c5d08725e187b223f15643969';
++  '1284a197cd0c27eb061d2251e19c0f4c70b7898e978efd6b08f978e74785a320';
+ const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
+ const oid = (kind, bytes) =>
+   createHash('sha1')
+@@ -102,8 +102,17 @@ export function proposedTestBytes(name) {
+       .replace(pin.oldHelper, selfSeal),
+   );
+ }
++function currentTestBytes(name) {
++  const bytes = Buffer.from(
++    proposedTestBytes(name)
++      .toString()
++      .replace(selfSeal, manifest.currentHelperSHA256),
++  );
++  if (sha(bytes) !== manifest.targets[name].currentSHA256) fail();
++  return bytes;
++}
+ export function proposedPatchBytes(name) {
+-  const before = originals[name]?.toString().split('\n'),
++  const before = currentTestBytes(name).toString().split('\n'),
+     after = proposedTestBytes(name).toString().split('\n');
+   if (
+     !before ||
+@@ -113,9 +122,9 @@ export function proposedPatchBytes(name) {
+   )
+     fail();
+   const changes = before.flatMap((x, i) => (x === after[i] ? [] : [i]));
+-  if (changes.length !== 2) fail();
++  if (changes.length !== 1) fail();
+   const first = changes[0] - 3,
+-    last = changes[1] + 4;
++    last = changes[0] + 4;
+   if (first < 0 || last > before.length) fail();
+   const lines = [];
+   for (let i = first; i < last; i++) {
+@@ -124,7 +133,7 @@ export function proposedPatchBytes(name) {
+   }
+   const target = manifest.targets[name].path;
+   return Buffer.from(
+-    `diff --git a/${target} b/${target}\nindex ${oid('blob', originals[name])}..${oid('blob', proposedTestBytes(name))} 100644\n--- a/${target}\n+++ b/${target}\n@@ -${first + 1},${last - first} +${first + 1},${last - first} @@\n${lines.join('\n')}\n`,
++    `diff --git a/${target} b/${target}\nindex ${oid('blob', currentTestBytes(name))}..${oid('blob', proposedTestBytes(name))} 100644\n--- a/${target}\n+++ b/${target}\n@@ -${first + 1},${last - first} +${first + 1},${last - first} @@\n${lines.join('\n')}\n`,
+   );
+ }
+ const ownFiles = new Set([
+@@ -176,7 +185,7 @@ const gitEnvironment = Object.freeze({
+   GIT_TERMINAL_PROMPT: '0',
+   GIT_OPTIONAL_LOCKS: '0',
+ });
+-function git(...args) {
++function gitBytes(...args) {
+   return execFileSync(
+     'git',
+     [
+@@ -191,7 +200,10 @@ function git(...args) {
+       ...args,
+     ],
+     { cwd: source, env: gitEnvironment, stdio: ['ignore', 'pipe', 'pipe'] },
+-  )
++  );
++}
++function git(...args) {
++  return gitBytes(...args)
+     .toString()
+     .trim();
+ }
+@@ -281,7 +293,7 @@ export function verifyCurrentPhysicalFrame() {
+         if (!unchanged(info, lstatSync(current))) fail();
+         for (const [id, pin] of Object.entries(manifest.targets))
+           if (key === pin.path) {
+-            if (bytes.equals(originals[id])) phases.push('before');
++            if (bytes.equals(currentTestBytes(id))) phases.push('before');
+             else if (bytes.equals(proposedTestBytes(id))) phases.push('after');
+             else fail();
+             bytes = originals[id];
+@@ -376,6 +388,40 @@ export async function qualifyInvoiceGuardProposal({
+         source,
+         path instanceof URL ? fileURLToPath(path) : resolve(String(path)),
+       );
++    // SEPARATE, UNAPPROVED SCOPE AMENDMENT: one TEST source body only.
++    // Actual execution still reads f282 from disk. No runtime/SQL/expiry port.
++    const p1 = manifest.p1TestHistoricalScopeAmendment;
++    if (key === p1.path) {
++      verifyCurrentPhysicalFrame();
++      if (
++        sha(Buffer.from(bytes)) !== p1.currentSHA256 ||
++        oid('blob', Buffer.from(bytes)) !== p1.currentOid
++      )
++        fail();
++      const actual = regular(p1.path, p1.mode);
++      if (
++        sha(actual) !== p1.currentSHA256 ||
++        !actual.equals(Buffer.from(bytes))
++      )
++        fail();
++      if (
++        git('ls-tree', p1.historicalParent, '--', p1.path) !==
++        `100644 blob ${p1.historicalOid}\t${p1.path}`
++      )
++        fail();
++      const historical = gitBytes('show', p1.historicalParent + ':' + p1.path);
++      if (
++        sha(historical) !== p1.historicalSHA256 ||
++        oid('blob', historical) !== p1.historicalOid
++      )
++        fail();
++      if (!regular(p1.path, p1.mode).equals(actual)) fail();
++      return encoding
++        ? historical.toString(
++            typeof encoding === 'string' ? encoding : encoding.encoding,
++          )
++        : Buffer.from(historical);
++    }
+     if (!Object.hasOwn(manifest.overlays, key)) return bytes;
+     if (oid('blob', Buffer.from(bytes)) !== manifest.currentOverlayOids[key])
+       fail();
+diff --git a/proposals/dashboard-context-fixture-compatibility/dashboard.patch b/proposals/dashboard-context-fixture-compatibility/dashboard.patch
+index 1dcb99d81e4c076dc175e5bbd96a389ddab16629..e1011072d107fc0a5a6661ddda57bf3d10b54db2 100644
+--- a/proposals/dashboard-context-fixture-compatibility/dashboard.patch
++++ b/proposals/dashboard-context-fixture-compatibility/dashboard.patch
+@@ -1,18 +1,13 @@
+ diff --git a/tests/propel-dashboard-parity-source.test.ts b/tests/propel-dashboard-parity-source.test.ts
+-index 48bd4fd4d038f8869aae6917d7c40d45c41d9f35..48f319180f4346e3e2f89d4d33aac236636dfa7b 100644
++index 48f319180f4346e3e2f89d4d33aac236636dfa7b..d258bb9de408792905a4ec758b0f485a6d81d375 100644
+ --- a/tests/propel-dashboard-parity-source.test.ts
+ +++ b/tests/propel-dashboard-parity-source.test.ts
+-@@ -7,11 +7,11 @@
+- const { dashboardSource: source } = (await import(
+-   await (async () => {
+-     const bytes = readFileSync(
+--      'proposals/dashboard-forms-fixture-compatibility/current-fixture.mjs',
+-+      'proposals/dashboard-context-fixture-compatibility/current-fixture.mjs',
++@@ -11,7 +11,7 @@
+      );
+      if (
+        createHash('sha256').update(bytes).digest('hex') !==
+--      '83a629d02a81d3f1a8b36bd39dc92839eebecfb79c0f9d7f66122c41d5ef8951'
+-+      '98d41f85eacd16ff156165a3a5567477171c4def2092cb8c1d764d33929e9ef6'
++-      '98d41f85eacd16ff156165a3a5567477171c4def2092cb8c1d764d33929e9ef6'
+++      '03aefb7d4b3d62d0985754f993eea400c6d0db90dfde8aa022d518719ce5fe5a'
+      )
+        throw Error('Exact approved dashboard/forms source fixture required');
+      return 'data:text/javascript;base64,' + bytes.toString('base64');
+diff --git a/proposals/dashboard-context-fixture-compatibility/dashboard.proposed.txt b/proposals/dashboard-context-fixture-compatibility/dashboard.proposed.txt
+index 48f319180f4346e3e2f89d4d33aac236636dfa7b..d258bb9de408792905a4ec758b0f485a6d81d375 100644
+--- a/proposals/dashboard-context-fixture-compatibility/dashboard.proposed.txt
++++ b/proposals/dashboard-context-fixture-compatibility/dashboard.proposed.txt
+@@ -11,7 +11,7 @@ const { dashboardSource: source } = (await import(
+     );
+     if (
+       createHash('sha256').update(bytes).digest('hex') !==
+-      '98d41f85eacd16ff156165a3a5567477171c4def2092cb8c1d764d33929e9ef6'
++      '03aefb7d4b3d62d0985754f993eea400c6d0db90dfde8aa022d518719ce5fe5a'
+     )
+       throw Error('Exact approved dashboard/forms source fixture required');
+     return 'data:text/javascript;base64,' + bytes.toString('base64');
+diff --git a/proposals/dashboard-context-fixture-compatibility/invoice-held.patch b/proposals/dashboard-context-fixture-compatibility/invoice-held.patch
+index 56ee9c1da30cf0f3561d11fcb7db7a097bd8f93e..dbf7a1467fde4ac3ab6268e281dcea994a1761b7 100644
+--- a/proposals/dashboard-context-fixture-compatibility/invoice-held.patch
++++ b/proposals/dashboard-context-fixture-compatibility/invoice-held.patch
+@@ -1,20 +1,13 @@
+ diff --git a/tests/invoice-guard-admission-proposal.test.ts b/tests/invoice-guard-admission-proposal.test.ts
+-index 273a0d3fc3469a75e9c3914970423217d002677e..51af0019f5e9db7290a80f847202caddefdc1940 100644
++index 51af0019f5e9db7290a80f847202caddefdc1940..5ae2bde7830dfa2d9124063afb78a1f187546c7b 100644
+ --- a/tests/invoice-guard-admission-proposal.test.ts
+ +++ b/tests/invoice-guard-admission-proposal.test.ts
+-@@ -39,13 +39,13 @@
+-   await (async () => {
+-     const fixture = pathToFileURL(
+-       resolve(
+--        'proposals/approved-source-fixture-admission/current-fixture.mjs',
+-+        'proposals/dashboard-context-fixture-compatibility/current-fixture.mjs',
+-       ),
+-     );
++@@ -45,7 +45,7 @@
+      const fixtureBytes = readFileSync(fixture);
+      if (
+        createHash('sha256').update(fixtureBytes).digest('hex') !==
+--      '6c2ce2a04e1989d88ed818e375869e1ed209f34dd2b4acb58d27991ea67d476f'
+-+      '98d41f85eacd16ff156165a3a5567477171c4def2092cb8c1d764d33929e9ef6'
++-      '98d41f85eacd16ff156165a3a5567477171c4def2092cb8c1d764d33929e9ef6'
+++      '03aefb7d4b3d62d0985754f993eea400c6d0db90dfde8aa022d518719ce5fe5a'
+      )
+        throw Error('Exact sealed invoice guard proposal required');
+      return 'data:text/javascript;base64,' + fixtureBytes.toString('base64');
+diff --git a/proposals/dashboard-context-fixture-compatibility/invoice.proposed.txt b/proposals/dashboard-context-fixture-compatibility/invoice.proposed.txt
+index 51af0019f5e9db7290a80f847202caddefdc1940..5ae2bde7830dfa2d9124063afb78a1f187546c7b 100644
+--- a/proposals/dashboard-context-fixture-compatibility/invoice.proposed.txt
++++ b/proposals/dashboard-context-fixture-compatibility/invoice.proposed.txt
+@@ -45,7 +45,7 @@ const { qualifyInvoiceGuardProposal } = (await import(
+     const fixtureBytes = readFileSync(fixture);
+     if (
+       createHash('sha256').update(fixtureBytes).digest('hex') !==
+-      '98d41f85eacd16ff156165a3a5567477171c4def2092cb8c1d764d33929e9ef6'
++      '03aefb7d4b3d62d0985754f993eea400c6d0db90dfde8aa022d518719ce5fe5a'
+     )
+       throw Error('Exact sealed invoice guard proposal required');
+     return 'data:text/javascript;base64,' + fixtureBytes.toString('base64');
+diff --git a/proposals/dashboard-context-fixture-compatibility/manifest.json b/proposals/dashboard-context-fixture-compatibility/manifest.json
+index 7ec35c18061c1b934634ef5226c309de8d01b922..55beb3afb53150f3dfe16154f17577f614b81294 100644
+--- a/proposals/dashboard-context-fixture-compatibility/manifest.json
++++ b/proposals/dashboard-context-fixture-compatibility/manifest.json
+@@ -1,7 +1,7 @@
+ {
+-  "classification": "UNAPPLIED_EXACT537_JOINT_DASHBOARD_AND_HELD_INVOICE_HEADER_CLOSURE",
+-  "base": "30ec9e823bc64420fb62508b6dabb5a76f171ea2",
+-  "tree": "cda428fb976f470280e1e518d9c24a04dc00c4c0",
++  "classification": "UNAPPLIED_SCOPE_AMENDMENT_EXACT543_ONE_P1_TEST_HISTORICAL_PORT",
++  "base": "59535839535385e37e03823372dd2dc16591ddb3",
++  "tree": "5dafd4896af45b8d740d3af42866554a97ef2741",
+   "files": 2546,
+   "targets": {
+     "dashboard": {
+@@ -9,14 +9,16 @@
+       "oldFolder": "proposals/dashboard-forms-fixture-compatibility/",
+       "oldHelper": "83a629d02a81d3f1a8b36bd39dc92839eebecfb79c0f9d7f66122c41d5ef8951",
+       "sha256": "7b624c8bf853493f36cbc5ae65921471ce7cae1f41c75375c431c00cf462637b",
+-      "oid": "48bd4fd4d038f8869aae6917d7c40d45c41d9f35"
++      "oid": "48bd4fd4d038f8869aae6917d7c40d45c41d9f35",
++      "currentSHA256": "19731d80d13e59226106f449e214836a4e8a2988800a46d3a9717ce13b5cd322"
+     },
+     "invoice": {
+       "path": "tests/invoice-guard-admission-proposal.test.ts",
+       "oldFolder": "proposals/approved-source-fixture-admission/",
+       "oldHelper": "6c2ce2a04e1989d88ed818e375869e1ed209f34dd2b4acb58d27991ea67d476f",
+       "sha256": "ee18681c44f7e9b1a15c6dbe37762c096f7a01dc4ad6fd63a038d14bd96a8516",
+-      "oid": "273a0d3fc3469a75e9c3914970423217d002677e"
++      "oid": "273a0d3fc3469a75e9c3914970423217d002677e",
++      "currentSHA256": "33c91ef3f0e2713cc88e4ee00334c6fe9343453e0bb48a2ea1c1cccf0f80fbe6"
+     }
+   },
+   "authors": [
+@@ -47,6 +49,13 @@
+       "parent": "7e165b657c7330c4ddd1dc8e521bf2b6c0d20df9",
+       "tree": "a4782cf331e4ebcc799fd2307436dbe5f7370876",
+       "delta": "M\ttests/cycle27-source-lineage.test.ts"
++    },
++    {
++      "commit": "59535839535385e37e03823372dd2dc16591ddb3",
++      "raw": "tree c9ebbdb3ad10803cecb903fdf49868a0a90b5999\nparent 9f9fe19994fb2a224730d3f8212ca8e4dcde44c3\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794888997 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794888997 -0600\n\n[skip netlify] Bind approved P1 expiry-case clocks to captured quotes\n",
++      "parent": "9f9fe19994fb2a224730d3f8212ca8e4dcde44c3",
++      "tree": "c9ebbdb3ad10803cecb903fdf49868a0a90b5999",
++      "delta": "M\ttests/property-p1-executor.test.ts"
+     }
+   ],
+   "nativeAuthor": {
+@@ -124,14 +133,28 @@
+   "ownCompanions": {
+     "README.md": {
+       "mode": 420,
+-      "sha256": "0fe43eb65ba3f599cfeb39f5dfd3a5047c30b9f6b9837350b413a9a374ce49a3"
++      "sha256": "30a1eb852c40b15d57734c6018e387edb2fb10cf4fcaf7115723cd00ec319b7d"
+     },
+     "controls.test.mjs": {
+       "mode": 420,
+-      "sha256": "e712dcc6b91322391e5014f1e39b136ec1bfeff36c47b0b65962579300d818a0"
++      "sha256": "723b763d8954c00f6a856929f87a677e065c9ff846d341342cd184779971defa"
+     }
+   },
+   "admissionAuthorized": false,
+   "integrationAuthorized": false,
+-  "release": "NO_GO"
++  "release": "NO_GO",
++  "currentHelperSHA256": "98d41f85eacd16ff156165a3a5567477171c4def2092cb8c1d764d33929e9ef6",
++  "p1TestHistoricalScopeAmendment": {
++    "classification": "SEPARATE_UNAPPROVED_TEST_ONLY_SCOPE_AMENDMENT",
++    "path": "tests/property-p1-executor.test.ts",
++    "mode": 420,
++    "currentAuthor": "59535839535385e37e03823372dd2dc16591ddb3",
++    "currentSHA256": "f2821ed625c5979e0ebf712efd8fb711c27ea80819e838903b7cbd55c52a0e01",
++    "currentOid": "66ee0e039dd8a60a767ab52f01a06a829ffd02de",
++    "historicalParent": "9f9fe19994fb2a224730d3f8212ca8e4dcde44c3",
++    "historicalSHA256": "832f8e0f3e917c16c9cd76415151fdeb6bef2572b18e4874c8a3696ccebcdb38",
++    "historicalOid": "7e153b7425d10f3bee45762e0c8d57b662986e2f",
++    "admissionAuthorized": false,
++    "actualP1ExecutionProjection": false
++  }
+ }
+diff --git a/tests/invoice-guard-admission-proposal.test.ts b/tests/invoice-guard-admission-proposal.test.ts
+index 51af0019f5e9db7290a80f847202caddefdc1940..5ae2bde7830dfa2d9124063afb78a1f187546c7b 100644
+--- a/tests/invoice-guard-admission-proposal.test.ts
++++ b/tests/invoice-guard-admission-proposal.test.ts
+@@ -45,7 +45,7 @@ const { qualifyInvoiceGuardProposal } = (await import(
+     const fixtureBytes = readFileSync(fixture);
+     if (
+       createHash('sha256').update(fixtureBytes).digest('hex') !==
+-      '98d41f85eacd16ff156165a3a5567477171c4def2092cb8c1d764d33929e9ef6'
++      '03aefb7d4b3d62d0985754f993eea400c6d0db90dfde8aa022d518719ce5fe5a'
+     )
+       throw Error('Exact sealed invoice guard proposal required');
+     return 'data:text/javascript;base64,' + fixtureBytes.toString('base64');
+diff --git a/tests/propel-dashboard-parity-source.test.ts b/tests/propel-dashboard-parity-source.test.ts
+index 48f319180f4346e3e2f89d4d33aac236636dfa7b..d258bb9de408792905a4ec758b0f485a6d81d375 100644
+--- a/tests/propel-dashboard-parity-source.test.ts
++++ b/tests/propel-dashboard-parity-source.test.ts
+@@ -11,7 +11,7 @@ const { dashboardSource: source } = (await import(
+     );
+     if (
+       createHash('sha256').update(bytes).digest('hex') !==
+-      '98d41f85eacd16ff156165a3a5567477171c4def2092cb8c1d764d33929e9ef6'
++      '03aefb7d4b3d62d0985754f993eea400c6d0db90dfde8aa022d518719ce5fe5a'
+     )
+       throw Error('Exact approved dashboard/forms source fixture required');
+     return 'data:text/javascript;base64,' + bytes.toString('base64');
