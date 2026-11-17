@@ -1,0 +1,257 @@
+{
+  "classification": "LOCAL_FINITE_AFTERIMAGE_QUALIFICATION_NOT_ADMISSION",
+  "parent": "62a9642abf3e4d3becd5b1fc6a4aa8618943480b",
+  "proposedTree": "d512a593573f82bf324a26e55d09a88283350b2a",
+  "patchSHA256": "6c4776439a34c624498e382097ac1f06efd6748fd5afc9f16eb2b6bd2abf1480",
+  "negativeFirst": {
+    "source": "c60c09c1fe9edab55220840499e2525a6751a558",
+    "exit": 1,
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "total": 0,
+    "failedSuites": 1,
+    "wallTimeMs": 575.63375,
+    "reportSHA256": "015a3e4057906cc51f4f9935ff201668fc4f893fb176fe830ff9b01dd97264f7",
+    "errors": [
+      {
+        "name": "launch-caller-payment-integration.test.ts",
+        "message": "Reviewed invoice guard fixture required before import",
+        "assertionCases": 0
+      }
+    ]
+  },
+  "finalOriginals": [
+    {
+      "key": "final41",
+      "exit": 0,
+      "passed": 41,
+      "failed": 0,
+      "skipped": 0,
+      "total": 41,
+      "wallTimeMs": 148261.432834,
+      "maxCaseDurationMs": 26848.916874999995,
+      "reportSHA256": "90f6d39d918deeb1f27d99184956ad647da87d42545bafd2e2ee00e04405f0fd",
+      "originalBudgetsAndMaxWorkersUnchanged": true
+    },
+    {
+      "key": "final16",
+      "exit": 0,
+      "passed": 16,
+      "failed": 0,
+      "skipped": 0,
+      "total": 16,
+      "wallTimeMs": 65200.94204200001,
+      "maxCaseDurationMs": 8547.357625,
+      "reportSHA256": "2dd57deaa1c2466e58349fac79a2262a63853c7857bf9f34224f5f374bb838ad",
+      "originalBudgetsAndMaxWorkersUnchanged": true
+    }
+  ],
+  "independentControlsAndSecurity": {
+    "controls": {
+      "passed": 44,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "durationMs": 201050.638917,
+      "maxCaseDurationMs": 19518.212042,
+      "originalCaseBudgetMs": 30000,
+      "controlSourceSHA256": "0ae02568068a3699490cf81212bfb9666962962a7b74ab2d70e0e479adf66bb1",
+      "rawLogSHA256": "91d80f206ed85664d9c8170e47f9e80c5abf18b454205180f125cf563b59e77d",
+      "noBudgetOrAssertionChangesByReviewer": true
+    },
+    "rendererSecurity": {
+      "passed": 1,
+      "failed": 0,
+      "wallTimeMs": 3066,
+      "knownExactDiffTuples": 2,
+      "invalidArgvRefPathTypeDenials": 12,
+      "newFixtureGitExecSites": "Both /usr/bin/git; zero new-port PATH-shim calls; no external-helper marker",
+      "trustedInheritedBootstrapLimit": "Old transitive bootstrap invoked PATH shim48 times; preserved historical fixture TCB. No whole-stack executable-substitution denial claimed.",
+      "instrumentation": "Private harness exposes reviewedPaymentGit by appending export to captured module bytes for negative probes; actual source bytes and physical frame remain unchanged."
+    },
+    "cycle13SingleChecker": {
+      "proposedAfterimageExit": 0,
+      "public550": "HELD/DENY remains; no waiver"
+    },
+    "finalIndependentRecord": {
+      "reportSHA256": "1c2737f5d19615089a16817c853d03c670f86894fefb47bdb2422eecd0a8b614",
+      "bindingSHA256": "80c59591345818fe71f231ab8cf7934e92dcbf8b4f2d1f31c913609948134a85",
+      "reviewClassification": "INDEPENDENT_13M_SECURITY_REVIEW_CLEAR_PRIMARY_ORIGINALS_BOUND"
+    }
+  },
+  "retainedIntermediateEvidence": {
+    "controlsPrePin": {
+      "passed": 43,
+      "failed": 1,
+      "reason": "Missing-history correctly denied but raw Git exception did not match original expected error. New lookup now translates to exact guard failure; no negative assertion weakened."
+    },
+    "focusedFinalMissingHistory": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    "initialCloneFailure": "Owned qualification clone lacked already-required historical objects; source unchanged; only owned Git object storage was corrected.",
+    "prototypeMissingImport": "Initial private bootstrap import mistake retained; corrected before frozen payload.",
+    "prototype16": "Earlier producer-only16 PASS is retained separately; final full13M16 above supersedes it for this closure."
+  },
+  "limits": [
+    "No full Foundation or release PASS claimed.",
+    "No accepted P1 six-vector/15-case or PG/browser rerun.",
+    "Public #550 Cycle13 remains held/DENY. One bounded checker passes on the proposed13M afterimage; this does not waive the parent denial or establish full Foundation PASS.",
+    "No claim this local cause explains unprinted hosted exceptions.",
+    "No canonical protected application, source admission, operational authority, SQL/Auth/provider/P1/financial/recovery execution, merge or deployment."
+  ],
+  "sourceAudit": {
+    "parent": "62a9642abf3e4d3becd5b1fc6a4aa8618943480b",
+    "proposedTree": "d512a593573f82bf324a26e55d09a88283350b2a",
+    "trackedFiles": 2556,
+    "changed": 13,
+    "outsideBodiesTypesFullModesExact": 2543,
+    "allChangedModes": "100644",
+    "protectedHashes": 128,
+    "designLocks": 5,
+    "designBindings": 13,
+    "unknownTrackedPaths": [],
+    "postRunSourceUnchanged": true,
+    "sourceParentClean": true,
+    "patchSHA256": "6c4776439a34c624498e382097ac1f06efd6748fd5afc9f16eb2b6bd2abf1480"
+  },
+  "originalSourcePreservation": {
+    "tests/propel-dashboard-parity-source.test.ts": "Entire source restored by reversing only one helper-hash literal; original assertions/budgets unchanged",
+    "tests/invoice-guard-admission-proposal.test.ts": "Entire source restored by reversing only one helper-hash literal; original assertions/budgets unchanged",
+    "tests/launch-caller-payment-integration.test.ts": "Entire original source restored by reversing only one producer-hash literal; all16 assertions/budgets unchanged",
+    "proposals/dashboard-context-fixture-compatibility/dashboard.original.txt": {
+      "unchanged": true,
+      "sha256": "7b624c8bf853493f36cbc5ae65921471ce7cae1f41c75375c431c00cf462637b"
+    },
+    "proposals/dashboard-context-fixture-compatibility/invoice.original.txt": {
+      "unchanged": true,
+      "sha256": "ee18681c44f7e9b1a15c6dbe37762c096f7a01dc4ad6fd63a038d14bd96a8516"
+    },
+    "tests/property-p1-executor.test.ts": {
+      "unchanged": true,
+      "sha256": "f2821ed625c5979e0ebf712efd8fb711c27ea80819e838903b7cbd55c52a0e01"
+    },
+    "proposals/invoice-guard-admission/qualify.mjs": {
+      "unchanged": true,
+      "sha256": "c6e62953cbb1e58c8ea1c636ef8f1929cdb46cbf2655fbc2e6015c29f09b5f94"
+    },
+    "proposals/invoice-guard-admission/fixture-adapter.mjs": {
+      "unchanged": true,
+      "sha256": "f12618162eb8bb0e7d74e4f41e1b9b1c7375788834cb98991d7fbca77741ece9"
+    },
+    "existingP1ProjectionBranch": "Byte-exact",
+    "scripts/invoice-caller-source-admission.mjs": {
+      "unchanged": true,
+      "sha256": "cf28a441f146c5e4d398eb0ea0b78a999dd0f744e19424c46f3e95de74229438"
+    }
+  },
+  "affectedNativeRuntime": "No native/runtime/SQL or actual financial adapter source changes. No additional PG execution performed.",
+  "cycle27Component": {
+    "patchSHA256": "f9497b081cea32fa1df00df1a4f4e8830ce149f21f16e9ff23afac6aac070af9",
+    "currentAfterSHA256": "1df4852d4c78ea2d62beaabd49ee4771842ef1d586dfb0b0977c8d7319a90913",
+    "readFixtureOutput": "Existing approved test-results/cycle27 inside excluded checkout directory",
+    "disposableGitContext": "External owned temporary directory",
+    "originalAssertions": "Unchanged"
+  },
+  "finalOriginalC27": {
+    "key": "final20C27",
+    "exit": 0,
+    "passed": 20,
+    "failed": 0,
+    "skipped": 0,
+    "total": 20,
+    "wallTimeMs": 11274.536583000001,
+    "maxCaseDurationMs": 9271.951917,
+    "reportSHA256": "0a3ea193f257a5f37c2fb2f844f729b1cbabca3f78cf56569d533d2b7a82f7bc",
+    "originalBudgetsAndMaxWorkersUnchanged": true
+  },
+  "independentReview": {
+    "classification": "INDEPENDENT_13M_SECURITY_REVIEW_CLEAR_PRIMARY_ORIGINALS_BOUND",
+    "parentPR": 550,
+    "parent": "62a9642abf3e4d3becd5b1fc6a4aa8618943480b",
+    "afterTree": "d512a593573f82bf324a26e55d09a88283350b2a",
+    "patchSHA256": "6c4776439a34c624498e382097ac1f06efd6748fd5afc9f16eb2b6bd2abf1480",
+    "identitySHA256": "d709d7d844935f9d28313a66db21b7a88a41bb7e5c9d213207aebb52868b0b17",
+    "exact13PathsAll100644": true,
+    "staticReviewSHA256": "42ec1ab88a7a82535ad21d3b04ffbbe9b273afc4c0555963f8da6f1db6ce7994",
+    "independentAdapterLineageSHA256": "e6a38ee8b4e75dc1cb1512612c8bada1ba4fb52bb950de8f6df9584dafdbfac6",
+    "independent44": {
+      "passed": 44,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "durationMs": 201050.638917,
+      "maxCaseDurationMs": 19518.212042,
+      "originalCaseBudgetMs": 30000,
+      "controlSourceSHA256": "0ae02568068a3699490cf81212bfb9666962962a7b74ab2d70e0e479adf66bb1",
+      "rawLogSHA256": "91d80f206ed85664d9c8170e47f9e80c5abf18b454205180f125cf563b59e77d",
+      "noBudgetOrAssertionChangesByReviewer": true
+    },
+    "rendererSecurity": {
+      "sourceLegacySHA256": "43e24d6af6af2118d7e10453ae2a48356552218c4d74ddbed3dd5c6318833880",
+      "positiveExactDiffTuples": 2,
+      "negativeArgumentRequests": 12,
+      "inheritedDangerousGitVariablesSetBeforeImport": true,
+      "newPortEnvironmentWhitelistVerified": true,
+      "externalDiffTextconvExecPathPagerCredentialHelpersExecuted": false,
+      "newMetadataPortPATHShimExecutions": 0,
+      "olderTransitiveFixturePATHShimExecutionsDuringBootstrap": 48,
+      "trustLimit": "Older unchanged helpers retain trusted PATH fixture TCB; whole-stack executable substitution resistance is NOT claimed.",
+      "instrumentation": "Private appended lexical exports only; actual file/hash/public API unchanged.",
+      "canonicalOrOperationalApplication": false
+    },
+    "rendererSecurityLogSHA256": "669ffb4f1741795ac880534a8b172a7997b7dd1ec17750c10dfaef196e0b1f72",
+    "rendererSecurityHarnessSHA256": "d83acaaada77cb5aa247e832750a3e44c3aedc0ef2e653d6ada5e5c8bc1d8c6c",
+    "targetedCycle13OriginalCLI": {
+      "exit": 0,
+      "result": "PASS_ON_OWN_FULL13M_DISPOSABLE_AFTERIMAGE",
+      "logSHA256": "1854016967fca3b2206c80d2615bd32b1eb291d8e99301c37455f0e268ee6384",
+      "doesNotAlterFailedHosted550Record": true,
+      "noCycle14RerunOrGuardFix": true
+    },
+    "postTestPhysicalAuditSHA256": "df48e25e377051fff8e8cd9364c96d3c6c3989589d20b23d36b2200e08df6d08",
+    "primaryOriginal41And16": [
+      {
+        "key": "final41",
+        "passed": 41,
+        "failed": 0,
+        "skipped": 0,
+        "rawReportSHA256": "90f6d39d918deeb1f27d99184956ad647da87d42545bafd2e2ee00e04405f0fd",
+        "reviewType": "PRIMARY_REPORT_BYTES_READ_AND_BOUND_NOT_INDEPENDENTLY_RERUN"
+      },
+      {
+        "key": "final16",
+        "passed": 16,
+        "failed": 0,
+        "skipped": 0,
+        "rawReportSHA256": "2dd57deaa1c2466e58349fac79a2262a63853c7857bf9f34224f5f374bb838ad",
+        "reviewType": "PRIMARY_REPORT_BYTES_READ_AND_BOUND_NOT_INDEPENDENTLY_RERUN"
+      }
+    ],
+    "primaryC27Original20": {
+      "key": "final20C27",
+      "passed": 20,
+      "failed": 0,
+      "skipped": 0,
+      "rawReportSHA256": "0a3ea193f257a5f37c2fb2f844f729b1cbabca3f78cf56569d533d2b7a82f7bc",
+      "reviewType": "PRIMARY_REPORT_BYTES_READ_AND_BOUND_NOT_INDEPENDENTLY_RERUN"
+    },
+    "coverageLimit": "NoS42/UI/PG/operational/recovery/hostedreruns; no completeFoundation/487unionclaim",
+    "knownTCB": "ExistingtransitivePATHfixtureTCBretainedand48bootstrapshimcallsexplicitlyobserved; onlynewportdirectexecsitespinned, no whole-stackexecutablesubstitution claim",
+    "independentTechnicalReview": "Separate reviewer, notgenuineoperationalcustodyorpersonnelindependence",
+    "reviewerProductOrProposalEdits": false,
+    "canonicalProtectedApplication": false,
+    "ownerApproval": false,
+    "release": "NO_GO",
+    "primarySummaryHashes": {
+      "final-originals-summary.json": "1b9696c6367e3e9afa495963c3ad7512a4fe8fb7a96e3cf6cb354ad7ec1964c4",
+      "final20C27-summary.json": "298974140705551ad31ba5811a0b5a5ee2a5f8313002a15bf75721fe55a8f761"
+    },
+    "cleanupSHA256": "ceef7c76c27dc8a5bc3433296b636e09af18cce1f7d0fd1de717db510aa0204e",
+    "allRequiredFiniteQualificationComplete": true,
+    "publicationScope": "OrdinarysealedUNAPPLIEDproposaltechnicalreviewclear; sourceauthorexact13Mstillrequiresseparateownerapproval"
+  },
+  "qualificationStatus": "PASS_FINITE_LOCAL_AND_INDEPENDENT_UNAPPLIED_13M"
+}
