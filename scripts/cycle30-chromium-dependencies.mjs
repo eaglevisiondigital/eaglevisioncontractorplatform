@@ -122,6 +122,10 @@ export function dependencyCommands() {
       'install',
       '-y',
       '--no-install-recommends',
+      'libgbm1',
+      'libgl1-mesa-dri',
+      'libglx-mesa0',
+      'mesa-libgallium',
       ...fonts,
     ],
   ];
