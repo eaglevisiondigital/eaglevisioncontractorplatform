@@ -197,19 +197,19 @@ it('rejects malformed source metadata rather than substituting current checkout 
   expect(r.approvalGranted).toBe(false);
 });
 it('rejects symlink image evidence and requires local regular files', () => {
-  const dir = 'artifacts/cycle14';
-  mkdirSync(dir, { recursive: true });
+  const root = mkdtempSync(join(tmpdir(), 'propel-c14-image-'));
+  const dir = join(root, 'artifacts/cycle14');
   const path = `${dir}/test-link.png`,
     target = `${dir}/test-original.png`;
   try {
+    mkdirSync(dir, { recursive: true });
     writeFileSync(target, bytes);
     symlinkSync('test-original.png', path);
-    expect(() => readReviewImage(process.cwd(), path)).toThrow(
-      'links forbidden',
-    );
+    expect(() =>
+      readReviewImage(root, 'artifacts/cycle14/test-link.png'),
+    ).toThrow('links forbidden');
   } finally {
-    rmSync(path, { force: true });
-    rmSync(target, { force: true });
+    rmSync(root, { recursive: true, force: true });
   }
 });
 
