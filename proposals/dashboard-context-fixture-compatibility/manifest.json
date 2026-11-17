@@ -1,0 +1,137 @@
+{
+  "classification": "UNAPPLIED_EXACT537_JOINT_DASHBOARD_AND_HELD_INVOICE_HEADER_CLOSURE",
+  "base": "30ec9e823bc64420fb62508b6dabb5a76f171ea2",
+  "tree": "cda428fb976f470280e1e518d9c24a04dc00c4c0",
+  "files": 2546,
+  "targets": {
+    "dashboard": {
+      "path": "tests/propel-dashboard-parity-source.test.ts",
+      "oldFolder": "proposals/dashboard-forms-fixture-compatibility/",
+      "oldHelper": "83a629d02a81d3f1a8b36bd39dc92839eebecfb79c0f9d7f66122c41d5ef8951",
+      "sha256": "7b624c8bf853493f36cbc5ae65921471ce7cae1f41c75375c431c00cf462637b",
+      "oid": "48bd4fd4d038f8869aae6917d7c40d45c41d9f35"
+    },
+    "invoice": {
+      "path": "tests/invoice-guard-admission-proposal.test.ts",
+      "oldFolder": "proposals/approved-source-fixture-admission/",
+      "oldHelper": "6c2ce2a04e1989d88ed818e375869e1ed209f34dd2b4acb58d27991ea67d476f",
+      "sha256": "ee18681c44f7e9b1a15c6dbe37762c096f7a01dc4ad6fd63a038d14bd96a8516",
+      "oid": "273a0d3fc3469a75e9c3914970423217d002677e"
+    }
+  },
+  "authors": [
+    {
+      "commit": "30ec9e823bc64420fb62508b6dabb5a76f171ea2",
+      "raw": "tree cda428fb976f470280e1e518d9c24a04dc00c4c0\nparent dac0b4a9a6ef3cf77785a84c13135cb2db3824df\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794872430 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794872430 -0600\n\n[skip netlify] Author approved exact invoice-fixture header for retained source frames\n",
+      "parent": "dac0b4a9a6ef3cf77785a84c13135cb2db3824df",
+      "tree": "cda428fb976f470280e1e518d9c24a04dc00c4c0",
+      "delta": "M\ttests/invoice-guard-admission-proposal.test.ts"
+    },
+    {
+      "commit": "dac0b4a9a6ef3cf77785a84c13135cb2db3824df",
+      "raw": "tree e6438ea796e1f9d4f7ba6be89b15623a32494bcb\nparent 0826b9cf55dae43161e0c313c1a89aea0c9c52f3\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794871330 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794871330 -0600\n\nPrepare exact approved source invoice fixture admission [skip netlify]\n",
+      "parent": "0826b9cf55dae43161e0c313c1a89aea0c9c52f3",
+      "tree": "e6438ea796e1f9d4f7ba6be89b15623a32494bcb",
+      "delta": "A\tproposals/approved-source-fixture-admission/README.md\nA\tproposals/approved-source-fixture-admission/controls.test.mjs\nA\tproposals/approved-source-fixture-admission/current-fixture.mjs\nA\tproposals/approved-source-fixture-admission/fixture.patch\nA\tproposals/approved-source-fixture-admission/original-tests.txt\nA\tproposals/approved-source-fixture-admission/physical-frame.json\nA\tproposals/approved-source-fixture-admission/source-tests.proposed.txt"
+    },
+    {
+      "commit": "0826b9cf55dae43161e0c313c1a89aea0c9c52f3",
+      "raw": "tree c9be98809117014be58a211ac32c1a64708035f1\nparent 82f4732ebc350ffc1b130130ff3636f1eb2e902a\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794862847 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794862847 -0600\n\n[skip netlify] Apply approved dashboard test header source author\n",
+      "parent": "82f4732ebc350ffc1b130130ff3636f1eb2e902a",
+      "tree": "c9be98809117014be58a211ac32c1a64708035f1",
+      "delta": "M\ttests/propel-dashboard-parity-source.test.ts"
+    },
+    {
+      "commit": "a24c0c75852d740da41d0abd2cf283c4230b9349",
+      "raw": "tree a4782cf331e4ebcc799fd2307436dbe5f7370876\nparent 7e165b657c7330c4ddd1dc8e521bf2b6c0d20df9\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794863727 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794863727 -0600\n\n[skip netlify] Apply approved C27 output fixture source author\n",
+      "parent": "7e165b657c7330c4ddd1dc8e521bf2b6c0d20df9",
+      "tree": "a4782cf331e4ebcc799fd2307436dbe5f7370876",
+      "delta": "M\ttests/cycle27-source-lineage.test.ts"
+    }
+  ],
+  "nativeAuthor": {
+    "commit": "dc8aa3c1f9979b5e37ee1aaa99d249a3969429f7",
+    "parent": "223e235be26c37271cb67e3c1f1803feb54599a6",
+    "tree": "a06c530b5dbde09c81acc69415be7a08ad091ec5",
+    "paths": {
+      "tests/database/property.test.ts": {
+        "beforeSha256": "912b1d50c20a3eb5f8e58ffed4ef81ad1cf18bc7379c6a4f09e663f8e476fcaf",
+        "afterSha256": "c429cee25729539b83281f7e337e1bbec3f44daf8ed0101af48a9f8fcc307da7",
+        "afterOid": "0e597a05ac7d4d6feaa99bca66099638acf517d4",
+        "mode": "100644"
+      },
+      "tests/helpers/property-p1-fixture.ts": {
+        "beforeSha256": "b1ddad5bb1cdb105db29eb5b992f04512cea4af6a2c688faab024ab86f4b43b6",
+        "afterSha256": "df95bf0fc63496e3b5ddb695d9c9c4b8d55fe8fecc36c8af61c7de5b9e5857dc",
+        "afterOid": "7b4e761838817771dbc9376347268e1459ba9f01",
+        "mode": "100644"
+      }
+    },
+    "delta": "M\ttests/database/property.test.ts\nM\ttests/helpers/property-p1-fixture.ts"
+  },
+  "overlays": {
+    "CURRENT_BUILD_STATE.md": {
+      "sha256": "03d96d76df184f40435a98dbd3879d0b7ea46e120f7de3153c958d8e0f83cd2e",
+      "oid": "883d70970636d2128270949992ea31c21b4a6ba5"
+    },
+    "DECISIONS.md": {
+      "sha256": "792a2de07afb4de8b18da75ce4384dc18f09c5388734d60e950de9d059f7890e",
+      "oid": "31ee7d23354df118479909145241e15fb98e200b"
+    },
+    "src/components/CompanyOperations.tsx": {
+      "sha256": "11e7d48eb8eff642c80c5caddb33201d4d051bb8edc8572e24663f7c7c127152",
+      "oid": "3bd47d857159dffc8a6352a93ced9c2665332e0a"
+    },
+    "src/components/WorkspaceNavigation.tsx": {
+      "sha256": "0480877522415873bbc3802fbb2361e12090d3c229df02c927b16e7f3cad970e",
+      "oid": "442f63f117d74b6a9011d2d46824424029524416"
+    },
+    "src/components/forms.tsx": {
+      "sha256": "f081edbdc36dad14c18bf75f25ac6267d1cb03d98124fece0618642193366e6a",
+      "oid": "c7a6b238867919d99359869a4d7d80c072ad90d5"
+    },
+    "tests/database/property.test.ts": {
+      "sha256": "912b1d50c20a3eb5f8e58ffed4ef81ad1cf18bc7379c6a4f09e663f8e476fcaf",
+      "oid": "05978f34700b4da05ae069650ec741633885ccb7"
+    },
+    "tests/helpers/property-p1-fixture.ts": {
+      "sha256": "b1ddad5bb1cdb105db29eb5b992f04512cea4af6a2c688faab024ab86f4b43b6",
+      "oid": "1ac535a40ee8ca1a98dca911d510ac82c4d9461b"
+    }
+  },
+  "currentOverlayOids": {
+    "CURRENT_BUILD_STATE.md": "3e8962360a9948175a0a8b3b0a2503921defc4d7",
+    "DECISIONS.md": "c2cf0af13c2e73bc6767bfe0a5b0805be4fa3d32",
+    "src/components/CompanyOperations.tsx": "b8340476169359ecfa935fb23f6ea9f7041044fc",
+    "src/components/WorkspaceNavigation.tsx": "8e8c49194ff60adc158ae1b0ba93cdd4c35bffa6",
+    "src/components/forms.tsx": "23d62ab73b52961cc73052ebd684524cedc65e5d",
+    "tests/database/property.test.ts": "0e597a05ac7d4d6feaa99bca66099638acf517d4",
+    "tests/helpers/property-p1-fixture.ts": "7b4e761838817771dbc9376347268e1459ba9f01"
+  },
+  "qualifierOid": "5d2026e571ce9e7c36ce0f8d33f1fcc17fd0393f",
+  "historicalFormsPath": "proposals/dashboard-forms-fixture-compatibility/historical-forms.ts.txt",
+  "historicalFormsSHA256": "f081edbdc36dad14c18bf75f25ac6267d1cb03d98124fece0618642193366e6a",
+  "currentFormsSHA256": "28dbd7d7e265a808779ed693e0c8c5de999e7465f3fbcf8d896df8acacb09f7d",
+  "c27HistoricalProof": {
+    "context": "c27533",
+    "path": "tests/cycle27-source-lineage.test.ts",
+    "historicalPath": "proposals/c27-output-fixture-correction/original-tests.txt",
+    "historicalSHA256": "fa5190cda8ec498565a830022bc2c20bf79a3a1e01823d2d5453bb80d3e47fe5",
+    "historicalOid": "87301caa756c53d607c0fd0f5a6c6e1b9d88ca38",
+    "historicalCommit": "5f0f17dc9766411b260d5b53fd2db5a925adc80f",
+    "currentAfterSHA256": "1df4852d4c78ea2d62beaabd49ee4771842ef1d586dfb0b0977c8d7319a90913"
+  },
+  "ownCompanions": {
+    "README.md": {
+      "mode": 420,
+      "sha256": "0fe43eb65ba3f599cfeb39f5dfd3a5047c30b9f6b9837350b413a9a374ce49a3"
+    },
+    "controls.test.mjs": {
+      "mode": 420,
+      "sha256": "e712dcc6b91322391e5014f1e39b136ec1bfeff36c47b0b65962579300d818a0"
+    }
+  },
+  "admissionAuthorized": false,
+  "integrationAuthorized": false,
+  "release": "NO_GO"
+}
