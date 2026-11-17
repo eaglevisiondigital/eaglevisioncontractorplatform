@@ -1,0 +1,293 @@
+{
+  "classification": "UNAPPLIED_FINITE_DEV_SOURCE_CANDIDATE_NOT_SOURCE_QUALIFIED",
+  "parent": "0e3bb4ab64666e7d78c01b8092b5ea36c1212b9c",
+  "parentTree": "d512a593573f82bf324a26e55d09a88283350b2a",
+  "parentFiles": 2556,
+  "proposedTree": "652fc68cc3b5166766ba598c2a393ce5eb052f2f",
+  "proposedFiles": 2567,
+  "patchSHA256": "42adc5af6fc587f1b7bb2582b48394ba23ebe64c3aff3a4deac85c5c2bf7afa2",
+  "currentHelperSHA256": "2272e8b6b0cdef04ad41e33f7936dd40d1b93d870e01b1ce403a759b010a0a64",
+  "manifestSHA256": "03e87310b5f984d90abf34bbae4d9964e40f8404f6535b639ef0dc4692cae735",
+  "paths": [
+    {
+      "path": "proposals/commercial-customer-operating-reader/README.md",
+      "mode": "100644",
+      "change": "A",
+      "beforeSHA256": null,
+      "afterSHA256": "a3b338f64d0d8ad8b6e5c05fe07a383aa94f25a568d01986e47a6cc795cb6b1a"
+    },
+    {
+      "path": "proposals/commercial-customer-operating-reader/binding.ts",
+      "mode": "100644",
+      "change": "A",
+      "beforeSHA256": null,
+      "afterSHA256": "6a157cccf4569decedc6f8bdeb1fdcd9a501f328234f726b49b14dbdbb137138"
+    },
+    {
+      "path": "proposals/commercial-customer-operating-reader/catalog.ts",
+      "mode": "100644",
+      "change": "A",
+      "beforeSHA256": null,
+      "afterSHA256": "036dd76edb1ce22f6b7f5becbd299b2528019d09837dba94a3a1207a10bca657"
+    },
+    {
+      "path": "proposals/commercial-customer-operating-reader/read.proposed.sql.in",
+      "mode": "100644",
+      "change": "A",
+      "beforeSHA256": null,
+      "afterSHA256": "303741983f5f72ee0fefabbf71d7dd57b0e5bf1b0f265ab389d5fbeb318afe93"
+    },
+    {
+      "path": "proposals/commercial-customer-operating-reader/reader.ts",
+      "mode": "100644",
+      "change": "A",
+      "beforeSHA256": null,
+      "afterSHA256": "fb74f91f603654fa2034592212f8ad9ad87ef7bb288b609f6adb325c1ca8417e"
+    },
+    {
+      "path": "proposals/commercial-customer-operating-reader/runtime-grants.sql.in",
+      "mode": "100644",
+      "change": "A",
+      "beforeSHA256": null,
+      "afterSHA256": "abbca46667c9d9b44839395428f15d9d336e244fe0bd7a5c42217cf8aeb850c5"
+    },
+    {
+      "path": "proposals/commercial-customer-operating-reader/source.json",
+      "mode": "100644",
+      "change": "A",
+      "beforeSHA256": null,
+      "afterSHA256": "6371374d6068f52d83771c054fb378e707a02dc63415b8da0985a19e1903bea1"
+    },
+    {
+      "path": "proposals/commercial-customer-operating-reader/source.ts",
+      "mode": "100644",
+      "change": "A",
+      "beforeSHA256": null,
+      "afterSHA256": "dd44ddb140d1f38cafdf033e3dca4f290191dcb52468525e3f599f88b3d7f071"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/README.md",
+      "mode": "100644",
+      "change": "M",
+      "beforeSHA256": "8cbcf00c88798fa0bab8da0f3af00a7bac707ca03a77067b387dd273e20f419c",
+      "afterSHA256": "8da20ac957765827e445684ad2938c4f35535c687c95aff872128d0fbd72c4d6"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/controls.test.mjs",
+      "mode": "100644",
+      "change": "M",
+      "beforeSHA256": "0ae02568068a3699490cf81212bfb9666962962a7b74ab2d70e0e479adf66bb1",
+      "afterSHA256": "8b215ee6ed2cf95d72571d03c21557c9d994f92bea1f2532467cb5dbfa8b73fe"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/current-fixture.mjs",
+      "mode": "100644",
+      "change": "M",
+      "beforeSHA256": "6c5bbe0cac6f519dccd5dcfae6b3200a3a1ec1e821bad48ada495861aa8af9a1",
+      "afterSHA256": "2272e8b6b0cdef04ad41e33f7936dd40d1b93d870e01b1ce403a759b010a0a64"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/dashboard.patch",
+      "mode": "100644",
+      "change": "M",
+      "beforeSHA256": "39495ac13b413488ce4aef64660dabfd0cda56b9471049abe56630eadc2b313e",
+      "afterSHA256": "220923ca5bb95e973273198ec68766de56f9fda8b3a82b68daecb86c18e5f2d4"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/dashboard.proposed.txt",
+      "mode": "100644",
+      "change": "M",
+      "beforeSHA256": "2d203802e784e32c5b5d0913d8f19a78f31560c9b853a20154f3b4b0abe25635",
+      "afterSHA256": "6ae42faf1e16b769c62b33d9f5f44f3063020bf209d18d9dbfb04e4996eacc6e"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/invoice-held.patch",
+      "mode": "100644",
+      "change": "M",
+      "beforeSHA256": "1cb17bd1fc8345a34dda32716afebab7aea71a82ced8b4fc00232ed4e9843b9d",
+      "afterSHA256": "d92b43b9c306cfa0be324f4058c869f16359e51c806854c03c87c498be65c4ab"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/invoice.proposed.txt",
+      "mode": "100644",
+      "change": "M",
+      "beforeSHA256": "5bd57a2770b00a1d09f2ad358579acdc6c47bee34014f808d4a88d903caf6e58",
+      "afterSHA256": "19e036655cd6b22ea0779e78042ec87c70101ab27d68cef8a53f6298f40e7e79"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/manifest.json",
+      "mode": "100644",
+      "change": "M",
+      "beforeSHA256": "ea0e7eae62ad6a3fbce5a9634b363c77e2228399021a2bfec22f6772053fef6e",
+      "afterSHA256": "03e87310b5f984d90abf34bbae4d9964e40f8404f6535b639ef0dc4692cae735"
+    },
+    {
+      "path": "tests/commercial-customer-operating-reader.test.ts",
+      "mode": "100644",
+      "change": "A",
+      "beforeSHA256": null,
+      "afterSHA256": "1dba84815e20dc2cd3f818bceb17ac5d70d1887dd469bd5b3221aa303985acc8"
+    },
+    {
+      "path": "tests/database/commercial-customer-operating-reader.test.ts",
+      "mode": "100644",
+      "change": "A",
+      "beforeSHA256": null,
+      "afterSHA256": "814e6c658e666501d3c223ef2dc1f9b909810f10187eaa2824b975ca04116afa"
+    },
+    {
+      "path": "tests/fixtures/operating-customer-reader.ts",
+      "mode": "100644",
+      "change": "A",
+      "beforeSHA256": null,
+      "afterSHA256": "cb4f5dcb5a270278dd303f34a717652fa6875213537f627fe34c35e7d7f7ae5a"
+    },
+    {
+      "path": "tests/invoice-guard-admission-proposal.test.ts",
+      "mode": "100644",
+      "change": "M",
+      "beforeSHA256": "5bd57a2770b00a1d09f2ad358579acdc6c47bee34014f808d4a88d903caf6e58",
+      "afterSHA256": "19e036655cd6b22ea0779e78042ec87c70101ab27d68cef8a53f6298f40e7e79"
+    },
+    {
+      "path": "tests/propel-dashboard-parity-source.test.ts",
+      "mode": "100644",
+      "change": "M",
+      "beforeSHA256": "2d203802e784e32c5b5d0913d8f19a78f31560c9b853a20154f3b4b0abe25635",
+      "afterSHA256": "6ae42faf1e16b769c62b33d9f5f44f3063020bf209d18d9dbfb04e4996eacc6e"
+    }
+  ],
+  "outsideParentBodiesTypesFullModesExact": 2546,
+  "frames": {
+    "before": {
+      "tree": "d9608f4300342f7e7e08cc394463601bb87f1aed",
+      "files": 2546
+    },
+    "after": {
+      "tree": "0168a6fba05fa3fa6b86d8fe18e40eb87afb4604",
+      "files": 2557
+    }
+  },
+  "newMetadataPorts": 0,
+  "retained509ComponentPatchSHA256": "91e5c286ab610814655497e86cd68b70a3fac7902e90ee028eb1d47c1025f013",
+  "retained509Author": "ff41ed204ddc3d19d356c3af6dfc1e56db77a457",
+  "retainedRuntimePinsMatch39Of39": true,
+  "reader65Current553Payload": {
+    "passed": 65,
+    "failed": 0,
+    "skipped": 0,
+    "total": 65,
+    "reportSHA256": "720aba0020b80273e5b049675fc527a909c7b85f6587bd9f0bdcc4b2645acb22",
+    "maxCaseDurationMs": 1491.170667,
+    "source": "Exact553 plus unchanged50911A disposable afterimage",
+    "originalBudgetsAndAssertionsUnchanged": true
+  },
+  "qualification": "BLOCKED_CURRENT41_TIMEOUT",
+  "protectedApplicationAuthorized": false,
+  "operationalReady": false,
+  "release": "NO_GO",
+  "actualSourceAuthorParentExcludesArtifactAdditions": true,
+  "approvalScope": "Future isolated source-only21 author on exact553; no operational activation",
+  "explicitReadTable": {
+    "existingSevenFinancialOverlays": "byte-exact manifest bindings",
+    "existingP1BindingAndPerReadBranch": "byte-exact",
+    "fiveHistoricalMetadataBindings": "exact same paths/modes/refs/SHA256/OIDs; now all fixed at already-approved553 current after source",
+    "canonicalAdapterFHGQualifierAndRuntime": "outside2546 source proof unchanged",
+    "newFinancialMetadataPaths": 0,
+    "originalSnapshots": {
+      "proposals/dashboard-context-fixture-compatibility/dashboard.original.txt": "7b624c8bf853493f36cbc5ae65921471ce7cae1f41c75375c431c00cf462637b",
+      "proposals/dashboard-context-fixture-compatibility/invoice.original.txt": "ee18681c44f7e9b1a15c6dbe37762c096f7a01dc4ad6fd63a038d14bd96a8516"
+    },
+    "newPhaseEndpoints": [
+      "tests/propel-dashboard-parity-source.test.ts",
+      "tests/invoice-guard-admission-proposal.test.ts"
+    ],
+    "readTable": [
+      {
+        "path": "proposals/payment-launch-integration/legacy-invoice-fixture.mjs",
+        "mode": 420,
+        "phased": false,
+        "beforeSHA256": "43e24d6af6af2118d7e10453ae2a48356552218c4d74ddbed3dd5c6318833880",
+        "afterSHA256": "43e24d6af6af2118d7e10453ae2a48356552218c4d74ddbed3dd5c6318833880",
+        "beforeOid": "b0229b95e1423f7547e6f90ce3e6e4d23af728a4",
+        "afterOid": "b0229b95e1423f7547e6f90ce3e6e4d23af728a4",
+        "historicalRef": "c60c09c1fe9edab55220840499e2525a6751a558",
+        "historicalSHA256": "9520858626dde02883b5755e3681d1a3ba35f00f9a57eb55fe1f613a8befbe06",
+        "historicalOid": "d51e98d58d9cbcf0f567803aac2447588386e3a7"
+      },
+      {
+        "path": "tests/launch-caller-payment-integration.test.ts",
+        "mode": 420,
+        "phased": false,
+        "beforeSHA256": "291af07fb7f70064bb44335f8d97c0f925665966458f5b39c5fe602fded641b0",
+        "afterSHA256": "291af07fb7f70064bb44335f8d97c0f925665966458f5b39c5fe602fded641b0",
+        "beforeOid": "a13416def47d38ff4ebaccdca460f4caa19e73bf",
+        "afterOid": "a13416def47d38ff4ebaccdca460f4caa19e73bf",
+        "historicalRef": "c60c09c1fe9edab55220840499e2525a6751a558",
+        "historicalSHA256": "f9289b166c0170072446aa35e261f2108fa3f62602dd6f4e34ccf952195949ab",
+        "historicalOid": "016ebfe066d741ece271ef69f4f98b079e00a65e"
+      },
+      {
+        "path": "tests/cycle27-source-lineage.test.ts",
+        "mode": 420,
+        "phased": false,
+        "beforeSHA256": "1df4852d4c78ea2d62beaabd49ee4771842ef1d586dfb0b0977c8d7319a90913",
+        "afterSHA256": "1df4852d4c78ea2d62beaabd49ee4771842ef1d586dfb0b0977c8d7319a90913",
+        "beforeOid": "f1761ecdfc0de091dd3603f4545f654ef387e5e1",
+        "afterOid": "f1761ecdfc0de091dd3603f4545f654ef387e5e1",
+        "historicalRef": "c60c09c1fe9edab55220840499e2525a6751a558",
+        "historicalSHA256": "fa5190cda8ec498565a830022bc2c20bf79a3a1e01823d2d5453bb80d3e47fe5",
+        "historicalOid": "87301caa756c53d607c0fd0f5a6c6e1b9d88ca38"
+      },
+      {
+        "path": "tests/provider-readiness.test.ts",
+        "mode": 420,
+        "phased": false,
+        "beforeSHA256": "095c91b17e671976700a4a6e29c782cdbbfed6e45e836cea077c960b595385d5",
+        "afterSHA256": "095c91b17e671976700a4a6e29c782cdbbfed6e45e836cea077c960b595385d5",
+        "beforeOid": "7644d8347a1e9c4362afc640227fed13fa5b77b7",
+        "afterOid": "7644d8347a1e9c4362afc640227fed13fa5b77b7",
+        "historicalRef": "c60c09c1fe9edab55220840499e2525a6751a558",
+        "historicalSHA256": "151a089905f8dbe813d88a697b6a047ebb973916e1f975828b6a26040e86923b",
+        "historicalOid": "12806c31b04a0b902d63fc2029c235cc004f89d8"
+      },
+      {
+        "path": "tests/program/cycle14-visual-review.test.ts",
+        "mode": 420,
+        "phased": false,
+        "beforeSHA256": "effce2fd33b4b108d70db9afd07539c527f2c51421b286ba3ed3d83dc8530dea",
+        "afterSHA256": "effce2fd33b4b108d70db9afd07539c527f2c51421b286ba3ed3d83dc8530dea",
+        "beforeOid": "8c4dcd6123fbef48db58a770c297ff917f7b350f",
+        "afterOid": "8c4dcd6123fbef48db58a770c297ff917f7b350f",
+        "historicalRef": "c60c09c1fe9edab55220840499e2525a6751a558",
+        "historicalSHA256": "36f88bf5917ffc7308d9413bab081954033e6a7ceefba1992dbb770cb7e041a9",
+        "historicalOid": "ec06912a6b457d92f6b50d5b1e379d7555705123"
+      }
+    ],
+    "p1ReadTable": {
+      "classification": "SEPARATE_UNAPPROVED_TEST_ONLY_SCOPE_AMENDMENT",
+      "path": "tests/property-p1-executor.test.ts",
+      "mode": 420,
+      "currentAuthor": "59535839535385e37e03823372dd2dc16591ddb3",
+      "currentSHA256": "f2821ed625c5979e0ebf712efd8fb711c27ea80819e838903b7cbd55c52a0e01",
+      "currentOid": "66ee0e039dd8a60a767ab52f01a06a829ffd02de",
+      "historicalParent": "9f9fe19994fb2a224730d3f8212ca8e4dcde44c3",
+      "historicalSHA256": "832f8e0f3e917c16c9cd76415151fdeb6bef2572b18e4874c8a3696ccebcdb38",
+      "historicalOid": "7e153b7425d10f3bee45762e0c8d57b662986e2f",
+      "admissionAuthorized": false,
+      "actualP1ExecutionProjection": false
+    },
+    "readerComponentPatchSHA256": "91e5c286ab610814655497e86cd68b70a3fac7902e90ee028eb1d47c1025f013"
+  },
+  "sourceApprovalRequested": false,
+  "pathInventoryValidation": {
+    "metadataRows": 21,
+    "uniquePaths": 21,
+    "actualDiffPaths": 21,
+    "modified": 10,
+    "added": 11,
+    "allModes": "100644",
+    "allBeforeAfterEndpointHashesVerified": true,
+    "heldPatchUnchanged": true
+  }
+}

@@ -1,0 +1,917 @@
+{
+  "classification": "FINITE_DEV_SOURCE_QUALIFICATION_NOT_OPERATING_INVOICE_ACCEPTANCE",
+  "parent": "0e3bb4ab64666e7d78c01b8092b5ea36c1212b9c",
+  "patchSHA256": "42adc5af6fc587f1b7bb2582b48394ba23ebe64c3aff3a4deac85c5c2bf7afa2",
+  "sourceAfterTree": "652fc68cc3b5166766ba598c2a393ce5eb052f2f",
+  "negativeFirstOriginal553Guard": {
+    "boundary": "Exact actual553 old joint helper plus unchanged50911A, no reseal",
+    "exit": 0,
+    "result": {
+      "denied": true,
+      "error": "Exact joint dashboard/invoice context required"
+    },
+    "patchSHA256": "91e5c286ab610814655497e86cd68b70a3fac7902e90ee028eb1d47c1025f013",
+    "canonicalSourceUntouched": true
+  },
+  "original65ReaderOn553PlusUnchanged11": {
+    "passed": 65,
+    "failed": 0,
+    "skipped": 0,
+    "total": 65,
+    "reportSHA256": "720aba0020b80273e5b049675fc527a909c7b85f6587bd9f0bdcc4b2645acb22",
+    "maxCaseDurationMs": 1491.170667,
+    "source": "Exact553 plus unchanged50911A disposable afterimage",
+    "originalBudgetsAndAssertionsUnchanged": true
+  },
+  "reusedNativeEvidence": "Fresh independent full original23 native reader cases PASS on finalv3. Earlier #506 23 evidence remains separate; #508 custodyfixture10 is reused, not rerun. Initial targeted9 estimate was not actual execution count.",
+  "independent": {
+    "sourceVersion": "FINALv3_42adc5af",
+    "controls61": {
+      "passed": 61,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 302179.400292,
+      "maxCaseDurationMs": 28490.564334,
+      "rawLogSHA256": "3c520eb838567ee5ce5da6b1c68ddc11d6310b4bc5d4bd2cde34a0e7acb6611e",
+      "originalBudgetMs": 30000,
+      "sourcePatchSHA256": "42adc5af6fc587f1b7bb2582b48394ba23ebe64c3aff3a4deac85c5c2bf7afa2"
+    },
+    "readerUnit65": {
+      "passed": 65,
+      "failed": 0,
+      "skipped": 0,
+      "maxCaseDurationMs": 2401.902542,
+      "rawReportSHA256": "f01f5abd060f93e8f4eba26b31e84305da4fd05325f755eea13bee9c9137a526",
+      "sourcePatchSHA256": "42adc5af6fc587f1b7bb2582b48394ba23ebe64c3aff3a4deac85c5c2bf7afa2"
+    },
+    "nativeReader23": {
+      "passed": 23,
+      "failed": 0,
+      "skipped": 0,
+      "total": 23,
+      "reportSHA256": "8a2b7f8f93dfa5ea3ca2795528d1fb67f73601de1b420e0df39388e1ddbe694a",
+      "maxCaseDurationMs": 1751.2792909999998,
+      "scope": "Fresh original23 native reader cases on finalv3 current553+closed21 frame",
+      "nativeVersion": "PostgreSQL17.11",
+      "cluster": "Owned Unixsocket/TCPdisabled stoppedandremoved; rootrunnerexit0",
+      "custody508Ten": "Retained historical evidence, not rerun"
+    },
+    "original41": {
+      "passed": 40,
+      "failed": 1,
+      "skipped": 0,
+      "reportSHA256": "6e397cd2be53246cc813b310556ea09f48aa851e91b167e6197687d4cf674d58",
+      "failures": [
+        {
+          "name": "rejects a complete exact protected-phase change across its import await",
+          "durationMs": 33719.001541000005,
+          "error": "Original30-second timeout; no budget/assertion/sourcechange authorized"
+        }
+      ],
+      "originalBudgetMs": 30000,
+      "status": "FAIL_ACTUAL_TIMEOUT_RETAINED"
+    },
+    "priorPrimary232Tests": "Retained oldseal61+41 PASS; only semantics-preserving unusedbinding/format/seal delta, AST/fullhelper equivalence proof explicit; not presented as finalv3 executions"
+  },
+  "retainedFirstFrameFailure": {
+    "patchSHA256": "443724c5a6e75f6fc2f35480c337fae5f9c56f22826c86f48bdd3ad8a60dd6fb",
+    "passed": 48,
+    "failed": 13,
+    "skipped": 0,
+    "reason": "Owned Git store lacked pre-existing immutable3b52 yearly author before financial source comparisons; and new mode harness requested4644/2644 that platform stripped to0644. Failed packet/log retained. No runtime/SQL/helper policy/read port added to repair this."
+  },
+  "modeVectors": {
+    "vectors": [
+      {
+        "requested": "4644",
+        "effective": "644",
+        "result": "NOT_EXERCISED: platform stripped requested bits; no changed mode was presented to guard"
+      },
+      {
+        "requested": "2644",
+        "effective": "644",
+        "result": "NOT_EXERCISED: platform stripped requested bits; no changed mode was presented to guard"
+      },
+      {
+        "requested": "1644",
+        "effective": "1644",
+        "result": "DENIED"
+      },
+      {
+        "requested": "755",
+        "effective": "755",
+        "result": "DENIED"
+      }
+    ],
+    "runtimeReaderMask": "0o777 unchanged approved source; standalone special-bit guarantee absent",
+    "jointWholeFrameMask": "0o7777 unchanged",
+    "originalCasesRemoved": false
+  },
+  "localGitPrerequisite": {
+    "classification": "OWNED_GIT_PREREQUISITE_CORRECTION_NO_SOURCE_CHANGE",
+    "missingRef": "3b52b8706bf83eefc0712ec83fca8dda57e76a37",
+    "rawCommit": "tree 105f55f219f6fba8b63db618905f4da8eff73222\nparent b7387ade02d842eeb4eb8d7d1b3ab2f615963f02\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794760993 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794760993 -0600\n\nApply approved #488 connection guard author patch [skip netlify]",
+    "tree": "105f55f219f6fba8b63db618905f4da8eff73222",
+    "parent": "b7387ade02d842eeb4eb8d7d1b3ab2f615963f02",
+    "preservedInitialFailedPacketSHA256": "443724c5a6e75f6fc2f35480c337fae5f9c56f22826c86f48bdd3ad8a60dd6fb",
+    "guardPolicyChanged": false,
+    "newReadPort": false
+  },
+  "sourcePreservation": {
+    "existingSevenFinancialOverlays": "byte-exact manifest bindings",
+    "existingP1BindingAndPerReadBranch": "byte-exact",
+    "fiveHistoricalMetadataBindings": "exact same paths/modes/refs/SHA256/OIDs; now all fixed at already-approved553 current after source",
+    "canonicalAdapterFHGQualifierAndRuntime": "outside2546 source proof unchanged",
+    "newFinancialMetadataPaths": 0,
+    "originalSnapshots": {
+      "proposals/dashboard-context-fixture-compatibility/dashboard.original.txt": "7b624c8bf853493f36cbc5ae65921471ce7cae1f41c75375c431c00cf462637b",
+      "proposals/dashboard-context-fixture-compatibility/invoice.original.txt": "ee18681c44f7e9b1a15c6dbe37762c096f7a01dc4ad6fd63a038d14bd96a8516"
+    },
+    "newPhaseEndpoints": [
+      "tests/propel-dashboard-parity-source.test.ts",
+      "tests/invoice-guard-admission-proposal.test.ts"
+    ],
+    "readTable": [
+      {
+        "path": "proposals/payment-launch-integration/legacy-invoice-fixture.mjs",
+        "mode": 420,
+        "phased": false,
+        "beforeSHA256": "43e24d6af6af2118d7e10453ae2a48356552218c4d74ddbed3dd5c6318833880",
+        "afterSHA256": "43e24d6af6af2118d7e10453ae2a48356552218c4d74ddbed3dd5c6318833880",
+        "beforeOid": "b0229b95e1423f7547e6f90ce3e6e4d23af728a4",
+        "afterOid": "b0229b95e1423f7547e6f90ce3e6e4d23af728a4",
+        "historicalRef": "c60c09c1fe9edab55220840499e2525a6751a558",
+        "historicalSHA256": "9520858626dde02883b5755e3681d1a3ba35f00f9a57eb55fe1f613a8befbe06",
+        "historicalOid": "d51e98d58d9cbcf0f567803aac2447588386e3a7"
+      },
+      {
+        "path": "tests/launch-caller-payment-integration.test.ts",
+        "mode": 420,
+        "phased": false,
+        "beforeSHA256": "291af07fb7f70064bb44335f8d97c0f925665966458f5b39c5fe602fded641b0",
+        "afterSHA256": "291af07fb7f70064bb44335f8d97c0f925665966458f5b39c5fe602fded641b0",
+        "beforeOid": "a13416def47d38ff4ebaccdca460f4caa19e73bf",
+        "afterOid": "a13416def47d38ff4ebaccdca460f4caa19e73bf",
+        "historicalRef": "c60c09c1fe9edab55220840499e2525a6751a558",
+        "historicalSHA256": "f9289b166c0170072446aa35e261f2108fa3f62602dd6f4e34ccf952195949ab",
+        "historicalOid": "016ebfe066d741ece271ef69f4f98b079e00a65e"
+      },
+      {
+        "path": "tests/cycle27-source-lineage.test.ts",
+        "mode": 420,
+        "phased": false,
+        "beforeSHA256": "1df4852d4c78ea2d62beaabd49ee4771842ef1d586dfb0b0977c8d7319a90913",
+        "afterSHA256": "1df4852d4c78ea2d62beaabd49ee4771842ef1d586dfb0b0977c8d7319a90913",
+        "beforeOid": "f1761ecdfc0de091dd3603f4545f654ef387e5e1",
+        "afterOid": "f1761ecdfc0de091dd3603f4545f654ef387e5e1",
+        "historicalRef": "c60c09c1fe9edab55220840499e2525a6751a558",
+        "historicalSHA256": "fa5190cda8ec498565a830022bc2c20bf79a3a1e01823d2d5453bb80d3e47fe5",
+        "historicalOid": "87301caa756c53d607c0fd0f5a6c6e1b9d88ca38"
+      },
+      {
+        "path": "tests/provider-readiness.test.ts",
+        "mode": 420,
+        "phased": false,
+        "beforeSHA256": "095c91b17e671976700a4a6e29c782cdbbfed6e45e836cea077c960b595385d5",
+        "afterSHA256": "095c91b17e671976700a4a6e29c782cdbbfed6e45e836cea077c960b595385d5",
+        "beforeOid": "7644d8347a1e9c4362afc640227fed13fa5b77b7",
+        "afterOid": "7644d8347a1e9c4362afc640227fed13fa5b77b7",
+        "historicalRef": "c60c09c1fe9edab55220840499e2525a6751a558",
+        "historicalSHA256": "151a089905f8dbe813d88a697b6a047ebb973916e1f975828b6a26040e86923b",
+        "historicalOid": "12806c31b04a0b902d63fc2029c235cc004f89d8"
+      },
+      {
+        "path": "tests/program/cycle14-visual-review.test.ts",
+        "mode": 420,
+        "phased": false,
+        "beforeSHA256": "effce2fd33b4b108d70db9afd07539c527f2c51421b286ba3ed3d83dc8530dea",
+        "afterSHA256": "effce2fd33b4b108d70db9afd07539c527f2c51421b286ba3ed3d83dc8530dea",
+        "beforeOid": "8c4dcd6123fbef48db58a770c297ff917f7b350f",
+        "afterOid": "8c4dcd6123fbef48db58a770c297ff917f7b350f",
+        "historicalRef": "c60c09c1fe9edab55220840499e2525a6751a558",
+        "historicalSHA256": "36f88bf5917ffc7308d9413bab081954033e6a7ceefba1992dbb770cb7e041a9",
+        "historicalOid": "ec06912a6b457d92f6b50d5b1e379d7555705123"
+      }
+    ],
+    "p1ReadTable": {
+      "classification": "SEPARATE_UNAPPROVED_TEST_ONLY_SCOPE_AMENDMENT",
+      "path": "tests/property-p1-executor.test.ts",
+      "mode": 420,
+      "currentAuthor": "59535839535385e37e03823372dd2dc16591ddb3",
+      "currentSHA256": "f2821ed625c5979e0ebf712efd8fb711c27ea80819e838903b7cbd55c52a0e01",
+      "currentOid": "66ee0e039dd8a60a767ab52f01a06a829ffd02de",
+      "historicalParent": "9f9fe19994fb2a224730d3f8212ca8e4dcde44c3",
+      "historicalSHA256": "832f8e0f3e917c16c9cd76415151fdeb6bef2572b18e4874c8a3696ccebcdb38",
+      "historicalOid": "7e153b7425d10f3bee45762e0c8d57b662986e2f",
+      "admissionAuthorized": false,
+      "actualP1ExecutionProjection": false
+    },
+    "readerComponentPatchSHA256": "91e5c286ab610814655497e86cd68b70a3fac7902e90ee028eb1d47c1025f013"
+  },
+  "commercialPathInventory": {
+    "classification": "EXACT553_COMMERCIAL_PATH_SOURCE_INVENTORY_NOT_OPERATIONAL_ACCEPTANCE",
+    "parent": "0e3bb4ab64666e7d78c01b8092b5ea36c1212b9c",
+    "tree": "d512a593573f82bf324a26e55d09a88283350b2a",
+    "trackedFiles": 2556,
+    "rows": [
+      {
+        "stage": "Invoice create/save/reopen/CAS",
+        "status": "IMPLEMENTED_DEV_SOURCE_UNWIRED_UNINSTALLED",
+        "sources": [
+          {
+            "path": "server/invoices/commercial-draft-client.ts",
+            "presentOn553": true,
+            "sourceSHA256": "94aa164e60c780cb53f8658b16c57bc9c17da5d9469c73f9d73cab627dcea694",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "server/invoices/commercial-drafts.proposed.sql",
+            "presentOn553": true,
+            "sourceSHA256": "e1c504f9a7077caa92c375c378fb370155478be9cf077e66bf58932ae0895a3c",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "server/invoices/commercial-caller-connection.ts",
+            "presentOn553": true,
+            "sourceSHA256": "3d892a8ae7757a6f480fde4638f17f4b642436ba728446dfd84811590be0aeed",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          }
+        ],
+        "implementedBehavior": "Original CommercialDraftClient create/save/read; one draft per org/issued source, integer minor-unit source-derived money, exact actor/session/command/request-hash, CAS/revision receipts; UNKNOWN permits exact original read only.",
+        "unacceptedOrMissing": "No operating SQL/grants/target/real connector or UI route. Process-local attempted/UNKNOWN holds are not durable independent custody."
+      },
+      {
+        "stage": "Immutable issuance/original command read",
+        "status": "APPROVED_DEV_SOURCE_PRESENT_NOT_OPERATIONAL",
+        "sources": [
+          {
+            "path": "proposals/commercial-invoice-issuance/issuance.proposed.sql",
+            "presentOn553": true,
+            "sourceSHA256": "961c2dc380695ed2d910108d09303fff9b9018fe8d159beb9b958ddb2725d022",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "proposals/commercial-invoice-issuance/presentation.ts",
+            "presentOn553": true,
+            "sourceSHA256": "a63a605af3b1e03a0169828340f4938a50031a6f131404054da60e2db610ea6b",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "proposals/commercial-invoice-issuance/author-checkpoint.json",
+            "presentOn553": true,
+            "sourceSHA256": "c7ac87697e835bb658df56f00d240e571ae5feb6dc6217eda7de29451d3e425a",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          }
+        ],
+        "implementedBehavior": "Current canonical draft guard and issuance successor are already accepted in development #456/#460/#467 lineage; locks exact revision/source and separate invoice-specific authority, immutable issue header and original receipt, safe projection.",
+        "unacceptedOrMissing": "Old immutable source.json/author-checkpoint HELD fields describe their historical proposal; they are not a request to repeat accepted source approval. SQL installation/Auth/authority issuance and operational acceptance remain separate."
+      },
+      {
+        "stage": "Permanent numbering",
+        "status": "OWNER_APPROVED_YEAR_POLICY_SOURCE_AUTHORED_INSTALLATION_HELD",
+        "sources": [
+          {
+            "path": "proposals/commercial-invoice-issuance/issuance.proposed.sql",
+            "presentOn553": true,
+            "sourceSHA256": "961c2dc380695ed2d910108d09303fff9b9018fe8d159beb9b958ddb2725d022",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "proposals/commercial-invoice-year-numbering/numbering.proposed.sql",
+            "presentOn553": true,
+            "sourceSHA256": "89cf71e709d94cb9d0c14bd7822f2dec613315dcbac24b05299b3b0ae15ae9f7",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "proposals/commercial-invoice-numbering/numbering.proposed.sql",
+            "presentOn553": true,
+            "sourceSHA256": "49fbbde015b9cf7a92f2bbdb74f7f5c347a63246d63cc7c9a47724858b11922e",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          }
+        ],
+        "implementedBehavior": "Owner APPROVED INV-YYYY-NNNNNN. Reviewed yearly allocator and connection/read projection successors are already authored in #482/#483/#487. Canonical original issuance SQL retains its UUID default until the separate reviewed yearly installation is chosen; connection and safe decoders already support accepted-yearly mode with original namespace/year/command anchors.",
+        "unacceptedOrMissing": "No duplicate numbering-policy decision requested. Operational installation, target authority/namespace and original issued-header bindings remain held; never silently replace the canonical UUID default or infer year anchors from public input."
+      },
+      {
+        "stage": "Staff caller/connection/lease",
+        "status": "DISPOSABLE_ONLY_FACTORY_SOURCE_PRESENT",
+        "sources": [
+          {
+            "path": "proposals/commercial-invoice-connection/connection.ts",
+            "presentOn553": true,
+            "sourceSHA256": "50db32661490a3e1d7807bfffcca66dcacda1333e9578c3ab63e3e9984747d23",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "proposals/commercial-invoice-connection/source.ts",
+            "presentOn553": true,
+            "sourceSHA256": "5962272679a66e54b6bb30c8cc52502e0703434956f3dfdd68995e3cc233aa13",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "server/invoices/commercial-caller-connection.ts",
+            "presentOn553": true,
+            "sourceSHA256": "3d892a8ae7757a6f480fde4638f17f4b642436ba728446dfd84811590be0aeed",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          }
+        ],
+        "implementedBehavior": "Composes original caller, drafts and issue/read using actual backend identity, process-local lease/attempt quarantine and post-await fences.",
+        "unacceptedOrMissing": "Factory hardcodes *_test_* principals and ev_test_<32hex> database; writes fixture JWT claims after scope check. Missing genuine nonproduction connector, target-principal contract and route wiring. D1 or SQL approval alone does not enable it. Cross-process custody/ACK/spent/restart/alias/cancel/discard acceptance absent."
+      },
+      {
+        "stage": "Opaque customer Auth/current AAL2/session",
+        "status": "IMPLEMENTED_SOURCE_GENUINE_TARGET_UNACCEPTED",
+        "sources": [
+          {
+            "path": "server/customer/broker-auth.ts",
+            "presentOn553": true,
+            "sourceSHA256": "709018249d889504b860e4cf0f4caa5cbdd1c2b04f58c53226f4499c68fd46d6",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "server/invoices/commercial-caller-connection.ts",
+            "presentOn553": true,
+            "sourceSHA256": "3d892a8ae7757a6f480fde4638f17f4b642436ba728446dfd84811590be0aeed",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          }
+        ],
+        "implementedBehavior": "Opaque original SDK actor verification and current Auth-session checks; AAL2/current customer identity required, claims are not authority.",
+        "unacceptedOrMissing": "Controlled Auth transport/rows are not genuine hosted Auth. No sign-in/MFA/session revocation acceptance or target mapping reviewed here. server/staging/preflight.ts anonymous readiness cannot substitute."
+      },
+      {
+        "stage": "Customer issued-invoice safe decoder/bridge",
+        "status": "IMPLEMENTED_DEFAULT_OFF_UNWIRED",
+        "sources": [
+          {
+            "path": "proposals/commercial-customer-bridge/reader.ts",
+            "presentOn553": true,
+            "sourceSHA256": "98e502cb1e4beaa8cd6a950539a1ba1973677da9ee4e46c097b0193d6c138ea2",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "src/components/invoices/commercial-customer-read.ts",
+            "presentOn553": true,
+            "sourceSHA256": "e546c945bf3f4993a5a5e4a62703e8e8f6b0b7473cc31a237be2050c863ee8ef",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "src/components/invoices/customer-invoice-contract.ts",
+            "presentOn553": true,
+            "sourceSHA256": "e343734dd7889fdf485e08cb74d89cbf0900c9a34cd90c50698b734549b4c0b2",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "src/components/invoices/CommercialCustomerReceipt.tsx",
+            "presentOn553": true,
+            "sourceSHA256": "008b1f9d9100dff6902862de9df70b1c3fe400f3c8dee582fd1178133470acb0",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "src/components/invoices/commercial-customer-receipt.css",
+            "presentOn553": true,
+            "sourceSHA256": "0090a5687e11d937db5cbf30d088dde96f4b5111ba4882f110d731e9f75a0648",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          }
+        ],
+        "implementedBehavior": "Existing unmounted CommercialCustomerReceipt shows issuance evidence (explicitly not a payment receipt), with disabled payment-link/send/resend controls. Existing fictional-local bridge with injected unwired-test-port authorize/readIssued; server-source and actor mapping fences, source-safe response. Payment UNKNOWN, balance null, receipt null, payment link DISABLED/href null.",
+        "unacceptedOrMissing": "No operating reader implementation on actual553, no route/customer delivery/public link, genuine signed customer Auth or accepted grant."
+      },
+      {
+        "stage": "Operating customer authorize/readIssued adapter",
+        "status": "REVIEWED_506_ABSENT_ON553_HELD509_INTEGRATION",
+        "sources": [
+          {
+            "path": "proposals/commercial-customer-operating-reader/reader.ts",
+            "presentOn553": false,
+            "sourceSHA256": "fb74f91f603654fa2034592212f8ad9ad87ef7bb288b609f6adb325c1ca8417e",
+            "sourceMode": "0o644",
+            "sourceBoundary": "operating-reader-guard-source-author"
+          },
+          {
+            "path": "proposals/commercial-customer-operating-reader/source.ts",
+            "presentOn553": false,
+            "sourceSHA256": "dd44ddb140d1f38cafdf033e3dca4f290191dcb52468525e3f599f88b3d7f071",
+            "sourceMode": "0o644",
+            "sourceBoundary": "operating-reader-guard-source-author"
+          },
+          {
+            "path": "proposals/commercial-customer-operating-reader/read.proposed.sql.in",
+            "presentOn553": false,
+            "sourceSHA256": "303741983f5f72ee0fefabbf71d7dd57b0e5bf1b0f265ab389d5fbeb318afe93",
+            "sourceMode": "0o644",
+            "sourceBoundary": "operating-reader-guard-source-author"
+          },
+          {
+            "path": "proposals/commercial-customer-operating-reader/runtime-grants.sql.in",
+            "presentOn553": false,
+            "sourceSHA256": "abbca46667c9d9b44839395428f15d9d336e244fe0bd7a5c42217cf8aeb850c5",
+            "sourceMode": "0o644",
+            "sourceBoundary": "operating-reader-guard-source-author"
+          }
+        ],
+        "implementedBehavior": "Reviewed original #503/#506 adapter + eleven source/test endpoints; default-OFF/disposable-proposal, strict customer-only/tenant/invoice/source/receipt binding and pre/post catalog/Auth/source checks. Existing509 patch91e5 applies unchanged to553; all39 present dependency pins exact.",
+        "unacceptedOrMissing": "Separate source integration not yet approved. Alias/backend ownership and output-only abort limits remain operational blockers. Approved standalone source guard masks0o777 and does not independently reject special bits; proposed joint0o7777 guard rejects whole-frame mode drift. No reader bytes changed."
+      },
+      {
+        "stage": "Physical reader custody #508",
+        "status": "TEST_ONLY_EVIDENCE_NOT_RUNTIME_FACTORY",
+        "sources": [
+          {
+            "path": "proposals/reader-physical-custody-qualification/README.md",
+            "presentOn553": false,
+            "sourceSHA256": "c2d690d6259aae3e45f52a4c1213d32db4d5f490864ba7d5695149361aab48c7",
+            "sourceMode": "0o644",
+            "sourceBoundary": "customer-reader-custody-qualification"
+          }
+        ],
+        "implementedBehavior": "Ten native fixture cases demonstrate participating facade collision reservation, actual driver cancellation/discard and mandatory trusted post-cleanup release witness.",
+        "unacceptedOrMissing": "Test-only callback/witness and process markers are unaccepted operational TCB; no exclusive operational/cross-process owner or durable custody. Existing509 two alias/output-only abort observations remain unchanged."
+      },
+      {
+        "stage": "NMI sandbox initiation/token/capture",
+        "status": "IMPLEMENTED_SANDBOX_ONLY_SOURCE_UNWIRED",
+        "sources": [
+          {
+            "path": "server/payments/sandbox.ts",
+            "presentOn553": true,
+            "sourceSHA256": "0c6bc1aa8e78ed7f6d86128e79055630cb41ec5281ed32a0bf7bbdc616a8ccc6",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "server/payments/token-reference.ts",
+            "presentOn553": true,
+            "sourceSHA256": "5c369dd88ecdc4158ad5ffd3118e3a7b8cde3277324be17dd3c22eeb7041acf1",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "server/providers/safety.ts",
+            "presentOn553": true,
+            "sourceSHA256": "a8865035638e0cd19d5c1ea4b43dc9ed04012dd34cce9cc5084d7f35e9414c4d",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "server/payments/control-store.ts",
+            "presentOn553": true,
+            "sourceSHA256": "2dc82d0ff2548051de6df1461ddf783355e602da914a099bf14f0eba29f3ac7c",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "server/payments/commercial-capacity.proposed.sql",
+            "presentOn553": true,
+            "sourceSHA256": "a9fc788d6ea486a21207868088c56ca1d45a1b9b15ef29feb4f6d62b018a8aa4",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          }
+        ],
+        "implementedBehavior": "Merchant/tenant/provider-bound sandbox preflight, one-use token reference, original idempotency/capacity reservation and terminal result/UNKNOWN containment.",
+        "unacceptedOrMissing": "No genuine merchant/key/token/tenant binding, approved operational provider connector, boarding/VAR/NMI acceptance or permission to initiate. Missing real auth-only/capture-later/void lifecycle remains separate; no guessed adapter."
+      },
+      {
+        "stage": "Signed callbacks/durable inbox",
+        "status": "IMPLEMENTED_SANDBOX_SOURCE_NOT_PROVIDER_ACCEPTED",
+        "sources": [
+          {
+            "path": "server/providers/webhooks.ts",
+            "presentOn553": true,
+            "sourceSHA256": "4872715950663a845543005ea6bc7ca48fd99a34cb586448e3a236742e1726fb",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "server/payments/webhook-inbox.ts",
+            "presentOn553": true,
+            "sourceSHA256": "baba0a4a560be8af01bc0f5bf3bbebd8103f4875c34a5f43394b584bcfb146d0",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "server/payments/control-store.ts",
+            "presentOn553": true,
+            "sourceSHA256": "2dc82d0ff2548051de6df1461ddf783355e602da914a099bf14f0eba29f3ac7c",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          }
+        ],
+        "implementedBehavior": "Signature authenticates exact raw bytes before parsing; fixed merchant/subscription/event identity and durable inbox acknowledgment; duplicates retained; failure UNKNOWN.",
+        "unacceptedOrMissing": "Not financial posting/settlement. No verified real callback endpoint/key/issuer/provider report/merchant acceptance. No provider calls or HTTP route activation here."
+      },
+      {
+        "stage": "Exact merchant reconciliation",
+        "status": "IMPLEMENTED_SANDBOX_SOURCE_UNWIRED",
+        "sources": [
+          {
+            "path": "server/payments/reconciliation.ts",
+            "presentOn553": true,
+            "sourceSHA256": "94f339aa679c0b7fa0880fef035b921608b0717614c3705620f06eed07f9c0b0",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "server/payments/control-store.ts",
+            "presentOn553": true,
+            "sourceSHA256": "2dc82d0ff2548051de6df1461ddf783355e602da914a099bf14f0eba29f3ac7c",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "server/payments/postgres-store.ts",
+            "presentOn553": true,
+            "sourceSHA256": "9b2b9148db4ca5389aa8e9ef4bd5d5c6ccd700a2ed85a7b5dc0f58f8d94d0eef",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          }
+        ],
+        "implementedBehavior": "Original typed tenant/merchant/provider/currency/transaction compare; immutable report/snapshot digest and signed amount net totals.",
+        "unacceptedOrMissing": "No genuine provider report provenance, fees/gross-net/deposit/bank evidence; statement equality is not bank settlement. Exact old-report reopening exists only in separate receipt branch proposal."
+      },
+      {
+        "stage": "Original invoice/payment linkage & reconciliation receipt",
+        "status": "EXISTING_PROPOSALS_ABSENT_ON553",
+        "sources": [
+          {
+            "path": "proposals/invoice-payment-receipt/README.md",
+            "presentOn553": false,
+            "sourceSHA256": "18a9a495fd940d6100c2b56ac4b2dd1e654444cf0869136924dd6de565f2f14c",
+            "sourceMode": "0o644",
+            "sourceBoundary": "receipt-stage"
+          },
+          {
+            "path": "proposals/payment-reconciliation-receipt/README.md",
+            "presentOn553": false,
+            "sourceSHA256": "8cdac75098fdd1794cfcf0bbc3956464d04744dca9c4dbe5de21ca1968f9c733",
+            "sourceMode": "0o644",
+            "sourceBoundary": "receipt-stage"
+          }
+        ],
+        "implementedBehavior": "Existing exact-attempt/issued-header reader and exact-report reopening proposals; immutable scopes, no new payment engine, UNKNOWN/read-only.",
+        "unacceptedOrMissing": "Neither receipt namespace is integrated on553. Historical outcome is not invoice balance or genuine settlement; source integration/admission/SQL/principals need separate exact checkpoint. Not included in current21."
+      },
+      {
+        "stage": "Customer payment receipt/publication SQL author",
+        "status": "APPROVED_SOURCE_AUTHOR_EXISTS_ELSEWHERE_ABSENT_ON553",
+        "sources": [
+          {
+            "path": "server/invoices/commercial-payment-receipt.proposed.sql",
+            "presentOn553": false,
+            "sourceSHA256": "1c1ec82ca52560de86ec19ff9a865babfc3967ff466b425692e733fd240fdef5",
+            "sourceMode": "0o644",
+            "sourceBoundary": "receipt-a2-source-author"
+          },
+          {
+            "path": "server/invoices/customer-payment-publication.proposed.sql",
+            "presentOn553": false,
+            "sourceSHA256": "bff7f5f16fa620b4f7e684228d1ff41af696492027a782ea4698fe49d1fbb71d",
+            "sourceMode": "0o644",
+            "sourceBoundary": "receipt-a2-source-author"
+          }
+        ],
+        "implementedBehavior": "Actual source author4bcd77a (sole da1e42d parent) added exact2SQL sources copied from reviewed proposal; not an installation.",
+        "unacceptedOrMissing": "Do not request duplicate source-author approval. Actual553 contains neither endpoint nor publication/read-only wrapper/authorization mapping. Held publication/source admission/ACK composition remain separate; not included in reader21."
+      },
+      {
+        "stage": "Customer receipt publication/read-only wrapper",
+        "status": "EXISTING_DEFAULT_OFF_PROPOSAL_NOT_INTEGRATED",
+        "sources": [
+          {
+            "path": "proposals/customer-payment-publication/README.md",
+            "presentOn553": false,
+            "sourceSHA256": "8b804c86f6c918782acf3c463be2c3c6db09d6cc5c64522ae7dc1bfb7c2ce8bb",
+            "sourceMode": "0o644",
+            "sourceBoundary": "receipt-stage"
+          },
+          {
+            "path": "proposals/customer-publication-admission/read-only.ts",
+            "presentOn553": false,
+            "sourceSHA256": "a21a74448d791894a54974db4228c7f5f87d69b8114b0f367e1ddef7e760b59f",
+            "sourceMode": "0o644",
+            "sourceBoundary": "receipt-stage"
+          },
+          {
+            "path": "proposals/customer-publication-admission/reader-grants.sql.in",
+            "presentOn553": false,
+            "sourceSHA256": "712570b6b7401d3e8dab0a1df9c26f40be3125acea294dd40d8c2155ebcc3987",
+            "sourceMode": "0o644",
+            "sourceBoundary": "receipt-stage"
+          }
+        ],
+        "implementedBehavior": "Exact immutable successful capture/refund record + separate bounded current customer publication authority; safe card excludes private IDs; balance NOT_ESTABLISHED, settlement UNVERIFIED.",
+        "unacceptedOrMissing": "No customer-publication route, operating grant/factory, genuine Auth or sending. Publication mapping is its existing reviewed authorization store, not a new ledger; source/admission/integration distinct and held."
+      },
+      {
+        "stage": "Outcome ACK and independent custody",
+        "status": "IMPLEMENTED_ACK_CHECKS_SEPARATE505_CUSTODY_COMPOSITION_HELD",
+        "sources": [
+          {
+            "path": "server/payments/control-store.ts",
+            "presentOn553": true,
+            "sourceSHA256": "2dc82d0ff2548051de6df1461ddf783355e602da914a099bf14f0eba29f3ac7c",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "server/payments/sandbox.ts",
+            "presentOn553": true,
+            "sourceSHA256": "0c6bc1aa8e78ed7f6d86128e79055630cb41ec5281ed32a0bf7bbdc616a8ccc6",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "server/payments/refunds.ts",
+            "presentOn553": true,
+            "sourceSHA256": "267912113acc418387beb86826b06c2689bac9f9a00589a0cd5fc6df1aa4158e",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "server/payments/webhook-inbox.ts",
+            "presentOn553": true,
+            "sourceSHA256": "baba0a4a560be8af01bc0f5bf3bbebd8103f4875c34a5f43394b584bcfb146d0",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "server/payments/postgres-store.ts",
+            "presentOn553": true,
+            "sourceSHA256": "9b2b9148db4ca5389aa8e9ef4bd5d5c6ccd700a2ed85a7b5dc0f58f8d94d0eef",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          }
+        ],
+        "implementedBehavior": "Actual current server source already enforces recorded/duplicate finish and webhook acknowledgments; capture/refund return only after finish acknowledgment, unknown completion throws exact-original reconciliation errors. Historical09ff proposal was development-admitted by #367/#369 successors; it is not missing implementation.",
+        "unacceptedOrMissing": "D2 independent durable ACK/spent authority, D3 rollback-resistant custody/recovery and exact #505 composition remain open. No replay or replacement command."
+      },
+      {
+        "stage": "Refund/settlement/bank matching",
+        "status": "SANDBOX_REFUND_SOURCE_GENUINE_SETTLEMENT_MISSING",
+        "sources": [
+          {
+            "path": "server/payments/refunds.ts",
+            "presentOn553": true,
+            "sourceSHA256": "267912113acc418387beb86826b06c2689bac9f9a00589a0cd5fc6df1aa4158e",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          },
+          {
+            "path": "server/payments/reconciliation.ts",
+            "presentOn553": true,
+            "sourceSHA256": "94f339aa679c0b7fa0880fef035b921608b0717614c3705620f06eed07f9c0b0",
+            "sourceMode": "0o644",
+            "sourceBoundary": "actual553"
+          }
+        ],
+        "implementedBehavior": "Reviewed sandbox refund guard requires original settled matching capture and unreserved capacity; declined/UNKNOWN outcomes stay distinct.",
+        "unacceptedOrMissing": "No accepted genuine capture/refund/void/dispute/provider report, fee/deposit or bank matching. Settlement remains UNVERIFIED; customer balance not established by these proposals."
+      }
+    ],
+    "minimumSourceCheckpoint": "Complete held21 closure: exact50911A + existingjoint10M on actual553; no new metadata ports. Source qualification only, not complete operating invoice workflow.",
+    "excludedSeparatePackets": [
+      "#501 publication admission",
+      "#505 ACK composition",
+      "#508 test-only custody fixture",
+      "yearly-numbering proposal",
+      "optional product/UI work"
+    ],
+    "commercialPriority": [
+      "Saul 2 Paul first",
+      "Cunningham second, separate tenant/customer/Auth/merchant/key/settlement acceptance"
+    ],
+    "D1_D3": "Root-owned genuine operational readiness, unchanged and independent",
+    "originalOperationalA01_A12": "NOT_RUN",
+    "release": "NO_GO_NOT_READY_NOT_AUTHORIZED",
+    "publicDocsOnly": {
+      "changelog": "https://supabase.com/changelog.md",
+      "sessions": "https://supabase.com/docs/guides/auth/sessions.md",
+      "change": "No SDK/API/dependency update; current public docs checked only for Auth boundary. No hosted target accessed."
+    },
+    "candidateStatus": "BLOCKED_CURRENT41_TIMEOUT",
+    "nextTechnicalCheckpoint": "Resolve and independently qualify the retained original41 timeout under unchanged30s budgets before any source-author approval request. Candidate remains exact553 plus unchanged50911A and existingjoint10M, no new financial ports/runtime.",
+    "sourceApprovalRequested": false
+  },
+  "limits": [
+    "Actual553 source remains unchanged;21 protected/additive source diff is data only.",
+    "No complete Foundation/hosted/operational invoice PASS is claimed.",
+    "No new namespace/wrapper/engine/schema/ledger/metadata port; unchanged existing509 payload only.",
+    "Existing alias, server-work cancellation/discard, cross-process custody and D1-D3/Auth/installed catalog prerequisites remain unaccepted.",
+    "Original approved INV-YYYY-NNNNNN policy and implemented recorded/duplicate ACK source are retained; no duplicate policy or historical source-author approval requested.",
+    "Receipt/publication/#505 independent custody and settlement remain separate; payment UNKNOWN and links DISABLED.",
+    "No SQL/grants installation, real tenant/Auth/provider/merchant/payment/message/recovery action, merge or deploy."
+  ],
+  "release": "NO_GO_NOT_READY_NOT_AUTHORIZED",
+  "primaryRetained232adf61": {
+    "passed": 61,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 223354.545084,
+    "maxCaseDurationMs": 22086.767792,
+    "originalCaseBudgetMs": 30000,
+    "rawLogSHA256": "073a7f7d5b3efbc04b1e69e2c7dca4ba527971d9e3562f081dfdf60773539e84",
+    "patchSHA256": "232adfe88d4cd6bb2a967dc1eeaac5736de6b9951051fd4c57f7c97d3f35486d",
+    "unsupportedPermissionVectors": "setuid4644/setgid2644 requestedbits strippedbyplatform;NOT_EXERCISED;effective1644/0755 readback asserted and DENY",
+    "assertionsAndBudgets": "Original41 unchanged; new control fixture/vector corrections explicitly retained with prior4437failure"
+  },
+  "primaryRetained232adf41": {
+    "passed": 41,
+    "failed": 0,
+    "skipped": 0,
+    "total": 41,
+    "durationMs": 123811.21752929688,
+    "maxCaseDurationMs": 23433.621541999993,
+    "reportSHA256": "f955fb90edd62e8ea91160318b1a7b416c7de6570dd4eef0e4a7028a527deedc",
+    "originalBudgetsAndMax4Unchanged": true,
+    "patchSHA256": "232adfe88d4cd6bb2a967dc1eeaac5736de6b9951051fd4c57f7c97d3f35486d"
+  },
+  "primaryRetained232adfQuality": {
+    "types": "PASS",
+    "format": "PASS",
+    "features": "PASS25/5/13",
+    "scopedLint": "FAIL2unusednewcontrolbindings; historicalrecordpreserved"
+  },
+  "v2Record": {
+    "patchSHA256": "3cc371d8b2900852422ef722783cd730b4b51204e6ecc6f9025febb0b5b53345",
+    "change": "Only2unusedbindings removed andcoupledseals",
+    "lint": "PASS",
+    "focusedControls": "2PASS",
+    "qPhysicalSanity": "PASS",
+    "format": "FAILonefor-loopwrap;recordpreserved"
+  },
+  "v3ASTEquivalence": {
+    "entireRestoredControlASTEqual": true,
+    "restoredASTSHA256": "8df5ac930c366e3f0adef56718a61cab26b8df06b9ed567c0a99883c13706d88",
+    "prior232ControlsSHA256": "8332dd5bb37fd87927092937278384417e41f053aa569da9163127f95612ba9e",
+    "currentControlsSHA256": "8b215ee6ed2cf95d72571d03c21557c9d994f92bea1f2532467cb5dbfa8b73fe",
+    "onlyUnusedTwoBindingsAndWhitespaceChanged": true,
+    "helperEntireBytesEqualAfterManifestSealMask": true,
+    "assertionBodiesAndControlFlowUnchanged": true,
+    "runtimeSourceUnchanged": true
+  },
+  "v3Quality": {
+    "rows": [
+      {
+        "key": "types",
+        "exit": 0,
+        "wallTimeMs": 29953.931167000002,
+        "logSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "key": "lint",
+        "exit": 0,
+        "wallTimeMs": 1677.096708000001,
+        "logSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "key": "format",
+        "exit": 0,
+        "wallTimeMs": 468.41508299999987,
+        "logSHA256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+      },
+      {
+        "key": "features",
+        "exit": 0,
+        "wallTimeMs": 394.2348340000026,
+        "logSHA256": "ab2fd979bb37679c244b7e632c63e71bef7ed5f0bbe58f69b3f6d11329e190db"
+      }
+    ],
+    "frozen21Unchanged": true,
+    "sourcePatchSHA256": "42adc5af6fc587f1b7bb2582b48394ba23ebe64c3aff3a4deac85c5c2bf7afa2"
+  },
+  "v3FocusedControls": {
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 1957.379,
+    "full61NotRerunByPrimary": true
+  },
+  "v3PhysicalQSanity": {
+    "frame": {
+      "base": "0e3bb4ab64666e7d78c01b8092b5ea36c1212b9c",
+      "tree": "0168a6fba05fa3fa6b86d8fe18e40eb87afb4604",
+      "files": 2557,
+      "phase": "after",
+      "admissionAuthorized": false,
+      "integrationAuthorized": false
+    },
+    "qualified": true,
+    "sourceAuthor": "5f0f17dc9766411b260d5b53fd2db5a925adc80f",
+    "wallTimeMs": 17043.754334,
+    "operationalReady": false
+  },
+  "sourceAudit": {
+    "sourcePatchSHA256": "42adc5af6fc587f1b7bb2582b48394ba23ebe64c3aff3a4deac85c5c2bf7afa2",
+    "afterTree": "652fc68cc3b5166766ba598c2a393ce5eb052f2f",
+    "actual553BodiesTypesFullModesUnchanged": 2556,
+    "afterFilesBodiesTypesFullModesExact": 2567,
+    "delta": "10M11A",
+    "outsideParentExact": 2546,
+    "protected128": true,
+    "designLocks5Bindings13": true,
+    "allV3FrozenPayloadBodiesModesExact": true,
+    "noSourceDriftDuringAllChecks": true,
+    "sourceApproval": false
+  },
+  "independentNativeCurrentFrame": {
+    "passed": 23,
+    "failed": 0,
+    "skipped": 0,
+    "total": 23,
+    "reportSHA256": "8a2b7f8f93dfa5ea3ca2795528d1fb67f73601de1b420e0df39388e1ddbe694a",
+    "maxCaseDurationMs": 1751.2792909999998,
+    "scope": "Fresh original23 native reader cases on finalv3 current553+closed21 frame",
+    "nativeVersion": "PostgreSQL17.11",
+    "cluster": "Owned Unixsocket/TCPdisabled stoppedandremoved; rootrunnerexit0",
+    "custody508Ten": "Retained historical evidence, not rerun"
+  },
+  "qualificationStatus": "BLOCKED_CURRENT41_TIMEOUT",
+  "fixtureInvestigation": "Completed one metadata-only A/B/A with fixed source/HEAD/index/refs. ~3.6percent whole-proof improvement was insufficient to establish correction of the3.719second overrun; original borrowedlayout restored, no original41 rerun or code/cache/policy changes.",
+  "metadataOnlyABA": {
+    "classification": "METADATA_GAIN_SMALL_ORIGINAL41_REMAINS_BLOCKED",
+    "experimentReportSHA256": "993a6503ec42df8659ef390fd7e430f4a6b4f1c8e93fa23e6ccdf2f62a457e2c",
+    "packId": "0cba2cb662195665942e50fc5a666710e562be74",
+    "packObjects": 7757,
+    "packBytes": 11290285,
+    "availableAnchorRoots": 2879,
+    "unavailableSourceLiterals": 539,
+    "all15Measured42QueryStdoutStderrAndExitsMatch": true,
+    "freshNodeWholeProofs": 15,
+    "Arestored": true,
+    "HEADIndexRefsAnd2567SourcesPreserved": true,
+    "summary": {
+      "A1": {
+        "authorMedianMs": 913.8625839987071,
+        "authorMeasuredMs": [
+          913.8625839987071, 908.5878329933621, 1263.6462079972262
+        ],
+        "physicalMedianMs": 1055.4217499884544,
+        "physicalMeasuredMs": [
+          1050.3109169949312, 1055.4217499884544, 1058.9684169972315
+        ]
+      },
+      "B": {
+        "authorMedianMs": 884.2229159927228,
+        "authorMeasuredMs": [
+          886.5534590004245, 884.2008749925299, 884.2229159927228
+        ],
+        "physicalMedianMs": 1017.1058330015512,
+        "physicalMeasuredMs": [
+          1014.3555410031695, 1047.8899580048164, 1017.1058330015512
+        ]
+      },
+      "A2": {
+        "authorMedianMs": 932.7392089908244,
+        "authorMeasuredMs": [
+          932.7392089908244, 892.2361250006361, 935.5071249883622
+        ],
+        "physicalMedianMs": 1054.181540996069,
+        "physicalMeasuredMs": [
+          1049.6603329956997, 1079.872249989421, 1054.181540996069
+        ]
+      }
+    },
+    "physicalMedianReductionMsVsA1": 38.315916986903176,
+    "physicalMedianReductionMsVsA2": 37.07570799451787,
+    "causation": "Not established; ~3.6percent whole-proof gain does not demonstrate correction of the original3.719s overrun. No original41 retry authorized or performed."
+  },
+  "sourceApprovalRequested": false,
+  "operationalAcceptance": false,
+  "artifactPathInventoryValidation": {
+    "metadataRows": 21,
+    "uniquePaths": 21,
+    "actualDiffPaths": 21,
+    "modified": 10,
+    "added": 11,
+    "allModes": "100644",
+    "allBeforeAfterEndpointHashesVerified": true,
+    "heldPatchUnchanged": true
+  },
+  "artifactMetadataCorrection": {
+    "priorUnpublishedRows": 32,
+    "priorUnique": 21,
+    "correctedRows": 21,
+    "reason": "Private freeze collector appended already-staged11 additions twice; only ordinary artifact metadata corrected, held source diff/code unchanged."
+  },
+  "finalIndependentReviewSHA256": "c8481dc633e51fda81f2238c2b75ca9782f2853cc86b02c7bb9b57b51288eeaa",
+  "finalIndependentDecision": "BLOCKED_CURRENT41_TIMEOUT",
+  "sourceQualified": false
+}
