@@ -1,5 +1,12 @@
-import { useEffect, useSyncExternalStore } from 'react';
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from 'react';
 import { CommercialCustomerReadController } from './commercial-customer-read';
+import { formatMinor } from '../../domain/estimating/calculation';
 import './customer-invoice.css';
 import './commercial-customer-receipt.css';
 
@@ -10,6 +17,22 @@ export function CommercialCustomerReceipt({
 }: {
   controller: CommercialCustomerReadController;
 }) {
+  const live = useRef<CommercialCustomerReadController | undefined>(undefined);
+  const pending = useRef<CommercialCustomerReadController | undefined>(
+    undefined,
+  );
+  const [downloading, setDownloading] =
+    useState<CommercialCustomerReadController>();
+  const [referenceStatus, setReferenceStatus] = useState<{
+    controller: CommercialCustomerReadController;
+    text: string;
+  }>();
+  useLayoutEffect(() => {
+    live.current = controller;
+    return () => {
+      if (live.current === controller) live.current = undefined;
+    };
+  }, [controller]);
   const state = useSyncExternalStore(
     controller.subscribe,
     controller.getSnapshot,
@@ -24,6 +47,70 @@ export function CommercialCustomerReceipt({
     );
     return () => clearTimeout(timer);
   }, [expires, controller]);
+  async function downloadReference() {
+    if (pending.current === controller) return;
+    pending.current = controller;
+    setDownloading(controller);
+    setReferenceStatus(undefined);
+    try {
+      // A download requires a new read through the existing server-authorized
+      // reader. A previously visible issuance record is not current authority.
+      await controller.open();
+      const current = controller.getSnapshot();
+      if (live.current !== controller) return;
+      if (current.status !== 'ready') throw Error('Unavailable');
+      const invoice = current.value.invoice;
+      const reference = {
+        schema: 'commercial-issuance-reference-v1',
+        mode: current.value.mode,
+        receiptKind: 'issuance-not-payment',
+        invoiceId: invoice.invoiceId,
+        number: invoice.number,
+        title: invoice.title,
+        currency: invoice.currency,
+        amountMinor: invoice.amountMinor,
+        issuedAt: invoice.issuedAt,
+        revision: invoice.revision,
+        sourceVersionId: invoice.sourceVersionId,
+        issuanceReceiptId: invoice.issuanceReceiptId,
+        observedAt: current.value.observedAt,
+        expiresAt: current.value.expiresAt,
+        paymentStatus: 'UNKNOWN',
+      };
+      if (live.current !== controller || controller.getSnapshot() !== current)
+        return;
+      const url = URL.createObjectURL(
+        new Blob([JSON.stringify(reference, null, 2) + '\n'], {
+          type: 'application/json',
+        }),
+      );
+      try {
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'original-issuance-reference.json';
+        if (live.current !== controller || controller.getSnapshot() !== current)
+          return;
+        link.click();
+      } finally {
+        URL.revokeObjectURL(url);
+      }
+      if (live.current === controller)
+        setReferenceStatus({
+          controller,
+          text: 'Original issuance reference downloaded. Payment remains UNKNOWN.',
+        });
+    } catch {
+      if (live.current === controller)
+        setReferenceStatus({
+          controller,
+          text: 'Issuance reference unavailable. Reopen the exact issued invoice to review current access.',
+        });
+    } finally {
+      if (pending.current === controller) pending.current = undefined;
+      if (live.current === controller)
+        setDownloading((value) => (value === controller ? undefined : value));
+    }
+  }
   return (
     <section
       className="customer-invoice commercial-customer-receipt"
@@ -36,6 +123,19 @@ export function CommercialCustomerReceipt({
       >
         Reopen exact issued invoice
       </button>
+      <button
+        onClick={() => void downloadReference()}
+        disabled={
+          state.status === 'disabled' ||
+          state.status === 'loading' ||
+          downloading === controller
+        }
+      >
+        Download original issuance reference
+      </button>
+      {referenceStatus?.controller === controller && (
+        <p role="status">{referenceStatus.text}</p>
+      )}
       {state.status !== 'ready' ? (
         <p role="status">
           {state.status === 'loading'
@@ -49,6 +149,20 @@ export function CommercialCustomerReceipt({
           <p role="status">Issued invoice · payment UNKNOWN</p>
           <p>{state.value.invoice.number}</p>
           <p>{state.value.invoice.title}</p>
+          <p>
+            Original issued amount:{' '}
+            {formatMinor(
+              state.value.invoice.amountMinor,
+              state.value.invoice.currency,
+            )}
+          </p>
+          <p>
+            Issued{' '}
+            <time dateTime={state.value.invoice.issuedAt}>
+              {state.value.invoice.issuedAt}
+            </time>
+            . This is not a paid balance or payment receipt.
+          </p>
           <details>
             <summary>Original issuance receipt</summary>
             <dl>
