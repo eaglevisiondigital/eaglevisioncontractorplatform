@@ -1,0 +1,151 @@
+{
+  "classification": "SOURCE_DEVELOPMENT_QUALIFIED_UNAPPLIED_NOT_OPERATIONAL",
+  "parent": "0e3bb4ab64666e7d78c01b8092b5ea36c1212b9c",
+  "patchSHA256": "29c93c33a69ef2fd4cb95efa6b87963e837411b603d8ed8d6dd055783c3853ff",
+  "proposedTree": "d73301c44873645e045ca53435023c3daeb67f61",
+  "primary75": {
+    "classification": "PRIMARY_FROZEN_NEW_BATCH_SOURCE_CONTROLS_PASS",
+    "patchSHA256": "29c93c33a69ef2fd4cb95efa6b87963e837411b603d8ed8d6dd055783c3853ff",
+    "tree": "d73301c44873645e045ca53435023c3daeb67f61",
+    "cases": 75,
+    "passed": 75,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 184378.671834,
+    "maxCase": {
+      "name": "exact553 original pair preserves original bodies and budgets",
+      "durationMs": 12528.091792
+    },
+    "original61PrefixUnchanged": true,
+    "newParserFreshnessAndNativeViewControls": 14,
+    "rawSHA256": "c2dbcd5d8f33a9d523454f1d80bb9d1fe210fbe85e5a0facd0d990eea51cab01",
+    "canonicalSourceApplied": false,
+    "old556BlockedFailurePreserved": true
+  },
+  "oldFailure": {
+    "artifactCommit": "a49ed9eadf8c39e8826cdfcf126039e0c7f054a8",
+    "heldPatchSHA256": "42adc5af6fc587f1b7bb2582b48394ba23ebe64c3aff3a4deac85c5c2bf7afa2",
+    "result": "40PASS1TIMEOUT",
+    "case": "rejects a complete exact protected-phase change across its import await",
+    "durationMs": 33719.001541,
+    "budgetMs": 30000,
+    "rawSHA256": "6e397cd2be53246cc813b310556ea09f48aa851e91b167e6197687d4cf674d58"
+  },
+  "rejectedInitialBatch": {
+    "patchSHA256": "735a918c8cedd748d061eec8a5c4fdf4cbb1e1804bb8f2e935a04e93e3dd694d",
+    "reason": "removed native Git parent visibility; same-tree graft counterexample; rejected before full qualification"
+  },
+  "preservedProofs": {
+    "rows": 21,
+    "unique": 21,
+    "modified": 10,
+    "added": 11,
+    "allMode100644": true,
+    "all11Original509BodiesUnchanged": true,
+    "original61ControlPrefixByteExact": true,
+    "original41BodiesAndBudgetsUnchangedExceptHeaderSeal": true,
+    "fullPhysicalProofFunctionByteExact": true,
+    "P1PerReadFullProofBranchByteExact": true,
+    "metadataProcessesPerCompleteProof": 15,
+    "newMetadataReadPaths": 0,
+    "mutableProofCache": false
+  },
+  "sourceAuthorApplication": false,
+  "sourceApprovalRequested": false,
+  "operationalReady": false,
+  "independent": {
+    "new14": {
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 21536.557,
+      "rawSHA256": "0d4658c07eba6a4cf6242b7f77059d88248c71aa3ca1e4d8f1635646fbc8577e"
+    },
+    "original41": {
+      "passed": 41,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 82.68,
+      "maxCaseMs": 14646.208040999998,
+      "previouslyTimedOutExactCaseMs": 14646.208040999998,
+      "originalBudgetMs": 30000,
+      "defaultMaxWorkers": 4,
+      "rawSHA256": "10618e0a445a2b98de8a24faf95f8e8998375f961098b791761d81959cd68161"
+    },
+    "finalReviewSHA256": "8463c4b4e2598e6e6b983ac6ed70f91dbffa3fe17520d37c1070eb0b153dfe8c",
+    "finalBindingSHA256": "1a705e9b79321cf584f823b86983907df0eee0617e90eaaffc5f4507e7214a50",
+    "postTestSourceAuditSHA256": "80b7a1cfd0aa30b310cf23f7036ca508ac31476c64d99df1d2ccf655d6fc773d",
+    "physicalProof": "all2567 bodies/types/full07777modes and21payloads exact; unknownpaths[]"
+  },
+  "reusedEvidence": {
+    "reader65Unit": {
+      "passed": 65,
+      "rawSHA256": "f01f5abd060f93e8f4eba26b31e84305da4fd05325f755eea13bee9c9137a526",
+      "boundary": "exact unchanged11reader+39runtime source only; not newwholeframe qualification"
+    },
+    "reader23Native": {
+      "passed": 23,
+      "rawSHA256": "8a2b7f8f93dfa5ea3ca2795528d1fb67f73601de1b420e0df39388e1ddbe694a",
+      "boundary": "same unchangedsource boundary; previous ownedPG17.11socket/TCPoff cleaned; no rerun"
+    },
+    "508Custody10": "reused; not rerun"
+  },
+  "limits": [
+    "No protected source-author application, approval or operational acceptance",
+    "Existing reader0777 mode limitation unchanged; joint source qualification07777 unchanged",
+    "Existing pool alias/socket/abort/custody and genuineconnector/Auth/grants/source-installation gaps remain",
+    "No new metadata read ports/proof cache/runtime/schema/engine/UI",
+    "No repeated6clockvectors/15P1/hosted/browser/operationalSQL",
+    "Separate C18/C33 eight-case reliability and hosted/Foundation findings are not resolved; D2/D3, realAuth and NMI operations remain held"
+  ],
+  "sourceQuality": {
+    "classification": "EXACT_FROZEN_SOURCE_QUALITY_PASS_NO_RESEAL",
+    "patchSHA256": "29c93c33a69ef2fd4cb95efa6b87963e837411b603d8ed8d6dd055783c3853ff",
+    "tree": "d73301c44873645e045ca53435023c3daeb67f61",
+    "checks": {
+      "strict-types": {
+        "exitCode": 0,
+        "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "scoped-lint": {
+        "exitCode": 0,
+        "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "scoped-format": {
+        "exitCode": 0,
+        "rawSHA256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+      }
+    },
+    "commands": {
+      "strict-types": "node24 node_modules/typescript/bin/tsc --noEmit",
+      "scoped-lint": "ESLint current-fixture.mjs controls.test.mjs and two canonical header files",
+      "scoped-format": "Prettier --check current-fixture.mjs controls.test.mjs manifest.json README.md and two canonical header files"
+    },
+    "sourceOrSealChanges": false
+  },
+  "causeEvidence": {
+    "classification": "ONE_OBSERVER_DIAGNOSTIC_ONLY_NOT_QUALIFICATION",
+    "protocolSHA256": "9c9096ddb9865d4917dfcfd3d4f6c947e42fbf5d92f9fdca7960a5da8078992d",
+    "observerSHA256": "b3408c9b5a5c6b4f8a4cf1ec628aa2bfa3562a781e86923e4af022671dfb35bc",
+    "rawWorkerMetricsSHA256": "79a6569767a6c249fa49d3841ea8dbb78984c336de5c437be3e4d0a6be5c8d56",
+    "costSummarySHA256": "21132e9275523c6451de11747c22326d0981c9a703831ac4e678c563d8cdfa91",
+    "selectedObservedBodyMs": 28023.603541000004,
+    "timedBodyGitProcesses": 1265,
+    "timedBodyGitMs": 24994.19276399998,
+    "completePhysicalProofs": 25,
+    "physicalAuthorGitProcesses": 1050,
+    "notATimeoutWaiver": true,
+    "moduleEvaluationMs": 19.923375000000007,
+    "fileBeforeAllMs": 10429.687291999999,
+    "physicalAuthorGitMs": 20633.134306999986
+  },
+  "metadataABA": {
+    "reportSHA256": "993a6503ec42df8659ef390fd7e430f4a6b4f1c8e93fa23e6ccdf2f62a457e2c",
+    "gainApproximatelyPercent": 3.6,
+    "conclusion": "insufficient to justify retry or qualification; A restored; retained556 timeout unchanged"
+  },
+  "additionalFeaturesCheck": {
+    "exitCode": 0,
+    "rawSHA256": "ab2fd979bb37679c244b7e632c63e71bef7ed5f0bbe58f69b3f6d11329e190db"
+  }
+}
