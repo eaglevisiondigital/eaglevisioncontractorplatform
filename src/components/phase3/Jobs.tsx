@@ -1,3 +1,4 @@
+import { JobOriginalScope } from './JobOriginalScope';
 import {
   acquireForecastSave,
   exactForecastSource,
@@ -112,6 +113,7 @@ export function Jobs({
                   key={`${job.id}-${job.lock_revision}`}
                   job={job}
                   repo={repo}
+                  operations={operations}
                   company={company}
                   admin={admin}
                   refresh={data.reload}
@@ -142,12 +144,14 @@ export function Jobs({
 function JobDetail({
   job: loadedJob,
   repo,
+  operations,
   company,
   admin,
   refresh: refreshParent,
 }: {
   job: Job;
   repo: Phase3Repository;
+  operations: Operations;
   company: CompanyProfile;
   admin: boolean;
   refresh: () => void;
@@ -331,6 +335,12 @@ function JobDetail({
           revisions and job adjustments.
         </p>
       </div>
+      <JobOriginalScope
+        repo={repo}
+        operations={operations}
+        org={company.id}
+        job={job}
+      />
       <div className="job-metrics">
         <div>
           <span>
