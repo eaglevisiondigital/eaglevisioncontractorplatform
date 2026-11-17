@@ -1,0 +1,18 @@
+diff --git a/tests/propel-dashboard-parity-source.test.ts b/tests/propel-dashboard-parity-source.test.ts
+index 48bd4fd4d038f8869aae6917d7c40d45c41d9f35..48f319180f4346e3e2f89d4d33aac236636dfa7b 100644
+--- a/tests/propel-dashboard-parity-source.test.ts
++++ b/tests/propel-dashboard-parity-source.test.ts
+@@ -7,11 +7,11 @@
+ const { dashboardSource: source } = (await import(
+   await (async () => {
+     const bytes = readFileSync(
+-      'proposals/dashboard-forms-fixture-compatibility/current-fixture.mjs',
++      'proposals/dashboard-context-fixture-compatibility/current-fixture.mjs',
+     );
+     if (
+       createHash('sha256').update(bytes).digest('hex') !==
+-      '83a629d02a81d3f1a8b36bd39dc92839eebecfb79c0f9d7f66122c41d5ef8951'
++      '98d41f85eacd16ff156165a3a5567477171c4def2092cb8c1d764d33929e9ef6'
+     )
+       throw Error('Exact approved dashboard/forms source fixture required');
+     return 'data:text/javascript;base64,' + bytes.toString('base64');
