@@ -1,4 +1,5 @@
 import { JobOriginalScope } from './JobOriginalScope';
+import { JobCustomerContext } from './JobCustomerContext';
 import { JobFinder } from './JobFinder';
 import {
   acquireForecastSave,
@@ -345,6 +346,12 @@ function JobDetail({
         </p>
       </div>
       <JobOriginalScope
+        repo={repo}
+        operations={operations}
+        org={company.id}
+        job={job}
+      />
+      <JobCustomerContext
         repo={repo}
         operations={operations}
         org={company.id}
