@@ -1,0 +1,30 @@
+{
+  "classification": "SEPARATE_UNAPPROVED_SCOPE_AMENDMENT",
+  "existingSevenHistoricalReads": [
+    "CURRENT_BUILD_STATE.md",
+    "DECISIONS.md",
+    "src/components/CompanyOperations.tsx",
+    "src/components/WorkspaceNavigation.tsx",
+    "src/components/forms.tsx",
+    "tests/database/property.test.ts",
+    "tests/helpers/property-p1-fixture.ts"
+  ],
+  "additionalRead": {
+    "classification": "SEPARATE_UNAPPROVED_TEST_ONLY_SCOPE_AMENDMENT",
+    "path": "tests/property-p1-executor.test.ts",
+    "mode": 420,
+    "currentAuthor": "59535839535385e37e03823372dd2dc16591ddb3",
+    "currentSHA256": "f2821ed625c5979e0ebf712efd8fb711c27ea80819e838903b7cbd55c52a0e01",
+    "currentOid": "66ee0e039dd8a60a767ab52f01a06a829ffd02de",
+    "historicalParent": "9f9fe19994fb2a224730d3f8212ca8e4dcde44c3",
+    "historicalSHA256": "832f8e0f3e917c16c9cd76415151fdeb6bef2572b18e4874c8a3696ccebcdb38",
+    "historicalOid": "7e153b7425d10f3bee45762e0c8d57b662986e2f",
+    "admissionAuthorized": false,
+    "actualP1ExecutionProjection": false
+  },
+  "consumer": "existing financial source qualifier only",
+  "physical595ProofBeforeEveryNewProjection": true,
+  "actualP1ExecutionUsesDiskF282": true,
+  "runtimeSQLExpiryReadChanges": false,
+  "additionalPortBeyondThisOneAllowed": false
+}

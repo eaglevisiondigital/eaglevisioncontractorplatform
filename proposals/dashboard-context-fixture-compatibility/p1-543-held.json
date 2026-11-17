@@ -1,0 +1,178 @@
+{
+  "classification": "UNAPPLIED_SCOPE_AMENDMENT_ALTERNATIVE_EXACT543_ONE_P1_TEST_PORT",
+  "parent": "59535839535385e37e03823372dd2dc16591ddb3",
+  "parentTree": "c9ebbdb3ad10803cecb903fdf49868a0a90b5999",
+  "proposedTree": "2435fda0061abbf0ca54df26bb454d7f4518c1a1",
+  "files": 2556,
+  "delta": "10M_NO_ADDITIONS",
+  "paths": [
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/README.md",
+      "mode": "100644",
+      "beforeSHA256": "0fe43eb65ba3f599cfeb39f5dfd3a5047c30b9f6b9837350b413a9a374ce49a3",
+      "afterSHA256": "30a1eb852c40b15d57734c6018e387edb2fb10cf4fcaf7115723cd00ec319b7d"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/controls.test.mjs",
+      "mode": "100644",
+      "beforeSHA256": "e712dcc6b91322391e5014f1e39b136ec1bfeff36c47b0b65962579300d818a0",
+      "afterSHA256": "723b763d8954c00f6a856929f87a677e065c9ff846d341342cd184779971defa"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/current-fixture.mjs",
+      "mode": "100644",
+      "beforeSHA256": "98d41f85eacd16ff156165a3a5567477171c4def2092cb8c1d764d33929e9ef6",
+      "afterSHA256": "03aefb7d4b3d62d0985754f993eea400c6d0db90dfde8aa022d518719ce5fe5a"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/dashboard.patch",
+      "mode": "100644",
+      "beforeSHA256": "96c68eb6418ede4403c59922a0772f4b205035a1e7b0f2472d35b7b022e3def7",
+      "afterSHA256": "970f1582abfe75acc29c3d029bcf3e9c0f7064dcdc5253ea20b9e9da8c551999"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/dashboard.proposed.txt",
+      "mode": "100644",
+      "beforeSHA256": "19731d80d13e59226106f449e214836a4e8a2988800a46d3a9717ce13b5cd322",
+      "afterSHA256": "c56a53f995889e076f39e492c53ca67035caeb2b7b7cdd8a96008bd462a4a1bb"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/invoice-held.patch",
+      "mode": "100644",
+      "beforeSHA256": "aced4b6f984a5d21e5014c117f7d53f776ce19202ed1bc1c70a4bc3d5cc88013",
+      "afterSHA256": "fc85c51b8f564ba99be1688be16a48c06f1ef6bb02222a56b18591a527513a5c"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/invoice.proposed.txt",
+      "mode": "100644",
+      "beforeSHA256": "33c91ef3f0e2713cc88e4ee00334c6fe9343453e0bb48a2ea1c1cccf0f80fbe6",
+      "afterSHA256": "4daa889a78ba4c77412e2fa7c2651a060759cd8ae9995f85810b82dd67c9ea12"
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/manifest.json",
+      "mode": "100644",
+      "beforeSHA256": "af01b9b0845cec9787539d3ed2940d23c2e2525c5d08725e187b223f15643969",
+      "afterSHA256": "1284a197cd0c27eb061d2251e19c0f4c70b7898e978efd6b08f978e74785a320"
+    },
+    {
+      "path": "tests/invoice-guard-admission-proposal.test.ts",
+      "mode": "100644",
+      "beforeSHA256": "33c91ef3f0e2713cc88e4ee00334c6fe9343453e0bb48a2ea1c1cccf0f80fbe6",
+      "afterSHA256": "4daa889a78ba4c77412e2fa7c2651a060759cd8ae9995f85810b82dd67c9ea12"
+    },
+    {
+      "path": "tests/propel-dashboard-parity-source.test.ts",
+      "mode": "100644",
+      "beforeSHA256": "19731d80d13e59226106f449e214836a4e8a2988800a46d3a9717ce13b5cd322",
+      "afterSHA256": "c56a53f995889e076f39e492c53ca67035caeb2b7b7cdd8a96008bd462a4a1bb"
+    }
+  ],
+  "outside2546BodiesTypesAndFullModesExact": true,
+  "originalSnapshotsUnchanged": true,
+  "targets": {
+    "dashboard": {
+      "path": "tests/propel-dashboard-parity-source.test.ts",
+      "beforeSHA256": "19731d80d13e59226106f449e214836a4e8a2988800a46d3a9717ce13b5cd322",
+      "afterSHA256": "c56a53f995889e076f39e492c53ca67035caeb2b7b7cdd8a96008bd462a4a1bb",
+      "onlyHelperHashLiteralChanged": true
+    },
+    "invoice": {
+      "path": "tests/invoice-guard-admission-proposal.test.ts",
+      "beforeSHA256": "33c91ef3f0e2713cc88e4ee00334c6fe9343453e0bb48a2ea1c1cccf0f80fbe6",
+      "afterSHA256": "4daa889a78ba4c77412e2fa7c2651a060759cd8ae9995f85810b82dd67c9ea12",
+      "onlyHelperHashLiteralChanged": true
+    }
+  },
+  "patchSHA256": "cb88aca0fc50753244261a03f27c85c9805b87897501d906e6d2b053317107e3",
+  "readTableSHA256": "898824478ec4ef50c88b8ea61fbc070d0c5d7a7d737725c004286233b95e46f2",
+  "helperSHA256": "03aefb7d4b3d62d0985754f993eea400c6d0db90dfde8aa022d518719ce5fe5a",
+  "manifestSHA256": "1284a197cd0c27eb061d2251e19c0f4c70b7898e978efd6b08f978e74785a320",
+  "controls": {
+    "passed": 28,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 81706.477583,
+    "maxSourcePhasePositiveMs": 18349.731875
+  },
+  "original41": {
+    "phase": "original",
+    "base": "59535839535385e37e03823372dd2dc16591ddb3",
+    "passed": 0,
+    "failed": 2,
+    "skipped": 39,
+    "total": 41,
+    "exit": 1,
+    "wallTimeMs": 862.379,
+    "maxCaseDurationMs": 158.49825,
+    "reportSHA256": "30002d483ef94ac8b00ed0c95a52a21bf2700c0dc08ac1e2af9a5a82851eefda",
+    "originalBudgetsAndMaxWorkersUnchanged": true,
+    "acceptedP1TestsRerun": false
+  },
+  "proposed41": {
+    "phase": "proposed",
+    "base": "59535839535385e37e03823372dd2dc16591ddb3",
+    "passed": 41,
+    "failed": 0,
+    "skipped": 0,
+    "total": 41,
+    "exit": 0,
+    "wallTimeMs": 125084.076292,
+    "maxCaseDurationMs": 22199.535541999998,
+    "reportSHA256": "be9d5c1fa8cd0157400cdab751ddb6da42edecec1681af90f289ab666837fb97",
+    "originalBudgetsAndMaxWorkersUnchanged": true,
+    "acceptedP1TestsRerun": false
+  },
+  "acceptedSixVectorsAnd15Rerun": false,
+  "P1DiskSHA256": "f2821ed625c5979e0ebf712efd8fb711c27ea80819e838903b7cbd55c52a0e01",
+  "blockedNoPortPackage": {
+    "classification": "RETAINED_PRIVATE_UNAPPLIED_FAILURE",
+    "patchSHA256": "5351e9b9fb628057a4945765080fc5830ca40b4de63174bb58bc1e194f9e0235",
+    "identitySHA256": "fe15912daea53cb62615a024e6719dd283b99aa1f934acedba051ae79a7a9127",
+    "controls": {
+      "passed": 23,
+      "failed": 2
+    },
+    "proposed41": {
+      "passed": 2,
+      "failed": 0,
+      "skipped": 39
+    }
+  },
+  "blockedNoPortPackageUnchanged": true,
+  "canonicalBranchEdited": false,
+  "newNamespaceOrWrapper": false,
+  "scopeAmendmentApproved": false,
+  "admissionAuthorized": false,
+  "integrationAuthorized": false,
+  "publicationBoundary": "Any ordinary artifact-only draft is review data and not this admitted source. Exact held patch source-author parent remains59535839, with only10 listed modifications and no artifact additions.",
+  "release": "NO_GO",
+  "independentReview": {
+    "status": "CLEAR_SOURCE_AND_TARGETED_TESTS",
+    "controls": {
+      "passed": 28,
+      "failed": 0,
+      "skipped": 0,
+      "hostileAmbientGitInjectionIgnored": true,
+      "logSHA256": "741c9b632d8b60f3049cfedd884a62046fece59a6263b003e56a744c50a7d6a2"
+    },
+    "originalCases": {
+      "passed": 41,
+      "failed": 0,
+      "skipped": 0,
+      "total": 41,
+      "maxCaseDurationMs": 24883.206582999992,
+      "originalBudgetMs": 30000,
+      "maxWorkers": 4,
+      "originalAssertionsUnchanged": true,
+      "actualP1DiskSHA256": "f2821ed625c5979e0ebf712efd8fb711c27ea80819e838903b7cbd55c52a0e01",
+      "acceptedP1OrSixVectorsRun": false,
+      "reportSHA256": "06d4cb3271e50c7a1138bd1aaf0a00ecb4449e6121a9dbc95859f920071dd2fe"
+    },
+    "scope": "Disposable closed ten-file proposal only; no operational acceptance or source application",
+    "reviewSHA256": "b6393c69c5798ac56e023442bdf7df77035fa932e2d1732c15bf5cd28abd251b",
+    "bindingSHA256": "1993ad004b463278c49aaec5627b49da81b4d3299bd1175710082e299b67db14",
+    "postRunAll2556BodiesTypesAndFullModesExact": true,
+    "newUnknownSourcePaths": []
+  },
+  "artifactBranchAdmitted": false
+}
