@@ -418,7 +418,7 @@ it('does not activate an old frozen package after its reviewed quotation window 
   const s = setup();
   const r = await executeP1({
     ...s.options,
-    now: () => Date.UTC(2026, 10, 17),
+    now: () => Date.parse(s.evidence.bindings[0].quote_expires_at) + 1,
   });
   expect(r.status).toBe('STOPPED');
   expect(r.stoppedAt).toBe('PREFLIGHT');
@@ -429,7 +429,7 @@ it('rechecks quote validity after asynchronous Auth/preflight waits before reser
   const s = setup();
   let now = p1Now;
   s.control.ready.mockImplementationOnce(async () => {
-    now = Date.UTC(2026, 10, 17);
+    now = Date.parse(s.evidence.bindings[0].quote_expires_at) + 1;
   });
   const r = await executeP1({ ...s.options, now: () => now });
   expect(r.status).toBe('STOPPED');
