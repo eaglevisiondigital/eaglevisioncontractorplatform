@@ -110,10 +110,20 @@ export function Catalog({
           >
             Clear catalog filters
           </button>
+          <button
+            type="button"
+            className="secondary"
+            disabled={data.loading || editing !== undefined}
+            onClick={data.reload}
+          >
+            Reload catalog
+          </button>
         </div>
         <p id={`${filtersId}-hint`}>
           Search loaded names, descriptions, categories and vendors. Filters
           change this list only; unsaved catalog edits remain open.
+          {editing !== undefined &&
+            ' Close or cancel the editor before reloading.'}
         </p>
       </fieldset>
       {ready && (
