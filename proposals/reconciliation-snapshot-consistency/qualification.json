@@ -1,0 +1,106 @@
+{
+  "schema": "reconciliation-snapshot-consistency-proposal-v1",
+  "classification": "UNAPPLIED_PROTECTED_SOURCE_PATCH_REVIEW_DATA_ONLY",
+  "parentCommit": "3f0c6b53747e60765cdc7faf1308b57ce730676f",
+  "parentTree": "00f6d211affd7e364573ca792e08a1dd67b8f190",
+  "target": "server/payments/reconciliation.ts",
+  "mode": "100644",
+  "beforeSHA256": "94f339aa679c0b7fa0880fef035b921608b0717614c3705620f06eed07f9c0b0",
+  "afterSHA256": "90f8763430b0c208c1741c00224ea2b51db68f5c7c3a6c447b06856013744746",
+  "patchSHA256": "de2e936aa4943998717d095812366123ea8ab538d3eafde90dcea510f1d7a06e",
+  "payloadSHA256": "90f8763430b0c208c1741c00224ea2b51db68f5c7c3a6c447b06856013744746",
+  "proposedRuntimeTree": {
+    "oid": "d144b6837ffac95ef53c5031809c886a8eec1fc9",
+    "kind": "VIRTUAL_HASH_ONLY_NOT_REAL_SOURCE_AUTHOR_COMMIT",
+    "files": 2568,
+    "modifiedPaths": 1
+  },
+  "ordinaryPackage": {
+    "additions": 4,
+    "runtimeFilesApplied": 0
+  },
+  "problem": {
+    "retainedOriginalPureObservation": {
+      "balanced": true,
+      "expectedNetMinor": "500",
+      "reportedNetMinor": "100"
+    },
+    "noOperationalIncidentClaim": true,
+    "originalObservationSHA256": "3d5c23fe0be002c87d6c2f1d8f1bbf37cb3496589cc4f9a3c6da043ba79e7afa"
+  },
+  "validation": {
+    "newFocusedPureControls": {
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skip": 0,
+      "cancelled": 0,
+      "todo": 0,
+      "durationMs": 265.136833,
+      "rawSHA256": "ae1f99929a535165fc2ec7c80d0f5b9d233ee3c18ba4fdf91cc98982107f99df",
+      "harnessSHA256": "fcb165563ddf6ceb184383811be0a67b38dc73f63c2785660d19add06f6b7b05"
+    },
+    "independentFullModuleControls": {
+      "passed": 4,
+      "failed": 0,
+      "reportSHA256": "4f54586c5a0d00cb3d70044ec80861acf4dc8ed977984508052b8117a567261e",
+      "method": "Entire pinned candidate transpiled; only safety module specifier redirected to entire pinned safety data module; actual node builtins retained; no app/network/provider/SQL imports",
+      "cases": [
+        {
+          "name": "frozen reverse-order mixed capture/refund statements retain exact net",
+          "result": "PASS"
+        },
+        {
+          "name": "caller array iterators and unrelated metadata accessors are never executed",
+          "result": "PASS"
+        },
+        {
+          "name": "revoked proxies are rejected before observable scope or row access",
+          "result": "PASS"
+        },
+        {
+          "name": "equal net cannot conceal missing unexpected or same-id amount conflict",
+          "result": "PASS"
+        }
+      ]
+    },
+    "strictSemanticTypes": {
+      "result": "PASS",
+      "privateOneFileCompilerHostOverlay": true,
+      "sourceFileWritten": false,
+      "reportSHA256": "bbc1418f1a084d14f924a586ba5a982236fc77ab2474e92de1ba4016707cd56f"
+    },
+    "scopedLint": {
+      "result": "PASS",
+      "logSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "repositoryFormat": {
+      "result": "PASS",
+      "configSHA256": "32dcd743a0ffca59a737c87abcfcc3f57a0cede5cedb6a8b1b68d32a3b6d4506",
+      "logSHA256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+    },
+    "harnessTCB": "Pinned TypeScript type erasure; same-host-realm input/function checks. Independent checks use whole candidate and whole pinned safety modules with actual node builtins. Node24 node:util/types.isProxy is explicit trusted builtin.",
+    "existingSuitesReplayed": false
+  },
+  "retainedSupersededEvidence": {
+    "firstPrivateDraftSHA256": "08afaaae99e1cad54b4fff1f24570f09a56f4fcdf7dac7ca8175d9c8a6051359",
+    "historicalEightControlsDoNotQualifyFinalPayload": true,
+    "firstDraftOwnDescriptorGapObservationSHA256": "17a4c65d88537089eb6c1ee99fdf04f568eeef392662c775a14c5cde0aef929f",
+    "firstCompilerHostMissingTypesDiagnosticsSHA256": "0afe733900080af6082270bf24d415659e70fb791e634bbe837e1e5d5204b2d0",
+    "compilerHostCorrection": "Private getCurrentDirectory bound to immutable source; no product/config/dependency change."
+  },
+  "sourceClosure": {
+    "allOther2567RuntimeParentGitBodiesAndModesRetained": true,
+    "originalACKPin": "94f339aa679c0b7fa0880fef035b921608b0717614c3705620f06eed07f9c0b0",
+    "currentManifestsCheckersHeadersUnchanged": true,
+    "financialSourceAdmission": "NOT_GRANTED; changed reconciliation hash rejected by unchanged ACK manifest and finite whitelist. Static derivation, no sourceguard execution or waiver.",
+    "browserRouteClosure": "No runtime src/browser/App consumer. Existing runtime consumers are Node unit files; control-store imports StatementRow type only. Existing safety already imports node:crypto."
+  },
+  "limits": [
+    "Data/function accuracy only, no independent operational custody or Auth evidence.",
+    "No canonical application, source promotion, payment link, provider/SQL/Auth/tenant action, merge or deployment.",
+    "No receipt564 performance fix, source cache, fewer reads, new source lease, deadline change or UNKNOWN-to-success conversion.",
+    "No fees/net-deposit/bank-settlement acceptance."
+  ],
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}
