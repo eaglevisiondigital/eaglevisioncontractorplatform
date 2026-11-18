@@ -1,0 +1,66 @@
+{
+  "classification": "STATIC_LOCAL_ENV_APPEND_QUALIFICATION_NOT_HOSTED_ENV_OR_FOUNDATION_ACCEPTANCE",
+  "sourceReadset": {
+    "count": 44,
+    "allBodiesAndModesExact560To568": true,
+    "staticProofSHA256": "cfa368cce269a91b972789f65236b700bb29dbc73bece8d82cc3d7ab20280e4e",
+    "retained560": "Twooriginal105Python+9Vitesthostedpasses onoldexactUbuntu24boundary; source/commands/locks only reused"
+  },
+  "newFilesystemControls": {
+    "passed": 25,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 133.346125,
+    "logSHA256": "4cc8d37566201cdbea6369a35d40c37661b83b20e1b085ed9134bcb3b8826c05",
+    "sourceSHA256": "f392c998fe80f1aa6e03a5990ed40ae3c4e2bd4802f255872c8f86250038710d",
+    "scope": "Actualnewlayout/helpers; root/workspace/outputoverlap,normalization,symlinks,hardlinks,modes,metadata/body/pathsubstitution,freshcachedhandlecheck; no applicationcases"
+  },
+  "newRoutingProbe": {
+    "passed": true,
+    "localPython": "3.13.16 onDarwin",
+    "actualNewLayoutHelperUsed": true,
+    "sourceFixtureUnchanged": true,
+    "pycacheAndTmpExternal": true,
+    "recordSHA256": "433399d1c4f93dc8798a0378083e1d52d00d16e1af7ce5d92037be4fc4b163ec",
+    "limit": "Standardlibraryfixtureonly; NOTLinux/Python3.14.2/105+9acceptance"
+  },
+  "rootIndependent": {
+    "guardCases": 6,
+    "guardCasesPassed": 6,
+    "scope": "3retainedlayoutcases+3correctedsecuritynegatives; canonicalhelperpositiveprecondition. No acceptedapplicationreplay.",
+    "peerReviewSHA256": "ab2247d0c7af04d2d09e38ded9298f9015671b2c5c8c3e5cbd52c055f336d56c",
+    "staticReviewSHA256": "fcb214bdd4edef7c6ae3a12838e3e7772410830f1784957848a2b355eb52fd56"
+  },
+  "staleSealHistory": {
+    "classification": "BLOCKED_ACTUAL_STALE_LAYOUT_PIN_FIXED_BEFORE_AUTHOR_CONTROLS",
+    "wrongExpectedLayout": "43501e5119292a873016d6a287b4fea70fc0ad0272de5a8d30e8dadd43751d0b",
+    "actualAndCorrectedLayout": "8b5574d5b7add04166b9dc27d551a9dd71af769e16f90b4639593398fcbd6dd0",
+    "findingSHA256": "386e833e6da09c6b9d96296b5776521f31387f0057b1ec88e8dee5d31b781085",
+    "cause": "Buildermatchedsinglequotes afterformatteruseddoublequotes; missingreplacementcountassertleftoldpin. Repairedliteral+2inlinecopies andmandatorycount/currenthashchecks.",
+    "originalSourceProofUnchanged": true,
+    "rootEarlyHarnessSetupFailuresRetained": true
+  },
+  "acceptedSuitesReplayed": {
+    "python105": false,
+    "focusedVitest9": false,
+    "unit489": false,
+    "C3318": false,
+    "80dTimingFailure": false,
+    "C2454": false
+  },
+  "unitWitness": "44355824561/489files12878PASS0FAIL404declaredSKIP remainsvalidonlyfrozen568scope",
+  "normalFoundation": "580/581/582push+PRCANCELLEDduringunit; no globalsummary or postunitbrowser. Old832fP1/531bChromiumhelperlineage differs568f282/e2b. No syntheticstatus/renaming.",
+  "expectedFutureJob": "Original105Python+9Vitest; futureowner-authorizedhostedactualcounts/sourceproofs/logs stillrequired. Unitjobs+unionremainbyteexact andskipfornewENVlabel.",
+  "hostedExecutionAuthorized": false,
+  "sourceAuthorAuthorized": false,
+  "wholeFoundationPass": false,
+  "sourceAdmission": false,
+  "operationalAcceptance": false,
+  "publicationReview": "ROOT_FINAL_ORDINARY5A_REVIEW_CLEAR",
+  "staticContentChecker": {
+    "qualifierSHA256": "0f0e720525e3431b090c4749125c1869253ac41d2eded7ef1e3e8b6983d7e140",
+    "passed": 3,
+    "scope": "Exactbeforepositive,wrongbeforeDENY,changedpatchDENY; contentonly,noancestry/app/helperexecution",
+    "recordSHA256": "6a2b25fb2d22e19f8154e6335de90e9771af60192aab0877ee8de653aeb1f0e4"
+  }
+}
