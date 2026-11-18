@@ -1,0 +1,93 @@
+{
+  "classification": "UNAPPLIED_TWO_PATH_ACK_AUTHOR_STAGE_REVIEW_DATA_ONLY",
+  "sourceBase": {
+    "commit": "9c2747b9ec369c3c28458cf144deb967bf00d179",
+    "parent": "3f0c6b53747e60765cdc7faf1308b57ce730676f",
+    "tree": "d144b6837ffac95ef53c5031809c886a8eec1fc9",
+    "files": 2568,
+    "actualReconciliationSHA256": "90f8763430b0c208c1741c00224ea2b51db68f5c7c3a6c447b06856013744746"
+  },
+  "patch": {
+    "file": "admission.patch",
+    "sha256": "65d74fcebd61c86a124e9bf889b045c8b294e12e04cfae8341d6f98ad57442d4",
+    "modifiedPaths": 2,
+    "paths": {
+      "scripts/check-payment-ack-admission.mjs": {
+        "beforeSHA256": "b1f297fc3d62cfe77a9ed9912a1a6f896a14a70cf796da2e1f24d5e5c0441ed9",
+        "afterSHA256": "ba39a5d3b8e7c5bb63ccdfb22b1048c304e7b49b5afef87c157de0795a6c24aa",
+        "mode": "100644"
+      },
+      "scripts/payment-response-source-admission.mjs": {
+        "beforeSHA256": "74c672d6725876285c8bd2ee844aec88c183b56b12181a0373c874e02cf26510",
+        "afterSHA256": "be3fc85b5fb3997a7f2e6617b44348c657db2fdaa289c6a5689fa501aa3ff684",
+        "mode": "100644"
+      }
+    }
+  },
+  "sourceAuthorCommit": null,
+  "applicationBoundary": "The patch is qualified against the exact 2568-file source base above. This ordinary four-data-file review package is not part of that qualified runtime frame. Applying atop the review-package commit is not qualified. No protected source application or launch promotion is authorized by publication.",
+  "immutableHistory": {
+    "pairs": 39,
+    "pairInventorySHA256": "e7ecdc22412902a7eca0e268f2c10de28a076a3037e6137272048dde6853ecef",
+    "historicalReconciliationSHA256": "94f339aa679c0b7fa0880fef035b921608b0717614c3705620f06eed07f9c0b0"
+  },
+  "retainedPins": {
+    "docs/FEATURE_SOURCE_INVENTORY.json": "f97017445306ad390ef4b1a479158f35d3b19094b5e470f1f05b00a62ce1fd63",
+    "docs/PAYMENT_OUTCOME_ACK_ADMISSION.json": "51be99764eb5d22593670db83e8e8d23195b147c23f9e8bcf9e733da79052257",
+    "proposals/payment-outcome-ack/manifest.json": "6cd2cdf946c9944b6c2246f6fd3ff7f9698aa2ac6c078d29abfa1ec463aca069",
+    "docs/LAUNCH_INVOICE_PAYMENT_COMPOSITION.json": "27f14d1fbab79b6ff09318e482892ac8897ab17da0509eb47a8d97f3f7324741",
+    "scripts/invoice-caller-source-admission.mjs": "cf28a441f146c5e4d398eb0ea0b78a999dd0f744e19424c46f3e95de74229438",
+    "tests/payment-ack-source-admission.test.ts": "4c3be1d88bce498d4dba1cb587c04840277a6d78c95004a0821dd9dee82359a2",
+    "tests/launch-invoice-payment-source.test.ts": "98af655cb91e0bf68a926730bdc192ef9d6cef0c5379498bbd83ef0c06d10aa4",
+    "tests/invoice-guard-admission-proposal.test.ts": "8ab9ac4971a60997bcc62c7e82f8352b89fd13ccd5d537a879b8371df3309a8c",
+    "proposals/commercial-invoice-connection/source.ts": "5962272679a66e54b6bb30c8cc52502e0703434956f3dfdd68995e3cc233aa13",
+    "proposals/commercial-invoice-connection/source.json": "93f1d88a9f614504e5647a8d12b0f49f6a5f0e86218b267f8659ecbbabf469dc",
+    "docs/program/CYCLE4_PROTECTED_SOURCE.json": "ae31583c9f1835178407485555760466186113ff71d4cd72300a60af1dfb61aa",
+    "tests/payments-outcome-ack.test.ts": "6ff2ffaf2d06471096a920a44a4d4714560db7d780b004e5529885b6db372927"
+  },
+  "newDefaultGitTCB": {
+    "executable": "/usr/bin/git",
+    "environment": "Fresh finite environment; no inherited Git configuration, helper, diff, textconv or execution-path overrides. Existing old FHG/transitive readers are outside this two-path qualification.",
+    "deterministicDiffRendering": [
+      {
+        "command": "diff",
+        "arguments": [
+          "--no-ext-diff",
+          "--no-textconv",
+          "--no-color",
+          "53a4705b72b584228b33988d1eae586ef10b44eb",
+          "38bc1bce05075fc0e858554947e195d8dded3c4a",
+          "--",
+          "server/payments/sandbox.ts"
+        ],
+        "onlyInsertedArgument": "--abbrev=7",
+        "originalDiffSHA256": "73d4d530e4a560838477641e2c4298edee03fd4368645437ca9f113ab32ac294"
+      },
+      {
+        "command": "diff",
+        "arguments": [
+          "--no-ext-diff",
+          "--no-textconv",
+          "--no-color",
+          "38bc1bce05075fc0e858554947e195d8dded3c4a",
+          "95b0bb301610e589090e5611427809a29a23790a",
+          "--",
+          "tests/nmi-two-merchant-token-boundary.test.ts"
+        ],
+        "onlyInsertedArgument": "--abbrev=7",
+        "originalDiffSHA256": "d67d40d9ba916bf776c3415ab0ecf2ff8de709f84cc356861c719e6144d13db0"
+      }
+    ]
+  },
+  "preserved": {
+    "allOther2566SourceBodiesTypesFullModes": true,
+    "historical94Pins": true,
+    "ACKOriginalAssertionsAndThreeAdmittedSourceResultFields": true,
+    "financialAndOperationalAuthority": false
+  },
+  "held": {
+    "FHGAndLaunch": "Unchanged existing seals still deny this pair; not full financial-source admission.",
+    "receipt564": "BLOCKED; original five-second I1/R1/I2/R2/I3 and final publication-revocation contract unchanged.",
+    "Release1_0": "NOT READY / NOT AUTHORIZED"
+  }
+}
