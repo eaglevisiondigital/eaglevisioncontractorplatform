@@ -1,0 +1,206 @@
+{
+  "schema": "finite-chromium565-complete-source-admission-review-v1",
+  "classification": "UNAPPLIED_PROTECTED_SOURCE_CHECK_AND_TEST_SCOPE_AMENDMENT",
+  "artifactParent": "27e5b5fd1ac6566d1f56db33e139ca8d7a12121e",
+  "futureAuthorParent": "e86e7b31722ca09665e6e598a04721eb7ec4d61b",
+  "futureAuthorParentTree": "d4a4da309fb4d807a34a91d6953b85e31f54767c",
+  "afterTree": "00f6d211affd7e364573ca792e08a1dd67b8f190",
+  "fullFiles": 2568,
+  "delta": {
+    "M": 11,
+    "A": 1
+  },
+  "patchSHA256": "2f870286618590ceaf6f368cd4e66a106c968f766511bc323dd95bc4f151c266",
+  "files": [
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/README.md",
+      "before": {
+        "mode": "100644",
+        "oid": "59e7198e8ae252dd13837d32a77603975852cda8",
+        "sha256": "1ad966849c033e6a4e51fde38b5821cfd8da50d477c3a1ef9f4becc81a5f1a49"
+      },
+      "after": {
+        "mode": "100644",
+        "oid": "746fc40c6e396db5943b42675e74aa5e116480a2",
+        "sha256": "4c4d0d1ec9b4c79725befeb3259068b144bbe5f116708303fceb634dbe41cd77"
+      }
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/current-fixture.mjs",
+      "before": {
+        "mode": "100644",
+        "oid": "a3c2540c57b803115f9c1299458229bd0f259d67",
+        "sha256": "a08883e5999a463612999ce9c8e86ef475bf9abc41e59f32a7c5c7f5f9549244"
+      },
+      "after": {
+        "mode": "100644",
+        "oid": "43fe981b44c8391ba500552567af74f7b683e6de",
+        "sha256": "ff0215b341e57e735b616292415d2bbcca94152c7dcf2eff4d4a012d3e4c0117"
+      }
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/dashboard.patch",
+      "before": {
+        "mode": "100644",
+        "oid": "11cf751b4ff798961f4dd9629747cda410e8f7ff",
+        "sha256": "422f8e305655f0287c4108c076c03d37ed1f239e8edb721d3d8b1a622aad632f"
+      },
+      "after": {
+        "mode": "100644",
+        "oid": "c8f6b4f9dbb9148ac76e3b0ca406892e14ca32ce",
+        "sha256": "6cc75ad583c8b6fa1d077e19adcaac257da817240f78eb482e529f8591b5204d"
+      }
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/dashboard.proposed.txt",
+      "before": {
+        "mode": "100644",
+        "oid": "7cf22234fc39e1470789e76d08ec190773703c71",
+        "sha256": "b52c680288bbb7badd00127a40aef08acf16f96090c4b794742fa784061a061a"
+      },
+      "after": {
+        "mode": "100644",
+        "oid": "c04ac5755f295a75766dd564ab7547e6fb208ece",
+        "sha256": "e47667396c27e80323b1b64dc63f52a49e596720436bd373f49967c415e083a3"
+      }
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/invoice-held.patch",
+      "before": {
+        "mode": "100644",
+        "oid": "9b7c200e0913c1cec0181da596b180c5852ee2da",
+        "sha256": "7dff28934d0c0063643e23075069774b3d2188ab7c8a18c111f72cbc4940bbc9"
+      },
+      "after": {
+        "mode": "100644",
+        "oid": "aeefbd66d102cd860b287eb9eed0e2e83bda1232",
+        "sha256": "15437898130ea2643482b4d675b95a766e29061f623baa5c89dbfccd510b5924"
+      }
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/invoice.proposed.txt",
+      "before": {
+        "mode": "100644",
+        "oid": "b9d876739a112276a983167c53ba483556ebc546",
+        "sha256": "e9de778cbb1bcf85d05460e54d93fb2e7bac7b99b8f007dc7fd5741c4ffeecb6"
+      },
+      "after": {
+        "mode": "100644",
+        "oid": "af54cd4e314454e8e23252bdafa29cbe38e99370",
+        "sha256": "8ab9ac4971a60997bcc62c7e82f8352b89fd13ccd5d537a879b8371df3309a8c"
+      }
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/manifest.json",
+      "before": {
+        "mode": "100644",
+        "oid": "9683bce269afdc34f46290d6fe905c7f44d97e76",
+        "sha256": "ff7cc51eefbacf096555febeb4f4d6239cf10af62f1eafbdde36e116af227e5a"
+      },
+      "after": {
+        "mode": "100644",
+        "oid": "4677d03bb3ff498a44e7da178ec87b23d681ed03",
+        "sha256": "cd8f1599e51a8da4cbb98318a608d356be79177a5c5b63de03f1235aa11d6791"
+      }
+    },
+    {
+      "path": "scripts/cycle32-runner-mirror-probe.mjs",
+      "before": {
+        "mode": "100644",
+        "oid": "7fa90108871038b29af270e82c7abdb056228dfd",
+        "sha256": "d0197451a94936b87d8e0942be4dc3bdd306b2faf2afdf0079a363ecb00f657e"
+      },
+      "after": {
+        "mode": "100644",
+        "oid": "89664ce8d9373836f6751000c908ba8d493c3001",
+        "sha256": "69bece8b50df08fd4a8af14a3f00cdb252526e3263c387a4831400821e2d473c"
+      }
+    },
+    {
+      "path": "tests/cycle32-runner-mirror-probe.test.ts",
+      "before": {
+        "mode": "100644",
+        "oid": "d68a74c6c57cae4fe0db9f0d27d317e16580f324",
+        "sha256": "fbd7d279b62dc3ad6bf78783ee4cd10cf10748275b332f7a74ec660dc10c8fff"
+      },
+      "after": {
+        "mode": "100644",
+        "oid": "ada15c59287f75be0e4e301008e8ceb5b941af11",
+        "sha256": "b7dc5f0f10cd8a7c10e24c761a266fa202b1417423ece6f1270ec6812e673489"
+      }
+    },
+    {
+      "path": "tests/invoice-guard-admission-proposal.test.ts",
+      "before": {
+        "mode": "100644",
+        "oid": "b9d876739a112276a983167c53ba483556ebc546",
+        "sha256": "e9de778cbb1bcf85d05460e54d93fb2e7bac7b99b8f007dc7fd5741c4ffeecb6"
+      },
+      "after": {
+        "mode": "100644",
+        "oid": "af54cd4e314454e8e23252bdafa29cbe38e99370",
+        "sha256": "8ab9ac4971a60997bcc62c7e82f8352b89fd13ccd5d537a879b8371df3309a8c"
+      }
+    },
+    {
+      "path": "tests/propel-dashboard-parity-source.test.ts",
+      "before": {
+        "mode": "100644",
+        "oid": "7cf22234fc39e1470789e76d08ec190773703c71",
+        "sha256": "b52c680288bbb7badd00127a40aef08acf16f96090c4b794742fa784061a061a"
+      },
+      "after": {
+        "mode": "100644",
+        "oid": "c04ac5755f295a75766dd564ab7547e6fb208ece",
+        "sha256": "e47667396c27e80323b1b64dc63f52a49e596720436bd373f49967c415e083a3"
+      }
+    },
+    {
+      "path": "proposals/dashboard-context-fixture-compatibility/chromium-admission.controls.mjs",
+      "before": null,
+      "after": {
+        "mode": "100644",
+        "oid": "1ef205ceaa38113df5c1a3ac351b394c629c2a1f",
+        "sha256": "279db44b9f161bb262cfd7351c0bc17c365e5a0372929ad49e0743e1802ecc9b"
+      }
+    }
+  ],
+  "boundaries": {
+    "real-observer": {
+      "paths": ["scripts/cycle32-runner-mirror-probe.mjs"],
+      "patchSHA256": "4fb7cf944cae2ef63aeec95fc0d098fff8a25b1943d1a79b9f1dd32be1543f71"
+    },
+    "C32-test-header": {
+      "paths": ["tests/cycle32-runner-mirror-probe.test.ts"],
+      "patchSHA256": "c1feccb268d263f57c305751535defef6d14f45b7d351c7d033223805ccf21a7"
+    },
+    "finite-source-check-and-two-headers": {
+      "paths": [
+        "proposals/dashboard-context-fixture-compatibility/README.md",
+        "proposals/dashboard-context-fixture-compatibility/current-fixture.mjs",
+        "proposals/dashboard-context-fixture-compatibility/dashboard.patch",
+        "proposals/dashboard-context-fixture-compatibility/dashboard.proposed.txt",
+        "proposals/dashboard-context-fixture-compatibility/invoice-held.patch",
+        "proposals/dashboard-context-fixture-compatibility/invoice.proposed.txt",
+        "proposals/dashboard-context-fixture-compatibility/manifest.json",
+        "tests/invoice-guard-admission-proposal.test.ts",
+        "tests/propel-dashboard-parity-source.test.ts",
+        "proposals/dashboard-context-fixture-compatibility/chromium-admission.controls.mjs"
+      ],
+      "patchSHA256": "d631d9c2887b53d79225f5bdd340b0d19eac745c21109f4157a443d2e6c76954"
+    }
+  },
+  "newCiInventoryCHECKPaths": [
+    "scripts/cycle30-chromium-dependencies.mjs",
+    "tests/cycle32-runner-mirror-probe.test.ts",
+    "scripts/cycle32-runner-mirror-probe.mjs"
+  ],
+  "additionalC32TESTHistoricalPath": "scripts/cycle30-chromium-dependencies.mjs",
+  "financialP1SqlAuthReadPortsAdded": 0,
+  "totalNewPublicCiInventoryCheckPaths": 3,
+  "realObserverHistoricalProjection": false,
+  "admissionAuthorized": false,
+  "integrationAuthorized": false,
+  "release": "NO_GO",
+  "patchFile": "chromium-admission.source-author.patch"
+}
