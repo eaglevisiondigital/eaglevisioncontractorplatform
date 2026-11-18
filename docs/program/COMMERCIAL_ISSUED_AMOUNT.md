@@ -1,0 +1,9 @@
+# Issued invoice amount in the existing customer read view
+
+The existing fictional commercial invoice view displayed an issued number and title but omitted its validated issued amount. The ready state now formats that exact `amountMinor` and currency with the existing estimating formatter. It adds no calculation, source field, controller, reader, route, store, or financial command.
+
+UNKNOWN, loading, disabled, expired and withdrawn source states display no amount. The amount is the original issued invoice amount, not a balance due, payment, refund or settlement result. Existing payment UNKNOWN and disabled link/send/resend controls remain unchanged. The component remains default OFF and unwired.
+
+The focused browser fixture reuses the canonical fictional estimate calculation and existing controlled customer bridge, then the actual controller and component. Its short-lived ticket only narrows fictional response expiry for a real-timer presentation check; no production deadline or clock changes. All outside requests are blocked. The before-image case confirms the original omission. New checks cover keyboard/Axe and responsive rendering, pending reads, source denial, current-customer withdrawal, real expiry, disabled state, and expired or mixed-source responses. These are local source checks, not genuine Auth, SQL, provider, customer or payment acceptance.
+
+The isolated parent is fixed568 `3f0c6b53747e60765cdc7faf1308b57ce730676f`. Historical source inventories and all protected controller/decoder/projection/reader/SQL/provider code stay unchanged. This ordinary presentation candidate does not admit a changed financial source frame. Receipt564 remains blocked under its original five-second contract; D1–D3, A01–A12, invoice grants, VAR/NMI, independent custody, recovery and settlement gates remain held. Release1.0 remains NOT READY / NOT AUTHORIZED.
