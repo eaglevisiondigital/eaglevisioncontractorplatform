@@ -1,0 +1,171 @@
+{
+  "classification": "LOCAL_SOURCE_ONLY_ACK_AUTHOR_STAGE_QUALIFICATION_NOT_LAUNCH_OR_OPERATIONAL_ACCEPTANCE",
+  "patchSHA256": "65d74fcebd61c86a124e9bf889b045c8b294e12e04cfae8341d6f98ad57442d4",
+  "frozenCandidateSHA256": "688735936c1c0f809716addef189a40579a3f2460d9da44842d0dec96d9b9861",
+  "actualDefaultEntrypoint": {
+    "result": "PASS",
+    "elapsedMs": 3709.893458,
+    "budgetMs": 30000,
+    "reportSHA256": "1a0689762a9e089741b8bc92c800d4d9a1619057977eabbbbfd3d2c77e0350a3",
+    "classification": "DEVELOPMENT_SOURCE_ONLY",
+    "physicalScriptUnmodifiedByWrapper": true
+  },
+  "newAdmissionControls": {
+    "passed": 12,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "budgetMsPerControl": 30000,
+    "groupDurationMs": 32129.825417,
+    "cases": [
+      {
+        "name": "A01 captured-byte qualifier validates ACK author stage without launch admission",
+        "status": "PASS",
+        "durationMs": 3240.440625
+      },
+      {
+        "name": "A02 actual unchanged default CLI ignores inherited PATH/config/exec/diff helpers",
+        "status": "PASS",
+        "durationMs": 3245.487125
+      },
+      {
+        "name": "A03 finite historical reader rejects unknown refs paths types and surplus arguments",
+        "status": "PASS",
+        "durationMs": 26.27325
+      },
+      {
+        "name": "A04 reconciliation forward rejects wrong expected current path history and author metadata",
+        "status": "PASS",
+        "durationMs": 76.193375
+      },
+      {
+        "name": "A05 complete old and both mixed checker-helper phases are denied before capture",
+        "status": "PASS",
+        "durationMs": 4.032875
+      },
+      {
+        "name": "A06 coordinated unknown helper and rebound ACK seal never evaluate unknown code",
+        "status": "PASS",
+        "durationMs": 1.301875
+      },
+      {
+        "name": "A07 cached helper rejects its changed own body before normalization",
+        "status": "PASS",
+        "durationMs": 322.4155
+      },
+      {
+        "name": "A08 unknown dependency manifest source rollback mode symlink and extra entry deny",
+        "status": "PASS",
+        "durationMs": 11047.519042
+      },
+      {
+        "name": "A09 actual ACK final proof rejects withdrawal after reconciliation from historical pins",
+        "status": "PASS",
+        "durationMs": 8446.047875
+      },
+      {
+        "name": "A10 actual ACK final proof rejects withdrawal at original acceptance read",
+        "status": "PASS",
+        "durationMs": 2465.775041
+      },
+      {
+        "name": "A11 final critical source read rejects persistent withdrawal from later sandbox sibling",
+        "status": "PASS",
+        "durationMs": 3000.631334
+      },
+      {
+        "name": "A12 immutable history manifests and original ACK return assertions remain unchanged",
+        "status": "PASS",
+        "durationMs": 1.211667
+      }
+    ],
+    "rawTAPSHA256": "a1b66279a9f3656e8a734cd70db32852f94ad867fca5c44d6350bf6938a66fa9",
+    "runRecordSHA256": "93942570ef07ed7e452f440f077ea43f22bb29c60c6ce5875e78987288b64a31"
+  },
+  "independentNewTCBBoundaryControls": {
+    "passed": 3,
+    "failed": 0,
+    "results": [
+      {
+        "name": "R01 trusted resolver accepts only its exact helper literal and module base without coercion",
+        "pass": true,
+        "durationMs": 0.5894580000000005
+      },
+      {
+        "name": "R02 outer authentication rejects root aliases and non-string bindings before coercion",
+        "pass": true,
+        "durationMs": 0.17154099999999772
+      },
+      {
+        "name": "R03 finite history API rejects revoked proxy and accessor bindings without invoking hooks",
+        "pass": true,
+        "durationMs": 1.5439579999999964
+      }
+    ],
+    "reportSHA256": "3a9fd292d18b2790d4757d758859f77ad456760408b340d74f1f78c8a5ed6833"
+  },
+  "sourceProof": {
+    "files": 2568,
+    "allOther2566ParentBodiesTypesFullModesUnchanged": true,
+    "postQualificationSHA256": "ec3bdf81a7f399ed5df08584b493912e4350c8a18807e42603539606e1817d2d",
+    "headIndexConfigAndKnownAlternatesUnchangedDuringCorrectedQualification": true
+  },
+  "privateToolingTCB": {
+    "hashes": {
+      "outer-qualifier.mjs": "34dc359acf2e636078e12c460708ffbbe0521dcba674c5531fb3db901205ae30",
+      "admission-controls.test.mjs": "1d394695245cd60928f872ce06966e5222c897cd066f203c69ea709b602838fa",
+      "run-new-qualification.mjs": "17c5d7dedf877f54f0d8994ee5d805183a1191a6f136b0b389ec8da119fbd3a3"
+    },
+    "resolverTemplateSHA256": "20e2d28456c31ccdac6741d46825f1170a849abda716ae201f4d906bec6e331e",
+    "mechanism": "Authenticate exact two SHA256/full modes before evaluation. Append the byte-identical captured ACK body to a separately sealed narrow lexical URL resolver prefix. Full physical normalized frame is checked inside the known helper before admission, not claimed as an outer pre-evaluation guarantee. Actual physical default CLI is qualified separately.",
+    "coordinatedPairSubstitution": "Denied by trusted outer pair authentication before evaluation; not an intrinsic claim for arbitrarily replaced standalone checker plus helper."
+  },
+  "preservedFailuresAndCorrections": [
+    {
+      "stage": "Baseline actual old default ACK PATH characterization",
+      "observation": "Owned non-forwarding PATH Git shim executed before source denial; child failed. No provider/network call.",
+      "reportSHA256": "593fb1e95fb45660768777ce76f254a94578dd2a22ccb0c8bade6e98e93b3dd7",
+      "metadataLimit": "Original worktree metadata digests were null due to .git-file path handling; no original before/after index/config equality claim.",
+      "correctionSHA256": "f48340a21df394ee503693fad368b3af915dcde7e94c6f1da0889d5a99c708bf"
+    },
+    {
+      "stage": "First frozen actual default CLI",
+      "status": "FAIL",
+      "elapsedMs": 311.400917,
+      "cause": "Required immutable historical Git object absent in owned clone",
+      "newControls": "12 NOT_RUN by stop gate",
+      "recordSHA256": "de6926efb66bf4de069531093ee2e6141a2779ef6a4b7e03f59acf9b27a2d34e",
+      "firstFreezeSHA256": "2a114294eb1abdd22ffffa0d7c31e4767598dd9615a23ef52c01dd7f95825b6b"
+    },
+    {
+      "stage": "Bounded fixture and renderer correction",
+      "observation": "Verified all 39 finite history pairs and literal metadata dependencies using existing read-only local objects. Two original immutable NMI diffs differed only in seven-versus-eight-character index abbreviation; inserted --abbrev=7 only for two exact complete argument tuples. No pin/assertion change.",
+      "historyPreflightSHA256": "4d90cd47ca9256bb08dd29c45b1d9d091f59498a5edcf5abc6a7875dbfb3fbdb",
+      "rendererProofSHA256": "c2b1f0137f5bcf86b02a63ef5a99ca656c086d476de6f834a952b1b93ded5985",
+      "independentRendererProofSHA256": "422ead74da25d87501805c5ac56d6f402aff9ea05e17f713b49814a9ca020fd4"
+    },
+    {
+      "stage": "Frozen-record wording addendum",
+      "observation": "The retained freeze incorrectly describes full-frame authentication before evaluation. Correct boundary: exact pair SHA/full modes before evaluation; whole frame inside known helper before admission. Frozen bytes are retained.",
+      "rootReviewSHA256": "034c1b9b778ab63ccea7ddb871a0ab3641b5bdd51cc979b6566844d88208de2a"
+    },
+    {
+      "stage": "Static quality tooling setup",
+      "observation": "First lint/format invocation referenced absent private-image dependencies and ran neither tool. Corrected only private tooling resolution to existing fixed dependencies and exact repository config; syntax/scoped lint/format then passed.",
+      "reportSHA256": "2a32788d4a7347fd7cf088e18584690bd492761b16ae119772415372afb5d0a5"
+    }
+  ],
+  "reusedByExactBoundary": "Previously qualified reconciliation payload 90f876: nine focused plus four independently authored function controls; not replayed. No original application/payment suite, SQL, provider, Auth, receipt profile, recovery, browser, hosted run or operational transaction executed.",
+  "limits": [
+    "First full reconciliation proof occurs at the last original source entry after earlier readonly proposal/history/manifest reads; final proof follows original historical-pin and acceptance checks.",
+    "Each boundary makes one fresh whole-frame walk followed by a fresh critical reconciliation read; no cross-call current-proof cache.",
+    "No atomic filesystem snapshot or source-immutability lease claim. Captured code and outer authentication remain explicit test qualifier TCB.",
+    "Original ACK return fields remain source-only with original three admitted-source entries; no FHG/invoice/launch admission or operational readiness."
+  ],
+  "quality": {
+    "syntax": "PASS",
+    "scopedESLint": "PASS",
+    "repositoryPrettier": "PASS",
+    "reportSHA256": "2a32788d4a7347fd7cf088e18584690bd492761b16ae119772415372afb5d0a5"
+  }
+}
