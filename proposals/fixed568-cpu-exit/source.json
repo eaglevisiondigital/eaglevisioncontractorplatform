@@ -1,0 +1,26 @@
+{
+  "classification": "UNAPPLIED_PROTECTED_TWO_FILE_OBSERVER_AUTHOR_PROPOSAL",
+  "parent": "0d5593beaf673de915cc6337e254532ebb2d1117",
+  "parentTree": "b03b44bd31f84ddebb9deb443b246798fc4762a4",
+  "beforeObserver": "8c4fe594e1c5b016b49a582bc9040c44729392b0f938b7108fcb9af6ce71ca01",
+  "afterObserver": "1ba1ff514b60abaef520fe91853529ef8115a3335da4d45874e065c1d1dae873",
+  "patchSha256": "af583cd07d289981d56c581fb8fef4accea387f391b5e22c47629e042de30d7b",
+  "paths": {
+    ".github/workflows/foundation537-isolated-unit-candidate.yml": {
+      "before": "d2638c9897147ef748dcf925d84ba32d40a1f75d232ca0410e80d95e43f2eb98",
+      "after": "b4247b78111c9722d0c0591e528e8dd7c4e8275d4bae82504990335cff724413",
+      "mode": "100644"
+    },
+    "tests/foundation568-process-cpu.test.mjs": {
+      "before": "5cebf4be1adefd5bff44ff0e7acfb5c5de8ef00a1f7a0191e914ec58f070c44f",
+      "after": "7137f5624d7dbea0332397427eba605673d82bbf130720c69f98ec1c791d6c85",
+      "mode": "100644"
+    }
+  },
+  "retainedRun": 44279033289,
+  "retainedFailure": "Five STAT_INVALID records contain no rejected field/PID/raw stat; historical attribution remains UNKNOWN",
+  "kernelReference": "https://github.com/torvalds/linux/blob/v6.14/fs/proc/array.c#L442-L578",
+  "execution": false,
+  "retry": false,
+  "release": "NO_GO"
+}
