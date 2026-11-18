@@ -1,0 +1,82 @@
+{
+  "classification": "BLOCKED_NOT_SOURCE_QUALIFIED_NO_APPROVAL_REQUEST",
+  "parent": "27e5b5fd1ac6566d1f56db33e139ca8d7a12121e",
+  "heldPatchSHA256": "7fb9056b4f3d565b85478574af43696f3dbaefcc8557863156cf47a729bd2755",
+  "heldTree": "481ad20a1c825b1f715e3a117f937d9c856faf43",
+  "independent": {
+    "passed": 24,
+    "failed": 2,
+    "skipped": 0,
+    "rawSHA256": "de4d090460a59ac7c99f7ef0f7dd660ea8c018afb19ea4b6e77c80e0de990b98",
+    "cases": [
+      {
+        "title": "factory-owned operating invoice and restricted receipt reads return only the original receipt contract",
+        "durationMs": 6844.379583,
+        "error": "Current invoice payment receipt unavailable \u00b7 UNKNOWN"
+      },
+      {
+        "title": "retains a refund receipt without deriving an invoice balance or settlement",
+        "durationMs": 6768.1765000000005,
+        "error": "Current invoice payment receipt unavailable \u00b7 UNKNOWN"
+      }
+    ],
+    "componentTotalDeadlineMs": 5000,
+    "originalVitestCaseBudgetMs": 30000,
+    "cause": "Exact internal rejection is redacted/unproven. Observed durations exceed the component deadline; these are generic UNKNOWN failures, not 30second Vitest timeouts. No retry."
+  },
+  "primaryBeforeTypeOnlyTestAnnotation": {
+    "passed": 26,
+    "failed": 0,
+    "skipped": 0,
+    "rawSHA256": "f0de8413463f255c084f081bd099794b3ae7f1b7a2370b9062ff3324c6815476",
+    "maximumCaseMs": 4148.5792089999995,
+    "scope": "sameef9runtime code; solegetterreturntypeannotation leavesentire strippedJS byte-exact; sourceframe beforejointreseal. Not claimed as finalindependentpositivePASS"
+  },
+  "peerReview": {
+    "staticSHA256": "397d0450b71816e7cc49ba7fb7f861e4d7fde298aefddc7d8805e7bc18b9785b",
+    "finalBlockedReviewSHA256": "845690ee33172be039383feff438d6c61fbdfc170f154708297816b6c80dc9e9",
+    "postFailureSourcePrerequisiteSHA256": "f6ec69bb7a9aab853e6f0678fcaaf42ef6862d3b004f2bdc7fdbfb365272891c",
+    "result": "all2595bodies/types/fullmodes exact481/noextras; directphysical/currentqualification/checkPASS; no missing sourceframe prerequisite found"
+  },
+  "sourceQuality": {
+    "receipt-strict-types-final.log": {
+      "exitCode": 0,
+      "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "receipt-scoped-lint.log": {
+      "exitCode": 0,
+      "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "receipt-scoped-format.log": {
+      "exitCode": 0,
+      "rawSHA256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+    },
+    "receipt-features.log": {
+      "exitCode": 0,
+      "rawSHA256": "ad7b716617c7d2178fc1d2a760da5765c31e01d06b843325d57844ea49518a62"
+    }
+  },
+  "new81SourceControls": "NOT_RUN_AFTER_COMPONENT_FAILURE",
+  "original41NewFrame": "NOT_RUN_AFTER_COMPONENT_FAILURE; bodies/assertions/budgets preserved",
+  "historicalEvidence": "Parent55975/14/41 and operatingreader65/native23;480/484/501 historical boundaries only unchangedsource portions. No accepted suite/native/browser/clock/P1 replay; no wholecandidate/native/fullFoundation acceptance.",
+  "mutablePublication": "commercial_payment_access.revoked_at ismutableoneway. Secondreceipt read observes laterrevocation; deleting it isnot equivalent. Bothfive-read andhypotheticalreducedsequences are non-atomic acrossconnections. Frozenfive-read code retained.",
+  "runtimeLimits": [
+    "No sourceauthor application or sourceapprovalrequest",
+    "No installed SQL/grants/genuineAuth/currentmerchant/customerroute/NMI/provider operations",
+    "No privilege conferred by safeDTO, arbitraryreadcallback, raw495query or newreadCurrentport",
+    "Captured bounded observations, not atomic distributed revocation/custody; old reader0777 limitation remains separate from wholeframe07777 qualification",
+    "Balance NOT_ESTABLISHED, settlement UNVERIFIED, delivery/link/paymentexecution disabled"
+  ],
+  "sourceAuthor": null,
+  "operationalReady": false,
+  "sourceApprovalRequested": false,
+  "unrunHistoricalCaptureHarness": {
+    "runtimeClosureOnly": true,
+    "missingPinnedDynamicHelperPaths": [
+      "proposals/invoice-payment-receipt/qualification.ts",
+      "proposals/commercial-payment-capacity/qualification.ts"
+    ],
+    "effect": "Old480 source/native capture harnesses cannot be claimed on this38 image; no such cases were run. Additional existing-helper closure would need separate reviewed scope, not silent expansion."
+  },
+  "nextTechnicalTask": "Full static historical capture/source-test dependency closure before further acceptance runs; preserve frozen38 and its positive failures, no sourceapprovalrequest."
+}

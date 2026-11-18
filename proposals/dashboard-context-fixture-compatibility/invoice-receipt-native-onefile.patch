@@ -1,0 +1,41 @@
+diff --git a/proposals/commercial-customer-operating-reader/source.ts b/proposals/commercial-customer-operating-reader/source.ts
+index b6576c38c7f8b334791d696d04ef8d37d854dafe..57507facc6a13f4a0f3c539c97bada8f316f6969 100644
+--- a/proposals/commercial-customer-operating-reader/source.ts
++++ b/proposals/commercial-customer-operating-reader/source.ts
+@@ -1,7 +1,7 @@
+ // Source snapshot only; static imports and this verifier remain trusted TCB.
+ import { readFileSync, lstatSync, realpathSync } from 'node:fs';
+ import { createHash } from 'node:crypto';
+-import { resolve, join, dirname } from 'node:path';
++import { resolve, join } from 'node:path';
+ const self = new URL(import.meta.url);
+ const initial = createHash('sha256').update(readFileSync(self)).digest('hex');
+ const pins = {
+@@ -98,15 +98,20 @@
+   '6371374d6068f52d83771c054fb378e707a02dc63415b8da0985a19e1903bea1';
+ const rootPath = resolve(process.cwd());
+ const rootIdentity = lstatSync(rootPath);
++// A function handle only, never cached path/stat/content validation facts.
++const nativeRealpath = realpathSync.native;
++if (typeof nativeRealpath !== 'function')
++  throw Error('Exact operating reader source required');
+ function exactFile(path: string) {
+-  let current = path;
+-  while (true) {
+-    if (lstatSync(current).isSymbolicLink())
+-      throw Error('Exact operating reader source required');
+-    const parent = dirname(current);
+-    if (parent === current) break;
+-    current = parent;
++  if (resolve(path) !== path)
++    throw Error('Exact operating reader source required');
++  let canonical: string;
++  try {
++    canonical = nativeRealpath(path);
++  } catch {
++    throw Error('Exact operating reader source required');
+   }
++  if (canonical !== path) throw Error('Exact operating reader source required');
+   const st = lstatSync(path);
+   if (!st.isFile() || (st.mode & 0o777) !== 0o644)
+     throw Error('Exact operating reader source required');

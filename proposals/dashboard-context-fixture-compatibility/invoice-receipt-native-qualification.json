@@ -1,0 +1,156 @@
+{
+  "classification": "BLOCKED_NATIVE_PATH_RECEIPT_RELIABILITY_FOLLOW_UP",
+  "decision": "BLOCKED: shallow revised-source tests pass, but both independent deep-path positive joins return UNKNOWN beyond the unchanged total deadline.",
+  "sourceAuthor": null,
+  "sourceApprovalRequested": false,
+  "protectedSourceApplied": false,
+  "integrationAuthorized": false,
+  "operationalReady": false,
+  "artifactContext": {
+    "draft": 564,
+    "artifactParent": "0254d23deb7b4091206c77b0d2367c24440c20a5",
+    "retainedOriginalPatchSHA256": "7fb9056b4f3d565b85478574af43696f3dbaefcc8557863156cf47a729bd2755",
+    "retainedOriginalTree": "481ad20a1c825b1f715e3a117f937d9c856faf43",
+    "existingFourArtifactsUnchanged": true,
+    "scope": "Only two ordinary evidence files. The revised whole-source patch stays private and unapplied."
+  },
+  "nativePatch": {
+    "path": "proposals/commercial-customer-operating-reader/source.ts",
+    "mode": "100644",
+    "beforeSHA256": "dd44ddb140d1f38cafdf033e3dca4f290191dcb52468525e3f599f88b3d7f071",
+    "afterSHA256": "99d2849587250505098469419e353aef24398f055249a6ada5d400213a2fc8ed",
+    "patchSHA256": "7bddbc0e51c218b965140ddf2043f89b5dc2aeb21d9ddf36e95939246bc4b87e",
+    "change": "Replace repeated JavaScript ancestor lstat walks with fresh native canonical equality for each fixed normalized leaf, followed by the same fresh leaf stat/mode/read/hash. Capture a function handle only; no cached facts. Native unavailable/errors deny without fallback.",
+    "standaloneApplication": "Not authorized or qualified. The standalone patch is data; a separately approved exact whole-source frame would be necessary."
+  },
+  "privateSourceFrame": {
+    "sourceParent": "27e5b5fd1ac6566d1f56db33e139ca8d7a12121e",
+    "sourceParentTree": "d73301c44873645e045ca53435023c3daeb67f61",
+    "proposedTree": "8bdae8f11263b333cfdcb580212778f06075a619",
+    "wholePatchSHA256": "e8cc549b696a2013f8a9ccc189d26bb465f268201467d93cbe2a46b52a5df21b",
+    "files": 2595,
+    "changedPaths": 39,
+    "modified": 11,
+    "added": 28,
+    "helperSHA256": "1df3fc55c4d4876abbcf1b3bb6d54c38108071c4d2be70274c959f2a9eac8470",
+    "manifestSHA256": "8089ab5791a6611492965f4ad39a62b4280ef9b12dab86410ea61a91b8fbd7a4",
+    "primaryAndIndependentBodyTypeFullModeSHA256": "67cb5d8e8e042564b93462de8fd0499ee667e6e38895d33db2f0a65e8c1bee59",
+    "newFinancialReadPorts": 0,
+    "originalFiveReadBridgeSHA256": "ef9ba7bf9adc7d28cccc2069850afb5c3a554985482626d3aaeaa01bf9298a9a",
+    "original26TestsSHA256": "443cb6867d47261203694e13843de5302bcb12e34c52ad96b0158712846e929c",
+    "wholePhysicalModeMask": "07777"
+  },
+  "preservedChecks": {
+    "allSourcePins": 46,
+    "passesPerProof": 2,
+    "sequence": ["I1", "R1", "I2", "R2", "I3"],
+    "componentTotalDeadlineMs": 5000,
+    "vitestTimeoutMs": 30000,
+    "maxWorkers": 4,
+    "freshness": "Every original full source proof, current Auth and post-await check retained. No cache, R2 removal, fewer proofs, new read port, mode-policy relaxation, SQL or runtime financial authority change.",
+    "countBoundary": "505 full proofs were OBSERVED in the old failed diagnostic before R2/I3. 757 is a STATICALLY INFERRED expected count for a complete five-read sequence, not an observed native-after trace. The patch does not reduce call sites."
+  },
+  "original38Diagnostic": {
+    "qualification": false,
+    "selectedCaseFailedMs": 6109.449125,
+    "componentMs": 6100.14525,
+    "sourceProofCalls": 505,
+    "sourceProofMs": 5848.993502,
+    "lstatSyncApiCalls": 795375,
+    "lstatSyncApiMs": 2580.032,
+    "pinnedReadCalls": 46460,
+    "readFileSyncApiMs": 1345.912,
+    "workerGitOrProcessCalls": 0,
+    "fixtureSqlCalls": 193,
+    "fixtureSqlApiMs": 5.304168,
+    "costSummarySHA256": "19137deaf4caaa2fe36eb87abba16a01b07f81b46fa5d5d6dbbd56279a1a9ec1",
+    "limit": "One private observer run only. Delegation adds async microtasks and timing overhead; not acceptance, a complete syscall census or proof of a sole cause."
+  },
+  "shallowPrimary": {
+    "passed": 26,
+    "failed": 0,
+    "skipped": 0,
+    "positiveJoinMs": 4516.673584,
+    "refundJoinMs": 3881.183249999999,
+    "rawSHA256": "bd15a33d8787ea6e3e58c060d61f2ab0c202a4bf937939555e2e386f23cc3bcc",
+    "once": true,
+    "instrumentation": false,
+    "originalTestsConfigBudgetsWorkers": true,
+    "sourceAndGitMetadataUnchanged": true
+  },
+  "independentDeepPath": {
+    "passed": 0,
+    "failed": 2,
+    "other24Filtered": true,
+    "positiveJoinMs": 6781.843124999999,
+    "refundJoinMs": 6895.6792080000005,
+    "outcome": "Both original positives return Current invoice payment receipt unavailable / UNKNOWN after elapsed times exceed the unchanged5-second component deadline. Neither exhausts the30-second Vitest timeout. The generic failure does not expose its precise internal branch; timing alone is not a sole-cause proof.",
+    "rawSHA256": "1c238a644eaddd2d100232f51e7f8ca2410957d288bf6dacdc90b2327b7f9cc6",
+    "bindingSHA256": "e77b4d1eda6b473e864641caa4aa8913d6173c734f4a2730be9e121be5fdbf9a",
+    "pathLevels": 13,
+    "once": true,
+    "retry": false,
+    "instrumentation": false,
+    "originalTestsConfigBudgetsWorkers": true,
+    "all2595BodiesTypesFullModesHeadIndexConfigAlternatesAndDependenciesUnchanged": true
+  },
+  "resultBoundary": "The shallow PASS cannot supersede independent deep-path FAIL. Depth is an observed difference, not a demonstrated sole cause. No reliability or complete-candidate qualification follows. The original #564 primary26 PASS and independent24 PASS/2 FAIL remain preserved.",
+  "furtherAcceptanceRuns": "No revised81 or original41 run; no retry, third optimization, deadline increase or source-author approval request.",
+  "nativePathOSComparison": {
+    "rows": 27,
+    "result": "PASS for the recorded old/new comparisons only, not receipt performance or acceptance.",
+    "platform": "Darwin",
+    "node": "v24.20.0",
+    "firstAndSecondPositiveCalls": "Each proves all46 pinned leaves read twice; the revised guard resolves every leaf twice afresh.",
+    "persistentDenials": [
+      "same-byte leaf/ancestor/chained symlinks",
+      "broken/cyclic links, missing leaf and regular-file parent",
+      "body, mode, manifest, executing-source, current-directory and root-identity withdrawal",
+      "late persistent symlink/body/mode drift across passes"
+    ],
+    "nativeUnavailableAndThrow": "Injected API worker tests, not unsupported-platform field evidence; deny without fallback.",
+    "caseAlias": "Observed volume accepts a case alias, but native canonical spelling differs so equality rejects the alias.",
+    "knownLimits": [
+      "Original0777 mask accepts effective1644; separate outer full-frame07777 checks remain.",
+      "Hardlinks remain accepted; external writer custody is unproved.",
+      "Both accept a same-byte transient path ABA restored before the next check. Neither provides atomic filesystem binding.",
+      "Native runtime/OS, static imports and initial self read remain trusted.",
+      "No Windows, Linux or general platform qualification."
+    ],
+    "protocolSHA256": "bd4cc6d8c4fb4a5cdc31e0cdb0233d08a26234cc10a6a82d24cc04037cf37ff6",
+    "harnessSHA256": "5b5f6a278ef174b7186a682ee044bcdad3928f658da440700411bf9e51fe703b",
+    "resultsSHA256": "552f4556c4c74fd45e69942d95d59dbe363eee750b8376801afda2b2d85b321f",
+    "peerStaticReviewSHA256": "51b1e7f9f73017c91b7e5480cccab0a6feedc8c9c974c7468ae4e3c93f24cc5e",
+    "secondPeerStaticReviewSHA256": "8cad814b8e393c382dfd5e14746a5a5664d15d3397992df4d2bf51c7d0bb3f90",
+    "officialReference": "https://nodejs.org/docs/latest-v24.x/api/fs.html#fsrealpathsyncnativepath-options"
+  },
+  "sourceQuality": {
+    "strictTypes": "PASS",
+    "scopedLint": "PASS",
+    "scopedPrettier": "PASS",
+    "features": "PASS, locked5 and13 bindings preserved",
+    "privatePhysicalQualifierAndCheck": "PASS, source evidence only",
+    "qualityRecordSHA256": "1150b35c99a61dbf114230eb5d17b8a0a77a3a4003574877cb273a3000b393a8",
+    "prerequisiteRecordSHA256": "7c2aefb39c2dedcae30f96cafa8f22a52d2360a7edc65f88e2968f5351c14d07"
+  },
+  "staticCaptureHarnessBlockers": {
+    "sixMissingExactCopies": [
+      "proposals/invoice-payment-receipt/qualification.ts",
+      "proposals/commercial-payment-capacity/qualification.ts",
+      "proposals/invoice-payment-receipt/reader.ts",
+      "proposals/commercial-payment-capacity/reviewed-drafts.sql",
+      "proposals/commercial-payment-capacity/reviewed-issuance.sql",
+      "proposals/commercial-payment-capacity/capacity.proposed.sql"
+    ],
+    "copiesAdded": false,
+    "provenanceReportSHA256": "1979b96d21df5036e52d3fffa8c40c8f7e164c7457b76df19534f6a6281d9225",
+    "phaseConflict": {
+      "path": "tests/customer-publication-admission-package.test.ts",
+      "originalAssertion": "the SQL author endpoints are still absent in this candidate, not silently promoted or installed",
+      "observed": "The proposed image contains both already reviewed A2 source endpoints. Six helper copies alone cannot satisfy this absence assertion.",
+      "requiredBoundary": "Keep original assertions and qualify their genuine historical before phase, or separately review an exact test transition. No exists/read masking, skip, new historical port or blind expected-hash replacement."
+    }
+  },
+  "nextTechnicalScope": "Diagnose portable deep-path source-guard cost without reducing fresh proof, ancestor/root/symlink, current Auth, post-await or R2 checks. Preserve original deadlines. Future code needs separate finite review and independent qualification; this evidence grants no permission to execute it.",
+  "release": "NOT READY / NOT AUTHORIZED"
+}
