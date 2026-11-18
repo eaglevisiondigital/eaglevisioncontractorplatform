@@ -279,6 +279,9 @@ test('draft saves, internal issue, revision history and job baselines remain sep
 }) => {
   await page.goto('/preview');
   await page.getByRole('button', { name: 'Estimates', exact: true }).click();
+  await page
+    .getByRole('combobox', { name: 'Customer for new estimate', exact: true })
+    .selectOption({ index: 1 });
   await page.getByRole('button', { name: 'New estimate', exact: true }).click();
   await page
     .getByLabel('Project name', { exact: true })
