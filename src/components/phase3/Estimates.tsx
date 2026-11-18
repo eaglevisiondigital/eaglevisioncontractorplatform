@@ -646,6 +646,18 @@ export function Estimates({
             ))}
           </select>
         </Field>
+        <button
+          type="button"
+          className="secondary"
+          disabled={!query && status === 'all' && page === 0}
+          onClick={() => {
+            setQuery('');
+            setStatus('all');
+            setPage(0);
+          }}
+        >
+          Clear estimate filters
+        </button>
         {!voiceDraft && (
           <Field label="Create from company template">
             <select
