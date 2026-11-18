@@ -1506,3 +1506,421 @@ jobs:
           path: ${{ runner.temp }}/fixed568-unit-union/
           if-no-files-found: error
           retention-days: 7
+
+  fixed568-python3142-rehearsal:
+    # ENV qualification only; this event does not replay the accepted unit collection.
+    if: github.event_name == 'pull_request' && github.event.label.name == 'run-fixed568-python3142-rehearsal'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      DIAGNOSTIC_WORKFLOW_SHA: ${{ github.workflow_sha }}
+      DIAGNOSTIC_EVENT_SHA: ${{ github.sha }}
+      UNIT_SHARD: rehearsal
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 3f0c6b53747e60765cdc7faf1308b57ce730676f
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Prepare exclusive source-external rehearsal outputs
+        env:
+          DIAGNOSTIC_DIR: ${{ runner.temp }}/fixed568-python3142-evidence
+          REHEARSAL_PYCACHE: ${{ runner.temp }}/fixed568-python3142-pycache
+          REHEARSAL_TMP: ${{ runner.temp }}/fixed568-python3142-tmp
+        run: |
+          node --input-type=module <<'FIXED568_REHEARSAL_LAYOUT'
+          /** Disposable CI output layout only; no application or recovery authority. */
+          import {
+            lstatSync,
+            realpathSync,
+            mkdirSync,
+            readFileSync,
+            writeFileSync,
+          } from "node:fs";
+          import { isAbsolute, resolve, relative, join } from "node:path";
+
+          const fail = () => {
+            throw Error("Exact external fixed568 rehearsal layout required");
+          };
+          const external = (root, path) => {
+            const value = relative(root, path);
+            return value === ".." || value.startsWith("../");
+          };
+          function directory(path, mode) {
+            if (
+              typeof path !== "string" ||
+              !isAbsolute(path) ||
+              resolve(path) !== path ||
+              realpathSync.native(path) !== path
+            )
+              fail();
+            const info = lstatSync(path);
+            if (
+              !info.isDirectory() ||
+              info.isSymbolicLink() ||
+              (mode !== undefined && (info.mode & 0o7777) !== mode)
+            )
+              fail();
+          }
+          export function expectedLayout(environment, checkout) {
+            directory(checkout);
+            if (environment.GITHUB_WORKSPACE !== checkout) fail();
+            const temporary = environment.RUNNER_TEMP;
+            directory(temporary);
+            if (!external(checkout, temporary)) fail();
+            const paths = {
+              DIAGNOSTIC_DIR: join(temporary, "fixed568-python3142-evidence"),
+              REHEARSAL_PYCACHE: join(temporary, "fixed568-python3142-pycache"),
+              REHEARSAL_TMP: join(temporary, "fixed568-python3142-tmp"),
+            };
+            for (const [key, path] of Object.entries(paths))
+              if (environment[key] !== path || !external(checkout, path)) fail();
+            return paths;
+          }
+          export function prepareLayout(environment, checkout) {
+            const paths = expectedLayout(environment, checkout);
+            // Refuse every preexisting output before creating any directory.
+            for (const path of Object.values(paths)) {
+              try {
+                lstatSync(path);
+              } catch (error) {
+                if (error.code === "ENOENT") continue;
+                throw error;
+              }
+              fail();
+            }
+            for (const path of Object.values(paths)) {
+              mkdirSync(path, { mode: 0o700 });
+              directory(path, 0o700);
+            }
+            writeFileSync(
+              join(paths.DIAGNOSTIC_DIR, "layout.json"),
+              JSON.stringify({
+                classification:
+                  "ENVIRONMENT_OUTPUT_LAYOUT_NOT_FOUNDATION_OR_OPERATIONAL_ACCEPTANCE",
+                paths,
+                sourceAdmission: false,
+              }) + "\n",
+              { flag: "wx", mode: 0o600 },
+            );
+            return checkLayout(environment, checkout);
+          }
+          export function checkLayout(environment, checkout) {
+            const paths = expectedLayout(environment, checkout);
+            for (const path of Object.values(paths)) directory(path, 0o700);
+            const file = join(paths.DIAGNOSTIC_DIR, "layout.json");
+            if (realpathSync.native(file) !== file) fail();
+            const info = lstatSync(file);
+            if (
+              !info.isFile() ||
+              info.isSymbolicLink() ||
+              info.nlink !== 1 ||
+              (info.mode & 0o7777) !== 0o600
+            )
+              fail();
+            const recorded = JSON.parse(readFileSync(file, "utf8"));
+            const expected = {
+              classification:
+                "ENVIRONMENT_OUTPUT_LAYOUT_NOT_FOUNDATION_OR_OPERATIONAL_ACCEPTANCE",
+              paths,
+              sourceAdmission: false,
+            };
+            if (JSON.stringify(recorded) !== JSON.stringify(expected)) fail();
+            return expected;
+          }
+
+          if (process.versions.node.split('.')[0] !== '24' || process.platform === 'win32' || typeof realpathSync.native !== 'function') fail();
+          prepareLayout(process.env, process.cwd());
+          writeFileSync(join(process.env.DIAGNOSTIC_DIR, 'layout.mjs'), "/** Disposable CI output layout only; no application or recovery authority. */\nimport {\n  lstatSync,\n  realpathSync,\n  mkdirSync,\n  readFileSync,\n  writeFileSync,\n} from \"node:fs\";\nimport { isAbsolute, resolve, relative, join } from \"node:path\";\n\nconst fail = () => {\n  throw Error(\"Exact external fixed568 rehearsal layout required\");\n};\nconst external = (root, path) => {\n  const value = relative(root, path);\n  return value === \"..\" || value.startsWith(\"../\");\n};\nfunction directory(path, mode) {\n  if (\n    typeof path !== \"string\" ||\n    !isAbsolute(path) ||\n    resolve(path) !== path ||\n    realpathSync.native(path) !== path\n  )\n    fail();\n  const info = lstatSync(path);\n  if (\n    !info.isDirectory() ||\n    info.isSymbolicLink() ||\n    (mode !== undefined && (info.mode & 0o7777) !== mode)\n  )\n    fail();\n}\nexport function expectedLayout(environment, checkout) {\n  directory(checkout);\n  if (environment.GITHUB_WORKSPACE !== checkout) fail();\n  const temporary = environment.RUNNER_TEMP;\n  directory(temporary);\n  if (!external(checkout, temporary)) fail();\n  const paths = {\n    DIAGNOSTIC_DIR: join(temporary, \"fixed568-python3142-evidence\"),\n    REHEARSAL_PYCACHE: join(temporary, \"fixed568-python3142-pycache\"),\n    REHEARSAL_TMP: join(temporary, \"fixed568-python3142-tmp\"),\n  };\n  for (const [key, path] of Object.entries(paths))\n    if (environment[key] !== path || !external(checkout, path)) fail();\n  return paths;\n}\nexport function prepareLayout(environment, checkout) {\n  const paths = expectedLayout(environment, checkout);\n  // Refuse every preexisting output before creating any directory.\n  for (const path of Object.values(paths)) {\n    try {\n      lstatSync(path);\n    } catch (error) {\n      if (error.code === \"ENOENT\") continue;\n      throw error;\n    }\n    fail();\n  }\n  for (const path of Object.values(paths)) {\n    mkdirSync(path, { mode: 0o700 });\n    directory(path, 0o700);\n  }\n  writeFileSync(\n    join(paths.DIAGNOSTIC_DIR, \"layout.json\"),\n    JSON.stringify({\n      classification:\n        \"ENVIRONMENT_OUTPUT_LAYOUT_NOT_FOUNDATION_OR_OPERATIONAL_ACCEPTANCE\",\n      paths,\n      sourceAdmission: false,\n    }) + \"\\n\",\n    { flag: \"wx\", mode: 0o600 },\n  );\n  return checkLayout(environment, checkout);\n}\nexport function checkLayout(environment, checkout) {\n  const paths = expectedLayout(environment, checkout);\n  for (const path of Object.values(paths)) directory(path, 0o700);\n  const file = join(paths.DIAGNOSTIC_DIR, \"layout.json\");\n  if (realpathSync.native(file) !== file) fail();\n  const info = lstatSync(file);\n  if (\n    !info.isFile() ||\n    info.isSymbolicLink() ||\n    info.nlink !== 1 ||\n    (info.mode & 0o7777) !== 0o600\n  )\n    fail();\n  const recorded = JSON.parse(readFileSync(file, \"utf8\"));\n  const expected = {\n    classification:\n      \"ENVIRONMENT_OUTPUT_LAYOUT_NOT_FOUNDATION_OR_OPERATIONAL_ACCEPTANCE\",\n    paths,\n    sourceAdmission: false,\n  };\n  if (JSON.stringify(recorded) !== JSON.stringify(expected)) fail();\n  return expected;\n}\n\nif (import.meta.main) {\n  try {\n    if (\n      process.argv.length !== 3 ||\n      process.versions.node.split(\".\")[0] !== \"24\" ||\n      process.platform === \"win32\" ||\n      typeof realpathSync.native !== \"function\"\n    )\n      fail();\n    const mode = process.argv[2];\n    if (mode === \"prepare\") prepareLayout(process.env, process.cwd());\n    else if (mode === \"check\") checkLayout(process.env, process.cwd());\n    else fail();\n  } catch {\n    console.error(\"Exact external fixed568 rehearsal layout required\");\n    process.exitCode = 1;\n  }\n} else if (typeof import.meta.main !== \"boolean\") {\n  throw Error(\"Node24 main detection required\");\n}\n", { flag: 'wx', mode: 0o644 });
+          FIXED568_REHEARSAL_LAYOUT
+          node --check "$DIAGNOSTIC_DIR/layout.mjs"
+          cat > "$DIAGNOSTIC_DIR/source.mjs" <<'FIXED568_REHEARSAL_SOURCE'
+          import { execFileSync } from 'node:child_process';
+          import { createHash } from 'node:crypto';
+          import { lstatSync, readFileSync, readdirSync, writeFileSync, realpathSync } from 'node:fs';
+          import { resolve } from 'node:path';
+          const target = '3f0c6b53747e60765cdc7faf1308b57ce730676f';
+          const tree = '00f6d211affd7e364573ca792e08a1dd67b8f190';
+          const phase = process.argv[2];
+          if (!['before', 'after'].includes(phase)) throw Error('Exact probe phase required');
+          const output = process.env.DIAGNOSTIC_DIR;
+          if (!output || !process.env.RUNNER_TEMP || !realpathSync(output).startsWith(realpathSync(process.env.RUNNER_TEMP) + '/') || realpathSync(output) === realpathSync(process.cwd()) || realpathSync(output).startsWith(realpathSync(process.cwd()) + '/')) throw Error('Outside-checkout runner temporary output required');
+          const sha = (b) => createHash('sha256').update(b).digest('hex');
+          const git = (...args) => execFileSync('/usr/bin/git', ['--no-replace-objects', '-c', 'core.hooksPath=/dev/null', '-c', 'core.fsmonitor=false', '-c', 'credential.helper=', ...args], {
+            maxBuffer: 128 * 1024 * 1024,
+            env: { PATH: process.env.PATH, LANG: 'C', LC_ALL: 'C', GIT_CONFIG_NOSYSTEM: '1', GIT_CONFIG_SYSTEM: '/dev/null', GIT_CONFIG_GLOBAL: '/dev/null', GIT_NO_LAZY_FETCH: '1', GIT_ALLOW_PROTOCOL: '', GIT_ATTR_NOSYSTEM: '1', GIT_TERMINAL_PROMPT: '0', GIT_OPTIONAL_LOCKS: '0' },
+            stdio: ['pipe', 'pipe', 'pipe'],
+          });
+          const observedHead = git('rev-parse', 'HEAD').toString().trim();
+          const observedTree = git('rev-parse', 'HEAD^{tree}').toString().trim();
+          if (observedHead !== target || observedTree !== tree) throw Error('Exact fixed568 checkout required');
+          const raw = git('ls-tree', '-rz', '--full-tree', tree);
+          const rows = raw.toString().split('\0').filter(Boolean).map((line) => {
+            const m = /^(100644|100755) blob ([a-f0-9]{40})\t(.+)$/.exec(line);
+            if (!m || m[3].split('/').some((p) => !p || p === '.' || p === '..')) throw Error('Exact regular target inventory required');
+            return { mode: m[1], blob: m[2], path: m[3] };
+          });
+          if (rows.length !== 2568) throw Error('Exact2568 target inventory required');
+          const batch = execFileSync('/usr/bin/git', ['--no-replace-objects', '-c', 'core.hooksPath=/dev/null', '-c', 'core.fsmonitor=false', '-c', 'credential.helper=', 'cat-file', '--batch'], {
+            input: rows.map((row) => row.blob).join('\n') + '\n', maxBuffer: 128 * 1024 * 1024,
+            env: { PATH: process.env.PATH, LANG: 'C', LC_ALL: 'C', GIT_CONFIG_NOSYSTEM: '1', GIT_CONFIG_SYSTEM: '/dev/null', GIT_CONFIG_GLOBAL: '/dev/null', GIT_NO_LAZY_FETCH: '1', GIT_ALLOW_PROTOCOL: '', GIT_ATTR_NOSYSTEM: '1', GIT_TERMINAL_PROMPT: '0', GIT_OPTIONAL_LOCKS: '0' },
+            stdio: ['pipe', 'pipe', 'pipe'],
+          });
+          let offset = 0;
+          const mismatches = [], known = new Set(rows.map((row) => row.path)), directories = new Set();
+          for (const row of rows) {
+            const end = batch.indexOf(10, offset), header = batch.subarray(offset, end).toString();
+            const parts = header.split(' ');
+            if (end < 0 || parts[0] !== row.blob || parts[1] !== 'blob' || !/^\d+$/.test(parts[2])) throw Error('Exact object batch required');
+            const size = Number(parts[2]), body = batch.subarray(end + 1, end + 1 + size);
+            if (body.length !== size || batch[end + 1 + size] !== 10) throw Error('Complete object body required');
+            offset = end + 2 + size;
+            const segments = row.path.split('/');
+            for (let i = 1; i < segments.length; i++) directories.add(segments.slice(0, i).join('/'));
+            try {
+              const stat = lstatSync(row.path);
+              if (!stat.isFile() || stat.isSymbolicLink()) mismatches.push({ path: row.path, reason: 'type' });
+              else {
+                const mode = stat.mode & 0o7777, expectedMode = row.mode === '100755' ? 0o755 : 0o644;
+                if (mode !== expectedMode) mismatches.push({ path: row.path, reason: 'mode', actual: mode.toString(8), expected: expectedMode.toString(8) });
+                const actual = sha(readFileSync(row.path)), expected = sha(body);
+                if (actual !== expected) mismatches.push({ path: row.path, reason: 'body', actual, expected });
+              }
+            } catch { mismatches.push({ path: row.path, reason: 'missing-or-unreadable' }); }
+          }
+          if (offset !== batch.length) throw Error('No trailing object data permitted');
+          const extraPaths = [];
+          // This narrower telemetry walk omits only the five output/dependency roots below.
+          // It neither copies nor changes the canonical guard exclusion policy (which also omits playwright-report).
+          const excluded = new Set(['.git', 'node_modules', 'dist', 'coverage', 'test-results']);
+          function walk(directory = '') {
+            for (const name of readdirSync(directory || '.').sort()) {
+              if (!directory && excluded.has(name)) continue;
+              const path = directory ? directory + '/' + name : name;
+              const stat = lstatSync(path);
+              if (stat.isDirectory()) { if (!directories.has(path)) extraPaths.push(path); walk(path); }
+              else if (!known.has(path)) extraPaths.push(path);
+            }
+          }
+          walk();
+          const knownEmptyFixtureDirectories = phase === 'after' && process.env.UNIT_SHARD === '1' && extraPaths.length === 2 && extraPaths.every((path) => ['artifacts', 'artifacts/cycle27'].includes(path) && lstatSync(path).isDirectory()) && (!extraPaths.length || readdirSync('artifacts/cycle27').length === 0);
+          const report = { classification: 'UNSIGNED_FIXED568_DIAGNOSTIC_NOT_ADMISSION', phase, target, targetTree: tree, workflowSourceSHA: process.env.DIAGNOSTIC_WORKFLOW_SHA, eventSHA: process.env.DIAGNOSTIC_EVENT_SHA, observedHead, observedTree, rows: rows.length, inventorySHA256: sha(raw), umask: process.umask().toString(8), mismatches, extraPaths, canonicalPhysicalAdmission: false, knownEmptyFixtureDirectories, pass: !mismatches.length && (!extraPaths.length || knownEmptyFixtureDirectories) };
+          writeFileSync(resolve(output, 'source-' + phase + '.json'), JSON.stringify(report, null, 2));
+          console.log(JSON.stringify({ phase, rows: rows.length, mismatches: mismatches.length, extraPaths: extraPaths.length, pass: report.pass }));
+          if (!report.pass) process.exitCode = 1;
+          FIXED568_REHEARSAL_SOURCE
+          node --check "$DIAGNOSTIC_DIR/source.mjs"
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.14.2'
+      - name: Verify exact helper files and unchanged source before original commands
+        env:
+          DIAGNOSTIC_DIR: ${{ runner.temp }}/fixed568-python3142-evidence
+          REHEARSAL_PYCACHE: ${{ runner.temp }}/fixed568-python3142-pycache
+          REHEARSAL_TMP: ${{ runner.temp }}/fixed568-python3142-tmp
+        run: |
+          node --input-type=module <<'FIXED568_REHEARSAL_HELPERS'
+          /** Fresh helper-file checks for this held ENV job only. */
+          import { lstatSync, readFileSync, realpathSync } from "node:fs";
+          import { resolve, isAbsolute, relative, join } from "node:path";
+          import { createHash } from "node:crypto";
+
+          export function verifyRuntimeHelpers(environment, checkout) {
+            const fail = () => {
+              throw Error("Exact fixed568 rehearsal helper files required");
+            };
+            const temporary = environment.RUNNER_TEMP;
+            const output = environment.DIAGNOSTIC_DIR;
+            if (environment.GITHUB_WORKSPACE !== checkout) fail();
+            if (
+              typeof temporary !== "string" ||
+              typeof output !== "string" ||
+              !isAbsolute(temporary) ||
+              resolve(temporary) !== temporary ||
+              realpathSync.native(temporary) !== temporary ||
+              realpathSync.native(checkout) !== checkout
+            )
+              fail();
+            const outside = relative(checkout, temporary);
+            if (outside !== ".." && !outside.startsWith("../")) fail();
+            if (
+              output !== join(temporary, "fixed568-python3142-evidence") ||
+              realpathSync.native(output) !== output
+            )
+              fail();
+            const directory = lstatSync(output);
+            if (
+              !directory.isDirectory() ||
+              directory.isSymbolicLink() ||
+              (directory.mode & 0o7777) !== 0o700
+            )
+              fail();
+            const expected = {
+              "layout.mjs":
+                "8b5574d5b7add04166b9dc27d551a9dd71af769e16f90b4639593398fcbd6dd0",
+              "source.mjs":
+                "af69046322645626329f1eaccc93448452ab0990d93d412996f70ffe4758b332",
+            };
+            for (const [name, hash] of Object.entries(expected)) {
+              const path = join(output, name);
+              if (realpathSync.native(path) !== path) fail();
+              const file = lstatSync(path);
+              if (
+                !file.isFile() ||
+                file.isSymbolicLink() ||
+                file.nlink !== 1 ||
+                (file.mode & 0o7777) !== 0o644
+              )
+                fail();
+              if (createHash("sha256").update(readFileSync(path)).digest("hex") !== hash)
+                fail();
+            }
+          }
+
+          verifyRuntimeHelpers(process.env, process.cwd());
+          FIXED568_REHEARSAL_HELPERS
+          node "$DIAGNOSTIC_DIR/layout.mjs" check
+          node "$DIAGNOSTIC_DIR/source.mjs" before
+      - run: >-
+          python -m pip install --require-hashes --only-binary=:all:
+          -r recovery/monterey/rehearsal-requirements.lock
+        env:
+          DIAGNOSTIC_DIR: ${{ runner.temp }}/fixed568-python3142-evidence
+          REHEARSAL_PYCACHE: ${{ runner.temp }}/fixed568-python3142-pycache
+          REHEARSAL_TMP: ${{ runner.temp }}/fixed568-python3142-tmp
+          PYTHONPYCACHEPREFIX: ${{ runner.temp }}/fixed568-python3142-pycache
+          TMPDIR: ${{ runner.temp }}/fixed568-python3142-tmp
+          TEMP: ${{ runner.temp }}/fixed568-python3142-tmp
+          TMP: ${{ runner.temp }}/fixed568-python3142-tmp
+      - run: python -B scripts/package-rehearsal.py --check
+        env:
+          DIAGNOSTIC_DIR: ${{ runner.temp }}/fixed568-python3142-evidence
+          REHEARSAL_PYCACHE: ${{ runner.temp }}/fixed568-python3142-pycache
+          REHEARSAL_TMP: ${{ runner.temp }}/fixed568-python3142-tmp
+          PYTHONPYCACHEPREFIX: ${{ runner.temp }}/fixed568-python3142-pycache
+          TMPDIR: ${{ runner.temp }}/fixed568-python3142-tmp
+          TEMP: ${{ runner.temp }}/fixed568-python3142-tmp
+          TMP: ${{ runner.temp }}/fixed568-python3142-tmp
+      - run: >-
+          python -c "import sys; sys.path.insert(0, 'recovery/monterey');
+          from verify_package import check_dependencies; check_dependencies()"
+        env:
+          DIAGNOSTIC_DIR: ${{ runner.temp }}/fixed568-python3142-evidence
+          REHEARSAL_PYCACHE: ${{ runner.temp }}/fixed568-python3142-pycache
+          REHEARSAL_TMP: ${{ runner.temp }}/fixed568-python3142-tmp
+          PYTHONPYCACHEPREFIX: ${{ runner.temp }}/fixed568-python3142-pycache
+          TMPDIR: ${{ runner.temp }}/fixed568-python3142-tmp
+          TEMP: ${{ runner.temp }}/fixed568-python3142-tmp
+          TMP: ${{ runner.temp }}/fixed568-python3142-tmp
+      - run: python -B -m unittest discover -s recovery/monterey -p 'test_*.py'
+        env:
+          DIAGNOSTIC_DIR: ${{ runner.temp }}/fixed568-python3142-evidence
+          REHEARSAL_PYCACHE: ${{ runner.temp }}/fixed568-python3142-pycache
+          REHEARSAL_TMP: ${{ runner.temp }}/fixed568-python3142-tmp
+          PYTHONPYCACHEPREFIX: ${{ runner.temp }}/fixed568-python3142-pycache
+          TMPDIR: ${{ runner.temp }}/fixed568-python3142-tmp
+          TEMP: ${{ runner.temp }}/fixed568-python3142-tmp
+          TMP: ${{ runner.temp }}/fixed568-python3142-tmp
+      - run: npm ci
+        env:
+          DIAGNOSTIC_DIR: ${{ runner.temp }}/fixed568-python3142-evidence
+          REHEARSAL_PYCACHE: ${{ runner.temp }}/fixed568-python3142-pycache
+          REHEARSAL_TMP: ${{ runner.temp }}/fixed568-python3142-tmp
+          PYTHONPYCACHEPREFIX: ${{ runner.temp }}/fixed568-python3142-pycache
+          TMPDIR: ${{ runner.temp }}/fixed568-python3142-tmp
+          TEMP: ${{ runner.temp }}/fixed568-python3142-tmp
+          TMP: ${{ runner.temp }}/fixed568-python3142-tmp
+      - run: npx vitest run tests/property-p1-backup.test.ts tests/property-p1-mailbox.test.ts
+        env:
+          DIAGNOSTIC_DIR: ${{ runner.temp }}/fixed568-python3142-evidence
+          REHEARSAL_PYCACHE: ${{ runner.temp }}/fixed568-python3142-pycache
+          REHEARSAL_TMP: ${{ runner.temp }}/fixed568-python3142-tmp
+          PYTHONPYCACHEPREFIX: ${{ runner.temp }}/fixed568-python3142-pycache
+          TMPDIR: ${{ runner.temp }}/fixed568-python3142-tmp
+          TEMP: ${{ runner.temp }}/fixed568-python3142-tmp
+          TMP: ${{ runner.temp }}/fixed568-python3142-tmp
+          PROPEL_RECOVERY_PYTHON: python
+      - name: Verify exact helpers unchanged source and output layout after original commands
+        if: always()
+        env:
+          DIAGNOSTIC_DIR: ${{ runner.temp }}/fixed568-python3142-evidence
+          REHEARSAL_PYCACHE: ${{ runner.temp }}/fixed568-python3142-pycache
+          REHEARSAL_TMP: ${{ runner.temp }}/fixed568-python3142-tmp
+        run: |
+          node --input-type=module <<'FIXED568_REHEARSAL_HELPERS'
+          /** Fresh helper-file checks for this held ENV job only. */
+          import { lstatSync, readFileSync, realpathSync } from "node:fs";
+          import { resolve, isAbsolute, relative, join } from "node:path";
+          import { createHash } from "node:crypto";
+
+          export function verifyRuntimeHelpers(environment, checkout) {
+            const fail = () => {
+              throw Error("Exact fixed568 rehearsal helper files required");
+            };
+            const temporary = environment.RUNNER_TEMP;
+            const output = environment.DIAGNOSTIC_DIR;
+            if (environment.GITHUB_WORKSPACE !== checkout) fail();
+            if (
+              typeof temporary !== "string" ||
+              typeof output !== "string" ||
+              !isAbsolute(temporary) ||
+              resolve(temporary) !== temporary ||
+              realpathSync.native(temporary) !== temporary ||
+              realpathSync.native(checkout) !== checkout
+            )
+              fail();
+            const outside = relative(checkout, temporary);
+            if (outside !== ".." && !outside.startsWith("../")) fail();
+            if (
+              output !== join(temporary, "fixed568-python3142-evidence") ||
+              realpathSync.native(output) !== output
+            )
+              fail();
+            const directory = lstatSync(output);
+            if (
+              !directory.isDirectory() ||
+              directory.isSymbolicLink() ||
+              (directory.mode & 0o7777) !== 0o700
+            )
+              fail();
+            const expected = {
+              "layout.mjs":
+                "8b5574d5b7add04166b9dc27d551a9dd71af769e16f90b4639593398fcbd6dd0",
+              "source.mjs":
+                "af69046322645626329f1eaccc93448452ab0990d93d412996f70ffe4758b332",
+            };
+            for (const [name, hash] of Object.entries(expected)) {
+              const path = join(output, name);
+              if (realpathSync.native(path) !== path) fail();
+              const file = lstatSync(path);
+              if (
+                !file.isFile() ||
+                file.isSymbolicLink() ||
+                file.nlink !== 1 ||
+                (file.mode & 0o7777) !== 0o644
+              )
+                fail();
+              if (createHash("sha256").update(readFileSync(path)).digest("hex") !== hash)
+                fail();
+            }
+          }
+
+          verifyRuntimeHelpers(process.env, process.cwd());
+          FIXED568_REHEARSAL_HELPERS
+          layout_status=0
+          node "$DIAGNOSTIC_DIR/layout.mjs" check || layout_status=$?
+          source_status=0
+          node "$DIAGNOSTIC_DIR/source.mjs" after || source_status=$?
+          if [ "$source_status" -ne 0 ]; then exit "$source_status"; fi
+          exit "$layout_status"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: fixed568-python3142-rehearsal
+          path: ${{ runner.temp }}/fixed568-python3142-evidence/
+          if-no-files-found: error
+          retention-days: 7
