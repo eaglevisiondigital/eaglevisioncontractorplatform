@@ -202,7 +202,7 @@ jobs:
           const MAX_OUTPUT = 16 * 1024 * 1024;
           const FINAL_RESERVE = 1024;
           const OUTPUT_NAME = 'foundation568-process-cpu.jsonl';
-          const SIGNED_FIELDS = new Set([7, 8, 16, 17, 18, 19, 24, 38, 39, 44, 52]);
+          const SIGNED_FIELDS = new Set([5, 6, 7, 8, 16, 17, 18, 19, 24, 38, 39, 44, 52]);
 
           function fault(code) {
             const error = new Error(code);
@@ -267,7 +267,13 @@ jobs:
             const at = (field) =>
               unsigned(fields[field - 3], Number.MAX_SAFE_INTEGER, 'STAT_INVALID');
             const ppid = unsigned(fields[1], MAX_PID, 'STAT_INVALID');
-            const threadCount = unsigned(fields[17], MAX_THREADS, 'THREAD_LIMIT', 1);
+            const exited = fields[0] === 'Z' || fields[0] === 'X' || fields[0] === 'x';
+            const threadCount = unsigned(
+              fields[17],
+              MAX_THREADS,
+              'THREAD_LIMIT',
+              exited ? 0 : 1,
+            );
             const startTicks = at(22);
             if (expectedStartTicks !== undefined) {
               if (!Number.isSafeInteger(expectedStartTicks) || expectedStartTicks < 0)
@@ -283,7 +289,7 @@ jobs:
               reapedChildUserTicks: at(16),
               reapedChildSystemTicks: at(17),
               threadCount,
-              exited: fields[0] === 'Z' || fields[0] === 'X' || fields[0] === 'x',
+              exited,
             });
           }
 
@@ -439,7 +445,11 @@ jobs:
               const children = new Set();
               try {
                 first = statFor(item.pid, item.startTicks, budget);
-                if (item.pid === rootPid && first.exited) throw fault('ROOT_GONE');
+                if (first.exited) {
+                  if (item.pid === rootPid) throw fault('ROOT_GONE');
+                  partial = true;
+                  continue;
+                }
                 if (
                   item.parent !== undefined &&
                   (first.ppid !== item.parent || first.startTicks < item.parentStart)
@@ -469,6 +479,11 @@ jobs:
                   }
                 }
                 last = statFor(item.pid, first.startTicks, budget);
+                if (last.exited) {
+                  if (item.pid === rootPid) throw fault('ROOT_GONE');
+                  partial = true;
+                  continue;
+                }
               } catch (error) {
                 if (error.code === 'PID_IDENTITY_CHANGED')
                   throw fault(

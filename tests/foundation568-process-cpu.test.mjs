@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 const reviewedObserverSHA256 =
-  '8c4fe594e1c5b016b49a582bc9040c44729392b0f938b7108fcb9af6ce71ca01';
+  '1ba1ff514b60abaef520fe91853529ef8115a3335da4d45874e065c1d1dae873';
 function extractObserver(workflow) {
   const fail = () => {
     throw Error('Exact reviewed CPU observer required');
