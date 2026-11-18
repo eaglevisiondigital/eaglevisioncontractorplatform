@@ -1,0 +1,45 @@
+/** Held fixed568 scheduling experiment only; no application authority. */
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { isAbsolute, relative, resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
+const expectedManifest = '69a4a24484d348e81b161832862cd23697b3adf1a93d91de457472b9702ee207';
+const source = '3f0c6b53747e60765cdc7faf1308b57ce730676f';
+const tree = '00f6d211affd7e364573ca792e08a1dd67b8f190';
+const target = 'tests/cycle33-v1-finance-owner-integration.test.ts';
+const fail = () => { throw Error('Exact fixed568 dedicated scheduling evidence required'); };
+export function readFixedManifest() {
+  const bytes = readFileSync(new URL('scheduler-manifest.json', import.meta.url));
+  if (createHash('sha256').update(bytes).digest('hex') !== expectedManifest) fail();
+  return validateFixedManifest(JSON.parse(bytes.toString('utf8')));
+}
+export function validateFixedManifest(manifest) {
+  if (manifest.target !== source || manifest.tree !== tree || manifest.fullCount !== 489 || manifest.count !== 8 || manifest.dedicatedIndex !== 8 || manifest.dedicatedFile !== target || manifest.secondDedicatedIndex !== 7 || manifest.secondDedicatedFile !== 'tests/cycle24-independent-integration-review.test.ts' || !Array.isArray(manifest.groups) || manifest.groups.length !== 8 || manifest.groups.some(g => !Array.isArray(g) || !g.length || g.some(p => typeof p !== 'string' || !/^tests\/[a-zA-Z0-9_./-]+\.test\.ts$/.test(p) || p.includes('..')))) fail();
+  const full = manifest.groups.flat();
+  if (full.length !== 489 || new Set(full).size !== 489 || !manifest.groups[0].includes('tests/cycle27-source-lineage.test.ts') || JSON.stringify(manifest.groups[7]) !== JSON.stringify([target]) || JSON.stringify(manifest.groups[6]) !== JSON.stringify(['tests/cycle24-independent-integration-review.test.ts'])) fail();
+  return manifest;
+}
+export function selectFixed568(files, context) {
+  if (!Array.isArray(files) || !context || context.source !== source || context.tree !== tree || context.count !== 8 || !Number.isInteger(context.index) || context.index < 1 || context.index > 8 || typeof context.root !== 'string' || !isAbsolute(context.root) || resolve(context.root) !== context.root) fail();
+  const manifest = readFixedManifest();
+  const byPath = new Map();
+  for (const spec of files) {
+    if (!spec || typeof spec.moduleId !== 'string' || !isAbsolute(spec.moduleId) || resolve(spec.moduleId) !== spec.moduleId) fail();
+    const path = relative(context.root, spec.moduleId).replaceAll('\\', '/');
+    if (!/^tests\/[a-zA-Z0-9_./-]+\.test\.ts$/.test(path) || path.includes('..') || byPath.has(path)) fail();
+    byPath.set(path, spec);
+  }
+  const full = manifest.groups.flat().sort();
+  if (byPath.size !== 489 || JSON.stringify([...byPath.keys()].sort()) !== JSON.stringify(full)) fail();
+  return manifest.groups[context.index - 1].map(path => byPath.get(path));
+}
+const { BaseSequencer } = await import(pathToFileURL(resolve('node_modules/vitest/dist/node.js')).href);
+export default class Fixed568DedicatedSequencer extends BaseSequencer {
+  async shard(files) {
+    const root = this.ctx.config.root;
+    if (root !== process.cwd()) fail();
+    const { binding } = await import(pathToFileURL(resolve(root, 'scripts/cycle33-foundation-evidence.mjs')).href);
+    const current = binding();
+    return selectFixed568(files, { root, source: current.source, tree: current.tree, index: this.ctx.config.shard?.index, count: this.ctx.config.shard?.count });
+  }
+}
