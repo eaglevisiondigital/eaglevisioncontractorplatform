@@ -108,6 +108,7 @@ function CustomerDetail({
   onSaved: () => void;
 }) {
   const task = useTask();
+  const detailHeading = useRef<HTMLHeadingElement>(null);
   const createForm = useRef({});
   const saving = useRef(false);
   const current = useRef(false);
@@ -119,6 +120,9 @@ function CustomerDetail({
       current.current = false;
     };
   }, [repo, org, customer?.id]);
+  useLayoutEffect(() => {
+    if (detailHeading.current?.isConnected) detailHeading.current.focus();
+  }, []);
   const createState = useSyncExternalStore(
     useCallback(
       (listener) => subscribeCustomerCreate(repo, org, listener),
@@ -177,7 +181,9 @@ function CustomerDetail({
   return (
     <article className="detail-panel">
       <div className="section-title">
-        <h2>{customer ? 'Customer details' : 'New customer'}</h2>
+        <h2 ref={detailHeading} tabIndex={-1}>
+          {customer ? 'Customer details' : 'New customer'}
+        </h2>
         <button className="secondary" onClick={onClose}>
           Close details
         </button>
@@ -356,6 +362,9 @@ export function Customers({ repo, org }: { repo: Operations; org: string }) {
   const [kind, setKind] = useState('');
   const [page, setPage] = useState(0);
   const [selected, setSelected] = useState<Customer | null | undefined>();
+  const directorySearch = useRef<HTMLInputElement>(null);
+  const newCustomerTrigger = useRef<HTMLButtonElement>(null);
+  const customerRows = useRef(new Map<string, HTMLButtonElement>());
   const resource = useResource(
     useCallback(
       () => repo.listCustomers(org, q, kind, page),
@@ -367,12 +376,15 @@ export function Customers({ repo, org }: { repo: Operations; org: string }) {
       <article>
         <div className="section-title">
           <h2>Customer directory</h2>
-          <button onClick={() => setSelected(null)}>New customer</button>
+          <button ref={newCustomerTrigger} onClick={() => setSelected(null)}>
+            New customer
+          </button>
         </div>
         <div className="filters">
           <label>
             Search customers
             <input
+              ref={directorySearch}
               type="search"
               value={q}
               onChange={(e) => {
@@ -412,6 +424,10 @@ export function Customers({ repo, org }: { repo: Operations; org: string }) {
               <button
                 className="record-button"
                 key={c.id}
+                ref={(node) => {
+                  if (node) customerRows.current.set(c.id, node);
+                  else customerRows.current.delete(c.id);
+                }}
                 onClick={() => setSelected(c)}
               >
                 <span>
@@ -443,7 +459,15 @@ export function Customers({ repo, org }: { repo: Operations; org: string }) {
             repo={repo}
             org={org}
             customer={selected}
-            onClose={() => setSelected(undefined)}
+            onClose={() => {
+              const trigger = selected
+                ? customerRows.current.get(selected.id)
+                : newCustomerTrigger.current;
+              setSelected(undefined);
+              if (trigger?.isConnected) trigger.focus();
+              else if (directorySearch.current?.isConnected)
+                directorySearch.current.focus();
+            }}
             onSaved={() => {
               resource.reload();
               setSelected(undefined);
