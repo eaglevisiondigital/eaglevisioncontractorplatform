@@ -124,6 +124,7 @@ export function EstimateCrmSelection({
     [customerPage, setCustomerPage] = useState(0),
     [locationSearch, setLocationSearch] = useState(''),
     [locationPage, setLocationPage] = useState(0);
+  const [refreshGeneration, setRefreshGeneration] = useState(0);
   const scope = useMemo(() => ({ operations, org }), [operations, org]);
   const context = JSON.stringify([
     org,
@@ -133,6 +134,7 @@ export function EstimateCrmSelection({
     customerPage,
     locationSearch,
     locationPage,
+    refreshGeneration,
   ]);
   const data = useResource(
     useCallback(async () => {
@@ -209,6 +211,15 @@ export function EstimateCrmSelection({
       aria-label="Estimate CRM selection"
       aria-busy={!ready && !data.error}
     >
+      <button
+        type="button"
+        className="secondary"
+        style={{ marginBottom: '1rem' }}
+        disabled={disabled || !ready}
+        onClick={() => setRefreshGeneration((value) => value + 1)}
+      >
+        Refresh CRM records
+      </button>
       <div className="form-grid">
         <Field label="Find estimate customer">
           <input
