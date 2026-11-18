@@ -1,0 +1,1110 @@
+diff --git a/proposals/dashboard-context-fixture-compatibility/README.md b/proposals/dashboard-context-fixture-compatibility/README.md
+index 59e7198..746fc40 100644
+--- a/proposals/dashboard-context-fixture-compatibility/README.md
++++ b/proposals/dashboard-context-fixture-compatibility/README.md
+@@ -1,67 +1,30 @@
+-# Exact553 plus reviewed operating-reader source closure — UNAPPLIED
+-
+-This finite successor reuses the unchanged eleven additions of reviewed #506 and
+-held #509 integration patch91e5c286. Before is actual #5530e3bb4ab (2556files);
+-after is that same source plus exactly eleven approved-author bytes (2567files),
+-and the narrowly necessary existing joint fixture reseal. No new wrapper, namespace,
+-financial metadata read port, runtime engine, schema or ledger is introduced.
+-
+-The two freshly resealed canonical headers are the only phase endpoints. The
+-already approved #553 legacy fixture, retained consumer and Cycle27 endpoints are
+-fixed to their exact after-bodies. All five existing historical metadata forwards,
+-seven older financial reads and the P1 TEST-only projection remain exact. P1 retains
+-fresh full physical proof on every projection; the other five retain complete fresh
+-proof before/after each public operation and fresh body/callback/mode/historical
+-checks on every projected read. No mutable proof cache is introduced.
+-
+-Before and after have separate exact normalized tree/counts selected by the two
+-coherent header phases. Before has no reader files; after requires all eleven
+-reviewed bodies/modes. Partial additions, one-sided headers, unknown/mixed source,
+-missing original authors, stale frames, mode/symlink changes and late withdrawal
+-deny. Captured phase cannot switch. Raw actual553 and503/506 ancestry is pinned.
+-Historical original two/39 snapshots, original assertions and30-second budgets stay
+-byte-exact; canonical headers change only their helper-hash literal. Current
+-source helpers, adapter/FHG/canonical qualifier, SQL/runtime/Auth/UI are unchanged.
+-
+-The old44 source-control record remains historical. Proposed controls bind the
+-actual553 before and eleven-addition after fixture. Its old S-specific C27 negative
+-now rejects c60/fa519 predecessor bytes: exact533/1df is already approved553 source
+-and cannot truthfully be labeled a forbidden substitution here.
+-
+-The default-OFF reader still uses disposable-proposal mode and the existing
+-fictional-local/unwired bridge. Source qualification does not supply a real route,
+-exclusive physical connection owner, socket cancellation/discard or independent
+-cross-process custody. #509 alias/output-only abort observations remain open.
+-#508 is a test fixture, not an operational connection factory or accepted owner.
+-The approved reader source verifier masks0o777, so alone it does not reject special
+-permission bits; this joint whole-source guard independently uses0o7777 and rejects
+-them. No approved reader byte is changed or new runtime guarantee claimed.
+-
+-No SQL/grants are installed; current genuine Auth/MFA, D1-D3, installed writer/bypass
+-inventory, independent ACK/spent/recovery fences and A01-A12 remain unaccepted.
+-Payment stays UNKNOWN and links DISABLED. Receipt-publication/ACK proposals, NMI
+-boarding/report/bank settlement, provider calls, messages, merge and deployment
+-remain separate and closed. Saul2Paul first; Cunningham needs separate accepted
+-bindings. Release1.0 NO-GO / NOT READY / NOT AUTHORIZED.
+-
+-The manifest seals this README/controls; the helper seals the manifest; both
+-canonical headers and generated snapshots seal the helper. Dynamic final seals and
+-qualification results belong in external proposal artifacts, avoiding hash cycles.
+-
+-## Revised finite metadata cost proposal
+-
+-The preserved #556/42adc frame remains BLOCKED by its original33.719s/30s case.
+-One diagnostic observer records1265 Git processes/24.994s of its28.027s selected
+-body;25 complete physical proofs account for1050 author queries. This observation
+-is not qualification or a waiver. Prior metadata-only A/B/A gave insufficient gain.
+-
+-This separate UNAPPLIED revision reduces42 Git processes per complete physical
+-proof to15. Each call freshly batch-reads ONLY the same nine author commits and
+-native author, checks full object IDs/types/byte lengths/content hashes and every
+-original raw/sole-parent/tree fact, then retains all ten fresh exact diff-tree
+-queries, three native/C27 mode queries and one fixed native parent/tree-view batch.
+-The latter separately rejects graft/shallow parent visibility changes. No batch result survives the call.
+-P1 still executes the complete physical proof on every original P1 projection.
+-All physical/source/callback/mode/late-withdrawal checks, historical ports and
+-original41 bodies/budgets remain unchanged. This is no new metadata read path,
+-public loader, source cache, runtime authority or source-author application.
++# Exact565 complete finite CI helper admission — UNAPPLIED
++
++Preparation only. Future source-author parent is actual565 e86e7b31722ca09665e6e598a04721eb7ec4d61b;
++ordinary artifact publication must instead start at559 with canonical helper531 unchanged.
++The already authored current helper e2b is required in both coherent phases. Unknown source,
++partial headers/observer, missing or withdrawn current inputs and special modes deny.
++
++The current full physical proof admits exactly565 and this complete afterimage. Existing seven
++financial overlays, five metadata forwards, P1 TEST-only read, native source hashes, current
++reader bytes, raw Git batching/native parent-view checks and known-read base553 stay unchanged.
++No new financial/P1/SQL/Auth read path, mutable proof cache or runtime fallback is added.
++
++A SEPARATE UNAPPROVED scope amendment projects THREE public CI inventory CHECK paths: the
++helper531b, original C32 test and original observer. ONLY the helper also serves the original C32
++TEST-local helper digest; the other two are inventory CHECK data only. Every projection requires fresh complete current-source proof before
++and after, exact present e2b/helper/mode, fixed historical commit/OID/body and fresh post-read
++checks. The C32 local reader accepts only its four original public CI paths. Original C32 case
++bodies/literal and original39/two case bodies/budgets are preserved. Original snapshots remain
++immutable. This is additional CI source projection scope, not unchanged total projection scope.
++
++The REAL observer is a separate one-literal afterimage, reviewed.validator531b to e2b. It reads
++actual FS bytes; it never imports the test adapter or receives historical helper bytes. All
++privacy/vocabulary/bounds/mirror validation and acceptance:false stay exact. AWS and every
++unreviewed mirror remain denied. Historical531 evidence is retained, never runtime authority.
++
++Two financial headers plus C32 header and observer must move together; captured phase cannot
++change. The self bytes seal manifest, own companions and templates; three headers pin self.
++No helper installation, APT/sudo, new trust, Python/lock/ZIP changes, source-author application,
++CI execution, operational connection, SQL/Auth/provider call, release or deployment is authorized.
++Local finite qualification is not whole Foundation acceptance. Release1.0 NO-GO.
+diff --git a/proposals/dashboard-context-fixture-compatibility/chromium-admission.controls.mjs b/proposals/dashboard-context-fixture-compatibility/chromium-admission.controls.mjs
+new file mode 100644
+index 0000000..1ef205c
+--- /dev/null
++++ b/proposals/dashboard-context-fixture-compatibility/chromium-admission.controls.mjs
+@@ -0,0 +1,489 @@
++// Finite UNAPPLIED CI-source scope controls; no installer/main/network execution.
++import test from 'node:test';
++import assert from 'node:assert/strict';
++import {
++  readFileSync,
++  writeFileSync,
++  mkdtempSync,
++  rmSync,
++  mkdirSync,
++  chmodSync,
++  symlinkSync,
++  realpathSync,
++} from 'node:fs';
++import { execFileSync } from 'node:child_process';
++import { createHash } from 'node:crypto';
++import { join, dirname, resolve } from 'node:path';
++import { pathToFileURL } from 'node:url';
++import { tmpdir, devNull } from 'node:os';
++const producer = process.cwd();
++const folder = 'proposals/dashboard-context-fixture-compatibility/';
++const manifest = JSON.parse(readFileSync(folder + 'manifest.json'));
++const hash = (b) => createHash('sha256').update(b).digest('hex');
++const options = { concurrency: false, timeout: 30000 };
++const gitEnv = {
++  PATH: process.env.PATH,
++  LC_ALL: 'C',
++  GIT_CONFIG_NOSYSTEM: '1',
++  GIT_CONFIG_SYSTEM: devNull,
++  GIT_CONFIG_GLOBAL: devNull,
++  GIT_CONFIG_COUNT: '0',
++  GIT_ATTR_NOSYSTEM: '1',
++  GIT_ALLOW_PROTOCOL: 'file',
++  GIT_NO_LAZY_FETCH: '1',
++  GIT_TERMINAL_PROMPT: '0',
++  GIT_OPTIONAL_LOCKS: '0',
++};
++function git(cwd, ...args) {
++  return execFileSync(
++    'git',
++    [
++      '--no-replace-objects',
++      '-c',
++      'core.hooksPath=' + devNull,
++      '-c',
++      'core.fsmonitor=false',
++      '-c',
++      'credential.helper=',
++      ...args,
++    ],
++    { cwd, env: gitEnv, stdio: ['ignore', 'pipe', 'pipe'] },
++  );
++}
++// Exact changed payload bytes only; no source ignore/cleanup during qualification.
++const delta = [
++  ...new Set([
++    ...git(producer, 'diff', '--name-only', manifest.base)
++      .toString()
++      .trim()
++      .split('\n'),
++    folder + 'chromium-admission.controls.mjs',
++  ]),
++].filter(Boolean);
++async function withImage(fn, { before = false } = {}) {
++  const image = mkdtempSync(
++    join(realpathSync(tmpdir()), 'chromium565-control-'),
++  );
++  try {
++    git(
++      producer,
++      'clone',
++      '--shared',
++      '--no-hardlinks',
++      '--no-checkout',
++      producer,
++      image,
++    );
++    git(image, 'switch', '--detach', manifest.base);
++    for (const path of delta) {
++      mkdirSync(dirname(join(image, path)), { recursive: true });
++      writeFileSync(join(image, path), readFileSync(join(producer, path)), {
++        mode: 0o644,
++      });
++    }
++    if (before) {
++      for (const pin of Object.values(manifest.targets))
++        writeFileSync(
++          join(image, pin.path),
++          git(image, 'show', manifest.base + ':' + pin.path),
++        );
++      for (const pin of manifest.ciScopeRows)
++        writeFileSync(join(image, pin.path), pin.beforeText);
++    }
++    process.chdir(image);
++    const m = await import(
++      pathToFileURL(join(image, folder + 'current-fixture.mjs')).href
++    );
++    return await fn(m, image);
++  } finally {
++    process.chdir(producer);
++    rmSync(image, { recursive: true, force: true });
++  }
++}
++function change(path, fn) {
++  const bytes = readFileSync(path);
++  try {
++    fn(bytes);
++  } finally {
++    writeFileSync(path, bytes);
++    chmodSync(path, 0o644);
++  }
++}
++function denied(m) {
++  assert.throws(() => m.verifyCurrentPhysicalFrame(), /Exact joint/);
++}
++const helper = manifest.ciSourceProjection.path;
++
++test(
++  'finite complete afterimage qualifies default canonical guard while current helper read stays actual',
++  options,
++  () =>
++    withImage(async (m) => {
++      assert.equal(m.verifyCurrentPhysicalFrame().phase, 'after');
++      const q = await m.qualifyInvoiceGuardProposal();
++      assert.ok(q.check());
++      assert.equal(
++        hash(q.readCurrent(helper)),
++        manifest.ciSourceProjection.currentSHA256,
++      );
++      assert.equal(
++        hash(m.readPublicCiFixture(resolve(helper))),
++        manifest.ciSourceProjection.historicalSHA256,
++      );
++    }),
++);
++test('fresh exact565 preparation phase is distinct and coherent', options, () =>
++  withImage(
++    (m) => {
++      assert.equal(m.verifyCurrentPhysicalFrame().phase, 'before');
++    },
++    { before: true },
++  ),
++);
++test(
++  'all financial P1 SQL Auth ports and raw Git proof mechanisms remain unchanged',
++  options,
++  () => {
++    const old = JSON.parse(
++      git(producer, 'show', manifest.base + ':' + folder + 'manifest.json'),
++    );
++    for (const key of [
++      'overlays',
++      'currentOverlayOids',
++      'fixtureMetadataForwards',
++      'p1TestHistoricalScopeAmendment',
++      'readerIntegration',
++      'c27HistoricalProof',
++      'nativeAuthor',
++    ])
++      assert.deepEqual(manifest[key], old[key]);
++    assert.equal(manifest.knownReadBase, old.base);
++    const oldBody = git(
++      producer,
++      'show',
++      manifest.base + ':' + folder + 'current-fixture.mjs',
++    ).toString();
++    const body = readFileSync(folder + 'current-fixture.mjs', 'utf8');
++    const start = 'const gitEnvironment = Object.freeze({',
++      end = 'const artifacts = new Set([';
++    assert.equal(
++      body.slice(body.indexOf(start), body.indexOf(end)),
++      oldBody.slice(oldBody.indexOf(start), oldBody.indexOf(end)),
++    );
++    assert.equal(manifest.ciSourceProjection.newFinancialMetadataReadPorts, 0);
++    assert.equal(manifest.ciSourceProjection.newP1SqlAuthReadPorts, 0);
++  },
++);
++test(
++  'C32 original assertions budgets and real observer all other bytes remain exact',
++  options,
++  () => {
++    const row = manifest.ciScopeRows.find((r) => r.kind === 'c32-test');
++    const actual = readFileSync(row.path, 'utf8');
++    const marker = 'const { classifyMirrorText';
++    assert.equal(
++      actual.slice(actual.indexOf(marker)),
++      row.beforeText.slice(row.beforeText.indexOf(marker)),
++    );
++    const observer = manifest.ciScopeRows.find(
++      (r) => r.kind === 'actual-observer',
++    );
++    assert.equal(
++      readFileSync(observer.path, 'utf8').replace(
++        manifest.ciSourceProjection.currentSHA256,
++        manifest.ciSourceProjection.historicalSHA256,
++      ),
++      observer.beforeText,
++    );
++    assert.equal(
++      readFileSync(folder + 'controls.test.mjs').compare(
++        git(
++          producer,
++          'show',
++          manifest.base + ':' + folder + 'controls.test.mjs',
++        ),
++      ),
++      0,
++    );
++    for (const id of Object.keys(manifest.targets))
++      assert.equal(
++        readFileSync(folder + id + '.original.txt').compare(
++          git(
++            producer,
++            'show',
++            manifest.base + ':' + folder + id + '.original.txt',
++          ),
++        ),
++        0,
++      );
++  },
++);
++for (const path of [
++  'server/invoices/commercial-drafts.proposed.sql',
++  'src/App.tsx',
++  'tests/property-p1-executor.test.ts',
++])
++  test('denies unknown protected current bytes ' + path, options, () =>
++    withImage((m) =>
++      change(path, (b) => {
++        writeFileSync(path, Buffer.concat([b, Buffer.from('\n// unknown\n')]));
++        denied(m);
++      }),
++    ),
++  );
++for (const path of ['unknown-source.txt', 'artifacts/cycle32/unknown'])
++  test('denies unknown source or generated directory ' + path, options, () =>
++    withImage((m) => {
++      mkdirSync(dirname(path), { recursive: true });
++      writeFileSync(path, 'unknown');
++      denied(m);
++    }),
++  );
++test(
++  'denies helper full historical revert even though old literal would match',
++  options,
++  () =>
++    withImage((m) =>
++      change(helper, () => {
++        writeFileSync(
++          helper,
++          git(
++            producer,
++            'show',
++            manifest.ciSourceProjection.historicalCommit + ':' + helper,
++          ),
++        );
++        denied(m);
++      }),
++    ),
++);
++test(
++  'denies missing current helper instead of falling back to historical body',
++  options,
++  () =>
++    withImage((m) =>
++      change(helper, () => {
++        rmSync(helper);
++        assert.throws(() => m.readPublicCiFixture(resolve(helper)));
++      }),
++    ),
++);
++test('denies current helper special permission bits', options, () =>
++  withImage((m) => {
++    chmodSync(helper, 0o1644);
++    denied(m);
++  }),
++);
++test('denies current helper symlink even to exact bytes', options, () =>
++  withImage((m, image) => {
++    const target = join(dirname(image), image.split('/').pop() + '-helper');
++    writeFileSync(target, readFileSync(helper));
++    try {
++      rmSync(helper);
++      symlinkSync(target, helper);
++      denied(m);
++    } finally {
++      rmSync(target);
++    }
++  }),
++);
++for (const row of manifest.ciScopeRows)
++  test('denies mixed C32 or observer endpoint ' + row.kind, options, () =>
++    withImage((m) => {
++      writeFileSync(row.path, row.beforeText);
++      denied(m);
++    }),
++  );
++test('denies mixed financial header endpoint', options, () =>
++  withImage((m) => {
++    const p = manifest.targets.invoice.path;
++    writeFileSync(p, git(producer, 'show', manifest.base + ':' + p));
++    denied(m);
++  }),
++);
++test(
++  'denies captured coherent phase withdrawal after successful physical proof',
++  options,
++  () =>
++    withImage((m) => {
++      m.verifyCurrentPhysicalFrame();
++      for (const row of manifest.ciScopeRows)
++        writeFileSync(row.path, row.beforeText);
++      for (const pin of Object.values(manifest.targets))
++        writeFileSync(
++          pin.path,
++          git(producer, 'show', manifest.base + ':' + pin.path),
++        );
++      denied(m);
++    }),
++);
++for (const path of [
++  folder + 'manifest.json',
++  folder + 'current-fixture.mjs',
++  folder + 'chromium-admission.controls.mjs',
++])
++  test('denies cached trusted-file late withdrawal ' + path, options, () =>
++    withImage((m) => {
++      m.verifyCurrentPhysicalFrame();
++      change(path, (b) => {
++        writeFileSync(path, Buffer.concat([b, Buffer.from('\n')]));
++        assert.throws(
++          () => m.readPublicCiFixture(resolve(helper)),
++          /Exact joint/,
++        );
++      });
++    }),
++  );
++test(
++  'denies helper withdrawal across an injected qualifier read callback before historical output',
++  options,
++  () =>
++    withImage(async (m) => {
++      let hit = false;
++      const original = readFileSync(helper);
++      try {
++        await assert.rejects(
++          m.qualifyInvoiceGuardProposal({
++            read: (path, encoding) => {
++              const bytes = readFileSync(path, encoding);
++              if (resolve(String(path)) === resolve(helper)) {
++                hit = true;
++                writeFileSync(
++                  helper,
++                  original.toString().replace('libgbm1', 'libgbm2'),
++                );
++              }
++              return bytes;
++            },
++          }),
++        );
++        assert.equal(hit, true);
++      } finally {
++        writeFileSync(helper, original);
++      }
++    }),
++);
++test(
++  'denies unknown CI read paths rather than exposing financial or Auth source',
++  options,
++  () =>
++    withImage((m) => {
++      for (const p of [
++        'src/App.tsx',
++        'server/invoices/commercial-drafts.proposed.sql',
++        'tests/property-p1-executor.test.ts',
++      ])
++        assert.throws(() => m.readPublicCiFixture(resolve(p)), /Exact joint/);
++    }),
++);
++test(
++  'real observer uses actual e2b source and preserves unknown mirror denial',
++  options,
++  () =>
++    withImage((m, image) => {
++      m.verifyCurrentPhysicalFrame();
++      const temp = mkdtempSync(
++        join(realpathSync(tmpdir()), 'observer565-synthetic-'),
++      );
++      const preload = join(temp, 'preload.mjs');
++      // Synthetic OS ports only; actual helper and observer files are never projected.
++      writeFileSync(
++        preload,
++        `import fs from 'node:fs'; import cp from 'node:child_process'; import {syncBuiltinESMExports} from 'node:module'; import {createHash} from 'node:crypto'; import {resolve} from 'node:path';\nconst text='https://aws.archive.ubuntu.com/ubuntu/ priority:1\\nhttps://archive.ubuntu.com/ubuntu/ priority:2\\nhttps://security.ubuntu.com/ubuntu/ priority:3\\n';\nconst raw=fs.readFileSync;fs.readFileSync=function(path,...args){if(String(path)==='/etc/apt/apt-mirrors.txt')return text;return raw.call(this,path,...args)};\ncp.execFileSync=function(file,args){if(file!==process.execPath||args.length!==1||args[0]!==resolve('scripts/cycle31-ubuntu-source-probe.mjs'))throw Error('Unexpected child');return JSON.stringify({source_sha256:'0'.repeat(64),validation:'PASS',stanzas:[],mirror_sha256:createHash('sha256').update(text).digest('hex')})};syncBuiltinESMExports();\n`,
++      );
++      try {
++        const result = JSON.parse(
++          execFileSync(
++            process.execPath,
++            [
++              '--import',
++              pathToFileURL(preload).href,
++              'scripts/cycle32-runner-mirror-probe.mjs',
++            ],
++            { cwd: image, env: gitEnv, encoding: 'utf8', timeout: 5000 },
++          ),
++        );
++        assert.equal(result.status, 'READ_ONLY_OBSERVATION');
++        assert.equal(
++          result.hashes.validator,
++          manifest.ciSourceProjection.currentSHA256,
++        );
++        assert.equal(
++          result.current_mirror_validator,
++          'REJECT_REVIEWED_MIRROR_OR_PRIORITY',
++        );
++        assert.equal(result.acceptance, false);
++        assert.equal(result.mirror_observation.rows[0].target, 'UNRECOGNIZED');
++      } finally {
++        rmSync(temp, { recursive: true, force: true });
++      }
++    }),
++);
++test('denies native seed full historical revert', options, () =>
++  withImage((m) => {
++    const path = 'tests/helpers/property-p1-fixture.ts';
++    writeFileSync(
++      path,
++      readFileSync(
++        'proposals/ui-invoice-native-fixture-compatibility/historical/' + path,
++      ),
++    );
++    denied(m);
++  }),
++);
++test('denies manifest withdrawal across qualifier import await', options, () =>
++  withImage(async (m) => {
++    const path = folder + 'manifest.json',
++      original = readFileSync(path);
++    const pending = m.qualifyInvoiceGuardProposal();
++    writeFileSync(path, Buffer.concat([original, Buffer.from('\n')]));
++    try {
++      await assert.rejects(pending, /Exact joint/);
++    } finally {
++      writeFileSync(path, original);
++    }
++  }),
++);
++for (const behavior of ['missing', 'wrong'])
++  test(
++    'denies ' + behavior + ' historical CI Git bytes without current fallback',
++    options,
++    () =>
++      withImage((m, image) => {
++        const temp = mkdtempSync(
++          join(realpathSync(tmpdir()), 'ci565-git-failure-'),
++        );
++        const shim = join(temp, 'git');
++        const realGit = execFileSync('/usr/bin/which', ['git'], {
++          encoding: 'utf8',
++        }).trim();
++        const command =
++          manifest.ciSourceProjection.historicalCommit + ':' + helper;
++        writeFileSync(
++          shim,
++          '#!/bin/sh\ncase "$*" in *" show ' +
++            command +
++            '"*) ' +
++            (behavior === 'missing' ? 'exit 1' : 'printf wrong; exit 0') +
++            ';; esac\nexec ' +
++            JSON.stringify(realGit) +
++            ' "$@"\n',
++          { mode: 0o755 },
++        );
++        try {
++          const script = `const m=await import(${JSON.stringify(pathToFileURL(join(image, folder + 'current-fixture.mjs')).href)});try{m.readPublicCiFixture(${JSON.stringify(join(image, helper))});process.exitCode=9}catch(e){if(!String(e.message).includes('Exact joint'))throw e}`;
++          execFileSync(
++            process.execPath,
++            ['--input-type=module', '-e', script],
++            {
++              cwd: image,
++              env: { ...gitEnv, PATH: temp + ':' + gitEnv.PATH },
++              timeout: 15000,
++              stdio: ['ignore', 'pipe', 'pipe'],
++            },
++          );
++        } finally {
++          rmSync(temp, { recursive: true, force: true });
++        }
++      }),
++  );
+diff --git a/proposals/dashboard-context-fixture-compatibility/current-fixture.mjs b/proposals/dashboard-context-fixture-compatibility/current-fixture.mjs
+index a3c2540..43fe981 100644
+--- a/proposals/dashboard-context-fixture-compatibility/current-fixture.mjs
++++ b/proposals/dashboard-context-fixture-compatibility/current-fixture.mjs
+@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
+ import { devNull } from 'node:os';
+ const folder = 'proposals/dashboard-context-fixture-compatibility/';
+ const manifestSeal =
+-  'ff7cc51eefbacf096555febeb4f4d6239cf10af62f1eafbdde36e116af227e5a';
++  'cd8f1599e51a8da4cbb98318a608d356be79177a5c5b63de03f1235aa11d6791';
+ const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
+ const oid = (kind, bytes) =>
+   createHash('sha1')
+@@ -147,6 +147,7 @@ const ownFiles = new Set([
+   'dashboard.patch',
+   'invoice-held.patch',
+   'controls.test.mjs',
++  'chromium-admission.controls.mjs',
+ ]);
+ function checkOwn() {
+   const names = readdirSync(folder);
+@@ -172,6 +173,91 @@ function checkOwn() {
+     )
+       fail();
+ }
++// These two CI source consumers are deliberately separate from financial/P1 ports.
++function ciAfterBytes(row) {
++  if (row.kind === 'c32-test') {
++    if (row.afterTemplate.split('__CURRENT_FIXTURE_SELF_SHA256__').length !== 2)
++      fail();
++    return Buffer.from(
++      row.afterTemplate.replace('__CURRENT_FIXTURE_SELF_SHA256__', selfSeal),
++    );
++  }
++  if (row.kind !== 'actual-observer') fail();
++  const bytes = Buffer.from(row.afterText);
++  if (sha(bytes) !== row.afterSHA256) fail();
++  return bytes;
++}
++function ciBeforeBytes(row) {
++  const bytes = Buffer.from(row.beforeText);
++  if (sha(bytes) !== row.beforeSHA256 || oid('blob', bytes) !== row.beforeOid)
++    fail();
++  return bytes;
++}
++function projectPublicCiInventory(row, actual) {
++  verifyCurrentPhysicalFrame();
++  const fresh = regular(row.path, row.mode);
++  const expected =
++    capturedPhase === 'after' ? ciAfterBytes(row) : ciBeforeBytes(row);
++  if (!fresh.equals(actual) || !fresh.equals(expected)) fail();
++  if (
++    git('ls-tree', manifest.base, '--', row.path) !==
++    `100644 blob ${row.beforeOid}\t${row.path}`
++  )
++    fail();
++  const historical = gitBytes('show', manifest.base + ':' + row.path);
++  if (
++    !historical.equals(ciBeforeBytes(row)) ||
++    !regular(row.path, row.mode).equals(fresh)
++  )
++    fail();
++  verifyCurrentPhysicalFrame();
++  return Buffer.from(historical);
++}
++function projectPublicCiHelper(actual) {
++  verifyCurrentPhysicalFrame();
++  const pin = manifest.ciSourceProjection;
++  const fresh = regular(pin.path, pin.mode);
++  if (
++    !fresh.equals(actual) ||
++    sha(fresh) !== pin.currentSHA256 ||
++    oid('blob', fresh) !== pin.currentOid
++  )
++    fail();
++  // Fixed immutable public commit data, never a missing-current-source fallback.
++  if (
++    git('ls-tree', pin.historicalCommit, '--', pin.path) !==
++    `100644 blob ${pin.historicalOid}\t${pin.path}`
++  )
++    fail();
++  const historical = gitBytes('show', pin.historicalCommit + ':' + pin.path);
++  if (
++    sha(historical) !== pin.historicalSHA256 ||
++    oid('blob', historical) !== pin.historicalOid ||
++    !regular(pin.path, pin.mode).equals(fresh)
++  )
++    fail();
++  verifyCurrentPhysicalFrame();
++  return Buffer.from(historical);
++}
++export function readPublicCiFixture(path, encoding) {
++  const key = relative(
++    source,
++    path instanceof URL ? fileURLToPath(path) : resolve(String(path)),
++  );
++  if (
++    !manifest.ciSourceProjection.testReadPaths.includes(key) ||
++    (encoding !== undefined && typeof encoding !== 'string')
++  )
++    fail();
++  verifyCurrentPhysicalFrame();
++  const actual = regular(key);
++  const result =
++    key === manifest.ciSourceProjection.path
++      ? projectPublicCiHelper(actual)
++      : actual;
++  verifyCurrentPhysicalFrame();
++  return encoding ? result.toString(encoding) : Buffer.from(result);
++}
+ const gitEnvironment = Object.freeze({
+   PATH: process.env.PATH,
+   LC_ALL: 'C',
+@@ -345,6 +431,7 @@ export function verifyCurrentPhysicalFrame() {
+   checkOwn();
+   let files = 0;
+   const phases = [];
++  const ciPhases = [];
+   function walk(directory, path = '') {
+     const first = lstatSync(directory);
+     if (!first.isDirectory() || first.isSymbolicLink()) fail();
+@@ -375,6 +462,15 @@ export function verifyCurrentPhysicalFrame() {
+             else fail();
+             bytes = originals[id];
+           }
++        const ciRow = manifest.ciScopeRows.find((row) => row.path === key);
++        if (ciRow) {
++          if ((info.mode & 0o7777) !== ciRow.mode) fail();
++          const before = ciBeforeBytes(ciRow);
++          if (bytes.equals(before)) ciPhases.push('before');
++          else if (bytes.equals(ciAfterBytes(ciRow))) ciPhases.push('after');
++          else fail();
++          bytes = before;
++        }
+         const forward = manifest.fixtureMetadataForwards.find(
+           (row) => row.path === key && row.phased,
+         );
+@@ -430,6 +526,8 @@ export function verifyCurrentPhysicalFrame() {
+     tree !== manifest.frames[phases[0]]?.tree ||
+     files !== manifest.frames[phases[0]]?.files ||
+     phases.length !== 2 ||
++    ciPhases.length !== 2 ||
++    ciPhases.some((phase) => phase !== phases[0]) ||
+     phases.some((phase) => phase !== phases[0]) ||
+     (capturedPhase && capturedPhase !== phases[0])
+   )
+@@ -480,6 +578,25 @@ export async function qualifyInvoiceGuardProposal({
+         source,
+         path instanceof URL ? fileURLToPath(path) : resolve(String(path)),
+       );
++    // Three explicit public CI inventory CHECK paths; only helper is also a TEST read.
++    const ciRow = manifest.ciScopeRows.find((row) => row.path === key);
++    if (ciRow) {
++      const historical = projectPublicCiInventory(ciRow, Buffer.from(bytes));
++      return encoding
++        ? historical.toString(
++            typeof encoding === 'string' ? encoding : encoding.encoding,
++          )
++        : historical;
++    }
++    // Existing financial/P1 reads below are unchanged.
++    if (key === manifest.ciSourceProjection.path) {
++      const historical = projectPublicCiHelper(Buffer.from(bytes));
++      return encoding
++        ? historical.toString(
++            typeof encoding === 'string' ? encoding : encoding.encoding,
++          )
++        : historical;
++    }
+     // SEPARATE, UNAPPROVED SCOPE AMENDMENT: one TEST source body only.
+     // Actual execution still reads f282 from disk. No runtime/SQL/expiry port.
+     const p1 = manifest.p1TestHistoricalScopeAmendment;
+@@ -587,7 +704,7 @@ export async function qualifyInvoiceGuardProposal({
+     },
+   });
+   const knownReadPaths = new Set(
+-    gitBytes('ls-tree', '-rz', manifest.base)
++    gitBytes('ls-tree', '-rz', manifest.knownReadBase)
+       .toString()
+       .split('\0')
+       .filter(Boolean)
+@@ -599,6 +716,17 @@ export async function qualifyInvoiceGuardProposal({
+       path instanceof URL ? fileURLToPath(path) : resolve(String(path)),
+     );
+     if (!knownReadPaths.has(key)) fail();
++    if (manifest.ciSourceProjection.inventoryCheckPaths.includes(key)) {
++      verifyCurrentPhysicalFrame();
++      const actual = regular(key, manifest.ciSourceProjection.mode);
++      verifyCurrentPhysicalFrame();
++      const encoding = args[0];
++      return encoding
++        ? actual.toString(
++            typeof encoding === 'string' ? encoding : encoding.encoding,
++          )
++        : actual;
++    }
+     return manifest.fixtureMetadataForwards.some((row) => row.path === key)
+       ? checked(q.readCurrent, [path, ...args])
+       : q.readCurrent(path, ...args);
+diff --git a/proposals/dashboard-context-fixture-compatibility/dashboard.patch b/proposals/dashboard-context-fixture-compatibility/dashboard.patch
+index 11cf751..c8f6b4f 100644
+--- a/proposals/dashboard-context-fixture-compatibility/dashboard.patch
++++ b/proposals/dashboard-context-fixture-compatibility/dashboard.patch
+@@ -1,13 +1,13 @@
+ diff --git a/tests/propel-dashboard-parity-source.test.ts b/tests/propel-dashboard-parity-source.test.ts
+-index 54cb719dac5270996e7693ab56df437321ff5a1b..7cf22234fc39e1470789e76d08ec190773703c71 100644
++index 7cf22234fc39e1470789e76d08ec190773703c71..c04ac5755f295a75766dd564ab7547e6fb208ece 100644
+ --- a/tests/propel-dashboard-parity-source.test.ts
+ +++ b/tests/propel-dashboard-parity-source.test.ts
+ @@ -11,7 +11,7 @@
+      );
+      if (
+        createHash('sha256').update(bytes).digest('hex') !==
+--      '6c5bbe0cac6f519dccd5dcfae6b3200a3a1ec1e821bad48ada495861aa8af9a1'
+-+      'a08883e5999a463612999ce9c8e86ef475bf9abc41e59f32a7c5c7f5f9549244'
++-      'a08883e5999a463612999ce9c8e86ef475bf9abc41e59f32a7c5c7f5f9549244'
+++      'ff0215b341e57e735b616292415d2bbcca94152c7dcf2eff4d4a012d3e4c0117'
+      )
+        throw Error('Exact approved dashboard/forms source fixture required');
+      return 'data:text/javascript;base64,' + bytes.toString('base64');
+diff --git a/proposals/dashboard-context-fixture-compatibility/dashboard.proposed.txt b/proposals/dashboard-context-fixture-compatibility/dashboard.proposed.txt
+index 7cf2223..c04ac57 100644
+--- a/proposals/dashboard-context-fixture-compatibility/dashboard.proposed.txt
++++ b/proposals/dashboard-context-fixture-compatibility/dashboard.proposed.txt
+@@ -11,7 +11,7 @@ const { dashboardSource: source } = (await import(
+     );
+     if (
+       createHash('sha256').update(bytes).digest('hex') !==
+-      'a08883e5999a463612999ce9c8e86ef475bf9abc41e59f32a7c5c7f5f9549244'
++      'ff0215b341e57e735b616292415d2bbcca94152c7dcf2eff4d4a012d3e4c0117'
+     )
+       throw Error('Exact approved dashboard/forms source fixture required');
+     return 'data:text/javascript;base64,' + bytes.toString('base64');
+diff --git a/proposals/dashboard-context-fixture-compatibility/invoice-held.patch b/proposals/dashboard-context-fixture-compatibility/invoice-held.patch
+index 9b7c200..aeefbd6 100644
+--- a/proposals/dashboard-context-fixture-compatibility/invoice-held.patch
++++ b/proposals/dashboard-context-fixture-compatibility/invoice-held.patch
+@@ -1,13 +1,13 @@
+ diff --git a/tests/invoice-guard-admission-proposal.test.ts b/tests/invoice-guard-admission-proposal.test.ts
+-index b33ad6a25d8cc5731b1e46ba0546a92fbcab1854..b9d876739a112276a983167c53ba483556ebc546 100644
++index b9d876739a112276a983167c53ba483556ebc546..af54cd4e314454e8e23252bdafa29cbe38e99370 100644
+ --- a/tests/invoice-guard-admission-proposal.test.ts
+ +++ b/tests/invoice-guard-admission-proposal.test.ts
+ @@ -45,7 +45,7 @@
+      const fixtureBytes = readFileSync(fixture);
+      if (
+        createHash('sha256').update(fixtureBytes).digest('hex') !==
+--      '6c5bbe0cac6f519dccd5dcfae6b3200a3a1ec1e821bad48ada495861aa8af9a1'
+-+      'a08883e5999a463612999ce9c8e86ef475bf9abc41e59f32a7c5c7f5f9549244'
++-      'a08883e5999a463612999ce9c8e86ef475bf9abc41e59f32a7c5c7f5f9549244'
+++      'ff0215b341e57e735b616292415d2bbcca94152c7dcf2eff4d4a012d3e4c0117'
+      )
+        throw Error('Exact sealed invoice guard proposal required');
+      return 'data:text/javascript;base64,' + fixtureBytes.toString('base64');
+diff --git a/proposals/dashboard-context-fixture-compatibility/invoice.proposed.txt b/proposals/dashboard-context-fixture-compatibility/invoice.proposed.txt
+index b9d8767..af54cd4 100644
+--- a/proposals/dashboard-context-fixture-compatibility/invoice.proposed.txt
++++ b/proposals/dashboard-context-fixture-compatibility/invoice.proposed.txt
+@@ -45,7 +45,7 @@ const { qualifyInvoiceGuardProposal } = (await import(
+     const fixtureBytes = readFileSync(fixture);
+     if (
+       createHash('sha256').update(fixtureBytes).digest('hex') !==
+-      'a08883e5999a463612999ce9c8e86ef475bf9abc41e59f32a7c5c7f5f9549244'
++      'ff0215b341e57e735b616292415d2bbcca94152c7dcf2eff4d4a012d3e4c0117'
+     )
+       throw Error('Exact sealed invoice guard proposal required');
+     return 'data:text/javascript;base64,' + fixtureBytes.toString('base64');
+diff --git a/proposals/dashboard-context-fixture-compatibility/manifest.json b/proposals/dashboard-context-fixture-compatibility/manifest.json
+index 9683bce..4677d03 100644
+--- a/proposals/dashboard-context-fixture-compatibility/manifest.json
++++ b/proposals/dashboard-context-fixture-compatibility/manifest.json
+@@ -1,8 +1,8 @@
+ {
+-  "classification": "UNAPPLIED_EXACT553_PLUS_UNCHANGED509_READER_SOURCE_CLOSURE",
+-  "base": "0e3bb4ab64666e7d78c01b8092b5ea36c1212b9c",
+-  "tree": "d9608f4300342f7e7e08cc394463601bb87f1aed",
+-  "files": 2546,
++  "classification": "UNAPPLIED_EXACT565_COMPLETE_FINITE_CI_SOURCE_CHECK_AND_TEST_SCOPE_AMENDMENT",
++  "base": "e86e7b31722ca09665e6e598a04721eb7ec4d61b",
++  "tree": "517f60e2ba8aa9a7e1cdead38d3994080ea0d2cd",
++  "files": 2557,
+   "targets": {
+     "dashboard": {
+       "path": "tests/propel-dashboard-parity-source.test.ts",
+@@ -10,7 +10,7 @@
+       "oldHelper": "83a629d02a81d3f1a8b36bd39dc92839eebecfb79c0f9d7f66122c41d5ef8951",
+       "sha256": "7b624c8bf853493f36cbc5ae65921471ce7cae1f41c75375c431c00cf462637b",
+       "oid": "48bd4fd4d038f8869aae6917d7c40d45c41d9f35",
+-      "currentSHA256": "2d203802e784e32c5b5d0913d8f19a78f31560c9b853a20154f3b4b0abe25635"
++      "currentSHA256": "b52c680288bbb7badd00127a40aef08acf16f96090c4b794742fa784061a061a"
+     },
+     "invoice": {
+       "path": "tests/invoice-guard-admission-proposal.test.ts",
+@@ -18,7 +18,7 @@
+       "oldHelper": "6c2ce2a04e1989d88ed818e375869e1ed209f34dd2b4acb58d27991ea67d476f",
+       "sha256": "ee18681c44f7e9b1a15c6dbe37762c096f7a01dc4ad6fd63a038d14bd96a8516",
+       "oid": "273a0d3fc3469a75e9c3914970423217d002677e",
+-      "currentSHA256": "5bd57a2770b00a1d09f2ad358579acdc6c47bee34014f808d4a88d903caf6e58"
++      "currentSHA256": "e9de778cbb1bcf85d05460e54d93fb2e7bac7b99b8f007dc7fd5741c4ffeecb6"
+     }
+   },
+   "authors": [
+@@ -84,6 +84,20 @@
+       "parent": "5030bb834423fc572eb770d077739300477fd1e3",
+       "tree": "d784d50cb0042fbeb6fe23d8b89051d7a026851d",
+       "delta": "M\tproposals/commercial-customer-operating-reader/source.ts"
++    },
++    {
++      "commit": "27e5b5fd1ac6566d1f56db33e139ca8d7a12121e",
++      "raw": "tree d73301c44873645e045ca53435023c3daeb67f61\nparent 0e3bb4ab64666e7d78c01b8092b5ea36c1212b9c\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794949649 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794949649 -0600\n\nApply approved #558 customer-reader integration [skip netlify]\n",
++      "parent": "0e3bb4ab64666e7d78c01b8092b5ea36c1212b9c",
++      "tree": "d73301c44873645e045ca53435023c3daeb67f61",
++      "delta": "A\tproposals/commercial-customer-operating-reader/README.md\nA\tproposals/commercial-customer-operating-reader/binding.ts\nA\tproposals/commercial-customer-operating-reader/catalog.ts\nA\tproposals/commercial-customer-operating-reader/read.proposed.sql.in\nA\tproposals/commercial-customer-operating-reader/reader.ts\nA\tproposals/commercial-customer-operating-reader/runtime-grants.sql.in\nA\tproposals/commercial-customer-operating-reader/source.json\nA\tproposals/commercial-customer-operating-reader/source.ts\nM\tproposals/dashboard-context-fixture-compatibility/README.md\nM\tproposals/dashboard-context-fixture-compatibility/controls.test.mjs\nM\tproposals/dashboard-context-fixture-compatibility/current-fixture.mjs\nM\tproposals/dashboard-context-fixture-compatibility/dashboard.patch\nM\tproposals/dashboard-context-fixture-compatibility/dashboard.proposed.txt\nM\tproposals/dashboard-context-fixture-compatibility/invoice-held.patch\nM\tproposals/dashboard-context-fixture-compatibility/invoice.proposed.txt\nM\tproposals/dashboard-context-fixture-compatibility/manifest.json\nA\ttests/commercial-customer-operating-reader.test.ts\nA\ttests/database/commercial-customer-operating-reader.test.ts\nA\ttests/fixtures/operating-customer-reader.ts\nM\ttests/invoice-guard-admission-proposal.test.ts\nM\ttests/propel-dashboard-parity-source.test.ts"
++    },
++    {
++      "commit": "e86e7b31722ca09665e6e598a04721eb7ec4d61b",
++      "raw": "tree d4a4da309fb4d807a34a91d6953b85e31f54767c\nparent 27e5b5fd1ac6566d1f56db33e139ca8d7a12121e\nauthor eaglevisiondigital <dfowler4232@gmail.com> 1794959075 -0600\ncommitter eaglevisiondigital <dfowler4232@gmail.com> 1794959075 -0600\n\nAuthor approved Chromium dependency arguments [skip netlify]\n",
++      "parent": "27e5b5fd1ac6566d1f56db33e139ca8d7a12121e",
++      "tree": "d4a4da309fb4d807a34a91d6953b85e31f54767c",
++      "delta": "M\tscripts/cycle30-chromium-dependencies.mjs"
+     }
+   ],
+   "nativeAuthor": {
+@@ -161,17 +175,21 @@
+   "ownCompanions": {
+     "README.md": {
+       "mode": 420,
+-      "sha256": "1ad966849c033e6a4e51fde38b5821cfd8da50d477c3a1ef9f4becc81a5f1a49"
++      "sha256": "4c4d0d1ec9b4c79725befeb3259068b144bbe5f116708303fceb634dbe41cd77"
+     },
+     "controls.test.mjs": {
+       "mode": 420,
+       "sha256": "503b59166446caa94a6f2fd941634b0b7de6272712ee928ced026c602ff4891a"
++    },
++    "chromium-admission.controls.mjs": {
++      "mode": 420,
++      "sha256": "279db44b9f161bb262cfd7351c0bc17c365e5a0372929ad49e0743e1802ecc9b"
+     }
+   },
+   "admissionAuthorized": false,
+   "integrationAuthorized": false,
+   "release": "NO_GO",
+-  "currentHelperSHA256": "6c5bbe0cac6f519dccd5dcfae6b3200a3a1ec1e821bad48ada495861aa8af9a1",
++  "currentHelperSHA256": "a08883e5999a463612999ce9c8e86ef475bf9abc41e59f32a7c5c7f5f9549244",
+   "p1TestHistoricalScopeAmendment": {
+     "classification": "SEPARATE_UNAPPROVED_TEST_ONLY_SCOPE_AMENDMENT",
+     "path": "tests/property-p1-executor.test.ts",
+@@ -315,12 +333,70 @@
+   },
+   "frames": {
+     "before": {
+-      "tree": "d9608f4300342f7e7e08cc394463601bb87f1aed",
+-      "files": 2546
++      "tree": "517f60e2ba8aa9a7e1cdead38d3994080ea0d2cd",
++      "files": 2557
+     },
+     "after": {
+-      "tree": "0168a6fba05fa3fa6b86d8fe18e40eb87afb4604",
++      "tree": "517f60e2ba8aa9a7e1cdead38d3994080ea0d2cd",
+       "files": 2557
+     }
+-  }
++  },
++  "knownReadBase": "0e3bb4ab64666e7d78c01b8092b5ea36c1212b9c",
++  "ciHelperContext": {
++    "author": "e86e7b31722ca09665e6e598a04721eb7ec4d61b",
++    "parent": "27e5b5fd1ac6566d1f56db33e139ca8d7a12121e",
++    "helperPath": "scripts/cycle30-chromium-dependencies.mjs",
++    "actualSHA256": "e2b034cfbdf1e7b3b44e8f2eb3b51ffabec5341097ed9cb1d2307a65f36ba762",
++    "newFinancialMetadataReadPorts": 0,
++    "C32LiteralAndRealObserverScope": "SEPARATE_UNAPPROVED_CHECK_TEST_AND_ACTUAL_OBSERVER_AFTERIMAGE"
++  },
++  "ciSourceProjection": {
++    "classification": "SEPARATE_UNAPPROVED_ONE_PUBLIC_CI_HELPER_CHECK_AND_TEST_READ_SCOPE",
++    "path": "scripts/cycle30-chromium-dependencies.mjs",
++    "mode": 420,
++    "currentSHA256": "e2b034cfbdf1e7b3b44e8f2eb3b51ffabec5341097ed9cb1d2307a65f36ba762",
++    "currentOid": "25271ca0839a786ef21006a29795e406ee9b84b7",
++    "historicalCommit": "27e5b5fd1ac6566d1f56db33e139ca8d7a12121e",
++    "historicalSHA256": "531b1f3b43e38975a456a8421fc7135991b89313e22e0f87daa5ecc673bf659f",
++    "historicalOid": "73d85bea58b53572cd3c099bb131842c0d80445a",
++    "consumers": [
++      "immutable-legacy-invoice-source-inventory",
++      "original-C32-test-local-read"
++    ],
++    "inventoryCheckPaths": [
++      "scripts/cycle30-chromium-dependencies.mjs",
++      "tests/cycle32-runner-mirror-probe.test.ts",
++      "scripts/cycle32-runner-mirror-probe.mjs"
++    ],
++    "newFinancialMetadataReadPorts": 0,
++    "newP1SqlAuthReadPorts": 0,
++    "realObserverProjection": false,
++    "testReadPaths": [
++      ".github/workflows/passport-timeline.yml",
++      "scripts/cycle30-chromium-dependencies.mjs",
++      "scripts/cycle31-ubuntu-source-probe.mjs",
++      ".github/workflows/cycle32-runner-mirror-diagnosis.yml"
++    ]
++  },
++  "ciScopeRows": [
++    {
++      "path": "tests/cycle32-runner-mirror-probe.test.ts",
++      "kind": "c32-test",
++      "mode": 420,
++      "beforeSHA256": "fbd7d279b62dc3ad6bf78783ee4cd10cf10748275b332f7a74ec660dc10c8fff",
++      "beforeOid": "d68a74c6c57cae4fe0db9f0d27d317e16580f324",
++      "beforeText": "import { createHash } from 'node:crypto';\nimport { readFileSync } from 'node:fs';\nimport { expect, it } from 'vitest';\n\nconst { classifyMirrorText, observeMirrorValidation, redactSourceShape } =\n  await import(\n    new URL('../scripts/cycle32-runner-mirror-probe.mjs', import.meta.url).href\n  );\nconst { validateUbuntuMirrors } = await import(\n  new URL('../scripts/cycle30-chromium-dependencies.mjs', import.meta.url).href\n);\nconst digest = (text: string) =>\n  createHash('sha256').update(text).digest('hex');\nconst mirrors =\n  'http://azure.archive.ubuntu.com/ubuntu/\\tpriority:1\\nhttps://archive.ubuntu.com/ubuntu/\\tpriority:2\\nhttps://security.ubuntu.com/ubuntu/\\tpriority:3\\n';\n\nit('classifies only six exact public official targets without admitting them', () => {\n  const targets = ['azure.archive', 'archive', 'security'].flatMap((host) =>\n    ['http', 'https'].map((scheme) => `${scheme}://${host}.ubuntu.com/ubuntu/`),\n  );\n  const view = classifyMirrorText(\n    targets.map((uri) => `${uri} priority:1`).join('\\n'),\n  );\n  expect(view.rows.map((row: { target: string }) => row.target)).toEqual([\n    'azure-http',\n    'azure-https',\n    'archive-http',\n    'archive-https',\n    'security-http',\n    'security-https',\n  ]);\n  expect(view.status).toBe('OBSERVED_NOT_ACCEPTANCE');\n});\n\nit('redacts a credential-bearing URL and unknown target metadata', () => {\n  const uri = 'https://person:private-value@archive.ubuntu.com/ubuntu/';\n  const view = classifyMirrorText(`${uri} priority:1`);\n  expect(view.rows[0].target).toBe('UNRECOGNIZED');\n  expect(view.rows[0].target_sha256).toBe(digest(uri));\n  expect(JSON.stringify(view)).not.toMatch(/person|private-value|https:/);\n  const sourceView = redactSourceShape({\n    source_sha256: digest('fixture'),\n    validation: 'PASS',\n    stanzas: [\n      {\n        index: 0,\n        comment_only: false,\n        fields: [\n          {\n            name: 'Private-Field-Name',\n            value: 'private-value',\n            value_sha256: digest('private-value'),\n          },\n          { name: 'Types', value: 'deb', value_sha256: digest('deb') },\n        ],\n      },\n    ],\n  });\n  expect(sourceView.stanzas[0].fields[0].name).toBe('UNRECOGNIZED');\n  expect(sourceView.stanzas[0].fields[0].name_sha256).toBe(\n    digest('Private-Field-Name'),\n  );\n  expect(sourceView.stanzas[0].fields[1].value).toBe('deb');\n  expect(JSON.stringify(sourceView)).not.toMatch(/Private-Field|private-value/);\n});\n\nit.each([0, 10])(\n  'observes numeric priority %i while the original helper still rejects it',\n  (priority) => {\n    const changed = mirrors.replace('priority:1', `priority:${priority}`);\n    expect(classifyMirrorText(changed).rows[0].priority).toBe(priority);\n    expect(() => validateUbuntuMirrors(changed)).toThrow(\n      'Reviewed Ubuntu mirror and priority required',\n    );\n    expect(observeMirrorValidation(changed)).toBe(\n      'REJECT_REVIEWED_MIRROR_OR_PRIORITY',\n    );\n  },\n);\n\nit('hashes malformed or missing priority tokens instead of serializing them', () => {\n  for (const token of [\n    'priority:-1',\n    'priority:1000',\n    'priority:secret',\n    'priority:NaN',\n    '',\n  ]) {\n    const view = classifyMirrorText(\n      `https://archive.ubuntu.com/ubuntu/ ${token}`,\n    );\n    expect(view.rows[0].priority).toBeNull();\n    expect(view.rows[0].priority_token_sha256).toBe(\n      token ? digest(token) : null,\n    );\n    expect(JSON.stringify(view)).not.toContain(token || 'priority:');\n  }\n});\n\nit('counts and hashes all extra tokens without exposing options or secrets', () => {\n  const view = classifyMirrorText(\n    'https://archive.ubuntu.com/ubuntu/ priority:2 trusted=yes secret=sample',\n  );\n  expect(view.rows[0].token_count).toBe(4);\n  expect(view.rows[0].extra_token_count).toBe(2);\n  expect(view.rows[0].extra_token_sha256).toEqual([\n    digest('trusted=yes'),\n    digest('secret=sample'),\n  ]);\n  expect(JSON.stringify(view)).not.toMatch(/trusted|sample|secret=/);\n});\n\nit('ignores comment-only and empty rows without emitting comment contents', () => {\n  const view = classifyMirrorText(`# private-looking comment\\n\\n${mirrors}`);\n  expect(view.rows).toHaveLength(3);\n  expect(view.rows[0].index).toBe(2);\n  expect(JSON.stringify(view)).not.toContain('private-looking');\n});\n\nit('bounds bytes, meaningful rows and tokens with hash-only failure evidence', () => {\n  for (const text of [\n    'x'.repeat(65537),\n    Array.from({ length: 65 }, () => 'secret').join('\\n'),\n    Array.from({ length: 17 }, () => 'secret').join(' '),\n  ]) {\n    const view = classifyMirrorText(text);\n    expect(view).toEqual({\n      status: 'BOUNDS_EXCEEDED',\n      sha256: digest(text),\n      rows: [],\n    });\n  }\n});\n\nit('retains the exact reviewed helper acceptance and unknown-URI denial', () => {\n  expect(observeMirrorValidation(mirrors)).toBe('PASS_EXISTING_VALIDATOR');\n  const changed = mirrors.replace(\n    'http://azure.archive.ubuntu.com/ubuntu/',\n    'https://unreviewed.example/ubuntu/',\n  );\n  expect(() => validateUbuntuMirrors(changed)).toThrow();\n  expect(observeMirrorValidation(changed)).toBe(\n    'REJECT_REVIEWED_MIRROR_OR_PRIORITY',\n  );\n});\n\nit('keeps the original Passport workflow byte-exact except observation and report', () => {\n  const workflow = readFileSync(\n    new URL('../.github/workflows/passport-timeline.yml', import.meta.url),\n    'utf8',\n  );\n  const observation =\n    \"      - name: Observe this runner's source and mirror shape without changing trust\\n\" +\n    '        run: |\\n' +\n    '          set -euo pipefail\\n' +\n    '          mkdir -p artifacts/cycle32\\n' +\n    '          node scripts/cycle32-runner-mirror-probe.mjs > artifacts/cycle32/passport-runner-mirror.json\\n';\n  const report = '            artifacts/cycle32/passport-runner-mirror.json\\n';\n  expect(workflow.split(observation)).toHaveLength(2);\n  expect(workflow.split(report)).toHaveLength(2);\n  expect(digest(workflow.replace(observation, '').replace(report, ''))).toBe(\n    '4ec0e1d4f47201e53ea5a527d84ab7e7191451f6844ae74a0645bb7037e13104',\n  );\n  for (const [file, expected] of [\n    [\n      'cycle30-chromium-dependencies.mjs',\n      '531b1f3b43e38975a456a8421fc7135991b89313e22e0f87daa5ecc673bf659f',\n    ],\n    [\n      'cycle31-ubuntu-source-probe.mjs',\n      'faee337a766c98ba22439992956f523e7b4c314ab2eb75a1e830e4c1e7320402',\n    ],\n  ])\n    expect(\n      digest(\n        readFileSync(new URL(`../scripts/${file}`, import.meta.url), 'utf8'),\n      ),\n    ).toBe(expected);\n  const diagnosticWorkflow = readFileSync(\n    new URL(\n      '../.github/workflows/cycle32-runner-mirror-diagnosis.yml',\n      import.meta.url,\n    ),\n    'utf8',\n  );\n  expect(diagnosticWorkflow).toContain('sample: [1, 2, 3]');\n  expect(diagnosticWorkflow).toContain('timeout-minutes: 5');\n  expect(diagnosticWorkflow).toContain(\"node-version: '24.22.2'\");\n  expect(diagnosticWorkflow).toContain('if: always()');\n  expect(diagnosticWorkflow).not.toMatch(\n    /npm ci|apt-get|playwright|pull_request:/,\n  );\n});\n",
++      "afterTemplate": "import { createHash } from 'node:crypto';\nimport { readFileSync as actualReadFileSync, lstatSync } from 'node:fs';\nimport { resolve } from 'node:path';\nimport { beforeEach, afterEach, expect, it } from 'vitest';\n\n// Proposed TEST-only compatibility: real observer imports still read actual FS.\nconst fixtureBytes = actualReadFileSync(\n  resolve(\n    'proposals/dashboard-context-fixture-compatibility/current-fixture.mjs',\n  ),\n);\nconst fixtureInfo = lstatSync(\n  resolve(\n    'proposals/dashboard-context-fixture-compatibility/current-fixture.mjs',\n  ),\n);\nif (\n  !fixtureInfo.isFile() ||\n  fixtureInfo.isSymbolicLink() ||\n  (fixtureInfo.mode & 0o7777) !== 0o644 ||\n  createHash('sha256').update(fixtureBytes).digest('hex') !==\n    '__CURRENT_FIXTURE_SELF_SHA256__'\n)\n  throw Error('Exact public CI fixture required');\nconst fixture = (await import(\n  'data:text/javascript;base64,' + fixtureBytes.toString('base64')\n)) as {\n  verifyCurrentPhysicalFrame(): unknown;\n  readPublicCiFixture(\n    path: string | URL,\n    encoding?: BufferEncoding,\n  ): Buffer | string;\n};\nfixture.verifyCurrentPhysicalFrame();\nbeforeEach(() => {\n  fixture.verifyCurrentPhysicalFrame();\n});\nafterEach(() => {\n  fixture.verifyCurrentPhysicalFrame();\n});\nconst readFileSync = ((path: string | URL, encoding?: BufferEncoding) =>\n  fixture.readPublicCiFixture(path, encoding)) as typeof actualReadFileSync;\n\nconst { classifyMirrorText, observeMirrorValidation, redactSourceShape } =\n  await import(\n    new URL('../scripts/cycle32-runner-mirror-probe.mjs', import.meta.url).href\n  );\nconst { validateUbuntuMirrors } = await import(\n  new URL('../scripts/cycle30-chromium-dependencies.mjs', import.meta.url).href\n);\nconst digest = (text: string) =>\n  createHash('sha256').update(text).digest('hex');\nconst mirrors =\n  'http://azure.archive.ubuntu.com/ubuntu/\\tpriority:1\\nhttps://archive.ubuntu.com/ubuntu/\\tpriority:2\\nhttps://security.ubuntu.com/ubuntu/\\tpriority:3\\n';\n\nit('classifies only six exact public official targets without admitting them', () => {\n  const targets = ['azure.archive', 'archive', 'security'].flatMap((host) =>\n    ['http', 'https'].map((scheme) => `${scheme}://${host}.ubuntu.com/ubuntu/`),\n  );\n  const view = classifyMirrorText(\n    targets.map((uri) => `${uri} priority:1`).join('\\n'),\n  );\n  expect(view.rows.map((row: { target: string }) => row.target)).toEqual([\n    'azure-http',\n    'azure-https',\n    'archive-http',\n    'archive-https',\n    'security-http',\n    'security-https',\n  ]);\n  expect(view.status).toBe('OBSERVED_NOT_ACCEPTANCE');\n});\n\nit('redacts a credential-bearing URL and unknown target metadata', () => {\n  const uri = 'https://person:private-value@archive.ubuntu.com/ubuntu/';\n  const view = classifyMirrorText(`${uri} priority:1`);\n  expect(view.rows[0].target).toBe('UNRECOGNIZED');\n  expect(view.rows[0].target_sha256).toBe(digest(uri));\n  expect(JSON.stringify(view)).not.toMatch(/person|private-value|https:/);\n  const sourceView = redactSourceShape({\n    source_sha256: digest('fixture'),\n    validation: 'PASS',\n    stanzas: [\n      {\n        index: 0,\n        comment_only: false,\n        fields: [\n          {\n            name: 'Private-Field-Name',\n            value: 'private-value',\n            value_sha256: digest('private-value'),\n          },\n          { name: 'Types', value: 'deb', value_sha256: digest('deb') },\n        ],\n      },\n    ],\n  });\n  expect(sourceView.stanzas[0].fields[0].name).toBe('UNRECOGNIZED');\n  expect(sourceView.stanzas[0].fields[0].name_sha256).toBe(\n    digest('Private-Field-Name'),\n  );\n  expect(sourceView.stanzas[0].fields[1].value).toBe('deb');\n  expect(JSON.stringify(sourceView)).not.toMatch(/Private-Field|private-value/);\n});\n\nit.each([0, 10])(\n  'observes numeric priority %i while the original helper still rejects it',\n  (priority) => {\n    const changed = mirrors.replace('priority:1', `priority:${priority}`);\n    expect(classifyMirrorText(changed).rows[0].priority).toBe(priority);\n    expect(() => validateUbuntuMirrors(changed)).toThrow(\n      'Reviewed Ubuntu mirror and priority required',\n    );\n    expect(observeMirrorValidation(changed)).toBe(\n      'REJECT_REVIEWED_MIRROR_OR_PRIORITY',\n    );\n  },\n);\n\nit('hashes malformed or missing priority tokens instead of serializing them', () => {\n  for (const token of [\n    'priority:-1',\n    'priority:1000',\n    'priority:secret',\n    'priority:NaN',\n    '',\n  ]) {\n    const view = classifyMirrorText(\n      `https://archive.ubuntu.com/ubuntu/ ${token}`,\n    );\n    expect(view.rows[0].priority).toBeNull();\n    expect(view.rows[0].priority_token_sha256).toBe(\n      token ? digest(token) : null,\n    );\n    expect(JSON.stringify(view)).not.toContain(token || 'priority:');\n  }\n});\n\nit('counts and hashes all extra tokens without exposing options or secrets', () => {\n  const view = classifyMirrorText(\n    'https://archive.ubuntu.com/ubuntu/ priority:2 trusted=yes secret=sample',\n  );\n  expect(view.rows[0].token_count).toBe(4);\n  expect(view.rows[0].extra_token_count).toBe(2);\n  expect(view.rows[0].extra_token_sha256).toEqual([\n    digest('trusted=yes'),\n    digest('secret=sample'),\n  ]);\n  expect(JSON.stringify(view)).not.toMatch(/trusted|sample|secret=/);\n});\n\nit('ignores comment-only and empty rows without emitting comment contents', () => {\n  const view = classifyMirrorText(`# private-looking comment\\n\\n${mirrors}`);\n  expect(view.rows).toHaveLength(3);\n  expect(view.rows[0].index).toBe(2);\n  expect(JSON.stringify(view)).not.toContain('private-looking');\n});\n\nit('bounds bytes, meaningful rows and tokens with hash-only failure evidence', () => {\n  for (const text of [\n    'x'.repeat(65537),\n    Array.from({ length: 65 }, () => 'secret').join('\\n'),\n    Array.from({ length: 17 }, () => 'secret').join(' '),\n  ]) {\n    const view = classifyMirrorText(text);\n    expect(view).toEqual({\n      status: 'BOUNDS_EXCEEDED',\n      sha256: digest(text),\n      rows: [],\n    });\n  }\n});\n\nit('retains the exact reviewed helper acceptance and unknown-URI denial', () => {\n  expect(observeMirrorValidation(mirrors)).toBe('PASS_EXISTING_VALIDATOR');\n  const changed = mirrors.replace(\n    'http://azure.archive.ubuntu.com/ubuntu/',\n    'https://unreviewed.example/ubuntu/',\n  );\n  expect(() => validateUbuntuMirrors(changed)).toThrow();\n  expect(observeMirrorValidation(changed)).toBe(\n    'REJECT_REVIEWED_MIRROR_OR_PRIORITY',\n  );\n});\n\nit('keeps the original Passport workflow byte-exact except observation and report', () => {\n  const workflow = readFileSync(\n    new URL('../.github/workflows/passport-timeline.yml', import.meta.url),\n    'utf8',\n  );\n  const observation =\n    \"      - name: Observe this runner's source and mirror shape without changing trust\\n\" +\n    '        run: |\\n' +\n    '          set -euo pipefail\\n' +\n    '          mkdir -p artifacts/cycle32\\n' +\n    '          node scripts/cycle32-runner-mirror-probe.mjs > artifacts/cycle32/passport-runner-mirror.json\\n';\n  const report = '            artifacts/cycle32/passport-runner-mirror.json\\n';\n  expect(workflow.split(observation)).toHaveLength(2);\n  expect(workflow.split(report)).toHaveLength(2);\n  expect(digest(workflow.replace(observation, '').replace(report, ''))).toBe(\n    '4ec0e1d4f47201e53ea5a527d84ab7e7191451f6844ae74a0645bb7037e13104',\n  );\n  for (const [file, expected] of [\n    [\n      'cycle30-chromium-dependencies.mjs',\n      '531b1f3b43e38975a456a8421fc7135991b89313e22e0f87daa5ecc673bf659f',\n    ],\n    [\n      'cycle31-ubuntu-source-probe.mjs',\n      'faee337a766c98ba22439992956f523e7b4c314ab2eb75a1e830e4c1e7320402',\n    ],\n  ])\n    expect(\n      digest(\n        readFileSync(new URL(`../scripts/${file}`, import.meta.url), 'utf8'),\n      ),\n    ).toBe(expected);\n  const diagnosticWorkflow = readFileSync(\n    new URL(\n      '../.github/workflows/cycle32-runner-mirror-diagnosis.yml',\n      import.meta.url,\n    ),\n    'utf8',\n  );\n  expect(diagnosticWorkflow).toContain('sample: [1, 2, 3]');\n  expect(diagnosticWorkflow).toContain('timeout-minutes: 5');\n  expect(diagnosticWorkflow).toContain(\"node-version: '24.22.2'\");\n  expect(diagnosticWorkflow).toContain('if: always()');\n  expect(diagnosticWorkflow).not.toMatch(\n    /npm ci|apt-get|playwright|pull_request:/,\n  );\n});\n"
++    },
++    {
++      "path": "scripts/cycle32-runner-mirror-probe.mjs",
++      "kind": "actual-observer",
++      "mode": 420,
++      "beforeSHA256": "d0197451a94936b87d8e0942be4dc3bdd306b2faf2afdf0079a363ecb00f657e",
++      "beforeOid": "7fa90108871038b29af270e82c7abdb056228dfd",
++      "beforeText": "// Read-only disposable-runner observability. This never installs or trusts sources.\nimport { createHash } from 'node:crypto';\nimport { execFileSync } from 'node:child_process';\nimport { readFileSync } from 'node:fs';\nimport { fileURLToPath, pathToFileURL } from 'node:url';\nimport {\n  ubuntuMirrors,\n  validateUbuntuMirrors,\n} from './cycle30-chromium-dependencies.mjs';\n\nconst digest = (value) => createHash('sha256').update(value).digest('hex');\nconst knownTargets = new Map([\n  ['http://azure.archive.ubuntu.com/ubuntu/', 'azure-http'],\n  ['https://azure.archive.ubuntu.com/ubuntu/', 'azure-https'],\n  ['http://archive.ubuntu.com/ubuntu/', 'archive-http'],\n  ['https://archive.ubuntu.com/ubuntu/', 'archive-https'],\n  ['http://security.ubuntu.com/ubuntu/', 'security-http'],\n  ['https://security.ubuntu.com/ubuntu/', 'security-https'],\n]);\nconst reviewed = Object.freeze({\n  source_probe:\n    'faee337a766c98ba22439992956f523e7b4c314ab2eb75a1e830e4c1e7320402',\n  validator: '531b1f3b43e38975a456a8421fc7135991b89313e22e0f87daa5ecc673bf659f',\n});\nconst sourceVocabulary = new Map([\n  ['types', ['deb', 'deb-src']],\n  ['suites', ['noble', 'noble-updates', 'noble-backports', 'noble-security']],\n  ['components', ['main', 'universe', 'restricted', 'multiverse']],\n  ['architectures', ['amd64']],\n  ['uris', []],\n  ['signed-by', []],\n]);\n\nexport function redactSourceShape(source) {\n  return {\n    source_sha256: /^[a-f0-9]{64}$/.test(source.source_sha256 ?? '')\n      ? source.source_sha256\n      : null,\n    validation: source.validation === 'PASS' ? 'PASS' : 'REJECTED',\n    validation_sha256: digest(String(source.validation)),\n    stanzas: source.stanzas.slice(0, 64).map((stanza) => ({\n      index: Number.isSafeInteger(stanza.index) ? stanza.index : null,\n      comment_only: stanza.comment_only === true,\n      fields: stanza.fields.slice(0, 64).map((field) => {\n        const name = typeof field.name === 'string' ? field.name : '';\n        const id = name.toLowerCase();\n        const vocabulary = sourceVocabulary.get(id);\n        const tokens =\n          typeof field.value === 'string'\n            ? field.value.trim().split(/\\s+/)\n            : [];\n        return {\n          name: vocabulary ? id : 'UNRECOGNIZED',\n          name_sha256: digest(name),\n          value:\n            tokens.length > 0 &&\n            tokens.length <= 16 &&\n            tokens.every((token) => vocabulary?.includes(token))\n              ? tokens.join(' ')\n              : undefined,\n          value_sha256: /^[a-f0-9]{64}$/.test(field.value_sha256 ?? '')\n            ? field.value_sha256\n            : null,\n          expected_key: field.expected_key === true,\n          direct_ubuntu_uri: field.direct_ubuntu_uri === true,\n          runner_mirror_file: field.runner_mirror_file === true,\n        };\n      }),\n    })),\n  };\n}\n\nexport function classifyMirrorText(text) {\n  if (typeof text !== 'string') throw Error('Mirror text required');\n  const sha256 = digest(text);\n  if (Buffer.byteLength(text, 'utf8') > 65536)\n    return { status: 'BOUNDS_EXCEEDED', sha256, rows: [] };\n  const rows = text\n    .split('\\n')\n    .map((line, index) => ({ line: line.trim(), index }))\n    .filter(({ line }) => line && !line.startsWith('#'));\n  if (\n    rows.length > 64 ||\n    rows.some(({ line }) => line.split(/\\s+/).length > 16)\n  )\n    return { status: 'BOUNDS_EXCEEDED', sha256, rows: [] };\n  return {\n    status: 'OBSERVED_NOT_ACCEPTANCE',\n    sha256,\n    rows: rows.map(({ line, index }) => {\n      const tokens = line.split(/\\s+/);\n      const priority = /^priority:[0-9]{1,3}$/.test(tokens[1] ?? '');\n      return {\n        index,\n        row_sha256: digest(line),\n        token_count: tokens.length,\n        target: knownTargets.get(tokens[0]) ?? 'UNRECOGNIZED',\n        target_sha256: digest(tokens[0]),\n        priority: priority ? Number(tokens[1].slice('priority:'.length)) : null,\n        priority_token_sha256:\n          !priority && tokens[1] !== undefined ? digest(tokens[1]) : null,\n        extra_token_count: Math.max(0, tokens.length - 2),\n        extra_token_sha256: tokens.slice(2).map(digest),\n      };\n    }),\n  };\n}\n\nexport function observeMirrorValidation(text) {\n  try {\n    validateUbuntuMirrors(text);\n    return 'PASS_EXISTING_VALIDATOR';\n  } catch (error) {\n    const messages = new Map([\n      [\n        'Exact three signed-Ubuntu mirror targets required',\n        'REJECT_EXACT_THREE_TARGETS',\n      ],\n      [\n        'Reviewed Ubuntu mirror and priority required',\n        'REJECT_REVIEWED_MIRROR_OR_PRIORITY',\n      ],\n      [\n        'Complete reviewed Ubuntu mirrors required',\n        'REJECT_INCOMPLETE_TARGETS',\n      ],\n    ]);\n    return messages.get(error.message) ?? 'REJECT_OTHER';\n  }\n}\n\nfunction collect() {\n  const sourceProbe = new URL(\n    './cycle31-ubuntu-source-probe.mjs',\n    import.meta.url,\n  );\n  const validator = new URL(\n    './cycle30-chromium-dependencies.mjs',\n    import.meta.url,\n  );\n  const hashes = {\n    source_probe: digest(readFileSync(sourceProbe)),\n    validator: digest(readFileSync(validator)),\n  };\n  if (JSON.stringify(hashes) !== JSON.stringify(reviewed))\n    return { status: 'REVIEWED_DIAGNOSTIC_SOURCE_MISMATCH', hashes };\n  // Reuse the original safe source vocabulary and validation, without APT or writes.\n  const source = JSON.parse(\n    execFileSync(process.execPath, [fileURLToPath(sourceProbe)], {\n      encoding: 'utf8',\n      timeout: 5000,\n      maxBuffer: 262144,\n      stdio: ['ignore', 'pipe', 'pipe'],\n    }),\n  );\n  const mirrorText =\n    source.mirror_sha256 === undefined\n      ? undefined\n      : readFileSync(ubuntuMirrors, 'utf8');\n  return {\n    status: 'READ_ONLY_OBSERVATION',\n    hashes,\n    source_shape: redactSourceShape(source),\n    mirror_observation:\n      mirrorText === undefined\n        ? { status: 'NOT_REFERENCED' }\n        : classifyMirrorText(mirrorText),\n    mirror_matches_source_probe_snapshot:\n      mirrorText === undefined\n        ? null\n        : digest(mirrorText) === source.mirror_sha256,\n    current_mirror_validator:\n      mirrorText === undefined\n        ? 'NOT_REFERENCED'\n        : observeMirrorValidation(mirrorText),\n    original_pr237_mirror_contents:\n      'NOT_RECORDED_NOT_RECOVERABLE_FROM_NEW_SAMPLE',\n    acceptance: false,\n  };\n}\n\nif (\n  process.argv[1] &&\n  import.meta.url === pathToFileURL(process.argv[1]).href\n) {\n  let observation;\n  try {\n    observation = collect();\n  } catch (error) {\n    observation = {\n      status: 'DIAGNOSTIC_UNAVAILABLE',\n      error_sha256: digest(String(error.message)),\n      acceptance: false,\n    };\n  }\n  console.log(\n    JSON.stringify(\n      {\n        schema: 'cycle32-read-only-runner-mirror-observation-v1',\n        workflow_source: /^[a-f0-9]{40}$/.test(process.env.GITHUB_SHA ?? '')\n          ? process.env.GITHUB_SHA\n          : 'UNAVAILABLE',\n        run_id: /^[0-9]{1,20}$/.test(process.env.GITHUB_RUN_ID ?? '')\n          ? process.env.GITHUB_RUN_ID\n          : 'UNAVAILABLE',\n        ...observation,\n        acceptance: false,\n      },\n      null,\n      2,\n    ),\n  );\n}\n",
++      "afterText": "// Read-only disposable-runner observability. This never installs or trusts sources.\nimport { createHash } from 'node:crypto';\nimport { execFileSync } from 'node:child_process';\nimport { readFileSync } from 'node:fs';\nimport { fileURLToPath, pathToFileURL } from 'node:url';\nimport {\n  ubuntuMirrors,\n  validateUbuntuMirrors,\n} from './cycle30-chromium-dependencies.mjs';\n\nconst digest = (value) => createHash('sha256').update(value).digest('hex');\nconst knownTargets = new Map([\n  ['http://azure.archive.ubuntu.com/ubuntu/', 'azure-http'],\n  ['https://azure.archive.ubuntu.com/ubuntu/', 'azure-https'],\n  ['http://archive.ubuntu.com/ubuntu/', 'archive-http'],\n  ['https://archive.ubuntu.com/ubuntu/', 'archive-https'],\n  ['http://security.ubuntu.com/ubuntu/', 'security-http'],\n  ['https://security.ubuntu.com/ubuntu/', 'security-https'],\n]);\nconst reviewed = Object.freeze({\n  source_probe:\n    'faee337a766c98ba22439992956f523e7b4c314ab2eb75a1e830e4c1e7320402',\n  validator: 'e2b034cfbdf1e7b3b44e8f2eb3b51ffabec5341097ed9cb1d2307a65f36ba762',\n});\nconst sourceVocabulary = new Map([\n  ['types', ['deb', 'deb-src']],\n  ['suites', ['noble', 'noble-updates', 'noble-backports', 'noble-security']],\n  ['components', ['main', 'universe', 'restricted', 'multiverse']],\n  ['architectures', ['amd64']],\n  ['uris', []],\n  ['signed-by', []],\n]);\n\nexport function redactSourceShape(source) {\n  return {\n    source_sha256: /^[a-f0-9]{64}$/.test(source.source_sha256 ?? '')\n      ? source.source_sha256\n      : null,\n    validation: source.validation === 'PASS' ? 'PASS' : 'REJECTED',\n    validation_sha256: digest(String(source.validation)),\n    stanzas: source.stanzas.slice(0, 64).map((stanza) => ({\n      index: Number.isSafeInteger(stanza.index) ? stanza.index : null,\n      comment_only: stanza.comment_only === true,\n      fields: stanza.fields.slice(0, 64).map((field) => {\n        const name = typeof field.name === 'string' ? field.name : '';\n        const id = name.toLowerCase();\n        const vocabulary = sourceVocabulary.get(id);\n        const tokens =\n          typeof field.value === 'string'\n            ? field.value.trim().split(/\\s+/)\n            : [];\n        return {\n          name: vocabulary ? id : 'UNRECOGNIZED',\n          name_sha256: digest(name),\n          value:\n            tokens.length > 0 &&\n            tokens.length <= 16 &&\n            tokens.every((token) => vocabulary?.includes(token))\n              ? tokens.join(' ')\n              : undefined,\n          value_sha256: /^[a-f0-9]{64}$/.test(field.value_sha256 ?? '')\n            ? field.value_sha256\n            : null,\n          expected_key: field.expected_key === true,\n          direct_ubuntu_uri: field.direct_ubuntu_uri === true,\n          runner_mirror_file: field.runner_mirror_file === true,\n        };\n      }),\n    })),\n  };\n}\n\nexport function classifyMirrorText(text) {\n  if (typeof text !== 'string') throw Error('Mirror text required');\n  const sha256 = digest(text);\n  if (Buffer.byteLength(text, 'utf8') > 65536)\n    return { status: 'BOUNDS_EXCEEDED', sha256, rows: [] };\n  const rows = text\n    .split('\\n')\n    .map((line, index) => ({ line: line.trim(), index }))\n    .filter(({ line }) => line && !line.startsWith('#'));\n  if (\n    rows.length > 64 ||\n    rows.some(({ line }) => line.split(/\\s+/).length > 16)\n  )\n    return { status: 'BOUNDS_EXCEEDED', sha256, rows: [] };\n  return {\n    status: 'OBSERVED_NOT_ACCEPTANCE',\n    sha256,\n    rows: rows.map(({ line, index }) => {\n      const tokens = line.split(/\\s+/);\n      const priority = /^priority:[0-9]{1,3}$/.test(tokens[1] ?? '');\n      return {\n        index,\n        row_sha256: digest(line),\n        token_count: tokens.length,\n        target: knownTargets.get(tokens[0]) ?? 'UNRECOGNIZED',\n        target_sha256: digest(tokens[0]),\n        priority: priority ? Number(tokens[1].slice('priority:'.length)) : null,\n        priority_token_sha256:\n          !priority && tokens[1] !== undefined ? digest(tokens[1]) : null,\n        extra_token_count: Math.max(0, tokens.length - 2),\n        extra_token_sha256: tokens.slice(2).map(digest),\n      };\n    }),\n  };\n}\n\nexport function observeMirrorValidation(text) {\n  try {\n    validateUbuntuMirrors(text);\n    return 'PASS_EXISTING_VALIDATOR';\n  } catch (error) {\n    const messages = new Map([\n      [\n        'Exact three signed-Ubuntu mirror targets required',\n        'REJECT_EXACT_THREE_TARGETS',\n      ],\n      [\n        'Reviewed Ubuntu mirror and priority required',\n        'REJECT_REVIEWED_MIRROR_OR_PRIORITY',\n      ],\n      [\n        'Complete reviewed Ubuntu mirrors required',\n        'REJECT_INCOMPLETE_TARGETS',\n      ],\n    ]);\n    return messages.get(error.message) ?? 'REJECT_OTHER';\n  }\n}\n\nfunction collect() {\n  const sourceProbe = new URL(\n    './cycle31-ubuntu-source-probe.mjs',\n    import.meta.url,\n  );\n  const validator = new URL(\n    './cycle30-chromium-dependencies.mjs',\n    import.meta.url,\n  );\n  const hashes = {\n    source_probe: digest(readFileSync(sourceProbe)),\n    validator: digest(readFileSync(validator)),\n  };\n  if (JSON.stringify(hashes) !== JSON.stringify(reviewed))\n    return { status: 'REVIEWED_DIAGNOSTIC_SOURCE_MISMATCH', hashes };\n  // Reuse the original safe source vocabulary and validation, without APT or writes.\n  const source = JSON.parse(\n    execFileSync(process.execPath, [fileURLToPath(sourceProbe)], {\n      encoding: 'utf8',\n      timeout: 5000,\n      maxBuffer: 262144,\n      stdio: ['ignore', 'pipe', 'pipe'],\n    }),\n  );\n  const mirrorText =\n    source.mirror_sha256 === undefined\n      ? undefined\n      : readFileSync(ubuntuMirrors, 'utf8');\n  return {\n    status: 'READ_ONLY_OBSERVATION',\n    hashes,\n    source_shape: redactSourceShape(source),\n    mirror_observation:\n      mirrorText === undefined\n        ? { status: 'NOT_REFERENCED' }\n        : classifyMirrorText(mirrorText),\n    mirror_matches_source_probe_snapshot:\n      mirrorText === undefined\n        ? null\n        : digest(mirrorText) === source.mirror_sha256,\n    current_mirror_validator:\n      mirrorText === undefined\n        ? 'NOT_REFERENCED'\n        : observeMirrorValidation(mirrorText),\n    original_pr237_mirror_contents:\n      'NOT_RECORDED_NOT_RECOVERABLE_FROM_NEW_SAMPLE',\n    acceptance: false,\n  };\n}\n\nif (\n  process.argv[1] &&\n  import.meta.url === pathToFileURL(process.argv[1]).href\n) {\n  let observation;\n  try {\n    observation = collect();\n  } catch (error) {\n    observation = {\n      status: 'DIAGNOSTIC_UNAVAILABLE',\n      error_sha256: digest(String(error.message)),\n      acceptance: false,\n    };\n  }\n  console.log(\n    JSON.stringify(\n      {\n        schema: 'cycle32-read-only-runner-mirror-observation-v1',\n        workflow_source: /^[a-f0-9]{40}$/.test(process.env.GITHUB_SHA ?? '')\n          ? process.env.GITHUB_SHA\n          : 'UNAVAILABLE',\n        run_id: /^[0-9]{1,20}$/.test(process.env.GITHUB_RUN_ID ?? '')\n          ? process.env.GITHUB_RUN_ID\n          : 'UNAVAILABLE',\n        ...observation,\n        acceptance: false,\n      },\n      null,\n      2,\n    ),\n  );\n}\n",
++      "afterSHA256": "69bece8b50df08fd4a8af14a3f00cdb252526e3263c387a4831400821e2d473c"
++    }
++  ]
+ }
+diff --git a/scripts/cycle32-runner-mirror-probe.mjs b/scripts/cycle32-runner-mirror-probe.mjs
+index 7fa9010..89664ce 100644
+--- a/scripts/cycle32-runner-mirror-probe.mjs
++++ b/scripts/cycle32-runner-mirror-probe.mjs
+@@ -20,7 +20,7 @@ const knownTargets = new Map([
+ const reviewed = Object.freeze({
+   source_probe:
+     'faee337a766c98ba22439992956f523e7b4c314ab2eb75a1e830e4c1e7320402',
+-  validator: '531b1f3b43e38975a456a8421fc7135991b89313e22e0f87daa5ecc673bf659f',
++  validator: 'e2b034cfbdf1e7b3b44e8f2eb3b51ffabec5341097ed9cb1d2307a65f36ba762',
+ });
+ const sourceVocabulary = new Map([
+   ['types', ['deb', 'deb-src']],
+diff --git a/tests/cycle32-runner-mirror-probe.test.ts b/tests/cycle32-runner-mirror-probe.test.ts
+index d68a74c..ada15c5 100644
+--- a/tests/cycle32-runner-mirror-probe.test.ts
++++ b/tests/cycle32-runner-mirror-probe.test.ts
+@@ -1,6 +1,45 @@
+ import { createHash } from 'node:crypto';
+-import { readFileSync } from 'node:fs';
+-import { expect, it } from 'vitest';
++import { readFileSync as actualReadFileSync, lstatSync } from 'node:fs';
++import { resolve } from 'node:path';
++import { beforeEach, afterEach, expect, it } from 'vitest';
++
++// Proposed TEST-only compatibility: real observer imports still read actual FS.
++const fixtureBytes = actualReadFileSync(
++  resolve(
++    'proposals/dashboard-context-fixture-compatibility/current-fixture.mjs',
++  ),
++);
++const fixtureInfo = lstatSync(
++  resolve(
++    'proposals/dashboard-context-fixture-compatibility/current-fixture.mjs',
++  ),
++);
++if (
++  !fixtureInfo.isFile() ||
++  fixtureInfo.isSymbolicLink() ||
++  (fixtureInfo.mode & 0o7777) !== 0o644 ||
++  createHash('sha256').update(fixtureBytes).digest('hex') !==
++    'ff0215b341e57e735b616292415d2bbcca94152c7dcf2eff4d4a012d3e4c0117'
++)
++  throw Error('Exact public CI fixture required');
++const fixture = (await import(
++  'data:text/javascript;base64,' + fixtureBytes.toString('base64')
++)) as {
++  verifyCurrentPhysicalFrame(): unknown;
++  readPublicCiFixture(
++    path: string | URL,
++    encoding?: BufferEncoding,
++  ): Buffer | string;
++};
++fixture.verifyCurrentPhysicalFrame();
++beforeEach(() => {
++  fixture.verifyCurrentPhysicalFrame();
++});
++afterEach(() => {
++  fixture.verifyCurrentPhysicalFrame();
++});
++const readFileSync = ((path: string | URL, encoding?: BufferEncoding) =>
++  fixture.readPublicCiFixture(path, encoding)) as typeof actualReadFileSync;
+ 
+ const { classifyMirrorText, observeMirrorValidation, redactSourceShape } =
+   await import(
+diff --git a/tests/invoice-guard-admission-proposal.test.ts b/tests/invoice-guard-admission-proposal.test.ts
+index b9d8767..af54cd4 100644
+--- a/tests/invoice-guard-admission-proposal.test.ts
++++ b/tests/invoice-guard-admission-proposal.test.ts
+@@ -45,7 +45,7 @@ const { qualifyInvoiceGuardProposal } = (await import(
+     const fixtureBytes = readFileSync(fixture);
+     if (
+       createHash('sha256').update(fixtureBytes).digest('hex') !==
+-      'a08883e5999a463612999ce9c8e86ef475bf9abc41e59f32a7c5c7f5f9549244'
++      'ff0215b341e57e735b616292415d2bbcca94152c7dcf2eff4d4a012d3e4c0117'
+     )
+       throw Error('Exact sealed invoice guard proposal required');
+     return 'data:text/javascript;base64,' + fixtureBytes.toString('base64');
+diff --git a/tests/propel-dashboard-parity-source.test.ts b/tests/propel-dashboard-parity-source.test.ts
+index 7cf2223..c04ac57 100644
+--- a/tests/propel-dashboard-parity-source.test.ts
++++ b/tests/propel-dashboard-parity-source.test.ts
+@@ -11,7 +11,7 @@ const { dashboardSource: source } = (await import(
+     );
+     if (
+       createHash('sha256').update(bytes).digest('hex') !==
+-      'a08883e5999a463612999ce9c8e86ef475bf9abc41e59f32a7c5c7f5f9549244'
++      'ff0215b341e57e735b616292415d2bbcca94152c7dcf2eff4d4a012d3e4c0117'
+     )
+       throw Error('Exact approved dashboard/forms source fixture required');
+     return 'data:text/javascript;base64,' + bytes.toString('base64');

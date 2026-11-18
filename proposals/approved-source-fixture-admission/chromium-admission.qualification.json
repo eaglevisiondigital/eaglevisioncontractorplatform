@@ -1,0 +1,101 @@
+{
+  "schema": "finite-chromium565-complete-source-admission-qualification-v1",
+  "scope": "ONLY_OWNED_UNAPPLIED_AFTERIMAGE_NOT_CURRENT_HOSTED_ACCEPTANCE",
+  "futureAuthorParent": "e86e7b31722ca09665e6e598a04721eb7ec4d61b",
+  "afterTree": "00f6d211affd7e364573ca792e08a1dd67b8f190",
+  "patchSHA256": "2f870286618590ceaf6f368cd4e66a106c968f766511bc323dd95bc4f151c266",
+  "fullPhysicalFiles": 2568,
+  "bodyTypeFull07777Mismatches": [],
+  "unknownFilesAndDirectories": [],
+  "outside2556ParentBodiesAndModesUnchanged": true,
+  "legacyInventory": {
+    "rows": 2421,
+    "mismatches": [],
+    "existingCanonicalSuccessorReads": 11,
+    "existingFinancialOverlays": 7,
+    "existingMetadataForwards": 5,
+    "existingP1TestProjection": 1,
+    "newCiCHECKPaths": 3
+  },
+  "qualification": {
+    "newControls": {
+      "passed": 27,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 55.109200917,
+      "rawSHA256": "e2954c4ae8835f1792c119f46a4402b5dc09f2520c921ed74120c59e49b4bd5f",
+      "firstPositiveSeconds": 29.608152375
+    },
+    "original41": {
+      "passed": 41,
+      "failed": 0,
+      "skipped": 0,
+      "maxCaseSeconds": 19.750781375000006,
+      "rawSHA256": "8f27c0dd24786a9d2a91eab8e61a8a5986ffd70febdf085eaf95e5fb7bc4b6af"
+    },
+    "originalC32": {
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0,
+      "maxCaseSeconds": 5.76680975,
+      "rawSHA256": "c002014998e7d8b9af604e35f877b19601f3df9ba27292fde6601dd4976071b8"
+    },
+    "rootSupplemental": {
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "seconds": 8.591,
+      "rawSHA256": "5d85304254dc2ed8a8f497766b3e29cf0a3948258503f1f4903f651ba844eae9",
+      "scope": "CACHED_LOADED_TCB_REBIND_AND_CI_READ_WITHDRAWAL_ONLY_NOT_FULL_TRUSTED_BOOTSTRAP_SUBSTITUTION"
+    },
+    "historical75": "Retained original bytes and old boundary evidence only; not run or claimed current56575PASS. Old harness has hardcoded553/2546 frame."
+  },
+  "quality": [
+    {
+      "name": "typecheck-recorded",
+      "exit": 0,
+      "seconds": 23.661919041987858,
+      "logSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "features-recorded",
+      "exit": 0,
+      "seconds": 0.4715531249967171,
+      "logSHA256": "ab2fd979bb37679c244b7e632c63e71bef7ed5f0bbe58f69b3f6d11329e190db"
+    }
+  ],
+  "formattingController": {
+    "classification": "FORMATTING_PLUS_THREE_UNUSED_BINDINGS_ONLY_NO_EXECUTION",
+    "originalSHA256": "6eea9228996ed4d8271e470587d2bf6ae030a6bd2bd46f3011dfbcfacfee0649",
+    "formatOnlySHA256": "e54296dc4aba0c7b7d8d12cfb4bbe86c195f8267c76f96a4eb6aedb9d86adea2",
+    "formatOnlyParsedAndEmittedASTSHA256": "379a30e2aba67618fcb4c343dbdcab2fab34ca5ae2c272e49d9eb0d9836561da",
+    "formattedSHA256": "1cea0c034507d34f1180c4026892c6ffdd7fb6e16b038b788b30b1827b374302",
+    "unusedBindingsRemoved": [
+      "function change",
+      "import symlinkSync",
+      "import chmodSync (used only by unused change)"
+    ],
+    "remainingParsedASTSHA256": "c5e267be3835ed83490e4dae53123edc6c121d380f70f5b25ecabc8a6131cdb8",
+    "remainingEmittedASTSHA256": "c5e267be3835ed83490e4dae53123edc6c121d380f70f5b25ecabc8a6131cdb8",
+    "allFiveTestExpressionBodiesUnchanged": true,
+    "originalAlreadyExecutedByRoot": true,
+    "finalExecutionRepeated": false,
+    "sourceAfterimageUnchanged": true
+  },
+  "rootStaticReviewSHA256": "f4481832653c8291324468026cbd99ef4dccc785bb36bcb7d4e0d4db3ba4624f",
+  "rootOriginalCaseBodiesReviewSHA256": "cae4679d70f7455c79115b419a83a6798befe16c8f9a20e2f00166fac0bc8d26",
+  "originalAssertionsAndBudgetsPreserved": true,
+  "originalTimeoutMilliseconds": 30000,
+  "originalMaxWorkers": 4,
+  "realObserverTest": "Actual helper/observer FS; only synthetic OS mirror/probe ports; AWS denied/acceptancefalse; no APT/helper-installer-main/network",
+  "remaining": [
+    "UNAPPLIED protected scope requires exact owner source-author approval",
+    "new positive29.608s is close to unchanged30s budget; no tolerance/budget changes",
+    "current565 hosted first invoice setup exception not captured; static exact helper inventory mismatch is proven separately",
+    "C18/C24/C33 hosted timeouts and dependent retained-fixture failure remain open; no CPU cause or independent timeout closure",
+    "current565 PRPassport12PASS but pushmirrorDENY; no mirror trust relaxation",
+    "rehearsal26.04 Python failure remains on565; separate560 runner fix is not composed",
+    "no whole Foundation, source artifact branch, SQL/Auth, reader runtime, operational/recovery/production acceptance"
+  ],
+  "release": "NO_GO"
+}
