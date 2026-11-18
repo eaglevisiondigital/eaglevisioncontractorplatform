@@ -212,11 +212,16 @@ export function JobOriginalScope({
       {current && (
         <section aria-label="Original job scope reference">
           <h3>{current.job_name}</h3>
-          <p style={{ overflowWrap: 'anywhere' }}>
-            Job {current.job_id} · Original issued version{' '}
-            {current.issued_version_id} · Observed job revision{' '}
-            {current.observed_job_revision}
-          </p>
+          <details style={{ marginBottom: '1rem' }}>
+            <summary style={{ minHeight: 44, padding: '10px 0' }}>
+              Source references
+            </summary>
+            <p style={{ overflowWrap: 'anywhere' }}>
+              Job {current.job_id} · Original issued version{' '}
+              {current.issued_version_id} · Observed job revision{' '}
+              {current.observed_job_revision}
+            </p>
+          </details>
           <div className="form-grid">
             <Field label="Find original scope lines">
               <input
@@ -297,12 +302,20 @@ export function JobOriginalScope({
                         <span style={{ overflowWrap: 'anywhere' }}>
                           {line.description}
                         </span>
-                        <small
-                          className="block"
-                          style={{ overflowWrap: 'anywhere' }}
-                        >
-                          {line.id}
-                        </small>
+                        <details style={{ marginTop: '0.5rem' }}>
+                          <summary
+                            aria-label={`Line reference for ${line.description || 'unnamed line'}`}
+                            style={{ minHeight: 44, padding: '8px 0' }}
+                          >
+                            Line reference
+                          </summary>
+                          <small
+                            className="block"
+                            style={{ overflowWrap: 'anywhere' }}
+                          >
+                            {line.id}
+                          </small>
+                        </details>
                       </th>
                       <td>{line.kind}</td>
                       <td>{line.quantity_milli / 1000}</td>
