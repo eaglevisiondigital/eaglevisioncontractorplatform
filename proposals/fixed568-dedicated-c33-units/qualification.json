@@ -1,0 +1,336 @@
+{
+  "classification": "LOCAL_DEDICATED_C33_SCOPE_QUALIFIED_WHOLE_489_AND_FOUNDATION_PENDING",
+  "full489Qualified": false,
+  "wholeFoundationPass": false,
+  "current575BroadResult": [
+    {
+      "event": "575_push",
+      "run": 44308667730,
+      "job": 134816774707,
+      "terminal": "CANCELLED_45_MINUTE_BOUNDARY",
+      "source": "21cf01bac44c50a9dfbba8ea3768ac33213a0192",
+      "printedCompletedModuleReports": 94,
+      "printedCaseCountsNotGlobal": {
+        "total": 4450,
+        "passed": 4093,
+        "failed": 8,
+        "skipped": 349
+      },
+      "visibleFailures": [
+        {
+          "file": "tests/cycle24-independent-integration-review.test.ts",
+          "title": "brand 0 native correction and material review remain the original cost and priority sources",
+          "durationMs": 30701.0,
+          "classification": "VISIBLE_30SECOND_CROSSING_EXCEPTION_NOT_ASSUMED"
+        },
+        {
+          "file": "tests/cycle24-independent-integration-review.test.ts",
+          "title": "brand 1 native correction and material review remain the original cost and priority sources",
+          "durationMs": 30476.0,
+          "classification": "VISIBLE_30SECOND_CROSSING_EXCEPTION_NOT_ASSUMED"
+        },
+        {
+          "file": "tests/cycle24-independent-integration-review.test.ts",
+          "title": "brand 2 native correction and material review remain the original cost and priority sources",
+          "durationMs": 30110.0,
+          "classification": "VISIBLE_30SECOND_CROSSING_EXCEPTION_NOT_ASSUMED"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "brand 2: five-package source evidence binds one exact canonical daily environment",
+          "durationMs": 31490.0,
+          "classification": "VISIBLE_30SECOND_CROSSING_EXCEPTION_NOT_ASSUMED"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "brand 2: retained daily sources continue through every review and exact Next without reset",
+          "durationMs": 4.0,
+          "classification": "VISIBLE_FAILURE_EXCEPTION_NOT_ASSUMED"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "finance: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "durationMs": 34971.0,
+          "classification": "VISIBLE_30SECOND_CROSSING_EXCEPTION_NOT_ASSUMED"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "finance: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "durationMs": 35685.0,
+          "classification": "VISIBLE_30SECOND_CROSSING_EXCEPTION_NOT_ASSUMED"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "finance: competing fresh views of the same canonical job dispatch at most one callback",
+          "durationMs": 30601.0,
+          "classification": "VISIBLE_30SECOND_CROSSING_EXCEPTION_NOT_ASSUMED"
+        }
+      ],
+      "C33FinanceCompletionPrinted": false,
+      "globalSummaryPrinted": false,
+      "postUnitBrowserAcceptance": false,
+      "rawLogSHA256": "ea0199670d9a12d79c987be3f17d243ecef8928c11d8357465085d705934ee4b"
+    },
+    {
+      "event": "575_pull_request",
+      "run": 44308754897,
+      "job": 134817078022,
+      "terminal": "CANCELLED_45_MINUTE_BOUNDARY",
+      "source": "ae3cbbd4396841212edb774a4e28c78fb8e18fd1",
+      "printedCompletedModuleReports": 95,
+      "printedCaseCountsNotGlobal": {
+        "total": 4492,
+        "passed": 4135,
+        "failed": 8,
+        "skipped": 349
+      },
+      "visibleFailures": [
+        {
+          "file": "tests/cycle24-independent-integration-review.test.ts",
+          "title": "brand 0 native correction and material review remain the original cost and priority sources",
+          "durationMs": 30616.0,
+          "classification": "VISIBLE_30SECOND_CROSSING_EXCEPTION_NOT_ASSUMED"
+        },
+        {
+          "file": "tests/cycle24-independent-integration-review.test.ts",
+          "title": "brand 1 native correction and material review remain the original cost and priority sources",
+          "durationMs": 30031.0,
+          "classification": "VISIBLE_30SECOND_CROSSING_EXCEPTION_NOT_ASSUMED"
+        },
+        {
+          "file": "tests/cycle24-independent-integration-review.test.ts",
+          "title": "brand 2 native correction and material review remain the original cost and priority sources",
+          "durationMs": 30154.0,
+          "classification": "VISIBLE_30SECOND_CROSSING_EXCEPTION_NOT_ASSUMED"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "brand 2: five-package source evidence binds one exact canonical daily environment",
+          "durationMs": 31516.0,
+          "classification": "VISIBLE_30SECOND_CROSSING_EXCEPTION_NOT_ASSUMED"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "brand 2: retained daily sources continue through every review and exact Next without reset",
+          "durationMs": 2.0,
+          "classification": "VISIBLE_FAILURE_EXCEPTION_NOT_ASSUMED"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "finance: invoked callback lease drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "durationMs": 34231.0,
+          "classification": "VISIBLE_30SECOND_CROSSING_EXCEPTION_NOT_ASSUMED"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "finance: invoked source admission drift is UNKNOWN across fresh same-canonical wrappers without replay",
+          "durationMs": 35054.0,
+          "classification": "VISIBLE_30SECOND_CROSSING_EXCEPTION_NOT_ASSUMED"
+        },
+        {
+          "file": "tests/cycle18-independent-integration-review.test.ts",
+          "title": "finance: competing fresh views of the same canonical job dispatch at most one callback",
+          "durationMs": 30368.0,
+          "classification": "VISIBLE_30SECOND_CROSSING_EXCEPTION_NOT_ASSUMED"
+        }
+      ],
+      "C33FinanceCompletionPrinted": false,
+      "globalSummaryPrinted": false,
+      "postUnitBrowserAcceptance": false,
+      "rawLogSHA256": "1e65a9e5354f2aeec237f483853433e84d481cef8d727feb187055f64ac95776"
+    }
+  ],
+  "current575Limit": "Eight visible failures per cancelled event are C24 three brands plus C18 five cases, including a short following-fixture failure. Final exception stacks are absent. C33 finance completion is not printed before cancellation. No CPU/GPU, source regression or exact exception cause inferred from duration crossings alone. This proposal does not claim to fix these eight failures.",
+  "newPlannerControls": {
+    "pass": 23,
+    "fail": 0,
+    "skip": 0,
+    "durationMs": 425.720875,
+    "rawLogSHA256": "cd2d38a51c0f0f5d650894ff54beaf4f0350d37fd09ec2374213344864207f1b"
+  },
+  "independentExternalTCBControls": {
+    "pass": 8,
+    "unverified": 1,
+    "specialMode": "Requested4644 did not remain on host filesystem; observed0644. Precondition UNVERIFIED, neither PASS nor demonstrated bypass. Ordinary755 rejection passed.",
+    "retainedHarnessFailures": "Initial special-mode precondition failure and a later harness cwd mistake retained; no application rerun.",
+    "reportSHA256": "96db25dad9be13b5d6de5e69a8c420f7ba2c59541172eab1f1b3442127708480"
+  },
+  "oneOriginal18LocalQualification": {
+    "runs": 1,
+    "source": "3f0c6b53747e60765cdc7faf1308b57ce730676f",
+    "tree": "00f6d211affd7e364573ca792e08a1dd67b8f190",
+    "platform": "darwin",
+    "node": "v24.20.0",
+    "arch": "arm64",
+    "maxWorkers": 4,
+    "testTimeoutMs": 30000,
+    "hookTimeoutMs": 30000,
+    "globalSetup": ["tests/setup/git-history.ts"],
+    "retry": 0,
+    "nativeFullCollection": 489,
+    "selectedFiles": ["tests/cycle33-v1-finance-owner-integration.test.ts"],
+    "pass": 18,
+    "fail": 0,
+    "skip": 0,
+    "maxCaseDurationMs": 15942.817749999995,
+    "wallSeconds": 127.0604469999962,
+    "originalCaseIdentitiesModesAndBudgetsMatch571": true,
+    "allCaseDurationsWithinOriginalBudgets": true,
+    "originalValidateApplication": "PASS unchanged",
+    "beforeAfterSourceBodiesTypesFullModes": 2568,
+    "HEADTreeAndIndexBeforeAfterExact": true,
+    "newExternalTCBBeforeAfterExact": true,
+    "unknownPaths": [],
+    "cases": [
+      {
+        "fullName": "brand 0: native owner revocation during Finance filtering withholds both private rows and Owner navigation",
+        "timeoutMs": 30000,
+        "durationMs": 6256.093667,
+        "status": "passed"
+      },
+      {
+        "fullName": "brand 0: earlier Finance review withdrawal is distinct from native Auth and separately admitted current Owner context",
+        "timeoutMs": 30000,
+        "durationMs": 4352.640084000001,
+        "status": "passed"
+      },
+      {
+        "fullName": "brand 0: exact recorded material and approved unposted time refresh Finance and Owner without inventing invoice or labor coverage",
+        "timeoutMs": 30000,
+        "durationMs": 9017.211916,
+        "status": "passed"
+      },
+      {
+        "fullName": "brand 0: same-property other jobs, copied handles and another company cannot substitute Finance or Owner sources",
+        "timeoutMs": 30000,
+        "durationMs": 12011.549292,
+        "status": "passed"
+      },
+      {
+        "fullName": "brand 0: later canonical forecast withholds stale Finance rows and inspected Owner navigation without resetting UNKNOWN",
+        "timeoutMs": 30000,
+        "durationMs": 6209.515083999999,
+        "status": "passed"
+      },
+      {
+        "fullName": "brand 0: default-OFF Finance and Owner readers do not capture source handles or grant actions",
+        "timeoutMs": 30000,
+        "durationMs": 0.8730409999989206,
+        "status": "passed"
+      },
+      {
+        "fullName": "brand 1: native owner revocation during Finance filtering withholds both private rows and Owner navigation",
+        "timeoutMs": 30000,
+        "durationMs": 6748.925082999995,
+        "status": "passed"
+      },
+      {
+        "fullName": "brand 1: earlier Finance review withdrawal is distinct from native Auth and separately admitted current Owner context",
+        "timeoutMs": 30000,
+        "durationMs": 4829.905583,
+        "status": "passed"
+      },
+      {
+        "fullName": "brand 1: exact recorded material and approved unposted time refresh Finance and Owner without inventing invoice or labor coverage",
+        "timeoutMs": 30000,
+        "durationMs": 10727.671417000005,
+        "status": "passed"
+      },
+      {
+        "fullName": "brand 1: same-property other jobs, copied handles and another company cannot substitute Finance or Owner sources",
+        "timeoutMs": 30000,
+        "durationMs": 15942.817749999995,
+        "status": "passed"
+      },
+      {
+        "fullName": "brand 1: later canonical forecast withholds stale Finance rows and inspected Owner navigation without resetting UNKNOWN",
+        "timeoutMs": 30000,
+        "durationMs": 6774.475291999988,
+        "status": "passed"
+      },
+      {
+        "fullName": "brand 1: default-OFF Finance and Owner readers do not capture source handles or grant actions",
+        "timeoutMs": 30000,
+        "durationMs": 0.9338750000024447,
+        "status": "passed"
+      },
+      {
+        "fullName": "brand 2: native owner revocation during Finance filtering withholds both private rows and Owner navigation",
+        "timeoutMs": 30000,
+        "durationMs": 7173.956625000006,
+        "status": "passed"
+      },
+      {
+        "fullName": "brand 2: earlier Finance review withdrawal is distinct from native Auth and separately admitted current Owner context",
+        "timeoutMs": 30000,
+        "durationMs": 4983.260957999999,
+        "status": "passed"
+      },
+      {
+        "fullName": "brand 2: exact recorded material and approved unposted time refresh Finance and Owner without inventing invoice or labor coverage",
+        "timeoutMs": 30000,
+        "durationMs": 10117.932709,
+        "status": "passed"
+      },
+      {
+        "fullName": "brand 2: same-property other jobs, copied handles and another company cannot substitute Finance or Owner sources",
+        "timeoutMs": 30000,
+        "durationMs": 13550.605833000009,
+        "status": "passed"
+      },
+      {
+        "fullName": "brand 2: later canonical forecast withholds stale Finance rows and inspected Owner navigation without resetting UNKNOWN",
+        "timeoutMs": 30000,
+        "durationMs": 7013.683832999988,
+        "status": "passed"
+      },
+      {
+        "fullName": "brand 2: default-OFF Finance and Owner readers do not capture source handles or grant actions",
+        "timeoutMs": 30000,
+        "durationMs": 0.85587499999383,
+        "status": "passed"
+      }
+    ],
+    "rawResultsSHA256": "05054a9a2c897cbedaf63ae29cbf3863831aa442ca9980fd0dd6086d7f401ff3",
+    "observationsSHA256": "5850a13c6291c30b3903b862167e17bcbad3f0560cfb440623a2b8c80e956682",
+    "verifiedSHA256": "f432048393208863a8f55ba0fcaba4eebcbd830fa71ffe2fa7dddc190a1ae04f",
+    "sourceBeforeSHA256": "6384a1f6801967df60ab934b02ac46cab11faad0ce7aa0bc6eaf4b1ae16f0a8c",
+    "sourceAfterSHA256": "3e4aff199f34ec323641eb0e22fecceb37b643f605c8f32785f0e9ec20b46a78",
+    "privateQualificationSHA256": "fe89dfe3669b1ea28fcf2f8d58ab3404615fb0c0546b347da71bfaf6b58085ec",
+    "CPU": "No observer/profiler or direct Node-own/per-case CPU measurement. Parent child-resource aggregate is not a causal profile."
+  },
+  "priorFailurePreserved": {
+    "source": "3f0c6b53747e60765cdc7faf1308b57ce730676f",
+    "observationsSHA256": "8465726b27d434a006a0f9addd4fb96fc83b3576790d1ea3d680be75ab889fe4",
+    "historicalFailurePreserved": [
+      {
+        "fullName": "brand 2: same-property other jobs, copied handles and another company cannot substitute Finance or Owner sources",
+        "priorStatus": "failed",
+        "priorDurationMs": 31865.841381000035,
+        "newDedicatedDurationMs": 13550.605833000009,
+        "sameBudgetMs": 30000
+      }
+    ],
+    "causality": "Different localvsretainedhost/setup; not a controlledCPUcausality claim."
+  },
+  "schedulingCostModel": "Retained571 overlapping module wall weights guide deterministic balancing only. Old shard8 sum2833.723s and proposed other-group maximum2074.592s are proxy sums, not isolated CPU/work estimates or future45-minute guarantees.",
+  "independentFinalReview": {
+    "status": "ROOT_INDEPENDENT_REVIEW_CLEAR_LOCAL18_AND_PUBLIC_DATA_ONLY",
+    "stage2ReviewSHA256": "86d1e82aabfae382f04ea656359e46eb48771902e7002ed6153c1b4ca5ea5e94",
+    "publicPackageReviewSHA256": "a2e5d9fbdf065898861a13cb54e353b2ea6245fbfea80cc8abf81b3fefd400a3",
+    "scope": "Exact local18/raw identities/source/index and publicdata payload closure; not all489/hosted execution or workflow-author approval."
+  },
+  "limits": [
+    "Local Darwin18 pass does not establish Linux/hosted or all489 acceptance; other seven groups remain unexecuted in the new schedule.",
+    "Current573/574/575 parents differ from runtime568 financial/P1/reader lineage despite a bounded413-path static C33 closure match; no whole-frame equivalence or evidence promotion.",
+    "Original571 C33 timeout31.866s remains recorded. No controlled concurrent counterfactual on this host; isolation pass does not prove past contention cause.",
+    "No original assertion, guard, skip mode, timeout, worker setting, Auth/financial/P1/recovery capability is changed.",
+    "Full489 exact collection/case union and all jobs successful remain mandatory before broader acceptance; browser/native/recovery/operational gates stay independent."
+  ],
+  "qualificationRetries": 0,
+  "manualCITriggersLabelsOrDispatch": 0,
+  "operationalReady": false,
+  "release": "NO_GO",
+  "priorConsumedDiagnosticsReplayed": false,
+  "localOriginal18RunsInNewSchedulingCondition": 1
+}

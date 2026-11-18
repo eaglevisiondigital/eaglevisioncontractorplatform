@@ -1,0 +1,85 @@
+{
+  "classification": "UNAPPLIED_ONE_WORKFLOW_SCHEDULER_REVIEW_PROPOSAL_NOT_EXECUTION_AUTHORIZATION",
+  "sourceAuthorParent": "5a5885bea8b6263542429b079b3aca5762a5b31d",
+  "sourceAuthorParentTree": "2a314018fa6290435e4dc0884ec2b506c183fbb0",
+  "runtimeCheckout": {
+    "source": "3f0c6b53747e60765cdc7faf1308b57ce730676f",
+    "tree": "00f6d211affd7e364573ca792e08a1dd67b8f190",
+    "trackedFiles": 2568,
+    "vitestFiles": 489
+  },
+  "target": {
+    "path": ".github/workflows/foundation537-isolated-unit-candidate.yml",
+    "mode": "100644",
+    "beforeSHA256": "b4247b78111c9722d0c0591e528e8dd7c4e8275d4bae82504990335cff724413",
+    "afterSHA256": "1c0ce6d181bcdbccdea662c9d56b5210d32a9f3b4d2ea4f266ef478e2453997e",
+    "decodedPatchSHA256": "9fe8ccb6166e152f8730aa8c43199812708a28581f236504a178d716cd7d6c25"
+  },
+  "payloads": [
+    {
+      "proposalPath": "scheduler-manifest.json.txt",
+      "runtimeFilename": "scheduler-manifest.json",
+      "sha256": "3c15d41b4b8ef1969366dcc06ee43f07d35297c43a1f8ab87ec1deac5cfdcf19",
+      "mode": "100644",
+      "purpose": "Exact external scheduler TCB"
+    },
+    {
+      "proposalPath": "sequencer.mjs.txt",
+      "runtimeFilename": "sequencer.mjs",
+      "sha256": "c8d7557c2f3e4ebe491e8368a8f5d10be1a34433de5d6f47d1eb76355dfa6792",
+      "mode": "100644",
+      "purpose": "Exact external scheduler TCB"
+    },
+    {
+      "proposalPath": "vitest.scheduler.config.mjs.txt",
+      "runtimeFilename": "vitest.scheduler.config.mjs",
+      "sha256": "a2d736eb0e8fed976cad96e3b2c0eafdf01d9437a93e9272ac3bdce87e9ba05a",
+      "mode": "100644",
+      "purpose": "Exact external scheduler TCB"
+    },
+    {
+      "proposalPath": "planner-controls.test.mjs.txt",
+      "runtimeFilename": "planner-controls.test.mjs",
+      "sha256": "2cf46635baf701104eee0c3a777312ca2b552e2b34e669bb70274806ef002f75",
+      "mode": "100644",
+      "purpose": "Pure qualification controls"
+    }
+  ],
+  "scheduling": {
+    "jobs": 8,
+    "maxWorkers": 4,
+    "testTimeoutMs": 30000,
+    "hookTimeoutMs": 30000,
+    "jobTimeoutMinutes": 45,
+    "retry": 0,
+    "globalSetup": ["tests/setup/git-history.ts"],
+    "dedicatedGroup": 8,
+    "dedicatedFile": "tests/cycle33-v1-finance-owner-integration.test.ts",
+    "dedicatedOriginalCases": 18,
+    "C27Group": 1,
+    "C27File": "tests/cycle27-source-lineage.test.ts",
+    "remainingFilesBalanced": 487,
+    "exactCompleteFileUnion": 489,
+    "nativeBaseSequencerSortRetained": true
+  },
+  "newTCBBoundary": "Only native shard selection is replaced by a fixed full-set checked selector. The external config imports the original configuration and changes only sequence.sequencer. Original physical config/source binding alone does not authenticate this override; exact three artifact hash/type/mode checks run before planning and after cases. The manifest is freshly hashed on every selection, and original binding() supplies fresh source/tree metadata.",
+  "unchanged": {
+    "originalApplicationSourceAndTests": true,
+    "canonicalViteConfiguration": true,
+    "originalValidateApplicationAndReporter": true,
+    "originalSourceProbeAndC27Allowance": true,
+    "actual573ObserverSHA256": "1ba1ff514b60abaef520fe91853529ef8115a3335da4d45874e065c1d1dae873",
+    "observerBodyAndOriginal30ParserTests": true,
+    "unitExitPrecedenceAndStrictUnion": true
+  },
+  "proposedExecutionLabel": "run-fixed568-isolated-c33-units",
+  "approvalBoundaries": {
+    "protectedWorkflowAuthoring": "NOT_AUTHORIZED_BY_THIS_PROPOSAL",
+    "diagnosticExecution": "NOT_AUTHORIZED; separate finite one-use approval required after exact source author/review",
+    "consumedHistorical571GrantReusable": false,
+    "manualLabelsDispatchRetries": 0,
+    "sourcePromotion": false
+  },
+  "futureAuthorExcludesTheseProposalAdditions": true,
+  "release": "NOT_READY_NOT_AUTHORIZED"
+}
