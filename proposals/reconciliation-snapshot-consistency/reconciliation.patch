@@ -1,0 +1,152 @@
+--- a/server/payments/reconciliation.ts
++++ b/server/payments/reconciliation.ts
+@@ -1,4 +1,5 @@
+ import { referencePattern, uuid } from '../providers/safety';
++import { isProxy } from 'node:util/types';
+ import type { SandboxMerchant } from './sandbox';
+ export interface StatementRow {
+   organizationId: string;
+@@ -15,21 +16,93 @@
+   expected: readonly StatementRow[],
+   reported: readonly StatementRow[],
+ ) {
++  // Only detached own scalar data participates in one reconciliation result.
++  // No caller getter, proxy, iterator or later original-array read is authority.
++  function snapshot(
++    value: unknown,
++    keys: readonly string[],
++    category: 'scope' | 'row',
++  ) {
++    const invalid = () => new Error(`Invalid reconciliation ${category}`);
++    if (
++      !value ||
++      typeof value !== 'object' ||
++      isProxy(value) ||
++      Array.isArray(value) ||
++      ![Object.prototype, null].includes(Object.getPrototypeOf(value))
++    )
++      throw invalid();
++    const result: Record<string, unknown> = Object.create(null);
++    for (const key of keys) {
++      const descriptor = Object.getOwnPropertyDescriptor(value, key);
++      if (
++        !descriptor ||
++        !Object.hasOwn(descriptor, 'value') ||
++        !['string', 'number'].includes(typeof descriptor.value)
++      )
++        throw invalid();
++      result[key] = descriptor.value;
++    }
++    return result;
++  }
++  const scope = snapshot(
++    merchant,
++    ['mode', 'organizationId', 'merchantConfigId', 'provider'],
++    'scope',
++  );
+   if (
+-    merchant.mode !== 'sandbox' ||
+-    !uuid.test(merchant.organizationId) ||
+-    !uuid.test(merchant.merchantConfigId)
++    scope.mode !== 'sandbox' ||
++    typeof scope.organizationId !== 'string' ||
++    typeof scope.merchantConfigId !== 'string' ||
++    typeof scope.provider !== 'string' ||
++    !uuid.test(scope.organizationId) ||
++    !uuid.test(scope.merchantConfigId)
+   )
+     throw new Error('Invalid reconciliation scope');
++  function snapshotRows(value: readonly StatementRow[]) {
++    if (isProxy(value) || !Array.isArray(value))
++      throw new Error('Invalid reconciliation row');
++    const descriptors = Object.getOwnPropertyDescriptors(value) as Record<
++      string,
++      PropertyDescriptor
++    >;
++    const length = descriptors.length.value as number;
++    const keys = Object.keys(descriptors).filter(
++      (key) => /^(0|[1-9]\d*)$/.test(key) && Number(key) < length,
++    );
++    if (keys.length !== length) throw new Error('Invalid reconciliation row');
++    return keys.map((key, index) => {
++      const descriptor = descriptors[key];
++      if (key !== String(index) || !Object.hasOwn(descriptor, 'value'))
++        throw new Error('Invalid reconciliation row');
++      return snapshot(
++        descriptor.value,
++        [
++          'organizationId',
++          'merchantConfigId',
++          'provider',
++          'mode',
++          'transactionId',
++          'kind',
++          'amountMinor',
++          'currency',
++        ],
++        'row',
++      ) as unknown as StatementRow;
++    });
++  }
++  const expectedRows = snapshotRows(expected),
++    reportedRows = snapshotRows(reported);
+   function index(rows: readonly StatementRow[]) {
+     const map = new Map<string, StatementRow>();
+     for (const r of rows) {
+       if (
+-        r.organizationId !== merchant.organizationId ||
+-        r.merchantConfigId !== merchant.merchantConfigId ||
+-        r.provider !== merchant.provider ||
++        r.organizationId !== scope.organizationId ||
++        r.merchantConfigId !== scope.merchantConfigId ||
++        r.provider !== scope.provider ||
+         r.mode !== 'sandbox' ||
+         r.currency !== 'USD' ||
++        typeof r.transactionId !== 'string' ||
+         !referencePattern.test(r.transactionId) ||
+         r.transactionId === '0' ||
+         !['capture', 'refund'].includes(r.kind) ||
+@@ -39,12 +112,12 @@
+         throw new Error('Invalid reconciliation row');
+       if (map.has(r.transactionId))
+         throw new Error('Duplicate statement transaction');
+-      map.set(r.transactionId, { ...r });
++      map.set(r.transactionId, r);
+     }
+     return map;
+   }
+-  const local = index(expected),
+-    provider = index(reported),
++  const local = index(expectedRows),
++    provider = index(reportedRows),
+     missing: string[] = [],
+     unexpected: string[] = [],
+     conflicts: string[] = [];
+@@ -55,19 +128,18 @@
+       conflicts.push(id);
+   }
+   for (const id of provider.keys()) if (!local.has(id)) unexpected.push(id);
+-  const total = (rows: readonly StatementRow[]) =>
+-    rows
+-      .reduce(
+-        (n, r) => n + BigInt(r.amountMinor) * (r.kind === 'refund' ? -1n : 1n),
+-        0n,
+-      )
+-      .toString();
++  const total = (rows: Iterable<StatementRow>) => {
++    let value = 0n;
++    for (const row of rows)
++      value += BigInt(row.amountMinor) * (row.kind === 'refund' ? -1n : 1n);
++    return value.toString();
++  };
+   return Object.freeze({
+     balanced: !missing.length && !unexpected.length && !conflicts.length,
+     missing,
+     unexpected,
+     conflicts,
+-    expectedNetMinor: total(expected),
+-    reportedNetMinor: total(reported),
++    expectedNetMinor: total(local.values()),
++    reportedNetMinor: total(provider.values()),
+   });
+ }
