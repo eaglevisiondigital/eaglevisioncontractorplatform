@@ -1,0 +1,85 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import Fixed568DedicatedSequencer, { selectFixed568, readFixedManifest, validateFixedManifest } from './sequencer.mjs';
+const manifest = JSON.parse(readFileSync(new URL('scheduler-manifest.json', import.meta.url)));
+const root = process.cwd();
+const context = { root, source: manifest.target, tree: manifest.tree, count: 8, index: 1 };
+const files = manifest.groups.flat().sort().map(path => ({ moduleId: resolve(root, path), exactFixtureIdentity: path }));
+const reject = callback => assert.throws(callback, /Exact fixed568 dedicated scheduling evidence required/);
+test('all original489 module references appear once across eight groups', () => {
+  const output = Array.from({ length: 8 }, (_, i) => selectFixed568(files, { ...context, index: i + 1 }));
+  assert.equal(output.flat().length, 489);
+  assert.equal(new Set(output.flat()).size, 489);
+  assert.deepEqual(new Set(output.flat()), new Set(files));
+  for (let i = 0; i < 8; i++) assert.deepEqual(output[i].map(spec => spec.exactFixtureIdentity), manifest.groups[i]);
+});
+test('dedicated eighth group contains exactly the original C33finance module', () => {
+  const output = selectFixed568(files, { ...context, index: 8 });
+  assert.equal(output.length, 1);
+  assert.equal(output[0].moduleId, resolve(root, manifest.dedicatedFile));
+  assert.ok(files.includes(output[0]));
+});
+test('reordered native collection does not change selected file identities', () => {
+  for (let index = 1; index <= 8; index++) assert.deepEqual(selectFixed568([...files].reverse(), { ...context, index }), selectFixed568(files, { ...context, index }));
+});
+for (const [name, candidate] of [
+  ['missing', files.slice(1)],
+  ['duplicate', [...files.slice(1), files[1]]],
+  ['unknown', [...files.slice(1), { moduleId: resolve(root, 'tests/UNKNOWN.test.ts') }]],
+  ['empty', []],
+  ['mixed-root', [...files.slice(1), { moduleId: '/outside/tests/unknown.test.ts' }]],
+  ['relative', [...files.slice(1), { moduleId: 'tests/unknown.test.ts' }]],
+  ['normalized-alias', [...files.slice(1), { moduleId: root + '/tests/../tests/unknown.test.ts' }]],
+  ['nonstringspec', [...files.slice(1), { moduleId: 7 }]],
+  ['nullspec', [...files.slice(1), null]],
+]) test('denies ' + name + ' native collection', () => reject(() => selectFixed568(candidate, context)));
+for (const [name, change] of [
+  ['different source', { source: '5a5885bea8b6263542429b079b3aca5762a5b31d' }],
+  ['different tree', { tree: '2a314018fa6290435e4dc0884ec2b506c183fbb0' }],
+  ['partial source identity', { source: undefined }],
+  ['seven shards', { count: 7 }],
+  ['zero index', { index: 0 }],
+  ['ninth index', { index: 9 }],
+  ['fractional index', { index: 1.5 }],
+  ['relative root', { root: '.' }],
+]) test('denies ' + name, () => reject(() => selectFixed568(files, { ...context, ...change })));
+test('metadata-only output cannot redefine source/timing policy', () => {
+  const current = readFixedManifest();
+  assert.equal(current.groups.flat().length, 489);
+  assert.equal(Object.hasOwn(current, 'maxWorkers'), false);
+  assert.equal(Object.hasOwn(current, 'testTimeout'), false);
+  assert.equal(Object.hasOwn(current, 'skip'), false);
+  assert.equal(Object.hasOwn(Fixed568DedicatedSequencer.prototype, 'sort'), false);
+  assert.equal(Object.hasOwn(Fixed568DedicatedSequencer.prototype, 'constructor'), true);
+});
+
+test('original C27 fixture remains in first shard for unchanged telemetry allowance', () => {
+  const out = selectFixed568(files, context);
+  assert.ok(out.some(spec => spec.moduleId === resolve(root, 'tests/cycle27-source-lineage.test.ts')));
+});
+test('C27 relocation denied even when count and full union remain intact', () => {
+  const changed = structuredClone(manifest);
+  const path = 'tests/cycle27-source-lineage.test.ts';
+  changed.groups[0].splice(changed.groups[0].indexOf(path), 1);
+  changed.groups[1].push(path);
+  reject(() => validateFixedManifest(changed));
+});
+
+test('dedicated seventh group contains exactly original C24 independent integration module', () => {
+  const output = selectFixed568(files, { ...context, index: 7 });
+  assert.equal(output.length, 1);
+  assert.equal(output[0].moduleId, resolve(root, 'tests/cycle24-independent-integration-review.test.ts'));
+  assert.ok(files.includes(output[0]));
+});
+test('C24 relocation denied despite unchanged full union', () => {
+  const changed = structuredClone(manifest);
+  changed.groups[0].push(changed.groups[6].pop());
+  reject(() => validateFixedManifest(changed));
+});
+test('C24 dedicated group rejects another original module despite unchanged union', () => {
+  const changed = structuredClone(manifest);
+  changed.groups[6].push(changed.groups[0].pop());
+  reject(() => validateFixedManifest(changed));
+});

@@ -1,0 +1,43 @@
+{
+  "classification": "UNAPPLIED_DEFINITION_PROPOSAL_NOT_WORKFLOW_AUTHOR_OR_EXECUTION_APPROVAL",
+  "definitionSourceAuthorParent": "4dc708eabd7fdb3c41a3db53aaf3b8ae87fce602",
+  "definitionSourceAuthorParentTree": "faf77affaf54a75688665b08ec2d9900dfedd490",
+  "runtimeSource": "3f0c6b53747e60765cdc7faf1308b57ce730676f",
+  "runtimeTree": "00f6d211affd7e364573ca792e08a1dd67b8f190",
+  "runtimeFullFiles": 2568,
+  "definitionPaths": [
+    {
+      "path": ".github/workflows/foundation537-isolated-unit-candidate.yml",
+      "mode": "100644",
+      "beforeSHA256": "1c0ce6d181bcdbccdea662c9d56b5210d32a9f3b4d2ea4f266ef478e2453997e",
+      "afterSHA256": "c660760a0a005c85af9ae1586225c01934b932b445d990fdd6ab3d343ce3701b"
+    }
+  ],
+  "decodedDefinitionPatchSHA256": "5c660780e7025dd18df9188eac5a3ab7af41cd5a07adc3b6ab2cf7117ee06210",
+  "externalTCB": {
+    "scheduler-manifest.json": "69a4a24484d348e81b161832862cd23697b3adf1a93d91de457472b9702ee207",
+    "sequencer.mjs": "17693338bdbfde0e74cab5a005be9aeece415a7bf8080906c53caf4c3d9b49e6",
+    "vitest.scheduler.config.mjs": "a2d736eb0e8fed976cad96e3b2c0eafdf01d9437a93e9272ac3bdce87e9ba05a"
+  },
+  "runtimeFilenameRestoration": {
+    "planner-controls.test.mjs.txt": "planner-controls.test.mjs",
+    "scheduler-manifest.json.txt": "scheduler-manifest.json",
+    "sequencer.mjs.txt": "sequencer.mjs",
+    "vitest.scheduler.config.mjs.txt": "vitest.scheduler.config.mjs"
+  },
+  "selectedGroups": {
+    "C24only": 7,
+    "C33only": 8,
+    "C27": 1,
+    "otherOriginalFiles": 487,
+    "otherGroups": 6
+  },
+  "groupCounts": [83, 68, 86, 97, 85, 68, 1, 1],
+  "changedFileAssignments": 67,
+  "readOnlyControls": "qualify.mjs checks sealed data and exact unchanged runtime source, materializes only external planner files to owned temporary directory, and runs the26 pure controls; never applies workflow or executes original application cases.",
+  "uniqueProposedLabel": "run-fixed568-isolated-c24-c33-units",
+  "existingConsumedLabelExcluded": true,
+  "sourceAdmission": false,
+  "executionAuthorized": false,
+  "release": "NO_GO"
+}

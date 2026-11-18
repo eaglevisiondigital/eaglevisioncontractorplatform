@@ -1,0 +1,7 @@
+/** Only shard selection changes; imported original test configuration is retained. */
+import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
+import Fixed568DedicatedSequencer from './sequencer.mjs';
+const { mergeConfig } = await import(pathToFileURL(resolve('node_modules/vitest/dist/config.js')).href);
+const { default: original } = await import(pathToFileURL(resolve('vite.config.ts')).href);
+export default mergeConfig(original, { test: { sequence: { sequencer: Fixed568DedicatedSequencer } } });
