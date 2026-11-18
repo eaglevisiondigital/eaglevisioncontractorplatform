@@ -16,6 +16,7 @@ import {
   type RefObject,
 } from 'react';
 import type { Phase3Repository } from '../../lib/phase3';
+import { crmPageSize, type Customer } from '../../lib/operations';
 import type { CompanyProfile } from '../../domain/platform';
 import {
   blankEstimate,
@@ -42,6 +43,38 @@ import { VoiceDraftReview } from './VoiceDraftReview';
 import type { VoiceDraftContext } from './voice-draft-review';
 const unavailableEstimate =
   'This estimate is unavailable or has changed. Refresh estimates before opening it.';
+const unavailableDraftCustomer =
+  'Customer selection is unavailable or has changed. Refresh estimates and choose the customer again.';
+const draftCustomerIdentity = (row: Customer) =>
+  JSON.stringify([
+    row.id,
+    row.organization_id,
+    row.display_name,
+    row.email,
+    row.phone,
+    row.customer_type,
+    row.preferred_contact,
+    row.created_at,
+  ]);
+const ownedDraftCustomers = (rows: readonly Customer[], org: string) =>
+  Array.isArray(rows) &&
+  rows.length <= crmPageSize &&
+  Array.from(rows).every(
+    (row, index) =>
+      Object.hasOwn(rows, index) &&
+      row &&
+      row.organization_id === org &&
+      typeof row.id === 'string' &&
+      !!row.id &&
+      typeof row.display_name === 'string' &&
+      typeof row.created_at === 'string' &&
+      [row.email, row.phone].every(
+        (value) => value === null || typeof value === 'string',
+      ) &&
+      ['residential', 'commercial'].includes(row.customer_type) &&
+      ['email', 'phone', 'sms'].includes(row.preferred_contact),
+  ) &&
+  new Set(rows.map((row) => row.id)).size === rows.length;
 type EstimateRow = Awaited<ReturnType<Phase3Repository['list']>>[number];
 const estimateIdentity = (row: EstimateRow) =>
   JSON.stringify([
@@ -161,7 +194,10 @@ export function Estimates({
           sourceRepo: repo,
           sourceOrg: company.id,
         };
-        if (!ownedEstimates(loaded.list, company.id))
+        if (
+          !ownedEstimates(loaded.list, company.id) ||
+          !ownedDraftCustomers(loaded.customers, company.id)
+        )
           throw Error(unavailableEstimate);
         await requireEstimateRead(repo, company.id);
         return loaded;
@@ -260,6 +296,35 @@ export function Estimates({
     status,
     page,
   ]);
+  const [draftCustomer, setDraftCustomer] = useState<{
+    source: NonNullable<typeof resource.data>;
+    id: string;
+  }>();
+  const customerSource =
+    !resource.loading &&
+    data.data &&
+    ownedDraftCustomers(data.data.customers, company.id)
+      ? data.data
+      : undefined;
+  const draftCustomerId =
+    customerSource && draftCustomer?.source === customerSource
+      ? draftCustomer.id
+      : '';
+  const chosenCustomer = customerSource?.customers.find(
+    (row) => row.id === draftCustomerId,
+  );
+  const creationContext = useMemo(
+    () => ({ repo, company, source: customerSource, choice: draftCustomer }),
+    [repo, company, customerSource, draftCustomer],
+  );
+  const liveCreation = useRef<typeof creationContext | undefined>(undefined);
+  useLayoutEffect(() => {
+    liveCreation.current = creationContext;
+    return () => {
+      if (liveCreation.current === creationContext)
+        liveCreation.current = undefined;
+    };
+  }, [creationContext]);
   async function open(row: EstimateRow) {
     if (opening.current === context) return;
     opening.current = context;
@@ -318,20 +383,33 @@ export function Estimates({
   }
   async function create(templateId?: string) {
     await task.run(async () => {
-      if (!data.data?.customers.length)
-        throw new Error('Create a customer before estimating');
-      const p = blankEstimate(
-        data.data.customers[0].id,
-        data.data.defaults.currency,
-      );
-      Object.assign(p, { terms: data.data.defaults.default_terms });
+      const source = customerSource;
+      const active = () => liveCreation.current === creationContext;
+      if (!source || !chosenCustomer || !active())
+        throw Error(
+          'Choose a current company customer before creating an estimate.',
+        );
+      const customerId = chosenCustomer.id;
+      let expectedIdentity = '';
+      const exactChoice = () => {
+        if (!active() || !ownedDraftCustomers(source.customers, company.id))
+          throw Error(unavailableDraftCustomer);
+        const matches = source.customers.filter((row) => row.id === customerId);
+        if (
+          matches.length !== 1 ||
+          draftCustomerIdentity(matches[0]) !== expectedIdentity
+        )
+          throw Error(unavailableDraftCustomer);
+      };
+      const p = blankEstimate(customerId, source.defaults.currency);
+      Object.assign(p, { terms: source.defaults.default_terms });
       p.lines[0].unit_price_minor = null;
-      p.lines[0].markup_bps = data.data.defaults.material_markup_bps;
+      p.lines[0].markup_bps = source.defaults.material_markup_bps;
       const d = new Date();
-      d.setDate(d.getDate() + data.data.defaults.expiration_days);
+      d.setDate(d.getDate() + source.defaults.expiration_days);
       p.expires_on = d.toISOString().slice(0, 10);
       if (templateId) {
-        const template = data.data.templates.find((t) => t.id === templateId);
+        const template = source.templates.find((t) => t.id === templateId);
         if (template)
           Object.assign(p, structuredClone(template.content), {
             customer_id: p.customer_id,
@@ -341,8 +419,36 @@ export function Estimates({
             attachments: [],
           });
       }
+      try {
+        expectedIdentity = draftCustomerIdentity(
+          structuredClone(chosenCustomer),
+        );
+        exactChoice();
+        const observed = await repo.operations.getCustomer(
+          company.id,
+          customerId,
+        );
+        exactChoice();
+        if (
+          !ownedDraftCustomers([observed], company.id) ||
+          draftCustomerIdentity(observed) !== expectedIdentity
+        )
+          throw Error(unavailableDraftCustomer);
+        await requireEstimateRead(repo, company.id);
+        exactChoice();
+        if (
+          !ownedDraftCustomers([observed], company.id) ||
+          draftCustomerIdentity(observed) !== expectedIdentity
+        )
+          throw Error(unavailableDraftCustomer);
+      } catch {
+        if (active()) setDraftCustomer(undefined);
+        throw Error(unavailableDraftCustomer);
+      }
+      exactChoice();
       const created = await repo.create(company, p);
       if (current()) {
+        focusEditor.current = true;
         choose(created);
         data.reload();
       }
@@ -419,6 +525,8 @@ export function Estimates({
             className="secondary"
             disabled={resource.loading}
             onClick={() => {
+              liveCreation.current = undefined;
+              setDraftCustomer(undefined);
               liveNavigation.current = undefined;
               data.reload();
             }}
@@ -427,7 +535,7 @@ export function Estimates({
           </button>
           {!voiceDraft && (
             <button
-              disabled={task.busy || busy || !data.data}
+              disabled={task.busy || busy || !chosenCustomer}
               onClick={() => void create()}
             >
               <BackOfficeText text="New estimate" />
@@ -437,6 +545,49 @@ export function Estimates({
       </div>
       <p>Build clear scope. Protect your costs. Keep every issued version.</p>
       <ResourceStatus {...data} />
+      {!voiceDraft && (
+        <section
+          aria-label="New estimate customer selection"
+          style={{ marginBottom: '1rem' }}
+        >
+          <div className="form-grid">
+            <Field label="Customer for new estimate">
+              <select
+                required
+                value={draftCustomerId}
+                disabled={
+                  task.busy || busy || !customerSource?.customers.length
+                }
+                onChange={(event) => {
+                  const id = event.target.value;
+                  setDraftCustomer(
+                    customerSource?.customers.some((row) => row.id === id)
+                      ? { source: customerSource, id }
+                      : undefined,
+                  );
+                }}
+              >
+                <option value="">Choose a customer…</option>
+                {customerSource?.customers.map((row) => (
+                  <option key={row.id} value={row.id}>
+                    {row.display_name || 'Customer name not recorded'}
+                    {row.email
+                      ? ` · ${row.email}`
+                      : row.phone
+                        ? ` · ${row.phone}`
+                        : ''}
+                  </option>
+                ))}
+              </select>
+            </Field>
+            <p className="muted">
+              {customerSource?.customers.length
+                ? 'Choose from the company customers currently loaded. New estimates and template drafts use this customer.'
+                : 'No current customer choices are available. Refresh estimates before starting a draft.'}
+            </p>
+          </div>
+        </section>
+      )}
       {repo.sample && repo === customerChangeWorkspace.repo.estimates && (
         <CustomerChangeRequests
           company={company}
@@ -497,7 +648,11 @@ export function Estimates({
         </Field>
         {!voiceDraft && (
           <Field label="Create from company template">
-            <select value="" onChange={(e) => void create(e.target.value)}>
+            <select
+              value=""
+              disabled={task.busy || busy || !chosenCustomer}
+              onChange={(e) => void create(e.target.value)}
+            >
               <option value="">Choose a template…</option>
               {data.data?.templates.map((t) => (
                 <option key={t.id} value={t.id}>
