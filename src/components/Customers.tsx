@@ -401,6 +401,11 @@ export function Customers({ repo, org }: { repo: Operations; org: string }) {
           </label>
         </div>
         <ResourceStatus {...resource} />
+        {resource.error && !resource.loading && (
+          <button type="button" className="secondary" onClick={resource.reload}>
+            Reload customer directory
+          </button>
+        )}
         <div className="record-list">
           {!resource.loading &&
             resource.data?.rows.map((c) => (
@@ -418,15 +423,18 @@ export function Customers({ repo, org }: { repo: Operations; org: string }) {
                 <span className="tag">{c.customer_type}</span>
               </button>
             ))}
-          {!resource.loading && !resource.data?.rows.length && (
-            <p>No customers match this view.</p>
-          )}
+          {!resource.loading &&
+            !resource.error &&
+            resource.data &&
+            !resource.data.rows.length && <p>No customers match this view.</p>}
         </div>
-        <Pagination
-          page={page}
-          count={resource.data?.count ?? 0}
-          onChange={setPage}
-        />
+        {!resource.loading && !resource.error && resource.data && (
+          <Pagination
+            page={page}
+            count={resource.data?.count ?? 0}
+            onChange={setPage}
+          />
+        )}
       </article>
       {selected !== undefined &&
         (selected === null || selected.organization_id === org) && (
