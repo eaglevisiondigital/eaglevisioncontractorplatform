@@ -4,6 +4,7 @@ import type { Phase3Repository } from '../../lib/phase3';
 import type { Job } from '../../domain/jobs/financials';
 import { estimateUnits } from '../../domain/estimating/types';
 import { exactForecastSource } from './job-forecast-conflicts';
+import { Field } from './fields';
 
 type ScopeReference = {
   kind: 'internal_original_job_scope_v1';
@@ -46,6 +47,12 @@ export function JobOriginalScope({
     context: typeof context;
     value: ScopeReference;
   }>();
+  const [filter, setFilter] = useState<{
+    source: ScopeReference;
+    query: string;
+    kind: string;
+  }>();
+  const searchInput = useRef<HTMLInputElement>(null);
   useLayoutEffect(() => {
     live.current = context;
     return () => {
@@ -55,6 +62,15 @@ export function JobOriginalScope({
   const current = read?.context === context ? read.value : undefined;
   const busy = activity === context;
   const message = status?.context === context ? status.text : '';
+  const query = current && filter?.source === current ? filter.query : '';
+  const kind = current && filter?.source === current ? filter.kind : 'all';
+  const term = query.trim().toLocaleLowerCase();
+  const shown =
+    current?.lines.filter(
+      (line) =>
+        (kind === 'all' || line.kind === kind) &&
+        line.description.toLocaleLowerCase().includes(term),
+    ) ?? [];
 
   async function load(download: boolean) {
     if (running.current === context) return;
@@ -201,7 +217,64 @@ export function JobOriginalScope({
             {current.issued_version_id} · Observed job revision{' '}
             {current.observed_job_revision}
           </p>
-          {current.lines.length ? (
+          <div className="form-grid">
+            <Field label="Find original scope lines">
+              <input
+                ref={searchInput}
+                type="search"
+                maxLength={100}
+                value={query}
+                onChange={(event) =>
+                  setFilter({
+                    source: current,
+                    query: event.target.value,
+                    kind,
+                  })
+                }
+              />
+            </Field>
+            <Field label="Original scope kind">
+              <select
+                value={kind}
+                onChange={(event) =>
+                  setFilter({
+                    source: current,
+                    query,
+                    kind: event.target.value,
+                  })
+                }
+              >
+                <option value="all">All kinds</option>
+                {['material', 'product', 'labor', 'service', 'allowance'].map(
+                  (value) => (
+                    <option key={value} value={value}>
+                      {value}
+                    </option>
+                  ),
+                )}
+              </select>
+            </Field>
+          </div>
+          <div className="filters">
+            <button
+              type="button"
+              className="secondary"
+              disabled={!query && kind === 'all'}
+              onClick={() => {
+                setFilter(undefined);
+                searchInput.current?.focus();
+              }}
+            >
+              Reset scope filters
+            </button>
+            <p role="status">
+              {shown.length} of {current.lines.length} original scope lines
+              shown
+            </p>
+          </div>
+          {!current.lines.length ? (
+            <p>No original included scope lines are recorded.</p>
+          ) : shown.length ? (
             <div
               className="p3-table-wrap"
               tabIndex={0}
@@ -218,7 +291,7 @@ export function JobOriginalScope({
                   </tr>
                 </thead>
                 <tbody>
-                  {current.lines.map((line) => (
+                  {shown.map((line) => (
                     <tr key={line.id}>
                       <th scope="row" style={{ textTransform: 'none' }}>
                         <span style={{ overflowWrap: 'anywhere' }}>
@@ -240,7 +313,7 @@ export function JobOriginalScope({
               </table>
             </div>
           ) : (
-            <p>No original included scope lines are recorded.</p>
+            <p>No original scope lines match these filters.</p>
           )}
         </section>
       )}
