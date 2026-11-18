@@ -1,5 +1,6 @@
 import { useEffect, useSyncExternalStore } from 'react';
 import { CommercialCustomerReadController } from './commercial-customer-read';
+import { formatMinor } from '../../domain/estimating/calculation';
 import './customer-invoice.css';
 import './commercial-customer-receipt.css';
 
@@ -49,6 +50,15 @@ export function CommercialCustomerReceipt({
           <p role="status">Issued invoice · payment UNKNOWN</p>
           <p>{state.value.invoice.number}</p>
           <p>{state.value.invoice.title}</p>
+          <p>
+            Issued invoice amount:{' '}
+            <strong>
+              {formatMinor(
+                state.value.invoice.amountMinor,
+                state.value.invoice.currency,
+              )}
+            </strong>
+          </p>
           <details>
             <summary>Original issuance receipt</summary>
             <dl>
