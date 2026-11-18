@@ -1,0 +1,332 @@
+{
+  "classification": "UNAPPLIED_ENV_ONLY_PROPOSAL_NO_SOURCE_AUTHOR_OR_EXECUTION_APPROVAL",
+  "definitionParent": "57d826efa6b101d99fb87abb43e4154a060c6bbf",
+  "definitionParentTree": "fe8fa5a08b826d9c614a60e5f3508f0453211cfc",
+  "path": ".github/workflows/foundation537-isolated-unit-candidate.yml",
+  "mode": "100644",
+  "beforeSHA256": "c660760a0a005c85af9ae1586225c01934b932b445d990fdd6ab3d343ce3701b",
+  "afterSHA256": "5f2de721b9e092f0b7ca3382e3945dba6d932ba3797c3dc815e95a90011daadf",
+  "decodedPatchSHA256": "109189ceb7cdf4a85f1d135762b695bdeda56c06c89fd5f1a91653d071fa9f63",
+  "originalWorkflowIsExact84017BytePrefix": true,
+  "runtimeCommit": "3f0c6b53747e60765cdc7faf1308b57ce730676f",
+  "runtimeTree": "00f6d211affd7e364573ca792e08a1dd67b8f190",
+  "runtimeFiles": 2568,
+  "newJob": "fixed568-python3142-rehearsal",
+  "newProposedLabel": "run-fixed568-python3142-rehearsal",
+  "ubuntu": "24.04",
+  "python": "3.14.2",
+  "node": "24",
+  "jobTimeoutMinutes": 10,
+  "originalCommands": [
+    {
+      "name": "binary-lock-install",
+      "runYAML": "      - run: >-\n          python -m pip install --require-hashes --only-binary=:all:\n          -r recovery/monterey/rehearsal-requirements.lock\n"
+    },
+    {
+      "name": "public-zip-check",
+      "runYAML": "      - run: python -B scripts/package-rehearsal.py --check\n"
+    },
+    {
+      "name": "native-cipher-check",
+      "runYAML": "      - run: >-\n          python -c \"import sys; sys.path.insert(0, 'recovery/monterey');\n          from verify_package import check_dependencies; check_dependencies()\"\n"
+    },
+    {
+      "name": "original-python105",
+      "runYAML": "      - run: python -B -m unittest discover -s recovery/monterey -p 'test_*.py'\n"
+    },
+    {
+      "name": "pinned-npm",
+      "runYAML": "      - run: npm ci\n"
+    },
+    {
+      "name": "original-vitest9",
+      "runYAML": "      - run: npx vitest run tests/property-p1-backup.test.ts tests/property-p1-mailbox.test.ts\n"
+    }
+  ],
+  "sourceProofSHA256": "af69046322645626329f1eaccc93448452ab0990d93d412996f70ffe4758b332",
+  "layoutSHA256": "8b5574d5b7add04166b9dc27d551a9dd71af769e16f90b4639593398fcbd6dd0",
+  "inlineHelperVerifierSHA256": "e20842146ec9be9971b23e0bc57962f26eec07da6509c497faf96d0243c64450",
+  "readset": [
+    {
+      "path": "docs/PROPERTY_CONNECTED_TEST_CASES.json",
+      "mode": "100644",
+      "sha256": "9f58432324e0a07c81e70545a2ea817e7d5fb2761f1b6da29f397e6d79c6ad41",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "docs/TWO_COMPUTER_REHEARSAL.md",
+      "mode": "100644",
+      "sha256": "94e09b63e5ac1a872bc744980c730f165a63fdcd235a50320ed602194149f0b1",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "docs/TWO_COMPUTER_REHEARSAL_COMPATIBILITY.md",
+      "mode": "100644",
+      "sha256": "858e91279a7a83dab31fc5c7a5255cf43780829f04e6b587a95fb9b137addd49",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "package-lock.json",
+      "mode": "100644",
+      "sha256": "038f80c378263f8c961930661d03801e55d882ad54c5929095234aea3306ce6d",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "package.json",
+      "mode": "100644",
+      "sha256": "147c300e2aa125ee697f8b70a6a0e3aaeb1a2c027b5606979ac1e07744d362f9",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "recovery/distribution/propel-synthetic-rehearsal.zip",
+      "mode": "100644",
+      "sha256": "32cb88f123e0fd776986f32d8508c913dbedc1ac977779708d1ba7218bbb8d59",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "recovery/monterey/Backup.command",
+      "mode": "100755",
+      "sha256": "4460d74eeac54c7a122e6942e4e8a547d9206debd6b220e93869379fc58b7af7",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "recovery/monterey/Primary.command",
+      "mode": "100755",
+      "sha256": "f8954832f3b0194a73afb0c0d4dafd3634ab91e733dcf222bfe71b7c97af2557",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "recovery/monterey/Recover.command",
+      "mode": "100755",
+      "sha256": "0846b70c3fb678effec57c5b7e5c97d226d78d6a7145e18f4f30d7c143bcb4ef",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "recovery/monterey/Setup.command",
+      "mode": "100755",
+      "sha256": "03624d4f95e3c0283f09b5575383bdc61c3c2e57a213674ebbe239a1f3ea2666",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "recovery/monterey/custody.py",
+      "mode": "100644",
+      "sha256": "dd3351efe354949fce42a48024a191eda6479a31afb3fd18b57dd524b1e4cb08",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "recovery/monterey/device.py",
+      "mode": "100644",
+      "sha256": "8b9669e9371f29de74ef96f5ba1dababb35c4d74f22f0003c92c2c3b23405534",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "recovery/monterey/device_facts.py",
+      "mode": "100644",
+      "sha256": "9e6e5020e85f7b8a09cf177309c3a6de7cde04e28a5231a3c7b0cfd2ed4c8180",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "recovery/monterey/https_adapter.py",
+      "mode": "100644",
+      "sha256": "68f38f26f17ffcd7e5dfc46e127f6663a658938161efc5cf0563a82a005d8e9c",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "recovery/monterey/mailbox.py",
+      "mode": "100644",
+      "sha256": "874651af5858754279050867548a8db7411a0726fdcddc7445266a57981a3efc",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "recovery/monterey/p1_recovery.py",
+      "mode": "100644",
+      "sha256": "5e359eb18f8a8ecaee7c249ed310a86ed86805b8357ce89fe838bc280099d6c8",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "recovery/monterey/rehearsal-requirements.lock",
+      "mode": "100644",
+      "sha256": "41621e3ea15cf1ff3766a1e2c2d95d6aea3d6cb7250cb23b72dbf62860c8a81f",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "recovery/monterey/rehearsal.py",
+      "mode": "100644",
+      "sha256": "9c3b44dacd26a75b273a7f2606b5cd560bd4b641c84f6b80d0c2b9e3e59c7389",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "recovery/monterey/requirements.lock",
+      "mode": "100644",
+      "sha256": "548b714984acb70b317815fe97b22132aafd866661874bc09d19e220c2f85d8f",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "recovery/monterey/test_device_facts.py",
+      "mode": "100644",
+      "sha256": "14af7152bd081ac7681d7875a8928d962e76b77d94804d12bf6ec93c114632f0",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "recovery/monterey/test_p1_recovery.py",
+      "mode": "100644",
+      "sha256": "ad0c41b00f95622d58f5d108a85de0e12a70d888de6baf251c0d4e274f42ecaf",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "recovery/monterey/test_rehearsal.py",
+      "mode": "100644",
+      "sha256": "87e22c7ceefe3972d5f7e623c2627ea26039521bfc801850b458952fffef0bbe",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "recovery/monterey/test_rehearsal_setup.py",
+      "mode": "100644",
+      "sha256": "afcc1968c0da37f36283356058530323b643754e56f5bf54ae7b85de3775d537",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "recovery/monterey/test_secure_recovery.py",
+      "mode": "100644",
+      "sha256": "a71f2bf0d0153fd216d3fc7d885c4d2b16bb9b57e4a5060f9eac87c18631439d",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "recovery/monterey/verify_package.py",
+      "mode": "100644",
+      "sha256": "d0cb1968c8293c446912e5b1a595255aade13868dbc5e6fc23dec4f205529efd",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "scripts/package-rehearsal.py",
+      "mode": "100644",
+      "sha256": "92077147b9ca89c3057f515055a789fdb2b8231abf25dd15615d7687a2707bc3",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "scripts/test-git-history.mjs",
+      "mode": "100644",
+      "sha256": "2c6d9ec071cdb1982606f4553c5273cf6ead8a9ca2b2483bf83b7415e54bd487",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "server/property/acceptance-plan.ts",
+      "mode": "100644",
+      "sha256": "9625de62bfb12a8cdffffee48bb033bcbbf4e2abca31a08386205eecb511662a",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "server/property/execution/backup-custody.ts",
+      "mode": "100644",
+      "sha256": "23984203d95aa59bdf660edf06c3f7683fc8c4e8b40743b4befb406a44bfef49",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "server/property/execution/backup-mailbox.ts",
+      "mode": "100644",
+      "sha256": "35bf61b083211709b38cb4cd0b85a3c1f5bba1c0b76dd92d9bd3babb03f450be",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "server/property/execution/package.ts",
+      "mode": "100644",
+      "sha256": "0a03f572992081dd9e87ca012ad3416c51703192a6ce307fb4202e3a3d9fde4e",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "server/property/p1-readiness.ts",
+      "mode": "100644",
+      "sha256": "92f042ef1a83741244225ab605439da260257454a5a1db52a25a84c6edda1863",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "src/domain/estimating/types.ts",
+      "mode": "100644",
+      "sha256": "5e878de9c0a9cbf5f68055054b336db9f68ba4a466ec66ea9b8c66b2952d14d5",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "src/domain/jobs/financials.ts",
+      "mode": "100644",
+      "sha256": "410c292199397c9ceb5f227343bde9ba1406bab54624c5a94a97c685801fe798",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "src/domain/property/comparison.ts",
+      "mode": "100644",
+      "sha256": "369fe6b053b154c0bffb2a4932ef74e32a3464c03a193e9b5a837d778f58e018",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "src/domain/property/inspections.ts",
+      "mode": "100644",
+      "sha256": "7691ced4cc6b78604e782369cfedc5e5e29170109c12485000894d4ffbe8c11f",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "src/lib/database.types.ts",
+      "mode": "100644",
+      "sha256": "430fe4085663ee1d83d8431fa6c84253ab6f6d1d2ee643efe4a4fa1e8b519a5d",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "tests/helpers/p1-backup-peer.py",
+      "mode": "100644",
+      "sha256": "5787389bd9fd8804301efa4b4d3507fc7c6d18c483082a6cffc7e90ead28c645",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "tests/helpers/p1-execution.ts",
+      "mode": "100644",
+      "sha256": "e3a89d0883578c35b271283bf565a43a5d02c7dd4e9947dabdfa1449aeba5c96",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "tests/helpers/property-p1-fixture.ts",
+      "mode": "100644",
+      "sha256": "df95bf0fc63496e3b5ddb695d9c9c4b8d55fe8fecc36c8af61c7de5b9e5857dc",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "tests/property-p1-backup.test.ts",
+      "mode": "100644",
+      "sha256": "ce2f2be1039b7562045bc2e882718bcf1af270357a735b5b4ea1eb0efe3daf31",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "tests/property-p1-mailbox.test.ts",
+      "mode": "100644",
+      "sha256": "ca97fbb5b40294a7bbb24ccd8a485250e25ff925c76206300f9ea3cf21645f93",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "tests/setup/git-history.ts",
+      "mode": "100644",
+      "sha256": "7bc80e906a8203700860c81c4cd4d2a1f0a57abfd902ebed9f1ef7fb5a3c6957",
+      "before560EqualsActual568": true
+    },
+    {
+      "path": "vite.config.ts",
+      "mode": "100644",
+      "sha256": "0fdc8ac3b8d922c2229a25d67d0b42ab3c895489bfc7ee514aae0c78853bf48d",
+      "before560EqualsActual568": true
+    }
+  ],
+  "retained560Commit": "89389a560ee8a45f6b947081368d7e6c639858df",
+  "outputs": {
+    "evidence": "RUNNER_TEMP/fixed568-python3142-evidence",
+    "pycache": "RUNNER_TEMP/fixed568-python3142-pycache",
+    "temporary": "RUNNER_TEMP/fixed568-python3142-tmp",
+    "artifact": "Evidenceonly; pycache/tmp excluded"
+  },
+  "original8UnitJobsAndUnionUnchanged": true,
+  "accepted489Replayed": false,
+  "protectedRehearsalOrFinancialHeadersOrPortsChanged": false,
+  "old80dTimingRerun": false,
+  "sourceAuthorApproved": false,
+  "executionApproved": false,
+  "wholeFoundationPass": false,
+  "sourceAdmission": false,
+  "operationalAcceptance": false,
+  "release": "NO_GO"
+}
