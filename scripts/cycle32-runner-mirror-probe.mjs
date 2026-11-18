@@ -20,7 +20,7 @@ const knownTargets = new Map([
 const reviewed = Object.freeze({
   source_probe:
     'faee337a766c98ba22439992956f523e7b4c314ab2eb75a1e830e4c1e7320402',
-  validator: '531b1f3b43e38975a456a8421fc7135991b89313e22e0f87daa5ecc673bf659f',
+  validator: 'e2b034cfbdf1e7b3b44e8f2eb3b51ffabec5341097ed9cb1d2307a65f36ba762',
 });
 const sourceVocabulary = new Map([
   ['types', ['deb', 'deb-src']],

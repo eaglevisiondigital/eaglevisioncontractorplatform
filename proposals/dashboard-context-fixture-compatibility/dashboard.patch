@@ -1,13 +1,13 @@
 diff --git a/tests/propel-dashboard-parity-source.test.ts b/tests/propel-dashboard-parity-source.test.ts
-index 54cb719dac5270996e7693ab56df437321ff5a1b..7cf22234fc39e1470789e76d08ec190773703c71 100644
+index 7cf22234fc39e1470789e76d08ec190773703c71..c04ac5755f295a75766dd564ab7547e6fb208ece 100644
 --- a/tests/propel-dashboard-parity-source.test.ts
 +++ b/tests/propel-dashboard-parity-source.test.ts
 @@ -11,7 +11,7 @@
      );
      if (
        createHash('sha256').update(bytes).digest('hex') !==
--      '6c5bbe0cac6f519dccd5dcfae6b3200a3a1ec1e821bad48ada495861aa8af9a1'
-+      'a08883e5999a463612999ce9c8e86ef475bf9abc41e59f32a7c5c7f5f9549244'
+-      'a08883e5999a463612999ce9c8e86ef475bf9abc41e59f32a7c5c7f5f9549244'
++      'ff0215b341e57e735b616292415d2bbcca94152c7dcf2eff4d4a012d3e4c0117'
      )
        throw Error('Exact approved dashboard/forms source fixture required');
      return 'data:text/javascript;base64,' + bytes.toString('base64');

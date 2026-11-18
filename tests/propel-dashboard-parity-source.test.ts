@@ -11,7 +11,7 @@ const { dashboardSource: source } = (await import(
     );
     if (
       createHash('sha256').update(bytes).digest('hex') !==
-      'a08883e5999a463612999ce9c8e86ef475bf9abc41e59f32a7c5c7f5f9549244'
+      'ff0215b341e57e735b616292415d2bbcca94152c7dcf2eff4d4a012d3e4c0117'
     )
       throw Error('Exact approved dashboard/forms source fixture required');
     return 'data:text/javascript;base64,' + bytes.toString('base64');

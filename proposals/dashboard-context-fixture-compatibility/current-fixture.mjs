@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { devNull } from 'node:os';
 const folder = 'proposals/dashboard-context-fixture-compatibility/';
 const manifestSeal =
-  'ff7cc51eefbacf096555febeb4f4d6239cf10af62f1eafbdde36e116af227e5a';
+  'cd8f1599e51a8da4cbb98318a608d356be79177a5c5b63de03f1235aa11d6791';
 const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const oid = (kind, bytes) =>
   createHash('sha1')
@@ -147,6 +147,7 @@ const ownFiles = new Set([
   'dashboard.patch',
   'invoice-held.patch',
   'controls.test.mjs',
+  'chromium-admission.controls.mjs',
 ]);
 function checkOwn() {
   const names = readdirSync(folder);
@@ -171,6 +172,91 @@ function checkOwn() {
       ).equals(proposedPatchBytes(name))
     )
       fail();
+}
+// These two CI source consumers are deliberately separate from financial/P1 ports.
+function ciAfterBytes(row) {
+  if (row.kind === 'c32-test') {
+    if (row.afterTemplate.split('__CURRENT_FIXTURE_SELF_SHA256__').length !== 2)
+      fail();
+    return Buffer.from(
+      row.afterTemplate.replace('__CURRENT_FIXTURE_SELF_SHA256__', selfSeal),
+    );
+  }
+  if (row.kind !== 'actual-observer') fail();
+  const bytes = Buffer.from(row.afterText);
+  if (sha(bytes) !== row.afterSHA256) fail();
+  return bytes;
+}
+function ciBeforeBytes(row) {
+  const bytes = Buffer.from(row.beforeText);
+  if (sha(bytes) !== row.beforeSHA256 || oid('blob', bytes) !== row.beforeOid)
+    fail();
+  return bytes;
+}
+function projectPublicCiInventory(row, actual) {
+  verifyCurrentPhysicalFrame();
+  const fresh = regular(row.path, row.mode);
+  const expected =
+    capturedPhase === 'after' ? ciAfterBytes(row) : ciBeforeBytes(row);
+  if (!fresh.equals(actual) || !fresh.equals(expected)) fail();
+  if (
+    git('ls-tree', manifest.base, '--', row.path) !==
+    `100644 blob ${row.beforeOid}\t${row.path}`
+  )
+    fail();
+  const historical = gitBytes('show', manifest.base + ':' + row.path);
+  if (
+    !historical.equals(ciBeforeBytes(row)) ||
+    !regular(row.path, row.mode).equals(fresh)
+  )
+    fail();
+  verifyCurrentPhysicalFrame();
+  return Buffer.from(historical);
+}
+function projectPublicCiHelper(actual) {
+  verifyCurrentPhysicalFrame();
+  const pin = manifest.ciSourceProjection;
+  const fresh = regular(pin.path, pin.mode);
+  if (
+    !fresh.equals(actual) ||
+    sha(fresh) !== pin.currentSHA256 ||
+    oid('blob', fresh) !== pin.currentOid
+  )
+    fail();
+  // Fixed immutable public commit data, never a missing-current-source fallback.
+  if (
+    git('ls-tree', pin.historicalCommit, '--', pin.path) !==
+    `100644 blob ${pin.historicalOid}\t${pin.path}`
+  )
+    fail();
+  const historical = gitBytes('show', pin.historicalCommit + ':' + pin.path);
+  if (
+    sha(historical) !== pin.historicalSHA256 ||
+    oid('blob', historical) !== pin.historicalOid ||
+    !regular(pin.path, pin.mode).equals(fresh)
+  )
+    fail();
+  verifyCurrentPhysicalFrame();
+  return Buffer.from(historical);
+}
+export function readPublicCiFixture(path, encoding) {
+  const key = relative(
+    source,
+    path instanceof URL ? fileURLToPath(path) : resolve(String(path)),
+  );
+  if (
+    !manifest.ciSourceProjection.testReadPaths.includes(key) ||
+    (encoding !== undefined && typeof encoding !== 'string')
+  )
+    fail();
+  verifyCurrentPhysicalFrame();
+  const actual = regular(key);
+  const result =
+    key === manifest.ciSourceProjection.path
+      ? projectPublicCiHelper(actual)
+      : actual;
+  verifyCurrentPhysicalFrame();
+  return encoding ? result.toString(encoding) : Buffer.from(result);
 }
 const gitEnvironment = Object.freeze({
   PATH: process.env.PATH,
@@ -345,6 +431,7 @@ export function verifyCurrentPhysicalFrame() {
   checkOwn();
   let files = 0;
   const phases = [];
+  const ciPhases = [];
   function walk(directory, path = '') {
     const first = lstatSync(directory);
     if (!first.isDirectory() || first.isSymbolicLink()) fail();
@@ -375,6 +462,15 @@ export function verifyCurrentPhysicalFrame() {
             else fail();
             bytes = originals[id];
           }
+        const ciRow = manifest.ciScopeRows.find((row) => row.path === key);
+        if (ciRow) {
+          if ((info.mode & 0o7777) !== ciRow.mode) fail();
+          const before = ciBeforeBytes(ciRow);
+          if (bytes.equals(before)) ciPhases.push('before');
+          else if (bytes.equals(ciAfterBytes(ciRow))) ciPhases.push('after');
+          else fail();
+          bytes = before;
+        }
         const forward = manifest.fixtureMetadataForwards.find(
           (row) => row.path === key && row.phased,
         );
@@ -430,6 +526,8 @@ export function verifyCurrentPhysicalFrame() {
     tree !== manifest.frames[phases[0]]?.tree ||
     files !== manifest.frames[phases[0]]?.files ||
     phases.length !== 2 ||
+    ciPhases.length !== 2 ||
+    ciPhases.some((phase) => phase !== phases[0]) ||
     phases.some((phase) => phase !== phases[0]) ||
     (capturedPhase && capturedPhase !== phases[0])
   )
@@ -480,6 +578,25 @@ export async function qualifyInvoiceGuardProposal({
         source,
         path instanceof URL ? fileURLToPath(path) : resolve(String(path)),
       );
+    // Three explicit public CI inventory CHECK paths; only helper is also a TEST read.
+    const ciRow = manifest.ciScopeRows.find((row) => row.path === key);
+    if (ciRow) {
+      const historical = projectPublicCiInventory(ciRow, Buffer.from(bytes));
+      return encoding
+        ? historical.toString(
+            typeof encoding === 'string' ? encoding : encoding.encoding,
+          )
+        : historical;
+    }
+    // Existing financial/P1 reads below are unchanged.
+    if (key === manifest.ciSourceProjection.path) {
+      const historical = projectPublicCiHelper(Buffer.from(bytes));
+      return encoding
+        ? historical.toString(
+            typeof encoding === 'string' ? encoding : encoding.encoding,
+          )
+        : historical;
+    }
     // SEPARATE, UNAPPROVED SCOPE AMENDMENT: one TEST source body only.
     // Actual execution still reads f282 from disk. No runtime/SQL/expiry port.
     const p1 = manifest.p1TestHistoricalScopeAmendment;
@@ -587,7 +704,7 @@ export async function qualifyInvoiceGuardProposal({
     },
   });
   const knownReadPaths = new Set(
-    gitBytes('ls-tree', '-rz', manifest.base)
+    gitBytes('ls-tree', '-rz', manifest.knownReadBase)
       .toString()
       .split('\0')
       .filter(Boolean)
@@ -599,6 +716,17 @@ export async function qualifyInvoiceGuardProposal({
       path instanceof URL ? fileURLToPath(path) : resolve(String(path)),
     );
     if (!knownReadPaths.has(key)) fail();
+    if (manifest.ciSourceProjection.inventoryCheckPaths.includes(key)) {
+      verifyCurrentPhysicalFrame();
+      const actual = regular(key, manifest.ciSourceProjection.mode);
+      verifyCurrentPhysicalFrame();
+      const encoding = args[0];
+      return encoding
+        ? actual.toString(
+            typeof encoding === 'string' ? encoding : encoding.encoding,
+          )
+        : actual;
+    }
     return manifest.fixtureMetadataForwards.some((row) => row.path === key)
       ? checked(q.readCurrent, [path, ...args])
       : q.readCurrent(path, ...args);

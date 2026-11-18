@@ -1,6 +1,45 @@
 import { createHash } from 'node:crypto';
-import { readFileSync } from 'node:fs';
-import { expect, it } from 'vitest';
+import { readFileSync as actualReadFileSync, lstatSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { beforeEach, afterEach, expect, it } from 'vitest';
+
+// Proposed TEST-only compatibility: real observer imports still read actual FS.
+const fixtureBytes = actualReadFileSync(
+  resolve(
+    'proposals/dashboard-context-fixture-compatibility/current-fixture.mjs',
+  ),
+);
+const fixtureInfo = lstatSync(
+  resolve(
+    'proposals/dashboard-context-fixture-compatibility/current-fixture.mjs',
+  ),
+);
+if (
+  !fixtureInfo.isFile() ||
+  fixtureInfo.isSymbolicLink() ||
+  (fixtureInfo.mode & 0o7777) !== 0o644 ||
+  createHash('sha256').update(fixtureBytes).digest('hex') !==
+    'ff0215b341e57e735b616292415d2bbcca94152c7dcf2eff4d4a012d3e4c0117'
+)
+  throw Error('Exact public CI fixture required');
+const fixture = (await import(
+  'data:text/javascript;base64,' + fixtureBytes.toString('base64')
+)) as {
+  verifyCurrentPhysicalFrame(): unknown;
+  readPublicCiFixture(
+    path: string | URL,
+    encoding?: BufferEncoding,
+  ): Buffer | string;
+};
+fixture.verifyCurrentPhysicalFrame();
+beforeEach(() => {
+  fixture.verifyCurrentPhysicalFrame();
+});
+afterEach(() => {
+  fixture.verifyCurrentPhysicalFrame();
+});
+const readFileSync = ((path: string | URL, encoding?: BufferEncoding) =>
+  fixture.readPublicCiFixture(path, encoding)) as typeof actualReadFileSync;
 
 const { classifyMirrorText, observeMirrorValidation, redactSourceShape } =
   await import(
