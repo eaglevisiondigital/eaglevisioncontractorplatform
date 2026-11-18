@@ -38,6 +38,11 @@ export function Phase3Workspace({
     return (
       <article>
         <ResourceStatus {...ready} />
+        {ready.error && !ready.loading && (
+          <button type="button" className="secondary" onClick={ready.reload}>
+            Reload estimating workspace
+          </button>
+        )}
       </article>
     );
   const access = ready.data.access;
