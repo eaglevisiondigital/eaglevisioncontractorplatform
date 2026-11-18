@@ -130,12 +130,12 @@ export function Jobs({
                 />
               )}
             </>
-          ) : (
+          ) : !data.loading && !data.error && data.data ? (
             <p>
               No jobs yet. Internally issue an estimate, then explicitly approve
               its job baseline. This does not represent customer acceptance.
             </p>
-          )}
+          ) : null}
         </>
       ) : (
         <FieldExpenses
