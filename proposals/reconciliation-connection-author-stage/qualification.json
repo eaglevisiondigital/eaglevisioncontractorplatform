@@ -1,0 +1,75 @@
+{
+  "classification": "LOCAL_COMPONENT_QUALIFICATION_ONLY_NOT_HOSTED_OR_GLOBAL_ACCEPTANCE",
+  "originalSource4": {
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "wallMs": 1126.980333996471,
+    "maxCaseMs": 142.809625,
+    "internalChildLimitMs": 5000,
+    "originalCaseAndHookBudgetMs": 30000,
+    "reportSHA256": "d8525bfff7bceee678ea7aafcde9a38e70fde99590874b95a9caed7163a14b6d"
+  },
+  "originalNative17": {
+    "passed": 17,
+    "failed": 0,
+    "skipped": 0,
+    "invocations": 1,
+    "retries": 0,
+    "wallSeconds": 17.124529166001594,
+    "maxCaseMs": 2361.3827919999985,
+    "caseAndHookBudgetMs": 30000,
+    "maxWorkers": 4,
+    "postgresVersion": "17.11",
+    "binding": "New owned disposable Unix-only PG17; TCP disabled; synthetic original fixture identities only.",
+    "cleanup": "Owned cluster stopped and removed.",
+    "testFileUnchanged": true,
+    "allOriginalCaseIdentitiesVerified": true,
+    "reportSHA256": "1df9b2e475d7139f9311e287c19ae09069cbca46aef7fe08524476ad679dd94c",
+    "summarySHA256": "3cdfa5eb657c50fc3abe314f5fbb780da1f5f764de7d84e1aa838fc3a063c3c9"
+  },
+  "targetedControls": {
+    "variantsCompleted": 179,
+    "passed": 179,
+    "wallMs": 27716.417417,
+    "maxCaseMs": 456.39520900000025,
+    "perChildLimitMs": 5000,
+    "all54Paths": "Each missing, 0755 and symlink substitution denies in new approved H/ACK frame.",
+    "other": "Unknown H/ACK/R bytes, mixed H/ACK, R94, manifest and coordinated manifest rebinding, post-import checker/manifest changes, late R withdrawal all deny. Historical50/53 complete frames remain accepted.",
+    "limitations": [
+      "One variant characterizes existing 1644 special-bit ACCEPT under unchanged runtime0777 policy; full07777 source auditing is qualification evidence, not a new runtime guarantee.",
+      "One external bootstrap variant refuses changed checker bytes before import; it does not claim the checker authenticates itself before import.",
+      "All known historical alternatives remain accepted; no new anti-rollback policy is claimed."
+    ],
+    "summarySHA256": "1e346a3c07c37b9a32c43c306c837cffeaf07bb86bf2bbdd3d1ed3f5cd1fa5d6"
+  },
+  "independentQualification": {
+    "sourceCasesPassed": 4,
+    "negativeProbesPassed": 5,
+    "negativeProbes": [
+      "new H / historical ACK",
+      "historical H / new ACK",
+      "R withdrawn after import",
+      "checker withdrawn after import",
+      "manifest withdrawn after import"
+    ],
+    "separateOwnedSourceCopy": true,
+    "nativeRerun": false,
+    "resultSHA256": "b59f22e0bac8d75c7c53eb212a65747dd183ee2063706e8ca926f901f386c637"
+  },
+  "staticChecks": {
+    "strictTypecheck": "tsc --noEmit exit0",
+    "changedFilesPrettier": "exit0",
+    "changedFilesESLint": "exit0",
+    "all2568BodiesTypesFull07777ModesAndNamesExact": true,
+    "allSevenGitMetadataDigestsUnchanged": true,
+    "originalFourCallbacksAndOptionsUnchanged": true,
+    "originalNative17FileUnchanged": true,
+    "oldMapsManifestsAndRuntimeChecksUnchanged": true
+  },
+  "excludedUnqualified": [
+    "Held 28-file global financial admission and its original import-await timeout.",
+    "Ten caller-reconciliation cases and their independent C/H/ACK source closure.",
+    "Whole Foundation/browser acceptance, hosted Auth/custody/SQL/grants/provider execution, customer access and release activation."
+  ]
+}

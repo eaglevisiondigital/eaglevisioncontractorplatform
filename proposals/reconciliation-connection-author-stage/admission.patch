@@ -1,0 +1,46 @@
+diff --git a/proposals/commercial-invoice-connection/source.ts b/proposals/commercial-invoice-connection/source.ts
+index de51b99ff233bf570cec9b24639b23f70aea621a..c5470ac13ab22d1ddb9103fe8399b4b47691a83a 100644
+--- a/proposals/commercial-invoice-connection/source.ts
++++ b/proposals/commercial-invoice-connection/source.ts
+@@ -218,6 +218,17 @@ const frames: readonly Readonly<Record<string, string>>[] = Object.freeze<
+       'c6e62953cbb1e58c8ea1c636ef8f1929cdb46cbf2655fbc2e6015c29f09b5f94',
+   },
+ ]);
++// Separate complete raw source alternative for the reviewed #592 guard author.
++// Original complete alternatives and their historical manifest stay unchanged.
++const current592Frame: Readonly<Record<string, string>> = Object.freeze({
++  ...frames[1],
++  'scripts/payment-response-source-admission.mjs':
++    'be3fc85b5fb3997a7f2e6617b44348c657db2fdaa289c6a5689fa501aa3ff684',
++  'scripts/check-payment-ack-admission.mjs':
++    'ba39a5d3b8e7c5bb63ccdfb22b1048c304e7b49b5afef87c157de0795a6c24aa',
++  'server/payments/reconciliation.ts':
++    '90f8763430b0c208c1741c00224ea2b51db68f5c7c3a6c447b06856013744746',
++});
+ const manifestDigests = Object.freeze([
+   'f50ec528254010660a31676d542d425e22731154a362d7ade6d6b7774efc9126',
+   '93f1d88a9f614504e5647a8d12b0f49f6a5f0e86218b267f8659ecbbabf469dc',
+@@ -295,5 +306,11 @@ export function assertConnectionSources(): void {
+       /* A complete alternative, never mixed pins. */
+     }
+   }
++  try {
++    exactFrame(current592Frame, manifestDigests[1]);
++    return;
++  } catch {
++    /* The current raw alternative must also match completely. */
++  }
+   throw denied();
+ }
+diff --git a/tests/commercial-invoice-connection-source.test.ts b/tests/commercial-invoice-connection-source.test.ts
+index c28de2e6f3f485525ceb913ceddfe32a8de1b7b8..7f35f1ccd6f5a1d44d909dce62d51e7d5f0c4267 100644
+--- a/tests/commercial-invoice-connection-source.test.ts
++++ b/tests/commercial-invoice-connection-source.test.ts
+@@ -22,6 +22,7 @@ function withCopy(action: (root: string, check: () => void) => void) {
+   try {
+     for (const path of [
+       ...Object.keys(manifest.source),
++      'server/payments/reconciliation.ts',
+       'proposals/commercial-invoice-connection/source.ts',
+       'proposals/commercial-invoice-connection/source.json',
+     ]) {
