@@ -864,7 +864,7 @@ function EstimateEditor({
     calculation: calc ?? initial.version.calculation,
   };
   return (
-    <article className="p3-workspace estimate-editor">
+    <article className="p3-workspace estimate-editor" aria-busy={task.busy}>
       <div className="section-title">
         <div>
           <span className="eyebrow">
@@ -893,7 +893,7 @@ function EstimateEditor({
         {!draftOnly && (
           <button
             className="secondary"
-            disabled={!!voiceDraft && dirty}
+            disabled={task.busy || (!!voiceDraft && dirty)}
             onClick={onClose}
           >
             <BackOfficeText text="All estimates" />
@@ -1840,6 +1840,7 @@ function EstimateEditor({
           onClose={() => setImporting(false)}
         />
       )}
+      {task.busy && <p role="status">Updating estimate…</p>}
       <div className="p3-actionbar">
         {!readonly ? (
           <>
@@ -1904,6 +1905,7 @@ function EstimateEditor({
               {canIssue && (
                 <button
                   className="secondary"
+                  disabled={task.busy}
                   onClick={() =>
                     void task.run(async () => {
                       await repo.approveJob(company.id, initial);

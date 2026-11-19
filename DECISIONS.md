@@ -1,3 +1,13 @@
+## Hold editor navigation and duplicate approval attempts during an update
+
+Use the existing editor task state to hold Back and internal job-baseline approval
+while an update is pending, with an accurate busy projection. Preserve the original
+voice-draft navigation condition, all handlers and server authority. Rejected saves
+retain unsaved working inputs; rejected baseline approval does not claim a new job.
+Neither case automatically replays. This ordinary presentation correction adds no
+financial, customer-delivery or operational authority. Release 1.0 remains NOT READY
+/ NOT AUTHORIZED.
+
 ## Keep the selected source stable during explicit draft creation
 
 Reuse the existing task state to disable Refresh during creation and announce the
