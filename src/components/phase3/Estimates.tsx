@@ -772,6 +772,7 @@ function EstimateEditor({
   const [tab, setTab] = useState<'build' | 'preview' | 'history' | 'revision'>(
     'build',
   );
+  const buildTab = useRef<HTMLButtonElement>(null);
   const [importing, setImporting] = useState(false);
   const [scopeSelection, setScopeSelection] = useState<string[]>([]);
   const [editEpoch, bumpEditEpoch] = useState(0);
@@ -850,19 +851,21 @@ function EstimateEditor({
   let calc: ReturnType<typeof calculateEstimate> | undefined;
   let error = '';
   try {
-    calc = calculateEstimate(
-      p,
-      taxes.find((t) => t.id === p.tax_policy_id)?.rate_bps ?? 0,
-    );
+    calc = readonly
+      ? initial.version.calculation
+      : calculateEstimate(
+          p,
+          taxes.find((t) => t.id === p.tax_policy_id)?.rate_bps ?? 0,
+        );
   } catch (e) {
     error = e instanceof Error ? e.message : 'Check the estimate';
   }
   const money = (n: number) => formatMinor(n, p.currency);
-  const previewVersion = {
-    ...initial.version,
-    payload: p,
-    calculation: calc ?? initial.version.calculation,
-  };
+  const previewVersion = readonly
+    ? initial.version
+    : calc
+      ? { ...initial.version, payload: p, calculation: calc }
+      : undefined;
   return (
     <article className="p3-workspace estimate-editor" aria-busy={task.busy}>
       <div className="section-title">
@@ -987,6 +990,7 @@ function EstimateEditor({
           )}
         {(['build', 'preview', 'history'] as const).map((t) => (
           <button
+            ref={t === 'build' ? buildTab : undefined}
             aria-pressed={tab === t}
             key={t}
             className={tab === t ? 'active' : 'secondary'}
@@ -1063,11 +1067,33 @@ function EstimateEditor({
           onIssued={onChange}
         />
       ) : tab === 'preview' ? (
-        <CustomerEstimatePreview
-          bundle={{ ...initial, version: previewVersion }}
-          company={company}
-          sample={repo.sample}
-        />
+        previewVersion ? (
+          <CustomerEstimatePreview
+            bundle={{ ...initial, version: previewVersion }}
+            company={company}
+            sample={repo.sample}
+          />
+        ) : (
+          <section
+            className="p3-notice"
+            aria-label="Estimate preview unavailable"
+          >
+            <h3>Preview unavailable</h3>
+            <p role="alert">
+              Review estimate inputs before previewing. {error}
+            </p>
+            <button
+              className="secondary"
+              type="button"
+              onClick={() => {
+                setTab('build');
+                buildTab.current?.focus();
+              }}
+            >
+              Review estimate inputs
+            </button>
+          </section>
+        )
       ) : (
         <div className="estimate-grid">
           <div className="estimate-main">
@@ -1598,13 +1624,16 @@ function EstimateEditor({
                     <option value="">
                       <BackOfficeText text="No tax applied · confirm treatment" />
                     </option>
-                    {taxes
-                      .filter((t) => t.active)
-                      .map((t) => (
-                        <option key={t.id} value={t.id}>
-                          {t.name} · {t.rate_bps / 100}% · {t.status}
-                        </option>
-                      ))}
+                    {(readonly
+                      ? initial.version.tax_policy_snapshot
+                        ? [initial.version.tax_policy_snapshot]
+                        : []
+                      : taxes.filter((t) => t.active)
+                    ).map((t) => (
+                      <option key={t.id} value={t.id}>
+                        {t.name} · {t.rate_bps / 100}% · {t.status}
+                      </option>
+                    ))}
                   </select>
                 </Field>
               </div>
@@ -1977,7 +2006,9 @@ function CustomerEstimatePreview({
       className="customer-estimate-preview"
       aria-label="Customer-facing estimate preview"
     >
-      <header style={{ borderColor: view.company.primary_color }}>
+      <header
+        style={{ borderColor: view.company.primary_color, height: 'auto' }}
+      >
         <CompanyLogo
           company={{ ...company, ...view.company }}
           sample={sample}
@@ -2027,13 +2058,13 @@ function CustomerEstimatePreview({
         ))}
       </div>
       <dl className="preview-total">
-        <dt>Subtotal</dt>
+        <dt style={{ color: '#52695e' }}>Subtotal</dt>
         <dd>{money(view.subtotal_minor)}</dd>
-        <dt>Discount</dt>
+        <dt style={{ color: '#52695e' }}>Discount</dt>
         <dd>−{money(view.discount_minor)}</dd>
-        <dt>Tax</dt>
+        <dt style={{ color: '#52695e' }}>Tax</dt>
         <dd>{money(view.tax_minor)}</dd>
-        <dt>
+        <dt style={{ color: '#52695e' }}>
           <BackOfficeText text="Total estimate" />
         </dt>
         <dd>
