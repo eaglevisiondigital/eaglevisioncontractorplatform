@@ -1,3 +1,14 @@
+## Preserve current saved-estimate read states
+
+Gate list presentation with the existing resource loading/error state. Retain all
+existing authority checks, loader calls, customer selection, saved-record handlers
+and editor behavior. Loading never supplies a no-match conclusion or a numeric
+saved-record count; failed reads require the existing explicit Refresh action.
+This ordinary isolated development correction reuses the reviewed #587 source.
+It grants no invoice, payment, customer delivery or operational authority. Source
+admission and first-contractor acceptance remain separately gated; Release 1.0
+remains NOT READY / NOT AUTHORIZED.
+
 ## Preserve measured navigation geometry and distinguish design authority
 
 Use the original24px navigation line box for keyed icons, preserving the accepted

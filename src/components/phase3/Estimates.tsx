@@ -494,8 +494,9 @@ export function Estimates({
         }}
       />
     );
+  const listData = !resource.loading && !data.error ? data.data : undefined;
   const rows =
-    data.data?.list.filter(
+    listData?.list.filter(
       (e) =>
         (!voiceDraft || e.id === voiceDraft.target.estimate_id) &&
         (status === 'all' || e.status === status) &&
@@ -507,7 +508,7 @@ export function Estimates({
   const visiblePage = Math.min(page, lastPage);
   const busy = activity === context;
   return (
-    <article className="p3-workspace">
+    <article className="p3-workspace" aria-busy={resource.loading}>
       <div className="section-title">
         <div>
           <span className="eyebrow">
@@ -601,16 +602,16 @@ export function Estimates({
         <span>
           Drafts{' '}
           <strong>
-            {data.data
-              ? data.data.list.filter((e) => e.status === 'draft').length
+            {listData
+              ? listData.list.filter((e) => e.status === 'draft').length
               : '—'}
           </strong>
         </span>
         <span>
           <BackOfficeText text="Internally issued" />{' '}
           <strong>
-            {data.data
-              ? data.data.list.filter((e) => e.status === 'issued').length
+            {listData
+              ? listData.list.filter((e) => e.status === 'issued').length
               : '—'}
           </strong>
         </span>
@@ -704,14 +705,16 @@ export function Estimates({
           </button>
         ))}
       </div>
-      {!rows.length && data.data && (
+      {!rows.length && listData && (
         <p>No loaded estimates match these filters.</p>
       )}
       {busy && <p role="status">Opening estimate…</p>}
       <p role="status">
-        {data.data
+        {listData
           ? `${rows.length} matching loaded estimates · page ${visiblePage + 1} of ${lastPage + 1}`
-          : 'Estimate list unavailable'}
+          : resource.loading
+            ? 'Loading saved estimates…'
+            : 'Estimate list unavailable'}
       </p>
       <div
         className="button-row"
