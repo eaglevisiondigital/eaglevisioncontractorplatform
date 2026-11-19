@@ -1,3 +1,9 @@
+## November 19 — isolated estimate preview integrity
+
+An ordinary UI child of exact #595 preserves saved calculations, payloads and tax-policy labels for read-only versions. Invalid working drafts withhold customer-preview amounts and offer a keyboard-safe return to the unchanged builder. Four preview labels use the existing dark-green text color, and the proposal header expands to contain wrapped mobile content. Locked styles and artwork remain unchanged.
+
+All 27 desktop/tablet/mobile browser cases passed: 15 new preview cases and 12 unchanged editor safeguards. TypeScript, lint and feature checks passed; original negative-first and contrast failures are retained. This is internal component evidence, not full 63-reference, hosted Auth, delivery or financial acceptance. All existing estimate writers and authority checks remain unchanged. The financial #597 lineage and optional UI candidates remain separate; #564, global admission, operational gates and Release 1.0 remain NO-GO.
+
 ## Isolated Estimate editor pending actions
 
 An ordinary child of exact #594 holds the existing All estimates control during

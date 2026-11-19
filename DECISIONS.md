@@ -1,3 +1,7 @@
+## November 19 — preserve the source of estimate preview amounts
+
+Read-only issued, archived and historical estimates display their stored version calculation and captured tax policy. Editable drafts continue using the existing calculation engine and current policy; calculation failure withholds the preview rather than combining edited content with saved totals. Returning to the builder preserves unsaved inputs and moves focus to its tab. The existing customer projection and all writer/authorization handlers remain unchanged; four preview-label colors and the local header height correct measured contrast and mobile overlap. No source promotion, delivery, financial execution or hosted acceptance is granted.
+
 ## Hold editor navigation and duplicate approval attempts during an update
 
 Use the existing editor task state to hold Back and internal job-baseline approval
