@@ -22,6 +22,7 @@ function withCopy(action: (root: string, check: () => void) => void) {
   try {
     for (const path of [
       ...Object.keys(manifest.source),
+      'server/payments/reconciliation.ts',
       'proposals/commercial-invoice-connection/source.ts',
       'proposals/commercial-invoice-connection/source.json',
     ]) {

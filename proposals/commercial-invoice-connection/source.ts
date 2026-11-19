@@ -218,6 +218,17 @@ const frames: readonly Readonly<Record<string, string>>[] = Object.freeze<
       'c6e62953cbb1e58c8ea1c636ef8f1929cdb46cbf2655fbc2e6015c29f09b5f94',
   },
 ]);
+// Separate complete raw source alternative for the reviewed #592 guard author.
+// Original complete alternatives and their historical manifest stay unchanged.
+const current592Frame: Readonly<Record<string, string>> = Object.freeze({
+  ...frames[1],
+  'scripts/payment-response-source-admission.mjs':
+    'be3fc85b5fb3997a7f2e6617b44348c657db2fdaa289c6a5689fa501aa3ff684',
+  'scripts/check-payment-ack-admission.mjs':
+    'ba39a5d3b8e7c5bb63ccdfb22b1048c304e7b49b5afef87c157de0795a6c24aa',
+  'server/payments/reconciliation.ts':
+    '90f8763430b0c208c1741c00224ea2b51db68f5c7c3a6c447b06856013744746',
+});
 const manifestDigests = Object.freeze([
   'f50ec528254010660a31676d542d425e22731154a362d7ade6d6b7774efc9126',
   '93f1d88a9f614504e5647a8d12b0f49f6a5f0e86218b267f8659ecbbabf469dc',
@@ -294,6 +305,12 @@ export function assertConnectionSources(): void {
     } catch {
       /* A complete alternative, never mixed pins. */
     }
+  }
+  try {
+    exactFrame(current592Frame, manifestDigests[1]);
+    return;
+  } catch {
+    /* The current raw alternative must also match completely. */
   }
   throw denied();
 }
