@@ -1,3 +1,20 @@
+## Isolated Estimates read-state correction
+
+This ordinary child of exact #587 preserves its reviewed customer selection and
+filter reset. Saved rows, draft/issued counts, empty results and page messages now
+use only completed, error-free current list data. Pending reads show loading and
+unknown counts; original authorization, queries, customer-choice withdrawal,
+record opening and the complete editor remain unchanged.
+
+Eighteen new desktop/tablet/mobile checks and four independent desktop checks pass,
+including saved page-two retention through a held Back refresh. Earlier negative
+and private harness failures remain retained. Reference 6 evidence is partial;
+all 63 original identities and classifications remain unchanged. This separate UI
+candidate does not compose financial guard or other optional branches. Full
+Foundation, #564's five-second receipt contract, genuine Auth/MFA, D1–D3,
+A01–A12, SQL/grants and separate VAR/NMI acceptance remain open. No operational
+action, merge or deployment. Release 1.0 remains NOT READY / NOT AUTHORIZED.
+
 ## Approved-reference continuation · original mobile metrics restored
 
 The Owner confirmed all63 November15 demo screenshots. The accompanying
