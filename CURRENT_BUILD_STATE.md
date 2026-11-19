@@ -1,3 +1,24 @@
+## Isolated Estimate editor pending actions
+
+An ordinary child of exact #594 holds the existing All estimates control during
+editor updates and the internal job-baseline control while its action is pending. The
+editor exposes busy state and a neutral progress message. All original handlers,
+customer/version bindings, authority checks, repositories and financial restrictions
+remain unchanged; the four presentation edits reverse to the complete parent file.
+
+Twelve new desktop/tablet/mobile checks pass: six retained successes and six
+checked after two strict locator corrections. Successful cases were not replayed. Two
+independent desktop checks pass for trusted keyboard save/navigation and rejected
+job-baseline approval without a new job or replay. Original enabled-control and
+private locator failures remain retained. This is adjacent functional journey
+evidence; no additional screenshot state, genuine Auth or operational acceptance is
+claimed. All 63 reference identities/classifications remain unchanged.
+
+This branch preserves the separate financial and optional UI candidates. Source
+admission, whole Foundation, #564, D1–D3, MFA/AAL2, A01–A12, exact SQL/grants and
+merchant-specific VAR/NMI acceptance remain held. No operational action, merge or
+deployment. Release 1.0 remains NOT READY / NOT AUTHORIZED.
+
 ## Isolated Estimates creation state
 
 An ordinary child of exact #593 holds the existing Refresh control while draft
