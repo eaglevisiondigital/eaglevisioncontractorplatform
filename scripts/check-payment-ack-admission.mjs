@@ -1,6 +1,5 @@
 // Finite development-source admission. No credentials, network or provider calls.
 import { readFileSync, lstatSync } from 'node:fs';
-import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -18,10 +17,10 @@ if (
 const responseHelperBytes = readFileSync(responseHelperPath);
 if (
   createHash('sha256').update(responseHelperBytes).digest('hex') !==
-  '74c672d6725876285c8bd2ee844aec88c183b56b12181a0373c874e02cf26510'
+  'be3fc85b5fb3997a7f2e6617b44348c657db2fdaa289c6a5689fa501aa3ff684'
 )
   throw Error('Reviewed payment response helper required');
-const { admitPaymentResponseSource } = await import(
+const { admitPaymentResponseSource, readAckHistory } = await import(
   'data:text/javascript;base64,' + responseHelperBytes.toString('base64')
 );
 
@@ -72,7 +71,8 @@ export function verifyPaymentAckAdmission({ current, historical }) {
         throw Error('Original parent source mismatch: ' + source.path);
     const expected = source.proposedSha256 ?? source.sha256;
     if (
-      hash(current(source.path)) !== expected &&
+      (source.path === 'server/payments/reconciliation.ts' ||
+        hash(current(source.path)) !== expected) &&
       !admitPaymentResponseSource(source.path, current(source.path), expected, {
         readCurrent: current,
         readOriginal: historical,
@@ -94,6 +94,15 @@ export function verifyPaymentAckAdmission({ current, historical }) {
     proposalFiles['acceptance.test.ts']
   )
     throw Error('Original acceptance assertions changed');
+  if (
+    !admitPaymentResponseSource(
+      'server/payments/reconciliation.ts',
+      current('server/payments/reconciliation.ts'),
+      '94f339aa679c0b7fa0880fef035b921608b0717614c3705620f06eed07f9c0b0',
+      { readCurrent: current, readOriginal: historical },
+    )
+  )
+    throw Error('Unreviewed current source: server/payments/reconciliation.ts');
   return {
     proposalCommit,
     parent,
@@ -116,11 +125,7 @@ export function checkPaymentAckAdmission(root = process.cwd()) {
     if (!lstatSync(file).isFile()) throw Error('Exact regular source required');
     return readFileSync(file);
   }
-  const historical = (commit, path) =>
-    execFileSync('git', ['--no-replace-objects', 'show', `${commit}:${path}`], {
-      cwd: root,
-      stdio: ['ignore', 'pipe', 'pipe'],
-    });
+  const historical = (commit, path) => readAckHistory(commit, path, root);
   return verifyPaymentAckAdmission({ current, historical });
 }
 if (
