@@ -508,7 +508,7 @@ export function Estimates({
   const visiblePage = Math.min(page, lastPage);
   const busy = activity === context;
   return (
-    <article className="p3-workspace" aria-busy={resource.loading}>
+    <article className="p3-workspace" aria-busy={resource.loading || task.busy}>
       <div className="section-title">
         <div>
           <span className="eyebrow">
@@ -524,7 +524,7 @@ export function Estimates({
         >
           <button
             className="secondary"
-            disabled={resource.loading}
+            disabled={resource.loading || task.busy}
             onClick={() => {
               liveCreation.current = undefined;
               setDraftCustomer(undefined);
@@ -709,6 +709,7 @@ export function Estimates({
         <p>No loaded estimates match these filters.</p>
       )}
       {busy && <p role="status">Opening estimate…</p>}
+      {task.busy && <p role="status">Creating estimate…</p>}
       <p role="status">
         {listData
           ? `${rows.length} matching loaded estimates · page ${visiblePage + 1} of ${lastPage + 1}`
