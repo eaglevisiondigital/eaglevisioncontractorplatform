@@ -1,3 +1,13 @@
+## Keep the selected source stable during explicit draft creation
+
+Reuse the existing task state to disable Refresh during creation and announce the
+pending action. Retain all current authorization, customer binding, loaders,
+repository calls, editor and financial restrictions. A rejected create clears
+the busy presentation without automatically retrying or claiming success. This
+ordinary isolated UI correction preserves exact #593 source outside the three
+presentation edits and the required continuity notes; it grants no operational
+authority. Release 1.0 remains NOT READY / NOT AUTHORIZED.
+
 ## Preserve current saved-estimate read states
 
 Gate list presentation with the existing resource loading/error state. Retain all

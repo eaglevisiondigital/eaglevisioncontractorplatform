@@ -1,3 +1,22 @@
+## Isolated Estimates creation state
+
+An ordinary child of exact #593 holds the existing Refresh control while draft
+creation is pending, marks the workspace busy and announces creation. Customer
+choice, loader, authorization, create/open handlers and the complete editor remain
+unchanged. This prevents Refresh from withdrawing the selected source during the
+existing create await; it adds no authority or retry behavior.
+
+Six desktop/tablet/mobile fictional existing-engine checks pass for pending,
+successful and rejected creation. Two independent desktop checks also pass,
+including trusted native keyboard customer selection and one exact saved draft.
+The original enabled-Refresh failure and the
+separate browser-launch/fixture-instrumentation failures are retained privately.
+Reference 6 evidence remains partial; all 63 original references and classifications
+remain unchanged. This UI branch does not compose financial or other UI candidates.
+Whole Foundation, financial source admission, #564, D1–D3, MFA/AAL2, A01–A12,
+SQL/grants and merchant-specific VAR/NMI acceptance remain held. No operational
+action, merge or deployment. Release 1.0 remains NOT READY / NOT AUTHORIZED.
+
 ## Isolated Estimates read-state correction
 
 This ordinary child of exact #587 preserves its reviewed customer selection and
