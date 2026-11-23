@@ -1,0 +1,513 @@
+diff --git a/proposals/commercial-invoice-connection/connection.ts b/proposals/commercial-invoice-connection/connection.ts
+index 5a70c2be35b1aff54fd4ad179d8bca44448a9947..33efe2ca4445c56bb3b65649f442fa5b42ab0e26 100644
+--- a/proposals/commercial-invoice-connection/connection.ts
++++ b/proposals/commercial-invoice-connection/connection.ts
+@@ -433,18 +433,23 @@ export async function prepareDisposableInvoiceConnection(
+         busy = false;
+       }
+     };
+-    const close = async () => {
+-      if (closed) return;
++    let closePromise: Promise<void> | undefined;
++    const close = (): Promise<void> => {
++      if (closePromise) return closePromise;
+       closed = true;
+-      try {
+-        await destroy();
+-      } catch {
+-        cleanupUnknown = true;
+-        throw unavailable();
+-      }
+-      if (physicalKey && physical.get(physicalKey) === ownerToken)
+-        physical.delete(physicalKey);
+-      leased.delete(originalSql);
++      // Record the outcome before invoking the cleanup port.
++      closePromise = Promise.resolve().then(async () => {
++        try {
++          await destroy();
++        } catch {
++          cleanupUnknown = true;
++          throw unavailable();
++        }
++        if (physicalKey && physical.get(physicalKey) === ownerToken)
++          physical.delete(physicalKey);
++        leased.delete(originalSql);
++      });
++      return closePromise;
+     };
+     const finishDraft = (
+       value: CommercialDraft,
+diff --git a/proposals/commercial-invoice-connection/source.ts b/proposals/commercial-invoice-connection/source.ts
+index c5470ac13ab22d1ddb9103fe8399b4b47691a83a..c8a0ad1ef1e9944ccf1789ca96510d7d668d22f1 100644
+--- a/proposals/commercial-invoice-connection/source.ts
++++ b/proposals/commercial-invoice-connection/source.ts
+@@ -229,6 +229,12 @@ const current592Frame: Readonly<Record<string, string>> = Object.freeze({
+   'server/payments/reconciliation.ts':
+     '90f8763430b0c208c1741c00224ea2b51db68f5c7c3a6c447b06856013744746',
+ });
++// Exact close correction on the current raw frame.
++const closeCleanupFrame: Readonly<Record<string, string>> = Object.freeze({
++  ...current592Frame,
++  'proposals/commercial-invoice-connection/connection.ts':
++    'ea65546cee29bb980da8aca15b85a8614175accc5398ba0c601157c389334972',
++});
+ const manifestDigests = Object.freeze([
+   'f50ec528254010660a31676d542d425e22731154a362d7ade6d6b7774efc9126',
+   '93f1d88a9f614504e5647a8d12b0f49f6a5f0e86218b267f8659ecbbabf469dc',
+@@ -306,11 +312,13 @@ export function assertConnectionSources(): void {
+       /* A complete alternative, never mixed pins. */
+     }
+   }
+-  try {
+-    exactFrame(current592Frame, manifestDigests[1]);
+-    return;
+-  } catch {
+-    /* The current raw alternative must also match completely. */
++  for (const frame of [current592Frame, closeCleanupFrame]) {
++    try {
++      exactFrame(frame, manifestDigests[1]);
++      return;
++    } catch {
++      /* Each current raw alternative must match completely. */
++    }
+   }
+   throw denied();
+ }
+diff --git a/tests/commercial-invoice-close-idempotency.test.ts b/tests/commercial-invoice-close-idempotency.test.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..685d8e2f5df56b9c7b7971b0dcf587745c43ce2b
+--- /dev/null
++++ b/tests/commercial-invoice-close-idempotency.test.ts
+@@ -0,0 +1,346 @@
++import { randomUUID } from 'node:crypto';
++import { setImmediate } from 'node:timers/promises';
++import { expect, it, vi } from 'vitest';
++import type { GatewaySql } from '../server/payments/postgres-store';
++import type { DisposableInvoiceBinding } from '../proposals/commercial-invoice-connection/connection';
++
++const unavailable = 'Disposable invoice connection unavailable';
++
++function cleanupGate() {
++  let finish!: (result: 'verified' | 'unconfirmed') => void;
++  let start!: () => void;
++  const result = new Promise<'verified' | 'unconfirmed'>((resolve) => {
++    finish = resolve;
++  });
++  const started = new Promise<void>((resolve) => {
++    start = resolve;
++  });
++  return { result, started, start, finish };
++}
++
++function observeClose(close: Promise<void>) {
++  let state: 'pending' | 'fulfilled' | 'rejected' = 'pending';
++  const result = close.then(
++    () => (state = 'fulfilled'),
++    () => (state = 'rejected'),
++  );
++  return { state: () => state, result };
++}
++
++// Reset the module before each fixture because unknown cleanup permanently
++// quarantines its current instance. All imports and source checks remain real.
++async function fixture(cleanup?: ReturnType<typeof cleanupGate>) {
++  vi.resetModules();
++  const { CustomerBrokerAuth } = await import('../server/customer/broker-auth');
++  const { prepareDisposableInvoiceConnection: prepare } =
++    await import('../proposals/commercial-invoice-connection/connection');
++  const organizationId = randomUUID();
++  const actor = randomUUID();
++  const session = randomUUID();
++  const command = randomUUID();
++  const requestHash = 'b'.repeat(64);
++  const now = Math.floor(Date.now() / 1000);
++  const config = {
++    url: 'https://abcdefghijklmnopqrst.supabase.co',
++    publishableKey: 'sb_publishable_fictional_only',
++  };
++  const claims = {
++    sub: actor,
++    session_id: session,
++    aal: 'aal2',
++    exp: now + 3600,
++    iat: now,
++    iss: config.url + '/auth/v1',
++    aud: 'authenticated',
++    role: 'authenticated',
++  };
++  const bearer = `e30.${Buffer.from(JSON.stringify(claims)).toString('base64url')}.fictional`;
++  const target = {
++    organizationId,
++    invoiceId: randomUUID(),
++    customerId: randomUUID(),
++    locationId: null,
++    sourceVersionId: randomUUID(),
++    revision: 1,
++    sourceHash: 'a'.repeat(64),
++  };
++  const binding: DisposableInvoiceBinding = {
++    organizationId,
++    target,
++    workload: 'issue',
++    numbering: 'FICTIONAL_FULL_UUID_ONLY',
++  };
++  const login = 'propel_invoice_connection_test_issue_login';
++  const scope = {
++    database: 'ev_test_' + randomUUID().replaceAll('-', ''),
++    pid: 100,
++    backend_start: '2026-11-14 00:00:00+00',
++    login,
++    current_role: login,
++  };
++  let connectionClaims = '';
++  let active = true;
++  let attempts = 0;
++  let acquired = 0;
++  let queryCalls = 0;
++  let cleanupState = 'not started';
++  const writes: unknown[] = [];
++  const receiptReads: unknown[] = [];
++  const evidence = {
++    ...target,
++    state: 'issued',
++    paymentState: 'unverified',
++    number: 'INV-' + target.invoiceId.replaceAll('-', ''),
++    title: 'Fictional invoice',
++    currency: 'USD',
++    amountMinor: 1100,
++    issuedAt: '2026-11-14T00:00:00.000000Z',
++    receipt: { commandId: command, actorId: actor, requestHash },
++  };
++  const sql: GatewaySql = {
++    async query<T extends Record<string, unknown>>(
++      text: string,
++      params?: unknown[],
++    ) {
++      queryCalls++;
++      let row: Record<string, unknown>;
++      if (text.includes('pg_roles')) {
++        row = {
++          rolsuper: false,
++          rolbypassrls: false,
++          rolcreatedb: false,
++          rolcreaterole: false,
++          rolreplication: false,
++          memberships: 1,
++          permitted: true,
++          login_inherit: true,
++          current_name: login,
++          runtime_name: 'propel_invoice_connection_test_issue_runtime',
++          runtime_super: false,
++          runtime_bypass: false,
++          runtime_createdb: false,
++          runtime_createrole: false,
++          runtime_replication: false,
++          runtime_login: false,
++          runtime_memberships: 0,
++        };
++      } else if (text.includes('pg_stat_activity')) {
++        row = text.includes('request.jwt.claims')
++          ? { ...scope, claims: connectionClaims }
++          : scope;
++      } else if (text.includes('set_config')) {
++        connectionClaims = String(params?.[0]);
++        row = {};
++      } else if (text.includes(' request_hash')) {
++        row = { request_hash: requestHash };
++      } else if (text.includes('private.commercial_invoice_issue(')) {
++        writes.push(params?.[2]);
++        throw Error('Fictional original issuance acknowledgment missing');
++      } else if (text.includes('private.commercial_invoice_issued_read(')) {
++        receiptReads.push(params?.[2]);
++        return {
++          rows:
++            params?.[2] === command && writes.includes(command)
++              ? [{ result: evidence } as unknown as T]
++              : [],
++        };
++      } else {
++        throw Error('Unexpected query in fictional invoice fixture');
++      }
++      return { rows: [row as T] };
++    },
++  };
++  const auth = new CustomerBrokerAuth(config, async (input) => {
++    const path = new URL(String(input)).pathname;
++    if (path === '/auth/v1/user') return Response.json({ id: actor });
++    if (path === '/rest/v1/rpc/customer_session_status')
++      return Response.json({ user_id: actor, session_id: session, active });
++    throw Error('Unexpected path in fictional Auth fixture');
++  });
++  const ports = {
++    auth,
++    bearer,
++    async acquire() {
++      acquired++;
++      return {
++        sql,
++        async destroy() {
++          attempts++;
++          cleanupState = 'pending';
++          cleanup?.start();
++          cleanupState = cleanup ? await cleanup.result : 'verified';
++          if (cleanupState === 'unconfirmed')
++            throw Error('Fictional cleanup acknowledgment missing');
++        },
++      };
++    },
++  };
++  const open = () => prepare(ports, binding, true);
++  const handle = await open();
++  if (!handle?.issuer) throw Error('Fictional invoice handle unavailable');
++  return {
++    close: handle.close,
++    issuer: handle.issuer,
++    identity: { organizationId, invoiceId: target.invoiceId, command },
++    writes,
++    receiptReads,
++    cleanup: () => ({ attempts, state: cleanupState }),
++    calls: () => ({ acquired, queryCalls }),
++    open,
++    withdraw: () => {
++      active = false;
++    },
++  };
++}
++
++it('keeps verified cleanup idempotently closed', async () => {
++  const f = await fixture();
++  await expect(f.close()).resolves.toBeUndefined();
++  await expect(f.close()).resolves.toBeUndefined();
++  expect(f.cleanup()).toEqual({ attempts: 1, state: 'verified' });
++  expect(f.writes).toEqual([]);
++});
++
++it('keeps repeated close rejected after unresolved cleanup on the original operation', async () => {
++  const gate = cleanupGate();
++  const f = await fixture(gate);
++  const { command } = f.identity;
++  await expect(f.issuer.issue(command)).rejects.toThrow('UNKNOWN');
++  const first = observeClose(f.close());
++  await gate.started;
++  gate.finish('unconfirmed');
++  const initialClose = await first.result;
++  const repeatedClose = await observeClose(f.close()).result;
++  await expect(f.open()).rejects.toThrow(unavailable);
++  await expect(f.issuer.issue(command)).rejects.toThrow(unavailable);
++  await expect(f.issuer.issue(randomUUID())).rejects.toThrow(unavailable);
++  expect({
++    initialClose,
++    repeatedClose,
++    cleanup: f.cleanup(),
++    originalCommands: f.writes,
++    financialStatus: f.issuer.status(),
++    acquisitions: f.calls().acquired,
++  }).toEqual({
++    initialClose: 'rejected',
++    repeatedClose: 'rejected',
++    cleanup: { attempts: 1, state: 'unconfirmed' },
++    originalCommands: [command],
++    financialStatus: 'UNKNOWN',
++    acquisitions: 1,
++  });
++});
++
++it('shares one verified cleanup across concurrent close callers', async () => {
++  const gate = cleanupGate();
++  const f = await fixture(gate);
++  const first = observeClose(f.close());
++  const second = observeClose(f.close());
++  await gate.started;
++  gate.finish('verified');
++  expect(await Promise.all([first.result, second.result])).toEqual([
++    'fulfilled',
++    'fulfilled',
++  ]);
++  expect(f.cleanup()).toEqual({ attempts: 1, state: 'verified' });
++  expect(f.writes).toEqual([]);
++});
++
++it('keeps both callers pending while cleanup acknowledgment is pending', async () => {
++  const gate = cleanupGate();
++  const f = await fixture(gate);
++  const first = observeClose(f.close());
++  await gate.started;
++  const second = observeClose(f.close());
++  await setImmediate();
++  const pending = {
++    first: first.state(),
++    second: second.state(),
++    ...f.cleanup(),
++  };
++  gate.finish('verified');
++  await Promise.all([first.result, second.result]);
++  expect(pending).toEqual({
++    first: 'pending',
++    second: 'pending',
++    attempts: 1,
++    state: 'pending',
++  });
++});
++
++it('delivers a late cleanup rejection to both close callers', async () => {
++  const gate = cleanupGate();
++  const f = await fixture(gate);
++  const first = observeClose(f.close());
++  await gate.started;
++  const second = observeClose(f.close());
++  await setImmediate();
++  const secondBeforeRejection = second.state();
++  gate.finish('unconfirmed');
++  const results = await Promise.all([first.result, second.result]);
++  expect({ secondBeforeRejection, results, cleanup: f.cleanup() }).toEqual({
++    secondBeforeRejection: 'pending',
++    results: ['rejected', 'rejected'],
++    cleanup: { attempts: 1, state: 'unconfirmed' },
++  });
++});
++
++it('holds an ambiguous original command UNKNOWN without redispatch', async () => {
++  const f = await fixture();
++  const { command, invoiceId } = f.identity;
++  const different = randomUUID();
++  await expect(f.issuer.issue(command)).rejects.toThrow('UNKNOWN');
++  await expect(f.issuer.issue(command)).rejects.toThrow('UNKNOWN');
++  await expect(f.issuer.issue(different)).rejects.toThrow('UNKNOWN');
++  await expect(f.issuer.readOriginal(different)).rejects.toThrow('UNKNOWN');
++  const original = await f.issuer.readOriginal(command);
++  expect(original).toMatchObject({ invoiceId, issuanceReceiptId: command });
++  expect(f.issuer.status()).toBe('UNKNOWN');
++  expect(f.writes).toEqual([command]);
++  expect(f.receiptReads).toEqual([different, command, command]);
++  await f.close();
++  expect(f.issuer.status()).toBe('UNKNOWN');
++});
++
++it('inspects status and reconciles the original receipt without dispatching a writer', async () => {
++  const f = await fixture();
++  const { command, invoiceId } = f.identity;
++  await expect(f.issuer.issue(command)).rejects.toThrow('UNKNOWN');
++  const before = f.calls();
++  expect(f.issuer.status()).toBe('UNKNOWN');
++  expect(f.calls()).toEqual(before);
++  expect(await f.issuer.reconcile()).toMatchObject({
++    invoiceId,
++    issuanceReceiptId: command,
++    paymentState: 'unverified',
++  });
++  expect(f.writes).toEqual([command]);
++  expect(f.receiptReads).toEqual([command, command]);
++  expect(f.issuer.status()).toBe('CONFIRMED_ISSUANCE_ONLY');
++  await f.close();
++});
++
++it('keeps unknown cleanup and issuance held across authorization withdrawal', async () => {
++  const gate = cleanupGate();
++  const f = await fixture(gate);
++  const { command } = f.identity;
++  await expect(f.issuer.issue(command)).rejects.toThrow('UNKNOWN');
++  f.withdraw();
++  await expect(f.issuer.reconcile()).rejects.toThrow('UNKNOWN');
++  const first = observeClose(f.close());
++  await gate.started;
++  const second = observeClose(f.close());
++  gate.finish('unconfirmed');
++  const results = await Promise.all([first.result, second.result]);
++  expect({
++    results,
++    financialStatus: f.issuer.status(),
++    writes: f.writes,
++    receiptReads: f.receiptReads,
++  }).toEqual({
++    results: ['rejected', 'rejected'],
++    financialStatus: 'UNKNOWN',
++    writes: [command],
++    receiptReads: [],
++  });
++});
+diff --git a/tests/database/commercial-invoice-caller-proposal.test.ts b/tests/database/commercial-invoice-caller-proposal.test.ts
+index b4fe86a1731df141ff2055dd8e549f8cbf0ac44e..f61ef3e5e5e821e751ae9bb95b3e4fc87995cdcd 100644
+--- a/tests/database/commercial-invoice-caller-proposal.test.ts
++++ b/tests/database/commercial-invoice-caller-proposal.test.ts
+@@ -137,6 +137,15 @@ const rawPins: Readonly<Record<string, string>> = Object.freeze({
+   'server/payments/reconciliation.ts':
+     '90f8763430b0c208c1741c00224ea2b51db68f5c7c3a6c447b06856013744746',
+ });
++const connectionFactory =
++  'proposals/commercial-invoice-connection/connection.ts';
++const connectionGuard = 'proposals/commercial-invoice-connection/source.ts';
++const correctedClosePins = Object.freeze({
++  [connectionFactory]:
++    'ea65546cee29bb980da8aca15b85a8614175accc5398ba0c601157c389334972',
++  [connectionGuard]:
++    '43e7243e2273a63c2f2dea826f635aafb78333e9ff1b621df9aa2f9a09e5cd61',
++});
+ const anchors: Readonly<Record<string, string>> = Object.freeze({
+   'proposals/invoice-caller-reconciliation/native.fixture.ts':
+     '60c0e77f407a7368d2870fb58074dc6ba72d4b4e618729f00a6c4d225df8f937',
+@@ -168,6 +177,10 @@ const historicalPins: Readonly<
+     ref: '3f0c6b53747e60765cdc7faf1308b57ce730676f',
+     sha256: 'b1f297fc3d62cfe77a9ed9912a1a6f896a14a70cf796da2e1f24d5e5c0441ed9',
+   },
++  [connectionFactory]: {
++    ref: '301e6463cf81fbe7d36fefbfdd60a28f3da6b729',
++    sha256: '50db32661490a3e1d7807bfffcca66dcacda1333e9578c3ab63e3e9984747d23',
++  },
+   'proposals/commercial-invoice-connection/source.ts': {
+     ref: '0231feada0cac25f1461f146683f1759c8ccfd4b',
+     sha256: '5962272679a66e54b6bb30c8cc52502e0703434956f3dfdd68995e3cc233aa13',
+@@ -263,12 +276,20 @@ function regular(key: string) {
+     throw denied();
+   return bytes;
+ }
++const currentPins: Readonly<Record<string, string>> =
++  hash(regular(connectionFactory)) === correctedClosePins[connectionFactory]
++    ? Object.freeze({ ...rawPins, ...correctedClosePins })
++    : rawPins;
++const currentAnchors: Readonly<Record<string, string>> = Object.freeze({
++  ...anchors,
++  [connectionGuard]: currentPins[connectionGuard],
++});
+ function checkCurrent() {
+   for (let pass = 0; pass < 2; pass++) {
+     checkRoot();
+-    for (const [key, digest] of Object.entries(rawPins))
++    for (const [key, digest] of Object.entries(currentPins))
+       if (hash(regular(key)) !== digest) throw denied();
+-    for (const [key, digest] of Object.entries(anchors))
++    for (const [key, digest] of Object.entries(currentAnchors))
+       if (hash(regular(key)) !== digest) throw denied();
+     // These helpers/packages remain inherited TCB: this is not transitive capture.
+     for (const [key, digest] of Object.entries(inheritedHelpers))
+@@ -276,13 +297,13 @@ function checkCurrent() {
+   }
+   if (
+     hash(regular('server/payments/reconciliation.ts')) !==
+-    rawPins['server/payments/reconciliation.ts']
++    currentPins['server/payments/reconciliation.ts']
+   )
+     throw denied();
+ }
+ function capture(key: string) {
+   const bytes = regular(key);
+-  if (hash(bytes) !== anchors[key]) throw denied();
++  if (hash(bytes) !== currentAnchors[key]) throw denied();
+   return Buffer.from(bytes);
+ }
+ function utf8(bytes: Uint8Array) {
+@@ -411,13 +432,13 @@ const validatedRead: typeof readFileSync = ((
+       : file instanceof URL
+         ? relative(root, fileURLToPath(file))
+         : '';
+-  if (!Object.hasOwn(rawPins, key)) return result;
++  if (!Object.hasOwn(currentPins, key)) return result;
+   const encoding = typeof options === 'string' ? options : options?.encoding;
+   const bytes =
+     typeof result === 'string'
+       ? Buffer.from(result, encoding ?? 'utf8')
+       : result;
+-  if (hash(bytes) !== rawPins[key]) throw denied();
++  if (hash(bytes) !== currentPins[key]) throw denied();
+   const before = historical.get(key);
+   if (!before) return result;
+   return encoding ? before.toString(encoding) : Buffer.from(before);
