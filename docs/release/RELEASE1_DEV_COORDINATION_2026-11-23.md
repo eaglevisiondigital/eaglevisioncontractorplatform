@@ -5,7 +5,7 @@ Status: DEVELOPMENT EVIDENCE ONLY. Production Release 1.0 NO-GO. Do not merge/de
 ## Scope and source provenance
 - This record is a documentation-only child of PR #599 commit `cb1b3768a5faa516a612673365e8fffb2fb4a665`. It is NOT an integration or source approval.
 - GitHub comparison `301e6463...cb1b3768`: one commit ahead, changes only `tests/database/commercial-invoice-caller-proposal.test.ts` (608 additions, 2 deletions).
-- Nov 22 Phases 0–5 Codex completion: NOT VERIFIED in connected repository evidence; no authenticated task ID or full completion report reviewed here. Earlier report of 32 focused Codex checks is unbound to an accepted integrated HEAD.
+- Nov 22 Phases 0–5 Codex task **was submitted through the Codex interface**, not this Chat's connector: task `6b039f1c-4f20-83ea-8e94-d355e284c00a`, completed 2026-11-22 20:10 CT (DT-verified from task page). Evidence/reconciliation only: 0 commits, 0 patches, 0 changed files; 32 isolated connection/source-admission checks PASS after disposable-checkout file-mode correction; broader 95 PASS with two numbering suites stopped by source admission. Physical native transaction cleanup UNVERIFIED; PR #564 receipt failures open; A01–A12 NOT RUN. This is DT-supplied task evidence, not independently inspected within the GitHub connector.
 - The Mac path `/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM` is not mounted in this review environment; HEAD, cleanliness, worktrees and local files NOT VERIFIED.
 
 ## PR #599 workflow diagnostics (existing GitHub Actions runs; no jobs re-executed)
@@ -36,3 +36,13 @@ D1–D3 role/custody decisions; operational SQL/writer/grants admission; approve
 
 ## Evidence standard
 For any later fix: exact parent/head/tree, changed paths and modes, literal commands and environment, before/after reproduction, PASS/FAIL/SKIP and original timeouts, CI lane status, independent proof and remaining gates. Source tests, draft PRs, synthetic AWS custody and preview screenshots do not constitute operational acceptance.
+
+## Defensive invoice reliability verification — November 23, 2026 (DT courier evidence)
+- Task: [Codex local task 6b045ff6-3b24-83e9-9b95-b31696de901b](https://chatgpt.com/local/6b045ff6-3b24-83e9-9b95-b31696de901b), submitted 09:47 CST, completed 10:00:29 CST after 13m24s, according to DT's direct task-page review.
+- Task scope: **verification only**, branch reported as `codex/contractor-defensive-invoice-verify`; 0 patches, 0 files pushed, 0 changes applied. This branch was not visible in this connector's branch search; do not assume its current repository presence.
+- Nine new defensive checks: **8 PASS, 1 FAIL, 0 SKIP**. Baseline suite: **109 PASS, 0 FAIL**. These counts belong to separate runs; do not infer unique combined coverage.
+- Scenario **D — cleanup / invoice close idempotency: FAIL**. First `close()` rejected, second `close()` fulfilled while cleanup remained unresolved. A fulfilled second close is **not** evidence that cleanup succeeded or the transaction is terminal. A–C and E–I PASS as reported, but do not classify overall defensive reliability PASS.
+- Physical PostgreSQL exclusive connection custody: **NOT VERIFIED**. No operational payments, hosted acceptance, invoice release or production changes.
+- Prior custody task `6b04300e-8bac-83ea-a23b-7738efba500d`: unreadable after three DT verification sweeps, six subagents showed Done but no report or test counts available. Do not credit its inaccessible outcome.
+- **Next proposed narrow work:** Independently reproduce Scenario D against the exact parent and original failing assertion; identify close state transitions and cleanup semantics without treating `close()` as rollback/cleanup evidence; prove that a rejected first close followed by an apparently fulfilled second close cannot lead to success/ready state, connection reuse or financial redispatch. If the correction touches protected source, prepare a smallest **unapplied** source-bound patch for David's exact approval. No default promotion or weakening of test budgets.
+- All financial UNKNOWN original identities remain held and non-replayable. Release 1.0 NO-GO.
