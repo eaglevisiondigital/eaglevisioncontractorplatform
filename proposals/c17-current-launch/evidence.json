@@ -1,0 +1,67 @@
+{
+  "schema": "c17-current-launch-preparation-v1",
+  "baseline": "2c63cfd8175fe23d6c7f80a7879af9c73b27dceb",
+  "status": "UNAPPLIED_PREPARATION_ONLY",
+  "admissionReady": false,
+  "futureAuthor": null,
+  "originalPackages": [
+    "61f903eba93735ae945b0a16fcc07c0af9b7bbb0",
+    "4b9e1a72d7937e5badcf5aa0ac640ae0403bb35c",
+    "515aed7740c5fbca5b134a4d6bda19f825eeef8a"
+  ],
+  "patchSha256": "0e309234f1186dcaeac6a6a2234fe825526666b9efb1016df405efeb382a297a",
+  "exactFutureDelta": [
+    {
+      "status": "M",
+      "path": "tests/cycle17-integration.test.ts",
+      "mode": "100644",
+      "before": "f9d7a16d29cebb66070aabbd85ccdc10c09bce2eadeb2e70c525e0749a0a0089",
+      "after": "46747ffb4188b925fa2a64250be069a32e126fc72befac8918028f7594840d9a"
+    },
+    {
+      "status": "A",
+      "path": "docs/program/V1_C17_FIELD_CLOSEOUT_SOURCE.md",
+      "mode": "100644",
+      "sha256": "d059a93942fe871a4af17d2f6ba207ee520c22a25d252b00300b68cd9b8537d4"
+    }
+  ],
+  "currentHostedEvidence": {
+    "run": 43444933185,
+    "job": 131951796254,
+    "passed": 1632,
+    "failed": 1,
+    "skipped": 3,
+    "failure": "original C17 line847 old6fca versus current4c625 equality; not timeout"
+  },
+  "focusedDisposableQualification": {
+    "parent": {
+      "passed": 0,
+      "failed": 1,
+      "filtered": 44
+    },
+    "proposed": {
+      "passed": 1,
+      "failed": 0,
+      "filtered": 44
+    },
+    "existingFieldUnknownEditDenied": true,
+    "unchangedDownstreamProposedAndUnknownDenied": true,
+    "canonicalUnchanged": true,
+    "currentCompanionsAndImportClosureVerified": 16,
+    "unknownCheckerAndTransitiveTcbDeniedBeforeImport": true,
+    "checkerExecutionSource": "verified regular 0644 detached406 clone module only; no current checker static import",
+    "childEnvironment": "PATH and disabled global/system Git config only; no inherited credentials or CI identity; outer CI history guard unchanged"
+  },
+  "qualifierSha256": "649ce5a2ed302dd06028209178e0dc855d7abf54e37362fe4d3e7b423cccac2d",
+  "approvalCheckpoints": [
+    "Owner exact source-author M1/A1 only at explicit parent406, or separately selected reviewed consolidation parent; no checker/source-pin admission.",
+    "After actual author SHA exists, independently review exact author/delta/companions and separate finite checker/test proposal; obtain distinct owner approval before applying it."
+  ],
+  "exclusions": [
+    "No protected canonical mutation",
+    "No new author or checker admission",
+    "No historical package replacement",
+    "No budgets/assertions/history weakening",
+    "No implication of whole-CI success or operational acceptance"
+  ]
+}

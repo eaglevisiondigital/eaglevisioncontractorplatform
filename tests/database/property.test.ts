@@ -4,6 +4,7 @@ import { createTestDatabase, type TestDatabase } from './engine';
 import { blankEstimate } from '../../src/domain/estimating/calculation';
 import type { EstimateBundle } from '../../src/domain/estimating/types';
 import { preparePropertyAcceptance } from '../../server/property/acceptance-plan';
+import { propertyFixtureQuoteDates } from '../helpers/property-p1-fixture';
 const db = createTestDatabase();
 const uid = () => crypto.randomUUID();
 const reportUsers = [uid(), uid(), uid()];
@@ -2703,6 +2704,7 @@ it('executes the offline compiled three-company fixture proposals locally throug
     );
   }
   await actor();
+  const quoteDates = propertyFixtureQuoteDates(Date.now());
   const plan = preparePropertyAcceptance(
     orgs.map((organization_id, i) => ({
       organization_id,
@@ -2716,8 +2718,7 @@ it('executes the offline compiled three-company fixture proposals locally throug
       existing_material_reviews: 0,
       net_approved_cost_minor: 10001,
       currency: 'USD',
-      quoted_at: '2026-10-16T12:00:00Z',
-      quote_expires_at: '2026-11-16T12:00:00Z',
+      ...quoteDates,
       baseline_fingerprints: { original: 'a'.repeat(32) },
     })),
     'local-p0-compiled',

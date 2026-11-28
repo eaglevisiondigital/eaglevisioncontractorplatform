@@ -1,3 +1,37 @@
+## Bind C17 checker preparation to the actual approved source author
+
+Preserve approved76ee's exact406 parent, M1/A1 patch/note and original source pins.
+Prepare a minimal separate checker alternative, with historical31 controls retained
+and new17 controls separate so the existing strict31 CLI is unchanged. Do not format
+unrelated protected bytes or imply dedicated CLI/integration acceptance. Existing
+pre-author evidence remains historical; new proposal names real76ee rather than
+inventing a commit. No checker mutation or promotion follows from source authoring.
+All operational and Release1.0 gates stay closed.
+
+## Qualify protected proposals without turning preparation into admission
+
+Reuse exact406 and original C17 packages; prove full-context readiness, standalone
+promotion denial and unknown-source nonexecution offline. Import C17 checker only
+from its verified detached406 clone. No canonical protected author/checker change
+or historical record rewrite follows from a passing qualification. C17 M1/A1 author
+and its later SHA-bound checker decision remain distinct. Consolidate exact reviewed
+NMI cases in one successor; retain old source contracts through explicit historical
+read ports plus strong current proofs. Keep pinned launch documentation unchanged.
+Do not add another optional preflight-only profile editor for the protected raw
+customer-writer CAS defect. D1–D3, Auth, installed bypass inventory, custody/recovery,
+SQL and provider activation remain separate exact decisions. Release1.0 NO-GO.
+
+## Prepare the caller/payment integration without promoting protected sources
+
+Compose only exact reviewed402 author bytes,398 NMI test lineage and403's ordinary
+trigger correction on an isolated child. Preserve all historical manifests and
+checker/fixture/source authors; the five-file protected promotion diff is evidence,
+not an executable installer or permission grant. Keep optional CRM/workforce changes
+separate. Existing native/UI contracts are reused; synthetic fixtures do not prove
+genuine Auth, merchant facts or external durable custody. Separate admission,
+SQL/grants, D1–D3/A01–A12, NMI/recovery and activation approvals remain mandatory.
+Release1.0 NOT READY / NOT AUTHORIZED.
+
 ## Preserve exact checker approval while qualifying its fixture transition
 
 Author only the exact separately approved two-file #397 patch. Correct the
@@ -2859,3 +2893,20 @@ request syntax/amount/currency must not consume a token before downstream reject
 This does not authorize token resolution or replace real invoice/customer authority,
 current revocation, durable vault consumption or UNKNOWN reconciliation. Genuine
 commercial invoice writer/schema activation requires separate exact approval.
+
+### Finite C17 integration and historical preparation fixtures — November 13
+
+Keep the original seven pre-author assertions byte-exact through explicit407
+historical fixture ports only after verifying the complete current legacy or exact
+five-file integrated bundle and unchanged transitive checker source. Actual integrated
+C17/31/17 acceptance uses the real proposed filesystem. Captured verified bytes drive
+imports/staging; metadata cannot authorize promotion. Canonical source promotion,
+SQL, hosted acceptance and release remain separately gated.
+
+### Distinguish retained inventory assertions from live C17 closeout — November 13
+
+Preserve the original27 inventory/compatibility assertions through a source-verified
+historical read of exactbd8 only. Fresh five-file and lineage-mode checks precede
+those reads. Current closeout acceptance uses separate unwrapped real APIs; unknown
+source never falls back to historical success. The strict27 workflow and all source
+checks/historical pins remain unchanged. This fixture fix grants no operational authority.

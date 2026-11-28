@@ -26,6 +26,9 @@ const retainedOriginal = (path: string) =>
   path === guardPath
     ? git('show', `8f498f2c657608c64d40a3527be13b47a189b7b7:${path}`)
     : readFileSync(path);
+// Preserve the original402 transition assertions against their exact source stage.
+const transitionStage = (path: string) =>
+  git('show', `461a9017b526dae9bc3a88577fd5ad5b1c71963e:${path}`);
 function verifyCheckerTransition() {
   const originalGuard = git('show', `${checkerAuthor}:${guardPath}`);
   const originalHelper = git('show', `${checkerAuthor}:${admissionHelperPath}`);
@@ -47,9 +50,9 @@ function verifyCheckerTransition() {
   };
   const normalize = (text: string) =>
     text.replace(digest(text), '<EXACT_HELPER_DIGEST>');
-  const currentGuard = readFileSync(guardPath, 'utf8');
+  const currentGuard = transitionStage(guardPath).toString('utf8');
   expect(normalize(currentGuard)).toBe(normalize(originalGuard.toString()));
-  const currentMigrationHash = sha(readFileSync(migrationPath));
+  const currentMigrationHash = sha(transitionStage(migrationPath));
   const expectedHelper = originalHelper
     .toString()
     .replace(
@@ -64,9 +67,54 @@ function verifyCheckerTransition() {
       'hash(published) !== companion.sha256',
       'hash(published) !== exactPublishedHash',
     );
-  const currentHelper = readFileSync(admissionHelperPath);
+  const currentHelper = transitionStage(admissionHelperPath);
   expect(currentHelper).toEqual(Buffer.from(expectedHelper));
   expect(sha(currentHelper)).toBe(digest(currentGuard));
+}
+function verifyPaymentResponseTransition() {
+  expect(
+    sha(readFileSync('scripts/payment-response-source-admission.mjs')),
+  ).toBe('aa8871b0fa334bfd2ffdb36c314650e51e56ceea41a983e13c0b42a60084dfcd');
+  expect(sha(readFileSync('scripts/check-payment-ack-admission.mjs'))).toBe(
+    'b936bbd53def10eb7604b840ebe56262073001f30f0191247307eb54940a67ad',
+  );
+  const guard = readFileSync(guardPath, 'utf8');
+  const digests = [
+    ...guard.matchAll(
+      /createHash\('sha256'\)\.update\(callerHelperBytes\)\.digest\('hex'\) !==\s*'([a-f0-9]{64})'/g,
+    ),
+  ];
+  expect(digests).toHaveLength(1);
+  expect(guard.split(digests[0][1])).toHaveLength(2);
+  expect(guard.replace(digests[0][1], '<INVOICE_HELPER>')).toBe(
+    transitionStage(guardPath)
+      .toString()
+      .replace(
+        'const { admitInvoiceCallerSource }',
+        'const { admitInvoiceCallerSource: admitInvoiceCallerOnly }',
+      )
+      .replace(
+        'const composition =',
+        "// Exact source helper is validated before its captured bytes are imported.\nconst responseHelperPath = new URL(\n  '../scripts/payment-response-source-admission.mjs',\n  import.meta.url,\n);\nif (\n  !lstatSync(responseHelperPath).isFile() ||\n  lstatSync(responseHelperPath).isSymbolicLink()\n)\n  throw Error('Reviewed payment response helper required');\nconst responseHelperBytes = readFileSync(responseHelperPath);\nif (\n  createHash('sha256').update(responseHelperBytes).digest('hex') !==\n  'aa8871b0fa334bfd2ffdb36c314650e51e56ceea41a983e13c0b42a60084dfcd'\n)\n  throw Error('Reviewed payment response helper required');\nconst { admitPaymentResponseSource } = await import(\n  'data:text/javascript;base64,' + responseHelperBytes.toString('base64')\n);\n\nconst admitInvoiceCallerSource = (\n  ...args: Parameters<typeof admitInvoiceCallerOnly>\n) => admitPaymentResponseSource(...args) || admitInvoiceCallerOnly(...args);\n\n" +
+          'const composition =',
+      )
+      .replace(
+        '2a6ffb692443a7830df021e9a8cce048ac4388947e03a27af4286b4e26ee9a25',
+        '<INVOICE_HELPER>',
+      ),
+  );
+  const before = transitionStage(admissionHelperPath).toString();
+  const originalF = sha(transitionStage(migrationPath));
+  expect(originalF).toBe(
+    '4879c0b0f3da8bc2e5d981faae43fe443c317ffcd400b654fc550f0605149a08',
+  );
+  expect(before.split(`sha256: '${originalF}'`)).toHaveLength(2);
+  const exact = before.replace(
+    `sha256: '${originalF}'`,
+    `sha256: '${sha(readFileSync(migrationPath))}'`,
+  );
+  expect(readFileSync(admissionHelperPath)).toEqual(Buffer.from(exact));
+  expect(sha(Buffer.from(exact))).toBe(digests[0][1]);
 }
 it('loads historical proposal bytes only beside the exact approved source author, without granting launch admission', () => {
   const r = helper.proposalBaseline();
@@ -88,6 +136,7 @@ it('loads historical proposal bytes only beside the exact approved source author
       git('show', `8f498f2c657608c64d40a3527be13b47a189b7b7:${path}`),
     );
   verifyCheckerTransition();
+  verifyPaymentResponseTransition();
 });
 it.each([
   'client',

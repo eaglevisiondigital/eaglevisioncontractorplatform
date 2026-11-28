@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import {
-  cycle25SourcePorts as p,
+  cycle25SourcePorts as actualPorts,
   admitCycle33V1C17Compatibility as legacy,
   cycle33V1C17Compatibility as old,
 } from '../scripts/cycle25-source-lineage.mjs';
@@ -12,9 +12,18 @@ import {
   inventoryParent as parent,
   inventoryPath as path,
   inventoryDoc as doc,
-  admitC17InventorySuccessor as admit,
+  admitC17InventorySuccessor as actualAdmit,
   validateFocusedReport,
 } from '../scripts/v1-c17-inventory-source.mjs';
+// Original bd8 controls use their exact historical current-read fixture.
+// The actual retained consumer below still reads the real current filesystem.
+const p = {
+  ...actualPorts,
+  read: (f) =>
+    f === path ? actualPorts.git(author, path) : actualPorts.read(f),
+};
+const admit = (a, b, c, ports = {}) =>
+  actualAdmit(a, b, c, { read: p.read, ...ports });
 const current = () => p.git(author, path),
   previous = () => p.git(parent, path),
   corrupt = (b) => Buffer.concat([b, Buffer.from('\n// unknown\n')]);

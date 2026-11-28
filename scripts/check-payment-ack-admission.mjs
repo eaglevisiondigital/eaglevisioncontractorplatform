@@ -5,6 +5,26 @@ import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
+// Exact source helper is validated before its captured bytes are imported.
+const responseHelperPath = new URL(
+  './payment-response-source-admission.mjs',
+  import.meta.url,
+);
+if (
+  !lstatSync(responseHelperPath).isFile() ||
+  lstatSync(responseHelperPath).isSymbolicLink()
+)
+  throw Error('Reviewed payment response helper required');
+const responseHelperBytes = readFileSync(responseHelperPath);
+if (
+  createHash('sha256').update(responseHelperBytes).digest('hex') !==
+  'aa8871b0fa334bfd2ffdb36c314650e51e56ceea41a983e13c0b42a60084dfcd'
+)
+  throw Error('Reviewed payment response helper required');
+const { admitPaymentResponseSource } = await import(
+  'data:text/javascript;base64,' + responseHelperBytes.toString('base64')
+);
+
 const proposalCommit = '5aa7927932323be0f67a908923a9c7ffa92d5d2e';
 const parent = '4a54d390bd37024a10469b9f6cdcab6d38724a49';
 export const approvedPatch =
@@ -51,7 +71,13 @@ export function verifyPaymentAckAdmission({ current, historical }) {
       if (hash(historical(commit, source.path)) !== source.sha256)
         throw Error('Original parent source mismatch: ' + source.path);
     const expected = source.proposedSha256 ?? source.sha256;
-    if (hash(current(source.path)) !== expected)
+    if (
+      hash(current(source.path)) !== expected &&
+      !admitPaymentResponseSource(source.path, current(source.path), expected, {
+        readCurrent: current,
+        readOriginal: historical,
+      })
+    )
       throw Error('Unreviewed current source: ' + source.path);
     if (source.proposedSha256) admitted.push(source.path);
   }

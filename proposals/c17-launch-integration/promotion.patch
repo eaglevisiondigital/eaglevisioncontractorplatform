@@ -1,0 +1,281 @@
+diff --git a/docs/program/V1_C17_FIELD_CLOSEOUT_SOURCE.md b/docs/program/V1_C17_FIELD_CLOSEOUT_SOURCE.md
+new file mode 100644
+index 0000000000000000000000000000000000000000..6507dfd9a91f38e8f9ec6c75596923a26c54802a
+--- /dev/null
++++ b/docs/program/V1_C17_FIELD_CLOSEOUT_SOURCE.md
+@@ -0,0 +1,12 @@
++# Finite C17 Field closeout source successor
++
++This source-only test correction preserves the original C16 PR112 published
++metadata and package. It delegates current Field bytes to the existing finite
++`validateFieldPublishedSource` contract, including its exact reviewed d977 author,
++original companions, freshness checks and unknown-edit rejection. No replacement
++hash allowlist, runtime change, budget increase or historical evidence rewrite.
++
++The named closeout case changes from one failure to one pass; 44 other cases stay
++filtered in that focused proof. This does not establish complete Foundation
++coverage, operational authority, hosted acceptance or business-state restoration.
++Release 1.0 remains NOT READY / NOT AUTHORIZED.
+diff --git a/scripts/v1-c17-inventory-source.mjs b/scripts/v1-c17-inventory-source.mjs
+index 1391b253fec4637a6e8e3f33182e21363d26c389..06bacca9c280a657d9a7f38d14ba0844f9acf6a8 100644
+--- a/scripts/v1-c17-inventory-source.mjs
++++ b/scripts/v1-c17-inventory-source.mjs
+@@ -10,6 +10,13 @@ export const inventoryParent = '337da476aa6061dba626aff343f0e6045331ac82';
+ export const inventoryAuthor = 'bd8f150c1a347fd172cf5922d67e2664af59f14b';
+ export const inventoryPath = 'tests/cycle17-integration.test.ts';
+ export const inventoryDoc = 'docs/program/V1_C17_FIELD_INVENTORY.md';
++const closeoutAuthor = '76ee5226c52a850d5f692c8aac965d0487e0f544';
++const closeoutParent = '2c63cfd8175fe23d6c7f80a7879af9c73b27dceb';
++const closeoutDoc = 'docs/program/V1_C17_FIELD_CLOSEOUT_SOURCE.md';
++const closeoutHash =
++  '46747ffb4188b925fa2a64250be069a32e126fc72befac8918028f7594840d9a';
++const closeoutDocHash =
++  'd059a93942fe871a4af17d2f6ba207ee520c22a25d252b00300b68cd9b8537d4';
+ const predecessor =
+   '6e68a895ce33c1bcda2ffb5a660aa27f9abf0f89a33c12439c9baf6a31a74589';
+ const hash = (b) => createHash('sha256').update(b).digest('hex');
+@@ -44,9 +51,33 @@ export function admitC17InventorySuccessor(
+     !same(previous, p.git(inventoryParent, path))
+   )
+     fail('Exact immutable b947/337 predecessor required');
++  const closeout = hash(current) === closeoutHash;
++  const endpoint = closeout ? closeoutAuthor : inventoryAuthor;
++  if (closeout) {
++    if (
++      p.type(closeoutAuthor) !== 'commit' ||
++      p.parent(closeoutAuthor) !== closeoutParent ||
++      p.delta(closeoutAuthor) !==
++        ['M\t' + inventoryPath, 'A\t' + closeoutDoc].sort().join('\n')
++    )
++      fail('Exact sole406 M1/A1 Field closeout author required');
++    if (
++      p.mode(closeoutParent, path) !== '100644' ||
++      p.mode(closeoutAuthor, path) !== '100644' ||
++      p.mode(closeoutAuthor, closeoutDoc) !== '100644'
++    )
++      fail('Regular exact Field closeout source required');
++    if (
++      !same(p.git(closeoutParent, path), p.git(inventoryAuthor, path)) ||
++      hash(p.git(closeoutAuthor, path)) !== closeoutHash ||
++      hash(p.git(closeoutAuthor, closeoutDoc)) !== closeoutDocHash ||
++      !same(p.read(closeoutDoc), p.git(closeoutAuthor, closeoutDoc))
++    )
++      fail('Exact Field closeout predecessor/test/note required');
++  }
+   if (
+     same(current, previous) ||
+-    !same(current, p.git(inventoryAuthor, path)) ||
++    !same(current, p.git(endpoint, path)) ||
+     !same(p.read(path), current) ||
+     !same(p.read(inventoryDoc), p.git(inventoryAuthor, inventoryDoc))
+   )
+@@ -60,10 +91,15 @@ export function admitC17InventorySuccessor(
+   );
+   if (!same(p.read(inventoryDoc), p.git(inventoryAuthor, inventoryDoc)))
+     fail('Final fresh C17 doc required');
++  if (
++    closeout &&
++    !same(p.read(closeoutDoc), p.git(closeoutAuthor, closeoutDoc))
++  )
++    fail('Final fresh Field closeout note required');
+   if (!same(p.read(path), current)) fail('Final fresh C17 endpoint required');
+   return {
+     path,
+-    source_commit: inventoryAuthor,
++    source_commit: endpoint,
+     module: 'c17-field-inventory-compatibility',
+     authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
+     business_authority: false,
+diff --git a/tests/cycle17-integration.test.ts b/tests/cycle17-integration.test.ts
+index d01ba087651a8724c352007b2a9812d615112fbf..9da1c4afa77a4c37c9e7a5191dff35b32375f53a 100644
+--- a/tests/cycle17-integration.test.ts
++++ b/tests/cycle17-integration.test.ts
+@@ -103,6 +103,16 @@ const fieldSourceLineage: {
+   new URL('../scripts/v1-next-native-source.mjs', import.meta.url).href
+ );
+ 
++const fieldPublishedLineage: {
++  validateFieldPublishedSource: (
++    file: { path: string; sha256: string },
++    current: Buffer,
++    pkg: Record<string, unknown>,
++  ) => unknown;
++} = await import(
++  new URL('../scripts/v1-field-source-admission.mjs', import.meta.url).href
++);
++
+ beforeEach(() =>
+   vi.stubGlobal('window', {
+     location: { hostname: '127.0.0.1', protocol: 'http:' },
+@@ -814,6 +824,37 @@ it('Cycle16 closeout preserves child cancellations separately from actual succes
+     expect(feature.owned_files).toHaveLength(5);
+     for (const file of feature.owned_files) {
+       if (
++        feature.pr === 112 &&
++        file.path === 'src/lib/workflows/daily-field-guide.ts'
++      ) {
++        const reference = { path: file.path, sha256: file.sha256 };
++        expect(reference).toEqual({
++          path: 'src/lib/workflows/daily-field-guide.ts',
++          sha256:
++            '6fcaea74f19b422424e0b562d91fb94e1d9654b0598b20c6551d3ba405c5410d',
++        });
++        const originalPackage = (
++          JSON.parse(
++            readFileSync('docs/program/CYCLE16_DELIVERY_INDEX.json', 'utf8'),
++          ) as { packages: Record<string, unknown>[] }
++        ).packages.find((pkg) => pkg.draft_pr === 112);
++        expect(originalPackage).toBeDefined();
++        const current = readFileSync(file.path);
++        expect(() =>
++          fieldPublishedLineage.validateFieldPublishedSource(
++            reference,
++            current,
++            originalPackage!,
++          ),
++        ).not.toThrow();
++        expect(() =>
++          fieldPublishedLineage.validateFieldPublishedSource(
++            reference,
++            Buffer.concat([current, Buffer.from('\n// unknown edit\n')]),
++            originalPackage!,
++          ),
++        ).toThrow();
++      } else if (
+         feature.pr === 117 &&
+         file.path === 'src/lib/workflows/addon-readiness-guide.ts'
+       ) {
+diff --git a/tests/v1-c17-field-closeout-source.test.mjs b/tests/v1-c17-field-closeout-source.test.mjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..bf561687620d0d25e68d6c5d365fefbce7503d7d
+--- /dev/null
++++ b/tests/v1-c17-field-closeout-source.test.mjs
+@@ -0,0 +1,95 @@
++import { test } from 'node:test';
++import assert from 'node:assert/strict';
++import { cycle25SourcePorts as actualPorts } from '../scripts/cycle25-source-lineage.mjs';
++import {
++  inventoryParent,
++  inventoryPath as path,
++  admitC17InventorySuccessor as actualAdmit,
++} from '../scripts/v1-c17-inventory-source.mjs';
++const previous = () => actualPorts.git(inventoryParent, path);
++const corrupt = (b) => Buffer.concat([b, Buffer.from('\n// unknown\n')]);
++const closeoutAuthor = '76ee5226c52a850d5f692c8aac965d0487e0f544';
++const closeoutParent = '2c63cfd8175fe23d6c7f80a7879af9c73b27dceb';
++const closeoutDoc = 'docs/program/V1_C17_FIELD_CLOSEOUT_SOURCE.md';
++const closeout = () => actualPorts.git(closeoutAuthor, path);
++test('exact current Field closeout author is source-only through the original admission', () => {
++  assert.deepEqual(actualAdmit(path, closeout(), previous()), {
++    path,
++    source_commit: closeoutAuthor,
++    module: 'c17-field-inventory-compatibility',
++    authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
++    business_authority: false,
++    restore_adapter: false,
++  });
++});
++for (const mode of [
++  'author',
++  'parent',
++  'merge',
++  'extra',
++  'missing',
++  'before-mode',
++  'after-mode',
++  'note-mode',
++  'predecessor',
++  'author-bytes',
++  'note-bytes',
++  'unknown-current',
++  'initial-note',
++  'late-note',
++  'late-current',
++  'field',
++]) {
++  test(`Field closeout denies ${mode} without changing historical admission`, () => {
++    let notes = 0,
++      reads = 0;
++    const ports = {
++      type: (c) =>
++        c === closeoutAuthor && mode === 'author'
++          ? 'blob'
++          : actualPorts.type(c),
++      parent: (c) =>
++        c === closeoutAuthor && ['parent', 'merge'].includes(mode)
++          ? mode === 'merge'
++            ? `${closeoutParent} ${closeoutParent}`
++            : '0'.repeat(40)
++          : actualPorts.parent(c),
++      delta: (c) =>
++        c === closeoutAuthor && ['extra', 'missing'].includes(mode)
++          ? mode === 'missing'
++            ? ''
++            : actualPorts.delta(c) + '\nM\tsrc/App.tsx'
++          : actualPorts.delta(c),
++      mode: (c, f) =>
++        (mode === 'before-mode' && c === closeoutParent && f === path) ||
++        (mode === 'after-mode' && c === closeoutAuthor && f === path) ||
++        (mode === 'note-mode' && c === closeoutAuthor && f === closeoutDoc)
++          ? '100755'
++          : actualPorts.mode(c, f),
++      git: (c, f) =>
++        (mode === 'predecessor' && c === closeoutParent && f === path) ||
++        (mode === 'author-bytes' && c === closeoutAuthor && f === path) ||
++        (mode === 'note-bytes' && c === closeoutAuthor && f === closeoutDoc)
++          ? corrupt(actualPorts.git(c, f))
++          : actualPorts.git(c, f),
++      read: (f) => {
++        if (f === closeoutDoc) notes++;
++        if (f === path) reads++;
++        return (f === closeoutDoc &&
++          (mode === 'initial-note' || (mode === 'late-note' && notes > 1))) ||
++          (f === path && mode === 'late-current' && reads > 1) ||
++          (f === 'src/lib/workflows/field-workspace.ts' && mode === 'field')
++          ? corrupt(actualPorts.read(f))
++          : actualPorts.read(f);
++      },
++    };
++    assert.throws(() =>
++      actualAdmit(
++        path,
++        mode === 'unknown-current' ? corrupt(closeout()) : closeout(),
++        previous(),
++        ports,
++      ),
++    );
++  });
++}
+diff --git a/tests/v1-c17-inventory-source.test.mjs b/tests/v1-c17-inventory-source.test.mjs
+index c3e72586f4a3eea44dc064aa046bc0d654653386..37d35046278ad197ff4d6df6efc24d2d445ed7da 100644
+--- a/tests/v1-c17-inventory-source.test.mjs
++++ b/tests/v1-c17-inventory-source.test.mjs
+@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
+ import { readFileSync } from 'node:fs';
+ import { resolve } from 'node:path';
+ import {
+-  cycle25SourcePorts as p,
++  cycle25SourcePorts as actualPorts,
+   admitCycle33V1C17Compatibility as legacy,
+   cycle33V1C17Compatibility as old,
+ } from '../scripts/cycle25-source-lineage.mjs';
+@@ -12,9 +12,18 @@ import {
+   inventoryParent as parent,
+   inventoryPath as path,
+   inventoryDoc as doc,
+-  admitC17InventorySuccessor as admit,
++  admitC17InventorySuccessor as actualAdmit,
+   validateFocusedReport,
+ } from '../scripts/v1-c17-inventory-source.mjs';
++// Original bd8 controls use their exact historical current-read fixture.
++// The actual retained consumer below still reads the real current filesystem.
++const p = {
++  ...actualPorts,
++  read: (f) =>
++    f === path ? actualPorts.git(author, path) : actualPorts.read(f),
++};
++const admit = (a, b, c, ports = {}) =>
++  actualAdmit(a, b, c, { read: p.read, ...ports });
+ const current = () => p.git(author, path),
+   previous = () => p.git(parent, path),
+   corrupt = (b) => Buffer.concat([b, Buffer.from('\n// unknown\n')]);

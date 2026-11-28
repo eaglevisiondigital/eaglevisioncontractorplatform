@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { decodePaymentResponse } from './response-json';
 export type SandboxProvider = 'authorize_net' | 'nmi';
 export interface SandboxMerchant {
   organizationId: string;
@@ -114,11 +115,7 @@ async function boundedJson(r: Response) {
   } finally {
     reader.releaseLock();
   }
-  return JSON.parse(
-    Buffer.concat(chunks)
-      .toString('utf8')
-      .replace(/^\uFEFF/, ''),
-  ) as Record<string, unknown>;
+  return decodePaymentResponse(Buffer.concat(chunks));
 }
 export type SandboxCredentials =
   { apiLoginId: string; transactionKey: string } | { apiKey: string };

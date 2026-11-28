@@ -12,6 +12,7 @@ import {
   sha256,
   uuid,
 } from '../providers/safety';
+import { decodePaymentResponse } from './response-json';
 
 export interface SandboxRefund extends SandboxIntent {
   captureKey: string;
@@ -208,12 +209,10 @@ export class SandboxRefundGateway {
           body,
         },
       );
-      const data = JSON.parse(
-        (await boundedBytes(response, 65536))
-          .toString('utf8')
-          .replace(/^\uFEFF/, ''),
-      );
-      const transaction = authorize ? data.transactionResponse : data;
+      const data = decodePaymentResponse(await boundedBytes(response, 65536));
+      const transaction = authorize
+        ? (data.transactionResponse as Record<string, unknown> | undefined)
+        : data;
       const code = authorize ? transaction?.responseCode : data.response;
       const id = authorize ? transaction?.transId : data.id;
       if (
@@ -222,7 +221,8 @@ export class SandboxRefundGateway {
         referencePattern.test(id) &&
         id !== '0' &&
         (authorize
-          ? data.messages?.resultCode === 'Ok'
+          ? (data.messages as Record<string, unknown> | undefined)
+              ?.resultCode === 'Ok'
           : data.currency === 'USD' && data.amount === amount)
       )
         result = { ...result, status: 'succeeded', transactionId: id };

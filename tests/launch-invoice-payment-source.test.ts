@@ -25,12 +25,36 @@ if (
 const callerHelperBytes = readFileSync(callerHelperUrl);
 if (
   createHash('sha256').update(callerHelperBytes).digest('hex') !==
-  '2a6ffb692443a7830df021e9a8cce048ac4388947e03a27af4286b4e26ee9a25'
+  'af67c7836222779cd8322c08b3d5a72816760abc345a9d45cab97f85beacd133'
 )
   throw Error('Reviewed invoice caller helper required');
-const { admitInvoiceCallerSource } = await import(
+const { admitInvoiceCallerSource: admitInvoiceCallerOnly } = await import(
   'data:text/javascript;base64,' + callerHelperBytes.toString('base64')
 );
+
+// Exact source helper is validated before its captured bytes are imported.
+const responseHelperPath = new URL(
+  '../scripts/payment-response-source-admission.mjs',
+  import.meta.url,
+);
+if (
+  !lstatSync(responseHelperPath).isFile() ||
+  lstatSync(responseHelperPath).isSymbolicLink()
+)
+  throw Error('Reviewed payment response helper required');
+const responseHelperBytes = readFileSync(responseHelperPath);
+if (
+  createHash('sha256').update(responseHelperBytes).digest('hex') !==
+  'aa8871b0fa334bfd2ffdb36c314650e51e56ceea41a983e13c0b42a60084dfcd'
+)
+  throw Error('Reviewed payment response helper required');
+const { admitPaymentResponseSource } = await import(
+  'data:text/javascript;base64,' + responseHelperBytes.toString('base64')
+);
+
+const admitInvoiceCallerSource = (
+  ...args: Parameters<typeof admitInvoiceCallerOnly>
+) => admitPaymentResponseSource(...args) || admitInvoiceCallerOnly(...args);
 
 const composition = JSON.parse(
   readFileSync('docs/LAUNCH_INVOICE_PAYMENT_COMPOSITION.json', 'utf8'),

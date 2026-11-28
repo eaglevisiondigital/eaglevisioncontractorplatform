@@ -1,0 +1,1026 @@
+diff --git a/scripts/invoice-caller-source-admission.mjs b/scripts/invoice-caller-source-admission.mjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..353b92a884afbc3b329d7225743664907a474e98
+--- /dev/null
++++ b/scripts/invoice-caller-source-admission.mjs
+@@ -0,0 +1,222 @@
++// Finite build/test source proof ONLY; no runtime or launch authority.
++import { execFileSync } from 'node:child_process';
++import { readFileSync, lstatSync } from 'node:fs';
++import { createHash } from 'node:crypto';
++const historical = {
++  'server/invoices/commercial-draft-client.ts':
++    '12c1eb303f10f8cb9e6c5f765839419f55e4b6cfd16c6c6ef9f8812ccbb76194',
++  'tests/database/commercial-invoice-drafts.test.ts':
++    '94d06410bdd267726f57aa1b1a90c3357af3ed51cadf69f2a39e610a09416b47',
++  'tests/commercial-invoice-client.test.ts':
++    'ec0829098cd7fc967fad82d33b5db003dcab67ca9b2f135ae55a2dd74349e34a',
++  'tests/commercial-invoice-client-adversarial.test.ts':
++    '25f1e6169365e76558348df63792c131e4f26414d4c8d50b407657ce0f282c12',
++  'tests/commercial-invoice-client-reconciliation.test.ts':
++    '8be24bc86172b7997ef4268a4df7375acc8cfcb131a8b7f3442c0f6d11aa7e40',
++};
++const authors = [
++  {
++    commit: '8f498f2c657608c64d40a3527be13b47a189b7b7',
++    parent: '0e49670e6cc05473d3fd4e033b2c0f42b5fc10e0',
++    delta:
++      'A\tserver/invoices/commercial-caller-connection.ts\nM\tserver/invoices/commercial-draft-client.ts',
++  },
++  {
++    commit: '6063aea60588975bbe88c8ccf8b1d864721b7082',
++    parent: '8f498f2c657608c64d40a3527be13b47a189b7b7',
++    delta:
++      'M\tCURRENT_BUILD_STATE.md\nM\tDECISIONS.md\nA\tdocs/INVOICE_CALLER_FIXTURE_SUCCESSOR.json\nA\tproposals/invoice-caller-fixture-migration/README.md\nA\tproposals/invoice-caller-fixture-migration/source-author-baseline.mjs\nM\tproposals/invoice-caller-reconciliation/qualify.d.mts\nM\tproposals/invoice-caller-reconciliation/qualify.mjs\nM\ttests/commercial-invoice-client-adversarial.test.ts\nM\ttests/commercial-invoice-client-reconciliation.test.ts\nM\ttests/commercial-invoice-client.test.ts\nM\ttests/database/commercial-invoice-drafts.test.ts\nA\ttests/fixtures/commercial-caller-native.ts\nA\ttests/fixtures/commercial-caller-unit.ts\nA\ttests/invoice-caller-migration-source.test.ts',
++  },
++];
++const companions = [
++  {
++    path: 'docs/LAUNCH_INVOICE_PAYMENT_COMPOSITION.json',
++    commit: '6063aea60588975bbe88c8ccf8b1d864721b7082',
++    sha256: '27f14d1fbab79b6ff09318e482892ac8897ab17da0509eb47a8d97f3f7324741',
++  },
++  {
++    path: 'docs/COMMERCIAL_INVOICE_DRAFT_CANDIDATE.json',
++    commit: '6063aea60588975bbe88c8ccf8b1d864721b7082',
++    sha256: 'dfdecf7675fcbf332585c8bd7017ad45608ed230402ed21d997573739e2d9598',
++  },
++  {
++    path: 'docs/LAUNCH_CURRENT_SESSION_SUCCESSOR.json',
++    commit: '6063aea60588975bbe88c8ccf8b1d864721b7082',
++    sha256: 'b84e425c7c9b911723c470b4c1eea14ec8061f48890c6e995ed2b7d6fd11495d',
++  },
++  {
++    path: 'docs/INVOICE_REVOCATION_TEST_CORRECTION.json',
++    commit: '6063aea60588975bbe88c8ccf8b1d864721b7082',
++    sha256: 'e0e6d84396e426df86a9bd1085de168633148cd0549e481841b57b43b2c03c32',
++  },
++  {
++    path: 'server/invoices/commercial-draft-client.ts',
++    commit: '8f498f2c657608c64d40a3527be13b47a189b7b7',
++    sha256: '94aa164e60c780cb53f8658b16c57bc9c17da5d9469c73f9d73cab627dcea694',
++  },
++  {
++    path: 'server/invoices/commercial-caller-connection.ts',
++    commit: '8f498f2c657608c64d40a3527be13b47a189b7b7',
++    sha256: '3d892a8ae7757a6f480fde4638f17f4b642436ba728446dfd84811590be0aeed',
++  },
++  {
++    path: 'tests/commercial-invoice-client.test.ts',
++    commit: '6063aea60588975bbe88c8ccf8b1d864721b7082',
++    sha256: '5d5e2f9eb9aca01fe29231a4111be4dc0f3220e4cfd4bb5234ef9d32b008c6e7',
++  },
++  {
++    path: 'tests/commercial-invoice-client-adversarial.test.ts',
++    commit: '6063aea60588975bbe88c8ccf8b1d864721b7082',
++    sha256: 'af7b59add457c268231b3cd9dbfc5d051af8429852721eab1e776b9b6fa61313',
++  },
++  {
++    path: 'tests/commercial-invoice-client-reconciliation.test.ts',
++    commit: '6063aea60588975bbe88c8ccf8b1d864721b7082',
++    sha256: 'c3770111b7ad3404470beb3917bd47b9cfca71adecdaec133770f396624c09a6',
++  },
++  {
++    path: 'tests/database/commercial-invoice-drafts.test.ts',
++    commit: '6063aea60588975bbe88c8ccf8b1d864721b7082',
++    sha256: '4f263d411f9fb02497335df739e810571810272ccfe0afb790ba4bba95465502',
++  },
++  {
++    path: 'tests/fixtures/commercial-caller-native.ts',
++    commit: '6063aea60588975bbe88c8ccf8b1d864721b7082',
++    sha256: 'ffa6eebb84fc52e96e3a070eab915e9ea7e0c9f7aea913144bbe5da38b699df1',
++  },
++  {
++    path: 'tests/fixtures/commercial-caller-unit.ts',
++    commit: '6063aea60588975bbe88c8ccf8b1d864721b7082',
++    sha256: 'e77ea3357154b9d3959ac00c85aa948a634e605db43069cde34500bc2089291c',
++  },
++  {
++    path: 'proposals/invoice-caller-fixture-migration/source-author-baseline.mjs',
++    commit: '6063aea60588975bbe88c8ccf8b1d864721b7082',
++    sha256: 'cb1a4069463d02d7b11d683bc38297ae110375a683809e15ec87159aa2ca1886',
++  },
++  {
++    path: 'proposals/invoice-caller-reconciliation/qualify.mjs',
++    commit: '6063aea60588975bbe88c8ccf8b1d864721b7082',
++    sha256: '8d3866149532e9986f8eca8d31d95cf3899d59e7ad74eb3e7281007d13c1e13e',
++  },
++  {
++    path: 'proposals/invoice-caller-reconciliation/qualify.d.mts',
++    commit: '6063aea60588975bbe88c8ccf8b1d864721b7082',
++    sha256: '30fd7efaf053fa0f3100c9ccdb9ad2ca0a250e75a8733a25fb59d0d8d0475b3a',
++  },
++  {
++    path: 'tests/invoice-caller-migration-source.test.ts',
++    commit: '6063aea60588975bbe88c8ccf8b1d864721b7082',
++    sha256: '4879c0b0f3da8bc2e5d981faae43fe443c317ffcd400b654fc550f0605149a08',
++    publishedSha256:
++      'b1131c5c7d80dc2fb3d28a3e7d20540c60d420f3d8ba76a7b61eb091fee24678',
++  },
++  {
++    path: 'docs/INVOICE_CALLER_FIXTURE_SUCCESSOR.json',
++    commit: '6063aea60588975bbe88c8ccf8b1d864721b7082',
++    sha256: '785db2e06fa3e2f33270a8e728279e387c67521082ca49ba14275b3278677287',
++  },
++  {
++    path: 'server/customer/broker-auth.ts',
++    commit: '6063aea60588975bbe88c8ccf8b1d864721b7082',
++    sha256: '709018249d889504b860e4cf0f4caa5cbdd1c2b04f58c53226f4499c68fd46d6',
++  },
++  {
++    path: 'server/invoices/commercial-drafts.proposed.sql',
++    commit: '6063aea60588975bbe88c8ccf8b1d864721b7082',
++    sha256: 'da35d098727eff68ae7905c3709d6982cf89560cae538923f5d7e570dab0306e',
++  },
++];
++const hash = (b) => createHash('sha256').update(b).digest('hex');
++const git = (...args) => execFileSync('git', ['--no-replace-objects', ...args]);
++const original = (commit, path) => git('show', `${commit}:${path}`);
++export function admitInvoiceCallerSource(
++  path,
++  current,
++  expected,
++  {
++    readCurrent = readFileSync,
++    readOriginal = original,
++    metadata = git,
++    stat = lstatSync,
++  } = {},
++) {
++  if (!Object.hasOwn(historical, path)) return false;
++  const fail = () => {
++    throw Error('Exact finite invoice caller source required');
++  };
++  if (expected !== historical[path]) fail();
++  if (
++    hash(
++      readOriginal(
++        authors[0].parent,
++        'server/invoices/commercial-draft-client.ts',
++      ),
++    ) !== historical['server/invoices/commercial-draft-client.ts']
++  )
++    fail();
++  if (
++    metadata(
++      'ls-tree',
++      authors[0].parent,
++      '--',
++      'server/invoices/commercial-caller-connection.ts',
++    )
++      .toString()
++      .trim() !== ''
++  )
++    fail();
++  for (const author of authors) {
++    if (
++      metadata('show', '--no-patch', '--format=%P', author.commit)
++        .toString()
++        .trim() !== author.parent
++    )
++      fail();
++    if (
++      metadata(
++        'diff-tree',
++        '--no-commit-id',
++        '--name-status',
++        '--no-renames',
++        '-r',
++        author.commit,
++      )
++        .toString()
++        .trim() !== author.delta
++    )
++      fail();
++    for (const row of author.delta.split('\n')) {
++      const p = row.split('\t')[1];
++      const tree = metadata('ls-tree', author.commit, '--', p)
++        .toString()
++        .trim();
++      if (
++        !/^100644 blob [a-f0-9]{40}\t/.test(tree) ||
++        tree.split('\t')[1] !== p
++      )
++        fail();
++    }
++  }
++  for (const companion of companions) {
++    let prefix = '';
++    for (const segment of companion.path.split('/')) {
++      prefix = prefix ? prefix + '/' + segment : segment;
++      if (stat(prefix).isSymbolicLink()) fail();
++    }
++    if (!stat(companion.path).isFile()) fail();
++    const published = readOriginal(companion.commit, companion.path),
++      fresh = readCurrent(companion.path);
++    const exactPublishedHash =
++      companion.path === 'tests/invoice-caller-migration-source.test.ts'
++        ? companion.publishedSha256
++        : companion.sha256;
++    if (
++      hash(published) !== exactPublishedHash ||
++      hash(fresh) !== companion.sha256
++    )
++      fail();
++    if (companion.path === path && !Buffer.from(current).equals(fresh)) fail();
++  }
++  return true;
++}
+diff --git a/server/invoices/commercial-caller-connection.ts b/server/invoices/commercial-caller-connection.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..25ea2afc070f9ad6828d400f621b84a0fcc8db35
+--- /dev/null
++++ b/server/invoices/commercial-caller-connection.ts
+@@ -0,0 +1,242 @@
++import {
++  CustomerBrokerAuth,
++  brokerActor,
++  type BrokerActor,
++} from '../customer/broker-auth';
++import type { GatewaySql } from '../payments/postgres-store';
++import type { CommercialDraft, DraftWrite } from './commercial-draft-client';
++
++/** UNAPPLIED source proposal. No connection factory, credentials or route.
++ * The reviewed server must exclusively own this dedicated connection. Native
++ * fixtures/GUCs are NOT genuine Auth or independent operational custody.
++ */
++export interface InvoiceConnectionScope {
++  database: string;
++  pid: number;
++  backend_start: string;
++  login: string;
++  current_role: string;
++}
++export interface OriginalDraftAttempt extends DraftWrite {
++  readonly organizationId: string;
++  readonly actorId: string;
++  readonly sessionId: string;
++  readonly requestHash: string;
++}
++const authenticate = CustomerBrokerAuth.prototype.verify;
++const active = new WeakSet<GatewaySql>();
++const issued = new WeakSet<object>();
++const inspect = `select current_database() database,pg_backend_pid() pid,
++ backend_start::text,session_user::text login,current_user::text current_role,
++ current_setting('request.jwt.claims',true) claims
++ from pg_stat_activity where pid=pg_backend_pid()`;
++const requestHash = `select encode(sha256(convert_to(jsonb_build_array(
++ $1::uuid,$2::uuid,$3::uuid,$4::integer,$5::uuid,$6::uuid,$7::uuid,
++ $8::text,$9::text,$10::uuid)::text,'UTF8')),'hex') request_hash`;
++const deny = () => Error('Current authenticated invoice connection required');
++const sameActor = (a: BrokerActor, b: BrokerActor) =>
++  a.user_id === b.user_id &&
++  a.session_id === b.session_id &&
++  a.aal === 'aal2' &&
++  b.aal === 'aal2' &&
++  a.expires_at === b.expires_at;
++
++export interface CommercialCallerContext {
++  query: GatewaySql['query'];
++  bind: (
++    organizationId: string,
++    write: DraftWrite,
++  ) => Promise<OriginalDraftAttempt>;
++  sameCaller: (attempt: OriginalDraftAttempt) => boolean;
++  owns: (draft: CommercialDraft) => boolean;
++  matches: (draft: CommercialDraft, attempt: OriginalDraftAttempt) => boolean;
++}
++
++export class CommercialCallerConnection {
++  readonly #expected: Readonly<InvoiceConnectionScope>;
++  #actor?: Readonly<BrokerActor>;
++  readonly #connection: GatewaySql;
++  readonly #auth: CustomerBrokerAuth;
++  readonly #bearer: string;
++  constructor(
++    connection: GatewaySql,
++    auth: CustomerBrokerAuth,
++    bearer: string,
++    expected: InvoiceConnectionScope,
++  ) {
++    this.#connection = connection;
++    this.#auth = auth;
++    this.#bearer = bearer;
++    const keys = [
++      'database',
++      'pid',
++      'backend_start',
++      'login',
++      'current_role',
++    ] as const;
++    if (
++      !expected ||
++      typeof expected !== 'object' ||
++      Array.isArray(expected) ||
++      ![Object.prototype, null].includes(Object.getPrototypeOf(expected))
++    )
++      throw deny();
++    const descriptors = Object.getOwnPropertyDescriptors(expected);
++    if (
++      Reflect.ownKeys(descriptors).length !== keys.length ||
++      keys.some((key) => !descriptors[key] || !('value' in descriptors[key]))
++    )
++      throw deny();
++    const scope = Object.fromEntries(
++      keys.map((key) => [key, descriptors[key].value]),
++    ) as unknown as InvoiceConnectionScope;
++    this.#expected = Object.freeze(scope);
++    if (
++      !bearer ||
++      typeof bearer !== 'string' ||
++      !Number.isSafeInteger(scope.pid) ||
++      scope.pid <= 0 ||
++      ![
++        scope.database,
++        scope.backend_start,
++        scope.login,
++        scope.current_role,
++      ].every((s) => typeof s === 'string' && s.length > 0)
++    )
++      throw deny();
++    issued.add(this);
++  }
++
++  async #current(original?: BrokerActor): Promise<BrokerActor> {
++    // Reuse the existing opaque Auth proof; deserialized actor IDs cannot mint it.
++    const proof = await authenticate.call(this.#auth, this.#bearer);
++    const actor = brokerActor(proof);
++    if (
++      actor.aal !== 'aal2' ||
++      (original && !sameActor(actor, original)) ||
++      (this.#actor && !sameActor(actor, this.#actor))
++    )
++      throw deny();
++    const result =
++      await this.#connection.query<Record<string, unknown>>(inspect);
++    if (result.rows.length !== 1) throw deny();
++    const row = result.rows[0];
++    for (const key of Object.keys(
++      this.#expected,
++    ) as (keyof InvoiceConnectionScope)[])
++      if (row[key] !== this.#expected[key]) throw deny();
++    const claims: unknown =
++      typeof row.claims === 'string' ? JSON.parse(row.claims) : null;
++    if (!claims || typeof claims !== 'object' || Array.isArray(claims))
++      throw deny();
++    const c = claims as Record<string, unknown>;
++    // Consistency on the authenticated server's connection, NOT authentication by GUC.
++    if (
++      c.sub !== actor.user_id ||
++      c.session_id !== actor.session_id ||
++      c.aal !== 'aal2' ||
++      c.exp !== actor.expires_at
++    )
++      throw deny();
++    brokerActor(proof); // Proof/expiry must remain current after the SQL await.
++    const fresh = brokerActor(
++      await authenticate.call(this.#auth, this.#bearer),
++    );
++    if (!sameActor(actor, fresh)) throw deny();
++    this.#actor ??= Object.freeze({ ...actor });
++    return actor;
++  }
++  async run<T>(
++    sql: GatewaySql,
++    action: (context: CommercialCallerContext) => Promise<T>,
++  ): Promise<T> {
++    if (sql !== this.#connection || active.has(sql)) throw deny();
++    active.add(sql);
++    try {
++      const actor = await this.#current();
++      const query: GatewaySql['query'] = async <
++        R extends Record<string, unknown>,
++      >(
++        text: string,
++        parameters?: unknown[],
++      ) => {
++        await this.#current(actor);
++        const result = await sql.query<R>(text, parameters);
++        await this.#current(actor);
++        return result;
++      };
++      const sameCaller = (attempt: OriginalDraftAttempt) =>
++        attempt.actorId === actor.user_id &&
++        attempt.sessionId === actor.session_id;
++      const result = await action({
++        query,
++        sameCaller,
++        owns: (draft) => draft.receipt.actorId === actor.user_id,
++        async bind(organizationId, write) {
++          const v = Object.freeze({ ...write });
++          const r = await query<{ request_hash: string }>(requestHash, [
++            organizationId,
++            v.invoiceId,
++            v.commandId,
++            v.expectedRevision,
++            v.customerId,
++            v.locationId,
++            v.sourceVersionId,
++            v.title,
++            v.memo,
++            actor.user_id,
++          ]);
++          const hash = r.rows[0]?.request_hash;
++          if (
++            r.rows.length !== 1 ||
++            typeof hash !== 'string' ||
++            !/^[a-f0-9]{64}$/.test(hash)
++          )
++            throw deny();
++          return Object.freeze({
++            ...v,
++            organizationId,
++            actorId: actor.user_id,
++            sessionId: actor.session_id,
++            requestHash: hash,
++          });
++        },
++        matches(draft, attempt) {
++          return (
++            sameCaller(attempt) &&
++            draft.sourceCurrent &&
++            draft.organizationId === attempt.organizationId &&
++            draft.invoiceId === attempt.invoiceId &&
++            draft.customerId === attempt.customerId &&
++            draft.locationId === attempt.locationId &&
++            draft.sourceVersionId === attempt.sourceVersionId &&
++            draft.receipt.commandId === attempt.commandId &&
++            draft.receipt.actorId === attempt.actorId &&
++            draft.receipt.requestHash === attempt.requestHash &&
++            draft.revision === attempt.expectedRevision + 1 &&
++            draft.title === attempt.title &&
++            draft.memo === attempt.memo
++          );
++        },
++      });
++      await this.#current(actor);
++      return result;
++    } catch {
++      throw deny();
++    } finally {
++      active.delete(sql);
++    }
++  }
++}
++
++// Only objects minted by this module may carry the connection contract. Capture
++// the reviewed method so a caller-supplied shape/override cannot forge its proof.
++const originalRun = CommercialCallerConnection.prototype.run;
++export function runWithCommercialCaller<T>(
++  caller: CommercialCallerConnection | undefined,
++  sql: GatewaySql,
++  action: (context: CommercialCallerContext) => Promise<T>,
++): Promise<T> {
++  if (!caller || !issued.has(caller)) throw deny();
++  return Reflect.apply(originalRun, caller, [sql, action]) as Promise<T>;
++}
+diff --git a/server/invoices/commercial-draft-client.ts b/server/invoices/commercial-draft-client.ts
+index fe25fd70f7fb662bb18b35f52cb388a10fdea045..76eeeb6f3e58989afa55ce2e2ce8e901fcdbf6f0 100644
+--- a/server/invoices/commercial-draft-client.ts
++++ b/server/invoices/commercial-draft-client.ts
+@@ -1,4 +1,9 @@
+ import type { GatewaySql } from '../payments/postgres-store';
++import {
++  CommercialCallerConnection,
++  runWithCommercialCaller,
++  type OriginalDraftAttempt,
++} from './commercial-caller-connection';
+ 
+ // Unwired source proposal. The supplied connection must independently enforce the
+ // reviewed SQL authority; these caller expectations never authenticate an actor.
+@@ -67,10 +72,14 @@ export class CommercialDraftUnknownError extends Error {
+  */
+ export class CommercialDraftClient {
+   private readonly attempted = new Set<string>();
+-  private readonly uncertain = new Map<string, DraftWrite>();
++  private readonly uncertain = new Map<
++    string,
++    { write: DraftWrite; attempt?: OriginalDraftAttempt }
++  >();
+   constructor(
+     private readonly sql: GatewaySql,
+     private readonly organizationId: string,
++    private readonly caller?: CommercialCallerConnection,
+   ) {
+     if (!isId(organizationId)) throw Error('Exact organization required');
+   }
+@@ -162,56 +171,72 @@ export class CommercialDraftClient {
+     )
+       throw Error('Valid draft command required');
+     if (
+-      this.attempted.has(v.commandId) ||
+-      this.uncertain.has(v.invoiceId) ||
++      this.attempted.has(v.commandId.toLowerCase()) ||
++      this.uncertain.has(v.invoiceId.toLowerCase()) ||
+       [...this.uncertain.values()].some(
+-        (held) => held.sourceVersionId === v.sourceVersionId,
++        (held) =>
++          held.write.sourceVersionId.toLowerCase() ===
++          v.sourceVersionId.toLowerCase(),
+       )
+     )
+       throw new CommercialDraftUnknownError();
+     // Reserve before any await. Even a thrown query may have committed remotely.
+-    this.attempted.add(v.commandId);
+-    this.uncertain.set(v.invoiceId, v);
++    this.attempted.add(v.commandId.toLowerCase());
++    const held: { write: DraftWrite; attempt?: OriginalDraftAttempt } = {
++      write: v,
++    };
++    this.uncertain.set(v.invoiceId.toLowerCase(), held);
+     try {
+-      const r = await this.sql.query<{ result: unknown }>(
+-        action === 'create'
+-          ? 'select private.commercial_invoice_draft_create($1::uuid,$2::uuid,$3::uuid,$4::uuid,$5::uuid,$6::uuid,$7::text,$8::text) result'
+-          : 'select private.commercial_invoice_draft_save($1::uuid,$2::uuid,$3::uuid,$4::integer,$5::uuid,$6::uuid,$7::uuid,$8::text,$9::text) result',
+-        action === 'create'
+-          ? [
+-              this.organizationId,
+-              v.invoiceId,
+-              v.commandId,
+-              v.customerId,
+-              v.locationId,
+-              v.sourceVersionId,
+-              v.title,
+-              v.memo,
+-            ]
+-          : [
+-              this.organizationId,
+-              v.invoiceId,
+-              v.commandId,
+-              v.expectedRevision,
+-              v.customerId,
+-              v.locationId,
+-              v.sourceVersionId,
+-              v.title,
+-              v.memo,
+-            ],
+-      );
+-      if (r.rows.length !== 1) throw new CommercialDraftUnknownError();
+-      const draft = this.decode(r.rows[0].result, v);
+-      if (
+-        !draft.sourceCurrent ||
+-        draft.receipt.commandId !== v.commandId ||
+-        draft.revision !== v.expectedRevision + 1 ||
+-        draft.title !== v.title ||
+-        draft.memo !== v.memo
+-      )
+-        throw new CommercialDraftUnknownError();
+-      this.uncertain.delete(v.invoiceId);
+-      return draft;
++      if (!this.caller) throw new CommercialDraftUnknownError();
++      return await runWithCommercialCaller(
++        this.caller,
++        this.sql,
++        async (context) => {
++          held.attempt = await context.bind(this.organizationId, v);
++          const r = await context.query<{ result: unknown }>(
++            action === 'create'
++              ? 'select private.commercial_invoice_draft_create($1::uuid,$2::uuid,$3::uuid,$4::uuid,$5::uuid,$6::uuid,$7::text,$8::text) result'
++              : 'select private.commercial_invoice_draft_save($1::uuid,$2::uuid,$3::uuid,$4::integer,$5::uuid,$6::uuid,$7::uuid,$8::text,$9::text) result',
++            action === 'create'
++              ? [
++                  this.organizationId,
++                  v.invoiceId,
++                  v.commandId,
++                  v.customerId,
++                  v.locationId,
++                  v.sourceVersionId,
++                  v.title,
++                  v.memo,
++                ]
++              : [
++                  this.organizationId,
++                  v.invoiceId,
++                  v.commandId,
++                  v.expectedRevision,
++                  v.customerId,
++                  v.locationId,
++                  v.sourceVersionId,
++                  v.title,
++                  v.memo,
++                ],
++          );
++          if (r.rows.length !== 1) throw new CommercialDraftUnknownError();
++          const draft = this.decode(r.rows[0].result, v);
++          if (
++            !context.matches(draft, held.attempt) ||
++            !draft.sourceCurrent ||
++            draft.receipt.commandId !== v.commandId ||
++            draft.revision !== v.expectedRevision + 1 ||
++            draft.title !== v.title ||
++            draft.memo !== v.memo
++          )
++            throw new CommercialDraftUnknownError();
++          return draft;
++        },
++      ).then((draft) => {
++        this.uncertain.delete(v.invoiceId.toLowerCase());
++        return draft;
++      });
+     } catch {
+       throw new CommercialDraftUnknownError();
+     }
+@@ -227,7 +252,7 @@ export class CommercialDraftClient {
+     identity(v);
+     if (commandId !== null && !isId(commandId))
+       throw Error('Exact command required');
+-    const original = this.uncertain.get(v.invoiceId);
++    const original = this.uncertain.get(v.invoiceId.toLowerCase())?.write;
+     if (
+       original &&
+       (original.customerId !== v.customerId ||
+@@ -236,24 +261,42 @@ export class CommercialDraftClient {
+     )
+       throw new CommercialDraftUnknownError();
+     try {
+-      const r = await this.sql.query<{ result: unknown }>(
+-        'select private.commercial_invoice_draft_read($1::uuid,$2::uuid,$3::uuid) result',
+-        [this.organizationId, v.invoiceId, commandId],
+-      );
+-      if (r.rows.length !== 1) throw new CommercialDraftUnknownError();
+-      const draft = this.decode(r.rows[0].result, v);
+-      if (commandId !== null && draft.receipt.commandId !== commandId)
+-        throw new CommercialDraftUnknownError();
+-      const held = this.uncertain.get(v.invoiceId);
+-      if (
+-        held &&
+-        commandId === held.commandId &&
+-        draft.revision === held.expectedRevision + 1 &&
+-        draft.title === held.title &&
+-        draft.memo === held.memo
+-      )
+-        this.uncertain.delete(v.invoiceId);
+-      return draft;
++      if (!this.caller) throw new CommercialDraftUnknownError();
++      const held = this.uncertain.get(v.invoiceId.toLowerCase());
++      return await runWithCommercialCaller(
++        this.caller,
++        this.sql,
++        async (context) => {
++          if (held && (!held.attempt || !context.sameCaller(held.attempt)))
++            throw new CommercialDraftUnknownError();
++          const r = await context.query<{ result: unknown }>(
++            'select private.commercial_invoice_draft_read($1::uuid,$2::uuid,$3::uuid) result',
++            [this.organizationId, v.invoiceId, commandId],
++          );
++          if (r.rows.length !== 1) throw new CommercialDraftUnknownError();
++          const draft = this.decode(r.rows[0].result, v);
++          if (
++            !context.owns(draft) ||
++            (commandId !== null && draft.receipt.commandId !== commandId)
++          )
++            throw new CommercialDraftUnknownError();
++          // This client returns only the authenticated actor's receipt.
++          // Direct SQL staff-read permissions remain unchanged.
++          const reconciled =
++            !!held &&
++            commandId === held.write.commandId &&
++            context.matches(draft, held.attempt!) &&
++            draft.revision === held.write.expectedRevision + 1 &&
++            draft.title === held.write.title &&
++            draft.memo === held.write.memo;
++          if (held && commandId === held.write.commandId && !reconciled)
++            throw new CommercialDraftUnknownError();
++          return { draft, reconciled };
++        },
++      ).then(({ draft, reconciled }) => {
++        if (reconciled) this.uncertain.delete(v.invoiceId.toLowerCase());
++        return draft;
++      });
+     } catch {
+       throw new CommercialDraftUnknownError();
+     }
+diff --git a/tests/invoice-caller-migration-source.test.ts b/tests/invoice-caller-migration-source.test.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..e5018497ce5a476e0e1f3741053172cc8502d4e5
+--- /dev/null
++++ b/tests/invoice-caller-migration-source.test.ts
+@@ -0,0 +1,235 @@
++import { readFileSync, lstatSync } from 'node:fs';
++import { execFileSync } from 'node:child_process';
++import { createHash } from 'node:crypto';
++import ts from 'typescript';
++import { expect, it } from 'vitest';
++const helper = await import(
++  new URL(
++    '../proposals/invoice-caller-fixture-migration/source-author-baseline.mjs',
++    import.meta.url,
++  ).href
++);
++const client = 'server/invoices/commercial-draft-client.ts';
++const caller = 'server/invoices/commercial-caller-connection.ts';
++const git = (...args: string[]) =>
++  execFileSync('git', ['--no-replace-objects', ...args]);
++const guardPath = 'tests/launch-invoice-payment-source.test.ts';
++const admissionHelperPath = 'scripts/invoice-caller-source-admission.mjs';
++const migrationPath = 'tests/invoice-caller-migration-source.test.ts';
++const checkerAuthor = '82c3ffd11499f9addbb92d6d5d7d1deb7e34d64c';
++const oldMigrationHash =
++  'b1131c5c7d80dc2fb3d28a3e7d20540c60d420f3d8ba76a7b61eb091fee24678';
++const sha = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex');
++// Historical assertion remains about its original source. Current checker and
++// helper are verified independently below; this read port never grants admission.
++const retainedOriginal = (path: string) =>
++  path === guardPath
++    ? git('show', `8f498f2c657608c64d40a3527be13b47a189b7b7:${path}`)
++    : readFileSync(path);
++function verifyCheckerTransition() {
++  const originalGuard = git('show', `${checkerAuthor}:${guardPath}`);
++  const originalHelper = git('show', `${checkerAuthor}:${admissionHelperPath}`);
++  expect(sha(originalGuard)).toBe(
++    '52f0e7e62b74c0fff9b295cd855eac4419340097eee37237330a9fcf17ddb3b8',
++  );
++  expect(sha(originalHelper)).toBe(
++    'e83139e1af82743bf9993fac2fb55c4d50e359e9681fd16d1a12001a41432dbf',
++  );
++  const digest = (text: string) => {
++    const matches = [
++      ...text.matchAll(
++        /createHash\('sha256'\)\.update\(callerHelperBytes\)\.digest\('hex'\) !==\s*'([a-f0-9]{64})'/g,
++      ),
++    ];
++    expect(matches).toHaveLength(1);
++    expect(text.split(matches[0][1])).toHaveLength(2);
++    return matches[0][1];
++  };
++  const normalize = (text: string) =>
++    text.replace(digest(text), '<EXACT_HELPER_DIGEST>');
++  const currentGuard = readFileSync(guardPath, 'utf8');
++  expect(normalize(currentGuard)).toBe(normalize(originalGuard.toString()));
++  const currentMigrationHash = sha(readFileSync(migrationPath));
++  const expectedHelper = originalHelper
++    .toString()
++    .replace(
++      `    sha256: '${oldMigrationHash}',`,
++      `    sha256: '${currentMigrationHash}',\n    publishedSha256:\n      '${oldMigrationHash}',`,
++    )
++    .replace(
++      '    if (\n      hash(published)',
++      "    const exactPublishedHash =\n      companion.path === 'tests/invoice-caller-migration-source.test.ts'\n        ? companion.publishedSha256\n        : companion.sha256;\n    if (\n      hash(published)",
++    )
++    .replace(
++      'hash(published) !== companion.sha256',
++      'hash(published) !== exactPublishedHash',
++    );
++  const currentHelper = readFileSync(admissionHelperPath);
++  expect(currentHelper).toEqual(Buffer.from(expectedHelper));
++  expect(sha(currentHelper)).toBe(digest(currentGuard));
++}
++it('loads historical proposal bytes only beside the exact approved source author, without granting launch admission', () => {
++  const r = helper.proposalBaseline();
++  expect(r.activeSourceAuthor).toBe('8f498f2c657608c64d40a3527be13b47a189b7b7');
++  expect(r.current).toEqual(readFileSync(client));
++  expect(r.original).toEqual(
++    git('show', `0e49670e6cc05473d3fd4e033b2c0f42b5fc10e0:${client}`),
++  );
++  for (const path of [
++    'proposals/invoice-caller-reconciliation/evidence.json',
++    'proposals/invoice-caller-reconciliation/correction.patch',
++    'docs/LAUNCH_INVOICE_PAYMENT_COMPOSITION.json',
++    'docs/COMMERCIAL_INVOICE_DRAFT_CANDIDATE.json',
++    'tests/launch-invoice-payment-source.test.ts',
++    'server/invoices/commercial-drafts.proposed.sql',
++    'server/customer/broker-auth.ts',
++  ])
++    expect(retainedOriginal(path)).toEqual(
++      git('show', `8f498f2c657608c64d40a3527be13b47a189b7b7:${path}`),
++    );
++  verifyCheckerTransition();
++});
++it.each([
++  'client',
++  'caller',
++  'parent',
++  'extra-author-path',
++  'mode',
++  'authored-bytes',
++  'symlink',
++])('rejects unknown %s test-baseline evidence', (mode) => {
++  const read = (path: string) =>
++    mode === path.split('/').at(-1)?.split('.')[0]
++      ? Buffer.from('unknown')
++      : (mode === 'client' && path === client) ||
++          (mode === 'caller' && path === caller)
++        ? Buffer.from('unknown')
++        : readFileSync(path);
++  const proof = (...args: string[]) => {
++    if (mode === 'parent' && args.includes('--format=%P'))
++      return Buffer.from('0'.repeat(40));
++    if (mode === 'extra-author-path' && args[0] === 'diff-tree')
++      return Buffer.from(`A\t${caller}\nM\t${client}\nM\tother.ts`);
++    if (mode === 'mode' && args[0] === 'ls-tree')
++      return Buffer.from(`120000 blob ${'0'.repeat(40)}\t${client}`);
++    if (
++      mode === 'authored-bytes' &&
++      args[0] === 'show' &&
++      args.some((a) => a.startsWith('8f498f2') && a.includes(':'))
++    )
++      return Buffer.from('unknown');
++    return git(...args);
++  };
++  const stat = (path: string) =>
++    mode === 'symlink' && path === caller
++      ? { isFile: () => true, isSymbolicLink: () => true }
++      : lstatSync(path);
++  expect(() => helper.proposalBaseline({ read, git: proof, stat })).toThrow();
++});
++it('retains original unmodified proposal mode and rejects mixed original/new-port state', () => {
++  const old = git('show', `0e49670e6cc05473d3fd4e033b2c0f42b5fc10e0:${client}`);
++  const read = (path: string) => (path === client ? old : readFileSync(path));
++  expect(
++    helper.proposalBaseline({
++      read,
++      stat: () => {
++        throw Object.assign(Error('absent'), { code: 'ENOENT' });
++      },
++    }).activeSourceAuthor,
++  ).toBeNull();
++  expect(() => helper.proposalBaseline({ read })).toThrow(
++    'Old proposal requires absent caller',
++  );
++});
++function tokens(text: string) {
++  const scanner = ts.createScanner(
++    ts.ScriptTarget.Latest,
++    true,
++    ts.LanguageVariant.Standard,
++    text,
++  );
++  const out: string[] = [];
++  while (scanner.scan() !== ts.SyntaxKind.EndOfFileToken)
++    out.push(scanner.getTokenText());
++  return out.join('|');
++}
++function contract(text: string) {
++  const file = ts.createSourceFile(
++      'fixture.ts',
++      text,
++      ts.ScriptTarget.Latest,
++      true,
++    ),
++    assertions: string[] = [],
++    names: string[] = [],
++    skip: string[] = [];
++  const rootExpect = (node: ts.Node): boolean =>
++    ts.isIdentifier(node)
++      ? node.text === 'expect'
++      : ts.isPropertyAccessExpression(node)
++        ? rootExpect(node.expression)
++        : ts.isCallExpression(node)
++          ? rootExpect(node.expression)
++          : false;
++  function visit(node: ts.Node) {
++    if (ts.isCallExpression(node)) {
++      if (
++        rootExpect(node.expression) &&
++        !(
++          ts.isPropertyAccessExpression(node.parent) &&
++          node.parent.expression === node
++        ) &&
++        !(ts.isCallExpression(node.parent) && node.parent.expression === node)
++      )
++        assertions.push(tokens(node.getText(file)));
++      const expr = node.expression.getText(file);
++      if (
++        (expr === 'it' ||
++          expr === 'test' ||
++          expr.includes('it.each') ||
++          expr.includes('it.skipIf')) &&
++        node.arguments.length &&
++        ts.isStringLiteralLike(node.arguments[0])
++      )
++        names.push(tokens(node.arguments[0].getText(file)));
++      if (/^(it|test)\.(skip|only|skipIf|runIf)/.test(expr))
++        skip.push(tokens(expr));
++    }
++    ts.forEachChild(node, visit);
++  }
++  visit(file);
++  return { assertions, names, skip };
++}
++it.each([
++  'tests/commercial-invoice-client.test.ts',
++  'tests/commercial-invoice-client-adversarial.test.ts',
++  'tests/commercial-invoice-client-reconciliation.test.ts',
++  'tests/database/commercial-invoice-drafts.test.ts',
++])(
++  'preserves every original assertion, case identity and skip boundary in %s',
++  (path) => {
++    const old = contract(
++      git(
++        'show',
++        `8f498f2c657608c64d40a3527be13b47a189b7b7:${path}`,
++      ).toString(),
++    );
++    const current = contract(readFileSync(path, 'utf8'));
++    expect(current.names).toEqual(old.names);
++    expect(current.skip).toEqual(old.skip);
++    const additions = current.assertions.filter(
++      (v) => !old.assertions.includes(v),
++    );
++    expect(additions).toEqual(
++      path.endsWith('/commercial-invoice-client.test.ts')
++        ? [
++            tokens("expect(complete).toBeTypeOf('function')"),
++            tokens("expect(complete).toBeTypeOf('function')"),
++          ]
++        : [],
++    );
++    expect(current.assertions.filter((v) => !additions.includes(v))).toEqual(
++      old.assertions,
++    );
++  },
++);
+diff --git a/tests/launch-invoice-payment-source.test.ts b/tests/launch-invoice-payment-source.test.ts
+index 4ddbf35b9d2c5a23198e914583f540fce21df485..85a4614a6f83ff5b3f631c70604d0a9a172f4bb8 100644
+--- a/tests/launch-invoice-payment-source.test.ts
++++ b/tests/launch-invoice-payment-source.test.ts
+@@ -1,4 +1,4 @@
+-import { readFileSync } from 'node:fs';
++import { readFileSync, lstatSync } from 'node:fs';
+ import { execFileSync } from 'node:child_process';
+ import { createHash } from 'node:crypto';
+ import { expect, it } from 'vitest';
+@@ -12,6 +12,26 @@ interface Source {
+   currentSha256: string;
+   rootTestDelta?: string;
+ }
++// Proposed finite source helper is checked before executing captured bytes.
++const callerHelperUrl = new URL(
++  '../scripts/invoice-caller-source-admission.mjs',
++  import.meta.url,
++);
++if (
++  !lstatSync(callerHelperUrl).isFile() ||
++  lstatSync(callerHelperUrl).isSymbolicLink()
++)
++  throw Error('Reviewed invoice caller helper required');
++const callerHelperBytes = readFileSync(callerHelperUrl);
++if (
++  createHash('sha256').update(callerHelperBytes).digest('hex') !==
++  '2a6ffb692443a7830df021e9a8cce048ac4388947e03a27af4286b4e26ee9a25'
++)
++  throw Error('Reviewed invoice caller helper required');
++const { admitInvoiceCallerSource } = await import(
++  'data:text/javascript;base64,' + callerHelperBytes.toString('base64')
++);
++
+ const composition = JSON.parse(
+   readFileSync('docs/LAUNCH_INVOICE_PAYMENT_COMPOSITION.json', 'utf8'),
+ );
+@@ -31,6 +51,21 @@ function verify(readCurrent = current, readOriginal = original) {
+     'UNAPPLIED_UNWIRED_DEVELOPMENT_COMPOSITION',
+   );
+   expect(composition.sources).toHaveLength(26);
++  const activeClient = readCurrent(
++    'server/invoices/commercial-draft-client.ts',
++  );
++  if (
++    hash(activeClient) !==
++    '12c1eb303f10f8cb9e6c5f765839419f55e4b6cfd16c6c6ef9f8812ccbb76194'
++  )
++    expect(
++      admitInvoiceCallerSource(
++        'server/invoices/commercial-draft-client.ts',
++        activeClient,
++        '12c1eb303f10f8cb9e6c5f765839419f55e4b6cfd16c6c6ef9f8812ccbb76194',
++        { readCurrent, readOriginal },
++      ),
++    ).toBe(true);
+   const paths = new Set<string>();
+   const deltas: Record<string, string> = {
+     'tests/workflows/invoice-read-boundary.test.ts':
+@@ -44,6 +79,7 @@ function verify(readCurrent = current, readOriginal = original) {
+     expect(hash(readOriginal(source.originCommit, source.path))).toBe(
+       source.originSha256,
+     );
++    const bytes = readCurrent(source.path);
+     if (source.path === 'tests/database/commercial-invoice-drafts.test.ts') {
+       const fix = JSON.parse(
+         readFileSync('docs/INVOICE_REVOCATION_TEST_CORRECTION.json', 'utf8'),
+@@ -72,8 +108,22 @@ function verify(readCurrent = current, readOriginal = original) {
+       expect(next.currentTestSha256).toBe(
+         '94d06410bdd267726f57aa1b1a90c3357af3ed51cadf69f2a39e610a09416b47',
+       );
+-      expect(hash(readCurrent(source.path))).toBe(next.currentTestSha256);
+-    } else expect(hash(readCurrent(source.path))).toBe(source.currentSha256);
++      if (hash(bytes) !== next.currentTestSha256)
++        expect(
++          admitInvoiceCallerSource(source.path, bytes, next.currentTestSha256, {
++            readCurrent,
++            readOriginal,
++          }),
++        ).toBe(true);
++      else expect(hash(bytes)).toBe(next.currentTestSha256);
++    } else if (hash(bytes) !== source.currentSha256)
++      expect(
++        admitInvoiceCallerSource(source.path, bytes, source.currentSha256, {
++          readCurrent,
++          readOriginal,
++        }),
++      ).toBe(true);
++    else expect(hash(bytes)).toBe(source.currentSha256);
+     if (source.rootTestDelta) {
+       expect(deltas[source.path]).toBe(source.rootTestDelta);
+     } else expect(source.currentSha256).toBe(source.originSha256);

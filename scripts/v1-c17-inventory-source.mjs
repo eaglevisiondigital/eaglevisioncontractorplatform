@@ -10,6 +10,13 @@ export const inventoryParent = '337da476aa6061dba626aff343f0e6045331ac82';
 export const inventoryAuthor = 'bd8f150c1a347fd172cf5922d67e2664af59f14b';
 export const inventoryPath = 'tests/cycle17-integration.test.ts';
 export const inventoryDoc = 'docs/program/V1_C17_FIELD_INVENTORY.md';
+const closeoutAuthor = '76ee5226c52a850d5f692c8aac965d0487e0f544';
+const closeoutParent = '2c63cfd8175fe23d6c7f80a7879af9c73b27dceb';
+const closeoutDoc = 'docs/program/V1_C17_FIELD_CLOSEOUT_SOURCE.md';
+const closeoutHash =
+  '46747ffb4188b925fa2a64250be069a32e126fc72befac8918028f7594840d9a';
+const closeoutDocHash =
+  'd059a93942fe871a4af17d2f6ba207ee520c22a25d252b00300b68cd9b8537d4';
 const predecessor =
   '6e68a895ce33c1bcda2ffb5a660aa27f9abf0f89a33c12439c9baf6a31a74589';
 const hash = (b) => createHash('sha256').update(b).digest('hex');
@@ -44,9 +51,33 @@ export function admitC17InventorySuccessor(
     !same(previous, p.git(inventoryParent, path))
   )
     fail('Exact immutable b947/337 predecessor required');
+  const closeout = hash(current) === closeoutHash;
+  const endpoint = closeout ? closeoutAuthor : inventoryAuthor;
+  if (closeout) {
+    if (
+      p.type(closeoutAuthor) !== 'commit' ||
+      p.parent(closeoutAuthor) !== closeoutParent ||
+      p.delta(closeoutAuthor) !==
+        ['M\t' + inventoryPath, 'A\t' + closeoutDoc].sort().join('\n')
+    )
+      fail('Exact sole406 M1/A1 Field closeout author required');
+    if (
+      p.mode(closeoutParent, path) !== '100644' ||
+      p.mode(closeoutAuthor, path) !== '100644' ||
+      p.mode(closeoutAuthor, closeoutDoc) !== '100644'
+    )
+      fail('Regular exact Field closeout source required');
+    if (
+      !same(p.git(closeoutParent, path), p.git(inventoryAuthor, path)) ||
+      hash(p.git(closeoutAuthor, path)) !== closeoutHash ||
+      hash(p.git(closeoutAuthor, closeoutDoc)) !== closeoutDocHash ||
+      !same(p.read(closeoutDoc), p.git(closeoutAuthor, closeoutDoc))
+    )
+      fail('Exact Field closeout predecessor/test/note required');
+  }
   if (
     same(current, previous) ||
-    !same(current, p.git(inventoryAuthor, path)) ||
+    !same(current, p.git(endpoint, path)) ||
     !same(p.read(path), current) ||
     !same(p.read(inventoryDoc), p.git(inventoryAuthor, inventoryDoc))
   )
@@ -60,10 +91,15 @@ export function admitC17InventorySuccessor(
   );
   if (!same(p.read(inventoryDoc), p.git(inventoryAuthor, inventoryDoc)))
     fail('Final fresh C17 doc required');
+  if (
+    closeout &&
+    !same(p.read(closeoutDoc), p.git(closeoutAuthor, closeoutDoc))
+  )
+    fail('Final fresh Field closeout note required');
   if (!same(p.read(path), current)) fail('Final fresh C17 endpoint required');
   return {
     path,
-    source_commit: inventoryAuthor,
+    source_commit: endpoint,
     module: 'c17-field-inventory-compatibility',
     authority: 'SOURCE_LINEAGE_ONLY_NOT_BUSINESS_RESTORE',
     business_authority: false,
