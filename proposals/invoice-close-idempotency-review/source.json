@@ -1,0 +1,46 @@
+{
+  "classification": "UNAPPLIED_PROTECTED_DEVELOPMENT_PROPOSAL",
+  "parent_commit": "4d52beee582734ea1367b735619ac20dd3492481",
+  "parent_tree": "97dc8c49e8cfe9e141d99fb092eb4c29ca25b678",
+  "proposed_commit": null,
+  "proposed_tree": "84ac012c92c891933bc5d04d6ee4c527e0d2fbcd",
+  "patch_sha256": "f974ac978fbf43d273299bb22cac400715d2079ad62ef42da7859c4ca3ab79fd",
+  "files": [
+    {
+      "path": "proposals/commercial-invoice-connection/connection.ts",
+      "before_mode": "100644",
+      "after_mode": "100644",
+      "before_blob": "5a70c2be35b1aff54fd4ad179d8bca44448a9947",
+      "after_blob": "33efe2ca4445c56bb3b65649f442fa5b42ab0e26",
+      "before_sha256": "50db32661490a3e1d7807bfffcca66dcacda1333e9578c3ab63e3e9984747d23",
+      "after_sha256": "ea65546cee29bb980da8aca15b85a8614175accc5398ba0c601157c389334972"
+    },
+    {
+      "path": "proposals/commercial-invoice-connection/source.ts",
+      "before_mode": "100644",
+      "after_mode": "100644",
+      "before_blob": "c5470ac13ab22d1ddb9103fe8399b4b47691a83a",
+      "after_blob": "c8a0ad1ef1e9944ccf1789ca96510d7d668d22f1",
+      "before_sha256": "05d7e2510d2993720bff81d71729edb838a496d72c867e345252c5d10448fe96",
+      "after_sha256": "43e7243e2273a63c2f2dea826f635aafb78333e9ff1b621df9aa2f9a09e5cd61"
+    },
+    {
+      "path": "tests/database/commercial-invoice-caller-proposal.test.ts",
+      "before_mode": "100644",
+      "after_mode": "100644",
+      "before_blob": "b4fe86a1731df141ff2055dd8e549f8cbf0ac44e",
+      "after_blob": "f61ef3e5e5e821e751ae9bb95b3e4fc87995cdcd",
+      "before_sha256": "1c6ccadb6948c9d5ff522ebf8da84ef9f734091fdbbac023803ea145b054904e",
+      "after_sha256": "fb258573c3968ea10147e818a4df03f864cc2c42fad99f1afb8b5df78f8de519"
+    },
+    {
+      "path": "tests/commercial-invoice-close-idempotency.test.ts",
+      "before_mode": null,
+      "after_mode": "100644",
+      "before_blob": null,
+      "after_blob": "685d8e2f5df56b9c7b7971b0dcf587745c43ce2b",
+      "before_sha256": null,
+      "after_sha256": "e398c36cd2057cf0a598e1cca9416c881d0a90e9d9159e075f688813b9140649"
+    }
+  ]
+}
