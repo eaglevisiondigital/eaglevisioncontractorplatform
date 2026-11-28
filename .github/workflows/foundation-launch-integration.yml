@@ -1,0 +1,196 @@
+name: Foundation checks (launch integration)
+on:
+  push:
+    branches: ['codex/payment-reviewed-launch-integration']
+permissions:
+  contents: read
+concurrency:
+  group: foundation-launch-integration-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.16'
+      - run: npm ci
+      - run: >-
+          python -m pip install --require-hashes --only-binary=:all:
+          -r recovery/monterey/requirements.lock
+      - run: npm run format:check
+      - name: Run the original check commands outside the application matrix
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFileSync} from 'node:fs';
+          import {requireCheckScript} from './scripts/cycle33-foundation-evidence.mjs';
+          requireCheckScript(JSON.parse(readFileSync('package.json')).scripts.check);
+          NODE
+          npm run lint
+          npm run typecheck
+          npm run types:check
+          npm run migrations:check
+          npm run property:check
+          npm run customer:check
+          npm run customer:requests:check
+          npm run customer:broker:check
+          npm run features:check
+          npm run test:recovery
+          npm run build
+      - run: npm run staging:plan
+  application:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        # Retain the exact native partitions and the declared #424 skip counts.
+        # Shards 2, 3, 6 and 7 previously hit their per-case deadlines.
+        include:
+          - { shard: 1, workers: 4, declared_skips: 33 }
+          - { shard: 2, workers: 2, declared_skips: 82 }
+          - { shard: 3, workers: 2, declared_skips: 106 }
+          - { shard: 4, workers: 4, declared_skips: 5 }
+          - { shard: 5, workers: 4, declared_skips: 3 }
+          - { shard: 6, workers: 2, declared_skips: 4 }
+          - { shard: 7, workers: 2, declared_skips: 82 }
+          - { shard: 8, workers: 4, declared_skips: 33 }
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.16'
+      - run: npm ci
+      - run: >-
+          python -m pip install --require-hashes --only-binary=:all:
+          -r recovery/monterey/requirements.lock
+      - run: node scripts/cycle33-foundation-evidence.mjs plan application ${{ matrix.shard }}
+      - name: Run the complete application partition
+        run: >-
+          npm test -- --shard=${{ matrix.shard }}/8 --maxWorkers=${{ matrix.workers }}
+          --reporter=default --reporter=json
+          --reporter=./scripts/cycle33-foundation-reporter.mjs
+          --outputFile=artifacts/foundation/application-${{ matrix.shard }}/results.json
+      - name: Verify the executed file partition and declared skip count
+        env:
+          SHARD: ${{ matrix.shard }}
+          WORKERS: ${{ matrix.workers }}
+          DECLARED_SKIPS: ${{ matrix.declared_skips }}
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import {readFileSync} from 'node:fs';
+          import {relative} from 'node:path';
+          import {assertBinding, requireUnion} from './scripts/cycle33-foundation-evidence.mjs';
+          const prefix = 'artifacts/foundation/application-' + process.env.SHARD;
+          const read = (file) => JSON.parse(readFileSync(prefix + '/' + file + '.json', 'utf8'));
+          const plan = read('plan');
+          const native = read('results');
+          const observed = read('observations');
+          assertBinding(plan.binding);
+          assert.deepEqual(observed.binding, plan.binding);
+          assert.deepEqual(observed.config, {
+            testTimeout: 30000,
+            hookTimeout: 30000,
+            maxWorkers: Number(process.env.WORKERS),
+            retry: 0,
+            shard: {index: Number(process.env.SHARD), count: 8},
+          });
+          assert.equal(observed.reason, 'passed');
+          assert.equal(observed.errors, 0);
+          assert.equal(native.success, true);
+          assert.equal(native.numFailedTests, 0);
+          assert.equal(native.numPendingTests + native.numTodoTests, Number(process.env.DECLARED_SKIPS));
+          assert.equal(native.numTotalTests, native.numPassedTests + Number(process.env.DECLARED_SKIPS));
+          requireUnion([native.testResults.map(({name}) => relative(process.cwd(), name))], plan.selected);
+          requireUnion([observed.modules.map(({file}) => file)], plan.selected);
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: launch-foundation-application-${{ matrix.shard }}
+          path: artifacts/foundation/application-${{ matrix.shard }}/
+          retention-days: 7
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: node scripts/cycle33-foundation-evidence.mjs plan browser ${{ matrix.shard }}
+      - env:
+          PLAYWRIGHT_JSON_OUTPUT_NAME: artifacts/foundation/browser-${{ matrix.shard }}/results.json
+        run: npx playwright test --shard=${{ matrix.shard }}/3 --reporter=list,json
+      - run: node scripts/cycle33-foundation-evidence.mjs validate browser ${{ matrix.shard }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: launch-foundation-browser-${{ matrix.shard }}
+          path: |
+            artifacts/foundation/browser-${{ matrix.shard }}/
+            artifacts/phase3/*.png
+            artifacts/release/*.png
+            artifacts/property/*.png
+            test-results/
+          retention-days: 7
+  postgres17:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: ev_test
+          POSTGRES_PASSWORD: synthetic-ci-only
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U ev_test -d postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      EV_TEST_PG_CI: 'true'
+      EV_CUSTOMER_REQUEST_BROWSER: 'true'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: node scripts/prepare-ci-db.mjs
+      - run: npm run types:check
+      - run: npx playwright install --with-deps chromium
+      - run: npx vitest run tests/database
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: customer-request-native-previews
+          path: artifacts/property/customer-requests-native-*.png
+          retention-days: 7
