@@ -11,7 +11,11 @@ import { join } from 'node:path';
 import { readFileSync, readdirSync } from 'node:fs';
 import { beforeAll, afterAll, it, expect } from 'vitest';
 import { createTestDatabase } from './engine';
-import { p1Evidence, p1Now } from '../helpers/property-p1-fixture';
+import {
+  p1Evidence,
+  p1Now,
+  propertyFixtureQuoteDates,
+} from '../helpers/property-p1-fixture';
 import { prepareP1, featureSql } from '../../server/property/p1-readiness';
 import { blankEstimate } from '../../src/domain/estimating/calculation';
 import {
@@ -202,7 +206,15 @@ beforeAll(async () => {
 });
 afterAll(() => db.close());
 it('executes all75 proposed fixture steps and69 probes locally with exact57 rows, arithmetic and zero customer debt', async () => {
-  const bundle = executionPackage(e),
+  const fixtureNow = Date.now();
+  const quoteDates = propertyFixtureQuoteDates(fixtureNow);
+  const localEvidence = {
+    ...e,
+    capturedAt: new Date(fixtureNow).toISOString(),
+    bindings: e.bindings.map((binding) => ({ ...binding, ...quoteDates })),
+    resources: e.resources.map((resource) => ({ ...resource, ...quoteDates })),
+  };
+  const bundle = executionPackage(localEvidence, fixtureNow),
     p = bundle.plan,
     sql = featureSql(p);
   const protectedTables = [
@@ -300,7 +312,7 @@ it('executes all75 proposed fixture steps and69 probes locally with exact57 rows
     frozen: bundle.frozen,
     journal,
     signal: new AbortController().signal,
-    now: () => p1Now,
+    now: () => fixtureNow,
     actors: {
       verifyAll: async () => {},
       get: (org, role) => {
@@ -342,7 +354,7 @@ it('executes all75 proposed fixture steps and69 probes locally with exact57 rows
                     c.requirements,
                     q.comparisons[0].snapshot.quotes,
                     'USD',
-                    p1Now,
+                    fixtureNow,
                   ).vendors.map((v) => v.total_minor),
                 ).toEqual(c.comparison.vendors.map((v) => v.total_minor));
               }

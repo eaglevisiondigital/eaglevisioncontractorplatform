@@ -1,5 +1,19 @@
 import type { P1Evidence, P1Actor } from '../../server/property/p1-readiness';
 export const p1Now = Date.UTC(2026, 9, 17, 16);
+const fixtureQuotedAt = '2026-10-16T12:00:00Z';
+const fixtureQuoteExpiresAt = '2026-11-16T12:00:00Z';
+
+// Preserve the fixture's quote window relative to the clock of a live SQL test.
+export function propertyFixtureQuoteDates(now: number) {
+  const shift = now - p1Now;
+  return {
+    quoted_at: new Date(Date.parse(fixtureQuotedAt) + shift).toISOString(),
+    quote_expires_at: new Date(
+      Date.parse(fixtureQuoteExpiresAt) + shift,
+    ).toISOString(),
+  };
+}
+
 export function p1Evidence(): P1Evidence {
   const roles = [
     'owner',
@@ -21,8 +35,8 @@ export function p1Evidence(): P1Evidence {
     existing_material_reviews: 0,
     net_approved_cost_minor: 10001,
     currency: 'USD',
-    quoted_at: '2026-10-16T12:00:00Z',
-    quote_expires_at: '2026-11-16T12:00:00Z',
+    quoted_at: fixtureQuotedAt,
+    quote_expires_at: fixtureQuoteExpiresAt,
     baseline_fingerprints: { original: 'a'.repeat(32) },
   }));
   return {

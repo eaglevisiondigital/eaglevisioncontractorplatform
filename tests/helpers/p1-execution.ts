@@ -8,10 +8,10 @@ import {
   canonical,
   loadP1Package,
 } from '../../server/property/execution/package';
-export function executionPackage(evidence = p1Evidence()) {
+export function executionPackage(evidence = p1Evidence(), now = p1Now) {
   const root = mkdtempSync(join(tmpdir(), 'propel-executor-'));
   chmodSync(root, 0o700);
-  const plan = prepareP1(evidence, 'p1-local-executor', p1Now),
+  const plan = prepareP1(evidence, 'p1-local-executor', now),
     sql = featureSql(plan);
   const bytes = {
     'p1-plan.private.json': JSON.stringify(plan),
