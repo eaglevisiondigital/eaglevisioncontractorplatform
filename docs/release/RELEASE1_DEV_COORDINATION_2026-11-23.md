@@ -6,6 +6,18 @@ Status: DEVELOPMENT EVIDENCE ONLY. Production Release 1.0 NO-GO. Do not merge/de
 - This record is a documentation-only child of PR #599 commit `cb1b3768a5faa516a612673365e8fffb2fb4a665`. It is NOT an integration or source approval.
 - GitHub comparison `301e6463...cb1b3768`: one commit ahead, changes only `tests/database/commercial-invoice-caller-proposal.test.ts` (608 additions, 2 deletions).
 - Nov 22 Phases 0–5 Codex task **was submitted through the Codex interface**, not this Chat's connector: task `6b039f1c-4f20-83ea-8e94-d355e284c00a`, completed 2026-11-22 20:10 CT (DT-verified from task page). Evidence/reconciliation only: 0 commits, 0 patches, 0 changed files; 32 isolated connection/source-admission checks PASS after disposable-checkout file-mode correction; broader 95 PASS with two numbering suites stopped by source admission. Physical native transaction cleanup UNVERIFIED; PR #564 receipt failures open; A01–A12 NOT RUN. This is DT-supplied task evidence, not independently inspected within the GitHub connector.
+
+## Owner business-identity ruling — 2026-11-27 21:09 CT (David via DT)
+**Canonical legal entity (FINAL):** `Saul 2 Paul Builders LLC`.
+
+**Canonical DBA / receipts display (FINAL):** `Saul 2 Paul Builders and Gutters` — spelling is **Gutters**, not **Guttering**. David explicitly confirmed the one-word discrepancy at 21:09 CT. Existing records stating `Saul 2 Paul Builders and Guttering` are superseded for DBA/receipt naming.
+
+Readiness accounting update: the legal-name/DBA spelling decision is RESOLVED. Do not continue listing business identity or DBA spelling as a blocker. Any remaining merchant onboarding, VAR/EPX/NMI, tenant binding, hosted Auth/MFA, invoice writer/SQL, receipt, customer access/delivery, reconciliation, custody, recovery, deployment and release gates remain separate and unchanged.
+
+Receipt naming requirement: future approved receipt configuration must display DBA `Saul 2 Paul Builders and Gutters` and retain legal entity `Saul 2 Paul Builders LLC` as the registered legal name where the configuration/schema supports separate legal and DBA fields. Do not substitute the DBA for the legal entity or vice versa.
+
+Propagation boundary: this commit records the authoritative owner ruling in the development readiness record only. No merchant account, NMI/EPX boarding record, hosted receipt configuration, operational database, customer record, production setting or protected source was changed. Those changes require their own authorized implementation/acceptance path. Search of the currently accessible GitHub code index did not return matching legacy strings; older records outside the indexed/default source scope have not been exhaustively edited. Update each discovered nonproduction runbook/readiness artifact on its own reviewed branch; never rewrite historical evidence. Release 1.0 remains NO-GO.
+
 - The Mac path `/Users/davesmacbookpro/Documents/ChatGPT/EAGLE VISION CONTRACTOR PLATFORM` is not mounted in this review environment; HEAD, cleanliness, worktrees and local files NOT VERIFIED.
 
 ## PR #599 workflow diagnostics (existing GitHub Actions runs; no jobs re-executed)
