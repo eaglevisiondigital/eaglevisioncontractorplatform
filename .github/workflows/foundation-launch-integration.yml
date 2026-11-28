@@ -51,17 +51,15 @@ jobs:
       fail-fast: false
       matrix:
         # Retain the exact native partitions and the declared #424 skip counts.
-        # Shards 2, 3, 6 and 7 hit their per-case deadlines on #424.
-        # The first launch run (46123731649) also timed out on shards 1 and 8.
         include:
-          - { shard: 1, workers: 2, declared_skips: 33 }
-          - { shard: 2, workers: 2, declared_skips: 82 }
-          - { shard: 3, workers: 2, declared_skips: 106 }
-          - { shard: 4, workers: 4, declared_skips: 5 }
-          - { shard: 5, workers: 4, declared_skips: 3 }
-          - { shard: 6, workers: 2, declared_skips: 4 }
-          - { shard: 7, workers: 2, declared_skips: 82 }
-          - { shard: 8, workers: 2, declared_skips: 33 }
+          - { shard: 1, declared_skips: 33 }
+          - { shard: 2, declared_skips: 82 }
+          - { shard: 3, declared_skips: 106 }
+          - { shard: 4, declared_skips: 5 }
+          - { shard: 5, declared_skips: 3 }
+          - { shard: 6, declared_skips: 4 }
+          - { shard: 7, declared_skips: 82 }
+          - { shard: 8, declared_skips: 33 }
     steps:
       - uses: actions/checkout@v4
         with:
@@ -78,16 +76,16 @@ jobs:
           python -m pip install --require-hashes --only-binary=:all:
           -r recovery/monterey/requirements.lock
       - run: node scripts/cycle33-foundation-evidence.mjs plan application ${{ matrix.shard }}
+      # Four-worker timeouts moved across shards in the original and launch runs.
       - name: Run the complete application partition
         run: >-
-          npm test -- --shard=${{ matrix.shard }}/8 --maxWorkers=${{ matrix.workers }}
+          npm test -- --shard=${{ matrix.shard }}/8 --maxWorkers=2
           --reporter=default --reporter=json
           --reporter=./scripts/cycle33-foundation-reporter.mjs
           --outputFile=artifacts/foundation/application-${{ matrix.shard }}/results.json
       - name: Verify the executed file partition and declared skip count
         env:
           SHARD: ${{ matrix.shard }}
-          WORKERS: ${{ matrix.workers }}
           DECLARED_SKIPS: ${{ matrix.declared_skips }}
         run: |
           node --input-type=module <<'NODE'
@@ -105,7 +103,7 @@ jobs:
           assert.deepEqual(observed.config, {
             testTimeout: 30000,
             hookTimeout: 30000,
-            maxWorkers: Number(process.env.WORKERS),
+            maxWorkers: 2,
             retry: 0,
             shard: {index: Number(process.env.SHARD), count: 8},
           });
